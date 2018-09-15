@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"noImplicitAny" : true,
+		"noImplicitThis" : true,
+		"alwaysStrict" : true,
+		"strictNullChecks": true,
+		"noFallthroughCasesInSwitch": true,
+		"strict": true,
+		"rootDir": ".",
+		"noLib": true
+	}
+}
