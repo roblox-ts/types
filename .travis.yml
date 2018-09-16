@@ -4,4 +4,5 @@ node_js:
 before_script:
   - npm install -g typescript ts-node
 script:
+  - ls src
   - ts-node src/index.ts
