@@ -8,8 +8,6 @@ import { Timer } from "./class/Timer";
 
 const API_DUMP_URL = "https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Client-Watch/roblox/API-Dump.json";
 
-const INCLUDED_FILES = ["es.d.ts", "lua.d.ts", "manual.d.ts", "macro_math.d.ts"];
-
 /* tslint:disable */
 const versionStr = require("../package.json").version as string;
 /* tslint:enable */
@@ -27,13 +25,6 @@ const argv = yargs
 	.describe("help", "show help")
 	.showHelpOnFail(false, "specify --help for available options")
 
-	// target directory
-	.option("t", {
-		alias: "target",
-		default: path.resolve(__dirname, "..", "out"),
-		describe: "directory to output to"
-	})
-
 	// parse
 	.parse();
 
@@ -46,18 +37,9 @@ const argv = yargs
 		throw new Error("response status non-200!");
 	}
 
-	const targetDir = argv.target as string;
+	const targetDir = path.resolve(__dirname, "..", "include");
 
 	const api = response.data as ApiDump;
-
-	console.log(`Copying included files..`);
-	for (const fileName of INCLUDED_FILES) {
-		await fs.writeFile(
-			path.join(targetDir, fileName),
-			await fs.readFile(path.join(__dirname, "..", "include", fileName))
-		);
-	}
-	console.log(`Done! (${timer.get()}ms)`);
 
 	console.log(`Generating enums..`);
 	await new EnumGenerator(targetDir, "generated_enums.d.ts").generate(api.Enums);

@@ -8,7 +8,6 @@ const ROOT_CLASS_NAME = "<<<ROOT>>>";
 const BAD_NAME_CHARS = [" ", "/"];
 
 const CREATABLE_BLACKLIST: { [index: string]: true | undefined } = {
-	Instance: true,
 	UserSettings: true,
 	DebugSettings: true
 };
@@ -203,6 +202,7 @@ export class ClassGenerator extends Generator {
 	private generateEvent(rbxEvent: ApiEvent, tsInterface?: ts.InterfaceDeclaration) {
 		const name = rbxEvent.Name;
 		if (tsInterface && tsInterface.getProperty(name)) {
+			console.log("event exists", name);
 			return;
 		}
 		const args = generateArgs(rbxEvent.Parameters);
@@ -217,6 +217,9 @@ export class ClassGenerator extends Generator {
 		const returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
 		if (returnType !== null) {
 			const args = generateArgs(rbxFunction.Parameters);
+			if (hasTag(rbxFunction, "CustomLuaState")) {
+				this.write("// custom lua state");
+			}
 			this.write(`${name}(${args}): ${returnType};`);
 		}
 	}
@@ -228,7 +231,7 @@ export class ClassGenerator extends Generator {
 		}
 		const valueType = safePropType(safeValueType(rbxProperty.ValueType));
 		if (valueType !== null) {
-			const prefix = canWrite(rbxProperty) ? "" : "readonly ";
+			const prefix = canWrite(rbxProperty) && !hasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
 			this.write(`${prefix}${safeName(name)}: ${valueType};`);
 		}
 	}
@@ -267,7 +270,10 @@ export class ClassGenerator extends Generator {
 		this.popIndent();
 		this.write(`}`);
 
-		if (name !== "Instance" && (hasTag(rbxClass, "Service") || CREATABLE_BLACKLIST[name])) {
+		if (
+			rbxClass.Name !== "Instance" &&
+			(hasTag(rbxClass, "NotCreatable") || hasTag(rbxClass, "Service") || CREATABLE_BLACKLIST[name])
+		) {
 			this.write(`type ${name} = ${implName} & Base<${implName}> & AnyIndex;`);
 		} else {
 			this.write(`interface ${name} extends ${implName}, Base<${implName}>, AnyIndex {}`);
