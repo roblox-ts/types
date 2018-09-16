@@ -1,4 +1,3 @@
-include
 src
 node_modules
 tsconfig.json
