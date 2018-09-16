@@ -2,6 +2,11 @@ import { Generator } from "./Generator";
 
 export class EnumGenerator extends Generator {
 	public async generate(rbxEnums: Array<ApiEnum>) {
+		this.write("// THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!");
+		this.write("");
+		this.write('/// <reference path="generated_enums.d.ts" />');
+		this.write('/// <reference path="manual.d.ts" />');
+		this.write("");
 		this.write(`// GENERATED ROBLOX ENUMS`);
 		this.write("");
 		this.write(`declare namespace Enum {`);
