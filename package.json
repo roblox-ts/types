@@ -1,5 +1,5 @@
 {
-	"name": "type-declaration-generator",
+	"name": "rbx-types",
 	"version": "1.0.0",
 	"description": "Generates a roblox.d.ts file from a combination of handwritten .d.ts files and generated data from Roblox's API dump",
 	"main": "out/index.js",
