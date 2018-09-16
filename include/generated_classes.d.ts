@@ -1,3 +1,5 @@
+// THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!
+
 /// <reference path="generated_enums.d.ts" />
 /// <reference path="manual.d.ts" />
 
