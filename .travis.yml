@@ -3,7 +3,5 @@ node_js:
   "node"
 script:
   - npm install -g typescript
-  - npm install -g release-it
   - tsc
   - node out/index.js
-  - release-it patch
