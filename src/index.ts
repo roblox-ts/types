@@ -29,23 +29,32 @@ const argv = yargs
 	.parse();
 
 (async () => {
-	const timer = new Timer();
+	const totalTimer = new Timer();
+
+	console.log("Generating..");
+
+	const requestTimer = new Timer();
+	console.log("\tRequesting API Dump JSON..");
 	const response = await axios.get(API_DUMP_URL);
-	console.log(`Request complete`);
+	console.log(`\tDone! (${requestTimer.get()}ms)`);
 
 	if (response.status !== 200) {
-		throw new Error("response status non-200!");
+		throw new Error("Response status non-200!");
 	}
 
 	const targetDir = path.resolve(__dirname, "..", "include");
 
 	const api = response.data as ApiDump;
 
-	console.log(`Generating enums..`);
+	const enumTimer = new Timer();
+	console.log("\tGenerating enums..");
 	await new EnumGenerator(targetDir, "generated_enums.d.ts").generate(api.Enums);
-	console.log(`Done! (${timer.get()}ms)`);
+	console.log(`\tDone! (${enumTimer.get()}ms)`);
 
-	console.log(`Generating classes..`);
+	const classTimer = new Timer();
+	console.log("\tGenerating classes..");
 	await new ClassGenerator(targetDir, "generated_classes.d.ts").generate(api.Classes);
-	console.log(`Done! (${timer.get()}ms)`);
+	console.log(`\tDone! (${classTimer.get()}ms)`);
+
+	console.log(`Done! (${totalTimer.get()}ms)`);
 })();
