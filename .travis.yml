@@ -5,3 +5,6 @@ script:
   - npm install -g typescript
   - tsc
   - node out/index.js
+  - npm version patch -m "Bumping to %s [ci skip]"
+  - git push origin master
+  - npm publish
