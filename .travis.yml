@@ -5,6 +5,8 @@ script:
   - npm install -g typescript
   - tsc
   - node out/index.js
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "Travis CI"
   - npm version patch -m "Bumping to %s [ci skip]"
   - git push origin master
   - npm publish
