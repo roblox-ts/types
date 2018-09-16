@@ -202,7 +202,6 @@ export class ClassGenerator extends Generator {
 	private generateEvent(rbxEvent: ApiEvent, tsInterface?: ts.InterfaceDeclaration) {
 		const name = rbxEvent.Name;
 		if (tsInterface && tsInterface.getProperty(name)) {
-			console.log("event exists", name);
 			return;
 		}
 		const args = generateArgs(rbxEvent.Parameters);
