@@ -9,4 +9,3 @@ script:
   - git config --global user.name "Travis CI"
   - npm version patch -m "Bumping to %s [ci skip]"
   - git push origin master
-  - npm publish
