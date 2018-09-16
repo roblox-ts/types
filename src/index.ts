@@ -1,5 +1,4 @@
 import axios from "axios";
-import * as fs from "mz/fs";
 import * as path from "path";
 import * as yargs from "yargs";
 import { EnumGenerator } from "./class/EnumGenerator";
