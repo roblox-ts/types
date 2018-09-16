@@ -23,6 +23,4 @@ export class Generator {
 	protected write(line: string) {
 		this.stream.write((line.length > 0 ? this.indent + line : "") + "\n");
 	}
-
-	public async addIncludes() {}
 }
