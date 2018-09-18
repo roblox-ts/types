@@ -7,5 +7,6 @@ script:
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
   - npm version patch -m "Bumping to %s [ci skip]"
+  - git checkout master
   - git push https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git
 
