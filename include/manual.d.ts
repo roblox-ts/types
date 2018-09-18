@@ -515,14 +515,14 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 		actionName: string,
 		functionToBind: Function,
 		createTouchButton: boolean,
-		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions>
+		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
 	BindActionAtPriority(
 		actionName: string,
 		functionToBind: Function,
 		createTouchButton: boolean,
 		priorityLevel: number,
-		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions>
+		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
 }
 
