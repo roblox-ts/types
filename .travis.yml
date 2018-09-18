@@ -10,7 +10,7 @@ script:
   - node out/index.js
   - git status
   - |
-    if ! git diff-index --quiet HEAD -- then
+    if (! git diff-index --quiet HEAD --) then
     echo "changes detected, publishing.."
     export DEPLOY=true
     echo "1. git add"
