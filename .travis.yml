@@ -9,7 +9,7 @@ script:
   - git checkout master
   - node out/index.js
   - |
-    if [! git diff-index --quiet HEAD --]; then
+    if ! git diff-index --quiet HEAD -- then
     echo "changes detected, publishing.."
     export DEPLOY=true
     echo "1. git add"
