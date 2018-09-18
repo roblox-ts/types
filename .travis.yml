@@ -12,7 +12,7 @@ script:
   - |
     if (publish-diff) then
     echo "changes detected, publishing.."
-    # export DEPLOY=true
+    export DEPLOY=true
     echo "1. git add"
     git add .
     echo "2. git commit"
