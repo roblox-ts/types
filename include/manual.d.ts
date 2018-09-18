@@ -384,13 +384,18 @@ interface Rbx_BasePart extends Rbx_Instance {
 	CanSetNetworkOwnership(): [true] | [false, string];
 	GetConnectedParts(recursive?: boolean): Array<BasePart>;
 	GetNetworkOwner(): Player | undefined;
-	GetPlayerFromCharacter(character: Model): Player | undefined;
 	GetRootPart(): BasePart;
 	GetJoints(): Array<Constraint | JointInstance>;
 	GetTouchingParts(): Array<BasePart>;
 	SetNetworkOwner(playerInstance?: Player): void;
 	SubtractAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
 	UnionAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
+	TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
+	Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
+}
+
+interface Rbx_Players extends Rbx_Instance {
+	GetPlayerFromCharacter(character: Model): Player | undefined;
 	GetCharacterAppearanceAsync(userId: number): Model | undefined;
 	GetCharacterAppearanceInfoAsync(userId: number): CharacterAppearanceInfo;
 	GetPlayerByUserId(userId: number): Player | undefined;
@@ -401,11 +406,6 @@ interface Rbx_BasePart extends Rbx_Instance {
 		thumbnailType: Enum.ThumbnailType,
 		thumbnailSize: Enum.ThumbnailSize
 	): [string, boolean];
-	TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
-	Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
-}
-
-interface Rbx_Players extends Rbx_Instance {
 	PlayerAdded: RBXScriptSignal<(player: Player) => void>;
 	PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
 }
