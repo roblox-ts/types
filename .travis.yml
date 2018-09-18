@@ -20,6 +20,7 @@ script:
     npm version patch -m "Bumping to %s [ci skip]"
     echo "4. git push"
     git push https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git
+    else echo "no changes detected"
     fi
 deploy:
   provider: npm
