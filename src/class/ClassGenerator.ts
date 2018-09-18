@@ -309,8 +309,9 @@ export class ClassGenerator extends Generator {
 		const sourceFile = project.getSourceFileOrThrow("manual.d.ts");
 		this.write("// THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!");
 		this.write("");
-		this.write('/// <reference path="generated_enums.d.ts" />');
+		this.write('/// <reference path="roblox.d.ts" />');
 		this.write('/// <reference path="manual.d.ts" />');
+		this.write('/// <reference path="generated_enums.d.ts" />');
 		this.write("");
 		this.write("// GENERATED ROBLOX INSTANCE CLASSES");
 		this.write("");

@@ -2,4 +2,4 @@ src
 out
 node_modules
 tsconfig.json
-build.sh
+.travis.yml
