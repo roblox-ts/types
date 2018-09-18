@@ -4907,15 +4907,8 @@ interface Rbx_Players extends Rbx_Instance {
 	readonly LocalPlayer: Instance | undefined;
 	readonly MaxPlayers: number;
 	readonly PreferredPlayers: number;
-	GetPlayerByUserId(userId: number): Instance | undefined;
-	GetPlayerFromCharacter(character: Instance): Instance | undefined;
-	GetPlayers(): Array<Instance>;
-	GetCharacterAppearanceAsync(userId: number): Instance | undefined;
-	GetCharacterAppearanceInfoAsync(userId: number): object;
-	GetFriendsAsync(userId: number): Instance | undefined;
 	GetNameFromUserIdAsync(userId: number): string;
 	GetUserIdFromNameAsync(userName: string): number;
-	GetUserThumbnailAsync(userId: number, thumbnailType: Enum.ThumbnailType, thumbnailSize: Enum.ThumbnailSize): Array<any>;
 }
 type Players = Rbx_Players & Base<Rbx_Players> & AnyIndex;
 interface Rbx_Instance {
