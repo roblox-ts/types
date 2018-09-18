@@ -1,7 +1,8 @@
 // THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!
 
-/// <reference path="generated_enums.d.ts" />
+/// <reference path="roblox.d.ts" />
 /// <reference path="manual.d.ts" />
+/// <reference path="generated_enums.d.ts" />
 
 // GENERATED ROBLOX INSTANCE CLASSES
 
