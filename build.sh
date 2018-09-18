@@ -4,7 +4,7 @@ git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 git checkout master
 node out/index.js
-if [ ! git diff-index --quiet HEAD -- ]
+if ! git diff-index --quiet HEAD --
 then
 	echo "changes detected, publishing.."
 	echo "1. git add"
