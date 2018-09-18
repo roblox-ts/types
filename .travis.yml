@@ -3,10 +3,10 @@ node_js: node
 script:
   - npm install -g typescript
   - tsc
-  - node out/index.js
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
   - git checkout master
   - npm version patch -m "Bumping to %s [ci skip]"
+  - node out/index.js
   - git push https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git
 
