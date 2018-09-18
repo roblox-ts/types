@@ -877,7 +877,6 @@ interface Rbx_CollectionService extends Rbx_Instance {
 	AddTag(instance: Instance, tag: string): void;
 	GetInstanceAddedSignal(tag: string): RBXScriptSignal;
 	GetInstanceRemovedSignal(tag: string): RBXScriptSignal;
-	GetTagged(tag: string): Array<Instance>;
 	HasTag(instance: Instance, tag: string): boolean;
 	RemoveTag(instance: Instance, tag: string): void;
 }

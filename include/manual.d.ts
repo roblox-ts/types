@@ -349,17 +349,58 @@ interface Rbx_Instance {
 	WaitForChild<T = Instance>(childName: string, timeOut?: number): T | undefined;
 }
 
+interface CharacterAppearanceInfo {
+	bodyColors: {
+		leftArmColorId: number;
+		torsoColorId: number;
+		rightArmColorId: number;
+		headColorId: number;
+		leftLegColorId: number;
+		rightLegColorId: number;
+	};
+	assets: Array<{
+		id: number;
+		assetType: {
+			name: string;
+			id: number;
+		};
+		name: string;
+	}>;
+	defaultPantsApplied: boolean;
+	defaultShirtApplied: boolean;
+	playerAvatarType: string;
+	scales: {
+		bodyType: number;
+		head: number;
+		height: number;
+		proportion: number;
+		depth: number;
+		width: number;
+	};
+}
+
 interface Rbx_BasePart extends Rbx_Instance {
 	CanCollideWith(part: BasePart): boolean;
 	CanSetNetworkOwnership(): [true] | [false, string];
 	GetConnectedParts(recursive?: boolean): Array<BasePart>;
 	GetNetworkOwner(): Player | undefined;
+	GetPlayerFromCharacter(character: Model): Player | undefined;
 	GetRootPart(): BasePart;
 	GetJoints(): Array<Constraint | JointInstance>;
 	GetTouchingParts(): Array<BasePart>;
 	SetNetworkOwner(playerInstance?: Player): void;
 	SubtractAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
 	UnionAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
+	GetCharacterAppearanceAsync(userId: number): Model | undefined;
+	GetCharacterAppearanceInfoAsync(userId: number): CharacterAppearanceInfo;
+	GetPlayerByUserId(userId: number): Player | undefined;
+	GetPlayers(): Array<Player>;
+	GetFriendsAsync(userId: number): FriendPages;
+	GetUserThumbnailAsync(
+		userId: number,
+		thumbnailType: Enum.ThumbnailType,
+		thumbnailSize: Enum.ThumbnailSize
+	): [string, boolean];
 	TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
 	Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
 }
@@ -461,6 +502,7 @@ interface Rbx_Camera extends Rbx_Instance {
 }
 
 interface Rbx_CollectionService extends Rbx_Instance {
+	GetTagged<T = Instance>(tag: string): Array<T>;
 	GetTags(instance: Instance): Array<string>;
 }
 

@@ -5,7 +5,6 @@ declare const _G: any;
 declare function assert<T>(condition: T, message?: string): T;
 declare function collectgarbage(option: "count"): number;
 declare function error(message?: string, level?: number): void;
-declare function getmetatable(object: any): any;
 declare function newproxy(): any;
 /** !TupleReturn */
 declare function next(t: any): [any, any];
@@ -19,6 +18,27 @@ declare function rawset(t: any, index: any, value: any): void;
 declare function select(index: number, ...args: Array<any>): Array<any>;
 declare function select(cmd: "#", ...args: Array<any>): number;
 declare function tostring(value: any): string;
+
+interface LuaMetatable<T> {
+	__index?: (self: T, index: any) => void;
+	__newindex?: (self: T, index: any, value: any) => void;
+	__add?: (self: T, other: unknown) => any;
+	__sub?: (self: T, other: unknown) => any;
+	__mul?: (self: T, other: unknown) => any;
+	__div?: (self: T, other: unknown) => any;
+	__mod?: (self: T, other: unknown) => any;
+	__pow?: (self: T, other: unknown) => any;
+	__unm?: (self: T) => any;
+	__eq?: (self: T, other: unknown) => boolean;
+	__lt?: (self: T, other: unknown) => boolean;
+	__le?: (self: T, other: unknown) => boolean;
+	__call?: (self: T, ...arguments: Array<unknown>) => any;
+	__concat?: (self: T, ...arguments: Array<unknown>) => string;
+	__tostring?: (self: T) => string;
+	__len?: (self: T) => any;
+}
+declare function getmetatable(object: object): any;
+declare function setmetatable<T extends object>(object: T, metatable: LuaMetatable<T>): object;
 
 interface DateTable {
 	year: number;
@@ -98,7 +118,7 @@ declare namespace math {
 }
 
 // representation of coroutine
-declare interface thread { }
+declare interface thread {}
 
 declare namespace coroutine {
 	function create(f: Function): thread;
