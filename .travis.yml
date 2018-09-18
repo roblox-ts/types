@@ -2,17 +2,17 @@ language: node_js
 node_js: node
 script:
   - export DEPLOY=false
-  - npm install -g typescript
+  - npm install -g typescript publish-diff
   - tsc
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
   - git checkout master
   - node out/index.js
-  - git status
+  - publish-diff
   - |
-    if (! git diff-index --quiet HEAD --) then
+    if (publish-diff) then
     echo "changes detected, publishing.."
-    export DEPLOY=true
+    # export DEPLOY=true
     echo "1. git add"
     git add .
     echo "2. git commit"
