@@ -8,7 +8,14 @@ script:
   - node out/index.js
 
   - cd ..
-  - ls -a
+  - mkdir deploy
+  - cd deploy
+  - git clone --depth=50 --branch=deploy https://github.com/roblox-ts/rbx-types.git roblox-ts/rbx-types
+  - cd rbx-types
 
-  # - git diff-index --quiet HEAD || git commit -m "CI Update"
-  # - git push https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy
+  - cp ../../rbx-types/include/* include
+
+  - git add -A
+  - git status
+  - git diff-index --quiet HEAD || git commit -m "CI Update"
+  - git push https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy
