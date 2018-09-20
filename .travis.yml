@@ -5,6 +5,8 @@ script:
   - git config --global user.name "Travis CI"
   - git checkout -b deploy
   - git checkout master ./include/*
+  - rm -rf *
+  - git pull
   - ls
   - npm install -g typescript
   - tsc
