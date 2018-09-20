@@ -117,6 +117,6 @@ declare namespace coroutine {
 	function resume(co: thread, ...params: Array<any>): Array<any>;
 	function running(): thread | undefined;
 	function status(co: thread): string;
-	function wrap<T>(f: T): T;
+	function wrap<T extends Function>(f: T): T;
 	function yield(...params: Array<any>): Array<any>;
 }
