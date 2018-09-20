@@ -9,6 +9,7 @@ script:
   - node out/index.js
   - git add include/*
   - git status
+  - git diff-index --quiet HEAD
   - git diff-index --quiet HEAD || git commit -m "CI Update"
   - git pull origin deploy
   - ls
