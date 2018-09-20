@@ -12,6 +12,7 @@ script:
   - git add include/*
   - git status
   - git diff-index --quiet HEAD || git commit -m "CI Update"
-  - git checkout -- .
+  - git stash save --keep-index --include-untracked
+  - git stash drop
   - ls
 #   - git push -f https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy
