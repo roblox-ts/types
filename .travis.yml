@@ -5,10 +5,13 @@ script:
   - git config --global user.name "Travis CI"
   - git checkout -b deploy
   - git checkout master ./include/*
+  - ls
   - npm install -g typescript
   - tsc
   - node out/index.js
   - git add include/*
   - git status
   - git diff-index --quiet HEAD || git commit -m "CI Update"
-  - git push -f https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy
+  - git checkout -- .
+  - ls
+#   - git push -f https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy
