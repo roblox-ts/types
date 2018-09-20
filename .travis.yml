@@ -3,7 +3,7 @@ node_js: node
 script:
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
-  - git checkout origin/deploy
+  - git checkout -b deploy
   - git checkout master include
   - npm install -g typescript publish-diff
   - tsc
