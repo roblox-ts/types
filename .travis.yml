@@ -9,13 +9,10 @@ script:
   - node out/index.js
 
   - cd ..
-  - mkdir deploy
-  - cd deploy
-  - git clone --depth=50 --branch=deploy https://github.com/roblox-ts/rbx-types.git roblox-ts/rbx-types
-  - ls
-  - cd rbx-types
+  - git clone --depth=50 --branch=deploy https://github.com/roblox-ts/rbx-types.git deploy
 
-  - cp ../../rbx-types/include/* include
+  - cp .rbx-types/include/* deploy/include
+  - cd deploy
 
   - git add -A
   - git status
