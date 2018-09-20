@@ -1,23 +1,8 @@
 language: node_js
 node_js: node
-<<<<<<< HEAD
 deploy:
   provider: npm
   email: $NPM_EMAIL
   api_key: $NPM_TOKEN
   on:
 	branch: deploy
-=======
-script:
-  - git config --global user.email "travis@travis-ci.org"
-  - git config --global user.name "Travis CI"
-  - git checkout -b deploy
-  - git checkout master ./include/*
-  - npm install -g typescript
-  - tsc
-  - node out/index.js
-  - git add -A
-  - git status
-  - git diff-index --quiet HEAD || git commit -m "CI Update"
-  - git push -f https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy
->>>>>>> deploy
