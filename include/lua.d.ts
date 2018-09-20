@@ -6,15 +6,12 @@ declare function assert<T>(condition: T, message?: string): T;
 declare function collectgarbage(option: "count"): number;
 declare function error(message?: string, level?: number): void;
 declare function newproxy(): any;
-/** !TupleReturn */
 declare function next(t: any): [any, any];
-/** !TupleReturn */
 declare function pcall(func: Function, ...args: Array<any>): Array<any>;
 declare function print(...params: Array<any>): void;
 declare function rawequal(v1: any, v2: any): boolean;
 declare function rawget(t: any, index: any): any;
 declare function rawset(t: any, index: any, value: any): void;
-/** !TupleReturn */
 declare function select(index: number, ...args: Array<any>): Array<any>;
 declare function select(cmd: "#", ...args: Array<any>): number;
 declare function tostring(value: any): string;
@@ -64,10 +61,8 @@ declare namespace debug {
 }
 
 declare namespace string {
-	/** !TupleReturn */
 	function byte(s: string, i?: number, j?: number): Array<number>;
 	function char(...args: Array<number>): string;
-	/** !TupleReturn */
 	function find(s: string, pattern: string, init?: number, plain?: boolean): number;
 	function find(s: string, pattern: string, init?: number, plain?: boolean): Array<number | string>;
 	function format(pattern: string, ...args: Array<number | string>): string;
@@ -102,7 +97,6 @@ declare namespace math {
 	function log10(n: number): number;
 	function max(...n: Array<number>): number;
 	function min(...n: Array<number>): number;
-	/** !TupleReturn */
 	function modf(n: number): [number, number];
 	function pow(x: number, y: number): number;
 	function rad(n: number): number;
@@ -122,11 +116,9 @@ declare interface thread {}
 
 declare namespace coroutine {
 	function create(f: Function): thread;
-	/** !TupleReturn */
 	function resume(co: thread, ...params: Array<any>): Array<any>;
 	function running(): thread | undefined;
 	function status(co: thread): string;
 	function wrap<T>(f: T): T;
-	/** !TupleReturn */
 	function yield(...params: Array<any>): Array<any>;
 }
