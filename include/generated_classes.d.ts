@@ -3216,7 +3216,6 @@ interface Rbx_Instance {
 
 // InsertService
 interface Rbx_InsertService extends Rbx_Instance {
-	AllowClientInsertModels: boolean;
 	GetBaseSets(): Array<any>;
 	GetCollection(categoryId: number): Array<any>;
 	GetFreeDecals(searchText: string, pageNum: number): Array<any>;
@@ -3648,7 +3647,6 @@ interface Rbx_Lighting extends Rbx_Instance {
 	GlobalShadows: boolean;
 	OutdoorAmbient: Color3;
 	Outlines: boolean;
-	Technology: Enum.Technology;
 	TimeOfDay: string;
 	GetMinutesAfterMidnight(): number;
 	GetMoonDirection(): Vector3;
@@ -3771,7 +3769,6 @@ interface Rbx_Instance {
 
 // LuaSourceContainer
 interface Rbx_LuaSourceContainer extends Rbx_Instance {
-	CurrentEditor: Instance | undefined;
 }
 type LuaSourceContainer = Rbx_LuaSourceContainer & Base<Rbx_LuaSourceContainer> & AnyIndex;
 interface Rbx_Instance {
@@ -4381,7 +4378,6 @@ interface Rbx_Instance {
 
 // MeshPart
 interface Rbx_MeshPart extends Rbx_BasePart {
-	CollisionFidelity: Enum.CollisionFidelity;
 	readonly MeshId: string;
 	TextureID: string;
 }
@@ -4399,7 +4395,6 @@ interface Rbx_Instance {
 
 // PartOperation
 interface Rbx_PartOperation extends Rbx_BasePart {
-	CollisionFidelity: Enum.CollisionFidelity;
 	readonly TriangleCount: number;
 	UsePartColor: boolean;
 }
@@ -4558,13 +4553,11 @@ interface Rbx_Instance {
 // Workspace
 interface Rbx_Workspace extends Rbx_Model {
 	AllowThirdPartySales: boolean;
-	AutoJointsMode: Enum.AutoJointsMode;
 	CurrentCamera: Camera;
 	DistributedGameTime: number;
 	readonly FallenPartsDestroyHeight: number;
 	readonly FilteringEnabled: boolean;
 	Gravity: number;
-	PGSPhysicsSolverEnabled: boolean;
 	StreamingEnabled: boolean;
 	TemporaryLegacyPhysicsSolverOverride: boolean;
 	FindPartsInRegion3(region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<Instance>;
@@ -5586,7 +5579,6 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // ServerScriptService
 interface Rbx_ServerScriptService extends Rbx_Instance {
-	LoadStringEnabled: boolean;
 }
 type ServerScriptService = Rbx_ServerScriptService & Base<Rbx_ServerScriptService> & AnyIndex;
 interface Rbx_Instance {
