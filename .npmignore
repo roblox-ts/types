@@ -1,0 +1,5 @@
+src
+out
+node_modules
+tsconfig.json
+.travis.yml
