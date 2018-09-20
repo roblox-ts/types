@@ -9,7 +9,8 @@ script:
   - git add include/*
   - ls
   - ls include
-  - git checkout --track origin/deploy
+  - git remote -v
+  - git checkout --track deploy
   - ls
   - ls include
   - git checkout master -- include/*
