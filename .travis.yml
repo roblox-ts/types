@@ -1,9 +1,7 @@
 language: node_js
 node_js: node
 script:
-  - npm version patch
-  - git add *
-  - git commit -m "package.json version bump [skip ci]"
+  - npm version patch -m "package.json version bump to %s [ci skip]"
   - git push -f https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy
 deploy:
   provider: npm
