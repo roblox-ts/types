@@ -4,6 +4,7 @@ script:
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
   - git checkout -b deploy
+  - git pull
   - git checkout master include
   - npm install -g typescript
   - tsc
