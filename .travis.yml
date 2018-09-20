@@ -3,6 +3,7 @@ node_js: node
 script:
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
+
   - npm install -g typescript
   - tsc
   - node out/index.js
@@ -11,6 +12,7 @@ script:
   - mkdir deploy
   - cd deploy
   - git clone --depth=50 --branch=deploy https://github.com/roblox-ts/rbx-types.git roblox-ts/rbx-types
+  - ls
   - cd rbx-types
 
   - cp ../../rbx-types/include/* include
