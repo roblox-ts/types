@@ -11,6 +11,6 @@ script:
   - git status
   - git diff-index --quiet HEAD
   - git diff-index --quiet HEAD || git commit -m "CI Update"
-  - git pull origin deploy
+  - git pull -f origin deploy
   - ls
 #   - git push -f https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy
