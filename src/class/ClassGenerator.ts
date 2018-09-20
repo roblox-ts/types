@@ -241,7 +241,7 @@ export class ClassGenerator extends Generator {
 			return;
 		}
 
-		if (canRead(rbxMember) && !hasTag(rbxMember, "Deprecated")) {
+		if (canRead(rbxMember) && !hasTag(rbxMember, "Deprecated") && !hasTag(rbxMember, "NotScriptable")) {
 			if (rbxMember.MemberType === "Callback") {
 				this.generateCallback(rbxMember, tsInterface);
 			} else if (rbxMember.MemberType === "Event") {
