@@ -79,7 +79,6 @@ declare namespace string {
 declare namespace math {
 	const pi: number;
 	const huge: number;
-
 	function abs(n: number): number;
 	function acos(n: number): number;
 	function asin(n: number): number;
@@ -111,7 +110,6 @@ declare namespace math {
 	function tanh(n: number): number;
 }
 
-// representation of coroutine
 declare interface thread {}
 
 declare namespace coroutine {
