@@ -11,7 +11,8 @@ script:
   - cd ..
   - git clone --depth=50 --branch=deploy https://github.com/roblox-ts/rbx-types.git deploy
 
-  - cp .rbx-types/include/* deploy/include
+  - ls
+  - cp rbx-types/include/* deploy/include
   - cd deploy
 
   - git add -A
