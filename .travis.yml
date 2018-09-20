@@ -8,4 +8,4 @@ deploy:
   email: $NPM_EMAIL
   api_key: $NPM_TOKEN
   on:
-	  branch: deploy
+    branch: deploy
