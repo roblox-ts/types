@@ -4,15 +4,12 @@ script:
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
   - git checkout -b deploy
-  - git checkout master ./include/*
-  - ls
   - npm install -g typescript
   - tsc
   - node out/index.js
   - git add include/*
   - git status
   - git diff-index --quiet HEAD || git commit -m "CI Update"
-  - git stash save --keep-index --include-untracked
-  - git stash drop
+  - git pull origin deploy
   - ls
 #   - git push -f https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy
