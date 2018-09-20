@@ -214,6 +214,12 @@ declare namespace Enum {
 		ModalDialog = 3,
 		QuitDialog = 4
 	}
+	enum ChatCallbackType {
+		OnCreatingChatWindow = 1,
+		OnClientSendingMessage = 2,
+		OnClientFormattingMessage = 3,
+		OnServerReceivingMessage = 17
+	}
 	enum ChatColor {
 		Blue = 0,
 		Green = 1,
@@ -1503,6 +1509,10 @@ declare namespace Enum {
 	enum TableMajorAxis {
 		RowMajor = 0,
 		ColumnMajor = 1
+	}
+	enum Technology {
+		Legacy = 0,
+		Voxel = 1
 	}
 	enum TeleportResult {
 		Success = 0,
