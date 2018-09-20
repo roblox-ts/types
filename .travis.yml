@@ -5,18 +5,7 @@ script:
   - git config --global user.name "Travis CI"
   - git checkout -b deploy
   - git checkout master include
-  - npm install -g typescript publish-diff
+  - npm install -g typescript
   - tsc
   - node out/index.js
-  - |
-    if ! git diff-index --quiet HEAD --; then
-      echo "changes detected!"
-      npm version patch -m "Bumping to %s [ci skip]"
-      git push https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git
-    else
-      echo "no changes detected!"
-    fi
-deploy:
-  provider: npm
-  email: $NPM_EMAIL
-  api_key: $NPM_TOKEN
+  - git push https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git
