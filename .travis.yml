@@ -6,15 +6,9 @@ script:
   - npm install -g typescript
   - tsc
   - node out/index.js
-  - git add include/*
-  - ls
-  - ls include
-  - git remote -v
-  - git checkout --track deploy
-  - ls
-  - ls include
-  - git checkout master -- include/*
-  - ls
-  - ls include
-  - git diff-index --quiet HEAD || git commit -m "CI Update"
-  - git push https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy
+
+  - cd ..
+  - ls -a
+
+  # - git diff-index --quiet HEAD || git commit -m "CI Update"
+  # - git push https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy
