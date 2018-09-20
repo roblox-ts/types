@@ -819,6 +819,8 @@ interface Rbx_Instance {
 interface Rbx_Chat extends Rbx_Instance {
 	readonly LoadDefaultChat: boolean;
 	Chat(partOrCharacter: Instance, message: string, color?: Enum.ChatColor): void;
+	InvokeChatCallback(callbackType: Enum.ChatCallbackType, callbackArguments: Array<any>): Array<any>;
+	RegisterChatCallback(callbackType: Enum.ChatCallbackType, callbackFunction: Function): void;
 	CanUserChatAsync(userId: number): boolean;
 	CanUsersChatAsync(userIdFrom: number, userIdTo: number): boolean;
 	FilterStringAsync(stringToFilter: string, playerFrom: Instance, playerTo: Instance): string;
@@ -3638,6 +3640,7 @@ interface Rbx_Lighting extends Rbx_Instance {
 	ClockTime: number;
 	ColorShift_Bottom: Color3;
 	ColorShift_Top: Color3;
+	ExposureCompensation: number;
 	FogColor: Color3;
 	FogEnd: number;
 	FogStart: number;
@@ -3645,6 +3648,7 @@ interface Rbx_Lighting extends Rbx_Instance {
 	GlobalShadows: boolean;
 	OutdoorAmbient: Color3;
 	Outlines: boolean;
+	Technology: Enum.Technology;
 	TimeOfDay: string;
 	GetMinutesAfterMidnight(): number;
 	GetMoonDirection(): Vector3;
