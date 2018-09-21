@@ -1645,10 +1645,7 @@ interface Rbx_DebugSettings extends Rbx_Instance {
 	TickCountPreciseOverride: Enum.TickCountSampleMethod;
 	readonly VideoMemory: number;
 }
-interface DebugSettings extends Rbx_DebugSettings, Base<Rbx_DebugSettings>, AnyIndex {}
-declare abstract class DebugSettings {
-	constructor(parent?: Instance);
-}
+type DebugSettings = Rbx_DebugSettings & Base<Rbx_DebugSettings> & AnyIndex;
 interface Rbx_Instance {
 	IsA(className: "DebugSettings"): this is DebugSettings;
 	FindFirstAncestorOfClass(className: "DebugSettings"): DebugSettings | undefined;
@@ -6148,10 +6145,7 @@ interface Rbx_UserSettings extends Rbx_GenericSettings {
 	IsUserFeatureEnabled(name: string): boolean;
 	Reset(): void;
 }
-interface UserSettings extends Rbx_UserSettings, Base<Rbx_UserSettings>, AnyIndex {}
-declare abstract class UserSettings {
-	constructor(parent?: Instance);
-}
+type UserSettings = Rbx_UserSettings & Base<Rbx_UserSettings> & AnyIndex;
 interface Rbx_Instance {
 	IsA(className: "UserSettings"): this is UserSettings;
 	FindFirstAncestorOfClass(className: "UserSettings"): UserSettings | undefined;

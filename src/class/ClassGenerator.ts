@@ -269,16 +269,20 @@ export class ClassGenerator extends Generator {
 		this.popIndent();
 		this.write(`}`);
 
-		let prefixStr = "";
-		if (hasTag(rbxClass, "NotCreatable") || hasTag(rbxClass, "Service") || CREATABLE_BLACKLIST[name]) {
-			prefixStr = "abstract ";
+		if (CREATABLE_BLACKLIST[name]) {
+			this.write(`type ${name} = ${implName} & Base<${implName}> & AnyIndex;`);
+		} else {
+			let prefixStr = "";
+			if (hasTag(rbxClass, "NotCreatable") || hasTag(rbxClass, "Service")) {
+				prefixStr = "abstract ";
+			}
+			this.write(`interface ${name} extends ${implName}, Base<${implName}>, AnyIndex {}`);
+			this.write(`declare ${prefixStr}class ${name} {`);
+			this.pushIndent();
+			this.write("constructor(parent?: Instance);");
+			this.popIndent();
+			this.write("}");
 		}
-		this.write(`interface ${name} extends ${implName}, Base<${implName}>, AnyIndex {}`);
-		this.write(`declare ${prefixStr}class ${name} {`);
-		this.pushIndent();
-		this.write("constructor(parent?: Instance);");
-		this.popIndent();
-		this.write("}");
 
 		this.write("interface Rbx_Instance {");
 		this.pushIndent();
