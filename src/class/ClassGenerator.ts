@@ -270,11 +270,11 @@ export class ClassGenerator extends Generator {
 		this.popIndent();
 		this.write(`}`);
 
-		if (CREATABLE_BLACKLIST[name]) {
+		if (hasTag(rbxClass, "Service") || CREATABLE_BLACKLIST[name]) {
 			this.write(`type ${name} = ${implName} & Base<${implName}> & AnyIndex;`);
 		} else {
 			let prefixStr = "";
-			if (hasTag(rbxClass, "NotCreatable") || hasTag(rbxClass, "Service")) {
+			if (hasTag(rbxClass, "NotCreatable")) {
 				prefixStr = "abstract ";
 			}
 			this.write(`interface ${name} extends ${implName}, Base<${implName}>, AnyIndex {}`);
