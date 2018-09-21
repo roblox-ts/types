@@ -270,10 +270,7 @@ export class ClassGenerator extends Generator {
 		this.write(`}`);
 
 		let prefixStr = "";
-		if (
-			rbxClass.Name !== "Instance" &&
-			(hasTag(rbxClass, "NotCreatable") || hasTag(rbxClass, "Service") || CREATABLE_BLACKLIST[name])
-		) {
+		if (hasTag(rbxClass, "NotCreatable") || hasTag(rbxClass, "Service") || CREATABLE_BLACKLIST[name]) {
 			prefixStr = "abstract ";
 		}
 		this.write(`interface ${name} extends ${implName}, Base<${implName}>, AnyIndex {}`);
