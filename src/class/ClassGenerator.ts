@@ -9,7 +9,8 @@ const BAD_NAME_CHARS = [" ", "/"];
 
 const CREATABLE_BLACKLIST: { [index: string]: true | undefined } = {
 	UserSettings: true,
-	DebugSettings: true
+	DebugSettings: true,
+	Studio: true
 };
 
 const MEMBER_BLACKLIST: {

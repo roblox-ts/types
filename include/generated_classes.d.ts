@@ -6751,10 +6751,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Use Accurate Play Solo"]: boolean;
 	["Warning Color"]: Color3;
 }
-interface Studio extends Rbx_Studio, Base<Rbx_Studio>, AnyIndex {}
-declare abstract class Studio {
-	constructor(parent?: Instance);
-}
+type Studio = Rbx_Studio & Base<Rbx_Studio> & AnyIndex;
 interface Rbx_Instance {
 	IsA(className: "Studio"): this is Studio;
 	FindFirstAncestorOfClass(className: "Studio"): Studio | undefined;
