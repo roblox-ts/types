@@ -32,7 +32,7 @@ interface Rbx_Instance {
 	DescendantRemoving: RBXScriptSignal<(descendant: Instance) => void>;
 }
 interface Instance extends Rbx_Instance, Base<Rbx_Instance>, AnyIndex {}
-declare class Instance {
+declare abstract class Instance {
 	constructor(parent?: Instance);
 }
 interface Rbx_Instance {
