@@ -475,26 +475,6 @@ interface PromiseConstructor {
 	new <T>(executor: (resolve: (value?: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void): Promise<
 		T
 	>;
-
-	/**
-	 * Creates a new rejected promise for the provided reason.
-	 * @param reason The reason the promise was rejected.
-	 * @returns A new rejected Promise.
-	 */
-	reject<T = never>(reason?: any): Promise<T>;
-
-	/**
-	 * Creates a new resolved promise for the provided value.
-	 * @param value A promise.
-	 * @returns A promise whose internal state matches the provided promise.
-	 */
-	resolve<T>(value: T | PromiseLike<T>): Promise<T>;
-
-	/**
-	 * Creates a new resolved promise .
-	 * @returns A resolved promise.
-	 */
-	resolve(): Promise<void>;
 }
 
 declare var Promise: PromiseConstructor;
