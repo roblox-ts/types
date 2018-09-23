@@ -348,12 +348,10 @@ interface Map<K, V> {
 	get(key: K): V | undefined;
 	has(key: K): boolean;
 	set(key: K, value: V): this;
-	readonly size: number;
-
-	[Symbol.iterator](): IterableIterator<[K, V]>;
-	entries(): IterableIterator<[K, V]>;
-	keys(): IterableIterator<K>;
-	values(): IterableIterator<V>;
+	entries(): Array<[K, V]>;
+	keys(): Array<K>;
+	values(): Array<V>;
+	size(): number;
 }
 
 interface MapConstructor {
@@ -366,7 +364,10 @@ interface ReadonlyMap<K, V> {
 	forEach(callbackfn: (value: V, key: K, map: ReadonlyMap<K, V>) => void, thisArg?: any): void;
 	get(key: K): V | undefined;
 	has(key: K): boolean;
-	readonly size: number;
+	entries(): Array<[K, V]>;
+	keys(): Array<K>;
+	values(): Array<V>;
+	size(): number;
 }
 
 interface WeakMap<K extends object, V> {
@@ -388,12 +389,10 @@ interface Set<T> {
 	delete(value: T): boolean;
 	forEach(callbackfn: (value: T, value2: T, set: Set<T>) => void, thisArg?: any): void;
 	has(value: T): boolean;
-	readonly size: number;
-
-	[Symbol.iterator](): IterableIterator<T>;
-	entries(): IterableIterator<[T, T]>;
-	keys(): IterableIterator<T>;
-	values(): IterableIterator<T>;
+	entries(): Array<[T, T]>;
+	keys(): Array<T>;
+	values(): Array<T>;
+	size(): number;
 }
 
 interface SetConstructor {
@@ -405,12 +404,10 @@ declare const Set: SetConstructor;
 interface ReadonlySet<T> {
 	forEach(callbackfn: (value: T, value2: T, set: ReadonlySet<T>) => void, thisArg?: any): void;
 	has(value: T): boolean;
-	readonly size: number;
-
-	[Symbol.iterator](): IterableIterator<T>;
-	entries(): IterableIterator<[T, T]>;
-	keys(): IterableIterator<T>;
-	values(): IterableIterator<T>;
+	entries(): Array<[T, T]>;
+	keys(): Array<T>;
+	values(): Array<T>;
+	size(): number;
 }
 
 interface WeakSet<T extends object> {
