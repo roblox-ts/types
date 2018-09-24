@@ -13,6 +13,7 @@ interface Rbx_Instance {
 }
 
 interface Rbx_AnimationController extends Rbx_Instance {
+	GetPlayingAnimationTracks(): Array<AnimationTrack>;
 	LoadAnimation(animation: Animation): AnimationTrack;
 	AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 }
@@ -29,13 +30,6 @@ interface Rbx_AssetService extends Rbx_Instance {
 		description?: string
 	): number;
 	GetGamePlacesAsync(): StandardPages;
-}
-
-interface Rbx_AnimationController extends Rbx_Instance {
-	GetPlayingAnimationTracks(): Array<AnimationTrack>;
-}
-
-interface Rbx_AssetService extends Rbx_Instance {
 	GetAssetIdsForPackage(packageAssetId: number): Array<number>;
 }
 
