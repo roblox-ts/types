@@ -4,14 +4,6 @@
 
 // GENERATED API OVERRIDES
 
-interface Rbx_Instance {
-	Clone(): Instance;
-	GetDescendants(): Array<Instance>;
-	FindFirstAncestor<T = Instance>(name: string): T | undefined;
-	FindFirstChild<T = Instance>(name: string, recursive?: boolean): T | undefined;
-	WaitForChild<T = Instance>(childName: string, timeOut?: number): T | undefined;
-}
-
 interface Rbx_AnimationController extends Rbx_Instance {
 	GetPlayingAnimationTracks(): Array<AnimationTrack>;
 	LoadAnimation(animation: Animation): AnimationTrack;
@@ -31,16 +23,6 @@ interface Rbx_AssetService extends Rbx_Instance {
 	): number;
 	GetGamePlacesAsync(): StandardPages;
 	GetAssetIdsForPackage(packageAssetId: number): Array<number>;
-}
-
-interface Rbx_BindableEvent extends Rbx_Instance {
-	Fire(...arguments: Array<unknown>): void;
-	Event: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
-}
-
-interface Rbx_BindableFunction extends Rbx_Instance {
-	Invoke(...arguments: Array<unknown>): Array<unknown>;
-	OnInvoke: (...arguments: Array<unknown>) => void;
 }
 
 interface Rbx_BasePart extends Rbx_Instance {
@@ -63,8 +45,14 @@ interface Rbx_BillboardGui extends Rbx_LayerCollector {
 	PlayerToHideFrom: Player | undefined;
 }
 
-interface Rbx_SurfaceGui extends Rbx_LayerCollector {
-	Adornee: BasePart | undefined;
+interface Rbx_BindableEvent extends Rbx_Instance {
+	Fire(...arguments: Array<unknown>): void;
+	Event: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
+}
+
+interface Rbx_BindableFunction extends Rbx_Instance {
+	Invoke(...arguments: Array<unknown>): Array<unknown>;
+	OnInvoke: (...arguments: Array<unknown>) => void;
 }
 
 interface Rbx_Camera extends Rbx_Instance {
@@ -72,6 +60,20 @@ interface Rbx_Camera extends Rbx_Instance {
 	GetPartsObscuringTarget(castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
 	WorldToScreenPoint(worldPoint: Vector3): [Vector3, boolean];
 	WorldToViewportPoint(worldPoint: Vector3): [Vector3, boolean];
+}
+
+interface Rbx_Chat extends Rbx_Instance {
+	Chat(partOrCharacter: BasePart | Model, message: string, color?: Enum.ChatColor): void;
+	FilterStringAsync(stringToFilter: string, playerFrom: Player, playerTo: Player): string;
+	FilterStringForBroadcast(stringToFilter: string, playerFrom: Player): string;
+	Chatted: RBXScriptSignal<(part: BasePart, message: string, color: Enum.ChatColor) => void>;
+}
+
+interface Rbx_ClickDetector extends Rbx_Instance {
+	MouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
+	MouseHoverEnter: RBXScriptSignal<(playerWhoHovered: Player) => void>;
+	MouseHoverLeave: RBXScriptSignal<(playerWhoHovered: Player) => void>;
+	RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
 }
 
 interface Rbx_CollectionService extends Rbx_Instance {
@@ -101,148 +103,6 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 	): void;
 	LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
 	LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
-}
-
-interface Rbx_Chat extends Rbx_Instance {
-	Chat(partOrCharacter: BasePart | Model, message: string, color?: Enum.ChatColor): void;
-	FilterStringAsync(stringToFilter: string, playerFrom: Player, playerTo: Player): string;
-	FilterStringForBroadcast(stringToFilter: string, playerFrom: Player): string;
-	Chatted: RBXScriptSignal<(part: BasePart, message: string, color: Enum.ChatColor) => void>;
-}
-
-interface Rbx_ClickDetector extends Rbx_Instance {
-	MouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
-	MouseHoverEnter: RBXScriptSignal<(playerWhoHovered: Player) => void>;
-	MouseHoverLeave: RBXScriptSignal<(playerWhoHovered: Player) => void>;
-	RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
-}
-
-interface Rbx_InsertService extends Rbx_Instance {
-	LoadAsset(assetId: number): Model;
-	LoadAssetVersion(assetVersionId: number): Model;
-}
-
-interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
-	RegisterActiveKeyframeSequence(keyframeSequence: KeyframeSequence): string;
-	RegisterKeyframeSequence(keyframeSequence: KeyframeSequence): string;
-	GetAnimations(userId: number): InventoryPages;
-	GetKeyframeSequenceAsync(assetId: string): KeyframeSequence;
-}
-
-interface Rbx_PathfindingService extends Rbx_Instance {
-	FindPathAsync(start: Vector3, finish: Vector3): Path;
-}
-
-interface CharacterAppearanceInfo {
-	bodyColors: {
-		leftArmColorId: number;
-		torsoColorId: number;
-		rightArmColorId: number;
-		headColorId: number;
-		leftLegColorId: number;
-		rightLegColorId: number;
-	};
-	assets: Array<{
-		id: number;
-		assetType: {
-			name: string;
-			id: number;
-		};
-		name: string;
-	}>;
-	defaultPantsApplied: boolean;
-	defaultShirtApplied: boolean;
-	playerAvatarType: string;
-	scales: {
-		bodyType: number;
-		head: number;
-		height: number;
-		proportion: number;
-		depth: number;
-		width: number;
-	};
-}
-
-interface Rbx_Players extends Rbx_Instance {
-	LocalPlayer: Player | undefined;
-	GetPlayerFromCharacter(character: Model): Player | undefined;
-	GetCharacterAppearanceAsync(userId: number): Model | undefined;
-	GetCharacterAppearanceInfoAsync(userId: number): CharacterAppearanceInfo;
-	GetPlayerByUserId(userId: number): Player | undefined;
-	GetPlayers(): Array<Player>;
-	GetFriendsAsync(userId: number): FriendPages;
-	GetUserThumbnailAsync(
-		userId: number,
-		thumbnailType: Enum.ThumbnailType,
-		thumbnailSize: Enum.ThumbnailSize
-	): [string, boolean];
-	PlayerAdded: RBXScriptSignal<(player: Player) => void>;
-	PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
-}
-
-interface Rbx_Player extends Rbx_Instance {
-	Character: Model | undefined;
-	ReplicationFocus: BasePart | undefined;
-	GetMouse(): PlayerMouse;
-	CharacterAdded: RBXScriptSignal<(character: Model) => void>;
-	CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
-	CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
-}
-
-interface Rbx_Terrain extends Rbx_BasePart {
-	ReadVoxels(region: Region3, resolution: number): [Enum.Material[][][], number[][][]];
-	WriteVoxels(region: Region3, resolution: number, materials: Enum.Material[][][], occupancy: number[][][]): void;
-}
-
-interface Rbx_RemoteEvent extends Rbx_Instance {
-	FireAllClients(...arguments: Array<unknown>): void;
-	FireClient(player: Player, ...arguments: Array<unknown>): void;
-	FireServer(...arguments: Array<unknown>): void;
-	OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
-	OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
-}
-
-interface Rbx_RemoteFunction extends Rbx_Instance {
-	InvokeClient(player: Instance, ...arguments: Array<any>): Array<any>;
-	InvokeServer(...arguments: Array<any>): Array<any>;
-	OnClientInvoke: Callback;
-	OnServerInvoke: Callback;
-}
-
-interface Rbx_Workspace extends Rbx_Model {
-	Terrain: Terrain;
-	FindPartOnRay(
-		ray: Ray,
-		ignoreDescendantsInstance?: Instance,
-		terrainCellsAreCubes?: boolean,
-		ignoreWater?: boolean
-	): [BasePart, Vector3, Vector3, Enum.Material];
-	FindPartOnRayWithIgnoreList(
-		ray: Ray,
-		ignoreDescendantsTable: Array<Instance>,
-		terrainCellsAreCubes?: boolean,
-		ignoreWater?: boolean
-	): [BasePart, Vector3, Vector3, Enum.Material];
-	FindPartOnRayWithWhitelist(
-		ray: Ray,
-		whitelistDescendantsTable: Array<Instance>,
-		ignoreWater?: boolean
-	): [BasePart, Vector3, Vector3, Enum.Material];
-}
-
-interface Rbx_Humanoid extends Rbx_Instance {
-	GetPlayingAnimationTracks(): Array<AnimationTrack>;
-	LoadAnimation(animation: Instance): AnimationTrack;
-	AddAccessory(accessory: Accessory): void;
-	EquipTool(tool: BasePart): void;
-	GetAccessories(): Array<Accessory>;
-	GetLimb(part: BasePart): Enum.Limb;
-	GetBodyPartR15(part: BasePart): Enum.BodyPartR15;
-	MoveTo(location: Vector3, part?: BasePart): void;
-	ReplaceBodyPartR15(bodyPart: Enum.BodyPartR15, part: BasePart): boolean;
-	AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
-	Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
-	Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
 }
 
 interface GroupInfo {
@@ -341,9 +201,149 @@ interface Rbx_HttpService extends Rbx_Instance {
 	): string;
 }
 
+interface Rbx_Humanoid extends Rbx_Instance {
+	GetPlayingAnimationTracks(): Array<AnimationTrack>;
+	LoadAnimation(animation: Instance): AnimationTrack;
+	AddAccessory(accessory: Accessory): void;
+	EquipTool(tool: BasePart): void;
+	GetAccessories(): Array<Accessory>;
+	GetLimb(part: BasePart): Enum.Limb;
+	GetBodyPartR15(part: BasePart): Enum.BodyPartR15;
+	MoveTo(location: Vector3, part?: BasePart): void;
+	ReplaceBodyPartR15(bodyPart: Enum.BodyPartR15, part: BasePart): boolean;
+	AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
+	Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
+	Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
+}
+
+interface Rbx_InsertService extends Rbx_Instance {
+	LoadAsset(assetId: number): Model;
+	LoadAssetVersion(assetVersionId: number): Model;
+}
+
+interface Rbx_Instance {
+	Clone(): Instance;
+	GetDescendants(): Array<Instance>;
+	FindFirstAncestor<T = Instance>(name: string): T | undefined;
+	FindFirstChild<T = Instance>(name: string, recursive?: boolean): T | undefined;
+	WaitForChild<T = Instance>(childName: string, timeOut?: number): T | undefined;
+}
+
+interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
+	RegisterActiveKeyframeSequence(keyframeSequence: KeyframeSequence): string;
+	RegisterKeyframeSequence(keyframeSequence: KeyframeSequence): string;
+	GetAnimations(userId: number): InventoryPages;
+	GetKeyframeSequenceAsync(assetId: string): KeyframeSequence;
+}
+
+interface Rbx_PathfindingService extends Rbx_Instance {
+	FindPathAsync(start: Vector3, finish: Vector3): Path;
+}
+
+interface Rbx_Player extends Rbx_Instance {
+	Character: Model | undefined;
+	ReplicationFocus: BasePart | undefined;
+	GetMouse(): PlayerMouse;
+	CharacterAdded: RBXScriptSignal<(character: Model) => void>;
+	CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
+	CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
+}
+
+interface CharacterAppearanceInfo {
+	bodyColors: {
+		leftArmColorId: number;
+		torsoColorId: number;
+		rightArmColorId: number;
+		headColorId: number;
+		leftLegColorId: number;
+		rightLegColorId: number;
+	};
+	assets: Array<{
+		id: number;
+		assetType: {
+			name: string;
+			id: number;
+		};
+		name: string;
+	}>;
+	defaultPantsApplied: boolean;
+	defaultShirtApplied: boolean;
+	playerAvatarType: string;
+	scales: {
+		bodyType: number;
+		head: number;
+		height: number;
+		proportion: number;
+		depth: number;
+		width: number;
+	};
+}
+
+interface Rbx_Players extends Rbx_Instance {
+	LocalPlayer: Player | undefined;
+	GetPlayerFromCharacter(character: Model): Player | undefined;
+	GetCharacterAppearanceAsync(userId: number): Model | undefined;
+	GetCharacterAppearanceInfoAsync(userId: number): CharacterAppearanceInfo;
+	GetPlayerByUserId(userId: number): Player | undefined;
+	GetPlayers(): Array<Player>;
+	GetFriendsAsync(userId: number): FriendPages;
+	GetUserThumbnailAsync(
+		userId: number,
+		thumbnailType: Enum.ThumbnailType,
+		thumbnailSize: Enum.ThumbnailSize
+	): [string, boolean];
+	PlayerAdded: RBXScriptSignal<(player: Player) => void>;
+	PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
+}
+
+interface Rbx_RemoteEvent extends Rbx_Instance {
+	FireAllClients(...arguments: Array<unknown>): void;
+	FireClient(player: Player, ...arguments: Array<unknown>): void;
+	FireServer(...arguments: Array<unknown>): void;
+	OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
+	OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
+}
+
+interface Rbx_RemoteFunction extends Rbx_Instance {
+	InvokeClient(player: Instance, ...arguments: Array<any>): Array<any>;
+	InvokeServer(...arguments: Array<any>): Array<any>;
+	OnClientInvoke: Callback;
+	OnServerInvoke: Callback;
+}
+
+interface Rbx_SurfaceGui extends Rbx_LayerCollector {
+	Adornee: BasePart | undefined;
+}
+
+interface Rbx_Terrain extends Rbx_BasePart {
+	ReadVoxels(region: Region3, resolution: number): [Enum.Material[][][], number[][][]];
+	WriteVoxels(region: Region3, resolution: number, materials: Enum.Material[][][], occupancy: number[][][]): void;
+}
+
 type Tweenable = number | boolean | CFrame | Rect | Color3 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3;
 type FilterMembers<T, U> = Pick<T, { [K in keyof T]: T[K] extends U ? K : never }[keyof T]>;
 
 interface Rbx_TweenService {
 	Create<T>(instance: T, tweenInfo: TweenInfo, propertyTable: Partial<FilterMembers<BaseType<T>, Tweenable>>): Tween;
+}
+
+interface Rbx_Workspace extends Rbx_Model {
+	Terrain: Terrain;
+	FindPartOnRay(
+		ray: Ray,
+		ignoreDescendantsInstance?: Instance,
+		terrainCellsAreCubes?: boolean,
+		ignoreWater?: boolean
+	): [BasePart, Vector3, Vector3, Enum.Material];
+	FindPartOnRayWithIgnoreList(
+		ray: Ray,
+		ignoreDescendantsTable: Array<Instance>,
+		terrainCellsAreCubes?: boolean,
+		ignoreWater?: boolean
+	): [BasePart, Vector3, Vector3, Enum.Material];
+	FindPartOnRayWithWhitelist(
+		ray: Ray,
+		whitelistDescendantsTable: Array<Instance>,
+		ignoreWater?: boolean
+	): [BasePart, Vector3, Vector3, Enum.Material];
 }
