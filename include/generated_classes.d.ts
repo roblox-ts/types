@@ -156,8 +156,6 @@ interface Rbx_Instance {
 
 // AnimationController
 interface Rbx_AnimationController extends Rbx_Instance {
-	LoadAnimation(animation: Instance): Instance | undefined;
-	AnimationPlayed: RBXScriptSignal<(animationTrack: Instance) => void>;
 }
 interface AnimationController extends Rbx_AnimationController, Base<Rbx_AnimationController>, AnyIndex {}
 declare class AnimationController {
@@ -205,7 +203,6 @@ interface Rbx_Instance {
 
 // Animator
 interface Rbx_Animator extends Rbx_Instance {
-	LoadAnimation(animation: Instance): Instance | undefined;
 }
 interface Animator extends Rbx_Animator, Base<Rbx_Animator>, AnyIndex {}
 declare class Animator {
@@ -222,8 +219,6 @@ interface Rbx_Instance {
 // AssetService
 interface Rbx_AssetService extends Rbx_Instance {
 	CreatePlaceAsync(placeName: string, templatePlaceID: number, description?: string): number;
-	CreatePlaceInPlayerInventoryAsync(player: Instance, placeName: string, templatePlaceID: number, description?: string): number;
-	GetGamePlacesAsync(): Instance | undefined;
 	SavePlaceAsync(): void;
 }
 type AssetService = Rbx_AssetService & Base<Rbx_AssetService> & AnyIndex;
@@ -647,7 +642,6 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Camera
 interface Rbx_Camera extends Rbx_Instance {
 	CFrame: CFrame;
-	CameraSubject: Instance | undefined;
 	CameraType: Enum.CameraType;
 	FieldOfView: number;
 	Focus: CFrame;
@@ -839,14 +833,10 @@ interface Rbx_Instance {
 // Chat
 interface Rbx_Chat extends Rbx_Instance {
 	readonly LoadDefaultChat: boolean;
-	Chat(partOrCharacter: Instance, message: string, color?: Enum.ChatColor): void;
 	InvokeChatCallback(callbackType: Enum.ChatCallbackType, callbackArguments: Array<any>): Array<any>;
 	RegisterChatCallback(callbackType: Enum.ChatCallbackType, callbackFunction: Function): void;
 	CanUserChatAsync(userId: number): boolean;
 	CanUsersChatAsync(userIdFrom: number, userIdTo: number): boolean;
-	FilterStringAsync(stringToFilter: string, playerFrom: Instance, playerTo: Instance): string;
-	FilterStringForBroadcast(stringToFilter: string, playerFrom: Instance): string;
-	Chatted: RBXScriptSignal<(part: Instance, message: string, color: Enum.ChatColor) => void>;
 }
 type Chat = Rbx_Chat & Base<Rbx_Chat> & AnyIndex;
 interface Rbx_Instance {
@@ -864,10 +854,6 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_ClickDetector extends Rbx_Instance {
 	CursorIcon: string;
 	MaxActivationDistance: number;
-	MouseClick: RBXScriptSignal<(playerWhoClicked: Instance) => void>;
-	MouseHoverEnter: RBXScriptSignal<(playerWhoHovered: Instance) => void>;
-	MouseHoverLeave: RBXScriptSignal<(playerWhoHovered: Instance) => void>;
-	RightMouseClick: RBXScriptSignal<(playerWhoClicked: Instance) => void>;
 }
 interface ClickDetector extends Rbx_ClickDetector, Base<Rbx_ClickDetector>, AnyIndex {}
 declare class ClickDetector {
@@ -1263,8 +1249,6 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 	UnbindActivate(userInputTypeForActivation: Enum.UserInputType, keyCodeForActivation?: Enum.KeyCode): void;
 	UnbindAllActions(): void;
 	GetButton(actionName: string): Instance | undefined;
-	LocalToolEquipped: RBXScriptSignal<(toolEquipped: Instance) => void>;
-	LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Instance) => void>;
 }
 type ContextActionService = Rbx_ContextActionService & Base<Rbx_ContextActionService> & AnyIndex;
 interface Rbx_Instance {
@@ -2470,14 +2454,12 @@ interface Rbx_Instance {
 // BillboardGui
 interface Rbx_BillboardGui extends Rbx_LayerCollector {
 	Active: boolean;
-	Adornee: Instance | undefined;
 	AlwaysOnTop: boolean;
 	ClipsDescendants: boolean;
 	ExtentsOffset: Vector3;
 	ExtentsOffsetWorldSpace: Vector3;
 	LightInfluence: number;
 	MaxDistance: number;
-	PlayerToHideFrom: Instance | undefined;
 	Size: UDim2;
 	SizeOffset: Vector2;
 	StudsOffset: Vector3;
@@ -2578,7 +2560,6 @@ interface Rbx_Instance {
 // SurfaceGui
 interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 	Active: boolean;
-	Adornee: Instance | undefined;
 	AlwaysOnTop: boolean;
 	CanvasSize: Vector2;
 	ClipsDescendants: boolean;
@@ -3337,8 +3318,6 @@ interface Rbx_InsertService extends Rbx_Instance {
 	GetFreeModels(searchText: string, pageNum: number): Array<any>;
 	GetLatestAssetVersionAsync(assetId: number): number;
 	GetUserSets(userId: number): Array<any>;
-	LoadAsset(assetId: number): Instance | undefined;
-	LoadAssetVersion(assetVersionId: number): Instance | undefined;
 }
 type InsertService = Rbx_InsertService & Base<Rbx_InsertService> & AnyIndex;
 interface Rbx_Instance {
@@ -3671,10 +3650,6 @@ interface Rbx_Instance {
 
 // KeyframeSequenceProvider
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
-	RegisterActiveKeyframeSequence(keyframeSequence: Instance): string;
-	RegisterKeyframeSequence(keyframeSequence: Instance): string;
-	GetAnimations(userId: number): Instance | undefined;
-	GetKeyframeSequenceAsync(assetId: string): Instance | undefined;
 }
 type KeyframeSequenceProvider = Rbx_KeyframeSequenceProvider & Base<Rbx_KeyframeSequenceProvider> & AnyIndex;
 interface Rbx_Instance {
@@ -4928,7 +4903,6 @@ interface Rbx_Instance {
 
 // PathfindingService
 interface Rbx_PathfindingService extends Rbx_Instance {
-	FindPathAsync(start: Vector3, finish: Vector3): Instance | undefined;
 }
 type PathfindingService = Rbx_PathfindingService & Base<Rbx_PathfindingService> & AnyIndex;
 interface Rbx_Instance {
@@ -5041,7 +5015,6 @@ interface Rbx_Player extends Rbx_Instance {
 	readonly MembershipType: Enum.MembershipType;
 	NameDisplayDistance: number;
 	Neutral: boolean;
-	ReplicationFocus: Instance | undefined;
 	RespawnLocation: SpawnLocation;
 	Team: Team;
 	TeamColor: BrickColor;
@@ -5049,7 +5022,6 @@ interface Rbx_Player extends Rbx_Instance {
 	ClearCharacterAppearance(): void;
 	DistanceFromCharacter(point: Vector3): number;
 	GetJoinData(): object;
-	GetMouse(): Instance | undefined;
 	HasAppearanceLoaded(): boolean;
 	Kick(message?: string): void;
 	LoadCharacterAppearance(assetInstance: Instance): void;
@@ -5104,7 +5076,6 @@ interface Rbx_Players extends Rbx_Instance {
 	readonly BubbleChat: boolean;
 	CharacterAutoLoads: boolean;
 	readonly ClassicChat: boolean;
-	readonly LocalPlayer: Instance | undefined;
 	readonly MaxPlayers: number;
 	readonly PreferredPlayers: number;
 	GetNameFromUserIdAsync(userId: number): string;

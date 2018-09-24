@@ -12,6 +12,133 @@ interface Rbx_Instance {
 	WaitForChild<T = Instance>(childName: string, timeOut?: number): T | undefined;
 }
 
+interface Rbx_AnimationController extends Rbx_Instance {
+	LoadAnimation(animation: Animation): AnimationTrack;
+	AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
+}
+
+interface Rbx_Animator extends Rbx_Instance {
+	LoadAnimation(animation: Animation): AnimationTrack;
+}
+
+interface Rbx_AssetService extends Rbx_Instance {
+	CreatePlaceInPlayerInventoryAsync(
+		player: Player,
+		placeName: string,
+		templatePlaceID: number,
+		description?: string
+	): number;
+	GetGamePlacesAsync(): StandardPages;
+}
+
+interface Rbx_AnimationController extends Rbx_Instance {
+	GetPlayingAnimationTracks(): Array<AnimationTrack>;
+}
+
+interface Rbx_AssetService extends Rbx_Instance {
+	GetAssetIdsForPackage(packageAssetId: number): Array<number>;
+}
+
+interface Rbx_BindableEvent extends Rbx_Instance {
+	Fire(...arguments: Array<unknown>): void;
+	Event: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
+}
+
+interface Rbx_BindableFunction extends Rbx_Instance {
+	Invoke(...arguments: Array<unknown>): Array<unknown>;
+	OnInvoke: (...arguments: Array<unknown>) => void;
+}
+
+interface Rbx_BasePart extends Rbx_Instance {
+	CanCollideWith(part: BasePart): boolean;
+	CanSetNetworkOwnership(): [true] | [false, string];
+	GetConnectedParts(recursive?: boolean): Array<BasePart>;
+	GetNetworkOwner(): Player | undefined;
+	GetRootPart(): BasePart;
+	GetJoints(): Array<Constraint | JointInstance>;
+	GetTouchingParts(): Array<BasePart>;
+	SetNetworkOwner(playerInstance?: Player): void;
+	SubtractAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
+	UnionAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
+	TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
+	Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
+}
+
+interface Rbx_BillboardGui extends Rbx_LayerCollector {
+	Adornee: BasePart | Attachment | undefined;
+	PlayerToHideFrom: Player | undefined;
+}
+
+interface Rbx_SurfaceGui extends Rbx_LayerCollector {
+	Adornee: BasePart | undefined;
+}
+
+interface Rbx_Camera extends Rbx_Instance {
+	CameraSubject: Humanoid | BasePart | undefined;
+	GetPartsObscuringTarget(castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
+	WorldToScreenPoint(worldPoint: Vector3): [Vector3, boolean];
+	WorldToViewportPoint(worldPoint: Vector3): [Vector3, boolean];
+}
+
+interface Rbx_CollectionService extends Rbx_Instance {
+	GetInstanceAddedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
+	GetInstanceRemovedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
+	GetTagged<T = Instance>(tag: string): Array<T>;
+	GetTags(instance: Instance): Array<string>;
+}
+
+interface Rbx_ContentProvider extends Rbx_Instance {
+	PreloadAsync(contentIdList: Array<string>): void;
+}
+
+interface Rbx_ContextActionService extends Rbx_Instance {
+	BindAction(
+		actionName: string,
+		functionToBind: Function,
+		createTouchButton: boolean,
+		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
+	): void;
+	BindActionAtPriority(
+		actionName: string,
+		functionToBind: Function,
+		createTouchButton: boolean,
+		priorityLevel: number,
+		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
+	): void;
+	LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
+	LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
+}
+
+interface Rbx_Chat extends Rbx_Instance {
+	Chat(partOrCharacter: BasePart | Model, message: string, color?: Enum.ChatColor): void;
+	FilterStringAsync(stringToFilter: string, playerFrom: Player, playerTo: Player): string;
+	FilterStringForBroadcast(stringToFilter: string, playerFrom: Player): string;
+	Chatted: RBXScriptSignal<(part: BasePart, message: string, color: Enum.ChatColor) => void>;
+}
+
+interface Rbx_ClickDetector extends Rbx_Instance {
+	MouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
+	MouseHoverEnter: RBXScriptSignal<(playerWhoHovered: Player) => void>;
+	MouseHoverLeave: RBXScriptSignal<(playerWhoHovered: Player) => void>;
+	RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
+}
+
+interface Rbx_InsertService extends Rbx_Instance {
+	LoadAsset(assetId: number): Model;
+	LoadAssetVersion(assetVersionId: number): Model;
+}
+
+interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
+	RegisterActiveKeyframeSequence(keyframeSequence: KeyframeSequence): string;
+	RegisterKeyframeSequence(keyframeSequence: KeyframeSequence): string;
+	GetAnimations(userId: number): InventoryPages;
+	GetKeyframeSequenceAsync(assetId: string): KeyframeSequence;
+}
+
+interface Rbx_PathfindingService extends Rbx_Instance {
+	FindPathAsync(start: Vector3, finish: Vector3): Path;
+}
+
 interface CharacterAppearanceInfo {
 	bodyColors: {
 		leftArmColorId: number;
@@ -42,22 +169,8 @@ interface CharacterAppearanceInfo {
 	};
 }
 
-interface Rbx_BasePart extends Rbx_Instance {
-	CanCollideWith(part: BasePart): boolean;
-	CanSetNetworkOwnership(): [true] | [false, string];
-	GetConnectedParts(recursive?: boolean): Array<BasePart>;
-	GetNetworkOwner(): Player | undefined;
-	GetRootPart(): BasePart;
-	GetJoints(): Array<Constraint | JointInstance>;
-	GetTouchingParts(): Array<BasePart>;
-	SetNetworkOwner(playerInstance?: Player): void;
-	SubtractAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
-	UnionAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
-	TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
-	Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
-}
-
 interface Rbx_Players extends Rbx_Instance {
+	LocalPlayer: Player | undefined;
 	GetPlayerFromCharacter(character: Model): Player | undefined;
 	GetCharacterAppearanceAsync(userId: number): Model | undefined;
 	GetCharacterAppearanceInfoAsync(userId: number): CharacterAppearanceInfo;
@@ -75,6 +188,8 @@ interface Rbx_Players extends Rbx_Instance {
 
 interface Rbx_Player extends Rbx_Instance {
 	Character: Model | undefined;
+	ReplicationFocus: BasePart | undefined;
+	GetMouse(): PlayerMouse;
 	CharacterAdded: RBXScriptSignal<(character: Model) => void>;
 	CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
 	CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
@@ -140,58 +255,7 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
 }
 
-interface Rbx_AnimationController extends Rbx_Instance {
-	GetPlayingAnimationTracks(): Array<AnimationTrack>;
-}
-
-interface Rbx_AssetService extends Rbx_Instance {
-	GetAssetIdsForPackage(packageAssetId: number): Array<number>;
-}
-
-interface Rbx_BindableEvent extends Rbx_Instance {
-	Fire(...arguments: Array<unknown>): void;
-	Event: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
-}
-
-interface Rbx_BindableFunction extends Rbx_Instance {
-	Invoke(...arguments: Array<unknown>): Array<unknown>;
-	OnInvoke: (...arguments: Array<unknown>) => void;
-}
-
-interface Rbx_Camera extends Rbx_Instance {
-	GetPartsObscuringTarget(castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
-	WorldToScreenPoint(worldPoint: Vector3): [Vector3, boolean];
-	WorldToViewportPoint(worldPoint: Vector3): [Vector3, boolean];
-}
-
-interface Rbx_CollectionService extends Rbx_Instance {
-	GetInstanceAddedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
-	GetInstanceRemovedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
-	GetTagged<T = Instance>(tag: string): Array<T>;
-	GetTags(instance: Instance): Array<string>;
-}
-
-interface Rbx_ContentProvider extends Rbx_Instance {
-	PreloadAsync(contentIdList: Array<string>): void;
-}
-
-interface Rbx_ContextActionService extends Rbx_Instance {
-	BindAction(
-		actionName: string,
-		functionToBind: Function,
-		createTouchButton: boolean,
-		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
-	): void;
-	BindActionAtPriority(
-		actionName: string,
-		functionToBind: Function,
-		createTouchButton: boolean,
-		priorityLevel: number,
-		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
-	): void;
-}
-
-interface GetGroupInfoAsyncResult {
+interface GroupInfo {
 	Name: string;
 	Id: number;
 	Owner: {
@@ -220,7 +284,7 @@ interface GetGroupsAsyncResult {
 interface Rbx_GroupService extends Rbx_Instance {
 	GetAlliesAsync(groupId: number): StandardPages;
 	GetEnemiesAsync(groupId: number): StandardPages;
-	GetGroupInfoAsync(groupId: number): GetGroupInfoAsyncResult;
+	GetGroupInfoAsync(groupId: number): GroupInfo;
 	GetGroupsAsync(userId: number): Array<GetGroupsAsyncResult>;
 }
 
