@@ -209,10 +209,6 @@ interface Rbx_RemoteFunction extends Rbx_Instance {
 	OnServerInvoke: Callback;
 }
 
-interface Rbx_Player extends Rbx_Instance {
-	GetMouse(): PlayerMouse;
-}
-
 interface Rbx_Workspace extends Rbx_Model {
 	Terrain: Terrain;
 	FindPartOnRay(
