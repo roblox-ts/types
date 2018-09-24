@@ -165,6 +165,8 @@ interface Rbx_Camera extends Rbx_Instance {
 }
 
 interface Rbx_CollectionService extends Rbx_Instance {
+	GetInstanceAddedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
+	GetInstanceRemovedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetTagged<T = Instance>(tag: string): Array<T>;
 	GetTags(instance: Instance): Array<string>;
 }
