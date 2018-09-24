@@ -21,7 +21,7 @@ declare class RBXScriptConnection {
 	Connected: boolean;
 }
 
-declare class RBXScriptSignal<T extends (...args: any[]) => void = () => void> {
+declare class RBXScriptSignal<T = Function> {
 	Connect(callback: T): RBXScriptConnection;
 	Wait(): FunctionArguments<T>;
 }
