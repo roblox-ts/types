@@ -1,3 +1,4 @@
+/// <reference no-default-lib="true"/>
 /// <reference path="roblox.d.ts" />
 /// <reference path="generated_enums.d.ts" />
 /// <reference path="generated_classes.d.ts" />

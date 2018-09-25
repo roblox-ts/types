@@ -1,5 +1,6 @@
 // THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!
 
+/// <reference no-default-lib="true"/>
 /// <reference path="roblox.d.ts" />
 /// <reference path="manual.d.ts" />
 /// <reference path="generated_enums.d.ts" />

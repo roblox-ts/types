@@ -1,3 +1,4 @@
+/// <reference no-default-lib="true"/>
 /// <reference path="es.d.ts" />
 /// <reference path="lua.d.ts" />
 /// <reference path="manual.d.ts" />

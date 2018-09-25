@@ -4,6 +4,7 @@ export class EnumGenerator extends Generator {
 	public async generate(rbxEnums: Array<ApiEnum>) {
 		this.write("// THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!");
 		this.write("");
+		this.write('/// <reference no-default-lib="true"/>');
 		this.write('/// <reference path="roblox.d.ts" />');
 		this.write('/// <reference path="manual.d.ts" />');
 		this.write('/// <reference path="generated_classes.d.ts" />');

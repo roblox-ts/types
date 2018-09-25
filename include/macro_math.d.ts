@@ -1,3 +1,5 @@
+/// <reference no-default-lib="true"/>
+
 // MACRO MATH API
 
 declare interface CFrame {
