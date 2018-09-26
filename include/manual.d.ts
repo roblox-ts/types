@@ -227,7 +227,8 @@ interface Rbx_Instance {
 	GetDescendants(): Array<Instance>;
 	FindFirstAncestor<T = Instance>(name: string): T | undefined;
 	FindFirstChild<T = Instance>(name: string, recursive?: boolean): T | undefined;
-	WaitForChild<T = Instance>(childName: string, timeOut?: number): T | undefined;
+	WaitForChild<T = Instance>(childName: string): T;
+	WaitForChild<T = Instance>(childName: string, timeOut: number): T | undefined;
 }
 
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
