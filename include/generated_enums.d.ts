@@ -694,16 +694,6 @@ declare namespace Enum {
 	}
 	enum InputType {
 		NoInput = 0,
-		LeftTread = 1,
-		RightTread = 2,
-		Steer = 3,
-		Throttle = 4,
-		UpDown = 6,
-		Action1 = 7,
-		Action2 = 8,
-		Action3 = 9,
-		Action4 = 10,
-		Action5 = 11,
 		Constant = 12,
 		Sin = 13
 	}
@@ -1467,7 +1457,9 @@ declare namespace Enum {
 		DiffLineNumSeparatorBackground = 68,
 		DiffLineNumNoChangeBackground = 69,
 		DiffLineNumAdditionBackground = 70,
-		DiffLineNumDeletionBackground = 71
+		DiffLineNumDeletionBackground = 71,
+		DiffFilePathBackground = 72,
+		DiffFilePathBorder = 73
 	}
 	enum StudioStyleGuideModifier {
 		Default = 0,
@@ -1497,7 +1489,6 @@ declare namespace Enum {
 		Hinge = 6,
 		Motor = 7,
 		SteppingMotor = 8,
-		Unjoinable = 9,
 		SmoothNoOutlines = 10
 	}
 	enum SwipeDirection {

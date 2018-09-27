@@ -2249,6 +2249,7 @@ interface Rbx_ImageButton extends Rbx_GuiButton {
 	PressedImage: string;
 	ScaleType: Enum.ScaleType;
 	SliceCenter: Rect;
+	SliceScale: number;
 	TileSize: UDim2;
 }
 interface ImageButton extends Rbx_ImageButton, Base<Rbx_ImageButton>, AnyIndex {}
@@ -2319,6 +2320,7 @@ interface Rbx_ImageLabel extends Rbx_GuiLabel {
 	readonly IsLoaded: boolean;
 	ScaleType: Enum.ScaleType;
 	SliceCenter: Rect;
+	SliceScale: number;
 	TileSize: UDim2;
 }
 interface ImageLabel extends Rbx_ImageLabel, Base<Rbx_ImageLabel>, AnyIndex {}
@@ -6448,6 +6450,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	DefaultScriptFileDir: QDir;
 	DeprecatedObjectsShown: boolean;
 	["Device Pairing Code"]: number;
+	["Disable Accurate Play Solo"]: boolean;
 	["Drag Multiple Parts As Single Part"]: boolean;
 	["Enable Autocomplete"]: boolean;
 	["Error Color"]: Color3;
