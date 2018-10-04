@@ -281,9 +281,10 @@ declare namespace Enum {
 		DisconnectRobloxMaintenance = 275,
 		DisconnectRejoin = 276,
 		DisconnectConnectionLost = 277,
+		DisconnectIdle = 278,
 		PlacelaunchErrors = 512,
 		PlacelaunchDisabled = 515,
-		PlacelauchError = 516,
+		PlacelaunchError = 516,
 		PlacelaunchGameEnded = 517,
 		PlacelaunchGameFull = 518,
 		PlacelaunchUserLeft = 522,
@@ -1228,6 +1229,10 @@ declare namespace Enum {
 	enum R15CollisionType {
 		OuterBox = 0,
 		InnerBox = 1
+	}
+	enum RenderFidelity {
+		Automatic = 0,
+		Precise = 1
 	}
 	enum RenderPriority {
 		First = 0,

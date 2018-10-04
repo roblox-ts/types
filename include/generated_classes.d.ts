@@ -4545,6 +4545,7 @@ interface Rbx_Instance {
 
 // PartOperation
 interface Rbx_PartOperation extends Rbx_BasePart {
+	readonly RenderFidelity: Enum.RenderFidelity;
 	readonly TriangleCount: number;
 	UsePartColor: boolean;
 }
@@ -4672,6 +4673,7 @@ interface Rbx_Instance {
 interface Rbx_Model extends Rbx_PVInstance {
 	PrimaryPart: BasePart;
 	BreakJoints(): void;
+	GetBoundingBox(): Array<any>;
 	GetExtentsSize(): Vector3;
 	GetPrimaryPartCFrame(): CFrame;
 	MakeJoints(): void;
@@ -6509,6 +6511,22 @@ interface Rbx_Instance {
 }
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Studio"): Studio;
+}
+
+// StudioService
+interface Rbx_StudioService extends Rbx_Instance {
+	readonly ActiveScript: Instance | undefined;
+}
+type StudioService = Rbx_StudioService & Base<Rbx_StudioService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "StudioService"): this is StudioService;
+	FindFirstAncestorOfClass(className: "StudioService"): StudioService | undefined;
+	FindFirstAncestorWhichIsA(className: "StudioService"): StudioService | undefined;
+	FindFirstChildOfClass(className: "StudioService"): StudioService | undefined;
+	FindFirstAncestorWhichIsA(className: "StudioService"): StudioService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "StudioService"): StudioService;
 }
 
 // StudioTheme
