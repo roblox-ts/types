@@ -342,9 +342,7 @@ interface Rbx_StarterGui extends Rbx_BasePlayerGui {
 	ScreenOrientation: Enum.ScreenOrientation;
 	ShowDevelopmentGui: boolean;
 	GetCoreGuiEnabled(coreGuiType: Enum.CoreGuiType): boolean;
-	SetCore(parameterName: string, value?: any): void;
 	SetCoreGuiEnabled(coreGuiType: Enum.CoreGuiType, enabled: boolean): void;
-	GetCore(parameterName: string): unknown;
 }
 type StarterGui = Rbx_StarterGui & Base<Rbx_StarterGui> & AnyIndex;
 interface Rbx_Instance {
