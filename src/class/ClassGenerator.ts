@@ -100,7 +100,8 @@ function safeValueType(valueType: ApiValueType) {
 }
 
 const RETURN_TYPE_MAP: { [index: string]: string | null } = {
-	Instance: "Instance | undefined" // api dump lies :(
+	Instance: "Instance | undefined", // api dump lies :(
+	any: "unknown"
 };
 
 function safeReturnType(valueType: string | undefined | null) {
