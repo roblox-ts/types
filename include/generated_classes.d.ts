@@ -834,7 +834,7 @@ interface Rbx_Instance {
 // Chat
 interface Rbx_Chat extends Rbx_Instance {
 	readonly LoadDefaultChat: boolean;
-	InvokeChatCallback(callbackType: Enum.ChatCallbackType, callbackArguments: Array<any>): Array<any>;
+	InvokeChatCallback(callbackType: Enum.ChatCallbackType, callbackArguments: Array<any>): unknown;
 	RegisterChatCallback(callbackType: Enum.ChatCallbackType, callbackFunction: Function): void;
 	CanUserChatAsync(userId: number): boolean;
 	CanUsersChatAsync(userIdFrom: number, userIdTo: number): boolean;
@@ -3311,12 +3311,12 @@ interface Rbx_Instance {
 
 // InsertService
 interface Rbx_InsertService extends Rbx_Instance {
-	GetBaseSets(): Array<any>;
-	GetCollection(categoryId: number): Array<any>;
-	GetFreeDecals(searchText: string, pageNum: number): Array<any>;
-	GetFreeModels(searchText: string, pageNum: number): Array<any>;
+	GetBaseSets(): unknown;
+	GetCollection(categoryId: number): unknown;
+	GetFreeDecals(searchText: string, pageNum: number): unknown;
+	GetFreeModels(searchText: string, pageNum: number): unknown;
 	GetLatestAssetVersionAsync(assetId: number): number;
-	GetUserSets(userId: number): Array<any>;
+	GetUserSets(userId: number): unknown;
 }
 type InsertService = Rbx_InsertService & Base<Rbx_InsertService> & AnyIndex;
 interface Rbx_Instance {
@@ -3790,7 +3790,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // LocalizationTable
 interface Rbx_LocalizationTable extends Rbx_Instance {
 	SourceLocaleId: string;
-	GetEntries(): Array<any>;
+	GetEntries(): unknown;
 	GetTranslator(localeId: string): Instance | undefined;
 	RemoveEntry(key: string, source: string, context: string): void;
 	RemoveEntryValue(key: string, source: string, context: string, localeId: string): void;
@@ -3816,7 +3816,7 @@ interface Rbx_Instance {
 
 // LogService
 interface Rbx_LogService extends Rbx_Instance {
-	GetLogHistory(): Array<any>;
+	GetLogHistory(): unknown;
 	MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
 }
 type LogService = Rbx_LogService & Base<Rbx_LogService> & AnyIndex;
@@ -4669,7 +4669,7 @@ interface Rbx_Instance {
 interface Rbx_Model extends Rbx_PVInstance {
 	PrimaryPart: BasePart;
 	BreakJoints(): void;
-	GetBoundingBox(): Array<any>;
+	GetBoundingBox(): unknown;
 	GetExtentsSize(): Vector3;
 	GetPrimaryPartCFrame(): CFrame;
 	MakeJoints(): void;
@@ -4758,7 +4758,7 @@ interface Rbx_Instance {
 // Pages
 interface Rbx_Pages extends Rbx_Instance {
 	readonly IsFinished: boolean;
-	GetCurrentPage(): Array<any>;
+	GetCurrentPage(): unknown;
 	AdvanceToNextPageAsync(): void;
 }
 interface Pages extends Rbx_Pages, Base<Rbx_Pages>, AnyIndex {}
@@ -4887,7 +4887,7 @@ interface Rbx_Instance {
 // Path
 interface Rbx_Path extends Rbx_Instance {
 	readonly Status: Enum.PathStatus;
-	GetWaypoints(): Array<any>;
+	GetWaypoints(): unknown;
 	CheckOcclusionAsync(start: number): number;
 }
 interface Path extends Rbx_Path, Base<Rbx_Path>, AnyIndex {}
@@ -4940,7 +4940,7 @@ interface Rbx_PhysicsService extends Rbx_Instance {
 	CreateCollisionGroup(name: string): number;
 	GetCollisionGroupId(name: string): number;
 	GetCollisionGroupName(name: number): string;
-	GetCollisionGroups(): Array<any>;
+	GetCollisionGroups(): unknown;
 	GetMaxCollisionGroups(): number;
 	RemoveCollisionGroup(name: string): void;
 	RenameCollisionGroup(from: string, to: string): void;
@@ -5027,7 +5027,7 @@ interface Rbx_Player extends Rbx_Instance {
 	Kick(message?: string): void;
 	LoadCharacterAppearance(assetInstance: Instance): void;
 	Move(walkDirection: Vector3, relativeToCamera?: boolean): void;
-	GetFriendsOnline(maxFriends?: number): Array<any>;
+	GetFriendsOnline(maxFriends?: number): unknown;
 	GetRankInGroup(groupId: number): number;
 	GetRoleInGroup(groupId: number): string;
 	IsFriendsWith(userId: number): boolean;
@@ -5180,7 +5180,7 @@ interface Rbx_Instance {
 
 // PointsService
 interface Rbx_PointsService extends Rbx_Instance {
-	AwardPoints(userId: number, amount: number): Array<any>;
+	AwardPoints(userId: number, amount: number): unknown;
 	GetGamePointBalance(userId: number): number;
 	PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
 }
@@ -5711,7 +5711,7 @@ interface Rbx_ScriptDebugger extends Rbx_Instance {
 	GetBreakpoints(): Array<Instance>;
 	GetGlobals(): object;
 	GetLocals(stackFrame?: number): object;
-	GetStack(): Array<any>;
+	GetStack(): unknown;
 	GetUpvalues(stackFrame?: number): object;
 	GetWatchValue(watch: Instance): unknown;
 	GetWatches(): Array<Instance>;
@@ -6204,7 +6204,7 @@ interface Rbx_SoundService extends Rbx_Instance {
 	DopplerScale: number;
 	RespectFilteringEnabled: boolean;
 	RolloffScale: number;
-	GetListener(): Array<any>;
+	GetListener(): unknown;
 	PlayLocalSound(sound: Instance): void;
 	SetListener(listenerType: Enum.ListenerType, listener: Array<any>): void;
 }
@@ -6606,8 +6606,8 @@ interface Rbx_TeleportService extends Rbx_Instance {
 	TeleportToPlaceInstance(placeId: number, instanceId: string, player?: Instance, spawnName?: string, teleportData?: any, customLoadingScreen?: Instance): void;
 	TeleportToPrivateServer(placeId: number, reservedServerAccessCode: string, players: Array<Instance>, spawnName?: string, teleportData?: any, customLoadingScreen?: Instance): void;
 	TeleportToSpawnByName(placeId: number, spawnName: string, player?: Instance, teleportData?: any, customLoadingScreen?: Instance): void;
-	GetPlayerPlaceInstanceAsync(userId: number): Array<any>;
-	ReserveServer(placeId: number): Array<any>;
+	GetPlayerPlaceInstanceAsync(userId: number): unknown;
+	ReserveServer(placeId: number): unknown;
 	TeleportPartyAsync(placeId: number, players: Array<Instance>, teleportData?: any, customLoadingScreen?: Instance): string;
 	LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: Instance, dataTable?: any) => void>;
 	TeleportInitFailed: RBXScriptSignal<(player: Instance, teleportResult: Enum.TeleportResult, errorMessage: string) => void>;
@@ -7194,20 +7194,20 @@ interface Rbx_UserInputService extends Rbx_Instance {
 	readonly TouchEnabled: boolean;
 	readonly VREnabled: boolean;
 	GamepadSupports(gamepadNum: Enum.UserInputType, gamepadKeyCode: Enum.KeyCode): boolean;
-	GetConnectedGamepads(): Array<any>;
+	GetConnectedGamepads(): unknown;
 	GetDeviceAcceleration(): Instance | undefined;
 	GetDeviceGravity(): Instance | undefined;
-	GetDeviceRotation(): Array<any>;
+	GetDeviceRotation(): unknown;
 	GetFocusedTextBox(): Instance | undefined;
 	GetGamepadConnected(gamepadNum: Enum.UserInputType): boolean;
-	GetGamepadState(gamepadNum: Enum.UserInputType): Array<any>;
-	GetKeysPressed(): Array<any>;
+	GetGamepadState(gamepadNum: Enum.UserInputType): unknown;
+	GetKeysPressed(): unknown;
 	GetLastInputType(): Enum.UserInputType;
-	GetMouseButtonsPressed(): Array<any>;
+	GetMouseButtonsPressed(): unknown;
 	GetMouseDelta(): Vector2;
 	GetMouseLocation(): Vector2;
-	GetNavigationGamepads(): Array<any>;
-	GetSupportedGamepadKeyCodes(gamepadNum: Enum.UserInputType): Array<any>;
+	GetNavigationGamepads(): unknown;
+	GetSupportedGamepadKeyCodes(gamepadNum: Enum.UserInputType): unknown;
 	GetUserCFrame(type: Enum.UserCFrame): CFrame;
 	IsGamepadButtonDown(gamepadNum: Enum.UserInputType, gamepadKeyCode: Enum.KeyCode): boolean;
 	IsKeyDown(keyCode: Enum.KeyCode): boolean;
