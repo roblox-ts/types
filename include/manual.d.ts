@@ -106,6 +106,16 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 	LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
 }
 
+interface Rbx_DataStoreService extends Rbx_Instance {
+	GetDataStore(name: string, scope?: string): GlobalDataStore;
+	GetGlobalDataStore(): GlobalDataStore;
+	GetOrderedDataStore(name: string, scope?: string): OrderedDataStore;
+}
+
+interface Rbx_GlobalDataStore extends Rbx_Instance {
+	UpdateAsync(key: string, transformFunction: Function): unknown;
+}
+
 interface GroupInfo {
 	Name: string;
 	Id: number;

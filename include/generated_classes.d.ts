@@ -344,7 +344,7 @@ interface Rbx_StarterGui extends Rbx_BasePlayerGui {
 	GetCoreGuiEnabled(coreGuiType: Enum.CoreGuiType): boolean;
 	SetCore(parameterName: string, value?: any): void;
 	SetCoreGuiEnabled(coreGuiType: Enum.CoreGuiType, enabled: boolean): void;
-	GetCore(parameterName: string): any;
+	GetCore(parameterName: string): unknown;
 }
 type StarterGui = Rbx_StarterGui & Base<Rbx_StarterGui> & AnyIndex;
 interface Rbx_Instance {
@@ -1512,9 +1512,6 @@ interface Rbx_Instance {
 
 // DataStoreService
 interface Rbx_DataStoreService extends Rbx_Instance {
-	GetDataStore(name: string, scope?: string): Instance | undefined;
-	GetGlobalDataStore(): Instance | undefined;
-	GetOrderedDataStore(name: string, scope?: string): Instance | undefined;
 	GetRequestBudgetForRequestType(requestType: Enum.DataStoreRequestType): number;
 }
 type DataStoreService = Rbx_DataStoreService & Base<Rbx_DataStoreService> & AnyIndex;
@@ -2046,11 +2043,10 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // GlobalDataStore
 interface Rbx_GlobalDataStore extends Rbx_Instance {
 	OnUpdate(key: string, callback: Function): RBXScriptConnection;
-	GetAsync(key: string): any;
-	IncrementAsync(key: string, delta?: number): any;
-	RemoveAsync(key: string): any;
+	GetAsync(key: string): unknown;
+	IncrementAsync(key: string, delta?: number): unknown;
+	RemoveAsync(key: string): unknown;
 	SetAsync(key: string, value?: any): void;
-	UpdateAsync(key: string, transformFunction: Function): Array<any>;
 }
 interface GlobalDataStore extends Rbx_GlobalDataStore, Base<Rbx_GlobalDataStore>, AnyIndex {}
 declare abstract class GlobalDataStore {
@@ -3212,7 +3208,7 @@ interface Rbx_Instance {
 // HttpService
 interface Rbx_HttpService extends Rbx_Instance {
 	GenerateGUID(wrapInCurlyBraces?: boolean): string;
-	JSONDecode(input: string): any;
+	JSONDecode(input: string): unknown;
 	JSONEncode(input?: any): string;
 	UrlEncode(input: string): string;
 }
@@ -5717,7 +5713,7 @@ interface Rbx_ScriptDebugger extends Rbx_Instance {
 	GetLocals(stackFrame?: number): object;
 	GetStack(): Array<any>;
 	GetUpvalues(stackFrame?: number): object;
-	GetWatchValue(watch: Instance): any;
+	GetWatchValue(watch: Instance): unknown;
 	GetWatches(): Array<Instance>;
 	SetBreakpoint(line: number): Instance | undefined;
 	SetGlobal(name: string, value?: any): void;
@@ -6602,8 +6598,8 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // TeleportService
 interface Rbx_TeleportService extends Rbx_Instance {
 	GetArrivingTeleportGui(): Instance | undefined;
-	GetLocalPlayerTeleportData(): any;
-	GetTeleportSetting(setting: string): any;
+	GetLocalPlayerTeleportData(): unknown;
+	GetTeleportSetting(setting: string): unknown;
 	SetTeleportGui(gui: Instance): void;
 	SetTeleportSetting(setting: string, value?: any): void;
 	Teleport(placeId: number, player?: Instance, teleportData?: any, customLoadingScreen?: Instance): void;
