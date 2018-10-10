@@ -2060,7 +2060,6 @@ interface Rbx_Instance {
 
 // OrderedDataStore
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
-	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: any, maxValue?: any): Instance | undefined;
 }
 interface OrderedDataStore extends Rbx_OrderedDataStore, Base<Rbx_OrderedDataStore>, AnyIndex {}
 declare abstract class OrderedDataStore {
@@ -3309,12 +3308,7 @@ interface Rbx_Instance {
 
 // InsertService
 interface Rbx_InsertService extends Rbx_Instance {
-	GetBaseSets(): unknown;
-	GetCollection(categoryId: number): unknown;
-	GetFreeDecals(searchText: string, pageNum: number): unknown;
-	GetFreeModels(searchText: string, pageNum: number): unknown;
 	GetLatestAssetVersionAsync(assetId: number): number;
-	GetUserSets(userId: number): unknown;
 }
 type InsertService = Rbx_InsertService & Base<Rbx_InsertService> & AnyIndex;
 interface Rbx_Instance {
@@ -4885,7 +4879,6 @@ interface Rbx_Instance {
 // Path
 interface Rbx_Path extends Rbx_Instance {
 	readonly Status: Enum.PathStatus;
-	GetWaypoints(): unknown;
 	CheckOcclusionAsync(start: number): number;
 }
 interface Path extends Rbx_Path, Base<Rbx_Path>, AnyIndex {}

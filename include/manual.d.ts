@@ -53,7 +53,7 @@ interface Rbx_BindableEvent extends Rbx_Instance {
 
 interface Rbx_BindableFunction extends Rbx_Instance {
 	Invoke(...arguments: Array<unknown>): Array<unknown>;
-	OnInvoke: (...arguments: Array<unknown>) => void;
+	OnInvoke: (...arguments: Array<unknown>) => any;
 }
 
 interface Rbx_Camera extends Rbx_Instance {
@@ -227,9 +227,46 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
 }
 
+interface SetInfo {
+	AssetSetId: string;
+	CategoryId: string;
+	CreatorName: string;
+	Description: string;
+	ImageAssetId: string;
+	Name: string;
+	SetType: string;
+}
+
+interface CollectionInfo {
+	AssetId: string;
+	AssetSetId: string;
+	AssetVersionId: string;
+	IsTrusted: boolean;
+	Name: string;
+	CreatorName: string;
+}
+
+interface AssetInfo {
+	AssetId: string;
+	AssetVersionId: string;
+	CreatorName: string;
+	Name: string;
+}
+
+interface FreeSearchResult {
+	CurrentStartIndex: string;
+	Results: Array<AssetInfo>;
+	TotalCount: string;
+}
+
 interface Rbx_InsertService extends Rbx_Instance {
 	LoadAsset(assetId: number): Model;
 	LoadAssetVersion(assetVersionId: number): Model;
+	GetBaseSets(): Array<SetInfo>;
+	GetCollection(categoryId: number): Array<CollectionInfo>;
+	GetFreeDecals(searchText: string, pageNum: number): Array<FreeSearchResult>;
+	GetFreeModels(searchText: string, pageNum: number): Array<FreeSearchResult>;
+	GetUserSets(userId: number): Array<SetInfo>;
 }
 
 interface Rbx_Instance {
@@ -248,8 +285,16 @@ interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
 	GetKeyframeSequenceAsync(assetId: string): KeyframeSequence;
 }
 
+interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
+	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
+}
+
 interface Rbx_PathfindingService extends Rbx_Instance {
 	FindPathAsync(start: Vector3, finish: Vector3): Path;
+}
+
+interface Rbx_Path extends Rbx_Instance {
+	GetWaypoints(): Array<PathWaypoint>;
 }
 
 interface Rbx_Player extends Rbx_Instance {
