@@ -7,12 +7,12 @@
 	"scripts": {},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/roblox-ts/type-declaration-generator.git"
+		"url": "git+https://github.com/roblox-ts/rbx-types.git"
 	},
 	"author": "",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/roblox-ts/type-declaration-generator/issues"
+		"url": "https://github.com/roblox-ts/rbx-types/issues"
 	},
-	"homepage": "https://github.com/roblox-ts/type-declaration-generator#readme"
+	"homepage": "https://github.com/roblox-ts/rbx-types#readme"
 }
