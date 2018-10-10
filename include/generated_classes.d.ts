@@ -4744,12 +4744,6 @@ interface Rbx_Instance {
 }
 
 // Pages
-interface Rbx_Pages extends Rbx_Instance {
-	readonly IsFinished: boolean;
-	GetCurrentPage(): unknown;
-	AdvanceToNextPageAsync(): void;
-}
-interface Pages extends Rbx_Pages, Base<Rbx_Pages>, AnyIndex {}
 declare abstract class Pages {
 	constructor(parent?: Instance);
 }
@@ -4762,9 +4756,6 @@ interface Rbx_Instance {
 }
 
 // DataStorePages
-interface Rbx_DataStorePages extends Rbx_Pages {
-}
-interface DataStorePages extends Rbx_DataStorePages, Base<Rbx_DataStorePages>, AnyIndex {}
 declare abstract class DataStorePages {
 	constructor(parent?: Instance);
 }
@@ -4777,9 +4768,6 @@ interface Rbx_Instance {
 }
 
 // FriendPages
-interface Rbx_FriendPages extends Rbx_Pages {
-}
-interface FriendPages extends Rbx_FriendPages, Base<Rbx_FriendPages>, AnyIndex {}
 declare abstract class FriendPages {
 	constructor(parent?: Instance);
 }
