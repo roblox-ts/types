@@ -278,11 +278,30 @@ interface Rbx_Instance {
 	WaitForChild<T = Instance>(childName: string, timeOut: number): T | undefined;
 }
 
+interface Rbx_LocalizationTable extends Rbx_Instance {
+	GetEntries(): Array<{
+		Key: string;
+		Source: string;
+		Context: string;
+		Example: string;
+		Values: { [index: string]: string };
+	}>;
+	GetTranslator(localeId: string): Translator;
+}
+
+interface Rbx_LogService extends Rbx_Instance {
+	GetLogHistory(): unknown;
+}
+
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
 	RegisterActiveKeyframeSequence(keyframeSequence: KeyframeSequence): string;
 	RegisterKeyframeSequence(keyframeSequence: KeyframeSequence): string;
 	GetAnimations(userId: number): InventoryPages;
 	GetKeyframeSequenceAsync(assetId: string): KeyframeSequence;
+}
+
+interface Rbx_Model extends Rbx_PVInstance {
+	GetBoundingBox(): [CFrame, Vector3];
 }
 
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
@@ -297,9 +316,29 @@ interface Rbx_Path extends Rbx_Instance {
 	GetWaypoints(): Array<PathWaypoint>;
 }
 
+interface Rbx_PhysicsService extends Rbx_Instance {
+	GetCollisionGroups(): Array<{
+		id: number;
+		mask: number;
+		name: string;
+	}>;
+}
+
 interface Rbx_Player extends Rbx_Instance {
 	Character: Model | undefined;
 	ReplicationFocus: BasePart | undefined;
+	GetFriendsOnline(
+		maxFriends?: number
+	): Array<{
+		VisitorId: number;
+		UserName: string;
+		LastOnline: string;
+		IsOnline: boolean;
+		LastLocation: string;
+		PlaceId: number;
+		GameId: string;
+		LocationType: 0 | 1 | 2 | 3 | 4;
+	}>;
 	GetMouse(): PlayerMouse;
 	CharacterAdded: RBXScriptSignal<(character: Model) => void>;
 	CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
@@ -353,6 +392,10 @@ interface Rbx_Players extends Rbx_Instance {
 	PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
 }
 
+interface Rbx_PointsService extends Rbx_Instance {
+	AwardPoints(userId: number, amount: number): [number, number, number, 0];
+}
+
 interface Rbx_RemoteEvent extends Rbx_Instance {
 	FireAllClients(...arguments: Array<unknown>): void;
 	FireClient(player: Player, ...arguments: Array<unknown>): void;
@@ -366,6 +409,18 @@ interface Rbx_RemoteFunction extends Rbx_Instance {
 	InvokeServer(...arguments: Array<any>): Array<any>;
 	OnClientInvoke: Callback;
 	OnServerInvoke: Callback;
+}
+
+interface Rbx_SoundService extends Rbx_Instance {
+	GetListener():
+		| [Enum.ListenerType.Camera, undefined]
+		| [Enum.ListenerType.CFrame, CFrame]
+		| [Enum.ListenerType.ObjectCFrame, BasePart]
+		| [Enum.ListenerType.ObjectPosition, BasePart];
+	SetListener(listenerType: Enum.ListenerType.Camera): void;
+	SetListener(listenerType: Enum.ListenerType.CFrame, cframe: CFrame): void;
+	SetListener(listenerType: Enum.ListenerType.ObjectCFrame, basePart: BasePart): void;
+	SetListener(listenerType: Enum.ListenerType.ObjectPosition, basePart: BasePart): void;
 }
 
 interface MakeSystemMessageConfig {
@@ -433,6 +488,11 @@ interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 	Adornee: BasePart | undefined;
 }
 
+interface Rbx_TeleportService {
+	GetPlayerPlaceInstanceAsync(userId: number): [boolean, string, number, string];
+	ReserveServer(placeId: number): [string, string];
+}
+
 interface Rbx_Terrain extends Rbx_BasePart {
 	ReadVoxels(region: Region3, resolution: number): [Enum.Material[][][], number[][][]];
 	WriteVoxels(region: Region3, resolution: number, materials: Enum.Material[][][], occupancy: number[][][]): void;
@@ -443,6 +503,16 @@ type FilterMembers<T, U> = Pick<T, { [K in keyof T]: T[K] extends U ? K : never 
 
 interface Rbx_TweenService {
 	Create<T>(instance: T, tweenInfo: TweenInfo, propertyTable: Partial<FilterMembers<BaseType<T>, Tweenable>>): Tween;
+}
+
+interface Rbx_UserInputService {
+	GetConnectedGamepads(): Array<Enum.UserInputType>;
+	GetDeviceRotation(): [InputObject, CFrame];
+	GetGamepadState(gamepadNum: Enum.UserInputType): Array<InputObject>;
+	GetKeysPressed(): Array<InputObject>;
+	GetMouseButtonsPressed(): Array<InputObject>;
+	GetNavigationGamepads(): Array<Enum.UserInputType>;
+	GetSupportedGamepadKeyCodes(gamepadNum: Enum.UserInputType): Array<Enum.KeyCode>;
 }
 
 interface Rbx_Workspace extends Rbx_Model {
