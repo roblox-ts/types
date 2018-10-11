@@ -102,6 +102,7 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 		priorityLevel: number,
 		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
+	GetButton(actionName: string): ImageButton | undefined;
 	LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
 	LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
 }

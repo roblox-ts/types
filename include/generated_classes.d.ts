@@ -1247,7 +1247,6 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 	UnbindAction(actionName: string): void;
 	UnbindActivate(userInputTypeForActivation: Enum.UserInputType, keyCodeForActivation?: Enum.KeyCode): void;
 	UnbindAllActions(): void;
-	GetButton(actionName: string): Instance | undefined;
 }
 type ContextActionService = Rbx_ContextActionService & Base<Rbx_ContextActionService> & AnyIndex;
 interface Rbx_Instance {
