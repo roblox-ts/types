@@ -18,7 +18,7 @@ script:
   - git add -A
   - git status
   - |
-    if [ "$TRAVIS_EVENT_TYPE" == "cron" ];
+    if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
       git diff-index --quiet HEAD || git commit -m "Automatic Update";
     else
       git diff-index --quiet HEAD || git commit -m "Manual Update";
