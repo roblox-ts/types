@@ -137,7 +137,7 @@ interface Rbx_FriendPages
 		}> {}
 interface FriendPages extends Rbx_FriendPages, Base<Rbx_FriendPages>, AnyIndex {}
 
-interface Rbx_GamepassService extends Rbx_Instance {
+interface Rbx_GamePassService extends Rbx_Instance {
 	PlayerHasPass(player: Player, gamePassId: number): boolean;
 }
 

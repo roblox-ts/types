@@ -269,8 +269,6 @@ interface Rbx_Instance {
 interface Rbx_BadgeService extends Rbx_Instance {
 	AwardBadge(userId: number, badgeId: number): boolean;
 	GetBadgeInfoAsync(badgeId: number): object;
-	IsDisabled(badgeId: number): boolean;
-	IsLegal(badgeId: number): boolean;
 	UserHasBadgeAsync(userId: number, badgeId: number): boolean;
 }
 type BadgeService = Rbx_BadgeService & Base<Rbx_BadgeService> & AnyIndex;
@@ -1965,6 +1963,7 @@ interface Rbx_Instance {
 
 // GamePassService
 interface Rbx_GamePassService extends Rbx_Instance {
+	PlayerHasPass(player: Instance, gamePassId: number): boolean;
 }
 type GamePassService = Rbx_GamePassService & Base<Rbx_GamePassService> & AnyIndex;
 interface Rbx_Instance {
@@ -6403,6 +6402,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Camera Speed"]: number;
 	["Clear Output On Start"]: boolean;
 	["Comment Color"]: Color3;
+	["Debug Client In APS Mode"]: boolean;
 	DefaultScriptFileDir: QDir;
 	DeprecatedObjectsShown: boolean;
 	["Device Pairing Code"]: number;
