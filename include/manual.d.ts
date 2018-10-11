@@ -102,6 +102,7 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 		priorityLevel: number,
 		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
+	GetButton(actionName: string): ImageButton | undefined;
 	LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
 	LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
 }
@@ -119,6 +120,15 @@ interface Rbx_DataStoreService extends Rbx_Instance {
 	GetOrderedDataStore(name: string, scope?: string): OrderedDataStore;
 }
 
+interface Rbx_Dialog extends Rbx_Instance {
+	GetCurrentPlayers(): Array<Player>;
+	DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
+}
+
+interface Rbx_FlagStand extends Rbx_Part {
+	FlagCaptured: RBXScriptSignal<(player: Player) => void>;
+}
+
 interface Rbx_FriendPages
 	extends Rbx_Pages<{
 			Id: number;
@@ -126,6 +136,10 @@ interface Rbx_FriendPages
 			IsOnline: boolean;
 		}> {}
 interface FriendPages extends Rbx_FriendPages, Base<Rbx_FriendPages>, AnyIndex {}
+
+interface Rbx_GamePassService extends Rbx_Instance {
+	PlayerHasPass(player: Player, gamePassId: number): boolean;
+}
 
 interface Rbx_GlobalDataStore extends Rbx_Instance {
 	UpdateAsync(key: string, transformFunction: Function): unknown;
@@ -291,6 +305,17 @@ interface Rbx_Instance {
 	WaitForChild<T = Instance>(childName: string, timeOut: number): T | undefined;
 }
 
+interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
+	RegisterActiveKeyframeSequence(keyframeSequence: KeyframeSequence): string;
+	RegisterKeyframeSequence(keyframeSequence: KeyframeSequence): string;
+	GetAnimations(userId: number): InventoryPages;
+	GetKeyframeSequenceAsync(assetId: string): KeyframeSequence;
+}
+
+interface Rbx_LocalizationService extends Rbx_Instance {
+	GetTranslatorForPlayer(player: Player): Translator;
+}
+
 interface LocalizationEntry {
 	Key: string;
 	Source: string;
@@ -314,11 +339,20 @@ interface Rbx_LogService extends Rbx_Instance {
 	GetLogHistory(): Array<LogInfo>;
 }
 
-interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
-	RegisterActiveKeyframeSequence(keyframeSequence: KeyframeSequence): string;
-	RegisterKeyframeSequence(keyframeSequence: KeyframeSequence): string;
-	GetAnimations(userId: number): InventoryPages;
-	GetKeyframeSequenceAsync(assetId: string): KeyframeSequence;
+interface Rbx_MarketplaceService extends Rbx_Instance {
+	PromptGamePassPurchase(player: Player, gamePassId: number): void;
+	PromptProductPurchase(
+		player: Player,
+		productId: number,
+		equipIfPurchased?: boolean,
+		currencyType?: Enum.CurrencyType
+	): void;
+	PromptPurchase(player: Player, assetId: number, equipIfPurchased?: boolean, currencyType?: Enum.CurrencyType): void;
+	PlayerOwnsAsset(player: Player, assetId: number): boolean;
+	PromptGamePassPurchaseFinished: RBXScriptSignal<
+		(player: Player, gamePassId: number, wasPurchased: boolean) => void
+	>;
+	PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
 }
 
 interface Rbx_Model extends Rbx_PVInstance {
@@ -518,9 +552,37 @@ interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 	Adornee: BasePart | undefined;
 }
 
+interface Rbx_Team extends Rbx_Instance {
+	GetPlayers(): Array<Player>;
+	PlayerAdded: RBXScriptSignal<(player: Player) => void>;
+	PlayerRemoved: RBXScriptSignal<(player: Player) => void>;
+}
+
+interface Rbx_Teams extends Rbx_Instance {
+	GetTeams(): Array<Team>;
+}
+
 interface Rbx_TeleportService {
 	GetPlayerPlaceInstanceAsync(userId: number): [boolean, string, number, string];
 	ReserveServer(placeId: number): [string, string];
+	Teleport(placeId: number, player?: Player, teleportData?: any, customLoadingScreen?: Instance): void;
+	TeleportToPrivateServer(
+		placeId: number,
+		reservedServerAccessCode: string,
+		players: Array<Player>,
+		spawnName?: string,
+		teleportData?: any,
+		customLoadingScreen?: Instance
+	): void;
+	TeleportPartyAsync(
+		placeId: number,
+		players: Array<Player>,
+		teleportData?: any,
+		customLoadingScreen?: Instance
+	): string;
+	TeleportInitFailed: RBXScriptSignal<
+		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string) => void
+	>;
 }
 
 interface Rbx_Terrain extends Rbx_BasePart {
