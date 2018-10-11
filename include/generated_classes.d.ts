@@ -1643,8 +1643,6 @@ interface Rbx_Dialog extends Rbx_Instance {
 	Tone: Enum.DialogTone;
 	TriggerDistance: number;
 	TriggerOffset: Vector3;
-	GetCurrentPlayers(): Array<Instance>;
-	DialogChoiceSelected: RBXScriptSignal<(player: Instance, dialogChoice: Instance) => void>;
 }
 interface Dialog extends Rbx_Dialog, Base<Rbx_Dialog>, AnyIndex {}
 declare class Dialog {
@@ -1968,7 +1966,6 @@ interface Rbx_Instance {
 
 // GamePassService
 interface Rbx_GamePassService extends Rbx_Instance {
-	PlayerHasPass(player: Instance, gamePassId: number): boolean;
 }
 type GamePassService = Rbx_GamePassService & Base<Rbx_GamePassService> & AnyIndex;
 interface Rbx_Instance {
@@ -3765,7 +3762,6 @@ interface Rbx_LocalizationService extends Rbx_Instance {
 	readonly RobloxLocaleId: string;
 	readonly SystemLocaleId: string;
 	GetCorescriptLocalizations(): Array<Instance>;
-	GetTranslatorForPlayer(player: Instance): Instance | undefined;
 }
 type LocalizationService = Rbx_LocalizationService & Base<Rbx_LocalizationService> & AnyIndex;
 interface Rbx_Instance {
@@ -3967,15 +3963,9 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // MarketplaceService
 interface Rbx_MarketplaceService extends Rbx_Instance {
-	PromptGamePassPurchase(player: Instance, gamePassId: number): void;
-	PromptProductPurchase(player: Instance, productId: number, equipIfPurchased?: boolean, currencyType?: Enum.CurrencyType): void;
-	PromptPurchase(player: Instance, assetId: number, equipIfPurchased?: boolean, currencyType?: Enum.CurrencyType): void;
 	GetDeveloperProductsAsync(): Instance | undefined;
 	GetProductInfo(assetId: number, infoType?: Enum.InfoType): object;
-	PlayerOwnsAsset(player: Instance, assetId: number): boolean;
 	UserOwnsGamePassAsync(userId: number, gamePassId: number): boolean;
-	PromptGamePassPurchaseFinished: RBXScriptSignal<(player: Instance, gamePassId: number, wasPurchased: boolean) => void>;
-	PromptPurchaseFinished: RBXScriptSignal<(player: Instance, assetId: number, isPurchased: boolean) => void>;
 	ProcessReceipt: (receiptInfo: object) => void;
 }
 type MarketplaceService = Rbx_MarketplaceService & Base<Rbx_MarketplaceService> & AnyIndex;
@@ -4405,7 +4395,6 @@ interface Rbx_Instance {
 // FlagStand
 interface Rbx_FlagStand extends Rbx_Part {
 	TeamColor: BrickColor;
-	FlagCaptured: RBXScriptSignal<(player: Instance) => void>;
 }
 interface FlagStand extends Rbx_FlagStand, Base<Rbx_FlagStand>, AnyIndex {}
 declare class FlagStand {
@@ -6533,9 +6522,6 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Team extends Rbx_Instance {
 	AutoAssignable: boolean;
 	TeamColor: BrickColor;
-	GetPlayers(): Array<Instance>;
-	PlayerAdded: RBXScriptSignal<(player: Instance) => void>;
-	PlayerRemoved: RBXScriptSignal<(player: Instance) => void>;
 }
 interface Team extends Rbx_Team, Base<Rbx_Team>, AnyIndex {}
 declare class Team {
@@ -6551,7 +6537,6 @@ interface Rbx_Instance {
 
 // Teams
 interface Rbx_Teams extends Rbx_Instance {
-	GetTeams(): Array<Instance>;
 }
 type Teams = Rbx_Teams & Base<Rbx_Teams> & AnyIndex;
 interface Rbx_Instance {
@@ -6572,13 +6557,9 @@ interface Rbx_TeleportService extends Rbx_Instance {
 	GetTeleportSetting(setting: string): unknown;
 	SetTeleportGui(gui: Instance): void;
 	SetTeleportSetting(setting: string, value?: any): void;
-	Teleport(placeId: number, player?: Instance, teleportData?: any, customLoadingScreen?: Instance): void;
 	TeleportToPlaceInstance(placeId: number, instanceId: string, player?: Instance, spawnName?: string, teleportData?: any, customLoadingScreen?: Instance): void;
-	TeleportToPrivateServer(placeId: number, reservedServerAccessCode: string, players: Array<Instance>, spawnName?: string, teleportData?: any, customLoadingScreen?: Instance): void;
 	TeleportToSpawnByName(placeId: number, spawnName: string, player?: Instance, teleportData?: any, customLoadingScreen?: Instance): void;
-	TeleportPartyAsync(placeId: number, players: Array<Instance>, teleportData?: any, customLoadingScreen?: Instance): string;
 	LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: Instance, dataTable?: any) => void>;
-	TeleportInitFailed: RBXScriptSignal<(player: Instance, teleportResult: Enum.TeleportResult, errorMessage: string) => void>;
 }
 type TeleportService = Rbx_TeleportService & Base<Rbx_TeleportService> & AnyIndex;
 interface Rbx_Instance {
