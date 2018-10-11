@@ -53,7 +53,7 @@ interface Rbx_BindableEvent extends Rbx_Instance {
 
 interface Rbx_BindableFunction extends Rbx_Instance {
 	Invoke(...arguments: Array<unknown>): Array<unknown>;
-	OnInvoke: (...arguments: Array<unknown>) => void;
+	OnInvoke: (...arguments: Array<unknown>) => any;
 }
 
 interface Rbx_Camera extends Rbx_Instance {
@@ -104,6 +104,31 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 	): void;
 	LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
 	LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
+}
+
+interface Rbx_DataStorePages
+	extends Rbx_Pages<{
+			key: string;
+			value: any;
+		}> {}
+interface DataStorePages extends Rbx_DataStorePages, Base<Rbx_DataStorePages>, AnyIndex {}
+
+interface Rbx_DataStoreService extends Rbx_Instance {
+	GetDataStore(name: string, scope?: string): GlobalDataStore;
+	GetGlobalDataStore(): GlobalDataStore;
+	GetOrderedDataStore(name: string, scope?: string): OrderedDataStore;
+}
+
+interface Rbx_FriendPages
+	extends Rbx_Pages<{
+			Id: number;
+			Username: string;
+			IsOnline: boolean;
+		}> {}
+interface FriendPages extends Rbx_FriendPages, Base<Rbx_FriendPages>, AnyIndex {}
+
+interface Rbx_GlobalDataStore extends Rbx_Instance {
+	UpdateAsync(key: string, transformFunction: Function): unknown;
 }
 
 interface GroupInfo {
@@ -217,9 +242,44 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
 }
 
+interface SetInfo {
+	AssetSetId: string;
+	CategoryId: string;
+	CreatorName: string;
+	Description: string;
+	ImageAssetId: string;
+	Name: string;
+	SetType: string;
+}
+
+interface CollectionInfo {
+	AssetId: string;
+	AssetSetId: string;
+	AssetVersionId: string;
+	IsTrusted: boolean;
+	Name: string;
+	CreatorName: string;
+}
+
+interface FreeSearchResult {
+	CurrentStartIndex: string;
+	Results: Array<{
+		AssetId: string;
+		AssetVersionId: string;
+		CreatorName: string;
+		Name: string;
+	}>;
+	TotalCount: string;
+}
+
 interface Rbx_InsertService extends Rbx_Instance {
 	LoadAsset(assetId: number): Model;
 	LoadAssetVersion(assetVersionId: number): Model;
+	GetBaseSets(): Array<SetInfo>;
+	GetCollection(categoryId: number): Array<CollectionInfo>;
+	GetFreeDecals(searchText: string, pageNum: number): Array<FreeSearchResult>;
+	GetFreeModels(searchText: string, pageNum: number): Array<FreeSearchResult>;
+	GetUserSets(userId: number): Array<SetInfo>;
 }
 
 interface Rbx_Instance {
@@ -231,6 +291,29 @@ interface Rbx_Instance {
 	WaitForChild<T = Instance>(childName: string, timeOut: number): T | undefined;
 }
 
+interface LocalizationEntry {
+	Key: string;
+	Source: string;
+	Context: string;
+	Example: string;
+	Values: { [index: string]: string };
+}
+
+interface Rbx_LocalizationTable extends Rbx_Instance {
+	GetEntries(): Array<LocalizationEntry>;
+	GetTranslator(localeId: string): Translator;
+}
+
+interface LogInfo {
+	message: string;
+	messageType: Enum.MessageType;
+	timestamp: number;
+}
+
+interface Rbx_LogService extends Rbx_Instance {
+	GetLogHistory(): Array<LogInfo>;
+}
+
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
 	RegisterActiveKeyframeSequence(keyframeSequence: KeyframeSequence): string;
 	RegisterKeyframeSequence(keyframeSequence: KeyframeSequence): string;
@@ -238,13 +321,54 @@ interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
 	GetKeyframeSequenceAsync(assetId: string): KeyframeSequence;
 }
 
+interface Rbx_Model extends Rbx_PVInstance {
+	GetBoundingBox(): [CFrame, Vector3];
+}
+
+interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
+	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
+}
+
+interface Rbx_Pages<T = unknown> extends Rbx_Instance {
+	readonly IsFinished: boolean;
+	GetCurrentPage(): Array<T>;
+	AdvanceToNextPageAsync(): void;
+}
+interface Pages<T = unknown> extends Rbx_Pages<T>, Base<Rbx_Pages>, AnyIndex {}
+
 interface Rbx_PathfindingService extends Rbx_Instance {
 	FindPathAsync(start: Vector3, finish: Vector3): Path;
+}
+
+interface Rbx_Path extends Rbx_Instance {
+	GetWaypoints(): Array<PathWaypoint>;
+}
+
+interface CollisionGroupInfo {
+	id: number;
+	mask: number;
+	name: string;
+}
+
+interface Rbx_PhysicsService extends Rbx_Instance {
+	GetCollisionGroups(): Array<CollisionGroupInfo>;
+}
+
+interface FriendOnlineInfo {
+	VisitorId: number;
+	UserName: string;
+	LastOnline: string;
+	IsOnline: boolean;
+	LastLocation: string;
+	PlaceId: number;
+	GameId: string;
+	LocationType: 0 | 1 | 2 | 3 | 4;
 }
 
 interface Rbx_Player extends Rbx_Instance {
 	Character: Model | undefined;
 	ReplicationFocus: BasePart | undefined;
+	GetFriendsOnline(maxFriends?: number): Array<FriendOnlineInfo>;
 	GetMouse(): PlayerMouse;
 	CharacterAdded: RBXScriptSignal<(character: Model) => void>;
 	CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
@@ -298,6 +422,10 @@ interface Rbx_Players extends Rbx_Instance {
 	PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
 }
 
+interface Rbx_PointsService extends Rbx_Instance {
+	AwardPoints(userId: number, amount: number): [number, number, number, 0];
+}
+
 interface Rbx_RemoteEvent extends Rbx_Instance {
 	FireAllClients(...arguments: Array<unknown>): void;
 	FireClient(player: Player, ...arguments: Array<unknown>): void;
@@ -313,8 +441,86 @@ interface Rbx_RemoteFunction extends Rbx_Instance {
 	OnServerInvoke: Callback;
 }
 
+interface Rbx_SoundService extends Rbx_Instance {
+	GetListener():
+		| [Enum.ListenerType.Camera, undefined]
+		| [Enum.ListenerType.CFrame, CFrame]
+		| [Enum.ListenerType.ObjectCFrame, BasePart]
+		| [Enum.ListenerType.ObjectPosition, BasePart];
+	SetListener(listenerType: Enum.ListenerType.Camera): void;
+	SetListener(listenerType: Enum.ListenerType.CFrame, cframe: CFrame): void;
+	SetListener(listenerType: Enum.ListenerType.ObjectCFrame, basePart: BasePart): void;
+	SetListener(listenerType: Enum.ListenerType.ObjectPosition, basePart: BasePart): void;
+}
+
+interface MakeSystemMessageConfig {
+	Text: string;
+	Color?: Color3;
+	Font?: Enum.Font;
+	FontSize?: Enum.FontSize;
+}
+
+interface SendNotificationConfig {
+	Title: string;
+	Text: string;
+	Icon?: string;
+	Duration?: number;
+	Callback?: BindableFunction;
+	Button1?: string;
+	Button2?: string;
+}
+
+interface Rbx_StarterGui extends Rbx_BasePlayerGui {
+	GetCore(parameterName: "PointsNotificationsActive"): boolean;
+	GetCore(parameterName: "BadgesNotificationsActive"): boolean;
+	GetCore(parameterName: "ChatActive"): boolean;
+	GetCore(parameterName: "ChatWindowSize"): UDim2;
+	GetCore(parameterName: "ChatWindowPosition"): UDim2;
+	GetCore(parameterName: "ChatBarDisabled"): boolean;
+	GetCore(parameterName: "GetBlockedUserIds"): Array<number>;
+	GetCore(parameterName: "PlayerBlockedEvent"): BindableEvent;
+	GetCore(parameterName: "PlayerUnblockedEvent"): BindableEvent;
+	GetCore(parameterName: "PlayerMutedEvent"): BindableEvent;
+	GetCore(parameterName: "PlayerUnmutedEvent"): BindableEvent;
+	GetCore(parameterName: "PlayerFriendedEvent"): BindableEvent;
+	GetCore(parameterName: "PlayerUnfriendedEvent"): BindableEvent;
+	GetCore(parameterName: "DeveloperConsoleVisible"): boolean;
+	GetCore(parameterName: "VRRotationIntensity"): "Low" | "High" | "Smooth";
+
+	SetCore(parameterName: "ChatActive", active: boolean): void;
+	SetCore(parameterName: "PointsNotificationsActive", active: boolean): void;
+	SetCore(parameterName: "BadgeNotificationsActive", active: boolean): void;
+	SetCore(parameterName: "ResetButtonCallback", enabled: boolean): void;
+	SetCore(parameterName: "ResetButtonCallback", callback: BindableEvent): void;
+	SetCore(parameterName: "ChatMakeSystemMessage", configTable: MakeSystemMessageConfig): void;
+	SetCore(parameterName: "ChatWindowSize", windowSize: UDim2): void;
+	SetCore(parameterName: "ChatWindowPosition", windowPosition: UDim2): void;
+	SetCore(parameterName: "ChatBarDisabled", disabled: boolean): void;
+	SetCore(parameterName: "SendNotification", configTable: boolean): void;
+	SetCore(parameterName: "TopbarEnabled", enabled: boolean): void;
+	SetCore(parameterName: "DeveloperConsoleVisible", visibility: boolean): void;
+	SetCore(parameterName: "PromptSendFriendRequest", player: Player): void;
+	SetCore(parameterName: "PromptUnfriend", player: Player): void;
+	SetCore(parameterName: "PromptBlockPlayer", player: Player): void;
+	SetCore(parameterName: "PromptUnblockPlayer", player: Player): void;
+	SetCore(parameterName: "SetAvatarContextMenuEnabled", enabled: boolean): void;
+	SetCore(parameterName: "AddAvatarContextMenuOption", option: Enum.AvatarContextMenuOption): void;
+	SetCore(parameterName: "AddAvatarContextMenuOption", option: [string, BindableFunction]): void;
+	SetCore(parameterName: "RemoveAvatarContextMenuOption", option: Enum.AvatarContextMenuOption): void;
+	SetCore(parameterName: "RemoveAvatarContextMenuOption", option: [string, BindableFunction]): void;
+	SetCore(
+		parameterName: "CoreGuiChatConnections",
+		connections: { [name: string]: BindableEvent | BindableFunction }
+	): void;
+}
+
 interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 	Adornee: BasePart | undefined;
+}
+
+interface Rbx_TeleportService {
+	GetPlayerPlaceInstanceAsync(userId: number): [boolean, string, number, string];
+	ReserveServer(placeId: number): [string, string];
 }
 
 interface Rbx_Terrain extends Rbx_BasePart {
@@ -327,6 +533,16 @@ type FilterMembers<T, U> = Pick<T, { [K in keyof T]: T[K] extends U ? K : never 
 
 interface Rbx_TweenService {
 	Create<T>(instance: T, tweenInfo: TweenInfo, propertyTable: Partial<FilterMembers<BaseType<T>, Tweenable>>): Tween;
+}
+
+interface Rbx_UserInputService {
+	GetConnectedGamepads(): Array<Enum.UserInputType>;
+	GetDeviceRotation(): [InputObject, CFrame];
+	GetGamepadState(gamepadNum: Enum.UserInputType): Array<InputObject>;
+	GetKeysPressed(): Array<InputObject>;
+	GetMouseButtonsPressed(): Array<InputObject>;
+	GetNavigationGamepads(): Array<Enum.UserInputType>;
+	GetSupportedGamepadKeyCodes(gamepadNum: Enum.UserInputType): Array<Enum.KeyCode>;
 }
 
 interface Rbx_Workspace extends Rbx_Model {

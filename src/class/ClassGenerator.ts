@@ -100,7 +100,9 @@ function safeValueType(valueType: ApiValueType) {
 }
 
 const RETURN_TYPE_MAP: { [index: string]: string | null } = {
-	Instance: "Instance | undefined" // api dump lies :(
+	Instance: "Instance | undefined", // api dump lies :(
+	any: "unknown",
+	["Array<any>"]: "unknown"
 };
 
 function safeReturnType(valueType: string | undefined | null) {
@@ -191,27 +193,27 @@ function generateArgs(params: Array<ApiParameter>) {
 }
 
 export class ClassGenerator extends Generator {
-	private generateCallback(rbxCallback: ApiCallback, tsInterface?: ts.InterfaceDeclaration) {
+	private generateCallback(rbxCallback: ApiCallback, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxCallback.Name;
-		if (tsInterface && tsInterface.getProperty(name)) {
+		if (tsImplInterface && tsImplInterface.getProperty(name)) {
 			return;
 		}
 		const args = generateArgs(rbxCallback.Parameters);
 		this.write(`${name}: (${args}) => void;`);
 	}
 
-	private generateEvent(rbxEvent: ApiEvent, tsInterface?: ts.InterfaceDeclaration) {
+	private generateEvent(rbxEvent: ApiEvent, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxEvent.Name;
-		if (tsInterface && tsInterface.getProperty(name)) {
+		if (tsImplInterface && tsImplInterface.getProperty(name)) {
 			return;
 		}
 		const args = generateArgs(rbxEvent.Parameters);
 		this.write(`${name}: RBXScriptSignal<(${args}) => void>;`);
 	}
 
-	private generateFunction(rbxFunction: ApiFunction, tsInterface?: ts.InterfaceDeclaration) {
+	private generateFunction(rbxFunction: ApiFunction, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxFunction.Name;
-		if (tsInterface && tsInterface.getMethod(name)) {
+		if (tsImplInterface && tsImplInterface.getMethod(name)) {
 			return;
 		}
 		const returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
@@ -224,9 +226,9 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private generateProperty(rbxProperty: ApiProperty, tsInterface?: ts.InterfaceDeclaration) {
+	private generateProperty(rbxProperty: ApiProperty, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxProperty.Name;
-		if (tsInterface && tsInterface.getProperty(name)) {
+		if (tsImplInterface && tsImplInterface.getProperty(name)) {
 			return;
 		}
 		const valueType = safePropType(safeValueType(rbxProperty.ValueType));
@@ -236,7 +238,7 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private generateMember(rbxClass: ApiClass, rbxMember: ApiMember, tsInterface?: ts.InterfaceDeclaration) {
+	private generateMember(rbxClass: ApiClass, rbxMember: ApiMember, tsImplInterface?: ts.InterfaceDeclaration) {
 		const blacklist = MEMBER_BLACKLIST[rbxClass.Name];
 		if (blacklist && blacklist[rbxMember.Name] === true) {
 			return;
@@ -244,13 +246,13 @@ export class ClassGenerator extends Generator {
 
 		if (canRead(rbxMember) && !hasTag(rbxMember, "Deprecated") && !hasTag(rbxMember, "NotScriptable")) {
 			if (rbxMember.MemberType === "Callback") {
-				this.generateCallback(rbxMember, tsInterface);
+				this.generateCallback(rbxMember, tsImplInterface);
 			} else if (rbxMember.MemberType === "Event") {
-				this.generateEvent(rbxMember, tsInterface);
+				this.generateEvent(rbxMember, tsImplInterface);
 			} else if (rbxMember.MemberType === "Function") {
-				this.generateFunction(rbxMember, tsInterface);
+				this.generateFunction(rbxMember, tsImplInterface);
 			} else if (rbxMember.MemberType === "Property") {
-				this.generateProperty(rbxMember, tsInterface);
+				this.generateProperty(rbxMember, tsImplInterface);
 			}
 		}
 	}
@@ -258,17 +260,20 @@ export class ClassGenerator extends Generator {
 	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile) {
 		const name = rbxClass.Name;
 		const implName = IMPL_PREFIX + name;
-		const tsInterface = tsFile.getInterface(implName);
+		const tsImplInterface = tsFile.getInterface(implName);
+		const tsApiInterface = tsFile.getInterface(name);
 		this.write(`// ${name}`);
-		let extendsStr =
-			rbxClass.Superclass && rbxClass.Superclass !== ROOT_CLASS_NAME
-				? `extends ${IMPL_PREFIX}${rbxClass.Superclass} `
-				: "";
-		this.write(`interface ${implName} ${extendsStr}{`);
-		this.pushIndent();
-		rbxClass.Members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, tsInterface));
-		this.popIndent();
-		this.write(`}`);
+		if (!tsApiInterface) {
+			let extendsStr =
+				rbxClass.Superclass && rbxClass.Superclass !== ROOT_CLASS_NAME
+					? `extends ${IMPL_PREFIX}${rbxClass.Superclass} `
+					: "";
+			this.write(`interface ${implName} ${extendsStr}{`);
+			this.pushIndent();
+			rbxClass.Members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, tsImplInterface));
+			this.popIndent();
+			this.write(`}`);
+		}
 
 		if (hasTag(rbxClass, "Service") || CREATABLE_BLACKLIST[name]) {
 			this.write(`type ${name} = ${implName} & Base<${implName}> & AnyIndex;`);
@@ -277,7 +282,10 @@ export class ClassGenerator extends Generator {
 			if (hasTag(rbxClass, "NotCreatable")) {
 				prefixStr = "abstract ";
 			}
-			this.write(`interface ${name} extends ${implName}, Base<${implName}>, AnyIndex {}`);
+
+			if (!tsApiInterface) {
+				this.write(`interface ${name} extends ${implName}, Base<${implName}>, AnyIndex {}`);
+			}
 			this.write(`declare ${prefixStr}class ${name} {`);
 			this.pushIndent();
 			this.write("constructor(parent?: Instance);");

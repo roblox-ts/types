@@ -342,9 +342,7 @@ interface Rbx_StarterGui extends Rbx_BasePlayerGui {
 	ScreenOrientation: Enum.ScreenOrientation;
 	ShowDevelopmentGui: boolean;
 	GetCoreGuiEnabled(coreGuiType: Enum.CoreGuiType): boolean;
-	SetCore(parameterName: string, value?: any): void;
 	SetCoreGuiEnabled(coreGuiType: Enum.CoreGuiType, enabled: boolean): void;
-	GetCore(parameterName: string): any;
 }
 type StarterGui = Rbx_StarterGui & Base<Rbx_StarterGui> & AnyIndex;
 interface Rbx_Instance {
@@ -834,7 +832,7 @@ interface Rbx_Instance {
 // Chat
 interface Rbx_Chat extends Rbx_Instance {
 	readonly LoadDefaultChat: boolean;
-	InvokeChatCallback(callbackType: Enum.ChatCallbackType, callbackArguments: Array<any>): Array<any>;
+	InvokeChatCallback(callbackType: Enum.ChatCallbackType, callbackArguments: Array<any>): unknown;
 	RegisterChatCallback(callbackType: Enum.ChatCallbackType, callbackFunction: Function): void;
 	CanUserChatAsync(userId: number): boolean;
 	CanUsersChatAsync(userIdFrom: number, userIdTo: number): boolean;
@@ -1512,9 +1510,6 @@ interface Rbx_Instance {
 
 // DataStoreService
 interface Rbx_DataStoreService extends Rbx_Instance {
-	GetDataStore(name: string, scope?: string): Instance | undefined;
-	GetGlobalDataStore(): Instance | undefined;
-	GetOrderedDataStore(name: string, scope?: string): Instance | undefined;
 	GetRequestBudgetForRequestType(requestType: Enum.DataStoreRequestType): number;
 }
 type DataStoreService = Rbx_DataStoreService & Base<Rbx_DataStoreService> & AnyIndex;
@@ -2046,11 +2041,10 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // GlobalDataStore
 interface Rbx_GlobalDataStore extends Rbx_Instance {
 	OnUpdate(key: string, callback: Function): RBXScriptConnection;
-	GetAsync(key: string): any;
-	IncrementAsync(key: string, delta?: number): any;
-	RemoveAsync(key: string): any;
+	GetAsync(key: string): unknown;
+	IncrementAsync(key: string, delta?: number): unknown;
+	RemoveAsync(key: string): unknown;
 	SetAsync(key: string, value?: any): void;
-	UpdateAsync(key: string, transformFunction: Function): Array<any>;
 }
 interface GlobalDataStore extends Rbx_GlobalDataStore, Base<Rbx_GlobalDataStore>, AnyIndex {}
 declare abstract class GlobalDataStore {
@@ -2066,7 +2060,6 @@ interface Rbx_Instance {
 
 // OrderedDataStore
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
-	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: any, maxValue?: any): Instance | undefined;
 }
 interface OrderedDataStore extends Rbx_OrderedDataStore, Base<Rbx_OrderedDataStore>, AnyIndex {}
 declare abstract class OrderedDataStore {
@@ -2249,6 +2242,7 @@ interface Rbx_ImageButton extends Rbx_GuiButton {
 	PressedImage: string;
 	ScaleType: Enum.ScaleType;
 	SliceCenter: Rect;
+	SliceScale: number;
 	TileSize: UDim2;
 }
 interface ImageButton extends Rbx_ImageButton, Base<Rbx_ImageButton>, AnyIndex {}
@@ -2319,6 +2313,7 @@ interface Rbx_ImageLabel extends Rbx_GuiLabel {
 	readonly IsLoaded: boolean;
 	ScaleType: Enum.ScaleType;
 	SliceCenter: Rect;
+	SliceScale: number;
 	TileSize: UDim2;
 }
 interface ImageLabel extends Rbx_ImageLabel, Base<Rbx_ImageLabel>, AnyIndex {}
@@ -3210,7 +3205,7 @@ interface Rbx_Instance {
 // HttpService
 interface Rbx_HttpService extends Rbx_Instance {
 	GenerateGUID(wrapInCurlyBraces?: boolean): string;
-	JSONDecode(input: string): any;
+	JSONDecode(input: string): unknown;
 	JSONEncode(input?: any): string;
 	UrlEncode(input: string): string;
 }
@@ -3313,12 +3308,7 @@ interface Rbx_Instance {
 
 // InsertService
 interface Rbx_InsertService extends Rbx_Instance {
-	GetBaseSets(): Array<any>;
-	GetCollection(categoryId: number): Array<any>;
-	GetFreeDecals(searchText: string, pageNum: number): Array<any>;
-	GetFreeModels(searchText: string, pageNum: number): Array<any>;
 	GetLatestAssetVersionAsync(assetId: number): number;
-	GetUserSets(userId: number): Array<any>;
 }
 type InsertService = Rbx_InsertService & Base<Rbx_InsertService> & AnyIndex;
 interface Rbx_Instance {
@@ -3792,8 +3782,6 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // LocalizationTable
 interface Rbx_LocalizationTable extends Rbx_Instance {
 	SourceLocaleId: string;
-	GetEntries(): Array<any>;
-	GetTranslator(localeId: string): Instance | undefined;
 	RemoveEntry(key: string, source: string, context: string): void;
 	RemoveEntryValue(key: string, source: string, context: string, localeId: string): void;
 	RemoveTargetLocale(localeId: string): void;
@@ -3818,7 +3806,6 @@ interface Rbx_Instance {
 
 // LogService
 interface Rbx_LogService extends Rbx_Instance {
-	GetLogHistory(): Array<any>;
 	MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
 }
 type LogService = Rbx_LogService & Base<Rbx_LogService> & AnyIndex;
@@ -4543,6 +4530,7 @@ interface Rbx_Instance {
 
 // PartOperation
 interface Rbx_PartOperation extends Rbx_BasePart {
+	readonly RenderFidelity: Enum.RenderFidelity;
 	readonly TriangleCount: number;
 	UsePartColor: boolean;
 }
@@ -4756,12 +4744,6 @@ interface Rbx_Instance {
 }
 
 // Pages
-interface Rbx_Pages extends Rbx_Instance {
-	readonly IsFinished: boolean;
-	GetCurrentPage(): Array<any>;
-	AdvanceToNextPageAsync(): void;
-}
-interface Pages extends Rbx_Pages, Base<Rbx_Pages>, AnyIndex {}
 declare abstract class Pages {
 	constructor(parent?: Instance);
 }
@@ -4774,9 +4756,6 @@ interface Rbx_Instance {
 }
 
 // DataStorePages
-interface Rbx_DataStorePages extends Rbx_Pages {
-}
-interface DataStorePages extends Rbx_DataStorePages, Base<Rbx_DataStorePages>, AnyIndex {}
 declare abstract class DataStorePages {
 	constructor(parent?: Instance);
 }
@@ -4789,9 +4768,6 @@ interface Rbx_Instance {
 }
 
 // FriendPages
-interface Rbx_FriendPages extends Rbx_Pages {
-}
-interface FriendPages extends Rbx_FriendPages, Base<Rbx_FriendPages>, AnyIndex {}
 declare abstract class FriendPages {
 	constructor(parent?: Instance);
 }
@@ -4887,7 +4863,6 @@ interface Rbx_Instance {
 // Path
 interface Rbx_Path extends Rbx_Instance {
 	readonly Status: Enum.PathStatus;
-	GetWaypoints(): Array<any>;
 	CheckOcclusionAsync(start: number): number;
 }
 interface Path extends Rbx_Path, Base<Rbx_Path>, AnyIndex {}
@@ -4940,7 +4915,6 @@ interface Rbx_PhysicsService extends Rbx_Instance {
 	CreateCollisionGroup(name: string): number;
 	GetCollisionGroupId(name: string): number;
 	GetCollisionGroupName(name: number): string;
-	GetCollisionGroups(): Array<any>;
 	GetMaxCollisionGroups(): number;
 	RemoveCollisionGroup(name: string): void;
 	RenameCollisionGroup(from: string, to: string): void;
@@ -5027,7 +5001,6 @@ interface Rbx_Player extends Rbx_Instance {
 	Kick(message?: string): void;
 	LoadCharacterAppearance(assetInstance: Instance): void;
 	Move(walkDirection: Vector3, relativeToCamera?: boolean): void;
-	GetFriendsOnline(maxFriends?: number): Array<any>;
 	GetRankInGroup(groupId: number): number;
 	GetRoleInGroup(groupId: number): string;
 	IsFriendsWith(userId: number): boolean;
@@ -5180,7 +5153,6 @@ interface Rbx_Instance {
 
 // PointsService
 interface Rbx_PointsService extends Rbx_Instance {
-	AwardPoints(userId: number, amount: number): Array<any>;
 	GetGamePointBalance(userId: number): number;
 	PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
 }
@@ -5711,9 +5683,9 @@ interface Rbx_ScriptDebugger extends Rbx_Instance {
 	GetBreakpoints(): Array<Instance>;
 	GetGlobals(): object;
 	GetLocals(stackFrame?: number): object;
-	GetStack(): Array<any>;
+	GetStack(): unknown;
 	GetUpvalues(stackFrame?: number): object;
-	GetWatchValue(watch: Instance): any;
+	GetWatchValue(watch: Instance): unknown;
 	GetWatches(): Array<Instance>;
 	SetBreakpoint(line: number): Instance | undefined;
 	SetGlobal(name: string, value?: any): void;
@@ -6204,9 +6176,7 @@ interface Rbx_SoundService extends Rbx_Instance {
 	DopplerScale: number;
 	RespectFilteringEnabled: boolean;
 	RolloffScale: number;
-	GetListener(): Array<any>;
 	PlayLocalSound(sound: Instance): void;
-	SetListener(listenerType: Enum.ListenerType, listener: Array<any>): void;
 }
 type SoundService = Rbx_SoundService & Base<Rbx_SoundService> & AnyIndex;
 interface Rbx_Instance {
@@ -6448,6 +6418,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	DefaultScriptFileDir: QDir;
 	DeprecatedObjectsShown: boolean;
 	["Device Pairing Code"]: number;
+	["Disable Accurate Play Solo"]: boolean;
 	["Drag Multiple Parts As Single Part"]: boolean;
 	["Enable Autocomplete"]: boolean;
 	["Error Color"]: Color3;
@@ -6506,6 +6477,22 @@ interface Rbx_Instance {
 }
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Studio"): Studio;
+}
+
+// StudioService
+interface Rbx_StudioService extends Rbx_Instance {
+	readonly ActiveScript: Instance | undefined;
+}
+type StudioService = Rbx_StudioService & Base<Rbx_StudioService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "StudioService"): this is StudioService;
+	FindFirstAncestorOfClass(className: "StudioService"): StudioService | undefined;
+	FindFirstAncestorWhichIsA(className: "StudioService"): StudioService | undefined;
+	FindFirstChildOfClass(className: "StudioService"): StudioService | undefined;
+	FindFirstAncestorWhichIsA(className: "StudioService"): StudioService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "StudioService"): StudioService;
 }
 
 // StudioTheme
@@ -6581,16 +6568,14 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // TeleportService
 interface Rbx_TeleportService extends Rbx_Instance {
 	GetArrivingTeleportGui(): Instance | undefined;
-	GetLocalPlayerTeleportData(): any;
-	GetTeleportSetting(setting: string): any;
+	GetLocalPlayerTeleportData(): unknown;
+	GetTeleportSetting(setting: string): unknown;
 	SetTeleportGui(gui: Instance): void;
 	SetTeleportSetting(setting: string, value?: any): void;
 	Teleport(placeId: number, player?: Instance, teleportData?: any, customLoadingScreen?: Instance): void;
 	TeleportToPlaceInstance(placeId: number, instanceId: string, player?: Instance, spawnName?: string, teleportData?: any, customLoadingScreen?: Instance): void;
 	TeleportToPrivateServer(placeId: number, reservedServerAccessCode: string, players: Array<Instance>, spawnName?: string, teleportData?: any, customLoadingScreen?: Instance): void;
 	TeleportToSpawnByName(placeId: number, spawnName: string, player?: Instance, teleportData?: any, customLoadingScreen?: Instance): void;
-	GetPlayerPlaceInstanceAsync(userId: number): Array<any>;
-	ReserveServer(placeId: number): Array<any>;
 	TeleportPartyAsync(placeId: number, players: Array<Instance>, teleportData?: any, customLoadingScreen?: Instance): string;
 	LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: Instance, dataTable?: any) => void>;
 	TeleportInitFailed: RBXScriptSignal<(player: Instance, teleportResult: Enum.TeleportResult, errorMessage: string) => void>;
@@ -7177,20 +7162,13 @@ interface Rbx_UserInputService extends Rbx_Instance {
 	readonly TouchEnabled: boolean;
 	readonly VREnabled: boolean;
 	GamepadSupports(gamepadNum: Enum.UserInputType, gamepadKeyCode: Enum.KeyCode): boolean;
-	GetConnectedGamepads(): Array<any>;
 	GetDeviceAcceleration(): Instance | undefined;
 	GetDeviceGravity(): Instance | undefined;
-	GetDeviceRotation(): Array<any>;
 	GetFocusedTextBox(): Instance | undefined;
 	GetGamepadConnected(gamepadNum: Enum.UserInputType): boolean;
-	GetGamepadState(gamepadNum: Enum.UserInputType): Array<any>;
-	GetKeysPressed(): Array<any>;
 	GetLastInputType(): Enum.UserInputType;
-	GetMouseButtonsPressed(): Array<any>;
 	GetMouseDelta(): Vector2;
 	GetMouseLocation(): Vector2;
-	GetNavigationGamepads(): Array<any>;
-	GetSupportedGamepadKeyCodes(gamepadNum: Enum.UserInputType): Array<any>;
 	GetUserCFrame(type: Enum.UserCFrame): CFrame;
 	IsGamepadButtonDown(gamepadNum: Enum.UserInputType, gamepadKeyCode: Enum.KeyCode): boolean;
 	IsKeyDown(keyCode: Enum.KeyCode): boolean;
