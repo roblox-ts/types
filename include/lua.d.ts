@@ -116,9 +116,9 @@ declare interface thread {}
 
 declare namespace coroutine {
 	function create(f: Function): thread;
-	function resume(co: thread, ...params: Array<any>): Array<any>;
-	function running(): thread | undefined;
+	function resume(co: thread, ...params: Array<any>): unknown;
+	function running(): thread;
 	function status(co: thread): string;
 	function wrap<T extends Function>(f: T): T;
-	function yield(...params: Array<any>): Array<any>;
+	function yield(...params: Array<any>): unknown;
 }
