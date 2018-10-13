@@ -102,14 +102,43 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 		priorityLevel: number,
 		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
+	GetButton(actionName: string): ImageButton | undefined;
 	LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
 	LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
 }
+
+interface Rbx_DataStorePages
+	extends Rbx_Pages<{
+			key: string;
+			value: any;
+		}> {}
+interface DataStorePages extends Rbx_DataStorePages, Base<Rbx_DataStorePages>, AnyIndex {}
 
 interface Rbx_DataStoreService extends Rbx_Instance {
 	GetDataStore(name: string, scope?: string): GlobalDataStore;
 	GetGlobalDataStore(): GlobalDataStore;
 	GetOrderedDataStore(name: string, scope?: string): OrderedDataStore;
+}
+
+interface Rbx_Dialog extends Rbx_Instance {
+	GetCurrentPlayers(): Array<Player>;
+	DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
+}
+
+interface Rbx_FlagStand extends Rbx_Part {
+	FlagCaptured: RBXScriptSignal<(player: Player) => void>;
+}
+
+interface Rbx_FriendPages
+	extends Rbx_Pages<{
+			Id: number;
+			Username: string;
+			IsOnline: boolean;
+		}> {}
+interface FriendPages extends Rbx_FriendPages, Base<Rbx_FriendPages>, AnyIndex {}
+
+interface Rbx_GamePassService extends Rbx_Instance {
+	PlayerHasPass(player: Player, gamePassId: number): boolean;
 }
 
 interface Rbx_GlobalDataStore extends Rbx_Instance {
@@ -246,16 +275,14 @@ interface CollectionInfo {
 	CreatorName: string;
 }
 
-interface AssetInfo {
-	AssetId: string;
-	AssetVersionId: string;
-	CreatorName: string;
-	Name: string;
-}
-
 interface FreeSearchResult {
 	CurrentStartIndex: string;
-	Results: Array<AssetInfo>;
+	Results: Array<{
+		AssetId: string;
+		AssetVersionId: string;
+		CreatorName: string;
+		Name: string;
+	}>;
 	TotalCount: string;
 }
 
@@ -278,26 +305,54 @@ interface Rbx_Instance {
 	WaitForChild<T = Instance>(childName: string, timeOut: number): T | undefined;
 }
 
-interface Rbx_LocalizationTable extends Rbx_Instance {
-	GetEntries(): Array<{
-		Key: string;
-		Source: string;
-		Context: string;
-		Example: string;
-		Values: { [index: string]: string };
-	}>;
-	GetTranslator(localeId: string): Translator;
-}
-
-interface Rbx_LogService extends Rbx_Instance {
-	GetLogHistory(): unknown;
-}
-
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
 	RegisterActiveKeyframeSequence(keyframeSequence: KeyframeSequence): string;
 	RegisterKeyframeSequence(keyframeSequence: KeyframeSequence): string;
 	GetAnimations(userId: number): InventoryPages;
 	GetKeyframeSequenceAsync(assetId: string): KeyframeSequence;
+}
+
+interface Rbx_LocalizationService extends Rbx_Instance {
+	GetTranslatorForPlayer(player: Player): Translator;
+}
+
+interface LocalizationEntry {
+	Key: string;
+	Source: string;
+	Context: string;
+	Example: string;
+	Values: { [index: string]: string };
+}
+
+interface Rbx_LocalizationTable extends Rbx_Instance {
+	GetEntries(): Array<LocalizationEntry>;
+	GetTranslator(localeId: string): Translator;
+}
+
+interface LogInfo {
+	message: string;
+	messageType: Enum.MessageType;
+	timestamp: number;
+}
+
+interface Rbx_LogService extends Rbx_Instance {
+	GetLogHistory(): Array<LogInfo>;
+}
+
+interface Rbx_MarketplaceService extends Rbx_Instance {
+	PromptGamePassPurchase(player: Player, gamePassId: number): void;
+	PromptProductPurchase(
+		player: Player,
+		productId: number,
+		equipIfPurchased?: boolean,
+		currencyType?: Enum.CurrencyType
+	): void;
+	PromptPurchase(player: Player, assetId: number, equipIfPurchased?: boolean, currencyType?: Enum.CurrencyType): void;
+	PlayerOwnsAsset(player: Player, assetId: number): boolean;
+	PromptGamePassPurchaseFinished: RBXScriptSignal<
+		(player: Player, gamePassId: number, wasPurchased: boolean) => void
+	>;
+	PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
 }
 
 interface Rbx_Model extends Rbx_PVInstance {
@@ -308,6 +363,13 @@ interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
 	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
 }
 
+interface Rbx_Pages<T = unknown> extends Rbx_Instance {
+	readonly IsFinished: boolean;
+	GetCurrentPage(): Array<T>;
+	AdvanceToNextPageAsync(): void;
+}
+interface Pages<T = unknown> extends Rbx_Pages<T>, Base<Rbx_Pages>, AnyIndex {}
+
 interface Rbx_PathfindingService extends Rbx_Instance {
 	FindPathAsync(start: Vector3, finish: Vector3): Path;
 }
@@ -316,29 +378,31 @@ interface Rbx_Path extends Rbx_Instance {
 	GetWaypoints(): Array<PathWaypoint>;
 }
 
+interface CollisionGroupInfo {
+	id: number;
+	mask: number;
+	name: string;
+}
+
 interface Rbx_PhysicsService extends Rbx_Instance {
-	GetCollisionGroups(): Array<{
-		id: number;
-		mask: number;
-		name: string;
-	}>;
+	GetCollisionGroups(): Array<CollisionGroupInfo>;
+}
+
+interface FriendOnlineInfo {
+	VisitorId: number;
+	UserName: string;
+	LastOnline: string;
+	IsOnline: boolean;
+	LastLocation: string;
+	PlaceId: number;
+	GameId: string;
+	LocationType: 0 | 1 | 2 | 3 | 4;
 }
 
 interface Rbx_Player extends Rbx_Instance {
 	Character: Model | undefined;
 	ReplicationFocus: BasePart | undefined;
-	GetFriendsOnline(
-		maxFriends?: number
-	): Array<{
-		VisitorId: number;
-		UserName: string;
-		LastOnline: string;
-		IsOnline: boolean;
-		LastLocation: string;
-		PlaceId: number;
-		GameId: string;
-		LocationType: 0 | 1 | 2 | 3 | 4;
-	}>;
+	GetFriendsOnline(maxFriends?: number): Array<FriendOnlineInfo>;
 	GetMouse(): PlayerMouse;
 	CharacterAdded: RBXScriptSignal<(character: Model) => void>;
 	CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
@@ -488,9 +552,37 @@ interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 	Adornee: BasePart | undefined;
 }
 
+interface Rbx_Team extends Rbx_Instance {
+	GetPlayers(): Array<Player>;
+	PlayerAdded: RBXScriptSignal<(player: Player) => void>;
+	PlayerRemoved: RBXScriptSignal<(player: Player) => void>;
+}
+
+interface Rbx_Teams extends Rbx_Instance {
+	GetTeams(): Array<Team>;
+}
+
 interface Rbx_TeleportService {
 	GetPlayerPlaceInstanceAsync(userId: number): [boolean, string, number, string];
 	ReserveServer(placeId: number): [string, string];
+	Teleport(placeId: number, player?: Player, teleportData?: any, customLoadingScreen?: Instance): void;
+	TeleportToPrivateServer(
+		placeId: number,
+		reservedServerAccessCode: string,
+		players: Array<Player>,
+		spawnName?: string,
+		teleportData?: any,
+		customLoadingScreen?: Instance
+	): void;
+	TeleportPartyAsync(
+		placeId: number,
+		players: Array<Player>,
+		teleportData?: any,
+		customLoadingScreen?: Instance
+	): string;
+	TeleportInitFailed: RBXScriptSignal<
+		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string) => void
+	>;
 }
 
 interface Rbx_Terrain extends Rbx_BasePart {

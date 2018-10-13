@@ -17,5 +17,10 @@ script:
 
   - git add -A
   - git status
-  - git diff-index --quiet HEAD || git commit -m "CI Update"
+  - |
+    if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
+      git diff-index --quiet HEAD || git commit -m "Automatic Update";
+    else
+      git diff-index --quiet HEAD || git commit -m "Manual Update";
+    fi
   - git push https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy

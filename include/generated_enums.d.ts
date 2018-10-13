@@ -282,6 +282,8 @@ declare namespace Enum {
 		DisconnectRejoin = 276,
 		DisconnectConnectionLost = 277,
 		DisconnectIdle = 278,
+		DisconnectRaknetErrors = 279,
+		DisconnectWrongVersion = 280,
 		PlacelaunchErrors = 512,
 		PlacelaunchDisabled = 515,
 		PlacelaunchError = 516,
