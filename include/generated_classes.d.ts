@@ -3963,7 +3963,6 @@ interface Rbx_MarketplaceService extends Rbx_Instance {
 	GetDeveloperProductsAsync(): Instance | undefined;
 	GetProductInfo(assetId: number, infoType?: Enum.InfoType): object;
 	UserOwnsGamePassAsync(userId: number, gamePassId: number): boolean;
-	ProcessReceipt: (receiptInfo: object) => void;
 }
 type MarketplaceService = Rbx_MarketplaceService & Base<Rbx_MarketplaceService> & AnyIndex;
 interface Rbx_Instance {

@@ -339,6 +339,15 @@ interface Rbx_LogService extends Rbx_Instance {
 	GetLogHistory(): Array<LogInfo>;
 }
 
+interface ReceiptInfo {
+	PurchaseId: string;
+	PlayerId: number;
+	ProductId: number;
+	CurrencySpent: number;
+	CurrencyType: Enum.CurrencyType;
+	PlaceIdWherePurchased: number;
+}
+
 interface Rbx_MarketplaceService extends Rbx_Instance {
 	PromptGamePassPurchase(player: Player, gamePassId: number): void;
 	PromptProductPurchase(
@@ -349,6 +358,7 @@ interface Rbx_MarketplaceService extends Rbx_Instance {
 	): void;
 	PromptPurchase(player: Player, assetId: number, equipIfPurchased?: boolean, currencyType?: Enum.CurrencyType): void;
 	PlayerOwnsAsset(player: Player, assetId: number): boolean;
+	ProcessReceipt: (receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision;
 	PromptGamePassPurchaseFinished: RBXScriptSignal<
 		(player: Player, gamePassId: number, wasPurchased: boolean) => void
 	>;
