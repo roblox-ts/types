@@ -329,7 +329,7 @@ declare const shared: any;
 // built-in functions
 declare function delay(delayTime: number, callback: Callback): void;
 declare function elapsedTime(): number;
-declare function require(moduleScript: ModuleScript): any;
+declare function require(moduleScript: ModuleScript | number): unknown;
 declare function settings(): GlobalSettings;
 declare function spawn(callback: Callback): void;
 declare function tick(): number;
