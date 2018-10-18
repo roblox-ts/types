@@ -16,15 +16,24 @@ interface Rbx_Instance {
 	Name: string;
 	/** The Instance that is directly above this Instance in the tree. */
 	Parent: Instance | undefined;
+	/** Removes all children (but not this object) from the workspace. */
 	ClearAllChildren(): void;
+	/** Removes object and all of its children from the workspace. Disconnects object and all children from open connections. Object and children may not be usable after calling Destroy. */
 	Destroy(): void;
+	/** Returns the first ancestor of this Instance with a ClassName equal to 'className'.  The function will return nil if no Instance is found. */
 	FindFirstAncestorOfClass(className: string): Instance | undefined;
+	/** Returns the first ancestor of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
 	FindFirstAncestorWhichIsA(className: string): Instance | undefined;
+	/** Returns the first child of this Instance that with a ClassName equal to 'className'.  The function will return nil if no Instance is found. */
 	FindFirstChildOfClass(className: string): Instance | undefined;
+	/** Returns the first child of this Instance that :IsA(className).  The second argument 'recursive' is an optional boolean (defaults to false) that will force the call to traverse down thru all of this Instance's descendants until it finds an object with a name that matches the 'className' argument.  The function will return nil if no Instance is found. */
 	FindFirstChildWhichIsA(className: string, recursive?: boolean): Instance | undefined;
+	/** Returns a read-only table of this Object's children */
 	GetChildren(): Array<Instance>;
+	/** Returns a string that shows the path from the root node (DataModel) to this Instance.  This string does not include the root node (DataModel). */
 	GetFullName(): string;
 	GetPropertyChangedSignal(property: string): RBXScriptSignal;
+	/** Returns a boolean if this Instance is of type 'className' or a is a subclass of type 'className'.  If 'className' is not a valid class type in ROBLOX, this function will always return false.  [More info](http://wiki.roblox.com/index.php/IsA) */
 	IsA(className: string): boolean;
 	IsAncestorOf(descendant: Instance): boolean;
 	IsDescendantOf(ancestor: Instance): boolean;
@@ -353,7 +362,9 @@ interface Rbx_Instance {
 interface Rbx_StarterGui extends Rbx_BasePlayerGui {
 	ScreenOrientation: Enum.ScreenOrientation;
 	ShowDevelopmentGui: boolean;
+	/** Returns a boolean describing whether a CoreGuiType is currently being rendered. */
 	GetCoreGuiEnabled(coreGuiType: Enum.CoreGuiType): boolean;
+	/** Will stop/begin certain core gui elements being rendered. See CoreGuiType for core guis that can be modified. */
 	SetCoreGuiEnabled(coreGuiType: Enum.CoreGuiType, enabled: boolean): void;
 }
 type StarterGui = Rbx_StarterGui & Base<Rbx_StarterGui> & AnyIndex;
@@ -688,14 +699,18 @@ interface Rbx_Camera extends Rbx_Instance {
 	GetLargestCutoffDistance(ignoreList: Array<Instance>): number;
 	GetPanSpeed(): number;
 	GetRenderCFrame(): CFrame;
+	/** Returns the camera's current roll. Roll is defined in radians, and is stored as the delta from the camera's y axis default normal vector. */
 	GetRoll(): number;
 	GetTiltSpeed(): number;
 	Interpolate(endPos: CFrame, endFocus: CFrame, duration: number): void;
 	PanUnits(units: number): void;
+	/** Takes a 2D screen position and produces a Ray object to be used for 3D raycasting. Input is x,y screen coordinates, and a (optional, defaults to 0) z position which sets how far in the camera look vector to start the ray origin. */
 	ScreenPointToRay(x: number, y: number, depth?: number): Ray;
 	SetCameraPanMode(mode?: Enum.CameraPanMode): void;
+	/** Sets the camera's current roll. Roll is defined in radians, and is stored as the delta from the camera's y axis default normal vector. */
 	SetRoll(rollAngle: number): void;
 	TiltUnits(units: number): boolean;
+	/** Same as ScreenPointToRay, except no GUI offsets are taken into account. Useful for things like casting a ray from the middle of the Camera.ViewportSize */
 	ViewportPointToRay(x: number, y: number, depth?: number): Ray;
 	InterpolationFinished: RBXScriptSignal<() => void>;
 }
@@ -923,8 +938,11 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // CollectionService
 interface Rbx_CollectionService extends Rbx_Instance {
+	/** Adds a tag to an instance. */
 	AddTag(instance: Instance, tag: string): void;
+	/** Returns whether the given instance has the given tag. */
 	HasTag(instance: Instance, tag: string): boolean;
+	/** Removes a tag to an instance. */
 	RemoveTag(instance: Instance, tag: string): void;
 }
 type CollectionService = Rbx_CollectionService & Base<Rbx_CollectionService> & AnyIndex;
@@ -1346,15 +1364,23 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // ContextActionService
 interface Rbx_ContextActionService extends Rbx_Instance {
 	BindActivate(userInputTypeForActivation: Enum.UserInputType, keyCodeForActivation?: Enum.KeyCode): void;
+	/** Returns a table with all bound action info. Each entry is a key with 'actionName' and value being the same table you would get from ContextActionService:GetBoundActionInfo('actionName'). */
 	GetAllBoundActionInfo(): object;
+	/** Returns a table with info regarding the function bound with 'actionName'. Table has the keys 'title' (current title that was set with SetTitle) 'image' (image set with SetImage) 'description' (description set with SetDescription) 'inputTypes' (tuple containing all input bound for this 'actionName') 'createTouchButton' (whether or not we created a touch button for this 'actionName').  */
 	GetBoundActionInfo(actionName: string): object;
 	GetCurrentLocalToolIcon(): string;
+	/** If 'actionName' key contains a bound action, then 'description' is set as the description of the bound action. This description will appear for users in a listing of current actions availables. */
 	SetDescription(actionName: string, description: string): void;
+	/** If 'actionName' key contains a bound action, then 'image' is set as the image of the touch button. Does nothing if a touch button was not created. No guarantees are made whether image will be set when button is manipulated. */
 	SetImage(actionName: string, image: string): void;
+	/** If 'actionName' key contains a bound action, then 'position' is set as the position of the touch button. Does nothing if a touch button was not created. No guarantees are made whether position will be set when button is manipulated. */
 	SetPosition(actionName: string, position: UDim2): void;
+	/** If 'actionName' key contains a bound action, then 'title' is set as the title of the touch button. Does nothing if a touch button was not created. No guarantees are made whether title will be set when button is manipulated. */
 	SetTitle(actionName: string, title: string): void;
+	/** If 'actionName' key contains a bound action, removes function from being called by all input that it was bound by (if function was also bound by a different action name as well, those bound input are still active). Will also remove any touch button created (if button was manipulated manually there is no guarantee it will be cleaned up). */
 	UnbindAction(actionName: string): void;
 	UnbindActivate(userInputTypeForActivation: Enum.UserInputType, keyCodeForActivation?: Enum.KeyCode): void;
+	/** Removes all functions bound. No actionNames will remain. All touch buttons will be removed. If button was manipulated manually there is no guarantee it will be cleaned up. */
 	UnbindAllActions(): void;
 }
 type ContextActionService = Rbx_ContextActionService & Base<Rbx_ContextActionService> & AnyIndex;
@@ -1649,6 +1675,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Debris
 interface Rbx_Debris extends Rbx_Instance {
+	/** Adds an Instance into the debris service that will later be destroyed.  Second argument 'lifetime' is optional and specifies how long (in seconds) to wait before destroying the item. If no time is specified then the item added will automatically be destroyed in 10 seconds. */
 	AddItem(item: Instance, lifetime?: number): void;
 }
 type Debris = Rbx_Debris & Base<Rbx_Debris> & AnyIndex;
@@ -2185,10 +2212,14 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // GlobalDataStore
 interface Rbx_GlobalDataStore extends Rbx_Instance {
+	/** Sets callback as a function to be executed any time the value associated with key is changed. It is important to disconnect the connection when the subscription to the key is no longer needed.  */
 	OnUpdate(key: string, callback: Function): RBXScriptConnection;
+	/** Returns the value of the entry in the DataStore with the given key */
 	GetAsync(key: string): unknown;
+	/** Increments the value of a particular key amd returns the incremented value */
 	IncrementAsync(key: string, delta?: number): unknown;
 	RemoveAsync(key: string): unknown;
+	/** Sets the value of the key. This overwrites any existing data stored in the key */
 	SetAsync(key: string, value?: any): void;
 }
 interface GlobalDataStore extends Rbx_GlobalDataStore, Base<Rbx_GlobalDataStore>, AnyIndex {}
@@ -2321,8 +2352,11 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 	Visible: boolean;
 	/** Describes the ordering in which overlapping GuiObjects will be drawn. A value of 1 is drawn first, while higher values are drawn in ascending order (each value draws over the last). */
 	ZIndex: number;
+	/** Smoothly moves a GuiObject from its current position to 'endPosition'. The only required argument is 'endPosition'. [More info](http://wiki.roblox.com/index.php/TweenPosition)  */
 	TweenPosition(endPosition: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
+	/** Smoothly translates a GuiObject's current size to 'endSize'. The only required argument is 'endSize'. [More info](http://wiki.roblox.com/index.php/TweenSize)  */
 	TweenSize(endSize: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
+	/** Smoothly translates a GuiObject's current size to 'endSize', and also smoothly translates the GuiObject's current position to 'endPosition'. The only required arguments are 'endSize' and 'endPosition'. [More info](http://wiki.roblox.com/index.php/TweenSizeAndPosition)  */
 	TweenSizeAndPosition(endSize: UDim2, endPosition: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
 	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
 	InputBegan: RBXScriptSignal<(input: Instance) => void>;
@@ -3490,7 +3524,9 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	Move(moveDirection: Vector3, relativeToCamera?: boolean): void;
 	RemoveAccessories(): void;
 	SetStateEnabled(state: Enum.HumanoidStateType, enabled: boolean): void;
+	/** Decreases health by the amount.  Use this instead of changing health directly to make sure weapons are filtered for things such as ForceField(s). */
 	TakeDamage(amount: number): void;
+	/** Takes any active gear/tools that the Humanoid is using and puts them into the backpack.  This function only works on Humanoids with a corresponding Player. */
 	UnequipTools(): void;
 	Climbing: RBXScriptSignal<(speed: number) => void>;
 	Died: RBXScriptSignal<() => void>;
@@ -3998,10 +4034,15 @@ interface Rbx_Lighting extends Rbx_Instance {
 	Outlines: boolean;
 	/** A string that represent the current time of day. Time is in 24-hour clock format "XX::YY:ZZ", where X is hour, Y is minute, and Z is seconds. */
 	TimeOfDay: string;
+	/** The number of minutes that the current time is past midnight.  If currently at midnight, returns 0.  Will return decimal values if not at an exact minute. */
 	GetMinutesAfterMidnight(): number;
+	/** Returns the lookVector (Vector3) of the moon. If this lookVector was used in a CFrame, the Part would face the moon. */
 	GetMoonDirection(): Vector3;
+	/** Currently always returns 0.75. MoonPhase cannot be edited. */
 	GetMoonPhase(): number;
+	/** Returns the lookVector (Vector3) of the sun. If this lookVector was used in a CFrame, the Part would face the sun. */
 	GetSunDirection(): Vector3;
+	/** Sets the time to be a certain number of minutes after midnight.  This works with integer and decimal values. */
 	SetMinutesAfterMidnight(minutes: number): void;
 	/** Fired whenever a property of Lighting is changed, or a skybox is added or removed. Skyboxes are of type 'Sky' and should be parented directly to lighting. */
 	LightingChanged: RBXScriptSignal<(skyboxChanged: boolean) => void>;
@@ -4234,6 +4275,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // MarketplaceService
 interface Rbx_MarketplaceService extends Rbx_Instance {
 	GetDeveloperProductsAsync(): Instance | undefined;
+	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
 	GetProductInfo(assetId: number, infoType?: Enum.InfoType): object;
 	UserOwnsGamePassAsync(userId: number, gamePassId: number): boolean;
 }
@@ -4626,11 +4668,15 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	Transparency: number;
 	/** How fast the Part is traveling in studs/second. This property is NOT recommended to be modified directly, unless there is good reason.  Otherwise, try using a BodyForce to move a Part. */
 	Velocity: Vector3;
+	/** Destroys SurfaceJoints with all parts that are touching this Instance (including internal joints in the Instance, as in a Model). */
 	BreakJoints(): void;
+	/** Returns a number that is the mass of this Instance.  Mass of a Part is immutable, and is changed only by the size of the Part. */
 	GetMass(): number;
 	GetNetworkOwnershipAuto(): boolean;
 	IsGrounded(): boolean;
+	/** Creates the appropriate SurfaceJoints with all parts that are touching this Instance (including internal joints in the Instance, as in a Model).  This uses the SurfaceTypes defined on the surfaces of parts to create the appropriate welds. [More info](http://wiki.roblox.com/index.php/MakeJoints) */
 	MakeJoints(): void;
+	/** Resizes a Part in the direction of the face defined by 'NormalId', by the amount specified by 'deltaAmount'. If the operation will expand the part to intersect another Instance, the part will not resize at all.  Return true if the call is successful, false otherwise. */
 	Resize(normalId: Enum.NormalId, deltaAmount: number): boolean;
 	SetNetworkOwnershipAuto(): void;
 }
@@ -4958,12 +5004,18 @@ interface Rbx_Instance {
 interface Rbx_Model extends Rbx_PVInstance {
 	/** A Part that serves as a reference for the Model's CFrame. Used in conjunction with GetModelPrimaryPartCFrame and SetModelPrimaryPartCFrame. Use this to rotate/translate all Parts relative to the PrimaryPart. */
 	PrimaryPart: BasePart;
+	/** Breaks all surface joints contained within */
 	BreakJoints(): void;
 	GetExtentsSize(): Vector3;
+	/** Returns the cframe of the Model.PrimaryPart. If PrimaryPart is nil, then this function will throw an error. */
 	GetPrimaryPartCFrame(): CFrame;
+	/** Creates the appropriate SurfaceJoints between all touching Parts contrained within the model. Technically, this function calls MakeJoints() on all Parts inside the model. */
 	MakeJoints(): void;
+	/** Moves the centroid of the Model to the specified location, respecting all relative distances between parts in the model. */
 	MoveTo(position: Vector3): void;
+	/** Sets the cframe of the Model.PrimaryPart. If PrimaryPart is nil, then this function will throw an error. This also sets the cframe of all descendant Parts relative to the cframe change to PrimaryPart. */
 	SetPrimaryPartCFrame(cframe: CFrame): void;
+	/** Similar to MoveTo(), except instead of moving to an explicit location, we use the model's current CFrame location and offset it. */
 	TranslateBy(delta: Vector3): void;
 }
 interface Model extends Rbx_Model, Base<Rbx_Model>, AnyIndex {}
@@ -5004,7 +5056,9 @@ interface Rbx_Workspace extends Rbx_Model {
 	readonly FilteringEnabled: boolean;
 	Gravity: number;
 	StreamingEnabled: boolean;
+	/** Returns parts in the area defined by the Region3, up to specified maxCount or 100, whichever is less */
 	FindPartsInRegion3(region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<Instance>;
+	/** Returns parts in the area defined by the Region3, up to specified maxCount or 100, whichever is less */
 	FindPartsInRegion3WithIgnoreList(region: Region3, ignoreDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
 	FindPartsInRegion3WithWhiteList(region: Region3, whitelistDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
 	GetNumAwakeParts(): number;
@@ -5313,6 +5367,7 @@ interface Rbx_Player extends Rbx_Instance {
 	GetRoleInGroup(groupId: number): string;
 	IsFriendsWith(userId: number): boolean;
 	IsInGroup(groupId: number): boolean;
+	/** Loads in a new character for this player.  This will replace the player's current character, if they have one. This should be used in conjunction with Players.CharacterAutoLoads to control spawning of characters. This function only works from a server-side script (NOT a LocalScript). */
 	LoadCharacter(): void;
 	Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
 	/** Fired periodically after the user has been AFK for a while.  Currently this event is only fired for the *local* Player.  "time" is the time in seconds that the user has been idle. */
@@ -7141,8 +7196,11 @@ interface Rbx_Instance {
 interface Rbx_TweenBase extends Rbx_Instance {
 	/** The current state of how the tween is animating. Possible values are Begin, Playing, Paused, Completed and Cancelled. This property is modified by using functions such as Tween:Play(), Tween:Pause(), and Tween:Cancel(). Read-only. */
 	readonly PlaybackState: Enum.PlaybackState;
+	/** Stops the tween animation. Animation can be restarted by calling Play(). Animation will start from the beginning values. */
 	Cancel(): void;
+	/** Temporarily stops the tween animation. Animation can be resumed by calling Play(). */
 	Pause(): void;
+	/** Starts or resumes (if Tween.PlaybackState is Paused) the tween animation. If current PlaybackState is Cancelled, this property will reset the tween to the beginning properties and play the animations from the beginning. */
 	Play(): void;
 	/** Fires when the tween either reaches PlaybackState Completed or Cancelled. PlaybackState of one of these types is passed as the first arg to the function listening to this event. */
 	Completed: RBXScriptSignal<(playbackState: Enum.PlaybackState) => void>;
@@ -7325,6 +7383,7 @@ interface Rbx_UIGridStyleLayout extends Rbx_UILayout {
 	SortOrder: Enum.SortOrder;
 	/** Determines how grid is placed within it's parent's container in the y direction. Can be Top, Center, or Bottom. */
 	VerticalAlignment: Enum.VerticalAlignment;
+	/** Forces a relayout of all elements. Useful when sort is set to Custom. */
 	ApplyLayout(): void;
 }
 interface UIGridStyleLayout extends Rbx_UIGridStyleLayout, Base<Rbx_UIGridStyleLayout>, AnyIndex {}
@@ -7400,9 +7459,13 @@ interface Rbx_UIPageLayout extends Rbx_UIGridStyleLayout {
 	TouchInputEnabled: boolean;
 	/** The length of the animation. */
 	TweenTime: number;
+	/** If the instance is in the layout, then it sets CurrentPage to it and animtes to it. If circular layout is set, it will take the shortest path. */
 	JumpTo(page: Instance): void;
+	/** If the index is >= 0 and less than the size of the layout, acts like JumpTo. If it's out of bounds and circular is set, it will animate the full distance between the in-bounds index of CurrentPage and the new index. */
 	JumpToIndex(index: number): void;
+	/** Sets CurrentPage to the page after the current page and animates to it, or does nothing if there isn't a next page. */
 	Next(): void;
+	/** Sets CurrentPage to the page after the current page and animates to it, or does nothing if there isn't a next page. */
 	Previous(): void;
 	/** Fires when a page comes into view, and is going to be rendered. */
 	PageEnter: RBXScriptSignal<(page: Instance) => void>;
@@ -7545,7 +7608,9 @@ interface Rbx_UserInputService extends Rbx_Instance {
 	readonly TouchEnabled: boolean;
 	readonly VREnabled: boolean;
 	GamepadSupports(gamepadNum: Enum.UserInputType, gamepadKeyCode: Enum.KeyCode): boolean;
+	/** Returns an InputObject that describes the device's current acceleration. This is fired with an InputObject, which has type Enum.InputType.Accelerometer, and position that shows the g force in each local device axis.  The delta property describes the amount of rotation that last happened. This event only fires locally. */
 	GetDeviceAcceleration(): Instance | undefined;
+	/** Returns an InputObject that describes the device's current gravity vector. This is fired with an InputObject, which has type Enum.InputType.Accelerometer, and position that shows the g force in each local device axis. The delta property describes the amount of rotation that last happened. This event only fires locally. */
 	GetDeviceGravity(): Instance | undefined;
 	GetFocusedTextBox(): Instance | undefined;
 	GetGamepadConnected(gamepadNum: Enum.UserInputType): boolean;

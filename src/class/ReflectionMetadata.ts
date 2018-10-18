@@ -35,7 +35,7 @@ export class ReflectionMetadata {
 	}
 
 	public getMemberDescription(memberSpecifier: Array<string>, className: string, name: string) {
-		const memberSpecifierStr = memberSpecifier.map(v => `@class='${v}'`).join(" and ");
+		const memberSpecifierStr = memberSpecifier.map(v => `@class='${v}'`).join(" or ");
 		return this.get(
 			classPrefix(className) +
 				`Item[${memberSpecifierStr}]/` +
