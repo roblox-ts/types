@@ -404,17 +404,16 @@ interface Rbx_MarketplaceService extends Rbx_Instance {
 	PromptPurchase(player: Player, assetId: number, equipIfPurchased?: boolean, currencyType?: Enum.CurrencyType): void;
 	/** Checks to see if 'Player' owns the product associated with 'assetId'. Returns true if the player owns it, false otherwise. This call will produce a warning if called on a guest player. */
 	PlayerOwnsAsset(player: Player, assetId: number): boolean;
-	/** Callback that is executed for pending Developer Product receipts. *
-	 *             If this function does not return Enum.ProductPurchaseDecision.PurchaseGranted, then you will not be granted the money for the purchase!
-	 *
-	 *             The callback will be invoked with a table, containing the following informational fields:
-	 *             PlayerId - the id of the player making the purchase.
-	 *             PlaceIdWherePurchased - the specific place where the purchase was made.
-	 *             PurchaseId - a unique identifier for the purchase, should be used to prevent granting an item multiple times for one purchase.
-	 *             ProductId - the id of the purchased product.
-	 *             CurrencyType - the type of currency used (Tix, Robux).
-	 *             CurrencySpent - the amount of currency spent on the product for this purchase.
-	 *
+	/**
+	 * Callback that is executed for pending Developer Product receipts.
+	 * If this function does not return Enum.ProductPurchaseDecision.PurchaseGranted, then you will not be granted the money for the purchase!
+	 * The callback will be invoked with a table, containing the following informational fields:
+	 * - **PlayerId** - the id of the player making the purchase.
+	 * - **PlaceIdWherePurchased** - the specific place where the purchase was made.
+	 * - **PurchaseId** - a unique identifier for the purchase, should be used to prevent granting an item multiple times for one purchase.
+	 * - **ProductId** - the id of the purchased product.
+	 * - **CurrencyType** - the type of currency used (Tix, Robux).
+	 * - **CurrencySpent** - the amount of currency spent on the product for this purchase.
 	 */
 	ProcessReceipt: (receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision;
 	PromptGamePassPurchaseFinished: RBXScriptSignal<
