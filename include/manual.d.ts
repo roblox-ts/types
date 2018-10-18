@@ -37,17 +37,22 @@ interface Rbx_BasePart extends Rbx_Instance {
 	SetNetworkOwner(playerInstance?: Player): void;
 	SubtractAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
 	UnionAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
+	/** Fired when the part stops touching another part */
 	TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
+	/** Fired when the part starts touching another part */
 	Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
 }
 
 interface Rbx_BillboardGui extends Rbx_LayerCollector {
+	/** The Object the billboard gui uses as its base to render from.  Currently, the only way to set this property is thru a script, and must exist in the workspace.  This will only render if the object assigned derives from BasePart. */
 	Adornee: BasePart | Attachment | undefined;
+	/** Specifies a Player that the BillboardGui will not render to. */
 	PlayerToHideFrom: Player | undefined;
 }
 
 interface Rbx_BindableEvent extends Rbx_Instance {
 	Fire(...arguments: Array<unknown>): void;
+	/** This event fires when the Fire() method is used.  Receives the variable length arguments from Fire(). */
 	Event: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
 }
 
@@ -57,6 +62,7 @@ interface Rbx_BindableFunction extends Rbx_Instance {
 }
 
 interface Rbx_Camera extends Rbx_Instance {
+	/** Where the Camera's focus is.  Any rotation of the camera will be about this subject. */
 	CameraSubject: Humanoid | BasePart | undefined;
 	GetPartsObscuringTarget(castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
 	WorldToScreenPoint(worldPoint: Vector3): [Vector3, boolean];
@@ -71,8 +77,11 @@ interface Rbx_Chat extends Rbx_Instance {
 }
 
 interface Rbx_ClickDetector extends Rbx_Instance {
+	/** Fired when a player clicks on the parent Part of ClickDetector. The argument provided is always of type Player. */
 	MouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
+	/** Fired when a player's mouse enters on the parent Part of ClickDetector. The argument provided is always of type Player. */
 	MouseHoverEnter: RBXScriptSignal<(playerWhoHovered: Player) => void>;
+	/** Fired when a player's mouse leaves the parent Part of ClickDetector. The argument provided is always of type Player. */
 	MouseHoverLeave: RBXScriptSignal<(playerWhoHovered: Player) => void>;
 	RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
 }
@@ -179,7 +188,9 @@ interface Rbx_GroupService extends Rbx_Instance {
 }
 
 interface Rbx_GuiObject extends Rbx_GuiBase2d {
+	/** Fired when a user holds at least one finger for a short amount of time on the same screen position on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally. */
 	TouchLongPress: RBXScriptSignal<(touchPositions: Array<Vector2>, state: Enum.UserInputState) => void>;
+	/** Fired when a user drags at least one finger on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'totalTranslation' is a Vector2, indicating how far the pan gesture has gone from its starting point. 'velocity' is a Vector2 that indicates how quickly the gesture is being performed in each dimension. 'state' indicates the Enum.UserInputState of the gesture. */
 	TouchPan: RBXScriptSignal<
 		(
 			touchPositions: Array<Vector2>,
@@ -188,12 +199,15 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 			state: Enum.UserInputState
 		) => void
 	>;
+	/** Fired when a user pinches their fingers on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the pinch gesture. 'scale' is a float that indicates the difference from the beginning of the pinch gesture. 'velocity' is a float indicating how quickly the pinch gesture is happening. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally. */
 	TouchPinch: RBXScriptSignal<
 		(touchPositions: Array<Vector2>, scale: number, velocity: number, state: Enum.UserInputState) => void
 	>;
+	/** Fired when a user rotates two fingers on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'rotation' is a float indicating how much the rotation has gone from the start of the gesture. 'velocity' is a float that indicates how quickly the gesture is being performed. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally. */
 	TouchRotate: RBXScriptSignal<
 		(touchPositions: Array<Vector2>, rotation: number, velocity: number, state: Enum.UserInputState) => void
 	>;
+	/** Fired when a user taps their finger on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the tap gesture. This event only fires locally.  This event will always fire regardless of game state. */
 	TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>) => void>;
 }
 
@@ -362,6 +376,7 @@ interface Rbx_MarketplaceService extends Rbx_Instance {
 	PromptGamePassPurchaseFinished: RBXScriptSignal<
 		(player: Player, gamePassId: number, wasPurchased: boolean) => void
 	>;
+	/** Fired when a 'player' dismisses a purchase dialog for 'assetId'.  If the player purchased the item 'isPurchased' will be true, otherwise it will be false. This call will produce a warning if called on a guest player. */
 	PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
 }
 
@@ -559,6 +574,7 @@ interface Rbx_StarterGui extends Rbx_BasePlayerGui {
 }
 
 interface Rbx_SurfaceGui extends Rbx_LayerCollector {
+	/** The Object the surface gui uses as its base to render from.  Currently, the only way to set this property is thru a script, and must exist in the workspace.  This will only render if the object assigned derives from BasePart. */
 	Adornee: BasePart | undefined;
 }
 
