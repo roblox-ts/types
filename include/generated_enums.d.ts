@@ -1466,7 +1466,15 @@ declare namespace Enum {
 		DiffLineNumAdditionBackground = 70,
 		DiffLineNumDeletionBackground = 71,
 		DiffFilePathBackground = 72,
-		DiffFilePathBorder = 73
+		DiffFilePathBorder = 73,
+		Separator = 74,
+		ButtonBorder = 75,
+		ButtonText = 76,
+		InputFieldBorder = 77,
+		CheckedFieldBackground = 78,
+		CheckedFieldBorder = 79,
+		CheckedFieldIndicator = 80,
+		HeaderSection = 81
 	}
 	enum StudioStyleGuideModifier {
 		Default = 0,

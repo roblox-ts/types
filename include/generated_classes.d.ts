@@ -9,9 +9,12 @@
 
 // Instance
 interface Rbx_Instance {
+	/** Determines whether or not an Instance can be saved when the game closes/attempts to save the game. Note: this only applies to games that use Data Persistence, or SavePlaceAsync. */
 	Archivable: boolean;
+	/** The string name of this Instance's most derived class. */
 	readonly ClassName: string;
 	Name: string;
+	/** The Instance that is directly above this Instance in the tree. */
 	Parent: Instance | undefined;
 	ClearAllChildren(): void;
 	Destroy(): void;
@@ -25,11 +28,15 @@ interface Rbx_Instance {
 	IsA(className: string): boolean;
 	IsAncestorOf(descendant: Instance): boolean;
 	IsDescendantOf(ancestor: Instance): boolean;
+	/** Fired when any of this object's ancestors change.  First argument 'child' is the object whose parent changed.  Second argument 'parent' is the first argument's new parent. */
 	AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance) => void>;
+	/** Fired after a property changes value.  The property argument is the name of the property */
 	Changed: RBXScriptSignal<(property: string) => void>;
 	ChildAdded: RBXScriptSignal<(child: Instance) => void>;
 	ChildRemoved: RBXScriptSignal<(child: Instance) => void>;
+	/** Fired after an Instance is parented to this object, or any of this object's descendants.  The 'descendant' argument is the Instance that is being added. */
 	DescendantAdded: RBXScriptSignal<(descendant: Instance) => void>;
+	/** Fired after an Instance is unparented from this object, or any of this object's descendants.  The 'descendant' argument is the Instance that is being added. */
 	DescendantRemoving: RBXScriptSignal<(descendant: Instance) => void>;
 }
 interface Instance extends Rbx_Instance, Base<Rbx_Instance>, AnyIndex {}
@@ -144,6 +151,7 @@ interface Rbx_Animation extends Rbx_Instance {
 	AnimationId: string;
 }
 interface Animation extends Rbx_Animation, Base<Rbx_Animation>, AnyIndex {}
+/** Represents a linked animation object, containing keyframes and poses. */
 declare class Animation {
 	constructor(parent?: Instance);
 }
@@ -159,6 +167,7 @@ interface Rbx_Instance {
 interface Rbx_AnimationController extends Rbx_Instance {
 }
 interface AnimationController extends Rbx_AnimationController, Base<Rbx_AnimationController>, AnyIndex {}
+/** Allows animations to be played on joints of the parent object. */
 declare class AnimationController {
 	constructor(parent?: Instance);
 }
@@ -191,6 +200,7 @@ interface Rbx_AnimationTrack extends Rbx_Instance {
 	Stopped: RBXScriptSignal<() => void>;
 }
 interface AnimationTrack extends Rbx_AnimationTrack, Base<Rbx_AnimationTrack>, AnyIndex {}
+/** Returned by a call to LoadAnimation. Controls the playback of an animation on a Humanoid. */
 declare abstract class AnimationTrack {
 	constructor(parent?: Instance);
 }
@@ -238,6 +248,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Attachment extends Rbx_Instance {
 	Axis: Vector3;
 	CFrame: CFrame;
+	/** Euler angles applied in YXZ order */
 	Orientation: Vector3;
 	Position: Vector3;
 	Rotation: Vector3;
@@ -245,6 +256,7 @@ interface Rbx_Attachment extends Rbx_Instance {
 	Visible: boolean;
 	readonly WorldAxis: Vector3;
 	readonly WorldCFrame: CFrame;
+	/** Euler angles applied in YXZ order */
 	readonly WorldOrientation: Vector3;
 	readonly WorldPosition: Vector3;
 	readonly WorldSecondaryAxis: Vector3;
@@ -318,12 +330,14 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_PlayerGui extends Rbx_BasePlayerGui {
 	readonly CurrentScreenOrientation: Enum.ScreenOrientation;
 	ScreenOrientation: Enum.ScreenOrientation;
+	/** Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject. */
 	SelectionImageObject: GuiObject;
 	GetTopbarTransparency(): number;
 	SetTopbarTransparency(transparency: number): void;
 	TopbarTransparencyChangedSignal: RBXScriptSignal<(transparency: number) => void>;
 }
 interface PlayerGui extends Rbx_PlayerGui, Base<Rbx_PlayerGui>, AnyIndex {}
+/** A container instance that syncs data between a single player and the server.  ScreenGui objects that are placed in this container will be shown to the Player parent only */
 declare abstract class PlayerGui {
 	constructor(parent?: Instance);
 }
@@ -377,6 +391,7 @@ interface Rbx_Beam extends Rbx_Instance {
 	SetTextureOffset(offset?: number): void;
 }
 interface Beam extends Rbx_Beam, Base<Rbx_Beam>, AnyIndex {}
+/** Makes beam between two attachments */
 declare class Beam {
 	constructor(parent?: Instance);
 }
@@ -392,6 +407,7 @@ interface Rbx_Instance {
 interface Rbx_BindableEvent extends Rbx_Instance {
 }
 interface BindableEvent extends Rbx_BindableEvent, Base<Rbx_BindableEvent>, AnyIndex {}
+/** Allow events defined in one script to be subscribed to by another script */
 declare class BindableEvent {
 	constructor(parent?: Instance);
 }
@@ -407,6 +423,7 @@ interface Rbx_Instance {
 interface Rbx_BindableFunction extends Rbx_Instance {
 }
 interface BindableFunction extends Rbx_BindableFunction, Base<Rbx_BindableFunction>, AnyIndex {}
+/** Allow functions defined in one script to be called by another script */
 declare class BindableFunction {
 	constructor(parent?: Instance);
 }
@@ -456,6 +473,7 @@ interface Rbx_BodyForce extends Rbx_BodyMover {
 	Force: Vector3;
 }
 interface BodyForce extends Rbx_BodyForce, Base<Rbx_BodyForce>, AnyIndex {}
+/** When parented to a physical part, BodyForce will continually exert a force upon its parent object. */
 declare class BodyForce {
 	constructor(parent?: Instance);
 }
@@ -469,12 +487,17 @@ interface Rbx_Instance {
 
 // BodyGyro
 interface Rbx_BodyGyro extends Rbx_BodyMover {
+	/** The cframe that this force is trying to orient its parent Part to.  Note: this force only uses the rotation of the cframe, not the position. */
 	CFrame: CFrame;
+	/** The dampening factor applied to this force */
 	D: number;
+	/** The maximum torque that will be exerted on the Part */
 	MaxTorque: Vector3;
+	/** The power continually applied to this force */
 	P: number;
 }
 interface BodyGyro extends Rbx_BodyGyro, Base<Rbx_BodyGyro>, AnyIndex {}
+/** Attempts to maintain a fixed orientation of its parent Part */
 declare class BodyGyro {
 	constructor(parent?: Instance);
 }
@@ -488,9 +511,13 @@ interface Rbx_Instance {
 
 // BodyPosition
 interface Rbx_BodyPosition extends Rbx_BodyMover {
+	/** The dampening factor applied to this force */
 	D: number;
+	/** The maximum force that will be exerted on the Part */
 	MaxForce: Vector3;
+	/** The power factor continually applied to this force */
 	P: number;
+	/** The Vector3 that this force is trying to position its parent Part to. */
 	Position: Vector3;
 	GetLastForce(): Vector3;
 	ReachedTarget: RBXScriptSignal<() => void>;
@@ -509,7 +536,9 @@ interface Rbx_Instance {
 
 // BodyThrust
 interface Rbx_BodyThrust extends Rbx_BodyMover {
+	/** The power continually applied to this force */
 	Force: Vector3;
+	/** The Vector3 location of where to apply the force to.  */
 	Location: Vector3;
 }
 interface BodyThrust extends Rbx_BodyThrust, Base<Rbx_BodyThrust>, AnyIndex {}
@@ -526,8 +555,11 @@ interface Rbx_Instance {
 
 // BodyVelocity
 interface Rbx_BodyVelocity extends Rbx_BodyMover {
+	/** The maximum force that will be exerted on the Part in each axis */
 	MaxForce: Vector3;
+	/** The amount of power we add to the system.  The higher the power, the quicker the force will achieve its goal. */
 	P: number;
+	/** The velocity this system tries to achieve.  How quickly the system reaches this velocity (if ever) is defined by P. */
 	Velocity: Vector3;
 	GetLastForce(): Vector3;
 	lastForce(): Vector3;
@@ -562,6 +594,7 @@ interface Rbx_RocketPropulsion extends Rbx_BodyMover {
 	ReachedTarget: RBXScriptSignal<() => void>;
 }
 interface RocketPropulsion extends Rbx_RocketPropulsion, Base<Rbx_RocketPropulsion>, AnyIndex {}
+/** A propulsion system that mimics a rocket */
 declare class RocketPropulsion {
 	constructor(parent?: Instance);
 }
@@ -638,13 +671,19 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Camera
 interface Rbx_Camera extends Rbx_Instance {
+	/** The current position and rotation of the Camera.  For most CameraTypes, the rotation is set such that the CoordinateFrame lookVector is pointing at the Focus. */
 	CFrame: CFrame;
+	/** Defines how the camera will behave. [More info](http://wiki.roblox.com/index.php/CameraType) */
 	CameraType: Enum.CameraType;
+	/** The current angle, or width, of what the camera can see.  Current acceptable values are from 20 degrees to 80. */
 	FieldOfView: number;
+	/** The current CoordinateFrame that the camera is looking at.  Note: it is not always guaranteed that the camera is always looking here. */
 	Focus: CFrame;
 	HeadLocked: boolean;
 	HeadScale: number;
+	/** The negative z-offset of the view frustum's near clipping plane. */
 	readonly NearPlaneZ: number;
+	/** Holds the x,y screen resolution of the viewport the camera is presenting (note: this can differ from the AbsoluteSize property of a full screen gui). */
 	readonly ViewportSize: Vector2;
 	GetLargestCutoffDistance(ignoreList: Array<Instance>): number;
 	GetPanSpeed(): number;
@@ -737,6 +776,7 @@ interface Rbx_CharacterMesh extends Rbx_CharacterAppearance {
 	OverlayTextureId: number;
 }
 interface CharacterMesh extends Rbx_CharacterMesh, Base<Rbx_CharacterMesh>, AnyIndex {}
+/** Modifies the appearance of a body part. */
 declare class CharacterMesh {
 	constructor(parent?: Instance);
 }
@@ -850,9 +890,11 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // ClickDetector
 interface Rbx_ClickDetector extends Rbx_Instance {
 	CursorIcon: string;
+	/** The maximum distance a Player's character can be from the ClickDetector's parent Part that will allow the Player's mouse to fire events on this object. */
 	MaxActivationDistance: number;
 }
 interface ClickDetector extends Rbx_ClickDetector, Base<Rbx_ClickDetector>, AnyIndex {}
+/** Raises mouse events for parent object */
 declare class ClickDetector {
 	constructor(parent?: Instance);
 }
@@ -901,6 +943,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Configuration extends Rbx_Instance {
 }
 interface Configuration extends Rbx_Configuration, Base<Rbx_Configuration>, AnyIndex {}
+/** An object that can be placed under parts to hold Value objects that represent that part's configuration */
 declare class Configuration {
 	constructor(parent?: Instance);
 }
@@ -916,8 +959,11 @@ interface Rbx_Instance {
 interface Rbx_Constraint extends Rbx_Instance {
 	Attachment0: Attachment;
 	Attachment1: Attachment;
+	/** The color of the in-game visual. */
 	Color: BrickColor;
+	/** Toggles whether or not this constraint is enabled. Disabled constraints will not render in game. */
 	Enabled: boolean;
+	/** Toggles the in-game visual associated with this constraint. */
 	Visible: boolean;
 }
 interface Constraint extends Rbx_Constraint, Base<Rbx_Constraint>, AnyIndex {}
@@ -976,12 +1022,19 @@ interface Rbx_Instance {
 
 // BallSocketConstraint
 interface Rbx_BallSocketConstraint extends Rbx_Constraint {
+	/** Enables the angular limit between the axis of Attachment0 and the axis of Attachment1. */
 	LimitsEnabled: boolean;
+	/** Radius of the in-game visual. Value in [0, inf). */
 	Radius: number;
+	/** Restitution of the limit, or how elastic it is. Value in [0, 1]. */
 	Restitution: number;
+	/** Enables the angular limits around the main axis of Attachment1. */
 	TwistLimitsEnabled: boolean;
+	/** Lower angular limit around the axis of Attachment1. Value in [-180, 180]. */
 	TwistLowerAngle: number;
+	/** Upper angular limit around the axis of Attachment1. Value in [-180, 180]. */
 	TwistUpperAngle: number;
+	/** Maximum angle between the two main axes. Value in [0, 180]. */
 	UpperAngle: number;
 }
 interface BallSocketConstraint extends Rbx_BallSocketConstraint, Base<Rbx_BallSocketConstraint>, AnyIndex {}
@@ -998,18 +1051,30 @@ interface Rbx_Instance {
 
 // HingeConstraint
 interface Rbx_HingeConstraint extends Rbx_Constraint {
+	/** Type of the rotational actuator: None, Motor, or Servo.  */
 	ActuatorType: Enum.ActuatorType;
+	/** Target angular speed. This value is unsigned as the servo will always move toward its target. Value in [0, inf). */
 	AngularSpeed: number;
+	/** The target angular velocity of the motor in radians per second around the rotation axis. Value in [0, inf). */
 	AngularVelocity: number;
+	/** Signed angle between the SecondaryAxis of Attchement0 and the SecondaryAxis of Attachment1 around the rotation axis. Value in [-180, 180]. */
 	readonly CurrentAngle: number;
+	/** Enables the angular limits on rotations around the main axis of Attachment0. */
 	LimitsEnabled: boolean;
+	/** Lower limit for the angle from the SecondaryAxis of Attachment0 to the SecondaryAxis of Attachment1 around the rotation axis. Value in [-180, 180]. */
 	LowerAngle: number;
+	/** The maximum angular acceleration of the motor in radians per second square. Value in [0, inf). */
 	MotorMaxAcceleration: number;
+	/** The maximum torque the motor can apply to achieve the target angular velocity. Value in [0, inf). */
 	MotorMaxTorque: number;
+	/** Radius of the in-game visual. Value in [0, inf). */
 	Radius: number;
 	Restitution: number;
+	/** Maximum torque the servo motor can apply. Value in [0, inf). */
 	ServoMaxTorque: number;
+	/** Target angle for the SecondaryAxis of Attachment1 from the SecondaryAxis of Attachment0 around the rotation axis. Value in [-180, 180]. */
 	TargetAngle: number;
+	/** Upper limit for the angle from the SecondaryAxis of Attachment0 to the SecondaryAxis of Attachment1 around the rotation axis. Value in [-180, 180]. */
 	UpperAngle: number;
 }
 interface HingeConstraint extends Rbx_HingeConstraint, Base<Rbx_HingeConstraint>, AnyIndex {}
@@ -1046,8 +1111,11 @@ interface Rbx_Instance {
 
 // RodConstraint
 interface Rbx_RodConstraint extends Rbx_Constraint {
+	/** Current distance between the two attachments. Value in [0, inf). */
 	readonly CurrentDistance: number;
+	/** The length of the rod or the distance to be maintained between the two attachments. Value in [0, inf). */
 	Length: number;
+	/** The thickness of the in-game visual (diameter). Value in [0, inf). */
 	Thickness: number;
 }
 interface RodConstraint extends Rbx_RodConstraint, Base<Rbx_RodConstraint>, AnyIndex {}
@@ -1064,9 +1132,13 @@ interface Rbx_Instance {
 
 // RopeConstraint
 interface Rbx_RopeConstraint extends Rbx_Constraint {
+	/** Current distance between the two attachments. Value in [0, inf). */
 	readonly CurrentDistance: number;
+	/** The length of the rope or the maximum distance between the two attachments. Value in [0, inf). */
 	Length: number;
+	/** Restitution of the rope, or how elastic it is. Value in [0, 1]. */
 	Restitution: number;
+	/** The thickness of the in-game visual (diameter). Value in [0, inf). */
 	Thickness: number;
 }
 interface RopeConstraint extends Rbx_RopeConstraint, Base<Rbx_RopeConstraint>, AnyIndex {}
@@ -1083,18 +1155,31 @@ interface Rbx_Instance {
 
 // SlidingBallConstraint
 interface Rbx_SlidingBallConstraint extends Rbx_Constraint {
+	/** Type of linear actuator (along the axis of the slider): None, Motor, or Servo. */
 	ActuatorType: Enum.ActuatorType;
+	/** Current position of Attachment1 with respect to Attachment0 along the slider axis. Value in (-inf, inf). */
 	readonly CurrentPosition: number;
+	/** Enables the limits on the linear motion along the axis of the slider. */
 	LimitsEnabled: boolean;
+	/** Lower limit for the position of Attachment1 with respect to Attachment0 along the slider axis. Value in (-inf, inf). */
 	LowerLimit: number;
+	/** The maximum acceleration of the motor in studs per second squared. Value in [0, inf). */
 	MotorMaxAcceleration: number;
+	/** The maximum force the motor can apply to achieve the target velocity. Units are mass * studs / seconds^2. Value in [0, inf). */
 	MotorMaxForce: number;
+	/** Restitution of the two limits, or how elastic they are. Value in [0, 1]. */
 	Restitution: number;
+	/** Maximum force the servo motor can apply. Units are mass * studs / seconds^2. Value in [0, inf). */
 	ServoMaxForce: number;
+	/** Size of the in-game visual associated with this constraint. Value in [0, inf). */
 	Size: number;
+	/** Target speed in studs per second. This value is unsigned as the servo will always move toward its target. Value in [0, inf). */
 	Speed: number;
+	/** Target position of Attachment1 with respect to Attachment0 along the slider axis. Value in (-inf, inf). */
 	TargetPosition: number;
+	/** Upper limit for the position of Attachment1 with respect to Attachment0 along the slider axis. Value in (-inf, inf). */
 	UpperLimit: number;
+	/** The target linear velocity of the motor in studs per second along the slider axis. Value in (-inf, inf). */
 	Velocity: number;
 }
 interface SlidingBallConstraint extends Rbx_SlidingBallConstraint, Base<Rbx_SlidingBallConstraint>, AnyIndex {}
@@ -1111,20 +1196,35 @@ interface Rbx_Instance {
 
 // CylindricalConstraint
 interface Rbx_CylindricalConstraint extends Rbx_SlidingBallConstraint {
+	/** Type of angular actuator: None, Motor, or Servo.  */
 	AngularActuatorType: Enum.ActuatorType;
+	/** Enables the angular limits around the rotation axis. */
 	AngularLimitsEnabled: boolean;
+	/** Restitution of the two limits, or how elastic they are. Value in [0, 1].  */
 	AngularRestitution: number;
+	/** Target angular speed. This value is unsigned as the servo will always move toward its target. In radians per second. Value in [0, inf).  */
 	AngularSpeed: number;
+	/** The target angular velocity of the motor in radians per second around the rotation axis. Value in [0, inf). */
 	AngularVelocity: number;
+	/** Signed angle (in degrees) between the reference axis and the secondary axis of Attachment1 around the rotation axis. Value in [-180, 180].  */
 	readonly CurrentAngle: number;
+	/** Direction of the rotation axis as an angle from the x-axis in the xy-plane of Attachment0. Value in [-180, 180].  */
 	InclinationAngle: number;
+	/** Lower limit for the angle (in degrees) between the reference axis and the SecondaryAxis of Attachment1 around the rotation axis. Value in [-180, 180]. */
 	LowerAngle: number;
+	/** The maximum angular acceleration of the motor in radians per second squared. Value in [0, inf). */
 	MotorMaxAngularAcceleration: number;
+	/** The maximum torque the motor can apply to achieve the target angular velocity. The units are mass * studs^2 / second^2. Value in [0, inf). */
 	MotorMaxTorque: number;
+	/** Enable the visibility of the rotation axis. */
 	RotationAxisVisible: boolean;
+	/** Maximum torque the servo motor can apply. The units are mass * studs^2 / second^2. Value in [0, inf).  */
 	ServoMaxTorque: number;
+	/**  Target angle (in degrees) between the reference axis and the secondary axis of Attachment1 around the rotation axis. Value in [-180, 180]. */
 	TargetAngle: number;
+	/** Upper limit for the angle (in degrees) between the reference axis and the SecondaryAxis of Attachment1 around the rotation axis. Value in [-180, 180].  */
 	UpperAngle: number;
+	/** The unit vector direction of the rotation axis in world coordinates. */
 	readonly WorldRotationAxis: Vector3;
 }
 interface CylindricalConstraint extends Rbx_CylindricalConstraint, Base<Rbx_CylindricalConstraint>, AnyIndex {}
@@ -1156,16 +1256,27 @@ interface Rbx_Instance {
 
 // SpringConstraint
 interface Rbx_SpringConstraint extends Rbx_Constraint {
+	/** The number of coils in the in-game visual. Value in [0, 8]. */
 	Coils: number;
+	/** Current distance between the two attachments. Value in [0, inf). */
 	readonly CurrentLength: number;
+	/** The damping parameter of the spring. The force is scaled with respect to relative velocity. The units of this property are force / velocity. Value in [0, inf). */
 	Damping: number;
+	/** The distance (in studs) between the two attachments at which the spring exerts no stiffness force. Value in [0, inf). */
 	FreeLength: number;
+	/** Enables limits on the length of the spring. */
 	LimitsEnabled: boolean;
+	/** The maximum force that the spring can apply. Useful to prevent instabilities. The units are mass * studs / seconds^2. Value in [0, inf). */
 	MaxForce: number;
+	/** Maximum spring length, or the maxium distance between the two attachments. Value in [0, inf). */
 	MaxLength: number;
+	/** Minimum spring length, or the minimum distance between the two attachments. Value in [0, inf). */
 	MinLength: number;
+	/** The radius of the in-game spring coil visual. Value in [0, inf). */
 	Radius: number;
+	/** The stiffness parameter of the spring. Force is scaled based on distance from the free length. The units of this property are force / distance. Value in [0, inf). */
 	Stiffness: number;
+	/** The thickness of the spring wire (diameter) in the in-game visual. Value in [0, inf). */
 	Thickness: number;
 }
 interface SpringConstraint extends Rbx_SpringConstraint, Base<Rbx_SpringConstraint>, AnyIndex {}
@@ -1368,6 +1479,21 @@ interface Rbx_Instance {
 }
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "CorePackages"): CorePackages;
+}
+
+// CoreScriptSyncService
+interface Rbx_CoreScriptSyncService extends Rbx_Instance {
+}
+type CoreScriptSyncService = Rbx_CoreScriptSyncService & Base<Rbx_CoreScriptSyncService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "CoreScriptSyncService"): this is CoreScriptSyncService;
+	FindFirstAncestorOfClass(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
+	FindFirstAncestorWhichIsA(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
+	FindFirstChildOfClass(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
+	FindFirstAncestorWhichIsA(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "CoreScriptSyncService"): CoreScriptSyncService;
 }
 
 // CustomEvent
@@ -1630,18 +1756,27 @@ interface Rbx_Instance {
 
 // Dialog
 interface Rbx_Dialog extends Rbx_Instance {
+	/** Indicates how the dialog may be used by players. Use Enum.DialogBehaviorType.SinglePlayer if only one player should interact with the dialog at a time, otherwise use Enum.DialogBehaviorType.MultiplePlayers. */
 	BehaviorType: Enum.DialogBehaviorType;
+	/** The maximum distance that the player's character can be from the dialog's parent in order to use the dialog. */
 	ConversationDistance: number;
+	/** Indicates whether or not an extra choice is available for the player to exit the dialog tree at this node. */
 	GoodbyeChoiceActive: boolean;
+	/** The prompt text for an extra choice that allows the player to exit the dialog tree at this node. */
 	GoodbyeDialog: string;
+	/** Indicates whether or not the dialog is currently being used by one or more players. */
 	InUse: boolean;
+	/** The chat message that is displayed to the player when they first activate the dialog. */
 	InitialPrompt: string;
+	/** Describes the purpose of the dialog, which is used to display a relevant icon on the dialog's activation button. */
 	Purpose: Enum.DialogPurpose;
+	/** Describes the tone of the dialog, which is used to display a relevant color in the dialog interface. */
 	Tone: Enum.DialogTone;
 	TriggerDistance: number;
 	TriggerOffset: Vector3;
 }
 interface Dialog extends Rbx_Dialog, Base<Rbx_Dialog>, AnyIndex {}
+/** An object used to make dialog trees to converse with players */
 declare class Dialog {
 	constructor(parent?: Instance);
 }
@@ -1661,6 +1796,7 @@ interface Rbx_DialogChoice extends Rbx_Instance {
 	UserDialog: string;
 }
 interface DialogChoice extends Rbx_DialogChoice, Base<Rbx_DialogChoice>, AnyIndex {}
+/** An object used to make dialog trees to converse with players */
 declare class DialogChoice {
 	constructor(parent?: Instance);
 }
@@ -1693,15 +1829,20 @@ interface Rbx_Instance {
 
 // Explosion
 interface Rbx_Explosion extends Rbx_Instance {
+	/** How much force this Explosion exerts on objects within it's BlastRadius. Setting this to 0 creates a purely graphical effect. A larger number will cause Parts to fly away at higher velocities. */
 	BlastPressure: number;
+	/** How big the Explosion is. This is a circle starting from the center of the Explosion's Position, the larger this property the larger the circle of destruction. */
 	BlastRadius: number;
 	DestroyJointRadiusPercent: number;
+	/** Defines the behavior of the Explosion. [More info](http://wiki.roblox.com/index.php/ExplosionType) */
 	ExplosionType: Enum.ExplosionType;
+	/** Where the Explosion occurs in absolute world coordinates. */
 	Position: Vector3;
 	Visible: boolean;
 	Hit: RBXScriptSignal<(part: Instance, distance: number) => void>;
 }
 interface Explosion extends Rbx_Explosion, Base<Rbx_Explosion>, AnyIndex {}
+/** Creates an Explosion! This can be used as a purely graphical effect, or can be made to damage objects. */
 declare class Explosion {
 	constructor(parent?: Instance);
 }
@@ -1734,9 +1875,11 @@ interface Rbx_Decal extends Rbx_FaceInstance {
 	Color3: Color3;
 	LocalTransparencyModifier: number;
 	Texture: string;
+	/** How visible the decal is.  1 is completely invisible, while 0 is completely opaque */
 	Transparency: number;
 }
 interface Decal extends Rbx_Decal, Base<Rbx_Decal>, AnyIndex {}
+/** Descibes a texture that is placed on one of the sides of the Part it is parented to. */
 declare class Decal {
 	constructor(parent?: Instance);
 }
@@ -1816,13 +1959,18 @@ interface Rbx_Instance {
 
 // Fire
 interface Rbx_Fire extends Rbx_Instance {
+	/** The color of the base of the fire.  See SecondaryColor for more. */
 	Color: Color3;
 	Enabled: boolean;
+	/** How hot the fire appears to be. The flame moves quicker the higher this value is set. */
 	Heat: number;
+	/** The color the fire interpolates to from Color. The longer a particle exists in the fire, the close to this color it becomes. */
 	SecondaryColor: Color3;
+	/** How large the fire appears to be. */
 	Size: number;
 }
 interface Fire extends Rbx_Fire, Base<Rbx_Fire>, AnyIndex {}
+/** Makes the parent part or model object emit fire */
 declare class Fire {
 	constructor(parent?: Instance);
 }
@@ -1898,6 +2046,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Folder extends Rbx_Instance {
 }
 interface Folder extends Rbx_Folder, Base<Rbx_Folder>, AnyIndex {}
+/** An object that can be created to hold and organize objects */
 declare class Folder {
 	constructor(parent?: Instance);
 }
@@ -1914,6 +2063,7 @@ interface Rbx_ForceField extends Rbx_Instance {
 	Visible: boolean;
 }
 interface ForceField extends Rbx_ForceField, Base<Rbx_ForceField>, AnyIndex {}
+/** Prevents joint breakage from explosions, and stops Humanoids from taking damage */
 declare class ForceField {
 	constructor(parent?: Instance);
 }
@@ -1950,6 +2100,7 @@ interface Rbx_FunctionalTest extends Rbx_Instance {
 	Warn(message?: string): void;
 }
 interface FunctionalTest extends Rbx_FunctionalTest, Base<Rbx_FunctionalTest>, AnyIndex {}
+/** Deprecated. Use TestService instead */
 declare class FunctionalTest {
 	constructor(parent?: Instance);
 }
@@ -1963,7 +2114,6 @@ interface Rbx_Instance {
 
 // GamePassService
 interface Rbx_GamePassService extends Rbx_Instance {
-	PlayerHasPass(player: Instance, gamePassId: number): boolean;
 }
 type GamePassService = Rbx_GamePassService & Base<Rbx_GamePassService> & AnyIndex;
 interface Rbx_Instance {
@@ -2042,6 +2192,7 @@ interface Rbx_GlobalDataStore extends Rbx_Instance {
 	SetAsync(key: string, value?: any): void;
 }
 interface GlobalDataStore extends Rbx_GlobalDataStore, Base<Rbx_GlobalDataStore>, AnyIndex {}
+/** Exposes functions for saving and loading data for the DataStoreService */
 declare abstract class GlobalDataStore {
 	constructor(parent?: Instance);
 }
@@ -2057,6 +2208,7 @@ interface Rbx_Instance {
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
 }
 interface OrderedDataStore extends Rbx_OrderedDataStore, Base<Rbx_OrderedDataStore>, AnyIndex {}
+/** A type of DataStore where values must be positive integers. This makes OrderedDataStore suitable for leaderboard related scripting where you are required to order large amounts of data efficiently. */
 declare abstract class OrderedDataStore {
 	constructor(parent?: Instance);
 }
@@ -2115,8 +2267,10 @@ interface Rbx_Instance {
 
 // GuiBase2d
 interface Rbx_GuiBase2d extends Rbx_GuiBase {
+	/** A read-only Vector2 value that is the GuiObject's current position (x,y) in pixel space, from the top left corner of the GuiObject. */
 	readonly AbsolutePosition: Vector2;
 	readonly AbsoluteRotation: number;
+	/** A read-only Vector2 value that is the GuiObject's current size (width, height) in pixel space. */
 	readonly AbsoluteSize: Vector2;
 	AutoLocalize: boolean;
 	RootLocalizationTable: LocalizationTable;
@@ -2135,40 +2289,58 @@ interface Rbx_Instance {
 
 // GuiObject
 interface Rbx_GuiObject extends Rbx_GuiBase2d {
+	/** If true, this GuiObject can fire mouse events and will pass them to any GuiObjects layered underneath, while false will do neither. */
 	Active: boolean;
 	AnchorPoint: Vector2;
+	/** A Color3 value that specifies the background color for the GuiObject. This value is ignored if the Style property (not found on all GuiObjects) is set to something besides custom. */
 	BackgroundColor3: Color3;
+	/** A number value that specifies how transparent the background of the GuiObject is. This value is ignored if the Style property (not found on all GuiObjects) is set to something besides custom. */
 	BackgroundTransparency: number;
+	/** A Color3 value that specifies the color of the outline of the GuiObject. This value is ignored if the Style property (not found on all GuiObjects) is set to something besides custom. */
 	BorderColor3: Color3;
+	/** A number value that specifies the thickness (in pixels) of the outline of the GuiObject. Currently this value can only be set to either 0 or 1, any other number has no effect. This value is ignored if the Style property (not found on all GuiObjects) is set to something besides custom. */
 	BorderSizePixel: number;
+	/** If set to true, any descendants of this GuiObject will only render if contained within it's borders. If set to false, all descendants will render regardless of position. */
 	ClipsDescendants: boolean;
 	LayoutOrder: number;
 	NextSelectionDown: GuiObject;
 	NextSelectionLeft: GuiObject;
 	NextSelectionRight: GuiObject;
 	NextSelectionUp: GuiObject;
+	/** A UDim2 value describing the position of the top-left corner of the GuiObject on screen. More information on UDim2 is available [here](http://wiki.roblox.com/index.php/UDim2). */
 	Position: UDim2;
 	Rotation: number;
 	Selectable: boolean;
+	/** Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject. */
 	SelectionImageObject: GuiObject;
+	/** A UDim2 value describing the size of the GuiObject on screen in both absolute and relative coordinates. More information on UDim2 is available [here](http://wiki.roblox.com/index.php/UDim2). */
 	Size: UDim2;
+	/** The direction(s) that an object can be resized in. [More info](http://wiki.roblox.com/index.php/SizeConstraint). */
 	SizeConstraint: Enum.SizeConstraint;
 	Transparency: number;
 	Visible: boolean;
+	/** Describes the ordering in which overlapping GuiObjects will be drawn. A value of 1 is drawn first, while higher values are drawn in ascending order (each value draws over the last). */
 	ZIndex: number;
 	TweenPosition(endPosition: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
 	TweenSize(endSize: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
 	TweenSizeAndPosition(endSize: UDim2, endPosition: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
+	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
 	InputBegan: RBXScriptSignal<(input: Instance) => void>;
+	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
 	InputChanged: RBXScriptSignal<(input: Instance) => void>;
+	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
 	InputEnded: RBXScriptSignal<(input: Instance) => void>;
+	/** Fired when the mouse enters a GuiObject, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
 	MouseEnter: RBXScriptSignal<(x: number, y: number) => void>;
+	/** Fired when the mouse leaves a GuiObject, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
 	MouseLeave: RBXScriptSignal<(x: number, y: number) => void>;
+	/** Fired when the mouse is inside a GuiObject and moves, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
 	MouseMoved: RBXScriptSignal<(x: number, y: number) => void>;
 	MouseWheelBackward: RBXScriptSignal<(x: number, y: number) => void>;
 	MouseWheelForward: RBXScriptSignal<(x: number, y: number) => void>;
 	SelectionGained: RBXScriptSignal<() => void>;
 	SelectionLost: RBXScriptSignal<() => void>;
+	/** Fired when a user swipes their fingers on a TouchEnabled device. 'swipeDirection' is an Enum.SwipeDirection, indicating the direction the user swiped. 'numberOfTouches' is an int that indicates how many touches were involved with the gesture.  This event only fires locally. */
 	TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number) => void>;
 }
 interface GuiObject extends Rbx_GuiObject, Base<Rbx_GuiObject>, AnyIndex {}
@@ -2185,9 +2357,11 @@ interface Rbx_Instance {
 
 // Frame
 interface Rbx_Frame extends Rbx_GuiObject {
+	/** Determines how a frame will look. Uses Enum.FrameStyle. [More info](http://wiki.roblox.com/index.php?title=API:Enum/FrameStyle) */
 	Style: Enum.FrameStyle;
 }
 interface Frame extends Rbx_Frame, Base<Rbx_Frame>, AnyIndex {}
+/** A container object used to layout other GUI objects */
 declare class Frame {
 	constructor(parent?: Instance);
 }
@@ -2201,19 +2375,29 @@ interface Rbx_Instance {
 
 // GuiButton
 interface Rbx_GuiButton extends Rbx_GuiObject {
+	/** Determines whether a button changes color automatically when reacting to mouse events. */
 	AutoButtonColor: boolean;
+	/** Allows the mouse to be free in first person mode. If a button with this property set to true is visible, the mouse is 'free' in first person mode. */
 	Modal: boolean;
 	Selected: boolean;
+	/** Determines how a button will look, including mouse event states. Uses Enum.ButtonStyle. [More info](http://wiki.roblox.com/index.php?title=API:Class/GuiButton/Style) */
 	Style: Enum.ButtonStyle;
 	Activated: RBXScriptSignal<(inputObject: Instance) => void>;
+	/** Fired when the mouse is over the button, and the mouse down and up events fire without the mouse leaving the button. */
 	MouseButton1Click: RBXScriptSignal<() => void>;
+	/** Fired when the mouse button is pushed down on a button. */
 	MouseButton1Down: RBXScriptSignal<(x: number, y: number) => void>;
+	/** Fired when the mouse button is released on a button. */
 	MouseButton1Up: RBXScriptSignal<(x: number, y: number) => void>;
+	/** This function currently does not work :( */
 	MouseButton2Click: RBXScriptSignal<() => void>;
+	/** This function currently does not work :( */
 	MouseButton2Down: RBXScriptSignal<(x: number, y: number) => void>;
+	/** This function currently does not work :( */
 	MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
 }
 interface GuiButton extends Rbx_GuiButton, Base<Rbx_GuiButton>, AnyIndex {}
+/** A GUI button containing an Image */
 declare abstract class GuiButton {
 	constructor(parent?: Instance);
 }
@@ -2228,6 +2412,7 @@ interface Rbx_Instance {
 // ImageButton
 interface Rbx_ImageButton extends Rbx_GuiButton {
 	HoverImage: string;
+	/** Specifies the asset id of the texture to display. [More info](http://wiki.roblox.com/index.php?title=API:Class/ImageButton/Image)  */
 	Image: string;
 	ImageColor3: Color3;
 	ImageRectOffset: Vector2;
@@ -2235,12 +2420,15 @@ interface Rbx_ImageButton extends Rbx_GuiButton {
 	ImageTransparency: number;
 	readonly IsLoaded: boolean;
 	PressedImage: string;
+	/** Specifies how an image should be displayed. See ScaleType for more info. */
 	ScaleType: Enum.ScaleType;
+	/** If ScaleType is set to Slice, this Rect is used to specify the central part of the image. Everything outside of this is considered to be the border. */
 	SliceCenter: Rect;
-	SliceScale: number;
+	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 }
 interface ImageButton extends Rbx_ImageButton, Base<Rbx_ImageButton>, AnyIndex {}
+/** A GUI button containing an Image */
 declare class ImageButton {
 	constructor(parent?: Instance);
 }
@@ -2272,6 +2460,7 @@ interface Rbx_TextButton extends Rbx_GuiButton {
 	TextYAlignment: Enum.TextYAlignment;
 }
 interface TextButton extends Rbx_TextButton, Base<Rbx_TextButton>, AnyIndex {}
+/** A GUI button containing text */
 declare class TextButton {
 	constructor(parent?: Instance);
 }
@@ -2300,18 +2489,22 @@ interface Rbx_Instance {
 
 // ImageLabel
 interface Rbx_ImageLabel extends Rbx_GuiLabel {
+	/** Specifies the id of the texture to display. [More info](http://wiki.roblox.com/index.php?title=API:Class/ImageLabel/Image) */
 	Image: string;
 	ImageColor3: Color3;
 	ImageRectOffset: Vector2;
 	ImageRectSize: Vector2;
 	ImageTransparency: number;
 	readonly IsLoaded: boolean;
+	/** Specifies how an image should be displayed. See ScaleType for more info. */
 	ScaleType: Enum.ScaleType;
+	/** If ScaleType is set to Slice, this Rect is used to specify the central part of the image. Everything outside of this is considered to be the border. */
 	SliceCenter: Rect;
-	SliceScale: number;
+	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 }
 interface ImageLabel extends Rbx_ImageLabel, Base<Rbx_ImageLabel>, AnyIndex {}
+/** A GUI object containing an Image */
 declare class ImageLabel {
 	constructor(parent?: Instance);
 }
@@ -2343,6 +2536,7 @@ interface Rbx_TextLabel extends Rbx_GuiLabel {
 	TextYAlignment: Enum.TextYAlignment;
 }
 interface TextLabel extends Rbx_TextLabel, Base<Rbx_TextLabel>, AnyIndex {}
+/** A GUI object containing text */
 declare class TextLabel {
 	constructor(parent?: Instance);
 }
@@ -2356,23 +2550,32 @@ interface Rbx_Instance {
 
 // ScrollingFrame
 interface Rbx_ScrollingFrame extends Rbx_GuiObject {
+	/** The size in pixels of the frame, without the scrollbars. */
 	readonly AbsoluteWindowSize: Vector2;
+	/** The "Down" image on the vertical scrollbar. Size of this is always ScrollBarThickness by ScrollBarThickness. This is also used as the "right" image on the horizontal scroll bar. */
 	BottomImage: string;
+	/** The absolute position the scroll frame is in respect to the canvas size. The minimum this can be set to is (0,0), while the max is the absolute canvas size - AbsoluteWindowSize. */
 	CanvasPosition: Vector2;
+	/** Determines the size of the area that is scrollable. The UDim2 is calculated using the parent gui's size, similar to the regular Size property on gui objects. */
 	CanvasSize: UDim2;
 	ElasticBehavior: Enum.ElasticBehavior;
 	HorizontalScrollBarInset: Enum.ScrollBarInset;
+	/** The "Middle" image on the vertical scrollbar. Size of this can vary in the y direction, but is always set at ScrollBarThickness in x direction. This is also used as the "mid" image on the horizontal scroll bar. */
 	MidImage: string;
 	ScrollBarImageColor3: Color3;
 	ScrollBarImageTransparency: number;
+	/** How thick the scroll bar appears. This applies to both the horizontal and vertical scroll bars. Can be set to 0 for no bars render. */
 	ScrollBarThickness: number;
 	ScrollingDirection: Enum.ScrollingDirection;
+	/** Determines whether or not scrolling is allowed on this frame. If turned off, no scroll bars will be rendered. */
 	ScrollingEnabled: boolean;
+	/** The "Up" image on the vertical scrollbar. Size of this is always ScrollBarThickness by ScrollBarThickness. This is also used as the "left" image on the horizontal scroll bar. */
 	TopImage: string;
 	VerticalScrollBarInset: Enum.ScrollBarInset;
 	VerticalScrollBarPosition: Enum.VerticalScrollBarPosition;
 }
 interface ScrollingFrame extends Rbx_ScrollingFrame, Base<Rbx_ScrollingFrame>, AnyIndex {}
+/** A container object used to layout other GUI objects, and allows for scrolling. */
 declare class ScrollingFrame {
 	constructor(parent?: Instance);
 }
@@ -2413,6 +2616,7 @@ interface Rbx_TextBox extends Rbx_GuiObject {
 	Focused: RBXScriptSignal<() => void>;
 }
 interface TextBox extends Rbx_TextBox, Base<Rbx_TextBox>, AnyIndex {}
+/** A text entry box */
 declare class TextBox {
 	constructor(parent?: Instance);
 }
@@ -2431,6 +2635,7 @@ interface Rbx_LayerCollector extends Rbx_GuiBase2d {
 	ZIndexBehavior: Enum.ZIndexBehavior;
 }
 interface LayerCollector extends Rbx_LayerCollector, Base<Rbx_LayerCollector>, AnyIndex {}
+/** The base class of ScreenGui, BillboardGui, and SurfaceGui. */
 declare abstract class LayerCollector {
 	constructor(parent?: Instance);
 }
@@ -2444,19 +2649,27 @@ interface Rbx_Instance {
 
 // BillboardGui
 interface Rbx_BillboardGui extends Rbx_LayerCollector {
+	/** If true, this GuiObject can fire mouse events and will pass them to any GuiObjects layered underneath, while false will do neither. */
 	Active: boolean;
+	/** If true, billboard gui does not get occluded by 3D objects, but always renders on the screen. */
 	AlwaysOnTop: boolean;
 	ClipsDescendants: boolean;
+	/** A Vector3 (x,y,z) defined in studs that will offset the gui from the extents of the 3d object it is rendering from. */
 	ExtentsOffset: Vector3;
 	ExtentsOffsetWorldSpace: Vector3;
+	/** Specifies the amount of influence lighting has on the billboard gui. A value of 0 is unlit, 1 is fully lit. Fractional values blend from unlit to lit. */
 	LightInfluence: number;
 	MaxDistance: number;
+	/** A UDim2 value describing the size of the BillboardGui. More information on UDim2 is available [here](http://wiki.roblox.com/index.php/UDim2). Relative values are defined as one-to-one with studs. */
 	Size: UDim2;
+	/** A Vector2 (x,y) defined in studs that will offset the gui size from it's current size. */
 	SizeOffset: Vector2;
+	/** A Vector3 (x,y,z) defined in studs that will offset the gui from the centroid of the 3d object it is rendering from */
 	StudsOffset: Vector3;
 	StudsOffsetWorldSpace: Vector3;
 }
 interface BillboardGui extends Rbx_BillboardGui, Base<Rbx_BillboardGui>, AnyIndex {}
+/** A GUI that adorns an object in the 3D world.  Add Frames/Labels/Buttons to this object to have them rendered while attached to a 3D object */
 declare class BillboardGui {
 	constructor(parent?: Instance);
 }
@@ -2522,6 +2735,7 @@ interface Rbx_ScreenGui extends Rbx_LayerCollector {
 	IgnoreGuiInset: boolean;
 }
 interface ScreenGui extends Rbx_ScreenGui, Base<Rbx_ScreenGui>, AnyIndex {}
+/** The core GUI object on which tools are built.  Add Frames/Labels/Buttons to this object to have them rendered as a 2D overlay */
 declare class ScreenGui {
 	constructor(parent?: Instance);
 }
@@ -2537,6 +2751,7 @@ interface Rbx_Instance {
 interface Rbx_GuiMain extends Rbx_ScreenGui {
 }
 interface GuiMain extends Rbx_GuiMain, Base<Rbx_GuiMain>, AnyIndex {}
+/** Deprecated, please use ScreenGui */
 declare class GuiMain {
 	constructor(parent?: Instance);
 }
@@ -2550,16 +2765,19 @@ interface Rbx_Instance {
 
 // SurfaceGui
 interface Rbx_SurfaceGui extends Rbx_LayerCollector {
+	/** If true, this GuiObject can fire mouse events and will pass them to any GuiObjects layered underneath, while false will do neither. */
 	Active: boolean;
 	AlwaysOnTop: boolean;
 	CanvasSize: Vector2;
 	ClipsDescendants: boolean;
 	Face: Enum.NormalId;
+	/** Specifies the amount of influence lighting has on the surface gui. A value of 0 is unlit, 1 is fully lit. Fractional values blend from unlit to lit. */
 	LightInfluence: number;
 	ToolPunchThroughDistance: number;
 	ZOffset: number;
 }
 interface SurfaceGui extends Rbx_SurfaceGui, Base<Rbx_SurfaceGui>, AnyIndex {}
+/** Renders its contained GuiObjects flat against the face of a part. */
 declare class SurfaceGui {
 	constructor(parent?: Instance);
 }
@@ -2591,16 +2809,25 @@ interface Rbx_Instance {
 
 // FloorWire
 interface Rbx_FloorWire extends Rbx_GuiBase3d {
+	/** Controls how the decals are positioned along the wire. [More info](http://wiki.roblox.com/index.php/CycleOffset) */
 	CycleOffset: number;
+	/** The object the FloorWire 'emits' from */
 	From: BasePart;
+	/** The space between two textures on the wire. Note: studs are relative depending on how far the camera is from the FloorWire. */
 	StudsBetweenTextures: number;
+	/** The image we use to render the textures that flow from beginning to end of the FloorWire. */
 	Texture: string;
+	/** The size in studs of the Texture we use to flow from one object to the next. */
 	TextureSize: Vector2;
+	/** The object the FloorWire 'emits' to */
 	To: BasePart;
+	/** The rate of travel that the textures flow along the wire. */
 	Velocity: number;
+	/** How thick the wire is. */
 	WireRadius: number;
 }
 interface FloorWire extends Rbx_FloorWire, Base<Rbx_FloorWire>, AnyIndex {}
+/** Renders a thin cylinder than can be adorned with textures that 'flow' from one object to the next. Has basic pathing abilities and attempts to to not intersect anything. [More info](http://wiki.roblox.com/index.php/FloorWire_Guide) */
 declare class FloorWire {
 	constructor(parent?: Instance);
 }
@@ -2773,6 +3000,7 @@ interface Rbx_SelectionBox extends Rbx_PVAdornment {
 	SurfaceTransparency: number;
 }
 interface SelectionBox extends Rbx_SelectionBox, Base<Rbx_SelectionBox>, AnyIndex {}
+/** A 3D GUI object to represent the visible selection around an object */
 declare class SelectionBox {
 	constructor(parent?: Instance);
 }
@@ -2790,6 +3018,7 @@ interface Rbx_SelectionSphere extends Rbx_PVAdornment {
 	SurfaceTransparency: number;
 }
 interface SelectionSphere extends Rbx_SelectionSphere, Base<Rbx_SelectionSphere>, AnyIndex {}
+/** A 3D GUI object to represent the visible selection around an object */
 declare class SelectionSphere {
 	constructor(parent?: Instance);
 }
@@ -2842,6 +3071,7 @@ interface Rbx_ArcHandles extends Rbx_HandlesBase {
 	MouseLeave: RBXScriptSignal<(axis: Enum.Axis) => void>;
 }
 interface ArcHandles extends Rbx_ArcHandles, Base<Rbx_ArcHandles>, AnyIndex {}
+/** A 3D GUI object to represent draggable arc handles */
 declare class ArcHandles {
 	constructor(parent?: Instance);
 }
@@ -2864,6 +3094,7 @@ interface Rbx_Handles extends Rbx_HandlesBase {
 	MouseLeave: RBXScriptSignal<(face: Enum.NormalId) => void>;
 }
 interface Handles extends Rbx_Handles, Base<Rbx_Handles>, AnyIndex {}
+/** A 3D GUI object to represent draggable handles */
 declare class Handles {
 	constructor(parent?: Instance);
 }
@@ -2880,6 +3111,7 @@ interface Rbx_SurfaceSelection extends Rbx_PartAdornment {
 	TargetSurface: Enum.NormalId;
 }
 interface SurfaceSelection extends Rbx_SurfaceSelection, Base<Rbx_SurfaceSelection>, AnyIndex {}
+/** A 3D GUI object to represent the visible selection around a face of an object */
 declare class SurfaceSelection {
 	constructor(parent?: Instance);
 }
@@ -2912,6 +3144,7 @@ interface Rbx_SelectionPartLasso extends Rbx_SelectionLasso {
 	Part: BasePart;
 }
 interface SelectionPartLasso extends Rbx_SelectionPartLasso, Base<Rbx_SelectionPartLasso>, AnyIndex {}
+/** A visual line drawn representation between two part objects */
 declare class SelectionPartLasso {
 	constructor(parent?: Instance);
 }
@@ -2928,6 +3161,7 @@ interface Rbx_SelectionPointLasso extends Rbx_SelectionLasso {
 	Point: Vector3;
 }
 interface SelectionPointLasso extends Rbx_SelectionPointLasso, Base<Rbx_SelectionPointLasso>, AnyIndex {}
+/** A visual line drawn representation between two positions */
 declare class SelectionPointLasso {
 	constructor(parent?: Instance);
 }
@@ -3037,6 +3271,7 @@ interface Rbx_Instance {
 
 // Flag
 interface Rbx_Flag extends Rbx_Tool {
+	/** The Team this flag is for. Corresponds with the TeamColors in the Teams service. */
 	TeamColor: BrickColor;
 }
 interface Flag extends Rbx_Flag, Base<Rbx_Flag>, AnyIndex {}
@@ -3224,22 +3459,26 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	CameraOffset: Vector3;
 	DisplayDistanceType: Enum.HumanoidDisplayDistanceType;
 	readonly FloorMaterial: Enum.Material;
+	/** How many hit points the Humanoid has.  When this number reaches 0 or goes below 0, the Humanoid's character falls apart and will respawn. */
 	Health: number;
 	HealthDisplayDistance: number;
 	HealthDisplayType: Enum.HumanoidHealthDisplayType;
 	HipHeight: number;
 	Jump: boolean;
 	JumpPower: number;
+	/** The maximum number of hit points a Humanoid's health can reach.  If the Humanoid's health is set over this amount, the health gets set to this value. */
 	MaxHealth: number;
 	MaxSlopeAngle: number;
 	readonly MoveDirection: Vector3;
 	NameDisplayDistance: number;
+	/** Sets how to display other humanoid names to this humanoid's player. [More info](http://wiki.roblox.com/index.php/NameOcclusion) */
 	NameOcclusion: Enum.NameOcclusion;
 	PlatformStand: boolean;
 	RigType: Enum.HumanoidRigType;
 	readonly RootPart: BasePart;
 	readonly SeatPart: BasePart;
 	Sit: boolean;
+	/** The location that the Humanoid is trying to walk to. */
 	TargetPoint: Vector3;
 	WalkSpeed: number;
 	WalkToPart: BasePart;
@@ -3284,12 +3523,17 @@ interface Rbx_Instance {
 // InputObject
 interface Rbx_InputObject extends Rbx_Instance {
 	Delta: Vector3;
+	/** An enum that describes what kind of input is being pressed. For types of input like Keyboard, this describes what key was pressed. For input like mousebutton, this provides no additional information. */
 	KeyCode: Enum.KeyCode;
+	/** A Vector3 value that describes a positional value of this input. For mouse and touch input, this is the screen position of the mouse/touch, described in the x and y components. For mouse wheel input, the z component describes whether the wheel was moved forward or backward. */
 	Position: Vector3;
+	/** An enum that describes what state of a particular input (touch began, touch moved, touch ended, etc.). See Enum.UserInputState for more info. */
 	UserInputState: Enum.UserInputState;
+	/** An enum that describes what kind of input this object is describing (mousebutton, touch, etc.).  See Enum.UserInputType for more info. */
 	UserInputType: Enum.UserInputType;
 }
 interface InputObject extends Rbx_InputObject, Base<Rbx_InputObject>, AnyIndex {}
+/** An object that describes a particular user input, such as mouse movement, touches, keyboard, and more. */
 declare abstract class InputObject {
 	constructor(parent?: Instance);
 }
@@ -3603,6 +3847,7 @@ interface Rbx_Keyframe extends Rbx_Instance {
 	RemovePose(pose: Instance): void;
 }
 interface Keyframe extends Rbx_Keyframe, Base<Rbx_Keyframe>, AnyIndex {}
+/** One keyframe of an animation */
 declare class Keyframe {
 	constructor(parent?: Instance);
 }
@@ -3657,6 +3902,7 @@ interface Rbx_Light extends Rbx_Instance {
 	Shadows: boolean;
 }
 interface Light extends Rbx_Light, Base<Rbx_Light>, AnyIndex {}
+/** Parent of all light objects */
 declare abstract class Light {
 	constructor(parent?: Instance);
 }
@@ -3673,6 +3919,7 @@ interface Rbx_PointLight extends Rbx_Light {
 	Range: number;
 }
 interface PointLight extends Rbx_PointLight, Base<Rbx_PointLight>, AnyIndex {}
+/** Makes the parent part emit light in a spherical shape */
 declare class PointLight {
 	constructor(parent?: Instance);
 }
@@ -3691,6 +3938,7 @@ interface Rbx_SpotLight extends Rbx_Light {
 	Range: number;
 }
 interface SpotLight extends Rbx_SpotLight, Base<Rbx_SpotLight>, AnyIndex {}
+/** Makes the parent part emit light in a conical shape */
 declare class SpotLight {
 	constructor(parent?: Instance);
 }
@@ -3709,6 +3957,7 @@ interface Rbx_SurfaceLight extends Rbx_Light {
 	Range: number;
 }
 interface SurfaceLight extends Rbx_SurfaceLight, Base<Rbx_SurfaceLight>, AnyIndex {}
+/** Makes the parent part emit light in a frustum shape from rectangle defined by part */
 declare class SurfaceLight {
 	constructor(parent?: Instance);
 }
@@ -3722,25 +3971,39 @@ interface Rbx_Instance {
 
 // Lighting
 interface Rbx_Lighting extends Rbx_Instance {
+	/** The hue of the global lighting.  Changing this changes the color tint of all objects in the Workspace. */
 	Ambient: Color3;
+	/** How much global light each Part in the Workspace receives. Standard range is 0 to 1 (0 being little light), but can be increased all the way to 5 (colors start to be appear very different at this value). */
 	Brightness: number;
 	ClockTime: number;
+	/** The hue of global lighting on the bottom surfaces of an object. */
 	ColorShift_Bottom: Color3;
+	/** The hue of global lighting on the top surfaces of an object. */
 	ColorShift_Top: Color3;
+	/** Exposure compensation amount. Applies a bias to the exposure level prior to the tonemap step. +1 indicates twice as much exposure and -1 means half as much exposure. */
 	ExposureCompensation: number;
+	/** A Color3 value that changes the hue of distance fog. */
 	FogColor: Color3;
+	/** The distance at which fog completely blocks your vision. This distance is relative to the camera position. Units are in studs */
 	FogEnd: number;
+	/** The distance at which the fog gradient begins. This distance is relative to the camera position. Units are in studs. */
 	FogStart: number;
+	/** The latitude position the level is placed at.  This affects sun position. [More info](http://wiki.roblox.com/index.php/GeographicLatitude) */
 	GeographicLatitude: number;
+	/** Flag enabling shadows from sun and moon in the place */
 	GlobalShadows: boolean;
+	/** Effective ambient value for outdoors, effectively shadow color outdoors (requires GlobalShadows enabled) */
 	OutdoorAmbient: Color3;
+	/** Flag enabling or disabling outlines on parts and terrain */
 	Outlines: boolean;
+	/** A string that represent the current time of day. Time is in 24-hour clock format "XX::YY:ZZ", where X is hour, Y is minute, and Z is seconds. */
 	TimeOfDay: string;
 	GetMinutesAfterMidnight(): number;
 	GetMoonDirection(): Vector3;
 	GetMoonPhase(): number;
 	GetSunDirection(): Vector3;
 	SetMinutesAfterMidnight(minutes: number): void;
+	/** Fired whenever a property of Lighting is changed, or a skybox is added or removed. Skyboxes are of type 'Sky' and should be parented directly to lighting. */
 	LightingChanged: RBXScriptSignal<(skyboxChanged: boolean) => void>;
 }
 type Lighting = Rbx_Lighting & Base<Rbx_Lighting> & AnyIndex;
@@ -3787,6 +4050,7 @@ interface Rbx_LocalizationTable extends Rbx_Instance {
 	SetEntryValue(key: string, source: string, context: string, localeId: string, text: string): void;
 }
 interface LocalizationTable extends Rbx_LocalizationTable, Base<Rbx_LocalizationTable>, AnyIndex {}
+/** A database of strings used in the game and their translations. */
 declare class LocalizationTable {
 	constructor(parent?: Instance);
 }
@@ -3917,6 +4181,13 @@ interface Rbx_Instance {
 interface Rbx_LocalScript extends Rbx_Script {
 }
 interface LocalScript extends Rbx_LocalScript, Base<Rbx_LocalScript>, AnyIndex {}
+/** A script that runs on clients, NOT servers.  LocalScripts can only run when parented under one of the following:
+        1) A player's Backpack.
+        2) A player's Character model.
+        3) A player's PlayerGui.
+        4) A player's PlayerScripts.
+        5) The ReplicatedFirst service.
+       */
 declare class LocalScript {
 	constructor(parent?: Instance);
 }
@@ -3933,6 +4204,7 @@ interface Rbx_ModuleScript extends Rbx_LuaSourceContainer {
 	LinkedSource: string;
 }
 interface ModuleScript extends Rbx_ModuleScript, Base<Rbx_ModuleScript>, AnyIndex {}
+/** A script fragment. Only runs when another script uses require() on it. */
 declare class ModuleScript {
 	constructor(parent?: Instance);
 }
@@ -4010,27 +4282,47 @@ interface Rbx_Instance {
 
 // Mouse
 interface Rbx_Mouse extends Rbx_Instance {
+	/** The CoordinateFrame of where the Mouse ray is currently hitting a 3D object in the Workspace.  If the mouse is not over any 3D objects in the Workspace, this property is nil. */
 	readonly Hit: CFrame;
+	/** The current Texture of the Mouse Icon. Stored as a string, for more information on how to format the string [go here](http://wiki.roblox.com/index.php/Content) */
 	Icon: string;
+	/** The CoordinateFrame of where the Mouse is when the mouse is not clicking. */
 	readonly Origin: CFrame;
+	/** The Part the mouse is currently over. If the mouse is not currently over any object (on the skybox, for example) this property is nil. */
 	readonly Target: BasePart;
+	/** A Part or Model that the Mouse will ignore when trying to find the Target, TargetSurface and Hit. */
 	TargetFilter: Instance | undefined;
+	/** The NormalId (Top, Left, Down, etc.) of the face of the part the Mouse is currently over. */
 	readonly TargetSurface: Enum.NormalId;
+	/** The Unit Ray from where the mouse is (Origin) to the current Mouse.Target. */
 	readonly UnitRay: Ray;
+	/** The viewport's (game window) width in pixels. */
 	readonly ViewSizeX: number;
+	/** The viewport's (game window) height in pixels. */
 	readonly ViewSizeY: number;
+	/** The absolute pixel position of the Mouse along the x-axis of the viewport (game window). Values start at 0 on the left hand side of the screen and increase to the right. */
 	readonly X: number;
+	/** The absolute pixel position of the Mouse along the y-axis of the viewport (game window). Values start at 0 on the top of the screen and increase to the bottom. */
 	readonly Y: number;
+	/** Fired when the first button (usually the left, but could be another) on the mouse is depressed. */
 	Button1Down: RBXScriptSignal<() => void>;
+	/** Fired when the first button (usually the left, but could be another) on the mouse is release. */
 	Button1Up: RBXScriptSignal<() => void>;
+	/** This event is currently non-operational. */
 	Button2Down: RBXScriptSignal<() => void>;
+	/** This event is currently non-operational. */
 	Button2Up: RBXScriptSignal<() => void>;
+	/** Fired constantly when the mouse is not firing any other event (i.e. the mouse isn't moving, nor any buttons being pressed or depressed). */
 	Idle: RBXScriptSignal<() => void>;
+	/** Fired when the mouse X or Y member changes. */
 	Move: RBXScriptSignal<() => void>;
+	/** This event is currently non-operational. */
 	WheelBackward: RBXScriptSignal<() => void>;
+	/** This event is currently non-operational. */
 	WheelForward: RBXScriptSignal<() => void>;
 }
 interface Mouse extends Rbx_Mouse, Base<Rbx_Mouse>, AnyIndex {}
+/** Used to receive input from the user. Actually tracks mouse events and keyboard events. */
 declare abstract class Mouse {
 	constructor(parent?: Instance);
 }
@@ -4276,6 +4568,7 @@ interface Rbx_Instance {
 
 // BasePart
 interface Rbx_BasePart extends Rbx_PVInstance {
+	/** Determines whether or not physics acts upon the Part.  If true, part stays 'Anchored' in space, not moving regardless of any collision/forces acting upon it.  If false, physics works normally on the part. */
 	Anchored: boolean;
 	BackParamA: number;
 	BackParamB: number;
@@ -4286,10 +4579,13 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	BottomSurface: Enum.SurfaceType;
 	BottomSurfaceInput: Enum.InputType;
 	BrickColor: BrickColor;
+	/** Contains information regarding the Part's position and a matrix that defines the Part's rotation.  Can read/write. [More info](http://wiki.roblox.com/index.php/Cframe) */
 	CFrame: CFrame;
+	/** Determines whether physical interactions with other Parts are respected.  If true, will collide and react with physics to other Parts.  If false, other parts will pass thru instead of colliding */
 	CanCollide: boolean;
 	readonly CenterOfMass: Vector3;
 	CollisionGroupId: number;
+	/** Color3 of the part. */
 	Color: Color3;
 	CustomPhysicalProperties: PhysicalProperties;
 	FrontParamA: number;
@@ -4301,13 +4597,19 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	LeftSurface: Enum.SurfaceType;
 	LeftSurfaceInput: Enum.InputType;
 	LocalTransparencyModifier: number;
+	/** Determines whether building tools (in-game and studio) can manipulate this Part.  If true, no editing allowed.  If false, editing is allowed. */
 	Locked: boolean;
+	/** Specifies the look and feel the Part should have.  Note: this does not define the color the Part is, see BrickColor for that. [More info](http://wiki.roblox.com/index.php/Material) */
 	Material: Enum.Material;
+	/** Rotation around X, Y, and Z axis.  Rotations applied in YXZ order. */
 	Orientation: Vector3;
 	Position: Vector3;
 	readonly ReceiveAge: number;
+	/** Specifies how shiny the Part is. A value of 1 is completely reflective (chrome), while a value of 0 is no reflectance (concrete wall) */
 	Reflectance: number;
+	/** Sets the value for the smallest change in size allowable by the Resize(NormalId, int) function. */
 	readonly ResizeIncrement: number;
+	/** Sets the value for the faces allowed to be resized by the Resize(NormalId, int) function. */
 	readonly ResizeableFaces: Faces;
 	RightParamA: number;
 	RightParamB: number;
@@ -4320,10 +4622,11 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	TopParamB: number;
 	TopSurface: Enum.SurfaceType;
 	TopSurfaceInput: Enum.InputType;
+	/** Sets how visible an object is. A value of 1 makes the object invisible, while a value of 0 makes the object opaque. */
 	Transparency: number;
+	/** How fast the Part is traveling in studs/second. This property is NOT recommended to be modified directly, unless there is good reason.  Otherwise, try using a BodyForce to move a Part. */
 	Velocity: Vector3;
 	BreakJoints(): void;
-	// custom lua state
 	GetMass(): number;
 	GetNetworkOwnershipAuto(): boolean;
 	IsGrounded(): boolean;
@@ -4332,6 +4635,7 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	SetNetworkOwnershipAuto(): void;
 }
 interface BasePart extends Rbx_BasePart, Base<Rbx_BasePart>, AnyIndex {}
+/** A structural class, not creatable */
 declare abstract class BasePart {
 	constructor(parent?: Instance);
 }
@@ -4347,6 +4651,7 @@ interface Rbx_Instance {
 interface Rbx_CornerWedgePart extends Rbx_BasePart {
 }
 interface CornerWedgePart extends Rbx_CornerWedgePart, Base<Rbx_CornerWedgePart>, AnyIndex {}
+/** A CornerWedge Part */
 declare class CornerWedgePart {
 	constructor(parent?: Instance);
 }
@@ -4378,6 +4683,7 @@ interface Rbx_Part extends Rbx_FormFactorPart {
 	Shape: Enum.PartType;
 }
 interface Part extends Rbx_Part, Base<Rbx_Part>, AnyIndex {}
+/** A plastic building block - the fundamental component of ROBLOX */
 declare class Part {
 	constructor(parent?: Instance);
 }
@@ -4409,6 +4715,7 @@ interface Rbx_Instance {
 interface Rbx_Platform extends Rbx_Part {
 }
 interface Platform extends Rbx_Platform, Base<Rbx_Platform>, AnyIndex {}
+/** Equivalent to a seat, except that the character stands up rather than sits down. */
 declare abstract class Platform {
 	constructor(parent?: Instance);
 }
@@ -4486,6 +4793,7 @@ interface Rbx_Instance {
 interface Rbx_WedgePart extends Rbx_FormFactorPart {
 }
 interface WedgePart extends Rbx_WedgePart, Base<Rbx_WedgePart>, AnyIndex {}
+/** A Wedge Part */
 declare class WedgePart {
 	constructor(parent?: Instance);
 }
@@ -4503,6 +4811,7 @@ interface Rbx_MeshPart extends Rbx_BasePart {
 	TextureID: string;
 }
 interface MeshPart extends Rbx_MeshPart, Base<Rbx_MeshPart>, AnyIndex {}
+/** A MeshPart is a physically simulatable mesh */
 declare class MeshPart {
 	constructor(parent?: Instance);
 }
@@ -4536,6 +4845,7 @@ interface Rbx_Instance {
 interface Rbx_NegateOperation extends Rbx_PartOperation {
 }
 interface NegateOperation extends Rbx_NegateOperation, Base<Rbx_NegateOperation>, AnyIndex {}
+/** A NegateOperation can be used to create holes in other parts */
 declare class NegateOperation {
 	constructor(parent?: Instance);
 }
@@ -4551,6 +4861,7 @@ interface Rbx_Instance {
 interface Rbx_UnionOperation extends Rbx_PartOperation {
 }
 interface UnionOperation extends Rbx_UnionOperation, Base<Rbx_UnionOperation>, AnyIndex {}
+/** A UnionOperation is a union of multiple parts */
 declare class UnionOperation {
 	constructor(parent?: Instance);
 }
@@ -4586,6 +4897,7 @@ interface Rbx_Terrain extends Rbx_BasePart {
 	WorldToCellPreferSolid(position: Vector3): Vector3;
 }
 interface Terrain extends Rbx_Terrain, Base<Rbx_Terrain>, AnyIndex {}
+/** Object representing a high performance bounded grid of static 4x4 parts */
 declare abstract class Terrain {
 	constructor(parent?: Instance);
 }
@@ -4602,6 +4914,7 @@ interface Rbx_TrussPart extends Rbx_BasePart {
 	Style: Enum.Style;
 }
 interface TrussPart extends Rbx_TrussPart, Base<Rbx_TrussPart>, AnyIndex {}
+/** An extendable building truss */
 declare class TrussPart {
 	constructor(parent?: Instance);
 }
@@ -4629,6 +4942,7 @@ interface Rbx_VehicleSeat extends Rbx_BasePart {
 	Sit(humanoid: Instance): void;
 }
 interface VehicleSeat extends Rbx_VehicleSeat, Base<Rbx_VehicleSeat>, AnyIndex {}
+/** Automatically finds and powers hinge joints in an assembly.  Ignores motors. */
 declare class VehicleSeat {
 	constructor(parent?: Instance);
 }
@@ -4642,6 +4956,7 @@ interface Rbx_Instance {
 
 // Model
 interface Rbx_Model extends Rbx_PVInstance {
+	/** A Part that serves as a reference for the Model's CFrame. Used in conjunction with GetModelPrimaryPartCFrame and SetModelPrimaryPartCFrame. Use this to rotate/translate all Parts relative to the PrimaryPart. */
 	PrimaryPart: BasePart;
 	BreakJoints(): void;
 	GetExtentsSize(): Vector3;
@@ -4652,6 +4967,7 @@ interface Rbx_Model extends Rbx_PVInstance {
 	TranslateBy(delta: Vector3): void;
 }
 interface Model extends Rbx_Model, Base<Rbx_Model>, AnyIndex {}
+/** A construct used to group Parts and other objects together, also allows manipulation of multiple objects. */
 declare class Model {
 	constructor(parent?: Instance);
 }
@@ -4683,11 +4999,11 @@ interface Rbx_Workspace extends Rbx_Model {
 	AllowThirdPartySales: boolean;
 	CurrentCamera: Camera;
 	DistributedGameTime: number;
+	/** Sets the height at which falling characters and parts are destroyed. This property is not scriptable and can only be set in Studio */
 	readonly FallenPartsDestroyHeight: number;
 	readonly FilteringEnabled: boolean;
 	Gravity: number;
 	StreamingEnabled: boolean;
-	TemporaryLegacyPhysicsSolverOverride: boolean;
 	FindPartsInRegion3(region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<Instance>;
 	FindPartsInRegion3WithIgnoreList(region: Region3, ignoreDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
 	FindPartsInRegion3WithWhiteList(region: Region3, whitelistDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
@@ -4819,6 +5135,7 @@ interface Rbx_ParticleEmitter extends Rbx_Instance {
 	Enabled: boolean;
 	Lifetime: NumberRange;
 	LightEmission: number;
+	/** Specifies the amount of influence lighting has on the particle emmitter. A value of 0 is unlit, 1 is fully lit. Fractional values blend from unlit to lit. */
 	LightInfluence: number;
 	LockedToPart: boolean;
 	Rate: number;
@@ -4835,6 +5152,7 @@ interface Rbx_ParticleEmitter extends Rbx_Instance {
 	Emit(particleCount?: number): void;
 }
 interface ParticleEmitter extends Rbx_ParticleEmitter, Base<Rbx_ParticleEmitter>, AnyIndex {}
+/** A generic particle system. */
 declare class ParticleEmitter {
 	constructor(parent?: Instance);
 }
@@ -4850,6 +5168,8 @@ interface Rbx_Instance {
 interface Rbx_Path extends Rbx_Instance {
 	readonly Status: Enum.PathStatus;
 	CheckOcclusionAsync(start: number): number;
+	ComputeAsync(start: Vector3, finish: Vector3): void;
+	Blocked: RBXScriptSignal<(blockedWaypointIdx: number) => void>;
 }
 interface Path extends Rbx_Path, Base<Rbx_Path>, AnyIndex {}
 declare abstract class Path {
@@ -4865,6 +5185,7 @@ interface Rbx_Instance {
 
 // PathfindingService
 interface Rbx_PathfindingService extends Rbx_Instance {
+	CreatePath(agentParameters?: object): Instance | undefined;
 }
 type PathfindingService = Rbx_PathfindingService & Base<Rbx_PathfindingService> & AnyIndex;
 interface Rbx_Instance {
@@ -4961,6 +5282,7 @@ interface Rbx_Player extends Rbx_Instance {
 	AutoJumpEnabled: boolean;
 	CameraMaxZoomDistance: number;
 	CameraMinZoomDistance: number;
+	/** An enum that describes how a Player's camera is allowed to behave. [More info](http://wiki.roblox.com/index.php/CameraMode). */
 	CameraMode: Enum.CameraMode;
 	CanLoadCharacterAppearance: boolean;
 	CharacterAppearanceId: number;
@@ -4993,6 +5315,7 @@ interface Rbx_Player extends Rbx_Instance {
 	IsInGroup(groupId: number): boolean;
 	LoadCharacter(): void;
 	Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
+	/** Fired periodically after the user has been AFK for a while.  Currently this event is only fired for the *local* Player.  "time" is the time in seconds that the user has been idle. */
 	Idled: RBXScriptSignal<(time: number) => void>;
 	OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
 }
@@ -5020,6 +5343,7 @@ interface Rbx_PlayerScripts extends Rbx_Instance {
 	RegisterTouchMovementMode(movementMode: Enum.TouchMovementMode): void;
 }
 interface PlayerScripts extends Rbx_PlayerScripts, Base<Rbx_PlayerScripts>, AnyIndex {}
+/** A container instance that contains LocalScripts.  LocalScript objects that are placed in this container will be exectue only when a Player is the parent. */
 declare abstract class PlayerScripts {
 	constructor(parent?: Instance);
 }
@@ -5034,6 +5358,7 @@ interface Rbx_Instance {
 // Players
 interface Rbx_Players extends Rbx_Instance {
 	readonly BubbleChat: boolean;
+	/** Set to true, when a player joins a game, they get a character automatically, as well as when they die.  When set to false, characters do not auto load and will only load in using Player:LoadCharacter(). */
 	CharacterAutoLoads: boolean;
 	readonly ClassicChat: boolean;
 	readonly MaxPlayers: number;
@@ -5139,7 +5464,7 @@ interface Rbx_Instance {
 
 // PointsService
 interface Rbx_PointsService extends Rbx_Instance {
-	GetGamePointBalance(userId: number): number;
+	/** Fired when points are successfully awarded 'userId'. Also returns the updated balance of points for usedId in universe via 'userBalanceInUniverse', total points via 'userTotalBalance', and the amount points that were awarded via 'pointsAwarded'. This event fires on the server and also all clients in the game that awarded the points. */
 	PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
 }
 type PointsService = Rbx_PointsService & Base<Rbx_PointsService> & AnyIndex;
@@ -5165,6 +5490,7 @@ interface Rbx_Pose extends Rbx_Instance {
 	RemoveSubPose(pose: Instance): void;
 }
 interface Pose extends Rbx_Pose, Base<Rbx_Pose>, AnyIndex {}
+/** The pose of a joint relative to it's parent part in a keyframe */
 declare class Pose {
 	constructor(parent?: Instance);
 }
@@ -5477,6 +5803,7 @@ interface Rbx_Instance {
 interface Rbx_RemoteEvent extends Rbx_Instance {
 }
 interface RemoteEvent extends Rbx_RemoteEvent, Base<Rbx_RemoteEvent>, AnyIndex {}
+/** Allow events defined in one script to be subscribed to by another script across client/server boundary */
 declare class RemoteEvent {
 	constructor(parent?: Instance);
 }
@@ -5492,6 +5819,7 @@ interface Rbx_Instance {
 interface Rbx_RemoteFunction extends Rbx_Instance {
 }
 interface RemoteFunction extends Rbx_RemoteFunction, Base<Rbx_RemoteFunction>, AnyIndex {}
+/** Allow functions defined in one script to be called by another script across client/server boundary */
 declare class RemoteFunction {
 	constructor(parent?: Instance);
 }
@@ -5546,6 +5874,7 @@ interface Rbx_RenderingTest extends Rbx_Instance {
 	Ticket: string;
 }
 interface RenderingTest extends Rbx_RenderingTest, Base<Rbx_RenderingTest>, AnyIndex {}
+/** dummy summary */
 declare class RenderingTest {
 	constructor(parent?: Instance);
 }
@@ -5794,9 +6123,11 @@ interface Rbx_DataModel extends Rbx_ServiceProvider {
 	IsGearTypeAllowed(gearType: Enum.GearType): boolean;
 	IsLoaded(): boolean;
 	GraphicsQualityChangeRequest: RBXScriptSignal<(betterQuality: boolean) => void>;
+	/** Fires when the game finishes loading.  Use this to know when to remove your custom loading gui.  It is best to check IsLoaded() before connecting to this event, as the game may load before the event is connected to. */
 	Loaded: RBXScriptSignal<() => void>;
 }
 interface DataModel extends Rbx_DataModel, Base<Rbx_DataModel>, AnyIndex {}
+/** The root of ROBLOX's parent-child hierarchy (commonly known as game after the global variable used to access it) */
 declare abstract class DataModel {
 	constructor(parent?: Instance);
 }
@@ -5905,6 +6236,7 @@ interface Rbx_Smoke extends Rbx_Instance {
 	Size: number;
 }
 interface Smoke extends Rbx_Smoke, Base<Rbx_Smoke>, AnyIndex {}
+/** Makes the parent part or model object emit smoke */
 declare class Smoke {
 	constructor(parent?: Instance);
 }
@@ -5924,6 +6256,7 @@ interface Rbx_Sound extends Rbx_Instance {
 	readonly IsPlaying: boolean;
 	Looped: boolean;
 	MaxDistance: number;
+	/** The sound will play when it is removed from the Workspace. Looped sounds don't play */
 	PlayOnRemove: boolean;
 	readonly PlaybackLoudness: number;
 	PlaybackSpeed: number;
@@ -5982,6 +6315,7 @@ interface Rbx_ChorusSoundEffect extends Rbx_SoundEffect {
 	Rate: number;
 }
 interface ChorusSoundEffect extends Rbx_ChorusSoundEffect, Base<Rbx_ChorusSoundEffect>, AnyIndex {}
+/** A Chorus audio effect that can be applied to a Sound or SoundGroup. */
 declare class ChorusSoundEffect {
 	constructor(parent?: Instance);
 }
@@ -6003,6 +6337,7 @@ interface Rbx_CompressorSoundEffect extends Rbx_SoundEffect {
 	Threshold: number;
 }
 interface CompressorSoundEffect extends Rbx_CompressorSoundEffect, Base<Rbx_CompressorSoundEffect>, AnyIndex {}
+/** A Compressor audio effect that can be applied to a Sound or SoundGroup. */
 declare class CompressorSoundEffect {
 	constructor(parent?: Instance);
 }
@@ -6019,6 +6354,7 @@ interface Rbx_DistortionSoundEffect extends Rbx_SoundEffect {
 	Level: number;
 }
 interface DistortionSoundEffect extends Rbx_DistortionSoundEffect, Base<Rbx_DistortionSoundEffect>, AnyIndex {}
+/** A Distortion audio effect that can be applied to a Sound or SoundGroup. */
 declare class DistortionSoundEffect {
 	constructor(parent?: Instance);
 }
@@ -6038,6 +6374,7 @@ interface Rbx_EchoSoundEffect extends Rbx_SoundEffect {
 	WetLevel: number;
 }
 interface EchoSoundEffect extends Rbx_EchoSoundEffect, Base<Rbx_EchoSoundEffect>, AnyIndex {}
+/** An echo audio effect that can be applied to a Sound or SoundGroup. */
 declare class EchoSoundEffect {
 	constructor(parent?: Instance);
 }
@@ -6056,6 +6393,7 @@ interface Rbx_EqualizerSoundEffect extends Rbx_SoundEffect {
 	MidGain: number;
 }
 interface EqualizerSoundEffect extends Rbx_EqualizerSoundEffect, Base<Rbx_EqualizerSoundEffect>, AnyIndex {}
+/** An Three-band Equalizer audio effect that can be applied to a Sound or SoundGroup. */
 declare class EqualizerSoundEffect {
 	constructor(parent?: Instance);
 }
@@ -6074,6 +6412,7 @@ interface Rbx_FlangeSoundEffect extends Rbx_SoundEffect {
 	Rate: number;
 }
 interface FlangeSoundEffect extends Rbx_FlangeSoundEffect, Base<Rbx_FlangeSoundEffect>, AnyIndex {}
+/** A Flanging audio effect that can be applied to a Sound or SoundGroup. */
 declare class FlangeSoundEffect {
 	constructor(parent?: Instance);
 }
@@ -6090,6 +6429,7 @@ interface Rbx_PitchShiftSoundEffect extends Rbx_SoundEffect {
 	Octave: number;
 }
 interface PitchShiftSoundEffect extends Rbx_PitchShiftSoundEffect, Base<Rbx_PitchShiftSoundEffect>, AnyIndex {}
+/** A Pitch Shifting audio effect that can be applied to a Sound or SoundGroup. */
 declare class PitchShiftSoundEffect {
 	constructor(parent?: Instance);
 }
@@ -6110,6 +6450,7 @@ interface Rbx_ReverbSoundEffect extends Rbx_SoundEffect {
 	WetLevel: number;
 }
 interface ReverbSoundEffect extends Rbx_ReverbSoundEffect, Base<Rbx_ReverbSoundEffect>, AnyIndex {}
+/** A Reverb audio effect that can be applied to a Sound or SoundGroup. */
 declare class ReverbSoundEffect {
 	constructor(parent?: Instance);
 }
@@ -6128,6 +6469,7 @@ interface Rbx_TremoloSoundEffect extends Rbx_SoundEffect {
 	Frequency: number;
 }
 interface TremoloSoundEffect extends Rbx_TremoloSoundEffect, Base<Rbx_TremoloSoundEffect>, AnyIndex {}
+/** A Tremolo audio effect that can be applied to a Sound or SoundGroup. */
 declare class TremoloSoundEffect {
 	constructor(parent?: Instance);
 }
@@ -6157,10 +6499,14 @@ interface Rbx_Instance {
 
 // SoundService
 interface Rbx_SoundService extends Rbx_Instance {
+	/** The ambient sound environment.  May not work when using hardware sound */
 	AmbientReverb: Enum.ReverbType;
+	/** the relative distance factor, compared to 1.0 meters. */
 	DistanceFactor: number;
+	/** The doppler scale is a general scaling factor for how much the pitch varies due to doppler shifting in 3D sound. Doppler is the pitch bending effect when a sound comes towards the listener or moves away from it, much like the effect you hear when a train goes past you with its horn sounding. With dopplerscale you can exaggerate or diminish the effect. */
 	DopplerScale: number;
 	RespectFilteringEnabled: boolean;
+	/** Setting this value makes the sound drop off faster or slower. The higher the value, the faster volume will attenuate, and conversely the lower the value, the slower it will attenuate. For example a rolloff factor of 1 will simulate the real world, where as a value of 2 will make sounds attenuate 2 times quicker. */
 	RolloffScale: number;
 	PlayLocalSound(sound: Instance): void;
 }
@@ -6183,6 +6529,7 @@ interface Rbx_Sparkles extends Rbx_Instance {
 	SparkleColor: Color3;
 }
 interface Sparkles extends Rbx_Sparkles, Base<Rbx_Sparkles>, AnyIndex {}
+/** Makes the parent part or model object fantastic */
 declare class Sparkles {
 	constructor(parent?: Instance);
 }
@@ -6257,6 +6604,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_StarterPlayerScripts extends Rbx_Instance {
 }
 interface StarterPlayerScripts extends Rbx_StarterPlayerScripts, Base<Rbx_StarterPlayerScripts>, AnyIndex {}
+/** A container instance that contains LocalScripts.  LocalScript objects that are placed in this container will be copied to new Players on startup. */
 declare class StarterPlayerScripts {
 	constructor(parent?: Instance);
 }
@@ -6272,6 +6620,7 @@ interface Rbx_Instance {
 interface Rbx_StarterCharacterScripts extends Rbx_StarterPlayerScripts {
 }
 interface StarterCharacterScripts extends Rbx_StarterCharacterScripts, Base<Rbx_StarterCharacterScripts>, AnyIndex {}
+/** A container instance that contains LocalScripts.  LocalScript objects that are placed in this container will be copied to new characters on startup. */
 declare class StarterCharacterScripts {
 	constructor(parent?: Instance);
 }
@@ -6408,6 +6757,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Disable Accurate Play Solo"]: boolean;
 	["Drag Multiple Parts As Single Part"]: boolean;
 	["Enable Autocomplete"]: boolean;
+	["Enable CoreScript Debugger"]: boolean;
 	["Error Color"]: Color3;
 	["Find Selection Background Color"]: Color3;
 	Font: QFont;
@@ -6451,7 +6801,6 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Text Wrapping"]: boolean;
 	Theme: Instance | undefined;
 	["UI Theme"]: Enum.UITheme;
-	["Use Accurate Play Solo"]: boolean;
 	["Warning Color"]: Color3;
 }
 type Studio = Rbx_Studio & Base<Rbx_Studio> & AnyIndex;
@@ -6522,6 +6871,7 @@ interface Rbx_Team extends Rbx_Instance {
 	TeamColor: BrickColor;
 }
 interface Team extends Rbx_Team, Base<Rbx_Team>, AnyIndex {}
+/** The Team class is used to represent a faction in a team game. The only valid location for a Team object is under the Teams service. [More info](http://wiki.roblox.com/index.php/Team) */
 declare class Team {
 	constructor(parent?: Instance);
 }
@@ -6576,6 +6926,7 @@ interface Rbx_TerrainRegion extends Rbx_Instance {
 	readonly SizeInCells: Vector3;
 }
 interface TerrainRegion extends Rbx_TerrainRegion, Base<Rbx_TerrainRegion>, AnyIndex {}
+/** Object representing a snapshot of the region of terrain */
 declare class TerrainRegion {
 	constructor(parent?: Instance);
 }
@@ -6724,6 +7075,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_TouchTransmitter extends Rbx_Instance {
 }
 interface TouchTransmitter extends Rbx_TouchTransmitter, Base<Rbx_TouchTransmitter>, AnyIndex {}
+/** Used by networking and replication code to transmit touch events - no other purpose */
 declare abstract class TouchTransmitter {
 	constructor(parent?: Instance);
 }
@@ -6755,6 +7107,7 @@ interface Rbx_Trail extends Rbx_Instance {
 	Clear(): void;
 }
 interface Trail extends Rbx_Trail, Base<Rbx_Trail>, AnyIndex {}
+/** Makes two attachments emit trail when moving */
 declare class Trail {
 	constructor(parent?: Instance);
 }
@@ -6786,10 +7139,12 @@ interface Rbx_Instance {
 
 // TweenBase
 interface Rbx_TweenBase extends Rbx_Instance {
+	/** The current state of how the tween is animating. Possible values are Begin, Playing, Paused, Completed and Cancelled. This property is modified by using functions such as Tween:Play(), Tween:Pause(), and Tween:Cancel(). Read-only. */
 	readonly PlaybackState: Enum.PlaybackState;
 	Cancel(): void;
 	Pause(): void;
 	Play(): void;
+	/** Fires when the tween either reaches PlaybackState Completed or Cancelled. PlaybackState of one of these types is passed as the first arg to the function listening to this event. */
 	Completed: RBXScriptSignal<(playbackState: Enum.PlaybackState) => void>;
 }
 interface TweenBase extends Rbx_TweenBase, Base<Rbx_TweenBase>, AnyIndex {}
@@ -6810,6 +7165,7 @@ interface Rbx_Tween extends Rbx_TweenBase {
 	readonly TweenInfo: TweenInfo;
 }
 interface Tween extends Rbx_Tween, Base<Rbx_Tween>, AnyIndex {}
+/** An object linked to an instance that animates properties on the instance over a specified period of time. Useful for easily moving UI objects around, rotating objects, etc. without having to write a lot of code. To create a new tween, please use TweenService:Create. */
 declare class Tween {
 	constructor(parent?: Instance);
 }
@@ -6883,11 +7239,15 @@ interface Rbx_Instance {
 
 // UIAspectRatioConstraint
 interface Rbx_UIAspectRatioConstraint extends Rbx_UIConstraint {
+	/** The aspect ratio to maintain. This is the width/height. Only positive numbers allowed. */
 	AspectRatio: number;
+	/** Describes how the aspect ratio will determine its size. Options are FitWithinMaxSize, ScaleWithParentSize. FitWithinMaxSize will make the element the maximum size it can be within the current possible AbsoluteSize of the element while maintaining the AspectRatio. ScaleWithParentSize will make the element the closest to the parent element’s maximum size while maintaining aspect ratio. */
 	AspectType: Enum.AspectType;
+	/** Describes which axis to use when determining the new size of the element, while keeping respect to the aspect ratio. */
 	DominantAxis: Enum.DominantAxis;
 }
 interface UIAspectRatioConstraint extends Rbx_UIAspectRatioConstraint, Base<Rbx_UIAspectRatioConstraint>, AnyIndex {}
+/** Ensures a GuiObject will always have a particular aspect ratio. If an element with a constraint is under the control of a layout, the constraint takes precedence in determining the element’s size, but not position. You can use a Constraint by parenting it to the element you wish to constrain. */
 declare class UIAspectRatioConstraint {
 	constructor(parent?: Instance);
 }
@@ -6901,10 +7261,13 @@ interface Rbx_Instance {
 
 // UISizeConstraint
 interface Rbx_UISizeConstraint extends Rbx_UIConstraint {
+	/** The biggest size the GuiObject is allowed to be. */
 	MaxSize: Vector2;
+	/** The smallest size the GuiObject is allowed to be. */
 	MinSize: Vector2;
 }
 interface UISizeConstraint extends Rbx_UISizeConstraint, Base<Rbx_UISizeConstraint>, AnyIndex {}
+/** Ensures a GuiObject does not become smaller or larger than the min and max size. If an element with a constraint is under the control of a layout, the constraint takes precedence in determining the element’s size, but not position. You can use a Constraint by parenting it to the element you wish to constrain. */
 declare class UISizeConstraint {
 	constructor(parent?: Instance);
 }
@@ -6918,10 +7281,13 @@ interface Rbx_Instance {
 
 // UITextSizeConstraint
 interface Rbx_UITextSizeConstraint extends Rbx_UIConstraint {
+	/** The biggest size the font is allowed to be. */
 	MaxTextSize: number;
+	/** The smallest size the font is allowed to be. */
 	MinTextSize: number;
 }
 interface UITextSizeConstraint extends Rbx_UITextSizeConstraint, Base<Rbx_UITextSizeConstraint>, AnyIndex {}
+/** Ensures a GuiObject with text does not allow the font size to become larger or smaller than min and max text sizes. If an element with a constraint is under the control of a layout, the constraint takes precedence in determining the element’s size, but not position. You can use a Constraint by parenting it to the element you wish to constrain. */
 declare class UITextSizeConstraint {
 	constructor(parent?: Instance);
 }
@@ -6951,9 +7317,13 @@ interface Rbx_Instance {
 // UIGridStyleLayout
 interface Rbx_UIGridStyleLayout extends Rbx_UILayout {
 	readonly AbsoluteContentSize: Vector2;
+	/** Determines which direction to fill the grid. Can be Horizontal or Vertical. */
 	FillDirection: Enum.FillDirection;
+	/** Determines how grid is placed within it's parent's container in the x direction. Can be Left, Center, or Right. */
 	HorizontalAlignment: Enum.HorizontalAlignment;
+	/** Determines how we decide which element to place next. Can be Name or Custom. If using Custom, make sure SetCustomSortFunction was called with an appropriate sort function. */
 	SortOrder: Enum.SortOrder;
+	/** Determines how grid is placed within it's parent's container in the y direction. Can be Top, Center, or Bottom. */
 	VerticalAlignment: Enum.VerticalAlignment;
 	ApplyLayout(): void;
 }
@@ -6971,12 +7341,17 @@ interface Rbx_Instance {
 
 // UIGridLayout
 interface Rbx_UIGridLayout extends Rbx_UIGridStyleLayout {
+	/** How much space between elements there should be. */
 	CellPadding: UDim2;
+	/** Denotes what size each element should be. Can be overridden by elements using constraints on individual elements. */
 	CellSize: UDim2;
+	/** Determines how many cells over in the FillDirection we go before starting a new row or column. Set to 0 for max cell count.  Will be clamped if this is set higher than the parent container allows room for. */
 	FillDirectionMaxCells: number;
+	/** Which corner we start laying the elements out from. Can be TopLeft, TopRight, BottomLeft, BottomRight. */
 	StartCorner: Enum.StartCorner;
 }
 interface UIGridLayout extends Rbx_UIGridLayout, Base<Rbx_UIGridLayout>, AnyIndex {}
+/** Sets the position of UI elements in a 2D grid (this can be modified to 1D grid for list layout). This will also set the elements to a particular size, although this can be overridden with particular constraints on elements. You can use a UIGridLayout by parenting it to a GuiObject. The UIGridLayout will then apply itself to all of its GuiObject siblings. */
 declare class UIGridLayout {
 	constructor(parent?: Instance);
 }
@@ -6990,9 +7365,11 @@ interface Rbx_Instance {
 
 // UIListLayout
 interface Rbx_UIListLayout extends Rbx_UIGridStyleLayout {
+	/** Determines the amount of free space between each element. Can be set either using scale (Percentage of parent's size in the current direction) or offset (a static spacing value, similar to pixel size). */
 	Padding: UDim;
 }
 interface UIListLayout extends Rbx_UIListLayout, Base<Rbx_UIListLayout>, AnyIndex {}
+/** Sets the position of UI elements in a list. You can use a UIListLayout by parenting it to a GuiObject. The UIListLayout will then apply itself to all of its GuiObject siblings. */
 declare class UIListLayout {
 	constructor(parent?: Instance);
 }
@@ -7006,25 +7383,36 @@ interface Rbx_Instance {
 
 // UIPageLayout
 interface Rbx_UIPageLayout extends Rbx_UIGridStyleLayout {
+	/** Whether or not to animate transitions between pages. */
 	Animated: boolean;
+	/** Whether or not the page layout wraps around at the ends. */
 	Circular: boolean;
+	/** The page that is either currently being displayed or is the target of the current animation. */
 	readonly CurrentPage: GuiObject;
+	/** The easing direction to use when performing an animation. */
 	EasingDirection: Enum.EasingDirection;
+	/** The easing style to use when performing an animation. */
 	EasingStyle: Enum.EasingStyle;
 	GamepadInputEnabled: boolean;
+	/** Determines the amount that pages are separated from each other by. Can be set either using scale (Percentage of parent's size in the current direction) or offset (a static spacing value, similar to pixel size). */
 	Padding: UDim;
 	ScrollWheelInputEnabled: boolean;
 	TouchInputEnabled: boolean;
+	/** The length of the animation. */
 	TweenTime: number;
 	JumpTo(page: Instance): void;
 	JumpToIndex(index: number): void;
 	Next(): void;
 	Previous(): void;
+	/** Fires when a page comes into view, and is going to be rendered. */
 	PageEnter: RBXScriptSignal<(page: Instance) => void>;
+	/** Fires when a page leaves view, and will not be rendered. */
 	PageLeave: RBXScriptSignal<(page: Instance) => void>;
+	/** Fires when an animation to CurrentPage is completed without being cancelled, and the view stops scrolling. */
 	Stopped: RBXScriptSignal<(currentPage: Instance) => void>;
 }
 interface UIPageLayout extends Rbx_UIPageLayout, Base<Rbx_UIPageLayout>, AnyIndex {}
+/** Creates a paged viewing window, like the home screen of a mobile device. You can use a UIPageLayout by parenting it to a GuiObject. The UIPageLayout will then apply itself to all of its GuiObject siblings. */
 declare class UIPageLayout {
 	constructor(parent?: Instance);
 }
@@ -7038,12 +7426,17 @@ interface Rbx_Instance {
 
 // UITableLayout
 interface Rbx_UITableLayout extends Rbx_UIGridStyleLayout {
+	/** Whether the table should expand to fill the available space of its container, column-wise. */
 	FillEmptySpaceColumns: boolean;
+	/** Whether the table should expand to fill the available space of its container, row-wise. */
 	FillEmptySpaceRows: boolean;
+	/** Whether the direct siblings are considered the rows or the columns. The children of the direct siblings are the columns or rows, respectively. */
 	MajorAxis: Enum.TableMajorAxis;
+	/** The amount of padding to insert in between the cells of the table. */
 	Padding: UDim2;
 }
 interface UITableLayout extends Rbx_UITableLayout, Base<Rbx_UITableLayout>, AnyIndex {}
+/** Provides a layout of rows and columns that are sized based on the cells in them. */
 declare class UITableLayout {
 	constructor(parent?: Instance);
 }
@@ -7057,9 +7450,13 @@ interface Rbx_Instance {
 
 // UIPadding
 interface Rbx_UIPadding extends Rbx_UIComponent {
+	/** The padding to apply on the bottom side relative to the parent's normal size. */
 	PaddingBottom: UDim;
+	/** The padding to apply on the left side relative to the parent's normal size. */
 	PaddingLeft: UDim;
+	/** The padding to apply on the right side relative to the parent's normal size. */
 	PaddingRight: UDim;
+	/** The padding to apply on the top side relative to the parent's normal size. */
 	PaddingTop: UDim;
 }
 interface UIPadding extends Rbx_UIPadding, Base<Rbx_UIPadding>, AnyIndex {}
@@ -7076,9 +7473,11 @@ interface Rbx_Instance {
 
 // UIScale
 interface Rbx_UIScale extends Rbx_UIComponent {
+	/** The scale factor to apply. */
 	Scale: number;
 }
 interface UIScale extends Rbx_UIScale, Base<Rbx_UIScale>, AnyIndex {}
+/** Uniformly scales a GUI object and all its children. */
 declare class UIScale {
 	constructor(parent?: Instance);
 }
@@ -7126,18 +7525,23 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // UserInputService
 interface Rbx_UserInputService extends Rbx_Instance {
+	/** Returns true if the local device has an accelerometer, false otherwise. */
 	readonly AccelerometerEnabled: boolean;
 	readonly GamepadEnabled: boolean;
+	/** Returns true if the local device has an gyroscope, false otherwise. */
 	readonly GyroscopeEnabled: boolean;
+	/** Returns true if the local device accepts keyboard input, false otherwise. */
 	readonly KeyboardEnabled: boolean;
 	ModalEnabled: boolean;
 	MouseBehavior: Enum.MouseBehavior;
 	MouseDeltaSensitivity: number;
+	/** Returns true if the local device accepts mouse input, false otherwise. */
 	readonly MouseEnabled: boolean;
 	MouseIconEnabled: boolean;
 	readonly OnScreenKeyboardPosition: Vector2;
 	readonly OnScreenKeyboardSize: Vector2;
 	readonly OnScreenKeyboardVisible: boolean;
+	/** Returns true if the local device accepts touch input, false otherwise. */
 	readonly TouchEnabled: boolean;
 	readonly VREnabled: boolean;
 	GamepadSupports(gamepadNum: Enum.UserInputType, gamepadKeyCode: Enum.KeyCode): boolean;
@@ -7155,26 +7559,43 @@ interface Rbx_UserInputService extends Rbx_Instance {
 	IsNavigationGamepad(gamepadEnum: Enum.UserInputType): boolean;
 	RecenterUserHeadCFrame(): void;
 	SetNavigationGamepad(gamepadEnum: Enum.UserInputType, enabled: boolean): void;
+	/** Fired when a user moves a device that has an accelerometer. This is fired with an InputObject, which has type Enum.InputType.Accelerometer, and position that shows the g force in each local device axis. This event only fires locally. */
 	DeviceAccelerationChanged: RBXScriptSignal<(acceleration: Instance) => void>;
+	/** Fired when the force of gravity changes on a device that has an accelerometer. This is fired with an InputObject, which has type Enum.InputType.Accelerometer, and position that shows the g force in each local device axis. This event only fires locally. */
 	DeviceGravityChanged: RBXScriptSignal<(gravity: Instance) => void>;
+	/** Fired when a user rotates a device that has an gyroscope. This is fired with an InputObject, which has type Enum.InputType.Gyroscope, and position that shows total rotation in each local device axis.  The delta property describes the amount of rotation that last happened. A second argument of Vector4 is the device's current quaternion rotation in reference to it's default reference frame. This event only fires locally. */
 	DeviceRotationChanged: RBXScriptSignal<(rotation: Instance, cframe: CFrame) => void>;
 	GamepadConnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
 	GamepadDisconnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
+	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
 	InputBegan: RBXScriptSignal<(input: Instance, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
 	InputChanged: RBXScriptSignal<(input: Instance, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
 	InputEnded: RBXScriptSignal<(input: Instance, gameProcessedEvent: boolean) => void>;
 	JumpRequest: RBXScriptSignal<() => void>;
 	LastInputTypeChanged: RBXScriptSignal<(lastInputType: Enum.UserInputType) => void>;
+	/** Fired when a user stops text entry into a textbox (usually by pressing return or clicking/tapping somewhere else on the screen). Argument is the textbox that was taken out of focus. This event only fires locally. */
 	TextBoxFocusReleased: RBXScriptSignal<(textboxReleased: Instance) => void>;
+	/** Fired when a user clicks/taps on a textbox to begin text entry. Argument is the textbox that was put in focus. This also fires if a textbox forces focus on the user. This event only fires locally. */
 	TextBoxFocused: RBXScriptSignal<(textboxFocused: Instance) => void>;
+	/** Fired when a user moves their finger on a TouchEnabled device. 'touch' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
 	TouchEnded: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user holds at least one finger for a short amount of time on the same screen position on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
 	TouchLongPress: RBXScriptSignal<(touchPositions: Array<any>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user moves their finger on a TouchEnabled device. 'touch' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
 	TouchMoved: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user drags at least one finger on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'totalTranslation' is a Vector2, indicating how far the pan gesture has gone from its starting point. 'velocity' is a Vector2 that indicates how quickly the gesture is being performed in each dimension. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
 	TouchPan: RBXScriptSignal<(touchPositions: Array<any>, totalTranslation: Vector2, velocity: Vector2, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user pinches their fingers on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the pinch gesture. 'scale' is a float that indicates the difference from the beginning of the pinch gesture. 'velocity' is a float indicating how quickly the pinch gesture is happening. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
 	TouchPinch: RBXScriptSignal<(touchPositions: Array<any>, scale: number, velocity: number, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user rotates two fingers on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'rotation' is a float indicating how much the rotation has gone from the start of the gesture. 'velocity' is a float that indicates how quickly the gesture is being performed. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
 	TouchRotate: RBXScriptSignal<(touchPositions: Array<any>, rotation: number, velocity: number, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user places their finger on a TouchEnabled device. 'touch' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
 	TouchStarted: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user swipes their fingers on a TouchEnabled device. 'swipeDirection' is an Enum.SwipeDirection, indicating the direction the user swiped. 'numberOfTouches' is an int that indicates how many touches were involved with the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
 	TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user taps their finger on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the tap gesture. This event only fires locally.  This event will always fire regardless of game state. */
 	TouchTap: RBXScriptSignal<(touchPositions: Array<any>, gameProcessedEvent: boolean) => void>;
 	TouchTapInWorld: RBXScriptSignal<(position: Vector2, processedByUI: boolean) => void>;
 	UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
@@ -7224,6 +7645,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_ValueBase extends Rbx_Instance {
 }
 interface ValueBase extends Rbx_ValueBase, Base<Rbx_ValueBase>, AnyIndex {}
+/** The base class to all Value Objects. */
 declare abstract class ValueBase {
 	constructor(parent?: Instance);
 }
@@ -7255,6 +7677,7 @@ interface Rbx_BoolValue extends Rbx_ValueBase {
 	Value: boolean;
 }
 interface BoolValue extends Rbx_BoolValue, Base<Rbx_BoolValue>, AnyIndex {}
+/** Stores a boolean value in it's Value member. Useful to share boolean information across multiple scripts. */
 declare class BoolValue {
 	constructor(parent?: Instance);
 }
@@ -7271,6 +7694,7 @@ interface Rbx_BrickColorValue extends Rbx_ValueBase {
 	Value: BrickColor;
 }
 interface BrickColorValue extends Rbx_BrickColorValue, Base<Rbx_BrickColorValue>, AnyIndex {}
+/** Stores a BrickColor value in it's Value member. Useful to share BrickColor information across multiple scripts. */
 declare class BrickColorValue {
 	constructor(parent?: Instance);
 }
@@ -7287,6 +7711,7 @@ interface Rbx_CFrameValue extends Rbx_ValueBase {
 	Value: CFrame;
 }
 interface CFrameValue extends Rbx_CFrameValue, Base<Rbx_CFrameValue>, AnyIndex {}
+/** Stores a CFrame value in it's Value member. Useful to share CFrame information across multiple scripts. */
 declare class CFrameValue {
 	constructor(parent?: Instance);
 }
@@ -7303,6 +7728,7 @@ interface Rbx_Color3Value extends Rbx_ValueBase {
 	Value: Color3;
 }
 interface Color3Value extends Rbx_Color3Value, Base<Rbx_Color3Value>, AnyIndex {}
+/** Stores a Color3 value in it's Value member. Useful to share Color3 information across multiple scripts. */
 declare class Color3Value {
 	constructor(parent?: Instance);
 }
@@ -7317,11 +7743,14 @@ interface Rbx_Instance {
 // DoubleConstrainedValue
 interface Rbx_DoubleConstrainedValue extends Rbx_ValueBase {
 	ConstrainedValue: number;
+	/** The maximum we allow this Value to be set.  If Value is set higher than this, it automatically gets adjusted to MaxValue */
 	MaxValue: number;
+	/** The minimum we allow this Value to be set.  If Value is set lower than this, it automatically gets adjusted to MinValue */
 	MinValue: number;
 	Value: number;
 }
 interface DoubleConstrainedValue extends Rbx_DoubleConstrainedValue, Base<Rbx_DoubleConstrainedValue>, AnyIndex {}
+/** Stores a double value in it's Value member.  Value is clamped to be in range of Min and MaxValue. Useful to share double information across multiple scripts. */
 declare class DoubleConstrainedValue {
 	constructor(parent?: Instance);
 }
@@ -7341,6 +7770,7 @@ interface Rbx_IntConstrainedValue extends Rbx_ValueBase {
 	Value: number;
 }
 interface IntConstrainedValue extends Rbx_IntConstrainedValue, Base<Rbx_IntConstrainedValue>, AnyIndex {}
+/** Stores an int value in it's Value member.  Value is clamped to be in range of Min and MaxValue. Useful to share int information across multiple scripts. */
 declare class IntConstrainedValue {
 	constructor(parent?: Instance);
 }
@@ -7357,6 +7787,7 @@ interface Rbx_IntValue extends Rbx_ValueBase {
 	Value: number;
 }
 interface IntValue extends Rbx_IntValue, Base<Rbx_IntValue>, AnyIndex {}
+/** Stores a int value in it's Value member. Useful to share int information across multiple scripts. */
 declare class IntValue {
 	constructor(parent?: Instance);
 }
@@ -7405,6 +7836,7 @@ interface Rbx_RayValue extends Rbx_ValueBase {
 	Value: Ray;
 }
 interface RayValue extends Rbx_RayValue, Base<Rbx_RayValue>, AnyIndex {}
+/** Stores a Ray value in it's Value member. Useful to share Ray information across multiple scripts. */
 declare class RayValue {
 	constructor(parent?: Instance);
 }

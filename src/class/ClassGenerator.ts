@@ -193,25 +193,33 @@ function generateArgs(params: Array<ApiParameter>) {
 }
 
 export class ClassGenerator extends Generator {
-	private generateCallback(rbxCallback: ApiCallback, tsImplInterface?: ts.InterfaceDeclaration) {
+	private generateCallback(rbxCallback: ApiCallback, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxCallback.Name;
 		if (tsImplInterface && tsImplInterface.getProperty(name)) {
 			return;
 		}
 		const args = generateArgs(rbxCallback.Parameters);
+		const description = this.metadata.getCallbackDescription(className, name);
+		if (description) {
+			this.write(`/** ${description} */`);
+		}
 		this.write(`${name}: (${args}) => void;`);
 	}
 
-	private generateEvent(rbxEvent: ApiEvent, tsImplInterface?: ts.InterfaceDeclaration) {
+	private generateEvent(rbxEvent: ApiEvent, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxEvent.Name;
 		if (tsImplInterface && tsImplInterface.getProperty(name)) {
 			return;
 		}
 		const args = generateArgs(rbxEvent.Parameters);
+		const description = this.metadata.getEventDescription(className, name);
+		if (description) {
+			this.write(`/** ${description} */`);
+		}
 		this.write(`${name}: RBXScriptSignal<(${args}) => void>;`);
 	}
 
-	private generateFunction(rbxFunction: ApiFunction, tsImplInterface?: ts.InterfaceDeclaration) {
+	private generateFunction(rbxFunction: ApiFunction, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxFunction.Name;
 		if (tsImplInterface && tsImplInterface.getMethod(name)) {
 			return;
@@ -219,26 +227,36 @@ export class ClassGenerator extends Generator {
 		const returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
 		if (returnType !== null) {
 			const args = generateArgs(rbxFunction.Parameters);
-			if (hasTag(rbxFunction, "CustomLuaState")) {
-				this.write("// custom lua state");
+			const description = this.metadata.getMethodDescription(className, name);
+			if (description) {
+				this.write(`/** ${description} */`);
 			}
 			this.write(`${name}(${args}): ${returnType};`);
 		}
 	}
 
-	private generateProperty(rbxProperty: ApiProperty, tsImplInterface?: ts.InterfaceDeclaration) {
+	private generateProperty(rbxProperty: ApiProperty, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxProperty.Name;
 		if (tsImplInterface && tsImplInterface.getProperty(name)) {
 			return;
 		}
 		const valueType = safePropType(safeValueType(rbxProperty.ValueType));
 		if (valueType !== null) {
+			const description = this.metadata.getPropertyDescription(className, name);
+			if (description) {
+				this.write(`/** ${description} */`);
+			}
 			const prefix = canWrite(rbxProperty) && !hasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
 			this.write(`${prefix}${safeName(name)}: ${valueType};`);
 		}
 	}
 
-	private generateMember(rbxClass: ApiClass, rbxMember: ApiMember, tsImplInterface?: ts.InterfaceDeclaration) {
+	private generateMember(
+		rbxClass: ApiClass,
+		rbxMember: ApiMember,
+		className: string,
+		tsImplInterface?: ts.InterfaceDeclaration
+	) {
 		const blacklist = MEMBER_BLACKLIST[rbxClass.Name];
 		if (blacklist && blacklist[rbxMember.Name] === true) {
 			return;
@@ -246,13 +264,13 @@ export class ClassGenerator extends Generator {
 
 		if (canRead(rbxMember) && !hasTag(rbxMember, "Deprecated") && !hasTag(rbxMember, "NotScriptable")) {
 			if (rbxMember.MemberType === "Callback") {
-				this.generateCallback(rbxMember, tsImplInterface);
+				this.generateCallback(rbxMember, className, tsImplInterface);
 			} else if (rbxMember.MemberType === "Event") {
-				this.generateEvent(rbxMember, tsImplInterface);
+				this.generateEvent(rbxMember, className, tsImplInterface);
 			} else if (rbxMember.MemberType === "Function") {
-				this.generateFunction(rbxMember, tsImplInterface);
+				this.generateFunction(rbxMember, className, tsImplInterface);
 			} else if (rbxMember.MemberType === "Property") {
-				this.generateProperty(rbxMember, tsImplInterface);
+				this.generateProperty(rbxMember, className, tsImplInterface);
 			}
 		}
 	}
@@ -270,7 +288,7 @@ export class ClassGenerator extends Generator {
 					: "";
 			this.write(`interface ${implName} ${extendsStr}{`);
 			this.pushIndent();
-			rbxClass.Members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, tsImplInterface));
+			rbxClass.Members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
 			this.popIndent();
 			this.write(`}`);
 		}
@@ -286,6 +304,12 @@ export class ClassGenerator extends Generator {
 			if (!tsApiInterface) {
 				this.write(`interface ${name} extends ${implName}, Base<${implName}>, AnyIndex {}`);
 			}
+
+			const classDescription = this.metadata.getClassDescription(name);
+			if (classDescription) {
+				this.write(`/** ${classDescription} */`);
+			}
+
 			this.write(`declare ${prefixStr}class ${name} {`);
 			this.pushIndent();
 			this.write("constructor(parent?: Instance);");
