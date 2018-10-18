@@ -1370,6 +1370,21 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "CorePackages"): CorePackages;
 }
 
+// CoreScriptSyncService
+interface Rbx_CoreScriptSyncService extends Rbx_Instance {
+}
+type CoreScriptSyncService = Rbx_CoreScriptSyncService & Base<Rbx_CoreScriptSyncService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "CoreScriptSyncService"): this is CoreScriptSyncService;
+	FindFirstAncestorOfClass(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
+	FindFirstAncestorWhichIsA(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
+	FindFirstChildOfClass(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
+	FindFirstAncestorWhichIsA(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "CoreScriptSyncService"): CoreScriptSyncService;
+}
+
 // CustomEvent
 interface Rbx_CustomEvent extends Rbx_Instance {
 	GetAttachedReceivers(): Array<Instance>;
@@ -2236,7 +2251,6 @@ interface Rbx_ImageButton extends Rbx_GuiButton {
 	PressedImage: string;
 	ScaleType: Enum.ScaleType;
 	SliceCenter: Rect;
-	SliceScale: number;
 	TileSize: UDim2;
 }
 interface ImageButton extends Rbx_ImageButton, Base<Rbx_ImageButton>, AnyIndex {}
@@ -2307,7 +2321,6 @@ interface Rbx_ImageLabel extends Rbx_GuiLabel {
 	readonly IsLoaded: boolean;
 	ScaleType: Enum.ScaleType;
 	SliceCenter: Rect;
-	SliceScale: number;
 	TileSize: UDim2;
 }
 interface ImageLabel extends Rbx_ImageLabel, Base<Rbx_ImageLabel>, AnyIndex {}
@@ -4686,7 +4699,6 @@ interface Rbx_Workspace extends Rbx_Model {
 	readonly FilteringEnabled: boolean;
 	Gravity: number;
 	StreamingEnabled: boolean;
-	TemporaryLegacyPhysicsSolverOverride: boolean;
 	FindPartsInRegion3(region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<Instance>;
 	FindPartsInRegion3WithIgnoreList(region: Region3, ignoreDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
 	FindPartsInRegion3WithWhiteList(region: Region3, whitelistDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
@@ -4849,6 +4861,8 @@ interface Rbx_Instance {
 interface Rbx_Path extends Rbx_Instance {
 	readonly Status: Enum.PathStatus;
 	CheckOcclusionAsync(start: number): number;
+	ComputeAsync(start: Vector3, finish: Vector3): void;
+	Blocked: RBXScriptSignal<(blockedWaypointIdx: number) => void>;
 }
 interface Path extends Rbx_Path, Base<Rbx_Path>, AnyIndex {}
 declare abstract class Path {
@@ -4864,6 +4878,7 @@ interface Rbx_Instance {
 
 // PathfindingService
 interface Rbx_PathfindingService extends Rbx_Instance {
+	CreatePath(agentParameters?: object): Instance | undefined;
 }
 type PathfindingService = Rbx_PathfindingService & Base<Rbx_PathfindingService> & AnyIndex;
 interface Rbx_Instance {
@@ -5138,7 +5153,6 @@ interface Rbx_Instance {
 
 // PointsService
 interface Rbx_PointsService extends Rbx_Instance {
-	GetGamePointBalance(userId: number): number;
 	PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
 }
 type PointsService = Rbx_PointsService & Base<Rbx_PointsService> & AnyIndex;
@@ -6407,6 +6421,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Disable Accurate Play Solo"]: boolean;
 	["Drag Multiple Parts As Single Part"]: boolean;
 	["Enable Autocomplete"]: boolean;
+	["Enable CoreScript Debugger"]: boolean;
 	["Error Color"]: Color3;
 	["Find Selection Background Color"]: Color3;
 	Font: QFont;
@@ -6450,7 +6465,6 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Text Wrapping"]: boolean;
 	Theme: Instance | undefined;
 	["UI Theme"]: Enum.UITheme;
-	["Use Accurate Play Solo"]: boolean;
 	["Warning Color"]: Color3;
 }
 type Studio = Rbx_Studio & Base<Rbx_Studio> & AnyIndex;
