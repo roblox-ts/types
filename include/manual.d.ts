@@ -51,13 +51,16 @@ interface Rbx_BillboardGui extends Rbx_LayerCollector {
 }
 
 interface Rbx_BindableEvent extends Rbx_Instance {
+	/** Used to make the custom event fire (see Event for more info). Arguments can be variable length. */
 	Fire(...arguments: Array<unknown>): void;
 	/** This event fires when the Fire() method is used.  Receives the variable length arguments from Fire(). */
 	Event: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
 }
 
 interface Rbx_BindableFunction extends Rbx_Instance {
+	/** Causes the function assigned to OnInvoke to be called. Arguments passed to this function get passed to OnInvoke function. */
 	Invoke(...arguments: Array<unknown>): Array<unknown>;
+	/** Should be defined as a function. This function is called when Invoke() is called. Number of arguments is variable. */
 	OnInvoke: (...arguments: Array<unknown>) => any;
 }
 
@@ -65,7 +68,9 @@ interface Rbx_Camera extends Rbx_Instance {
 	/** Where the Camera's focus is.  Any rotation of the camera will be about this subject. */
 	CameraSubject: Humanoid | BasePart | undefined;
 	GetPartsObscuringTarget(castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
+	/** Takes a 3D position in the world and projects it onto x,y coordinates of screen space. Returns two values, first is a Vector3 that has x,y position and z position which is distance from camera (negative if behind camera, positive if in front). Second return value is a boolean indicating if the first argument is an on-screen coordinate. */
 	WorldToScreenPoint(worldPoint: Vector3): [Vector3, boolean];
+	/** Same as WorldToScreenPoint, except no GUI offsets are taken into account. */
 	WorldToViewportPoint(worldPoint: Vector3): [Vector3, boolean];
 }
 
@@ -87,9 +92,13 @@ interface Rbx_ClickDetector extends Rbx_Instance {
 }
 
 interface Rbx_CollectionService extends Rbx_Instance {
+	/** Returns a signal that fires when the given tag either has a new instance with that tag added to the data model or that tag is assigned to an instance within the data model. */
 	GetInstanceAddedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
+	/** Returns a signal that fires when the given tag either has an instance with that tag removed from the data model or that tag is removed from an instance within the data model. */
 	GetInstanceRemovedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
+	/** Returns an array of all of the instances in the data model which have the given tag. */
 	GetTagged<T = Instance>(tag: string): Array<T>;
+	/** Returns a list of all the collections that an instance belongs to. */
 	GetTags(instance: Instance): Array<string>;
 }
 
@@ -98,6 +107,7 @@ interface Rbx_ContentProvider extends Rbx_Instance {
 }
 
 interface Rbx_ContextActionService extends Rbx_Instance {
+	/** Binds 'functionToBind' to fire when any 'inputTypes' happen. InputTypes can be variable in number and type. Types can be Enum.KeyCode, single character strings corresponding to keys, or Enum.UserInputType. 'actionName' is a key used by many other ContextActionService functions to query state. 'createTouchButton' if true will create a button on screen on touch devices.  This button will fire 'functionToBind' with three arguments: first argument is the actionName, second argument is the UserInputState of the input, and the third is the InputObject that fired this function. If 'functionToBind' yields or returns nil or Enum.ContextActionResult.Sink, the input will be sunk. If it returns Enum.ContextActionResult.Pass, the next bound action in the stack will be invoked. */
 	BindAction(
 		actionName: string,
 		functionToBind: Function,
@@ -111,6 +121,7 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 		priorityLevel: number,
 		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
+	/** If 'actionName' key contains a bound action, then this will return the touch button (if was created). Returns nil if a touch button was not created. No guarantees are made whether button will be retrievable when button is manipulated. */
 	GetButton(actionName: string): ImageButton | undefined;
 	LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
 	LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
@@ -124,12 +135,16 @@ interface Rbx_DataStorePages
 interface DataStorePages extends Rbx_DataStorePages, Base<Rbx_DataStorePages>, AnyIndex {}
 
 interface Rbx_DataStoreService extends Rbx_Instance {
+	/** Returns a data store with the given name and scope */
 	GetDataStore(name: string, scope?: string): GlobalDataStore;
+	/** Returns the default data store */
 	GetGlobalDataStore(): GlobalDataStore;
+	/** Returns an ordered data store with the given name and scope */
 	GetOrderedDataStore(name: string, scope?: string): OrderedDataStore;
 }
 
 interface Rbx_Dialog extends Rbx_Instance {
+	/** Returns an array of the players currently conversing with this dialog. */
 	GetCurrentPlayers(): Array<Player>;
 	DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
 }
@@ -151,6 +166,7 @@ interface Rbx_GamePassService extends Rbx_Instance {
 }
 
 interface Rbx_GlobalDataStore extends Rbx_Instance {
+	/** Retrieves the value of the key from the website, and updates it with a new value. The callback until the value fetched matches the value on the web. Returning nil means it will not save.  */
 	UpdateAsync(key: string, transformFunction: Function): unknown;
 }
 
@@ -214,6 +230,7 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 interface Rbx_GuiService extends Rbx_Instance {
 	AddSelectionParent(selectionName: string, selectionParent: GuiObject): void;
 	AddSelectionTuple(selectionName: string, selections: GuiObject): void;
+	/** Returns a Tuple containing two Vector2 values representing the offset of user GUIs in pixels from the top right corner of the screen and the bottom right corner of the screen respectively. */
 	GetGuiInset(): [Vector2, Vector2];
 }
 
@@ -259,11 +276,15 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	GetPlayingAnimationTracks(): Array<AnimationTrack>;
 	LoadAnimation(animation: Instance): AnimationTrack;
 	AddAccessory(accessory: Accessory): void;
+	/** Takes a specified tool and equips it to the Humanoid's Character.  Tool argument should be of type 'Tool'. */
 	EquipTool(tool: BasePart): void;
 	GetAccessories(): Array<Accessory>;
 	GetLimb(part: BasePart): Enum.Limb;
+	/** Returns a Enum.BodyPartR15 given a body part in the Humanoid's Character. */
 	GetBodyPartR15(part: BasePart): Enum.BodyPartR15;
+	/** Attempts to move the Humanoid and it's associated character to 'part'. 'location' is used as an offset from part's origin. */
 	MoveTo(location: Vector3, part?: BasePart): void;
+	/** Replaces the desired bodypart on the Humanoid's Character using a specified Enum.BodyPartR15 and BasePart. Returns a success boolean. */
 	ReplaceBodyPartR15(bodyPart: Enum.BodyPartR15, part: BasePart): boolean;
 	AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 	Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
@@ -301,19 +322,28 @@ interface FreeSearchResult {
 }
 
 interface Rbx_InsertService extends Rbx_Instance {
+	/** Returns a Model containing the Instance that resides at AssetId on the web. This call will also yield the script until the model is returned. Script execution can still continue, however, if you use a [coroutine](http://wiki.roblox.com/index.php?title=Coroutine). */
 	LoadAsset(assetId: number): Model;
+	/** Similar to LoadAsset, but instead an AssetVersionId is passed in, which refers to a particular version of the asset which is not neccessarily the latest version. */
 	LoadAssetVersion(assetVersionId: number): Model;
+	/** Returns a table containing a list of the various setIds that are ROBLOX approved. [More info on sets](http://wiki.roblox.com/index.php/Sets) */
 	GetBaseSets(): Array<SetInfo>;
+	/** Returns a table for the assets stored in the category.  A category is an setId from www.roblox.com that links to a set.  [More info on table format](http://wiki.roblox.com/index.php?title=API:Class/InsertService/GetCollection). [More info on sets](http://wiki.roblox.com/index.php/Sets) */
 	GetCollection(categoryId: number): Array<CollectionInfo>;
 	GetFreeDecals(searchText: string, pageNum: number): Array<FreeSearchResult>;
 	GetFreeModels(searchText: string, pageNum: number): Array<FreeSearchResult>;
+	/** Returns a table containing a list of the various setIds that correspond to argument 'userId'. [More info on sets](http://wiki.roblox.com/index.php/Sets) */
 	GetUserSets(userId: number): Array<SetInfo>;
 }
 
 interface Rbx_Instance {
+	/** Returns a copy of this Object and all its children. The copy's Parent is nil */
 	Clone(): Instance;
+	/** Returns an array containing all of the descendants of the instance. Returns in preorder traversal, or in other words, where the parents come before their children, depth first. */
 	GetDescendants(): Array<Instance>;
+	/** Returns the first ancestor of this Instance that matches the first argument 'name'.  The function will return nil if no Instance is found. */
 	FindFirstAncestor<T = Instance>(name: string): T | undefined;
+	/** Returns the first child of this Instance that matches the first argument 'name'.  The second argument 'recursive' is an optional boolean (defaults to false) that will force the call to traverse down thru all of this Instance's descendants until it finds an object with a name that matches the 'name' argument.  The function will return nil if no Instance is found. */
 	FindFirstChild<T = Instance>(name: string, recursive?: boolean): T | undefined;
 	WaitForChild<T = Instance>(childName: string): T;
 	WaitForChild<T = Instance>(childName: string, timeOut: number): T | undefined;
@@ -370,8 +400,22 @@ interface Rbx_MarketplaceService extends Rbx_Instance {
 		equipIfPurchased?: boolean,
 		currencyType?: Enum.CurrencyType
 	): void;
+	/** Will prompt 'player' to purchase the item associated with 'assetId'.  'equipIfPurchased' is an optional argument that will give the item to the player immediately if they buy it (only applies to gear).  'currencyType' is also optional and will attempt to prompt the user with a specified currency if the product can be purchased with this currency, otherwise we use the default currency of the product. */
 	PromptPurchase(player: Player, assetId: number, equipIfPurchased?: boolean, currencyType?: Enum.CurrencyType): void;
+	/** Checks to see if 'Player' owns the product associated with 'assetId'. Returns true if the player owns it, false otherwise. This call will produce a warning if called on a guest player. */
 	PlayerOwnsAsset(player: Player, assetId: number): boolean;
+	/** Callback that is executed for pending Developer Product receipts. *
+	 *             If this function does not return Enum.ProductPurchaseDecision.PurchaseGranted, then you will not be granted the money for the purchase!
+	 *
+	 *             The callback will be invoked with a table, containing the following informational fields:
+	 *             PlayerId - the id of the player making the purchase.
+	 *             PlaceIdWherePurchased - the specific place where the purchase was made.
+	 *             PurchaseId - a unique identifier for the purchase, should be used to prevent granting an item multiple times for one purchase.
+	 *             ProductId - the id of the purchased product.
+	 *             CurrencyType - the type of currency used (Tix, Robux).
+	 *             CurrencySpent - the amount of currency spent on the product for this purchase.
+	 *
+	 */
 	ProcessReceipt: (receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision;
 	PromptGamePassPurchaseFinished: RBXScriptSignal<
 		(player: Player, gamePassId: number, wasPurchased: boolean) => void
@@ -385,6 +429,7 @@ interface Rbx_Model extends Rbx_PVInstance {
 }
 
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
+	/** Returns a DataStorePages object. The length of each page is determined by pageSize, and the order is determined by isAscending. minValue and maxValue are optional parameters which will filter the result.  */
 	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
 }
 
@@ -482,6 +527,7 @@ interface Rbx_Players extends Rbx_Instance {
 }
 
 interface Rbx_PointsService extends Rbx_Instance {
+	/** Will attempt to award the 'amount' points to 'userId', returns 'userId' awarded to, the number of points awarded, the new point total the user has in the game, and the total number of points the user now has. Will also fire PointsService.PointsAwarded. Works with server scripts ONLY. */
 	AwardPoints(userId: number, amount: number): [number, number, number, 0];
 }
 
@@ -625,6 +671,7 @@ interface Rbx_TweenService {
 
 interface Rbx_UserInputService {
 	GetConnectedGamepads(): Array<Enum.UserInputType>;
+	/** Returns an InputObject and a Vector4 that describes the device's current rotation vector. This is fired with an InputObject, which has type Enum.InputType.Gyroscope, and position that shows total rotation in each local device axis. The delta property describes the amount of rotation that last happened. The Vector4 is the device's current quaternion rotation in reference to it's default reference frame. This event only fires locally. */
 	GetDeviceRotation(): [InputObject, CFrame];
 	GetGamepadState(gamepadNum: Enum.UserInputType): Array<InputObject>;
 	GetKeysPressed(): Array<InputObject>;
@@ -635,12 +682,14 @@ interface Rbx_UserInputService {
 
 interface Rbx_Workspace extends Rbx_Model {
 	Terrain: Terrain;
+	/** Return type is (BasePart, Vector3) if the ray hits.  If it misses it will return (nil, PointAtEndOfRay) */
 	FindPartOnRay(
 		ray: Ray,
 		ignoreDescendantsInstance?: Instance,
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean
 	): [BasePart, Vector3, Vector3, Enum.Material];
+	/** Return type is (BasePart, Vector3) if the ray hits.  If it misses it will return (nil, PointAtEndOfRay) */
 	FindPartOnRayWithIgnoreList(
 		ray: Ray,
 		ignoreDescendantsTable: Array<Instance>,
