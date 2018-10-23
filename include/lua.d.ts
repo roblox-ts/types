@@ -9,7 +9,7 @@ declare function collectgarbage(option: "count"): number;
 declare function error(message?: string, level?: number): void;
 declare function newproxy(): any;
 declare function next(t: any): [any, any];
-declare function pcall(func: Function, ...args: Array<any>): Array<any>;
+declare function pcall(func: (...args: any[]) => any, ...args: any): [boolean, ...unknown[]];
 declare function print(...params: Array<any>): void;
 declare function rawequal(v1: any, v2: any): boolean;
 declare function rawget(t: any, index: any): any;
