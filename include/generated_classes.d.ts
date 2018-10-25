@@ -239,6 +239,7 @@ interface Rbx_Instance {
 // AssetService
 interface Rbx_AssetService extends Rbx_Instance {
 	CreatePlaceAsync(placeName: string, templatePlaceID: number, description?: string): number;
+	GetBundleDetailsAsync(bundleId: number): object;
 	SavePlaceAsync(): void;
 }
 type AssetService = Rbx_AssetService & Base<Rbx_AssetService> & AnyIndex;
@@ -975,6 +976,7 @@ interface Rbx_Instance {
 
 // Constraint
 interface Rbx_Constraint extends Rbx_Instance {
+	readonly Active: boolean;
 	Attachment0: Attachment;
 	Attachment1: Attachment;
 	/** The color of the in-game visual. */
@@ -3614,6 +3616,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // JointInstance
 interface Rbx_JointInstance extends Rbx_Instance {
+	readonly Active: boolean;
 	C0: CFrame;
 	C1: CFrame;
 	Part0: BasePart;
@@ -7992,6 +7995,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // WeldConstraint
 interface Rbx_WeldConstraint extends Rbx_Instance {
+	readonly Active: boolean;
 	Enabled: boolean;
 	Part0: BasePart;
 	Part1: BasePart;
