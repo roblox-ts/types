@@ -9,7 +9,6 @@ declare function collectgarbage(option: "count"): number;
 declare function error(message?: string, level?: number): void;
 declare function newproxy(): any;
 declare function next(t: any): [any, any];
-declare function pcall(func: (...args: any[]) => any, ...args: any): [boolean, ...unknown[]];
 declare function print(...params: Array<any>): void;
 declare function rawequal(v1: any, v2: any): boolean;
 declare function rawget(t: any, index: any): any;
@@ -17,6 +16,39 @@ declare function rawset(t: any, index: any, value: any): void;
 declare function select(index: number, ...args: Array<any>): Array<any>;
 declare function select(cmd: "#", ...args: Array<any>): number;
 declare function tostring(value: any): string;
+
+declare function pcall<T extends any[], U>(
+	func: (...args: T) => U,
+	...args: T
+): U extends [infer A]
+	? [boolean, A]
+	: U extends [infer A, infer B]
+		? [boolean, A, B]
+		: U extends [infer A, infer B, infer C]
+			? [boolean, A, B, C]
+			: U extends [infer A, infer B, infer C, infer D]
+				? [boolean, A, B, C, D]
+				: U extends [infer A, infer B, infer C, infer D, infer E]
+					? [boolean, A, B, C, D, E]
+					: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
+						? [boolean, A, B, C, D, E, F]
+						: [boolean, U];
+
+declare function pcall<T extends any[], U>(
+	func: (...args: T) => U
+): U extends [infer A]
+	? [boolean, A]
+	: U extends [infer A, infer B]
+		? [boolean, A, B]
+		: U extends [infer A, infer B, infer C]
+			? [boolean, A, B, C]
+			: U extends [infer A, infer B, infer C, infer D]
+				? [boolean, A, B, C, D]
+				: U extends [infer A, infer B, infer C, infer D, infer E]
+					? [boolean, A, B, C, D, E]
+					: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
+						? [boolean, A, B, C, D, E, F]
+						: [boolean, U];
 
 interface LuaMetatable<T> {
 	__index?: (self: T, index: any) => void;
