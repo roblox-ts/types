@@ -95,18 +95,17 @@ declare namespace debug {
 }
 
 interface String {
-	byte(s: string, i?: number, j?: number): Array<number>;
-	char(...args: Array<number>): string;
-	find(s: string, pattern: string, init?: number, plain?: boolean): [number, number];
+	byte(i?: number, j?: number): Array<number>;
+	find(pattern: string, init?: number, plain?: boolean): [number, number];
 	format(pattern: string, ...args: Array<number | string>): string;
-	gsub(s: string, pattern: string, repl: any, n?: number): string;
-	len(s: string): number;
-	lower(s: string): string;
-	match(s: string, pattern: string, init?: number): string | undefined;
-	rep(s: string, n: number): string;
-	reverse(s: string): string;
-	sub(s: string, i: number, j?: number): string;
-	upper(s: string): string;
+	gsub(pattern: string, repl: any, n?: number): string;
+	len(): number;
+	lower(): string;
+	match(pattern: string, init?: number): string | undefined;
+	rep(n: number): string;
+	reverse(): string;
+	sub(i: number, j?: number): string;
+	upper(): string;
 }
 
 declare namespace string {
