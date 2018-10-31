@@ -8,6 +8,7 @@ interface RegExp {}
 
 interface String {
 	readonly length: number;
+	split(sep?: string): string;
 }
 
 interface Function {
