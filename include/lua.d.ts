@@ -94,12 +94,27 @@ declare namespace debug {
 	function profileend(): void;
 }
 
+interface String {
+	byte(s: string, i?: number, j?: number): Array<number>;
+	char(...args: Array<number>): string;
+	find(s: string, pattern: string, init?: number, plain?: boolean): [number, number];
+	format(pattern: string, ...args: Array<number | string>): string;
+	gsub(s: string, pattern: string, repl: any, n?: number): string;
+	len(s: string): number;
+	lower(s: string): string;
+	match(s: string, pattern: string, init?: number): string | undefined;
+	rep(s: string, n: number): string;
+	reverse(s: string): string;
+	sub(s: string, i: number, j?: number): string;
+	upper(s: string): string;
+}
+
 declare namespace string {
 	function byte(s: string, i?: number, j?: number): Array<number>;
 	function char(...args: Array<number>): string;
-	function find(s: string, pattern: string, init?: number, plain?: boolean): number;
-	function find(s: string, pattern: string, init?: number, plain?: boolean): Array<number | string>;
+	function find(s: string, pattern: string, init?: number, plain?: boolean): [number, number];
 	function format(pattern: string, ...args: Array<number | string>): string;
+	function gsub(s: string, pattern: string, repl: any, n?: number): string;
 	function len(s: string): number;
 	function lower(s: string): string;
 	function match(s: string, pattern: string, init?: number): string | undefined;
@@ -107,7 +122,6 @@ declare namespace string {
 	function reverse(s: string): string;
 	function sub(s: string, i: number, j?: number): string;
 	function upper(s: string): string;
-	function gsub(s: string, pattern: string, repl: any, n?: number): string;
 }
 
 declare namespace math {
