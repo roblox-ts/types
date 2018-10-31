@@ -2626,6 +2626,7 @@ interface Rbx_Instance {
 // TextBox
 interface Rbx_TextBox extends Rbx_GuiObject {
 	ClearTextOnFocus: boolean;
+	CursorPosition: number;
 	Font: Enum.Font;
 	LineHeight: number;
 	MultiLine: boolean;
@@ -2662,6 +2663,24 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "TextBox"): TextBox | undefined;
 	FindFirstChildOfClass(className: "TextBox"): TextBox | undefined;
 	FindFirstAncestorWhichIsA(className: "TextBox"): TextBox | undefined;
+}
+
+// ViewportFrame
+interface Rbx_ViewportFrame extends Rbx_GuiObject {
+	/** Current Camera of children objects */
+	CurrentCamera: Camera;
+}
+interface ViewportFrame extends Rbx_ViewportFrame, Base<Rbx_ViewportFrame>, AnyIndex {}
+/** A GUI that can show 3D objects */
+declare class ViewportFrame {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "ViewportFrame"): this is ViewportFrame;
+	FindFirstAncestorOfClass(className: "ViewportFrame"): ViewportFrame | undefined;
+	FindFirstAncestorWhichIsA(className: "ViewportFrame"): ViewportFrame | undefined;
+	FindFirstChildOfClass(className: "ViewportFrame"): ViewportFrame | undefined;
+	FindFirstAncestorWhichIsA(className: "ViewportFrame"): ViewportFrame | undefined;
 }
 
 // LayerCollector
@@ -4067,6 +4086,7 @@ interface Rbx_LocalizationService extends Rbx_Instance {
 	readonly RobloxLocaleId: string;
 	readonly SystemLocaleId: string;
 	GetCorescriptLocalizations(): Array<Instance>;
+	GetTranslatorForPlayerAsync(player: Instance): Instance | undefined;
 }
 type LocalizationService = Rbx_LocalizationService & Base<Rbx_LocalizationService> & AnyIndex;
 interface Rbx_Instance {
@@ -4644,6 +4664,7 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	LocalTransparencyModifier: number;
 	/** Determines whether building tools (in-game and studio) can manipulate this Part.  If true, no editing allowed.  If false, editing is allowed. */
 	Locked: boolean;
+	Massless: boolean;
 	/** Specifies the look and feel the Part should have.  Note: this does not define the color the Part is, see BrickColor for that. [More info](http://wiki.roblox.com/index.php/Material) */
 	Material: Enum.Material;
 	/** Rotation around X, Y, and Z axis.  Rotations applied in YXZ order. */
@@ -4660,6 +4681,7 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	RightParamB: number;
 	RightSurface: Enum.SurfaceType;
 	RightSurfaceInput: Enum.InputType;
+	RootPriority: number;
 	RotVelocity: Vector3;
 	Rotation: Vector3;
 	Size: Vector3;
