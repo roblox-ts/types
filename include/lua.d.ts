@@ -31,7 +31,7 @@ declare function newproxy(IncludeEmptyMetatable?: boolean | undefined): any;
 /** Returns the first key/value pair in the array. If a lastKey argument was specified then returns the next element in the array based on the key that provided. The order in which the indices are enumerated is not specified, even for numeric indices. To traverse a table in numeric order, use a numerical for or the ipairs function. The behavior of next is undefined if, during the traversal, you assign any value to a non-existent field in the table. You may, however, modify existing fields. In particular, you may clear existing fields. */
 declare function next(t: any): [any, any];
 
-/**  */
+/** Prints a list of parameters to console. */
 declare function print(...params: Array<any>): void;
 
 /** Checks whether v1 is equal to v2, without invoking any metamethod. */
@@ -138,10 +138,10 @@ declare namespace debug {
 }
 
 interface String {
-	/** Returns the internal numerical codes of the characters s[i], s[i+1], ..., s[j]. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
+	/** Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`, `...`, `s[j]`. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
 	byte(i?: number, j?: number): number;
 
-	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if _plain_ is given, then _init_ must be given as well. */
+	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if `plain` is given, then `init` must be given as well. */
 	find(pattern: string, init?: number, plain?: boolean): [number, number];
 
 	/** Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). */
@@ -176,13 +176,13 @@ interface String {
 }
 
 declare namespace string {
-	/** Returns the internal numerical codes of the characters s[i], s[i+1], ..., s[j]. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
+	/** Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`, `...`, `s[j]`. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
 	function byte(s: string, i?: number, j?: number): number;
 
 	/** Receives zero or more integers. Returns a string with length equal to the number of arguments, in which each character has the internal numerical code equal to its corresponding argument. */
 	function char(...args: Array<number>): string;
 
-	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if _plain_ is given, then _init_ must be given as well. */
+	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if `plain` is given, then `init` must be given as well. */
 	function find(s: string, pattern: string, init?: number, plain?: boolean): [number, number];
 
 	/** Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). */
@@ -298,7 +298,7 @@ declare namespace math {
 	/** Sets x as the seed for the pseudo-random generator: equal seeds produce equal sequences of numbers. */
 	function randomseed(seed: number): number;
 
-	/** Returns -1 if x < 0, 0 if x == 0, or 1 if x > 0. */
+	/** Returns -1 if `x < 0`, 0 if `x == 0`, or 1 if `x > 0`. */
 	function sign(n: number): number
 
 	/** Returns the sine of x (assumed to be in radians). */
@@ -307,7 +307,7 @@ declare namespace math {
 	/** Returns the hyperbolic sine of x. */
 	function sinh(n: number): number;
 
-	/** Returns the square root of x. (You can also use the expression x^0.5 to compute this value.) */
+	/** Returns the square root of x. (You can also use the expression `x^0.5` to compute this value.) */
 	function sqrt(n: number): number;
 
 	/** Returns the tangent of x (assumed to be in radians). */
@@ -318,7 +318,7 @@ declare namespace math {
 }
 
 declare namespace table {
-	/** Given a list where all elements are strings or numbers, returns the string list[i]..sep..list[i+1] ... sep..list[j]. The default value for sep is the empty string, the default for i is 1, and the default for j is #list. If i is greater than j, returns the empty string. */
+	/** Given a list where all elements are strings or numbers, returns the string `list[i]..sep..list[i+1] ... sep..list[j]`. The default value for sep is the empty string, the default for i is 1, and the default for j is #list. If i is greater than j, returns the empty string. */
 	function concat(list: Table, sep: string, i: number, j: number): string;
 
 	/** Iterates over the provided table, passing the key and value of each iteration over to the provided function. */
@@ -339,10 +339,10 @@ declare namespace table {
 	/** Removes from list the element at position pos, returning the value of the removed element. When pos is an integer between 1 and #list, it shifts down the elements list[pos+1], list[pos+2], ..., list[#list] and erases element list[#list]; The index pos can also be 0 when #list is 0, or #list + 1; in those cases, the function erases the element list[pos]. */
 	function remove(list: Table, pos: number): any;
 
-	/** Sorts list elements in a given order, in-place, from list[1] to list[#list], using the standard Lua less-than operator. */
+	/** Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`, using the standard Lua less-than operator. */
 	function sort(t: Table): void;
 
-	/** Sorts list elements in a given order, in-place, from list[1] to list[#list]. Comp is a function that receives two list elements and returns true when the first element must come before the second in the final order (so that not comp(list[i+1],list[i]) will be true after the sort). */
+	/** Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`. Comp is a function that receives two list elements and returns true when the first element must come before the second in the final order (so that `not comp(list[i+1],list[i])` will be true after the sort). */
 	function sort(t: Table, comp: () => boolean): void;
 }
 
