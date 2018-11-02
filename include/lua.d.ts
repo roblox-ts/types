@@ -26,7 +26,7 @@ declare function getfenv(stack: number): Array<any>
 declare function getmetatable(object: object): any;
 
 /** Creates a blank 'userdata'. Includes an empty metatable. */
-declare function newproxy(IncludeEmptyMetatable: boolean | undefined): any;
+declare function newproxy(IncludeEmptyMetatable?: boolean | undefined): any;
 
 /** Returns the first key/value pair in the array. If a lastKey argument was specified then returns the next element in the array based on the key that provided. The order in which the indices are enumerated is not specified, even for numeric indices. To traverse a table in numeric order, use a numerical for or the ipairs function. The behavior of next is undefined if, during the traversal, you assign any value to a non-existent field in the table. You may, however, modify existing fields. In particular, you may clear existing fields. */
 declare function next(t: any): [any, any];
