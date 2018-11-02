@@ -2,7 +2,7 @@
 
 // LUA API
 
-declare interface Table {}
+interface Table {}
 
 /** A table that is shared between all scripts of the same context level. */
 declare const _G: Table;
@@ -88,7 +88,7 @@ declare function pcall<T extends any[], U>(
 						? [boolean, A, B, C, D, E, F]
 						: [boolean, U];
 
-declare interface LuaMetatable<T> {
+interface LuaMetatable<T> {
 	__index?: (self: T, index: any) => void;
 	__newindex?: (self: T, index: any, value: any) => void;
 	__add?: (self: T, other: unknown) => any;
@@ -112,7 +112,7 @@ declare interface LuaMetatable<T> {
 /** Sets the metatable for the given table. If setTo is nil, the metatable of the given table is removed. If the original metatable has a "__metatable" field, this will raise an error. This function returns the table t, which was passed to the function. */
 declare function setmetatable<T extends object>(object: T, metatable: LuaMetatable<T>): object;
 
-declare interface DateTable {
+interface DateTable {
 	year: number;
 	month: number;
 	day: number;
@@ -137,7 +137,7 @@ declare namespace debug {
 	function profileend(): void;
 }
 
-declare interface String {
+interface String {
 	/** Returns the internal numerical codes of the characters s[i], s[i+1], ..., s[j]. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
 	byte(i?: number, j?: number): number;
 
@@ -346,7 +346,7 @@ declare namespace table {
 	function sort(t: Table, comp: () => boolean): void;
 }
 
-declare interface thread {}
+interface thread {}
 
 declare namespace coroutine {
 	/** Creates a new coroutine, with body f. f must be a Lua function. */
