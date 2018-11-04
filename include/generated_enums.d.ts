@@ -1474,7 +1474,8 @@ declare namespace Enum {
 		CheckedFieldBackground = 78,
 		CheckedFieldBorder = 79,
 		CheckedFieldIndicator = 80,
-		HeaderSection = 81
+		HeaderSection = 81,
+		Midlight = 82
 	}
 	enum StudioStyleGuideModifier {
 		Default = 0,
