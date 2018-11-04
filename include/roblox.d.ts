@@ -29,15 +29,15 @@ declare class RBXScriptSignal<T = Function> {
 
 declare class Axes {
 	constructor(...axes: Array<Enum.Axis | Enum.NormalId>);
-	X: boolean;
-	Left: boolean;
-	Right: boolean;
-	Y: boolean;
-	Up: boolean;
-	Down: boolean;
-	Z: boolean;
-	Front: boolean;
-	Back: boolean;
+	readonly X: boolean;
+	readonly Left: boolean;
+	readonly Right: boolean;
+	readonly Y: boolean;
+	readonly Up: boolean;
+	readonly Down: boolean;
+	readonly Z: boolean;
+	readonly Front: boolean;
+	readonly Back: boolean;
 }
 
 declare class BrickColor {
@@ -55,12 +55,12 @@ declare class BrickColor {
 	static Yellow: () => BrickColor;
 	static Green: () => BrickColor;
 	static Blue: () => BrickColor;
-	Number: number;
-	Name: string;
-	Color: Color3;
-	r: number;
-	g: number;
-	b: number;
+	readonly Number: number;
+	readonly Name: string;
+	readonly Color: Color3;
+	readonly r: number;
+	readonly g: number;
+	readonly b: number;
 }
 
 declare class CFrame {
@@ -88,13 +88,13 @@ declare class CFrame {
 	static fromEulerAnglesXYZ: (rX: number, rY: number, rZ: number) => CFrame;
 	static fromEulerAnglesYXZ: (rX: number, rY: number, rZ: number) => CFrame;
 	static fromOrientation: (rX: number, rY: number, rZ: number) => CFrame;
-	p: Vector3;
-	X: number;
-	Y: number;
-	Z: number;
-	lookVector: Vector3;
-	rightVector: Vector3;
-	upVector: Vector3;
+	readonly p: Vector3;
+	readonly X: number;
+	readonly Y: number;
+	readonly Z: number;
+	readonly lookVector: Vector3;
+	readonly rightVector: Vector3;
+	readonly upVector: Vector3;
 	inverse(): CFrame;
 	lerp(goal: CFrame, alpha: number): CFrame;
 	toWorldSpace(cf: CFrame): CFrame;
@@ -103,7 +103,7 @@ declare class CFrame {
 	pointToObjectSpace(v3: Vector3): Vector3;
 	vectorToWorldSpace(v3: Vector3): Vector3;
 	vectorToObjectSpace(v3: Vector3): Vector3;
-	components(): Array<number>;
+	components(): [number, number, number, number, number, number, number, number, number, number, number, number];
 	toEulerAnglesXYZ(): [number, number, number];
 	toAxisAngle(): [Vector3, number];
 }
@@ -113,9 +113,9 @@ declare class Color3 {
 	constructor(r: number, g: number, b: number);
 	static fromRGB: (r: number, g: number, b: number) => Color3;
 	static fromHSV: (hue: number, sat: number, val: number) => Color3;
-	r: number;
-	g: number;
-	b: number;
+	readonly r: number;
+	readonly g: number;
+	readonly b: number;
 	static toHSV: (color: Color3) => [number, number, number];
 	lerp(goal: Color3, alpha: number): Color3;
 }
@@ -123,14 +123,14 @@ declare class Color3 {
 declare class ColorSequence {
 	constructor(color: Color3);
 	constructor(c0: Color3, c1: Color3);
-	constructor(colors: Array<ColorSequenceKeypoint>);
-	Keypoints: Array<ColorSequenceKeypoint>;
+	constructor(colors: ReadonlyArray<ColorSequenceKeypoint>);
+	readonly Keypoints: ReadonlyArray<ColorSequenceKeypoint>;
 }
 
 declare class ColorSequenceKeypoint {
 	constructor(time: number, color: Color3);
-	Time: number;
-	Value: Color3;
+	readonly Time: number;
+	readonly Value: Color3;
 }
 
 declare class DockWidgetPluginGuiInfo {
@@ -143,50 +143,50 @@ declare class DockWidgetPluginGuiInfo {
 		minWidth?: number,
 		minHeight?: number
 	);
-	InitialDockState: Enum.InitialDockState;
-	InitialEnabled: boolean;
-	InitialEnabledShouldOverrideRestore: boolean;
-	FloatingXSize: number;
-	FloatingYSize: number;
-	MinWidth: number;
-	MinHeight: number;
+	readonly InitialDockState: Enum.InitialDockState;
+	readonly InitialEnabled: boolean;
+	readonly InitialEnabledShouldOverrideRestore: boolean;
+	readonly FloatingXSize: number;
+	readonly FloatingYSize: number;
+	readonly MinWidth: number;
+	readonly MinHeight: number;
 }
 
 declare class Faces {
 	constructor(...ids: Array<Enum.NormalId>);
-	Top: boolean;
-	Bottom: boolean;
-	Back: boolean;
-	Front: boolean;
-	Right: boolean;
-	Left: boolean;
+	readonly Top: boolean;
+	readonly Bottom: boolean;
+	readonly Back: boolean;
+	readonly Front: boolean;
+	readonly Right: boolean;
+	readonly Left: boolean;
 }
 
 declare class NumberRange {
 	constructor(value: number);
 	constructor(minimum: number, maximum: number);
-	Min: number;
-	Max: number;
+	readonly Min: number;
+	readonly Max: number;
 }
 
 declare class NumberSequence {
 	constructor(val: number);
-	constructor(keypoints: Array<NumberSequenceKeypoint>);
-	Keypoints: Array<NumberSequenceKeypoint>;
+	constructor(keypoints: ReadonlyArray<NumberSequenceKeypoint>);
+	readonly Keypoints: ReadonlyArray<NumberSequenceKeypoint>;
 }
 
 declare class NumberSequenceKeypoint {
 	constructor();
 	constructor(time: number, value: number, envelope: number);
-	Envelope: number;
-	Time: number;
-	Value: number;
+	readonly Envelope: number;
+	readonly Time: number;
+	readonly Value: number;
 }
 
 declare class PathWaypoint {
 	constructor(position: Vector3, action: Enum.PathWaypointAction);
-	Action: Enum.PathWaypointAction;
-	Position: Vector3;
+	readonly Action: Enum.PathWaypointAction;
+	readonly Position: Vector3;
 }
 
 declare class PhysicalProperties {
@@ -199,11 +199,11 @@ declare class PhysicalProperties {
 		frictionWeight: number,
 		elasticityWeight: number
 	);
-	Density: number;
-	Friction: number;
-	Elasticity: number;
-	FrictionWeight: number;
-	ElasticityWeight: number;
+	readonly Density: number;
+	readonly Friction: number;
+	readonly Elasticity: number;
+	readonly FrictionWeight: number;
+	readonly ElasticityWeight: number;
 }
 
 declare class Random {
@@ -217,31 +217,31 @@ declare class Ray {
 	constructor(origin: Vector3, direction: Vector3);
 	ClosestPoint(point: Vector3): Vector3;
 	Distance(point: Vector3): number;
-	Origin: Vector3;
-	Direction: Vector3;
-	Unit: Ray;
+	readonly Origin: Vector3;
+	readonly Direction: Vector3;
+	readonly Unit: Ray;
 }
 
 declare class Rect {
 	constructor(min: Vector2, max: Vector2);
 	constructor(minX: number, minY: number, maxX: number, maxY: number);
-	Min: Vector2;
-	Max: Vector2;
-	Width: number;
-	Height: number;
+	readonly Min: Vector2;
+	readonly Max: Vector2;
+	readonly Width: number;
+	readonly Height: number;
 }
 
 declare class Region3 {
 	constructor(min: Vector3, max: Vector3);
-	CFrame: CFrame;
-	Size: Vector3;
+	readonly CFrame: CFrame;
+	readonly Size: Vector3;
 	ExpandToGrid(resolution: number): Region3;
 }
 
 declare class Region3int16 {
 	constructor(min: Vector3int16, max: Vector3int16);
-	Min: Vector3int16;
-	Max: Vector3int16;
+	readonly Min: Vector3int16;
+	readonly Max: Vector3int16;
 }
 
 declare class TweenInfo {
@@ -253,37 +253,37 @@ declare class TweenInfo {
 		reverses?: boolean,
 		delayTime?: number
 	);
-	Time: number;
-	EasingStyle: Enum.EasingStyle;
-	EasingDirection: Enum.EasingDirection;
-	RepeatCount: number;
-	Reverses: boolean;
-	DelayTime: number;
+	readonly Time: number;
+	readonly EasingStyle: Enum.EasingStyle;
+	readonly EasingDirection: Enum.EasingDirection;
+	readonly RepeatCount: number;
+	readonly Reverses: boolean;
+	readonly DelayTime: number;
 }
 
 declare class UDim {
 	constructor(scale: number, offset: number);
-	Scale: number;
-	Offset: number;
+	readonly Scale: number;
+	readonly Offset: number;
 }
 
 declare class UDim2 {
 	constructor();
 	constructor(xScale: number, xOffset: number, yScale: number, yOffset: number);
 	constructor(xDim: UDim, yDim: UDim);
-	X: UDim;
-	Y: UDim;
-	Width: UDim;
-	Height: UDim;
+	readonly X: UDim;
+	readonly Y: UDim;
+	readonly Width: UDim;
+	readonly Height: UDim;
 	Lerp(goal: UDim2, alpha: number): UDim2;
 }
 
 declare class Vector2 {
 	constructor(x?: number, y?: number);
-	X: number;
-	Y: number;
-	Unit: Vector2;
-	Magnitude: number;
+	readonly X: number;
+	readonly Y: number;
+	readonly Unit: Vector2;
+	readonly Magnitude: number;
 	Dot(other: Vector2): number;
 	Lerp(goal: Vector2, alpha: number): Vector2;
 	Cross(other: Vector2): Vector2;
@@ -291,8 +291,8 @@ declare class Vector2 {
 
 declare class Vector2int16 {
 	constructor(x?: number, y?: number);
-	X: number;
-	Y: number;
+	readonly X: number;
+	readonly Y: number;
 }
 
 declare class Vector3 {
@@ -303,18 +303,18 @@ declare class Vector3 {
 	Dot(other: Vector3): number;
 	Cross(other: Vector3): Vector3;
 	isClose(other: Vector3, epsilon: number): boolean;
-	X: number;
-	Y: number;
-	Z: number;
-	Unit: Vector3;
-	Magnitude: number;
+	readonly X: number;
+	readonly Y: number;
+	readonly Z: number;
+	readonly Unit: Vector3;
+	readonly Magnitude: number;
 }
 
 declare class Vector3int16 {
 	constructor(x?: number, y?: number, z?: number);
-	X: number;
-	Y: number;
-	Z: number;
+	readonly X: number;
+	readonly Y: number;
+	readonly Z: number;
 }
 
 // unusable internal studio classes
