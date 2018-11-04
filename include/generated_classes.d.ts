@@ -2360,12 +2360,6 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 	TweenSize(endSize: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
 	/** Smoothly translates a GuiObject's current size to 'endSize', and also smoothly translates the GuiObject's current position to 'endPosition'. The only required arguments are 'endSize' and 'endPosition'. [More info](http://wiki.roblox.com/index.php/TweenSizeAndPosition)  */
 	TweenSizeAndPosition(endSize: UDim2, endPosition: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
-	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
-	InputBegan: RBXScriptSignal<(input: Instance) => void>;
-	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
-	InputChanged: RBXScriptSignal<(input: Instance) => void>;
-	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
-	InputEnded: RBXScriptSignal<(input: Instance) => void>;
 	/** Fired when the mouse enters a GuiObject, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
 	MouseEnter: RBXScriptSignal<(x: number, y: number) => void>;
 	/** Fired when the mouse leaves a GuiObject, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
@@ -7657,12 +7651,6 @@ interface Rbx_UserInputService extends Rbx_Instance {
 	DeviceRotationChanged: RBXScriptSignal<(rotation: Instance, cframe: CFrame) => void>;
 	GamepadConnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
 	GamepadDisconnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
-	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	InputBegan: RBXScriptSignal<(input: Instance, gameProcessedEvent: boolean) => void>;
-	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	InputChanged: RBXScriptSignal<(input: Instance, gameProcessedEvent: boolean) => void>;
-	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	InputEnded: RBXScriptSignal<(input: Instance, gameProcessedEvent: boolean) => void>;
 	JumpRequest: RBXScriptSignal<() => void>;
 	LastInputTypeChanged: RBXScriptSignal<(lastInputType: Enum.UserInputType) => void>;
 	/** Fired when a user stops text entry into a textbox (usually by pressing return or clicking/tapping somewhere else on the screen). Argument is the textbox that was taken out of focus. This event only fires locally. */
