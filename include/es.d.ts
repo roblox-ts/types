@@ -3,6 +3,7 @@
 interface Boolean {}
 interface IArguments {}
 interface Number {}
+interface Object {}
 interface RegExp {}
 
 interface ArrayLike<T> {
@@ -10,7 +11,7 @@ interface ArrayLike<T> {
 	readonly [n: number]: T;
 }
 
-interface Object {
+interface ObjectConstructor {
 	/**
 	 * Copy the values of all of the enumerable own properties from one or more source objects to a
 	 * target object. Returns the target object.
@@ -76,6 +77,11 @@ interface Object {
 	 */
 	entries(o: {}): [string, any][];
 }
+
+/**
+ * Provides functionality common to all JavaScript objects.
+ */
+declare const Object: ObjectConstructor;
 
 interface String {
 	readonly length: number;
