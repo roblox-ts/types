@@ -20,7 +20,7 @@ declare function collectgarbage(option: "count"): number;
 declare function error(message?: string, level?: number): void;
 
 /** Returns the current environment in use by the function. If provided with a function, the environment of the function will be returned as an array. If provided with an integer, getfenv will provide the environment of the function at the provided stack level: Level 1 is the function calling getfenv. If stack is 0, getfenv returns the global environment of the current script. When using getfenv to get the current environment of a script, it will return the same table every time within the specific thread. */
-declare function getfenv(stack: number): Array<any>
+declare function getfenv(stack: number): Array<any>;
 
 /** Returns the metatable of the specified object if it has one, otherwise returns nil. If the object does have a metatable, but the metatable has a __metatable field set, the value of __metatable will be returned instead. */
 declare function getmetatable(object: object): any;
@@ -145,7 +145,7 @@ interface String {
 	find(pattern: string, init?: number, plain?: boolean): [number, number];
 
 	/** Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). */
-	format(pattern: string, ...args: Array<number | string>): string;
+	format(...args: Array<number | string>): string;
 
 	/** Returns an iterator function that, each time it is called, returns the next captures from pattern over the string s. */
 	gmatch(pattern: string): () => string;
@@ -299,7 +299,7 @@ declare namespace math {
 	function randomseed(seed: number): number;
 
 	/** Returns -1 if `x < 0`, 0 if `x == 0`, or 1 if `x > 0`. */
-	function sign(n: number): number
+	function sign(n: number): number;
 
 	/** Returns the sine of x (assumed to be in radians). */
 	function sin(n: number): number;
