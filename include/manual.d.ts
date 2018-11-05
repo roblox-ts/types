@@ -515,6 +515,7 @@ interface CharacterAppearanceInfo {
 }
 
 interface Rbx_Players extends Rbx_Instance {
+	/** @rbx-client */
 	LocalPlayer: Player | undefined;
 	GetPlayerFromCharacter(character: Model): Player | undefined;
 	GetCharacterAppearanceAsync(userId: number): Model | undefined;
