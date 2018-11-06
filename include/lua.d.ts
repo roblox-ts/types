@@ -50,7 +50,8 @@ declare function select(index: number, ...args: Array<any>): Array<any>;
 declare function select(cmd: "#", ...args: Array<any>): number;
 
 /** Attempts to convert the arg into a number with a specified base to interpret the value in. If it cannot be converted, this function returns nil. The base may be any integer between 2 and 36, inclusive. In bases above 10, the letter 'A' (in either upper or lower case) represents 10, 'B' represents 11, and so forth, with 'Z' representing 35. In base 10 (the default), the number may have a decimal part, as well as an optional exponent part. In other bases, only unsigned integers are accepted. */
-declare function tonumber(arg: any, base: number): any;
+declare function tonumber(arg: any, base?: number): number | undefined;
+
 /** Receives an argument of any type and converts it to a string in a reasonable format. If the metatable of e has a "__tostring" field, then tostring calls the corresponding value with e as an argument and uses the result of the call as its result. For complete control of how numbers are converted, use string.format. */
 declare function tostring(value: any): string;
 
