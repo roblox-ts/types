@@ -643,7 +643,8 @@ declare namespace Enum {
 		MarketplaceService = 2,
 		Players = 7,
 		Chat = 15,
-		Avatar = 16
+		Avatar = 16,
+		Analytics = 22
 	}
 	enum HumanoidDisplayDistanceType {
 		Viewer = 0,
@@ -1475,7 +1476,8 @@ declare namespace Enum {
 		CheckedFieldBorder = 79,
 		CheckedFieldIndicator = 80,
 		HeaderSection = 81,
-		Midlight = 82
+		Midlight = 82,
+		StatusBar = 83
 	}
 	enum StudioStyleGuideModifier {
 		Default = 0,
