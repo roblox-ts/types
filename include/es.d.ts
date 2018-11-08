@@ -85,7 +85,7 @@ declare const Object: ObjectConstructor;
 
 interface String {
 	readonly length: number;
-	split(sep?: string): Array<string>;
+	split(sep: string): Array<string>;
 }
 
 interface Function {
