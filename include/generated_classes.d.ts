@@ -239,6 +239,7 @@ interface Rbx_Instance {
 // AssetService
 interface Rbx_AssetService extends Rbx_Instance {
 	CreatePlaceAsync(placeName: string, templatePlaceID: number, description?: string): number;
+	GetBundleDetailsAsync(bundleId: number): object;
 	SavePlaceAsync(): void;
 }
 type AssetService = Rbx_AssetService & Base<Rbx_AssetService> & AnyIndex;
@@ -975,6 +976,7 @@ interface Rbx_Instance {
 
 // Constraint
 interface Rbx_Constraint extends Rbx_Instance {
+	readonly Active: boolean;
 	Attachment0: Attachment;
 	Attachment1: Attachment;
 	/** The color of the in-game visual. */
@@ -2358,12 +2360,6 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 	TweenSize(endSize: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
 	/** Smoothly translates a GuiObject's current size to 'endSize', and also smoothly translates the GuiObject's current position to 'endPosition'. The only required arguments are 'endSize' and 'endPosition'. [More info](http://wiki.roblox.com/index.php/TweenSizeAndPosition)  */
 	TweenSizeAndPosition(endSize: UDim2, endPosition: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
-	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
-	InputBegan: RBXScriptSignal<(input: Instance) => void>;
-	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
-	InputChanged: RBXScriptSignal<(input: Instance) => void>;
-	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
-	InputEnded: RBXScriptSignal<(input: Instance) => void>;
 	/** Fired when the mouse enters a GuiObject, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
 	MouseEnter: RBXScriptSignal<(x: number, y: number) => void>;
 	/** Fired when the mouse leaves a GuiObject, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
@@ -2624,6 +2620,7 @@ interface Rbx_Instance {
 // TextBox
 interface Rbx_TextBox extends Rbx_GuiObject {
 	ClearTextOnFocus: boolean;
+	CursorPosition: number;
 	Font: Enum.Font;
 	LineHeight: number;
 	MultiLine: boolean;
@@ -2660,6 +2657,24 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "TextBox"): TextBox | undefined;
 	FindFirstChildOfClass(className: "TextBox"): TextBox | undefined;
 	FindFirstAncestorWhichIsA(className: "TextBox"): TextBox | undefined;
+}
+
+// ViewportFrame
+interface Rbx_ViewportFrame extends Rbx_GuiObject {
+	/** Current Camera of children objects */
+	CurrentCamera: Camera;
+}
+interface ViewportFrame extends Rbx_ViewportFrame, Base<Rbx_ViewportFrame>, AnyIndex {}
+/** A GUI that can show 3D objects */
+declare class ViewportFrame {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "ViewportFrame"): this is ViewportFrame;
+	FindFirstAncestorOfClass(className: "ViewportFrame"): ViewportFrame | undefined;
+	FindFirstAncestorWhichIsA(className: "ViewportFrame"): ViewportFrame | undefined;
+	FindFirstChildOfClass(className: "ViewportFrame"): ViewportFrame | undefined;
+	FindFirstAncestorWhichIsA(className: "ViewportFrame"): ViewportFrame | undefined;
 }
 
 // LayerCollector
@@ -3614,6 +3629,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // JointInstance
 interface Rbx_JointInstance extends Rbx_Instance {
+	readonly Active: boolean;
 	C0: CFrame;
 	C1: CFrame;
 	Part0: BasePart;
@@ -4064,6 +4080,7 @@ interface Rbx_LocalizationService extends Rbx_Instance {
 	readonly RobloxLocaleId: string;
 	readonly SystemLocaleId: string;
 	GetCorescriptLocalizations(): Array<Instance>;
+	GetTranslatorForPlayerAsync(player: Instance): Instance | undefined;
 }
 type LocalizationService = Rbx_LocalizationService & Base<Rbx_LocalizationService> & AnyIndex;
 interface Rbx_Instance {
@@ -4641,6 +4658,7 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	LocalTransparencyModifier: number;
 	/** Determines whether building tools (in-game and studio) can manipulate this Part.  If true, no editing allowed.  If false, editing is allowed. */
 	Locked: boolean;
+	Massless: boolean;
 	/** Specifies the look and feel the Part should have.  Note: this does not define the color the Part is, see BrickColor for that. [More info](http://wiki.roblox.com/index.php/Material) */
 	Material: Enum.Material;
 	/** Rotation around X, Y, and Z axis.  Rotations applied in YXZ order. */
@@ -4657,6 +4675,7 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	RightParamB: number;
 	RightSurface: Enum.SurfaceType;
 	RightSurfaceInput: Enum.InputType;
+	RootPriority: number;
 	RotVelocity: Vector3;
 	Rotation: Vector3;
 	Size: Vector3;
@@ -7632,12 +7651,6 @@ interface Rbx_UserInputService extends Rbx_Instance {
 	DeviceRotationChanged: RBXScriptSignal<(rotation: Instance, cframe: CFrame) => void>;
 	GamepadConnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
 	GamepadDisconnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
-	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	InputBegan: RBXScriptSignal<(input: Instance, gameProcessedEvent: boolean) => void>;
-	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	InputChanged: RBXScriptSignal<(input: Instance, gameProcessedEvent: boolean) => void>;
-	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	InputEnded: RBXScriptSignal<(input: Instance, gameProcessedEvent: boolean) => void>;
 	JumpRequest: RBXScriptSignal<() => void>;
 	LastInputTypeChanged: RBXScriptSignal<(lastInputType: Enum.UserInputType) => void>;
 	/** Fired when a user stops text entry into a textbox (usually by pressing return or clicking/tapping somewhere else on the screen). Argument is the textbox that was taken out of focus. This event only fires locally. */
@@ -7992,6 +8005,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // WeldConstraint
 interface Rbx_WeldConstraint extends Rbx_Instance {
+	readonly Active: boolean;
 	Enabled: boolean;
 	Part0: BasePart;
 	Part1: BasePart;

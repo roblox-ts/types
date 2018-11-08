@@ -204,6 +204,12 @@ interface Rbx_GroupService extends Rbx_Instance {
 }
 
 interface Rbx_GuiObject extends Rbx_GuiBase2d {
+	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
+	InputBegan: RBXScriptSignal<(input: InputObject) => void>;
+	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
+	InputChanged: RBXScriptSignal<(input: InputObject) => void>;
+	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
+	InputEnded: RBXScriptSignal<(input: InputObject) => void>;
 	/** Fired when a user holds at least one finger for a short amount of time on the same screen position on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally. */
 	TouchLongPress: RBXScriptSignal<(touchPositions: Array<Vector2>, state: Enum.UserInputState) => void>;
 	/** Fired when a user drags at least one finger on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'totalTranslation' is a Vector2, indicating how far the pan gesture has gone from its starting point. 'velocity' is a Vector2 that indicates how quickly the gesture is being performed in each dimension. 'state' indicates the Enum.UserInputState of the gesture. */
@@ -509,6 +515,7 @@ interface CharacterAppearanceInfo {
 }
 
 interface Rbx_Players extends Rbx_Instance {
+	/** @rbx-client */
 	LocalPlayer: Player | undefined;
 	GetPlayerFromCharacter(character: Model): Player | undefined;
 	GetCharacterAppearanceAsync(userId: number): Model | undefined;
@@ -677,6 +684,12 @@ interface Rbx_UserInputService {
 	GetMouseButtonsPressed(): Array<InputObject>;
 	GetNavigationGamepads(): Array<Enum.UserInputType>;
 	GetSupportedGamepadKeyCodes(gamepadNum: Enum.UserInputType): Array<Enum.KeyCode>;
+	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
+	InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
+	InputChanged: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
+	InputEnded: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 }
 
 interface Rbx_Workspace extends Rbx_Model {

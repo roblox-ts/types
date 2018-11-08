@@ -4,7 +4,9 @@
 	"description": "Generates a roblox.d.ts file from a combination of handwritten .d.ts files and generated data from Roblox's API dump",
 	"main": "include/roblox.d.ts",
 	"types": "include/roblox.d.ts",
-	"scripts": {},
+	"scripts": {
+		"build": "ts-node src/index.ts"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/roblox-ts/type-declaration-generator.git"
