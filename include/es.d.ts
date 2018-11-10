@@ -160,7 +160,7 @@ interface Array<T> {
 	 */
 	join(separator?: string): string;
 	/**
-	 * Reverses the elements in an Array.
+	 * Returns a copy of the array with elements in reverse order.
 	 */
 	reverse(): T[];
 	/**
