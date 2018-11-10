@@ -528,23 +528,60 @@ interface PromiseLike<T> {
 interface Promise<T> {
 	/**
 	 * Attaches callbacks for the resolution and/or rejection of the Promise.
-	 * @param onfulfilled The callback to execute when the Promise is resolved.
-	 * @param onrejected The callback to execute when the Promise is rejected.
+	 * @param onResolved The callback to execute when the Promise is resolved.
+	 * @param onRejected The callback to execute when the Promise is rejected.
 	 * @returns A Promise for the completion of which ever callback is executed.
 	 */
 	then<TResult1 = T, TResult2 = never>(
-		onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
-		onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
+		onResolved?: ((value: T) => TResult1 | PromiseLike<TResult1>) | void,
+		onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | void,
 	): Promise<TResult1 | TResult2>;
 
 	/**
 	 * Attaches a callback for only the rejection of the Promise.
-	 * @param onrejected The callback to execute when the Promise is rejected.
+	 * @param onRejected The callback to execute when the Promise is rejected.
 	 * @returns A Promise for the completion of the callback.
 	 */
 	catch<TResult = never>(
-		onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
+		onRejected?: ((reason: any) => TResult | PromiseLike<TResult>) | void
 	): Promise<T | TResult>;
+
+	/**
+	 * Attaches a callback to always run when this Promise settles, regardless of its fate.
+	 * The callback runs when the Promise is resolved, rejected, or cancelled.
+	 * @param onSettled The callback to execute when the Promise settles or is cancelled.
+	 * @returns A Promise for the completion of the callback.
+	 */
+	finally<TResult = never>(
+		onSettled?: (() => TResult | PromiseLike<TResult>) | void
+	): Promise<T | TResult>;
+
+	/**
+	 * Cancels this promise, preventing this Promise from ever resolving or rejecting.
+	 * Does not do anything if the promise is already settled.
+	 * Calls the Promise's cancellation hook if it is set.
+	 */
+	cancel(): void;
+
+	/**
+	 * Returns true if this Promise has been rejected.
+	 */
+	isRejected(): boolean;
+
+	/**
+	 * Returns true if this Promise has been resolved.
+	 */
+	isResolved(): boolean;
+
+	/**
+	 * Returns true if this Promise is still pending.
+	 */
+	isPending(): boolean;
+
+	/**
+	 * Returns true if this Promise has been cancelled.
+	 */
+	isCancelled(): boolean;
 }
 
 interface PromiseConstructor {
@@ -555,13 +592,36 @@ interface PromiseConstructor {
 
 	/**
 	 * Creates a new Promise.
-	 * @param executor A callback used to initialize the promise. This callback is passed two arguments:
-	 * a resolve callback used resolve the promise with a value or the result of another promise,
-	 * and a reject callback used to reject the promise with a provided reason or error.
+	 * @param executor A callback used to initialize the promise. This callback is passed a resolve
+	 * callback used resolve the promise with a value or the result of another promise,
+	 * a reject callback used to reject the promise with a provided reason or error,
+	 * and an onCancel function which may be used to register a cancellation hook by calling it with
+	 * a function which will be called if the Promise is cancelled, allowing you to implement abort semantics.
 	 */
-	new <T>(executor: (resolve: (value?: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void): Promise<
-		T
-	>;
+	new <T>(executor: (
+		resolve: (value?: T | PromiseLike<T>) => void,
+		reject: (reason?: any) => void,
+		onCancel: (cancellationHook: () => void) => void
+	) => void): Promise<T>;
+
+	/**
+	 * Creates an immediately rejected Promise with the given value.
+	 * @param value The value to reject with.
+	 */
+	reject: <T>(value: T) => Promise<T>;
+
+	/**
+	 * Creates an immediately resolved Promise with the given value.
+	 * @param value The value to resolve with.
+	 */
+	resolve: <T>(value: T) => Promise<T>;
+
+	/**
+	 * Accepts an array of Promises and returns a new Promise that is resolved when all input Promises resolve,
+	 * or rejects if any of the input Promises reject.
+	 * @param promises An array of Promises.
+	 */
+	all: <T>(promises: Array<Promise<T>>) => Promise<Array<T>>;
 }
 
 declare var Promise: PromiseConstructor;
