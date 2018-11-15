@@ -60,6 +60,21 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Instance"): Instance | undefined;
 }
 
+// ABTestService
+interface Rbx_ABTestService extends Rbx_Instance {
+}
+type ABTestService = Rbx_ABTestService & Base<Rbx_ABTestService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "ABTestService"): this is ABTestService;
+	FindFirstAncestorOfClass(className: "ABTestService"): ABTestService | undefined;
+	FindFirstAncestorWhichIsA(className: "ABTestService"): ABTestService | undefined;
+	FindFirstChildOfClass(className: "ABTestService"): ABTestService | undefined;
+	FindFirstAncestorWhichIsA(className: "ABTestService"): ABTestService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "ABTestService"): ABTestService;
+}
+
 // Accoutrement
 interface Rbx_Accoutrement extends Rbx_Instance {
 	AttachmentForward: Vector3;
@@ -885,6 +900,7 @@ interface Rbx_Instance {
 
 // Chat
 interface Rbx_Chat extends Rbx_Instance {
+	BubbleChatEnabled: boolean;
 	readonly LoadDefaultChat: boolean;
 	InvokeChatCallback(callbackType: Enum.ChatCallbackType, callbackArguments: Array<any>): unknown;
 	RegisterChatCallback(callbackType: Enum.ChatCallbackType, callbackFunction: Function): void;
@@ -976,6 +992,7 @@ interface Rbx_Instance {
 
 // Constraint
 interface Rbx_Constraint extends Rbx_Instance {
+	/** Read-only boolean, true if the Constraint is active in world. */
 	readonly Active: boolean;
 	Attachment0: Attachment;
 	Attachment1: Attachment;
@@ -3571,6 +3588,59 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Humanoid"): Humanoid | undefined;
 }
 
+// HumanoidDescription
+interface Rbx_HumanoidDescription extends Rbx_Instance {
+	BackAccessory: string;
+	BodyTypeScale: number;
+	ClimbAnimation: number;
+	DepthScale: number;
+	Face: number;
+	FaceAccessory: string;
+	FallAnimation: number;
+	FrontAccessory: string;
+	GraphicTShirt: number;
+	HairAccessory: string;
+	HatAccessory: string;
+	Head: number;
+	HeadColor: Color3;
+	HeadScale: number;
+	HeightScale: number;
+	IdleAnimation: number;
+	JumpAnimation: number;
+	LeftArm: number;
+	LeftArmColor: Color3;
+	LeftLeg: number;
+	LeftLegColor: Color3;
+	NeckAccessory: string;
+	Pants: number;
+	ProportionScale: number;
+	RightArm: number;
+	RightArmColor: Color3;
+	RightLeg: number;
+	RightLegColor: Color3;
+	RunAnimation: number;
+	Shirt: number;
+	ShouldersAccessory: string;
+	SwimAnimation: number;
+	Torso: number;
+	TorsoColor: Color3;
+	WaistAccessory: string;
+	WalkAnimation: number;
+	WidthScale: number;
+}
+interface HumanoidDescription extends Rbx_HumanoidDescription, Base<Rbx_HumanoidDescription>, AnyIndex {}
+/** An object that specifies the appearance of Humanoid characters */
+declare class HumanoidDescription {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "HumanoidDescription"): this is HumanoidDescription;
+	FindFirstAncestorOfClass(className: "HumanoidDescription"): HumanoidDescription | undefined;
+	FindFirstAncestorWhichIsA(className: "HumanoidDescription"): HumanoidDescription | undefined;
+	FindFirstChildOfClass(className: "HumanoidDescription"): HumanoidDescription | undefined;
+	FindFirstAncestorWhichIsA(className: "HumanoidDescription"): HumanoidDescription | undefined;
+}
+
 // InputObject
 interface Rbx_InputObject extends Rbx_Instance {
 	Delta: Vector3;
@@ -3629,6 +3699,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // JointInstance
 interface Rbx_JointInstance extends Rbx_Instance {
+	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
 	readonly Active: boolean;
 	C0: CFrame;
 	C1: CFrame;
@@ -4658,6 +4729,7 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	LocalTransparencyModifier: number;
 	/** Determines whether building tools (in-game and studio) can manipulate this Part.  If true, no editing allowed.  If false, editing is allowed. */
 	Locked: boolean;
+	/** If true the part will be massless when welded to another part that is not massless. The part will still have mass like a normal part if it is an assembly root part according to GetRootPart(). */
 	Massless: boolean;
 	/** Specifies the look and feel the Part should have.  Note: this does not define the color the Part is, see BrickColor for that. [More info](http://wiki.roblox.com/index.php/Material) */
 	Material: Enum.Material;
@@ -4675,6 +4747,7 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	RightParamB: number;
 	RightSurface: Enum.SurfaceType;
 	RightSurfaceInput: Enum.InputType;
+	/** An integer from -127 to 127. Compares before other all other part properties besides massless for deciding which part is the assembly root part according to GetRootPart(). */
 	RootPriority: number;
 	RotVelocity: Vector3;
 	Rotation: Vector3;
@@ -5388,6 +5461,7 @@ interface Rbx_Player extends Rbx_Instance {
 	IsInGroup(groupId: number): boolean;
 	/** Loads in a new character for this player.  This will replace the player's current character, if they have one. This should be used in conjunction with Players.CharacterAutoLoads to control spawning of characters. This function only works from a server-side script (NOT a LocalScript). */
 	LoadCharacter(): void;
+	LoadCharacterWithHumanoidDescription(humanoidDescription: Instance): void;
 	Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
 	/** Fired periodically after the user has been AFK for a while.  Currently this event is only fired for the *local* Player.  "time" is the time in seconds that the user has been idle. */
 	Idled: RBXScriptSignal<(time: number) => void>;
@@ -8005,6 +8079,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // WeldConstraint
 interface Rbx_WeldConstraint extends Rbx_Instance {
+	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
 	readonly Active: boolean;
 	Enabled: boolean;
 	Part0: BasePart;
