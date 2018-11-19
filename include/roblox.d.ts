@@ -64,11 +64,17 @@ declare class BrickColor {
 }
 
 declare class CFrame {
+	/** Creates a blank identity CFrame. */
 	constructor();
+	/** Creates a CFrame from a Vector3 */
 	constructor(pos: Vector3);
+	/** Creates a CFrame located at pos with it’s lookVector pointing towards the lookAt position. */
 	constructor(pos: Vector3, lookAt: Vector3);
+	/** Creates a CFrame from position (x, y, z). */
 	constructor(x: number, y: number, z: number);
+	/** Creates a CFrame from position (x, y, z) and quaternion (qX, qY, qZ, qW) */
 	constructor(x: number, y: number, z: number, qX: number, qY: number, qZ: number, qW: number);
+	/** Creates a CFrame from position (x, y, z) with an orientation specified by the rotation matrix `[[R00 R01 R02] [R10 R11 R12] [R20 R21 R22]]` */
 	constructor(
 		x: number,
 		y: number,
@@ -83,28 +89,61 @@ declare class CFrame {
 		R21: number,
 		R22: number
 	);
+	/** Equivalent to fromEulerAnglesXYZ */
 	static Angles: (rX: number, rY: number, rZ: number) => CFrame;
+	/** Creates a rotated CFrame from a Unit Vector3 and a rotation in radians */
 	static fromAxisAngle: (unit: Vector3, rotation: number) => CFrame;
+	/** Creates a rotated CFrame using angles (rx, ry, rz) in radians. Rotations are applied in Z, Y, X order. */
 	static fromEulerAnglesXYZ: (rX: number, rY: number, rZ: number) => CFrame;
+	/** Creates a rotated CFrame using angles (rx, ry, rz) in radians. Rotations are applied in Z, X, Y order. */
 	static fromEulerAnglesYXZ: (rX: number, rY: number, rZ: number) => CFrame;
+	/** Creates a CFrame from a translation and the columns of a rotation matrix. If vz is excluded,
+	 * the third column is calculated as `[vx:Cross(vy).Unit]`.
+	 */
+	static fromMatrix: (pos: Vector3, vX: Vector3, vY: Vector3, vZ: Vector3) => CFrame;
+	/** Equivalent to fromEulerAnglesYXZ */
 	static fromOrientation: (rX: number, rY: number, rZ: number) => CFrame;
+	/** The 3D position of the CFrame */
+	readonly Position: Vector3;
+	/** The 3D position of the CFrame */
 	readonly p: Vector3;
+	/** The x-coordinate of the position */
 	readonly X: number;
+	/** The y-coordinate of the position */
 	readonly Y: number;
+	/** The z-coordinate of the position */
 	readonly Z: number;
-	readonly lookVector: Vector3;
-	readonly rightVector: Vector3;
-	readonly upVector: Vector3;
+	/** The forward-direction component of the CFrame’s orientation. */
+	readonly LookVector: Vector3;
+	/** The right-direction component of the CFrame’s orientation. */
+	readonly RightVector: Vector3;
+	/** The up-direction component of the CFrame’s orientation. */
+	readonly UpVector: Vector3;
+	/** Returns the inverse of this CFrame */
 	inverse(): CFrame;
+	/** Returns a CFrame interpolated between this CFrame and the goal by the fraction alpha */
 	lerp(goal: CFrame, alpha: number): CFrame;
+	/** Returns a CFrame transformed from Object to World space. Equivalent to `[CFrame * cf]` */
 	toWorldSpace(cf: CFrame): CFrame;
+	/** Returns a CFrame transformed from World to Object space. Equivalent to `[CFrame:inverse() * cf]` */
 	toObjectSpace(cf: CFrame): CFrame;
+	/** Returns a Vector3 transformed from Object to World space. Equivalent to `[CFrame * v3]` */
 	pointToWorldSpace(v3: Vector3): Vector3;
+	/** Returns a Vector3 transformed from World to Object space. Equivalent to `[CFrame:inverse() * v3]` */
 	pointToObjectSpace(v3: Vector3): Vector3;
+	/** Returns a Vector3 rotated from Object to World space. Equivalent to `[(CFrame - CFrame.p) *v3]` */
 	vectorToWorldSpace(v3: Vector3): Vector3;
+	/** Returns a Vector3 rotated from World to Object space. Equivalent to `[(CFrame:inverse() - CFrame:inverse().p) * v3]` */
 	vectorToObjectSpace(v3: Vector3): Vector3;
+	/** Returns the values: x, y, z, R00, R01, R02, R10, R11, R12, R20, R21, R22, where R00-R22 represent the 3x3 rotation matrix of the CFrame, and xyz represent the position of the CFrame. */
 	components(): [number, number, number, number, number, number, number, number, number, number, number, number];
+	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, Y, X order */
 	toEulerAnglesXYZ(): [number, number, number];
+	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order */
+	toEulerAnglesYXZ(): [number, number, number];
+	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order (Equivalent to toEulerAnglesYXZ) */
+	toOrientation(): [number, number, number];
+	/** Returns a tuple of a Vector3 and a number which represent the rotation of the CFrame in the axis-angle representation */
 	toAxisAngle(): [Vector3, number];
 }
 
