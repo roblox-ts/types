@@ -345,7 +345,7 @@ declare namespace table {
 	function sort(t: Table): void;
 
 	/** Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`. Comp is a function that receives two list elements and returns true when the first element must come before the second in the final order (so that `not comp(list[i+1],list[i])` will be true after the sort). */
-	function sort(t: Table, comp: () => boolean): void;
+	function sort<T>(t: Table, comp?: (a: T, b: T) => boolean): void;
 }
 
 interface thread {}
