@@ -100,7 +100,7 @@ declare class CFrame {
 	/** Creates a CFrame from a translation and the columns of a rotation matrix. If vz is excluded,
 	 * the third column is calculated as `[vx:Cross(vy).Unit]`.
 	 */
-	static fromMatrix: (pos: Vector3, vX: Vector3, vY: Vector3, vZ: Vector3) => CFrame;
+	static fromMatrix: (pos: Vector3, vX: Vector3, vY: Vector3, vZ?: Vector3) => CFrame;
 	/** Equivalent to fromEulerAnglesYXZ */
 	static fromOrientation: (rX: number, rY: number, rZ: number) => CFrame;
 	/** The 3D position of the CFrame */
