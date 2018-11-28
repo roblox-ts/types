@@ -97,7 +97,7 @@ interface Rbx_CollectionService extends Rbx_Instance {
 	/** Returns a signal that fires when the given tag either has an instance with that tag removed from the data model or that tag is removed from an instance within the data model. */
 	GetInstanceRemovedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	/** Returns an array of all of the instances in the data model which have the given tag. */
-	GetTagged<T = Instance>(tag: string): Array<T>;
+	GetTagged<T extends Instance = Instance>(tag: string): Array<T>;
 	/** Returns a list of all the collections that an instance belongs to. */
 	GetTags(instance: Instance): Array<string>;
 }
@@ -348,11 +348,11 @@ interface Rbx_Instance {
 	/** Returns an array containing all of the descendants of the instance. Returns in preorder traversal, or in other words, where the parents come before their children, depth first. */
 	GetDescendants(): Array<Instance>;
 	/** Returns the first ancestor of this Instance that matches the first argument 'name'.  The function will return nil if no Instance is found. */
-	FindFirstAncestor<T = Instance>(name: string): T | undefined;
+	FindFirstAncestor<T extends Instance = Instance>(name: string): T | undefined;
 	/** Returns the first child of this Instance that matches the first argument 'name'.  The second argument 'recursive' is an optional boolean (defaults to false) that will force the call to traverse down thru all of this Instance's descendants until it finds an object with a name that matches the 'name' argument.  The function will return nil if no Instance is found. */
-	FindFirstChild<T = Instance>(name: string, recursive?: boolean): T | undefined;
-	WaitForChild<T = Instance>(childName: string): T;
-	WaitForChild<T = Instance>(childName: string, timeOut: number): T | undefined;
+	FindFirstChild<T extends Instance = Instance>(name: string, recursive?: boolean): T | undefined;
+	WaitForChild<T extends Instance = Instance>(childName: string): T;
+	WaitForChild<T extends Instance = Instance>(childName: string, timeOut: number): T | undefined;
 }
 
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
