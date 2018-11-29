@@ -5546,6 +5546,7 @@ interface Rbx_Instance {
 // PluginAction
 interface Rbx_PluginAction extends Rbx_Instance {
 	readonly ActionId: string;
+	readonly AllowBinding: boolean;
 	readonly StatusTip: string;
 	readonly Text: string;
 }
@@ -5608,6 +5609,23 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "PluginManager"): PluginManager | undefined;
 	FindFirstChildOfClass(className: "PluginManager"): PluginManager | undefined;
 	FindFirstAncestorWhichIsA(className: "PluginManager"): PluginManager | undefined;
+}
+
+// PluginMenu
+interface Rbx_PluginMenu extends Rbx_Instance {
+	Icon: string;
+	Title: string;
+}
+interface PluginMenu extends Rbx_PluginMenu, Base<Rbx_PluginMenu>, AnyIndex {}
+declare abstract class PluginMenu {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "PluginMenu"): this is PluginMenu;
+	FindFirstAncestorOfClass(className: "PluginMenu"): PluginMenu | undefined;
+	FindFirstAncestorWhichIsA(className: "PluginMenu"): PluginMenu | undefined;
+	FindFirstChildOfClass(className: "PluginMenu"): PluginMenu | undefined;
+	FindFirstAncestorWhichIsA(className: "PluginMenu"): PluginMenu | undefined;
 }
 
 // PointsService
@@ -6882,6 +6900,21 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "TotalCountTimeIntervalItem"): TotalCountTimeIntervalItem | undefined;
 }
 
+// StopWatchReporter
+interface Rbx_StopWatchReporter extends Rbx_Instance {
+}
+type StopWatchReporter = Rbx_StopWatchReporter & Base<Rbx_StopWatchReporter> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "StopWatchReporter"): this is StopWatchReporter;
+	FindFirstAncestorOfClass(className: "StopWatchReporter"): StopWatchReporter | undefined;
+	FindFirstAncestorWhichIsA(className: "StopWatchReporter"): StopWatchReporter | undefined;
+	FindFirstChildOfClass(className: "StopWatchReporter"): StopWatchReporter | undefined;
+	FindFirstAncestorWhichIsA(className: "StopWatchReporter"): StopWatchReporter | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "StopWatchReporter"): StopWatchReporter;
+}
+
 // Studio
 interface Rbx_Studio extends Rbx_Instance {
 	["Always Save Script Changes"]: boolean;
@@ -7653,6 +7686,8 @@ interface Rbx_UserGameSettings extends Rbx_Instance {
 	GamepadCameraSensitivity: number;
 	MasterVolume: number;
 	MouseSensitivity: number;
+	RCCProfilerRecordFrameRate: number;
+	RCCProfilerRecordTimeFrame: number;
 	RotationType: Enum.RotationType;
 	SavedQualityLevel: Enum.SavedQualitySetting;
 	TouchCameraMovementMode: Enum.TouchCameraMovementMode;

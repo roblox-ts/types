@@ -492,7 +492,11 @@ declare namespace Enum {
 		SciFi = 12,
 		Arcade = 13,
 		Fantasy = 14,
-		Antique = 15
+		Antique = 15,
+		Gotham = 17,
+		GothamSemibold = 18,
+		GothamBold = 19,
+		GothamBlack = 20
 	}
 	enum FontSize {
 		Size8 = 0,
