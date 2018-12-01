@@ -55,43 +55,40 @@ declare function tonumber(arg: any, base?: number): number | undefined;
 /** Receives an argument of any type and converts it to a string in a reasonable format. If the metatable of e has a "__tostring" field, then tostring calls the corresponding value with e as an argument and uses the result of the call as its result. For complete control of how numbers are converted, use string.format. */
 declare function tostring(value: any): string;
 
-/** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
+/** A Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
+declare function pcall<T extends any[], U>(
+	func: (...args: T) => U
+): U extends [infer A]
+	? [true, A] | [false, string]
+	: U extends [infer A, infer B]
+	? [true, A, B] | [false, string, undefined]
+	: U extends [infer A, infer B, infer C]
+	? [true, A, B, C] | [false, string, undefined, undefined]
+	: U extends [infer A, infer B, infer C, infer D]
+	? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
+	: U extends [infer A, infer B, infer C, infer D, infer E]
+	? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
+	: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
+	? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
+	: [true, U] | [false, string];
+
+/** B Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
 declare function pcall<T extends any[], U>(
 	func: (...args: T) => U,
 	...args: T
-):
-	| (U extends [infer A]
-			? [true, A]
-			: U extends [infer A, infer B]
-			? [true, A, B]
-			: U extends [infer A, infer B, infer C]
-			? [true, A, B, C]
-			: U extends [infer A, infer B, infer C, infer D]
-			? [true, A, B, C, D]
-			: U extends [infer A, infer B, infer C, infer D, infer E]
-			? [true, A, B, C, D, E]
-			: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-			? [true, A, B, C, D, E, F]
-			: [true, U])
-	| [false, string];
-/** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
-declare function pcall<T extends any[], U>(
-	func: (...args: T) => U
-):
-	| (U extends [infer A]
-			? [true, A]
-			: U extends [infer A, infer B]
-			? [true, A, B]
-			: U extends [infer A, infer B, infer C]
-			? [true, A, B, C]
-			: U extends [infer A, infer B, infer C, infer D]
-			? [true, A, B, C, D]
-			: U extends [infer A, infer B, infer C, infer D, infer E]
-			? [true, A, B, C, D, E]
-			: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-			? [true, A, B, C, D, E, F]
-			: [true, U])
-	| [false, string];
+): U extends [infer A]
+	? [true, A] | [false, string]
+	: U extends [infer A, infer B]
+	? [true, A, B] | [false, string, undefined]
+	: U extends [infer A, infer B, infer C]
+	? [true, A, B, C] | [false, string, undefined, undefined]
+	: U extends [infer A, infer B, infer C, infer D]
+	? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
+	: U extends [infer A, infer B, infer C, infer D, infer E]
+	? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
+	: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
+	? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
+	: [true, U] | [false, string];
 
 interface LuaMetatable<T> {
 	__index?: (self: T, index: any) => void;
