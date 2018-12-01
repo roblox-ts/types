@@ -1,10 +1,10 @@
 /// <reference no-default-lib="true"/>
 
-interface Boolean {}
-interface IArguments {}
-interface Number {}
-interface Object {}
-interface RegExp {}
+interface Boolean { }
+interface IArguments { }
+interface Number { }
+interface Object { }
+interface RegExp { }
 
 interface ArrayLike<T> {
 	readonly length: number;
@@ -92,6 +92,10 @@ interface Function {
 	prototype: any;
 }
 
+interface CallableFunction extends Function { }
+
+interface NewableFunction extends Function { }
+
 interface Symbol {
 	toString(): string;
 	valueOf(): symbol;
@@ -115,14 +119,14 @@ interface SymbolConstructor {
      * Otherwise, returns a new symbol with this key.
      * @param key key to search for.
      */
-    for(key: string): symbol;
+	for(key: string): symbol;
 
     /**
      * Returns a key from the global symbol registry matching the given Symbol if found.
      * Otherwise, returns a undefined.
      * @param sym Symbol to find the key for.
      */
-    keyFor(sym: symbol): string | undefined;
+	keyFor(sym: symbol): string | undefined;
 
 }
 declare var Symbol: SymbolConstructor;
@@ -700,4 +704,4 @@ type InstanceType<T extends new (...args: any[]) => any> = T extends new (...arg
 /**
  * Marker for contextual 'this' type
  */
-interface ThisType<T> {}
+interface ThisType<T> { }
