@@ -59,35 +59,39 @@ declare function tostring(value: any): string;
 declare function pcall<T extends any[], U>(
 	func: (...args: T) => U,
 	...args: T
-): U extends [infer A]
-	? [boolean, A]
-	: U extends [infer A, infer B]
-		? [boolean, A, B]
-		: U extends [infer A, infer B, infer C]
-			? [boolean, A, B, C]
+):
+	| (U extends [infer A]
+			? [true, A]
+			: U extends [infer A, infer B]
+			? [true, A, B]
+			: U extends [infer A, infer B, infer C]
+			? [true, A, B, C]
 			: U extends [infer A, infer B, infer C, infer D]
-				? [boolean, A, B, C, D]
-				: U extends [infer A, infer B, infer C, infer D, infer E]
-					? [boolean, A, B, C, D, E]
-					: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-						? [boolean, A, B, C, D, E, F]
-						: [boolean, U];
+			? [true, A, B, C, D]
+			: U extends [infer A, infer B, infer C, infer D, infer E]
+			? [true, A, B, C, D, E]
+			: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
+			? [true, A, B, C, D, E, F]
+			: [true, U])
+	| [false, string];
 /** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
 declare function pcall<T extends any[], U>(
 	func: (...args: T) => U
-): U extends [infer A]
-	? [boolean, A]
-	: U extends [infer A, infer B]
-		? [boolean, A, B]
-		: U extends [infer A, infer B, infer C]
-			? [boolean, A, B, C]
+):
+	| (U extends [infer A]
+			? [true, A]
+			: U extends [infer A, infer B]
+			? [true, A, B]
+			: U extends [infer A, infer B, infer C]
+			? [true, A, B, C]
 			: U extends [infer A, infer B, infer C, infer D]
-				? [boolean, A, B, C, D]
-				: U extends [infer A, infer B, infer C, infer D, infer E]
-					? [boolean, A, B, C, D, E]
-					: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-						? [boolean, A, B, C, D, E, F]
-						: [boolean, U];
+			? [true, A, B, C, D]
+			: U extends [infer A, infer B, infer C, infer D, infer E]
+			? [true, A, B, C, D, E]
+			: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
+			? [true, A, B, C, D, E, F]
+			: [true, U])
+	| [false, string];
 
 interface LuaMetatable<T> {
 	__index?: (self: T, index: any) => void;
