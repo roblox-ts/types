@@ -6981,7 +6981,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Text Color"]: Color3;
 	["Text Wrapping"]: boolean;
 	Theme: Instance | undefined;
-	["UI Theme"]: Enum.UITheme;
+	readonly ["UI Theme"]: Enum.UITheme;
 	["Warning Color"]: Color3;
 }
 type Studio = Rbx_Studio & Base<Rbx_Studio> & AnyIndex;
