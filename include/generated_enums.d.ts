@@ -347,6 +347,10 @@ declare namespace Enum {
 		Follow = 2,
 		Classic = 1
 	}
+	enum DEPRECATED_DebuggerDataModelPreference {
+		Server = 0,
+		Client = 1
+	}
 	enum DataStoreRequestType {
 		GetAsync = 0,
 		SetIncrementAsync = 1,

@@ -216,6 +216,7 @@ interface Rbx_AnimationTrack extends Rbx_Instance {
 	readonly WeightTarget: number;
 	AdjustSpeed(speed?: number): void;
 	AdjustWeight(weight?: number, fadeTime?: number): void;
+	GetMarkerReachedSignal(name: string): RBXScriptSignal;
 	GetTimeOfKeyframe(keyframeName: string): number;
 	Play(fadeTime?: number, weight?: number, speed?: number): void;
 	Stop(fadeTime?: number): void;
@@ -322,6 +323,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // BasePlayerGui
 interface Rbx_BasePlayerGui extends Rbx_Instance {
+	GetGuiObjectsAtPosition(x: number, y: number): Array<Instance>;
 }
 interface BasePlayerGui extends Rbx_BasePlayerGui, Base<Rbx_BasePlayerGui>, AnyIndex {}
 declare abstract class BasePlayerGui {
@@ -3551,6 +3553,7 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	WalkToPoint: Vector3;
 	BuildRigFromAttachments(): void;
 	ChangeState(state?: Enum.HumanoidStateType): void;
+	GetAppliedDescription(): Instance | undefined;
 	GetState(): Enum.HumanoidStateType;
 	GetStateEnabled(state: Enum.HumanoidStateType): boolean;
 	Move(moveDirection: Vector3, relativeToCamera?: boolean): void;
@@ -3560,6 +3563,7 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	TakeDamage(amount: number): void;
 	/** Takes any active gear/tools that the Humanoid is using and puts them into the backpack.  This function only works on Humanoids with a corresponding Player. */
 	UnequipTools(): void;
+	ApplyDescription(humanoidDescription: Instance): void;
 	Climbing: RBXScriptSignal<(speed: number) => void>;
 	Died: RBXScriptSignal<() => void>;
 	FallingDown: RBXScriptSignal<(active: boolean) => void>;
@@ -3965,8 +3969,11 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Keyframe
 interface Rbx_Keyframe extends Rbx_Instance {
 	Time: number;
+	AddMarker(marker: Instance): void;
 	AddPose(pose: Instance): void;
+	GetMarkers(): Array<Instance>;
 	GetPoses(): Array<Instance>;
+	RemoveMarker(marker: Instance): void;
 	RemovePose(pose: Instance): void;
 }
 interface Keyframe extends Rbx_Keyframe, Base<Rbx_Keyframe>, AnyIndex {}
@@ -3980,6 +3987,23 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Keyframe"): Keyframe | undefined;
 	FindFirstChildOfClass(className: "Keyframe"): Keyframe | undefined;
 	FindFirstAncestorWhichIsA(className: "Keyframe"): Keyframe | undefined;
+}
+
+// KeyframeMarker
+interface Rbx_KeyframeMarker extends Rbx_Instance {
+	Value: string;
+}
+interface KeyframeMarker extends Rbx_KeyframeMarker, Base<Rbx_KeyframeMarker>, AnyIndex {}
+/** Represents when an event should be fired in an animation */
+declare class KeyframeMarker {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "KeyframeMarker"): this is KeyframeMarker;
+	FindFirstAncestorOfClass(className: "KeyframeMarker"): KeyframeMarker | undefined;
+	FindFirstAncestorWhichIsA(className: "KeyframeMarker"): KeyframeMarker | undefined;
+	FindFirstChildOfClass(className: "KeyframeMarker"): KeyframeMarker | undefined;
+	FindFirstAncestorWhichIsA(className: "KeyframeMarker"): KeyframeMarker | undefined;
 }
 
 // KeyframeSequence
@@ -4144,6 +4168,51 @@ interface Rbx_Instance {
 }
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Lighting"): Lighting;
+}
+
+// LocalStorageService
+interface Rbx_LocalStorageService extends Rbx_Instance {
+}
+type LocalStorageService = Rbx_LocalStorageService & Base<Rbx_LocalStorageService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "LocalStorageService"): this is LocalStorageService;
+	FindFirstAncestorOfClass(className: "LocalStorageService"): LocalStorageService | undefined;
+	FindFirstAncestorWhichIsA(className: "LocalStorageService"): LocalStorageService | undefined;
+	FindFirstChildOfClass(className: "LocalStorageService"): LocalStorageService | undefined;
+	FindFirstAncestorWhichIsA(className: "LocalStorageService"): LocalStorageService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "LocalStorageService"): LocalStorageService;
+}
+
+// AppStorageService
+interface Rbx_AppStorageService extends Rbx_LocalStorageService {
+}
+type AppStorageService = Rbx_AppStorageService & Base<Rbx_AppStorageService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "AppStorageService"): this is AppStorageService;
+	FindFirstAncestorOfClass(className: "AppStorageService"): AppStorageService | undefined;
+	FindFirstAncestorWhichIsA(className: "AppStorageService"): AppStorageService | undefined;
+	FindFirstChildOfClass(className: "AppStorageService"): AppStorageService | undefined;
+	FindFirstAncestorWhichIsA(className: "AppStorageService"): AppStorageService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "AppStorageService"): AppStorageService;
+}
+
+// UserStorageService
+interface Rbx_UserStorageService extends Rbx_LocalStorageService {
+}
+type UserStorageService = Rbx_UserStorageService & Base<Rbx_UserStorageService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "UserStorageService"): this is UserStorageService;
+	FindFirstAncestorOfClass(className: "UserStorageService"): UserStorageService | undefined;
+	FindFirstAncestorWhichIsA(className: "UserStorageService"): UserStorageService | undefined;
+	FindFirstChildOfClass(className: "UserStorageService"): UserStorageService | undefined;
+	FindFirstAncestorWhichIsA(className: "UserStorageService"): UserStorageService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "UserStorageService"): UserStorageService;
 }
 
 // LocalizationService
@@ -5848,11 +5917,13 @@ interface Rbx_Instance {
 interface Rbx_ReflectionMetadataItem extends Rbx_Instance {
 	Browsable: boolean;
 	ClassCategory: string;
+	ClientOnly: boolean;
 	Constraint: string;
 	Deprecated: boolean;
 	EditingDisabled: boolean;
 	IsBackend: boolean;
 	ScriptContext: string;
+	ServerOnly: boolean;
 	UIMaximum: number;
 	UIMinimum: number;
 	UINumTicks: number;
@@ -6919,6 +6990,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Studio extends Rbx_Instance {
 	["Always Save Script Changes"]: boolean;
 	["Animate Hover Over"]: boolean;
+	["Attach Debugger To"]: Enum.DEPRECATED_DebuggerDataModelPreference;
 	["Auto Indent"]: boolean;
 	["Auto-Save Enabled"]: boolean;
 	["Auto-Save Interval (Minutes)"]: number;
@@ -6931,7 +7003,6 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Camera Speed"]: number;
 	["Clear Output On Start"]: boolean;
 	["Comment Color"]: Color3;
-	["Debug Client In APS Mode"]: boolean;
 	DefaultScriptFileDir: QDir;
 	DeprecatedObjectsShown: boolean;
 	["Device Pairing Code"]: number;
@@ -6947,6 +7018,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Keyword Color"]: Color3;
 	["Line Thickness"]: number;
 	LuaDebuggerEnabled: boolean;
+	readonly LuaDebuggerEnabledAtStartup: boolean;
 	["Matching Word Background Color"]: Color3;
 	["Maximum Output Lines"]: number;
 	["Number Color"]: Color3;
