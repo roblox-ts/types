@@ -1,10 +1,10 @@
 /// <reference no-default-lib="true"/>
 
-interface Boolean { }
-interface IArguments { }
-interface Number { }
-interface Object { }
-interface RegExp { }
+interface Boolean {}
+interface IArguments {}
+interface Number {}
+interface Object {}
+interface RegExp {}
 
 interface ArrayLike<T> {
 	readonly length: number;
@@ -92,9 +92,9 @@ interface Function {
 	prototype: any;
 }
 
-interface CallableFunction extends Function { }
+interface CallableFunction extends Function {}
 
-interface NewableFunction extends Function { }
+interface NewableFunction extends Function {}
 
 interface Symbol {
 	toString(): string;
@@ -115,19 +115,18 @@ interface SymbolConstructor {
 	(description?: string | number): symbol;
 
 	/**
-     * Returns a Symbol object from the global symbol registry matching the given key if found.
-     * Otherwise, returns a new symbol with this key.
-     * @param key key to search for.
-     */
+	 * Returns a Symbol object from the global symbol registry matching the given key if found.
+	 * Otherwise, returns a new symbol with this key.
+	 * @param key key to search for.
+	 */
 	for(key: string): symbol;
 
-    /**
-     * Returns a key from the global symbol registry matching the given Symbol if found.
-     * Otherwise, returns a undefined.
-     * @param sym Symbol to find the key for.
-     */
+	/**
+	 * Returns a key from the global symbol registry matching the given Symbol if found.
+	 * Otherwise, returns a undefined.
+	 * @param sym Symbol to find the key for.
+	 */
 	keyFor(sym: symbol): string | undefined;
-
 }
 declare var Symbol: SymbolConstructor;
 
@@ -381,9 +380,7 @@ interface ReadonlyArray<T> {
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
 	 */
-	filter<S extends T>(
-		callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => value is S,
-	): S[];
+	filter<S extends T>(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => value is S): S[];
 	/**
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
@@ -544,7 +541,7 @@ interface Promise<T> {
 	 */
 	then<TResult1 = T, TResult2 = never>(
 		onResolved?: ((value: T) => TResult1 | PromiseLike<TResult1>) | void,
-		onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | void,
+		onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | void
 	): Promise<TResult1 | TResult2>;
 
 	/**
@@ -552,9 +549,7 @@ interface Promise<T> {
 	 * @param onRejected The callback to execute when the Promise is rejected.
 	 * @returns A Promise for the completion of the callback.
 	 */
-	catch<TResult = never>(
-		onRejected?: ((reason: any) => TResult | PromiseLike<TResult>) | void
-	): Promise<T | TResult>;
+	catch<TResult = never>(onRejected?: ((reason: any) => TResult | PromiseLike<TResult>) | void): Promise<T | TResult>;
 
 	/**
 	 * Attaches a callback to always run when this Promise settles, regardless of its fate.
@@ -562,9 +557,7 @@ interface Promise<T> {
 	 * @param onSettled The callback to execute when the Promise settles or is cancelled.
 	 * @returns A Promise for the completion of the callback.
 	 */
-	finally<TResult = never>(
-		onSettled?: (() => TResult | PromiseLike<TResult>) | void
-	): Promise<T | TResult>;
+	finally<TResult = never>(onSettled?: (() => TResult | PromiseLike<TResult>) | void): Promise<T | TResult>;
 
 	/**
 	 * Cancels this promise, preventing this Promise from ever resolving or rejecting.
@@ -608,11 +601,13 @@ interface PromiseConstructor {
 	 * and an onCancel function which may be used to register a cancellation hook by calling it with
 	 * a function which will be called if the Promise is cancelled, allowing you to implement abort semantics.
 	 */
-	new <T>(executor: (
-		resolve: (value?: T | PromiseLike<T>) => void,
-		reject: (reason?: any) => void,
-		onCancel: (cancellationHook: () => void) => void
-	) => void): Promise<T>;
+	new <T>(
+		executor: (
+			resolve: (value?: T | PromiseLike<T>) => void,
+			reject: (reason?: any) => void,
+			onCancel: (cancellationHook: () => void) => void
+		) => void
+	): Promise<T>;
 
 	/**
 	 * Creates an immediately rejected Promise with the given value.
@@ -689,4 +684,4 @@ type InstanceType<T extends new (...args: any[]) => any> = T extends new (...arg
 /**
  * Marker for contextual 'this' type
  */
-interface ThisType<T> { }
+interface ThisType<T> {}
