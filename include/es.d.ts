@@ -236,39 +236,33 @@ interface Array<T> {
 	/**
 	 * Determines whether all the members of an array satisfy the specified test.
 	 * @param callbackfn A function that accepts up to three arguments. The every method calls the callbackfn function for each element in array1 until the callbackfn returns false, or until the end of the array.
-	 * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 	 */
-	every(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg?: any): boolean;
+	every(callbackfn: (value: T, index: number, array: T[]) => boolean): boolean;
 	/**
 	 * Determines whether the specified callback function returns true for any element of an array.
 	 * @param callbackfn A function that accepts up to three arguments. The some method calls the callbackfn function for each element in array1 until the callbackfn returns true, or until the end of the array.
-	 * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 	 */
-	some(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg?: any): boolean;
+	some(callbackfn: (value: T, index: number, array: T[]) => boolean): boolean;
 	/**
 	 * Performs the specified action for each element in an array.
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.
-	 * @param thisArg  An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 	 */
-	forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void;
+	forEach(callbackfn: (value: T, index: number, array: T[]) => void): void;
 	/**
 	 * Calls a defined callback function on each element of an array, and returns an array that contains the results.
 	 * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
-	 * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 	 */
-	map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
+	map<U>(callbackfn: (value: T, index: number, array: T[]) => U): U[];
 	/**
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
-	 * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 	 */
-	filter<S extends T>(callbackfn: (value: T, index: number, array: T[]) => value is S, thisArg?: any): S[];
+	filter<S extends T>(callbackfn: (value: T, index: number, array: T[]) => value is S): S[];
 	/**
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
-	 * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 	 */
-	filter(callbackfn: (value: T, index: number, array: T[]) => any, thisArg?: any): T[];
+	filter(callbackfn: (value: T, index: number, array: T[]) => any): T[];
 	/**
 	 * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 	 * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
@@ -311,8 +305,6 @@ interface Array<T> {
 	 * @param predicate find calls predicate once for each element of the array, in ascending
 	 * order, until it finds one where predicate returns true. If such an element is found, find
 	 * immediately returns that element value. Otherwise, find returns undefined.
-	 * @param thisArg If provided, it will be used as the this value for each invocation of
-	 * predicate. If it is not provided, undefined is used instead.
 	 */
 	find<S extends T>(predicate: (value: T, index: number, obj: T[]) => value is S): S | undefined;
 	find(predicate: (value: T, index: number, obj: T[]) => boolean): T | undefined;
@@ -368,42 +360,35 @@ interface ReadonlyArray<T> {
 	/**
 	 * Determines whether all the members of an array satisfy the specified test.
 	 * @param callbackfn A function that accepts up to three arguments. The every method calls the callbackfn function for each element in array1 until the callbackfn returns false, or until the end of the array.
-	 * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 	 */
-	every(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean, thisArg?: any): boolean;
+	every(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean): boolean;
 	/**
 	 * Determines whether the specified callback function returns true for any element of an array.
 	 * @param callbackfn A function that accepts up to three arguments. The some method calls the callbackfn function for each element in array1 until the callbackfn returns true, or until the end of the array.
-	 * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 	 */
-	some(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean, thisArg?: any): boolean;
+	some(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean): boolean;
 	/**
 	 * Performs the specified action for each element in an array.
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.
-	 * @param thisArg  An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 	 */
-	forEach(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => void, thisArg?: any): void;
+	forEach(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => void): void;
 	/**
 	 * Calls a defined callback function on each element of an array, and returns an array that contains the results.
 	 * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
-	 * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 	 */
-	map<U>(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => U, thisArg?: any): U[];
+	map<U>(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => U): U[];
 	/**
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
-	 * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 	 */
 	filter<S extends T>(
 		callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => value is S,
-		thisArg?: any
 	): S[];
 	/**
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
-	 * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 	 */
-	filter(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => any, thisArg?: any): T[];
+	filter(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => any): T[];
 	/**
 	 * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 	 * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
@@ -456,7 +441,7 @@ declare const Array: ArrayConstructor;
 interface Map<K, V> {
 	clear(): void;
 	delete(key: K): boolean;
-	forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void;
+	forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void): void;
 	get(key: K): V | undefined;
 	has(key: K): boolean;
 	set(key: K, value: V): this;
@@ -473,7 +458,7 @@ interface MapConstructor {
 declare var Map: MapConstructor;
 
 interface ReadonlyMap<K, V> {
-	forEach(callbackfn: (value: V, key: K, map: ReadonlyMap<K, V>) => void, thisArg?: any): void;
+	forEach(callbackfn: (value: V, key: K, map: ReadonlyMap<K, V>) => void): void;
 	get(key: K): V | undefined;
 	has(key: K): boolean;
 	entries(): Array<[K, V]>;
@@ -499,7 +484,7 @@ interface Set<T> {
 	add(value: T): this;
 	clear(): void;
 	delete(value: T): boolean;
-	forEach(callbackfn: (value: T, value2: T, set: Set<T>) => void, thisArg?: any): void;
+	forEach(callbackfn: (value: T, value2: T, set: Set<T>) => void): void;
 	has(value: T): boolean;
 	entries(): Array<[T, T]>;
 	keys(): Array<T>;
@@ -514,7 +499,7 @@ interface SetConstructor {
 declare const Set: SetConstructor;
 
 interface ReadonlySet<T> {
-	forEach(callbackfn: (value: T, value2: T, set: ReadonlySet<T>) => void, thisArg?: any): void;
+	forEach(callbackfn: (value: T, value2: T, set: ReadonlySet<T>) => void): void;
 	has(value: T): boolean;
 	entries(): Array<[T, T]>;
 	keys(): Array<T>;
