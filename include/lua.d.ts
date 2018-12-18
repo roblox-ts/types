@@ -135,7 +135,8 @@ declare namespace os {
 }
 
 declare namespace debug {
-	function traceback(): string;
+	function traceback(message?: string, level?: number): string;
+	function traceback(thread: thread, message?: string, level?: number): string;
 	function profilebegin(profileName: string): void;
 	function profileend(): void;
 }
