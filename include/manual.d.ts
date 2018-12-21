@@ -127,6 +127,13 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 	LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
 }
 
+interface Rbx_DataStorePages
+	extends Rbx_Pages<{
+			key: string;
+			value: any;
+		}> {}
+interface DataStorePages extends Rbx_DataStorePages, Base<Rbx_DataStorePages>, AnyIndex {}
+
 interface Rbx_DataStoreService extends Rbx_Instance {
 	/** Returns a data store with the given name and scope */
 	GetDataStore(name: string, scope?: string): GlobalDataStore;
@@ -145,6 +152,14 @@ interface Rbx_Dialog extends Rbx_Instance {
 interface Rbx_FlagStand extends Rbx_Part {
 	FlagCaptured: RBXScriptSignal<(player: Player) => void>;
 }
+
+interface Rbx_FriendPages
+	extends Rbx_Pages<{
+			Id: number;
+			Username: string;
+			IsOnline: boolean;
+		}> {}
+interface FriendPages extends Rbx_FriendPages, Base<Rbx_FriendPages>, AnyIndex {}
 
 interface Rbx_GamePassService extends Rbx_Instance {
 	PlayerHasPass(player: Player, gamePassId: number): boolean;
@@ -422,6 +437,13 @@ interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
 	/** Returns a DataStorePages object. The length of each page is determined by pageSize, and the order is determined by isAscending. minValue and maxValue are optional parameters which will filter the result.  */
 	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
 }
+
+interface Rbx_Pages<T = unknown> extends Rbx_Instance {
+	readonly IsFinished: boolean;
+	GetCurrentPage(): Array<T>;
+	AdvanceToNextPageAsync(): void;
+}
+interface Pages<T = unknown> extends Rbx_Pages<T>, Base<Rbx_Pages>, AnyIndex {}
 
 interface Rbx_PathfindingService extends Rbx_Instance {
 	FindPathAsync(start: Vector3, finish: Vector3): Path;
