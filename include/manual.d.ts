@@ -129,9 +129,9 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 
 interface Rbx_DataStorePages
 	extends Rbx_Pages<{
-			key: string;
-			value: any;
-		}> {}
+		key: string;
+		value: any;
+	}> {}
 interface DataStorePages extends Rbx_DataStorePages, Base<Rbx_DataStorePages>, AnyIndex {}
 
 interface Rbx_DataStoreService extends Rbx_Instance {
@@ -155,10 +155,10 @@ interface Rbx_FlagStand extends Rbx_Part {
 
 interface Rbx_FriendPages
 	extends Rbx_Pages<{
-			Id: number;
-			Username: string;
-			IsOnline: boolean;
-		}> {}
+		Id: number;
+		Username: string;
+		IsOnline: boolean;
+	}> {}
 interface FriendPages extends Rbx_FriendPages, Base<Rbx_FriendPages>, AnyIndex {}
 
 interface Rbx_GamePassService extends Rbx_Instance {
@@ -390,15 +390,81 @@ interface Rbx_LogService extends Rbx_Instance {
 }
 
 interface ReceiptInfo {
-	PurchaseId: string;
+	/** the id of the player making the purchase */
 	PlayerId: number;
-	ProductId: number;
-	CurrencySpent: number;
-	CurrencyType: Enum.CurrencyType;
+	/** the specific place where the purchase was made */
 	PlaceIdWherePurchased: number;
+	/** a unique identifier for the purchase, should be used to prevent granting an item multiple times for one purchase */
+	PurchaseId: string;
+	/** the id of the purchased product */
+	ProductId: number;
+	/** the type of currency used (Tix, Robux) */
+	CurrencyType: Enum.CurrencyType;
+	/** the amount of currency spent on the product for this purchase */
+	CurrencySpent: number;
+}
+
+interface ProductInfo {
+	/** The name shown on the asset's page */
+	Name: string;
+	/** The description as shown on the asset's page; can be nil if blank. */
+	Description: string;
+	/** The cost of purchasing the asset using Robux */
+	PriceInRobux: number;
+	/** Timestamp of when the asset was created, e.g. `2018-08-01T17:55:11.98Z` */
+	Created: string;
+	/** Timestamp of when the asset was last updated by its creator, e.g. `2018-08-01T17:55:11.98Z` */
+	Updated: string;
+	/** Indicates whether the item is marked as 13+ in catalog */
+	ContentRatingTypeId: number;
+	/** The minimum Builder's Club subscription necessary to purchase the item */
+	MinimumMembershipLevel: number;
+	/** Describes whether the asset can be taken for free */
+	IsPublicDomain: boolean;
+	/** A table of information describing the creator of the asset */
+	Creator: {
+		/** Either `User` or `Group` */
+		CreatorType: "User" | "Group";
+		/** The ID of the creator user or group */
+		CreatorTargetId: number;
+		/** The name/username of the creator */
+		Name: string;
+	};
+	IconImageAssetId: number;
+	TargetId: number;
+}
+
+interface AssetProductInfo extends ProductInfo {
+	/** If InfoType was Asset, this is the ID of the given asset. */
+	AssetId: number;
+	/** The [type of asset](https://developer.roblox.com/articles/Asset-types) (e.g. place, model, shirt) */
+	AssetTypeId: number;
+	/** Describes whether the asset is purchasable */
+	IsForSale: boolean;
+	/** Describes whether the asset is a "limited item" that is no longer (if ever) sold */
+	IsLimited: boolean;
+	/** Describes whether the asset is a "limited unique" ("Limited U") item that only has a fixed number sold */
+	IsLimitedUnique: boolean;
+	/** Describes whether the asset is marked as "new" in the catalog */
+	IsNew: boolean;
+	/** The remaining number of items a limited unique item may be sold */
+	Remaining: number;
+	/** The number of items the asset has been sold */
+	Sales: number;
+}
+
+interface DeveloperProductInfo extends ProductInfo {
+	/** If the InfoType was Product, this is the product's ID */
+	ProductId: number;
 }
 
 interface Rbx_MarketplaceService extends Rbx_Instance {
+	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
+	GetProductInfo(assetId: number, infoType: Enum.InfoType.Asset): AssetProductInfo;
+	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
+	GetProductInfo(assetId: number, infoType: Enum.InfoType.Product): DeveloperProductInfo;
+	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
+	GetProductInfo(assetId: number, infoType: Enum.InfoType.GamePass): AssetProductInfo;
 	PromptGamePassPurchase(player: Player, gamePassId: number): void;
 	PromptProductPurchase(
 		player: Player,
