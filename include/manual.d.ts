@@ -729,8 +729,12 @@ interface Rbx_TeleportService {
 	>;
 }
 
+type ReadVoxelsArray<T> = T[][][] & {
+	Size: Vector3;
+};
+
 interface Rbx_Terrain extends Rbx_BasePart {
-	ReadVoxels(region: Region3, resolution: number): [Enum.Material[][][], number[][][]];
+	ReadVoxels(region: Region3, resolution: number): [ReadVoxelsArray<Enum.Material>, ReadVoxelsArray<number>];
 	WriteVoxels(region: Region3, resolution: number, materials: Enum.Material[][][], occupancy: number[][][]): void;
 }
 
