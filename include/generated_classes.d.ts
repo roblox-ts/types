@@ -4292,8 +4292,6 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // MarketplaceService
 interface Rbx_MarketplaceService extends Rbx_Instance {
 	GetDeveloperProductsAsync(): Instance | undefined;
-	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
-	GetProductInfo(assetId: number, infoType?: Enum.InfoType): object;
 	UserOwnsGamePassAsync(userId: number, gamePassId: number): boolean;
 }
 type MarketplaceService = Rbx_MarketplaceService & Base<Rbx_MarketplaceService> & AnyIndex;
