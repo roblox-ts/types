@@ -3303,7 +3303,6 @@ interface Rbx_Tool extends Rbx_BackpackItem {
 	Deactivate(): void;
 	Activated: RBXScriptSignal<() => void>;
 	Deactivated: RBXScriptSignal<() => void>;
-	Equipped: RBXScriptSignal<(mouse: Instance) => void>;
 	Unequipped: RBXScriptSignal<() => void>;
 }
 interface Tool extends Rbx_Tool, Base<Rbx_Tool>, AnyIndex {}
@@ -3894,9 +3893,6 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Keyframe
 interface Rbx_Keyframe extends Rbx_Instance {
 	Time: number;
-	AddPose(pose: Instance): void;
-	GetPoses(): Array<Instance>;
-	RemovePose(pose: Instance): void;
 }
 interface Keyframe extends Rbx_Keyframe, Base<Rbx_Keyframe>, AnyIndex {}
 /** One keyframe of an animation */
@@ -3915,9 +3911,6 @@ interface Rbx_Instance {
 interface Rbx_KeyframeSequence extends Rbx_Instance {
 	Loop: boolean;
 	Priority: Enum.AnimationPriority;
-	AddKeyframe(keyframe: Instance): void;
-	GetKeyframes(): Array<Instance>;
-	RemoveKeyframe(keyframe: Instance): void;
 }
 interface KeyframeSequence extends Rbx_KeyframeSequence, Base<Rbx_KeyframeSequence>, AnyIndex {}
 declare class KeyframeSequence {
@@ -4947,13 +4940,11 @@ interface Rbx_Terrain extends Rbx_BasePart {
 	CellCenterToWorld(x: number, y: number, z: number): Vector3;
 	CellCornerToWorld(x: number, y: number, z: number): Vector3;
 	Clear(): void;
-	CopyRegion(region: Region3int16): Instance | undefined;
 	CountCells(): number;
 	FillBall(center: Vector3, radius: number, material: Enum.Material): void;
 	FillBlock(cframe: CFrame, size: Vector3, material: Enum.Material): void;
 	FillRegion(region: Region3, resolution: number, material: Enum.Material): void;
 	GetMaterialColor(material: Enum.Material): Color3;
-	PasteRegion(region: Instance, corner: Vector3int16, pasteEmptyCells: boolean): void;
 	SetMaterialColor(material: Enum.Material, value: Color3): void;
 	WorldToCell(position: Vector3): Vector3;
 	WorldToCellPreferEmpty(position: Vector3): Vector3;
@@ -5256,7 +5247,6 @@ interface Rbx_Instance {
 
 // PathfindingService
 interface Rbx_PathfindingService extends Rbx_Instance {
-	CreatePath(agentParameters?: object): Instance | undefined;
 }
 type PathfindingService = Rbx_PathfindingService & Base<Rbx_PathfindingService> & AnyIndex;
 interface Rbx_Instance {

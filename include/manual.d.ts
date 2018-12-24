@@ -355,6 +355,18 @@ interface Rbx_Instance {
 	WaitForChild<T extends Instance = Instance>(childName: string, timeOut: number): T | undefined;
 }
 
+interface Rbx_Keyframe extends Rbx_Instance {
+	AddPose(pose: Pose): void;
+	GetPoses(): Array<Pose>;
+	RemovePose(pose: Pose): void;
+}
+
+interface Rbx_KeyframeSequence extends Rbx_Instance {
+	AddKeyframe(keyframe: Keyframe): void;
+	GetKeyframes(): Array<Keyframe>;
+	RemoveKeyframe(keyframe: Keyframe): void;
+}
+
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
 	RegisterActiveKeyframeSequence(keyframeSequence: KeyframeSequence): string;
 	RegisterKeyframeSequence(keyframeSequence: KeyframeSequence): string;
@@ -511,12 +523,20 @@ interface Rbx_Pages<T = unknown> extends Rbx_Instance {
 }
 interface Pages<T = unknown> extends Rbx_Pages<T>, Base<Rbx_Pages>, AnyIndex {}
 
-interface Rbx_PathfindingService extends Rbx_Instance {
-	FindPathAsync(start: Vector3, finish: Vector3): Path;
-}
-
 interface Rbx_Path extends Rbx_Instance {
 	GetWaypoints(): Array<PathWaypoint>;
+}
+
+interface AgentParameters {
+	/** Humanoid radius. Used to determine the minimum separation from obstacles. */
+	AgentRadius?: number;
+	/** Humanoid height. Empty space smaller than this value, like the space under stairs, will be marked as non-traversable. */
+	AgentHeight?: number;
+}
+
+interface Rbx_PathfindingService extends Rbx_Instance {
+	FindPathAsync(start: Vector3, finish: Vector3): Path;
+	CreatePath(agentParameters?: AgentParameters): Path;
 }
 
 interface CollisionGroupInfo {
@@ -734,8 +754,14 @@ type ReadVoxelsArray<T> = T[][][] & {
 };
 
 interface Rbx_Terrain extends Rbx_BasePart {
+	CopyRegion(region: Region3int16): TerrainRegion;
+	PasteRegion(region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): void;
 	ReadVoxels(region: Region3, resolution: number): [ReadVoxelsArray<Enum.Material>, ReadVoxelsArray<number>];
 	WriteVoxels(region: Region3, resolution: number, materials: Enum.Material[][][], occupancy: number[][][]): void;
+}
+
+interface Rbx_Tool extends Rbx_BackpackItem {
+	Equipped: RBXScriptSignal<(mouse: Mouse) => void>;
 }
 
 type Tweenable = number | boolean | CFrame | Rect | Color3 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3;
