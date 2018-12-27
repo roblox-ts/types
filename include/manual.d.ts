@@ -283,7 +283,7 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	LoadAnimation(animation: Instance): AnimationTrack;
 	AddAccessory(accessory: Accessory): void;
 	/** Takes a specified tool and equips it to the Humanoid's Character.  Tool argument should be of type 'Tool'. */
-	EquipTool(tool: BasePart): void;
+	EquipTool(tool: Tool): void;
 	GetAccessories(): Array<Accessory>;
 	GetLimb(part: BasePart): Enum.Limb;
 	/** Returns a Enum.BodyPartR15 given a body part in the Humanoid's Character. */
