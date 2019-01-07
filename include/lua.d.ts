@@ -55,7 +55,7 @@ declare function tonumber(arg: any, base?: number): number | undefined;
 /** Receives an argument of any type and converts it to a string in a reasonable format. If the metatable of e has a "__tostring" field, then tostring calls the corresponding value with e as an argument and uses the result of the call as its result. For complete control of how numbers are converted, use string.format. */
 declare function tostring(value: any): string;
 
-/** A Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
+/** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
 declare function pcall<T extends any[], U>(
 	func: (...args: T) => U
 ): U extends [infer A]
@@ -339,6 +339,9 @@ declare namespace table {
 
 	/** Places the value in the table at position and shifts elements to make room if necessary. */
 	function insert(t: Table, position: number, value: any): void;
+
+	/** Removes the last element from list, returning the value of the removed element. */
+	function remove(list: Table): any;
 
 	/** Removes from list the element at position pos, returning the value of the removed element. When pos is an integer between 1 and #list, it shifts down the elements list[pos+1], list[pos+2], ..., list[#list] and erases element list[#list]; The index pos can also be 0 when #list is 0, or #list + 1; in those cases, the function erases the element list[pos]. */
 	function remove(list: Table, pos: number): any;
