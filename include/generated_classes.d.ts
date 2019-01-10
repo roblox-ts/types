@@ -635,24 +635,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "RocketPropulsion"): RocketPropulsion | undefined;
 }
 
-// Button
-interface Rbx_Button extends Rbx_Instance {
-	ClickableWhenViewportHidden: boolean;
-	Enabled: boolean;
-	Icon: string;
-}
-interface Button extends Rbx_Button, Base<Rbx_Button>, AnyIndex {}
-declare abstract class Button {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Button"): this is Button;
-	FindFirstAncestorOfClass(className: "Button"): Button | undefined;
-	FindFirstAncestorWhichIsA(className: "Button"): Button | undefined;
-	FindFirstChildOfClass(className: "Button"): Button | undefined;
-	FindFirstAncestorWhichIsA(className: "Button"): Button | undefined;
-}
-
 // CacheableContentProvider
 interface Rbx_CacheableContentProvider extends Rbx_Instance {
 }
@@ -823,6 +805,7 @@ interface Rbx_Instance {
 
 // Clothing
 interface Rbx_Clothing extends Rbx_CharacterAppearance {
+	Color3: Color3;
 }
 interface Clothing extends Rbx_Clothing, Base<Rbx_Clothing>, AnyIndex {}
 declare abstract class Clothing {
@@ -870,6 +853,7 @@ interface Rbx_Instance {
 
 // ShirtGraphic
 interface Rbx_ShirtGraphic extends Rbx_CharacterAppearance {
+	Color3: Color3;
 	Graphic: string;
 }
 interface ShirtGraphic extends Rbx_ShirtGraphic, Base<Rbx_ShirtGraphic>, AnyIndex {}
@@ -2682,6 +2666,10 @@ interface Rbx_Instance {
 interface Rbx_ViewportFrame extends Rbx_GuiObject {
 	/** Current Camera of children objects */
 	CurrentCamera: Camera;
+	/** The rendered image of the ViewportFrame will be mutiplied by this color */
+	ImageColor3: Color3;
+	/** A number value that specifies how transparent the rendered image of the ViewportFrame is */
+	ImageTransparency: number;
 }
 interface ViewportFrame extends Rbx_ViewportFrame, Base<Rbx_ViewportFrame>, AnyIndex {}
 /** A GUI that can show 3D objects */
@@ -3685,21 +3673,6 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "InsertService"): InsertService;
 }
 
-// InstancePacketCache
-interface Rbx_InstancePacketCache extends Rbx_Instance {
-}
-type InstancePacketCache = Rbx_InstancePacketCache & Base<Rbx_InstancePacketCache> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "InstancePacketCache"): this is InstancePacketCache;
-	FindFirstAncestorOfClass(className: "InstancePacketCache"): InstancePacketCache | undefined;
-	FindFirstAncestorWhichIsA(className: "InstancePacketCache"): InstancePacketCache | undefined;
-	FindFirstChildOfClass(className: "InstancePacketCache"): InstancePacketCache | undefined;
-	FindFirstAncestorWhichIsA(className: "InstancePacketCache"): InstancePacketCache | undefined;
-}
-interface Rbx_ServiceProvider extends Rbx_Instance {
-	GetService(className: "InstancePacketCache"): InstancePacketCache;
-}
-
 // JointInstance
 interface Rbx_JointInstance extends Rbx_Instance {
 	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
@@ -4113,7 +4086,7 @@ interface Rbx_Instance {
 interface Rbx_Lighting extends Rbx_Instance {
 	/** The hue of the global lighting.  Changing this changes the color tint of all objects in the Workspace. */
 	Ambient: Color3;
-	/** How much global light each Part in the Workspace receives. Standard range is 0 to 1 (0 being little light), but can be increased all the way to 5 (colors start to be appear very different at this value). */
+	/** How much global light each Part in the Workspace receives. Standard range is 0 to 2 (0 being little light), but can be increased all the way to 10 (colors start to be appear very different at this value). */
 	Brightness: number;
 	ClockTime: number;
 	/** The hue of global lighting on the bottom surfaces of an object. */
@@ -4470,6 +4443,23 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Hint"): Hint | undefined;
 }
 
+// MessagingService
+interface Rbx_MessagingService extends Rbx_Instance {
+	PublishAsync(topic: string, message?: any): void;
+	SubscribeAsync(topic: string, callback: Function): RBXScriptConnection;
+}
+type MessagingService = Rbx_MessagingService & Base<Rbx_MessagingService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "MessagingService"): this is MessagingService;
+	FindFirstAncestorOfClass(className: "MessagingService"): MessagingService | undefined;
+	FindFirstAncestorWhichIsA(className: "MessagingService"): MessagingService | undefined;
+	FindFirstChildOfClass(className: "MessagingService"): MessagingService | undefined;
+	FindFirstAncestorWhichIsA(className: "MessagingService"): MessagingService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "MessagingService"): MessagingService;
+}
+
 // Mouse
 interface Rbx_Mouse extends Rbx_Instance {
 	/** The CoordinateFrame of where the Mouse ray is currently hitting a 3D object in the Workspace.  If the mouse is not over any 3D objects in the Workspace, this property is nil. */
@@ -4705,13 +4695,14 @@ interface Rbx_NetworkSettings extends Rbx_Instance {
 	PrintSplitMessage: boolean;
 	PrintStreamInstanceQuota: boolean;
 	PrintTouches: boolean;
+	ProxyEnabled: boolean;
+	ProxyURL: string;
 	ReceiveRate: number;
 	RenderStreamedRegions: boolean;
 	ShowActiveAnimationAsset: boolean;
 	TouchSendRate: number;
 	TrackDataTypes: boolean;
 	TrackPhysicsDetails: boolean;
-	UseInstancePacketCache: boolean;
 	UsePhysicsPacketCache: boolean;
 }
 type NetworkSettings = Rbx_NetworkSettings & Base<Rbx_NetworkSettings> & AnyIndex;
@@ -5683,6 +5674,39 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "PluginMenu"): PluginMenu | undefined;
 	FindFirstChildOfClass(className: "PluginMenu"): PluginMenu | undefined;
 	FindFirstAncestorWhichIsA(className: "PluginMenu"): PluginMenu | undefined;
+}
+
+// PluginToolbar
+interface Rbx_PluginToolbar extends Rbx_Instance {
+}
+interface PluginToolbar extends Rbx_PluginToolbar, Base<Rbx_PluginToolbar>, AnyIndex {}
+declare abstract class PluginToolbar {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "PluginToolbar"): this is PluginToolbar;
+	FindFirstAncestorOfClass(className: "PluginToolbar"): PluginToolbar | undefined;
+	FindFirstAncestorWhichIsA(className: "PluginToolbar"): PluginToolbar | undefined;
+	FindFirstChildOfClass(className: "PluginToolbar"): PluginToolbar | undefined;
+	FindFirstAncestorWhichIsA(className: "PluginToolbar"): PluginToolbar | undefined;
+}
+
+// PluginToolbarButton
+interface Rbx_PluginToolbarButton extends Rbx_Instance {
+	ClickableWhenViewportHidden: boolean;
+	Enabled: boolean;
+	Icon: string;
+}
+interface PluginToolbarButton extends Rbx_PluginToolbarButton, Base<Rbx_PluginToolbarButton>, AnyIndex {}
+declare abstract class PluginToolbarButton {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "PluginToolbarButton"): this is PluginToolbarButton;
+	FindFirstAncestorOfClass(className: "PluginToolbarButton"): PluginToolbarButton | undefined;
+	FindFirstAncestorWhichIsA(className: "PluginToolbarButton"): PluginToolbarButton | undefined;
+	FindFirstChildOfClass(className: "PluginToolbarButton"): PluginToolbarButton | undefined;
+	FindFirstAncestorWhichIsA(className: "PluginToolbarButton"): PluginToolbarButton | undefined;
 }
 
 // PointsService
@@ -7036,6 +7060,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Show Plugin GUI Service in Explorer"]: boolean;
 	["Show QT warnings in output"]: boolean;
 	["Show plus button on hover in Explorer"]: boolean;
+	["Split Meshes"]: boolean;
 	["String Color"]: Color3;
 	["Tab Width"]: number;
 	["Text Color"]: Color3;
@@ -7280,21 +7305,6 @@ interface Rbx_Instance {
 }
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "TimerService"): TimerService;
-}
-
-// Toolbar
-interface Rbx_Toolbar extends Rbx_Instance {
-}
-interface Toolbar extends Rbx_Toolbar, Base<Rbx_Toolbar>, AnyIndex {}
-declare abstract class Toolbar {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Toolbar"): this is Toolbar;
-	FindFirstAncestorOfClass(className: "Toolbar"): Toolbar | undefined;
-	FindFirstAncestorWhichIsA(className: "Toolbar"): Toolbar | undefined;
-	FindFirstChildOfClass(className: "Toolbar"): Toolbar | undefined;
-	FindFirstAncestorWhichIsA(className: "Toolbar"): Toolbar | undefined;
 }
 
 // TouchInputService
