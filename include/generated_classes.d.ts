@@ -2457,6 +2457,7 @@ interface Rbx_ImageButton extends Rbx_GuiButton {
 	ScaleType: Enum.ScaleType;
 	/** If ScaleType is set to Slice, this Rect is used to specify the central part of the image. Everything outside of this is considered to be the border. */
 	SliceCenter: Rect;
+	SliceScale: number;
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 }
@@ -2533,6 +2534,7 @@ interface Rbx_ImageLabel extends Rbx_GuiLabel {
 	ScaleType: Enum.ScaleType;
 	/** If ScaleType is set to Slice, this Rect is used to specify the central part of the image. Everything outside of this is considered to be the border. */
 	SliceCenter: Rect;
+	SliceScale: number;
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 }
@@ -7027,6 +7029,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	Font: QFont;
 	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
 	["Hover Over Color"]: Color3;
+	["Import mesh files as single mesh"]: boolean;
 	["Keyword Color"]: Color3;
 	["Line Thickness"]: number;
 	LuaDebuggerEnabled: boolean;
@@ -7060,7 +7063,6 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Show Plugin GUI Service in Explorer"]: boolean;
 	["Show QT warnings in output"]: boolean;
 	["Show plus button on hover in Explorer"]: boolean;
-	["Split Meshes"]: boolean;
 	["String Color"]: Color3;
 	["Tab Width"]: number;
 	["Text Color"]: Color3;
