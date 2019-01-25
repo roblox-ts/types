@@ -272,24 +272,22 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Attachment
 interface Rbx_Attachment extends Rbx_Instance {
+	/** Primary axis. Corresponds to the LookVector, or the first column in the part-local Attachment CFrame rotation matrix */
 	Axis: Vector3;
 	CFrame: CFrame;
 	/** Euler angles applied in YXZ order */
 	Orientation: Vector3;
 	Position: Vector3;
-	Rotation: Vector3;
+	/** Secondary axis. Corresponds to the UpVector, or the second column in the part-local Attachment CFrame rotation matrix */
 	SecondaryAxis: Vector3;
 	Visible: boolean;
-	readonly WorldAxis: Vector3;
-	readonly WorldCFrame: CFrame;
+	/** Primary axis in world space. Corresponds to the LookVector, or the first column in the world space Attachment CFrame rotation matrix. */
+	WorldAxis: Vector3;
+	WorldCFrame: CFrame;
 	/** Euler angles applied in YXZ order */
-	readonly WorldOrientation: Vector3;
-	readonly WorldPosition: Vector3;
-	readonly WorldSecondaryAxis: Vector3;
-	GetAxis(): Vector3;
-	GetSecondaryAxis(): Vector3;
-	SetAxis(axis: Vector3): void;
-	SetSecondaryAxis(axis: Vector3): void;
+	WorldOrientation: Vector3;
+	WorldPosition: Vector3;
+	WorldSecondaryAxis: Vector3;
 }
 interface Attachment extends Rbx_Attachment, Base<Rbx_Attachment>, AnyIndex {}
 declare class Attachment {
@@ -3513,6 +3511,7 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	AutoJumpEnabled: boolean;
 	AutoRotate: boolean;
 	AutomaticScalingEnabled: boolean;
+	BreakJointsOnDeath: boolean;
 	CameraOffset: Vector3;
 	DisplayDistanceType: Enum.HumanoidDisplayDistanceType;
 	readonly FloorMaterial: Enum.Material;
@@ -4138,6 +4137,21 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Lighting"): Lighting;
 }
 
+// LocalAsset
+interface Rbx_LocalAsset extends Rbx_Instance {
+}
+interface LocalAsset extends Rbx_LocalAsset, Base<Rbx_LocalAsset>, AnyIndex {}
+declare abstract class LocalAsset {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "LocalAsset"): this is LocalAsset;
+	FindFirstAncestorOfClass(className: "LocalAsset"): LocalAsset | undefined;
+	FindFirstAncestorWhichIsA(className: "LocalAsset"): LocalAsset | undefined;
+	FindFirstChildOfClass(className: "LocalAsset"): LocalAsset | undefined;
+	FindFirstAncestorWhichIsA(className: "LocalAsset"): LocalAsset | undefined;
+}
+
 // LocalStorageService
 interface Rbx_LocalStorageService extends Rbx_Instance {
 }
@@ -4188,6 +4202,7 @@ interface Rbx_LocalizationService extends Rbx_Instance {
 	readonly RobloxLocaleId: string;
 	readonly SystemLocaleId: string;
 	GetCorescriptLocalizations(): Array<Instance>;
+	GetTranslatorForLocaleAsync(locale: string): Instance | undefined;
 	GetTranslatorForPlayerAsync(player: Instance): Instance | undefined;
 }
 type LocalizationService = Rbx_LocalizationService & Base<Rbx_LocalizationService> & AnyIndex;
@@ -5561,6 +5576,8 @@ interface Rbx_Players extends Rbx_Instance {
 	readonly ClassicChat: boolean;
 	readonly MaxPlayers: number;
 	readonly PreferredPlayers: number;
+	GetHumanoidDescriptionFromOutfitId(outfitId: number): Instance | undefined;
+	GetHumanoidDescriptionFromUserId(userId: number): Instance | undefined;
 	GetNameFromUserIdAsync(userId: number): string;
 	GetUserIdFromNameAsync(userName: string): number;
 }
@@ -7015,6 +7032,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Camera Mouse Wheel Speed"]: number;
 	["Camera Shift Speed"]: number;
 	["Camera Speed"]: number;
+	["Camera Zoom to Mouse Position"]: boolean;
 	["Clear Output On Start"]: boolean;
 	["Comment Color"]: Color3;
 	DefaultScriptFileDir: QDir;
