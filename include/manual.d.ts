@@ -103,7 +103,7 @@ interface Rbx_CollectionService extends Rbx_Instance {
 }
 
 interface Rbx_ContentProvider extends Rbx_Instance {
-	PreloadAsync(contentIdList: Array<string>): void;
+	PreloadAsync(contentIdList: Array<Instance>): void;
 }
 
 interface Rbx_ContextActionService extends Rbx_Instance {
