@@ -288,7 +288,6 @@ export class ClassGenerator extends Generator {
 					: "";
 			this.write(`interface ${implName} ${extendsStr}{`);
 			this.pushIndent();
-			this.write(`Clone(): ${name}`);
 			rbxClass.Members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
 			this.popIndent();
 			this.write(`}`);
