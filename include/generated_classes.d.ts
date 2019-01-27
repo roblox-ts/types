@@ -9,6 +9,7 @@
 
 // Instance
 interface Rbx_Instance {
+	Clone(): Instance
 	/** Determines whether or not an Instance can be saved when the game closes/attempts to save the game. Note: this only applies to games that use Data Persistence, or SavePlaceAsync. */
 	Archivable: boolean;
 	/** The string name of this Instance's most derived class. */
@@ -62,6 +63,7 @@ interface Rbx_Instance {
 
 // ABTestService
 interface Rbx_ABTestService extends Rbx_Instance {
+	Clone(): ABTestService
 }
 type ABTestService = Rbx_ABTestService & Base<Rbx_ABTestService> & AnyIndex;
 interface Rbx_Instance {
@@ -77,6 +79,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Accoutrement
 interface Rbx_Accoutrement extends Rbx_Instance {
+	Clone(): Accoutrement
 	AttachmentForward: Vector3;
 	AttachmentPoint: CFrame;
 	AttachmentPos: Vector3;
@@ -97,6 +100,7 @@ interface Rbx_Instance {
 
 // Accessory
 interface Rbx_Accessory extends Rbx_Accoutrement {
+	Clone(): Accessory
 }
 interface Accessory extends Rbx_Accessory, Base<Rbx_Accessory>, AnyIndex {}
 declare class Accessory {
@@ -112,6 +116,7 @@ interface Rbx_Instance {
 
 // Hat
 interface Rbx_Hat extends Rbx_Accoutrement {
+	Clone(): Hat
 }
 interface Hat extends Rbx_Hat, Base<Rbx_Hat>, AnyIndex {}
 declare class Hat {
@@ -127,6 +132,7 @@ interface Rbx_Instance {
 
 // AdService
 interface Rbx_AdService extends Rbx_Instance {
+	Clone(): AdService
 }
 type AdService = Rbx_AdService & Base<Rbx_AdService> & AnyIndex;
 interface Rbx_Instance {
@@ -142,6 +148,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // AdvancedDragger
 interface Rbx_AdvancedDragger extends Rbx_Instance {
+	Clone(): AdvancedDragger
 }
 interface AdvancedDragger extends Rbx_AdvancedDragger, Base<Rbx_AdvancedDragger>, AnyIndex {}
 declare class AdvancedDragger {
@@ -157,6 +164,7 @@ interface Rbx_Instance {
 
 // AnalyticsService
 interface Rbx_AnalyticsService extends Rbx_Instance {
+	Clone(): AnalyticsService
 }
 type AnalyticsService = Rbx_AnalyticsService & Base<Rbx_AnalyticsService> & AnyIndex;
 interface Rbx_Instance {
@@ -172,6 +180,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Animation
 interface Rbx_Animation extends Rbx_Instance {
+	Clone(): Animation
 	AnimationId: string;
 }
 interface Animation extends Rbx_Animation, Base<Rbx_Animation>, AnyIndex {}
@@ -189,6 +198,7 @@ interface Rbx_Instance {
 
 // AnimationController
 interface Rbx_AnimationController extends Rbx_Instance {
+	Clone(): AnimationController
 }
 interface AnimationController extends Rbx_AnimationController, Base<Rbx_AnimationController>, AnyIndex {}
 /** Allows animations to be played on joints of the parent object. */
@@ -205,6 +215,7 @@ interface Rbx_Instance {
 
 // AnimationTrack
 interface Rbx_AnimationTrack extends Rbx_Instance {
+	Clone(): AnimationTrack
 	readonly Animation: Animation;
 	readonly IsPlaying: boolean;
 	readonly Length: number;
@@ -239,6 +250,7 @@ interface Rbx_Instance {
 
 // Animator
 interface Rbx_Animator extends Rbx_Instance {
+	Clone(): Animator
 }
 interface Animator extends Rbx_Animator, Base<Rbx_Animator>, AnyIndex {}
 declare class Animator {
@@ -254,6 +266,7 @@ interface Rbx_Instance {
 
 // AssetService
 interface Rbx_AssetService extends Rbx_Instance {
+	Clone(): AssetService
 	CreatePlaceAsync(placeName: string, templatePlaceID: number, description?: string): number;
 	GetBundleDetailsAsync(bundleId: number): object;
 	SavePlaceAsync(): void;
@@ -272,6 +285,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Attachment
 interface Rbx_Attachment extends Rbx_Instance {
+	Clone(): Attachment
 	/** Primary axis. Corresponds to the LookVector, or the first column in the part-local Attachment CFrame rotation matrix */
 	Axis: Vector3;
 	CFrame: CFrame;
@@ -303,6 +317,7 @@ interface Rbx_Instance {
 
 // BadgeService
 interface Rbx_BadgeService extends Rbx_Instance {
+	Clone(): BadgeService
 	AwardBadge(userId: number, badgeId: number): boolean;
 	GetBadgeInfoAsync(badgeId: number): object;
 	UserHasBadgeAsync(userId: number, badgeId: number): boolean;
@@ -321,6 +336,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // BasePlayerGui
 interface Rbx_BasePlayerGui extends Rbx_Instance {
+	Clone(): BasePlayerGui
 	GetGuiObjectsAtPosition(x: number, y: number): Array<Instance>;
 }
 interface BasePlayerGui extends Rbx_BasePlayerGui, Base<Rbx_BasePlayerGui>, AnyIndex {}
@@ -337,6 +353,7 @@ interface Rbx_Instance {
 
 // CoreGui
 interface Rbx_CoreGui extends Rbx_BasePlayerGui {
+	Clone(): CoreGui
 	readonly Version: number;
 }
 type CoreGui = Rbx_CoreGui & Base<Rbx_CoreGui> & AnyIndex;
@@ -353,6 +370,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // PlayerGui
 interface Rbx_PlayerGui extends Rbx_BasePlayerGui {
+	Clone(): PlayerGui
 	readonly CurrentScreenOrientation: Enum.ScreenOrientation;
 	ScreenOrientation: Enum.ScreenOrientation;
 	/** Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject. */
@@ -376,6 +394,7 @@ interface Rbx_Instance {
 
 // StarterGui
 interface Rbx_StarterGui extends Rbx_BasePlayerGui {
+	Clone(): StarterGui
 	ScreenOrientation: Enum.ScreenOrientation;
 	ShowDevelopmentGui: boolean;
 	/** Returns a boolean describing whether a CoreGuiType is currently being rendered. */
@@ -397,6 +416,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Beam
 interface Rbx_Beam extends Rbx_Instance {
+	Clone(): Beam
 	Attachment0: Attachment;
 	Attachment1: Attachment;
 	Color: ColorSequence;
@@ -432,6 +452,7 @@ interface Rbx_Instance {
 
 // BindableEvent
 interface Rbx_BindableEvent extends Rbx_Instance {
+	Clone(): BindableEvent
 }
 interface BindableEvent extends Rbx_BindableEvent, Base<Rbx_BindableEvent>, AnyIndex {}
 /** Allow events defined in one script to be subscribed to by another script */
@@ -448,6 +469,7 @@ interface Rbx_Instance {
 
 // BindableFunction
 interface Rbx_BindableFunction extends Rbx_Instance {
+	Clone(): BindableFunction
 }
 interface BindableFunction extends Rbx_BindableFunction, Base<Rbx_BindableFunction>, AnyIndex {}
 /** Allow functions defined in one script to be called by another script */
@@ -464,6 +486,7 @@ interface Rbx_Instance {
 
 // BodyMover
 interface Rbx_BodyMover extends Rbx_Instance {
+	Clone(): BodyMover
 }
 interface BodyMover extends Rbx_BodyMover, Base<Rbx_BodyMover>, AnyIndex {}
 declare abstract class BodyMover {
@@ -479,6 +502,7 @@ interface Rbx_Instance {
 
 // BodyAngularVelocity
 interface Rbx_BodyAngularVelocity extends Rbx_BodyMover {
+	Clone(): BodyAngularVelocity
 	AngularVelocity: Vector3;
 	MaxTorque: Vector3;
 	P: number;
@@ -497,6 +521,7 @@ interface Rbx_Instance {
 
 // BodyForce
 interface Rbx_BodyForce extends Rbx_BodyMover {
+	Clone(): BodyForce
 	Force: Vector3;
 }
 interface BodyForce extends Rbx_BodyForce, Base<Rbx_BodyForce>, AnyIndex {}
@@ -514,6 +539,7 @@ interface Rbx_Instance {
 
 // BodyGyro
 interface Rbx_BodyGyro extends Rbx_BodyMover {
+	Clone(): BodyGyro
 	/** The cframe that this force is trying to orient its parent Part to.  Note: this force only uses the rotation of the cframe, not the position. */
 	CFrame: CFrame;
 	/** The dampening factor applied to this force */
@@ -538,6 +564,7 @@ interface Rbx_Instance {
 
 // BodyPosition
 interface Rbx_BodyPosition extends Rbx_BodyMover {
+	Clone(): BodyPosition
 	/** The dampening factor applied to this force */
 	D: number;
 	/** The maximum force that will be exerted on the Part */
@@ -563,6 +590,7 @@ interface Rbx_Instance {
 
 // BodyThrust
 interface Rbx_BodyThrust extends Rbx_BodyMover {
+	Clone(): BodyThrust
 	/** The power continually applied to this force */
 	Force: Vector3;
 	/** The Vector3 location of where to apply the force to.  */
@@ -582,6 +610,7 @@ interface Rbx_Instance {
 
 // BodyVelocity
 interface Rbx_BodyVelocity extends Rbx_BodyMover {
+	Clone(): BodyVelocity
 	/** The maximum force that will be exerted on the Part in each axis */
 	MaxForce: Vector3;
 	/** The amount of power we add to the system.  The higher the power, the quicker the force will achieve its goal. */
@@ -605,6 +634,7 @@ interface Rbx_Instance {
 
 // RocketPropulsion
 interface Rbx_RocketPropulsion extends Rbx_BodyMover {
+	Clone(): RocketPropulsion
 	CartoonFactor: number;
 	MaxSpeed: number;
 	MaxThrust: number;
@@ -635,6 +665,7 @@ interface Rbx_Instance {
 
 // CacheableContentProvider
 interface Rbx_CacheableContentProvider extends Rbx_Instance {
+	Clone(): CacheableContentProvider
 }
 type CacheableContentProvider = Rbx_CacheableContentProvider & Base<Rbx_CacheableContentProvider> & AnyIndex;
 interface Rbx_Instance {
@@ -650,6 +681,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // MeshContentProvider
 interface Rbx_MeshContentProvider extends Rbx_CacheableContentProvider {
+	Clone(): MeshContentProvider
 }
 type MeshContentProvider = Rbx_MeshContentProvider & Base<Rbx_MeshContentProvider> & AnyIndex;
 interface Rbx_Instance {
@@ -665,6 +697,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // SolidModelContentProvider
 interface Rbx_SolidModelContentProvider extends Rbx_CacheableContentProvider {
+	Clone(): SolidModelContentProvider
 }
 type SolidModelContentProvider = Rbx_SolidModelContentProvider & Base<Rbx_SolidModelContentProvider> & AnyIndex;
 interface Rbx_Instance {
@@ -680,6 +713,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Camera
 interface Rbx_Camera extends Rbx_Instance {
+	Clone(): Camera
 	/** The current position and rotation of the Camera.  For most CameraTypes, the rotation is set such that the CoordinateFrame lookVector is pointing at the Focus. */
 	CFrame: CFrame;
 	/** Defines how the camera will behave. [More info](http://wiki.roblox.com/index.php/CameraType) */
@@ -726,6 +760,7 @@ interface Rbx_Instance {
 
 // ChangeHistoryService
 interface Rbx_ChangeHistoryService extends Rbx_Instance {
+	Clone(): ChangeHistoryService
 }
 type ChangeHistoryService = Rbx_ChangeHistoryService & Base<Rbx_ChangeHistoryService> & AnyIndex;
 interface Rbx_Instance {
@@ -741,6 +776,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // CharacterAppearance
 interface Rbx_CharacterAppearance extends Rbx_Instance {
+	Clone(): CharacterAppearance
 }
 interface CharacterAppearance extends Rbx_CharacterAppearance, Base<Rbx_CharacterAppearance>, AnyIndex {}
 declare abstract class CharacterAppearance {
@@ -756,6 +792,7 @@ interface Rbx_Instance {
 
 // BodyColors
 interface Rbx_BodyColors extends Rbx_CharacterAppearance {
+	Clone(): BodyColors
 	HeadColor: BrickColor;
 	HeadColor3: Color3;
 	LeftArmColor: BrickColor;
@@ -783,6 +820,7 @@ interface Rbx_Instance {
 
 // CharacterMesh
 interface Rbx_CharacterMesh extends Rbx_CharacterAppearance {
+	Clone(): CharacterMesh
 	BaseTextureId: number;
 	BodyPart: Enum.BodyPart;
 	MeshId: number;
@@ -803,6 +841,7 @@ interface Rbx_Instance {
 
 // Clothing
 interface Rbx_Clothing extends Rbx_CharacterAppearance {
+	Clone(): Clothing
 	Color3: Color3;
 }
 interface Clothing extends Rbx_Clothing, Base<Rbx_Clothing>, AnyIndex {}
@@ -819,6 +858,7 @@ interface Rbx_Instance {
 
 // Pants
 interface Rbx_Pants extends Rbx_Clothing {
+	Clone(): Pants
 	PantsTemplate: string;
 }
 interface Pants extends Rbx_Pants, Base<Rbx_Pants>, AnyIndex {}
@@ -835,6 +875,7 @@ interface Rbx_Instance {
 
 // Shirt
 interface Rbx_Shirt extends Rbx_Clothing {
+	Clone(): Shirt
 	ShirtTemplate: string;
 }
 interface Shirt extends Rbx_Shirt, Base<Rbx_Shirt>, AnyIndex {}
@@ -851,6 +892,7 @@ interface Rbx_Instance {
 
 // ShirtGraphic
 interface Rbx_ShirtGraphic extends Rbx_CharacterAppearance {
+	Clone(): ShirtGraphic
 	Color3: Color3;
 	Graphic: string;
 }
@@ -868,6 +910,7 @@ interface Rbx_Instance {
 
 // Skin
 interface Rbx_Skin extends Rbx_CharacterAppearance {
+	Clone(): Skin
 	SkinColor: BrickColor;
 }
 interface Skin extends Rbx_Skin, Base<Rbx_Skin>, AnyIndex {}
@@ -884,6 +927,7 @@ interface Rbx_Instance {
 
 // Chat
 interface Rbx_Chat extends Rbx_Instance {
+	Clone(): Chat
 	BubbleChatEnabled: boolean;
 	readonly LoadDefaultChat: boolean;
 	InvokeChatCallback(callbackType: Enum.ChatCallbackType, callbackArguments: Array<any>): unknown;
@@ -905,6 +949,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // ClickDetector
 interface Rbx_ClickDetector extends Rbx_Instance {
+	Clone(): ClickDetector
 	CursorIcon: string;
 	/** The maximum distance a Player's character can be from the ClickDetector's parent Part that will allow the Player's mouse to fire events on this object. */
 	MaxActivationDistance: number;
@@ -924,6 +969,7 @@ interface Rbx_Instance {
 
 // ClusterPacketCache
 interface Rbx_ClusterPacketCache extends Rbx_Instance {
+	Clone(): ClusterPacketCache
 }
 type ClusterPacketCache = Rbx_ClusterPacketCache & Base<Rbx_ClusterPacketCache> & AnyIndex;
 interface Rbx_Instance {
@@ -939,6 +985,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // CollectionService
 interface Rbx_CollectionService extends Rbx_Instance {
+	Clone(): CollectionService
 	/** Adds a tag to an instance. */
 	AddTag(instance: Instance, tag: string): void;
 	/** Returns whether the given instance has the given tag. */
@@ -960,6 +1007,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Configuration
 interface Rbx_Configuration extends Rbx_Instance {
+	Clone(): Configuration
 }
 interface Configuration extends Rbx_Configuration, Base<Rbx_Configuration>, AnyIndex {}
 /** An object that can be placed under parts to hold Value objects that represent that part's configuration */
@@ -976,6 +1024,7 @@ interface Rbx_Instance {
 
 // Constraint
 interface Rbx_Constraint extends Rbx_Instance {
+	Clone(): Constraint
 	/** Read-only boolean, true if the Constraint is active in world. */
 	readonly Active: boolean;
 	Attachment0: Attachment;
@@ -1001,6 +1050,7 @@ interface Rbx_Instance {
 
 // AlignOrientation
 interface Rbx_AlignOrientation extends Rbx_Constraint {
+	Clone(): AlignOrientation
 	MaxAngularVelocity: number;
 	MaxTorque: number;
 	PrimaryAxisOnly: boolean;
@@ -1022,6 +1072,7 @@ interface Rbx_Instance {
 
 // AlignPosition
 interface Rbx_AlignPosition extends Rbx_Constraint {
+	Clone(): AlignPosition
 	ApplyAtCenterOfMass: boolean;
 	MaxForce: number;
 	MaxVelocity: number;
@@ -1043,6 +1094,7 @@ interface Rbx_Instance {
 
 // BallSocketConstraint
 interface Rbx_BallSocketConstraint extends Rbx_Constraint {
+	Clone(): BallSocketConstraint
 	/** Enables the angular limit between the axis of Attachment0 and the axis of Attachment1. */
 	LimitsEnabled: boolean;
 	/** Radius of the in-game visual. Value in [0, inf). */
@@ -1072,6 +1124,7 @@ interface Rbx_Instance {
 
 // HingeConstraint
 interface Rbx_HingeConstraint extends Rbx_Constraint {
+	Clone(): HingeConstraint
 	/** Type of the rotational actuator: None, Motor, or Servo.  */
 	ActuatorType: Enum.ActuatorType;
 	/** Target angular speed. This value is unsigned as the servo will always move toward its target. Value in [0, inf). */
@@ -1112,6 +1165,7 @@ interface Rbx_Instance {
 
 // LineForce
 interface Rbx_LineForce extends Rbx_Constraint {
+	Clone(): LineForce
 	ApplyAtCenterOfMass: boolean;
 	InverseSquareLaw: boolean;
 	Magnitude: number;
@@ -1132,6 +1186,7 @@ interface Rbx_Instance {
 
 // RodConstraint
 interface Rbx_RodConstraint extends Rbx_Constraint {
+	Clone(): RodConstraint
 	/** Current distance between the two attachments. Value in [0, inf). */
 	readonly CurrentDistance: number;
 	/** The length of the rod or the distance to be maintained between the two attachments. Value in [0, inf). */
@@ -1153,6 +1208,7 @@ interface Rbx_Instance {
 
 // RopeConstraint
 interface Rbx_RopeConstraint extends Rbx_Constraint {
+	Clone(): RopeConstraint
 	/** Current distance between the two attachments. Value in [0, inf). */
 	readonly CurrentDistance: number;
 	/** The length of the rope or the maximum distance between the two attachments. Value in [0, inf). */
@@ -1176,6 +1232,7 @@ interface Rbx_Instance {
 
 // SlidingBallConstraint
 interface Rbx_SlidingBallConstraint extends Rbx_Constraint {
+	Clone(): SlidingBallConstraint
 	/** Type of linear actuator (along the axis of the slider): None, Motor, or Servo. */
 	ActuatorType: Enum.ActuatorType;
 	/** Current position of Attachment1 with respect to Attachment0 along the slider axis. Value in (-inf, inf). */
@@ -1217,6 +1274,7 @@ interface Rbx_Instance {
 
 // CylindricalConstraint
 interface Rbx_CylindricalConstraint extends Rbx_SlidingBallConstraint {
+	Clone(): CylindricalConstraint
 	/** Type of angular actuator: None, Motor, or Servo.  */
 	AngularActuatorType: Enum.ActuatorType;
 	/** Enables the angular limits around the rotation axis. */
@@ -1262,6 +1320,7 @@ interface Rbx_Instance {
 
 // PrismaticConstraint
 interface Rbx_PrismaticConstraint extends Rbx_SlidingBallConstraint {
+	Clone(): PrismaticConstraint
 }
 interface PrismaticConstraint extends Rbx_PrismaticConstraint, Base<Rbx_PrismaticConstraint>, AnyIndex {}
 declare class PrismaticConstraint {
@@ -1277,6 +1336,7 @@ interface Rbx_Instance {
 
 // SpringConstraint
 interface Rbx_SpringConstraint extends Rbx_Constraint {
+	Clone(): SpringConstraint
 	/** The number of coils in the in-game visual. Value in [0, 8]. */
 	Coils: number;
 	/** Current distance between the two attachments. Value in [0, inf). */
@@ -1314,6 +1374,7 @@ interface Rbx_Instance {
 
 // Torque
 interface Rbx_Torque extends Rbx_Constraint {
+	Clone(): Torque
 	RelativeTo: Enum.ActuatorRelativeTo;
 	Torque: Vector3;
 }
@@ -1331,6 +1392,7 @@ interface Rbx_Instance {
 
 // VectorForce
 interface Rbx_VectorForce extends Rbx_Constraint {
+	Clone(): VectorForce
 	ApplyAtCenterOfMass: boolean;
 	Force: Vector3;
 	RelativeTo: Enum.ActuatorRelativeTo;
@@ -1349,6 +1411,7 @@ interface Rbx_Instance {
 
 // ContentProvider
 interface Rbx_ContentProvider extends Rbx_Instance {
+	Clone(): ContentProvider
 	readonly BaseUrl: string;
 	readonly RequestQueueSize: number;
 }
@@ -1366,6 +1429,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // ContextActionService
 interface Rbx_ContextActionService extends Rbx_Instance {
+	Clone(): ContextActionService
 	BindActivate(userInputTypeForActivation: Enum.UserInputType, keyCodeForActivation?: Enum.KeyCode): void;
 	/** Returns a table with all bound action info. Each entry is a key with 'actionName' and value being the same table you would get from ContextActionService:GetBoundActionInfo('actionName'). */
 	GetAllBoundActionInfo(): object;
@@ -1400,6 +1464,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Controller
 interface Rbx_Controller extends Rbx_Instance {
+	Clone(): Controller
 	BindButton(button: Enum.Button, caption: string): void;
 	GetButton(button: Enum.Button): boolean;
 	UnbindButton(button: Enum.Button): void;
@@ -1419,6 +1484,7 @@ interface Rbx_Instance {
 
 // HumanoidController
 interface Rbx_HumanoidController extends Rbx_Controller {
+	Clone(): HumanoidController
 }
 interface HumanoidController extends Rbx_HumanoidController, Base<Rbx_HumanoidController>, AnyIndex {}
 declare class HumanoidController {
@@ -1434,6 +1500,7 @@ interface Rbx_Instance {
 
 // SkateboardController
 interface Rbx_SkateboardController extends Rbx_Controller {
+	Clone(): SkateboardController
 	readonly Steer: number;
 	readonly Throttle: number;
 	AxisChanged: RBXScriptSignal<(axis: string) => void>;
@@ -1452,6 +1519,7 @@ interface Rbx_Instance {
 
 // VehicleController
 interface Rbx_VehicleController extends Rbx_Controller {
+	Clone(): VehicleController
 }
 interface VehicleController extends Rbx_VehicleController, Base<Rbx_VehicleController>, AnyIndex {}
 declare class VehicleController {
@@ -1467,6 +1535,7 @@ interface Rbx_Instance {
 
 // ControllerService
 interface Rbx_ControllerService extends Rbx_Instance {
+	Clone(): ControllerService
 }
 type ControllerService = Rbx_ControllerService & Base<Rbx_ControllerService> & AnyIndex;
 interface Rbx_Instance {
@@ -1482,6 +1551,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // CookiesService
 interface Rbx_CookiesService extends Rbx_Instance {
+	Clone(): CookiesService
 }
 type CookiesService = Rbx_CookiesService & Base<Rbx_CookiesService> & AnyIndex;
 interface Rbx_Instance {
@@ -1497,6 +1567,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // CorePackages
 interface Rbx_CorePackages extends Rbx_Instance {
+	Clone(): CorePackages
 }
 type CorePackages = Rbx_CorePackages & Base<Rbx_CorePackages> & AnyIndex;
 interface Rbx_Instance {
@@ -1512,6 +1583,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // CoreScriptSyncService
 interface Rbx_CoreScriptSyncService extends Rbx_Instance {
+	Clone(): CoreScriptSyncService
 }
 type CoreScriptSyncService = Rbx_CoreScriptSyncService & Base<Rbx_CoreScriptSyncService> & AnyIndex;
 interface Rbx_Instance {
@@ -1527,6 +1599,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // CustomEvent
 interface Rbx_CustomEvent extends Rbx_Instance {
+	Clone(): CustomEvent
 	GetAttachedReceivers(): Array<Instance>;
 	SetValue(newValue: number): void;
 	ReceiverConnected: RBXScriptSignal<(receiver: Instance) => void>;
@@ -1546,6 +1619,7 @@ interface Rbx_Instance {
 
 // CustomEventReceiver
 interface Rbx_CustomEventReceiver extends Rbx_Instance {
+	Clone(): CustomEventReceiver
 	Source: Instance | undefined;
 	GetCurrentValue(): number;
 	EventConnected: RBXScriptSignal<(event: Instance) => void>;
@@ -1566,6 +1640,7 @@ interface Rbx_Instance {
 
 // DataModelMesh
 interface Rbx_DataModelMesh extends Rbx_Instance {
+	Clone(): DataModelMesh
 	Offset: Vector3;
 	Scale: Vector3;
 	VertexColor: Vector3;
@@ -1584,6 +1659,7 @@ interface Rbx_Instance {
 
 // BevelMesh
 interface Rbx_BevelMesh extends Rbx_DataModelMesh {
+	Clone(): BevelMesh
 }
 interface BevelMesh extends Rbx_BevelMesh, Base<Rbx_BevelMesh>, AnyIndex {}
 declare abstract class BevelMesh {
@@ -1599,6 +1675,7 @@ interface Rbx_Instance {
 
 // BlockMesh
 interface Rbx_BlockMesh extends Rbx_BevelMesh {
+	Clone(): BlockMesh
 }
 interface BlockMesh extends Rbx_BlockMesh, Base<Rbx_BlockMesh>, AnyIndex {}
 declare class BlockMesh {
@@ -1614,6 +1691,7 @@ interface Rbx_Instance {
 
 // CylinderMesh
 interface Rbx_CylinderMesh extends Rbx_BevelMesh {
+	Clone(): CylinderMesh
 }
 interface CylinderMesh extends Rbx_CylinderMesh, Base<Rbx_CylinderMesh>, AnyIndex {}
 declare class CylinderMesh {
@@ -1629,6 +1707,7 @@ interface Rbx_Instance {
 
 // FileMesh
 interface Rbx_FileMesh extends Rbx_DataModelMesh {
+	Clone(): FileMesh
 	MeshId: string;
 	TextureId: string;
 }
@@ -1646,6 +1725,7 @@ interface Rbx_Instance {
 
 // SpecialMesh
 interface Rbx_SpecialMesh extends Rbx_FileMesh {
+	Clone(): SpecialMesh
 	MeshType: Enum.MeshType;
 }
 interface SpecialMesh extends Rbx_SpecialMesh, Base<Rbx_SpecialMesh>, AnyIndex {}
@@ -1662,6 +1742,7 @@ interface Rbx_Instance {
 
 // DataStoreService
 interface Rbx_DataStoreService extends Rbx_Instance {
+	Clone(): DataStoreService
 	GetRequestBudgetForRequestType(requestType: Enum.DataStoreRequestType): number;
 }
 type DataStoreService = Rbx_DataStoreService & Base<Rbx_DataStoreService> & AnyIndex;
@@ -1678,6 +1759,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Debris
 interface Rbx_Debris extends Rbx_Instance {
+	Clone(): Debris
 	/** Adds an Instance into the debris service that will later be destroyed.  Second argument 'lifetime' is optional and specifies how long (in seconds) to wait before destroying the item. If no time is specified then the item added will automatically be destroyed in 10 seconds. */
 	AddItem(item: Instance, lifetime?: number): void;
 }
@@ -1695,6 +1777,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // DebugSettings
 interface Rbx_DebugSettings extends Rbx_Instance {
+	Clone(): DebugSettings
 	readonly DataModel: number;
 	ErrorReporting: Enum.ErrorReporting;
 	readonly GfxCard: string;
@@ -1727,6 +1810,7 @@ interface Rbx_Instance {
 
 // DebuggerBreakpoint
 interface Rbx_DebuggerBreakpoint extends Rbx_Instance {
+	Clone(): DebuggerBreakpoint
 	Condition: string;
 	IsEnabled: boolean;
 	readonly Line: number;
@@ -1745,6 +1829,7 @@ interface Rbx_Instance {
 
 // DebuggerManager
 interface Rbx_DebuggerManager extends Rbx_Instance {
+	Clone(): DebuggerManager
 	readonly DebuggingEnabled: boolean;
 	AddDebugger(script: Instance): Instance | undefined;
 	GetDebuggers(): Array<Instance>;
@@ -1769,6 +1854,7 @@ interface Rbx_Instance {
 
 // DebuggerWatch
 interface Rbx_DebuggerWatch extends Rbx_Instance {
+	Clone(): DebuggerWatch
 	Expression: string;
 	CheckSyntax(): void;
 }
@@ -1786,6 +1872,7 @@ interface Rbx_Instance {
 
 // Dialog
 interface Rbx_Dialog extends Rbx_Instance {
+	Clone(): Dialog
 	/** Indicates how the dialog may be used by players. Use Enum.DialogBehaviorType.SinglePlayer if only one player should interact with the dialog at a time, otherwise use Enum.DialogBehaviorType.MultiplePlayers. */
 	BehaviorType: Enum.DialogBehaviorType;
 	/** The maximum distance that the player's character can be from the dialog's parent in order to use the dialog. */
@@ -1820,6 +1907,7 @@ interface Rbx_Instance {
 
 // DialogChoice
 interface Rbx_DialogChoice extends Rbx_Instance {
+	Clone(): DialogChoice
 	GoodbyeChoiceActive: boolean;
 	GoodbyeDialog: string;
 	ResponseDialog: string;
@@ -1840,6 +1928,7 @@ interface Rbx_Instance {
 
 // Dragger
 interface Rbx_Dragger extends Rbx_Instance {
+	Clone(): Dragger
 	AxisRotate(axis?: Enum.Axis): void;
 	MouseDown(mousePart: Instance, pointOnMousePart: Vector3, parts: Array<Instance>): void;
 	MouseMove(mouseRay: Ray): void;
@@ -1859,6 +1948,7 @@ interface Rbx_Instance {
 
 // Explosion
 interface Rbx_Explosion extends Rbx_Instance {
+	Clone(): Explosion
 	/** How much force this Explosion exerts on objects within it's BlastRadius. Setting this to 0 creates a purely graphical effect. A larger number will cause Parts to fly away at higher velocities. */
 	BlastPressure: number;
 	/** How big the Explosion is. This is a circle starting from the center of the Explosion's Position, the larger this property the larger the circle of destruction. */
@@ -1886,6 +1976,7 @@ interface Rbx_Instance {
 
 // FaceInstance
 interface Rbx_FaceInstance extends Rbx_Instance {
+	Clone(): FaceInstance
 	Face: Enum.NormalId;
 }
 interface FaceInstance extends Rbx_FaceInstance, Base<Rbx_FaceInstance>, AnyIndex {}
@@ -1902,6 +1993,7 @@ interface Rbx_Instance {
 
 // Decal
 interface Rbx_Decal extends Rbx_FaceInstance {
+	Clone(): Decal
 	Color3: Color3;
 	LocalTransparencyModifier: number;
 	Texture: string;
@@ -1923,6 +2015,7 @@ interface Rbx_Instance {
 
 // Texture
 interface Rbx_Texture extends Rbx_Decal {
+	Clone(): Texture
 	StudsPerTileU: number;
 	StudsPerTileV: number;
 }
@@ -1940,6 +2033,7 @@ interface Rbx_Instance {
 
 // Feature
 interface Rbx_Feature extends Rbx_Instance {
+	Clone(): Feature
 	FaceId: Enum.NormalId;
 	InOut: Enum.InOut;
 	LeftRight: Enum.LeftRight;
@@ -1959,6 +2053,7 @@ interface Rbx_Instance {
 
 // Hole
 interface Rbx_Hole extends Rbx_Feature {
+	Clone(): Hole
 }
 interface Hole extends Rbx_Hole, Base<Rbx_Hole>, AnyIndex {}
 declare class Hole {
@@ -1974,6 +2069,7 @@ interface Rbx_Instance {
 
 // MotorFeature
 interface Rbx_MotorFeature extends Rbx_Feature {
+	Clone(): MotorFeature
 }
 interface MotorFeature extends Rbx_MotorFeature, Base<Rbx_MotorFeature>, AnyIndex {}
 declare class MotorFeature {
@@ -1989,6 +2085,7 @@ interface Rbx_Instance {
 
 // Fire
 interface Rbx_Fire extends Rbx_Instance {
+	Clone(): Fire
 	/** The color of the base of the fire.  See SecondaryColor for more. */
 	Color: Color3;
 	Enabled: boolean;
@@ -2014,6 +2111,7 @@ interface Rbx_Instance {
 
 // FlagStandService
 interface Rbx_FlagStandService extends Rbx_Instance {
+	Clone(): FlagStandService
 }
 type FlagStandService = Rbx_FlagStandService & Base<Rbx_FlagStandService> & AnyIndex;
 interface Rbx_Instance {
@@ -2029,6 +2127,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // FlyweightService
 interface Rbx_FlyweightService extends Rbx_Instance {
+	Clone(): FlyweightService
 }
 type FlyweightService = Rbx_FlyweightService & Base<Rbx_FlyweightService> & AnyIndex;
 interface Rbx_Instance {
@@ -2044,6 +2143,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // CSGDictionaryService
 interface Rbx_CSGDictionaryService extends Rbx_FlyweightService {
+	Clone(): CSGDictionaryService
 }
 type CSGDictionaryService = Rbx_CSGDictionaryService & Base<Rbx_CSGDictionaryService> & AnyIndex;
 interface Rbx_Instance {
@@ -2059,6 +2159,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // NonReplicatedCSGDictionaryService
 interface Rbx_NonReplicatedCSGDictionaryService extends Rbx_FlyweightService {
+	Clone(): NonReplicatedCSGDictionaryService
 }
 type NonReplicatedCSGDictionaryService = Rbx_NonReplicatedCSGDictionaryService & Base<Rbx_NonReplicatedCSGDictionaryService> & AnyIndex;
 interface Rbx_Instance {
@@ -2074,6 +2175,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Folder
 interface Rbx_Folder extends Rbx_Instance {
+	Clone(): Folder
 }
 interface Folder extends Rbx_Folder, Base<Rbx_Folder>, AnyIndex {}
 /** An object that can be created to hold and organize objects */
@@ -2090,6 +2192,7 @@ interface Rbx_Instance {
 
 // ForceField
 interface Rbx_ForceField extends Rbx_Instance {
+	Clone(): ForceField
 	Visible: boolean;
 }
 interface ForceField extends Rbx_ForceField, Base<Rbx_ForceField>, AnyIndex {}
@@ -2107,6 +2210,7 @@ interface Rbx_Instance {
 
 // FriendService
 interface Rbx_FriendService extends Rbx_Instance {
+	Clone(): FriendService
 }
 type FriendService = Rbx_FriendService & Base<Rbx_FriendService> & AnyIndex;
 interface Rbx_Instance {
@@ -2122,6 +2226,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // FunctionalTest
 interface Rbx_FunctionalTest extends Rbx_Instance {
+	Clone(): FunctionalTest
 	Description: string;
 	Error(message?: string): void;
 	Failed(message?: string): void;
@@ -2144,6 +2249,7 @@ interface Rbx_Instance {
 
 // GamePassService
 interface Rbx_GamePassService extends Rbx_Instance {
+	Clone(): GamePassService
 }
 type GamePassService = Rbx_GamePassService & Base<Rbx_GamePassService> & AnyIndex;
 interface Rbx_Instance {
@@ -2159,6 +2265,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // GameSettings
 interface Rbx_GameSettings extends Rbx_Instance {
+	Clone(): GameSettings
 	AdditionalCoreIncludeDirs: string;
 	BubbleChatLifetime: number;
 	BubbleChatMaxBubbles: number;
@@ -2185,6 +2292,7 @@ interface Rbx_Instance {
 
 // GamepadService
 interface Rbx_GamepadService extends Rbx_Instance {
+	Clone(): GamepadService
 }
 type GamepadService = Rbx_GamepadService & Base<Rbx_GamepadService> & AnyIndex;
 interface Rbx_Instance {
@@ -2200,6 +2308,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Geometry
 interface Rbx_Geometry extends Rbx_Instance {
+	Clone(): Geometry
 }
 type Geometry = Rbx_Geometry & Base<Rbx_Geometry> & AnyIndex;
 interface Rbx_Instance {
@@ -2215,6 +2324,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // GlobalDataStore
 interface Rbx_GlobalDataStore extends Rbx_Instance {
+	Clone(): GlobalDataStore
 	/** Sets callback as a function to be executed any time the value associated with key is changed. It is important to disconnect the connection when the subscription to the key is no longer needed.  */
 	OnUpdate(key: string, callback: Function): RBXScriptConnection;
 	/** Returns the value of the entry in the DataStore with the given key */
@@ -2240,6 +2350,7 @@ interface Rbx_Instance {
 
 // OrderedDataStore
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
+	Clone(): OrderedDataStore
 }
 interface OrderedDataStore extends Rbx_OrderedDataStore, Base<Rbx_OrderedDataStore>, AnyIndex {}
 /** A type of DataStore where values must be positive integers. This makes OrderedDataStore suitable for leaderboard related scripting where you are required to order large amounts of data efficiently. */
@@ -2256,6 +2367,7 @@ interface Rbx_Instance {
 
 // GoogleAnalyticsConfiguration
 interface Rbx_GoogleAnalyticsConfiguration extends Rbx_Instance {
+	Clone(): GoogleAnalyticsConfiguration
 }
 type GoogleAnalyticsConfiguration = Rbx_GoogleAnalyticsConfiguration & Base<Rbx_GoogleAnalyticsConfiguration> & AnyIndex;
 interface Rbx_Instance {
@@ -2271,6 +2383,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // GroupService
 interface Rbx_GroupService extends Rbx_Instance {
+	Clone(): GroupService
 }
 type GroupService = Rbx_GroupService & Base<Rbx_GroupService> & AnyIndex;
 interface Rbx_Instance {
@@ -2286,6 +2399,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // GuiBase
 interface Rbx_GuiBase extends Rbx_Instance {
+	Clone(): GuiBase
 }
 interface GuiBase extends Rbx_GuiBase, Base<Rbx_GuiBase>, AnyIndex {}
 declare abstract class GuiBase {
@@ -2301,6 +2415,7 @@ interface Rbx_Instance {
 
 // GuiBase2d
 interface Rbx_GuiBase2d extends Rbx_GuiBase {
+	Clone(): GuiBase2d
 	/** A read-only Vector2 value that is the GuiObject's current position (x,y) in pixel space, from the top left corner of the GuiObject. */
 	readonly AbsolutePosition: Vector2;
 	readonly AbsoluteRotation: number;
@@ -2323,6 +2438,7 @@ interface Rbx_Instance {
 
 // GuiObject
 interface Rbx_GuiObject extends Rbx_GuiBase2d {
+	Clone(): GuiObject
 	/** If true, this GuiObject can fire mouse events and will pass them to any GuiObjects layered underneath, while false will do neither. */
 	Active: boolean;
 	AnchorPoint: Vector2;
@@ -2388,6 +2504,7 @@ interface Rbx_Instance {
 
 // Frame
 interface Rbx_Frame extends Rbx_GuiObject {
+	Clone(): Frame
 	/** Determines how a frame will look. Uses Enum.FrameStyle. [More info](http://wiki.roblox.com/index.php?title=API:Enum/FrameStyle) */
 	Style: Enum.FrameStyle;
 }
@@ -2406,6 +2523,7 @@ interface Rbx_Instance {
 
 // GuiButton
 interface Rbx_GuiButton extends Rbx_GuiObject {
+	Clone(): GuiButton
 	/** Determines whether a button changes color automatically when reacting to mouse events. */
 	AutoButtonColor: boolean;
 	/** Allows the mouse to be free in first person mode. If a button with this property set to true is visible, the mouse is 'free' in first person mode. */
@@ -2442,6 +2560,7 @@ interface Rbx_Instance {
 
 // ImageButton
 interface Rbx_ImageButton extends Rbx_GuiButton {
+	Clone(): ImageButton
 	HoverImage: string;
 	/** Specifies the asset id of the texture to display. [More info](http://wiki.roblox.com/index.php?title=API:Class/ImageButton/Image)  */
 	Image: string;
@@ -2474,6 +2593,7 @@ interface Rbx_Instance {
 
 // TextButton
 interface Rbx_TextButton extends Rbx_GuiButton {
+	Clone(): TextButton
 	Font: Enum.Font;
 	LineHeight: number;
 	readonly LocalizedText: string;
@@ -2506,6 +2626,7 @@ interface Rbx_Instance {
 
 // GuiLabel
 interface Rbx_GuiLabel extends Rbx_GuiObject {
+	Clone(): GuiLabel
 }
 interface GuiLabel extends Rbx_GuiLabel, Base<Rbx_GuiLabel>, AnyIndex {}
 declare abstract class GuiLabel {
@@ -2521,6 +2642,7 @@ interface Rbx_Instance {
 
 // ImageLabel
 interface Rbx_ImageLabel extends Rbx_GuiLabel {
+	Clone(): ImageLabel
 	/** Specifies the id of the texture to display. [More info](http://wiki.roblox.com/index.php?title=API:Class/ImageLabel/Image) */
 	Image: string;
 	ImageColor3: Color3;
@@ -2551,6 +2673,7 @@ interface Rbx_Instance {
 
 // TextLabel
 interface Rbx_TextLabel extends Rbx_GuiLabel {
+	Clone(): TextLabel
 	Font: Enum.Font;
 	LineHeight: number;
 	readonly LocalizedText: string;
@@ -2583,6 +2706,7 @@ interface Rbx_Instance {
 
 // ScrollingFrame
 interface Rbx_ScrollingFrame extends Rbx_GuiObject {
+	Clone(): ScrollingFrame
 	/** The size in pixels of the frame, without the scrollbars. */
 	readonly AbsoluteWindowSize: Vector2;
 	/** The "Down" image on the vertical scrollbar. Size of this is always ScrollBarThickness by ScrollBarThickness. This is also used as the "right" image on the horizontal scroll bar. */
@@ -2622,6 +2746,7 @@ interface Rbx_Instance {
 
 // TextBox
 interface Rbx_TextBox extends Rbx_GuiObject {
+	Clone(): TextBox
 	ClearTextOnFocus: boolean;
 	CursorPosition: number;
 	Font: Enum.Font;
@@ -2664,6 +2789,7 @@ interface Rbx_Instance {
 
 // ViewportFrame
 interface Rbx_ViewportFrame extends Rbx_GuiObject {
+	Clone(): ViewportFrame
 	/** Current Camera of children objects */
 	CurrentCamera: Camera;
 	/** The rendered image of the ViewportFrame will be mutiplied by this color */
@@ -2686,6 +2812,7 @@ interface Rbx_Instance {
 
 // LayerCollector
 interface Rbx_LayerCollector extends Rbx_GuiBase2d {
+	Clone(): LayerCollector
 	Enabled: boolean;
 	ResetOnSpawn: boolean;
 	ZIndexBehavior: Enum.ZIndexBehavior;
@@ -2705,6 +2832,7 @@ interface Rbx_Instance {
 
 // BillboardGui
 interface Rbx_BillboardGui extends Rbx_LayerCollector {
+	Clone(): BillboardGui
 	/** If true, this GuiObject can fire mouse events and will pass them to any GuiObjects layered underneath, while false will do neither. */
 	Active: boolean;
 	/** If true, billboard gui does not get occluded by 3D objects, but always renders on the screen. */
@@ -2739,6 +2867,7 @@ interface Rbx_Instance {
 
 // PluginGui
 interface Rbx_PluginGui extends Rbx_LayerCollector {
+	Clone(): PluginGui
 	Title: string;
 	BindToClose(callback?: Function): void;
 }
@@ -2756,6 +2885,7 @@ interface Rbx_Instance {
 
 // DockWidgetPluginGui
 interface Rbx_DockWidgetPluginGui extends Rbx_PluginGui {
+	Clone(): DockWidgetPluginGui
 	readonly HostWidgetWasRestored: boolean;
 }
 interface DockWidgetPluginGui extends Rbx_DockWidgetPluginGui, Base<Rbx_DockWidgetPluginGui>, AnyIndex {}
@@ -2772,6 +2902,7 @@ interface Rbx_Instance {
 
 // QWidgetPluginGui
 interface Rbx_QWidgetPluginGui extends Rbx_PluginGui {
+	Clone(): QWidgetPluginGui
 }
 interface QWidgetPluginGui extends Rbx_QWidgetPluginGui, Base<Rbx_QWidgetPluginGui>, AnyIndex {}
 declare abstract class QWidgetPluginGui {
@@ -2787,6 +2918,7 @@ interface Rbx_Instance {
 
 // ScreenGui
 interface Rbx_ScreenGui extends Rbx_LayerCollector {
+	Clone(): ScreenGui
 	DisplayOrder: number;
 	IgnoreGuiInset: boolean;
 }
@@ -2805,6 +2937,7 @@ interface Rbx_Instance {
 
 // GuiMain
 interface Rbx_GuiMain extends Rbx_ScreenGui {
+	Clone(): GuiMain
 }
 interface GuiMain extends Rbx_GuiMain, Base<Rbx_GuiMain>, AnyIndex {}
 /** Deprecated, please use ScreenGui */
@@ -2821,6 +2954,7 @@ interface Rbx_Instance {
 
 // SurfaceGui
 interface Rbx_SurfaceGui extends Rbx_LayerCollector {
+	Clone(): SurfaceGui
 	/** If true, this GuiObject can fire mouse events and will pass them to any GuiObjects layered underneath, while false will do neither. */
 	Active: boolean;
 	AlwaysOnTop: boolean;
@@ -2847,6 +2981,7 @@ interface Rbx_Instance {
 
 // GuiBase3d
 interface Rbx_GuiBase3d extends Rbx_GuiBase {
+	Clone(): GuiBase3d
 	Color3: Color3;
 	Transparency: number;
 	Visible: boolean;
@@ -2865,6 +3000,7 @@ interface Rbx_Instance {
 
 // FloorWire
 interface Rbx_FloorWire extends Rbx_GuiBase3d {
+	Clone(): FloorWire
 	/** Controls how the decals are positioned along the wire. [More info](http://wiki.roblox.com/index.php/CycleOffset) */
 	CycleOffset: number;
 	/** The object the FloorWire 'emits' from */
@@ -2897,6 +3033,7 @@ interface Rbx_Instance {
 
 // PVAdornment
 interface Rbx_PVAdornment extends Rbx_GuiBase3d {
+	Clone(): PVAdornment
 	Adornee: PVInstance;
 }
 interface PVAdornment extends Rbx_PVAdornment, Base<Rbx_PVAdornment>, AnyIndex {}
@@ -2913,6 +3050,7 @@ interface Rbx_Instance {
 
 // HandleAdornment
 interface Rbx_HandleAdornment extends Rbx_PVAdornment {
+	Clone(): HandleAdornment
 	AlwaysOnTop: boolean;
 	CFrame: CFrame;
 	SizeRelativeOffset: Vector3;
@@ -2936,6 +3074,7 @@ interface Rbx_Instance {
 
 // BoxHandleAdornment
 interface Rbx_BoxHandleAdornment extends Rbx_HandleAdornment {
+	Clone(): BoxHandleAdornment
 	Size: Vector3;
 }
 interface BoxHandleAdornment extends Rbx_BoxHandleAdornment, Base<Rbx_BoxHandleAdornment>, AnyIndex {}
@@ -2952,6 +3091,7 @@ interface Rbx_Instance {
 
 // ConeHandleAdornment
 interface Rbx_ConeHandleAdornment extends Rbx_HandleAdornment {
+	Clone(): ConeHandleAdornment
 	Height: number;
 	Radius: number;
 }
@@ -2969,6 +3109,7 @@ interface Rbx_Instance {
 
 // CylinderHandleAdornment
 interface Rbx_CylinderHandleAdornment extends Rbx_HandleAdornment {
+	Clone(): CylinderHandleAdornment
 	Height: number;
 	Radius: number;
 }
@@ -2986,6 +3127,7 @@ interface Rbx_Instance {
 
 // ImageHandleAdornment
 interface Rbx_ImageHandleAdornment extends Rbx_HandleAdornment {
+	Clone(): ImageHandleAdornment
 	Image: string;
 	Size: Vector2;
 }
@@ -3003,6 +3145,7 @@ interface Rbx_Instance {
 
 // LineHandleAdornment
 interface Rbx_LineHandleAdornment extends Rbx_HandleAdornment {
+	Clone(): LineHandleAdornment
 	Length: number;
 	Thickness: number;
 }
@@ -3020,6 +3163,7 @@ interface Rbx_Instance {
 
 // SphereHandleAdornment
 interface Rbx_SphereHandleAdornment extends Rbx_HandleAdornment {
+	Clone(): SphereHandleAdornment
 	Radius: number;
 }
 interface SphereHandleAdornment extends Rbx_SphereHandleAdornment, Base<Rbx_SphereHandleAdornment>, AnyIndex {}
@@ -3036,6 +3180,7 @@ interface Rbx_Instance {
 
 // ParabolaAdornment
 interface Rbx_ParabolaAdornment extends Rbx_PVAdornment {
+	Clone(): ParabolaAdornment
 }
 interface ParabolaAdornment extends Rbx_ParabolaAdornment, Base<Rbx_ParabolaAdornment>, AnyIndex {}
 declare class ParabolaAdornment {
@@ -3051,6 +3196,7 @@ interface Rbx_Instance {
 
 // SelectionBox
 interface Rbx_SelectionBox extends Rbx_PVAdornment {
+	Clone(): SelectionBox
 	LineThickness: number;
 	SurfaceColor3: Color3;
 	SurfaceTransparency: number;
@@ -3070,6 +3216,7 @@ interface Rbx_Instance {
 
 // SelectionSphere
 interface Rbx_SelectionSphere extends Rbx_PVAdornment {
+	Clone(): SelectionSphere
 	SurfaceColor3: Color3;
 	SurfaceTransparency: number;
 }
@@ -3088,6 +3235,7 @@ interface Rbx_Instance {
 
 // PartAdornment
 interface Rbx_PartAdornment extends Rbx_GuiBase3d {
+	Clone(): PartAdornment
 	Adornee: BasePart;
 }
 interface PartAdornment extends Rbx_PartAdornment, Base<Rbx_PartAdornment>, AnyIndex {}
@@ -3104,6 +3252,7 @@ interface Rbx_Instance {
 
 // HandlesBase
 interface Rbx_HandlesBase extends Rbx_PartAdornment {
+	Clone(): HandlesBase
 }
 interface HandlesBase extends Rbx_HandlesBase, Base<Rbx_HandlesBase>, AnyIndex {}
 declare abstract class HandlesBase {
@@ -3119,6 +3268,7 @@ interface Rbx_Instance {
 
 // ArcHandles
 interface Rbx_ArcHandles extends Rbx_HandlesBase {
+	Clone(): ArcHandles
 	Axes: Axes;
 	MouseButton1Down: RBXScriptSignal<(axis: Enum.Axis) => void>;
 	MouseButton1Up: RBXScriptSignal<(axis: Enum.Axis) => void>;
@@ -3141,6 +3291,7 @@ interface Rbx_Instance {
 
 // Handles
 interface Rbx_Handles extends Rbx_HandlesBase {
+	Clone(): Handles
 	Faces: Faces;
 	Style: Enum.HandlesStyle;
 	MouseButton1Down: RBXScriptSignal<(face: Enum.NormalId) => void>;
@@ -3164,6 +3315,7 @@ interface Rbx_Instance {
 
 // SurfaceSelection
 interface Rbx_SurfaceSelection extends Rbx_PartAdornment {
+	Clone(): SurfaceSelection
 	TargetSurface: Enum.NormalId;
 }
 interface SurfaceSelection extends Rbx_SurfaceSelection, Base<Rbx_SurfaceSelection>, AnyIndex {}
@@ -3181,6 +3333,7 @@ interface Rbx_Instance {
 
 // SelectionLasso
 interface Rbx_SelectionLasso extends Rbx_GuiBase3d {
+	Clone(): SelectionLasso
 	Humanoid: Humanoid;
 }
 interface SelectionLasso extends Rbx_SelectionLasso, Base<Rbx_SelectionLasso>, AnyIndex {}
@@ -3197,6 +3350,7 @@ interface Rbx_Instance {
 
 // SelectionPartLasso
 interface Rbx_SelectionPartLasso extends Rbx_SelectionLasso {
+	Clone(): SelectionPartLasso
 	Part: BasePart;
 }
 interface SelectionPartLasso extends Rbx_SelectionPartLasso, Base<Rbx_SelectionPartLasso>, AnyIndex {}
@@ -3214,6 +3368,7 @@ interface Rbx_Instance {
 
 // SelectionPointLasso
 interface Rbx_SelectionPointLasso extends Rbx_SelectionLasso {
+	Clone(): SelectionPointLasso
 	Point: Vector3;
 }
 interface SelectionPointLasso extends Rbx_SelectionPointLasso, Base<Rbx_SelectionPointLasso>, AnyIndex {}
@@ -3231,6 +3386,7 @@ interface Rbx_Instance {
 
 // GuiItem
 interface Rbx_GuiItem extends Rbx_Instance {
+	Clone(): GuiItem
 }
 interface GuiItem extends Rbx_GuiItem, Base<Rbx_GuiItem>, AnyIndex {}
 declare abstract class GuiItem {
@@ -3246,6 +3402,7 @@ interface Rbx_Instance {
 
 // Backpack
 interface Rbx_Backpack extends Rbx_GuiItem {
+	Clone(): Backpack
 }
 interface Backpack extends Rbx_Backpack, Base<Rbx_Backpack>, AnyIndex {}
 declare class Backpack {
@@ -3261,6 +3418,7 @@ interface Rbx_Instance {
 
 // BackpackItem
 interface Rbx_BackpackItem extends Rbx_GuiItem {
+	Clone(): BackpackItem
 	TextureId: string;
 }
 interface BackpackItem extends Rbx_BackpackItem, Base<Rbx_BackpackItem>, AnyIndex {}
@@ -3277,6 +3435,7 @@ interface Rbx_Instance {
 
 // HopperBin
 interface Rbx_HopperBin extends Rbx_BackpackItem {
+	Clone(): HopperBin
 	Active: boolean;
 	BinType: Enum.BinType;
 	Deselected: RBXScriptSignal<() => void>;
@@ -3296,6 +3455,7 @@ interface Rbx_Instance {
 
 // Tool
 interface Rbx_Tool extends Rbx_BackpackItem {
+	Clone(): Tool
 	CanBeDropped: boolean;
 	Enabled: boolean;
 	Grip: CFrame;
@@ -3326,6 +3486,7 @@ interface Rbx_Instance {
 
 // Flag
 interface Rbx_Flag extends Rbx_Tool {
+	Clone(): Flag
 	/** The Team this flag is for. Corresponds with the TeamColors in the Teams service. */
 	TeamColor: BrickColor;
 }
@@ -3343,6 +3504,7 @@ interface Rbx_Instance {
 
 // ButtonBindingWidget
 interface Rbx_ButtonBindingWidget extends Rbx_GuiItem {
+	Clone(): ButtonBindingWidget
 }
 interface ButtonBindingWidget extends Rbx_ButtonBindingWidget, Base<Rbx_ButtonBindingWidget>, AnyIndex {}
 declare abstract class ButtonBindingWidget {
@@ -3358,6 +3520,7 @@ interface Rbx_Instance {
 
 // GuiRoot
 interface Rbx_GuiRoot extends Rbx_GuiItem {
+	Clone(): GuiRoot
 }
 interface GuiRoot extends Rbx_GuiRoot, Base<Rbx_GuiRoot>, AnyIndex {}
 declare abstract class GuiRoot {
@@ -3373,6 +3536,7 @@ interface Rbx_Instance {
 
 // Hopper
 interface Rbx_Hopper extends Rbx_GuiItem {
+	Clone(): Hopper
 }
 type Hopper = Rbx_Hopper & Base<Rbx_Hopper> & AnyIndex;
 interface Rbx_Instance {
@@ -3388,6 +3552,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // StarterPack
 interface Rbx_StarterPack extends Rbx_GuiItem {
+	Clone(): StarterPack
 }
 type StarterPack = Rbx_StarterPack & Base<Rbx_StarterPack> & AnyIndex;
 interface Rbx_Instance {
@@ -3403,6 +3568,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // GuiService
 interface Rbx_GuiService extends Rbx_Instance {
+	Clone(): GuiService
 	AutoSelectGuiEnabled: boolean;
 	CoreGuiNavigationEnabled: boolean;
 	GuiNavigationEnabled: boolean;
@@ -3427,6 +3593,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // GuidRegistryService
 interface Rbx_GuidRegistryService extends Rbx_Instance {
+	Clone(): GuidRegistryService
 }
 type GuidRegistryService = Rbx_GuidRegistryService & Base<Rbx_GuidRegistryService> & AnyIndex;
 interface Rbx_Instance {
@@ -3442,6 +3609,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // HapticService
 interface Rbx_HapticService extends Rbx_Instance {
+	Clone(): HapticService
 	IsMotorSupported(inputType: Enum.UserInputType, vibrationMotor: Enum.VibrationMotor): boolean;
 	IsVibrationSupported(inputType: Enum.UserInputType): boolean;
 }
@@ -3459,6 +3627,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // HttpRbxApiService
 interface Rbx_HttpRbxApiService extends Rbx_Instance {
+	Clone(): HttpRbxApiService
 }
 type HttpRbxApiService = Rbx_HttpRbxApiService & Base<Rbx_HttpRbxApiService> & AnyIndex;
 interface Rbx_Instance {
@@ -3474,6 +3643,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // HttpRequest
 interface Rbx_HttpRequest extends Rbx_Instance {
+	Clone(): HttpRequest
 }
 interface HttpRequest extends Rbx_HttpRequest, Base<Rbx_HttpRequest>, AnyIndex {}
 declare abstract class HttpRequest {
@@ -3489,6 +3659,7 @@ interface Rbx_Instance {
 
 // HttpService
 interface Rbx_HttpService extends Rbx_Instance {
+	Clone(): HttpService
 	GenerateGUID(wrapInCurlyBraces?: boolean): string;
 	JSONDecode(input: string): unknown;
 	JSONEncode(input?: any): string;
@@ -3508,6 +3679,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Humanoid
 interface Rbx_Humanoid extends Rbx_Instance {
+	Clone(): Humanoid
 	AutoJumpEnabled: boolean;
 	AutoRotate: boolean;
 	AutomaticScalingEnabled: boolean;
@@ -3582,6 +3754,7 @@ interface Rbx_Instance {
 
 // HumanoidDescription
 interface Rbx_HumanoidDescription extends Rbx_Instance {
+	Clone(): HumanoidDescription
 	BackAccessory: string;
 	BodyTypeScale: number;
 	ClimbAnimation: number;
@@ -3635,6 +3808,7 @@ interface Rbx_Instance {
 
 // InputObject
 interface Rbx_InputObject extends Rbx_Instance {
+	Clone(): InputObject
 	Delta: Vector3;
 	/** An enum that describes what kind of input is being pressed. For types of input like Keyboard, this describes what key was pressed. For input like mousebutton, this provides no additional information. */
 	KeyCode: Enum.KeyCode;
@@ -3660,6 +3834,7 @@ interface Rbx_Instance {
 
 // InsertService
 interface Rbx_InsertService extends Rbx_Instance {
+	Clone(): InsertService
 	GetLatestAssetVersionAsync(assetId: number): number;
 }
 type InsertService = Rbx_InsertService & Base<Rbx_InsertService> & AnyIndex;
@@ -3676,6 +3851,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // JointInstance
 interface Rbx_JointInstance extends Rbx_Instance {
+	Clone(): JointInstance
 	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
 	readonly Active: boolean;
 	C0: CFrame;
@@ -3697,6 +3873,7 @@ interface Rbx_Instance {
 
 // DynamicRotate
 interface Rbx_DynamicRotate extends Rbx_JointInstance {
+	Clone(): DynamicRotate
 	BaseAngle: number;
 }
 interface DynamicRotate extends Rbx_DynamicRotate, Base<Rbx_DynamicRotate>, AnyIndex {}
@@ -3713,6 +3890,7 @@ interface Rbx_Instance {
 
 // RotateP
 interface Rbx_RotateP extends Rbx_DynamicRotate {
+	Clone(): RotateP
 }
 interface RotateP extends Rbx_RotateP, Base<Rbx_RotateP>, AnyIndex {}
 declare class RotateP {
@@ -3728,6 +3906,7 @@ interface Rbx_Instance {
 
 // RotateV
 interface Rbx_RotateV extends Rbx_DynamicRotate {
+	Clone(): RotateV
 }
 interface RotateV extends Rbx_RotateV, Base<Rbx_RotateV>, AnyIndex {}
 declare class RotateV {
@@ -3743,6 +3922,7 @@ interface Rbx_Instance {
 
 // Glue
 interface Rbx_Glue extends Rbx_JointInstance {
+	Clone(): Glue
 	F0: Vector3;
 	F1: Vector3;
 	F2: Vector3;
@@ -3762,6 +3942,7 @@ interface Rbx_Instance {
 
 // ManualSurfaceJointInstance
 interface Rbx_ManualSurfaceJointInstance extends Rbx_JointInstance {
+	Clone(): ManualSurfaceJointInstance
 }
 interface ManualSurfaceJointInstance extends Rbx_ManualSurfaceJointInstance, Base<Rbx_ManualSurfaceJointInstance>, AnyIndex {}
 declare abstract class ManualSurfaceJointInstance {
@@ -3777,6 +3958,7 @@ interface Rbx_Instance {
 
 // ManualGlue
 interface Rbx_ManualGlue extends Rbx_ManualSurfaceJointInstance {
+	Clone(): ManualGlue
 }
 interface ManualGlue extends Rbx_ManualGlue, Base<Rbx_ManualGlue>, AnyIndex {}
 declare class ManualGlue {
@@ -3792,6 +3974,7 @@ interface Rbx_Instance {
 
 // ManualWeld
 interface Rbx_ManualWeld extends Rbx_ManualSurfaceJointInstance {
+	Clone(): ManualWeld
 }
 interface ManualWeld extends Rbx_ManualWeld, Base<Rbx_ManualWeld>, AnyIndex {}
 declare class ManualWeld {
@@ -3807,6 +3990,7 @@ interface Rbx_Instance {
 
 // Motor
 interface Rbx_Motor extends Rbx_JointInstance {
+	Clone(): Motor
 	CurrentAngle: number;
 	DesiredAngle: number;
 	MaxVelocity: number;
@@ -3826,6 +4010,7 @@ interface Rbx_Instance {
 
 // Motor6D
 interface Rbx_Motor6D extends Rbx_Motor {
+	Clone(): Motor6D
 	Transform: CFrame;
 }
 interface Motor6D extends Rbx_Motor6D, Base<Rbx_Motor6D>, AnyIndex {}
@@ -3842,6 +4027,7 @@ interface Rbx_Instance {
 
 // Rotate
 interface Rbx_Rotate extends Rbx_JointInstance {
+	Clone(): Rotate
 }
 interface Rotate extends Rbx_Rotate, Base<Rbx_Rotate>, AnyIndex {}
 declare class Rotate {
@@ -3857,6 +4043,7 @@ interface Rbx_Instance {
 
 // Snap
 interface Rbx_Snap extends Rbx_JointInstance {
+	Clone(): Snap
 }
 interface Snap extends Rbx_Snap, Base<Rbx_Snap>, AnyIndex {}
 declare class Snap {
@@ -3872,6 +4059,7 @@ interface Rbx_Instance {
 
 // VelocityMotor
 interface Rbx_VelocityMotor extends Rbx_JointInstance {
+	Clone(): VelocityMotor
 	CurrentAngle: number;
 	DesiredAngle: number;
 	Hole: Hole;
@@ -3891,6 +4079,7 @@ interface Rbx_Instance {
 
 // Weld
 interface Rbx_Weld extends Rbx_JointInstance {
+	Clone(): Weld
 }
 interface Weld extends Rbx_Weld, Base<Rbx_Weld>, AnyIndex {}
 declare class Weld {
@@ -3906,6 +4095,7 @@ interface Rbx_Instance {
 
 // JointsService
 interface Rbx_JointsService extends Rbx_Instance {
+	Clone(): JointsService
 	ClearJoinAfterMoveJoints(): void;
 	CreateJoinAfterMoveJoints(): void;
 	SetJoinAfterMoveInstance(joinInstance: Instance): void;
@@ -3926,6 +4116,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // KeyboardService
 interface Rbx_KeyboardService extends Rbx_Instance {
+	Clone(): KeyboardService
 }
 type KeyboardService = Rbx_KeyboardService & Base<Rbx_KeyboardService> & AnyIndex;
 interface Rbx_Instance {
@@ -3941,6 +4132,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Keyframe
 interface Rbx_Keyframe extends Rbx_Instance {
+	Clone(): Keyframe
 	Time: number;
 	AddMarker(marker: Instance): void;
 	GetMarkers(): Array<Instance>;
@@ -3961,6 +4153,7 @@ interface Rbx_Instance {
 
 // KeyframeMarker
 interface Rbx_KeyframeMarker extends Rbx_Instance {
+	Clone(): KeyframeMarker
 	Value: string;
 }
 interface KeyframeMarker extends Rbx_KeyframeMarker, Base<Rbx_KeyframeMarker>, AnyIndex {}
@@ -3978,6 +4171,7 @@ interface Rbx_Instance {
 
 // KeyframeSequence
 interface Rbx_KeyframeSequence extends Rbx_Instance {
+	Clone(): KeyframeSequence
 	Loop: boolean;
 	Priority: Enum.AnimationPriority;
 }
@@ -3995,6 +4189,7 @@ interface Rbx_Instance {
 
 // KeyframeSequenceProvider
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
+	Clone(): KeyframeSequenceProvider
 }
 type KeyframeSequenceProvider = Rbx_KeyframeSequenceProvider & Base<Rbx_KeyframeSequenceProvider> & AnyIndex;
 interface Rbx_Instance {
@@ -4010,6 +4205,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Light
 interface Rbx_Light extends Rbx_Instance {
+	Clone(): Light
 	Brightness: number;
 	Color: Color3;
 	Enabled: boolean;
@@ -4030,6 +4226,7 @@ interface Rbx_Instance {
 
 // PointLight
 interface Rbx_PointLight extends Rbx_Light {
+	Clone(): PointLight
 	Range: number;
 }
 interface PointLight extends Rbx_PointLight, Base<Rbx_PointLight>, AnyIndex {}
@@ -4047,6 +4244,7 @@ interface Rbx_Instance {
 
 // SpotLight
 interface Rbx_SpotLight extends Rbx_Light {
+	Clone(): SpotLight
 	Angle: number;
 	Face: Enum.NormalId;
 	Range: number;
@@ -4066,6 +4264,7 @@ interface Rbx_Instance {
 
 // SurfaceLight
 interface Rbx_SurfaceLight extends Rbx_Light {
+	Clone(): SurfaceLight
 	Angle: number;
 	Face: Enum.NormalId;
 	Range: number;
@@ -4085,6 +4284,7 @@ interface Rbx_Instance {
 
 // Lighting
 interface Rbx_Lighting extends Rbx_Instance {
+	Clone(): Lighting
 	/** The hue of the global lighting.  Changing this changes the color tint of all objects in the Workspace. */
 	Ambient: Color3;
 	/** How much global light each Part in the Workspace receives. Standard range is 0 to 2 (0 being little light), but can be increased all the way to 10 (colors start to be appear very different at this value). */
@@ -4139,6 +4339,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // LocalAsset
 interface Rbx_LocalAsset extends Rbx_Instance {
+	Clone(): LocalAsset
 }
 interface LocalAsset extends Rbx_LocalAsset, Base<Rbx_LocalAsset>, AnyIndex {}
 declare abstract class LocalAsset {
@@ -4154,6 +4355,7 @@ interface Rbx_Instance {
 
 // LocalStorageService
 interface Rbx_LocalStorageService extends Rbx_Instance {
+	Clone(): LocalStorageService
 }
 type LocalStorageService = Rbx_LocalStorageService & Base<Rbx_LocalStorageService> & AnyIndex;
 interface Rbx_Instance {
@@ -4169,6 +4371,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // AppStorageService
 interface Rbx_AppStorageService extends Rbx_LocalStorageService {
+	Clone(): AppStorageService
 }
 type AppStorageService = Rbx_AppStorageService & Base<Rbx_AppStorageService> & AnyIndex;
 interface Rbx_Instance {
@@ -4184,6 +4387,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // UserStorageService
 interface Rbx_UserStorageService extends Rbx_LocalStorageService {
+	Clone(): UserStorageService
 }
 type UserStorageService = Rbx_UserStorageService & Base<Rbx_UserStorageService> & AnyIndex;
 interface Rbx_Instance {
@@ -4199,6 +4403,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // LocalizationService
 interface Rbx_LocalizationService extends Rbx_Instance {
+	Clone(): LocalizationService
 	readonly RobloxLocaleId: string;
 	readonly SystemLocaleId: string;
 	GetCorescriptLocalizations(): Array<Instance>;
@@ -4219,6 +4424,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // LocalizationTable
 interface Rbx_LocalizationTable extends Rbx_Instance {
+	Clone(): LocalizationTable
 	SourceLocaleId: string;
 	RemoveEntry(key: string, source: string, context: string): void;
 	RemoveEntryValue(key: string, source: string, context: string, localeId: string): void;
@@ -4245,6 +4451,7 @@ interface Rbx_Instance {
 
 // LogService
 interface Rbx_LogService extends Rbx_Instance {
+	Clone(): LogService
 	MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
 }
 type LogService = Rbx_LogService & Base<Rbx_LogService> & AnyIndex;
@@ -4261,6 +4468,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // LoginService
 interface Rbx_LoginService extends Rbx_Instance {
+	Clone(): LoginService
 }
 type LoginService = Rbx_LoginService & Base<Rbx_LoginService> & AnyIndex;
 interface Rbx_Instance {
@@ -4276,6 +4484,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // LuaSettings
 interface Rbx_LuaSettings extends Rbx_Instance {
+	Clone(): LuaSettings
 	AreScriptStartsReported: boolean;
 	DefaultWaitTime: number;
 	GcFrequency: number;
@@ -4298,6 +4507,7 @@ interface Rbx_Instance {
 
 // LuaSourceContainer
 interface Rbx_LuaSourceContainer extends Rbx_Instance {
+	Clone(): LuaSourceContainer
 }
 interface LuaSourceContainer extends Rbx_LuaSourceContainer, Base<Rbx_LuaSourceContainer>, AnyIndex {}
 declare abstract class LuaSourceContainer {
@@ -4313,6 +4523,7 @@ interface Rbx_Instance {
 
 // BaseScript
 interface Rbx_BaseScript extends Rbx_LuaSourceContainer {
+	Clone(): BaseScript
 	Disabled: boolean;
 	LinkedSource: string;
 }
@@ -4330,6 +4541,7 @@ interface Rbx_Instance {
 
 // CoreScript
 interface Rbx_CoreScript extends Rbx_BaseScript {
+	Clone(): CoreScript
 }
 interface CoreScript extends Rbx_CoreScript, Base<Rbx_CoreScript>, AnyIndex {}
 declare abstract class CoreScript {
@@ -4345,6 +4557,7 @@ interface Rbx_Instance {
 
 // Script
 interface Rbx_Script extends Rbx_BaseScript {
+	Clone(): Script
 }
 interface Script extends Rbx_Script, Base<Rbx_Script>, AnyIndex {}
 declare class Script {
@@ -4360,6 +4573,7 @@ interface Rbx_Instance {
 
 // LocalScript
 interface Rbx_LocalScript extends Rbx_Script {
+	Clone(): LocalScript
 }
 interface LocalScript extends Rbx_LocalScript, Base<Rbx_LocalScript>, AnyIndex {}
 /** A script that runs on clients, NOT servers.  LocalScripts can only run when parented under one of the following:
@@ -4382,6 +4596,7 @@ interface Rbx_Instance {
 
 // ModuleScript
 interface Rbx_ModuleScript extends Rbx_LuaSourceContainer {
+	Clone(): ModuleScript
 	LinkedSource: string;
 }
 interface ModuleScript extends Rbx_ModuleScript, Base<Rbx_ModuleScript>, AnyIndex {}
@@ -4399,6 +4614,7 @@ interface Rbx_Instance {
 
 // LuaWebService
 interface Rbx_LuaWebService extends Rbx_Instance {
+	Clone(): LuaWebService
 }
 type LuaWebService = Rbx_LuaWebService & Base<Rbx_LuaWebService> & AnyIndex;
 interface Rbx_Instance {
@@ -4414,6 +4630,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // MarketplaceService
 interface Rbx_MarketplaceService extends Rbx_Instance {
+	Clone(): MarketplaceService
 	GetDeveloperProductsAsync(): Instance | undefined;
 	UserOwnsGamePassAsync(userId: number, gamePassId: number): boolean;
 }
@@ -4431,6 +4648,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Message
 interface Rbx_Message extends Rbx_Instance {
+	Clone(): Message
 	Text: string;
 }
 interface Message extends Rbx_Message, Base<Rbx_Message>, AnyIndex {}
@@ -4447,6 +4665,7 @@ interface Rbx_Instance {
 
 // Hint
 interface Rbx_Hint extends Rbx_Message {
+	Clone(): Hint
 }
 interface Hint extends Rbx_Hint, Base<Rbx_Hint>, AnyIndex {}
 declare class Hint {
@@ -4462,6 +4681,7 @@ interface Rbx_Instance {
 
 // MessagingService
 interface Rbx_MessagingService extends Rbx_Instance {
+	Clone(): MessagingService
 	PublishAsync(topic: string, message?: any): void;
 	SubscribeAsync(topic: string, callback: Function): RBXScriptConnection;
 }
@@ -4479,6 +4699,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Mouse
 interface Rbx_Mouse extends Rbx_Instance {
+	Clone(): Mouse
 	/** The CoordinateFrame of where the Mouse ray is currently hitting a 3D object in the Workspace.  If the mouse is not over any 3D objects in the Workspace, this property is nil. */
 	readonly Hit: CFrame;
 	/** The current Texture of the Mouse Icon. Stored as a string, for more information on how to format the string [go here](http://wiki.roblox.com/index.php/Content) */
@@ -4533,6 +4754,7 @@ interface Rbx_Instance {
 
 // PlayerMouse
 interface Rbx_PlayerMouse extends Rbx_Mouse {
+	Clone(): PlayerMouse
 }
 interface PlayerMouse extends Rbx_PlayerMouse, Base<Rbx_PlayerMouse>, AnyIndex {}
 declare abstract class PlayerMouse {
@@ -4548,6 +4770,7 @@ interface Rbx_Instance {
 
 // PluginMouse
 interface Rbx_PluginMouse extends Rbx_Mouse {
+	Clone(): PluginMouse
 }
 interface PluginMouse extends Rbx_PluginMouse, Base<Rbx_PluginMouse>, AnyIndex {}
 declare abstract class PluginMouse {
@@ -4563,6 +4786,7 @@ interface Rbx_Instance {
 
 // MouseService
 interface Rbx_MouseService extends Rbx_Instance {
+	Clone(): MouseService
 }
 type MouseService = Rbx_MouseService & Base<Rbx_MouseService> & AnyIndex;
 interface Rbx_Instance {
@@ -4578,6 +4802,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // NetworkMarker
 interface Rbx_NetworkMarker extends Rbx_Instance {
+	Clone(): NetworkMarker
 	Received: RBXScriptSignal<() => void>;
 }
 interface NetworkMarker extends Rbx_NetworkMarker, Base<Rbx_NetworkMarker>, AnyIndex {}
@@ -4594,6 +4819,7 @@ interface Rbx_Instance {
 
 // NetworkPeer
 interface Rbx_NetworkPeer extends Rbx_Instance {
+	Clone(): NetworkPeer
 }
 interface NetworkPeer extends Rbx_NetworkPeer, Base<Rbx_NetworkPeer>, AnyIndex {}
 declare abstract class NetworkPeer {
@@ -4609,6 +4835,7 @@ interface Rbx_Instance {
 
 // NetworkClient
 interface Rbx_NetworkClient extends Rbx_NetworkPeer {
+	Clone(): NetworkClient
 	Ticket: string;
 	ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: Instance) => void>;
 	ConnectionFailed: RBXScriptSignal<(peer: string, code: number, reason: string) => void>;
@@ -4628,6 +4855,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // NetworkServer
 interface Rbx_NetworkServer extends Rbx_NetworkPeer {
+	Clone(): NetworkServer
 	readonly Port: number;
 }
 type NetworkServer = Rbx_NetworkServer & Base<Rbx_NetworkServer> & AnyIndex;
@@ -4644,6 +4872,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // NetworkReplicator
 interface Rbx_NetworkReplicator extends Rbx_Instance {
+	Clone(): NetworkReplicator
 	GetPlayer(): Instance | undefined;
 }
 interface NetworkReplicator extends Rbx_NetworkReplicator, Base<Rbx_NetworkReplicator>, AnyIndex {}
@@ -4660,6 +4889,7 @@ interface Rbx_Instance {
 
 // ClientReplicator
 interface Rbx_ClientReplicator extends Rbx_NetworkReplicator {
+	Clone(): ClientReplicator
 }
 interface ClientReplicator extends Rbx_ClientReplicator, Base<Rbx_ClientReplicator>, AnyIndex {}
 declare abstract class ClientReplicator {
@@ -4675,6 +4905,7 @@ interface Rbx_Instance {
 
 // ServerReplicator
 interface Rbx_ServerReplicator extends Rbx_NetworkReplicator {
+	Clone(): ServerReplicator
 }
 interface ServerReplicator extends Rbx_ServerReplicator, Base<Rbx_ServerReplicator>, AnyIndex {}
 declare abstract class ServerReplicator {
@@ -4690,6 +4921,7 @@ interface Rbx_Instance {
 
 // NetworkSettings
 interface Rbx_NetworkSettings extends Rbx_Instance {
+	Clone(): NetworkSettings
 	ArePhysicsRejectionsReported: boolean;
 	ClientPhysicsSendRate: number;
 	DataGCRate: number;
@@ -4736,6 +4968,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // NotificationService
 interface Rbx_NotificationService extends Rbx_Instance {
+	Clone(): NotificationService
 }
 type NotificationService = Rbx_NotificationService & Base<Rbx_NotificationService> & AnyIndex;
 interface Rbx_Instance {
@@ -4751,6 +4984,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // PVInstance
 interface Rbx_PVInstance extends Rbx_Instance {
+	Clone(): PVInstance
 }
 interface PVInstance extends Rbx_PVInstance, Base<Rbx_PVInstance>, AnyIndex {}
 declare abstract class PVInstance {
@@ -4766,6 +5000,7 @@ interface Rbx_Instance {
 
 // BasePart
 interface Rbx_BasePart extends Rbx_PVInstance {
+	Clone(): BasePart
 	/** Determines whether or not physics acts upon the Part.  If true, part stays 'Anchored' in space, not moving regardless of any collision/forces acting upon it.  If false, physics works normally on the part. */
 	Anchored: boolean;
 	BackParamA: number;
@@ -4855,6 +5090,7 @@ interface Rbx_Instance {
 
 // CornerWedgePart
 interface Rbx_CornerWedgePart extends Rbx_BasePart {
+	Clone(): CornerWedgePart
 }
 interface CornerWedgePart extends Rbx_CornerWedgePart, Base<Rbx_CornerWedgePart>, AnyIndex {}
 /** A CornerWedge Part */
@@ -4871,6 +5107,7 @@ interface Rbx_Instance {
 
 // FormFactorPart
 interface Rbx_FormFactorPart extends Rbx_BasePart {
+	Clone(): FormFactorPart
 }
 interface FormFactorPart extends Rbx_FormFactorPart, Base<Rbx_FormFactorPart>, AnyIndex {}
 declare abstract class FormFactorPart {
@@ -4886,6 +5123,7 @@ interface Rbx_Instance {
 
 // Part
 interface Rbx_Part extends Rbx_FormFactorPart {
+	Clone(): Part
 	Shape: Enum.PartType;
 }
 interface Part extends Rbx_Part, Base<Rbx_Part>, AnyIndex {}
@@ -4903,6 +5141,7 @@ interface Rbx_Instance {
 
 // FlagStand
 interface Rbx_FlagStand extends Rbx_Part {
+	Clone(): FlagStand
 	TeamColor: BrickColor;
 }
 interface FlagStand extends Rbx_FlagStand, Base<Rbx_FlagStand>, AnyIndex {}
@@ -4919,6 +5158,7 @@ interface Rbx_Instance {
 
 // Platform
 interface Rbx_Platform extends Rbx_Part {
+	Clone(): Platform
 }
 interface Platform extends Rbx_Platform, Base<Rbx_Platform>, AnyIndex {}
 /** Equivalent to a seat, except that the character stands up rather than sits down. */
@@ -4935,6 +5175,7 @@ interface Rbx_Instance {
 
 // Seat
 interface Rbx_Seat extends Rbx_Part {
+	Clone(): Seat
 	Disabled: boolean;
 	readonly Occupant: Humanoid;
 	Sit(humanoid: Instance): void;
@@ -4953,6 +5194,7 @@ interface Rbx_Instance {
 
 // SkateboardPlatform
 interface Rbx_SkateboardPlatform extends Rbx_Part {
+	Clone(): SkateboardPlatform
 	readonly Controller: SkateboardController;
 	readonly ControllingHumanoid: Humanoid;
 	Steer: number;
@@ -4977,6 +5219,7 @@ interface Rbx_Instance {
 
 // SpawnLocation
 interface Rbx_SpawnLocation extends Rbx_Part {
+	Clone(): SpawnLocation
 	AllowTeamChangeOnTouch: boolean;
 	Duration: number;
 	Enabled: boolean;
@@ -4997,6 +5240,7 @@ interface Rbx_Instance {
 
 // WedgePart
 interface Rbx_WedgePart extends Rbx_FormFactorPart {
+	Clone(): WedgePart
 }
 interface WedgePart extends Rbx_WedgePart, Base<Rbx_WedgePart>, AnyIndex {}
 /** A Wedge Part */
@@ -5013,6 +5257,7 @@ interface Rbx_Instance {
 
 // MeshPart
 interface Rbx_MeshPart extends Rbx_BasePart {
+	Clone(): MeshPart
 	readonly MeshId: string;
 	TextureID: string;
 }
@@ -5031,6 +5276,7 @@ interface Rbx_Instance {
 
 // PartOperation
 interface Rbx_PartOperation extends Rbx_BasePart {
+	Clone(): PartOperation
 	readonly RenderFidelity: Enum.RenderFidelity;
 	readonly TriangleCount: number;
 	UsePartColor: boolean;
@@ -5049,6 +5295,7 @@ interface Rbx_Instance {
 
 // NegateOperation
 interface Rbx_NegateOperation extends Rbx_PartOperation {
+	Clone(): NegateOperation
 }
 interface NegateOperation extends Rbx_NegateOperation, Base<Rbx_NegateOperation>, AnyIndex {}
 /** A NegateOperation can be used to create holes in other parts */
@@ -5065,6 +5312,7 @@ interface Rbx_Instance {
 
 // UnionOperation
 interface Rbx_UnionOperation extends Rbx_PartOperation {
+	Clone(): UnionOperation
 }
 interface UnionOperation extends Rbx_UnionOperation, Base<Rbx_UnionOperation>, AnyIndex {}
 /** A UnionOperation is a union of multiple parts */
@@ -5081,6 +5329,7 @@ interface Rbx_Instance {
 
 // Terrain
 interface Rbx_Terrain extends Rbx_BasePart {
+	Clone(): Terrain
 	readonly MaxExtents: Region3int16;
 	WaterColor: Color3;
 	WaterReflectance: number;
@@ -5115,6 +5364,7 @@ interface Rbx_Instance {
 
 // TrussPart
 interface Rbx_TrussPart extends Rbx_BasePart {
+	Clone(): TrussPart
 	Style: Enum.Style;
 }
 interface TrussPart extends Rbx_TrussPart, Base<Rbx_TrussPart>, AnyIndex {}
@@ -5132,6 +5382,7 @@ interface Rbx_Instance {
 
 // VehicleSeat
 interface Rbx_VehicleSeat extends Rbx_BasePart {
+	Clone(): VehicleSeat
 	readonly AreHingesDetected: number;
 	Disabled: boolean;
 	HeadsUpDisplay: boolean;
@@ -5160,6 +5411,7 @@ interface Rbx_Instance {
 
 // Model
 interface Rbx_Model extends Rbx_PVInstance {
+	Clone(): Model
 	/** A Part that serves as a reference for the Model's CFrame. Used in conjunction with GetModelPrimaryPartCFrame and SetModelPrimaryPartCFrame. Use this to rotate/translate all Parts relative to the PrimaryPart. */
 	PrimaryPart: BasePart;
 	/** Breaks all surface joints contained within */
@@ -5191,6 +5443,7 @@ interface Rbx_Instance {
 
 // Status
 interface Rbx_Status extends Rbx_Model {
+	Clone(): Status
 }
 interface Status extends Rbx_Status, Base<Rbx_Status>, AnyIndex {}
 declare abstract class Status {
@@ -5206,6 +5459,7 @@ interface Rbx_Instance {
 
 // Workspace
 interface Rbx_Workspace extends Rbx_Model {
+	Clone(): Workspace
 	AllowThirdPartySales: boolean;
 	CurrentCamera: Camera;
 	DistributedGameTime: number;
@@ -5242,6 +5496,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // PackageLink
 interface Rbx_PackageLink extends Rbx_Instance {
+	Clone(): PackageLink
 	readonly PackageId: string;
 	readonly VersionNumber: number;
 }
@@ -5295,6 +5550,7 @@ interface Rbx_Instance {
 
 // InventoryPages
 interface Rbx_InventoryPages extends Rbx_Pages {
+	Clone(): InventoryPages
 }
 interface InventoryPages extends Rbx_InventoryPages, Base<Rbx_InventoryPages>, AnyIndex {}
 declare abstract class InventoryPages {
@@ -5310,6 +5566,7 @@ interface Rbx_Instance {
 
 // StandardPages
 interface Rbx_StandardPages extends Rbx_Pages {
+	Clone(): StandardPages
 }
 interface StandardPages extends Rbx_StandardPages, Base<Rbx_StandardPages>, AnyIndex {}
 declare abstract class StandardPages {
@@ -5325,6 +5582,7 @@ interface Rbx_Instance {
 
 // PartOperationAsset
 interface Rbx_PartOperationAsset extends Rbx_Instance {
+	Clone(): PartOperationAsset
 }
 interface PartOperationAsset extends Rbx_PartOperationAsset, Base<Rbx_PartOperationAsset>, AnyIndex {}
 declare class PartOperationAsset {
@@ -5340,6 +5598,7 @@ interface Rbx_Instance {
 
 // ParticleEmitter
 interface Rbx_ParticleEmitter extends Rbx_Instance {
+	Clone(): ParticleEmitter
 	Acceleration: Vector3;
 	Color: ColorSequence;
 	Drag: number;
@@ -5378,6 +5637,7 @@ interface Rbx_Instance {
 
 // Path
 interface Rbx_Path extends Rbx_Instance {
+	Clone(): Path
 	readonly Status: Enum.PathStatus;
 	CheckOcclusionAsync(start: number): number;
 	ComputeAsync(start: Vector3, finish: Vector3): void;
@@ -5397,6 +5657,7 @@ interface Rbx_Instance {
 
 // PathfindingService
 interface Rbx_PathfindingService extends Rbx_Instance {
+	Clone(): PathfindingService
 }
 type PathfindingService = Rbx_PathfindingService & Base<Rbx_PathfindingService> & AnyIndex;
 interface Rbx_Instance {
@@ -5412,6 +5673,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // PhysicsPacketCache
 interface Rbx_PhysicsPacketCache extends Rbx_Instance {
+	Clone(): PhysicsPacketCache
 }
 type PhysicsPacketCache = Rbx_PhysicsPacketCache & Base<Rbx_PhysicsPacketCache> & AnyIndex;
 interface Rbx_Instance {
@@ -5427,6 +5689,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // PhysicsService
 interface Rbx_PhysicsService extends Rbx_Instance {
+	Clone(): PhysicsService
 	CollisionGroupContainsPart(name: string, part: Instance): boolean;
 	CollisionGroupSetCollidable(name1: string, name2: string, collidable: boolean): void;
 	CollisionGroupsAreCollidable(name1: string, name2: string): boolean;
@@ -5452,6 +5715,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // PhysicsSettings
 interface Rbx_PhysicsSettings extends Rbx_Instance {
+	Clone(): PhysicsSettings
 	AllowSleep: boolean;
 	AreAnchorsShown: boolean;
 	AreAssembliesShown: boolean;
@@ -5489,6 +5753,7 @@ interface Rbx_Instance {
 
 // Player
 interface Rbx_Player extends Rbx_Instance {
+	Clone(): Player
 	readonly AccountAge: number;
 	AutoJumpEnabled: boolean;
 	CameraMaxZoomDistance: number;
@@ -5546,6 +5811,7 @@ interface Rbx_Instance {
 
 // PlayerScripts
 interface Rbx_PlayerScripts extends Rbx_Instance {
+	Clone(): PlayerScripts
 	ClearComputerCameraMovementModes(): void;
 	ClearComputerMovementModes(): void;
 	ClearTouchCameraMovementModes(): void;
@@ -5570,6 +5836,7 @@ interface Rbx_Instance {
 
 // Players
 interface Rbx_Players extends Rbx_Instance {
+	Clone(): Players
 	readonly BubbleChat: boolean;
 	/** Set to true, when a player joins a game, they get a character automatically, as well as when they die.  When set to false, characters do not auto load and will only load in using Player:LoadCharacter(). */
 	CharacterAutoLoads: boolean;
@@ -5595,6 +5862,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Plugin
 interface Rbx_Plugin extends Rbx_Instance {
+	Clone(): Plugin
 	readonly CollisionEnabled: boolean;
 	readonly GridSize: number;
 }
@@ -5612,6 +5880,7 @@ interface Rbx_Instance {
 
 // PluginAction
 interface Rbx_PluginAction extends Rbx_Instance {
+	Clone(): PluginAction
 	readonly ActionId: string;
 	readonly AllowBinding: boolean;
 	readonly StatusTip: string;
@@ -5631,6 +5900,7 @@ interface Rbx_Instance {
 
 // PluginDragEvent
 interface Rbx_PluginDragEvent extends Rbx_Instance {
+	Clone(): PluginDragEvent
 	readonly Data: string;
 	readonly MimeType: string;
 	readonly Position: Vector2;
@@ -5650,6 +5920,7 @@ interface Rbx_Instance {
 
 // PluginGuiService
 interface Rbx_PluginGuiService extends Rbx_Instance {
+	Clone(): PluginGuiService
 }
 type PluginGuiService = Rbx_PluginGuiService & Base<Rbx_PluginGuiService> & AnyIndex;
 interface Rbx_Instance {
@@ -5665,6 +5936,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // PluginManager
 interface Rbx_PluginManager extends Rbx_Instance {
+	Clone(): PluginManager
 }
 interface PluginManager extends Rbx_PluginManager, Base<Rbx_PluginManager>, AnyIndex {}
 declare abstract class PluginManager {
@@ -5680,6 +5952,7 @@ interface Rbx_Instance {
 
 // PluginMenu
 interface Rbx_PluginMenu extends Rbx_Instance {
+	Clone(): PluginMenu
 	Icon: string;
 	Title: string;
 }
@@ -5697,6 +5970,7 @@ interface Rbx_Instance {
 
 // PluginToolbar
 interface Rbx_PluginToolbar extends Rbx_Instance {
+	Clone(): PluginToolbar
 }
 interface PluginToolbar extends Rbx_PluginToolbar, Base<Rbx_PluginToolbar>, AnyIndex {}
 declare abstract class PluginToolbar {
@@ -5712,6 +5986,7 @@ interface Rbx_Instance {
 
 // PluginToolbarButton
 interface Rbx_PluginToolbarButton extends Rbx_Instance {
+	Clone(): PluginToolbarButton
 	ClickableWhenViewportHidden: boolean;
 	Enabled: boolean;
 	Icon: string;
@@ -5730,6 +6005,7 @@ interface Rbx_Instance {
 
 // PointsService
 interface Rbx_PointsService extends Rbx_Instance {
+	Clone(): PointsService
 	/** Fired when points are successfully awarded 'userId'. Also returns the updated balance of points for usedId in universe via 'userBalanceInUniverse', total points via 'userTotalBalance', and the amount points that were awarded via 'pointsAwarded'. This event fires on the server and also all clients in the game that awarded the points. */
 	PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
 }
@@ -5747,6 +6023,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Pose
 interface Rbx_Pose extends Rbx_Instance {
+	Clone(): Pose
 	CFrame: CFrame;
 	EasingDirection: Enum.PoseEasingDirection;
 	EasingStyle: Enum.PoseEasingStyle;
@@ -5770,6 +6047,7 @@ interface Rbx_Instance {
 
 // PostEffect
 interface Rbx_PostEffect extends Rbx_Instance {
+	Clone(): PostEffect
 	Enabled: boolean;
 }
 interface PostEffect extends Rbx_PostEffect, Base<Rbx_PostEffect>, AnyIndex {}
@@ -5786,6 +6064,7 @@ interface Rbx_Instance {
 
 // BloomEffect
 interface Rbx_BloomEffect extends Rbx_PostEffect {
+	Clone(): BloomEffect
 	Intensity: number;
 	Size: number;
 	Threshold: number;
@@ -5804,6 +6083,7 @@ interface Rbx_Instance {
 
 // BlurEffect
 interface Rbx_BlurEffect extends Rbx_PostEffect {
+	Clone(): BlurEffect
 	Size: number;
 }
 interface BlurEffect extends Rbx_BlurEffect, Base<Rbx_BlurEffect>, AnyIndex {}
@@ -5820,6 +6100,7 @@ interface Rbx_Instance {
 
 // ColorCorrectionEffect
 interface Rbx_ColorCorrectionEffect extends Rbx_PostEffect {
+	Clone(): ColorCorrectionEffect
 	Brightness: number;
 	Contrast: number;
 	Saturation: number;
@@ -5839,6 +6120,7 @@ interface Rbx_Instance {
 
 // SunRaysEffect
 interface Rbx_SunRaysEffect extends Rbx_PostEffect {
+	Clone(): SunRaysEffect
 	Intensity: number;
 	Spread: number;
 }
@@ -5856,6 +6138,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadata
 interface Rbx_ReflectionMetadata extends Rbx_Instance {
+	Clone(): ReflectionMetadata
 }
 interface ReflectionMetadata extends Rbx_ReflectionMetadata, Base<Rbx_ReflectionMetadata>, AnyIndex {}
 declare class ReflectionMetadata {
@@ -5871,6 +6154,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadataCallbacks
 interface Rbx_ReflectionMetadataCallbacks extends Rbx_Instance {
+	Clone(): ReflectionMetadataCallbacks
 }
 interface ReflectionMetadataCallbacks extends Rbx_ReflectionMetadataCallbacks, Base<Rbx_ReflectionMetadataCallbacks>, AnyIndex {}
 declare class ReflectionMetadataCallbacks {
@@ -5886,6 +6170,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadataClasses
 interface Rbx_ReflectionMetadataClasses extends Rbx_Instance {
+	Clone(): ReflectionMetadataClasses
 }
 interface ReflectionMetadataClasses extends Rbx_ReflectionMetadataClasses, Base<Rbx_ReflectionMetadataClasses>, AnyIndex {}
 declare class ReflectionMetadataClasses {
@@ -5901,6 +6186,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadataEnums
 interface Rbx_ReflectionMetadataEnums extends Rbx_Instance {
+	Clone(): ReflectionMetadataEnums
 }
 interface ReflectionMetadataEnums extends Rbx_ReflectionMetadataEnums, Base<Rbx_ReflectionMetadataEnums>, AnyIndex {}
 declare class ReflectionMetadataEnums {
@@ -5916,6 +6202,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadataEvents
 interface Rbx_ReflectionMetadataEvents extends Rbx_Instance {
+	Clone(): ReflectionMetadataEvents
 }
 interface ReflectionMetadataEvents extends Rbx_ReflectionMetadataEvents, Base<Rbx_ReflectionMetadataEvents>, AnyIndex {}
 declare class ReflectionMetadataEvents {
@@ -5931,6 +6218,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadataFunctions
 interface Rbx_ReflectionMetadataFunctions extends Rbx_Instance {
+	Clone(): ReflectionMetadataFunctions
 }
 interface ReflectionMetadataFunctions extends Rbx_ReflectionMetadataFunctions, Base<Rbx_ReflectionMetadataFunctions>, AnyIndex {}
 declare class ReflectionMetadataFunctions {
@@ -5946,6 +6234,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadataItem
 interface Rbx_ReflectionMetadataItem extends Rbx_Instance {
+	Clone(): ReflectionMetadataItem
 	Browsable: boolean;
 	ClassCategory: string;
 	ClientOnly: boolean;
@@ -5974,6 +6263,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadataClass
 interface Rbx_ReflectionMetadataClass extends Rbx_ReflectionMetadataItem {
+	Clone(): ReflectionMetadataClass
 	ExplorerImageIndex: number;
 	ExplorerOrder: number;
 	Insertable: boolean;
@@ -5994,6 +6284,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadataEnum
 interface Rbx_ReflectionMetadataEnum extends Rbx_ReflectionMetadataItem {
+	Clone(): ReflectionMetadataEnum
 }
 interface ReflectionMetadataEnum extends Rbx_ReflectionMetadataEnum, Base<Rbx_ReflectionMetadataEnum>, AnyIndex {}
 declare class ReflectionMetadataEnum {
@@ -6009,6 +6300,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadataEnumItem
 interface Rbx_ReflectionMetadataEnumItem extends Rbx_ReflectionMetadataItem {
+	Clone(): ReflectionMetadataEnumItem
 }
 interface ReflectionMetadataEnumItem extends Rbx_ReflectionMetadataEnumItem, Base<Rbx_ReflectionMetadataEnumItem>, AnyIndex {}
 declare class ReflectionMetadataEnumItem {
@@ -6024,6 +6316,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadataMember
 interface Rbx_ReflectionMetadataMember extends Rbx_ReflectionMetadataItem {
+	Clone(): ReflectionMetadataMember
 }
 interface ReflectionMetadataMember extends Rbx_ReflectionMetadataMember, Base<Rbx_ReflectionMetadataMember>, AnyIndex {}
 declare class ReflectionMetadataMember {
@@ -6039,6 +6332,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadataProperties
 interface Rbx_ReflectionMetadataProperties extends Rbx_Instance {
+	Clone(): ReflectionMetadataProperties
 }
 interface ReflectionMetadataProperties extends Rbx_ReflectionMetadataProperties, Base<Rbx_ReflectionMetadataProperties>, AnyIndex {}
 declare class ReflectionMetadataProperties {
@@ -6054,6 +6348,7 @@ interface Rbx_Instance {
 
 // ReflectionMetadataYieldFunctions
 interface Rbx_ReflectionMetadataYieldFunctions extends Rbx_Instance {
+	Clone(): ReflectionMetadataYieldFunctions
 }
 interface ReflectionMetadataYieldFunctions extends Rbx_ReflectionMetadataYieldFunctions, Base<Rbx_ReflectionMetadataYieldFunctions>, AnyIndex {}
 declare class ReflectionMetadataYieldFunctions {
@@ -6069,6 +6364,7 @@ interface Rbx_Instance {
 
 // RemoteEvent
 interface Rbx_RemoteEvent extends Rbx_Instance {
+	Clone(): RemoteEvent
 }
 interface RemoteEvent extends Rbx_RemoteEvent, Base<Rbx_RemoteEvent>, AnyIndex {}
 /** Allow events defined in one script to be subscribed to by another script across client/server boundary */
@@ -6085,6 +6381,7 @@ interface Rbx_Instance {
 
 // RemoteFunction
 interface Rbx_RemoteFunction extends Rbx_Instance {
+	Clone(): RemoteFunction
 }
 interface RemoteFunction extends Rbx_RemoteFunction, Base<Rbx_RemoteFunction>, AnyIndex {}
 /** Allow functions defined in one script to be called by another script across client/server boundary */
@@ -6101,6 +6398,7 @@ interface Rbx_Instance {
 
 // RenderSettings
 interface Rbx_RenderSettings extends Rbx_Instance {
+	Clone(): RenderSettings
 	AutoFRMLevel: number;
 	EagerBulkExecution: boolean;
 	EditQualityLevel: Enum.QualityLevel;
@@ -6129,6 +6427,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // RenderingTest
 interface Rbx_RenderingTest extends Rbx_Instance {
+	Clone(): RenderingTest
 	CFrame: CFrame;
 	ComparisonDiffThreshold: number;
 	ComparisonMethod: Enum.RenderingTestComparisonMethod;
@@ -6156,6 +6455,7 @@ interface Rbx_Instance {
 
 // ReplicatedFirst
 interface Rbx_ReplicatedFirst extends Rbx_Instance {
+	Clone(): ReplicatedFirst
 	RemoveDefaultLoadingScreen(): void;
 }
 type ReplicatedFirst = Rbx_ReplicatedFirst & Base<Rbx_ReplicatedFirst> & AnyIndex;
@@ -6172,6 +6472,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // ReplicatedStorage
 interface Rbx_ReplicatedStorage extends Rbx_Instance {
+	Clone(): ReplicatedStorage
 }
 type ReplicatedStorage = Rbx_ReplicatedStorage & Base<Rbx_ReplicatedStorage> & AnyIndex;
 interface Rbx_Instance {
@@ -6187,6 +6488,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // RobloxReplicatedStorage
 interface Rbx_RobloxReplicatedStorage extends Rbx_Instance {
+	Clone(): RobloxReplicatedStorage
 }
 type RobloxReplicatedStorage = Rbx_RobloxReplicatedStorage & Base<Rbx_RobloxReplicatedStorage> & AnyIndex;
 interface Rbx_Instance {
@@ -6202,6 +6504,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // RunService
 interface Rbx_RunService extends Rbx_Instance {
+	Clone(): RunService
 	BindToRenderStep(name: string, priority: number, callback: Function): void;
 	IsClient(): boolean;
 	IsRunMode(): boolean;
@@ -6227,6 +6530,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // RuntimeScriptService
 interface Rbx_RuntimeScriptService extends Rbx_Instance {
+	Clone(): RuntimeScriptService
 }
 type RuntimeScriptService = Rbx_RuntimeScriptService & Base<Rbx_RuntimeScriptService> & AnyIndex;
 interface Rbx_Instance {
@@ -6242,6 +6546,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // ScriptContext
 interface Rbx_ScriptContext extends Rbx_Instance {
+	Clone(): ScriptContext
 	Error: RBXScriptSignal<(message: string, stackTrace: string, script: Instance) => void>;
 }
 type ScriptContext = Rbx_ScriptContext & Base<Rbx_ScriptContext> & AnyIndex;
@@ -6258,6 +6563,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // ScriptDebugger
 interface Rbx_ScriptDebugger extends Rbx_Instance {
+	Clone(): ScriptDebugger
 	readonly CurrentLine: number;
 	readonly IsDebugging: boolean;
 	readonly IsPaused: boolean;
@@ -6295,6 +6601,7 @@ interface Rbx_Instance {
 
 // ScriptService
 interface Rbx_ScriptService extends Rbx_Instance {
+	Clone(): ScriptService
 }
 type ScriptService = Rbx_ScriptService & Base<Rbx_ScriptService> & AnyIndex;
 interface Rbx_Instance {
@@ -6310,6 +6617,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Selection
 interface Rbx_Selection extends Rbx_Instance {
+	Clone(): Selection
 	SelectionChanged: RBXScriptSignal<() => void>;
 }
 type Selection = Rbx_Selection & Base<Rbx_Selection> & AnyIndex;
@@ -6326,6 +6634,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // ServerScriptService
 interface Rbx_ServerScriptService extends Rbx_Instance {
+	Clone(): ServerScriptService
 }
 type ServerScriptService = Rbx_ServerScriptService & Base<Rbx_ServerScriptService> & AnyIndex;
 interface Rbx_Instance {
@@ -6341,6 +6650,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // ServerStorage
 interface Rbx_ServerStorage extends Rbx_Instance {
+	Clone(): ServerStorage
 }
 type ServerStorage = Rbx_ServerStorage & Base<Rbx_ServerStorage> & AnyIndex;
 interface Rbx_Instance {
@@ -6356,6 +6666,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // ServiceProvider
 interface Rbx_ServiceProvider extends Rbx_Instance {
+	Clone(): ServiceProvider
 	FindService(className: string): Instance | undefined;
 	GetService(className: string): Instance | undefined;
 	Close: RBXScriptSignal<() => void>;
@@ -6376,6 +6687,7 @@ interface Rbx_Instance {
 
 // DataModel
 interface Rbx_DataModel extends Rbx_ServiceProvider {
+	Clone(): DataModel
 	readonly CreatorId: number;
 	readonly CreatorType: Enum.CreatorType;
 	readonly GameId: number;
@@ -6409,6 +6721,7 @@ interface Rbx_Instance {
 
 // GenericSettings
 interface Rbx_GenericSettings extends Rbx_ServiceProvider {
+	Clone(): GenericSettings
 }
 interface GenericSettings extends Rbx_GenericSettings, Base<Rbx_GenericSettings>, AnyIndex {}
 declare abstract class GenericSettings {
@@ -6424,6 +6737,7 @@ interface Rbx_Instance {
 
 // AnalysticsSettings
 interface Rbx_AnalysticsSettings extends Rbx_GenericSettings {
+	Clone(): AnalysticsSettings
 }
 interface AnalysticsSettings extends Rbx_AnalysticsSettings, Base<Rbx_AnalysticsSettings>, AnyIndex {}
 declare abstract class AnalysticsSettings {
@@ -6439,6 +6753,7 @@ interface Rbx_Instance {
 
 // GlobalSettings
 interface Rbx_GlobalSettings extends Rbx_GenericSettings {
+	Clone(): GlobalSettings
 	GetFFlag(name: string): boolean;
 	GetFVariable(name: string): string;
 }
@@ -6456,6 +6771,7 @@ interface Rbx_Instance {
 
 // UserSettings
 interface Rbx_UserSettings extends Rbx_GenericSettings {
+	Clone(): UserSettings
 	IsUserFeatureEnabled(name: string): boolean;
 	Reset(): void;
 }
@@ -6470,6 +6786,7 @@ interface Rbx_Instance {
 
 // Sky
 interface Rbx_Sky extends Rbx_Instance {
+	Clone(): Sky
 	CelestialBodiesShown: boolean;
 	MoonAngularSize: number;
 	MoonTextureId: string;
@@ -6497,6 +6814,7 @@ interface Rbx_Instance {
 
 // Smoke
 interface Rbx_Smoke extends Rbx_Instance {
+	Clone(): Smoke
 	Color: Color3;
 	Enabled: boolean;
 	Opacity: number;
@@ -6518,6 +6836,7 @@ interface Rbx_Instance {
 
 // Sound
 interface Rbx_Sound extends Rbx_Instance {
+	Clone(): Sound
 	EmitterSize: number;
 	readonly IsLoaded: boolean;
 	readonly IsPaused: boolean;
@@ -6561,6 +6880,7 @@ interface Rbx_Instance {
 
 // SoundEffect
 interface Rbx_SoundEffect extends Rbx_Instance {
+	Clone(): SoundEffect
 	Enabled: boolean;
 	Priority: number;
 }
@@ -6578,6 +6898,7 @@ interface Rbx_Instance {
 
 // ChorusSoundEffect
 interface Rbx_ChorusSoundEffect extends Rbx_SoundEffect {
+	Clone(): ChorusSoundEffect
 	Depth: number;
 	Mix: number;
 	Rate: number;
@@ -6597,6 +6918,7 @@ interface Rbx_Instance {
 
 // CompressorSoundEffect
 interface Rbx_CompressorSoundEffect extends Rbx_SoundEffect {
+	Clone(): CompressorSoundEffect
 	Attack: number;
 	GainMakeup: number;
 	Ratio: number;
@@ -6619,6 +6941,7 @@ interface Rbx_Instance {
 
 // DistortionSoundEffect
 interface Rbx_DistortionSoundEffect extends Rbx_SoundEffect {
+	Clone(): DistortionSoundEffect
 	Level: number;
 }
 interface DistortionSoundEffect extends Rbx_DistortionSoundEffect, Base<Rbx_DistortionSoundEffect>, AnyIndex {}
@@ -6636,6 +6959,7 @@ interface Rbx_Instance {
 
 // EchoSoundEffect
 interface Rbx_EchoSoundEffect extends Rbx_SoundEffect {
+	Clone(): EchoSoundEffect
 	Delay: number;
 	DryLevel: number;
 	Feedback: number;
@@ -6656,6 +6980,7 @@ interface Rbx_Instance {
 
 // EqualizerSoundEffect
 interface Rbx_EqualizerSoundEffect extends Rbx_SoundEffect {
+	Clone(): EqualizerSoundEffect
 	HighGain: number;
 	LowGain: number;
 	MidGain: number;
@@ -6675,6 +7000,7 @@ interface Rbx_Instance {
 
 // FlangeSoundEffect
 interface Rbx_FlangeSoundEffect extends Rbx_SoundEffect {
+	Clone(): FlangeSoundEffect
 	Depth: number;
 	Mix: number;
 	Rate: number;
@@ -6694,6 +7020,7 @@ interface Rbx_Instance {
 
 // PitchShiftSoundEffect
 interface Rbx_PitchShiftSoundEffect extends Rbx_SoundEffect {
+	Clone(): PitchShiftSoundEffect
 	Octave: number;
 }
 interface PitchShiftSoundEffect extends Rbx_PitchShiftSoundEffect, Base<Rbx_PitchShiftSoundEffect>, AnyIndex {}
@@ -6711,6 +7038,7 @@ interface Rbx_Instance {
 
 // ReverbSoundEffect
 interface Rbx_ReverbSoundEffect extends Rbx_SoundEffect {
+	Clone(): ReverbSoundEffect
 	DecayTime: number;
 	Density: number;
 	Diffusion: number;
@@ -6732,6 +7060,7 @@ interface Rbx_Instance {
 
 // TremoloSoundEffect
 interface Rbx_TremoloSoundEffect extends Rbx_SoundEffect {
+	Clone(): TremoloSoundEffect
 	Depth: number;
 	Duty: number;
 	Frequency: number;
@@ -6751,6 +7080,7 @@ interface Rbx_Instance {
 
 // SoundGroup
 interface Rbx_SoundGroup extends Rbx_Instance {
+	Clone(): SoundGroup
 	Volume: number;
 }
 interface SoundGroup extends Rbx_SoundGroup, Base<Rbx_SoundGroup>, AnyIndex {}
@@ -6767,6 +7097,7 @@ interface Rbx_Instance {
 
 // SoundService
 interface Rbx_SoundService extends Rbx_Instance {
+	Clone(): SoundService
 	/** The ambient sound environment.  May not work when using hardware sound */
 	AmbientReverb: Enum.ReverbType;
 	/** the relative distance factor, compared to 1.0 meters. */
@@ -6792,6 +7123,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Sparkles
 interface Rbx_Sparkles extends Rbx_Instance {
+	Clone(): Sparkles
 	Color: Color3;
 	Enabled: boolean;
 	SparkleColor: Color3;
@@ -6811,6 +7143,7 @@ interface Rbx_Instance {
 
 // SpawnerService
 interface Rbx_SpawnerService extends Rbx_Instance {
+	Clone(): SpawnerService
 }
 type SpawnerService = Rbx_SpawnerService & Base<Rbx_SpawnerService> & AnyIndex;
 interface Rbx_Instance {
@@ -6826,6 +7159,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // StarterGear
 interface Rbx_StarterGear extends Rbx_Instance {
+	Clone(): StarterGear
 }
 interface StarterGear extends Rbx_StarterGear, Base<Rbx_StarterGear>, AnyIndex {}
 declare class StarterGear {
@@ -6841,6 +7175,7 @@ interface Rbx_Instance {
 
 // StarterPlayer
 interface Rbx_StarterPlayer extends Rbx_Instance {
+	Clone(): StarterPlayer
 	readonly AllowCustomAnimations: boolean;
 	AutoJumpEnabled: boolean;
 	CameraMaxZoomDistance: number;
@@ -6870,6 +7205,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // StarterPlayerScripts
 interface Rbx_StarterPlayerScripts extends Rbx_Instance {
+	Clone(): StarterPlayerScripts
 }
 interface StarterPlayerScripts extends Rbx_StarterPlayerScripts, Base<Rbx_StarterPlayerScripts>, AnyIndex {}
 /** A container instance that contains LocalScripts.  LocalScript objects that are placed in this container will be copied to new Players on startup. */
@@ -6886,6 +7222,7 @@ interface Rbx_Instance {
 
 // StarterCharacterScripts
 interface Rbx_StarterCharacterScripts extends Rbx_StarterPlayerScripts {
+	Clone(): StarterCharacterScripts
 }
 interface StarterCharacterScripts extends Rbx_StarterCharacterScripts, Base<Rbx_StarterCharacterScripts>, AnyIndex {}
 /** A container instance that contains LocalScripts.  LocalScript objects that are placed in this container will be copied to new characters on startup. */
@@ -6902,6 +7239,7 @@ interface Rbx_Instance {
 
 // Stats
 interface Rbx_Stats extends Rbx_Instance {
+	Clone(): Stats
 	readonly ContactsCount: number;
 	readonly DataReceiveKbps: number;
 	readonly DataSendKbps: number;
@@ -6929,6 +7267,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // StatsItem
 interface Rbx_StatsItem extends Rbx_Instance {
+	Clone(): StatsItem
 }
 interface StatsItem extends Rbx_StatsItem, Base<Rbx_StatsItem>, AnyIndex {}
 declare abstract class StatsItem {
@@ -6944,6 +7283,7 @@ interface Rbx_Instance {
 
 // RunningAverageItemDouble
 interface Rbx_RunningAverageItemDouble extends Rbx_StatsItem {
+	Clone(): RunningAverageItemDouble
 }
 interface RunningAverageItemDouble extends Rbx_RunningAverageItemDouble, Base<Rbx_RunningAverageItemDouble>, AnyIndex {}
 declare abstract class RunningAverageItemDouble {
@@ -6959,6 +7299,7 @@ interface Rbx_Instance {
 
 // RunningAverageItemInt
 interface Rbx_RunningAverageItemInt extends Rbx_StatsItem {
+	Clone(): RunningAverageItemInt
 }
 interface RunningAverageItemInt extends Rbx_RunningAverageItemInt, Base<Rbx_RunningAverageItemInt>, AnyIndex {}
 declare abstract class RunningAverageItemInt {
@@ -6974,6 +7315,7 @@ interface Rbx_Instance {
 
 // RunningAverageTimeIntervalItem
 interface Rbx_RunningAverageTimeIntervalItem extends Rbx_StatsItem {
+	Clone(): RunningAverageTimeIntervalItem
 }
 interface RunningAverageTimeIntervalItem extends Rbx_RunningAverageTimeIntervalItem, Base<Rbx_RunningAverageTimeIntervalItem>, AnyIndex {}
 declare abstract class RunningAverageTimeIntervalItem {
@@ -6989,6 +7331,7 @@ interface Rbx_Instance {
 
 // TotalCountTimeIntervalItem
 interface Rbx_TotalCountTimeIntervalItem extends Rbx_StatsItem {
+	Clone(): TotalCountTimeIntervalItem
 }
 interface TotalCountTimeIntervalItem extends Rbx_TotalCountTimeIntervalItem, Base<Rbx_TotalCountTimeIntervalItem>, AnyIndex {}
 declare abstract class TotalCountTimeIntervalItem {
@@ -7004,6 +7347,7 @@ interface Rbx_Instance {
 
 // StopWatchReporter
 interface Rbx_StopWatchReporter extends Rbx_Instance {
+	Clone(): StopWatchReporter
 }
 type StopWatchReporter = Rbx_StopWatchReporter & Base<Rbx_StopWatchReporter> & AnyIndex;
 interface Rbx_Instance {
@@ -7019,6 +7363,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Studio
 interface Rbx_Studio extends Rbx_Instance {
+	Clone(): Studio
 	["Always Save Script Changes"]: boolean;
 	["Animate Hover Over"]: boolean;
 	["Attach Debugger To"]: Enum.DEPRECATED_DebuggerDataModelPreference;
@@ -7103,6 +7448,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // StudioService
 interface Rbx_StudioService extends Rbx_Instance {
+	Clone(): StudioService
 	readonly ActiveScript: Instance | undefined;
 }
 type StudioService = Rbx_StudioService & Base<Rbx_StudioService> & AnyIndex;
@@ -7119,6 +7465,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // StudioTheme
 interface Rbx_StudioTheme extends Rbx_Instance {
+	Clone(): StudioTheme
 }
 interface StudioTheme extends Rbx_StudioTheme, Base<Rbx_StudioTheme>, AnyIndex {}
 declare abstract class StudioTheme {
@@ -7134,6 +7481,7 @@ interface Rbx_Instance {
 
 // TaskScheduler
 interface Rbx_TaskScheduler extends Rbx_Instance {
+	Clone(): TaskScheduler
 	readonly SchedulerDutyCycle: number;
 	readonly SchedulerRate: number;
 	ThreadPoolConfig: Enum.ThreadPoolConfig;
@@ -7153,6 +7501,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Team
 interface Rbx_Team extends Rbx_Instance {
+	Clone(): Team
 	AutoAssignable: boolean;
 	TeamColor: BrickColor;
 }
@@ -7171,6 +7520,7 @@ interface Rbx_Instance {
 
 // Teams
 interface Rbx_Teams extends Rbx_Instance {
+	Clone(): Teams
 }
 type Teams = Rbx_Teams & Base<Rbx_Teams> & AnyIndex;
 interface Rbx_Instance {
@@ -7186,6 +7536,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // TeleportService
 interface Rbx_TeleportService extends Rbx_Instance {
+	Clone(): TeleportService
 	GetArrivingTeleportGui(): Instance | undefined;
 	GetLocalPlayerTeleportData(): unknown;
 	GetTeleportSetting(setting: string): unknown;
@@ -7209,6 +7560,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // TerrainRegion
 interface Rbx_TerrainRegion extends Rbx_Instance {
+	Clone(): TerrainRegion
 	readonly SizeInCells: Vector3;
 }
 interface TerrainRegion extends Rbx_TerrainRegion, Base<Rbx_TerrainRegion>, AnyIndex {}
@@ -7226,6 +7578,7 @@ interface Rbx_Instance {
 
 // TestService
 interface Rbx_TestService extends Rbx_Instance {
+	Clone(): TestService
 	AutoRuns: boolean;
 	Description: string;
 	readonly ErrorCount: number;
@@ -7264,6 +7617,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // TextFilterResult
 interface Rbx_TextFilterResult extends Rbx_Instance {
+	Clone(): TextFilterResult
 	GetChatForUserAsync(toUserId: number): string;
 	GetNonChatStringForBroadcastAsync(): string;
 	GetNonChatStringForUserAsync(toUserId: number): string;
@@ -7282,6 +7636,7 @@ interface Rbx_Instance {
 
 // TextService
 interface Rbx_TextService extends Rbx_Instance {
+	Clone(): TextService
 	GetTextSize(string: string, fontSize: number, font: Enum.Font, frameSize: Vector2): Vector2;
 	FilterStringAsync(stringToFilter: string, fromUserId: number, textContext?: Enum.TextFilterContext): Instance | undefined;
 }
@@ -7299,6 +7654,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // ThirdPartyUserService
 interface Rbx_ThirdPartyUserService extends Rbx_Instance {
+	Clone(): ThirdPartyUserService
 }
 type ThirdPartyUserService = Rbx_ThirdPartyUserService & Base<Rbx_ThirdPartyUserService> & AnyIndex;
 interface Rbx_Instance {
@@ -7314,6 +7670,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // TimerService
 interface Rbx_TimerService extends Rbx_Instance {
+	Clone(): TimerService
 }
 type TimerService = Rbx_TimerService & Base<Rbx_TimerService> & AnyIndex;
 interface Rbx_Instance {
@@ -7329,6 +7686,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // TouchInputService
 interface Rbx_TouchInputService extends Rbx_Instance {
+	Clone(): TouchInputService
 }
 type TouchInputService = Rbx_TouchInputService & Base<Rbx_TouchInputService> & AnyIndex;
 interface Rbx_Instance {
@@ -7344,6 +7702,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // TouchTransmitter
 interface Rbx_TouchTransmitter extends Rbx_Instance {
+	Clone(): TouchTransmitter
 }
 interface TouchTransmitter extends Rbx_TouchTransmitter, Base<Rbx_TouchTransmitter>, AnyIndex {}
 /** Used by networking and replication code to transmit touch events - no other purpose */
@@ -7360,6 +7719,7 @@ interface Rbx_Instance {
 
 // Trail
 interface Rbx_Trail extends Rbx_Instance {
+	Clone(): Trail
 	Attachment0: Attachment;
 	Attachment1: Attachment;
 	Color: ColorSequence;
@@ -7392,6 +7752,7 @@ interface Rbx_Instance {
 
 // Translator
 interface Rbx_Translator extends Rbx_Instance {
+	Clone(): Translator
 	readonly LocaleId: string;
 	FormatByKey(key: string, args?: any): string;
 	Translate(context: Instance, text: string): string;
@@ -7410,6 +7771,7 @@ interface Rbx_Instance {
 
 // TweenBase
 interface Rbx_TweenBase extends Rbx_Instance {
+	Clone(): TweenBase
 	/** The current state of how the tween is animating. Possible values are Begin, Playing, Paused, Completed and Cancelled. This property is modified by using functions such as Tween:Play(), Tween:Pause(), and Tween:Cancel(). Read-only. */
 	readonly PlaybackState: Enum.PlaybackState;
 	/** Stops the tween animation. Animation can be restarted by calling Play(). Animation will start from the beginning values. */
@@ -7435,6 +7797,7 @@ interface Rbx_Instance {
 
 // Tween
 interface Rbx_Tween extends Rbx_TweenBase {
+	Clone(): Tween
 	readonly Instance: Instance | undefined;
 	readonly TweenInfo: TweenInfo;
 }
@@ -7453,6 +7816,7 @@ interface Rbx_Instance {
 
 // TweenService
 interface Rbx_TweenService extends Rbx_Instance {
+	Clone(): TweenService
 }
 type TweenService = Rbx_TweenService & Base<Rbx_TweenService> & AnyIndex;
 interface Rbx_Instance {
@@ -7468,6 +7832,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // UIBase
 interface Rbx_UIBase extends Rbx_Instance {
+	Clone(): UIBase
 }
 interface UIBase extends Rbx_UIBase, Base<Rbx_UIBase>, AnyIndex {}
 declare abstract class UIBase {
@@ -7483,6 +7848,7 @@ interface Rbx_Instance {
 
 // UIComponent
 interface Rbx_UIComponent extends Rbx_UIBase {
+	Clone(): UIComponent
 }
 interface UIComponent extends Rbx_UIComponent, Base<Rbx_UIComponent>, AnyIndex {}
 declare abstract class UIComponent {
@@ -7498,6 +7864,7 @@ interface Rbx_Instance {
 
 // UIConstraint
 interface Rbx_UIConstraint extends Rbx_UIComponent {
+	Clone(): UIConstraint
 }
 interface UIConstraint extends Rbx_UIConstraint, Base<Rbx_UIConstraint>, AnyIndex {}
 declare abstract class UIConstraint {
@@ -7513,6 +7880,7 @@ interface Rbx_Instance {
 
 // UIAspectRatioConstraint
 interface Rbx_UIAspectRatioConstraint extends Rbx_UIConstraint {
+	Clone(): UIAspectRatioConstraint
 	/** The aspect ratio to maintain. This is the width/height. Only positive numbers allowed. */
 	AspectRatio: number;
 	/** Describes how the aspect ratio will determine its size. Options are FitWithinMaxSize, ScaleWithParentSize. FitWithinMaxSize will make the element the maximum size it can be within the current possible AbsoluteSize of the element while maintaining the AspectRatio. ScaleWithParentSize will make the element the closest to the parent element’s maximum size while maintaining aspect ratio. */
@@ -7535,6 +7903,7 @@ interface Rbx_Instance {
 
 // UISizeConstraint
 interface Rbx_UISizeConstraint extends Rbx_UIConstraint {
+	Clone(): UISizeConstraint
 	/** The biggest size the GuiObject is allowed to be. */
 	MaxSize: Vector2;
 	/** The smallest size the GuiObject is allowed to be. */
@@ -7555,6 +7924,7 @@ interface Rbx_Instance {
 
 // UITextSizeConstraint
 interface Rbx_UITextSizeConstraint extends Rbx_UIConstraint {
+	Clone(): UITextSizeConstraint
 	/** The biggest size the font is allowed to be. */
 	MaxTextSize: number;
 	/** The smallest size the font is allowed to be. */
@@ -7575,6 +7945,7 @@ interface Rbx_Instance {
 
 // UILayout
 interface Rbx_UILayout extends Rbx_UIComponent {
+	Clone(): UILayout
 }
 interface UILayout extends Rbx_UILayout, Base<Rbx_UILayout>, AnyIndex {}
 declare abstract class UILayout {
@@ -7590,6 +7961,7 @@ interface Rbx_Instance {
 
 // UIGridStyleLayout
 interface Rbx_UIGridStyleLayout extends Rbx_UILayout {
+	Clone(): UIGridStyleLayout
 	readonly AbsoluteContentSize: Vector2;
 	/** Determines which direction to fill the grid. Can be Horizontal or Vertical. */
 	FillDirection: Enum.FillDirection;
@@ -7616,6 +7988,7 @@ interface Rbx_Instance {
 
 // UIGridLayout
 interface Rbx_UIGridLayout extends Rbx_UIGridStyleLayout {
+	Clone(): UIGridLayout
 	/** How much space between elements there should be. */
 	CellPadding: UDim2;
 	/** Denotes what size each element should be. Can be overridden by elements using constraints on individual elements. */
@@ -7640,6 +8013,7 @@ interface Rbx_Instance {
 
 // UIListLayout
 interface Rbx_UIListLayout extends Rbx_UIGridStyleLayout {
+	Clone(): UIListLayout
 	/** Determines the amount of free space between each element. Can be set either using scale (Percentage of parent's size in the current direction) or offset (a static spacing value, similar to pixel size). */
 	Padding: UDim;
 }
@@ -7658,6 +8032,7 @@ interface Rbx_Instance {
 
 // UIPageLayout
 interface Rbx_UIPageLayout extends Rbx_UIGridStyleLayout {
+	Clone(): UIPageLayout
 	/** Whether or not to animate transitions between pages. */
 	Animated: boolean;
 	/** Whether or not the page layout wraps around at the ends. */
@@ -7705,6 +8080,7 @@ interface Rbx_Instance {
 
 // UITableLayout
 interface Rbx_UITableLayout extends Rbx_UIGridStyleLayout {
+	Clone(): UITableLayout
 	/** Whether the table should expand to fill the available space of its container, column-wise. */
 	FillEmptySpaceColumns: boolean;
 	/** Whether the table should expand to fill the available space of its container, row-wise. */
@@ -7729,6 +8105,7 @@ interface Rbx_Instance {
 
 // UIPadding
 interface Rbx_UIPadding extends Rbx_UIComponent {
+	Clone(): UIPadding
 	/** The padding to apply on the bottom side relative to the parent's normal size. */
 	PaddingBottom: UDim;
 	/** The padding to apply on the left side relative to the parent's normal size. */
@@ -7752,6 +8129,7 @@ interface Rbx_Instance {
 
 // UIScale
 interface Rbx_UIScale extends Rbx_UIComponent {
+	Clone(): UIScale
 	/** The scale factor to apply. */
 	Scale: number;
 }
@@ -7770,6 +8148,7 @@ interface Rbx_Instance {
 
 // UserGameSettings
 interface Rbx_UserGameSettings extends Rbx_Instance {
+	Clone(): UserGameSettings
 	ComputerCameraMovementMode: Enum.ComputerCameraMovementMode;
 	ComputerMovementMode: Enum.ComputerMovementMode;
 	ControlMode: Enum.ControlMode;
@@ -7806,6 +8185,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // UserInputService
 interface Rbx_UserInputService extends Rbx_Instance {
+	Clone(): UserInputService
 	/** Returns true if the local device has an accelerometer, false otherwise. */
 	readonly AccelerometerEnabled: boolean;
 	readonly GamepadEnabled: boolean;
@@ -7893,6 +8273,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // VRService
 interface Rbx_VRService extends Rbx_Instance {
+	Clone(): VRService
 	GuiInputUserCFrame: Enum.UserCFrame;
 	readonly VREnabled: boolean;
 	GetTouchpadMode(pad: Enum.VRTouchpad): Enum.VRTouchpadMode;
@@ -7920,6 +8301,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // ValueBase
 interface Rbx_ValueBase extends Rbx_Instance {
+	Clone(): ValueBase
 }
 interface ValueBase extends Rbx_ValueBase, Base<Rbx_ValueBase>, AnyIndex {}
 /** The base class to all Value Objects. */
@@ -7936,6 +8318,7 @@ interface Rbx_Instance {
 
 // BinaryStringValue
 interface Rbx_BinaryStringValue extends Rbx_ValueBase {
+	Clone(): BinaryStringValue
 }
 interface BinaryStringValue extends Rbx_BinaryStringValue, Base<Rbx_BinaryStringValue>, AnyIndex {}
 declare class BinaryStringValue {
@@ -7951,6 +8334,7 @@ interface Rbx_Instance {
 
 // BoolValue
 interface Rbx_BoolValue extends Rbx_ValueBase {
+	Clone(): BoolValue
 	Value: boolean;
 }
 interface BoolValue extends Rbx_BoolValue, Base<Rbx_BoolValue>, AnyIndex {}
@@ -7968,6 +8352,7 @@ interface Rbx_Instance {
 
 // BrickColorValue
 interface Rbx_BrickColorValue extends Rbx_ValueBase {
+	Clone(): BrickColorValue
 	Value: BrickColor;
 }
 interface BrickColorValue extends Rbx_BrickColorValue, Base<Rbx_BrickColorValue>, AnyIndex {}
@@ -7985,6 +8370,7 @@ interface Rbx_Instance {
 
 // CFrameValue
 interface Rbx_CFrameValue extends Rbx_ValueBase {
+	Clone(): CFrameValue
 	Value: CFrame;
 }
 interface CFrameValue extends Rbx_CFrameValue, Base<Rbx_CFrameValue>, AnyIndex {}
@@ -8002,6 +8388,7 @@ interface Rbx_Instance {
 
 // Color3Value
 interface Rbx_Color3Value extends Rbx_ValueBase {
+	Clone(): Color3Value
 	Value: Color3;
 }
 interface Color3Value extends Rbx_Color3Value, Base<Rbx_Color3Value>, AnyIndex {}
@@ -8019,6 +8406,7 @@ interface Rbx_Instance {
 
 // DoubleConstrainedValue
 interface Rbx_DoubleConstrainedValue extends Rbx_ValueBase {
+	Clone(): DoubleConstrainedValue
 	ConstrainedValue: number;
 	/** The maximum we allow this Value to be set.  If Value is set higher than this, it automatically gets adjusted to MaxValue */
 	MaxValue: number;
@@ -8041,6 +8429,7 @@ interface Rbx_Instance {
 
 // IntConstrainedValue
 interface Rbx_IntConstrainedValue extends Rbx_ValueBase {
+	Clone(): IntConstrainedValue
 	ConstrainedValue: number;
 	MaxValue: number;
 	MinValue: number;
@@ -8061,6 +8450,7 @@ interface Rbx_Instance {
 
 // IntValue
 interface Rbx_IntValue extends Rbx_ValueBase {
+	Clone(): IntValue
 	Value: number;
 }
 interface IntValue extends Rbx_IntValue, Base<Rbx_IntValue>, AnyIndex {}
@@ -8078,6 +8468,7 @@ interface Rbx_Instance {
 
 // NumberValue
 interface Rbx_NumberValue extends Rbx_ValueBase {
+	Clone(): NumberValue
 	Value: number;
 }
 interface NumberValue extends Rbx_NumberValue, Base<Rbx_NumberValue>, AnyIndex {}
@@ -8094,6 +8485,7 @@ interface Rbx_Instance {
 
 // ObjectValue
 interface Rbx_ObjectValue extends Rbx_ValueBase {
+	Clone(): ObjectValue
 	Value: Instance | undefined;
 }
 interface ObjectValue extends Rbx_ObjectValue, Base<Rbx_ObjectValue>, AnyIndex {}
@@ -8110,6 +8502,7 @@ interface Rbx_Instance {
 
 // RayValue
 interface Rbx_RayValue extends Rbx_ValueBase {
+	Clone(): RayValue
 	Value: Ray;
 }
 interface RayValue extends Rbx_RayValue, Base<Rbx_RayValue>, AnyIndex {}
@@ -8127,6 +8520,7 @@ interface Rbx_Instance {
 
 // StringValue
 interface Rbx_StringValue extends Rbx_ValueBase {
+	Clone(): StringValue
 	Value: string;
 }
 interface StringValue extends Rbx_StringValue, Base<Rbx_StringValue>, AnyIndex {}
@@ -8143,6 +8537,7 @@ interface Rbx_Instance {
 
 // Vector3Value
 interface Rbx_Vector3Value extends Rbx_ValueBase {
+	Clone(): Vector3Value
 	Value: Vector3;
 }
 interface Vector3Value extends Rbx_Vector3Value, Base<Rbx_Vector3Value>, AnyIndex {}
@@ -8159,6 +8554,7 @@ interface Rbx_Instance {
 
 // VirtualInputManager
 interface Rbx_VirtualInputManager extends Rbx_Instance {
+	Clone(): VirtualInputManager
 }
 type VirtualInputManager = Rbx_VirtualInputManager & Base<Rbx_VirtualInputManager> & AnyIndex;
 interface Rbx_Instance {
@@ -8174,6 +8570,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // VirtualUser
 interface Rbx_VirtualUser extends Rbx_Instance {
+	Clone(): VirtualUser
 }
 type VirtualUser = Rbx_VirtualUser & Base<Rbx_VirtualUser> & AnyIndex;
 interface Rbx_Instance {
@@ -8189,6 +8586,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Visit
 interface Rbx_Visit extends Rbx_Instance {
+	Clone(): Visit
 }
 type Visit = Rbx_Visit & Base<Rbx_Visit> & AnyIndex;
 interface Rbx_Instance {
@@ -8204,6 +8602,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // WeldConstraint
 interface Rbx_WeldConstraint extends Rbx_Instance {
+	Clone(): WeldConstraint
 	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
 	readonly Active: boolean;
 	Enabled: boolean;

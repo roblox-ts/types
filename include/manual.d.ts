@@ -280,7 +280,7 @@ interface Rbx_HttpService extends Rbx_Instance {
 
 interface Rbx_Humanoid extends Rbx_Instance {
 	GetPlayingAnimationTracks(): Array<AnimationTrack>;
-	LoadAnimation(animation: Instance): AnimationTrack;
+	LoadAnimation(animation: Animation): AnimationTrack;
 	AddAccessory(accessory: Accessory): void;
 	/** Takes a specified tool and equips it to the Humanoid's Character.  Tool argument should be of type 'Tool'. */
 	EquipTool(tool: Tool): void;
@@ -343,8 +343,6 @@ interface Rbx_InsertService extends Rbx_Instance {
 }
 
 interface Rbx_Instance {
-	/** Returns a copy of this Object and all its children. The copy's Parent is nil */
-	Clone(): Instance;
 	/** Returns an array containing all of the descendants of the instance. Returns in preorder traversal, or in other words, where the parents come before their children, depth first. */
 	GetDescendants(): Array<Instance>;
 	/** Returns the first ancestor of this Instance that matches the first argument 'name'.  The function will return nil if no Instance is found. */
