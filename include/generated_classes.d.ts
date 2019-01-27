@@ -60,6 +60,21 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Instance"): Instance | undefined;
 }
 
+// ABTestService
+interface Rbx_ABTestService extends Rbx_Instance {
+}
+type ABTestService = Rbx_ABTestService & Base<Rbx_ABTestService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "ABTestService"): this is ABTestService;
+	FindFirstAncestorOfClass(className: "ABTestService"): ABTestService | undefined;
+	FindFirstAncestorWhichIsA(className: "ABTestService"): ABTestService | undefined;
+	FindFirstChildOfClass(className: "ABTestService"): ABTestService | undefined;
+	FindFirstAncestorWhichIsA(className: "ABTestService"): ABTestService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "ABTestService"): ABTestService;
+}
+
 // Accoutrement
 interface Rbx_Accoutrement extends Rbx_Instance {
 	AttachmentForward: Vector3;
@@ -201,6 +216,7 @@ interface Rbx_AnimationTrack extends Rbx_Instance {
 	readonly WeightTarget: number;
 	AdjustSpeed(speed?: number): void;
 	AdjustWeight(weight?: number, fadeTime?: number): void;
+	GetMarkerReachedSignal(name: string): RBXScriptSignal;
 	GetTimeOfKeyframe(keyframeName: string): number;
 	Play(fadeTime?: number, weight?: number, speed?: number): void;
 	Stop(fadeTime?: number): void;
@@ -256,24 +272,22 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Attachment
 interface Rbx_Attachment extends Rbx_Instance {
+	/** Primary axis. Corresponds to the LookVector, or the first column in the part-local Attachment CFrame rotation matrix */
 	Axis: Vector3;
 	CFrame: CFrame;
 	/** Euler angles applied in YXZ order */
 	Orientation: Vector3;
 	Position: Vector3;
-	Rotation: Vector3;
+	/** Secondary axis. Corresponds to the UpVector, or the second column in the part-local Attachment CFrame rotation matrix */
 	SecondaryAxis: Vector3;
 	Visible: boolean;
-	readonly WorldAxis: Vector3;
-	readonly WorldCFrame: CFrame;
+	/** Primary axis in world space. Corresponds to the LookVector, or the first column in the world space Attachment CFrame rotation matrix. */
+	WorldAxis: Vector3;
+	WorldCFrame: CFrame;
 	/** Euler angles applied in YXZ order */
-	readonly WorldOrientation: Vector3;
-	readonly WorldPosition: Vector3;
-	readonly WorldSecondaryAxis: Vector3;
-	GetAxis(): Vector3;
-	GetSecondaryAxis(): Vector3;
-	SetAxis(axis: Vector3): void;
-	SetSecondaryAxis(axis: Vector3): void;
+	WorldOrientation: Vector3;
+	WorldPosition: Vector3;
+	WorldSecondaryAxis: Vector3;
 }
 interface Attachment extends Rbx_Attachment, Base<Rbx_Attachment>, AnyIndex {}
 declare class Attachment {
@@ -307,6 +321,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // BasePlayerGui
 interface Rbx_BasePlayerGui extends Rbx_Instance {
+	GetGuiObjectsAtPosition(x: number, y: number): Array<Instance>;
 }
 interface BasePlayerGui extends Rbx_BasePlayerGui, Base<Rbx_BasePlayerGui>, AnyIndex {}
 declare abstract class BasePlayerGui {
@@ -618,24 +633,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "RocketPropulsion"): RocketPropulsion | undefined;
 }
 
-// Button
-interface Rbx_Button extends Rbx_Instance {
-	ClickableWhenViewportHidden: boolean;
-	Enabled: boolean;
-	Icon: string;
-}
-interface Button extends Rbx_Button, Base<Rbx_Button>, AnyIndex {}
-declare abstract class Button {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Button"): this is Button;
-	FindFirstAncestorOfClass(className: "Button"): Button | undefined;
-	FindFirstAncestorWhichIsA(className: "Button"): Button | undefined;
-	FindFirstChildOfClass(className: "Button"): Button | undefined;
-	FindFirstAncestorWhichIsA(className: "Button"): Button | undefined;
-}
-
 // CacheableContentProvider
 interface Rbx_CacheableContentProvider extends Rbx_Instance {
 }
@@ -806,6 +803,7 @@ interface Rbx_Instance {
 
 // Clothing
 interface Rbx_Clothing extends Rbx_CharacterAppearance {
+	Color3: Color3;
 }
 interface Clothing extends Rbx_Clothing, Base<Rbx_Clothing>, AnyIndex {}
 declare abstract class Clothing {
@@ -853,6 +851,7 @@ interface Rbx_Instance {
 
 // ShirtGraphic
 interface Rbx_ShirtGraphic extends Rbx_CharacterAppearance {
+	Color3: Color3;
 	Graphic: string;
 }
 interface ShirtGraphic extends Rbx_ShirtGraphic, Base<Rbx_ShirtGraphic>, AnyIndex {}
@@ -885,6 +884,7 @@ interface Rbx_Instance {
 
 // Chat
 interface Rbx_Chat extends Rbx_Instance {
+	BubbleChatEnabled: boolean;
 	readonly LoadDefaultChat: boolean;
 	InvokeChatCallback(callbackType: Enum.ChatCallbackType, callbackArguments: Array<any>): unknown;
 	RegisterChatCallback(callbackType: Enum.ChatCallbackType, callbackFunction: Function): void;
@@ -976,6 +976,7 @@ interface Rbx_Instance {
 
 // Constraint
 interface Rbx_Constraint extends Rbx_Instance {
+	/** Read-only boolean, true if the Constraint is active in world. */
 	readonly Active: boolean;
 	Attachment0: Attachment;
 	Attachment1: Attachment;
@@ -2454,6 +2455,7 @@ interface Rbx_ImageButton extends Rbx_GuiButton {
 	ScaleType: Enum.ScaleType;
 	/** If ScaleType is set to Slice, this Rect is used to specify the central part of the image. Everything outside of this is considered to be the border. */
 	SliceCenter: Rect;
+	SliceScale: number;
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 }
@@ -2530,6 +2532,7 @@ interface Rbx_ImageLabel extends Rbx_GuiLabel {
 	ScaleType: Enum.ScaleType;
 	/** If ScaleType is set to Slice, this Rect is used to specify the central part of the image. Everything outside of this is considered to be the border. */
 	SliceCenter: Rect;
+	SliceScale: number;
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 }
@@ -2663,6 +2666,10 @@ interface Rbx_Instance {
 interface Rbx_ViewportFrame extends Rbx_GuiObject {
 	/** Current Camera of children objects */
 	CurrentCamera: Camera;
+	/** The rendered image of the ViewportFrame will be mutiplied by this color */
+	ImageColor3: Color3;
+	/** A number value that specifies how transparent the rendered image of the ViewportFrame is */
+	ImageTransparency: number;
 }
 interface ViewportFrame extends Rbx_ViewportFrame, Base<Rbx_ViewportFrame>, AnyIndex {}
 /** A GUI that can show 3D objects */
@@ -3504,6 +3511,7 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	AutoJumpEnabled: boolean;
 	AutoRotate: boolean;
 	AutomaticScalingEnabled: boolean;
+	BreakJointsOnDeath: boolean;
 	CameraOffset: Vector3;
 	DisplayDistanceType: Enum.HumanoidDisplayDistanceType;
 	readonly FloorMaterial: Enum.Material;
@@ -3533,6 +3541,7 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	WalkToPoint: Vector3;
 	BuildRigFromAttachments(): void;
 	ChangeState(state?: Enum.HumanoidStateType): void;
+	GetAppliedDescription(): Instance | undefined;
 	GetState(): Enum.HumanoidStateType;
 	GetStateEnabled(state: Enum.HumanoidStateType): boolean;
 	Move(moveDirection: Vector3, relativeToCamera?: boolean): void;
@@ -3542,6 +3551,7 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	TakeDamage(amount: number): void;
 	/** Takes any active gear/tools that the Humanoid is using and puts them into the backpack.  This function only works on Humanoids with a corresponding Player. */
 	UnequipTools(): void;
+	ApplyDescription(humanoidDescription: Instance): void;
 	Climbing: RBXScriptSignal<(speed: number) => void>;
 	Died: RBXScriptSignal<() => void>;
 	FallingDown: RBXScriptSignal<(active: boolean) => void>;
@@ -3568,6 +3578,59 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Humanoid"): Humanoid | undefined;
 	FindFirstChildOfClass(className: "Humanoid"): Humanoid | undefined;
 	FindFirstAncestorWhichIsA(className: "Humanoid"): Humanoid | undefined;
+}
+
+// HumanoidDescription
+interface Rbx_HumanoidDescription extends Rbx_Instance {
+	BackAccessory: string;
+	BodyTypeScale: number;
+	ClimbAnimation: number;
+	DepthScale: number;
+	Face: number;
+	FaceAccessory: string;
+	FallAnimation: number;
+	FrontAccessory: string;
+	GraphicTShirt: number;
+	HairAccessory: string;
+	HatAccessory: string;
+	Head: number;
+	HeadColor: Color3;
+	HeadScale: number;
+	HeightScale: number;
+	IdleAnimation: number;
+	JumpAnimation: number;
+	LeftArm: number;
+	LeftArmColor: Color3;
+	LeftLeg: number;
+	LeftLegColor: Color3;
+	NeckAccessory: string;
+	Pants: number;
+	ProportionScale: number;
+	RightArm: number;
+	RightArmColor: Color3;
+	RightLeg: number;
+	RightLegColor: Color3;
+	RunAnimation: number;
+	Shirt: number;
+	ShouldersAccessory: string;
+	SwimAnimation: number;
+	Torso: number;
+	TorsoColor: Color3;
+	WaistAccessory: string;
+	WalkAnimation: number;
+	WidthScale: number;
+}
+interface HumanoidDescription extends Rbx_HumanoidDescription, Base<Rbx_HumanoidDescription>, AnyIndex {}
+/** An object that specifies the appearance of Humanoid characters */
+declare class HumanoidDescription {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "HumanoidDescription"): this is HumanoidDescription;
+	FindFirstAncestorOfClass(className: "HumanoidDescription"): HumanoidDescription | undefined;
+	FindFirstAncestorWhichIsA(className: "HumanoidDescription"): HumanoidDescription | undefined;
+	FindFirstChildOfClass(className: "HumanoidDescription"): HumanoidDescription | undefined;
+	FindFirstAncestorWhichIsA(className: "HumanoidDescription"): HumanoidDescription | undefined;
 }
 
 // InputObject
@@ -3611,23 +3674,9 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "InsertService"): InsertService;
 }
 
-// InstancePacketCache
-interface Rbx_InstancePacketCache extends Rbx_Instance {
-}
-type InstancePacketCache = Rbx_InstancePacketCache & Base<Rbx_InstancePacketCache> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "InstancePacketCache"): this is InstancePacketCache;
-	FindFirstAncestorOfClass(className: "InstancePacketCache"): InstancePacketCache | undefined;
-	FindFirstAncestorWhichIsA(className: "InstancePacketCache"): InstancePacketCache | undefined;
-	FindFirstChildOfClass(className: "InstancePacketCache"): InstancePacketCache | undefined;
-	FindFirstAncestorWhichIsA(className: "InstancePacketCache"): InstancePacketCache | undefined;
-}
-interface Rbx_ServiceProvider extends Rbx_Instance {
-	GetService(className: "InstancePacketCache"): InstancePacketCache;
-}
-
 // JointInstance
 interface Rbx_JointInstance extends Rbx_Instance {
+	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
 	readonly Active: boolean;
 	C0: CFrame;
 	C1: CFrame;
@@ -3893,6 +3942,9 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Keyframe
 interface Rbx_Keyframe extends Rbx_Instance {
 	Time: number;
+	AddMarker(marker: Instance): void;
+	GetMarkers(): Array<Instance>;
+	RemoveMarker(marker: Instance): void;
 }
 interface Keyframe extends Rbx_Keyframe, Base<Rbx_Keyframe>, AnyIndex {}
 /** One keyframe of an animation */
@@ -3905,6 +3957,23 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Keyframe"): Keyframe | undefined;
 	FindFirstChildOfClass(className: "Keyframe"): Keyframe | undefined;
 	FindFirstAncestorWhichIsA(className: "Keyframe"): Keyframe | undefined;
+}
+
+// KeyframeMarker
+interface Rbx_KeyframeMarker extends Rbx_Instance {
+	Value: string;
+}
+interface KeyframeMarker extends Rbx_KeyframeMarker, Base<Rbx_KeyframeMarker>, AnyIndex {}
+/** Represents when an event should be fired in an animation */
+declare class KeyframeMarker {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "KeyframeMarker"): this is KeyframeMarker;
+	FindFirstAncestorOfClass(className: "KeyframeMarker"): KeyframeMarker | undefined;
+	FindFirstAncestorWhichIsA(className: "KeyframeMarker"): KeyframeMarker | undefined;
+	FindFirstChildOfClass(className: "KeyframeMarker"): KeyframeMarker | undefined;
+	FindFirstAncestorWhichIsA(className: "KeyframeMarker"): KeyframeMarker | undefined;
 }
 
 // KeyframeSequence
@@ -4018,7 +4087,7 @@ interface Rbx_Instance {
 interface Rbx_Lighting extends Rbx_Instance {
 	/** The hue of the global lighting.  Changing this changes the color tint of all objects in the Workspace. */
 	Ambient: Color3;
-	/** How much global light each Part in the Workspace receives. Standard range is 0 to 1 (0 being little light), but can be increased all the way to 5 (colors start to be appear very different at this value). */
+	/** How much global light each Part in the Workspace receives. Standard range is 0 to 2 (0 being little light), but can be increased all the way to 10 (colors start to be appear very different at this value). */
 	Brightness: number;
 	ClockTime: number;
 	/** The hue of global lighting on the bottom surfaces of an object. */
@@ -4068,11 +4137,72 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Lighting"): Lighting;
 }
 
+// LocalAsset
+interface Rbx_LocalAsset extends Rbx_Instance {
+}
+interface LocalAsset extends Rbx_LocalAsset, Base<Rbx_LocalAsset>, AnyIndex {}
+declare abstract class LocalAsset {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "LocalAsset"): this is LocalAsset;
+	FindFirstAncestorOfClass(className: "LocalAsset"): LocalAsset | undefined;
+	FindFirstAncestorWhichIsA(className: "LocalAsset"): LocalAsset | undefined;
+	FindFirstChildOfClass(className: "LocalAsset"): LocalAsset | undefined;
+	FindFirstAncestorWhichIsA(className: "LocalAsset"): LocalAsset | undefined;
+}
+
+// LocalStorageService
+interface Rbx_LocalStorageService extends Rbx_Instance {
+}
+type LocalStorageService = Rbx_LocalStorageService & Base<Rbx_LocalStorageService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "LocalStorageService"): this is LocalStorageService;
+	FindFirstAncestorOfClass(className: "LocalStorageService"): LocalStorageService | undefined;
+	FindFirstAncestorWhichIsA(className: "LocalStorageService"): LocalStorageService | undefined;
+	FindFirstChildOfClass(className: "LocalStorageService"): LocalStorageService | undefined;
+	FindFirstAncestorWhichIsA(className: "LocalStorageService"): LocalStorageService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "LocalStorageService"): LocalStorageService;
+}
+
+// AppStorageService
+interface Rbx_AppStorageService extends Rbx_LocalStorageService {
+}
+type AppStorageService = Rbx_AppStorageService & Base<Rbx_AppStorageService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "AppStorageService"): this is AppStorageService;
+	FindFirstAncestorOfClass(className: "AppStorageService"): AppStorageService | undefined;
+	FindFirstAncestorWhichIsA(className: "AppStorageService"): AppStorageService | undefined;
+	FindFirstChildOfClass(className: "AppStorageService"): AppStorageService | undefined;
+	FindFirstAncestorWhichIsA(className: "AppStorageService"): AppStorageService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "AppStorageService"): AppStorageService;
+}
+
+// UserStorageService
+interface Rbx_UserStorageService extends Rbx_LocalStorageService {
+}
+type UserStorageService = Rbx_UserStorageService & Base<Rbx_UserStorageService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "UserStorageService"): this is UserStorageService;
+	FindFirstAncestorOfClass(className: "UserStorageService"): UserStorageService | undefined;
+	FindFirstAncestorWhichIsA(className: "UserStorageService"): UserStorageService | undefined;
+	FindFirstChildOfClass(className: "UserStorageService"): UserStorageService | undefined;
+	FindFirstAncestorWhichIsA(className: "UserStorageService"): UserStorageService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "UserStorageService"): UserStorageService;
+}
+
 // LocalizationService
 interface Rbx_LocalizationService extends Rbx_Instance {
 	readonly RobloxLocaleId: string;
 	readonly SystemLocaleId: string;
 	GetCorescriptLocalizations(): Array<Instance>;
+	GetTranslatorForLocaleAsync(locale: string): Instance | undefined;
 	GetTranslatorForPlayerAsync(player: Instance): Instance | undefined;
 }
 type LocalizationService = Rbx_LocalizationService & Base<Rbx_LocalizationService> & AnyIndex;
@@ -4330,6 +4460,23 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Hint"): Hint | undefined;
 }
 
+// MessagingService
+interface Rbx_MessagingService extends Rbx_Instance {
+	PublishAsync(topic: string, message?: any): void;
+	SubscribeAsync(topic: string, callback: Function): RBXScriptConnection;
+}
+type MessagingService = Rbx_MessagingService & Base<Rbx_MessagingService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "MessagingService"): this is MessagingService;
+	FindFirstAncestorOfClass(className: "MessagingService"): MessagingService | undefined;
+	FindFirstAncestorWhichIsA(className: "MessagingService"): MessagingService | undefined;
+	FindFirstChildOfClass(className: "MessagingService"): MessagingService | undefined;
+	FindFirstAncestorWhichIsA(className: "MessagingService"): MessagingService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "MessagingService"): MessagingService;
+}
+
 // Mouse
 interface Rbx_Mouse extends Rbx_Instance {
 	/** The CoordinateFrame of where the Mouse ray is currently hitting a 3D object in the Workspace.  If the mouse is not over any 3D objects in the Workspace, this property is nil. */
@@ -4565,13 +4712,14 @@ interface Rbx_NetworkSettings extends Rbx_Instance {
 	PrintSplitMessage: boolean;
 	PrintStreamInstanceQuota: boolean;
 	PrintTouches: boolean;
+	ProxyEnabled: boolean;
+	ProxyURL: string;
 	ReceiveRate: number;
 	RenderStreamedRegions: boolean;
 	ShowActiveAnimationAsset: boolean;
 	TouchSendRate: number;
 	TrackDataTypes: boolean;
 	TrackPhysicsDetails: boolean;
-	UseInstancePacketCache: boolean;
 	UsePhysicsPacketCache: boolean;
 }
 type NetworkSettings = Rbx_NetworkSettings & Base<Rbx_NetworkSettings> & AnyIndex;
@@ -4649,6 +4797,7 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	LocalTransparencyModifier: number;
 	/** Determines whether building tools (in-game and studio) can manipulate this Part.  If true, no editing allowed.  If false, editing is allowed. */
 	Locked: boolean;
+	/** If true the part will be massless when welded to another part that is not massless. The part will still have mass like a normal part if it is an assembly root part according to GetRootPart(). */
 	Massless: boolean;
 	/** Specifies the look and feel the Part should have.  Note: this does not define the color the Part is, see BrickColor for that. [More info](http://wiki.roblox.com/index.php/Material) */
 	Material: Enum.Material;
@@ -4666,6 +4815,7 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	RightParamB: number;
 	RightSurface: Enum.SurfaceType;
 	RightSurfaceInput: Enum.InputType;
+	/** An integer from -127 to 127. Compares before other all other part properties besides massless for deciding which part is the assembly root part according to GetRootPart(). */
 	RootPriority: number;
 	RotVelocity: Vector3;
 	Rotation: Vector3;
@@ -5376,6 +5526,7 @@ interface Rbx_Player extends Rbx_Instance {
 	IsInGroup(groupId: number): boolean;
 	/** Loads in a new character for this player.  This will replace the player's current character, if they have one. This should be used in conjunction with Players.CharacterAutoLoads to control spawning of characters. This function only works from a server-side script (NOT a LocalScript). */
 	LoadCharacter(): void;
+	LoadCharacterWithHumanoidDescription(humanoidDescription: Instance): void;
 	Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
 	/** Fired periodically after the user has been AFK for a while.  Currently this event is only fired for the *local* Player.  "time" is the time in seconds that the user has been idle. */
 	Idled: RBXScriptSignal<(time: number) => void>;
@@ -5425,6 +5576,8 @@ interface Rbx_Players extends Rbx_Instance {
 	readonly ClassicChat: boolean;
 	readonly MaxPlayers: number;
 	readonly PreferredPlayers: number;
+	GetHumanoidDescriptionFromOutfitId(outfitId: number): Instance | undefined;
+	GetHumanoidDescriptionFromUserId(userId: number): Instance | undefined;
 	GetNameFromUserIdAsync(userId: number): string;
 	GetUserIdFromNameAsync(userName: string): number;
 }
@@ -5460,6 +5613,7 @@ interface Rbx_Instance {
 // PluginAction
 interface Rbx_PluginAction extends Rbx_Instance {
 	readonly ActionId: string;
+	readonly AllowBinding: boolean;
 	readonly StatusTip: string;
 	readonly Text: string;
 }
@@ -5522,6 +5676,56 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "PluginManager"): PluginManager | undefined;
 	FindFirstChildOfClass(className: "PluginManager"): PluginManager | undefined;
 	FindFirstAncestorWhichIsA(className: "PluginManager"): PluginManager | undefined;
+}
+
+// PluginMenu
+interface Rbx_PluginMenu extends Rbx_Instance {
+	Icon: string;
+	Title: string;
+}
+interface PluginMenu extends Rbx_PluginMenu, Base<Rbx_PluginMenu>, AnyIndex {}
+declare abstract class PluginMenu {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "PluginMenu"): this is PluginMenu;
+	FindFirstAncestorOfClass(className: "PluginMenu"): PluginMenu | undefined;
+	FindFirstAncestorWhichIsA(className: "PluginMenu"): PluginMenu | undefined;
+	FindFirstChildOfClass(className: "PluginMenu"): PluginMenu | undefined;
+	FindFirstAncestorWhichIsA(className: "PluginMenu"): PluginMenu | undefined;
+}
+
+// PluginToolbar
+interface Rbx_PluginToolbar extends Rbx_Instance {
+}
+interface PluginToolbar extends Rbx_PluginToolbar, Base<Rbx_PluginToolbar>, AnyIndex {}
+declare abstract class PluginToolbar {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "PluginToolbar"): this is PluginToolbar;
+	FindFirstAncestorOfClass(className: "PluginToolbar"): PluginToolbar | undefined;
+	FindFirstAncestorWhichIsA(className: "PluginToolbar"): PluginToolbar | undefined;
+	FindFirstChildOfClass(className: "PluginToolbar"): PluginToolbar | undefined;
+	FindFirstAncestorWhichIsA(className: "PluginToolbar"): PluginToolbar | undefined;
+}
+
+// PluginToolbarButton
+interface Rbx_PluginToolbarButton extends Rbx_Instance {
+	ClickableWhenViewportHidden: boolean;
+	Enabled: boolean;
+	Icon: string;
+}
+interface PluginToolbarButton extends Rbx_PluginToolbarButton, Base<Rbx_PluginToolbarButton>, AnyIndex {}
+declare abstract class PluginToolbarButton {
+	constructor(parent?: Instance);
+}
+interface Rbx_Instance {
+	IsA(className: "PluginToolbarButton"): this is PluginToolbarButton;
+	FindFirstAncestorOfClass(className: "PluginToolbarButton"): PluginToolbarButton | undefined;
+	FindFirstAncestorWhichIsA(className: "PluginToolbarButton"): PluginToolbarButton | undefined;
+	FindFirstChildOfClass(className: "PluginToolbarButton"): PluginToolbarButton | undefined;
+	FindFirstAncestorWhichIsA(className: "PluginToolbarButton"): PluginToolbarButton | undefined;
 }
 
 // PointsService
@@ -5744,11 +5948,13 @@ interface Rbx_Instance {
 interface Rbx_ReflectionMetadataItem extends Rbx_Instance {
 	Browsable: boolean;
 	ClassCategory: string;
+	ClientOnly: boolean;
 	Constraint: string;
 	Deprecated: boolean;
 	EditingDisabled: boolean;
 	IsBackend: boolean;
 	ScriptContext: string;
+	ServerOnly: boolean;
 	UIMaximum: number;
 	UIMinimum: number;
 	UINumTicks: number;
@@ -6796,10 +7002,26 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "TotalCountTimeIntervalItem"): TotalCountTimeIntervalItem | undefined;
 }
 
+// StopWatchReporter
+interface Rbx_StopWatchReporter extends Rbx_Instance {
+}
+type StopWatchReporter = Rbx_StopWatchReporter & Base<Rbx_StopWatchReporter> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "StopWatchReporter"): this is StopWatchReporter;
+	FindFirstAncestorOfClass(className: "StopWatchReporter"): StopWatchReporter | undefined;
+	FindFirstAncestorWhichIsA(className: "StopWatchReporter"): StopWatchReporter | undefined;
+	FindFirstChildOfClass(className: "StopWatchReporter"): StopWatchReporter | undefined;
+	FindFirstAncestorWhichIsA(className: "StopWatchReporter"): StopWatchReporter | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "StopWatchReporter"): StopWatchReporter;
+}
+
 // Studio
 interface Rbx_Studio extends Rbx_Instance {
 	["Always Save Script Changes"]: boolean;
 	["Animate Hover Over"]: boolean;
+	["Attach Debugger To"]: Enum.DEPRECATED_DebuggerDataModelPreference;
 	["Auto Indent"]: boolean;
 	["Auto-Save Enabled"]: boolean;
 	["Auto-Save Interval (Minutes)"]: number;
@@ -6810,9 +7032,9 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Camera Mouse Wheel Speed"]: number;
 	["Camera Shift Speed"]: number;
 	["Camera Speed"]: number;
+	["Camera Zoom to Mouse Position"]: boolean;
 	["Clear Output On Start"]: boolean;
 	["Comment Color"]: Color3;
-	["Debug Client In APS Mode"]: boolean;
 	DefaultScriptFileDir: QDir;
 	DeprecatedObjectsShown: boolean;
 	["Device Pairing Code"]: number;
@@ -6825,9 +7047,11 @@ interface Rbx_Studio extends Rbx_Instance {
 	Font: QFont;
 	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
 	["Hover Over Color"]: Color3;
+	["Import mesh files as single mesh"]: boolean;
 	["Keyword Color"]: Color3;
 	["Line Thickness"]: number;
 	LuaDebuggerEnabled: boolean;
+	readonly LuaDebuggerEnabledAtStartup: boolean;
 	["Matching Word Background Color"]: Color3;
 	["Maximum Output Lines"]: number;
 	["Number Color"]: Color3;
@@ -6862,7 +7086,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Text Color"]: Color3;
 	["Text Wrapping"]: boolean;
 	Theme: Instance | undefined;
-	["UI Theme"]: Enum.UITheme;
+	readonly ["UI Theme"]: Enum.UITheme;
 	["Warning Color"]: Color3;
 }
 type Studio = Rbx_Studio & Base<Rbx_Studio> & AnyIndex;
@@ -7101,21 +7325,6 @@ interface Rbx_Instance {
 }
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "TimerService"): TimerService;
-}
-
-// Toolbar
-interface Rbx_Toolbar extends Rbx_Instance {
-}
-interface Toolbar extends Rbx_Toolbar, Base<Rbx_Toolbar>, AnyIndex {}
-declare abstract class Toolbar {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Toolbar"): this is Toolbar;
-	FindFirstAncestorOfClass(className: "Toolbar"): Toolbar | undefined;
-	FindFirstAncestorWhichIsA(className: "Toolbar"): Toolbar | undefined;
-	FindFirstChildOfClass(className: "Toolbar"): Toolbar | undefined;
-	FindFirstAncestorWhichIsA(className: "Toolbar"): Toolbar | undefined;
 }
 
 // TouchInputService
@@ -7567,6 +7776,8 @@ interface Rbx_UserGameSettings extends Rbx_Instance {
 	GamepadCameraSensitivity: number;
 	MasterVolume: number;
 	MouseSensitivity: number;
+	RCCProfilerRecordFrameRate: number;
+	RCCProfilerRecordTimeFrame: number;
 	RotationType: Enum.RotationType;
 	SavedQualityLevel: Enum.SavedQualitySetting;
 	TouchCameraMovementMode: Enum.TouchCameraMovementMode;
@@ -7993,6 +8204,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // WeldConstraint
 interface Rbx_WeldConstraint extends Rbx_Instance {
+	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
 	readonly Active: boolean;
 	Enabled: boolean;
 	Part0: BasePart;

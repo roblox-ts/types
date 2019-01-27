@@ -347,6 +347,10 @@ declare namespace Enum {
 		Follow = 2,
 		Classic = 1
 	}
+	enum DEPRECATED_DebuggerDataModelPreference {
+		Server = 0,
+		Client = 1
+	}
 	enum DataStoreRequestType {
 		GetAsync = 0,
 		SetIncrementAsync = 1,
@@ -492,7 +496,11 @@ declare namespace Enum {
 		SciFi = 12,
 		Arcade = 13,
 		Fantasy = 14,
-		Antique = 15
+		Antique = 15,
+		Gotham = 17,
+		GothamSemibold = 18,
+		GothamBold = 19,
+		GothamBlack = 20
 	}
 	enum FontSize {
 		Size8 = 0,
@@ -643,7 +651,8 @@ declare namespace Enum {
 		MarketplaceService = 2,
 		Players = 7,
 		Chat = 15,
-		Avatar = 16
+		Avatar = 16,
+		Analytics = 22
 	}
 	enum HumanoidDisplayDistanceType {
 		Viewer = 0,
@@ -1475,7 +1484,8 @@ declare namespace Enum {
 		CheckedFieldBorder = 79,
 		CheckedFieldIndicator = 80,
 		HeaderSection = 81,
-		Midlight = 82
+		Midlight = 82,
+		StatusBar = 83
 	}
 	enum StudioStyleGuideModifier {
 		Default = 0,
