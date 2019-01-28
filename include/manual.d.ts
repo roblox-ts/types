@@ -796,17 +796,17 @@ interface Rbx_Workspace extends Rbx_Model {
 		ignoreDescendantsInstance?: Instance,
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean
-	): [BasePart, Vector3, Vector3, Enum.Material];
+	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
 	/** Return type is (BasePart, Vector3) if the ray hits.  If it misses it will return (nil, PointAtEndOfRay) */
 	FindPartOnRayWithIgnoreList(
 		ray: Ray,
 		ignoreDescendantsTable: Array<Instance>,
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean
-	): [BasePart, Vector3, Vector3, Enum.Material];
+	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
 	FindPartOnRayWithWhitelist(
 		ray: Ray,
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean
-	): [BasePart, Vector3, Vector3, Enum.Material];
+	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
 }

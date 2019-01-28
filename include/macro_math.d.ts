@@ -16,11 +16,15 @@ declare interface CFrame {
 declare interface UDim {
 	/** macro for UDim + UDim */
 	add(udim: UDim): UDim;
+	/** macro for UDim - UDim */
+	sub(udim: UDim): UDim;
 }
 
 declare interface UDim2 {
 	/** macro for UDim2 + UDim2 */
 	add(udim2: UDim2): UDim2;
+	/** macro for UDim2 - UDim2 */
+	sub(udim2: UDim2): UDim2;
 }
 
 declare interface Vector2 {

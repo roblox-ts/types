@@ -146,7 +146,7 @@ interface String {
 	byte(i?: number, j?: number): number;
 
 	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if `plain` is given, then `init` must be given as well. */
-	find(pattern: string, init?: number, plain?: boolean): [number, number];
+	find(pattern: string, init?: number, plain?: boolean): [number, number] | undefined;
 
 	/** Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). */
 	format(...args: Array<number | string>): string;
@@ -264,7 +264,7 @@ declare namespace math {
 	function fmod(x: number, y: number): number;
 
 	/** Returns m and e such that x = m*2^e, e is an integer and the absolute value of m is in the range [0.5, 1) (or zero when x is zero). */
-	function frexp(n: number): number;
+	function frexp(n: number): [number, number];
 
 	/** Returns m*2^e (e should be an integer). */
 	function ldexp(m: number, e: number): number;
