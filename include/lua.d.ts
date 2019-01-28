@@ -264,7 +264,7 @@ declare namespace math {
 	function fmod(x: number, y: number): number;
 
 	/** Returns m and e such that x = m*2^e, e is an integer and the absolute value of m is in the range [0.5, 1) (or zero when x is zero). */
-	function frexp(n: number): number;
+	function frexp(n: number): [number, number];
 
 	/** Returns m*2^e (e should be an integer). */
 	function ldexp(m: number, e: number): number;
