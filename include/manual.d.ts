@@ -279,6 +279,8 @@ interface Rbx_HttpService extends Rbx_Instance {
 }
 
 interface Rbx_Humanoid extends Rbx_Instance {
+	ApplyDescription(humanoidDescription: HumanoidDescription): void;
+	GetAppliedDescription(): HumanoidDescription;
 	GetPlayingAnimationTracks(): Array<AnimationTrack>;
 	LoadAnimation(animation: Animation): AnimationTrack;
 	AddAccessory(accessory: Accessory): void;
@@ -565,6 +567,7 @@ interface Rbx_Player extends Rbx_Instance {
 	ReplicationFocus: BasePart | undefined;
 	GetFriendsOnline(maxFriends?: number): Array<FriendOnlineInfo>;
 	GetMouse(): PlayerMouse;
+	LoadCharacterWithHumanoidDescription(humanoidDescription: HumanoidDescription): void;
 	CharacterAdded: RBXScriptSignal<(character: Model) => void>;
 	CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
 	CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
@@ -603,6 +606,8 @@ interface CharacterAppearanceInfo {
 interface Rbx_Players extends Rbx_Instance {
 	/** @rbx-client */
 	LocalPlayer: Player | undefined;
+	GetHumanoidDescriptionFromOutfitId(outfitId: number): HumanoidDescription;
+	GetHumanoidDescriptionFromUserId(userId: number): HumanoidDescription;
 	GetPlayerFromCharacter(character: Model): Player | undefined;
 	GetCharacterAppearanceAsync(userId: number): Model | undefined;
 	GetCharacterAppearanceInfoAsync(userId: number): CharacterAppearanceInfo;
