@@ -3541,7 +3541,6 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	WalkToPoint: Vector3;
 	BuildRigFromAttachments(): void;
 	ChangeState(state?: Enum.HumanoidStateType): void;
-	GetAppliedDescription(): Instance | undefined;
 	GetState(): Enum.HumanoidStateType;
 	GetStateEnabled(state: Enum.HumanoidStateType): boolean;
 	Move(moveDirection: Vector3, relativeToCamera?: boolean): void;
@@ -3551,7 +3550,6 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	TakeDamage(amount: number): void;
 	/** Takes any active gear/tools that the Humanoid is using and puts them into the backpack.  This function only works on Humanoids with a corresponding Player. */
 	UnequipTools(): void;
-	ApplyDescription(humanoidDescription: Instance): void;
 	Climbing: RBXScriptSignal<(speed: number) => void>;
 	Died: RBXScriptSignal<() => void>;
 	FallingDown: RBXScriptSignal<(active: boolean) => void>;
@@ -5526,7 +5524,6 @@ interface Rbx_Player extends Rbx_Instance {
 	IsInGroup(groupId: number): boolean;
 	/** Loads in a new character for this player.  This will replace the player's current character, if they have one. This should be used in conjunction with Players.CharacterAutoLoads to control spawning of characters. This function only works from a server-side script (NOT a LocalScript). */
 	LoadCharacter(): void;
-	LoadCharacterWithHumanoidDescription(humanoidDescription: Instance): void;
 	Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
 	/** Fired periodically after the user has been AFK for a while.  Currently this event is only fired for the *local* Player.  "time" is the time in seconds that the user has been idle. */
 	Idled: RBXScriptSignal<(time: number) => void>;
@@ -5576,8 +5573,6 @@ interface Rbx_Players extends Rbx_Instance {
 	readonly ClassicChat: boolean;
 	readonly MaxPlayers: number;
 	readonly PreferredPlayers: number;
-	GetHumanoidDescriptionFromOutfitId(outfitId: number): Instance | undefined;
-	GetHumanoidDescriptionFromUserId(userId: number): Instance | undefined;
 	GetNameFromUserIdAsync(userId: number): string;
 	GetUserIdFromNameAsync(userName: string): number;
 }
