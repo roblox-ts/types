@@ -6511,6 +6511,24 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Smoke"): Smoke | undefined;
 }
 
+// SocialService
+interface Rbx_SocialService extends Rbx_Instance {
+	PromptGameInvite(player: Instance): void;
+	CanSendGameInviteAsync(player: Instance): boolean;
+	GameInvitePromptClosed: RBXScriptSignal<(player: Instance, recipientIds: Array<any>) => void>;
+}
+type SocialService = Rbx_SocialService & Base<Rbx_SocialService> & AnyIndex;
+interface Rbx_Instance {
+	IsA(className: "SocialService"): this is SocialService;
+	FindFirstAncestorOfClass(className: "SocialService"): SocialService | undefined;
+	FindFirstAncestorWhichIsA(className: "SocialService"): SocialService | undefined;
+	FindFirstChildOfClass(className: "SocialService"): SocialService | undefined;
+	FindFirstAncestorWhichIsA(className: "SocialService"): SocialService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "SocialService"): SocialService;
+}
+
 // Sound
 interface Rbx_Sound extends Rbx_Instance {
 	EmitterSize: number;
