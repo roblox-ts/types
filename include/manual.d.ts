@@ -103,7 +103,7 @@ interface Rbx_CollectionService extends Rbx_Instance {
 }
 
 interface Rbx_ContentProvider extends Rbx_Instance {
-	PreloadAsync(contentIdList: Array<string>): void;
+	PreloadAsync(contentIdList: Array<Instance>): void;
 }
 
 interface Rbx_ContextActionService extends Rbx_Instance {
@@ -264,11 +264,13 @@ interface Rbx_HttpService extends Rbx_Instance {
 }
 
 interface Rbx_Humanoid extends Rbx_Instance {
+	ApplyDescription(humanoidDescription: HumanoidDescription): void;
+	GetAppliedDescription(): HumanoidDescription;
 	GetPlayingAnimationTracks(): Array<AnimationTrack>;
-	LoadAnimation(animation: Instance): AnimationTrack;
+	LoadAnimation(animation: Animation): AnimationTrack;
 	AddAccessory(accessory: Accessory): void;
 	/** Takes a specified tool and equips it to the Humanoid's Character.  Tool argument should be of type 'Tool'. */
-	EquipTool(tool: BasePart): void;
+	EquipTool(tool: Tool): void;
 	GetAccessories(): Array<Accessory>;
 	GetLimb(part: BasePart): Enum.Limb;
 	/** Returns a Enum.BodyPartR15 given a body part in the Humanoid's Character. */
@@ -329,7 +331,7 @@ interface Rbx_InsertService extends Rbx_Instance {
 
 interface Rbx_Instance {
 	/** Returns a copy of this Object and all its children. The copy's Parent is nil */
-	Clone(): Instance;
+	Clone(): this;
 	/** Returns an array containing all of the descendants of the instance. Returns in preorder traversal, or in other words, where the parents come before their children, depth first. */
 	GetDescendants(): Array<Instance>;
 	/** Returns the first ancestor of this Instance that matches the first argument 'name'.  The function will return nil if no Instance is found. */
@@ -338,6 +340,18 @@ interface Rbx_Instance {
 	FindFirstChild<T extends Instance = Instance>(name: string, recursive?: boolean): T | undefined;
 	WaitForChild<T extends Instance = Instance>(childName: string): T;
 	WaitForChild<T extends Instance = Instance>(childName: string, timeOut: number): T | undefined;
+}
+
+interface Rbx_Keyframe extends Rbx_Instance {
+	AddPose(pose: Pose): void;
+	GetPoses(): Array<Pose>;
+	RemovePose(pose: Pose): void;
+}
+
+interface Rbx_KeyframeSequence extends Rbx_Instance {
+	AddKeyframe(keyframe: Keyframe): void;
+	GetKeyframes(): Array<Keyframe>;
+	RemoveKeyframe(keyframe: Keyframe): void;
 }
 
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
@@ -375,15 +389,81 @@ interface Rbx_LogService extends Rbx_Instance {
 }
 
 interface ReceiptInfo {
-	PurchaseId: string;
+	/** the id of the player making the purchase */
 	PlayerId: number;
-	ProductId: number;
-	CurrencySpent: number;
-	CurrencyType: Enum.CurrencyType;
+	/** the specific place where the purchase was made */
 	PlaceIdWherePurchased: number;
+	/** a unique identifier for the purchase, should be used to prevent granting an item multiple times for one purchase */
+	PurchaseId: string;
+	/** the id of the purchased product */
+	ProductId: number;
+	/** the type of currency used (Tix, Robux) */
+	CurrencyType: Enum.CurrencyType;
+	/** the amount of currency spent on the product for this purchase */
+	CurrencySpent: number;
+}
+
+interface ProductInfo {
+	/** The name shown on the asset's page */
+	Name: string;
+	/** The description as shown on the asset's page; can be nil if blank. */
+	Description: string;
+	/** The cost of purchasing the asset using Robux */
+	PriceInRobux: number;
+	/** Timestamp of when the asset was created, e.g. `2018-08-01T17:55:11.98Z` */
+	Created: string;
+	/** Timestamp of when the asset was last updated by its creator, e.g. `2018-08-01T17:55:11.98Z` */
+	Updated: string;
+	/** Indicates whether the item is marked as 13+ in catalog */
+	ContentRatingTypeId: number;
+	/** The minimum Builder's Club subscription necessary to purchase the item */
+	MinimumMembershipLevel: number;
+	/** Describes whether the asset can be taken for free */
+	IsPublicDomain: boolean;
+	/** A table of information describing the creator of the asset */
+	Creator: {
+		/** Either `User` or `Group` */
+		CreatorType: "User" | "Group";
+		/** The ID of the creator user or group */
+		CreatorTargetId: number;
+		/** The name/username of the creator */
+		Name: string;
+	};
+	IconImageAssetId: number;
+	TargetId: number;
+}
+
+interface AssetProductInfo extends ProductInfo {
+	/** If InfoType was Asset, this is the ID of the given asset. */
+	AssetId: number;
+	/** The [type of asset](https://developer.roblox.com/articles/Asset-types) (e.g. place, model, shirt) */
+	AssetTypeId: number;
+	/** Describes whether the asset is purchasable */
+	IsForSale: boolean;
+	/** Describes whether the asset is a "limited item" that is no longer (if ever) sold */
+	IsLimited: boolean;
+	/** Describes whether the asset is a "limited unique" ("Limited U") item that only has a fixed number sold */
+	IsLimitedUnique: boolean;
+	/** Describes whether the asset is marked as "new" in the catalog */
+	IsNew: boolean;
+	/** The remaining number of items a limited unique item may be sold */
+	Remaining: number;
+	/** The number of items the asset has been sold */
+	Sales: number;
+}
+
+interface DeveloperProductInfo extends ProductInfo {
+	/** If the InfoType was Product, this is the product's ID */
+	ProductId: number;
 }
 
 interface Rbx_MarketplaceService extends Rbx_Instance {
+	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
+	GetProductInfo(assetId: number, infoType: Enum.InfoType.Asset): AssetProductInfo;
+	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
+	GetProductInfo(assetId: number, infoType: Enum.InfoType.Product): DeveloperProductInfo;
+	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
+	GetProductInfo(assetId: number, infoType: Enum.InfoType.GamePass): AssetProductInfo;
 	PromptGamePassPurchase(player: Player, gamePassId: number): void;
 	PromptProductPurchase(
 		player: Player,
@@ -431,6 +511,18 @@ interface Rbx_Path extends Rbx_Instance {
 	GetWaypoints(): Array<PathWaypoint>;
 }
 
+interface AgentParameters {
+	/** Humanoid radius. Used to determine the minimum separation from obstacles. */
+	AgentRadius?: number;
+	/** Humanoid height. Empty space smaller than this value, like the space under stairs, will be marked as non-traversable. */
+	AgentHeight?: number;
+}
+
+interface Rbx_PathfindingService extends Rbx_Instance {
+	FindPathAsync(start: Vector3, finish: Vector3): Path;
+	CreatePath(agentParameters?: AgentParameters): Path;
+}
+
 interface CollisionGroupInfo {
 	id: number;
 	mask: number;
@@ -457,6 +549,7 @@ interface Rbx_Player extends Rbx_Instance {
 	ReplicationFocus: BasePart | undefined;
 	GetFriendsOnline(maxFriends?: number): Array<FriendOnlineInfo>;
 	GetMouse(): PlayerMouse;
+	LoadCharacterWithHumanoidDescription(humanoidDescription: HumanoidDescription): void;
 	CharacterAdded: RBXScriptSignal<(character: Model) => void>;
 	CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
 	CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
@@ -495,6 +588,8 @@ interface CharacterAppearanceInfo {
 interface Rbx_Players extends Rbx_Instance {
 	/** @rbx-client */
 	LocalPlayer: Player | undefined;
+	GetHumanoidDescriptionFromOutfitId(outfitId: number): HumanoidDescription;
+	GetHumanoidDescriptionFromUserId(userId: number): HumanoidDescription;
 	GetPlayerFromCharacter(character: Model): Player | undefined;
 	GetCharacterAppearanceAsync(userId: number): Model | undefined;
 	GetCharacterAppearanceInfoAsync(userId: number): CharacterAppearanceInfo;
@@ -641,9 +736,19 @@ interface Rbx_TeleportService {
 	>;
 }
 
+type ReadVoxelsArray<T> = T[][][] & {
+	Size: Vector3;
+};
+
 interface Rbx_Terrain extends Rbx_BasePart {
-	ReadVoxels(region: Region3, resolution: number): [Enum.Material[][][], number[][][]];
+	CopyRegion(region: Region3int16): TerrainRegion;
+	PasteRegion(region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): void;
+	ReadVoxels(region: Region3, resolution: number): [ReadVoxelsArray<Enum.Material>, ReadVoxelsArray<number>];
 	WriteVoxels(region: Region3, resolution: number, materials: Enum.Material[][][], occupancy: number[][][]): void;
+}
+
+interface Rbx_Tool extends Rbx_BackpackItem {
+	Equipped: RBXScriptSignal<(mouse: Mouse) => void>;
 }
 
 type Tweenable = number | boolean | CFrame | Rect | Color3 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3;
@@ -678,17 +783,17 @@ interface Rbx_Workspace extends Rbx_Model {
 		ignoreDescendantsInstance?: Instance,
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean
-	): [BasePart, Vector3, Vector3, Enum.Material];
+	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
 	/** Return type is (BasePart, Vector3) if the ray hits.  If it misses it will return (nil, PointAtEndOfRay) */
 	FindPartOnRayWithIgnoreList(
 		ray: Ray,
 		ignoreDescendantsTable: Array<Instance>,
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean
-	): [BasePart, Vector3, Vector3, Enum.Material];
+	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
 	FindPartOnRayWithWhitelist(
 		ray: Ray,
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean
-	): [BasePart, Vector3, Vector3, Enum.Material];
+	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
 }

@@ -3160,7 +3160,6 @@ interface Rbx_Tool extends Rbx_BackpackItem {
 	Deactivate(): void;
 	Activated: RBXScriptSignal<() => void>;
 	Deactivated: RBXScriptSignal<() => void>;
-	Equipped: RBXScriptSignal<(mouse: Instance) => void>;
 	Unequipped: RBXScriptSignal<() => void>;
 }
 type Tool = Rbx_Tool & Indexable<Rbx_Tool>;
@@ -3383,7 +3382,6 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	WalkToPoint: Vector3;
 	BuildRigFromAttachments(): void;
 	ChangeState(state?: Enum.HumanoidStateType): void;
-	GetAppliedDescription(): Instance | undefined;
 	GetState(): Enum.HumanoidStateType;
 	GetStateEnabled(state: Enum.HumanoidStateType): boolean;
 	Move(moveDirection: Vector3, relativeToCamera?: boolean): void;
@@ -3393,7 +3391,6 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	TakeDamage(amount: number): void;
 	/** Takes any active gear/tools that the Humanoid is using and puts them into the backpack.  This function only works on Humanoids with a corresponding Player. */
 	UnequipTools(): void;
-	ApplyDescription(humanoidDescription: Instance): void;
 	Climbing: RBXScriptSignal<(speed: number) => void>;
 	Died: RBXScriptSignal<() => void>;
 	FallingDown: RBXScriptSignal<(active: boolean) => void>;
@@ -3771,11 +3768,8 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Keyframe extends Rbx_Instance {
 	Time: number;
 	AddMarker(marker: Instance): void;
-	AddPose(pose: Instance): void;
 	GetMarkers(): Array<Instance>;
-	GetPoses(): Array<Instance>;
 	RemoveMarker(marker: Instance): void;
-	RemovePose(pose: Instance): void;
 }
 type Keyframe = Rbx_Keyframe & Indexable<Rbx_Keyframe>;
 interface Rbx_Instance {
@@ -3809,9 +3803,6 @@ interface InstanceConstructor {
 interface Rbx_KeyframeSequence extends Rbx_Instance {
 	Loop: boolean;
 	Priority: Enum.AnimationPriority;
-	AddKeyframe(keyframe: Instance): void;
-	GetKeyframes(): Array<Instance>;
-	RemoveKeyframe(keyframe: Instance): void;
 }
 type KeyframeSequence = Rbx_KeyframeSequence & Indexable<Rbx_KeyframeSequence>;
 interface Rbx_Instance {
@@ -4219,8 +4210,6 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // MarketplaceService
 interface Rbx_MarketplaceService extends Rbx_Instance {
 	GetDeveloperProductsAsync(): Instance | undefined;
-	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
-	GetProductInfo(assetId: number, infoType?: Enum.InfoType): object;
 	UserOwnsGamePassAsync(userId: number, gamePassId: number): boolean;
 }
 type MarketplaceService = Rbx_MarketplaceService & Indexable<Rbx_MarketplaceService>;
@@ -4851,13 +4840,11 @@ interface Rbx_Terrain extends Rbx_BasePart {
 	CellCenterToWorld(x: number, y: number, z: number): Vector3;
 	CellCornerToWorld(x: number, y: number, z: number): Vector3;
 	Clear(): void;
-	CopyRegion(region: Region3int16): Instance | undefined;
 	CountCells(): number;
 	FillBall(center: Vector3, radius: number, material: Enum.Material): void;
 	FillBlock(cframe: CFrame, size: Vector3, material: Enum.Material): void;
 	FillRegion(region: Region3, resolution: number, material: Enum.Material): void;
 	GetMaterialColor(material: Enum.Material): Color3;
-	PasteRegion(region: Instance, corner: Vector3int16, pasteEmptyCells: boolean): void;
 	SetMaterialColor(material: Enum.Material, value: Color3): void;
 	WorldToCell(position: Vector3): Vector3;
 	WorldToCellPreferEmpty(position: Vector3): Vector3;
@@ -5270,7 +5257,6 @@ interface Rbx_Player extends Rbx_Instance {
 	IsInGroup(groupId: number): boolean;
 	/** Loads in a new character for this player.  This will replace the player's current character, if they have one. This should be used in conjunction with Players.CharacterAutoLoads to control spawning of characters. This function only works from a server-side script (NOT a LocalScript). */
 	LoadCharacter(): void;
-	LoadCharacterWithHumanoidDescription(humanoidDescription: Instance): void;
 	Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
 	/** Fired periodically after the user has been AFK for a while.  Currently this event is only fired for the *local* Player.  "time" is the time in seconds that the user has been idle. */
 	Idled: RBXScriptSignal<(time: number) => void>;
@@ -5316,8 +5302,6 @@ interface Rbx_Players extends Rbx_Instance {
 	readonly ClassicChat: boolean;
 	readonly MaxPlayers: number;
 	readonly PreferredPlayers: number;
-	GetHumanoidDescriptionFromOutfitId(outfitId: number): Instance | undefined;
-	GetHumanoidDescriptionFromUserId(userId: number): Instance | undefined;
 	GetNameFromUserIdAsync(userId: number): string;
 	GetUserIdFromNameAsync(userName: string): number;
 }
