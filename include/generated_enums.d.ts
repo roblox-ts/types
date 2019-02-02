@@ -652,7 +652,8 @@ declare namespace Enum {
 		Players = 7,
 		Chat = 15,
 		Avatar = 16,
-		Analytics = 22
+		Analytics = 22,
+		Localization = 24
 	}
 	enum HumanoidDisplayDistanceType {
 		Viewer = 0,
