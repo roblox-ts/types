@@ -247,8 +247,9 @@ declare class PhysicalProperties {
 
 declare class Random {
 	constructor(seed?: number);
-	NextNumber(min?: number, max?: number): number;
-	NextInteger(min?: number, max?: number): number;
+	NextInteger(min: number, max: number): number;
+	NextNumber(): number;
+	NextNumber(min: number, max: number): number;
 	Clone(): Random;
 }
 
