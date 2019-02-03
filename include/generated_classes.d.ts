@@ -5,6 +5,213 @@
 /// <reference path="manual.d.ts" />
 /// <reference path="generated_enums.d.ts" />
 
+// CREATABLE LOOKUP TABLE
+
+interface CreatableLookup {
+	Accoutrement: Accoutrement;
+	Accessory: Accessory;
+	Hat: Hat;
+	AdvancedDragger: AdvancedDragger;
+	Animation: Animation;
+	AnimationController: AnimationController;
+	Animator: Animator;
+	Attachment: Attachment;
+	Beam: Beam;
+	BindableEvent: BindableEvent;
+	BindableFunction: BindableFunction;
+	BodyAngularVelocity: BodyAngularVelocity;
+	BodyForce: BodyForce;
+	BodyGyro: BodyGyro;
+	BodyPosition: BodyPosition;
+	BodyThrust: BodyThrust;
+	BodyVelocity: BodyVelocity;
+	RocketPropulsion: RocketPropulsion;
+	Camera: Camera;
+	BodyColors: BodyColors;
+	CharacterMesh: CharacterMesh;
+	Pants: Pants;
+	Shirt: Shirt;
+	ShirtGraphic: ShirtGraphic;
+	Skin: Skin;
+	ClickDetector: ClickDetector;
+	Configuration: Configuration;
+	AlignOrientation: AlignOrientation;
+	AlignPosition: AlignPosition;
+	BallSocketConstraint: BallSocketConstraint;
+	HingeConstraint: HingeConstraint;
+	LineForce: LineForce;
+	RodConstraint: RodConstraint;
+	RopeConstraint: RopeConstraint;
+	CylindricalConstraint: CylindricalConstraint;
+	PrismaticConstraint: PrismaticConstraint;
+	SpringConstraint: SpringConstraint;
+	Torque: Torque;
+	VectorForce: VectorForce;
+	HumanoidController: HumanoidController;
+	SkateboardController: SkateboardController;
+	VehicleController: VehicleController;
+	CustomEvent: CustomEvent;
+	CustomEventReceiver: CustomEventReceiver;
+	BlockMesh: BlockMesh;
+	CylinderMesh: CylinderMesh;
+	FileMesh: FileMesh;
+	SpecialMesh: SpecialMesh;
+	DebuggerWatch: DebuggerWatch;
+	Dialog: Dialog;
+	DialogChoice: DialogChoice;
+	Dragger: Dragger;
+	Explosion: Explosion;
+	Decal: Decal;
+	Texture: Texture;
+	Hole: Hole;
+	MotorFeature: MotorFeature;
+	Fire: Fire;
+	Folder: Folder;
+	ForceField: ForceField;
+	FunctionalTest: FunctionalTest;
+	GameSettings: GameSettings;
+	Frame: Frame;
+	ImageButton: ImageButton;
+	TextButton: TextButton;
+	ImageLabel: ImageLabel;
+	TextLabel: TextLabel;
+	ScrollingFrame: ScrollingFrame;
+	TextBox: TextBox;
+	ViewportFrame: ViewportFrame;
+	BillboardGui: BillboardGui;
+	ScreenGui: ScreenGui;
+	GuiMain: GuiMain;
+	SurfaceGui: SurfaceGui;
+	FloorWire: FloorWire;
+	BoxHandleAdornment: BoxHandleAdornment;
+	ConeHandleAdornment: ConeHandleAdornment;
+	CylinderHandleAdornment: CylinderHandleAdornment;
+	ImageHandleAdornment: ImageHandleAdornment;
+	LineHandleAdornment: LineHandleAdornment;
+	SphereHandleAdornment: SphereHandleAdornment;
+	ParabolaAdornment: ParabolaAdornment;
+	SelectionBox: SelectionBox;
+	SelectionSphere: SelectionSphere;
+	ArcHandles: ArcHandles;
+	Handles: Handles;
+	SurfaceSelection: SurfaceSelection;
+	SelectionPartLasso: SelectionPartLasso;
+	SelectionPointLasso: SelectionPointLasso;
+	Backpack: Backpack;
+	HopperBin: HopperBin;
+	Tool: Tool;
+	Flag: Flag;
+	Humanoid: Humanoid;
+	HumanoidDescription: HumanoidDescription;
+	RotateP: RotateP;
+	RotateV: RotateV;
+	Glue: Glue;
+	ManualGlue: ManualGlue;
+	ManualWeld: ManualWeld;
+	Motor: Motor;
+	Motor6D: Motor6D;
+	Rotate: Rotate;
+	Snap: Snap;
+	VelocityMotor: VelocityMotor;
+	Weld: Weld;
+	Keyframe: Keyframe;
+	KeyframeMarker: KeyframeMarker;
+	KeyframeSequence: KeyframeSequence;
+	PointLight: PointLight;
+	SpotLight: SpotLight;
+	SurfaceLight: SurfaceLight;
+	LocalizationTable: LocalizationTable;
+	LuaSettings: LuaSettings;
+	Script: Script;
+	LocalScript: LocalScript;
+	ModuleScript: ModuleScript;
+	Message: Message;
+	Hint: Hint;
+	CornerWedgePart: CornerWedgePart;
+	Part: Part;
+	FlagStand: FlagStand;
+	Seat: Seat;
+	SkateboardPlatform: SkateboardPlatform;
+	SpawnLocation: SpawnLocation;
+	WedgePart: WedgePart;
+	MeshPart: MeshPart;
+	PartOperation: PartOperation;
+	NegateOperation: NegateOperation;
+	UnionOperation: UnionOperation;
+	TrussPart: TrussPart;
+	VehicleSeat: VehicleSeat;
+	Model: Model;
+	PartOperationAsset: PartOperationAsset;
+	ParticleEmitter: ParticleEmitter;
+	PhysicsSettings: PhysicsSettings;
+	Player: Player;
+	PluginAction: PluginAction;
+	Pose: Pose;
+	BloomEffect: BloomEffect;
+	BlurEffect: BlurEffect;
+	ColorCorrectionEffect: ColorCorrectionEffect;
+	SunRaysEffect: SunRaysEffect;
+	ReflectionMetadata: ReflectionMetadata;
+	ReflectionMetadataCallbacks: ReflectionMetadataCallbacks;
+	ReflectionMetadataClasses: ReflectionMetadataClasses;
+	ReflectionMetadataEnums: ReflectionMetadataEnums;
+	ReflectionMetadataEvents: ReflectionMetadataEvents;
+	ReflectionMetadataFunctions: ReflectionMetadataFunctions;
+	ReflectionMetadataClass: ReflectionMetadataClass;
+	ReflectionMetadataEnum: ReflectionMetadataEnum;
+	ReflectionMetadataEnumItem: ReflectionMetadataEnumItem;
+	ReflectionMetadataMember: ReflectionMetadataMember;
+	ReflectionMetadataProperties: ReflectionMetadataProperties;
+	ReflectionMetadataYieldFunctions: ReflectionMetadataYieldFunctions;
+	RemoteEvent: RemoteEvent;
+	RemoteFunction: RemoteFunction;
+	RenderingTest: RenderingTest;
+	Sky: Sky;
+	Smoke: Smoke;
+	Sound: Sound;
+	ChorusSoundEffect: ChorusSoundEffect;
+	CompressorSoundEffect: CompressorSoundEffect;
+	DistortionSoundEffect: DistortionSoundEffect;
+	EchoSoundEffect: EchoSoundEffect;
+	EqualizerSoundEffect: EqualizerSoundEffect;
+	FlangeSoundEffect: FlangeSoundEffect;
+	PitchShiftSoundEffect: PitchShiftSoundEffect;
+	ReverbSoundEffect: ReverbSoundEffect;
+	TremoloSoundEffect: TremoloSoundEffect;
+	SoundGroup: SoundGroup;
+	Sparkles: Sparkles;
+	StarterGear: StarterGear;
+	StarterPlayerScripts: StarterPlayerScripts;
+	StarterCharacterScripts: StarterCharacterScripts;
+	Team: Team;
+	TerrainRegion: TerrainRegion;
+	Trail: Trail;
+	Tween: Tween;
+	UIAspectRatioConstraint: UIAspectRatioConstraint;
+	UISizeConstraint: UISizeConstraint;
+	UITextSizeConstraint: UITextSizeConstraint;
+	UIGridLayout: UIGridLayout;
+	UIListLayout: UIListLayout;
+	UIPageLayout: UIPageLayout;
+	UITableLayout: UITableLayout;
+	UIPadding: UIPadding;
+	UIScale: UIScale;
+	BinaryStringValue: BinaryStringValue;
+	BoolValue: BoolValue;
+	BrickColorValue: BrickColorValue;
+	CFrameValue: CFrameValue;
+	Color3Value: Color3Value;
+	DoubleConstrainedValue: DoubleConstrainedValue;
+	IntConstrainedValue: IntConstrainedValue;
+	IntValue: IntValue;
+	NumberValue: NumberValue;
+	ObjectValue: ObjectValue;
+	RayValue: RayValue;
+	StringValue: StringValue;
+	Vector3Value: Vector3Value;
+	WeldConstraint: WeldConstraint;
+}
+
 // GENERATED ROBLOX INSTANCE CLASSES
 
 // Instance
@@ -88,9 +295,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Accoutrement"): Accoutrement | undefined;
 	FindFirstAncestorWhichIsA(className: "Accoutrement"): Accoutrement | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Accoutrement", parent?: Instance): Accoutrement;
-}
 
 // Accessory
 interface Rbx_Accessory extends Rbx_Accoutrement {
@@ -103,9 +307,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Accessory"): Accessory | undefined;
 	FindFirstAncestorWhichIsA(className: "Accessory"): Accessory | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Accessory", parent?: Instance): Accessory;
-}
 
 // Hat
 interface Rbx_Hat extends Rbx_Accoutrement {
@@ -117,9 +318,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Hat"): Hat | undefined;
 	FindFirstChildOfClass(className: "Hat"): Hat | undefined;
 	FindFirstAncestorWhichIsA(className: "Hat"): Hat | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Hat", parent?: Instance): Hat;
 }
 
 // AdService
@@ -147,9 +345,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "AdvancedDragger"): AdvancedDragger | undefined;
 	FindFirstChildOfClass(className: "AdvancedDragger"): AdvancedDragger | undefined;
 	FindFirstAncestorWhichIsA(className: "AdvancedDragger"): AdvancedDragger | undefined;
-}
-interface InstanceConstructor {
-	new (className: "AdvancedDragger", parent?: Instance): AdvancedDragger;
 }
 
 // AnalyticsService
@@ -179,9 +374,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Animation"): Animation | undefined;
 	FindFirstAncestorWhichIsA(className: "Animation"): Animation | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Animation", parent?: Instance): Animation;
-}
 
 // AnimationController
 interface Rbx_AnimationController extends Rbx_Instance {
@@ -193,9 +385,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "AnimationController"): AnimationController | undefined;
 	FindFirstChildOfClass(className: "AnimationController"): AnimationController | undefined;
 	FindFirstAncestorWhichIsA(className: "AnimationController"): AnimationController | undefined;
-}
-interface InstanceConstructor {
-	new (className: "AnimationController", parent?: Instance): AnimationController;
 }
 
 // AnimationTrack
@@ -238,9 +427,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Animator"): Animator | undefined;
 	FindFirstChildOfClass(className: "Animator"): Animator | undefined;
 	FindFirstAncestorWhichIsA(className: "Animator"): Animator | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Animator", parent?: Instance): Animator;
 }
 
 // AssetService
@@ -287,9 +473,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Attachment"): Attachment | undefined;
 	FindFirstChildOfClass(className: "Attachment"): Attachment | undefined;
 	FindFirstAncestorWhichIsA(className: "Attachment"): Attachment | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Attachment", parent?: Instance): Attachment;
 }
 
 // BadgeService
@@ -409,9 +592,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Beam"): Beam | undefined;
 	FindFirstAncestorWhichIsA(className: "Beam"): Beam | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Beam", parent?: Instance): Beam;
-}
 
 // BindableEvent
 interface Rbx_BindableEvent extends Rbx_Instance {
@@ -424,9 +604,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "BindableEvent"): BindableEvent | undefined;
 	FindFirstAncestorWhichIsA(className: "BindableEvent"): BindableEvent | undefined;
 }
-interface InstanceConstructor {
-	new (className: "BindableEvent", parent?: Instance): BindableEvent;
-}
 
 // BindableFunction
 interface Rbx_BindableFunction extends Rbx_Instance {
@@ -438,9 +615,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "BindableFunction"): BindableFunction | undefined;
 	FindFirstChildOfClass(className: "BindableFunction"): BindableFunction | undefined;
 	FindFirstAncestorWhichIsA(className: "BindableFunction"): BindableFunction | undefined;
-}
-interface InstanceConstructor {
-	new (className: "BindableFunction", parent?: Instance): BindableFunction;
 }
 
 // BodyMover
@@ -469,9 +643,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "BodyAngularVelocity"): BodyAngularVelocity | undefined;
 	FindFirstAncestorWhichIsA(className: "BodyAngularVelocity"): BodyAngularVelocity | undefined;
 }
-interface InstanceConstructor {
-	new (className: "BodyAngularVelocity", parent?: Instance): BodyAngularVelocity;
-}
 
 // BodyForce
 interface Rbx_BodyForce extends Rbx_BodyMover {
@@ -484,9 +655,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "BodyForce"): BodyForce | undefined;
 	FindFirstChildOfClass(className: "BodyForce"): BodyForce | undefined;
 	FindFirstAncestorWhichIsA(className: "BodyForce"): BodyForce | undefined;
-}
-interface InstanceConstructor {
-	new (className: "BodyForce", parent?: Instance): BodyForce;
 }
 
 // BodyGyro
@@ -507,9 +675,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "BodyGyro"): BodyGyro | undefined;
 	FindFirstChildOfClass(className: "BodyGyro"): BodyGyro | undefined;
 	FindFirstAncestorWhichIsA(className: "BodyGyro"): BodyGyro | undefined;
-}
-interface InstanceConstructor {
-	new (className: "BodyGyro", parent?: Instance): BodyGyro;
 }
 
 // BodyPosition
@@ -533,9 +698,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "BodyPosition"): BodyPosition | undefined;
 	FindFirstAncestorWhichIsA(className: "BodyPosition"): BodyPosition | undefined;
 }
-interface InstanceConstructor {
-	new (className: "BodyPosition", parent?: Instance): BodyPosition;
-}
 
 // BodyThrust
 interface Rbx_BodyThrust extends Rbx_BodyMover {
@@ -551,9 +713,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "BodyThrust"): BodyThrust | undefined;
 	FindFirstChildOfClass(className: "BodyThrust"): BodyThrust | undefined;
 	FindFirstAncestorWhichIsA(className: "BodyThrust"): BodyThrust | undefined;
-}
-interface InstanceConstructor {
-	new (className: "BodyThrust", parent?: Instance): BodyThrust;
 }
 
 // BodyVelocity
@@ -574,9 +733,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "BodyVelocity"): BodyVelocity | undefined;
 	FindFirstChildOfClass(className: "BodyVelocity"): BodyVelocity | undefined;
 	FindFirstAncestorWhichIsA(className: "BodyVelocity"): BodyVelocity | undefined;
-}
-interface InstanceConstructor {
-	new (className: "BodyVelocity", parent?: Instance): BodyVelocity;
 }
 
 // RocketPropulsion
@@ -603,9 +759,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "RocketPropulsion"): RocketPropulsion | undefined;
 	FindFirstChildOfClass(className: "RocketPropulsion"): RocketPropulsion | undefined;
 	FindFirstAncestorWhichIsA(className: "RocketPropulsion"): RocketPropulsion | undefined;
-}
-interface InstanceConstructor {
-	new (className: "RocketPropulsion", parent?: Instance): RocketPropulsion;
 }
 
 // CacheableContentProvider
@@ -695,9 +848,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Camera"): Camera | undefined;
 	FindFirstAncestorWhichIsA(className: "Camera"): Camera | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Camera", parent?: Instance): Camera;
-}
 
 // ChangeHistoryService
 interface Rbx_ChangeHistoryService extends Rbx_Instance {
@@ -749,9 +899,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "BodyColors"): BodyColors | undefined;
 	FindFirstAncestorWhichIsA(className: "BodyColors"): BodyColors | undefined;
 }
-interface InstanceConstructor {
-	new (className: "BodyColors", parent?: Instance): BodyColors;
-}
 
 // CharacterMesh
 interface Rbx_CharacterMesh extends Rbx_CharacterAppearance {
@@ -767,9 +914,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "CharacterMesh"): CharacterMesh | undefined;
 	FindFirstChildOfClass(className: "CharacterMesh"): CharacterMesh | undefined;
 	FindFirstAncestorWhichIsA(className: "CharacterMesh"): CharacterMesh | undefined;
-}
-interface InstanceConstructor {
-	new (className: "CharacterMesh", parent?: Instance): CharacterMesh;
 }
 
 // Clothing
@@ -797,9 +941,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Pants"): Pants | undefined;
 	FindFirstAncestorWhichIsA(className: "Pants"): Pants | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Pants", parent?: Instance): Pants;
-}
 
 // Shirt
 interface Rbx_Shirt extends Rbx_Clothing {
@@ -812,9 +953,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Shirt"): Shirt | undefined;
 	FindFirstChildOfClass(className: "Shirt"): Shirt | undefined;
 	FindFirstAncestorWhichIsA(className: "Shirt"): Shirt | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Shirt", parent?: Instance): Shirt;
 }
 
 // ShirtGraphic
@@ -830,9 +968,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ShirtGraphic"): ShirtGraphic | undefined;
 	FindFirstAncestorWhichIsA(className: "ShirtGraphic"): ShirtGraphic | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ShirtGraphic", parent?: Instance): ShirtGraphic;
-}
 
 // Skin
 interface Rbx_Skin extends Rbx_CharacterAppearance {
@@ -845,9 +980,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Skin"): Skin | undefined;
 	FindFirstChildOfClass(className: "Skin"): Skin | undefined;
 	FindFirstAncestorWhichIsA(className: "Skin"): Skin | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Skin", parent?: Instance): Skin;
 }
 
 // Chat
@@ -884,9 +1016,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ClickDetector"): ClickDetector | undefined;
 	FindFirstChildOfClass(className: "ClickDetector"): ClickDetector | undefined;
 	FindFirstAncestorWhichIsA(className: "ClickDetector"): ClickDetector | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ClickDetector", parent?: Instance): ClickDetector;
 }
 
 // ClusterPacketCache
@@ -936,9 +1065,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Configuration"): Configuration | undefined;
 	FindFirstAncestorWhichIsA(className: "Configuration"): Configuration | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Configuration", parent?: Instance): Configuration;
-}
 
 // Constraint
 interface Rbx_Constraint extends Rbx_Instance {
@@ -979,9 +1105,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "AlignOrientation"): AlignOrientation | undefined;
 	FindFirstAncestorWhichIsA(className: "AlignOrientation"): AlignOrientation | undefined;
 }
-interface InstanceConstructor {
-	new (className: "AlignOrientation", parent?: Instance): AlignOrientation;
-}
 
 // AlignPosition
 interface Rbx_AlignPosition extends Rbx_Constraint {
@@ -999,9 +1122,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "AlignPosition"): AlignPosition | undefined;
 	FindFirstChildOfClass(className: "AlignPosition"): AlignPosition | undefined;
 	FindFirstAncestorWhichIsA(className: "AlignPosition"): AlignPosition | undefined;
-}
-interface InstanceConstructor {
-	new (className: "AlignPosition", parent?: Instance): AlignPosition;
 }
 
 // BallSocketConstraint
@@ -1028,9 +1148,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "BallSocketConstraint"): BallSocketConstraint | undefined;
 	FindFirstChildOfClass(className: "BallSocketConstraint"): BallSocketConstraint | undefined;
 	FindFirstAncestorWhichIsA(className: "BallSocketConstraint"): BallSocketConstraint | undefined;
-}
-interface InstanceConstructor {
-	new (className: "BallSocketConstraint", parent?: Instance): BallSocketConstraint;
 }
 
 // HingeConstraint
@@ -1069,9 +1186,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "HingeConstraint"): HingeConstraint | undefined;
 	FindFirstAncestorWhichIsA(className: "HingeConstraint"): HingeConstraint | undefined;
 }
-interface InstanceConstructor {
-	new (className: "HingeConstraint", parent?: Instance): HingeConstraint;
-}
 
 // LineForce
 interface Rbx_LineForce extends Rbx_Constraint {
@@ -1088,9 +1202,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "LineForce"): LineForce | undefined;
 	FindFirstChildOfClass(className: "LineForce"): LineForce | undefined;
 	FindFirstAncestorWhichIsA(className: "LineForce"): LineForce | undefined;
-}
-interface InstanceConstructor {
-	new (className: "LineForce", parent?: Instance): LineForce;
 }
 
 // RodConstraint
@@ -1109,9 +1220,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "RodConstraint"): RodConstraint | undefined;
 	FindFirstChildOfClass(className: "RodConstraint"): RodConstraint | undefined;
 	FindFirstAncestorWhichIsA(className: "RodConstraint"): RodConstraint | undefined;
-}
-interface InstanceConstructor {
-	new (className: "RodConstraint", parent?: Instance): RodConstraint;
 }
 
 // RopeConstraint
@@ -1132,9 +1240,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "RopeConstraint"): RopeConstraint | undefined;
 	FindFirstChildOfClass(className: "RopeConstraint"): RopeConstraint | undefined;
 	FindFirstAncestorWhichIsA(className: "RopeConstraint"): RopeConstraint | undefined;
-}
-interface InstanceConstructor {
-	new (className: "RopeConstraint", parent?: Instance): RopeConstraint;
 }
 
 // SlidingBallConstraint
@@ -1216,9 +1321,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "CylindricalConstraint"): CylindricalConstraint | undefined;
 	FindFirstAncestorWhichIsA(className: "CylindricalConstraint"): CylindricalConstraint | undefined;
 }
-interface InstanceConstructor {
-	new (className: "CylindricalConstraint", parent?: Instance): CylindricalConstraint;
-}
 
 // PrismaticConstraint
 interface Rbx_PrismaticConstraint extends Rbx_SlidingBallConstraint {
@@ -1230,9 +1332,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "PrismaticConstraint"): PrismaticConstraint | undefined;
 	FindFirstChildOfClass(className: "PrismaticConstraint"): PrismaticConstraint | undefined;
 	FindFirstAncestorWhichIsA(className: "PrismaticConstraint"): PrismaticConstraint | undefined;
-}
-interface InstanceConstructor {
-	new (className: "PrismaticConstraint", parent?: Instance): PrismaticConstraint;
 }
 
 // SpringConstraint
@@ -1268,9 +1367,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "SpringConstraint"): SpringConstraint | undefined;
 	FindFirstAncestorWhichIsA(className: "SpringConstraint"): SpringConstraint | undefined;
 }
-interface InstanceConstructor {
-	new (className: "SpringConstraint", parent?: Instance): SpringConstraint;
-}
 
 // Torque
 interface Rbx_Torque extends Rbx_Constraint {
@@ -1284,9 +1380,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Torque"): Torque | undefined;
 	FindFirstChildOfClass(className: "Torque"): Torque | undefined;
 	FindFirstAncestorWhichIsA(className: "Torque"): Torque | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Torque", parent?: Instance): Torque;
 }
 
 // VectorForce
@@ -1302,9 +1395,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "VectorForce"): VectorForce | undefined;
 	FindFirstChildOfClass(className: "VectorForce"): VectorForce | undefined;
 	FindFirstAncestorWhichIsA(className: "VectorForce"): VectorForce | undefined;
-}
-interface InstanceConstructor {
-	new (className: "VectorForce", parent?: Instance): VectorForce;
 }
 
 // ContentProvider
@@ -1385,9 +1475,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "HumanoidController"): HumanoidController | undefined;
 	FindFirstAncestorWhichIsA(className: "HumanoidController"): HumanoidController | undefined;
 }
-interface InstanceConstructor {
-	new (className: "HumanoidController", parent?: Instance): HumanoidController;
-}
 
 // SkateboardController
 interface Rbx_SkateboardController extends Rbx_Controller {
@@ -1403,9 +1490,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "SkateboardController"): SkateboardController | undefined;
 	FindFirstAncestorWhichIsA(className: "SkateboardController"): SkateboardController | undefined;
 }
-interface InstanceConstructor {
-	new (className: "SkateboardController", parent?: Instance): SkateboardController;
-}
 
 // VehicleController
 interface Rbx_VehicleController extends Rbx_Controller {
@@ -1417,9 +1501,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "VehicleController"): VehicleController | undefined;
 	FindFirstChildOfClass(className: "VehicleController"): VehicleController | undefined;
 	FindFirstAncestorWhichIsA(className: "VehicleController"): VehicleController | undefined;
-}
-interface InstanceConstructor {
-	new (className: "VehicleController", parent?: Instance): VehicleController;
 }
 
 // ControllerService
@@ -1497,9 +1578,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "CustomEvent"): CustomEvent | undefined;
 	FindFirstAncestorWhichIsA(className: "CustomEvent"): CustomEvent | undefined;
 }
-interface InstanceConstructor {
-	new (className: "CustomEvent", parent?: Instance): CustomEvent;
-}
 
 // CustomEventReceiver
 interface Rbx_CustomEventReceiver extends Rbx_Instance {
@@ -1516,9 +1594,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "CustomEventReceiver"): CustomEventReceiver | undefined;
 	FindFirstChildOfClass(className: "CustomEventReceiver"): CustomEventReceiver | undefined;
 	FindFirstAncestorWhichIsA(className: "CustomEventReceiver"): CustomEventReceiver | undefined;
-}
-interface InstanceConstructor {
-	new (className: "CustomEventReceiver", parent?: Instance): CustomEventReceiver;
 }
 
 // DataModelMesh
@@ -1559,9 +1634,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "BlockMesh"): BlockMesh | undefined;
 	FindFirstAncestorWhichIsA(className: "BlockMesh"): BlockMesh | undefined;
 }
-interface InstanceConstructor {
-	new (className: "BlockMesh", parent?: Instance): BlockMesh;
-}
 
 // CylinderMesh
 interface Rbx_CylinderMesh extends Rbx_BevelMesh {
@@ -1573,9 +1645,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "CylinderMesh"): CylinderMesh | undefined;
 	FindFirstChildOfClass(className: "CylinderMesh"): CylinderMesh | undefined;
 	FindFirstAncestorWhichIsA(className: "CylinderMesh"): CylinderMesh | undefined;
-}
-interface InstanceConstructor {
-	new (className: "CylinderMesh", parent?: Instance): CylinderMesh;
 }
 
 // FileMesh
@@ -1591,9 +1660,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "FileMesh"): FileMesh | undefined;
 	FindFirstAncestorWhichIsA(className: "FileMesh"): FileMesh | undefined;
 }
-interface InstanceConstructor {
-	new (className: "FileMesh", parent?: Instance): FileMesh;
-}
 
 // SpecialMesh
 interface Rbx_SpecialMesh extends Rbx_FileMesh {
@@ -1606,9 +1672,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "SpecialMesh"): SpecialMesh | undefined;
 	FindFirstChildOfClass(className: "SpecialMesh"): SpecialMesh | undefined;
 	FindFirstAncestorWhichIsA(className: "SpecialMesh"): SpecialMesh | undefined;
-}
-interface InstanceConstructor {
-	new (className: "SpecialMesh", parent?: Instance): SpecialMesh;
 }
 
 // DataStoreService
@@ -1725,9 +1788,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "DebuggerWatch"): DebuggerWatch | undefined;
 	FindFirstAncestorWhichIsA(className: "DebuggerWatch"): DebuggerWatch | undefined;
 }
-interface InstanceConstructor {
-	new (className: "DebuggerWatch", parent?: Instance): DebuggerWatch;
-}
 
 // Dialog
 interface Rbx_Dialog extends Rbx_Instance {
@@ -1758,9 +1818,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Dialog"): Dialog | undefined;
 	FindFirstAncestorWhichIsA(className: "Dialog"): Dialog | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Dialog", parent?: Instance): Dialog;
-}
 
 // DialogChoice
 interface Rbx_DialogChoice extends Rbx_Instance {
@@ -1777,9 +1834,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "DialogChoice"): DialogChoice | undefined;
 	FindFirstAncestorWhichIsA(className: "DialogChoice"): DialogChoice | undefined;
 }
-interface InstanceConstructor {
-	new (className: "DialogChoice", parent?: Instance): DialogChoice;
-}
 
 // Dragger
 interface Rbx_Dragger extends Rbx_Instance {
@@ -1795,9 +1849,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Dragger"): Dragger | undefined;
 	FindFirstChildOfClass(className: "Dragger"): Dragger | undefined;
 	FindFirstAncestorWhichIsA(className: "Dragger"): Dragger | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Dragger", parent?: Instance): Dragger;
 }
 
 // Explosion
@@ -1821,9 +1872,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Explosion"): Explosion | undefined;
 	FindFirstChildOfClass(className: "Explosion"): Explosion | undefined;
 	FindFirstAncestorWhichIsA(className: "Explosion"): Explosion | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Explosion", parent?: Instance): Explosion;
 }
 
 // FaceInstance
@@ -1855,9 +1903,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Decal"): Decal | undefined;
 	FindFirstAncestorWhichIsA(className: "Decal"): Decal | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Decal", parent?: Instance): Decal;
-}
 
 // Texture
 interface Rbx_Texture extends Rbx_Decal {
@@ -1871,9 +1916,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Texture"): Texture | undefined;
 	FindFirstChildOfClass(className: "Texture"): Texture | undefined;
 	FindFirstAncestorWhichIsA(className: "Texture"): Texture | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Texture", parent?: Instance): Texture;
 }
 
 // Feature
@@ -1903,9 +1945,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Hole"): Hole | undefined;
 	FindFirstAncestorWhichIsA(className: "Hole"): Hole | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Hole", parent?: Instance): Hole;
-}
 
 // MotorFeature
 interface Rbx_MotorFeature extends Rbx_Feature {
@@ -1917,9 +1956,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "MotorFeature"): MotorFeature | undefined;
 	FindFirstChildOfClass(className: "MotorFeature"): MotorFeature | undefined;
 	FindFirstAncestorWhichIsA(className: "MotorFeature"): MotorFeature | undefined;
-}
-interface InstanceConstructor {
-	new (className: "MotorFeature", parent?: Instance): MotorFeature;
 }
 
 // Fire
@@ -1941,9 +1977,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Fire"): Fire | undefined;
 	FindFirstChildOfClass(className: "Fire"): Fire | undefined;
 	FindFirstAncestorWhichIsA(className: "Fire"): Fire | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Fire", parent?: Instance): Fire;
 }
 
 // FlagStandService
@@ -2017,9 +2050,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Folder"): Folder | undefined;
 	FindFirstAncestorWhichIsA(className: "Folder"): Folder | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Folder", parent?: Instance): Folder;
-}
 
 // ForceField
 interface Rbx_ForceField extends Rbx_Instance {
@@ -2032,9 +2062,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ForceField"): ForceField | undefined;
 	FindFirstChildOfClass(className: "ForceField"): ForceField | undefined;
 	FindFirstAncestorWhichIsA(className: "ForceField"): ForceField | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ForceField", parent?: Instance): ForceField;
 }
 
 // FriendService
@@ -2068,9 +2095,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "FunctionalTest"): FunctionalTest | undefined;
 	FindFirstChildOfClass(className: "FunctionalTest"): FunctionalTest | undefined;
 	FindFirstAncestorWhichIsA(className: "FunctionalTest"): FunctionalTest | undefined;
-}
-interface InstanceConstructor {
-	new (className: "FunctionalTest", parent?: Instance): FunctionalTest;
 }
 
 // GamePassService
@@ -2109,9 +2133,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "GameSettings"): GameSettings | undefined;
 	FindFirstChildOfClass(className: "GameSettings"): GameSettings | undefined;
 	FindFirstAncestorWhichIsA(className: "GameSettings"): GameSettings | undefined;
-}
-interface InstanceConstructor {
-	new (className: "GameSettings", parent?: Instance): GameSettings;
 }
 
 // GamepadService
@@ -2313,9 +2334,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Frame"): Frame | undefined;
 	FindFirstAncestorWhichIsA(className: "Frame"): Frame | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Frame", parent?: Instance): Frame;
-}
 
 // GuiButton
 interface Rbx_GuiButton extends Rbx_GuiObject {
@@ -2376,9 +2394,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ImageButton"): ImageButton | undefined;
 	FindFirstAncestorWhichIsA(className: "ImageButton"): ImageButton | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ImageButton", parent?: Instance): ImageButton;
-}
 
 // TextButton
 interface Rbx_TextButton extends Rbx_GuiButton {
@@ -2406,9 +2421,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "TextButton"): TextButton | undefined;
 	FindFirstChildOfClass(className: "TextButton"): TextButton | undefined;
 	FindFirstAncestorWhichIsA(className: "TextButton"): TextButton | undefined;
-}
-interface InstanceConstructor {
-	new (className: "TextButton", parent?: Instance): TextButton;
 }
 
 // GuiLabel
@@ -2448,9 +2460,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ImageLabel"): ImageLabel | undefined;
 	FindFirstAncestorWhichIsA(className: "ImageLabel"): ImageLabel | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ImageLabel", parent?: Instance): ImageLabel;
-}
 
 // TextLabel
 interface Rbx_TextLabel extends Rbx_GuiLabel {
@@ -2478,9 +2487,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "TextLabel"): TextLabel | undefined;
 	FindFirstChildOfClass(className: "TextLabel"): TextLabel | undefined;
 	FindFirstAncestorWhichIsA(className: "TextLabel"): TextLabel | undefined;
-}
-interface InstanceConstructor {
-	new (className: "TextLabel", parent?: Instance): TextLabel;
 }
 
 // ScrollingFrame
@@ -2516,9 +2522,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ScrollingFrame"): ScrollingFrame | undefined;
 	FindFirstChildOfClass(className: "ScrollingFrame"): ScrollingFrame | undefined;
 	FindFirstAncestorWhichIsA(className: "ScrollingFrame"): ScrollingFrame | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ScrollingFrame", parent?: Instance): ScrollingFrame;
 }
 
 // TextBox
@@ -2558,9 +2561,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "TextBox"): TextBox | undefined;
 	FindFirstAncestorWhichIsA(className: "TextBox"): TextBox | undefined;
 }
-interface InstanceConstructor {
-	new (className: "TextBox", parent?: Instance): TextBox;
-}
 
 // ViewportFrame
 interface Rbx_ViewportFrame extends Rbx_GuiObject {
@@ -2578,9 +2578,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ViewportFrame"): ViewportFrame | undefined;
 	FindFirstChildOfClass(className: "ViewportFrame"): ViewportFrame | undefined;
 	FindFirstAncestorWhichIsA(className: "ViewportFrame"): ViewportFrame | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ViewportFrame", parent?: Instance): ViewportFrame;
 }
 
 // LayerCollector
@@ -2626,9 +2623,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "BillboardGui"): BillboardGui | undefined;
 	FindFirstChildOfClass(className: "BillboardGui"): BillboardGui | undefined;
 	FindFirstAncestorWhichIsA(className: "BillboardGui"): BillboardGui | undefined;
-}
-interface InstanceConstructor {
-	new (className: "BillboardGui", parent?: Instance): BillboardGui;
 }
 
 // PluginGui
@@ -2683,9 +2677,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ScreenGui"): ScreenGui | undefined;
 	FindFirstAncestorWhichIsA(className: "ScreenGui"): ScreenGui | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ScreenGui", parent?: Instance): ScreenGui;
-}
 
 // GuiMain
 interface Rbx_GuiMain extends Rbx_ScreenGui {
@@ -2697,9 +2688,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "GuiMain"): GuiMain | undefined;
 	FindFirstChildOfClass(className: "GuiMain"): GuiMain | undefined;
 	FindFirstAncestorWhichIsA(className: "GuiMain"): GuiMain | undefined;
-}
-interface InstanceConstructor {
-	new (className: "GuiMain", parent?: Instance): GuiMain;
 }
 
 // SurfaceGui
@@ -2722,9 +2710,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "SurfaceGui"): SurfaceGui | undefined;
 	FindFirstChildOfClass(className: "SurfaceGui"): SurfaceGui | undefined;
 	FindFirstAncestorWhichIsA(className: "SurfaceGui"): SurfaceGui | undefined;
-}
-interface InstanceConstructor {
-	new (className: "SurfaceGui", parent?: Instance): SurfaceGui;
 }
 
 // GuiBase3d
@@ -2768,9 +2753,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "FloorWire"): FloorWire | undefined;
 	FindFirstChildOfClass(className: "FloorWire"): FloorWire | undefined;
 	FindFirstAncestorWhichIsA(className: "FloorWire"): FloorWire | undefined;
-}
-interface InstanceConstructor {
-	new (className: "FloorWire", parent?: Instance): FloorWire;
 }
 
 // PVAdornment
@@ -2818,9 +2800,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "BoxHandleAdornment"): BoxHandleAdornment | undefined;
 	FindFirstAncestorWhichIsA(className: "BoxHandleAdornment"): BoxHandleAdornment | undefined;
 }
-interface InstanceConstructor {
-	new (className: "BoxHandleAdornment", parent?: Instance): BoxHandleAdornment;
-}
 
 // ConeHandleAdornment
 interface Rbx_ConeHandleAdornment extends Rbx_HandleAdornment {
@@ -2834,9 +2813,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ConeHandleAdornment"): ConeHandleAdornment | undefined;
 	FindFirstChildOfClass(className: "ConeHandleAdornment"): ConeHandleAdornment | undefined;
 	FindFirstAncestorWhichIsA(className: "ConeHandleAdornment"): ConeHandleAdornment | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ConeHandleAdornment", parent?: Instance): ConeHandleAdornment;
 }
 
 // CylinderHandleAdornment
@@ -2852,9 +2828,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "CylinderHandleAdornment"): CylinderHandleAdornment | undefined;
 	FindFirstAncestorWhichIsA(className: "CylinderHandleAdornment"): CylinderHandleAdornment | undefined;
 }
-interface InstanceConstructor {
-	new (className: "CylinderHandleAdornment", parent?: Instance): CylinderHandleAdornment;
-}
 
 // ImageHandleAdornment
 interface Rbx_ImageHandleAdornment extends Rbx_HandleAdornment {
@@ -2868,9 +2841,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ImageHandleAdornment"): ImageHandleAdornment | undefined;
 	FindFirstChildOfClass(className: "ImageHandleAdornment"): ImageHandleAdornment | undefined;
 	FindFirstAncestorWhichIsA(className: "ImageHandleAdornment"): ImageHandleAdornment | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ImageHandleAdornment", parent?: Instance): ImageHandleAdornment;
 }
 
 // LineHandleAdornment
@@ -2886,9 +2856,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "LineHandleAdornment"): LineHandleAdornment | undefined;
 	FindFirstAncestorWhichIsA(className: "LineHandleAdornment"): LineHandleAdornment | undefined;
 }
-interface InstanceConstructor {
-	new (className: "LineHandleAdornment", parent?: Instance): LineHandleAdornment;
-}
 
 // SphereHandleAdornment
 interface Rbx_SphereHandleAdornment extends Rbx_HandleAdornment {
@@ -2902,9 +2869,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "SphereHandleAdornment"): SphereHandleAdornment | undefined;
 	FindFirstAncestorWhichIsA(className: "SphereHandleAdornment"): SphereHandleAdornment | undefined;
 }
-interface InstanceConstructor {
-	new (className: "SphereHandleAdornment", parent?: Instance): SphereHandleAdornment;
-}
 
 // ParabolaAdornment
 interface Rbx_ParabolaAdornment extends Rbx_PVAdornment {
@@ -2916,9 +2880,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ParabolaAdornment"): ParabolaAdornment | undefined;
 	FindFirstChildOfClass(className: "ParabolaAdornment"): ParabolaAdornment | undefined;
 	FindFirstAncestorWhichIsA(className: "ParabolaAdornment"): ParabolaAdornment | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ParabolaAdornment", parent?: Instance): ParabolaAdornment;
 }
 
 // SelectionBox
@@ -2935,9 +2896,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "SelectionBox"): SelectionBox | undefined;
 	FindFirstAncestorWhichIsA(className: "SelectionBox"): SelectionBox | undefined;
 }
-interface InstanceConstructor {
-	new (className: "SelectionBox", parent?: Instance): SelectionBox;
-}
 
 // SelectionSphere
 interface Rbx_SelectionSphere extends Rbx_PVAdornment {
@@ -2951,9 +2909,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "SelectionSphere"): SelectionSphere | undefined;
 	FindFirstChildOfClass(className: "SelectionSphere"): SelectionSphere | undefined;
 	FindFirstAncestorWhichIsA(className: "SelectionSphere"): SelectionSphere | undefined;
-}
-interface InstanceConstructor {
-	new (className: "SelectionSphere", parent?: Instance): SelectionSphere;
 }
 
 // PartAdornment
@@ -2998,9 +2953,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ArcHandles"): ArcHandles | undefined;
 	FindFirstAncestorWhichIsA(className: "ArcHandles"): ArcHandles | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ArcHandles", parent?: Instance): ArcHandles;
-}
 
 // Handles
 interface Rbx_Handles extends Rbx_HandlesBase {
@@ -3020,9 +2972,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Handles"): Handles | undefined;
 	FindFirstAncestorWhichIsA(className: "Handles"): Handles | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Handles", parent?: Instance): Handles;
-}
 
 // SurfaceSelection
 interface Rbx_SurfaceSelection extends Rbx_PartAdornment {
@@ -3035,9 +2984,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "SurfaceSelection"): SurfaceSelection | undefined;
 	FindFirstChildOfClass(className: "SurfaceSelection"): SurfaceSelection | undefined;
 	FindFirstAncestorWhichIsA(className: "SurfaceSelection"): SurfaceSelection | undefined;
-}
-interface InstanceConstructor {
-	new (className: "SurfaceSelection", parent?: Instance): SurfaceSelection;
 }
 
 // SelectionLasso
@@ -3065,9 +3011,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "SelectionPartLasso"): SelectionPartLasso | undefined;
 	FindFirstAncestorWhichIsA(className: "SelectionPartLasso"): SelectionPartLasso | undefined;
 }
-interface InstanceConstructor {
-	new (className: "SelectionPartLasso", parent?: Instance): SelectionPartLasso;
-}
 
 // SelectionPointLasso
 interface Rbx_SelectionPointLasso extends Rbx_SelectionLasso {
@@ -3080,9 +3023,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "SelectionPointLasso"): SelectionPointLasso | undefined;
 	FindFirstChildOfClass(className: "SelectionPointLasso"): SelectionPointLasso | undefined;
 	FindFirstAncestorWhichIsA(className: "SelectionPointLasso"): SelectionPointLasso | undefined;
-}
-interface InstanceConstructor {
-	new (className: "SelectionPointLasso", parent?: Instance): SelectionPointLasso;
 }
 
 // GuiItem
@@ -3107,9 +3047,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Backpack"): Backpack | undefined;
 	FindFirstChildOfClass(className: "Backpack"): Backpack | undefined;
 	FindFirstAncestorWhichIsA(className: "Backpack"): Backpack | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Backpack", parent?: Instance): Backpack;
 }
 
 // BackpackItem
@@ -3140,9 +3077,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "HopperBin"): HopperBin | undefined;
 	FindFirstAncestorWhichIsA(className: "HopperBin"): HopperBin | undefined;
 }
-interface InstanceConstructor {
-	new (className: "HopperBin", parent?: Instance): HopperBin;
-}
 
 // Tool
 interface Rbx_Tool extends Rbx_BackpackItem {
@@ -3170,9 +3104,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Tool"): Tool | undefined;
 	FindFirstAncestorWhichIsA(className: "Tool"): Tool | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Tool", parent?: Instance): Tool;
-}
 
 // Flag
 interface Rbx_Flag extends Rbx_Tool {
@@ -3186,9 +3117,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Flag"): Flag | undefined;
 	FindFirstChildOfClass(className: "Flag"): Flag | undefined;
 	FindFirstAncestorWhichIsA(className: "Flag"): Flag | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Flag", parent?: Instance): Flag;
 }
 
 // ButtonBindingWidget
@@ -3415,9 +3343,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Humanoid"): Humanoid | undefined;
 	FindFirstAncestorWhichIsA(className: "Humanoid"): Humanoid | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Humanoid", parent?: Instance): Humanoid;
-}
 
 // HumanoidDescription
 interface Rbx_HumanoidDescription extends Rbx_Instance {
@@ -3466,9 +3391,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "HumanoidDescription"): HumanoidDescription | undefined;
 	FindFirstChildOfClass(className: "HumanoidDescription"): HumanoidDescription | undefined;
 	FindFirstAncestorWhichIsA(className: "HumanoidDescription"): HumanoidDescription | undefined;
-}
-interface InstanceConstructor {
-	new (className: "HumanoidDescription", parent?: Instance): HumanoidDescription;
 }
 
 // InputObject
@@ -3550,9 +3472,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "RotateP"): RotateP | undefined;
 	FindFirstAncestorWhichIsA(className: "RotateP"): RotateP | undefined;
 }
-interface InstanceConstructor {
-	new (className: "RotateP", parent?: Instance): RotateP;
-}
 
 // RotateV
 interface Rbx_RotateV extends Rbx_DynamicRotate {
@@ -3564,9 +3483,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "RotateV"): RotateV | undefined;
 	FindFirstChildOfClass(className: "RotateV"): RotateV | undefined;
 	FindFirstAncestorWhichIsA(className: "RotateV"): RotateV | undefined;
-}
-interface InstanceConstructor {
-	new (className: "RotateV", parent?: Instance): RotateV;
 }
 
 // Glue
@@ -3583,9 +3499,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Glue"): Glue | undefined;
 	FindFirstChildOfClass(className: "Glue"): Glue | undefined;
 	FindFirstAncestorWhichIsA(className: "Glue"): Glue | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Glue", parent?: Instance): Glue;
 }
 
 // ManualSurfaceJointInstance
@@ -3611,9 +3524,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ManualGlue"): ManualGlue | undefined;
 	FindFirstAncestorWhichIsA(className: "ManualGlue"): ManualGlue | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ManualGlue", parent?: Instance): ManualGlue;
-}
 
 // ManualWeld
 interface Rbx_ManualWeld extends Rbx_ManualSurfaceJointInstance {
@@ -3625,9 +3535,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ManualWeld"): ManualWeld | undefined;
 	FindFirstChildOfClass(className: "ManualWeld"): ManualWeld | undefined;
 	FindFirstAncestorWhichIsA(className: "ManualWeld"): ManualWeld | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ManualWeld", parent?: Instance): ManualWeld;
 }
 
 // Motor
@@ -3645,9 +3552,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Motor"): Motor | undefined;
 	FindFirstAncestorWhichIsA(className: "Motor"): Motor | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Motor", parent?: Instance): Motor;
-}
 
 // Motor6D
 interface Rbx_Motor6D extends Rbx_Motor {
@@ -3661,9 +3565,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Motor6D"): Motor6D | undefined;
 	FindFirstAncestorWhichIsA(className: "Motor6D"): Motor6D | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Motor6D", parent?: Instance): Motor6D;
-}
 
 // Rotate
 interface Rbx_Rotate extends Rbx_JointInstance {
@@ -3676,9 +3577,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Rotate"): Rotate | undefined;
 	FindFirstAncestorWhichIsA(className: "Rotate"): Rotate | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Rotate", parent?: Instance): Rotate;
-}
 
 // Snap
 interface Rbx_Snap extends Rbx_JointInstance {
@@ -3690,9 +3588,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Snap"): Snap | undefined;
 	FindFirstChildOfClass(className: "Snap"): Snap | undefined;
 	FindFirstAncestorWhichIsA(className: "Snap"): Snap | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Snap", parent?: Instance): Snap;
 }
 
 // VelocityMotor
@@ -3710,9 +3605,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "VelocityMotor"): VelocityMotor | undefined;
 	FindFirstAncestorWhichIsA(className: "VelocityMotor"): VelocityMotor | undefined;
 }
-interface InstanceConstructor {
-	new (className: "VelocityMotor", parent?: Instance): VelocityMotor;
-}
 
 // Weld
 interface Rbx_Weld extends Rbx_JointInstance {
@@ -3724,9 +3616,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Weld"): Weld | undefined;
 	FindFirstChildOfClass(className: "Weld"): Weld | undefined;
 	FindFirstAncestorWhichIsA(className: "Weld"): Weld | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Weld", parent?: Instance): Weld;
 }
 
 // JointsService
@@ -3779,9 +3668,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Keyframe"): Keyframe | undefined;
 	FindFirstAncestorWhichIsA(className: "Keyframe"): Keyframe | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Keyframe", parent?: Instance): Keyframe;
-}
 
 // KeyframeMarker
 interface Rbx_KeyframeMarker extends Rbx_Instance {
@@ -3794,9 +3680,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "KeyframeMarker"): KeyframeMarker | undefined;
 	FindFirstChildOfClass(className: "KeyframeMarker"): KeyframeMarker | undefined;
 	FindFirstAncestorWhichIsA(className: "KeyframeMarker"): KeyframeMarker | undefined;
-}
-interface InstanceConstructor {
-	new (className: "KeyframeMarker", parent?: Instance): KeyframeMarker;
 }
 
 // KeyframeSequence
@@ -3811,9 +3694,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "KeyframeSequence"): KeyframeSequence | undefined;
 	FindFirstChildOfClass(className: "KeyframeSequence"): KeyframeSequence | undefined;
 	FindFirstAncestorWhichIsA(className: "KeyframeSequence"): KeyframeSequence | undefined;
-}
-interface InstanceConstructor {
-	new (className: "KeyframeSequence", parent?: Instance): KeyframeSequence;
 }
 
 // KeyframeSequenceProvider
@@ -3859,9 +3739,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "PointLight"): PointLight | undefined;
 	FindFirstAncestorWhichIsA(className: "PointLight"): PointLight | undefined;
 }
-interface InstanceConstructor {
-	new (className: "PointLight", parent?: Instance): PointLight;
-}
 
 // SpotLight
 interface Rbx_SpotLight extends Rbx_Light {
@@ -3877,9 +3754,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "SpotLight"): SpotLight | undefined;
 	FindFirstAncestorWhichIsA(className: "SpotLight"): SpotLight | undefined;
 }
-interface InstanceConstructor {
-	new (className: "SpotLight", parent?: Instance): SpotLight;
-}
 
 // SurfaceLight
 interface Rbx_SurfaceLight extends Rbx_Light {
@@ -3894,9 +3768,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "SurfaceLight"): SurfaceLight | undefined;
 	FindFirstChildOfClass(className: "SurfaceLight"): SurfaceLight | undefined;
 	FindFirstAncestorWhichIsA(className: "SurfaceLight"): SurfaceLight | undefined;
-}
-interface InstanceConstructor {
-	new (className: "SurfaceLight", parent?: Instance): SurfaceLight;
 }
 
 // Lighting
@@ -4051,9 +3922,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "LocalizationTable"): LocalizationTable | undefined;
 	FindFirstAncestorWhichIsA(className: "LocalizationTable"): LocalizationTable | undefined;
 }
-interface InstanceConstructor {
-	new (className: "LocalizationTable", parent?: Instance): LocalizationTable;
-}
 
 // LogService
 interface Rbx_LogService extends Rbx_Instance {
@@ -4103,9 +3971,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "LuaSettings"): LuaSettings | undefined;
 	FindFirstChildOfClass(className: "LuaSettings"): LuaSettings | undefined;
 	FindFirstAncestorWhichIsA(className: "LuaSettings"): LuaSettings | undefined;
-}
-interface InstanceConstructor {
-	new (className: "LuaSettings", parent?: Instance): LuaSettings;
 }
 
 // LuaSourceContainer
@@ -4157,9 +4022,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Script"): Script | undefined;
 	FindFirstAncestorWhichIsA(className: "Script"): Script | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Script", parent?: Instance): Script;
-}
 
 // LocalScript
 interface Rbx_LocalScript extends Rbx_Script {
@@ -4171,9 +4033,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "LocalScript"): LocalScript | undefined;
 	FindFirstChildOfClass(className: "LocalScript"): LocalScript | undefined;
 	FindFirstAncestorWhichIsA(className: "LocalScript"): LocalScript | undefined;
-}
-interface InstanceConstructor {
-	new (className: "LocalScript", parent?: Instance): LocalScript;
 }
 
 // ModuleScript
@@ -4187,9 +4046,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ModuleScript"): ModuleScript | undefined;
 	FindFirstChildOfClass(className: "ModuleScript"): ModuleScript | undefined;
 	FindFirstAncestorWhichIsA(className: "ModuleScript"): ModuleScript | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ModuleScript", parent?: Instance): ModuleScript;
 }
 
 // LuaWebService
@@ -4236,9 +4092,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Message"): Message | undefined;
 	FindFirstAncestorWhichIsA(className: "Message"): Message | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Message", parent?: Instance): Message;
-}
 
 // Hint
 interface Rbx_Hint extends Rbx_Message {
@@ -4250,9 +4103,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Hint"): Hint | undefined;
 	FindFirstChildOfClass(className: "Hint"): Hint | undefined;
 	FindFirstAncestorWhichIsA(className: "Hint"): Hint | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Hint", parent?: Instance): Hint;
 }
 
 // MessagingService
@@ -4627,9 +4477,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "CornerWedgePart"): CornerWedgePart | undefined;
 	FindFirstAncestorWhichIsA(className: "CornerWedgePart"): CornerWedgePart | undefined;
 }
-interface InstanceConstructor {
-	new (className: "CornerWedgePart", parent?: Instance): CornerWedgePart;
-}
 
 // FormFactorPart
 interface Rbx_FormFactorPart extends Rbx_BasePart {
@@ -4655,9 +4502,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Part"): Part | undefined;
 	FindFirstAncestorWhichIsA(className: "Part"): Part | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Part", parent?: Instance): Part;
-}
 
 // FlagStand
 interface Rbx_FlagStand extends Rbx_Part {
@@ -4670,9 +4514,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "FlagStand"): FlagStand | undefined;
 	FindFirstChildOfClass(className: "FlagStand"): FlagStand | undefined;
 	FindFirstAncestorWhichIsA(className: "FlagStand"): FlagStand | undefined;
-}
-interface InstanceConstructor {
-	new (className: "FlagStand", parent?: Instance): FlagStand;
 }
 
 // Platform
@@ -4701,9 +4542,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Seat"): Seat | undefined;
 	FindFirstAncestorWhichIsA(className: "Seat"): Seat | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Seat", parent?: Instance): Seat;
-}
 
 // SkateboardPlatform
 interface Rbx_SkateboardPlatform extends Rbx_Part {
@@ -4725,9 +4563,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "SkateboardPlatform"): SkateboardPlatform | undefined;
 	FindFirstAncestorWhichIsA(className: "SkateboardPlatform"): SkateboardPlatform | undefined;
 }
-interface InstanceConstructor {
-	new (className: "SkateboardPlatform", parent?: Instance): SkateboardPlatform;
-}
 
 // SpawnLocation
 interface Rbx_SpawnLocation extends Rbx_Part {
@@ -4745,9 +4580,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "SpawnLocation"): SpawnLocation | undefined;
 	FindFirstAncestorWhichIsA(className: "SpawnLocation"): SpawnLocation | undefined;
 }
-interface InstanceConstructor {
-	new (className: "SpawnLocation", parent?: Instance): SpawnLocation;
-}
 
 // WedgePart
 interface Rbx_WedgePart extends Rbx_FormFactorPart {
@@ -4759,9 +4591,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "WedgePart"): WedgePart | undefined;
 	FindFirstChildOfClass(className: "WedgePart"): WedgePart | undefined;
 	FindFirstAncestorWhichIsA(className: "WedgePart"): WedgePart | undefined;
-}
-interface InstanceConstructor {
-	new (className: "WedgePart", parent?: Instance): WedgePart;
 }
 
 // MeshPart
@@ -4776,9 +4605,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "MeshPart"): MeshPart | undefined;
 	FindFirstChildOfClass(className: "MeshPart"): MeshPart | undefined;
 	FindFirstAncestorWhichIsA(className: "MeshPart"): MeshPart | undefined;
-}
-interface InstanceConstructor {
-	new (className: "MeshPart", parent?: Instance): MeshPart;
 }
 
 // PartOperation
@@ -4795,9 +4621,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "PartOperation"): PartOperation | undefined;
 	FindFirstAncestorWhichIsA(className: "PartOperation"): PartOperation | undefined;
 }
-interface InstanceConstructor {
-	new (className: "PartOperation", parent?: Instance): PartOperation;
-}
 
 // NegateOperation
 interface Rbx_NegateOperation extends Rbx_PartOperation {
@@ -4810,9 +4633,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "NegateOperation"): NegateOperation | undefined;
 	FindFirstAncestorWhichIsA(className: "NegateOperation"): NegateOperation | undefined;
 }
-interface InstanceConstructor {
-	new (className: "NegateOperation", parent?: Instance): NegateOperation;
-}
 
 // UnionOperation
 interface Rbx_UnionOperation extends Rbx_PartOperation {
@@ -4824,9 +4644,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "UnionOperation"): UnionOperation | undefined;
 	FindFirstChildOfClass(className: "UnionOperation"): UnionOperation | undefined;
 	FindFirstAncestorWhichIsA(className: "UnionOperation"): UnionOperation | undefined;
-}
-interface InstanceConstructor {
-	new (className: "UnionOperation", parent?: Instance): UnionOperation;
 }
 
 // Terrain
@@ -4871,9 +4688,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "TrussPart"): TrussPart | undefined;
 	FindFirstAncestorWhichIsA(className: "TrussPart"): TrussPart | undefined;
 }
-interface InstanceConstructor {
-	new (className: "TrussPart", parent?: Instance): TrussPart;
-}
 
 // VehicleSeat
 interface Rbx_VehicleSeat extends Rbx_BasePart {
@@ -4897,9 +4711,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "VehicleSeat"): VehicleSeat | undefined;
 	FindFirstChildOfClass(className: "VehicleSeat"): VehicleSeat | undefined;
 	FindFirstAncestorWhichIsA(className: "VehicleSeat"): VehicleSeat | undefined;
-}
-interface InstanceConstructor {
-	new (className: "VehicleSeat", parent?: Instance): VehicleSeat;
 }
 
 // Model
@@ -4927,9 +4738,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Model"): Model | undefined;
 	FindFirstChildOfClass(className: "Model"): Model | undefined;
 	FindFirstAncestorWhichIsA(className: "Model"): Model | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Model", parent?: Instance): Model;
 }
 
 // Status
@@ -5068,9 +4876,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "PartOperationAsset"): PartOperationAsset | undefined;
 	FindFirstAncestorWhichIsA(className: "PartOperationAsset"): PartOperationAsset | undefined;
 }
-interface InstanceConstructor {
-	new (className: "PartOperationAsset", parent?: Instance): PartOperationAsset;
-}
 
 // ParticleEmitter
 interface Rbx_ParticleEmitter extends Rbx_Instance {
@@ -5104,9 +4909,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ParticleEmitter"): ParticleEmitter | undefined;
 	FindFirstChildOfClass(className: "ParticleEmitter"): ParticleEmitter | undefined;
 	FindFirstAncestorWhichIsA(className: "ParticleEmitter"): ParticleEmitter | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ParticleEmitter", parent?: Instance): ParticleEmitter;
 }
 
 // Path
@@ -5213,9 +5015,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "PhysicsSettings"): PhysicsSettings | undefined;
 	FindFirstAncestorWhichIsA(className: "PhysicsSettings"): PhysicsSettings | undefined;
 }
-interface InstanceConstructor {
-	new (className: "PhysicsSettings", parent?: Instance): PhysicsSettings;
-}
 
 // Player
 interface Rbx_Player extends Rbx_Instance {
@@ -5268,9 +5067,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Player"): Player | undefined;
 	FindFirstChildOfClass(className: "Player"): Player | undefined;
 	FindFirstAncestorWhichIsA(className: "Player"): Player | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Player", parent?: Instance): Player;
 }
 
 // PlayerScripts
@@ -5344,9 +5140,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "PluginAction"): PluginAction | undefined;
 	FindFirstChildOfClass(className: "PluginAction"): PluginAction | undefined;
 	FindFirstAncestorWhichIsA(className: "PluginAction"): PluginAction | undefined;
-}
-interface InstanceConstructor {
-	new (className: "PluginAction", parent?: Instance): PluginAction;
 }
 
 // PluginDragEvent
@@ -5468,9 +5261,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Pose"): Pose | undefined;
 	FindFirstAncestorWhichIsA(className: "Pose"): Pose | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Pose", parent?: Instance): Pose;
-}
 
 // PostEffect
 interface Rbx_PostEffect extends Rbx_Instance {
@@ -5499,9 +5289,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "BloomEffect"): BloomEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "BloomEffect"): BloomEffect | undefined;
 }
-interface InstanceConstructor {
-	new (className: "BloomEffect", parent?: Instance): BloomEffect;
-}
 
 // BlurEffect
 interface Rbx_BlurEffect extends Rbx_PostEffect {
@@ -5514,9 +5301,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "BlurEffect"): BlurEffect | undefined;
 	FindFirstChildOfClass(className: "BlurEffect"): BlurEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "BlurEffect"): BlurEffect | undefined;
-}
-interface InstanceConstructor {
-	new (className: "BlurEffect", parent?: Instance): BlurEffect;
 }
 
 // ColorCorrectionEffect
@@ -5534,9 +5318,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ColorCorrectionEffect"): ColorCorrectionEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "ColorCorrectionEffect"): ColorCorrectionEffect | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ColorCorrectionEffect", parent?: Instance): ColorCorrectionEffect;
-}
 
 // SunRaysEffect
 interface Rbx_SunRaysEffect extends Rbx_PostEffect {
@@ -5551,9 +5332,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "SunRaysEffect"): SunRaysEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "SunRaysEffect"): SunRaysEffect | undefined;
 }
-interface InstanceConstructor {
-	new (className: "SunRaysEffect", parent?: Instance): SunRaysEffect;
-}
 
 // ReflectionMetadata
 interface Rbx_ReflectionMetadata extends Rbx_Instance {
@@ -5565,9 +5343,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadata"): ReflectionMetadata | undefined;
 	FindFirstChildOfClass(className: "ReflectionMetadata"): ReflectionMetadata | undefined;
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadata"): ReflectionMetadata | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ReflectionMetadata", parent?: Instance): ReflectionMetadata;
 }
 
 // ReflectionMetadataCallbacks
@@ -5581,9 +5356,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ReflectionMetadataCallbacks"): ReflectionMetadataCallbacks | undefined;
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataCallbacks"): ReflectionMetadataCallbacks | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ReflectionMetadataCallbacks", parent?: Instance): ReflectionMetadataCallbacks;
-}
 
 // ReflectionMetadataClasses
 interface Rbx_ReflectionMetadataClasses extends Rbx_Instance {
@@ -5595,9 +5367,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataClasses"): ReflectionMetadataClasses | undefined;
 	FindFirstChildOfClass(className: "ReflectionMetadataClasses"): ReflectionMetadataClasses | undefined;
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataClasses"): ReflectionMetadataClasses | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ReflectionMetadataClasses", parent?: Instance): ReflectionMetadataClasses;
 }
 
 // ReflectionMetadataEnums
@@ -5611,9 +5380,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ReflectionMetadataEnums"): ReflectionMetadataEnums | undefined;
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEnums"): ReflectionMetadataEnums | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ReflectionMetadataEnums", parent?: Instance): ReflectionMetadataEnums;
-}
 
 // ReflectionMetadataEvents
 interface Rbx_ReflectionMetadataEvents extends Rbx_Instance {
@@ -5626,9 +5392,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ReflectionMetadataEvents"): ReflectionMetadataEvents | undefined;
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEvents"): ReflectionMetadataEvents | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ReflectionMetadataEvents", parent?: Instance): ReflectionMetadataEvents;
-}
 
 // ReflectionMetadataFunctions
 interface Rbx_ReflectionMetadataFunctions extends Rbx_Instance {
@@ -5640,9 +5403,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataFunctions"): ReflectionMetadataFunctions | undefined;
 	FindFirstChildOfClass(className: "ReflectionMetadataFunctions"): ReflectionMetadataFunctions | undefined;
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataFunctions"): ReflectionMetadataFunctions | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ReflectionMetadataFunctions", parent?: Instance): ReflectionMetadataFunctions;
 }
 
 // ReflectionMetadataItem
@@ -5686,9 +5446,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ReflectionMetadataClass"): ReflectionMetadataClass | undefined;
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataClass"): ReflectionMetadataClass | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ReflectionMetadataClass", parent?: Instance): ReflectionMetadataClass;
-}
 
 // ReflectionMetadataEnum
 interface Rbx_ReflectionMetadataEnum extends Rbx_ReflectionMetadataItem {
@@ -5700,9 +5457,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEnum"): ReflectionMetadataEnum | undefined;
 	FindFirstChildOfClass(className: "ReflectionMetadataEnum"): ReflectionMetadataEnum | undefined;
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEnum"): ReflectionMetadataEnum | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ReflectionMetadataEnum", parent?: Instance): ReflectionMetadataEnum;
 }
 
 // ReflectionMetadataEnumItem
@@ -5716,9 +5470,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ReflectionMetadataEnumItem"): ReflectionMetadataEnumItem | undefined;
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEnumItem"): ReflectionMetadataEnumItem | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ReflectionMetadataEnumItem", parent?: Instance): ReflectionMetadataEnumItem;
-}
 
 // ReflectionMetadataMember
 interface Rbx_ReflectionMetadataMember extends Rbx_ReflectionMetadataItem {
@@ -5730,9 +5481,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataMember"): ReflectionMetadataMember | undefined;
 	FindFirstChildOfClass(className: "ReflectionMetadataMember"): ReflectionMetadataMember | undefined;
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataMember"): ReflectionMetadataMember | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ReflectionMetadataMember", parent?: Instance): ReflectionMetadataMember;
 }
 
 // ReflectionMetadataProperties
@@ -5746,9 +5494,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ReflectionMetadataProperties"): ReflectionMetadataProperties | undefined;
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataProperties"): ReflectionMetadataProperties | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ReflectionMetadataProperties", parent?: Instance): ReflectionMetadataProperties;
-}
 
 // ReflectionMetadataYieldFunctions
 interface Rbx_ReflectionMetadataYieldFunctions extends Rbx_Instance {
@@ -5760,9 +5505,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataYieldFunctions"): ReflectionMetadataYieldFunctions | undefined;
 	FindFirstChildOfClass(className: "ReflectionMetadataYieldFunctions"): ReflectionMetadataYieldFunctions | undefined;
 	FindFirstAncestorWhichIsA(className: "ReflectionMetadataYieldFunctions"): ReflectionMetadataYieldFunctions | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ReflectionMetadataYieldFunctions", parent?: Instance): ReflectionMetadataYieldFunctions;
 }
 
 // RemoteEvent
@@ -5776,9 +5518,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "RemoteEvent"): RemoteEvent | undefined;
 	FindFirstAncestorWhichIsA(className: "RemoteEvent"): RemoteEvent | undefined;
 }
-interface InstanceConstructor {
-	new (className: "RemoteEvent", parent?: Instance): RemoteEvent;
-}
 
 // RemoteFunction
 interface Rbx_RemoteFunction extends Rbx_Instance {
@@ -5790,9 +5529,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "RemoteFunction"): RemoteFunction | undefined;
 	FindFirstChildOfClass(className: "RemoteFunction"): RemoteFunction | undefined;
 	FindFirstAncestorWhichIsA(className: "RemoteFunction"): RemoteFunction | undefined;
-}
-interface InstanceConstructor {
-	new (className: "RemoteFunction", parent?: Instance): RemoteFunction;
 }
 
 // RenderSettings
@@ -5844,9 +5580,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "RenderingTest"): RenderingTest | undefined;
 	FindFirstChildOfClass(className: "RenderingTest"): RenderingTest | undefined;
 	FindFirstAncestorWhichIsA(className: "RenderingTest"): RenderingTest | undefined;
-}
-interface InstanceConstructor {
-	new (className: "RenderingTest", parent?: Instance): RenderingTest;
 }
 
 // ReplicatedFirst
@@ -6167,9 +5900,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Sky"): Sky | undefined;
 	FindFirstAncestorWhichIsA(className: "Sky"): Sky | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Sky", parent?: Instance): Sky;
-}
 
 // Smoke
 interface Rbx_Smoke extends Rbx_Instance {
@@ -6186,9 +5916,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Smoke"): Smoke | undefined;
 	FindFirstChildOfClass(className: "Smoke"): Smoke | undefined;
 	FindFirstAncestorWhichIsA(className: "Smoke"): Smoke | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Smoke", parent?: Instance): Smoke;
 }
 
 // SocialService
@@ -6248,9 +5975,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Sound"): Sound | undefined;
 	FindFirstAncestorWhichIsA(className: "Sound"): Sound | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Sound", parent?: Instance): Sound;
-}
 
 // SoundEffect
 interface Rbx_SoundEffect extends Rbx_Instance {
@@ -6280,9 +6004,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ChorusSoundEffect"): ChorusSoundEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "ChorusSoundEffect"): ChorusSoundEffect | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ChorusSoundEffect", parent?: Instance): ChorusSoundEffect;
-}
 
 // CompressorSoundEffect
 interface Rbx_CompressorSoundEffect extends Rbx_SoundEffect {
@@ -6301,9 +6022,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "CompressorSoundEffect"): CompressorSoundEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "CompressorSoundEffect"): CompressorSoundEffect | undefined;
 }
-interface InstanceConstructor {
-	new (className: "CompressorSoundEffect", parent?: Instance): CompressorSoundEffect;
-}
 
 // DistortionSoundEffect
 interface Rbx_DistortionSoundEffect extends Rbx_SoundEffect {
@@ -6316,9 +6034,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "DistortionSoundEffect"): DistortionSoundEffect | undefined;
 	FindFirstChildOfClass(className: "DistortionSoundEffect"): DistortionSoundEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "DistortionSoundEffect"): DistortionSoundEffect | undefined;
-}
-interface InstanceConstructor {
-	new (className: "DistortionSoundEffect", parent?: Instance): DistortionSoundEffect;
 }
 
 // EchoSoundEffect
@@ -6336,9 +6051,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "EchoSoundEffect"): EchoSoundEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "EchoSoundEffect"): EchoSoundEffect | undefined;
 }
-interface InstanceConstructor {
-	new (className: "EchoSoundEffect", parent?: Instance): EchoSoundEffect;
-}
 
 // EqualizerSoundEffect
 interface Rbx_EqualizerSoundEffect extends Rbx_SoundEffect {
@@ -6353,9 +6065,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "EqualizerSoundEffect"): EqualizerSoundEffect | undefined;
 	FindFirstChildOfClass(className: "EqualizerSoundEffect"): EqualizerSoundEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "EqualizerSoundEffect"): EqualizerSoundEffect | undefined;
-}
-interface InstanceConstructor {
-	new (className: "EqualizerSoundEffect", parent?: Instance): EqualizerSoundEffect;
 }
 
 // FlangeSoundEffect
@@ -6372,9 +6081,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "FlangeSoundEffect"): FlangeSoundEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "FlangeSoundEffect"): FlangeSoundEffect | undefined;
 }
-interface InstanceConstructor {
-	new (className: "FlangeSoundEffect", parent?: Instance): FlangeSoundEffect;
-}
 
 // PitchShiftSoundEffect
 interface Rbx_PitchShiftSoundEffect extends Rbx_SoundEffect {
@@ -6387,9 +6093,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "PitchShiftSoundEffect"): PitchShiftSoundEffect | undefined;
 	FindFirstChildOfClass(className: "PitchShiftSoundEffect"): PitchShiftSoundEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "PitchShiftSoundEffect"): PitchShiftSoundEffect | undefined;
-}
-interface InstanceConstructor {
-	new (className: "PitchShiftSoundEffect", parent?: Instance): PitchShiftSoundEffect;
 }
 
 // ReverbSoundEffect
@@ -6408,9 +6111,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "ReverbSoundEffect"): ReverbSoundEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "ReverbSoundEffect"): ReverbSoundEffect | undefined;
 }
-interface InstanceConstructor {
-	new (className: "ReverbSoundEffect", parent?: Instance): ReverbSoundEffect;
-}
 
 // TremoloSoundEffect
 interface Rbx_TremoloSoundEffect extends Rbx_SoundEffect {
@@ -6426,9 +6126,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "TremoloSoundEffect"): TremoloSoundEffect | undefined;
 	FindFirstAncestorWhichIsA(className: "TremoloSoundEffect"): TremoloSoundEffect | undefined;
 }
-interface InstanceConstructor {
-	new (className: "TremoloSoundEffect", parent?: Instance): TremoloSoundEffect;
-}
 
 // SoundGroup
 interface Rbx_SoundGroup extends Rbx_Instance {
@@ -6441,9 +6138,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "SoundGroup"): SoundGroup | undefined;
 	FindFirstChildOfClass(className: "SoundGroup"): SoundGroup | undefined;
 	FindFirstAncestorWhichIsA(className: "SoundGroup"): SoundGroup | undefined;
-}
-interface InstanceConstructor {
-	new (className: "SoundGroup", parent?: Instance): SoundGroup;
 }
 
 // SoundService
@@ -6485,9 +6179,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Sparkles"): Sparkles | undefined;
 	FindFirstAncestorWhichIsA(className: "Sparkles"): Sparkles | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Sparkles", parent?: Instance): Sparkles;
-}
 
 // SpawnerService
 interface Rbx_SpawnerService extends Rbx_Instance {
@@ -6514,9 +6205,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "StarterGear"): StarterGear | undefined;
 	FindFirstChildOfClass(className: "StarterGear"): StarterGear | undefined;
 	FindFirstAncestorWhichIsA(className: "StarterGear"): StarterGear | undefined;
-}
-interface InstanceConstructor {
-	new (className: "StarterGear", parent?: Instance): StarterGear;
 }
 
 // StarterPlayer
@@ -6559,9 +6247,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "StarterPlayerScripts"): StarterPlayerScripts | undefined;
 	FindFirstAncestorWhichIsA(className: "StarterPlayerScripts"): StarterPlayerScripts | undefined;
 }
-interface InstanceConstructor {
-	new (className: "StarterPlayerScripts", parent?: Instance): StarterPlayerScripts;
-}
 
 // StarterCharacterScripts
 interface Rbx_StarterCharacterScripts extends Rbx_StarterPlayerScripts {
@@ -6573,9 +6258,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "StarterCharacterScripts"): StarterCharacterScripts | undefined;
 	FindFirstChildOfClass(className: "StarterCharacterScripts"): StarterCharacterScripts | undefined;
 	FindFirstAncestorWhichIsA(className: "StarterCharacterScripts"): StarterCharacterScripts | undefined;
-}
-interface InstanceConstructor {
-	new (className: "StarterCharacterScripts", parent?: Instance): StarterCharacterScripts;
 }
 
 // Stats
@@ -6824,9 +6506,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Team"): Team | undefined;
 	FindFirstAncestorWhichIsA(className: "Team"): Team | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Team", parent?: Instance): Team;
-}
 
 // Teams
 interface Rbx_Teams extends Rbx_Instance {
@@ -6877,9 +6556,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "TerrainRegion"): TerrainRegion | undefined;
 	FindFirstChildOfClass(className: "TerrainRegion"): TerrainRegion | undefined;
 	FindFirstAncestorWhichIsA(className: "TerrainRegion"): TerrainRegion | undefined;
-}
-interface InstanceConstructor {
-	new (className: "TerrainRegion", parent?: Instance): TerrainRegion;
 }
 
 // TestService
@@ -7036,9 +6712,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "Trail"): Trail | undefined;
 	FindFirstAncestorWhichIsA(className: "Trail"): Trail | undefined;
 }
-interface InstanceConstructor {
-	new (className: "Trail", parent?: Instance): Trail;
-}
 
 // Translator
 interface Rbx_Translator extends Rbx_Instance {
@@ -7089,9 +6762,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Tween"): Tween | undefined;
 	FindFirstChildOfClass(className: "Tween"): Tween | undefined;
 	FindFirstAncestorWhichIsA(className: "Tween"): Tween | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Tween", parent?: Instance): Tween;
 }
 
 // TweenService
@@ -7162,9 +6832,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "UIAspectRatioConstraint"): UIAspectRatioConstraint | undefined;
 	FindFirstAncestorWhichIsA(className: "UIAspectRatioConstraint"): UIAspectRatioConstraint | undefined;
 }
-interface InstanceConstructor {
-	new (className: "UIAspectRatioConstraint", parent?: Instance): UIAspectRatioConstraint;
-}
 
 // UISizeConstraint
 interface Rbx_UISizeConstraint extends Rbx_UIConstraint {
@@ -7181,9 +6848,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "UISizeConstraint"): UISizeConstraint | undefined;
 	FindFirstAncestorWhichIsA(className: "UISizeConstraint"): UISizeConstraint | undefined;
 }
-interface InstanceConstructor {
-	new (className: "UISizeConstraint", parent?: Instance): UISizeConstraint;
-}
 
 // UITextSizeConstraint
 interface Rbx_UITextSizeConstraint extends Rbx_UIConstraint {
@@ -7199,9 +6863,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "UITextSizeConstraint"): UITextSizeConstraint | undefined;
 	FindFirstChildOfClass(className: "UITextSizeConstraint"): UITextSizeConstraint | undefined;
 	FindFirstAncestorWhichIsA(className: "UITextSizeConstraint"): UITextSizeConstraint | undefined;
-}
-interface InstanceConstructor {
-	new (className: "UITextSizeConstraint", parent?: Instance): UITextSizeConstraint;
 }
 
 // UILayout
@@ -7258,9 +6919,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "UIGridLayout"): UIGridLayout | undefined;
 	FindFirstAncestorWhichIsA(className: "UIGridLayout"): UIGridLayout | undefined;
 }
-interface InstanceConstructor {
-	new (className: "UIGridLayout", parent?: Instance): UIGridLayout;
-}
 
 // UIListLayout
 interface Rbx_UIListLayout extends Rbx_UIGridStyleLayout {
@@ -7274,9 +6932,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "UIListLayout"): UIListLayout | undefined;
 	FindFirstChildOfClass(className: "UIListLayout"): UIListLayout | undefined;
 	FindFirstAncestorWhichIsA(className: "UIListLayout"): UIListLayout | undefined;
-}
-interface InstanceConstructor {
-	new (className: "UIListLayout", parent?: Instance): UIListLayout;
 }
 
 // UIPageLayout
@@ -7321,9 +6976,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "UIPageLayout"): UIPageLayout | undefined;
 	FindFirstAncestorWhichIsA(className: "UIPageLayout"): UIPageLayout | undefined;
 }
-interface InstanceConstructor {
-	new (className: "UIPageLayout", parent?: Instance): UIPageLayout;
-}
 
 // UITableLayout
 interface Rbx_UITableLayout extends Rbx_UIGridStyleLayout {
@@ -7343,9 +6995,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "UITableLayout"): UITableLayout | undefined;
 	FindFirstChildOfClass(className: "UITableLayout"): UITableLayout | undefined;
 	FindFirstAncestorWhichIsA(className: "UITableLayout"): UITableLayout | undefined;
-}
-interface InstanceConstructor {
-	new (className: "UITableLayout", parent?: Instance): UITableLayout;
 }
 
 // UIPadding
@@ -7367,9 +7016,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "UIPadding"): UIPadding | undefined;
 	FindFirstAncestorWhichIsA(className: "UIPadding"): UIPadding | undefined;
 }
-interface InstanceConstructor {
-	new (className: "UIPadding", parent?: Instance): UIPadding;
-}
 
 // UIScale
 interface Rbx_UIScale extends Rbx_UIComponent {
@@ -7383,9 +7029,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "UIScale"): UIScale | undefined;
 	FindFirstChildOfClass(className: "UIScale"): UIScale | undefined;
 	FindFirstAncestorWhichIsA(className: "UIScale"): UIScale | undefined;
-}
-interface InstanceConstructor {
-	new (className: "UIScale", parent?: Instance): UIScale;
 }
 
 // UserGameSettings
@@ -7561,9 +7204,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "BinaryStringValue"): BinaryStringValue | undefined;
 	FindFirstAncestorWhichIsA(className: "BinaryStringValue"): BinaryStringValue | undefined;
 }
-interface InstanceConstructor {
-	new (className: "BinaryStringValue", parent?: Instance): BinaryStringValue;
-}
 
 // BoolValue
 interface Rbx_BoolValue extends Rbx_ValueBase {
@@ -7576,9 +7216,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "BoolValue"): BoolValue | undefined;
 	FindFirstChildOfClass(className: "BoolValue"): BoolValue | undefined;
 	FindFirstAncestorWhichIsA(className: "BoolValue"): BoolValue | undefined;
-}
-interface InstanceConstructor {
-	new (className: "BoolValue", parent?: Instance): BoolValue;
 }
 
 // BrickColorValue
@@ -7593,9 +7230,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "BrickColorValue"): BrickColorValue | undefined;
 	FindFirstAncestorWhichIsA(className: "BrickColorValue"): BrickColorValue | undefined;
 }
-interface InstanceConstructor {
-	new (className: "BrickColorValue", parent?: Instance): BrickColorValue;
-}
 
 // CFrameValue
 interface Rbx_CFrameValue extends Rbx_ValueBase {
@@ -7609,9 +7243,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "CFrameValue"): CFrameValue | undefined;
 	FindFirstAncestorWhichIsA(className: "CFrameValue"): CFrameValue | undefined;
 }
-interface InstanceConstructor {
-	new (className: "CFrameValue", parent?: Instance): CFrameValue;
-}
 
 // Color3Value
 interface Rbx_Color3Value extends Rbx_ValueBase {
@@ -7624,9 +7255,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Color3Value"): Color3Value | undefined;
 	FindFirstChildOfClass(className: "Color3Value"): Color3Value | undefined;
 	FindFirstAncestorWhichIsA(className: "Color3Value"): Color3Value | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Color3Value", parent?: Instance): Color3Value;
 }
 
 // DoubleConstrainedValue
@@ -7646,9 +7274,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "DoubleConstrainedValue"): DoubleConstrainedValue | undefined;
 	FindFirstAncestorWhichIsA(className: "DoubleConstrainedValue"): DoubleConstrainedValue | undefined;
 }
-interface InstanceConstructor {
-	new (className: "DoubleConstrainedValue", parent?: Instance): DoubleConstrainedValue;
-}
 
 // IntConstrainedValue
 interface Rbx_IntConstrainedValue extends Rbx_ValueBase {
@@ -7665,9 +7290,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "IntConstrainedValue"): IntConstrainedValue | undefined;
 	FindFirstAncestorWhichIsA(className: "IntConstrainedValue"): IntConstrainedValue | undefined;
 }
-interface InstanceConstructor {
-	new (className: "IntConstrainedValue", parent?: Instance): IntConstrainedValue;
-}
 
 // IntValue
 interface Rbx_IntValue extends Rbx_ValueBase {
@@ -7680,9 +7302,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "IntValue"): IntValue | undefined;
 	FindFirstChildOfClass(className: "IntValue"): IntValue | undefined;
 	FindFirstAncestorWhichIsA(className: "IntValue"): IntValue | undefined;
-}
-interface InstanceConstructor {
-	new (className: "IntValue", parent?: Instance): IntValue;
 }
 
 // NumberValue
@@ -7697,9 +7316,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "NumberValue"): NumberValue | undefined;
 	FindFirstAncestorWhichIsA(className: "NumberValue"): NumberValue | undefined;
 }
-interface InstanceConstructor {
-	new (className: "NumberValue", parent?: Instance): NumberValue;
-}
 
 // ObjectValue
 interface Rbx_ObjectValue extends Rbx_ValueBase {
@@ -7712,9 +7328,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "ObjectValue"): ObjectValue | undefined;
 	FindFirstChildOfClass(className: "ObjectValue"): ObjectValue | undefined;
 	FindFirstAncestorWhichIsA(className: "ObjectValue"): ObjectValue | undefined;
-}
-interface InstanceConstructor {
-	new (className: "ObjectValue", parent?: Instance): ObjectValue;
 }
 
 // RayValue
@@ -7729,9 +7342,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "RayValue"): RayValue | undefined;
 	FindFirstAncestorWhichIsA(className: "RayValue"): RayValue | undefined;
 }
-interface InstanceConstructor {
-	new (className: "RayValue", parent?: Instance): RayValue;
-}
 
 // StringValue
 interface Rbx_StringValue extends Rbx_ValueBase {
@@ -7745,9 +7355,6 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "StringValue"): StringValue | undefined;
 	FindFirstAncestorWhichIsA(className: "StringValue"): StringValue | undefined;
 }
-interface InstanceConstructor {
-	new (className: "StringValue", parent?: Instance): StringValue;
-}
 
 // Vector3Value
 interface Rbx_Vector3Value extends Rbx_ValueBase {
@@ -7760,9 +7367,6 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "Vector3Value"): Vector3Value | undefined;
 	FindFirstChildOfClass(className: "Vector3Value"): Vector3Value | undefined;
 	FindFirstAncestorWhichIsA(className: "Vector3Value"): Vector3Value | undefined;
-}
-interface InstanceConstructor {
-	new (className: "Vector3Value", parent?: Instance): Vector3Value;
 }
 
 // VirtualInputManager
@@ -7826,7 +7430,5 @@ interface Rbx_Instance {
 	FindFirstChildOfClass(className: "WeldConstraint"): WeldConstraint | undefined;
 	FindFirstAncestorWhichIsA(className: "WeldConstraint"): WeldConstraint | undefined;
 }
-interface InstanceConstructor {
-	new (className: "WeldConstraint", parent?: Instance): WeldConstraint;
-}
+
 

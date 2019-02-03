@@ -166,6 +166,10 @@ function hasTag(api: ApiMemberBase | ApiClass, tag: string) {
 	return false;
 }
 
+function isCreatable(rbxClass: ApiClass) {
+	return !CREATABLE_BLACKLIST[rbxClass.Name] && !hasTag(rbxClass, "NotCreatable") && !hasTag(rbxClass, "Service");
+}
+
 function generateArgs(params: Array<ApiParameter>) {
 	let args = new Array<string>();
 	const paramNames = params.map(param => param.Name);
@@ -311,20 +315,12 @@ export class ClassGenerator extends Generator {
 			this.write(`GetService(className: "${name}"): ${name};`);
 			this.popIndent();
 			this.write(`}`);
-		} else if (!hasTag(rbxClass, "NotCreatable") && !CREATABLE_BLACKLIST[name]) {
-			this.write(`interface InstanceConstructor {`);
-			this.pushIndent();
-			this.write(`new (className: "${name}", parent?: Instance): ${name};`);
-			this.popIndent();
-			this.write(`}`);
 		}
 
 		this.write(``);
 	}
 
-	public async generate(rbxClasses: Array<ApiClass>) {
-		const project = new Project({ tsConfigFilePath: path.join(__dirname, "..", "..", "include", "tsconfig.json") });
-		const sourceFile = project.getSourceFileOrThrow("manual.d.ts");
+	private generateHeader() {
 		this.write(`// THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!`);
 		this.write(``);
 		this.write(`/// <reference no-default-lib="true"/>`);
@@ -332,8 +328,34 @@ export class ClassGenerator extends Generator {
 		this.write(`/// <reference path="manual.d.ts" />`);
 		this.write(`/// <reference path="generated_enums.d.ts" />`);
 		this.write(``);
+	}
+
+	private generateCreatableLookupTable(rbxClasses: Array<ApiClass>) {
+		this.write(`// CREATABLE LOOKUP TABLE`);
+		this.write(``);
+		this.write(`interface CreatableLookup {`);
+		this.pushIndent();
+		rbxClasses
+			.filter(rbxClass => isCreatable(rbxClass))
+			.map(rbxClass => rbxClass.Name)
+			.forEach(name => this.write(`${name}: ${name};`));
+		this.popIndent();
+		this.write(`}`);
+		this.write(``);
+	}
+
+	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {
 		this.write(`// GENERATED ROBLOX INSTANCE CLASSES`);
 		this.write(``);
 		rbxClasses.forEach(rbxClass => this.generateClass(rbxClass, sourceFile));
+		this.write(``);
+	}
+
+	public async generate(rbxClasses: Array<ApiClass>) {
+		const project = new Project({ tsConfigFilePath: path.join(__dirname, "..", "..", "include", "tsconfig.json") });
+		const sourceFile = project.getSourceFileOrThrow("manual.d.ts");
+		this.generateHeader();
+		this.generateCreatableLookupTable(rbxClasses);
+		this.generateClasses(rbxClasses, sourceFile);
 	}
 }

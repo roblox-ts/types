@@ -31,6 +31,7 @@ interface RBXScriptSignal<T = Function> {
 
 // InstanceConstructor
 interface InstanceConstructor {
+	new <T extends keyof CreatableLookup>(className: T, parent?: Instance): CreatableLookup[T];
 	new (className: string, parent?: Instance): Instance;
 }
 declare const Instance: InstanceConstructor;
