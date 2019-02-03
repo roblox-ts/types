@@ -497,3 +497,45 @@ declare namespace math {
 	/** Returns a number between min and max, inclusive. */
 	function clamp(n: number, min: number, max: number): number;
 }
+
+// typeIs
+interface CheckableTypes {
+	// Primitives
+	nil: undefined;
+	boolean: boolean;
+	string: string;
+	number: number;
+	table: object;
+	userdata: unknown;
+
+	// Roblox Types
+	Instance: Instance;
+	Axes: Axes;
+	BrickColor: BrickColor;
+	CFrame: CFrame;
+	Color3: Color3;
+	ColorSequence: ColorSequence;
+	ColorSequenceKeypoint: ColorSequenceKeypoint;
+	DockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo;
+	Faces: Faces;
+	NumberRange: NumberRange;
+	NumberSequence: NumberSequence;
+	NumberSequenceKeypoint: NumberSequenceKeypoint;
+	PathWaypoint: PathWaypoint;
+	PhysicalProperties: PhysicalProperties;
+	Random: Random;
+	Ray: Ray;
+	Rect: Rect;
+	Region3: Region3;
+	Region3int16: Region3int16;
+	TweenInfo: TweenInfo;
+	UDim: UDim;
+	UDim2: UDim2;
+	Vector2: Vector2;
+	Vector2int16: Vector2int16;
+	Vector3: Vector3;
+	Vector3int16: Vector3int16;
+}
+
+declare function typeIs<T extends keyof CheckableTypes>(value: any, type: T): value is CheckableTypes[T];
+declare function typeIs(value: any, type: string): boolean;
