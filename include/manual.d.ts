@@ -793,3 +793,8 @@ interface Rbx_Workspace extends Rbx_Model {
 		ignoreWater?: boolean
 	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
 }
+
+interface Rbx_JointInstance extends Rbx_Instance {
+	Part0: BasePart | undefined;
+	Part1: BasePart | undefined;
+}
