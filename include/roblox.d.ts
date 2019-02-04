@@ -507,6 +507,7 @@ interface CheckableTypes {
 	number: number;
 	table: object;
 	userdata: unknown;
+	function: Callback;
 
 	// Roblox Types
 	Instance: Instance;
