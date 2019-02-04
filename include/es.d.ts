@@ -5,6 +5,9 @@ interface IArguments {}
 interface Number {}
 interface Object {}
 interface RegExp {}
+interface Function {}
+interface CallableFunction extends Function {}
+interface NewableFunction extends Function {}
 
 interface ArrayLike<T> {
 	readonly length: number;
@@ -87,14 +90,6 @@ interface String {
 	readonly length: number;
 	split(sep: string): Array<string>;
 }
-
-interface Function {
-	prototype: any;
-}
-
-interface CallableFunction extends Function {}
-
-interface NewableFunction extends Function {}
 
 interface Symbol {
 	toString(): string;
@@ -430,7 +425,6 @@ interface ReadonlyArray<T> {
 
 interface ArrayConstructor {
 	new <T>(): T[];
-	readonly prototype: Array<any>;
 }
 
 declare const Array: ArrayConstructor;
@@ -450,7 +444,6 @@ interface Map<K, V> {
 
 interface MapConstructor {
 	new <K = any, V = any>(entries?: ReadonlyArray<[K, V]> | null): Map<K, V>;
-	readonly prototype: Map<any, any>;
 }
 declare var Map: MapConstructor;
 
@@ -473,7 +466,6 @@ interface WeakMap<K extends object, V> {
 
 interface WeakMapConstructor {
 	new <K extends object = object, V = any>(entries?: ReadonlyArray<[K, V]> | null): WeakMap<K, V>;
-	readonly prototype: WeakMap<object, any>;
 }
 declare var WeakMap: WeakMapConstructor;
 
@@ -491,7 +483,6 @@ interface Set<T> {
 
 interface SetConstructor {
 	new <T = any>(values?: ReadonlyArray<T> | null): Set<T>;
-	readonly prototype: Set<any>;
 }
 declare const Set: SetConstructor;
 
@@ -512,7 +503,6 @@ interface WeakSet<T extends object> {
 
 interface WeakSetConstructor {
 	new <T extends object = object>(values?: ReadonlyArray<T> | null): WeakSet<T>;
-	readonly prototype: WeakSet<object>;
 }
 declare const WeakSet: WeakSetConstructor;
 
@@ -588,10 +578,6 @@ interface Promise<T> {
 }
 
 interface PromiseConstructor {
-	/**
-	 * A reference to the prototype.
-	 */
-	readonly prototype: Promise<any>;
 
 	/**
 	 * Creates a new Promise.
