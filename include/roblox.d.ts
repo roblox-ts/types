@@ -308,8 +308,9 @@ declare const PhysicalProperties: PhysicalPropertiesConstructor;
 
 // Random
 interface Random {
-	NextNumber(min?: number, max?: number): number;
-	NextInteger(min?: number, max?: number): number;
+	NextInteger(min: number, max: number): number;
+	NextNumber(): number;
+	NextNumber(min: number, max: number): number;
 	Clone(): Random;
 }
 interface RandomConstructor {
