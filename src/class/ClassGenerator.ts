@@ -166,6 +166,10 @@ function hasTag(api: ApiMemberBase | ApiClass, tag: string) {
 	return false;
 }
 
+function isCreatable(rbxClass: ApiClass) {
+	return !CREATABLE_BLACKLIST[rbxClass.Name] && !hasTag(rbxClass, "NotCreatable") && !hasTag(rbxClass, "Service");
+}
+
 function generateArgs(params: Array<ApiParameter>) {
 	let args = new Array<string>();
 	const paramNames = params.map(param => param.Name);
@@ -293,31 +297,9 @@ export class ClassGenerator extends Generator {
 			this.write(`}`);
 		}
 
-		if (hasTag(rbxClass, "Service") || CREATABLE_BLACKLIST[name]) {
-			this.write(`type ${name} = ${implName} & Base<${implName}> & AnyIndex;`);
-		} else {
-			let prefixStr = "";
-			if (hasTag(rbxClass, "NotCreatable")) {
-				prefixStr = "abstract ";
-			}
+		this.write(`type ${name} = ${implName} & Indexable<${implName}>;`);
 
-			if (!tsApiInterface) {
-				this.write(`interface ${name} extends ${implName}, Base<${implName}>, AnyIndex {}`);
-			}
-
-			const classDescription = this.metadata.getClassDescription(name);
-			if (classDescription) {
-				this.write(`/** ${classDescription} */`);
-			}
-
-			this.write(`declare ${prefixStr}class ${name} {`);
-			this.pushIndent();
-			this.write("constructor(parent?: Instance);");
-			this.popIndent();
-			this.write("}");
-		}
-
-		this.write("interface Rbx_Instance {");
+		this.write(`interface Rbx_Instance {`);
 		this.pushIndent();
 		this.write(`IsA(className: "${name}"): this is ${name};`);
 		this.write(`FindFirstAncestorOfClass(className: "${name}"): ${name} | undefined;`);
@@ -325,31 +307,55 @@ export class ClassGenerator extends Generator {
 		this.write(`FindFirstChildOfClass(className: "${name}"): ${name} | undefined;`);
 		this.write(`FindFirstAncestorWhichIsA(className: "${name}"): ${name} | undefined;`);
 		this.popIndent();
-		this.write("}");
+		this.write(`}`);
 
 		if (hasTag(rbxClass, "Service")) {
-			this.write("interface Rbx_ServiceProvider extends Rbx_Instance {");
+			this.write(`interface Rbx_ServiceProvider extends Rbx_Instance {`);
 			this.pushIndent();
 			this.write(`GetService(className: "${name}"): ${name};`);
 			this.popIndent();
-			this.write("}");
+			this.write(`}`);
 		}
 
-		this.write("");
+		this.write(``);
+	}
+
+	private generateHeader() {
+		this.write(`// THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!`);
+		this.write(``);
+		this.write(`/// <reference no-default-lib="true"/>`);
+		this.write(`/// <reference path="roblox.d.ts" />`);
+		this.write(`/// <reference path="manual.d.ts" />`);
+		this.write(`/// <reference path="generated_enums.d.ts" />`);
+		this.write(``);
+	}
+
+	private generateCreatableInstanceTable(rbxClasses: Array<ApiClass>) {
+		this.write(`// CREATABLE INSTANCE TABLE`);
+		this.write(``);
+		this.write(`interface CreatableInstances {`);
+		this.pushIndent();
+		rbxClasses
+			.filter(rbxClass => isCreatable(rbxClass))
+			.map(rbxClass => rbxClass.Name)
+			.forEach(name => this.write(`${name}: ${name};`));
+		this.popIndent();
+		this.write(`}`);
+		this.write(``);
+	}
+
+	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {
+		this.write(`// GENERATED ROBLOX INSTANCE CLASSES`);
+		this.write(``);
+		rbxClasses.forEach(rbxClass => this.generateClass(rbxClass, sourceFile));
+		this.write(``);
 	}
 
 	public async generate(rbxClasses: Array<ApiClass>) {
 		const project = new Project({ tsConfigFilePath: path.join(__dirname, "..", "..", "include", "tsconfig.json") });
 		const sourceFile = project.getSourceFileOrThrow("manual.d.ts");
-		this.write("// THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!");
-		this.write("");
-		this.write('/// <reference no-default-lib="true"/>');
-		this.write('/// <reference path="roblox.d.ts" />');
-		this.write('/// <reference path="manual.d.ts" />');
-		this.write('/// <reference path="generated_enums.d.ts" />');
-		this.write("");
-		this.write("// GENERATED ROBLOX INSTANCE CLASSES");
-		this.write("");
-		rbxClasses.forEach(rbxClass => this.generateClass(rbxClass, sourceFile));
+		this.generateHeader();
+		this.generateCreatableInstanceTable(rbxClasses);
+		this.generateClasses(rbxClasses, sourceFile);
 	}
 }
