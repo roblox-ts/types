@@ -5,9 +5,9 @@
 /// <reference path="manual.d.ts" />
 /// <reference path="generated_enums.d.ts" />
 
-// CREATABLE LOOKUP TABLE
+// CREATABLE INSTANCE TABLE
 
-interface CreatableLookup {
+interface CreatableInstances {
 	Accoutrement: Accoutrement;
 	Accessory: Accessory;
 	Hat: Hat;

@@ -330,10 +330,10 @@ export class ClassGenerator extends Generator {
 		this.write(``);
 	}
 
-	private generateCreatableLookupTable(rbxClasses: Array<ApiClass>) {
-		this.write(`// CREATABLE LOOKUP TABLE`);
+	private generateCreatableInstanceTable(rbxClasses: Array<ApiClass>) {
+		this.write(`// CREATABLE INSTANCE TABLE`);
 		this.write(``);
-		this.write(`interface CreatableLookup {`);
+		this.write(`interface CreatableInstances {`);
 		this.pushIndent();
 		rbxClasses
 			.filter(rbxClass => isCreatable(rbxClass))
@@ -355,7 +355,7 @@ export class ClassGenerator extends Generator {
 		const project = new Project({ tsConfigFilePath: path.join(__dirname, "..", "..", "include", "tsconfig.json") });
 		const sourceFile = project.getSourceFileOrThrow("manual.d.ts");
 		this.generateHeader();
-		this.generateCreatableLookupTable(rbxClasses);
+		this.generateCreatableInstanceTable(rbxClasses);
 		this.generateClasses(rbxClasses, sourceFile);
 	}
 }
