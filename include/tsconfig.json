@@ -3,6 +3,6 @@
 		"strict": true,
 		"rootDir": ".",
 		"noLib": true,
-		"typeRoots": []
+		"typeRoots": ["."]
 	}
 }
