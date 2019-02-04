@@ -3436,8 +3436,6 @@ interface Rbx_JointInstance extends Rbx_Instance {
 	readonly Active: boolean;
 	C0: CFrame;
 	C1: CFrame;
-	Part0: BasePart;
-	Part1: BasePart;
 }
 type JointInstance = Rbx_JointInstance & Indexable<Rbx_JointInstance>;
 interface Rbx_Instance {
