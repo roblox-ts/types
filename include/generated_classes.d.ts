@@ -255,7 +255,7 @@ interface Rbx_Instance {
 	/** Fired after an Instance is unparented from this object, or any of this object's descendants.  The 'descendant' argument is the Instance that is being added. */
 	DescendantRemoving: RBXScriptSignal<(descendant: Instance) => void>;
 }
-type Instance = Rbx_Instance & Indexable<Rbx_Instance>;
+type Instance = Rbx_Instance & Base<Rbx_Instance> & Indexable<Rbx_Instance>;
 interface Rbx_Instance {
 	IsA(className: "Instance"): this is Instance;
 	FindFirstAncestorOfClass(className: "Instance"): Instance | undefined;
@@ -267,7 +267,7 @@ interface Rbx_Instance {
 // ABTestService
 interface Rbx_ABTestService extends Rbx_Instance {
 }
-type ABTestService = Rbx_ABTestService & Indexable<Rbx_ABTestService>;
+type ABTestService = Rbx_ABTestService & Base<Rbx_ABTestService> & Indexable<Rbx_ABTestService>;
 interface Rbx_Instance {
 	IsA(className: "ABTestService"): this is ABTestService;
 	FindFirstAncestorOfClass(className: "ABTestService"): ABTestService | undefined;
@@ -287,7 +287,7 @@ interface Rbx_Accoutrement extends Rbx_Instance {
 	AttachmentRight: Vector3;
 	AttachmentUp: Vector3;
 }
-type Accoutrement = Rbx_Accoutrement & Indexable<Rbx_Accoutrement>;
+type Accoutrement = Rbx_Accoutrement & Base<Rbx_Accoutrement> & Indexable<Rbx_Accoutrement>;
 interface Rbx_Instance {
 	IsA(className: "Accoutrement"): this is Accoutrement;
 	FindFirstAncestorOfClass(className: "Accoutrement"): Accoutrement | undefined;
@@ -299,7 +299,7 @@ interface Rbx_Instance {
 // Accessory
 interface Rbx_Accessory extends Rbx_Accoutrement {
 }
-type Accessory = Rbx_Accessory & Indexable<Rbx_Accessory>;
+type Accessory = Rbx_Accessory & Base<Rbx_Accessory> & Indexable<Rbx_Accessory>;
 interface Rbx_Instance {
 	IsA(className: "Accessory"): this is Accessory;
 	FindFirstAncestorOfClass(className: "Accessory"): Accessory | undefined;
@@ -311,7 +311,7 @@ interface Rbx_Instance {
 // Hat
 interface Rbx_Hat extends Rbx_Accoutrement {
 }
-type Hat = Rbx_Hat & Indexable<Rbx_Hat>;
+type Hat = Rbx_Hat & Base<Rbx_Hat> & Indexable<Rbx_Hat>;
 interface Rbx_Instance {
 	IsA(className: "Hat"): this is Hat;
 	FindFirstAncestorOfClass(className: "Hat"): Hat | undefined;
@@ -323,7 +323,7 @@ interface Rbx_Instance {
 // AdService
 interface Rbx_AdService extends Rbx_Instance {
 }
-type AdService = Rbx_AdService & Indexable<Rbx_AdService>;
+type AdService = Rbx_AdService & Base<Rbx_AdService> & Indexable<Rbx_AdService>;
 interface Rbx_Instance {
 	IsA(className: "AdService"): this is AdService;
 	FindFirstAncestorOfClass(className: "AdService"): AdService | undefined;
@@ -338,7 +338,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // AdvancedDragger
 interface Rbx_AdvancedDragger extends Rbx_Instance {
 }
-type AdvancedDragger = Rbx_AdvancedDragger & Indexable<Rbx_AdvancedDragger>;
+type AdvancedDragger = Rbx_AdvancedDragger & Base<Rbx_AdvancedDragger> & Indexable<Rbx_AdvancedDragger>;
 interface Rbx_Instance {
 	IsA(className: "AdvancedDragger"): this is AdvancedDragger;
 	FindFirstAncestorOfClass(className: "AdvancedDragger"): AdvancedDragger | undefined;
@@ -350,7 +350,7 @@ interface Rbx_Instance {
 // AnalyticsService
 interface Rbx_AnalyticsService extends Rbx_Instance {
 }
-type AnalyticsService = Rbx_AnalyticsService & Indexable<Rbx_AnalyticsService>;
+type AnalyticsService = Rbx_AnalyticsService & Base<Rbx_AnalyticsService> & Indexable<Rbx_AnalyticsService>;
 interface Rbx_Instance {
 	IsA(className: "AnalyticsService"): this is AnalyticsService;
 	FindFirstAncestorOfClass(className: "AnalyticsService"): AnalyticsService | undefined;
@@ -366,7 +366,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Animation extends Rbx_Instance {
 	AnimationId: string;
 }
-type Animation = Rbx_Animation & Indexable<Rbx_Animation>;
+type Animation = Rbx_Animation & Base<Rbx_Animation> & Indexable<Rbx_Animation>;
 interface Rbx_Instance {
 	IsA(className: "Animation"): this is Animation;
 	FindFirstAncestorOfClass(className: "Animation"): Animation | undefined;
@@ -378,7 +378,7 @@ interface Rbx_Instance {
 // AnimationController
 interface Rbx_AnimationController extends Rbx_Instance {
 }
-type AnimationController = Rbx_AnimationController & Indexable<Rbx_AnimationController>;
+type AnimationController = Rbx_AnimationController & Base<Rbx_AnimationController> & Indexable<Rbx_AnimationController>;
 interface Rbx_Instance {
 	IsA(className: "AnimationController"): this is AnimationController;
 	FindFirstAncestorOfClass(className: "AnimationController"): AnimationController | undefined;
@@ -408,7 +408,7 @@ interface Rbx_AnimationTrack extends Rbx_Instance {
 	KeyframeReached: RBXScriptSignal<(keyframeName: string) => void>;
 	Stopped: RBXScriptSignal<() => void>;
 }
-type AnimationTrack = Rbx_AnimationTrack & Indexable<Rbx_AnimationTrack>;
+type AnimationTrack = Rbx_AnimationTrack & Base<Rbx_AnimationTrack> & Indexable<Rbx_AnimationTrack>;
 interface Rbx_Instance {
 	IsA(className: "AnimationTrack"): this is AnimationTrack;
 	FindFirstAncestorOfClass(className: "AnimationTrack"): AnimationTrack | undefined;
@@ -420,7 +420,7 @@ interface Rbx_Instance {
 // Animator
 interface Rbx_Animator extends Rbx_Instance {
 }
-type Animator = Rbx_Animator & Indexable<Rbx_Animator>;
+type Animator = Rbx_Animator & Base<Rbx_Animator> & Indexable<Rbx_Animator>;
 interface Rbx_Instance {
 	IsA(className: "Animator"): this is Animator;
 	FindFirstAncestorOfClass(className: "Animator"): Animator | undefined;
@@ -435,7 +435,7 @@ interface Rbx_AssetService extends Rbx_Instance {
 	GetBundleDetailsAsync(bundleId: number): object;
 	SavePlaceAsync(): void;
 }
-type AssetService = Rbx_AssetService & Indexable<Rbx_AssetService>;
+type AssetService = Rbx_AssetService & Base<Rbx_AssetService> & Indexable<Rbx_AssetService>;
 interface Rbx_Instance {
 	IsA(className: "AssetService"): this is AssetService;
 	FindFirstAncestorOfClass(className: "AssetService"): AssetService | undefined;
@@ -466,7 +466,7 @@ interface Rbx_Attachment extends Rbx_Instance {
 	WorldPosition: Vector3;
 	WorldSecondaryAxis: Vector3;
 }
-type Attachment = Rbx_Attachment & Indexable<Rbx_Attachment>;
+type Attachment = Rbx_Attachment & Base<Rbx_Attachment> & Indexable<Rbx_Attachment>;
 interface Rbx_Instance {
 	IsA(className: "Attachment"): this is Attachment;
 	FindFirstAncestorOfClass(className: "Attachment"): Attachment | undefined;
@@ -481,7 +481,7 @@ interface Rbx_BadgeService extends Rbx_Instance {
 	GetBadgeInfoAsync(badgeId: number): object;
 	UserHasBadgeAsync(userId: number, badgeId: number): boolean;
 }
-type BadgeService = Rbx_BadgeService & Indexable<Rbx_BadgeService>;
+type BadgeService = Rbx_BadgeService & Base<Rbx_BadgeService> & Indexable<Rbx_BadgeService>;
 interface Rbx_Instance {
 	IsA(className: "BadgeService"): this is BadgeService;
 	FindFirstAncestorOfClass(className: "BadgeService"): BadgeService | undefined;
@@ -497,7 +497,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_BasePlayerGui extends Rbx_Instance {
 	GetGuiObjectsAtPosition(x: number, y: number): Array<Instance>;
 }
-type BasePlayerGui = Rbx_BasePlayerGui & Indexable<Rbx_BasePlayerGui>;
+type BasePlayerGui = Rbx_BasePlayerGui & Base<Rbx_BasePlayerGui> & Indexable<Rbx_BasePlayerGui>;
 interface Rbx_Instance {
 	IsA(className: "BasePlayerGui"): this is BasePlayerGui;
 	FindFirstAncestorOfClass(className: "BasePlayerGui"): BasePlayerGui | undefined;
@@ -510,7 +510,7 @@ interface Rbx_Instance {
 interface Rbx_CoreGui extends Rbx_BasePlayerGui {
 	readonly Version: number;
 }
-type CoreGui = Rbx_CoreGui & Indexable<Rbx_CoreGui>;
+type CoreGui = Rbx_CoreGui & Base<Rbx_CoreGui> & Indexable<Rbx_CoreGui>;
 interface Rbx_Instance {
 	IsA(className: "CoreGui"): this is CoreGui;
 	FindFirstAncestorOfClass(className: "CoreGui"): CoreGui | undefined;
@@ -532,7 +532,7 @@ interface Rbx_PlayerGui extends Rbx_BasePlayerGui {
 	SetTopbarTransparency(transparency: number): void;
 	TopbarTransparencyChangedSignal: RBXScriptSignal<(transparency: number) => void>;
 }
-type PlayerGui = Rbx_PlayerGui & Indexable<Rbx_PlayerGui>;
+type PlayerGui = Rbx_PlayerGui & Base<Rbx_PlayerGui> & Indexable<Rbx_PlayerGui>;
 interface Rbx_Instance {
 	IsA(className: "PlayerGui"): this is PlayerGui;
 	FindFirstAncestorOfClass(className: "PlayerGui"): PlayerGui | undefined;
@@ -550,7 +550,7 @@ interface Rbx_StarterGui extends Rbx_BasePlayerGui {
 	/** Will stop/begin certain core gui elements being rendered. See CoreGuiType for core guis that can be modified. */
 	SetCoreGuiEnabled(coreGuiType: Enum.CoreGuiType, enabled: boolean): void;
 }
-type StarterGui = Rbx_StarterGui & Indexable<Rbx_StarterGui>;
+type StarterGui = Rbx_StarterGui & Base<Rbx_StarterGui> & Indexable<Rbx_StarterGui>;
 interface Rbx_Instance {
 	IsA(className: "StarterGui"): this is StarterGui;
 	FindFirstAncestorOfClass(className: "StarterGui"): StarterGui | undefined;
@@ -584,7 +584,7 @@ interface Rbx_Beam extends Rbx_Instance {
 	ZOffset: number;
 	SetTextureOffset(offset?: number): void;
 }
-type Beam = Rbx_Beam & Indexable<Rbx_Beam>;
+type Beam = Rbx_Beam & Base<Rbx_Beam> & Indexable<Rbx_Beam>;
 interface Rbx_Instance {
 	IsA(className: "Beam"): this is Beam;
 	FindFirstAncestorOfClass(className: "Beam"): Beam | undefined;
@@ -596,7 +596,7 @@ interface Rbx_Instance {
 // BindableEvent
 interface Rbx_BindableEvent extends Rbx_Instance {
 }
-type BindableEvent = Rbx_BindableEvent & Indexable<Rbx_BindableEvent>;
+type BindableEvent = Rbx_BindableEvent & Base<Rbx_BindableEvent> & Indexable<Rbx_BindableEvent>;
 interface Rbx_Instance {
 	IsA(className: "BindableEvent"): this is BindableEvent;
 	FindFirstAncestorOfClass(className: "BindableEvent"): BindableEvent | undefined;
@@ -608,7 +608,7 @@ interface Rbx_Instance {
 // BindableFunction
 interface Rbx_BindableFunction extends Rbx_Instance {
 }
-type BindableFunction = Rbx_BindableFunction & Indexable<Rbx_BindableFunction>;
+type BindableFunction = Rbx_BindableFunction & Base<Rbx_BindableFunction> & Indexable<Rbx_BindableFunction>;
 interface Rbx_Instance {
 	IsA(className: "BindableFunction"): this is BindableFunction;
 	FindFirstAncestorOfClass(className: "BindableFunction"): BindableFunction | undefined;
@@ -620,7 +620,7 @@ interface Rbx_Instance {
 // BodyMover
 interface Rbx_BodyMover extends Rbx_Instance {
 }
-type BodyMover = Rbx_BodyMover & Indexable<Rbx_BodyMover>;
+type BodyMover = Rbx_BodyMover & Base<Rbx_BodyMover> & Indexable<Rbx_BodyMover>;
 interface Rbx_Instance {
 	IsA(className: "BodyMover"): this is BodyMover;
 	FindFirstAncestorOfClass(className: "BodyMover"): BodyMover | undefined;
@@ -635,7 +635,7 @@ interface Rbx_BodyAngularVelocity extends Rbx_BodyMover {
 	MaxTorque: Vector3;
 	P: number;
 }
-type BodyAngularVelocity = Rbx_BodyAngularVelocity & Indexable<Rbx_BodyAngularVelocity>;
+type BodyAngularVelocity = Rbx_BodyAngularVelocity & Base<Rbx_BodyAngularVelocity> & Indexable<Rbx_BodyAngularVelocity>;
 interface Rbx_Instance {
 	IsA(className: "BodyAngularVelocity"): this is BodyAngularVelocity;
 	FindFirstAncestorOfClass(className: "BodyAngularVelocity"): BodyAngularVelocity | undefined;
@@ -648,7 +648,7 @@ interface Rbx_Instance {
 interface Rbx_BodyForce extends Rbx_BodyMover {
 	Force: Vector3;
 }
-type BodyForce = Rbx_BodyForce & Indexable<Rbx_BodyForce>;
+type BodyForce = Rbx_BodyForce & Base<Rbx_BodyForce> & Indexable<Rbx_BodyForce>;
 interface Rbx_Instance {
 	IsA(className: "BodyForce"): this is BodyForce;
 	FindFirstAncestorOfClass(className: "BodyForce"): BodyForce | undefined;
@@ -668,7 +668,7 @@ interface Rbx_BodyGyro extends Rbx_BodyMover {
 	/** The power continually applied to this force */
 	P: number;
 }
-type BodyGyro = Rbx_BodyGyro & Indexable<Rbx_BodyGyro>;
+type BodyGyro = Rbx_BodyGyro & Base<Rbx_BodyGyro> & Indexable<Rbx_BodyGyro>;
 interface Rbx_Instance {
 	IsA(className: "BodyGyro"): this is BodyGyro;
 	FindFirstAncestorOfClass(className: "BodyGyro"): BodyGyro | undefined;
@@ -690,7 +690,7 @@ interface Rbx_BodyPosition extends Rbx_BodyMover {
 	GetLastForce(): Vector3;
 	ReachedTarget: RBXScriptSignal<() => void>;
 }
-type BodyPosition = Rbx_BodyPosition & Indexable<Rbx_BodyPosition>;
+type BodyPosition = Rbx_BodyPosition & Base<Rbx_BodyPosition> & Indexable<Rbx_BodyPosition>;
 interface Rbx_Instance {
 	IsA(className: "BodyPosition"): this is BodyPosition;
 	FindFirstAncestorOfClass(className: "BodyPosition"): BodyPosition | undefined;
@@ -706,7 +706,7 @@ interface Rbx_BodyThrust extends Rbx_BodyMover {
 	/** The Vector3 location of where to apply the force to.  */
 	Location: Vector3;
 }
-type BodyThrust = Rbx_BodyThrust & Indexable<Rbx_BodyThrust>;
+type BodyThrust = Rbx_BodyThrust & Base<Rbx_BodyThrust> & Indexable<Rbx_BodyThrust>;
 interface Rbx_Instance {
 	IsA(className: "BodyThrust"): this is BodyThrust;
 	FindFirstAncestorOfClass(className: "BodyThrust"): BodyThrust | undefined;
@@ -726,7 +726,7 @@ interface Rbx_BodyVelocity extends Rbx_BodyMover {
 	GetLastForce(): Vector3;
 	lastForce(): Vector3;
 }
-type BodyVelocity = Rbx_BodyVelocity & Indexable<Rbx_BodyVelocity>;
+type BodyVelocity = Rbx_BodyVelocity & Base<Rbx_BodyVelocity> & Indexable<Rbx_BodyVelocity>;
 interface Rbx_Instance {
 	IsA(className: "BodyVelocity"): this is BodyVelocity;
 	FindFirstAncestorOfClass(className: "BodyVelocity"): BodyVelocity | undefined;
@@ -752,7 +752,7 @@ interface Rbx_RocketPropulsion extends Rbx_BodyMover {
 	Fire(): void;
 	ReachedTarget: RBXScriptSignal<() => void>;
 }
-type RocketPropulsion = Rbx_RocketPropulsion & Indexable<Rbx_RocketPropulsion>;
+type RocketPropulsion = Rbx_RocketPropulsion & Base<Rbx_RocketPropulsion> & Indexable<Rbx_RocketPropulsion>;
 interface Rbx_Instance {
 	IsA(className: "RocketPropulsion"): this is RocketPropulsion;
 	FindFirstAncestorOfClass(className: "RocketPropulsion"): RocketPropulsion | undefined;
@@ -764,7 +764,7 @@ interface Rbx_Instance {
 // CacheableContentProvider
 interface Rbx_CacheableContentProvider extends Rbx_Instance {
 }
-type CacheableContentProvider = Rbx_CacheableContentProvider & Indexable<Rbx_CacheableContentProvider>;
+type CacheableContentProvider = Rbx_CacheableContentProvider & Base<Rbx_CacheableContentProvider> & Indexable<Rbx_CacheableContentProvider>;
 interface Rbx_Instance {
 	IsA(className: "CacheableContentProvider"): this is CacheableContentProvider;
 	FindFirstAncestorOfClass(className: "CacheableContentProvider"): CacheableContentProvider | undefined;
@@ -779,7 +779,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // MeshContentProvider
 interface Rbx_MeshContentProvider extends Rbx_CacheableContentProvider {
 }
-type MeshContentProvider = Rbx_MeshContentProvider & Indexable<Rbx_MeshContentProvider>;
+type MeshContentProvider = Rbx_MeshContentProvider & Base<Rbx_MeshContentProvider> & Indexable<Rbx_MeshContentProvider>;
 interface Rbx_Instance {
 	IsA(className: "MeshContentProvider"): this is MeshContentProvider;
 	FindFirstAncestorOfClass(className: "MeshContentProvider"): MeshContentProvider | undefined;
@@ -794,7 +794,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // SolidModelContentProvider
 interface Rbx_SolidModelContentProvider extends Rbx_CacheableContentProvider {
 }
-type SolidModelContentProvider = Rbx_SolidModelContentProvider & Indexable<Rbx_SolidModelContentProvider>;
+type SolidModelContentProvider = Rbx_SolidModelContentProvider & Base<Rbx_SolidModelContentProvider> & Indexable<Rbx_SolidModelContentProvider>;
 interface Rbx_Instance {
 	IsA(className: "SolidModelContentProvider"): this is SolidModelContentProvider;
 	FindFirstAncestorOfClass(className: "SolidModelContentProvider"): SolidModelContentProvider | undefined;
@@ -840,7 +840,7 @@ interface Rbx_Camera extends Rbx_Instance {
 	ViewportPointToRay(x: number, y: number, depth?: number): Ray;
 	InterpolationFinished: RBXScriptSignal<() => void>;
 }
-type Camera = Rbx_Camera & Indexable<Rbx_Camera>;
+type Camera = Rbx_Camera & Base<Rbx_Camera> & Indexable<Rbx_Camera>;
 interface Rbx_Instance {
 	IsA(className: "Camera"): this is Camera;
 	FindFirstAncestorOfClass(className: "Camera"): Camera | undefined;
@@ -852,7 +852,7 @@ interface Rbx_Instance {
 // ChangeHistoryService
 interface Rbx_ChangeHistoryService extends Rbx_Instance {
 }
-type ChangeHistoryService = Rbx_ChangeHistoryService & Indexable<Rbx_ChangeHistoryService>;
+type ChangeHistoryService = Rbx_ChangeHistoryService & Base<Rbx_ChangeHistoryService> & Indexable<Rbx_ChangeHistoryService>;
 interface Rbx_Instance {
 	IsA(className: "ChangeHistoryService"): this is ChangeHistoryService;
 	FindFirstAncestorOfClass(className: "ChangeHistoryService"): ChangeHistoryService | undefined;
@@ -867,7 +867,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // CharacterAppearance
 interface Rbx_CharacterAppearance extends Rbx_Instance {
 }
-type CharacterAppearance = Rbx_CharacterAppearance & Indexable<Rbx_CharacterAppearance>;
+type CharacterAppearance = Rbx_CharacterAppearance & Base<Rbx_CharacterAppearance> & Indexable<Rbx_CharacterAppearance>;
 interface Rbx_Instance {
 	IsA(className: "CharacterAppearance"): this is CharacterAppearance;
 	FindFirstAncestorOfClass(className: "CharacterAppearance"): CharacterAppearance | undefined;
@@ -891,7 +891,7 @@ interface Rbx_BodyColors extends Rbx_CharacterAppearance {
 	TorsoColor: BrickColor;
 	TorsoColor3: Color3;
 }
-type BodyColors = Rbx_BodyColors & Indexable<Rbx_BodyColors>;
+type BodyColors = Rbx_BodyColors & Base<Rbx_BodyColors> & Indexable<Rbx_BodyColors>;
 interface Rbx_Instance {
 	IsA(className: "BodyColors"): this is BodyColors;
 	FindFirstAncestorOfClass(className: "BodyColors"): BodyColors | undefined;
@@ -907,7 +907,7 @@ interface Rbx_CharacterMesh extends Rbx_CharacterAppearance {
 	MeshId: number;
 	OverlayTextureId: number;
 }
-type CharacterMesh = Rbx_CharacterMesh & Indexable<Rbx_CharacterMesh>;
+type CharacterMesh = Rbx_CharacterMesh & Base<Rbx_CharacterMesh> & Indexable<Rbx_CharacterMesh>;
 interface Rbx_Instance {
 	IsA(className: "CharacterMesh"): this is CharacterMesh;
 	FindFirstAncestorOfClass(className: "CharacterMesh"): CharacterMesh | undefined;
@@ -920,7 +920,7 @@ interface Rbx_Instance {
 interface Rbx_Clothing extends Rbx_CharacterAppearance {
 	Color3: Color3;
 }
-type Clothing = Rbx_Clothing & Indexable<Rbx_Clothing>;
+type Clothing = Rbx_Clothing & Base<Rbx_Clothing> & Indexable<Rbx_Clothing>;
 interface Rbx_Instance {
 	IsA(className: "Clothing"): this is Clothing;
 	FindFirstAncestorOfClass(className: "Clothing"): Clothing | undefined;
@@ -933,7 +933,7 @@ interface Rbx_Instance {
 interface Rbx_Pants extends Rbx_Clothing {
 	PantsTemplate: string;
 }
-type Pants = Rbx_Pants & Indexable<Rbx_Pants>;
+type Pants = Rbx_Pants & Base<Rbx_Pants> & Indexable<Rbx_Pants>;
 interface Rbx_Instance {
 	IsA(className: "Pants"): this is Pants;
 	FindFirstAncestorOfClass(className: "Pants"): Pants | undefined;
@@ -946,7 +946,7 @@ interface Rbx_Instance {
 interface Rbx_Shirt extends Rbx_Clothing {
 	ShirtTemplate: string;
 }
-type Shirt = Rbx_Shirt & Indexable<Rbx_Shirt>;
+type Shirt = Rbx_Shirt & Base<Rbx_Shirt> & Indexable<Rbx_Shirt>;
 interface Rbx_Instance {
 	IsA(className: "Shirt"): this is Shirt;
 	FindFirstAncestorOfClass(className: "Shirt"): Shirt | undefined;
@@ -960,7 +960,7 @@ interface Rbx_ShirtGraphic extends Rbx_CharacterAppearance {
 	Color3: Color3;
 	Graphic: string;
 }
-type ShirtGraphic = Rbx_ShirtGraphic & Indexable<Rbx_ShirtGraphic>;
+type ShirtGraphic = Rbx_ShirtGraphic & Base<Rbx_ShirtGraphic> & Indexable<Rbx_ShirtGraphic>;
 interface Rbx_Instance {
 	IsA(className: "ShirtGraphic"): this is ShirtGraphic;
 	FindFirstAncestorOfClass(className: "ShirtGraphic"): ShirtGraphic | undefined;
@@ -973,7 +973,7 @@ interface Rbx_Instance {
 interface Rbx_Skin extends Rbx_CharacterAppearance {
 	SkinColor: BrickColor;
 }
-type Skin = Rbx_Skin & Indexable<Rbx_Skin>;
+type Skin = Rbx_Skin & Base<Rbx_Skin> & Indexable<Rbx_Skin>;
 interface Rbx_Instance {
 	IsA(className: "Skin"): this is Skin;
 	FindFirstAncestorOfClass(className: "Skin"): Skin | undefined;
@@ -991,7 +991,7 @@ interface Rbx_Chat extends Rbx_Instance {
 	CanUserChatAsync(userId: number): boolean;
 	CanUsersChatAsync(userIdFrom: number, userIdTo: number): boolean;
 }
-type Chat = Rbx_Chat & Indexable<Rbx_Chat>;
+type Chat = Rbx_Chat & Base<Rbx_Chat> & Indexable<Rbx_Chat>;
 interface Rbx_Instance {
 	IsA(className: "Chat"): this is Chat;
 	FindFirstAncestorOfClass(className: "Chat"): Chat | undefined;
@@ -1009,7 +1009,7 @@ interface Rbx_ClickDetector extends Rbx_Instance {
 	/** The maximum distance a Player's character can be from the ClickDetector's parent Part that will allow the Player's mouse to fire events on this object. */
 	MaxActivationDistance: number;
 }
-type ClickDetector = Rbx_ClickDetector & Indexable<Rbx_ClickDetector>;
+type ClickDetector = Rbx_ClickDetector & Base<Rbx_ClickDetector> & Indexable<Rbx_ClickDetector>;
 interface Rbx_Instance {
 	IsA(className: "ClickDetector"): this is ClickDetector;
 	FindFirstAncestorOfClass(className: "ClickDetector"): ClickDetector | undefined;
@@ -1021,7 +1021,7 @@ interface Rbx_Instance {
 // ClusterPacketCache
 interface Rbx_ClusterPacketCache extends Rbx_Instance {
 }
-type ClusterPacketCache = Rbx_ClusterPacketCache & Indexable<Rbx_ClusterPacketCache>;
+type ClusterPacketCache = Rbx_ClusterPacketCache & Base<Rbx_ClusterPacketCache> & Indexable<Rbx_ClusterPacketCache>;
 interface Rbx_Instance {
 	IsA(className: "ClusterPacketCache"): this is ClusterPacketCache;
 	FindFirstAncestorOfClass(className: "ClusterPacketCache"): ClusterPacketCache | undefined;
@@ -1042,7 +1042,7 @@ interface Rbx_CollectionService extends Rbx_Instance {
 	/** Removes a tag to an instance. */
 	RemoveTag(instance: Instance, tag: string): void;
 }
-type CollectionService = Rbx_CollectionService & Indexable<Rbx_CollectionService>;
+type CollectionService = Rbx_CollectionService & Base<Rbx_CollectionService> & Indexable<Rbx_CollectionService>;
 interface Rbx_Instance {
 	IsA(className: "CollectionService"): this is CollectionService;
 	FindFirstAncestorOfClass(className: "CollectionService"): CollectionService | undefined;
@@ -1057,7 +1057,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Configuration
 interface Rbx_Configuration extends Rbx_Instance {
 }
-type Configuration = Rbx_Configuration & Indexable<Rbx_Configuration>;
+type Configuration = Rbx_Configuration & Base<Rbx_Configuration> & Indexable<Rbx_Configuration>;
 interface Rbx_Instance {
 	IsA(className: "Configuration"): this is Configuration;
 	FindFirstAncestorOfClass(className: "Configuration"): Configuration | undefined;
@@ -1079,7 +1079,7 @@ interface Rbx_Constraint extends Rbx_Instance {
 	/** Toggles the in-game visual associated with this constraint. */
 	Visible: boolean;
 }
-type Constraint = Rbx_Constraint & Indexable<Rbx_Constraint>;
+type Constraint = Rbx_Constraint & Base<Rbx_Constraint> & Indexable<Rbx_Constraint>;
 interface Rbx_Instance {
 	IsA(className: "Constraint"): this is Constraint;
 	FindFirstAncestorOfClass(className: "Constraint"): Constraint | undefined;
@@ -1097,7 +1097,7 @@ interface Rbx_AlignOrientation extends Rbx_Constraint {
 	Responsiveness: number;
 	RigidityEnabled: boolean;
 }
-type AlignOrientation = Rbx_AlignOrientation & Indexable<Rbx_AlignOrientation>;
+type AlignOrientation = Rbx_AlignOrientation & Base<Rbx_AlignOrientation> & Indexable<Rbx_AlignOrientation>;
 interface Rbx_Instance {
 	IsA(className: "AlignOrientation"): this is AlignOrientation;
 	FindFirstAncestorOfClass(className: "AlignOrientation"): AlignOrientation | undefined;
@@ -1115,7 +1115,7 @@ interface Rbx_AlignPosition extends Rbx_Constraint {
 	Responsiveness: number;
 	RigidityEnabled: boolean;
 }
-type AlignPosition = Rbx_AlignPosition & Indexable<Rbx_AlignPosition>;
+type AlignPosition = Rbx_AlignPosition & Base<Rbx_AlignPosition> & Indexable<Rbx_AlignPosition>;
 interface Rbx_Instance {
 	IsA(className: "AlignPosition"): this is AlignPosition;
 	FindFirstAncestorOfClass(className: "AlignPosition"): AlignPosition | undefined;
@@ -1141,7 +1141,7 @@ interface Rbx_BallSocketConstraint extends Rbx_Constraint {
 	/** Maximum angle between the two main axes. Value in [0, 180]. */
 	UpperAngle: number;
 }
-type BallSocketConstraint = Rbx_BallSocketConstraint & Indexable<Rbx_BallSocketConstraint>;
+type BallSocketConstraint = Rbx_BallSocketConstraint & Base<Rbx_BallSocketConstraint> & Indexable<Rbx_BallSocketConstraint>;
 interface Rbx_Instance {
 	IsA(className: "BallSocketConstraint"): this is BallSocketConstraint;
 	FindFirstAncestorOfClass(className: "BallSocketConstraint"): BallSocketConstraint | undefined;
@@ -1178,7 +1178,7 @@ interface Rbx_HingeConstraint extends Rbx_Constraint {
 	/** Upper limit for the angle from the SecondaryAxis of Attachment0 to the SecondaryAxis of Attachment1 around the rotation axis. Value in [-180, 180]. */
 	UpperAngle: number;
 }
-type HingeConstraint = Rbx_HingeConstraint & Indexable<Rbx_HingeConstraint>;
+type HingeConstraint = Rbx_HingeConstraint & Base<Rbx_HingeConstraint> & Indexable<Rbx_HingeConstraint>;
 interface Rbx_Instance {
 	IsA(className: "HingeConstraint"): this is HingeConstraint;
 	FindFirstAncestorOfClass(className: "HingeConstraint"): HingeConstraint | undefined;
@@ -1195,7 +1195,7 @@ interface Rbx_LineForce extends Rbx_Constraint {
 	MaxForce: number;
 	ReactionForceEnabled: boolean;
 }
-type LineForce = Rbx_LineForce & Indexable<Rbx_LineForce>;
+type LineForce = Rbx_LineForce & Base<Rbx_LineForce> & Indexable<Rbx_LineForce>;
 interface Rbx_Instance {
 	IsA(className: "LineForce"): this is LineForce;
 	FindFirstAncestorOfClass(className: "LineForce"): LineForce | undefined;
@@ -1213,7 +1213,7 @@ interface Rbx_RodConstraint extends Rbx_Constraint {
 	/** The thickness of the in-game visual (diameter). Value in [0, inf). */
 	Thickness: number;
 }
-type RodConstraint = Rbx_RodConstraint & Indexable<Rbx_RodConstraint>;
+type RodConstraint = Rbx_RodConstraint & Base<Rbx_RodConstraint> & Indexable<Rbx_RodConstraint>;
 interface Rbx_Instance {
 	IsA(className: "RodConstraint"): this is RodConstraint;
 	FindFirstAncestorOfClass(className: "RodConstraint"): RodConstraint | undefined;
@@ -1233,7 +1233,7 @@ interface Rbx_RopeConstraint extends Rbx_Constraint {
 	/** The thickness of the in-game visual (diameter). Value in [0, inf). */
 	Thickness: number;
 }
-type RopeConstraint = Rbx_RopeConstraint & Indexable<Rbx_RopeConstraint>;
+type RopeConstraint = Rbx_RopeConstraint & Base<Rbx_RopeConstraint> & Indexable<Rbx_RopeConstraint>;
 interface Rbx_Instance {
 	IsA(className: "RopeConstraint"): this is RopeConstraint;
 	FindFirstAncestorOfClass(className: "RopeConstraint"): RopeConstraint | undefined;
@@ -1271,7 +1271,7 @@ interface Rbx_SlidingBallConstraint extends Rbx_Constraint {
 	/** The target linear velocity of the motor in studs per second along the slider axis. Value in (-inf, inf). */
 	Velocity: number;
 }
-type SlidingBallConstraint = Rbx_SlidingBallConstraint & Indexable<Rbx_SlidingBallConstraint>;
+type SlidingBallConstraint = Rbx_SlidingBallConstraint & Base<Rbx_SlidingBallConstraint> & Indexable<Rbx_SlidingBallConstraint>;
 interface Rbx_Instance {
 	IsA(className: "SlidingBallConstraint"): this is SlidingBallConstraint;
 	FindFirstAncestorOfClass(className: "SlidingBallConstraint"): SlidingBallConstraint | undefined;
@@ -1313,7 +1313,7 @@ interface Rbx_CylindricalConstraint extends Rbx_SlidingBallConstraint {
 	/** The unit vector direction of the rotation axis in world coordinates. */
 	readonly WorldRotationAxis: Vector3;
 }
-type CylindricalConstraint = Rbx_CylindricalConstraint & Indexable<Rbx_CylindricalConstraint>;
+type CylindricalConstraint = Rbx_CylindricalConstraint & Base<Rbx_CylindricalConstraint> & Indexable<Rbx_CylindricalConstraint>;
 interface Rbx_Instance {
 	IsA(className: "CylindricalConstraint"): this is CylindricalConstraint;
 	FindFirstAncestorOfClass(className: "CylindricalConstraint"): CylindricalConstraint | undefined;
@@ -1325,7 +1325,7 @@ interface Rbx_Instance {
 // PrismaticConstraint
 interface Rbx_PrismaticConstraint extends Rbx_SlidingBallConstraint {
 }
-type PrismaticConstraint = Rbx_PrismaticConstraint & Indexable<Rbx_PrismaticConstraint>;
+type PrismaticConstraint = Rbx_PrismaticConstraint & Base<Rbx_PrismaticConstraint> & Indexable<Rbx_PrismaticConstraint>;
 interface Rbx_Instance {
 	IsA(className: "PrismaticConstraint"): this is PrismaticConstraint;
 	FindFirstAncestorOfClass(className: "PrismaticConstraint"): PrismaticConstraint | undefined;
@@ -1359,7 +1359,7 @@ interface Rbx_SpringConstraint extends Rbx_Constraint {
 	/** The thickness of the spring wire (diameter) in the in-game visual. Value in [0, inf). */
 	Thickness: number;
 }
-type SpringConstraint = Rbx_SpringConstraint & Indexable<Rbx_SpringConstraint>;
+type SpringConstraint = Rbx_SpringConstraint & Base<Rbx_SpringConstraint> & Indexable<Rbx_SpringConstraint>;
 interface Rbx_Instance {
 	IsA(className: "SpringConstraint"): this is SpringConstraint;
 	FindFirstAncestorOfClass(className: "SpringConstraint"): SpringConstraint | undefined;
@@ -1373,7 +1373,7 @@ interface Rbx_Torque extends Rbx_Constraint {
 	RelativeTo: Enum.ActuatorRelativeTo;
 	Torque: Vector3;
 }
-type Torque = Rbx_Torque & Indexable<Rbx_Torque>;
+type Torque = Rbx_Torque & Base<Rbx_Torque> & Indexable<Rbx_Torque>;
 interface Rbx_Instance {
 	IsA(className: "Torque"): this is Torque;
 	FindFirstAncestorOfClass(className: "Torque"): Torque | undefined;
@@ -1388,7 +1388,7 @@ interface Rbx_VectorForce extends Rbx_Constraint {
 	Force: Vector3;
 	RelativeTo: Enum.ActuatorRelativeTo;
 }
-type VectorForce = Rbx_VectorForce & Indexable<Rbx_VectorForce>;
+type VectorForce = Rbx_VectorForce & Base<Rbx_VectorForce> & Indexable<Rbx_VectorForce>;
 interface Rbx_Instance {
 	IsA(className: "VectorForce"): this is VectorForce;
 	FindFirstAncestorOfClass(className: "VectorForce"): VectorForce | undefined;
@@ -1402,7 +1402,7 @@ interface Rbx_ContentProvider extends Rbx_Instance {
 	readonly BaseUrl: string;
 	readonly RequestQueueSize: number;
 }
-type ContentProvider = Rbx_ContentProvider & Indexable<Rbx_ContentProvider>;
+type ContentProvider = Rbx_ContentProvider & Base<Rbx_ContentProvider> & Indexable<Rbx_ContentProvider>;
 interface Rbx_Instance {
 	IsA(className: "ContentProvider"): this is ContentProvider;
 	FindFirstAncestorOfClass(className: "ContentProvider"): ContentProvider | undefined;
@@ -1436,7 +1436,7 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 	/** Removes all functions bound. No actionNames will remain. All touch buttons will be removed. If button was manipulated manually there is no guarantee it will be cleaned up. */
 	UnbindAllActions(): void;
 }
-type ContextActionService = Rbx_ContextActionService & Indexable<Rbx_ContextActionService>;
+type ContextActionService = Rbx_ContextActionService & Base<Rbx_ContextActionService> & Indexable<Rbx_ContextActionService>;
 interface Rbx_Instance {
 	IsA(className: "ContextActionService"): this is ContextActionService;
 	FindFirstAncestorOfClass(className: "ContextActionService"): ContextActionService | undefined;
@@ -1455,7 +1455,7 @@ interface Rbx_Controller extends Rbx_Instance {
 	UnbindButton(button: Enum.Button): void;
 	ButtonChanged: RBXScriptSignal<(button: Enum.Button) => void>;
 }
-type Controller = Rbx_Controller & Indexable<Rbx_Controller>;
+type Controller = Rbx_Controller & Base<Rbx_Controller> & Indexable<Rbx_Controller>;
 interface Rbx_Instance {
 	IsA(className: "Controller"): this is Controller;
 	FindFirstAncestorOfClass(className: "Controller"): Controller | undefined;
@@ -1467,7 +1467,7 @@ interface Rbx_Instance {
 // HumanoidController
 interface Rbx_HumanoidController extends Rbx_Controller {
 }
-type HumanoidController = Rbx_HumanoidController & Indexable<Rbx_HumanoidController>;
+type HumanoidController = Rbx_HumanoidController & Base<Rbx_HumanoidController> & Indexable<Rbx_HumanoidController>;
 interface Rbx_Instance {
 	IsA(className: "HumanoidController"): this is HumanoidController;
 	FindFirstAncestorOfClass(className: "HumanoidController"): HumanoidController | undefined;
@@ -1482,7 +1482,7 @@ interface Rbx_SkateboardController extends Rbx_Controller {
 	readonly Throttle: number;
 	AxisChanged: RBXScriptSignal<(axis: string) => void>;
 }
-type SkateboardController = Rbx_SkateboardController & Indexable<Rbx_SkateboardController>;
+type SkateboardController = Rbx_SkateboardController & Base<Rbx_SkateboardController> & Indexable<Rbx_SkateboardController>;
 interface Rbx_Instance {
 	IsA(className: "SkateboardController"): this is SkateboardController;
 	FindFirstAncestorOfClass(className: "SkateboardController"): SkateboardController | undefined;
@@ -1494,7 +1494,7 @@ interface Rbx_Instance {
 // VehicleController
 interface Rbx_VehicleController extends Rbx_Controller {
 }
-type VehicleController = Rbx_VehicleController & Indexable<Rbx_VehicleController>;
+type VehicleController = Rbx_VehicleController & Base<Rbx_VehicleController> & Indexable<Rbx_VehicleController>;
 interface Rbx_Instance {
 	IsA(className: "VehicleController"): this is VehicleController;
 	FindFirstAncestorOfClass(className: "VehicleController"): VehicleController | undefined;
@@ -1506,7 +1506,7 @@ interface Rbx_Instance {
 // ControllerService
 interface Rbx_ControllerService extends Rbx_Instance {
 }
-type ControllerService = Rbx_ControllerService & Indexable<Rbx_ControllerService>;
+type ControllerService = Rbx_ControllerService & Base<Rbx_ControllerService> & Indexable<Rbx_ControllerService>;
 interface Rbx_Instance {
 	IsA(className: "ControllerService"): this is ControllerService;
 	FindFirstAncestorOfClass(className: "ControllerService"): ControllerService | undefined;
@@ -1521,7 +1521,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // CookiesService
 interface Rbx_CookiesService extends Rbx_Instance {
 }
-type CookiesService = Rbx_CookiesService & Indexable<Rbx_CookiesService>;
+type CookiesService = Rbx_CookiesService & Base<Rbx_CookiesService> & Indexable<Rbx_CookiesService>;
 interface Rbx_Instance {
 	IsA(className: "CookiesService"): this is CookiesService;
 	FindFirstAncestorOfClass(className: "CookiesService"): CookiesService | undefined;
@@ -1536,7 +1536,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // CorePackages
 interface Rbx_CorePackages extends Rbx_Instance {
 }
-type CorePackages = Rbx_CorePackages & Indexable<Rbx_CorePackages>;
+type CorePackages = Rbx_CorePackages & Base<Rbx_CorePackages> & Indexable<Rbx_CorePackages>;
 interface Rbx_Instance {
 	IsA(className: "CorePackages"): this is CorePackages;
 	FindFirstAncestorOfClass(className: "CorePackages"): CorePackages | undefined;
@@ -1551,7 +1551,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // CoreScriptSyncService
 interface Rbx_CoreScriptSyncService extends Rbx_Instance {
 }
-type CoreScriptSyncService = Rbx_CoreScriptSyncService & Indexable<Rbx_CoreScriptSyncService>;
+type CoreScriptSyncService = Rbx_CoreScriptSyncService & Base<Rbx_CoreScriptSyncService> & Indexable<Rbx_CoreScriptSyncService>;
 interface Rbx_Instance {
 	IsA(className: "CoreScriptSyncService"): this is CoreScriptSyncService;
 	FindFirstAncestorOfClass(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
@@ -1570,7 +1570,7 @@ interface Rbx_CustomEvent extends Rbx_Instance {
 	ReceiverConnected: RBXScriptSignal<(receiver: Instance) => void>;
 	ReceiverDisconnected: RBXScriptSignal<(receiver: Instance) => void>;
 }
-type CustomEvent = Rbx_CustomEvent & Indexable<Rbx_CustomEvent>;
+type CustomEvent = Rbx_CustomEvent & Base<Rbx_CustomEvent> & Indexable<Rbx_CustomEvent>;
 interface Rbx_Instance {
 	IsA(className: "CustomEvent"): this is CustomEvent;
 	FindFirstAncestorOfClass(className: "CustomEvent"): CustomEvent | undefined;
@@ -1587,7 +1587,7 @@ interface Rbx_CustomEventReceiver extends Rbx_Instance {
 	EventDisconnected: RBXScriptSignal<(event: Instance) => void>;
 	SourceValueChanged: RBXScriptSignal<(newValue: number) => void>;
 }
-type CustomEventReceiver = Rbx_CustomEventReceiver & Indexable<Rbx_CustomEventReceiver>;
+type CustomEventReceiver = Rbx_CustomEventReceiver & Base<Rbx_CustomEventReceiver> & Indexable<Rbx_CustomEventReceiver>;
 interface Rbx_Instance {
 	IsA(className: "CustomEventReceiver"): this is CustomEventReceiver;
 	FindFirstAncestorOfClass(className: "CustomEventReceiver"): CustomEventReceiver | undefined;
@@ -1602,7 +1602,7 @@ interface Rbx_DataModelMesh extends Rbx_Instance {
 	Scale: Vector3;
 	VertexColor: Vector3;
 }
-type DataModelMesh = Rbx_DataModelMesh & Indexable<Rbx_DataModelMesh>;
+type DataModelMesh = Rbx_DataModelMesh & Base<Rbx_DataModelMesh> & Indexable<Rbx_DataModelMesh>;
 interface Rbx_Instance {
 	IsA(className: "DataModelMesh"): this is DataModelMesh;
 	FindFirstAncestorOfClass(className: "DataModelMesh"): DataModelMesh | undefined;
@@ -1614,7 +1614,7 @@ interface Rbx_Instance {
 // BevelMesh
 interface Rbx_BevelMesh extends Rbx_DataModelMesh {
 }
-type BevelMesh = Rbx_BevelMesh & Indexable<Rbx_BevelMesh>;
+type BevelMesh = Rbx_BevelMesh & Base<Rbx_BevelMesh> & Indexable<Rbx_BevelMesh>;
 interface Rbx_Instance {
 	IsA(className: "BevelMesh"): this is BevelMesh;
 	FindFirstAncestorOfClass(className: "BevelMesh"): BevelMesh | undefined;
@@ -1626,7 +1626,7 @@ interface Rbx_Instance {
 // BlockMesh
 interface Rbx_BlockMesh extends Rbx_BevelMesh {
 }
-type BlockMesh = Rbx_BlockMesh & Indexable<Rbx_BlockMesh>;
+type BlockMesh = Rbx_BlockMesh & Base<Rbx_BlockMesh> & Indexable<Rbx_BlockMesh>;
 interface Rbx_Instance {
 	IsA(className: "BlockMesh"): this is BlockMesh;
 	FindFirstAncestorOfClass(className: "BlockMesh"): BlockMesh | undefined;
@@ -1638,7 +1638,7 @@ interface Rbx_Instance {
 // CylinderMesh
 interface Rbx_CylinderMesh extends Rbx_BevelMesh {
 }
-type CylinderMesh = Rbx_CylinderMesh & Indexable<Rbx_CylinderMesh>;
+type CylinderMesh = Rbx_CylinderMesh & Base<Rbx_CylinderMesh> & Indexable<Rbx_CylinderMesh>;
 interface Rbx_Instance {
 	IsA(className: "CylinderMesh"): this is CylinderMesh;
 	FindFirstAncestorOfClass(className: "CylinderMesh"): CylinderMesh | undefined;
@@ -1652,7 +1652,7 @@ interface Rbx_FileMesh extends Rbx_DataModelMesh {
 	MeshId: string;
 	TextureId: string;
 }
-type FileMesh = Rbx_FileMesh & Indexable<Rbx_FileMesh>;
+type FileMesh = Rbx_FileMesh & Base<Rbx_FileMesh> & Indexable<Rbx_FileMesh>;
 interface Rbx_Instance {
 	IsA(className: "FileMesh"): this is FileMesh;
 	FindFirstAncestorOfClass(className: "FileMesh"): FileMesh | undefined;
@@ -1665,7 +1665,7 @@ interface Rbx_Instance {
 interface Rbx_SpecialMesh extends Rbx_FileMesh {
 	MeshType: Enum.MeshType;
 }
-type SpecialMesh = Rbx_SpecialMesh & Indexable<Rbx_SpecialMesh>;
+type SpecialMesh = Rbx_SpecialMesh & Base<Rbx_SpecialMesh> & Indexable<Rbx_SpecialMesh>;
 interface Rbx_Instance {
 	IsA(className: "SpecialMesh"): this is SpecialMesh;
 	FindFirstAncestorOfClass(className: "SpecialMesh"): SpecialMesh | undefined;
@@ -1678,7 +1678,7 @@ interface Rbx_Instance {
 interface Rbx_DataStoreService extends Rbx_Instance {
 	GetRequestBudgetForRequestType(requestType: Enum.DataStoreRequestType): number;
 }
-type DataStoreService = Rbx_DataStoreService & Indexable<Rbx_DataStoreService>;
+type DataStoreService = Rbx_DataStoreService & Base<Rbx_DataStoreService> & Indexable<Rbx_DataStoreService>;
 interface Rbx_Instance {
 	IsA(className: "DataStoreService"): this is DataStoreService;
 	FindFirstAncestorOfClass(className: "DataStoreService"): DataStoreService | undefined;
@@ -1695,7 +1695,7 @@ interface Rbx_Debris extends Rbx_Instance {
 	/** Adds an Instance into the debris service that will later be destroyed.  Second argument 'lifetime' is optional and specifies how long (in seconds) to wait before destroying the item. If no time is specified then the item added will automatically be destroyed in 10 seconds. */
 	AddItem(item: Instance, lifetime?: number): void;
 }
-type Debris = Rbx_Debris & Indexable<Rbx_Debris>;
+type Debris = Rbx_Debris & Base<Rbx_Debris> & Indexable<Rbx_Debris>;
 interface Rbx_Instance {
 	IsA(className: "Debris"): this is Debris;
 	FindFirstAncestorOfClass(className: "Debris"): Debris | undefined;
@@ -1730,7 +1730,7 @@ interface Rbx_DebugSettings extends Rbx_Instance {
 	TickCountPreciseOverride: Enum.TickCountSampleMethod;
 	readonly VideoMemory: number;
 }
-type DebugSettings = Rbx_DebugSettings & Indexable<Rbx_DebugSettings>;
+type DebugSettings = Rbx_DebugSettings & Base<Rbx_DebugSettings> & Indexable<Rbx_DebugSettings>;
 interface Rbx_Instance {
 	IsA(className: "DebugSettings"): this is DebugSettings;
 	FindFirstAncestorOfClass(className: "DebugSettings"): DebugSettings | undefined;
@@ -1745,7 +1745,7 @@ interface Rbx_DebuggerBreakpoint extends Rbx_Instance {
 	IsEnabled: boolean;
 	readonly Line: number;
 }
-type DebuggerBreakpoint = Rbx_DebuggerBreakpoint & Indexable<Rbx_DebuggerBreakpoint>;
+type DebuggerBreakpoint = Rbx_DebuggerBreakpoint & Base<Rbx_DebuggerBreakpoint> & Indexable<Rbx_DebuggerBreakpoint>;
 interface Rbx_Instance {
 	IsA(className: "DebuggerBreakpoint"): this is DebuggerBreakpoint;
 	FindFirstAncestorOfClass(className: "DebuggerBreakpoint"): DebuggerBreakpoint | undefined;
@@ -1766,7 +1766,7 @@ interface Rbx_DebuggerManager extends Rbx_Instance {
 	DebuggerAdded: RBXScriptSignal<(debug: Instance) => void>;
 	DebuggerRemoved: RBXScriptSignal<(debug: Instance) => void>;
 }
-type DebuggerManager = Rbx_DebuggerManager & Indexable<Rbx_DebuggerManager>;
+type DebuggerManager = Rbx_DebuggerManager & Base<Rbx_DebuggerManager> & Indexable<Rbx_DebuggerManager>;
 interface Rbx_Instance {
 	IsA(className: "DebuggerManager"): this is DebuggerManager;
 	FindFirstAncestorOfClass(className: "DebuggerManager"): DebuggerManager | undefined;
@@ -1780,7 +1780,7 @@ interface Rbx_DebuggerWatch extends Rbx_Instance {
 	Expression: string;
 	CheckSyntax(): void;
 }
-type DebuggerWatch = Rbx_DebuggerWatch & Indexable<Rbx_DebuggerWatch>;
+type DebuggerWatch = Rbx_DebuggerWatch & Base<Rbx_DebuggerWatch> & Indexable<Rbx_DebuggerWatch>;
 interface Rbx_Instance {
 	IsA(className: "DebuggerWatch"): this is DebuggerWatch;
 	FindFirstAncestorOfClass(className: "DebuggerWatch"): DebuggerWatch | undefined;
@@ -1810,7 +1810,7 @@ interface Rbx_Dialog extends Rbx_Instance {
 	TriggerDistance: number;
 	TriggerOffset: Vector3;
 }
-type Dialog = Rbx_Dialog & Indexable<Rbx_Dialog>;
+type Dialog = Rbx_Dialog & Base<Rbx_Dialog> & Indexable<Rbx_Dialog>;
 interface Rbx_Instance {
 	IsA(className: "Dialog"): this is Dialog;
 	FindFirstAncestorOfClass(className: "Dialog"): Dialog | undefined;
@@ -1826,7 +1826,7 @@ interface Rbx_DialogChoice extends Rbx_Instance {
 	ResponseDialog: string;
 	UserDialog: string;
 }
-type DialogChoice = Rbx_DialogChoice & Indexable<Rbx_DialogChoice>;
+type DialogChoice = Rbx_DialogChoice & Base<Rbx_DialogChoice> & Indexable<Rbx_DialogChoice>;
 interface Rbx_Instance {
 	IsA(className: "DialogChoice"): this is DialogChoice;
 	FindFirstAncestorOfClass(className: "DialogChoice"): DialogChoice | undefined;
@@ -1842,7 +1842,7 @@ interface Rbx_Dragger extends Rbx_Instance {
 	MouseMove(mouseRay: Ray): void;
 	MouseUp(): void;
 }
-type Dragger = Rbx_Dragger & Indexable<Rbx_Dragger>;
+type Dragger = Rbx_Dragger & Base<Rbx_Dragger> & Indexable<Rbx_Dragger>;
 interface Rbx_Instance {
 	IsA(className: "Dragger"): this is Dragger;
 	FindFirstAncestorOfClass(className: "Dragger"): Dragger | undefined;
@@ -1865,7 +1865,7 @@ interface Rbx_Explosion extends Rbx_Instance {
 	Visible: boolean;
 	Hit: RBXScriptSignal<(part: Instance, distance: number) => void>;
 }
-type Explosion = Rbx_Explosion & Indexable<Rbx_Explosion>;
+type Explosion = Rbx_Explosion & Base<Rbx_Explosion> & Indexable<Rbx_Explosion>;
 interface Rbx_Instance {
 	IsA(className: "Explosion"): this is Explosion;
 	FindFirstAncestorOfClass(className: "Explosion"): Explosion | undefined;
@@ -1878,7 +1878,7 @@ interface Rbx_Instance {
 interface Rbx_FaceInstance extends Rbx_Instance {
 	Face: Enum.NormalId;
 }
-type FaceInstance = Rbx_FaceInstance & Indexable<Rbx_FaceInstance>;
+type FaceInstance = Rbx_FaceInstance & Base<Rbx_FaceInstance> & Indexable<Rbx_FaceInstance>;
 interface Rbx_Instance {
 	IsA(className: "FaceInstance"): this is FaceInstance;
 	FindFirstAncestorOfClass(className: "FaceInstance"): FaceInstance | undefined;
@@ -1895,7 +1895,7 @@ interface Rbx_Decal extends Rbx_FaceInstance {
 	/** How visible the decal is.  1 is completely invisible, while 0 is completely opaque */
 	Transparency: number;
 }
-type Decal = Rbx_Decal & Indexable<Rbx_Decal>;
+type Decal = Rbx_Decal & Base<Rbx_Decal> & Indexable<Rbx_Decal>;
 interface Rbx_Instance {
 	IsA(className: "Decal"): this is Decal;
 	FindFirstAncestorOfClass(className: "Decal"): Decal | undefined;
@@ -1909,7 +1909,7 @@ interface Rbx_Texture extends Rbx_Decal {
 	StudsPerTileU: number;
 	StudsPerTileV: number;
 }
-type Texture = Rbx_Texture & Indexable<Rbx_Texture>;
+type Texture = Rbx_Texture & Base<Rbx_Texture> & Indexable<Rbx_Texture>;
 interface Rbx_Instance {
 	IsA(className: "Texture"): this is Texture;
 	FindFirstAncestorOfClass(className: "Texture"): Texture | undefined;
@@ -1925,7 +1925,7 @@ interface Rbx_Feature extends Rbx_Instance {
 	LeftRight: Enum.LeftRight;
 	TopBottom: Enum.TopBottom;
 }
-type Feature = Rbx_Feature & Indexable<Rbx_Feature>;
+type Feature = Rbx_Feature & Base<Rbx_Feature> & Indexable<Rbx_Feature>;
 interface Rbx_Instance {
 	IsA(className: "Feature"): this is Feature;
 	FindFirstAncestorOfClass(className: "Feature"): Feature | undefined;
@@ -1937,7 +1937,7 @@ interface Rbx_Instance {
 // Hole
 interface Rbx_Hole extends Rbx_Feature {
 }
-type Hole = Rbx_Hole & Indexable<Rbx_Hole>;
+type Hole = Rbx_Hole & Base<Rbx_Hole> & Indexable<Rbx_Hole>;
 interface Rbx_Instance {
 	IsA(className: "Hole"): this is Hole;
 	FindFirstAncestorOfClass(className: "Hole"): Hole | undefined;
@@ -1949,7 +1949,7 @@ interface Rbx_Instance {
 // MotorFeature
 interface Rbx_MotorFeature extends Rbx_Feature {
 }
-type MotorFeature = Rbx_MotorFeature & Indexable<Rbx_MotorFeature>;
+type MotorFeature = Rbx_MotorFeature & Base<Rbx_MotorFeature> & Indexable<Rbx_MotorFeature>;
 interface Rbx_Instance {
 	IsA(className: "MotorFeature"): this is MotorFeature;
 	FindFirstAncestorOfClass(className: "MotorFeature"): MotorFeature | undefined;
@@ -1970,7 +1970,7 @@ interface Rbx_Fire extends Rbx_Instance {
 	/** How large the fire appears to be. */
 	Size: number;
 }
-type Fire = Rbx_Fire & Indexable<Rbx_Fire>;
+type Fire = Rbx_Fire & Base<Rbx_Fire> & Indexable<Rbx_Fire>;
 interface Rbx_Instance {
 	IsA(className: "Fire"): this is Fire;
 	FindFirstAncestorOfClass(className: "Fire"): Fire | undefined;
@@ -1982,7 +1982,7 @@ interface Rbx_Instance {
 // FlagStandService
 interface Rbx_FlagStandService extends Rbx_Instance {
 }
-type FlagStandService = Rbx_FlagStandService & Indexable<Rbx_FlagStandService>;
+type FlagStandService = Rbx_FlagStandService & Base<Rbx_FlagStandService> & Indexable<Rbx_FlagStandService>;
 interface Rbx_Instance {
 	IsA(className: "FlagStandService"): this is FlagStandService;
 	FindFirstAncestorOfClass(className: "FlagStandService"): FlagStandService | undefined;
@@ -1997,7 +1997,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // FlyweightService
 interface Rbx_FlyweightService extends Rbx_Instance {
 }
-type FlyweightService = Rbx_FlyweightService & Indexable<Rbx_FlyweightService>;
+type FlyweightService = Rbx_FlyweightService & Base<Rbx_FlyweightService> & Indexable<Rbx_FlyweightService>;
 interface Rbx_Instance {
 	IsA(className: "FlyweightService"): this is FlyweightService;
 	FindFirstAncestorOfClass(className: "FlyweightService"): FlyweightService | undefined;
@@ -2012,7 +2012,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // CSGDictionaryService
 interface Rbx_CSGDictionaryService extends Rbx_FlyweightService {
 }
-type CSGDictionaryService = Rbx_CSGDictionaryService & Indexable<Rbx_CSGDictionaryService>;
+type CSGDictionaryService = Rbx_CSGDictionaryService & Base<Rbx_CSGDictionaryService> & Indexable<Rbx_CSGDictionaryService>;
 interface Rbx_Instance {
 	IsA(className: "CSGDictionaryService"): this is CSGDictionaryService;
 	FindFirstAncestorOfClass(className: "CSGDictionaryService"): CSGDictionaryService | undefined;
@@ -2027,7 +2027,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // NonReplicatedCSGDictionaryService
 interface Rbx_NonReplicatedCSGDictionaryService extends Rbx_FlyweightService {
 }
-type NonReplicatedCSGDictionaryService = Rbx_NonReplicatedCSGDictionaryService & Indexable<Rbx_NonReplicatedCSGDictionaryService>;
+type NonReplicatedCSGDictionaryService = Rbx_NonReplicatedCSGDictionaryService & Base<Rbx_NonReplicatedCSGDictionaryService> & Indexable<Rbx_NonReplicatedCSGDictionaryService>;
 interface Rbx_Instance {
 	IsA(className: "NonReplicatedCSGDictionaryService"): this is NonReplicatedCSGDictionaryService;
 	FindFirstAncestorOfClass(className: "NonReplicatedCSGDictionaryService"): NonReplicatedCSGDictionaryService | undefined;
@@ -2042,7 +2042,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Folder
 interface Rbx_Folder extends Rbx_Instance {
 }
-type Folder = Rbx_Folder & Indexable<Rbx_Folder>;
+type Folder = Rbx_Folder & Base<Rbx_Folder> & Indexable<Rbx_Folder>;
 interface Rbx_Instance {
 	IsA(className: "Folder"): this is Folder;
 	FindFirstAncestorOfClass(className: "Folder"): Folder | undefined;
@@ -2055,7 +2055,7 @@ interface Rbx_Instance {
 interface Rbx_ForceField extends Rbx_Instance {
 	Visible: boolean;
 }
-type ForceField = Rbx_ForceField & Indexable<Rbx_ForceField>;
+type ForceField = Rbx_ForceField & Base<Rbx_ForceField> & Indexable<Rbx_ForceField>;
 interface Rbx_Instance {
 	IsA(className: "ForceField"): this is ForceField;
 	FindFirstAncestorOfClass(className: "ForceField"): ForceField | undefined;
@@ -2067,7 +2067,7 @@ interface Rbx_Instance {
 // FriendService
 interface Rbx_FriendService extends Rbx_Instance {
 }
-type FriendService = Rbx_FriendService & Indexable<Rbx_FriendService>;
+type FriendService = Rbx_FriendService & Base<Rbx_FriendService> & Indexable<Rbx_FriendService>;
 interface Rbx_Instance {
 	IsA(className: "FriendService"): this is FriendService;
 	FindFirstAncestorOfClass(className: "FriendService"): FriendService | undefined;
@@ -2088,7 +2088,7 @@ interface Rbx_FunctionalTest extends Rbx_Instance {
 	Passed(message?: string): void;
 	Warn(message?: string): void;
 }
-type FunctionalTest = Rbx_FunctionalTest & Indexable<Rbx_FunctionalTest>;
+type FunctionalTest = Rbx_FunctionalTest & Base<Rbx_FunctionalTest> & Indexable<Rbx_FunctionalTest>;
 interface Rbx_Instance {
 	IsA(className: "FunctionalTest"): this is FunctionalTest;
 	FindFirstAncestorOfClass(className: "FunctionalTest"): FunctionalTest | undefined;
@@ -2100,7 +2100,7 @@ interface Rbx_Instance {
 // GamePassService
 interface Rbx_GamePassService extends Rbx_Instance {
 }
-type GamePassService = Rbx_GamePassService & Indexable<Rbx_GamePassService>;
+type GamePassService = Rbx_GamePassService & Base<Rbx_GamePassService> & Indexable<Rbx_GamePassService>;
 interface Rbx_Instance {
 	IsA(className: "GamePassService"): this is GamePassService;
 	FindFirstAncestorOfClass(className: "GamePassService"): GamePassService | undefined;
@@ -2126,7 +2126,7 @@ interface Rbx_GameSettings extends Rbx_Instance {
 	VideoCaptureEnabled: boolean;
 	VideoQuality: Enum.VideoQualitySettings;
 }
-type GameSettings = Rbx_GameSettings & Indexable<Rbx_GameSettings>;
+type GameSettings = Rbx_GameSettings & Base<Rbx_GameSettings> & Indexable<Rbx_GameSettings>;
 interface Rbx_Instance {
 	IsA(className: "GameSettings"): this is GameSettings;
 	FindFirstAncestorOfClass(className: "GameSettings"): GameSettings | undefined;
@@ -2138,7 +2138,7 @@ interface Rbx_Instance {
 // GamepadService
 interface Rbx_GamepadService extends Rbx_Instance {
 }
-type GamepadService = Rbx_GamepadService & Indexable<Rbx_GamepadService>;
+type GamepadService = Rbx_GamepadService & Base<Rbx_GamepadService> & Indexable<Rbx_GamepadService>;
 interface Rbx_Instance {
 	IsA(className: "GamepadService"): this is GamepadService;
 	FindFirstAncestorOfClass(className: "GamepadService"): GamepadService | undefined;
@@ -2153,7 +2153,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Geometry
 interface Rbx_Geometry extends Rbx_Instance {
 }
-type Geometry = Rbx_Geometry & Indexable<Rbx_Geometry>;
+type Geometry = Rbx_Geometry & Base<Rbx_Geometry> & Indexable<Rbx_Geometry>;
 interface Rbx_Instance {
 	IsA(className: "Geometry"): this is Geometry;
 	FindFirstAncestorOfClass(className: "Geometry"): Geometry | undefined;
@@ -2177,7 +2177,7 @@ interface Rbx_GlobalDataStore extends Rbx_Instance {
 	/** Sets the value of the key. This overwrites any existing data stored in the key */
 	SetAsync(key: string, value?: any): void;
 }
-type GlobalDataStore = Rbx_GlobalDataStore & Indexable<Rbx_GlobalDataStore>;
+type GlobalDataStore = Rbx_GlobalDataStore & Base<Rbx_GlobalDataStore> & Indexable<Rbx_GlobalDataStore>;
 interface Rbx_Instance {
 	IsA(className: "GlobalDataStore"): this is GlobalDataStore;
 	FindFirstAncestorOfClass(className: "GlobalDataStore"): GlobalDataStore | undefined;
@@ -2189,7 +2189,7 @@ interface Rbx_Instance {
 // OrderedDataStore
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
 }
-type OrderedDataStore = Rbx_OrderedDataStore & Indexable<Rbx_OrderedDataStore>;
+type OrderedDataStore = Rbx_OrderedDataStore & Base<Rbx_OrderedDataStore> & Indexable<Rbx_OrderedDataStore>;
 interface Rbx_Instance {
 	IsA(className: "OrderedDataStore"): this is OrderedDataStore;
 	FindFirstAncestorOfClass(className: "OrderedDataStore"): OrderedDataStore | undefined;
@@ -2201,7 +2201,7 @@ interface Rbx_Instance {
 // GoogleAnalyticsConfiguration
 interface Rbx_GoogleAnalyticsConfiguration extends Rbx_Instance {
 }
-type GoogleAnalyticsConfiguration = Rbx_GoogleAnalyticsConfiguration & Indexable<Rbx_GoogleAnalyticsConfiguration>;
+type GoogleAnalyticsConfiguration = Rbx_GoogleAnalyticsConfiguration & Base<Rbx_GoogleAnalyticsConfiguration> & Indexable<Rbx_GoogleAnalyticsConfiguration>;
 interface Rbx_Instance {
 	IsA(className: "GoogleAnalyticsConfiguration"): this is GoogleAnalyticsConfiguration;
 	FindFirstAncestorOfClass(className: "GoogleAnalyticsConfiguration"): GoogleAnalyticsConfiguration | undefined;
@@ -2216,7 +2216,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // GroupService
 interface Rbx_GroupService extends Rbx_Instance {
 }
-type GroupService = Rbx_GroupService & Indexable<Rbx_GroupService>;
+type GroupService = Rbx_GroupService & Base<Rbx_GroupService> & Indexable<Rbx_GroupService>;
 interface Rbx_Instance {
 	IsA(className: "GroupService"): this is GroupService;
 	FindFirstAncestorOfClass(className: "GroupService"): GroupService | undefined;
@@ -2231,7 +2231,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // GuiBase
 interface Rbx_GuiBase extends Rbx_Instance {
 }
-type GuiBase = Rbx_GuiBase & Indexable<Rbx_GuiBase>;
+type GuiBase = Rbx_GuiBase & Base<Rbx_GuiBase> & Indexable<Rbx_GuiBase>;
 interface Rbx_Instance {
 	IsA(className: "GuiBase"): this is GuiBase;
 	FindFirstAncestorOfClass(className: "GuiBase"): GuiBase | undefined;
@@ -2250,7 +2250,7 @@ interface Rbx_GuiBase2d extends Rbx_GuiBase {
 	AutoLocalize: boolean;
 	RootLocalizationTable: LocalizationTable;
 }
-type GuiBase2d = Rbx_GuiBase2d & Indexable<Rbx_GuiBase2d>;
+type GuiBase2d = Rbx_GuiBase2d & Base<Rbx_GuiBase2d> & Indexable<Rbx_GuiBase2d>;
 interface Rbx_Instance {
 	IsA(className: "GuiBase2d"): this is GuiBase2d;
 	FindFirstAncestorOfClass(className: "GuiBase2d"): GuiBase2d | undefined;
@@ -2312,7 +2312,7 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 	/** Fired when a user swipes their fingers on a TouchEnabled device. 'swipeDirection' is an Enum.SwipeDirection, indicating the direction the user swiped. 'numberOfTouches' is an int that indicates how many touches were involved with the gesture.  This event only fires locally. */
 	TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number) => void>;
 }
-type GuiObject = Rbx_GuiObject & Indexable<Rbx_GuiObject>;
+type GuiObject = Rbx_GuiObject & Base<Rbx_GuiObject> & Indexable<Rbx_GuiObject>;
 interface Rbx_Instance {
 	IsA(className: "GuiObject"): this is GuiObject;
 	FindFirstAncestorOfClass(className: "GuiObject"): GuiObject | undefined;
@@ -2326,7 +2326,7 @@ interface Rbx_Frame extends Rbx_GuiObject {
 	/** Determines how a frame will look. Uses Enum.FrameStyle. [More info](http://wiki.roblox.com/index.php?title=API:Enum/FrameStyle) */
 	Style: Enum.FrameStyle;
 }
-type Frame = Rbx_Frame & Indexable<Rbx_Frame>;
+type Frame = Rbx_Frame & Base<Rbx_Frame> & Indexable<Rbx_Frame>;
 interface Rbx_Instance {
 	IsA(className: "Frame"): this is Frame;
 	FindFirstAncestorOfClass(className: "Frame"): Frame | undefined;
@@ -2358,7 +2358,7 @@ interface Rbx_GuiButton extends Rbx_GuiObject {
 	/** This function currently does not work :( */
 	MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
 }
-type GuiButton = Rbx_GuiButton & Indexable<Rbx_GuiButton>;
+type GuiButton = Rbx_GuiButton & Base<Rbx_GuiButton> & Indexable<Rbx_GuiButton>;
 interface Rbx_Instance {
 	IsA(className: "GuiButton"): this is GuiButton;
 	FindFirstAncestorOfClass(className: "GuiButton"): GuiButton | undefined;
@@ -2386,7 +2386,7 @@ interface Rbx_ImageButton extends Rbx_GuiButton {
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 }
-type ImageButton = Rbx_ImageButton & Indexable<Rbx_ImageButton>;
+type ImageButton = Rbx_ImageButton & Base<Rbx_ImageButton> & Indexable<Rbx_ImageButton>;
 interface Rbx_Instance {
 	IsA(className: "ImageButton"): this is ImageButton;
 	FindFirstAncestorOfClass(className: "ImageButton"): ImageButton | undefined;
@@ -2414,7 +2414,7 @@ interface Rbx_TextButton extends Rbx_GuiButton {
 	TextXAlignment: Enum.TextXAlignment;
 	TextYAlignment: Enum.TextYAlignment;
 }
-type TextButton = Rbx_TextButton & Indexable<Rbx_TextButton>;
+type TextButton = Rbx_TextButton & Base<Rbx_TextButton> & Indexable<Rbx_TextButton>;
 interface Rbx_Instance {
 	IsA(className: "TextButton"): this is TextButton;
 	FindFirstAncestorOfClass(className: "TextButton"): TextButton | undefined;
@@ -2426,7 +2426,7 @@ interface Rbx_Instance {
 // GuiLabel
 interface Rbx_GuiLabel extends Rbx_GuiObject {
 }
-type GuiLabel = Rbx_GuiLabel & Indexable<Rbx_GuiLabel>;
+type GuiLabel = Rbx_GuiLabel & Base<Rbx_GuiLabel> & Indexable<Rbx_GuiLabel>;
 interface Rbx_Instance {
 	IsA(className: "GuiLabel"): this is GuiLabel;
 	FindFirstAncestorOfClass(className: "GuiLabel"): GuiLabel | undefined;
@@ -2452,7 +2452,7 @@ interface Rbx_ImageLabel extends Rbx_GuiLabel {
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 }
-type ImageLabel = Rbx_ImageLabel & Indexable<Rbx_ImageLabel>;
+type ImageLabel = Rbx_ImageLabel & Base<Rbx_ImageLabel> & Indexable<Rbx_ImageLabel>;
 interface Rbx_Instance {
 	IsA(className: "ImageLabel"): this is ImageLabel;
 	FindFirstAncestorOfClass(className: "ImageLabel"): ImageLabel | undefined;
@@ -2480,7 +2480,7 @@ interface Rbx_TextLabel extends Rbx_GuiLabel {
 	TextXAlignment: Enum.TextXAlignment;
 	TextYAlignment: Enum.TextYAlignment;
 }
-type TextLabel = Rbx_TextLabel & Indexable<Rbx_TextLabel>;
+type TextLabel = Rbx_TextLabel & Base<Rbx_TextLabel> & Indexable<Rbx_TextLabel>;
 interface Rbx_Instance {
 	IsA(className: "TextLabel"): this is TextLabel;
 	FindFirstAncestorOfClass(className: "TextLabel"): TextLabel | undefined;
@@ -2515,7 +2515,7 @@ interface Rbx_ScrollingFrame extends Rbx_GuiObject {
 	VerticalScrollBarInset: Enum.ScrollBarInset;
 	VerticalScrollBarPosition: Enum.VerticalScrollBarPosition;
 }
-type ScrollingFrame = Rbx_ScrollingFrame & Indexable<Rbx_ScrollingFrame>;
+type ScrollingFrame = Rbx_ScrollingFrame & Base<Rbx_ScrollingFrame> & Indexable<Rbx_ScrollingFrame>;
 interface Rbx_Instance {
 	IsA(className: "ScrollingFrame"): this is ScrollingFrame;
 	FindFirstAncestorOfClass(className: "ScrollingFrame"): ScrollingFrame | undefined;
@@ -2553,7 +2553,7 @@ interface Rbx_TextBox extends Rbx_GuiObject {
 	FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: Instance) => void>;
 	Focused: RBXScriptSignal<() => void>;
 }
-type TextBox = Rbx_TextBox & Indexable<Rbx_TextBox>;
+type TextBox = Rbx_TextBox & Base<Rbx_TextBox> & Indexable<Rbx_TextBox>;
 interface Rbx_Instance {
 	IsA(className: "TextBox"): this is TextBox;
 	FindFirstAncestorOfClass(className: "TextBox"): TextBox | undefined;
@@ -2571,7 +2571,7 @@ interface Rbx_ViewportFrame extends Rbx_GuiObject {
 	/** A number value that specifies how transparent the rendered image of the ViewportFrame is */
 	ImageTransparency: number;
 }
-type ViewportFrame = Rbx_ViewportFrame & Indexable<Rbx_ViewportFrame>;
+type ViewportFrame = Rbx_ViewportFrame & Base<Rbx_ViewportFrame> & Indexable<Rbx_ViewportFrame>;
 interface Rbx_Instance {
 	IsA(className: "ViewportFrame"): this is ViewportFrame;
 	FindFirstAncestorOfClass(className: "ViewportFrame"): ViewportFrame | undefined;
@@ -2586,7 +2586,7 @@ interface Rbx_LayerCollector extends Rbx_GuiBase2d {
 	ResetOnSpawn: boolean;
 	ZIndexBehavior: Enum.ZIndexBehavior;
 }
-type LayerCollector = Rbx_LayerCollector & Indexable<Rbx_LayerCollector>;
+type LayerCollector = Rbx_LayerCollector & Base<Rbx_LayerCollector> & Indexable<Rbx_LayerCollector>;
 interface Rbx_Instance {
 	IsA(className: "LayerCollector"): this is LayerCollector;
 	FindFirstAncestorOfClass(className: "LayerCollector"): LayerCollector | undefined;
@@ -2616,7 +2616,7 @@ interface Rbx_BillboardGui extends Rbx_LayerCollector {
 	StudsOffset: Vector3;
 	StudsOffsetWorldSpace: Vector3;
 }
-type BillboardGui = Rbx_BillboardGui & Indexable<Rbx_BillboardGui>;
+type BillboardGui = Rbx_BillboardGui & Base<Rbx_BillboardGui> & Indexable<Rbx_BillboardGui>;
 interface Rbx_Instance {
 	IsA(className: "BillboardGui"): this is BillboardGui;
 	FindFirstAncestorOfClass(className: "BillboardGui"): BillboardGui | undefined;
@@ -2630,7 +2630,7 @@ interface Rbx_PluginGui extends Rbx_LayerCollector {
 	Title: string;
 	BindToClose(callback?: Function): void;
 }
-type PluginGui = Rbx_PluginGui & Indexable<Rbx_PluginGui>;
+type PluginGui = Rbx_PluginGui & Base<Rbx_PluginGui> & Indexable<Rbx_PluginGui>;
 interface Rbx_Instance {
 	IsA(className: "PluginGui"): this is PluginGui;
 	FindFirstAncestorOfClass(className: "PluginGui"): PluginGui | undefined;
@@ -2643,7 +2643,7 @@ interface Rbx_Instance {
 interface Rbx_DockWidgetPluginGui extends Rbx_PluginGui {
 	readonly HostWidgetWasRestored: boolean;
 }
-type DockWidgetPluginGui = Rbx_DockWidgetPluginGui & Indexable<Rbx_DockWidgetPluginGui>;
+type DockWidgetPluginGui = Rbx_DockWidgetPluginGui & Base<Rbx_DockWidgetPluginGui> & Indexable<Rbx_DockWidgetPluginGui>;
 interface Rbx_Instance {
 	IsA(className: "DockWidgetPluginGui"): this is DockWidgetPluginGui;
 	FindFirstAncestorOfClass(className: "DockWidgetPluginGui"): DockWidgetPluginGui | undefined;
@@ -2655,7 +2655,7 @@ interface Rbx_Instance {
 // QWidgetPluginGui
 interface Rbx_QWidgetPluginGui extends Rbx_PluginGui {
 }
-type QWidgetPluginGui = Rbx_QWidgetPluginGui & Indexable<Rbx_QWidgetPluginGui>;
+type QWidgetPluginGui = Rbx_QWidgetPluginGui & Base<Rbx_QWidgetPluginGui> & Indexable<Rbx_QWidgetPluginGui>;
 interface Rbx_Instance {
 	IsA(className: "QWidgetPluginGui"): this is QWidgetPluginGui;
 	FindFirstAncestorOfClass(className: "QWidgetPluginGui"): QWidgetPluginGui | undefined;
@@ -2669,7 +2669,7 @@ interface Rbx_ScreenGui extends Rbx_LayerCollector {
 	DisplayOrder: number;
 	IgnoreGuiInset: boolean;
 }
-type ScreenGui = Rbx_ScreenGui & Indexable<Rbx_ScreenGui>;
+type ScreenGui = Rbx_ScreenGui & Base<Rbx_ScreenGui> & Indexable<Rbx_ScreenGui>;
 interface Rbx_Instance {
 	IsA(className: "ScreenGui"): this is ScreenGui;
 	FindFirstAncestorOfClass(className: "ScreenGui"): ScreenGui | undefined;
@@ -2681,7 +2681,7 @@ interface Rbx_Instance {
 // GuiMain
 interface Rbx_GuiMain extends Rbx_ScreenGui {
 }
-type GuiMain = Rbx_GuiMain & Indexable<Rbx_GuiMain>;
+type GuiMain = Rbx_GuiMain & Base<Rbx_GuiMain> & Indexable<Rbx_GuiMain>;
 interface Rbx_Instance {
 	IsA(className: "GuiMain"): this is GuiMain;
 	FindFirstAncestorOfClass(className: "GuiMain"): GuiMain | undefined;
@@ -2703,7 +2703,7 @@ interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 	ToolPunchThroughDistance: number;
 	ZOffset: number;
 }
-type SurfaceGui = Rbx_SurfaceGui & Indexable<Rbx_SurfaceGui>;
+type SurfaceGui = Rbx_SurfaceGui & Base<Rbx_SurfaceGui> & Indexable<Rbx_SurfaceGui>;
 interface Rbx_Instance {
 	IsA(className: "SurfaceGui"): this is SurfaceGui;
 	FindFirstAncestorOfClass(className: "SurfaceGui"): SurfaceGui | undefined;
@@ -2718,7 +2718,7 @@ interface Rbx_GuiBase3d extends Rbx_GuiBase {
 	Transparency: number;
 	Visible: boolean;
 }
-type GuiBase3d = Rbx_GuiBase3d & Indexable<Rbx_GuiBase3d>;
+type GuiBase3d = Rbx_GuiBase3d & Base<Rbx_GuiBase3d> & Indexable<Rbx_GuiBase3d>;
 interface Rbx_Instance {
 	IsA(className: "GuiBase3d"): this is GuiBase3d;
 	FindFirstAncestorOfClass(className: "GuiBase3d"): GuiBase3d | undefined;
@@ -2746,7 +2746,7 @@ interface Rbx_FloorWire extends Rbx_GuiBase3d {
 	/** How thick the wire is. */
 	WireRadius: number;
 }
-type FloorWire = Rbx_FloorWire & Indexable<Rbx_FloorWire>;
+type FloorWire = Rbx_FloorWire & Base<Rbx_FloorWire> & Indexable<Rbx_FloorWire>;
 interface Rbx_Instance {
 	IsA(className: "FloorWire"): this is FloorWire;
 	FindFirstAncestorOfClass(className: "FloorWire"): FloorWire | undefined;
@@ -2759,7 +2759,7 @@ interface Rbx_Instance {
 interface Rbx_PVAdornment extends Rbx_GuiBase3d {
 	Adornee: PVInstance;
 }
-type PVAdornment = Rbx_PVAdornment & Indexable<Rbx_PVAdornment>;
+type PVAdornment = Rbx_PVAdornment & Base<Rbx_PVAdornment> & Indexable<Rbx_PVAdornment>;
 interface Rbx_Instance {
 	IsA(className: "PVAdornment"): this is PVAdornment;
 	FindFirstAncestorOfClass(className: "PVAdornment"): PVAdornment | undefined;
@@ -2779,7 +2779,7 @@ interface Rbx_HandleAdornment extends Rbx_PVAdornment {
 	MouseEnter: RBXScriptSignal<() => void>;
 	MouseLeave: RBXScriptSignal<() => void>;
 }
-type HandleAdornment = Rbx_HandleAdornment & Indexable<Rbx_HandleAdornment>;
+type HandleAdornment = Rbx_HandleAdornment & Base<Rbx_HandleAdornment> & Indexable<Rbx_HandleAdornment>;
 interface Rbx_Instance {
 	IsA(className: "HandleAdornment"): this is HandleAdornment;
 	FindFirstAncestorOfClass(className: "HandleAdornment"): HandleAdornment | undefined;
@@ -2792,7 +2792,7 @@ interface Rbx_Instance {
 interface Rbx_BoxHandleAdornment extends Rbx_HandleAdornment {
 	Size: Vector3;
 }
-type BoxHandleAdornment = Rbx_BoxHandleAdornment & Indexable<Rbx_BoxHandleAdornment>;
+type BoxHandleAdornment = Rbx_BoxHandleAdornment & Base<Rbx_BoxHandleAdornment> & Indexable<Rbx_BoxHandleAdornment>;
 interface Rbx_Instance {
 	IsA(className: "BoxHandleAdornment"): this is BoxHandleAdornment;
 	FindFirstAncestorOfClass(className: "BoxHandleAdornment"): BoxHandleAdornment | undefined;
@@ -2806,7 +2806,7 @@ interface Rbx_ConeHandleAdornment extends Rbx_HandleAdornment {
 	Height: number;
 	Radius: number;
 }
-type ConeHandleAdornment = Rbx_ConeHandleAdornment & Indexable<Rbx_ConeHandleAdornment>;
+type ConeHandleAdornment = Rbx_ConeHandleAdornment & Base<Rbx_ConeHandleAdornment> & Indexable<Rbx_ConeHandleAdornment>;
 interface Rbx_Instance {
 	IsA(className: "ConeHandleAdornment"): this is ConeHandleAdornment;
 	FindFirstAncestorOfClass(className: "ConeHandleAdornment"): ConeHandleAdornment | undefined;
@@ -2820,7 +2820,7 @@ interface Rbx_CylinderHandleAdornment extends Rbx_HandleAdornment {
 	Height: number;
 	Radius: number;
 }
-type CylinderHandleAdornment = Rbx_CylinderHandleAdornment & Indexable<Rbx_CylinderHandleAdornment>;
+type CylinderHandleAdornment = Rbx_CylinderHandleAdornment & Base<Rbx_CylinderHandleAdornment> & Indexable<Rbx_CylinderHandleAdornment>;
 interface Rbx_Instance {
 	IsA(className: "CylinderHandleAdornment"): this is CylinderHandleAdornment;
 	FindFirstAncestorOfClass(className: "CylinderHandleAdornment"): CylinderHandleAdornment | undefined;
@@ -2834,7 +2834,7 @@ interface Rbx_ImageHandleAdornment extends Rbx_HandleAdornment {
 	Image: string;
 	Size: Vector2;
 }
-type ImageHandleAdornment = Rbx_ImageHandleAdornment & Indexable<Rbx_ImageHandleAdornment>;
+type ImageHandleAdornment = Rbx_ImageHandleAdornment & Base<Rbx_ImageHandleAdornment> & Indexable<Rbx_ImageHandleAdornment>;
 interface Rbx_Instance {
 	IsA(className: "ImageHandleAdornment"): this is ImageHandleAdornment;
 	FindFirstAncestorOfClass(className: "ImageHandleAdornment"): ImageHandleAdornment | undefined;
@@ -2848,7 +2848,7 @@ interface Rbx_LineHandleAdornment extends Rbx_HandleAdornment {
 	Length: number;
 	Thickness: number;
 }
-type LineHandleAdornment = Rbx_LineHandleAdornment & Indexable<Rbx_LineHandleAdornment>;
+type LineHandleAdornment = Rbx_LineHandleAdornment & Base<Rbx_LineHandleAdornment> & Indexable<Rbx_LineHandleAdornment>;
 interface Rbx_Instance {
 	IsA(className: "LineHandleAdornment"): this is LineHandleAdornment;
 	FindFirstAncestorOfClass(className: "LineHandleAdornment"): LineHandleAdornment | undefined;
@@ -2861,7 +2861,7 @@ interface Rbx_Instance {
 interface Rbx_SphereHandleAdornment extends Rbx_HandleAdornment {
 	Radius: number;
 }
-type SphereHandleAdornment = Rbx_SphereHandleAdornment & Indexable<Rbx_SphereHandleAdornment>;
+type SphereHandleAdornment = Rbx_SphereHandleAdornment & Base<Rbx_SphereHandleAdornment> & Indexable<Rbx_SphereHandleAdornment>;
 interface Rbx_Instance {
 	IsA(className: "SphereHandleAdornment"): this is SphereHandleAdornment;
 	FindFirstAncestorOfClass(className: "SphereHandleAdornment"): SphereHandleAdornment | undefined;
@@ -2873,7 +2873,7 @@ interface Rbx_Instance {
 // ParabolaAdornment
 interface Rbx_ParabolaAdornment extends Rbx_PVAdornment {
 }
-type ParabolaAdornment = Rbx_ParabolaAdornment & Indexable<Rbx_ParabolaAdornment>;
+type ParabolaAdornment = Rbx_ParabolaAdornment & Base<Rbx_ParabolaAdornment> & Indexable<Rbx_ParabolaAdornment>;
 interface Rbx_Instance {
 	IsA(className: "ParabolaAdornment"): this is ParabolaAdornment;
 	FindFirstAncestorOfClass(className: "ParabolaAdornment"): ParabolaAdornment | undefined;
@@ -2888,7 +2888,7 @@ interface Rbx_SelectionBox extends Rbx_PVAdornment {
 	SurfaceColor3: Color3;
 	SurfaceTransparency: number;
 }
-type SelectionBox = Rbx_SelectionBox & Indexable<Rbx_SelectionBox>;
+type SelectionBox = Rbx_SelectionBox & Base<Rbx_SelectionBox> & Indexable<Rbx_SelectionBox>;
 interface Rbx_Instance {
 	IsA(className: "SelectionBox"): this is SelectionBox;
 	FindFirstAncestorOfClass(className: "SelectionBox"): SelectionBox | undefined;
@@ -2902,7 +2902,7 @@ interface Rbx_SelectionSphere extends Rbx_PVAdornment {
 	SurfaceColor3: Color3;
 	SurfaceTransparency: number;
 }
-type SelectionSphere = Rbx_SelectionSphere & Indexable<Rbx_SelectionSphere>;
+type SelectionSphere = Rbx_SelectionSphere & Base<Rbx_SelectionSphere> & Indexable<Rbx_SelectionSphere>;
 interface Rbx_Instance {
 	IsA(className: "SelectionSphere"): this is SelectionSphere;
 	FindFirstAncestorOfClass(className: "SelectionSphere"): SelectionSphere | undefined;
@@ -2915,7 +2915,7 @@ interface Rbx_Instance {
 interface Rbx_PartAdornment extends Rbx_GuiBase3d {
 	Adornee: BasePart;
 }
-type PartAdornment = Rbx_PartAdornment & Indexable<Rbx_PartAdornment>;
+type PartAdornment = Rbx_PartAdornment & Base<Rbx_PartAdornment> & Indexable<Rbx_PartAdornment>;
 interface Rbx_Instance {
 	IsA(className: "PartAdornment"): this is PartAdornment;
 	FindFirstAncestorOfClass(className: "PartAdornment"): PartAdornment | undefined;
@@ -2927,7 +2927,7 @@ interface Rbx_Instance {
 // HandlesBase
 interface Rbx_HandlesBase extends Rbx_PartAdornment {
 }
-type HandlesBase = Rbx_HandlesBase & Indexable<Rbx_HandlesBase>;
+type HandlesBase = Rbx_HandlesBase & Base<Rbx_HandlesBase> & Indexable<Rbx_HandlesBase>;
 interface Rbx_Instance {
 	IsA(className: "HandlesBase"): this is HandlesBase;
 	FindFirstAncestorOfClass(className: "HandlesBase"): HandlesBase | undefined;
@@ -2945,7 +2945,7 @@ interface Rbx_ArcHandles extends Rbx_HandlesBase {
 	MouseEnter: RBXScriptSignal<(axis: Enum.Axis) => void>;
 	MouseLeave: RBXScriptSignal<(axis: Enum.Axis) => void>;
 }
-type ArcHandles = Rbx_ArcHandles & Indexable<Rbx_ArcHandles>;
+type ArcHandles = Rbx_ArcHandles & Base<Rbx_ArcHandles> & Indexable<Rbx_ArcHandles>;
 interface Rbx_Instance {
 	IsA(className: "ArcHandles"): this is ArcHandles;
 	FindFirstAncestorOfClass(className: "ArcHandles"): ArcHandles | undefined;
@@ -2964,7 +2964,7 @@ interface Rbx_Handles extends Rbx_HandlesBase {
 	MouseEnter: RBXScriptSignal<(face: Enum.NormalId) => void>;
 	MouseLeave: RBXScriptSignal<(face: Enum.NormalId) => void>;
 }
-type Handles = Rbx_Handles & Indexable<Rbx_Handles>;
+type Handles = Rbx_Handles & Base<Rbx_Handles> & Indexable<Rbx_Handles>;
 interface Rbx_Instance {
 	IsA(className: "Handles"): this is Handles;
 	FindFirstAncestorOfClass(className: "Handles"): Handles | undefined;
@@ -2977,7 +2977,7 @@ interface Rbx_Instance {
 interface Rbx_SurfaceSelection extends Rbx_PartAdornment {
 	TargetSurface: Enum.NormalId;
 }
-type SurfaceSelection = Rbx_SurfaceSelection & Indexable<Rbx_SurfaceSelection>;
+type SurfaceSelection = Rbx_SurfaceSelection & Base<Rbx_SurfaceSelection> & Indexable<Rbx_SurfaceSelection>;
 interface Rbx_Instance {
 	IsA(className: "SurfaceSelection"): this is SurfaceSelection;
 	FindFirstAncestorOfClass(className: "SurfaceSelection"): SurfaceSelection | undefined;
@@ -2990,7 +2990,7 @@ interface Rbx_Instance {
 interface Rbx_SelectionLasso extends Rbx_GuiBase3d {
 	Humanoid: Humanoid;
 }
-type SelectionLasso = Rbx_SelectionLasso & Indexable<Rbx_SelectionLasso>;
+type SelectionLasso = Rbx_SelectionLasso & Base<Rbx_SelectionLasso> & Indexable<Rbx_SelectionLasso>;
 interface Rbx_Instance {
 	IsA(className: "SelectionLasso"): this is SelectionLasso;
 	FindFirstAncestorOfClass(className: "SelectionLasso"): SelectionLasso | undefined;
@@ -3003,7 +3003,7 @@ interface Rbx_Instance {
 interface Rbx_SelectionPartLasso extends Rbx_SelectionLasso {
 	Part: BasePart;
 }
-type SelectionPartLasso = Rbx_SelectionPartLasso & Indexable<Rbx_SelectionPartLasso>;
+type SelectionPartLasso = Rbx_SelectionPartLasso & Base<Rbx_SelectionPartLasso> & Indexable<Rbx_SelectionPartLasso>;
 interface Rbx_Instance {
 	IsA(className: "SelectionPartLasso"): this is SelectionPartLasso;
 	FindFirstAncestorOfClass(className: "SelectionPartLasso"): SelectionPartLasso | undefined;
@@ -3016,7 +3016,7 @@ interface Rbx_Instance {
 interface Rbx_SelectionPointLasso extends Rbx_SelectionLasso {
 	Point: Vector3;
 }
-type SelectionPointLasso = Rbx_SelectionPointLasso & Indexable<Rbx_SelectionPointLasso>;
+type SelectionPointLasso = Rbx_SelectionPointLasso & Base<Rbx_SelectionPointLasso> & Indexable<Rbx_SelectionPointLasso>;
 interface Rbx_Instance {
 	IsA(className: "SelectionPointLasso"): this is SelectionPointLasso;
 	FindFirstAncestorOfClass(className: "SelectionPointLasso"): SelectionPointLasso | undefined;
@@ -3028,7 +3028,7 @@ interface Rbx_Instance {
 // GuiItem
 interface Rbx_GuiItem extends Rbx_Instance {
 }
-type GuiItem = Rbx_GuiItem & Indexable<Rbx_GuiItem>;
+type GuiItem = Rbx_GuiItem & Base<Rbx_GuiItem> & Indexable<Rbx_GuiItem>;
 interface Rbx_Instance {
 	IsA(className: "GuiItem"): this is GuiItem;
 	FindFirstAncestorOfClass(className: "GuiItem"): GuiItem | undefined;
@@ -3040,7 +3040,7 @@ interface Rbx_Instance {
 // Backpack
 interface Rbx_Backpack extends Rbx_GuiItem {
 }
-type Backpack = Rbx_Backpack & Indexable<Rbx_Backpack>;
+type Backpack = Rbx_Backpack & Base<Rbx_Backpack> & Indexable<Rbx_Backpack>;
 interface Rbx_Instance {
 	IsA(className: "Backpack"): this is Backpack;
 	FindFirstAncestorOfClass(className: "Backpack"): Backpack | undefined;
@@ -3053,7 +3053,7 @@ interface Rbx_Instance {
 interface Rbx_BackpackItem extends Rbx_GuiItem {
 	TextureId: string;
 }
-type BackpackItem = Rbx_BackpackItem & Indexable<Rbx_BackpackItem>;
+type BackpackItem = Rbx_BackpackItem & Base<Rbx_BackpackItem> & Indexable<Rbx_BackpackItem>;
 interface Rbx_Instance {
 	IsA(className: "BackpackItem"): this is BackpackItem;
 	FindFirstAncestorOfClass(className: "BackpackItem"): BackpackItem | undefined;
@@ -3069,7 +3069,7 @@ interface Rbx_HopperBin extends Rbx_BackpackItem {
 	Deselected: RBXScriptSignal<() => void>;
 	Selected: RBXScriptSignal<(mouse: Instance) => void>;
 }
-type HopperBin = Rbx_HopperBin & Indexable<Rbx_HopperBin>;
+type HopperBin = Rbx_HopperBin & Base<Rbx_HopperBin> & Indexable<Rbx_HopperBin>;
 interface Rbx_Instance {
 	IsA(className: "HopperBin"): this is HopperBin;
 	FindFirstAncestorOfClass(className: "HopperBin"): HopperBin | undefined;
@@ -3096,7 +3096,7 @@ interface Rbx_Tool extends Rbx_BackpackItem {
 	Deactivated: RBXScriptSignal<() => void>;
 	Unequipped: RBXScriptSignal<() => void>;
 }
-type Tool = Rbx_Tool & Indexable<Rbx_Tool>;
+type Tool = Rbx_Tool & Base<Rbx_Tool> & Indexable<Rbx_Tool>;
 interface Rbx_Instance {
 	IsA(className: "Tool"): this is Tool;
 	FindFirstAncestorOfClass(className: "Tool"): Tool | undefined;
@@ -3110,7 +3110,7 @@ interface Rbx_Flag extends Rbx_Tool {
 	/** The Team this flag is for. Corresponds with the TeamColors in the Teams service. */
 	TeamColor: BrickColor;
 }
-type Flag = Rbx_Flag & Indexable<Rbx_Flag>;
+type Flag = Rbx_Flag & Base<Rbx_Flag> & Indexable<Rbx_Flag>;
 interface Rbx_Instance {
 	IsA(className: "Flag"): this is Flag;
 	FindFirstAncestorOfClass(className: "Flag"): Flag | undefined;
@@ -3122,7 +3122,7 @@ interface Rbx_Instance {
 // ButtonBindingWidget
 interface Rbx_ButtonBindingWidget extends Rbx_GuiItem {
 }
-type ButtonBindingWidget = Rbx_ButtonBindingWidget & Indexable<Rbx_ButtonBindingWidget>;
+type ButtonBindingWidget = Rbx_ButtonBindingWidget & Base<Rbx_ButtonBindingWidget> & Indexable<Rbx_ButtonBindingWidget>;
 interface Rbx_Instance {
 	IsA(className: "ButtonBindingWidget"): this is ButtonBindingWidget;
 	FindFirstAncestorOfClass(className: "ButtonBindingWidget"): ButtonBindingWidget | undefined;
@@ -3134,7 +3134,7 @@ interface Rbx_Instance {
 // GuiRoot
 interface Rbx_GuiRoot extends Rbx_GuiItem {
 }
-type GuiRoot = Rbx_GuiRoot & Indexable<Rbx_GuiRoot>;
+type GuiRoot = Rbx_GuiRoot & Base<Rbx_GuiRoot> & Indexable<Rbx_GuiRoot>;
 interface Rbx_Instance {
 	IsA(className: "GuiRoot"): this is GuiRoot;
 	FindFirstAncestorOfClass(className: "GuiRoot"): GuiRoot | undefined;
@@ -3146,7 +3146,7 @@ interface Rbx_Instance {
 // Hopper
 interface Rbx_Hopper extends Rbx_GuiItem {
 }
-type Hopper = Rbx_Hopper & Indexable<Rbx_Hopper>;
+type Hopper = Rbx_Hopper & Base<Rbx_Hopper> & Indexable<Rbx_Hopper>;
 interface Rbx_Instance {
 	IsA(className: "Hopper"): this is Hopper;
 	FindFirstAncestorOfClass(className: "Hopper"): Hopper | undefined;
@@ -3161,7 +3161,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // StarterPack
 interface Rbx_StarterPack extends Rbx_GuiItem {
 }
-type StarterPack = Rbx_StarterPack & Indexable<Rbx_StarterPack>;
+type StarterPack = Rbx_StarterPack & Base<Rbx_StarterPack> & Indexable<Rbx_StarterPack>;
 interface Rbx_Instance {
 	IsA(className: "StarterPack"): this is StarterPack;
 	FindFirstAncestorOfClass(className: "StarterPack"): StarterPack | undefined;
@@ -3185,7 +3185,7 @@ interface Rbx_GuiService extends Rbx_Instance {
 	MenuClosed: RBXScriptSignal<() => void>;
 	MenuOpened: RBXScriptSignal<() => void>;
 }
-type GuiService = Rbx_GuiService & Indexable<Rbx_GuiService>;
+type GuiService = Rbx_GuiService & Base<Rbx_GuiService> & Indexable<Rbx_GuiService>;
 interface Rbx_Instance {
 	IsA(className: "GuiService"): this is GuiService;
 	FindFirstAncestorOfClass(className: "GuiService"): GuiService | undefined;
@@ -3200,7 +3200,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // GuidRegistryService
 interface Rbx_GuidRegistryService extends Rbx_Instance {
 }
-type GuidRegistryService = Rbx_GuidRegistryService & Indexable<Rbx_GuidRegistryService>;
+type GuidRegistryService = Rbx_GuidRegistryService & Base<Rbx_GuidRegistryService> & Indexable<Rbx_GuidRegistryService>;
 interface Rbx_Instance {
 	IsA(className: "GuidRegistryService"): this is GuidRegistryService;
 	FindFirstAncestorOfClass(className: "GuidRegistryService"): GuidRegistryService | undefined;
@@ -3217,7 +3217,7 @@ interface Rbx_HapticService extends Rbx_Instance {
 	IsMotorSupported(inputType: Enum.UserInputType, vibrationMotor: Enum.VibrationMotor): boolean;
 	IsVibrationSupported(inputType: Enum.UserInputType): boolean;
 }
-type HapticService = Rbx_HapticService & Indexable<Rbx_HapticService>;
+type HapticService = Rbx_HapticService & Base<Rbx_HapticService> & Indexable<Rbx_HapticService>;
 interface Rbx_Instance {
 	IsA(className: "HapticService"): this is HapticService;
 	FindFirstAncestorOfClass(className: "HapticService"): HapticService | undefined;
@@ -3232,7 +3232,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // HttpRbxApiService
 interface Rbx_HttpRbxApiService extends Rbx_Instance {
 }
-type HttpRbxApiService = Rbx_HttpRbxApiService & Indexable<Rbx_HttpRbxApiService>;
+type HttpRbxApiService = Rbx_HttpRbxApiService & Base<Rbx_HttpRbxApiService> & Indexable<Rbx_HttpRbxApiService>;
 interface Rbx_Instance {
 	IsA(className: "HttpRbxApiService"): this is HttpRbxApiService;
 	FindFirstAncestorOfClass(className: "HttpRbxApiService"): HttpRbxApiService | undefined;
@@ -3247,7 +3247,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // HttpRequest
 interface Rbx_HttpRequest extends Rbx_Instance {
 }
-type HttpRequest = Rbx_HttpRequest & Indexable<Rbx_HttpRequest>;
+type HttpRequest = Rbx_HttpRequest & Base<Rbx_HttpRequest> & Indexable<Rbx_HttpRequest>;
 interface Rbx_Instance {
 	IsA(className: "HttpRequest"): this is HttpRequest;
 	FindFirstAncestorOfClass(className: "HttpRequest"): HttpRequest | undefined;
@@ -3263,7 +3263,7 @@ interface Rbx_HttpService extends Rbx_Instance {
 	JSONEncode(input?: any): string;
 	UrlEncode(input: string): string;
 }
-type HttpService = Rbx_HttpService & Indexable<Rbx_HttpService>;
+type HttpService = Rbx_HttpService & Base<Rbx_HttpService> & Indexable<Rbx_HttpService>;
 interface Rbx_Instance {
 	IsA(className: "HttpService"): this is HttpService;
 	FindFirstAncestorOfClass(className: "HttpService"): HttpService | undefined;
@@ -3335,7 +3335,7 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	Strafing: RBXScriptSignal<(active: boolean) => void>;
 	Swimming: RBXScriptSignal<(speed: number) => void>;
 }
-type Humanoid = Rbx_Humanoid & Indexable<Rbx_Humanoid>;
+type Humanoid = Rbx_Humanoid & Base<Rbx_Humanoid> & Indexable<Rbx_Humanoid>;
 interface Rbx_Instance {
 	IsA(className: "Humanoid"): this is Humanoid;
 	FindFirstAncestorOfClass(className: "Humanoid"): Humanoid | undefined;
@@ -3384,7 +3384,7 @@ interface Rbx_HumanoidDescription extends Rbx_Instance {
 	WalkAnimation: number;
 	WidthScale: number;
 }
-type HumanoidDescription = Rbx_HumanoidDescription & Indexable<Rbx_HumanoidDescription>;
+type HumanoidDescription = Rbx_HumanoidDescription & Base<Rbx_HumanoidDescription> & Indexable<Rbx_HumanoidDescription>;
 interface Rbx_Instance {
 	IsA(className: "HumanoidDescription"): this is HumanoidDescription;
 	FindFirstAncestorOfClass(className: "HumanoidDescription"): HumanoidDescription | undefined;
@@ -3405,7 +3405,7 @@ interface Rbx_InputObject extends Rbx_Instance {
 	/** An enum that describes what kind of input this object is describing (mousebutton, touch, etc.).  See Enum.UserInputType for more info. */
 	UserInputType: Enum.UserInputType;
 }
-type InputObject = Rbx_InputObject & Indexable<Rbx_InputObject>;
+type InputObject = Rbx_InputObject & Base<Rbx_InputObject> & Indexable<Rbx_InputObject>;
 interface Rbx_Instance {
 	IsA(className: "InputObject"): this is InputObject;
 	FindFirstAncestorOfClass(className: "InputObject"): InputObject | undefined;
@@ -3418,7 +3418,7 @@ interface Rbx_Instance {
 interface Rbx_InsertService extends Rbx_Instance {
 	GetLatestAssetVersionAsync(assetId: number): number;
 }
-type InsertService = Rbx_InsertService & Indexable<Rbx_InsertService>;
+type InsertService = Rbx_InsertService & Base<Rbx_InsertService> & Indexable<Rbx_InsertService>;
 interface Rbx_Instance {
 	IsA(className: "InsertService"): this is InsertService;
 	FindFirstAncestorOfClass(className: "InsertService"): InsertService | undefined;
@@ -3437,7 +3437,7 @@ interface Rbx_JointInstance extends Rbx_Instance {
 	C0: CFrame;
 	C1: CFrame;
 }
-type JointInstance = Rbx_JointInstance & Indexable<Rbx_JointInstance>;
+type JointInstance = Rbx_JointInstance & Base<Rbx_JointInstance> & Indexable<Rbx_JointInstance>;
 interface Rbx_Instance {
 	IsA(className: "JointInstance"): this is JointInstance;
 	FindFirstAncestorOfClass(className: "JointInstance"): JointInstance | undefined;
@@ -3450,7 +3450,7 @@ interface Rbx_Instance {
 interface Rbx_DynamicRotate extends Rbx_JointInstance {
 	BaseAngle: number;
 }
-type DynamicRotate = Rbx_DynamicRotate & Indexable<Rbx_DynamicRotate>;
+type DynamicRotate = Rbx_DynamicRotate & Base<Rbx_DynamicRotate> & Indexable<Rbx_DynamicRotate>;
 interface Rbx_Instance {
 	IsA(className: "DynamicRotate"): this is DynamicRotate;
 	FindFirstAncestorOfClass(className: "DynamicRotate"): DynamicRotate | undefined;
@@ -3462,7 +3462,7 @@ interface Rbx_Instance {
 // RotateP
 interface Rbx_RotateP extends Rbx_DynamicRotate {
 }
-type RotateP = Rbx_RotateP & Indexable<Rbx_RotateP>;
+type RotateP = Rbx_RotateP & Base<Rbx_RotateP> & Indexable<Rbx_RotateP>;
 interface Rbx_Instance {
 	IsA(className: "RotateP"): this is RotateP;
 	FindFirstAncestorOfClass(className: "RotateP"): RotateP | undefined;
@@ -3474,7 +3474,7 @@ interface Rbx_Instance {
 // RotateV
 interface Rbx_RotateV extends Rbx_DynamicRotate {
 }
-type RotateV = Rbx_RotateV & Indexable<Rbx_RotateV>;
+type RotateV = Rbx_RotateV & Base<Rbx_RotateV> & Indexable<Rbx_RotateV>;
 interface Rbx_Instance {
 	IsA(className: "RotateV"): this is RotateV;
 	FindFirstAncestorOfClass(className: "RotateV"): RotateV | undefined;
@@ -3490,7 +3490,7 @@ interface Rbx_Glue extends Rbx_JointInstance {
 	F2: Vector3;
 	F3: Vector3;
 }
-type Glue = Rbx_Glue & Indexable<Rbx_Glue>;
+type Glue = Rbx_Glue & Base<Rbx_Glue> & Indexable<Rbx_Glue>;
 interface Rbx_Instance {
 	IsA(className: "Glue"): this is Glue;
 	FindFirstAncestorOfClass(className: "Glue"): Glue | undefined;
@@ -3502,7 +3502,7 @@ interface Rbx_Instance {
 // ManualSurfaceJointInstance
 interface Rbx_ManualSurfaceJointInstance extends Rbx_JointInstance {
 }
-type ManualSurfaceJointInstance = Rbx_ManualSurfaceJointInstance & Indexable<Rbx_ManualSurfaceJointInstance>;
+type ManualSurfaceJointInstance = Rbx_ManualSurfaceJointInstance & Base<Rbx_ManualSurfaceJointInstance> & Indexable<Rbx_ManualSurfaceJointInstance>;
 interface Rbx_Instance {
 	IsA(className: "ManualSurfaceJointInstance"): this is ManualSurfaceJointInstance;
 	FindFirstAncestorOfClass(className: "ManualSurfaceJointInstance"): ManualSurfaceJointInstance | undefined;
@@ -3514,7 +3514,7 @@ interface Rbx_Instance {
 // ManualGlue
 interface Rbx_ManualGlue extends Rbx_ManualSurfaceJointInstance {
 }
-type ManualGlue = Rbx_ManualGlue & Indexable<Rbx_ManualGlue>;
+type ManualGlue = Rbx_ManualGlue & Base<Rbx_ManualGlue> & Indexable<Rbx_ManualGlue>;
 interface Rbx_Instance {
 	IsA(className: "ManualGlue"): this is ManualGlue;
 	FindFirstAncestorOfClass(className: "ManualGlue"): ManualGlue | undefined;
@@ -3526,7 +3526,7 @@ interface Rbx_Instance {
 // ManualWeld
 interface Rbx_ManualWeld extends Rbx_ManualSurfaceJointInstance {
 }
-type ManualWeld = Rbx_ManualWeld & Indexable<Rbx_ManualWeld>;
+type ManualWeld = Rbx_ManualWeld & Base<Rbx_ManualWeld> & Indexable<Rbx_ManualWeld>;
 interface Rbx_Instance {
 	IsA(className: "ManualWeld"): this is ManualWeld;
 	FindFirstAncestorOfClass(className: "ManualWeld"): ManualWeld | undefined;
@@ -3542,7 +3542,7 @@ interface Rbx_Motor extends Rbx_JointInstance {
 	MaxVelocity: number;
 	SetDesiredAngle(value: number): void;
 }
-type Motor = Rbx_Motor & Indexable<Rbx_Motor>;
+type Motor = Rbx_Motor & Base<Rbx_Motor> & Indexable<Rbx_Motor>;
 interface Rbx_Instance {
 	IsA(className: "Motor"): this is Motor;
 	FindFirstAncestorOfClass(className: "Motor"): Motor | undefined;
@@ -3555,7 +3555,7 @@ interface Rbx_Instance {
 interface Rbx_Motor6D extends Rbx_Motor {
 	Transform: CFrame;
 }
-type Motor6D = Rbx_Motor6D & Indexable<Rbx_Motor6D>;
+type Motor6D = Rbx_Motor6D & Base<Rbx_Motor6D> & Indexable<Rbx_Motor6D>;
 interface Rbx_Instance {
 	IsA(className: "Motor6D"): this is Motor6D;
 	FindFirstAncestorOfClass(className: "Motor6D"): Motor6D | undefined;
@@ -3567,7 +3567,7 @@ interface Rbx_Instance {
 // Rotate
 interface Rbx_Rotate extends Rbx_JointInstance {
 }
-type Rotate = Rbx_Rotate & Indexable<Rbx_Rotate>;
+type Rotate = Rbx_Rotate & Base<Rbx_Rotate> & Indexable<Rbx_Rotate>;
 interface Rbx_Instance {
 	IsA(className: "Rotate"): this is Rotate;
 	FindFirstAncestorOfClass(className: "Rotate"): Rotate | undefined;
@@ -3579,7 +3579,7 @@ interface Rbx_Instance {
 // Snap
 interface Rbx_Snap extends Rbx_JointInstance {
 }
-type Snap = Rbx_Snap & Indexable<Rbx_Snap>;
+type Snap = Rbx_Snap & Base<Rbx_Snap> & Indexable<Rbx_Snap>;
 interface Rbx_Instance {
 	IsA(className: "Snap"): this is Snap;
 	FindFirstAncestorOfClass(className: "Snap"): Snap | undefined;
@@ -3595,7 +3595,7 @@ interface Rbx_VelocityMotor extends Rbx_JointInstance {
 	Hole: Hole;
 	MaxVelocity: number;
 }
-type VelocityMotor = Rbx_VelocityMotor & Indexable<Rbx_VelocityMotor>;
+type VelocityMotor = Rbx_VelocityMotor & Base<Rbx_VelocityMotor> & Indexable<Rbx_VelocityMotor>;
 interface Rbx_Instance {
 	IsA(className: "VelocityMotor"): this is VelocityMotor;
 	FindFirstAncestorOfClass(className: "VelocityMotor"): VelocityMotor | undefined;
@@ -3607,7 +3607,7 @@ interface Rbx_Instance {
 // Weld
 interface Rbx_Weld extends Rbx_JointInstance {
 }
-type Weld = Rbx_Weld & Indexable<Rbx_Weld>;
+type Weld = Rbx_Weld & Base<Rbx_Weld> & Indexable<Rbx_Weld>;
 interface Rbx_Instance {
 	IsA(className: "Weld"): this is Weld;
 	FindFirstAncestorOfClass(className: "Weld"): Weld | undefined;
@@ -3624,7 +3624,7 @@ interface Rbx_JointsService extends Rbx_Instance {
 	SetJoinAfterMoveTarget(joinTarget: Instance): void;
 	ShowPermissibleJoints(): void;
 }
-type JointsService = Rbx_JointsService & Indexable<Rbx_JointsService>;
+type JointsService = Rbx_JointsService & Base<Rbx_JointsService> & Indexable<Rbx_JointsService>;
 interface Rbx_Instance {
 	IsA(className: "JointsService"): this is JointsService;
 	FindFirstAncestorOfClass(className: "JointsService"): JointsService | undefined;
@@ -3639,7 +3639,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // KeyboardService
 interface Rbx_KeyboardService extends Rbx_Instance {
 }
-type KeyboardService = Rbx_KeyboardService & Indexable<Rbx_KeyboardService>;
+type KeyboardService = Rbx_KeyboardService & Base<Rbx_KeyboardService> & Indexable<Rbx_KeyboardService>;
 interface Rbx_Instance {
 	IsA(className: "KeyboardService"): this is KeyboardService;
 	FindFirstAncestorOfClass(className: "KeyboardService"): KeyboardService | undefined;
@@ -3658,7 +3658,7 @@ interface Rbx_Keyframe extends Rbx_Instance {
 	GetMarkers(): Array<Instance>;
 	RemoveMarker(marker: Instance): void;
 }
-type Keyframe = Rbx_Keyframe & Indexable<Rbx_Keyframe>;
+type Keyframe = Rbx_Keyframe & Base<Rbx_Keyframe> & Indexable<Rbx_Keyframe>;
 interface Rbx_Instance {
 	IsA(className: "Keyframe"): this is Keyframe;
 	FindFirstAncestorOfClass(className: "Keyframe"): Keyframe | undefined;
@@ -3671,7 +3671,7 @@ interface Rbx_Instance {
 interface Rbx_KeyframeMarker extends Rbx_Instance {
 	Value: string;
 }
-type KeyframeMarker = Rbx_KeyframeMarker & Indexable<Rbx_KeyframeMarker>;
+type KeyframeMarker = Rbx_KeyframeMarker & Base<Rbx_KeyframeMarker> & Indexable<Rbx_KeyframeMarker>;
 interface Rbx_Instance {
 	IsA(className: "KeyframeMarker"): this is KeyframeMarker;
 	FindFirstAncestorOfClass(className: "KeyframeMarker"): KeyframeMarker | undefined;
@@ -3685,7 +3685,7 @@ interface Rbx_KeyframeSequence extends Rbx_Instance {
 	Loop: boolean;
 	Priority: Enum.AnimationPriority;
 }
-type KeyframeSequence = Rbx_KeyframeSequence & Indexable<Rbx_KeyframeSequence>;
+type KeyframeSequence = Rbx_KeyframeSequence & Base<Rbx_KeyframeSequence> & Indexable<Rbx_KeyframeSequence>;
 interface Rbx_Instance {
 	IsA(className: "KeyframeSequence"): this is KeyframeSequence;
 	FindFirstAncestorOfClass(className: "KeyframeSequence"): KeyframeSequence | undefined;
@@ -3697,7 +3697,7 @@ interface Rbx_Instance {
 // KeyframeSequenceProvider
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
 }
-type KeyframeSequenceProvider = Rbx_KeyframeSequenceProvider & Indexable<Rbx_KeyframeSequenceProvider>;
+type KeyframeSequenceProvider = Rbx_KeyframeSequenceProvider & Base<Rbx_KeyframeSequenceProvider> & Indexable<Rbx_KeyframeSequenceProvider>;
 interface Rbx_Instance {
 	IsA(className: "KeyframeSequenceProvider"): this is KeyframeSequenceProvider;
 	FindFirstAncestorOfClass(className: "KeyframeSequenceProvider"): KeyframeSequenceProvider | undefined;
@@ -3716,7 +3716,7 @@ interface Rbx_Light extends Rbx_Instance {
 	Enabled: boolean;
 	Shadows: boolean;
 }
-type Light = Rbx_Light & Indexable<Rbx_Light>;
+type Light = Rbx_Light & Base<Rbx_Light> & Indexable<Rbx_Light>;
 interface Rbx_Instance {
 	IsA(className: "Light"): this is Light;
 	FindFirstAncestorOfClass(className: "Light"): Light | undefined;
@@ -3729,7 +3729,7 @@ interface Rbx_Instance {
 interface Rbx_PointLight extends Rbx_Light {
 	Range: number;
 }
-type PointLight = Rbx_PointLight & Indexable<Rbx_PointLight>;
+type PointLight = Rbx_PointLight & Base<Rbx_PointLight> & Indexable<Rbx_PointLight>;
 interface Rbx_Instance {
 	IsA(className: "PointLight"): this is PointLight;
 	FindFirstAncestorOfClass(className: "PointLight"): PointLight | undefined;
@@ -3744,7 +3744,7 @@ interface Rbx_SpotLight extends Rbx_Light {
 	Face: Enum.NormalId;
 	Range: number;
 }
-type SpotLight = Rbx_SpotLight & Indexable<Rbx_SpotLight>;
+type SpotLight = Rbx_SpotLight & Base<Rbx_SpotLight> & Indexable<Rbx_SpotLight>;
 interface Rbx_Instance {
 	IsA(className: "SpotLight"): this is SpotLight;
 	FindFirstAncestorOfClass(className: "SpotLight"): SpotLight | undefined;
@@ -3759,7 +3759,7 @@ interface Rbx_SurfaceLight extends Rbx_Light {
 	Face: Enum.NormalId;
 	Range: number;
 }
-type SurfaceLight = Rbx_SurfaceLight & Indexable<Rbx_SurfaceLight>;
+type SurfaceLight = Rbx_SurfaceLight & Base<Rbx_SurfaceLight> & Indexable<Rbx_SurfaceLight>;
 interface Rbx_Instance {
 	IsA(className: "SurfaceLight"): this is SurfaceLight;
 	FindFirstAncestorOfClass(className: "SurfaceLight"): SurfaceLight | undefined;
@@ -3810,7 +3810,7 @@ interface Rbx_Lighting extends Rbx_Instance {
 	/** Fired whenever a property of Lighting is changed, or a skybox is added or removed. Skyboxes are of type 'Sky' and should be parented directly to lighting. */
 	LightingChanged: RBXScriptSignal<(skyboxChanged: boolean) => void>;
 }
-type Lighting = Rbx_Lighting & Indexable<Rbx_Lighting>;
+type Lighting = Rbx_Lighting & Base<Rbx_Lighting> & Indexable<Rbx_Lighting>;
 interface Rbx_Instance {
 	IsA(className: "Lighting"): this is Lighting;
 	FindFirstAncestorOfClass(className: "Lighting"): Lighting | undefined;
@@ -3825,7 +3825,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // LocalAsset
 interface Rbx_LocalAsset extends Rbx_Instance {
 }
-type LocalAsset = Rbx_LocalAsset & Indexable<Rbx_LocalAsset>;
+type LocalAsset = Rbx_LocalAsset & Base<Rbx_LocalAsset> & Indexable<Rbx_LocalAsset>;
 interface Rbx_Instance {
 	IsA(className: "LocalAsset"): this is LocalAsset;
 	FindFirstAncestorOfClass(className: "LocalAsset"): LocalAsset | undefined;
@@ -3837,7 +3837,7 @@ interface Rbx_Instance {
 // LocalStorageService
 interface Rbx_LocalStorageService extends Rbx_Instance {
 }
-type LocalStorageService = Rbx_LocalStorageService & Indexable<Rbx_LocalStorageService>;
+type LocalStorageService = Rbx_LocalStorageService & Base<Rbx_LocalStorageService> & Indexable<Rbx_LocalStorageService>;
 interface Rbx_Instance {
 	IsA(className: "LocalStorageService"): this is LocalStorageService;
 	FindFirstAncestorOfClass(className: "LocalStorageService"): LocalStorageService | undefined;
@@ -3852,7 +3852,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // AppStorageService
 interface Rbx_AppStorageService extends Rbx_LocalStorageService {
 }
-type AppStorageService = Rbx_AppStorageService & Indexable<Rbx_AppStorageService>;
+type AppStorageService = Rbx_AppStorageService & Base<Rbx_AppStorageService> & Indexable<Rbx_AppStorageService>;
 interface Rbx_Instance {
 	IsA(className: "AppStorageService"): this is AppStorageService;
 	FindFirstAncestorOfClass(className: "AppStorageService"): AppStorageService | undefined;
@@ -3867,7 +3867,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // UserStorageService
 interface Rbx_UserStorageService extends Rbx_LocalStorageService {
 }
-type UserStorageService = Rbx_UserStorageService & Indexable<Rbx_UserStorageService>;
+type UserStorageService = Rbx_UserStorageService & Base<Rbx_UserStorageService> & Indexable<Rbx_UserStorageService>;
 interface Rbx_Instance {
 	IsA(className: "UserStorageService"): this is UserStorageService;
 	FindFirstAncestorOfClass(className: "UserStorageService"): UserStorageService | undefined;
@@ -3887,7 +3887,7 @@ interface Rbx_LocalizationService extends Rbx_Instance {
 	GetTranslatorForLocaleAsync(locale: string): Instance | undefined;
 	GetTranslatorForPlayerAsync(player: Instance): Instance | undefined;
 }
-type LocalizationService = Rbx_LocalizationService & Indexable<Rbx_LocalizationService>;
+type LocalizationService = Rbx_LocalizationService & Base<Rbx_LocalizationService> & Indexable<Rbx_LocalizationService>;
 interface Rbx_Instance {
 	IsA(className: "LocalizationService"): this is LocalizationService;
 	FindFirstAncestorOfClass(className: "LocalizationService"): LocalizationService | undefined;
@@ -3912,7 +3912,7 @@ interface Rbx_LocalizationTable extends Rbx_Instance {
 	SetEntrySource(key: string, source: string, context: string, newSource: string): void;
 	SetEntryValue(key: string, source: string, context: string, localeId: string, text: string): void;
 }
-type LocalizationTable = Rbx_LocalizationTable & Indexable<Rbx_LocalizationTable>;
+type LocalizationTable = Rbx_LocalizationTable & Base<Rbx_LocalizationTable> & Indexable<Rbx_LocalizationTable>;
 interface Rbx_Instance {
 	IsA(className: "LocalizationTable"): this is LocalizationTable;
 	FindFirstAncestorOfClass(className: "LocalizationTable"): LocalizationTable | undefined;
@@ -3925,7 +3925,7 @@ interface Rbx_Instance {
 interface Rbx_LogService extends Rbx_Instance {
 	MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
 }
-type LogService = Rbx_LogService & Indexable<Rbx_LogService>;
+type LogService = Rbx_LogService & Base<Rbx_LogService> & Indexable<Rbx_LogService>;
 interface Rbx_Instance {
 	IsA(className: "LogService"): this is LogService;
 	FindFirstAncestorOfClass(className: "LogService"): LogService | undefined;
@@ -3940,7 +3940,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // LoginService
 interface Rbx_LoginService extends Rbx_Instance {
 }
-type LoginService = Rbx_LoginService & Indexable<Rbx_LoginService>;
+type LoginService = Rbx_LoginService & Base<Rbx_LoginService> & Indexable<Rbx_LoginService>;
 interface Rbx_Instance {
 	IsA(className: "LoginService"): this is LoginService;
 	FindFirstAncestorOfClass(className: "LoginService"): LoginService | undefined;
@@ -3962,7 +3962,7 @@ interface Rbx_LuaSettings extends Rbx_Instance {
 	GcStepMul: number;
 	WaitingThreadsBudget: number;
 }
-type LuaSettings = Rbx_LuaSettings & Indexable<Rbx_LuaSettings>;
+type LuaSettings = Rbx_LuaSettings & Base<Rbx_LuaSettings> & Indexable<Rbx_LuaSettings>;
 interface Rbx_Instance {
 	IsA(className: "LuaSettings"): this is LuaSettings;
 	FindFirstAncestorOfClass(className: "LuaSettings"): LuaSettings | undefined;
@@ -3974,7 +3974,7 @@ interface Rbx_Instance {
 // LuaSourceContainer
 interface Rbx_LuaSourceContainer extends Rbx_Instance {
 }
-type LuaSourceContainer = Rbx_LuaSourceContainer & Indexable<Rbx_LuaSourceContainer>;
+type LuaSourceContainer = Rbx_LuaSourceContainer & Base<Rbx_LuaSourceContainer> & Indexable<Rbx_LuaSourceContainer>;
 interface Rbx_Instance {
 	IsA(className: "LuaSourceContainer"): this is LuaSourceContainer;
 	FindFirstAncestorOfClass(className: "LuaSourceContainer"): LuaSourceContainer | undefined;
@@ -3988,7 +3988,7 @@ interface Rbx_BaseScript extends Rbx_LuaSourceContainer {
 	Disabled: boolean;
 	LinkedSource: string;
 }
-type BaseScript = Rbx_BaseScript & Indexable<Rbx_BaseScript>;
+type BaseScript = Rbx_BaseScript & Base<Rbx_BaseScript> & Indexable<Rbx_BaseScript>;
 interface Rbx_Instance {
 	IsA(className: "BaseScript"): this is BaseScript;
 	FindFirstAncestorOfClass(className: "BaseScript"): BaseScript | undefined;
@@ -4000,7 +4000,7 @@ interface Rbx_Instance {
 // CoreScript
 interface Rbx_CoreScript extends Rbx_BaseScript {
 }
-type CoreScript = Rbx_CoreScript & Indexable<Rbx_CoreScript>;
+type CoreScript = Rbx_CoreScript & Base<Rbx_CoreScript> & Indexable<Rbx_CoreScript>;
 interface Rbx_Instance {
 	IsA(className: "CoreScript"): this is CoreScript;
 	FindFirstAncestorOfClass(className: "CoreScript"): CoreScript | undefined;
@@ -4012,7 +4012,7 @@ interface Rbx_Instance {
 // Script
 interface Rbx_Script extends Rbx_BaseScript {
 }
-type Script = Rbx_Script & Indexable<Rbx_Script>;
+type Script = Rbx_Script & Base<Rbx_Script> & Indexable<Rbx_Script>;
 interface Rbx_Instance {
 	IsA(className: "Script"): this is Script;
 	FindFirstAncestorOfClass(className: "Script"): Script | undefined;
@@ -4024,7 +4024,7 @@ interface Rbx_Instance {
 // LocalScript
 interface Rbx_LocalScript extends Rbx_Script {
 }
-type LocalScript = Rbx_LocalScript & Indexable<Rbx_LocalScript>;
+type LocalScript = Rbx_LocalScript & Base<Rbx_LocalScript> & Indexable<Rbx_LocalScript>;
 interface Rbx_Instance {
 	IsA(className: "LocalScript"): this is LocalScript;
 	FindFirstAncestorOfClass(className: "LocalScript"): LocalScript | undefined;
@@ -4037,7 +4037,7 @@ interface Rbx_Instance {
 interface Rbx_ModuleScript extends Rbx_LuaSourceContainer {
 	LinkedSource: string;
 }
-type ModuleScript = Rbx_ModuleScript & Indexable<Rbx_ModuleScript>;
+type ModuleScript = Rbx_ModuleScript & Base<Rbx_ModuleScript> & Indexable<Rbx_ModuleScript>;
 interface Rbx_Instance {
 	IsA(className: "ModuleScript"): this is ModuleScript;
 	FindFirstAncestorOfClass(className: "ModuleScript"): ModuleScript | undefined;
@@ -4049,7 +4049,7 @@ interface Rbx_Instance {
 // LuaWebService
 interface Rbx_LuaWebService extends Rbx_Instance {
 }
-type LuaWebService = Rbx_LuaWebService & Indexable<Rbx_LuaWebService>;
+type LuaWebService = Rbx_LuaWebService & Base<Rbx_LuaWebService> & Indexable<Rbx_LuaWebService>;
 interface Rbx_Instance {
 	IsA(className: "LuaWebService"): this is LuaWebService;
 	FindFirstAncestorOfClass(className: "LuaWebService"): LuaWebService | undefined;
@@ -4066,7 +4066,7 @@ interface Rbx_MarketplaceService extends Rbx_Instance {
 	GetDeveloperProductsAsync(): Instance | undefined;
 	UserOwnsGamePassAsync(userId: number, gamePassId: number): boolean;
 }
-type MarketplaceService = Rbx_MarketplaceService & Indexable<Rbx_MarketplaceService>;
+type MarketplaceService = Rbx_MarketplaceService & Base<Rbx_MarketplaceService> & Indexable<Rbx_MarketplaceService>;
 interface Rbx_Instance {
 	IsA(className: "MarketplaceService"): this is MarketplaceService;
 	FindFirstAncestorOfClass(className: "MarketplaceService"): MarketplaceService | undefined;
@@ -4082,7 +4082,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Message extends Rbx_Instance {
 	Text: string;
 }
-type Message = Rbx_Message & Indexable<Rbx_Message>;
+type Message = Rbx_Message & Base<Rbx_Message> & Indexable<Rbx_Message>;
 interface Rbx_Instance {
 	IsA(className: "Message"): this is Message;
 	FindFirstAncestorOfClass(className: "Message"): Message | undefined;
@@ -4094,7 +4094,7 @@ interface Rbx_Instance {
 // Hint
 interface Rbx_Hint extends Rbx_Message {
 }
-type Hint = Rbx_Hint & Indexable<Rbx_Hint>;
+type Hint = Rbx_Hint & Base<Rbx_Hint> & Indexable<Rbx_Hint>;
 interface Rbx_Instance {
 	IsA(className: "Hint"): this is Hint;
 	FindFirstAncestorOfClass(className: "Hint"): Hint | undefined;
@@ -4108,7 +4108,7 @@ interface Rbx_MessagingService extends Rbx_Instance {
 	PublishAsync(topic: string, message?: any): void;
 	SubscribeAsync(topic: string, callback: Function): RBXScriptConnection;
 }
-type MessagingService = Rbx_MessagingService & Indexable<Rbx_MessagingService>;
+type MessagingService = Rbx_MessagingService & Base<Rbx_MessagingService> & Indexable<Rbx_MessagingService>;
 interface Rbx_Instance {
 	IsA(className: "MessagingService"): this is MessagingService;
 	FindFirstAncestorOfClass(className: "MessagingService"): MessagingService | undefined;
@@ -4161,7 +4161,7 @@ interface Rbx_Mouse extends Rbx_Instance {
 	/** This event is currently non-operational. */
 	WheelForward: RBXScriptSignal<() => void>;
 }
-type Mouse = Rbx_Mouse & Indexable<Rbx_Mouse>;
+type Mouse = Rbx_Mouse & Base<Rbx_Mouse> & Indexable<Rbx_Mouse>;
 interface Rbx_Instance {
 	IsA(className: "Mouse"): this is Mouse;
 	FindFirstAncestorOfClass(className: "Mouse"): Mouse | undefined;
@@ -4173,7 +4173,7 @@ interface Rbx_Instance {
 // PlayerMouse
 interface Rbx_PlayerMouse extends Rbx_Mouse {
 }
-type PlayerMouse = Rbx_PlayerMouse & Indexable<Rbx_PlayerMouse>;
+type PlayerMouse = Rbx_PlayerMouse & Base<Rbx_PlayerMouse> & Indexable<Rbx_PlayerMouse>;
 interface Rbx_Instance {
 	IsA(className: "PlayerMouse"): this is PlayerMouse;
 	FindFirstAncestorOfClass(className: "PlayerMouse"): PlayerMouse | undefined;
@@ -4185,7 +4185,7 @@ interface Rbx_Instance {
 // PluginMouse
 interface Rbx_PluginMouse extends Rbx_Mouse {
 }
-type PluginMouse = Rbx_PluginMouse & Indexable<Rbx_PluginMouse>;
+type PluginMouse = Rbx_PluginMouse & Base<Rbx_PluginMouse> & Indexable<Rbx_PluginMouse>;
 interface Rbx_Instance {
 	IsA(className: "PluginMouse"): this is PluginMouse;
 	FindFirstAncestorOfClass(className: "PluginMouse"): PluginMouse | undefined;
@@ -4197,7 +4197,7 @@ interface Rbx_Instance {
 // MouseService
 interface Rbx_MouseService extends Rbx_Instance {
 }
-type MouseService = Rbx_MouseService & Indexable<Rbx_MouseService>;
+type MouseService = Rbx_MouseService & Base<Rbx_MouseService> & Indexable<Rbx_MouseService>;
 interface Rbx_Instance {
 	IsA(className: "MouseService"): this is MouseService;
 	FindFirstAncestorOfClass(className: "MouseService"): MouseService | undefined;
@@ -4213,7 +4213,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_NetworkMarker extends Rbx_Instance {
 	Received: RBXScriptSignal<() => void>;
 }
-type NetworkMarker = Rbx_NetworkMarker & Indexable<Rbx_NetworkMarker>;
+type NetworkMarker = Rbx_NetworkMarker & Base<Rbx_NetworkMarker> & Indexable<Rbx_NetworkMarker>;
 interface Rbx_Instance {
 	IsA(className: "NetworkMarker"): this is NetworkMarker;
 	FindFirstAncestorOfClass(className: "NetworkMarker"): NetworkMarker | undefined;
@@ -4225,7 +4225,7 @@ interface Rbx_Instance {
 // NetworkPeer
 interface Rbx_NetworkPeer extends Rbx_Instance {
 }
-type NetworkPeer = Rbx_NetworkPeer & Indexable<Rbx_NetworkPeer>;
+type NetworkPeer = Rbx_NetworkPeer & Base<Rbx_NetworkPeer> & Indexable<Rbx_NetworkPeer>;
 interface Rbx_Instance {
 	IsA(className: "NetworkPeer"): this is NetworkPeer;
 	FindFirstAncestorOfClass(className: "NetworkPeer"): NetworkPeer | undefined;
@@ -4241,7 +4241,7 @@ interface Rbx_NetworkClient extends Rbx_NetworkPeer {
 	ConnectionFailed: RBXScriptSignal<(peer: string, code: number, reason: string) => void>;
 	ConnectionRejected: RBXScriptSignal<(peer: string) => void>;
 }
-type NetworkClient = Rbx_NetworkClient & Indexable<Rbx_NetworkClient>;
+type NetworkClient = Rbx_NetworkClient & Base<Rbx_NetworkClient> & Indexable<Rbx_NetworkClient>;
 interface Rbx_Instance {
 	IsA(className: "NetworkClient"): this is NetworkClient;
 	FindFirstAncestorOfClass(className: "NetworkClient"): NetworkClient | undefined;
@@ -4257,7 +4257,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_NetworkServer extends Rbx_NetworkPeer {
 	readonly Port: number;
 }
-type NetworkServer = Rbx_NetworkServer & Indexable<Rbx_NetworkServer>;
+type NetworkServer = Rbx_NetworkServer & Base<Rbx_NetworkServer> & Indexable<Rbx_NetworkServer>;
 interface Rbx_Instance {
 	IsA(className: "NetworkServer"): this is NetworkServer;
 	FindFirstAncestorOfClass(className: "NetworkServer"): NetworkServer | undefined;
@@ -4273,7 +4273,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_NetworkReplicator extends Rbx_Instance {
 	GetPlayer(): Instance | undefined;
 }
-type NetworkReplicator = Rbx_NetworkReplicator & Indexable<Rbx_NetworkReplicator>;
+type NetworkReplicator = Rbx_NetworkReplicator & Base<Rbx_NetworkReplicator> & Indexable<Rbx_NetworkReplicator>;
 interface Rbx_Instance {
 	IsA(className: "NetworkReplicator"): this is NetworkReplicator;
 	FindFirstAncestorOfClass(className: "NetworkReplicator"): NetworkReplicator | undefined;
@@ -4285,7 +4285,7 @@ interface Rbx_Instance {
 // ClientReplicator
 interface Rbx_ClientReplicator extends Rbx_NetworkReplicator {
 }
-type ClientReplicator = Rbx_ClientReplicator & Indexable<Rbx_ClientReplicator>;
+type ClientReplicator = Rbx_ClientReplicator & Base<Rbx_ClientReplicator> & Indexable<Rbx_ClientReplicator>;
 interface Rbx_Instance {
 	IsA(className: "ClientReplicator"): this is ClientReplicator;
 	FindFirstAncestorOfClass(className: "ClientReplicator"): ClientReplicator | undefined;
@@ -4297,7 +4297,7 @@ interface Rbx_Instance {
 // ServerReplicator
 interface Rbx_ServerReplicator extends Rbx_NetworkReplicator {
 }
-type ServerReplicator = Rbx_ServerReplicator & Indexable<Rbx_ServerReplicator>;
+type ServerReplicator = Rbx_ServerReplicator & Base<Rbx_ServerReplicator> & Indexable<Rbx_ServerReplicator>;
 interface Rbx_Instance {
 	IsA(className: "ServerReplicator"): this is ServerReplicator;
 	FindFirstAncestorOfClass(className: "ServerReplicator"): ServerReplicator | undefined;
@@ -4340,7 +4340,7 @@ interface Rbx_NetworkSettings extends Rbx_Instance {
 	TrackPhysicsDetails: boolean;
 	UsePhysicsPacketCache: boolean;
 }
-type NetworkSettings = Rbx_NetworkSettings & Indexable<Rbx_NetworkSettings>;
+type NetworkSettings = Rbx_NetworkSettings & Base<Rbx_NetworkSettings> & Indexable<Rbx_NetworkSettings>;
 interface Rbx_Instance {
 	IsA(className: "NetworkSettings"): this is NetworkSettings;
 	FindFirstAncestorOfClass(className: "NetworkSettings"): NetworkSettings | undefined;
@@ -4355,7 +4355,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // NotificationService
 interface Rbx_NotificationService extends Rbx_Instance {
 }
-type NotificationService = Rbx_NotificationService & Indexable<Rbx_NotificationService>;
+type NotificationService = Rbx_NotificationService & Base<Rbx_NotificationService> & Indexable<Rbx_NotificationService>;
 interface Rbx_Instance {
 	IsA(className: "NotificationService"): this is NotificationService;
 	FindFirstAncestorOfClass(className: "NotificationService"): NotificationService | undefined;
@@ -4370,7 +4370,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // PVInstance
 interface Rbx_PVInstance extends Rbx_Instance {
 }
-type PVInstance = Rbx_PVInstance & Indexable<Rbx_PVInstance>;
+type PVInstance = Rbx_PVInstance & Base<Rbx_PVInstance> & Indexable<Rbx_PVInstance>;
 interface Rbx_Instance {
 	IsA(className: "PVInstance"): this is PVInstance;
 	FindFirstAncestorOfClass(className: "PVInstance"): PVInstance | undefined;
@@ -4455,7 +4455,7 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	Resize(normalId: Enum.NormalId, deltaAmount: number): boolean;
 	SetNetworkOwnershipAuto(): void;
 }
-type BasePart = Rbx_BasePart & Indexable<Rbx_BasePart>;
+type BasePart = Rbx_BasePart & Base<Rbx_BasePart> & Indexable<Rbx_BasePart>;
 interface Rbx_Instance {
 	IsA(className: "BasePart"): this is BasePart;
 	FindFirstAncestorOfClass(className: "BasePart"): BasePart | undefined;
@@ -4467,7 +4467,7 @@ interface Rbx_Instance {
 // CornerWedgePart
 interface Rbx_CornerWedgePart extends Rbx_BasePart {
 }
-type CornerWedgePart = Rbx_CornerWedgePart & Indexable<Rbx_CornerWedgePart>;
+type CornerWedgePart = Rbx_CornerWedgePart & Base<Rbx_CornerWedgePart> & Indexable<Rbx_CornerWedgePart>;
 interface Rbx_Instance {
 	IsA(className: "CornerWedgePart"): this is CornerWedgePart;
 	FindFirstAncestorOfClass(className: "CornerWedgePart"): CornerWedgePart | undefined;
@@ -4479,7 +4479,7 @@ interface Rbx_Instance {
 // FormFactorPart
 interface Rbx_FormFactorPart extends Rbx_BasePart {
 }
-type FormFactorPart = Rbx_FormFactorPart & Indexable<Rbx_FormFactorPart>;
+type FormFactorPart = Rbx_FormFactorPart & Base<Rbx_FormFactorPart> & Indexable<Rbx_FormFactorPart>;
 interface Rbx_Instance {
 	IsA(className: "FormFactorPart"): this is FormFactorPart;
 	FindFirstAncestorOfClass(className: "FormFactorPart"): FormFactorPart | undefined;
@@ -4492,7 +4492,7 @@ interface Rbx_Instance {
 interface Rbx_Part extends Rbx_FormFactorPart {
 	Shape: Enum.PartType;
 }
-type Part = Rbx_Part & Indexable<Rbx_Part>;
+type Part = Rbx_Part & Base<Rbx_Part> & Indexable<Rbx_Part>;
 interface Rbx_Instance {
 	IsA(className: "Part"): this is Part;
 	FindFirstAncestorOfClass(className: "Part"): Part | undefined;
@@ -4505,7 +4505,7 @@ interface Rbx_Instance {
 interface Rbx_FlagStand extends Rbx_Part {
 	TeamColor: BrickColor;
 }
-type FlagStand = Rbx_FlagStand & Indexable<Rbx_FlagStand>;
+type FlagStand = Rbx_FlagStand & Base<Rbx_FlagStand> & Indexable<Rbx_FlagStand>;
 interface Rbx_Instance {
 	IsA(className: "FlagStand"): this is FlagStand;
 	FindFirstAncestorOfClass(className: "FlagStand"): FlagStand | undefined;
@@ -4517,7 +4517,7 @@ interface Rbx_Instance {
 // Platform
 interface Rbx_Platform extends Rbx_Part {
 }
-type Platform = Rbx_Platform & Indexable<Rbx_Platform>;
+type Platform = Rbx_Platform & Base<Rbx_Platform> & Indexable<Rbx_Platform>;
 interface Rbx_Instance {
 	IsA(className: "Platform"): this is Platform;
 	FindFirstAncestorOfClass(className: "Platform"): Platform | undefined;
@@ -4532,7 +4532,7 @@ interface Rbx_Seat extends Rbx_Part {
 	readonly Occupant: Humanoid;
 	Sit(humanoid: Instance): void;
 }
-type Seat = Rbx_Seat & Indexable<Rbx_Seat>;
+type Seat = Rbx_Seat & Base<Rbx_Seat> & Indexable<Rbx_Seat>;
 interface Rbx_Instance {
 	IsA(className: "Seat"): this is Seat;
 	FindFirstAncestorOfClass(className: "Seat"): Seat | undefined;
@@ -4553,7 +4553,7 @@ interface Rbx_SkateboardPlatform extends Rbx_Part {
 	MoveStateChanged: RBXScriptSignal<(newState: Enum.MoveState, oldState: Enum.MoveState) => void>;
 	Unequipped: RBXScriptSignal<(humanoid: Instance) => void>;
 }
-type SkateboardPlatform = Rbx_SkateboardPlatform & Indexable<Rbx_SkateboardPlatform>;
+type SkateboardPlatform = Rbx_SkateboardPlatform & Base<Rbx_SkateboardPlatform> & Indexable<Rbx_SkateboardPlatform>;
 interface Rbx_Instance {
 	IsA(className: "SkateboardPlatform"): this is SkateboardPlatform;
 	FindFirstAncestorOfClass(className: "SkateboardPlatform"): SkateboardPlatform | undefined;
@@ -4570,7 +4570,7 @@ interface Rbx_SpawnLocation extends Rbx_Part {
 	Neutral: boolean;
 	TeamColor: BrickColor;
 }
-type SpawnLocation = Rbx_SpawnLocation & Indexable<Rbx_SpawnLocation>;
+type SpawnLocation = Rbx_SpawnLocation & Base<Rbx_SpawnLocation> & Indexable<Rbx_SpawnLocation>;
 interface Rbx_Instance {
 	IsA(className: "SpawnLocation"): this is SpawnLocation;
 	FindFirstAncestorOfClass(className: "SpawnLocation"): SpawnLocation | undefined;
@@ -4582,7 +4582,7 @@ interface Rbx_Instance {
 // WedgePart
 interface Rbx_WedgePart extends Rbx_FormFactorPart {
 }
-type WedgePart = Rbx_WedgePart & Indexable<Rbx_WedgePart>;
+type WedgePart = Rbx_WedgePart & Base<Rbx_WedgePart> & Indexable<Rbx_WedgePart>;
 interface Rbx_Instance {
 	IsA(className: "WedgePart"): this is WedgePart;
 	FindFirstAncestorOfClass(className: "WedgePart"): WedgePart | undefined;
@@ -4596,7 +4596,7 @@ interface Rbx_MeshPart extends Rbx_BasePart {
 	readonly MeshId: string;
 	TextureID: string;
 }
-type MeshPart = Rbx_MeshPart & Indexable<Rbx_MeshPart>;
+type MeshPart = Rbx_MeshPart & Base<Rbx_MeshPart> & Indexable<Rbx_MeshPart>;
 interface Rbx_Instance {
 	IsA(className: "MeshPart"): this is MeshPart;
 	FindFirstAncestorOfClass(className: "MeshPart"): MeshPart | undefined;
@@ -4611,7 +4611,7 @@ interface Rbx_PartOperation extends Rbx_BasePart {
 	readonly TriangleCount: number;
 	UsePartColor: boolean;
 }
-type PartOperation = Rbx_PartOperation & Indexable<Rbx_PartOperation>;
+type PartOperation = Rbx_PartOperation & Base<Rbx_PartOperation> & Indexable<Rbx_PartOperation>;
 interface Rbx_Instance {
 	IsA(className: "PartOperation"): this is PartOperation;
 	FindFirstAncestorOfClass(className: "PartOperation"): PartOperation | undefined;
@@ -4623,7 +4623,7 @@ interface Rbx_Instance {
 // NegateOperation
 interface Rbx_NegateOperation extends Rbx_PartOperation {
 }
-type NegateOperation = Rbx_NegateOperation & Indexable<Rbx_NegateOperation>;
+type NegateOperation = Rbx_NegateOperation & Base<Rbx_NegateOperation> & Indexable<Rbx_NegateOperation>;
 interface Rbx_Instance {
 	IsA(className: "NegateOperation"): this is NegateOperation;
 	FindFirstAncestorOfClass(className: "NegateOperation"): NegateOperation | undefined;
@@ -4635,7 +4635,7 @@ interface Rbx_Instance {
 // UnionOperation
 interface Rbx_UnionOperation extends Rbx_PartOperation {
 }
-type UnionOperation = Rbx_UnionOperation & Indexable<Rbx_UnionOperation>;
+type UnionOperation = Rbx_UnionOperation & Base<Rbx_UnionOperation> & Indexable<Rbx_UnionOperation>;
 interface Rbx_Instance {
 	IsA(className: "UnionOperation"): this is UnionOperation;
 	FindFirstAncestorOfClass(className: "UnionOperation"): UnionOperation | undefined;
@@ -4665,7 +4665,7 @@ interface Rbx_Terrain extends Rbx_BasePart {
 	WorldToCellPreferEmpty(position: Vector3): Vector3;
 	WorldToCellPreferSolid(position: Vector3): Vector3;
 }
-type Terrain = Rbx_Terrain & Indexable<Rbx_Terrain>;
+type Terrain = Rbx_Terrain & Base<Rbx_Terrain> & Indexable<Rbx_Terrain>;
 interface Rbx_Instance {
 	IsA(className: "Terrain"): this is Terrain;
 	FindFirstAncestorOfClass(className: "Terrain"): Terrain | undefined;
@@ -4678,7 +4678,7 @@ interface Rbx_Instance {
 interface Rbx_TrussPart extends Rbx_BasePart {
 	Style: Enum.Style;
 }
-type TrussPart = Rbx_TrussPart & Indexable<Rbx_TrussPart>;
+type TrussPart = Rbx_TrussPart & Base<Rbx_TrussPart> & Indexable<Rbx_TrussPart>;
 interface Rbx_Instance {
 	IsA(className: "TrussPart"): this is TrussPart;
 	FindFirstAncestorOfClass(className: "TrussPart"): TrussPart | undefined;
@@ -4702,7 +4702,7 @@ interface Rbx_VehicleSeat extends Rbx_BasePart {
 	TurnSpeed: number;
 	Sit(humanoid: Instance): void;
 }
-type VehicleSeat = Rbx_VehicleSeat & Indexable<Rbx_VehicleSeat>;
+type VehicleSeat = Rbx_VehicleSeat & Base<Rbx_VehicleSeat> & Indexable<Rbx_VehicleSeat>;
 interface Rbx_Instance {
 	IsA(className: "VehicleSeat"): this is VehicleSeat;
 	FindFirstAncestorOfClass(className: "VehicleSeat"): VehicleSeat | undefined;
@@ -4729,7 +4729,7 @@ interface Rbx_Model extends Rbx_PVInstance {
 	/** Similar to MoveTo(), except instead of moving to an explicit location, we use the model's current CFrame location and offset it. */
 	TranslateBy(delta: Vector3): void;
 }
-type Model = Rbx_Model & Indexable<Rbx_Model>;
+type Model = Rbx_Model & Base<Rbx_Model> & Indexable<Rbx_Model>;
 interface Rbx_Instance {
 	IsA(className: "Model"): this is Model;
 	FindFirstAncestorOfClass(className: "Model"): Model | undefined;
@@ -4741,7 +4741,7 @@ interface Rbx_Instance {
 // Status
 interface Rbx_Status extends Rbx_Model {
 }
-type Status = Rbx_Status & Indexable<Rbx_Status>;
+type Status = Rbx_Status & Base<Rbx_Status> & Indexable<Rbx_Status>;
 interface Rbx_Instance {
 	IsA(className: "Status"): this is Status;
 	FindFirstAncestorOfClass(className: "Status"): Status | undefined;
@@ -4774,7 +4774,7 @@ interface Rbx_Workspace extends Rbx_Model {
 	PGSIsEnabled(): boolean;
 	UnjoinFromOutsiders(objects: Array<Instance>): void;
 }
-type Workspace = Rbx_Workspace & Indexable<Rbx_Workspace>;
+type Workspace = Rbx_Workspace & Base<Rbx_Workspace> & Indexable<Rbx_Workspace>;
 interface Rbx_Instance {
 	IsA(className: "Workspace"): this is Workspace;
 	FindFirstAncestorOfClass(className: "Workspace"): Workspace | undefined;
@@ -4791,7 +4791,7 @@ interface Rbx_PackageLink extends Rbx_Instance {
 	readonly PackageId: string;
 	readonly VersionNumber: number;
 }
-type PackageLink = Rbx_PackageLink & Indexable<Rbx_PackageLink>;
+type PackageLink = Rbx_PackageLink & Base<Rbx_PackageLink> & Indexable<Rbx_PackageLink>;
 interface Rbx_Instance {
 	IsA(className: "PackageLink"): this is PackageLink;
 	FindFirstAncestorOfClass(className: "PackageLink"): PackageLink | undefined;
@@ -4806,7 +4806,7 @@ interface Rbx_Pages extends Rbx_Instance {
 	GetCurrentPage(): unknown;
 	AdvanceToNextPageAsync(): void;
 }
-type Pages = Rbx_Pages & Indexable<Rbx_Pages>;
+type Pages = Rbx_Pages & Base<Rbx_Pages> & Indexable<Rbx_Pages>;
 interface Rbx_Instance {
 	IsA(className: "Pages"): this is Pages;
 	FindFirstAncestorOfClass(className: "Pages"): Pages | undefined;
@@ -4818,7 +4818,7 @@ interface Rbx_Instance {
 // DataStorePages
 interface Rbx_DataStorePages extends Rbx_Pages {
 }
-type DataStorePages = Rbx_DataStorePages & Indexable<Rbx_DataStorePages>;
+type DataStorePages = Rbx_DataStorePages & Base<Rbx_DataStorePages> & Indexable<Rbx_DataStorePages>;
 interface Rbx_Instance {
 	IsA(className: "DataStorePages"): this is DataStorePages;
 	FindFirstAncestorOfClass(className: "DataStorePages"): DataStorePages | undefined;
@@ -4830,7 +4830,7 @@ interface Rbx_Instance {
 // FriendPages
 interface Rbx_FriendPages extends Rbx_Pages {
 }
-type FriendPages = Rbx_FriendPages & Indexable<Rbx_FriendPages>;
+type FriendPages = Rbx_FriendPages & Base<Rbx_FriendPages> & Indexable<Rbx_FriendPages>;
 interface Rbx_Instance {
 	IsA(className: "FriendPages"): this is FriendPages;
 	FindFirstAncestorOfClass(className: "FriendPages"): FriendPages | undefined;
@@ -4842,7 +4842,7 @@ interface Rbx_Instance {
 // InventoryPages
 interface Rbx_InventoryPages extends Rbx_Pages {
 }
-type InventoryPages = Rbx_InventoryPages & Indexable<Rbx_InventoryPages>;
+type InventoryPages = Rbx_InventoryPages & Base<Rbx_InventoryPages> & Indexable<Rbx_InventoryPages>;
 interface Rbx_Instance {
 	IsA(className: "InventoryPages"): this is InventoryPages;
 	FindFirstAncestorOfClass(className: "InventoryPages"): InventoryPages | undefined;
@@ -4854,7 +4854,7 @@ interface Rbx_Instance {
 // StandardPages
 interface Rbx_StandardPages extends Rbx_Pages {
 }
-type StandardPages = Rbx_StandardPages & Indexable<Rbx_StandardPages>;
+type StandardPages = Rbx_StandardPages & Base<Rbx_StandardPages> & Indexable<Rbx_StandardPages>;
 interface Rbx_Instance {
 	IsA(className: "StandardPages"): this is StandardPages;
 	FindFirstAncestorOfClass(className: "StandardPages"): StandardPages | undefined;
@@ -4866,7 +4866,7 @@ interface Rbx_Instance {
 // PartOperationAsset
 interface Rbx_PartOperationAsset extends Rbx_Instance {
 }
-type PartOperationAsset = Rbx_PartOperationAsset & Indexable<Rbx_PartOperationAsset>;
+type PartOperationAsset = Rbx_PartOperationAsset & Base<Rbx_PartOperationAsset> & Indexable<Rbx_PartOperationAsset>;
 interface Rbx_Instance {
 	IsA(className: "PartOperationAsset"): this is PartOperationAsset;
 	FindFirstAncestorOfClass(className: "PartOperationAsset"): PartOperationAsset | undefined;
@@ -4900,7 +4900,7 @@ interface Rbx_ParticleEmitter extends Rbx_Instance {
 	Clear(): void;
 	Emit(particleCount?: number): void;
 }
-type ParticleEmitter = Rbx_ParticleEmitter & Indexable<Rbx_ParticleEmitter>;
+type ParticleEmitter = Rbx_ParticleEmitter & Base<Rbx_ParticleEmitter> & Indexable<Rbx_ParticleEmitter>;
 interface Rbx_Instance {
 	IsA(className: "ParticleEmitter"): this is ParticleEmitter;
 	FindFirstAncestorOfClass(className: "ParticleEmitter"): ParticleEmitter | undefined;
@@ -4916,7 +4916,7 @@ interface Rbx_Path extends Rbx_Instance {
 	ComputeAsync(start: Vector3, finish: Vector3): void;
 	Blocked: RBXScriptSignal<(blockedWaypointIdx: number) => void>;
 }
-type Path = Rbx_Path & Indexable<Rbx_Path>;
+type Path = Rbx_Path & Base<Rbx_Path> & Indexable<Rbx_Path>;
 interface Rbx_Instance {
 	IsA(className: "Path"): this is Path;
 	FindFirstAncestorOfClass(className: "Path"): Path | undefined;
@@ -4928,7 +4928,7 @@ interface Rbx_Instance {
 // PathfindingService
 interface Rbx_PathfindingService extends Rbx_Instance {
 }
-type PathfindingService = Rbx_PathfindingService & Indexable<Rbx_PathfindingService>;
+type PathfindingService = Rbx_PathfindingService & Base<Rbx_PathfindingService> & Indexable<Rbx_PathfindingService>;
 interface Rbx_Instance {
 	IsA(className: "PathfindingService"): this is PathfindingService;
 	FindFirstAncestorOfClass(className: "PathfindingService"): PathfindingService | undefined;
@@ -4943,7 +4943,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // PhysicsPacketCache
 interface Rbx_PhysicsPacketCache extends Rbx_Instance {
 }
-type PhysicsPacketCache = Rbx_PhysicsPacketCache & Indexable<Rbx_PhysicsPacketCache>;
+type PhysicsPacketCache = Rbx_PhysicsPacketCache & Base<Rbx_PhysicsPacketCache> & Indexable<Rbx_PhysicsPacketCache>;
 interface Rbx_Instance {
 	IsA(className: "PhysicsPacketCache"): this is PhysicsPacketCache;
 	FindFirstAncestorOfClass(className: "PhysicsPacketCache"): PhysicsPacketCache | undefined;
@@ -4968,7 +4968,7 @@ interface Rbx_PhysicsService extends Rbx_Instance {
 	RenameCollisionGroup(from: string, to: string): void;
 	SetPartCollisionGroup(part: Instance, name: string): void;
 }
-type PhysicsService = Rbx_PhysicsService & Indexable<Rbx_PhysicsService>;
+type PhysicsService = Rbx_PhysicsService & Base<Rbx_PhysicsService> & Indexable<Rbx_PhysicsService>;
 interface Rbx_Instance {
 	IsA(className: "PhysicsService"): this is PhysicsService;
 	FindFirstAncestorOfClass(className: "PhysicsService"): PhysicsService | undefined;
@@ -5005,7 +5005,7 @@ interface Rbx_PhysicsSettings extends Rbx_Instance {
 	ThrottleAdjustTime: number;
 	UseCSGv2: boolean;
 }
-type PhysicsSettings = Rbx_PhysicsSettings & Indexable<Rbx_PhysicsSettings>;
+type PhysicsSettings = Rbx_PhysicsSettings & Base<Rbx_PhysicsSettings> & Indexable<Rbx_PhysicsSettings>;
 interface Rbx_Instance {
 	IsA(className: "PhysicsSettings"): this is PhysicsSettings;
 	FindFirstAncestorOfClass(className: "PhysicsSettings"): PhysicsSettings | undefined;
@@ -5058,7 +5058,7 @@ interface Rbx_Player extends Rbx_Instance {
 	Idled: RBXScriptSignal<(time: number) => void>;
 	OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
 }
-type Player = Rbx_Player & Indexable<Rbx_Player>;
+type Player = Rbx_Player & Base<Rbx_Player> & Indexable<Rbx_Player>;
 interface Rbx_Instance {
 	IsA(className: "Player"): this is Player;
 	FindFirstAncestorOfClass(className: "Player"): Player | undefined;
@@ -5078,7 +5078,7 @@ interface Rbx_PlayerScripts extends Rbx_Instance {
 	RegisterTouchCameraMovementMode(cameraMovementMode: Enum.TouchCameraMovementMode): void;
 	RegisterTouchMovementMode(movementMode: Enum.TouchMovementMode): void;
 }
-type PlayerScripts = Rbx_PlayerScripts & Indexable<Rbx_PlayerScripts>;
+type PlayerScripts = Rbx_PlayerScripts & Base<Rbx_PlayerScripts> & Indexable<Rbx_PlayerScripts>;
 interface Rbx_Instance {
 	IsA(className: "PlayerScripts"): this is PlayerScripts;
 	FindFirstAncestorOfClass(className: "PlayerScripts"): PlayerScripts | undefined;
@@ -5098,7 +5098,7 @@ interface Rbx_Players extends Rbx_Instance {
 	GetNameFromUserIdAsync(userId: number): string;
 	GetUserIdFromNameAsync(userName: string): number;
 }
-type Players = Rbx_Players & Indexable<Rbx_Players>;
+type Players = Rbx_Players & Base<Rbx_Players> & Indexable<Rbx_Players>;
 interface Rbx_Instance {
 	IsA(className: "Players"): this is Players;
 	FindFirstAncestorOfClass(className: "Players"): Players | undefined;
@@ -5115,7 +5115,7 @@ interface Rbx_Plugin extends Rbx_Instance {
 	readonly CollisionEnabled: boolean;
 	readonly GridSize: number;
 }
-type Plugin = Rbx_Plugin & Indexable<Rbx_Plugin>;
+type Plugin = Rbx_Plugin & Base<Rbx_Plugin> & Indexable<Rbx_Plugin>;
 interface Rbx_Instance {
 	IsA(className: "Plugin"): this is Plugin;
 	FindFirstAncestorOfClass(className: "Plugin"): Plugin | undefined;
@@ -5131,7 +5131,7 @@ interface Rbx_PluginAction extends Rbx_Instance {
 	readonly StatusTip: string;
 	readonly Text: string;
 }
-type PluginAction = Rbx_PluginAction & Indexable<Rbx_PluginAction>;
+type PluginAction = Rbx_PluginAction & Base<Rbx_PluginAction> & Indexable<Rbx_PluginAction>;
 interface Rbx_Instance {
 	IsA(className: "PluginAction"): this is PluginAction;
 	FindFirstAncestorOfClass(className: "PluginAction"): PluginAction | undefined;
@@ -5147,7 +5147,7 @@ interface Rbx_PluginDragEvent extends Rbx_Instance {
 	readonly Position: Vector2;
 	readonly Sender: string;
 }
-type PluginDragEvent = Rbx_PluginDragEvent & Indexable<Rbx_PluginDragEvent>;
+type PluginDragEvent = Rbx_PluginDragEvent & Base<Rbx_PluginDragEvent> & Indexable<Rbx_PluginDragEvent>;
 interface Rbx_Instance {
 	IsA(className: "PluginDragEvent"): this is PluginDragEvent;
 	FindFirstAncestorOfClass(className: "PluginDragEvent"): PluginDragEvent | undefined;
@@ -5159,7 +5159,7 @@ interface Rbx_Instance {
 // PluginGuiService
 interface Rbx_PluginGuiService extends Rbx_Instance {
 }
-type PluginGuiService = Rbx_PluginGuiService & Indexable<Rbx_PluginGuiService>;
+type PluginGuiService = Rbx_PluginGuiService & Base<Rbx_PluginGuiService> & Indexable<Rbx_PluginGuiService>;
 interface Rbx_Instance {
 	IsA(className: "PluginGuiService"): this is PluginGuiService;
 	FindFirstAncestorOfClass(className: "PluginGuiService"): PluginGuiService | undefined;
@@ -5174,7 +5174,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // PluginManager
 interface Rbx_PluginManager extends Rbx_Instance {
 }
-type PluginManager = Rbx_PluginManager & Indexable<Rbx_PluginManager>;
+type PluginManager = Rbx_PluginManager & Base<Rbx_PluginManager> & Indexable<Rbx_PluginManager>;
 interface Rbx_Instance {
 	IsA(className: "PluginManager"): this is PluginManager;
 	FindFirstAncestorOfClass(className: "PluginManager"): PluginManager | undefined;
@@ -5188,7 +5188,7 @@ interface Rbx_PluginMenu extends Rbx_Instance {
 	Icon: string;
 	Title: string;
 }
-type PluginMenu = Rbx_PluginMenu & Indexable<Rbx_PluginMenu>;
+type PluginMenu = Rbx_PluginMenu & Base<Rbx_PluginMenu> & Indexable<Rbx_PluginMenu>;
 interface Rbx_Instance {
 	IsA(className: "PluginMenu"): this is PluginMenu;
 	FindFirstAncestorOfClass(className: "PluginMenu"): PluginMenu | undefined;
@@ -5200,7 +5200,7 @@ interface Rbx_Instance {
 // PluginToolbar
 interface Rbx_PluginToolbar extends Rbx_Instance {
 }
-type PluginToolbar = Rbx_PluginToolbar & Indexable<Rbx_PluginToolbar>;
+type PluginToolbar = Rbx_PluginToolbar & Base<Rbx_PluginToolbar> & Indexable<Rbx_PluginToolbar>;
 interface Rbx_Instance {
 	IsA(className: "PluginToolbar"): this is PluginToolbar;
 	FindFirstAncestorOfClass(className: "PluginToolbar"): PluginToolbar | undefined;
@@ -5215,7 +5215,7 @@ interface Rbx_PluginToolbarButton extends Rbx_Instance {
 	Enabled: boolean;
 	Icon: string;
 }
-type PluginToolbarButton = Rbx_PluginToolbarButton & Indexable<Rbx_PluginToolbarButton>;
+type PluginToolbarButton = Rbx_PluginToolbarButton & Base<Rbx_PluginToolbarButton> & Indexable<Rbx_PluginToolbarButton>;
 interface Rbx_Instance {
 	IsA(className: "PluginToolbarButton"): this is PluginToolbarButton;
 	FindFirstAncestorOfClass(className: "PluginToolbarButton"): PluginToolbarButton | undefined;
@@ -5229,7 +5229,7 @@ interface Rbx_PointsService extends Rbx_Instance {
 	/** Fired when points are successfully awarded 'userId'. Also returns the updated balance of points for usedId in universe via 'userBalanceInUniverse', total points via 'userTotalBalance', and the amount points that were awarded via 'pointsAwarded'. This event fires on the server and also all clients in the game that awarded the points. */
 	PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
 }
-type PointsService = Rbx_PointsService & Indexable<Rbx_PointsService>;
+type PointsService = Rbx_PointsService & Base<Rbx_PointsService> & Indexable<Rbx_PointsService>;
 interface Rbx_Instance {
 	IsA(className: "PointsService"): this is PointsService;
 	FindFirstAncestorOfClass(className: "PointsService"): PointsService | undefined;
@@ -5251,7 +5251,7 @@ interface Rbx_Pose extends Rbx_Instance {
 	GetSubPoses(): Array<Instance>;
 	RemoveSubPose(pose: Instance): void;
 }
-type Pose = Rbx_Pose & Indexable<Rbx_Pose>;
+type Pose = Rbx_Pose & Base<Rbx_Pose> & Indexable<Rbx_Pose>;
 interface Rbx_Instance {
 	IsA(className: "Pose"): this is Pose;
 	FindFirstAncestorOfClass(className: "Pose"): Pose | undefined;
@@ -5264,7 +5264,7 @@ interface Rbx_Instance {
 interface Rbx_PostEffect extends Rbx_Instance {
 	Enabled: boolean;
 }
-type PostEffect = Rbx_PostEffect & Indexable<Rbx_PostEffect>;
+type PostEffect = Rbx_PostEffect & Base<Rbx_PostEffect> & Indexable<Rbx_PostEffect>;
 interface Rbx_Instance {
 	IsA(className: "PostEffect"): this is PostEffect;
 	FindFirstAncestorOfClass(className: "PostEffect"): PostEffect | undefined;
@@ -5279,7 +5279,7 @@ interface Rbx_BloomEffect extends Rbx_PostEffect {
 	Size: number;
 	Threshold: number;
 }
-type BloomEffect = Rbx_BloomEffect & Indexable<Rbx_BloomEffect>;
+type BloomEffect = Rbx_BloomEffect & Base<Rbx_BloomEffect> & Indexable<Rbx_BloomEffect>;
 interface Rbx_Instance {
 	IsA(className: "BloomEffect"): this is BloomEffect;
 	FindFirstAncestorOfClass(className: "BloomEffect"): BloomEffect | undefined;
@@ -5292,7 +5292,7 @@ interface Rbx_Instance {
 interface Rbx_BlurEffect extends Rbx_PostEffect {
 	Size: number;
 }
-type BlurEffect = Rbx_BlurEffect & Indexable<Rbx_BlurEffect>;
+type BlurEffect = Rbx_BlurEffect & Base<Rbx_BlurEffect> & Indexable<Rbx_BlurEffect>;
 interface Rbx_Instance {
 	IsA(className: "BlurEffect"): this is BlurEffect;
 	FindFirstAncestorOfClass(className: "BlurEffect"): BlurEffect | undefined;
@@ -5308,7 +5308,7 @@ interface Rbx_ColorCorrectionEffect extends Rbx_PostEffect {
 	Saturation: number;
 	TintColor: Color3;
 }
-type ColorCorrectionEffect = Rbx_ColorCorrectionEffect & Indexable<Rbx_ColorCorrectionEffect>;
+type ColorCorrectionEffect = Rbx_ColorCorrectionEffect & Base<Rbx_ColorCorrectionEffect> & Indexable<Rbx_ColorCorrectionEffect>;
 interface Rbx_Instance {
 	IsA(className: "ColorCorrectionEffect"): this is ColorCorrectionEffect;
 	FindFirstAncestorOfClass(className: "ColorCorrectionEffect"): ColorCorrectionEffect | undefined;
@@ -5322,7 +5322,7 @@ interface Rbx_SunRaysEffect extends Rbx_PostEffect {
 	Intensity: number;
 	Spread: number;
 }
-type SunRaysEffect = Rbx_SunRaysEffect & Indexable<Rbx_SunRaysEffect>;
+type SunRaysEffect = Rbx_SunRaysEffect & Base<Rbx_SunRaysEffect> & Indexable<Rbx_SunRaysEffect>;
 interface Rbx_Instance {
 	IsA(className: "SunRaysEffect"): this is SunRaysEffect;
 	FindFirstAncestorOfClass(className: "SunRaysEffect"): SunRaysEffect | undefined;
@@ -5334,7 +5334,7 @@ interface Rbx_Instance {
 // ReflectionMetadata
 interface Rbx_ReflectionMetadata extends Rbx_Instance {
 }
-type ReflectionMetadata = Rbx_ReflectionMetadata & Indexable<Rbx_ReflectionMetadata>;
+type ReflectionMetadata = Rbx_ReflectionMetadata & Base<Rbx_ReflectionMetadata> & Indexable<Rbx_ReflectionMetadata>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadata"): this is ReflectionMetadata;
 	FindFirstAncestorOfClass(className: "ReflectionMetadata"): ReflectionMetadata | undefined;
@@ -5346,7 +5346,7 @@ interface Rbx_Instance {
 // ReflectionMetadataCallbacks
 interface Rbx_ReflectionMetadataCallbacks extends Rbx_Instance {
 }
-type ReflectionMetadataCallbacks = Rbx_ReflectionMetadataCallbacks & Indexable<Rbx_ReflectionMetadataCallbacks>;
+type ReflectionMetadataCallbacks = Rbx_ReflectionMetadataCallbacks & Base<Rbx_ReflectionMetadataCallbacks> & Indexable<Rbx_ReflectionMetadataCallbacks>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadataCallbacks"): this is ReflectionMetadataCallbacks;
 	FindFirstAncestorOfClass(className: "ReflectionMetadataCallbacks"): ReflectionMetadataCallbacks | undefined;
@@ -5358,7 +5358,7 @@ interface Rbx_Instance {
 // ReflectionMetadataClasses
 interface Rbx_ReflectionMetadataClasses extends Rbx_Instance {
 }
-type ReflectionMetadataClasses = Rbx_ReflectionMetadataClasses & Indexable<Rbx_ReflectionMetadataClasses>;
+type ReflectionMetadataClasses = Rbx_ReflectionMetadataClasses & Base<Rbx_ReflectionMetadataClasses> & Indexable<Rbx_ReflectionMetadataClasses>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadataClasses"): this is ReflectionMetadataClasses;
 	FindFirstAncestorOfClass(className: "ReflectionMetadataClasses"): ReflectionMetadataClasses | undefined;
@@ -5370,7 +5370,7 @@ interface Rbx_Instance {
 // ReflectionMetadataEnums
 interface Rbx_ReflectionMetadataEnums extends Rbx_Instance {
 }
-type ReflectionMetadataEnums = Rbx_ReflectionMetadataEnums & Indexable<Rbx_ReflectionMetadataEnums>;
+type ReflectionMetadataEnums = Rbx_ReflectionMetadataEnums & Base<Rbx_ReflectionMetadataEnums> & Indexable<Rbx_ReflectionMetadataEnums>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadataEnums"): this is ReflectionMetadataEnums;
 	FindFirstAncestorOfClass(className: "ReflectionMetadataEnums"): ReflectionMetadataEnums | undefined;
@@ -5382,7 +5382,7 @@ interface Rbx_Instance {
 // ReflectionMetadataEvents
 interface Rbx_ReflectionMetadataEvents extends Rbx_Instance {
 }
-type ReflectionMetadataEvents = Rbx_ReflectionMetadataEvents & Indexable<Rbx_ReflectionMetadataEvents>;
+type ReflectionMetadataEvents = Rbx_ReflectionMetadataEvents & Base<Rbx_ReflectionMetadataEvents> & Indexable<Rbx_ReflectionMetadataEvents>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadataEvents"): this is ReflectionMetadataEvents;
 	FindFirstAncestorOfClass(className: "ReflectionMetadataEvents"): ReflectionMetadataEvents | undefined;
@@ -5394,7 +5394,7 @@ interface Rbx_Instance {
 // ReflectionMetadataFunctions
 interface Rbx_ReflectionMetadataFunctions extends Rbx_Instance {
 }
-type ReflectionMetadataFunctions = Rbx_ReflectionMetadataFunctions & Indexable<Rbx_ReflectionMetadataFunctions>;
+type ReflectionMetadataFunctions = Rbx_ReflectionMetadataFunctions & Base<Rbx_ReflectionMetadataFunctions> & Indexable<Rbx_ReflectionMetadataFunctions>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadataFunctions"): this is ReflectionMetadataFunctions;
 	FindFirstAncestorOfClass(className: "ReflectionMetadataFunctions"): ReflectionMetadataFunctions | undefined;
@@ -5419,7 +5419,7 @@ interface Rbx_ReflectionMetadataItem extends Rbx_Instance {
 	UINumTicks: number;
 	summary: string;
 }
-type ReflectionMetadataItem = Rbx_ReflectionMetadataItem & Indexable<Rbx_ReflectionMetadataItem>;
+type ReflectionMetadataItem = Rbx_ReflectionMetadataItem & Base<Rbx_ReflectionMetadataItem> & Indexable<Rbx_ReflectionMetadataItem>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadataItem"): this is ReflectionMetadataItem;
 	FindFirstAncestorOfClass(className: "ReflectionMetadataItem"): ReflectionMetadataItem | undefined;
@@ -5436,7 +5436,7 @@ interface Rbx_ReflectionMetadataClass extends Rbx_ReflectionMetadataItem {
 	PreferredParent: string;
 	PreferredParents: string;
 }
-type ReflectionMetadataClass = Rbx_ReflectionMetadataClass & Indexable<Rbx_ReflectionMetadataClass>;
+type ReflectionMetadataClass = Rbx_ReflectionMetadataClass & Base<Rbx_ReflectionMetadataClass> & Indexable<Rbx_ReflectionMetadataClass>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadataClass"): this is ReflectionMetadataClass;
 	FindFirstAncestorOfClass(className: "ReflectionMetadataClass"): ReflectionMetadataClass | undefined;
@@ -5448,7 +5448,7 @@ interface Rbx_Instance {
 // ReflectionMetadataEnum
 interface Rbx_ReflectionMetadataEnum extends Rbx_ReflectionMetadataItem {
 }
-type ReflectionMetadataEnum = Rbx_ReflectionMetadataEnum & Indexable<Rbx_ReflectionMetadataEnum>;
+type ReflectionMetadataEnum = Rbx_ReflectionMetadataEnum & Base<Rbx_ReflectionMetadataEnum> & Indexable<Rbx_ReflectionMetadataEnum>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadataEnum"): this is ReflectionMetadataEnum;
 	FindFirstAncestorOfClass(className: "ReflectionMetadataEnum"): ReflectionMetadataEnum | undefined;
@@ -5460,7 +5460,7 @@ interface Rbx_Instance {
 // ReflectionMetadataEnumItem
 interface Rbx_ReflectionMetadataEnumItem extends Rbx_ReflectionMetadataItem {
 }
-type ReflectionMetadataEnumItem = Rbx_ReflectionMetadataEnumItem & Indexable<Rbx_ReflectionMetadataEnumItem>;
+type ReflectionMetadataEnumItem = Rbx_ReflectionMetadataEnumItem & Base<Rbx_ReflectionMetadataEnumItem> & Indexable<Rbx_ReflectionMetadataEnumItem>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadataEnumItem"): this is ReflectionMetadataEnumItem;
 	FindFirstAncestorOfClass(className: "ReflectionMetadataEnumItem"): ReflectionMetadataEnumItem | undefined;
@@ -5472,7 +5472,7 @@ interface Rbx_Instance {
 // ReflectionMetadataMember
 interface Rbx_ReflectionMetadataMember extends Rbx_ReflectionMetadataItem {
 }
-type ReflectionMetadataMember = Rbx_ReflectionMetadataMember & Indexable<Rbx_ReflectionMetadataMember>;
+type ReflectionMetadataMember = Rbx_ReflectionMetadataMember & Base<Rbx_ReflectionMetadataMember> & Indexable<Rbx_ReflectionMetadataMember>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadataMember"): this is ReflectionMetadataMember;
 	FindFirstAncestorOfClass(className: "ReflectionMetadataMember"): ReflectionMetadataMember | undefined;
@@ -5484,7 +5484,7 @@ interface Rbx_Instance {
 // ReflectionMetadataProperties
 interface Rbx_ReflectionMetadataProperties extends Rbx_Instance {
 }
-type ReflectionMetadataProperties = Rbx_ReflectionMetadataProperties & Indexable<Rbx_ReflectionMetadataProperties>;
+type ReflectionMetadataProperties = Rbx_ReflectionMetadataProperties & Base<Rbx_ReflectionMetadataProperties> & Indexable<Rbx_ReflectionMetadataProperties>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadataProperties"): this is ReflectionMetadataProperties;
 	FindFirstAncestorOfClass(className: "ReflectionMetadataProperties"): ReflectionMetadataProperties | undefined;
@@ -5496,7 +5496,7 @@ interface Rbx_Instance {
 // ReflectionMetadataYieldFunctions
 interface Rbx_ReflectionMetadataYieldFunctions extends Rbx_Instance {
 }
-type ReflectionMetadataYieldFunctions = Rbx_ReflectionMetadataYieldFunctions & Indexable<Rbx_ReflectionMetadataYieldFunctions>;
+type ReflectionMetadataYieldFunctions = Rbx_ReflectionMetadataYieldFunctions & Base<Rbx_ReflectionMetadataYieldFunctions> & Indexable<Rbx_ReflectionMetadataYieldFunctions>;
 interface Rbx_Instance {
 	IsA(className: "ReflectionMetadataYieldFunctions"): this is ReflectionMetadataYieldFunctions;
 	FindFirstAncestorOfClass(className: "ReflectionMetadataYieldFunctions"): ReflectionMetadataYieldFunctions | undefined;
@@ -5508,7 +5508,7 @@ interface Rbx_Instance {
 // RemoteEvent
 interface Rbx_RemoteEvent extends Rbx_Instance {
 }
-type RemoteEvent = Rbx_RemoteEvent & Indexable<Rbx_RemoteEvent>;
+type RemoteEvent = Rbx_RemoteEvent & Base<Rbx_RemoteEvent> & Indexable<Rbx_RemoteEvent>;
 interface Rbx_Instance {
 	IsA(className: "RemoteEvent"): this is RemoteEvent;
 	FindFirstAncestorOfClass(className: "RemoteEvent"): RemoteEvent | undefined;
@@ -5520,7 +5520,7 @@ interface Rbx_Instance {
 // RemoteFunction
 interface Rbx_RemoteFunction extends Rbx_Instance {
 }
-type RemoteFunction = Rbx_RemoteFunction & Indexable<Rbx_RemoteFunction>;
+type RemoteFunction = Rbx_RemoteFunction & Base<Rbx_RemoteFunction> & Indexable<Rbx_RemoteFunction>;
 interface Rbx_Instance {
 	IsA(className: "RemoteFunction"): this is RemoteFunction;
 	FindFirstAncestorOfClass(className: "RemoteFunction"): RemoteFunction | undefined;
@@ -5545,7 +5545,7 @@ interface Rbx_RenderSettings extends Rbx_Instance {
 	ShowBoundingBoxes: boolean;
 	GetMaxQualityLevel(): number;
 }
-type RenderSettings = Rbx_RenderSettings & Indexable<Rbx_RenderSettings>;
+type RenderSettings = Rbx_RenderSettings & Base<Rbx_RenderSettings> & Indexable<Rbx_RenderSettings>;
 interface Rbx_Instance {
 	IsA(className: "RenderSettings"): this is RenderSettings;
 	FindFirstAncestorOfClass(className: "RenderSettings"): RenderSettings | undefined;
@@ -5571,7 +5571,7 @@ interface Rbx_RenderingTest extends Rbx_Instance {
 	ShouldSkip: boolean;
 	Ticket: string;
 }
-type RenderingTest = Rbx_RenderingTest & Indexable<Rbx_RenderingTest>;
+type RenderingTest = Rbx_RenderingTest & Base<Rbx_RenderingTest> & Indexable<Rbx_RenderingTest>;
 interface Rbx_Instance {
 	IsA(className: "RenderingTest"): this is RenderingTest;
 	FindFirstAncestorOfClass(className: "RenderingTest"): RenderingTest | undefined;
@@ -5584,7 +5584,7 @@ interface Rbx_Instance {
 interface Rbx_ReplicatedFirst extends Rbx_Instance {
 	RemoveDefaultLoadingScreen(): void;
 }
-type ReplicatedFirst = Rbx_ReplicatedFirst & Indexable<Rbx_ReplicatedFirst>;
+type ReplicatedFirst = Rbx_ReplicatedFirst & Base<Rbx_ReplicatedFirst> & Indexable<Rbx_ReplicatedFirst>;
 interface Rbx_Instance {
 	IsA(className: "ReplicatedFirst"): this is ReplicatedFirst;
 	FindFirstAncestorOfClass(className: "ReplicatedFirst"): ReplicatedFirst | undefined;
@@ -5599,7 +5599,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // ReplicatedStorage
 interface Rbx_ReplicatedStorage extends Rbx_Instance {
 }
-type ReplicatedStorage = Rbx_ReplicatedStorage & Indexable<Rbx_ReplicatedStorage>;
+type ReplicatedStorage = Rbx_ReplicatedStorage & Base<Rbx_ReplicatedStorage> & Indexable<Rbx_ReplicatedStorage>;
 interface Rbx_Instance {
 	IsA(className: "ReplicatedStorage"): this is ReplicatedStorage;
 	FindFirstAncestorOfClass(className: "ReplicatedStorage"): ReplicatedStorage | undefined;
@@ -5614,7 +5614,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // RobloxReplicatedStorage
 interface Rbx_RobloxReplicatedStorage extends Rbx_Instance {
 }
-type RobloxReplicatedStorage = Rbx_RobloxReplicatedStorage & Indexable<Rbx_RobloxReplicatedStorage>;
+type RobloxReplicatedStorage = Rbx_RobloxReplicatedStorage & Base<Rbx_RobloxReplicatedStorage> & Indexable<Rbx_RobloxReplicatedStorage>;
 interface Rbx_Instance {
 	IsA(className: "RobloxReplicatedStorage"): this is RobloxReplicatedStorage;
 	FindFirstAncestorOfClass(className: "RobloxReplicatedStorage"): RobloxReplicatedStorage | undefined;
@@ -5639,7 +5639,7 @@ interface Rbx_RunService extends Rbx_Instance {
 	RenderStepped: RBXScriptSignal<(step: number) => void>;
 	Stepped: RBXScriptSignal<(time: number, step: number) => void>;
 }
-type RunService = Rbx_RunService & Indexable<Rbx_RunService>;
+type RunService = Rbx_RunService & Base<Rbx_RunService> & Indexable<Rbx_RunService>;
 interface Rbx_Instance {
 	IsA(className: "RunService"): this is RunService;
 	FindFirstAncestorOfClass(className: "RunService"): RunService | undefined;
@@ -5654,7 +5654,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // RuntimeScriptService
 interface Rbx_RuntimeScriptService extends Rbx_Instance {
 }
-type RuntimeScriptService = Rbx_RuntimeScriptService & Indexable<Rbx_RuntimeScriptService>;
+type RuntimeScriptService = Rbx_RuntimeScriptService & Base<Rbx_RuntimeScriptService> & Indexable<Rbx_RuntimeScriptService>;
 interface Rbx_Instance {
 	IsA(className: "RuntimeScriptService"): this is RuntimeScriptService;
 	FindFirstAncestorOfClass(className: "RuntimeScriptService"): RuntimeScriptService | undefined;
@@ -5670,7 +5670,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_ScriptContext extends Rbx_Instance {
 	Error: RBXScriptSignal<(message: string, stackTrace: string, script: Instance) => void>;
 }
-type ScriptContext = Rbx_ScriptContext & Indexable<Rbx_ScriptContext>;
+type ScriptContext = Rbx_ScriptContext & Base<Rbx_ScriptContext> & Indexable<Rbx_ScriptContext>;
 interface Rbx_Instance {
 	IsA(className: "ScriptContext"): this is ScriptContext;
 	FindFirstAncestorOfClass(className: "ScriptContext"): ScriptContext | undefined;
@@ -5707,7 +5707,7 @@ interface Rbx_ScriptDebugger extends Rbx_Instance {
 	WatchAdded: RBXScriptSignal<(watch: Instance) => void>;
 	WatchRemoved: RBXScriptSignal<(watch: Instance) => void>;
 }
-type ScriptDebugger = Rbx_ScriptDebugger & Indexable<Rbx_ScriptDebugger>;
+type ScriptDebugger = Rbx_ScriptDebugger & Base<Rbx_ScriptDebugger> & Indexable<Rbx_ScriptDebugger>;
 interface Rbx_Instance {
 	IsA(className: "ScriptDebugger"): this is ScriptDebugger;
 	FindFirstAncestorOfClass(className: "ScriptDebugger"): ScriptDebugger | undefined;
@@ -5719,7 +5719,7 @@ interface Rbx_Instance {
 // ScriptService
 interface Rbx_ScriptService extends Rbx_Instance {
 }
-type ScriptService = Rbx_ScriptService & Indexable<Rbx_ScriptService>;
+type ScriptService = Rbx_ScriptService & Base<Rbx_ScriptService> & Indexable<Rbx_ScriptService>;
 interface Rbx_Instance {
 	IsA(className: "ScriptService"): this is ScriptService;
 	FindFirstAncestorOfClass(className: "ScriptService"): ScriptService | undefined;
@@ -5735,7 +5735,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Selection extends Rbx_Instance {
 	SelectionChanged: RBXScriptSignal<() => void>;
 }
-type Selection = Rbx_Selection & Indexable<Rbx_Selection>;
+type Selection = Rbx_Selection & Base<Rbx_Selection> & Indexable<Rbx_Selection>;
 interface Rbx_Instance {
 	IsA(className: "Selection"): this is Selection;
 	FindFirstAncestorOfClass(className: "Selection"): Selection | undefined;
@@ -5750,7 +5750,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // ServerScriptService
 interface Rbx_ServerScriptService extends Rbx_Instance {
 }
-type ServerScriptService = Rbx_ServerScriptService & Indexable<Rbx_ServerScriptService>;
+type ServerScriptService = Rbx_ServerScriptService & Base<Rbx_ServerScriptService> & Indexable<Rbx_ServerScriptService>;
 interface Rbx_Instance {
 	IsA(className: "ServerScriptService"): this is ServerScriptService;
 	FindFirstAncestorOfClass(className: "ServerScriptService"): ServerScriptService | undefined;
@@ -5765,7 +5765,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // ServerStorage
 interface Rbx_ServerStorage extends Rbx_Instance {
 }
-type ServerStorage = Rbx_ServerStorage & Indexable<Rbx_ServerStorage>;
+type ServerStorage = Rbx_ServerStorage & Base<Rbx_ServerStorage> & Indexable<Rbx_ServerStorage>;
 interface Rbx_Instance {
 	IsA(className: "ServerStorage"): this is ServerStorage;
 	FindFirstAncestorOfClass(className: "ServerStorage"): ServerStorage | undefined;
@@ -5785,7 +5785,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 	ServiceAdded: RBXScriptSignal<(service: Instance) => void>;
 	ServiceRemoving: RBXScriptSignal<(service: Instance) => void>;
 }
-type ServiceProvider = Rbx_ServiceProvider & Indexable<Rbx_ServiceProvider>;
+type ServiceProvider = Rbx_ServiceProvider & Base<Rbx_ServiceProvider> & Indexable<Rbx_ServiceProvider>;
 interface Rbx_Instance {
 	IsA(className: "ServiceProvider"): this is ServiceProvider;
 	FindFirstAncestorOfClass(className: "ServiceProvider"): ServiceProvider | undefined;
@@ -5814,7 +5814,7 @@ interface Rbx_DataModel extends Rbx_ServiceProvider {
 	/** Fires when the game finishes loading.  Use this to know when to remove your custom loading gui.  It is best to check IsLoaded() before connecting to this event, as the game may load before the event is connected to. */
 	Loaded: RBXScriptSignal<() => void>;
 }
-type DataModel = Rbx_DataModel & Indexable<Rbx_DataModel>;
+type DataModel = Rbx_DataModel & Base<Rbx_DataModel> & Indexable<Rbx_DataModel>;
 interface Rbx_Instance {
 	IsA(className: "DataModel"): this is DataModel;
 	FindFirstAncestorOfClass(className: "DataModel"): DataModel | undefined;
@@ -5826,7 +5826,7 @@ interface Rbx_Instance {
 // GenericSettings
 interface Rbx_GenericSettings extends Rbx_ServiceProvider {
 }
-type GenericSettings = Rbx_GenericSettings & Indexable<Rbx_GenericSettings>;
+type GenericSettings = Rbx_GenericSettings & Base<Rbx_GenericSettings> & Indexable<Rbx_GenericSettings>;
 interface Rbx_Instance {
 	IsA(className: "GenericSettings"): this is GenericSettings;
 	FindFirstAncestorOfClass(className: "GenericSettings"): GenericSettings | undefined;
@@ -5838,7 +5838,7 @@ interface Rbx_Instance {
 // AnalysticsSettings
 interface Rbx_AnalysticsSettings extends Rbx_GenericSettings {
 }
-type AnalysticsSettings = Rbx_AnalysticsSettings & Indexable<Rbx_AnalysticsSettings>;
+type AnalysticsSettings = Rbx_AnalysticsSettings & Base<Rbx_AnalysticsSettings> & Indexable<Rbx_AnalysticsSettings>;
 interface Rbx_Instance {
 	IsA(className: "AnalysticsSettings"): this is AnalysticsSettings;
 	FindFirstAncestorOfClass(className: "AnalysticsSettings"): AnalysticsSettings | undefined;
@@ -5852,7 +5852,7 @@ interface Rbx_GlobalSettings extends Rbx_GenericSettings {
 	GetFFlag(name: string): boolean;
 	GetFVariable(name: string): string;
 }
-type GlobalSettings = Rbx_GlobalSettings & Indexable<Rbx_GlobalSettings>;
+type GlobalSettings = Rbx_GlobalSettings & Base<Rbx_GlobalSettings> & Indexable<Rbx_GlobalSettings>;
 interface Rbx_Instance {
 	IsA(className: "GlobalSettings"): this is GlobalSettings;
 	FindFirstAncestorOfClass(className: "GlobalSettings"): GlobalSettings | undefined;
@@ -5866,7 +5866,7 @@ interface Rbx_UserSettings extends Rbx_GenericSettings {
 	IsUserFeatureEnabled(name: string): boolean;
 	Reset(): void;
 }
-type UserSettings = Rbx_UserSettings & Indexable<Rbx_UserSettings>;
+type UserSettings = Rbx_UserSettings & Base<Rbx_UserSettings> & Indexable<Rbx_UserSettings>;
 interface Rbx_Instance {
 	IsA(className: "UserSettings"): this is UserSettings;
 	FindFirstAncestorOfClass(className: "UserSettings"): UserSettings | undefined;
@@ -5890,7 +5890,7 @@ interface Rbx_Sky extends Rbx_Instance {
 	SunAngularSize: number;
 	SunTextureId: string;
 }
-type Sky = Rbx_Sky & Indexable<Rbx_Sky>;
+type Sky = Rbx_Sky & Base<Rbx_Sky> & Indexable<Rbx_Sky>;
 interface Rbx_Instance {
 	IsA(className: "Sky"): this is Sky;
 	FindFirstAncestorOfClass(className: "Sky"): Sky | undefined;
@@ -5907,7 +5907,7 @@ interface Rbx_Smoke extends Rbx_Instance {
 	RiseVelocity: number;
 	Size: number;
 }
-type Smoke = Rbx_Smoke & Indexable<Rbx_Smoke>;
+type Smoke = Rbx_Smoke & Base<Rbx_Smoke> & Indexable<Rbx_Smoke>;
 interface Rbx_Instance {
 	IsA(className: "Smoke"): this is Smoke;
 	FindFirstAncestorOfClass(className: "Smoke"): Smoke | undefined;
@@ -5922,7 +5922,7 @@ interface Rbx_SocialService extends Rbx_Instance {
 	CanSendGameInviteAsync(player: Instance): boolean;
 	GameInvitePromptClosed: RBXScriptSignal<(player: Instance, recipientIds: Array<any>) => void>;
 }
-type SocialService = Rbx_SocialService & Indexable<Rbx_SocialService>;
+type SocialService = Rbx_SocialService & Base<Rbx_SocialService> & Indexable<Rbx_SocialService>;
 interface Rbx_Instance {
 	IsA(className: "SocialService"): this is SocialService;
 	FindFirstAncestorOfClass(className: "SocialService"): SocialService | undefined;
@@ -5965,7 +5965,7 @@ interface Rbx_Sound extends Rbx_Instance {
 	Resumed: RBXScriptSignal<(soundId: string) => void>;
 	Stopped: RBXScriptSignal<(soundId: string) => void>;
 }
-type Sound = Rbx_Sound & Indexable<Rbx_Sound>;
+type Sound = Rbx_Sound & Base<Rbx_Sound> & Indexable<Rbx_Sound>;
 interface Rbx_Instance {
 	IsA(className: "Sound"): this is Sound;
 	FindFirstAncestorOfClass(className: "Sound"): Sound | undefined;
@@ -5979,7 +5979,7 @@ interface Rbx_SoundEffect extends Rbx_Instance {
 	Enabled: boolean;
 	Priority: number;
 }
-type SoundEffect = Rbx_SoundEffect & Indexable<Rbx_SoundEffect>;
+type SoundEffect = Rbx_SoundEffect & Base<Rbx_SoundEffect> & Indexable<Rbx_SoundEffect>;
 interface Rbx_Instance {
 	IsA(className: "SoundEffect"): this is SoundEffect;
 	FindFirstAncestorOfClass(className: "SoundEffect"): SoundEffect | undefined;
@@ -5994,7 +5994,7 @@ interface Rbx_ChorusSoundEffect extends Rbx_SoundEffect {
 	Mix: number;
 	Rate: number;
 }
-type ChorusSoundEffect = Rbx_ChorusSoundEffect & Indexable<Rbx_ChorusSoundEffect>;
+type ChorusSoundEffect = Rbx_ChorusSoundEffect & Base<Rbx_ChorusSoundEffect> & Indexable<Rbx_ChorusSoundEffect>;
 interface Rbx_Instance {
 	IsA(className: "ChorusSoundEffect"): this is ChorusSoundEffect;
 	FindFirstAncestorOfClass(className: "ChorusSoundEffect"): ChorusSoundEffect | undefined;
@@ -6012,7 +6012,7 @@ interface Rbx_CompressorSoundEffect extends Rbx_SoundEffect {
 	SideChain: Instance | undefined;
 	Threshold: number;
 }
-type CompressorSoundEffect = Rbx_CompressorSoundEffect & Indexable<Rbx_CompressorSoundEffect>;
+type CompressorSoundEffect = Rbx_CompressorSoundEffect & Base<Rbx_CompressorSoundEffect> & Indexable<Rbx_CompressorSoundEffect>;
 interface Rbx_Instance {
 	IsA(className: "CompressorSoundEffect"): this is CompressorSoundEffect;
 	FindFirstAncestorOfClass(className: "CompressorSoundEffect"): CompressorSoundEffect | undefined;
@@ -6025,7 +6025,7 @@ interface Rbx_Instance {
 interface Rbx_DistortionSoundEffect extends Rbx_SoundEffect {
 	Level: number;
 }
-type DistortionSoundEffect = Rbx_DistortionSoundEffect & Indexable<Rbx_DistortionSoundEffect>;
+type DistortionSoundEffect = Rbx_DistortionSoundEffect & Base<Rbx_DistortionSoundEffect> & Indexable<Rbx_DistortionSoundEffect>;
 interface Rbx_Instance {
 	IsA(className: "DistortionSoundEffect"): this is DistortionSoundEffect;
 	FindFirstAncestorOfClass(className: "DistortionSoundEffect"): DistortionSoundEffect | undefined;
@@ -6041,7 +6041,7 @@ interface Rbx_EchoSoundEffect extends Rbx_SoundEffect {
 	Feedback: number;
 	WetLevel: number;
 }
-type EchoSoundEffect = Rbx_EchoSoundEffect & Indexable<Rbx_EchoSoundEffect>;
+type EchoSoundEffect = Rbx_EchoSoundEffect & Base<Rbx_EchoSoundEffect> & Indexable<Rbx_EchoSoundEffect>;
 interface Rbx_Instance {
 	IsA(className: "EchoSoundEffect"): this is EchoSoundEffect;
 	FindFirstAncestorOfClass(className: "EchoSoundEffect"): EchoSoundEffect | undefined;
@@ -6056,7 +6056,7 @@ interface Rbx_EqualizerSoundEffect extends Rbx_SoundEffect {
 	LowGain: number;
 	MidGain: number;
 }
-type EqualizerSoundEffect = Rbx_EqualizerSoundEffect & Indexable<Rbx_EqualizerSoundEffect>;
+type EqualizerSoundEffect = Rbx_EqualizerSoundEffect & Base<Rbx_EqualizerSoundEffect> & Indexable<Rbx_EqualizerSoundEffect>;
 interface Rbx_Instance {
 	IsA(className: "EqualizerSoundEffect"): this is EqualizerSoundEffect;
 	FindFirstAncestorOfClass(className: "EqualizerSoundEffect"): EqualizerSoundEffect | undefined;
@@ -6071,7 +6071,7 @@ interface Rbx_FlangeSoundEffect extends Rbx_SoundEffect {
 	Mix: number;
 	Rate: number;
 }
-type FlangeSoundEffect = Rbx_FlangeSoundEffect & Indexable<Rbx_FlangeSoundEffect>;
+type FlangeSoundEffect = Rbx_FlangeSoundEffect & Base<Rbx_FlangeSoundEffect> & Indexable<Rbx_FlangeSoundEffect>;
 interface Rbx_Instance {
 	IsA(className: "FlangeSoundEffect"): this is FlangeSoundEffect;
 	FindFirstAncestorOfClass(className: "FlangeSoundEffect"): FlangeSoundEffect | undefined;
@@ -6084,7 +6084,7 @@ interface Rbx_Instance {
 interface Rbx_PitchShiftSoundEffect extends Rbx_SoundEffect {
 	Octave: number;
 }
-type PitchShiftSoundEffect = Rbx_PitchShiftSoundEffect & Indexable<Rbx_PitchShiftSoundEffect>;
+type PitchShiftSoundEffect = Rbx_PitchShiftSoundEffect & Base<Rbx_PitchShiftSoundEffect> & Indexable<Rbx_PitchShiftSoundEffect>;
 interface Rbx_Instance {
 	IsA(className: "PitchShiftSoundEffect"): this is PitchShiftSoundEffect;
 	FindFirstAncestorOfClass(className: "PitchShiftSoundEffect"): PitchShiftSoundEffect | undefined;
@@ -6101,7 +6101,7 @@ interface Rbx_ReverbSoundEffect extends Rbx_SoundEffect {
 	DryLevel: number;
 	WetLevel: number;
 }
-type ReverbSoundEffect = Rbx_ReverbSoundEffect & Indexable<Rbx_ReverbSoundEffect>;
+type ReverbSoundEffect = Rbx_ReverbSoundEffect & Base<Rbx_ReverbSoundEffect> & Indexable<Rbx_ReverbSoundEffect>;
 interface Rbx_Instance {
 	IsA(className: "ReverbSoundEffect"): this is ReverbSoundEffect;
 	FindFirstAncestorOfClass(className: "ReverbSoundEffect"): ReverbSoundEffect | undefined;
@@ -6116,7 +6116,7 @@ interface Rbx_TremoloSoundEffect extends Rbx_SoundEffect {
 	Duty: number;
 	Frequency: number;
 }
-type TremoloSoundEffect = Rbx_TremoloSoundEffect & Indexable<Rbx_TremoloSoundEffect>;
+type TremoloSoundEffect = Rbx_TremoloSoundEffect & Base<Rbx_TremoloSoundEffect> & Indexable<Rbx_TremoloSoundEffect>;
 interface Rbx_Instance {
 	IsA(className: "TremoloSoundEffect"): this is TremoloSoundEffect;
 	FindFirstAncestorOfClass(className: "TremoloSoundEffect"): TremoloSoundEffect | undefined;
@@ -6129,7 +6129,7 @@ interface Rbx_Instance {
 interface Rbx_SoundGroup extends Rbx_Instance {
 	Volume: number;
 }
-type SoundGroup = Rbx_SoundGroup & Indexable<Rbx_SoundGroup>;
+type SoundGroup = Rbx_SoundGroup & Base<Rbx_SoundGroup> & Indexable<Rbx_SoundGroup>;
 interface Rbx_Instance {
 	IsA(className: "SoundGroup"): this is SoundGroup;
 	FindFirstAncestorOfClass(className: "SoundGroup"): SoundGroup | undefined;
@@ -6151,7 +6151,7 @@ interface Rbx_SoundService extends Rbx_Instance {
 	RolloffScale: number;
 	PlayLocalSound(sound: Instance): void;
 }
-type SoundService = Rbx_SoundService & Indexable<Rbx_SoundService>;
+type SoundService = Rbx_SoundService & Base<Rbx_SoundService> & Indexable<Rbx_SoundService>;
 interface Rbx_Instance {
 	IsA(className: "SoundService"): this is SoundService;
 	FindFirstAncestorOfClass(className: "SoundService"): SoundService | undefined;
@@ -6169,7 +6169,7 @@ interface Rbx_Sparkles extends Rbx_Instance {
 	Enabled: boolean;
 	SparkleColor: Color3;
 }
-type Sparkles = Rbx_Sparkles & Indexable<Rbx_Sparkles>;
+type Sparkles = Rbx_Sparkles & Base<Rbx_Sparkles> & Indexable<Rbx_Sparkles>;
 interface Rbx_Instance {
 	IsA(className: "Sparkles"): this is Sparkles;
 	FindFirstAncestorOfClass(className: "Sparkles"): Sparkles | undefined;
@@ -6181,7 +6181,7 @@ interface Rbx_Instance {
 // SpawnerService
 interface Rbx_SpawnerService extends Rbx_Instance {
 }
-type SpawnerService = Rbx_SpawnerService & Indexable<Rbx_SpawnerService>;
+type SpawnerService = Rbx_SpawnerService & Base<Rbx_SpawnerService> & Indexable<Rbx_SpawnerService>;
 interface Rbx_Instance {
 	IsA(className: "SpawnerService"): this is SpawnerService;
 	FindFirstAncestorOfClass(className: "SpawnerService"): SpawnerService | undefined;
@@ -6196,7 +6196,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // StarterGear
 interface Rbx_StarterGear extends Rbx_Instance {
 }
-type StarterGear = Rbx_StarterGear & Indexable<Rbx_StarterGear>;
+type StarterGear = Rbx_StarterGear & Base<Rbx_StarterGear> & Indexable<Rbx_StarterGear>;
 interface Rbx_Instance {
 	IsA(className: "StarterGear"): this is StarterGear;
 	FindFirstAncestorOfClass(className: "StarterGear"): StarterGear | undefined;
@@ -6222,7 +6222,7 @@ interface Rbx_StarterPlayer extends Rbx_Instance {
 	LoadCharacterAppearance: boolean;
 	NameDisplayDistance: number;
 }
-type StarterPlayer = Rbx_StarterPlayer & Indexable<Rbx_StarterPlayer>;
+type StarterPlayer = Rbx_StarterPlayer & Base<Rbx_StarterPlayer> & Indexable<Rbx_StarterPlayer>;
 interface Rbx_Instance {
 	IsA(className: "StarterPlayer"): this is StarterPlayer;
 	FindFirstAncestorOfClass(className: "StarterPlayer"): StarterPlayer | undefined;
@@ -6237,7 +6237,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // StarterPlayerScripts
 interface Rbx_StarterPlayerScripts extends Rbx_Instance {
 }
-type StarterPlayerScripts = Rbx_StarterPlayerScripts & Indexable<Rbx_StarterPlayerScripts>;
+type StarterPlayerScripts = Rbx_StarterPlayerScripts & Base<Rbx_StarterPlayerScripts> & Indexable<Rbx_StarterPlayerScripts>;
 interface Rbx_Instance {
 	IsA(className: "StarterPlayerScripts"): this is StarterPlayerScripts;
 	FindFirstAncestorOfClass(className: "StarterPlayerScripts"): StarterPlayerScripts | undefined;
@@ -6249,7 +6249,7 @@ interface Rbx_Instance {
 // StarterCharacterScripts
 interface Rbx_StarterCharacterScripts extends Rbx_StarterPlayerScripts {
 }
-type StarterCharacterScripts = Rbx_StarterCharacterScripts & Indexable<Rbx_StarterCharacterScripts>;
+type StarterCharacterScripts = Rbx_StarterCharacterScripts & Base<Rbx_StarterCharacterScripts> & Indexable<Rbx_StarterCharacterScripts>;
 interface Rbx_Instance {
 	IsA(className: "StarterCharacterScripts"): this is StarterCharacterScripts;
 	FindFirstAncestorOfClass(className: "StarterCharacterScripts"): StarterCharacterScripts | undefined;
@@ -6273,7 +6273,7 @@ interface Rbx_Stats extends Rbx_Instance {
 	GetMemoryUsageMbForTag(tag: Enum.DeveloperMemoryTag): number;
 	GetTotalMemoryUsageMb(): number;
 }
-type Stats = Rbx_Stats & Indexable<Rbx_Stats>;
+type Stats = Rbx_Stats & Base<Rbx_Stats> & Indexable<Rbx_Stats>;
 interface Rbx_Instance {
 	IsA(className: "Stats"): this is Stats;
 	FindFirstAncestorOfClass(className: "Stats"): Stats | undefined;
@@ -6288,7 +6288,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // StatsItem
 interface Rbx_StatsItem extends Rbx_Instance {
 }
-type StatsItem = Rbx_StatsItem & Indexable<Rbx_StatsItem>;
+type StatsItem = Rbx_StatsItem & Base<Rbx_StatsItem> & Indexable<Rbx_StatsItem>;
 interface Rbx_Instance {
 	IsA(className: "StatsItem"): this is StatsItem;
 	FindFirstAncestorOfClass(className: "StatsItem"): StatsItem | undefined;
@@ -6300,7 +6300,7 @@ interface Rbx_Instance {
 // RunningAverageItemDouble
 interface Rbx_RunningAverageItemDouble extends Rbx_StatsItem {
 }
-type RunningAverageItemDouble = Rbx_RunningAverageItemDouble & Indexable<Rbx_RunningAverageItemDouble>;
+type RunningAverageItemDouble = Rbx_RunningAverageItemDouble & Base<Rbx_RunningAverageItemDouble> & Indexable<Rbx_RunningAverageItemDouble>;
 interface Rbx_Instance {
 	IsA(className: "RunningAverageItemDouble"): this is RunningAverageItemDouble;
 	FindFirstAncestorOfClass(className: "RunningAverageItemDouble"): RunningAverageItemDouble | undefined;
@@ -6312,7 +6312,7 @@ interface Rbx_Instance {
 // RunningAverageItemInt
 interface Rbx_RunningAverageItemInt extends Rbx_StatsItem {
 }
-type RunningAverageItemInt = Rbx_RunningAverageItemInt & Indexable<Rbx_RunningAverageItemInt>;
+type RunningAverageItemInt = Rbx_RunningAverageItemInt & Base<Rbx_RunningAverageItemInt> & Indexable<Rbx_RunningAverageItemInt>;
 interface Rbx_Instance {
 	IsA(className: "RunningAverageItemInt"): this is RunningAverageItemInt;
 	FindFirstAncestorOfClass(className: "RunningAverageItemInt"): RunningAverageItemInt | undefined;
@@ -6324,7 +6324,7 @@ interface Rbx_Instance {
 // RunningAverageTimeIntervalItem
 interface Rbx_RunningAverageTimeIntervalItem extends Rbx_StatsItem {
 }
-type RunningAverageTimeIntervalItem = Rbx_RunningAverageTimeIntervalItem & Indexable<Rbx_RunningAverageTimeIntervalItem>;
+type RunningAverageTimeIntervalItem = Rbx_RunningAverageTimeIntervalItem & Base<Rbx_RunningAverageTimeIntervalItem> & Indexable<Rbx_RunningAverageTimeIntervalItem>;
 interface Rbx_Instance {
 	IsA(className: "RunningAverageTimeIntervalItem"): this is RunningAverageTimeIntervalItem;
 	FindFirstAncestorOfClass(className: "RunningAverageTimeIntervalItem"): RunningAverageTimeIntervalItem | undefined;
@@ -6336,7 +6336,7 @@ interface Rbx_Instance {
 // TotalCountTimeIntervalItem
 interface Rbx_TotalCountTimeIntervalItem extends Rbx_StatsItem {
 }
-type TotalCountTimeIntervalItem = Rbx_TotalCountTimeIntervalItem & Indexable<Rbx_TotalCountTimeIntervalItem>;
+type TotalCountTimeIntervalItem = Rbx_TotalCountTimeIntervalItem & Base<Rbx_TotalCountTimeIntervalItem> & Indexable<Rbx_TotalCountTimeIntervalItem>;
 interface Rbx_Instance {
 	IsA(className: "TotalCountTimeIntervalItem"): this is TotalCountTimeIntervalItem;
 	FindFirstAncestorOfClass(className: "TotalCountTimeIntervalItem"): TotalCountTimeIntervalItem | undefined;
@@ -6348,7 +6348,7 @@ interface Rbx_Instance {
 // StopWatchReporter
 interface Rbx_StopWatchReporter extends Rbx_Instance {
 }
-type StopWatchReporter = Rbx_StopWatchReporter & Indexable<Rbx_StopWatchReporter>;
+type StopWatchReporter = Rbx_StopWatchReporter & Base<Rbx_StopWatchReporter> & Indexable<Rbx_StopWatchReporter>;
 interface Rbx_Instance {
 	IsA(className: "StopWatchReporter"): this is StopWatchReporter;
 	FindFirstAncestorOfClass(className: "StopWatchReporter"): StopWatchReporter | undefined;
@@ -6432,7 +6432,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	readonly ["UI Theme"]: Enum.UITheme;
 	["Warning Color"]: Color3;
 }
-type Studio = Rbx_Studio & Indexable<Rbx_Studio>;
+type Studio = Rbx_Studio & Base<Rbx_Studio> & Indexable<Rbx_Studio>;
 interface Rbx_Instance {
 	IsA(className: "Studio"): this is Studio;
 	FindFirstAncestorOfClass(className: "Studio"): Studio | undefined;
@@ -6448,7 +6448,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_StudioService extends Rbx_Instance {
 	readonly ActiveScript: Instance | undefined;
 }
-type StudioService = Rbx_StudioService & Indexable<Rbx_StudioService>;
+type StudioService = Rbx_StudioService & Base<Rbx_StudioService> & Indexable<Rbx_StudioService>;
 interface Rbx_Instance {
 	IsA(className: "StudioService"): this is StudioService;
 	FindFirstAncestorOfClass(className: "StudioService"): StudioService | undefined;
@@ -6463,7 +6463,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // StudioTheme
 interface Rbx_StudioTheme extends Rbx_Instance {
 }
-type StudioTheme = Rbx_StudioTheme & Indexable<Rbx_StudioTheme>;
+type StudioTheme = Rbx_StudioTheme & Base<Rbx_StudioTheme> & Indexable<Rbx_StudioTheme>;
 interface Rbx_Instance {
 	IsA(className: "StudioTheme"): this is StudioTheme;
 	FindFirstAncestorOfClass(className: "StudioTheme"): StudioTheme | undefined;
@@ -6479,7 +6479,7 @@ interface Rbx_TaskScheduler extends Rbx_Instance {
 	ThreadPoolConfig: Enum.ThreadPoolConfig;
 	readonly ThreadPoolSize: number;
 }
-type TaskScheduler = Rbx_TaskScheduler & Indexable<Rbx_TaskScheduler>;
+type TaskScheduler = Rbx_TaskScheduler & Base<Rbx_TaskScheduler> & Indexable<Rbx_TaskScheduler>;
 interface Rbx_Instance {
 	IsA(className: "TaskScheduler"): this is TaskScheduler;
 	FindFirstAncestorOfClass(className: "TaskScheduler"): TaskScheduler | undefined;
@@ -6496,7 +6496,7 @@ interface Rbx_Team extends Rbx_Instance {
 	AutoAssignable: boolean;
 	TeamColor: BrickColor;
 }
-type Team = Rbx_Team & Indexable<Rbx_Team>;
+type Team = Rbx_Team & Base<Rbx_Team> & Indexable<Rbx_Team>;
 interface Rbx_Instance {
 	IsA(className: "Team"): this is Team;
 	FindFirstAncestorOfClass(className: "Team"): Team | undefined;
@@ -6508,7 +6508,7 @@ interface Rbx_Instance {
 // Teams
 interface Rbx_Teams extends Rbx_Instance {
 }
-type Teams = Rbx_Teams & Indexable<Rbx_Teams>;
+type Teams = Rbx_Teams & Base<Rbx_Teams> & Indexable<Rbx_Teams>;
 interface Rbx_Instance {
 	IsA(className: "Teams"): this is Teams;
 	FindFirstAncestorOfClass(className: "Teams"): Teams | undefined;
@@ -6531,7 +6531,7 @@ interface Rbx_TeleportService extends Rbx_Instance {
 	TeleportToSpawnByName(placeId: number, spawnName: string, player?: Instance, teleportData?: any, customLoadingScreen?: Instance): void;
 	LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: Instance, dataTable?: any) => void>;
 }
-type TeleportService = Rbx_TeleportService & Indexable<Rbx_TeleportService>;
+type TeleportService = Rbx_TeleportService & Base<Rbx_TeleportService> & Indexable<Rbx_TeleportService>;
 interface Rbx_Instance {
 	IsA(className: "TeleportService"): this is TeleportService;
 	FindFirstAncestorOfClass(className: "TeleportService"): TeleportService | undefined;
@@ -6547,7 +6547,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_TerrainRegion extends Rbx_Instance {
 	readonly SizeInCells: Vector3;
 }
-type TerrainRegion = Rbx_TerrainRegion & Indexable<Rbx_TerrainRegion>;
+type TerrainRegion = Rbx_TerrainRegion & Base<Rbx_TerrainRegion> & Indexable<Rbx_TerrainRegion>;
 interface Rbx_Instance {
 	IsA(className: "TerrainRegion"): this is TerrainRegion;
 	FindFirstAncestorOfClass(className: "TerrainRegion"): TerrainRegion | undefined;
@@ -6582,7 +6582,7 @@ interface Rbx_TestService extends Rbx_Instance {
 	ServerCollectConditionalResult: RBXScriptSignal<(condition: boolean, text: string, script: Instance, line: number) => void>;
 	ServerCollectResult: RBXScriptSignal<(text: string, script: Instance, line: number) => void>;
 }
-type TestService = Rbx_TestService & Indexable<Rbx_TestService>;
+type TestService = Rbx_TestService & Base<Rbx_TestService> & Indexable<Rbx_TestService>;
 interface Rbx_Instance {
 	IsA(className: "TestService"): this is TestService;
 	FindFirstAncestorOfClass(className: "TestService"): TestService | undefined;
@@ -6600,7 +6600,7 @@ interface Rbx_TextFilterResult extends Rbx_Instance {
 	GetNonChatStringForBroadcastAsync(): string;
 	GetNonChatStringForUserAsync(toUserId: number): string;
 }
-type TextFilterResult = Rbx_TextFilterResult & Indexable<Rbx_TextFilterResult>;
+type TextFilterResult = Rbx_TextFilterResult & Base<Rbx_TextFilterResult> & Indexable<Rbx_TextFilterResult>;
 interface Rbx_Instance {
 	IsA(className: "TextFilterResult"): this is TextFilterResult;
 	FindFirstAncestorOfClass(className: "TextFilterResult"): TextFilterResult | undefined;
@@ -6614,7 +6614,7 @@ interface Rbx_TextService extends Rbx_Instance {
 	GetTextSize(string: string, fontSize: number, font: Enum.Font, frameSize: Vector2): Vector2;
 	FilterStringAsync(stringToFilter: string, fromUserId: number, textContext?: Enum.TextFilterContext): Instance | undefined;
 }
-type TextService = Rbx_TextService & Indexable<Rbx_TextService>;
+type TextService = Rbx_TextService & Base<Rbx_TextService> & Indexable<Rbx_TextService>;
 interface Rbx_Instance {
 	IsA(className: "TextService"): this is TextService;
 	FindFirstAncestorOfClass(className: "TextService"): TextService | undefined;
@@ -6629,7 +6629,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // ThirdPartyUserService
 interface Rbx_ThirdPartyUserService extends Rbx_Instance {
 }
-type ThirdPartyUserService = Rbx_ThirdPartyUserService & Indexable<Rbx_ThirdPartyUserService>;
+type ThirdPartyUserService = Rbx_ThirdPartyUserService & Base<Rbx_ThirdPartyUserService> & Indexable<Rbx_ThirdPartyUserService>;
 interface Rbx_Instance {
 	IsA(className: "ThirdPartyUserService"): this is ThirdPartyUserService;
 	FindFirstAncestorOfClass(className: "ThirdPartyUserService"): ThirdPartyUserService | undefined;
@@ -6644,7 +6644,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // TimerService
 interface Rbx_TimerService extends Rbx_Instance {
 }
-type TimerService = Rbx_TimerService & Indexable<Rbx_TimerService>;
+type TimerService = Rbx_TimerService & Base<Rbx_TimerService> & Indexable<Rbx_TimerService>;
 interface Rbx_Instance {
 	IsA(className: "TimerService"): this is TimerService;
 	FindFirstAncestorOfClass(className: "TimerService"): TimerService | undefined;
@@ -6659,7 +6659,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // TouchInputService
 interface Rbx_TouchInputService extends Rbx_Instance {
 }
-type TouchInputService = Rbx_TouchInputService & Indexable<Rbx_TouchInputService>;
+type TouchInputService = Rbx_TouchInputService & Base<Rbx_TouchInputService> & Indexable<Rbx_TouchInputService>;
 interface Rbx_Instance {
 	IsA(className: "TouchInputService"): this is TouchInputService;
 	FindFirstAncestorOfClass(className: "TouchInputService"): TouchInputService | undefined;
@@ -6674,7 +6674,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // TouchTransmitter
 interface Rbx_TouchTransmitter extends Rbx_Instance {
 }
-type TouchTransmitter = Rbx_TouchTransmitter & Indexable<Rbx_TouchTransmitter>;
+type TouchTransmitter = Rbx_TouchTransmitter & Base<Rbx_TouchTransmitter> & Indexable<Rbx_TouchTransmitter>;
 interface Rbx_Instance {
 	IsA(className: "TouchTransmitter"): this is TouchTransmitter;
 	FindFirstAncestorOfClass(className: "TouchTransmitter"): TouchTransmitter | undefined;
@@ -6702,7 +6702,7 @@ interface Rbx_Trail extends Rbx_Instance {
 	WidthScale: NumberSequence;
 	Clear(): void;
 }
-type Trail = Rbx_Trail & Indexable<Rbx_Trail>;
+type Trail = Rbx_Trail & Base<Rbx_Trail> & Indexable<Rbx_Trail>;
 interface Rbx_Instance {
 	IsA(className: "Trail"): this is Trail;
 	FindFirstAncestorOfClass(className: "Trail"): Trail | undefined;
@@ -6717,7 +6717,7 @@ interface Rbx_Translator extends Rbx_Instance {
 	FormatByKey(key: string, args?: any): string;
 	Translate(context: Instance, text: string): string;
 }
-type Translator = Rbx_Translator & Indexable<Rbx_Translator>;
+type Translator = Rbx_Translator & Base<Rbx_Translator> & Indexable<Rbx_Translator>;
 interface Rbx_Instance {
 	IsA(className: "Translator"): this is Translator;
 	FindFirstAncestorOfClass(className: "Translator"): Translator | undefined;
@@ -6739,7 +6739,7 @@ interface Rbx_TweenBase extends Rbx_Instance {
 	/** Fires when the tween either reaches PlaybackState Completed or Cancelled. PlaybackState of one of these types is passed as the first arg to the function listening to this event. */
 	Completed: RBXScriptSignal<(playbackState: Enum.PlaybackState) => void>;
 }
-type TweenBase = Rbx_TweenBase & Indexable<Rbx_TweenBase>;
+type TweenBase = Rbx_TweenBase & Base<Rbx_TweenBase> & Indexable<Rbx_TweenBase>;
 interface Rbx_Instance {
 	IsA(className: "TweenBase"): this is TweenBase;
 	FindFirstAncestorOfClass(className: "TweenBase"): TweenBase | undefined;
@@ -6753,7 +6753,7 @@ interface Rbx_Tween extends Rbx_TweenBase {
 	readonly Instance: Instance | undefined;
 	readonly TweenInfo: TweenInfo;
 }
-type Tween = Rbx_Tween & Indexable<Rbx_Tween>;
+type Tween = Rbx_Tween & Base<Rbx_Tween> & Indexable<Rbx_Tween>;
 interface Rbx_Instance {
 	IsA(className: "Tween"): this is Tween;
 	FindFirstAncestorOfClass(className: "Tween"): Tween | undefined;
@@ -6765,7 +6765,7 @@ interface Rbx_Instance {
 // TweenService
 interface Rbx_TweenService extends Rbx_Instance {
 }
-type TweenService = Rbx_TweenService & Indexable<Rbx_TweenService>;
+type TweenService = Rbx_TweenService & Base<Rbx_TweenService> & Indexable<Rbx_TweenService>;
 interface Rbx_Instance {
 	IsA(className: "TweenService"): this is TweenService;
 	FindFirstAncestorOfClass(className: "TweenService"): TweenService | undefined;
@@ -6780,7 +6780,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // UIBase
 interface Rbx_UIBase extends Rbx_Instance {
 }
-type UIBase = Rbx_UIBase & Indexable<Rbx_UIBase>;
+type UIBase = Rbx_UIBase & Base<Rbx_UIBase> & Indexable<Rbx_UIBase>;
 interface Rbx_Instance {
 	IsA(className: "UIBase"): this is UIBase;
 	FindFirstAncestorOfClass(className: "UIBase"): UIBase | undefined;
@@ -6792,7 +6792,7 @@ interface Rbx_Instance {
 // UIComponent
 interface Rbx_UIComponent extends Rbx_UIBase {
 }
-type UIComponent = Rbx_UIComponent & Indexable<Rbx_UIComponent>;
+type UIComponent = Rbx_UIComponent & Base<Rbx_UIComponent> & Indexable<Rbx_UIComponent>;
 interface Rbx_Instance {
 	IsA(className: "UIComponent"): this is UIComponent;
 	FindFirstAncestorOfClass(className: "UIComponent"): UIComponent | undefined;
@@ -6804,7 +6804,7 @@ interface Rbx_Instance {
 // UIConstraint
 interface Rbx_UIConstraint extends Rbx_UIComponent {
 }
-type UIConstraint = Rbx_UIConstraint & Indexable<Rbx_UIConstraint>;
+type UIConstraint = Rbx_UIConstraint & Base<Rbx_UIConstraint> & Indexable<Rbx_UIConstraint>;
 interface Rbx_Instance {
 	IsA(className: "UIConstraint"): this is UIConstraint;
 	FindFirstAncestorOfClass(className: "UIConstraint"): UIConstraint | undefined;
@@ -6822,7 +6822,7 @@ interface Rbx_UIAspectRatioConstraint extends Rbx_UIConstraint {
 	/** Describes which axis to use when determining the new size of the element, while keeping respect to the aspect ratio. */
 	DominantAxis: Enum.DominantAxis;
 }
-type UIAspectRatioConstraint = Rbx_UIAspectRatioConstraint & Indexable<Rbx_UIAspectRatioConstraint>;
+type UIAspectRatioConstraint = Rbx_UIAspectRatioConstraint & Base<Rbx_UIAspectRatioConstraint> & Indexable<Rbx_UIAspectRatioConstraint>;
 interface Rbx_Instance {
 	IsA(className: "UIAspectRatioConstraint"): this is UIAspectRatioConstraint;
 	FindFirstAncestorOfClass(className: "UIAspectRatioConstraint"): UIAspectRatioConstraint | undefined;
@@ -6838,7 +6838,7 @@ interface Rbx_UISizeConstraint extends Rbx_UIConstraint {
 	/** The smallest size the GuiObject is allowed to be. */
 	MinSize: Vector2;
 }
-type UISizeConstraint = Rbx_UISizeConstraint & Indexable<Rbx_UISizeConstraint>;
+type UISizeConstraint = Rbx_UISizeConstraint & Base<Rbx_UISizeConstraint> & Indexable<Rbx_UISizeConstraint>;
 interface Rbx_Instance {
 	IsA(className: "UISizeConstraint"): this is UISizeConstraint;
 	FindFirstAncestorOfClass(className: "UISizeConstraint"): UISizeConstraint | undefined;
@@ -6854,7 +6854,7 @@ interface Rbx_UITextSizeConstraint extends Rbx_UIConstraint {
 	/** The smallest size the font is allowed to be. */
 	MinTextSize: number;
 }
-type UITextSizeConstraint = Rbx_UITextSizeConstraint & Indexable<Rbx_UITextSizeConstraint>;
+type UITextSizeConstraint = Rbx_UITextSizeConstraint & Base<Rbx_UITextSizeConstraint> & Indexable<Rbx_UITextSizeConstraint>;
 interface Rbx_Instance {
 	IsA(className: "UITextSizeConstraint"): this is UITextSizeConstraint;
 	FindFirstAncestorOfClass(className: "UITextSizeConstraint"): UITextSizeConstraint | undefined;
@@ -6866,7 +6866,7 @@ interface Rbx_Instance {
 // UILayout
 interface Rbx_UILayout extends Rbx_UIComponent {
 }
-type UILayout = Rbx_UILayout & Indexable<Rbx_UILayout>;
+type UILayout = Rbx_UILayout & Base<Rbx_UILayout> & Indexable<Rbx_UILayout>;
 interface Rbx_Instance {
 	IsA(className: "UILayout"): this is UILayout;
 	FindFirstAncestorOfClass(className: "UILayout"): UILayout | undefined;
@@ -6889,7 +6889,7 @@ interface Rbx_UIGridStyleLayout extends Rbx_UILayout {
 	/** Forces a relayout of all elements. Useful when sort is set to Custom. */
 	ApplyLayout(): void;
 }
-type UIGridStyleLayout = Rbx_UIGridStyleLayout & Indexable<Rbx_UIGridStyleLayout>;
+type UIGridStyleLayout = Rbx_UIGridStyleLayout & Base<Rbx_UIGridStyleLayout> & Indexable<Rbx_UIGridStyleLayout>;
 interface Rbx_Instance {
 	IsA(className: "UIGridStyleLayout"): this is UIGridStyleLayout;
 	FindFirstAncestorOfClass(className: "UIGridStyleLayout"): UIGridStyleLayout | undefined;
@@ -6909,7 +6909,7 @@ interface Rbx_UIGridLayout extends Rbx_UIGridStyleLayout {
 	/** Which corner we start laying the elements out from. Can be TopLeft, TopRight, BottomLeft, BottomRight. */
 	StartCorner: Enum.StartCorner;
 }
-type UIGridLayout = Rbx_UIGridLayout & Indexable<Rbx_UIGridLayout>;
+type UIGridLayout = Rbx_UIGridLayout & Base<Rbx_UIGridLayout> & Indexable<Rbx_UIGridLayout>;
 interface Rbx_Instance {
 	IsA(className: "UIGridLayout"): this is UIGridLayout;
 	FindFirstAncestorOfClass(className: "UIGridLayout"): UIGridLayout | undefined;
@@ -6923,7 +6923,7 @@ interface Rbx_UIListLayout extends Rbx_UIGridStyleLayout {
 	/** Determines the amount of free space between each element. Can be set either using scale (Percentage of parent's size in the current direction) or offset (a static spacing value, similar to pixel size). */
 	Padding: UDim;
 }
-type UIListLayout = Rbx_UIListLayout & Indexable<Rbx_UIListLayout>;
+type UIListLayout = Rbx_UIListLayout & Base<Rbx_UIListLayout> & Indexable<Rbx_UIListLayout>;
 interface Rbx_Instance {
 	IsA(className: "UIListLayout"): this is UIListLayout;
 	FindFirstAncestorOfClass(className: "UIListLayout"): UIListLayout | undefined;
@@ -6966,7 +6966,7 @@ interface Rbx_UIPageLayout extends Rbx_UIGridStyleLayout {
 	/** Fires when an animation to CurrentPage is completed without being cancelled, and the view stops scrolling. */
 	Stopped: RBXScriptSignal<(currentPage: Instance) => void>;
 }
-type UIPageLayout = Rbx_UIPageLayout & Indexable<Rbx_UIPageLayout>;
+type UIPageLayout = Rbx_UIPageLayout & Base<Rbx_UIPageLayout> & Indexable<Rbx_UIPageLayout>;
 interface Rbx_Instance {
 	IsA(className: "UIPageLayout"): this is UIPageLayout;
 	FindFirstAncestorOfClass(className: "UIPageLayout"): UIPageLayout | undefined;
@@ -6986,7 +6986,7 @@ interface Rbx_UITableLayout extends Rbx_UIGridStyleLayout {
 	/** The amount of padding to insert in between the cells of the table. */
 	Padding: UDim2;
 }
-type UITableLayout = Rbx_UITableLayout & Indexable<Rbx_UITableLayout>;
+type UITableLayout = Rbx_UITableLayout & Base<Rbx_UITableLayout> & Indexable<Rbx_UITableLayout>;
 interface Rbx_Instance {
 	IsA(className: "UITableLayout"): this is UITableLayout;
 	FindFirstAncestorOfClass(className: "UITableLayout"): UITableLayout | undefined;
@@ -7006,7 +7006,7 @@ interface Rbx_UIPadding extends Rbx_UIComponent {
 	/** The padding to apply on the top side relative to the parent's normal size. */
 	PaddingTop: UDim;
 }
-type UIPadding = Rbx_UIPadding & Indexable<Rbx_UIPadding>;
+type UIPadding = Rbx_UIPadding & Base<Rbx_UIPadding> & Indexable<Rbx_UIPadding>;
 interface Rbx_Instance {
 	IsA(className: "UIPadding"): this is UIPadding;
 	FindFirstAncestorOfClass(className: "UIPadding"): UIPadding | undefined;
@@ -7020,7 +7020,7 @@ interface Rbx_UIScale extends Rbx_UIComponent {
 	/** The scale factor to apply. */
 	Scale: number;
 }
-type UIScale = Rbx_UIScale & Indexable<Rbx_UIScale>;
+type UIScale = Rbx_UIScale & Base<Rbx_UIScale> & Indexable<Rbx_UIScale>;
 interface Rbx_Instance {
 	IsA(className: "UIScale"): this is UIScale;
 	FindFirstAncestorOfClass(className: "UIScale"): UIScale | undefined;
@@ -7053,7 +7053,7 @@ interface Rbx_UserGameSettings extends Rbx_Instance {
 	FullscreenChanged: RBXScriptSignal<(isFullscreen: boolean) => void>;
 	StudioModeChanged: RBXScriptSignal<(isStudioMode: boolean) => void>;
 }
-type UserGameSettings = Rbx_UserGameSettings & Indexable<Rbx_UserGameSettings>;
+type UserGameSettings = Rbx_UserGameSettings & Base<Rbx_UserGameSettings> & Indexable<Rbx_UserGameSettings>;
 interface Rbx_Instance {
 	IsA(className: "UserGameSettings"): this is UserGameSettings;
 	FindFirstAncestorOfClass(className: "UserGameSettings"): UserGameSettings | undefined;
@@ -7140,7 +7140,7 @@ interface Rbx_UserInputService extends Rbx_Instance {
 	WindowFocusReleased: RBXScriptSignal<() => void>;
 	WindowFocused: RBXScriptSignal<() => void>;
 }
-type UserInputService = Rbx_UserInputService & Indexable<Rbx_UserInputService>;
+type UserInputService = Rbx_UserInputService & Base<Rbx_UserInputService> & Indexable<Rbx_UserInputService>;
 interface Rbx_Instance {
 	IsA(className: "UserInputService"): this is UserInputService;
 	FindFirstAncestorOfClass(className: "UserInputService"): UserInputService | undefined;
@@ -7167,7 +7167,7 @@ interface Rbx_VRService extends Rbx_Instance {
 	UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
 	UserCFrameEnabled: RBXScriptSignal<(type: Enum.UserCFrame, enabled: boolean) => void>;
 }
-type VRService = Rbx_VRService & Indexable<Rbx_VRService>;
+type VRService = Rbx_VRService & Base<Rbx_VRService> & Indexable<Rbx_VRService>;
 interface Rbx_Instance {
 	IsA(className: "VRService"): this is VRService;
 	FindFirstAncestorOfClass(className: "VRService"): VRService | undefined;
@@ -7182,7 +7182,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // ValueBase
 interface Rbx_ValueBase extends Rbx_Instance {
 }
-type ValueBase = Rbx_ValueBase & Indexable<Rbx_ValueBase>;
+type ValueBase = Rbx_ValueBase & Base<Rbx_ValueBase> & Indexable<Rbx_ValueBase>;
 interface Rbx_Instance {
 	IsA(className: "ValueBase"): this is ValueBase;
 	FindFirstAncestorOfClass(className: "ValueBase"): ValueBase | undefined;
@@ -7194,7 +7194,7 @@ interface Rbx_Instance {
 // BinaryStringValue
 interface Rbx_BinaryStringValue extends Rbx_ValueBase {
 }
-type BinaryStringValue = Rbx_BinaryStringValue & Indexable<Rbx_BinaryStringValue>;
+type BinaryStringValue = Rbx_BinaryStringValue & Base<Rbx_BinaryStringValue> & Indexable<Rbx_BinaryStringValue>;
 interface Rbx_Instance {
 	IsA(className: "BinaryStringValue"): this is BinaryStringValue;
 	FindFirstAncestorOfClass(className: "BinaryStringValue"): BinaryStringValue | undefined;
@@ -7207,7 +7207,7 @@ interface Rbx_Instance {
 interface Rbx_BoolValue extends Rbx_ValueBase {
 	Value: boolean;
 }
-type BoolValue = Rbx_BoolValue & Indexable<Rbx_BoolValue>;
+type BoolValue = Rbx_BoolValue & Base<Rbx_BoolValue> & Indexable<Rbx_BoolValue>;
 interface Rbx_Instance {
 	IsA(className: "BoolValue"): this is BoolValue;
 	FindFirstAncestorOfClass(className: "BoolValue"): BoolValue | undefined;
@@ -7220,7 +7220,7 @@ interface Rbx_Instance {
 interface Rbx_BrickColorValue extends Rbx_ValueBase {
 	Value: BrickColor;
 }
-type BrickColorValue = Rbx_BrickColorValue & Indexable<Rbx_BrickColorValue>;
+type BrickColorValue = Rbx_BrickColorValue & Base<Rbx_BrickColorValue> & Indexable<Rbx_BrickColorValue>;
 interface Rbx_Instance {
 	IsA(className: "BrickColorValue"): this is BrickColorValue;
 	FindFirstAncestorOfClass(className: "BrickColorValue"): BrickColorValue | undefined;
@@ -7233,7 +7233,7 @@ interface Rbx_Instance {
 interface Rbx_CFrameValue extends Rbx_ValueBase {
 	Value: CFrame;
 }
-type CFrameValue = Rbx_CFrameValue & Indexable<Rbx_CFrameValue>;
+type CFrameValue = Rbx_CFrameValue & Base<Rbx_CFrameValue> & Indexable<Rbx_CFrameValue>;
 interface Rbx_Instance {
 	IsA(className: "CFrameValue"): this is CFrameValue;
 	FindFirstAncestorOfClass(className: "CFrameValue"): CFrameValue | undefined;
@@ -7246,7 +7246,7 @@ interface Rbx_Instance {
 interface Rbx_Color3Value extends Rbx_ValueBase {
 	Value: Color3;
 }
-type Color3Value = Rbx_Color3Value & Indexable<Rbx_Color3Value>;
+type Color3Value = Rbx_Color3Value & Base<Rbx_Color3Value> & Indexable<Rbx_Color3Value>;
 interface Rbx_Instance {
 	IsA(className: "Color3Value"): this is Color3Value;
 	FindFirstAncestorOfClass(className: "Color3Value"): Color3Value | undefined;
@@ -7264,7 +7264,7 @@ interface Rbx_DoubleConstrainedValue extends Rbx_ValueBase {
 	MinValue: number;
 	Value: number;
 }
-type DoubleConstrainedValue = Rbx_DoubleConstrainedValue & Indexable<Rbx_DoubleConstrainedValue>;
+type DoubleConstrainedValue = Rbx_DoubleConstrainedValue & Base<Rbx_DoubleConstrainedValue> & Indexable<Rbx_DoubleConstrainedValue>;
 interface Rbx_Instance {
 	IsA(className: "DoubleConstrainedValue"): this is DoubleConstrainedValue;
 	FindFirstAncestorOfClass(className: "DoubleConstrainedValue"): DoubleConstrainedValue | undefined;
@@ -7280,7 +7280,7 @@ interface Rbx_IntConstrainedValue extends Rbx_ValueBase {
 	MinValue: number;
 	Value: number;
 }
-type IntConstrainedValue = Rbx_IntConstrainedValue & Indexable<Rbx_IntConstrainedValue>;
+type IntConstrainedValue = Rbx_IntConstrainedValue & Base<Rbx_IntConstrainedValue> & Indexable<Rbx_IntConstrainedValue>;
 interface Rbx_Instance {
 	IsA(className: "IntConstrainedValue"): this is IntConstrainedValue;
 	FindFirstAncestorOfClass(className: "IntConstrainedValue"): IntConstrainedValue | undefined;
@@ -7293,7 +7293,7 @@ interface Rbx_Instance {
 interface Rbx_IntValue extends Rbx_ValueBase {
 	Value: number;
 }
-type IntValue = Rbx_IntValue & Indexable<Rbx_IntValue>;
+type IntValue = Rbx_IntValue & Base<Rbx_IntValue> & Indexable<Rbx_IntValue>;
 interface Rbx_Instance {
 	IsA(className: "IntValue"): this is IntValue;
 	FindFirstAncestorOfClass(className: "IntValue"): IntValue | undefined;
@@ -7306,7 +7306,7 @@ interface Rbx_Instance {
 interface Rbx_NumberValue extends Rbx_ValueBase {
 	Value: number;
 }
-type NumberValue = Rbx_NumberValue & Indexable<Rbx_NumberValue>;
+type NumberValue = Rbx_NumberValue & Base<Rbx_NumberValue> & Indexable<Rbx_NumberValue>;
 interface Rbx_Instance {
 	IsA(className: "NumberValue"): this is NumberValue;
 	FindFirstAncestorOfClass(className: "NumberValue"): NumberValue | undefined;
@@ -7319,7 +7319,7 @@ interface Rbx_Instance {
 interface Rbx_ObjectValue extends Rbx_ValueBase {
 	Value: Instance | undefined;
 }
-type ObjectValue = Rbx_ObjectValue & Indexable<Rbx_ObjectValue>;
+type ObjectValue = Rbx_ObjectValue & Base<Rbx_ObjectValue> & Indexable<Rbx_ObjectValue>;
 interface Rbx_Instance {
 	IsA(className: "ObjectValue"): this is ObjectValue;
 	FindFirstAncestorOfClass(className: "ObjectValue"): ObjectValue | undefined;
@@ -7332,7 +7332,7 @@ interface Rbx_Instance {
 interface Rbx_RayValue extends Rbx_ValueBase {
 	Value: Ray;
 }
-type RayValue = Rbx_RayValue & Indexable<Rbx_RayValue>;
+type RayValue = Rbx_RayValue & Base<Rbx_RayValue> & Indexable<Rbx_RayValue>;
 interface Rbx_Instance {
 	IsA(className: "RayValue"): this is RayValue;
 	FindFirstAncestorOfClass(className: "RayValue"): RayValue | undefined;
@@ -7345,7 +7345,7 @@ interface Rbx_Instance {
 interface Rbx_StringValue extends Rbx_ValueBase {
 	Value: string;
 }
-type StringValue = Rbx_StringValue & Indexable<Rbx_StringValue>;
+type StringValue = Rbx_StringValue & Base<Rbx_StringValue> & Indexable<Rbx_StringValue>;
 interface Rbx_Instance {
 	IsA(className: "StringValue"): this is StringValue;
 	FindFirstAncestorOfClass(className: "StringValue"): StringValue | undefined;
@@ -7358,7 +7358,7 @@ interface Rbx_Instance {
 interface Rbx_Vector3Value extends Rbx_ValueBase {
 	Value: Vector3;
 }
-type Vector3Value = Rbx_Vector3Value & Indexable<Rbx_Vector3Value>;
+type Vector3Value = Rbx_Vector3Value & Base<Rbx_Vector3Value> & Indexable<Rbx_Vector3Value>;
 interface Rbx_Instance {
 	IsA(className: "Vector3Value"): this is Vector3Value;
 	FindFirstAncestorOfClass(className: "Vector3Value"): Vector3Value | undefined;
@@ -7370,7 +7370,7 @@ interface Rbx_Instance {
 // VirtualInputManager
 interface Rbx_VirtualInputManager extends Rbx_Instance {
 }
-type VirtualInputManager = Rbx_VirtualInputManager & Indexable<Rbx_VirtualInputManager>;
+type VirtualInputManager = Rbx_VirtualInputManager & Base<Rbx_VirtualInputManager> & Indexable<Rbx_VirtualInputManager>;
 interface Rbx_Instance {
 	IsA(className: "VirtualInputManager"): this is VirtualInputManager;
 	FindFirstAncestorOfClass(className: "VirtualInputManager"): VirtualInputManager | undefined;
@@ -7385,7 +7385,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // VirtualUser
 interface Rbx_VirtualUser extends Rbx_Instance {
 }
-type VirtualUser = Rbx_VirtualUser & Indexable<Rbx_VirtualUser>;
+type VirtualUser = Rbx_VirtualUser & Base<Rbx_VirtualUser> & Indexable<Rbx_VirtualUser>;
 interface Rbx_Instance {
 	IsA(className: "VirtualUser"): this is VirtualUser;
 	FindFirstAncestorOfClass(className: "VirtualUser"): VirtualUser | undefined;
@@ -7400,7 +7400,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Visit
 interface Rbx_Visit extends Rbx_Instance {
 }
-type Visit = Rbx_Visit & Indexable<Rbx_Visit>;
+type Visit = Rbx_Visit & Base<Rbx_Visit> & Indexable<Rbx_Visit>;
 interface Rbx_Instance {
 	IsA(className: "Visit"): this is Visit;
 	FindFirstAncestorOfClass(className: "Visit"): Visit | undefined;
@@ -7420,7 +7420,7 @@ interface Rbx_WeldConstraint extends Rbx_Instance {
 	Part0: BasePart;
 	Part1: BasePart;
 }
-type WeldConstraint = Rbx_WeldConstraint & Indexable<Rbx_WeldConstraint>;
+type WeldConstraint = Rbx_WeldConstraint & Base<Rbx_WeldConstraint> & Indexable<Rbx_WeldConstraint>;
 interface Rbx_Instance {
 	IsA(className: "WeldConstraint"): this is WeldConstraint;
 	FindFirstAncestorOfClass(className: "WeldConstraint"): WeldConstraint | undefined;
