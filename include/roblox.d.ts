@@ -506,7 +506,7 @@ interface CheckableTypes {
 	boolean: boolean;
 	string: string;
 	number: number;
-	table: object;
+	table: object & unknown[];
 	userdata: unknown;
 	function: Callback;
 
