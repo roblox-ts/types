@@ -1,5 +1,5 @@
-import * as path from "path";
 import axios from "axios";
+import * as path from "path";
 import Project, * as ts from "ts-simple-ast";
 import { ReflectionMetadata } from "../class/ReflectionMetadata";
 

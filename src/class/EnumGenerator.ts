@@ -1,3 +1,4 @@
+import { ApiEnum } from "../api";
 import { Generator } from "./Generator";
 
 export class EnumGenerator extends Generator {

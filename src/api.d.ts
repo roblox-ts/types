@@ -1,10 +1,10 @@
-interface ApiParameter {
+export interface ApiParameter {
 	Name: string;
 	Type: ApiValueType;
 	Default?: string;
 }
 
-type SecurityType =
+export type SecurityType =
 	| "None"
 	| "LocalUserSecurity"
 	| "PluginSecurity"
@@ -12,7 +12,7 @@ type SecurityType =
 	| "RobloxSecurity"
 	| "NotAccessibleSecurity";
 
-type MemberCategoryType =
+export type MemberCategoryType =
 	| "instance/object"
 	| "animation/instance"
 	| "instance/mesh"
@@ -23,7 +23,7 @@ type MemberCategoryType =
 	| "instance/part"
 	| "sound/default";
 
-type CategoryType =
+export type CategoryType =
 	| "Appearance"
 	| "Attachments"
 	| "Behavior"
@@ -37,7 +37,7 @@ type CategoryType =
 	| "Thrust"
 	| "Turn";
 
-interface ApiMemberBase {
+export interface ApiMemberBase {
 	MemberType: string;
 	Name: string;
 	Security:
@@ -49,12 +49,12 @@ interface ApiMemberBase {
 	Tags?: Array<string>;
 }
 
-interface ApiValueType {
+export interface ApiValueType {
 	Category: "Primitive" | "Class" | "DataType" | "Enum" | "Group";
 	Name: string;
 }
 
-interface ApiProperty extends ApiMemberBase {
+export interface ApiProperty extends ApiMemberBase {
 	MemberType: "Property";
 	Category: CategoryType;
 	Serialization: {
@@ -64,25 +64,25 @@ interface ApiProperty extends ApiMemberBase {
 	ValueType: ApiValueType;
 }
 
-interface ApiFunction extends ApiMemberBase {
+export interface ApiFunction extends ApiMemberBase {
 	MemberType: "Function";
 	Parameters: Array<ApiParameter>;
 	ReturnType: ApiValueType;
 }
 
-interface ApiEvent extends ApiMemberBase {
+export interface ApiEvent extends ApiMemberBase {
 	MemberType: "Event";
 	Parameters: Array<ApiParameter>;
 }
 
-interface ApiCallback extends ApiMemberBase {
+export interface ApiCallback extends ApiMemberBase {
 	MemberType: "Callback";
 	Parameters: Array<ApiParameter>;
 }
 
 type ApiMember = ApiProperty | ApiFunction | ApiEvent | ApiCallback;
 
-interface ApiClass {
+export interface ApiClass {
 	Members: Array<ApiMember>;
 	MemoryCategory: MemberCategoryType;
 	Tags?: Array<string>;
@@ -90,17 +90,17 @@ interface ApiClass {
 	Superclass: string;
 }
 
-interface ApiEnumItem {
+export interface ApiEnumItem {
 	Name: string;
 	Value: number;
 }
 
-interface ApiEnum {
+export interface ApiEnum {
 	Items: Array<ApiEnumItem>;
 	Name: string;
 }
 
-interface ApiDump {
+export interface ApiDump {
 	Classes: Array<ApiClass>;
 	Enums: Array<ApiEnum>;
 	Version: number;

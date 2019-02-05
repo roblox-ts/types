@@ -1,5 +1,16 @@
 import * as path from "path";
 import Project, * as ts from "ts-simple-ast";
+import {
+	ApiCallback,
+	ApiClass,
+	ApiEvent,
+	ApiFunction,
+	ApiMember,
+	ApiMemberBase,
+	ApiParameter,
+	ApiProperty,
+	ApiValueType
+} from "../api";
 import { Generator } from "./Generator";
 
 const IMPL_PREFIX = "Rbx_";
@@ -297,7 +308,7 @@ export class ClassGenerator extends Generator {
 			this.write(`}`);
 		}
 
-		this.write(`type ${name} = ${implName} & Indexable<${implName}>;`);
+		this.write(`type ${name} = ${implName} & Base<${implName}> & Indexable<${implName}>;`);
 
 		this.write(`interface Rbx_Instance {`);
 		this.pushIndent();
