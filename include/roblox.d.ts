@@ -315,6 +315,7 @@ interface Random {
 }
 interface RandomConstructor {
 	new (seed: number): Random;
+	new (): Random;
 }
 declare const Random: RandomConstructor;
 
