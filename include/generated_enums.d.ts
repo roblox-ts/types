@@ -25,6 +25,10 @@ declare namespace Enum {
 		Motor = 1,
 		Servo = 2
 	}
+	enum AlignType {
+		Parallel = 0,
+		Perpendicular = 1
+	}
 	enum AnimationPriority {
 		Idle = 0,
 		Movement = 1,

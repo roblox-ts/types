@@ -761,6 +761,21 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: "RocketPropulsion"): RocketPropulsion | undefined;
 }
 
+// BrowserService
+interface Rbx_BrowserService extends Rbx_Instance {
+}
+type BrowserService = Rbx_BrowserService & Base<Rbx_BrowserService> & Indexable<Rbx_BrowserService>;
+interface Rbx_Instance {
+	IsA(className: "BrowserService"): this is BrowserService;
+	FindFirstAncestorOfClass(className: "BrowserService"): BrowserService | undefined;
+	FindFirstAncestorWhichIsA(className: "BrowserService"): BrowserService | undefined;
+	FindFirstChildOfClass(className: "BrowserService"): BrowserService | undefined;
+	FindFirstAncestorWhichIsA(className: "BrowserService"): BrowserService | undefined;
+}
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "BrowserService"): BrowserService;
+}
+
 // CacheableContentProvider
 interface Rbx_CacheableContentProvider extends Rbx_Instance {
 }
@@ -1090,6 +1105,7 @@ interface Rbx_Instance {
 
 // AlignOrientation
 interface Rbx_AlignOrientation extends Rbx_Constraint {
+	AlignType: Enum.AlignType;
 	MaxAngularVelocity: number;
 	MaxTorque: number;
 	PrimaryAxisOnly: boolean;
@@ -5095,6 +5111,7 @@ interface Rbx_Players extends Rbx_Instance {
 	readonly ClassicChat: boolean;
 	readonly MaxPlayers: number;
 	readonly PreferredPlayers: number;
+	RespawnTime: number;
 	GetNameFromUserIdAsync(userId: number): string;
 	GetUserIdFromNameAsync(userName: string): number;
 }
@@ -6419,6 +6436,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Server Audio Behavior"]: Enum.ServerAudioBehavior;
 	["Show Core GUI in Explorer while Playing"]: boolean;
 	["Show Diagnostics Bar"]: boolean;
+	["Show Hidden Objects in Explorer"]: boolean;
 	["Show Hover Over"]: boolean;
 	["Show Navigation Mesh"]: boolean;
 	["Show Plugin GUI Service in Explorer"]: boolean;
