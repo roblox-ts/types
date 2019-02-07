@@ -130,7 +130,6 @@ declare namespace os {
 	function time(): number;
 	function time(dateTable: DateTable): number;
 	function date(formatString: "*t" | "!*t", time?: number): DateTable;
-	function date(formatString: string, time?: number): string;
 	function difftime(t2: number, t1: number): number;
 }
 
