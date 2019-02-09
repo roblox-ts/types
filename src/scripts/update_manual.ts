@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as path from "path";
-import Project, * as ts from "ts-simple-ast";
+import Project, * as ts from "ts-morph";
 import { ReflectionMetadata } from "../class/ReflectionMetadata";
 
 const BASE_URL = "https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Client-Watch/roblox/";

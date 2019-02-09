@@ -15,6 +15,7 @@ type FunctionArguments<T> = T extends (...args: infer U) => void ? U : never;
 type Callback = (...args: any[]) => void;
 
 interface Base<T> {
+	/** **INTERNAL DO NOT USE** */
 	readonly __class: T;
 }
 type BaseType<T> = T extends Base<infer U> ? U : never;
@@ -34,6 +35,11 @@ interface InstanceConstructor {
 	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): CreatableInstances[T];
 	new (className: string, parent?: Instance): Instance;
 }
+
+interface Rbx_Instance {
+	IsA<T extends keyof CreatableInstances>(className: T): this is CreatableInstances[T];
+}
+
 declare const Instance: InstanceConstructor;
 
 // Axes

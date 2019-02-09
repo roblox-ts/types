@@ -1,5 +1,5 @@
 import * as path from "path";
-import Project, * as ts from "ts-simple-ast";
+import Project, * as ts from "ts-morph";
 import {
 	ApiCallback,
 	ApiClass,
@@ -290,7 +290,7 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile) {
+	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile, n: number) {
 		const name = rbxClass.Name;
 		const implName = IMPL_PREFIX + name;
 		const tsImplInterface = tsFile.getInterface(implName);
@@ -304,6 +304,8 @@ export class ClassGenerator extends Generator {
 			this.write(`interface ${implName} ${extendsStr}{`);
 			this.pushIndent();
 			rbxClass.Members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
+			this.write(`/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */`);
+			this.write(`__${n}: never;`);
 			this.popIndent();
 			this.write(`}`);
 		}
@@ -358,7 +360,8 @@ export class ClassGenerator extends Generator {
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {
 		this.write(`// GENERATED ROBLOX INSTANCE CLASSES`);
 		this.write(``);
-		rbxClasses.forEach(rbxClass => this.generateClass(rbxClass, sourceFile));
+		let n = 0;
+		rbxClasses.forEach(rbxClass => this.generateClass(rbxClass, sourceFile, n++));
 		this.write(``);
 	}
 
