@@ -342,14 +342,24 @@ interface Rbx_Instance {
 	WaitForChild<T extends Instance = Instance>(childName: string, timeOut: number): T | undefined;
 	/** Returns a boolean if this Instance is of type 'className' or a is a subclass of type 'className'.  If 'className' is not a valid class type in ROBLOX, this function will always return false.  [More info](http://wiki.roblox.com/index.php/IsA) */
 	IsA<T extends keyof Instances>(className: T): this is Instances[T];
+	/** Returns a boolean if this Instance is of type 'className' or a is a subclass of type 'className'.  If 'className' is not a valid class type in ROBLOX, this function will always return false.  [More info](http://wiki.roblox.com/index.php/IsA) */
+	IsA(className: string): boolean;
 	/** Returns the first ancestor of this Instance with a ClassName equal to 'className'.  The function will return nil if no Instance is found. */
 	FindFirstAncestorOfClass<T extends keyof Instances>(className: T): Instances[T] | undefined;
+	/** Returns the first ancestor of this Instance with a ClassName equal to 'className'.  The function will return nil if no Instance is found. */
+	FindFirstAncestorOfClass(className: string): Instance | undefined;
 	/** Returns the first ancestor of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
+	/** Returns the first ancestor of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
+	FindFirstAncestorWhichIsA(className: string): Instance | undefined;
 	/** Returns the first child of this Instance that with a ClassName equal to 'className'.  The function will return nil if no Instance is found. */
 	FindFirstChildOfClass<T extends keyof Instances>(className: T): Instances[T] | undefined;
+	/** Returns the first child of this Instance that with a ClassName equal to 'className'.  The function will return nil if no Instance is found. */
+	FindFirstChildOfClass(className: string): Instance | undefined;
 	/** Returns the first ancestor of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
+	/** Returns the first ancestor of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
+	FindFirstAncestorWhichIsA(className: string): Instance | undefined;
 }
 
 interface Rbx_Keyframe extends Rbx_Instance {
