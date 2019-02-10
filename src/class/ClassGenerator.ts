@@ -312,16 +312,6 @@ export class ClassGenerator extends Generator {
 
 		this.write(`type ${name} = ${implName} & Base<${implName}> & Indexable<${implName}>;`);
 
-		this.write(`interface Rbx_Instance {`);
-		this.pushIndent();
-		this.write(`IsA(className: "${name}"): this is ${name};`);
-		this.write(`FindFirstAncestorOfClass(className: "${name}"): ${name} | undefined;`);
-		this.write(`FindFirstAncestorWhichIsA(className: "${name}"): ${name} | undefined;`);
-		this.write(`FindFirstChildOfClass(className: "${name}"): ${name} | undefined;`);
-		this.write(`FindFirstAncestorWhichIsA(className: "${name}"): ${name} | undefined;`);
-		this.popIndent();
-		this.write(`}`);
-
 		if (hasTag(rbxClass, "Service")) {
 			this.write(`interface Rbx_ServiceProvider extends Rbx_Instance {`);
 			this.pushIndent();
@@ -343,13 +333,24 @@ export class ClassGenerator extends Generator {
 		this.write(``);
 	}
 
-	private generateCreatableInstanceTable(rbxClasses: Array<ApiClass>) {
-		this.write(`// CREATABLE INSTANCE TABLE`);
+	private generateInstancesTables(rbxClasses: Array<ApiClass>) {
+		this.write(`// CREATABLE INSTANCES TABLE`);
 		this.write(``);
 		this.write(`interface CreatableInstances {`);
 		this.pushIndent();
 		rbxClasses
 			.filter(rbxClass => isCreatable(rbxClass))
+			.map(rbxClass => rbxClass.Name)
+			.forEach(name => this.write(`${name}: ${name};`));
+		this.popIndent();
+		this.write(`}`);
+		this.write(``);
+
+		this.write(`// INSTANCES TABLE`);
+		this.write(``);
+		this.write(`interface Instances {`);
+		this.pushIndent();
+		rbxClasses
 			.map(rbxClass => rbxClass.Name)
 			.forEach(name => this.write(`${name}: ${name};`));
 		this.popIndent();
@@ -362,14 +363,13 @@ export class ClassGenerator extends Generator {
 		this.write(``);
 		let n = 0;
 		rbxClasses.forEach(rbxClass => this.generateClass(rbxClass, sourceFile, n++));
-		this.write(``);
 	}
 
 	public async generate(rbxClasses: Array<ApiClass>) {
 		const project = new Project({ tsConfigFilePath: path.join(__dirname, "..", "..", "include", "tsconfig.json") });
 		const sourceFile = project.getSourceFileOrThrow("manual.d.ts");
 		this.generateHeader();
-		this.generateCreatableInstanceTable(rbxClasses);
+		this.generateInstancesTables(rbxClasses);
 		this.generateClasses(rbxClasses, sourceFile);
 	}
 }
