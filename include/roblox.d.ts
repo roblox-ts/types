@@ -30,14 +30,14 @@ interface RBXScriptSignal<T = Function> {
 	Wait(): FunctionArguments<T>;
 }
 
+// generated in generated_classes.d.ts
+interface Instances {}
+interface CreatableInstances {}
+
 // InstanceConstructor
 interface InstanceConstructor {
 	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): CreatableInstances[T];
 	new (className: string, parent?: Instance): Instance;
-}
-
-interface Rbx_Instance {
-	IsA<T extends keyof CreatableInstances>(className: T): this is CreatableInstances[T];
 }
 
 declare const Instance: InstanceConstructor;
