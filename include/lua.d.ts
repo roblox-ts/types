@@ -20,40 +20,34 @@ declare function collectgarbage(option: "count"): number;
 declare function error(message?: string, level?: number): void;
 
 /** Returns the current environment in use by the function. If provided with a function, the environment of the function will be returned as an array. If provided with an integer, getfenv will provide the environment of the function at the provided stack level: Level 1 is the function calling getfenv. If stack is 0, getfenv returns the global environment of the current script. When using getfenv to get the current environment of a script, it will return the same table every time within the specific thread. */
-declare function getfenv(stack: number): Array<any>;
+declare function getfenv(stack: number): { script: LuaSourceContainer };
 
 /** Returns the metatable of the specified object if it has one, otherwise returns nil. If the object does have a metatable, but the metatable has a __metatable field set, the value of __metatable will be returned instead. */
-declare function getmetatable(object: object): any;
-
-/** Creates a blank 'userdata'. Includes an empty metatable. */
-declare function newproxy(IncludeEmptyMetatable?: boolean | undefined): any;
-
-/** Returns the first key/value pair in the array. If a lastKey argument was specified then returns the next element in the array based on the key that provided. The order in which the indices are enumerated is not specified, even for numeric indices. To traverse a table in numeric order, use a numerical for or the ipairs function. The behavior of next is undefined if, during the traversal, you assign any value to a non-existent field in the table. You may, however, modify existing fields. In particular, you may clear existing fields. */
-declare function next(t: any): [any, any];
+declare function getmetatable(object: object): unknown;
 
 /** Prints a list of parameters to console. */
-declare function print(...params: Array<any>): void;
+declare function print(...params: Array<unknown>): void;
 
 /** Checks whether v1 is equal to v2, without invoking any metamethod. */
-declare function rawequal(v1: any, v2: any): boolean;
+declare function rawequal(v1: unknown, v2: unknown): boolean;
 
 /** Gets the real value of table[index], without invoking any metamethod. */
-declare function rawget(t: any, index: any): any;
+declare function rawget(t: unknown, index: unknown): unknown;
 
 /** Sets the real value of table[index] to a given value, without invoking any metamethod. */
-declare function rawset(t: any, index: any, value: any): void;
+declare function rawset(t: unknown, index: unknown, value: unknown): void;
 
 /** Returns all arguments after argument number index. */
-declare function select(index: number, ...args: Array<any>): Array<any>;
+declare function select(index: number, ...args: Array<unknown>): Array<unknown>;
 
 /** Returns the total number of arguments that were passed after the cmd argument. */
-declare function select(cmd: "#", ...args: Array<any>): number;
+declare function select(cmd: "#", ...args: Array<unknown>): number;
 
 /** Attempts to convert the arg into a number with a specified base to interpret the value in. If it cannot be converted, this function returns nil. The base may be any integer between 2 and 36, inclusive. In bases above 10, the letter 'A' (in either upper or lower case) represents 10, 'B' represents 11, and so forth, with 'Z' representing 35. In base 10 (the default), the number may have a decimal part, as well as an optional exponent part. In other bases, only unsigned integers are accepted. */
-declare function tonumber(arg: any, base?: number): number | undefined;
+declare function tonumber(arg: unknown, base?: number): number | undefined;
 
 /** Receives an argument of any type and converts it to a string in a reasonable format. If the metatable of e has a "__tostring" field, then tostring calls the corresponding value with e as an argument and uses the result of the call as its result. For complete control of how numbers are converted, use string.format. */
-declare function tostring(value: any): string;
+declare function tostring(value: unknown): string;
 
 /** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
 declare function pcall<T extends any[], U>(
@@ -91,22 +85,22 @@ declare function pcall<T extends any[], U>(
 	: [true, U] | [false, string];
 
 interface LuaMetatable<T> {
-	__index?: (self: T, index: any) => void;
-	__newindex?: (self: T, index: any, value: any) => void;
-	__add?: (self: T, other: unknown) => any;
-	__sub?: (self: T, other: unknown) => any;
-	__mul?: (self: T, other: unknown) => any;
-	__div?: (self: T, other: unknown) => any;
-	__mod?: (self: T, other: unknown) => any;
-	__pow?: (self: T, other: unknown) => any;
-	__unm?: (self: T) => any;
+	__index?: (self: T, index: unknown) => void;
+	__newindex?: (self: T, index: unknown, value: unknown) => void;
+	__add?: (self: T, other: unknown) => unknown;
+	__sub?: (self: T, other: unknown) => unknown;
+	__mul?: (self: T, other: unknown) => unknown;
+	__div?: (self: T, other: unknown) => unknown;
+	__mod?: (self: T, other: unknown) => unknown;
+	__pow?: (self: T, other: unknown) => unknown;
+	__unm?: (self: T) => unknown;
 	__eq?: (self: T, other: unknown) => boolean;
 	__lt?: (self: T, other: unknown) => boolean;
 	__le?: (self: T, other: unknown) => boolean;
-	__call?: (self: T, ...arguments: Array<unknown>) => any;
+	__call?: (self: T, ...arguments: Array<unknown>) => unknown;
 	__concat?: (self: T, ...arguments: Array<unknown>) => string;
 	__tostring?: (self: T) => string;
-	__len?: (self: T) => any;
+	__len?: (self: T) => unknown;
 	__mode?: string;
 	__metatable?: string;
 }
@@ -166,7 +160,7 @@ interface String {
 	gmatch(pattern: string): () => string;
 
 	/** Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. */
-	gsub(pattern: string, repl: any, n?: number): string;
+	gsub(pattern: string, repl: unknown, n?: number): string;
 
 	/** Returns the length of the string */
 	len(): number;
@@ -203,20 +197,14 @@ declare namespace string {
 	/** Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). */
 	function format(pattern: string, ...args: Array<number | string>): string;
 
-	/** Returns an iterator function that, each time it is called, returns the next captures from pattern over the string s. */
-	function gmatch(s: string, pattern: string): () => string;
-
 	/** Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. */
-	function gsub(s: string, pattern: string, repl: any, n?: number): string;
+	function gsub(s: string, pattern: string, repl: unknown, n?: number): string;
 
 	/** Returns the length of the string */
 	function len(s: string): number;
 
 	/** Receives a string and returns a copy of this string with all uppercase letters changed to lowercase. */
 	function lower(s: string): string;
-
-	/** Looks for the first match of pattern in the string s. If a match is found, it is returned; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. */
-	function match(s: string, pattern: string, init?: number): string | undefined;
 
 	/** Returns a string that is the concatenation of n copies of the string s separated by the string sep. */
 	function rep(s: string, n: number): string;
@@ -333,35 +321,11 @@ declare namespace math {
 }
 
 declare namespace table {
-	/** Given a list where all elements are strings or numbers, returns the string `list[i]..sep..list[i+1] ... sep..list[j]`. The default value for sep is the empty string, the default for i is 1, and the default for j is #list. If i is greater than j, returns the empty string. */
-	function concat(list: Table, sep: string, i: number, j: number): string;
-
-	/** Iterates over the provided table, passing the key and value of each iteration over to the provided function. */
-	function foreach(t: Table, f: () => void): void;
-
-	/** Iterates over the provided table, passing the index and value of each iteration over to the provided function. */
-	function foreachi(t: Table, f: () => void): void;
-
-	/** Returns the number of elements in the table passed. */
-	function getn(t: Table): number;
-
-	/** Appends the provided value to the end of the table. */
-	function insert(t: Table, value: any): void;
-
-	/** Places the value in the table at position and shifts elements to make room if necessary. */
-	function insert(t: Table, position: number, value: any): void;
-
-	/** Removes the last element from list, returning the value of the removed element. */
-	function remove(list: Table): any;
-
-	/** Removes from list the element at position pos, returning the value of the removed element. When pos is an integer between 1 and #list, it shifts down the elements list[pos+1], list[pos+2], ..., list[#list] and erases element list[#list]; The index pos can also be 0 when #list is 0, or #list + 1; in those cases, the function erases the element list[pos]. */
-	function remove(list: Table, pos: number): any;
-
 	/** Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`, using the standard Lua less-than operator. */
-	function sort(t: Table): void;
+	function sort<T>(t: Array<T>): void;
 
 	/** Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`. Comp is a function that receives two list elements and returns true when the first element must come before the second in the final order (so that `not comp(list[i+1],list[i])` will be true after the sort). */
-	function sort<T>(t: Table, comp?: (a: T, b: T) => boolean): void;
+	function sort<T>(t: Array<T>, comp?: (a: T, b: T) => boolean): void;
 }
 
 interface thread {}
@@ -371,7 +335,7 @@ declare namespace coroutine {
 	function create(f: Function): thread;
 
 	/** Starts or continues the execution of coroutine co. The first time you resume a coroutine, it starts running its body. The values val1, ... are passed as the arguments to the body function. If the coroutine has yielded, resume restarts it; the values val1, ... are passed as the results from the yield. If the coroutine runs without any errors, resume returns true plus any values passed to yield (if the coroutine yields) or any values returned by the body function (if the coroutine terminates). If there is any error, resume returns false plus the error message. */
-	function resume(co: thread, ...params: Array<any>): unknown;
+	function resume(co: thread, ...params: Array<unknown>): unknown;
 
 	/** Returns the running coroutine. */
 	function running(): thread;
@@ -383,5 +347,5 @@ declare namespace coroutine {
 	function wrap<T extends Function>(f: T): T;
 
 	/** Suspends the execution of the calling coroutine. Any arguments to yield are passed as extra results to resume. */
-	function yield(...params: Array<any>): unknown;
+	function yield(...params: Array<unknown>): unknown;
 }
