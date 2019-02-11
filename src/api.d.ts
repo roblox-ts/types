@@ -37,6 +37,26 @@ export type CategoryType =
 	| "Thrust"
 	| "Turn";
 
+export type ClassTag =
+	| "Deprecated"
+	| "NotBrowsable"
+	| "NotCreatable"
+	| "NotReplicated"
+	| "PlayerReplicated"
+	| "Service"
+	| "Settings";
+
+export type MemberTag =
+	| "CanYield"
+	| "CustomLuaState"
+	| "Deprecated"
+	| "Hidden"
+	| "NotBrowsable"
+	| "NotReplicated"
+	| "NotScriptable"
+	| "ReadOnly"
+	| "Yields";
+
 export interface ApiMemberBase {
 	MemberType: string;
 	Name: string;
@@ -46,7 +66,7 @@ export interface ApiMemberBase {
 				Read: SecurityType;
 				Write: SecurityType;
 		  };
-	Tags?: Array<string>;
+	Tags?: Array<MemberTag>;
 }
 
 export interface ApiValueType {
@@ -85,7 +105,7 @@ type ApiMember = ApiProperty | ApiFunction | ApiEvent | ApiCallback;
 export interface ApiClass {
 	Members: Array<ApiMember>;
 	MemoryCategory: MemberCategoryType;
-	Tags?: Array<string>;
+	Tags?: Array<ClassTag>;
 	Name: string;
 	Superclass: string;
 }
