@@ -9,7 +9,9 @@ import {
 	ApiMemberBase,
 	ApiParameter,
 	ApiProperty,
-	ApiValueType
+	ApiValueType,
+	ClassTag,
+	MemberTag
 } from "../api";
 import { Generator } from "./Generator";
 
@@ -170,7 +172,14 @@ function canWrite(member: ApiMemberBase) {
 	return getSecurity(member).Write === "None";
 }
 
-function hasTag(api: ApiMemberBase | ApiClass, tag: string) {
+function classHasTag(api: ApiClass, tag: ClassTag) {
+	if (api.Tags) {
+		return api.Tags.indexOf(tag) !== -1;
+	}
+	return false;
+}
+
+function memberHasTag(api: ApiMemberBase, tag: MemberTag) {
 	if (api.Tags) {
 		return api.Tags.indexOf(tag) !== -1;
 	}
@@ -178,7 +187,11 @@ function hasTag(api: ApiMemberBase | ApiClass, tag: string) {
 }
 
 function isCreatable(rbxClass: ApiClass) {
-	return !CREATABLE_BLACKLIST[rbxClass.Name] && !hasTag(rbxClass, "NotCreatable") && !hasTag(rbxClass, "Service");
+	return (
+		!CREATABLE_BLACKLIST[rbxClass.Name] &&
+		!classHasTag(rbxClass, "NotCreatable") &&
+		!classHasTag(rbxClass, "Service")
+	);
 }
 
 function generateArgs(params: Array<ApiParameter>) {
@@ -261,7 +274,7 @@ export class ClassGenerator extends Generator {
 			if (description) {
 				this.write(`/** ${description} */`);
 			}
-			const prefix = canWrite(rbxProperty) && !hasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
+			const prefix = canWrite(rbxProperty) && !memberHasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
 			this.write(`${prefix}${safeName(name)}: ${valueType};`);
 		}
 	}
@@ -277,7 +290,7 @@ export class ClassGenerator extends Generator {
 			return;
 		}
 
-		if (canRead(rbxMember) && !hasTag(rbxMember, "Deprecated") && !hasTag(rbxMember, "NotScriptable")) {
+		if (canRead(rbxMember) && !memberHasTag(rbxMember, "Deprecated") && !memberHasTag(rbxMember, "NotScriptable")) {
 			if (rbxMember.MemberType === "Callback") {
 				this.generateCallback(rbxMember, className, tsImplInterface);
 			} else if (rbxMember.MemberType === "Event") {
@@ -312,7 +325,7 @@ export class ClassGenerator extends Generator {
 
 		this.write(`type ${name} = ${implName} & Base<${implName}> & Indexable<${implName}>;`);
 
-		if (hasTag(rbxClass, "Service")) {
+		if (classHasTag(rbxClass, "Service")) {
 			this.write(`interface Rbx_ServiceProvider extends Rbx_Instance {`);
 			this.pushIndent();
 			this.write(`GetService(className: "${name}"): ${name};`);
@@ -350,9 +363,7 @@ export class ClassGenerator extends Generator {
 		this.write(``);
 		this.write(`interface Instances {`);
 		this.pushIndent();
-		rbxClasses
-			.map(rbxClass => rbxClass.Name)
-			.forEach(name => this.write(`${name}: ${name};`));
+		rbxClasses.map(rbxClass => rbxClass.Name).forEach(name => this.write(`${name}: ${name};`));
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
