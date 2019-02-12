@@ -3870,8 +3870,6 @@ type VehicleSeat = Rbx_VehicleSeat & Base<Rbx_VehicleSeat> & Indexable<Rbx_Vehic
 
 // Model
 interface Rbx_Model extends Rbx_PVInstance {
-	/** A Part that serves as a reference for the Model's CFrame. Used in conjunction with GetModelPrimaryPartCFrame and SetModelPrimaryPartCFrame. Use this to rotate/translate all Parts relative to the PrimaryPart. */
-	PrimaryPart: BasePart;
 	/** Breaks all surface joints contained within */
 	BreakJoints(): void;
 	GetExtentsSize(): Vector3;
