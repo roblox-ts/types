@@ -515,6 +515,7 @@ interface Rbx_MarketplaceService extends Rbx_Instance {
 }
 
 interface Rbx_Model extends Rbx_PVInstance {
+	/** Describes the smallest possible rotated cuboid to contain all the parts of the model as a CFrame and Vector3 size.*/
 	GetBoundingBox(): [CFrame, Vector3];
 }
 
