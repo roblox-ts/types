@@ -644,8 +644,8 @@ interface Rbx_RemoteEvent extends Rbx_Instance {
 }
 
 interface Rbx_RemoteFunction extends Rbx_Instance {
-	InvokeClient(player: Instance, ...arguments: Array<any>): Array<any>;
-	InvokeServer(...arguments: Array<any>): Array<any>;
+	InvokeClient(player: Instance, ...arguments: Array<any>): unknown;
+	InvokeServer<R = unknown>(...arguments: Array<any>): R;
 	OnClientInvoke: Callback;
 	OnServerInvoke: Callback;
 }
