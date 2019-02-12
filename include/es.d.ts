@@ -79,6 +79,11 @@ interface ObjectConstructor {
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
 	entries(o: {}): [string, any][];
+
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(o: {}): boolean;
 }
 
 /**
@@ -303,6 +308,11 @@ interface Array<T> {
 	find<S extends T>(predicate: (value: T, index: number, obj: T[]) => value is S): S | undefined;
 	find(predicate: (value: T, index: number, obj: T[]) => boolean): T | undefined;
 
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
+
 	[n: number]: T;
 }
 
@@ -420,6 +430,11 @@ interface ReadonlyArray<T> {
 		initialValue: U
 	): U;
 
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
+
 	readonly [n: number]: T;
 }
 
@@ -440,6 +455,10 @@ interface Map<K, V> {
 	keys(): Array<K>;
 	values(): Array<V>;
 	size(): number;
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
 }
 
 interface MapConstructor {
@@ -455,6 +474,10 @@ interface ReadonlyMap<K, V> {
 	keys(): Array<K>;
 	values(): Array<V>;
 	size(): number;
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
 }
 
 interface WeakMap<K extends object, V> {
@@ -462,6 +485,10 @@ interface WeakMap<K extends object, V> {
 	get(key: K): V | undefined;
 	has(key: K): boolean;
 	set(key: K, value: V): this;
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
 }
 
 interface WeakMapConstructor {
@@ -479,6 +506,10 @@ interface Set<T> {
 	keys(): Array<T>;
 	values(): Array<T>;
 	size(): number;
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
 }
 
 interface SetConstructor {
@@ -493,12 +524,20 @@ interface ReadonlySet<T> {
 	keys(): Array<T>;
 	values(): Array<T>;
 	size(): number;
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
 }
 
 interface WeakSet<T extends object> {
 	add(value: T): this;
 	delete(value: T): boolean;
 	has(value: T): boolean;
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
 }
 
 interface WeakSetConstructor {
