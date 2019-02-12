@@ -639,7 +639,7 @@ interface Rbx_RemoteEvent extends Rbx_Instance {
 	FireAllClients(...arguments: Array<unknown>): void;
 	FireClient(player: Player, ...arguments: Array<unknown>): void;
 	FireServer(...arguments: Array<unknown>): void;
-	OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
+	OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
 	OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
 }
 
