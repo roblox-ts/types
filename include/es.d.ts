@@ -666,8 +666,3 @@ type ReturnType<T extends (...args: any[]) => any> = T extends (...args: any[]) 
  * Obtain the return type of a constructor function type
  */
 type InstanceType<T extends new (...args: any[]) => any> = T extends new (...args: any[]) => infer R ? R : any;
-
-/**
- * Marker for contextual 'this' type
- */
-interface ThisType<T> {}
