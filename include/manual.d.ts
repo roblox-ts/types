@@ -151,8 +151,15 @@ interface Rbx_GamePassService extends Rbx_Instance {
 }
 
 interface Rbx_GlobalDataStore extends Rbx_Instance {
+	/** Sets callback as a function to be executed any time the value associated with key is changed. It is important to disconnect the connection when the subscription to the key is no longer needed.  */
+	OnUpdate<T = unknown>(key: string, callback: (value: T) => void): RBXScriptConnection;
+	/** Returns the value of the entry in the DataStore with the given key */
+	GetAsync<T = unknown>(key: string): T | undefined;
+	/** Increments the value of a particular key amd returns the incremented value */
+	IncrementAsync(key: string, delta?: number): number;
+	RemoveAsync<T = unknown>(key: string): T | undefined;
 	/** Retrieves the value of the key from the website, and updates it with a new value. The callback until the value fetched matches the value on the web. Returning nil means it will not save.  */
-	UpdateAsync(key: string, transformFunction: Function): unknown;
+	UpdateAsync<O = unknown, R = unknown>(key: string, transformFunction: (oldValue: O | undefined) => R): R extends undefined ? O | undefined : R;
 }
 
 interface GroupInfo {
