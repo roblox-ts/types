@@ -517,6 +517,8 @@ interface Rbx_MarketplaceService extends Rbx_Instance {
 interface Rbx_Model extends Rbx_PVInstance {
 	/** Describes the smallest possible rotated cuboid to contain all the parts of the model as a CFrame and Vector3 size.*/
 	GetBoundingBox(): [CFrame, Vector3];
+	/** A Part that serves as a reference for the Model's CFrame. Used in conjunction with GetModelPrimaryPartCFrame and SetModelPrimaryPartCFrame. Use this to rotate/translate all Parts relative to the PrimaryPart. */
+	PrimaryPart: BasePart | undefined;
 }
 
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
