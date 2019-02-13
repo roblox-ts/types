@@ -9,6 +9,7 @@ interface Function {}
 interface CallableFunction extends Function {}
 interface NewableFunction extends Function {}
 
+/** @rbxts array */
 interface ArrayLike<T> {
 	readonly length: number;
 	readonly [n: number]: T;
@@ -149,6 +150,7 @@ interface IterableIterator<T> extends Iterator<T> {
 	[Symbol.iterator](): IterableIterator<T>;
 }
 
+/** @rbxts array */
 interface ConcatArray<T> {
 	readonly length: number;
 	readonly [n: number]: T;
@@ -156,6 +158,7 @@ interface ConcatArray<T> {
 	slice(start?: number, end?: number): T[];
 }
 
+/** @rbxts array */
 interface Array<T> {
 	/** Iterator */
 	[Symbol.iterator](): IterableIterator<T>;
@@ -316,6 +319,7 @@ interface Array<T> {
 	[n: number]: T;
 }
 
+/** @rbxts array */
 interface ReadonlyArray<T> {
 	/** Iterator */
 	[Symbol.iterator](): IterableIterator<T>;
