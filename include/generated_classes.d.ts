@@ -638,8 +638,6 @@ interface Rbx_Instance {
 	Destroy(): void;
 	/** Returns the first child of this Instance that :IsA(className).  The second argument 'recursive' is an optional boolean (defaults to false) that will force the call to traverse down thru all of this Instance's descendants until it finds an object with a name that matches the 'className' argument.  The function will return nil if no Instance is found. */
 	FindFirstChildWhichIsA(className: string, recursive?: boolean): Instance | undefined;
-	/** Returns a read-only table of this Object's children */
-	GetChildren(): Array<Instance>;
 	/** Returns a string that shows the path from the root node (DataModel) to this Instance.  This string does not include the root node (DataModel). */
 	GetFullName(): string;
 	GetPropertyChangedSignal(property: string): RBXScriptSignal;
@@ -2034,13 +2032,6 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // GlobalDataStore
 interface Rbx_GlobalDataStore extends Rbx_Instance {
-	/** Sets callback as a function to be executed any time the value associated with key is changed. It is important to disconnect the connection when the subscription to the key is no longer needed.  */
-	OnUpdate(key: string, callback: Function): RBXScriptConnection;
-	/** Returns the value of the entry in the DataStore with the given key */
-	GetAsync(key: string): unknown;
-	/** Increments the value of a particular key amd returns the incremented value */
-	IncrementAsync(key: string, delta?: number): unknown;
-	RemoveAsync(key: string): unknown;
 	/** Sets the value of the key. This overwrites any existing data stored in the key */
 	SetAsync(key: string, value?: any): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
