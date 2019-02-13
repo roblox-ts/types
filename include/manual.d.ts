@@ -151,8 +151,15 @@ interface Rbx_GamePassService extends Rbx_Instance {
 }
 
 interface Rbx_GlobalDataStore extends Rbx_Instance {
+	/** Sets callback as a function to be executed any time the value associated with key is changed. It is important to disconnect the connection when the subscription to the key is no longer needed.  */
+	OnUpdate<T = unknown>(key: string, callback: (value: T) => void): RBXScriptConnection;
+	/** Returns the value of the entry in the DataStore with the given key */
+	GetAsync<T = unknown>(key: string): T | undefined;
+	/** Increments the value of a particular key amd returns the incremented value */
+	IncrementAsync(key: string, delta?: number): number;
+	RemoveAsync<T = unknown>(key: string): T | undefined;
 	/** Retrieves the value of the key from the website, and updates it with a new value. The callback until the value fetched matches the value on the web. Returning nil means it will not save.  */
-	UpdateAsync(key: string, transformFunction: Function): unknown;
+	UpdateAsync<O = unknown, R = unknown>(key: string, transformFunction: (oldValue: O | undefined) => R): R extends undefined ? O | undefined : R;
 }
 
 interface GroupInfo {
@@ -332,6 +339,8 @@ interface Rbx_InsertService extends Rbx_Instance {
 interface Rbx_Instance {
 	/** Returns a copy of this Object and all its children. The copy's Parent is nil */
 	Clone(): this;
+	/** Returns a read-only table of this Object's children */
+	GetChildren<T extends Instance = Instance>(): Array<T>;
 	/** Returns an array containing all of the descendants of the instance. Returns in preorder traversal, or in other words, where the parents come before their children, depth first. */
 	GetDescendants(): Array<Instance>;
 	/** Returns the first ancestor of this Instance that matches the first argument 'name'.  The function will return nil if no Instance is found. */
@@ -633,13 +642,13 @@ interface Rbx_RemoteEvent extends Rbx_Instance {
 	FireAllClients(...arguments: Array<unknown>): void;
 	FireClient(player: Player, ...arguments: Array<unknown>): void;
 	FireServer(...arguments: Array<unknown>): void;
-	OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
+	OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
 	OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
 }
 
 interface Rbx_RemoteFunction extends Rbx_Instance {
-	InvokeClient(player: Instance, ...arguments: Array<any>): Array<any>;
-	InvokeServer(...arguments: Array<any>): Array<any>;
+	InvokeClient(player: Instance, ...arguments: Array<any>): unknown;
+	InvokeServer<R = unknown>(...arguments: Array<any>): R;
 	OnClientInvoke: Callback;
 	OnServerInvoke: Callback;
 }

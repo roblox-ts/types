@@ -25,8 +25,8 @@ interface RBXScriptConnection {
 	Connected: boolean;
 }
 
-interface RBXScriptSignal<T = Function> {
-	Connect(callback: T): RBXScriptConnection;
+interface RBXScriptSignal<T = Function, P = false> {
+	Connect<O extends unknown[] = FunctionArguments<T>>(callback: P extends true ? FunctionArguments<T> extends unknown[] ? (...args: O) => void : T : T): RBXScriptConnection;
 	Wait(): FunctionArguments<T>;
 }
 
