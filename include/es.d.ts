@@ -326,6 +326,36 @@ interface Array<T> {
 	 */
 	toString(): string;
 
+
+	/**
+	 * Returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1, indicating no element passed the test.
+	 * @param predicate findIndex calls predicate once for each element of the array, in ascending
+	 * order, until it finds one where predicate returns true. If such an element is found, find
+	 * immediately returns the index at which it was found. Otherwise, find returns -1.
+	 */
+	findIndex<T>(predicate: (value: T, index: number, obj: T[]) => boolean): number;
+
+	/**
+	 * The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth. Also removes empty slots in arrays.
+	 * @param depth The depth level specifying how deep a nested array structure should be flattened. Defaults to 1.
+	 * @returns A new array with the sub-array elements concatenated into it.
+	 */
+	flat(depth?: number): Array<T>
+
+	/**
+	 * The sort() method sorts the elements of an array in place and returns the array. The default sort order is built upon converting the elements into strings, then comparing via the < operator.
+	 * @param compareFunction Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code point value, according to the string conversion of each element. (a, b) => a - b is a good starting point for numbers. If compareFunction(a, b) is less than 0, sort a to an index lower than b (i.e. a comes first), and vice versa.
+	 */
+	sort(compareFunction?: (a: T, b: T) => number): this
+
+	/**
+	 * Shallow copies part of an array to another location in the same array and returns it, without modifying its size.
+	 * @param target Zero based index at which to copy the sequence to. If negative, target will be counted from the end. If target is at or greater than arr.length, nothing will be copied. If target is positioned after start, the copied sequence will be trimmed to fit arr.length.
+	 * @param start Zero based index at which to start copying elements from. If negative, start will be counted from the end. If start is omitted, copyWithin will copy from the start (defaults to 0).
+	 * @param end Zero based index at which to end copying elements from. copyWithin copies up to but not including end. If negative, end will be counted from the end. If end is omitted, copyWithin will copy until the end (default to arr.length).
+	 */
+	copyWithin(target: number, start?: number, end?: number): this
+
 	[n: number]: T;
 }
 
@@ -450,6 +480,20 @@ interface ReadonlyArray<T> {
 	isEmpty(): boolean;
 
 	readonly [n: number]: T;
+
+	/**
+	 * Returns a string representation of an array
+	 */
+	toString(): string;
+
+
+	/**
+	 * Returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1, indicating no element passed the test.
+	 * @param predicate findIndex calls predicate once for each element of the array, in ascending
+	 * order, until it finds one where predicate returns true. If such an element is found, find
+	 * immediately returns the index at which it was found. Otherwise, find returns -1.
+	 */
+	findIndex<T>(predicate: (value: T, index: number, obj: T[]) => boolean): number;
 }
 
 interface ArrayConstructor {
