@@ -107,7 +107,7 @@ interface CFrame {
 	/** Returns the inverse of this CFrame */
 	inverse(): CFrame;
 	/** Returns a CFrame interpolated between this CFrame and the goal by the fraction alpha */
-	lerp(goal: CFrame, alpha: number): CFrame;
+	Lerp(goal: CFrame, alpha: number): CFrame;
 	/** Returns a CFrame transformed from Object to World space. Equivalent to `[CFrame * cf]` */
 	toWorldSpace(cf: CFrame): CFrame;
 	/** Returns a CFrame transformed from World to Object space. Equivalent to `[CFrame:inverse() * cf]` */
@@ -179,7 +179,7 @@ interface Color3 {
 	readonly r: number;
 	readonly g: number;
 	readonly b: number;
-	lerp(goal: Color3, alpha: number): Color3;
+	Lerp(goal: Color3, alpha: number): Color3;
 }
 interface Color3Constructor {
 	new (): Color3;
