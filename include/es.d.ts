@@ -95,6 +95,11 @@ declare const Object: ObjectConstructor;
 interface String {
 	readonly length: number;
 	split(sep: string): Array<string>;
+	trim(): string;
+	trimLeft(): string;
+	trimRight(): string;
+	trimStart(): string;
+	trimEnd(): string;
 }
 
 interface Symbol {
@@ -264,7 +269,7 @@ interface Array<T> {
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
 	 */
-	filter(callbackfn: (value: T, index: number, array: T[]) => any): T[];
+	filter(callbackfn: (value: T, index: number, array: T[]) => boolean): T[];
 	/**
 	 * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 	 * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
@@ -315,6 +320,11 @@ interface Array<T> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation of an array
+	 */
+	toString(): string;
 
 	[n: number]: T;
 }
@@ -394,7 +404,7 @@ interface ReadonlyArray<T> {
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
 	 */
-	filter(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => any): T[];
+	filter(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean): T[];
 	/**
 	 * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 	 * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
@@ -463,6 +473,11 @@ interface Map<K, V> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation
+	 */
+	toString(): string;
 }
 
 interface MapConstructor {
@@ -482,6 +497,11 @@ interface ReadonlyMap<K, V> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation
+	 */
+	toString(): string;
 }
 
 interface WeakMap<K extends object, V> {
@@ -493,6 +513,11 @@ interface WeakMap<K extends object, V> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation
+	 */
+	toString(): string;
 }
 
 interface WeakMapConstructor {
@@ -514,6 +539,11 @@ interface Set<T> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation
+	 */
+	toString(): string;
 }
 
 interface SetConstructor {
@@ -532,6 +562,11 @@ interface ReadonlySet<T> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation
+	 */
+	toString(): string;
 }
 
 interface WeakSet<T extends object> {
@@ -542,6 +577,11 @@ interface WeakSet<T extends object> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation
+	 */
+	toString(): string;
 }
 
 interface WeakSetConstructor {
