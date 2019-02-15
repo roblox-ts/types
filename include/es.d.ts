@@ -206,11 +206,6 @@ interface Array<T> {
 	 */
 	slice(start?: number, end?: number): T[];
 	/**
-	 * Sorts an array.
-	 * @param compareFn The name of the function used to determine the order of the elements. If omitted, the elements are sorted in ascending, ASCII character order.
-	 */
-	sort(compareFn?: (a: T, b: T) => number): this;
-	/**
 	 * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
 	 * @param start The zero-based location in the array from which to start removing elements.
 	 * @param deleteCount The number of elements to remove.
@@ -343,10 +338,10 @@ interface Array<T> {
 	flat(depth?: number): Array<T>
 
 	/**
-	 * The sort() method sorts the elements of an array in place and returns the array. The default sort order is built upon converting the elements into strings, then comparing via the < operator.
+	 * The sort() method copies the elements of an array and returns a sorted array. The default sort order is built upon converting the elements into strings, then comparing via the < operator.
 	 * @param compareFunction Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code point value, according to the string conversion of each element. (a, b) => a - b is a good starting point for numbers. If compareFunction(a, b) is less than 0, sort a to an index lower than b (i.e. a comes first), and vice versa.
 	 */
-	sort(compareFunction?: (a: T, b: T) => number): this
+	sort(compareFunction?: (a: T, b: T) => number): T[]
 
 	/**
 	 * Shallow copies part of an array to another location in the same array and returns it, without modifying its size.
