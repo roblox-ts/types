@@ -106,6 +106,7 @@ interface Rbx_ContentProvider extends Rbx_Instance {
 	PreloadAsync(contentIdList: Array<Instance>): void;
 }
 
+/** @rbxts client */
 interface Rbx_ContextActionService extends Rbx_Instance {
 	/** Binds 'functionToBind' to fire when any 'inputTypes' happen. InputTypes can be variable in number and type. Types can be Enum.KeyCode, single character strings corresponding to keys, or Enum.UserInputType. 'actionName' is a key used by many other ContextActionService functions to query state. 'createTouchButton' if true will create a button on screen on touch devices.  This button will fire 'functionToBind' with three arguments: first argument is the actionName, second argument is the UserInputState of the input, and the third is the InputObject that fired this function. If 'functionToBind' yields or returns nil or Enum.ContextActionResult.Sink, the input will be sunk. If it returns Enum.ContextActionResult.Pass, the next bound action in the stack will be invoked. */
 	BindAction(
@@ -127,6 +128,7 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 	LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
 }
 
+/** @rbxts server */
 interface Rbx_DataStoreService extends Rbx_Instance {
 	/** Returns a data store with the given name and scope */
 	GetDataStore(name: string, scope?: string): GlobalDataStore;
@@ -150,6 +152,7 @@ interface Rbx_GamePassService extends Rbx_Instance {
 	PlayerHasPass(player: Player, gamePassId: number): boolean;
 }
 
+/** @rbxts server */
 interface Rbx_GlobalDataStore extends Rbx_Instance {
 	/** Sets callback as a function to be executed any time the value associated with key is changed. It is important to disconnect the connection when the subscription to the key is no longer needed.  */
 	OnUpdate<T = unknown>(key: string, callback: (value: T) => void): RBXScriptConnection;
@@ -535,6 +538,7 @@ interface Rbx_Model extends Rbx_PVInstance {
 	PrimaryPart: BasePart | undefined;
 }
 
+/** @rbxts server */
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
 	/** Returns a DataStorePages object. The length of each page is determined by pageSize, and the order is determined by isAscending. minValue and maxValue are optional parameters which will filter the result.  */
 	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
