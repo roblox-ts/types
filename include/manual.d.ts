@@ -371,6 +371,11 @@ interface Rbx_Instance {
 	FindFirstAncestorWhichIsA(className: string): Instance | undefined;
 }
 
+interface Rbx_JointInstance extends Rbx_Instance {
+	Part0: BasePart | undefined;
+	Part1: BasePart | undefined;
+}
+
 interface Rbx_Keyframe extends Rbx_Instance {
 	AddPose(pose: Pose): void;
 	GetPoses(): Array<Pose>;
@@ -665,6 +670,14 @@ interface Rbx_SoundService extends Rbx_Instance {
 	SetListener(listenerType: Enum.ListenerType.ObjectPosition, basePart: BasePart): void;
 }
 
+/** @rbxts server */
+interface Rbx_ServerScriptService {
+}
+
+/** @rbxts server */
+interface Rbx_ServerStorage {
+}
+
 interface MakeSystemMessageConfig {
 	Text: string;
 	Color?: Color3;
@@ -824,9 +837,4 @@ interface Rbx_Workspace extends Rbx_Model {
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean
 	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
-}
-
-interface Rbx_JointInstance extends Rbx_Instance {
-	Part0: BasePart | undefined;
-	Part1: BasePart | undefined;
 }
