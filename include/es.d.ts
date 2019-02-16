@@ -95,6 +95,11 @@ declare const Object: ObjectConstructor;
 interface String {
 	readonly length: number;
 	split(sep: string): Array<string>;
+	trim(): string;
+	trimLeft(): string;
+	trimRight(): string;
+	trimStart(): string;
+	trimEnd(): string;
 }
 
 interface Symbol {
@@ -201,11 +206,6 @@ interface Array<T> {
 	 */
 	slice(start?: number, end?: number): T[];
 	/**
-	 * Sorts an array.
-	 * @param compareFn The name of the function used to determine the order of the elements. If omitted, the elements are sorted in ascending, ASCII character order.
-	 */
-	sort(compareFn?: (a: T, b: T) => number): this;
-	/**
 	 * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
 	 * @param start The zero-based location in the array from which to start removing elements.
 	 * @param deleteCount The number of elements to remove.
@@ -264,7 +264,7 @@ interface Array<T> {
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
 	 */
-	filter(callbackfn: (value: T, index: number, array: T[]) => any): T[];
+	filter(callbackfn: (value: T, index: number, array: T[]) => boolean): T[];
 	/**
 	 * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 	 * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
@@ -315,6 +315,41 @@ interface Array<T> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation of an array
+	 */
+	toString(): string;
+
+
+	/**
+	 * Returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1, indicating no element passed the test.
+	 * @param predicate findIndex calls predicate once for each element of the array, in ascending
+	 * order, until it finds one where predicate returns true. If such an element is found, find
+	 * immediately returns the index at which it was found. Otherwise, find returns -1.
+	 */
+	findIndex<T>(predicate: (value: T, index: number, obj: T[]) => boolean): number;
+
+	/**
+	 * The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth. Also removes empty slots in arrays.
+	 * @param depth The depth level specifying how deep a nested array structure should be flattened. Defaults to 1.
+	 * @returns A new array with the sub-array elements concatenated into it.
+	 */
+	flat(depth?: number): Array<T>
+
+	/**
+	 * The sort() method copies the elements of an array and returns a sorted array. The default sort order is built upon converting the elements into strings, then comparing via the < operator.
+	 * @param compareFunction Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code point value, according to the string conversion of each element. (a, b) => a - b is a good starting point for numbers. If compareFunction(a, b) is less than 0, sort a to an index lower than b (i.e. a comes first), and vice versa.
+	 */
+	sort(compareFunction?: (a: T, b: T) => number): T[]
+
+	/**
+	 * Shallow copies part of an array to another location in the same array and returns it, without modifying its size.
+	 * @param target Zero based index at which to copy the sequence to. If negative, target will be counted from the end. If target is at or greater than arr.length, nothing will be copied. If target is positioned after start, the copied sequence will be trimmed to fit arr.length.
+	 * @param start Zero based index at which to start copying elements from. If negative, start will be counted from the end. If start is omitted, copyWithin will copy from the start (defaults to 0).
+	 * @param end Zero based index at which to end copying elements from. copyWithin copies up to but not including end. If negative, end will be counted from the end. If end is omitted, copyWithin will copy until the end (default to arr.length).
+	 */
+	copyWithin(target: number, start?: number, end?: number): this
 
 	[n: number]: T;
 }
@@ -394,7 +429,7 @@ interface ReadonlyArray<T> {
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
 	 */
-	filter(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => any): T[];
+	filter(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean): T[];
 	/**
 	 * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 	 * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
@@ -440,6 +475,20 @@ interface ReadonlyArray<T> {
 	isEmpty(): boolean;
 
 	readonly [n: number]: T;
+
+	/**
+	 * Returns a string representation of an array
+	 */
+	toString(): string;
+
+
+	/**
+	 * Returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1, indicating no element passed the test.
+	 * @param predicate findIndex calls predicate once for each element of the array, in ascending
+	 * order, until it finds one where predicate returns true. If such an element is found, find
+	 * immediately returns the index at which it was found. Otherwise, find returns -1.
+	 */
+	findIndex<T>(predicate: (value: T, index: number, obj: T[]) => boolean): number;
 }
 
 interface ArrayConstructor {
@@ -463,6 +512,11 @@ interface Map<K, V> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation
+	 */
+	toString(): string;
 }
 
 interface MapConstructor {
@@ -482,6 +536,11 @@ interface ReadonlyMap<K, V> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation
+	 */
+	toString(): string;
 }
 
 interface WeakMap<K extends object, V> {
@@ -493,6 +552,11 @@ interface WeakMap<K extends object, V> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation
+	 */
+	toString(): string;
 }
 
 interface WeakMapConstructor {
@@ -514,6 +578,11 @@ interface Set<T> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation
+	 */
+	toString(): string;
 }
 
 interface SetConstructor {
@@ -532,6 +601,11 @@ interface ReadonlySet<T> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation
+	 */
+	toString(): string;
 }
 
 interface WeakSet<T extends object> {
@@ -542,6 +616,11 @@ interface WeakSet<T extends object> {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation
+	 */
+	toString(): string;
 }
 
 interface WeakSetConstructor {
