@@ -4129,8 +4129,6 @@ interface Rbx_Player extends Rbx_Instance {
 	GetRoleInGroup(groupId: number): string;
 	IsFriendsWith(userId: number): boolean;
 	IsInGroup(groupId: number): boolean;
-	/** Loads in a new character for this player.  This will replace the player's current character, if they have one. This should be used in conjunction with Players.CharacterAutoLoads to control spawning of characters. This function only works from a server-side script (NOT a LocalScript). */
-	LoadCharacter(): void;
 	Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
 	/** Fired periodically after the user has been AFK for a while.  Currently this event is only fired for the *local* Player.  "time" is the time in seconds that the user has been idle. */
 	Idled: RBXScriptSignal<(time: number) => void>;

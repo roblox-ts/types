@@ -261,6 +261,7 @@ interface RequestAsyncResponse {
 	Body: string;
 }
 
+/** @rbxts server */
 interface Rbx_HttpService extends Rbx_Instance {
 	RequestAsync(requestOptions: RequestAsyncRequest): RequestAsyncResponse;
 	GetAsync(url: string, nocache?: boolean, headers?: HttpHeaders): string;
@@ -586,6 +587,12 @@ interface Rbx_Player extends Rbx_Instance {
 	ReplicationFocus: BasePart | undefined;
 	GetFriendsOnline(maxFriends?: number): Array<FriendOnlineInfo>;
 	GetMouse(): PlayerMouse;
+	/**
+	 * Loads in a new character for this player.  This will replace the player's current character, if they have one. This should be used in conjunction with Players.CharacterAutoLoads to control spawning of characters. This function only works from a server-side script (NOT a LocalScript).
+	 * @rbxts server
+	 */
+	LoadCharacter(): void;
+	/** @rbxts server */
 	LoadCharacterWithHumanoidDescription(humanoidDescription: HumanoidDescription): void;
 	CharacterAdded: RBXScriptSignal<(character: Model) => void>;
 	CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
