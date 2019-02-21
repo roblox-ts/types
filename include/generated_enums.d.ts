@@ -1535,7 +1535,8 @@ declare namespace Enum {
 	}
 	enum Technology {
 		Legacy = 0,
-		Voxel = 1
+		Voxel = 1,
+		Compatibility = 2
 	}
 	enum TeleportResult {
 		Success = 0,
