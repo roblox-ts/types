@@ -8,7 +8,7 @@
 interface Rbx_AnimationController extends Rbx_Instance {
 	GetPlayingAnimationTracks(): Array<AnimationTrack>;
 	LoadAnimation(animation: Animation): AnimationTrack;
-	AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
+	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 }
 
 interface Rbx_Animator extends Rbx_Instance {
@@ -38,9 +38,9 @@ interface Rbx_BasePart extends Rbx_Instance {
 	SubtractAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
 	UnionAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
 	/** Fired when the part stops touching another part */
-	TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
+	readonly TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
 	/** Fired when the part starts touching another part */
-	Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
+	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
 }
 
 interface Rbx_BillboardGui extends Rbx_LayerCollector {
@@ -54,7 +54,7 @@ interface Rbx_BindableEvent extends Rbx_Instance {
 	/** Used to make the custom event fire (see Event for more info). Arguments can be variable length. */
 	Fire(...arguments: Array<unknown>): void;
 	/** This event fires when the Fire() method is used.  Receives the variable length arguments from Fire(). */
-	Event: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
+	readonly Event: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
 }
 
 interface Rbx_BindableFunction extends Rbx_Instance {
@@ -78,17 +78,17 @@ interface Rbx_Chat extends Rbx_Instance {
 	Chat(partOrCharacter: BasePart | Model, message: string, color?: Enum.ChatColor): void;
 	FilterStringAsync(stringToFilter: string, playerFrom: Player, playerTo: Player): string;
 	FilterStringForBroadcast(stringToFilter: string, playerFrom: Player): string;
-	Chatted: RBXScriptSignal<(part: BasePart, message: string, color: Enum.ChatColor) => void>;
+	readonly Chatted: RBXScriptSignal<(part: BasePart, message: string, color: Enum.ChatColor) => void>;
 }
 
 interface Rbx_ClickDetector extends Rbx_Instance {
 	/** Fired when a player clicks on the parent Part of ClickDetector. The argument provided is always of type Player. */
-	MouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
+	readonly MouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
 	/** Fired when a player's mouse enters on the parent Part of ClickDetector. The argument provided is always of type Player. */
-	MouseHoverEnter: RBXScriptSignal<(playerWhoHovered: Player) => void>;
+	readonly MouseHoverEnter: RBXScriptSignal<(playerWhoHovered: Player) => void>;
 	/** Fired when a player's mouse leaves the parent Part of ClickDetector. The argument provided is always of type Player. */
-	MouseHoverLeave: RBXScriptSignal<(playerWhoHovered: Player) => void>;
-	RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
+	readonly MouseHoverLeave: RBXScriptSignal<(playerWhoHovered: Player) => void>;
+	readonly RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
 }
 
 interface Rbx_CollectionService extends Rbx_Instance {
@@ -124,8 +124,8 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 	): void;
 	/** If 'actionName' key contains a bound action, then this will return the touch button (if was created). Returns nil if a touch button was not created. No guarantees are made whether button will be retrievable when button is manipulated. */
 	GetButton(actionName: string): ImageButton | undefined;
-	LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
-	LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
+	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
+	readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
 }
 
 /** @rbxts server */
@@ -141,11 +141,11 @@ interface Rbx_DataStoreService extends Rbx_Instance {
 interface Rbx_Dialog extends Rbx_Instance {
 	/** Returns an array of the players currently conversing with this dialog. */
 	GetCurrentPlayers(): Array<Player>;
-	DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
+	readonly DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
 }
 
 interface Rbx_FlagStand extends Rbx_Part {
-	FlagCaptured: RBXScriptSignal<(player: Player) => void>;
+	readonly FlagCaptured: RBXScriptSignal<(player: Player) => void>;
 }
 
 interface Rbx_GamePassService extends Rbx_Instance {
@@ -200,15 +200,15 @@ interface Rbx_GroupService extends Rbx_Instance {
 
 interface Rbx_GuiObject extends Rbx_GuiBase2d {
 	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
-	InputBegan: RBXScriptSignal<(input: InputObject) => void>;
+	readonly InputBegan: RBXScriptSignal<(input: InputObject) => void>;
 	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
-	InputChanged: RBXScriptSignal<(input: InputObject) => void>;
+	readonly InputChanged: RBXScriptSignal<(input: InputObject) => void>;
 	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
-	InputEnded: RBXScriptSignal<(input: InputObject) => void>;
+	readonly InputEnded: RBXScriptSignal<(input: InputObject) => void>;
 	/** Fired when a user holds at least one finger for a short amount of time on the same screen position on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally. */
-	TouchLongPress: RBXScriptSignal<(touchPositions: Array<Vector2>, state: Enum.UserInputState) => void>;
+	readonly TouchLongPress: RBXScriptSignal<(touchPositions: Array<Vector2>, state: Enum.UserInputState) => void>;
 	/** Fired when a user drags at least one finger on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'totalTranslation' is a Vector2, indicating how far the pan gesture has gone from its starting point. 'velocity' is a Vector2 that indicates how quickly the gesture is being performed in each dimension. 'state' indicates the Enum.UserInputState of the gesture. */
-	TouchPan: RBXScriptSignal<
+	readonly TouchPan: RBXScriptSignal<
 		(
 			touchPositions: Array<Vector2>,
 			totalTranslation: Vector2,
@@ -217,15 +217,15 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 		) => void
 	>;
 	/** Fired when a user pinches their fingers on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the pinch gesture. 'scale' is a float that indicates the difference from the beginning of the pinch gesture. 'velocity' is a float indicating how quickly the pinch gesture is happening. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally. */
-	TouchPinch: RBXScriptSignal<
+	readonly TouchPinch: RBXScriptSignal<
 		(touchPositions: Array<Vector2>, scale: number, velocity: number, state: Enum.UserInputState) => void
 	>;
 	/** Fired when a user rotates two fingers on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'rotation' is a float indicating how much the rotation has gone from the start of the gesture. 'velocity' is a float that indicates how quickly the gesture is being performed. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally. */
-	TouchRotate: RBXScriptSignal<
+	readonly TouchRotate: RBXScriptSignal<
 		(touchPositions: Array<Vector2>, rotation: number, velocity: number, state: Enum.UserInputState) => void
 	>;
 	/** Fired when a user taps their finger on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the tap gesture. This event only fires locally.  This event will always fire regardless of game state. */
-	TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>) => void>;
+	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>) => void>;
 }
 
 interface Rbx_GuiService extends Rbx_Instance {
@@ -290,9 +290,9 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	MoveTo(location: Vector3, part?: BasePart): void;
 	/** Replaces the desired bodypart on the Humanoid's Character using a specified Enum.BodyPartR15 and BasePart. Returns a success boolean. */
 	ReplaceBodyPartR15(bodyPart: Enum.BodyPartR15, part: BasePart): boolean;
-	AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
-	Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
-	Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
+	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
+	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
+	readonly Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
 }
 
 interface SetInfo {
@@ -525,11 +525,11 @@ interface Rbx_MarketplaceService extends Rbx_Instance {
 	 * - **CurrencySpent** - the amount of currency spent on the product for this purchase.
 	 */
 	ProcessReceipt: (receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision;
-	PromptGamePassPurchaseFinished: RBXScriptSignal<
+	readonly PromptGamePassPurchaseFinished: RBXScriptSignal<
 		(player: Player, gamePassId: number, wasPurchased: boolean) => void
 	>;
 	/** Fired when a 'player' dismisses a purchase dialog for 'assetId'.  If the player purchased the item 'isPurchased' will be true, otherwise it will be false. This call will produce a warning if called on a guest player. */
-	PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
+	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
 }
 
 interface Rbx_Model extends Rbx_PVInstance {
@@ -594,9 +594,9 @@ interface Rbx_Player extends Rbx_Instance {
 	LoadCharacter(): void;
 	/** @rbxts server */
 	LoadCharacterWithHumanoidDescription(humanoidDescription: HumanoidDescription): void;
-	CharacterAdded: RBXScriptSignal<(character: Model) => void>;
-	CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
-	CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
+	readonly CharacterAdded: RBXScriptSignal<(character: Model) => void>;
+	readonly CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
+	readonly CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
 }
 
 interface CharacterAppearanceInfo {
@@ -645,8 +645,8 @@ interface Rbx_Players extends Rbx_Instance {
 		thumbnailType: Enum.ThumbnailType,
 		thumbnailSize: Enum.ThumbnailSize
 	): [string, boolean];
-	PlayerAdded: RBXScriptSignal<(player: Player) => void>;
-	PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
+	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
+	readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
 }
 
 interface Rbx_PointsService extends Rbx_Instance {
@@ -658,8 +658,8 @@ interface Rbx_RemoteEvent extends Rbx_Instance {
 	FireAllClients(...arguments: Array<unknown>): void;
 	FireClient(player: Player, ...arguments: Array<unknown>): void;
 	FireServer(...arguments: Array<unknown>): void;
-	OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
-	OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
+	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
+	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
 }
 
 interface Rbx_RemoteFunction extends Rbx_Instance {
@@ -757,8 +757,8 @@ interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 
 interface Rbx_Team extends Rbx_Instance {
 	GetPlayers(): Array<Player>;
-	PlayerAdded: RBXScriptSignal<(player: Player) => void>;
-	PlayerRemoved: RBXScriptSignal<(player: Player) => void>;
+	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
+	readonly PlayerRemoved: RBXScriptSignal<(player: Player) => void>;
 }
 
 interface Rbx_Teams extends Rbx_Instance {
@@ -783,7 +783,7 @@ interface Rbx_TeleportService {
 		teleportData?: any,
 		customLoadingScreen?: Instance
 	): string;
-	TeleportInitFailed: RBXScriptSignal<
+	readonly TeleportInitFailed: RBXScriptSignal<
 		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string) => void
 	>;
 }
@@ -800,7 +800,7 @@ interface Rbx_Terrain extends Rbx_BasePart {
 }
 
 interface Rbx_Tool extends Rbx_BackpackItem {
-	Equipped: RBXScriptSignal<(mouse: Mouse) => void>;
+	readonly Equipped: RBXScriptSignal<(mouse: Mouse) => void>;
 }
 
 type Tweenable = number | boolean | CFrame | Rect | Color3 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3;
@@ -820,11 +820,11 @@ interface Rbx_UserInputService {
 	GetNavigationGamepads(): Array<Enum.UserInputType>;
 	GetSupportedGamepadKeyCodes(gamepadNum: Enum.UserInputType): Array<Enum.KeyCode>;
 	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
+	readonly InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	InputChanged: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
+	readonly InputChanged: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	InputEnded: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
+	readonly InputEnded: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 }
 
 interface Rbx_Workspace extends Rbx_Model {

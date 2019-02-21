@@ -244,7 +244,7 @@ export class ClassGenerator extends Generator {
 		if (description) {
 			this.write(`/** ${description} */`);
 		}
-		this.write(`${name}: RBXScriptSignal<(${args}) => void>;`);
+		this.write(`readonly ${name}: RBXScriptSignal<(${args}) => void>;`);
 	}
 
 	private generateFunction(rbxFunction: ApiFunction, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
