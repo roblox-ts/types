@@ -506,9 +506,8 @@ declare namespace math {
 	function clamp(n: number, min: number, max: number): number;
 }
 
-// typeIs
-interface CheckableTypes {
-	// Primitives
+// type
+interface CheckablePrimitives {
 	nil: undefined;
 	boolean: boolean;
 	string: string;
@@ -516,8 +515,13 @@ interface CheckableTypes {
 	table: object & unknown[];
 	userdata: unknown;
 	function: Callback;
+}
 
-	// Roblox Types
+/**  Returns the type of its only argument, coded as a string. */
+declare function type(value: any): keyof CheckablePrimitives;
+
+// typeOf
+interface CheckableTypes extends CheckablePrimitives {
 	Instance: Instance;
 	Axes: Axes;
 	BrickColor: BrickColor;
@@ -546,5 +550,18 @@ interface CheckableTypes {
 	Vector3int16: Vector3int16;
 }
 
+/** Returns the type of the given object as a string. This function works similarly to Lua’s native type function, with the exceptions that Roblox-defined data types like Vector3 and CFrame return their respective data types as strings. */
+declare function typeOf(value: any): keyof CheckableTypes;
+
+/**
+ * Returns true if `typeof(value) == type` otherwise false.
+ * This function allows for type narrowing. i.e.
+```
+// v is unknown
+if (typeIs(v, "Vector3")) {
+	print(v.X, v.Y, v.Z);
+}
+```
+ * */
 declare function typeIs<T extends keyof CheckableTypes>(value: any, type: T): value is CheckableTypes[T];
 declare function typeIs(value: any, type: string): boolean;
