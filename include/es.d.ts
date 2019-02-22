@@ -85,6 +85,25 @@ interface ObjectConstructor {
 	 * Returns true if empty, otherwise false.
 	 */
 	isEmpty(o: {}): boolean;
+
+	/**
+	 * Returns a shallow copy of the object
+	 */
+	copy<T extends object>(o: T): T;
+
+	/**
+	 * Returns a deep copy of the object
+	 */
+	deepCopy<T extends object>(o: T): T;
+
+	/**
+	 * Returns true if
+	 * - each member of `a` equals each member of `b`
+	 * - `b` has no members that do not exist in `a`.
+	 *
+	 * Searches recursively.
+	 */
+	deepEquals(a: object, b: object): boolean;
 }
 
 /**
@@ -351,6 +370,25 @@ interface Array<T> {
 	 */
 	copyWithin(target: number, start?: number, end?: number): this
 
+	/**
+	 * Returns a shallow copy of the array
+	 */
+	copy(): this;
+
+	/**
+	 * Returns a deep copy of the array
+	 */
+	deepCopy(): this;
+
+	/**
+	 * Returns true if
+	 * - each member of `a` equals each member of `b`
+	 * - `b` has no members that do not exist in `a`.
+	 *
+	 * Searches recursively.
+	 */
+	deepEquals<U>(other: Array<U>): boolean;
+
 	[n: number]: T;
 }
 
@@ -474,8 +512,6 @@ interface ReadonlyArray<T> {
 	 */
 	isEmpty(): boolean;
 
-	readonly [n: number]: T;
-
 	/**
 	 * Returns a string representation of an array
 	 */
@@ -489,6 +525,27 @@ interface ReadonlyArray<T> {
 	 * immediately returns the index at which it was found. Otherwise, find returns -1.
 	 */
 	findIndex<T>(predicate: (value: T, index: number, obj: T[]) => boolean): number;
+
+	/**
+	 * Returns a shallow copy of the array
+	 */
+	copy(): this;
+
+	/**
+	 * Returns a deep copy of the array
+	 */
+	deepCopy(): this;
+
+	/**
+	 * Returns true if
+	 * - each member of `a` equals each member of `b`
+	 * - `b` has no members that do not exist in `a`.
+	 *
+	 * Searches recursively.
+	 */
+	deepEquals<U>(other: Array<U>): boolean;
+
+	readonly [n: number]: T;
 }
 
 interface ArrayConstructor {
