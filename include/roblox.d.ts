@@ -36,8 +36,8 @@ interface CreatableInstances {}
 
 // InstanceConstructor
 interface InstanceConstructor {
-	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): CreatableInstances[T];
-	new (className: string, parent?: Instance): Instance;
+	new <T extends keyof CreatableInstances>(className: T): CreatableInstances[T];
+	new (className: string): Instance;
 }
 
 declare const Instance: InstanceConstructor;
