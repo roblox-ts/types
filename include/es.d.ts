@@ -389,6 +389,16 @@ interface Array<T> {
 	 */
 	deepEquals<U>(other: Array<U>): boolean;
 
+	/**
+	 * Inserts `value` into the array at `index` and shifts array members forwards if needed.
+	 */
+	insert(index: number, value: T): void;
+
+	/**
+	 * Removes the array member at `index` and returns it and shifts array members backwards if needed.
+	 */
+	remove(index: number): T | undefined;
+
 	[n: number]: T;
 }
 
