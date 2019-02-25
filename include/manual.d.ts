@@ -788,6 +788,7 @@ interface Rbx_TeleportService {
 	>;
 }
 
+/** @rbxts array */
 type ReadVoxelsArray<T> = T[][][] & {
 	Size: Vector3;
 };
