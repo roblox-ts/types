@@ -631,7 +631,7 @@ interface CharacterAppearanceInfo {
 
 interface Rbx_Players extends Rbx_Instance {
 	/** @rbxts client */
-	LocalPlayer: Player | undefined;
+	LocalPlayer: Player;
 	GetHumanoidDescriptionFromOutfitId(outfitId: number): HumanoidDescription;
 	GetHumanoidDescriptionFromUserId(userId: number): HumanoidDescription;
 	GetPlayerFromCharacter(character: Model): Player | undefined;
