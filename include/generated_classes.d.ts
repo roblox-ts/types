@@ -227,7 +227,6 @@ interface Instances {
 	AnimationController: AnimationController;
 	AnimationTrack: AnimationTrack;
 	Animator: Animator;
-	AntiAddictionService: AntiAddictionService;
 	AssetService: AssetService;
 	Attachment: Attachment;
 	BadgeService: BadgeService;
@@ -769,23 +768,13 @@ interface Rbx_Animator extends Rbx_Instance {
 }
 type Animator = Rbx_Animator & Base<Rbx_Animator> & Indexable<Rbx_Animator>;
 
-// AntiAddictionService
-interface Rbx_AntiAddictionService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__12: never;
-}
-type AntiAddictionService = Rbx_AntiAddictionService & Base<Rbx_AntiAddictionService> & Indexable<Rbx_AntiAddictionService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
-	GetService(className: "AntiAddictionService"): AntiAddictionService;
-}
-
 // AssetService
 interface Rbx_AssetService extends Rbx_Instance {
 	CreatePlaceAsync(placeName: string, templatePlaceID: number, description?: string): number;
 	GetBundleDetailsAsync(bundleId: number): object;
 	SavePlaceAsync(): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__13: never;
+	__12: never;
 }
 type AssetService = Rbx_AssetService & Base<Rbx_AssetService> & Indexable<Rbx_AssetService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -811,7 +800,7 @@ interface Rbx_Attachment extends Rbx_Instance {
 	WorldPosition: Vector3;
 	WorldSecondaryAxis: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__14: never;
+	__13: never;
 }
 type Attachment = Rbx_Attachment & Base<Rbx_Attachment> & Indexable<Rbx_Attachment>;
 
@@ -821,7 +810,7 @@ interface Rbx_BadgeService extends Rbx_Instance {
 	GetBadgeInfoAsync(badgeId: number): object;
 	UserHasBadgeAsync(userId: number, badgeId: number): boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__15: never;
+	__14: never;
 }
 type BadgeService = Rbx_BadgeService & Base<Rbx_BadgeService> & Indexable<Rbx_BadgeService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -832,7 +821,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_BasePlayerGui extends Rbx_Instance {
 	GetGuiObjectsAtPosition(x: number, y: number): Array<Instance>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__16: never;
+	__15: never;
 }
 type BasePlayerGui = Rbx_BasePlayerGui & Base<Rbx_BasePlayerGui> & Indexable<Rbx_BasePlayerGui>;
 
@@ -840,7 +829,7 @@ type BasePlayerGui = Rbx_BasePlayerGui & Base<Rbx_BasePlayerGui> & Indexable<Rbx
 interface Rbx_CoreGui extends Rbx_BasePlayerGui {
 	readonly Version: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__17: never;
+	__16: never;
 }
 type CoreGui = Rbx_CoreGui & Base<Rbx_CoreGui> & Indexable<Rbx_CoreGui>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -857,7 +846,7 @@ interface Rbx_PlayerGui extends Rbx_BasePlayerGui {
 	SetTopbarTransparency(transparency: number): void;
 	readonly TopbarTransparencyChangedSignal: RBXScriptSignal<(transparency: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__18: never;
+	__17: never;
 }
 type PlayerGui = Rbx_PlayerGui & Base<Rbx_PlayerGui> & Indexable<Rbx_PlayerGui>;
 
@@ -870,7 +859,7 @@ interface Rbx_StarterGui extends Rbx_BasePlayerGui {
 	/** Will stop/begin certain core gui elements being rendered. See CoreGuiType for core guis that can be modified. */
 	SetCoreGuiEnabled(coreGuiType: Enum.CoreGuiType, enabled: boolean): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__19: never;
+	__18: never;
 }
 type StarterGui = Rbx_StarterGui & Base<Rbx_StarterGui> & Indexable<Rbx_StarterGui>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -899,28 +888,28 @@ interface Rbx_Beam extends Rbx_Instance {
 	ZOffset: number;
 	SetTextureOffset(offset?: number): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__20: never;
+	__19: never;
 }
 type Beam = Rbx_Beam & Base<Rbx_Beam> & Indexable<Rbx_Beam>;
 
 // BindableEvent
 interface Rbx_BindableEvent extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__21: never;
+	__20: never;
 }
 type BindableEvent = Rbx_BindableEvent & Base<Rbx_BindableEvent> & Indexable<Rbx_BindableEvent>;
 
 // BindableFunction
 interface Rbx_BindableFunction extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__22: never;
+	__21: never;
 }
 type BindableFunction = Rbx_BindableFunction & Base<Rbx_BindableFunction> & Indexable<Rbx_BindableFunction>;
 
 // BodyMover
 interface Rbx_BodyMover extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__23: never;
+	__22: never;
 }
 type BodyMover = Rbx_BodyMover & Base<Rbx_BodyMover> & Indexable<Rbx_BodyMover>;
 
@@ -930,7 +919,7 @@ interface Rbx_BodyAngularVelocity extends Rbx_BodyMover {
 	MaxTorque: Vector3;
 	P: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__24: never;
+	__23: never;
 }
 type BodyAngularVelocity = Rbx_BodyAngularVelocity & Base<Rbx_BodyAngularVelocity> & Indexable<Rbx_BodyAngularVelocity>;
 
@@ -938,7 +927,7 @@ type BodyAngularVelocity = Rbx_BodyAngularVelocity & Base<Rbx_BodyAngularVelocit
 interface Rbx_BodyForce extends Rbx_BodyMover {
 	Force: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__25: never;
+	__24: never;
 }
 type BodyForce = Rbx_BodyForce & Base<Rbx_BodyForce> & Indexable<Rbx_BodyForce>;
 
@@ -953,7 +942,7 @@ interface Rbx_BodyGyro extends Rbx_BodyMover {
 	/** The power continually applied to this force */
 	P: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__26: never;
+	__25: never;
 }
 type BodyGyro = Rbx_BodyGyro & Base<Rbx_BodyGyro> & Indexable<Rbx_BodyGyro>;
 
@@ -970,7 +959,7 @@ interface Rbx_BodyPosition extends Rbx_BodyMover {
 	GetLastForce(): Vector3;
 	readonly ReachedTarget: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__27: never;
+	__26: never;
 }
 type BodyPosition = Rbx_BodyPosition & Base<Rbx_BodyPosition> & Indexable<Rbx_BodyPosition>;
 
@@ -981,7 +970,7 @@ interface Rbx_BodyThrust extends Rbx_BodyMover {
 	/** The Vector3 location of where to apply the force to.  */
 	Location: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__28: never;
+	__27: never;
 }
 type BodyThrust = Rbx_BodyThrust & Base<Rbx_BodyThrust> & Indexable<Rbx_BodyThrust>;
 
@@ -996,7 +985,7 @@ interface Rbx_BodyVelocity extends Rbx_BodyMover {
 	GetLastForce(): Vector3;
 	lastForce(): Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__29: never;
+	__28: never;
 }
 type BodyVelocity = Rbx_BodyVelocity & Base<Rbx_BodyVelocity> & Indexable<Rbx_BodyVelocity>;
 
@@ -1017,14 +1006,14 @@ interface Rbx_RocketPropulsion extends Rbx_BodyMover {
 	Fire(): void;
 	readonly ReachedTarget: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__30: never;
+	__29: never;
 }
 type RocketPropulsion = Rbx_RocketPropulsion & Base<Rbx_RocketPropulsion> & Indexable<Rbx_RocketPropulsion>;
 
 // BrowserService
 interface Rbx_BrowserService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__31: never;
+	__30: never;
 }
 type BrowserService = Rbx_BrowserService & Base<Rbx_BrowserService> & Indexable<Rbx_BrowserService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1034,7 +1023,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // CacheableContentProvider
 interface Rbx_CacheableContentProvider extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__32: never;
+	__31: never;
 }
 type CacheableContentProvider = Rbx_CacheableContentProvider & Base<Rbx_CacheableContentProvider> & Indexable<Rbx_CacheableContentProvider>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1044,7 +1033,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // MeshContentProvider
 interface Rbx_MeshContentProvider extends Rbx_CacheableContentProvider {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__33: never;
+	__32: never;
 }
 type MeshContentProvider = Rbx_MeshContentProvider & Base<Rbx_MeshContentProvider> & Indexable<Rbx_MeshContentProvider>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1054,7 +1043,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // SolidModelContentProvider
 interface Rbx_SolidModelContentProvider extends Rbx_CacheableContentProvider {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__34: never;
+	__33: never;
 }
 type SolidModelContentProvider = Rbx_SolidModelContentProvider & Base<Rbx_SolidModelContentProvider> & Indexable<Rbx_SolidModelContentProvider>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1095,14 +1084,14 @@ interface Rbx_Camera extends Rbx_Instance {
 	ViewportPointToRay(x: number, y: number, depth?: number): Ray;
 	readonly InterpolationFinished: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__35: never;
+	__34: never;
 }
 type Camera = Rbx_Camera & Base<Rbx_Camera> & Indexable<Rbx_Camera>;
 
 // ChangeHistoryService
 interface Rbx_ChangeHistoryService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__36: never;
+	__35: never;
 }
 type ChangeHistoryService = Rbx_ChangeHistoryService & Base<Rbx_ChangeHistoryService> & Indexable<Rbx_ChangeHistoryService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1112,7 +1101,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // CharacterAppearance
 interface Rbx_CharacterAppearance extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__37: never;
+	__36: never;
 }
 type CharacterAppearance = Rbx_CharacterAppearance & Base<Rbx_CharacterAppearance> & Indexable<Rbx_CharacterAppearance>;
 
@@ -1131,7 +1120,7 @@ interface Rbx_BodyColors extends Rbx_CharacterAppearance {
 	TorsoColor: BrickColor;
 	TorsoColor3: Color3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__38: never;
+	__37: never;
 }
 type BodyColors = Rbx_BodyColors & Base<Rbx_BodyColors> & Indexable<Rbx_BodyColors>;
 
@@ -1142,7 +1131,7 @@ interface Rbx_CharacterMesh extends Rbx_CharacterAppearance {
 	MeshId: number;
 	OverlayTextureId: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__39: never;
+	__38: never;
 }
 type CharacterMesh = Rbx_CharacterMesh & Base<Rbx_CharacterMesh> & Indexable<Rbx_CharacterMesh>;
 
@@ -1150,7 +1139,7 @@ type CharacterMesh = Rbx_CharacterMesh & Base<Rbx_CharacterMesh> & Indexable<Rbx
 interface Rbx_Clothing extends Rbx_CharacterAppearance {
 	Color3: Color3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__40: never;
+	__39: never;
 }
 type Clothing = Rbx_Clothing & Base<Rbx_Clothing> & Indexable<Rbx_Clothing>;
 
@@ -1158,7 +1147,7 @@ type Clothing = Rbx_Clothing & Base<Rbx_Clothing> & Indexable<Rbx_Clothing>;
 interface Rbx_Pants extends Rbx_Clothing {
 	PantsTemplate: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__41: never;
+	__40: never;
 }
 type Pants = Rbx_Pants & Base<Rbx_Pants> & Indexable<Rbx_Pants>;
 
@@ -1166,7 +1155,7 @@ type Pants = Rbx_Pants & Base<Rbx_Pants> & Indexable<Rbx_Pants>;
 interface Rbx_Shirt extends Rbx_Clothing {
 	ShirtTemplate: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__42: never;
+	__41: never;
 }
 type Shirt = Rbx_Shirt & Base<Rbx_Shirt> & Indexable<Rbx_Shirt>;
 
@@ -1175,7 +1164,7 @@ interface Rbx_ShirtGraphic extends Rbx_CharacterAppearance {
 	Color3: Color3;
 	Graphic: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__43: never;
+	__42: never;
 }
 type ShirtGraphic = Rbx_ShirtGraphic & Base<Rbx_ShirtGraphic> & Indexable<Rbx_ShirtGraphic>;
 
@@ -1183,7 +1172,7 @@ type ShirtGraphic = Rbx_ShirtGraphic & Base<Rbx_ShirtGraphic> & Indexable<Rbx_Sh
 interface Rbx_Skin extends Rbx_CharacterAppearance {
 	SkinColor: BrickColor;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__44: never;
+	__43: never;
 }
 type Skin = Rbx_Skin & Base<Rbx_Skin> & Indexable<Rbx_Skin>;
 
@@ -1196,7 +1185,7 @@ interface Rbx_Chat extends Rbx_Instance {
 	CanUserChatAsync(userId: number): boolean;
 	CanUsersChatAsync(userIdFrom: number, userIdTo: number): boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__45: never;
+	__44: never;
 }
 type Chat = Rbx_Chat & Base<Rbx_Chat> & Indexable<Rbx_Chat>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1209,14 +1198,14 @@ interface Rbx_ClickDetector extends Rbx_Instance {
 	/** The maximum distance a Player's character can be from the ClickDetector's parent Part that will allow the Player's mouse to fire events on this object. */
 	MaxActivationDistance: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__46: never;
+	__45: never;
 }
 type ClickDetector = Rbx_ClickDetector & Base<Rbx_ClickDetector> & Indexable<Rbx_ClickDetector>;
 
 // ClusterPacketCache
 interface Rbx_ClusterPacketCache extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__47: never;
+	__46: never;
 }
 type ClusterPacketCache = Rbx_ClusterPacketCache & Base<Rbx_ClusterPacketCache> & Indexable<Rbx_ClusterPacketCache>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1232,7 +1221,7 @@ interface Rbx_CollectionService extends Rbx_Instance {
 	/** Removes a tag to an instance. */
 	RemoveTag(instance: Instance, tag: string): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__48: never;
+	__47: never;
 }
 type CollectionService = Rbx_CollectionService & Base<Rbx_CollectionService> & Indexable<Rbx_CollectionService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1242,7 +1231,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Configuration
 interface Rbx_Configuration extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__49: never;
+	__48: never;
 }
 type Configuration = Rbx_Configuration & Base<Rbx_Configuration> & Indexable<Rbx_Configuration>;
 
@@ -1259,7 +1248,7 @@ interface Rbx_Constraint extends Rbx_Instance {
 	/** Toggles the in-game visual associated with this constraint. */
 	Visible: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__50: never;
+	__49: never;
 }
 type Constraint = Rbx_Constraint & Base<Rbx_Constraint> & Indexable<Rbx_Constraint>;
 
@@ -1273,7 +1262,7 @@ interface Rbx_AlignOrientation extends Rbx_Constraint {
 	Responsiveness: number;
 	RigidityEnabled: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__51: never;
+	__50: never;
 }
 type AlignOrientation = Rbx_AlignOrientation & Base<Rbx_AlignOrientation> & Indexable<Rbx_AlignOrientation>;
 
@@ -1286,7 +1275,7 @@ interface Rbx_AlignPosition extends Rbx_Constraint {
 	Responsiveness: number;
 	RigidityEnabled: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__52: never;
+	__51: never;
 }
 type AlignPosition = Rbx_AlignPosition & Base<Rbx_AlignPosition> & Indexable<Rbx_AlignPosition>;
 
@@ -1307,7 +1296,7 @@ interface Rbx_BallSocketConstraint extends Rbx_Constraint {
 	/** Maximum angle between the two main axes. Value in [0, 180]. */
 	UpperAngle: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__53: never;
+	__52: never;
 }
 type BallSocketConstraint = Rbx_BallSocketConstraint & Base<Rbx_BallSocketConstraint> & Indexable<Rbx_BallSocketConstraint>;
 
@@ -1339,7 +1328,7 @@ interface Rbx_HingeConstraint extends Rbx_Constraint {
 	/** Upper limit for the angle from the SecondaryAxis of Attachment0 to the SecondaryAxis of Attachment1 around the rotation axis. Value in [-180, 180]. */
 	UpperAngle: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__54: never;
+	__53: never;
 }
 type HingeConstraint = Rbx_HingeConstraint & Base<Rbx_HingeConstraint> & Indexable<Rbx_HingeConstraint>;
 
@@ -1351,7 +1340,7 @@ interface Rbx_LineForce extends Rbx_Constraint {
 	MaxForce: number;
 	ReactionForceEnabled: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__55: never;
+	__54: never;
 }
 type LineForce = Rbx_LineForce & Base<Rbx_LineForce> & Indexable<Rbx_LineForce>;
 
@@ -1364,7 +1353,7 @@ interface Rbx_RodConstraint extends Rbx_Constraint {
 	/** The thickness of the in-game visual (diameter). Value in [0, inf). */
 	Thickness: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__56: never;
+	__55: never;
 }
 type RodConstraint = Rbx_RodConstraint & Base<Rbx_RodConstraint> & Indexable<Rbx_RodConstraint>;
 
@@ -1379,7 +1368,7 @@ interface Rbx_RopeConstraint extends Rbx_Constraint {
 	/** The thickness of the in-game visual (diameter). Value in [0, inf). */
 	Thickness: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__57: never;
+	__56: never;
 }
 type RopeConstraint = Rbx_RopeConstraint & Base<Rbx_RopeConstraint> & Indexable<Rbx_RopeConstraint>;
 
@@ -1412,7 +1401,7 @@ interface Rbx_SlidingBallConstraint extends Rbx_Constraint {
 	/** The target linear velocity of the motor in studs per second along the slider axis. Value in (-inf, inf). */
 	Velocity: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__58: never;
+	__57: never;
 }
 type SlidingBallConstraint = Rbx_SlidingBallConstraint & Base<Rbx_SlidingBallConstraint> & Indexable<Rbx_SlidingBallConstraint>;
 
@@ -1449,14 +1438,14 @@ interface Rbx_CylindricalConstraint extends Rbx_SlidingBallConstraint {
 	/** The unit vector direction of the rotation axis in world coordinates. */
 	readonly WorldRotationAxis: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__59: never;
+	__58: never;
 }
 type CylindricalConstraint = Rbx_CylindricalConstraint & Base<Rbx_CylindricalConstraint> & Indexable<Rbx_CylindricalConstraint>;
 
 // PrismaticConstraint
 interface Rbx_PrismaticConstraint extends Rbx_SlidingBallConstraint {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__60: never;
+	__59: never;
 }
 type PrismaticConstraint = Rbx_PrismaticConstraint & Base<Rbx_PrismaticConstraint> & Indexable<Rbx_PrismaticConstraint>;
 
@@ -1485,7 +1474,7 @@ interface Rbx_SpringConstraint extends Rbx_Constraint {
 	/** The thickness of the spring wire (diameter) in the in-game visual. Value in [0, inf). */
 	Thickness: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__61: never;
+	__60: never;
 }
 type SpringConstraint = Rbx_SpringConstraint & Base<Rbx_SpringConstraint> & Indexable<Rbx_SpringConstraint>;
 
@@ -1494,7 +1483,7 @@ interface Rbx_Torque extends Rbx_Constraint {
 	RelativeTo: Enum.ActuatorRelativeTo;
 	Torque: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__62: never;
+	__61: never;
 }
 type Torque = Rbx_Torque & Base<Rbx_Torque> & Indexable<Rbx_Torque>;
 
@@ -1504,7 +1493,7 @@ interface Rbx_VectorForce extends Rbx_Constraint {
 	Force: Vector3;
 	RelativeTo: Enum.ActuatorRelativeTo;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__63: never;
+	__62: never;
 }
 type VectorForce = Rbx_VectorForce & Base<Rbx_VectorForce> & Indexable<Rbx_VectorForce>;
 
@@ -1513,7 +1502,7 @@ interface Rbx_ContentProvider extends Rbx_Instance {
 	readonly BaseUrl: string;
 	readonly RequestQueueSize: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__64: never;
+	__63: never;
 }
 type ContentProvider = Rbx_ContentProvider & Base<Rbx_ContentProvider> & Indexable<Rbx_ContentProvider>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1542,7 +1531,7 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 	/** Removes all functions bound. No actionNames will remain. All touch buttons will be removed. If button was manipulated manually there is no guarantee it will be cleaned up. */
 	UnbindAllActions(): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__65: never;
+	__64: never;
 }
 type ContextActionService = Rbx_ContextActionService & Base<Rbx_ContextActionService> & Indexable<Rbx_ContextActionService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1556,14 +1545,14 @@ interface Rbx_Controller extends Rbx_Instance {
 	UnbindButton(button: Enum.Button): void;
 	readonly ButtonChanged: RBXScriptSignal<(button: Enum.Button) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__66: never;
+	__65: never;
 }
 type Controller = Rbx_Controller & Base<Rbx_Controller> & Indexable<Rbx_Controller>;
 
 // HumanoidController
 interface Rbx_HumanoidController extends Rbx_Controller {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__67: never;
+	__66: never;
 }
 type HumanoidController = Rbx_HumanoidController & Base<Rbx_HumanoidController> & Indexable<Rbx_HumanoidController>;
 
@@ -1573,21 +1562,21 @@ interface Rbx_SkateboardController extends Rbx_Controller {
 	readonly Throttle: number;
 	readonly AxisChanged: RBXScriptSignal<(axis: string) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__68: never;
+	__67: never;
 }
 type SkateboardController = Rbx_SkateboardController & Base<Rbx_SkateboardController> & Indexable<Rbx_SkateboardController>;
 
 // VehicleController
 interface Rbx_VehicleController extends Rbx_Controller {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__69: never;
+	__68: never;
 }
 type VehicleController = Rbx_VehicleController & Base<Rbx_VehicleController> & Indexable<Rbx_VehicleController>;
 
 // ControllerService
 interface Rbx_ControllerService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__70: never;
+	__69: never;
 }
 type ControllerService = Rbx_ControllerService & Base<Rbx_ControllerService> & Indexable<Rbx_ControllerService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1597,7 +1586,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // CookiesService
 interface Rbx_CookiesService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__71: never;
+	__70: never;
 }
 type CookiesService = Rbx_CookiesService & Base<Rbx_CookiesService> & Indexable<Rbx_CookiesService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1607,7 +1596,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // CorePackages
 interface Rbx_CorePackages extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__72: never;
+	__71: never;
 }
 type CorePackages = Rbx_CorePackages & Base<Rbx_CorePackages> & Indexable<Rbx_CorePackages>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1617,7 +1606,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // CoreScriptSyncService
 interface Rbx_CoreScriptSyncService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__73: never;
+	__72: never;
 }
 type CoreScriptSyncService = Rbx_CoreScriptSyncService & Base<Rbx_CoreScriptSyncService> & Indexable<Rbx_CoreScriptSyncService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1631,7 +1620,7 @@ interface Rbx_CustomEvent extends Rbx_Instance {
 	readonly ReceiverConnected: RBXScriptSignal<(receiver: Instance) => void>;
 	readonly ReceiverDisconnected: RBXScriptSignal<(receiver: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__74: never;
+	__73: never;
 }
 type CustomEvent = Rbx_CustomEvent & Base<Rbx_CustomEvent> & Indexable<Rbx_CustomEvent>;
 
@@ -1643,7 +1632,7 @@ interface Rbx_CustomEventReceiver extends Rbx_Instance {
 	readonly EventDisconnected: RBXScriptSignal<(event: Instance) => void>;
 	readonly SourceValueChanged: RBXScriptSignal<(newValue: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__75: never;
+	__74: never;
 }
 type CustomEventReceiver = Rbx_CustomEventReceiver & Base<Rbx_CustomEventReceiver> & Indexable<Rbx_CustomEventReceiver>;
 
@@ -1653,28 +1642,28 @@ interface Rbx_DataModelMesh extends Rbx_Instance {
 	Scale: Vector3;
 	VertexColor: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__76: never;
+	__75: never;
 }
 type DataModelMesh = Rbx_DataModelMesh & Base<Rbx_DataModelMesh> & Indexable<Rbx_DataModelMesh>;
 
 // BevelMesh
 interface Rbx_BevelMesh extends Rbx_DataModelMesh {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__77: never;
+	__76: never;
 }
 type BevelMesh = Rbx_BevelMesh & Base<Rbx_BevelMesh> & Indexable<Rbx_BevelMesh>;
 
 // BlockMesh
 interface Rbx_BlockMesh extends Rbx_BevelMesh {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__78: never;
+	__77: never;
 }
 type BlockMesh = Rbx_BlockMesh & Base<Rbx_BlockMesh> & Indexable<Rbx_BlockMesh>;
 
 // CylinderMesh
 interface Rbx_CylinderMesh extends Rbx_BevelMesh {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__79: never;
+	__78: never;
 }
 type CylinderMesh = Rbx_CylinderMesh & Base<Rbx_CylinderMesh> & Indexable<Rbx_CylinderMesh>;
 
@@ -1683,7 +1672,7 @@ interface Rbx_FileMesh extends Rbx_DataModelMesh {
 	MeshId: string;
 	TextureId: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__80: never;
+	__79: never;
 }
 type FileMesh = Rbx_FileMesh & Base<Rbx_FileMesh> & Indexable<Rbx_FileMesh>;
 
@@ -1691,7 +1680,7 @@ type FileMesh = Rbx_FileMesh & Base<Rbx_FileMesh> & Indexable<Rbx_FileMesh>;
 interface Rbx_SpecialMesh extends Rbx_FileMesh {
 	MeshType: Enum.MeshType;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__81: never;
+	__80: never;
 }
 type SpecialMesh = Rbx_SpecialMesh & Base<Rbx_SpecialMesh> & Indexable<Rbx_SpecialMesh>;
 
@@ -1699,7 +1688,7 @@ type SpecialMesh = Rbx_SpecialMesh & Base<Rbx_SpecialMesh> & Indexable<Rbx_Speci
 interface Rbx_DataStoreService extends Rbx_Instance {
 	GetRequestBudgetForRequestType(requestType: Enum.DataStoreRequestType): number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__82: never;
+	__81: never;
 }
 type DataStoreService = Rbx_DataStoreService & Base<Rbx_DataStoreService> & Indexable<Rbx_DataStoreService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1711,7 +1700,7 @@ interface Rbx_Debris extends Rbx_Instance {
 	/** Adds an Instance into the debris service that will later be destroyed.  Second argument 'lifetime' is optional and specifies how long (in seconds) to wait before destroying the item. If no time is specified then the item added will automatically be destroyed in 10 seconds. */
 	AddItem(item: Instance, lifetime?: number): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__83: never;
+	__82: never;
 }
 type Debris = Rbx_Debris & Base<Rbx_Debris> & Indexable<Rbx_Debris>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1741,7 +1730,7 @@ interface Rbx_DebugSettings extends Rbx_Instance {
 	TickCountPreciseOverride: Enum.TickCountSampleMethod;
 	readonly VideoMemory: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__84: never;
+	__83: never;
 }
 type DebugSettings = Rbx_DebugSettings & Base<Rbx_DebugSettings> & Indexable<Rbx_DebugSettings>;
 
@@ -1751,7 +1740,7 @@ interface Rbx_DebuggerBreakpoint extends Rbx_Instance {
 	IsEnabled: boolean;
 	readonly Line: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__85: never;
+	__84: never;
 }
 type DebuggerBreakpoint = Rbx_DebuggerBreakpoint & Base<Rbx_DebuggerBreakpoint> & Indexable<Rbx_DebuggerBreakpoint>;
 
@@ -1767,7 +1756,7 @@ interface Rbx_DebuggerManager extends Rbx_Instance {
 	readonly DebuggerAdded: RBXScriptSignal<(debug: Instance) => void>;
 	readonly DebuggerRemoved: RBXScriptSignal<(debug: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__86: never;
+	__85: never;
 }
 type DebuggerManager = Rbx_DebuggerManager & Base<Rbx_DebuggerManager> & Indexable<Rbx_DebuggerManager>;
 
@@ -1776,7 +1765,7 @@ interface Rbx_DebuggerWatch extends Rbx_Instance {
 	Expression: string;
 	CheckSyntax(): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__87: never;
+	__86: never;
 }
 type DebuggerWatch = Rbx_DebuggerWatch & Base<Rbx_DebuggerWatch> & Indexable<Rbx_DebuggerWatch>;
 
@@ -1801,7 +1790,7 @@ interface Rbx_Dialog extends Rbx_Instance {
 	TriggerDistance: number;
 	TriggerOffset: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__88: never;
+	__87: never;
 }
 type Dialog = Rbx_Dialog & Base<Rbx_Dialog> & Indexable<Rbx_Dialog>;
 
@@ -1812,7 +1801,7 @@ interface Rbx_DialogChoice extends Rbx_Instance {
 	ResponseDialog: string;
 	UserDialog: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__89: never;
+	__88: never;
 }
 type DialogChoice = Rbx_DialogChoice & Base<Rbx_DialogChoice> & Indexable<Rbx_DialogChoice>;
 
@@ -1823,7 +1812,7 @@ interface Rbx_Dragger extends Rbx_Instance {
 	MouseMove(mouseRay: Ray): void;
 	MouseUp(): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__90: never;
+	__89: never;
 }
 type Dragger = Rbx_Dragger & Base<Rbx_Dragger> & Indexable<Rbx_Dragger>;
 
@@ -1841,7 +1830,7 @@ interface Rbx_Explosion extends Rbx_Instance {
 	Visible: boolean;
 	readonly Hit: RBXScriptSignal<(part: Instance, distance: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__91: never;
+	__90: never;
 }
 type Explosion = Rbx_Explosion & Base<Rbx_Explosion> & Indexable<Rbx_Explosion>;
 
@@ -1849,7 +1838,7 @@ type Explosion = Rbx_Explosion & Base<Rbx_Explosion> & Indexable<Rbx_Explosion>;
 interface Rbx_FaceInstance extends Rbx_Instance {
 	Face: Enum.NormalId;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__92: never;
+	__91: never;
 }
 type FaceInstance = Rbx_FaceInstance & Base<Rbx_FaceInstance> & Indexable<Rbx_FaceInstance>;
 
@@ -1861,7 +1850,7 @@ interface Rbx_Decal extends Rbx_FaceInstance {
 	/** How visible the decal is.  1 is completely invisible, while 0 is completely opaque */
 	Transparency: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__93: never;
+	__92: never;
 }
 type Decal = Rbx_Decal & Base<Rbx_Decal> & Indexable<Rbx_Decal>;
 
@@ -1870,7 +1859,7 @@ interface Rbx_Texture extends Rbx_Decal {
 	StudsPerTileU: number;
 	StudsPerTileV: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__94: never;
+	__93: never;
 }
 type Texture = Rbx_Texture & Base<Rbx_Texture> & Indexable<Rbx_Texture>;
 
@@ -1881,28 +1870,28 @@ interface Rbx_Feature extends Rbx_Instance {
 	LeftRight: Enum.LeftRight;
 	TopBottom: Enum.TopBottom;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__95: never;
+	__94: never;
 }
 type Feature = Rbx_Feature & Base<Rbx_Feature> & Indexable<Rbx_Feature>;
 
 // Hole
 interface Rbx_Hole extends Rbx_Feature {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__96: never;
+	__95: never;
 }
 type Hole = Rbx_Hole & Base<Rbx_Hole> & Indexable<Rbx_Hole>;
 
 // MotorFeature
 interface Rbx_MotorFeature extends Rbx_Feature {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__97: never;
+	__96: never;
 }
 type MotorFeature = Rbx_MotorFeature & Base<Rbx_MotorFeature> & Indexable<Rbx_MotorFeature>;
 
 // File
 interface Rbx_File extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__98: never;
+	__97: never;
 }
 type File = Rbx_File & Base<Rbx_File> & Indexable<Rbx_File>;
 
@@ -1918,14 +1907,14 @@ interface Rbx_Fire extends Rbx_Instance {
 	/** How large the fire appears to be. */
 	Size: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__99: never;
+	__98: never;
 }
 type Fire = Rbx_Fire & Base<Rbx_Fire> & Indexable<Rbx_Fire>;
 
 // FlagStandService
 interface Rbx_FlagStandService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__100: never;
+	__99: never;
 }
 type FlagStandService = Rbx_FlagStandService & Base<Rbx_FlagStandService> & Indexable<Rbx_FlagStandService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1935,7 +1924,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // FlyweightService
 interface Rbx_FlyweightService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__101: never;
+	__100: never;
 }
 type FlyweightService = Rbx_FlyweightService & Base<Rbx_FlyweightService> & Indexable<Rbx_FlyweightService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1945,7 +1934,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // CSGDictionaryService
 interface Rbx_CSGDictionaryService extends Rbx_FlyweightService {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__102: never;
+	__101: never;
 }
 type CSGDictionaryService = Rbx_CSGDictionaryService & Base<Rbx_CSGDictionaryService> & Indexable<Rbx_CSGDictionaryService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1955,7 +1944,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // NonReplicatedCSGDictionaryService
 interface Rbx_NonReplicatedCSGDictionaryService extends Rbx_FlyweightService {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__103: never;
+	__102: never;
 }
 type NonReplicatedCSGDictionaryService = Rbx_NonReplicatedCSGDictionaryService & Base<Rbx_NonReplicatedCSGDictionaryService> & Indexable<Rbx_NonReplicatedCSGDictionaryService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1965,7 +1954,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Folder
 interface Rbx_Folder extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__104: never;
+	__103: never;
 }
 type Folder = Rbx_Folder & Base<Rbx_Folder> & Indexable<Rbx_Folder>;
 
@@ -1973,14 +1962,14 @@ type Folder = Rbx_Folder & Base<Rbx_Folder> & Indexable<Rbx_Folder>;
 interface Rbx_ForceField extends Rbx_Instance {
 	Visible: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__105: never;
+	__104: never;
 }
 type ForceField = Rbx_ForceField & Base<Rbx_ForceField> & Indexable<Rbx_ForceField>;
 
 // FriendService
 interface Rbx_FriendService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__106: never;
+	__105: never;
 }
 type FriendService = Rbx_FriendService & Base<Rbx_FriendService> & Indexable<Rbx_FriendService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1996,14 +1985,14 @@ interface Rbx_FunctionalTest extends Rbx_Instance {
 	Passed(message?: string): void;
 	Warn(message?: string): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__107: never;
+	__106: never;
 }
 type FunctionalTest = Rbx_FunctionalTest & Base<Rbx_FunctionalTest> & Indexable<Rbx_FunctionalTest>;
 
 // GamePassService
 interface Rbx_GamePassService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__108: never;
+	__107: never;
 }
 type GamePassService = Rbx_GamePassService & Base<Rbx_GamePassService> & Indexable<Rbx_GamePassService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2024,14 +2013,14 @@ interface Rbx_GameSettings extends Rbx_Instance {
 	VideoCaptureEnabled: boolean;
 	VideoQuality: Enum.VideoQualitySettings;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__109: never;
+	__108: never;
 }
 type GameSettings = Rbx_GameSettings & Base<Rbx_GameSettings> & Indexable<Rbx_GameSettings>;
 
 // GamepadService
 interface Rbx_GamepadService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__110: never;
+	__109: never;
 }
 type GamepadService = Rbx_GamepadService & Base<Rbx_GamepadService> & Indexable<Rbx_GamepadService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2041,7 +2030,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Geometry
 interface Rbx_Geometry extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__111: never;
+	__110: never;
 }
 type Geometry = Rbx_Geometry & Base<Rbx_Geometry> & Indexable<Rbx_Geometry>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2053,21 +2042,21 @@ interface Rbx_GlobalDataStore extends Rbx_Instance {
 	/** Sets the value of the key. This overwrites any existing data stored in the key */
 	SetAsync(key: string, value?: any): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__112: never;
+	__111: never;
 }
 type GlobalDataStore = Rbx_GlobalDataStore & Base<Rbx_GlobalDataStore> & Indexable<Rbx_GlobalDataStore>;
 
 // OrderedDataStore
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__113: never;
+	__112: never;
 }
 type OrderedDataStore = Rbx_OrderedDataStore & Base<Rbx_OrderedDataStore> & Indexable<Rbx_OrderedDataStore>;
 
 // GoogleAnalyticsConfiguration
 interface Rbx_GoogleAnalyticsConfiguration extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__114: never;
+	__113: never;
 }
 type GoogleAnalyticsConfiguration = Rbx_GoogleAnalyticsConfiguration & Base<Rbx_GoogleAnalyticsConfiguration> & Indexable<Rbx_GoogleAnalyticsConfiguration>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2077,7 +2066,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // GroupService
 interface Rbx_GroupService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__115: never;
+	__114: never;
 }
 type GroupService = Rbx_GroupService & Base<Rbx_GroupService> & Indexable<Rbx_GroupService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2087,7 +2076,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // GuiBase
 interface Rbx_GuiBase extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__116: never;
+	__115: never;
 }
 type GuiBase = Rbx_GuiBase & Base<Rbx_GuiBase> & Indexable<Rbx_GuiBase>;
 
@@ -2101,7 +2090,7 @@ interface Rbx_GuiBase2d extends Rbx_GuiBase {
 	AutoLocalize: boolean;
 	RootLocalizationTable: LocalizationTable;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__117: never;
+	__116: never;
 }
 type GuiBase2d = Rbx_GuiBase2d & Base<Rbx_GuiBase2d> & Indexable<Rbx_GuiBase2d>;
 
@@ -2158,7 +2147,7 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 	/** Fired when a user swipes their fingers on a TouchEnabled device. 'swipeDirection' is an Enum.SwipeDirection, indicating the direction the user swiped. 'numberOfTouches' is an int that indicates how many touches were involved with the gesture.  This event only fires locally. */
 	readonly TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__118: never;
+	__117: never;
 }
 type GuiObject = Rbx_GuiObject & Base<Rbx_GuiObject> & Indexable<Rbx_GuiObject>;
 
@@ -2167,7 +2156,7 @@ interface Rbx_Frame extends Rbx_GuiObject {
 	/** Determines how a frame will look. Uses Enum.FrameStyle. [More info](http://wiki.roblox.com/index.php?title=API:Enum/FrameStyle) */
 	Style: Enum.FrameStyle;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__119: never;
+	__118: never;
 }
 type Frame = Rbx_Frame & Base<Rbx_Frame> & Indexable<Rbx_Frame>;
 
@@ -2194,7 +2183,7 @@ interface Rbx_GuiButton extends Rbx_GuiObject {
 	/** This function currently does not work :( */
 	readonly MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__120: never;
+	__119: never;
 }
 type GuiButton = Rbx_GuiButton & Base<Rbx_GuiButton> & Indexable<Rbx_GuiButton>;
 
@@ -2217,7 +2206,7 @@ interface Rbx_ImageButton extends Rbx_GuiButton {
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__121: never;
+	__120: never;
 }
 type ImageButton = Rbx_ImageButton & Base<Rbx_ImageButton> & Indexable<Rbx_ImageButton>;
 
@@ -2240,14 +2229,14 @@ interface Rbx_TextButton extends Rbx_GuiButton {
 	TextXAlignment: Enum.TextXAlignment;
 	TextYAlignment: Enum.TextYAlignment;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__122: never;
+	__121: never;
 }
 type TextButton = Rbx_TextButton & Base<Rbx_TextButton> & Indexable<Rbx_TextButton>;
 
 // GuiLabel
 interface Rbx_GuiLabel extends Rbx_GuiObject {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__123: never;
+	__122: never;
 }
 type GuiLabel = Rbx_GuiLabel & Base<Rbx_GuiLabel> & Indexable<Rbx_GuiLabel>;
 
@@ -2268,7 +2257,7 @@ interface Rbx_ImageLabel extends Rbx_GuiLabel {
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__124: never;
+	__123: never;
 }
 type ImageLabel = Rbx_ImageLabel & Base<Rbx_ImageLabel> & Indexable<Rbx_ImageLabel>;
 
@@ -2291,7 +2280,7 @@ interface Rbx_TextLabel extends Rbx_GuiLabel {
 	TextXAlignment: Enum.TextXAlignment;
 	TextYAlignment: Enum.TextYAlignment;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__125: never;
+	__124: never;
 }
 type TextLabel = Rbx_TextLabel & Base<Rbx_TextLabel> & Indexable<Rbx_TextLabel>;
 
@@ -2321,7 +2310,7 @@ interface Rbx_ScrollingFrame extends Rbx_GuiObject {
 	VerticalScrollBarInset: Enum.ScrollBarInset;
 	VerticalScrollBarPosition: Enum.VerticalScrollBarPosition;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__126: never;
+	__125: never;
 }
 type ScrollingFrame = Rbx_ScrollingFrame & Base<Rbx_ScrollingFrame> & Indexable<Rbx_ScrollingFrame>;
 
@@ -2354,7 +2343,7 @@ interface Rbx_TextBox extends Rbx_GuiObject {
 	readonly FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: Instance) => void>;
 	readonly Focused: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__127: never;
+	__126: never;
 }
 type TextBox = Rbx_TextBox & Base<Rbx_TextBox> & Indexable<Rbx_TextBox>;
 
@@ -2367,7 +2356,7 @@ interface Rbx_ViewportFrame extends Rbx_GuiObject {
 	/** A number value that specifies how transparent the rendered image of the ViewportFrame is */
 	ImageTransparency: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__128: never;
+	__127: never;
 }
 type ViewportFrame = Rbx_ViewportFrame & Base<Rbx_ViewportFrame> & Indexable<Rbx_ViewportFrame>;
 
@@ -2377,7 +2366,7 @@ interface Rbx_LayerCollector extends Rbx_GuiBase2d {
 	ResetOnSpawn: boolean;
 	ZIndexBehavior: Enum.ZIndexBehavior;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__129: never;
+	__128: never;
 }
 type LayerCollector = Rbx_LayerCollector & Base<Rbx_LayerCollector> & Indexable<Rbx_LayerCollector>;
 
@@ -2402,7 +2391,7 @@ interface Rbx_BillboardGui extends Rbx_LayerCollector {
 	StudsOffset: Vector3;
 	StudsOffsetWorldSpace: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__130: never;
+	__129: never;
 }
 type BillboardGui = Rbx_BillboardGui & Base<Rbx_BillboardGui> & Indexable<Rbx_BillboardGui>;
 
@@ -2411,7 +2400,7 @@ interface Rbx_PluginGui extends Rbx_LayerCollector {
 	Title: string;
 	BindToClose(callback?: Function): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__131: never;
+	__130: never;
 }
 type PluginGui = Rbx_PluginGui & Base<Rbx_PluginGui> & Indexable<Rbx_PluginGui>;
 
@@ -2419,14 +2408,14 @@ type PluginGui = Rbx_PluginGui & Base<Rbx_PluginGui> & Indexable<Rbx_PluginGui>;
 interface Rbx_DockWidgetPluginGui extends Rbx_PluginGui {
 	readonly HostWidgetWasRestored: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__132: never;
+	__131: never;
 }
 type DockWidgetPluginGui = Rbx_DockWidgetPluginGui & Base<Rbx_DockWidgetPluginGui> & Indexable<Rbx_DockWidgetPluginGui>;
 
 // QWidgetPluginGui
 interface Rbx_QWidgetPluginGui extends Rbx_PluginGui {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__133: never;
+	__132: never;
 }
 type QWidgetPluginGui = Rbx_QWidgetPluginGui & Base<Rbx_QWidgetPluginGui> & Indexable<Rbx_QWidgetPluginGui>;
 
@@ -2435,14 +2424,14 @@ interface Rbx_ScreenGui extends Rbx_LayerCollector {
 	DisplayOrder: number;
 	IgnoreGuiInset: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__134: never;
+	__133: never;
 }
 type ScreenGui = Rbx_ScreenGui & Base<Rbx_ScreenGui> & Indexable<Rbx_ScreenGui>;
 
 // GuiMain
 interface Rbx_GuiMain extends Rbx_ScreenGui {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__135: never;
+	__134: never;
 }
 type GuiMain = Rbx_GuiMain & Base<Rbx_GuiMain> & Indexable<Rbx_GuiMain>;
 
@@ -2459,7 +2448,7 @@ interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 	ToolPunchThroughDistance: number;
 	ZOffset: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__136: never;
+	__135: never;
 }
 type SurfaceGui = Rbx_SurfaceGui & Base<Rbx_SurfaceGui> & Indexable<Rbx_SurfaceGui>;
 
@@ -2469,7 +2458,7 @@ interface Rbx_GuiBase3d extends Rbx_GuiBase {
 	Transparency: number;
 	Visible: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__137: never;
+	__136: never;
 }
 type GuiBase3d = Rbx_GuiBase3d & Base<Rbx_GuiBase3d> & Indexable<Rbx_GuiBase3d>;
 
@@ -2492,7 +2481,7 @@ interface Rbx_FloorWire extends Rbx_GuiBase3d {
 	/** How thick the wire is. */
 	WireRadius: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__138: never;
+	__137: never;
 }
 type FloorWire = Rbx_FloorWire & Base<Rbx_FloorWire> & Indexable<Rbx_FloorWire>;
 
@@ -2500,7 +2489,7 @@ type FloorWire = Rbx_FloorWire & Base<Rbx_FloorWire> & Indexable<Rbx_FloorWire>;
 interface Rbx_PVAdornment extends Rbx_GuiBase3d {
 	Adornee: PVInstance;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__139: never;
+	__138: never;
 }
 type PVAdornment = Rbx_PVAdornment & Base<Rbx_PVAdornment> & Indexable<Rbx_PVAdornment>;
 
@@ -2515,7 +2504,7 @@ interface Rbx_HandleAdornment extends Rbx_PVAdornment {
 	readonly MouseEnter: RBXScriptSignal<() => void>;
 	readonly MouseLeave: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__140: never;
+	__139: never;
 }
 type HandleAdornment = Rbx_HandleAdornment & Base<Rbx_HandleAdornment> & Indexable<Rbx_HandleAdornment>;
 
@@ -2523,7 +2512,7 @@ type HandleAdornment = Rbx_HandleAdornment & Base<Rbx_HandleAdornment> & Indexab
 interface Rbx_BoxHandleAdornment extends Rbx_HandleAdornment {
 	Size: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__141: never;
+	__140: never;
 }
 type BoxHandleAdornment = Rbx_BoxHandleAdornment & Base<Rbx_BoxHandleAdornment> & Indexable<Rbx_BoxHandleAdornment>;
 
@@ -2532,7 +2521,7 @@ interface Rbx_ConeHandleAdornment extends Rbx_HandleAdornment {
 	Height: number;
 	Radius: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__142: never;
+	__141: never;
 }
 type ConeHandleAdornment = Rbx_ConeHandleAdornment & Base<Rbx_ConeHandleAdornment> & Indexable<Rbx_ConeHandleAdornment>;
 
@@ -2541,7 +2530,7 @@ interface Rbx_CylinderHandleAdornment extends Rbx_HandleAdornment {
 	Height: number;
 	Radius: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__143: never;
+	__142: never;
 }
 type CylinderHandleAdornment = Rbx_CylinderHandleAdornment & Base<Rbx_CylinderHandleAdornment> & Indexable<Rbx_CylinderHandleAdornment>;
 
@@ -2550,7 +2539,7 @@ interface Rbx_ImageHandleAdornment extends Rbx_HandleAdornment {
 	Image: string;
 	Size: Vector2;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__144: never;
+	__143: never;
 }
 type ImageHandleAdornment = Rbx_ImageHandleAdornment & Base<Rbx_ImageHandleAdornment> & Indexable<Rbx_ImageHandleAdornment>;
 
@@ -2559,7 +2548,7 @@ interface Rbx_LineHandleAdornment extends Rbx_HandleAdornment {
 	Length: number;
 	Thickness: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__145: never;
+	__144: never;
 }
 type LineHandleAdornment = Rbx_LineHandleAdornment & Base<Rbx_LineHandleAdornment> & Indexable<Rbx_LineHandleAdornment>;
 
@@ -2567,14 +2556,14 @@ type LineHandleAdornment = Rbx_LineHandleAdornment & Base<Rbx_LineHandleAdornmen
 interface Rbx_SphereHandleAdornment extends Rbx_HandleAdornment {
 	Radius: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__146: never;
+	__145: never;
 }
 type SphereHandleAdornment = Rbx_SphereHandleAdornment & Base<Rbx_SphereHandleAdornment> & Indexable<Rbx_SphereHandleAdornment>;
 
 // ParabolaAdornment
 interface Rbx_ParabolaAdornment extends Rbx_PVAdornment {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__147: never;
+	__146: never;
 }
 type ParabolaAdornment = Rbx_ParabolaAdornment & Base<Rbx_ParabolaAdornment> & Indexable<Rbx_ParabolaAdornment>;
 
@@ -2584,7 +2573,7 @@ interface Rbx_SelectionBox extends Rbx_PVAdornment {
 	SurfaceColor3: Color3;
 	SurfaceTransparency: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__148: never;
+	__147: never;
 }
 type SelectionBox = Rbx_SelectionBox & Base<Rbx_SelectionBox> & Indexable<Rbx_SelectionBox>;
 
@@ -2593,7 +2582,7 @@ interface Rbx_SelectionSphere extends Rbx_PVAdornment {
 	SurfaceColor3: Color3;
 	SurfaceTransparency: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__149: never;
+	__148: never;
 }
 type SelectionSphere = Rbx_SelectionSphere & Base<Rbx_SelectionSphere> & Indexable<Rbx_SelectionSphere>;
 
@@ -2601,14 +2590,14 @@ type SelectionSphere = Rbx_SelectionSphere & Base<Rbx_SelectionSphere> & Indexab
 interface Rbx_PartAdornment extends Rbx_GuiBase3d {
 	Adornee: BasePart;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__150: never;
+	__149: never;
 }
 type PartAdornment = Rbx_PartAdornment & Base<Rbx_PartAdornment> & Indexable<Rbx_PartAdornment>;
 
 // HandlesBase
 interface Rbx_HandlesBase extends Rbx_PartAdornment {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__151: never;
+	__150: never;
 }
 type HandlesBase = Rbx_HandlesBase & Base<Rbx_HandlesBase> & Indexable<Rbx_HandlesBase>;
 
@@ -2621,7 +2610,7 @@ interface Rbx_ArcHandles extends Rbx_HandlesBase {
 	readonly MouseEnter: RBXScriptSignal<(axis: Enum.Axis) => void>;
 	readonly MouseLeave: RBXScriptSignal<(axis: Enum.Axis) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__152: never;
+	__151: never;
 }
 type ArcHandles = Rbx_ArcHandles & Base<Rbx_ArcHandles> & Indexable<Rbx_ArcHandles>;
 
@@ -2635,7 +2624,7 @@ interface Rbx_Handles extends Rbx_HandlesBase {
 	readonly MouseEnter: RBXScriptSignal<(face: Enum.NormalId) => void>;
 	readonly MouseLeave: RBXScriptSignal<(face: Enum.NormalId) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__153: never;
+	__152: never;
 }
 type Handles = Rbx_Handles & Base<Rbx_Handles> & Indexable<Rbx_Handles>;
 
@@ -2643,7 +2632,7 @@ type Handles = Rbx_Handles & Base<Rbx_Handles> & Indexable<Rbx_Handles>;
 interface Rbx_SurfaceSelection extends Rbx_PartAdornment {
 	TargetSurface: Enum.NormalId;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__154: never;
+	__153: never;
 }
 type SurfaceSelection = Rbx_SurfaceSelection & Base<Rbx_SurfaceSelection> & Indexable<Rbx_SurfaceSelection>;
 
@@ -2651,7 +2640,7 @@ type SurfaceSelection = Rbx_SurfaceSelection & Base<Rbx_SurfaceSelection> & Inde
 interface Rbx_SelectionLasso extends Rbx_GuiBase3d {
 	Humanoid: Humanoid;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__155: never;
+	__154: never;
 }
 type SelectionLasso = Rbx_SelectionLasso & Base<Rbx_SelectionLasso> & Indexable<Rbx_SelectionLasso>;
 
@@ -2659,7 +2648,7 @@ type SelectionLasso = Rbx_SelectionLasso & Base<Rbx_SelectionLasso> & Indexable<
 interface Rbx_SelectionPartLasso extends Rbx_SelectionLasso {
 	Part: BasePart;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__156: never;
+	__155: never;
 }
 type SelectionPartLasso = Rbx_SelectionPartLasso & Base<Rbx_SelectionPartLasso> & Indexable<Rbx_SelectionPartLasso>;
 
@@ -2667,21 +2656,21 @@ type SelectionPartLasso = Rbx_SelectionPartLasso & Base<Rbx_SelectionPartLasso> 
 interface Rbx_SelectionPointLasso extends Rbx_SelectionLasso {
 	Point: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__157: never;
+	__156: never;
 }
 type SelectionPointLasso = Rbx_SelectionPointLasso & Base<Rbx_SelectionPointLasso> & Indexable<Rbx_SelectionPointLasso>;
 
 // GuiItem
 interface Rbx_GuiItem extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__158: never;
+	__157: never;
 }
 type GuiItem = Rbx_GuiItem & Base<Rbx_GuiItem> & Indexable<Rbx_GuiItem>;
 
 // Backpack
 interface Rbx_Backpack extends Rbx_GuiItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__159: never;
+	__158: never;
 }
 type Backpack = Rbx_Backpack & Base<Rbx_Backpack> & Indexable<Rbx_Backpack>;
 
@@ -2689,7 +2678,7 @@ type Backpack = Rbx_Backpack & Base<Rbx_Backpack> & Indexable<Rbx_Backpack>;
 interface Rbx_BackpackItem extends Rbx_GuiItem {
 	TextureId: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__160: never;
+	__159: never;
 }
 type BackpackItem = Rbx_BackpackItem & Base<Rbx_BackpackItem> & Indexable<Rbx_BackpackItem>;
 
@@ -2700,7 +2689,7 @@ interface Rbx_HopperBin extends Rbx_BackpackItem {
 	readonly Deselected: RBXScriptSignal<() => void>;
 	readonly Selected: RBXScriptSignal<(mouse: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__161: never;
+	__160: never;
 }
 type HopperBin = Rbx_HopperBin & Base<Rbx_HopperBin> & Indexable<Rbx_HopperBin>;
 
@@ -2722,7 +2711,7 @@ interface Rbx_Tool extends Rbx_BackpackItem {
 	readonly Deactivated: RBXScriptSignal<() => void>;
 	readonly Unequipped: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__162: never;
+	__161: never;
 }
 type Tool = Rbx_Tool & Base<Rbx_Tool> & Indexable<Rbx_Tool>;
 
@@ -2731,28 +2720,28 @@ interface Rbx_Flag extends Rbx_Tool {
 	/** The Team this flag is for. Corresponds with the TeamColors in the Teams service. */
 	TeamColor: BrickColor;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__163: never;
+	__162: never;
 }
 type Flag = Rbx_Flag & Base<Rbx_Flag> & Indexable<Rbx_Flag>;
 
 // ButtonBindingWidget
 interface Rbx_ButtonBindingWidget extends Rbx_GuiItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__164: never;
+	__163: never;
 }
 type ButtonBindingWidget = Rbx_ButtonBindingWidget & Base<Rbx_ButtonBindingWidget> & Indexable<Rbx_ButtonBindingWidget>;
 
 // GuiRoot
 interface Rbx_GuiRoot extends Rbx_GuiItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__165: never;
+	__164: never;
 }
 type GuiRoot = Rbx_GuiRoot & Base<Rbx_GuiRoot> & Indexable<Rbx_GuiRoot>;
 
 // Hopper
 interface Rbx_Hopper extends Rbx_GuiItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__166: never;
+	__165: never;
 }
 type Hopper = Rbx_Hopper & Base<Rbx_Hopper> & Indexable<Rbx_Hopper>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2762,7 +2751,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // StarterPack
 interface Rbx_StarterPack extends Rbx_GuiItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__167: never;
+	__166: never;
 }
 type StarterPack = Rbx_StarterPack & Base<Rbx_StarterPack> & Indexable<Rbx_StarterPack>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2781,7 +2770,7 @@ interface Rbx_GuiService extends Rbx_Instance {
 	readonly MenuClosed: RBXScriptSignal<() => void>;
 	readonly MenuOpened: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__168: never;
+	__167: never;
 }
 type GuiService = Rbx_GuiService & Base<Rbx_GuiService> & Indexable<Rbx_GuiService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2791,7 +2780,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // GuidRegistryService
 interface Rbx_GuidRegistryService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__169: never;
+	__168: never;
 }
 type GuidRegistryService = Rbx_GuidRegistryService & Base<Rbx_GuidRegistryService> & Indexable<Rbx_GuidRegistryService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2803,7 +2792,7 @@ interface Rbx_HapticService extends Rbx_Instance {
 	IsMotorSupported(inputType: Enum.UserInputType, vibrationMotor: Enum.VibrationMotor): boolean;
 	IsVibrationSupported(inputType: Enum.UserInputType): boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__170: never;
+	__169: never;
 }
 type HapticService = Rbx_HapticService & Base<Rbx_HapticService> & Indexable<Rbx_HapticService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2813,7 +2802,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // HttpRbxApiService
 interface Rbx_HttpRbxApiService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__171: never;
+	__170: never;
 }
 type HttpRbxApiService = Rbx_HttpRbxApiService & Base<Rbx_HttpRbxApiService> & Indexable<Rbx_HttpRbxApiService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2823,7 +2812,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // HttpRequest
 interface Rbx_HttpRequest extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__172: never;
+	__171: never;
 }
 type HttpRequest = Rbx_HttpRequest & Base<Rbx_HttpRequest> & Indexable<Rbx_HttpRequest>;
 
@@ -2834,7 +2823,7 @@ interface Rbx_HttpService extends Rbx_Instance {
 	JSONEncode(input?: any): string;
 	UrlEncode(input: string): string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__173: never;
+	__172: never;
 }
 type HttpService = Rbx_HttpService & Base<Rbx_HttpService> & Indexable<Rbx_HttpService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2901,7 +2890,7 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	readonly Strafing: RBXScriptSignal<(active: boolean) => void>;
 	readonly Swimming: RBXScriptSignal<(speed: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__174: never;
+	__173: never;
 }
 type Humanoid = Rbx_Humanoid & Base<Rbx_Humanoid> & Indexable<Rbx_Humanoid>;
 
@@ -2945,7 +2934,7 @@ interface Rbx_HumanoidDescription extends Rbx_Instance {
 	WalkAnimation: number;
 	WidthScale: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__175: never;
+	__174: never;
 }
 type HumanoidDescription = Rbx_HumanoidDescription & Base<Rbx_HumanoidDescription> & Indexable<Rbx_HumanoidDescription>;
 
@@ -2961,7 +2950,7 @@ interface Rbx_InputObject extends Rbx_Instance {
 	/** An enum that describes what kind of input this object is describing (mousebutton, touch, etc.).  See Enum.UserInputType for more info. */
 	UserInputType: Enum.UserInputType;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__176: never;
+	__175: never;
 }
 type InputObject = Rbx_InputObject & Base<Rbx_InputObject> & Indexable<Rbx_InputObject>;
 
@@ -2969,7 +2958,7 @@ type InputObject = Rbx_InputObject & Base<Rbx_InputObject> & Indexable<Rbx_Input
 interface Rbx_InsertService extends Rbx_Instance {
 	GetLatestAssetVersionAsync(assetId: number): number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__177: never;
+	__176: never;
 }
 type InsertService = Rbx_InsertService & Base<Rbx_InsertService> & Indexable<Rbx_InsertService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2983,7 +2972,7 @@ interface Rbx_JointInstance extends Rbx_Instance {
 	C0: CFrame;
 	C1: CFrame;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__178: never;
+	__177: never;
 }
 type JointInstance = Rbx_JointInstance & Base<Rbx_JointInstance> & Indexable<Rbx_JointInstance>;
 
@@ -2991,21 +2980,21 @@ type JointInstance = Rbx_JointInstance & Base<Rbx_JointInstance> & Indexable<Rbx
 interface Rbx_DynamicRotate extends Rbx_JointInstance {
 	BaseAngle: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__179: never;
+	__178: never;
 }
 type DynamicRotate = Rbx_DynamicRotate & Base<Rbx_DynamicRotate> & Indexable<Rbx_DynamicRotate>;
 
 // RotateP
 interface Rbx_RotateP extends Rbx_DynamicRotate {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__180: never;
+	__179: never;
 }
 type RotateP = Rbx_RotateP & Base<Rbx_RotateP> & Indexable<Rbx_RotateP>;
 
 // RotateV
 interface Rbx_RotateV extends Rbx_DynamicRotate {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__181: never;
+	__180: never;
 }
 type RotateV = Rbx_RotateV & Base<Rbx_RotateV> & Indexable<Rbx_RotateV>;
 
@@ -3016,28 +3005,28 @@ interface Rbx_Glue extends Rbx_JointInstance {
 	F2: Vector3;
 	F3: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__182: never;
+	__181: never;
 }
 type Glue = Rbx_Glue & Base<Rbx_Glue> & Indexable<Rbx_Glue>;
 
 // ManualSurfaceJointInstance
 interface Rbx_ManualSurfaceJointInstance extends Rbx_JointInstance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__183: never;
+	__182: never;
 }
 type ManualSurfaceJointInstance = Rbx_ManualSurfaceJointInstance & Base<Rbx_ManualSurfaceJointInstance> & Indexable<Rbx_ManualSurfaceJointInstance>;
 
 // ManualGlue
 interface Rbx_ManualGlue extends Rbx_ManualSurfaceJointInstance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__184: never;
+	__183: never;
 }
 type ManualGlue = Rbx_ManualGlue & Base<Rbx_ManualGlue> & Indexable<Rbx_ManualGlue>;
 
 // ManualWeld
 interface Rbx_ManualWeld extends Rbx_ManualSurfaceJointInstance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__185: never;
+	__184: never;
 }
 type ManualWeld = Rbx_ManualWeld & Base<Rbx_ManualWeld> & Indexable<Rbx_ManualWeld>;
 
@@ -3048,7 +3037,7 @@ interface Rbx_Motor extends Rbx_JointInstance {
 	MaxVelocity: number;
 	SetDesiredAngle(value: number): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__186: never;
+	__185: never;
 }
 type Motor = Rbx_Motor & Base<Rbx_Motor> & Indexable<Rbx_Motor>;
 
@@ -3056,21 +3045,21 @@ type Motor = Rbx_Motor & Base<Rbx_Motor> & Indexable<Rbx_Motor>;
 interface Rbx_Motor6D extends Rbx_Motor {
 	Transform: CFrame;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__187: never;
+	__186: never;
 }
 type Motor6D = Rbx_Motor6D & Base<Rbx_Motor6D> & Indexable<Rbx_Motor6D>;
 
 // Rotate
 interface Rbx_Rotate extends Rbx_JointInstance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__188: never;
+	__187: never;
 }
 type Rotate = Rbx_Rotate & Base<Rbx_Rotate> & Indexable<Rbx_Rotate>;
 
 // Snap
 interface Rbx_Snap extends Rbx_JointInstance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__189: never;
+	__188: never;
 }
 type Snap = Rbx_Snap & Base<Rbx_Snap> & Indexable<Rbx_Snap>;
 
@@ -3081,14 +3070,14 @@ interface Rbx_VelocityMotor extends Rbx_JointInstance {
 	Hole: Hole;
 	MaxVelocity: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__190: never;
+	__189: never;
 }
 type VelocityMotor = Rbx_VelocityMotor & Base<Rbx_VelocityMotor> & Indexable<Rbx_VelocityMotor>;
 
 // Weld
 interface Rbx_Weld extends Rbx_JointInstance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__191: never;
+	__190: never;
 }
 type Weld = Rbx_Weld & Base<Rbx_Weld> & Indexable<Rbx_Weld>;
 
@@ -3100,7 +3089,7 @@ interface Rbx_JointsService extends Rbx_Instance {
 	SetJoinAfterMoveTarget(joinTarget: Instance): void;
 	ShowPermissibleJoints(): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__192: never;
+	__191: never;
 }
 type JointsService = Rbx_JointsService & Base<Rbx_JointsService> & Indexable<Rbx_JointsService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3110,7 +3099,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // KeyboardService
 interface Rbx_KeyboardService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__193: never;
+	__192: never;
 }
 type KeyboardService = Rbx_KeyboardService & Base<Rbx_KeyboardService> & Indexable<Rbx_KeyboardService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3124,7 +3113,7 @@ interface Rbx_Keyframe extends Rbx_Instance {
 	GetMarkers(): Array<Instance>;
 	RemoveMarker(marker: Instance): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__194: never;
+	__193: never;
 }
 type Keyframe = Rbx_Keyframe & Base<Rbx_Keyframe> & Indexable<Rbx_Keyframe>;
 
@@ -3132,7 +3121,7 @@ type Keyframe = Rbx_Keyframe & Base<Rbx_Keyframe> & Indexable<Rbx_Keyframe>;
 interface Rbx_KeyframeMarker extends Rbx_Instance {
 	Value: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__195: never;
+	__194: never;
 }
 type KeyframeMarker = Rbx_KeyframeMarker & Base<Rbx_KeyframeMarker> & Indexable<Rbx_KeyframeMarker>;
 
@@ -3141,14 +3130,14 @@ interface Rbx_KeyframeSequence extends Rbx_Instance {
 	Loop: boolean;
 	Priority: Enum.AnimationPriority;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__196: never;
+	__195: never;
 }
 type KeyframeSequence = Rbx_KeyframeSequence & Base<Rbx_KeyframeSequence> & Indexable<Rbx_KeyframeSequence>;
 
 // KeyframeSequenceProvider
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__197: never;
+	__196: never;
 }
 type KeyframeSequenceProvider = Rbx_KeyframeSequenceProvider & Base<Rbx_KeyframeSequenceProvider> & Indexable<Rbx_KeyframeSequenceProvider>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3162,7 +3151,7 @@ interface Rbx_Light extends Rbx_Instance {
 	Enabled: boolean;
 	Shadows: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__198: never;
+	__197: never;
 }
 type Light = Rbx_Light & Base<Rbx_Light> & Indexable<Rbx_Light>;
 
@@ -3170,7 +3159,7 @@ type Light = Rbx_Light & Base<Rbx_Light> & Indexable<Rbx_Light>;
 interface Rbx_PointLight extends Rbx_Light {
 	Range: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__199: never;
+	__198: never;
 }
 type PointLight = Rbx_PointLight & Base<Rbx_PointLight> & Indexable<Rbx_PointLight>;
 
@@ -3180,7 +3169,7 @@ interface Rbx_SpotLight extends Rbx_Light {
 	Face: Enum.NormalId;
 	Range: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__200: never;
+	__199: never;
 }
 type SpotLight = Rbx_SpotLight & Base<Rbx_SpotLight> & Indexable<Rbx_SpotLight>;
 
@@ -3190,7 +3179,7 @@ interface Rbx_SurfaceLight extends Rbx_Light {
 	Face: Enum.NormalId;
 	Range: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__201: never;
+	__200: never;
 }
 type SurfaceLight = Rbx_SurfaceLight & Base<Rbx_SurfaceLight> & Indexable<Rbx_SurfaceLight>;
 
@@ -3236,7 +3225,7 @@ interface Rbx_Lighting extends Rbx_Instance {
 	/** Fired whenever a property of Lighting is changed, or a skybox is added or removed. Skyboxes are of type 'Sky' and should be parented directly to lighting. */
 	readonly LightingChanged: RBXScriptSignal<(skyboxChanged: boolean) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__202: never;
+	__201: never;
 }
 type Lighting = Rbx_Lighting & Base<Rbx_Lighting> & Indexable<Rbx_Lighting>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3246,7 +3235,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // LocalStorageService
 interface Rbx_LocalStorageService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__203: never;
+	__202: never;
 }
 type LocalStorageService = Rbx_LocalStorageService & Base<Rbx_LocalStorageService> & Indexable<Rbx_LocalStorageService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3256,7 +3245,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // AppStorageService
 interface Rbx_AppStorageService extends Rbx_LocalStorageService {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__204: never;
+	__203: never;
 }
 type AppStorageService = Rbx_AppStorageService & Base<Rbx_AppStorageService> & Indexable<Rbx_AppStorageService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3266,7 +3255,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // UserStorageService
 interface Rbx_UserStorageService extends Rbx_LocalStorageService {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__205: never;
+	__204: never;
 }
 type UserStorageService = Rbx_UserStorageService & Base<Rbx_UserStorageService> & Indexable<Rbx_UserStorageService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3282,7 +3271,7 @@ interface Rbx_LocalizationService extends Rbx_Instance {
 	GetTranslatorForLocaleAsync(locale: string): Instance | undefined;
 	GetTranslatorForPlayerAsync(player: Instance): Instance | undefined;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__206: never;
+	__205: never;
 }
 type LocalizationService = Rbx_LocalizationService & Base<Rbx_LocalizationService> & Indexable<Rbx_LocalizationService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3302,7 +3291,7 @@ interface Rbx_LocalizationTable extends Rbx_Instance {
 	SetEntrySource(key: string, source: string, context: string, newSource: string): void;
 	SetEntryValue(key: string, source: string, context: string, localeId: string, text: string): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__207: never;
+	__206: never;
 }
 type LocalizationTable = Rbx_LocalizationTable & Base<Rbx_LocalizationTable> & Indexable<Rbx_LocalizationTable>;
 
@@ -3310,7 +3299,7 @@ type LocalizationTable = Rbx_LocalizationTable & Base<Rbx_LocalizationTable> & I
 interface Rbx_LogService extends Rbx_Instance {
 	readonly MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__208: never;
+	__207: never;
 }
 type LogService = Rbx_LogService & Base<Rbx_LogService> & Indexable<Rbx_LogService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3320,7 +3309,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // LoginService
 interface Rbx_LoginService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__209: never;
+	__208: never;
 }
 type LoginService = Rbx_LoginService & Base<Rbx_LoginService> & Indexable<Rbx_LoginService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3337,14 +3326,14 @@ interface Rbx_LuaSettings extends Rbx_Instance {
 	GcStepMul: number;
 	WaitingThreadsBudget: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__210: never;
+	__209: never;
 }
 type LuaSettings = Rbx_LuaSettings & Base<Rbx_LuaSettings> & Indexable<Rbx_LuaSettings>;
 
 // LuaSourceContainer
 interface Rbx_LuaSourceContainer extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__211: never;
+	__210: never;
 }
 type LuaSourceContainer = Rbx_LuaSourceContainer & Base<Rbx_LuaSourceContainer> & Indexable<Rbx_LuaSourceContainer>;
 
@@ -3353,28 +3342,28 @@ interface Rbx_BaseScript extends Rbx_LuaSourceContainer {
 	Disabled: boolean;
 	LinkedSource: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__212: never;
+	__211: never;
 }
 type BaseScript = Rbx_BaseScript & Base<Rbx_BaseScript> & Indexable<Rbx_BaseScript>;
 
 // CoreScript
 interface Rbx_CoreScript extends Rbx_BaseScript {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__213: never;
+	__212: never;
 }
 type CoreScript = Rbx_CoreScript & Base<Rbx_CoreScript> & Indexable<Rbx_CoreScript>;
 
 // Script
 interface Rbx_Script extends Rbx_BaseScript {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__214: never;
+	__213: never;
 }
 type Script = Rbx_Script & Base<Rbx_Script> & Indexable<Rbx_Script>;
 
 // LocalScript
 interface Rbx_LocalScript extends Rbx_Script {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__215: never;
+	__214: never;
 }
 type LocalScript = Rbx_LocalScript & Base<Rbx_LocalScript> & Indexable<Rbx_LocalScript>;
 
@@ -3382,14 +3371,14 @@ type LocalScript = Rbx_LocalScript & Base<Rbx_LocalScript> & Indexable<Rbx_Local
 interface Rbx_ModuleScript extends Rbx_LuaSourceContainer {
 	LinkedSource: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__216: never;
+	__215: never;
 }
 type ModuleScript = Rbx_ModuleScript & Base<Rbx_ModuleScript> & Indexable<Rbx_ModuleScript>;
 
 // LuaWebService
 interface Rbx_LuaWebService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__217: never;
+	__216: never;
 }
 type LuaWebService = Rbx_LuaWebService & Base<Rbx_LuaWebService> & Indexable<Rbx_LuaWebService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3401,7 +3390,7 @@ interface Rbx_MarketplaceService extends Rbx_Instance {
 	GetDeveloperProductsAsync(): Instance | undefined;
 	UserOwnsGamePassAsync(userId: number, gamePassId: number): boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__218: never;
+	__217: never;
 }
 type MarketplaceService = Rbx_MarketplaceService & Base<Rbx_MarketplaceService> & Indexable<Rbx_MarketplaceService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3412,14 +3401,14 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Message extends Rbx_Instance {
 	Text: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__219: never;
+	__218: never;
 }
 type Message = Rbx_Message & Base<Rbx_Message> & Indexable<Rbx_Message>;
 
 // Hint
 interface Rbx_Hint extends Rbx_Message {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__220: never;
+	__219: never;
 }
 type Hint = Rbx_Hint & Base<Rbx_Hint> & Indexable<Rbx_Hint>;
 
@@ -3428,7 +3417,7 @@ interface Rbx_MessagingService extends Rbx_Instance {
 	PublishAsync(topic: string, message?: any): void;
 	SubscribeAsync(topic: string, callback: Function): RBXScriptConnection;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__221: never;
+	__220: never;
 }
 type MessagingService = Rbx_MessagingService & Base<Rbx_MessagingService> & Indexable<Rbx_MessagingService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3476,28 +3465,28 @@ interface Rbx_Mouse extends Rbx_Instance {
 	/** This event is currently non-operational. */
 	readonly WheelForward: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__222: never;
+	__221: never;
 }
 type Mouse = Rbx_Mouse & Base<Rbx_Mouse> & Indexable<Rbx_Mouse>;
 
 // PlayerMouse
 interface Rbx_PlayerMouse extends Rbx_Mouse {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__223: never;
+	__222: never;
 }
 type PlayerMouse = Rbx_PlayerMouse & Base<Rbx_PlayerMouse> & Indexable<Rbx_PlayerMouse>;
 
 // PluginMouse
 interface Rbx_PluginMouse extends Rbx_Mouse {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__224: never;
+	__223: never;
 }
 type PluginMouse = Rbx_PluginMouse & Base<Rbx_PluginMouse> & Indexable<Rbx_PluginMouse>;
 
 // MouseService
 interface Rbx_MouseService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__225: never;
+	__224: never;
 }
 type MouseService = Rbx_MouseService & Base<Rbx_MouseService> & Indexable<Rbx_MouseService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3508,14 +3497,14 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_NetworkMarker extends Rbx_Instance {
 	readonly Received: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__226: never;
+	__225: never;
 }
 type NetworkMarker = Rbx_NetworkMarker & Base<Rbx_NetworkMarker> & Indexable<Rbx_NetworkMarker>;
 
 // NetworkPeer
 interface Rbx_NetworkPeer extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__227: never;
+	__226: never;
 }
 type NetworkPeer = Rbx_NetworkPeer & Base<Rbx_NetworkPeer> & Indexable<Rbx_NetworkPeer>;
 
@@ -3526,7 +3515,7 @@ interface Rbx_NetworkClient extends Rbx_NetworkPeer {
 	readonly ConnectionFailed: RBXScriptSignal<(peer: string, code: number, reason: string) => void>;
 	readonly ConnectionRejected: RBXScriptSignal<(peer: string) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__228: never;
+	__227: never;
 }
 type NetworkClient = Rbx_NetworkClient & Base<Rbx_NetworkClient> & Indexable<Rbx_NetworkClient>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3537,7 +3526,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_NetworkServer extends Rbx_NetworkPeer {
 	readonly Port: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__229: never;
+	__228: never;
 }
 type NetworkServer = Rbx_NetworkServer & Base<Rbx_NetworkServer> & Indexable<Rbx_NetworkServer>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3548,21 +3537,21 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_NetworkReplicator extends Rbx_Instance {
 	GetPlayer(): Instance | undefined;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__230: never;
+	__229: never;
 }
 type NetworkReplicator = Rbx_NetworkReplicator & Base<Rbx_NetworkReplicator> & Indexable<Rbx_NetworkReplicator>;
 
 // ClientReplicator
 interface Rbx_ClientReplicator extends Rbx_NetworkReplicator {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__231: never;
+	__230: never;
 }
 type ClientReplicator = Rbx_ClientReplicator & Base<Rbx_ClientReplicator> & Indexable<Rbx_ClientReplicator>;
 
 // ServerReplicator
 interface Rbx_ServerReplicator extends Rbx_NetworkReplicator {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__232: never;
+	__231: never;
 }
 type ServerReplicator = Rbx_ServerReplicator & Base<Rbx_ServerReplicator> & Indexable<Rbx_ServerReplicator>;
 
@@ -3600,7 +3589,7 @@ interface Rbx_NetworkSettings extends Rbx_Instance {
 	TrackPhysicsDetails: boolean;
 	UsePhysicsPacketCache: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__233: never;
+	__232: never;
 }
 type NetworkSettings = Rbx_NetworkSettings & Base<Rbx_NetworkSettings> & Indexable<Rbx_NetworkSettings>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3610,7 +3599,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // NotificationService
 interface Rbx_NotificationService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__234: never;
+	__233: never;
 }
 type NotificationService = Rbx_NotificationService & Base<Rbx_NotificationService> & Indexable<Rbx_NotificationService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3620,7 +3609,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // PVInstance
 interface Rbx_PVInstance extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__235: never;
+	__234: never;
 }
 type PVInstance = Rbx_PVInstance & Base<Rbx_PVInstance> & Indexable<Rbx_PVInstance>;
 
@@ -3700,21 +3689,21 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	Resize(normalId: Enum.NormalId, deltaAmount: number): boolean;
 	SetNetworkOwnershipAuto(): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__236: never;
+	__235: never;
 }
 type BasePart = Rbx_BasePart & Base<Rbx_BasePart> & Indexable<Rbx_BasePart>;
 
 // CornerWedgePart
 interface Rbx_CornerWedgePart extends Rbx_BasePart {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__237: never;
+	__236: never;
 }
 type CornerWedgePart = Rbx_CornerWedgePart & Base<Rbx_CornerWedgePart> & Indexable<Rbx_CornerWedgePart>;
 
 // FormFactorPart
 interface Rbx_FormFactorPart extends Rbx_BasePart {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__238: never;
+	__237: never;
 }
 type FormFactorPart = Rbx_FormFactorPart & Base<Rbx_FormFactorPart> & Indexable<Rbx_FormFactorPart>;
 
@@ -3722,7 +3711,7 @@ type FormFactorPart = Rbx_FormFactorPart & Base<Rbx_FormFactorPart> & Indexable<
 interface Rbx_Part extends Rbx_FormFactorPart {
 	Shape: Enum.PartType;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__239: never;
+	__238: never;
 }
 type Part = Rbx_Part & Base<Rbx_Part> & Indexable<Rbx_Part>;
 
@@ -3730,14 +3719,14 @@ type Part = Rbx_Part & Base<Rbx_Part> & Indexable<Rbx_Part>;
 interface Rbx_FlagStand extends Rbx_Part {
 	TeamColor: BrickColor;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__240: never;
+	__239: never;
 }
 type FlagStand = Rbx_FlagStand & Base<Rbx_FlagStand> & Indexable<Rbx_FlagStand>;
 
 // Platform
 interface Rbx_Platform extends Rbx_Part {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__241: never;
+	__240: never;
 }
 type Platform = Rbx_Platform & Base<Rbx_Platform> & Indexable<Rbx_Platform>;
 
@@ -3747,7 +3736,7 @@ interface Rbx_Seat extends Rbx_Part {
 	readonly Occupant: Humanoid;
 	Sit(humanoid: Instance): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__242: never;
+	__241: never;
 }
 type Seat = Rbx_Seat & Base<Rbx_Seat> & Indexable<Rbx_Seat>;
 
@@ -3763,7 +3752,7 @@ interface Rbx_SkateboardPlatform extends Rbx_Part {
 	readonly MoveStateChanged: RBXScriptSignal<(newState: Enum.MoveState, oldState: Enum.MoveState) => void>;
 	readonly Unequipped: RBXScriptSignal<(humanoid: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__243: never;
+	__242: never;
 }
 type SkateboardPlatform = Rbx_SkateboardPlatform & Base<Rbx_SkateboardPlatform> & Indexable<Rbx_SkateboardPlatform>;
 
@@ -3775,14 +3764,14 @@ interface Rbx_SpawnLocation extends Rbx_Part {
 	Neutral: boolean;
 	TeamColor: BrickColor;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__244: never;
+	__243: never;
 }
 type SpawnLocation = Rbx_SpawnLocation & Base<Rbx_SpawnLocation> & Indexable<Rbx_SpawnLocation>;
 
 // WedgePart
 interface Rbx_WedgePart extends Rbx_FormFactorPart {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__245: never;
+	__244: never;
 }
 type WedgePart = Rbx_WedgePart & Base<Rbx_WedgePart> & Indexable<Rbx_WedgePart>;
 
@@ -3791,7 +3780,7 @@ interface Rbx_MeshPart extends Rbx_BasePart {
 	readonly MeshId: string;
 	TextureID: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__246: never;
+	__245: never;
 }
 type MeshPart = Rbx_MeshPart & Base<Rbx_MeshPart> & Indexable<Rbx_MeshPart>;
 
@@ -3801,21 +3790,21 @@ interface Rbx_PartOperation extends Rbx_BasePart {
 	readonly TriangleCount: number;
 	UsePartColor: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__247: never;
+	__246: never;
 }
 type PartOperation = Rbx_PartOperation & Base<Rbx_PartOperation> & Indexable<Rbx_PartOperation>;
 
 // NegateOperation
 interface Rbx_NegateOperation extends Rbx_PartOperation {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__248: never;
+	__247: never;
 }
 type NegateOperation = Rbx_NegateOperation & Base<Rbx_NegateOperation> & Indexable<Rbx_NegateOperation>;
 
 // UnionOperation
 interface Rbx_UnionOperation extends Rbx_PartOperation {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__249: never;
+	__248: never;
 }
 type UnionOperation = Rbx_UnionOperation & Base<Rbx_UnionOperation> & Indexable<Rbx_UnionOperation>;
 
@@ -3840,7 +3829,7 @@ interface Rbx_Terrain extends Rbx_BasePart {
 	WorldToCellPreferEmpty(position: Vector3): Vector3;
 	WorldToCellPreferSolid(position: Vector3): Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__250: never;
+	__249: never;
 }
 type Terrain = Rbx_Terrain & Base<Rbx_Terrain> & Indexable<Rbx_Terrain>;
 
@@ -3848,7 +3837,7 @@ type Terrain = Rbx_Terrain & Base<Rbx_Terrain> & Indexable<Rbx_Terrain>;
 interface Rbx_TrussPart extends Rbx_BasePart {
 	Style: Enum.Style;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__251: never;
+	__250: never;
 }
 type TrussPart = Rbx_TrussPart & Base<Rbx_TrussPart> & Indexable<Rbx_TrussPart>;
 
@@ -3867,7 +3856,7 @@ interface Rbx_VehicleSeat extends Rbx_BasePart {
 	TurnSpeed: number;
 	Sit(humanoid: Instance): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__252: never;
+	__251: never;
 }
 type VehicleSeat = Rbx_VehicleSeat & Base<Rbx_VehicleSeat> & Indexable<Rbx_VehicleSeat>;
 
@@ -3887,14 +3876,14 @@ interface Rbx_Model extends Rbx_PVInstance {
 	/** Similar to MoveTo(), except instead of moving to an explicit location, we use the model's current CFrame location and offset it. */
 	TranslateBy(delta: Vector3): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__253: never;
+	__252: never;
 }
 type Model = Rbx_Model & Base<Rbx_Model> & Indexable<Rbx_Model>;
 
 // Status
 interface Rbx_Status extends Rbx_Model {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__254: never;
+	__253: never;
 }
 type Status = Rbx_Status & Base<Rbx_Status> & Indexable<Rbx_Status>;
 
@@ -3922,7 +3911,7 @@ interface Rbx_Workspace extends Rbx_Model {
 	PGSIsEnabled(): boolean;
 	UnjoinFromOutsiders(objects: Array<Instance>): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__255: never;
+	__254: never;
 }
 type Workspace = Rbx_Workspace & Base<Rbx_Workspace> & Indexable<Rbx_Workspace>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3934,7 +3923,7 @@ interface Rbx_PackageLink extends Rbx_Instance {
 	readonly PackageId: string;
 	readonly VersionNumber: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__256: never;
+	__255: never;
 }
 type PackageLink = Rbx_PackageLink & Base<Rbx_PackageLink> & Indexable<Rbx_PackageLink>;
 
@@ -3944,42 +3933,42 @@ interface Rbx_Pages extends Rbx_Instance {
 	GetCurrentPage(): unknown;
 	AdvanceToNextPageAsync(): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__257: never;
+	__256: never;
 }
 type Pages = Rbx_Pages & Base<Rbx_Pages> & Indexable<Rbx_Pages>;
 
 // DataStorePages
 interface Rbx_DataStorePages extends Rbx_Pages {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__258: never;
+	__257: never;
 }
 type DataStorePages = Rbx_DataStorePages & Base<Rbx_DataStorePages> & Indexable<Rbx_DataStorePages>;
 
 // FriendPages
 interface Rbx_FriendPages extends Rbx_Pages {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__259: never;
+	__258: never;
 }
 type FriendPages = Rbx_FriendPages & Base<Rbx_FriendPages> & Indexable<Rbx_FriendPages>;
 
 // InventoryPages
 interface Rbx_InventoryPages extends Rbx_Pages {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__260: never;
+	__259: never;
 }
 type InventoryPages = Rbx_InventoryPages & Base<Rbx_InventoryPages> & Indexable<Rbx_InventoryPages>;
 
 // StandardPages
 interface Rbx_StandardPages extends Rbx_Pages {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__261: never;
+	__260: never;
 }
 type StandardPages = Rbx_StandardPages & Base<Rbx_StandardPages> & Indexable<Rbx_StandardPages>;
 
 // PartOperationAsset
 interface Rbx_PartOperationAsset extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__262: never;
+	__261: never;
 }
 type PartOperationAsset = Rbx_PartOperationAsset & Base<Rbx_PartOperationAsset> & Indexable<Rbx_PartOperationAsset>;
 
@@ -4008,7 +3997,7 @@ interface Rbx_ParticleEmitter extends Rbx_Instance {
 	Clear(): void;
 	Emit(particleCount?: number): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__263: never;
+	__262: never;
 }
 type ParticleEmitter = Rbx_ParticleEmitter & Base<Rbx_ParticleEmitter> & Indexable<Rbx_ParticleEmitter>;
 
@@ -4019,14 +4008,14 @@ interface Rbx_Path extends Rbx_Instance {
 	ComputeAsync(start: Vector3, finish: Vector3): void;
 	readonly Blocked: RBXScriptSignal<(blockedWaypointIdx: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__264: never;
+	__263: never;
 }
 type Path = Rbx_Path & Base<Rbx_Path> & Indexable<Rbx_Path>;
 
 // PathfindingService
 interface Rbx_PathfindingService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__265: never;
+	__264: never;
 }
 type PathfindingService = Rbx_PathfindingService & Base<Rbx_PathfindingService> & Indexable<Rbx_PathfindingService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4036,7 +4025,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // PhysicsPacketCache
 interface Rbx_PhysicsPacketCache extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__266: never;
+	__265: never;
 }
 type PhysicsPacketCache = Rbx_PhysicsPacketCache & Base<Rbx_PhysicsPacketCache> & Indexable<Rbx_PhysicsPacketCache>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4056,7 +4045,7 @@ interface Rbx_PhysicsService extends Rbx_Instance {
 	RenameCollisionGroup(from: string, to: string): void;
 	SetPartCollisionGroup(part: Instance, name: string): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__267: never;
+	__266: never;
 }
 type PhysicsService = Rbx_PhysicsService & Base<Rbx_PhysicsService> & Indexable<Rbx_PhysicsService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4088,7 +4077,7 @@ interface Rbx_PhysicsSettings extends Rbx_Instance {
 	ThrottleAdjustTime: number;
 	UseCSGv2: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__268: never;
+	__267: never;
 }
 type PhysicsSettings = Rbx_PhysicsSettings & Base<Rbx_PhysicsSettings> & Indexable<Rbx_PhysicsSettings>;
 
@@ -4133,7 +4122,7 @@ interface Rbx_Player extends Rbx_Instance {
 	readonly Idled: RBXScriptSignal<(time: number) => void>;
 	readonly OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__269: never;
+	__268: never;
 }
 type Player = Rbx_Player & Base<Rbx_Player> & Indexable<Rbx_Player>;
 
@@ -4148,7 +4137,7 @@ interface Rbx_PlayerScripts extends Rbx_Instance {
 	RegisterTouchCameraMovementMode(cameraMovementMode: Enum.TouchCameraMovementMode): void;
 	RegisterTouchMovementMode(movementMode: Enum.TouchMovementMode): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__270: never;
+	__269: never;
 }
 type PlayerScripts = Rbx_PlayerScripts & Base<Rbx_PlayerScripts> & Indexable<Rbx_PlayerScripts>;
 
@@ -4164,7 +4153,7 @@ interface Rbx_Players extends Rbx_Instance {
 	GetNameFromUserIdAsync(userId: number): string;
 	GetUserIdFromNameAsync(userName: string): number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__271: never;
+	__270: never;
 }
 type Players = Rbx_Players & Base<Rbx_Players> & Indexable<Rbx_Players>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4176,7 +4165,7 @@ interface Rbx_Plugin extends Rbx_Instance {
 	readonly CollisionEnabled: boolean;
 	readonly GridSize: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__272: never;
+	__271: never;
 }
 type Plugin = Rbx_Plugin & Base<Rbx_Plugin> & Indexable<Rbx_Plugin>;
 
@@ -4187,7 +4176,7 @@ interface Rbx_PluginAction extends Rbx_Instance {
 	readonly StatusTip: string;
 	readonly Text: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__273: never;
+	__272: never;
 }
 type PluginAction = Rbx_PluginAction & Base<Rbx_PluginAction> & Indexable<Rbx_PluginAction>;
 
@@ -4198,14 +4187,14 @@ interface Rbx_PluginDragEvent extends Rbx_Instance {
 	readonly Position: Vector2;
 	readonly Sender: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__274: never;
+	__273: never;
 }
 type PluginDragEvent = Rbx_PluginDragEvent & Base<Rbx_PluginDragEvent> & Indexable<Rbx_PluginDragEvent>;
 
 // PluginGuiService
 interface Rbx_PluginGuiService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__275: never;
+	__274: never;
 }
 type PluginGuiService = Rbx_PluginGuiService & Base<Rbx_PluginGuiService> & Indexable<Rbx_PluginGuiService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4215,7 +4204,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // PluginManager
 interface Rbx_PluginManager extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__276: never;
+	__275: never;
 }
 type PluginManager = Rbx_PluginManager & Base<Rbx_PluginManager> & Indexable<Rbx_PluginManager>;
 
@@ -4224,14 +4213,14 @@ interface Rbx_PluginMenu extends Rbx_Instance {
 	Icon: string;
 	Title: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__277: never;
+	__276: never;
 }
 type PluginMenu = Rbx_PluginMenu & Base<Rbx_PluginMenu> & Indexable<Rbx_PluginMenu>;
 
 // PluginToolbar
 interface Rbx_PluginToolbar extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__278: never;
+	__277: never;
 }
 type PluginToolbar = Rbx_PluginToolbar & Base<Rbx_PluginToolbar> & Indexable<Rbx_PluginToolbar>;
 
@@ -4241,7 +4230,7 @@ interface Rbx_PluginToolbarButton extends Rbx_Instance {
 	Enabled: boolean;
 	Icon: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__279: never;
+	__278: never;
 }
 type PluginToolbarButton = Rbx_PluginToolbarButton & Base<Rbx_PluginToolbarButton> & Indexable<Rbx_PluginToolbarButton>;
 
@@ -4250,7 +4239,7 @@ interface Rbx_PointsService extends Rbx_Instance {
 	/** Fired when points are successfully awarded 'userId'. Also returns the updated balance of points for usedId in universe via 'userBalanceInUniverse', total points via 'userTotalBalance', and the amount points that were awarded via 'pointsAwarded'. This event fires on the server and also all clients in the game that awarded the points. */
 	readonly PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__280: never;
+	__279: never;
 }
 type PointsService = Rbx_PointsService & Base<Rbx_PointsService> & Indexable<Rbx_PointsService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4267,7 +4256,7 @@ interface Rbx_Pose extends Rbx_Instance {
 	GetSubPoses(): Array<Instance>;
 	RemoveSubPose(pose: Instance): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__281: never;
+	__280: never;
 }
 type Pose = Rbx_Pose & Base<Rbx_Pose> & Indexable<Rbx_Pose>;
 
@@ -4275,7 +4264,7 @@ type Pose = Rbx_Pose & Base<Rbx_Pose> & Indexable<Rbx_Pose>;
 interface Rbx_PostEffect extends Rbx_Instance {
 	Enabled: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__282: never;
+	__281: never;
 }
 type PostEffect = Rbx_PostEffect & Base<Rbx_PostEffect> & Indexable<Rbx_PostEffect>;
 
@@ -4285,7 +4274,7 @@ interface Rbx_BloomEffect extends Rbx_PostEffect {
 	Size: number;
 	Threshold: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__283: never;
+	__282: never;
 }
 type BloomEffect = Rbx_BloomEffect & Base<Rbx_BloomEffect> & Indexable<Rbx_BloomEffect>;
 
@@ -4293,7 +4282,7 @@ type BloomEffect = Rbx_BloomEffect & Base<Rbx_BloomEffect> & Indexable<Rbx_Bloom
 interface Rbx_BlurEffect extends Rbx_PostEffect {
 	Size: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__284: never;
+	__283: never;
 }
 type BlurEffect = Rbx_BlurEffect & Base<Rbx_BlurEffect> & Indexable<Rbx_BlurEffect>;
 
@@ -4304,7 +4293,7 @@ interface Rbx_ColorCorrectionEffect extends Rbx_PostEffect {
 	Saturation: number;
 	TintColor: Color3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__285: never;
+	__284: never;
 }
 type ColorCorrectionEffect = Rbx_ColorCorrectionEffect & Base<Rbx_ColorCorrectionEffect> & Indexable<Rbx_ColorCorrectionEffect>;
 
@@ -4313,49 +4302,49 @@ interface Rbx_SunRaysEffect extends Rbx_PostEffect {
 	Intensity: number;
 	Spread: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__286: never;
+	__285: never;
 }
 type SunRaysEffect = Rbx_SunRaysEffect & Base<Rbx_SunRaysEffect> & Indexable<Rbx_SunRaysEffect>;
 
 // ReflectionMetadata
 interface Rbx_ReflectionMetadata extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__287: never;
+	__286: never;
 }
 type ReflectionMetadata = Rbx_ReflectionMetadata & Base<Rbx_ReflectionMetadata> & Indexable<Rbx_ReflectionMetadata>;
 
 // ReflectionMetadataCallbacks
 interface Rbx_ReflectionMetadataCallbacks extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__288: never;
+	__287: never;
 }
 type ReflectionMetadataCallbacks = Rbx_ReflectionMetadataCallbacks & Base<Rbx_ReflectionMetadataCallbacks> & Indexable<Rbx_ReflectionMetadataCallbacks>;
 
 // ReflectionMetadataClasses
 interface Rbx_ReflectionMetadataClasses extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__289: never;
+	__288: never;
 }
 type ReflectionMetadataClasses = Rbx_ReflectionMetadataClasses & Base<Rbx_ReflectionMetadataClasses> & Indexable<Rbx_ReflectionMetadataClasses>;
 
 // ReflectionMetadataEnums
 interface Rbx_ReflectionMetadataEnums extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__290: never;
+	__289: never;
 }
 type ReflectionMetadataEnums = Rbx_ReflectionMetadataEnums & Base<Rbx_ReflectionMetadataEnums> & Indexable<Rbx_ReflectionMetadataEnums>;
 
 // ReflectionMetadataEvents
 interface Rbx_ReflectionMetadataEvents extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__291: never;
+	__290: never;
 }
 type ReflectionMetadataEvents = Rbx_ReflectionMetadataEvents & Base<Rbx_ReflectionMetadataEvents> & Indexable<Rbx_ReflectionMetadataEvents>;
 
 // ReflectionMetadataFunctions
 interface Rbx_ReflectionMetadataFunctions extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__292: never;
+	__291: never;
 }
 type ReflectionMetadataFunctions = Rbx_ReflectionMetadataFunctions & Base<Rbx_ReflectionMetadataFunctions> & Indexable<Rbx_ReflectionMetadataFunctions>;
 
@@ -4375,7 +4364,7 @@ interface Rbx_ReflectionMetadataItem extends Rbx_Instance {
 	UINumTicks: number;
 	summary: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__293: never;
+	__292: never;
 }
 type ReflectionMetadataItem = Rbx_ReflectionMetadataItem & Base<Rbx_ReflectionMetadataItem> & Indexable<Rbx_ReflectionMetadataItem>;
 
@@ -4387,56 +4376,56 @@ interface Rbx_ReflectionMetadataClass extends Rbx_ReflectionMetadataItem {
 	PreferredParent: string;
 	PreferredParents: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__294: never;
+	__293: never;
 }
 type ReflectionMetadataClass = Rbx_ReflectionMetadataClass & Base<Rbx_ReflectionMetadataClass> & Indexable<Rbx_ReflectionMetadataClass>;
 
 // ReflectionMetadataEnum
 interface Rbx_ReflectionMetadataEnum extends Rbx_ReflectionMetadataItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__295: never;
+	__294: never;
 }
 type ReflectionMetadataEnum = Rbx_ReflectionMetadataEnum & Base<Rbx_ReflectionMetadataEnum> & Indexable<Rbx_ReflectionMetadataEnum>;
 
 // ReflectionMetadataEnumItem
 interface Rbx_ReflectionMetadataEnumItem extends Rbx_ReflectionMetadataItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__296: never;
+	__295: never;
 }
 type ReflectionMetadataEnumItem = Rbx_ReflectionMetadataEnumItem & Base<Rbx_ReflectionMetadataEnumItem> & Indexable<Rbx_ReflectionMetadataEnumItem>;
 
 // ReflectionMetadataMember
 interface Rbx_ReflectionMetadataMember extends Rbx_ReflectionMetadataItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__297: never;
+	__296: never;
 }
 type ReflectionMetadataMember = Rbx_ReflectionMetadataMember & Base<Rbx_ReflectionMetadataMember> & Indexable<Rbx_ReflectionMetadataMember>;
 
 // ReflectionMetadataProperties
 interface Rbx_ReflectionMetadataProperties extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__298: never;
+	__297: never;
 }
 type ReflectionMetadataProperties = Rbx_ReflectionMetadataProperties & Base<Rbx_ReflectionMetadataProperties> & Indexable<Rbx_ReflectionMetadataProperties>;
 
 // ReflectionMetadataYieldFunctions
 interface Rbx_ReflectionMetadataYieldFunctions extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__299: never;
+	__298: never;
 }
 type ReflectionMetadataYieldFunctions = Rbx_ReflectionMetadataYieldFunctions & Base<Rbx_ReflectionMetadataYieldFunctions> & Indexable<Rbx_ReflectionMetadataYieldFunctions>;
 
 // RemoteEvent
 interface Rbx_RemoteEvent extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__300: never;
+	__299: never;
 }
 type RemoteEvent = Rbx_RemoteEvent & Base<Rbx_RemoteEvent> & Indexable<Rbx_RemoteEvent>;
 
 // RemoteFunction
 interface Rbx_RemoteFunction extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__301: never;
+	__300: never;
 }
 type RemoteFunction = Rbx_RemoteFunction & Base<Rbx_RemoteFunction> & Indexable<Rbx_RemoteFunction>;
 
@@ -4456,7 +4445,7 @@ interface Rbx_RenderSettings extends Rbx_Instance {
 	ShowBoundingBoxes: boolean;
 	GetMaxQualityLevel(): number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__302: never;
+	__301: never;
 }
 type RenderSettings = Rbx_RenderSettings & Base<Rbx_RenderSettings> & Indexable<Rbx_RenderSettings>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4477,7 +4466,7 @@ interface Rbx_RenderingTest extends Rbx_Instance {
 	ShouldSkip: boolean;
 	Ticket: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__303: never;
+	__302: never;
 }
 type RenderingTest = Rbx_RenderingTest & Base<Rbx_RenderingTest> & Indexable<Rbx_RenderingTest>;
 
@@ -4485,7 +4474,7 @@ type RenderingTest = Rbx_RenderingTest & Base<Rbx_RenderingTest> & Indexable<Rbx
 interface Rbx_ReplicatedFirst extends Rbx_Instance {
 	RemoveDefaultLoadingScreen(): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__304: never;
+	__303: never;
 }
 type ReplicatedFirst = Rbx_ReplicatedFirst & Base<Rbx_ReplicatedFirst> & Indexable<Rbx_ReplicatedFirst>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4495,7 +4484,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // ReplicatedStorage
 interface Rbx_ReplicatedStorage extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__305: never;
+	__304: never;
 }
 type ReplicatedStorage = Rbx_ReplicatedStorage & Base<Rbx_ReplicatedStorage> & Indexable<Rbx_ReplicatedStorage>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4505,7 +4494,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // RobloxReplicatedStorage
 interface Rbx_RobloxReplicatedStorage extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__306: never;
+	__305: never;
 }
 type RobloxReplicatedStorage = Rbx_RobloxReplicatedStorage & Base<Rbx_RobloxReplicatedStorage> & Indexable<Rbx_RobloxReplicatedStorage>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4525,7 +4514,7 @@ interface Rbx_RunService extends Rbx_Instance {
 	readonly RenderStepped: RBXScriptSignal<(step: number) => void>;
 	readonly Stepped: RBXScriptSignal<(time: number, step: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__307: never;
+	__306: never;
 }
 type RunService = Rbx_RunService & Base<Rbx_RunService> & Indexable<Rbx_RunService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4535,7 +4524,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // RuntimeScriptService
 interface Rbx_RuntimeScriptService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__308: never;
+	__307: never;
 }
 type RuntimeScriptService = Rbx_RuntimeScriptService & Base<Rbx_RuntimeScriptService> & Indexable<Rbx_RuntimeScriptService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4546,7 +4535,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_ScriptContext extends Rbx_Instance {
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__309: never;
+	__308: never;
 }
 type ScriptContext = Rbx_ScriptContext & Base<Rbx_ScriptContext> & Indexable<Rbx_ScriptContext>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4578,14 +4567,14 @@ interface Rbx_ScriptDebugger extends Rbx_Instance {
 	readonly WatchAdded: RBXScriptSignal<(watch: Instance) => void>;
 	readonly WatchRemoved: RBXScriptSignal<(watch: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__310: never;
+	__309: never;
 }
 type ScriptDebugger = Rbx_ScriptDebugger & Base<Rbx_ScriptDebugger> & Indexable<Rbx_ScriptDebugger>;
 
 // ScriptService
 interface Rbx_ScriptService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__311: never;
+	__310: never;
 }
 type ScriptService = Rbx_ScriptService & Base<Rbx_ScriptService> & Indexable<Rbx_ScriptService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4596,7 +4585,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Selection extends Rbx_Instance {
 	readonly SelectionChanged: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__312: never;
+	__311: never;
 }
 type Selection = Rbx_Selection & Base<Rbx_Selection> & Indexable<Rbx_Selection>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4606,7 +4595,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // ServerScriptService
 interface Rbx_ServerScriptService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__313: never;
+	__312: never;
 }
 type ServerScriptService = Rbx_ServerScriptService & Base<Rbx_ServerScriptService> & Indexable<Rbx_ServerScriptService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4616,7 +4605,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // ServerStorage
 interface Rbx_ServerStorage extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__314: never;
+	__313: never;
 }
 type ServerStorage = Rbx_ServerStorage & Base<Rbx_ServerStorage> & Indexable<Rbx_ServerStorage>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4631,7 +4620,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 	readonly ServiceAdded: RBXScriptSignal<(service: Instance) => void>;
 	readonly ServiceRemoving: RBXScriptSignal<(service: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__315: never;
+	__314: never;
 }
 type ServiceProvider = Rbx_ServiceProvider & Base<Rbx_ServiceProvider> & Indexable<Rbx_ServiceProvider>;
 
@@ -4655,21 +4644,21 @@ interface Rbx_DataModel extends Rbx_ServiceProvider {
 	/** Fires when the game finishes loading.  Use this to know when to remove your custom loading gui.  It is best to check IsLoaded() before connecting to this event, as the game may load before the event is connected to. */
 	readonly Loaded: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__316: never;
+	__315: never;
 }
 type DataModel = Rbx_DataModel & Base<Rbx_DataModel> & Indexable<Rbx_DataModel>;
 
 // GenericSettings
 interface Rbx_GenericSettings extends Rbx_ServiceProvider {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__317: never;
+	__316: never;
 }
 type GenericSettings = Rbx_GenericSettings & Base<Rbx_GenericSettings> & Indexable<Rbx_GenericSettings>;
 
 // AnalysticsSettings
 interface Rbx_AnalysticsSettings extends Rbx_GenericSettings {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__318: never;
+	__317: never;
 }
 type AnalysticsSettings = Rbx_AnalysticsSettings & Base<Rbx_AnalysticsSettings> & Indexable<Rbx_AnalysticsSettings>;
 
@@ -4678,7 +4667,7 @@ interface Rbx_GlobalSettings extends Rbx_GenericSettings {
 	GetFFlag(name: string): boolean;
 	GetFVariable(name: string): string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__319: never;
+	__318: never;
 }
 type GlobalSettings = Rbx_GlobalSettings & Base<Rbx_GlobalSettings> & Indexable<Rbx_GlobalSettings>;
 
@@ -4687,7 +4676,7 @@ interface Rbx_UserSettings extends Rbx_GenericSettings {
 	IsUserFeatureEnabled(name: string): boolean;
 	Reset(): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__320: never;
+	__319: never;
 }
 type UserSettings = Rbx_UserSettings & Base<Rbx_UserSettings> & Indexable<Rbx_UserSettings>;
 
@@ -4706,7 +4695,7 @@ interface Rbx_Sky extends Rbx_Instance {
 	SunAngularSize: number;
 	SunTextureId: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__321: never;
+	__320: never;
 }
 type Sky = Rbx_Sky & Base<Rbx_Sky> & Indexable<Rbx_Sky>;
 
@@ -4718,7 +4707,7 @@ interface Rbx_Smoke extends Rbx_Instance {
 	RiseVelocity: number;
 	Size: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__322: never;
+	__321: never;
 }
 type Smoke = Rbx_Smoke & Base<Rbx_Smoke> & Indexable<Rbx_Smoke>;
 
@@ -4728,7 +4717,7 @@ interface Rbx_SocialService extends Rbx_Instance {
 	CanSendGameInviteAsync(player: Instance): boolean;
 	readonly GameInvitePromptClosed: RBXScriptSignal<(player: Instance, recipientIds: Array<any>) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__323: never;
+	__322: never;
 }
 type SocialService = Rbx_SocialService & Base<Rbx_SocialService> & Indexable<Rbx_SocialService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4766,7 +4755,7 @@ interface Rbx_Sound extends Rbx_Instance {
 	readonly Resumed: RBXScriptSignal<(soundId: string) => void>;
 	readonly Stopped: RBXScriptSignal<(soundId: string) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__324: never;
+	__323: never;
 }
 type Sound = Rbx_Sound & Base<Rbx_Sound> & Indexable<Rbx_Sound>;
 
@@ -4775,7 +4764,7 @@ interface Rbx_SoundEffect extends Rbx_Instance {
 	Enabled: boolean;
 	Priority: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__325: never;
+	__324: never;
 }
 type SoundEffect = Rbx_SoundEffect & Base<Rbx_SoundEffect> & Indexable<Rbx_SoundEffect>;
 
@@ -4785,7 +4774,7 @@ interface Rbx_ChorusSoundEffect extends Rbx_SoundEffect {
 	Mix: number;
 	Rate: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__326: never;
+	__325: never;
 }
 type ChorusSoundEffect = Rbx_ChorusSoundEffect & Base<Rbx_ChorusSoundEffect> & Indexable<Rbx_ChorusSoundEffect>;
 
@@ -4798,7 +4787,7 @@ interface Rbx_CompressorSoundEffect extends Rbx_SoundEffect {
 	SideChain: Instance | undefined;
 	Threshold: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__327: never;
+	__326: never;
 }
 type CompressorSoundEffect = Rbx_CompressorSoundEffect & Base<Rbx_CompressorSoundEffect> & Indexable<Rbx_CompressorSoundEffect>;
 
@@ -4806,7 +4795,7 @@ type CompressorSoundEffect = Rbx_CompressorSoundEffect & Base<Rbx_CompressorSoun
 interface Rbx_DistortionSoundEffect extends Rbx_SoundEffect {
 	Level: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__328: never;
+	__327: never;
 }
 type DistortionSoundEffect = Rbx_DistortionSoundEffect & Base<Rbx_DistortionSoundEffect> & Indexable<Rbx_DistortionSoundEffect>;
 
@@ -4817,7 +4806,7 @@ interface Rbx_EchoSoundEffect extends Rbx_SoundEffect {
 	Feedback: number;
 	WetLevel: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__329: never;
+	__328: never;
 }
 type EchoSoundEffect = Rbx_EchoSoundEffect & Base<Rbx_EchoSoundEffect> & Indexable<Rbx_EchoSoundEffect>;
 
@@ -4827,7 +4816,7 @@ interface Rbx_EqualizerSoundEffect extends Rbx_SoundEffect {
 	LowGain: number;
 	MidGain: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__330: never;
+	__329: never;
 }
 type EqualizerSoundEffect = Rbx_EqualizerSoundEffect & Base<Rbx_EqualizerSoundEffect> & Indexable<Rbx_EqualizerSoundEffect>;
 
@@ -4837,7 +4826,7 @@ interface Rbx_FlangeSoundEffect extends Rbx_SoundEffect {
 	Mix: number;
 	Rate: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__331: never;
+	__330: never;
 }
 type FlangeSoundEffect = Rbx_FlangeSoundEffect & Base<Rbx_FlangeSoundEffect> & Indexable<Rbx_FlangeSoundEffect>;
 
@@ -4845,7 +4834,7 @@ type FlangeSoundEffect = Rbx_FlangeSoundEffect & Base<Rbx_FlangeSoundEffect> & I
 interface Rbx_PitchShiftSoundEffect extends Rbx_SoundEffect {
 	Octave: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__332: never;
+	__331: never;
 }
 type PitchShiftSoundEffect = Rbx_PitchShiftSoundEffect & Base<Rbx_PitchShiftSoundEffect> & Indexable<Rbx_PitchShiftSoundEffect>;
 
@@ -4857,7 +4846,7 @@ interface Rbx_ReverbSoundEffect extends Rbx_SoundEffect {
 	DryLevel: number;
 	WetLevel: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__333: never;
+	__332: never;
 }
 type ReverbSoundEffect = Rbx_ReverbSoundEffect & Base<Rbx_ReverbSoundEffect> & Indexable<Rbx_ReverbSoundEffect>;
 
@@ -4867,7 +4856,7 @@ interface Rbx_TremoloSoundEffect extends Rbx_SoundEffect {
 	Duty: number;
 	Frequency: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__334: never;
+	__333: never;
 }
 type TremoloSoundEffect = Rbx_TremoloSoundEffect & Base<Rbx_TremoloSoundEffect> & Indexable<Rbx_TremoloSoundEffect>;
 
@@ -4875,7 +4864,7 @@ type TremoloSoundEffect = Rbx_TremoloSoundEffect & Base<Rbx_TremoloSoundEffect> 
 interface Rbx_SoundGroup extends Rbx_Instance {
 	Volume: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__335: never;
+	__334: never;
 }
 type SoundGroup = Rbx_SoundGroup & Base<Rbx_SoundGroup> & Indexable<Rbx_SoundGroup>;
 
@@ -4892,7 +4881,7 @@ interface Rbx_SoundService extends Rbx_Instance {
 	RolloffScale: number;
 	PlayLocalSound(sound: Instance): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__336: never;
+	__335: never;
 }
 type SoundService = Rbx_SoundService & Base<Rbx_SoundService> & Indexable<Rbx_SoundService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4905,14 +4894,14 @@ interface Rbx_Sparkles extends Rbx_Instance {
 	Enabled: boolean;
 	SparkleColor: Color3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__337: never;
+	__336: never;
 }
 type Sparkles = Rbx_Sparkles & Base<Rbx_Sparkles> & Indexable<Rbx_Sparkles>;
 
 // SpawnerService
 interface Rbx_SpawnerService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__338: never;
+	__337: never;
 }
 type SpawnerService = Rbx_SpawnerService & Base<Rbx_SpawnerService> & Indexable<Rbx_SpawnerService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4922,7 +4911,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // StarterGear
 interface Rbx_StarterGear extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__339: never;
+	__338: never;
 }
 type StarterGear = Rbx_StarterGear & Base<Rbx_StarterGear> & Indexable<Rbx_StarterGear>;
 
@@ -4943,7 +4932,7 @@ interface Rbx_StarterPlayer extends Rbx_Instance {
 	LoadCharacterAppearance: boolean;
 	NameDisplayDistance: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__340: never;
+	__339: never;
 }
 type StarterPlayer = Rbx_StarterPlayer & Base<Rbx_StarterPlayer> & Indexable<Rbx_StarterPlayer>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4953,14 +4942,14 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // StarterPlayerScripts
 interface Rbx_StarterPlayerScripts extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__341: never;
+	__340: never;
 }
 type StarterPlayerScripts = Rbx_StarterPlayerScripts & Base<Rbx_StarterPlayerScripts> & Indexable<Rbx_StarterPlayerScripts>;
 
 // StarterCharacterScripts
 interface Rbx_StarterCharacterScripts extends Rbx_StarterPlayerScripts {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__342: never;
+	__341: never;
 }
 type StarterCharacterScripts = Rbx_StarterCharacterScripts & Base<Rbx_StarterCharacterScripts> & Indexable<Rbx_StarterCharacterScripts>;
 
@@ -4979,7 +4968,7 @@ interface Rbx_Stats extends Rbx_Instance {
 	GetMemoryUsageMbForTag(tag: Enum.DeveloperMemoryTag): number;
 	GetTotalMemoryUsageMb(): number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__343: never;
+	__342: never;
 }
 type Stats = Rbx_Stats & Base<Rbx_Stats> & Indexable<Rbx_Stats>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4989,42 +4978,42 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // StatsItem
 interface Rbx_StatsItem extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__344: never;
+	__343: never;
 }
 type StatsItem = Rbx_StatsItem & Base<Rbx_StatsItem> & Indexable<Rbx_StatsItem>;
 
 // RunningAverageItemDouble
 interface Rbx_RunningAverageItemDouble extends Rbx_StatsItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__345: never;
+	__344: never;
 }
 type RunningAverageItemDouble = Rbx_RunningAverageItemDouble & Base<Rbx_RunningAverageItemDouble> & Indexable<Rbx_RunningAverageItemDouble>;
 
 // RunningAverageItemInt
 interface Rbx_RunningAverageItemInt extends Rbx_StatsItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__346: never;
+	__345: never;
 }
 type RunningAverageItemInt = Rbx_RunningAverageItemInt & Base<Rbx_RunningAverageItemInt> & Indexable<Rbx_RunningAverageItemInt>;
 
 // RunningAverageTimeIntervalItem
 interface Rbx_RunningAverageTimeIntervalItem extends Rbx_StatsItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__347: never;
+	__346: never;
 }
 type RunningAverageTimeIntervalItem = Rbx_RunningAverageTimeIntervalItem & Base<Rbx_RunningAverageTimeIntervalItem> & Indexable<Rbx_RunningAverageTimeIntervalItem>;
 
 // TotalCountTimeIntervalItem
 interface Rbx_TotalCountTimeIntervalItem extends Rbx_StatsItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__348: never;
+	__347: never;
 }
 type TotalCountTimeIntervalItem = Rbx_TotalCountTimeIntervalItem & Base<Rbx_TotalCountTimeIntervalItem> & Indexable<Rbx_TotalCountTimeIntervalItem>;
 
 // StopWatchReporter
 interface Rbx_StopWatchReporter extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__349: never;
+	__348: never;
 }
 type StopWatchReporter = Rbx_StopWatchReporter & Base<Rbx_StopWatchReporter> & Indexable<Rbx_StopWatchReporter>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5037,6 +5026,9 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Animate Hover Over"]: boolean;
 	["Attach Debugger To"]: Enum.DEPRECATED_DebuggerDataModelPreference;
 	["Auto Indent"]: boolean;
+	["Auto-Recovery Enabled"]: boolean;
+	["Auto-Recovery Interval (Minutes)"]: number;
+	["Auto-Recovery Path"]: QDir;
 	["Auto-Save Enabled"]: boolean;
 	["Auto-Save Interval (Minutes)"]: number;
 	["Auto-Save Path"]: QDir;
@@ -5104,7 +5096,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	readonly ["UI Theme"]: Enum.UITheme;
 	["Warning Color"]: Color3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__350: never;
+	__349: never;
 }
 type Studio = Rbx_Studio & Base<Rbx_Studio> & Indexable<Rbx_Studio>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5115,7 +5107,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_StudioService extends Rbx_Instance {
 	readonly ActiveScript: Instance | undefined;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__351: never;
+	__350: never;
 }
 type StudioService = Rbx_StudioService & Base<Rbx_StudioService> & Indexable<Rbx_StudioService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5125,7 +5117,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // StudioTheme
 interface Rbx_StudioTheme extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__352: never;
+	__351: never;
 }
 type StudioTheme = Rbx_StudioTheme & Base<Rbx_StudioTheme> & Indexable<Rbx_StudioTheme>;
 
@@ -5136,7 +5128,7 @@ interface Rbx_TaskScheduler extends Rbx_Instance {
 	ThreadPoolConfig: Enum.ThreadPoolConfig;
 	readonly ThreadPoolSize: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__353: never;
+	__352: never;
 }
 type TaskScheduler = Rbx_TaskScheduler & Base<Rbx_TaskScheduler> & Indexable<Rbx_TaskScheduler>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5148,14 +5140,14 @@ interface Rbx_Team extends Rbx_Instance {
 	AutoAssignable: boolean;
 	TeamColor: BrickColor;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__354: never;
+	__353: never;
 }
 type Team = Rbx_Team & Base<Rbx_Team> & Indexable<Rbx_Team>;
 
 // Teams
 interface Rbx_Teams extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__355: never;
+	__354: never;
 }
 type Teams = Rbx_Teams & Base<Rbx_Teams> & Indexable<Rbx_Teams>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5173,7 +5165,7 @@ interface Rbx_TeleportService extends Rbx_Instance {
 	TeleportToSpawnByName(placeId: number, spawnName: string, player?: Instance, teleportData?: any, customLoadingScreen?: Instance): void;
 	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: Instance, dataTable?: any) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__356: never;
+	__355: never;
 }
 type TeleportService = Rbx_TeleportService & Base<Rbx_TeleportService> & Indexable<Rbx_TeleportService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5184,7 +5176,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_TerrainRegion extends Rbx_Instance {
 	readonly SizeInCells: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__357: never;
+	__356: never;
 }
 type TerrainRegion = Rbx_TerrainRegion & Base<Rbx_TerrainRegion> & Indexable<Rbx_TerrainRegion>;
 
@@ -5214,7 +5206,7 @@ interface Rbx_TestService extends Rbx_Instance {
 	readonly ServerCollectConditionalResult: RBXScriptSignal<(condition: boolean, text: string, script: Instance, line: number) => void>;
 	readonly ServerCollectResult: RBXScriptSignal<(text: string, script: Instance, line: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__358: never;
+	__357: never;
 }
 type TestService = Rbx_TestService & Base<Rbx_TestService> & Indexable<Rbx_TestService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5227,7 +5219,7 @@ interface Rbx_TextFilterResult extends Rbx_Instance {
 	GetNonChatStringForBroadcastAsync(): string;
 	GetNonChatStringForUserAsync(toUserId: number): string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__359: never;
+	__358: never;
 }
 type TextFilterResult = Rbx_TextFilterResult & Base<Rbx_TextFilterResult> & Indexable<Rbx_TextFilterResult>;
 
@@ -5236,7 +5228,7 @@ interface Rbx_TextService extends Rbx_Instance {
 	GetTextSize(string: string, fontSize: number, font: Enum.Font, frameSize: Vector2): Vector2;
 	FilterStringAsync(stringToFilter: string, fromUserId: number, textContext?: Enum.TextFilterContext): Instance | undefined;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__360: never;
+	__359: never;
 }
 type TextService = Rbx_TextService & Base<Rbx_TextService> & Indexable<Rbx_TextService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5246,7 +5238,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // ThirdPartyUserService
 interface Rbx_ThirdPartyUserService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__361: never;
+	__360: never;
 }
 type ThirdPartyUserService = Rbx_ThirdPartyUserService & Base<Rbx_ThirdPartyUserService> & Indexable<Rbx_ThirdPartyUserService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5256,7 +5248,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // TimerService
 interface Rbx_TimerService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__362: never;
+	__361: never;
 }
 type TimerService = Rbx_TimerService & Base<Rbx_TimerService> & Indexable<Rbx_TimerService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5266,7 +5258,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // TouchInputService
 interface Rbx_TouchInputService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__363: never;
+	__362: never;
 }
 type TouchInputService = Rbx_TouchInputService & Base<Rbx_TouchInputService> & Indexable<Rbx_TouchInputService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5276,7 +5268,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // TouchTransmitter
 interface Rbx_TouchTransmitter extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__364: never;
+	__363: never;
 }
 type TouchTransmitter = Rbx_TouchTransmitter & Base<Rbx_TouchTransmitter> & Indexable<Rbx_TouchTransmitter>;
 
@@ -5299,7 +5291,7 @@ interface Rbx_Trail extends Rbx_Instance {
 	WidthScale: NumberSequence;
 	Clear(): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__365: never;
+	__364: never;
 }
 type Trail = Rbx_Trail & Base<Rbx_Trail> & Indexable<Rbx_Trail>;
 
@@ -5309,7 +5301,7 @@ interface Rbx_Translator extends Rbx_Instance {
 	FormatByKey(key: string, args?: any): string;
 	Translate(context: Instance, text: string): string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__366: never;
+	__365: never;
 }
 type Translator = Rbx_Translator & Base<Rbx_Translator> & Indexable<Rbx_Translator>;
 
@@ -5326,7 +5318,7 @@ interface Rbx_TweenBase extends Rbx_Instance {
 	/** Fires when the tween either reaches PlaybackState Completed or Cancelled. PlaybackState of one of these types is passed as the first arg to the function listening to this event. */
 	readonly Completed: RBXScriptSignal<(playbackState: Enum.PlaybackState) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__367: never;
+	__366: never;
 }
 type TweenBase = Rbx_TweenBase & Base<Rbx_TweenBase> & Indexable<Rbx_TweenBase>;
 
@@ -5335,14 +5327,14 @@ interface Rbx_Tween extends Rbx_TweenBase {
 	readonly Instance: Instance | undefined;
 	readonly TweenInfo: TweenInfo;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__368: never;
+	__367: never;
 }
 type Tween = Rbx_Tween & Base<Rbx_Tween> & Indexable<Rbx_Tween>;
 
 // TweenService
 interface Rbx_TweenService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__369: never;
+	__368: never;
 }
 type TweenService = Rbx_TweenService & Base<Rbx_TweenService> & Indexable<Rbx_TweenService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5352,21 +5344,21 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // UIBase
 interface Rbx_UIBase extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__370: never;
+	__369: never;
 }
 type UIBase = Rbx_UIBase & Base<Rbx_UIBase> & Indexable<Rbx_UIBase>;
 
 // UIComponent
 interface Rbx_UIComponent extends Rbx_UIBase {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__371: never;
+	__370: never;
 }
 type UIComponent = Rbx_UIComponent & Base<Rbx_UIComponent> & Indexable<Rbx_UIComponent>;
 
 // UIConstraint
 interface Rbx_UIConstraint extends Rbx_UIComponent {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__372: never;
+	__371: never;
 }
 type UIConstraint = Rbx_UIConstraint & Base<Rbx_UIConstraint> & Indexable<Rbx_UIConstraint>;
 
@@ -5379,7 +5371,7 @@ interface Rbx_UIAspectRatioConstraint extends Rbx_UIConstraint {
 	/** Describes which axis to use when determining the new size of the element, while keeping respect to the aspect ratio. */
 	DominantAxis: Enum.DominantAxis;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__373: never;
+	__372: never;
 }
 type UIAspectRatioConstraint = Rbx_UIAspectRatioConstraint & Base<Rbx_UIAspectRatioConstraint> & Indexable<Rbx_UIAspectRatioConstraint>;
 
@@ -5390,7 +5382,7 @@ interface Rbx_UISizeConstraint extends Rbx_UIConstraint {
 	/** The smallest size the GuiObject is allowed to be. */
 	MinSize: Vector2;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__374: never;
+	__373: never;
 }
 type UISizeConstraint = Rbx_UISizeConstraint & Base<Rbx_UISizeConstraint> & Indexable<Rbx_UISizeConstraint>;
 
@@ -5401,14 +5393,14 @@ interface Rbx_UITextSizeConstraint extends Rbx_UIConstraint {
 	/** The smallest size the font is allowed to be. */
 	MinTextSize: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__375: never;
+	__374: never;
 }
 type UITextSizeConstraint = Rbx_UITextSizeConstraint & Base<Rbx_UITextSizeConstraint> & Indexable<Rbx_UITextSizeConstraint>;
 
 // UILayout
 interface Rbx_UILayout extends Rbx_UIComponent {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__376: never;
+	__375: never;
 }
 type UILayout = Rbx_UILayout & Base<Rbx_UILayout> & Indexable<Rbx_UILayout>;
 
@@ -5426,7 +5418,7 @@ interface Rbx_UIGridStyleLayout extends Rbx_UILayout {
 	/** Forces a relayout of all elements. Useful when sort is set to Custom. */
 	ApplyLayout(): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__377: never;
+	__376: never;
 }
 type UIGridStyleLayout = Rbx_UIGridStyleLayout & Base<Rbx_UIGridStyleLayout> & Indexable<Rbx_UIGridStyleLayout>;
 
@@ -5441,7 +5433,7 @@ interface Rbx_UIGridLayout extends Rbx_UIGridStyleLayout {
 	/** Which corner we start laying the elements out from. Can be TopLeft, TopRight, BottomLeft, BottomRight. */
 	StartCorner: Enum.StartCorner;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__378: never;
+	__377: never;
 }
 type UIGridLayout = Rbx_UIGridLayout & Base<Rbx_UIGridLayout> & Indexable<Rbx_UIGridLayout>;
 
@@ -5450,7 +5442,7 @@ interface Rbx_UIListLayout extends Rbx_UIGridStyleLayout {
 	/** Determines the amount of free space between each element. Can be set either using scale (Percentage of parent's size in the current direction) or offset (a static spacing value, similar to pixel size). */
 	Padding: UDim;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__379: never;
+	__378: never;
 }
 type UIListLayout = Rbx_UIListLayout & Base<Rbx_UIListLayout> & Indexable<Rbx_UIListLayout>;
 
@@ -5488,7 +5480,7 @@ interface Rbx_UIPageLayout extends Rbx_UIGridStyleLayout {
 	/** Fires when an animation to CurrentPage is completed without being cancelled, and the view stops scrolling. */
 	readonly Stopped: RBXScriptSignal<(currentPage: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__380: never;
+	__379: never;
 }
 type UIPageLayout = Rbx_UIPageLayout & Base<Rbx_UIPageLayout> & Indexable<Rbx_UIPageLayout>;
 
@@ -5503,7 +5495,7 @@ interface Rbx_UITableLayout extends Rbx_UIGridStyleLayout {
 	/** The amount of padding to insert in between the cells of the table. */
 	Padding: UDim2;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__381: never;
+	__380: never;
 }
 type UITableLayout = Rbx_UITableLayout & Base<Rbx_UITableLayout> & Indexable<Rbx_UITableLayout>;
 
@@ -5518,7 +5510,7 @@ interface Rbx_UIPadding extends Rbx_UIComponent {
 	/** The padding to apply on the top side relative to the parent's normal size. */
 	PaddingTop: UDim;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__382: never;
+	__381: never;
 }
 type UIPadding = Rbx_UIPadding & Base<Rbx_UIPadding> & Indexable<Rbx_UIPadding>;
 
@@ -5527,7 +5519,7 @@ interface Rbx_UIScale extends Rbx_UIComponent {
 	/** The scale factor to apply. */
 	Scale: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__383: never;
+	__382: never;
 }
 type UIScale = Rbx_UIScale & Base<Rbx_UIScale> & Indexable<Rbx_UIScale>;
 
@@ -5555,7 +5547,7 @@ interface Rbx_UserGameSettings extends Rbx_Instance {
 	readonly FullscreenChanged: RBXScriptSignal<(isFullscreen: boolean) => void>;
 	readonly StudioModeChanged: RBXScriptSignal<(isStudioMode: boolean) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__384: never;
+	__383: never;
 }
 type UserGameSettings = Rbx_UserGameSettings & Base<Rbx_UserGameSettings> & Indexable<Rbx_UserGameSettings>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5637,7 +5629,7 @@ interface Rbx_UserInputService extends Rbx_Instance {
 	readonly WindowFocusReleased: RBXScriptSignal<() => void>;
 	readonly WindowFocused: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__385: never;
+	__384: never;
 }
 type UserInputService = Rbx_UserInputService & Base<Rbx_UserInputService> & Indexable<Rbx_UserInputService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5659,7 +5651,7 @@ interface Rbx_VRService extends Rbx_Instance {
 	readonly UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
 	readonly UserCFrameEnabled: RBXScriptSignal<(type: Enum.UserCFrame, enabled: boolean) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__386: never;
+	__385: never;
 }
 type VRService = Rbx_VRService & Base<Rbx_VRService> & Indexable<Rbx_VRService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5669,14 +5661,14 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // ValueBase
 interface Rbx_ValueBase extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__387: never;
+	__386: never;
 }
 type ValueBase = Rbx_ValueBase & Base<Rbx_ValueBase> & Indexable<Rbx_ValueBase>;
 
 // BinaryStringValue
 interface Rbx_BinaryStringValue extends Rbx_ValueBase {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__388: never;
+	__387: never;
 }
 type BinaryStringValue = Rbx_BinaryStringValue & Base<Rbx_BinaryStringValue> & Indexable<Rbx_BinaryStringValue>;
 
@@ -5684,7 +5676,7 @@ type BinaryStringValue = Rbx_BinaryStringValue & Base<Rbx_BinaryStringValue> & I
 interface Rbx_BoolValue extends Rbx_ValueBase {
 	Value: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__389: never;
+	__388: never;
 }
 type BoolValue = Rbx_BoolValue & Base<Rbx_BoolValue> & Indexable<Rbx_BoolValue>;
 
@@ -5692,7 +5684,7 @@ type BoolValue = Rbx_BoolValue & Base<Rbx_BoolValue> & Indexable<Rbx_BoolValue>;
 interface Rbx_BrickColorValue extends Rbx_ValueBase {
 	Value: BrickColor;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__390: never;
+	__389: never;
 }
 type BrickColorValue = Rbx_BrickColorValue & Base<Rbx_BrickColorValue> & Indexable<Rbx_BrickColorValue>;
 
@@ -5700,7 +5692,7 @@ type BrickColorValue = Rbx_BrickColorValue & Base<Rbx_BrickColorValue> & Indexab
 interface Rbx_CFrameValue extends Rbx_ValueBase {
 	Value: CFrame;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__391: never;
+	__390: never;
 }
 type CFrameValue = Rbx_CFrameValue & Base<Rbx_CFrameValue> & Indexable<Rbx_CFrameValue>;
 
@@ -5708,7 +5700,7 @@ type CFrameValue = Rbx_CFrameValue & Base<Rbx_CFrameValue> & Indexable<Rbx_CFram
 interface Rbx_Color3Value extends Rbx_ValueBase {
 	Value: Color3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__392: never;
+	__391: never;
 }
 type Color3Value = Rbx_Color3Value & Base<Rbx_Color3Value> & Indexable<Rbx_Color3Value>;
 
@@ -5721,7 +5713,7 @@ interface Rbx_DoubleConstrainedValue extends Rbx_ValueBase {
 	MinValue: number;
 	Value: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__393: never;
+	__392: never;
 }
 type DoubleConstrainedValue = Rbx_DoubleConstrainedValue & Base<Rbx_DoubleConstrainedValue> & Indexable<Rbx_DoubleConstrainedValue>;
 
@@ -5732,7 +5724,7 @@ interface Rbx_IntConstrainedValue extends Rbx_ValueBase {
 	MinValue: number;
 	Value: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__394: never;
+	__393: never;
 }
 type IntConstrainedValue = Rbx_IntConstrainedValue & Base<Rbx_IntConstrainedValue> & Indexable<Rbx_IntConstrainedValue>;
 
@@ -5740,7 +5732,7 @@ type IntConstrainedValue = Rbx_IntConstrainedValue & Base<Rbx_IntConstrainedValu
 interface Rbx_IntValue extends Rbx_ValueBase {
 	Value: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__395: never;
+	__394: never;
 }
 type IntValue = Rbx_IntValue & Base<Rbx_IntValue> & Indexable<Rbx_IntValue>;
 
@@ -5748,7 +5740,7 @@ type IntValue = Rbx_IntValue & Base<Rbx_IntValue> & Indexable<Rbx_IntValue>;
 interface Rbx_NumberValue extends Rbx_ValueBase {
 	Value: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__396: never;
+	__395: never;
 }
 type NumberValue = Rbx_NumberValue & Base<Rbx_NumberValue> & Indexable<Rbx_NumberValue>;
 
@@ -5756,7 +5748,7 @@ type NumberValue = Rbx_NumberValue & Base<Rbx_NumberValue> & Indexable<Rbx_Numbe
 interface Rbx_ObjectValue extends Rbx_ValueBase {
 	Value: Instance | undefined;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__397: never;
+	__396: never;
 }
 type ObjectValue = Rbx_ObjectValue & Base<Rbx_ObjectValue> & Indexable<Rbx_ObjectValue>;
 
@@ -5764,7 +5756,7 @@ type ObjectValue = Rbx_ObjectValue & Base<Rbx_ObjectValue> & Indexable<Rbx_Objec
 interface Rbx_RayValue extends Rbx_ValueBase {
 	Value: Ray;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__398: never;
+	__397: never;
 }
 type RayValue = Rbx_RayValue & Base<Rbx_RayValue> & Indexable<Rbx_RayValue>;
 
@@ -5772,7 +5764,7 @@ type RayValue = Rbx_RayValue & Base<Rbx_RayValue> & Indexable<Rbx_RayValue>;
 interface Rbx_StringValue extends Rbx_ValueBase {
 	Value: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__399: never;
+	__398: never;
 }
 type StringValue = Rbx_StringValue & Base<Rbx_StringValue> & Indexable<Rbx_StringValue>;
 
@@ -5780,14 +5772,14 @@ type StringValue = Rbx_StringValue & Base<Rbx_StringValue> & Indexable<Rbx_Strin
 interface Rbx_Vector3Value extends Rbx_ValueBase {
 	Value: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__400: never;
+	__399: never;
 }
 type Vector3Value = Rbx_Vector3Value & Base<Rbx_Vector3Value> & Indexable<Rbx_Vector3Value>;
 
 // VirtualInputManager
 interface Rbx_VirtualInputManager extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__401: never;
+	__400: never;
 }
 type VirtualInputManager = Rbx_VirtualInputManager & Base<Rbx_VirtualInputManager> & Indexable<Rbx_VirtualInputManager>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5797,7 +5789,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // VirtualUser
 interface Rbx_VirtualUser extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__402: never;
+	__401: never;
 }
 type VirtualUser = Rbx_VirtualUser & Base<Rbx_VirtualUser> & Indexable<Rbx_VirtualUser>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5807,7 +5799,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Visit
 interface Rbx_Visit extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__403: never;
+	__402: never;
 }
 type Visit = Rbx_Visit & Base<Rbx_Visit> & Indexable<Rbx_Visit>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -5822,7 +5814,7 @@ interface Rbx_WeldConstraint extends Rbx_Instance {
 	Part0: BasePart;
 	Part1: BasePart;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__404: never;
+	__403: never;
 }
 type WeldConstraint = Rbx_WeldConstraint & Base<Rbx_WeldConstraint> & Indexable<Rbx_WeldConstraint>;
 

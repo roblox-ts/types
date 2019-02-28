@@ -1056,7 +1056,8 @@ declare namespace Enum {
 		LeafyGrass = 1284,
 		Salt = 1392,
 		Limestone = 820,
-		Pavement = 836
+		Pavement = 836,
+		ForceField = 1584
 	}
 	enum MembershipType {
 		None = 0,
