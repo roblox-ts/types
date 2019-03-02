@@ -6,9 +6,9 @@
 // GENERATED API OVERRIDES
 
 interface Rbx_AnimationController extends Rbx_Instance {
+	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 	GetPlayingAnimationTracks(): Array<AnimationTrack>;
 	LoadAnimation(animation: Animation): AnimationTrack;
-	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 }
 
 interface Rbx_Animator extends Rbx_Instance {
@@ -20,13 +20,17 @@ interface Rbx_AssetService extends Rbx_Instance {
 		player: Player,
 		placeName: string,
 		templatePlaceID: number,
-		description?: string
+		description?: string,
 	): number;
 	GetGamePlacesAsync(): StandardPages;
 	GetAssetIdsForPackage(packageAssetId: number): Array<number>;
 }
 
 interface Rbx_BasePart extends Rbx_Instance {
+	/** Fired when the part stops touching another part */
+	readonly TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
+	/** Fired when the part starts touching another part */
+	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
 	CanCollideWith(part: BasePart): boolean;
 	CanSetNetworkOwnership(): [true] | [false, string];
 	GetConnectedParts(recursive?: boolean): Array<BasePart>;
@@ -37,10 +41,6 @@ interface Rbx_BasePart extends Rbx_Instance {
 	SetNetworkOwner(playerInstance?: Player): void;
 	SubtractAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
 	UnionAsync(parts: Array<BasePart>, collisionfidelity?: Enum.CollisionFidelity): UnionOperation;
-	/** Fired when the part stops touching another part */
-	readonly TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
-	/** Fired when the part starts touching another part */
-	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
 }
 
 interface Rbx_BillboardGui extends Rbx_LayerCollector {
@@ -51,17 +51,17 @@ interface Rbx_BillboardGui extends Rbx_LayerCollector {
 }
 
 interface Rbx_BindableEvent extends Rbx_Instance {
-	/** Used to make the custom event fire (see Event for more info). Arguments can be variable length. */
-	Fire(...arguments: Array<unknown>): void;
 	/** This event fires when the Fire() method is used.  Receives the variable length arguments from Fire(). */
 	readonly Event: RBXScriptSignal<(...arguments: Array<unknown>) => void>;
+	/** Used to make the custom event fire (see Event for more info). Arguments can be variable length. */
+	Fire(...arguments: Array<unknown>): void;
 }
 
 interface Rbx_BindableFunction extends Rbx_Instance {
-	/** Causes the function assigned to OnInvoke to be called. Arguments passed to this function get passed to OnInvoke function. */
-	Invoke(...arguments: Array<unknown>): Array<unknown>;
 	/** Should be defined as a function. This function is called when Invoke() is called. Number of arguments is variable. */
 	OnInvoke: (...arguments: Array<unknown>) => any;
+	/** Causes the function assigned to OnInvoke to be called. Arguments passed to this function get passed to OnInvoke function. */
+	Invoke(...arguments: Array<unknown>): Array<unknown>;
 }
 
 interface Rbx_Camera extends Rbx_Instance {
@@ -75,10 +75,10 @@ interface Rbx_Camera extends Rbx_Instance {
 }
 
 interface Rbx_Chat extends Rbx_Instance {
+	readonly Chatted: RBXScriptSignal<(part: BasePart, message: string, color: Enum.ChatColor) => void>;
 	Chat(partOrCharacter: BasePart | Model, message: string, color?: Enum.ChatColor): void;
 	FilterStringAsync(stringToFilter: string, playerFrom: Player, playerTo: Player): string;
 	FilterStringForBroadcast(stringToFilter: string, playerFrom: Player): string;
-	readonly Chatted: RBXScriptSignal<(part: BasePart, message: string, color: Enum.ChatColor) => void>;
 }
 
 interface Rbx_ClickDetector extends Rbx_Instance {
@@ -108,24 +108,24 @@ interface Rbx_ContentProvider extends Rbx_Instance {
 
 /** @rbxts client */
 interface Rbx_ContextActionService extends Rbx_Instance {
+	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
+	readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
 	/** Binds 'functionToBind' to fire when any 'inputTypes' happen. InputTypes can be variable in number and type. Types can be Enum.KeyCode, single character strings corresponding to keys, or Enum.UserInputType. 'actionName' is a key used by many other ContextActionService functions to query state. 'createTouchButton' if true will create a button on screen on touch devices.  This button will fire 'functionToBind' with three arguments: first argument is the actionName, second argument is the UserInputState of the input, and the third is the InputObject that fired this function. If 'functionToBind' yields or returns nil or Enum.ContextActionResult.Sink, the input will be sunk. If it returns Enum.ContextActionResult.Pass, the next bound action in the stack will be invoked. */
 	BindAction(
 		actionName: string,
 		functionToBind: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
 		createTouchButton: boolean,
-		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
+		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>,
 	): void;
 	BindActionAtPriority(
 		actionName: string,
 		functionToBind: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
 		createTouchButton: boolean,
 		priorityLevel: number,
-		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
+		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>,
 	): void;
 	/** If 'actionName' key contains a bound action, then this will return the touch button (if was created). Returns nil if a touch button was not created. No guarantees are made whether button will be retrievable when button is manipulated. */
 	GetButton(actionName: string): ImageButton | undefined;
-	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
-	readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
 }
 
 /** @rbxts server */
@@ -139,9 +139,9 @@ interface Rbx_DataStoreService extends Rbx_Instance {
 }
 
 interface Rbx_Dialog extends Rbx_Instance {
+	readonly DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
 	/** Returns an array of the players currently conversing with this dialog. */
 	GetCurrentPlayers(): Array<Player>;
-	readonly DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
 }
 
 interface Rbx_FlagStand extends Rbx_Part {
@@ -213,7 +213,7 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 			touchPositions: Array<Vector2>,
 			totalTranslation: Vector2,
 			velocity: Vector2,
-			state: Enum.UserInputState
+			state: Enum.UserInputState,
 		) => void
 	>;
 	/** Fired when a user pinches their fingers on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the pinch gesture. 'scale' is a float that indicates the difference from the beginning of the pinch gesture. 'velocity' is a float indicating how quickly the pinch gesture is happening. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally. */
@@ -240,11 +240,11 @@ interface Rbx_HapticService extends Rbx_Instance {
 	SetMotor(
 		inputType: Enum.UserInputType,
 		vibrationMotor: Enum.VibrationMotor,
-		...vibrationValues: Array<number>
+		...vibrationValues: Array<number>,
 	): void;
 }
 
-type HttpHeaders = { [index: string]: string };
+interface HttpHeaders { [index: string]: string; }
 
 interface RequestAsyncRequest {
 	Url: string;
@@ -270,11 +270,14 @@ interface Rbx_HttpService extends Rbx_Instance {
 		data: string,
 		content_type?: Enum.HttpContentType,
 		compress?: boolean,
-		headers?: HttpHeaders
+		headers?: HttpHeaders,
 	): string;
 }
 
 interface Rbx_Humanoid extends Rbx_Instance {
+	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
+	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
+	readonly Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
 	ApplyDescription(humanoidDescription: HumanoidDescription): void;
 	GetAppliedDescription(): HumanoidDescription;
 	GetPlayingAnimationTracks(): Array<AnimationTrack>;
@@ -290,9 +293,6 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	MoveTo(location: Vector3, part?: BasePart): void;
 	/** Replaces the desired bodypart on the Humanoid's Character using a specified Enum.BodyPartR15 and BasePart. Returns a success boolean. */
 	ReplaceBodyPartR15(bodyPart: Enum.BodyPartR15, part: BasePart): boolean;
-	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
-	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
-	readonly Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
 }
 
 interface SetInfo {
@@ -496,23 +496,6 @@ interface DeveloperProductInfo extends ProductInfo {
 }
 
 interface Rbx_MarketplaceService extends Rbx_Instance {
-	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
-	GetProductInfo(assetId: number, infoType: Enum.InfoType.Asset): AssetProductInfo;
-	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
-	GetProductInfo(assetId: number, infoType: Enum.InfoType.Product): DeveloperProductInfo;
-	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
-	GetProductInfo(assetId: number, infoType: Enum.InfoType.GamePass): AssetProductInfo;
-	PromptGamePassPurchase(player: Player, gamePassId: number): void;
-	PromptProductPurchase(
-		player: Player,
-		productId: number,
-		equipIfPurchased?: boolean,
-		currencyType?: Enum.CurrencyType
-	): void;
-	/** Will prompt 'player' to purchase the item associated with 'assetId'.  'equipIfPurchased' is an optional argument that will give the item to the player immediately if they buy it (only applies to gear).  'currencyType' is also optional and will attempt to prompt the user with a specified currency if the product can be purchased with this currency, otherwise we use the default currency of the product. */
-	PromptPurchase(player: Player, assetId: number, equipIfPurchased?: boolean, currencyType?: Enum.CurrencyType): void;
-	/** Checks to see if 'Player' owns the product associated with 'assetId'. Returns true if the player owns it, false otherwise. This call will produce a warning if called on a guest player. */
-	PlayerOwnsAsset(player: Player, assetId: number): boolean;
 	/**
 	 * Callback that is executed for pending Developer Product receipts.
 	 * If this function does not return Enum.ProductPurchaseDecision.PurchaseGranted, then you will not be granted the money for the purchase!
@@ -530,13 +513,30 @@ interface Rbx_MarketplaceService extends Rbx_Instance {
 	>;
 	/** Fired when a 'player' dismisses a purchase dialog for 'assetId'.  If the player purchased the item 'isPurchased' will be true, otherwise it will be false. This call will produce a warning if called on a guest player. */
 	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
+	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
+	GetProductInfo(assetId: number, infoType: Enum.InfoType.Asset): AssetProductInfo;
+	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
+	GetProductInfo(assetId: number, infoType: Enum.InfoType.Product): DeveloperProductInfo;
+	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
+	GetProductInfo(assetId: number, infoType: Enum.InfoType.GamePass): AssetProductInfo;
+	PromptGamePassPurchase(player: Player, gamePassId: number): void;
+	PromptProductPurchase(
+		player: Player,
+		productId: number,
+		equipIfPurchased?: boolean,
+		currencyType?: Enum.CurrencyType,
+	): void;
+	/** Will prompt 'player' to purchase the item associated with 'assetId'.  'equipIfPurchased' is an optional argument that will give the item to the player immediately if they buy it (only applies to gear).  'currencyType' is also optional and will attempt to prompt the user with a specified currency if the product can be purchased with this currency, otherwise we use the default currency of the product. */
+	PromptPurchase(player: Player, assetId: number, equipIfPurchased?: boolean, currencyType?: Enum.CurrencyType): void;
+	/** Checks to see if 'Player' owns the product associated with 'assetId'. Returns true if the player owns it, false otherwise. This call will produce a warning if called on a guest player. */
+	PlayerOwnsAsset(player: Player, assetId: number): boolean;
 }
 
 interface Rbx_Model extends Rbx_PVInstance {
-	/** Describes the smallest possible rotated cuboid to contain all the parts of the model as a CFrame and Vector3 size.*/
-	GetBoundingBox(): [CFrame, Vector3];
 	/** A Part that serves as a reference for the Model's CFrame. Used in conjunction with GetModelPrimaryPartCFrame and SetModelPrimaryPartCFrame. Use this to rotate/translate all Parts relative to the PrimaryPart. */
 	PrimaryPart: BasePart | undefined;
+	/** Describes the smallest possible rotated cuboid to contain all the parts of the model as a CFrame and Vector3 size.*/
+	GetBoundingBox(): [CFrame, Vector3];
 }
 
 /** @rbxts server */
@@ -585,6 +585,9 @@ interface FriendOnlineInfo {
 interface Rbx_Player extends Rbx_Instance {
 	Character: Model | undefined;
 	ReplicationFocus: BasePart | undefined;
+	readonly CharacterAdded: RBXScriptSignal<(character: Model) => void>;
+	readonly CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
+	readonly CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
 	GetFriendsOnline(maxFriends?: number): Array<FriendOnlineInfo>;
 	GetMouse(): PlayerMouse;
 	/**
@@ -594,9 +597,6 @@ interface Rbx_Player extends Rbx_Instance {
 	LoadCharacter(): void;
 	/** @rbxts server */
 	LoadCharacterWithHumanoidDescription(humanoidDescription: HumanoidDescription): void;
-	readonly CharacterAdded: RBXScriptSignal<(character: Model) => void>;
-	readonly CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
-	readonly CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
 }
 
 interface CharacterAppearanceInfo {
@@ -632,6 +632,8 @@ interface CharacterAppearanceInfo {
 interface Rbx_Players extends Rbx_Instance {
 	/** @rbxts client */
 	LocalPlayer: Player;
+	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
+	readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
 	GetHumanoidDescriptionFromOutfitId(outfitId: number): HumanoidDescription;
 	GetHumanoidDescriptionFromUserId(userId: number): HumanoidDescription;
 	GetPlayerFromCharacter(character: Model): Player | undefined;
@@ -643,10 +645,8 @@ interface Rbx_Players extends Rbx_Instance {
 	GetUserThumbnailAsync(
 		userId: number,
 		thumbnailType: Enum.ThumbnailType,
-		thumbnailSize: Enum.ThumbnailSize
+		thumbnailSize: Enum.ThumbnailSize,
 	): [string, boolean];
-	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
-	readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
 }
 
 interface Rbx_PointsService extends Rbx_Instance {
@@ -655,27 +655,27 @@ interface Rbx_PointsService extends Rbx_Instance {
 }
 
 interface Rbx_RemoteEvent extends Rbx_Instance {
+	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
+	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
 	FireAllClients(...arguments: Array<unknown>): void;
 	FireClient(player: Player, ...arguments: Array<unknown>): void;
 	FireServer(...arguments: Array<unknown>): void;
-	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
-	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
 }
 
 interface Rbx_RemoteFunction extends Rbx_Instance {
-	InvokeClient(player: Instance, ...arguments: Array<any>): unknown;
-	InvokeServer<R = unknown>(...arguments: Array<any>): R;
 	OnClientInvoke: Callback;
 	OnServerInvoke: Callback;
+	InvokeClient(player: Instance, ...arguments: Array<any>): unknown;
+	InvokeServer<R = unknown>(...arguments: Array<any>): R;
 }
 
 interface Rbx_SocialService extends Rbx_Instance {
+	/** An event invoked when a game invite prompt is closed. 'senderPlayer' is the player who closed the prompt and 'recipientIds' is an array of UserIds that were invited. */
+	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
 	/** Checks if a user can send a game invite. Can only be called from the client. Can throw if the web request fails. Will yield the current thread when called. */
 	CanSendGameInviteAsync(targetPlayer: Player): boolean;
 	/** Shows a window to the 'targetPlayer' allowing them to invite friends. If 'targetPlayer' can not send invites, this will silently fail. If this is called from the client and the 'targetPlayer' is not the LocalPlayer it will error. */
 	PromptGameInvite(targetPlayer: Player): void;
-	/** An event invoked when a game invite prompt is closed. 'senderPlayer' is the player who closed the prompt and 'recipientIds' is an array of UserIds that were invited. */
-	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: number[]) => void>;
 }
 
 interface Rbx_SoundService extends Rbx_Instance {
@@ -755,7 +755,7 @@ interface Rbx_StarterGui extends Rbx_BasePlayerGui {
 	SetCore(parameterName: "RemoveAvatarContextMenuOption", option: [string, BindableFunction]): void;
 	SetCore(
 		parameterName: "CoreGuiChatConnections",
-		connections: { [name: string]: BindableEvent | BindableFunction }
+		connections: { [name: string]: BindableEvent | BindableFunction },
 	): void;
 }
 
@@ -765,9 +765,9 @@ interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 }
 
 interface Rbx_Team extends Rbx_Instance {
-	GetPlayers(): Array<Player>;
 	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
 	readonly PlayerRemoved: RBXScriptSignal<(player: Player) => void>;
+	GetPlayers(): Array<Player>;
 }
 
 interface Rbx_Teams extends Rbx_Instance {
@@ -775,6 +775,9 @@ interface Rbx_Teams extends Rbx_Instance {
 }
 
 interface Rbx_TeleportService {
+	readonly TeleportInitFailed: RBXScriptSignal<
+		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string) => void
+	>;
 	GetPlayerPlaceInstanceAsync(userId: number): [boolean, string, number, string];
 	ReserveServer(placeId: number): [string, string];
 	Teleport(placeId: number, player?: Player, teleportData?: any, customLoadingScreen?: Instance): void;
@@ -784,21 +787,18 @@ interface Rbx_TeleportService {
 		players: Array<Player>,
 		spawnName?: string,
 		teleportData?: any,
-		customLoadingScreen?: Instance
+		customLoadingScreen?: Instance,
 	): void;
 	TeleportPartyAsync(
 		placeId: number,
 		players: Array<Player>,
 		teleportData?: any,
-		customLoadingScreen?: Instance
+		customLoadingScreen?: Instance,
 	): string;
-	readonly TeleportInitFailed: RBXScriptSignal<
-		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string) => void
-	>;
 }
 
 /** @rbxts array */
-type ReadVoxelsArray<T> = T[][][] & {
+type ReadVoxelsArray<T> = Array<Array<Array<T>>> & {
 	Size: Vector3;
 };
 
@@ -806,7 +806,7 @@ interface Rbx_Terrain extends Rbx_BasePart {
 	CopyRegion(region: Region3int16): TerrainRegion;
 	PasteRegion(region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): void;
 	ReadVoxels(region: Region3, resolution: number): [ReadVoxelsArray<Enum.Material>, ReadVoxelsArray<number>];
-	WriteVoxels(region: Region3, resolution: number, materials: Enum.Material[][][], occupancy: number[][][]): void;
+	WriteVoxels(region: Region3, resolution: number, materials: Array<Array<Array<Enum.Material>>>, occupancy: Array<Array<Array<number>>>): void;
 }
 
 interface Rbx_Tool extends Rbx_BackpackItem {
@@ -821,6 +821,12 @@ interface Rbx_TweenService {
 }
 
 interface Rbx_UserInputService {
+	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
+	readonly InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
+	readonly InputChanged: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
+	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
+	readonly InputEnded: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	GetConnectedGamepads(): Array<Enum.UserInputType>;
 	/** Returns an InputObject and a Vector4 that describes the device's current rotation vector. This is fired with an InputObject, which has type Enum.InputType.Gyroscope, and position that shows total rotation in each local device axis. The delta property describes the amount of rotation that last happened. The Vector4 is the device's current quaternion rotation in reference to it's default reference frame. This event only fires locally. */
 	GetDeviceRotation(): [InputObject, CFrame];
@@ -829,12 +835,6 @@ interface Rbx_UserInputService {
 	GetMouseButtonsPressed(): Array<InputObject>;
 	GetNavigationGamepads(): Array<Enum.UserInputType>;
 	GetSupportedGamepadKeyCodes(gamepadNum: Enum.UserInputType): Array<Enum.KeyCode>;
-	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	readonly InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
-	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	readonly InputChanged: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
-	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	readonly InputEnded: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 }
 
 interface Rbx_Workspace extends Rbx_Model {
@@ -844,18 +844,18 @@ interface Rbx_Workspace extends Rbx_Model {
 		ray: Ray,
 		ignoreDescendantsInstance?: Instance,
 		terrainCellsAreCubes?: boolean,
-		ignoreWater?: boolean
+		ignoreWater?: boolean,
 	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
 	/** Return type is (BasePart, Vector3) if the ray hits.  If it misses it will return (nil, PointAtEndOfRay) */
 	FindPartOnRayWithIgnoreList(
 		ray: Ray,
 		ignoreDescendantsTable: Array<Instance>,
 		terrainCellsAreCubes?: boolean,
-		ignoreWater?: boolean
+		ignoreWater?: boolean,
 	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
 	FindPartOnRayWithWhitelist(
 		ray: Ray,
 		whitelistDescendantsTable: Array<Instance>,
-		ignoreWater?: boolean
+		ignoreWater?: boolean,
 	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
 }
