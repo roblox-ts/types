@@ -669,6 +669,15 @@ interface Rbx_RemoteFunction extends Rbx_Instance {
 	OnServerInvoke: Callback;
 }
 
+interface Rbx_SocialService extends Rbx_Instance {
+	/** Checks if a user can send a game invite. Can only be called from the client. Can throw if the web request fails. Will yield the current thread when called. */
+	CanSendGameInviteAsync(targetPlayer: Player): boolean;
+	/** Shows a window to the 'targetPlayer' allowing them to invite friends. If 'targetPlayer' can not send invites, this will silently fail. If this is called from the client and the 'targetPlayer' is not the LocalPlayer it will error. */
+	PromptGameInvite(targetPlayer: Player): void;
+	/** An event invoked when a game invite prompt is closed. 'senderPlayer' is the player who closed the prompt and 'recipientIds' is an array of UserIds that were invited. */
+	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: number[]) => void>;
+}
+
 interface Rbx_SoundService extends Rbx_Instance {
 	GetListener():
 		| [Enum.ListenerType.Camera, undefined]
