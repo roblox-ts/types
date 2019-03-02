@@ -4713,9 +4713,6 @@ type Smoke = Rbx_Smoke & Base<Rbx_Smoke> & Indexable<Rbx_Smoke>;
 
 // SocialService
 interface Rbx_SocialService extends Rbx_Instance {
-	PromptGameInvite(player: Instance): void;
-	CanSendGameInviteAsync(player: Instance): boolean;
-	readonly GameInvitePromptClosed: RBXScriptSignal<(player: Instance, recipientIds: Array<any>) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__322: never;
 }
