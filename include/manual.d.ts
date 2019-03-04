@@ -458,6 +458,8 @@ interface ProductInfo {
 	MinimumMembershipLevel: number;
 	/** Describes whether the asset can be taken for free */
 	IsPublicDomain: boolean;
+	/** Describes whether the asset is a User Product, Developer Product, or Game Pass */
+	ProductType: "User Product" | "Developer Product" | "Game Pass";
 	/** A table of information describing the creator of the asset */
 	Creator: {
 		/** Either `User` or `Group` */
