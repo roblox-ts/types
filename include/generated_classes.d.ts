@@ -312,6 +312,7 @@ interface Instances {
 	Feature: Feature;
 	Hole: Hole;
 	MotorFeature: MotorFeature;
+	File: File;
 	Fire: Fire;
 	FlagStandService: FlagStandService;
 	FlyweightService: FlyweightService;
@@ -416,7 +417,6 @@ interface Instances {
 	SpotLight: SpotLight;
 	SurfaceLight: SurfaceLight;
 	Lighting: Lighting;
-	LocalAsset: LocalAsset;
 	LocalStorageService: LocalStorageService;
 	AppStorageService: AppStorageService;
 	UserStorageService: UserStorageService;
@@ -644,15 +644,15 @@ interface Rbx_Instance {
 	IsAncestorOf(descendant: Instance): boolean;
 	IsDescendantOf(ancestor: Instance): boolean;
 	/** Fired when any of this object's ancestors change.  First argument 'child' is the object whose parent changed.  Second argument 'parent' is the first argument's new parent. */
-	AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance) => void>;
+	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance) => void>;
 	/** Fired after a property changes value.  The property argument is the name of the property */
-	Changed: RBXScriptSignal<(property: string) => void>;
-	ChildAdded: RBXScriptSignal<(child: Instance) => void>;
-	ChildRemoved: RBXScriptSignal<(child: Instance) => void>;
+	readonly Changed: RBXScriptSignal<(property: string) => void>;
+	readonly ChildAdded: RBXScriptSignal<(child: Instance) => void>;
+	readonly ChildRemoved: RBXScriptSignal<(child: Instance) => void>;
 	/** Fired after an Instance is parented to this object, or any of this object's descendants.  The 'descendant' argument is the Instance that is being added. */
-	DescendantAdded: RBXScriptSignal<(descendant: Instance) => void>;
+	readonly DescendantAdded: RBXScriptSignal<(descendant: Instance) => void>;
 	/** Fired after an Instance is unparented from this object, or any of this object's descendants.  The 'descendant' argument is the Instance that is being added. */
-	DescendantRemoving: RBXScriptSignal<(descendant: Instance) => void>;
+	readonly DescendantRemoving: RBXScriptSignal<(descendant: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__0: never;
 }
@@ -753,9 +753,9 @@ interface Rbx_AnimationTrack extends Rbx_Instance {
 	GetTimeOfKeyframe(keyframeName: string): number;
 	Play(fadeTime?: number, weight?: number, speed?: number): void;
 	Stop(fadeTime?: number): void;
-	DidLoop: RBXScriptSignal<() => void>;
-	KeyframeReached: RBXScriptSignal<(keyframeName: string) => void>;
-	Stopped: RBXScriptSignal<() => void>;
+	readonly DidLoop: RBXScriptSignal<() => void>;
+	readonly KeyframeReached: RBXScriptSignal<(keyframeName: string) => void>;
+	readonly Stopped: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__10: never;
 }
@@ -844,7 +844,7 @@ interface Rbx_PlayerGui extends Rbx_BasePlayerGui {
 	SelectionImageObject: GuiObject;
 	GetTopbarTransparency(): number;
 	SetTopbarTransparency(transparency: number): void;
-	TopbarTransparencyChangedSignal: RBXScriptSignal<(transparency: number) => void>;
+	readonly TopbarTransparencyChangedSignal: RBXScriptSignal<(transparency: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__17: never;
 }
@@ -957,7 +957,7 @@ interface Rbx_BodyPosition extends Rbx_BodyMover {
 	/** The Vector3 that this force is trying to position its parent Part to. */
 	Position: Vector3;
 	GetLastForce(): Vector3;
-	ReachedTarget: RBXScriptSignal<() => void>;
+	readonly ReachedTarget: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__26: never;
 }
@@ -1004,7 +1004,7 @@ interface Rbx_RocketPropulsion extends Rbx_BodyMover {
 	TurnP: number;
 	Abort(): void;
 	Fire(): void;
-	ReachedTarget: RBXScriptSignal<() => void>;
+	readonly ReachedTarget: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__29: never;
 }
@@ -1082,7 +1082,7 @@ interface Rbx_Camera extends Rbx_Instance {
 	TiltUnits(units: number): boolean;
 	/** Same as ScreenPointToRay, except no GUI offsets are taken into account. Useful for things like casting a ray from the middle of the Camera.ViewportSize */
 	ViewportPointToRay(x: number, y: number, depth?: number): Ray;
-	InterpolationFinished: RBXScriptSignal<() => void>;
+	readonly InterpolationFinished: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__34: never;
 }
@@ -1543,7 +1543,7 @@ interface Rbx_Controller extends Rbx_Instance {
 	BindButton(button: Enum.Button, caption: string): void;
 	GetButton(button: Enum.Button): boolean;
 	UnbindButton(button: Enum.Button): void;
-	ButtonChanged: RBXScriptSignal<(button: Enum.Button) => void>;
+	readonly ButtonChanged: RBXScriptSignal<(button: Enum.Button) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__65: never;
 }
@@ -1560,7 +1560,7 @@ type HumanoidController = Rbx_HumanoidController & Base<Rbx_HumanoidController> 
 interface Rbx_SkateboardController extends Rbx_Controller {
 	readonly Steer: number;
 	readonly Throttle: number;
-	AxisChanged: RBXScriptSignal<(axis: string) => void>;
+	readonly AxisChanged: RBXScriptSignal<(axis: string) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__67: never;
 }
@@ -1617,8 +1617,8 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_CustomEvent extends Rbx_Instance {
 	GetAttachedReceivers(): Array<Instance>;
 	SetValue(newValue: number): void;
-	ReceiverConnected: RBXScriptSignal<(receiver: Instance) => void>;
-	ReceiverDisconnected: RBXScriptSignal<(receiver: Instance) => void>;
+	readonly ReceiverConnected: RBXScriptSignal<(receiver: Instance) => void>;
+	readonly ReceiverDisconnected: RBXScriptSignal<(receiver: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__73: never;
 }
@@ -1628,9 +1628,9 @@ type CustomEvent = Rbx_CustomEvent & Base<Rbx_CustomEvent> & Indexable<Rbx_Custo
 interface Rbx_CustomEventReceiver extends Rbx_Instance {
 	Source: Instance | undefined;
 	GetCurrentValue(): number;
-	EventConnected: RBXScriptSignal<(event: Instance) => void>;
-	EventDisconnected: RBXScriptSignal<(event: Instance) => void>;
-	SourceValueChanged: RBXScriptSignal<(newValue: number) => void>;
+	readonly EventConnected: RBXScriptSignal<(event: Instance) => void>;
+	readonly EventDisconnected: RBXScriptSignal<(event: Instance) => void>;
+	readonly SourceValueChanged: RBXScriptSignal<(newValue: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__74: never;
 }
@@ -1753,8 +1753,8 @@ interface Rbx_DebuggerManager extends Rbx_Instance {
 	StepIn(): void;
 	StepOut(): void;
 	StepOver(): void;
-	DebuggerAdded: RBXScriptSignal<(debug: Instance) => void>;
-	DebuggerRemoved: RBXScriptSignal<(debug: Instance) => void>;
+	readonly DebuggerAdded: RBXScriptSignal<(debug: Instance) => void>;
+	readonly DebuggerRemoved: RBXScriptSignal<(debug: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__85: never;
 }
@@ -1828,7 +1828,7 @@ interface Rbx_Explosion extends Rbx_Instance {
 	/** Where the Explosion occurs in absolute world coordinates. */
 	Position: Vector3;
 	Visible: boolean;
-	Hit: RBXScriptSignal<(part: Instance, distance: number) => void>;
+	readonly Hit: RBXScriptSignal<(part: Instance, distance: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__90: never;
 }
@@ -1888,6 +1888,13 @@ interface Rbx_MotorFeature extends Rbx_Feature {
 }
 type MotorFeature = Rbx_MotorFeature & Base<Rbx_MotorFeature> & Indexable<Rbx_MotorFeature>;
 
+// File
+interface Rbx_File extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__97: never;
+}
+type File = Rbx_File & Base<Rbx_File> & Indexable<Rbx_File>;
+
 // Fire
 interface Rbx_Fire extends Rbx_Instance {
 	/** The color of the base of the fire.  See SecondaryColor for more. */
@@ -1900,14 +1907,14 @@ interface Rbx_Fire extends Rbx_Instance {
 	/** How large the fire appears to be. */
 	Size: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__97: never;
+	__98: never;
 }
 type Fire = Rbx_Fire & Base<Rbx_Fire> & Indexable<Rbx_Fire>;
 
 // FlagStandService
 interface Rbx_FlagStandService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__98: never;
+	__99: never;
 }
 type FlagStandService = Rbx_FlagStandService & Base<Rbx_FlagStandService> & Indexable<Rbx_FlagStandService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1917,7 +1924,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // FlyweightService
 interface Rbx_FlyweightService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__99: never;
+	__100: never;
 }
 type FlyweightService = Rbx_FlyweightService & Base<Rbx_FlyweightService> & Indexable<Rbx_FlyweightService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1927,7 +1934,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // CSGDictionaryService
 interface Rbx_CSGDictionaryService extends Rbx_FlyweightService {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__100: never;
+	__101: never;
 }
 type CSGDictionaryService = Rbx_CSGDictionaryService & Base<Rbx_CSGDictionaryService> & Indexable<Rbx_CSGDictionaryService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1937,7 +1944,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // NonReplicatedCSGDictionaryService
 interface Rbx_NonReplicatedCSGDictionaryService extends Rbx_FlyweightService {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__101: never;
+	__102: never;
 }
 type NonReplicatedCSGDictionaryService = Rbx_NonReplicatedCSGDictionaryService & Base<Rbx_NonReplicatedCSGDictionaryService> & Indexable<Rbx_NonReplicatedCSGDictionaryService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1947,7 +1954,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Folder
 interface Rbx_Folder extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__102: never;
+	__103: never;
 }
 type Folder = Rbx_Folder & Base<Rbx_Folder> & Indexable<Rbx_Folder>;
 
@@ -1955,14 +1962,14 @@ type Folder = Rbx_Folder & Base<Rbx_Folder> & Indexable<Rbx_Folder>;
 interface Rbx_ForceField extends Rbx_Instance {
 	Visible: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__103: never;
+	__104: never;
 }
 type ForceField = Rbx_ForceField & Base<Rbx_ForceField> & Indexable<Rbx_ForceField>;
 
 // FriendService
 interface Rbx_FriendService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__104: never;
+	__105: never;
 }
 type FriendService = Rbx_FriendService & Base<Rbx_FriendService> & Indexable<Rbx_FriendService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -1978,14 +1985,14 @@ interface Rbx_FunctionalTest extends Rbx_Instance {
 	Passed(message?: string): void;
 	Warn(message?: string): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__105: never;
+	__106: never;
 }
 type FunctionalTest = Rbx_FunctionalTest & Base<Rbx_FunctionalTest> & Indexable<Rbx_FunctionalTest>;
 
 // GamePassService
 interface Rbx_GamePassService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__106: never;
+	__107: never;
 }
 type GamePassService = Rbx_GamePassService & Base<Rbx_GamePassService> & Indexable<Rbx_GamePassService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2006,14 +2013,14 @@ interface Rbx_GameSettings extends Rbx_Instance {
 	VideoCaptureEnabled: boolean;
 	VideoQuality: Enum.VideoQualitySettings;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__107: never;
+	__108: never;
 }
 type GameSettings = Rbx_GameSettings & Base<Rbx_GameSettings> & Indexable<Rbx_GameSettings>;
 
 // GamepadService
 interface Rbx_GamepadService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__108: never;
+	__109: never;
 }
 type GamepadService = Rbx_GamepadService & Base<Rbx_GamepadService> & Indexable<Rbx_GamepadService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2023,7 +2030,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Geometry
 interface Rbx_Geometry extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__109: never;
+	__110: never;
 }
 type Geometry = Rbx_Geometry & Base<Rbx_Geometry> & Indexable<Rbx_Geometry>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2035,21 +2042,21 @@ interface Rbx_GlobalDataStore extends Rbx_Instance {
 	/** Sets the value of the key. This overwrites any existing data stored in the key */
 	SetAsync(key: string, value?: any): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__110: never;
+	__111: never;
 }
 type GlobalDataStore = Rbx_GlobalDataStore & Base<Rbx_GlobalDataStore> & Indexable<Rbx_GlobalDataStore>;
 
 // OrderedDataStore
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__111: never;
+	__112: never;
 }
 type OrderedDataStore = Rbx_OrderedDataStore & Base<Rbx_OrderedDataStore> & Indexable<Rbx_OrderedDataStore>;
 
 // GoogleAnalyticsConfiguration
 interface Rbx_GoogleAnalyticsConfiguration extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__112: never;
+	__113: never;
 }
 type GoogleAnalyticsConfiguration = Rbx_GoogleAnalyticsConfiguration & Base<Rbx_GoogleAnalyticsConfiguration> & Indexable<Rbx_GoogleAnalyticsConfiguration>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2059,7 +2066,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // GroupService
 interface Rbx_GroupService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__113: never;
+	__114: never;
 }
 type GroupService = Rbx_GroupService & Base<Rbx_GroupService> & Indexable<Rbx_GroupService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2069,7 +2076,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // GuiBase
 interface Rbx_GuiBase extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__114: never;
+	__115: never;
 }
 type GuiBase = Rbx_GuiBase & Base<Rbx_GuiBase> & Indexable<Rbx_GuiBase>;
 
@@ -2083,7 +2090,7 @@ interface Rbx_GuiBase2d extends Rbx_GuiBase {
 	AutoLocalize: boolean;
 	RootLocalizationTable: LocalizationTable;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__115: never;
+	__116: never;
 }
 type GuiBase2d = Rbx_GuiBase2d & Base<Rbx_GuiBase2d> & Indexable<Rbx_GuiBase2d>;
 
@@ -2128,19 +2135,19 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 	/** Smoothly translates a GuiObject's current size to 'endSize', and also smoothly translates the GuiObject's current position to 'endPosition'. The only required arguments are 'endSize' and 'endPosition'. [More info](http://wiki.roblox.com/index.php/TweenSizeAndPosition)  */
 	TweenSizeAndPosition(endSize: UDim2, endPosition: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
 	/** Fired when the mouse enters a GuiObject, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
-	MouseEnter: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseEnter: RBXScriptSignal<(x: number, y: number) => void>;
 	/** Fired when the mouse leaves a GuiObject, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
-	MouseLeave: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseLeave: RBXScriptSignal<(x: number, y: number) => void>;
 	/** Fired when the mouse is inside a GuiObject and moves, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
-	MouseMoved: RBXScriptSignal<(x: number, y: number) => void>;
-	MouseWheelBackward: RBXScriptSignal<(x: number, y: number) => void>;
-	MouseWheelForward: RBXScriptSignal<(x: number, y: number) => void>;
-	SelectionGained: RBXScriptSignal<() => void>;
-	SelectionLost: RBXScriptSignal<() => void>;
+	readonly MouseMoved: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseWheelBackward: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseWheelForward: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly SelectionGained: RBXScriptSignal<() => void>;
+	readonly SelectionLost: RBXScriptSignal<() => void>;
 	/** Fired when a user swipes their fingers on a TouchEnabled device. 'swipeDirection' is an Enum.SwipeDirection, indicating the direction the user swiped. 'numberOfTouches' is an int that indicates how many touches were involved with the gesture.  This event only fires locally. */
-	TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number) => void>;
+	readonly TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__116: never;
+	__117: never;
 }
 type GuiObject = Rbx_GuiObject & Base<Rbx_GuiObject> & Indexable<Rbx_GuiObject>;
 
@@ -2149,7 +2156,7 @@ interface Rbx_Frame extends Rbx_GuiObject {
 	/** Determines how a frame will look. Uses Enum.FrameStyle. [More info](http://wiki.roblox.com/index.php?title=API:Enum/FrameStyle) */
 	Style: Enum.FrameStyle;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__117: never;
+	__118: never;
 }
 type Frame = Rbx_Frame & Base<Rbx_Frame> & Indexable<Rbx_Frame>;
 
@@ -2162,21 +2169,21 @@ interface Rbx_GuiButton extends Rbx_GuiObject {
 	Selected: boolean;
 	/** Determines how a button will look, including mouse event states. Uses Enum.ButtonStyle. [More info](http://wiki.roblox.com/index.php?title=API:Class/GuiButton/Style) */
 	Style: Enum.ButtonStyle;
-	Activated: RBXScriptSignal<(inputObject: Instance) => void>;
+	readonly Activated: RBXScriptSignal<(inputObject: Instance) => void>;
 	/** Fired when the mouse is over the button, and the mouse down and up events fire without the mouse leaving the button. */
-	MouseButton1Click: RBXScriptSignal<() => void>;
+	readonly MouseButton1Click: RBXScriptSignal<() => void>;
 	/** Fired when the mouse button is pushed down on a button. */
-	MouseButton1Down: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseButton1Down: RBXScriptSignal<(x: number, y: number) => void>;
 	/** Fired when the mouse button is released on a button. */
-	MouseButton1Up: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseButton1Up: RBXScriptSignal<(x: number, y: number) => void>;
 	/** This function currently does not work :( */
-	MouseButton2Click: RBXScriptSignal<() => void>;
+	readonly MouseButton2Click: RBXScriptSignal<() => void>;
 	/** This function currently does not work :( */
-	MouseButton2Down: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseButton2Down: RBXScriptSignal<(x: number, y: number) => void>;
 	/** This function currently does not work :( */
-	MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__118: never;
+	__119: never;
 }
 type GuiButton = Rbx_GuiButton & Base<Rbx_GuiButton> & Indexable<Rbx_GuiButton>;
 
@@ -2199,7 +2206,7 @@ interface Rbx_ImageButton extends Rbx_GuiButton {
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__119: never;
+	__120: never;
 }
 type ImageButton = Rbx_ImageButton & Base<Rbx_ImageButton> & Indexable<Rbx_ImageButton>;
 
@@ -2222,14 +2229,14 @@ interface Rbx_TextButton extends Rbx_GuiButton {
 	TextXAlignment: Enum.TextXAlignment;
 	TextYAlignment: Enum.TextYAlignment;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__120: never;
+	__121: never;
 }
 type TextButton = Rbx_TextButton & Base<Rbx_TextButton> & Indexable<Rbx_TextButton>;
 
 // GuiLabel
 interface Rbx_GuiLabel extends Rbx_GuiObject {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__121: never;
+	__122: never;
 }
 type GuiLabel = Rbx_GuiLabel & Base<Rbx_GuiLabel> & Indexable<Rbx_GuiLabel>;
 
@@ -2250,7 +2257,7 @@ interface Rbx_ImageLabel extends Rbx_GuiLabel {
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__122: never;
+	__123: never;
 }
 type ImageLabel = Rbx_ImageLabel & Base<Rbx_ImageLabel> & Indexable<Rbx_ImageLabel>;
 
@@ -2273,7 +2280,7 @@ interface Rbx_TextLabel extends Rbx_GuiLabel {
 	TextXAlignment: Enum.TextXAlignment;
 	TextYAlignment: Enum.TextYAlignment;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__123: never;
+	__124: never;
 }
 type TextLabel = Rbx_TextLabel & Base<Rbx_TextLabel> & Indexable<Rbx_TextLabel>;
 
@@ -2303,7 +2310,7 @@ interface Rbx_ScrollingFrame extends Rbx_GuiObject {
 	VerticalScrollBarInset: Enum.ScrollBarInset;
 	VerticalScrollBarPosition: Enum.VerticalScrollBarPosition;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__124: never;
+	__125: never;
 }
 type ScrollingFrame = Rbx_ScrollingFrame & Base<Rbx_ScrollingFrame> & Indexable<Rbx_ScrollingFrame>;
 
@@ -2333,10 +2340,10 @@ interface Rbx_TextBox extends Rbx_GuiObject {
 	CaptureFocus(): void;
 	IsFocused(): boolean;
 	ReleaseFocus(submitted?: boolean): void;
-	FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: Instance) => void>;
-	Focused: RBXScriptSignal<() => void>;
+	readonly FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: Instance) => void>;
+	readonly Focused: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__125: never;
+	__126: never;
 }
 type TextBox = Rbx_TextBox & Base<Rbx_TextBox> & Indexable<Rbx_TextBox>;
 
@@ -2349,7 +2356,7 @@ interface Rbx_ViewportFrame extends Rbx_GuiObject {
 	/** A number value that specifies how transparent the rendered image of the ViewportFrame is */
 	ImageTransparency: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__126: never;
+	__127: never;
 }
 type ViewportFrame = Rbx_ViewportFrame & Base<Rbx_ViewportFrame> & Indexable<Rbx_ViewportFrame>;
 
@@ -2359,7 +2366,7 @@ interface Rbx_LayerCollector extends Rbx_GuiBase2d {
 	ResetOnSpawn: boolean;
 	ZIndexBehavior: Enum.ZIndexBehavior;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__127: never;
+	__128: never;
 }
 type LayerCollector = Rbx_LayerCollector & Base<Rbx_LayerCollector> & Indexable<Rbx_LayerCollector>;
 
@@ -2384,7 +2391,7 @@ interface Rbx_BillboardGui extends Rbx_LayerCollector {
 	StudsOffset: Vector3;
 	StudsOffsetWorldSpace: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__128: never;
+	__129: never;
 }
 type BillboardGui = Rbx_BillboardGui & Base<Rbx_BillboardGui> & Indexable<Rbx_BillboardGui>;
 
@@ -2393,7 +2400,7 @@ interface Rbx_PluginGui extends Rbx_LayerCollector {
 	Title: string;
 	BindToClose(callback?: Function): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__129: never;
+	__130: never;
 }
 type PluginGui = Rbx_PluginGui & Base<Rbx_PluginGui> & Indexable<Rbx_PluginGui>;
 
@@ -2401,14 +2408,14 @@ type PluginGui = Rbx_PluginGui & Base<Rbx_PluginGui> & Indexable<Rbx_PluginGui>;
 interface Rbx_DockWidgetPluginGui extends Rbx_PluginGui {
 	readonly HostWidgetWasRestored: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__130: never;
+	__131: never;
 }
 type DockWidgetPluginGui = Rbx_DockWidgetPluginGui & Base<Rbx_DockWidgetPluginGui> & Indexable<Rbx_DockWidgetPluginGui>;
 
 // QWidgetPluginGui
 interface Rbx_QWidgetPluginGui extends Rbx_PluginGui {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__131: never;
+	__132: never;
 }
 type QWidgetPluginGui = Rbx_QWidgetPluginGui & Base<Rbx_QWidgetPluginGui> & Indexable<Rbx_QWidgetPluginGui>;
 
@@ -2417,14 +2424,14 @@ interface Rbx_ScreenGui extends Rbx_LayerCollector {
 	DisplayOrder: number;
 	IgnoreGuiInset: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__132: never;
+	__133: never;
 }
 type ScreenGui = Rbx_ScreenGui & Base<Rbx_ScreenGui> & Indexable<Rbx_ScreenGui>;
 
 // GuiMain
 interface Rbx_GuiMain extends Rbx_ScreenGui {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__133: never;
+	__134: never;
 }
 type GuiMain = Rbx_GuiMain & Base<Rbx_GuiMain> & Indexable<Rbx_GuiMain>;
 
@@ -2441,7 +2448,7 @@ interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 	ToolPunchThroughDistance: number;
 	ZOffset: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__134: never;
+	__135: never;
 }
 type SurfaceGui = Rbx_SurfaceGui & Base<Rbx_SurfaceGui> & Indexable<Rbx_SurfaceGui>;
 
@@ -2451,7 +2458,7 @@ interface Rbx_GuiBase3d extends Rbx_GuiBase {
 	Transparency: number;
 	Visible: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__135: never;
+	__136: never;
 }
 type GuiBase3d = Rbx_GuiBase3d & Base<Rbx_GuiBase3d> & Indexable<Rbx_GuiBase3d>;
 
@@ -2474,7 +2481,7 @@ interface Rbx_FloorWire extends Rbx_GuiBase3d {
 	/** How thick the wire is. */
 	WireRadius: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__136: never;
+	__137: never;
 }
 type FloorWire = Rbx_FloorWire & Base<Rbx_FloorWire> & Indexable<Rbx_FloorWire>;
 
@@ -2482,7 +2489,7 @@ type FloorWire = Rbx_FloorWire & Base<Rbx_FloorWire> & Indexable<Rbx_FloorWire>;
 interface Rbx_PVAdornment extends Rbx_GuiBase3d {
 	Adornee: PVInstance;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__137: never;
+	__138: never;
 }
 type PVAdornment = Rbx_PVAdornment & Base<Rbx_PVAdornment> & Indexable<Rbx_PVAdornment>;
 
@@ -2492,12 +2499,12 @@ interface Rbx_HandleAdornment extends Rbx_PVAdornment {
 	CFrame: CFrame;
 	SizeRelativeOffset: Vector3;
 	ZIndex: number;
-	MouseButton1Down: RBXScriptSignal<() => void>;
-	MouseButton1Up: RBXScriptSignal<() => void>;
-	MouseEnter: RBXScriptSignal<() => void>;
-	MouseLeave: RBXScriptSignal<() => void>;
+	readonly MouseButton1Down: RBXScriptSignal<() => void>;
+	readonly MouseButton1Up: RBXScriptSignal<() => void>;
+	readonly MouseEnter: RBXScriptSignal<() => void>;
+	readonly MouseLeave: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__138: never;
+	__139: never;
 }
 type HandleAdornment = Rbx_HandleAdornment & Base<Rbx_HandleAdornment> & Indexable<Rbx_HandleAdornment>;
 
@@ -2505,7 +2512,7 @@ type HandleAdornment = Rbx_HandleAdornment & Base<Rbx_HandleAdornment> & Indexab
 interface Rbx_BoxHandleAdornment extends Rbx_HandleAdornment {
 	Size: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__139: never;
+	__140: never;
 }
 type BoxHandleAdornment = Rbx_BoxHandleAdornment & Base<Rbx_BoxHandleAdornment> & Indexable<Rbx_BoxHandleAdornment>;
 
@@ -2514,7 +2521,7 @@ interface Rbx_ConeHandleAdornment extends Rbx_HandleAdornment {
 	Height: number;
 	Radius: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__140: never;
+	__141: never;
 }
 type ConeHandleAdornment = Rbx_ConeHandleAdornment & Base<Rbx_ConeHandleAdornment> & Indexable<Rbx_ConeHandleAdornment>;
 
@@ -2523,7 +2530,7 @@ interface Rbx_CylinderHandleAdornment extends Rbx_HandleAdornment {
 	Height: number;
 	Radius: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__141: never;
+	__142: never;
 }
 type CylinderHandleAdornment = Rbx_CylinderHandleAdornment & Base<Rbx_CylinderHandleAdornment> & Indexable<Rbx_CylinderHandleAdornment>;
 
@@ -2532,7 +2539,7 @@ interface Rbx_ImageHandleAdornment extends Rbx_HandleAdornment {
 	Image: string;
 	Size: Vector2;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__142: never;
+	__143: never;
 }
 type ImageHandleAdornment = Rbx_ImageHandleAdornment & Base<Rbx_ImageHandleAdornment> & Indexable<Rbx_ImageHandleAdornment>;
 
@@ -2541,7 +2548,7 @@ interface Rbx_LineHandleAdornment extends Rbx_HandleAdornment {
 	Length: number;
 	Thickness: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__143: never;
+	__144: never;
 }
 type LineHandleAdornment = Rbx_LineHandleAdornment & Base<Rbx_LineHandleAdornment> & Indexable<Rbx_LineHandleAdornment>;
 
@@ -2549,14 +2556,14 @@ type LineHandleAdornment = Rbx_LineHandleAdornment & Base<Rbx_LineHandleAdornmen
 interface Rbx_SphereHandleAdornment extends Rbx_HandleAdornment {
 	Radius: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__144: never;
+	__145: never;
 }
 type SphereHandleAdornment = Rbx_SphereHandleAdornment & Base<Rbx_SphereHandleAdornment> & Indexable<Rbx_SphereHandleAdornment>;
 
 // ParabolaAdornment
 interface Rbx_ParabolaAdornment extends Rbx_PVAdornment {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__145: never;
+	__146: never;
 }
 type ParabolaAdornment = Rbx_ParabolaAdornment & Base<Rbx_ParabolaAdornment> & Indexable<Rbx_ParabolaAdornment>;
 
@@ -2566,7 +2573,7 @@ interface Rbx_SelectionBox extends Rbx_PVAdornment {
 	SurfaceColor3: Color3;
 	SurfaceTransparency: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__146: never;
+	__147: never;
 }
 type SelectionBox = Rbx_SelectionBox & Base<Rbx_SelectionBox> & Indexable<Rbx_SelectionBox>;
 
@@ -2575,7 +2582,7 @@ interface Rbx_SelectionSphere extends Rbx_PVAdornment {
 	SurfaceColor3: Color3;
 	SurfaceTransparency: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__147: never;
+	__148: never;
 }
 type SelectionSphere = Rbx_SelectionSphere & Base<Rbx_SelectionSphere> & Indexable<Rbx_SelectionSphere>;
 
@@ -2583,27 +2590,27 @@ type SelectionSphere = Rbx_SelectionSphere & Base<Rbx_SelectionSphere> & Indexab
 interface Rbx_PartAdornment extends Rbx_GuiBase3d {
 	Adornee: BasePart;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__148: never;
+	__149: never;
 }
 type PartAdornment = Rbx_PartAdornment & Base<Rbx_PartAdornment> & Indexable<Rbx_PartAdornment>;
 
 // HandlesBase
 interface Rbx_HandlesBase extends Rbx_PartAdornment {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__149: never;
+	__150: never;
 }
 type HandlesBase = Rbx_HandlesBase & Base<Rbx_HandlesBase> & Indexable<Rbx_HandlesBase>;
 
 // ArcHandles
 interface Rbx_ArcHandles extends Rbx_HandlesBase {
 	Axes: Axes;
-	MouseButton1Down: RBXScriptSignal<(axis: Enum.Axis) => void>;
-	MouseButton1Up: RBXScriptSignal<(axis: Enum.Axis) => void>;
-	MouseDrag: RBXScriptSignal<(axis: Enum.Axis, relativeAngle: number, deltaRadius: number) => void>;
-	MouseEnter: RBXScriptSignal<(axis: Enum.Axis) => void>;
-	MouseLeave: RBXScriptSignal<(axis: Enum.Axis) => void>;
+	readonly MouseButton1Down: RBXScriptSignal<(axis: Enum.Axis) => void>;
+	readonly MouseButton1Up: RBXScriptSignal<(axis: Enum.Axis) => void>;
+	readonly MouseDrag: RBXScriptSignal<(axis: Enum.Axis, relativeAngle: number, deltaRadius: number) => void>;
+	readonly MouseEnter: RBXScriptSignal<(axis: Enum.Axis) => void>;
+	readonly MouseLeave: RBXScriptSignal<(axis: Enum.Axis) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__150: never;
+	__151: never;
 }
 type ArcHandles = Rbx_ArcHandles & Base<Rbx_ArcHandles> & Indexable<Rbx_ArcHandles>;
 
@@ -2611,13 +2618,13 @@ type ArcHandles = Rbx_ArcHandles & Base<Rbx_ArcHandles> & Indexable<Rbx_ArcHandl
 interface Rbx_Handles extends Rbx_HandlesBase {
 	Faces: Faces;
 	Style: Enum.HandlesStyle;
-	MouseButton1Down: RBXScriptSignal<(face: Enum.NormalId) => void>;
-	MouseButton1Up: RBXScriptSignal<(face: Enum.NormalId) => void>;
-	MouseDrag: RBXScriptSignal<(face: Enum.NormalId, distance: number) => void>;
-	MouseEnter: RBXScriptSignal<(face: Enum.NormalId) => void>;
-	MouseLeave: RBXScriptSignal<(face: Enum.NormalId) => void>;
+	readonly MouseButton1Down: RBXScriptSignal<(face: Enum.NormalId) => void>;
+	readonly MouseButton1Up: RBXScriptSignal<(face: Enum.NormalId) => void>;
+	readonly MouseDrag: RBXScriptSignal<(face: Enum.NormalId, distance: number) => void>;
+	readonly MouseEnter: RBXScriptSignal<(face: Enum.NormalId) => void>;
+	readonly MouseLeave: RBXScriptSignal<(face: Enum.NormalId) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__151: never;
+	__152: never;
 }
 type Handles = Rbx_Handles & Base<Rbx_Handles> & Indexable<Rbx_Handles>;
 
@@ -2625,7 +2632,7 @@ type Handles = Rbx_Handles & Base<Rbx_Handles> & Indexable<Rbx_Handles>;
 interface Rbx_SurfaceSelection extends Rbx_PartAdornment {
 	TargetSurface: Enum.NormalId;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__152: never;
+	__153: never;
 }
 type SurfaceSelection = Rbx_SurfaceSelection & Base<Rbx_SurfaceSelection> & Indexable<Rbx_SurfaceSelection>;
 
@@ -2633,7 +2640,7 @@ type SurfaceSelection = Rbx_SurfaceSelection & Base<Rbx_SurfaceSelection> & Inde
 interface Rbx_SelectionLasso extends Rbx_GuiBase3d {
 	Humanoid: Humanoid;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__153: never;
+	__154: never;
 }
 type SelectionLasso = Rbx_SelectionLasso & Base<Rbx_SelectionLasso> & Indexable<Rbx_SelectionLasso>;
 
@@ -2641,7 +2648,7 @@ type SelectionLasso = Rbx_SelectionLasso & Base<Rbx_SelectionLasso> & Indexable<
 interface Rbx_SelectionPartLasso extends Rbx_SelectionLasso {
 	Part: BasePart;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__154: never;
+	__155: never;
 }
 type SelectionPartLasso = Rbx_SelectionPartLasso & Base<Rbx_SelectionPartLasso> & Indexable<Rbx_SelectionPartLasso>;
 
@@ -2649,21 +2656,21 @@ type SelectionPartLasso = Rbx_SelectionPartLasso & Base<Rbx_SelectionPartLasso> 
 interface Rbx_SelectionPointLasso extends Rbx_SelectionLasso {
 	Point: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__155: never;
+	__156: never;
 }
 type SelectionPointLasso = Rbx_SelectionPointLasso & Base<Rbx_SelectionPointLasso> & Indexable<Rbx_SelectionPointLasso>;
 
 // GuiItem
 interface Rbx_GuiItem extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__156: never;
+	__157: never;
 }
 type GuiItem = Rbx_GuiItem & Base<Rbx_GuiItem> & Indexable<Rbx_GuiItem>;
 
 // Backpack
 interface Rbx_Backpack extends Rbx_GuiItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__157: never;
+	__158: never;
 }
 type Backpack = Rbx_Backpack & Base<Rbx_Backpack> & Indexable<Rbx_Backpack>;
 
@@ -2671,7 +2678,7 @@ type Backpack = Rbx_Backpack & Base<Rbx_Backpack> & Indexable<Rbx_Backpack>;
 interface Rbx_BackpackItem extends Rbx_GuiItem {
 	TextureId: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__158: never;
+	__159: never;
 }
 type BackpackItem = Rbx_BackpackItem & Base<Rbx_BackpackItem> & Indexable<Rbx_BackpackItem>;
 
@@ -2679,10 +2686,10 @@ type BackpackItem = Rbx_BackpackItem & Base<Rbx_BackpackItem> & Indexable<Rbx_Ba
 interface Rbx_HopperBin extends Rbx_BackpackItem {
 	Active: boolean;
 	BinType: Enum.BinType;
-	Deselected: RBXScriptSignal<() => void>;
-	Selected: RBXScriptSignal<(mouse: Instance) => void>;
+	readonly Deselected: RBXScriptSignal<() => void>;
+	readonly Selected: RBXScriptSignal<(mouse: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__159: never;
+	__160: never;
 }
 type HopperBin = Rbx_HopperBin & Base<Rbx_HopperBin> & Indexable<Rbx_HopperBin>;
 
@@ -2700,11 +2707,11 @@ interface Rbx_Tool extends Rbx_BackpackItem {
 	ToolTip: string;
 	Activate(): void;
 	Deactivate(): void;
-	Activated: RBXScriptSignal<() => void>;
-	Deactivated: RBXScriptSignal<() => void>;
-	Unequipped: RBXScriptSignal<() => void>;
+	readonly Activated: RBXScriptSignal<() => void>;
+	readonly Deactivated: RBXScriptSignal<() => void>;
+	readonly Unequipped: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__160: never;
+	__161: never;
 }
 type Tool = Rbx_Tool & Base<Rbx_Tool> & Indexable<Rbx_Tool>;
 
@@ -2713,28 +2720,28 @@ interface Rbx_Flag extends Rbx_Tool {
 	/** The Team this flag is for. Corresponds with the TeamColors in the Teams service. */
 	TeamColor: BrickColor;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__161: never;
+	__162: never;
 }
 type Flag = Rbx_Flag & Base<Rbx_Flag> & Indexable<Rbx_Flag>;
 
 // ButtonBindingWidget
 interface Rbx_ButtonBindingWidget extends Rbx_GuiItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__162: never;
+	__163: never;
 }
 type ButtonBindingWidget = Rbx_ButtonBindingWidget & Base<Rbx_ButtonBindingWidget> & Indexable<Rbx_ButtonBindingWidget>;
 
 // GuiRoot
 interface Rbx_GuiRoot extends Rbx_GuiItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__163: never;
+	__164: never;
 }
 type GuiRoot = Rbx_GuiRoot & Base<Rbx_GuiRoot> & Indexable<Rbx_GuiRoot>;
 
 // Hopper
 interface Rbx_Hopper extends Rbx_GuiItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__164: never;
+	__165: never;
 }
 type Hopper = Rbx_Hopper & Base<Rbx_Hopper> & Indexable<Rbx_Hopper>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2744,7 +2751,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // StarterPack
 interface Rbx_StarterPack extends Rbx_GuiItem {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__165: never;
+	__166: never;
 }
 type StarterPack = Rbx_StarterPack & Base<Rbx_StarterPack> & Indexable<Rbx_StarterPack>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2760,10 +2767,10 @@ interface Rbx_GuiService extends Rbx_Instance {
 	SelectedObject: GuiObject;
 	IsTenFootInterface(): boolean;
 	RemoveSelectionGroup(selectionName: string): void;
-	MenuClosed: RBXScriptSignal<() => void>;
-	MenuOpened: RBXScriptSignal<() => void>;
+	readonly MenuClosed: RBXScriptSignal<() => void>;
+	readonly MenuOpened: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__166: never;
+	__167: never;
 }
 type GuiService = Rbx_GuiService & Base<Rbx_GuiService> & Indexable<Rbx_GuiService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2773,7 +2780,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // GuidRegistryService
 interface Rbx_GuidRegistryService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__167: never;
+	__168: never;
 }
 type GuidRegistryService = Rbx_GuidRegistryService & Base<Rbx_GuidRegistryService> & Indexable<Rbx_GuidRegistryService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2785,7 +2792,7 @@ interface Rbx_HapticService extends Rbx_Instance {
 	IsMotorSupported(inputType: Enum.UserInputType, vibrationMotor: Enum.VibrationMotor): boolean;
 	IsVibrationSupported(inputType: Enum.UserInputType): boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__168: never;
+	__169: never;
 }
 type HapticService = Rbx_HapticService & Base<Rbx_HapticService> & Indexable<Rbx_HapticService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2795,7 +2802,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // HttpRbxApiService
 interface Rbx_HttpRbxApiService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__169: never;
+	__170: never;
 }
 type HttpRbxApiService = Rbx_HttpRbxApiService & Base<Rbx_HttpRbxApiService> & Indexable<Rbx_HttpRbxApiService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2805,7 +2812,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // HttpRequest
 interface Rbx_HttpRequest extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__170: never;
+	__171: never;
 }
 type HttpRequest = Rbx_HttpRequest & Base<Rbx_HttpRequest> & Indexable<Rbx_HttpRequest>;
 
@@ -2816,7 +2823,7 @@ interface Rbx_HttpService extends Rbx_Instance {
 	JSONEncode(input?: any): string;
 	UrlEncode(input: string): string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__171: never;
+	__172: never;
 }
 type HttpService = Rbx_HttpService & Base<Rbx_HttpService> & Indexable<Rbx_HttpService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2867,23 +2874,23 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	TakeDamage(amount: number): void;
 	/** Takes any active gear/tools that the Humanoid is using and puts them into the backpack.  This function only works on Humanoids with a corresponding Player. */
 	UnequipTools(): void;
-	Climbing: RBXScriptSignal<(speed: number) => void>;
-	Died: RBXScriptSignal<() => void>;
-	FallingDown: RBXScriptSignal<(active: boolean) => void>;
-	FreeFalling: RBXScriptSignal<(active: boolean) => void>;
-	GettingUp: RBXScriptSignal<(active: boolean) => void>;
-	HealthChanged: RBXScriptSignal<(health: number) => void>;
-	Jumping: RBXScriptSignal<(active: boolean) => void>;
-	MoveToFinished: RBXScriptSignal<(reached: boolean) => void>;
-	PlatformStanding: RBXScriptSignal<(active: boolean) => void>;
-	Ragdoll: RBXScriptSignal<(active: boolean) => void>;
-	Running: RBXScriptSignal<(speed: number) => void>;
-	StateChanged: RBXScriptSignal<(oldValue: Enum.HumanoidStateType, newValue: Enum.HumanoidStateType) => void>;
-	StateEnabledChanged: RBXScriptSignal<(state: Enum.HumanoidStateType, isEnabled: boolean) => void>;
-	Strafing: RBXScriptSignal<(active: boolean) => void>;
-	Swimming: RBXScriptSignal<(speed: number) => void>;
+	readonly Climbing: RBXScriptSignal<(speed: number) => void>;
+	readonly Died: RBXScriptSignal<() => void>;
+	readonly FallingDown: RBXScriptSignal<(active: boolean) => void>;
+	readonly FreeFalling: RBXScriptSignal<(active: boolean) => void>;
+	readonly GettingUp: RBXScriptSignal<(active: boolean) => void>;
+	readonly HealthChanged: RBXScriptSignal<(health: number) => void>;
+	readonly Jumping: RBXScriptSignal<(active: boolean) => void>;
+	readonly MoveToFinished: RBXScriptSignal<(reached: boolean) => void>;
+	readonly PlatformStanding: RBXScriptSignal<(active: boolean) => void>;
+	readonly Ragdoll: RBXScriptSignal<(active: boolean) => void>;
+	readonly Running: RBXScriptSignal<(speed: number) => void>;
+	readonly StateChanged: RBXScriptSignal<(oldValue: Enum.HumanoidStateType, newValue: Enum.HumanoidStateType) => void>;
+	readonly StateEnabledChanged: RBXScriptSignal<(state: Enum.HumanoidStateType, isEnabled: boolean) => void>;
+	readonly Strafing: RBXScriptSignal<(active: boolean) => void>;
+	readonly Swimming: RBXScriptSignal<(speed: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__172: never;
+	__173: never;
 }
 type Humanoid = Rbx_Humanoid & Base<Rbx_Humanoid> & Indexable<Rbx_Humanoid>;
 
@@ -2927,7 +2934,7 @@ interface Rbx_HumanoidDescription extends Rbx_Instance {
 	WalkAnimation: number;
 	WidthScale: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__173: never;
+	__174: never;
 }
 type HumanoidDescription = Rbx_HumanoidDescription & Base<Rbx_HumanoidDescription> & Indexable<Rbx_HumanoidDescription>;
 
@@ -2943,7 +2950,7 @@ interface Rbx_InputObject extends Rbx_Instance {
 	/** An enum that describes what kind of input this object is describing (mousebutton, touch, etc.).  See Enum.UserInputType for more info. */
 	UserInputType: Enum.UserInputType;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__174: never;
+	__175: never;
 }
 type InputObject = Rbx_InputObject & Base<Rbx_InputObject> & Indexable<Rbx_InputObject>;
 
@@ -2951,7 +2958,7 @@ type InputObject = Rbx_InputObject & Base<Rbx_InputObject> & Indexable<Rbx_Input
 interface Rbx_InsertService extends Rbx_Instance {
 	GetLatestAssetVersionAsync(assetId: number): number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__175: never;
+	__176: never;
 }
 type InsertService = Rbx_InsertService & Base<Rbx_InsertService> & Indexable<Rbx_InsertService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -2965,7 +2972,7 @@ interface Rbx_JointInstance extends Rbx_Instance {
 	C0: CFrame;
 	C1: CFrame;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__176: never;
+	__177: never;
 }
 type JointInstance = Rbx_JointInstance & Base<Rbx_JointInstance> & Indexable<Rbx_JointInstance>;
 
@@ -2973,21 +2980,21 @@ type JointInstance = Rbx_JointInstance & Base<Rbx_JointInstance> & Indexable<Rbx
 interface Rbx_DynamicRotate extends Rbx_JointInstance {
 	BaseAngle: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__177: never;
+	__178: never;
 }
 type DynamicRotate = Rbx_DynamicRotate & Base<Rbx_DynamicRotate> & Indexable<Rbx_DynamicRotate>;
 
 // RotateP
 interface Rbx_RotateP extends Rbx_DynamicRotate {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__178: never;
+	__179: never;
 }
 type RotateP = Rbx_RotateP & Base<Rbx_RotateP> & Indexable<Rbx_RotateP>;
 
 // RotateV
 interface Rbx_RotateV extends Rbx_DynamicRotate {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__179: never;
+	__180: never;
 }
 type RotateV = Rbx_RotateV & Base<Rbx_RotateV> & Indexable<Rbx_RotateV>;
 
@@ -2998,28 +3005,28 @@ interface Rbx_Glue extends Rbx_JointInstance {
 	F2: Vector3;
 	F3: Vector3;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__180: never;
+	__181: never;
 }
 type Glue = Rbx_Glue & Base<Rbx_Glue> & Indexable<Rbx_Glue>;
 
 // ManualSurfaceJointInstance
 interface Rbx_ManualSurfaceJointInstance extends Rbx_JointInstance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__181: never;
+	__182: never;
 }
 type ManualSurfaceJointInstance = Rbx_ManualSurfaceJointInstance & Base<Rbx_ManualSurfaceJointInstance> & Indexable<Rbx_ManualSurfaceJointInstance>;
 
 // ManualGlue
 interface Rbx_ManualGlue extends Rbx_ManualSurfaceJointInstance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__182: never;
+	__183: never;
 }
 type ManualGlue = Rbx_ManualGlue & Base<Rbx_ManualGlue> & Indexable<Rbx_ManualGlue>;
 
 // ManualWeld
 interface Rbx_ManualWeld extends Rbx_ManualSurfaceJointInstance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__183: never;
+	__184: never;
 }
 type ManualWeld = Rbx_ManualWeld & Base<Rbx_ManualWeld> & Indexable<Rbx_ManualWeld>;
 
@@ -3030,7 +3037,7 @@ interface Rbx_Motor extends Rbx_JointInstance {
 	MaxVelocity: number;
 	SetDesiredAngle(value: number): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__184: never;
+	__185: never;
 }
 type Motor = Rbx_Motor & Base<Rbx_Motor> & Indexable<Rbx_Motor>;
 
@@ -3038,21 +3045,21 @@ type Motor = Rbx_Motor & Base<Rbx_Motor> & Indexable<Rbx_Motor>;
 interface Rbx_Motor6D extends Rbx_Motor {
 	Transform: CFrame;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__185: never;
+	__186: never;
 }
 type Motor6D = Rbx_Motor6D & Base<Rbx_Motor6D> & Indexable<Rbx_Motor6D>;
 
 // Rotate
 interface Rbx_Rotate extends Rbx_JointInstance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__186: never;
+	__187: never;
 }
 type Rotate = Rbx_Rotate & Base<Rbx_Rotate> & Indexable<Rbx_Rotate>;
 
 // Snap
 interface Rbx_Snap extends Rbx_JointInstance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__187: never;
+	__188: never;
 }
 type Snap = Rbx_Snap & Base<Rbx_Snap> & Indexable<Rbx_Snap>;
 
@@ -3063,14 +3070,14 @@ interface Rbx_VelocityMotor extends Rbx_JointInstance {
 	Hole: Hole;
 	MaxVelocity: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__188: never;
+	__189: never;
 }
 type VelocityMotor = Rbx_VelocityMotor & Base<Rbx_VelocityMotor> & Indexable<Rbx_VelocityMotor>;
 
 // Weld
 interface Rbx_Weld extends Rbx_JointInstance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__189: never;
+	__190: never;
 }
 type Weld = Rbx_Weld & Base<Rbx_Weld> & Indexable<Rbx_Weld>;
 
@@ -3082,7 +3089,7 @@ interface Rbx_JointsService extends Rbx_Instance {
 	SetJoinAfterMoveTarget(joinTarget: Instance): void;
 	ShowPermissibleJoints(): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__190: never;
+	__191: never;
 }
 type JointsService = Rbx_JointsService & Base<Rbx_JointsService> & Indexable<Rbx_JointsService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3092,7 +3099,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // KeyboardService
 interface Rbx_KeyboardService extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__191: never;
+	__192: never;
 }
 type KeyboardService = Rbx_KeyboardService & Base<Rbx_KeyboardService> & Indexable<Rbx_KeyboardService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3106,7 +3113,7 @@ interface Rbx_Keyframe extends Rbx_Instance {
 	GetMarkers(): Array<Instance>;
 	RemoveMarker(marker: Instance): void;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__192: never;
+	__193: never;
 }
 type Keyframe = Rbx_Keyframe & Base<Rbx_Keyframe> & Indexable<Rbx_Keyframe>;
 
@@ -3114,7 +3121,7 @@ type Keyframe = Rbx_Keyframe & Base<Rbx_Keyframe> & Indexable<Rbx_Keyframe>;
 interface Rbx_KeyframeMarker extends Rbx_Instance {
 	Value: string;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__193: never;
+	__194: never;
 }
 type KeyframeMarker = Rbx_KeyframeMarker & Base<Rbx_KeyframeMarker> & Indexable<Rbx_KeyframeMarker>;
 
@@ -3123,14 +3130,14 @@ interface Rbx_KeyframeSequence extends Rbx_Instance {
 	Loop: boolean;
 	Priority: Enum.AnimationPriority;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__194: never;
+	__195: never;
 }
 type KeyframeSequence = Rbx_KeyframeSequence & Base<Rbx_KeyframeSequence> & Indexable<Rbx_KeyframeSequence>;
 
 // KeyframeSequenceProvider
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__195: never;
+	__196: never;
 }
 type KeyframeSequenceProvider = Rbx_KeyframeSequenceProvider & Base<Rbx_KeyframeSequenceProvider> & Indexable<Rbx_KeyframeSequenceProvider>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -3144,7 +3151,7 @@ interface Rbx_Light extends Rbx_Instance {
 	Enabled: boolean;
 	Shadows: boolean;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__196: never;
+	__197: never;
 }
 type Light = Rbx_Light & Base<Rbx_Light> & Indexable<Rbx_Light>;
 
@@ -3152,7 +3159,7 @@ type Light = Rbx_Light & Base<Rbx_Light> & Indexable<Rbx_Light>;
 interface Rbx_PointLight extends Rbx_Light {
 	Range: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__197: never;
+	__198: never;
 }
 type PointLight = Rbx_PointLight & Base<Rbx_PointLight> & Indexable<Rbx_PointLight>;
 
@@ -3162,7 +3169,7 @@ interface Rbx_SpotLight extends Rbx_Light {
 	Face: Enum.NormalId;
 	Range: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__198: never;
+	__199: never;
 }
 type SpotLight = Rbx_SpotLight & Base<Rbx_SpotLight> & Indexable<Rbx_SpotLight>;
 
@@ -3172,7 +3179,7 @@ interface Rbx_SurfaceLight extends Rbx_Light {
 	Face: Enum.NormalId;
 	Range: number;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__199: never;
+	__200: never;
 }
 type SurfaceLight = Rbx_SurfaceLight & Base<Rbx_SurfaceLight> & Indexable<Rbx_SurfaceLight>;
 
@@ -3216,21 +3223,14 @@ interface Rbx_Lighting extends Rbx_Instance {
 	/** Sets the time to be a certain number of minutes after midnight.  This works with integer and decimal values. */
 	SetMinutesAfterMidnight(minutes: number): void;
 	/** Fired whenever a property of Lighting is changed, or a skybox is added or removed. Skyboxes are of type 'Sky' and should be parented directly to lighting. */
-	LightingChanged: RBXScriptSignal<(skyboxChanged: boolean) => void>;
+	readonly LightingChanged: RBXScriptSignal<(skyboxChanged: boolean) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__200: never;
+	__201: never;
 }
 type Lighting = Rbx_Lighting & Base<Rbx_Lighting> & Indexable<Rbx_Lighting>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Lighting"): Lighting;
 }
-
-// LocalAsset
-interface Rbx_LocalAsset extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__201: never;
-}
-type LocalAsset = Rbx_LocalAsset & Base<Rbx_LocalAsset> & Indexable<Rbx_LocalAsset>;
 
 // LocalStorageService
 interface Rbx_LocalStorageService extends Rbx_Instance {
@@ -3267,6 +3267,7 @@ interface Rbx_LocalizationService extends Rbx_Instance {
 	readonly RobloxLocaleId: string;
 	readonly SystemLocaleId: string;
 	GetCorescriptLocalizations(): Array<Instance>;
+	GetTableEntries(instance?: Instance): unknown;
 	GetTranslatorForLocaleAsync(locale: string): Instance | undefined;
 	GetTranslatorForPlayerAsync(player: Instance): Instance | undefined;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
@@ -3296,7 +3297,7 @@ type LocalizationTable = Rbx_LocalizationTable & Base<Rbx_LocalizationTable> & I
 
 // LogService
 interface Rbx_LogService extends Rbx_Instance {
-	MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
+	readonly MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__207: never;
 }
@@ -3448,21 +3449,21 @@ interface Rbx_Mouse extends Rbx_Instance {
 	/** The absolute pixel position of the Mouse along the y-axis of the viewport (game window). Values start at 0 on the top of the screen and increase to the bottom. */
 	readonly Y: number;
 	/** Fired when the first button (usually the left, but could be another) on the mouse is depressed. */
-	Button1Down: RBXScriptSignal<() => void>;
+	readonly Button1Down: RBXScriptSignal<() => void>;
 	/** Fired when the first button (usually the left, but could be another) on the mouse is release. */
-	Button1Up: RBXScriptSignal<() => void>;
+	readonly Button1Up: RBXScriptSignal<() => void>;
 	/** This event is currently non-operational. */
-	Button2Down: RBXScriptSignal<() => void>;
+	readonly Button2Down: RBXScriptSignal<() => void>;
 	/** This event is currently non-operational. */
-	Button2Up: RBXScriptSignal<() => void>;
+	readonly Button2Up: RBXScriptSignal<() => void>;
 	/** Fired constantly when the mouse is not firing any other event (i.e. the mouse isn't moving, nor any buttons being pressed or depressed). */
-	Idle: RBXScriptSignal<() => void>;
+	readonly Idle: RBXScriptSignal<() => void>;
 	/** Fired when the mouse X or Y member changes. */
-	Move: RBXScriptSignal<() => void>;
+	readonly Move: RBXScriptSignal<() => void>;
 	/** This event is currently non-operational. */
-	WheelBackward: RBXScriptSignal<() => void>;
+	readonly WheelBackward: RBXScriptSignal<() => void>;
 	/** This event is currently non-operational. */
-	WheelForward: RBXScriptSignal<() => void>;
+	readonly WheelForward: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__221: never;
 }
@@ -3494,7 +3495,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // NetworkMarker
 interface Rbx_NetworkMarker extends Rbx_Instance {
-	Received: RBXScriptSignal<() => void>;
+	readonly Received: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__225: never;
 }
@@ -3510,9 +3511,9 @@ type NetworkPeer = Rbx_NetworkPeer & Base<Rbx_NetworkPeer> & Indexable<Rbx_Netwo
 // NetworkClient
 interface Rbx_NetworkClient extends Rbx_NetworkPeer {
 	Ticket: string;
-	ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: Instance) => void>;
-	ConnectionFailed: RBXScriptSignal<(peer: string, code: number, reason: string) => void>;
-	ConnectionRejected: RBXScriptSignal<(peer: string) => void>;
+	readonly ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: Instance) => void>;
+	readonly ConnectionFailed: RBXScriptSignal<(peer: string, code: number, reason: string) => void>;
+	readonly ConnectionRejected: RBXScriptSignal<(peer: string) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__227: never;
 }
@@ -3747,9 +3748,9 @@ interface Rbx_SkateboardPlatform extends Rbx_Part {
 	StickyWheels: boolean;
 	Throttle: number;
 	ApplySpecificImpulse(impulseWorld: Vector3): void;
-	Equipped: RBXScriptSignal<(humanoid: Instance, skateboardController: Instance) => void>;
-	MoveStateChanged: RBXScriptSignal<(newState: Enum.MoveState, oldState: Enum.MoveState) => void>;
-	Unequipped: RBXScriptSignal<(humanoid: Instance) => void>;
+	readonly Equipped: RBXScriptSignal<(humanoid: Instance, skateboardController: Instance) => void>;
+	readonly MoveStateChanged: RBXScriptSignal<(newState: Enum.MoveState, oldState: Enum.MoveState) => void>;
+	readonly Unequipped: RBXScriptSignal<(humanoid: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__242: never;
 }
@@ -3861,8 +3862,6 @@ type VehicleSeat = Rbx_VehicleSeat & Base<Rbx_VehicleSeat> & Indexable<Rbx_Vehic
 
 // Model
 interface Rbx_Model extends Rbx_PVInstance {
-	/** A Part that serves as a reference for the Model's CFrame. Used in conjunction with GetModelPrimaryPartCFrame and SetModelPrimaryPartCFrame. Use this to rotate/translate all Parts relative to the PrimaryPart. */
-	PrimaryPart: BasePart;
 	/** Breaks all surface joints contained within */
 	BreakJoints(): void;
 	GetExtentsSize(): Vector3;
@@ -4007,7 +4006,7 @@ interface Rbx_Path extends Rbx_Instance {
 	readonly Status: Enum.PathStatus;
 	CheckOcclusionAsync(start: number): number;
 	ComputeAsync(start: Vector3, finish: Vector3): void;
-	Blocked: RBXScriptSignal<(blockedWaypointIdx: number) => void>;
+	readonly Blocked: RBXScriptSignal<(blockedWaypointIdx: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__263: never;
 }
@@ -4113,18 +4112,15 @@ interface Rbx_Player extends Rbx_Instance {
 	GetJoinData(): object;
 	HasAppearanceLoaded(): boolean;
 	Kick(message?: string): void;
-	LoadCharacterAppearance(assetInstance: Instance): void;
 	Move(walkDirection: Vector3, relativeToCamera?: boolean): void;
 	GetRankInGroup(groupId: number): number;
 	GetRoleInGroup(groupId: number): string;
 	IsFriendsWith(userId: number): boolean;
 	IsInGroup(groupId: number): boolean;
-	/** Loads in a new character for this player.  This will replace the player's current character, if they have one. This should be used in conjunction with Players.CharacterAutoLoads to control spawning of characters. This function only works from a server-side script (NOT a LocalScript). */
-	LoadCharacter(): void;
-	Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
+	readonly Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
 	/** Fired periodically after the user has been AFK for a while.  Currently this event is only fired for the *local* Player.  "time" is the time in seconds that the user has been idle. */
-	Idled: RBXScriptSignal<(time: number) => void>;
-	OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
+	readonly Idled: RBXScriptSignal<(time: number) => void>;
+	readonly OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__268: never;
 }
@@ -4241,7 +4237,7 @@ type PluginToolbarButton = Rbx_PluginToolbarButton & Base<Rbx_PluginToolbarButto
 // PointsService
 interface Rbx_PointsService extends Rbx_Instance {
 	/** Fired when points are successfully awarded 'userId'. Also returns the updated balance of points for usedId in universe via 'userBalanceInUniverse', total points via 'userTotalBalance', and the amount points that were awarded via 'pointsAwarded'. This event fires on the server and also all clients in the game that awarded the points. */
-	PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
+	readonly PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__279: never;
 }
@@ -4514,9 +4510,9 @@ interface Rbx_RunService extends Rbx_Instance {
 	IsServer(): boolean;
 	IsStudio(): boolean;
 	UnbindFromRenderStep(name: string): void;
-	Heartbeat: RBXScriptSignal<(step: number) => void>;
-	RenderStepped: RBXScriptSignal<(step: number) => void>;
-	Stepped: RBXScriptSignal<(time: number, step: number) => void>;
+	readonly Heartbeat: RBXScriptSignal<(step: number) => void>;
+	readonly RenderStepped: RBXScriptSignal<(step: number) => void>;
+	readonly Stepped: RBXScriptSignal<(time: number, step: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__306: never;
 }
@@ -4537,7 +4533,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // ScriptContext
 interface Rbx_ScriptContext extends Rbx_Instance {
-	Error: RBXScriptSignal<(message: string, stackTrace: string, script: Instance) => void>;
+	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__308: never;
 }
@@ -4564,12 +4560,12 @@ interface Rbx_ScriptDebugger extends Rbx_Instance {
 	SetGlobal(name: string, value?: any): void;
 	SetLocal(name: string, value?: any, stackFrame?: number): void;
 	SetUpvalue(name: string, value?: any, stackFrame?: number): void;
-	BreakpointAdded: RBXScriptSignal<(breakpoint: Instance) => void>;
-	BreakpointRemoved: RBXScriptSignal<(breakpoint: Instance) => void>;
-	EncounteredBreak: RBXScriptSignal<(line: number) => void>;
-	Resuming: RBXScriptSignal<() => void>;
-	WatchAdded: RBXScriptSignal<(watch: Instance) => void>;
-	WatchRemoved: RBXScriptSignal<(watch: Instance) => void>;
+	readonly BreakpointAdded: RBXScriptSignal<(breakpoint: Instance) => void>;
+	readonly BreakpointRemoved: RBXScriptSignal<(breakpoint: Instance) => void>;
+	readonly EncounteredBreak: RBXScriptSignal<(line: number) => void>;
+	readonly Resuming: RBXScriptSignal<() => void>;
+	readonly WatchAdded: RBXScriptSignal<(watch: Instance) => void>;
+	readonly WatchRemoved: RBXScriptSignal<(watch: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__309: never;
 }
@@ -4587,7 +4583,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Selection
 interface Rbx_Selection extends Rbx_Instance {
-	SelectionChanged: RBXScriptSignal<() => void>;
+	readonly SelectionChanged: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__311: never;
 }
@@ -4620,9 +4616,9 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	FindService(className: string): Instance | undefined;
 	GetService(className: string): Instance | undefined;
-	Close: RBXScriptSignal<() => void>;
-	ServiceAdded: RBXScriptSignal<(service: Instance) => void>;
-	ServiceRemoving: RBXScriptSignal<(service: Instance) => void>;
+	readonly Close: RBXScriptSignal<() => void>;
+	readonly ServiceAdded: RBXScriptSignal<(service: Instance) => void>;
+	readonly ServiceRemoving: RBXScriptSignal<(service: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__314: never;
 }
@@ -4644,9 +4640,9 @@ interface Rbx_DataModel extends Rbx_ServiceProvider {
 	BindToClose(callback: Function): void;
 	IsGearTypeAllowed(gearType: Enum.GearType): boolean;
 	IsLoaded(): boolean;
-	GraphicsQualityChangeRequest: RBXScriptSignal<(betterQuality: boolean) => void>;
+	readonly GraphicsQualityChangeRequest: RBXScriptSignal<(betterQuality: boolean) => void>;
 	/** Fires when the game finishes loading.  Use this to know when to remove your custom loading gui.  It is best to check IsLoaded() before connecting to this event, as the game may load before the event is connected to. */
-	Loaded: RBXScriptSignal<() => void>;
+	readonly Loaded: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__315: never;
 }
@@ -4717,9 +4713,6 @@ type Smoke = Rbx_Smoke & Base<Rbx_Smoke> & Indexable<Rbx_Smoke>;
 
 // SocialService
 interface Rbx_SocialService extends Rbx_Instance {
-	PromptGameInvite(player: Instance): void;
-	CanSendGameInviteAsync(player: Instance): boolean;
-	GameInvitePromptClosed: RBXScriptSignal<(player: Instance, recipientIds: Array<any>) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__322: never;
 }
@@ -4751,13 +4744,13 @@ interface Rbx_Sound extends Rbx_Instance {
 	Play(): void;
 	Resume(): void;
 	Stop(): void;
-	DidLoop: RBXScriptSignal<(soundId: string, numOfTimesLooped: number) => void>;
-	Ended: RBXScriptSignal<(soundId: string) => void>;
-	Loaded: RBXScriptSignal<(soundId: string) => void>;
-	Paused: RBXScriptSignal<(soundId: string) => void>;
-	Played: RBXScriptSignal<(soundId: string) => void>;
-	Resumed: RBXScriptSignal<(soundId: string) => void>;
-	Stopped: RBXScriptSignal<(soundId: string) => void>;
+	readonly DidLoop: RBXScriptSignal<(soundId: string, numOfTimesLooped: number) => void>;
+	readonly Ended: RBXScriptSignal<(soundId: string) => void>;
+	readonly Loaded: RBXScriptSignal<(soundId: string) => void>;
+	readonly Paused: RBXScriptSignal<(soundId: string) => void>;
+	readonly Played: RBXScriptSignal<(soundId: string) => void>;
+	readonly Resumed: RBXScriptSignal<(soundId: string) => void>;
+	readonly Stopped: RBXScriptSignal<(soundId: string) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__323: never;
 }
@@ -5030,6 +5023,9 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Animate Hover Over"]: boolean;
 	["Attach Debugger To"]: Enum.DEPRECATED_DebuggerDataModelPreference;
 	["Auto Indent"]: boolean;
+	["Auto-Recovery Enabled"]: boolean;
+	["Auto-Recovery Interval (Minutes)"]: number;
+	["Auto-Recovery Path"]: QDir;
 	["Auto-Save Enabled"]: boolean;
 	["Auto-Save Interval (Minutes)"]: number;
 	["Auto-Save Path"]: QDir;
@@ -5164,7 +5160,7 @@ interface Rbx_TeleportService extends Rbx_Instance {
 	SetTeleportSetting(setting: string, value?: any): void;
 	TeleportToPlaceInstance(placeId: number, instanceId: string, player?: Instance, spawnName?: string, teleportData?: any, customLoadingScreen?: Instance): void;
 	TeleportToSpawnByName(placeId: number, spawnName: string, player?: Instance, teleportData?: any, customLoadingScreen?: Instance): void;
-	LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: Instance, dataTable?: any) => void>;
+	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: Instance, dataTable?: any) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__355: never;
 }
@@ -5204,8 +5200,8 @@ interface Rbx_TestService extends Rbx_Instance {
 	Require(condition: boolean, description: string, source?: Instance, line?: number): void;
 	Warn(condition: boolean, description: string, source?: Instance, line?: number): void;
 	isFeatureEnabled(name: string): boolean;
-	ServerCollectConditionalResult: RBXScriptSignal<(condition: boolean, text: string, script: Instance, line: number) => void>;
-	ServerCollectResult: RBXScriptSignal<(text: string, script: Instance, line: number) => void>;
+	readonly ServerCollectConditionalResult: RBXScriptSignal<(condition: boolean, text: string, script: Instance, line: number) => void>;
+	readonly ServerCollectResult: RBXScriptSignal<(text: string, script: Instance, line: number) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__357: never;
 }
@@ -5317,7 +5313,7 @@ interface Rbx_TweenBase extends Rbx_Instance {
 	/** Starts or resumes (if Tween.PlaybackState is Paused) the tween animation. If current PlaybackState is Cancelled, this property will reset the tween to the beginning properties and play the animations from the beginning. */
 	Play(): void;
 	/** Fires when the tween either reaches PlaybackState Completed or Cancelled. PlaybackState of one of these types is passed as the first arg to the function listening to this event. */
-	Completed: RBXScriptSignal<(playbackState: Enum.PlaybackState) => void>;
+	readonly Completed: RBXScriptSignal<(playbackState: Enum.PlaybackState) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__366: never;
 }
@@ -5475,11 +5471,11 @@ interface Rbx_UIPageLayout extends Rbx_UIGridStyleLayout {
 	/** Sets CurrentPage to the page after the current page and animates to it, or does nothing if there isn't a next page. */
 	Previous(): void;
 	/** Fires when a page comes into view, and is going to be rendered. */
-	PageEnter: RBXScriptSignal<(page: Instance) => void>;
+	readonly PageEnter: RBXScriptSignal<(page: Instance) => void>;
 	/** Fires when a page leaves view, and will not be rendered. */
-	PageLeave: RBXScriptSignal<(page: Instance) => void>;
+	readonly PageLeave: RBXScriptSignal<(page: Instance) => void>;
 	/** Fires when an animation to CurrentPage is completed without being cancelled, and the view stops scrolling. */
-	Stopped: RBXScriptSignal<(currentPage: Instance) => void>;
+	readonly Stopped: RBXScriptSignal<(currentPage: Instance) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__379: never;
 }
@@ -5545,8 +5541,8 @@ interface Rbx_UserGameSettings extends Rbx_Instance {
 	SetCameraYInvertVisible(): void;
 	SetGamepadCameraSensitivityVisible(): void;
 	SetOnboardingCompleted(onboardingId: string): void;
-	FullscreenChanged: RBXScriptSignal<(isFullscreen: boolean) => void>;
-	StudioModeChanged: RBXScriptSignal<(isStudioMode: boolean) => void>;
+	readonly FullscreenChanged: RBXScriptSignal<(isFullscreen: boolean) => void>;
+	readonly StudioModeChanged: RBXScriptSignal<(isStudioMode: boolean) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__383: never;
 }
@@ -5594,41 +5590,41 @@ interface Rbx_UserInputService extends Rbx_Instance {
 	RecenterUserHeadCFrame(): void;
 	SetNavigationGamepad(gamepadEnum: Enum.UserInputType, enabled: boolean): void;
 	/** Fired when a user moves a device that has an accelerometer. This is fired with an InputObject, which has type Enum.InputType.Accelerometer, and position that shows the g force in each local device axis. This event only fires locally. */
-	DeviceAccelerationChanged: RBXScriptSignal<(acceleration: Instance) => void>;
+	readonly DeviceAccelerationChanged: RBXScriptSignal<(acceleration: Instance) => void>;
 	/** Fired when the force of gravity changes on a device that has an accelerometer. This is fired with an InputObject, which has type Enum.InputType.Accelerometer, and position that shows the g force in each local device axis. This event only fires locally. */
-	DeviceGravityChanged: RBXScriptSignal<(gravity: Instance) => void>;
+	readonly DeviceGravityChanged: RBXScriptSignal<(gravity: Instance) => void>;
 	/** Fired when a user rotates a device that has an gyroscope. This is fired with an InputObject, which has type Enum.InputType.Gyroscope, and position that shows total rotation in each local device axis.  The delta property describes the amount of rotation that last happened. A second argument of Vector4 is the device's current quaternion rotation in reference to it's default reference frame. This event only fires locally. */
-	DeviceRotationChanged: RBXScriptSignal<(rotation: Instance, cframe: CFrame) => void>;
-	GamepadConnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
-	GamepadDisconnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
-	JumpRequest: RBXScriptSignal<() => void>;
-	LastInputTypeChanged: RBXScriptSignal<(lastInputType: Enum.UserInputType) => void>;
+	readonly DeviceRotationChanged: RBXScriptSignal<(rotation: Instance, cframe: CFrame) => void>;
+	readonly GamepadConnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
+	readonly GamepadDisconnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
+	readonly JumpRequest: RBXScriptSignal<() => void>;
+	readonly LastInputTypeChanged: RBXScriptSignal<(lastInputType: Enum.UserInputType) => void>;
 	/** Fired when a user stops text entry into a textbox (usually by pressing return or clicking/tapping somewhere else on the screen). Argument is the textbox that was taken out of focus. This event only fires locally. */
-	TextBoxFocusReleased: RBXScriptSignal<(textboxReleased: Instance) => void>;
+	readonly TextBoxFocusReleased: RBXScriptSignal<(textboxReleased: Instance) => void>;
 	/** Fired when a user clicks/taps on a textbox to begin text entry. Argument is the textbox that was put in focus. This also fires if a textbox forces focus on the user. This event only fires locally. */
-	TextBoxFocused: RBXScriptSignal<(textboxFocused: Instance) => void>;
+	readonly TextBoxFocused: RBXScriptSignal<(textboxFocused: Instance) => void>;
 	/** Fired when a user moves their finger on a TouchEnabled device. 'touch' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchEnded: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
+	readonly TouchEnded: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user holds at least one finger for a short amount of time on the same screen position on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchLongPress: RBXScriptSignal<(touchPositions: Array<any>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
+	readonly TouchLongPress: RBXScriptSignal<(touchPositions: Array<any>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user moves their finger on a TouchEnabled device. 'touch' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchMoved: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
+	readonly TouchMoved: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user drags at least one finger on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'totalTranslation' is a Vector2, indicating how far the pan gesture has gone from its starting point. 'velocity' is a Vector2 that indicates how quickly the gesture is being performed in each dimension. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchPan: RBXScriptSignal<(touchPositions: Array<any>, totalTranslation: Vector2, velocity: Vector2, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
+	readonly TouchPan: RBXScriptSignal<(touchPositions: Array<any>, totalTranslation: Vector2, velocity: Vector2, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user pinches their fingers on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the pinch gesture. 'scale' is a float that indicates the difference from the beginning of the pinch gesture. 'velocity' is a float indicating how quickly the pinch gesture is happening. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchPinch: RBXScriptSignal<(touchPositions: Array<any>, scale: number, velocity: number, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
+	readonly TouchPinch: RBXScriptSignal<(touchPositions: Array<any>, scale: number, velocity: number, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user rotates two fingers on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'rotation' is a float indicating how much the rotation has gone from the start of the gesture. 'velocity' is a float that indicates how quickly the gesture is being performed. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchRotate: RBXScriptSignal<(touchPositions: Array<any>, rotation: number, velocity: number, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
+	readonly TouchRotate: RBXScriptSignal<(touchPositions: Array<any>, rotation: number, velocity: number, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user places their finger on a TouchEnabled device. 'touch' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchStarted: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
+	readonly TouchStarted: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user swipes their fingers on a TouchEnabled device. 'swipeDirection' is an Enum.SwipeDirection, indicating the direction the user swiped. 'numberOfTouches' is an int that indicates how many touches were involved with the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number, gameProcessedEvent: boolean) => void>;
+	readonly TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user taps their finger on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the tap gesture. This event only fires locally.  This event will always fire regardless of game state. */
-	TouchTap: RBXScriptSignal<(touchPositions: Array<any>, gameProcessedEvent: boolean) => void>;
-	TouchTapInWorld: RBXScriptSignal<(position: Vector2, processedByUI: boolean) => void>;
-	UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
-	WindowFocusReleased: RBXScriptSignal<() => void>;
-	WindowFocused: RBXScriptSignal<() => void>;
+	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<any>, gameProcessedEvent: boolean) => void>;
+	readonly TouchTapInWorld: RBXScriptSignal<(position: Vector2, processedByUI: boolean) => void>;
+	readonly UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
+	readonly WindowFocusReleased: RBXScriptSignal<() => void>;
+	readonly WindowFocused: RBXScriptSignal<() => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__384: never;
 }
@@ -5647,10 +5643,10 @@ interface Rbx_VRService extends Rbx_Instance {
 	RecenterUserHeadCFrame(): void;
 	RequestNavigation(cframe: CFrame, inputUserCFrame: Enum.UserCFrame): void;
 	SetTouchpadMode(pad: Enum.VRTouchpad, mode: Enum.VRTouchpadMode): void;
-	NavigationRequested: RBXScriptSignal<(cframe: CFrame, inputUserCFrame: Enum.UserCFrame) => void>;
-	TouchpadModeChanged: RBXScriptSignal<(pad: Enum.VRTouchpad, mode: Enum.VRTouchpadMode) => void>;
-	UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
-	UserCFrameEnabled: RBXScriptSignal<(type: Enum.UserCFrame, enabled: boolean) => void>;
+	readonly NavigationRequested: RBXScriptSignal<(cframe: CFrame, inputUserCFrame: Enum.UserCFrame) => void>;
+	readonly TouchpadModeChanged: RBXScriptSignal<(pad: Enum.VRTouchpad, mode: Enum.VRTouchpadMode) => void>;
+	readonly UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
+	readonly UserCFrameEnabled: RBXScriptSignal<(type: Enum.UserCFrame, enabled: boolean) => void>;
 	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
 	__385: never;
 }

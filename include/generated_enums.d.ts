@@ -1056,7 +1056,8 @@ declare namespace Enum {
 		LeafyGrass = 1284,
 		Salt = 1392,
 		Limestone = 820,
-		Pavement = 836
+		Pavement = 836,
+		ForceField = 1584
 	}
 	enum MembershipType {
 		None = 0,
@@ -1535,7 +1536,8 @@ declare namespace Enum {
 	}
 	enum Technology {
 		Legacy = 0,
-		Voxel = 1
+		Voxel = 1,
+		Compatibility = 2
 	}
 	enum TeleportResult {
 		Success = 0,
@@ -1693,7 +1695,8 @@ declare namespace Enum {
 		Gamepad7 = 18,
 		Gamepad8 = 19,
 		TextInput = 20,
-		None = 21
+		InputMethod = 21,
+		None = 22
 	}
 	enum VRTouchpad {
 		Left = 0,
