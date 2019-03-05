@@ -220,6 +220,13 @@ function generateArgs(params: Array<ApiParameter>) {
 	return args.join(", ");
 }
 
+class NumberHelper {
+	private n = 0;
+	get() {
+		return this.n++;
+	}
+}
+
 export class ClassGenerator extends Generator {
 	private generateCallback(rbxCallback: ApiCallback, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxCallback.Name;
@@ -279,31 +286,34 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
+	private shouldGenerateMember(rbxClass: ApiClass, rbxMember: ApiMember) {
+		const blacklist = MEMBER_BLACKLIST[rbxClass.Name];
+		if (blacklist && blacklist[rbxMember.Name] === true) {
+			return false;
+		}
+		return (
+			canRead(rbxMember) && !memberHasTag(rbxMember, "Deprecated") && !memberHasTag(rbxMember, "NotScriptable")
+		);
+	}
+
 	private generateMember(
 		rbxClass: ApiClass,
 		rbxMember: ApiMember,
 		className: string,
 		tsImplInterface?: ts.InterfaceDeclaration
 	) {
-		const blacklist = MEMBER_BLACKLIST[rbxClass.Name];
-		if (blacklist && blacklist[rbxMember.Name] === true) {
-			return;
-		}
-
-		if (canRead(rbxMember) && !memberHasTag(rbxMember, "Deprecated") && !memberHasTag(rbxMember, "NotScriptable")) {
-			if (rbxMember.MemberType === "Callback") {
-				this.generateCallback(rbxMember, className, tsImplInterface);
-			} else if (rbxMember.MemberType === "Event") {
-				this.generateEvent(rbxMember, className, tsImplInterface);
-			} else if (rbxMember.MemberType === "Function") {
-				this.generateFunction(rbxMember, className, tsImplInterface);
-			} else if (rbxMember.MemberType === "Property") {
-				this.generateProperty(rbxMember, className, tsImplInterface);
-			}
+		if (rbxMember.MemberType === "Callback") {
+			this.generateCallback(rbxMember, className, tsImplInterface);
+		} else if (rbxMember.MemberType === "Event") {
+			this.generateEvent(rbxMember, className, tsImplInterface);
+		} else if (rbxMember.MemberType === "Function") {
+			this.generateFunction(rbxMember, className, tsImplInterface);
+		} else if (rbxMember.MemberType === "Property") {
+			this.generateProperty(rbxMember, className, tsImplInterface);
 		}
 	}
 
-	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile, n: number) {
+	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile, n: NumberHelper) {
 		const name = rbxClass.Name;
 		const implName = IMPL_PREFIX + name;
 		const tsImplInterface = tsFile.getInterface(implName);
@@ -316,9 +326,12 @@ export class ClassGenerator extends Generator {
 					: "";
 			this.write(`interface ${implName} ${extendsStr}{`);
 			this.pushIndent();
-			rbxClass.Members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
-			this.write(`/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */`);
-			this.write(`__${n}: never;`);
+			const members = rbxClass.Members.filter(rbxMember => this.shouldGenerateMember(rbxClass, rbxMember));
+			members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
+			if (members.length === 0) {
+				this.write(`/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */`);
+				this.write(`__${n.get()}: never;`);
+			}
 			this.popIndent();
 			this.write(`}`);
 		}
@@ -372,8 +385,8 @@ export class ClassGenerator extends Generator {
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {
 		this.write(`// GENERATED ROBLOX INSTANCE CLASSES`);
 		this.write(``);
-		let n = 0;
-		rbxClasses.forEach(rbxClass => this.generateClass(rbxClass, sourceFile, n++));
+		const helper = new NumberHelper();
+		rbxClasses.forEach(rbxClass => this.generateClass(rbxClass, sourceFile, helper));
 	}
 
 	public async generate(rbxClasses: Array<ApiClass>) {
