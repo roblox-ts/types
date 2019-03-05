@@ -1,5 +1,18 @@
 import * as path from "path";
-import Project, * as ts from "ts-simple-ast";
+import Project, * as ts from "ts-morph";
+import {
+	ApiCallback,
+	ApiClass,
+	ApiEvent,
+	ApiFunction,
+	ApiMember,
+	ApiMemberBase,
+	ApiParameter,
+	ApiProperty,
+	ApiValueType,
+	ClassTag,
+	MemberTag
+} from "../api";
 import { Generator } from "./Generator";
 
 const IMPL_PREFIX = "Rbx_";
@@ -159,11 +172,26 @@ function canWrite(member: ApiMemberBase) {
 	return getSecurity(member).Write === "None";
 }
 
-function hasTag(api: ApiMemberBase | ApiClass, tag: string) {
+function classHasTag(api: ApiClass, tag: ClassTag) {
 	if (api.Tags) {
 		return api.Tags.indexOf(tag) !== -1;
 	}
 	return false;
+}
+
+function memberHasTag(api: ApiMemberBase, tag: MemberTag) {
+	if (api.Tags) {
+		return api.Tags.indexOf(tag) !== -1;
+	}
+	return false;
+}
+
+function isCreatable(rbxClass: ApiClass) {
+	return (
+		!CREATABLE_BLACKLIST[rbxClass.Name] &&
+		!classHasTag(rbxClass, "NotCreatable") &&
+		!classHasTag(rbxClass, "Service")
+	);
 }
 
 function generateArgs(params: Array<ApiParameter>) {
@@ -192,6 +220,13 @@ function generateArgs(params: Array<ApiParameter>) {
 	return args.join(", ");
 }
 
+class NumberHelper {
+	private n = 0;
+	get() {
+		return this.n++;
+	}
+}
+
 export class ClassGenerator extends Generator {
 	private generateCallback(rbxCallback: ApiCallback, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxCallback.Name;
@@ -216,7 +251,7 @@ export class ClassGenerator extends Generator {
 		if (description) {
 			this.write(`/** ${description} */`);
 		}
-		this.write(`${name}: RBXScriptSignal<(${args}) => void>;`);
+		this.write(`readonly ${name}: RBXScriptSignal<(${args}) => void>;`);
 	}
 
 	private generateFunction(rbxFunction: ApiFunction, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
@@ -246,9 +281,19 @@ export class ClassGenerator extends Generator {
 			if (description) {
 				this.write(`/** ${description} */`);
 			}
-			const prefix = canWrite(rbxProperty) && !hasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
+			const prefix = canWrite(rbxProperty) && !memberHasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
 			this.write(`${prefix}${safeName(name)}: ${valueType};`);
 		}
+	}
+
+	private shouldGenerateMember(rbxClass: ApiClass, rbxMember: ApiMember) {
+		const blacklist = MEMBER_BLACKLIST[rbxClass.Name];
+		if (blacklist && blacklist[rbxMember.Name] === true) {
+			return false;
+		}
+		return (
+			canRead(rbxMember) && !memberHasTag(rbxMember, "Deprecated") && !memberHasTag(rbxMember, "NotScriptable")
+		);
 	}
 
 	private generateMember(
@@ -257,25 +302,18 @@ export class ClassGenerator extends Generator {
 		className: string,
 		tsImplInterface?: ts.InterfaceDeclaration
 	) {
-		const blacklist = MEMBER_BLACKLIST[rbxClass.Name];
-		if (blacklist && blacklist[rbxMember.Name] === true) {
-			return;
-		}
-
-		if (canRead(rbxMember) && !hasTag(rbxMember, "Deprecated") && !hasTag(rbxMember, "NotScriptable")) {
-			if (rbxMember.MemberType === "Callback") {
-				this.generateCallback(rbxMember, className, tsImplInterface);
-			} else if (rbxMember.MemberType === "Event") {
-				this.generateEvent(rbxMember, className, tsImplInterface);
-			} else if (rbxMember.MemberType === "Function") {
-				this.generateFunction(rbxMember, className, tsImplInterface);
-			} else if (rbxMember.MemberType === "Property") {
-				this.generateProperty(rbxMember, className, tsImplInterface);
-			}
+		if (rbxMember.MemberType === "Callback") {
+			this.generateCallback(rbxMember, className, tsImplInterface);
+		} else if (rbxMember.MemberType === "Event") {
+			this.generateEvent(rbxMember, className, tsImplInterface);
+		} else if (rbxMember.MemberType === "Function") {
+			this.generateFunction(rbxMember, className, tsImplInterface);
+		} else if (rbxMember.MemberType === "Property") {
+			this.generateProperty(rbxMember, className, tsImplInterface);
 		}
 	}
 
-	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile) {
+	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile, n: NumberHelper) {
 		const name = rbxClass.Name;
 		const implName = IMPL_PREFIX + name;
 		const tsImplInterface = tsFile.getInterface(implName);
@@ -288,68 +326,74 @@ export class ClassGenerator extends Generator {
 					: "";
 			this.write(`interface ${implName} ${extendsStr}{`);
 			this.pushIndent();
-			rbxClass.Members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
+			const members = rbxClass.Members.filter(rbxMember => this.shouldGenerateMember(rbxClass, rbxMember));
+			members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
+			if (members.length === 0) {
+				this.write(`/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */`);
+				this.write(`__${n.get()}: never;`);
+			}
 			this.popIndent();
 			this.write(`}`);
 		}
 
-		if (hasTag(rbxClass, "Service") || CREATABLE_BLACKLIST[name]) {
-			this.write(`type ${name} = ${implName} & Base<${implName}> & AnyIndex;`);
-		} else {
-			let prefixStr = "";
-			if (hasTag(rbxClass, "NotCreatable")) {
-				prefixStr = "abstract ";
-			}
+		this.write(`type ${name} = ${implName} & Base<${implName}> & Indexable<${implName}>;`);
 
-			if (!tsApiInterface) {
-				this.write(`interface ${name} extends ${implName}, Base<${implName}>, AnyIndex {}`);
-			}
-
-			const classDescription = this.metadata.getClassDescription(name);
-			if (classDescription) {
-				this.write(`/** ${classDescription} */`);
-			}
-
-			this.write(`declare ${prefixStr}class ${name} {`);
-			this.pushIndent();
-			this.write("constructor(parent?: Instance);");
-			this.popIndent();
-			this.write("}");
-		}
-
-		this.write("interface Rbx_Instance {");
-		this.pushIndent();
-		this.write(`IsA(className: "${name}"): this is ${name};`);
-		this.write(`FindFirstAncestorOfClass(className: "${name}"): ${name} | undefined;`);
-		this.write(`FindFirstAncestorWhichIsA(className: "${name}"): ${name} | undefined;`);
-		this.write(`FindFirstChildOfClass(className: "${name}"): ${name} | undefined;`);
-		this.write(`FindFirstAncestorWhichIsA(className: "${name}"): ${name} | undefined;`);
-		this.popIndent();
-		this.write("}");
-
-		if (hasTag(rbxClass, "Service")) {
-			this.write("interface Rbx_ServiceProvider extends Rbx_Instance {");
+		if (classHasTag(rbxClass, "Service")) {
+			this.write(`interface Rbx_ServiceProvider extends Rbx_Instance {`);
 			this.pushIndent();
 			this.write(`GetService(className: "${name}"): ${name};`);
 			this.popIndent();
-			this.write("}");
+			this.write(`}`);
 		}
 
-		this.write("");
+		this.write(``);
+	}
+
+	private generateHeader() {
+		this.write(`// THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!`);
+		this.write(``);
+		this.write(`/// <reference no-default-lib="true"/>`);
+		this.write(`/// <reference path="roblox.d.ts" />`);
+		this.write(`/// <reference path="manual.d.ts" />`);
+		this.write(`/// <reference path="generated_enums.d.ts" />`);
+		this.write(``);
+	}
+
+	private generateInstancesTables(rbxClasses: Array<ApiClass>) {
+		this.write(`// CREATABLE INSTANCES TABLE`);
+		this.write(``);
+		this.write(`interface CreatableInstances {`);
+		this.pushIndent();
+		rbxClasses
+			.filter(rbxClass => isCreatable(rbxClass))
+			.map(rbxClass => rbxClass.Name)
+			.forEach(name => this.write(`${name}: ${name};`));
+		this.popIndent();
+		this.write(`}`);
+		this.write(``);
+
+		this.write(`// INSTANCES TABLE`);
+		this.write(``);
+		this.write(`interface Instances {`);
+		this.pushIndent();
+		rbxClasses.map(rbxClass => rbxClass.Name).forEach(name => this.write(`${name}: ${name};`));
+		this.popIndent();
+		this.write(`}`);
+		this.write(``);
+	}
+
+	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {
+		this.write(`// GENERATED ROBLOX INSTANCE CLASSES`);
+		this.write(``);
+		const helper = new NumberHelper();
+		rbxClasses.forEach(rbxClass => this.generateClass(rbxClass, sourceFile, helper));
 	}
 
 	public async generate(rbxClasses: Array<ApiClass>) {
 		const project = new Project({ tsConfigFilePath: path.join(__dirname, "..", "..", "include", "tsconfig.json") });
 		const sourceFile = project.getSourceFileOrThrow("manual.d.ts");
-		this.write("// THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!");
-		this.write("");
-		this.write('/// <reference no-default-lib="true"/>');
-		this.write('/// <reference path="roblox.d.ts" />');
-		this.write('/// <reference path="manual.d.ts" />');
-		this.write('/// <reference path="generated_enums.d.ts" />');
-		this.write("");
-		this.write("// GENERATED ROBLOX INSTANCE CLASSES");
-		this.write("");
-		rbxClasses.forEach(rbxClass => this.generateClass(rbxClass, sourceFile));
+		this.generateHeader();
+		this.generateInstancesTables(rbxClasses);
+		this.generateClasses(rbxClasses, sourceFile);
 	}
 }

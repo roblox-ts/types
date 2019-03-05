@@ -1,9 +1,10 @@
 import axios from "axios";
 import * as path from "path";
-import { EnumGenerator } from "./class/EnumGenerator";
+import { ApiDump } from "./api";
 import { ClassGenerator } from "./class/ClassGenerator";
-import { Timer } from "./class/Timer";
+import { EnumGenerator } from "./class/EnumGenerator";
 import { ReflectionMetadata } from "./class/ReflectionMetadata";
+import { Timer } from "./class/Timer";
 
 const BASE_URL = "https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Client-Watch/roblox/";
 const API_DUMP_URL = BASE_URL + "API-Dump.json";

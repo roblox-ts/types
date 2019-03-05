@@ -5,6 +5,622 @@
 /// <reference path="manual.d.ts" />
 /// <reference path="generated_enums.d.ts" />
 
+// CREATABLE INSTANCES TABLE
+
+interface CreatableInstances {
+	Accoutrement: Accoutrement;
+	Accessory: Accessory;
+	Hat: Hat;
+	AdvancedDragger: AdvancedDragger;
+	Animation: Animation;
+	AnimationController: AnimationController;
+	Animator: Animator;
+	Attachment: Attachment;
+	Beam: Beam;
+	BindableEvent: BindableEvent;
+	BindableFunction: BindableFunction;
+	BodyAngularVelocity: BodyAngularVelocity;
+	BodyForce: BodyForce;
+	BodyGyro: BodyGyro;
+	BodyPosition: BodyPosition;
+	BodyThrust: BodyThrust;
+	BodyVelocity: BodyVelocity;
+	RocketPropulsion: RocketPropulsion;
+	Camera: Camera;
+	BodyColors: BodyColors;
+	CharacterMesh: CharacterMesh;
+	Pants: Pants;
+	Shirt: Shirt;
+	ShirtGraphic: ShirtGraphic;
+	Skin: Skin;
+	ClickDetector: ClickDetector;
+	Configuration: Configuration;
+	AlignOrientation: AlignOrientation;
+	AlignPosition: AlignPosition;
+	BallSocketConstraint: BallSocketConstraint;
+	HingeConstraint: HingeConstraint;
+	LineForce: LineForce;
+	RodConstraint: RodConstraint;
+	RopeConstraint: RopeConstraint;
+	CylindricalConstraint: CylindricalConstraint;
+	PrismaticConstraint: PrismaticConstraint;
+	SpringConstraint: SpringConstraint;
+	Torque: Torque;
+	VectorForce: VectorForce;
+	HumanoidController: HumanoidController;
+	SkateboardController: SkateboardController;
+	VehicleController: VehicleController;
+	CustomEvent: CustomEvent;
+	CustomEventReceiver: CustomEventReceiver;
+	BlockMesh: BlockMesh;
+	CylinderMesh: CylinderMesh;
+	FileMesh: FileMesh;
+	SpecialMesh: SpecialMesh;
+	DebuggerWatch: DebuggerWatch;
+	Dialog: Dialog;
+	DialogChoice: DialogChoice;
+	Dragger: Dragger;
+	Explosion: Explosion;
+	Decal: Decal;
+	Texture: Texture;
+	Hole: Hole;
+	MotorFeature: MotorFeature;
+	Fire: Fire;
+	Folder: Folder;
+	ForceField: ForceField;
+	FunctionalTest: FunctionalTest;
+	GameSettings: GameSettings;
+	Frame: Frame;
+	ImageButton: ImageButton;
+	TextButton: TextButton;
+	ImageLabel: ImageLabel;
+	TextLabel: TextLabel;
+	ScrollingFrame: ScrollingFrame;
+	TextBox: TextBox;
+	ViewportFrame: ViewportFrame;
+	BillboardGui: BillboardGui;
+	ScreenGui: ScreenGui;
+	GuiMain: GuiMain;
+	SurfaceGui: SurfaceGui;
+	FloorWire: FloorWire;
+	BoxHandleAdornment: BoxHandleAdornment;
+	ConeHandleAdornment: ConeHandleAdornment;
+	CylinderHandleAdornment: CylinderHandleAdornment;
+	ImageHandleAdornment: ImageHandleAdornment;
+	LineHandleAdornment: LineHandleAdornment;
+	SphereHandleAdornment: SphereHandleAdornment;
+	ParabolaAdornment: ParabolaAdornment;
+	SelectionBox: SelectionBox;
+	SelectionSphere: SelectionSphere;
+	ArcHandles: ArcHandles;
+	Handles: Handles;
+	SurfaceSelection: SurfaceSelection;
+	SelectionPartLasso: SelectionPartLasso;
+	SelectionPointLasso: SelectionPointLasso;
+	Backpack: Backpack;
+	HopperBin: HopperBin;
+	Tool: Tool;
+	Flag: Flag;
+	Humanoid: Humanoid;
+	HumanoidDescription: HumanoidDescription;
+	RotateP: RotateP;
+	RotateV: RotateV;
+	Glue: Glue;
+	ManualGlue: ManualGlue;
+	ManualWeld: ManualWeld;
+	Motor: Motor;
+	Motor6D: Motor6D;
+	Rotate: Rotate;
+	Snap: Snap;
+	VelocityMotor: VelocityMotor;
+	Weld: Weld;
+	Keyframe: Keyframe;
+	KeyframeMarker: KeyframeMarker;
+	KeyframeSequence: KeyframeSequence;
+	PointLight: PointLight;
+	SpotLight: SpotLight;
+	SurfaceLight: SurfaceLight;
+	LocalizationTable: LocalizationTable;
+	LuaSettings: LuaSettings;
+	Script: Script;
+	LocalScript: LocalScript;
+	ModuleScript: ModuleScript;
+	Message: Message;
+	Hint: Hint;
+	CornerWedgePart: CornerWedgePart;
+	Part: Part;
+	FlagStand: FlagStand;
+	Seat: Seat;
+	SkateboardPlatform: SkateboardPlatform;
+	SpawnLocation: SpawnLocation;
+	WedgePart: WedgePart;
+	MeshPart: MeshPart;
+	PartOperation: PartOperation;
+	NegateOperation: NegateOperation;
+	UnionOperation: UnionOperation;
+	TrussPart: TrussPart;
+	VehicleSeat: VehicleSeat;
+	Model: Model;
+	PartOperationAsset: PartOperationAsset;
+	ParticleEmitter: ParticleEmitter;
+	PhysicsSettings: PhysicsSettings;
+	Player: Player;
+	PluginAction: PluginAction;
+	Pose: Pose;
+	BloomEffect: BloomEffect;
+	BlurEffect: BlurEffect;
+	ColorCorrectionEffect: ColorCorrectionEffect;
+	SunRaysEffect: SunRaysEffect;
+	ReflectionMetadata: ReflectionMetadata;
+	ReflectionMetadataCallbacks: ReflectionMetadataCallbacks;
+	ReflectionMetadataClasses: ReflectionMetadataClasses;
+	ReflectionMetadataEnums: ReflectionMetadataEnums;
+	ReflectionMetadataEvents: ReflectionMetadataEvents;
+	ReflectionMetadataFunctions: ReflectionMetadataFunctions;
+	ReflectionMetadataClass: ReflectionMetadataClass;
+	ReflectionMetadataEnum: ReflectionMetadataEnum;
+	ReflectionMetadataEnumItem: ReflectionMetadataEnumItem;
+	ReflectionMetadataMember: ReflectionMetadataMember;
+	ReflectionMetadataProperties: ReflectionMetadataProperties;
+	ReflectionMetadataYieldFunctions: ReflectionMetadataYieldFunctions;
+	RemoteEvent: RemoteEvent;
+	RemoteFunction: RemoteFunction;
+	RenderingTest: RenderingTest;
+	Sky: Sky;
+	Smoke: Smoke;
+	Sound: Sound;
+	ChorusSoundEffect: ChorusSoundEffect;
+	CompressorSoundEffect: CompressorSoundEffect;
+	DistortionSoundEffect: DistortionSoundEffect;
+	EchoSoundEffect: EchoSoundEffect;
+	EqualizerSoundEffect: EqualizerSoundEffect;
+	FlangeSoundEffect: FlangeSoundEffect;
+	PitchShiftSoundEffect: PitchShiftSoundEffect;
+	ReverbSoundEffect: ReverbSoundEffect;
+	TremoloSoundEffect: TremoloSoundEffect;
+	SoundGroup: SoundGroup;
+	Sparkles: Sparkles;
+	StarterGear: StarterGear;
+	StarterPlayerScripts: StarterPlayerScripts;
+	StarterCharacterScripts: StarterCharacterScripts;
+	Team: Team;
+	TerrainRegion: TerrainRegion;
+	Trail: Trail;
+	Tween: Tween;
+	UIAspectRatioConstraint: UIAspectRatioConstraint;
+	UISizeConstraint: UISizeConstraint;
+	UITextSizeConstraint: UITextSizeConstraint;
+	UIGridLayout: UIGridLayout;
+	UIListLayout: UIListLayout;
+	UIPageLayout: UIPageLayout;
+	UITableLayout: UITableLayout;
+	UIPadding: UIPadding;
+	UIScale: UIScale;
+	BinaryStringValue: BinaryStringValue;
+	BoolValue: BoolValue;
+	BrickColorValue: BrickColorValue;
+	CFrameValue: CFrameValue;
+	Color3Value: Color3Value;
+	DoubleConstrainedValue: DoubleConstrainedValue;
+	IntConstrainedValue: IntConstrainedValue;
+	IntValue: IntValue;
+	NumberValue: NumberValue;
+	ObjectValue: ObjectValue;
+	RayValue: RayValue;
+	StringValue: StringValue;
+	Vector3Value: Vector3Value;
+	WeldConstraint: WeldConstraint;
+}
+
+// INSTANCES TABLE
+
+interface Instances {
+	Instance: Instance;
+	ABTestService: ABTestService;
+	Accoutrement: Accoutrement;
+	Accessory: Accessory;
+	Hat: Hat;
+	AdService: AdService;
+	AdvancedDragger: AdvancedDragger;
+	AnalyticsService: AnalyticsService;
+	Animation: Animation;
+	AnimationController: AnimationController;
+	AnimationTrack: AnimationTrack;
+	Animator: Animator;
+	AssetService: AssetService;
+	Attachment: Attachment;
+	BadgeService: BadgeService;
+	BasePlayerGui: BasePlayerGui;
+	CoreGui: CoreGui;
+	PlayerGui: PlayerGui;
+	StarterGui: StarterGui;
+	Beam: Beam;
+	BindableEvent: BindableEvent;
+	BindableFunction: BindableFunction;
+	BodyMover: BodyMover;
+	BodyAngularVelocity: BodyAngularVelocity;
+	BodyForce: BodyForce;
+	BodyGyro: BodyGyro;
+	BodyPosition: BodyPosition;
+	BodyThrust: BodyThrust;
+	BodyVelocity: BodyVelocity;
+	RocketPropulsion: RocketPropulsion;
+	BrowserService: BrowserService;
+	CacheableContentProvider: CacheableContentProvider;
+	MeshContentProvider: MeshContentProvider;
+	SolidModelContentProvider: SolidModelContentProvider;
+	Camera: Camera;
+	ChangeHistoryService: ChangeHistoryService;
+	CharacterAppearance: CharacterAppearance;
+	BodyColors: BodyColors;
+	CharacterMesh: CharacterMesh;
+	Clothing: Clothing;
+	Pants: Pants;
+	Shirt: Shirt;
+	ShirtGraphic: ShirtGraphic;
+	Skin: Skin;
+	Chat: Chat;
+	ClickDetector: ClickDetector;
+	ClusterPacketCache: ClusterPacketCache;
+	CollectionService: CollectionService;
+	Configuration: Configuration;
+	Constraint: Constraint;
+	AlignOrientation: AlignOrientation;
+	AlignPosition: AlignPosition;
+	BallSocketConstraint: BallSocketConstraint;
+	HingeConstraint: HingeConstraint;
+	LineForce: LineForce;
+	RodConstraint: RodConstraint;
+	RopeConstraint: RopeConstraint;
+	SlidingBallConstraint: SlidingBallConstraint;
+	CylindricalConstraint: CylindricalConstraint;
+	PrismaticConstraint: PrismaticConstraint;
+	SpringConstraint: SpringConstraint;
+	Torque: Torque;
+	VectorForce: VectorForce;
+	ContentProvider: ContentProvider;
+	ContextActionService: ContextActionService;
+	Controller: Controller;
+	HumanoidController: HumanoidController;
+	SkateboardController: SkateboardController;
+	VehicleController: VehicleController;
+	ControllerService: ControllerService;
+	CookiesService: CookiesService;
+	CorePackages: CorePackages;
+	CoreScriptSyncService: CoreScriptSyncService;
+	CustomEvent: CustomEvent;
+	CustomEventReceiver: CustomEventReceiver;
+	DataModelMesh: DataModelMesh;
+	BevelMesh: BevelMesh;
+	BlockMesh: BlockMesh;
+	CylinderMesh: CylinderMesh;
+	FileMesh: FileMesh;
+	SpecialMesh: SpecialMesh;
+	DataStoreService: DataStoreService;
+	Debris: Debris;
+	DebugSettings: DebugSettings;
+	DebuggerBreakpoint: DebuggerBreakpoint;
+	DebuggerManager: DebuggerManager;
+	DebuggerWatch: DebuggerWatch;
+	Dialog: Dialog;
+	DialogChoice: DialogChoice;
+	Dragger: Dragger;
+	Explosion: Explosion;
+	FaceInstance: FaceInstance;
+	Decal: Decal;
+	Texture: Texture;
+	Feature: Feature;
+	Hole: Hole;
+	MotorFeature: MotorFeature;
+	File: File;
+	Fire: Fire;
+	FlagStandService: FlagStandService;
+	FlyweightService: FlyweightService;
+	CSGDictionaryService: CSGDictionaryService;
+	NonReplicatedCSGDictionaryService: NonReplicatedCSGDictionaryService;
+	Folder: Folder;
+	ForceField: ForceField;
+	FriendService: FriendService;
+	FunctionalTest: FunctionalTest;
+	GamePassService: GamePassService;
+	GameSettings: GameSettings;
+	GamepadService: GamepadService;
+	Geometry: Geometry;
+	GlobalDataStore: GlobalDataStore;
+	OrderedDataStore: OrderedDataStore;
+	GoogleAnalyticsConfiguration: GoogleAnalyticsConfiguration;
+	GroupService: GroupService;
+	GuiBase: GuiBase;
+	GuiBase2d: GuiBase2d;
+	GuiObject: GuiObject;
+	Frame: Frame;
+	GuiButton: GuiButton;
+	ImageButton: ImageButton;
+	TextButton: TextButton;
+	GuiLabel: GuiLabel;
+	ImageLabel: ImageLabel;
+	TextLabel: TextLabel;
+	ScrollingFrame: ScrollingFrame;
+	TextBox: TextBox;
+	ViewportFrame: ViewportFrame;
+	LayerCollector: LayerCollector;
+	BillboardGui: BillboardGui;
+	PluginGui: PluginGui;
+	DockWidgetPluginGui: DockWidgetPluginGui;
+	QWidgetPluginGui: QWidgetPluginGui;
+	ScreenGui: ScreenGui;
+	GuiMain: GuiMain;
+	SurfaceGui: SurfaceGui;
+	GuiBase3d: GuiBase3d;
+	FloorWire: FloorWire;
+	PVAdornment: PVAdornment;
+	HandleAdornment: HandleAdornment;
+	BoxHandleAdornment: BoxHandleAdornment;
+	ConeHandleAdornment: ConeHandleAdornment;
+	CylinderHandleAdornment: CylinderHandleAdornment;
+	ImageHandleAdornment: ImageHandleAdornment;
+	LineHandleAdornment: LineHandleAdornment;
+	SphereHandleAdornment: SphereHandleAdornment;
+	ParabolaAdornment: ParabolaAdornment;
+	SelectionBox: SelectionBox;
+	SelectionSphere: SelectionSphere;
+	PartAdornment: PartAdornment;
+	HandlesBase: HandlesBase;
+	ArcHandles: ArcHandles;
+	Handles: Handles;
+	SurfaceSelection: SurfaceSelection;
+	SelectionLasso: SelectionLasso;
+	SelectionPartLasso: SelectionPartLasso;
+	SelectionPointLasso: SelectionPointLasso;
+	GuiItem: GuiItem;
+	Backpack: Backpack;
+	BackpackItem: BackpackItem;
+	HopperBin: HopperBin;
+	Tool: Tool;
+	Flag: Flag;
+	ButtonBindingWidget: ButtonBindingWidget;
+	GuiRoot: GuiRoot;
+	Hopper: Hopper;
+	StarterPack: StarterPack;
+	GuiService: GuiService;
+	GuidRegistryService: GuidRegistryService;
+	HapticService: HapticService;
+	HttpRbxApiService: HttpRbxApiService;
+	HttpRequest: HttpRequest;
+	HttpService: HttpService;
+	Humanoid: Humanoid;
+	HumanoidDescription: HumanoidDescription;
+	InputObject: InputObject;
+	InsertService: InsertService;
+	JointInstance: JointInstance;
+	DynamicRotate: DynamicRotate;
+	RotateP: RotateP;
+	RotateV: RotateV;
+	Glue: Glue;
+	ManualSurfaceJointInstance: ManualSurfaceJointInstance;
+	ManualGlue: ManualGlue;
+	ManualWeld: ManualWeld;
+	Motor: Motor;
+	Motor6D: Motor6D;
+	Rotate: Rotate;
+	Snap: Snap;
+	VelocityMotor: VelocityMotor;
+	Weld: Weld;
+	JointsService: JointsService;
+	KeyboardService: KeyboardService;
+	Keyframe: Keyframe;
+	KeyframeMarker: KeyframeMarker;
+	KeyframeSequence: KeyframeSequence;
+	KeyframeSequenceProvider: KeyframeSequenceProvider;
+	Light: Light;
+	PointLight: PointLight;
+	SpotLight: SpotLight;
+	SurfaceLight: SurfaceLight;
+	Lighting: Lighting;
+	LocalStorageService: LocalStorageService;
+	AppStorageService: AppStorageService;
+	UserStorageService: UserStorageService;
+	LocalizationService: LocalizationService;
+	LocalizationTable: LocalizationTable;
+	LogService: LogService;
+	LoginService: LoginService;
+	LuaSettings: LuaSettings;
+	LuaSourceContainer: LuaSourceContainer;
+	BaseScript: BaseScript;
+	CoreScript: CoreScript;
+	Script: Script;
+	LocalScript: LocalScript;
+	ModuleScript: ModuleScript;
+	LuaWebService: LuaWebService;
+	MarketplaceService: MarketplaceService;
+	Message: Message;
+	Hint: Hint;
+	MessagingService: MessagingService;
+	Mouse: Mouse;
+	PlayerMouse: PlayerMouse;
+	PluginMouse: PluginMouse;
+	MouseService: MouseService;
+	NetworkMarker: NetworkMarker;
+	NetworkPeer: NetworkPeer;
+	NetworkClient: NetworkClient;
+	NetworkServer: NetworkServer;
+	NetworkReplicator: NetworkReplicator;
+	ClientReplicator: ClientReplicator;
+	ServerReplicator: ServerReplicator;
+	NetworkSettings: NetworkSettings;
+	NotificationService: NotificationService;
+	PVInstance: PVInstance;
+	BasePart: BasePart;
+	CornerWedgePart: CornerWedgePart;
+	FormFactorPart: FormFactorPart;
+	Part: Part;
+	FlagStand: FlagStand;
+	Platform: Platform;
+	Seat: Seat;
+	SkateboardPlatform: SkateboardPlatform;
+	SpawnLocation: SpawnLocation;
+	WedgePart: WedgePart;
+	MeshPart: MeshPart;
+	PartOperation: PartOperation;
+	NegateOperation: NegateOperation;
+	UnionOperation: UnionOperation;
+	Terrain: Terrain;
+	TrussPart: TrussPart;
+	VehicleSeat: VehicleSeat;
+	Model: Model;
+	Status: Status;
+	Workspace: Workspace;
+	PackageLink: PackageLink;
+	Pages: Pages;
+	DataStorePages: DataStorePages;
+	FriendPages: FriendPages;
+	InventoryPages: InventoryPages;
+	StandardPages: StandardPages;
+	PartOperationAsset: PartOperationAsset;
+	ParticleEmitter: ParticleEmitter;
+	Path: Path;
+	PathfindingService: PathfindingService;
+	PhysicsPacketCache: PhysicsPacketCache;
+	PhysicsService: PhysicsService;
+	PhysicsSettings: PhysicsSettings;
+	Player: Player;
+	PlayerScripts: PlayerScripts;
+	Players: Players;
+	Plugin: Plugin;
+	PluginAction: PluginAction;
+	PluginDragEvent: PluginDragEvent;
+	PluginGuiService: PluginGuiService;
+	PluginManager: PluginManager;
+	PluginMenu: PluginMenu;
+	PluginToolbar: PluginToolbar;
+	PluginToolbarButton: PluginToolbarButton;
+	PointsService: PointsService;
+	Pose: Pose;
+	PostEffect: PostEffect;
+	BloomEffect: BloomEffect;
+	BlurEffect: BlurEffect;
+	ColorCorrectionEffect: ColorCorrectionEffect;
+	SunRaysEffect: SunRaysEffect;
+	ReflectionMetadata: ReflectionMetadata;
+	ReflectionMetadataCallbacks: ReflectionMetadataCallbacks;
+	ReflectionMetadataClasses: ReflectionMetadataClasses;
+	ReflectionMetadataEnums: ReflectionMetadataEnums;
+	ReflectionMetadataEvents: ReflectionMetadataEvents;
+	ReflectionMetadataFunctions: ReflectionMetadataFunctions;
+	ReflectionMetadataItem: ReflectionMetadataItem;
+	ReflectionMetadataClass: ReflectionMetadataClass;
+	ReflectionMetadataEnum: ReflectionMetadataEnum;
+	ReflectionMetadataEnumItem: ReflectionMetadataEnumItem;
+	ReflectionMetadataMember: ReflectionMetadataMember;
+	ReflectionMetadataProperties: ReflectionMetadataProperties;
+	ReflectionMetadataYieldFunctions: ReflectionMetadataYieldFunctions;
+	RemoteEvent: RemoteEvent;
+	RemoteFunction: RemoteFunction;
+	RenderSettings: RenderSettings;
+	RenderingTest: RenderingTest;
+	ReplicatedFirst: ReplicatedFirst;
+	ReplicatedStorage: ReplicatedStorage;
+	RobloxReplicatedStorage: RobloxReplicatedStorage;
+	RunService: RunService;
+	RuntimeScriptService: RuntimeScriptService;
+	ScriptContext: ScriptContext;
+	ScriptDebugger: ScriptDebugger;
+	ScriptService: ScriptService;
+	Selection: Selection;
+	ServerScriptService: ServerScriptService;
+	ServerStorage: ServerStorage;
+	ServiceProvider: ServiceProvider;
+	DataModel: DataModel;
+	GenericSettings: GenericSettings;
+	AnalysticsSettings: AnalysticsSettings;
+	GlobalSettings: GlobalSettings;
+	UserSettings: UserSettings;
+	Sky: Sky;
+	Smoke: Smoke;
+	SocialService: SocialService;
+	Sound: Sound;
+	SoundEffect: SoundEffect;
+	ChorusSoundEffect: ChorusSoundEffect;
+	CompressorSoundEffect: CompressorSoundEffect;
+	DistortionSoundEffect: DistortionSoundEffect;
+	EchoSoundEffect: EchoSoundEffect;
+	EqualizerSoundEffect: EqualizerSoundEffect;
+	FlangeSoundEffect: FlangeSoundEffect;
+	PitchShiftSoundEffect: PitchShiftSoundEffect;
+	ReverbSoundEffect: ReverbSoundEffect;
+	TremoloSoundEffect: TremoloSoundEffect;
+	SoundGroup: SoundGroup;
+	SoundService: SoundService;
+	Sparkles: Sparkles;
+	SpawnerService: SpawnerService;
+	StarterGear: StarterGear;
+	StarterPlayer: StarterPlayer;
+	StarterPlayerScripts: StarterPlayerScripts;
+	StarterCharacterScripts: StarterCharacterScripts;
+	Stats: Stats;
+	StatsItem: StatsItem;
+	RunningAverageItemDouble: RunningAverageItemDouble;
+	RunningAverageItemInt: RunningAverageItemInt;
+	RunningAverageTimeIntervalItem: RunningAverageTimeIntervalItem;
+	TotalCountTimeIntervalItem: TotalCountTimeIntervalItem;
+	StopWatchReporter: StopWatchReporter;
+	Studio: Studio;
+	StudioService: StudioService;
+	StudioTheme: StudioTheme;
+	TaskScheduler: TaskScheduler;
+	Team: Team;
+	Teams: Teams;
+	TeleportService: TeleportService;
+	TerrainRegion: TerrainRegion;
+	TestService: TestService;
+	TextFilterResult: TextFilterResult;
+	TextService: TextService;
+	ThirdPartyUserService: ThirdPartyUserService;
+	TimerService: TimerService;
+	TouchInputService: TouchInputService;
+	TouchTransmitter: TouchTransmitter;
+	Trail: Trail;
+	Translator: Translator;
+	TweenBase: TweenBase;
+	Tween: Tween;
+	TweenService: TweenService;
+	UIBase: UIBase;
+	UIComponent: UIComponent;
+	UIConstraint: UIConstraint;
+	UIAspectRatioConstraint: UIAspectRatioConstraint;
+	UISizeConstraint: UISizeConstraint;
+	UITextSizeConstraint: UITextSizeConstraint;
+	UILayout: UILayout;
+	UIGridStyleLayout: UIGridStyleLayout;
+	UIGridLayout: UIGridLayout;
+	UIListLayout: UIListLayout;
+	UIPageLayout: UIPageLayout;
+	UITableLayout: UITableLayout;
+	UIPadding: UIPadding;
+	UIScale: UIScale;
+	UserGameSettings: UserGameSettings;
+	UserInputService: UserInputService;
+	VRService: VRService;
+	ValueBase: ValueBase;
+	BinaryStringValue: BinaryStringValue;
+	BoolValue: BoolValue;
+	BrickColorValue: BrickColorValue;
+	CFrameValue: CFrameValue;
+	Color3Value: Color3Value;
+	DoubleConstrainedValue: DoubleConstrainedValue;
+	IntConstrainedValue: IntConstrainedValue;
+	IntValue: IntValue;
+	NumberValue: NumberValue;
+	ObjectValue: ObjectValue;
+	RayValue: RayValue;
+	StringValue: StringValue;
+	Vector3Value: Vector3Value;
+	VirtualInputManager: VirtualInputManager;
+	VirtualUser: VirtualUser;
+	Visit: Visit;
+	WeldConstraint: WeldConstraint;
+}
+
 // GENERATED ROBLOX INSTANCE CLASSES
 
 // Instance
@@ -20,44 +636,34 @@ interface Rbx_Instance {
 	ClearAllChildren(): void;
 	/** Removes object and all of its children from the workspace. Disconnects object and all children from open connections. Object and children may not be usable after calling Destroy. */
 	Destroy(): void;
-	/** Returns the first ancestor of this Instance with a ClassName equal to 'className'.  The function will return nil if no Instance is found. */
-	FindFirstAncestorOfClass(className: string): Instance | undefined;
-	/** Returns the first ancestor of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
-	FindFirstAncestorWhichIsA(className: string): Instance | undefined;
-	/** Returns the first child of this Instance that with a ClassName equal to 'className'.  The function will return nil if no Instance is found. */
-	FindFirstChildOfClass(className: string): Instance | undefined;
 	/** Returns the first child of this Instance that :IsA(className).  The second argument 'recursive' is an optional boolean (defaults to false) that will force the call to traverse down thru all of this Instance's descendants until it finds an object with a name that matches the 'className' argument.  The function will return nil if no Instance is found. */
 	FindFirstChildWhichIsA(className: string, recursive?: boolean): Instance | undefined;
-	/** Returns a read-only table of this Object's children */
-	GetChildren(): Array<Instance>;
 	/** Returns a string that shows the path from the root node (DataModel) to this Instance.  This string does not include the root node (DataModel). */
 	GetFullName(): string;
 	GetPropertyChangedSignal(property: string): RBXScriptSignal;
-	/** Returns a boolean if this Instance is of type 'className' or a is a subclass of type 'className'.  If 'className' is not a valid class type in ROBLOX, this function will always return false.  [More info](http://wiki.roblox.com/index.php/IsA) */
-	IsA(className: string): boolean;
 	IsAncestorOf(descendant: Instance): boolean;
 	IsDescendantOf(ancestor: Instance): boolean;
 	/** Fired when any of this object's ancestors change.  First argument 'child' is the object whose parent changed.  Second argument 'parent' is the first argument's new parent. */
-	AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance) => void>;
+	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance) => void>;
 	/** Fired after a property changes value.  The property argument is the name of the property */
-	Changed: RBXScriptSignal<(property: string) => void>;
-	ChildAdded: RBXScriptSignal<(child: Instance) => void>;
-	ChildRemoved: RBXScriptSignal<(child: Instance) => void>;
+	readonly Changed: RBXScriptSignal<(property: string) => void>;
+	readonly ChildAdded: RBXScriptSignal<(child: Instance) => void>;
+	readonly ChildRemoved: RBXScriptSignal<(child: Instance) => void>;
 	/** Fired after an Instance is parented to this object, or any of this object's descendants.  The 'descendant' argument is the Instance that is being added. */
-	DescendantAdded: RBXScriptSignal<(descendant: Instance) => void>;
+	readonly DescendantAdded: RBXScriptSignal<(descendant: Instance) => void>;
 	/** Fired after an Instance is unparented from this object, or any of this object's descendants.  The 'descendant' argument is the Instance that is being added. */
-	DescendantRemoving: RBXScriptSignal<(descendant: Instance) => void>;
+	readonly DescendantRemoving: RBXScriptSignal<(descendant: Instance) => void>;
 }
-interface Instance extends Rbx_Instance, Base<Rbx_Instance>, AnyIndex {}
-declare abstract class Instance {
-	constructor(parent?: Instance);
+type Instance = Rbx_Instance & Base<Rbx_Instance> & Indexable<Rbx_Instance>;
+
+// ABTestService
+interface Rbx_ABTestService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__0: never;
 }
-interface Rbx_Instance {
-	IsA(className: "Instance"): this is Instance;
-	FindFirstAncestorOfClass(className: "Instance"): Instance | undefined;
-	FindFirstAncestorWhichIsA(className: "Instance"): Instance | undefined;
-	FindFirstChildOfClass(className: "Instance"): Instance | undefined;
-	FindFirstAncestorWhichIsA(className: "Instance"): Instance | undefined;
+type ABTestService = Rbx_ABTestService & Base<Rbx_ABTestService> & Indexable<Rbx_ABTestService>;
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "ABTestService"): ABTestService;
 }
 
 // Accoutrement
@@ -68,89 +674,45 @@ interface Rbx_Accoutrement extends Rbx_Instance {
 	AttachmentRight: Vector3;
 	AttachmentUp: Vector3;
 }
-interface Accoutrement extends Rbx_Accoutrement, Base<Rbx_Accoutrement>, AnyIndex {}
-declare class Accoutrement {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Accoutrement"): this is Accoutrement;
-	FindFirstAncestorOfClass(className: "Accoutrement"): Accoutrement | undefined;
-	FindFirstAncestorWhichIsA(className: "Accoutrement"): Accoutrement | undefined;
-	FindFirstChildOfClass(className: "Accoutrement"): Accoutrement | undefined;
-	FindFirstAncestorWhichIsA(className: "Accoutrement"): Accoutrement | undefined;
-}
+type Accoutrement = Rbx_Accoutrement & Base<Rbx_Accoutrement> & Indexable<Rbx_Accoutrement>;
 
 // Accessory
 interface Rbx_Accessory extends Rbx_Accoutrement {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__1: never;
 }
-interface Accessory extends Rbx_Accessory, Base<Rbx_Accessory>, AnyIndex {}
-declare class Accessory {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Accessory"): this is Accessory;
-	FindFirstAncestorOfClass(className: "Accessory"): Accessory | undefined;
-	FindFirstAncestorWhichIsA(className: "Accessory"): Accessory | undefined;
-	FindFirstChildOfClass(className: "Accessory"): Accessory | undefined;
-	FindFirstAncestorWhichIsA(className: "Accessory"): Accessory | undefined;
-}
+type Accessory = Rbx_Accessory & Base<Rbx_Accessory> & Indexable<Rbx_Accessory>;
 
 // Hat
 interface Rbx_Hat extends Rbx_Accoutrement {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__2: never;
 }
-interface Hat extends Rbx_Hat, Base<Rbx_Hat>, AnyIndex {}
-declare class Hat {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Hat"): this is Hat;
-	FindFirstAncestorOfClass(className: "Hat"): Hat | undefined;
-	FindFirstAncestorWhichIsA(className: "Hat"): Hat | undefined;
-	FindFirstChildOfClass(className: "Hat"): Hat | undefined;
-	FindFirstAncestorWhichIsA(className: "Hat"): Hat | undefined;
-}
+type Hat = Rbx_Hat & Base<Rbx_Hat> & Indexable<Rbx_Hat>;
 
 // AdService
 interface Rbx_AdService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__3: never;
 }
-type AdService = Rbx_AdService & Base<Rbx_AdService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "AdService"): this is AdService;
-	FindFirstAncestorOfClass(className: "AdService"): AdService | undefined;
-	FindFirstAncestorWhichIsA(className: "AdService"): AdService | undefined;
-	FindFirstChildOfClass(className: "AdService"): AdService | undefined;
-	FindFirstAncestorWhichIsA(className: "AdService"): AdService | undefined;
-}
+type AdService = Rbx_AdService & Base<Rbx_AdService> & Indexable<Rbx_AdService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "AdService"): AdService;
 }
 
 // AdvancedDragger
 interface Rbx_AdvancedDragger extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__4: never;
 }
-interface AdvancedDragger extends Rbx_AdvancedDragger, Base<Rbx_AdvancedDragger>, AnyIndex {}
-declare class AdvancedDragger {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "AdvancedDragger"): this is AdvancedDragger;
-	FindFirstAncestorOfClass(className: "AdvancedDragger"): AdvancedDragger | undefined;
-	FindFirstAncestorWhichIsA(className: "AdvancedDragger"): AdvancedDragger | undefined;
-	FindFirstChildOfClass(className: "AdvancedDragger"): AdvancedDragger | undefined;
-	FindFirstAncestorWhichIsA(className: "AdvancedDragger"): AdvancedDragger | undefined;
-}
+type AdvancedDragger = Rbx_AdvancedDragger & Base<Rbx_AdvancedDragger> & Indexable<Rbx_AdvancedDragger>;
 
 // AnalyticsService
 interface Rbx_AnalyticsService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__5: never;
 }
-type AnalyticsService = Rbx_AnalyticsService & Base<Rbx_AnalyticsService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "AnalyticsService"): this is AnalyticsService;
-	FindFirstAncestorOfClass(className: "AnalyticsService"): AnalyticsService | undefined;
-	FindFirstAncestorWhichIsA(className: "AnalyticsService"): AnalyticsService | undefined;
-	FindFirstChildOfClass(className: "AnalyticsService"): AnalyticsService | undefined;
-	FindFirstAncestorWhichIsA(className: "AnalyticsService"): AnalyticsService | undefined;
-}
+type AnalyticsService = Rbx_AnalyticsService & Base<Rbx_AnalyticsService> & Indexable<Rbx_AnalyticsService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "AnalyticsService"): AnalyticsService;
 }
@@ -159,34 +721,12 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Animation extends Rbx_Instance {
 	AnimationId: string;
 }
-interface Animation extends Rbx_Animation, Base<Rbx_Animation>, AnyIndex {}
-/** Represents a linked animation object, containing keyframes and poses. */
-declare class Animation {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Animation"): this is Animation;
-	FindFirstAncestorOfClass(className: "Animation"): Animation | undefined;
-	FindFirstAncestorWhichIsA(className: "Animation"): Animation | undefined;
-	FindFirstChildOfClass(className: "Animation"): Animation | undefined;
-	FindFirstAncestorWhichIsA(className: "Animation"): Animation | undefined;
-}
+type Animation = Rbx_Animation & Base<Rbx_Animation> & Indexable<Rbx_Animation>;
 
 // AnimationController
 interface Rbx_AnimationController extends Rbx_Instance {
 }
-interface AnimationController extends Rbx_AnimationController, Base<Rbx_AnimationController>, AnyIndex {}
-/** Allows animations to be played on joints of the parent object. */
-declare class AnimationController {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "AnimationController"): this is AnimationController;
-	FindFirstAncestorOfClass(className: "AnimationController"): AnimationController | undefined;
-	FindFirstAncestorWhichIsA(className: "AnimationController"): AnimationController | undefined;
-	FindFirstChildOfClass(className: "AnimationController"): AnimationController | undefined;
-	FindFirstAncestorWhichIsA(className: "AnimationController"): AnimationController | undefined;
-}
+type AnimationController = Rbx_AnimationController & Base<Rbx_AnimationController> & Indexable<Rbx_AnimationController>;
 
 // AnimationTrack
 interface Rbx_AnimationTrack extends Rbx_Instance {
@@ -201,90 +741,52 @@ interface Rbx_AnimationTrack extends Rbx_Instance {
 	readonly WeightTarget: number;
 	AdjustSpeed(speed?: number): void;
 	AdjustWeight(weight?: number, fadeTime?: number): void;
+	GetMarkerReachedSignal(name: string): RBXScriptSignal;
 	GetTimeOfKeyframe(keyframeName: string): number;
 	Play(fadeTime?: number, weight?: number, speed?: number): void;
 	Stop(fadeTime?: number): void;
-	DidLoop: RBXScriptSignal<() => void>;
-	KeyframeReached: RBXScriptSignal<(keyframeName: string) => void>;
-	Stopped: RBXScriptSignal<() => void>;
+	readonly DidLoop: RBXScriptSignal<() => void>;
+	readonly KeyframeReached: RBXScriptSignal<(keyframeName: string) => void>;
+	readonly Stopped: RBXScriptSignal<() => void>;
 }
-interface AnimationTrack extends Rbx_AnimationTrack, Base<Rbx_AnimationTrack>, AnyIndex {}
-/** Returned by a call to LoadAnimation. Controls the playback of an animation on a Humanoid. */
-declare abstract class AnimationTrack {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "AnimationTrack"): this is AnimationTrack;
-	FindFirstAncestorOfClass(className: "AnimationTrack"): AnimationTrack | undefined;
-	FindFirstAncestorWhichIsA(className: "AnimationTrack"): AnimationTrack | undefined;
-	FindFirstChildOfClass(className: "AnimationTrack"): AnimationTrack | undefined;
-	FindFirstAncestorWhichIsA(className: "AnimationTrack"): AnimationTrack | undefined;
-}
+type AnimationTrack = Rbx_AnimationTrack & Base<Rbx_AnimationTrack> & Indexable<Rbx_AnimationTrack>;
 
 // Animator
 interface Rbx_Animator extends Rbx_Instance {
 }
-interface Animator extends Rbx_Animator, Base<Rbx_Animator>, AnyIndex {}
-declare class Animator {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Animator"): this is Animator;
-	FindFirstAncestorOfClass(className: "Animator"): Animator | undefined;
-	FindFirstAncestorWhichIsA(className: "Animator"): Animator | undefined;
-	FindFirstChildOfClass(className: "Animator"): Animator | undefined;
-	FindFirstAncestorWhichIsA(className: "Animator"): Animator | undefined;
-}
+type Animator = Rbx_Animator & Base<Rbx_Animator> & Indexable<Rbx_Animator>;
 
 // AssetService
 interface Rbx_AssetService extends Rbx_Instance {
 	CreatePlaceAsync(placeName: string, templatePlaceID: number, description?: string): number;
+	GetBundleDetailsAsync(bundleId: number): object;
 	SavePlaceAsync(): void;
 }
-type AssetService = Rbx_AssetService & Base<Rbx_AssetService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "AssetService"): this is AssetService;
-	FindFirstAncestorOfClass(className: "AssetService"): AssetService | undefined;
-	FindFirstAncestorWhichIsA(className: "AssetService"): AssetService | undefined;
-	FindFirstChildOfClass(className: "AssetService"): AssetService | undefined;
-	FindFirstAncestorWhichIsA(className: "AssetService"): AssetService | undefined;
-}
+type AssetService = Rbx_AssetService & Base<Rbx_AssetService> & Indexable<Rbx_AssetService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "AssetService"): AssetService;
 }
 
 // Attachment
 interface Rbx_Attachment extends Rbx_Instance {
+	/** Primary axis. Corresponds to the LookVector, or the first column in the part-local Attachment CFrame rotation matrix */
 	Axis: Vector3;
 	CFrame: CFrame;
 	/** Euler angles applied in YXZ order */
 	Orientation: Vector3;
 	Position: Vector3;
-	Rotation: Vector3;
+	/** Secondary axis. Corresponds to the UpVector, or the second column in the part-local Attachment CFrame rotation matrix */
 	SecondaryAxis: Vector3;
 	Visible: boolean;
-	readonly WorldAxis: Vector3;
-	readonly WorldCFrame: CFrame;
+	/** Primary axis in world space. Corresponds to the LookVector, or the first column in the world space Attachment CFrame rotation matrix. */
+	WorldAxis: Vector3;
+	WorldCFrame: CFrame;
 	/** Euler angles applied in YXZ order */
-	readonly WorldOrientation: Vector3;
-	readonly WorldPosition: Vector3;
-	readonly WorldSecondaryAxis: Vector3;
-	GetAxis(): Vector3;
-	GetSecondaryAxis(): Vector3;
-	SetAxis(axis: Vector3): void;
-	SetSecondaryAxis(axis: Vector3): void;
+	WorldOrientation: Vector3;
+	WorldPosition: Vector3;
+	WorldSecondaryAxis: Vector3;
 }
-interface Attachment extends Rbx_Attachment, Base<Rbx_Attachment>, AnyIndex {}
-declare class Attachment {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Attachment"): this is Attachment;
-	FindFirstAncestorOfClass(className: "Attachment"): Attachment | undefined;
-	FindFirstAncestorWhichIsA(className: "Attachment"): Attachment | undefined;
-	FindFirstChildOfClass(className: "Attachment"): Attachment | undefined;
-	FindFirstAncestorWhichIsA(className: "Attachment"): Attachment | undefined;
-}
+type Attachment = Rbx_Attachment & Base<Rbx_Attachment> & Indexable<Rbx_Attachment>;
 
 // BadgeService
 interface Rbx_BadgeService extends Rbx_Instance {
@@ -292,45 +794,22 @@ interface Rbx_BadgeService extends Rbx_Instance {
 	GetBadgeInfoAsync(badgeId: number): object;
 	UserHasBadgeAsync(userId: number, badgeId: number): boolean;
 }
-type BadgeService = Rbx_BadgeService & Base<Rbx_BadgeService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "BadgeService"): this is BadgeService;
-	FindFirstAncestorOfClass(className: "BadgeService"): BadgeService | undefined;
-	FindFirstAncestorWhichIsA(className: "BadgeService"): BadgeService | undefined;
-	FindFirstChildOfClass(className: "BadgeService"): BadgeService | undefined;
-	FindFirstAncestorWhichIsA(className: "BadgeService"): BadgeService | undefined;
-}
+type BadgeService = Rbx_BadgeService & Base<Rbx_BadgeService> & Indexable<Rbx_BadgeService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "BadgeService"): BadgeService;
 }
 
 // BasePlayerGui
 interface Rbx_BasePlayerGui extends Rbx_Instance {
+	GetGuiObjectsAtPosition(x: number, y: number): Array<Instance>;
 }
-interface BasePlayerGui extends Rbx_BasePlayerGui, Base<Rbx_BasePlayerGui>, AnyIndex {}
-declare abstract class BasePlayerGui {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BasePlayerGui"): this is BasePlayerGui;
-	FindFirstAncestorOfClass(className: "BasePlayerGui"): BasePlayerGui | undefined;
-	FindFirstAncestorWhichIsA(className: "BasePlayerGui"): BasePlayerGui | undefined;
-	FindFirstChildOfClass(className: "BasePlayerGui"): BasePlayerGui | undefined;
-	FindFirstAncestorWhichIsA(className: "BasePlayerGui"): BasePlayerGui | undefined;
-}
+type BasePlayerGui = Rbx_BasePlayerGui & Base<Rbx_BasePlayerGui> & Indexable<Rbx_BasePlayerGui>;
 
 // CoreGui
 interface Rbx_CoreGui extends Rbx_BasePlayerGui {
 	readonly Version: number;
 }
-type CoreGui = Rbx_CoreGui & Base<Rbx_CoreGui> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "CoreGui"): this is CoreGui;
-	FindFirstAncestorOfClass(className: "CoreGui"): CoreGui | undefined;
-	FindFirstAncestorWhichIsA(className: "CoreGui"): CoreGui | undefined;
-	FindFirstChildOfClass(className: "CoreGui"): CoreGui | undefined;
-	FindFirstAncestorWhichIsA(className: "CoreGui"): CoreGui | undefined;
-}
+type CoreGui = Rbx_CoreGui & Base<Rbx_CoreGui> & Indexable<Rbx_CoreGui>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "CoreGui"): CoreGui;
 }
@@ -343,20 +822,9 @@ interface Rbx_PlayerGui extends Rbx_BasePlayerGui {
 	SelectionImageObject: GuiObject;
 	GetTopbarTransparency(): number;
 	SetTopbarTransparency(transparency: number): void;
-	TopbarTransparencyChangedSignal: RBXScriptSignal<(transparency: number) => void>;
+	readonly TopbarTransparencyChangedSignal: RBXScriptSignal<(transparency: number) => void>;
 }
-interface PlayerGui extends Rbx_PlayerGui, Base<Rbx_PlayerGui>, AnyIndex {}
-/** A container instance that syncs data between a single player and the server.  ScreenGui objects that are placed in this container will be shown to the Player parent only */
-declare abstract class PlayerGui {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PlayerGui"): this is PlayerGui;
-	FindFirstAncestorOfClass(className: "PlayerGui"): PlayerGui | undefined;
-	FindFirstAncestorWhichIsA(className: "PlayerGui"): PlayerGui | undefined;
-	FindFirstChildOfClass(className: "PlayerGui"): PlayerGui | undefined;
-	FindFirstAncestorWhichIsA(className: "PlayerGui"): PlayerGui | undefined;
-}
+type PlayerGui = Rbx_PlayerGui & Base<Rbx_PlayerGui> & Indexable<Rbx_PlayerGui>;
 
 // StarterGui
 interface Rbx_StarterGui extends Rbx_BasePlayerGui {
@@ -367,14 +835,7 @@ interface Rbx_StarterGui extends Rbx_BasePlayerGui {
 	/** Will stop/begin certain core gui elements being rendered. See CoreGuiType for core guis that can be modified. */
 	SetCoreGuiEnabled(coreGuiType: Enum.CoreGuiType, enabled: boolean): void;
 }
-type StarterGui = Rbx_StarterGui & Base<Rbx_StarterGui> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "StarterGui"): this is StarterGui;
-	FindFirstAncestorOfClass(className: "StarterGui"): StarterGui | undefined;
-	FindFirstAncestorWhichIsA(className: "StarterGui"): StarterGui | undefined;
-	FindFirstChildOfClass(className: "StarterGui"): StarterGui | undefined;
-	FindFirstAncestorWhichIsA(className: "StarterGui"): StarterGui | undefined;
-}
+type StarterGui = Rbx_StarterGui & Base<Rbx_StarterGui> & Indexable<Rbx_StarterGui>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "StarterGui"): StarterGui;
 }
@@ -401,65 +862,24 @@ interface Rbx_Beam extends Rbx_Instance {
 	ZOffset: number;
 	SetTextureOffset(offset?: number): void;
 }
-interface Beam extends Rbx_Beam, Base<Rbx_Beam>, AnyIndex {}
-/** Makes beam between two attachments */
-declare class Beam {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Beam"): this is Beam;
-	FindFirstAncestorOfClass(className: "Beam"): Beam | undefined;
-	FindFirstAncestorWhichIsA(className: "Beam"): Beam | undefined;
-	FindFirstChildOfClass(className: "Beam"): Beam | undefined;
-	FindFirstAncestorWhichIsA(className: "Beam"): Beam | undefined;
-}
+type Beam = Rbx_Beam & Base<Rbx_Beam> & Indexable<Rbx_Beam>;
 
 // BindableEvent
 interface Rbx_BindableEvent extends Rbx_Instance {
 }
-interface BindableEvent extends Rbx_BindableEvent, Base<Rbx_BindableEvent>, AnyIndex {}
-/** Allow events defined in one script to be subscribed to by another script */
-declare class BindableEvent {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BindableEvent"): this is BindableEvent;
-	FindFirstAncestorOfClass(className: "BindableEvent"): BindableEvent | undefined;
-	FindFirstAncestorWhichIsA(className: "BindableEvent"): BindableEvent | undefined;
-	FindFirstChildOfClass(className: "BindableEvent"): BindableEvent | undefined;
-	FindFirstAncestorWhichIsA(className: "BindableEvent"): BindableEvent | undefined;
-}
+type BindableEvent = Rbx_BindableEvent & Base<Rbx_BindableEvent> & Indexable<Rbx_BindableEvent>;
 
 // BindableFunction
 interface Rbx_BindableFunction extends Rbx_Instance {
 }
-interface BindableFunction extends Rbx_BindableFunction, Base<Rbx_BindableFunction>, AnyIndex {}
-/** Allow functions defined in one script to be called by another script */
-declare class BindableFunction {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BindableFunction"): this is BindableFunction;
-	FindFirstAncestorOfClass(className: "BindableFunction"): BindableFunction | undefined;
-	FindFirstAncestorWhichIsA(className: "BindableFunction"): BindableFunction | undefined;
-	FindFirstChildOfClass(className: "BindableFunction"): BindableFunction | undefined;
-	FindFirstAncestorWhichIsA(className: "BindableFunction"): BindableFunction | undefined;
-}
+type BindableFunction = Rbx_BindableFunction & Base<Rbx_BindableFunction> & Indexable<Rbx_BindableFunction>;
 
 // BodyMover
 interface Rbx_BodyMover extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__6: never;
 }
-interface BodyMover extends Rbx_BodyMover, Base<Rbx_BodyMover>, AnyIndex {}
-declare abstract class BodyMover {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BodyMover"): this is BodyMover;
-	FindFirstAncestorOfClass(className: "BodyMover"): BodyMover | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyMover"): BodyMover | undefined;
-	FindFirstChildOfClass(className: "BodyMover"): BodyMover | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyMover"): BodyMover | undefined;
-}
+type BodyMover = Rbx_BodyMover & Base<Rbx_BodyMover> & Indexable<Rbx_BodyMover>;
 
 // BodyAngularVelocity
 interface Rbx_BodyAngularVelocity extends Rbx_BodyMover {
@@ -467,34 +887,13 @@ interface Rbx_BodyAngularVelocity extends Rbx_BodyMover {
 	MaxTorque: Vector3;
 	P: number;
 }
-interface BodyAngularVelocity extends Rbx_BodyAngularVelocity, Base<Rbx_BodyAngularVelocity>, AnyIndex {}
-declare class BodyAngularVelocity {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BodyAngularVelocity"): this is BodyAngularVelocity;
-	FindFirstAncestorOfClass(className: "BodyAngularVelocity"): BodyAngularVelocity | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyAngularVelocity"): BodyAngularVelocity | undefined;
-	FindFirstChildOfClass(className: "BodyAngularVelocity"): BodyAngularVelocity | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyAngularVelocity"): BodyAngularVelocity | undefined;
-}
+type BodyAngularVelocity = Rbx_BodyAngularVelocity & Base<Rbx_BodyAngularVelocity> & Indexable<Rbx_BodyAngularVelocity>;
 
 // BodyForce
 interface Rbx_BodyForce extends Rbx_BodyMover {
 	Force: Vector3;
 }
-interface BodyForce extends Rbx_BodyForce, Base<Rbx_BodyForce>, AnyIndex {}
-/** When parented to a physical part, BodyForce will continually exert a force upon its parent object. */
-declare class BodyForce {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BodyForce"): this is BodyForce;
-	FindFirstAncestorOfClass(className: "BodyForce"): BodyForce | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyForce"): BodyForce | undefined;
-	FindFirstChildOfClass(className: "BodyForce"): BodyForce | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyForce"): BodyForce | undefined;
-}
+type BodyForce = Rbx_BodyForce & Base<Rbx_BodyForce> & Indexable<Rbx_BodyForce>;
 
 // BodyGyro
 interface Rbx_BodyGyro extends Rbx_BodyMover {
@@ -507,18 +906,7 @@ interface Rbx_BodyGyro extends Rbx_BodyMover {
 	/** The power continually applied to this force */
 	P: number;
 }
-interface BodyGyro extends Rbx_BodyGyro, Base<Rbx_BodyGyro>, AnyIndex {}
-/** Attempts to maintain a fixed orientation of its parent Part */
-declare class BodyGyro {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BodyGyro"): this is BodyGyro;
-	FindFirstAncestorOfClass(className: "BodyGyro"): BodyGyro | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyGyro"): BodyGyro | undefined;
-	FindFirstChildOfClass(className: "BodyGyro"): BodyGyro | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyGyro"): BodyGyro | undefined;
-}
+type BodyGyro = Rbx_BodyGyro & Base<Rbx_BodyGyro> & Indexable<Rbx_BodyGyro>;
 
 // BodyPosition
 interface Rbx_BodyPosition extends Rbx_BodyMover {
@@ -531,19 +919,9 @@ interface Rbx_BodyPosition extends Rbx_BodyMover {
 	/** The Vector3 that this force is trying to position its parent Part to. */
 	Position: Vector3;
 	GetLastForce(): Vector3;
-	ReachedTarget: RBXScriptSignal<() => void>;
+	readonly ReachedTarget: RBXScriptSignal<() => void>;
 }
-interface BodyPosition extends Rbx_BodyPosition, Base<Rbx_BodyPosition>, AnyIndex {}
-declare class BodyPosition {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BodyPosition"): this is BodyPosition;
-	FindFirstAncestorOfClass(className: "BodyPosition"): BodyPosition | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyPosition"): BodyPosition | undefined;
-	FindFirstChildOfClass(className: "BodyPosition"): BodyPosition | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyPosition"): BodyPosition | undefined;
-}
+type BodyPosition = Rbx_BodyPosition & Base<Rbx_BodyPosition> & Indexable<Rbx_BodyPosition>;
 
 // BodyThrust
 interface Rbx_BodyThrust extends Rbx_BodyMover {
@@ -552,17 +930,7 @@ interface Rbx_BodyThrust extends Rbx_BodyMover {
 	/** The Vector3 location of where to apply the force to.  */
 	Location: Vector3;
 }
-interface BodyThrust extends Rbx_BodyThrust, Base<Rbx_BodyThrust>, AnyIndex {}
-declare class BodyThrust {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BodyThrust"): this is BodyThrust;
-	FindFirstAncestorOfClass(className: "BodyThrust"): BodyThrust | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyThrust"): BodyThrust | undefined;
-	FindFirstChildOfClass(className: "BodyThrust"): BodyThrust | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyThrust"): BodyThrust | undefined;
-}
+type BodyThrust = Rbx_BodyThrust & Base<Rbx_BodyThrust> & Indexable<Rbx_BodyThrust>;
 
 // BodyVelocity
 interface Rbx_BodyVelocity extends Rbx_BodyMover {
@@ -575,17 +943,7 @@ interface Rbx_BodyVelocity extends Rbx_BodyMover {
 	GetLastForce(): Vector3;
 	lastForce(): Vector3;
 }
-interface BodyVelocity extends Rbx_BodyVelocity, Base<Rbx_BodyVelocity>, AnyIndex {}
-declare class BodyVelocity {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BodyVelocity"): this is BodyVelocity;
-	FindFirstAncestorOfClass(className: "BodyVelocity"): BodyVelocity | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyVelocity"): BodyVelocity | undefined;
-	FindFirstChildOfClass(className: "BodyVelocity"): BodyVelocity | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyVelocity"): BodyVelocity | undefined;
-}
+type BodyVelocity = Rbx_BodyVelocity & Base<Rbx_BodyVelocity> & Indexable<Rbx_BodyVelocity>;
 
 // RocketPropulsion
 interface Rbx_RocketPropulsion extends Rbx_BodyMover {
@@ -602,80 +960,46 @@ interface Rbx_RocketPropulsion extends Rbx_BodyMover {
 	TurnP: number;
 	Abort(): void;
 	Fire(): void;
-	ReachedTarget: RBXScriptSignal<() => void>;
+	readonly ReachedTarget: RBXScriptSignal<() => void>;
 }
-interface RocketPropulsion extends Rbx_RocketPropulsion, Base<Rbx_RocketPropulsion>, AnyIndex {}
-/** A propulsion system that mimics a rocket */
-declare class RocketPropulsion {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "RocketPropulsion"): this is RocketPropulsion;
-	FindFirstAncestorOfClass(className: "RocketPropulsion"): RocketPropulsion | undefined;
-	FindFirstAncestorWhichIsA(className: "RocketPropulsion"): RocketPropulsion | undefined;
-	FindFirstChildOfClass(className: "RocketPropulsion"): RocketPropulsion | undefined;
-	FindFirstAncestorWhichIsA(className: "RocketPropulsion"): RocketPropulsion | undefined;
-}
+type RocketPropulsion = Rbx_RocketPropulsion & Base<Rbx_RocketPropulsion> & Indexable<Rbx_RocketPropulsion>;
 
-// Button
-interface Rbx_Button extends Rbx_Instance {
-	ClickableWhenViewportHidden: boolean;
-	Enabled: boolean;
-	Icon: string;
+// BrowserService
+interface Rbx_BrowserService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__7: never;
 }
-interface Button extends Rbx_Button, Base<Rbx_Button>, AnyIndex {}
-declare abstract class Button {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Button"): this is Button;
-	FindFirstAncestorOfClass(className: "Button"): Button | undefined;
-	FindFirstAncestorWhichIsA(className: "Button"): Button | undefined;
-	FindFirstChildOfClass(className: "Button"): Button | undefined;
-	FindFirstAncestorWhichIsA(className: "Button"): Button | undefined;
+type BrowserService = Rbx_BrowserService & Base<Rbx_BrowserService> & Indexable<Rbx_BrowserService>;
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "BrowserService"): BrowserService;
 }
 
 // CacheableContentProvider
 interface Rbx_CacheableContentProvider extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__8: never;
 }
-type CacheableContentProvider = Rbx_CacheableContentProvider & Base<Rbx_CacheableContentProvider> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "CacheableContentProvider"): this is CacheableContentProvider;
-	FindFirstAncestorOfClass(className: "CacheableContentProvider"): CacheableContentProvider | undefined;
-	FindFirstAncestorWhichIsA(className: "CacheableContentProvider"): CacheableContentProvider | undefined;
-	FindFirstChildOfClass(className: "CacheableContentProvider"): CacheableContentProvider | undefined;
-	FindFirstAncestorWhichIsA(className: "CacheableContentProvider"): CacheableContentProvider | undefined;
-}
+type CacheableContentProvider = Rbx_CacheableContentProvider & Base<Rbx_CacheableContentProvider> & Indexable<Rbx_CacheableContentProvider>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "CacheableContentProvider"): CacheableContentProvider;
 }
 
 // MeshContentProvider
 interface Rbx_MeshContentProvider extends Rbx_CacheableContentProvider {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__9: never;
 }
-type MeshContentProvider = Rbx_MeshContentProvider & Base<Rbx_MeshContentProvider> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "MeshContentProvider"): this is MeshContentProvider;
-	FindFirstAncestorOfClass(className: "MeshContentProvider"): MeshContentProvider | undefined;
-	FindFirstAncestorWhichIsA(className: "MeshContentProvider"): MeshContentProvider | undefined;
-	FindFirstChildOfClass(className: "MeshContentProvider"): MeshContentProvider | undefined;
-	FindFirstAncestorWhichIsA(className: "MeshContentProvider"): MeshContentProvider | undefined;
-}
+type MeshContentProvider = Rbx_MeshContentProvider & Base<Rbx_MeshContentProvider> & Indexable<Rbx_MeshContentProvider>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "MeshContentProvider"): MeshContentProvider;
 }
 
 // SolidModelContentProvider
 interface Rbx_SolidModelContentProvider extends Rbx_CacheableContentProvider {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__10: never;
 }
-type SolidModelContentProvider = Rbx_SolidModelContentProvider & Base<Rbx_SolidModelContentProvider> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "SolidModelContentProvider"): this is SolidModelContentProvider;
-	FindFirstAncestorOfClass(className: "SolidModelContentProvider"): SolidModelContentProvider | undefined;
-	FindFirstAncestorWhichIsA(className: "SolidModelContentProvider"): SolidModelContentProvider | undefined;
-	FindFirstChildOfClass(className: "SolidModelContentProvider"): SolidModelContentProvider | undefined;
-	FindFirstAncestorWhichIsA(className: "SolidModelContentProvider"): SolidModelContentProvider | undefined;
-}
+type SolidModelContentProvider = Rbx_SolidModelContentProvider & Base<Rbx_SolidModelContentProvider> & Indexable<Rbx_SolidModelContentProvider>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "SolidModelContentProvider"): SolidModelContentProvider;
 }
@@ -712,49 +1036,26 @@ interface Rbx_Camera extends Rbx_Instance {
 	TiltUnits(units: number): boolean;
 	/** Same as ScreenPointToRay, except no GUI offsets are taken into account. Useful for things like casting a ray from the middle of the Camera.ViewportSize */
 	ViewportPointToRay(x: number, y: number, depth?: number): Ray;
-	InterpolationFinished: RBXScriptSignal<() => void>;
+	readonly InterpolationFinished: RBXScriptSignal<() => void>;
 }
-interface Camera extends Rbx_Camera, Base<Rbx_Camera>, AnyIndex {}
-declare class Camera {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Camera"): this is Camera;
-	FindFirstAncestorOfClass(className: "Camera"): Camera | undefined;
-	FindFirstAncestorWhichIsA(className: "Camera"): Camera | undefined;
-	FindFirstChildOfClass(className: "Camera"): Camera | undefined;
-	FindFirstAncestorWhichIsA(className: "Camera"): Camera | undefined;
-}
+type Camera = Rbx_Camera & Base<Rbx_Camera> & Indexable<Rbx_Camera>;
 
 // ChangeHistoryService
 interface Rbx_ChangeHistoryService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__11: never;
 }
-type ChangeHistoryService = Rbx_ChangeHistoryService & Base<Rbx_ChangeHistoryService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "ChangeHistoryService"): this is ChangeHistoryService;
-	FindFirstAncestorOfClass(className: "ChangeHistoryService"): ChangeHistoryService | undefined;
-	FindFirstAncestorWhichIsA(className: "ChangeHistoryService"): ChangeHistoryService | undefined;
-	FindFirstChildOfClass(className: "ChangeHistoryService"): ChangeHistoryService | undefined;
-	FindFirstAncestorWhichIsA(className: "ChangeHistoryService"): ChangeHistoryService | undefined;
-}
+type ChangeHistoryService = Rbx_ChangeHistoryService & Base<Rbx_ChangeHistoryService> & Indexable<Rbx_ChangeHistoryService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "ChangeHistoryService"): ChangeHistoryService;
 }
 
 // CharacterAppearance
 interface Rbx_CharacterAppearance extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__12: never;
 }
-interface CharacterAppearance extends Rbx_CharacterAppearance, Base<Rbx_CharacterAppearance>, AnyIndex {}
-declare abstract class CharacterAppearance {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "CharacterAppearance"): this is CharacterAppearance;
-	FindFirstAncestorOfClass(className: "CharacterAppearance"): CharacterAppearance | undefined;
-	FindFirstAncestorWhichIsA(className: "CharacterAppearance"): CharacterAppearance | undefined;
-	FindFirstChildOfClass(className: "CharacterAppearance"): CharacterAppearance | undefined;
-	FindFirstAncestorWhichIsA(className: "CharacterAppearance"): CharacterAppearance | undefined;
-}
+type CharacterAppearance = Rbx_CharacterAppearance & Base<Rbx_CharacterAppearance> & Indexable<Rbx_CharacterAppearance>;
 
 // BodyColors
 interface Rbx_BodyColors extends Rbx_CharacterAppearance {
@@ -771,17 +1072,7 @@ interface Rbx_BodyColors extends Rbx_CharacterAppearance {
 	TorsoColor: BrickColor;
 	TorsoColor3: Color3;
 }
-interface BodyColors extends Rbx_BodyColors, Base<Rbx_BodyColors>, AnyIndex {}
-declare class BodyColors {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BodyColors"): this is BodyColors;
-	FindFirstAncestorOfClass(className: "BodyColors"): BodyColors | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyColors"): BodyColors | undefined;
-	FindFirstChildOfClass(className: "BodyColors"): BodyColors | undefined;
-	FindFirstAncestorWhichIsA(className: "BodyColors"): BodyColors | undefined;
-}
+type BodyColors = Rbx_BodyColors & Base<Rbx_BodyColors> & Indexable<Rbx_BodyColors>;
 
 // CharacterMesh
 interface Rbx_CharacterMesh extends Rbx_CharacterAppearance {
@@ -790,114 +1081,49 @@ interface Rbx_CharacterMesh extends Rbx_CharacterAppearance {
 	MeshId: number;
 	OverlayTextureId: number;
 }
-interface CharacterMesh extends Rbx_CharacterMesh, Base<Rbx_CharacterMesh>, AnyIndex {}
-/** Modifies the appearance of a body part. */
-declare class CharacterMesh {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "CharacterMesh"): this is CharacterMesh;
-	FindFirstAncestorOfClass(className: "CharacterMesh"): CharacterMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "CharacterMesh"): CharacterMesh | undefined;
-	FindFirstChildOfClass(className: "CharacterMesh"): CharacterMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "CharacterMesh"): CharacterMesh | undefined;
-}
+type CharacterMesh = Rbx_CharacterMesh & Base<Rbx_CharacterMesh> & Indexable<Rbx_CharacterMesh>;
 
 // Clothing
 interface Rbx_Clothing extends Rbx_CharacterAppearance {
+	Color3: Color3;
 }
-interface Clothing extends Rbx_Clothing, Base<Rbx_Clothing>, AnyIndex {}
-declare abstract class Clothing {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Clothing"): this is Clothing;
-	FindFirstAncestorOfClass(className: "Clothing"): Clothing | undefined;
-	FindFirstAncestorWhichIsA(className: "Clothing"): Clothing | undefined;
-	FindFirstChildOfClass(className: "Clothing"): Clothing | undefined;
-	FindFirstAncestorWhichIsA(className: "Clothing"): Clothing | undefined;
-}
+type Clothing = Rbx_Clothing & Base<Rbx_Clothing> & Indexable<Rbx_Clothing>;
 
 // Pants
 interface Rbx_Pants extends Rbx_Clothing {
 	PantsTemplate: string;
 }
-interface Pants extends Rbx_Pants, Base<Rbx_Pants>, AnyIndex {}
-declare class Pants {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Pants"): this is Pants;
-	FindFirstAncestorOfClass(className: "Pants"): Pants | undefined;
-	FindFirstAncestorWhichIsA(className: "Pants"): Pants | undefined;
-	FindFirstChildOfClass(className: "Pants"): Pants | undefined;
-	FindFirstAncestorWhichIsA(className: "Pants"): Pants | undefined;
-}
+type Pants = Rbx_Pants & Base<Rbx_Pants> & Indexable<Rbx_Pants>;
 
 // Shirt
 interface Rbx_Shirt extends Rbx_Clothing {
 	ShirtTemplate: string;
 }
-interface Shirt extends Rbx_Shirt, Base<Rbx_Shirt>, AnyIndex {}
-declare class Shirt {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Shirt"): this is Shirt;
-	FindFirstAncestorOfClass(className: "Shirt"): Shirt | undefined;
-	FindFirstAncestorWhichIsA(className: "Shirt"): Shirt | undefined;
-	FindFirstChildOfClass(className: "Shirt"): Shirt | undefined;
-	FindFirstAncestorWhichIsA(className: "Shirt"): Shirt | undefined;
-}
+type Shirt = Rbx_Shirt & Base<Rbx_Shirt> & Indexable<Rbx_Shirt>;
 
 // ShirtGraphic
 interface Rbx_ShirtGraphic extends Rbx_CharacterAppearance {
+	Color3: Color3;
 	Graphic: string;
 }
-interface ShirtGraphic extends Rbx_ShirtGraphic, Base<Rbx_ShirtGraphic>, AnyIndex {}
-declare class ShirtGraphic {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ShirtGraphic"): this is ShirtGraphic;
-	FindFirstAncestorOfClass(className: "ShirtGraphic"): ShirtGraphic | undefined;
-	FindFirstAncestorWhichIsA(className: "ShirtGraphic"): ShirtGraphic | undefined;
-	FindFirstChildOfClass(className: "ShirtGraphic"): ShirtGraphic | undefined;
-	FindFirstAncestorWhichIsA(className: "ShirtGraphic"): ShirtGraphic | undefined;
-}
+type ShirtGraphic = Rbx_ShirtGraphic & Base<Rbx_ShirtGraphic> & Indexable<Rbx_ShirtGraphic>;
 
 // Skin
 interface Rbx_Skin extends Rbx_CharacterAppearance {
 	SkinColor: BrickColor;
 }
-interface Skin extends Rbx_Skin, Base<Rbx_Skin>, AnyIndex {}
-declare class Skin {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Skin"): this is Skin;
-	FindFirstAncestorOfClass(className: "Skin"): Skin | undefined;
-	FindFirstAncestorWhichIsA(className: "Skin"): Skin | undefined;
-	FindFirstChildOfClass(className: "Skin"): Skin | undefined;
-	FindFirstAncestorWhichIsA(className: "Skin"): Skin | undefined;
-}
+type Skin = Rbx_Skin & Base<Rbx_Skin> & Indexable<Rbx_Skin>;
 
 // Chat
 interface Rbx_Chat extends Rbx_Instance {
+	BubbleChatEnabled: boolean;
 	readonly LoadDefaultChat: boolean;
 	InvokeChatCallback(callbackType: Enum.ChatCallbackType, callbackArguments: Array<any>): unknown;
 	RegisterChatCallback(callbackType: Enum.ChatCallbackType, callbackFunction: Function): void;
 	CanUserChatAsync(userId: number): boolean;
 	CanUsersChatAsync(userIdFrom: number, userIdTo: number): boolean;
 }
-type Chat = Rbx_Chat & Base<Rbx_Chat> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "Chat"): this is Chat;
-	FindFirstAncestorOfClass(className: "Chat"): Chat | undefined;
-	FindFirstAncestorWhichIsA(className: "Chat"): Chat | undefined;
-	FindFirstChildOfClass(className: "Chat"): Chat | undefined;
-	FindFirstAncestorWhichIsA(className: "Chat"): Chat | undefined;
-}
+type Chat = Rbx_Chat & Base<Rbx_Chat> & Indexable<Rbx_Chat>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Chat"): Chat;
 }
@@ -908,30 +1134,14 @@ interface Rbx_ClickDetector extends Rbx_Instance {
 	/** The maximum distance a Player's character can be from the ClickDetector's parent Part that will allow the Player's mouse to fire events on this object. */
 	MaxActivationDistance: number;
 }
-interface ClickDetector extends Rbx_ClickDetector, Base<Rbx_ClickDetector>, AnyIndex {}
-/** Raises mouse events for parent object */
-declare class ClickDetector {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ClickDetector"): this is ClickDetector;
-	FindFirstAncestorOfClass(className: "ClickDetector"): ClickDetector | undefined;
-	FindFirstAncestorWhichIsA(className: "ClickDetector"): ClickDetector | undefined;
-	FindFirstChildOfClass(className: "ClickDetector"): ClickDetector | undefined;
-	FindFirstAncestorWhichIsA(className: "ClickDetector"): ClickDetector | undefined;
-}
+type ClickDetector = Rbx_ClickDetector & Base<Rbx_ClickDetector> & Indexable<Rbx_ClickDetector>;
 
 // ClusterPacketCache
 interface Rbx_ClusterPacketCache extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__13: never;
 }
-type ClusterPacketCache = Rbx_ClusterPacketCache & Base<Rbx_ClusterPacketCache> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "ClusterPacketCache"): this is ClusterPacketCache;
-	FindFirstAncestorOfClass(className: "ClusterPacketCache"): ClusterPacketCache | undefined;
-	FindFirstAncestorWhichIsA(className: "ClusterPacketCache"): ClusterPacketCache | undefined;
-	FindFirstChildOfClass(className: "ClusterPacketCache"): ClusterPacketCache | undefined;
-	FindFirstAncestorWhichIsA(className: "ClusterPacketCache"): ClusterPacketCache | undefined;
-}
+type ClusterPacketCache = Rbx_ClusterPacketCache & Base<Rbx_ClusterPacketCache> & Indexable<Rbx_ClusterPacketCache>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "ClusterPacketCache"): ClusterPacketCache;
 }
@@ -945,36 +1155,22 @@ interface Rbx_CollectionService extends Rbx_Instance {
 	/** Removes a tag to an instance. */
 	RemoveTag(instance: Instance, tag: string): void;
 }
-type CollectionService = Rbx_CollectionService & Base<Rbx_CollectionService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "CollectionService"): this is CollectionService;
-	FindFirstAncestorOfClass(className: "CollectionService"): CollectionService | undefined;
-	FindFirstAncestorWhichIsA(className: "CollectionService"): CollectionService | undefined;
-	FindFirstChildOfClass(className: "CollectionService"): CollectionService | undefined;
-	FindFirstAncestorWhichIsA(className: "CollectionService"): CollectionService | undefined;
-}
+type CollectionService = Rbx_CollectionService & Base<Rbx_CollectionService> & Indexable<Rbx_CollectionService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "CollectionService"): CollectionService;
 }
 
 // Configuration
 interface Rbx_Configuration extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__14: never;
 }
-interface Configuration extends Rbx_Configuration, Base<Rbx_Configuration>, AnyIndex {}
-/** An object that can be placed under parts to hold Value objects that represent that part's configuration */
-declare class Configuration {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Configuration"): this is Configuration;
-	FindFirstAncestorOfClass(className: "Configuration"): Configuration | undefined;
-	FindFirstAncestorWhichIsA(className: "Configuration"): Configuration | undefined;
-	FindFirstChildOfClass(className: "Configuration"): Configuration | undefined;
-	FindFirstAncestorWhichIsA(className: "Configuration"): Configuration | undefined;
-}
+type Configuration = Rbx_Configuration & Base<Rbx_Configuration> & Indexable<Rbx_Configuration>;
 
 // Constraint
 interface Rbx_Constraint extends Rbx_Instance {
+	/** Read-only boolean, true if the Constraint is active in world. */
+	readonly Active: boolean;
 	Attachment0: Attachment;
 	Attachment1: Attachment;
 	/** The color of the in-game visual. */
@@ -984,20 +1180,11 @@ interface Rbx_Constraint extends Rbx_Instance {
 	/** Toggles the in-game visual associated with this constraint. */
 	Visible: boolean;
 }
-interface Constraint extends Rbx_Constraint, Base<Rbx_Constraint>, AnyIndex {}
-declare abstract class Constraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Constraint"): this is Constraint;
-	FindFirstAncestorOfClass(className: "Constraint"): Constraint | undefined;
-	FindFirstAncestorWhichIsA(className: "Constraint"): Constraint | undefined;
-	FindFirstChildOfClass(className: "Constraint"): Constraint | undefined;
-	FindFirstAncestorWhichIsA(className: "Constraint"): Constraint | undefined;
-}
+type Constraint = Rbx_Constraint & Base<Rbx_Constraint> & Indexable<Rbx_Constraint>;
 
 // AlignOrientation
 interface Rbx_AlignOrientation extends Rbx_Constraint {
+	AlignType: Enum.AlignType;
 	MaxAngularVelocity: number;
 	MaxTorque: number;
 	PrimaryAxisOnly: boolean;
@@ -1005,17 +1192,7 @@ interface Rbx_AlignOrientation extends Rbx_Constraint {
 	Responsiveness: number;
 	RigidityEnabled: boolean;
 }
-interface AlignOrientation extends Rbx_AlignOrientation, Base<Rbx_AlignOrientation>, AnyIndex {}
-declare class AlignOrientation {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "AlignOrientation"): this is AlignOrientation;
-	FindFirstAncestorOfClass(className: "AlignOrientation"): AlignOrientation | undefined;
-	FindFirstAncestorWhichIsA(className: "AlignOrientation"): AlignOrientation | undefined;
-	FindFirstChildOfClass(className: "AlignOrientation"): AlignOrientation | undefined;
-	FindFirstAncestorWhichIsA(className: "AlignOrientation"): AlignOrientation | undefined;
-}
+type AlignOrientation = Rbx_AlignOrientation & Base<Rbx_AlignOrientation> & Indexable<Rbx_AlignOrientation>;
 
 // AlignPosition
 interface Rbx_AlignPosition extends Rbx_Constraint {
@@ -1026,17 +1203,7 @@ interface Rbx_AlignPosition extends Rbx_Constraint {
 	Responsiveness: number;
 	RigidityEnabled: boolean;
 }
-interface AlignPosition extends Rbx_AlignPosition, Base<Rbx_AlignPosition>, AnyIndex {}
-declare class AlignPosition {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "AlignPosition"): this is AlignPosition;
-	FindFirstAncestorOfClass(className: "AlignPosition"): AlignPosition | undefined;
-	FindFirstAncestorWhichIsA(className: "AlignPosition"): AlignPosition | undefined;
-	FindFirstChildOfClass(className: "AlignPosition"): AlignPosition | undefined;
-	FindFirstAncestorWhichIsA(className: "AlignPosition"): AlignPosition | undefined;
-}
+type AlignPosition = Rbx_AlignPosition & Base<Rbx_AlignPosition> & Indexable<Rbx_AlignPosition>;
 
 // BallSocketConstraint
 interface Rbx_BallSocketConstraint extends Rbx_Constraint {
@@ -1055,17 +1222,7 @@ interface Rbx_BallSocketConstraint extends Rbx_Constraint {
 	/** Maximum angle between the two main axes. Value in [0, 180]. */
 	UpperAngle: number;
 }
-interface BallSocketConstraint extends Rbx_BallSocketConstraint, Base<Rbx_BallSocketConstraint>, AnyIndex {}
-declare class BallSocketConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BallSocketConstraint"): this is BallSocketConstraint;
-	FindFirstAncestorOfClass(className: "BallSocketConstraint"): BallSocketConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "BallSocketConstraint"): BallSocketConstraint | undefined;
-	FindFirstChildOfClass(className: "BallSocketConstraint"): BallSocketConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "BallSocketConstraint"): BallSocketConstraint | undefined;
-}
+type BallSocketConstraint = Rbx_BallSocketConstraint & Base<Rbx_BallSocketConstraint> & Indexable<Rbx_BallSocketConstraint>;
 
 // HingeConstraint
 interface Rbx_HingeConstraint extends Rbx_Constraint {
@@ -1095,17 +1252,7 @@ interface Rbx_HingeConstraint extends Rbx_Constraint {
 	/** Upper limit for the angle from the SecondaryAxis of Attachment0 to the SecondaryAxis of Attachment1 around the rotation axis. Value in [-180, 180]. */
 	UpperAngle: number;
 }
-interface HingeConstraint extends Rbx_HingeConstraint, Base<Rbx_HingeConstraint>, AnyIndex {}
-declare class HingeConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "HingeConstraint"): this is HingeConstraint;
-	FindFirstAncestorOfClass(className: "HingeConstraint"): HingeConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "HingeConstraint"): HingeConstraint | undefined;
-	FindFirstChildOfClass(className: "HingeConstraint"): HingeConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "HingeConstraint"): HingeConstraint | undefined;
-}
+type HingeConstraint = Rbx_HingeConstraint & Base<Rbx_HingeConstraint> & Indexable<Rbx_HingeConstraint>;
 
 // LineForce
 interface Rbx_LineForce extends Rbx_Constraint {
@@ -1115,17 +1262,7 @@ interface Rbx_LineForce extends Rbx_Constraint {
 	MaxForce: number;
 	ReactionForceEnabled: boolean;
 }
-interface LineForce extends Rbx_LineForce, Base<Rbx_LineForce>, AnyIndex {}
-declare class LineForce {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "LineForce"): this is LineForce;
-	FindFirstAncestorOfClass(className: "LineForce"): LineForce | undefined;
-	FindFirstAncestorWhichIsA(className: "LineForce"): LineForce | undefined;
-	FindFirstChildOfClass(className: "LineForce"): LineForce | undefined;
-	FindFirstAncestorWhichIsA(className: "LineForce"): LineForce | undefined;
-}
+type LineForce = Rbx_LineForce & Base<Rbx_LineForce> & Indexable<Rbx_LineForce>;
 
 // RodConstraint
 interface Rbx_RodConstraint extends Rbx_Constraint {
@@ -1136,17 +1273,7 @@ interface Rbx_RodConstraint extends Rbx_Constraint {
 	/** The thickness of the in-game visual (diameter). Value in [0, inf). */
 	Thickness: number;
 }
-interface RodConstraint extends Rbx_RodConstraint, Base<Rbx_RodConstraint>, AnyIndex {}
-declare class RodConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "RodConstraint"): this is RodConstraint;
-	FindFirstAncestorOfClass(className: "RodConstraint"): RodConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "RodConstraint"): RodConstraint | undefined;
-	FindFirstChildOfClass(className: "RodConstraint"): RodConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "RodConstraint"): RodConstraint | undefined;
-}
+type RodConstraint = Rbx_RodConstraint & Base<Rbx_RodConstraint> & Indexable<Rbx_RodConstraint>;
 
 // RopeConstraint
 interface Rbx_RopeConstraint extends Rbx_Constraint {
@@ -1159,17 +1286,7 @@ interface Rbx_RopeConstraint extends Rbx_Constraint {
 	/** The thickness of the in-game visual (diameter). Value in [0, inf). */
 	Thickness: number;
 }
-interface RopeConstraint extends Rbx_RopeConstraint, Base<Rbx_RopeConstraint>, AnyIndex {}
-declare class RopeConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "RopeConstraint"): this is RopeConstraint;
-	FindFirstAncestorOfClass(className: "RopeConstraint"): RopeConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "RopeConstraint"): RopeConstraint | undefined;
-	FindFirstChildOfClass(className: "RopeConstraint"): RopeConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "RopeConstraint"): RopeConstraint | undefined;
-}
+type RopeConstraint = Rbx_RopeConstraint & Base<Rbx_RopeConstraint> & Indexable<Rbx_RopeConstraint>;
 
 // SlidingBallConstraint
 interface Rbx_SlidingBallConstraint extends Rbx_Constraint {
@@ -1200,17 +1317,7 @@ interface Rbx_SlidingBallConstraint extends Rbx_Constraint {
 	/** The target linear velocity of the motor in studs per second along the slider axis. Value in (-inf, inf). */
 	Velocity: number;
 }
-interface SlidingBallConstraint extends Rbx_SlidingBallConstraint, Base<Rbx_SlidingBallConstraint>, AnyIndex {}
-declare abstract class SlidingBallConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SlidingBallConstraint"): this is SlidingBallConstraint;
-	FindFirstAncestorOfClass(className: "SlidingBallConstraint"): SlidingBallConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "SlidingBallConstraint"): SlidingBallConstraint | undefined;
-	FindFirstChildOfClass(className: "SlidingBallConstraint"): SlidingBallConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "SlidingBallConstraint"): SlidingBallConstraint | undefined;
-}
+type SlidingBallConstraint = Rbx_SlidingBallConstraint & Base<Rbx_SlidingBallConstraint> & Indexable<Rbx_SlidingBallConstraint>;
 
 // CylindricalConstraint
 interface Rbx_CylindricalConstraint extends Rbx_SlidingBallConstraint {
@@ -1245,32 +1352,14 @@ interface Rbx_CylindricalConstraint extends Rbx_SlidingBallConstraint {
 	/** The unit vector direction of the rotation axis in world coordinates. */
 	readonly WorldRotationAxis: Vector3;
 }
-interface CylindricalConstraint extends Rbx_CylindricalConstraint, Base<Rbx_CylindricalConstraint>, AnyIndex {}
-declare class CylindricalConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "CylindricalConstraint"): this is CylindricalConstraint;
-	FindFirstAncestorOfClass(className: "CylindricalConstraint"): CylindricalConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "CylindricalConstraint"): CylindricalConstraint | undefined;
-	FindFirstChildOfClass(className: "CylindricalConstraint"): CylindricalConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "CylindricalConstraint"): CylindricalConstraint | undefined;
-}
+type CylindricalConstraint = Rbx_CylindricalConstraint & Base<Rbx_CylindricalConstraint> & Indexable<Rbx_CylindricalConstraint>;
 
 // PrismaticConstraint
 interface Rbx_PrismaticConstraint extends Rbx_SlidingBallConstraint {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__15: never;
 }
-interface PrismaticConstraint extends Rbx_PrismaticConstraint, Base<Rbx_PrismaticConstraint>, AnyIndex {}
-declare class PrismaticConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PrismaticConstraint"): this is PrismaticConstraint;
-	FindFirstAncestorOfClass(className: "PrismaticConstraint"): PrismaticConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "PrismaticConstraint"): PrismaticConstraint | undefined;
-	FindFirstChildOfClass(className: "PrismaticConstraint"): PrismaticConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "PrismaticConstraint"): PrismaticConstraint | undefined;
-}
+type PrismaticConstraint = Rbx_PrismaticConstraint & Base<Rbx_PrismaticConstraint> & Indexable<Rbx_PrismaticConstraint>;
 
 // SpringConstraint
 interface Rbx_SpringConstraint extends Rbx_Constraint {
@@ -1297,34 +1386,14 @@ interface Rbx_SpringConstraint extends Rbx_Constraint {
 	/** The thickness of the spring wire (diameter) in the in-game visual. Value in [0, inf). */
 	Thickness: number;
 }
-interface SpringConstraint extends Rbx_SpringConstraint, Base<Rbx_SpringConstraint>, AnyIndex {}
-declare class SpringConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SpringConstraint"): this is SpringConstraint;
-	FindFirstAncestorOfClass(className: "SpringConstraint"): SpringConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "SpringConstraint"): SpringConstraint | undefined;
-	FindFirstChildOfClass(className: "SpringConstraint"): SpringConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "SpringConstraint"): SpringConstraint | undefined;
-}
+type SpringConstraint = Rbx_SpringConstraint & Base<Rbx_SpringConstraint> & Indexable<Rbx_SpringConstraint>;
 
 // Torque
 interface Rbx_Torque extends Rbx_Constraint {
 	RelativeTo: Enum.ActuatorRelativeTo;
 	Torque: Vector3;
 }
-interface Torque extends Rbx_Torque, Base<Rbx_Torque>, AnyIndex {}
-declare class Torque {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Torque"): this is Torque;
-	FindFirstAncestorOfClass(className: "Torque"): Torque | undefined;
-	FindFirstAncestorWhichIsA(className: "Torque"): Torque | undefined;
-	FindFirstChildOfClass(className: "Torque"): Torque | undefined;
-	FindFirstAncestorWhichIsA(className: "Torque"): Torque | undefined;
-}
+type Torque = Rbx_Torque & Base<Rbx_Torque> & Indexable<Rbx_Torque>;
 
 // VectorForce
 interface Rbx_VectorForce extends Rbx_Constraint {
@@ -1332,31 +1401,14 @@ interface Rbx_VectorForce extends Rbx_Constraint {
 	Force: Vector3;
 	RelativeTo: Enum.ActuatorRelativeTo;
 }
-interface VectorForce extends Rbx_VectorForce, Base<Rbx_VectorForce>, AnyIndex {}
-declare class VectorForce {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "VectorForce"): this is VectorForce;
-	FindFirstAncestorOfClass(className: "VectorForce"): VectorForce | undefined;
-	FindFirstAncestorWhichIsA(className: "VectorForce"): VectorForce | undefined;
-	FindFirstChildOfClass(className: "VectorForce"): VectorForce | undefined;
-	FindFirstAncestorWhichIsA(className: "VectorForce"): VectorForce | undefined;
-}
+type VectorForce = Rbx_VectorForce & Base<Rbx_VectorForce> & Indexable<Rbx_VectorForce>;
 
 // ContentProvider
 interface Rbx_ContentProvider extends Rbx_Instance {
 	readonly BaseUrl: string;
 	readonly RequestQueueSize: number;
 }
-type ContentProvider = Rbx_ContentProvider & Base<Rbx_ContentProvider> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "ContentProvider"): this is ContentProvider;
-	FindFirstAncestorOfClass(className: "ContentProvider"): ContentProvider | undefined;
-	FindFirstAncestorWhichIsA(className: "ContentProvider"): ContentProvider | undefined;
-	FindFirstChildOfClass(className: "ContentProvider"): ContentProvider | undefined;
-	FindFirstAncestorWhichIsA(className: "ContentProvider"): ContentProvider | undefined;
-}
+type ContentProvider = Rbx_ContentProvider & Base<Rbx_ContentProvider> & Indexable<Rbx_ContentProvider>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "ContentProvider"): ContentProvider;
 }
@@ -1383,14 +1435,7 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 	/** Removes all functions bound. No actionNames will remain. All touch buttons will be removed. If button was manipulated manually there is no guarantee it will be cleaned up. */
 	UnbindAllActions(): void;
 }
-type ContextActionService = Rbx_ContextActionService & Base<Rbx_ContextActionService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "ContextActionService"): this is ContextActionService;
-	FindFirstAncestorOfClass(className: "ContextActionService"): ContextActionService | undefined;
-	FindFirstAncestorWhichIsA(className: "ContextActionService"): ContextActionService | undefined;
-	FindFirstChildOfClass(className: "ContextActionService"): ContextActionService | undefined;
-	FindFirstAncestorWhichIsA(className: "ContextActionService"): ContextActionService | undefined;
-}
+type ContextActionService = Rbx_ContextActionService & Base<Rbx_ContextActionService> & Indexable<Rbx_ContextActionService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "ContextActionService"): ContextActionService;
 }
@@ -1400,124 +1445,68 @@ interface Rbx_Controller extends Rbx_Instance {
 	BindButton(button: Enum.Button, caption: string): void;
 	GetButton(button: Enum.Button): boolean;
 	UnbindButton(button: Enum.Button): void;
-	ButtonChanged: RBXScriptSignal<(button: Enum.Button) => void>;
+	readonly ButtonChanged: RBXScriptSignal<(button: Enum.Button) => void>;
 }
-interface Controller extends Rbx_Controller, Base<Rbx_Controller>, AnyIndex {}
-declare abstract class Controller {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Controller"): this is Controller;
-	FindFirstAncestorOfClass(className: "Controller"): Controller | undefined;
-	FindFirstAncestorWhichIsA(className: "Controller"): Controller | undefined;
-	FindFirstChildOfClass(className: "Controller"): Controller | undefined;
-	FindFirstAncestorWhichIsA(className: "Controller"): Controller | undefined;
-}
+type Controller = Rbx_Controller & Base<Rbx_Controller> & Indexable<Rbx_Controller>;
 
 // HumanoidController
 interface Rbx_HumanoidController extends Rbx_Controller {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__16: never;
 }
-interface HumanoidController extends Rbx_HumanoidController, Base<Rbx_HumanoidController>, AnyIndex {}
-declare class HumanoidController {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "HumanoidController"): this is HumanoidController;
-	FindFirstAncestorOfClass(className: "HumanoidController"): HumanoidController | undefined;
-	FindFirstAncestorWhichIsA(className: "HumanoidController"): HumanoidController | undefined;
-	FindFirstChildOfClass(className: "HumanoidController"): HumanoidController | undefined;
-	FindFirstAncestorWhichIsA(className: "HumanoidController"): HumanoidController | undefined;
-}
+type HumanoidController = Rbx_HumanoidController & Base<Rbx_HumanoidController> & Indexable<Rbx_HumanoidController>;
 
 // SkateboardController
 interface Rbx_SkateboardController extends Rbx_Controller {
 	readonly Steer: number;
 	readonly Throttle: number;
-	AxisChanged: RBXScriptSignal<(axis: string) => void>;
+	readonly AxisChanged: RBXScriptSignal<(axis: string) => void>;
 }
-interface SkateboardController extends Rbx_SkateboardController, Base<Rbx_SkateboardController>, AnyIndex {}
-declare class SkateboardController {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SkateboardController"): this is SkateboardController;
-	FindFirstAncestorOfClass(className: "SkateboardController"): SkateboardController | undefined;
-	FindFirstAncestorWhichIsA(className: "SkateboardController"): SkateboardController | undefined;
-	FindFirstChildOfClass(className: "SkateboardController"): SkateboardController | undefined;
-	FindFirstAncestorWhichIsA(className: "SkateboardController"): SkateboardController | undefined;
-}
+type SkateboardController = Rbx_SkateboardController & Base<Rbx_SkateboardController> & Indexable<Rbx_SkateboardController>;
 
 // VehicleController
 interface Rbx_VehicleController extends Rbx_Controller {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__17: never;
 }
-interface VehicleController extends Rbx_VehicleController, Base<Rbx_VehicleController>, AnyIndex {}
-declare class VehicleController {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "VehicleController"): this is VehicleController;
-	FindFirstAncestorOfClass(className: "VehicleController"): VehicleController | undefined;
-	FindFirstAncestorWhichIsA(className: "VehicleController"): VehicleController | undefined;
-	FindFirstChildOfClass(className: "VehicleController"): VehicleController | undefined;
-	FindFirstAncestorWhichIsA(className: "VehicleController"): VehicleController | undefined;
-}
+type VehicleController = Rbx_VehicleController & Base<Rbx_VehicleController> & Indexable<Rbx_VehicleController>;
 
 // ControllerService
 interface Rbx_ControllerService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__18: never;
 }
-type ControllerService = Rbx_ControllerService & Base<Rbx_ControllerService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "ControllerService"): this is ControllerService;
-	FindFirstAncestorOfClass(className: "ControllerService"): ControllerService | undefined;
-	FindFirstAncestorWhichIsA(className: "ControllerService"): ControllerService | undefined;
-	FindFirstChildOfClass(className: "ControllerService"): ControllerService | undefined;
-	FindFirstAncestorWhichIsA(className: "ControllerService"): ControllerService | undefined;
-}
+type ControllerService = Rbx_ControllerService & Base<Rbx_ControllerService> & Indexable<Rbx_ControllerService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "ControllerService"): ControllerService;
 }
 
 // CookiesService
 interface Rbx_CookiesService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__19: never;
 }
-type CookiesService = Rbx_CookiesService & Base<Rbx_CookiesService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "CookiesService"): this is CookiesService;
-	FindFirstAncestorOfClass(className: "CookiesService"): CookiesService | undefined;
-	FindFirstAncestorWhichIsA(className: "CookiesService"): CookiesService | undefined;
-	FindFirstChildOfClass(className: "CookiesService"): CookiesService | undefined;
-	FindFirstAncestorWhichIsA(className: "CookiesService"): CookiesService | undefined;
-}
+type CookiesService = Rbx_CookiesService & Base<Rbx_CookiesService> & Indexable<Rbx_CookiesService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "CookiesService"): CookiesService;
 }
 
 // CorePackages
 interface Rbx_CorePackages extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__20: never;
 }
-type CorePackages = Rbx_CorePackages & Base<Rbx_CorePackages> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "CorePackages"): this is CorePackages;
-	FindFirstAncestorOfClass(className: "CorePackages"): CorePackages | undefined;
-	FindFirstAncestorWhichIsA(className: "CorePackages"): CorePackages | undefined;
-	FindFirstChildOfClass(className: "CorePackages"): CorePackages | undefined;
-	FindFirstAncestorWhichIsA(className: "CorePackages"): CorePackages | undefined;
-}
+type CorePackages = Rbx_CorePackages & Base<Rbx_CorePackages> & Indexable<Rbx_CorePackages>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "CorePackages"): CorePackages;
 }
 
 // CoreScriptSyncService
 interface Rbx_CoreScriptSyncService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__21: never;
 }
-type CoreScriptSyncService = Rbx_CoreScriptSyncService & Base<Rbx_CoreScriptSyncService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "CoreScriptSyncService"): this is CoreScriptSyncService;
-	FindFirstAncestorOfClass(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
-	FindFirstAncestorWhichIsA(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
-	FindFirstChildOfClass(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
-	FindFirstAncestorWhichIsA(className: "CoreScriptSyncService"): CoreScriptSyncService | undefined;
-}
+type CoreScriptSyncService = Rbx_CoreScriptSyncService & Base<Rbx_CoreScriptSyncService> & Indexable<Rbx_CoreScriptSyncService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "CoreScriptSyncService"): CoreScriptSyncService;
 }
@@ -1526,40 +1515,20 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_CustomEvent extends Rbx_Instance {
 	GetAttachedReceivers(): Array<Instance>;
 	SetValue(newValue: number): void;
-	ReceiverConnected: RBXScriptSignal<(receiver: Instance) => void>;
-	ReceiverDisconnected: RBXScriptSignal<(receiver: Instance) => void>;
+	readonly ReceiverConnected: RBXScriptSignal<(receiver: Instance) => void>;
+	readonly ReceiverDisconnected: RBXScriptSignal<(receiver: Instance) => void>;
 }
-interface CustomEvent extends Rbx_CustomEvent, Base<Rbx_CustomEvent>, AnyIndex {}
-declare class CustomEvent {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "CustomEvent"): this is CustomEvent;
-	FindFirstAncestorOfClass(className: "CustomEvent"): CustomEvent | undefined;
-	FindFirstAncestorWhichIsA(className: "CustomEvent"): CustomEvent | undefined;
-	FindFirstChildOfClass(className: "CustomEvent"): CustomEvent | undefined;
-	FindFirstAncestorWhichIsA(className: "CustomEvent"): CustomEvent | undefined;
-}
+type CustomEvent = Rbx_CustomEvent & Base<Rbx_CustomEvent> & Indexable<Rbx_CustomEvent>;
 
 // CustomEventReceiver
 interface Rbx_CustomEventReceiver extends Rbx_Instance {
 	Source: Instance | undefined;
 	GetCurrentValue(): number;
-	EventConnected: RBXScriptSignal<(event: Instance) => void>;
-	EventDisconnected: RBXScriptSignal<(event: Instance) => void>;
-	SourceValueChanged: RBXScriptSignal<(newValue: number) => void>;
+	readonly EventConnected: RBXScriptSignal<(event: Instance) => void>;
+	readonly EventDisconnected: RBXScriptSignal<(event: Instance) => void>;
+	readonly SourceValueChanged: RBXScriptSignal<(newValue: number) => void>;
 }
-interface CustomEventReceiver extends Rbx_CustomEventReceiver, Base<Rbx_CustomEventReceiver>, AnyIndex {}
-declare class CustomEventReceiver {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "CustomEventReceiver"): this is CustomEventReceiver;
-	FindFirstAncestorOfClass(className: "CustomEventReceiver"): CustomEventReceiver | undefined;
-	FindFirstAncestorWhichIsA(className: "CustomEventReceiver"): CustomEventReceiver | undefined;
-	FindFirstChildOfClass(className: "CustomEventReceiver"): CustomEventReceiver | undefined;
-	FindFirstAncestorWhichIsA(className: "CustomEventReceiver"): CustomEventReceiver | undefined;
-}
+type CustomEventReceiver = Rbx_CustomEventReceiver & Base<Rbx_CustomEventReceiver> & Indexable<Rbx_CustomEventReceiver>;
 
 // DataModelMesh
 interface Rbx_DataModelMesh extends Rbx_Instance {
@@ -1567,108 +1536,47 @@ interface Rbx_DataModelMesh extends Rbx_Instance {
 	Scale: Vector3;
 	VertexColor: Vector3;
 }
-interface DataModelMesh extends Rbx_DataModelMesh, Base<Rbx_DataModelMesh>, AnyIndex {}
-declare abstract class DataModelMesh {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "DataModelMesh"): this is DataModelMesh;
-	FindFirstAncestorOfClass(className: "DataModelMesh"): DataModelMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "DataModelMesh"): DataModelMesh | undefined;
-	FindFirstChildOfClass(className: "DataModelMesh"): DataModelMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "DataModelMesh"): DataModelMesh | undefined;
-}
+type DataModelMesh = Rbx_DataModelMesh & Base<Rbx_DataModelMesh> & Indexable<Rbx_DataModelMesh>;
 
 // BevelMesh
 interface Rbx_BevelMesh extends Rbx_DataModelMesh {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__22: never;
 }
-interface BevelMesh extends Rbx_BevelMesh, Base<Rbx_BevelMesh>, AnyIndex {}
-declare abstract class BevelMesh {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BevelMesh"): this is BevelMesh;
-	FindFirstAncestorOfClass(className: "BevelMesh"): BevelMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "BevelMesh"): BevelMesh | undefined;
-	FindFirstChildOfClass(className: "BevelMesh"): BevelMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "BevelMesh"): BevelMesh | undefined;
-}
+type BevelMesh = Rbx_BevelMesh & Base<Rbx_BevelMesh> & Indexable<Rbx_BevelMesh>;
 
 // BlockMesh
 interface Rbx_BlockMesh extends Rbx_BevelMesh {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__23: never;
 }
-interface BlockMesh extends Rbx_BlockMesh, Base<Rbx_BlockMesh>, AnyIndex {}
-declare class BlockMesh {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BlockMesh"): this is BlockMesh;
-	FindFirstAncestorOfClass(className: "BlockMesh"): BlockMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "BlockMesh"): BlockMesh | undefined;
-	FindFirstChildOfClass(className: "BlockMesh"): BlockMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "BlockMesh"): BlockMesh | undefined;
-}
+type BlockMesh = Rbx_BlockMesh & Base<Rbx_BlockMesh> & Indexable<Rbx_BlockMesh>;
 
 // CylinderMesh
 interface Rbx_CylinderMesh extends Rbx_BevelMesh {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__24: never;
 }
-interface CylinderMesh extends Rbx_CylinderMesh, Base<Rbx_CylinderMesh>, AnyIndex {}
-declare class CylinderMesh {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "CylinderMesh"): this is CylinderMesh;
-	FindFirstAncestorOfClass(className: "CylinderMesh"): CylinderMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "CylinderMesh"): CylinderMesh | undefined;
-	FindFirstChildOfClass(className: "CylinderMesh"): CylinderMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "CylinderMesh"): CylinderMesh | undefined;
-}
+type CylinderMesh = Rbx_CylinderMesh & Base<Rbx_CylinderMesh> & Indexable<Rbx_CylinderMesh>;
 
 // FileMesh
 interface Rbx_FileMesh extends Rbx_DataModelMesh {
 	MeshId: string;
 	TextureId: string;
 }
-interface FileMesh extends Rbx_FileMesh, Base<Rbx_FileMesh>, AnyIndex {}
-declare class FileMesh {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "FileMesh"): this is FileMesh;
-	FindFirstAncestorOfClass(className: "FileMesh"): FileMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "FileMesh"): FileMesh | undefined;
-	FindFirstChildOfClass(className: "FileMesh"): FileMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "FileMesh"): FileMesh | undefined;
-}
+type FileMesh = Rbx_FileMesh & Base<Rbx_FileMesh> & Indexable<Rbx_FileMesh>;
 
 // SpecialMesh
 interface Rbx_SpecialMesh extends Rbx_FileMesh {
 	MeshType: Enum.MeshType;
 }
-interface SpecialMesh extends Rbx_SpecialMesh, Base<Rbx_SpecialMesh>, AnyIndex {}
-declare class SpecialMesh {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SpecialMesh"): this is SpecialMesh;
-	FindFirstAncestorOfClass(className: "SpecialMesh"): SpecialMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "SpecialMesh"): SpecialMesh | undefined;
-	FindFirstChildOfClass(className: "SpecialMesh"): SpecialMesh | undefined;
-	FindFirstAncestorWhichIsA(className: "SpecialMesh"): SpecialMesh | undefined;
-}
+type SpecialMesh = Rbx_SpecialMesh & Base<Rbx_SpecialMesh> & Indexable<Rbx_SpecialMesh>;
 
 // DataStoreService
 interface Rbx_DataStoreService extends Rbx_Instance {
 	GetRequestBudgetForRequestType(requestType: Enum.DataStoreRequestType): number;
 }
-type DataStoreService = Rbx_DataStoreService & Base<Rbx_DataStoreService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "DataStoreService"): this is DataStoreService;
-	FindFirstAncestorOfClass(className: "DataStoreService"): DataStoreService | undefined;
-	FindFirstAncestorWhichIsA(className: "DataStoreService"): DataStoreService | undefined;
-	FindFirstChildOfClass(className: "DataStoreService"): DataStoreService | undefined;
-	FindFirstAncestorWhichIsA(className: "DataStoreService"): DataStoreService | undefined;
-}
+type DataStoreService = Rbx_DataStoreService & Base<Rbx_DataStoreService> & Indexable<Rbx_DataStoreService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "DataStoreService"): DataStoreService;
 }
@@ -1678,14 +1586,7 @@ interface Rbx_Debris extends Rbx_Instance {
 	/** Adds an Instance into the debris service that will later be destroyed.  Second argument 'lifetime' is optional and specifies how long (in seconds) to wait before destroying the item. If no time is specified then the item added will automatically be destroyed in 10 seconds. */
 	AddItem(item: Instance, lifetime?: number): void;
 }
-type Debris = Rbx_Debris & Base<Rbx_Debris> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "Debris"): this is Debris;
-	FindFirstAncestorOfClass(className: "Debris"): Debris | undefined;
-	FindFirstAncestorWhichIsA(className: "Debris"): Debris | undefined;
-	FindFirstChildOfClass(className: "Debris"): Debris | undefined;
-	FindFirstAncestorWhichIsA(className: "Debris"): Debris | undefined;
-}
+type Debris = Rbx_Debris & Base<Rbx_Debris> & Indexable<Rbx_Debris>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Debris"): Debris;
 }
@@ -1713,14 +1614,7 @@ interface Rbx_DebugSettings extends Rbx_Instance {
 	TickCountPreciseOverride: Enum.TickCountSampleMethod;
 	readonly VideoMemory: number;
 }
-type DebugSettings = Rbx_DebugSettings & Base<Rbx_DebugSettings> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "DebugSettings"): this is DebugSettings;
-	FindFirstAncestorOfClass(className: "DebugSettings"): DebugSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "DebugSettings"): DebugSettings | undefined;
-	FindFirstChildOfClass(className: "DebugSettings"): DebugSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "DebugSettings"): DebugSettings | undefined;
-}
+type DebugSettings = Rbx_DebugSettings & Base<Rbx_DebugSettings> & Indexable<Rbx_DebugSettings>;
 
 // DebuggerBreakpoint
 interface Rbx_DebuggerBreakpoint extends Rbx_Instance {
@@ -1728,17 +1622,7 @@ interface Rbx_DebuggerBreakpoint extends Rbx_Instance {
 	IsEnabled: boolean;
 	readonly Line: number;
 }
-interface DebuggerBreakpoint extends Rbx_DebuggerBreakpoint, Base<Rbx_DebuggerBreakpoint>, AnyIndex {}
-declare abstract class DebuggerBreakpoint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "DebuggerBreakpoint"): this is DebuggerBreakpoint;
-	FindFirstAncestorOfClass(className: "DebuggerBreakpoint"): DebuggerBreakpoint | undefined;
-	FindFirstAncestorWhichIsA(className: "DebuggerBreakpoint"): DebuggerBreakpoint | undefined;
-	FindFirstChildOfClass(className: "DebuggerBreakpoint"): DebuggerBreakpoint | undefined;
-	FindFirstAncestorWhichIsA(className: "DebuggerBreakpoint"): DebuggerBreakpoint | undefined;
-}
+type DebuggerBreakpoint = Rbx_DebuggerBreakpoint & Base<Rbx_DebuggerBreakpoint> & Indexable<Rbx_DebuggerBreakpoint>;
 
 // DebuggerManager
 interface Rbx_DebuggerManager extends Rbx_Instance {
@@ -1749,37 +1633,17 @@ interface Rbx_DebuggerManager extends Rbx_Instance {
 	StepIn(): void;
 	StepOut(): void;
 	StepOver(): void;
-	DebuggerAdded: RBXScriptSignal<(debug: Instance) => void>;
-	DebuggerRemoved: RBXScriptSignal<(debug: Instance) => void>;
+	readonly DebuggerAdded: RBXScriptSignal<(debug: Instance) => void>;
+	readonly DebuggerRemoved: RBXScriptSignal<(debug: Instance) => void>;
 }
-interface DebuggerManager extends Rbx_DebuggerManager, Base<Rbx_DebuggerManager>, AnyIndex {}
-declare abstract class DebuggerManager {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "DebuggerManager"): this is DebuggerManager;
-	FindFirstAncestorOfClass(className: "DebuggerManager"): DebuggerManager | undefined;
-	FindFirstAncestorWhichIsA(className: "DebuggerManager"): DebuggerManager | undefined;
-	FindFirstChildOfClass(className: "DebuggerManager"): DebuggerManager | undefined;
-	FindFirstAncestorWhichIsA(className: "DebuggerManager"): DebuggerManager | undefined;
-}
+type DebuggerManager = Rbx_DebuggerManager & Base<Rbx_DebuggerManager> & Indexable<Rbx_DebuggerManager>;
 
 // DebuggerWatch
 interface Rbx_DebuggerWatch extends Rbx_Instance {
 	Expression: string;
 	CheckSyntax(): void;
 }
-interface DebuggerWatch extends Rbx_DebuggerWatch, Base<Rbx_DebuggerWatch>, AnyIndex {}
-declare class DebuggerWatch {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "DebuggerWatch"): this is DebuggerWatch;
-	FindFirstAncestorOfClass(className: "DebuggerWatch"): DebuggerWatch | undefined;
-	FindFirstAncestorWhichIsA(className: "DebuggerWatch"): DebuggerWatch | undefined;
-	FindFirstChildOfClass(className: "DebuggerWatch"): DebuggerWatch | undefined;
-	FindFirstAncestorWhichIsA(className: "DebuggerWatch"): DebuggerWatch | undefined;
-}
+type DebuggerWatch = Rbx_DebuggerWatch & Base<Rbx_DebuggerWatch> & Indexable<Rbx_DebuggerWatch>;
 
 // Dialog
 interface Rbx_Dialog extends Rbx_Instance {
@@ -1802,18 +1666,7 @@ interface Rbx_Dialog extends Rbx_Instance {
 	TriggerDistance: number;
 	TriggerOffset: Vector3;
 }
-interface Dialog extends Rbx_Dialog, Base<Rbx_Dialog>, AnyIndex {}
-/** An object used to make dialog trees to converse with players */
-declare class Dialog {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Dialog"): this is Dialog;
-	FindFirstAncestorOfClass(className: "Dialog"): Dialog | undefined;
-	FindFirstAncestorWhichIsA(className: "Dialog"): Dialog | undefined;
-	FindFirstChildOfClass(className: "Dialog"): Dialog | undefined;
-	FindFirstAncestorWhichIsA(className: "Dialog"): Dialog | undefined;
-}
+type Dialog = Rbx_Dialog & Base<Rbx_Dialog> & Indexable<Rbx_Dialog>;
 
 // DialogChoice
 interface Rbx_DialogChoice extends Rbx_Instance {
@@ -1822,18 +1675,7 @@ interface Rbx_DialogChoice extends Rbx_Instance {
 	ResponseDialog: string;
 	UserDialog: string;
 }
-interface DialogChoice extends Rbx_DialogChoice, Base<Rbx_DialogChoice>, AnyIndex {}
-/** An object used to make dialog trees to converse with players */
-declare class DialogChoice {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "DialogChoice"): this is DialogChoice;
-	FindFirstAncestorOfClass(className: "DialogChoice"): DialogChoice | undefined;
-	FindFirstAncestorWhichIsA(className: "DialogChoice"): DialogChoice | undefined;
-	FindFirstChildOfClass(className: "DialogChoice"): DialogChoice | undefined;
-	FindFirstAncestorWhichIsA(className: "DialogChoice"): DialogChoice | undefined;
-}
+type DialogChoice = Rbx_DialogChoice & Base<Rbx_DialogChoice> & Indexable<Rbx_DialogChoice>;
 
 // Dragger
 interface Rbx_Dragger extends Rbx_Instance {
@@ -1842,17 +1684,7 @@ interface Rbx_Dragger extends Rbx_Instance {
 	MouseMove(mouseRay: Ray): void;
 	MouseUp(): void;
 }
-interface Dragger extends Rbx_Dragger, Base<Rbx_Dragger>, AnyIndex {}
-declare class Dragger {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Dragger"): this is Dragger;
-	FindFirstAncestorOfClass(className: "Dragger"): Dragger | undefined;
-	FindFirstAncestorWhichIsA(className: "Dragger"): Dragger | undefined;
-	FindFirstChildOfClass(className: "Dragger"): Dragger | undefined;
-	FindFirstAncestorWhichIsA(className: "Dragger"): Dragger | undefined;
-}
+type Dragger = Rbx_Dragger & Base<Rbx_Dragger> & Indexable<Rbx_Dragger>;
 
 // Explosion
 interface Rbx_Explosion extends Rbx_Instance {
@@ -1866,36 +1698,15 @@ interface Rbx_Explosion extends Rbx_Instance {
 	/** Where the Explosion occurs in absolute world coordinates. */
 	Position: Vector3;
 	Visible: boolean;
-	Hit: RBXScriptSignal<(part: Instance, distance: number) => void>;
+	readonly Hit: RBXScriptSignal<(part: Instance, distance: number) => void>;
 }
-interface Explosion extends Rbx_Explosion, Base<Rbx_Explosion>, AnyIndex {}
-/** Creates an Explosion! This can be used as a purely graphical effect, or can be made to damage objects. */
-declare class Explosion {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Explosion"): this is Explosion;
-	FindFirstAncestorOfClass(className: "Explosion"): Explosion | undefined;
-	FindFirstAncestorWhichIsA(className: "Explosion"): Explosion | undefined;
-	FindFirstChildOfClass(className: "Explosion"): Explosion | undefined;
-	FindFirstAncestorWhichIsA(className: "Explosion"): Explosion | undefined;
-}
+type Explosion = Rbx_Explosion & Base<Rbx_Explosion> & Indexable<Rbx_Explosion>;
 
 // FaceInstance
 interface Rbx_FaceInstance extends Rbx_Instance {
 	Face: Enum.NormalId;
 }
-interface FaceInstance extends Rbx_FaceInstance, Base<Rbx_FaceInstance>, AnyIndex {}
-declare abstract class FaceInstance {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "FaceInstance"): this is FaceInstance;
-	FindFirstAncestorOfClass(className: "FaceInstance"): FaceInstance | undefined;
-	FindFirstAncestorWhichIsA(className: "FaceInstance"): FaceInstance | undefined;
-	FindFirstChildOfClass(className: "FaceInstance"): FaceInstance | undefined;
-	FindFirstAncestorWhichIsA(className: "FaceInstance"): FaceInstance | undefined;
-}
+type FaceInstance = Rbx_FaceInstance & Base<Rbx_FaceInstance> & Indexable<Rbx_FaceInstance>;
 
 // Decal
 interface Rbx_Decal extends Rbx_FaceInstance {
@@ -1905,35 +1716,14 @@ interface Rbx_Decal extends Rbx_FaceInstance {
 	/** How visible the decal is.  1 is completely invisible, while 0 is completely opaque */
 	Transparency: number;
 }
-interface Decal extends Rbx_Decal, Base<Rbx_Decal>, AnyIndex {}
-/** Descibes a texture that is placed on one of the sides of the Part it is parented to. */
-declare class Decal {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Decal"): this is Decal;
-	FindFirstAncestorOfClass(className: "Decal"): Decal | undefined;
-	FindFirstAncestorWhichIsA(className: "Decal"): Decal | undefined;
-	FindFirstChildOfClass(className: "Decal"): Decal | undefined;
-	FindFirstAncestorWhichIsA(className: "Decal"): Decal | undefined;
-}
+type Decal = Rbx_Decal & Base<Rbx_Decal> & Indexable<Rbx_Decal>;
 
 // Texture
 interface Rbx_Texture extends Rbx_Decal {
 	StudsPerTileU: number;
 	StudsPerTileV: number;
 }
-interface Texture extends Rbx_Texture, Base<Rbx_Texture>, AnyIndex {}
-declare class Texture {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Texture"): this is Texture;
-	FindFirstAncestorOfClass(className: "Texture"): Texture | undefined;
-	FindFirstAncestorWhichIsA(className: "Texture"): Texture | undefined;
-	FindFirstChildOfClass(className: "Texture"): Texture | undefined;
-	FindFirstAncestorWhichIsA(className: "Texture"): Texture | undefined;
-}
+type Texture = Rbx_Texture & Base<Rbx_Texture> & Indexable<Rbx_Texture>;
 
 // Feature
 interface Rbx_Feature extends Rbx_Instance {
@@ -1942,47 +1732,28 @@ interface Rbx_Feature extends Rbx_Instance {
 	LeftRight: Enum.LeftRight;
 	TopBottom: Enum.TopBottom;
 }
-interface Feature extends Rbx_Feature, Base<Rbx_Feature>, AnyIndex {}
-declare abstract class Feature {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Feature"): this is Feature;
-	FindFirstAncestorOfClass(className: "Feature"): Feature | undefined;
-	FindFirstAncestorWhichIsA(className: "Feature"): Feature | undefined;
-	FindFirstChildOfClass(className: "Feature"): Feature | undefined;
-	FindFirstAncestorWhichIsA(className: "Feature"): Feature | undefined;
-}
+type Feature = Rbx_Feature & Base<Rbx_Feature> & Indexable<Rbx_Feature>;
 
 // Hole
 interface Rbx_Hole extends Rbx_Feature {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__25: never;
 }
-interface Hole extends Rbx_Hole, Base<Rbx_Hole>, AnyIndex {}
-declare class Hole {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Hole"): this is Hole;
-	FindFirstAncestorOfClass(className: "Hole"): Hole | undefined;
-	FindFirstAncestorWhichIsA(className: "Hole"): Hole | undefined;
-	FindFirstChildOfClass(className: "Hole"): Hole | undefined;
-	FindFirstAncestorWhichIsA(className: "Hole"): Hole | undefined;
-}
+type Hole = Rbx_Hole & Base<Rbx_Hole> & Indexable<Rbx_Hole>;
 
 // MotorFeature
 interface Rbx_MotorFeature extends Rbx_Feature {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__26: never;
 }
-interface MotorFeature extends Rbx_MotorFeature, Base<Rbx_MotorFeature>, AnyIndex {}
-declare class MotorFeature {
-	constructor(parent?: Instance);
+type MotorFeature = Rbx_MotorFeature & Base<Rbx_MotorFeature> & Indexable<Rbx_MotorFeature>;
+
+// File
+interface Rbx_File extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__27: never;
 }
-interface Rbx_Instance {
-	IsA(className: "MotorFeature"): this is MotorFeature;
-	FindFirstAncestorOfClass(className: "MotorFeature"): MotorFeature | undefined;
-	FindFirstAncestorWhichIsA(className: "MotorFeature"): MotorFeature | undefined;
-	FindFirstChildOfClass(className: "MotorFeature"): MotorFeature | undefined;
-	FindFirstAncestorWhichIsA(className: "MotorFeature"): MotorFeature | undefined;
-}
+type File = Rbx_File & Base<Rbx_File> & Indexable<Rbx_File>;
 
 // Fire
 interface Rbx_Fire extends Rbx_Instance {
@@ -1996,123 +1767,67 @@ interface Rbx_Fire extends Rbx_Instance {
 	/** How large the fire appears to be. */
 	Size: number;
 }
-interface Fire extends Rbx_Fire, Base<Rbx_Fire>, AnyIndex {}
-/** Makes the parent part or model object emit fire */
-declare class Fire {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Fire"): this is Fire;
-	FindFirstAncestorOfClass(className: "Fire"): Fire | undefined;
-	FindFirstAncestorWhichIsA(className: "Fire"): Fire | undefined;
-	FindFirstChildOfClass(className: "Fire"): Fire | undefined;
-	FindFirstAncestorWhichIsA(className: "Fire"): Fire | undefined;
-}
+type Fire = Rbx_Fire & Base<Rbx_Fire> & Indexable<Rbx_Fire>;
 
 // FlagStandService
 interface Rbx_FlagStandService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__28: never;
 }
-type FlagStandService = Rbx_FlagStandService & Base<Rbx_FlagStandService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "FlagStandService"): this is FlagStandService;
-	FindFirstAncestorOfClass(className: "FlagStandService"): FlagStandService | undefined;
-	FindFirstAncestorWhichIsA(className: "FlagStandService"): FlagStandService | undefined;
-	FindFirstChildOfClass(className: "FlagStandService"): FlagStandService | undefined;
-	FindFirstAncestorWhichIsA(className: "FlagStandService"): FlagStandService | undefined;
-}
+type FlagStandService = Rbx_FlagStandService & Base<Rbx_FlagStandService> & Indexable<Rbx_FlagStandService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "FlagStandService"): FlagStandService;
 }
 
 // FlyweightService
 interface Rbx_FlyweightService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__29: never;
 }
-type FlyweightService = Rbx_FlyweightService & Base<Rbx_FlyweightService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "FlyweightService"): this is FlyweightService;
-	FindFirstAncestorOfClass(className: "FlyweightService"): FlyweightService | undefined;
-	FindFirstAncestorWhichIsA(className: "FlyweightService"): FlyweightService | undefined;
-	FindFirstChildOfClass(className: "FlyweightService"): FlyweightService | undefined;
-	FindFirstAncestorWhichIsA(className: "FlyweightService"): FlyweightService | undefined;
-}
+type FlyweightService = Rbx_FlyweightService & Base<Rbx_FlyweightService> & Indexable<Rbx_FlyweightService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "FlyweightService"): FlyweightService;
 }
 
 // CSGDictionaryService
 interface Rbx_CSGDictionaryService extends Rbx_FlyweightService {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__30: never;
 }
-type CSGDictionaryService = Rbx_CSGDictionaryService & Base<Rbx_CSGDictionaryService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "CSGDictionaryService"): this is CSGDictionaryService;
-	FindFirstAncestorOfClass(className: "CSGDictionaryService"): CSGDictionaryService | undefined;
-	FindFirstAncestorWhichIsA(className: "CSGDictionaryService"): CSGDictionaryService | undefined;
-	FindFirstChildOfClass(className: "CSGDictionaryService"): CSGDictionaryService | undefined;
-	FindFirstAncestorWhichIsA(className: "CSGDictionaryService"): CSGDictionaryService | undefined;
-}
+type CSGDictionaryService = Rbx_CSGDictionaryService & Base<Rbx_CSGDictionaryService> & Indexable<Rbx_CSGDictionaryService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "CSGDictionaryService"): CSGDictionaryService;
 }
 
 // NonReplicatedCSGDictionaryService
 interface Rbx_NonReplicatedCSGDictionaryService extends Rbx_FlyweightService {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__31: never;
 }
-type NonReplicatedCSGDictionaryService = Rbx_NonReplicatedCSGDictionaryService & Base<Rbx_NonReplicatedCSGDictionaryService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "NonReplicatedCSGDictionaryService"): this is NonReplicatedCSGDictionaryService;
-	FindFirstAncestorOfClass(className: "NonReplicatedCSGDictionaryService"): NonReplicatedCSGDictionaryService | undefined;
-	FindFirstAncestorWhichIsA(className: "NonReplicatedCSGDictionaryService"): NonReplicatedCSGDictionaryService | undefined;
-	FindFirstChildOfClass(className: "NonReplicatedCSGDictionaryService"): NonReplicatedCSGDictionaryService | undefined;
-	FindFirstAncestorWhichIsA(className: "NonReplicatedCSGDictionaryService"): NonReplicatedCSGDictionaryService | undefined;
-}
+type NonReplicatedCSGDictionaryService = Rbx_NonReplicatedCSGDictionaryService & Base<Rbx_NonReplicatedCSGDictionaryService> & Indexable<Rbx_NonReplicatedCSGDictionaryService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "NonReplicatedCSGDictionaryService"): NonReplicatedCSGDictionaryService;
 }
 
 // Folder
 interface Rbx_Folder extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__32: never;
 }
-interface Folder extends Rbx_Folder, Base<Rbx_Folder>, AnyIndex {}
-/** An object that can be created to hold and organize objects */
-declare class Folder {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Folder"): this is Folder;
-	FindFirstAncestorOfClass(className: "Folder"): Folder | undefined;
-	FindFirstAncestorWhichIsA(className: "Folder"): Folder | undefined;
-	FindFirstChildOfClass(className: "Folder"): Folder | undefined;
-	FindFirstAncestorWhichIsA(className: "Folder"): Folder | undefined;
-}
+type Folder = Rbx_Folder & Base<Rbx_Folder> & Indexable<Rbx_Folder>;
 
 // ForceField
 interface Rbx_ForceField extends Rbx_Instance {
 	Visible: boolean;
 }
-interface ForceField extends Rbx_ForceField, Base<Rbx_ForceField>, AnyIndex {}
-/** Prevents joint breakage from explosions, and stops Humanoids from taking damage */
-declare class ForceField {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ForceField"): this is ForceField;
-	FindFirstAncestorOfClass(className: "ForceField"): ForceField | undefined;
-	FindFirstAncestorWhichIsA(className: "ForceField"): ForceField | undefined;
-	FindFirstChildOfClass(className: "ForceField"): ForceField | undefined;
-	FindFirstAncestorWhichIsA(className: "ForceField"): ForceField | undefined;
-}
+type ForceField = Rbx_ForceField & Base<Rbx_ForceField> & Indexable<Rbx_ForceField>;
 
 // FriendService
 interface Rbx_FriendService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__33: never;
 }
-type FriendService = Rbx_FriendService & Base<Rbx_FriendService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "FriendService"): this is FriendService;
-	FindFirstAncestorOfClass(className: "FriendService"): FriendService | undefined;
-	FindFirstAncestorWhichIsA(className: "FriendService"): FriendService | undefined;
-	FindFirstChildOfClass(className: "FriendService"): FriendService | undefined;
-	FindFirstAncestorWhichIsA(className: "FriendService"): FriendService | undefined;
-}
+type FriendService = Rbx_FriendService & Base<Rbx_FriendService> & Indexable<Rbx_FriendService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "FriendService"): FriendService;
 }
@@ -2126,30 +1841,14 @@ interface Rbx_FunctionalTest extends Rbx_Instance {
 	Passed(message?: string): void;
 	Warn(message?: string): void;
 }
-interface FunctionalTest extends Rbx_FunctionalTest, Base<Rbx_FunctionalTest>, AnyIndex {}
-/** Deprecated. Use TestService instead */
-declare class FunctionalTest {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "FunctionalTest"): this is FunctionalTest;
-	FindFirstAncestorOfClass(className: "FunctionalTest"): FunctionalTest | undefined;
-	FindFirstAncestorWhichIsA(className: "FunctionalTest"): FunctionalTest | undefined;
-	FindFirstChildOfClass(className: "FunctionalTest"): FunctionalTest | undefined;
-	FindFirstAncestorWhichIsA(className: "FunctionalTest"): FunctionalTest | undefined;
-}
+type FunctionalTest = Rbx_FunctionalTest & Base<Rbx_FunctionalTest> & Indexable<Rbx_FunctionalTest>;
 
 // GamePassService
 interface Rbx_GamePassService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__34: never;
 }
-type GamePassService = Rbx_GamePassService & Base<Rbx_GamePassService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "GamePassService"): this is GamePassService;
-	FindFirstAncestorOfClass(className: "GamePassService"): GamePassService | undefined;
-	FindFirstAncestorWhichIsA(className: "GamePassService"): GamePassService | undefined;
-	FindFirstChildOfClass(className: "GamePassService"): GamePassService | undefined;
-	FindFirstAncestorWhichIsA(className: "GamePassService"): GamePassService | undefined;
-}
+type GamePassService = Rbx_GamePassService & Base<Rbx_GamePassService> & Indexable<Rbx_GamePassService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "GamePassService"): GamePassService;
 }
@@ -2168,100 +1867,46 @@ interface Rbx_GameSettings extends Rbx_Instance {
 	VideoCaptureEnabled: boolean;
 	VideoQuality: Enum.VideoQualitySettings;
 }
-interface GameSettings extends Rbx_GameSettings, Base<Rbx_GameSettings>, AnyIndex {}
-declare class GameSettings {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GameSettings"): this is GameSettings;
-	FindFirstAncestorOfClass(className: "GameSettings"): GameSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "GameSettings"): GameSettings | undefined;
-	FindFirstChildOfClass(className: "GameSettings"): GameSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "GameSettings"): GameSettings | undefined;
-}
+type GameSettings = Rbx_GameSettings & Base<Rbx_GameSettings> & Indexable<Rbx_GameSettings>;
 
 // GamepadService
 interface Rbx_GamepadService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__35: never;
 }
-type GamepadService = Rbx_GamepadService & Base<Rbx_GamepadService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "GamepadService"): this is GamepadService;
-	FindFirstAncestorOfClass(className: "GamepadService"): GamepadService | undefined;
-	FindFirstAncestorWhichIsA(className: "GamepadService"): GamepadService | undefined;
-	FindFirstChildOfClass(className: "GamepadService"): GamepadService | undefined;
-	FindFirstAncestorWhichIsA(className: "GamepadService"): GamepadService | undefined;
-}
+type GamepadService = Rbx_GamepadService & Base<Rbx_GamepadService> & Indexable<Rbx_GamepadService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "GamepadService"): GamepadService;
 }
 
 // Geometry
 interface Rbx_Geometry extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__36: never;
 }
-type Geometry = Rbx_Geometry & Base<Rbx_Geometry> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "Geometry"): this is Geometry;
-	FindFirstAncestorOfClass(className: "Geometry"): Geometry | undefined;
-	FindFirstAncestorWhichIsA(className: "Geometry"): Geometry | undefined;
-	FindFirstChildOfClass(className: "Geometry"): Geometry | undefined;
-	FindFirstAncestorWhichIsA(className: "Geometry"): Geometry | undefined;
-}
+type Geometry = Rbx_Geometry & Base<Rbx_Geometry> & Indexable<Rbx_Geometry>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Geometry"): Geometry;
 }
 
 // GlobalDataStore
 interface Rbx_GlobalDataStore extends Rbx_Instance {
-	/** Sets callback as a function to be executed any time the value associated with key is changed. It is important to disconnect the connection when the subscription to the key is no longer needed.  */
-	OnUpdate(key: string, callback: Function): RBXScriptConnection;
-	/** Returns the value of the entry in the DataStore with the given key */
-	GetAsync(key: string): unknown;
-	/** Increments the value of a particular key amd returns the incremented value */
-	IncrementAsync(key: string, delta?: number): unknown;
-	RemoveAsync(key: string): unknown;
 	/** Sets the value of the key. This overwrites any existing data stored in the key */
 	SetAsync(key: string, value?: any): void;
 }
-interface GlobalDataStore extends Rbx_GlobalDataStore, Base<Rbx_GlobalDataStore>, AnyIndex {}
-/** Exposes functions for saving and loading data for the DataStoreService */
-declare abstract class GlobalDataStore {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GlobalDataStore"): this is GlobalDataStore;
-	FindFirstAncestorOfClass(className: "GlobalDataStore"): GlobalDataStore | undefined;
-	FindFirstAncestorWhichIsA(className: "GlobalDataStore"): GlobalDataStore | undefined;
-	FindFirstChildOfClass(className: "GlobalDataStore"): GlobalDataStore | undefined;
-	FindFirstAncestorWhichIsA(className: "GlobalDataStore"): GlobalDataStore | undefined;
-}
+type GlobalDataStore = Rbx_GlobalDataStore & Base<Rbx_GlobalDataStore> & Indexable<Rbx_GlobalDataStore>;
 
 // OrderedDataStore
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
 }
-interface OrderedDataStore extends Rbx_OrderedDataStore, Base<Rbx_OrderedDataStore>, AnyIndex {}
-/** A type of DataStore where values must be positive integers. This makes OrderedDataStore suitable for leaderboard related scripting where you are required to order large amounts of data efficiently. */
-declare abstract class OrderedDataStore {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "OrderedDataStore"): this is OrderedDataStore;
-	FindFirstAncestorOfClass(className: "OrderedDataStore"): OrderedDataStore | undefined;
-	FindFirstAncestorWhichIsA(className: "OrderedDataStore"): OrderedDataStore | undefined;
-	FindFirstChildOfClass(className: "OrderedDataStore"): OrderedDataStore | undefined;
-	FindFirstAncestorWhichIsA(className: "OrderedDataStore"): OrderedDataStore | undefined;
-}
+type OrderedDataStore = Rbx_OrderedDataStore & Base<Rbx_OrderedDataStore> & Indexable<Rbx_OrderedDataStore>;
 
 // GoogleAnalyticsConfiguration
 interface Rbx_GoogleAnalyticsConfiguration extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__37: never;
 }
-type GoogleAnalyticsConfiguration = Rbx_GoogleAnalyticsConfiguration & Base<Rbx_GoogleAnalyticsConfiguration> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "GoogleAnalyticsConfiguration"): this is GoogleAnalyticsConfiguration;
-	FindFirstAncestorOfClass(className: "GoogleAnalyticsConfiguration"): GoogleAnalyticsConfiguration | undefined;
-	FindFirstAncestorWhichIsA(className: "GoogleAnalyticsConfiguration"): GoogleAnalyticsConfiguration | undefined;
-	FindFirstChildOfClass(className: "GoogleAnalyticsConfiguration"): GoogleAnalyticsConfiguration | undefined;
-	FindFirstAncestorWhichIsA(className: "GoogleAnalyticsConfiguration"): GoogleAnalyticsConfiguration | undefined;
-}
+type GoogleAnalyticsConfiguration = Rbx_GoogleAnalyticsConfiguration & Base<Rbx_GoogleAnalyticsConfiguration> & Indexable<Rbx_GoogleAnalyticsConfiguration>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "GoogleAnalyticsConfiguration"): GoogleAnalyticsConfiguration;
 }
@@ -2269,32 +1914,17 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // GroupService
 interface Rbx_GroupService extends Rbx_Instance {
 }
-type GroupService = Rbx_GroupService & Base<Rbx_GroupService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "GroupService"): this is GroupService;
-	FindFirstAncestorOfClass(className: "GroupService"): GroupService | undefined;
-	FindFirstAncestorWhichIsA(className: "GroupService"): GroupService | undefined;
-	FindFirstChildOfClass(className: "GroupService"): GroupService | undefined;
-	FindFirstAncestorWhichIsA(className: "GroupService"): GroupService | undefined;
-}
+type GroupService = Rbx_GroupService & Base<Rbx_GroupService> & Indexable<Rbx_GroupService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "GroupService"): GroupService;
 }
 
 // GuiBase
 interface Rbx_GuiBase extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__38: never;
 }
-interface GuiBase extends Rbx_GuiBase, Base<Rbx_GuiBase>, AnyIndex {}
-declare abstract class GuiBase {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GuiBase"): this is GuiBase;
-	FindFirstAncestorOfClass(className: "GuiBase"): GuiBase | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiBase"): GuiBase | undefined;
-	FindFirstChildOfClass(className: "GuiBase"): GuiBase | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiBase"): GuiBase | undefined;
-}
+type GuiBase = Rbx_GuiBase & Base<Rbx_GuiBase> & Indexable<Rbx_GuiBase>;
 
 // GuiBase2d
 interface Rbx_GuiBase2d extends Rbx_GuiBase {
@@ -2306,17 +1936,7 @@ interface Rbx_GuiBase2d extends Rbx_GuiBase {
 	AutoLocalize: boolean;
 	RootLocalizationTable: LocalizationTable;
 }
-interface GuiBase2d extends Rbx_GuiBase2d, Base<Rbx_GuiBase2d>, AnyIndex {}
-declare abstract class GuiBase2d {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GuiBase2d"): this is GuiBase2d;
-	FindFirstAncestorOfClass(className: "GuiBase2d"): GuiBase2d | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiBase2d"): GuiBase2d | undefined;
-	FindFirstChildOfClass(className: "GuiBase2d"): GuiBase2d | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiBase2d"): GuiBase2d | undefined;
-}
+type GuiBase2d = Rbx_GuiBase2d & Base<Rbx_GuiBase2d> & Indexable<Rbx_GuiBase2d>;
 
 // GuiObject
 interface Rbx_GuiObject extends Rbx_GuiBase2d {
@@ -2358,54 +1978,27 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 	TweenSize(endSize: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
 	/** Smoothly translates a GuiObject's current size to 'endSize', and also smoothly translates the GuiObject's current position to 'endPosition'. The only required arguments are 'endSize' and 'endPosition'. [More info](http://wiki.roblox.com/index.php/TweenSizeAndPosition)  */
 	TweenSizeAndPosition(endSize: UDim2, endPosition: UDim2, easingDirection?: Enum.EasingDirection, easingStyle?: Enum.EasingStyle, time?: number, override?: boolean, callback?: Function): boolean;
-	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
-	InputBegan: RBXScriptSignal<(input: Instance) => void>;
-	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
-	InputChanged: RBXScriptSignal<(input: Instance) => void>;
-	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally. */
-	InputEnded: RBXScriptSignal<(input: Instance) => void>;
 	/** Fired when the mouse enters a GuiObject, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
-	MouseEnter: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseEnter: RBXScriptSignal<(x: number, y: number) => void>;
 	/** Fired when the mouse leaves a GuiObject, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
-	MouseLeave: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseLeave: RBXScriptSignal<(x: number, y: number) => void>;
 	/** Fired when the mouse is inside a GuiObject and moves, as long as the GuiObject is active (see active property for more detail). Arguments 'x', and 'y' specify the absolute pixel position of the mouse. */
-	MouseMoved: RBXScriptSignal<(x: number, y: number) => void>;
-	MouseWheelBackward: RBXScriptSignal<(x: number, y: number) => void>;
-	MouseWheelForward: RBXScriptSignal<(x: number, y: number) => void>;
-	SelectionGained: RBXScriptSignal<() => void>;
-	SelectionLost: RBXScriptSignal<() => void>;
+	readonly MouseMoved: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseWheelBackward: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseWheelForward: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly SelectionGained: RBXScriptSignal<() => void>;
+	readonly SelectionLost: RBXScriptSignal<() => void>;
 	/** Fired when a user swipes their fingers on a TouchEnabled device. 'swipeDirection' is an Enum.SwipeDirection, indicating the direction the user swiped. 'numberOfTouches' is an int that indicates how many touches were involved with the gesture.  This event only fires locally. */
-	TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number) => void>;
+	readonly TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number) => void>;
 }
-interface GuiObject extends Rbx_GuiObject, Base<Rbx_GuiObject>, AnyIndex {}
-declare abstract class GuiObject {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GuiObject"): this is GuiObject;
-	FindFirstAncestorOfClass(className: "GuiObject"): GuiObject | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiObject"): GuiObject | undefined;
-	FindFirstChildOfClass(className: "GuiObject"): GuiObject | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiObject"): GuiObject | undefined;
-}
+type GuiObject = Rbx_GuiObject & Base<Rbx_GuiObject> & Indexable<Rbx_GuiObject>;
 
 // Frame
 interface Rbx_Frame extends Rbx_GuiObject {
 	/** Determines how a frame will look. Uses Enum.FrameStyle. [More info](http://wiki.roblox.com/index.php?title=API:Enum/FrameStyle) */
 	Style: Enum.FrameStyle;
 }
-interface Frame extends Rbx_Frame, Base<Rbx_Frame>, AnyIndex {}
-/** A container object used to layout other GUI objects */
-declare class Frame {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Frame"): this is Frame;
-	FindFirstAncestorOfClass(className: "Frame"): Frame | undefined;
-	FindFirstAncestorWhichIsA(className: "Frame"): Frame | undefined;
-	FindFirstChildOfClass(className: "Frame"): Frame | undefined;
-	FindFirstAncestorWhichIsA(className: "Frame"): Frame | undefined;
-}
+type Frame = Rbx_Frame & Base<Rbx_Frame> & Indexable<Rbx_Frame>;
 
 // GuiButton
 interface Rbx_GuiButton extends Rbx_GuiObject {
@@ -2416,32 +2009,21 @@ interface Rbx_GuiButton extends Rbx_GuiObject {
 	Selected: boolean;
 	/** Determines how a button will look, including mouse event states. Uses Enum.ButtonStyle. [More info](http://wiki.roblox.com/index.php?title=API:Class/GuiButton/Style) */
 	Style: Enum.ButtonStyle;
-	Activated: RBXScriptSignal<(inputObject: Instance) => void>;
+	readonly Activated: RBXScriptSignal<(inputObject: Instance) => void>;
 	/** Fired when the mouse is over the button, and the mouse down and up events fire without the mouse leaving the button. */
-	MouseButton1Click: RBXScriptSignal<() => void>;
+	readonly MouseButton1Click: RBXScriptSignal<() => void>;
 	/** Fired when the mouse button is pushed down on a button. */
-	MouseButton1Down: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseButton1Down: RBXScriptSignal<(x: number, y: number) => void>;
 	/** Fired when the mouse button is released on a button. */
-	MouseButton1Up: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseButton1Up: RBXScriptSignal<(x: number, y: number) => void>;
 	/** This function currently does not work :( */
-	MouseButton2Click: RBXScriptSignal<() => void>;
+	readonly MouseButton2Click: RBXScriptSignal<() => void>;
 	/** This function currently does not work :( */
-	MouseButton2Down: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseButton2Down: RBXScriptSignal<(x: number, y: number) => void>;
 	/** This function currently does not work :( */
-	MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
+	readonly MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
 }
-interface GuiButton extends Rbx_GuiButton, Base<Rbx_GuiButton>, AnyIndex {}
-/** A GUI button containing an Image */
-declare abstract class GuiButton {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GuiButton"): this is GuiButton;
-	FindFirstAncestorOfClass(className: "GuiButton"): GuiButton | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiButton"): GuiButton | undefined;
-	FindFirstChildOfClass(className: "GuiButton"): GuiButton | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiButton"): GuiButton | undefined;
-}
+type GuiButton = Rbx_GuiButton & Base<Rbx_GuiButton> & Indexable<Rbx_GuiButton>;
 
 // ImageButton
 interface Rbx_ImageButton extends Rbx_GuiButton {
@@ -2458,21 +2040,11 @@ interface Rbx_ImageButton extends Rbx_GuiButton {
 	ScaleType: Enum.ScaleType;
 	/** If ScaleType is set to Slice, this Rect is used to specify the central part of the image. Everything outside of this is considered to be the border. */
 	SliceCenter: Rect;
+	SliceScale: number;
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 }
-interface ImageButton extends Rbx_ImageButton, Base<Rbx_ImageButton>, AnyIndex {}
-/** A GUI button containing an Image */
-declare class ImageButton {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ImageButton"): this is ImageButton;
-	FindFirstAncestorOfClass(className: "ImageButton"): ImageButton | undefined;
-	FindFirstAncestorWhichIsA(className: "ImageButton"): ImageButton | undefined;
-	FindFirstChildOfClass(className: "ImageButton"): ImageButton | undefined;
-	FindFirstAncestorWhichIsA(className: "ImageButton"): ImageButton | undefined;
-}
+type ImageButton = Rbx_ImageButton & Base<Rbx_ImageButton> & Indexable<Rbx_ImageButton>;
 
 // TextButton
 interface Rbx_TextButton extends Rbx_GuiButton {
@@ -2493,33 +2065,14 @@ interface Rbx_TextButton extends Rbx_GuiButton {
 	TextXAlignment: Enum.TextXAlignment;
 	TextYAlignment: Enum.TextYAlignment;
 }
-interface TextButton extends Rbx_TextButton, Base<Rbx_TextButton>, AnyIndex {}
-/** A GUI button containing text */
-declare class TextButton {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "TextButton"): this is TextButton;
-	FindFirstAncestorOfClass(className: "TextButton"): TextButton | undefined;
-	FindFirstAncestorWhichIsA(className: "TextButton"): TextButton | undefined;
-	FindFirstChildOfClass(className: "TextButton"): TextButton | undefined;
-	FindFirstAncestorWhichIsA(className: "TextButton"): TextButton | undefined;
-}
+type TextButton = Rbx_TextButton & Base<Rbx_TextButton> & Indexable<Rbx_TextButton>;
 
 // GuiLabel
 interface Rbx_GuiLabel extends Rbx_GuiObject {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__39: never;
 }
-interface GuiLabel extends Rbx_GuiLabel, Base<Rbx_GuiLabel>, AnyIndex {}
-declare abstract class GuiLabel {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GuiLabel"): this is GuiLabel;
-	FindFirstAncestorOfClass(className: "GuiLabel"): GuiLabel | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiLabel"): GuiLabel | undefined;
-	FindFirstChildOfClass(className: "GuiLabel"): GuiLabel | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiLabel"): GuiLabel | undefined;
-}
+type GuiLabel = Rbx_GuiLabel & Base<Rbx_GuiLabel> & Indexable<Rbx_GuiLabel>;
 
 // ImageLabel
 interface Rbx_ImageLabel extends Rbx_GuiLabel {
@@ -2534,21 +2087,11 @@ interface Rbx_ImageLabel extends Rbx_GuiLabel {
 	ScaleType: Enum.ScaleType;
 	/** If ScaleType is set to Slice, this Rect is used to specify the central part of the image. Everything outside of this is considered to be the border. */
 	SliceCenter: Rect;
+	SliceScale: number;
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 }
-interface ImageLabel extends Rbx_ImageLabel, Base<Rbx_ImageLabel>, AnyIndex {}
-/** A GUI object containing an Image */
-declare class ImageLabel {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ImageLabel"): this is ImageLabel;
-	FindFirstAncestorOfClass(className: "ImageLabel"): ImageLabel | undefined;
-	FindFirstAncestorWhichIsA(className: "ImageLabel"): ImageLabel | undefined;
-	FindFirstChildOfClass(className: "ImageLabel"): ImageLabel | undefined;
-	FindFirstAncestorWhichIsA(className: "ImageLabel"): ImageLabel | undefined;
-}
+type ImageLabel = Rbx_ImageLabel & Base<Rbx_ImageLabel> & Indexable<Rbx_ImageLabel>;
 
 // TextLabel
 interface Rbx_TextLabel extends Rbx_GuiLabel {
@@ -2569,18 +2112,7 @@ interface Rbx_TextLabel extends Rbx_GuiLabel {
 	TextXAlignment: Enum.TextXAlignment;
 	TextYAlignment: Enum.TextYAlignment;
 }
-interface TextLabel extends Rbx_TextLabel, Base<Rbx_TextLabel>, AnyIndex {}
-/** A GUI object containing text */
-declare class TextLabel {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "TextLabel"): this is TextLabel;
-	FindFirstAncestorOfClass(className: "TextLabel"): TextLabel | undefined;
-	FindFirstAncestorWhichIsA(className: "TextLabel"): TextLabel | undefined;
-	FindFirstChildOfClass(className: "TextLabel"): TextLabel | undefined;
-	FindFirstAncestorWhichIsA(className: "TextLabel"): TextLabel | undefined;
-}
+type TextLabel = Rbx_TextLabel & Base<Rbx_TextLabel> & Indexable<Rbx_TextLabel>;
 
 // ScrollingFrame
 interface Rbx_ScrollingFrame extends Rbx_GuiObject {
@@ -2608,22 +2140,12 @@ interface Rbx_ScrollingFrame extends Rbx_GuiObject {
 	VerticalScrollBarInset: Enum.ScrollBarInset;
 	VerticalScrollBarPosition: Enum.VerticalScrollBarPosition;
 }
-interface ScrollingFrame extends Rbx_ScrollingFrame, Base<Rbx_ScrollingFrame>, AnyIndex {}
-/** A container object used to layout other GUI objects, and allows for scrolling. */
-declare class ScrollingFrame {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ScrollingFrame"): this is ScrollingFrame;
-	FindFirstAncestorOfClass(className: "ScrollingFrame"): ScrollingFrame | undefined;
-	FindFirstAncestorWhichIsA(className: "ScrollingFrame"): ScrollingFrame | undefined;
-	FindFirstChildOfClass(className: "ScrollingFrame"): ScrollingFrame | undefined;
-	FindFirstAncestorWhichIsA(className: "ScrollingFrame"): ScrollingFrame | undefined;
-}
+type ScrollingFrame = Rbx_ScrollingFrame & Base<Rbx_ScrollingFrame> & Indexable<Rbx_ScrollingFrame>;
 
 // TextBox
 interface Rbx_TextBox extends Rbx_GuiObject {
 	ClearTextOnFocus: boolean;
+	CursorPosition: number;
 	Font: Enum.Font;
 	LineHeight: number;
 	MultiLine: boolean;
@@ -2646,21 +2168,21 @@ interface Rbx_TextBox extends Rbx_GuiObject {
 	CaptureFocus(): void;
 	IsFocused(): boolean;
 	ReleaseFocus(submitted?: boolean): void;
-	FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: Instance) => void>;
-	Focused: RBXScriptSignal<() => void>;
+	readonly FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: Instance) => void>;
+	readonly Focused: RBXScriptSignal<() => void>;
 }
-interface TextBox extends Rbx_TextBox, Base<Rbx_TextBox>, AnyIndex {}
-/** A text entry box */
-declare class TextBox {
-	constructor(parent?: Instance);
+type TextBox = Rbx_TextBox & Base<Rbx_TextBox> & Indexable<Rbx_TextBox>;
+
+// ViewportFrame
+interface Rbx_ViewportFrame extends Rbx_GuiObject {
+	/** Current Camera of children objects */
+	CurrentCamera: Camera;
+	/** The rendered image of the ViewportFrame will be mutiplied by this color */
+	ImageColor3: Color3;
+	/** A number value that specifies how transparent the rendered image of the ViewportFrame is */
+	ImageTransparency: number;
 }
-interface Rbx_Instance {
-	IsA(className: "TextBox"): this is TextBox;
-	FindFirstAncestorOfClass(className: "TextBox"): TextBox | undefined;
-	FindFirstAncestorWhichIsA(className: "TextBox"): TextBox | undefined;
-	FindFirstChildOfClass(className: "TextBox"): TextBox | undefined;
-	FindFirstAncestorWhichIsA(className: "TextBox"): TextBox | undefined;
-}
+type ViewportFrame = Rbx_ViewportFrame & Base<Rbx_ViewportFrame> & Indexable<Rbx_ViewportFrame>;
 
 // LayerCollector
 interface Rbx_LayerCollector extends Rbx_GuiBase2d {
@@ -2668,18 +2190,7 @@ interface Rbx_LayerCollector extends Rbx_GuiBase2d {
 	ResetOnSpawn: boolean;
 	ZIndexBehavior: Enum.ZIndexBehavior;
 }
-interface LayerCollector extends Rbx_LayerCollector, Base<Rbx_LayerCollector>, AnyIndex {}
-/** The base class of ScreenGui, BillboardGui, and SurfaceGui. */
-declare abstract class LayerCollector {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "LayerCollector"): this is LayerCollector;
-	FindFirstAncestorOfClass(className: "LayerCollector"): LayerCollector | undefined;
-	FindFirstAncestorWhichIsA(className: "LayerCollector"): LayerCollector | undefined;
-	FindFirstChildOfClass(className: "LayerCollector"): LayerCollector | undefined;
-	FindFirstAncestorWhichIsA(className: "LayerCollector"): LayerCollector | undefined;
-}
+type LayerCollector = Rbx_LayerCollector & Base<Rbx_LayerCollector> & Indexable<Rbx_LayerCollector>;
 
 // BillboardGui
 interface Rbx_BillboardGui extends Rbx_LayerCollector {
@@ -2702,100 +2213,41 @@ interface Rbx_BillboardGui extends Rbx_LayerCollector {
 	StudsOffset: Vector3;
 	StudsOffsetWorldSpace: Vector3;
 }
-interface BillboardGui extends Rbx_BillboardGui, Base<Rbx_BillboardGui>, AnyIndex {}
-/** A GUI that adorns an object in the 3D world.  Add Frames/Labels/Buttons to this object to have them rendered while attached to a 3D object */
-declare class BillboardGui {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BillboardGui"): this is BillboardGui;
-	FindFirstAncestorOfClass(className: "BillboardGui"): BillboardGui | undefined;
-	FindFirstAncestorWhichIsA(className: "BillboardGui"): BillboardGui | undefined;
-	FindFirstChildOfClass(className: "BillboardGui"): BillboardGui | undefined;
-	FindFirstAncestorWhichIsA(className: "BillboardGui"): BillboardGui | undefined;
-}
+type BillboardGui = Rbx_BillboardGui & Base<Rbx_BillboardGui> & Indexable<Rbx_BillboardGui>;
 
 // PluginGui
 interface Rbx_PluginGui extends Rbx_LayerCollector {
 	Title: string;
 	BindToClose(callback?: Function): void;
 }
-interface PluginGui extends Rbx_PluginGui, Base<Rbx_PluginGui>, AnyIndex {}
-declare abstract class PluginGui {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PluginGui"): this is PluginGui;
-	FindFirstAncestorOfClass(className: "PluginGui"): PluginGui | undefined;
-	FindFirstAncestorWhichIsA(className: "PluginGui"): PluginGui | undefined;
-	FindFirstChildOfClass(className: "PluginGui"): PluginGui | undefined;
-	FindFirstAncestorWhichIsA(className: "PluginGui"): PluginGui | undefined;
-}
+type PluginGui = Rbx_PluginGui & Base<Rbx_PluginGui> & Indexable<Rbx_PluginGui>;
 
 // DockWidgetPluginGui
 interface Rbx_DockWidgetPluginGui extends Rbx_PluginGui {
 	readonly HostWidgetWasRestored: boolean;
 }
-interface DockWidgetPluginGui extends Rbx_DockWidgetPluginGui, Base<Rbx_DockWidgetPluginGui>, AnyIndex {}
-declare abstract class DockWidgetPluginGui {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "DockWidgetPluginGui"): this is DockWidgetPluginGui;
-	FindFirstAncestorOfClass(className: "DockWidgetPluginGui"): DockWidgetPluginGui | undefined;
-	FindFirstAncestorWhichIsA(className: "DockWidgetPluginGui"): DockWidgetPluginGui | undefined;
-	FindFirstChildOfClass(className: "DockWidgetPluginGui"): DockWidgetPluginGui | undefined;
-	FindFirstAncestorWhichIsA(className: "DockWidgetPluginGui"): DockWidgetPluginGui | undefined;
-}
+type DockWidgetPluginGui = Rbx_DockWidgetPluginGui & Base<Rbx_DockWidgetPluginGui> & Indexable<Rbx_DockWidgetPluginGui>;
 
 // QWidgetPluginGui
 interface Rbx_QWidgetPluginGui extends Rbx_PluginGui {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__40: never;
 }
-interface QWidgetPluginGui extends Rbx_QWidgetPluginGui, Base<Rbx_QWidgetPluginGui>, AnyIndex {}
-declare abstract class QWidgetPluginGui {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "QWidgetPluginGui"): this is QWidgetPluginGui;
-	FindFirstAncestorOfClass(className: "QWidgetPluginGui"): QWidgetPluginGui | undefined;
-	FindFirstAncestorWhichIsA(className: "QWidgetPluginGui"): QWidgetPluginGui | undefined;
-	FindFirstChildOfClass(className: "QWidgetPluginGui"): QWidgetPluginGui | undefined;
-	FindFirstAncestorWhichIsA(className: "QWidgetPluginGui"): QWidgetPluginGui | undefined;
-}
+type QWidgetPluginGui = Rbx_QWidgetPluginGui & Base<Rbx_QWidgetPluginGui> & Indexable<Rbx_QWidgetPluginGui>;
 
 // ScreenGui
 interface Rbx_ScreenGui extends Rbx_LayerCollector {
 	DisplayOrder: number;
 	IgnoreGuiInset: boolean;
 }
-interface ScreenGui extends Rbx_ScreenGui, Base<Rbx_ScreenGui>, AnyIndex {}
-/** The core GUI object on which tools are built.  Add Frames/Labels/Buttons to this object to have them rendered as a 2D overlay */
-declare class ScreenGui {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ScreenGui"): this is ScreenGui;
-	FindFirstAncestorOfClass(className: "ScreenGui"): ScreenGui | undefined;
-	FindFirstAncestorWhichIsA(className: "ScreenGui"): ScreenGui | undefined;
-	FindFirstChildOfClass(className: "ScreenGui"): ScreenGui | undefined;
-	FindFirstAncestorWhichIsA(className: "ScreenGui"): ScreenGui | undefined;
-}
+type ScreenGui = Rbx_ScreenGui & Base<Rbx_ScreenGui> & Indexable<Rbx_ScreenGui>;
 
 // GuiMain
 interface Rbx_GuiMain extends Rbx_ScreenGui {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__41: never;
 }
-interface GuiMain extends Rbx_GuiMain, Base<Rbx_GuiMain>, AnyIndex {}
-/** Deprecated, please use ScreenGui */
-declare class GuiMain {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GuiMain"): this is GuiMain;
-	FindFirstAncestorOfClass(className: "GuiMain"): GuiMain | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiMain"): GuiMain | undefined;
-	FindFirstChildOfClass(className: "GuiMain"): GuiMain | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiMain"): GuiMain | undefined;
-}
+type GuiMain = Rbx_GuiMain & Base<Rbx_GuiMain> & Indexable<Rbx_GuiMain>;
 
 // SurfaceGui
 interface Rbx_SurfaceGui extends Rbx_LayerCollector {
@@ -2810,18 +2262,7 @@ interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 	ToolPunchThroughDistance: number;
 	ZOffset: number;
 }
-interface SurfaceGui extends Rbx_SurfaceGui, Base<Rbx_SurfaceGui>, AnyIndex {}
-/** Renders its contained GuiObjects flat against the face of a part. */
-declare class SurfaceGui {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SurfaceGui"): this is SurfaceGui;
-	FindFirstAncestorOfClass(className: "SurfaceGui"): SurfaceGui | undefined;
-	FindFirstAncestorWhichIsA(className: "SurfaceGui"): SurfaceGui | undefined;
-	FindFirstChildOfClass(className: "SurfaceGui"): SurfaceGui | undefined;
-	FindFirstAncestorWhichIsA(className: "SurfaceGui"): SurfaceGui | undefined;
-}
+type SurfaceGui = Rbx_SurfaceGui & Base<Rbx_SurfaceGui> & Indexable<Rbx_SurfaceGui>;
 
 // GuiBase3d
 interface Rbx_GuiBase3d extends Rbx_GuiBase {
@@ -2829,17 +2270,7 @@ interface Rbx_GuiBase3d extends Rbx_GuiBase {
 	Transparency: number;
 	Visible: boolean;
 }
-interface GuiBase3d extends Rbx_GuiBase3d, Base<Rbx_GuiBase3d>, AnyIndex {}
-declare abstract class GuiBase3d {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GuiBase3d"): this is GuiBase3d;
-	FindFirstAncestorOfClass(className: "GuiBase3d"): GuiBase3d | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiBase3d"): GuiBase3d | undefined;
-	FindFirstChildOfClass(className: "GuiBase3d"): GuiBase3d | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiBase3d"): GuiBase3d | undefined;
-}
+type GuiBase3d = Rbx_GuiBase3d & Base<Rbx_GuiBase3d> & Indexable<Rbx_GuiBase3d>;
 
 // FloorWire
 interface Rbx_FloorWire extends Rbx_GuiBase3d {
@@ -2860,34 +2291,13 @@ interface Rbx_FloorWire extends Rbx_GuiBase3d {
 	/** How thick the wire is. */
 	WireRadius: number;
 }
-interface FloorWire extends Rbx_FloorWire, Base<Rbx_FloorWire>, AnyIndex {}
-/** Renders a thin cylinder than can be adorned with textures that 'flow' from one object to the next. Has basic pathing abilities and attempts to to not intersect anything. [More info](http://wiki.roblox.com/index.php/FloorWire_Guide) */
-declare class FloorWire {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "FloorWire"): this is FloorWire;
-	FindFirstAncestorOfClass(className: "FloorWire"): FloorWire | undefined;
-	FindFirstAncestorWhichIsA(className: "FloorWire"): FloorWire | undefined;
-	FindFirstChildOfClass(className: "FloorWire"): FloorWire | undefined;
-	FindFirstAncestorWhichIsA(className: "FloorWire"): FloorWire | undefined;
-}
+type FloorWire = Rbx_FloorWire & Base<Rbx_FloorWire> & Indexable<Rbx_FloorWire>;
 
 // PVAdornment
 interface Rbx_PVAdornment extends Rbx_GuiBase3d {
 	Adornee: PVInstance;
 }
-interface PVAdornment extends Rbx_PVAdornment, Base<Rbx_PVAdornment>, AnyIndex {}
-declare abstract class PVAdornment {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PVAdornment"): this is PVAdornment;
-	FindFirstAncestorOfClass(className: "PVAdornment"): PVAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "PVAdornment"): PVAdornment | undefined;
-	FindFirstChildOfClass(className: "PVAdornment"): PVAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "PVAdornment"): PVAdornment | undefined;
-}
+type PVAdornment = Rbx_PVAdornment & Base<Rbx_PVAdornment> & Indexable<Rbx_PVAdornment>;
 
 // HandleAdornment
 interface Rbx_HandleAdornment extends Rbx_PVAdornment {
@@ -2895,137 +2305,59 @@ interface Rbx_HandleAdornment extends Rbx_PVAdornment {
 	CFrame: CFrame;
 	SizeRelativeOffset: Vector3;
 	ZIndex: number;
-	MouseButton1Down: RBXScriptSignal<() => void>;
-	MouseButton1Up: RBXScriptSignal<() => void>;
-	MouseEnter: RBXScriptSignal<() => void>;
-	MouseLeave: RBXScriptSignal<() => void>;
+	readonly MouseButton1Down: RBXScriptSignal<() => void>;
+	readonly MouseButton1Up: RBXScriptSignal<() => void>;
+	readonly MouseEnter: RBXScriptSignal<() => void>;
+	readonly MouseLeave: RBXScriptSignal<() => void>;
 }
-interface HandleAdornment extends Rbx_HandleAdornment, Base<Rbx_HandleAdornment>, AnyIndex {}
-declare abstract class HandleAdornment {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "HandleAdornment"): this is HandleAdornment;
-	FindFirstAncestorOfClass(className: "HandleAdornment"): HandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "HandleAdornment"): HandleAdornment | undefined;
-	FindFirstChildOfClass(className: "HandleAdornment"): HandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "HandleAdornment"): HandleAdornment | undefined;
-}
+type HandleAdornment = Rbx_HandleAdornment & Base<Rbx_HandleAdornment> & Indexable<Rbx_HandleAdornment>;
 
 // BoxHandleAdornment
 interface Rbx_BoxHandleAdornment extends Rbx_HandleAdornment {
 	Size: Vector3;
 }
-interface BoxHandleAdornment extends Rbx_BoxHandleAdornment, Base<Rbx_BoxHandleAdornment>, AnyIndex {}
-declare class BoxHandleAdornment {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BoxHandleAdornment"): this is BoxHandleAdornment;
-	FindFirstAncestorOfClass(className: "BoxHandleAdornment"): BoxHandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "BoxHandleAdornment"): BoxHandleAdornment | undefined;
-	FindFirstChildOfClass(className: "BoxHandleAdornment"): BoxHandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "BoxHandleAdornment"): BoxHandleAdornment | undefined;
-}
+type BoxHandleAdornment = Rbx_BoxHandleAdornment & Base<Rbx_BoxHandleAdornment> & Indexable<Rbx_BoxHandleAdornment>;
 
 // ConeHandleAdornment
 interface Rbx_ConeHandleAdornment extends Rbx_HandleAdornment {
 	Height: number;
 	Radius: number;
 }
-interface ConeHandleAdornment extends Rbx_ConeHandleAdornment, Base<Rbx_ConeHandleAdornment>, AnyIndex {}
-declare class ConeHandleAdornment {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ConeHandleAdornment"): this is ConeHandleAdornment;
-	FindFirstAncestorOfClass(className: "ConeHandleAdornment"): ConeHandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "ConeHandleAdornment"): ConeHandleAdornment | undefined;
-	FindFirstChildOfClass(className: "ConeHandleAdornment"): ConeHandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "ConeHandleAdornment"): ConeHandleAdornment | undefined;
-}
+type ConeHandleAdornment = Rbx_ConeHandleAdornment & Base<Rbx_ConeHandleAdornment> & Indexable<Rbx_ConeHandleAdornment>;
 
 // CylinderHandleAdornment
 interface Rbx_CylinderHandleAdornment extends Rbx_HandleAdornment {
 	Height: number;
 	Radius: number;
 }
-interface CylinderHandleAdornment extends Rbx_CylinderHandleAdornment, Base<Rbx_CylinderHandleAdornment>, AnyIndex {}
-declare class CylinderHandleAdornment {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "CylinderHandleAdornment"): this is CylinderHandleAdornment;
-	FindFirstAncestorOfClass(className: "CylinderHandleAdornment"): CylinderHandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "CylinderHandleAdornment"): CylinderHandleAdornment | undefined;
-	FindFirstChildOfClass(className: "CylinderHandleAdornment"): CylinderHandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "CylinderHandleAdornment"): CylinderHandleAdornment | undefined;
-}
+type CylinderHandleAdornment = Rbx_CylinderHandleAdornment & Base<Rbx_CylinderHandleAdornment> & Indexable<Rbx_CylinderHandleAdornment>;
 
 // ImageHandleAdornment
 interface Rbx_ImageHandleAdornment extends Rbx_HandleAdornment {
 	Image: string;
 	Size: Vector2;
 }
-interface ImageHandleAdornment extends Rbx_ImageHandleAdornment, Base<Rbx_ImageHandleAdornment>, AnyIndex {}
-declare class ImageHandleAdornment {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ImageHandleAdornment"): this is ImageHandleAdornment;
-	FindFirstAncestorOfClass(className: "ImageHandleAdornment"): ImageHandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "ImageHandleAdornment"): ImageHandleAdornment | undefined;
-	FindFirstChildOfClass(className: "ImageHandleAdornment"): ImageHandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "ImageHandleAdornment"): ImageHandleAdornment | undefined;
-}
+type ImageHandleAdornment = Rbx_ImageHandleAdornment & Base<Rbx_ImageHandleAdornment> & Indexable<Rbx_ImageHandleAdornment>;
 
 // LineHandleAdornment
 interface Rbx_LineHandleAdornment extends Rbx_HandleAdornment {
 	Length: number;
 	Thickness: number;
 }
-interface LineHandleAdornment extends Rbx_LineHandleAdornment, Base<Rbx_LineHandleAdornment>, AnyIndex {}
-declare class LineHandleAdornment {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "LineHandleAdornment"): this is LineHandleAdornment;
-	FindFirstAncestorOfClass(className: "LineHandleAdornment"): LineHandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "LineHandleAdornment"): LineHandleAdornment | undefined;
-	FindFirstChildOfClass(className: "LineHandleAdornment"): LineHandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "LineHandleAdornment"): LineHandleAdornment | undefined;
-}
+type LineHandleAdornment = Rbx_LineHandleAdornment & Base<Rbx_LineHandleAdornment> & Indexable<Rbx_LineHandleAdornment>;
 
 // SphereHandleAdornment
 interface Rbx_SphereHandleAdornment extends Rbx_HandleAdornment {
 	Radius: number;
 }
-interface SphereHandleAdornment extends Rbx_SphereHandleAdornment, Base<Rbx_SphereHandleAdornment>, AnyIndex {}
-declare class SphereHandleAdornment {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SphereHandleAdornment"): this is SphereHandleAdornment;
-	FindFirstAncestorOfClass(className: "SphereHandleAdornment"): SphereHandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "SphereHandleAdornment"): SphereHandleAdornment | undefined;
-	FindFirstChildOfClass(className: "SphereHandleAdornment"): SphereHandleAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "SphereHandleAdornment"): SphereHandleAdornment | undefined;
-}
+type SphereHandleAdornment = Rbx_SphereHandleAdornment & Base<Rbx_SphereHandleAdornment> & Indexable<Rbx_SphereHandleAdornment>;
 
 // ParabolaAdornment
 interface Rbx_ParabolaAdornment extends Rbx_PVAdornment {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__42: never;
 }
-interface ParabolaAdornment extends Rbx_ParabolaAdornment, Base<Rbx_ParabolaAdornment>, AnyIndex {}
-declare class ParabolaAdornment {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ParabolaAdornment"): this is ParabolaAdornment;
-	FindFirstAncestorOfClass(className: "ParabolaAdornment"): ParabolaAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "ParabolaAdornment"): ParabolaAdornment | undefined;
-	FindFirstChildOfClass(className: "ParabolaAdornment"): ParabolaAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "ParabolaAdornment"): ParabolaAdornment | undefined;
-}
+type ParabolaAdornment = Rbx_ParabolaAdornment & Base<Rbx_ParabolaAdornment> & Indexable<Rbx_ParabolaAdornment>;
 
 // SelectionBox
 interface Rbx_SelectionBox extends Rbx_PVAdornment {
@@ -3033,244 +2365,103 @@ interface Rbx_SelectionBox extends Rbx_PVAdornment {
 	SurfaceColor3: Color3;
 	SurfaceTransparency: number;
 }
-interface SelectionBox extends Rbx_SelectionBox, Base<Rbx_SelectionBox>, AnyIndex {}
-/** A 3D GUI object to represent the visible selection around an object */
-declare class SelectionBox {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SelectionBox"): this is SelectionBox;
-	FindFirstAncestorOfClass(className: "SelectionBox"): SelectionBox | undefined;
-	FindFirstAncestorWhichIsA(className: "SelectionBox"): SelectionBox | undefined;
-	FindFirstChildOfClass(className: "SelectionBox"): SelectionBox | undefined;
-	FindFirstAncestorWhichIsA(className: "SelectionBox"): SelectionBox | undefined;
-}
+type SelectionBox = Rbx_SelectionBox & Base<Rbx_SelectionBox> & Indexable<Rbx_SelectionBox>;
 
 // SelectionSphere
 interface Rbx_SelectionSphere extends Rbx_PVAdornment {
 	SurfaceColor3: Color3;
 	SurfaceTransparency: number;
 }
-interface SelectionSphere extends Rbx_SelectionSphere, Base<Rbx_SelectionSphere>, AnyIndex {}
-/** A 3D GUI object to represent the visible selection around an object */
-declare class SelectionSphere {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SelectionSphere"): this is SelectionSphere;
-	FindFirstAncestorOfClass(className: "SelectionSphere"): SelectionSphere | undefined;
-	FindFirstAncestorWhichIsA(className: "SelectionSphere"): SelectionSphere | undefined;
-	FindFirstChildOfClass(className: "SelectionSphere"): SelectionSphere | undefined;
-	FindFirstAncestorWhichIsA(className: "SelectionSphere"): SelectionSphere | undefined;
-}
+type SelectionSphere = Rbx_SelectionSphere & Base<Rbx_SelectionSphere> & Indexable<Rbx_SelectionSphere>;
 
 // PartAdornment
 interface Rbx_PartAdornment extends Rbx_GuiBase3d {
 	Adornee: BasePart;
 }
-interface PartAdornment extends Rbx_PartAdornment, Base<Rbx_PartAdornment>, AnyIndex {}
-declare abstract class PartAdornment {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PartAdornment"): this is PartAdornment;
-	FindFirstAncestorOfClass(className: "PartAdornment"): PartAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "PartAdornment"): PartAdornment | undefined;
-	FindFirstChildOfClass(className: "PartAdornment"): PartAdornment | undefined;
-	FindFirstAncestorWhichIsA(className: "PartAdornment"): PartAdornment | undefined;
-}
+type PartAdornment = Rbx_PartAdornment & Base<Rbx_PartAdornment> & Indexable<Rbx_PartAdornment>;
 
 // HandlesBase
 interface Rbx_HandlesBase extends Rbx_PartAdornment {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__43: never;
 }
-interface HandlesBase extends Rbx_HandlesBase, Base<Rbx_HandlesBase>, AnyIndex {}
-declare abstract class HandlesBase {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "HandlesBase"): this is HandlesBase;
-	FindFirstAncestorOfClass(className: "HandlesBase"): HandlesBase | undefined;
-	FindFirstAncestorWhichIsA(className: "HandlesBase"): HandlesBase | undefined;
-	FindFirstChildOfClass(className: "HandlesBase"): HandlesBase | undefined;
-	FindFirstAncestorWhichIsA(className: "HandlesBase"): HandlesBase | undefined;
-}
+type HandlesBase = Rbx_HandlesBase & Base<Rbx_HandlesBase> & Indexable<Rbx_HandlesBase>;
 
 // ArcHandles
 interface Rbx_ArcHandles extends Rbx_HandlesBase {
 	Axes: Axes;
-	MouseButton1Down: RBXScriptSignal<(axis: Enum.Axis) => void>;
-	MouseButton1Up: RBXScriptSignal<(axis: Enum.Axis) => void>;
-	MouseDrag: RBXScriptSignal<(axis: Enum.Axis, relativeAngle: number, deltaRadius: number) => void>;
-	MouseEnter: RBXScriptSignal<(axis: Enum.Axis) => void>;
-	MouseLeave: RBXScriptSignal<(axis: Enum.Axis) => void>;
+	readonly MouseButton1Down: RBXScriptSignal<(axis: Enum.Axis) => void>;
+	readonly MouseButton1Up: RBXScriptSignal<(axis: Enum.Axis) => void>;
+	readonly MouseDrag: RBXScriptSignal<(axis: Enum.Axis, relativeAngle: number, deltaRadius: number) => void>;
+	readonly MouseEnter: RBXScriptSignal<(axis: Enum.Axis) => void>;
+	readonly MouseLeave: RBXScriptSignal<(axis: Enum.Axis) => void>;
 }
-interface ArcHandles extends Rbx_ArcHandles, Base<Rbx_ArcHandles>, AnyIndex {}
-/** A 3D GUI object to represent draggable arc handles */
-declare class ArcHandles {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ArcHandles"): this is ArcHandles;
-	FindFirstAncestorOfClass(className: "ArcHandles"): ArcHandles | undefined;
-	FindFirstAncestorWhichIsA(className: "ArcHandles"): ArcHandles | undefined;
-	FindFirstChildOfClass(className: "ArcHandles"): ArcHandles | undefined;
-	FindFirstAncestorWhichIsA(className: "ArcHandles"): ArcHandles | undefined;
-}
+type ArcHandles = Rbx_ArcHandles & Base<Rbx_ArcHandles> & Indexable<Rbx_ArcHandles>;
 
 // Handles
 interface Rbx_Handles extends Rbx_HandlesBase {
 	Faces: Faces;
 	Style: Enum.HandlesStyle;
-	MouseButton1Down: RBXScriptSignal<(face: Enum.NormalId) => void>;
-	MouseButton1Up: RBXScriptSignal<(face: Enum.NormalId) => void>;
-	MouseDrag: RBXScriptSignal<(face: Enum.NormalId, distance: number) => void>;
-	MouseEnter: RBXScriptSignal<(face: Enum.NormalId) => void>;
-	MouseLeave: RBXScriptSignal<(face: Enum.NormalId) => void>;
+	readonly MouseButton1Down: RBXScriptSignal<(face: Enum.NormalId) => void>;
+	readonly MouseButton1Up: RBXScriptSignal<(face: Enum.NormalId) => void>;
+	readonly MouseDrag: RBXScriptSignal<(face: Enum.NormalId, distance: number) => void>;
+	readonly MouseEnter: RBXScriptSignal<(face: Enum.NormalId) => void>;
+	readonly MouseLeave: RBXScriptSignal<(face: Enum.NormalId) => void>;
 }
-interface Handles extends Rbx_Handles, Base<Rbx_Handles>, AnyIndex {}
-/** A 3D GUI object to represent draggable handles */
-declare class Handles {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Handles"): this is Handles;
-	FindFirstAncestorOfClass(className: "Handles"): Handles | undefined;
-	FindFirstAncestorWhichIsA(className: "Handles"): Handles | undefined;
-	FindFirstChildOfClass(className: "Handles"): Handles | undefined;
-	FindFirstAncestorWhichIsA(className: "Handles"): Handles | undefined;
-}
+type Handles = Rbx_Handles & Base<Rbx_Handles> & Indexable<Rbx_Handles>;
 
 // SurfaceSelection
 interface Rbx_SurfaceSelection extends Rbx_PartAdornment {
 	TargetSurface: Enum.NormalId;
 }
-interface SurfaceSelection extends Rbx_SurfaceSelection, Base<Rbx_SurfaceSelection>, AnyIndex {}
-/** A 3D GUI object to represent the visible selection around a face of an object */
-declare class SurfaceSelection {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SurfaceSelection"): this is SurfaceSelection;
-	FindFirstAncestorOfClass(className: "SurfaceSelection"): SurfaceSelection | undefined;
-	FindFirstAncestorWhichIsA(className: "SurfaceSelection"): SurfaceSelection | undefined;
-	FindFirstChildOfClass(className: "SurfaceSelection"): SurfaceSelection | undefined;
-	FindFirstAncestorWhichIsA(className: "SurfaceSelection"): SurfaceSelection | undefined;
-}
+type SurfaceSelection = Rbx_SurfaceSelection & Base<Rbx_SurfaceSelection> & Indexable<Rbx_SurfaceSelection>;
 
 // SelectionLasso
 interface Rbx_SelectionLasso extends Rbx_GuiBase3d {
 	Humanoid: Humanoid;
 }
-interface SelectionLasso extends Rbx_SelectionLasso, Base<Rbx_SelectionLasso>, AnyIndex {}
-declare abstract class SelectionLasso {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SelectionLasso"): this is SelectionLasso;
-	FindFirstAncestorOfClass(className: "SelectionLasso"): SelectionLasso | undefined;
-	FindFirstAncestorWhichIsA(className: "SelectionLasso"): SelectionLasso | undefined;
-	FindFirstChildOfClass(className: "SelectionLasso"): SelectionLasso | undefined;
-	FindFirstAncestorWhichIsA(className: "SelectionLasso"): SelectionLasso | undefined;
-}
+type SelectionLasso = Rbx_SelectionLasso & Base<Rbx_SelectionLasso> & Indexable<Rbx_SelectionLasso>;
 
 // SelectionPartLasso
 interface Rbx_SelectionPartLasso extends Rbx_SelectionLasso {
 	Part: BasePart;
 }
-interface SelectionPartLasso extends Rbx_SelectionPartLasso, Base<Rbx_SelectionPartLasso>, AnyIndex {}
-/** A visual line drawn representation between two part objects */
-declare class SelectionPartLasso {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SelectionPartLasso"): this is SelectionPartLasso;
-	FindFirstAncestorOfClass(className: "SelectionPartLasso"): SelectionPartLasso | undefined;
-	FindFirstAncestorWhichIsA(className: "SelectionPartLasso"): SelectionPartLasso | undefined;
-	FindFirstChildOfClass(className: "SelectionPartLasso"): SelectionPartLasso | undefined;
-	FindFirstAncestorWhichIsA(className: "SelectionPartLasso"): SelectionPartLasso | undefined;
-}
+type SelectionPartLasso = Rbx_SelectionPartLasso & Base<Rbx_SelectionPartLasso> & Indexable<Rbx_SelectionPartLasso>;
 
 // SelectionPointLasso
 interface Rbx_SelectionPointLasso extends Rbx_SelectionLasso {
 	Point: Vector3;
 }
-interface SelectionPointLasso extends Rbx_SelectionPointLasso, Base<Rbx_SelectionPointLasso>, AnyIndex {}
-/** A visual line drawn representation between two positions */
-declare class SelectionPointLasso {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SelectionPointLasso"): this is SelectionPointLasso;
-	FindFirstAncestorOfClass(className: "SelectionPointLasso"): SelectionPointLasso | undefined;
-	FindFirstAncestorWhichIsA(className: "SelectionPointLasso"): SelectionPointLasso | undefined;
-	FindFirstChildOfClass(className: "SelectionPointLasso"): SelectionPointLasso | undefined;
-	FindFirstAncestorWhichIsA(className: "SelectionPointLasso"): SelectionPointLasso | undefined;
-}
+type SelectionPointLasso = Rbx_SelectionPointLasso & Base<Rbx_SelectionPointLasso> & Indexable<Rbx_SelectionPointLasso>;
 
 // GuiItem
 interface Rbx_GuiItem extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__44: never;
 }
-interface GuiItem extends Rbx_GuiItem, Base<Rbx_GuiItem>, AnyIndex {}
-declare abstract class GuiItem {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GuiItem"): this is GuiItem;
-	FindFirstAncestorOfClass(className: "GuiItem"): GuiItem | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiItem"): GuiItem | undefined;
-	FindFirstChildOfClass(className: "GuiItem"): GuiItem | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiItem"): GuiItem | undefined;
-}
+type GuiItem = Rbx_GuiItem & Base<Rbx_GuiItem> & Indexable<Rbx_GuiItem>;
 
 // Backpack
 interface Rbx_Backpack extends Rbx_GuiItem {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__45: never;
 }
-interface Backpack extends Rbx_Backpack, Base<Rbx_Backpack>, AnyIndex {}
-declare class Backpack {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Backpack"): this is Backpack;
-	FindFirstAncestorOfClass(className: "Backpack"): Backpack | undefined;
-	FindFirstAncestorWhichIsA(className: "Backpack"): Backpack | undefined;
-	FindFirstChildOfClass(className: "Backpack"): Backpack | undefined;
-	FindFirstAncestorWhichIsA(className: "Backpack"): Backpack | undefined;
-}
+type Backpack = Rbx_Backpack & Base<Rbx_Backpack> & Indexable<Rbx_Backpack>;
 
 // BackpackItem
 interface Rbx_BackpackItem extends Rbx_GuiItem {
 	TextureId: string;
 }
-interface BackpackItem extends Rbx_BackpackItem, Base<Rbx_BackpackItem>, AnyIndex {}
-declare abstract class BackpackItem {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BackpackItem"): this is BackpackItem;
-	FindFirstAncestorOfClass(className: "BackpackItem"): BackpackItem | undefined;
-	FindFirstAncestorWhichIsA(className: "BackpackItem"): BackpackItem | undefined;
-	FindFirstChildOfClass(className: "BackpackItem"): BackpackItem | undefined;
-	FindFirstAncestorWhichIsA(className: "BackpackItem"): BackpackItem | undefined;
-}
+type BackpackItem = Rbx_BackpackItem & Base<Rbx_BackpackItem> & Indexable<Rbx_BackpackItem>;
 
 // HopperBin
 interface Rbx_HopperBin extends Rbx_BackpackItem {
 	Active: boolean;
 	BinType: Enum.BinType;
-	Deselected: RBXScriptSignal<() => void>;
-	Selected: RBXScriptSignal<(mouse: Instance) => void>;
+	readonly Deselected: RBXScriptSignal<() => void>;
+	readonly Selected: RBXScriptSignal<(mouse: Instance) => void>;
 }
-interface HopperBin extends Rbx_HopperBin, Base<Rbx_HopperBin>, AnyIndex {}
-declare class HopperBin {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "HopperBin"): this is HopperBin;
-	FindFirstAncestorOfClass(className: "HopperBin"): HopperBin | undefined;
-	FindFirstAncestorWhichIsA(className: "HopperBin"): HopperBin | undefined;
-	FindFirstChildOfClass(className: "HopperBin"): HopperBin | undefined;
-	FindFirstAncestorWhichIsA(className: "HopperBin"): HopperBin | undefined;
-}
+type HopperBin = Rbx_HopperBin & Base<Rbx_HopperBin> & Indexable<Rbx_HopperBin>;
 
 // Tool
 interface Rbx_Tool extends Rbx_BackpackItem {
@@ -3286,96 +2477,49 @@ interface Rbx_Tool extends Rbx_BackpackItem {
 	ToolTip: string;
 	Activate(): void;
 	Deactivate(): void;
-	Activated: RBXScriptSignal<() => void>;
-	Deactivated: RBXScriptSignal<() => void>;
-	Equipped: RBXScriptSignal<(mouse: Instance) => void>;
-	Unequipped: RBXScriptSignal<() => void>;
+	readonly Activated: RBXScriptSignal<() => void>;
+	readonly Deactivated: RBXScriptSignal<() => void>;
+	readonly Unequipped: RBXScriptSignal<() => void>;
 }
-interface Tool extends Rbx_Tool, Base<Rbx_Tool>, AnyIndex {}
-declare class Tool {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Tool"): this is Tool;
-	FindFirstAncestorOfClass(className: "Tool"): Tool | undefined;
-	FindFirstAncestorWhichIsA(className: "Tool"): Tool | undefined;
-	FindFirstChildOfClass(className: "Tool"): Tool | undefined;
-	FindFirstAncestorWhichIsA(className: "Tool"): Tool | undefined;
-}
+type Tool = Rbx_Tool & Base<Rbx_Tool> & Indexable<Rbx_Tool>;
 
 // Flag
 interface Rbx_Flag extends Rbx_Tool {
 	/** The Team this flag is for. Corresponds with the TeamColors in the Teams service. */
 	TeamColor: BrickColor;
 }
-interface Flag extends Rbx_Flag, Base<Rbx_Flag>, AnyIndex {}
-declare class Flag {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Flag"): this is Flag;
-	FindFirstAncestorOfClass(className: "Flag"): Flag | undefined;
-	FindFirstAncestorWhichIsA(className: "Flag"): Flag | undefined;
-	FindFirstChildOfClass(className: "Flag"): Flag | undefined;
-	FindFirstAncestorWhichIsA(className: "Flag"): Flag | undefined;
-}
+type Flag = Rbx_Flag & Base<Rbx_Flag> & Indexable<Rbx_Flag>;
 
 // ButtonBindingWidget
 interface Rbx_ButtonBindingWidget extends Rbx_GuiItem {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__46: never;
 }
-interface ButtonBindingWidget extends Rbx_ButtonBindingWidget, Base<Rbx_ButtonBindingWidget>, AnyIndex {}
-declare abstract class ButtonBindingWidget {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ButtonBindingWidget"): this is ButtonBindingWidget;
-	FindFirstAncestorOfClass(className: "ButtonBindingWidget"): ButtonBindingWidget | undefined;
-	FindFirstAncestorWhichIsA(className: "ButtonBindingWidget"): ButtonBindingWidget | undefined;
-	FindFirstChildOfClass(className: "ButtonBindingWidget"): ButtonBindingWidget | undefined;
-	FindFirstAncestorWhichIsA(className: "ButtonBindingWidget"): ButtonBindingWidget | undefined;
-}
+type ButtonBindingWidget = Rbx_ButtonBindingWidget & Base<Rbx_ButtonBindingWidget> & Indexable<Rbx_ButtonBindingWidget>;
 
 // GuiRoot
 interface Rbx_GuiRoot extends Rbx_GuiItem {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__47: never;
 }
-interface GuiRoot extends Rbx_GuiRoot, Base<Rbx_GuiRoot>, AnyIndex {}
-declare abstract class GuiRoot {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GuiRoot"): this is GuiRoot;
-	FindFirstAncestorOfClass(className: "GuiRoot"): GuiRoot | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiRoot"): GuiRoot | undefined;
-	FindFirstChildOfClass(className: "GuiRoot"): GuiRoot | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiRoot"): GuiRoot | undefined;
-}
+type GuiRoot = Rbx_GuiRoot & Base<Rbx_GuiRoot> & Indexable<Rbx_GuiRoot>;
 
 // Hopper
 interface Rbx_Hopper extends Rbx_GuiItem {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__48: never;
 }
-type Hopper = Rbx_Hopper & Base<Rbx_Hopper> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "Hopper"): this is Hopper;
-	FindFirstAncestorOfClass(className: "Hopper"): Hopper | undefined;
-	FindFirstAncestorWhichIsA(className: "Hopper"): Hopper | undefined;
-	FindFirstChildOfClass(className: "Hopper"): Hopper | undefined;
-	FindFirstAncestorWhichIsA(className: "Hopper"): Hopper | undefined;
-}
+type Hopper = Rbx_Hopper & Base<Rbx_Hopper> & Indexable<Rbx_Hopper>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Hopper"): Hopper;
 }
 
 // StarterPack
 interface Rbx_StarterPack extends Rbx_GuiItem {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__49: never;
 }
-type StarterPack = Rbx_StarterPack & Base<Rbx_StarterPack> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "StarterPack"): this is StarterPack;
-	FindFirstAncestorOfClass(className: "StarterPack"): StarterPack | undefined;
-	FindFirstAncestorWhichIsA(className: "StarterPack"): StarterPack | undefined;
-	FindFirstChildOfClass(className: "StarterPack"): StarterPack | undefined;
-	FindFirstAncestorWhichIsA(className: "StarterPack"): StarterPack | undefined;
-}
+type StarterPack = Rbx_StarterPack & Base<Rbx_StarterPack> & Indexable<Rbx_StarterPack>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "StarterPack"): StarterPack;
 }
@@ -3389,32 +2533,20 @@ interface Rbx_GuiService extends Rbx_Instance {
 	SelectedObject: GuiObject;
 	IsTenFootInterface(): boolean;
 	RemoveSelectionGroup(selectionName: string): void;
-	MenuClosed: RBXScriptSignal<() => void>;
-	MenuOpened: RBXScriptSignal<() => void>;
+	readonly MenuClosed: RBXScriptSignal<() => void>;
+	readonly MenuOpened: RBXScriptSignal<() => void>;
 }
-type GuiService = Rbx_GuiService & Base<Rbx_GuiService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "GuiService"): this is GuiService;
-	FindFirstAncestorOfClass(className: "GuiService"): GuiService | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiService"): GuiService | undefined;
-	FindFirstChildOfClass(className: "GuiService"): GuiService | undefined;
-	FindFirstAncestorWhichIsA(className: "GuiService"): GuiService | undefined;
-}
+type GuiService = Rbx_GuiService & Base<Rbx_GuiService> & Indexable<Rbx_GuiService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "GuiService"): GuiService;
 }
 
 // GuidRegistryService
 interface Rbx_GuidRegistryService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__50: never;
 }
-type GuidRegistryService = Rbx_GuidRegistryService & Base<Rbx_GuidRegistryService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "GuidRegistryService"): this is GuidRegistryService;
-	FindFirstAncestorOfClass(className: "GuidRegistryService"): GuidRegistryService | undefined;
-	FindFirstAncestorWhichIsA(className: "GuidRegistryService"): GuidRegistryService | undefined;
-	FindFirstChildOfClass(className: "GuidRegistryService"): GuidRegistryService | undefined;
-	FindFirstAncestorWhichIsA(className: "GuidRegistryService"): GuidRegistryService | undefined;
-}
+type GuidRegistryService = Rbx_GuidRegistryService & Base<Rbx_GuidRegistryService> & Indexable<Rbx_GuidRegistryService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "GuidRegistryService"): GuidRegistryService;
 }
@@ -3424,47 +2556,27 @@ interface Rbx_HapticService extends Rbx_Instance {
 	IsMotorSupported(inputType: Enum.UserInputType, vibrationMotor: Enum.VibrationMotor): boolean;
 	IsVibrationSupported(inputType: Enum.UserInputType): boolean;
 }
-type HapticService = Rbx_HapticService & Base<Rbx_HapticService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "HapticService"): this is HapticService;
-	FindFirstAncestorOfClass(className: "HapticService"): HapticService | undefined;
-	FindFirstAncestorWhichIsA(className: "HapticService"): HapticService | undefined;
-	FindFirstChildOfClass(className: "HapticService"): HapticService | undefined;
-	FindFirstAncestorWhichIsA(className: "HapticService"): HapticService | undefined;
-}
+type HapticService = Rbx_HapticService & Base<Rbx_HapticService> & Indexable<Rbx_HapticService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "HapticService"): HapticService;
 }
 
 // HttpRbxApiService
 interface Rbx_HttpRbxApiService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__51: never;
 }
-type HttpRbxApiService = Rbx_HttpRbxApiService & Base<Rbx_HttpRbxApiService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "HttpRbxApiService"): this is HttpRbxApiService;
-	FindFirstAncestorOfClass(className: "HttpRbxApiService"): HttpRbxApiService | undefined;
-	FindFirstAncestorWhichIsA(className: "HttpRbxApiService"): HttpRbxApiService | undefined;
-	FindFirstChildOfClass(className: "HttpRbxApiService"): HttpRbxApiService | undefined;
-	FindFirstAncestorWhichIsA(className: "HttpRbxApiService"): HttpRbxApiService | undefined;
-}
+type HttpRbxApiService = Rbx_HttpRbxApiService & Base<Rbx_HttpRbxApiService> & Indexable<Rbx_HttpRbxApiService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "HttpRbxApiService"): HttpRbxApiService;
 }
 
 // HttpRequest
 interface Rbx_HttpRequest extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__52: never;
 }
-interface HttpRequest extends Rbx_HttpRequest, Base<Rbx_HttpRequest>, AnyIndex {}
-declare abstract class HttpRequest {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "HttpRequest"): this is HttpRequest;
-	FindFirstAncestorOfClass(className: "HttpRequest"): HttpRequest | undefined;
-	FindFirstAncestorWhichIsA(className: "HttpRequest"): HttpRequest | undefined;
-	FindFirstChildOfClass(className: "HttpRequest"): HttpRequest | undefined;
-	FindFirstAncestorWhichIsA(className: "HttpRequest"): HttpRequest | undefined;
-}
+type HttpRequest = Rbx_HttpRequest & Base<Rbx_HttpRequest> & Indexable<Rbx_HttpRequest>;
 
 // HttpService
 interface Rbx_HttpService extends Rbx_Instance {
@@ -3473,14 +2585,7 @@ interface Rbx_HttpService extends Rbx_Instance {
 	JSONEncode(input?: any): string;
 	UrlEncode(input: string): string;
 }
-type HttpService = Rbx_HttpService & Base<Rbx_HttpService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "HttpService"): this is HttpService;
-	FindFirstAncestorOfClass(className: "HttpService"): HttpService | undefined;
-	FindFirstAncestorWhichIsA(className: "HttpService"): HttpService | undefined;
-	FindFirstChildOfClass(className: "HttpService"): HttpService | undefined;
-	FindFirstAncestorWhichIsA(className: "HttpService"): HttpService | undefined;
-}
+type HttpService = Rbx_HttpService & Base<Rbx_HttpService> & Indexable<Rbx_HttpService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "HttpService"): HttpService;
 }
@@ -3490,6 +2595,7 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	AutoJumpEnabled: boolean;
 	AutoRotate: boolean;
 	AutomaticScalingEnabled: boolean;
+	BreakJointsOnDeath: boolean;
 	CameraOffset: Vector3;
 	DisplayDistanceType: Enum.HumanoidDisplayDistanceType;
 	readonly FloorMaterial: Enum.Material;
@@ -3528,33 +2634,65 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	TakeDamage(amount: number): void;
 	/** Takes any active gear/tools that the Humanoid is using and puts them into the backpack.  This function only works on Humanoids with a corresponding Player. */
 	UnequipTools(): void;
-	Climbing: RBXScriptSignal<(speed: number) => void>;
-	Died: RBXScriptSignal<() => void>;
-	FallingDown: RBXScriptSignal<(active: boolean) => void>;
-	FreeFalling: RBXScriptSignal<(active: boolean) => void>;
-	GettingUp: RBXScriptSignal<(active: boolean) => void>;
-	HealthChanged: RBXScriptSignal<(health: number) => void>;
-	Jumping: RBXScriptSignal<(active: boolean) => void>;
-	MoveToFinished: RBXScriptSignal<(reached: boolean) => void>;
-	PlatformStanding: RBXScriptSignal<(active: boolean) => void>;
-	Ragdoll: RBXScriptSignal<(active: boolean) => void>;
-	Running: RBXScriptSignal<(speed: number) => void>;
-	StateChanged: RBXScriptSignal<(oldValue: Enum.HumanoidStateType, newValue: Enum.HumanoidStateType) => void>;
-	StateEnabledChanged: RBXScriptSignal<(state: Enum.HumanoidStateType, isEnabled: boolean) => void>;
-	Strafing: RBXScriptSignal<(active: boolean) => void>;
-	Swimming: RBXScriptSignal<(speed: number) => void>;
+	readonly Climbing: RBXScriptSignal<(speed: number) => void>;
+	readonly Died: RBXScriptSignal<() => void>;
+	readonly FallingDown: RBXScriptSignal<(active: boolean) => void>;
+	readonly FreeFalling: RBXScriptSignal<(active: boolean) => void>;
+	readonly GettingUp: RBXScriptSignal<(active: boolean) => void>;
+	readonly HealthChanged: RBXScriptSignal<(health: number) => void>;
+	readonly Jumping: RBXScriptSignal<(active: boolean) => void>;
+	readonly MoveToFinished: RBXScriptSignal<(reached: boolean) => void>;
+	readonly PlatformStanding: RBXScriptSignal<(active: boolean) => void>;
+	readonly Ragdoll: RBXScriptSignal<(active: boolean) => void>;
+	readonly Running: RBXScriptSignal<(speed: number) => void>;
+	readonly StateChanged: RBXScriptSignal<(oldValue: Enum.HumanoidStateType, newValue: Enum.HumanoidStateType) => void>;
+	readonly StateEnabledChanged: RBXScriptSignal<(state: Enum.HumanoidStateType, isEnabled: boolean) => void>;
+	readonly Strafing: RBXScriptSignal<(active: boolean) => void>;
+	readonly Swimming: RBXScriptSignal<(speed: number) => void>;
 }
-interface Humanoid extends Rbx_Humanoid, Base<Rbx_Humanoid>, AnyIndex {}
-declare class Humanoid {
-	constructor(parent?: Instance);
+type Humanoid = Rbx_Humanoid & Base<Rbx_Humanoid> & Indexable<Rbx_Humanoid>;
+
+// HumanoidDescription
+interface Rbx_HumanoidDescription extends Rbx_Instance {
+	BackAccessory: string;
+	BodyTypeScale: number;
+	ClimbAnimation: number;
+	DepthScale: number;
+	Face: number;
+	FaceAccessory: string;
+	FallAnimation: number;
+	FrontAccessory: string;
+	GraphicTShirt: number;
+	HairAccessory: string;
+	HatAccessory: string;
+	Head: number;
+	HeadColor: Color3;
+	HeadScale: number;
+	HeightScale: number;
+	IdleAnimation: number;
+	JumpAnimation: number;
+	LeftArm: number;
+	LeftArmColor: Color3;
+	LeftLeg: number;
+	LeftLegColor: Color3;
+	NeckAccessory: string;
+	Pants: number;
+	ProportionScale: number;
+	RightArm: number;
+	RightArmColor: Color3;
+	RightLeg: number;
+	RightLegColor: Color3;
+	RunAnimation: number;
+	Shirt: number;
+	ShouldersAccessory: string;
+	SwimAnimation: number;
+	Torso: number;
+	TorsoColor: Color3;
+	WaistAccessory: string;
+	WalkAnimation: number;
+	WidthScale: number;
 }
-interface Rbx_Instance {
-	IsA(className: "Humanoid"): this is Humanoid;
-	FindFirstAncestorOfClass(className: "Humanoid"): Humanoid | undefined;
-	FindFirstAncestorWhichIsA(className: "Humanoid"): Humanoid | undefined;
-	FindFirstChildOfClass(className: "Humanoid"): Humanoid | undefined;
-	FindFirstAncestorWhichIsA(className: "Humanoid"): Humanoid | undefined;
-}
+type HumanoidDescription = Rbx_HumanoidDescription & Base<Rbx_HumanoidDescription> & Indexable<Rbx_HumanoidDescription>;
 
 // InputObject
 interface Rbx_InputObject extends Rbx_Instance {
@@ -3568,114 +2706,45 @@ interface Rbx_InputObject extends Rbx_Instance {
 	/** An enum that describes what kind of input this object is describing (mousebutton, touch, etc.).  See Enum.UserInputType for more info. */
 	UserInputType: Enum.UserInputType;
 }
-interface InputObject extends Rbx_InputObject, Base<Rbx_InputObject>, AnyIndex {}
-/** An object that describes a particular user input, such as mouse movement, touches, keyboard, and more. */
-declare abstract class InputObject {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "InputObject"): this is InputObject;
-	FindFirstAncestorOfClass(className: "InputObject"): InputObject | undefined;
-	FindFirstAncestorWhichIsA(className: "InputObject"): InputObject | undefined;
-	FindFirstChildOfClass(className: "InputObject"): InputObject | undefined;
-	FindFirstAncestorWhichIsA(className: "InputObject"): InputObject | undefined;
-}
+type InputObject = Rbx_InputObject & Base<Rbx_InputObject> & Indexable<Rbx_InputObject>;
 
 // InsertService
 interface Rbx_InsertService extends Rbx_Instance {
 	GetLatestAssetVersionAsync(assetId: number): number;
 }
-type InsertService = Rbx_InsertService & Base<Rbx_InsertService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "InsertService"): this is InsertService;
-	FindFirstAncestorOfClass(className: "InsertService"): InsertService | undefined;
-	FindFirstAncestorWhichIsA(className: "InsertService"): InsertService | undefined;
-	FindFirstChildOfClass(className: "InsertService"): InsertService | undefined;
-	FindFirstAncestorWhichIsA(className: "InsertService"): InsertService | undefined;
-}
+type InsertService = Rbx_InsertService & Base<Rbx_InsertService> & Indexable<Rbx_InsertService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "InsertService"): InsertService;
 }
 
-// InstancePacketCache
-interface Rbx_InstancePacketCache extends Rbx_Instance {
-}
-type InstancePacketCache = Rbx_InstancePacketCache & Base<Rbx_InstancePacketCache> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "InstancePacketCache"): this is InstancePacketCache;
-	FindFirstAncestorOfClass(className: "InstancePacketCache"): InstancePacketCache | undefined;
-	FindFirstAncestorWhichIsA(className: "InstancePacketCache"): InstancePacketCache | undefined;
-	FindFirstChildOfClass(className: "InstancePacketCache"): InstancePacketCache | undefined;
-	FindFirstAncestorWhichIsA(className: "InstancePacketCache"): InstancePacketCache | undefined;
-}
-interface Rbx_ServiceProvider extends Rbx_Instance {
-	GetService(className: "InstancePacketCache"): InstancePacketCache;
-}
-
 // JointInstance
 interface Rbx_JointInstance extends Rbx_Instance {
+	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
+	readonly Active: boolean;
 	C0: CFrame;
 	C1: CFrame;
-	Part0: BasePart;
-	Part1: BasePart;
 }
-interface JointInstance extends Rbx_JointInstance, Base<Rbx_JointInstance>, AnyIndex {}
-declare abstract class JointInstance {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "JointInstance"): this is JointInstance;
-	FindFirstAncestorOfClass(className: "JointInstance"): JointInstance | undefined;
-	FindFirstAncestorWhichIsA(className: "JointInstance"): JointInstance | undefined;
-	FindFirstChildOfClass(className: "JointInstance"): JointInstance | undefined;
-	FindFirstAncestorWhichIsA(className: "JointInstance"): JointInstance | undefined;
-}
+type JointInstance = Rbx_JointInstance & Base<Rbx_JointInstance> & Indexable<Rbx_JointInstance>;
 
 // DynamicRotate
 interface Rbx_DynamicRotate extends Rbx_JointInstance {
 	BaseAngle: number;
 }
-interface DynamicRotate extends Rbx_DynamicRotate, Base<Rbx_DynamicRotate>, AnyIndex {}
-declare abstract class DynamicRotate {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "DynamicRotate"): this is DynamicRotate;
-	FindFirstAncestorOfClass(className: "DynamicRotate"): DynamicRotate | undefined;
-	FindFirstAncestorWhichIsA(className: "DynamicRotate"): DynamicRotate | undefined;
-	FindFirstChildOfClass(className: "DynamicRotate"): DynamicRotate | undefined;
-	FindFirstAncestorWhichIsA(className: "DynamicRotate"): DynamicRotate | undefined;
-}
+type DynamicRotate = Rbx_DynamicRotate & Base<Rbx_DynamicRotate> & Indexable<Rbx_DynamicRotate>;
 
 // RotateP
 interface Rbx_RotateP extends Rbx_DynamicRotate {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__53: never;
 }
-interface RotateP extends Rbx_RotateP, Base<Rbx_RotateP>, AnyIndex {}
-declare class RotateP {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "RotateP"): this is RotateP;
-	FindFirstAncestorOfClass(className: "RotateP"): RotateP | undefined;
-	FindFirstAncestorWhichIsA(className: "RotateP"): RotateP | undefined;
-	FindFirstChildOfClass(className: "RotateP"): RotateP | undefined;
-	FindFirstAncestorWhichIsA(className: "RotateP"): RotateP | undefined;
-}
+type RotateP = Rbx_RotateP & Base<Rbx_RotateP> & Indexable<Rbx_RotateP>;
 
 // RotateV
 interface Rbx_RotateV extends Rbx_DynamicRotate {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__54: never;
 }
-interface RotateV extends Rbx_RotateV, Base<Rbx_RotateV>, AnyIndex {}
-declare class RotateV {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "RotateV"): this is RotateV;
-	FindFirstAncestorOfClass(className: "RotateV"): RotateV | undefined;
-	FindFirstAncestorWhichIsA(className: "RotateV"): RotateV | undefined;
-	FindFirstChildOfClass(className: "RotateV"): RotateV | undefined;
-	FindFirstAncestorWhichIsA(className: "RotateV"): RotateV | undefined;
-}
+type RotateV = Rbx_RotateV & Base<Rbx_RotateV> & Indexable<Rbx_RotateV>;
 
 // Glue
 interface Rbx_Glue extends Rbx_JointInstance {
@@ -3684,62 +2753,28 @@ interface Rbx_Glue extends Rbx_JointInstance {
 	F2: Vector3;
 	F3: Vector3;
 }
-interface Glue extends Rbx_Glue, Base<Rbx_Glue>, AnyIndex {}
-declare class Glue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Glue"): this is Glue;
-	FindFirstAncestorOfClass(className: "Glue"): Glue | undefined;
-	FindFirstAncestorWhichIsA(className: "Glue"): Glue | undefined;
-	FindFirstChildOfClass(className: "Glue"): Glue | undefined;
-	FindFirstAncestorWhichIsA(className: "Glue"): Glue | undefined;
-}
+type Glue = Rbx_Glue & Base<Rbx_Glue> & Indexable<Rbx_Glue>;
 
 // ManualSurfaceJointInstance
 interface Rbx_ManualSurfaceJointInstance extends Rbx_JointInstance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__55: never;
 }
-interface ManualSurfaceJointInstance extends Rbx_ManualSurfaceJointInstance, Base<Rbx_ManualSurfaceJointInstance>, AnyIndex {}
-declare abstract class ManualSurfaceJointInstance {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ManualSurfaceJointInstance"): this is ManualSurfaceJointInstance;
-	FindFirstAncestorOfClass(className: "ManualSurfaceJointInstance"): ManualSurfaceJointInstance | undefined;
-	FindFirstAncestorWhichIsA(className: "ManualSurfaceJointInstance"): ManualSurfaceJointInstance | undefined;
-	FindFirstChildOfClass(className: "ManualSurfaceJointInstance"): ManualSurfaceJointInstance | undefined;
-	FindFirstAncestorWhichIsA(className: "ManualSurfaceJointInstance"): ManualSurfaceJointInstance | undefined;
-}
+type ManualSurfaceJointInstance = Rbx_ManualSurfaceJointInstance & Base<Rbx_ManualSurfaceJointInstance> & Indexable<Rbx_ManualSurfaceJointInstance>;
 
 // ManualGlue
 interface Rbx_ManualGlue extends Rbx_ManualSurfaceJointInstance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__56: never;
 }
-interface ManualGlue extends Rbx_ManualGlue, Base<Rbx_ManualGlue>, AnyIndex {}
-declare class ManualGlue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ManualGlue"): this is ManualGlue;
-	FindFirstAncestorOfClass(className: "ManualGlue"): ManualGlue | undefined;
-	FindFirstAncestorWhichIsA(className: "ManualGlue"): ManualGlue | undefined;
-	FindFirstChildOfClass(className: "ManualGlue"): ManualGlue | undefined;
-	FindFirstAncestorWhichIsA(className: "ManualGlue"): ManualGlue | undefined;
-}
+type ManualGlue = Rbx_ManualGlue & Base<Rbx_ManualGlue> & Indexable<Rbx_ManualGlue>;
 
 // ManualWeld
 interface Rbx_ManualWeld extends Rbx_ManualSurfaceJointInstance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__57: never;
 }
-interface ManualWeld extends Rbx_ManualWeld, Base<Rbx_ManualWeld>, AnyIndex {}
-declare class ManualWeld {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ManualWeld"): this is ManualWeld;
-	FindFirstAncestorOfClass(className: "ManualWeld"): ManualWeld | undefined;
-	FindFirstAncestorWhichIsA(className: "ManualWeld"): ManualWeld | undefined;
-	FindFirstChildOfClass(className: "ManualWeld"): ManualWeld | undefined;
-	FindFirstAncestorWhichIsA(className: "ManualWeld"): ManualWeld | undefined;
-}
+type ManualWeld = Rbx_ManualWeld & Base<Rbx_ManualWeld> & Indexable<Rbx_ManualWeld>;
 
 // Motor
 interface Rbx_Motor extends Rbx_JointInstance {
@@ -3748,63 +2783,27 @@ interface Rbx_Motor extends Rbx_JointInstance {
 	MaxVelocity: number;
 	SetDesiredAngle(value: number): void;
 }
-interface Motor extends Rbx_Motor, Base<Rbx_Motor>, AnyIndex {}
-declare class Motor {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Motor"): this is Motor;
-	FindFirstAncestorOfClass(className: "Motor"): Motor | undefined;
-	FindFirstAncestorWhichIsA(className: "Motor"): Motor | undefined;
-	FindFirstChildOfClass(className: "Motor"): Motor | undefined;
-	FindFirstAncestorWhichIsA(className: "Motor"): Motor | undefined;
-}
+type Motor = Rbx_Motor & Base<Rbx_Motor> & Indexable<Rbx_Motor>;
 
 // Motor6D
 interface Rbx_Motor6D extends Rbx_Motor {
 	Transform: CFrame;
 }
-interface Motor6D extends Rbx_Motor6D, Base<Rbx_Motor6D>, AnyIndex {}
-declare class Motor6D {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Motor6D"): this is Motor6D;
-	FindFirstAncestorOfClass(className: "Motor6D"): Motor6D | undefined;
-	FindFirstAncestorWhichIsA(className: "Motor6D"): Motor6D | undefined;
-	FindFirstChildOfClass(className: "Motor6D"): Motor6D | undefined;
-	FindFirstAncestorWhichIsA(className: "Motor6D"): Motor6D | undefined;
-}
+type Motor6D = Rbx_Motor6D & Base<Rbx_Motor6D> & Indexable<Rbx_Motor6D>;
 
 // Rotate
 interface Rbx_Rotate extends Rbx_JointInstance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__58: never;
 }
-interface Rotate extends Rbx_Rotate, Base<Rbx_Rotate>, AnyIndex {}
-declare class Rotate {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Rotate"): this is Rotate;
-	FindFirstAncestorOfClass(className: "Rotate"): Rotate | undefined;
-	FindFirstAncestorWhichIsA(className: "Rotate"): Rotate | undefined;
-	FindFirstChildOfClass(className: "Rotate"): Rotate | undefined;
-	FindFirstAncestorWhichIsA(className: "Rotate"): Rotate | undefined;
-}
+type Rotate = Rbx_Rotate & Base<Rbx_Rotate> & Indexable<Rbx_Rotate>;
 
 // Snap
 interface Rbx_Snap extends Rbx_JointInstance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__59: never;
 }
-interface Snap extends Rbx_Snap, Base<Rbx_Snap>, AnyIndex {}
-declare class Snap {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Snap"): this is Snap;
-	FindFirstAncestorOfClass(className: "Snap"): Snap | undefined;
-	FindFirstAncestorWhichIsA(className: "Snap"): Snap | undefined;
-	FindFirstChildOfClass(className: "Snap"): Snap | undefined;
-	FindFirstAncestorWhichIsA(className: "Snap"): Snap | undefined;
-}
+type Snap = Rbx_Snap & Base<Rbx_Snap> & Indexable<Rbx_Snap>;
 
 // VelocityMotor
 interface Rbx_VelocityMotor extends Rbx_JointInstance {
@@ -3813,32 +2812,14 @@ interface Rbx_VelocityMotor extends Rbx_JointInstance {
 	Hole: Hole;
 	MaxVelocity: number;
 }
-interface VelocityMotor extends Rbx_VelocityMotor, Base<Rbx_VelocityMotor>, AnyIndex {}
-declare class VelocityMotor {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "VelocityMotor"): this is VelocityMotor;
-	FindFirstAncestorOfClass(className: "VelocityMotor"): VelocityMotor | undefined;
-	FindFirstAncestorWhichIsA(className: "VelocityMotor"): VelocityMotor | undefined;
-	FindFirstChildOfClass(className: "VelocityMotor"): VelocityMotor | undefined;
-	FindFirstAncestorWhichIsA(className: "VelocityMotor"): VelocityMotor | undefined;
-}
+type VelocityMotor = Rbx_VelocityMotor & Base<Rbx_VelocityMotor> & Indexable<Rbx_VelocityMotor>;
 
 // Weld
 interface Rbx_Weld extends Rbx_JointInstance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__60: never;
 }
-interface Weld extends Rbx_Weld, Base<Rbx_Weld>, AnyIndex {}
-declare class Weld {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Weld"): this is Weld;
-	FindFirstAncestorOfClass(className: "Weld"): Weld | undefined;
-	FindFirstAncestorWhichIsA(className: "Weld"): Weld | undefined;
-	FindFirstChildOfClass(className: "Weld"): Weld | undefined;
-	FindFirstAncestorWhichIsA(className: "Weld"): Weld | undefined;
-}
+type Weld = Rbx_Weld & Base<Rbx_Weld> & Indexable<Rbx_Weld>;
 
 // JointsService
 interface Rbx_JointsService extends Rbx_Instance {
@@ -3848,29 +2829,17 @@ interface Rbx_JointsService extends Rbx_Instance {
 	SetJoinAfterMoveTarget(joinTarget: Instance): void;
 	ShowPermissibleJoints(): void;
 }
-type JointsService = Rbx_JointsService & Base<Rbx_JointsService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "JointsService"): this is JointsService;
-	FindFirstAncestorOfClass(className: "JointsService"): JointsService | undefined;
-	FindFirstAncestorWhichIsA(className: "JointsService"): JointsService | undefined;
-	FindFirstChildOfClass(className: "JointsService"): JointsService | undefined;
-	FindFirstAncestorWhichIsA(className: "JointsService"): JointsService | undefined;
-}
+type JointsService = Rbx_JointsService & Base<Rbx_JointsService> & Indexable<Rbx_JointsService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "JointsService"): JointsService;
 }
 
 // KeyboardService
 interface Rbx_KeyboardService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__61: never;
 }
-type KeyboardService = Rbx_KeyboardService & Base<Rbx_KeyboardService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "KeyboardService"): this is KeyboardService;
-	FindFirstAncestorOfClass(className: "KeyboardService"): KeyboardService | undefined;
-	FindFirstAncestorWhichIsA(className: "KeyboardService"): KeyboardService | undefined;
-	FindFirstChildOfClass(className: "KeyboardService"): KeyboardService | undefined;
-	FindFirstAncestorWhichIsA(className: "KeyboardService"): KeyboardService | undefined;
-}
+type KeyboardService = Rbx_KeyboardService & Base<Rbx_KeyboardService> & Indexable<Rbx_KeyboardService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "KeyboardService"): KeyboardService;
 }
@@ -3878,54 +2847,29 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // Keyframe
 interface Rbx_Keyframe extends Rbx_Instance {
 	Time: number;
-	AddPose(pose: Instance): void;
-	GetPoses(): Array<Instance>;
-	RemovePose(pose: Instance): void;
+	AddMarker(marker: Instance): void;
+	GetMarkers(): Array<Instance>;
+	RemoveMarker(marker: Instance): void;
 }
-interface Keyframe extends Rbx_Keyframe, Base<Rbx_Keyframe>, AnyIndex {}
-/** One keyframe of an animation */
-declare class Keyframe {
-	constructor(parent?: Instance);
+type Keyframe = Rbx_Keyframe & Base<Rbx_Keyframe> & Indexable<Rbx_Keyframe>;
+
+// KeyframeMarker
+interface Rbx_KeyframeMarker extends Rbx_Instance {
+	Value: string;
 }
-interface Rbx_Instance {
-	IsA(className: "Keyframe"): this is Keyframe;
-	FindFirstAncestorOfClass(className: "Keyframe"): Keyframe | undefined;
-	FindFirstAncestorWhichIsA(className: "Keyframe"): Keyframe | undefined;
-	FindFirstChildOfClass(className: "Keyframe"): Keyframe | undefined;
-	FindFirstAncestorWhichIsA(className: "Keyframe"): Keyframe | undefined;
-}
+type KeyframeMarker = Rbx_KeyframeMarker & Base<Rbx_KeyframeMarker> & Indexable<Rbx_KeyframeMarker>;
 
 // KeyframeSequence
 interface Rbx_KeyframeSequence extends Rbx_Instance {
 	Loop: boolean;
 	Priority: Enum.AnimationPriority;
-	AddKeyframe(keyframe: Instance): void;
-	GetKeyframes(): Array<Instance>;
-	RemoveKeyframe(keyframe: Instance): void;
 }
-interface KeyframeSequence extends Rbx_KeyframeSequence, Base<Rbx_KeyframeSequence>, AnyIndex {}
-declare class KeyframeSequence {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "KeyframeSequence"): this is KeyframeSequence;
-	FindFirstAncestorOfClass(className: "KeyframeSequence"): KeyframeSequence | undefined;
-	FindFirstAncestorWhichIsA(className: "KeyframeSequence"): KeyframeSequence | undefined;
-	FindFirstChildOfClass(className: "KeyframeSequence"): KeyframeSequence | undefined;
-	FindFirstAncestorWhichIsA(className: "KeyframeSequence"): KeyframeSequence | undefined;
-}
+type KeyframeSequence = Rbx_KeyframeSequence & Base<Rbx_KeyframeSequence> & Indexable<Rbx_KeyframeSequence>;
 
 // KeyframeSequenceProvider
 interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
 }
-type KeyframeSequenceProvider = Rbx_KeyframeSequenceProvider & Base<Rbx_KeyframeSequenceProvider> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "KeyframeSequenceProvider"): this is KeyframeSequenceProvider;
-	FindFirstAncestorOfClass(className: "KeyframeSequenceProvider"): KeyframeSequenceProvider | undefined;
-	FindFirstAncestorWhichIsA(className: "KeyframeSequenceProvider"): KeyframeSequenceProvider | undefined;
-	FindFirstChildOfClass(className: "KeyframeSequenceProvider"): KeyframeSequenceProvider | undefined;
-	FindFirstAncestorWhichIsA(className: "KeyframeSequenceProvider"): KeyframeSequenceProvider | undefined;
-}
+type KeyframeSequenceProvider = Rbx_KeyframeSequenceProvider & Base<Rbx_KeyframeSequenceProvider> & Indexable<Rbx_KeyframeSequenceProvider>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "KeyframeSequenceProvider"): KeyframeSequenceProvider;
 }
@@ -3937,35 +2881,13 @@ interface Rbx_Light extends Rbx_Instance {
 	Enabled: boolean;
 	Shadows: boolean;
 }
-interface Light extends Rbx_Light, Base<Rbx_Light>, AnyIndex {}
-/** Parent of all light objects */
-declare abstract class Light {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Light"): this is Light;
-	FindFirstAncestorOfClass(className: "Light"): Light | undefined;
-	FindFirstAncestorWhichIsA(className: "Light"): Light | undefined;
-	FindFirstChildOfClass(className: "Light"): Light | undefined;
-	FindFirstAncestorWhichIsA(className: "Light"): Light | undefined;
-}
+type Light = Rbx_Light & Base<Rbx_Light> & Indexable<Rbx_Light>;
 
 // PointLight
 interface Rbx_PointLight extends Rbx_Light {
 	Range: number;
 }
-interface PointLight extends Rbx_PointLight, Base<Rbx_PointLight>, AnyIndex {}
-/** Makes the parent part emit light in a spherical shape */
-declare class PointLight {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PointLight"): this is PointLight;
-	FindFirstAncestorOfClass(className: "PointLight"): PointLight | undefined;
-	FindFirstAncestorWhichIsA(className: "PointLight"): PointLight | undefined;
-	FindFirstChildOfClass(className: "PointLight"): PointLight | undefined;
-	FindFirstAncestorWhichIsA(className: "PointLight"): PointLight | undefined;
-}
+type PointLight = Rbx_PointLight & Base<Rbx_PointLight> & Indexable<Rbx_PointLight>;
 
 // SpotLight
 interface Rbx_SpotLight extends Rbx_Light {
@@ -3973,18 +2895,7 @@ interface Rbx_SpotLight extends Rbx_Light {
 	Face: Enum.NormalId;
 	Range: number;
 }
-interface SpotLight extends Rbx_SpotLight, Base<Rbx_SpotLight>, AnyIndex {}
-/** Makes the parent part emit light in a conical shape */
-declare class SpotLight {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SpotLight"): this is SpotLight;
-	FindFirstAncestorOfClass(className: "SpotLight"): SpotLight | undefined;
-	FindFirstAncestorWhichIsA(className: "SpotLight"): SpotLight | undefined;
-	FindFirstChildOfClass(className: "SpotLight"): SpotLight | undefined;
-	FindFirstAncestorWhichIsA(className: "SpotLight"): SpotLight | undefined;
-}
+type SpotLight = Rbx_SpotLight & Base<Rbx_SpotLight> & Indexable<Rbx_SpotLight>;
 
 // SurfaceLight
 interface Rbx_SurfaceLight extends Rbx_Light {
@@ -3992,24 +2903,13 @@ interface Rbx_SurfaceLight extends Rbx_Light {
 	Face: Enum.NormalId;
 	Range: number;
 }
-interface SurfaceLight extends Rbx_SurfaceLight, Base<Rbx_SurfaceLight>, AnyIndex {}
-/** Makes the parent part emit light in a frustum shape from rectangle defined by part */
-declare class SurfaceLight {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SurfaceLight"): this is SurfaceLight;
-	FindFirstAncestorOfClass(className: "SurfaceLight"): SurfaceLight | undefined;
-	FindFirstAncestorWhichIsA(className: "SurfaceLight"): SurfaceLight | undefined;
-	FindFirstChildOfClass(className: "SurfaceLight"): SurfaceLight | undefined;
-	FindFirstAncestorWhichIsA(className: "SurfaceLight"): SurfaceLight | undefined;
-}
+type SurfaceLight = Rbx_SurfaceLight & Base<Rbx_SurfaceLight> & Indexable<Rbx_SurfaceLight>;
 
 // Lighting
 interface Rbx_Lighting extends Rbx_Instance {
 	/** The hue of the global lighting.  Changing this changes the color tint of all objects in the Workspace. */
 	Ambient: Color3;
-	/** How much global light each Part in the Workspace receives. Standard range is 0 to 1 (0 being little light), but can be increased all the way to 5 (colors start to be appear very different at this value). */
+	/** How much global light each Part in the Workspace receives. Standard range is 0 to 2 (0 being little light), but can be increased all the way to 10 (colors start to be appear very different at this value). */
 	Brightness: number;
 	ClockTime: number;
 	/** The hue of global lighting on the bottom surfaces of an object. */
@@ -4045,18 +2945,41 @@ interface Rbx_Lighting extends Rbx_Instance {
 	/** Sets the time to be a certain number of minutes after midnight.  This works with integer and decimal values. */
 	SetMinutesAfterMidnight(minutes: number): void;
 	/** Fired whenever a property of Lighting is changed, or a skybox is added or removed. Skyboxes are of type 'Sky' and should be parented directly to lighting. */
-	LightingChanged: RBXScriptSignal<(skyboxChanged: boolean) => void>;
+	readonly LightingChanged: RBXScriptSignal<(skyboxChanged: boolean) => void>;
 }
-type Lighting = Rbx_Lighting & Base<Rbx_Lighting> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "Lighting"): this is Lighting;
-	FindFirstAncestorOfClass(className: "Lighting"): Lighting | undefined;
-	FindFirstAncestorWhichIsA(className: "Lighting"): Lighting | undefined;
-	FindFirstChildOfClass(className: "Lighting"): Lighting | undefined;
-	FindFirstAncestorWhichIsA(className: "Lighting"): Lighting | undefined;
-}
+type Lighting = Rbx_Lighting & Base<Rbx_Lighting> & Indexable<Rbx_Lighting>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Lighting"): Lighting;
+}
+
+// LocalStorageService
+interface Rbx_LocalStorageService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__62: never;
+}
+type LocalStorageService = Rbx_LocalStorageService & Base<Rbx_LocalStorageService> & Indexable<Rbx_LocalStorageService>;
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "LocalStorageService"): LocalStorageService;
+}
+
+// AppStorageService
+interface Rbx_AppStorageService extends Rbx_LocalStorageService {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__63: never;
+}
+type AppStorageService = Rbx_AppStorageService & Base<Rbx_AppStorageService> & Indexable<Rbx_AppStorageService>;
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "AppStorageService"): AppStorageService;
+}
+
+// UserStorageService
+interface Rbx_UserStorageService extends Rbx_LocalStorageService {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__64: never;
+}
+type UserStorageService = Rbx_UserStorageService & Base<Rbx_UserStorageService> & Indexable<Rbx_UserStorageService>;
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "UserStorageService"): UserStorageService;
 }
 
 // LocalizationService
@@ -4064,15 +2987,11 @@ interface Rbx_LocalizationService extends Rbx_Instance {
 	readonly RobloxLocaleId: string;
 	readonly SystemLocaleId: string;
 	GetCorescriptLocalizations(): Array<Instance>;
+	GetTableEntries(instance?: Instance): unknown;
+	GetTranslatorForLocaleAsync(locale: string): Instance | undefined;
+	GetTranslatorForPlayerAsync(player: Instance): Instance | undefined;
 }
-type LocalizationService = Rbx_LocalizationService & Base<Rbx_LocalizationService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "LocalizationService"): this is LocalizationService;
-	FindFirstAncestorOfClass(className: "LocalizationService"): LocalizationService | undefined;
-	FindFirstAncestorWhichIsA(className: "LocalizationService"): LocalizationService | undefined;
-	FindFirstChildOfClass(className: "LocalizationService"): LocalizationService | undefined;
-	FindFirstAncestorWhichIsA(className: "LocalizationService"): LocalizationService | undefined;
-}
+type LocalizationService = Rbx_LocalizationService & Base<Rbx_LocalizationService> & Indexable<Rbx_LocalizationService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "LocalizationService"): LocalizationService;
 }
@@ -4090,46 +3009,23 @@ interface Rbx_LocalizationTable extends Rbx_Instance {
 	SetEntrySource(key: string, source: string, context: string, newSource: string): void;
 	SetEntryValue(key: string, source: string, context: string, localeId: string, text: string): void;
 }
-interface LocalizationTable extends Rbx_LocalizationTable, Base<Rbx_LocalizationTable>, AnyIndex {}
-/** A database of strings used in the game and their translations. */
-declare class LocalizationTable {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "LocalizationTable"): this is LocalizationTable;
-	FindFirstAncestorOfClass(className: "LocalizationTable"): LocalizationTable | undefined;
-	FindFirstAncestorWhichIsA(className: "LocalizationTable"): LocalizationTable | undefined;
-	FindFirstChildOfClass(className: "LocalizationTable"): LocalizationTable | undefined;
-	FindFirstAncestorWhichIsA(className: "LocalizationTable"): LocalizationTable | undefined;
-}
+type LocalizationTable = Rbx_LocalizationTable & Base<Rbx_LocalizationTable> & Indexable<Rbx_LocalizationTable>;
 
 // LogService
 interface Rbx_LogService extends Rbx_Instance {
-	MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
+	readonly MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
 }
-type LogService = Rbx_LogService & Base<Rbx_LogService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "LogService"): this is LogService;
-	FindFirstAncestorOfClass(className: "LogService"): LogService | undefined;
-	FindFirstAncestorWhichIsA(className: "LogService"): LogService | undefined;
-	FindFirstChildOfClass(className: "LogService"): LogService | undefined;
-	FindFirstAncestorWhichIsA(className: "LogService"): LogService | undefined;
-}
+type LogService = Rbx_LogService & Base<Rbx_LogService> & Indexable<Rbx_LogService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "LogService"): LogService;
 }
 
 // LoginService
 interface Rbx_LoginService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__65: never;
 }
-type LoginService = Rbx_LoginService & Base<Rbx_LoginService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "LoginService"): this is LoginService;
-	FindFirstAncestorOfClass(className: "LoginService"): LoginService | undefined;
-	FindFirstAncestorWhichIsA(className: "LoginService"): LoginService | undefined;
-	FindFirstChildOfClass(className: "LoginService"): LoginService | undefined;
-	FindFirstAncestorWhichIsA(className: "LoginService"): LoginService | undefined;
-}
+type LoginService = Rbx_LoginService & Base<Rbx_LoginService> & Indexable<Rbx_LoginService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "LoginService"): LoginService;
 }
@@ -4144,130 +3040,55 @@ interface Rbx_LuaSettings extends Rbx_Instance {
 	GcStepMul: number;
 	WaitingThreadsBudget: number;
 }
-interface LuaSettings extends Rbx_LuaSettings, Base<Rbx_LuaSettings>, AnyIndex {}
-declare class LuaSettings {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "LuaSettings"): this is LuaSettings;
-	FindFirstAncestorOfClass(className: "LuaSettings"): LuaSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "LuaSettings"): LuaSettings | undefined;
-	FindFirstChildOfClass(className: "LuaSettings"): LuaSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "LuaSettings"): LuaSettings | undefined;
-}
+type LuaSettings = Rbx_LuaSettings & Base<Rbx_LuaSettings> & Indexable<Rbx_LuaSettings>;
 
 // LuaSourceContainer
 interface Rbx_LuaSourceContainer extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__66: never;
 }
-interface LuaSourceContainer extends Rbx_LuaSourceContainer, Base<Rbx_LuaSourceContainer>, AnyIndex {}
-declare abstract class LuaSourceContainer {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "LuaSourceContainer"): this is LuaSourceContainer;
-	FindFirstAncestorOfClass(className: "LuaSourceContainer"): LuaSourceContainer | undefined;
-	FindFirstAncestorWhichIsA(className: "LuaSourceContainer"): LuaSourceContainer | undefined;
-	FindFirstChildOfClass(className: "LuaSourceContainer"): LuaSourceContainer | undefined;
-	FindFirstAncestorWhichIsA(className: "LuaSourceContainer"): LuaSourceContainer | undefined;
-}
+type LuaSourceContainer = Rbx_LuaSourceContainer & Base<Rbx_LuaSourceContainer> & Indexable<Rbx_LuaSourceContainer>;
 
 // BaseScript
 interface Rbx_BaseScript extends Rbx_LuaSourceContainer {
 	Disabled: boolean;
 	LinkedSource: string;
 }
-interface BaseScript extends Rbx_BaseScript, Base<Rbx_BaseScript>, AnyIndex {}
-declare abstract class BaseScript {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BaseScript"): this is BaseScript;
-	FindFirstAncestorOfClass(className: "BaseScript"): BaseScript | undefined;
-	FindFirstAncestorWhichIsA(className: "BaseScript"): BaseScript | undefined;
-	FindFirstChildOfClass(className: "BaseScript"): BaseScript | undefined;
-	FindFirstAncestorWhichIsA(className: "BaseScript"): BaseScript | undefined;
-}
+type BaseScript = Rbx_BaseScript & Base<Rbx_BaseScript> & Indexable<Rbx_BaseScript>;
 
 // CoreScript
 interface Rbx_CoreScript extends Rbx_BaseScript {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__67: never;
 }
-interface CoreScript extends Rbx_CoreScript, Base<Rbx_CoreScript>, AnyIndex {}
-declare abstract class CoreScript {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "CoreScript"): this is CoreScript;
-	FindFirstAncestorOfClass(className: "CoreScript"): CoreScript | undefined;
-	FindFirstAncestorWhichIsA(className: "CoreScript"): CoreScript | undefined;
-	FindFirstChildOfClass(className: "CoreScript"): CoreScript | undefined;
-	FindFirstAncestorWhichIsA(className: "CoreScript"): CoreScript | undefined;
-}
+type CoreScript = Rbx_CoreScript & Base<Rbx_CoreScript> & Indexable<Rbx_CoreScript>;
 
 // Script
 interface Rbx_Script extends Rbx_BaseScript {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__68: never;
 }
-interface Script extends Rbx_Script, Base<Rbx_Script>, AnyIndex {}
-declare class Script {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Script"): this is Script;
-	FindFirstAncestorOfClass(className: "Script"): Script | undefined;
-	FindFirstAncestorWhichIsA(className: "Script"): Script | undefined;
-	FindFirstChildOfClass(className: "Script"): Script | undefined;
-	FindFirstAncestorWhichIsA(className: "Script"): Script | undefined;
-}
+type Script = Rbx_Script & Base<Rbx_Script> & Indexable<Rbx_Script>;
 
 // LocalScript
 interface Rbx_LocalScript extends Rbx_Script {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__69: never;
 }
-interface LocalScript extends Rbx_LocalScript, Base<Rbx_LocalScript>, AnyIndex {}
-/** A script that runs on clients, NOT servers.  LocalScripts can only run when parented under one of the following:
-        1) A player's Backpack.
-        2) A player's Character model.
-        3) A player's PlayerGui.
-        4) A player's PlayerScripts.
-        5) The ReplicatedFirst service.
-       */
-declare class LocalScript {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "LocalScript"): this is LocalScript;
-	FindFirstAncestorOfClass(className: "LocalScript"): LocalScript | undefined;
-	FindFirstAncestorWhichIsA(className: "LocalScript"): LocalScript | undefined;
-	FindFirstChildOfClass(className: "LocalScript"): LocalScript | undefined;
-	FindFirstAncestorWhichIsA(className: "LocalScript"): LocalScript | undefined;
-}
+type LocalScript = Rbx_LocalScript & Base<Rbx_LocalScript> & Indexable<Rbx_LocalScript>;
 
 // ModuleScript
 interface Rbx_ModuleScript extends Rbx_LuaSourceContainer {
 	LinkedSource: string;
 }
-interface ModuleScript extends Rbx_ModuleScript, Base<Rbx_ModuleScript>, AnyIndex {}
-/** A script fragment. Only runs when another script uses require() on it. */
-declare class ModuleScript {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ModuleScript"): this is ModuleScript;
-	FindFirstAncestorOfClass(className: "ModuleScript"): ModuleScript | undefined;
-	FindFirstAncestorWhichIsA(className: "ModuleScript"): ModuleScript | undefined;
-	FindFirstChildOfClass(className: "ModuleScript"): ModuleScript | undefined;
-	FindFirstAncestorWhichIsA(className: "ModuleScript"): ModuleScript | undefined;
-}
+type ModuleScript = Rbx_ModuleScript & Base<Rbx_ModuleScript> & Indexable<Rbx_ModuleScript>;
 
 // LuaWebService
 interface Rbx_LuaWebService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__70: never;
 }
-type LuaWebService = Rbx_LuaWebService & Base<Rbx_LuaWebService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "LuaWebService"): this is LuaWebService;
-	FindFirstAncestorOfClass(className: "LuaWebService"): LuaWebService | undefined;
-	FindFirstAncestorWhichIsA(className: "LuaWebService"): LuaWebService | undefined;
-	FindFirstChildOfClass(className: "LuaWebService"): LuaWebService | undefined;
-	FindFirstAncestorWhichIsA(className: "LuaWebService"): LuaWebService | undefined;
-}
+type LuaWebService = Rbx_LuaWebService & Base<Rbx_LuaWebService> & Indexable<Rbx_LuaWebService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "LuaWebService"): LuaWebService;
 }
@@ -4275,18 +3096,9 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 // MarketplaceService
 interface Rbx_MarketplaceService extends Rbx_Instance {
 	GetDeveloperProductsAsync(): Instance | undefined;
-	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
-	GetProductInfo(assetId: number, infoType?: Enum.InfoType): object;
 	UserOwnsGamePassAsync(userId: number, gamePassId: number): boolean;
 }
-type MarketplaceService = Rbx_MarketplaceService & Base<Rbx_MarketplaceService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "MarketplaceService"): this is MarketplaceService;
-	FindFirstAncestorOfClass(className: "MarketplaceService"): MarketplaceService | undefined;
-	FindFirstAncestorWhichIsA(className: "MarketplaceService"): MarketplaceService | undefined;
-	FindFirstChildOfClass(className: "MarketplaceService"): MarketplaceService | undefined;
-	FindFirstAncestorWhichIsA(className: "MarketplaceService"): MarketplaceService | undefined;
-}
+type MarketplaceService = Rbx_MarketplaceService & Base<Rbx_MarketplaceService> & Indexable<Rbx_MarketplaceService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "MarketplaceService"): MarketplaceService;
 }
@@ -4295,31 +3107,23 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_Message extends Rbx_Instance {
 	Text: string;
 }
-interface Message extends Rbx_Message, Base<Rbx_Message>, AnyIndex {}
-declare class Message {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Message"): this is Message;
-	FindFirstAncestorOfClass(className: "Message"): Message | undefined;
-	FindFirstAncestorWhichIsA(className: "Message"): Message | undefined;
-	FindFirstChildOfClass(className: "Message"): Message | undefined;
-	FindFirstAncestorWhichIsA(className: "Message"): Message | undefined;
-}
+type Message = Rbx_Message & Base<Rbx_Message> & Indexable<Rbx_Message>;
 
 // Hint
 interface Rbx_Hint extends Rbx_Message {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__71: never;
 }
-interface Hint extends Rbx_Hint, Base<Rbx_Hint>, AnyIndex {}
-declare class Hint {
-	constructor(parent?: Instance);
+type Hint = Rbx_Hint & Base<Rbx_Hint> & Indexable<Rbx_Hint>;
+
+// MessagingService
+interface Rbx_MessagingService extends Rbx_Instance {
+	PublishAsync(topic: string, message?: any): void;
+	SubscribeAsync(topic: string, callback: Function): RBXScriptConnection;
 }
-interface Rbx_Instance {
-	IsA(className: "Hint"): this is Hint;
-	FindFirstAncestorOfClass(className: "Hint"): Hint | undefined;
-	FindFirstAncestorWhichIsA(className: "Hint"): Hint | undefined;
-	FindFirstChildOfClass(className: "Hint"): Hint | undefined;
-	FindFirstAncestorWhichIsA(className: "Hint"): Hint | undefined;
+type MessagingService = Rbx_MessagingService & Base<Rbx_MessagingService> & Indexable<Rbx_MessagingService>;
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "MessagingService"): MessagingService;
 }
 
 // Mouse
@@ -4347,126 +3151,69 @@ interface Rbx_Mouse extends Rbx_Instance {
 	/** The absolute pixel position of the Mouse along the y-axis of the viewport (game window). Values start at 0 on the top of the screen and increase to the bottom. */
 	readonly Y: number;
 	/** Fired when the first button (usually the left, but could be another) on the mouse is depressed. */
-	Button1Down: RBXScriptSignal<() => void>;
+	readonly Button1Down: RBXScriptSignal<() => void>;
 	/** Fired when the first button (usually the left, but could be another) on the mouse is release. */
-	Button1Up: RBXScriptSignal<() => void>;
+	readonly Button1Up: RBXScriptSignal<() => void>;
 	/** This event is currently non-operational. */
-	Button2Down: RBXScriptSignal<() => void>;
+	readonly Button2Down: RBXScriptSignal<() => void>;
 	/** This event is currently non-operational. */
-	Button2Up: RBXScriptSignal<() => void>;
+	readonly Button2Up: RBXScriptSignal<() => void>;
 	/** Fired constantly when the mouse is not firing any other event (i.e. the mouse isn't moving, nor any buttons being pressed or depressed). */
-	Idle: RBXScriptSignal<() => void>;
+	readonly Idle: RBXScriptSignal<() => void>;
 	/** Fired when the mouse X or Y member changes. */
-	Move: RBXScriptSignal<() => void>;
+	readonly Move: RBXScriptSignal<() => void>;
 	/** This event is currently non-operational. */
-	WheelBackward: RBXScriptSignal<() => void>;
+	readonly WheelBackward: RBXScriptSignal<() => void>;
 	/** This event is currently non-operational. */
-	WheelForward: RBXScriptSignal<() => void>;
+	readonly WheelForward: RBXScriptSignal<() => void>;
 }
-interface Mouse extends Rbx_Mouse, Base<Rbx_Mouse>, AnyIndex {}
-/** Used to receive input from the user. Actually tracks mouse events and keyboard events. */
-declare abstract class Mouse {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Mouse"): this is Mouse;
-	FindFirstAncestorOfClass(className: "Mouse"): Mouse | undefined;
-	FindFirstAncestorWhichIsA(className: "Mouse"): Mouse | undefined;
-	FindFirstChildOfClass(className: "Mouse"): Mouse | undefined;
-	FindFirstAncestorWhichIsA(className: "Mouse"): Mouse | undefined;
-}
+type Mouse = Rbx_Mouse & Base<Rbx_Mouse> & Indexable<Rbx_Mouse>;
 
 // PlayerMouse
 interface Rbx_PlayerMouse extends Rbx_Mouse {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__72: never;
 }
-interface PlayerMouse extends Rbx_PlayerMouse, Base<Rbx_PlayerMouse>, AnyIndex {}
-declare abstract class PlayerMouse {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PlayerMouse"): this is PlayerMouse;
-	FindFirstAncestorOfClass(className: "PlayerMouse"): PlayerMouse | undefined;
-	FindFirstAncestorWhichIsA(className: "PlayerMouse"): PlayerMouse | undefined;
-	FindFirstChildOfClass(className: "PlayerMouse"): PlayerMouse | undefined;
-	FindFirstAncestorWhichIsA(className: "PlayerMouse"): PlayerMouse | undefined;
-}
+type PlayerMouse = Rbx_PlayerMouse & Base<Rbx_PlayerMouse> & Indexable<Rbx_PlayerMouse>;
 
 // PluginMouse
 interface Rbx_PluginMouse extends Rbx_Mouse {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__73: never;
 }
-interface PluginMouse extends Rbx_PluginMouse, Base<Rbx_PluginMouse>, AnyIndex {}
-declare abstract class PluginMouse {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PluginMouse"): this is PluginMouse;
-	FindFirstAncestorOfClass(className: "PluginMouse"): PluginMouse | undefined;
-	FindFirstAncestorWhichIsA(className: "PluginMouse"): PluginMouse | undefined;
-	FindFirstChildOfClass(className: "PluginMouse"): PluginMouse | undefined;
-	FindFirstAncestorWhichIsA(className: "PluginMouse"): PluginMouse | undefined;
-}
+type PluginMouse = Rbx_PluginMouse & Base<Rbx_PluginMouse> & Indexable<Rbx_PluginMouse>;
 
 // MouseService
 interface Rbx_MouseService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__74: never;
 }
-type MouseService = Rbx_MouseService & Base<Rbx_MouseService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "MouseService"): this is MouseService;
-	FindFirstAncestorOfClass(className: "MouseService"): MouseService | undefined;
-	FindFirstAncestorWhichIsA(className: "MouseService"): MouseService | undefined;
-	FindFirstChildOfClass(className: "MouseService"): MouseService | undefined;
-	FindFirstAncestorWhichIsA(className: "MouseService"): MouseService | undefined;
-}
+type MouseService = Rbx_MouseService & Base<Rbx_MouseService> & Indexable<Rbx_MouseService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "MouseService"): MouseService;
 }
 
 // NetworkMarker
 interface Rbx_NetworkMarker extends Rbx_Instance {
-	Received: RBXScriptSignal<() => void>;
+	readonly Received: RBXScriptSignal<() => void>;
 }
-interface NetworkMarker extends Rbx_NetworkMarker, Base<Rbx_NetworkMarker>, AnyIndex {}
-declare abstract class NetworkMarker {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "NetworkMarker"): this is NetworkMarker;
-	FindFirstAncestorOfClass(className: "NetworkMarker"): NetworkMarker | undefined;
-	FindFirstAncestorWhichIsA(className: "NetworkMarker"): NetworkMarker | undefined;
-	FindFirstChildOfClass(className: "NetworkMarker"): NetworkMarker | undefined;
-	FindFirstAncestorWhichIsA(className: "NetworkMarker"): NetworkMarker | undefined;
-}
+type NetworkMarker = Rbx_NetworkMarker & Base<Rbx_NetworkMarker> & Indexable<Rbx_NetworkMarker>;
 
 // NetworkPeer
 interface Rbx_NetworkPeer extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__75: never;
 }
-interface NetworkPeer extends Rbx_NetworkPeer, Base<Rbx_NetworkPeer>, AnyIndex {}
-declare abstract class NetworkPeer {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "NetworkPeer"): this is NetworkPeer;
-	FindFirstAncestorOfClass(className: "NetworkPeer"): NetworkPeer | undefined;
-	FindFirstAncestorWhichIsA(className: "NetworkPeer"): NetworkPeer | undefined;
-	FindFirstChildOfClass(className: "NetworkPeer"): NetworkPeer | undefined;
-	FindFirstAncestorWhichIsA(className: "NetworkPeer"): NetworkPeer | undefined;
-}
+type NetworkPeer = Rbx_NetworkPeer & Base<Rbx_NetworkPeer> & Indexable<Rbx_NetworkPeer>;
 
 // NetworkClient
 interface Rbx_NetworkClient extends Rbx_NetworkPeer {
 	Ticket: string;
-	ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: Instance) => void>;
-	ConnectionFailed: RBXScriptSignal<(peer: string, code: number, reason: string) => void>;
-	ConnectionRejected: RBXScriptSignal<(peer: string) => void>;
+	readonly ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: Instance) => void>;
+	readonly ConnectionFailed: RBXScriptSignal<(peer: string, code: number, reason: string) => void>;
+	readonly ConnectionRejected: RBXScriptSignal<(peer: string) => void>;
 }
-type NetworkClient = Rbx_NetworkClient & Base<Rbx_NetworkClient> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "NetworkClient"): this is NetworkClient;
-	FindFirstAncestorOfClass(className: "NetworkClient"): NetworkClient | undefined;
-	FindFirstAncestorWhichIsA(className: "NetworkClient"): NetworkClient | undefined;
-	FindFirstChildOfClass(className: "NetworkClient"): NetworkClient | undefined;
-	FindFirstAncestorWhichIsA(className: "NetworkClient"): NetworkClient | undefined;
-}
+type NetworkClient = Rbx_NetworkClient & Base<Rbx_NetworkClient> & Indexable<Rbx_NetworkClient>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "NetworkClient"): NetworkClient;
 }
@@ -4475,14 +3222,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_NetworkServer extends Rbx_NetworkPeer {
 	readonly Port: number;
 }
-type NetworkServer = Rbx_NetworkServer & Base<Rbx_NetworkServer> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "NetworkServer"): this is NetworkServer;
-	FindFirstAncestorOfClass(className: "NetworkServer"): NetworkServer | undefined;
-	FindFirstAncestorWhichIsA(className: "NetworkServer"): NetworkServer | undefined;
-	FindFirstChildOfClass(className: "NetworkServer"): NetworkServer | undefined;
-	FindFirstAncestorWhichIsA(className: "NetworkServer"): NetworkServer | undefined;
-}
+type NetworkServer = Rbx_NetworkServer & Base<Rbx_NetworkServer> & Indexable<Rbx_NetworkServer>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "NetworkServer"): NetworkServer;
 }
@@ -4491,47 +3231,21 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_NetworkReplicator extends Rbx_Instance {
 	GetPlayer(): Instance | undefined;
 }
-interface NetworkReplicator extends Rbx_NetworkReplicator, Base<Rbx_NetworkReplicator>, AnyIndex {}
-declare abstract class NetworkReplicator {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "NetworkReplicator"): this is NetworkReplicator;
-	FindFirstAncestorOfClass(className: "NetworkReplicator"): NetworkReplicator | undefined;
-	FindFirstAncestorWhichIsA(className: "NetworkReplicator"): NetworkReplicator | undefined;
-	FindFirstChildOfClass(className: "NetworkReplicator"): NetworkReplicator | undefined;
-	FindFirstAncestorWhichIsA(className: "NetworkReplicator"): NetworkReplicator | undefined;
-}
+type NetworkReplicator = Rbx_NetworkReplicator & Base<Rbx_NetworkReplicator> & Indexable<Rbx_NetworkReplicator>;
 
 // ClientReplicator
 interface Rbx_ClientReplicator extends Rbx_NetworkReplicator {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__76: never;
 }
-interface ClientReplicator extends Rbx_ClientReplicator, Base<Rbx_ClientReplicator>, AnyIndex {}
-declare abstract class ClientReplicator {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ClientReplicator"): this is ClientReplicator;
-	FindFirstAncestorOfClass(className: "ClientReplicator"): ClientReplicator | undefined;
-	FindFirstAncestorWhichIsA(className: "ClientReplicator"): ClientReplicator | undefined;
-	FindFirstChildOfClass(className: "ClientReplicator"): ClientReplicator | undefined;
-	FindFirstAncestorWhichIsA(className: "ClientReplicator"): ClientReplicator | undefined;
-}
+type ClientReplicator = Rbx_ClientReplicator & Base<Rbx_ClientReplicator> & Indexable<Rbx_ClientReplicator>;
 
 // ServerReplicator
 interface Rbx_ServerReplicator extends Rbx_NetworkReplicator {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__77: never;
 }
-interface ServerReplicator extends Rbx_ServerReplicator, Base<Rbx_ServerReplicator>, AnyIndex {}
-declare abstract class ServerReplicator {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ServerReplicator"): this is ServerReplicator;
-	FindFirstAncestorOfClass(className: "ServerReplicator"): ServerReplicator | undefined;
-	FindFirstAncestorWhichIsA(className: "ServerReplicator"): ServerReplicator | undefined;
-	FindFirstChildOfClass(className: "ServerReplicator"): ServerReplicator | undefined;
-	FindFirstAncestorWhichIsA(className: "ServerReplicator"): ServerReplicator | undefined;
-}
+type ServerReplicator = Rbx_ServerReplicator & Base<Rbx_ServerReplicator> & Indexable<Rbx_ServerReplicator>;
 
 // NetworkSettings
 interface Rbx_NetworkSettings extends Rbx_Instance {
@@ -4557,56 +3271,37 @@ interface Rbx_NetworkSettings extends Rbx_Instance {
 	PrintSplitMessage: boolean;
 	PrintStreamInstanceQuota: boolean;
 	PrintTouches: boolean;
+	ProxyEnabled: boolean;
+	ProxyURL: string;
 	ReceiveRate: number;
 	RenderStreamedRegions: boolean;
 	ShowActiveAnimationAsset: boolean;
 	TouchSendRate: number;
 	TrackDataTypes: boolean;
 	TrackPhysicsDetails: boolean;
-	UseInstancePacketCache: boolean;
 	UsePhysicsPacketCache: boolean;
 }
-type NetworkSettings = Rbx_NetworkSettings & Base<Rbx_NetworkSettings> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "NetworkSettings"): this is NetworkSettings;
-	FindFirstAncestorOfClass(className: "NetworkSettings"): NetworkSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "NetworkSettings"): NetworkSettings | undefined;
-	FindFirstChildOfClass(className: "NetworkSettings"): NetworkSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "NetworkSettings"): NetworkSettings | undefined;
-}
+type NetworkSettings = Rbx_NetworkSettings & Base<Rbx_NetworkSettings> & Indexable<Rbx_NetworkSettings>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "NetworkSettings"): NetworkSettings;
 }
 
 // NotificationService
 interface Rbx_NotificationService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__78: never;
 }
-type NotificationService = Rbx_NotificationService & Base<Rbx_NotificationService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "NotificationService"): this is NotificationService;
-	FindFirstAncestorOfClass(className: "NotificationService"): NotificationService | undefined;
-	FindFirstAncestorWhichIsA(className: "NotificationService"): NotificationService | undefined;
-	FindFirstChildOfClass(className: "NotificationService"): NotificationService | undefined;
-	FindFirstAncestorWhichIsA(className: "NotificationService"): NotificationService | undefined;
-}
+type NotificationService = Rbx_NotificationService & Base<Rbx_NotificationService> & Indexable<Rbx_NotificationService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "NotificationService"): NotificationService;
 }
 
 // PVInstance
 interface Rbx_PVInstance extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__79: never;
 }
-interface PVInstance extends Rbx_PVInstance, Base<Rbx_PVInstance>, AnyIndex {}
-declare abstract class PVInstance {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PVInstance"): this is PVInstance;
-	FindFirstAncestorOfClass(className: "PVInstance"): PVInstance | undefined;
-	FindFirstAncestorWhichIsA(className: "PVInstance"): PVInstance | undefined;
-	FindFirstChildOfClass(className: "PVInstance"): PVInstance | undefined;
-	FindFirstAncestorWhichIsA(className: "PVInstance"): PVInstance | undefined;
-}
+type PVInstance = Rbx_PVInstance & Base<Rbx_PVInstance> & Indexable<Rbx_PVInstance>;
 
 // BasePart
 interface Rbx_BasePart extends Rbx_PVInstance {
@@ -4641,6 +3336,8 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	LocalTransparencyModifier: number;
 	/** Determines whether building tools (in-game and studio) can manipulate this Part.  If true, no editing allowed.  If false, editing is allowed. */
 	Locked: boolean;
+	/** If true the part will be massless when welded to another part that is not massless. The part will still have mass like a normal part if it is an assembly root part according to GetRootPart(). */
+	Massless: boolean;
 	/** Specifies the look and feel the Part should have.  Note: this does not define the color the Part is, see BrickColor for that. [More info](http://wiki.roblox.com/index.php/Material) */
 	Material: Enum.Material;
 	/** Rotation around X, Y, and Z axis.  Rotations applied in YXZ order. */
@@ -4657,6 +3354,8 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	RightParamB: number;
 	RightSurface: Enum.SurfaceType;
 	RightSurfaceInput: Enum.InputType;
+	/** An integer from -127 to 127. Compares before other all other part properties besides massless for deciding which part is the assembly root part according to GetRootPart(). */
+	RootPriority: number;
 	RotVelocity: Vector3;
 	Rotation: Vector3;
 	Size: Vector3;
@@ -4680,98 +3379,40 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	Resize(normalId: Enum.NormalId, deltaAmount: number): boolean;
 	SetNetworkOwnershipAuto(): void;
 }
-interface BasePart extends Rbx_BasePart, Base<Rbx_BasePart>, AnyIndex {}
-/** A structural class, not creatable */
-declare abstract class BasePart {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BasePart"): this is BasePart;
-	FindFirstAncestorOfClass(className: "BasePart"): BasePart | undefined;
-	FindFirstAncestorWhichIsA(className: "BasePart"): BasePart | undefined;
-	FindFirstChildOfClass(className: "BasePart"): BasePart | undefined;
-	FindFirstAncestorWhichIsA(className: "BasePart"): BasePart | undefined;
-}
+type BasePart = Rbx_BasePart & Base<Rbx_BasePart> & Indexable<Rbx_BasePart>;
 
 // CornerWedgePart
 interface Rbx_CornerWedgePart extends Rbx_BasePart {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__80: never;
 }
-interface CornerWedgePart extends Rbx_CornerWedgePart, Base<Rbx_CornerWedgePart>, AnyIndex {}
-/** A CornerWedge Part */
-declare class CornerWedgePart {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "CornerWedgePart"): this is CornerWedgePart;
-	FindFirstAncestorOfClass(className: "CornerWedgePart"): CornerWedgePart | undefined;
-	FindFirstAncestorWhichIsA(className: "CornerWedgePart"): CornerWedgePart | undefined;
-	FindFirstChildOfClass(className: "CornerWedgePart"): CornerWedgePart | undefined;
-	FindFirstAncestorWhichIsA(className: "CornerWedgePart"): CornerWedgePart | undefined;
-}
+type CornerWedgePart = Rbx_CornerWedgePart & Base<Rbx_CornerWedgePart> & Indexable<Rbx_CornerWedgePart>;
 
 // FormFactorPart
 interface Rbx_FormFactorPart extends Rbx_BasePart {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__81: never;
 }
-interface FormFactorPart extends Rbx_FormFactorPart, Base<Rbx_FormFactorPart>, AnyIndex {}
-declare abstract class FormFactorPart {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "FormFactorPart"): this is FormFactorPart;
-	FindFirstAncestorOfClass(className: "FormFactorPart"): FormFactorPart | undefined;
-	FindFirstAncestorWhichIsA(className: "FormFactorPart"): FormFactorPart | undefined;
-	FindFirstChildOfClass(className: "FormFactorPart"): FormFactorPart | undefined;
-	FindFirstAncestorWhichIsA(className: "FormFactorPart"): FormFactorPart | undefined;
-}
+type FormFactorPart = Rbx_FormFactorPart & Base<Rbx_FormFactorPart> & Indexable<Rbx_FormFactorPart>;
 
 // Part
 interface Rbx_Part extends Rbx_FormFactorPart {
 	Shape: Enum.PartType;
 }
-interface Part extends Rbx_Part, Base<Rbx_Part>, AnyIndex {}
-/** A plastic building block - the fundamental component of ROBLOX */
-declare class Part {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Part"): this is Part;
-	FindFirstAncestorOfClass(className: "Part"): Part | undefined;
-	FindFirstAncestorWhichIsA(className: "Part"): Part | undefined;
-	FindFirstChildOfClass(className: "Part"): Part | undefined;
-	FindFirstAncestorWhichIsA(className: "Part"): Part | undefined;
-}
+type Part = Rbx_Part & Base<Rbx_Part> & Indexable<Rbx_Part>;
 
 // FlagStand
 interface Rbx_FlagStand extends Rbx_Part {
 	TeamColor: BrickColor;
 }
-interface FlagStand extends Rbx_FlagStand, Base<Rbx_FlagStand>, AnyIndex {}
-declare class FlagStand {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "FlagStand"): this is FlagStand;
-	FindFirstAncestorOfClass(className: "FlagStand"): FlagStand | undefined;
-	FindFirstAncestorWhichIsA(className: "FlagStand"): FlagStand | undefined;
-	FindFirstChildOfClass(className: "FlagStand"): FlagStand | undefined;
-	FindFirstAncestorWhichIsA(className: "FlagStand"): FlagStand | undefined;
-}
+type FlagStand = Rbx_FlagStand & Base<Rbx_FlagStand> & Indexable<Rbx_FlagStand>;
 
 // Platform
 interface Rbx_Platform extends Rbx_Part {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__82: never;
 }
-interface Platform extends Rbx_Platform, Base<Rbx_Platform>, AnyIndex {}
-/** Equivalent to a seat, except that the character stands up rather than sits down. */
-declare abstract class Platform {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Platform"): this is Platform;
-	FindFirstAncestorOfClass(className: "Platform"): Platform | undefined;
-	FindFirstAncestorWhichIsA(className: "Platform"): Platform | undefined;
-	FindFirstChildOfClass(className: "Platform"): Platform | undefined;
-	FindFirstAncestorWhichIsA(className: "Platform"): Platform | undefined;
-}
+type Platform = Rbx_Platform & Base<Rbx_Platform> & Indexable<Rbx_Platform>;
 
 // Seat
 interface Rbx_Seat extends Rbx_Part {
@@ -4779,17 +3420,7 @@ interface Rbx_Seat extends Rbx_Part {
 	readonly Occupant: Humanoid;
 	Sit(humanoid: Instance): void;
 }
-interface Seat extends Rbx_Seat, Base<Rbx_Seat>, AnyIndex {}
-declare class Seat {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Seat"): this is Seat;
-	FindFirstAncestorOfClass(className: "Seat"): Seat | undefined;
-	FindFirstAncestorWhichIsA(className: "Seat"): Seat | undefined;
-	FindFirstChildOfClass(className: "Seat"): Seat | undefined;
-	FindFirstAncestorWhichIsA(className: "Seat"): Seat | undefined;
-}
+type Seat = Rbx_Seat & Base<Rbx_Seat> & Indexable<Rbx_Seat>;
 
 // SkateboardPlatform
 interface Rbx_SkateboardPlatform extends Rbx_Part {
@@ -4799,21 +3430,11 @@ interface Rbx_SkateboardPlatform extends Rbx_Part {
 	StickyWheels: boolean;
 	Throttle: number;
 	ApplySpecificImpulse(impulseWorld: Vector3): void;
-	Equipped: RBXScriptSignal<(humanoid: Instance, skateboardController: Instance) => void>;
-	MoveStateChanged: RBXScriptSignal<(newState: Enum.MoveState, oldState: Enum.MoveState) => void>;
-	Unequipped: RBXScriptSignal<(humanoid: Instance) => void>;
+	readonly Equipped: RBXScriptSignal<(humanoid: Instance, skateboardController: Instance) => void>;
+	readonly MoveStateChanged: RBXScriptSignal<(newState: Enum.MoveState, oldState: Enum.MoveState) => void>;
+	readonly Unequipped: RBXScriptSignal<(humanoid: Instance) => void>;
 }
-interface SkateboardPlatform extends Rbx_SkateboardPlatform, Base<Rbx_SkateboardPlatform>, AnyIndex {}
-declare class SkateboardPlatform {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SkateboardPlatform"): this is SkateboardPlatform;
-	FindFirstAncestorOfClass(className: "SkateboardPlatform"): SkateboardPlatform | undefined;
-	FindFirstAncestorWhichIsA(className: "SkateboardPlatform"): SkateboardPlatform | undefined;
-	FindFirstChildOfClass(className: "SkateboardPlatform"): SkateboardPlatform | undefined;
-	FindFirstAncestorWhichIsA(className: "SkateboardPlatform"): SkateboardPlatform | undefined;
-}
+type SkateboardPlatform = Rbx_SkateboardPlatform & Base<Rbx_SkateboardPlatform> & Indexable<Rbx_SkateboardPlatform>;
 
 // SpawnLocation
 interface Rbx_SpawnLocation extends Rbx_Part {
@@ -4823,51 +3444,21 @@ interface Rbx_SpawnLocation extends Rbx_Part {
 	Neutral: boolean;
 	TeamColor: BrickColor;
 }
-interface SpawnLocation extends Rbx_SpawnLocation, Base<Rbx_SpawnLocation>, AnyIndex {}
-declare class SpawnLocation {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SpawnLocation"): this is SpawnLocation;
-	FindFirstAncestorOfClass(className: "SpawnLocation"): SpawnLocation | undefined;
-	FindFirstAncestorWhichIsA(className: "SpawnLocation"): SpawnLocation | undefined;
-	FindFirstChildOfClass(className: "SpawnLocation"): SpawnLocation | undefined;
-	FindFirstAncestorWhichIsA(className: "SpawnLocation"): SpawnLocation | undefined;
-}
+type SpawnLocation = Rbx_SpawnLocation & Base<Rbx_SpawnLocation> & Indexable<Rbx_SpawnLocation>;
 
 // WedgePart
 interface Rbx_WedgePart extends Rbx_FormFactorPart {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__83: never;
 }
-interface WedgePart extends Rbx_WedgePart, Base<Rbx_WedgePart>, AnyIndex {}
-/** A Wedge Part */
-declare class WedgePart {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "WedgePart"): this is WedgePart;
-	FindFirstAncestorOfClass(className: "WedgePart"): WedgePart | undefined;
-	FindFirstAncestorWhichIsA(className: "WedgePart"): WedgePart | undefined;
-	FindFirstChildOfClass(className: "WedgePart"): WedgePart | undefined;
-	FindFirstAncestorWhichIsA(className: "WedgePart"): WedgePart | undefined;
-}
+type WedgePart = Rbx_WedgePart & Base<Rbx_WedgePart> & Indexable<Rbx_WedgePart>;
 
 // MeshPart
 interface Rbx_MeshPart extends Rbx_BasePart {
 	readonly MeshId: string;
 	TextureID: string;
 }
-interface MeshPart extends Rbx_MeshPart, Base<Rbx_MeshPart>, AnyIndex {}
-/** A MeshPart is a physically simulatable mesh */
-declare class MeshPart {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "MeshPart"): this is MeshPart;
-	FindFirstAncestorOfClass(className: "MeshPart"): MeshPart | undefined;
-	FindFirstAncestorWhichIsA(className: "MeshPart"): MeshPart | undefined;
-	FindFirstChildOfClass(className: "MeshPart"): MeshPart | undefined;
-	FindFirstAncestorWhichIsA(className: "MeshPart"): MeshPart | undefined;
-}
+type MeshPart = Rbx_MeshPart & Base<Rbx_MeshPart> & Indexable<Rbx_MeshPart>;
 
 // PartOperation
 interface Rbx_PartOperation extends Rbx_BasePart {
@@ -4875,49 +3466,21 @@ interface Rbx_PartOperation extends Rbx_BasePart {
 	readonly TriangleCount: number;
 	UsePartColor: boolean;
 }
-interface PartOperation extends Rbx_PartOperation, Base<Rbx_PartOperation>, AnyIndex {}
-declare class PartOperation {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PartOperation"): this is PartOperation;
-	FindFirstAncestorOfClass(className: "PartOperation"): PartOperation | undefined;
-	FindFirstAncestorWhichIsA(className: "PartOperation"): PartOperation | undefined;
-	FindFirstChildOfClass(className: "PartOperation"): PartOperation | undefined;
-	FindFirstAncestorWhichIsA(className: "PartOperation"): PartOperation | undefined;
-}
+type PartOperation = Rbx_PartOperation & Base<Rbx_PartOperation> & Indexable<Rbx_PartOperation>;
 
 // NegateOperation
 interface Rbx_NegateOperation extends Rbx_PartOperation {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__84: never;
 }
-interface NegateOperation extends Rbx_NegateOperation, Base<Rbx_NegateOperation>, AnyIndex {}
-/** A NegateOperation can be used to create holes in other parts */
-declare class NegateOperation {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "NegateOperation"): this is NegateOperation;
-	FindFirstAncestorOfClass(className: "NegateOperation"): NegateOperation | undefined;
-	FindFirstAncestorWhichIsA(className: "NegateOperation"): NegateOperation | undefined;
-	FindFirstChildOfClass(className: "NegateOperation"): NegateOperation | undefined;
-	FindFirstAncestorWhichIsA(className: "NegateOperation"): NegateOperation | undefined;
-}
+type NegateOperation = Rbx_NegateOperation & Base<Rbx_NegateOperation> & Indexable<Rbx_NegateOperation>;
 
 // UnionOperation
 interface Rbx_UnionOperation extends Rbx_PartOperation {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__85: never;
 }
-interface UnionOperation extends Rbx_UnionOperation, Base<Rbx_UnionOperation>, AnyIndex {}
-/** A UnionOperation is a union of multiple parts */
-declare class UnionOperation {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UnionOperation"): this is UnionOperation;
-	FindFirstAncestorOfClass(className: "UnionOperation"): UnionOperation | undefined;
-	FindFirstAncestorWhichIsA(className: "UnionOperation"): UnionOperation | undefined;
-	FindFirstChildOfClass(className: "UnionOperation"): UnionOperation | undefined;
-	FindFirstAncestorWhichIsA(className: "UnionOperation"): UnionOperation | undefined;
-}
+type UnionOperation = Rbx_UnionOperation & Base<Rbx_UnionOperation> & Indexable<Rbx_UnionOperation>;
 
 // Terrain
 interface Rbx_Terrain extends Rbx_BasePart {
@@ -4930,47 +3493,23 @@ interface Rbx_Terrain extends Rbx_BasePart {
 	CellCenterToWorld(x: number, y: number, z: number): Vector3;
 	CellCornerToWorld(x: number, y: number, z: number): Vector3;
 	Clear(): void;
-	CopyRegion(region: Region3int16): Instance | undefined;
 	CountCells(): number;
 	FillBall(center: Vector3, radius: number, material: Enum.Material): void;
 	FillBlock(cframe: CFrame, size: Vector3, material: Enum.Material): void;
 	FillRegion(region: Region3, resolution: number, material: Enum.Material): void;
 	GetMaterialColor(material: Enum.Material): Color3;
-	PasteRegion(region: Instance, corner: Vector3int16, pasteEmptyCells: boolean): void;
 	SetMaterialColor(material: Enum.Material, value: Color3): void;
 	WorldToCell(position: Vector3): Vector3;
 	WorldToCellPreferEmpty(position: Vector3): Vector3;
 	WorldToCellPreferSolid(position: Vector3): Vector3;
 }
-interface Terrain extends Rbx_Terrain, Base<Rbx_Terrain>, AnyIndex {}
-/** Object representing a high performance bounded grid of static 4x4 parts */
-declare abstract class Terrain {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Terrain"): this is Terrain;
-	FindFirstAncestorOfClass(className: "Terrain"): Terrain | undefined;
-	FindFirstAncestorWhichIsA(className: "Terrain"): Terrain | undefined;
-	FindFirstChildOfClass(className: "Terrain"): Terrain | undefined;
-	FindFirstAncestorWhichIsA(className: "Terrain"): Terrain | undefined;
-}
+type Terrain = Rbx_Terrain & Base<Rbx_Terrain> & Indexable<Rbx_Terrain>;
 
 // TrussPart
 interface Rbx_TrussPart extends Rbx_BasePart {
 	Style: Enum.Style;
 }
-interface TrussPart extends Rbx_TrussPart, Base<Rbx_TrussPart>, AnyIndex {}
-/** An extendable building truss */
-declare class TrussPart {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "TrussPart"): this is TrussPart;
-	FindFirstAncestorOfClass(className: "TrussPart"): TrussPart | undefined;
-	FindFirstAncestorWhichIsA(className: "TrussPart"): TrussPart | undefined;
-	FindFirstChildOfClass(className: "TrussPart"): TrussPart | undefined;
-	FindFirstAncestorWhichIsA(className: "TrussPart"): TrussPart | undefined;
-}
+type TrussPart = Rbx_TrussPart & Base<Rbx_TrussPart> & Indexable<Rbx_TrussPart>;
 
 // VehicleSeat
 interface Rbx_VehicleSeat extends Rbx_BasePart {
@@ -4987,23 +3526,10 @@ interface Rbx_VehicleSeat extends Rbx_BasePart {
 	TurnSpeed: number;
 	Sit(humanoid: Instance): void;
 }
-interface VehicleSeat extends Rbx_VehicleSeat, Base<Rbx_VehicleSeat>, AnyIndex {}
-/** Automatically finds and powers hinge joints in an assembly.  Ignores motors. */
-declare class VehicleSeat {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "VehicleSeat"): this is VehicleSeat;
-	FindFirstAncestorOfClass(className: "VehicleSeat"): VehicleSeat | undefined;
-	FindFirstAncestorWhichIsA(className: "VehicleSeat"): VehicleSeat | undefined;
-	FindFirstChildOfClass(className: "VehicleSeat"): VehicleSeat | undefined;
-	FindFirstAncestorWhichIsA(className: "VehicleSeat"): VehicleSeat | undefined;
-}
+type VehicleSeat = Rbx_VehicleSeat & Base<Rbx_VehicleSeat> & Indexable<Rbx_VehicleSeat>;
 
 // Model
 interface Rbx_Model extends Rbx_PVInstance {
-	/** A Part that serves as a reference for the Model's CFrame. Used in conjunction with GetModelPrimaryPartCFrame and SetModelPrimaryPartCFrame. Use this to rotate/translate all Parts relative to the PrimaryPart. */
-	PrimaryPart: BasePart;
 	/** Breaks all surface joints contained within */
 	BreakJoints(): void;
 	GetExtentsSize(): Vector3;
@@ -5018,33 +3544,14 @@ interface Rbx_Model extends Rbx_PVInstance {
 	/** Similar to MoveTo(), except instead of moving to an explicit location, we use the model's current CFrame location and offset it. */
 	TranslateBy(delta: Vector3): void;
 }
-interface Model extends Rbx_Model, Base<Rbx_Model>, AnyIndex {}
-/** A construct used to group Parts and other objects together, also allows manipulation of multiple objects. */
-declare class Model {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Model"): this is Model;
-	FindFirstAncestorOfClass(className: "Model"): Model | undefined;
-	FindFirstAncestorWhichIsA(className: "Model"): Model | undefined;
-	FindFirstChildOfClass(className: "Model"): Model | undefined;
-	FindFirstAncestorWhichIsA(className: "Model"): Model | undefined;
-}
+type Model = Rbx_Model & Base<Rbx_Model> & Indexable<Rbx_Model>;
 
 // Status
 interface Rbx_Status extends Rbx_Model {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__86: never;
 }
-interface Status extends Rbx_Status, Base<Rbx_Status>, AnyIndex {}
-declare abstract class Status {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Status"): this is Status;
-	FindFirstAncestorOfClass(className: "Status"): Status | undefined;
-	FindFirstAncestorWhichIsA(className: "Status"): Status | undefined;
-	FindFirstChildOfClass(className: "Status"): Status | undefined;
-	FindFirstAncestorWhichIsA(className: "Status"): Status | undefined;
-}
+type Status = Rbx_Status & Base<Rbx_Status> & Indexable<Rbx_Status>;
 
 // Workspace
 interface Rbx_Workspace extends Rbx_Model {
@@ -5070,14 +3577,7 @@ interface Rbx_Workspace extends Rbx_Model {
 	PGSIsEnabled(): boolean;
 	UnjoinFromOutsiders(objects: Array<Instance>): void;
 }
-type Workspace = Rbx_Workspace & Base<Rbx_Workspace> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "Workspace"): this is Workspace;
-	FindFirstAncestorOfClass(className: "Workspace"): Workspace | undefined;
-	FindFirstAncestorWhichIsA(className: "Workspace"): Workspace | undefined;
-	FindFirstChildOfClass(className: "Workspace"): Workspace | undefined;
-	FindFirstAncestorWhichIsA(className: "Workspace"): Workspace | undefined;
-}
+type Workspace = Rbx_Workspace & Base<Rbx_Workspace> & Indexable<Rbx_Workspace>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Workspace"): Workspace;
 }
@@ -5087,98 +3587,50 @@ interface Rbx_PackageLink extends Rbx_Instance {
 	readonly PackageId: string;
 	readonly VersionNumber: number;
 }
-interface PackageLink extends Rbx_PackageLink, Base<Rbx_PackageLink>, AnyIndex {}
-declare abstract class PackageLink {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PackageLink"): this is PackageLink;
-	FindFirstAncestorOfClass(className: "PackageLink"): PackageLink | undefined;
-	FindFirstAncestorWhichIsA(className: "PackageLink"): PackageLink | undefined;
-	FindFirstChildOfClass(className: "PackageLink"): PackageLink | undefined;
-	FindFirstAncestorWhichIsA(className: "PackageLink"): PackageLink | undefined;
-}
+type PackageLink = Rbx_PackageLink & Base<Rbx_PackageLink> & Indexable<Rbx_PackageLink>;
 
 // Pages
-declare abstract class Pages {
-	constructor(parent?: Instance);
+interface Rbx_Pages extends Rbx_Instance {
+	readonly IsFinished: boolean;
+	GetCurrentPage(): unknown;
+	AdvanceToNextPageAsync(): void;
 }
-interface Rbx_Instance {
-	IsA(className: "Pages"): this is Pages;
-	FindFirstAncestorOfClass(className: "Pages"): Pages | undefined;
-	FindFirstAncestorWhichIsA(className: "Pages"): Pages | undefined;
-	FindFirstChildOfClass(className: "Pages"): Pages | undefined;
-	FindFirstAncestorWhichIsA(className: "Pages"): Pages | undefined;
-}
+type Pages = Rbx_Pages & Base<Rbx_Pages> & Indexable<Rbx_Pages>;
 
 // DataStorePages
-declare abstract class DataStorePages {
-	constructor(parent?: Instance);
+interface Rbx_DataStorePages extends Rbx_Pages {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__87: never;
 }
-interface Rbx_Instance {
-	IsA(className: "DataStorePages"): this is DataStorePages;
-	FindFirstAncestorOfClass(className: "DataStorePages"): DataStorePages | undefined;
-	FindFirstAncestorWhichIsA(className: "DataStorePages"): DataStorePages | undefined;
-	FindFirstChildOfClass(className: "DataStorePages"): DataStorePages | undefined;
-	FindFirstAncestorWhichIsA(className: "DataStorePages"): DataStorePages | undefined;
-}
+type DataStorePages = Rbx_DataStorePages & Base<Rbx_DataStorePages> & Indexable<Rbx_DataStorePages>;
 
 // FriendPages
-declare abstract class FriendPages {
-	constructor(parent?: Instance);
+interface Rbx_FriendPages extends Rbx_Pages {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__88: never;
 }
-interface Rbx_Instance {
-	IsA(className: "FriendPages"): this is FriendPages;
-	FindFirstAncestorOfClass(className: "FriendPages"): FriendPages | undefined;
-	FindFirstAncestorWhichIsA(className: "FriendPages"): FriendPages | undefined;
-	FindFirstChildOfClass(className: "FriendPages"): FriendPages | undefined;
-	FindFirstAncestorWhichIsA(className: "FriendPages"): FriendPages | undefined;
-}
+type FriendPages = Rbx_FriendPages & Base<Rbx_FriendPages> & Indexable<Rbx_FriendPages>;
 
 // InventoryPages
 interface Rbx_InventoryPages extends Rbx_Pages {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__89: never;
 }
-interface InventoryPages extends Rbx_InventoryPages, Base<Rbx_InventoryPages>, AnyIndex {}
-declare abstract class InventoryPages {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "InventoryPages"): this is InventoryPages;
-	FindFirstAncestorOfClass(className: "InventoryPages"): InventoryPages | undefined;
-	FindFirstAncestorWhichIsA(className: "InventoryPages"): InventoryPages | undefined;
-	FindFirstChildOfClass(className: "InventoryPages"): InventoryPages | undefined;
-	FindFirstAncestorWhichIsA(className: "InventoryPages"): InventoryPages | undefined;
-}
+type InventoryPages = Rbx_InventoryPages & Base<Rbx_InventoryPages> & Indexable<Rbx_InventoryPages>;
 
 // StandardPages
 interface Rbx_StandardPages extends Rbx_Pages {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__90: never;
 }
-interface StandardPages extends Rbx_StandardPages, Base<Rbx_StandardPages>, AnyIndex {}
-declare abstract class StandardPages {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "StandardPages"): this is StandardPages;
-	FindFirstAncestorOfClass(className: "StandardPages"): StandardPages | undefined;
-	FindFirstAncestorWhichIsA(className: "StandardPages"): StandardPages | undefined;
-	FindFirstChildOfClass(className: "StandardPages"): StandardPages | undefined;
-	FindFirstAncestorWhichIsA(className: "StandardPages"): StandardPages | undefined;
-}
+type StandardPages = Rbx_StandardPages & Base<Rbx_StandardPages> & Indexable<Rbx_StandardPages>;
 
 // PartOperationAsset
 interface Rbx_PartOperationAsset extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__91: never;
 }
-interface PartOperationAsset extends Rbx_PartOperationAsset, Base<Rbx_PartOperationAsset>, AnyIndex {}
-declare class PartOperationAsset {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PartOperationAsset"): this is PartOperationAsset;
-	FindFirstAncestorOfClass(className: "PartOperationAsset"): PartOperationAsset | undefined;
-	FindFirstAncestorWhichIsA(className: "PartOperationAsset"): PartOperationAsset | undefined;
-	FindFirstChildOfClass(className: "PartOperationAsset"): PartOperationAsset | undefined;
-	FindFirstAncestorWhichIsA(className: "PartOperationAsset"): PartOperationAsset | undefined;
-}
+type PartOperationAsset = Rbx_PartOperationAsset & Base<Rbx_PartOperationAsset> & Indexable<Rbx_PartOperationAsset>;
 
 // ParticleEmitter
 interface Rbx_ParticleEmitter extends Rbx_Instance {
@@ -5205,65 +3657,31 @@ interface Rbx_ParticleEmitter extends Rbx_Instance {
 	Clear(): void;
 	Emit(particleCount?: number): void;
 }
-interface ParticleEmitter extends Rbx_ParticleEmitter, Base<Rbx_ParticleEmitter>, AnyIndex {}
-/** A generic particle system. */
-declare class ParticleEmitter {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ParticleEmitter"): this is ParticleEmitter;
-	FindFirstAncestorOfClass(className: "ParticleEmitter"): ParticleEmitter | undefined;
-	FindFirstAncestorWhichIsA(className: "ParticleEmitter"): ParticleEmitter | undefined;
-	FindFirstChildOfClass(className: "ParticleEmitter"): ParticleEmitter | undefined;
-	FindFirstAncestorWhichIsA(className: "ParticleEmitter"): ParticleEmitter | undefined;
-}
+type ParticleEmitter = Rbx_ParticleEmitter & Base<Rbx_ParticleEmitter> & Indexable<Rbx_ParticleEmitter>;
 
 // Path
 interface Rbx_Path extends Rbx_Instance {
 	readonly Status: Enum.PathStatus;
 	CheckOcclusionAsync(start: number): number;
 	ComputeAsync(start: Vector3, finish: Vector3): void;
-	Blocked: RBXScriptSignal<(blockedWaypointIdx: number) => void>;
+	readonly Blocked: RBXScriptSignal<(blockedWaypointIdx: number) => void>;
 }
-interface Path extends Rbx_Path, Base<Rbx_Path>, AnyIndex {}
-declare abstract class Path {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Path"): this is Path;
-	FindFirstAncestorOfClass(className: "Path"): Path | undefined;
-	FindFirstAncestorWhichIsA(className: "Path"): Path | undefined;
-	FindFirstChildOfClass(className: "Path"): Path | undefined;
-	FindFirstAncestorWhichIsA(className: "Path"): Path | undefined;
-}
+type Path = Rbx_Path & Base<Rbx_Path> & Indexable<Rbx_Path>;
 
 // PathfindingService
 interface Rbx_PathfindingService extends Rbx_Instance {
-	CreatePath(agentParameters?: object): Instance | undefined;
 }
-type PathfindingService = Rbx_PathfindingService & Base<Rbx_PathfindingService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "PathfindingService"): this is PathfindingService;
-	FindFirstAncestorOfClass(className: "PathfindingService"): PathfindingService | undefined;
-	FindFirstAncestorWhichIsA(className: "PathfindingService"): PathfindingService | undefined;
-	FindFirstChildOfClass(className: "PathfindingService"): PathfindingService | undefined;
-	FindFirstAncestorWhichIsA(className: "PathfindingService"): PathfindingService | undefined;
-}
+type PathfindingService = Rbx_PathfindingService & Base<Rbx_PathfindingService> & Indexable<Rbx_PathfindingService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "PathfindingService"): PathfindingService;
 }
 
 // PhysicsPacketCache
 interface Rbx_PhysicsPacketCache extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__92: never;
 }
-type PhysicsPacketCache = Rbx_PhysicsPacketCache & Base<Rbx_PhysicsPacketCache> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "PhysicsPacketCache"): this is PhysicsPacketCache;
-	FindFirstAncestorOfClass(className: "PhysicsPacketCache"): PhysicsPacketCache | undefined;
-	FindFirstAncestorWhichIsA(className: "PhysicsPacketCache"): PhysicsPacketCache | undefined;
-	FindFirstChildOfClass(className: "PhysicsPacketCache"): PhysicsPacketCache | undefined;
-	FindFirstAncestorWhichIsA(className: "PhysicsPacketCache"): PhysicsPacketCache | undefined;
-}
+type PhysicsPacketCache = Rbx_PhysicsPacketCache & Base<Rbx_PhysicsPacketCache> & Indexable<Rbx_PhysicsPacketCache>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "PhysicsPacketCache"): PhysicsPacketCache;
 }
@@ -5281,14 +3699,7 @@ interface Rbx_PhysicsService extends Rbx_Instance {
 	RenameCollisionGroup(from: string, to: string): void;
 	SetPartCollisionGroup(part: Instance, name: string): void;
 }
-type PhysicsService = Rbx_PhysicsService & Base<Rbx_PhysicsService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "PhysicsService"): this is PhysicsService;
-	FindFirstAncestorOfClass(className: "PhysicsService"): PhysicsService | undefined;
-	FindFirstAncestorWhichIsA(className: "PhysicsService"): PhysicsService | undefined;
-	FindFirstChildOfClass(className: "PhysicsService"): PhysicsService | undefined;
-	FindFirstAncestorWhichIsA(className: "PhysicsService"): PhysicsService | undefined;
-}
+type PhysicsService = Rbx_PhysicsService & Base<Rbx_PhysicsService> & Indexable<Rbx_PhysicsService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "PhysicsService"): PhysicsService;
 }
@@ -5318,17 +3729,7 @@ interface Rbx_PhysicsSettings extends Rbx_Instance {
 	ThrottleAdjustTime: number;
 	UseCSGv2: boolean;
 }
-interface PhysicsSettings extends Rbx_PhysicsSettings, Base<Rbx_PhysicsSettings>, AnyIndex {}
-declare class PhysicsSettings {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PhysicsSettings"): this is PhysicsSettings;
-	FindFirstAncestorOfClass(className: "PhysicsSettings"): PhysicsSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "PhysicsSettings"): PhysicsSettings | undefined;
-	FindFirstChildOfClass(className: "PhysicsSettings"): PhysicsSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "PhysicsSettings"): PhysicsSettings | undefined;
-}
+type PhysicsSettings = Rbx_PhysicsSettings & Base<Rbx_PhysicsSettings> & Indexable<Rbx_PhysicsSettings>;
 
 // Player
 interface Rbx_Player extends Rbx_Instance {
@@ -5361,30 +3762,17 @@ interface Rbx_Player extends Rbx_Instance {
 	GetJoinData(): object;
 	HasAppearanceLoaded(): boolean;
 	Kick(message?: string): void;
-	LoadCharacterAppearance(assetInstance: Instance): void;
 	Move(walkDirection: Vector3, relativeToCamera?: boolean): void;
 	GetRankInGroup(groupId: number): number;
 	GetRoleInGroup(groupId: number): string;
 	IsFriendsWith(userId: number): boolean;
 	IsInGroup(groupId: number): boolean;
-	/** Loads in a new character for this player.  This will replace the player's current character, if they have one. This should be used in conjunction with Players.CharacterAutoLoads to control spawning of characters. This function only works from a server-side script (NOT a LocalScript). */
-	LoadCharacter(): void;
-	Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
+	readonly Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
 	/** Fired periodically after the user has been AFK for a while.  Currently this event is only fired for the *local* Player.  "time" is the time in seconds that the user has been idle. */
-	Idled: RBXScriptSignal<(time: number) => void>;
-	OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
+	readonly Idled: RBXScriptSignal<(time: number) => void>;
+	readonly OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
 }
-interface Player extends Rbx_Player, Base<Rbx_Player>, AnyIndex {}
-declare class Player {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Player"): this is Player;
-	FindFirstAncestorOfClass(className: "Player"): Player | undefined;
-	FindFirstAncestorWhichIsA(className: "Player"): Player | undefined;
-	FindFirstChildOfClass(className: "Player"): Player | undefined;
-	FindFirstAncestorWhichIsA(className: "Player"): Player | undefined;
-}
+type Player = Rbx_Player & Base<Rbx_Player> & Indexable<Rbx_Player>;
 
 // PlayerScripts
 interface Rbx_PlayerScripts extends Rbx_Instance {
@@ -5397,18 +3785,7 @@ interface Rbx_PlayerScripts extends Rbx_Instance {
 	RegisterTouchCameraMovementMode(cameraMovementMode: Enum.TouchCameraMovementMode): void;
 	RegisterTouchMovementMode(movementMode: Enum.TouchMovementMode): void;
 }
-interface PlayerScripts extends Rbx_PlayerScripts, Base<Rbx_PlayerScripts>, AnyIndex {}
-/** A container instance that contains LocalScripts.  LocalScript objects that are placed in this container will be exectue only when a Player is the parent. */
-declare abstract class PlayerScripts {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PlayerScripts"): this is PlayerScripts;
-	FindFirstAncestorOfClass(className: "PlayerScripts"): PlayerScripts | undefined;
-	FindFirstAncestorWhichIsA(className: "PlayerScripts"): PlayerScripts | undefined;
-	FindFirstChildOfClass(className: "PlayerScripts"): PlayerScripts | undefined;
-	FindFirstAncestorWhichIsA(className: "PlayerScripts"): PlayerScripts | undefined;
-}
+type PlayerScripts = Rbx_PlayerScripts & Base<Rbx_PlayerScripts> & Indexable<Rbx_PlayerScripts>;
 
 // Players
 interface Rbx_Players extends Rbx_Instance {
@@ -5418,17 +3795,11 @@ interface Rbx_Players extends Rbx_Instance {
 	readonly ClassicChat: boolean;
 	readonly MaxPlayers: number;
 	readonly PreferredPlayers: number;
+	RespawnTime: number;
 	GetNameFromUserIdAsync(userId: number): string;
 	GetUserIdFromNameAsync(userName: string): number;
 }
-type Players = Rbx_Players & Base<Rbx_Players> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "Players"): this is Players;
-	FindFirstAncestorOfClass(className: "Players"): Players | undefined;
-	FindFirstAncestorWhichIsA(className: "Players"): Players | undefined;
-	FindFirstChildOfClass(className: "Players"): Players | undefined;
-	FindFirstAncestorWhichIsA(className: "Players"): Players | undefined;
-}
+type Players = Rbx_Players & Base<Rbx_Players> & Indexable<Rbx_Players>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Players"): Players;
 }
@@ -5438,35 +3809,16 @@ interface Rbx_Plugin extends Rbx_Instance {
 	readonly CollisionEnabled: boolean;
 	readonly GridSize: number;
 }
-interface Plugin extends Rbx_Plugin, Base<Rbx_Plugin>, AnyIndex {}
-declare abstract class Plugin {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Plugin"): this is Plugin;
-	FindFirstAncestorOfClass(className: "Plugin"): Plugin | undefined;
-	FindFirstAncestorWhichIsA(className: "Plugin"): Plugin | undefined;
-	FindFirstChildOfClass(className: "Plugin"): Plugin | undefined;
-	FindFirstAncestorWhichIsA(className: "Plugin"): Plugin | undefined;
-}
+type Plugin = Rbx_Plugin & Base<Rbx_Plugin> & Indexable<Rbx_Plugin>;
 
 // PluginAction
 interface Rbx_PluginAction extends Rbx_Instance {
 	readonly ActionId: string;
+	readonly AllowBinding: boolean;
 	readonly StatusTip: string;
 	readonly Text: string;
 }
-interface PluginAction extends Rbx_PluginAction, Base<Rbx_PluginAction>, AnyIndex {}
-declare class PluginAction {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PluginAction"): this is PluginAction;
-	FindFirstAncestorOfClass(className: "PluginAction"): PluginAction | undefined;
-	FindFirstAncestorWhichIsA(className: "PluginAction"): PluginAction | undefined;
-	FindFirstChildOfClass(className: "PluginAction"): PluginAction | undefined;
-	FindFirstAncestorWhichIsA(className: "PluginAction"): PluginAction | undefined;
-}
+type PluginAction = Rbx_PluginAction & Base<Rbx_PluginAction> & Indexable<Rbx_PluginAction>;
 
 // PluginDragEvent
 interface Rbx_PluginDragEvent extends Rbx_Instance {
@@ -5475,61 +3827,53 @@ interface Rbx_PluginDragEvent extends Rbx_Instance {
 	readonly Position: Vector2;
 	readonly Sender: string;
 }
-interface PluginDragEvent extends Rbx_PluginDragEvent, Base<Rbx_PluginDragEvent>, AnyIndex {}
-declare abstract class PluginDragEvent {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PluginDragEvent"): this is PluginDragEvent;
-	FindFirstAncestorOfClass(className: "PluginDragEvent"): PluginDragEvent | undefined;
-	FindFirstAncestorWhichIsA(className: "PluginDragEvent"): PluginDragEvent | undefined;
-	FindFirstChildOfClass(className: "PluginDragEvent"): PluginDragEvent | undefined;
-	FindFirstAncestorWhichIsA(className: "PluginDragEvent"): PluginDragEvent | undefined;
-}
+type PluginDragEvent = Rbx_PluginDragEvent & Base<Rbx_PluginDragEvent> & Indexable<Rbx_PluginDragEvent>;
 
 // PluginGuiService
 interface Rbx_PluginGuiService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__93: never;
 }
-type PluginGuiService = Rbx_PluginGuiService & Base<Rbx_PluginGuiService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "PluginGuiService"): this is PluginGuiService;
-	FindFirstAncestorOfClass(className: "PluginGuiService"): PluginGuiService | undefined;
-	FindFirstAncestorWhichIsA(className: "PluginGuiService"): PluginGuiService | undefined;
-	FindFirstChildOfClass(className: "PluginGuiService"): PluginGuiService | undefined;
-	FindFirstAncestorWhichIsA(className: "PluginGuiService"): PluginGuiService | undefined;
-}
+type PluginGuiService = Rbx_PluginGuiService & Base<Rbx_PluginGuiService> & Indexable<Rbx_PluginGuiService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "PluginGuiService"): PluginGuiService;
 }
 
 // PluginManager
 interface Rbx_PluginManager extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__94: never;
 }
-interface PluginManager extends Rbx_PluginManager, Base<Rbx_PluginManager>, AnyIndex {}
-declare abstract class PluginManager {
-	constructor(parent?: Instance);
+type PluginManager = Rbx_PluginManager & Base<Rbx_PluginManager> & Indexable<Rbx_PluginManager>;
+
+// PluginMenu
+interface Rbx_PluginMenu extends Rbx_Instance {
+	Icon: string;
+	Title: string;
 }
-interface Rbx_Instance {
-	IsA(className: "PluginManager"): this is PluginManager;
-	FindFirstAncestorOfClass(className: "PluginManager"): PluginManager | undefined;
-	FindFirstAncestorWhichIsA(className: "PluginManager"): PluginManager | undefined;
-	FindFirstChildOfClass(className: "PluginManager"): PluginManager | undefined;
-	FindFirstAncestorWhichIsA(className: "PluginManager"): PluginManager | undefined;
+type PluginMenu = Rbx_PluginMenu & Base<Rbx_PluginMenu> & Indexable<Rbx_PluginMenu>;
+
+// PluginToolbar
+interface Rbx_PluginToolbar extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__95: never;
 }
+type PluginToolbar = Rbx_PluginToolbar & Base<Rbx_PluginToolbar> & Indexable<Rbx_PluginToolbar>;
+
+// PluginToolbarButton
+interface Rbx_PluginToolbarButton extends Rbx_Instance {
+	ClickableWhenViewportHidden: boolean;
+	Enabled: boolean;
+	Icon: string;
+}
+type PluginToolbarButton = Rbx_PluginToolbarButton & Base<Rbx_PluginToolbarButton> & Indexable<Rbx_PluginToolbarButton>;
 
 // PointsService
 interface Rbx_PointsService extends Rbx_Instance {
 	/** Fired when points are successfully awarded 'userId'. Also returns the updated balance of points for usedId in universe via 'userBalanceInUniverse', total points via 'userTotalBalance', and the amount points that were awarded via 'pointsAwarded'. This event fires on the server and also all clients in the game that awarded the points. */
-	PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
+	readonly PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
 }
-type PointsService = Rbx_PointsService & Base<Rbx_PointsService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "PointsService"): this is PointsService;
-	FindFirstAncestorOfClass(className: "PointsService"): PointsService | undefined;
-	FindFirstAncestorWhichIsA(className: "PointsService"): PointsService | undefined;
-	FindFirstChildOfClass(className: "PointsService"): PointsService | undefined;
-	FindFirstAncestorWhichIsA(className: "PointsService"): PointsService | undefined;
-}
+type PointsService = Rbx_PointsService & Base<Rbx_PointsService> & Indexable<Rbx_PointsService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "PointsService"): PointsService;
 }
@@ -5544,34 +3888,13 @@ interface Rbx_Pose extends Rbx_Instance {
 	GetSubPoses(): Array<Instance>;
 	RemoveSubPose(pose: Instance): void;
 }
-interface Pose extends Rbx_Pose, Base<Rbx_Pose>, AnyIndex {}
-/** The pose of a joint relative to it's parent part in a keyframe */
-declare class Pose {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Pose"): this is Pose;
-	FindFirstAncestorOfClass(className: "Pose"): Pose | undefined;
-	FindFirstAncestorWhichIsA(className: "Pose"): Pose | undefined;
-	FindFirstChildOfClass(className: "Pose"): Pose | undefined;
-	FindFirstAncestorWhichIsA(className: "Pose"): Pose | undefined;
-}
+type Pose = Rbx_Pose & Base<Rbx_Pose> & Indexable<Rbx_Pose>;
 
 // PostEffect
 interface Rbx_PostEffect extends Rbx_Instance {
 	Enabled: boolean;
 }
-interface PostEffect extends Rbx_PostEffect, Base<Rbx_PostEffect>, AnyIndex {}
-declare abstract class PostEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PostEffect"): this is PostEffect;
-	FindFirstAncestorOfClass(className: "PostEffect"): PostEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "PostEffect"): PostEffect | undefined;
-	FindFirstChildOfClass(className: "PostEffect"): PostEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "PostEffect"): PostEffect | undefined;
-}
+type PostEffect = Rbx_PostEffect & Base<Rbx_PostEffect> & Indexable<Rbx_PostEffect>;
 
 // BloomEffect
 interface Rbx_BloomEffect extends Rbx_PostEffect {
@@ -5579,33 +3902,13 @@ interface Rbx_BloomEffect extends Rbx_PostEffect {
 	Size: number;
 	Threshold: number;
 }
-interface BloomEffect extends Rbx_BloomEffect, Base<Rbx_BloomEffect>, AnyIndex {}
-declare class BloomEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BloomEffect"): this is BloomEffect;
-	FindFirstAncestorOfClass(className: "BloomEffect"): BloomEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "BloomEffect"): BloomEffect | undefined;
-	FindFirstChildOfClass(className: "BloomEffect"): BloomEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "BloomEffect"): BloomEffect | undefined;
-}
+type BloomEffect = Rbx_BloomEffect & Base<Rbx_BloomEffect> & Indexable<Rbx_BloomEffect>;
 
 // BlurEffect
 interface Rbx_BlurEffect extends Rbx_PostEffect {
 	Size: number;
 }
-interface BlurEffect extends Rbx_BlurEffect, Base<Rbx_BlurEffect>, AnyIndex {}
-declare class BlurEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BlurEffect"): this is BlurEffect;
-	FindFirstAncestorOfClass(className: "BlurEffect"): BlurEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "BlurEffect"): BlurEffect | undefined;
-	FindFirstChildOfClass(className: "BlurEffect"): BlurEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "BlurEffect"): BlurEffect | undefined;
-}
+type BlurEffect = Rbx_BlurEffect & Base<Rbx_BlurEffect> & Indexable<Rbx_BlurEffect>;
 
 // ColorCorrectionEffect
 interface Rbx_ColorCorrectionEffect extends Rbx_PostEffect {
@@ -5614,150 +3917,74 @@ interface Rbx_ColorCorrectionEffect extends Rbx_PostEffect {
 	Saturation: number;
 	TintColor: Color3;
 }
-interface ColorCorrectionEffect extends Rbx_ColorCorrectionEffect, Base<Rbx_ColorCorrectionEffect>, AnyIndex {}
-declare class ColorCorrectionEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ColorCorrectionEffect"): this is ColorCorrectionEffect;
-	FindFirstAncestorOfClass(className: "ColorCorrectionEffect"): ColorCorrectionEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "ColorCorrectionEffect"): ColorCorrectionEffect | undefined;
-	FindFirstChildOfClass(className: "ColorCorrectionEffect"): ColorCorrectionEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "ColorCorrectionEffect"): ColorCorrectionEffect | undefined;
-}
+type ColorCorrectionEffect = Rbx_ColorCorrectionEffect & Base<Rbx_ColorCorrectionEffect> & Indexable<Rbx_ColorCorrectionEffect>;
 
 // SunRaysEffect
 interface Rbx_SunRaysEffect extends Rbx_PostEffect {
 	Intensity: number;
 	Spread: number;
 }
-interface SunRaysEffect extends Rbx_SunRaysEffect, Base<Rbx_SunRaysEffect>, AnyIndex {}
-declare class SunRaysEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SunRaysEffect"): this is SunRaysEffect;
-	FindFirstAncestorOfClass(className: "SunRaysEffect"): SunRaysEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "SunRaysEffect"): SunRaysEffect | undefined;
-	FindFirstChildOfClass(className: "SunRaysEffect"): SunRaysEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "SunRaysEffect"): SunRaysEffect | undefined;
-}
+type SunRaysEffect = Rbx_SunRaysEffect & Base<Rbx_SunRaysEffect> & Indexable<Rbx_SunRaysEffect>;
 
 // ReflectionMetadata
 interface Rbx_ReflectionMetadata extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__96: never;
 }
-interface ReflectionMetadata extends Rbx_ReflectionMetadata, Base<Rbx_ReflectionMetadata>, AnyIndex {}
-declare class ReflectionMetadata {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadata"): this is ReflectionMetadata;
-	FindFirstAncestorOfClass(className: "ReflectionMetadata"): ReflectionMetadata | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadata"): ReflectionMetadata | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadata"): ReflectionMetadata | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadata"): ReflectionMetadata | undefined;
-}
+type ReflectionMetadata = Rbx_ReflectionMetadata & Base<Rbx_ReflectionMetadata> & Indexable<Rbx_ReflectionMetadata>;
 
 // ReflectionMetadataCallbacks
 interface Rbx_ReflectionMetadataCallbacks extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__97: never;
 }
-interface ReflectionMetadataCallbacks extends Rbx_ReflectionMetadataCallbacks, Base<Rbx_ReflectionMetadataCallbacks>, AnyIndex {}
-declare class ReflectionMetadataCallbacks {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadataCallbacks"): this is ReflectionMetadataCallbacks;
-	FindFirstAncestorOfClass(className: "ReflectionMetadataCallbacks"): ReflectionMetadataCallbacks | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataCallbacks"): ReflectionMetadataCallbacks | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadataCallbacks"): ReflectionMetadataCallbacks | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataCallbacks"): ReflectionMetadataCallbacks | undefined;
-}
+type ReflectionMetadataCallbacks = Rbx_ReflectionMetadataCallbacks & Base<Rbx_ReflectionMetadataCallbacks> & Indexable<Rbx_ReflectionMetadataCallbacks>;
 
 // ReflectionMetadataClasses
 interface Rbx_ReflectionMetadataClasses extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__98: never;
 }
-interface ReflectionMetadataClasses extends Rbx_ReflectionMetadataClasses, Base<Rbx_ReflectionMetadataClasses>, AnyIndex {}
-declare class ReflectionMetadataClasses {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadataClasses"): this is ReflectionMetadataClasses;
-	FindFirstAncestorOfClass(className: "ReflectionMetadataClasses"): ReflectionMetadataClasses | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataClasses"): ReflectionMetadataClasses | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadataClasses"): ReflectionMetadataClasses | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataClasses"): ReflectionMetadataClasses | undefined;
-}
+type ReflectionMetadataClasses = Rbx_ReflectionMetadataClasses & Base<Rbx_ReflectionMetadataClasses> & Indexable<Rbx_ReflectionMetadataClasses>;
 
 // ReflectionMetadataEnums
 interface Rbx_ReflectionMetadataEnums extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__99: never;
 }
-interface ReflectionMetadataEnums extends Rbx_ReflectionMetadataEnums, Base<Rbx_ReflectionMetadataEnums>, AnyIndex {}
-declare class ReflectionMetadataEnums {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadataEnums"): this is ReflectionMetadataEnums;
-	FindFirstAncestorOfClass(className: "ReflectionMetadataEnums"): ReflectionMetadataEnums | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEnums"): ReflectionMetadataEnums | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadataEnums"): ReflectionMetadataEnums | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEnums"): ReflectionMetadataEnums | undefined;
-}
+type ReflectionMetadataEnums = Rbx_ReflectionMetadataEnums & Base<Rbx_ReflectionMetadataEnums> & Indexable<Rbx_ReflectionMetadataEnums>;
 
 // ReflectionMetadataEvents
 interface Rbx_ReflectionMetadataEvents extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__100: never;
 }
-interface ReflectionMetadataEvents extends Rbx_ReflectionMetadataEvents, Base<Rbx_ReflectionMetadataEvents>, AnyIndex {}
-declare class ReflectionMetadataEvents {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadataEvents"): this is ReflectionMetadataEvents;
-	FindFirstAncestorOfClass(className: "ReflectionMetadataEvents"): ReflectionMetadataEvents | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEvents"): ReflectionMetadataEvents | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadataEvents"): ReflectionMetadataEvents | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEvents"): ReflectionMetadataEvents | undefined;
-}
+type ReflectionMetadataEvents = Rbx_ReflectionMetadataEvents & Base<Rbx_ReflectionMetadataEvents> & Indexable<Rbx_ReflectionMetadataEvents>;
 
 // ReflectionMetadataFunctions
 interface Rbx_ReflectionMetadataFunctions extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__101: never;
 }
-interface ReflectionMetadataFunctions extends Rbx_ReflectionMetadataFunctions, Base<Rbx_ReflectionMetadataFunctions>, AnyIndex {}
-declare class ReflectionMetadataFunctions {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadataFunctions"): this is ReflectionMetadataFunctions;
-	FindFirstAncestorOfClass(className: "ReflectionMetadataFunctions"): ReflectionMetadataFunctions | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataFunctions"): ReflectionMetadataFunctions | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadataFunctions"): ReflectionMetadataFunctions | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataFunctions"): ReflectionMetadataFunctions | undefined;
-}
+type ReflectionMetadataFunctions = Rbx_ReflectionMetadataFunctions & Base<Rbx_ReflectionMetadataFunctions> & Indexable<Rbx_ReflectionMetadataFunctions>;
 
 // ReflectionMetadataItem
 interface Rbx_ReflectionMetadataItem extends Rbx_Instance {
 	Browsable: boolean;
 	ClassCategory: string;
+	ClientOnly: boolean;
 	Constraint: string;
 	Deprecated: boolean;
 	EditingDisabled: boolean;
 	IsBackend: boolean;
 	ScriptContext: string;
+	ServerOnly: boolean;
 	UIMaximum: number;
 	UIMinimum: number;
 	UINumTicks: number;
 	summary: string;
 }
-interface ReflectionMetadataItem extends Rbx_ReflectionMetadataItem, Base<Rbx_ReflectionMetadataItem>, AnyIndex {}
-declare abstract class ReflectionMetadataItem {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadataItem"): this is ReflectionMetadataItem;
-	FindFirstAncestorOfClass(className: "ReflectionMetadataItem"): ReflectionMetadataItem | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataItem"): ReflectionMetadataItem | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadataItem"): ReflectionMetadataItem | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataItem"): ReflectionMetadataItem | undefined;
-}
+type ReflectionMetadataItem = Rbx_ReflectionMetadataItem & Base<Rbx_ReflectionMetadataItem> & Indexable<Rbx_ReflectionMetadataItem>;
 
 // ReflectionMetadataClass
 interface Rbx_ReflectionMetadataClass extends Rbx_ReflectionMetadataItem {
@@ -5767,124 +3994,52 @@ interface Rbx_ReflectionMetadataClass extends Rbx_ReflectionMetadataItem {
 	PreferredParent: string;
 	PreferredParents: string;
 }
-interface ReflectionMetadataClass extends Rbx_ReflectionMetadataClass, Base<Rbx_ReflectionMetadataClass>, AnyIndex {}
-declare class ReflectionMetadataClass {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadataClass"): this is ReflectionMetadataClass;
-	FindFirstAncestorOfClass(className: "ReflectionMetadataClass"): ReflectionMetadataClass | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataClass"): ReflectionMetadataClass | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadataClass"): ReflectionMetadataClass | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataClass"): ReflectionMetadataClass | undefined;
-}
+type ReflectionMetadataClass = Rbx_ReflectionMetadataClass & Base<Rbx_ReflectionMetadataClass> & Indexable<Rbx_ReflectionMetadataClass>;
 
 // ReflectionMetadataEnum
 interface Rbx_ReflectionMetadataEnum extends Rbx_ReflectionMetadataItem {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__102: never;
 }
-interface ReflectionMetadataEnum extends Rbx_ReflectionMetadataEnum, Base<Rbx_ReflectionMetadataEnum>, AnyIndex {}
-declare class ReflectionMetadataEnum {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadataEnum"): this is ReflectionMetadataEnum;
-	FindFirstAncestorOfClass(className: "ReflectionMetadataEnum"): ReflectionMetadataEnum | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEnum"): ReflectionMetadataEnum | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadataEnum"): ReflectionMetadataEnum | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEnum"): ReflectionMetadataEnum | undefined;
-}
+type ReflectionMetadataEnum = Rbx_ReflectionMetadataEnum & Base<Rbx_ReflectionMetadataEnum> & Indexable<Rbx_ReflectionMetadataEnum>;
 
 // ReflectionMetadataEnumItem
 interface Rbx_ReflectionMetadataEnumItem extends Rbx_ReflectionMetadataItem {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__103: never;
 }
-interface ReflectionMetadataEnumItem extends Rbx_ReflectionMetadataEnumItem, Base<Rbx_ReflectionMetadataEnumItem>, AnyIndex {}
-declare class ReflectionMetadataEnumItem {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadataEnumItem"): this is ReflectionMetadataEnumItem;
-	FindFirstAncestorOfClass(className: "ReflectionMetadataEnumItem"): ReflectionMetadataEnumItem | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEnumItem"): ReflectionMetadataEnumItem | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadataEnumItem"): ReflectionMetadataEnumItem | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataEnumItem"): ReflectionMetadataEnumItem | undefined;
-}
+type ReflectionMetadataEnumItem = Rbx_ReflectionMetadataEnumItem & Base<Rbx_ReflectionMetadataEnumItem> & Indexable<Rbx_ReflectionMetadataEnumItem>;
 
 // ReflectionMetadataMember
 interface Rbx_ReflectionMetadataMember extends Rbx_ReflectionMetadataItem {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__104: never;
 }
-interface ReflectionMetadataMember extends Rbx_ReflectionMetadataMember, Base<Rbx_ReflectionMetadataMember>, AnyIndex {}
-declare class ReflectionMetadataMember {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadataMember"): this is ReflectionMetadataMember;
-	FindFirstAncestorOfClass(className: "ReflectionMetadataMember"): ReflectionMetadataMember | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataMember"): ReflectionMetadataMember | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadataMember"): ReflectionMetadataMember | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataMember"): ReflectionMetadataMember | undefined;
-}
+type ReflectionMetadataMember = Rbx_ReflectionMetadataMember & Base<Rbx_ReflectionMetadataMember> & Indexable<Rbx_ReflectionMetadataMember>;
 
 // ReflectionMetadataProperties
 interface Rbx_ReflectionMetadataProperties extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__105: never;
 }
-interface ReflectionMetadataProperties extends Rbx_ReflectionMetadataProperties, Base<Rbx_ReflectionMetadataProperties>, AnyIndex {}
-declare class ReflectionMetadataProperties {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadataProperties"): this is ReflectionMetadataProperties;
-	FindFirstAncestorOfClass(className: "ReflectionMetadataProperties"): ReflectionMetadataProperties | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataProperties"): ReflectionMetadataProperties | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadataProperties"): ReflectionMetadataProperties | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataProperties"): ReflectionMetadataProperties | undefined;
-}
+type ReflectionMetadataProperties = Rbx_ReflectionMetadataProperties & Base<Rbx_ReflectionMetadataProperties> & Indexable<Rbx_ReflectionMetadataProperties>;
 
 // ReflectionMetadataYieldFunctions
 interface Rbx_ReflectionMetadataYieldFunctions extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__106: never;
 }
-interface ReflectionMetadataYieldFunctions extends Rbx_ReflectionMetadataYieldFunctions, Base<Rbx_ReflectionMetadataYieldFunctions>, AnyIndex {}
-declare class ReflectionMetadataYieldFunctions {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReflectionMetadataYieldFunctions"): this is ReflectionMetadataYieldFunctions;
-	FindFirstAncestorOfClass(className: "ReflectionMetadataYieldFunctions"): ReflectionMetadataYieldFunctions | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataYieldFunctions"): ReflectionMetadataYieldFunctions | undefined;
-	FindFirstChildOfClass(className: "ReflectionMetadataYieldFunctions"): ReflectionMetadataYieldFunctions | undefined;
-	FindFirstAncestorWhichIsA(className: "ReflectionMetadataYieldFunctions"): ReflectionMetadataYieldFunctions | undefined;
-}
+type ReflectionMetadataYieldFunctions = Rbx_ReflectionMetadataYieldFunctions & Base<Rbx_ReflectionMetadataYieldFunctions> & Indexable<Rbx_ReflectionMetadataYieldFunctions>;
 
 // RemoteEvent
 interface Rbx_RemoteEvent extends Rbx_Instance {
 }
-interface RemoteEvent extends Rbx_RemoteEvent, Base<Rbx_RemoteEvent>, AnyIndex {}
-/** Allow events defined in one script to be subscribed to by another script across client/server boundary */
-declare class RemoteEvent {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "RemoteEvent"): this is RemoteEvent;
-	FindFirstAncestorOfClass(className: "RemoteEvent"): RemoteEvent | undefined;
-	FindFirstAncestorWhichIsA(className: "RemoteEvent"): RemoteEvent | undefined;
-	FindFirstChildOfClass(className: "RemoteEvent"): RemoteEvent | undefined;
-	FindFirstAncestorWhichIsA(className: "RemoteEvent"): RemoteEvent | undefined;
-}
+type RemoteEvent = Rbx_RemoteEvent & Base<Rbx_RemoteEvent> & Indexable<Rbx_RemoteEvent>;
 
 // RemoteFunction
 interface Rbx_RemoteFunction extends Rbx_Instance {
 }
-interface RemoteFunction extends Rbx_RemoteFunction, Base<Rbx_RemoteFunction>, AnyIndex {}
-/** Allow functions defined in one script to be called by another script across client/server boundary */
-declare class RemoteFunction {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "RemoteFunction"): this is RemoteFunction;
-	FindFirstAncestorOfClass(className: "RemoteFunction"): RemoteFunction | undefined;
-	FindFirstAncestorWhichIsA(className: "RemoteFunction"): RemoteFunction | undefined;
-	FindFirstChildOfClass(className: "RemoteFunction"): RemoteFunction | undefined;
-	FindFirstAncestorWhichIsA(className: "RemoteFunction"): RemoteFunction | undefined;
-}
+type RemoteFunction = Rbx_RemoteFunction & Base<Rbx_RemoteFunction> & Indexable<Rbx_RemoteFunction>;
 
 // RenderSettings
 interface Rbx_RenderSettings extends Rbx_Instance {
@@ -5902,14 +4057,7 @@ interface Rbx_RenderSettings extends Rbx_Instance {
 	ShowBoundingBoxes: boolean;
 	GetMaxQualityLevel(): number;
 }
-type RenderSettings = Rbx_RenderSettings & Base<Rbx_RenderSettings> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "RenderSettings"): this is RenderSettings;
-	FindFirstAncestorOfClass(className: "RenderSettings"): RenderSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "RenderSettings"): RenderSettings | undefined;
-	FindFirstChildOfClass(className: "RenderSettings"): RenderSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "RenderSettings"): RenderSettings | undefined;
-}
+type RenderSettings = Rbx_RenderSettings & Base<Rbx_RenderSettings> & Indexable<Rbx_RenderSettings>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "RenderSettings"): RenderSettings;
 }
@@ -5928,61 +4076,33 @@ interface Rbx_RenderingTest extends Rbx_Instance {
 	ShouldSkip: boolean;
 	Ticket: string;
 }
-interface RenderingTest extends Rbx_RenderingTest, Base<Rbx_RenderingTest>, AnyIndex {}
-/** dummy summary */
-declare class RenderingTest {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "RenderingTest"): this is RenderingTest;
-	FindFirstAncestorOfClass(className: "RenderingTest"): RenderingTest | undefined;
-	FindFirstAncestorWhichIsA(className: "RenderingTest"): RenderingTest | undefined;
-	FindFirstChildOfClass(className: "RenderingTest"): RenderingTest | undefined;
-	FindFirstAncestorWhichIsA(className: "RenderingTest"): RenderingTest | undefined;
-}
+type RenderingTest = Rbx_RenderingTest & Base<Rbx_RenderingTest> & Indexable<Rbx_RenderingTest>;
 
 // ReplicatedFirst
 interface Rbx_ReplicatedFirst extends Rbx_Instance {
 	RemoveDefaultLoadingScreen(): void;
 }
-type ReplicatedFirst = Rbx_ReplicatedFirst & Base<Rbx_ReplicatedFirst> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "ReplicatedFirst"): this is ReplicatedFirst;
-	FindFirstAncestorOfClass(className: "ReplicatedFirst"): ReplicatedFirst | undefined;
-	FindFirstAncestorWhichIsA(className: "ReplicatedFirst"): ReplicatedFirst | undefined;
-	FindFirstChildOfClass(className: "ReplicatedFirst"): ReplicatedFirst | undefined;
-	FindFirstAncestorWhichIsA(className: "ReplicatedFirst"): ReplicatedFirst | undefined;
-}
+type ReplicatedFirst = Rbx_ReplicatedFirst & Base<Rbx_ReplicatedFirst> & Indexable<Rbx_ReplicatedFirst>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "ReplicatedFirst"): ReplicatedFirst;
 }
 
 // ReplicatedStorage
 interface Rbx_ReplicatedStorage extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__107: never;
 }
-type ReplicatedStorage = Rbx_ReplicatedStorage & Base<Rbx_ReplicatedStorage> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "ReplicatedStorage"): this is ReplicatedStorage;
-	FindFirstAncestorOfClass(className: "ReplicatedStorage"): ReplicatedStorage | undefined;
-	FindFirstAncestorWhichIsA(className: "ReplicatedStorage"): ReplicatedStorage | undefined;
-	FindFirstChildOfClass(className: "ReplicatedStorage"): ReplicatedStorage | undefined;
-	FindFirstAncestorWhichIsA(className: "ReplicatedStorage"): ReplicatedStorage | undefined;
-}
+type ReplicatedStorage = Rbx_ReplicatedStorage & Base<Rbx_ReplicatedStorage> & Indexable<Rbx_ReplicatedStorage>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "ReplicatedStorage"): ReplicatedStorage;
 }
 
 // RobloxReplicatedStorage
 interface Rbx_RobloxReplicatedStorage extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__108: never;
 }
-type RobloxReplicatedStorage = Rbx_RobloxReplicatedStorage & Base<Rbx_RobloxReplicatedStorage> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "RobloxReplicatedStorage"): this is RobloxReplicatedStorage;
-	FindFirstAncestorOfClass(className: "RobloxReplicatedStorage"): RobloxReplicatedStorage | undefined;
-	FindFirstAncestorWhichIsA(className: "RobloxReplicatedStorage"): RobloxReplicatedStorage | undefined;
-	FindFirstChildOfClass(className: "RobloxReplicatedStorage"): RobloxReplicatedStorage | undefined;
-	FindFirstAncestorWhichIsA(className: "RobloxReplicatedStorage"): RobloxReplicatedStorage | undefined;
-}
+type RobloxReplicatedStorage = Rbx_RobloxReplicatedStorage & Base<Rbx_RobloxReplicatedStorage> & Indexable<Rbx_RobloxReplicatedStorage>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "RobloxReplicatedStorage"): RobloxReplicatedStorage;
 }
@@ -5996,49 +4116,30 @@ interface Rbx_RunService extends Rbx_Instance {
 	IsServer(): boolean;
 	IsStudio(): boolean;
 	UnbindFromRenderStep(name: string): void;
-	Heartbeat: RBXScriptSignal<(step: number) => void>;
-	RenderStepped: RBXScriptSignal<(step: number) => void>;
-	Stepped: RBXScriptSignal<(time: number, step: number) => void>;
+	readonly Heartbeat: RBXScriptSignal<(step: number) => void>;
+	readonly RenderStepped: RBXScriptSignal<(step: number) => void>;
+	readonly Stepped: RBXScriptSignal<(time: number, step: number) => void>;
 }
-type RunService = Rbx_RunService & Base<Rbx_RunService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "RunService"): this is RunService;
-	FindFirstAncestorOfClass(className: "RunService"): RunService | undefined;
-	FindFirstAncestorWhichIsA(className: "RunService"): RunService | undefined;
-	FindFirstChildOfClass(className: "RunService"): RunService | undefined;
-	FindFirstAncestorWhichIsA(className: "RunService"): RunService | undefined;
-}
+type RunService = Rbx_RunService & Base<Rbx_RunService> & Indexable<Rbx_RunService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "RunService"): RunService;
 }
 
 // RuntimeScriptService
 interface Rbx_RuntimeScriptService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__109: never;
 }
-type RuntimeScriptService = Rbx_RuntimeScriptService & Base<Rbx_RuntimeScriptService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "RuntimeScriptService"): this is RuntimeScriptService;
-	FindFirstAncestorOfClass(className: "RuntimeScriptService"): RuntimeScriptService | undefined;
-	FindFirstAncestorWhichIsA(className: "RuntimeScriptService"): RuntimeScriptService | undefined;
-	FindFirstChildOfClass(className: "RuntimeScriptService"): RuntimeScriptService | undefined;
-	FindFirstAncestorWhichIsA(className: "RuntimeScriptService"): RuntimeScriptService | undefined;
-}
+type RuntimeScriptService = Rbx_RuntimeScriptService & Base<Rbx_RuntimeScriptService> & Indexable<Rbx_RuntimeScriptService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "RuntimeScriptService"): RuntimeScriptService;
 }
 
 // ScriptContext
 interface Rbx_ScriptContext extends Rbx_Instance {
-	Error: RBXScriptSignal<(message: string, stackTrace: string, script: Instance) => void>;
+	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: Instance) => void>;
 }
-type ScriptContext = Rbx_ScriptContext & Base<Rbx_ScriptContext> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "ScriptContext"): this is ScriptContext;
-	FindFirstAncestorOfClass(className: "ScriptContext"): ScriptContext | undefined;
-	FindFirstAncestorWhichIsA(className: "ScriptContext"): ScriptContext | undefined;
-	FindFirstChildOfClass(className: "ScriptContext"): ScriptContext | undefined;
-	FindFirstAncestorWhichIsA(className: "ScriptContext"): ScriptContext | undefined;
-}
+type ScriptContext = Rbx_ScriptContext & Base<Rbx_ScriptContext> & Indexable<Rbx_ScriptContext>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "ScriptContext"): ScriptContext;
 }
@@ -6061,82 +4162,50 @@ interface Rbx_ScriptDebugger extends Rbx_Instance {
 	SetGlobal(name: string, value?: any): void;
 	SetLocal(name: string, value?: any, stackFrame?: number): void;
 	SetUpvalue(name: string, value?: any, stackFrame?: number): void;
-	BreakpointAdded: RBXScriptSignal<(breakpoint: Instance) => void>;
-	BreakpointRemoved: RBXScriptSignal<(breakpoint: Instance) => void>;
-	EncounteredBreak: RBXScriptSignal<(line: number) => void>;
-	Resuming: RBXScriptSignal<() => void>;
-	WatchAdded: RBXScriptSignal<(watch: Instance) => void>;
-	WatchRemoved: RBXScriptSignal<(watch: Instance) => void>;
+	readonly BreakpointAdded: RBXScriptSignal<(breakpoint: Instance) => void>;
+	readonly BreakpointRemoved: RBXScriptSignal<(breakpoint: Instance) => void>;
+	readonly EncounteredBreak: RBXScriptSignal<(line: number) => void>;
+	readonly Resuming: RBXScriptSignal<() => void>;
+	readonly WatchAdded: RBXScriptSignal<(watch: Instance) => void>;
+	readonly WatchRemoved: RBXScriptSignal<(watch: Instance) => void>;
 }
-interface ScriptDebugger extends Rbx_ScriptDebugger, Base<Rbx_ScriptDebugger>, AnyIndex {}
-declare abstract class ScriptDebugger {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ScriptDebugger"): this is ScriptDebugger;
-	FindFirstAncestorOfClass(className: "ScriptDebugger"): ScriptDebugger | undefined;
-	FindFirstAncestorWhichIsA(className: "ScriptDebugger"): ScriptDebugger | undefined;
-	FindFirstChildOfClass(className: "ScriptDebugger"): ScriptDebugger | undefined;
-	FindFirstAncestorWhichIsA(className: "ScriptDebugger"): ScriptDebugger | undefined;
-}
+type ScriptDebugger = Rbx_ScriptDebugger & Base<Rbx_ScriptDebugger> & Indexable<Rbx_ScriptDebugger>;
 
 // ScriptService
 interface Rbx_ScriptService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__110: never;
 }
-type ScriptService = Rbx_ScriptService & Base<Rbx_ScriptService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "ScriptService"): this is ScriptService;
-	FindFirstAncestorOfClass(className: "ScriptService"): ScriptService | undefined;
-	FindFirstAncestorWhichIsA(className: "ScriptService"): ScriptService | undefined;
-	FindFirstChildOfClass(className: "ScriptService"): ScriptService | undefined;
-	FindFirstAncestorWhichIsA(className: "ScriptService"): ScriptService | undefined;
-}
+type ScriptService = Rbx_ScriptService & Base<Rbx_ScriptService> & Indexable<Rbx_ScriptService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "ScriptService"): ScriptService;
 }
 
 // Selection
 interface Rbx_Selection extends Rbx_Instance {
-	SelectionChanged: RBXScriptSignal<() => void>;
+	readonly SelectionChanged: RBXScriptSignal<() => void>;
 }
-type Selection = Rbx_Selection & Base<Rbx_Selection> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "Selection"): this is Selection;
-	FindFirstAncestorOfClass(className: "Selection"): Selection | undefined;
-	FindFirstAncestorWhichIsA(className: "Selection"): Selection | undefined;
-	FindFirstChildOfClass(className: "Selection"): Selection | undefined;
-	FindFirstAncestorWhichIsA(className: "Selection"): Selection | undefined;
-}
+type Selection = Rbx_Selection & Base<Rbx_Selection> & Indexable<Rbx_Selection>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Selection"): Selection;
 }
 
 // ServerScriptService
 interface Rbx_ServerScriptService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__111: never;
 }
-type ServerScriptService = Rbx_ServerScriptService & Base<Rbx_ServerScriptService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "ServerScriptService"): this is ServerScriptService;
-	FindFirstAncestorOfClass(className: "ServerScriptService"): ServerScriptService | undefined;
-	FindFirstAncestorWhichIsA(className: "ServerScriptService"): ServerScriptService | undefined;
-	FindFirstChildOfClass(className: "ServerScriptService"): ServerScriptService | undefined;
-	FindFirstAncestorWhichIsA(className: "ServerScriptService"): ServerScriptService | undefined;
-}
+type ServerScriptService = Rbx_ServerScriptService & Base<Rbx_ServerScriptService> & Indexable<Rbx_ServerScriptService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "ServerScriptService"): ServerScriptService;
 }
 
 // ServerStorage
 interface Rbx_ServerStorage extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__112: never;
 }
-type ServerStorage = Rbx_ServerStorage & Base<Rbx_ServerStorage> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "ServerStorage"): this is ServerStorage;
-	FindFirstAncestorOfClass(className: "ServerStorage"): ServerStorage | undefined;
-	FindFirstAncestorWhichIsA(className: "ServerStorage"): ServerStorage | undefined;
-	FindFirstChildOfClass(className: "ServerStorage"): ServerStorage | undefined;
-	FindFirstAncestorWhichIsA(className: "ServerStorage"): ServerStorage | undefined;
-}
+type ServerStorage = Rbx_ServerStorage & Base<Rbx_ServerStorage> & Indexable<Rbx_ServerStorage>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "ServerStorage"): ServerStorage;
 }
@@ -6145,21 +4214,11 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	FindService(className: string): Instance | undefined;
 	GetService(className: string): Instance | undefined;
-	Close: RBXScriptSignal<() => void>;
-	ServiceAdded: RBXScriptSignal<(service: Instance) => void>;
-	ServiceRemoving: RBXScriptSignal<(service: Instance) => void>;
+	readonly Close: RBXScriptSignal<() => void>;
+	readonly ServiceAdded: RBXScriptSignal<(service: Instance) => void>;
+	readonly ServiceRemoving: RBXScriptSignal<(service: Instance) => void>;
 }
-interface ServiceProvider extends Rbx_ServiceProvider, Base<Rbx_ServiceProvider>, AnyIndex {}
-declare abstract class ServiceProvider {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ServiceProvider"): this is ServiceProvider;
-	FindFirstAncestorOfClass(className: "ServiceProvider"): ServiceProvider | undefined;
-	FindFirstAncestorWhichIsA(className: "ServiceProvider"): ServiceProvider | undefined;
-	FindFirstChildOfClass(className: "ServiceProvider"): ServiceProvider | undefined;
-	FindFirstAncestorWhichIsA(className: "ServiceProvider"): ServiceProvider | undefined;
-}
+type ServiceProvider = Rbx_ServiceProvider & Base<Rbx_ServiceProvider> & Indexable<Rbx_ServiceProvider>;
 
 // DataModel
 interface Rbx_DataModel extends Rbx_ServiceProvider {
@@ -6177,83 +4236,39 @@ interface Rbx_DataModel extends Rbx_ServiceProvider {
 	BindToClose(callback: Function): void;
 	IsGearTypeAllowed(gearType: Enum.GearType): boolean;
 	IsLoaded(): boolean;
-	GraphicsQualityChangeRequest: RBXScriptSignal<(betterQuality: boolean) => void>;
+	readonly GraphicsQualityChangeRequest: RBXScriptSignal<(betterQuality: boolean) => void>;
 	/** Fires when the game finishes loading.  Use this to know when to remove your custom loading gui.  It is best to check IsLoaded() before connecting to this event, as the game may load before the event is connected to. */
-	Loaded: RBXScriptSignal<() => void>;
+	readonly Loaded: RBXScriptSignal<() => void>;
 }
-interface DataModel extends Rbx_DataModel, Base<Rbx_DataModel>, AnyIndex {}
-/** The root of ROBLOX's parent-child hierarchy (commonly known as game after the global variable used to access it) */
-declare abstract class DataModel {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "DataModel"): this is DataModel;
-	FindFirstAncestorOfClass(className: "DataModel"): DataModel | undefined;
-	FindFirstAncestorWhichIsA(className: "DataModel"): DataModel | undefined;
-	FindFirstChildOfClass(className: "DataModel"): DataModel | undefined;
-	FindFirstAncestorWhichIsA(className: "DataModel"): DataModel | undefined;
-}
+type DataModel = Rbx_DataModel & Base<Rbx_DataModel> & Indexable<Rbx_DataModel>;
 
 // GenericSettings
 interface Rbx_GenericSettings extends Rbx_ServiceProvider {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__113: never;
 }
-interface GenericSettings extends Rbx_GenericSettings, Base<Rbx_GenericSettings>, AnyIndex {}
-declare abstract class GenericSettings {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GenericSettings"): this is GenericSettings;
-	FindFirstAncestorOfClass(className: "GenericSettings"): GenericSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "GenericSettings"): GenericSettings | undefined;
-	FindFirstChildOfClass(className: "GenericSettings"): GenericSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "GenericSettings"): GenericSettings | undefined;
-}
+type GenericSettings = Rbx_GenericSettings & Base<Rbx_GenericSettings> & Indexable<Rbx_GenericSettings>;
 
 // AnalysticsSettings
 interface Rbx_AnalysticsSettings extends Rbx_GenericSettings {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__114: never;
 }
-interface AnalysticsSettings extends Rbx_AnalysticsSettings, Base<Rbx_AnalysticsSettings>, AnyIndex {}
-declare abstract class AnalysticsSettings {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "AnalysticsSettings"): this is AnalysticsSettings;
-	FindFirstAncestorOfClass(className: "AnalysticsSettings"): AnalysticsSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "AnalysticsSettings"): AnalysticsSettings | undefined;
-	FindFirstChildOfClass(className: "AnalysticsSettings"): AnalysticsSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "AnalysticsSettings"): AnalysticsSettings | undefined;
-}
+type AnalysticsSettings = Rbx_AnalysticsSettings & Base<Rbx_AnalysticsSettings> & Indexable<Rbx_AnalysticsSettings>;
 
 // GlobalSettings
 interface Rbx_GlobalSettings extends Rbx_GenericSettings {
 	GetFFlag(name: string): boolean;
 	GetFVariable(name: string): string;
 }
-interface GlobalSettings extends Rbx_GlobalSettings, Base<Rbx_GlobalSettings>, AnyIndex {}
-declare abstract class GlobalSettings {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "GlobalSettings"): this is GlobalSettings;
-	FindFirstAncestorOfClass(className: "GlobalSettings"): GlobalSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "GlobalSettings"): GlobalSettings | undefined;
-	FindFirstChildOfClass(className: "GlobalSettings"): GlobalSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "GlobalSettings"): GlobalSettings | undefined;
-}
+type GlobalSettings = Rbx_GlobalSettings & Base<Rbx_GlobalSettings> & Indexable<Rbx_GlobalSettings>;
 
 // UserSettings
 interface Rbx_UserSettings extends Rbx_GenericSettings {
 	IsUserFeatureEnabled(name: string): boolean;
 	Reset(): void;
 }
-type UserSettings = Rbx_UserSettings & Base<Rbx_UserSettings> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "UserSettings"): this is UserSettings;
-	FindFirstAncestorOfClass(className: "UserSettings"): UserSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "UserSettings"): UserSettings | undefined;
-	FindFirstChildOfClass(className: "UserSettings"): UserSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "UserSettings"): UserSettings | undefined;
-}
+type UserSettings = Rbx_UserSettings & Base<Rbx_UserSettings> & Indexable<Rbx_UserSettings>;
 
 // Sky
 interface Rbx_Sky extends Rbx_Instance {
@@ -6270,17 +4285,7 @@ interface Rbx_Sky extends Rbx_Instance {
 	SunAngularSize: number;
 	SunTextureId: string;
 }
-interface Sky extends Rbx_Sky, Base<Rbx_Sky>, AnyIndex {}
-declare class Sky {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Sky"): this is Sky;
-	FindFirstAncestorOfClass(className: "Sky"): Sky | undefined;
-	FindFirstAncestorWhichIsA(className: "Sky"): Sky | undefined;
-	FindFirstChildOfClass(className: "Sky"): Sky | undefined;
-	FindFirstAncestorWhichIsA(className: "Sky"): Sky | undefined;
-}
+type Sky = Rbx_Sky & Base<Rbx_Sky> & Indexable<Rbx_Sky>;
 
 // Smoke
 interface Rbx_Smoke extends Rbx_Instance {
@@ -6290,17 +4295,14 @@ interface Rbx_Smoke extends Rbx_Instance {
 	RiseVelocity: number;
 	Size: number;
 }
-interface Smoke extends Rbx_Smoke, Base<Rbx_Smoke>, AnyIndex {}
-/** Makes the parent part or model object emit smoke */
-declare class Smoke {
-	constructor(parent?: Instance);
+type Smoke = Rbx_Smoke & Base<Rbx_Smoke> & Indexable<Rbx_Smoke>;
+
+// SocialService
+interface Rbx_SocialService extends Rbx_Instance {
 }
-interface Rbx_Instance {
-	IsA(className: "Smoke"): this is Smoke;
-	FindFirstAncestorOfClass(className: "Smoke"): Smoke | undefined;
-	FindFirstAncestorWhichIsA(className: "Smoke"): Smoke | undefined;
-	FindFirstChildOfClass(className: "Smoke"): Smoke | undefined;
-	FindFirstAncestorWhichIsA(className: "Smoke"): Smoke | undefined;
+type SocialService = Rbx_SocialService & Base<Rbx_SocialService> & Indexable<Rbx_SocialService>;
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "SocialService"): SocialService;
 }
 
 // Sound
@@ -6326,42 +4328,22 @@ interface Rbx_Sound extends Rbx_Instance {
 	Play(): void;
 	Resume(): void;
 	Stop(): void;
-	DidLoop: RBXScriptSignal<(soundId: string, numOfTimesLooped: number) => void>;
-	Ended: RBXScriptSignal<(soundId: string) => void>;
-	Loaded: RBXScriptSignal<(soundId: string) => void>;
-	Paused: RBXScriptSignal<(soundId: string) => void>;
-	Played: RBXScriptSignal<(soundId: string) => void>;
-	Resumed: RBXScriptSignal<(soundId: string) => void>;
-	Stopped: RBXScriptSignal<(soundId: string) => void>;
+	readonly DidLoop: RBXScriptSignal<(soundId: string, numOfTimesLooped: number) => void>;
+	readonly Ended: RBXScriptSignal<(soundId: string) => void>;
+	readonly Loaded: RBXScriptSignal<(soundId: string) => void>;
+	readonly Paused: RBXScriptSignal<(soundId: string) => void>;
+	readonly Played: RBXScriptSignal<(soundId: string) => void>;
+	readonly Resumed: RBXScriptSignal<(soundId: string) => void>;
+	readonly Stopped: RBXScriptSignal<(soundId: string) => void>;
 }
-interface Sound extends Rbx_Sound, Base<Rbx_Sound>, AnyIndex {}
-declare class Sound {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Sound"): this is Sound;
-	FindFirstAncestorOfClass(className: "Sound"): Sound | undefined;
-	FindFirstAncestorWhichIsA(className: "Sound"): Sound | undefined;
-	FindFirstChildOfClass(className: "Sound"): Sound | undefined;
-	FindFirstAncestorWhichIsA(className: "Sound"): Sound | undefined;
-}
+type Sound = Rbx_Sound & Base<Rbx_Sound> & Indexable<Rbx_Sound>;
 
 // SoundEffect
 interface Rbx_SoundEffect extends Rbx_Instance {
 	Enabled: boolean;
 	Priority: number;
 }
-interface SoundEffect extends Rbx_SoundEffect, Base<Rbx_SoundEffect>, AnyIndex {}
-declare abstract class SoundEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SoundEffect"): this is SoundEffect;
-	FindFirstAncestorOfClass(className: "SoundEffect"): SoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "SoundEffect"): SoundEffect | undefined;
-	FindFirstChildOfClass(className: "SoundEffect"): SoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "SoundEffect"): SoundEffect | undefined;
-}
+type SoundEffect = Rbx_SoundEffect & Base<Rbx_SoundEffect> & Indexable<Rbx_SoundEffect>;
 
 // ChorusSoundEffect
 interface Rbx_ChorusSoundEffect extends Rbx_SoundEffect {
@@ -6369,18 +4351,7 @@ interface Rbx_ChorusSoundEffect extends Rbx_SoundEffect {
 	Mix: number;
 	Rate: number;
 }
-interface ChorusSoundEffect extends Rbx_ChorusSoundEffect, Base<Rbx_ChorusSoundEffect>, AnyIndex {}
-/** A Chorus audio effect that can be applied to a Sound or SoundGroup. */
-declare class ChorusSoundEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ChorusSoundEffect"): this is ChorusSoundEffect;
-	FindFirstAncestorOfClass(className: "ChorusSoundEffect"): ChorusSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "ChorusSoundEffect"): ChorusSoundEffect | undefined;
-	FindFirstChildOfClass(className: "ChorusSoundEffect"): ChorusSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "ChorusSoundEffect"): ChorusSoundEffect | undefined;
-}
+type ChorusSoundEffect = Rbx_ChorusSoundEffect & Base<Rbx_ChorusSoundEffect> & Indexable<Rbx_ChorusSoundEffect>;
 
 // CompressorSoundEffect
 interface Rbx_CompressorSoundEffect extends Rbx_SoundEffect {
@@ -6391,35 +4362,13 @@ interface Rbx_CompressorSoundEffect extends Rbx_SoundEffect {
 	SideChain: Instance | undefined;
 	Threshold: number;
 }
-interface CompressorSoundEffect extends Rbx_CompressorSoundEffect, Base<Rbx_CompressorSoundEffect>, AnyIndex {}
-/** A Compressor audio effect that can be applied to a Sound or SoundGroup. */
-declare class CompressorSoundEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "CompressorSoundEffect"): this is CompressorSoundEffect;
-	FindFirstAncestorOfClass(className: "CompressorSoundEffect"): CompressorSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "CompressorSoundEffect"): CompressorSoundEffect | undefined;
-	FindFirstChildOfClass(className: "CompressorSoundEffect"): CompressorSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "CompressorSoundEffect"): CompressorSoundEffect | undefined;
-}
+type CompressorSoundEffect = Rbx_CompressorSoundEffect & Base<Rbx_CompressorSoundEffect> & Indexable<Rbx_CompressorSoundEffect>;
 
 // DistortionSoundEffect
 interface Rbx_DistortionSoundEffect extends Rbx_SoundEffect {
 	Level: number;
 }
-interface DistortionSoundEffect extends Rbx_DistortionSoundEffect, Base<Rbx_DistortionSoundEffect>, AnyIndex {}
-/** A Distortion audio effect that can be applied to a Sound or SoundGroup. */
-declare class DistortionSoundEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "DistortionSoundEffect"): this is DistortionSoundEffect;
-	FindFirstAncestorOfClass(className: "DistortionSoundEffect"): DistortionSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "DistortionSoundEffect"): DistortionSoundEffect | undefined;
-	FindFirstChildOfClass(className: "DistortionSoundEffect"): DistortionSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "DistortionSoundEffect"): DistortionSoundEffect | undefined;
-}
+type DistortionSoundEffect = Rbx_DistortionSoundEffect & Base<Rbx_DistortionSoundEffect> & Indexable<Rbx_DistortionSoundEffect>;
 
 // EchoSoundEffect
 interface Rbx_EchoSoundEffect extends Rbx_SoundEffect {
@@ -6428,18 +4377,7 @@ interface Rbx_EchoSoundEffect extends Rbx_SoundEffect {
 	Feedback: number;
 	WetLevel: number;
 }
-interface EchoSoundEffect extends Rbx_EchoSoundEffect, Base<Rbx_EchoSoundEffect>, AnyIndex {}
-/** An echo audio effect that can be applied to a Sound or SoundGroup. */
-declare class EchoSoundEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "EchoSoundEffect"): this is EchoSoundEffect;
-	FindFirstAncestorOfClass(className: "EchoSoundEffect"): EchoSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "EchoSoundEffect"): EchoSoundEffect | undefined;
-	FindFirstChildOfClass(className: "EchoSoundEffect"): EchoSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "EchoSoundEffect"): EchoSoundEffect | undefined;
-}
+type EchoSoundEffect = Rbx_EchoSoundEffect & Base<Rbx_EchoSoundEffect> & Indexable<Rbx_EchoSoundEffect>;
 
 // EqualizerSoundEffect
 interface Rbx_EqualizerSoundEffect extends Rbx_SoundEffect {
@@ -6447,18 +4385,7 @@ interface Rbx_EqualizerSoundEffect extends Rbx_SoundEffect {
 	LowGain: number;
 	MidGain: number;
 }
-interface EqualizerSoundEffect extends Rbx_EqualizerSoundEffect, Base<Rbx_EqualizerSoundEffect>, AnyIndex {}
-/** An Three-band Equalizer audio effect that can be applied to a Sound or SoundGroup. */
-declare class EqualizerSoundEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "EqualizerSoundEffect"): this is EqualizerSoundEffect;
-	FindFirstAncestorOfClass(className: "EqualizerSoundEffect"): EqualizerSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "EqualizerSoundEffect"): EqualizerSoundEffect | undefined;
-	FindFirstChildOfClass(className: "EqualizerSoundEffect"): EqualizerSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "EqualizerSoundEffect"): EqualizerSoundEffect | undefined;
-}
+type EqualizerSoundEffect = Rbx_EqualizerSoundEffect & Base<Rbx_EqualizerSoundEffect> & Indexable<Rbx_EqualizerSoundEffect>;
 
 // FlangeSoundEffect
 interface Rbx_FlangeSoundEffect extends Rbx_SoundEffect {
@@ -6466,35 +4393,13 @@ interface Rbx_FlangeSoundEffect extends Rbx_SoundEffect {
 	Mix: number;
 	Rate: number;
 }
-interface FlangeSoundEffect extends Rbx_FlangeSoundEffect, Base<Rbx_FlangeSoundEffect>, AnyIndex {}
-/** A Flanging audio effect that can be applied to a Sound or SoundGroup. */
-declare class FlangeSoundEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "FlangeSoundEffect"): this is FlangeSoundEffect;
-	FindFirstAncestorOfClass(className: "FlangeSoundEffect"): FlangeSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "FlangeSoundEffect"): FlangeSoundEffect | undefined;
-	FindFirstChildOfClass(className: "FlangeSoundEffect"): FlangeSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "FlangeSoundEffect"): FlangeSoundEffect | undefined;
-}
+type FlangeSoundEffect = Rbx_FlangeSoundEffect & Base<Rbx_FlangeSoundEffect> & Indexable<Rbx_FlangeSoundEffect>;
 
 // PitchShiftSoundEffect
 interface Rbx_PitchShiftSoundEffect extends Rbx_SoundEffect {
 	Octave: number;
 }
-interface PitchShiftSoundEffect extends Rbx_PitchShiftSoundEffect, Base<Rbx_PitchShiftSoundEffect>, AnyIndex {}
-/** A Pitch Shifting audio effect that can be applied to a Sound or SoundGroup. */
-declare class PitchShiftSoundEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "PitchShiftSoundEffect"): this is PitchShiftSoundEffect;
-	FindFirstAncestorOfClass(className: "PitchShiftSoundEffect"): PitchShiftSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "PitchShiftSoundEffect"): PitchShiftSoundEffect | undefined;
-	FindFirstChildOfClass(className: "PitchShiftSoundEffect"): PitchShiftSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "PitchShiftSoundEffect"): PitchShiftSoundEffect | undefined;
-}
+type PitchShiftSoundEffect = Rbx_PitchShiftSoundEffect & Base<Rbx_PitchShiftSoundEffect> & Indexable<Rbx_PitchShiftSoundEffect>;
 
 // ReverbSoundEffect
 interface Rbx_ReverbSoundEffect extends Rbx_SoundEffect {
@@ -6504,18 +4409,7 @@ interface Rbx_ReverbSoundEffect extends Rbx_SoundEffect {
 	DryLevel: number;
 	WetLevel: number;
 }
-interface ReverbSoundEffect extends Rbx_ReverbSoundEffect, Base<Rbx_ReverbSoundEffect>, AnyIndex {}
-/** A Reverb audio effect that can be applied to a Sound or SoundGroup. */
-declare class ReverbSoundEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ReverbSoundEffect"): this is ReverbSoundEffect;
-	FindFirstAncestorOfClass(className: "ReverbSoundEffect"): ReverbSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "ReverbSoundEffect"): ReverbSoundEffect | undefined;
-	FindFirstChildOfClass(className: "ReverbSoundEffect"): ReverbSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "ReverbSoundEffect"): ReverbSoundEffect | undefined;
-}
+type ReverbSoundEffect = Rbx_ReverbSoundEffect & Base<Rbx_ReverbSoundEffect> & Indexable<Rbx_ReverbSoundEffect>;
 
 // TremoloSoundEffect
 interface Rbx_TremoloSoundEffect extends Rbx_SoundEffect {
@@ -6523,34 +4417,13 @@ interface Rbx_TremoloSoundEffect extends Rbx_SoundEffect {
 	Duty: number;
 	Frequency: number;
 }
-interface TremoloSoundEffect extends Rbx_TremoloSoundEffect, Base<Rbx_TremoloSoundEffect>, AnyIndex {}
-/** A Tremolo audio effect that can be applied to a Sound or SoundGroup. */
-declare class TremoloSoundEffect {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "TremoloSoundEffect"): this is TremoloSoundEffect;
-	FindFirstAncestorOfClass(className: "TremoloSoundEffect"): TremoloSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "TremoloSoundEffect"): TremoloSoundEffect | undefined;
-	FindFirstChildOfClass(className: "TremoloSoundEffect"): TremoloSoundEffect | undefined;
-	FindFirstAncestorWhichIsA(className: "TremoloSoundEffect"): TremoloSoundEffect | undefined;
-}
+type TremoloSoundEffect = Rbx_TremoloSoundEffect & Base<Rbx_TremoloSoundEffect> & Indexable<Rbx_TremoloSoundEffect>;
 
 // SoundGroup
 interface Rbx_SoundGroup extends Rbx_Instance {
 	Volume: number;
 }
-interface SoundGroup extends Rbx_SoundGroup, Base<Rbx_SoundGroup>, AnyIndex {}
-declare class SoundGroup {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "SoundGroup"): this is SoundGroup;
-	FindFirstAncestorOfClass(className: "SoundGroup"): SoundGroup | undefined;
-	FindFirstAncestorWhichIsA(className: "SoundGroup"): SoundGroup | undefined;
-	FindFirstChildOfClass(className: "SoundGroup"): SoundGroup | undefined;
-	FindFirstAncestorWhichIsA(className: "SoundGroup"): SoundGroup | undefined;
-}
+type SoundGroup = Rbx_SoundGroup & Base<Rbx_SoundGroup> & Indexable<Rbx_SoundGroup>;
 
 // SoundService
 interface Rbx_SoundService extends Rbx_Instance {
@@ -6565,14 +4438,7 @@ interface Rbx_SoundService extends Rbx_Instance {
 	RolloffScale: number;
 	PlayLocalSound(sound: Instance): void;
 }
-type SoundService = Rbx_SoundService & Base<Rbx_SoundService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "SoundService"): this is SoundService;
-	FindFirstAncestorOfClass(className: "SoundService"): SoundService | undefined;
-	FindFirstAncestorWhichIsA(className: "SoundService"): SoundService | undefined;
-	FindFirstChildOfClass(className: "SoundService"): SoundService | undefined;
-	FindFirstAncestorWhichIsA(className: "SoundService"): SoundService | undefined;
-}
+type SoundService = Rbx_SoundService & Base<Rbx_SoundService> & Indexable<Rbx_SoundService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "SoundService"): SoundService;
 }
@@ -6583,48 +4449,24 @@ interface Rbx_Sparkles extends Rbx_Instance {
 	Enabled: boolean;
 	SparkleColor: Color3;
 }
-interface Sparkles extends Rbx_Sparkles, Base<Rbx_Sparkles>, AnyIndex {}
-/** Makes the parent part or model object fantastic */
-declare class Sparkles {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Sparkles"): this is Sparkles;
-	FindFirstAncestorOfClass(className: "Sparkles"): Sparkles | undefined;
-	FindFirstAncestorWhichIsA(className: "Sparkles"): Sparkles | undefined;
-	FindFirstChildOfClass(className: "Sparkles"): Sparkles | undefined;
-	FindFirstAncestorWhichIsA(className: "Sparkles"): Sparkles | undefined;
-}
+type Sparkles = Rbx_Sparkles & Base<Rbx_Sparkles> & Indexable<Rbx_Sparkles>;
 
 // SpawnerService
 interface Rbx_SpawnerService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__115: never;
 }
-type SpawnerService = Rbx_SpawnerService & Base<Rbx_SpawnerService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "SpawnerService"): this is SpawnerService;
-	FindFirstAncestorOfClass(className: "SpawnerService"): SpawnerService | undefined;
-	FindFirstAncestorWhichIsA(className: "SpawnerService"): SpawnerService | undefined;
-	FindFirstChildOfClass(className: "SpawnerService"): SpawnerService | undefined;
-	FindFirstAncestorWhichIsA(className: "SpawnerService"): SpawnerService | undefined;
-}
+type SpawnerService = Rbx_SpawnerService & Base<Rbx_SpawnerService> & Indexable<Rbx_SpawnerService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "SpawnerService"): SpawnerService;
 }
 
 // StarterGear
 interface Rbx_StarterGear extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__116: never;
 }
-interface StarterGear extends Rbx_StarterGear, Base<Rbx_StarterGear>, AnyIndex {}
-declare class StarterGear {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "StarterGear"): this is StarterGear;
-	FindFirstAncestorOfClass(className: "StarterGear"): StarterGear | undefined;
-	FindFirstAncestorWhichIsA(className: "StarterGear"): StarterGear | undefined;
-	FindFirstChildOfClass(className: "StarterGear"): StarterGear | undefined;
-	FindFirstAncestorWhichIsA(className: "StarterGear"): StarterGear | undefined;
-}
+type StarterGear = Rbx_StarterGear & Base<Rbx_StarterGear> & Indexable<Rbx_StarterGear>;
 
 // StarterPlayer
 interface Rbx_StarterPlayer extends Rbx_Instance {
@@ -6643,49 +4485,24 @@ interface Rbx_StarterPlayer extends Rbx_Instance {
 	LoadCharacterAppearance: boolean;
 	NameDisplayDistance: number;
 }
-type StarterPlayer = Rbx_StarterPlayer & Base<Rbx_StarterPlayer> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "StarterPlayer"): this is StarterPlayer;
-	FindFirstAncestorOfClass(className: "StarterPlayer"): StarterPlayer | undefined;
-	FindFirstAncestorWhichIsA(className: "StarterPlayer"): StarterPlayer | undefined;
-	FindFirstChildOfClass(className: "StarterPlayer"): StarterPlayer | undefined;
-	FindFirstAncestorWhichIsA(className: "StarterPlayer"): StarterPlayer | undefined;
-}
+type StarterPlayer = Rbx_StarterPlayer & Base<Rbx_StarterPlayer> & Indexable<Rbx_StarterPlayer>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "StarterPlayer"): StarterPlayer;
 }
 
 // StarterPlayerScripts
 interface Rbx_StarterPlayerScripts extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__117: never;
 }
-interface StarterPlayerScripts extends Rbx_StarterPlayerScripts, Base<Rbx_StarterPlayerScripts>, AnyIndex {}
-/** A container instance that contains LocalScripts.  LocalScript objects that are placed in this container will be copied to new Players on startup. */
-declare class StarterPlayerScripts {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "StarterPlayerScripts"): this is StarterPlayerScripts;
-	FindFirstAncestorOfClass(className: "StarterPlayerScripts"): StarterPlayerScripts | undefined;
-	FindFirstAncestorWhichIsA(className: "StarterPlayerScripts"): StarterPlayerScripts | undefined;
-	FindFirstChildOfClass(className: "StarterPlayerScripts"): StarterPlayerScripts | undefined;
-	FindFirstAncestorWhichIsA(className: "StarterPlayerScripts"): StarterPlayerScripts | undefined;
-}
+type StarterPlayerScripts = Rbx_StarterPlayerScripts & Base<Rbx_StarterPlayerScripts> & Indexable<Rbx_StarterPlayerScripts>;
 
 // StarterCharacterScripts
 interface Rbx_StarterCharacterScripts extends Rbx_StarterPlayerScripts {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__118: never;
 }
-interface StarterCharacterScripts extends Rbx_StarterCharacterScripts, Base<Rbx_StarterCharacterScripts>, AnyIndex {}
-/** A container instance that contains LocalScripts.  LocalScript objects that are placed in this container will be copied to new characters on startup. */
-declare class StarterCharacterScripts {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "StarterCharacterScripts"): this is StarterCharacterScripts;
-	FindFirstAncestorOfClass(className: "StarterCharacterScripts"): StarterCharacterScripts | undefined;
-	FindFirstAncestorWhichIsA(className: "StarterCharacterScripts"): StarterCharacterScripts | undefined;
-	FindFirstChildOfClass(className: "StarterCharacterScripts"): StarterCharacterScripts | undefined;
-	FindFirstAncestorWhichIsA(className: "StarterCharacterScripts"): StarterCharacterScripts | undefined;
-}
+type StarterCharacterScripts = Rbx_StarterCharacterScripts & Base<Rbx_StarterCharacterScripts> & Indexable<Rbx_StarterCharacterScripts>;
 
 // Stats
 interface Rbx_Stats extends Rbx_Instance {
@@ -6702,98 +4519,65 @@ interface Rbx_Stats extends Rbx_Instance {
 	GetMemoryUsageMbForTag(tag: Enum.DeveloperMemoryTag): number;
 	GetTotalMemoryUsageMb(): number;
 }
-type Stats = Rbx_Stats & Base<Rbx_Stats> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "Stats"): this is Stats;
-	FindFirstAncestorOfClass(className: "Stats"): Stats | undefined;
-	FindFirstAncestorWhichIsA(className: "Stats"): Stats | undefined;
-	FindFirstChildOfClass(className: "Stats"): Stats | undefined;
-	FindFirstAncestorWhichIsA(className: "Stats"): Stats | undefined;
-}
+type Stats = Rbx_Stats & Base<Rbx_Stats> & Indexable<Rbx_Stats>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Stats"): Stats;
 }
 
 // StatsItem
 interface Rbx_StatsItem extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__119: never;
 }
-interface StatsItem extends Rbx_StatsItem, Base<Rbx_StatsItem>, AnyIndex {}
-declare abstract class StatsItem {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "StatsItem"): this is StatsItem;
-	FindFirstAncestorOfClass(className: "StatsItem"): StatsItem | undefined;
-	FindFirstAncestorWhichIsA(className: "StatsItem"): StatsItem | undefined;
-	FindFirstChildOfClass(className: "StatsItem"): StatsItem | undefined;
-	FindFirstAncestorWhichIsA(className: "StatsItem"): StatsItem | undefined;
-}
+type StatsItem = Rbx_StatsItem & Base<Rbx_StatsItem> & Indexable<Rbx_StatsItem>;
 
 // RunningAverageItemDouble
 interface Rbx_RunningAverageItemDouble extends Rbx_StatsItem {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__120: never;
 }
-interface RunningAverageItemDouble extends Rbx_RunningAverageItemDouble, Base<Rbx_RunningAverageItemDouble>, AnyIndex {}
-declare abstract class RunningAverageItemDouble {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "RunningAverageItemDouble"): this is RunningAverageItemDouble;
-	FindFirstAncestorOfClass(className: "RunningAverageItemDouble"): RunningAverageItemDouble | undefined;
-	FindFirstAncestorWhichIsA(className: "RunningAverageItemDouble"): RunningAverageItemDouble | undefined;
-	FindFirstChildOfClass(className: "RunningAverageItemDouble"): RunningAverageItemDouble | undefined;
-	FindFirstAncestorWhichIsA(className: "RunningAverageItemDouble"): RunningAverageItemDouble | undefined;
-}
+type RunningAverageItemDouble = Rbx_RunningAverageItemDouble & Base<Rbx_RunningAverageItemDouble> & Indexable<Rbx_RunningAverageItemDouble>;
 
 // RunningAverageItemInt
 interface Rbx_RunningAverageItemInt extends Rbx_StatsItem {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__121: never;
 }
-interface RunningAverageItemInt extends Rbx_RunningAverageItemInt, Base<Rbx_RunningAverageItemInt>, AnyIndex {}
-declare abstract class RunningAverageItemInt {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "RunningAverageItemInt"): this is RunningAverageItemInt;
-	FindFirstAncestorOfClass(className: "RunningAverageItemInt"): RunningAverageItemInt | undefined;
-	FindFirstAncestorWhichIsA(className: "RunningAverageItemInt"): RunningAverageItemInt | undefined;
-	FindFirstChildOfClass(className: "RunningAverageItemInt"): RunningAverageItemInt | undefined;
-	FindFirstAncestorWhichIsA(className: "RunningAverageItemInt"): RunningAverageItemInt | undefined;
-}
+type RunningAverageItemInt = Rbx_RunningAverageItemInt & Base<Rbx_RunningAverageItemInt> & Indexable<Rbx_RunningAverageItemInt>;
 
 // RunningAverageTimeIntervalItem
 interface Rbx_RunningAverageTimeIntervalItem extends Rbx_StatsItem {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__122: never;
 }
-interface RunningAverageTimeIntervalItem extends Rbx_RunningAverageTimeIntervalItem, Base<Rbx_RunningAverageTimeIntervalItem>, AnyIndex {}
-declare abstract class RunningAverageTimeIntervalItem {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "RunningAverageTimeIntervalItem"): this is RunningAverageTimeIntervalItem;
-	FindFirstAncestorOfClass(className: "RunningAverageTimeIntervalItem"): RunningAverageTimeIntervalItem | undefined;
-	FindFirstAncestorWhichIsA(className: "RunningAverageTimeIntervalItem"): RunningAverageTimeIntervalItem | undefined;
-	FindFirstChildOfClass(className: "RunningAverageTimeIntervalItem"): RunningAverageTimeIntervalItem | undefined;
-	FindFirstAncestorWhichIsA(className: "RunningAverageTimeIntervalItem"): RunningAverageTimeIntervalItem | undefined;
-}
+type RunningAverageTimeIntervalItem = Rbx_RunningAverageTimeIntervalItem & Base<Rbx_RunningAverageTimeIntervalItem> & Indexable<Rbx_RunningAverageTimeIntervalItem>;
 
 // TotalCountTimeIntervalItem
 interface Rbx_TotalCountTimeIntervalItem extends Rbx_StatsItem {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__123: never;
 }
-interface TotalCountTimeIntervalItem extends Rbx_TotalCountTimeIntervalItem, Base<Rbx_TotalCountTimeIntervalItem>, AnyIndex {}
-declare abstract class TotalCountTimeIntervalItem {
-	constructor(parent?: Instance);
+type TotalCountTimeIntervalItem = Rbx_TotalCountTimeIntervalItem & Base<Rbx_TotalCountTimeIntervalItem> & Indexable<Rbx_TotalCountTimeIntervalItem>;
+
+// StopWatchReporter
+interface Rbx_StopWatchReporter extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__124: never;
 }
-interface Rbx_Instance {
-	IsA(className: "TotalCountTimeIntervalItem"): this is TotalCountTimeIntervalItem;
-	FindFirstAncestorOfClass(className: "TotalCountTimeIntervalItem"): TotalCountTimeIntervalItem | undefined;
-	FindFirstAncestorWhichIsA(className: "TotalCountTimeIntervalItem"): TotalCountTimeIntervalItem | undefined;
-	FindFirstChildOfClass(className: "TotalCountTimeIntervalItem"): TotalCountTimeIntervalItem | undefined;
-	FindFirstAncestorWhichIsA(className: "TotalCountTimeIntervalItem"): TotalCountTimeIntervalItem | undefined;
+type StopWatchReporter = Rbx_StopWatchReporter & Base<Rbx_StopWatchReporter> & Indexable<Rbx_StopWatchReporter>;
+interface Rbx_ServiceProvider extends Rbx_Instance {
+	GetService(className: "StopWatchReporter"): StopWatchReporter;
 }
 
 // Studio
 interface Rbx_Studio extends Rbx_Instance {
 	["Always Save Script Changes"]: boolean;
 	["Animate Hover Over"]: boolean;
+	["Attach Debugger To"]: Enum.DEPRECATED_DebuggerDataModelPreference;
 	["Auto Indent"]: boolean;
+	["Auto-Recovery Enabled"]: boolean;
+	["Auto-Recovery Interval (Minutes)"]: number;
+	["Auto-Recovery Path"]: QDir;
 	["Auto-Save Enabled"]: boolean;
 	["Auto-Save Interval (Minutes)"]: number;
 	["Auto-Save Path"]: QDir;
@@ -6803,9 +4587,9 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Camera Mouse Wheel Speed"]: number;
 	["Camera Shift Speed"]: number;
 	["Camera Speed"]: number;
+	["Camera Zoom to Mouse Position"]: boolean;
 	["Clear Output On Start"]: boolean;
 	["Comment Color"]: Color3;
-	["Debug Client In APS Mode"]: boolean;
 	DefaultScriptFileDir: QDir;
 	DeprecatedObjectsShown: boolean;
 	["Device Pairing Code"]: number;
@@ -6818,9 +4602,11 @@ interface Rbx_Studio extends Rbx_Instance {
 	Font: QFont;
 	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
 	["Hover Over Color"]: Color3;
+	["Import mesh files as single mesh"]: boolean;
 	["Keyword Color"]: Color3;
 	["Line Thickness"]: number;
 	LuaDebuggerEnabled: boolean;
+	readonly LuaDebuggerEnabledAtStartup: boolean;
 	["Matching Word Background Color"]: Color3;
 	["Maximum Output Lines"]: number;
 	["Number Color"]: Color3;
@@ -6845,6 +4631,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Server Audio Behavior"]: Enum.ServerAudioBehavior;
 	["Show Core GUI in Explorer while Playing"]: boolean;
 	["Show Diagnostics Bar"]: boolean;
+	["Show Hidden Objects in Explorer"]: boolean;
 	["Show Hover Over"]: boolean;
 	["Show Navigation Mesh"]: boolean;
 	["Show Plugin GUI Service in Explorer"]: boolean;
@@ -6855,17 +4642,10 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Text Color"]: Color3;
 	["Text Wrapping"]: boolean;
 	Theme: Instance | undefined;
-	["UI Theme"]: Enum.UITheme;
+	readonly ["UI Theme"]: Enum.UITheme;
 	["Warning Color"]: Color3;
 }
-type Studio = Rbx_Studio & Base<Rbx_Studio> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "Studio"): this is Studio;
-	FindFirstAncestorOfClass(className: "Studio"): Studio | undefined;
-	FindFirstAncestorWhichIsA(className: "Studio"): Studio | undefined;
-	FindFirstChildOfClass(className: "Studio"): Studio | undefined;
-	FindFirstAncestorWhichIsA(className: "Studio"): Studio | undefined;
-}
+type Studio = Rbx_Studio & Base<Rbx_Studio> & Indexable<Rbx_Studio>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Studio"): Studio;
 }
@@ -6874,32 +4654,17 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_StudioService extends Rbx_Instance {
 	readonly ActiveScript: Instance | undefined;
 }
-type StudioService = Rbx_StudioService & Base<Rbx_StudioService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "StudioService"): this is StudioService;
-	FindFirstAncestorOfClass(className: "StudioService"): StudioService | undefined;
-	FindFirstAncestorWhichIsA(className: "StudioService"): StudioService | undefined;
-	FindFirstChildOfClass(className: "StudioService"): StudioService | undefined;
-	FindFirstAncestorWhichIsA(className: "StudioService"): StudioService | undefined;
-}
+type StudioService = Rbx_StudioService & Base<Rbx_StudioService> & Indexable<Rbx_StudioService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "StudioService"): StudioService;
 }
 
 // StudioTheme
 interface Rbx_StudioTheme extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__125: never;
 }
-interface StudioTheme extends Rbx_StudioTheme, Base<Rbx_StudioTheme>, AnyIndex {}
-declare abstract class StudioTheme {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "StudioTheme"): this is StudioTheme;
-	FindFirstAncestorOfClass(className: "StudioTheme"): StudioTheme | undefined;
-	FindFirstAncestorWhichIsA(className: "StudioTheme"): StudioTheme | undefined;
-	FindFirstChildOfClass(className: "StudioTheme"): StudioTheme | undefined;
-	FindFirstAncestorWhichIsA(className: "StudioTheme"): StudioTheme | undefined;
-}
+type StudioTheme = Rbx_StudioTheme & Base<Rbx_StudioTheme> & Indexable<Rbx_StudioTheme>;
 
 // TaskScheduler
 interface Rbx_TaskScheduler extends Rbx_Instance {
@@ -6908,14 +4673,7 @@ interface Rbx_TaskScheduler extends Rbx_Instance {
 	ThreadPoolConfig: Enum.ThreadPoolConfig;
 	readonly ThreadPoolSize: number;
 }
-type TaskScheduler = Rbx_TaskScheduler & Base<Rbx_TaskScheduler> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "TaskScheduler"): this is TaskScheduler;
-	FindFirstAncestorOfClass(className: "TaskScheduler"): TaskScheduler | undefined;
-	FindFirstAncestorWhichIsA(className: "TaskScheduler"): TaskScheduler | undefined;
-	FindFirstChildOfClass(className: "TaskScheduler"): TaskScheduler | undefined;
-	FindFirstAncestorWhichIsA(className: "TaskScheduler"): TaskScheduler | undefined;
-}
+type TaskScheduler = Rbx_TaskScheduler & Base<Rbx_TaskScheduler> & Indexable<Rbx_TaskScheduler>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "TaskScheduler"): TaskScheduler;
 }
@@ -6925,30 +4683,12 @@ interface Rbx_Team extends Rbx_Instance {
 	AutoAssignable: boolean;
 	TeamColor: BrickColor;
 }
-interface Team extends Rbx_Team, Base<Rbx_Team>, AnyIndex {}
-/** The Team class is used to represent a faction in a team game. The only valid location for a Team object is under the Teams service. [More info](http://wiki.roblox.com/index.php/Team) */
-declare class Team {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Team"): this is Team;
-	FindFirstAncestorOfClass(className: "Team"): Team | undefined;
-	FindFirstAncestorWhichIsA(className: "Team"): Team | undefined;
-	FindFirstChildOfClass(className: "Team"): Team | undefined;
-	FindFirstAncestorWhichIsA(className: "Team"): Team | undefined;
-}
+type Team = Rbx_Team & Base<Rbx_Team> & Indexable<Rbx_Team>;
 
 // Teams
 interface Rbx_Teams extends Rbx_Instance {
 }
-type Teams = Rbx_Teams & Base<Rbx_Teams> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "Teams"): this is Teams;
-	FindFirstAncestorOfClass(className: "Teams"): Teams | undefined;
-	FindFirstAncestorWhichIsA(className: "Teams"): Teams | undefined;
-	FindFirstChildOfClass(className: "Teams"): Teams | undefined;
-	FindFirstAncestorWhichIsA(className: "Teams"): Teams | undefined;
-}
+type Teams = Rbx_Teams & Base<Rbx_Teams> & Indexable<Rbx_Teams>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Teams"): Teams;
 }
@@ -6962,16 +4702,9 @@ interface Rbx_TeleportService extends Rbx_Instance {
 	SetTeleportSetting(setting: string, value?: any): void;
 	TeleportToPlaceInstance(placeId: number, instanceId: string, player?: Instance, spawnName?: string, teleportData?: any, customLoadingScreen?: Instance): void;
 	TeleportToSpawnByName(placeId: number, spawnName: string, player?: Instance, teleportData?: any, customLoadingScreen?: Instance): void;
-	LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: Instance, dataTable?: any) => void>;
+	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: Instance, dataTable?: any) => void>;
 }
-type TeleportService = Rbx_TeleportService & Base<Rbx_TeleportService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "TeleportService"): this is TeleportService;
-	FindFirstAncestorOfClass(className: "TeleportService"): TeleportService | undefined;
-	FindFirstAncestorWhichIsA(className: "TeleportService"): TeleportService | undefined;
-	FindFirstChildOfClass(className: "TeleportService"): TeleportService | undefined;
-	FindFirstAncestorWhichIsA(className: "TeleportService"): TeleportService | undefined;
-}
+type TeleportService = Rbx_TeleportService & Base<Rbx_TeleportService> & Indexable<Rbx_TeleportService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "TeleportService"): TeleportService;
 }
@@ -6980,18 +4713,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 interface Rbx_TerrainRegion extends Rbx_Instance {
 	readonly SizeInCells: Vector3;
 }
-interface TerrainRegion extends Rbx_TerrainRegion, Base<Rbx_TerrainRegion>, AnyIndex {}
-/** Object representing a snapshot of the region of terrain */
-declare class TerrainRegion {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "TerrainRegion"): this is TerrainRegion;
-	FindFirstAncestorOfClass(className: "TerrainRegion"): TerrainRegion | undefined;
-	FindFirstAncestorWhichIsA(className: "TerrainRegion"): TerrainRegion | undefined;
-	FindFirstChildOfClass(className: "TerrainRegion"): TerrainRegion | undefined;
-	FindFirstAncestorWhichIsA(className: "TerrainRegion"): TerrainRegion | undefined;
-}
+type TerrainRegion = Rbx_TerrainRegion & Base<Rbx_TerrainRegion> & Indexable<Rbx_TerrainRegion>;
 
 // TestService
 interface Rbx_TestService extends Rbx_Instance {
@@ -7016,17 +4738,10 @@ interface Rbx_TestService extends Rbx_Instance {
 	Require(condition: boolean, description: string, source?: Instance, line?: number): void;
 	Warn(condition: boolean, description: string, source?: Instance, line?: number): void;
 	isFeatureEnabled(name: string): boolean;
-	ServerCollectConditionalResult: RBXScriptSignal<(condition: boolean, text: string, script: Instance, line: number) => void>;
-	ServerCollectResult: RBXScriptSignal<(text: string, script: Instance, line: number) => void>;
+	readonly ServerCollectConditionalResult: RBXScriptSignal<(condition: boolean, text: string, script: Instance, line: number) => void>;
+	readonly ServerCollectResult: RBXScriptSignal<(text: string, script: Instance, line: number) => void>;
 }
-type TestService = Rbx_TestService & Base<Rbx_TestService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "TestService"): this is TestService;
-	FindFirstAncestorOfClass(className: "TestService"): TestService | undefined;
-	FindFirstAncestorWhichIsA(className: "TestService"): TestService | undefined;
-	FindFirstChildOfClass(className: "TestService"): TestService | undefined;
-	FindFirstAncestorWhichIsA(className: "TestService"): TestService | undefined;
-}
+type TestService = Rbx_TestService & Base<Rbx_TestService> & Indexable<Rbx_TestService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "TestService"): TestService;
 }
@@ -7037,110 +4752,54 @@ interface Rbx_TextFilterResult extends Rbx_Instance {
 	GetNonChatStringForBroadcastAsync(): string;
 	GetNonChatStringForUserAsync(toUserId: number): string;
 }
-interface TextFilterResult extends Rbx_TextFilterResult, Base<Rbx_TextFilterResult>, AnyIndex {}
-declare abstract class TextFilterResult {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "TextFilterResult"): this is TextFilterResult;
-	FindFirstAncestorOfClass(className: "TextFilterResult"): TextFilterResult | undefined;
-	FindFirstAncestorWhichIsA(className: "TextFilterResult"): TextFilterResult | undefined;
-	FindFirstChildOfClass(className: "TextFilterResult"): TextFilterResult | undefined;
-	FindFirstAncestorWhichIsA(className: "TextFilterResult"): TextFilterResult | undefined;
-}
+type TextFilterResult = Rbx_TextFilterResult & Base<Rbx_TextFilterResult> & Indexable<Rbx_TextFilterResult>;
 
 // TextService
 interface Rbx_TextService extends Rbx_Instance {
 	GetTextSize(string: string, fontSize: number, font: Enum.Font, frameSize: Vector2): Vector2;
 	FilterStringAsync(stringToFilter: string, fromUserId: number, textContext?: Enum.TextFilterContext): Instance | undefined;
 }
-type TextService = Rbx_TextService & Base<Rbx_TextService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "TextService"): this is TextService;
-	FindFirstAncestorOfClass(className: "TextService"): TextService | undefined;
-	FindFirstAncestorWhichIsA(className: "TextService"): TextService | undefined;
-	FindFirstChildOfClass(className: "TextService"): TextService | undefined;
-	FindFirstAncestorWhichIsA(className: "TextService"): TextService | undefined;
-}
+type TextService = Rbx_TextService & Base<Rbx_TextService> & Indexable<Rbx_TextService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "TextService"): TextService;
 }
 
 // ThirdPartyUserService
 interface Rbx_ThirdPartyUserService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__126: never;
 }
-type ThirdPartyUserService = Rbx_ThirdPartyUserService & Base<Rbx_ThirdPartyUserService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "ThirdPartyUserService"): this is ThirdPartyUserService;
-	FindFirstAncestorOfClass(className: "ThirdPartyUserService"): ThirdPartyUserService | undefined;
-	FindFirstAncestorWhichIsA(className: "ThirdPartyUserService"): ThirdPartyUserService | undefined;
-	FindFirstChildOfClass(className: "ThirdPartyUserService"): ThirdPartyUserService | undefined;
-	FindFirstAncestorWhichIsA(className: "ThirdPartyUserService"): ThirdPartyUserService | undefined;
-}
+type ThirdPartyUserService = Rbx_ThirdPartyUserService & Base<Rbx_ThirdPartyUserService> & Indexable<Rbx_ThirdPartyUserService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "ThirdPartyUserService"): ThirdPartyUserService;
 }
 
 // TimerService
 interface Rbx_TimerService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__127: never;
 }
-type TimerService = Rbx_TimerService & Base<Rbx_TimerService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "TimerService"): this is TimerService;
-	FindFirstAncestorOfClass(className: "TimerService"): TimerService | undefined;
-	FindFirstAncestorWhichIsA(className: "TimerService"): TimerService | undefined;
-	FindFirstChildOfClass(className: "TimerService"): TimerService | undefined;
-	FindFirstAncestorWhichIsA(className: "TimerService"): TimerService | undefined;
-}
+type TimerService = Rbx_TimerService & Base<Rbx_TimerService> & Indexable<Rbx_TimerService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "TimerService"): TimerService;
 }
 
-// Toolbar
-interface Rbx_Toolbar extends Rbx_Instance {
-}
-interface Toolbar extends Rbx_Toolbar, Base<Rbx_Toolbar>, AnyIndex {}
-declare abstract class Toolbar {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Toolbar"): this is Toolbar;
-	FindFirstAncestorOfClass(className: "Toolbar"): Toolbar | undefined;
-	FindFirstAncestorWhichIsA(className: "Toolbar"): Toolbar | undefined;
-	FindFirstChildOfClass(className: "Toolbar"): Toolbar | undefined;
-	FindFirstAncestorWhichIsA(className: "Toolbar"): Toolbar | undefined;
-}
-
 // TouchInputService
 interface Rbx_TouchInputService extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__128: never;
 }
-type TouchInputService = Rbx_TouchInputService & Base<Rbx_TouchInputService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "TouchInputService"): this is TouchInputService;
-	FindFirstAncestorOfClass(className: "TouchInputService"): TouchInputService | undefined;
-	FindFirstAncestorWhichIsA(className: "TouchInputService"): TouchInputService | undefined;
-	FindFirstChildOfClass(className: "TouchInputService"): TouchInputService | undefined;
-	FindFirstAncestorWhichIsA(className: "TouchInputService"): TouchInputService | undefined;
-}
+type TouchInputService = Rbx_TouchInputService & Base<Rbx_TouchInputService> & Indexable<Rbx_TouchInputService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "TouchInputService"): TouchInputService;
 }
 
 // TouchTransmitter
 interface Rbx_TouchTransmitter extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__129: never;
 }
-interface TouchTransmitter extends Rbx_TouchTransmitter, Base<Rbx_TouchTransmitter>, AnyIndex {}
-/** Used by networking and replication code to transmit touch events - no other purpose */
-declare abstract class TouchTransmitter {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "TouchTransmitter"): this is TouchTransmitter;
-	FindFirstAncestorOfClass(className: "TouchTransmitter"): TouchTransmitter | undefined;
-	FindFirstAncestorWhichIsA(className: "TouchTransmitter"): TouchTransmitter | undefined;
-	FindFirstChildOfClass(className: "TouchTransmitter"): TouchTransmitter | undefined;
-	FindFirstAncestorWhichIsA(className: "TouchTransmitter"): TouchTransmitter | undefined;
-}
+type TouchTransmitter = Rbx_TouchTransmitter & Base<Rbx_TouchTransmitter> & Indexable<Rbx_TouchTransmitter>;
 
 // Trail
 interface Rbx_Trail extends Rbx_Instance {
@@ -7161,18 +4820,7 @@ interface Rbx_Trail extends Rbx_Instance {
 	WidthScale: NumberSequence;
 	Clear(): void;
 }
-interface Trail extends Rbx_Trail, Base<Rbx_Trail>, AnyIndex {}
-/** Makes two attachments emit trail when moving */
-declare class Trail {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Trail"): this is Trail;
-	FindFirstAncestorOfClass(className: "Trail"): Trail | undefined;
-	FindFirstAncestorWhichIsA(className: "Trail"): Trail | undefined;
-	FindFirstChildOfClass(className: "Trail"): Trail | undefined;
-	FindFirstAncestorWhichIsA(className: "Trail"): Trail | undefined;
-}
+type Trail = Rbx_Trail & Base<Rbx_Trail> & Indexable<Rbx_Trail>;
 
 // Translator
 interface Rbx_Translator extends Rbx_Instance {
@@ -7180,17 +4828,7 @@ interface Rbx_Translator extends Rbx_Instance {
 	FormatByKey(key: string, args?: any): string;
 	Translate(context: Instance, text: string): string;
 }
-interface Translator extends Rbx_Translator, Base<Rbx_Translator>, AnyIndex {}
-declare abstract class Translator {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Translator"): this is Translator;
-	FindFirstAncestorOfClass(className: "Translator"): Translator | undefined;
-	FindFirstAncestorWhichIsA(className: "Translator"): Translator | undefined;
-	FindFirstChildOfClass(className: "Translator"): Translator | undefined;
-	FindFirstAncestorWhichIsA(className: "Translator"): Translator | undefined;
-}
+type Translator = Rbx_Translator & Base<Rbx_Translator> & Indexable<Rbx_Translator>;
 
 // TweenBase
 interface Rbx_TweenBase extends Rbx_Instance {
@@ -7203,97 +4841,45 @@ interface Rbx_TweenBase extends Rbx_Instance {
 	/** Starts or resumes (if Tween.PlaybackState is Paused) the tween animation. If current PlaybackState is Cancelled, this property will reset the tween to the beginning properties and play the animations from the beginning. */
 	Play(): void;
 	/** Fires when the tween either reaches PlaybackState Completed or Cancelled. PlaybackState of one of these types is passed as the first arg to the function listening to this event. */
-	Completed: RBXScriptSignal<(playbackState: Enum.PlaybackState) => void>;
+	readonly Completed: RBXScriptSignal<(playbackState: Enum.PlaybackState) => void>;
 }
-interface TweenBase extends Rbx_TweenBase, Base<Rbx_TweenBase>, AnyIndex {}
-declare abstract class TweenBase {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "TweenBase"): this is TweenBase;
-	FindFirstAncestorOfClass(className: "TweenBase"): TweenBase | undefined;
-	FindFirstAncestorWhichIsA(className: "TweenBase"): TweenBase | undefined;
-	FindFirstChildOfClass(className: "TweenBase"): TweenBase | undefined;
-	FindFirstAncestorWhichIsA(className: "TweenBase"): TweenBase | undefined;
-}
+type TweenBase = Rbx_TweenBase & Base<Rbx_TweenBase> & Indexable<Rbx_TweenBase>;
 
 // Tween
 interface Rbx_Tween extends Rbx_TweenBase {
 	readonly Instance: Instance | undefined;
 	readonly TweenInfo: TweenInfo;
 }
-interface Tween extends Rbx_Tween, Base<Rbx_Tween>, AnyIndex {}
-/** An object linked to an instance that animates properties on the instance over a specified period of time. Useful for easily moving UI objects around, rotating objects, etc. without having to write a lot of code. To create a new tween, please use TweenService:Create. */
-declare class Tween {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Tween"): this is Tween;
-	FindFirstAncestorOfClass(className: "Tween"): Tween | undefined;
-	FindFirstAncestorWhichIsA(className: "Tween"): Tween | undefined;
-	FindFirstChildOfClass(className: "Tween"): Tween | undefined;
-	FindFirstAncestorWhichIsA(className: "Tween"): Tween | undefined;
-}
+type Tween = Rbx_Tween & Base<Rbx_Tween> & Indexable<Rbx_Tween>;
 
 // TweenService
 interface Rbx_TweenService extends Rbx_Instance {
 }
-type TweenService = Rbx_TweenService & Base<Rbx_TweenService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "TweenService"): this is TweenService;
-	FindFirstAncestorOfClass(className: "TweenService"): TweenService | undefined;
-	FindFirstAncestorWhichIsA(className: "TweenService"): TweenService | undefined;
-	FindFirstChildOfClass(className: "TweenService"): TweenService | undefined;
-	FindFirstAncestorWhichIsA(className: "TweenService"): TweenService | undefined;
-}
+type TweenService = Rbx_TweenService & Base<Rbx_TweenService> & Indexable<Rbx_TweenService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "TweenService"): TweenService;
 }
 
 // UIBase
 interface Rbx_UIBase extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__130: never;
 }
-interface UIBase extends Rbx_UIBase, Base<Rbx_UIBase>, AnyIndex {}
-declare abstract class UIBase {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UIBase"): this is UIBase;
-	FindFirstAncestorOfClass(className: "UIBase"): UIBase | undefined;
-	FindFirstAncestorWhichIsA(className: "UIBase"): UIBase | undefined;
-	FindFirstChildOfClass(className: "UIBase"): UIBase | undefined;
-	FindFirstAncestorWhichIsA(className: "UIBase"): UIBase | undefined;
-}
+type UIBase = Rbx_UIBase & Base<Rbx_UIBase> & Indexable<Rbx_UIBase>;
 
 // UIComponent
 interface Rbx_UIComponent extends Rbx_UIBase {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__131: never;
 }
-interface UIComponent extends Rbx_UIComponent, Base<Rbx_UIComponent>, AnyIndex {}
-declare abstract class UIComponent {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UIComponent"): this is UIComponent;
-	FindFirstAncestorOfClass(className: "UIComponent"): UIComponent | undefined;
-	FindFirstAncestorWhichIsA(className: "UIComponent"): UIComponent | undefined;
-	FindFirstChildOfClass(className: "UIComponent"): UIComponent | undefined;
-	FindFirstAncestorWhichIsA(className: "UIComponent"): UIComponent | undefined;
-}
+type UIComponent = Rbx_UIComponent & Base<Rbx_UIComponent> & Indexable<Rbx_UIComponent>;
 
 // UIConstraint
 interface Rbx_UIConstraint extends Rbx_UIComponent {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__132: never;
 }
-interface UIConstraint extends Rbx_UIConstraint, Base<Rbx_UIConstraint>, AnyIndex {}
-declare abstract class UIConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UIConstraint"): this is UIConstraint;
-	FindFirstAncestorOfClass(className: "UIConstraint"): UIConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "UIConstraint"): UIConstraint | undefined;
-	FindFirstChildOfClass(className: "UIConstraint"): UIConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "UIConstraint"): UIConstraint | undefined;
-}
+type UIConstraint = Rbx_UIConstraint & Base<Rbx_UIConstraint> & Indexable<Rbx_UIConstraint>;
 
 // UIAspectRatioConstraint
 interface Rbx_UIAspectRatioConstraint extends Rbx_UIConstraint {
@@ -7304,18 +4890,7 @@ interface Rbx_UIAspectRatioConstraint extends Rbx_UIConstraint {
 	/** Describes which axis to use when determining the new size of the element, while keeping respect to the aspect ratio. */
 	DominantAxis: Enum.DominantAxis;
 }
-interface UIAspectRatioConstraint extends Rbx_UIAspectRatioConstraint, Base<Rbx_UIAspectRatioConstraint>, AnyIndex {}
-/** Ensures a GuiObject will always have a particular aspect ratio. If an element with a constraint is under the control of a layout, the constraint takes precedence in determining the element’s size, but not position. You can use a Constraint by parenting it to the element you wish to constrain. */
-declare class UIAspectRatioConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UIAspectRatioConstraint"): this is UIAspectRatioConstraint;
-	FindFirstAncestorOfClass(className: "UIAspectRatioConstraint"): UIAspectRatioConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "UIAspectRatioConstraint"): UIAspectRatioConstraint | undefined;
-	FindFirstChildOfClass(className: "UIAspectRatioConstraint"): UIAspectRatioConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "UIAspectRatioConstraint"): UIAspectRatioConstraint | undefined;
-}
+type UIAspectRatioConstraint = Rbx_UIAspectRatioConstraint & Base<Rbx_UIAspectRatioConstraint> & Indexable<Rbx_UIAspectRatioConstraint>;
 
 // UISizeConstraint
 interface Rbx_UISizeConstraint extends Rbx_UIConstraint {
@@ -7324,18 +4899,7 @@ interface Rbx_UISizeConstraint extends Rbx_UIConstraint {
 	/** The smallest size the GuiObject is allowed to be. */
 	MinSize: Vector2;
 }
-interface UISizeConstraint extends Rbx_UISizeConstraint, Base<Rbx_UISizeConstraint>, AnyIndex {}
-/** Ensures a GuiObject does not become smaller or larger than the min and max size. If an element with a constraint is under the control of a layout, the constraint takes precedence in determining the element’s size, but not position. You can use a Constraint by parenting it to the element you wish to constrain. */
-declare class UISizeConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UISizeConstraint"): this is UISizeConstraint;
-	FindFirstAncestorOfClass(className: "UISizeConstraint"): UISizeConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "UISizeConstraint"): UISizeConstraint | undefined;
-	FindFirstChildOfClass(className: "UISizeConstraint"): UISizeConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "UISizeConstraint"): UISizeConstraint | undefined;
-}
+type UISizeConstraint = Rbx_UISizeConstraint & Base<Rbx_UISizeConstraint> & Indexable<Rbx_UISizeConstraint>;
 
 // UITextSizeConstraint
 interface Rbx_UITextSizeConstraint extends Rbx_UIConstraint {
@@ -7344,33 +4908,14 @@ interface Rbx_UITextSizeConstraint extends Rbx_UIConstraint {
 	/** The smallest size the font is allowed to be. */
 	MinTextSize: number;
 }
-interface UITextSizeConstraint extends Rbx_UITextSizeConstraint, Base<Rbx_UITextSizeConstraint>, AnyIndex {}
-/** Ensures a GuiObject with text does not allow the font size to become larger or smaller than min and max text sizes. If an element with a constraint is under the control of a layout, the constraint takes precedence in determining the element’s size, but not position. You can use a Constraint by parenting it to the element you wish to constrain. */
-declare class UITextSizeConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UITextSizeConstraint"): this is UITextSizeConstraint;
-	FindFirstAncestorOfClass(className: "UITextSizeConstraint"): UITextSizeConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "UITextSizeConstraint"): UITextSizeConstraint | undefined;
-	FindFirstChildOfClass(className: "UITextSizeConstraint"): UITextSizeConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "UITextSizeConstraint"): UITextSizeConstraint | undefined;
-}
+type UITextSizeConstraint = Rbx_UITextSizeConstraint & Base<Rbx_UITextSizeConstraint> & Indexable<Rbx_UITextSizeConstraint>;
 
 // UILayout
 interface Rbx_UILayout extends Rbx_UIComponent {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__133: never;
 }
-interface UILayout extends Rbx_UILayout, Base<Rbx_UILayout>, AnyIndex {}
-declare abstract class UILayout {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UILayout"): this is UILayout;
-	FindFirstAncestorOfClass(className: "UILayout"): UILayout | undefined;
-	FindFirstAncestorWhichIsA(className: "UILayout"): UILayout | undefined;
-	FindFirstChildOfClass(className: "UILayout"): UILayout | undefined;
-	FindFirstAncestorWhichIsA(className: "UILayout"): UILayout | undefined;
-}
+type UILayout = Rbx_UILayout & Base<Rbx_UILayout> & Indexable<Rbx_UILayout>;
 
 // UIGridStyleLayout
 interface Rbx_UIGridStyleLayout extends Rbx_UILayout {
@@ -7386,17 +4931,7 @@ interface Rbx_UIGridStyleLayout extends Rbx_UILayout {
 	/** Forces a relayout of all elements. Useful when sort is set to Custom. */
 	ApplyLayout(): void;
 }
-interface UIGridStyleLayout extends Rbx_UIGridStyleLayout, Base<Rbx_UIGridStyleLayout>, AnyIndex {}
-declare abstract class UIGridStyleLayout {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UIGridStyleLayout"): this is UIGridStyleLayout;
-	FindFirstAncestorOfClass(className: "UIGridStyleLayout"): UIGridStyleLayout | undefined;
-	FindFirstAncestorWhichIsA(className: "UIGridStyleLayout"): UIGridStyleLayout | undefined;
-	FindFirstChildOfClass(className: "UIGridStyleLayout"): UIGridStyleLayout | undefined;
-	FindFirstAncestorWhichIsA(className: "UIGridStyleLayout"): UIGridStyleLayout | undefined;
-}
+type UIGridStyleLayout = Rbx_UIGridStyleLayout & Base<Rbx_UIGridStyleLayout> & Indexable<Rbx_UIGridStyleLayout>;
 
 // UIGridLayout
 interface Rbx_UIGridLayout extends Rbx_UIGridStyleLayout {
@@ -7409,36 +4944,14 @@ interface Rbx_UIGridLayout extends Rbx_UIGridStyleLayout {
 	/** Which corner we start laying the elements out from. Can be TopLeft, TopRight, BottomLeft, BottomRight. */
 	StartCorner: Enum.StartCorner;
 }
-interface UIGridLayout extends Rbx_UIGridLayout, Base<Rbx_UIGridLayout>, AnyIndex {}
-/** Sets the position of UI elements in a 2D grid (this can be modified to 1D grid for list layout). This will also set the elements to a particular size, although this can be overridden with particular constraints on elements. You can use a UIGridLayout by parenting it to a GuiObject. The UIGridLayout will then apply itself to all of its GuiObject siblings. */
-declare class UIGridLayout {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UIGridLayout"): this is UIGridLayout;
-	FindFirstAncestorOfClass(className: "UIGridLayout"): UIGridLayout | undefined;
-	FindFirstAncestorWhichIsA(className: "UIGridLayout"): UIGridLayout | undefined;
-	FindFirstChildOfClass(className: "UIGridLayout"): UIGridLayout | undefined;
-	FindFirstAncestorWhichIsA(className: "UIGridLayout"): UIGridLayout | undefined;
-}
+type UIGridLayout = Rbx_UIGridLayout & Base<Rbx_UIGridLayout> & Indexable<Rbx_UIGridLayout>;
 
 // UIListLayout
 interface Rbx_UIListLayout extends Rbx_UIGridStyleLayout {
 	/** Determines the amount of free space between each element. Can be set either using scale (Percentage of parent's size in the current direction) or offset (a static spacing value, similar to pixel size). */
 	Padding: UDim;
 }
-interface UIListLayout extends Rbx_UIListLayout, Base<Rbx_UIListLayout>, AnyIndex {}
-/** Sets the position of UI elements in a list. You can use a UIListLayout by parenting it to a GuiObject. The UIListLayout will then apply itself to all of its GuiObject siblings. */
-declare class UIListLayout {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UIListLayout"): this is UIListLayout;
-	FindFirstAncestorOfClass(className: "UIListLayout"): UIListLayout | undefined;
-	FindFirstAncestorWhichIsA(className: "UIListLayout"): UIListLayout | undefined;
-	FindFirstChildOfClass(className: "UIListLayout"): UIListLayout | undefined;
-	FindFirstAncestorWhichIsA(className: "UIListLayout"): UIListLayout | undefined;
-}
+type UIListLayout = Rbx_UIListLayout & Base<Rbx_UIListLayout> & Indexable<Rbx_UIListLayout>;
 
 // UIPageLayout
 interface Rbx_UIPageLayout extends Rbx_UIGridStyleLayout {
@@ -7468,24 +4981,13 @@ interface Rbx_UIPageLayout extends Rbx_UIGridStyleLayout {
 	/** Sets CurrentPage to the page after the current page and animates to it, or does nothing if there isn't a next page. */
 	Previous(): void;
 	/** Fires when a page comes into view, and is going to be rendered. */
-	PageEnter: RBXScriptSignal<(page: Instance) => void>;
+	readonly PageEnter: RBXScriptSignal<(page: Instance) => void>;
 	/** Fires when a page leaves view, and will not be rendered. */
-	PageLeave: RBXScriptSignal<(page: Instance) => void>;
+	readonly PageLeave: RBXScriptSignal<(page: Instance) => void>;
 	/** Fires when an animation to CurrentPage is completed without being cancelled, and the view stops scrolling. */
-	Stopped: RBXScriptSignal<(currentPage: Instance) => void>;
+	readonly Stopped: RBXScriptSignal<(currentPage: Instance) => void>;
 }
-interface UIPageLayout extends Rbx_UIPageLayout, Base<Rbx_UIPageLayout>, AnyIndex {}
-/** Creates a paged viewing window, like the home screen of a mobile device. You can use a UIPageLayout by parenting it to a GuiObject. The UIPageLayout will then apply itself to all of its GuiObject siblings. */
-declare class UIPageLayout {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UIPageLayout"): this is UIPageLayout;
-	FindFirstAncestorOfClass(className: "UIPageLayout"): UIPageLayout | undefined;
-	FindFirstAncestorWhichIsA(className: "UIPageLayout"): UIPageLayout | undefined;
-	FindFirstChildOfClass(className: "UIPageLayout"): UIPageLayout | undefined;
-	FindFirstAncestorWhichIsA(className: "UIPageLayout"): UIPageLayout | undefined;
-}
+type UIPageLayout = Rbx_UIPageLayout & Base<Rbx_UIPageLayout> & Indexable<Rbx_UIPageLayout>;
 
 // UITableLayout
 interface Rbx_UITableLayout extends Rbx_UIGridStyleLayout {
@@ -7498,18 +5000,7 @@ interface Rbx_UITableLayout extends Rbx_UIGridStyleLayout {
 	/** The amount of padding to insert in between the cells of the table. */
 	Padding: UDim2;
 }
-interface UITableLayout extends Rbx_UITableLayout, Base<Rbx_UITableLayout>, AnyIndex {}
-/** Provides a layout of rows and columns that are sized based on the cells in them. */
-declare class UITableLayout {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UITableLayout"): this is UITableLayout;
-	FindFirstAncestorOfClass(className: "UITableLayout"): UITableLayout | undefined;
-	FindFirstAncestorWhichIsA(className: "UITableLayout"): UITableLayout | undefined;
-	FindFirstChildOfClass(className: "UITableLayout"): UITableLayout | undefined;
-	FindFirstAncestorWhichIsA(className: "UITableLayout"): UITableLayout | undefined;
-}
+type UITableLayout = Rbx_UITableLayout & Base<Rbx_UITableLayout> & Indexable<Rbx_UITableLayout>;
 
 // UIPadding
 interface Rbx_UIPadding extends Rbx_UIComponent {
@@ -7522,35 +5013,14 @@ interface Rbx_UIPadding extends Rbx_UIComponent {
 	/** The padding to apply on the top side relative to the parent's normal size. */
 	PaddingTop: UDim;
 }
-interface UIPadding extends Rbx_UIPadding, Base<Rbx_UIPadding>, AnyIndex {}
-declare class UIPadding {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UIPadding"): this is UIPadding;
-	FindFirstAncestorOfClass(className: "UIPadding"): UIPadding | undefined;
-	FindFirstAncestorWhichIsA(className: "UIPadding"): UIPadding | undefined;
-	FindFirstChildOfClass(className: "UIPadding"): UIPadding | undefined;
-	FindFirstAncestorWhichIsA(className: "UIPadding"): UIPadding | undefined;
-}
+type UIPadding = Rbx_UIPadding & Base<Rbx_UIPadding> & Indexable<Rbx_UIPadding>;
 
 // UIScale
 interface Rbx_UIScale extends Rbx_UIComponent {
 	/** The scale factor to apply. */
 	Scale: number;
 }
-interface UIScale extends Rbx_UIScale, Base<Rbx_UIScale>, AnyIndex {}
-/** Uniformly scales a GUI object and all its children. */
-declare class UIScale {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "UIScale"): this is UIScale;
-	FindFirstAncestorOfClass(className: "UIScale"): UIScale | undefined;
-	FindFirstAncestorWhichIsA(className: "UIScale"): UIScale | undefined;
-	FindFirstChildOfClass(className: "UIScale"): UIScale | undefined;
-	FindFirstAncestorWhichIsA(className: "UIScale"): UIScale | undefined;
-}
+type UIScale = Rbx_UIScale & Base<Rbx_UIScale> & Indexable<Rbx_UIScale>;
 
 // UserGameSettings
 interface Rbx_UserGameSettings extends Rbx_Instance {
@@ -7560,6 +5030,8 @@ interface Rbx_UserGameSettings extends Rbx_Instance {
 	GamepadCameraSensitivity: number;
 	MasterVolume: number;
 	MouseSensitivity: number;
+	RCCProfilerRecordFrameRate: number;
+	RCCProfilerRecordTimeFrame: number;
 	RotationType: Enum.RotationType;
 	SavedQualityLevel: Enum.SavedQualitySetting;
 	TouchCameraMovementMode: Enum.TouchCameraMovementMode;
@@ -7571,17 +5043,10 @@ interface Rbx_UserGameSettings extends Rbx_Instance {
 	SetCameraYInvertVisible(): void;
 	SetGamepadCameraSensitivityVisible(): void;
 	SetOnboardingCompleted(onboardingId: string): void;
-	FullscreenChanged: RBXScriptSignal<(isFullscreen: boolean) => void>;
-	StudioModeChanged: RBXScriptSignal<(isStudioMode: boolean) => void>;
+	readonly FullscreenChanged: RBXScriptSignal<(isFullscreen: boolean) => void>;
+	readonly StudioModeChanged: RBXScriptSignal<(isStudioMode: boolean) => void>;
 }
-type UserGameSettings = Rbx_UserGameSettings & Base<Rbx_UserGameSettings> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "UserGameSettings"): this is UserGameSettings;
-	FindFirstAncestorOfClass(className: "UserGameSettings"): UserGameSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "UserGameSettings"): UserGameSettings | undefined;
-	FindFirstChildOfClass(className: "UserGameSettings"): UserGameSettings | undefined;
-	FindFirstAncestorWhichIsA(className: "UserGameSettings"): UserGameSettings | undefined;
-}
+type UserGameSettings = Rbx_UserGameSettings & Base<Rbx_UserGameSettings> & Indexable<Rbx_UserGameSettings>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "UserGameSettings"): UserGameSettings;
 }
@@ -7625,56 +5090,43 @@ interface Rbx_UserInputService extends Rbx_Instance {
 	RecenterUserHeadCFrame(): void;
 	SetNavigationGamepad(gamepadEnum: Enum.UserInputType, enabled: boolean): void;
 	/** Fired when a user moves a device that has an accelerometer. This is fired with an InputObject, which has type Enum.InputType.Accelerometer, and position that shows the g force in each local device axis. This event only fires locally. */
-	DeviceAccelerationChanged: RBXScriptSignal<(acceleration: Instance) => void>;
+	readonly DeviceAccelerationChanged: RBXScriptSignal<(acceleration: Instance) => void>;
 	/** Fired when the force of gravity changes on a device that has an accelerometer. This is fired with an InputObject, which has type Enum.InputType.Accelerometer, and position that shows the g force in each local device axis. This event only fires locally. */
-	DeviceGravityChanged: RBXScriptSignal<(gravity: Instance) => void>;
+	readonly DeviceGravityChanged: RBXScriptSignal<(gravity: Instance) => void>;
 	/** Fired when a user rotates a device that has an gyroscope. This is fired with an InputObject, which has type Enum.InputType.Gyroscope, and position that shows total rotation in each local device axis.  The delta property describes the amount of rotation that last happened. A second argument of Vector4 is the device's current quaternion rotation in reference to it's default reference frame. This event only fires locally. */
-	DeviceRotationChanged: RBXScriptSignal<(rotation: Instance, cframe: CFrame) => void>;
-	GamepadConnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
-	GamepadDisconnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
-	/** Fired when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	InputBegan: RBXScriptSignal<(input: Instance, gameProcessedEvent: boolean) => void>;
-	/** Fired when a user changes interacting via a Human-Computer Interface device (Mouse move, touch move, mouse wheel, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	InputChanged: RBXScriptSignal<(input: Instance, gameProcessedEvent: boolean) => void>;
-	/** Fired when a user stops interacting via a Human-Computer Interface device (Mouse button up, touch end, keyboard button up, etc.). 'inputObject' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	InputEnded: RBXScriptSignal<(input: Instance, gameProcessedEvent: boolean) => void>;
-	JumpRequest: RBXScriptSignal<() => void>;
-	LastInputTypeChanged: RBXScriptSignal<(lastInputType: Enum.UserInputType) => void>;
+	readonly DeviceRotationChanged: RBXScriptSignal<(rotation: Instance, cframe: CFrame) => void>;
+	readonly GamepadConnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
+	readonly GamepadDisconnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
+	readonly JumpRequest: RBXScriptSignal<() => void>;
+	readonly LastInputTypeChanged: RBXScriptSignal<(lastInputType: Enum.UserInputType) => void>;
 	/** Fired when a user stops text entry into a textbox (usually by pressing return or clicking/tapping somewhere else on the screen). Argument is the textbox that was taken out of focus. This event only fires locally. */
-	TextBoxFocusReleased: RBXScriptSignal<(textboxReleased: Instance) => void>;
+	readonly TextBoxFocusReleased: RBXScriptSignal<(textboxReleased: Instance) => void>;
 	/** Fired when a user clicks/taps on a textbox to begin text entry. Argument is the textbox that was put in focus. This also fires if a textbox forces focus on the user. This event only fires locally. */
-	TextBoxFocused: RBXScriptSignal<(textboxFocused: Instance) => void>;
+	readonly TextBoxFocused: RBXScriptSignal<(textboxFocused: Instance) => void>;
 	/** Fired when a user moves their finger on a TouchEnabled device. 'touch' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchEnded: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
+	readonly TouchEnded: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user holds at least one finger for a short amount of time on the same screen position on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchLongPress: RBXScriptSignal<(touchPositions: Array<any>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
+	readonly TouchLongPress: RBXScriptSignal<(touchPositions: Array<any>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user moves their finger on a TouchEnabled device. 'touch' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchMoved: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
+	readonly TouchMoved: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user drags at least one finger on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'totalTranslation' is a Vector2, indicating how far the pan gesture has gone from its starting point. 'velocity' is a Vector2 that indicates how quickly the gesture is being performed in each dimension. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchPan: RBXScriptSignal<(touchPositions: Array<any>, totalTranslation: Vector2, velocity: Vector2, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
+	readonly TouchPan: RBXScriptSignal<(touchPositions: Array<any>, totalTranslation: Vector2, velocity: Vector2, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user pinches their fingers on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the pinch gesture. 'scale' is a float that indicates the difference from the beginning of the pinch gesture. 'velocity' is a float indicating how quickly the pinch gesture is happening. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchPinch: RBXScriptSignal<(touchPositions: Array<any>, scale: number, velocity: number, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
+	readonly TouchPinch: RBXScriptSignal<(touchPositions: Array<any>, scale: number, velocity: number, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user rotates two fingers on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the gesture. 'rotation' is a float indicating how much the rotation has gone from the start of the gesture. 'velocity' is a float that indicates how quickly the gesture is being performed. 'state' indicates the Enum.UserInputState of the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchRotate: RBXScriptSignal<(touchPositions: Array<any>, rotation: number, velocity: number, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
+	readonly TouchRotate: RBXScriptSignal<(touchPositions: Array<any>, rotation: number, velocity: number, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user places their finger on a TouchEnabled device. 'touch' is an InputObject, which contains useful data for querying user input.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchStarted: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
+	readonly TouchStarted: RBXScriptSignal<(touch: Instance, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user swipes their fingers on a TouchEnabled device. 'swipeDirection' is an Enum.SwipeDirection, indicating the direction the user swiped. 'numberOfTouches' is an int that indicates how many touches were involved with the gesture.  This event only fires locally.  This event will always fire regardless of game state. */
-	TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number, gameProcessedEvent: boolean) => void>;
+	readonly TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number, gameProcessedEvent: boolean) => void>;
 	/** Fired when a user taps their finger on a TouchEnabled device. 'touchPositions' is a Lua array of Vector2, each indicating the position of all the fingers involved in the tap gesture. This event only fires locally.  This event will always fire regardless of game state. */
-	TouchTap: RBXScriptSignal<(touchPositions: Array<any>, gameProcessedEvent: boolean) => void>;
-	TouchTapInWorld: RBXScriptSignal<(position: Vector2, processedByUI: boolean) => void>;
-	UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
-	WindowFocusReleased: RBXScriptSignal<() => void>;
-	WindowFocused: RBXScriptSignal<() => void>;
+	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<any>, gameProcessedEvent: boolean) => void>;
+	readonly TouchTapInWorld: RBXScriptSignal<(position: Vector2, processedByUI: boolean) => void>;
+	readonly UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
+	readonly WindowFocusReleased: RBXScriptSignal<() => void>;
+	readonly WindowFocused: RBXScriptSignal<() => void>;
 }
-type UserInputService = Rbx_UserInputService & Base<Rbx_UserInputService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "UserInputService"): this is UserInputService;
-	FindFirstAncestorOfClass(className: "UserInputService"): UserInputService | undefined;
-	FindFirstAncestorWhichIsA(className: "UserInputService"): UserInputService | undefined;
-	FindFirstChildOfClass(className: "UserInputService"): UserInputService | undefined;
-	FindFirstAncestorWhichIsA(className: "UserInputService"): UserInputService | undefined;
-}
+type UserInputService = Rbx_UserInputService & Base<Rbx_UserInputService> & Indexable<Rbx_UserInputService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "UserInputService"): UserInputService;
 }
@@ -7689,121 +5141,53 @@ interface Rbx_VRService extends Rbx_Instance {
 	RecenterUserHeadCFrame(): void;
 	RequestNavigation(cframe: CFrame, inputUserCFrame: Enum.UserCFrame): void;
 	SetTouchpadMode(pad: Enum.VRTouchpad, mode: Enum.VRTouchpadMode): void;
-	NavigationRequested: RBXScriptSignal<(cframe: CFrame, inputUserCFrame: Enum.UserCFrame) => void>;
-	TouchpadModeChanged: RBXScriptSignal<(pad: Enum.VRTouchpad, mode: Enum.VRTouchpadMode) => void>;
-	UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
-	UserCFrameEnabled: RBXScriptSignal<(type: Enum.UserCFrame, enabled: boolean) => void>;
+	readonly NavigationRequested: RBXScriptSignal<(cframe: CFrame, inputUserCFrame: Enum.UserCFrame) => void>;
+	readonly TouchpadModeChanged: RBXScriptSignal<(pad: Enum.VRTouchpad, mode: Enum.VRTouchpadMode) => void>;
+	readonly UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
+	readonly UserCFrameEnabled: RBXScriptSignal<(type: Enum.UserCFrame, enabled: boolean) => void>;
 }
-type VRService = Rbx_VRService & Base<Rbx_VRService> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "VRService"): this is VRService;
-	FindFirstAncestorOfClass(className: "VRService"): VRService | undefined;
-	FindFirstAncestorWhichIsA(className: "VRService"): VRService | undefined;
-	FindFirstChildOfClass(className: "VRService"): VRService | undefined;
-	FindFirstAncestorWhichIsA(className: "VRService"): VRService | undefined;
-}
+type VRService = Rbx_VRService & Base<Rbx_VRService> & Indexable<Rbx_VRService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "VRService"): VRService;
 }
 
 // ValueBase
 interface Rbx_ValueBase extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__134: never;
 }
-interface ValueBase extends Rbx_ValueBase, Base<Rbx_ValueBase>, AnyIndex {}
-/** The base class to all Value Objects. */
-declare abstract class ValueBase {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ValueBase"): this is ValueBase;
-	FindFirstAncestorOfClass(className: "ValueBase"): ValueBase | undefined;
-	FindFirstAncestorWhichIsA(className: "ValueBase"): ValueBase | undefined;
-	FindFirstChildOfClass(className: "ValueBase"): ValueBase | undefined;
-	FindFirstAncestorWhichIsA(className: "ValueBase"): ValueBase | undefined;
-}
+type ValueBase = Rbx_ValueBase & Base<Rbx_ValueBase> & Indexable<Rbx_ValueBase>;
 
 // BinaryStringValue
 interface Rbx_BinaryStringValue extends Rbx_ValueBase {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__135: never;
 }
-interface BinaryStringValue extends Rbx_BinaryStringValue, Base<Rbx_BinaryStringValue>, AnyIndex {}
-declare class BinaryStringValue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BinaryStringValue"): this is BinaryStringValue;
-	FindFirstAncestorOfClass(className: "BinaryStringValue"): BinaryStringValue | undefined;
-	FindFirstAncestorWhichIsA(className: "BinaryStringValue"): BinaryStringValue | undefined;
-	FindFirstChildOfClass(className: "BinaryStringValue"): BinaryStringValue | undefined;
-	FindFirstAncestorWhichIsA(className: "BinaryStringValue"): BinaryStringValue | undefined;
-}
+type BinaryStringValue = Rbx_BinaryStringValue & Base<Rbx_BinaryStringValue> & Indexable<Rbx_BinaryStringValue>;
 
 // BoolValue
 interface Rbx_BoolValue extends Rbx_ValueBase {
 	Value: boolean;
 }
-interface BoolValue extends Rbx_BoolValue, Base<Rbx_BoolValue>, AnyIndex {}
-/** Stores a boolean value in it's Value member. Useful to share boolean information across multiple scripts. */
-declare class BoolValue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BoolValue"): this is BoolValue;
-	FindFirstAncestorOfClass(className: "BoolValue"): BoolValue | undefined;
-	FindFirstAncestorWhichIsA(className: "BoolValue"): BoolValue | undefined;
-	FindFirstChildOfClass(className: "BoolValue"): BoolValue | undefined;
-	FindFirstAncestorWhichIsA(className: "BoolValue"): BoolValue | undefined;
-}
+type BoolValue = Rbx_BoolValue & Base<Rbx_BoolValue> & Indexable<Rbx_BoolValue>;
 
 // BrickColorValue
 interface Rbx_BrickColorValue extends Rbx_ValueBase {
 	Value: BrickColor;
 }
-interface BrickColorValue extends Rbx_BrickColorValue, Base<Rbx_BrickColorValue>, AnyIndex {}
-/** Stores a BrickColor value in it's Value member. Useful to share BrickColor information across multiple scripts. */
-declare class BrickColorValue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "BrickColorValue"): this is BrickColorValue;
-	FindFirstAncestorOfClass(className: "BrickColorValue"): BrickColorValue | undefined;
-	FindFirstAncestorWhichIsA(className: "BrickColorValue"): BrickColorValue | undefined;
-	FindFirstChildOfClass(className: "BrickColorValue"): BrickColorValue | undefined;
-	FindFirstAncestorWhichIsA(className: "BrickColorValue"): BrickColorValue | undefined;
-}
+type BrickColorValue = Rbx_BrickColorValue & Base<Rbx_BrickColorValue> & Indexable<Rbx_BrickColorValue>;
 
 // CFrameValue
 interface Rbx_CFrameValue extends Rbx_ValueBase {
 	Value: CFrame;
 }
-interface CFrameValue extends Rbx_CFrameValue, Base<Rbx_CFrameValue>, AnyIndex {}
-/** Stores a CFrame value in it's Value member. Useful to share CFrame information across multiple scripts. */
-declare class CFrameValue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "CFrameValue"): this is CFrameValue;
-	FindFirstAncestorOfClass(className: "CFrameValue"): CFrameValue | undefined;
-	FindFirstAncestorWhichIsA(className: "CFrameValue"): CFrameValue | undefined;
-	FindFirstChildOfClass(className: "CFrameValue"): CFrameValue | undefined;
-	FindFirstAncestorWhichIsA(className: "CFrameValue"): CFrameValue | undefined;
-}
+type CFrameValue = Rbx_CFrameValue & Base<Rbx_CFrameValue> & Indexable<Rbx_CFrameValue>;
 
 // Color3Value
 interface Rbx_Color3Value extends Rbx_ValueBase {
 	Value: Color3;
 }
-interface Color3Value extends Rbx_Color3Value, Base<Rbx_Color3Value>, AnyIndex {}
-/** Stores a Color3 value in it's Value member. Useful to share Color3 information across multiple scripts. */
-declare class Color3Value {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Color3Value"): this is Color3Value;
-	FindFirstAncestorOfClass(className: "Color3Value"): Color3Value | undefined;
-	FindFirstAncestorWhichIsA(className: "Color3Value"): Color3Value | undefined;
-	FindFirstChildOfClass(className: "Color3Value"): Color3Value | undefined;
-	FindFirstAncestorWhichIsA(className: "Color3Value"): Color3Value | undefined;
-}
+type Color3Value = Rbx_Color3Value & Base<Rbx_Color3Value> & Indexable<Rbx_Color3Value>;
 
 // DoubleConstrainedValue
 interface Rbx_DoubleConstrainedValue extends Rbx_ValueBase {
@@ -7814,18 +5198,7 @@ interface Rbx_DoubleConstrainedValue extends Rbx_ValueBase {
 	MinValue: number;
 	Value: number;
 }
-interface DoubleConstrainedValue extends Rbx_DoubleConstrainedValue, Base<Rbx_DoubleConstrainedValue>, AnyIndex {}
-/** Stores a double value in it's Value member.  Value is clamped to be in range of Min and MaxValue. Useful to share double information across multiple scripts. */
-declare class DoubleConstrainedValue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "DoubleConstrainedValue"): this is DoubleConstrainedValue;
-	FindFirstAncestorOfClass(className: "DoubleConstrainedValue"): DoubleConstrainedValue | undefined;
-	FindFirstAncestorWhichIsA(className: "DoubleConstrainedValue"): DoubleConstrainedValue | undefined;
-	FindFirstChildOfClass(className: "DoubleConstrainedValue"): DoubleConstrainedValue | undefined;
-	FindFirstAncestorWhichIsA(className: "DoubleConstrainedValue"): DoubleConstrainedValue | undefined;
-}
+type DoubleConstrainedValue = Rbx_DoubleConstrainedValue & Base<Rbx_DoubleConstrainedValue> & Indexable<Rbx_DoubleConstrainedValue>;
 
 // IntConstrainedValue
 interface Rbx_IntConstrainedValue extends Rbx_ValueBase {
@@ -7834,177 +5207,81 @@ interface Rbx_IntConstrainedValue extends Rbx_ValueBase {
 	MinValue: number;
 	Value: number;
 }
-interface IntConstrainedValue extends Rbx_IntConstrainedValue, Base<Rbx_IntConstrainedValue>, AnyIndex {}
-/** Stores an int value in it's Value member.  Value is clamped to be in range of Min and MaxValue. Useful to share int information across multiple scripts. */
-declare class IntConstrainedValue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "IntConstrainedValue"): this is IntConstrainedValue;
-	FindFirstAncestorOfClass(className: "IntConstrainedValue"): IntConstrainedValue | undefined;
-	FindFirstAncestorWhichIsA(className: "IntConstrainedValue"): IntConstrainedValue | undefined;
-	FindFirstChildOfClass(className: "IntConstrainedValue"): IntConstrainedValue | undefined;
-	FindFirstAncestorWhichIsA(className: "IntConstrainedValue"): IntConstrainedValue | undefined;
-}
+type IntConstrainedValue = Rbx_IntConstrainedValue & Base<Rbx_IntConstrainedValue> & Indexable<Rbx_IntConstrainedValue>;
 
 // IntValue
 interface Rbx_IntValue extends Rbx_ValueBase {
 	Value: number;
 }
-interface IntValue extends Rbx_IntValue, Base<Rbx_IntValue>, AnyIndex {}
-/** Stores a int value in it's Value member. Useful to share int information across multiple scripts. */
-declare class IntValue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "IntValue"): this is IntValue;
-	FindFirstAncestorOfClass(className: "IntValue"): IntValue | undefined;
-	FindFirstAncestorWhichIsA(className: "IntValue"): IntValue | undefined;
-	FindFirstChildOfClass(className: "IntValue"): IntValue | undefined;
-	FindFirstAncestorWhichIsA(className: "IntValue"): IntValue | undefined;
-}
+type IntValue = Rbx_IntValue & Base<Rbx_IntValue> & Indexable<Rbx_IntValue>;
 
 // NumberValue
 interface Rbx_NumberValue extends Rbx_ValueBase {
 	Value: number;
 }
-interface NumberValue extends Rbx_NumberValue, Base<Rbx_NumberValue>, AnyIndex {}
-declare class NumberValue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "NumberValue"): this is NumberValue;
-	FindFirstAncestorOfClass(className: "NumberValue"): NumberValue | undefined;
-	FindFirstAncestorWhichIsA(className: "NumberValue"): NumberValue | undefined;
-	FindFirstChildOfClass(className: "NumberValue"): NumberValue | undefined;
-	FindFirstAncestorWhichIsA(className: "NumberValue"): NumberValue | undefined;
-}
+type NumberValue = Rbx_NumberValue & Base<Rbx_NumberValue> & Indexable<Rbx_NumberValue>;
 
 // ObjectValue
 interface Rbx_ObjectValue extends Rbx_ValueBase {
 	Value: Instance | undefined;
 }
-interface ObjectValue extends Rbx_ObjectValue, Base<Rbx_ObjectValue>, AnyIndex {}
-declare class ObjectValue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "ObjectValue"): this is ObjectValue;
-	FindFirstAncestorOfClass(className: "ObjectValue"): ObjectValue | undefined;
-	FindFirstAncestorWhichIsA(className: "ObjectValue"): ObjectValue | undefined;
-	FindFirstChildOfClass(className: "ObjectValue"): ObjectValue | undefined;
-	FindFirstAncestorWhichIsA(className: "ObjectValue"): ObjectValue | undefined;
-}
+type ObjectValue = Rbx_ObjectValue & Base<Rbx_ObjectValue> & Indexable<Rbx_ObjectValue>;
 
 // RayValue
 interface Rbx_RayValue extends Rbx_ValueBase {
 	Value: Ray;
 }
-interface RayValue extends Rbx_RayValue, Base<Rbx_RayValue>, AnyIndex {}
-/** Stores a Ray value in it's Value member. Useful to share Ray information across multiple scripts. */
-declare class RayValue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "RayValue"): this is RayValue;
-	FindFirstAncestorOfClass(className: "RayValue"): RayValue | undefined;
-	FindFirstAncestorWhichIsA(className: "RayValue"): RayValue | undefined;
-	FindFirstChildOfClass(className: "RayValue"): RayValue | undefined;
-	FindFirstAncestorWhichIsA(className: "RayValue"): RayValue | undefined;
-}
+type RayValue = Rbx_RayValue & Base<Rbx_RayValue> & Indexable<Rbx_RayValue>;
 
 // StringValue
 interface Rbx_StringValue extends Rbx_ValueBase {
 	Value: string;
 }
-interface StringValue extends Rbx_StringValue, Base<Rbx_StringValue>, AnyIndex {}
-declare class StringValue {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "StringValue"): this is StringValue;
-	FindFirstAncestorOfClass(className: "StringValue"): StringValue | undefined;
-	FindFirstAncestorWhichIsA(className: "StringValue"): StringValue | undefined;
-	FindFirstChildOfClass(className: "StringValue"): StringValue | undefined;
-	FindFirstAncestorWhichIsA(className: "StringValue"): StringValue | undefined;
-}
+type StringValue = Rbx_StringValue & Base<Rbx_StringValue> & Indexable<Rbx_StringValue>;
 
 // Vector3Value
 interface Rbx_Vector3Value extends Rbx_ValueBase {
 	Value: Vector3;
 }
-interface Vector3Value extends Rbx_Vector3Value, Base<Rbx_Vector3Value>, AnyIndex {}
-declare class Vector3Value {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "Vector3Value"): this is Vector3Value;
-	FindFirstAncestorOfClass(className: "Vector3Value"): Vector3Value | undefined;
-	FindFirstAncestorWhichIsA(className: "Vector3Value"): Vector3Value | undefined;
-	FindFirstChildOfClass(className: "Vector3Value"): Vector3Value | undefined;
-	FindFirstAncestorWhichIsA(className: "Vector3Value"): Vector3Value | undefined;
-}
+type Vector3Value = Rbx_Vector3Value & Base<Rbx_Vector3Value> & Indexable<Rbx_Vector3Value>;
 
 // VirtualInputManager
 interface Rbx_VirtualInputManager extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__136: never;
 }
-type VirtualInputManager = Rbx_VirtualInputManager & Base<Rbx_VirtualInputManager> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "VirtualInputManager"): this is VirtualInputManager;
-	FindFirstAncestorOfClass(className: "VirtualInputManager"): VirtualInputManager | undefined;
-	FindFirstAncestorWhichIsA(className: "VirtualInputManager"): VirtualInputManager | undefined;
-	FindFirstChildOfClass(className: "VirtualInputManager"): VirtualInputManager | undefined;
-	FindFirstAncestorWhichIsA(className: "VirtualInputManager"): VirtualInputManager | undefined;
-}
+type VirtualInputManager = Rbx_VirtualInputManager & Base<Rbx_VirtualInputManager> & Indexable<Rbx_VirtualInputManager>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "VirtualInputManager"): VirtualInputManager;
 }
 
 // VirtualUser
 interface Rbx_VirtualUser extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__137: never;
 }
-type VirtualUser = Rbx_VirtualUser & Base<Rbx_VirtualUser> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "VirtualUser"): this is VirtualUser;
-	FindFirstAncestorOfClass(className: "VirtualUser"): VirtualUser | undefined;
-	FindFirstAncestorWhichIsA(className: "VirtualUser"): VirtualUser | undefined;
-	FindFirstChildOfClass(className: "VirtualUser"): VirtualUser | undefined;
-	FindFirstAncestorWhichIsA(className: "VirtualUser"): VirtualUser | undefined;
-}
+type VirtualUser = Rbx_VirtualUser & Base<Rbx_VirtualUser> & Indexable<Rbx_VirtualUser>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "VirtualUser"): VirtualUser;
 }
 
 // Visit
 interface Rbx_Visit extends Rbx_Instance {
+	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
+	__138: never;
 }
-type Visit = Rbx_Visit & Base<Rbx_Visit> & AnyIndex;
-interface Rbx_Instance {
-	IsA(className: "Visit"): this is Visit;
-	FindFirstAncestorOfClass(className: "Visit"): Visit | undefined;
-	FindFirstAncestorWhichIsA(className: "Visit"): Visit | undefined;
-	FindFirstChildOfClass(className: "Visit"): Visit | undefined;
-	FindFirstAncestorWhichIsA(className: "Visit"): Visit | undefined;
-}
+type Visit = Rbx_Visit & Base<Rbx_Visit> & Indexable<Rbx_Visit>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
 	GetService(className: "Visit"): Visit;
 }
 
 // WeldConstraint
 interface Rbx_WeldConstraint extends Rbx_Instance {
+	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
+	readonly Active: boolean;
 	Enabled: boolean;
 	Part0: BasePart;
 	Part1: BasePart;
 }
-interface WeldConstraint extends Rbx_WeldConstraint, Base<Rbx_WeldConstraint>, AnyIndex {}
-declare class WeldConstraint {
-	constructor(parent?: Instance);
-}
-interface Rbx_Instance {
-	IsA(className: "WeldConstraint"): this is WeldConstraint;
-	FindFirstAncestorOfClass(className: "WeldConstraint"): WeldConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "WeldConstraint"): WeldConstraint | undefined;
-	FindFirstChildOfClass(className: "WeldConstraint"): WeldConstraint | undefined;
-	FindFirstAncestorWhichIsA(className: "WeldConstraint"): WeldConstraint | undefined;
-}
+type WeldConstraint = Rbx_WeldConstraint & Base<Rbx_WeldConstraint> & Indexable<Rbx_WeldConstraint>;
 

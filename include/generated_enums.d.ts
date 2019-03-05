@@ -25,6 +25,10 @@ declare namespace Enum {
 		Motor = 1,
 		Servo = 2
 	}
+	enum AlignType {
+		Parallel = 0,
+		Perpendicular = 1
+	}
 	enum AnimationPriority {
 		Idle = 0,
 		Movement = 1,
@@ -347,6 +351,10 @@ declare namespace Enum {
 		Follow = 2,
 		Classic = 1
 	}
+	enum DEPRECATED_DebuggerDataModelPreference {
+		Server = 0,
+		Client = 1
+	}
 	enum DataStoreRequestType {
 		GetAsync = 0,
 		SetIncrementAsync = 1,
@@ -492,7 +500,11 @@ declare namespace Enum {
 		SciFi = 12,
 		Arcade = 13,
 		Fantasy = 14,
-		Antique = 15
+		Antique = 15,
+		Gotham = 17,
+		GothamSemibold = 18,
+		GothamBold = 19,
+		GothamBlack = 20
 	}
 	enum FontSize {
 		Size8 = 0,
@@ -643,7 +655,9 @@ declare namespace Enum {
 		MarketplaceService = 2,
 		Players = 7,
 		Chat = 15,
-		Avatar = 16
+		Avatar = 16,
+		Analytics = 22,
+		Localization = 24
 	}
 	enum HumanoidDisplayDistanceType {
 		Viewer = 0,
@@ -1042,7 +1056,8 @@ declare namespace Enum {
 		LeafyGrass = 1284,
 		Salt = 1392,
 		Limestone = 820,
-		Pavement = 836
+		Pavement = 836,
+		ForceField = 1584
 	}
 	enum MembershipType {
 		None = 0,
@@ -1474,7 +1489,9 @@ declare namespace Enum {
 		CheckedFieldBackground = 78,
 		CheckedFieldBorder = 79,
 		CheckedFieldIndicator = 80,
-		HeaderSection = 81
+		HeaderSection = 81,
+		Midlight = 82,
+		StatusBar = 83
 	}
 	enum StudioStyleGuideModifier {
 		Default = 0,
@@ -1519,7 +1536,8 @@ declare namespace Enum {
 	}
 	enum Technology {
 		Legacy = 0,
-		Voxel = 1
+		Voxel = 1,
+		Compatibility = 2
 	}
 	enum TeleportResult {
 		Success = 0,
@@ -1677,7 +1695,8 @@ declare namespace Enum {
 		Gamepad7 = 18,
 		Gamepad8 = 19,
 		TextInput = 20,
-		None = 21
+		InputMethod = 21,
+		None = 22
 	}
 	enum VRTouchpad {
 		Left = 0,
