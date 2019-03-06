@@ -4,10 +4,7 @@
 
 interface Table {}
 
-interface LuaTuple<T> {
-	[index: number]: T;
-	[Symbol.iterator](): IterableIterator<T>;
-}
+type LuaTuple<T extends any[]> = T;
 
 /** A table that is shared between all scripts of the same context level. */
 declare const _G: Table;
@@ -174,7 +171,7 @@ interface String {
 	lower(): string;
 
 	/** Looks for the first match of pattern in the string s. If a match is found, it is returned; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. */
-	match(pattern: string, init?: number): LuaTuple<string | undefined>;
+	match(pattern: string, init?: number): LuaTuple<Array<string | undefined>>;
 
 	/** Returns a string that is the concatenation of n copies of the string s separated by the string sep. */
 	rep(n: number): string;
@@ -212,7 +209,7 @@ declare namespace string {
 	function lower(s: string): string;
 
 	/** Looks for the first match of pattern in the string s. If a match is found, it is returned; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. */
-	function match(s: string, pattern: string, init?: number): LuaTuple<string | undefined>;
+	function match(s: string, pattern: string, init?: number): LuaTuple<Array<string | undefined>>;
 
 	/** Returns a string that is the concatenation of n copies of the string s separated by the string sep. */
 	function rep(s: string, n: number): string;
