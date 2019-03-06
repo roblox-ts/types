@@ -53,38 +53,42 @@ declare function tostring(value: unknown): string;
 
 /** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
 declare function pcall<T extends any[], U>(
-	func: (...args: T) => U
-): U extends [infer A]
-	? LuaTuple<[true, A] | [false, string]>
-	: U extends [infer A, infer B]
-	? LuaTuple<[true, A, B] | [false, string, undefined]>
-	: U extends [infer A, infer B, infer C]
-	? LuaTuple<[true, A, B, C] | [false, string, undefined, undefined]>
-	: U extends [infer A, infer B, infer C, infer D]
-	? LuaTuple<[true, A, B, C, D] | [false, string, undefined, undefined, undefined]>
-	: U extends [infer A, infer B, infer C, infer D, infer E]
-	? LuaTuple<[true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]>
-	: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-	? LuaTuple<[true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]>
-	: LuaTuple<[true, U] | [false, string]>;
+	func: (...args: T) => U,
+): LuaTuple<
+	U extends [infer A]
+		? [true, A] | [false, string]
+		: U extends [infer A, infer B]
+		? [true, A, B] | [false, string, undefined]
+		: U extends [infer A, infer B, infer C]
+		? [true, A, B, C] | [false, string, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D]
+		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D, infer E]
+		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
+		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
+		: [true, U] | [false, string]
+>;
 
 /** B Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
 declare function pcall<T extends any[], U>(
 	func: (...args: T) => U,
 	...args: T
-): U extends [infer A]
-	? LuaTuple<[true, A] | [false, string]>
-	: U extends [infer A, infer B]
-	? LuaTuple<[true, A, B] | [false, string, undefined]>
-	: U extends [infer A, infer B, infer C]
-	? LuaTuple<[true, A, B, C] | [false, string, undefined, undefined]>
-	: U extends [infer A, infer B, infer C, infer D]
-	? LuaTuple<[true, A, B, C, D] | [false, string, undefined, undefined, undefined]>
-	: U extends [infer A, infer B, infer C, infer D, infer E]
-	? LuaTuple<[true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]>
-	: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-	? LuaTuple<[true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]>
-	: LuaTuple<[true, U] | [false, string]>;
+): LuaTuple<
+	U extends [infer A]
+		? [true, A] | [false, string]
+		: U extends [infer A, infer B]
+		? [true, A, B] | [false, string, undefined]
+		: U extends [infer A, infer B, infer C]
+		? [true, A, B, C] | [false, string, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D]
+		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D, infer E]
+		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
+		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
+		: [true, U] | [false, string]
+>;
 
 interface LuaMetatable<T> {
 	__index?: (self: T, index: unknown) => void;
