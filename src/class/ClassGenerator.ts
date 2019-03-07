@@ -11,19 +11,25 @@ import {
 	ApiProperty,
 	ApiValueType,
 	ClassTag,
-	MemberTag
+	MemberTag,
 } from "../api";
 import { Generator } from "./Generator";
 
-const IMPL_PREFIX = "Rbx_";
+export const IMPL_PREFIX = "Rbx";
 const ROOT_CLASS_NAME = "<<<ROOT>>>";
+const DERIVATIVE_PREFIX = "DerivesFrom";
 
 const BAD_NAME_CHARS = [" ", "/"];
 
 const CREATABLE_BLACKLIST: { [index: string]: true | undefined } = {
 	UserSettings: true,
 	DebugSettings: true,
-	Studio: true
+	Studio: true,
+	GameSettings: true,
+	ParabolaAdornment: true,
+	LuaSettings: true,
+	PhysicsSettings: true,
+	Player: true,
 };
 
 const MEMBER_BLACKLIST: {
@@ -45,12 +51,13 @@ const MEMBER_BLACKLIST: {
 	ObjectValue: { Changed: true },
 	RayValue: { Changed: true },
 	StringValue: { Changed: true },
-	Vector3Value: { Changed: true }
+	Vector3Value: { Changed: true },
+	Instance: { ClassName: true },
 };
 
 function containsBadChar(name: string) {
-	for (let i = 0; i < BAD_NAME_CHARS.length; i++) {
-		if (name.indexOf(BAD_NAME_CHARS[i]) !== -1) {
+	for (const badChar of BAD_NAME_CHARS) {
+		if (name.indexOf(badChar) !== -1) {
 			return true;
 		}
 	}
@@ -80,12 +87,10 @@ const VALUE_TYPE_MAP: { [index: string]: string | null } = {
 	Property: "string",
 	Rect2D: "Rect",
 	Tuple: "Array<any>",
-	Variant: "any"
+	Variant: "any",
 };
 
-const PROP_TYPE_MAP: { [index: string]: string } = {
-	Instance: "Instance | undefined"
-};
+const PROP_TYPE_MAP: { [index: string]: string } = {};
 
 function safePropType(valueType: string | undefined | null) {
 	if (valueType === null) {
@@ -115,7 +120,7 @@ function safeValueType(valueType: ApiValueType) {
 const RETURN_TYPE_MAP: { [index: string]: string | null } = {
 	Instance: "Instance | undefined", // api dump lies :(
 	any: "unknown",
-	["Array<any>"]: "unknown"
+	["Array<any>"]: "unknown",
 };
 
 function safeReturnType(valueType: string | undefined | null) {
@@ -136,7 +141,7 @@ const ARG_NAME_MAP: { [index: string]: string | null } = {
 	["function"]: "callback",
 	["debugger"]: "debug",
 	["old"]: "oldValue",
-	["new"]: "newValue"
+	["new"]: "newValue",
 };
 
 function safeArgName(name: string | undefined | null) {
@@ -158,7 +163,7 @@ function getSecurity(member: ApiMemberBase) {
 	if (typeof security === "string") {
 		return {
 			Read: security,
-			Write: security
+			Write: security,
 		};
 	}
 	return security;
@@ -195,7 +200,7 @@ function isCreatable(rbxClass: ApiClass) {
 }
 
 function generateArgs(params: Array<ApiParameter>) {
-	let args = new Array<string>();
+	const args = new Array<string>();
 	const paramNames = params.map(param => param.Name);
 	for (let i = 0; i < paramNames.length; i++) {
 		const name = paramNames[i];
@@ -211,23 +216,35 @@ function generateArgs(params: Array<ApiParameter>) {
 		const param = params[i];
 		const paramType = safeValueType(param.Type);
 		optional = optional || param.Default !== undefined || paramType === "any";
-		if (optional) {
-			args.push(`${safeArgName(paramNames[i])}?: ${safeValueType(param.Type)}`);
-		} else {
-			args.push(`${safeArgName(paramNames[i])}: ${safeValueType(param.Type)}`);
-		}
+		args.push(`${safeArgName(paramNames[i])}${optional ? "?" : ""}: ${safeValueType(param.Type)}`);
 	}
 	return args.join(", ");
 }
 
+function multifilter<T>(list: Array<T>, numResultArrays: number, condition: (element: T) => number) {
+	const results = new Array<Array<T>>();
+
+	for (let i = 0; i < numResultArrays; i++) {
+		results[i] = new Array<T>();
+	}
+
+	for (const element of list) {
+		results[condition(element)].push(element);
+	}
+
+	return results;
+}
+
 class NumberHelper {
 	private n = 0;
-	get() {
+	public get() {
 		return this.n++;
 	}
 }
 
 export class ClassGenerator extends Generator {
+	private ClassReferences = new Map<string, ApiClass>();
+
 	private generateCallback(rbxCallback: ApiCallback, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxCallback.Name;
 		if (tsImplInterface && tsImplInterface.getProperty(name)) {
@@ -281,8 +298,9 @@ export class ClassGenerator extends Generator {
 			if (description) {
 				this.write(`/** ${description} */`);
 			}
+			const surelyDefined = rbxProperty.ValueType.Category !== "Class";
 			const prefix = canWrite(rbxProperty) && !memberHasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
-			this.write(`${prefix}${safeName(name)}: ${valueType};`);
+			this.write(`${prefix}${safeName(name)}${surelyDefined ? "" : "?"}: ${valueType};`);
 		}
 	}
 
@@ -300,7 +318,7 @@ export class ClassGenerator extends Generator {
 		rbxClass: ApiClass,
 		rbxMember: ApiMember,
 		className: string,
-		tsImplInterface?: ts.InterfaceDeclaration
+		tsImplInterface?: ts.InterfaceDeclaration,
 	) {
 		if (rbxMember.MemberType === "Callback") {
 			this.generateCallback(rbxMember, className, tsImplInterface);
@@ -313,33 +331,83 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
+	private classIsDerivative(rbxClass: ApiClass) {
+		const hasSubclasses = rbxClass.Subclasses.length > 0;
+		const isClassCreatable = isCreatable(rbxClass);
+		return hasSubclasses && isClassCreatable;
+	}
+
+	private generateClassName(rbxClassName: string) {
+		const rbxClass = this.ClassReferences.get(rbxClassName);
+
+		if (rbxClass) {
+			return (this.classIsDerivative(rbxClass) ? DERIVATIVE_PREFIX : "") + rbxClassName;
+		} else {
+			throw new Error("Undefined class name! " + rbxClassName);
+		}
+	}
+
 	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile, n: NumberHelper) {
-		const name = rbxClass.Name;
+		const name = this.generateClassName(rbxClass.Name);
+		const tsApiInterface = tsFile.getInterface(name);
+		const isClassCreatable = isCreatable(rbxClass);
+		const hasSubclasses = rbxClass.Subclasses.length > 0;
+		this.write(`// ${name}`);
 		const implName = IMPL_PREFIX + name;
 		const tsImplInterface = tsFile.getInterface(implName);
-		const tsApiInterface = tsFile.getInterface(name);
-		this.write(`// ${name}`);
+
 		if (!tsApiInterface) {
-			let extendsStr =
-				rbxClass.Superclass && rbxClass.Superclass !== ROOT_CLASS_NAME
-					? `extends ${IMPL_PREFIX}${rbxClass.Superclass} `
+			const extendsStr =
+				rbxClass.Superclass !== ROOT_CLASS_NAME
+					? `extends ${IMPL_PREFIX}${this.generateClassName(rbxClass.Superclass)} `
 					: "";
+
 			this.write(`interface ${implName} ${extendsStr}{`);
 			this.pushIndent();
+
+			if (!hasSubclasses) {
+				this.write(`/** The string name of this Instance's most derived class. */`);
+				this.write(`readonly ClassName: "${name}";`);
+			}
+
 			const members = rbxClass.Members.filter(rbxMember => this.shouldGenerateMember(rbxClass, rbxMember));
 			members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
 			if (members.length === 0) {
-				this.write(`/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */`);
-				this.write(`__${n.get()}: never;`);
+				// this.write(`/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */`);
+				// this.write(`__${n.get()}: never;`);
 			}
 			this.popIndent();
 			this.write(`}`);
 		}
 
-		this.write(`type ${name} = ${implName} & Base<${implName}> & Indexable<${implName}>;`);
+		if (hasSubclasses) {
+			const fullName = rbxClass.Name;
+			let initialString = `type ${fullName} = `;
+
+			if (isClassCreatable) {
+				const newImplName = `${IMPL_PREFIX}${fullName}`;
+				this.write(`interface ${newImplName} extends ${implName} {`);
+				this.pushIndent();
+				this.write(`readonly ClassName: "${fullName}";`);
+				this.popIndent();
+				this.write(`}`);
+				this.write(``);
+				this.write(`type ${fullName} = ${newImplName} & Indexable<${newImplName}>;`);
+				initialString = `type ${DERIVATIVE_PREFIX}${fullName} = ${fullName} | `;
+			}
+
+			this.write(
+				rbxClass.Subclasses.reduce((a, v) => a + this.generateClassName(v) + " | ", initialString).slice(
+					0,
+					-3,
+				) + ";",
+			);
+		} else {
+			this.write(`type ${name} = ${implName} & Indexable<${implName}>;`);
+		}
 
 		if (classHasTag(rbxClass, "Service")) {
-			this.write(`interface Rbx_ServiceProvider extends Rbx_Instance {`);
+			this.write(`interface ${IMPL_PREFIX}ServiceProvider extends ${IMPL_PREFIX}Instance {`);
 			this.pushIndent();
 			this.write(`GetService(className: "${name}"): ${name};`);
 			this.popIndent();
@@ -359,27 +427,55 @@ export class ClassGenerator extends Generator {
 		this.write(``);
 	}
 
-	private generateInstancesTables(rbxClasses: Array<ApiClass>) {
-		this.write(`// CREATABLE INSTANCES TABLE`);
-		this.write(``);
-		this.write(`interface CreatableInstances {`);
-		this.pushIndent();
-		rbxClasses
-			.filter(rbxClass => isCreatable(rbxClass))
-			.map(rbxClass => rbxClass.Name)
-			.forEach(name => this.write(`${name}: ${name};`));
-		this.popIndent();
-		this.write(`}`);
-		this.write(``);
+	private generateInstanceInterface(
+		tableName: string,
+		rbxClasses: Array<ApiClass>,
+		extended?: string,
+		callback?: (member: ApiClass) => void,
+	) {
+		// tableName: string, rbxClasses: Array < ApiClass >, callback: (value: ApiClass) => void, extends?: string
+		const multispaceName = tableName
+			.replace(/([A-Z])/g, a => " " + a)
+			.toUpperCase()
+			.substr(1);
 
-		this.write(`// INSTANCES TABLE`);
+		const extendedStr = extended ? " extends " + extended : "";
+
+		this.write(`// ${multispaceName} TABLE`);
 		this.write(``);
-		this.write(`interface Instances {`);
+		this.write(`interface ${tableName}${extendedStr} {`);
 		this.pushIndent();
-		rbxClasses.map(rbxClass => rbxClass.Name).forEach(name => this.write(`${name}: ${name};`));
+		if (callback === undefined) {
+			callback = ({ Name: name }: ApiClass) => {
+				this.write(`${name}: ${name};`);
+			};
+		}
+		rbxClasses.forEach(callback);
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
+	}
+
+	private generateInstancesTables(rbxClasses: Array<ApiClass>) {
+		const baseFormat = ({ Name: name }: ApiClass) => {
+			this.write(`${name}: ${this.generateClassName(name)};`);
+		};
+		const [CreatableInstancesInternal, InstancesInternal, CreatableInstances, Instances] = multifilter(
+			rbxClasses,
+			4,
+			rbxClass => (isCreatable(rbxClass) ? 0 : 1) + (this.classIsDerivative(rbxClass) ? 2 : 0),
+		);
+
+		const InstanceBases: Array<ApiClass> = [...Instances, ...CreatableInstances];
+
+		this.generateInstanceInterface("CreatableInstancesInternal", CreatableInstancesInternal);
+		this.generateInstanceInterface("InstancesInternal", InstancesInternal, "CreatableInstancesInternal");
+		this.generateInstanceInterface("InstanceBases", InstanceBases, "InstancesInternal", baseFormat);
+		this.generateInstanceInterface("CreatableInstances", CreatableInstances, "CreatableInstancesInternal");
+		this.generateInstanceInterface("Instances", Instances, "InstancesInternal, CreatableInstances");
+		this.generateInstanceInterface("BaseTypes", rbxClasses, "", ({ Name: name }) => {
+			this.write(`${name}: ${IMPL_PREFIX}${name};`);
+		});
 	}
 
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {
@@ -390,7 +486,20 @@ export class ClassGenerator extends Generator {
 	}
 
 	public async generate(rbxClasses: Array<ApiClass>) {
-		const project = new Project({ tsConfigFilePath: path.join(__dirname, "..", "..", "include", "tsconfig.json") });
+		rbxClasses.forEach(rbxClass => {
+			rbxClass.Subclasses = new Array<string>();
+			this.ClassReferences.set(rbxClass.Name, rbxClass);
+
+			const superclass = this.ClassReferences.get(rbxClass.Superclass);
+
+			if (superclass) {
+				superclass.Subclasses.push(rbxClass.Name);
+			}
+		});
+
+		const project = new Project({
+			tsConfigFilePath: path.join(__dirname, "..", "..", "include", "tsconfig.json"),
+		});
 		const sourceFile = project.getSourceFileOrThrow("manual.d.ts");
 		this.generateHeader();
 		this.generateInstancesTables(rbxClasses);

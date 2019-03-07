@@ -8,15 +8,14 @@
 
 // ROBLOX API
 
-type Indexable<T extends Rbx_Instance> = { [i in string]: i extends keyof T ? T[i] : Instance };
+type Indexable<T extends RbxInstance> = { [i in string]: i extends keyof T ? T[i] : Instance };
 
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : never;
 
-type Callback = (...args: any[]) => void;
+type Callback = (...args: Array<any>) => void;
 
-interface Base<T> {
-	/** **INTERNAL DO NOT USE** */
-	readonly __class: T;
+interface Base<T extends string> {
+	readonly ClassName: T;
 }
 type BaseType<T> = T extends Base<infer U> ? U : never;
 
@@ -26,7 +25,9 @@ interface RBXScriptConnection {
 }
 
 interface RBXScriptSignal<T = Function, P = false> {
-	Connect<O extends unknown[] = FunctionArguments<T>>(callback: P extends true ? FunctionArguments<T> extends unknown[] ? (...args: O) => void : T : T): RBXScriptConnection;
+	Connect<O extends Array<unknown> = FunctionArguments<T>>(
+		callback: P extends true ? (FunctionArguments<T> extends Array<unknown> ? (...args: O) => void : T) : T,
+	): RBXScriptConnection;
 	Wait(): FunctionArguments<T>;
 }
 
@@ -155,7 +156,7 @@ interface CFrameConstructor {
 		R12: number,
 		R20: number,
 		R21: number,
-		R22: number
+		R22: number,
 	): CFrame;
 	/** Equivalent to fromEulerAnglesXYZ */
 	Angles: (rX: number, rY: number, rZ: number) => CFrame;
@@ -229,7 +230,7 @@ interface DockWidgetPluginGuiInfoConstructor {
 		floatXSize?: number,
 		floatYSize?: number,
 		minWidth?: number,
-		minHeight?: number
+		minHeight?: number,
 	): DockWidgetPluginGuiInfo;
 }
 declare const DockWidgetPluginGuiInfo: DockWidgetPluginGuiInfoConstructor;
@@ -307,7 +308,7 @@ interface PhysicalPropertiesConstructor {
 		friction: number,
 		elasticity: number,
 		frictionWeight: number,
-		elasticityWeight: number
+		elasticityWeight: number,
 	): PhysicalProperties;
 }
 declare const PhysicalProperties: PhysicalPropertiesConstructor;
@@ -388,7 +389,7 @@ interface TweenInfoConstructor {
 		easingDirection?: Enum.EasingDirection,
 		repeatCount?: number,
 		reverses?: boolean,
-		delayTime?: number
+		delayTime?: number,
 	): TweenInfo;
 }
 declare const TweenInfo: TweenInfoConstructor;
@@ -512,7 +513,7 @@ interface CheckablePrimitives {
 	boolean: boolean;
 	string: string;
 	number: number;
-	table: object & unknown[];
+	table: object & Array<unknown>;
 	userdata: unknown;
 	function: Callback;
 }

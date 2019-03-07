@@ -108,6 +108,7 @@ export interface ApiClass {
 	Tags?: Array<ClassTag>;
 	Name: string;
 	Superclass: string;
+	Subclasses: Array<string>;
 }
 
 export interface ApiEnumItem {

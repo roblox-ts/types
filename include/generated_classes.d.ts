@@ -5,10 +5,9 @@
 /// <reference path="manual.d.ts" />
 /// <reference path="generated_enums.d.ts" />
 
-// CREATABLE INSTANCES TABLE
+// CREATABLE INSTANCES INTERNAL TABLE
 
-interface CreatableInstances {
-	Accoutrement: Accoutrement;
+interface CreatableInstancesInternal {
 	Accessory: Accessory;
 	Hat: Hat;
 	AdvancedDragger: AdvancedDragger;
@@ -16,6 +15,9 @@ interface CreatableInstances {
 	AnimationController: AnimationController;
 	Animator: Animator;
 	Attachment: Attachment;
+	Backpack: Backpack;
+	HopperBin: HopperBin;
+	Flag: Flag;
 	Beam: Beam;
 	BindableEvent: BindableEvent;
 	BindableFunction: BindableFunction;
@@ -54,14 +56,12 @@ interface CreatableInstances {
 	CustomEventReceiver: CustomEventReceiver;
 	BlockMesh: BlockMesh;
 	CylinderMesh: CylinderMesh;
-	FileMesh: FileMesh;
 	SpecialMesh: SpecialMesh;
 	DebuggerWatch: DebuggerWatch;
 	Dialog: Dialog;
 	DialogChoice: DialogChoice;
 	Dragger: Dragger;
 	Explosion: Explosion;
-	Decal: Decal;
 	Texture: Texture;
 	Hole: Hole;
 	MotorFeature: MotorFeature;
@@ -69,7 +69,6 @@ interface CreatableInstances {
 	Folder: Folder;
 	ForceField: ForceField;
 	FunctionalTest: FunctionalTest;
-	GameSettings: GameSettings;
 	Frame: Frame;
 	ImageButton: ImageButton;
 	TextButton: TextButton;
@@ -79,7 +78,6 @@ interface CreatableInstances {
 	TextBox: TextBox;
 	ViewportFrame: ViewportFrame;
 	BillboardGui: BillboardGui;
-	ScreenGui: ScreenGui;
 	GuiMain: GuiMain;
 	SurfaceGui: SurfaceGui;
 	FloorWire: FloorWire;
@@ -89,7 +87,6 @@ interface CreatableInstances {
 	ImageHandleAdornment: ImageHandleAdornment;
 	LineHandleAdornment: LineHandleAdornment;
 	SphereHandleAdornment: SphereHandleAdornment;
-	ParabolaAdornment: ParabolaAdornment;
 	SelectionBox: SelectionBox;
 	SelectionSphere: SelectionSphere;
 	ArcHandles: ArcHandles;
@@ -97,10 +94,6 @@ interface CreatableInstances {
 	SurfaceSelection: SurfaceSelection;
 	SelectionPartLasso: SelectionPartLasso;
 	SelectionPointLasso: SelectionPointLasso;
-	Backpack: Backpack;
-	HopperBin: HopperBin;
-	Tool: Tool;
-	Flag: Flag;
 	Humanoid: Humanoid;
 	HumanoidDescription: HumanoidDescription;
 	RotateP: RotateP;
@@ -108,7 +101,6 @@ interface CreatableInstances {
 	Glue: Glue;
 	ManualGlue: ManualGlue;
 	ManualWeld: ManualWeld;
-	Motor: Motor;
 	Motor6D: Motor6D;
 	Rotate: Rotate;
 	Snap: Snap;
@@ -121,30 +113,22 @@ interface CreatableInstances {
 	SpotLight: SpotLight;
 	SurfaceLight: SurfaceLight;
 	LocalizationTable: LocalizationTable;
-	LuaSettings: LuaSettings;
-	Script: Script;
 	LocalScript: LocalScript;
 	ModuleScript: ModuleScript;
-	Message: Message;
 	Hint: Hint;
 	CornerWedgePart: CornerWedgePart;
-	Part: Part;
 	FlagStand: FlagStand;
 	Seat: Seat;
 	SkateboardPlatform: SkateboardPlatform;
 	SpawnLocation: SpawnLocation;
 	WedgePart: WedgePart;
 	MeshPart: MeshPart;
-	PartOperation: PartOperation;
 	NegateOperation: NegateOperation;
 	UnionOperation: UnionOperation;
 	TrussPart: TrussPart;
 	VehicleSeat: VehicleSeat;
-	Model: Model;
 	PartOperationAsset: PartOperationAsset;
 	ParticleEmitter: ParticleEmitter;
-	PhysicsSettings: PhysicsSettings;
-	Player: Player;
 	PluginAction: PluginAction;
 	Pose: Pose;
 	BloomEffect: BloomEffect;
@@ -181,7 +165,6 @@ interface CreatableInstances {
 	SoundGroup: SoundGroup;
 	Sparkles: Sparkles;
 	StarterGear: StarterGear;
-	StarterPlayerScripts: StarterPlayerScripts;
 	StarterCharacterScripts: StarterCharacterScripts;
 	Team: Team;
 	TerrainRegion: TerrainRegion;
@@ -212,116 +195,56 @@ interface CreatableInstances {
 	WeldConstraint: WeldConstraint;
 }
 
-// INSTANCES TABLE
+// INSTANCES INTERNAL TABLE
 
-interface Instances {
+interface InstancesInternal extends CreatableInstancesInternal {
 	Instance: Instance;
 	ABTestService: ABTestService;
-	Accoutrement: Accoutrement;
-	Accessory: Accessory;
-	Hat: Hat;
 	AdService: AdService;
-	AdvancedDragger: AdvancedDragger;
 	AnalyticsService: AnalyticsService;
-	Animation: Animation;
-	AnimationController: AnimationController;
 	AnimationTrack: AnimationTrack;
-	Animator: Animator;
 	AssetService: AssetService;
-	Attachment: Attachment;
+	BackpackItem: BackpackItem;
 	BadgeService: BadgeService;
 	BasePlayerGui: BasePlayerGui;
 	CoreGui: CoreGui;
 	PlayerGui: PlayerGui;
 	StarterGui: StarterGui;
-	Beam: Beam;
-	BindableEvent: BindableEvent;
-	BindableFunction: BindableFunction;
 	BodyMover: BodyMover;
-	BodyAngularVelocity: BodyAngularVelocity;
-	BodyForce: BodyForce;
-	BodyGyro: BodyGyro;
-	BodyPosition: BodyPosition;
-	BodyThrust: BodyThrust;
-	BodyVelocity: BodyVelocity;
-	RocketPropulsion: RocketPropulsion;
 	BrowserService: BrowserService;
 	CacheableContentProvider: CacheableContentProvider;
 	MeshContentProvider: MeshContentProvider;
 	SolidModelContentProvider: SolidModelContentProvider;
-	Camera: Camera;
 	ChangeHistoryService: ChangeHistoryService;
 	CharacterAppearance: CharacterAppearance;
-	BodyColors: BodyColors;
-	CharacterMesh: CharacterMesh;
 	Clothing: Clothing;
-	Pants: Pants;
-	Shirt: Shirt;
-	ShirtGraphic: ShirtGraphic;
-	Skin: Skin;
 	Chat: Chat;
-	ClickDetector: ClickDetector;
 	ClusterPacketCache: ClusterPacketCache;
 	CollectionService: CollectionService;
-	Configuration: Configuration;
 	Constraint: Constraint;
-	AlignOrientation: AlignOrientation;
-	AlignPosition: AlignPosition;
-	BallSocketConstraint: BallSocketConstraint;
-	HingeConstraint: HingeConstraint;
-	LineForce: LineForce;
-	RodConstraint: RodConstraint;
-	RopeConstraint: RopeConstraint;
 	SlidingBallConstraint: SlidingBallConstraint;
-	CylindricalConstraint: CylindricalConstraint;
-	PrismaticConstraint: PrismaticConstraint;
-	SpringConstraint: SpringConstraint;
-	Torque: Torque;
-	VectorForce: VectorForce;
 	ContentProvider: ContentProvider;
 	ContextActionService: ContextActionService;
 	Controller: Controller;
-	HumanoidController: HumanoidController;
-	SkateboardController: SkateboardController;
-	VehicleController: VehicleController;
 	ControllerService: ControllerService;
 	CookiesService: CookiesService;
 	CorePackages: CorePackages;
 	CoreScriptSyncService: CoreScriptSyncService;
-	CustomEvent: CustomEvent;
-	CustomEventReceiver: CustomEventReceiver;
 	DataModelMesh: DataModelMesh;
 	BevelMesh: BevelMesh;
-	BlockMesh: BlockMesh;
-	CylinderMesh: CylinderMesh;
-	FileMesh: FileMesh;
-	SpecialMesh: SpecialMesh;
 	DataStoreService: DataStoreService;
 	Debris: Debris;
 	DebugSettings: DebugSettings;
 	DebuggerBreakpoint: DebuggerBreakpoint;
 	DebuggerManager: DebuggerManager;
-	DebuggerWatch: DebuggerWatch;
-	Dialog: Dialog;
-	DialogChoice: DialogChoice;
-	Dragger: Dragger;
-	Explosion: Explosion;
 	FaceInstance: FaceInstance;
-	Decal: Decal;
-	Texture: Texture;
 	Feature: Feature;
-	Hole: Hole;
-	MotorFeature: MotorFeature;
 	File: File;
-	Fire: Fire;
 	FlagStandService: FlagStandService;
 	FlyweightService: FlyweightService;
 	CSGDictionaryService: CSGDictionaryService;
 	NonReplicatedCSGDictionaryService: NonReplicatedCSGDictionaryService;
-	Folder: Folder;
-	ForceField: ForceField;
 	FriendService: FriendService;
-	FunctionalTest: FunctionalTest;
 	GamePassService: GamePassService;
 	GameSettings: GameSettings;
 	GamepadService: GamepadService;
@@ -333,108 +256,48 @@ interface Instances {
 	GuiBase: GuiBase;
 	GuiBase2d: GuiBase2d;
 	GuiObject: GuiObject;
-	Frame: Frame;
 	GuiButton: GuiButton;
-	ImageButton: ImageButton;
-	TextButton: TextButton;
 	GuiLabel: GuiLabel;
-	ImageLabel: ImageLabel;
-	TextLabel: TextLabel;
-	ScrollingFrame: ScrollingFrame;
-	TextBox: TextBox;
-	ViewportFrame: ViewportFrame;
 	LayerCollector: LayerCollector;
-	BillboardGui: BillboardGui;
 	PluginGui: PluginGui;
 	DockWidgetPluginGui: DockWidgetPluginGui;
 	QWidgetPluginGui: QWidgetPluginGui;
-	ScreenGui: ScreenGui;
-	GuiMain: GuiMain;
-	SurfaceGui: SurfaceGui;
 	GuiBase3d: GuiBase3d;
-	FloorWire: FloorWire;
 	PVAdornment: PVAdornment;
 	HandleAdornment: HandleAdornment;
-	BoxHandleAdornment: BoxHandleAdornment;
-	ConeHandleAdornment: ConeHandleAdornment;
-	CylinderHandleAdornment: CylinderHandleAdornment;
-	ImageHandleAdornment: ImageHandleAdornment;
-	LineHandleAdornment: LineHandleAdornment;
-	SphereHandleAdornment: SphereHandleAdornment;
 	ParabolaAdornment: ParabolaAdornment;
-	SelectionBox: SelectionBox;
-	SelectionSphere: SelectionSphere;
 	PartAdornment: PartAdornment;
 	HandlesBase: HandlesBase;
-	ArcHandles: ArcHandles;
-	Handles: Handles;
-	SurfaceSelection: SurfaceSelection;
 	SelectionLasso: SelectionLasso;
-	SelectionPartLasso: SelectionPartLasso;
-	SelectionPointLasso: SelectionPointLasso;
-	GuiItem: GuiItem;
-	Backpack: Backpack;
-	BackpackItem: BackpackItem;
-	HopperBin: HopperBin;
-	Tool: Tool;
-	Flag: Flag;
-	ButtonBindingWidget: ButtonBindingWidget;
-	GuiRoot: GuiRoot;
-	Hopper: Hopper;
-	StarterPack: StarterPack;
 	GuiService: GuiService;
 	GuidRegistryService: GuidRegistryService;
 	HapticService: HapticService;
+	Hopper: Hopper;
 	HttpRbxApiService: HttpRbxApiService;
 	HttpRequest: HttpRequest;
 	HttpService: HttpService;
-	Humanoid: Humanoid;
-	HumanoidDescription: HumanoidDescription;
 	InputObject: InputObject;
 	InsertService: InsertService;
 	JointInstance: JointInstance;
 	DynamicRotate: DynamicRotate;
-	RotateP: RotateP;
-	RotateV: RotateV;
-	Glue: Glue;
 	ManualSurfaceJointInstance: ManualSurfaceJointInstance;
-	ManualGlue: ManualGlue;
-	ManualWeld: ManualWeld;
-	Motor: Motor;
-	Motor6D: Motor6D;
-	Rotate: Rotate;
-	Snap: Snap;
-	VelocityMotor: VelocityMotor;
-	Weld: Weld;
 	JointsService: JointsService;
 	KeyboardService: KeyboardService;
-	Keyframe: Keyframe;
-	KeyframeMarker: KeyframeMarker;
-	KeyframeSequence: KeyframeSequence;
 	KeyframeSequenceProvider: KeyframeSequenceProvider;
 	Light: Light;
-	PointLight: PointLight;
-	SpotLight: SpotLight;
-	SurfaceLight: SurfaceLight;
 	Lighting: Lighting;
 	LocalStorageService: LocalStorageService;
 	AppStorageService: AppStorageService;
 	UserStorageService: UserStorageService;
 	LocalizationService: LocalizationService;
-	LocalizationTable: LocalizationTable;
 	LogService: LogService;
 	LoginService: LoginService;
 	LuaSettings: LuaSettings;
 	LuaSourceContainer: LuaSourceContainer;
 	BaseScript: BaseScript;
 	CoreScript: CoreScript;
-	Script: Script;
-	LocalScript: LocalScript;
-	ModuleScript: ModuleScript;
 	LuaWebService: LuaWebService;
 	MarketplaceService: MarketplaceService;
-	Message: Message;
-	Hint: Hint;
 	MessagingService: MessagingService;
 	Mouse: Mouse;
 	PlayerMouse: PlayerMouse;
@@ -451,23 +314,9 @@ interface Instances {
 	NotificationService: NotificationService;
 	PVInstance: PVInstance;
 	BasePart: BasePart;
-	CornerWedgePart: CornerWedgePart;
 	FormFactorPart: FormFactorPart;
-	Part: Part;
-	FlagStand: FlagStand;
 	Platform: Platform;
-	Seat: Seat;
-	SkateboardPlatform: SkateboardPlatform;
-	SpawnLocation: SpawnLocation;
-	WedgePart: WedgePart;
-	MeshPart: MeshPart;
-	PartOperation: PartOperation;
-	NegateOperation: NegateOperation;
-	UnionOperation: UnionOperation;
 	Terrain: Terrain;
-	TrussPart: TrussPart;
-	VehicleSeat: VehicleSeat;
-	Model: Model;
 	Status: Status;
 	Workspace: Workspace;
 	PackageLink: PackageLink;
@@ -476,8 +325,6 @@ interface Instances {
 	FriendPages: FriendPages;
 	InventoryPages: InventoryPages;
 	StandardPages: StandardPages;
-	PartOperationAsset: PartOperationAsset;
-	ParticleEmitter: ParticleEmitter;
 	Path: Path;
 	PathfindingService: PathfindingService;
 	PhysicsPacketCache: PhysicsPacketCache;
@@ -487,7 +334,6 @@ interface Instances {
 	PlayerScripts: PlayerScripts;
 	Players: Players;
 	Plugin: Plugin;
-	PluginAction: PluginAction;
 	PluginDragEvent: PluginDragEvent;
 	PluginGuiService: PluginGuiService;
 	PluginManager: PluginManager;
@@ -495,29 +341,9 @@ interface Instances {
 	PluginToolbar: PluginToolbar;
 	PluginToolbarButton: PluginToolbarButton;
 	PointsService: PointsService;
-	Pose: Pose;
 	PostEffect: PostEffect;
-	BloomEffect: BloomEffect;
-	BlurEffect: BlurEffect;
-	ColorCorrectionEffect: ColorCorrectionEffect;
-	SunRaysEffect: SunRaysEffect;
-	ReflectionMetadata: ReflectionMetadata;
-	ReflectionMetadataCallbacks: ReflectionMetadataCallbacks;
-	ReflectionMetadataClasses: ReflectionMetadataClasses;
-	ReflectionMetadataEnums: ReflectionMetadataEnums;
-	ReflectionMetadataEvents: ReflectionMetadataEvents;
-	ReflectionMetadataFunctions: ReflectionMetadataFunctions;
 	ReflectionMetadataItem: ReflectionMetadataItem;
-	ReflectionMetadataClass: ReflectionMetadataClass;
-	ReflectionMetadataEnum: ReflectionMetadataEnum;
-	ReflectionMetadataEnumItem: ReflectionMetadataEnumItem;
-	ReflectionMetadataMember: ReflectionMetadataMember;
-	ReflectionMetadataProperties: ReflectionMetadataProperties;
-	ReflectionMetadataYieldFunctions: ReflectionMetadataYieldFunctions;
-	RemoteEvent: RemoteEvent;
-	RemoteFunction: RemoteFunction;
 	RenderSettings: RenderSettings;
-	RenderingTest: RenderingTest;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedStorage: ReplicatedStorage;
 	RobloxReplicatedStorage: RobloxReplicatedStorage;
@@ -535,28 +361,12 @@ interface Instances {
 	AnalysticsSettings: AnalysticsSettings;
 	GlobalSettings: GlobalSettings;
 	UserSettings: UserSettings;
-	Sky: Sky;
-	Smoke: Smoke;
 	SocialService: SocialService;
-	Sound: Sound;
 	SoundEffect: SoundEffect;
-	ChorusSoundEffect: ChorusSoundEffect;
-	CompressorSoundEffect: CompressorSoundEffect;
-	DistortionSoundEffect: DistortionSoundEffect;
-	EchoSoundEffect: EchoSoundEffect;
-	EqualizerSoundEffect: EqualizerSoundEffect;
-	FlangeSoundEffect: FlangeSoundEffect;
-	PitchShiftSoundEffect: PitchShiftSoundEffect;
-	ReverbSoundEffect: ReverbSoundEffect;
-	TremoloSoundEffect: TremoloSoundEffect;
-	SoundGroup: SoundGroup;
 	SoundService: SoundService;
-	Sparkles: Sparkles;
 	SpawnerService: SpawnerService;
-	StarterGear: StarterGear;
+	StarterPack: StarterPack;
 	StarterPlayer: StarterPlayer;
-	StarterPlayerScripts: StarterPlayerScripts;
-	StarterCharacterScripts: StarterCharacterScripts;
 	Stats: Stats;
 	StatsItem: StatsItem;
 	RunningAverageItemDouble: RunningAverageItemDouble;
@@ -568,10 +378,8 @@ interface Instances {
 	StudioService: StudioService;
 	StudioTheme: StudioTheme;
 	TaskScheduler: TaskScheduler;
-	Team: Team;
 	Teams: Teams;
 	TeleportService: TeleportService;
-	TerrainRegion: TerrainRegion;
 	TestService: TestService;
 	TextFilterResult: TextFilterResult;
 	TextService: TextService;
@@ -579,65 +387,481 @@ interface Instances {
 	TimerService: TimerService;
 	TouchInputService: TouchInputService;
 	TouchTransmitter: TouchTransmitter;
-	Trail: Trail;
 	Translator: Translator;
 	TweenBase: TweenBase;
-	Tween: Tween;
 	TweenService: TweenService;
 	UIBase: UIBase;
 	UIComponent: UIComponent;
 	UIConstraint: UIConstraint;
-	UIAspectRatioConstraint: UIAspectRatioConstraint;
-	UISizeConstraint: UISizeConstraint;
-	UITextSizeConstraint: UITextSizeConstraint;
 	UILayout: UILayout;
 	UIGridStyleLayout: UIGridStyleLayout;
-	UIGridLayout: UIGridLayout;
-	UIListLayout: UIListLayout;
-	UIPageLayout: UIPageLayout;
-	UITableLayout: UITableLayout;
-	UIPadding: UIPadding;
-	UIScale: UIScale;
 	UserGameSettings: UserGameSettings;
 	UserInputService: UserInputService;
 	VRService: VRService;
 	ValueBase: ValueBase;
-	BinaryStringValue: BinaryStringValue;
-	BoolValue: BoolValue;
-	BrickColorValue: BrickColorValue;
-	CFrameValue: CFrameValue;
-	Color3Value: Color3Value;
-	DoubleConstrainedValue: DoubleConstrainedValue;
-	IntConstrainedValue: IntConstrainedValue;
-	IntValue: IntValue;
-	NumberValue: NumberValue;
-	ObjectValue: ObjectValue;
-	RayValue: RayValue;
-	StringValue: StringValue;
-	Vector3Value: Vector3Value;
 	VirtualInputManager: VirtualInputManager;
 	VirtualUser: VirtualUser;
 	Visit: Visit;
-	WeldConstraint: WeldConstraint;
+}
+
+// INSTANCE BASES TABLE
+
+interface InstanceBases extends InstancesInternal {
+	Accoutrement: DerivesFromAccoutrement;
+	Tool: DerivesFromTool;
+	FileMesh: DerivesFromFileMesh;
+	Decal: DerivesFromDecal;
+	ScreenGui: DerivesFromScreenGui;
+	Motor: DerivesFromMotor;
+	Script: DerivesFromScript;
+	Message: DerivesFromMessage;
+	Part: DerivesFromPart;
+	PartOperation: DerivesFromPartOperation;
+	Model: DerivesFromModel;
+	StarterPlayerScripts: DerivesFromStarterPlayerScripts;
+}
+
+// CREATABLE INSTANCES TABLE
+
+interface CreatableInstances extends CreatableInstancesInternal {
+	Accoutrement: Accoutrement;
+	Tool: Tool;
+	FileMesh: FileMesh;
+	Decal: Decal;
+	ScreenGui: ScreenGui;
+	Motor: Motor;
+	Script: Script;
+	Message: Message;
+	Part: Part;
+	PartOperation: PartOperation;
+	Model: Model;
+	StarterPlayerScripts: StarterPlayerScripts;
+}
+
+// INSTANCES TABLE
+
+interface Instances extends InstancesInternal, CreatableInstances {
+}
+
+// BASE TYPES TABLE
+
+interface BaseTypes {
+	Instance: RbxInstance;
+	ABTestService: RbxABTestService;
+	Accoutrement: RbxAccoutrement;
+	Accessory: RbxAccessory;
+	Hat: RbxHat;
+	AdService: RbxAdService;
+	AdvancedDragger: RbxAdvancedDragger;
+	AnalyticsService: RbxAnalyticsService;
+	Animation: RbxAnimation;
+	AnimationController: RbxAnimationController;
+	AnimationTrack: RbxAnimationTrack;
+	Animator: RbxAnimator;
+	AssetService: RbxAssetService;
+	Attachment: RbxAttachment;
+	Backpack: RbxBackpack;
+	BackpackItem: RbxBackpackItem;
+	HopperBin: RbxHopperBin;
+	Tool: RbxTool;
+	Flag: RbxFlag;
+	BadgeService: RbxBadgeService;
+	BasePlayerGui: RbxBasePlayerGui;
+	CoreGui: RbxCoreGui;
+	PlayerGui: RbxPlayerGui;
+	StarterGui: RbxStarterGui;
+	Beam: RbxBeam;
+	BindableEvent: RbxBindableEvent;
+	BindableFunction: RbxBindableFunction;
+	BodyMover: RbxBodyMover;
+	BodyAngularVelocity: RbxBodyAngularVelocity;
+	BodyForce: RbxBodyForce;
+	BodyGyro: RbxBodyGyro;
+	BodyPosition: RbxBodyPosition;
+	BodyThrust: RbxBodyThrust;
+	BodyVelocity: RbxBodyVelocity;
+	RocketPropulsion: RbxRocketPropulsion;
+	BrowserService: RbxBrowserService;
+	CacheableContentProvider: RbxCacheableContentProvider;
+	MeshContentProvider: RbxMeshContentProvider;
+	SolidModelContentProvider: RbxSolidModelContentProvider;
+	Camera: RbxCamera;
+	ChangeHistoryService: RbxChangeHistoryService;
+	CharacterAppearance: RbxCharacterAppearance;
+	BodyColors: RbxBodyColors;
+	CharacterMesh: RbxCharacterMesh;
+	Clothing: RbxClothing;
+	Pants: RbxPants;
+	Shirt: RbxShirt;
+	ShirtGraphic: RbxShirtGraphic;
+	Skin: RbxSkin;
+	Chat: RbxChat;
+	ClickDetector: RbxClickDetector;
+	ClusterPacketCache: RbxClusterPacketCache;
+	CollectionService: RbxCollectionService;
+	Configuration: RbxConfiguration;
+	Constraint: RbxConstraint;
+	AlignOrientation: RbxAlignOrientation;
+	AlignPosition: RbxAlignPosition;
+	BallSocketConstraint: RbxBallSocketConstraint;
+	HingeConstraint: RbxHingeConstraint;
+	LineForce: RbxLineForce;
+	RodConstraint: RbxRodConstraint;
+	RopeConstraint: RbxRopeConstraint;
+	SlidingBallConstraint: RbxSlidingBallConstraint;
+	CylindricalConstraint: RbxCylindricalConstraint;
+	PrismaticConstraint: RbxPrismaticConstraint;
+	SpringConstraint: RbxSpringConstraint;
+	Torque: RbxTorque;
+	VectorForce: RbxVectorForce;
+	ContentProvider: RbxContentProvider;
+	ContextActionService: RbxContextActionService;
+	Controller: RbxController;
+	HumanoidController: RbxHumanoidController;
+	SkateboardController: RbxSkateboardController;
+	VehicleController: RbxVehicleController;
+	ControllerService: RbxControllerService;
+	CookiesService: RbxCookiesService;
+	CorePackages: RbxCorePackages;
+	CoreScriptSyncService: RbxCoreScriptSyncService;
+	CustomEvent: RbxCustomEvent;
+	CustomEventReceiver: RbxCustomEventReceiver;
+	DataModelMesh: RbxDataModelMesh;
+	BevelMesh: RbxBevelMesh;
+	BlockMesh: RbxBlockMesh;
+	CylinderMesh: RbxCylinderMesh;
+	FileMesh: RbxFileMesh;
+	SpecialMesh: RbxSpecialMesh;
+	DataStoreService: RbxDataStoreService;
+	Debris: RbxDebris;
+	DebugSettings: RbxDebugSettings;
+	DebuggerBreakpoint: RbxDebuggerBreakpoint;
+	DebuggerManager: RbxDebuggerManager;
+	DebuggerWatch: RbxDebuggerWatch;
+	Dialog: RbxDialog;
+	DialogChoice: RbxDialogChoice;
+	Dragger: RbxDragger;
+	Explosion: RbxExplosion;
+	FaceInstance: RbxFaceInstance;
+	Decal: RbxDecal;
+	Texture: RbxTexture;
+	Feature: RbxFeature;
+	Hole: RbxHole;
+	MotorFeature: RbxMotorFeature;
+	File: RbxFile;
+	Fire: RbxFire;
+	FlagStandService: RbxFlagStandService;
+	FlyweightService: RbxFlyweightService;
+	CSGDictionaryService: RbxCSGDictionaryService;
+	NonReplicatedCSGDictionaryService: RbxNonReplicatedCSGDictionaryService;
+	Folder: RbxFolder;
+	ForceField: RbxForceField;
+	FriendService: RbxFriendService;
+	FunctionalTest: RbxFunctionalTest;
+	GamePassService: RbxGamePassService;
+	GameSettings: RbxGameSettings;
+	GamepadService: RbxGamepadService;
+	Geometry: RbxGeometry;
+	GlobalDataStore: RbxGlobalDataStore;
+	OrderedDataStore: RbxOrderedDataStore;
+	GoogleAnalyticsConfiguration: RbxGoogleAnalyticsConfiguration;
+	GroupService: RbxGroupService;
+	GuiBase: RbxGuiBase;
+	GuiBase2d: RbxGuiBase2d;
+	GuiObject: RbxGuiObject;
+	Frame: RbxFrame;
+	GuiButton: RbxGuiButton;
+	ImageButton: RbxImageButton;
+	TextButton: RbxTextButton;
+	GuiLabel: RbxGuiLabel;
+	ImageLabel: RbxImageLabel;
+	TextLabel: RbxTextLabel;
+	ScrollingFrame: RbxScrollingFrame;
+	TextBox: RbxTextBox;
+	ViewportFrame: RbxViewportFrame;
+	LayerCollector: RbxLayerCollector;
+	BillboardGui: RbxBillboardGui;
+	PluginGui: RbxPluginGui;
+	DockWidgetPluginGui: RbxDockWidgetPluginGui;
+	QWidgetPluginGui: RbxQWidgetPluginGui;
+	ScreenGui: RbxScreenGui;
+	GuiMain: RbxGuiMain;
+	SurfaceGui: RbxSurfaceGui;
+	GuiBase3d: RbxGuiBase3d;
+	FloorWire: RbxFloorWire;
+	PVAdornment: RbxPVAdornment;
+	HandleAdornment: RbxHandleAdornment;
+	BoxHandleAdornment: RbxBoxHandleAdornment;
+	ConeHandleAdornment: RbxConeHandleAdornment;
+	CylinderHandleAdornment: RbxCylinderHandleAdornment;
+	ImageHandleAdornment: RbxImageHandleAdornment;
+	LineHandleAdornment: RbxLineHandleAdornment;
+	SphereHandleAdornment: RbxSphereHandleAdornment;
+	ParabolaAdornment: RbxParabolaAdornment;
+	SelectionBox: RbxSelectionBox;
+	SelectionSphere: RbxSelectionSphere;
+	PartAdornment: RbxPartAdornment;
+	HandlesBase: RbxHandlesBase;
+	ArcHandles: RbxArcHandles;
+	Handles: RbxHandles;
+	SurfaceSelection: RbxSurfaceSelection;
+	SelectionLasso: RbxSelectionLasso;
+	SelectionPartLasso: RbxSelectionPartLasso;
+	SelectionPointLasso: RbxSelectionPointLasso;
+	GuiService: RbxGuiService;
+	GuidRegistryService: RbxGuidRegistryService;
+	HapticService: RbxHapticService;
+	Hopper: RbxHopper;
+	HttpRbxApiService: RbxHttpRbxApiService;
+	HttpRequest: RbxHttpRequest;
+	HttpService: RbxHttpService;
+	Humanoid: RbxHumanoid;
+	HumanoidDescription: RbxHumanoidDescription;
+	InputObject: RbxInputObject;
+	InsertService: RbxInsertService;
+	JointInstance: RbxJointInstance;
+	DynamicRotate: RbxDynamicRotate;
+	RotateP: RbxRotateP;
+	RotateV: RbxRotateV;
+	Glue: RbxGlue;
+	ManualSurfaceJointInstance: RbxManualSurfaceJointInstance;
+	ManualGlue: RbxManualGlue;
+	ManualWeld: RbxManualWeld;
+	Motor: RbxMotor;
+	Motor6D: RbxMotor6D;
+	Rotate: RbxRotate;
+	Snap: RbxSnap;
+	VelocityMotor: RbxVelocityMotor;
+	Weld: RbxWeld;
+	JointsService: RbxJointsService;
+	KeyboardService: RbxKeyboardService;
+	Keyframe: RbxKeyframe;
+	KeyframeMarker: RbxKeyframeMarker;
+	KeyframeSequence: RbxKeyframeSequence;
+	KeyframeSequenceProvider: RbxKeyframeSequenceProvider;
+	Light: RbxLight;
+	PointLight: RbxPointLight;
+	SpotLight: RbxSpotLight;
+	SurfaceLight: RbxSurfaceLight;
+	Lighting: RbxLighting;
+	LocalStorageService: RbxLocalStorageService;
+	AppStorageService: RbxAppStorageService;
+	UserStorageService: RbxUserStorageService;
+	LocalizationService: RbxLocalizationService;
+	LocalizationTable: RbxLocalizationTable;
+	LogService: RbxLogService;
+	LoginService: RbxLoginService;
+	LuaSettings: RbxLuaSettings;
+	LuaSourceContainer: RbxLuaSourceContainer;
+	BaseScript: RbxBaseScript;
+	CoreScript: RbxCoreScript;
+	Script: RbxScript;
+	LocalScript: RbxLocalScript;
+	ModuleScript: RbxModuleScript;
+	LuaWebService: RbxLuaWebService;
+	MarketplaceService: RbxMarketplaceService;
+	Message: RbxMessage;
+	Hint: RbxHint;
+	MessagingService: RbxMessagingService;
+	Mouse: RbxMouse;
+	PlayerMouse: RbxPlayerMouse;
+	PluginMouse: RbxPluginMouse;
+	MouseService: RbxMouseService;
+	NetworkMarker: RbxNetworkMarker;
+	NetworkPeer: RbxNetworkPeer;
+	NetworkClient: RbxNetworkClient;
+	NetworkServer: RbxNetworkServer;
+	NetworkReplicator: RbxNetworkReplicator;
+	ClientReplicator: RbxClientReplicator;
+	ServerReplicator: RbxServerReplicator;
+	NetworkSettings: RbxNetworkSettings;
+	NotificationService: RbxNotificationService;
+	PVInstance: RbxPVInstance;
+	BasePart: RbxBasePart;
+	CornerWedgePart: RbxCornerWedgePart;
+	FormFactorPart: RbxFormFactorPart;
+	Part: RbxPart;
+	FlagStand: RbxFlagStand;
+	Platform: RbxPlatform;
+	Seat: RbxSeat;
+	SkateboardPlatform: RbxSkateboardPlatform;
+	SpawnLocation: RbxSpawnLocation;
+	WedgePart: RbxWedgePart;
+	MeshPart: RbxMeshPart;
+	PartOperation: RbxPartOperation;
+	NegateOperation: RbxNegateOperation;
+	UnionOperation: RbxUnionOperation;
+	Terrain: RbxTerrain;
+	TrussPart: RbxTrussPart;
+	VehicleSeat: RbxVehicleSeat;
+	Model: RbxModel;
+	Status: RbxStatus;
+	Workspace: RbxWorkspace;
+	PackageLink: RbxPackageLink;
+	Pages: RbxPages;
+	DataStorePages: RbxDataStorePages;
+	FriendPages: RbxFriendPages;
+	InventoryPages: RbxInventoryPages;
+	StandardPages: RbxStandardPages;
+	PartOperationAsset: RbxPartOperationAsset;
+	ParticleEmitter: RbxParticleEmitter;
+	Path: RbxPath;
+	PathfindingService: RbxPathfindingService;
+	PhysicsPacketCache: RbxPhysicsPacketCache;
+	PhysicsService: RbxPhysicsService;
+	PhysicsSettings: RbxPhysicsSettings;
+	Player: RbxPlayer;
+	PlayerScripts: RbxPlayerScripts;
+	Players: RbxPlayers;
+	Plugin: RbxPlugin;
+	PluginAction: RbxPluginAction;
+	PluginDragEvent: RbxPluginDragEvent;
+	PluginGuiService: RbxPluginGuiService;
+	PluginManager: RbxPluginManager;
+	PluginMenu: RbxPluginMenu;
+	PluginToolbar: RbxPluginToolbar;
+	PluginToolbarButton: RbxPluginToolbarButton;
+	PointsService: RbxPointsService;
+	Pose: RbxPose;
+	PostEffect: RbxPostEffect;
+	BloomEffect: RbxBloomEffect;
+	BlurEffect: RbxBlurEffect;
+	ColorCorrectionEffect: RbxColorCorrectionEffect;
+	SunRaysEffect: RbxSunRaysEffect;
+	ReflectionMetadata: RbxReflectionMetadata;
+	ReflectionMetadataCallbacks: RbxReflectionMetadataCallbacks;
+	ReflectionMetadataClasses: RbxReflectionMetadataClasses;
+	ReflectionMetadataEnums: RbxReflectionMetadataEnums;
+	ReflectionMetadataEvents: RbxReflectionMetadataEvents;
+	ReflectionMetadataFunctions: RbxReflectionMetadataFunctions;
+	ReflectionMetadataItem: RbxReflectionMetadataItem;
+	ReflectionMetadataClass: RbxReflectionMetadataClass;
+	ReflectionMetadataEnum: RbxReflectionMetadataEnum;
+	ReflectionMetadataEnumItem: RbxReflectionMetadataEnumItem;
+	ReflectionMetadataMember: RbxReflectionMetadataMember;
+	ReflectionMetadataProperties: RbxReflectionMetadataProperties;
+	ReflectionMetadataYieldFunctions: RbxReflectionMetadataYieldFunctions;
+	RemoteEvent: RbxRemoteEvent;
+	RemoteFunction: RbxRemoteFunction;
+	RenderSettings: RbxRenderSettings;
+	RenderingTest: RbxRenderingTest;
+	ReplicatedFirst: RbxReplicatedFirst;
+	ReplicatedStorage: RbxReplicatedStorage;
+	RobloxReplicatedStorage: RbxRobloxReplicatedStorage;
+	RunService: RbxRunService;
+	RuntimeScriptService: RbxRuntimeScriptService;
+	ScriptContext: RbxScriptContext;
+	ScriptDebugger: RbxScriptDebugger;
+	ScriptService: RbxScriptService;
+	Selection: RbxSelection;
+	ServerScriptService: RbxServerScriptService;
+	ServerStorage: RbxServerStorage;
+	ServiceProvider: RbxServiceProvider;
+	DataModel: RbxDataModel;
+	GenericSettings: RbxGenericSettings;
+	AnalysticsSettings: RbxAnalysticsSettings;
+	GlobalSettings: RbxGlobalSettings;
+	UserSettings: RbxUserSettings;
+	Sky: RbxSky;
+	Smoke: RbxSmoke;
+	SocialService: RbxSocialService;
+	Sound: RbxSound;
+	SoundEffect: RbxSoundEffect;
+	ChorusSoundEffect: RbxChorusSoundEffect;
+	CompressorSoundEffect: RbxCompressorSoundEffect;
+	DistortionSoundEffect: RbxDistortionSoundEffect;
+	EchoSoundEffect: RbxEchoSoundEffect;
+	EqualizerSoundEffect: RbxEqualizerSoundEffect;
+	FlangeSoundEffect: RbxFlangeSoundEffect;
+	PitchShiftSoundEffect: RbxPitchShiftSoundEffect;
+	ReverbSoundEffect: RbxReverbSoundEffect;
+	TremoloSoundEffect: RbxTremoloSoundEffect;
+	SoundGroup: RbxSoundGroup;
+	SoundService: RbxSoundService;
+	Sparkles: RbxSparkles;
+	SpawnerService: RbxSpawnerService;
+	StarterGear: RbxStarterGear;
+	StarterPack: RbxStarterPack;
+	StarterPlayer: RbxStarterPlayer;
+	StarterPlayerScripts: RbxStarterPlayerScripts;
+	StarterCharacterScripts: RbxStarterCharacterScripts;
+	Stats: RbxStats;
+	StatsItem: RbxStatsItem;
+	RunningAverageItemDouble: RbxRunningAverageItemDouble;
+	RunningAverageItemInt: RbxRunningAverageItemInt;
+	RunningAverageTimeIntervalItem: RbxRunningAverageTimeIntervalItem;
+	TotalCountTimeIntervalItem: RbxTotalCountTimeIntervalItem;
+	StopWatchReporter: RbxStopWatchReporter;
+	Studio: RbxStudio;
+	StudioService: RbxStudioService;
+	StudioTheme: RbxStudioTheme;
+	TaskScheduler: RbxTaskScheduler;
+	Team: RbxTeam;
+	Teams: RbxTeams;
+	TeleportService: RbxTeleportService;
+	TerrainRegion: RbxTerrainRegion;
+	TestService: RbxTestService;
+	TextFilterResult: RbxTextFilterResult;
+	TextService: RbxTextService;
+	ThirdPartyUserService: RbxThirdPartyUserService;
+	TimerService: RbxTimerService;
+	TouchInputService: RbxTouchInputService;
+	TouchTransmitter: RbxTouchTransmitter;
+	Trail: RbxTrail;
+	Translator: RbxTranslator;
+	TweenBase: RbxTweenBase;
+	Tween: RbxTween;
+	TweenService: RbxTweenService;
+	UIBase: RbxUIBase;
+	UIComponent: RbxUIComponent;
+	UIConstraint: RbxUIConstraint;
+	UIAspectRatioConstraint: RbxUIAspectRatioConstraint;
+	UISizeConstraint: RbxUISizeConstraint;
+	UITextSizeConstraint: RbxUITextSizeConstraint;
+	UILayout: RbxUILayout;
+	UIGridStyleLayout: RbxUIGridStyleLayout;
+	UIGridLayout: RbxUIGridLayout;
+	UIListLayout: RbxUIListLayout;
+	UIPageLayout: RbxUIPageLayout;
+	UITableLayout: RbxUITableLayout;
+	UIPadding: RbxUIPadding;
+	UIScale: RbxUIScale;
+	UserGameSettings: RbxUserGameSettings;
+	UserInputService: RbxUserInputService;
+	VRService: RbxVRService;
+	ValueBase: RbxValueBase;
+	BinaryStringValue: RbxBinaryStringValue;
+	BoolValue: RbxBoolValue;
+	BrickColorValue: RbxBrickColorValue;
+	CFrameValue: RbxCFrameValue;
+	Color3Value: RbxColor3Value;
+	DoubleConstrainedValue: RbxDoubleConstrainedValue;
+	IntConstrainedValue: RbxIntConstrainedValue;
+	IntValue: RbxIntValue;
+	NumberValue: RbxNumberValue;
+	ObjectValue: RbxObjectValue;
+	RayValue: RbxRayValue;
+	StringValue: RbxStringValue;
+	Vector3Value: RbxVector3Value;
+	VirtualInputManager: RbxVirtualInputManager;
+	VirtualUser: RbxVirtualUser;
+	Visit: RbxVisit;
+	WeldConstraint: RbxWeldConstraint;
 }
 
 // GENERATED ROBLOX INSTANCE CLASSES
 
 // Instance
-interface Rbx_Instance {
+interface RbxInstance {
 	/** Determines whether or not an Instance can be saved when the game closes/attempts to save the game. Note: this only applies to games that use Data Persistence, or SavePlaceAsync. */
 	Archivable: boolean;
-	/** The string name of this Instance's most derived class. */
-	readonly ClassName: string;
 	Name: string;
 	/** The Instance that is directly above this Instance in the tree. */
-	Parent: Instance | undefined;
+	Parent?: Instance;
 	/** Removes all children (but not this object) from the workspace. */
 	ClearAllChildren(): void;
 	/** Removes object and all of its children from the workspace. Disconnects object and all children from open connections. Object and children may not be usable after calling Destroy. */
 	Destroy(): void;
-	/** Returns the first child of this Instance that :IsA(className).  The second argument 'recursive' is an optional boolean (defaults to false) that will force the call to traverse down thru all of this Instance's descendants until it finds an object with a name that matches the 'className' argument.  The function will return nil if no Instance is found. */
-	FindFirstChildWhichIsA(className: string, recursive?: boolean): Instance | undefined;
 	/** Returns a string that shows the path from the root node (DataModel) to this Instance.  This string does not include the root node (DataModel). */
 	GetFullName(): string;
 	GetPropertyChangedSignal(property: string): RBXScriptSignal;
@@ -654,83 +878,94 @@ interface Rbx_Instance {
 	/** Fired after an Instance is unparented from this object, or any of this object's descendants.  The 'descendant' argument is the Instance that is being added. */
 	readonly DescendantRemoving: RBXScriptSignal<(descendant: Instance) => void>;
 }
-type Instance = Rbx_Instance & Base<Rbx_Instance> & Indexable<Rbx_Instance>;
+type Instance = ABTestService | DerivesFromAccoutrement | AdService | AdvancedDragger | AnalyticsService | Animation | AnimationController | AnimationTrack | Animator | AssetService | Attachment | Backpack | BackpackItem | BadgeService | BasePlayerGui | Beam | BindableEvent | BindableFunction | BodyMover | BrowserService | CacheableContentProvider | Camera | ChangeHistoryService | CharacterAppearance | Chat | ClickDetector | ClusterPacketCache | CollectionService | Configuration | Constraint | ContentProvider | ContextActionService | Controller | ControllerService | CookiesService | CorePackages | CoreScriptSyncService | CustomEvent | CustomEventReceiver | DataModelMesh | DataStoreService | Debris | DebugSettings | DebuggerBreakpoint | DebuggerManager | DebuggerWatch | Dialog | DialogChoice | Dragger | Explosion | FaceInstance | Feature | File | Fire | FlagStandService | FlyweightService | Folder | ForceField | FriendService | FunctionalTest | GamePassService | GameSettings | GamepadService | Geometry | GlobalDataStore | GoogleAnalyticsConfiguration | GroupService | GuiBase | GuiService | GuidRegistryService | HapticService | Hopper | HttpRbxApiService | HttpRequest | HttpService | Humanoid | HumanoidDescription | InputObject | InsertService | JointInstance | JointsService | KeyboardService | Keyframe | KeyframeMarker | KeyframeSequence | KeyframeSequenceProvider | Light | Lighting | LocalStorageService | LocalizationService | LocalizationTable | LogService | LoginService | LuaSettings | LuaSourceContainer | LuaWebService | MarketplaceService | DerivesFromMessage | MessagingService | Mouse | MouseService | NetworkMarker | NetworkPeer | NetworkReplicator | NetworkSettings | NotificationService | PVInstance | PackageLink | Pages | PartOperationAsset | ParticleEmitter | Path | PathfindingService | PhysicsPacketCache | PhysicsService | PhysicsSettings | Player | PlayerScripts | Players | Plugin | PluginAction | PluginDragEvent | PluginGuiService | PluginManager | PluginMenu | PluginToolbar | PluginToolbarButton | PointsService | Pose | PostEffect | ReflectionMetadata | ReflectionMetadataCallbacks | ReflectionMetadataClasses | ReflectionMetadataEnums | ReflectionMetadataEvents | ReflectionMetadataFunctions | ReflectionMetadataItem | ReflectionMetadataProperties | ReflectionMetadataYieldFunctions | RemoteEvent | RemoteFunction | RenderSettings | RenderingTest | ReplicatedFirst | ReplicatedStorage | RobloxReplicatedStorage | RunService | RuntimeScriptService | ScriptContext | ScriptDebugger | ScriptService | Selection | ServerScriptService | ServerStorage | ServiceProvider | Sky | Smoke | SocialService | Sound | SoundEffect | SoundGroup | SoundService | Sparkles | SpawnerService | StarterGear | StarterPack | StarterPlayer | DerivesFromStarterPlayerScripts | Stats | StatsItem | StopWatchReporter | Studio | StudioService | StudioTheme | TaskScheduler | Team | Teams | TeleportService | TerrainRegion | TestService | TextFilterResult | TextService | ThirdPartyUserService | TimerService | TouchInputService | TouchTransmitter | Trail | Translator | TweenBase | TweenService | UIBase | UserGameSettings | UserInputService | VRService | ValueBase | VirtualInputManager | VirtualUser | Visit | WeldConstraint;
 
 // ABTestService
-interface Rbx_ABTestService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__0: never;
+interface RbxABTestService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ABTestService";
 }
-type ABTestService = Rbx_ABTestService & Base<Rbx_ABTestService> & Indexable<Rbx_ABTestService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ABTestService = RbxABTestService & Indexable<RbxABTestService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ABTestService"): ABTestService;
 }
 
-// Accoutrement
-interface Rbx_Accoutrement extends Rbx_Instance {
+// DerivesFromAccoutrement
+interface RbxDerivesFromAccoutrement extends RbxInstance {
 	AttachmentForward: Vector3;
 	AttachmentPoint: CFrame;
 	AttachmentPos: Vector3;
 	AttachmentRight: Vector3;
 	AttachmentUp: Vector3;
 }
-type Accoutrement = Rbx_Accoutrement & Base<Rbx_Accoutrement> & Indexable<Rbx_Accoutrement>;
+interface RbxAccoutrement extends RbxDerivesFromAccoutrement {
+	readonly ClassName: "Accoutrement";
+}
+
+type Accoutrement = RbxAccoutrement & Indexable<RbxAccoutrement>;
+type DerivesFromAccoutrement = Accoutrement | Accessory | Hat;
 
 // Accessory
-interface Rbx_Accessory extends Rbx_Accoutrement {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__1: never;
+interface RbxAccessory extends RbxDerivesFromAccoutrement {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Accessory";
 }
-type Accessory = Rbx_Accessory & Base<Rbx_Accessory> & Indexable<Rbx_Accessory>;
+type Accessory = RbxAccessory & Indexable<RbxAccessory>;
 
 // Hat
-interface Rbx_Hat extends Rbx_Accoutrement {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__2: never;
+interface RbxHat extends RbxDerivesFromAccoutrement {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Hat";
 }
-type Hat = Rbx_Hat & Base<Rbx_Hat> & Indexable<Rbx_Hat>;
+type Hat = RbxHat & Indexable<RbxHat>;
 
 // AdService
-interface Rbx_AdService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__3: never;
+interface RbxAdService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "AdService";
 }
-type AdService = Rbx_AdService & Base<Rbx_AdService> & Indexable<Rbx_AdService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type AdService = RbxAdService & Indexable<RbxAdService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "AdService"): AdService;
 }
 
 // AdvancedDragger
-interface Rbx_AdvancedDragger extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__4: never;
+interface RbxAdvancedDragger extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "AdvancedDragger";
 }
-type AdvancedDragger = Rbx_AdvancedDragger & Base<Rbx_AdvancedDragger> & Indexable<Rbx_AdvancedDragger>;
+type AdvancedDragger = RbxAdvancedDragger & Indexable<RbxAdvancedDragger>;
 
 // AnalyticsService
-interface Rbx_AnalyticsService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__5: never;
+interface RbxAnalyticsService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "AnalyticsService";
 }
-type AnalyticsService = Rbx_AnalyticsService & Base<Rbx_AnalyticsService> & Indexable<Rbx_AnalyticsService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type AnalyticsService = RbxAnalyticsService & Indexable<RbxAnalyticsService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "AnalyticsService"): AnalyticsService;
 }
 
 // Animation
-interface Rbx_Animation extends Rbx_Instance {
+interface RbxAnimation extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Animation";
 	AnimationId: string;
 }
-type Animation = Rbx_Animation & Base<Rbx_Animation> & Indexable<Rbx_Animation>;
+type Animation = RbxAnimation & Indexable<RbxAnimation>;
 
 // AnimationController
-interface Rbx_AnimationController extends Rbx_Instance {
+interface RbxAnimationController extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "AnimationController";
 }
-type AnimationController = Rbx_AnimationController & Base<Rbx_AnimationController> & Indexable<Rbx_AnimationController>;
+type AnimationController = RbxAnimationController & Indexable<RbxAnimationController>;
 
 // AnimationTrack
-interface Rbx_AnimationTrack extends Rbx_Instance {
-	readonly Animation: Animation;
+interface RbxAnimationTrack extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "AnimationTrack";
+	readonly Animation?: Animation;
 	readonly IsPlaying: boolean;
 	readonly Length: number;
 	Looped: boolean;
@@ -749,26 +984,32 @@ interface Rbx_AnimationTrack extends Rbx_Instance {
 	readonly KeyframeReached: RBXScriptSignal<(keyframeName: string) => void>;
 	readonly Stopped: RBXScriptSignal<() => void>;
 }
-type AnimationTrack = Rbx_AnimationTrack & Base<Rbx_AnimationTrack> & Indexable<Rbx_AnimationTrack>;
+type AnimationTrack = RbxAnimationTrack & Indexable<RbxAnimationTrack>;
 
 // Animator
-interface Rbx_Animator extends Rbx_Instance {
+interface RbxAnimator extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Animator";
 }
-type Animator = Rbx_Animator & Base<Rbx_Animator> & Indexable<Rbx_Animator>;
+type Animator = RbxAnimator & Indexable<RbxAnimator>;
 
 // AssetService
-interface Rbx_AssetService extends Rbx_Instance {
+interface RbxAssetService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "AssetService";
 	CreatePlaceAsync(placeName: string, templatePlaceID: number, description?: string): number;
 	GetBundleDetailsAsync(bundleId: number): object;
 	SavePlaceAsync(): void;
 }
-type AssetService = Rbx_AssetService & Base<Rbx_AssetService> & Indexable<Rbx_AssetService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type AssetService = RbxAssetService & Indexable<RbxAssetService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "AssetService"): AssetService;
 }
 
 // Attachment
-interface Rbx_Attachment extends Rbx_Instance {
+interface RbxAttachment extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Attachment";
 	/** Primary axis. Corresponds to the LookVector, or the first column in the part-local Attachment CFrame rotation matrix */
 	Axis: Vector3;
 	CFrame: CFrame;
@@ -786,48 +1027,115 @@ interface Rbx_Attachment extends Rbx_Instance {
 	WorldPosition: Vector3;
 	WorldSecondaryAxis: Vector3;
 }
-type Attachment = Rbx_Attachment & Base<Rbx_Attachment> & Indexable<Rbx_Attachment>;
+type Attachment = RbxAttachment & Indexable<RbxAttachment>;
+
+// Backpack
+interface RbxBackpack extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Backpack";
+}
+type Backpack = RbxBackpack & Indexable<RbxBackpack>;
+
+// BackpackItem
+interface RbxBackpackItem extends RbxInstance {
+	TextureId: string;
+}
+type BackpackItem = HopperBin | DerivesFromTool;
+
+// HopperBin
+interface RbxHopperBin extends RbxBackpackItem {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "HopperBin";
+	Active: boolean;
+	BinType: Enum.BinType;
+	readonly Deselected: RBXScriptSignal<() => void>;
+	readonly Selected: RBXScriptSignal<(mouse: Instance) => void>;
+}
+type HopperBin = RbxHopperBin & Indexable<RbxHopperBin>;
+
+// DerivesFromTool
+interface RbxDerivesFromTool extends RbxBackpackItem {
+	CanBeDropped: boolean;
+	Enabled: boolean;
+	Grip: CFrame;
+	GripForward: Vector3;
+	GripPos: Vector3;
+	GripRight: Vector3;
+	GripUp: Vector3;
+	ManualActivationOnly: boolean;
+	RequiresHandle: boolean;
+	ToolTip: string;
+	Activate(): void;
+	Deactivate(): void;
+	readonly Activated: RBXScriptSignal<() => void>;
+	readonly Deactivated: RBXScriptSignal<() => void>;
+	readonly Equipped: RBXScriptSignal<(mouse: Instance) => void>;
+	readonly Unequipped: RBXScriptSignal<() => void>;
+}
+interface RbxTool extends RbxDerivesFromTool {
+	readonly ClassName: "Tool";
+}
+
+type Tool = RbxTool & Indexable<RbxTool>;
+type DerivesFromTool = Tool | Flag;
+
+// Flag
+interface RbxFlag extends RbxDerivesFromTool {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Flag";
+	/** The Team this flag is for. Corresponds with the TeamColors in the Teams service. */
+	TeamColor: BrickColor;
+}
+type Flag = RbxFlag & Indexable<RbxFlag>;
 
 // BadgeService
-interface Rbx_BadgeService extends Rbx_Instance {
+interface RbxBadgeService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BadgeService";
 	AwardBadge(userId: number, badgeId: number): boolean;
 	GetBadgeInfoAsync(badgeId: number): object;
 	UserHasBadgeAsync(userId: number, badgeId: number): boolean;
 }
-type BadgeService = Rbx_BadgeService & Base<Rbx_BadgeService> & Indexable<Rbx_BadgeService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type BadgeService = RbxBadgeService & Indexable<RbxBadgeService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "BadgeService"): BadgeService;
 }
 
 // BasePlayerGui
-interface Rbx_BasePlayerGui extends Rbx_Instance {
+interface RbxBasePlayerGui extends RbxInstance {
 	GetGuiObjectsAtPosition(x: number, y: number): Array<Instance>;
 }
-type BasePlayerGui = Rbx_BasePlayerGui & Base<Rbx_BasePlayerGui> & Indexable<Rbx_BasePlayerGui>;
+type BasePlayerGui = CoreGui | PlayerGui | StarterGui;
 
 // CoreGui
-interface Rbx_CoreGui extends Rbx_BasePlayerGui {
+interface RbxCoreGui extends RbxBasePlayerGui {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CoreGui";
 	readonly Version: number;
 }
-type CoreGui = Rbx_CoreGui & Base<Rbx_CoreGui> & Indexable<Rbx_CoreGui>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type CoreGui = RbxCoreGui & Indexable<RbxCoreGui>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "CoreGui"): CoreGui;
 }
 
 // PlayerGui
-interface Rbx_PlayerGui extends Rbx_BasePlayerGui {
+interface RbxPlayerGui extends RbxBasePlayerGui {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PlayerGui";
 	readonly CurrentScreenOrientation: Enum.ScreenOrientation;
 	ScreenOrientation: Enum.ScreenOrientation;
 	/** Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject. */
-	SelectionImageObject: GuiObject;
+	SelectionImageObject?: GuiObject;
 	GetTopbarTransparency(): number;
 	SetTopbarTransparency(transparency: number): void;
 	readonly TopbarTransparencyChangedSignal: RBXScriptSignal<(transparency: number) => void>;
 }
-type PlayerGui = Rbx_PlayerGui & Base<Rbx_PlayerGui> & Indexable<Rbx_PlayerGui>;
+type PlayerGui = RbxPlayerGui & Indexable<RbxPlayerGui>;
 
 // StarterGui
-interface Rbx_StarterGui extends Rbx_BasePlayerGui {
+interface RbxStarterGui extends RbxBasePlayerGui {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "StarterGui";
 	ScreenOrientation: Enum.ScreenOrientation;
 	ShowDevelopmentGui: boolean;
 	/** Returns a boolean describing whether a CoreGuiType is currently being rendered. */
@@ -835,15 +1143,17 @@ interface Rbx_StarterGui extends Rbx_BasePlayerGui {
 	/** Will stop/begin certain core gui elements being rendered. See CoreGuiType for core guis that can be modified. */
 	SetCoreGuiEnabled(coreGuiType: Enum.CoreGuiType, enabled: boolean): void;
 }
-type StarterGui = Rbx_StarterGui & Base<Rbx_StarterGui> & Indexable<Rbx_StarterGui>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type StarterGui = RbxStarterGui & Indexable<RbxStarterGui>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "StarterGui"): StarterGui;
 }
 
 // Beam
-interface Rbx_Beam extends Rbx_Instance {
-	Attachment0: Attachment;
-	Attachment1: Attachment;
+interface RbxBeam extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Beam";
+	Attachment0?: Attachment;
+	Attachment1?: Attachment;
 	Color: ColorSequence;
 	CurveSize0: number;
 	CurveSize1: number;
@@ -862,41 +1172,49 @@ interface Rbx_Beam extends Rbx_Instance {
 	ZOffset: number;
 	SetTextureOffset(offset?: number): void;
 }
-type Beam = Rbx_Beam & Base<Rbx_Beam> & Indexable<Rbx_Beam>;
+type Beam = RbxBeam & Indexable<RbxBeam>;
 
 // BindableEvent
-interface Rbx_BindableEvent extends Rbx_Instance {
+interface RbxBindableEvent extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BindableEvent";
 }
-type BindableEvent = Rbx_BindableEvent & Base<Rbx_BindableEvent> & Indexable<Rbx_BindableEvent>;
+type BindableEvent = RbxBindableEvent & Indexable<RbxBindableEvent>;
 
 // BindableFunction
-interface Rbx_BindableFunction extends Rbx_Instance {
+interface RbxBindableFunction extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BindableFunction";
 }
-type BindableFunction = Rbx_BindableFunction & Base<Rbx_BindableFunction> & Indexable<Rbx_BindableFunction>;
+type BindableFunction = RbxBindableFunction & Indexable<RbxBindableFunction>;
 
 // BodyMover
-interface Rbx_BodyMover extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__6: never;
+interface RbxBodyMover extends RbxInstance {
 }
-type BodyMover = Rbx_BodyMover & Base<Rbx_BodyMover> & Indexable<Rbx_BodyMover>;
+type BodyMover = BodyAngularVelocity | BodyForce | BodyGyro | BodyPosition | BodyThrust | BodyVelocity | RocketPropulsion;
 
 // BodyAngularVelocity
-interface Rbx_BodyAngularVelocity extends Rbx_BodyMover {
+interface RbxBodyAngularVelocity extends RbxBodyMover {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BodyAngularVelocity";
 	AngularVelocity: Vector3;
 	MaxTorque: Vector3;
 	P: number;
 }
-type BodyAngularVelocity = Rbx_BodyAngularVelocity & Base<Rbx_BodyAngularVelocity> & Indexable<Rbx_BodyAngularVelocity>;
+type BodyAngularVelocity = RbxBodyAngularVelocity & Indexable<RbxBodyAngularVelocity>;
 
 // BodyForce
-interface Rbx_BodyForce extends Rbx_BodyMover {
+interface RbxBodyForce extends RbxBodyMover {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BodyForce";
 	Force: Vector3;
 }
-type BodyForce = Rbx_BodyForce & Base<Rbx_BodyForce> & Indexable<Rbx_BodyForce>;
+type BodyForce = RbxBodyForce & Indexable<RbxBodyForce>;
 
 // BodyGyro
-interface Rbx_BodyGyro extends Rbx_BodyMover {
+interface RbxBodyGyro extends RbxBodyMover {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BodyGyro";
 	/** The cframe that this force is trying to orient its parent Part to.  Note: this force only uses the rotation of the cframe, not the position. */
 	CFrame: CFrame;
 	/** The dampening factor applied to this force */
@@ -906,10 +1224,12 @@ interface Rbx_BodyGyro extends Rbx_BodyMover {
 	/** The power continually applied to this force */
 	P: number;
 }
-type BodyGyro = Rbx_BodyGyro & Base<Rbx_BodyGyro> & Indexable<Rbx_BodyGyro>;
+type BodyGyro = RbxBodyGyro & Indexable<RbxBodyGyro>;
 
 // BodyPosition
-interface Rbx_BodyPosition extends Rbx_BodyMover {
+interface RbxBodyPosition extends RbxBodyMover {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BodyPosition";
 	/** The dampening factor applied to this force */
 	D: number;
 	/** The maximum force that will be exerted on the Part */
@@ -921,19 +1241,23 @@ interface Rbx_BodyPosition extends Rbx_BodyMover {
 	GetLastForce(): Vector3;
 	readonly ReachedTarget: RBXScriptSignal<() => void>;
 }
-type BodyPosition = Rbx_BodyPosition & Base<Rbx_BodyPosition> & Indexable<Rbx_BodyPosition>;
+type BodyPosition = RbxBodyPosition & Indexable<RbxBodyPosition>;
 
 // BodyThrust
-interface Rbx_BodyThrust extends Rbx_BodyMover {
+interface RbxBodyThrust extends RbxBodyMover {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BodyThrust";
 	/** The power continually applied to this force */
 	Force: Vector3;
 	/** The Vector3 location of where to apply the force to.  */
 	Location: Vector3;
 }
-type BodyThrust = Rbx_BodyThrust & Base<Rbx_BodyThrust> & Indexable<Rbx_BodyThrust>;
+type BodyThrust = RbxBodyThrust & Indexable<RbxBodyThrust>;
 
 // BodyVelocity
-interface Rbx_BodyVelocity extends Rbx_BodyMover {
+interface RbxBodyVelocity extends RbxBodyMover {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BodyVelocity";
 	/** The maximum force that will be exerted on the Part in each axis */
 	MaxForce: Vector3;
 	/** The amount of power we add to the system.  The higher the power, the quicker the force will achieve its goal. */
@@ -943,15 +1267,17 @@ interface Rbx_BodyVelocity extends Rbx_BodyMover {
 	GetLastForce(): Vector3;
 	lastForce(): Vector3;
 }
-type BodyVelocity = Rbx_BodyVelocity & Base<Rbx_BodyVelocity> & Indexable<Rbx_BodyVelocity>;
+type BodyVelocity = RbxBodyVelocity & Indexable<RbxBodyVelocity>;
 
 // RocketPropulsion
-interface Rbx_RocketPropulsion extends Rbx_BodyMover {
+interface RbxRocketPropulsion extends RbxBodyMover {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RocketPropulsion";
 	CartoonFactor: number;
 	MaxSpeed: number;
 	MaxThrust: number;
 	MaxTorque: Vector3;
-	Target: BasePart;
+	Target?: BasePart;
 	TargetOffset: Vector3;
 	TargetRadius: number;
 	ThrustD: number;
@@ -962,50 +1288,50 @@ interface Rbx_RocketPropulsion extends Rbx_BodyMover {
 	Fire(): void;
 	readonly ReachedTarget: RBXScriptSignal<() => void>;
 }
-type RocketPropulsion = Rbx_RocketPropulsion & Base<Rbx_RocketPropulsion> & Indexable<Rbx_RocketPropulsion>;
+type RocketPropulsion = RbxRocketPropulsion & Indexable<RbxRocketPropulsion>;
 
 // BrowserService
-interface Rbx_BrowserService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__7: never;
+interface RbxBrowserService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BrowserService";
 }
-type BrowserService = Rbx_BrowserService & Base<Rbx_BrowserService> & Indexable<Rbx_BrowserService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type BrowserService = RbxBrowserService & Indexable<RbxBrowserService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "BrowserService"): BrowserService;
 }
 
 // CacheableContentProvider
-interface Rbx_CacheableContentProvider extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__8: never;
+interface RbxCacheableContentProvider extends RbxInstance {
 }
-type CacheableContentProvider = Rbx_CacheableContentProvider & Base<Rbx_CacheableContentProvider> & Indexable<Rbx_CacheableContentProvider>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type CacheableContentProvider = MeshContentProvider | SolidModelContentProvider;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "CacheableContentProvider"): CacheableContentProvider;
 }
 
 // MeshContentProvider
-interface Rbx_MeshContentProvider extends Rbx_CacheableContentProvider {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__9: never;
+interface RbxMeshContentProvider extends RbxCacheableContentProvider {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "MeshContentProvider";
 }
-type MeshContentProvider = Rbx_MeshContentProvider & Base<Rbx_MeshContentProvider> & Indexable<Rbx_MeshContentProvider>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type MeshContentProvider = RbxMeshContentProvider & Indexable<RbxMeshContentProvider>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "MeshContentProvider"): MeshContentProvider;
 }
 
 // SolidModelContentProvider
-interface Rbx_SolidModelContentProvider extends Rbx_CacheableContentProvider {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__10: never;
+interface RbxSolidModelContentProvider extends RbxCacheableContentProvider {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SolidModelContentProvider";
 }
-type SolidModelContentProvider = Rbx_SolidModelContentProvider & Base<Rbx_SolidModelContentProvider> & Indexable<Rbx_SolidModelContentProvider>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type SolidModelContentProvider = RbxSolidModelContentProvider & Indexable<RbxSolidModelContentProvider>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "SolidModelContentProvider"): SolidModelContentProvider;
 }
 
 // Camera
-interface Rbx_Camera extends Rbx_Instance {
+interface RbxCamera extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Camera";
 	/** The current position and rotation of the Camera.  For most CameraTypes, the rotation is set such that the CoordinateFrame lookVector is pointing at the Focus. */
 	CFrame: CFrame;
 	/** Defines how the camera will behave. [More info](http://wiki.roblox.com/index.php/CameraType) */
@@ -1038,27 +1364,27 @@ interface Rbx_Camera extends Rbx_Instance {
 	ViewportPointToRay(x: number, y: number, depth?: number): Ray;
 	readonly InterpolationFinished: RBXScriptSignal<() => void>;
 }
-type Camera = Rbx_Camera & Base<Rbx_Camera> & Indexable<Rbx_Camera>;
+type Camera = RbxCamera & Indexable<RbxCamera>;
 
 // ChangeHistoryService
-interface Rbx_ChangeHistoryService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__11: never;
+interface RbxChangeHistoryService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ChangeHistoryService";
 }
-type ChangeHistoryService = Rbx_ChangeHistoryService & Base<Rbx_ChangeHistoryService> & Indexable<Rbx_ChangeHistoryService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ChangeHistoryService = RbxChangeHistoryService & Indexable<RbxChangeHistoryService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ChangeHistoryService"): ChangeHistoryService;
 }
 
 // CharacterAppearance
-interface Rbx_CharacterAppearance extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__12: never;
+interface RbxCharacterAppearance extends RbxInstance {
 }
-type CharacterAppearance = Rbx_CharacterAppearance & Base<Rbx_CharacterAppearance> & Indexable<Rbx_CharacterAppearance>;
+type CharacterAppearance = BodyColors | CharacterMesh | Clothing | ShirtGraphic | Skin;
 
 // BodyColors
-interface Rbx_BodyColors extends Rbx_CharacterAppearance {
+interface RbxBodyColors extends RbxCharacterAppearance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BodyColors";
 	HeadColor: BrickColor;
 	HeadColor3: Color3;
 	LeftArmColor: BrickColor;
@@ -1072,50 +1398,62 @@ interface Rbx_BodyColors extends Rbx_CharacterAppearance {
 	TorsoColor: BrickColor;
 	TorsoColor3: Color3;
 }
-type BodyColors = Rbx_BodyColors & Base<Rbx_BodyColors> & Indexable<Rbx_BodyColors>;
+type BodyColors = RbxBodyColors & Indexable<RbxBodyColors>;
 
 // CharacterMesh
-interface Rbx_CharacterMesh extends Rbx_CharacterAppearance {
+interface RbxCharacterMesh extends RbxCharacterAppearance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CharacterMesh";
 	BaseTextureId: number;
 	BodyPart: Enum.BodyPart;
 	MeshId: number;
 	OverlayTextureId: number;
 }
-type CharacterMesh = Rbx_CharacterMesh & Base<Rbx_CharacterMesh> & Indexable<Rbx_CharacterMesh>;
+type CharacterMesh = RbxCharacterMesh & Indexable<RbxCharacterMesh>;
 
 // Clothing
-interface Rbx_Clothing extends Rbx_CharacterAppearance {
+interface RbxClothing extends RbxCharacterAppearance {
 	Color3: Color3;
 }
-type Clothing = Rbx_Clothing & Base<Rbx_Clothing> & Indexable<Rbx_Clothing>;
+type Clothing = Pants | Shirt;
 
 // Pants
-interface Rbx_Pants extends Rbx_Clothing {
+interface RbxPants extends RbxClothing {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Pants";
 	PantsTemplate: string;
 }
-type Pants = Rbx_Pants & Base<Rbx_Pants> & Indexable<Rbx_Pants>;
+type Pants = RbxPants & Indexable<RbxPants>;
 
 // Shirt
-interface Rbx_Shirt extends Rbx_Clothing {
+interface RbxShirt extends RbxClothing {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Shirt";
 	ShirtTemplate: string;
 }
-type Shirt = Rbx_Shirt & Base<Rbx_Shirt> & Indexable<Rbx_Shirt>;
+type Shirt = RbxShirt & Indexable<RbxShirt>;
 
 // ShirtGraphic
-interface Rbx_ShirtGraphic extends Rbx_CharacterAppearance {
+interface RbxShirtGraphic extends RbxCharacterAppearance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ShirtGraphic";
 	Color3: Color3;
 	Graphic: string;
 }
-type ShirtGraphic = Rbx_ShirtGraphic & Base<Rbx_ShirtGraphic> & Indexable<Rbx_ShirtGraphic>;
+type ShirtGraphic = RbxShirtGraphic & Indexable<RbxShirtGraphic>;
 
 // Skin
-interface Rbx_Skin extends Rbx_CharacterAppearance {
+interface RbxSkin extends RbxCharacterAppearance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Skin";
 	SkinColor: BrickColor;
 }
-type Skin = Rbx_Skin & Base<Rbx_Skin> & Indexable<Rbx_Skin>;
+type Skin = RbxSkin & Indexable<RbxSkin>;
 
 // Chat
-interface Rbx_Chat extends Rbx_Instance {
+interface RbxChat extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Chat";
 	BubbleChatEnabled: boolean;
 	readonly LoadDefaultChat: boolean;
 	InvokeChatCallback(callbackType: Enum.ChatCallbackType, callbackArguments: Array<any>): unknown;
@@ -1123,31 +1461,35 @@ interface Rbx_Chat extends Rbx_Instance {
 	CanUserChatAsync(userId: number): boolean;
 	CanUsersChatAsync(userIdFrom: number, userIdTo: number): boolean;
 }
-type Chat = Rbx_Chat & Base<Rbx_Chat> & Indexable<Rbx_Chat>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type Chat = RbxChat & Indexable<RbxChat>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "Chat"): Chat;
 }
 
 // ClickDetector
-interface Rbx_ClickDetector extends Rbx_Instance {
+interface RbxClickDetector extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ClickDetector";
 	CursorIcon: string;
 	/** The maximum distance a Player's character can be from the ClickDetector's parent Part that will allow the Player's mouse to fire events on this object. */
 	MaxActivationDistance: number;
 }
-type ClickDetector = Rbx_ClickDetector & Base<Rbx_ClickDetector> & Indexable<Rbx_ClickDetector>;
+type ClickDetector = RbxClickDetector & Indexable<RbxClickDetector>;
 
 // ClusterPacketCache
-interface Rbx_ClusterPacketCache extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__13: never;
+interface RbxClusterPacketCache extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ClusterPacketCache";
 }
-type ClusterPacketCache = Rbx_ClusterPacketCache & Base<Rbx_ClusterPacketCache> & Indexable<Rbx_ClusterPacketCache>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ClusterPacketCache = RbxClusterPacketCache & Indexable<RbxClusterPacketCache>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ClusterPacketCache"): ClusterPacketCache;
 }
 
 // CollectionService
-interface Rbx_CollectionService extends Rbx_Instance {
+interface RbxCollectionService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CollectionService";
 	/** Adds a tag to an instance. */
 	AddTag(instance: Instance, tag: string): void;
 	/** Returns whether the given instance has the given tag. */
@@ -1155,24 +1497,24 @@ interface Rbx_CollectionService extends Rbx_Instance {
 	/** Removes a tag to an instance. */
 	RemoveTag(instance: Instance, tag: string): void;
 }
-type CollectionService = Rbx_CollectionService & Base<Rbx_CollectionService> & Indexable<Rbx_CollectionService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type CollectionService = RbxCollectionService & Indexable<RbxCollectionService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "CollectionService"): CollectionService;
 }
 
 // Configuration
-interface Rbx_Configuration extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__14: never;
+interface RbxConfiguration extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Configuration";
 }
-type Configuration = Rbx_Configuration & Base<Rbx_Configuration> & Indexable<Rbx_Configuration>;
+type Configuration = RbxConfiguration & Indexable<RbxConfiguration>;
 
 // Constraint
-interface Rbx_Constraint extends Rbx_Instance {
+interface RbxConstraint extends RbxInstance {
 	/** Read-only boolean, true if the Constraint is active in world. */
 	readonly Active: boolean;
-	Attachment0: Attachment;
-	Attachment1: Attachment;
+	Attachment0?: Attachment;
+	Attachment1?: Attachment;
 	/** The color of the in-game visual. */
 	Color: BrickColor;
 	/** Toggles whether or not this constraint is enabled. Disabled constraints will not render in game. */
@@ -1180,10 +1522,12 @@ interface Rbx_Constraint extends Rbx_Instance {
 	/** Toggles the in-game visual associated with this constraint. */
 	Visible: boolean;
 }
-type Constraint = Rbx_Constraint & Base<Rbx_Constraint> & Indexable<Rbx_Constraint>;
+type Constraint = AlignOrientation | AlignPosition | BallSocketConstraint | HingeConstraint | LineForce | RodConstraint | RopeConstraint | SlidingBallConstraint | SpringConstraint | Torque | VectorForce;
 
 // AlignOrientation
-interface Rbx_AlignOrientation extends Rbx_Constraint {
+interface RbxAlignOrientation extends RbxConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "AlignOrientation";
 	AlignType: Enum.AlignType;
 	MaxAngularVelocity: number;
 	MaxTorque: number;
@@ -1192,10 +1536,12 @@ interface Rbx_AlignOrientation extends Rbx_Constraint {
 	Responsiveness: number;
 	RigidityEnabled: boolean;
 }
-type AlignOrientation = Rbx_AlignOrientation & Base<Rbx_AlignOrientation> & Indexable<Rbx_AlignOrientation>;
+type AlignOrientation = RbxAlignOrientation & Indexable<RbxAlignOrientation>;
 
 // AlignPosition
-interface Rbx_AlignPosition extends Rbx_Constraint {
+interface RbxAlignPosition extends RbxConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "AlignPosition";
 	ApplyAtCenterOfMass: boolean;
 	MaxForce: number;
 	MaxVelocity: number;
@@ -1203,10 +1549,12 @@ interface Rbx_AlignPosition extends Rbx_Constraint {
 	Responsiveness: number;
 	RigidityEnabled: boolean;
 }
-type AlignPosition = Rbx_AlignPosition & Base<Rbx_AlignPosition> & Indexable<Rbx_AlignPosition>;
+type AlignPosition = RbxAlignPosition & Indexable<RbxAlignPosition>;
 
 // BallSocketConstraint
-interface Rbx_BallSocketConstraint extends Rbx_Constraint {
+interface RbxBallSocketConstraint extends RbxConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BallSocketConstraint";
 	/** Enables the angular limit between the axis of Attachment0 and the axis of Attachment1. */
 	LimitsEnabled: boolean;
 	/** Radius of the in-game visual. Value in [0, inf). */
@@ -1222,10 +1570,12 @@ interface Rbx_BallSocketConstraint extends Rbx_Constraint {
 	/** Maximum angle between the two main axes. Value in [0, 180]. */
 	UpperAngle: number;
 }
-type BallSocketConstraint = Rbx_BallSocketConstraint & Base<Rbx_BallSocketConstraint> & Indexable<Rbx_BallSocketConstraint>;
+type BallSocketConstraint = RbxBallSocketConstraint & Indexable<RbxBallSocketConstraint>;
 
 // HingeConstraint
-interface Rbx_HingeConstraint extends Rbx_Constraint {
+interface RbxHingeConstraint extends RbxConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "HingeConstraint";
 	/** Type of the rotational actuator: None, Motor, or Servo.  */
 	ActuatorType: Enum.ActuatorType;
 	/** Target angular speed. This value is unsigned as the servo will always move toward its target. Value in [0, inf). */
@@ -1252,20 +1602,24 @@ interface Rbx_HingeConstraint extends Rbx_Constraint {
 	/** Upper limit for the angle from the SecondaryAxis of Attachment0 to the SecondaryAxis of Attachment1 around the rotation axis. Value in [-180, 180]. */
 	UpperAngle: number;
 }
-type HingeConstraint = Rbx_HingeConstraint & Base<Rbx_HingeConstraint> & Indexable<Rbx_HingeConstraint>;
+type HingeConstraint = RbxHingeConstraint & Indexable<RbxHingeConstraint>;
 
 // LineForce
-interface Rbx_LineForce extends Rbx_Constraint {
+interface RbxLineForce extends RbxConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "LineForce";
 	ApplyAtCenterOfMass: boolean;
 	InverseSquareLaw: boolean;
 	Magnitude: number;
 	MaxForce: number;
 	ReactionForceEnabled: boolean;
 }
-type LineForce = Rbx_LineForce & Base<Rbx_LineForce> & Indexable<Rbx_LineForce>;
+type LineForce = RbxLineForce & Indexable<RbxLineForce>;
 
 // RodConstraint
-interface Rbx_RodConstraint extends Rbx_Constraint {
+interface RbxRodConstraint extends RbxConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RodConstraint";
 	/** Current distance between the two attachments. Value in [0, inf). */
 	readonly CurrentDistance: number;
 	/** The length of the rod or the distance to be maintained between the two attachments. Value in [0, inf). */
@@ -1273,10 +1627,12 @@ interface Rbx_RodConstraint extends Rbx_Constraint {
 	/** The thickness of the in-game visual (diameter). Value in [0, inf). */
 	Thickness: number;
 }
-type RodConstraint = Rbx_RodConstraint & Base<Rbx_RodConstraint> & Indexable<Rbx_RodConstraint>;
+type RodConstraint = RbxRodConstraint & Indexable<RbxRodConstraint>;
 
 // RopeConstraint
-interface Rbx_RopeConstraint extends Rbx_Constraint {
+interface RbxRopeConstraint extends RbxConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RopeConstraint";
 	/** Current distance between the two attachments. Value in [0, inf). */
 	readonly CurrentDistance: number;
 	/** The length of the rope or the maximum distance between the two attachments. Value in [0, inf). */
@@ -1286,10 +1642,10 @@ interface Rbx_RopeConstraint extends Rbx_Constraint {
 	/** The thickness of the in-game visual (diameter). Value in [0, inf). */
 	Thickness: number;
 }
-type RopeConstraint = Rbx_RopeConstraint & Base<Rbx_RopeConstraint> & Indexable<Rbx_RopeConstraint>;
+type RopeConstraint = RbxRopeConstraint & Indexable<RbxRopeConstraint>;
 
 // SlidingBallConstraint
-interface Rbx_SlidingBallConstraint extends Rbx_Constraint {
+interface RbxSlidingBallConstraint extends RbxConstraint {
 	/** Type of linear actuator (along the axis of the slider): None, Motor, or Servo. */
 	ActuatorType: Enum.ActuatorType;
 	/** Current position of Attachment1 with respect to Attachment0 along the slider axis. Value in (-inf, inf). */
@@ -1317,10 +1673,12 @@ interface Rbx_SlidingBallConstraint extends Rbx_Constraint {
 	/** The target linear velocity of the motor in studs per second along the slider axis. Value in (-inf, inf). */
 	Velocity: number;
 }
-type SlidingBallConstraint = Rbx_SlidingBallConstraint & Base<Rbx_SlidingBallConstraint> & Indexable<Rbx_SlidingBallConstraint>;
+type SlidingBallConstraint = CylindricalConstraint | PrismaticConstraint;
 
 // CylindricalConstraint
-interface Rbx_CylindricalConstraint extends Rbx_SlidingBallConstraint {
+interface RbxCylindricalConstraint extends RbxSlidingBallConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CylindricalConstraint";
 	/** Type of angular actuator: None, Motor, or Servo.  */
 	AngularActuatorType: Enum.ActuatorType;
 	/** Enables the angular limits around the rotation axis. */
@@ -1352,17 +1710,19 @@ interface Rbx_CylindricalConstraint extends Rbx_SlidingBallConstraint {
 	/** The unit vector direction of the rotation axis in world coordinates. */
 	readonly WorldRotationAxis: Vector3;
 }
-type CylindricalConstraint = Rbx_CylindricalConstraint & Base<Rbx_CylindricalConstraint> & Indexable<Rbx_CylindricalConstraint>;
+type CylindricalConstraint = RbxCylindricalConstraint & Indexable<RbxCylindricalConstraint>;
 
 // PrismaticConstraint
-interface Rbx_PrismaticConstraint extends Rbx_SlidingBallConstraint {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__15: never;
+interface RbxPrismaticConstraint extends RbxSlidingBallConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PrismaticConstraint";
 }
-type PrismaticConstraint = Rbx_PrismaticConstraint & Base<Rbx_PrismaticConstraint> & Indexable<Rbx_PrismaticConstraint>;
+type PrismaticConstraint = RbxPrismaticConstraint & Indexable<RbxPrismaticConstraint>;
 
 // SpringConstraint
-interface Rbx_SpringConstraint extends Rbx_Constraint {
+interface RbxSpringConstraint extends RbxConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SpringConstraint";
 	/** The number of coils in the in-game visual. Value in [0, 8]. */
 	Coils: number;
 	/** Current distance between the two attachments. Value in [0, inf). */
@@ -1386,35 +1746,43 @@ interface Rbx_SpringConstraint extends Rbx_Constraint {
 	/** The thickness of the spring wire (diameter) in the in-game visual. Value in [0, inf). */
 	Thickness: number;
 }
-type SpringConstraint = Rbx_SpringConstraint & Base<Rbx_SpringConstraint> & Indexable<Rbx_SpringConstraint>;
+type SpringConstraint = RbxSpringConstraint & Indexable<RbxSpringConstraint>;
 
 // Torque
-interface Rbx_Torque extends Rbx_Constraint {
+interface RbxTorque extends RbxConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Torque";
 	RelativeTo: Enum.ActuatorRelativeTo;
 	Torque: Vector3;
 }
-type Torque = Rbx_Torque & Base<Rbx_Torque> & Indexable<Rbx_Torque>;
+type Torque = RbxTorque & Indexable<RbxTorque>;
 
 // VectorForce
-interface Rbx_VectorForce extends Rbx_Constraint {
+interface RbxVectorForce extends RbxConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "VectorForce";
 	ApplyAtCenterOfMass: boolean;
 	Force: Vector3;
 	RelativeTo: Enum.ActuatorRelativeTo;
 }
-type VectorForce = Rbx_VectorForce & Base<Rbx_VectorForce> & Indexable<Rbx_VectorForce>;
+type VectorForce = RbxVectorForce & Indexable<RbxVectorForce>;
 
 // ContentProvider
-interface Rbx_ContentProvider extends Rbx_Instance {
+interface RbxContentProvider extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ContentProvider";
 	readonly BaseUrl: string;
 	readonly RequestQueueSize: number;
 }
-type ContentProvider = Rbx_ContentProvider & Base<Rbx_ContentProvider> & Indexable<Rbx_ContentProvider>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ContentProvider = RbxContentProvider & Indexable<RbxContentProvider>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ContentProvider"): ContentProvider;
 }
 
 // ContextActionService
-interface Rbx_ContextActionService extends Rbx_Instance {
+interface RbxContextActionService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ContextActionService";
 	BindActivate(userInputTypeForActivation: Enum.UserInputType, keyCodeForActivation?: Enum.KeyCode): void;
 	/** Returns a table with all bound action info. Each entry is a key with 'actionName' and value being the same table you would get from ContextActionService:GetBoundActionInfo('actionName'). */
 	GetAllBoundActionInfo(): object;
@@ -1435,164 +1803,181 @@ interface Rbx_ContextActionService extends Rbx_Instance {
 	/** Removes all functions bound. No actionNames will remain. All touch buttons will be removed. If button was manipulated manually there is no guarantee it will be cleaned up. */
 	UnbindAllActions(): void;
 }
-type ContextActionService = Rbx_ContextActionService & Base<Rbx_ContextActionService> & Indexable<Rbx_ContextActionService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ContextActionService = RbxContextActionService & Indexable<RbxContextActionService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ContextActionService"): ContextActionService;
 }
 
 // Controller
-interface Rbx_Controller extends Rbx_Instance {
+interface RbxController extends RbxInstance {
 	BindButton(button: Enum.Button, caption: string): void;
 	GetButton(button: Enum.Button): boolean;
 	UnbindButton(button: Enum.Button): void;
 	readonly ButtonChanged: RBXScriptSignal<(button: Enum.Button) => void>;
 }
-type Controller = Rbx_Controller & Base<Rbx_Controller> & Indexable<Rbx_Controller>;
+type Controller = HumanoidController | SkateboardController | VehicleController;
 
 // HumanoidController
-interface Rbx_HumanoidController extends Rbx_Controller {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__16: never;
+interface RbxHumanoidController extends RbxController {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "HumanoidController";
 }
-type HumanoidController = Rbx_HumanoidController & Base<Rbx_HumanoidController> & Indexable<Rbx_HumanoidController>;
+type HumanoidController = RbxHumanoidController & Indexable<RbxHumanoidController>;
 
 // SkateboardController
-interface Rbx_SkateboardController extends Rbx_Controller {
+interface RbxSkateboardController extends RbxController {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SkateboardController";
 	readonly Steer: number;
 	readonly Throttle: number;
 	readonly AxisChanged: RBXScriptSignal<(axis: string) => void>;
 }
-type SkateboardController = Rbx_SkateboardController & Base<Rbx_SkateboardController> & Indexable<Rbx_SkateboardController>;
+type SkateboardController = RbxSkateboardController & Indexable<RbxSkateboardController>;
 
 // VehicleController
-interface Rbx_VehicleController extends Rbx_Controller {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__17: never;
+interface RbxVehicleController extends RbxController {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "VehicleController";
 }
-type VehicleController = Rbx_VehicleController & Base<Rbx_VehicleController> & Indexable<Rbx_VehicleController>;
+type VehicleController = RbxVehicleController & Indexable<RbxVehicleController>;
 
 // ControllerService
-interface Rbx_ControllerService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__18: never;
+interface RbxControllerService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ControllerService";
 }
-type ControllerService = Rbx_ControllerService & Base<Rbx_ControllerService> & Indexable<Rbx_ControllerService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ControllerService = RbxControllerService & Indexable<RbxControllerService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ControllerService"): ControllerService;
 }
 
 // CookiesService
-interface Rbx_CookiesService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__19: never;
+interface RbxCookiesService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CookiesService";
 }
-type CookiesService = Rbx_CookiesService & Base<Rbx_CookiesService> & Indexable<Rbx_CookiesService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type CookiesService = RbxCookiesService & Indexable<RbxCookiesService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "CookiesService"): CookiesService;
 }
 
 // CorePackages
-interface Rbx_CorePackages extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__20: never;
+interface RbxCorePackages extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CorePackages";
 }
-type CorePackages = Rbx_CorePackages & Base<Rbx_CorePackages> & Indexable<Rbx_CorePackages>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type CorePackages = RbxCorePackages & Indexable<RbxCorePackages>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "CorePackages"): CorePackages;
 }
 
 // CoreScriptSyncService
-interface Rbx_CoreScriptSyncService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__21: never;
+interface RbxCoreScriptSyncService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CoreScriptSyncService";
 }
-type CoreScriptSyncService = Rbx_CoreScriptSyncService & Base<Rbx_CoreScriptSyncService> & Indexable<Rbx_CoreScriptSyncService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type CoreScriptSyncService = RbxCoreScriptSyncService & Indexable<RbxCoreScriptSyncService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "CoreScriptSyncService"): CoreScriptSyncService;
 }
 
 // CustomEvent
-interface Rbx_CustomEvent extends Rbx_Instance {
+interface RbxCustomEvent extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CustomEvent";
 	GetAttachedReceivers(): Array<Instance>;
 	SetValue(newValue: number): void;
 	readonly ReceiverConnected: RBXScriptSignal<(receiver: Instance) => void>;
 	readonly ReceiverDisconnected: RBXScriptSignal<(receiver: Instance) => void>;
 }
-type CustomEvent = Rbx_CustomEvent & Base<Rbx_CustomEvent> & Indexable<Rbx_CustomEvent>;
+type CustomEvent = RbxCustomEvent & Indexable<RbxCustomEvent>;
 
 // CustomEventReceiver
-interface Rbx_CustomEventReceiver extends Rbx_Instance {
-	Source: Instance | undefined;
+interface RbxCustomEventReceiver extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CustomEventReceiver";
+	Source?: Instance;
 	GetCurrentValue(): number;
 	readonly EventConnected: RBXScriptSignal<(event: Instance) => void>;
 	readonly EventDisconnected: RBXScriptSignal<(event: Instance) => void>;
 	readonly SourceValueChanged: RBXScriptSignal<(newValue: number) => void>;
 }
-type CustomEventReceiver = Rbx_CustomEventReceiver & Base<Rbx_CustomEventReceiver> & Indexable<Rbx_CustomEventReceiver>;
+type CustomEventReceiver = RbxCustomEventReceiver & Indexable<RbxCustomEventReceiver>;
 
 // DataModelMesh
-interface Rbx_DataModelMesh extends Rbx_Instance {
+interface RbxDataModelMesh extends RbxInstance {
 	Offset: Vector3;
 	Scale: Vector3;
 	VertexColor: Vector3;
 }
-type DataModelMesh = Rbx_DataModelMesh & Base<Rbx_DataModelMesh> & Indexable<Rbx_DataModelMesh>;
+type DataModelMesh = BevelMesh | DerivesFromFileMesh;
 
 // BevelMesh
-interface Rbx_BevelMesh extends Rbx_DataModelMesh {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__22: never;
+interface RbxBevelMesh extends RbxDataModelMesh {
 }
-type BevelMesh = Rbx_BevelMesh & Base<Rbx_BevelMesh> & Indexable<Rbx_BevelMesh>;
+type BevelMesh = BlockMesh | CylinderMesh;
 
 // BlockMesh
-interface Rbx_BlockMesh extends Rbx_BevelMesh {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__23: never;
+interface RbxBlockMesh extends RbxBevelMesh {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BlockMesh";
 }
-type BlockMesh = Rbx_BlockMesh & Base<Rbx_BlockMesh> & Indexable<Rbx_BlockMesh>;
+type BlockMesh = RbxBlockMesh & Indexable<RbxBlockMesh>;
 
 // CylinderMesh
-interface Rbx_CylinderMesh extends Rbx_BevelMesh {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__24: never;
+interface RbxCylinderMesh extends RbxBevelMesh {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CylinderMesh";
 }
-type CylinderMesh = Rbx_CylinderMesh & Base<Rbx_CylinderMesh> & Indexable<Rbx_CylinderMesh>;
+type CylinderMesh = RbxCylinderMesh & Indexable<RbxCylinderMesh>;
 
-// FileMesh
-interface Rbx_FileMesh extends Rbx_DataModelMesh {
+// DerivesFromFileMesh
+interface RbxDerivesFromFileMesh extends RbxDataModelMesh {
 	MeshId: string;
 	TextureId: string;
 }
-type FileMesh = Rbx_FileMesh & Base<Rbx_FileMesh> & Indexable<Rbx_FileMesh>;
+interface RbxFileMesh extends RbxDerivesFromFileMesh {
+	readonly ClassName: "FileMesh";
+}
+
+type FileMesh = RbxFileMesh & Indexable<RbxFileMesh>;
+type DerivesFromFileMesh = FileMesh | SpecialMesh;
 
 // SpecialMesh
-interface Rbx_SpecialMesh extends Rbx_FileMesh {
+interface RbxSpecialMesh extends RbxDerivesFromFileMesh {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SpecialMesh";
 	MeshType: Enum.MeshType;
 }
-type SpecialMesh = Rbx_SpecialMesh & Base<Rbx_SpecialMesh> & Indexable<Rbx_SpecialMesh>;
+type SpecialMesh = RbxSpecialMesh & Indexable<RbxSpecialMesh>;
 
 // DataStoreService
-interface Rbx_DataStoreService extends Rbx_Instance {
+interface RbxDataStoreService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "DataStoreService";
 	GetRequestBudgetForRequestType(requestType: Enum.DataStoreRequestType): number;
 }
-type DataStoreService = Rbx_DataStoreService & Base<Rbx_DataStoreService> & Indexable<Rbx_DataStoreService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type DataStoreService = RbxDataStoreService & Indexable<RbxDataStoreService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "DataStoreService"): DataStoreService;
 }
 
 // Debris
-interface Rbx_Debris extends Rbx_Instance {
+interface RbxDebris extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Debris";
 	/** Adds an Instance into the debris service that will later be destroyed.  Second argument 'lifetime' is optional and specifies how long (in seconds) to wait before destroying the item. If no time is specified then the item added will automatically be destroyed in 10 seconds. */
 	AddItem(item: Instance, lifetime?: number): void;
 }
-type Debris = Rbx_Debris & Base<Rbx_Debris> & Indexable<Rbx_Debris>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type Debris = RbxDebris & Indexable<RbxDebris>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "Debris"): Debris;
 }
 
 // DebugSettings
-interface Rbx_DebugSettings extends Rbx_Instance {
+interface RbxDebugSettings extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "DebugSettings";
 	readonly DataModel: number;
 	ErrorReporting: Enum.ErrorReporting;
 	readonly GfxCard: string;
@@ -1614,18 +1999,22 @@ interface Rbx_DebugSettings extends Rbx_Instance {
 	TickCountPreciseOverride: Enum.TickCountSampleMethod;
 	readonly VideoMemory: number;
 }
-type DebugSettings = Rbx_DebugSettings & Base<Rbx_DebugSettings> & Indexable<Rbx_DebugSettings>;
+type DebugSettings = RbxDebugSettings & Indexable<RbxDebugSettings>;
 
 // DebuggerBreakpoint
-interface Rbx_DebuggerBreakpoint extends Rbx_Instance {
+interface RbxDebuggerBreakpoint extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "DebuggerBreakpoint";
 	Condition: string;
 	IsEnabled: boolean;
 	readonly Line: number;
 }
-type DebuggerBreakpoint = Rbx_DebuggerBreakpoint & Base<Rbx_DebuggerBreakpoint> & Indexable<Rbx_DebuggerBreakpoint>;
+type DebuggerBreakpoint = RbxDebuggerBreakpoint & Indexable<RbxDebuggerBreakpoint>;
 
 // DebuggerManager
-interface Rbx_DebuggerManager extends Rbx_Instance {
+interface RbxDebuggerManager extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "DebuggerManager";
 	readonly DebuggingEnabled: boolean;
 	AddDebugger(script: Instance): Instance | undefined;
 	GetDebuggers(): Array<Instance>;
@@ -1636,17 +2025,21 @@ interface Rbx_DebuggerManager extends Rbx_Instance {
 	readonly DebuggerAdded: RBXScriptSignal<(debug: Instance) => void>;
 	readonly DebuggerRemoved: RBXScriptSignal<(debug: Instance) => void>;
 }
-type DebuggerManager = Rbx_DebuggerManager & Base<Rbx_DebuggerManager> & Indexable<Rbx_DebuggerManager>;
+type DebuggerManager = RbxDebuggerManager & Indexable<RbxDebuggerManager>;
 
 // DebuggerWatch
-interface Rbx_DebuggerWatch extends Rbx_Instance {
+interface RbxDebuggerWatch extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "DebuggerWatch";
 	Expression: string;
 	CheckSyntax(): void;
 }
-type DebuggerWatch = Rbx_DebuggerWatch & Base<Rbx_DebuggerWatch> & Indexable<Rbx_DebuggerWatch>;
+type DebuggerWatch = RbxDebuggerWatch & Indexable<RbxDebuggerWatch>;
 
 // Dialog
-interface Rbx_Dialog extends Rbx_Instance {
+interface RbxDialog extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Dialog";
 	/** Indicates how the dialog may be used by players. Use Enum.DialogBehaviorType.SinglePlayer if only one player should interact with the dialog at a time, otherwise use Enum.DialogBehaviorType.MultiplePlayers. */
 	BehaviorType: Enum.DialogBehaviorType;
 	/** The maximum distance that the player's character can be from the dialog's parent in order to use the dialog. */
@@ -1666,28 +2059,34 @@ interface Rbx_Dialog extends Rbx_Instance {
 	TriggerDistance: number;
 	TriggerOffset: Vector3;
 }
-type Dialog = Rbx_Dialog & Base<Rbx_Dialog> & Indexable<Rbx_Dialog>;
+type Dialog = RbxDialog & Indexable<RbxDialog>;
 
 // DialogChoice
-interface Rbx_DialogChoice extends Rbx_Instance {
+interface RbxDialogChoice extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "DialogChoice";
 	GoodbyeChoiceActive: boolean;
 	GoodbyeDialog: string;
 	ResponseDialog: string;
 	UserDialog: string;
 }
-type DialogChoice = Rbx_DialogChoice & Base<Rbx_DialogChoice> & Indexable<Rbx_DialogChoice>;
+type DialogChoice = RbxDialogChoice & Indexable<RbxDialogChoice>;
 
 // Dragger
-interface Rbx_Dragger extends Rbx_Instance {
+interface RbxDragger extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Dragger";
 	AxisRotate(axis?: Enum.Axis): void;
 	MouseDown(mousePart: Instance, pointOnMousePart: Vector3, parts: Array<Instance>): void;
 	MouseMove(mouseRay: Ray): void;
 	MouseUp(): void;
 }
-type Dragger = Rbx_Dragger & Base<Rbx_Dragger> & Indexable<Rbx_Dragger>;
+type Dragger = RbxDragger & Indexable<RbxDragger>;
 
 // Explosion
-interface Rbx_Explosion extends Rbx_Instance {
+interface RbxExplosion extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Explosion";
 	/** How much force this Explosion exerts on objects within it's BlastRadius. Setting this to 0 creates a purely graphical effect. A larger number will cause Parts to fly away at higher velocities. */
 	BlastPressure: number;
 	/** How big the Explosion is. This is a circle starting from the center of the Explosion's Position, the larger this property the larger the circle of destruction. */
@@ -1700,63 +2099,71 @@ interface Rbx_Explosion extends Rbx_Instance {
 	Visible: boolean;
 	readonly Hit: RBXScriptSignal<(part: Instance, distance: number) => void>;
 }
-type Explosion = Rbx_Explosion & Base<Rbx_Explosion> & Indexable<Rbx_Explosion>;
+type Explosion = RbxExplosion & Indexable<RbxExplosion>;
 
 // FaceInstance
-interface Rbx_FaceInstance extends Rbx_Instance {
+interface RbxFaceInstance extends RbxInstance {
 	Face: Enum.NormalId;
 }
-type FaceInstance = Rbx_FaceInstance & Base<Rbx_FaceInstance> & Indexable<Rbx_FaceInstance>;
+type FaceInstance = DerivesFromDecal;
 
-// Decal
-interface Rbx_Decal extends Rbx_FaceInstance {
+// DerivesFromDecal
+interface RbxDerivesFromDecal extends RbxFaceInstance {
 	Color3: Color3;
 	LocalTransparencyModifier: number;
 	Texture: string;
-	/** How visible the decal is.  1 is completely invisible, while 0 is completely opaque */
 	Transparency: number;
 }
-type Decal = Rbx_Decal & Base<Rbx_Decal> & Indexable<Rbx_Decal>;
+interface RbxDecal extends RbxDerivesFromDecal {
+	readonly ClassName: "Decal";
+}
+
+type Decal = RbxDecal & Indexable<RbxDecal>;
+type DerivesFromDecal = Decal | Texture;
 
 // Texture
-interface Rbx_Texture extends Rbx_Decal {
+interface RbxTexture extends RbxDerivesFromDecal {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Texture";
 	StudsPerTileU: number;
 	StudsPerTileV: number;
 }
-type Texture = Rbx_Texture & Base<Rbx_Texture> & Indexable<Rbx_Texture>;
+type Texture = RbxTexture & Indexable<RbxTexture>;
 
 // Feature
-interface Rbx_Feature extends Rbx_Instance {
+interface RbxFeature extends RbxInstance {
 	FaceId: Enum.NormalId;
 	InOut: Enum.InOut;
 	LeftRight: Enum.LeftRight;
 	TopBottom: Enum.TopBottom;
 }
-type Feature = Rbx_Feature & Base<Rbx_Feature> & Indexable<Rbx_Feature>;
+type Feature = Hole | MotorFeature;
 
 // Hole
-interface Rbx_Hole extends Rbx_Feature {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__25: never;
+interface RbxHole extends RbxFeature {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Hole";
 }
-type Hole = Rbx_Hole & Base<Rbx_Hole> & Indexable<Rbx_Hole>;
+type Hole = RbxHole & Indexable<RbxHole>;
 
 // MotorFeature
-interface Rbx_MotorFeature extends Rbx_Feature {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__26: never;
+interface RbxMotorFeature extends RbxFeature {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "MotorFeature";
 }
-type MotorFeature = Rbx_MotorFeature & Base<Rbx_MotorFeature> & Indexable<Rbx_MotorFeature>;
+type MotorFeature = RbxMotorFeature & Indexable<RbxMotorFeature>;
 
 // File
-interface Rbx_File extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__27: never;
+interface RbxFile extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "File";
 }
-type File = Rbx_File & Base<Rbx_File> & Indexable<Rbx_File>;
+type File = RbxFile & Indexable<RbxFile>;
 
 // Fire
-interface Rbx_Fire extends Rbx_Instance {
+interface RbxFire extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Fire";
 	/** The color of the base of the fire.  See SecondaryColor for more. */
 	Color: Color3;
 	Enabled: boolean;
@@ -1767,73 +2174,75 @@ interface Rbx_Fire extends Rbx_Instance {
 	/** How large the fire appears to be. */
 	Size: number;
 }
-type Fire = Rbx_Fire & Base<Rbx_Fire> & Indexable<Rbx_Fire>;
+type Fire = RbxFire & Indexable<RbxFire>;
 
 // FlagStandService
-interface Rbx_FlagStandService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__28: never;
+interface RbxFlagStandService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "FlagStandService";
 }
-type FlagStandService = Rbx_FlagStandService & Base<Rbx_FlagStandService> & Indexable<Rbx_FlagStandService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type FlagStandService = RbxFlagStandService & Indexable<RbxFlagStandService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "FlagStandService"): FlagStandService;
 }
 
 // FlyweightService
-interface Rbx_FlyweightService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__29: never;
+interface RbxFlyweightService extends RbxInstance {
 }
-type FlyweightService = Rbx_FlyweightService & Base<Rbx_FlyweightService> & Indexable<Rbx_FlyweightService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type FlyweightService = CSGDictionaryService | NonReplicatedCSGDictionaryService;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "FlyweightService"): FlyweightService;
 }
 
 // CSGDictionaryService
-interface Rbx_CSGDictionaryService extends Rbx_FlyweightService {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__30: never;
+interface RbxCSGDictionaryService extends RbxFlyweightService {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CSGDictionaryService";
 }
-type CSGDictionaryService = Rbx_CSGDictionaryService & Base<Rbx_CSGDictionaryService> & Indexable<Rbx_CSGDictionaryService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type CSGDictionaryService = RbxCSGDictionaryService & Indexable<RbxCSGDictionaryService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "CSGDictionaryService"): CSGDictionaryService;
 }
 
 // NonReplicatedCSGDictionaryService
-interface Rbx_NonReplicatedCSGDictionaryService extends Rbx_FlyweightService {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__31: never;
+interface RbxNonReplicatedCSGDictionaryService extends RbxFlyweightService {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "NonReplicatedCSGDictionaryService";
 }
-type NonReplicatedCSGDictionaryService = Rbx_NonReplicatedCSGDictionaryService & Base<Rbx_NonReplicatedCSGDictionaryService> & Indexable<Rbx_NonReplicatedCSGDictionaryService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type NonReplicatedCSGDictionaryService = RbxNonReplicatedCSGDictionaryService & Indexable<RbxNonReplicatedCSGDictionaryService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "NonReplicatedCSGDictionaryService"): NonReplicatedCSGDictionaryService;
 }
 
 // Folder
-interface Rbx_Folder extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__32: never;
+interface RbxFolder extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Folder";
 }
-type Folder = Rbx_Folder & Base<Rbx_Folder> & Indexable<Rbx_Folder>;
+type Folder = RbxFolder & Indexable<RbxFolder>;
 
 // ForceField
-interface Rbx_ForceField extends Rbx_Instance {
+interface RbxForceField extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ForceField";
 	Visible: boolean;
 }
-type ForceField = Rbx_ForceField & Base<Rbx_ForceField> & Indexable<Rbx_ForceField>;
+type ForceField = RbxForceField & Indexable<RbxForceField>;
 
 // FriendService
-interface Rbx_FriendService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__33: never;
+interface RbxFriendService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "FriendService";
 }
-type FriendService = Rbx_FriendService & Base<Rbx_FriendService> & Indexable<Rbx_FriendService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type FriendService = RbxFriendService & Indexable<RbxFriendService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "FriendService"): FriendService;
 }
 
 // FunctionalTest
-interface Rbx_FunctionalTest extends Rbx_Instance {
+interface RbxFunctionalTest extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "FunctionalTest";
 	Description: string;
 	Error(message?: string): void;
 	Failed(message?: string): void;
@@ -1841,20 +2250,22 @@ interface Rbx_FunctionalTest extends Rbx_Instance {
 	Passed(message?: string): void;
 	Warn(message?: string): void;
 }
-type FunctionalTest = Rbx_FunctionalTest & Base<Rbx_FunctionalTest> & Indexable<Rbx_FunctionalTest>;
+type FunctionalTest = RbxFunctionalTest & Indexable<RbxFunctionalTest>;
 
 // GamePassService
-interface Rbx_GamePassService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__34: never;
+interface RbxGamePassService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "GamePassService";
 }
-type GamePassService = Rbx_GamePassService & Base<Rbx_GamePassService> & Indexable<Rbx_GamePassService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type GamePassService = RbxGamePassService & Indexable<RbxGamePassService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "GamePassService"): GamePassService;
 }
 
 // GameSettings
-interface Rbx_GameSettings extends Rbx_Instance {
+interface RbxGameSettings extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "GameSettings";
 	AdditionalCoreIncludeDirs: string;
 	BubbleChatLifetime: number;
 	BubbleChatMaxBubbles: number;
@@ -1867,79 +2278,81 @@ interface Rbx_GameSettings extends Rbx_Instance {
 	VideoCaptureEnabled: boolean;
 	VideoQuality: Enum.VideoQualitySettings;
 }
-type GameSettings = Rbx_GameSettings & Base<Rbx_GameSettings> & Indexable<Rbx_GameSettings>;
+type GameSettings = RbxGameSettings & Indexable<RbxGameSettings>;
 
 // GamepadService
-interface Rbx_GamepadService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__35: never;
+interface RbxGamepadService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "GamepadService";
 }
-type GamepadService = Rbx_GamepadService & Base<Rbx_GamepadService> & Indexable<Rbx_GamepadService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type GamepadService = RbxGamepadService & Indexable<RbxGamepadService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "GamepadService"): GamepadService;
 }
 
 // Geometry
-interface Rbx_Geometry extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__36: never;
+interface RbxGeometry extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Geometry";
 }
-type Geometry = Rbx_Geometry & Base<Rbx_Geometry> & Indexable<Rbx_Geometry>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type Geometry = RbxGeometry & Indexable<RbxGeometry>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "Geometry"): Geometry;
 }
 
 // GlobalDataStore
-interface Rbx_GlobalDataStore extends Rbx_Instance {
+interface RbxGlobalDataStore extends RbxInstance {
 	/** Sets the value of the key. This overwrites any existing data stored in the key */
 	SetAsync(key: string, value?: any): void;
 }
-type GlobalDataStore = Rbx_GlobalDataStore & Base<Rbx_GlobalDataStore> & Indexable<Rbx_GlobalDataStore>;
+type GlobalDataStore = OrderedDataStore;
 
 // OrderedDataStore
-interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
+interface RbxOrderedDataStore extends RbxGlobalDataStore {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "OrderedDataStore";
 }
-type OrderedDataStore = Rbx_OrderedDataStore & Base<Rbx_OrderedDataStore> & Indexable<Rbx_OrderedDataStore>;
+type OrderedDataStore = RbxOrderedDataStore & Indexable<RbxOrderedDataStore>;
 
 // GoogleAnalyticsConfiguration
-interface Rbx_GoogleAnalyticsConfiguration extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__37: never;
+interface RbxGoogleAnalyticsConfiguration extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "GoogleAnalyticsConfiguration";
 }
-type GoogleAnalyticsConfiguration = Rbx_GoogleAnalyticsConfiguration & Base<Rbx_GoogleAnalyticsConfiguration> & Indexable<Rbx_GoogleAnalyticsConfiguration>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type GoogleAnalyticsConfiguration = RbxGoogleAnalyticsConfiguration & Indexable<RbxGoogleAnalyticsConfiguration>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "GoogleAnalyticsConfiguration"): GoogleAnalyticsConfiguration;
 }
 
 // GroupService
-interface Rbx_GroupService extends Rbx_Instance {
+interface RbxGroupService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "GroupService";
 }
-type GroupService = Rbx_GroupService & Base<Rbx_GroupService> & Indexable<Rbx_GroupService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type GroupService = RbxGroupService & Indexable<RbxGroupService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "GroupService"): GroupService;
 }
 
 // GuiBase
-interface Rbx_GuiBase extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__38: never;
+interface RbxGuiBase extends RbxInstance {
 }
-type GuiBase = Rbx_GuiBase & Base<Rbx_GuiBase> & Indexable<Rbx_GuiBase>;
+type GuiBase = GuiBase2d | GuiBase3d;
 
 // GuiBase2d
-interface Rbx_GuiBase2d extends Rbx_GuiBase {
+interface RbxGuiBase2d extends RbxGuiBase {
 	/** A read-only Vector2 value that is the GuiObject's current position (x,y) in pixel space, from the top left corner of the GuiObject. */
 	readonly AbsolutePosition: Vector2;
 	readonly AbsoluteRotation: number;
 	/** A read-only Vector2 value that is the GuiObject's current size (width, height) in pixel space. */
 	readonly AbsoluteSize: Vector2;
 	AutoLocalize: boolean;
-	RootLocalizationTable: LocalizationTable;
+	RootLocalizationTable?: LocalizationTable;
 }
-type GuiBase2d = Rbx_GuiBase2d & Base<Rbx_GuiBase2d> & Indexable<Rbx_GuiBase2d>;
+type GuiBase2d = GuiObject | LayerCollector;
 
 // GuiObject
-interface Rbx_GuiObject extends Rbx_GuiBase2d {
+interface RbxGuiObject extends RbxGuiBase2d {
 	/** If true, this GuiObject can fire mouse events and will pass them to any GuiObjects layered underneath, while false will do neither. */
 	Active: boolean;
 	AnchorPoint: Vector2;
@@ -1954,16 +2367,16 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 	/** If set to true, any descendants of this GuiObject will only render if contained within it's borders. If set to false, all descendants will render regardless of position. */
 	ClipsDescendants: boolean;
 	LayoutOrder: number;
-	NextSelectionDown: GuiObject;
-	NextSelectionLeft: GuiObject;
-	NextSelectionRight: GuiObject;
-	NextSelectionUp: GuiObject;
+	NextSelectionDown?: GuiObject;
+	NextSelectionLeft?: GuiObject;
+	NextSelectionRight?: GuiObject;
+	NextSelectionUp?: GuiObject;
 	/** A UDim2 value describing the position of the top-left corner of the GuiObject on screen. More information on UDim2 is available [here](http://wiki.roblox.com/index.php/UDim2). */
 	Position: UDim2;
 	Rotation: number;
 	Selectable: boolean;
 	/** Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject. */
-	SelectionImageObject: GuiObject;
+	SelectionImageObject?: GuiObject;
 	/** A UDim2 value describing the size of the GuiObject on screen in both absolute and relative coordinates. More information on UDim2 is available [here](http://wiki.roblox.com/index.php/UDim2). */
 	Size: UDim2;
 	/** The direction(s) that an object can be resized in. [More info](http://wiki.roblox.com/index.php/SizeConstraint). */
@@ -1991,17 +2404,19 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 	/** Fired when a user swipes their fingers on a TouchEnabled device. 'swipeDirection' is an Enum.SwipeDirection, indicating the direction the user swiped. 'numberOfTouches' is an int that indicates how many touches were involved with the gesture.  This event only fires locally. */
 	readonly TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number) => void>;
 }
-type GuiObject = Rbx_GuiObject & Base<Rbx_GuiObject> & Indexable<Rbx_GuiObject>;
+type GuiObject = Frame | GuiButton | GuiLabel | ScrollingFrame | TextBox | ViewportFrame;
 
 // Frame
-interface Rbx_Frame extends Rbx_GuiObject {
+interface RbxFrame extends RbxGuiObject {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Frame";
 	/** Determines how a frame will look. Uses Enum.FrameStyle. [More info](http://wiki.roblox.com/index.php?title=API:Enum/FrameStyle) */
 	Style: Enum.FrameStyle;
 }
-type Frame = Rbx_Frame & Base<Rbx_Frame> & Indexable<Rbx_Frame>;
+type Frame = RbxFrame & Indexable<RbxFrame>;
 
 // GuiButton
-interface Rbx_GuiButton extends Rbx_GuiObject {
+interface RbxGuiButton extends RbxGuiObject {
 	/** Determines whether a button changes color automatically when reacting to mouse events. */
 	AutoButtonColor: boolean;
 	/** Allows the mouse to be free in first person mode. If a button with this property set to true is visible, the mouse is 'free' in first person mode. */
@@ -2023,10 +2438,12 @@ interface Rbx_GuiButton extends Rbx_GuiObject {
 	/** This function currently does not work :( */
 	readonly MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
 }
-type GuiButton = Rbx_GuiButton & Base<Rbx_GuiButton> & Indexable<Rbx_GuiButton>;
+type GuiButton = ImageButton | TextButton;
 
 // ImageButton
-interface Rbx_ImageButton extends Rbx_GuiButton {
+interface RbxImageButton extends RbxGuiButton {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ImageButton";
 	HoverImage: string;
 	/** Specifies the asset id of the texture to display. [More info](http://wiki.roblox.com/index.php?title=API:Class/ImageButton/Image)  */
 	Image: string;
@@ -2044,10 +2461,12 @@ interface Rbx_ImageButton extends Rbx_GuiButton {
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 }
-type ImageButton = Rbx_ImageButton & Base<Rbx_ImageButton> & Indexable<Rbx_ImageButton>;
+type ImageButton = RbxImageButton & Indexable<RbxImageButton>;
 
 // TextButton
-interface Rbx_TextButton extends Rbx_GuiButton {
+interface RbxTextButton extends RbxGuiButton {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TextButton";
 	Font: Enum.Font;
 	LineHeight: number;
 	readonly LocalizedText: string;
@@ -2065,17 +2484,17 @@ interface Rbx_TextButton extends Rbx_GuiButton {
 	TextXAlignment: Enum.TextXAlignment;
 	TextYAlignment: Enum.TextYAlignment;
 }
-type TextButton = Rbx_TextButton & Base<Rbx_TextButton> & Indexable<Rbx_TextButton>;
+type TextButton = RbxTextButton & Indexable<RbxTextButton>;
 
 // GuiLabel
-interface Rbx_GuiLabel extends Rbx_GuiObject {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__39: never;
+interface RbxGuiLabel extends RbxGuiObject {
 }
-type GuiLabel = Rbx_GuiLabel & Base<Rbx_GuiLabel> & Indexable<Rbx_GuiLabel>;
+type GuiLabel = ImageLabel | TextLabel;
 
 // ImageLabel
-interface Rbx_ImageLabel extends Rbx_GuiLabel {
+interface RbxImageLabel extends RbxGuiLabel {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ImageLabel";
 	/** Specifies the id of the texture to display. [More info](http://wiki.roblox.com/index.php?title=API:Class/ImageLabel/Image) */
 	Image: string;
 	ImageColor3: Color3;
@@ -2091,10 +2510,12 @@ interface Rbx_ImageLabel extends Rbx_GuiLabel {
 	/** If ScaleType is set to Tile, this sets the size of the tile. */
 	TileSize: UDim2;
 }
-type ImageLabel = Rbx_ImageLabel & Base<Rbx_ImageLabel> & Indexable<Rbx_ImageLabel>;
+type ImageLabel = RbxImageLabel & Indexable<RbxImageLabel>;
 
 // TextLabel
-interface Rbx_TextLabel extends Rbx_GuiLabel {
+interface RbxTextLabel extends RbxGuiLabel {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TextLabel";
 	Font: Enum.Font;
 	LineHeight: number;
 	readonly LocalizedText: string;
@@ -2112,10 +2533,12 @@ interface Rbx_TextLabel extends Rbx_GuiLabel {
 	TextXAlignment: Enum.TextXAlignment;
 	TextYAlignment: Enum.TextYAlignment;
 }
-type TextLabel = Rbx_TextLabel & Base<Rbx_TextLabel> & Indexable<Rbx_TextLabel>;
+type TextLabel = RbxTextLabel & Indexable<RbxTextLabel>;
 
 // ScrollingFrame
-interface Rbx_ScrollingFrame extends Rbx_GuiObject {
+interface RbxScrollingFrame extends RbxGuiObject {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ScrollingFrame";
 	/** The size in pixels of the frame, without the scrollbars. */
 	readonly AbsoluteWindowSize: Vector2;
 	/** The "Down" image on the vertical scrollbar. Size of this is always ScrollBarThickness by ScrollBarThickness. This is also used as the "right" image on the horizontal scroll bar. */
@@ -2140,10 +2563,12 @@ interface Rbx_ScrollingFrame extends Rbx_GuiObject {
 	VerticalScrollBarInset: Enum.ScrollBarInset;
 	VerticalScrollBarPosition: Enum.VerticalScrollBarPosition;
 }
-type ScrollingFrame = Rbx_ScrollingFrame & Base<Rbx_ScrollingFrame> & Indexable<Rbx_ScrollingFrame>;
+type ScrollingFrame = RbxScrollingFrame & Indexable<RbxScrollingFrame>;
 
 // TextBox
-interface Rbx_TextBox extends Rbx_GuiObject {
+interface RbxTextBox extends RbxGuiObject {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TextBox";
 	ClearTextOnFocus: boolean;
 	CursorPosition: number;
 	Font: Enum.Font;
@@ -2171,29 +2596,33 @@ interface Rbx_TextBox extends Rbx_GuiObject {
 	readonly FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: Instance) => void>;
 	readonly Focused: RBXScriptSignal<() => void>;
 }
-type TextBox = Rbx_TextBox & Base<Rbx_TextBox> & Indexable<Rbx_TextBox>;
+type TextBox = RbxTextBox & Indexable<RbxTextBox>;
 
 // ViewportFrame
-interface Rbx_ViewportFrame extends Rbx_GuiObject {
+interface RbxViewportFrame extends RbxGuiObject {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ViewportFrame";
 	/** Current Camera of children objects */
-	CurrentCamera: Camera;
+	CurrentCamera?: Camera;
 	/** The rendered image of the ViewportFrame will be mutiplied by this color */
 	ImageColor3: Color3;
 	/** A number value that specifies how transparent the rendered image of the ViewportFrame is */
 	ImageTransparency: number;
 }
-type ViewportFrame = Rbx_ViewportFrame & Base<Rbx_ViewportFrame> & Indexable<Rbx_ViewportFrame>;
+type ViewportFrame = RbxViewportFrame & Indexable<RbxViewportFrame>;
 
 // LayerCollector
-interface Rbx_LayerCollector extends Rbx_GuiBase2d {
+interface RbxLayerCollector extends RbxGuiBase2d {
 	Enabled: boolean;
 	ResetOnSpawn: boolean;
 	ZIndexBehavior: Enum.ZIndexBehavior;
 }
-type LayerCollector = Rbx_LayerCollector & Base<Rbx_LayerCollector> & Indexable<Rbx_LayerCollector>;
+type LayerCollector = BillboardGui | PluginGui | DerivesFromScreenGui | SurfaceGui;
 
 // BillboardGui
-interface Rbx_BillboardGui extends Rbx_LayerCollector {
+interface RbxBillboardGui extends RbxLayerCollector {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BillboardGui";
 	/** If true, this GuiObject can fire mouse events and will pass them to any GuiObjects layered underneath, while false will do neither. */
 	Active: boolean;
 	/** If true, billboard gui does not get occluded by 3D objects, but always renders on the screen. */
@@ -2213,44 +2642,53 @@ interface Rbx_BillboardGui extends Rbx_LayerCollector {
 	StudsOffset: Vector3;
 	StudsOffsetWorldSpace: Vector3;
 }
-type BillboardGui = Rbx_BillboardGui & Base<Rbx_BillboardGui> & Indexable<Rbx_BillboardGui>;
+type BillboardGui = RbxBillboardGui & Indexable<RbxBillboardGui>;
 
 // PluginGui
-interface Rbx_PluginGui extends Rbx_LayerCollector {
+interface RbxPluginGui extends RbxLayerCollector {
 	Title: string;
 	BindToClose(callback?: Function): void;
 }
-type PluginGui = Rbx_PluginGui & Base<Rbx_PluginGui> & Indexable<Rbx_PluginGui>;
+type PluginGui = DockWidgetPluginGui | QWidgetPluginGui;
 
 // DockWidgetPluginGui
-interface Rbx_DockWidgetPluginGui extends Rbx_PluginGui {
+interface RbxDockWidgetPluginGui extends RbxPluginGui {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "DockWidgetPluginGui";
 	readonly HostWidgetWasRestored: boolean;
 }
-type DockWidgetPluginGui = Rbx_DockWidgetPluginGui & Base<Rbx_DockWidgetPluginGui> & Indexable<Rbx_DockWidgetPluginGui>;
+type DockWidgetPluginGui = RbxDockWidgetPluginGui & Indexable<RbxDockWidgetPluginGui>;
 
 // QWidgetPluginGui
-interface Rbx_QWidgetPluginGui extends Rbx_PluginGui {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__40: never;
+interface RbxQWidgetPluginGui extends RbxPluginGui {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "QWidgetPluginGui";
 }
-type QWidgetPluginGui = Rbx_QWidgetPluginGui & Base<Rbx_QWidgetPluginGui> & Indexable<Rbx_QWidgetPluginGui>;
+type QWidgetPluginGui = RbxQWidgetPluginGui & Indexable<RbxQWidgetPluginGui>;
 
-// ScreenGui
-interface Rbx_ScreenGui extends Rbx_LayerCollector {
+// DerivesFromScreenGui
+interface RbxDerivesFromScreenGui extends RbxLayerCollector {
 	DisplayOrder: number;
 	IgnoreGuiInset: boolean;
 }
-type ScreenGui = Rbx_ScreenGui & Base<Rbx_ScreenGui> & Indexable<Rbx_ScreenGui>;
+interface RbxScreenGui extends RbxDerivesFromScreenGui {
+	readonly ClassName: "ScreenGui";
+}
+
+type ScreenGui = RbxScreenGui & Indexable<RbxScreenGui>;
+type DerivesFromScreenGui = ScreenGui | GuiMain;
 
 // GuiMain
-interface Rbx_GuiMain extends Rbx_ScreenGui {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__41: never;
+interface RbxGuiMain extends RbxDerivesFromScreenGui {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "GuiMain";
 }
-type GuiMain = Rbx_GuiMain & Base<Rbx_GuiMain> & Indexable<Rbx_GuiMain>;
+type GuiMain = RbxGuiMain & Indexable<RbxGuiMain>;
 
 // SurfaceGui
-interface Rbx_SurfaceGui extends Rbx_LayerCollector {
+interface RbxSurfaceGui extends RbxLayerCollector {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SurfaceGui";
 	/** If true, this GuiObject can fire mouse events and will pass them to any GuiObjects layered underneath, while false will do neither. */
 	Active: boolean;
 	AlwaysOnTop: boolean;
@@ -2262,22 +2700,24 @@ interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 	ToolPunchThroughDistance: number;
 	ZOffset: number;
 }
-type SurfaceGui = Rbx_SurfaceGui & Base<Rbx_SurfaceGui> & Indexable<Rbx_SurfaceGui>;
+type SurfaceGui = RbxSurfaceGui & Indexable<RbxSurfaceGui>;
 
 // GuiBase3d
-interface Rbx_GuiBase3d extends Rbx_GuiBase {
+interface RbxGuiBase3d extends RbxGuiBase {
 	Color3: Color3;
 	Transparency: number;
 	Visible: boolean;
 }
-type GuiBase3d = Rbx_GuiBase3d & Base<Rbx_GuiBase3d> & Indexable<Rbx_GuiBase3d>;
+type GuiBase3d = FloorWire | PVAdornment | PartAdornment | SelectionLasso;
 
 // FloorWire
-interface Rbx_FloorWire extends Rbx_GuiBase3d {
+interface RbxFloorWire extends RbxGuiBase3d {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "FloorWire";
 	/** Controls how the decals are positioned along the wire. [More info](http://wiki.roblox.com/index.php/CycleOffset) */
 	CycleOffset: number;
 	/** The object the FloorWire 'emits' from */
-	From: BasePart;
+	From?: BasePart;
 	/** The space between two textures on the wire. Note: studs are relative depending on how far the camera is from the FloorWire. */
 	StudsBetweenTextures: number;
 	/** The image we use to render the textures that flow from beginning to end of the FloorWire. */
@@ -2285,22 +2725,22 @@ interface Rbx_FloorWire extends Rbx_GuiBase3d {
 	/** The size in studs of the Texture we use to flow from one object to the next. */
 	TextureSize: Vector2;
 	/** The object the FloorWire 'emits' to */
-	To: BasePart;
+	To?: BasePart;
 	/** The rate of travel that the textures flow along the wire. */
 	Velocity: number;
 	/** How thick the wire is. */
 	WireRadius: number;
 }
-type FloorWire = Rbx_FloorWire & Base<Rbx_FloorWire> & Indexable<Rbx_FloorWire>;
+type FloorWire = RbxFloorWire & Indexable<RbxFloorWire>;
 
 // PVAdornment
-interface Rbx_PVAdornment extends Rbx_GuiBase3d {
-	Adornee: PVInstance;
+interface RbxPVAdornment extends RbxGuiBase3d {
+	Adornee?: PVInstance;
 }
-type PVAdornment = Rbx_PVAdornment & Base<Rbx_PVAdornment> & Indexable<Rbx_PVAdornment>;
+type PVAdornment = HandleAdornment | ParabolaAdornment | SelectionBox | SelectionSphere;
 
 // HandleAdornment
-interface Rbx_HandleAdornment extends Rbx_PVAdornment {
+interface RbxHandleAdornment extends RbxPVAdornment {
 	AlwaysOnTop: boolean;
 	CFrame: CFrame;
 	SizeRelativeOffset: Vector3;
@@ -2310,85 +2750,101 @@ interface Rbx_HandleAdornment extends Rbx_PVAdornment {
 	readonly MouseEnter: RBXScriptSignal<() => void>;
 	readonly MouseLeave: RBXScriptSignal<() => void>;
 }
-type HandleAdornment = Rbx_HandleAdornment & Base<Rbx_HandleAdornment> & Indexable<Rbx_HandleAdornment>;
+type HandleAdornment = BoxHandleAdornment | ConeHandleAdornment | CylinderHandleAdornment | ImageHandleAdornment | LineHandleAdornment | SphereHandleAdornment;
 
 // BoxHandleAdornment
-interface Rbx_BoxHandleAdornment extends Rbx_HandleAdornment {
+interface RbxBoxHandleAdornment extends RbxHandleAdornment {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BoxHandleAdornment";
 	Size: Vector3;
 }
-type BoxHandleAdornment = Rbx_BoxHandleAdornment & Base<Rbx_BoxHandleAdornment> & Indexable<Rbx_BoxHandleAdornment>;
+type BoxHandleAdornment = RbxBoxHandleAdornment & Indexable<RbxBoxHandleAdornment>;
 
 // ConeHandleAdornment
-interface Rbx_ConeHandleAdornment extends Rbx_HandleAdornment {
+interface RbxConeHandleAdornment extends RbxHandleAdornment {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ConeHandleAdornment";
 	Height: number;
 	Radius: number;
 }
-type ConeHandleAdornment = Rbx_ConeHandleAdornment & Base<Rbx_ConeHandleAdornment> & Indexable<Rbx_ConeHandleAdornment>;
+type ConeHandleAdornment = RbxConeHandleAdornment & Indexable<RbxConeHandleAdornment>;
 
 // CylinderHandleAdornment
-interface Rbx_CylinderHandleAdornment extends Rbx_HandleAdornment {
+interface RbxCylinderHandleAdornment extends RbxHandleAdornment {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CylinderHandleAdornment";
 	Height: number;
 	Radius: number;
 }
-type CylinderHandleAdornment = Rbx_CylinderHandleAdornment & Base<Rbx_CylinderHandleAdornment> & Indexable<Rbx_CylinderHandleAdornment>;
+type CylinderHandleAdornment = RbxCylinderHandleAdornment & Indexable<RbxCylinderHandleAdornment>;
 
 // ImageHandleAdornment
-interface Rbx_ImageHandleAdornment extends Rbx_HandleAdornment {
+interface RbxImageHandleAdornment extends RbxHandleAdornment {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ImageHandleAdornment";
 	Image: string;
 	Size: Vector2;
 }
-type ImageHandleAdornment = Rbx_ImageHandleAdornment & Base<Rbx_ImageHandleAdornment> & Indexable<Rbx_ImageHandleAdornment>;
+type ImageHandleAdornment = RbxImageHandleAdornment & Indexable<RbxImageHandleAdornment>;
 
 // LineHandleAdornment
-interface Rbx_LineHandleAdornment extends Rbx_HandleAdornment {
+interface RbxLineHandleAdornment extends RbxHandleAdornment {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "LineHandleAdornment";
 	Length: number;
 	Thickness: number;
 }
-type LineHandleAdornment = Rbx_LineHandleAdornment & Base<Rbx_LineHandleAdornment> & Indexable<Rbx_LineHandleAdornment>;
+type LineHandleAdornment = RbxLineHandleAdornment & Indexable<RbxLineHandleAdornment>;
 
 // SphereHandleAdornment
-interface Rbx_SphereHandleAdornment extends Rbx_HandleAdornment {
+interface RbxSphereHandleAdornment extends RbxHandleAdornment {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SphereHandleAdornment";
 	Radius: number;
 }
-type SphereHandleAdornment = Rbx_SphereHandleAdornment & Base<Rbx_SphereHandleAdornment> & Indexable<Rbx_SphereHandleAdornment>;
+type SphereHandleAdornment = RbxSphereHandleAdornment & Indexable<RbxSphereHandleAdornment>;
 
 // ParabolaAdornment
-interface Rbx_ParabolaAdornment extends Rbx_PVAdornment {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__42: never;
+interface RbxParabolaAdornment extends RbxPVAdornment {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ParabolaAdornment";
 }
-type ParabolaAdornment = Rbx_ParabolaAdornment & Base<Rbx_ParabolaAdornment> & Indexable<Rbx_ParabolaAdornment>;
+type ParabolaAdornment = RbxParabolaAdornment & Indexable<RbxParabolaAdornment>;
 
 // SelectionBox
-interface Rbx_SelectionBox extends Rbx_PVAdornment {
+interface RbxSelectionBox extends RbxPVAdornment {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SelectionBox";
 	LineThickness: number;
 	SurfaceColor3: Color3;
 	SurfaceTransparency: number;
 }
-type SelectionBox = Rbx_SelectionBox & Base<Rbx_SelectionBox> & Indexable<Rbx_SelectionBox>;
+type SelectionBox = RbxSelectionBox & Indexable<RbxSelectionBox>;
 
 // SelectionSphere
-interface Rbx_SelectionSphere extends Rbx_PVAdornment {
+interface RbxSelectionSphere extends RbxPVAdornment {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SelectionSphere";
 	SurfaceColor3: Color3;
 	SurfaceTransparency: number;
 }
-type SelectionSphere = Rbx_SelectionSphere & Base<Rbx_SelectionSphere> & Indexable<Rbx_SelectionSphere>;
+type SelectionSphere = RbxSelectionSphere & Indexable<RbxSelectionSphere>;
 
 // PartAdornment
-interface Rbx_PartAdornment extends Rbx_GuiBase3d {
-	Adornee: BasePart;
+interface RbxPartAdornment extends RbxGuiBase3d {
+	Adornee?: BasePart;
 }
-type PartAdornment = Rbx_PartAdornment & Base<Rbx_PartAdornment> & Indexable<Rbx_PartAdornment>;
+type PartAdornment = HandlesBase | SurfaceSelection;
 
 // HandlesBase
-interface Rbx_HandlesBase extends Rbx_PartAdornment {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__43: never;
+interface RbxHandlesBase extends RbxPartAdornment {
 }
-type HandlesBase = Rbx_HandlesBase & Base<Rbx_HandlesBase> & Indexable<Rbx_HandlesBase>;
+type HandlesBase = ArcHandles | Handles;
 
 // ArcHandles
-interface Rbx_ArcHandles extends Rbx_HandlesBase {
+interface RbxArcHandles extends RbxHandlesBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ArcHandles";
 	Axes: Axes;
 	readonly MouseButton1Down: RBXScriptSignal<(axis: Enum.Axis) => void>;
 	readonly MouseButton1Up: RBXScriptSignal<(axis: Enum.Axis) => void>;
@@ -2396,10 +2852,12 @@ interface Rbx_ArcHandles extends Rbx_HandlesBase {
 	readonly MouseEnter: RBXScriptSignal<(axis: Enum.Axis) => void>;
 	readonly MouseLeave: RBXScriptSignal<(axis: Enum.Axis) => void>;
 }
-type ArcHandles = Rbx_ArcHandles & Base<Rbx_ArcHandles> & Indexable<Rbx_ArcHandles>;
+type ArcHandles = RbxArcHandles & Indexable<RbxArcHandles>;
 
 // Handles
-interface Rbx_Handles extends Rbx_HandlesBase {
+interface RbxHandles extends RbxHandlesBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Handles";
 	Faces: Faces;
 	Style: Enum.HandlesStyle;
 	readonly MouseButton1Down: RBXScriptSignal<(face: Enum.NormalId) => void>;
@@ -2408,190 +2866,124 @@ interface Rbx_Handles extends Rbx_HandlesBase {
 	readonly MouseEnter: RBXScriptSignal<(face: Enum.NormalId) => void>;
 	readonly MouseLeave: RBXScriptSignal<(face: Enum.NormalId) => void>;
 }
-type Handles = Rbx_Handles & Base<Rbx_Handles> & Indexable<Rbx_Handles>;
+type Handles = RbxHandles & Indexable<RbxHandles>;
 
 // SurfaceSelection
-interface Rbx_SurfaceSelection extends Rbx_PartAdornment {
+interface RbxSurfaceSelection extends RbxPartAdornment {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SurfaceSelection";
 	TargetSurface: Enum.NormalId;
 }
-type SurfaceSelection = Rbx_SurfaceSelection & Base<Rbx_SurfaceSelection> & Indexable<Rbx_SurfaceSelection>;
+type SurfaceSelection = RbxSurfaceSelection & Indexable<RbxSurfaceSelection>;
 
 // SelectionLasso
-interface Rbx_SelectionLasso extends Rbx_GuiBase3d {
-	Humanoid: Humanoid;
+interface RbxSelectionLasso extends RbxGuiBase3d {
+	Humanoid?: Humanoid;
 }
-type SelectionLasso = Rbx_SelectionLasso & Base<Rbx_SelectionLasso> & Indexable<Rbx_SelectionLasso>;
+type SelectionLasso = SelectionPartLasso | SelectionPointLasso;
 
 // SelectionPartLasso
-interface Rbx_SelectionPartLasso extends Rbx_SelectionLasso {
-	Part: BasePart;
+interface RbxSelectionPartLasso extends RbxSelectionLasso {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SelectionPartLasso";
+	Part?: BasePart;
 }
-type SelectionPartLasso = Rbx_SelectionPartLasso & Base<Rbx_SelectionPartLasso> & Indexable<Rbx_SelectionPartLasso>;
+type SelectionPartLasso = RbxSelectionPartLasso & Indexable<RbxSelectionPartLasso>;
 
 // SelectionPointLasso
-interface Rbx_SelectionPointLasso extends Rbx_SelectionLasso {
+interface RbxSelectionPointLasso extends RbxSelectionLasso {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SelectionPointLasso";
 	Point: Vector3;
 }
-type SelectionPointLasso = Rbx_SelectionPointLasso & Base<Rbx_SelectionPointLasso> & Indexable<Rbx_SelectionPointLasso>;
-
-// GuiItem
-interface Rbx_GuiItem extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__44: never;
-}
-type GuiItem = Rbx_GuiItem & Base<Rbx_GuiItem> & Indexable<Rbx_GuiItem>;
-
-// Backpack
-interface Rbx_Backpack extends Rbx_GuiItem {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__45: never;
-}
-type Backpack = Rbx_Backpack & Base<Rbx_Backpack> & Indexable<Rbx_Backpack>;
-
-// BackpackItem
-interface Rbx_BackpackItem extends Rbx_GuiItem {
-	TextureId: string;
-}
-type BackpackItem = Rbx_BackpackItem & Base<Rbx_BackpackItem> & Indexable<Rbx_BackpackItem>;
-
-// HopperBin
-interface Rbx_HopperBin extends Rbx_BackpackItem {
-	Active: boolean;
-	BinType: Enum.BinType;
-	readonly Deselected: RBXScriptSignal<() => void>;
-	readonly Selected: RBXScriptSignal<(mouse: Instance) => void>;
-}
-type HopperBin = Rbx_HopperBin & Base<Rbx_HopperBin> & Indexable<Rbx_HopperBin>;
-
-// Tool
-interface Rbx_Tool extends Rbx_BackpackItem {
-	CanBeDropped: boolean;
-	Enabled: boolean;
-	Grip: CFrame;
-	GripForward: Vector3;
-	GripPos: Vector3;
-	GripRight: Vector3;
-	GripUp: Vector3;
-	ManualActivationOnly: boolean;
-	RequiresHandle: boolean;
-	ToolTip: string;
-	Activate(): void;
-	Deactivate(): void;
-	readonly Activated: RBXScriptSignal<() => void>;
-	readonly Deactivated: RBXScriptSignal<() => void>;
-	readonly Unequipped: RBXScriptSignal<() => void>;
-}
-type Tool = Rbx_Tool & Base<Rbx_Tool> & Indexable<Rbx_Tool>;
-
-// Flag
-interface Rbx_Flag extends Rbx_Tool {
-	/** The Team this flag is for. Corresponds with the TeamColors in the Teams service. */
-	TeamColor: BrickColor;
-}
-type Flag = Rbx_Flag & Base<Rbx_Flag> & Indexable<Rbx_Flag>;
-
-// ButtonBindingWidget
-interface Rbx_ButtonBindingWidget extends Rbx_GuiItem {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__46: never;
-}
-type ButtonBindingWidget = Rbx_ButtonBindingWidget & Base<Rbx_ButtonBindingWidget> & Indexable<Rbx_ButtonBindingWidget>;
-
-// GuiRoot
-interface Rbx_GuiRoot extends Rbx_GuiItem {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__47: never;
-}
-type GuiRoot = Rbx_GuiRoot & Base<Rbx_GuiRoot> & Indexable<Rbx_GuiRoot>;
-
-// Hopper
-interface Rbx_Hopper extends Rbx_GuiItem {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__48: never;
-}
-type Hopper = Rbx_Hopper & Base<Rbx_Hopper> & Indexable<Rbx_Hopper>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
-	GetService(className: "Hopper"): Hopper;
-}
-
-// StarterPack
-interface Rbx_StarterPack extends Rbx_GuiItem {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__49: never;
-}
-type StarterPack = Rbx_StarterPack & Base<Rbx_StarterPack> & Indexable<Rbx_StarterPack>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
-	GetService(className: "StarterPack"): StarterPack;
-}
+type SelectionPointLasso = RbxSelectionPointLasso & Indexable<RbxSelectionPointLasso>;
 
 // GuiService
-interface Rbx_GuiService extends Rbx_Instance {
+interface RbxGuiService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "GuiService";
 	AutoSelectGuiEnabled: boolean;
 	CoreGuiNavigationEnabled: boolean;
 	GuiNavigationEnabled: boolean;
 	readonly MenuIsOpen: boolean;
-	SelectedObject: GuiObject;
+	SelectedObject?: GuiObject;
 	IsTenFootInterface(): boolean;
 	RemoveSelectionGroup(selectionName: string): void;
 	readonly MenuClosed: RBXScriptSignal<() => void>;
 	readonly MenuOpened: RBXScriptSignal<() => void>;
 }
-type GuiService = Rbx_GuiService & Base<Rbx_GuiService> & Indexable<Rbx_GuiService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type GuiService = RbxGuiService & Indexable<RbxGuiService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "GuiService"): GuiService;
 }
 
 // GuidRegistryService
-interface Rbx_GuidRegistryService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__50: never;
+interface RbxGuidRegistryService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "GuidRegistryService";
 }
-type GuidRegistryService = Rbx_GuidRegistryService & Base<Rbx_GuidRegistryService> & Indexable<Rbx_GuidRegistryService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type GuidRegistryService = RbxGuidRegistryService & Indexable<RbxGuidRegistryService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "GuidRegistryService"): GuidRegistryService;
 }
 
 // HapticService
-interface Rbx_HapticService extends Rbx_Instance {
+interface RbxHapticService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "HapticService";
 	IsMotorSupported(inputType: Enum.UserInputType, vibrationMotor: Enum.VibrationMotor): boolean;
 	IsVibrationSupported(inputType: Enum.UserInputType): boolean;
 }
-type HapticService = Rbx_HapticService & Base<Rbx_HapticService> & Indexable<Rbx_HapticService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type HapticService = RbxHapticService & Indexable<RbxHapticService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "HapticService"): HapticService;
 }
 
-// HttpRbxApiService
-interface Rbx_HttpRbxApiService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__51: never;
+// Hopper
+interface RbxHopper extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Hopper";
 }
-type HttpRbxApiService = Rbx_HttpRbxApiService & Base<Rbx_HttpRbxApiService> & Indexable<Rbx_HttpRbxApiService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type Hopper = RbxHopper & Indexable<RbxHopper>;
+interface RbxServiceProvider extends RbxInstance {
+	GetService(className: "Hopper"): Hopper;
+}
+
+// HttpRbxApiService
+interface RbxHttpRbxApiService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "HttpRbxApiService";
+}
+type HttpRbxApiService = RbxHttpRbxApiService & Indexable<RbxHttpRbxApiService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "HttpRbxApiService"): HttpRbxApiService;
 }
 
 // HttpRequest
-interface Rbx_HttpRequest extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__52: never;
+interface RbxHttpRequest extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "HttpRequest";
 }
-type HttpRequest = Rbx_HttpRequest & Base<Rbx_HttpRequest> & Indexable<Rbx_HttpRequest>;
+type HttpRequest = RbxHttpRequest & Indexable<RbxHttpRequest>;
 
 // HttpService
-interface Rbx_HttpService extends Rbx_Instance {
+interface RbxHttpService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "HttpService";
 	GenerateGUID(wrapInCurlyBraces?: boolean): string;
 	JSONDecode(input: string): unknown;
 	JSONEncode(input?: any): string;
 	UrlEncode(input: string): string;
 }
-type HttpService = Rbx_HttpService & Base<Rbx_HttpService> & Indexable<Rbx_HttpService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type HttpService = RbxHttpService & Indexable<RbxHttpService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "HttpService"): HttpService;
 }
 
 // Humanoid
-interface Rbx_Humanoid extends Rbx_Instance {
+interface RbxHumanoid extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Humanoid";
 	AutoJumpEnabled: boolean;
 	AutoRotate: boolean;
 	AutomaticScalingEnabled: boolean;
@@ -2605,6 +2997,7 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	HealthDisplayType: Enum.HumanoidHealthDisplayType;
 	HipHeight: number;
 	Jump: boolean;
+	JumpHeight: number;
 	JumpPower: number;
 	/** The maximum number of hit points a Humanoid's health can reach.  If the Humanoid's health is set over this amount, the health gets set to this value. */
 	MaxHealth: number;
@@ -2615,13 +3008,14 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	NameOcclusion: Enum.NameOcclusion;
 	PlatformStand: boolean;
 	RigType: Enum.HumanoidRigType;
-	readonly RootPart: BasePart;
-	readonly SeatPart: BasePart;
+	readonly RootPart?: BasePart;
+	readonly SeatPart?: BasePart;
 	Sit: boolean;
 	/** The location that the Humanoid is trying to walk to. */
 	TargetPoint: Vector3;
+	UseJumpPower: boolean;
 	WalkSpeed: number;
-	WalkToPart: BasePart;
+	WalkToPart?: BasePart;
 	WalkToPoint: Vector3;
 	BuildRigFromAttachments(): void;
 	ChangeState(state?: Enum.HumanoidStateType): void;
@@ -2650,10 +3044,12 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	readonly Strafing: RBXScriptSignal<(active: boolean) => void>;
 	readonly Swimming: RBXScriptSignal<(speed: number) => void>;
 }
-type Humanoid = Rbx_Humanoid & Base<Rbx_Humanoid> & Indexable<Rbx_Humanoid>;
+type Humanoid = RbxHumanoid & Indexable<RbxHumanoid>;
 
 // HumanoidDescription
-interface Rbx_HumanoidDescription extends Rbx_Instance {
+interface RbxHumanoidDescription extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "HumanoidDescription";
 	BackAccessory: string;
 	BodyTypeScale: number;
 	ClimbAnimation: number;
@@ -2692,10 +3088,12 @@ interface Rbx_HumanoidDescription extends Rbx_Instance {
 	WalkAnimation: number;
 	WidthScale: number;
 }
-type HumanoidDescription = Rbx_HumanoidDescription & Base<Rbx_HumanoidDescription> & Indexable<Rbx_HumanoidDescription>;
+type HumanoidDescription = RbxHumanoidDescription & Indexable<RbxHumanoidDescription>;
 
 // InputObject
-interface Rbx_InputObject extends Rbx_Instance {
+interface RbxInputObject extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "InputObject";
 	Delta: Vector3;
 	/** An enum that describes what kind of input is being pressed. For types of input like Keyboard, this describes what key was pressed. For input like mousebutton, this provides no additional information. */
 	KeyCode: Enum.KeyCode;
@@ -2706,207 +3104,236 @@ interface Rbx_InputObject extends Rbx_Instance {
 	/** An enum that describes what kind of input this object is describing (mousebutton, touch, etc.).  See Enum.UserInputType for more info. */
 	UserInputType: Enum.UserInputType;
 }
-type InputObject = Rbx_InputObject & Base<Rbx_InputObject> & Indexable<Rbx_InputObject>;
+type InputObject = RbxInputObject & Indexable<RbxInputObject>;
 
 // InsertService
-interface Rbx_InsertService extends Rbx_Instance {
+interface RbxInsertService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "InsertService";
 	GetLatestAssetVersionAsync(assetId: number): number;
 }
-type InsertService = Rbx_InsertService & Base<Rbx_InsertService> & Indexable<Rbx_InsertService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type InsertService = RbxInsertService & Indexable<RbxInsertService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "InsertService"): InsertService;
 }
 
 // JointInstance
-interface Rbx_JointInstance extends Rbx_Instance {
+interface RbxJointInstance extends RbxInstance {
 	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
 	readonly Active: boolean;
 	C0: CFrame;
 	C1: CFrame;
 }
-type JointInstance = Rbx_JointInstance & Base<Rbx_JointInstance> & Indexable<Rbx_JointInstance>;
+type JointInstance = DynamicRotate | Glue | ManualSurfaceJointInstance | DerivesFromMotor | Rotate | Snap | VelocityMotor | Weld;
 
 // DynamicRotate
-interface Rbx_DynamicRotate extends Rbx_JointInstance {
+interface RbxDynamicRotate extends RbxJointInstance {
 	BaseAngle: number;
 }
-type DynamicRotate = Rbx_DynamicRotate & Base<Rbx_DynamicRotate> & Indexable<Rbx_DynamicRotate>;
+type DynamicRotate = RotateP | RotateV;
 
 // RotateP
-interface Rbx_RotateP extends Rbx_DynamicRotate {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__53: never;
+interface RbxRotateP extends RbxDynamicRotate {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RotateP";
 }
-type RotateP = Rbx_RotateP & Base<Rbx_RotateP> & Indexable<Rbx_RotateP>;
+type RotateP = RbxRotateP & Indexable<RbxRotateP>;
 
 // RotateV
-interface Rbx_RotateV extends Rbx_DynamicRotate {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__54: never;
+interface RbxRotateV extends RbxDynamicRotate {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RotateV";
 }
-type RotateV = Rbx_RotateV & Base<Rbx_RotateV> & Indexable<Rbx_RotateV>;
+type RotateV = RbxRotateV & Indexable<RbxRotateV>;
 
 // Glue
-interface Rbx_Glue extends Rbx_JointInstance {
+interface RbxGlue extends RbxJointInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Glue";
 	F0: Vector3;
 	F1: Vector3;
 	F2: Vector3;
 	F3: Vector3;
 }
-type Glue = Rbx_Glue & Base<Rbx_Glue> & Indexable<Rbx_Glue>;
+type Glue = RbxGlue & Indexable<RbxGlue>;
 
 // ManualSurfaceJointInstance
-interface Rbx_ManualSurfaceJointInstance extends Rbx_JointInstance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__55: never;
+interface RbxManualSurfaceJointInstance extends RbxJointInstance {
 }
-type ManualSurfaceJointInstance = Rbx_ManualSurfaceJointInstance & Base<Rbx_ManualSurfaceJointInstance> & Indexable<Rbx_ManualSurfaceJointInstance>;
+type ManualSurfaceJointInstance = ManualGlue | ManualWeld;
 
 // ManualGlue
-interface Rbx_ManualGlue extends Rbx_ManualSurfaceJointInstance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__56: never;
+interface RbxManualGlue extends RbxManualSurfaceJointInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ManualGlue";
 }
-type ManualGlue = Rbx_ManualGlue & Base<Rbx_ManualGlue> & Indexable<Rbx_ManualGlue>;
+type ManualGlue = RbxManualGlue & Indexable<RbxManualGlue>;
 
 // ManualWeld
-interface Rbx_ManualWeld extends Rbx_ManualSurfaceJointInstance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__57: never;
+interface RbxManualWeld extends RbxManualSurfaceJointInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ManualWeld";
 }
-type ManualWeld = Rbx_ManualWeld & Base<Rbx_ManualWeld> & Indexable<Rbx_ManualWeld>;
+type ManualWeld = RbxManualWeld & Indexable<RbxManualWeld>;
 
-// Motor
-interface Rbx_Motor extends Rbx_JointInstance {
+// DerivesFromMotor
+interface RbxDerivesFromMotor extends RbxJointInstance {
 	CurrentAngle: number;
 	DesiredAngle: number;
 	MaxVelocity: number;
 	SetDesiredAngle(value: number): void;
 }
-type Motor = Rbx_Motor & Base<Rbx_Motor> & Indexable<Rbx_Motor>;
+interface RbxMotor extends RbxDerivesFromMotor {
+	readonly ClassName: "Motor";
+}
+
+type Motor = RbxMotor & Indexable<RbxMotor>;
+type DerivesFromMotor = Motor | Motor6D;
 
 // Motor6D
-interface Rbx_Motor6D extends Rbx_Motor {
+interface RbxMotor6D extends RbxDerivesFromMotor {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Motor6D";
 	Transform: CFrame;
 }
-type Motor6D = Rbx_Motor6D & Base<Rbx_Motor6D> & Indexable<Rbx_Motor6D>;
+type Motor6D = RbxMotor6D & Indexable<RbxMotor6D>;
 
 // Rotate
-interface Rbx_Rotate extends Rbx_JointInstance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__58: never;
+interface RbxRotate extends RbxJointInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Rotate";
 }
-type Rotate = Rbx_Rotate & Base<Rbx_Rotate> & Indexable<Rbx_Rotate>;
+type Rotate = RbxRotate & Indexable<RbxRotate>;
 
 // Snap
-interface Rbx_Snap extends Rbx_JointInstance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__59: never;
+interface RbxSnap extends RbxJointInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Snap";
 }
-type Snap = Rbx_Snap & Base<Rbx_Snap> & Indexable<Rbx_Snap>;
+type Snap = RbxSnap & Indexable<RbxSnap>;
 
 // VelocityMotor
-interface Rbx_VelocityMotor extends Rbx_JointInstance {
+interface RbxVelocityMotor extends RbxJointInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "VelocityMotor";
 	CurrentAngle: number;
 	DesiredAngle: number;
-	Hole: Hole;
+	Hole?: Hole;
 	MaxVelocity: number;
 }
-type VelocityMotor = Rbx_VelocityMotor & Base<Rbx_VelocityMotor> & Indexable<Rbx_VelocityMotor>;
+type VelocityMotor = RbxVelocityMotor & Indexable<RbxVelocityMotor>;
 
 // Weld
-interface Rbx_Weld extends Rbx_JointInstance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__60: never;
+interface RbxWeld extends RbxJointInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Weld";
 }
-type Weld = Rbx_Weld & Base<Rbx_Weld> & Indexable<Rbx_Weld>;
+type Weld = RbxWeld & Indexable<RbxWeld>;
 
 // JointsService
-interface Rbx_JointsService extends Rbx_Instance {
+interface RbxJointsService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "JointsService";
 	ClearJoinAfterMoveJoints(): void;
 	CreateJoinAfterMoveJoints(): void;
 	SetJoinAfterMoveInstance(joinInstance: Instance): void;
 	SetJoinAfterMoveTarget(joinTarget: Instance): void;
 	ShowPermissibleJoints(): void;
 }
-type JointsService = Rbx_JointsService & Base<Rbx_JointsService> & Indexable<Rbx_JointsService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type JointsService = RbxJointsService & Indexable<RbxJointsService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "JointsService"): JointsService;
 }
 
 // KeyboardService
-interface Rbx_KeyboardService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__61: never;
+interface RbxKeyboardService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "KeyboardService";
 }
-type KeyboardService = Rbx_KeyboardService & Base<Rbx_KeyboardService> & Indexable<Rbx_KeyboardService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type KeyboardService = RbxKeyboardService & Indexable<RbxKeyboardService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "KeyboardService"): KeyboardService;
 }
 
 // Keyframe
-interface Rbx_Keyframe extends Rbx_Instance {
+interface RbxKeyframe extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Keyframe";
 	Time: number;
 	AddMarker(marker: Instance): void;
 	GetMarkers(): Array<Instance>;
 	RemoveMarker(marker: Instance): void;
 }
-type Keyframe = Rbx_Keyframe & Base<Rbx_Keyframe> & Indexable<Rbx_Keyframe>;
+type Keyframe = RbxKeyframe & Indexable<RbxKeyframe>;
 
 // KeyframeMarker
-interface Rbx_KeyframeMarker extends Rbx_Instance {
+interface RbxKeyframeMarker extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "KeyframeMarker";
 	Value: string;
 }
-type KeyframeMarker = Rbx_KeyframeMarker & Base<Rbx_KeyframeMarker> & Indexable<Rbx_KeyframeMarker>;
+type KeyframeMarker = RbxKeyframeMarker & Indexable<RbxKeyframeMarker>;
 
 // KeyframeSequence
-interface Rbx_KeyframeSequence extends Rbx_Instance {
+interface RbxKeyframeSequence extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "KeyframeSequence";
 	Loop: boolean;
 	Priority: Enum.AnimationPriority;
 }
-type KeyframeSequence = Rbx_KeyframeSequence & Base<Rbx_KeyframeSequence> & Indexable<Rbx_KeyframeSequence>;
+type KeyframeSequence = RbxKeyframeSequence & Indexable<RbxKeyframeSequence>;
 
 // KeyframeSequenceProvider
-interface Rbx_KeyframeSequenceProvider extends Rbx_Instance {
+interface RbxKeyframeSequenceProvider extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "KeyframeSequenceProvider";
 }
-type KeyframeSequenceProvider = Rbx_KeyframeSequenceProvider & Base<Rbx_KeyframeSequenceProvider> & Indexable<Rbx_KeyframeSequenceProvider>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type KeyframeSequenceProvider = RbxKeyframeSequenceProvider & Indexable<RbxKeyframeSequenceProvider>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "KeyframeSequenceProvider"): KeyframeSequenceProvider;
 }
 
 // Light
-interface Rbx_Light extends Rbx_Instance {
+interface RbxLight extends RbxInstance {
 	Brightness: number;
 	Color: Color3;
 	Enabled: boolean;
 	Shadows: boolean;
 }
-type Light = Rbx_Light & Base<Rbx_Light> & Indexable<Rbx_Light>;
+type Light = PointLight | SpotLight | SurfaceLight;
 
 // PointLight
-interface Rbx_PointLight extends Rbx_Light {
+interface RbxPointLight extends RbxLight {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PointLight";
 	Range: number;
 }
-type PointLight = Rbx_PointLight & Base<Rbx_PointLight> & Indexable<Rbx_PointLight>;
+type PointLight = RbxPointLight & Indexable<RbxPointLight>;
 
 // SpotLight
-interface Rbx_SpotLight extends Rbx_Light {
+interface RbxSpotLight extends RbxLight {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SpotLight";
 	Angle: number;
 	Face: Enum.NormalId;
 	Range: number;
 }
-type SpotLight = Rbx_SpotLight & Base<Rbx_SpotLight> & Indexable<Rbx_SpotLight>;
+type SpotLight = RbxSpotLight & Indexable<RbxSpotLight>;
 
 // SurfaceLight
-interface Rbx_SurfaceLight extends Rbx_Light {
+interface RbxSurfaceLight extends RbxLight {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SurfaceLight";
 	Angle: number;
 	Face: Enum.NormalId;
 	Range: number;
 }
-type SurfaceLight = Rbx_SurfaceLight & Base<Rbx_SurfaceLight> & Indexable<Rbx_SurfaceLight>;
+type SurfaceLight = RbxSurfaceLight & Indexable<RbxSurfaceLight>;
 
 // Lighting
-interface Rbx_Lighting extends Rbx_Instance {
+interface RbxLighting extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Lighting";
 	/** The hue of the global lighting.  Changing this changes the color tint of all objects in the Workspace. */
 	Ambient: Color3;
 	/** How much global light each Part in the Workspace receives. Standard range is 0 to 2 (0 being little light), but can be increased all the way to 10 (colors start to be appear very different at this value). */
@@ -2947,43 +3374,43 @@ interface Rbx_Lighting extends Rbx_Instance {
 	/** Fired whenever a property of Lighting is changed, or a skybox is added or removed. Skyboxes are of type 'Sky' and should be parented directly to lighting. */
 	readonly LightingChanged: RBXScriptSignal<(skyboxChanged: boolean) => void>;
 }
-type Lighting = Rbx_Lighting & Base<Rbx_Lighting> & Indexable<Rbx_Lighting>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type Lighting = RbxLighting & Indexable<RbxLighting>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "Lighting"): Lighting;
 }
 
 // LocalStorageService
-interface Rbx_LocalStorageService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__62: never;
+interface RbxLocalStorageService extends RbxInstance {
 }
-type LocalStorageService = Rbx_LocalStorageService & Base<Rbx_LocalStorageService> & Indexable<Rbx_LocalStorageService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type LocalStorageService = AppStorageService | UserStorageService;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "LocalStorageService"): LocalStorageService;
 }
 
 // AppStorageService
-interface Rbx_AppStorageService extends Rbx_LocalStorageService {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__63: never;
+interface RbxAppStorageService extends RbxLocalStorageService {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "AppStorageService";
 }
-type AppStorageService = Rbx_AppStorageService & Base<Rbx_AppStorageService> & Indexable<Rbx_AppStorageService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type AppStorageService = RbxAppStorageService & Indexable<RbxAppStorageService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "AppStorageService"): AppStorageService;
 }
 
 // UserStorageService
-interface Rbx_UserStorageService extends Rbx_LocalStorageService {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__64: never;
+interface RbxUserStorageService extends RbxLocalStorageService {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UserStorageService";
 }
-type UserStorageService = Rbx_UserStorageService & Base<Rbx_UserStorageService> & Indexable<Rbx_UserStorageService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type UserStorageService = RbxUserStorageService & Indexable<RbxUserStorageService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "UserStorageService"): UserStorageService;
 }
 
 // LocalizationService
-interface Rbx_LocalizationService extends Rbx_Instance {
+interface RbxLocalizationService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "LocalizationService";
 	readonly RobloxLocaleId: string;
 	readonly SystemLocaleId: string;
 	GetCorescriptLocalizations(): Array<Instance>;
@@ -2991,13 +3418,15 @@ interface Rbx_LocalizationService extends Rbx_Instance {
 	GetTranslatorForLocaleAsync(locale: string): Instance | undefined;
 	GetTranslatorForPlayerAsync(player: Instance): Instance | undefined;
 }
-type LocalizationService = Rbx_LocalizationService & Base<Rbx_LocalizationService> & Indexable<Rbx_LocalizationService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type LocalizationService = RbxLocalizationService & Indexable<RbxLocalizationService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "LocalizationService"): LocalizationService;
 }
 
 // LocalizationTable
-interface Rbx_LocalizationTable extends Rbx_Instance {
+interface RbxLocalizationTable extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "LocalizationTable";
 	SourceLocaleId: string;
 	RemoveEntry(key: string, source: string, context: string): void;
 	RemoveEntryValue(key: string, source: string, context: string, localeId: string): void;
@@ -3009,29 +3438,33 @@ interface Rbx_LocalizationTable extends Rbx_Instance {
 	SetEntrySource(key: string, source: string, context: string, newSource: string): void;
 	SetEntryValue(key: string, source: string, context: string, localeId: string, text: string): void;
 }
-type LocalizationTable = Rbx_LocalizationTable & Base<Rbx_LocalizationTable> & Indexable<Rbx_LocalizationTable>;
+type LocalizationTable = RbxLocalizationTable & Indexable<RbxLocalizationTable>;
 
 // LogService
-interface Rbx_LogService extends Rbx_Instance {
+interface RbxLogService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "LogService";
 	readonly MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
 }
-type LogService = Rbx_LogService & Base<Rbx_LogService> & Indexable<Rbx_LogService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type LogService = RbxLogService & Indexable<RbxLogService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "LogService"): LogService;
 }
 
 // LoginService
-interface Rbx_LoginService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__65: never;
+interface RbxLoginService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "LoginService";
 }
-type LoginService = Rbx_LoginService & Base<Rbx_LoginService> & Indexable<Rbx_LoginService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type LoginService = RbxLoginService & Indexable<RbxLoginService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "LoginService"): LoginService;
 }
 
 // LuaSettings
-interface Rbx_LuaSettings extends Rbx_Instance {
+interface RbxLuaSettings extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "LuaSettings";
 	AreScriptStartsReported: boolean;
 	DefaultWaitTime: number;
 	GcFrequency: number;
@@ -3040,94 +3473,106 @@ interface Rbx_LuaSettings extends Rbx_Instance {
 	GcStepMul: number;
 	WaitingThreadsBudget: number;
 }
-type LuaSettings = Rbx_LuaSettings & Base<Rbx_LuaSettings> & Indexable<Rbx_LuaSettings>;
+type LuaSettings = RbxLuaSettings & Indexable<RbxLuaSettings>;
 
 // LuaSourceContainer
-interface Rbx_LuaSourceContainer extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__66: never;
+interface RbxLuaSourceContainer extends RbxInstance {
 }
-type LuaSourceContainer = Rbx_LuaSourceContainer & Base<Rbx_LuaSourceContainer> & Indexable<Rbx_LuaSourceContainer>;
+type LuaSourceContainer = BaseScript | ModuleScript;
 
 // BaseScript
-interface Rbx_BaseScript extends Rbx_LuaSourceContainer {
+interface RbxBaseScript extends RbxLuaSourceContainer {
 	Disabled: boolean;
 	LinkedSource: string;
 }
-type BaseScript = Rbx_BaseScript & Base<Rbx_BaseScript> & Indexable<Rbx_BaseScript>;
+type BaseScript = CoreScript | DerivesFromScript;
 
 // CoreScript
-interface Rbx_CoreScript extends Rbx_BaseScript {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__67: never;
+interface RbxCoreScript extends RbxBaseScript {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CoreScript";
 }
-type CoreScript = Rbx_CoreScript & Base<Rbx_CoreScript> & Indexable<Rbx_CoreScript>;
+type CoreScript = RbxCoreScript & Indexable<RbxCoreScript>;
 
-// Script
-interface Rbx_Script extends Rbx_BaseScript {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__68: never;
+// DerivesFromScript
+interface RbxDerivesFromScript extends RbxBaseScript {
 }
-type Script = Rbx_Script & Base<Rbx_Script> & Indexable<Rbx_Script>;
+interface RbxScript extends RbxDerivesFromScript {
+	readonly ClassName: "Script";
+}
+
+type Script = RbxScript & Indexable<RbxScript>;
+type DerivesFromScript = Script | LocalScript;
 
 // LocalScript
-interface Rbx_LocalScript extends Rbx_Script {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__69: never;
+interface RbxLocalScript extends RbxDerivesFromScript {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "LocalScript";
 }
-type LocalScript = Rbx_LocalScript & Base<Rbx_LocalScript> & Indexable<Rbx_LocalScript>;
+type LocalScript = RbxLocalScript & Indexable<RbxLocalScript>;
 
 // ModuleScript
-interface Rbx_ModuleScript extends Rbx_LuaSourceContainer {
+interface RbxModuleScript extends RbxLuaSourceContainer {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ModuleScript";
 	LinkedSource: string;
 }
-type ModuleScript = Rbx_ModuleScript & Base<Rbx_ModuleScript> & Indexable<Rbx_ModuleScript>;
+type ModuleScript = RbxModuleScript & Indexable<RbxModuleScript>;
 
 // LuaWebService
-interface Rbx_LuaWebService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__70: never;
+interface RbxLuaWebService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "LuaWebService";
 }
-type LuaWebService = Rbx_LuaWebService & Base<Rbx_LuaWebService> & Indexable<Rbx_LuaWebService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type LuaWebService = RbxLuaWebService & Indexable<RbxLuaWebService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "LuaWebService"): LuaWebService;
 }
 
 // MarketplaceService
-interface Rbx_MarketplaceService extends Rbx_Instance {
+interface RbxMarketplaceService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "MarketplaceService";
 	GetDeveloperProductsAsync(): Instance | undefined;
 	UserOwnsGamePassAsync(userId: number, gamePassId: number): boolean;
 }
-type MarketplaceService = Rbx_MarketplaceService & Base<Rbx_MarketplaceService> & Indexable<Rbx_MarketplaceService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type MarketplaceService = RbxMarketplaceService & Indexable<RbxMarketplaceService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "MarketplaceService"): MarketplaceService;
 }
 
-// Message
-interface Rbx_Message extends Rbx_Instance {
+// DerivesFromMessage
+interface RbxDerivesFromMessage extends RbxInstance {
 	Text: string;
 }
-type Message = Rbx_Message & Base<Rbx_Message> & Indexable<Rbx_Message>;
+interface RbxMessage extends RbxDerivesFromMessage {
+	readonly ClassName: "Message";
+}
+
+type Message = RbxMessage & Indexable<RbxMessage>;
+type DerivesFromMessage = Message | Hint;
 
 // Hint
-interface Rbx_Hint extends Rbx_Message {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__71: never;
+interface RbxHint extends RbxDerivesFromMessage {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Hint";
 }
-type Hint = Rbx_Hint & Base<Rbx_Hint> & Indexable<Rbx_Hint>;
+type Hint = RbxHint & Indexable<RbxHint>;
 
 // MessagingService
-interface Rbx_MessagingService extends Rbx_Instance {
+interface RbxMessagingService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "MessagingService";
 	PublishAsync(topic: string, message?: any): void;
 	SubscribeAsync(topic: string, callback: Function): RBXScriptConnection;
 }
-type MessagingService = Rbx_MessagingService & Base<Rbx_MessagingService> & Indexable<Rbx_MessagingService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type MessagingService = RbxMessagingService & Indexable<RbxMessagingService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "MessagingService"): MessagingService;
 }
 
 // Mouse
-interface Rbx_Mouse extends Rbx_Instance {
+interface RbxMouse extends RbxInstance {
 	/** The CoordinateFrame of where the Mouse ray is currently hitting a 3D object in the Workspace.  If the mouse is not over any 3D objects in the Workspace, this property is nil. */
 	readonly Hit: CFrame;
 	/** The current Texture of the Mouse Icon. Stored as a string, for more information on how to format the string [go here](http://wiki.roblox.com/index.php/Content) */
@@ -3135,9 +3580,9 @@ interface Rbx_Mouse extends Rbx_Instance {
 	/** The CoordinateFrame of where the Mouse is when the mouse is not clicking. */
 	readonly Origin: CFrame;
 	/** The Part the mouse is currently over. If the mouse is not currently over any object (on the skybox, for example) this property is nil. */
-	readonly Target: BasePart;
+	readonly Target?: BasePart;
 	/** A Part or Model that the Mouse will ignore when trying to find the Target, TargetSurface and Hit. */
-	TargetFilter: Instance | undefined;
+	TargetFilter?: Instance;
 	/** The NormalId (Top, Left, Down, etc.) of the face of the part the Mouse is currently over. */
 	readonly TargetSurface: Enum.NormalId;
 	/** The Unit Ray from where the mouse is (Origin) to the current Mouse.Target. */
@@ -3167,88 +3612,94 @@ interface Rbx_Mouse extends Rbx_Instance {
 	/** This event is currently non-operational. */
 	readonly WheelForward: RBXScriptSignal<() => void>;
 }
-type Mouse = Rbx_Mouse & Base<Rbx_Mouse> & Indexable<Rbx_Mouse>;
+type Mouse = PlayerMouse | PluginMouse;
 
 // PlayerMouse
-interface Rbx_PlayerMouse extends Rbx_Mouse {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__72: never;
+interface RbxPlayerMouse extends RbxMouse {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PlayerMouse";
 }
-type PlayerMouse = Rbx_PlayerMouse & Base<Rbx_PlayerMouse> & Indexable<Rbx_PlayerMouse>;
+type PlayerMouse = RbxPlayerMouse & Indexable<RbxPlayerMouse>;
 
 // PluginMouse
-interface Rbx_PluginMouse extends Rbx_Mouse {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__73: never;
+interface RbxPluginMouse extends RbxMouse {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PluginMouse";
 }
-type PluginMouse = Rbx_PluginMouse & Base<Rbx_PluginMouse> & Indexable<Rbx_PluginMouse>;
+type PluginMouse = RbxPluginMouse & Indexable<RbxPluginMouse>;
 
 // MouseService
-interface Rbx_MouseService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__74: never;
+interface RbxMouseService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "MouseService";
 }
-type MouseService = Rbx_MouseService & Base<Rbx_MouseService> & Indexable<Rbx_MouseService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type MouseService = RbxMouseService & Indexable<RbxMouseService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "MouseService"): MouseService;
 }
 
 // NetworkMarker
-interface Rbx_NetworkMarker extends Rbx_Instance {
+interface RbxNetworkMarker extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "NetworkMarker";
 	readonly Received: RBXScriptSignal<() => void>;
 }
-type NetworkMarker = Rbx_NetworkMarker & Base<Rbx_NetworkMarker> & Indexable<Rbx_NetworkMarker>;
+type NetworkMarker = RbxNetworkMarker & Indexable<RbxNetworkMarker>;
 
 // NetworkPeer
-interface Rbx_NetworkPeer extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__75: never;
+interface RbxNetworkPeer extends RbxInstance {
 }
-type NetworkPeer = Rbx_NetworkPeer & Base<Rbx_NetworkPeer> & Indexable<Rbx_NetworkPeer>;
+type NetworkPeer = NetworkClient | NetworkServer;
 
 // NetworkClient
-interface Rbx_NetworkClient extends Rbx_NetworkPeer {
+interface RbxNetworkClient extends RbxNetworkPeer {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "NetworkClient";
 	Ticket: string;
 	readonly ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: Instance) => void>;
 	readonly ConnectionFailed: RBXScriptSignal<(peer: string, code: number, reason: string) => void>;
 	readonly ConnectionRejected: RBXScriptSignal<(peer: string) => void>;
 }
-type NetworkClient = Rbx_NetworkClient & Base<Rbx_NetworkClient> & Indexable<Rbx_NetworkClient>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type NetworkClient = RbxNetworkClient & Indexable<RbxNetworkClient>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "NetworkClient"): NetworkClient;
 }
 
 // NetworkServer
-interface Rbx_NetworkServer extends Rbx_NetworkPeer {
+interface RbxNetworkServer extends RbxNetworkPeer {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "NetworkServer";
 	readonly Port: number;
 }
-type NetworkServer = Rbx_NetworkServer & Base<Rbx_NetworkServer> & Indexable<Rbx_NetworkServer>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type NetworkServer = RbxNetworkServer & Indexable<RbxNetworkServer>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "NetworkServer"): NetworkServer;
 }
 
 // NetworkReplicator
-interface Rbx_NetworkReplicator extends Rbx_Instance {
+interface RbxNetworkReplicator extends RbxInstance {
 	GetPlayer(): Instance | undefined;
 }
-type NetworkReplicator = Rbx_NetworkReplicator & Base<Rbx_NetworkReplicator> & Indexable<Rbx_NetworkReplicator>;
+type NetworkReplicator = ClientReplicator | ServerReplicator;
 
 // ClientReplicator
-interface Rbx_ClientReplicator extends Rbx_NetworkReplicator {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__76: never;
+interface RbxClientReplicator extends RbxNetworkReplicator {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ClientReplicator";
 }
-type ClientReplicator = Rbx_ClientReplicator & Base<Rbx_ClientReplicator> & Indexable<Rbx_ClientReplicator>;
+type ClientReplicator = RbxClientReplicator & Indexable<RbxClientReplicator>;
 
 // ServerReplicator
-interface Rbx_ServerReplicator extends Rbx_NetworkReplicator {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__77: never;
+interface RbxServerReplicator extends RbxNetworkReplicator {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ServerReplicator";
 }
-type ServerReplicator = Rbx_ServerReplicator & Base<Rbx_ServerReplicator> & Indexable<Rbx_ServerReplicator>;
+type ServerReplicator = RbxServerReplicator & Indexable<RbxServerReplicator>;
 
 // NetworkSettings
-interface Rbx_NetworkSettings extends Rbx_Instance {
+interface RbxNetworkSettings extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "NetworkSettings";
 	ArePhysicsRejectionsReported: boolean;
 	ClientPhysicsSendRate: number;
 	DataGCRate: number;
@@ -3281,30 +3732,28 @@ interface Rbx_NetworkSettings extends Rbx_Instance {
 	TrackPhysicsDetails: boolean;
 	UsePhysicsPacketCache: boolean;
 }
-type NetworkSettings = Rbx_NetworkSettings & Base<Rbx_NetworkSettings> & Indexable<Rbx_NetworkSettings>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type NetworkSettings = RbxNetworkSettings & Indexable<RbxNetworkSettings>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "NetworkSettings"): NetworkSettings;
 }
 
 // NotificationService
-interface Rbx_NotificationService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__78: never;
+interface RbxNotificationService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "NotificationService";
 }
-type NotificationService = Rbx_NotificationService & Base<Rbx_NotificationService> & Indexable<Rbx_NotificationService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type NotificationService = RbxNotificationService & Indexable<RbxNotificationService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "NotificationService"): NotificationService;
 }
 
 // PVInstance
-interface Rbx_PVInstance extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__79: never;
+interface RbxPVInstance extends RbxInstance {
 }
-type PVInstance = Rbx_PVInstance & Base<Rbx_PVInstance> & Indexable<Rbx_PVInstance>;
+type PVInstance = BasePart | DerivesFromModel;
 
 // BasePart
-interface Rbx_BasePart extends Rbx_PVInstance {
+interface RbxBasePart extends RbxPVInstance {
 	/** Determines whether or not physics acts upon the Part.  If true, part stays 'Anchored' in space, not moving regardless of any collision/forces acting upon it.  If false, physics works normally on the part. */
 	Anchored: boolean;
 	BackParamA: number;
@@ -3379,53 +3828,62 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	Resize(normalId: Enum.NormalId, deltaAmount: number): boolean;
 	SetNetworkOwnershipAuto(): void;
 }
-type BasePart = Rbx_BasePart & Base<Rbx_BasePart> & Indexable<Rbx_BasePart>;
+type BasePart = CornerWedgePart | FormFactorPart | MeshPart | DerivesFromPartOperation | Terrain | TrussPart | VehicleSeat;
 
 // CornerWedgePart
-interface Rbx_CornerWedgePart extends Rbx_BasePart {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__80: never;
+interface RbxCornerWedgePart extends RbxBasePart {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CornerWedgePart";
 }
-type CornerWedgePart = Rbx_CornerWedgePart & Base<Rbx_CornerWedgePart> & Indexable<Rbx_CornerWedgePart>;
+type CornerWedgePart = RbxCornerWedgePart & Indexable<RbxCornerWedgePart>;
 
 // FormFactorPart
-interface Rbx_FormFactorPart extends Rbx_BasePart {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__81: never;
+interface RbxFormFactorPart extends RbxBasePart {
 }
-type FormFactorPart = Rbx_FormFactorPart & Base<Rbx_FormFactorPart> & Indexable<Rbx_FormFactorPart>;
+type FormFactorPart = DerivesFromPart | WedgePart;
 
-// Part
-interface Rbx_Part extends Rbx_FormFactorPart {
+// DerivesFromPart
+interface RbxDerivesFromPart extends RbxFormFactorPart {
 	Shape: Enum.PartType;
 }
-type Part = Rbx_Part & Base<Rbx_Part> & Indexable<Rbx_Part>;
+interface RbxPart extends RbxDerivesFromPart {
+	readonly ClassName: "Part";
+}
+
+type Part = RbxPart & Indexable<RbxPart>;
+type DerivesFromPart = Part | FlagStand | Platform | Seat | SkateboardPlatform | SpawnLocation;
 
 // FlagStand
-interface Rbx_FlagStand extends Rbx_Part {
+interface RbxFlagStand extends RbxDerivesFromPart {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "FlagStand";
 	TeamColor: BrickColor;
 }
-type FlagStand = Rbx_FlagStand & Base<Rbx_FlagStand> & Indexable<Rbx_FlagStand>;
+type FlagStand = RbxFlagStand & Indexable<RbxFlagStand>;
 
 // Platform
-interface Rbx_Platform extends Rbx_Part {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__82: never;
+interface RbxPlatform extends RbxDerivesFromPart {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Platform";
 }
-type Platform = Rbx_Platform & Base<Rbx_Platform> & Indexable<Rbx_Platform>;
+type Platform = RbxPlatform & Indexable<RbxPlatform>;
 
 // Seat
-interface Rbx_Seat extends Rbx_Part {
+interface RbxSeat extends RbxDerivesFromPart {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Seat";
 	Disabled: boolean;
-	readonly Occupant: Humanoid;
+	readonly Occupant?: Humanoid;
 	Sit(humanoid: Instance): void;
 }
-type Seat = Rbx_Seat & Base<Rbx_Seat> & Indexable<Rbx_Seat>;
+type Seat = RbxSeat & Indexable<RbxSeat>;
 
 // SkateboardPlatform
-interface Rbx_SkateboardPlatform extends Rbx_Part {
-	readonly Controller: SkateboardController;
-	readonly ControllingHumanoid: Humanoid;
+interface RbxSkateboardPlatform extends RbxDerivesFromPart {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SkateboardPlatform";
+	readonly Controller?: SkateboardController;
+	readonly ControllingHumanoid?: Humanoid;
 	Steer: number;
 	StickyWheels: boolean;
 	Throttle: number;
@@ -3434,56 +3892,67 @@ interface Rbx_SkateboardPlatform extends Rbx_Part {
 	readonly MoveStateChanged: RBXScriptSignal<(newState: Enum.MoveState, oldState: Enum.MoveState) => void>;
 	readonly Unequipped: RBXScriptSignal<(humanoid: Instance) => void>;
 }
-type SkateboardPlatform = Rbx_SkateboardPlatform & Base<Rbx_SkateboardPlatform> & Indexable<Rbx_SkateboardPlatform>;
+type SkateboardPlatform = RbxSkateboardPlatform & Indexable<RbxSkateboardPlatform>;
 
 // SpawnLocation
-interface Rbx_SpawnLocation extends Rbx_Part {
+interface RbxSpawnLocation extends RbxDerivesFromPart {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SpawnLocation";
 	AllowTeamChangeOnTouch: boolean;
 	Duration: number;
 	Enabled: boolean;
 	Neutral: boolean;
 	TeamColor: BrickColor;
 }
-type SpawnLocation = Rbx_SpawnLocation & Base<Rbx_SpawnLocation> & Indexable<Rbx_SpawnLocation>;
+type SpawnLocation = RbxSpawnLocation & Indexable<RbxSpawnLocation>;
 
 // WedgePart
-interface Rbx_WedgePart extends Rbx_FormFactorPart {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__83: never;
+interface RbxWedgePart extends RbxFormFactorPart {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "WedgePart";
 }
-type WedgePart = Rbx_WedgePart & Base<Rbx_WedgePart> & Indexable<Rbx_WedgePart>;
+type WedgePart = RbxWedgePart & Indexable<RbxWedgePart>;
 
 // MeshPart
-interface Rbx_MeshPart extends Rbx_BasePart {
+interface RbxMeshPart extends RbxBasePart {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "MeshPart";
 	readonly MeshId: string;
 	TextureID: string;
 }
-type MeshPart = Rbx_MeshPart & Base<Rbx_MeshPart> & Indexable<Rbx_MeshPart>;
+type MeshPart = RbxMeshPart & Indexable<RbxMeshPart>;
 
-// PartOperation
-interface Rbx_PartOperation extends Rbx_BasePart {
+// DerivesFromPartOperation
+interface RbxDerivesFromPartOperation extends RbxBasePart {
 	readonly RenderFidelity: Enum.RenderFidelity;
 	readonly TriangleCount: number;
 	UsePartColor: boolean;
 }
-type PartOperation = Rbx_PartOperation & Base<Rbx_PartOperation> & Indexable<Rbx_PartOperation>;
+interface RbxPartOperation extends RbxDerivesFromPartOperation {
+	readonly ClassName: "PartOperation";
+}
+
+type PartOperation = RbxPartOperation & Indexable<RbxPartOperation>;
+type DerivesFromPartOperation = PartOperation | NegateOperation | UnionOperation;
 
 // NegateOperation
-interface Rbx_NegateOperation extends Rbx_PartOperation {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__84: never;
+interface RbxNegateOperation extends RbxDerivesFromPartOperation {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "NegateOperation";
 }
-type NegateOperation = Rbx_NegateOperation & Base<Rbx_NegateOperation> & Indexable<Rbx_NegateOperation>;
+type NegateOperation = RbxNegateOperation & Indexable<RbxNegateOperation>;
 
 // UnionOperation
-interface Rbx_UnionOperation extends Rbx_PartOperation {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__85: never;
+interface RbxUnionOperation extends RbxDerivesFromPartOperation {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UnionOperation";
 }
-type UnionOperation = Rbx_UnionOperation & Base<Rbx_UnionOperation> & Indexable<Rbx_UnionOperation>;
+type UnionOperation = RbxUnionOperation & Indexable<RbxUnionOperation>;
 
 // Terrain
-interface Rbx_Terrain extends Rbx_BasePart {
+interface RbxTerrain extends RbxBasePart {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Terrain";
 	readonly MaxExtents: Region3int16;
 	WaterColor: Color3;
 	WaterReflectance: number;
@@ -3503,21 +3972,25 @@ interface Rbx_Terrain extends Rbx_BasePart {
 	WorldToCellPreferEmpty(position: Vector3): Vector3;
 	WorldToCellPreferSolid(position: Vector3): Vector3;
 }
-type Terrain = Rbx_Terrain & Base<Rbx_Terrain> & Indexable<Rbx_Terrain>;
+type Terrain = RbxTerrain & Indexable<RbxTerrain>;
 
 // TrussPart
-interface Rbx_TrussPart extends Rbx_BasePart {
+interface RbxTrussPart extends RbxBasePart {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TrussPart";
 	Style: Enum.Style;
 }
-type TrussPart = Rbx_TrussPart & Base<Rbx_TrussPart> & Indexable<Rbx_TrussPart>;
+type TrussPart = RbxTrussPart & Indexable<RbxTrussPart>;
 
 // VehicleSeat
-interface Rbx_VehicleSeat extends Rbx_BasePart {
+interface RbxVehicleSeat extends RbxBasePart {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "VehicleSeat";
 	readonly AreHingesDetected: number;
 	Disabled: boolean;
 	HeadsUpDisplay: boolean;
 	MaxSpeed: number;
-	readonly Occupant: Humanoid;
+	readonly Occupant?: Humanoid;
 	Steer: number;
 	SteerFloat: number;
 	Throttle: number;
@@ -3526,37 +3999,40 @@ interface Rbx_VehicleSeat extends Rbx_BasePart {
 	TurnSpeed: number;
 	Sit(humanoid: Instance): void;
 }
-type VehicleSeat = Rbx_VehicleSeat & Base<Rbx_VehicleSeat> & Indexable<Rbx_VehicleSeat>;
+type VehicleSeat = RbxVehicleSeat & Indexable<RbxVehicleSeat>;
 
-// Model
-interface Rbx_Model extends Rbx_PVInstance {
-	/** Breaks all surface joints contained within */
+// DerivesFromModel
+interface RbxDerivesFromModel extends RbxPVInstance {
+	PrimaryPart?: BasePart;
 	BreakJoints(): void;
+	GetBoundingBox(): unknown;
 	GetExtentsSize(): Vector3;
-	/** Returns the cframe of the Model.PrimaryPart. If PrimaryPart is nil, then this function will throw an error. */
 	GetPrimaryPartCFrame(): CFrame;
-	/** Creates the appropriate SurfaceJoints between all touching Parts contrained within the model. Technically, this function calls MakeJoints() on all Parts inside the model. */
 	MakeJoints(): void;
-	/** Moves the centroid of the Model to the specified location, respecting all relative distances between parts in the model. */
 	MoveTo(position: Vector3): void;
-	/** Sets the cframe of the Model.PrimaryPart. If PrimaryPart is nil, then this function will throw an error. This also sets the cframe of all descendant Parts relative to the cframe change to PrimaryPart. */
 	SetPrimaryPartCFrame(cframe: CFrame): void;
-	/** Similar to MoveTo(), except instead of moving to an explicit location, we use the model's current CFrame location and offset it. */
 	TranslateBy(delta: Vector3): void;
 }
-type Model = Rbx_Model & Base<Rbx_Model> & Indexable<Rbx_Model>;
+interface RbxModel extends RbxDerivesFromModel {
+	readonly ClassName: "Model";
+}
+
+type Model = RbxModel & Indexable<RbxModel>;
+type DerivesFromModel = Model | Status | Workspace;
 
 // Status
-interface Rbx_Status extends Rbx_Model {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__86: never;
+interface RbxStatus extends RbxDerivesFromModel {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Status";
 }
-type Status = Rbx_Status & Base<Rbx_Status> & Indexable<Rbx_Status>;
+type Status = RbxStatus & Indexable<RbxStatus>;
 
 // Workspace
-interface Rbx_Workspace extends Rbx_Model {
+interface RbxWorkspace extends RbxDerivesFromModel {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Workspace";
 	AllowThirdPartySales: boolean;
-	CurrentCamera: Camera;
+	CurrentCamera?: Camera;
 	DistributedGameTime: number;
 	/** Sets the height at which falling characters and parts are destroyed. This property is not scriptable and can only be set in Studio */
 	readonly FallenPartsDestroyHeight: number;
@@ -3577,63 +4053,67 @@ interface Rbx_Workspace extends Rbx_Model {
 	PGSIsEnabled(): boolean;
 	UnjoinFromOutsiders(objects: Array<Instance>): void;
 }
-type Workspace = Rbx_Workspace & Base<Rbx_Workspace> & Indexable<Rbx_Workspace>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type Workspace = RbxWorkspace & Indexable<RbxWorkspace>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "Workspace"): Workspace;
 }
 
 // PackageLink
-interface Rbx_PackageLink extends Rbx_Instance {
+interface RbxPackageLink extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PackageLink";
 	readonly PackageId: string;
 	readonly VersionNumber: number;
 }
-type PackageLink = Rbx_PackageLink & Base<Rbx_PackageLink> & Indexable<Rbx_PackageLink>;
+type PackageLink = RbxPackageLink & Indexable<RbxPackageLink>;
 
 // Pages
-interface Rbx_Pages extends Rbx_Instance {
+interface RbxPages extends RbxInstance {
 	readonly IsFinished: boolean;
 	GetCurrentPage(): unknown;
 	AdvanceToNextPageAsync(): void;
 }
-type Pages = Rbx_Pages & Base<Rbx_Pages> & Indexable<Rbx_Pages>;
+type Pages = DataStorePages | FriendPages | InventoryPages | StandardPages;
 
 // DataStorePages
-interface Rbx_DataStorePages extends Rbx_Pages {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__87: never;
+interface RbxDataStorePages extends RbxPages {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "DataStorePages";
 }
-type DataStorePages = Rbx_DataStorePages & Base<Rbx_DataStorePages> & Indexable<Rbx_DataStorePages>;
+type DataStorePages = RbxDataStorePages & Indexable<RbxDataStorePages>;
 
 // FriendPages
-interface Rbx_FriendPages extends Rbx_Pages {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__88: never;
+interface RbxFriendPages extends RbxPages {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "FriendPages";
 }
-type FriendPages = Rbx_FriendPages & Base<Rbx_FriendPages> & Indexable<Rbx_FriendPages>;
+type FriendPages = RbxFriendPages & Indexable<RbxFriendPages>;
 
 // InventoryPages
-interface Rbx_InventoryPages extends Rbx_Pages {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__89: never;
+interface RbxInventoryPages extends RbxPages {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "InventoryPages";
 }
-type InventoryPages = Rbx_InventoryPages & Base<Rbx_InventoryPages> & Indexable<Rbx_InventoryPages>;
+type InventoryPages = RbxInventoryPages & Indexable<RbxInventoryPages>;
 
 // StandardPages
-interface Rbx_StandardPages extends Rbx_Pages {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__90: never;
+interface RbxStandardPages extends RbxPages {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "StandardPages";
 }
-type StandardPages = Rbx_StandardPages & Base<Rbx_StandardPages> & Indexable<Rbx_StandardPages>;
+type StandardPages = RbxStandardPages & Indexable<RbxStandardPages>;
 
 // PartOperationAsset
-interface Rbx_PartOperationAsset extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__91: never;
+interface RbxPartOperationAsset extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PartOperationAsset";
 }
-type PartOperationAsset = Rbx_PartOperationAsset & Base<Rbx_PartOperationAsset> & Indexable<Rbx_PartOperationAsset>;
+type PartOperationAsset = RbxPartOperationAsset & Indexable<RbxPartOperationAsset>;
 
 // ParticleEmitter
-interface Rbx_ParticleEmitter extends Rbx_Instance {
+interface RbxParticleEmitter extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ParticleEmitter";
 	Acceleration: Vector3;
 	Color: ColorSequence;
 	Drag: number;
@@ -3657,37 +4137,43 @@ interface Rbx_ParticleEmitter extends Rbx_Instance {
 	Clear(): void;
 	Emit(particleCount?: number): void;
 }
-type ParticleEmitter = Rbx_ParticleEmitter & Base<Rbx_ParticleEmitter> & Indexable<Rbx_ParticleEmitter>;
+type ParticleEmitter = RbxParticleEmitter & Indexable<RbxParticleEmitter>;
 
 // Path
-interface Rbx_Path extends Rbx_Instance {
+interface RbxPath extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Path";
 	readonly Status: Enum.PathStatus;
 	CheckOcclusionAsync(start: number): number;
 	ComputeAsync(start: Vector3, finish: Vector3): void;
 	readonly Blocked: RBXScriptSignal<(blockedWaypointIdx: number) => void>;
 }
-type Path = Rbx_Path & Base<Rbx_Path> & Indexable<Rbx_Path>;
+type Path = RbxPath & Indexable<RbxPath>;
 
 // PathfindingService
-interface Rbx_PathfindingService extends Rbx_Instance {
+interface RbxPathfindingService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PathfindingService";
 }
-type PathfindingService = Rbx_PathfindingService & Base<Rbx_PathfindingService> & Indexable<Rbx_PathfindingService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type PathfindingService = RbxPathfindingService & Indexable<RbxPathfindingService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "PathfindingService"): PathfindingService;
 }
 
 // PhysicsPacketCache
-interface Rbx_PhysicsPacketCache extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__92: never;
+interface RbxPhysicsPacketCache extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PhysicsPacketCache";
 }
-type PhysicsPacketCache = Rbx_PhysicsPacketCache & Base<Rbx_PhysicsPacketCache> & Indexable<Rbx_PhysicsPacketCache>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type PhysicsPacketCache = RbxPhysicsPacketCache & Indexable<RbxPhysicsPacketCache>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "PhysicsPacketCache"): PhysicsPacketCache;
 }
 
 // PhysicsService
-interface Rbx_PhysicsService extends Rbx_Instance {
+interface RbxPhysicsService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PhysicsService";
 	CollisionGroupContainsPart(name: string, part: Instance): boolean;
 	CollisionGroupSetCollidable(name1: string, name2: string, collidable: boolean): void;
 	CollisionGroupsAreCollidable(name1: string, name2: string): boolean;
@@ -3699,13 +4185,15 @@ interface Rbx_PhysicsService extends Rbx_Instance {
 	RenameCollisionGroup(from: string, to: string): void;
 	SetPartCollisionGroup(part: Instance, name: string): void;
 }
-type PhysicsService = Rbx_PhysicsService & Base<Rbx_PhysicsService> & Indexable<Rbx_PhysicsService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type PhysicsService = RbxPhysicsService & Indexable<RbxPhysicsService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "PhysicsService"): PhysicsService;
 }
 
 // PhysicsSettings
-interface Rbx_PhysicsSettings extends Rbx_Instance {
+interface RbxPhysicsSettings extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PhysicsSettings";
 	AllowSleep: boolean;
 	AreAnchorsShown: boolean;
 	AreAssembliesShown: boolean;
@@ -3729,10 +4217,12 @@ interface Rbx_PhysicsSettings extends Rbx_Instance {
 	ThrottleAdjustTime: number;
 	UseCSGv2: boolean;
 }
-type PhysicsSettings = Rbx_PhysicsSettings & Base<Rbx_PhysicsSettings> & Indexable<Rbx_PhysicsSettings>;
+type PhysicsSettings = RbxPhysicsSettings & Indexable<RbxPhysicsSettings>;
 
 // Player
-interface Rbx_Player extends Rbx_Instance {
+interface RbxPlayer extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Player";
 	readonly AccountAge: number;
 	AutoJumpEnabled: boolean;
 	CameraMaxZoomDistance: number;
@@ -3753,8 +4243,8 @@ interface Rbx_Player extends Rbx_Instance {
 	readonly MembershipType: Enum.MembershipType;
 	NameDisplayDistance: number;
 	Neutral: boolean;
-	RespawnLocation: SpawnLocation;
-	Team: Team;
+	RespawnLocation?: SpawnLocation;
+	Team?: Team;
 	TeamColor: BrickColor;
 	UserId: number;
 	ClearCharacterAppearance(): void;
@@ -3772,10 +4262,12 @@ interface Rbx_Player extends Rbx_Instance {
 	readonly Idled: RBXScriptSignal<(time: number) => void>;
 	readonly OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
 }
-type Player = Rbx_Player & Base<Rbx_Player> & Indexable<Rbx_Player>;
+type Player = RbxPlayer & Indexable<RbxPlayer>;
 
 // PlayerScripts
-interface Rbx_PlayerScripts extends Rbx_Instance {
+interface RbxPlayerScripts extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PlayerScripts";
 	ClearComputerCameraMovementModes(): void;
 	ClearComputerMovementModes(): void;
 	ClearTouchCameraMovementModes(): void;
@@ -3785,10 +4277,12 @@ interface Rbx_PlayerScripts extends Rbx_Instance {
 	RegisterTouchCameraMovementMode(cameraMovementMode: Enum.TouchCameraMovementMode): void;
 	RegisterTouchMovementMode(movementMode: Enum.TouchMovementMode): void;
 }
-type PlayerScripts = Rbx_PlayerScripts & Base<Rbx_PlayerScripts> & Indexable<Rbx_PlayerScripts>;
+type PlayerScripts = RbxPlayerScripts & Indexable<RbxPlayerScripts>;
 
 // Players
-interface Rbx_Players extends Rbx_Instance {
+interface RbxPlayers extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Players";
 	readonly BubbleChat: boolean;
 	/** Set to true, when a player joins a game, they get a character automatically, as well as when they die.  When set to false, characters do not auto load and will only load in using Player:LoadCharacter(). */
 	CharacterAutoLoads: boolean;
@@ -3799,87 +4293,101 @@ interface Rbx_Players extends Rbx_Instance {
 	GetNameFromUserIdAsync(userId: number): string;
 	GetUserIdFromNameAsync(userName: string): number;
 }
-type Players = Rbx_Players & Base<Rbx_Players> & Indexable<Rbx_Players>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type Players = RbxPlayers & Indexable<RbxPlayers>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "Players"): Players;
 }
 
 // Plugin
-interface Rbx_Plugin extends Rbx_Instance {
+interface RbxPlugin extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Plugin";
 	readonly CollisionEnabled: boolean;
 	readonly GridSize: number;
 }
-type Plugin = Rbx_Plugin & Base<Rbx_Plugin> & Indexable<Rbx_Plugin>;
+type Plugin = RbxPlugin & Indexable<RbxPlugin>;
 
 // PluginAction
-interface Rbx_PluginAction extends Rbx_Instance {
+interface RbxPluginAction extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PluginAction";
 	readonly ActionId: string;
 	readonly AllowBinding: boolean;
 	readonly StatusTip: string;
 	readonly Text: string;
 }
-type PluginAction = Rbx_PluginAction & Base<Rbx_PluginAction> & Indexable<Rbx_PluginAction>;
+type PluginAction = RbxPluginAction & Indexable<RbxPluginAction>;
 
 // PluginDragEvent
-interface Rbx_PluginDragEvent extends Rbx_Instance {
+interface RbxPluginDragEvent extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PluginDragEvent";
 	readonly Data: string;
 	readonly MimeType: string;
 	readonly Position: Vector2;
 	readonly Sender: string;
 }
-type PluginDragEvent = Rbx_PluginDragEvent & Base<Rbx_PluginDragEvent> & Indexable<Rbx_PluginDragEvent>;
+type PluginDragEvent = RbxPluginDragEvent & Indexable<RbxPluginDragEvent>;
 
 // PluginGuiService
-interface Rbx_PluginGuiService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__93: never;
+interface RbxPluginGuiService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PluginGuiService";
 }
-type PluginGuiService = Rbx_PluginGuiService & Base<Rbx_PluginGuiService> & Indexable<Rbx_PluginGuiService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type PluginGuiService = RbxPluginGuiService & Indexable<RbxPluginGuiService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "PluginGuiService"): PluginGuiService;
 }
 
 // PluginManager
-interface Rbx_PluginManager extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__94: never;
+interface RbxPluginManager extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PluginManager";
 }
-type PluginManager = Rbx_PluginManager & Base<Rbx_PluginManager> & Indexable<Rbx_PluginManager>;
+type PluginManager = RbxPluginManager & Indexable<RbxPluginManager>;
 
 // PluginMenu
-interface Rbx_PluginMenu extends Rbx_Instance {
+interface RbxPluginMenu extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PluginMenu";
 	Icon: string;
 	Title: string;
 }
-type PluginMenu = Rbx_PluginMenu & Base<Rbx_PluginMenu> & Indexable<Rbx_PluginMenu>;
+type PluginMenu = RbxPluginMenu & Indexable<RbxPluginMenu>;
 
 // PluginToolbar
-interface Rbx_PluginToolbar extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__95: never;
+interface RbxPluginToolbar extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PluginToolbar";
 }
-type PluginToolbar = Rbx_PluginToolbar & Base<Rbx_PluginToolbar> & Indexable<Rbx_PluginToolbar>;
+type PluginToolbar = RbxPluginToolbar & Indexable<RbxPluginToolbar>;
 
 // PluginToolbarButton
-interface Rbx_PluginToolbarButton extends Rbx_Instance {
+interface RbxPluginToolbarButton extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PluginToolbarButton";
 	ClickableWhenViewportHidden: boolean;
 	Enabled: boolean;
 	Icon: string;
 }
-type PluginToolbarButton = Rbx_PluginToolbarButton & Base<Rbx_PluginToolbarButton> & Indexable<Rbx_PluginToolbarButton>;
+type PluginToolbarButton = RbxPluginToolbarButton & Indexable<RbxPluginToolbarButton>;
 
 // PointsService
-interface Rbx_PointsService extends Rbx_Instance {
+interface RbxPointsService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PointsService";
 	/** Fired when points are successfully awarded 'userId'. Also returns the updated balance of points for usedId in universe via 'userBalanceInUniverse', total points via 'userTotalBalance', and the amount points that were awarded via 'pointsAwarded'. This event fires on the server and also all clients in the game that awarded the points. */
 	readonly PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
 }
-type PointsService = Rbx_PointsService & Base<Rbx_PointsService> & Indexable<Rbx_PointsService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type PointsService = RbxPointsService & Indexable<RbxPointsService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "PointsService"): PointsService;
 }
 
 // Pose
-interface Rbx_Pose extends Rbx_Instance {
+interface RbxPose extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Pose";
 	CFrame: CFrame;
 	EasingDirection: Enum.PoseEasingDirection;
 	EasingStyle: Enum.PoseEasingStyle;
@@ -3888,88 +4396,96 @@ interface Rbx_Pose extends Rbx_Instance {
 	GetSubPoses(): Array<Instance>;
 	RemoveSubPose(pose: Instance): void;
 }
-type Pose = Rbx_Pose & Base<Rbx_Pose> & Indexable<Rbx_Pose>;
+type Pose = RbxPose & Indexable<RbxPose>;
 
 // PostEffect
-interface Rbx_PostEffect extends Rbx_Instance {
+interface RbxPostEffect extends RbxInstance {
 	Enabled: boolean;
 }
-type PostEffect = Rbx_PostEffect & Base<Rbx_PostEffect> & Indexable<Rbx_PostEffect>;
+type PostEffect = BloomEffect | BlurEffect | ColorCorrectionEffect | SunRaysEffect;
 
 // BloomEffect
-interface Rbx_BloomEffect extends Rbx_PostEffect {
+interface RbxBloomEffect extends RbxPostEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BloomEffect";
 	Intensity: number;
 	Size: number;
 	Threshold: number;
 }
-type BloomEffect = Rbx_BloomEffect & Base<Rbx_BloomEffect> & Indexable<Rbx_BloomEffect>;
+type BloomEffect = RbxBloomEffect & Indexable<RbxBloomEffect>;
 
 // BlurEffect
-interface Rbx_BlurEffect extends Rbx_PostEffect {
+interface RbxBlurEffect extends RbxPostEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BlurEffect";
 	Size: number;
 }
-type BlurEffect = Rbx_BlurEffect & Base<Rbx_BlurEffect> & Indexable<Rbx_BlurEffect>;
+type BlurEffect = RbxBlurEffect & Indexable<RbxBlurEffect>;
 
 // ColorCorrectionEffect
-interface Rbx_ColorCorrectionEffect extends Rbx_PostEffect {
+interface RbxColorCorrectionEffect extends RbxPostEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ColorCorrectionEffect";
 	Brightness: number;
 	Contrast: number;
 	Saturation: number;
 	TintColor: Color3;
 }
-type ColorCorrectionEffect = Rbx_ColorCorrectionEffect & Base<Rbx_ColorCorrectionEffect> & Indexable<Rbx_ColorCorrectionEffect>;
+type ColorCorrectionEffect = RbxColorCorrectionEffect & Indexable<RbxColorCorrectionEffect>;
 
 // SunRaysEffect
-interface Rbx_SunRaysEffect extends Rbx_PostEffect {
+interface RbxSunRaysEffect extends RbxPostEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SunRaysEffect";
 	Intensity: number;
 	Spread: number;
 }
-type SunRaysEffect = Rbx_SunRaysEffect & Base<Rbx_SunRaysEffect> & Indexable<Rbx_SunRaysEffect>;
+type SunRaysEffect = RbxSunRaysEffect & Indexable<RbxSunRaysEffect>;
 
 // ReflectionMetadata
-interface Rbx_ReflectionMetadata extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__96: never;
+interface RbxReflectionMetadata extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReflectionMetadata";
 }
-type ReflectionMetadata = Rbx_ReflectionMetadata & Base<Rbx_ReflectionMetadata> & Indexable<Rbx_ReflectionMetadata>;
+type ReflectionMetadata = RbxReflectionMetadata & Indexable<RbxReflectionMetadata>;
 
 // ReflectionMetadataCallbacks
-interface Rbx_ReflectionMetadataCallbacks extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__97: never;
+interface RbxReflectionMetadataCallbacks extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReflectionMetadataCallbacks";
 }
-type ReflectionMetadataCallbacks = Rbx_ReflectionMetadataCallbacks & Base<Rbx_ReflectionMetadataCallbacks> & Indexable<Rbx_ReflectionMetadataCallbacks>;
+type ReflectionMetadataCallbacks = RbxReflectionMetadataCallbacks & Indexable<RbxReflectionMetadataCallbacks>;
 
 // ReflectionMetadataClasses
-interface Rbx_ReflectionMetadataClasses extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__98: never;
+interface RbxReflectionMetadataClasses extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReflectionMetadataClasses";
 }
-type ReflectionMetadataClasses = Rbx_ReflectionMetadataClasses & Base<Rbx_ReflectionMetadataClasses> & Indexable<Rbx_ReflectionMetadataClasses>;
+type ReflectionMetadataClasses = RbxReflectionMetadataClasses & Indexable<RbxReflectionMetadataClasses>;
 
 // ReflectionMetadataEnums
-interface Rbx_ReflectionMetadataEnums extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__99: never;
+interface RbxReflectionMetadataEnums extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReflectionMetadataEnums";
 }
-type ReflectionMetadataEnums = Rbx_ReflectionMetadataEnums & Base<Rbx_ReflectionMetadataEnums> & Indexable<Rbx_ReflectionMetadataEnums>;
+type ReflectionMetadataEnums = RbxReflectionMetadataEnums & Indexable<RbxReflectionMetadataEnums>;
 
 // ReflectionMetadataEvents
-interface Rbx_ReflectionMetadataEvents extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__100: never;
+interface RbxReflectionMetadataEvents extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReflectionMetadataEvents";
 }
-type ReflectionMetadataEvents = Rbx_ReflectionMetadataEvents & Base<Rbx_ReflectionMetadataEvents> & Indexable<Rbx_ReflectionMetadataEvents>;
+type ReflectionMetadataEvents = RbxReflectionMetadataEvents & Indexable<RbxReflectionMetadataEvents>;
 
 // ReflectionMetadataFunctions
-interface Rbx_ReflectionMetadataFunctions extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__101: never;
+interface RbxReflectionMetadataFunctions extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReflectionMetadataFunctions";
 }
-type ReflectionMetadataFunctions = Rbx_ReflectionMetadataFunctions & Base<Rbx_ReflectionMetadataFunctions> & Indexable<Rbx_ReflectionMetadataFunctions>;
+type ReflectionMetadataFunctions = RbxReflectionMetadataFunctions & Indexable<RbxReflectionMetadataFunctions>;
 
 // ReflectionMetadataItem
-interface Rbx_ReflectionMetadataItem extends Rbx_Instance {
+interface RbxReflectionMetadataItem extends RbxInstance {
 	Browsable: boolean;
 	ClassCategory: string;
 	ClientOnly: boolean;
@@ -3984,65 +4500,73 @@ interface Rbx_ReflectionMetadataItem extends Rbx_Instance {
 	UINumTicks: number;
 	summary: string;
 }
-type ReflectionMetadataItem = Rbx_ReflectionMetadataItem & Base<Rbx_ReflectionMetadataItem> & Indexable<Rbx_ReflectionMetadataItem>;
+type ReflectionMetadataItem = ReflectionMetadataClass | ReflectionMetadataEnum | ReflectionMetadataEnumItem | ReflectionMetadataMember;
 
 // ReflectionMetadataClass
-interface Rbx_ReflectionMetadataClass extends Rbx_ReflectionMetadataItem {
+interface RbxReflectionMetadataClass extends RbxReflectionMetadataItem {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReflectionMetadataClass";
 	ExplorerImageIndex: number;
 	ExplorerOrder: number;
 	Insertable: boolean;
 	PreferredParent: string;
 	PreferredParents: string;
 }
-type ReflectionMetadataClass = Rbx_ReflectionMetadataClass & Base<Rbx_ReflectionMetadataClass> & Indexable<Rbx_ReflectionMetadataClass>;
+type ReflectionMetadataClass = RbxReflectionMetadataClass & Indexable<RbxReflectionMetadataClass>;
 
 // ReflectionMetadataEnum
-interface Rbx_ReflectionMetadataEnum extends Rbx_ReflectionMetadataItem {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__102: never;
+interface RbxReflectionMetadataEnum extends RbxReflectionMetadataItem {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReflectionMetadataEnum";
 }
-type ReflectionMetadataEnum = Rbx_ReflectionMetadataEnum & Base<Rbx_ReflectionMetadataEnum> & Indexable<Rbx_ReflectionMetadataEnum>;
+type ReflectionMetadataEnum = RbxReflectionMetadataEnum & Indexable<RbxReflectionMetadataEnum>;
 
 // ReflectionMetadataEnumItem
-interface Rbx_ReflectionMetadataEnumItem extends Rbx_ReflectionMetadataItem {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__103: never;
+interface RbxReflectionMetadataEnumItem extends RbxReflectionMetadataItem {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReflectionMetadataEnumItem";
 }
-type ReflectionMetadataEnumItem = Rbx_ReflectionMetadataEnumItem & Base<Rbx_ReflectionMetadataEnumItem> & Indexable<Rbx_ReflectionMetadataEnumItem>;
+type ReflectionMetadataEnumItem = RbxReflectionMetadataEnumItem & Indexable<RbxReflectionMetadataEnumItem>;
 
 // ReflectionMetadataMember
-interface Rbx_ReflectionMetadataMember extends Rbx_ReflectionMetadataItem {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__104: never;
+interface RbxReflectionMetadataMember extends RbxReflectionMetadataItem {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReflectionMetadataMember";
 }
-type ReflectionMetadataMember = Rbx_ReflectionMetadataMember & Base<Rbx_ReflectionMetadataMember> & Indexable<Rbx_ReflectionMetadataMember>;
+type ReflectionMetadataMember = RbxReflectionMetadataMember & Indexable<RbxReflectionMetadataMember>;
 
 // ReflectionMetadataProperties
-interface Rbx_ReflectionMetadataProperties extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__105: never;
+interface RbxReflectionMetadataProperties extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReflectionMetadataProperties";
 }
-type ReflectionMetadataProperties = Rbx_ReflectionMetadataProperties & Base<Rbx_ReflectionMetadataProperties> & Indexable<Rbx_ReflectionMetadataProperties>;
+type ReflectionMetadataProperties = RbxReflectionMetadataProperties & Indexable<RbxReflectionMetadataProperties>;
 
 // ReflectionMetadataYieldFunctions
-interface Rbx_ReflectionMetadataYieldFunctions extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__106: never;
+interface RbxReflectionMetadataYieldFunctions extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReflectionMetadataYieldFunctions";
 }
-type ReflectionMetadataYieldFunctions = Rbx_ReflectionMetadataYieldFunctions & Base<Rbx_ReflectionMetadataYieldFunctions> & Indexable<Rbx_ReflectionMetadataYieldFunctions>;
+type ReflectionMetadataYieldFunctions = RbxReflectionMetadataYieldFunctions & Indexable<RbxReflectionMetadataYieldFunctions>;
 
 // RemoteEvent
-interface Rbx_RemoteEvent extends Rbx_Instance {
+interface RbxRemoteEvent extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RemoteEvent";
 }
-type RemoteEvent = Rbx_RemoteEvent & Base<Rbx_RemoteEvent> & Indexable<Rbx_RemoteEvent>;
+type RemoteEvent = RbxRemoteEvent & Indexable<RbxRemoteEvent>;
 
 // RemoteFunction
-interface Rbx_RemoteFunction extends Rbx_Instance {
+interface RbxRemoteFunction extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RemoteFunction";
 }
-type RemoteFunction = Rbx_RemoteFunction & Base<Rbx_RemoteFunction> & Indexable<Rbx_RemoteFunction>;
+type RemoteFunction = RbxRemoteFunction & Indexable<RbxRemoteFunction>;
 
 // RenderSettings
-interface Rbx_RenderSettings extends Rbx_Instance {
+interface RbxRenderSettings extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RenderSettings";
 	AutoFRMLevel: number;
 	EagerBulkExecution: boolean;
 	EditQualityLevel: Enum.QualityLevel;
@@ -4057,13 +4581,15 @@ interface Rbx_RenderSettings extends Rbx_Instance {
 	ShowBoundingBoxes: boolean;
 	GetMaxQualityLevel(): number;
 }
-type RenderSettings = Rbx_RenderSettings & Base<Rbx_RenderSettings> & Indexable<Rbx_RenderSettings>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type RenderSettings = RbxRenderSettings & Indexable<RbxRenderSettings>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "RenderSettings"): RenderSettings;
 }
 
 // RenderingTest
-interface Rbx_RenderingTest extends Rbx_Instance {
+interface RbxRenderingTest extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RenderingTest";
 	CFrame: CFrame;
 	ComparisonDiffThreshold: number;
 	ComparisonMethod: Enum.RenderingTestComparisonMethod;
@@ -4076,39 +4602,43 @@ interface Rbx_RenderingTest extends Rbx_Instance {
 	ShouldSkip: boolean;
 	Ticket: string;
 }
-type RenderingTest = Rbx_RenderingTest & Base<Rbx_RenderingTest> & Indexable<Rbx_RenderingTest>;
+type RenderingTest = RbxRenderingTest & Indexable<RbxRenderingTest>;
 
 // ReplicatedFirst
-interface Rbx_ReplicatedFirst extends Rbx_Instance {
+interface RbxReplicatedFirst extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReplicatedFirst";
 	RemoveDefaultLoadingScreen(): void;
 }
-type ReplicatedFirst = Rbx_ReplicatedFirst & Base<Rbx_ReplicatedFirst> & Indexable<Rbx_ReplicatedFirst>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ReplicatedFirst = RbxReplicatedFirst & Indexable<RbxReplicatedFirst>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ReplicatedFirst"): ReplicatedFirst;
 }
 
 // ReplicatedStorage
-interface Rbx_ReplicatedStorage extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__107: never;
+interface RbxReplicatedStorage extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReplicatedStorage";
 }
-type ReplicatedStorage = Rbx_ReplicatedStorage & Base<Rbx_ReplicatedStorage> & Indexable<Rbx_ReplicatedStorage>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ReplicatedStorage = RbxReplicatedStorage & Indexable<RbxReplicatedStorage>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ReplicatedStorage"): ReplicatedStorage;
 }
 
 // RobloxReplicatedStorage
-interface Rbx_RobloxReplicatedStorage extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__108: never;
+interface RbxRobloxReplicatedStorage extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RobloxReplicatedStorage";
 }
-type RobloxReplicatedStorage = Rbx_RobloxReplicatedStorage & Base<Rbx_RobloxReplicatedStorage> & Indexable<Rbx_RobloxReplicatedStorage>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type RobloxReplicatedStorage = RbxRobloxReplicatedStorage & Indexable<RbxRobloxReplicatedStorage>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "RobloxReplicatedStorage"): RobloxReplicatedStorage;
 }
 
 // RunService
-interface Rbx_RunService extends Rbx_Instance {
+interface RbxRunService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RunService";
 	BindToRenderStep(name: string, priority: number, callback: Function): void;
 	IsClient(): boolean;
 	IsRunMode(): boolean;
@@ -4120,36 +4650,40 @@ interface Rbx_RunService extends Rbx_Instance {
 	readonly RenderStepped: RBXScriptSignal<(step: number) => void>;
 	readonly Stepped: RBXScriptSignal<(time: number, step: number) => void>;
 }
-type RunService = Rbx_RunService & Base<Rbx_RunService> & Indexable<Rbx_RunService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type RunService = RbxRunService & Indexable<RbxRunService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "RunService"): RunService;
 }
 
 // RuntimeScriptService
-interface Rbx_RuntimeScriptService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__109: never;
+interface RbxRuntimeScriptService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RuntimeScriptService";
 }
-type RuntimeScriptService = Rbx_RuntimeScriptService & Base<Rbx_RuntimeScriptService> & Indexable<Rbx_RuntimeScriptService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type RuntimeScriptService = RbxRuntimeScriptService & Indexable<RbxRuntimeScriptService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "RuntimeScriptService"): RuntimeScriptService;
 }
 
 // ScriptContext
-interface Rbx_ScriptContext extends Rbx_Instance {
+interface RbxScriptContext extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ScriptContext";
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: Instance) => void>;
 }
-type ScriptContext = Rbx_ScriptContext & Base<Rbx_ScriptContext> & Indexable<Rbx_ScriptContext>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ScriptContext = RbxScriptContext & Indexable<RbxScriptContext>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ScriptContext"): ScriptContext;
 }
 
 // ScriptDebugger
-interface Rbx_ScriptDebugger extends Rbx_Instance {
+interface RbxScriptDebugger extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ScriptDebugger";
 	readonly CurrentLine: number;
 	readonly IsDebugging: boolean;
 	readonly IsPaused: boolean;
-	readonly Script: Instance | undefined;
+	readonly Script?: Instance;
 	AddWatch(expression: string): Instance | undefined;
 	GetBreakpoints(): Array<Instance>;
 	GetGlobals(): object;
@@ -4169,59 +4703,63 @@ interface Rbx_ScriptDebugger extends Rbx_Instance {
 	readonly WatchAdded: RBXScriptSignal<(watch: Instance) => void>;
 	readonly WatchRemoved: RBXScriptSignal<(watch: Instance) => void>;
 }
-type ScriptDebugger = Rbx_ScriptDebugger & Base<Rbx_ScriptDebugger> & Indexable<Rbx_ScriptDebugger>;
+type ScriptDebugger = RbxScriptDebugger & Indexable<RbxScriptDebugger>;
 
 // ScriptService
-interface Rbx_ScriptService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__110: never;
+interface RbxScriptService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ScriptService";
 }
-type ScriptService = Rbx_ScriptService & Base<Rbx_ScriptService> & Indexable<Rbx_ScriptService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ScriptService = RbxScriptService & Indexable<RbxScriptService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ScriptService"): ScriptService;
 }
 
 // Selection
-interface Rbx_Selection extends Rbx_Instance {
+interface RbxSelection extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Selection";
 	readonly SelectionChanged: RBXScriptSignal<() => void>;
 }
-type Selection = Rbx_Selection & Base<Rbx_Selection> & Indexable<Rbx_Selection>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type Selection = RbxSelection & Indexable<RbxSelection>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "Selection"): Selection;
 }
 
 // ServerScriptService
-interface Rbx_ServerScriptService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__111: never;
+interface RbxServerScriptService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ServerScriptService";
 }
-type ServerScriptService = Rbx_ServerScriptService & Base<Rbx_ServerScriptService> & Indexable<Rbx_ServerScriptService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ServerScriptService = RbxServerScriptService & Indexable<RbxServerScriptService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ServerScriptService"): ServerScriptService;
 }
 
 // ServerStorage
-interface Rbx_ServerStorage extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__112: never;
+interface RbxServerStorage extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ServerStorage";
 }
-type ServerStorage = Rbx_ServerStorage & Base<Rbx_ServerStorage> & Indexable<Rbx_ServerStorage>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ServerStorage = RbxServerStorage & Indexable<RbxServerStorage>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ServerStorage"): ServerStorage;
 }
 
 // ServiceProvider
-interface Rbx_ServiceProvider extends Rbx_Instance {
+interface RbxServiceProvider extends RbxInstance {
 	FindService(className: string): Instance | undefined;
 	GetService(className: string): Instance | undefined;
 	readonly Close: RBXScriptSignal<() => void>;
 	readonly ServiceAdded: RBXScriptSignal<(service: Instance) => void>;
 	readonly ServiceRemoving: RBXScriptSignal<(service: Instance) => void>;
 }
-type ServiceProvider = Rbx_ServiceProvider & Base<Rbx_ServiceProvider> & Indexable<Rbx_ServiceProvider>;
+type ServiceProvider = DataModel | GenericSettings;
 
 // DataModel
-interface Rbx_DataModel extends Rbx_ServiceProvider {
+interface RbxDataModel extends RbxServiceProvider {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "DataModel";
 	readonly CreatorId: number;
 	readonly CreatorType: Enum.CreatorType;
 	readonly GameId: number;
@@ -4232,7 +4770,6 @@ interface Rbx_DataModel extends Rbx_ServiceProvider {
 	readonly PlaceVersion: number;
 	readonly PrivateServerId: string;
 	readonly PrivateServerOwnerId: number;
-	readonly Workspace: Workspace;
 	BindToClose(callback: Function): void;
 	IsGearTypeAllowed(gearType: Enum.GearType): boolean;
 	IsLoaded(): boolean;
@@ -4240,38 +4777,42 @@ interface Rbx_DataModel extends Rbx_ServiceProvider {
 	/** Fires when the game finishes loading.  Use this to know when to remove your custom loading gui.  It is best to check IsLoaded() before connecting to this event, as the game may load before the event is connected to. */
 	readonly Loaded: RBXScriptSignal<() => void>;
 }
-type DataModel = Rbx_DataModel & Base<Rbx_DataModel> & Indexable<Rbx_DataModel>;
+type DataModel = RbxDataModel & Indexable<RbxDataModel>;
 
 // GenericSettings
-interface Rbx_GenericSettings extends Rbx_ServiceProvider {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__113: never;
+interface RbxGenericSettings extends RbxServiceProvider {
 }
-type GenericSettings = Rbx_GenericSettings & Base<Rbx_GenericSettings> & Indexable<Rbx_GenericSettings>;
+type GenericSettings = AnalysticsSettings | GlobalSettings | UserSettings;
 
 // AnalysticsSettings
-interface Rbx_AnalysticsSettings extends Rbx_GenericSettings {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__114: never;
+interface RbxAnalysticsSettings extends RbxGenericSettings {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "AnalysticsSettings";
 }
-type AnalysticsSettings = Rbx_AnalysticsSettings & Base<Rbx_AnalysticsSettings> & Indexable<Rbx_AnalysticsSettings>;
+type AnalysticsSettings = RbxAnalysticsSettings & Indexable<RbxAnalysticsSettings>;
 
 // GlobalSettings
-interface Rbx_GlobalSettings extends Rbx_GenericSettings {
+interface RbxGlobalSettings extends RbxGenericSettings {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "GlobalSettings";
 	GetFFlag(name: string): boolean;
 	GetFVariable(name: string): string;
 }
-type GlobalSettings = Rbx_GlobalSettings & Base<Rbx_GlobalSettings> & Indexable<Rbx_GlobalSettings>;
+type GlobalSettings = RbxGlobalSettings & Indexable<RbxGlobalSettings>;
 
 // UserSettings
-interface Rbx_UserSettings extends Rbx_GenericSettings {
+interface RbxUserSettings extends RbxGenericSettings {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UserSettings";
 	IsUserFeatureEnabled(name: string): boolean;
 	Reset(): void;
 }
-type UserSettings = Rbx_UserSettings & Base<Rbx_UserSettings> & Indexable<Rbx_UserSettings>;
+type UserSettings = RbxUserSettings & Indexable<RbxUserSettings>;
 
 // Sky
-interface Rbx_Sky extends Rbx_Instance {
+interface RbxSky extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Sky";
 	CelestialBodiesShown: boolean;
 	MoonAngularSize: number;
 	MoonTextureId: string;
@@ -4285,28 +4826,34 @@ interface Rbx_Sky extends Rbx_Instance {
 	SunAngularSize: number;
 	SunTextureId: string;
 }
-type Sky = Rbx_Sky & Base<Rbx_Sky> & Indexable<Rbx_Sky>;
+type Sky = RbxSky & Indexable<RbxSky>;
 
 // Smoke
-interface Rbx_Smoke extends Rbx_Instance {
+interface RbxSmoke extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Smoke";
 	Color: Color3;
 	Enabled: boolean;
 	Opacity: number;
 	RiseVelocity: number;
 	Size: number;
 }
-type Smoke = Rbx_Smoke & Base<Rbx_Smoke> & Indexable<Rbx_Smoke>;
+type Smoke = RbxSmoke & Indexable<RbxSmoke>;
 
 // SocialService
-interface Rbx_SocialService extends Rbx_Instance {
+interface RbxSocialService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SocialService";
 }
-type SocialService = Rbx_SocialService & Base<Rbx_SocialService> & Indexable<Rbx_SocialService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type SocialService = RbxSocialService & Indexable<RbxSocialService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "SocialService"): SocialService;
 }
 
 // Sound
-interface Rbx_Sound extends Rbx_Instance {
+interface RbxSound extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Sound";
 	EmitterSize: number;
 	readonly IsLoaded: boolean;
 	readonly IsPaused: boolean;
@@ -4319,7 +4866,7 @@ interface Rbx_Sound extends Rbx_Instance {
 	PlaybackSpeed: number;
 	Playing: boolean;
 	RollOffMode: Enum.RollOffMode;
-	SoundGroup: SoundGroup;
+	SoundGroup?: SoundGroup;
 	SoundId: string;
 	readonly TimeLength: number;
 	TimePosition: number;
@@ -4336,97 +4883,119 @@ interface Rbx_Sound extends Rbx_Instance {
 	readonly Resumed: RBXScriptSignal<(soundId: string) => void>;
 	readonly Stopped: RBXScriptSignal<(soundId: string) => void>;
 }
-type Sound = Rbx_Sound & Base<Rbx_Sound> & Indexable<Rbx_Sound>;
+type Sound = RbxSound & Indexable<RbxSound>;
 
 // SoundEffect
-interface Rbx_SoundEffect extends Rbx_Instance {
+interface RbxSoundEffect extends RbxInstance {
 	Enabled: boolean;
 	Priority: number;
 }
-type SoundEffect = Rbx_SoundEffect & Base<Rbx_SoundEffect> & Indexable<Rbx_SoundEffect>;
+type SoundEffect = ChorusSoundEffect | CompressorSoundEffect | DistortionSoundEffect | EchoSoundEffect | EqualizerSoundEffect | FlangeSoundEffect | PitchShiftSoundEffect | ReverbSoundEffect | TremoloSoundEffect;
 
 // ChorusSoundEffect
-interface Rbx_ChorusSoundEffect extends Rbx_SoundEffect {
+interface RbxChorusSoundEffect extends RbxSoundEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ChorusSoundEffect";
 	Depth: number;
 	Mix: number;
 	Rate: number;
 }
-type ChorusSoundEffect = Rbx_ChorusSoundEffect & Base<Rbx_ChorusSoundEffect> & Indexable<Rbx_ChorusSoundEffect>;
+type ChorusSoundEffect = RbxChorusSoundEffect & Indexable<RbxChorusSoundEffect>;
 
 // CompressorSoundEffect
-interface Rbx_CompressorSoundEffect extends Rbx_SoundEffect {
+interface RbxCompressorSoundEffect extends RbxSoundEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CompressorSoundEffect";
 	Attack: number;
 	GainMakeup: number;
 	Ratio: number;
 	Release: number;
-	SideChain: Instance | undefined;
+	SideChain?: Instance;
 	Threshold: number;
 }
-type CompressorSoundEffect = Rbx_CompressorSoundEffect & Base<Rbx_CompressorSoundEffect> & Indexable<Rbx_CompressorSoundEffect>;
+type CompressorSoundEffect = RbxCompressorSoundEffect & Indexable<RbxCompressorSoundEffect>;
 
 // DistortionSoundEffect
-interface Rbx_DistortionSoundEffect extends Rbx_SoundEffect {
+interface RbxDistortionSoundEffect extends RbxSoundEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "DistortionSoundEffect";
 	Level: number;
 }
-type DistortionSoundEffect = Rbx_DistortionSoundEffect & Base<Rbx_DistortionSoundEffect> & Indexable<Rbx_DistortionSoundEffect>;
+type DistortionSoundEffect = RbxDistortionSoundEffect & Indexable<RbxDistortionSoundEffect>;
 
 // EchoSoundEffect
-interface Rbx_EchoSoundEffect extends Rbx_SoundEffect {
+interface RbxEchoSoundEffect extends RbxSoundEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "EchoSoundEffect";
 	Delay: number;
 	DryLevel: number;
 	Feedback: number;
 	WetLevel: number;
 }
-type EchoSoundEffect = Rbx_EchoSoundEffect & Base<Rbx_EchoSoundEffect> & Indexable<Rbx_EchoSoundEffect>;
+type EchoSoundEffect = RbxEchoSoundEffect & Indexable<RbxEchoSoundEffect>;
 
 // EqualizerSoundEffect
-interface Rbx_EqualizerSoundEffect extends Rbx_SoundEffect {
+interface RbxEqualizerSoundEffect extends RbxSoundEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "EqualizerSoundEffect";
 	HighGain: number;
 	LowGain: number;
 	MidGain: number;
 }
-type EqualizerSoundEffect = Rbx_EqualizerSoundEffect & Base<Rbx_EqualizerSoundEffect> & Indexable<Rbx_EqualizerSoundEffect>;
+type EqualizerSoundEffect = RbxEqualizerSoundEffect & Indexable<RbxEqualizerSoundEffect>;
 
 // FlangeSoundEffect
-interface Rbx_FlangeSoundEffect extends Rbx_SoundEffect {
+interface RbxFlangeSoundEffect extends RbxSoundEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "FlangeSoundEffect";
 	Depth: number;
 	Mix: number;
 	Rate: number;
 }
-type FlangeSoundEffect = Rbx_FlangeSoundEffect & Base<Rbx_FlangeSoundEffect> & Indexable<Rbx_FlangeSoundEffect>;
+type FlangeSoundEffect = RbxFlangeSoundEffect & Indexable<RbxFlangeSoundEffect>;
 
 // PitchShiftSoundEffect
-interface Rbx_PitchShiftSoundEffect extends Rbx_SoundEffect {
+interface RbxPitchShiftSoundEffect extends RbxSoundEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "PitchShiftSoundEffect";
 	Octave: number;
 }
-type PitchShiftSoundEffect = Rbx_PitchShiftSoundEffect & Base<Rbx_PitchShiftSoundEffect> & Indexable<Rbx_PitchShiftSoundEffect>;
+type PitchShiftSoundEffect = RbxPitchShiftSoundEffect & Indexable<RbxPitchShiftSoundEffect>;
 
 // ReverbSoundEffect
-interface Rbx_ReverbSoundEffect extends Rbx_SoundEffect {
+interface RbxReverbSoundEffect extends RbxSoundEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ReverbSoundEffect";
 	DecayTime: number;
 	Density: number;
 	Diffusion: number;
 	DryLevel: number;
 	WetLevel: number;
 }
-type ReverbSoundEffect = Rbx_ReverbSoundEffect & Base<Rbx_ReverbSoundEffect> & Indexable<Rbx_ReverbSoundEffect>;
+type ReverbSoundEffect = RbxReverbSoundEffect & Indexable<RbxReverbSoundEffect>;
 
 // TremoloSoundEffect
-interface Rbx_TremoloSoundEffect extends Rbx_SoundEffect {
+interface RbxTremoloSoundEffect extends RbxSoundEffect {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TremoloSoundEffect";
 	Depth: number;
 	Duty: number;
 	Frequency: number;
 }
-type TremoloSoundEffect = Rbx_TremoloSoundEffect & Base<Rbx_TremoloSoundEffect> & Indexable<Rbx_TremoloSoundEffect>;
+type TremoloSoundEffect = RbxTremoloSoundEffect & Indexable<RbxTremoloSoundEffect>;
 
 // SoundGroup
-interface Rbx_SoundGroup extends Rbx_Instance {
+interface RbxSoundGroup extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SoundGroup";
 	Volume: number;
 }
-type SoundGroup = Rbx_SoundGroup & Base<Rbx_SoundGroup> & Indexable<Rbx_SoundGroup>;
+type SoundGroup = RbxSoundGroup & Indexable<RbxSoundGroup>;
 
 // SoundService
-interface Rbx_SoundService extends Rbx_Instance {
+interface RbxSoundService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SoundService";
 	/** The ambient sound environment.  May not work when using hardware sound */
 	AmbientReverb: Enum.ReverbType;
 	/** the relative distance factor, compared to 1.0 meters. */
@@ -4438,43 +5007,62 @@ interface Rbx_SoundService extends Rbx_Instance {
 	RolloffScale: number;
 	PlayLocalSound(sound: Instance): void;
 }
-type SoundService = Rbx_SoundService & Base<Rbx_SoundService> & Indexable<Rbx_SoundService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type SoundService = RbxSoundService & Indexable<RbxSoundService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "SoundService"): SoundService;
 }
 
 // Sparkles
-interface Rbx_Sparkles extends Rbx_Instance {
+interface RbxSparkles extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Sparkles";
 	Color: Color3;
 	Enabled: boolean;
 	SparkleColor: Color3;
 }
-type Sparkles = Rbx_Sparkles & Base<Rbx_Sparkles> & Indexable<Rbx_Sparkles>;
+type Sparkles = RbxSparkles & Indexable<RbxSparkles>;
 
 // SpawnerService
-interface Rbx_SpawnerService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__115: never;
+interface RbxSpawnerService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "SpawnerService";
 }
-type SpawnerService = Rbx_SpawnerService & Base<Rbx_SpawnerService> & Indexable<Rbx_SpawnerService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type SpawnerService = RbxSpawnerService & Indexable<RbxSpawnerService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "SpawnerService"): SpawnerService;
 }
 
 // StarterGear
-interface Rbx_StarterGear extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__116: never;
+interface RbxStarterGear extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "StarterGear";
 }
-type StarterGear = Rbx_StarterGear & Base<Rbx_StarterGear> & Indexable<Rbx_StarterGear>;
+type StarterGear = RbxStarterGear & Indexable<RbxStarterGear>;
+
+// StarterPack
+interface RbxStarterPack extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "StarterPack";
+}
+type StarterPack = RbxStarterPack & Indexable<RbxStarterPack>;
+interface RbxServiceProvider extends RbxInstance {
+	GetService(className: "StarterPack"): StarterPack;
+}
 
 // StarterPlayer
-interface Rbx_StarterPlayer extends Rbx_Instance {
+interface RbxStarterPlayer extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "StarterPlayer";
 	readonly AllowCustomAnimations: boolean;
 	AutoJumpEnabled: boolean;
 	CameraMaxZoomDistance: number;
 	CameraMinZoomDistance: number;
 	CameraMode: Enum.CameraMode;
+	CharacterJumpHeight: number;
+	CharacterJumpPower: number;
+	CharacterMaxSlopeAngle: number;
+	CharacterUseJumpPower: boolean;
+	CharacterWalkSpeed: number;
 	DevCameraOcclusionMode: Enum.DevCameraOcclusionMode;
 	DevComputerCameraMovementMode: Enum.DevComputerCameraMovementMode;
 	DevComputerMovementMode: Enum.DevComputerMovementMode;
@@ -4485,27 +5073,32 @@ interface Rbx_StarterPlayer extends Rbx_Instance {
 	LoadCharacterAppearance: boolean;
 	NameDisplayDistance: number;
 }
-type StarterPlayer = Rbx_StarterPlayer & Base<Rbx_StarterPlayer> & Indexable<Rbx_StarterPlayer>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type StarterPlayer = RbxStarterPlayer & Indexable<RbxStarterPlayer>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "StarterPlayer"): StarterPlayer;
 }
 
-// StarterPlayerScripts
-interface Rbx_StarterPlayerScripts extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__117: never;
+// DerivesFromStarterPlayerScripts
+interface RbxDerivesFromStarterPlayerScripts extends RbxInstance {
 }
-type StarterPlayerScripts = Rbx_StarterPlayerScripts & Base<Rbx_StarterPlayerScripts> & Indexable<Rbx_StarterPlayerScripts>;
+interface RbxStarterPlayerScripts extends RbxDerivesFromStarterPlayerScripts {
+	readonly ClassName: "StarterPlayerScripts";
+}
+
+type StarterPlayerScripts = RbxStarterPlayerScripts & Indexable<RbxStarterPlayerScripts>;
+type DerivesFromStarterPlayerScripts = StarterPlayerScripts | StarterCharacterScripts;
 
 // StarterCharacterScripts
-interface Rbx_StarterCharacterScripts extends Rbx_StarterPlayerScripts {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__118: never;
+interface RbxStarterCharacterScripts extends RbxDerivesFromStarterPlayerScripts {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "StarterCharacterScripts";
 }
-type StarterCharacterScripts = Rbx_StarterCharacterScripts & Base<Rbx_StarterCharacterScripts> & Indexable<Rbx_StarterCharacterScripts>;
+type StarterCharacterScripts = RbxStarterCharacterScripts & Indexable<RbxStarterCharacterScripts>;
 
 // Stats
-interface Rbx_Stats extends Rbx_Instance {
+interface RbxStats extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Stats";
 	readonly ContactsCount: number;
 	readonly DataReceiveKbps: number;
 	readonly DataSendKbps: number;
@@ -4519,58 +5112,58 @@ interface Rbx_Stats extends Rbx_Instance {
 	GetMemoryUsageMbForTag(tag: Enum.DeveloperMemoryTag): number;
 	GetTotalMemoryUsageMb(): number;
 }
-type Stats = Rbx_Stats & Base<Rbx_Stats> & Indexable<Rbx_Stats>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type Stats = RbxStats & Indexable<RbxStats>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "Stats"): Stats;
 }
 
 // StatsItem
-interface Rbx_StatsItem extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__119: never;
+interface RbxStatsItem extends RbxInstance {
 }
-type StatsItem = Rbx_StatsItem & Base<Rbx_StatsItem> & Indexable<Rbx_StatsItem>;
+type StatsItem = RunningAverageItemDouble | RunningAverageItemInt | RunningAverageTimeIntervalItem | TotalCountTimeIntervalItem;
 
 // RunningAverageItemDouble
-interface Rbx_RunningAverageItemDouble extends Rbx_StatsItem {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__120: never;
+interface RbxRunningAverageItemDouble extends RbxStatsItem {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RunningAverageItemDouble";
 }
-type RunningAverageItemDouble = Rbx_RunningAverageItemDouble & Base<Rbx_RunningAverageItemDouble> & Indexable<Rbx_RunningAverageItemDouble>;
+type RunningAverageItemDouble = RbxRunningAverageItemDouble & Indexable<RbxRunningAverageItemDouble>;
 
 // RunningAverageItemInt
-interface Rbx_RunningAverageItemInt extends Rbx_StatsItem {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__121: never;
+interface RbxRunningAverageItemInt extends RbxStatsItem {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RunningAverageItemInt";
 }
-type RunningAverageItemInt = Rbx_RunningAverageItemInt & Base<Rbx_RunningAverageItemInt> & Indexable<Rbx_RunningAverageItemInt>;
+type RunningAverageItemInt = RbxRunningAverageItemInt & Indexable<RbxRunningAverageItemInt>;
 
 // RunningAverageTimeIntervalItem
-interface Rbx_RunningAverageTimeIntervalItem extends Rbx_StatsItem {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__122: never;
+interface RbxRunningAverageTimeIntervalItem extends RbxStatsItem {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RunningAverageTimeIntervalItem";
 }
-type RunningAverageTimeIntervalItem = Rbx_RunningAverageTimeIntervalItem & Base<Rbx_RunningAverageTimeIntervalItem> & Indexable<Rbx_RunningAverageTimeIntervalItem>;
+type RunningAverageTimeIntervalItem = RbxRunningAverageTimeIntervalItem & Indexable<RbxRunningAverageTimeIntervalItem>;
 
 // TotalCountTimeIntervalItem
-interface Rbx_TotalCountTimeIntervalItem extends Rbx_StatsItem {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__123: never;
+interface RbxTotalCountTimeIntervalItem extends RbxStatsItem {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TotalCountTimeIntervalItem";
 }
-type TotalCountTimeIntervalItem = Rbx_TotalCountTimeIntervalItem & Base<Rbx_TotalCountTimeIntervalItem> & Indexable<Rbx_TotalCountTimeIntervalItem>;
+type TotalCountTimeIntervalItem = RbxTotalCountTimeIntervalItem & Indexable<RbxTotalCountTimeIntervalItem>;
 
 // StopWatchReporter
-interface Rbx_StopWatchReporter extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__124: never;
+interface RbxStopWatchReporter extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "StopWatchReporter";
 }
-type StopWatchReporter = Rbx_StopWatchReporter & Base<Rbx_StopWatchReporter> & Indexable<Rbx_StopWatchReporter>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type StopWatchReporter = RbxStopWatchReporter & Indexable<RbxStopWatchReporter>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "StopWatchReporter"): StopWatchReporter;
 }
 
 // Studio
-interface Rbx_Studio extends Rbx_Instance {
+interface RbxStudio extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Studio";
 	["Always Save Script Changes"]: boolean;
 	["Animate Hover Over"]: boolean;
 	["Attach Debugger To"]: Enum.DEPRECATED_DebuggerDataModelPreference;
@@ -4641,60 +5234,70 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Tab Width"]: number;
 	["Text Color"]: Color3;
 	["Text Wrapping"]: boolean;
-	Theme: Instance | undefined;
+	Theme?: Instance;
 	readonly ["UI Theme"]: Enum.UITheme;
 	["Warning Color"]: Color3;
 }
-type Studio = Rbx_Studio & Base<Rbx_Studio> & Indexable<Rbx_Studio>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type Studio = RbxStudio & Indexable<RbxStudio>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "Studio"): Studio;
 }
 
 // StudioService
-interface Rbx_StudioService extends Rbx_Instance {
-	readonly ActiveScript: Instance | undefined;
+interface RbxStudioService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "StudioService";
+	readonly ActiveScript?: Instance;
 }
-type StudioService = Rbx_StudioService & Base<Rbx_StudioService> & Indexable<Rbx_StudioService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type StudioService = RbxStudioService & Indexable<RbxStudioService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "StudioService"): StudioService;
 }
 
 // StudioTheme
-interface Rbx_StudioTheme extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__125: never;
+interface RbxStudioTheme extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "StudioTheme";
 }
-type StudioTheme = Rbx_StudioTheme & Base<Rbx_StudioTheme> & Indexable<Rbx_StudioTheme>;
+type StudioTheme = RbxStudioTheme & Indexable<RbxStudioTheme>;
 
 // TaskScheduler
-interface Rbx_TaskScheduler extends Rbx_Instance {
+interface RbxTaskScheduler extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TaskScheduler";
 	readonly SchedulerDutyCycle: number;
 	readonly SchedulerRate: number;
 	ThreadPoolConfig: Enum.ThreadPoolConfig;
 	readonly ThreadPoolSize: number;
 }
-type TaskScheduler = Rbx_TaskScheduler & Base<Rbx_TaskScheduler> & Indexable<Rbx_TaskScheduler>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type TaskScheduler = RbxTaskScheduler & Indexable<RbxTaskScheduler>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "TaskScheduler"): TaskScheduler;
 }
 
 // Team
-interface Rbx_Team extends Rbx_Instance {
+interface RbxTeam extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Team";
 	AutoAssignable: boolean;
 	TeamColor: BrickColor;
 }
-type Team = Rbx_Team & Base<Rbx_Team> & Indexable<Rbx_Team>;
+type Team = RbxTeam & Indexable<RbxTeam>;
 
 // Teams
-interface Rbx_Teams extends Rbx_Instance {
+interface RbxTeams extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Teams";
 }
-type Teams = Rbx_Teams & Base<Rbx_Teams> & Indexable<Rbx_Teams>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type Teams = RbxTeams & Indexable<RbxTeams>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "Teams"): Teams;
 }
 
 // TeleportService
-interface Rbx_TeleportService extends Rbx_Instance {
+interface RbxTeleportService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TeleportService";
 	GetArrivingTeleportGui(): Instance | undefined;
 	GetLocalPlayerTeleportData(): unknown;
 	GetTeleportSetting(setting: string): unknown;
@@ -4704,19 +5307,23 @@ interface Rbx_TeleportService extends Rbx_Instance {
 	TeleportToSpawnByName(placeId: number, spawnName: string, player?: Instance, teleportData?: any, customLoadingScreen?: Instance): void;
 	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: Instance, dataTable?: any) => void>;
 }
-type TeleportService = Rbx_TeleportService & Base<Rbx_TeleportService> & Indexable<Rbx_TeleportService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type TeleportService = RbxTeleportService & Indexable<RbxTeleportService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "TeleportService"): TeleportService;
 }
 
 // TerrainRegion
-interface Rbx_TerrainRegion extends Rbx_Instance {
+interface RbxTerrainRegion extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TerrainRegion";
 	readonly SizeInCells: Vector3;
 }
-type TerrainRegion = Rbx_TerrainRegion & Base<Rbx_TerrainRegion> & Indexable<Rbx_TerrainRegion>;
+type TerrainRegion = RbxTerrainRegion & Indexable<RbxTerrainRegion>;
 
 // TestService
-interface Rbx_TestService extends Rbx_Instance {
+interface RbxTestService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TestService";
 	AutoRuns: boolean;
 	Description: string;
 	readonly ErrorCount: number;
@@ -4741,70 +5348,76 @@ interface Rbx_TestService extends Rbx_Instance {
 	readonly ServerCollectConditionalResult: RBXScriptSignal<(condition: boolean, text: string, script: Instance, line: number) => void>;
 	readonly ServerCollectResult: RBXScriptSignal<(text: string, script: Instance, line: number) => void>;
 }
-type TestService = Rbx_TestService & Base<Rbx_TestService> & Indexable<Rbx_TestService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type TestService = RbxTestService & Indexable<RbxTestService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "TestService"): TestService;
 }
 
 // TextFilterResult
-interface Rbx_TextFilterResult extends Rbx_Instance {
+interface RbxTextFilterResult extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TextFilterResult";
 	GetChatForUserAsync(toUserId: number): string;
 	GetNonChatStringForBroadcastAsync(): string;
 	GetNonChatStringForUserAsync(toUserId: number): string;
 }
-type TextFilterResult = Rbx_TextFilterResult & Base<Rbx_TextFilterResult> & Indexable<Rbx_TextFilterResult>;
+type TextFilterResult = RbxTextFilterResult & Indexable<RbxTextFilterResult>;
 
 // TextService
-interface Rbx_TextService extends Rbx_Instance {
+interface RbxTextService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TextService";
 	GetTextSize(string: string, fontSize: number, font: Enum.Font, frameSize: Vector2): Vector2;
 	FilterStringAsync(stringToFilter: string, fromUserId: number, textContext?: Enum.TextFilterContext): Instance | undefined;
 }
-type TextService = Rbx_TextService & Base<Rbx_TextService> & Indexable<Rbx_TextService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type TextService = RbxTextService & Indexable<RbxTextService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "TextService"): TextService;
 }
 
 // ThirdPartyUserService
-interface Rbx_ThirdPartyUserService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__126: never;
+interface RbxThirdPartyUserService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ThirdPartyUserService";
 }
-type ThirdPartyUserService = Rbx_ThirdPartyUserService & Base<Rbx_ThirdPartyUserService> & Indexable<Rbx_ThirdPartyUserService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type ThirdPartyUserService = RbxThirdPartyUserService & Indexable<RbxThirdPartyUserService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "ThirdPartyUserService"): ThirdPartyUserService;
 }
 
 // TimerService
-interface Rbx_TimerService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__127: never;
+interface RbxTimerService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TimerService";
 }
-type TimerService = Rbx_TimerService & Base<Rbx_TimerService> & Indexable<Rbx_TimerService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type TimerService = RbxTimerService & Indexable<RbxTimerService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "TimerService"): TimerService;
 }
 
 // TouchInputService
-interface Rbx_TouchInputService extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__128: never;
+interface RbxTouchInputService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TouchInputService";
 }
-type TouchInputService = Rbx_TouchInputService & Base<Rbx_TouchInputService> & Indexable<Rbx_TouchInputService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type TouchInputService = RbxTouchInputService & Indexable<RbxTouchInputService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "TouchInputService"): TouchInputService;
 }
 
 // TouchTransmitter
-interface Rbx_TouchTransmitter extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__129: never;
+interface RbxTouchTransmitter extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TouchTransmitter";
 }
-type TouchTransmitter = Rbx_TouchTransmitter & Base<Rbx_TouchTransmitter> & Indexable<Rbx_TouchTransmitter>;
+type TouchTransmitter = RbxTouchTransmitter & Indexable<RbxTouchTransmitter>;
 
 // Trail
-interface Rbx_Trail extends Rbx_Instance {
-	Attachment0: Attachment;
-	Attachment1: Attachment;
+interface RbxTrail extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Trail";
+	Attachment0?: Attachment;
+	Attachment1?: Attachment;
 	Color: ColorSequence;
 	Enabled: boolean;
 	FaceCamera: boolean;
@@ -4820,18 +5433,20 @@ interface Rbx_Trail extends Rbx_Instance {
 	WidthScale: NumberSequence;
 	Clear(): void;
 }
-type Trail = Rbx_Trail & Base<Rbx_Trail> & Indexable<Rbx_Trail>;
+type Trail = RbxTrail & Indexable<RbxTrail>;
 
 // Translator
-interface Rbx_Translator extends Rbx_Instance {
+interface RbxTranslator extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Translator";
 	readonly LocaleId: string;
 	FormatByKey(key: string, args?: any): string;
 	Translate(context: Instance, text: string): string;
 }
-type Translator = Rbx_Translator & Base<Rbx_Translator> & Indexable<Rbx_Translator>;
+type Translator = RbxTranslator & Indexable<RbxTranslator>;
 
 // TweenBase
-interface Rbx_TweenBase extends Rbx_Instance {
+interface RbxTweenBase extends RbxInstance {
 	/** The current state of how the tween is animating. Possible values are Begin, Playing, Paused, Completed and Cancelled. This property is modified by using functions such as Tween:Play(), Tween:Pause(), and Tween:Cancel(). Read-only. */
 	readonly PlaybackState: Enum.PlaybackState;
 	/** Stops the tween animation. Animation can be restarted by calling Play(). Animation will start from the beginning values. */
@@ -4843,46 +5458,46 @@ interface Rbx_TweenBase extends Rbx_Instance {
 	/** Fires when the tween either reaches PlaybackState Completed or Cancelled. PlaybackState of one of these types is passed as the first arg to the function listening to this event. */
 	readonly Completed: RBXScriptSignal<(playbackState: Enum.PlaybackState) => void>;
 }
-type TweenBase = Rbx_TweenBase & Base<Rbx_TweenBase> & Indexable<Rbx_TweenBase>;
+type TweenBase = Tween;
 
 // Tween
-interface Rbx_Tween extends Rbx_TweenBase {
-	readonly Instance: Instance | undefined;
+interface RbxTween extends RbxTweenBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Tween";
+	readonly Instance?: Instance;
 	readonly TweenInfo: TweenInfo;
 }
-type Tween = Rbx_Tween & Base<Rbx_Tween> & Indexable<Rbx_Tween>;
+type Tween = RbxTween & Indexable<RbxTween>;
 
 // TweenService
-interface Rbx_TweenService extends Rbx_Instance {
+interface RbxTweenService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "TweenService";
 }
-type TweenService = Rbx_TweenService & Base<Rbx_TweenService> & Indexable<Rbx_TweenService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type TweenService = RbxTweenService & Indexable<RbxTweenService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "TweenService"): TweenService;
 }
 
 // UIBase
-interface Rbx_UIBase extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__130: never;
+interface RbxUIBase extends RbxInstance {
 }
-type UIBase = Rbx_UIBase & Base<Rbx_UIBase> & Indexable<Rbx_UIBase>;
+type UIBase = UIComponent;
 
 // UIComponent
-interface Rbx_UIComponent extends Rbx_UIBase {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__131: never;
+interface RbxUIComponent extends RbxUIBase {
 }
-type UIComponent = Rbx_UIComponent & Base<Rbx_UIComponent> & Indexable<Rbx_UIComponent>;
+type UIComponent = UIConstraint | UILayout | UIPadding | UIScale;
 
 // UIConstraint
-interface Rbx_UIConstraint extends Rbx_UIComponent {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__132: never;
+interface RbxUIConstraint extends RbxUIComponent {
 }
-type UIConstraint = Rbx_UIConstraint & Base<Rbx_UIConstraint> & Indexable<Rbx_UIConstraint>;
+type UIConstraint = UIAspectRatioConstraint | UISizeConstraint | UITextSizeConstraint;
 
 // UIAspectRatioConstraint
-interface Rbx_UIAspectRatioConstraint extends Rbx_UIConstraint {
+interface RbxUIAspectRatioConstraint extends RbxUIConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UIAspectRatioConstraint";
 	/** The aspect ratio to maintain. This is the width/height. Only positive numbers allowed. */
 	AspectRatio: number;
 	/** Describes how the aspect ratio will determine its size. Options are FitWithinMaxSize, ScaleWithParentSize. FitWithinMaxSize will make the element the maximum size it can be within the current possible AbsoluteSize of the element while maintaining the AspectRatio. ScaleWithParentSize will make the element the closest to the parent element’s maximum size while maintaining aspect ratio. */
@@ -4890,35 +5505,37 @@ interface Rbx_UIAspectRatioConstraint extends Rbx_UIConstraint {
 	/** Describes which axis to use when determining the new size of the element, while keeping respect to the aspect ratio. */
 	DominantAxis: Enum.DominantAxis;
 }
-type UIAspectRatioConstraint = Rbx_UIAspectRatioConstraint & Base<Rbx_UIAspectRatioConstraint> & Indexable<Rbx_UIAspectRatioConstraint>;
+type UIAspectRatioConstraint = RbxUIAspectRatioConstraint & Indexable<RbxUIAspectRatioConstraint>;
 
 // UISizeConstraint
-interface Rbx_UISizeConstraint extends Rbx_UIConstraint {
+interface RbxUISizeConstraint extends RbxUIConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UISizeConstraint";
 	/** The biggest size the GuiObject is allowed to be. */
 	MaxSize: Vector2;
 	/** The smallest size the GuiObject is allowed to be. */
 	MinSize: Vector2;
 }
-type UISizeConstraint = Rbx_UISizeConstraint & Base<Rbx_UISizeConstraint> & Indexable<Rbx_UISizeConstraint>;
+type UISizeConstraint = RbxUISizeConstraint & Indexable<RbxUISizeConstraint>;
 
 // UITextSizeConstraint
-interface Rbx_UITextSizeConstraint extends Rbx_UIConstraint {
+interface RbxUITextSizeConstraint extends RbxUIConstraint {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UITextSizeConstraint";
 	/** The biggest size the font is allowed to be. */
 	MaxTextSize: number;
 	/** The smallest size the font is allowed to be. */
 	MinTextSize: number;
 }
-type UITextSizeConstraint = Rbx_UITextSizeConstraint & Base<Rbx_UITextSizeConstraint> & Indexable<Rbx_UITextSizeConstraint>;
+type UITextSizeConstraint = RbxUITextSizeConstraint & Indexable<RbxUITextSizeConstraint>;
 
 // UILayout
-interface Rbx_UILayout extends Rbx_UIComponent {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__133: never;
+interface RbxUILayout extends RbxUIComponent {
 }
-type UILayout = Rbx_UILayout & Base<Rbx_UILayout> & Indexable<Rbx_UILayout>;
+type UILayout = UIGridStyleLayout;
 
 // UIGridStyleLayout
-interface Rbx_UIGridStyleLayout extends Rbx_UILayout {
+interface RbxUIGridStyleLayout extends RbxUILayout {
 	readonly AbsoluteContentSize: Vector2;
 	/** Determines which direction to fill the grid. Can be Horizontal or Vertical. */
 	FillDirection: Enum.FillDirection;
@@ -4931,10 +5548,12 @@ interface Rbx_UIGridStyleLayout extends Rbx_UILayout {
 	/** Forces a relayout of all elements. Useful when sort is set to Custom. */
 	ApplyLayout(): void;
 }
-type UIGridStyleLayout = Rbx_UIGridStyleLayout & Base<Rbx_UIGridStyleLayout> & Indexable<Rbx_UIGridStyleLayout>;
+type UIGridStyleLayout = UIGridLayout | UIListLayout | UIPageLayout | UITableLayout;
 
 // UIGridLayout
-interface Rbx_UIGridLayout extends Rbx_UIGridStyleLayout {
+interface RbxUIGridLayout extends RbxUIGridStyleLayout {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UIGridLayout";
 	/** How much space between elements there should be. */
 	CellPadding: UDim2;
 	/** Denotes what size each element should be. Can be overridden by elements using constraints on individual elements. */
@@ -4944,23 +5563,27 @@ interface Rbx_UIGridLayout extends Rbx_UIGridStyleLayout {
 	/** Which corner we start laying the elements out from. Can be TopLeft, TopRight, BottomLeft, BottomRight. */
 	StartCorner: Enum.StartCorner;
 }
-type UIGridLayout = Rbx_UIGridLayout & Base<Rbx_UIGridLayout> & Indexable<Rbx_UIGridLayout>;
+type UIGridLayout = RbxUIGridLayout & Indexable<RbxUIGridLayout>;
 
 // UIListLayout
-interface Rbx_UIListLayout extends Rbx_UIGridStyleLayout {
+interface RbxUIListLayout extends RbxUIGridStyleLayout {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UIListLayout";
 	/** Determines the amount of free space between each element. Can be set either using scale (Percentage of parent's size in the current direction) or offset (a static spacing value, similar to pixel size). */
 	Padding: UDim;
 }
-type UIListLayout = Rbx_UIListLayout & Base<Rbx_UIListLayout> & Indexable<Rbx_UIListLayout>;
+type UIListLayout = RbxUIListLayout & Indexable<RbxUIListLayout>;
 
 // UIPageLayout
-interface Rbx_UIPageLayout extends Rbx_UIGridStyleLayout {
+interface RbxUIPageLayout extends RbxUIGridStyleLayout {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UIPageLayout";
 	/** Whether or not to animate transitions between pages. */
 	Animated: boolean;
 	/** Whether or not the page layout wraps around at the ends. */
 	Circular: boolean;
 	/** The page that is either currently being displayed or is the target of the current animation. */
-	readonly CurrentPage: GuiObject;
+	readonly CurrentPage?: GuiObject;
 	/** The easing direction to use when performing an animation. */
 	EasingDirection: Enum.EasingDirection;
 	/** The easing style to use when performing an animation. */
@@ -4987,10 +5610,12 @@ interface Rbx_UIPageLayout extends Rbx_UIGridStyleLayout {
 	/** Fires when an animation to CurrentPage is completed without being cancelled, and the view stops scrolling. */
 	readonly Stopped: RBXScriptSignal<(currentPage: Instance) => void>;
 }
-type UIPageLayout = Rbx_UIPageLayout & Base<Rbx_UIPageLayout> & Indexable<Rbx_UIPageLayout>;
+type UIPageLayout = RbxUIPageLayout & Indexable<RbxUIPageLayout>;
 
 // UITableLayout
-interface Rbx_UITableLayout extends Rbx_UIGridStyleLayout {
+interface RbxUITableLayout extends RbxUIGridStyleLayout {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UITableLayout";
 	/** Whether the table should expand to fill the available space of its container, column-wise. */
 	FillEmptySpaceColumns: boolean;
 	/** Whether the table should expand to fill the available space of its container, row-wise. */
@@ -5000,10 +5625,12 @@ interface Rbx_UITableLayout extends Rbx_UIGridStyleLayout {
 	/** The amount of padding to insert in between the cells of the table. */
 	Padding: UDim2;
 }
-type UITableLayout = Rbx_UITableLayout & Base<Rbx_UITableLayout> & Indexable<Rbx_UITableLayout>;
+type UITableLayout = RbxUITableLayout & Indexable<RbxUITableLayout>;
 
 // UIPadding
-interface Rbx_UIPadding extends Rbx_UIComponent {
+interface RbxUIPadding extends RbxUIComponent {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UIPadding";
 	/** The padding to apply on the bottom side relative to the parent's normal size. */
 	PaddingBottom: UDim;
 	/** The padding to apply on the left side relative to the parent's normal size. */
@@ -5013,17 +5640,21 @@ interface Rbx_UIPadding extends Rbx_UIComponent {
 	/** The padding to apply on the top side relative to the parent's normal size. */
 	PaddingTop: UDim;
 }
-type UIPadding = Rbx_UIPadding & Base<Rbx_UIPadding> & Indexable<Rbx_UIPadding>;
+type UIPadding = RbxUIPadding & Indexable<RbxUIPadding>;
 
 // UIScale
-interface Rbx_UIScale extends Rbx_UIComponent {
+interface RbxUIScale extends RbxUIComponent {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UIScale";
 	/** The scale factor to apply. */
 	Scale: number;
 }
-type UIScale = Rbx_UIScale & Base<Rbx_UIScale> & Indexable<Rbx_UIScale>;
+type UIScale = RbxUIScale & Indexable<RbxUIScale>;
 
 // UserGameSettings
-interface Rbx_UserGameSettings extends Rbx_Instance {
+interface RbxUserGameSettings extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UserGameSettings";
 	ComputerCameraMovementMode: Enum.ComputerCameraMovementMode;
 	ComputerMovementMode: Enum.ComputerMovementMode;
 	ControlMode: Enum.ControlMode;
@@ -5046,13 +5677,15 @@ interface Rbx_UserGameSettings extends Rbx_Instance {
 	readonly FullscreenChanged: RBXScriptSignal<(isFullscreen: boolean) => void>;
 	readonly StudioModeChanged: RBXScriptSignal<(isStudioMode: boolean) => void>;
 }
-type UserGameSettings = Rbx_UserGameSettings & Base<Rbx_UserGameSettings> & Indexable<Rbx_UserGameSettings>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type UserGameSettings = RbxUserGameSettings & Indexable<RbxUserGameSettings>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "UserGameSettings"): UserGameSettings;
 }
 
 // UserInputService
-interface Rbx_UserInputService extends Rbx_Instance {
+interface RbxUserInputService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "UserInputService";
 	/** Returns true if the local device has an accelerometer, false otherwise. */
 	readonly AccelerometerEnabled: boolean;
 	readonly GamepadEnabled: boolean;
@@ -5126,13 +5759,15 @@ interface Rbx_UserInputService extends Rbx_Instance {
 	readonly WindowFocusReleased: RBXScriptSignal<() => void>;
 	readonly WindowFocused: RBXScriptSignal<() => void>;
 }
-type UserInputService = Rbx_UserInputService & Base<Rbx_UserInputService> & Indexable<Rbx_UserInputService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type UserInputService = RbxUserInputService & Indexable<RbxUserInputService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "UserInputService"): UserInputService;
 }
 
 // VRService
-interface Rbx_VRService extends Rbx_Instance {
+interface RbxVRService extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "VRService";
 	GuiInputUserCFrame: Enum.UserCFrame;
 	readonly VREnabled: boolean;
 	GetTouchpadMode(pad: Enum.VRTouchpad): Enum.VRTouchpadMode;
@@ -5146,51 +5781,59 @@ interface Rbx_VRService extends Rbx_Instance {
 	readonly UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
 	readonly UserCFrameEnabled: RBXScriptSignal<(type: Enum.UserCFrame, enabled: boolean) => void>;
 }
-type VRService = Rbx_VRService & Base<Rbx_VRService> & Indexable<Rbx_VRService>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type VRService = RbxVRService & Indexable<RbxVRService>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "VRService"): VRService;
 }
 
 // ValueBase
-interface Rbx_ValueBase extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__134: never;
+interface RbxValueBase extends RbxInstance {
 }
-type ValueBase = Rbx_ValueBase & Base<Rbx_ValueBase> & Indexable<Rbx_ValueBase>;
+type ValueBase = BinaryStringValue | BoolValue | BrickColorValue | CFrameValue | Color3Value | DoubleConstrainedValue | IntConstrainedValue | IntValue | NumberValue | ObjectValue | RayValue | StringValue | Vector3Value;
 
 // BinaryStringValue
-interface Rbx_BinaryStringValue extends Rbx_ValueBase {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__135: never;
+interface RbxBinaryStringValue extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BinaryStringValue";
 }
-type BinaryStringValue = Rbx_BinaryStringValue & Base<Rbx_BinaryStringValue> & Indexable<Rbx_BinaryStringValue>;
+type BinaryStringValue = RbxBinaryStringValue & Indexable<RbxBinaryStringValue>;
 
 // BoolValue
-interface Rbx_BoolValue extends Rbx_ValueBase {
+interface RbxBoolValue extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BoolValue";
 	Value: boolean;
 }
-type BoolValue = Rbx_BoolValue & Base<Rbx_BoolValue> & Indexable<Rbx_BoolValue>;
+type BoolValue = RbxBoolValue & Indexable<RbxBoolValue>;
 
 // BrickColorValue
-interface Rbx_BrickColorValue extends Rbx_ValueBase {
+interface RbxBrickColorValue extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "BrickColorValue";
 	Value: BrickColor;
 }
-type BrickColorValue = Rbx_BrickColorValue & Base<Rbx_BrickColorValue> & Indexable<Rbx_BrickColorValue>;
+type BrickColorValue = RbxBrickColorValue & Indexable<RbxBrickColorValue>;
 
 // CFrameValue
-interface Rbx_CFrameValue extends Rbx_ValueBase {
+interface RbxCFrameValue extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "CFrameValue";
 	Value: CFrame;
 }
-type CFrameValue = Rbx_CFrameValue & Base<Rbx_CFrameValue> & Indexable<Rbx_CFrameValue>;
+type CFrameValue = RbxCFrameValue & Indexable<RbxCFrameValue>;
 
 // Color3Value
-interface Rbx_Color3Value extends Rbx_ValueBase {
+interface RbxColor3Value extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Color3Value";
 	Value: Color3;
 }
-type Color3Value = Rbx_Color3Value & Base<Rbx_Color3Value> & Indexable<Rbx_Color3Value>;
+type Color3Value = RbxColor3Value & Indexable<RbxColor3Value>;
 
 // DoubleConstrainedValue
-interface Rbx_DoubleConstrainedValue extends Rbx_ValueBase {
+interface RbxDoubleConstrainedValue extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "DoubleConstrainedValue";
 	ConstrainedValue: number;
 	/** The maximum we allow this Value to be set.  If Value is set higher than this, it automatically gets adjusted to MaxValue */
 	MaxValue: number;
@@ -5198,90 +5841,106 @@ interface Rbx_DoubleConstrainedValue extends Rbx_ValueBase {
 	MinValue: number;
 	Value: number;
 }
-type DoubleConstrainedValue = Rbx_DoubleConstrainedValue & Base<Rbx_DoubleConstrainedValue> & Indexable<Rbx_DoubleConstrainedValue>;
+type DoubleConstrainedValue = RbxDoubleConstrainedValue & Indexable<RbxDoubleConstrainedValue>;
 
 // IntConstrainedValue
-interface Rbx_IntConstrainedValue extends Rbx_ValueBase {
+interface RbxIntConstrainedValue extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "IntConstrainedValue";
 	ConstrainedValue: number;
 	MaxValue: number;
 	MinValue: number;
 	Value: number;
 }
-type IntConstrainedValue = Rbx_IntConstrainedValue & Base<Rbx_IntConstrainedValue> & Indexable<Rbx_IntConstrainedValue>;
+type IntConstrainedValue = RbxIntConstrainedValue & Indexable<RbxIntConstrainedValue>;
 
 // IntValue
-interface Rbx_IntValue extends Rbx_ValueBase {
+interface RbxIntValue extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "IntValue";
 	Value: number;
 }
-type IntValue = Rbx_IntValue & Base<Rbx_IntValue> & Indexable<Rbx_IntValue>;
+type IntValue = RbxIntValue & Indexable<RbxIntValue>;
 
 // NumberValue
-interface Rbx_NumberValue extends Rbx_ValueBase {
+interface RbxNumberValue extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "NumberValue";
 	Value: number;
 }
-type NumberValue = Rbx_NumberValue & Base<Rbx_NumberValue> & Indexable<Rbx_NumberValue>;
+type NumberValue = RbxNumberValue & Indexable<RbxNumberValue>;
 
 // ObjectValue
-interface Rbx_ObjectValue extends Rbx_ValueBase {
-	Value: Instance | undefined;
+interface RbxObjectValue extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "ObjectValue";
+	Value?: Instance;
 }
-type ObjectValue = Rbx_ObjectValue & Base<Rbx_ObjectValue> & Indexable<Rbx_ObjectValue>;
+type ObjectValue = RbxObjectValue & Indexable<RbxObjectValue>;
 
 // RayValue
-interface Rbx_RayValue extends Rbx_ValueBase {
+interface RbxRayValue extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "RayValue";
 	Value: Ray;
 }
-type RayValue = Rbx_RayValue & Base<Rbx_RayValue> & Indexable<Rbx_RayValue>;
+type RayValue = RbxRayValue & Indexable<RbxRayValue>;
 
 // StringValue
-interface Rbx_StringValue extends Rbx_ValueBase {
+interface RbxStringValue extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "StringValue";
 	Value: string;
 }
-type StringValue = Rbx_StringValue & Base<Rbx_StringValue> & Indexable<Rbx_StringValue>;
+type StringValue = RbxStringValue & Indexable<RbxStringValue>;
 
 // Vector3Value
-interface Rbx_Vector3Value extends Rbx_ValueBase {
+interface RbxVector3Value extends RbxValueBase {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Vector3Value";
 	Value: Vector3;
 }
-type Vector3Value = Rbx_Vector3Value & Base<Rbx_Vector3Value> & Indexable<Rbx_Vector3Value>;
+type Vector3Value = RbxVector3Value & Indexable<RbxVector3Value>;
 
 // VirtualInputManager
-interface Rbx_VirtualInputManager extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__136: never;
+interface RbxVirtualInputManager extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "VirtualInputManager";
 }
-type VirtualInputManager = Rbx_VirtualInputManager & Base<Rbx_VirtualInputManager> & Indexable<Rbx_VirtualInputManager>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type VirtualInputManager = RbxVirtualInputManager & Indexable<RbxVirtualInputManager>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "VirtualInputManager"): VirtualInputManager;
 }
 
 // VirtualUser
-interface Rbx_VirtualUser extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__137: never;
+interface RbxVirtualUser extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "VirtualUser";
 }
-type VirtualUser = Rbx_VirtualUser & Base<Rbx_VirtualUser> & Indexable<Rbx_VirtualUser>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type VirtualUser = RbxVirtualUser & Indexable<RbxVirtualUser>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "VirtualUser"): VirtualUser;
 }
 
 // Visit
-interface Rbx_Visit extends Rbx_Instance {
-	/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */
-	__138: never;
+interface RbxVisit extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "Visit";
 }
-type Visit = Rbx_Visit & Base<Rbx_Visit> & Indexable<Rbx_Visit>;
-interface Rbx_ServiceProvider extends Rbx_Instance {
+type Visit = RbxVisit & Indexable<RbxVisit>;
+interface RbxServiceProvider extends RbxInstance {
 	GetService(className: "Visit"): Visit;
 }
 
 // WeldConstraint
-interface Rbx_WeldConstraint extends Rbx_Instance {
+interface RbxWeldConstraint extends RbxInstance {
+	/** The string name of this Instance's most derived class. */
+	readonly ClassName: "WeldConstraint";
 	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
 	readonly Active: boolean;
 	Enabled: boolean;
-	Part0: BasePart;
-	Part1: BasePart;
+	Part0?: BasePart;
+	Part1?: BasePart;
 }
-type WeldConstraint = Rbx_WeldConstraint & Base<Rbx_WeldConstraint> & Indexable<Rbx_WeldConstraint>;
+type WeldConstraint = RbxWeldConstraint & Indexable<RbxWeldConstraint>;
 

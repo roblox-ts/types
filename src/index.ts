@@ -6,6 +6,7 @@ import { EnumGenerator } from "./class/EnumGenerator";
 import { ReflectionMetadata } from "./class/ReflectionMetadata";
 import { Timer } from "./class/Timer";
 
+// https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Client-Watch/roblox/API-Dump.json
 const BASE_URL = "https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Client-Watch/roblox/";
 const API_DUMP_URL = BASE_URL + "API-Dump.json";
 const REFLECTION_METADATA_URL = BASE_URL + "ReflectionMetadata.xml";
