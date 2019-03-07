@@ -4,10 +4,7 @@
 
 interface Table {}
 
-interface LuaTuple<T> {
-	[index: number]: T;
-	[Symbol.iterator](): IterableIterator<T>;
-}
+type LuaTuple<T extends any[]> = T;
 
 /** A table that is shared between all scripts of the same context level. */
 declare const _G: Table;
@@ -55,39 +52,43 @@ declare function tonumber(arg: unknown, base?: number): number | undefined;
 declare function tostring(value: unknown): string;
 
 /** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
-declare function pcall<T extends Array<any>, U>(
+declare function pcall<T extends any[], U>(
 	func: (...args: T) => U,
-): U extends [infer A]
-	? [true, A] | [false, string]
-	: U extends [infer A, infer B]
-	? [true, A, B] | [false, string, undefined]
-	: U extends [infer A, infer B, infer C]
-	? [true, A, B, C] | [false, string, undefined, undefined]
-	: U extends [infer A, infer B, infer C, infer D]
-	? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
-	: U extends [infer A, infer B, infer C, infer D, infer E]
-	? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
-	: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-	? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
-	: [true, U] | [false, string];
+): LuaTuple<
+	U extends [infer A]
+		? [true, A] | [false, string]
+		: U extends [infer A, infer B]
+		? [true, A, B] | [false, string, undefined]
+		: U extends [infer A, infer B, infer C]
+		? [true, A, B, C] | [false, string, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D]
+		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D, infer E]
+		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
+		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
+		: [true, U] | [false, string]
+>;
 
 /** B Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
 declare function pcall<T extends Array<any>, U>(
 	func: (...args: T) => U,
-	...args: T,
-): U extends [infer A]
-	? [true, A] | [false, string]
-	: U extends [infer A, infer B]
-	? [true, A, B] | [false, string, undefined]
-	: U extends [infer A, infer B, infer C]
-	? [true, A, B, C] | [false, string, undefined, undefined]
-	: U extends [infer A, infer B, infer C, infer D]
-	? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
-	: U extends [infer A, infer B, infer C, infer D, infer E]
-	? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
-	: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-	? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
-	: [true, U] | [false, string];
+	...args: T
+): LuaTuple<
+	U extends [infer A]
+		? [true, A] | [false, string]
+		: U extends [infer A, infer B]
+		? [true, A, B] | [false, string, undefined]
+		: U extends [infer A, infer B, infer C]
+		? [true, A, B, C] | [false, string, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D]
+		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D, infer E]
+		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
+		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
+		: [true, U] | [false, string]
+>;
 
 interface LuaMetatable<T> {
 	__index?: (self: T, index: unknown) => void;
@@ -174,7 +175,7 @@ interface String {
 	lower(): string;
 
 	/** Looks for the first match of pattern in the string s. If a match is found, it is returned; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. */
-	match(pattern: string, init?: number): LuaTuple<string | undefined>;
+	match(pattern: string, init?: number): LuaTuple<Array<string | undefined>>;
 
 	/** Returns a string that is the concatenation of n copies of the string s separated by the string sep. */
 	rep(n: number): string;
@@ -212,7 +213,7 @@ declare namespace string {
 	function lower(s: string): string;
 
 	/** Looks for the first match of pattern in the string s. If a match is found, it is returned; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. */
-	function match(s: string, pattern: string, init?: number): LuaTuple<string | undefined>;
+	function match(s: string, pattern: string, init?: number): LuaTuple<Array<string | undefined>>;
 
 	/** Returns a string that is the concatenation of n copies of the string s separated by the string sep. */
 	function rep(s: string, n: number): string;

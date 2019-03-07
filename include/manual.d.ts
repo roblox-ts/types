@@ -32,7 +32,7 @@ interface RbxBasePart extends RbxInstance {
 	/** Fired when the part starts touching another part */
 	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
 	CanCollideWith(part: BasePart): boolean;
-	CanSetNetworkOwnership(): [true] | [false, string];
+	CanSetNetworkOwnership(): LuaTuple<[boolean, string | undefined]>;
 	GetConnectedParts(recursive?: boolean): Array<BasePart>;
 	GetNetworkOwner(): Player | undefined;
 	GetRootPart(): BasePart;
@@ -69,9 +69,9 @@ interface RbxCamera extends RbxInstance {
 	CameraSubject: Humanoid | BasePart | undefined;
 	GetPartsObscuringTarget(castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
 	/** Takes a 3D position in the world and projects it onto x,y coordinates of screen space. Returns two values, first is a Vector3 that has x,y position and z position which is distance from camera (negative if behind camera, positive if in front). Second return value is a boolean indicating if the first argument is an on-screen coordinate. */
-	WorldToScreenPoint(worldPoint: Vector3): [Vector3, boolean];
+	WorldToScreenPoint(worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
 	/** Same as WorldToScreenPoint, except no GUI offsets are taken into account. */
-	WorldToViewportPoint(worldPoint: Vector3): [Vector3, boolean];
+	WorldToViewportPoint(worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
 }
 
 interface RbxChat extends RbxInstance {
@@ -115,14 +115,14 @@ interface RbxContextActionService extends RbxInstance {
 		actionName: string,
 		functionToBind: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
 		createTouchButton: boolean,
-		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>,
+		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
 	BindActionAtPriority(
 		actionName: string,
 		functionToBind: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
 		createTouchButton: boolean,
 		priorityLevel: number,
-		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>,
+		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
 	/** If 'actionName' key contains a bound action, then this will return the touch button (if was created). Returns nil if a touch button was not created. No guarantees are made whether button will be retrievable when button is manipulated. */
 	GetButton(actionName: string): ImageButton | undefined;
@@ -235,15 +235,15 @@ interface RbxGuiService extends RbxInstance {
 	AddSelectionParent(selectionName: string, selectionParent: GuiObject): void;
 	AddSelectionTuple(selectionName: string, selections: GuiObject): void;
 	/** Returns a Tuple containing two Vector2 values representing the offset of user GUIs in pixels from the top right corner of the screen and the bottom right corner of the screen respectively. */
-	GetGuiInset(): [Vector2, Vector2];
+	GetGuiInset(): LuaTuple<[Vector2, Vector2]>;
 }
 
-interface RbxHapticService extends RbxInstance {
-	GetMotor(inputType: Enum.UserInputType, vibrationMotor: Enum.VibrationMotor): [number];
+interface Rbx_HapticService extends RbxInstance {
+	GetMotor(inputType: Enum.UserInputType, vibrationMotor: Enum.VibrationMotor): LuaTuple<[number]>;
 	SetMotor(
 		inputType: Enum.UserInputType,
 		vibrationMotor: Enum.VibrationMotor,
-		...vibrationValues: Array<number>,
+		...vibrationValues: Array<number>
 	): void;
 }
 
@@ -549,8 +549,8 @@ interface RbxMarketplaceService extends RbxInstance {
 interface RbxModel extends RbxDerivesFromModel {
 	/** A Part that serves as a reference for the Model's CFrame. Used in conjunction with GetModelPrimaryPartCFrame and SetModelPrimaryPartCFrame. Use this to rotate/translate all Parts relative to the PrimaryPart. */
 	PrimaryPart?: BasePart;
-	/** Describes the smallest possible rotated cuboid to contain all the parts of the model as a CFrame and Vector3 size. */
-	GetBoundingBox(): [CFrame, Vector3];
+	/** Describes the smallest possible rotated cuboid to contain all the parts of the model as a CFrame and Vector3 size.*/
+	GetBoundingBox(): LuaTuple<[CFrame, Vector3]>;
 }
 
 /** @rbxts server */
@@ -660,12 +660,12 @@ interface RbxPlayers extends RbxInstance {
 		userId: number,
 		thumbnailType: Enum.ThumbnailType,
 		thumbnailSize: Enum.ThumbnailSize,
-	): [string, boolean];
+	): LuaTuple<[string, boolean]>;
 }
 
 interface RbxPointsService extends RbxInstance {
 	/** Will attempt to award the 'amount' points to 'userId', returns 'userId' awarded to, the number of points awarded, the new point total the user has in the game, and the total number of points the user now has. Will also fire PointsService.PointsAwarded. Works with server scripts ONLY. */
-	AwardPoints(userId: number, amount: number): [number, number, number, 0];
+	AwardPoints(userId: number, amount: number): LuaTuple<[number, number, number, 0]>;
 }
 
 interface RbxRemoteEvent extends RbxInstance {
@@ -790,8 +790,8 @@ interface RbxTeleportService {
 	readonly TeleportInitFailed: RBXScriptSignal<
 		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string) => void
 	>;
-	GetPlayerPlaceInstanceAsync(userId: number): [boolean, string, number, string];
-	ReserveServer(placeId: number): [string, string];
+	GetPlayerPlaceInstanceAsync(userId: number): LuaTuple<[boolean, string, number, string]>;
+	ReserveServer(placeId: number): LuaTuple<[string, string]>;
 	Teleport(placeId: number, player?: Player, teleportData?: any, customLoadingScreen?: Instance): void;
 	TeleportToPrivateServer(
 		placeId: number,
@@ -817,7 +817,12 @@ type ReadVoxelsArray<T> = Array<Array<Array<T>>> & {
 interface RbxTerrain extends RbxBasePart {
 	CopyRegion(region: Region3int16): TerrainRegion;
 	PasteRegion(region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): void;
-	ReadVoxels(region: Region3, resolution: number): [ReadVoxelsArray<Enum.Material>, ReadVoxelsArray<number>];
+
+	ReadVoxels(
+		region: Region3,
+		resolution: number,
+	): LuaTuple<[ReadVoxelsArray<Enum.Material>, ReadVoxelsArray<number>]>;
+
 	WriteVoxels(
 		region: Region3,
 		resolution: number,
@@ -850,7 +855,7 @@ interface RbxUserInputService {
 	readonly InputEnded: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	GetConnectedGamepads(): Array<Enum.UserInputType>;
 	/** Returns an InputObject and a Vector4 that describes the device's current rotation vector. This is fired with an InputObject, which has type Enum.InputType.Gyroscope, and position that shows total rotation in each local device axis. The delta property describes the amount of rotation that last happened. The Vector4 is the device's current quaternion rotation in reference to it's default reference frame. This event only fires locally. */
-	GetDeviceRotation(): [InputObject, CFrame];
+	GetDeviceRotation(): LuaTuple<[InputObject, CFrame]>;
 	GetGamepadState(gamepadNum: Enum.UserInputType): Array<InputObject>;
 	GetKeysPressed(): Array<InputObject>;
 	GetMouseButtonsPressed(): Array<InputObject>;
@@ -866,17 +871,17 @@ interface RbxWorkspace extends RbxDerivesFromModel {
 		ignoreDescendantsInstance?: Instance,
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean,
-	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
+	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 	/** Return type is (BasePart, Vector3) if the ray hits.  If it misses it will return (nil, PointAtEndOfRay) */
 	FindPartOnRayWithIgnoreList(
 		ray: Ray,
 		ignoreDescendantsTable: Array<Instance>,
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean,
-	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
+	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 	FindPartOnRayWithWhitelist(
 		ray: Ray,
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean,
-	): [BasePart | undefined, Vector3, Vector3, Enum.Material];
+	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 }
