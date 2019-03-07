@@ -115,14 +115,14 @@ interface RbxContextActionService extends RbxInstance {
 		actionName: string,
 		functionToBind: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
 		createTouchButton: boolean,
-		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
+		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>,
 	): void;
 	BindActionAtPriority(
 		actionName: string,
 		functionToBind: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
 		createTouchButton: boolean,
 		priorityLevel: number,
-		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
+		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>,
 	): void;
 	/** If 'actionName' key contains a bound action, then this will return the touch button (if was created). Returns nil if a touch button was not created. No guarantees are made whether button will be retrievable when button is manipulated. */
 	GetButton(actionName: string): ImageButton | undefined;
@@ -243,7 +243,7 @@ interface Rbx_HapticService extends RbxInstance {
 	SetMotor(
 		inputType: Enum.UserInputType,
 		vibrationMotor: Enum.VibrationMotor,
-		...vibrationValues: Array<number>
+		...vibrationValues: Array<number>,
 	): void;
 }
 

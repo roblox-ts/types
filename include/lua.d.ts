@@ -4,7 +4,7 @@
 
 interface Table {}
 
-type LuaTuple<T extends any[]> = T;
+type LuaTuple<T extends Array<any>> = T;
 
 /** A table that is shared between all scripts of the same context level. */
 declare const _G: Table;
@@ -52,7 +52,7 @@ declare function tonumber(arg: unknown, base?: number): number | undefined;
 declare function tostring(value: unknown): string;
 
 /** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
-declare function pcall<T extends any[], U>(
+declare function pcall<T extends Array<any>, U>(
 	func: (...args: T) => U,
 ): LuaTuple<
 	U extends [infer A]
@@ -73,7 +73,7 @@ declare function pcall<T extends any[], U>(
 /** B Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
 declare function pcall<T extends Array<any>, U>(
 	func: (...args: T) => U,
-	...args: T
+	...args: T,
 ): LuaTuple<
 	U extends [infer A]
 		? [true, A] | [false, string]
