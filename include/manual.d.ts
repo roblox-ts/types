@@ -345,7 +345,7 @@ interface RbxInsertService extends RbxInstance {
 	GetUserSets(userId: number): Array<SetInfo>;
 }
 
-interface RbxInstance {
+interface InternalRbxInstance {
 	/** Returns a copy of this Object and all its children. The copy's Parent is nil */
 	Clone(): this;
 	/** Returns a read-only table of this Object's children */
@@ -503,6 +503,12 @@ interface AssetProductInfo extends ProductInfo {
 interface DeveloperProductInfo extends ProductInfo {
 	/** If the InfoType was Product, this is the product's ID */
 	ProductId: number;
+}
+
+interface RbxServiceProvider extends RbxInstance {
+	FindService(className: string): Instance | undefined;
+	GetService<T extends keyof Services>(className: T): Services[T];
+	GetService(className: string): Instance | undefined;
 }
 
 interface RbxDataModel extends RbxServiceProvider {
@@ -839,11 +845,11 @@ type Tweenable = number | boolean | CFrame | Rect | Color3 | UDim | UDim2 | Vect
 type FilterMembers<T, U> = Pick<T, { [K in keyof T]: T[K] extends U ? K : never }[keyof T]>;
 
 interface RbxTweenService {
-	Create<T extends BaseTypes[keyof BaseTypes]>(
-		instance: T,
-		tweenInfo: TweenInfo,
-		propertyTable: Partial<FilterMembers<BaseTypes[BaseType<T>], Tweenable>>,
-	): Tween;
+	// Create<T extends BaseTypes[keyof BaseTypes]>(
+	// 	instance: T,
+	// 	tweenInfo: TweenInfo,
+	// 	propertyTable: Partial<FilterMembers<BaseTypes[BaseType<T>], Tweenable>>,
+	// ): Tween;
 }
 
 interface RbxUserInputService {

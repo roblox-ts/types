@@ -8,7 +8,7 @@
 
 // ROBLOX API
 
-type Indexable<T extends RbxInstance> = { [i in string]: i extends keyof T ? T[i] : Instance };
+interface Indexable<T extends RbxInstance> { [i: string]: Instance }
 
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : never;
 

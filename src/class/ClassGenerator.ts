@@ -352,32 +352,31 @@ export class ClassGenerator extends Generator {
 		const tsApiInterface = tsFile.getInterface(name);
 		const isClassCreatable = isCreatable(rbxClass);
 		const hasSubclasses = rbxClass.Subclasses.length > 0;
-		this.write(`// ${name}`);
 		const implName = IMPL_PREFIX + name;
 		const tsImplInterface = tsFile.getInterface(implName);
 
 		if (!tsApiInterface) {
 			const extendsStr =
 				rbxClass.Superclass !== ROOT_CLASS_NAME
-					? `extends ${IMPL_PREFIX}${this.generateClassName(rbxClass.Superclass)} `
+					? `extends ${IMPL_PREFIX + this.generateClassName(rbxClass.Superclass)} `
 					: "";
 
-			this.write(`interface ${implName} ${extendsStr}{`);
-			this.pushIndent();
-
-			if (!hasSubclasses) {
-				this.write(`/** The string name of this Instance's most derived class. */`);
-				this.write(`readonly ClassName: "${name}";`);
-			}
-
 			const members = rbxClass.Members.filter(rbxMember => this.shouldGenerateMember(rbxClass, rbxMember));
-			members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
-			if (members.length === 0) {
-				// this.write(`/** **INTERNAL DO NOT USE** [#32](https://github.com/roblox-ts/rbx-types/issues/32) */`);
-				// this.write(`__${n.get()}: never;`);
+			const isEmpty = members.length === 0 && hasSubclasses;
+			this.write(`interface ${implName} ${extendsStr}{${isEmpty ? "}" : ""}`);
+
+			if (!isEmpty) {
+				this.pushIndent();
+
+				if (!hasSubclasses) {
+					this.write(`/** The string name of this Instance's most derived class. */`);
+					this.write(`readonly ClassName: "${name}";`);
+				}
+
+				members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
+				this.popIndent();
+				this.write(`}`);
 			}
-			this.popIndent();
-			this.write(`}`);
 		}
 
 		if (hasSubclasses) {
@@ -385,7 +384,7 @@ export class ClassGenerator extends Generator {
 			let initialString = `type ${fullName} = `;
 
 			if (isClassCreatable) {
-				const newImplName = `${IMPL_PREFIX}${fullName}`;
+				const newImplName = `${IMPL_PREFIX + fullName}`;
 				this.write(`interface ${newImplName} extends ${implName} {`);
 				this.pushIndent();
 				this.write(`readonly ClassName: "${fullName}";`);
@@ -396,25 +395,11 @@ export class ClassGenerator extends Generator {
 				initialString = `type ${DERIVATIVE_PREFIX}${fullName} = ${fullName} | `;
 			}
 
-			this.write(
-				rbxClass.Subclasses.reduce((a, v) => a + this.generateClassName(v) + " | ", initialString).slice(
-					0,
-					-3,
-				) + ";",
-			);
+			const possibilities = this.subclassify(fullName).join(" | ") + ";";
+			this.write(initialString + possibilities);
 		} else {
 			this.write(`type ${name} = ${implName} & Indexable<${implName}>;`);
 		}
-
-		if (classHasTag(rbxClass, "Service")) {
-			this.write(`interface ${IMPL_PREFIX}ServiceProvider extends ${IMPL_PREFIX}Instance {`);
-			this.pushIndent();
-			this.write(`GetService(className: "${name}"): ${name};`);
-			this.popIndent();
-			this.write(`}`);
-		}
-
-		this.write(``);
 	}
 
 	private generateHeader() {
@@ -443,39 +428,62 @@ export class ClassGenerator extends Generator {
 
 		this.write(`// ${multispaceName} TABLE`);
 		this.write(``);
-		this.write(`interface ${tableName}${extendedStr} {`);
-		this.pushIndent();
-		if (callback === undefined) {
-			callback = ({ Name: name }: ApiClass) => {
-				this.write(`${name}: ${name};`);
-			};
+		const isEmpty = rbxClasses.length === 0;
+		this.write(`interface ${tableName}${extendedStr} {${isEmpty ? "}" : ""}`);
+		if (!isEmpty) {
+			this.pushIndent();
+			if (callback === undefined) {
+				callback = ({ Name: name }: ApiClass) => {
+					this.write(`${name}: ${name};`);
+				};
+			}
+			rbxClasses.forEach(callback);
+			this.popIndent();
+			this.write(`}`);
 		}
-		rbxClasses.forEach(callback);
-		this.popIndent();
-		this.write(`}`);
 		this.write(``);
+	}
+
+	private subclassify(rbxClassName: string): Array<string> {
+		const rbxClass = this.ClassReferences.get(rbxClassName);
+
+		if (rbxClass) {
+			const subclasses = rbxClass.Subclasses;
+
+			if (subclasses.length === 0) {
+				return [rbxClassName];
+			} else {
+				const allSubclasses: Array<string> = [];
+				for (const subclass of subclasses) allSubclasses.push(...this.subclassify(subclass));
+				return allSubclasses;
+			}
+		} else {
+			throw new Error("Cannot subclassify " + rbxClassName);
+		}
 	}
 
 	private generateInstancesTables(rbxClasses: Array<ApiClass>) {
 		const baseFormat = ({ Name: name }: ApiClass) => {
-			this.write(`${name}: ${this.generateClassName(name)};`);
+			this.write(`${name}: ${this.subclassify(name).join(" | ")};`);
 		};
-		const [CreatableInstancesInternal, InstancesInternal, CreatableInstances, Instances] = multifilter(
+
+		const [CreatableInstancesInternal, InstancesInternal, CreatableInstances, Instances, Services] = multifilter(
 			rbxClasses,
-			4,
-			rbxClass => (isCreatable(rbxClass) ? 0 : 1) + (this.classIsDerivative(rbxClass) ? 2 : 0),
+			5,
+			rbxClass =>
+				classHasTag(rbxClass, "Service")
+					? 4
+					: (isCreatable(rbxClass) ? 0 : 1) + (this.classIsDerivative(rbxClass) ? 2 : 0),
 		);
 
 		const InstanceBases: Array<ApiClass> = [...Instances, ...CreatableInstances];
 
 		this.generateInstanceInterface("CreatableInstancesInternal", CreatableInstancesInternal);
-		this.generateInstanceInterface("InstancesInternal", InstancesInternal, "CreatableInstancesInternal");
+		this.generateInstanceInterface("Services", Services);
+		this.generateInstanceInterface("InstancesInternal", InstancesInternal, "CreatableInstancesInternal, Services");
 		this.generateInstanceInterface("InstanceBases", InstanceBases, "InstancesInternal", baseFormat);
 		this.generateInstanceInterface("CreatableInstances", CreatableInstances, "CreatableInstancesInternal");
 		this.generateInstanceInterface("Instances", Instances, "InstancesInternal, CreatableInstances");
-		this.generateInstanceInterface("BaseTypes", rbxClasses, "", ({ Name: name }) => {
-			this.write(`${name}: ${IMPL_PREFIX}${name};`);
-		});
 	}
 
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {
