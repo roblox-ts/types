@@ -659,6 +659,10 @@ declare namespace Enum {
 		Analytics = 22,
 		Localization = 24
 	}
+	enum HumanoidCollisionType {
+		OuterBox = 0,
+		InnerBox = 1
+	}
 	enum HumanoidDisplayDistanceType {
 		Viewer = 0,
 		Subject = 1,
