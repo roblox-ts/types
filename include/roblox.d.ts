@@ -10,7 +10,7 @@
 
 type Indexable<T extends Rbx_Instance> = { [i in string]: i extends keyof T ? T[i] : Instance };
 
-type FunctionArguments<T> = T extends (...args: infer U) => void ? U : never;
+type FunctionArguments<T> = T extends (...args: infer U) => void ? U : [];
 
 type Callback = (...args: any[]) => void;
 
@@ -27,7 +27,7 @@ interface RBXScriptConnection {
 
 interface RBXScriptSignal<T = Function, P = false> {
 	Connect<O extends unknown[] = FunctionArguments<T>>(callback: P extends true ? FunctionArguments<T> extends unknown[] ? (...args: O) => void : T : T): RBXScriptConnection;
-	Wait(): FunctionArguments<T>;
+	Wait(): LuaTuple<FunctionArguments<T>>;
 }
 
 // generated in generated_classes.d.ts
