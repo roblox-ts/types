@@ -187,7 +187,7 @@ interface IterableIterator<T> extends Iterator<T> {
 }
 
 /** @rbxts array */
-interface ReadonlyArray<T> extends ArrayLike<T> {
+interface ReadonlyArray<T> extends IsEmpty, ToString, ArrayLike<T> {
 	/** Iterator */
 	[Symbol.iterator](): IterableIterator<T>;
 
