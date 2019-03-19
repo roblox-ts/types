@@ -15,7 +15,7 @@ interface ArrayLike<T> {
 	 * Gets the length of the array. This is one higher than the highest index defined in an array.
 	 */
 	readonly length: number;
-	readonly [n: number]: T | undefined;
+	readonly [n: number]: T;
 }
 
 interface ToString {
@@ -413,7 +413,7 @@ interface Array<T> extends ReadonlyArray<T> {
 	 */
 	remove(index: number): T | undefined;
 
-	[n: number]: T | undefined;
+	[n: number]: T;
 }
 
 interface ArrayConstructor {
