@@ -15,7 +15,7 @@ interface ArrayLike<T> {
 	 * Gets the length of the array. This is one higher than the highest index defined in an array.
 	 */
 	readonly length: number;
-	readonly [n: number]: T;
+	readonly [n: number]: T | undefined;
 }
 
 interface ToString {
@@ -180,6 +180,10 @@ interface Iterator<T> {
 	next(value?: any): IteratorResult<T>;
 	return?(value?: any): IteratorResult<T>;
 	throw?(e?: any): IteratorResult<T>;
+}
+
+interface Iterable<T> {
+	[Symbol.iterator](): Iterator<T>;
 }
 
 interface IterableIterator<T> extends Iterator<T> {
@@ -413,7 +417,7 @@ interface Array<T> extends ReadonlyArray<T> {
 	 */
 	remove(index: number): T | undefined;
 
-	[n: number]: T;
+	[n: number]: T | undefined;
 }
 
 interface ArrayConstructor {
