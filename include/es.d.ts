@@ -96,7 +96,7 @@ interface ObjectConstructor {
 	 * Returns an array of key/values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
-	entries(o: {}): Array<[string, any]>;
+	entries<T extends { [key: string]: any }, K extends keyof T>(o: T): Array<[K, T[K]]>;
 
 	/**
 	 * Returns true if empty, otherwise false.
