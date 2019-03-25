@@ -199,7 +199,7 @@ interface ReadonlyArray<T> extends IsEmpty, ToString, ArrayLike<T> {
 	 * Creates a new array and shallow copies `this` and the items into the new array, in that order.
 	 * @param items Additional items to add to the end of array1.
 	 */
-	concat<T>(...items: Array<T>): Array<T>;
+	concat<T>(...items: Array<ReadonlyArray<T>>): Array<T>;
 
 	/**
 	 * Adds all the elements of an array separated by the specified separator string.
