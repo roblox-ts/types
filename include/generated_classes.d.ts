@@ -629,7 +629,7 @@ interface Rbx_Instance {
 	readonly ClassName: string;
 	Name: string;
 	/** The Instance that is directly above this Instance in the tree. */
-	Parent: Instance | undefined;
+	Parent?: Instance | undefined;
 	/** Removes all children (but not this object) from the workspace. */
 	ClearAllChildren(): void;
 	/** Removes object and all of its children from the workspace. Disconnects object and all children from open connections. Object and children may not be usable after calling Destroy. */
@@ -728,7 +728,7 @@ type AnimationController = Rbx_AnimationController & Base<Rbx_AnimationControlle
 
 // AnimationTrack
 interface Rbx_AnimationTrack extends Rbx_Instance {
-	readonly Animation: Animation;
+	readonly Animation?: Animation;
 	readonly IsPlaying: boolean;
 	readonly Length: number;
 	Looped: boolean;
@@ -866,7 +866,7 @@ interface Rbx_PlayerGui extends Rbx_BasePlayerGui {
 	readonly CurrentScreenOrientation: Enum.ScreenOrientation;
 	ScreenOrientation: Enum.ScreenOrientation;
 	/** Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject. */
-	SelectionImageObject: GuiObject;
+	SelectionImageObject?: GuiObject;
 	GetTopbarTransparency(): number;
 	SetTopbarTransparency(transparency: number): void;
 	readonly TopbarTransparencyChangedSignal: RBXScriptSignal<(transparency: number) => void>;
@@ -889,8 +889,8 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // Beam
 interface Rbx_Beam extends Rbx_Instance {
-	Attachment0: Attachment;
-	Attachment1: Attachment;
+	Attachment0?: Attachment;
+	Attachment1?: Attachment;
 	Color: ColorSequence;
 	CurveSize0: number;
 	CurveSize1: number;
@@ -998,7 +998,7 @@ interface Rbx_RocketPropulsion extends Rbx_BodyMover {
 	MaxSpeed: number;
 	MaxThrust: number;
 	MaxTorque: Vector3;
-	Target: BasePart;
+	Target?: BasePart;
 	TargetOffset: Vector3;
 	TargetRadius: number;
 	ThrustD: number;
@@ -1218,8 +1218,8 @@ type Configuration = Rbx_Configuration & Base<Rbx_Configuration> & Indexable<Rbx
 interface Rbx_Constraint extends Rbx_Instance {
 	/** Read-only boolean, true if the Constraint is active in world. */
 	readonly Active: boolean;
-	Attachment0: Attachment;
-	Attachment1: Attachment;
+	Attachment0?: Attachment;
+	Attachment1?: Attachment;
 	/** The color of the in-game visual. */
 	Color: BrickColor;
 	/** Toggles whether or not this constraint is enabled. Disabled constraints will not render in game. */
@@ -1569,7 +1569,7 @@ type CustomEvent = Rbx_CustomEvent & Base<Rbx_CustomEvent> & Indexable<Rbx_Custo
 
 // CustomEventReceiver
 interface Rbx_CustomEventReceiver extends Rbx_Instance {
-	Source: Instance | undefined;
+	Source?: Instance | undefined;
 	GetCurrentValue(): number;
 	readonly EventConnected: RBXScriptSignal<(event: Instance) => void>;
 	readonly EventDisconnected: RBXScriptSignal<(event: Instance) => void>;
@@ -1981,7 +1981,7 @@ interface Rbx_GuiBase2d extends Rbx_GuiBase {
 	/** A read-only Vector2 value that is the GuiObject's current size (width, height) in pixel space. */
 	readonly AbsoluteSize: Vector2;
 	AutoLocalize: boolean;
-	RootLocalizationTable: LocalizationTable;
+	RootLocalizationTable?: LocalizationTable;
 }
 type GuiBase2d = Rbx_GuiBase2d & Base<Rbx_GuiBase2d> & Indexable<Rbx_GuiBase2d>;
 
@@ -2001,16 +2001,16 @@ interface Rbx_GuiObject extends Rbx_GuiBase2d {
 	/** If set to true, any descendants of this GuiObject will only render if contained within it's borders. If set to false, all descendants will render regardless of position. */
 	ClipsDescendants: boolean;
 	LayoutOrder: number;
-	NextSelectionDown: GuiObject;
-	NextSelectionLeft: GuiObject;
-	NextSelectionRight: GuiObject;
-	NextSelectionUp: GuiObject;
+	NextSelectionDown?: GuiObject;
+	NextSelectionLeft?: GuiObject;
+	NextSelectionRight?: GuiObject;
+	NextSelectionUp?: GuiObject;
 	/** A UDim2 value describing the position of the top-left corner of the GuiObject on screen. More information on UDim2 is available [here](http://wiki.roblox.com/index.php/UDim2). */
 	Position: UDim2;
 	Rotation: number;
 	Selectable: boolean;
 	/** Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject. */
-	SelectionImageObject: GuiObject;
+	SelectionImageObject?: GuiObject;
 	/** A UDim2 value describing the size of the GuiObject on screen in both absolute and relative coordinates. More information on UDim2 is available [here](http://wiki.roblox.com/index.php/UDim2). */
 	Size: UDim2;
 	/** The direction(s) that an object can be resized in. [More info](http://wiki.roblox.com/index.php/SizeConstraint). */
@@ -2223,7 +2223,7 @@ type TextBox = Rbx_TextBox & Base<Rbx_TextBox> & Indexable<Rbx_TextBox>;
 // ViewportFrame
 interface Rbx_ViewportFrame extends Rbx_GuiObject {
 	/** Current Camera of children objects */
-	CurrentCamera: Camera;
+	CurrentCamera?: Camera;
 	/** The rendered image of the ViewportFrame will be mutiplied by this color */
 	ImageColor3: Color3;
 	/** A number value that specifies how transparent the rendered image of the ViewportFrame is */
@@ -2324,7 +2324,7 @@ interface Rbx_FloorWire extends Rbx_GuiBase3d {
 	/** Controls how the decals are positioned along the wire. [More info](http://wiki.roblox.com/index.php/CycleOffset) */
 	CycleOffset: number;
 	/** The object the FloorWire 'emits' from */
-	From: BasePart;
+	From?: BasePart;
 	/** The space between two textures on the wire. Note: studs are relative depending on how far the camera is from the FloorWire. */
 	StudsBetweenTextures: number;
 	/** The image we use to render the textures that flow from beginning to end of the FloorWire. */
@@ -2332,7 +2332,7 @@ interface Rbx_FloorWire extends Rbx_GuiBase3d {
 	/** The size in studs of the Texture we use to flow from one object to the next. */
 	TextureSize: Vector2;
 	/** The object the FloorWire 'emits' to */
-	To: BasePart;
+	To?: BasePart;
 	/** The rate of travel that the textures flow along the wire. */
 	Velocity: number;
 	/** How thick the wire is. */
@@ -2463,13 +2463,13 @@ type SurfaceSelection = Rbx_SurfaceSelection & Base<Rbx_SurfaceSelection> & Inde
 
 // SelectionLasso
 interface Rbx_SelectionLasso extends Rbx_GuiBase3d {
-	Humanoid: Humanoid;
+	Humanoid?: Humanoid;
 }
 type SelectionLasso = Rbx_SelectionLasso & Base<Rbx_SelectionLasso> & Indexable<Rbx_SelectionLasso>;
 
 // SelectionPartLasso
 interface Rbx_SelectionPartLasso extends Rbx_SelectionLasso {
-	Part: BasePart;
+	Part?: BasePart;
 }
 type SelectionPartLasso = Rbx_SelectionPartLasso & Base<Rbx_SelectionPartLasso> & Indexable<Rbx_SelectionPartLasso>;
 
@@ -2485,7 +2485,7 @@ interface Rbx_GuiService extends Rbx_Instance {
 	CoreGuiNavigationEnabled: boolean;
 	GuiNavigationEnabled: boolean;
 	readonly MenuIsOpen: boolean;
-	SelectedObject: GuiObject;
+	SelectedObject?: GuiObject;
 	IsTenFootInterface(): boolean;
 	RemoveSelectionGroup(selectionName: string): void;
 	readonly MenuClosed: RBXScriptSignal<() => void>;
@@ -2583,14 +2583,14 @@ interface Rbx_Humanoid extends Rbx_Instance {
 	NameOcclusion: Enum.NameOcclusion;
 	PlatformStand: boolean;
 	RigType: Enum.HumanoidRigType;
-	readonly RootPart: BasePart;
-	readonly SeatPart: BasePart;
+	readonly RootPart?: BasePart;
+	readonly SeatPart?: BasePart;
 	Sit: boolean;
 	/** The location that the Humanoid is trying to walk to. */
 	TargetPoint: Vector3;
 	UseJumpPower: boolean;
 	WalkSpeed: number;
-	WalkToPart: BasePart;
+	WalkToPart?: BasePart;
 	WalkToPoint: Vector3;
 	BuildRigFromAttachments(): void;
 	ChangeState(state?: Enum.HumanoidStateType): void;
@@ -2778,7 +2778,7 @@ type Snap = Rbx_Snap & Base<Rbx_Snap> & Indexable<Rbx_Snap>;
 interface Rbx_VelocityMotor extends Rbx_JointInstance {
 	CurrentAngle: number;
 	DesiredAngle: number;
-	Hole: Hole;
+	Hole?: Hole;
 	MaxVelocity: number;
 }
 type VelocityMotor = Rbx_VelocityMotor & Base<Rbx_VelocityMotor> & Indexable<Rbx_VelocityMotor>;
@@ -3104,9 +3104,9 @@ interface Rbx_Mouse extends Rbx_Instance {
 	/** The CoordinateFrame of where the Mouse is when the mouse is not clicking. */
 	readonly Origin: CFrame;
 	/** The Part the mouse is currently over. If the mouse is not currently over any object (on the skybox, for example) this property is nil. */
-	readonly Target: BasePart;
+	readonly Target?: BasePart;
 	/** A Part or Model that the Mouse will ignore when trying to find the Target, TargetSurface and Hit. */
-	TargetFilter: Instance | undefined;
+	TargetFilter?: Instance | undefined;
 	/** The NormalId (Top, Left, Down, etc.) of the face of the part the Mouse is currently over. */
 	readonly TargetSurface: Enum.NormalId;
 	/** The Unit Ray from where the mouse is (Origin) to the current Mouse.Target. */
@@ -3386,15 +3386,15 @@ type Platform = Rbx_Platform & Base<Rbx_Platform> & Indexable<Rbx_Platform>;
 // Seat
 interface Rbx_Seat extends Rbx_Part {
 	Disabled: boolean;
-	readonly Occupant: Humanoid;
+	readonly Occupant?: Humanoid;
 	Sit(humanoid: Instance): void;
 }
 type Seat = Rbx_Seat & Base<Rbx_Seat> & Indexable<Rbx_Seat>;
 
 // SkateboardPlatform
 interface Rbx_SkateboardPlatform extends Rbx_Part {
-	readonly Controller: SkateboardController;
-	readonly ControllingHumanoid: Humanoid;
+	readonly Controller?: SkateboardController;
+	readonly ControllingHumanoid?: Humanoid;
 	Steer: number;
 	StickyWheels: boolean;
 	Throttle: number;
@@ -3486,7 +3486,7 @@ interface Rbx_VehicleSeat extends Rbx_BasePart {
 	Disabled: boolean;
 	HeadsUpDisplay: boolean;
 	MaxSpeed: number;
-	readonly Occupant: Humanoid;
+	readonly Occupant?: Humanoid;
 	Steer: number;
 	SteerFloat: number;
 	Throttle: number;
@@ -3525,7 +3525,7 @@ type Status = Rbx_Status & Base<Rbx_Status> & Indexable<Rbx_Status>;
 // Workspace
 interface Rbx_Workspace extends Rbx_Model {
 	AllowThirdPartySales: boolean;
-	CurrentCamera: Camera;
+	CurrentCamera?: Camera;
 	DistributedGameTime: number;
 	/** Sets the height at which falling characters and parts are destroyed. This property is not scriptable and can only be set in Studio */
 	readonly FallenPartsDestroyHeight: number;
@@ -3732,8 +3732,8 @@ interface Rbx_Player extends Rbx_Instance {
 	readonly MembershipType: Enum.MembershipType;
 	NameDisplayDistance: number;
 	Neutral: boolean;
-	RespawnLocation: SpawnLocation;
-	Team: Team;
+	RespawnLocation?: SpawnLocation;
+	Team?: Team;
 	TeamColor: BrickColor;
 	UserId: number;
 	ClearCharacterAppearance(): void;
@@ -4128,7 +4128,7 @@ interface Rbx_ScriptDebugger extends Rbx_Instance {
 	readonly CurrentLine: number;
 	readonly IsDebugging: boolean;
 	readonly IsPaused: boolean;
-	readonly Script: Instance | undefined;
+	readonly Script?: Instance | undefined;
 	AddWatch(expression: string): Instance | undefined;
 	GetBreakpoints(): Array<Instance>;
 	GetGlobals(): object;
@@ -4211,7 +4211,7 @@ interface Rbx_DataModel extends Rbx_ServiceProvider {
 	readonly PlaceVersion: number;
 	readonly PrivateServerId: string;
 	readonly PrivateServerOwnerId: number;
-	readonly Workspace: Workspace;
+	readonly Workspace?: Workspace;
 	BindToClose(callback: Function): void;
 	IsGearTypeAllowed(gearType: Enum.GearType): boolean;
 	IsLoaded(): boolean;
@@ -4298,7 +4298,7 @@ interface Rbx_Sound extends Rbx_Instance {
 	PlaybackSpeed: number;
 	Playing: boolean;
 	RollOffMode: Enum.RollOffMode;
-	SoundGroup: SoundGroup;
+	SoundGroup?: SoundGroup;
 	SoundId: string;
 	readonly TimeLength: number;
 	TimePosition: number;
@@ -4338,7 +4338,7 @@ interface Rbx_CompressorSoundEffect extends Rbx_SoundEffect {
 	GainMakeup: number;
 	Ratio: number;
 	Release: number;
-	SideChain: Instance | undefined;
+	SideChain?: Instance | undefined;
 	Threshold: number;
 }
 type CompressorSoundEffect = Rbx_CompressorSoundEffect & Base<Rbx_CompressorSoundEffect> & Indexable<Rbx_CompressorSoundEffect>;
@@ -4635,7 +4635,7 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Tab Width"]: number;
 	["Text Color"]: Color3;
 	["Text Wrapping"]: boolean;
-	Theme: Instance | undefined;
+	Theme?: Instance | undefined;
 	readonly ["UI Theme"]: Enum.UITheme;
 	["Warning Color"]: Color3;
 }
@@ -4646,7 +4646,7 @@ interface Rbx_ServiceProvider extends Rbx_Instance {
 
 // StudioService
 interface Rbx_StudioService extends Rbx_Instance {
-	readonly ActiveScript: Instance | undefined;
+	readonly ActiveScript?: Instance | undefined;
 }
 type StudioService = Rbx_StudioService & Base<Rbx_StudioService> & Indexable<Rbx_StudioService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {
@@ -4797,8 +4797,8 @@ type TouchTransmitter = Rbx_TouchTransmitter & Base<Rbx_TouchTransmitter> & Inde
 
 // Trail
 interface Rbx_Trail extends Rbx_Instance {
-	Attachment0: Attachment;
-	Attachment1: Attachment;
+	Attachment0?: Attachment;
+	Attachment1?: Attachment;
 	Color: ColorSequence;
 	Enabled: boolean;
 	FaceCamera: boolean;
@@ -4841,7 +4841,7 @@ type TweenBase = Rbx_TweenBase & Base<Rbx_TweenBase> & Indexable<Rbx_TweenBase>;
 
 // Tween
 interface Rbx_Tween extends Rbx_TweenBase {
-	readonly Instance: Instance | undefined;
+	readonly Instance?: Instance | undefined;
 	readonly TweenInfo: TweenInfo;
 }
 type Tween = Rbx_Tween & Base<Rbx_Tween> & Indexable<Rbx_Tween>;
@@ -4955,7 +4955,7 @@ interface Rbx_UIPageLayout extends Rbx_UIGridStyleLayout {
 	/** Whether or not the page layout wraps around at the ends. */
 	Circular: boolean;
 	/** The page that is either currently being displayed or is the target of the current animation. */
-	readonly CurrentPage: GuiObject;
+	readonly CurrentPage?: GuiObject;
 	/** The easing direction to use when performing an animation. */
 	EasingDirection: Enum.EasingDirection;
 	/** The easing style to use when performing an animation. */
@@ -5218,7 +5218,7 @@ type NumberValue = Rbx_NumberValue & Base<Rbx_NumberValue> & Indexable<Rbx_Numbe
 
 // ObjectValue
 interface Rbx_ObjectValue extends Rbx_ValueBase {
-	Value: Instance | undefined;
+	Value?: Instance | undefined;
 }
 type ObjectValue = Rbx_ObjectValue & Base<Rbx_ObjectValue> & Indexable<Rbx_ObjectValue>;
 
@@ -5275,8 +5275,8 @@ interface Rbx_WeldConstraint extends Rbx_Instance {
 	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
 	readonly Active: boolean;
 	Enabled: boolean;
-	Part0: BasePart;
-	Part1: BasePart;
+	Part0?: BasePart;
+	Part1?: BasePart;
 }
 type WeldConstraint = Rbx_WeldConstraint & Base<Rbx_WeldConstraint> & Indexable<Rbx_WeldConstraint>;
 
