@@ -548,7 +548,6 @@ interface Set<T> extends ReadonlySet<T> {
 interface WeakSet<T> extends Set<T> {}
 
 declare const Array: new <T = any>() => Array<T>;
-declare const ReadonlyArray: new <T = any>() => ReadonlyArray<T>;
 
 declare const Map: new <K = any, V = any>(entries?: ReadonlyArray<[K, V]> | null) => Map<K, V>;
 declare const ReadonlyMap: new <K = any, V = any>(entries?: ReadonlyArray<[K, V]> | null) => ReadonlyMap<K, V>;
@@ -557,8 +556,8 @@ declare const WeakMap: new <K extends object = object, V = any>(entries?: Readon
 	V
 >;
 
-declare const ReadonlySet: new <T = any>(values?: ReadonlyArray<T> | null) => ReadonlySet<T>;
 declare const Set: new <T = any>(values?: ReadonlyArray<T> | null) => Set<T>;
+declare const ReadonlySet: new <T = any>(values?: ReadonlyArray<T> | null) => ReadonlySet<T>;
 declare const WeakSet: new <T extends object = object>(values?: ReadonlyArray<T> | null) => WeakSet<T>;
 
 interface PromiseLike<T> {
