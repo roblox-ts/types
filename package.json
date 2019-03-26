@@ -1,6 +1,6 @@
 {
 	"name": "rbx-types",
-	"version": "1.0.156",
+	"version": "1.0.157",
 	"description": "Generates a roblox.d.ts file from a combination of handwritten .d.ts files and generated data from Roblox's API dump",
 	"main": "include/roblox.d.ts",
 	"types": "include/roblox.d.ts",
