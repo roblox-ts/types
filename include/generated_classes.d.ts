@@ -2295,7 +2295,6 @@ type FloorWire = Rbx_FloorWire & Base<Rbx_FloorWire> & Indexable<Rbx_FloorWire>;
 
 // PVAdornment
 interface Rbx_PVAdornment extends Rbx_GuiBase3d {
-	Adornee: PVInstance;
 }
 type PVAdornment = Rbx_PVAdornment & Base<Rbx_PVAdornment> & Indexable<Rbx_PVAdornment>;
 
@@ -2376,7 +2375,6 @@ type SelectionSphere = Rbx_SelectionSphere & Base<Rbx_SelectionSphere> & Indexab
 
 // PartAdornment
 interface Rbx_PartAdornment extends Rbx_GuiBase3d {
-	Adornee: BasePart;
 }
 type PartAdornment = Rbx_PartAdornment & Base<Rbx_PartAdornment> & Indexable<Rbx_PartAdornment>;
 

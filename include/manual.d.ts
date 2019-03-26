@@ -552,6 +552,14 @@ interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
 	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
 }
 
+interface Rbx_PartAdornment extends Rbx_GuiBase3d {
+	Adornee: PVInstance | undefined;
+}
+
+interface Rbx_PVAdornment extends Rbx_GuiBase3d {
+	Adornee: PVInstance | undefined;
+}
+
 interface Rbx_Path extends Rbx_Instance {
 	GetWaypoints(): Array<PathWaypoint>;
 }
