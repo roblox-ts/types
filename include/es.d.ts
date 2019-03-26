@@ -428,23 +428,23 @@ declare const Array: ArrayConstructor;
 
 interface ReadonlyMap<K, V> extends HasToString, HasIsEmpty {
 	/**
-	 * Performs the specified action for each (element / pair of elements) in the data structure
+	 * Performs the specified action for each (element / pair of elements) in the Map
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
 	 */
 	forEach(callbackfn: (value: V, key: K, self: this) => void): void;
 
 	/**
-	 * Returns the number of elements in the data structure
+	 * Returns the number of elements in the Map
 	 */
 	size(): number;
 
 	/**
-	 * Returns an array with all values of this data structure
+	 * Returns an array with all values of this Map
 	 */
 	values(): Array<V>;
 
 	/**
-	 * Returns a boolean for whether the given key exists in the data structure
+	 * Returns a boolean for whether the given key exists in the Map
 	 */
 	has(key: K): boolean;
 
@@ -454,7 +454,7 @@ interface ReadonlyMap<K, V> extends HasToString, HasIsEmpty {
 	get(key: K): V | undefined;
 
 	/**
-	 * Returns an array of tuples for all members of this data structure
+	 * Returns an array of tuples for all members of this Map
 	 */
 	entries(): Array<[K, V]>;
 
@@ -471,12 +471,12 @@ interface Map<K, V> extends ReadonlyMap<K, V> {
 	set(key: K, value: V): this;
 
 	/**
-	 * Deletes the given key from the data structure
+	 * Deletes the given key from the Map
 	 */
 	delete(key: K): boolean;
 
 	/**
-	 * Deletes all members of the data structure
+	 * Deletes all members of the Map
 	 */
 	clear(): void;
 }
