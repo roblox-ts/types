@@ -282,7 +282,8 @@ export class ClassGenerator extends Generator {
 				this.write(`/** ${description} */`);
 			}
 			const prefix = canWrite(rbxProperty) && !memberHasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
-			this.write(`${prefix}${safeName(name)}: ${valueType};`);
+			const surelyDefined = rbxProperty.ValueType.Category !== "Class";
+			this.write(`${prefix}${safeName(name)}${surelyDefined ? "" : "?"}: ${valueType};`);
 		}
 	}
 
