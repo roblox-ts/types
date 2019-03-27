@@ -121,13 +121,13 @@ interface CFrame {
 	/** Returns a Vector3 rotated from World to Object space. Equivalent to `[(CFrame:inverse() - CFrame:inverse().p) * v3]` */
 	vectorToObjectSpace(v3: Vector3): Vector3;
 	/** Returns the values: x, y, z, R00, R01, R02, R10, R11, R12, R20, R21, R22, where R00-R22 represent the 3x3 rotation matrix of the CFrame, and xyz represent the position of the CFrame. */
-	components(): [number, number, number, number, number, number, number, number, number, number, number, number];
+	components(): LuaTuple<[number, number, number, number, number, number, number, number, number, number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, Y, X order */
-	toEulerAnglesXYZ(): [number, number, number];
+	toEulerAnglesXYZ(): LuaTuple<[number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order */
-	toEulerAnglesYXZ(): [number, number, number];
+	toEulerAnglesYXZ(): LuaTuple<[number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order (Equivalent to toEulerAnglesYXZ) */
-	toOrientation(): [number, number, number];
+	toOrientation(): LuaTuple<[number, number, number]>;
 	/** Returns a tuple of a Vector3 and a number which represent the rotation of the CFrame in the axis-angle representation */
 	toAxisAngle(): [Vector3, number];
 }
