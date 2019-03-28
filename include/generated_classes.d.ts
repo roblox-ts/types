@@ -41,6 +41,7 @@ interface CreatableInstances {
 	Configuration: Configuration;
 	AlignOrientation: AlignOrientation;
 	AlignPosition: AlignPosition;
+	AngularVelocity: AngularVelocity;
 	BallSocketConstraint: BallSocketConstraint;
 	HingeConstraint: HingeConstraint;
 	LineForce: LineForce;
@@ -272,6 +273,7 @@ interface Instances {
 	Constraint: Constraint;
 	AlignOrientation: AlignOrientation;
 	AlignPosition: AlignPosition;
+	AngularVelocity: AngularVelocity;
 	BallSocketConstraint: BallSocketConstraint;
 	HingeConstraint: HingeConstraint;
 	LineForce: LineForce;
@@ -1251,6 +1253,14 @@ interface Rbx_AlignPosition extends Rbx_Constraint {
 	RigidityEnabled: boolean;
 }
 type AlignPosition = Rbx_AlignPosition & Base<Rbx_AlignPosition> & Indexable<Rbx_AlignPosition>;
+
+// AngularVelocity
+interface Rbx_AngularVelocity extends Rbx_Constraint {
+	AngularVelocity: Vector3;
+	MaxTorque: number;
+	RelativeTo: Enum.ActuatorRelativeTo;
+}
+type AngularVelocity = Rbx_AngularVelocity & Base<Rbx_AngularVelocity> & Indexable<Rbx_AngularVelocity>;
 
 // BallSocketConstraint
 interface Rbx_BallSocketConstraint extends Rbx_Constraint {
@@ -4464,11 +4474,6 @@ interface Rbx_StarterPlayer extends Rbx_Instance {
 	CameraMaxZoomDistance: number;
 	CameraMinZoomDistance: number;
 	CameraMode: Enum.CameraMode;
-	CharacterJumpHeight: number;
-	CharacterJumpPower: number;
-	CharacterMaxSlopeAngle: number;
-	CharacterUseJumpPower: boolean;
-	CharacterWalkSpeed: number;
 	DevCameraOcclusionMode: Enum.DevCameraOcclusionMode;
 	DevComputerCameraMovementMode: Enum.DevComputerCameraMovementMode;
 	DevComputerMovementMode: Enum.DevComputerMovementMode;
@@ -4923,8 +4928,6 @@ interface Rbx_UIGridStyleLayout extends Rbx_UILayout {
 	SortOrder: Enum.SortOrder;
 	/** Determines how grid is placed within it's parent's container in the y direction. Can be Top, Center, or Bottom. */
 	VerticalAlignment: Enum.VerticalAlignment;
-	/** Forces a relayout of all elements. Useful when sort is set to Custom. */
-	ApplyLayout(): void;
 }
 type UIGridStyleLayout = Rbx_UIGridStyleLayout & Base<Rbx_UIGridStyleLayout> & Indexable<Rbx_UIGridStyleLayout>;
 

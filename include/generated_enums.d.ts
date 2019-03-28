@@ -335,7 +335,8 @@ declare namespace Enum {
 		Health = 1,
 		Backpack = 2,
 		Chat = 3,
-		All = 4
+		All = 4,
+		EmotesMenu = 5
 	}
 	enum CreatorType {
 		User = 0,
@@ -417,6 +418,12 @@ declare namespace Enum {
 		Gui = 20,
 		Animation = 21,
 		Navigation = 22
+	}
+	enum DeviceType {
+		Unknown = 0,
+		Desktop = 1,
+		Tablet = 2,
+		Phone = 3
 	}
 	enum DialogBehaviorType {
 		SinglePlayer = 0,
