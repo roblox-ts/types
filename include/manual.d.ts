@@ -45,7 +45,7 @@ interface Rbx_BasePart extends Rbx_Instance {
 
 interface Rbx_BillboardGui extends Rbx_LayerCollector {
 	/** The Object the billboard gui uses as its base to render from.  Currently, the only way to set this property is thru a script, and must exist in the workspace.  This will only render if the object assigned derives from BasePart. */
-	Adornee: BasePart | Attachment | undefined;
+	Adornee: PVInstance | undefined;
 	/** Specifies a Player that the BillboardGui will not render to. */
 	PlayerToHideFrom: Player | undefined;
 }
