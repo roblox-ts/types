@@ -4474,6 +4474,11 @@ interface Rbx_StarterPlayer extends Rbx_Instance {
 	CameraMaxZoomDistance: number;
 	CameraMinZoomDistance: number;
 	CameraMode: Enum.CameraMode;
+	CharacterJumpHeight: number;
+	CharacterJumpPower: number;
+	CharacterMaxSlopeAngle: number;
+	CharacterUseJumpPower: boolean;
+	CharacterWalkSpeed: number;
 	DevCameraOcclusionMode: Enum.DevCameraOcclusionMode;
 	DevComputerCameraMovementMode: Enum.DevComputerCameraMovementMode;
 	DevComputerMovementMode: Enum.DevComputerMovementMode;
@@ -5080,6 +5085,7 @@ interface Rbx_UserInputService extends Rbx_Instance {
 	GetLastInputType(): Enum.UserInputType;
 	GetMouseDelta(): Vector2;
 	GetMouseLocation(): Vector2;
+	GetStringForKeyCode(keyCode: Enum.KeyCode): string;
 	GetUserCFrame(type: Enum.UserCFrame): CFrame;
 	IsGamepadButtonDown(gamepadNum: Enum.UserInputType, gamepadKeyCode: Enum.KeyCode): boolean;
 	IsKeyDown(keyCode: Enum.KeyCode): boolean;
