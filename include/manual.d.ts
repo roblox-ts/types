@@ -880,3 +880,8 @@ interface Rbx_Workspace extends Rbx_Model {
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 }
+
+interface Rbx_TextService {
+	/** Filters a string for display and returns a TextFilterResult */
+	FilterStringAsync(stringToFilter: string, fromUserId: number, textContext: Enum.TextFilterContext): TextFilterResult
+}
