@@ -1502,7 +1502,12 @@ declare namespace Enum {
 		CheckedFieldIndicator = 80,
 		HeaderSection = 81,
 		Midlight = 82,
-		StatusBar = 83
+		StatusBar = 83,
+		DialogButton = 84,
+		DialogButtonText = 85,
+		DialogButtonBorder = 86,
+		DialogMainButton = 87,
+		DialogMainButtonText = 88
 	}
 	enum StudioStyleGuideModifier {
 		Default = 0,
@@ -1548,7 +1553,8 @@ declare namespace Enum {
 	enum Technology {
 		Legacy = 0,
 		Voxel = 1,
-		Compatibility = 2
+		Compatibility = 2,
+		ShadowMap = 3
 	}
 	enum TeleportResult {
 		Success = 0,

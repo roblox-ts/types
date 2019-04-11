@@ -2911,6 +2911,8 @@ interface Rbx_Lighting extends Rbx_Instance {
 	OutdoorAmbient: Color3;
 	/** Flag enabling or disabling outlines on parts and terrain */
 	Outlines: boolean;
+	/** This property controls how blurry the shadows are. */
+	ShadowSoftness: number;
 	/** A string that represent the current time of day. Time is in 24-hour clock format "XX::YY:ZZ", where X is hour, Y is minute, and Z is seconds. */
 	TimeOfDay: string;
 	/** The number of minutes that the current time is past midnight.  If currently at midnight, returns 0.  Will return decimal values if not at an exact minute. */
@@ -3299,6 +3301,8 @@ interface Rbx_BasePart extends Rbx_PVInstance {
 	CFrame: CFrame;
 	/** Determines whether physical interactions with other Parts are respected.  If true, will collide and react with physics to other Parts.  If false, other parts will pass thru instead of colliding */
 	CanCollide: boolean;
+	/** Determines whether this Part casts a shadow. */
+	CastShadow: boolean;
 	readonly CenterOfMass: Vector3;
 	CollisionGroupId: number;
 	/** Color3 of the part. */
