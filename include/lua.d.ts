@@ -73,7 +73,7 @@ declare function pcall<T extends Array<any>, U>(
 /** B Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
 declare function pcall<T extends Array<any>, U>(
 	func: (...args: T) => U,
-	...args: T,
+	...args: T
 ): LuaTuple<
 	U extends [infer A]
 		? [true, A] | [false, string]
@@ -114,10 +114,11 @@ interface LuaMetatable<T> {
 /** Sets the metatable for the given table. If setTo is nil, the metatable of the given table is removed. If the original metatable has a "__metatable" field, this will raise an error. This function returns the table t, which was passed to the function. */
 declare function setmetatable<T extends object>(object: T, metatable: LuaMetatable<T>): T;
 
-interface LuaDateTable {
+interface DateTable {
 	year: number;
 	month: number;
 	day: number;
+
 	hour?: number;
 	min?: number;
 	sec?: number;
@@ -126,22 +127,10 @@ interface LuaDateTable {
 	wday?: number;
 }
 
-interface DateTable {
-	year: number;
-	month: number;
-	day: number;
-	hour: number;
-	min: number;
-	sec: number;
-	isdst: boolean;
-	yday: number;
-	wday: number;
-}
-
 declare namespace os {
 	function time(): number;
-	function time(dateTable: LuaDateTable): number;
-	function date(formatString: "*t" | "!*t", time?: number): DateTable;
+	function time(dateTable: DateTable): number;
+	function date(formatString: "*t" | "!*t", time?: number): Required<DateTable>;
 	function difftime(t2: number, t1: number): number;
 }
 
@@ -167,7 +156,7 @@ interface String {
 	format(...args: Array<number | string>): string;
 
 	/** Returns an iterator function that, each time it is called, returns the next captures from pattern over the string s. */
-	gmatch(pattern: string): () => string;
+	gmatch(pattern: string): () => string | undefined;
 
 	/** Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. */
 	gsub(pattern: string, repl: unknown, n?: number): string;
@@ -211,6 +200,9 @@ declare namespace string {
 
 	/** Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). */
 	function format(pattern: string, ...args: Array<number | string>): string;
+
+	/** Returns an iterator function that, each time it is called, returns the next captures from pattern over the string s. */
+	function gmatch(s: string, pattern: string): () => string | undefined;
 
 	/** Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. */
 	function gsub(s: string, pattern: string, repl: unknown, n?: number): string;
