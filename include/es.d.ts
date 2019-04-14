@@ -1,13 +1,13 @@
 /// <reference no-default-lib="true"/>
 
-interface Boolean {}
-interface IArguments {}
-interface Number {}
-interface Object {}
-interface RegExp {}
-interface Function {}
-interface CallableFunction extends Function {}
-interface NewableFunction extends Function {}
+interface Boolean { }
+interface IArguments { }
+interface Number { }
+interface Object { }
+interface RegExp { }
+interface Function { }
+interface CallableFunction extends Function { }
+interface NewableFunction extends Function { }
 
 /** @rbxts array */
 interface ArrayLike<T> {
@@ -130,7 +130,10 @@ declare const Object: ObjectConstructor;
 
 interface String {
 	readonly length: number;
-	split(sep: string): Array<string>;
+	/** Returns an array of substrings, separated by each `sep`.
+	 * Accepts Lua character classes, unless `plain` is true.
+	 */
+	split(sep: string, plain?: boolean): Array<string>;
 	trim(): string;
 	trimLeft(): string;
 	trimRight(): string;
@@ -471,7 +474,9 @@ interface Map<K, V> extends ReadonlyMap<K, V> {
 	set(key: K, value: V): this;
 
 	/**
-	 * Deletes the given key from the Map
+	 * Deletes the given key from the Map.
+	 *
+	 * Returns a boolean indicating whether or not a value was removed.
 	 */
 	delete(key: K): boolean;
 
@@ -486,7 +491,7 @@ interface MapConstructor {
 }
 declare var Map: MapConstructor;
 
-interface WeakMap<K, V> extends Map<K, V> {}
+interface WeakMap<K, V> extends Map<K, V> { }
 
 interface WeakMapConstructor {
 	new <K extends object = object, V = any>(entries?: ReadonlyArray<[K, V]> | null): WeakMap<K, V>;
@@ -554,12 +559,14 @@ interface Set<T> extends ReadonlySet<T> {
 	add(value: T): this;
 
 	/**
-	 * Deletes the given key from the set
+	 * Deletes the given key from the set.
+	 *
+	 * Returns a boolean indicating whether or not a value was removed.
 	 */
 	delete(value: T): boolean;
 
 	/**
-	 * Deletes all members of the set
+	 * Deletes all members of the set.
 	 */
 	clear(): void;
 }
@@ -569,7 +576,7 @@ interface SetConstructor {
 }
 declare const Set: SetConstructor;
 
-interface WeakSet<T> extends Set<T> {}
+interface WeakSet<T> extends Set<T> { }
 
 interface WeakSetConstructor {
 	new <T extends object = object>(values?: ReadonlyArray<T> | null): WeakSet<T>;
