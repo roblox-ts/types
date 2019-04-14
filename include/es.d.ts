@@ -429,7 +429,7 @@ interface ArrayConstructor {
  	 * @param length A literal integer between 0 and 200 inclusive, which is the number of nil's to push onto the array
  	 */
  	new <T>(length?: number): Array<T>;
- }
+}
 
 declare const Array: ArrayConstructor;
 
