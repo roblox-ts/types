@@ -4765,7 +4765,6 @@ type TextFilterResult = Rbx_TextFilterResult & Base<Rbx_TextFilterResult> & Inde
 // TextService
 interface Rbx_TextService extends Rbx_Instance {
 	GetTextSize(string: string, fontSize: number, font: Enum.Font, frameSize: Vector2): Vector2;
-	FilterStringAsync(stringToFilter: string, fromUserId: number, textContext?: Enum.TextFilterContext): Instance | undefined;
 }
 type TextService = Rbx_TextService & Base<Rbx_TextService> & Indexable<Rbx_TextService>;
 interface Rbx_ServiceProvider extends Rbx_Instance {

@@ -1,13 +1,13 @@
 /// <reference no-default-lib="true"/>
 
-interface Boolean {}
-interface IArguments {}
-interface Number {}
-interface Object {}
-interface RegExp {}
-interface Function {}
-interface CallableFunction extends Function {}
-interface NewableFunction extends Function {}
+interface Boolean { }
+interface IArguments { }
+interface Number { }
+interface Object { }
+interface RegExp { }
+interface Function { }
+interface CallableFunction extends Function { }
+interface NewableFunction extends Function { }
 
 /** @rbxts array */
 interface ArrayLike<T> {
@@ -130,7 +130,10 @@ declare const Object: ObjectConstructor;
 
 interface String {
 	readonly length: number;
-	split(sep: string): Array<string>;
+	/** Returns an array of substrings, separated by each `sep`.
+	 * Accepts Lua character classes, unless `plain` is true.
+	 */
+	split(sep: string, plain?: boolean): Array<string>;
 	trim(): string;
 	trimLeft(): string;
 	trimRight(): string;
@@ -421,7 +424,14 @@ interface Array<T> extends ReadonlyArray<T> {
 }
 
 interface ArrayConstructor {
-	new <T>(): Array<T>;
+	/** Instantiates a new array.
+	 * If length is provided, roblox-TS will load `length` amount of nil's into the new array.
+	 * Note that this does not affect the `length` property of the array,
+	 * it only keeps it from needing to resize to this `length` later.
+	 *
+	 * @param length A literal integer between 0 and 200 inclusive, which is the number of nil's to push onto the array
+	 */
+	new <T>(length?: number): Array<T>;
 }
 
 declare const Array: ArrayConstructor;
@@ -471,7 +481,9 @@ interface Map<K, V> extends ReadonlyMap<K, V> {
 	set(key: K, value: V): this;
 
 	/**
-	 * Deletes the given key from the Map
+	 * Deletes the given key from the Map.
+	 *
+	 * Returns a boolean indicating whether or not a value was removed.
 	 */
 	delete(key: K): boolean;
 
@@ -486,7 +498,7 @@ interface MapConstructor {
 }
 declare var Map: MapConstructor;
 
-interface WeakMap<K, V> extends Map<K, V> {}
+interface WeakMap<K, V> extends Map<K, V> { }
 
 interface WeakMapConstructor {
 	new <K extends object = object, V = any>(entries?: ReadonlyArray<[K, V]> | null): WeakMap<K, V>;
@@ -554,12 +566,14 @@ interface Set<T> extends ReadonlySet<T> {
 	add(value: T): this;
 
 	/**
-	 * Deletes the given key from the set
+	 * Deletes the given key from the set.
+	 *
+	 * Returns a boolean indicating whether or not a value was removed.
 	 */
 	delete(value: T): boolean;
 
 	/**
-	 * Deletes all members of the set
+	 * Deletes all members of the set.
 	 */
 	clear(): void;
 }
@@ -569,7 +583,7 @@ interface SetConstructor {
 }
 declare const Set: SetConstructor;
 
-interface WeakSet<T> extends Set<T> {}
+interface WeakSet<T> extends Set<T> { }
 
 interface WeakSetConstructor {
 	new <T extends object = object>(values?: ReadonlyArray<T> | null): WeakSet<T>;
