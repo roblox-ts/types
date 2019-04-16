@@ -176,6 +176,11 @@ interface String {
 	/** Returns a string that is the string s reversed. */
 	reverse(): string;
 
+	/** Returns an array of substrings, separated by each `sep`.
+	 * Does not handle Lua character classes, thus, the separator string will be interpreted literally.
+	 */
+	split(sep: string): Array<string>;
+
 	/** Returns the substring of s that starts at i and continues until j; i and j can be negative. If j is absent, then it is assumed to be equal to -1 (which is the same as the string length). */
 	sub(i: number, j?: number): string;
 
@@ -221,6 +226,11 @@ declare namespace string {
 
 	/** Returns a string that is the string s reversed. */
 	function reverse(s: string): string;
+
+	/** Returns an array of substrings, separated by each `sep`.
+	 * Does not handle Lua character classes, thus, the separator string will be interpreted literally.
+	 */
+	function split(s: string, sep: string): Array<string>;
 
 	/** Returns the substring of s that starts at i and continues until j; i and j can be negative. If j is absent, then it is assumed to be equal to -1 (which is the same as the string length). */
 	function sub(s: string, i: number, j?: number): string;
