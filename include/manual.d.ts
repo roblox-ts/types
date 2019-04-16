@@ -879,6 +879,24 @@ interface Rbx_Workspace extends Rbx_Model {
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+	/** Returns parts in the area defined by the Region3, up to specified maxCount or 100, whichever is less */
+	FindPartsInRegion3(
+		region: Region3,
+		ignoreDescendantsInstance?: Instance,
+		maxParts?: number
+	): Array<BasePart>;
+	/** Returns parts in the area defined by the Region3, up to specified maxCount or 100, whichever is less */
+	FindPartsInRegion3WithIgnoreList(
+		region: Region3,
+		ignoreDescendantsTable: Array<Instance>,
+		maxParts?: number
+	): Array<BasePart>;
+	/** Returns parts in the area defined by the Region3, up to specified maxCount or 100, whichever is less */
+	FindPartsInRegion3WithWhiteList(
+		region: Region3,
+		whitelistDescendantsTable: Array<Instance>,
+		maxParts?: number
+	): Array<BasePart>;
 }
 
 interface Rbx_TextService {

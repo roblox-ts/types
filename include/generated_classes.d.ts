@@ -3546,11 +3546,6 @@ interface Rbx_Workspace extends Rbx_Model {
 	readonly FilteringEnabled: boolean;
 	Gravity: number;
 	StreamingEnabled: boolean;
-	/** Returns parts in the area defined by the Region3, up to specified maxCount or 100, whichever is less */
-	FindPartsInRegion3(region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<Instance>;
-	/** Returns parts in the area defined by the Region3, up to specified maxCount or 100, whichever is less */
-	FindPartsInRegion3WithIgnoreList(region: Region3, ignoreDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
-	FindPartsInRegion3WithWhiteList(region: Region3, whitelistDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
 	GetNumAwakeParts(): number;
 	GetPhysicsThrottling(): number;
 	GetRealPhysicsFPS(): number;
