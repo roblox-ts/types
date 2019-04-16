@@ -130,10 +130,8 @@ declare const Object: ObjectConstructor;
 
 interface String {
 	readonly length: number;
-	/** Returns an array of substrings, separated by each `sep`.
-	 * Accepts Lua character classes, unless `plain` is true.
-	 */
-	split(sep: string, plain?: boolean): Array<string>;
+	/** Returns an array of substrings, separated by each `sep`. */
+	split(sep: string): Array<string>;
 	trim(): string;
 	trimLeft(): string;
 	trimRight(): string;
