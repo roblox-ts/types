@@ -128,12 +128,18 @@ interface ObjectConstructor {
  */
 declare const Object: ObjectConstructor;
 
-interface String {
+interface String extends Iterable<string> {
+	/** The current number of characters in the string */
 	readonly length: number;
+	/** Returns a new string equivalent to this string but with the whitespace removed from the start and end */
 	trim(): string;
+	/** Returns a new string equivalent to this string but with the whitespace removed from the start */
 	trimLeft(): string;
+	/** Returns a new string equivalent to this string but with the whitespace removed from the end */
 	trimRight(): string;
+	/** Returns a new string equivalent to this string but with the whitespace removed from the start */
 	trimStart(): string;
+	/** Returns a new string equivalent to this string but with the whitespace removed from the end */
 	trimEnd(): string;
 }
 
@@ -189,11 +195,10 @@ interface IterableIterator<T> extends Iterator<T> {
 	[Symbol.iterator](): IterableIterator<T>;
 }
 
-/** @rbxts array */
-interface ReadonlyArray<T> extends HasToString, HasIsEmpty, ArrayLike<T> {
-	/** Iterator */
-	[Symbol.iterator](): IterableIterator<T>;
+type IterableFunction<T> = Iterable<T> & (() => T | undefined);
 
+/** @rbxts array */
+interface ReadonlyArray<T> extends HasToString, HasIsEmpty, ArrayLike<T>, Iterable<T> {
 	/**
 	 * Creates a new array and shallow copies `this` and the items into the new array, in that order.
 	 * @param items Additional items to add to the end of array1.
@@ -432,7 +437,7 @@ interface ArrayConstructor {
 
 declare const Array: ArrayConstructor;
 
-interface ReadonlyMap<K, V> extends HasToString, HasIsEmpty {
+interface ReadonlyMap<K, V> extends HasToString, HasIsEmpty, Iterable<[K, V]> {
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the Map
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
@@ -501,7 +506,7 @@ interface WeakMapConstructor {
 }
 declare var WeakMap: WeakMapConstructor;
 
-interface ReadonlySet<T> extends HasToString, HasIsEmpty {
+interface ReadonlySet<T> extends HasToString, HasIsEmpty, Iterable<T> {
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the set
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
@@ -755,3 +760,6 @@ type ReturnType<T extends (...args: Array<any>) => any> = T extends (...args: Ar
 type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (...args: Array<any>) => infer R
 	? R
 	: any;
+
+/** Returns a subset of type T which excludes properties K */
+type Unpick<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
