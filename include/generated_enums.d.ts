@@ -1002,6 +1002,11 @@ declare namespace Enum {
 	enum Language {
 		Default = 0
 	}
+	enum LanguagePreference {
+		SystemDefault = 0,
+		English = 1,
+		SimplifiedChinese = 2
+	}
 	enum LeftRight {
 		Left = 0,
 		Center = 1,
