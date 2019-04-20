@@ -176,15 +176,20 @@ interface SymbolConstructor {
 }
 declare var Symbol: SymbolConstructor;
 
-interface IteratorResult<T> {
-	done: boolean;
-	value: T;
-}
+type IteratorResult<T> =
+	| {
+			done: false;
+			value: T;
+	  }
+	| {
+			done: true;
+			value: undefined;
+	  };
 
 interface Iterator<T> {
-	next(value?: any): IteratorResult<T>;
-	return?(value?: any): IteratorResult<T>;
-	throw?(e?: any): IteratorResult<T>;
+	next: (value?: any) => IteratorResult<T>;
+//	return?: (value?: any) => IteratorResult<T>;
+//	throw?: (e?: any) => IteratorResult<T>;
 }
 
 interface Iterable<T> {
