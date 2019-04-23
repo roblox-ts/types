@@ -374,10 +374,10 @@ interface Rbx_Instance {
 	FindFirstChildOfClass<T extends keyof Instances>(className: T): Instances[T] | undefined;
 	/** Returns the first child of this Instance that with a ClassName equal to 'className'.  The function will return nil if no Instance is found. */
 	FindFirstChildOfClass(className: string): Instance | undefined;
-	/** Returns the first ancestor of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
-	FindFirstAncestorWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
-	/** Returns the first ancestor of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
-	FindFirstAncestorWhichIsA(className: string): Instance | undefined;
+	/** Returns the first child of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
+	FindFirstChildWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
+	/** Returns the first child of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
+	FindFirstChildWhichIsA(className: string): Instance | undefined;
 }
 
 interface Rbx_JointInstance extends Rbx_Instance {
