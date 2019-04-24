@@ -335,7 +335,8 @@ declare namespace Enum {
 		Health = 1,
 		Backpack = 2,
 		Chat = 3,
-		All = 4
+		All = 4,
+		EmotesMenu = 5
 	}
 	enum CreatorType {
 		User = 0,
@@ -417,6 +418,12 @@ declare namespace Enum {
 		Gui = 20,
 		Animation = 21,
 		Navigation = 22
+	}
+	enum DeviceType {
+		Unknown = 0,
+		Desktop = 1,
+		Tablet = 2,
+		Phone = 3
 	}
 	enum DialogBehaviorType {
 		SinglePlayer = 0,
@@ -658,6 +665,10 @@ declare namespace Enum {
 		Avatar = 16,
 		Analytics = 22,
 		Localization = 24
+	}
+	enum HumanoidCollisionType {
+		OuterBox = 0,
+		InnerBox = 1
 	}
 	enum HumanoidDisplayDistanceType {
 		Viewer = 0,
@@ -990,6 +1001,11 @@ declare namespace Enum {
 	}
 	enum Language {
 		Default = 0
+	}
+	enum LanguagePreference {
+		SystemDefault = 0,
+		English = 1,
+		SimplifiedChinese = 2
 	}
 	enum LeftRight {
 		Left = 0,
@@ -1491,7 +1507,12 @@ declare namespace Enum {
 		CheckedFieldIndicator = 80,
 		HeaderSection = 81,
 		Midlight = 82,
-		StatusBar = 83
+		StatusBar = 83,
+		DialogButton = 84,
+		DialogButtonText = 85,
+		DialogButtonBorder = 86,
+		DialogMainButton = 87,
+		DialogMainButtonText = 88
 	}
 	enum StudioStyleGuideModifier {
 		Default = 0,
@@ -1537,7 +1558,8 @@ declare namespace Enum {
 	enum Technology {
 		Legacy = 0,
 		Voxel = 1,
-		Compatibility = 2
+		Compatibility = 2,
+		ShadowMap = 3
 	}
 	enum TeleportResult {
 		Success = 0,
