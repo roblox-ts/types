@@ -2255,6 +2255,10 @@ interface Rbx_BillboardGui extends Rbx_LayerCollector {
 	/** If true, billboard gui does not get occluded by 3D objects, but always renders on the screen. */
 	AlwaysOnTop: boolean;
 	ClipsDescendants: boolean;
+	readonly CurrentDistance: number;
+	DistanceLowerLimit: number;
+	DistanceStep: number;
+	DistanceUpperLimit: number;
 	/** A Vector3 (x,y,z) defined in studs that will offset the gui from the extents of the 3d object it is rendering from. */
 	ExtentsOffset: Vector3;
 	ExtentsOffsetWorldSpace: Vector3;
@@ -4072,6 +4076,7 @@ interface Rbx_RenderingTest extends Rbx_Instance {
 	QualityLevel: number;
 	ShouldSkip: boolean;
 	Ticket: string;
+	RenderdocTriggerCapture(): void;
 }
 type RenderingTest = Rbx_RenderingTest & Base<Rbx_RenderingTest> & Indexable<Rbx_RenderingTest>;
 
