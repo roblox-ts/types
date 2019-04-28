@@ -1,13 +1,13 @@
 /// <reference no-default-lib="true"/>
 
-interface Boolean {}
-interface IArguments {}
-interface Number {}
-interface Object {}
-interface RegExp {}
-interface Function {}
-interface CallableFunction extends Function {}
-interface NewableFunction extends Function {}
+interface Boolean { }
+interface IArguments { }
+interface Number { }
+interface Object { }
+interface RegExp { }
+interface Function { }
+interface CallableFunction extends Function { }
+interface NewableFunction extends Function { }
 
 /** @rbxts array */
 interface ArrayLike<T> {
@@ -128,13 +128,18 @@ interface ObjectConstructor {
  */
 declare const Object: ObjectConstructor;
 
-interface String {
+interface String extends Iterable<string> {
+	/** The current number of characters in the string */
 	readonly length: number;
-	split(sep: string): Array<string>;
+	/** Returns a new string equivalent to this string but with the whitespace removed from the start and end */
 	trim(): string;
+	/** Returns a new string equivalent to this string but with the whitespace removed from the start */
 	trimLeft(): string;
+	/** Returns a new string equivalent to this string but with the whitespace removed from the end */
 	trimRight(): string;
+	/** Returns a new string equivalent to this string but with the whitespace removed from the start */
 	trimStart(): string;
+	/** Returns a new string equivalent to this string but with the whitespace removed from the end */
 	trimEnd(): string;
 }
 
@@ -171,15 +176,20 @@ interface SymbolConstructor {
 }
 declare var Symbol: SymbolConstructor;
 
-interface IteratorResult<T> {
-	done: boolean;
-	value: T;
-}
+type IteratorResult<T> =
+	| {
+			done: false;
+			value: T;
+	  }
+	| {
+			done: true;
+			value: undefined;
+	  };
 
 interface Iterator<T> {
-	next(value?: any): IteratorResult<T>;
-	return?(value?: any): IteratorResult<T>;
-	throw?(e?: any): IteratorResult<T>;
+	next: (value?: any) => IteratorResult<T>;
+//	return?: (value?: any) => IteratorResult<T>;
+//	throw?: (e?: any) => IteratorResult<T>;
 }
 
 interface Iterable<T> {
@@ -190,11 +200,10 @@ interface IterableIterator<T> extends Iterator<T> {
 	[Symbol.iterator](): IterableIterator<T>;
 }
 
-/** @rbxts array */
-interface ReadonlyArray<T> extends HasToString, HasIsEmpty, ArrayLike<T> {
-	/** Iterator */
-	[Symbol.iterator](): IterableIterator<T>;
+type IterableFunction<T> = Iterable<T> & (() => T | undefined);
 
+/** @rbxts array */
+interface ReadonlyArray<T> extends HasToString, HasIsEmpty, ArrayLike<T>, Iterable<T> {
 	/**
 	 * Creates a new array and shallow copies `this` and the items into the new array, in that order.
 	 * @param items Additional items to add to the end of array1.
@@ -421,30 +430,37 @@ interface Array<T> extends ReadonlyArray<T> {
 }
 
 interface ArrayConstructor {
-	new <T>(): Array<T>;
+	/** Instantiates a new array.
+	 * If length is provided, roblox-TS will load `length` amount of nil's into the new array.
+	 * Note that this does not affect the `length` property of the array,
+	 * it only keeps it from needing to resize to this `length` later.
+	 *
+	 * @param length A literal integer between 0 and 200 inclusive, which is the number of nil's to push onto the array
+	 */
+	new <T>(length?: number): Array<T>;
 }
 
 declare const Array: ArrayConstructor;
 
-interface ReadonlyMap<K, V> extends HasToString, HasIsEmpty {
+interface ReadonlyMap<K, V> extends HasToString, HasIsEmpty, Iterable<[K, V]> {
 	/**
-	 * Performs the specified action for each (element / pair of elements) in the data structure
+	 * Performs the specified action for each (element / pair of elements) in the Map
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
 	 */
 	forEach(callbackfn: (value: V, key: K, self: this) => void): void;
 
 	/**
-	 * Returns the number of elements in the data structure
+	 * Returns the number of elements in the Map
 	 */
 	size(): number;
 
 	/**
-	 * Returns an array with all values of this data structure
+	 * Returns an array with all values of this Map
 	 */
 	values(): Array<V>;
 
 	/**
-	 * Returns a boolean for whether the given key exists in the data structure
+	 * Returns a boolean for whether the given key exists in the Map
 	 */
 	has(key: K): boolean;
 
@@ -454,7 +470,7 @@ interface ReadonlyMap<K, V> extends HasToString, HasIsEmpty {
 	get(key: K): V | undefined;
 
 	/**
-	 * Returns an array of tuples for all members of this data structure
+	 * Returns an array of tuples for all members of this Map
 	 */
 	entries(): Array<[K, V]>;
 
@@ -471,12 +487,14 @@ interface Map<K, V> extends ReadonlyMap<K, V> {
 	set(key: K, value: V): this;
 
 	/**
-	 * Deletes the given key from the data structure
+	 * Deletes the given key from the Map.
+	 *
+	 * Returns a boolean indicating whether or not a value was removed.
 	 */
 	delete(key: K): boolean;
 
 	/**
-	 * Deletes all members of the data structure
+	 * Deletes all members of the Map
 	 */
 	clear(): void;
 }
@@ -486,14 +504,14 @@ interface MapConstructor {
 }
 declare var Map: MapConstructor;
 
-interface WeakMap<K, V> extends Map<K, V> {}
+interface WeakMap<K, V> extends Map<K, V> { }
 
 interface WeakMapConstructor {
 	new <K extends object = object, V = any>(entries?: ReadonlyArray<[K, V]> | null): WeakMap<K, V>;
 }
 declare var WeakMap: WeakMapConstructor;
 
-interface ReadonlySet<T> extends HasToString, HasIsEmpty {
+interface ReadonlySet<T> extends HasToString, HasIsEmpty, Iterable<T> {
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the set
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
@@ -554,12 +572,14 @@ interface Set<T> extends ReadonlySet<T> {
 	add(value: T): this;
 
 	/**
-	 * Deletes the given key from the set
+	 * Deletes the given key from the set.
+	 *
+	 * Returns a boolean indicating whether or not a value was removed.
 	 */
 	delete(value: T): boolean;
 
 	/**
-	 * Deletes all members of the set
+	 * Deletes all members of the set.
 	 */
 	clear(): void;
 }
@@ -569,7 +589,7 @@ interface SetConstructor {
 }
 declare const Set: SetConstructor;
 
-interface WeakSet<T> extends Set<T> {}
+interface WeakSet<T> extends Set<T> { }
 
 interface WeakSetConstructor {
 	new <T extends object = object>(values?: ReadonlyArray<T> | null): WeakSet<T>;
@@ -745,3 +765,6 @@ type ReturnType<T extends (...args: Array<any>) => any> = T extends (...args: Ar
 type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (...args: Array<any>) => infer R
 	? R
 	: any;
+
+/** Returns a subset of type T which excludes properties K */
+type Unpick<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;

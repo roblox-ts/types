@@ -45,7 +45,7 @@ interface Rbx_BasePart extends Rbx_Instance {
 
 interface Rbx_BillboardGui extends Rbx_LayerCollector {
 	/** The Object the billboard gui uses as its base to render from.  Currently, the only way to set this property is thru a script, and must exist in the workspace.  This will only render if the object assigned derives from BasePart. */
-	Adornee: BasePart | Attachment | undefined;
+	Adornee: PVInstance | Attachment | undefined;
 	/** Specifies a Player that the BillboardGui will not render to. */
 	PlayerToHideFrom: Player | undefined;
 }
@@ -374,10 +374,10 @@ interface Rbx_Instance {
 	FindFirstChildOfClass<T extends keyof Instances>(className: T): Instances[T] | undefined;
 	/** Returns the first child of this Instance that with a ClassName equal to 'className'.  The function will return nil if no Instance is found. */
 	FindFirstChildOfClass(className: string): Instance | undefined;
-	/** Returns the first ancestor of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
-	FindFirstAncestorWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
-	/** Returns the first ancestor of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
-	FindFirstAncestorWhichIsA(className: string): Instance | undefined;
+	/** Returns the first child of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
+	FindFirstChildWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
+	/** Returns the first child of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
+	FindFirstChildWhichIsA(className: string): Instance | undefined;
 }
 
 interface Rbx_JointInstance extends Rbx_Instance {
@@ -550,6 +550,14 @@ interface Rbx_Model extends Rbx_PVInstance {
 interface Rbx_OrderedDataStore extends Rbx_GlobalDataStore {
 	/** Returns a DataStorePages object. The length of each page is determined by pageSize, and the order is determined by isAscending. minValue and maxValue are optional parameters which will filter the result.  */
 	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
+}
+
+interface Rbx_PartAdornment extends Rbx_GuiBase3d {
+	Adornee: PVInstance | undefined;
+}
+
+interface Rbx_PVAdornment extends Rbx_GuiBase3d {
+	Adornee: PVInstance | undefined;
 }
 
 interface Rbx_Path extends Rbx_Instance {
@@ -871,4 +879,27 @@ interface Rbx_Workspace extends Rbx_Model {
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+	/** Returns parts in the area defined by the Region3, up to specified maxCount or 100, whichever is less */
+	FindPartsInRegion3(
+		region: Region3,
+		ignoreDescendantsInstance?: Instance,
+		maxParts?: number
+	): Array<BasePart>;
+	/** Returns parts in the area defined by the Region3, up to specified maxCount or 100, whichever is less */
+	FindPartsInRegion3WithIgnoreList(
+		region: Region3,
+		ignoreDescendantsTable: Array<Instance>,
+		maxParts?: number
+	): Array<BasePart>;
+	/** Returns parts in the area defined by the Region3, up to specified maxCount or 100, whichever is less */
+	FindPartsInRegion3WithWhiteList(
+		region: Region3,
+		whitelistDescendantsTable: Array<Instance>,
+		maxParts?: number
+	): Array<BasePart>;
+}
+
+interface Rbx_TextService {
+	/** Filters a string for display and returns a TextFilterResult */
+	FilterStringAsync(stringToFilter: string, fromUserId: number, textContext: Enum.TextFilterContext): TextFilterResult
 }
