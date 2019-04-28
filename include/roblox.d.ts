@@ -26,7 +26,9 @@ interface RBXScriptConnection {
 }
 
 interface RBXScriptSignal<T = Function, P = false> {
-	Connect<O extends unknown[] = FunctionArguments<T>>(callback: P extends true ? FunctionArguments<T> extends unknown[] ? (...args: O) => void : T : T): RBXScriptConnection;
+	Connect<O extends unknown[] = FunctionArguments<T>>(
+		callback: P extends true ? (FunctionArguments<T> extends unknown[] ? (...args: O) => void : T) : T,
+	): RBXScriptConnection;
 	Wait(): LuaTuple<FunctionArguments<T>>;
 }
 
@@ -155,7 +157,7 @@ interface CFrameConstructor {
 		R12: number,
 		R20: number,
 		R21: number,
-		R22: number
+		R22: number,
 	): CFrame;
 	/** Equivalent to fromEulerAnglesXYZ */
 	Angles: (rX: number, rY: number, rZ: number) => CFrame;
@@ -229,7 +231,7 @@ interface DockWidgetPluginGuiInfoConstructor {
 		floatXSize?: number,
 		floatYSize?: number,
 		minWidth?: number,
-		minHeight?: number
+		minHeight?: number,
 	): DockWidgetPluginGuiInfo;
 }
 declare const DockWidgetPluginGuiInfo: DockWidgetPluginGuiInfoConstructor;
@@ -307,7 +309,7 @@ interface PhysicalPropertiesConstructor {
 		friction: number,
 		elasticity: number,
 		frictionWeight: number,
-		elasticityWeight: number
+		elasticityWeight: number,
 	): PhysicalProperties;
 }
 declare const PhysicalProperties: PhysicalPropertiesConstructor;
@@ -388,7 +390,7 @@ interface TweenInfoConstructor {
 		easingDirection?: Enum.EasingDirection,
 		repeatCount?: number,
 		reverses?: boolean,
-		delayTime?: number
+		delayTime?: number,
 	): TweenInfo;
 }
 declare const TweenInfo: TweenInfoConstructor;
@@ -562,6 +564,16 @@ if (typeIs(v, "Vector3")) {
 	print(v.X, v.Y, v.Z);
 }
 ```
- * */
+ **/
 declare function typeIs<T extends keyof CheckableTypes>(value: any, type: T): value is CheckableTypes[T];
 declare function typeIs(value: any, type: string): boolean;
+
+/**
+ * Calls the function func with the given arguments in protected mode.
+ *
+ * opcall is an easier to use version of pcall. It returns a result object instead of multiple returns.
+ **/
+declare function opcall<T extends Array<any>, U>(
+	func: (...args: T) => U,
+	...args: T
+): { success: true; value: U } | { success: false; error: string };
