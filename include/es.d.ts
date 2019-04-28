@@ -442,6 +442,7 @@ interface ArrayConstructor {
 
 declare const Array: ArrayConstructor;
 
+/** @rbxts map */
 interface ReadonlyMap<K, V> extends HasToString, HasIsEmpty, Iterable<[K, V]> {
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the Map
@@ -480,6 +481,7 @@ interface ReadonlyMap<K, V> extends HasToString, HasIsEmpty, Iterable<[K, V]> {
 	keys(): Array<K>;
 }
 
+/** @rbxts map */
 interface Map<K, V> extends ReadonlyMap<K, V> {
 	/**
 	 * Associates a key with a value which can be accessed later by `Map.get`
@@ -511,6 +513,7 @@ interface WeakMapConstructor {
 }
 declare var WeakMap: WeakMapConstructor;
 
+/** @rbxts set */
 interface ReadonlySet<T> extends HasToString, HasIsEmpty, Iterable<T> {
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the set
@@ -565,6 +568,7 @@ set1.isSubsetOf(set2) && !set2.isSubsetOf(set1)
 	isSubsetOf<U>(set: Set<U>): boolean;
 }
 
+/** @rbxts set */
 interface Set<T> extends ReadonlySet<T> {
 	/**
 	 * Adds a value to the set
