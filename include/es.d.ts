@@ -114,6 +114,7 @@ interface ObjectConstructor {
  */
 declare const Object: ObjectConstructor;
 
+/** @rbxts string */
 interface String extends Iterable<string> {
 	/** The current number of characters in the string */
 	readonly length: number;
