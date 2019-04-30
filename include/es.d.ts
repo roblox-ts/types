@@ -18,20 +18,6 @@ interface ArrayLike<T> {
 	readonly [n: number]: T;
 }
 
-interface HasToString {
-	/**
-	 * Returns a string representation of this data structure.
-	 */
-	toString(): string;
-}
-
-interface HasIsEmpty {
-	/**
-	 * Returns true if empty, otherwise false.
-	 */
-	isEmpty(): boolean;
-}
-
 interface ObjectConstructor {
 	/**
 	 * Copy the values of all of the enumerable own properties from one or more source objects to a
@@ -143,7 +129,11 @@ interface String extends Iterable<string> {
 	trimEnd(): string;
 }
 
-interface Symbol extends HasToString {
+interface Symbol {
+	/**
+	 * Returns a string representation of this data structure.
+	 */
+	toString(): string;
 	valueOf(): symbol;
 }
 
@@ -203,7 +193,17 @@ interface IterableIterator<T> extends Iterator<T> {
 type IterableFunction<T> = Iterable<T> & (() => T | undefined);
 
 /** @rbxts array */
-interface ReadonlyArray<T> extends HasToString, HasIsEmpty, ArrayLike<T>, Iterable<T> {
+interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation of this data structure.
+	 */
+	toString(): string;
+
 	/**
 	 * Creates a new array and shallow copies `this` and the items into the new array, in that order.
 	 * @param items Additional items to add to the end of array1.
@@ -443,7 +443,17 @@ interface ArrayConstructor {
 declare const Array: ArrayConstructor;
 
 /** @rbxts map */
-interface ReadonlyMap<K, V> extends HasToString, HasIsEmpty, Iterable<[K, V]> {
+interface ReadonlyMap<K, V> extends Iterable<[K, V]> {
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation of this data structure.
+	 */
+	toString(): string;
+
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the Map
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
@@ -514,7 +524,17 @@ interface WeakMapConstructor {
 declare var WeakMap: WeakMapConstructor;
 
 /** @rbxts set */
-interface ReadonlySet<T> extends HasToString, HasIsEmpty, Iterable<T> {
+interface ReadonlySet<T> extends Iterable<T> {
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation of this data structure.
+	 */
+	toString(): string;
+
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the set
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
