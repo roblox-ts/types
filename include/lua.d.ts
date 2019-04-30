@@ -141,6 +141,7 @@ declare namespace debug {
 	function profileend(): void;
 }
 
+/** @rbxts string */
 interface String {
 	/** Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`, `...`, `s[j]`. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
 	byte(i?: number, j?: number): number;
