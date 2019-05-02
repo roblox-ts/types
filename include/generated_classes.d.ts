@@ -2319,6 +2319,8 @@ interface Rbx_SurfaceGui extends Rbx_LayerCollector {
 	Face: Enum.NormalId;
 	/** Specifies the amount of influence lighting has on the surface gui. A value of 0 is unlit, 1 is fully lit. Fractional values blend from unlit to lit. */
 	LightInfluence: number;
+	PixelsPerStud: number;
+	SizingMode: Enum.SurfaceGuiSizingMode;
 	ToolPunchThroughDistance: number;
 	ZOffset: number;
 }
@@ -4595,9 +4597,6 @@ interface Rbx_Studio extends Rbx_Instance {
 	["Auto-Recovery Enabled"]: boolean;
 	["Auto-Recovery Interval (Minutes)"]: number;
 	["Auto-Recovery Path"]: QDir;
-	["Auto-Save Enabled"]: boolean;
-	["Auto-Save Interval (Minutes)"]: number;
-	["Auto-Save Path"]: QDir;
 	["Background Color"]: Color3;
 	["Basic Objects Display Mode"]: Enum.ListDisplayMode;
 	["Built-in Function Color"]: Color3;
@@ -4619,7 +4618,6 @@ interface Rbx_Studio extends Rbx_Instance {
 	Font: QFont;
 	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
 	["Hover Over Color"]: Color3;
-	["Import mesh files as single mesh"]: boolean;
 	["Keyword Color"]: Color3;
 	Language: Enum.LanguagePreference;
 	["Line Thickness"]: number;

@@ -1532,6 +1532,10 @@ declare namespace Enum {
 		SteppingMotor = 2,
 		Motor = 3
 	}
+	enum SurfaceGuiSizingMode {
+		FixedSize = 0,
+		PixelsPerStud = 1
+	}
 	enum SurfaceType {
 		Smooth = 0,
 		Glue = 1,
