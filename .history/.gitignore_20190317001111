@@ -1,6 +1,0 @@
-.DS_Store
-node_modules
-out
-.history
-cache
-include/test.ts
