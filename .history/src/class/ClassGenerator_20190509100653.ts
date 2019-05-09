@@ -1,6 +1,5 @@
 import * as path from "path";
-import * as ts from "ts-morph";
-import { Project } from "ts-morph";
+import Project, * as ts from "ts-morph";
 import {
 	ApiCallback,
 	ApiClass,
