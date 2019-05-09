@@ -43,7 +43,7 @@ export class ReflectionMetadata {
 				`Properties/` +
 				`string[@name='Name'][text()='${name}']/` +
 				`../` +
-				`string[@name='summary']`
+				`string[@name='summary']`,
 		);
 	}
 
@@ -55,7 +55,7 @@ export class ReflectionMetadata {
 		return this.getMemberDescription(
 			["ReflectionMetadataFunctions", "ReflectionMetadataYieldFunctions"],
 			className,
-			name
+			name,
 		);
 	}
 

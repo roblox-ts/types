@@ -151,7 +151,7 @@ interface String {
 		pattern: string,
 		init?: number,
 		plain?: boolean,
-	): LuaTuple<[number, number,  ...Array<string>] | Array<undefined>>;
+	): LuaTuple<[number, number, ...Array<string>] | Array<undefined>>;
 
 	/** Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). */
 	format(...args: Array<number | string>): string;
@@ -202,7 +202,7 @@ declare namespace string {
 		pattern: string,
 		init?: number,
 		plain?: boolean,
-	): LuaTuple<[number, number,  ...Array<string>] | Array<undefined>>;
+	): LuaTuple<[number, number, ...Array<string>] | Array<undefined>>;
 
 	/** Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). */
 	function format(pattern: string, ...args: Array<number | string>): string;
