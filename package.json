@@ -1,6 +1,6 @@
 {
 	"name": "rbx-types",
-	"version": "1.0.14",
+	"version": "1.0.81",
 	"description": "Generates a roblox.d.ts file from a combination of handwritten .d.ts files and generated data from Roblox's API dump",
 	"scripts": {
 		"build": "ts-node src/index.ts"
@@ -32,9 +32,7 @@
 		"typescript": "^3.4.5"
 	},
 	"bundleDependencies": [],
-	"dependencies": {
-		"rbx-types": "1.0.179"
-	},
+	"dependencies": {},
 	"keywords": [
 		"rbx-types",
 		"types",
