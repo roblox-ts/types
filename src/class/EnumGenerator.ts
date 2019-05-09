@@ -16,19 +16,6 @@ export class EnumGenerator extends Generator {
 		this.write(`declare namespace Enum {`);
 		this.pushIndent();
 		for (const { Name: enumTypeName, Items: enumTypeItems } of rbxEnums) {
-			/* OLD VERSION
-			this.write(`enum ${rbxEnum.Name} {`);
-			this.pushIndent();
-			for (let j = 0; j < rbxEnum.Items.length; j++) {
-				const rbxEnumItem = rbxEnum.Items[j];
-				const name = rbxEnumItem.Name;
-				const value = rbxEnumItem.Value;
-				const comma = j === rbxEnum.Items.length - 1 ? "" : ",";
-				this.write(`${name} = ${value}${comma}`);
-			}
-			this.popIndent();
-			this.write(`}`);
-			*/
 			enumTypeNames.push(enumTypeName);
 			const enumItemNames = new Array<string>();
 
@@ -47,13 +34,11 @@ export class EnumGenerator extends Generator {
 				this.write(`export const ${enumItemName}: ${enumItemName};`);
 				this.write(``);
 			}
-			// this.write(`export function GetEnumItems(): Array<${enumTypeName}>;`);
 			this.popIndent();
 			this.write(`}`);
 			this.write(`export type ${enumTypeName} = ${enumTypeName}.${enumItemNames.join(` | ${enumTypeName}.`)};`);
 			this.write(``);
 		}
-		// this.write(`export function GetEnums(): Array<Enum_${enumTypeNames.join(" | Enum_")}>;`);
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
@@ -64,7 +49,6 @@ export class EnumGenerator extends Generator {
 			for (const { Name: enumItemName, Value: enumItemValue } of enumTypeItems) {
 				this.write(`${enumItemName}: Enum.${enumTypeName}.${enumItemName};`);
 			}
-			// this.write(`GetEnumItems(): Array<Enum.${enumTypeName}>;`);
 			this.popIndent();
 			this.write(`}`);
 			this.write(``);
