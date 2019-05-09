@@ -1,0 +1,3 @@
+function A() {
+	print("Soup");
+}

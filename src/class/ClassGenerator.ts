@@ -11,7 +11,7 @@ import {
 	ApiProperty,
 	ApiValueType,
 	ClassTag,
-	MemberTag
+	MemberTag,
 } from "../api";
 import { Generator } from "./Generator";
 
@@ -23,7 +23,7 @@ const BAD_NAME_CHARS = [" ", "/"];
 const CREATABLE_BLACKLIST: { [index: string]: true | undefined } = {
 	UserSettings: true,
 	DebugSettings: true,
-	Studio: true
+	Studio: true,
 };
 
 const MEMBER_BLACKLIST: {
@@ -45,7 +45,7 @@ const MEMBER_BLACKLIST: {
 	ObjectValue: { Changed: true },
 	RayValue: { Changed: true },
 	StringValue: { Changed: true },
-	Vector3Value: { Changed: true }
+	Vector3Value: { Changed: true },
 };
 
 function containsBadChar(name: string) {
@@ -80,11 +80,11 @@ const VALUE_TYPE_MAP: { [index: string]: string | null } = {
 	Property: "string",
 	Rect2D: "Rect",
 	Tuple: "Array<any>",
-	Variant: "any"
+	Variant: "any",
 };
 
 const PROP_TYPE_MAP: { [index: string]: string } = {
-	Instance: "Instance | undefined"
+	Instance: "Instance | undefined",
 };
 
 function safePropType(valueType: string | undefined | null) {
@@ -115,7 +115,7 @@ function safeValueType(valueType: ApiValueType) {
 const RETURN_TYPE_MAP: { [index: string]: string | null } = {
 	Instance: "Instance | undefined", // api dump lies :(
 	any: "unknown",
-	["Array<any>"]: "unknown"
+	["Array<any>"]: "unknown",
 };
 
 function safeReturnType(valueType: string | undefined | null) {
@@ -136,7 +136,7 @@ const ARG_NAME_MAP: { [index: string]: string | null } = {
 	["function"]: "callback",
 	["debugger"]: "debug",
 	["old"]: "oldValue",
-	["new"]: "newValue"
+	["new"]: "newValue",
 };
 
 function safeArgName(name: string | undefined | null) {
@@ -158,7 +158,7 @@ function getSecurity(member: ApiMemberBase) {
 	if (typeof security === "string") {
 		return {
 			Read: security,
-			Write: security
+			Write: security,
 		};
 	}
 	return security;
@@ -301,7 +301,7 @@ export class ClassGenerator extends Generator {
 		rbxClass: ApiClass,
 		rbxMember: ApiMember,
 		className: string,
-		tsImplInterface?: ts.InterfaceDeclaration
+		tsImplInterface?: ts.InterfaceDeclaration,
 	) {
 		if (rbxMember.MemberType === "Callback") {
 			this.generateCallback(rbxMember, className, tsImplInterface);

@@ -1,0 +1,50 @@
+{
+	["https://developer.roblox.com/api-reference/function/Instance/GetChildren"]: ``
+Returns an array (a numerically indexed table) containing all of the `Instance`'s direct children, or every `Instance` whose `Instance/Parent|Parent` is equal to the object. The array can be iterated upon using either a numeric or generic for-loop:
+
+```lua
+-- Numeric for-loop example
+local children = workspace:GetChildren()
+for i = 1, #children do
+	local child = children[i]
+	print(child.Name .. " is child number " .. i)
+end
+```
+
+```lua
+-- Generic for-loop example
+local children = workspace:GetChildren()
+for i, child in ipairs(children) do
+	print(child.Name .. " is child number " .. i)
+end
+```
+
+The children are sorted by the order in which their `Instance/Parent|Parent` property was set to the object.
+
+See also the `Instance/GetDescendants|GetDescendants` function.
+
+
+https://developer.roblox.com/api-reference/function/Instance/FindFirstChildWhichIsA
+Returns the first child of the `Instance` for whom `Instance/IsA` returns true for the given className.
+
+If no matching child is found, this function returns nil. If the optional recursive argument is true, this function searches all descendants rather than only the immediate children of the `Instance`.
+
+Unlike `Instance/FindFirstChildOfClass`, this function uses `Instance/IsA` which respects class inheritance. For example:
+
+```lua
+print(part:IsA("Part")) --> true
+print(part:IsA("BasePart")) --> true
+print(part:IsA("Instance")) --> true
+```
+
+Therefore, the following code sample will return the first `BasePart` child, regardless of if it is a `WedgePart`, `MeshPart` or `Part`.
+
+```
+local part = object:FindFirstChildWhichIsA("BasePart")
+```
+
+Developers looking for a child by name, should use `Instance/FindFirstChild` instead.
+
+
+https://developer.roblox.com/api-reference/function/Instance/IsDescendantOf
+}
