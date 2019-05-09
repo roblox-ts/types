@@ -95,7 +95,8 @@ declare namespace Enum {
 		WalkAnimation = 55,
 		PoseAnimation = 56,
 		EarAccessory = 57,
-		EyeAccessory = 58
+		EyeAccessory = 58,
+		EmoteAnimation = 61
 	}
 	enum AutoJointsMode {
 		Default = 0,
@@ -105,7 +106,8 @@ declare namespace Enum {
 	enum AvatarContextMenuOption {
 		Friend = 0,
 		Chat = 1,
-		Emote = 2
+		Emote = 2,
+		InspectMenu = 3
 	}
 	enum AvatarJointPositionType {
 		Fixed = 0,
@@ -1422,6 +1424,11 @@ declare namespace Enum {
 	enum Status {
 		Poison = 0,
 		Confusion = 1
+	}
+	enum StreamingPauseMode {
+		Default = 0,
+		Disabled = 1,
+		ClientPhysicsPause = 2
 	}
 	enum StudioStyleGuideColor {
 		MainBackground = 0,
