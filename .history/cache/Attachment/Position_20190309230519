@@ -1,1 +1,0 @@
-A [Vector3](</api-reference/datatype/Vector3> "Vector3") that describes the positional offset of the Attachment, relative to the position and orientation of its parent.
