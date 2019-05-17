@@ -4259,7 +4259,6 @@ interface Rbx_DataModel extends Rbx_ServiceProvider {
 	readonly CreatorId: number;
 	readonly CreatorType: Enum.CreatorType;
 	readonly GameId: number;
-	readonly GearGenreSetting: Enum.GearGenreSetting;
 	readonly Genre: Enum.Genre;
 	readonly JobId: string;
 	readonly PlaceId: number;
@@ -4268,7 +4267,6 @@ interface Rbx_DataModel extends Rbx_ServiceProvider {
 	readonly PrivateServerOwnerId: number;
 	readonly Workspace?: Workspace;
 	BindToClose(callback: Function): void;
-	IsGearTypeAllowed(gearType: Enum.GearType): boolean;
 	IsLoaded(): boolean;
 	readonly GraphicsQualityChangeRequest: RBXScriptSignal<(betterQuality: boolean) => void>;
 	/** Fires when the game finishes loading.  Use this to know when to remove your custom loading gui.  It is best to check IsLoaded() before connecting to this event, as the game may load before the event is connected to. */
