@@ -83,9 +83,9 @@ const breakdance = require("breakdance") as (
 	},
 ) => string;
 
-export const IMPL_PREFIX = "RbxInternal";
+export const IMPL_PREFIX = ""; // RbxInternal
 const ROOT_CLASS_NAME = "<<<ROOT>>>";
-const DERIVATIVE_PREFIX = "DerivesFrom";
+const DERIVATIVE_PREFIX = ""; // DerivesFrom
 
 const BAD_NAME_CHARS = [" ", "/"];
 
@@ -393,7 +393,9 @@ namespace ClassInformation {
 
 	function processText(text: string, rbxClasses: Array<ApiClass>, tabChar: "" | "\t"): string {
 		const assets = new Map<string, string>();
-		return text
+		let ij = 0;
+
+		const after = text
 			.trim()
 			.replace(/<([^ ]+)[^]+<\/\1>/g, a =>
 				breakdance(a, {
@@ -441,6 +443,7 @@ namespace ClassInformation {
 
 				return found && numFound > 1 ? "```lua\n" + middle + "\n```\n" : a;
 			})
+
 			.replace(/```([^]+?)```/g, (a, b: string) => {
 				const middle = b.trim().replace(/    /g, "\t");
 
@@ -450,11 +453,12 @@ namespace ClassInformation {
 					return "```lua\n" + middle + "\n```\n";
 				}
 			})
-			.replace(/```(prettyprintlinenums|\n)lua/g, "```lua")
+			.replace(/```\n+lua/g, "```lua")
+			.replace(/```lua\n(prettyprintlinenums|prettyprintlinenumslua|prettyprintlua)\n+/g, "```lua\n")
 			.replace(/([^]+?)($|```lua[^]+?```)/g, (_, cap: string, code: string) => {
 				const trimmedCode = code.trim();
-				const i = 0;
 				let previousHadTable = false;
+
 				const myStr = cap
 					.replace(/(\[[^\]]+\]: )(\/.+?)/g, (_, a: string, b: string) => {
 						return a + "https://developer.roblox.com" + b;
@@ -515,13 +519,15 @@ namespace ClassInformation {
 							return "";
 						}
 					})
-					.concat(
-						trimmedCode ? tabChar + " *\n" + tabChar + " * " + trimmedCode + "\n" + tabChar + " * " : "",
-					)
 					.replace(/^\s+\*/, "");
 
-				return myStr + "\n";
+				return myStr.concat(
+					trimmedCode ? tabChar + " *\n" + tabChar + " * " + trimmedCode + "\n" + tabChar + " * " : "",
+					"\n",
+				);
 			});
+
+		return after;
 	}
 
 	function processCodeSamples(codeSample: CodeSamples, rbxClasses: Array<ApiClass>, tabChar: "" | "\t" = "\t") {
@@ -832,7 +838,8 @@ export class ClassGenerator extends Generator {
 		const implName = IMPL_PREFIX + name;
 
 		const isClassCreatable = isCreatable(rbxClass);
-		const hasSubclasses = rbxClass.Subclasses.length > 0;
+
+		const hasSubclasses = false; // rbxClass.Subclasses.length > 0;
 
 		const interfaceName = hasSubclasses ? implName : name;
 		const tsImplInterface = tsFile.getInterface(interfaceName);
@@ -860,39 +867,39 @@ export class ClassGenerator extends Generator {
 
 		this.write(`interface ${interfaceName} ${extendsStr}{${isEmpty ? "}" : ""}`);
 
-		if (!isEmpty) {
-			this.pushIndent();
+		this.pushIndent();
 
-			if (!hasSubclasses) {
-				this.write(`/** The string name of this Instance's most derived class. */`);
-				this.write(`readonly ClassName: "${name}";`);
-			}
+		this.write(
+			`/** A read-only string representing the class this Instance belongs to. In TypeScript the macro \`isClassName\` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */`,
+		);
+		this.write(
+			`readonly ClassName: ${[name, ...this.subclassify(name)].map(subName => `"${subName}"`).join(" | ")};`,
+		);
 
-			members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
-			this.popIndent();
-			this.write(`}`);
-		}
+		members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
+		this.popIndent();
+		this.write(`}`);
 
-		if (hasSubclasses) {
-			const fullName = rbxClass.Name;
+		// if (hasSubclasses) {
+		// 	const fullName = rbxClass.Name;
 
-			if (isClassCreatable) {
-				const newImplName = IMPL_PREFIX + fullName;
-				if (description) this.write(description);
-				this.write(`interface ${fullName} extends ${implName} {`);
-				this.pushIndent();
-				this.write(`/** The string name of this Instance's most derived class. */`);
-				this.write(`readonly ClassName: "${fullName}";`);
-				this.popIndent();
-				this.write(`}`);
-				this.write(``);
-			} else {
-				const subclassesArray = this.subclassify(fullName, fullName);
-				const possibilities = subclassesArray.join(" | ");
-				if (description) this.write(description);
-				this.write(`type ${fullName} = ${possibilities};`);
-			}
-		}
+		// 	if (isClassCreatable) {
+		// 		const newImplName = IMPL_PREFIX + fullName;
+		// 		if (description) this.write(description);
+		// 		this.write(`interface ${fullName} extends ${implName} {`);
+		// 		this.pushIndent();
+		// 		this.write(`/** The string name of this Instance's most derived class. */`);
+		// 		this.write(`readonly ClassName: "${fullName}";`);
+		// 		this.popIndent();
+		// 		this.write(`}`);
+		// 		this.write(``);
+		// 	} else {
+		// 		const subclassesArray = this.subclassify(fullName, fullName);
+		// 		const possibilities = subclassesArray.join(" | ");
+		// 		if (description) this.write(description);
+		// 		this.write(`type ${fullName} = ${possibilities};`);
+		// 	}
+		// }
 
 		this.write(``);
 	}
@@ -948,7 +955,7 @@ export class ClassGenerator extends Generator {
 				const myClass = this.ClassReferences.get(className);
 
 				if (myClass) {
-					if (this.classIsDerivative(myClass)) {
+					if (myClass.Subclasses.length > 0) {
 						classNames.push(...this.subclassify(className));
 					}
 				}
@@ -965,23 +972,13 @@ export class ClassGenerator extends Generator {
 			this.write(`${name}: ${[name, ...this.subclassify(name)].join(" | ")};`);
 		};
 
-		const [CreatableInstancesInternal, InstancesInternal, CreatableInstances, Instances, Services] = multifilter(
-			rbxClasses,
-			5,
-			rbxClass =>
-				classHasTag(rbxClass, "Service")
-					? 4
-					: (isCreatable(rbxClass) ? 0 : 1) + (this.classIsDerivative(rbxClass) ? 2 : 0),
+		const [CreatableInstances, Instances, Services] = multifilter(rbxClasses, 3, rbxClass =>
+			classHasTag(rbxClass, "Service") ? 2 : isCreatable(rbxClass) ? 0 : 1,
 		);
 
-		const InstanceBases: Array<ApiClass> = [...Instances, ...CreatableInstances];
-
-		this.generateInstanceInterface("CreatableInstancesInternal", CreatableInstancesInternal);
 		this.generateInstanceInterface("Services", Services);
-		this.generateInstanceInterface("InstancesInternal", InstancesInternal, "CreatableInstancesInternal, Services");
-		this.generateInstanceInterface("InstanceBases", InstanceBases, "InstancesInternal", baseFormat);
-		this.generateInstanceInterface("CreatableInstances", CreatableInstances, "CreatableInstancesInternal");
-		this.generateInstanceInterface("Instances", Instances, "InstancesInternal, CreatableInstances");
+		this.generateInstanceInterface("CreatableInstances", CreatableInstances);
+		this.generateInstanceInterface("Instances", Instances, "Services, CreatableInstances");
 	}
 
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {

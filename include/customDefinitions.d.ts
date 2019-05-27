@@ -1,14 +1,14 @@
-interface AnimationController extends RbxInternalInstance {
+interface AnimationController extends Instance {
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 	GetPlayingAnimationTracks(): Array<AnimationTrack>;
 	LoadAnimation(animation: Animation): AnimationTrack;
 }
 
-interface Animator extends RbxInternalInstance {
+interface Animator extends Instance {
 	LoadAnimation(animation: Animation): AnimationTrack;
 }
 
-interface AssetService extends RbxInternalInstance {
+interface AssetService extends Instance {
 	CreatePlaceInPlayerInventoryAsync(
 		player: Player,
 		placeName: string,
@@ -20,7 +20,7 @@ interface AssetService extends RbxInternalInstance {
 	GetBundleDetailsAsync(bundleId: number): BundleInfo;
 }
 
-interface RbxInternalBasePart extends RbxInternalInstance {
+interface BasePart extends Instance {
 	readonly TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
 	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
 
@@ -38,11 +38,11 @@ interface RbxInternalBasePart extends RbxInternalInstance {
 	UnionAsync(parts: Array<BasePart>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>): UnionOperation;
 }
 
-interface Attachment extends RbxInternalInstance {
+interface Attachment extends Instance {
 	WorldCFrame: CFrame;
 }
 
-interface BadgeService extends RbxInternalInstance {
+interface BadgeService extends Instance {
 	/** @rbxts server */
 	AwardBadge(userId: number, badgeId: number): boolean;
 	/** @rbxts server */
@@ -51,7 +51,7 @@ interface BadgeService extends RbxInternalInstance {
 	UserHasBadgeAsync(userId: number, badgeId: number): boolean;
 }
 
-interface TextService extends RbxInternalInstance {
+interface TextService extends Instance {
 	FilterStringAsync(
 		stringToFilter: string,
 		fromUserId: number,
@@ -59,55 +59,55 @@ interface TextService extends RbxInternalInstance {
 	): TextFilterResult | undefined;
 }
 
-interface BillboardGui extends RbxInternalLayerCollector {
+interface BillboardGui extends LayerCollector {
 	Adornee: PVInstance | Attachment | undefined;
 	PlayerToHideFrom: Player | undefined;
 }
 
-interface BindableEvent extends RbxInternalInstance {
+interface BindableEvent extends Instance {
 	readonly Event: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
 	Fire(...arguments: Array<unknown>): void;
 }
 
-interface BindableFunction extends RbxInternalInstance {
+interface BindableFunction extends Instance {
 	OnInvoke: (...arguments: Array<unknown>) => any;
 	Invoke(...arguments: Array<unknown>): Array<unknown>;
 }
 
-interface Camera extends RbxInternalInstance {
+interface Camera extends Instance {
 	CameraSubject: Humanoid | BasePart | undefined;
 	GetPartsObscuringTarget(castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
 	WorldToScreenPoint(worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
 	WorldToViewportPoint(worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
 }
 
-interface Chat extends RbxInternalInstance {
+interface Chat extends Instance {
 	readonly Chatted: RBXScriptSignal<(part: BasePart, message: string, color: Enum.ChatColor) => void>;
 	Chat(partOrCharacter: BasePart | Model, message: string, color?: CastsToEnum<Enum.ChatColor>): void;
 	FilterStringAsync(stringToFilter: string, playerFrom: Player, playerTo: Player): string;
 	FilterStringForBroadcast(stringToFilter: string, playerFrom: Player): string;
 }
 
-interface ClickDetector extends RbxInternalInstance {
+interface ClickDetector extends Instance {
 	readonly MouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
 	readonly MouseHoverEnter: RBXScriptSignal<(playerWhoHovered: Player) => void>;
 	readonly MouseHoverLeave: RBXScriptSignal<(playerWhoHovered: Player) => void>;
 	readonly RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
 }
 
-interface CollectionService extends RbxInternalInstance {
+interface CollectionService extends Instance {
 	GetInstanceAddedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetInstanceRemovedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetTagged<T extends Instance = Instance>(tag: string): Array<T>;
 	GetTags(instance: Instance): Array<string>;
 }
 
-interface ContentProvider extends RbxInternalInstance {
+interface ContentProvider extends Instance {
 	PreloadAsync(contentIdList: Array<Instance>): void;
 }
 
 /** @client */
-interface ContextActionService extends RbxInternalInstance {
+interface ContextActionService extends Instance {
 	/** @rbxts client */
 	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool | Flag) => void>;
 	/** @rbxts client */
@@ -135,30 +135,30 @@ interface ContextActionService extends RbxInternalInstance {
 }
 
 /** @server */
-interface DataStoreService extends RbxInternalInstance {
+interface DataStoreService extends Instance {
 	GetDataStore(name: string, scope?: string): GlobalDataStore;
 	GetGlobalDataStore(): GlobalDataStore;
 	GetOrderedDataStore(name: string, scope?: string): OrderedDataStore;
 }
 
-interface Dialog extends RbxInternalInstance {
+interface Dialog extends Instance {
 	readonly DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
 	GetCurrentPlayers(): Array<Player>;
 }
 
-interface FlagStand extends RbxInternalDerivesFromPart {
+interface FlagStand extends Part {
 	readonly FlagCaptured: RBXScriptSignal<(player: Player) => void>;
 }
 
-interface GamePassService extends RbxInternalInstance {
+interface GamePassService extends Instance {
 	/** This item is deprecated. Do not use it for new work. */
 	PlayerHasPass(player: Player, gamePassId: number): boolean;
 }
 
-interface PlayerGui extends RbxInternalBasePlayerGui {}
+interface PlayerGui extends BasePlayerGui {}
 
 /** @server */
-interface RbxInternalGlobalDataStore extends RbxInternalInstance {
+interface GlobalDataStore extends Instance {
 	GetAsync<T = unknown>(key: string): T | undefined;
 	IncrementAsync(key: string, delta?: number): number;
 	RemoveAsync<T = unknown>(key: string): T | undefined;
@@ -170,18 +170,18 @@ interface RbxInternalGlobalDataStore extends RbxInternalInstance {
 	OnUpdate<T = unknown>(key: string, callback: (value: T) => void): RBXScriptConnection;
 }
 
-interface GroupService extends RbxInternalInstance {
+interface GroupService extends Instance {
 	GetAlliesAsync(groupId: number): StandardPages;
 	GetEnemiesAsync(groupId: number): StandardPages;
 	GetGroupInfoAsync(groupId: number): GroupInfo;
 	GetGroupsAsync(userId: number): Array<GetGroupsAsyncResult>;
 }
 
-interface MessagingService extends RbxInternalInstance {
+interface MessagingService extends Instance {
 	SubscribeAsync(topic: string, callback: (Data: any, Sent: number) => void): RBXScriptConnection;
 }
 
-interface RbxInternalGuiObject extends RbxInternalGuiBase2d {
+interface GuiObject extends GuiBase2d {
 	readonly InputBegan: RBXScriptSignal<(input: InputObject) => void>;
 	readonly InputChanged: RBXScriptSignal<(input: InputObject) => void>;
 	readonly InputEnded: RBXScriptSignal<(input: InputObject) => void>;
@@ -231,13 +231,13 @@ interface RbxInternalGuiObject extends RbxInternalGuiBase2d {
 	): boolean;
 }
 
-interface GuiService extends RbxInternalInstance {
+interface GuiService extends Instance {
 	AddSelectionParent(selectionName: string, selectionParent: Instance): void;
 	AddSelectionTuple(selectionName: string, selections: Array<any>): void;
 	GetGuiInset(): LuaTuple<[Vector2, Vector2]>;
 }
 
-interface _HapticService extends RbxInternalInstance {
+interface _HapticService extends Instance {
 	GetMotor(
 		inputType: CastsToEnum<Enum.UserInputType>,
 		vibrationMotor: CastsToEnum<Enum.VibrationMotor>,
@@ -250,7 +250,7 @@ interface _HapticService extends RbxInternalInstance {
 }
 
 /** @server */
-interface HttpService extends RbxInternalInstance {
+interface HttpService extends Instance {
 	GetAsync(url: string, nocache?: boolean, headers?: HttpHeaders): string;
 
 	PostAsync(
@@ -264,7 +264,7 @@ interface HttpService extends RbxInternalInstance {
 	RequestAsync(requestOptions: RequestAsyncRequest): RequestAsyncResponse;
 }
 
-interface Humanoid extends RbxInternalInstance {
+interface Humanoid extends Instance {
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
 	readonly Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
@@ -281,7 +281,7 @@ interface Humanoid extends RbxInternalInstance {
 	ReplaceBodyPartR15(bodyPart: Enum.BodyPartR15, part: BasePart): boolean;
 }
 
-interface InsertService extends RbxInternalInstance {
+interface InsertService extends Instance {
 	LoadAsset(assetId: number): Model;
 	LoadAssetVersion(assetVersionId: number): Model;
 	GetBaseSets(): Array<SetInfo>;
@@ -291,36 +291,51 @@ interface InsertService extends RbxInternalInstance {
 	GetUserSets(userId: number): Array<SetInfo>;
 }
 
-interface RbxInternalInstance {
+interface Instance {
 	Clone(): this;
 	GetChildren<T extends Instance = Instance>(): Array<T>;
 	GetDescendants(): Array<Instance>;
+
 	FindFirstAncestor<T extends Instance = Instance>(name: string): T | undefined;
 	FindFirstChild<T extends Instance = Instance>(name: string, recursive?: boolean): T | undefined;
 	WaitForChild<T extends Instance = Instance>(childName: string): T;
 	WaitForChild<T extends Instance = Instance>(childName: string, timeOut: number): T | undefined;
-	IsA<T extends keyof InstanceBases>(className: T): this is InstanceBases[T];
-	IsA(className: string): boolean;
-	FindFirstChildWhichIsA<T extends keyof InstanceBases>(
+
+	IsA<
+		T extends {
+			[K in keyof Instances]: Instances[K]["ClassName"] extends this["ClassName"]
+				? this extends Instances[K]
+					? never
+					: K
+				: never
+		}[keyof Instances]
+	>(
 		className: T,
-		recursive?: boolean,
-	): InstanceBases[T] | undefined;
-	FindFirstChildWhichIsA(className: string, recursive?: boolean): InstanceBases[keyof InstanceBases] | undefined;
-	FindFirstAncestorOfClass<T extends keyof Instances>(className: T): Instances[T] | undefined;
+	): this is Instances[T];
+	IsA(className: string): boolean;
+
+	FindFirstAncestorWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
+	FindFirstAncestorWhichIsA(className: string): Instance | undefined;
+
+	FindFirstChildWhichIsA<T extends keyof Instances>(className: T, recursive?: boolean): Instances[T] | undefined;
+	FindFirstChildWhichIsA(className: string, recursive?: boolean): Instance | undefined;
+
+	FindFirstAncestorOfClass<T extends Instance["ClassName"]>(className: T): StrictInstanceByName<T> | undefined;
 	FindFirstAncestorOfClass(className: string): Instance | undefined;
-	FindFirstAncestorWhichIsA<T extends keyof InstanceBases>(className: T): InstanceBases[T] | undefined;
-	FindFirstAncestorWhichIsA(className: string): InstanceBases[keyof InstanceBases] | undefined;
-	FindFirstChildOfClass<T extends keyof Instances>(className: T): Instances[T] | undefined;
+
+	FindFirstChildOfClass<T extends Instance["ClassName"]>(className: T): StrictInstanceByName<T> | undefined;
 	FindFirstChildOfClass(className: string): Instance | undefined;
-	GetPropertyChangedSignal<T extends GetProperties<this>>(property: T): RBXScriptSignal;
+
+	GetPropertyChangedSignal<T extends GetProperties<this>>(propertyName: T): RBXScriptSignal;
+	GetPropertyChangedSignal(propertyName: string): RBXScriptSignal;
 }
 
-interface RbxInternalJointInstance extends RbxInternalInstance {
+interface JointInstance extends Instance {
 	Part0: BasePart | undefined;
 	Part1: BasePart | undefined;
 }
 
-interface Keyframe extends RbxInternalInstance {
+interface Keyframe extends Instance {
 	AddPose(pose: Pose): void;
 	RemovePose(pose: Pose): void;
 	GetPoses(): Array<Pose>;
@@ -328,35 +343,35 @@ interface Keyframe extends RbxInternalInstance {
 	RemoveMarker(marker: KeyframeMarker): void;
 }
 
-interface KeyframeSequence extends RbxInternalInstance {
+interface KeyframeSequence extends Instance {
 	AddKeyframe(keyframe: Keyframe): void;
 	GetKeyframes(): Array<Keyframe>;
 	RemoveKeyframe(keyframe: Keyframe): void;
 }
 
-interface KeyframeSequenceProvider extends RbxInternalInstance {
+interface KeyframeSequenceProvider extends Instance {
 	RegisterActiveKeyframeSequence(keyframeSequence: KeyframeSequence): string;
 	RegisterKeyframeSequence(keyframeSequence: KeyframeSequence): string;
 	GetAnimations(userId: number): InventoryPages;
 	GetKeyframeSequenceAsync(assetId: string): KeyframeSequence;
 }
 
-interface LocalizationService extends RbxInternalInstance {
+interface LocalizationService extends Instance {
 	GetTranslatorForPlayer(player: Player): Translator;
 	GetTranslatorForLocaleAsync(locale: string): Translator;
 	GetTranslatorForPlayerAsync(player: Player): Translator;
 }
 
-interface LocalizationTable extends RbxInternalInstance {
+interface LocalizationTable extends Instance {
 	GetEntries(): Array<LocalizationEntry>;
 	GetTranslator(localeId: string): Translator;
 }
 
-interface LogService extends RbxInternalInstance {
+interface LogService extends Instance {
 	GetLogHistory(): Array<LogInfo>;
 }
 
-interface RbxInternalServiceProvider extends RbxInternalInstance {
+interface ServiceProvider extends Instance {
 	readonly ServiceAdded: RBXScriptSignal<(service: Services[keyof Services]) => void>;
 	readonly ServiceRemoving: RBXScriptSignal<(service: Services[keyof Services]) => void>;
 	FindService(className: string): Instance | undefined;
@@ -365,15 +380,15 @@ interface RbxInternalServiceProvider extends RbxInternalInstance {
 	FindService(className: string): Services[keyof Services] | undefined;
 }
 
-interface CompressorSoundEffect extends RbxInternalSoundEffect {
+interface CompressorSoundEffect extends SoundEffect {
 	SideChain?: Sound | SoundGroup;
 }
 
-interface DataModel extends RbxInternalServiceProvider {
+interface DataModel extends ServiceProvider {
 	readonly Workspace: Workspace;
 }
 
-interface MarketplaceService extends RbxInternalInstance {
+interface MarketplaceService extends Instance {
 	ProcessReceipt: (receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision;
 	readonly PromptGamePassPurchaseFinished: RBXScriptSignal<
 		(player: Player, gamePassId: number, wasPurchased: boolean) => void
@@ -399,56 +414,56 @@ interface MarketplaceService extends RbxInternalInstance {
 	GetDeveloperProductsAsync(): Pages;
 }
 
-interface RbxInternalDerivesFromModel extends RbxInternalPVInstance {
+interface Model extends PVInstance {
 	PrimaryPart?: BasePart;
 	GetBoundingBox(): LuaTuple<[CFrame, Vector3]>;
 }
 
 /** @server */
-interface OrderedDataStore extends RbxInternalGlobalDataStore {
+interface OrderedDataStore extends GlobalDataStore {
 	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
 }
 
-interface Path extends RbxInternalInstance {
+interface Path extends Instance {
 	GetWaypoints(): Array<PathWaypoint>;
 }
 
-interface PathfindingService extends RbxInternalInstance {
+interface PathfindingService extends Instance {
 	CreatePath(agentParameters?: AgentParameters): Path;
 	FindPathAsync(start: Vector3, finish: Vector3): Path;
 }
 
-interface PhysicsService extends RbxInternalInstance {
+interface PhysicsService extends Instance {
 	CollisionGroupContainsPart(name: string, part: BasePart): boolean;
 	GetCollisionGroups(): Array<CollisionGroupInfo>;
 	CollisionGroupContainsPart(name: string, part: BasePart): boolean;
 	SetPartCollisionGroup(part: BasePart, name: string): void;
 }
 
-interface VehicleSeat extends RbxInternalBasePart {
+interface VehicleSeat extends BasePart {
 	Sit(humanoid: Humanoid): void;
 }
 
-interface NetworkClient extends RbxInternalNetworkPeer {
+interface NetworkClient extends NetworkPeer {
 	readonly ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: ClientReplicator) => void>;
 }
 
-interface RbxInternalNetworkReplicator extends RbxInternalInstance {
+interface NetworkReplicator extends Instance {
 	GetPlayer(): Player;
 }
 
-interface Seat extends RbxInternalDerivesFromPart {
+interface Seat extends Part {
 	Sit(humanoid: Humanoid): void;
 }
 
-interface SkateboardPlatform extends RbxInternalDerivesFromPart {
+interface SkateboardPlatform extends Part {
 	readonly Equipped: RBXScriptSignal<(humanoid: Humanoid, skateboardController: SkateboardController) => void>;
 	readonly Unequipped: RBXScriptSignal<(humanoid: Humanoid) => void>;
 }
 
-interface RbxInternalBasePart extends RbxInternalPVInstance {}
+interface BasePart extends PVInstance {}
 
-interface Player extends RbxInternalInstance {
+interface Player extends Instance {
 	readonly Name: string;
 	readonly UserId: number;
 	ReplicationFocus: BasePart | undefined;
@@ -476,9 +491,9 @@ interface Player extends RbxInternalInstance {
  * - Players.GetHumanoidDescriptionFromOutfitId()
  * - Players.GetHumanoidDescriptionFromUserId()
  */
-interface HumanoidDescription extends RbxInternalInstance {}
+interface HumanoidDescription extends Instance {}
 
-interface Players extends RbxInternalInstance {
+interface Players extends Instance {
 	/** @rbxts client */
 	readonly LocalPlayer: Player;
 	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
@@ -505,17 +520,17 @@ interface Players extends RbxInternalInstance {
 	GetJoinData(): PlayerJoinInfo;
 }
 
-interface ScriptDebugger extends RbxInternalInstance {
+interface ScriptDebugger extends Instance {
 	GetGlobals(): Map<string, any>;
 	GetLocals(stackFrame?: number): Map<string, any>;
 	GetUpvalues(stackFrame?: number): Map<string, any>;
 }
 
-interface PointsService extends RbxInternalInstance {
+interface PointsService extends Instance {
 	AwardPoints(userId: number, amount: number): LuaTuple<[number, number, number, 0]>;
 }
 
-interface RemoteEvent extends RbxInternalInstance {
+interface RemoteEvent extends Instance {
 	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
 	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
 	FireAllClients(...arguments: Array<unknown>): void;
@@ -523,25 +538,25 @@ interface RemoteEvent extends RbxInternalInstance {
 	FireServer(...arguments: Array<unknown>): void;
 }
 
-interface RemoteFunction extends RbxInternalInstance {
+interface RemoteFunction extends Instance {
 	OnClientInvoke: (arguments: Array<any>) => void;
 	OnServerInvoke: (player: Player, arguments: Array<any>) => void;
 	InvokeClient(player: Player, ...arguments: Array<any>): unknown;
 	InvokeServer<R = unknown>(...arguments: Array<any>): R;
 }
 
-interface Pose extends RbxInternalInstance {
+interface Pose extends Instance {
 	AddSubPose(pose: Pose): void;
 	RemoveSubPose(pose: Pose): void;
 }
 
-interface SocialService extends RbxInternalInstance {
+interface SocialService extends Instance {
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
 	CanSendGameInviteAsync(targetPlayer: Player): boolean;
 	PromptGameInvite(targetPlayer: Player): void;
 }
 
-interface SoundService extends RbxInternalInstance {
+interface SoundService extends Instance {
 	GetListener():
 		| [Enum.ListenerType.Camera, undefined]
 		| [Enum.ListenerType.CFrame, CFrame]
@@ -554,7 +569,7 @@ interface SoundService extends RbxInternalInstance {
 	PlayLocalSound(sound: Sound): void;
 }
 
-interface Studio extends RbxInternalInstance {
+interface Studio extends Instance {
 	Theme?: StudioTheme;
 }
 
@@ -564,7 +579,7 @@ interface ServerScriptService {}
 /** @server */
 interface ServerStorage {}
 
-interface StarterGui extends RbxInternalBasePlayerGui {
+interface StarterGui extends BasePlayerGui {
 	GetCore(parameterName: "PointsNotificationsActive"): boolean;
 	GetCore(parameterName: "BadgesNotificationsActive"): boolean;
 	GetCore(parameterName: "ChatActive"): boolean;
@@ -608,17 +623,17 @@ interface StarterGui extends RbxInternalBasePlayerGui {
 	): void;
 }
 
-interface SurfaceGui extends RbxInternalLayerCollector {
+interface SurfaceGui extends LayerCollector {
 	Adornee: BasePart | undefined;
 }
 
-interface Team extends RbxInternalInstance {
+interface Team extends Instance {
 	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
 	readonly PlayerRemoved: RBXScriptSignal<(player: Player) => void>;
 	GetPlayers(): Array<Player>;
 }
 
-interface Teams extends RbxInternalInstance {
+interface Teams extends Instance {
 	GetTeams(): Array<Team>;
 }
 
@@ -643,11 +658,11 @@ interface TeleportService {
 	/** @rbxts client */
 	SetTeleportGui(gui: ScreenGui): void;
 	/** @rbxts client */
-	SetTeleportSetting(setting: string, value: RbxInternalTeleportData): void;
+	SetTeleportSetting(setting: string, value: TeleportData): void;
 	Teleport(
 		placeId: number,
 		player?: Player,
-		teleportData?: RbxInternalTeleportData,
+		teleportData?: TeleportData,
 		customLoadingScreen?: ScreenGui | GuiMain,
 	): void;
 
@@ -656,14 +671,14 @@ interface TeleportService {
 		reservedServerAccessCode: string,
 		players: Array<Player>,
 		spawnName?: string,
-		teleportData?: RbxInternalTeleportData,
+		teleportData?: TeleportData,
 		customLoadingScreen?: ScreenGui | GuiMain,
 	): void;
 
 	TeleportPartyAsync(
 		placeId: number,
 		players: Array<Player>,
-		teleportData?: RbxInternalTeleportData,
+		teleportData?: TeleportData,
 		customLoadingScreen?: ScreenGui | GuiMain,
 	): string;
 
@@ -672,7 +687,7 @@ interface TeleportService {
 		instanceId: string,
 		player?: Player,
 		spawnName?: string,
-		teleportData?: RbxInternalTeleportData,
+		teleportData?: TeleportData,
 		customLoadingScreen?: ScreenGui | GuiMain,
 	): void;
 
@@ -685,7 +700,7 @@ interface TeleportService {
 	): void;
 }
 
-interface Terrain extends RbxInternalBasePart {
+interface Terrain extends BasePart {
 	CopyRegion(region: Region3int16): TerrainRegion;
 	PasteRegion(region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): void;
 	ReadVoxels(
@@ -700,34 +715,34 @@ interface Terrain extends RbxInternalBasePart {
 	): void;
 }
 
-interface RbxInternalDerivesFromTool extends RbxInternalBackpackItem {
+interface Tool extends BackpackItem {
 	readonly Equipped: RBXScriptSignal<(mouse: Mouse) => void>;
 }
 
-interface UIPageLayout extends RbxInternalUIGridStyleLayout {
+interface UIPageLayout extends UIGridStyleLayout {
 	readonly PageEnter: RBXScriptSignal<(page: GuiObject) => void>;
 	readonly PageLeave: RBXScriptSignal<(page: GuiObject) => void>;
 	readonly Stopped: RBXScriptSignal<(currentPage: GuiObject) => void>;
 	JumpTo(page: GuiObject): void;
 }
 
-interface Explosion extends RbxInternalInstance {
+interface Explosion extends Instance {
 	readonly Hit: RBXScriptSignal<(part: BasePart, distance: number) => void>;
 }
 
-interface Dragger extends RbxInternalInstance {
+interface Dragger extends Instance {
 	MouseDown(mousePart: BasePart, pointOnMousePart: Vector3, parts: Array<BasePart>): void;
 }
-interface JointsService extends RbxInternalInstance {
+interface JointsService extends Instance {
 	SetJoinAfterMoveInstance(joinInstance: PVInstance): void;
 	SetJoinAfterMoveTarget(joinTarget: PVInstance): void;
 }
 
-interface RbxInternalGuiButton extends RbxInternalGuiObject {
+interface GuiButton extends GuiObject {
 	readonly Activated: RBXScriptSignal<(inputObject: InputObject) => void>;
 }
 
-interface TextBox extends RbxInternalGuiObject {
+interface TextBox extends GuiObject {
 	readonly FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: InputObject) => void>;
 }
 
@@ -794,7 +809,7 @@ interface UserInputService {
 	GetFocusedTextBox(): TextBox | undefined;
 }
 
-interface Workspace extends RbxInternalDerivesFromModel {
+interface Workspace extends Model {
 	Terrain: Terrain;
 	FindPartOnRay(
 		ray: Ray,
@@ -817,4 +832,4 @@ interface Workspace extends RbxInternalDerivesFromModel {
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 }
 
-interface DoubleConstrainedValue extends RbxInternalValueBase {}
+interface DoubleConstrainedValue extends ValueBase {}

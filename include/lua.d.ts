@@ -284,7 +284,7 @@ declare namespace math {
 	function fmod(x: number, y: number): number;
 
 	/** Returns m and e such that x = m*2^e, e is an integer and the absolute value of m is in the range [0.5, 1) (or zero when x is zero). */
-	function frexp(n: number): [number, number];
+	function frexp(n: number): LuaTuple<[number, number]>;
 
 	/** Returns m*2^e (e should be an integer). */
 	function ldexp(m: number, e: number): number;
@@ -302,7 +302,7 @@ declare namespace math {
 	function min(...n: Array<number>): number;
 
 	/** Returns two numbers, the integral part of x and the fractional part of x. */
-	function modf(n: number): [number, number];
+	function modf(n: number): LuaTuple<[number, number]>;
 
 	/** Returns x^y. (You can also use the expression x^y to compute this value.) */
 	function pow(x: number, y: number): number;

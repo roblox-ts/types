@@ -6,6 +6,9 @@
 /// <reference path="generated_classes.d.ts" />
 
 // ROBLOX API
+type StrictInstanceByName<Q extends keyof Instances> = Instances[Q]["ClassName"] extends Q
+	? Instances[Q]
+	: Instances[Q] & { ClassName: Q };
 
 type GetProperties<T> = {
 	[Key in keyof T]-?: Key extends "GetPropertyChangedSignal"
@@ -20,24 +23,18 @@ type GetProperties<T> = {
 type GetWritableProperties<T> = Extract<
 	GetProperties<T>,
 	{
-		[K in keyof T]: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends (<F>() => F extends {
-			-readonly [Q in K]: T[K]
-		}
-			? 1
-			: 2)
+		[K in keyof T]: K extends "GetPropertyChangedSignal"
+			? never
+			: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends (<F>() => F extends { -readonly [Q in K]: T[K] }
+					? 1
+					: 2)
 			? K
 			: never
 	}[keyof T]
 >;
 
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : [];
-
 type Callback = (...args: Array<any>) => void;
-
-interface Base<T extends string> {
-	readonly ClassName: T;
-}
-type BaseType<T> = T extends Base<infer U> ? U : never;
 
 declare const enum LocationType {
 	MobileWebsite = 0,
@@ -256,7 +253,7 @@ interface BundleInfo {
 	Name: string;
 }
 
-type RbxInternalTeleportData = string | number | boolean | Array<any> | Map<any, any>;
+type TeleportData = string | number | boolean | Array<any> | Map<any, any>;
 
 type PlayerJoinInfo =
 	| {
@@ -265,7 +262,7 @@ type PlayerJoinInfo =
 			/** An array containing the UserIds teleported alongside the Player. Only present if the player was teleported in using TeleportService:TeleportPartyAsync. */
 			Members: undefined;
 			/** Data passed along with the players. As this is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency). */
-			teleportData?: RbxInternalTeleportData;
+			teleportData?: TeleportData;
 	  }
 	| {
 			/** The DataModel.PlaceId of the place the Player was teleported from. Only present if the player was teleported to the current place. */
@@ -273,7 +270,7 @@ type PlayerJoinInfo =
 			/** An array containing the UserIds teleported alongside the Player. Only present if the player was teleported in using TeleportService:TeleportPartyAsync. */
 			Members: Array<number>;
 			/** Data passed along with the players. As this is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency). */
-			teleportData?: RbxInternalTeleportData;
+			teleportData?: TeleportData;
 	  };
 
 interface BoundActionInfo {
@@ -441,17 +438,17 @@ interface CharacterAppearanceInfo {
 	/** Describes the BrickColor values for each limb */
 	bodyColors: {
 		/** The BrickColor value of the leftArm */
-		leftArmColorId: keyof RbxInternalBrickColorsByNumber;
+		leftArmColorId: keyof BrickColorsByNumber;
 		/** The BrickColor value of the torso */
-		torsoColorId: keyof RbxInternalBrickColorsByNumber;
+		torsoColorId: keyof BrickColorsByNumber;
 		/** The BrickColor value of the rightArm */
-		rightArmColorId: keyof RbxInternalBrickColorsByNumber;
+		rightArmColorId: keyof BrickColorsByNumber;
 		/** The BrickColor value of the head */
-		headColorId: keyof RbxInternalBrickColorsByNumber;
+		headColorId: keyof BrickColorsByNumber;
 		/** The BrickColor value of the leftLeg */
-		leftLegColorId: keyof RbxInternalBrickColorsByNumber;
+		leftLegColorId: keyof BrickColorsByNumber;
 		/** The BrickColor value of the rightLeg */
-		rightLegColorId: keyof RbxInternalBrickColorsByNumber;
+		rightLegColorId: keyof BrickColorsByNumber;
 	};
 
 	/** The assets currently equipped by the Player (hats, body parts, etc, excluding gear) */
@@ -490,7 +487,7 @@ interface MakeSystemMessageConfig {
 	Text: string;
 	Color?: Color3;
 	Font?: Enum.Font;
-	FontSize?: Enum.FontSize;
+	TextSize?: number;
 }
 
 interface SendNotificationConfig {
@@ -556,7 +553,7 @@ interface InstanceConstructor {
 	 * As such, you should avoid using the second argument (parent) of this function.
 	 * You can read [this thread on the developer forum](https://devforum.roblox.com/t/psa-dont-use-instance-new-with-parent-argument/30296) for more information.
 	 */
-	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): CreatableInstances[T];
+	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): StrictInstanceByName<T>;
 	/**
 	 * Creates an new object of type val. The parent argument is optional;
 	 * If it is supplied, the object will be parented to that object.
@@ -572,7 +569,7 @@ interface InstanceConstructor {
 
 declare const Instance: InstanceConstructor;
 
-interface PointsService extends RbxInternalInstance {
+interface PointsService extends Instance {
 	/** This function was once part of the PointService class used to control an ancient achievement system since removed and deprecated. It should not be used in new work. */
 	AwardPoints(userId: number, amount: number): LuaTuple<[number, number, number, 0]>;
 }
@@ -600,709 +597,415 @@ interface Axes {
 	/** Whether the front face is included */
 	readonly Front: boolean;
 }
+
 type AxesConstructor = new (...axes: Array<Enum.Axis | Enum.NormalId>) => Axes;
 declare const Axes: AxesConstructor;
 
-interface RbxInternalDeclareBrickColor<
-	Number extends number = number,
-	Name extends string = string,
-	r extends number = number,
-	g extends number = number,
-	b extends number = number
-> {
+interface BrickColor<Number extends number = number, Name extends string = string> {
 	/** The unique number that identifies the BrickColor */
-	readonly Number: Number;
+	readonly Number: number extends Number ? keyof BrickColorsByNumber : Number;
 	/** The name associated with the BrickColor */
-	readonly Name: Name;
+	readonly Name: string extends Name ? BrickColorsByNumber[keyof BrickColorsByNumber] : Name;
 	/** The Color3 associated with the BrickColor */
-	readonly Color: Color3<r, g, b>;
+	readonly Color: Color3;
 	/** The red component (between 0 and 1) */
-	readonly r: r;
+	readonly r: number;
 	/** The green component (between 0 and 1) */
-	readonly g: g;
+	readonly g: number;
 	/** The blue component (between 0 and 1) */
-	readonly b: b;
+	readonly b: number;
 }
 
-interface Color3<r extends number = number, g extends number = number, b extends number = number> {
+interface Color3 {
 	/** The red component (between 0 and 1) */
-	readonly r: r;
+	readonly r: number;
 	/** The green component (between 0 and 1) */
-	readonly g: g;
+	readonly g: number;
 	/** The blue component (between 0 and 1) */
-	readonly b: b;
+	readonly b: number;
 	Lerp(goal: Color3, alpha: number): Color3;
 }
 
-interface RbxInternalBrickColorsByNumber {
-	1: RbxInternalDeclareBrickColor<1, "White", 0.9490196704864502, 0.9529412388801575, 0.9529412388801575>;
-	2: RbxInternalDeclareBrickColor<2, "Grey", 0.6313725709915161, 0.6470588445663452, 0.6352941393852234>;
-	3: RbxInternalDeclareBrickColor<3, "Light yellow", 0.9764706492424011, 0.9137255549430847, 0.6000000238418579>;
-	5: RbxInternalDeclareBrickColor<5, "Brick yellow", 0.8431373238563538, 0.7725490927696228, 0.6039215922355652>;
-	6: RbxInternalDeclareBrickColor<6, "Light green (Mint)", 0.760784387588501, 0.8549020290374756, 0.7215686440467834>;
-	9: RbxInternalDeclareBrickColor<
-		9,
-		"Light reddish violet",
-		0.9098039865493774,
-		0.729411780834198,
-		0.7843137979507446
-	>;
-	11: RbxInternalDeclareBrickColor<11, "Pastel Blue", 0.501960813999176, 0.7333333492279053, 0.8588235974311829>;
-	12: RbxInternalDeclareBrickColor<
-		12,
-		"Light orange brown",
-		0.7960785031318665,
-		0.5176470875740051,
-		0.25882354378700256
-	>;
-	18: RbxInternalDeclareBrickColor<18, "Nougat", 0.8000000715255737, 0.5568627715110779, 0.4117647409439087>;
-	21: RbxInternalDeclareBrickColor<21, "Bright red", 0.7686275243759155, 0.1568627506494522, 0.1098039299249649>;
-	22: RbxInternalDeclareBrickColor<
-		22,
-		"Med. reddish violet",
-		0.7686275243759155,
-		0.4392157196998596,
-		0.6274510025978088
-	>;
-	23: RbxInternalDeclareBrickColor<23, "Bright blue", 0.05098039656877518, 0.4117647409439087, 0.6745098233222961>;
-	24: RbxInternalDeclareBrickColor<24, "Bright yellow", 0.960784375667572, 0.803921639919281, 0.1882353127002716>;
-	25: RbxInternalDeclareBrickColor<25, "Earth orange", 0.38431376218795776, 0.27843138575553894, 0.19607844948768616>;
-	26: RbxInternalDeclareBrickColor<26, "Black", 0.10588236153125763, 0.16470588743686676, 0.20784315466880798>;
-	27: RbxInternalDeclareBrickColor<27, "Dark grey", 0.4274510145187378, 0.43137258291244507, 0.4235294461250305>;
-	28: RbxInternalDeclareBrickColor<28, "Dark green", 0.1568627506494522, 0.49803924560546875, 0.27843138575553894>;
-	29: RbxInternalDeclareBrickColor<29, "Medium green", 0.6313725709915161, 0.7686275243759155, 0.5490196347236633>;
-	36: RbxInternalDeclareBrickColor<
-		36,
-		"Lig. Yellowich orange",
-		0.9529412388801575,
-		0.8117647767066956,
-		0.6078431606292725
-	>;
-	37: RbxInternalDeclareBrickColor<37, "Bright green", 0.29411765933036804, 0.5921568870544434, 0.29411765933036804>;
-	38: RbxInternalDeclareBrickColor<38, "Dark orange", 0.6274510025978088, 0.37254902720451355, 0.20784315466880798>;
-	39: RbxInternalDeclareBrickColor<
-		39,
-		"Light bluish violet",
-		0.7568628191947937,
-		0.7921569347381592,
-		0.8705883026123047
-	>;
-	40: RbxInternalDeclareBrickColor<40, "Transparent", 0.9254902601242065, 0.9254902601242065, 0.9254902601242065>;
-	41: RbxInternalDeclareBrickColor<41, "Tr. Red", 0.803921639919281, 0.3294117748737335, 0.29411765933036804>;
-	42: RbxInternalDeclareBrickColor<42, "Tr. Lg blue", 0.7568628191947937, 0.874509871006012, 0.9411765336990356>;
-	43: RbxInternalDeclareBrickColor<43, "Tr. Blue", 0.48235297203063965, 0.7137255072593689, 0.9098039865493774>;
-	44: RbxInternalDeclareBrickColor<44, "Tr. Yellow", 0.9686275124549866, 0.9450981020927429, 0.5529412031173706>;
-	45: RbxInternalDeclareBrickColor<45, "Light blue", 0.7058823704719543, 0.8235294818878174, 0.8941177129745483>;
-	47: RbxInternalDeclareBrickColor<
-		47,
-		"Tr. Flu. Reddish orange",
-		0.8509804606437683,
-		0.5215686559677124,
-		0.4235294461250305
-	>;
-	48: RbxInternalDeclareBrickColor<48, "Tr. Green", 0.5176470875740051, 0.7137255072593689, 0.5529412031173706>;
-	49: RbxInternalDeclareBrickColor<49, "Tr. Flu. Green", 0.9725490808486938, 0.9450981020927429, 0.5176470875740051>;
-	50: RbxInternalDeclareBrickColor<50, "Phosph. White", 0.9254902601242065, 0.9098039865493774, 0.8705883026123047>;
-	100: RbxInternalDeclareBrickColor<100, "Light red", 0.9333333969116211, 0.7686275243759155, 0.7137255072593689>;
-	101: RbxInternalDeclareBrickColor<101, "Medium red", 0.8549020290374756, 0.5254902243614197, 0.4784314036369324>;
-	102: RbxInternalDeclareBrickColor<102, "Medium blue", 0.43137258291244507, 0.6000000238418579, 0.7921569347381592>;
-	103: RbxInternalDeclareBrickColor<103, "Light grey", 0.7803922295570374, 0.7568628191947937, 0.7176470756530762>;
-	104: RbxInternalDeclareBrickColor<
-		104,
-		"Bright violet",
-		0.41960787773132324,
-		0.19607844948768616,
-		0.4862745404243469
-	>;
-	105: RbxInternalDeclareBrickColor<
-		105,
-		"Br. yellowish orange",
-		0.8862745761871338,
-		0.6078431606292725,
-		0.250980406999588
-	>;
-	106: RbxInternalDeclareBrickColor<106, "Bright orange", 0.8549020290374756, 0.5215686559677124, 0.2549019753932953>;
-	107: RbxInternalDeclareBrickColor<107, "Bright bluish green", 0, 0.5607843399047852, 0.6117647290229797>;
-	108: RbxInternalDeclareBrickColor<108, "Earth yellow", 0.4078431725502014, 0.3607843220233917, 0.26274511218070984>;
-	110: RbxInternalDeclareBrickColor<
-		110,
-		"Bright bluish violet",
-		0.26274511218070984,
-		0.3294117748737335,
-		0.5764706134796143
-	>;
-	111: RbxInternalDeclareBrickColor<111, "Tr. Brown", 0.7490196228027344, 0.7176470756530762, 0.6941176652908325>;
-	112: RbxInternalDeclareBrickColor<
-		112,
-		"Medium bluish violet",
-		0.4078431725502014,
-		0.4549019932746887,
-		0.6745098233222961
-	>;
-	113: RbxInternalDeclareBrickColor<
-		113,
-		"Tr. Medi. reddish violet",
-		0.8980392813682556,
-		0.6784313917160034,
-		0.7843137979507446
-	>;
-	115: RbxInternalDeclareBrickColor<
-		115,
-		"Med. yellowish green",
-		0.7803922295570374,
-		0.8235294818878174,
-		0.2352941334247589
-	>;
-	116: RbxInternalDeclareBrickColor<
-		116,
-		"Med. bluish green",
-		0.3333333432674408,
-		0.6470588445663452,
-		0.686274528503418
-	>;
-	118: RbxInternalDeclareBrickColor<
-		118,
-		"Light bluish green",
-		0.7176470756530762,
-		0.8431373238563538,
-		0.8352941870689392
-	>;
-	119: RbxInternalDeclareBrickColor<
-		119,
-		"Br. yellowish green",
-		0.6431372761726379,
-		0.7411764860153198,
-		0.27843138575553894
-	>;
-	120: RbxInternalDeclareBrickColor<
-		120,
-		"Lig. yellowish green",
-		0.8509804606437683,
-		0.8941177129745483,
-		0.6549019813537598
-	>;
-	121: RbxInternalDeclareBrickColor<
-		121,
-		"Med. yellowish orange",
-		0.9058824181556702,
-		0.6745098233222961,
-		0.3450980484485626
-	>;
-	123: RbxInternalDeclareBrickColor<
-		123,
-		"Br. reddish orange",
-		0.8274510502815247,
-		0.43529415130615234,
-		0.2980392277240753
-	>;
-	124: RbxInternalDeclareBrickColor<
-		124,
-		"Bright reddish violet",
-		0.572549045085907,
-		0.22352942824363708,
-		0.4705882668495178
-	>;
-	125: RbxInternalDeclareBrickColor<125, "Light orange", 0.917647123336792, 0.7215686440467834, 0.572549045085907>;
-	126: RbxInternalDeclareBrickColor<
-		126,
-		"Tr. Bright bluish violet",
-		0.6470588445663452,
-		0.6470588445663452,
-		0.7960785031318665
-	>;
-	127: RbxInternalDeclareBrickColor<127, "Gold", 0.8627451658248901, 0.7372549176216125, 0.5058823823928833>;
-	128: RbxInternalDeclareBrickColor<128, "Dark nougat", 0.6823529601097107, 0.4784314036369324, 0.3490196168422699>;
-	131: RbxInternalDeclareBrickColor<131, "Silver", 0.6117647290229797, 0.6392157077789307, 0.658823549747467>;
-	133: RbxInternalDeclareBrickColor<133, "Neon orange", 0.8352941870689392, 0.45098042488098145, 0.2392157018184662>;
-	134: RbxInternalDeclareBrickColor<134, "Neon green", 0.847058892250061, 0.8666667342185974, 0.33725491166114807>;
-	135: RbxInternalDeclareBrickColor<135, "Sand blue", 0.4549019932746887, 0.5254902243614197, 0.615686297416687>;
-	136: RbxInternalDeclareBrickColor<136, "Sand violet", 0.529411792755127, 0.4862745404243469, 0.5647059082984924>;
-	137: RbxInternalDeclareBrickColor<137, "Medium orange", 0.8784314393997192, 0.5960784554481506, 0.3921568989753723>;
-	138: RbxInternalDeclareBrickColor<138, "Sand yellow", 0.5843137502670288, 0.5411764979362488, 0.45098042488098145>;
-	140: RbxInternalDeclareBrickColor<140, "Earth blue", 0.125490203499794, 0.22745099663734436, 0.33725491166114807>;
-	141: RbxInternalDeclareBrickColor<141, "Earth green", 0.15294118225574493, 0.27450981736183167, 0.1764705926179886>;
-	143: RbxInternalDeclareBrickColor<143, "Tr. Flu. Blue", 0.8117647767066956, 0.8862745761871338, 0.9686275124549866>;
-	145: RbxInternalDeclareBrickColor<
-		145,
-		"Sand blue metallic",
-		0.4745098352432251,
-		0.5333333611488342,
-		0.6313725709915161
-	>;
-	146: RbxInternalDeclareBrickColor<
-		146,
-		"Sand violet metallic",
-		0.5843137502670288,
-		0.5568627715110779,
-		0.6392157077789307
-	>;
-	147: RbxInternalDeclareBrickColor<
-		147,
-		"Sand yellow metallic",
-		0.5764706134796143,
-		0.529411792755127,
-		0.40392160415649414
-	>;
-	148: RbxInternalDeclareBrickColor<
-		148,
-		"Dark grey metallic",
-		0.34117648005485535,
-		0.3450980484485626,
-		0.34117648005485535
-	>;
-	149: RbxInternalDeclareBrickColor<
-		149,
-		"Black metallic",
-		0.08627451211214066,
-		0.11372549831867218,
-		0.19607844948768616
-	>;
-	150: RbxInternalDeclareBrickColor<
-		150,
-		"Light grey metallic",
-		0.6705882549285889,
-		0.6784313917160034,
-		0.6745098233222961
-	>;
-	151: RbxInternalDeclareBrickColor<151, "Sand green", 0.4705882668495178, 0.5647059082984924, 0.5098039507865906>;
-	153: RbxInternalDeclareBrickColor<153, "Sand red", 0.5843137502670288, 0.4745098352432251, 0.46666669845581055>;
-	154: RbxInternalDeclareBrickColor<154, "Dark red", 0.48235297203063965, 0.18039216101169586, 0.18431372940540314>;
-	157: RbxInternalDeclareBrickColor<157, "Tr. Flu. Yellow", 1, 0.9647059440612793, 0.48235297203063965>;
-	158: RbxInternalDeclareBrickColor<158, "Tr. Flu. Red", 0.8823530077934265, 0.6431372761726379, 0.760784387588501>;
-	168: RbxInternalDeclareBrickColor<168, "Gun metallic", 0.458823561668396, 0.4235294461250305, 0.38431376218795776>;
-	176: RbxInternalDeclareBrickColor<
-		176,
-		"Red flip/flop",
-		0.5921568870544434,
-		0.4117647409439087,
-		0.35686275362968445
-	>;
-	178: RbxInternalDeclareBrickColor<
-		178,
-		"Yellow flip/flop",
-		0.7058823704719543,
-		0.5176470875740051,
-		0.3333333432674408
-	>;
-	179: RbxInternalDeclareBrickColor<
-		179,
-		"Silver flip/flop",
-		0.5372549295425415,
-		0.529411792755127,
-		0.5333333611488342
-	>;
-	180: RbxInternalDeclareBrickColor<180, "Curry", 0.8431373238563538, 0.6627451181411743, 0.29411765933036804>;
-	190: RbxInternalDeclareBrickColor<190, "Fire Yellow", 0.9764706492424011, 0.8392157554626465, 0.18039216101169586>;
-	191: RbxInternalDeclareBrickColor<
-		191,
-		"Flame yellowish orange",
-		0.9098039865493774,
-		0.6705882549285889,
-		0.1764705926179886
-	>;
-	192: RbxInternalDeclareBrickColor<192, "Reddish brown", 0.4117647409439087, 0.250980406999588, 0.1568627506494522>;
-	193: RbxInternalDeclareBrickColor<
-		193,
-		"Flame reddish orange",
-		0.8117647767066956,
-		0.3764706254005432,
-		0.1411764770746231
-	>;
-	194: RbxInternalDeclareBrickColor<
-		194,
-		"Medium stone grey",
-		0.6392157077789307,
-		0.6352941393852234,
-		0.6470588445663452
-	>;
-	195: RbxInternalDeclareBrickColor<195, "Royal blue", 0.27450981736183167, 0.40392160415649414, 0.6431372761726379>;
-	196: RbxInternalDeclareBrickColor<
-		196,
-		"Dark Royal blue",
-		0.13725490868091583,
-		0.27843138575553894,
-		0.545098066329956
-	>;
-	198: RbxInternalDeclareBrickColor<
-		198,
-		"Bright reddish lilac",
-		0.5568627715110779,
-		0.25882354378700256,
-		0.5215686559677124
-	>;
-	199: RbxInternalDeclareBrickColor<
-		199,
-		"Dark stone grey",
-		0.38823533058166504,
-		0.37254902720451355,
-		0.38431376218795776
-	>;
-	200: RbxInternalDeclareBrickColor<200, "Lemon metalic", 0.5098039507865906, 0.5411764979362488, 0.364705890417099>;
-	208: RbxInternalDeclareBrickColor<
-		208,
-		"Light stone grey",
-		0.8980392813682556,
-		0.8941177129745483,
-		0.874509871006012
-	>;
-	209: RbxInternalDeclareBrickColor<209, "Dark Curry", 0.6901960968971252, 0.5568627715110779, 0.2666666805744171>;
-	210: RbxInternalDeclareBrickColor<210, "Faded green", 0.4392157196998596, 0.5843137502670288, 0.4705882668495178>;
-	211: RbxInternalDeclareBrickColor<211, "Turquoise", 0.4745098352432251, 0.7098039388656616, 0.7098039388656616>;
-	212: RbxInternalDeclareBrickColor<
-		212,
-		"Light Royal blue",
-		0.6235294342041016,
-		0.7647059559822083,
-		0.9137255549430847
-	>;
-	213: RbxInternalDeclareBrickColor<
-		213,
-		"Medium Royal blue",
-		0.4235294461250305,
-		0.5058823823928833,
-		0.7176470756530762
-	>;
-	216: RbxInternalDeclareBrickColor<216, "Rust", 0.5647059082984924, 0.2980392277240753, 0.16470588743686676>;
-	217: RbxInternalDeclareBrickColor<217, "Brown", 0.4862745404243469, 0.3607843220233917, 0.27450981736183167>;
-	218: RbxInternalDeclareBrickColor<218, "Reddish lilac", 0.5882353186607361, 0.4392157196998596, 0.6235294342041016>;
-	219: RbxInternalDeclareBrickColor<219, "Lilac", 0.41960787773132324, 0.38431376218795776, 0.6078431606292725>;
-	220: RbxInternalDeclareBrickColor<220, "Light lilac", 0.6549019813537598, 0.6627451181411743, 0.8078432083129883>;
-	221: RbxInternalDeclareBrickColor<221, "Bright purple", 0.803921639919281, 0.38431376218795776, 0.5960784554481506>;
-	222: RbxInternalDeclareBrickColor<222, "Light purple", 0.8941177129745483, 0.6784313917160034, 0.7843137979507446>;
-	223: RbxInternalDeclareBrickColor<223, "Light pink", 0.8627451658248901, 0.5647059082984924, 0.5843137502670288>;
-	224: RbxInternalDeclareBrickColor<
-		224,
-		"Light brick yellow",
-		0.9411765336990356,
-		0.8352941870689392,
-		0.6274510025978088
-	>;
-	225: RbxInternalDeclareBrickColor<
-		225,
-		"Warm yellowish orange",
-		0.9215686917304993,
-		0.7215686440467834,
-		0.49803924560546875
-	>;
-	226: RbxInternalDeclareBrickColor<226, "Cool yellow", 0.9921569228172302, 0.917647123336792, 0.5529412031173706>;
-	232: RbxInternalDeclareBrickColor<232, "Dove blue", 0.4901961088180542, 0.7333333492279053, 0.8666667342185974>;
-	268: RbxInternalDeclareBrickColor<268, "Medium lilac", 0.2039215862751007, 0.16862745583057404, 0.458823561668396>;
-	301: RbxInternalDeclareBrickColor<301, "Slime green", 0.3137255012989044, 0.4274510145187378, 0.3294117748737335>;
-	302: RbxInternalDeclareBrickColor<302, "Smoky grey", 0.35686275362968445, 0.364705890417099, 0.4117647409439087>;
-	303: RbxInternalDeclareBrickColor<303, "Dark blue", 0, 0.062745101749897, 0.6901960968971252>;
-	304: RbxInternalDeclareBrickColor<
-		304,
-		"Parsley green",
-		0.1725490242242813,
-		0.3960784673690796,
-		0.11372549831867218
-	>;
-	305: RbxInternalDeclareBrickColor<305, "Steel blue", 0.32156863808631897, 0.4862745404243469, 0.6823529601097107>;
-	306: RbxInternalDeclareBrickColor<306, "Storm blue", 0.20000001788139343, 0.3450980484485626, 0.5098039507865906>;
-	307: RbxInternalDeclareBrickColor<307, "Lapis", 0.062745101749897, 0.16470588743686676, 0.8627451658248901>;
-	308: RbxInternalDeclareBrickColor<308, "Dark indigo", 0.2392157018184662, 0.08235294371843338, 0.5215686559677124>;
-	309: RbxInternalDeclareBrickColor<309, "Sea green", 0.2039215862751007, 0.5568627715110779, 0.250980406999588>;
-	310: RbxInternalDeclareBrickColor<310, "Shamrock", 0.35686275362968445, 0.6039215922355652, 0.2980392277240753>;
-	311: RbxInternalDeclareBrickColor<311, "Fossil", 0.6235294342041016, 0.6313725709915161, 0.6745098233222961>;
-	312: RbxInternalDeclareBrickColor<312, "Mulberry", 0.3490196168422699, 0.13333334028720856, 0.3490196168422699>;
-	313: RbxInternalDeclareBrickColor<313, "Forest green", 0.12156863510608673, 0.501960813999176, 0.11372549831867218>;
-	314: RbxInternalDeclareBrickColor<314, "Cadet blue", 0.6235294342041016, 0.6784313917160034, 0.7529412508010864>;
-	315: RbxInternalDeclareBrickColor<
-		315,
-		"Electric blue",
-		0.03529411926865578,
-		0.5372549295425415,
-		0.8117647767066956
-	>;
-	316: RbxInternalDeclareBrickColor<316, "Eggplant", 0.48235297203063965, 0, 0.48235297203063965>;
-	317: RbxInternalDeclareBrickColor<317, "Moss", 0.4862745404243469, 0.6117647290229797, 0.41960787773132324>;
-	318: RbxInternalDeclareBrickColor<318, "Artichoke", 0.5411764979362488, 0.6705882549285889, 0.5215686559677124>;
-	319: RbxInternalDeclareBrickColor<319, "Sage green", 0.7254902124404907, 0.7686275243759155, 0.6941176652908325>;
-	320: RbxInternalDeclareBrickColor<320, "Ghost grey", 0.7921569347381592, 0.7960785031318665, 0.8196079134941101>;
-	321: RbxInternalDeclareBrickColor<321, "Lilac", 0.6549019813537598, 0.3686274588108063, 0.6078431606292725>;
-	322: RbxInternalDeclareBrickColor<322, "Plum", 0.48235297203063965, 0.18431372940540314, 0.48235297203063965>;
-	323: RbxInternalDeclareBrickColor<323, "Olivine", 0.5803921818733215, 0.7450980544090271, 0.5058823823928833>;
-	324: RbxInternalDeclareBrickColor<324, "Laurel green", 0.658823549747467, 0.7411764860153198, 0.6000000238418579>;
-	325: RbxInternalDeclareBrickColor<325, "Quill grey", 0.874509871006012, 0.874509871006012, 0.8705883026123047>;
-	327: RbxInternalDeclareBrickColor<327, "Crimson", 0.5921568870544434, 0, 0>;
-	328: RbxInternalDeclareBrickColor<328, "Mint", 0.6941176652908325, 0.8980392813682556, 0.6509804129600525>;
-	329: RbxInternalDeclareBrickColor<329, "Baby blue", 0.5960784554481506, 0.760784387588501, 0.8588235974311829>;
-	330: RbxInternalDeclareBrickColor<330, "Carnation pink", 1, 0.5960784554481506, 0.8627451658248901>;
-	331: RbxInternalDeclareBrickColor<331, "Persimmon", 1, 0.3490196168422699, 0.3490196168422699>;
-	332: RbxInternalDeclareBrickColor<332, "Maroon", 0.458823561668396, 0, 0>;
-	333: RbxInternalDeclareBrickColor<333, "Gold", 0.9372549653053284, 0.7215686440467834, 0.2196078598499298>;
-	334: RbxInternalDeclareBrickColor<334, "Daisy orange", 0.9725490808486938, 0.8509804606437683, 0.4274510145187378>;
-	335: RbxInternalDeclareBrickColor<335, "Pearl", 0.9058824181556702, 0.9058824181556702, 0.9254902601242065>;
-	336: RbxInternalDeclareBrickColor<336, "Fog", 0.7803922295570374, 0.8313726186752319, 0.8941177129745483>;
-	337: RbxInternalDeclareBrickColor<337, "Salmon", 1, 0.5803921818733215, 0.5803921818733215>;
-	338: RbxInternalDeclareBrickColor<338, "Terra Cotta", 0.7450980544090271, 0.4078431725502014, 0.38431376218795776>;
-	339: RbxInternalDeclareBrickColor<339, "Cocoa", 0.33725491166114807, 0.1411764770746231, 0.1411764770746231>;
-	340: RbxInternalDeclareBrickColor<340, "Wheat", 0.9450981020927429, 0.9058824181556702, 0.7803922295570374>;
-	341: RbxInternalDeclareBrickColor<341, "Buttermilk", 0.9960784912109375, 0.9529412388801575, 0.7333333492279053>;
-	342: RbxInternalDeclareBrickColor<342, "Mauve", 0.8784314393997192, 0.6980392336845398, 0.8156863451004028>;
-	343: RbxInternalDeclareBrickColor<343, "Sunrise", 0.8313726186752319, 0.5647059082984924, 0.7411764860153198>;
-	344: RbxInternalDeclareBrickColor<344, "Tawny", 0.5882353186607361, 0.3333333432674408, 0.3333333432674408>;
-	345: RbxInternalDeclareBrickColor<345, "Rust", 0.5607843399047852, 0.2980392277240753, 0.16470588743686676>;
-	346: RbxInternalDeclareBrickColor<346, "Cashmere", 0.8274510502815247, 0.7450980544090271, 0.5882353186607361>;
-	347: RbxInternalDeclareBrickColor<347, "Khaki", 0.8862745761871338, 0.8627451658248901, 0.7372549176216125>;
-	348: RbxInternalDeclareBrickColor<348, "Lily white", 0.9294118285179138, 0.917647123336792, 0.917647123336792>;
-	349: RbxInternalDeclareBrickColor<349, "Seashell", 0.9137255549430847, 0.8549020290374756, 0.8549020290374756>;
-	350: RbxInternalDeclareBrickColor<350, "Burgundy", 0.5333333611488342, 0.24313727021217346, 0.24313727021217346>;
-	351: RbxInternalDeclareBrickColor<351, "Cork", 0.7372549176216125, 0.6078431606292725, 0.364705890417099>;
-	352: RbxInternalDeclareBrickColor<352, "Burlap", 0.7803922295570374, 0.6745098233222961, 0.4705882668495178>;
-	353: RbxInternalDeclareBrickColor<353, "Beige", 0.7921569347381592, 0.7490196228027344, 0.6392157077789307>;
-	354: RbxInternalDeclareBrickColor<354, "Oyster", 0.7333333492279053, 0.7019608020782471, 0.6980392336845398>;
-	355: RbxInternalDeclareBrickColor<355, "Pine Cone", 0.4235294461250305, 0.3450980484485626, 0.29411765933036804>;
-	356: RbxInternalDeclareBrickColor<356, "Fawn brown", 0.6274510025978088, 0.5176470875740051, 0.30980393290519714>;
-	357: RbxInternalDeclareBrickColor<
-		357,
-		"Hurricane grey",
-		0.5843137502670288,
-		0.5372549295425415,
-		0.5333333611488342
-	>;
-	358: RbxInternalDeclareBrickColor<358, "Cloudy grey", 0.6705882549285889, 0.658823549747467, 0.6196078658103943>;
-	359: RbxInternalDeclareBrickColor<359, "Linen", 0.686274528503418, 0.5803921818733215, 0.5137255191802979>;
-	360: RbxInternalDeclareBrickColor<360, "Copper", 0.5882353186607361, 0.40392160415649414, 0.40000003576278687>;
-	361: RbxInternalDeclareBrickColor<361, "Dirt brown", 0.33725491166114807, 0.25882354378700256, 0.21176472306251526>;
-	362: RbxInternalDeclareBrickColor<362, "Bronze", 0.4941176772117615, 0.4078431725502014, 0.24705883860588074>;
-	363: RbxInternalDeclareBrickColor<363, "Flint", 0.4117647409439087, 0.40000003576278687, 0.3607843220233917>;
-	364: RbxInternalDeclareBrickColor<364, "Dark taupe", 0.3529411852359772, 0.2980392277240753, 0.25882354378700256>;
-	365: RbxInternalDeclareBrickColor<
-		365,
-		"Burnt Sienna",
-		0.41568630933761597,
-		0.22352942824363708,
-		0.03529411926865578
-	>;
-	1001: RbxInternalDeclareBrickColor<
-		1001,
-		"Institutional white",
-		0.9725490808486938,
-		0.9725490808486938,
-		0.9725490808486938
-	>;
-	1002: RbxInternalDeclareBrickColor<1002, "Mid gray", 0.803921639919281, 0.803921639919281, 0.803921639919281>;
-	1003: RbxInternalDeclareBrickColor<
-		1003,
-		"Really black",
-		0.06666667014360428,
-		0.06666667014360428,
-		0.06666667014360428
-	>;
-	1004: RbxInternalDeclareBrickColor<1004, "Really red", 1, 0, 0>;
-	1005: RbxInternalDeclareBrickColor<1005, "Deep orange", 1, 0.6901960968971252, 0>;
-	1006: RbxInternalDeclareBrickColor<1006, "Alder", 0.7058823704719543, 0.501960813999176, 1>;
-	1007: RbxInternalDeclareBrickColor<
-		1007,
-		"Dusty Rose",
-		0.6392157077789307,
-		0.29411765933036804,
-		0.29411765933036804
-	>;
-	1008: RbxInternalDeclareBrickColor<1008, "Olive", 0.7568628191947937, 0.7450980544090271, 0.25882354378700256>;
-	1009: RbxInternalDeclareBrickColor<1009, "New Yeller", 1, 1, 0>;
-	1010: RbxInternalDeclareBrickColor<1010, "Really blue", 0, 0, 1>;
-	1011: RbxInternalDeclareBrickColor<1011, "Navy blue", 0, 0.125490203499794, 0.3764706254005432>;
-	1012: RbxInternalDeclareBrickColor<1012, "Deep blue", 0.12941177189350128, 0.3294117748737335, 0.7254902124404907>;
-	1013: RbxInternalDeclareBrickColor<1013, "Cyan", 0.01568627543747425, 0.686274528503418, 0.9254902601242065>;
-	1014: RbxInternalDeclareBrickColor<1014, "CGA brown", 0.6666666865348816, 0.3333333432674408, 0>;
-	1015: RbxInternalDeclareBrickColor<1015, "Magenta", 0.6666666865348816, 0, 0.6666666865348816>;
-	1016: RbxInternalDeclareBrickColor<1016, "Pink", 1, 0.40000003576278687, 0.8000000715255737>;
-	1017: RbxInternalDeclareBrickColor<1017, "Deep orange", 1, 0.686274528503418, 0>;
-	1018: RbxInternalDeclareBrickColor<1018, "Teal", 0.07058823853731155, 0.9333333969116211, 0.8313726186752319>;
-	1019: RbxInternalDeclareBrickColor<1019, "Toothpaste", 0, 1, 1>;
-	1020: RbxInternalDeclareBrickColor<1020, "Lime green", 0, 1, 0>;
-	1021: RbxInternalDeclareBrickColor<1021, "Camo", 0.22745099663734436, 0.4901961088180542, 0.08235294371843338>;
-	1022: RbxInternalDeclareBrickColor<1022, "Grime", 0.49803924560546875, 0.5568627715110779, 0.3921568989753723>;
-	1023: RbxInternalDeclareBrickColor<1023, "Lavender", 0.5490196347236633, 0.35686275362968445, 0.6235294342041016>;
-	1024: RbxInternalDeclareBrickColor<1024, "Pastel light blue", 0.686274528503418, 0.8666667342185974, 1>;
-	1025: RbxInternalDeclareBrickColor<1025, "Pastel orange", 1, 0.7882353663444519, 0.7882353663444519>;
-	1026: RbxInternalDeclareBrickColor<1026, "Pastel violet", 0.6941176652908325, 0.6549019813537598, 1>;
-	1027: RbxInternalDeclareBrickColor<
-		1027,
-		"Pastel blue-green",
-		0.6235294342041016,
-		0.9529412388801575,
-		0.9137255549430847
-	>;
-	1028: RbxInternalDeclareBrickColor<1028, "Pastel green", 0.8000000715255737, 1, 0.8000000715255737>;
-	1029: RbxInternalDeclareBrickColor<1029, "Pastel yellow", 1, 1, 0.8000000715255737>;
-	1030: RbxInternalDeclareBrickColor<1030, "Pastel brown", 1, 0.8000000715255737, 0.6000000238418579>;
-	1031: RbxInternalDeclareBrickColor<
-		1031,
-		"Royal purple",
-		0.38431376218795776,
-		0.14509804546833038,
-		0.8196079134941101
-	>;
-	1032: RbxInternalDeclareBrickColor<1032, "Hot pink", 1, 0, 0.7490196228027344>;
+interface BrickColorsByNumber {
+	1: "White";
+	2: "Grey";
+	3: "Light yellow";
+	5: "Brick yellow";
+	6: "Light green (Mint)";
+	9: "Light reddish violet";
+	11: "Pastel Blue";
+	12: "Light orange brown";
+	18: "Nougat";
+	21: "Bright red";
+	22: "Med. reddish violet";
+	23: "Bright blue";
+	24: "Bright yellow";
+	25: "Earth orange";
+	26: "Black";
+	27: "Dark grey";
+	28: "Dark green";
+	29: "Medium green";
+	36: "Lig. Yellowich orange";
+	37: "Bright green";
+	38: "Dark orange";
+	39: "Light bluish violet";
+	40: "Transparent";
+	41: "Tr. Red";
+	42: "Tr. Lg blue";
+	43: "Tr. Blue";
+	44: "Tr. Yellow";
+	45: "Light blue";
+	47: "Tr. Flu. Reddish orange";
+	48: "Tr. Green";
+	49: "Tr. Flu. Green";
+	50: "Phosph. White";
+	100: "Light red";
+	101: "Medium red";
+	102: "Medium blue";
+	103: "Light grey";
+	104: "Bright violet";
+	105: "Br. yellowish orange";
+	106: "Bright orange";
+	107: "Bright bluish green";
+	108: "Earth yellow";
+	110: "Bright bluish violet";
+	111: "Tr. Brown";
+	112: "Medium bluish violet";
+	113: "Tr. Medi. reddish violet";
+	115: "Med. yellowish green";
+	116: "Med. bluish green";
+	118: "Light bluish green";
+	119: "Br. yellowish green";
+	120: "Lig. yellowish green";
+	121: "Med. yellowish orange";
+	123: "Br. reddish orange";
+	124: "Bright reddish violet";
+	125: "Light orange";
+	126: "Tr. Bright bluish violet";
+	127: "Gold";
+	128: "Dark nougat";
+	131: "Silver";
+	133: "Neon orange";
+	134: "Neon green";
+	135: "Sand blue";
+	136: "Sand violet";
+	137: "Medium orange";
+	138: "Sand yellow";
+	140: "Earth blue";
+	141: "Earth green";
+	143: "Tr. Flu. Blue";
+	145: "Sand blue metallic";
+	146: "Sand violet metallic";
+	147: "Sand yellow metallic";
+	148: "Dark grey metallic";
+	149: "Black metallic";
+	150: "Light grey metallic";
+	151: "Sand green";
+	153: "Sand red";
+	154: "Dark red";
+	157: "Tr. Flu. Yellow";
+	158: "Tr. Flu. Red";
+	168: "Gun metallic";
+	176: "Red flip/flop";
+	178: "Yellow flip/flop";
+	179: "Silver flip/flop";
+	180: "Curry";
+	190: "Fire Yellow";
+	191: "Flame yellowish orange";
+	192: "Reddish brown";
+	193: "Flame reddish orange";
+	194: "Medium stone grey";
+	195: "Royal blue";
+	196: "Dark Royal blue";
+	198: "Bright reddish lilac";
+	199: "Dark stone grey";
+	200: "Lemon metalic";
+	208: "Light stone grey";
+	209: "Dark Curry";
+	210: "Faded green";
+	211: "Turquoise";
+	212: "Light Royal blue";
+	213: "Medium Royal blue";
+	216: "Rust";
+	217: "Brown";
+	218: "Reddish lilac";
+	219: "Lilac";
+	220: "Light lilac";
+	221: "Bright purple";
+	222: "Light purple";
+	223: "Light pink";
+	224: "Light brick yellow";
+	225: "Warm yellowish orange";
+	226: "Cool yellow";
+	232: "Dove blue";
+	268: "Medium lilac";
+	301: "Slime green";
+	302: "Smoky grey";
+	303: "Dark blue";
+	304: "Parsley green";
+	305: "Steel blue";
+	306: "Storm blue";
+	307: "Lapis";
+	308: "Dark indigo";
+	309: "Sea green";
+	310: "Shamrock";
+	311: "Fossil";
+	312: "Mulberry";
+	313: "Forest green";
+	314: "Cadet blue";
+	315: "Electric blue";
+	316: "Eggplant";
+	317: "Moss";
+	318: "Artichoke";
+	319: "Sage green";
+	320: "Ghost grey";
+	321: "Lilac";
+	322: "Plum";
+	323: "Olivine";
+	324: "Laurel green";
+	325: "Quill grey";
+	327: "Crimson";
+	328: "Mint";
+	329: "Baby blue";
+	330: "Carnation pink";
+	331: "Persimmon";
+	332: "Maroon";
+	333: "Gold";
+	334: "Daisy orange";
+	335: "Pearl";
+	336: "Fog";
+	337: "Salmon";
+	338: "Terra Cotta";
+	339: "Cocoa";
+	340: "Wheat";
+	341: "Buttermilk";
+	342: "Mauve";
+	343: "Sunrise";
+	344: "Tawny";
+	345: "Rust";
+	346: "Cashmere";
+	347: "Khaki";
+	348: "Lily white";
+	349: "Seashell";
+	350: "Burgundy";
+	351: "Cork";
+	352: "Burlap";
+	353: "Beige";
+	354: "Oyster";
+	355: "Pine Cone";
+	356: "Fawn brown";
+	357: "Hurricane grey";
+	358: "Cloudy grey";
+	359: "Linen";
+	360: "Copper";
+	361: "Dirt brown";
+	362: "Bronze";
+	363: "Flint";
+	364: "Dark taupe";
+	365: "Burnt Sienna";
+	1001: "Institutional white";
+	1002: "Mid gray";
+	1003: "Really black";
+	1004: "Really red";
+	1005: "Deep orange";
+	1006: "Alder";
+	1007: "Dusty Rose";
+	1008: "Olive";
+	1009: "New Yeller";
+	1010: "Really blue";
+	1011: "Navy blue";
+	1012: "Deep blue";
+	1013: "Cyan";
+	1014: "CGA brown";
+	1015: "Magenta";
+	1016: "Pink";
+	1017: "Deep orange";
+	1018: "Teal";
+	1019: "Toothpaste";
+	1020: "Lime green";
+	1021: "Camo";
+	1022: "Grime";
+	1023: "Lavender";
+	1024: "Pastel light blue";
+	1025: "Pastel orange";
+	1026: "Pastel violet";
+	1027: "Pastel blue-green";
+	1028: "Pastel green";
+	1029: "Pastel yellow";
+	1030: "Pastel brown";
+	1031: "Royal purple";
+	1032: "Hot pink";
 }
 
-interface RbxInternalBrickColorsByPalette {
-	[0]: RbxInternalBrickColorsByNumber[141];
-	[1]: RbxInternalBrickColorsByNumber[301];
-	[2]: RbxInternalBrickColorsByNumber[107];
-	[3]: RbxInternalBrickColorsByNumber[26];
-	[4]: RbxInternalBrickColorsByNumber[1012];
-	[5]: RbxInternalBrickColorsByNumber[303];
-	[6]: RbxInternalBrickColorsByNumber[1011];
-	[7]: RbxInternalBrickColorsByNumber[304];
-	[8]: RbxInternalBrickColorsByNumber[28];
-	[9]: RbxInternalBrickColorsByNumber[1018];
-	[10]: RbxInternalBrickColorsByNumber[302];
-	[11]: RbxInternalBrickColorsByNumber[305];
-	[12]: RbxInternalBrickColorsByNumber[306];
-	[13]: RbxInternalBrickColorsByNumber[307];
-	[14]: RbxInternalBrickColorsByNumber[308];
-	[15]: RbxInternalBrickColorsByNumber[1021];
-	[16]: RbxInternalBrickColorsByNumber[309];
-	[17]: RbxInternalBrickColorsByNumber[310];
-	[18]: RbxInternalBrickColorsByNumber[1019];
-	[19]: RbxInternalBrickColorsByNumber[135];
-	[20]: RbxInternalBrickColorsByNumber[102];
-	[21]: RbxInternalBrickColorsByNumber[23];
-	[22]: RbxInternalBrickColorsByNumber[1010];
-	[23]: RbxInternalBrickColorsByNumber[312];
-	[24]: RbxInternalBrickColorsByNumber[313];
-	[25]: RbxInternalBrickColorsByNumber[37];
-	[26]: RbxInternalBrickColorsByNumber[1022];
-	[27]: RbxInternalBrickColorsByNumber[1020];
-	[28]: RbxInternalBrickColorsByNumber[1027];
-	[29]: RbxInternalBrickColorsByNumber[311];
-	[30]: RbxInternalBrickColorsByNumber[315];
-	[31]: RbxInternalBrickColorsByNumber[1023];
-	[32]: RbxInternalBrickColorsByNumber[1031];
-	[33]: RbxInternalBrickColorsByNumber[316];
-	[34]: RbxInternalBrickColorsByNumber[151];
-	[35]: RbxInternalBrickColorsByNumber[317];
-	[36]: RbxInternalBrickColorsByNumber[318];
-	[37]: RbxInternalBrickColorsByNumber[319];
-	[38]: RbxInternalBrickColorsByNumber[1024];
-	[39]: RbxInternalBrickColorsByNumber[314];
-	[40]: RbxInternalBrickColorsByNumber[1013];
-	[41]: RbxInternalBrickColorsByNumber[1006];
-	[42]: RbxInternalBrickColorsByNumber[321];
-	[43]: RbxInternalBrickColorsByNumber[322];
-	[44]: RbxInternalBrickColorsByNumber[104];
-	[45]: RbxInternalBrickColorsByNumber[1008];
-	[46]: RbxInternalBrickColorsByNumber[119];
-	[47]: RbxInternalBrickColorsByNumber[323];
-	[48]: RbxInternalBrickColorsByNumber[324];
-	[49]: RbxInternalBrickColorsByNumber[325];
-	[50]: RbxInternalBrickColorsByNumber[320];
-	[51]: RbxInternalBrickColorsByNumber[11];
-	[52]: RbxInternalBrickColorsByNumber[1026];
-	[53]: RbxInternalBrickColorsByNumber[1016];
-	[54]: RbxInternalBrickColorsByNumber[1032];
-	[55]: RbxInternalBrickColorsByNumber[1015];
-	[56]: RbxInternalBrickColorsByNumber[327];
-	[57]: RbxInternalBrickColorsByNumber[1005];
-	[58]: RbxInternalBrickColorsByNumber[1009];
-	[59]: RbxInternalBrickColorsByNumber[29];
-	[60]: RbxInternalBrickColorsByNumber[328];
-	[61]: RbxInternalBrickColorsByNumber[1028];
-	[62]: RbxInternalBrickColorsByNumber[208];
-	[63]: RbxInternalBrickColorsByNumber[45];
-	[64]: RbxInternalBrickColorsByNumber[329];
-	[65]: RbxInternalBrickColorsByNumber[330];
-	[66]: RbxInternalBrickColorsByNumber[331];
-	[67]: RbxInternalBrickColorsByNumber[1004];
-	[68]: RbxInternalBrickColorsByNumber[21];
-	[69]: RbxInternalBrickColorsByNumber[332];
-	[70]: RbxInternalBrickColorsByNumber[333];
-	[71]: RbxInternalBrickColorsByNumber[24];
-	[72]: RbxInternalBrickColorsByNumber[334];
-	[73]: RbxInternalBrickColorsByNumber[226];
-	[74]: RbxInternalBrickColorsByNumber[1029];
-	[75]: RbxInternalBrickColorsByNumber[335];
-	[76]: RbxInternalBrickColorsByNumber[336];
-	[77]: RbxInternalBrickColorsByNumber[342];
-	[78]: RbxInternalBrickColorsByNumber[343];
-	[79]: RbxInternalBrickColorsByNumber[338];
-	[80]: RbxInternalBrickColorsByNumber[1007];
-	[81]: RbxInternalBrickColorsByNumber[339];
-	[82]: RbxInternalBrickColorsByNumber[133];
-	[83]: RbxInternalBrickColorsByNumber[106];
-	[84]: RbxInternalBrickColorsByNumber[340];
-	[85]: RbxInternalBrickColorsByNumber[341];
-	[86]: RbxInternalBrickColorsByNumber[1001];
-	[87]: RbxInternalBrickColorsByNumber[1];
-	[88]: RbxInternalBrickColorsByNumber[9];
-	[89]: RbxInternalBrickColorsByNumber[1025];
-	[90]: RbxInternalBrickColorsByNumber[337];
-	[91]: RbxInternalBrickColorsByNumber[344];
-	[92]: RbxInternalBrickColorsByNumber[345];
-	[93]: RbxInternalBrickColorsByNumber[1014];
-	[94]: RbxInternalBrickColorsByNumber[105];
-	[95]: RbxInternalBrickColorsByNumber[346];
-	[96]: RbxInternalBrickColorsByNumber[347];
-	[97]: RbxInternalBrickColorsByNumber[348];
-	[98]: RbxInternalBrickColorsByNumber[349];
-	[99]: RbxInternalBrickColorsByNumber[1030];
-	[100]: RbxInternalBrickColorsByNumber[125];
-	[101]: RbxInternalBrickColorsByNumber[101];
-	[102]: RbxInternalBrickColorsByNumber[350];
-	[103]: RbxInternalBrickColorsByNumber[192];
-	[104]: RbxInternalBrickColorsByNumber[351];
-	[105]: RbxInternalBrickColorsByNumber[352];
-	[106]: RbxInternalBrickColorsByNumber[353];
-	[107]: RbxInternalBrickColorsByNumber[354];
-	[108]: RbxInternalBrickColorsByNumber[1002];
-	[109]: RbxInternalBrickColorsByNumber[5];
-	[110]: RbxInternalBrickColorsByNumber[18];
-	[111]: RbxInternalBrickColorsByNumber[217];
-	[112]: RbxInternalBrickColorsByNumber[355];
-	[113]: RbxInternalBrickColorsByNumber[356];
-	[114]: RbxInternalBrickColorsByNumber[153];
-	[115]: RbxInternalBrickColorsByNumber[357];
-	[116]: RbxInternalBrickColorsByNumber[358];
-	[117]: RbxInternalBrickColorsByNumber[359];
-	[118]: RbxInternalBrickColorsByNumber[360];
-	[119]: RbxInternalBrickColorsByNumber[38];
-	[120]: RbxInternalBrickColorsByNumber[361];
-	[121]: RbxInternalBrickColorsByNumber[362];
-	[122]: RbxInternalBrickColorsByNumber[199];
-	[123]: RbxInternalBrickColorsByNumber[194];
-	[124]: RbxInternalBrickColorsByNumber[363];
-	[125]: RbxInternalBrickColorsByNumber[364];
-	[126]: RbxInternalBrickColorsByNumber[365];
-	[127]: RbxInternalBrickColorsByNumber[1003];
+interface BrickColorsByPalette {
+	[0]: 141;
+	[1]: 301;
+	[2]: 107;
+	[3]: 26;
+	[4]: 1012;
+	[5]: 303;
+	[6]: 1011;
+	[7]: 304;
+	[8]: 28;
+	[9]: 1018;
+	[10]: 302;
+	[11]: 305;
+	[12]: 306;
+	[13]: 307;
+	[14]: 308;
+	[15]: 1021;
+	[16]: 309;
+	[17]: 310;
+	[18]: 1019;
+	[19]: 135;
+	[20]: 102;
+	[21]: 23;
+	[22]: 1010;
+	[23]: 312;
+	[24]: 313;
+	[25]: 37;
+	[26]: 1022;
+	[27]: 1020;
+	[28]: 1027;
+	[29]: 311;
+	[30]: 315;
+	[31]: 1023;
+	[32]: 1031;
+	[33]: 316;
+	[34]: 151;
+	[35]: 317;
+	[36]: 318;
+	[37]: 319;
+	[38]: 1024;
+	[39]: 314;
+	[40]: 1013;
+	[41]: 1006;
+	[42]: 321;
+	[43]: 322;
+	[44]: 104;
+	[45]: 1008;
+	[46]: 119;
+	[47]: 323;
+	[48]: 324;
+	[49]: 325;
+	[50]: 320;
+	[51]: 11;
+	[52]: 1026;
+	[53]: 1016;
+	[54]: 1032;
+	[55]: 1015;
+	[56]: 327;
+	[57]: 1005;
+	[58]: 1009;
+	[59]: 29;
+	[60]: 328;
+	[61]: 1028;
+	[62]: 208;
+	[63]: 45;
+	[64]: 329;
+	[65]: 330;
+	[66]: 331;
+	[67]: 1004;
+	[68]: 21;
+	[69]: 332;
+	[70]: 333;
+	[71]: 24;
+	[72]: 334;
+	[73]: 226;
+	[74]: 1029;
+	[75]: 335;
+	[76]: 336;
+	[77]: 342;
+	[78]: 343;
+	[79]: 338;
+	[80]: 1007;
+	[81]: 339;
+	[82]: 133;
+	[83]: 106;
+	[84]: 340;
+	[85]: 341;
+	[86]: 1001;
+	[87]: 1;
+	[88]: 9;
+	[89]: 1025;
+	[90]: 337;
+	[91]: 344;
+	[92]: 345;
+	[93]: 1014;
+	[94]: 105;
+	[95]: 346;
+	[96]: 347;
+	[97]: 348;
+	[98]: 349;
+	[99]: 1030;
+	[100]: 125;
+	[101]: 101;
+	[102]: 350;
+	[103]: 192;
+	[104]: 351;
+	[105]: 352;
+	[106]: 353;
+	[107]: 354;
+	[108]: 1002;
+	[109]: 5;
+	[110]: 18;
+	[111]: 217;
+	[112]: 355;
+	[113]: 356;
+	[114]: 153;
+	[115]: 357;
+	[116]: 358;
+	[117]: 359;
+	[118]: 360;
+	[119]: 38;
+	[120]: 361;
+	[121]: 362;
+	[122]: 199;
+	[123]: 194;
+	[124]: 363;
+	[125]: 364;
+	[126]: 365;
+	[127]: 1003;
 }
 
-type BrickColor = RbxInternalBrickColorsByNumber[keyof RbxInternalBrickColorsByNumber];
+type GetByName<T extends BrickColorsByNumber[keyof BrickColorsByNumber]> = {
+	[K in keyof BrickColorsByNumber]: T extends BrickColorsByNumber[K] ? K : never
+}[keyof BrickColorsByNumber];
+
+type Zl = GetByName<"Turquoise">;
 
 interface BrickColorConstructor {
 	/** Returns a random BrickColor. */
 	random: () => BrickColor;
 
 	/** Returns a White BrickColor */
-	White: () => RbxInternalBrickColorsByNumber[1];
+	White: () => BrickColor<1, "White">;
 	/** Returns a Gray BrickColor */
-	Gray: () => RbxInternalBrickColorsByNumber[194];
+	Gray: () => BrickColor<194, "Medium stone grey">;
 	/** Returns a DarkGray BrickColor */
-	DarkGray: () => RbxInternalBrickColorsByNumber[199];
+	DarkGray: () => BrickColor<199, "Dark stone grey">;
 	/** Returns a Black BrickColor */
-	Black: () => RbxInternalBrickColorsByNumber[26];
+	Black: () => BrickColor<26, "Black">;
 	/** Returns a Red BrickColor */
-	Red: () => RbxInternalBrickColorsByNumber[21];
+	Red: () => BrickColor<21, "Bright red">;
 	/** Returns a Yellow BrickColor */
-	Yellow: () => RbxInternalBrickColorsByNumber[24];
+	Yellow: () => BrickColor<24, "Bright yellow">;
 	/** Returns a Green BrickColor */
-	Green: () => RbxInternalBrickColorsByNumber[28];
+	Green: () => BrickColor<28, "Dark green">;
 	/** Returns a Blue BrickColor */
-	Blue: () => RbxInternalBrickColorsByNumber[23];
+	Blue: () => BrickColor<23, "Bright blue">;
 
 	/** Constructs a BrickColor from its name. */
-	new <T extends BrickColor["Name"]>(val: T): RbxInternalBrickColorsByNumber[{
-		[Q in keyof RbxInternalBrickColorsByNumber]: RbxInternalBrickColorsByNumber[Q]["Name"] extends T ? Q : never
-	}[keyof RbxInternalBrickColorsByNumber]];
+	new <T extends BrickColorsByNumber[keyof BrickColorsByNumber]>(val: T): BrickColor<
+		{ [K in keyof BrickColorsByNumber]: T extends BrickColorsByNumber[K] ? K : never }[keyof BrickColorsByNumber],
+		T
+	>;
 
 	/** Constructs a BrickColor from its name. */
 	new (val: string): BrickColor;
 
 	/** Constructs a BrickColor from its numerical index. */
-	new <T extends keyof RbxInternalBrickColorsByNumber>(val: T): RbxInternalBrickColorsByNumber[T];
+	new <T extends keyof BrickColorsByNumber>(val: T): BrickColor<T, BrickColorsByNumber[T]>;
 
 	/** Constructs a BrickColor from its numerical index. */
 	new (val: number): BrickColor;
@@ -1314,10 +1017,12 @@ interface BrickColorConstructor {
 	new (color: Color3): BrickColor;
 
 	/** Constructs a BrickColor from its palette index. */
-	palette<T extends keyof RbxInternalBrickColorsByPalette>(paletteValue: T): RbxInternalBrickColorsByPalette[T];
+	palette<T extends keyof BrickColorsByPalette>(
+		paletteValue: T,
+	): BrickColor<BrickColorsByPalette[T], BrickColorsByNumber[BrickColorsByPalette[T]]>;
 
 	/** Constructs a BrickColor from its palette index. */
-	palette(paletteValue: number): RbxInternalBrickColorsByPalette[keyof RbxInternalBrickColorsByPalette];
+	palette(paletteValue: number): BrickColor;
 }
 
 declare const BrickColor: BrickColorConstructor;
@@ -1419,15 +1124,10 @@ interface Color3Constructor {
 	fromHSV: (hue: number, sat: number, val: number) => Color3;
 	/** Returns the hue, saturation, and value of a Color3. */
 	toHSV: (color: Color3) => LuaTuple<[number, number, number]>;
-	/** Creates a Color3 whose values are (0,0,0) [black] */
-	new (): Color3<0, 0, 0>;
-	/** Returns a Color3 with the given red, green, and blue values. The numbers can range from 0 to 1. */
-	new <Red extends number = number, Green extends number = number, Blue extends number = number>(
-		red: Red,
-		green: Green,
-		blue: Blue,
-	): Color3<Red, Green, Blue>;
+	/** Returns a Color3 with the given red, green, and blue values. The numbers can range from 0 to 1, defaulting to 0 */
+	new (red?: number, green?: number, blue?: number): Color3;
 }
+
 declare const Color3: Color3Constructor;
 
 // ColorSequence
@@ -1495,10 +1195,15 @@ declare const NumberRange: NumberRangeConstructor;
 
 // NumberSequence
 interface NumberSequence {
+	/** An array containing keypoint values for the NumberSequence. */
 	readonly Keypoints: ReadonlyArray<NumberSequenceKeypoint>;
 }
 interface NumberSequenceConstructor {
-	new (val: number): NumberSequence;
+	/** Creates a sequence of two keypoints with n for each value */
+	new (n: number): NumberSequence;
+	/** Creates a sequence of two keypoints with n0 and n1 as the value */
+	new (n0: number, n1: number): NumberSequence;
+	/** Creates a sequence with a given array containing keypoint values for the NumberSequence. */
 	new (keypoints: ReadonlyArray<NumberSequenceKeypoint>): NumberSequence;
 }
 declare const NumberSequence: NumberSequenceConstructor;
@@ -1510,8 +1215,8 @@ interface NumberSequenceKeypoint {
 	readonly Value: number;
 }
 interface NumberSequenceKeypointConstructor {
-	new (): NumberSequenceKeypoint;
-	new (time: number, value: number, envelope: number): NumberSequenceKeypoint;
+	/** Creates a keypoint with a specified time, value, and envelope if specified. */
+	new (time: number, value: number, envelope?: number): NumberSequenceKeypoint;
 }
 declare const NumberSequenceKeypoint: NumberSequenceKeypointConstructor;
 
@@ -1708,7 +1413,7 @@ declare function tick(): number;
 declare function time(): number;
 declare function UserSettings(): UserSettings;
 declare function version(): string;
-declare function wait(seconds?: number): [number, number];
+declare function wait(seconds?: number): LuaTuple<[number, number]>;
 declare function warn(...params: Array<any>): void;
 
 // math functions
@@ -1770,7 +1475,7 @@ interface CheckableTypes extends CheckablePrimitives {
 declare function typeOf(value: any): keyof CheckableTypes;
 
 /**
- * Returns true if `typeof(value) == type` otherwise false.
+ * Returns true if `typeof(value) == type`, otherwise false.
  * This function allows for type narrowing. i.e.
 ```
 // v is unknown
@@ -1791,3 +1496,26 @@ declare function opcall<T extends Array<any>, U>(
 	func: (...args: T) => U,
 	...args: T
 ): { success: true; value: U } | { success: false; error: string };
+
+/**
+ * Returns true if `instance.ClassName == Q`, otherwise false.
+ * This function allows for ClassName narrowing. i.e.
+ * @example
+ * if (isClassName(o, "LocalScript")) {
+ * // o is a LocalScript
+ * }
+ * if (isClassName(o, "Script")) {
+ * // o is a Script & { ClassName: "Script" }
+ * // Notice how it specifies the ClassName property here.
+ * // This is because a `LocalScript` is-a `Script`, but `o` refers to
+ * // an instance for which `ClassName` is "Script"
+ * }
+ * @param instance
+ * @param className
+ */
+declare function isClassName<T extends Instance, Q extends T["ClassName"]>(
+	instance: T,
+	className: Q,
+): instance is Instances[Q] extends T
+	? (Instances[Q]["ClassName"] extends Q ? Instances[Q] : Instances[Q] & { ClassName: Q })
+	: T;
