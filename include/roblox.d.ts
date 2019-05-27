@@ -1519,3 +1519,5 @@ declare function isClassName<T extends Instance, Q extends T["ClassName"]>(
 ): instance is Instances[Q] extends T
 	? (Instances[Q]["ClassName"] extends Q ? Instances[Q] : Instances[Q] & { ClassName: Q })
 	: T;
+
+declare function isClassName(instance: Instance, type: string): boolean;
