@@ -135,7 +135,6 @@ interface Symbol {
 	 * Returns a string representation of this data structure.
 	 */
 	toString(): string;
-	valueOf(): symbol;
 }
 
 interface SymbolConstructor {
