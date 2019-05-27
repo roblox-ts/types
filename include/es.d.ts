@@ -372,7 +372,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 /** @rbxts array */
 interface Array<T> extends ReadonlyArray<T> {
 	/**
-	 * Appends new elements to an array, and returns the new length of the array.
+	 * Appends new elements to an array and returns the new length of the array.
 	 * @param items New elements of the Array.
 	 */
 	push(...items: Array<T>): number;
@@ -403,7 +403,7 @@ interface Array<T> extends ReadonlyArray<T> {
 	splice(start: number, deleteCount: number, ...items: Array<T>): Array<T>;
 
 	/**
-	 * Inserts new elements at the start of an array.
+	 * Inserts new elements at the start of an array and returns the new length of the array.
 	 * @param items  Elements to insert at the start of the Array.
 	 */
 	unshift(...items: Array<T>): number;
