@@ -444,6 +444,9 @@ interface ArrayConstructor {
 
 declare const Array: ArrayConstructor;
 
+/** @rbxts array */
+interface TemplateStringsArray extends Array<string> {}
+
 /** @rbxts map */
 interface ReadonlyMap<K, V> extends Iterable<[K, V]> {
 	/**
