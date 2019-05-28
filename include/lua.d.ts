@@ -4,7 +4,7 @@
 
 interface Table {}
 
-type LuaTuple<T extends Array<any>> = T;
+type LuaTuple<T extends Array<any>> = T & { readonly _TUPLE?: never };
 
 /** A table that is shared between all scripts of the same context level. */
 declare const _G: Table;
@@ -70,8 +70,47 @@ declare function pcall<T extends Array<any>, U>(
 		: [true, U] | [false, string]
 >;
 
-/** B Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
+/** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
 declare function pcall<T extends Array<any>, U>(
+	func: (...args: T) => U,
+	...args: T
+): LuaTuple<
+	U extends [infer A]
+		? [true, A] | [false, string]
+		: U extends [infer A, infer B]
+		? [true, A, B] | [false, string, undefined]
+		: U extends [infer A, infer B, infer C]
+		? [true, A, B, C] | [false, string, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D]
+		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D, infer E]
+		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
+		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
+		: [true, U] | [false, string]
+>;
+
+/** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, xpcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, xpcall also returns all results from the call, after this first result. In case of any error, xpcall returns false plus the error message. */
+declare function xpcall<T extends Array<any>, U>(
+	func: (...args: T) => U,
+): LuaTuple<
+	U extends [infer A]
+		? [true, A] | [false, string]
+		: U extends [infer A, infer B]
+		? [true, A, B] | [false, string, undefined]
+		: U extends [infer A, infer B, infer C]
+		? [true, A, B, C] | [false, string, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D]
+		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D, infer E]
+		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
+		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
+		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
+		: [true, U] | [false, string]
+>;
+
+/** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, xpcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, xpcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
+declare function xpcall<T extends Array<any>, U>(
 	func: (...args: T) => U,
 	...args: T
 ): LuaTuple<
@@ -144,7 +183,7 @@ declare namespace debug {
 /** @rbxts string */
 interface String {
 	/** Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`, `...`, `s[j]`. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
-	byte(i?: number, j?: number): number;
+	byte(i?: number, j?: number): LuaTuple<Array<number>>;
 
 	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if `plain` is given, then `init` must be given as well. */
 	find(
@@ -191,7 +230,7 @@ interface String {
 
 declare namespace string {
 	/** Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`, `...`, `s[j]`. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
-	function byte(s: string, i?: number, j?: number): number;
+	function byte(s: string, i?: number, j?: number): LuaTuple<Array<number>>;
 
 	/** Receives zero or more integers. Returns a string with length equal to the number of arguments, in which each character has the internal numerical code equal to its corresponding argument. */
 	function char(...args: Array<number>): string;

@@ -58,30 +58,32 @@ interface ObjectConstructor {
 	 * Returns the names of the enumerable properties and methods of an object.
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
+	keys<T>(o: Array<T>): Array<number>;
+	keys<T>(o: Set<T>): Array<T>;
+	keys<K, V>(o: Map<K, V>): Array<K>;
+	keys<T>(o: T): Array<keyof T>;
 	keys(o: {}): Array<string>;
 
 	/**
 	 * Returns an array of values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
+	values<T>(o: Array<T>): Array<T>;
+	values<T>(o: Set<T>): Array<true>;
+	values<K, V>(o: Map<K, V>): Array<V>;
+	values<T>(o: T): Array<T[keyof T]>;
 	values<T>(o: { [s: string]: T } | ArrayLike<T>): Array<T>;
-
-	/**
-	 * Returns an array of values of the enumerable properties of an object
-	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
-	 */
 	values(o: {}): Array<any>;
 
 	/**
 	 * Returns an array of key/values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
+	entries<T>(o: Array<T>): Array<[number, T]>;
+	entries<T>(o: Set<T>): Array<[T, true]>;
+	entries<K, V>(o: Map<K, V>): Array<[K, V]>;
+	entries<T>(o: T): Array<[keyof T, T[keyof T]]>;
 	entries<T>(o: { [s: string]: T } | ArrayLike<T>): Array<[string, T]>;
-
-	/**
-	 * Returns an array of key/values of the enumerable properties of an object
-	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
-	 */
 	entries<T extends { [key: string]: any }, K extends keyof T>(o: T): Array<[K, T[K]]>;
 
 	/**
@@ -426,6 +428,13 @@ interface Array<T> extends ReadonlyArray<T> {
 	 */
 	remove(index: number): T | undefined;
 
+	/**
+	 * Removes a value at `index` from this array, replacing it with the last value in this array and popping the last value.
+	 * Returns the value removed from `index` in this way if it exists, otherwise `undefined`.
+	 * @param index The index to remove from this array and return
+	 */
+	unorderedRemove(index: number): T | undefined;
+
 	[n: number]: T;
 }
 
@@ -441,6 +450,9 @@ interface ArrayConstructor {
 }
 
 declare const Array: ArrayConstructor;
+
+/** @rbxts array */
+interface TemplateStringsArray extends Array<string> {}
 
 /** @rbxts map */
 interface ReadonlyMap<K, V> extends Iterable<[K, V]> {
