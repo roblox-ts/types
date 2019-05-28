@@ -1,8 +1,27 @@
 {
 	"compilerOptions": {
-		"strict": true,
-		"rootDir": ".",
+		// required
+		"allowSyntheticDefaultImports": true,
+		"downlevelIteration": true,
+		"module": "commonjs",
 		"noLib": true,
-		"typeRoots": ["."]
+		"strict": true,
+		"target": "es6",
+		"types": [],
+		"strictNullChecks": true,
+		// required, configurable
+		"rootDir": ".",
+		"outDir": "out",
+		// optional
+		"baseUrl": "src",
+		"declaration": false,
+		"forceConsistentCasingInFileNames": true,
+		"sourceMap": true,
+		"typeRoots": [
+			"."
+		]
+	},
+	"typeAcquisition": {
+		"enable": true
 	}
 }

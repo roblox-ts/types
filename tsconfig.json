@@ -1,12 +1,27 @@
 {
 	"compilerOptions": {
+		// required
+		"allowSyntheticDefaultImports": true,
+		"downlevelIteration": true,
 		"module": "commonjs",
-		"outDir": "out",
-		"rootDir": "src",
-		"target": "es6",
+		"noLib": false,
 		"strict": true,
-		"noFallthroughCasesInSwitch": true,
-		"sourceMap": true
+		"target": "es6",
+		"strictNullChecks": true,
+		// required, configurable
+		"rootDir": "src",
+		"outDir": "out",
+		// optional
+		"baseUrl": "src",
+		"declaration": false,
+		// optional, non-configurable
+		"jsx": "react",
+		"jsxFactory": "Roact.createElement",
+		"forceConsistentCasingInFileNames": true,
+		"sourceMap": true,
+	},
+	"typeAcquisition": {
+		"enable": true
 	},
 	"include": [
 		"src/**/*.ts",
@@ -14,6 +29,6 @@
 	],
 	"exclude": [
 		"node_modules/**/*",
-		"out/**/*"
+		"out/**/*",
 	]
 }
