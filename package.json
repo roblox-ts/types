@@ -1,7 +1,7 @@
 {
 	"name": "rbx-types",
 	"version": "1.0.81",
-	"description": "Generates a roblox.d.ts file from a combination of handwritten .d.ts files and generated data from Roblox's API dump",
+	"description": "TypeScript typings for the Roblox platform. Partially handwritten and partially automatically generated.",
 	"scripts": {
 		"build": "ts-node src/index.ts"
 	},
@@ -37,8 +37,6 @@
 		"rbx-types",
 		"types",
 		"Roblox",
-		"ClassName",
-		"narrowing",
 		"typescript"
 	]
 }
