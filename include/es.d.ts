@@ -428,6 +428,13 @@ interface Array<T> extends ReadonlyArray<T> {
 	 */
 	remove(index: number): T | undefined;
 
+	/**
+	 * Removes a value at `index` from this array, replacing it with the last value in this array and popping the last value.
+	 * Returns the value removed from `index` in this way if it exists, otherwise `undefined`.
+	 * @param index The index to remove from this array and return
+	 */
+	unorderedRemove(index: number): T | undefined;
+
 	[n: number]: T;
 }
 
