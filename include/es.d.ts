@@ -1,13 +1,13 @@
 /// <reference no-default-lib="true"/>
 
-interface Boolean { }
-interface IArguments { }
-interface Number { }
-interface Object { }
-interface RegExp { }
-interface Function { }
-interface CallableFunction extends Function { }
-interface NewableFunction extends Function { }
+interface Boolean {}
+interface IArguments {}
+interface Number {}
+interface Object {}
+interface RegExp {}
+interface Function {}
+interface CallableFunction extends Function {}
+interface NewableFunction extends Function {}
 
 /** @rbxts array */
 interface ArrayLike<T> {
@@ -135,7 +135,6 @@ interface Symbol {
 	 * Returns a string representation of this data structure.
 	 */
 	toString(): string;
-	valueOf(): symbol;
 }
 
 interface SymbolConstructor {
@@ -179,8 +178,8 @@ type IteratorResult<T> =
 
 interface Iterator<T> {
 	next: (value?: any) => IteratorResult<T>;
-//	return?: (value?: any) => IteratorResult<T>;
-//	throw?: (e?: any) => IteratorResult<T>;
+	//	return?: (value?: any) => IteratorResult<T>;
+	//	throw?: (e?: any) => IteratorResult<T>;
 }
 
 interface Iterable<T> {
@@ -373,7 +372,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 /** @rbxts array */
 interface Array<T> extends ReadonlyArray<T> {
 	/**
-	 * Appends new elements to an array, and returns the new length of the array.
+	 * Appends new elements to an array and returns the new length of the array.
 	 * @param items New elements of the Array.
 	 */
 	push(...items: Array<T>): number;
@@ -404,7 +403,7 @@ interface Array<T> extends ReadonlyArray<T> {
 	splice(start: number, deleteCount: number, ...items: Array<T>): Array<T>;
 
 	/**
-	 * Inserts new elements at the start of an array.
+	 * Inserts new elements at the start of an array and returns the new length of the array.
 	 * @param items  Elements to insert at the start of the Array.
 	 */
 	unshift(...items: Array<T>): number;
@@ -517,7 +516,7 @@ interface MapConstructor {
 }
 declare var Map: MapConstructor;
 
-interface WeakMap<K, V> extends Map<K, V> { }
+interface WeakMap<K, V> extends Map<K, V> {}
 
 interface WeakMapConstructor {
 	new <K extends object = object, V = any>(entries?: ReadonlyArray<[K, V]> | null): WeakMap<K, V>;
@@ -614,7 +613,7 @@ interface SetConstructor {
 }
 declare const Set: SetConstructor;
 
-interface WeakSet<T> extends Set<T> { }
+interface WeakSet<T> extends Set<T> {}
 
 interface WeakSetConstructor {
 	new <T extends object = object>(values?: ReadonlyArray<T> | null): WeakSet<T>;
@@ -753,6 +752,11 @@ type Required<T> = { [P in keyof T]-?: T[P] };
  * Make all properties in T readonly
  */
 type Readonly<T> = { readonly [P in keyof T]: T[P] };
+
+/**
+ * Make all properties in T non-readonly.
+ */
+type Writable<T> = { -readonly [P in keyof T]: T[P] };
 
 /**
  * From T pick a set of properties K
