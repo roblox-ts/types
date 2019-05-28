@@ -4,7 +4,7 @@
 
 interface Table {}
 
-type LuaTuple<T extends Array<any>> = T;
+type LuaTuple<T extends Array<any>> = T & { readonly _TUPLE?: never };
 
 /** A table that is shared between all scripts of the same context level. */
 declare const _G: Table;
