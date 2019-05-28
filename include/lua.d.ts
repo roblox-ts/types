@@ -144,7 +144,7 @@ declare namespace debug {
 /** @rbxts string */
 interface String {
 	/** Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`, `...`, `s[j]`. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
-	byte(i?: number, j?: number): number;
+	byte(i?: number, j?: number): LuaTuple<Array<number>>;
 
 	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if `plain` is given, then `init` must be given as well. */
 	find(
@@ -191,7 +191,7 @@ interface String {
 
 declare namespace string {
 	/** Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`, `...`, `s[j]`. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
-	function byte(s: string, i?: number, j?: number): number;
+	function byte(s: string, i?: number, j?: number): LuaTuple<Array<number>>;
 
 	/** Receives zero or more integers. Returns a string with length equal to the number of arguments, in which each character has the internal numerical code equal to its corresponding argument. */
 	function char(...args: Array<number>): string;
