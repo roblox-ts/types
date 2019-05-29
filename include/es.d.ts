@@ -1,13 +1,13 @@
 /// <reference no-default-lib="true"/>
 
-interface Boolean { }
-interface IArguments { }
-interface Number { }
-interface Object { }
-interface RegExp { }
-interface Function { }
-interface CallableFunction extends Function { }
-interface NewableFunction extends Function { }
+interface Boolean {}
+interface IArguments {}
+interface Number {}
+interface Object {}
+interface RegExp {}
+interface Function {}
+interface CallableFunction extends Function {}
+interface NewableFunction extends Function {}
 
 /** @rbxts array */
 interface ArrayLike<T> {
@@ -16,20 +16,6 @@ interface ArrayLike<T> {
 	 */
 	readonly length: number;
 	readonly [n: number]: T;
-}
-
-interface HasToString {
-	/**
-	 * Returns a string representation of this data structure.
-	 */
-	toString(): string;
-}
-
-interface HasIsEmpty {
-	/**
-	 * Returns true if empty, otherwise false.
-	 */
-	isEmpty(): boolean;
 }
 
 interface ObjectConstructor {
@@ -72,30 +58,32 @@ interface ObjectConstructor {
 	 * Returns the names of the enumerable properties and methods of an object.
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
+	keys<T>(o: Array<T>): Array<number>;
+	keys<T>(o: Set<T>): Array<T>;
+	keys<K, V>(o: Map<K, V>): Array<K>;
+	keys<T>(o: T): Array<keyof T>;
 	keys(o: {}): Array<string>;
 
 	/**
 	 * Returns an array of values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
+	values<T>(o: Array<T>): Array<T>;
+	values<T>(o: Set<T>): Array<true>;
+	values<K, V>(o: Map<K, V>): Array<V>;
+	values<T>(o: T): Array<T[keyof T]>;
 	values<T>(o: { [s: string]: T } | ArrayLike<T>): Array<T>;
-
-	/**
-	 * Returns an array of values of the enumerable properties of an object
-	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
-	 */
 	values(o: {}): Array<any>;
 
 	/**
 	 * Returns an array of key/values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
+	entries<T>(o: Array<T>): Array<[number, T]>;
+	entries<T>(o: Set<T>): Array<[T, true]>;
+	entries<K, V>(o: Map<K, V>): Array<[K, V]>;
+	entries<T>(o: T): Array<[keyof T, T[keyof T]]>;
 	entries<T>(o: { [s: string]: T } | ArrayLike<T>): Array<[string, T]>;
-
-	/**
-	 * Returns an array of key/values of the enumerable properties of an object
-	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
-	 */
 	entries<T extends { [key: string]: any }, K extends keyof T>(o: T): Array<[K, T[K]]>;
 
 	/**
@@ -128,6 +116,7 @@ interface ObjectConstructor {
  */
 declare const Object: ObjectConstructor;
 
+/** @rbxts string */
 interface String extends Iterable<string> {
 	/** The current number of characters in the string */
 	readonly length: number;
@@ -143,8 +132,11 @@ interface String extends Iterable<string> {
 	trimEnd(): string;
 }
 
-interface Symbol extends HasToString {
-	valueOf(): symbol;
+interface Symbol {
+	/**
+	 * Returns a string representation of this data structure.
+	 */
+	toString(): string;
 }
 
 interface SymbolConstructor {
@@ -188,8 +180,8 @@ type IteratorResult<T> =
 
 interface Iterator<T> {
 	next: (value?: any) => IteratorResult<T>;
-//	return?: (value?: any) => IteratorResult<T>;
-//	throw?: (e?: any) => IteratorResult<T>;
+	//	return?: (value?: any) => IteratorResult<T>;
+	//	throw?: (e?: any) => IteratorResult<T>;
 }
 
 interface Iterable<T> {
@@ -203,7 +195,17 @@ interface IterableIterator<T> extends Iterator<T> {
 type IterableFunction<T> = Iterable<T> & (() => T | undefined);
 
 /** @rbxts array */
-interface ReadonlyArray<T> extends HasToString, HasIsEmpty, ArrayLike<T>, Iterable<T> {
+interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation of this data structure.
+	 */
+	toString(): string;
+
 	/**
 	 * Creates a new array and shallow copies `this` and the items into the new array, in that order.
 	 * @param items Additional items to add to the end of array1.
@@ -372,7 +374,7 @@ interface ReadonlyArray<T> extends HasToString, HasIsEmpty, ArrayLike<T>, Iterab
 /** @rbxts array */
 interface Array<T> extends ReadonlyArray<T> {
 	/**
-	 * Appends new elements to an array, and returns the new length of the array.
+	 * Appends new elements to an array and returns the new length of the array.
 	 * @param items New elements of the Array.
 	 */
 	push(...items: Array<T>): number;
@@ -403,7 +405,7 @@ interface Array<T> extends ReadonlyArray<T> {
 	splice(start: number, deleteCount: number, ...items: Array<T>): Array<T>;
 
 	/**
-	 * Inserts new elements at the start of an array.
+	 * Inserts new elements at the start of an array and returns the new length of the array.
 	 * @param items  Elements to insert at the start of the Array.
 	 */
 	unshift(...items: Array<T>): number;
@@ -426,6 +428,13 @@ interface Array<T> extends ReadonlyArray<T> {
 	 */
 	remove(index: number): T | undefined;
 
+	/**
+	 * Removes a value at `index` from this array, replacing it with the last value in this array and popping the last value.
+	 * Returns the value removed from `index` in this way if it exists, otherwise `undefined`.
+	 * @param index The index to remove from this array and return
+	 */
+	unorderedRemove(index: number): T | undefined;
+
 	[n: number]: T;
 }
 
@@ -442,7 +451,21 @@ interface ArrayConstructor {
 
 declare const Array: ArrayConstructor;
 
-interface ReadonlyMap<K, V> extends HasToString, HasIsEmpty, Iterable<[K, V]> {
+/** @rbxts array */
+interface TemplateStringsArray extends Array<string> {}
+
+/** @rbxts map */
+interface ReadonlyMap<K, V> extends Iterable<[K, V]> {
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation of this data structure.
+	 */
+	toString(): string;
+
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the Map
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
@@ -480,6 +503,7 @@ interface ReadonlyMap<K, V> extends HasToString, HasIsEmpty, Iterable<[K, V]> {
 	keys(): Array<K>;
 }
 
+/** @rbxts map */
 interface Map<K, V> extends ReadonlyMap<K, V> {
 	/**
 	 * Associates a key with a value which can be accessed later by `Map.get`
@@ -504,14 +528,25 @@ interface MapConstructor {
 }
 declare var Map: MapConstructor;
 
-interface WeakMap<K, V> extends Map<K, V> { }
+interface WeakMap<K, V> extends Map<K, V> {}
 
 interface WeakMapConstructor {
 	new <K extends object = object, V = any>(entries?: ReadonlyArray<[K, V]> | null): WeakMap<K, V>;
 }
 declare var WeakMap: WeakMapConstructor;
 
-interface ReadonlySet<T> extends HasToString, HasIsEmpty, Iterable<T> {
+/** @rbxts set */
+interface ReadonlySet<T> extends Iterable<T> {
+	/**
+	 * Returns true if empty, otherwise false.
+	 */
+	isEmpty(): boolean;
+
+	/**
+	 * Returns a string representation of this data structure.
+	 */
+	toString(): string;
+
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the set
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
@@ -565,6 +600,7 @@ set1.isSubsetOf(set2) && !set2.isSubsetOf(set1)
 	isSubsetOf<U>(set: Set<U>): boolean;
 }
 
+/** @rbxts set */
 interface Set<T> extends ReadonlySet<T> {
 	/**
 	 * Adds a value to the set
@@ -589,7 +625,7 @@ interface SetConstructor {
 }
 declare const Set: SetConstructor;
 
-interface WeakSet<T> extends Set<T> { }
+interface WeakSet<T> extends Set<T> {}
 
 interface WeakSetConstructor {
 	new <T extends object = object>(values?: ReadonlyArray<T> | null): WeakSet<T>;
@@ -728,6 +764,11 @@ type Required<T> = { [P in keyof T]-?: T[P] };
  * Make all properties in T readonly
  */
 type Readonly<T> = { readonly [P in keyof T]: T[P] };
+
+/**
+ * Make all properties in T non-readonly.
+ */
+type Writable<T> = { -readonly [P in keyof T]: T[P] };
 
 /**
  * From T pick a set of properties K

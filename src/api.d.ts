@@ -67,6 +67,7 @@ export interface ApiMemberBase {
 				Write: SecurityType;
 		  };
 	Tags?: Array<MemberTag>;
+	Description?: string;
 }
 
 export interface ApiValueType {
@@ -108,6 +109,8 @@ export interface ApiClass {
 	Tags?: Array<ClassTag>;
 	Name: string;
 	Superclass: string;
+	Subclasses: Array<string>;
+	Description?: string;
 }
 
 export interface ApiEnumItem {
