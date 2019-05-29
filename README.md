@@ -8,7 +8,7 @@ To install rbx-types into your project, run the following command:
 
 `npm i rbx-types`
 
-Then, make sure `rbx-types` is listed in your `compilerOptions.types` field in your project's `tsconfig.json`:
+Then, make sure `rbx-types` is listed in your `compilerOptions.types` field in your project's `tsconfig.json` like so:
 
 ```json
 {
