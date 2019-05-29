@@ -4,11 +4,11 @@ TypeScript typings for the Roblox platform. Partially handwritten and partially 
 
 ## Installation
 
-To install globally, run the following command:
+To install rbx-types into your project, run the following command:
 
-`npm i -g rbx-types`
+`npm i rbx-types`
 
-To use, simply add `rbx-types` in your `compilerOptions.types` field in your project's `tsconfig.json`:
+Then, make sure `rbx-types` is listed in your `compilerOptions.types` field in your project's `tsconfig.json`:
 
 ```json
 {
