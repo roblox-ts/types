@@ -243,7 +243,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * Creates a new array and shallow copies `this` and the items into the new array, in that order.
 	 * @param items Additional items to add to the end of array1.
 	 */
-	concat<T>(...items: Array<ReadonlyArray<T>>): Array<T>;
+	concat(...items: Array<ReadonlyArray<T>>): Array<T>;
 
 	/**
 	 * Adds all the elements of an array separated by the specified separator string.
@@ -374,7 +374,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * order, until it finds one where predicate returns true. If such an element is found, find
 	 * immediately returns the index at which it was found. Otherwise, find returns -1.
 	 */
-	findIndex<T>(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean): number;
+	findIndex(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean): number;
 
 	/**
 	 * Returns a shallow copy of the array
