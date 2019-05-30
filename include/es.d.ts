@@ -14,7 +14,7 @@ interface ArrayLike<T> {
 	/**
 	 * Gets the length of the array. This is one higher than the highest index defined in an array.
 	 */
-	readonly length: number;
+	length(): number;
 	readonly [n: number]: T;
 }
 
@@ -118,18 +118,51 @@ declare const Object: ObjectConstructor;
 
 /** @rbxts string */
 interface String extends Iterable<string> {
-	/** The current number of characters in the string */
-	readonly length: number;
-	/** Returns a new string equivalent to this string but with the whitespace removed from the start and end */
+	/** The current number of characters in the string. */
+	length(): number;
+
+	/** Returns a new string equivalent to this string but with the whitespace removed from the start and end. */
 	trim(): string;
-	/** Returns a new string equivalent to this string but with the whitespace removed from the start */
-	trimLeft(): string;
-	/** Returns a new string equivalent to this string but with the whitespace removed from the end */
-	trimRight(): string;
-	/** Returns a new string equivalent to this string but with the whitespace removed from the start */
+
+	/** Returns a new string equivalent to this string but with the whitespace removed from the start. */
 	trimStart(): string;
-	/** Returns a new string equivalent to this string but with the whitespace removed from the end */
+
+	/** Returns a new string equivalent to this string but with the whitespace removed from the end. */
 	trimEnd(): string;
+
+	/**
+	 * Pads the current string with a given string (possibly repeated) so that the resulting string reaches a given length.
+	 * The padding is applied from the start (left) of the current string.
+	 *
+	 * @param maxLength The length of the resulting string once the current string has been padded.
+	 *        If this parameter is smaller than the current string's length, the current string will be returned as it is.
+	 *
+	 * @param fillString The string to pad the current string with.
+	 *        If this string is too long, it will be truncated and the left-most part will be applied.
+	 *        The default value for this parameter is " " (U+0020).
+	 */
+	padStart(maxLength: number, fillString?: string): string;
+
+	/**
+	 * Pads the current string with a given string (possibly repeated) so that the resulting string reaches a given length.
+	 * The padding is applied from the end (right) of the current string.
+	 *
+	 * @param maxLength The length of the resulting string once the current string has been padded.
+	 *        If this parameter is smaller than the current string's length, the current string will be returned as it is.
+	 *
+	 * @param fillString The string to pad the current string with.
+	 *        If this string is too long, it will be truncated and the left-most part will be applied.
+	 *        The default value for this parameter is " " (U+0020).
+	 */
+	padEnd(maxLength: number, fillString?: string): string;
+
+	/**
+	 * Returns a section of a string.
+	 * @param start The index to the beginning of the specified portion of stringObj.
+	 * @param end The index to the end of the specified portion of stringObj. The substring includes the characters up to, but not including, the character indicated by end.
+	 * If this value is not specified, the substring continues to the end of stringObj.
+	 */
+	slice(start: number, end?: number): string;
 }
 
 interface Symbol {
