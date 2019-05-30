@@ -275,6 +275,26 @@ declare namespace Enum {
 	}
 	export type AspectType = AspectType.FitWithinMaxSize | AspectType.ScaleWithParentSize;
 
+	export namespace AssetFetchStatus {
+		export interface Success {
+			Name: "Success";
+			Value: 0;
+			EnumType: Enum_AssetFetchStatus;
+		}
+
+		export const Success: Success;
+
+		export interface Failure {
+			Name: "Failure";
+			Value: 1;
+			EnumType: Enum_AssetFetchStatus;
+		}
+
+		export const Failure: Failure;
+
+	}
+	export type AssetFetchStatus = AssetFetchStatus.Success | AssetFetchStatus.Failure;
+
 	export namespace AssetType {
 		export interface Image {
 			Name: "Image";
@@ -2282,26 +2302,6 @@ declare namespace Enum {
 
 	}
 	export type CustomCameraMode = CustomCameraMode.Default | CustomCameraMode.Follow | CustomCameraMode.Classic;
-
-	export namespace DEPRECATED_DebuggerDataModelPreference {
-		export interface Server {
-			Name: "Server";
-			Value: 0;
-			EnumType: Enum_DEPRECATED_DebuggerDataModelPreference;
-		}
-
-		export const Server: Server;
-
-		export interface Client {
-			Name: "Client";
-			Value: 1;
-			EnumType: Enum_DEPRECATED_DebuggerDataModelPreference;
-		}
-
-		export const Client: Client;
-
-	}
-	export type DEPRECATED_DebuggerDataModelPreference = DEPRECATED_DebuggerDataModelPreference.Server | DEPRECATED_DebuggerDataModelPreference.Client;
 
 	export namespace DataStoreRequestType {
 		export interface GetAsync {
@@ -11968,6 +11968,11 @@ interface Enum_AspectType {
 	ScaleWithParentSize: Enum.AspectType.ScaleWithParentSize;
 }
 
+interface Enum_AssetFetchStatus {
+	Success: Enum.AssetFetchStatus.Success;
+	Failure: Enum.AssetFetchStatus.Failure;
+}
+
 interface Enum_AssetType {
 	Image: Enum.AssetType.Image;
 	TeeShirt: Enum.AssetType.TeeShirt;
@@ -12302,11 +12307,6 @@ interface Enum_CustomCameraMode {
 	Default: Enum.CustomCameraMode.Default;
 	Follow: Enum.CustomCameraMode.Follow;
 	Classic: Enum.CustomCameraMode.Classic;
-}
-
-interface Enum_DEPRECATED_DebuggerDataModelPreference {
-	Server: Enum.DEPRECATED_DebuggerDataModelPreference.Server;
-	Client: Enum.DEPRECATED_DebuggerDataModelPreference.Client;
 }
 
 interface Enum_DataStoreRequestType {
@@ -13897,6 +13897,7 @@ declare type CastsToEnum<T extends
 	| Enum.AnimationPriority
 	| Enum.AppShellActionType
 	| Enum.AspectType
+	| Enum.AssetFetchStatus
 	| Enum.AssetType
 	| Enum.AutoJointsMode
 	| Enum.AvatarContextMenuOption
@@ -13931,7 +13932,6 @@ declare type CastsToEnum<T extends
 	| Enum.CreatorType
 	| Enum.CurrencyType
 	| Enum.CustomCameraMode
-	| Enum.DEPRECATED_DebuggerDataModelPreference
 	| Enum.DataStoreRequestType
 	| Enum.DevCameraOcclusionMode
 	| Enum.DevComputerCameraMovementMode
