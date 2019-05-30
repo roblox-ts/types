@@ -316,9 +316,14 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	): U;
 
 	/**
-	 * Returns a copy of the array with elements in reverse order.
+	 * Returns a copy of the array with elements in reverse order. The compiler will automatically optimize this away when used in-line in a for..of loop.
 	 */
 	reverse(): Array<T>;
+
+	/**
+	 * Returns an array of every index-value pair in this array. The compiler will automatically optimize this away when used in-line in a for..of loop.
+	 */
+	entries(): Array<[number, T]>;
 
 	/**
 	 * Returns the value of the first element in the array where predicate is true, and undefined
