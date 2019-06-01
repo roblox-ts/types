@@ -16179,649 +16179,66 @@ interface Status extends Model {
 	readonly ClassName: "Status";
 }
 
-/** 
- * The Workspace is the service in which any objects that are to be rendered in the 3D world exist. Objects not descending from Workspace will not be rendered or physically interact with the world.
- *
- * ## What does the Workspace do?
- *
- * The core job of the Workspace is to hold objects that exist in the 3D world, [BaseParts](https://developer.roblox.com/api-reference/class/BasePart) and [Attachments](https://developer.roblox.com/api-reference/class/Attachment). Whilst such objects are descendant of Workspace, they will be active. For BaseParts this means they will be rendered, and physically interact with other parts and the world. For `Attachment`s this means objects adorned to them, such as [ParticleEmitters](https://developer.roblox.com/api-reference/class/ParticleEmitter), [Beams](https://developer.roblox.com/api-reference/class/Beam) and [BillboardGuis](https://developer.roblox.com/api-reference/class/BillboardGui) will render.
- *
- * Understanding this behavior is important, as it means objects can be removed from the Workspace when they are not needed. For example, map [Models](https://developer.roblox.com/api-reference/class/Model) can be removed from the `Workspace` when a different map is being played on. Objects that are not immediately needed in the Workspace are generally stored in `ReplicatedStorage` or `ServerStorage`.
- *
- * In its role as the holder of active 3D objects, Workspace includes a number of useful functions related to parts, their positions and joints between them. Commonly used are the Workspace's raycasting functions, such as [Workspace.FindPartOnRay](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRay).
- *
- * ## Accessing the Workspace
- *
- * The Workspace can be accessed several ways, all of which are valid.
- *
- * ```lua
-workspace -- a global variable
-game.Workspace -- a property of the DataModel
-game:GetService("Workspace") -- workspace is a service
-```
- * 
-
- * ## Notes
- *
- *  - Objects that require adornment, such as `ParticleEmitter`s and `BillboardGui`s will be adorned to the *0, 0, 0* position when adorned to the Workspace (parented to it without an adornee otherwise being set)
- *
- *  - The [Model.MakeJoints](https://developer.roblox.com/api-reference/function/Model/MakeJoints) and [Model.BreakJoints](https://developer.roblox.com/api-reference/function/Model/BreakJoints) functions inherited from the `Model` class are overridden by the Workspace's own [Workspace.MakeJoints](https://developer.roblox.com/api-reference/function/Workspace/MakeJoints) and [Workspace.BreakJoints](https://developer.roblox.com/api-reference/function/Workspace/BreakJoints) functions, which can only be used in plugins
- *
- *  - It is impossible to delete the Workspace
- *
- *  - The Workspace will also clean up `BasePart`s that fall beneath [Workspace.FallenPartsDestroyHeight](https://developer.roblox.com/api-reference/property/Workspace/FallenPartsDestroyHeight)
- *
- *  - A client's current `Camera` object can be accessed using the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) property
- *
- *  - The `Terrain` object can be accessed using the [Workspace.Terrain](https://developer.roblox.com/api-reference/property/Workspace/Terrain) property
- */
 interface Workspace extends Model {
 	/** A read-only string representing the class this Instance belongs to. In TypeScript the macro `isClassName` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Workspace";
-	/** 
-	 * This `Workspace` property determines whether assets created by other uses can be sold in the game.
-	 *
-	 * ## What are third party sales?
-	 *
-	 * When this value is false, as it is by default, only assets created by the place creator (be it a player or a group) and Roblox can be sold using `MarketplaceService`.
-	 *
-	 * In most cases, games do not need to sell third party assets. However, some games such as trade hangouts require this feature and therefore it exists as an opt-in option.
-	 *
-	 * ## What third party products can I sell?
-	 *
-	 * Note, [developer products](https://developer.roblox.com/search#stq=Developer%20Products – In-Game Purchases) can only be sold in the game they are associated with, regardless of what AllowThirdPartySales is set to. This property will function for [game passes](https://developer.roblox.com/search#stq=Game%20Passes – Abilities and Bonuses) and [clothing](https://developer.roblox.com/search#stq=How%20to Make Shirts and Pants for Roblox Characters) however.
-	 *
-	 * [1]: https://developer.roblox.com/articles/Developer-Products-In-Game-Purchases
-	 *
-	 * [2]: https://developer.roblox.com/articles/Game-Passes-One-Time-Purchases
-	 *
-	 * [3]: https://developer.roblox.com/articles/How-to-Make-Shirts-and-Pants-for-Roblox-Characters
-	 */
+
 	AllowThirdPartySales: boolean;
-	/** 
-	 * The `Camera` object being used by the local player.
-	 *
-	 * ## How to use CurrentCamera
-	 *
-	 * This property can be set. When it is set, all other `Camera` objects in the `Workspace` are destroyed, including the previous CurrentCamera. If this property is set to nil, or the CurrentCamera is otherwise destroyed, a new `Camera` will be created and assigned. Developers should avoid setting this property to nil or destroying the CurrentCamera however as it can have unintended consequences.
-	 *
-	 * When looking for a client's `Camera` object, developers should use this property rather than looking for a child of `Workspace` named 'Camera'.
-	 *
-	 * ## What can be done with CurrentCamera
-	 *
-	 * Accessing a client's current `Camera` object brings a range of uses.
-	 *
-	 *  - Manipulating the viewport using the `Camera` functions
-	 *
-	 *  - Bbjects parented to the `Camera` will not replicate to the server, regardless of what [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled) is set to. Prior to [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled), this was the main way to render `BasePart`s on one client only.
-	 *
-	 * Below is an example of how this property can be used to access the `Camera` object and increase its [Camera.FieldOfView](https://developer.roblox.com/api-reference/property/Camera/FieldOfView).
-	 *
-	 * ```lua
-workspace.CurrentCamera.FieldOfView = 100
-```
-	 *
-	 */
+
 	CurrentCamera?: Camera;
-	/** 
-	 * The amount of time, in seconds, that the game has been running.
-	 *
-	 * Despite the title, this value is currently not 'Distributed' across the client and the server. Instead, on the server it represents how long the server has been running. On the client, it represents how long the client has been connected to the server.
-	 *
-	 * Developers should not rely on the above behavior, and it is possible this property will be synchronized across clients and the server in the future.
-	 *
-	 * Those looking for the time since the program started running should use the 'time' function instead. See below for a comparison between DistributedGameTime and its alternatives.
-	 *
-	 * ```lua
-print(workspace.DistributedGameTime) --&gt; Time the game started running
-print(os.time()) --&gt; Time since epoch (1 January 1970, 00:00:00) UTC
-print(tick()) --&gt; Time since epoch (1 January 1970, 00:00:00) system time
-print(time()) --&gt; Time the game started running
-print(elapsedTime()) --&gt; Time since Roblox started running
-```
-	 *
-	 */
+
 	DistributedGameTime: number;
-	/** 
-	 * This property determines the height at which falling [BaseParts](https://developer.roblox.com/api-reference/class/BasePart) (and their ancestor [Models](https://developer.roblox.com/api-reference/class/Model)) are destroyed.
-	 *
-	 * ![Parts being destroyed at the FallenPartsDestroyHeight][1]
-	 *
-	 * ## What happens to falling parts?
-	 *
-	 * For performance reasons, Roblox automatically destroys (using [Instance.Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy)) parts that fall below this value. This is to prevent parts that have fallen off the map from continuing to fall forever.
-	 *
-	 * If a part destroyed due to this behavior is the last part in a model, then that `model will also be destroyed. This applies to all model ancestors of the part.
-	 *
-	 * This property can be read by scripts, but can only be set by plugins, the command bar or the properties window in Roblox Studio.
-	 *
-	 * ## Notes
-	 *
-	 *  - Developers should also use the `Debris` service to clean up parts that are no longer needed, but have not fallen off the map
-	 *
-	 *  - This property is clamped between -50,000 and 50,000. This is because `BasePart`s do not simulate or render properly at a great distance from the origin due to floating point inaccuracies
-	 *
-	 * [1]: https://developer.roblox.com/assets/5b65c33eba048a343db86bf8/FallenPartsDestroyHeight.gif
-	 */
+	/** Sets the height at which falling characters and parts are destroyed. This property is not scriptable and can only be set in Studio */
 	readonly FallenPartsDestroyHeight: number;
-	/** 
-	 * **Warning!** Experimental Mode has been discontinued, meaning this property will no longer take effect.
-	 *
-	 * Determines whether changes made from the client will replicate to the server or not. When this property is disabled, the game is in 'Experimental Mode'.
-	 *
-	 * This property is not replicated, meaning it cannot be changed once the game has started. For this reason, developers should only set this property in Roblox Studio.
-	 *
-	 * ## What does FilteringEnabled do?
-	 *
-	 * When FilteringEnabled is disabled, the place is in 'Experimental Mode'. In 'Experimental Mode', changes made to the game on the client replicate back to the server. For some, this makes games simpler to make, but means exploiters can change nearly anything in the game (such as deleting the baseplate).
-	 *
-	 * When FilteringEnabled is enabled, everything continues to replicate from the server to the client (with a few exceptions such as `ServerStorage` and `ServerScriptStorage`). However, actions made by the client will no longer freely replicate to the server. Instead, `RemoteEvent`s and `RemoteFunction`s need to be used by the client to 'request' the server preforms certain actions on its behalf.
-	 *
-	 * ## What are the exceptions to FilteringEnabled?
-	 *
-	 * Whilst FilteringEnabled prevents almost everything from replicating from the client to the server, there are some exceptions.
-	 *
-	 *  - Some properties on the local `Humanoid`
-	 *
-	 *  - `Sound` playback, when [SoundService.RespectFilteringEnabled](https://developer.roblox.com/api-reference/property/SoundService/RespectFilteringEnabled) is set to false
-	 *
-	 *  - `ClickDetector` input events
-	 *
-	 *  - `AnimationTrack` playback
-	 *
-	 *  - Physics simulated on `BasePart`s which the client has [network ownership](https://developer.roblox.com/search#stq=Network%20Ownership — Making physics smoother!) of
-	 *
-	 * ## Is FilteringEnabled more secure?
-	 *
-	 * Enabling FilteringEnabled is the best way of restricting exploiters from ruining your games. When it is enabled, with a few exceptions, changes made by clients will not replicate to the server (and therefore will not replicate to other clients). This means, if your game is properly designed, exploiters will find it much harder to operate in your game.
-	 *
-	 * Enabling FilteringEnabled however, has implications on a game's design that developers must consider. Before using it, it is highly recommended developers familiarize themselves on the following topics:
-	 *
-	 *  - [Experimental Mode](https://developer.roblox.com/search#stq=Experimental%20Mode) A brief introduction to the client-server model
-	 *
-	 *  - [Building games with Experimental Mode off](https://developer.roblox.com/search#stq=Building%20Games with Experimental Mode Off) How to approach building a game with FilteringEnabled
-	 *
-	 *  - [Converting Experimental Mode games][4] Converting a game to use FilteringEnabled
-	 *
-	 *  - [Game Security][5] How to use FilteringEnabled to improve the security of your game
-	 *
-	 * [1]: https://developer.roblox.com/articles/Network-Ownership
-	 *
-	 * [2]: https://developer.roblox.com/articles/Experimental-Mode
-	 *
-	 * [3]: https://developer.roblox.com/articles/Building-Games-with-Experimental-Mode-Off
-	 *
-	 * [4]: https://developer.roblox.com/articles/Converting-From-Experimental-Mode
-	 *
-	 * [5]: https://developer.roblox.com/articles/Game-Security
-	 */
+
 	readonly FilteringEnabled: boolean;
-	/** 
-	 * Determines the acceleration due to gravity applied to falling [BaseParts](https://developer.roblox.com/api-reference/class/BasePart). This value is measured in studs per second squared and by default is set to 196.2 studs/second2. By changing this value, developers can simulate the effects of lower or higher gravity in game.
-	 */
+
 	Gravity: number;
-	/** 
-	 * Whether network streaming is enabled for the place or not.
-	 *
-	 * This property is not replicated, and therefore cannot be changed once the game has started. For this reason, it is advised it is set in Roblox Studio.
-	 *
-	 * ## What is network streaming?
-	 *
-	 * Streaming is an opt-in feature builders can enable for their places. It'll allow places to have more `BasePart`s, faster join times, and allow more games to run on less powerful hardware. It does this by allowing games to be played whilst objects are still being downloaded, and removing objects that are no longer needed.
-	 *
-	 * The downside of network streaming is it means the client can no longer rely on specific objects being available. Developers should not enable StreamingEnabled unless they understand its implications and have put processes in place to manage them. For example, `LocalScript`s may have to use [Instance.WaitForChild](https://developer.roblox.com/api-reference/function/Instance/WaitForChild) in order to access parts of the game.
-	 */
+
 	StreamingEnabled: boolean;
-	/** 
-	 * This property is a reference to the `Terrain` object parented to the `Workspace`.
-	 *
-	 * ![An example of Roblox terrain][1]
-	 *
-	 * This property, like [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera), ensures that developers to not inadvertently index a descendant of `Workspace` named 'Terrain' when looking for a game's `Terrain` object. Without this property, developers would need to use the [Instance.FindFirstChildOfClass](https://developer.roblox.com/api-reference/function/Instance/FindFirstChildOfClass) function.
-	 *
-	 * ```lua
-workspace.Terrain.WaterColor = Color3.new(0, 1, 0) -- make the water green
-```
-	 * 
 
-	 * [1]: https://developer.roblox.com/assets/5b65bf0c4bf5bf624023ee26/Terrain.png
-	 */
 	Terrain: Terrain;
-	/** 
-	 * FindPartOnRay uses [raycasting][1] to find the first `BasePart` intersecting with a given [DataType.Ray](https://developer.roblox.com/search#stq=Ray). This function returns the position of intersection, the surface normal of the intersecting `BasePart` at the point of intersection, and the `BasePart`'s [BasePart.Material](https://developer.roblox.com/api-reference/property/BasePart/Material).
-	 *
-	 * ```lua
-local character = game.Players.LocalPlayer.Character
--- Get the head
-local head = character:FindFirstChild("Head")
--- Build a ray in the direction the head is facing
-local origin = head.Position
-local lookDirection = head.CFrame.lookVector
-local ray = Ray.new(origin, lookDirection * 500)
--- Raycast, ignoring the player's character
-local part, hitPosition = workspace:FindPartOnRay(ray, character)
-if part then
-	print("Hit part: " .. part:GetFullName())
-else
-	print("Did not hit part")
-end
-```
-	 * 
-
-	 * The `terrainCellsAreCubes` and `ignoreWater` parameters determine whether `Terrain` cells should be treated as cubes or not, and whether water should be ignored or not.
-	 *
-	 * If the `ignoreDescendantsInstance` parameter is provided, the raycasting calculation will ignore the given object and all of its descendants. It behaves similar to the [Mouse.TargetFilter](https://developer.roblox.com/api-reference/property/Mouse/TargetFilter) property.
-	 *
-	 * In order to white-list or ignore multiple objects and their descendants, use these variants: [FindPartOnRayWithWhitelist](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRayWithWhitelist) and [FindPartOnRayWithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRayWithIgnoreList).
-	 *
-	 * ## Notes
-	 *
-	 *  - Theoretically, a ray extends infinitely in one direction. However, the max length of the direction vector on Roblox is 5000 studs
-	 *
-	 *  - The length of the direction vector is important - parts further away than its length will not be tested
-	 *
-	 *  - If the ray does not intersect a part, the return values will be nil and the point at the end of the ray, respectively
-	 *
-	 *  - Parts that are in a [collision group](https://developer.roblox.com/api-reference/function/PhysicsService/SetPartCollisionGroup) that does not collide with the "Default" collision group are ignored implicitly
-	 *
-	 * For more information on how raycasting works in Roblox, please see the articles on [raycasting basics][1] and [how to make raycasting guns][2].
-	 *
-	 * [1]: https://developer.roblox.com/articles/Raycasting
-	 *
-	 * [2]: https://developer.roblox.com/articles/Making-a-ray-casting-laser-gun-in-Roblox
-	 * @param ray The `DataType/Ray`.
-	 * @param ignoreDescendantsInstance An `Instance` to be ignored.
-	 * @param terrainCellsAreCubes True if terrain cells should be treated as cubes.
-	 * @param ignoreWater True if terrain water should be ignored.
-	 * @returns The `BasePart` (or `Terrain`) hit, the `DataType/Vector3` point of intersection, the `DataType/Vector3` surface normal at the point of intersection and the `Enum/Material` of the `BasePart` or terrain cell hit.
-	 */
+	/** Return type is (BasePart, Vector3) if the ray hits.  If it misses it will return (nil, PointAtEndOfRay) */
 	FindPartOnRay(
 		ray: Ray,
 		ignoreDescendantsInstance?: Instance,
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-	/** 
-	 * This function returns the first `BasePart` intersecting with the given [DataType.Ray](https://developer.roblox.com/search#stq=Ray) that isn't in, or a descendant of an object in, the given ignore list. It also returns the position of intersection, the surface normal of the intersecting part at the point of intersection, and the part's [BasePart.Material](https://developer.roblox.com/api-reference/property/BasePart/Material).
-	 *
-	 * This function is a variant of [Workspace.FindPartOnRay](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRay) with the addition of an ignore list. This allows the developer to ignore certain parts or `Model`s.
-	 *
-	 * Those looking to utilize a white list instead should use [Workspace.FindPartOnRayWithWhitelist](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRayWithWhitelist).
-	 *
-	 * For more information on how raycasting works in Roblox, please see the articles on [raycasting basics][1] and [how to make raycasting guns][2].
-	 *
-	 * ## Notes
-	 *
-	 *  - Theoretically, a ray extends infinitely in one direction. However, the max length of the direction vector on Roblox is 5000 studs
-	 *
-	 *  - The length of the direction vector is important - parts further away than its length will not be tested
-	 *
-	 *  - If the ray does not intersect a part, the return values will be nil and the point at the end of the ray, respectively
-	 *
-	 *  - Parts that are in a [collision group](https://developer.roblox.com/api-reference/function/PhysicsService/SetPartCollisionGroup) that do not collide with the "Default" collision group are ignored implicitly. This is an unintended behavior that may change
-	 *
-	 * [1]: https://developer.roblox.com/articles/Raycasting
-	 *
-	 * [2]: https://developer.roblox.com/articles/Making-a-ray-casting-laser-gun-in-Roblox
-	 * @param ray The specified `DataType/Ray`
-	 * @param ignoreDescendantsTable An array of objects to be ignored
-	 * @param terrainCellsAreCubes Whether terrain cells should be treated as cubes
-	 * @param ignoreWater Whether terrain water should be ignored
-	 * @returns A tuple containing:
- - The `BasePart` (or `Terrain`) hit
- - The `DataType/Vector3` point of intersection, 
- - The Vector3 surface normal at the point of intersection
- - The `Enum/Material` of the part or terrain cell hit
-	 */
+	/** Return type is (BasePart, Vector3) if the ray hits.  If it misses it will return (nil, PointAtEndOfRay) */
 	FindPartOnRayWithIgnoreList(
 		ray: Ray,
 		ignoreDescendantsTable: Array<Instance>,
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-	/** 
-	 * This function returns the first `BasePart` intersecting with the given [DataType.Ray](https://developer.roblox.com/search#stq=Ray) that is in, or is a descendant of an object in, the given white-list. It also returns the position of intersection, the surface normal of the intersecting part at the point of intersection, and the part's [BasePart.Material](https://developer.roblox.com/api-reference/property/BasePart/Material).
-	 *
-	 * This function is a variant of [Workspace.FindPartOnRay](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRay) with the addition of a whitelist. This allows the developer to only look at certain parts or [Models](https://developer.roblox.com/api-reference/class/Model). This can be particularly useful when, for example, looking for points of intersection between a ray and a single part.
-	 *
-	 * ```lua
-local function getIntersection(part, ray)
-	local whiteList = {part}
-	local _, position, normal = workspace:FindPartOnRayWithWhitelist(ray, whiteList)
-	return position, normal
-end
-```
-	 * 
 
-	 * Those looking to utilize an ignore list instead should use [Workspace.FindPartOnRayWithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRayWithIgnoreList).
-	 *
-	 * ## Notes
-	 *
-	 *  - Theoretically, a ray extends infinitely in one direction. However, the max length of the direction vector on Roblox is 5000 studs
-	 *
-	 *  - The length of the direction vector is important - parts further away than its length will not be tested
-	 *
-	 *  - If the ray does not intersect a part, the return values will be nil and the point at the end of the ray, respectively
-	 *
-	 *  - If a nil value is given in the white list, instances after this value will be disregarded
-	 *
-	 *  - Parts that are in a [collision group](https://developer.roblox.com/api-reference/function/PhysicsService/SetPartCollisionGroup) that does not collide with the "Default" collision group are ignored implicitly
-	 *
-	 * For more information on how raycasting works in Roblox, please see the articles on [raycasting basics][1] and [how to make raycasting guns][2].
-	 *
-	 * [1]: https://developer.roblox.com/articles/Raycasting
-	 *
-	 * [2]: https://developer.roblox.com/articles/Making-a-ray-casting-laser-gun-in-Roblox
-	 * @param ray The specified `DataType/Ray`
-	 * @param whitelistDescendantsTable An array of objects to be checked
-	 * @param ignoreWater Whether water will be ignored or not. This only applies if the `Workspace|Workspace's` `Terrain` has been included in the white-list. Otherwise, otherwise water is ignored along with terrain by default
-
-	 * @returns A tuple containing:
- - The `BasePart` (or `Terrain`) hit
- - The `DataType/Vector3` point of intersection
- - The `DataType/Vector3` surface normal at the point of intersection
- - `Enum/Material` of the `BasePart` or terrain cell hit
-	 */
 	FindPartOnRayWithWhitelist(
 		ray: Ray,
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-	/** 
-	 * Returns an array of `BasePart`s in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3).
-	 *
-	 * This function takes an optional maxParts parameter (default 20) which limits the number of `BasePart`s that can be returned. Once this number has been reached, the search for `BasePart`s will stop. This means some `BasePart`s may not be returned even if they are within the [DataType.Region3](https://developer.roblox.com/search#stq=Region3)
-	 *
-	 * The optional ignoreDescendentsInstance parameter can be used to specify a specific instance for whom itself and all of its descendants should be ignored by this function. This can be useful when, for example, looking to see if any `BasePart`s are inside a `BasePart` other than the `BasePart` itself.
-	 *
-	 * ```lua
-local min = part.Position - (0.5 * part.Size)
-local max = part.Position + (0.5 * part.Size)
-local region = Region3.new(min, max)
-local parts = workspace:FindPartsInRegion3(region, part) --  ignore part
-```
-	 * 
-
-	 * Variants of this function exist with ignore-list and white-list functionality, [Workspace.FindPartsInRegion3WithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3WithIgnoreList) and [Workspace.FindPartsInRegion3WithWhiteList](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3WithWhiteList).
-	 *
-	 * If no `BasePart`s are found, an empty array will be returned.
-	 *
-	 * ## How do Region3 checks work?
-	 *
-	 * Checking if a part overlaps a [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is not a simple process. It actually is time consuming and complicated. Instead it checks if parts are roughly in the same area. When this function is called, it figures out which voxels contain the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). It then figures out which parts might be in those voxels. It does this by comparing the axis-aligned bounding box (sometimes called the AABB) of the part with the voxels. The axis-aligned bounding box can be seen in Roblox Studio when a part is selected.
-	 *
-	 * This means that the area that is inspected by the function may be larger than the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). For this reason it is recommended to make sure that the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is on the voxel grid. The best way to do this is by setting the coordinates of the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) to multiples of 4 (since voxels are 4 x 4 x 4 studs).
-	 *
-	 * This method is a fairly quick and easy way to see if parts are in a general area. If a game needs to know if parts are exactly in an area, then [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) should be used. There is a higher cost to using [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) since a part is needed in the `Workspace` and the function takes more time to run.
-	 * @param region The `DataType/Region3` to be checked.
-	 * @param ignoreDescendantsInstance An `Instance` to be ignored.
-	 * @param maxParts The maximum amount of `BasePart`s to be returned.
-	 * @returns An array of `BasePart`s within the `DataType/Region3`.
-	 */
+	/** Returns parts in the area defined by the Region3, up to specified maxCount or 100, whichever is less */
 	FindPartsInRegion3(region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<Instance>;
-	/** 
-	 * Returns an array of `BasePart`s in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3) that aren't in, or a descendant of an entry in, the given IgnoreList.
-	 *
-	 * This function takes an optional maxParts parameter (default 20) which limits the number of `BasePart`s that can be returned. Once this number has been reached, the search for `BasePart`s will stop. This means some `BasePart`s may not be returned even if they are within the [DataType.Region3](https://developer.roblox.com/search#stq=Region3)
-	 *
-	 * If no `BasePart`s are found, an empty array will be returned.
-	 *
-	 * This function is a variant of [Workspace.FindPartsInRegion3](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3) with the addition of an ignore list. This allows the developer to exclude certain `BasePart`s or `Model`s, for example characters, from the search. Those looking to find `BasePart`s in a Region3 using a white list, should use [Workspace.FindPartsInRegion3WithWhitelist](https://developer.roblox.com/search#stq=FindPartsInRegion3WithWhitelist).
-	 *
-	 * ## How do Region3 checks work?
-	 *
-	 * Checking if a part overlaps a [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is not a simple process. It actually is time consuming and complicated. Instead it checks if parts are roughly in the same area. When this function is called, it figures out which voxels contain the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). It then figures out which parts might be in those voxels. It does this by comparing the axis-aligned bounding box (sometimes called the AABB) of the part with the voxels. The axis-aligned bounding box can be seen in Roblox Studio when a part is selected.
-	 *
-	 * This means that the area that is inspected by the function may be larger than the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). For this reason it is recommended to make sure that the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is on the voxel grid. The best way to do this is by setting the coordinates of the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) to multiples of 4 (since voxels are 4 x 4 x 4 studs).
-	 *
-	 * This method is a fairly quick and easy way to see if parts are in a general area. If a game needs to know if parts are exactly in an area, then [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) should be used. There is a higher cost to using [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) since a part is needed in the `Workspace` and the function takes more time to run.
-	 *
-	 * ## Notes
-	 *
-	 *  - If a nil value is given in the ignore list, instances after this value will not be ignored
-	 * @param region The `DataType/Region3` to be checked.
-	 * @param ignoreDescendantsTable An array of objects to be ignored.
-	 * @param maxParts The maximum number of `BasePart`s to be returned.
-	 * @returns An array of `BasePart`s found within the `DataType/Region3`.
-	 */
+	/** Returns parts in the area defined by the Region3, up to specified maxCount or 100, whichever is less */
 	FindPartsInRegion3WithIgnoreList(region: Region3, ignoreDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
-	/** 
-	 * Returns an array of `BasePart`s in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3) that are in, or descendant of an object in, a given white list.
-	 *
-	 * This function takes an optional maxParts parameter (default 20) which limits the number of `BasePart`s that can be returned. Once this number has been reached, the search for `BasePart`s will stop. This means some `BasePart`s may not be returned even if they are within the [DataType.Region3](https://developer.roblox.com/search#stq=Region3)
-	 *
-	 * If no `BasePart`s are found, an empty array will be returned.
-	 *
-	 * This function is a variant of [Workspace.FindPartsInRegion3](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3) with the addition of a white list. Those looking to find `BasePart`s in a Region3 using an ignore list, should use [Workspace.FindPartsInRegion3WithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3WithIgnoreList).
-	 *
-	 * ## How do Region3 checks work?
-	 *
-	 * Checking if a part overlaps a [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is not a simple process. It actually is time consuming and complicated. Instead it checks if parts are roughly in the same area. When this function is called, it figures out which voxels contain the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). It then figures out which parts might be in those voxels. It does this by comparing the axis-aligned bounding box (sometimes called the AABB) of the part with the voxels. The axis-aligned bounding box can be seen in Roblox Studio when a part is selected.
-	 *
-	 * This means that the area that is inspected by the function may be larger than the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). For this reason it is recommended to make sure that the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is on the voxel grid. The best way to do this is by setting the coordinates of the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) to multiples of 4 (since voxels are 4 x 4 x 4 studs).
-	 *
-	 * This method is a fairly quick and easy way to see if parts are in a general area. If a game needs to know if parts are exactly in an area, then [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) should be used. There is a higher cost to using [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) since a part is needed in the `Workspace` and the function takes more time to run.
-	 *
-	 * ## Notes
-	 *
-	 *  - If a nil value is given in the white list, instances after this value will be disregarded
-	 * @param region The `DataType/Region3` to be checked.
-	 * @param whitelistDescendantsTable An array of objects to check.
-	 * @param maxParts The maximum number of `BasePart`s to be returned.
-	 * @returns An array of `BasePart`s within the `DataType/Region3`.
-	 */
+
 	FindPartsInRegion3WithWhiteList(region: Region3, whitelistDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
-	/** 
-	 * Returns the number of `BasePart`s that are deemed physically active, due to being recently under the influence of physics.
-	 *
-	 * This function provides a measure of how many `BasePart`s are being influenced by, or recently under the influence of, physical forces.
-	 *
-	 * ```lua
-print(workspace:GetNumAwakeParts()) -- prints the number of 'awake' parts
-```
-	 * 
 
-	 * ## Sleeping vs Awake Parts
-	 *
-	 * In order to ensure good performance, Roblox sets `BaseParts` in which physics are not being applied to a 'sleeping' state. `BasePart`s with [BasePart.Anchored](https://developer.roblox.com/api-reference/property/BasePart/Anchored) set to true, for example, will always be sleeping as physics does not apply to them. When a force is applied to an non anchored `BasePart`, an 'awake' state will be applied. Whilst a `BasePart` is awake the Roblox physics engine will perform continuous calculations to ensure physical forces interact correctly with the part. Once the `BasePart` is no longer subject to physical forces, it will revert to a 'sleeping' state.
-	 * @returns The number of awake parts.
-	 */
 	GetNumAwakeParts(): number;
-	/** 
-	 * Returns an integer, between 0 and 100, representing the percentage of real-time that physics simulation is currently being throttled to.
-	 *
-	 * This function can be used to determine whether, and to what degree, physics throttling is occurring.
-	 *
-	 * ## What is physics throttling?
-	 *
-	 * Physics throttling occurs when the physics engine detects it cannot keep up with the game in realtime. When physics is being throttled, it will update less frequently causing `BasePart`s to appear to move slower.
-	 *
-	 * Without throttling, the physics simulation would fall further behind out of sync with the game. This can lead to lower frame rates and other undesirable behavior.
-	 *
-	 * Objects associated with `Humanoid`s are exempt from physics throttling.
-	 *
-	 * See also [Workspace.SetPhysicsThrottleEnabled](https://developer.roblox.com/api-reference/function/Workspace/SetPhysicsThrottleEnabled).
-	 *
-	 * ## Demonstrating physics throttling
-	 *
-	 * Developers should always avoid creating places that overload the physics engine, as it leads to sub-par experience for players. Those wishing to simulate physics throttling for research purposes however, need only create a lot of `Part`s very quickly.
-	 *
-	 * ```lua
-local i = 0
-while true do
-	i = i + 1
-	if i % 5 == 0 then
-		wait()
-	end
-	local part = Instance.new("Part", workspace)
-end
-```
-	 *
-	 * @returns The percentage of real-time that physics simulation is currently being throttled to.
-	 */
+
 	GetPhysicsThrottling(): number;
-	/** 
-	 * Returns the number of frames per second that physics is currently being simulated at.
-	 *
-	 * ## Using GetRealPhysicsFPS to combat exploiters
-	 *
-	 * A common use of this function is to detect if exploiters are increasing their local physics frame rate to move faster. This is generally done by comparing the result returned by a client's GetRealPhysicsFPS to a maximum that will not be breached in normal circumstances (usually 65 or 70). If this limit is breached, developers can use the [Player.Kick](https://developer.roblox.com/api-reference/function/Player/Kick) function to remove that `Player` from the game. It is important to remember that, although this practice may be effective sometimes, client-side anti-exploiter measures are never 100% reliable.
-	 * @returns Returns the number of frames per second that physics is currently being simulated at.
-	 */
+
 	GetRealPhysicsFPS(): number;
-	/** 
-	 * Returns a bool stating if no `BasePart`s are in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3).
-	 *
-	 * The optional ignoreDescendentsInstance parameter can be used to specify a specific instance for whom itself and all of its descendants should be ignored by this function. This can be useful when, for example, looking to see if any `BasePart`s are inside a `BasePart` other than the `BasePart` itself.
-	 *
-	 * ```lua
-local min = part.Position - (0.5 * part.Size)
-local max = part.Position + (0.5 * part.Size)
-local region = Region3.new(min, max)
-local isPartEmpty = workspace:IsRegion3Empty(region, part) --  ignore part
-```
-	 * 
 
-	 * If more than one object and its descendants need to be excluded from the search, developers should use [Workspace.IsRegion3EmptyWithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/IsRegion3EmptyWithIgnoreList).
-	 *
-	 * This function only returns if a region is empty or not. Developers looking to find `BasePart`s in a region should use [Workspace.FindPartsInRegion3](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3).
-	 *
-	 * ## How do Region3 checks work?
-	 *
-	 * Checking if a part overlaps a [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is not a simple process. It actually is time consuming and complicated. Instead it checks if parts are roughly in the same area. When this function is called, it figures out which voxels contain the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). It then figures out which parts might be in those voxels. It does this by comparing the axis-aligned bounding box (sometimes called the AABB) of the part with the voxels. The axis-aligned bounding box can be seen in Roblox Studio when a part is selected.
-	 *
-	 * This means that the area that is inspected by the function may be larger than the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). For this reason it is recommended to make sure that the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is on the voxel grid. The best way to do this is by setting the coordinates of the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) to multiples of 4 (since voxels are 4 x 4 x 4 studs).
-	 *
-	 * This method is a fairly quick and easy way to see if any parts are in a general area. If a game needs to know if parts are exactly in an area, then [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) should be used. There is a higher cost to using [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) since a part is needed in the `Workspace` and the function takes more time to run.
-	 * @param region The `DataType/Region3` to be checked.
-	 * @param ignoreDescendentsInstance An `Instance` to be ignored.
-	 * @returns True if the `DataType/Region3` is empty.
-	 */
 	IsRegion3Empty(region: Region3, ignoreDescendentsInstance?: Instance): boolean;
-	/** 
-	 * Returns a bool stating if no `BasePart`s are in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3), ignoring any `BasePart`s that are in, or descend from objects in, the ignore list given.
-	 *
-	 * For example, the following code snippet will check to see if the Region is empty, ignoring the descendants of a `Model` named 'Scenery'.
-	 *
-	 * ```lua
-local region3 = Region3.new(Vector3.new(0, 0, 0), Vector3.new(10, 10, 10))
-local scenery = workspace:FindFirstChild("Scenery")
-local ignoreList = {scenery}
-local isEmpty = workspace:IsRegion3EmptyWithIgnoreList(region3, ignoreList)
-```
-	 * 
 
-	 * This function only returns if a region is empty or not. Developers looking to find `BasePart`s in a region should use [Workspace.FindPartsInRegion3WithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3WithIgnoreList).
-	 *
-	 * This function is a variant of [Workspace.IsRegion3Empty](https://developer.roblox.com/api-reference/function/Workspace/IsRegion3Empty) with the addition of an ignore list. In cases where a white list is required instead, developers should check to see if any parts are returned by [Workspace.FindPartsinRegion3WithWhitelist](https://developer.roblox.com/search#stq=FindPartsinRegion3WithWhitelist).
-	 *
-	 * ## How do Region3 checks work?
-	 *
-	 * Checking if a part overlaps a [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is not a simple process. It actually is time consuming and complicated. Instead it checks if parts are roughly in the same area. When this function is called, it figures out which voxels contain the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). It then figures out which parts might be in those voxels. It does this by comparing the axis-aligned bounding box (sometimes called the AABB) of the part with the voxels. The axis-aligned bounding box can be seen in Roblox Studio when a part is selected.
-	 *
-	 * This means that the area that is inspected by the function may be larger than the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). For this reason it is recommended to make sure that the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is on the voxel grid. The best way to do this is by setting the coordinates of the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) to multiples of 4 (since voxels are 4 x 4 x 4 studs).
-	 *
-	 * This method is a fairly quick and easy way to see if any parts are in a general area. If a game needs to know if parts are exactly in an area, then [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) should be used. There is a higher cost to using [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) since a part is needed in the `Workspace` and the function takes more time to run.
-	 *
-	 * ## Notes
-	 *
-	 *  - If a nil value is given in the ignore list, instances after this value will not be ignored
-	 * @param region The `DataType/Region3` to be checked.
-	 * @param ignoreDescendentsTable An array of objects to be ignored.
-	 * @returns True if the `DataType/Region3` is empty.
-	 */
 	IsRegion3EmptyWithIgnoreList(region: Region3, ignoreDescendentsTable: Array<Instance>): boolean;
-	/** 
-	 * This function creates joints between the specified [Parts](https://developer.roblox.com/api-reference/class/BasePart) and any touching parts depending on the parts' surfaces and the specified joint creation mode.
-	 *
-	 * The first parameter is an array of [BaseParts](https://developer.roblox.com/api-reference/class/BasePart). Joints will only be create between the parts in the array and not in the array. Joints will not be created between the parts in the array.
-	 *
-	 * The second parameter is a [Enum.JointCreationMode](https://developer.roblox.com/search#stq=JointCreationMode) that determines how joints will be created. The following options are available:
-	 *
-	 * | Name | Description |
-	 * | --- | --- |
-	 * | All | Joints created between any touching parts |
-	 * | Surface | Joints created between parts with compatible surfaces |
-	 * | None | No joints created. Causes this function to do nothing |
-	 *
-	 * This function is used by the Roblox Studio Move tool when the user finishes moving a selection. In conjunction with [Plugin.GetJoinMode](https://developer.roblox.com/api-reference/function/Plugin/GetJoinMode) and [Workspace.UnjoinFromOutsiders](https://developer.roblox.com/api-reference/function/Workspace/UnjoinFromOutsiders) it can be used to retain join functionality when developing custom studio build tools. See the snippets below for an example.
-	 *
-	 * ```lua
--- finished moving a selection, make joints
-local function finishedMovingParts(parts)
-	local joinMode = Plugin:GetJoinMode()
-	workspace:JoinToOutsiders(parts, joinMode)
-end
-```
-	 * 
-	 *
-	 * ```lua
--- started moving a selection, break joints
-local function startMovingParts(parts)
-	workspace:UnjoinFromOutsiders(parts)
-end
-```
-	 * 
 
-	 * Developers interested in seeing how this function is used in the Roblox Studio should see the [Studio Tools GitHub repository][1].
-	 *
-	 * [1]: https://github.com/Roblox/Studio-Tools
-	 * @param objects An array of `BasePart`s for whom joints are to be made.
-	 * @param jointType The `Enum/JointCreationMode` to be used.
-	 */
 	JoinToOutsiders(objects: Array<Instance>, jointType: CastsToEnum<Enum.JointCreationMode>): void;
-	/** 
-	 * Returns true if the game has the PGS Physics solver enabled.
-	 *
-	 * As [Workspace.PGSPhysicsSolverEnabled](https://developer.roblox.com/search#stq=PGSPhysicsSolverEnabled) cannot be accessed by scripts, the PGSIsEnabled function allows developers to tell which physics solver the game is using.
-	 *
-	 * ```lua
-print(workspace:PGSIsEnabled()) -- true = PGS solver enabled 
-print(workspace:PGSIsEnabled()) -- false = Legacy solver enabled
-```
-	 * 
 
-	 * ## What is the PGS Solver?
-	 *
-	 * The PGS Solver is Roblox's state of the art physics solver which offers a range of simulation capabilities not available in Roblox's legacy solver.
-	 *
-	 * Note, the PGS solver is currently the default physics solver used by Roblox. Developers should expect the legacy physics solver to be deprecated or removed at some point in the future.
-	 *
-	 * For more information on the PGS Solver, please see [this article][1].
-	 *
-	 * [1]: https://developer.roblox.com/articles/Building-with-PGS
-	 * @returns True if the PGS solver is enabled.
-	 */
 	PGSIsEnabled(): boolean;
-	/** 
-	 * Breaks all joints between the specified `BasePart`s and other `BasePart`s.
-	 *
-	 * This function requires an array of `BasePart`s. Note, joints will not be broken between these `BasePart`s (each other), only between these `BasePart`s and other `BasePart`s not in the array.
-	 *
-	 * This function is used by the Roblox Studio Move tool when the user starts moving a selection. In conjunction with [Plugin.GetJoinMode](https://developer.roblox.com/api-reference/function/Plugin/GetJoinMode) and [Workspace.JoinToOutsiders](https://developer.roblox.com/api-reference/function/Workspace/JoinToOutsiders) it can be used to retain join functionality when developing custom studio build tools. See the snippets below for an example.
-	 *
-	 * ```lua
--- finished moving a selection, make joints
-local function finishedMovingParts(parts)
-	local joinMode = Plugin:GetJoinMode()
-	workspace:JoinToOutsiders(parts, joinMode)
-end
-```
-	 * 
-	 *
-	 * ```lua
--- started moving a selection, break joints
-local function startMovingParts(parts)
-	workspace:UnjoinFromOutsiders(parts)
-end
-```
-	 * 
 
-	 * Developers interested in seeing how this function is used in the Roblox Studio should see the [Studio Tools GitHub repository][1].
-	 *
-	 * [1]: https://github.com/Roblox/Studio-Tools
-	 * @param objects An array of `BasePart`s for whom joints are to be broken.
-	 */
 	UnjoinFromOutsiders(objects: Array<Instance>): void;
 }
 
