@@ -1,7 +1,10 @@
 {
-	"name": "rbx-types",
+	"name": "@rbxts/types",
 	"version": "1.0.191",
-	"description": "Generates a roblox.d.ts file from a combination of handwritten .d.ts files and generated data from Roblox's API dump",
+	"publishConfig": {
+		"access": "public"
+	},
+	"description": "TypeScript typings for the Roblox platform. Partially handwritten and partially automatically generated.",
 	"main": "include/roblox.d.ts",
 	"types": "include/roblox.d.ts",
 	"scripts": {},
@@ -9,10 +12,15 @@
 		"type": "git",
 		"url": "git+https://github.com/roblox-ts/rbx-types.git"
 	},
-	"author": "",
+	"author": "roblox-ts",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/roblox-ts/rbx-types/issues"
 	},
-	"homepage": "https://github.com/roblox-ts/rbx-types#readme"
+	"homepage": "https://github.com/roblox-ts/rbx-types#readme",
+	"keywords": [
+		"types",
+		"Roblox",
+		"typescript"
+	]
 }
