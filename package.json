@@ -1,5 +1,5 @@
 {
-	"name": "rbx-types",
+	"name": "@rbxts/types",
 	"version": "1.0.81",
 	"description": "TypeScript typings for the Roblox platform. Partially handwritten and partially automatically generated.",
 	"scripts": {
@@ -34,7 +34,6 @@
 	"bundleDependencies": [],
 	"dependencies": {},
 	"keywords": [
-		"rbx-types",
 		"types",
 		"Roblox",
 		"typescript"
