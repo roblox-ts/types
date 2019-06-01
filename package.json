@@ -1,6 +1,9 @@
 {
 	"name": "@rbxts/types",
 	"version": "1.0.81",
+	"publishConfig": {
+		"access": "public"
+	},
 	"description": "TypeScript typings for the Roblox platform. Partially handwritten and partially automatically generated.",
 	"scripts": {
 		"build": "ts-node src/index.ts"
