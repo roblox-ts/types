@@ -6,9 +6,13 @@
 /// <reference path="generated_classes.d.ts" />
 
 // ROBLOX API
-type StrictInstanceByName<Q extends keyof Instances> = Instances[Q]["ClassName"] extends Q
-	? Instances[Q]
-	: Instances[Q] & { ClassName: Q };
+type StrictInstances = {
+	[Key in keyof Instances]: Instances[Key]["ClassName"] extends Key
+		? Instances[Key]
+		: Instances[Key] & { ClassName: Key }
+};
+/** @deprecated Use `StrictInstances` instead */
+type StrictInstanceByName<Q extends keyof Instances> = StrictInstances[Q];
 
 type GetProperties<T> = {
 	[Key in keyof T]-?: Key extends "GetPropertyChangedSignal"
@@ -553,7 +557,7 @@ interface InstanceConstructor {
 	 * As such, you should avoid using the second argument (parent) of this function.
 	 * You can read [this thread on the developer forum](https://devforum.roblox.com/t/psa-dont-use-instance-new-with-parent-argument/30296) for more information.
 	 */
-	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): StrictInstanceByName<T>;
+	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): StrictInstances[T];
 	/**
 	 * Creates an new object of type val. The parent argument is optional;
 	 * If it is supplied, the object will be parented to that object.
