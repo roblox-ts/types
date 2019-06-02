@@ -320,10 +320,10 @@ interface Instance {
 	FindFirstChildWhichIsA<T extends keyof Instances>(className: T, recursive?: boolean): Instances[T] | undefined;
 	FindFirstChildWhichIsA(className: string, recursive?: boolean): Instance | undefined;
 
-	FindFirstAncestorOfClass<T extends Instance["ClassName"]>(className: T): StrictInstanceByName<T> | undefined;
+	FindFirstAncestorOfClass<T extends Instance["ClassName"]>(className: T): StrictInstances[T] | undefined;
 	FindFirstAncestorOfClass(className: string): Instance | undefined;
 
-	FindFirstChildOfClass<T extends Instance["ClassName"]>(className: T): StrictInstanceByName<T> | undefined;
+	FindFirstChildOfClass<T extends Instance["ClassName"]>(className: T): StrictInstances[T] | undefined;
 	FindFirstChildOfClass(className: string): Instance | undefined;
 
 	GetPropertyChangedSignal<T extends GetProperties<this>>(propertyName: T): RBXScriptSignal;
