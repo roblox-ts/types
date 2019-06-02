@@ -541,6 +541,11 @@ interface ReadonlyMap<K, V> extends Iterable<[K, V]> {
 	keys(): Array<K>;
 }
 
+interface ReadonlyMapConstructor {
+	new <K = any, V = any>(entries?: ReadonlyArray<[K, V]> | null): ReadonlyMap<K, V>;
+}
+declare var ReadonlyMap: ReadonlyMapConstructor;
+
 /** @rbxts map */
 interface Map<K, V> extends ReadonlyMap<K, V> {
 	/**
@@ -637,6 +642,11 @@ set1.isSubsetOf(set2) && !set2.isSubsetOf(set1)
 	 */
 	isSubsetOf<U>(set: Set<U>): boolean;
 }
+
+interface ReadonlySetConstructor {
+	new <T = any>(values?: ReadonlyArray<T> | null): ReadonlySet<T>;
+}
+declare const ReadonlySet: ReadonlySetConstructor;
 
 /** @rbxts set */
 interface Set<T> extends ReadonlySet<T> {
