@@ -225,6 +225,11 @@ interface String {
 	upper(): string;
 }
 
+declare namespace string {
+	/** Receives zero or more integers. Returns a string with length equal to the number of arguments, in which each character has the internal numerical code equal to its corresponding argument. */
+	function char(...args: Array<number>): string;
+}
+
 declare namespace math {
 	/** The number π is a mathematical constant. Originally defined as the ratio of a circle's circumference to its diameter, it now has various equivalent definitions and appears in many formulas in all areas of mathematics and physics. It is approximately equal to 3.14159. */
 	const pi: number;
