@@ -17,15 +17,15 @@ export class EnumGenerator extends Generator {
 		this.pushIndent();
 		this.write(`type EnumType<T extends { Name: string }> = { [K in T["Name"]]: Extract<T, { Name: K }> };`);
 		this.write(``);
-		this.write(`interface RbxEnumItem {`);
+		this.write(`interface EnumItem {`);
 		this.pushIndent();
 		this.write(`Name: string;`);
 		this.write(`Value: number;`);
-		this.write(`EnumType: RbxEnumType;`);
+		this.write(`EnumType: EnumItemGroup;`);
 		this.popIndent();
 		this.write(`}`);
-		this.write(`type RbxEnumType = { GetEnumItems(): Array<RbxEnumItem> } & { [index: string]: RbxEnumItem };`);
-		this.write(`export function GetEnums(): Array<RbxEnumType>;`);
+		this.write(`type EnumItemGroup = { GetEnumItems(): Array<EnumItem> } & { [index: string]: EnumItem };`);
+		this.write(`export function GetEnums(): Array<EnumItemGroup>;`);
 		this.write(``);
 
 		for (const { Name: enumTypeName, Items: enumTypeItems } of rbxEnums) {
