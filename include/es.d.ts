@@ -14,7 +14,7 @@ interface ArrayLike<T> {
 	/**
 	 * Gets the length of the array. This is one higher than the highest index defined in an array.
 	 */
-	length(): number;
+	size(): number;
 	readonly [n: number]: T;
 }
 
@@ -119,7 +119,7 @@ declare const Object: ObjectConstructor;
 /** @rbxts string */
 interface String extends Iterable<string> {
 	/** The current number of characters in the string. */
-	length(): number;
+	size(): number;
 
 	/** Returns a new string equivalent to this string but with the whitespace removed from the start and end. */
 	trim(): string;
