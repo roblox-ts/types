@@ -14,7 +14,7 @@ interface ArrayLike<T> {
 	/**
 	 * Gets the length of the array. This is one higher than the highest index defined in an array.
 	 */
-	length(): number;
+	size(): number;
 	readonly [n: number]: T;
 }
 
@@ -119,7 +119,7 @@ declare const Object: ObjectConstructor;
 /** @rbxts string */
 interface String extends Iterable<string> {
 	/** The current number of characters in the string. */
-	length(): number;
+	size(): number;
 
 	/** Returns a new string equivalent to this string but with the whitespace removed from the start and end. */
 	trim(): string;
@@ -243,7 +243,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * Creates a new array and shallow copies `this` and the items into the new array, in that order.
 	 * @param items Additional items to add to the end of array1.
 	 */
-	concat<T>(...items: Array<ReadonlyArray<T>>): Array<T>;
+	concat(...items: Array<ReadonlyArray<T>>): Array<T>;
 
 	/**
 	 * Adds all the elements of an array separated by the specified separator string.
@@ -374,7 +374,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * order, until it finds one where predicate returns true. If such an element is found, find
 	 * immediately returns the index at which it was found. Otherwise, find returns -1.
 	 */
-	findIndex<T>(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean): number;
+	findIndex(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean): number;
 
 	/**
 	 * Returns a shallow copy of the array
@@ -541,6 +541,11 @@ interface ReadonlyMap<K, V> extends Iterable<[K, V]> {
 	keys(): Array<K>;
 }
 
+interface ReadonlyMapConstructor {
+	new <K = any, V = any>(entries?: ReadonlyArray<[K, V]> | null): ReadonlyMap<K, V>;
+}
+declare var ReadonlyMap: ReadonlyMapConstructor;
+
 /** @rbxts map */
 interface Map<K, V> extends ReadonlyMap<K, V> {
 	/**
@@ -637,6 +642,11 @@ set1.isSubsetOf(set2) && !set2.isSubsetOf(set1)
 	 */
 	isSubsetOf<U>(set: Set<U>): boolean;
 }
+
+interface ReadonlySetConstructor {
+	new <T = any>(values?: ReadonlyArray<T> | null): ReadonlySet<T>;
+}
+declare const ReadonlySet: ReadonlySetConstructor;
 
 /** @rbxts set */
 interface Set<T> extends ReadonlySet<T> {
@@ -813,6 +823,9 @@ type Writable<T> = { -readonly [P in keyof T]: T[P] };
  */
 type Pick<T, K extends keyof T> = { [P in K]: T[P] };
 
+/** Returns a subset of type T which excludes properties K */
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
 /**
  * Construct a type with a set of properties K of type T
  */
@@ -844,6 +857,3 @@ type ReturnType<T extends (...args: Array<any>) => any> = T extends (...args: Ar
 type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (...args: Array<any>) => infer R
 	? R
 	: any;
-
-/** Returns a subset of type T which excludes properties K */
-type Unpick<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
