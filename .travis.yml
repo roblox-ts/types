@@ -18,6 +18,7 @@ script:
 
   - ls
   - cp rbx-types/include/* deploy/include
+  - cp rbx-types/README.md deploy/README.md
   - cd deploy
 
   - git add -A
