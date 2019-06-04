@@ -20,6 +20,7 @@ script:
   - ls
   - rm -rf deploy/include/*
   - cp -r rbx-types/include/* deploy/include
+  - cp rbx-types/plugin.d.ts deploy/plugin.d.ts
   - cp rbx-types/README.md deploy/README.md
   - cd deploy
 
