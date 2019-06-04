@@ -5286,7 +5286,7 @@ interface ContentProvider extends Instance {
  *
  * It's better to use ContextActionService's BindAction than UserInputService's InputBegan for most cases. For example, if you want to use the `R` key to reload a weapon while it is equipped, the player might type "roblox is fun" in chat or otherwise use the `R` key for something else. The weapon could reload when the player didn't mean to! If you instead use BindAction and UnbindAction when the weapon is equipped/unequipped, ContextActionService will make sure that `R` key presses trigger the reload action only when it is the most recently bound action.
  */
-	/** @client */
+	/** @rbxts client */
 interface ContextActionService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. In TypeScript the macro `isClassName` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ContextActionService";
@@ -5841,7 +5841,7 @@ interface SpecialMesh extends FileMesh {
  *
  * There are limits applied to the data store model. Please see [Data Store Errors and Limits](https://developer.roblox.com/search#stq=Datastore%20Errors) for details.
  */
-	/** @server */
+	/** @rbxts server */
 interface DataStoreService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. In TypeScript the macro `isClassName` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DataStoreService";
@@ -7035,7 +7035,7 @@ interface Geometry extends Instance {
  *
  * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an in-depth guide on data structure, management, error handling, etc.
  */
-	/** @server */
+	/** @rbxts server */
 interface GlobalDataStore extends Instance {
 	/** A read-only string representing the class this Instance belongs to. In TypeScript the macro `isClassName` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "GlobalDataStore" | "OrderedDataStore";
@@ -7131,7 +7131,7 @@ interface GlobalDataStore extends Instance {
  *
  * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an overview on using ordered data stores.
  */
-	/** @server */
+	/** @rbxts server */
 interface OrderedDataStore extends GlobalDataStore {
 	/** A read-only string representing the class this Instance belongs to. In TypeScript the macro `isClassName` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "OrderedDataStore";
@@ -9857,7 +9857,7 @@ interface HttpRequest extends Instance {
  *
  * [3]: http://robloxdev.com/articles/Sending-HTTP-requests
  */
-	/** @server */
+	/** @rbxts server */
 interface HttpService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. In TypeScript the macro `isClassName` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "HttpService";
@@ -20080,7 +20080,7 @@ interface Selection extends Instance {
 /** 
  * A semantic, organized place to put your server-sided game logic, which does not interfere with the world. Scripts will run inside this service, and will not replicate to game clients, allowing for secure storage of your scripts.
  */
-	/** @server */
+	/** @rbxts server */
 interface ServerScriptService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. In TypeScript the macro `isClassName` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ServerScriptService";
@@ -20097,7 +20097,7 @@ interface ServerScriptService extends Instance {
  *
  * Note that as the contents of ServerStorage can only be accessed by the server, its contents will need to be parented elsewhere (such as `Workspace`) before clients can access them. Developers who require a container that is accessible by both the server and client are advised to use `ReplicatedStorage` instead.
  */
-	/** @server */
+	/** @rbxts server */
 interface ServerStorage extends Instance {
 	/** A read-only string representing the class this Instance belongs to. In TypeScript the macro `isClassName` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ServerStorage";

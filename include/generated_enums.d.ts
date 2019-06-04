@@ -15,7 +15,7 @@ declare namespace Enum {
 		EnumType: EnumItemGroup;
 	}
 	type EnumItemGroup = { GetEnumItems(): Array<EnumItem> } & { [index: string]: EnumItem };
-	export function GetEnums(): Array<EnumItemGroup>;
+	export function GetEnums(this: typeof Enum): Array<EnumItemGroup>;
 
 	export namespace ActionType {
 		export interface Nothing {

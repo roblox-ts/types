@@ -106,7 +106,7 @@ interface ContentProvider extends Instance {
 	PreloadAsync(contentIdList: Array<Instance>): void;
 }
 
-/** @client */
+/** @rbxts client */
 interface ContextActionService extends Instance {
 	/** @rbxts client */
 	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool | Flag) => void>;
@@ -134,7 +134,7 @@ interface ContextActionService extends Instance {
 	GetBoundActionInfo(actionName: string): BoundActionInfo;
 }
 
-/** @server */
+/** @rbxts server */
 interface DataStoreService extends Instance {
 	GetDataStore(name: string, scope?: string): GlobalDataStore;
 	GetGlobalDataStore(): GlobalDataStore;
@@ -157,7 +157,7 @@ interface GamePassService extends Instance {
 
 interface PlayerGui extends BasePlayerGui {}
 
-/** @server */
+/** @rbxts server */
 interface GlobalDataStore extends Instance {
 	GetAsync<T = unknown>(key: string): T | undefined;
 	IncrementAsync(key: string, delta?: number): number;
@@ -249,7 +249,7 @@ interface _HapticService extends Instance {
 	): void;
 }
 
-/** @server */
+/** @rbxts server */
 interface HttpService extends Instance {
 	GetAsync(url: string, nocache?: boolean, headers?: HttpHeaders): string;
 
@@ -419,7 +419,7 @@ interface Model extends PVInstance {
 	GetBoundingBox(): LuaTuple<[CFrame, Vector3]>;
 }
 
-/** @server */
+/** @rbxts server */
 interface OrderedDataStore extends GlobalDataStore {
 	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
 }
@@ -573,10 +573,10 @@ interface Studio extends Instance {
 	Theme?: StudioTheme;
 }
 
-/** @server */
+/** @rbxts server */
 interface ServerScriptService {}
 
-/** @server */
+/** @rbxts server */
 interface ServerStorage {}
 
 interface StarterGui extends BasePlayerGui {
