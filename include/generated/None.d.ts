@@ -16148,7 +16148,7 @@ game:GetService("Workspace") -- workspace is a service
  *
  *  - The `Terrain` object can be accessed using the [Workspace.Terrain](https://developer.roblox.com/api-reference/property/Workspace/Terrain) property
  */
-interface Workspace extends Model {
+interface Workspace extends Omit<Model, "BreakJoints" | "MakeJoints"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Workspace";
 	/** 
@@ -26412,63 +26412,129 @@ interface ValueBase extends Instance {
 /** 
  * An internal type of `StringValue` object, that stores a `BinaryString` value.
  */
-interface BinaryStringValue extends ValueBase {
+interface BinaryStringValue extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "BinaryStringValue";
+	/** 
+	 * Fires if the [BinaryStringValue.Value](https://developer.roblox.com/search#stq=Value) of the `BinaryStringValue` is changed by the engine.
+	 *
+	 * In practice, this object is stored out of reach from normal scripts, so this event cannot be connected to. If a BinaryStringValue is created by a script, the engine will not do anything with it, so the event will never fire.
+	 *
+	 * Note
+	 *
+	 * ----------
+	 *
+	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 */
+	readonly Changed: RBXScriptSignal<(value: null) => void>;
 }
 
 /** 
  * An instance which is used to hold a boolean value. The value can be used for many things, including to communicate between scripts.
  */
-interface BoolValue extends ValueBase {
+interface BoolValue extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "BoolValue";
 	/** 
 	 * Used to hold a boolean value.
 	 */
 	Value: boolean;
+	/** 
+	 * Fired whenever the [BoolValue.Value](https://developer.roblox.com/api-reference/property/BoolValue/Value) of the `BoolValue` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
+	 *
+	 * This event, like other changed events, can be used to track when an BoolValue changes and to track the different values that it may change to.
+	 *
+	 * For instance, this may be useful in games that rely on BoolValues to track game states and values, such as switch or enabled states.
+	 *
+	 * Note
+	 *
+	 * ----------
+	 *
+	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 */
+	readonly Changed: RBXScriptSignal<(value: boolean) => void>;
 }
 
 /** 
  * An instance which is used to store a BrickColor value.
  */
-interface BrickColorValue extends ValueBase {
+interface BrickColorValue extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "BrickColorValue";
 	/** 
 	 * Used to hold a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor "BrickColor") value.
 	 */
 	Value: BrickColor;
+	/** 
+	 * Fired whenever the [BrickColorValue.Value](https://developer.roblox.com/api-reference/property/BrickColorValue/Value) of the `BrickColorValue` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
+	 *
+	 * This event, like other changed events, can be used to track when an BrickColorValue changes and to track the different values that it may change to.
+	 *
+	 * Note
+	 *
+	 * ----------
+	 *
+	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 */
+	readonly Changed: RBXScriptSignal<(value: BrickColor) => void>;
 }
 
 /** 
  * A container object for a single [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) value.
  */
-interface CFrameValue extends ValueBase {
+interface CFrameValue extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "CFrameValue";
 	/** 
 	 * Used to hold a [CFrame](https://developer.roblox.com/api-reference/datatype/CFrame "CFrame") value.
 	 */
 	Value: CFrame;
+	/** 
+	 * Fired whenever the [CFrameValue.Value](https://developer.roblox.com/api-reference/property/CFrameValue/Value) of the `CFrameValue` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
+	 *
+	 * This event, like other changed events, can be used to track when an CFrameValue changes and to track the different values that it may change to.
+	 *
+	 * For instance, this even may be useful in games that rely on CFrameValues to track game object [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) positions and movements.
+	 *
+	 * Note
+	 *
+	 * ----------
+	 *
+	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 */
+	readonly Changed: RBXScriptSignal<(value: CFrame) => void>;
 }
 
 /** 
  * A container object for a single [DataType.Color3](https://developer.roblox.com/search#stq=Color3) value.
  */
-interface Color3Value extends ValueBase {
+interface Color3Value extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Color3Value";
 	/** 
 	 * The stored [Color3](https://developer.roblox.com/api-reference/datatype/Color3 "Color3").
 	 */
 	Value: Color3;
+	/** 
+	 * Fired whenever the [Color3Value.Value](https://developer.roblox.com/api-reference/property/Color3Value/Value) of the `Color3Value` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
+	 *
+	 * This event, like other changed events, can be used to track when an Color3Value changes and to track the different values that it may change to.
+	 *
+	 * For instance, this may be useful in games that rely on Color3Values to track values such as colors for games using customizable outfits or items.
+	 *
+	 * Note
+	 *
+	 * ----------
+	 *
+	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 */
+	readonly Changed: RBXScriptSignal<(value: Color3) => void>;
 }
 
 /** 
  * An instance which is used to create a number value which can never be less than the MinValue or more than the MaxValue.
  */
-interface DoubleConstrainedValue extends ValueBase {
+interface DoubleConstrainedValue extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DoubleConstrainedValue";
 	ConstrainedValue: number;
@@ -26484,12 +26550,16 @@ interface DoubleConstrainedValue extends ValueBase {
 	 * Used to hold a number value between [DoubleConstrainedValue.MinValue](https://developer.roblox.com/api-reference/property/DoubleConstrainedValue/MinValue) and [DoubleConstrainedValue.MaxValue](https://developer.roblox.com/api-reference/property/DoubleConstrainedValue/MaxValue).
 	 */
 	Value: number;
+	/** 
+	 * Fired whenever the [DoubleConstrainedValue.Value](https://developer.roblox.com/api-reference/property/DoubleConstrainedValue/Value) of the `DoubleConstrainedValue` is changed.
+	 */
+	readonly Changed: RBXScriptSignal<(value: number) => void>;
 }
 
 /** 
  * An IntConstrainedValue is used to store a value which can never be less than MinValue and can never be more than MaxValue.
  */
-interface IntConstrainedValue extends ValueBase {
+interface IntConstrainedValue extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "IntConstrainedValue";
 	/** 
@@ -26516,6 +26586,10 @@ interface IntConstrainedValue extends ValueBase {
 	 * Tags: NotReplicated
 	 */
 	Value: number;
+	/** 
+	 * Fired whenever the Value of the IntConstrainedValue is changed.
+	 */
+	readonly Changed: RBXScriptSignal<(value: number) => void>;
 }
 
 /** 
@@ -26523,13 +26597,27 @@ interface IntConstrainedValue extends ValueBase {
  *
  * [1]: https://en.wikipedia.org/wiki/Integer_overflow
  */
-interface IntValue extends ValueBase {
+interface IntValue extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "IntValue";
 	/** 
 	 * Used to hold an [Integer](https://developer.roblox.com/articles/Integers "Integer").
 	 */
 	Value: number;
+	/** 
+	 * The Changed event fires whenever the [IntValue.Value](https://developer.roblox.com/api-reference/property/IntValue/Value) of the `IntValue` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
+	 *
+	 * This event, like other changed events, can be used to track when an IntValue changes and to track the different values that it may change to.
+	 *
+	 * For instance, this may be useful in games that rely on IntValues to track game states and values, such as item IDs.
+	 *
+	 * Note
+	 *
+	 * ----------
+	 *
+	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 */
+	readonly Changed: RBXScriptSignal<(value: number) => void>;
 }
 
 /** 
@@ -26541,13 +26629,25 @@ interface IntValue extends ValueBase {
  *
  * [2]: https://en.wikipedia.org/wiki/Double-precision_floating-point_format
  */
-interface NumberValue extends ValueBase {
+interface NumberValue extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "NumberValue";
 	/** 
 	 * Used to hold a double value.
 	 */
 	Value: number;
+	/** 
+	 * This event fires whenever the [NumberValue.Value](https://developer.roblox.com/api-reference/property/NumberValue/Value) property is changed.
+	 *
+	 * This event, like other changed events, can be used to track when an NumberValue changes and to track the different values that it may change to.
+	 *
+	 * For instance, this even may be useful in games that rely on NumberValues to track game states and values, such as item IDs.
+	 *
+	 * ## See also
+	 *
+	 * Equivalent changed events exist for similar objects, such as `ObjectValue` and `StringValue`, depending on what object type best suits the need.
+	 */
+	readonly Changed: RBXScriptSignal<(value: number) => void>;
 }
 
 /** 
@@ -26557,13 +26657,25 @@ interface NumberValue extends ValueBase {
  *
  * Like all "-Value" objects, this single value is stored in the Value property. The Changed event for this (and other objects like it) will fire with the new value being stored in the object, instead of a string representing the property being changed.
  */
-interface ObjectValue extends ValueBase {
+interface ObjectValue extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ObjectValue";
 	/** 
 	 * Holds a reference to an instance.
 	 */
 	Value?: Instance;
+	/** 
+	 * This event fires whenever the [ObjectValue.Value](https://developer.roblox.com/api-reference/property/ObjectValue/Value) property is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
+	 *
+	 * This event, like other changed events, can be used to track when an ObjectValue changes and to track the different values that it may change to.
+	 *
+	 * For instance, this even may be useful in games that rely on ObjectValues to track game states and values, such as RPG  targeting systems.
+	 *
+	 * ## See also
+	 *
+	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 */
+	readonly Changed: RBXScriptSignal<(value: Instance) => void>;
 }
 
 /** 
@@ -26575,13 +26687,23 @@ interface ObjectValue extends ValueBase {
  *
  * Like all "-Value" objects, this single value is stored in the Value property. The Changed event for this (and other objects like it) will fire with the new value being stored in the object, instead of a string representing the property being changed.
  */
-interface RayValue extends ValueBase {
+interface RayValue extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RayValue";
 	/** 
 	 * The stored Ray.
 	 */
 	Value: Ray;
+	/** 
+	 * This event fires whenever the [RayValue.Value](https://developer.roblox.com/api-reference/property/RayValue/Value) property is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
+	 *
+	 * This event, like other changed events, can be used to track when an RayValue changes and to track the different values that it may change to.
+	 *
+	 * ## See also
+	 *
+	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 */
+	readonly Changed: RBXScriptSignal<(value: Ray) => void>;
 }
 
 /** 
@@ -26591,25 +26713,53 @@ interface RayValue extends ValueBase {
  *
  * [1]: https://www.lua.org/pil/2.4.html
  */
-interface StringValue extends ValueBase {
+interface StringValue extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "StringValue";
 	/** 
 	 * The stored [string](https://developer.roblox.com/articles/String "API:Type/string").
 	 */
 	Value: string;
+	/** 
+	 * Fired whenever the [StringValue.Value](https://developer.roblox.com/api-reference/property/StringValue/Value) of the `StringValue` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
+	 *
+	 * This event, like other changed events, can be used to track when an StringValue changes and to track the different values that it may change to.
+	 *
+	 * For instance, this may be useful in games that rely on StringValues to track values such as NPC or item names.
+	 *
+	 * Note
+	 *
+	 * ----------
+	 *
+	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `BoolValue`, depending on what object type best suits the need.
+	 */
+	readonly Changed: RBXScriptSignal<(value: string) => void>;
 }
 
 /** 
  * A Vector3Value simply holds a Vector3 as a value. This value can be used for scripts to communicate, for objects to move to a preset location, etc.
  */
-interface Vector3Value extends ValueBase {
+interface Vector3Value extends Omit<ValueBase, "Changed"> {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Vector3Value";
 	/** 
 	 * The stored [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3 "Vector3").
 	 */
 	Value: Vector3;
+	/** 
+	 * Fired whenever the [Vector3Value.Value](https://developer.roblox.com/api-reference/property/Vector3Value/Value) of the `Vector3Value` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
+	 *
+	 * This event, like other changed events, can be used to track when an Vector3Value changes and to track the different values that it may change to.
+	 *
+	 * For instance, this may be useful in games that rely on Vector3Values to track positions in the game world.
+	 *
+	 * Note
+	 *
+	 * ----------
+	 *
+	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 */
+	readonly Changed: RBXScriptSignal<(value: Vector3) => void>;
 }
 
 /** 
