@@ -8,6 +8,7 @@
 		"strict": true,
 		"target": "es6",
 		"strictNullChecks": true,
+		"esModuleInterop": true,
 		// required, configurable
 		"rootDir": "src",
 		"outDir": "out",
