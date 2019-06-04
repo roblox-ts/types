@@ -84,7 +84,6 @@ const breakdance = require("breakdance") as (
 ) => string;
 
 const ROOT_CLASS_NAME = "<<<ROOT>>>";
-const DERIVATIVE_PREFIX = ""; // DerivesFrom
 
 const BAD_NAME_CHARS = [" ", "/"];
 
@@ -825,17 +824,9 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private classIsDerivative(rbxClass: ApiClass) {
-		const hasSubclasses = rbxClass.Subclasses.length > 0;
-		const isClassCreatable = isCreatable(rbxClass);
-		return hasSubclasses && isClassCreatable;
-	}
-
 	private generateClassName(rbxClassName: string) {
-		const rbxClass = this.ClassReferences.get(rbxClassName);
-
-		if (rbxClass) {
-			return (this.classIsDerivative(rbxClass) ? DERIVATIVE_PREFIX : "") + rbxClassName;
+		if (this.ClassReferences.get(rbxClassName)) {
+			return rbxClassName;
 		} else {
 			throw new Error("Undefined class name! " + rbxClassName);
 		}
