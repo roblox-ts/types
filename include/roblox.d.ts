@@ -2,8 +2,8 @@
 /// <reference path="es.d.ts" />
 /// <reference path="lua.d.ts" />
 /// <reference path="macro_math.d.ts" />
-/// <reference path="generated_enums.d.ts" />
-/// <reference path="generated_classes.d.ts" />
+/// <reference path="generated/enums.d.ts" />
+/// <reference path="generated/None.d.ts" />
 
 // ROBLOX API
 type StrictInstances = {

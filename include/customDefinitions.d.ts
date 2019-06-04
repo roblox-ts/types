@@ -440,6 +440,39 @@ interface PhysicsService extends Instance {
 	SetPartCollisionGroup(part: BasePart, name: string): void;
 }
 
+interface Plugin extends Instance {
+	GetMouse(): PluginMouse;
+	CreateDockWidgetPluginGui(
+		pluginGuiId: string,
+		dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo,
+	): DockWidgetPluginGui;
+	CreatePluginAction(
+		actionId: string,
+		text: string,
+		statusTip: string,
+		iconName?: string,
+		allowBinding?: boolean,
+	): PluginAction;
+	CreatePluginMenu(id: string, title?: string, icon?: string): PluginMenu;
+	CreateToolbar(name: string): PluginToolbar;
+	ImportFbxRig(isR15?: boolean): Model;
+	Union(objects: Array<BasePart>): UnionOperation;
+}
+
+interface PluginManager extends Instance {
+	CreatePlugin(): Plugin;
+}
+
+interface PluginMenu extends Instance {
+	AddAction(action: PluginAction): void;
+	AddMenu(menu: PluginMenu): void;
+	AddNewAction(actionId: string, text: string, icon?: string): PluginAction;
+}
+
+interface PluginToolbar extends Instance {
+	CreateButton(buttonId: string, tooltip: string, iconname: string, text?: string): PluginToolbarButton;
+}
+
 interface VehicleSeat extends BasePart {
 	Sit(humanoid: Humanoid): void;
 }
