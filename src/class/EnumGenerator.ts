@@ -25,7 +25,7 @@ export class EnumGenerator extends Generator {
 		this.popIndent();
 		this.write(`}`);
 		this.write(`type EnumItemGroup = { GetEnumItems(): Array<EnumItem> } & { [index: string]: EnumItem };`);
-		this.write(`export function GetEnums(): Array<EnumItemGroup>;`);
+		this.write(`export function GetEnums(this: typeof Enum): Array<EnumItemGroup>;`);
 		this.write(``);
 
 		for (const { Name: enumTypeName, Items: enumTypeItems } of rbxEnums) {
