@@ -9,13 +9,13 @@
 declare namespace Enum {
 	type EnumType<T extends { Name: string }> = { [K in T["Name"]]: Extract<T, { Name: K }> };
 
-	interface RbxEnumItem {
+	interface EnumItem {
 		Name: string;
 		Value: number;
-		EnumType: RbxEnumType;
+		EnumType: EnumItemGroup;
 	}
-	type RbxEnumType = { GetEnumItems(): Array<RbxEnumItem> } & { [index: string]: RbxEnumItem };
-	export function GetEnums(): Array<RbxEnumType>;
+	type EnumItemGroup = { GetEnumItems(): Array<EnumItem> } & { [index: string]: EnumItem };
+	export function GetEnums(this: typeof Enum): Array<EnumItemGroup>;
 
 	export namespace ActionType {
 		export interface Nothing {
