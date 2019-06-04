@@ -231,7 +231,43 @@ interface NetworkSettings extends Instance {
 	readonly FreeMemoryMBytes: number;
 }
 
-interface Workspace extends Model {
+interface Workspace extends Omit<Model, "BreakJoints" | "MakeJoints"> {
+	/** 
+	 * Goes through all `BasePart`s given, breaking any joints connected to these parts.
+	 *
+	 * This function will break any of the following types of joints:
+	 *
+	 *  - `JointInstance`s such as `Connectors`, `Welds` and `Snaps`
+	 *
+	 *  - `WeldConstraint`s
+	 *
+	 * Unlike [Break.MakeJoints](https://developer.roblox.com/search#stq=MakeJoints), this function requires an array of `BasePart`s as a parameter. This array is given as follows:
+	 *
+	 * ```lua
+workspace:BreakJoints({part1, part2, part3})
+```
+	 * 
+
+	 * Note, this function cannot be used by scripts and will only function in plugins.
+	 * @param objects An array of `BasePart`s for whom joints are to be broken.
+	 */
+	BreakJoints(objects: Array<Instance>): void;
+	/** 
+	 * Goes through all `BasePart`s given. If any part's side has a [Enum.SurfaceType](https://developer.roblox.com/search#stq=SurfaceType) that can make a joint it will create a joint with any adjacent parts.
+	 *
+	 * Unlike [Model.MakeJoints](https://developer.roblox.com/api-reference/function/Model/MakeJoints), this function requires an array of `BasePart`s as a parameter. This array is given as follows:
+	 *
+	 * ```lua
+workspace:MakeJoints({part1, part2, part3})
+```
+	 * 
+
+	 * Joints are broken if enough force is applied to them due to an `Explosion`, unless a `ForceField` object is parented to the `BasePart` or ancestor `Model`. For this reason, they are often used to make simple destructible buildings and other models.
+	 *
+	 * Note, this function cannot be used by scripts and will only function in plugins.
+	 * @param objects An array of `BasePart`s for whom joints are to be made.
+	 */
+	MakeJoints(objects: Array<Instance>): void;
 	/** 
 	 * Positions and zooms the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) to show the extent of `BasePart`s currently in the `Workspace`.
 	 *
