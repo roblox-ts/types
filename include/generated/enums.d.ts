@@ -4648,6 +4648,34 @@ declare namespace Enum {
 		export function GetEnumItems(): Array<InitialDockState>
 	}
 	export type InitialDockState = InitialDockState.Top | InitialDockState.Bottom | InitialDockState.Left | InitialDockState.Right | InitialDockState.Float;
+	export namespace InlineAlignment {
+		export interface Bottom {
+			Name: "Bottom";
+			Value: 0;
+			EnumType: EnumType<Enum.InlineAlignment>;
+		}
+
+		export const Bottom: Bottom;
+
+		export interface Center {
+			Name: "Center";
+			Value: 1;
+			EnumType: EnumType<Enum.InlineAlignment>;
+		}
+
+		export const Center: Center;
+
+		export interface Top {
+			Name: "Top";
+			Value: 2;
+			EnumType: EnumType<Enum.InlineAlignment>;
+		}
+
+		export const Top: Top;
+
+		export function GetEnumItems(): Array<InlineAlignment>
+	}
+	export type InlineAlignment = InlineAlignment.Bottom | InlineAlignment.Center | InlineAlignment.Top;
 	export namespace InputType {
 		export interface NoInput {
 			Name: "NoInput";
@@ -12017,6 +12045,7 @@ declare type CastsToEnum<T extends
 	| Enum.InOut
 	| Enum.InfoType
 	| Enum.InitialDockState
+	| Enum.InlineAlignment
 	| Enum.InputType
 	| Enum.JointCreationMode
 	| Enum.JointType
