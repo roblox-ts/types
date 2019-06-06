@@ -83,9 +83,7 @@ const breakdance = require("breakdance") as (
 	},
 ) => string;
 
-export const IMPL_PREFIX = ""; // RbxInternal
 const ROOT_CLASS_NAME = "<<<ROOT>>>";
-const DERIVATIVE_PREFIX = ""; // DerivesFrom
 
 const BAD_NAME_CHARS = [" ", "/"];
 
@@ -107,22 +105,25 @@ const MEMBER_BLACKLIST: {
 		  }
 		| undefined;
 } = {
-	BinaryStringValue: { Changed: true },
-	BoolValue: { Changed: true },
-	BrickColorValue: { Changed: true },
-	CFrameValue: { Changed: true },
-	Color3Value: { Changed: true },
-	DoubleConstrainedValue: { Changed: true },
-	IntConstrainedValue: { Changed: true },
-	IntValue: { Changed: true },
-	NumberValue: { Changed: true },
-	ObjectValue: { Changed: true },
-	RayValue: { Changed: true },
-	StringValue: { Changed: true },
-	Vector3Value: { Changed: true },
 	Instance: { ClassName: true },
-	Workspace: { BreakJoints: true, MakeJoints: true },
 };
+
+const OMIT_MEMBERS = new Map<string, Array<string>>([
+	["Workspace", ["BreakJoints", "MakeJoints"]],
+	["BinaryStringValue", ["Changed"]],
+	["BoolValue", ["Changed"]],
+	["BrickColorValue", ["Changed"]],
+	["CFrameValue", ["Changed"]],
+	["Color3Value", ["Changed"]],
+	["DoubleConstrainedValue", ["Changed"]],
+	["IntConstrainedValue", ["Changed"]],
+	["IntValue", ["Changed"]],
+	["NumberValue", ["Changed"]],
+	["ObjectValue", ["Changed"]],
+	["RayValue", ["Changed"]],
+	["StringValue", ["Changed"]],
+	["Vector3Value", ["Changed"]],
+]);
 
 function containsBadChar(name: string) {
 	for (const badChar of BAD_NAME_CHARS) {
@@ -823,17 +824,9 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private classIsDerivative(rbxClass: ApiClass) {
-		const hasSubclasses = rbxClass.Subclasses.length > 0;
-		const isClassCreatable = isCreatable(rbxClass);
-		return hasSubclasses && isClassCreatable;
-	}
-
 	private generateClassName(rbxClassName: string) {
-		const rbxClass = this.ClassReferences.get(rbxClassName);
-
-		if (rbxClass) {
-			return (this.classIsDerivative(rbxClass) ? DERIVATIVE_PREFIX : "") + rbxClassName;
+		if (this.ClassReferences.get(rbxClassName)) {
+			return rbxClassName;
 		} else {
 			throw new Error("Undefined class name! " + rbxClassName);
 		}
@@ -841,20 +834,21 @@ export class ClassGenerator extends Generator {
 
 	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile, n: NumberHelper) {
 		const name = this.generateClassName(rbxClass.Name);
-		const implName = IMPL_PREFIX + name;
+		const tsImplInterface = tsFile.getInterface(name);
 
-		const hasSubclasses = false; // rbxClass.Subclasses.length > 0;
-
-		const interfaceName = hasSubclasses ? implName : name;
-		const tsImplInterface = tsFile.getInterface(interfaceName);
-
-		const extendsStr =
-			rbxClass.Superclass !== ROOT_CLASS_NAME
-				? `extends ${IMPL_PREFIX + this.generateClassName(rbxClass.Superclass)} `
-				: "";
+		let extendsStr = "";
+		if (rbxClass.Superclass !== ROOT_CLASS_NAME) {
+			const omitted = OMIT_MEMBERS.get(name);
+			if (omitted) {
+				extendsStr = `extends Omit<${this.generateClassName(rbxClass.Superclass)}, ${omitted
+					.map(v => `"${v}"`)
+					.join(" | ")}> `;
+			} else {
+				extendsStr = `extends ${this.generateClassName(rbxClass.Superclass)} `;
+			}
+		}
 
 		const members = rbxClass.Members.filter(rbxMember => this.shouldGenerateMember(rbxClass, rbxMember));
-		const isEmpty = members.length === 0 && hasSubclasses;
 		if (this.security === "None" || members.length > 0) {
 			if (this.security === "None") {
 				const descriptions = new Array<string>();
@@ -866,12 +860,12 @@ export class ClassGenerator extends Generator {
 					tsImplInterface.getLeadingCommentRanges().forEach(comment => descriptions.push(comment.getText()));
 				}
 				const description = descriptions.join("\n\t").trim();
-				if (description && !hasSubclasses) {
+				if (description) {
 					this.write(description);
 				}
 			}
 
-			this.write(`interface ${interfaceName} ${extendsStr}{${isEmpty ? "}" : ""}`);
+			this.write(`interface ${name} ${extendsStr}{`);
 			this.pushIndent();
 			if (this.security === "None") {
 				this.write(
