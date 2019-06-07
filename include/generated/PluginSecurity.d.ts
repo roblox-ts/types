@@ -231,7 +231,8 @@ interface NetworkSettings extends Instance {
 	readonly FreeMemoryMBytes: number;
 }
 
-interface Workspace extends Omit<Model, "BreakJoints" | "MakeJoints"> {
+interface Workspace extends Omit<Model, "BreakJoints" | "MakeJoints" | "Clone"> {
+	Clone(): this
 	/** 
 	 * Goes through all `BasePart`s given, breaking any joints connected to these parts.
 	 *

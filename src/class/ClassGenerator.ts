@@ -835,12 +835,14 @@ export class ClassGenerator extends Generator {
 	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile, n: NumberHelper) {
 		const name = this.generateClassName(rbxClass.Name);
 		const tsImplInterface = tsFile.getInterface(name);
-
+		let needsClone = false;
 		let extendsStr = "";
 		if (rbxClass.Superclass !== ROOT_CLASS_NAME) {
 			const omitted = OMIT_MEMBERS.get(name);
 			if (omitted) {
+				needsClone = true;
 				extendsStr = `extends Omit<${this.generateClassName(rbxClass.Superclass)}, ${omitted
+					.concat(["Clone"])
 					.map(v => `"${v}"`)
 					.join(" | ")}> `;
 			} else {
@@ -867,6 +869,11 @@ export class ClassGenerator extends Generator {
 
 			this.write(`interface ${name} ${extendsStr}{`);
 			this.pushIndent();
+
+			if (needsClone) {
+				this.write(`Clone(): this`);
+			}
+
 			if (this.security === "None") {
 				this.write(
 					`/** A read-only string representing the class this Instance belongs to. \`isClassName()\` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */`,
@@ -877,6 +884,7 @@ export class ClassGenerator extends Generator {
 						.join(" | ")};`,
 				);
 			}
+
 			members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
 			this.popIndent();
 			this.write(`}`);
