@@ -541,6 +541,11 @@ interface ReadonlyMap<K, V> extends Iterable<[K, V]> {
 	keys(): Array<K>;
 }
 
+interface ReadonlyMapConstructor {
+	new <K = any, V = any>(entries?: ReadonlyArray<[K, V]> | null): ReadonlyMap<K, V>;
+}
+declare var ReadonlyMap: ReadonlyMapConstructor;
+
 /** @rbxts map */
 interface Map<K, V> extends ReadonlyMap<K, V> {
 	/**
@@ -638,6 +643,11 @@ set1.isSubsetOf(set2) && !set2.isSubsetOf(set1)
 	isSubsetOf<U>(set: Set<U>): boolean;
 }
 
+interface ReadonlySetConstructor {
+	new <T = any>(values?: ReadonlyArray<T> | null): ReadonlySet<T>;
+}
+declare const ReadonlySet: ReadonlySetConstructor;
+
 /** @rbxts set */
 interface Set<T> extends ReadonlySet<T> {
 	/**
@@ -673,13 +683,13 @@ declare const WeakSet: WeakSetConstructor;
 interface PromiseLike<T> {
 	/**
 	 * Attaches callbacks for the resolution and/or rejection of the Promise.
-	 * @param onfulfilled The callback to execute when the Promise is resolved.
-	 * @param onrejected The callback to execute when the Promise is rejected.
+	 * @param onResolved The callback to execute when the Promise is resolved.
+	 * @param onRejected The callback to execute when the Promise is rejected.
 	 * @returns A Promise for the completion of which ever callback is executed.
 	 */
 	then<TResult1 = T, TResult2 = never>(
-		onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
-		onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null,
+		onResolved?: ((value: T) => TResult1 | PromiseLike<TResult1>) | void,
+		onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | void,
 	): PromiseLike<TResult1 | TResult2>;
 }
 
@@ -813,6 +823,9 @@ type Writable<T> = { -readonly [P in keyof T]: T[P] };
  */
 type Pick<T, K extends keyof T> = { [P in K]: T[P] };
 
+/** Returns a subset of type T which excludes properties K */
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
 /**
  * Construct a type with a set of properties K of type T
  */
@@ -844,6 +857,3 @@ type ReturnType<T extends (...args: Array<any>) => any> = T extends (...args: Ar
 type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (...args: Array<any>) => infer R
 	? R
 	: any;
-
-/** Returns a subset of type T which excludes properties K */
-type Unpick<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;

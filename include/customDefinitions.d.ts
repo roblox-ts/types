@@ -106,7 +106,7 @@ interface ContentProvider extends Instance {
 	PreloadAsync(contentIdList: Array<Instance>): void;
 }
 
-/** @client */
+/** @rbxts client */
 interface ContextActionService extends Instance {
 	/** @rbxts client */
 	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool | Flag) => void>;
@@ -134,7 +134,7 @@ interface ContextActionService extends Instance {
 	GetBoundActionInfo(actionName: string): BoundActionInfo;
 }
 
-/** @server */
+/** @rbxts server */
 interface DataStoreService extends Instance {
 	GetDataStore(name: string, scope?: string): GlobalDataStore;
 	GetGlobalDataStore(): GlobalDataStore;
@@ -157,7 +157,7 @@ interface GamePassService extends Instance {
 
 interface PlayerGui extends BasePlayerGui {}
 
-/** @server */
+/** @rbxts server */
 interface GlobalDataStore extends Instance {
 	GetAsync<T = unknown>(key: string): T | undefined;
 	IncrementAsync(key: string, delta?: number): number;
@@ -249,7 +249,7 @@ interface _HapticService extends Instance {
 	): void;
 }
 
-/** @server */
+/** @rbxts server */
 interface HttpService extends Instance {
 	GetAsync(url: string, nocache?: boolean, headers?: HttpHeaders): string;
 
@@ -320,10 +320,10 @@ interface Instance {
 	FindFirstChildWhichIsA<T extends keyof Instances>(className: T, recursive?: boolean): Instances[T] | undefined;
 	FindFirstChildWhichIsA(className: string, recursive?: boolean): Instance | undefined;
 
-	FindFirstAncestorOfClass<T extends Instance["ClassName"]>(className: T): StrictInstanceByName<T> | undefined;
+	FindFirstAncestorOfClass<T extends Instance["ClassName"]>(className: T): StrictInstances[T] | undefined;
 	FindFirstAncestorOfClass(className: string): Instance | undefined;
 
-	FindFirstChildOfClass<T extends Instance["ClassName"]>(className: T): StrictInstanceByName<T> | undefined;
+	FindFirstChildOfClass<T extends Instance["ClassName"]>(className: T): StrictInstances[T] | undefined;
 	FindFirstChildOfClass(className: string): Instance | undefined;
 
 	GetPropertyChangedSignal<T extends GetProperties<this>>(propertyName: T): RBXScriptSignal;
@@ -419,7 +419,7 @@ interface Model extends PVInstance {
 	GetBoundingBox(): LuaTuple<[CFrame, Vector3]>;
 }
 
-/** @server */
+/** @rbxts server */
 interface OrderedDataStore extends GlobalDataStore {
 	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
 }
@@ -438,6 +438,39 @@ interface PhysicsService extends Instance {
 	GetCollisionGroups(): Array<CollisionGroupInfo>;
 	CollisionGroupContainsPart(name: string, part: BasePart): boolean;
 	SetPartCollisionGroup(part: BasePart, name: string): void;
+}
+
+interface Plugin extends Instance {
+	GetMouse(): PluginMouse;
+	CreateDockWidgetPluginGui(
+		pluginGuiId: string,
+		dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo,
+	): DockWidgetPluginGui;
+	CreatePluginAction(
+		actionId: string,
+		text: string,
+		statusTip: string,
+		iconName?: string,
+		allowBinding?: boolean,
+	): PluginAction;
+	CreatePluginMenu(id: string, title?: string, icon?: string): PluginMenu;
+	CreateToolbar(name: string): PluginToolbar;
+	ImportFbxRig(isR15?: boolean): Model;
+	Union(objects: Array<BasePart>): UnionOperation;
+}
+
+interface PluginManager extends Instance {
+	CreatePlugin(): Plugin;
+}
+
+interface PluginMenu extends Instance {
+	AddAction(action: PluginAction): void;
+	AddMenu(menu: PluginMenu): void;
+	AddNewAction(actionId: string, text: string, icon?: string): PluginAction;
+}
+
+interface PluginToolbar extends Instance {
+	CreateButton(buttonId: string, tooltip: string, iconname: string, text?: string): PluginToolbarButton;
 }
 
 interface VehicleSeat extends BasePart {
@@ -573,10 +606,10 @@ interface Studio extends Instance {
 	Theme?: StudioTheme;
 }
 
-/** @server */
+/** @rbxts server */
 interface ServerScriptService {}
 
-/** @server */
+/** @rbxts server */
 interface ServerStorage {}
 
 interface StarterGui extends BasePlayerGui {

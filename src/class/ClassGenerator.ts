@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import * as path from "path";
+import path from "path";
 import { Project } from "ts-morph";
 import * as ts from "ts-morph";
 import {
@@ -83,9 +83,7 @@ const breakdance = require("breakdance") as (
 	},
 ) => string;
 
-export const IMPL_PREFIX = ""; // RbxInternal
 const ROOT_CLASS_NAME = "<<<ROOT>>>";
-const DERIVATIVE_PREFIX = ""; // DerivesFrom
 
 const BAD_NAME_CHARS = [" ", "/"];
 
@@ -107,21 +105,25 @@ const MEMBER_BLACKLIST: {
 		  }
 		| undefined;
 } = {
-	BinaryStringValue: { Changed: true },
-	BoolValue: { Changed: true },
-	BrickColorValue: { Changed: true },
-	CFrameValue: { Changed: true },
-	Color3Value: { Changed: true },
-	DoubleConstrainedValue: { Changed: true },
-	IntConstrainedValue: { Changed: true },
-	IntValue: { Changed: true },
-	NumberValue: { Changed: true },
-	ObjectValue: { Changed: true },
-	RayValue: { Changed: true },
-	StringValue: { Changed: true },
-	Vector3Value: { Changed: true },
 	Instance: { ClassName: true },
 };
+
+const OMIT_MEMBERS = new Map<string, Array<string>>([
+	["Workspace", ["BreakJoints", "MakeJoints"]],
+	["BinaryStringValue", ["Changed"]],
+	["BoolValue", ["Changed"]],
+	["BrickColorValue", ["Changed"]],
+	["CFrameValue", ["Changed"]],
+	["Color3Value", ["Changed"]],
+	["DoubleConstrainedValue", ["Changed"]],
+	["IntConstrainedValue", ["Changed"]],
+	["IntValue", ["Changed"]],
+	["NumberValue", ["Changed"]],
+	["ObjectValue", ["Changed"]],
+	["RayValue", ["Changed"]],
+	["StringValue", ["Changed"]],
+	["Vector3Value", ["Changed"]],
+]);
 
 function containsBadChar(name: string) {
 	for (const badChar of BAD_NAME_CHARS) {
@@ -153,6 +155,7 @@ const VALUE_TYPE_MAP: { [index: string]: string | null } = {
 	Object: "Instance",
 	Objects: "Array<Instance>",
 	Property: "string",
+	ProtectedString: "string",
 	Rect2D: "Rect",
 	Tuple: "Array<any>",
 	Variant: "any",
@@ -243,14 +246,6 @@ function getSecurity(member: ApiMemberBase) {
 	return security;
 }
 
-function canRead(member: ApiMemberBase) {
-	return getSecurity(member).Read === "None";
-}
-
-function canWrite(member: ApiMemberBase) {
-	return getSecurity(member).Write === "None";
-}
-
 function classHasTag(api: ApiClass, tag: ClassTag) {
 	if (api.Tags) {
 		return api.Tags.indexOf(tag) !== -1;
@@ -317,7 +312,6 @@ class NumberHelper {
 }
 
 namespace ClassInformation {
-	let nextFileName = 0;
 	interface Argument {
 		name: string;
 		summary: string;
@@ -392,9 +386,6 @@ namespace ClassInformation {
 	}
 
 	function processText(text: string, rbxClasses: Array<ApiClass>, tabChar: "" | "\t"): string {
-		const assets = new Map<string, string>();
-		let ij = 0;
-
 		const after = text
 			.trim()
 			.replace(/<([^ ]+)[^]+<\/\1>/g, a =>
@@ -665,8 +656,21 @@ function handleLinkData(
 export class ClassGenerator extends Generator {
 	private ClassReferences = new Map<string, ApiClass>();
 
-	constructor(outputDir: string, fileName: string, protected metadata: ReflectionMetadata) {
-		super(outputDir, fileName, metadata);
+	constructor(
+		filePath: string,
+		protected metadata: ReflectionMetadata,
+		private security: string,
+		private lowerSecurity: string | undefined,
+	) {
+		super(filePath, metadata);
+	}
+
+	private canRead(member: ApiMemberBase) {
+		return getSecurity(member).Read === this.security;
+	}
+
+	private canWrite(member: ApiMemberBase) {
+		return getSecurity(member).Write === this.security;
 	}
 
 	private getSignature(node?: ts.Node) {
@@ -708,7 +712,9 @@ export class ClassGenerator extends Generator {
 					documentations.push(documentation);
 				});
 
-			this.write(documentations.join("\n\t").trim());
+			if (documentations.length > 0) {
+				this.write(documentations.join("\n\t").trim());
+			}
 			const written = signatures.length > 0;
 			if (written) {
 				this.write(signatures.join("\n\t"));
@@ -724,8 +730,7 @@ export class ClassGenerator extends Generator {
 		const description = desc || "";
 		const tags = rbxMember.Tags;
 		const tagStr = tags && tags.length > 0 ? description + " *\n\t * Tags: " + tags.join(", ") + "\n\t" : "";
-
-		this.write(`/** ${(description.trim() !== "" ? description : "[LACKS DOCUMENTATION]") + tagStr} */`);
+		this.write(`/** ${(description.trim() !== "" ? description : "[NO DOCUMENTATION]") + tagStr} */`);
 	}
 
 	private generateCallback(rbxCallback: ApiCallback, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
@@ -782,7 +787,7 @@ export class ClassGenerator extends Generator {
 					? wikiDescription
 					: this.metadata.getPropertyDescription(className, name);
 			const surelyDefined = rbxProperty.ValueType.Category !== "Class";
-			const prefix = canWrite(rbxProperty) && !memberHasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
+			const prefix = this.canWrite(rbxProperty) && !memberHasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
 
 			if (!this.writeSignatures(rbxProperty, impl => impl.getProperties(), tsImplInterface, description)) {
 				this.write(`${prefix}${safeName(name)}${surelyDefined ? "" : "?"}: ${valueType};`);
@@ -796,7 +801,9 @@ export class ClassGenerator extends Generator {
 			return false;
 		}
 		return (
-			canRead(rbxMember) && !memberHasTag(rbxMember, "Deprecated") && !memberHasTag(rbxMember, "NotScriptable")
+			this.canRead(rbxMember) &&
+			!memberHasTag(rbxMember, "Deprecated") &&
+			!memberHasTag(rbxMember, "NotScriptable")
 		);
 	}
 
@@ -817,17 +824,9 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private classIsDerivative(rbxClass: ApiClass) {
-		const hasSubclasses = rbxClass.Subclasses.length > 0;
-		const isClassCreatable = isCreatable(rbxClass);
-		return hasSubclasses && isClassCreatable;
-	}
-
 	private generateClassName(rbxClassName: string) {
-		const rbxClass = this.ClassReferences.get(rbxClassName);
-
-		if (rbxClass) {
-			return (this.classIsDerivative(rbxClass) ? DERIVATIVE_PREFIX : "") + rbxClassName;
+		if (this.ClassReferences.get(rbxClassName)) {
+			return rbxClassName;
 		} else {
 			throw new Error("Undefined class name! " + rbxClassName);
 		}
@@ -835,81 +834,66 @@ export class ClassGenerator extends Generator {
 
 	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile, n: NumberHelper) {
 		const name = this.generateClassName(rbxClass.Name);
-		const implName = IMPL_PREFIX + name;
+		const tsImplInterface = tsFile.getInterface(name);
 
-		const isClassCreatable = isCreatable(rbxClass);
-
-		const hasSubclasses = false; // rbxClass.Subclasses.length > 0;
-
-		const interfaceName = hasSubclasses ? implName : name;
-		const tsImplInterface = tsFile.getInterface(interfaceName);
-
-		const extendsStr =
-			rbxClass.Superclass !== ROOT_CLASS_NAME
-				? `extends ${IMPL_PREFIX + this.generateClassName(rbxClass.Superclass)} `
-				: "";
-
-		const members = rbxClass.Members.filter(rbxMember => this.shouldGenerateMember(rbxClass, rbxMember));
-		const isEmpty = members.length === 0 && hasSubclasses;
-		const descriptions = new Array<string>();
-
-		const desc = rbxClass.Description;
-
-		if (desc) {
-			descriptions.push(`/** ${desc} */`);
+		let extendsStr = "";
+		if (rbxClass.Superclass !== ROOT_CLASS_NAME) {
+			const omitted = OMIT_MEMBERS.get(name);
+			if (omitted) {
+				extendsStr = `extends Omit<${this.generateClassName(rbxClass.Superclass)}, ${omitted
+					.map(v => `"${v}"`)
+					.join(" | ")}> `;
+			} else {
+				extendsStr = `extends ${this.generateClassName(rbxClass.Superclass)} `;
+			}
 		}
 
-		if (tsImplInterface)
-			tsImplInterface.getLeadingCommentRanges().forEach(comment => descriptions.push(comment.getText()));
+		const members = rbxClass.Members.filter(rbxMember => this.shouldGenerateMember(rbxClass, rbxMember));
+		if (this.security === "None" || members.length > 0) {
+			if (this.security === "None") {
+				const descriptions = new Array<string>();
+				const desc = rbxClass.Description;
+				if (desc) {
+					descriptions.push(`/** ${desc} */`);
+				}
+				if (tsImplInterface) {
+					tsImplInterface.getLeadingCommentRanges().forEach(comment => descriptions.push(comment.getText()));
+				}
+				const description = descriptions.join("\n\t").trim();
+				if (description) {
+					this.write(description);
+				}
+			}
 
-		const description = descriptions.join("\n\t").trim();
-		if (description && !hasSubclasses) this.write(description);
-
-		this.write(`interface ${interfaceName} ${extendsStr}{${isEmpty ? "}" : ""}`);
-
-		this.pushIndent();
-
-		this.write(
-			`/** A read-only string representing the class this Instance belongs to. In TypeScript the macro \`isClassName\` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */`,
-		);
-		this.write(
-			`readonly ClassName: ${[name, ...this.subclassify(name)].map(subName => `"${subName}"`).join(" | ")};`,
-		);
-
-		members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
-		this.popIndent();
-		this.write(`}`);
-
-		// if (hasSubclasses) {
-		// 	const fullName = rbxClass.Name;
-
-		// 	if (isClassCreatable) {
-		// 		const newImplName = IMPL_PREFIX + fullName;
-		// 		if (description) this.write(description);
-		// 		this.write(`interface ${fullName} extends ${implName} {`);
-		// 		this.pushIndent();
-		// 		this.write(`/** The string name of this Instance's most derived class. */`);
-		// 		this.write(`readonly ClassName: "${fullName}";`);
-		// 		this.popIndent();
-		// 		this.write(`}`);
-		// 		this.write(``);
-		// 	} else {
-		// 		const subclassesArray = this.subclassify(fullName, fullName);
-		// 		const possibilities = subclassesArray.join(" | ");
-		// 		if (description) this.write(description);
-		// 		this.write(`type ${fullName} = ${possibilities};`);
-		// 	}
-		// }
-
-		this.write(``);
+			this.write(`interface ${name} ${extendsStr}{`);
+			this.pushIndent();
+			if (this.security === "None") {
+				this.write(
+					`/** A read-only string representing the class this Instance belongs to. \`isClassName()\` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */`,
+				);
+				this.write(
+					`readonly ClassName: ${[name, ...this.subclassify(name)]
+						.map(subName => `"${subName}"`)
+						.join(" | ")};`,
+				);
+			}
+			members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
+			this.popIndent();
+			this.write(`}`);
+			this.write(``);
+		}
 	}
 
 	private generateHeader() {
 		this.write(`// THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!`);
 		this.write(``);
 		this.write(`/// <reference no-default-lib="true"/>`);
-		this.write(`/// <reference path="roblox.d.ts" />`);
-		this.write(`/// <reference path="generated_enums.d.ts" />`);
+		if (this.lowerSecurity) {
+			this.write(`/// <reference path="${this.lowerSecurity}.d.ts" />`);
+		} else {
+			this.write(`/// <reference path="../roblox.d.ts" />`);
+			this.write(`/// <reference path="enums.d.ts" />`);
+		}
 		this.write(``);
 	}
 
@@ -968,10 +952,6 @@ export class ClassGenerator extends Generator {
 	}
 
 	private generateInstancesTables(rbxClasses: Array<ApiClass>) {
-		const baseFormat = ({ Name: name }: ApiClass) => {
-			this.write(`${name}: ${[name, ...this.subclassify(name)].join(" | ")};`);
-		};
-
 		const [CreatableInstances, Instances, Services] = multifilter(rbxClasses, 3, rbxClass =>
 			classHasTag(rbxClass, "Service") ? 2 : isCreatable(rbxClass) ? 0 : 1,
 		);
@@ -1026,7 +1006,6 @@ export class ClassGenerator extends Generator {
 		}
 
 		const leftoverLinks = new Array<Promise<any>>();
-
 		for (; k < linkData.length; k++) {
 			const linkDatum = linkData[k];
 			if (linkDatum) {
@@ -1035,13 +1014,14 @@ export class ClassGenerator extends Generator {
 		}
 		await Promise.all(leftoverLinks);
 
-		console.log("\tFinishing...");
 		const project = new Project({
 			tsConfigFilePath: path.join(__dirname, "..", "..", "include", "tsconfig.json"),
 		});
 		const sourceFile = project.getSourceFileOrThrow("customDefinitions.d.ts");
 		this.generateHeader();
-		this.generateInstancesTables(rbxClasses);
+		if (this.security === "None") {
+			this.generateInstancesTables(rbxClasses);
+		}
 		this.generateClasses(rbxClasses, sourceFile);
 	}
 }

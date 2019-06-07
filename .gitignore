@@ -1,6 +1,7 @@
 .DS_Store
-node_modules
-out
 .history
+.vscode
 cache
 include/test.ts
+node_modules
+out

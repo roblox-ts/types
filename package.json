@@ -21,21 +21,22 @@
 	},
 	"homepage": "https://github.com/roblox-ts/rbx-types#readme",
 	"devDependencies": {
+		"@types/fs-extra": "^7.0.0",
 		"@types/jsdom": "^12.2.3",
 		"@types/libxmljs": "^0.18.2",
-		"@types/mz": "0.0.32",
 		"@types/node-fetch": "^2.3.3",
 		"@types/showdown": "^1.9.2",
 		"axios": "^0.18.0",
 		"breakdance": "^3.0.1",
 		"libxmljs": "^0.19.5",
-		"mz": "^2.7.0",
 		"node-fetch": "^2.5.0",
 		"ts-morph": "^2.1.0",
 		"typescript": "^3.4.5"
 	},
 	"bundleDependencies": [],
-	"dependencies": {},
+	"dependencies": {
+		"fs-extra": "^8.0.1"
+	},
 	"keywords": [
 		"types",
 		"Roblox",
