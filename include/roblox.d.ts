@@ -14,8 +14,9 @@ type StrictInstances = {
 /** @deprecated Use `StrictInstances` instead */
 type StrictInstanceByName<Q extends keyof Instances> = StrictInstances[Q];
 
-type GetProperties<T> = {
-	[Key in keyof T]-?: Key extends "GetPropertyChangedSignal"
+/** Given an Instance `T`, returns a unioned type of all properties, except "ClassName". */
+type GetProperties<T extends Instance> = {
+	[Key in keyof T]-?: Key extends "GetPropertyChangedSignal" | "ClassName"
 		? never
 		: T[Key] extends RBXScriptSignal
 		? never
@@ -24,7 +25,8 @@ type GetProperties<T> = {
 		: Key
 }[keyof T];
 
-type GetWritableProperties<T> = Extract<
+/** Given an Instance `T`, returns a unioned type of all non-readonly properties. */
+type GetWritableProperties<T extends Instance> = Extract<
 	GetProperties<T>,
 	{
 		[K in keyof T]: K extends "GetPropertyChangedSignal"
