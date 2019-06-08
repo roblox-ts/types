@@ -328,6 +328,8 @@ interface Instance {
 
 	GetPropertyChangedSignal<T extends GetProperties<this>>(propertyName: T): RBXScriptSignal;
 	GetPropertyChangedSignal(propertyName: string): RBXScriptSignal;
+
+	readonly Changed: RBXScriptSignal<(property: this extends ValueBase ? unknown : string) => void>;
 }
 
 interface JointInstance extends Instance {
