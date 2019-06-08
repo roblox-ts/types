@@ -248,7 +248,7 @@ interface Player extends Instance {
 	 */
 	SetAccountAge(accountAge: number): void;
 	/** 
-	 * Sets whether or not the player sees [filtered), rather than normal chats.
+	 * Sets whether or not the player sees [filtered chats](https://wiki.roblox.com/index.php?title=FilterStringForPlayerAsync), rather than normal chats.
 	 */
 	SetSuperSafeChat(value: boolean): void;
 }
@@ -261,7 +261,7 @@ interface Players extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *  - [Lua), a tutorial for creating a more advanced chat system
+	 *  - [Lua Chat System](https://developer.roblox.com/search#stq=Lua-Chat-System), a tutorial for creating a more advanced chat system
 	 * @param message The message chatted.
 	 * @returns void
 	 */
@@ -316,7 +316,7 @@ interface Plugin extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginMenu`, a context menu that can be shown in Studio which displays a list of PluginActions and supports submenus
 	 *
@@ -342,7 +342,7 @@ interface Plugin extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 *
@@ -466,7 +466,7 @@ interface Plugin extends Instance {
 	/** 
 	 * This function creates a `DockWidgetPluginGui` using the provided [DataType.DockWidgetPluginGuiInfo](https://developer.roblox.com/search#stq=DockWidgetPluginGuiInfo).
 	 *
-	 * See the [Building) tutorial for details on working with custom Studio widgets.
+	 * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
 	 * @param pluginGuiId Consistent identifier used for storing/preserving the widget dock state and other internal details.
 	 * @param dockWidgetPluginGuiInfo Datatype describing details for the new `DockWidgetPluginGui`.
 	 */
@@ -518,7 +518,7 @@ interface PluginManager extends Instance {
 	 *
 	 * ## History
 	 *
-	 * Previously, this function would save the generated .OBJ file to the given file path, so long as Roblox Studio had write access. This was changed for security reasons on [Release) in April 2019.
+	 * Previously, this function would save the generated .OBJ file to the given file path, so long as Roblox Studio had write access. This was changed for security reasons on [Release 379](https://developer.roblox.com/resources/release-note/Release-Notes-for-379) in April 2019.
 	 */
 	ExportPlace(filePath?: string): void;
 	/** 
@@ -526,7 +526,7 @@ interface PluginManager extends Instance {
 	 *
 	 * ## History
 	 *
-	 * Previously, this function would save the generated .OBJ file to the given file path, so long as Roblox Studio had write access. This was changed for security reasons on [Release) in April 2019.
+	 * Previously, this function would save the generated .OBJ file to the given file path, so long as Roblox Studio had write access. This was changed for security reasons on [Release 379](https://developer.roblox.com/resources/release-note/Release-Notes-for-379) in April 2019.
 	 */
 	ExportSelection(filePath?: string): void;
 }
@@ -537,7 +537,7 @@ interface PluginMenu extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 *
@@ -565,7 +565,7 @@ interface PluginMenu extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 *
@@ -601,7 +601,7 @@ interface PluginMenu extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 *
@@ -628,7 +628,7 @@ interface PluginMenu extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 *
@@ -654,7 +654,7 @@ interface PluginMenu extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 *
@@ -988,7 +988,7 @@ settings().Studio:GetAvailableThemes()
 	/** 
 	 * The **ThemeChanged** event fires when Studio's [Theme](https://developer.roblox.com/api-reference/property/Studio/Theme) changes. The best use of this event is to get the colors from the theme that changed and update your plugin’s UI accordingly.
 	 *
-	 * See the [Building) tutorial for details on working with custom Studio widgets.
+	 * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
 	 */
 	readonly ThemeChanged: RBXScriptSignal<() => void>;
 }

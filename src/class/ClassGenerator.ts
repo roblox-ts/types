@@ -471,7 +471,9 @@ namespace ClassInformation {
 						const link = `https://developer.roblox.com/api-reference/class/${className}`;
 						return `[${alias}](${link})`;
 					})
-					.replace(/\[[^\]]+\]\([^\)]+\)/g, s => s.replace(/\s+[^\)]+\)/, ")"))
+					.replace(/(\[[^\]]+\])\(([^\)]+)\)/g, (a, b: string, c: string) => {
+						return b + "(" + c.replace(/\s+.+/, "") + ")";
+					})
 					.trim()
 					.replace(/.*($|\n)/g, line => {
 						let trimmed = line.trimRight();
