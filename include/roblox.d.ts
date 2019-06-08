@@ -7,7 +7,7 @@
 
 // ROBLOX API
 /**
- * Intersecting a type with this allows access to the `Instance.Changed` event.
+ * Intersecting a type with this allows access to Roblox's `Instance.Changed` event.
  *
  * @example
  * function f(p: Part) {
