@@ -68,7 +68,6 @@ export interface ApiMemberBase {
 		  };
 	Tags?: Array<MemberTag>;
 	Description?: string;
-	Class: ApiClass;
 }
 
 export interface ApiValueType {
@@ -112,8 +111,6 @@ export interface ApiClass {
 	Superclass: string;
 	Subclasses: Array<string>;
 	Description?: string;
-	/** Map<{ MemberName: [ ...Instances_Which_Inherit_Differently ] }> */
-	SubMembers: Map<string, Array<ApiMember>>;
 }
 
 export interface ApiEnumItem {
