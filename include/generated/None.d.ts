@@ -943,7 +943,7 @@ end)
 	 *
 	 * For "-Value" objects, this event behaves differently: it only fires when the `Value` property changes. See individual pages for `IntValue`, `StringValue`, etc for more information. To detect other changes in these objects, you must use `GetPropertyChangedSignal` instead.
 	 */
-	readonly Changed: RBXScriptSignal<(property: string) => void>;
+	readonly Changed: RBXScriptSignal<(property: this extends ValueBase ? unknown : string) => void>;
 	/** 
 	 * Fires when an object is parented to this `Instance`.
 	 *
