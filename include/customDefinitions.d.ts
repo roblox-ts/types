@@ -8,6 +8,7 @@ interface Animator extends Instance {
 	LoadAnimation(animation: Animation): AnimationTrack;
 }
 
+/** @rbxts server */
 interface AssetService extends Instance {
 	CreatePlaceInPlayerInventoryAsync(
 		player: Player,
@@ -20,22 +21,29 @@ interface AssetService extends Instance {
 	GetBundleDetailsAsync(bundleId: number): BundleInfo;
 }
 
-interface BasePart extends Instance {
+interface BasePart extends PVInstance {
 	readonly TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
 	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
-
 	CanCollideWith(part: BasePart): boolean;
-	CanSetNetworkOwnership(): LuaTuple<[boolean, string | undefined]>;
 	GetConnectedParts(recursive?: boolean): Array<BasePart>;
-	GetNetworkOwner(): Player | undefined;
 	GetRootPart(): BasePart;
 	GetJoints(): Array<Constraint | JointInstance>;
 	GetTouchingParts(): Array<BasePart>;
-	SetNetworkOwner(playerInstance?: Player): void;
 	/** @rbxts server */
 	SubtractAsync(parts: Array<BasePart>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>): UnionOperation;
 	/** @rbxts server */
 	UnionAsync(parts: Array<BasePart>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>): UnionOperation;
+
+	/** @rbxts server */
+	CanSetNetworkOwnership(): LuaTuple<[boolean, string | undefined]>;
+	/** @rbxts server */
+	GetNetworkOwner(): Player | undefined;
+	/** @rbxts server */
+	SetNetworkOwner(playerInstance?: Player): void;
+	/** @rbxts server */
+	GetNetworkOwnershipAuto(): boolean;
+	/** @rbxts server */
+	SetNetworkOwnershipAuto(): void;
 }
 
 interface Attachment extends Instance {
@@ -52,6 +60,7 @@ interface BadgeService extends Instance {
 }
 
 interface TextService extends Instance {
+	/** @rbxts server */
 	FilterStringAsync(
 		stringToFilter: string,
 		fromUserId: number,
@@ -108,11 +117,8 @@ interface ContentProvider extends Instance {
 
 /** @rbxts client */
 interface ContextActionService extends Instance {
-	/** @rbxts client */
 	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool | Flag) => void>;
-	/** @rbxts client */
 	readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool | Flag) => void>;
-	/** @rbxts client */
 	BindAction(
 		actionName: string,
 		functionToBind: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
@@ -120,7 +126,6 @@ interface ContextActionService extends Instance {
 		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
 
-	/** @rbxts client */
 	BindActionAtPriority(
 		actionName: string,
 		functionToBind: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
@@ -128,7 +133,6 @@ interface ContextActionService extends Instance {
 		priorityLevel: number,
 		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
-	/** @rbxts client */
 	GetButton(actionName: string): ImageButton | undefined;
 	GetAllBoundActionInfo(): Map<string, BoundActionInfo>;
 	GetBoundActionInfo(actionName: string): BoundActionInfo;
@@ -177,6 +181,7 @@ interface GroupService extends Instance {
 	GetGroupsAsync(userId: number): Array<GetGroupsAsyncResult>;
 }
 
+/** @rbxts server */
 interface MessagingService extends Instance {
 	SubscribeAsync(topic: string, callback: (Data: any, Sent: number) => void): RBXScriptConnection;
 }
@@ -231,6 +236,7 @@ interface GuiObject extends GuiBase2d {
 	): boolean;
 }
 
+/** @rbxts client */
 interface GuiService extends Instance {
 	AddSelectionParent(selectionName: string, selectionParent: Instance): void;
 	AddSelectionTuple(selectionName: string, selections: Array<any>): void;
@@ -249,10 +255,11 @@ interface _HapticService extends Instance {
 	): void;
 }
 
-/** @rbxts server */
 interface HttpService extends Instance {
+	/** @rbxts server */
 	GetAsync(url: string, nocache?: boolean, headers?: HttpHeaders): string;
 
+	/** @rbxts server */
 	PostAsync(
 		url: string,
 		data: string,
@@ -261,6 +268,7 @@ interface HttpService extends Instance {
 		headers?: HttpHeaders,
 	): string;
 
+	/** @rbxts server */
 	RequestAsync(requestOptions: RequestAsyncRequest): RequestAsyncResponse;
 }
 
@@ -286,8 +294,8 @@ interface InsertService extends Instance {
 	LoadAssetVersion(assetVersionId: number): Model;
 	GetBaseSets(): Array<SetInfo>;
 	GetCollection(categoryId: number): Array<CollectionInfo>;
-	GetFreeDecals(searchText: string, pageNum: number): Array<FreeSearchResult>;
-	GetFreeModels(searchText: string, pageNum: number): Array<FreeSearchResult>;
+	GetFreeDecals(searchText: string, pageNum: number): [Array<FreeSearchResult>];
+	GetFreeModels(searchText: string, pageNum: number): [Array<FreeSearchResult>];
 	GetUserSets(userId: number): Array<SetInfo>;
 }
 
@@ -494,8 +502,6 @@ interface SkateboardPlatform extends Part {
 	readonly Unequipped: RBXScriptSignal<(humanoid: Humanoid) => void>;
 }
 
-interface BasePart extends PVInstance {}
-
 interface Player extends Instance {
 	readonly Name: string;
 	readonly UserId: number;
@@ -613,6 +619,7 @@ interface ServerScriptService {}
 interface ServerStorage {}
 
 interface StarterGui extends BasePlayerGui {
+	GetCore(parameterName: "AvatarContextMenuEnabled"): boolean;
 	GetCore(parameterName: "PointsNotificationsActive"): boolean;
 	GetCore(parameterName: "BadgesNotificationsActive"): boolean;
 	GetCore(parameterName: "ChatActive"): boolean;
@@ -645,10 +652,10 @@ interface StarterGui extends BasePlayerGui {
 	SetCore(parameterName: "PromptUnfriend", player: Player): void;
 	SetCore(parameterName: "PromptBlockPlayer", player: Player): void;
 	SetCore(parameterName: "PromptUnblockPlayer", player: Player): void;
-	SetCore(parameterName: "SetAvatarContextMenuEnabled", enabled: boolean): void;
-	SetCore(parameterName: "AddAvatarContextMenuOption", option: CastsToEnum<Enum.AvatarContextMenuOption>): void;
+	SetCore(parameterName: "AvatarContextMenuEnabled", enabled: boolean): void;
+	SetCore(parameterName: "AddAvatarContextMenuOption", option: Enum.AvatarContextMenuOption): void;
 	SetCore(parameterName: "AddAvatarContextMenuOption", option: [string, BindableFunction]): void;
-	SetCore(parameterName: "RemoveAvatarContextMenuOption", option: CastsToEnum<Enum.AvatarContextMenuOption>): void;
+	SetCore(parameterName: "RemoveAvatarContextMenuOption", option: Enum.AvatarContextMenuOption): void;
 	SetCore(parameterName: "RemoveAvatarContextMenuOption", option: [string, BindableFunction]): void;
 	SetCore(
 		parameterName: "CoreGuiChatConnections",
@@ -787,6 +794,7 @@ interface TweenService {
 	): Tween;
 }
 
+/** @rbxts client */
 interface UserInputService {
 	readonly InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly InputChanged: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
@@ -865,4 +873,20 @@ interface Workspace extends Model {
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 }
 
-interface DoubleConstrainedValue extends ValueBase {}
+/**
+ * Used to hold a value.
+ */
+interface ValueBase extends Instance {
+	/** The value this object holds. */
+	Value?: unknown;
+	/**
+	 * This event fires whenever the `Value` property is changed.
+	 *
+	 * This event can be used to track when a ValueBase `Value` changes and to track the different values that it may change to.
+	 */
+	readonly Changed: RBXScriptSignal<(value?: unknown) => void>;
+}
+
+interface ObjectValue extends ValueBase {
+	readonly Changed: RBXScriptSignal<(value?: Instance) => void>;
+}
