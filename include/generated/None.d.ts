@@ -467,46 +467,24 @@ local baseplate = workspace:FindFirstChild("BasePlate")
 	 */
 	Name: string;
 	/** 
-	 * The Parent property determines the hierarchical parent of the `Instance`. The following terminology is commonly used when talking about how this property is set:
+	 * The hierarchical parent of the `Instance`.
 	 *
-	 *   - An object is a **child** (**parented to**) another object when its Parent is set to that object.
-	 *
-	 *   - The **descendants** of an `Instance` are the children of that object, plus the descendants of the children as well.
-	 *
-	 *   - The **ancestors** of an `Instance` are all the objects that the Instance is a descendant of.
-	 *
-	 * It is from this property that many other API members get their name, such as [GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) and [FindFirstChild](https://developer.roblox.com/api-reference/function/Instance/FindFirstChild).
-	 *
-	 * The [Remove](https://developer.roblox.com/api-reference/function/Instance/Remove) function sets this property to nil. Calling [Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy) will set the Parent of an `Instance` and all of its descendants to `nil`, and also **lock** the Parent property. An error is raised when setting the Parent of a destroyed object.
-	 *
-	 * This property is also used to manage whether an object exists in the game or needs be be removed. As long as an objects parent is in the `DataModel`, is stored in a variable, or is referenced by another objects property, then the object remains in the game. Otherwise, the object will automatically be removed. The top level `DataModel` object (the one referred to as the `game` by scripts) has no parent, but always has a reference held to it by the game engine, and exists for the duration of a session.
-	 *
-	 * Newly created objects using `Instance.new` will not have a parent, and usually will not be visible or function until one is set. The most elementary creation of an object has two steps: creating the object, then setting its parent.
+	 * This property is also used to manage whether an object exists in the game or needs be be removed. As long as an objects parent is in the `DataModel`, is stored in a variable, or is referenced by another objects property, then the object will remain in the game. Otherwise, the game engine will automatically remove the object. The top level `DataModel` object (the one referred to as the "game" by scripts) has no parent, but always has a reference held to it by the game engine, and exists for the duration of a session.
 	 *
 	 * ```lua
--- Create a part and parent it to the workspace
-local part = Instance.new("Part")
-part.Parent = workspace
--- Instance new can also take Parent as a second parameter
-Instance.new("NumberValue", workspace)
+part.Parent = workspace --&gt; parent part to the Workspace
 ```
 	 * 
 
-	 * # Object Replication
+	 * Calling [Instance.Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy) sets the parent of an `Instance` and all of its descendants to nil, and locks the parent property. Attempting to set [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) on a destroyed object will produce an error.
 	 *
-	 * An object created by server will not replicate to clients until it is parented to some object that is replicated. When creating an object then setting many properties, it's recommended to **set Parent last**. This ensures the object replicates once, instead of replicating many property changes.
+	 * &lt;1--
 	 *
-	 * ```lua
-local part = Instance.new("Part") -- Avoid using the second parameter here
-part.Anchored = true
-part.BrickColor = BrickColor.new("Really red")
--- Potentially many other property changes could go here here...
--- Always set parent last!
-part.Parent = workspace
-```
-	 * 
-
-	 * However, if you were parenting your parts to a `Model` whose parent hasn't been set yet, then setting the parent first would not matter as the model would not have replicated yet.
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * --&gt;
+	 *
+	 * [1]: https://wiki.roblox.com/index.php?title=Place_hierarchy
 	 */
 	Parent?: Instance;
 	/** 
@@ -539,22 +517,11 @@ end
 	 */
 	Clone(): this;
 	/** 
-	 * Sets the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property to nil, locks the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property, disconnects all connections and calls Destroy on all children. This function is the correct way to dispose of objects that are no longer required. Disposing of unneeded objects is important, since unnecessary objects and connections in a place use up memory (this is called a **memory leak**) which can lead to serious performance issues over time.
+	 * Sets the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property to nil, locks the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property, disconnects all connections and calls Destroy on all children.
 	 *
-	 * **Tip:** After calling Destroy on an object, set any variables referencing the object (or its descendants) to nil. This prevents your code from accessing anything to do with the object.
+	 * This function is the correct way to dispose of objects that are no longer required. Disposing of objects is important as unnecessary objects and connections in a place use up memory which can lead to serious performance issues over time.
 	 *
-	 * ```lua
-local part = Instance.new("Part")
-part.Name = "Hello, world"
-part:Destroy()
--- Don't do this:
-print(part.Name) --> "Hello, world"
--- Do this to prevent the above line from working:
-part = nil
-```
-	 * 
-
-	 * Once an `Instance` has been destroyed by this method it cannot be reused because the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property is locked. To temporarily remove an object, set [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) it to nil instead. For example:
+	 * Note, once an `Instance` has been destroyed it cannot be reused. This is because the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property is locked. Developers wishing to temporarily remove an object from the game should parent it to nil instead. For example:
 	 *
 	 * ```lua
 object.Parent = nil
@@ -563,7 +530,7 @@ object.Parent = workspace
 ```
 	 * 
 
-	 * To Destroy an object after a set amount of time, use [Debris.AddItem](https://developer.roblox.com/api-reference/function/Debris/AddItem).
+	 * Those looking to destroy an `Instance` after a predetermined amount of time should use the [Debris.AddItem](https://developer.roblox.com/api-reference/function/Debris/AddItem) function in `Debris` instead.
 	 */
 	Destroy(): void;
 	/** 
@@ -579,6 +546,10 @@ local car = object:FindFirstAncestor("Car")
 	 * 
 
 	 * For variants of this function that find ancestors of a specific class, please see [Instance.FindFirstAncestorOfClass](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestorOfClass) and [Instance.FindFirstAncestorWhichIsA](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestorWhichIsA).
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param name The `Instance/Name` to be looked for.
 	 * @returns The `Instance` found.
 	 */
@@ -596,6 +567,10 @@ local model = part:FindFirstAncestorOfClass("Model")
 	 * 
 
 	 * This function is a variant of [Instance.FindFirstAncestor](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestor) which checks the [Instance.ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) property rather than [Instance.Name](https://developer.roblox.com/api-reference/property/Instance/Name). [Instance.FindFirstAncestorWhichIsA](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestorWhichIsA) also exists, using the [Instance.IsA](https://developer.roblox.com/api-reference/function/Instance/IsA) method instead to respect class inheritance.
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param className The `Instance/ClassName` to be looked for.
 	 * @returns The `Instance` found.
 	 */
@@ -623,77 +598,80 @@ local part = object:FindFirstAncestorWhichIsA("BasePart")
 	 * 
 
 	 * See also, [Instance.FindFirstAncestor](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestor).
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param className The `Instance/ClassName` to be looked for.
 	 * @returns The `Instance` found.
 	 */
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
 	FindFirstAncestorWhichIsA(className: string): Instance | undefined;
 	/** 
-	 * Returns the first child of the `Instance` found with the given name. If no child exists with the given name, this function returns nil. If the optional recursive argument is true, this function searches all descendants rather than only the immediate children of the `Instance`. Use this function if your code cannot guarantee the existence of an object with a given name.
+	 * Returns the first child of the `Instance` found with the given name.
 	 *
-	 * ## Checking the Existence of An Object
+	 * If no child of the given name exists, this function will return nil. If the optional recursive argument is true, this function searches all descendants rather than only the immediate children of the `Instance`.
 	 *
-	 * FindFirstChild is necessary if you need to verify an object something exists before continuing. Attempting to index a child by name using the dot operator throws an error if the child doesn't exist.
+	 * ## When should I use FindFirstChild?
+	 *
+	 * FindFirstChild is particularly useful if you want to verify an object something exists before continuing. Using the dot operator to index a child will cause an error if the child doesn't exist.
 	 *
 	 * ```lua
- -- The following line errors if Part doesn't exist in the Workspace:
-workspace.Part.Transparency = .5
+Model.Humanoid:TakeDamage(10)
+ -- Will error if Humanoid doesn't exist
 ```
 	 * 
 
-	 * Use FindFirstChild to first check for Part, then use an if-statement to run code that needs it.
+	 * In this case, FindFirstChild would avoid this error.
 	 *
 	 * ```lua
-local part = workspace:FindFirstChild("Part")
-if part then
-	part.Transparency = .5
+local humanoid = Model:FindFirstChild("Humanoid")
+if humanoid then
+	humanoid:TakeDamage(10)
 end
+-- Will only try to damage humanoid if it exists
 ```
 	 * 
 
-	 * ## Finding a Child Whose Name Matches a Property
-	 *
-	 * Sometimes the [Name](https://developer.roblox.com/api-reference/property/Instance/Name) of an object is the same as that of a property of its [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent). When using the dot operator, properties take precedence over children if they share a name.
-	 *
-	 * In the following example, a `Folder` called "Color" is added to a `Part`, which also has the [Part.Color](https://developer.roblox.com/search#stq=Color) property. `Part.Color` refers to the [datatype.Color3](https://developer.roblox.com/search#stq=Color3), not the Folder.
+	 * Another strength of FindFirstChild is it avoids the possibility of inadvertently accessing the property of an `Instance` rather than the child of one. For example:
 	 *
 	 * ```lua
 local part = Instance.new("Part")
-local folder = Instance.new("Folder")
-folder.Name = "Color"
-folder.Parent = part
-local c = part.Color --> A Color3
-local c2 = part:FindFirstChild("Color") --> The Folder
+local color = part.Color -- The Part's Color property
+local color = part:FindFirstChild("Color") -- A descendant of the Part called 'Color'
 ```
 	 * 
 
-	 * A benefit of using FindFirstChild in this way is that the introduction of new properties does not impose a risk on your code.
+	 * Using FindFirstChild when accessing descendants of the `DataModel` reduces the risk of this happening, and future proofs your code against new properties being added.
 	 *
-	 * **Tip:** If you only need to use the result of a FindFirstChild call once, such as getting the property of a child if it exists, you can use the following syntax with the `and` operator:
+	 * However, FindFirstChild is less efficient than the dot operator. Therefore, developers are advised not to use FindFirstChild to access the same object repeatedly and instead store it in a local variable after the first time. For example:
 	 *
 	 * ```lua
-local myColor = workspace:FindFirstChild("SomePart") and workspace.SomePart.Color
+local ship = workspace:FindFirstChild("Ship")
+print(ship)
 ```
 	 * 
 
-	 * If SomePart exists, `myColor` will contain the Color of SomePart. Otherwise, it'll be nil without throwing an error. This works due to short-circuiting: Lua ignores the right side if the left is nil/false
+	 * For more information on instance hierarchy please see [this page][1].
 	 *
-	 * ## Performance Note
-	 *
-	 * FindFirstChild takes about 20% longer than using dot operator, and almost 8 times longer than simply storing a reference to an object. Therefore, you should avoid calling FindFirstChild in performance dependent code, such as in tight loops or functions connected to [RunService.Heartbeat](https://developer.roblox.com/api-reference/event/RunService/Heartbeat)/[RunService.RenderStepped](https://developer.roblox.com/api-reference/event/RunService/RenderStepped). **Store the result in a variable,** or consider using [ChildAdded](https://developer.roblox.com/api-reference/event/Instance/ChildAdded) or [WaitForChild](https://developer.roblox.com/api-reference/function/Instance/WaitForChild) to detect when a child of a given name becomes available.
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param name The `Instance/Name` to be searched for.
 	 * @param recursive Whether or not the search should be conducted recursively.
 	 * @returns The `Instance` found.
 	 */
 	FindFirstChild<T extends Instance = Instance>(name: string, recursive?: boolean): T | undefined;
 	/** 
-	 * Returns the first child of the `Instance` whose [ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) is equal to the given className.
+	 * Returns the first child of the `Instance` whose [Instance.ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) is equal to the given className.
 	 *
 	 * If no matching child is found, this function returns nil.
 	 *
 	 * Unlike [Instance.FindFirstChildWhichIsA](https://developer.roblox.com/api-reference/function/Instance/FindFirstChildWhichIsA) this function uses only returns objects whose class matches the given className, ignoring class inheritance.
 	 *
 	 * Developers looking for a child by name, should use [Instance.FindFirstChild](https://developer.roblox.com/api-reference/function/Instance/FindFirstChild) instead.
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param className The `Instance/ClassName` to be looked for.
 	 * @returns The `Instance` found.
 	 */
@@ -707,20 +685,24 @@ local myColor = workspace:FindFirstChild("SomePart") and workspace.SomePart.Colo
 	 * Unlike [Instance.FindFirstChildOfClass](https://developer.roblox.com/api-reference/function/Instance/FindFirstChildOfClass), this function uses [Instance.IsA](https://developer.roblox.com/api-reference/function/Instance/IsA) which respects class inheritance. For example:
 	 *
 	 * ```lua
-print(part:IsA("Part")) --> true
-print(part:IsA("BasePart")) --> true
-print(part:IsA("Instance")) --> true
+print(part:IsA("Part")) --&gt; true
+print(part:IsA("BasePart")) --&gt; true
+print(part:IsA("Instance")) --&gt; true
 ```
 	 * 
 
 	 * Therefore, the following code sample will return the first `BasePart` child, regardless of if it is a `WedgePart`, `MeshPart` or `Part`.
 	 *
 	 * ```lua
-local part = object:FindFirstChildWhichIsA("BasePart")
+local part object:FindFirstChildWhichIsA("BasePart")
 ```
 	 * 
 
 	 * Developers looking for a child by name, should use [Instance.FindFirstChild](https://developer.roblox.com/api-reference/function/Instance/FindFirstChild) instead.
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param className The `Instance/ClassName` to be searched for.
 	 * @param recursive Whether or not the search should be conducted recursively. 
 	 * @returns The `Instance` found.
@@ -728,80 +710,46 @@ local part = object:FindFirstChildWhichIsA("BasePart")
 	FindFirstChildWhichIsA<T extends keyof Instances>(className: T, recursive?: boolean): Instances[T] | undefined;
 	FindFirstChildWhichIsA(className: string, recursive?: boolean): Instance | undefined;
 	/** 
-	 * Returns an array (a numerically indexed table) containing all of the `Instance`'s direct children, or every `Instance` whose [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) is equal to the object. The array can be iterated upon using either a numeric or generic for-loop:
+	 * Returns an array containing all of the `Instance`'s children.
 	 *
-	 * ```lua
--- Numeric for-loop example
-local children = workspace:GetChildren()
-for i = 1, #children do
-	local child = children[i]
-	print(child.Name .. " is child number " .. i)
-end
-```
-	 * 
+	 * Running this function will collect every object parented to this `Instance` and return them in an array.
 	 *
-	 * ```lua
--- Generic for-loop example
-local children = workspace:GetChildren()
-for i, child in ipairs(children) do
-	print(child.Name .. " is child number " .. i)
-end
-```
-	 * 
-
-	 * The children are sorted by the order in which their [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property was set to the object.
-	 *
-	 * See also the [GetDescendants](https://developer.roblox.com/api-reference/function/Instance/GetDescendants) function.
+	 * Note this function only returns direct children of the `Instance`, if all descendants are required use [Instance.GetDescendants](https://developer.roblox.com/api-reference/function/Instance/GetDescendants) instead.
 	 * @returns An array containing the `Instance`'s children.
 	 */
 	GetChildren<T extends Instance = Instance>(): Array<T>;
 	/** 
-	 * The **GetDescendants** function of an object returns an array that contains all of the descendants of that object. Unlike [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren), which only returns the immediate children of an object, GetDescendants will find every child of the object, every child of those children, and so on and so forth.
+	 * Returns an array containing all of the `Instance`'s descendants.
 	 *
-	 * The arrays returned by GetDescendants are arranged so that parents come earlier than their children. For example, let’s look at the following setup:
+	 * Running this function will collect every object descending from this `Instance` and return them in an array.
 	 *
-	 * ![Workspace Descendants][1]
+	 * Note this function returns all descendants of the `Instance`, if only direct children are required use [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) instead.
 	 *
-	 * Here we have a `Model` in the `Workspace`. Inside this model is three parts (C, D, and E) and another model (InnerModel). Inside the inner model are two more parts (A and B). If we use GetDescendants on the first model and print out the contents of the returned array, we can see that the first level of children, InnerModel, C, D, and E, are printed out before A and B.
+	 * For more information on instance hierarchy please see [this page][1].
 	 *
-	 * ```lua
-local descendants = game.Workspace.Model:GetDescendants()
- 
--- Loop through all of the descendants of the model and
--- print out their name
-for index, descendant in pairs(descendants) do
-	print(descendant.Name)
-end
- 
--- Prints:
--- C
--- D
--- E
--- InnerModel
--- A
--- B
-```
-	 * 
-
-	 * [1]: https://developer.roblox.com/assets/5c5622a2005d89b20bb84fee/GetDescendantsExample.png
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @returns An array containing the `Instance`'s descendants.
 	 */
 	GetDescendants(): Array<Instance>;
 	/** 
-	 * Returns a string describing the `Instance`'s ancestry. The string is a concatenation of the [Name](https://developer.roblox.com/api-reference/property/Instance/Name) of the object and its ancestors, separated by periods. The `DataModel` (`game`) is not considered. For example, a `Part` in the `Workspace` may return `Workspace.Part`.
+	 * Returns a string showing the `Instance`'s ancestry.
 	 *
-	 * When called on an `Instance` that is not a descendant of the `DataModel`, this function considers all ancestors up to and including the topmost one without a [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent).
+	 * ## Notes
 	 *
-	 * This function is useful for logging and debugging. You shouldn't attempt to parse the returned string for any useful operation; this function does not escape periods (or any other symbol) in object names. In other words, although its output often appears to be a valid Lua identifier, it is not guaranteed.
+	 * * This method is intended to be used for logging and debugging. Developers are advised not to attempt to parse the returned string
+	 *
+	 * * If used on an `Instance` not descending from the `DataModel`, the `Instance`'s [Instance.Name](https://developer.roblox.com/api-reference/property/Instance/Name) will be returned instead
+	 *
+	 * .
 	 * @returns The full name of the `Instance`.
 	 */
 	GetFullName(): string;
 	/** 
-	 * This method returns an event that behaves exactly like the `Changed` event, except that the event only fires when the given property changes. It's generally a good idea to use this method instead of a connection to `Changed` with a function that checks the property name. Subsequent calls to this method on the same object with the same property name return the same event.
+	 * This method returns an event that behaves exactly like the `Changed` event, except that the event only fires when the given property changes. Subsequent calls to this method on the same object with the same property name return the same event. It's generally a good idea to use this method instead of a connection to `Changed` with a function that checks the property name.
 	 *
 	 * `print(object:GetPropertyChangedSignal("Name") == object:GetPropertyChangedSignal("Name")) --&gt; always true`
 	 *
-	 * `ValueBase` objects, such as `IntValue` and `StringValue`, use a modified `Changed` event that fires with the contents of the `Value` property. As such, this method provides a way to detect changes in other properties of those objects. For example, to detect changes in the `Name` property of an `IntValue`, use `IntValue:GetPropertyChangedSignal("Name"):Connect(someFunc)` since the `Changed` event of `IntValue` objects only detect changes on the `Value` property.
+	 * For "-Value" objects which use a different `Changed` event that fires with their present value, this method is the only way to detect changes in other properties of those objects. For example, to detect changes in the `Name` property of an `IntValue`, you will need to use `IntValue:GetPropertyChangedSignal("Name"):connect(someFunc)` since the `Changed` event of `IntValue` objects only detect changes on the `Value` property. On the other hand, you will not need to call `IntValue:GetPropertyChangedSignal("Value")` since the `Changed` event behaves like this anyway.
 	 */
 	GetPropertyChangedSignal<T extends GetProperties<this>>(propertyName: T): RBXScriptSignal;
 	GetPropertyChangedSignal(propertyName: string): RBXScriptSignal;
@@ -847,6 +795,10 @@ paintFigure(game.Players.Player.Character, BrickColor.new("Bright blue"))
 	 * An `Instance` is considered the ancestor of an object if the object's [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) or one of it's parent's [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) is set to the `Instance`.
 	 *
 	 * See also, [Instance.IsDescendantOf](https://developer.roblox.com/api-reference/function/Instance/IsDescendantOf).
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param descendant The descendant `Instance`.
 	 * @returns True if the `Instance` is an ancestor of the given descendant.
 	 */
@@ -859,6 +811,10 @@ paintFigure(game.Players.Player.Character, BrickColor.new("Bright blue"))
 	 * Note, `DataModel` is a descendant of nil. This means IsDescendantOf cannot be used with a parameter of nil to check if an object has been removed.
 	 *
 	 * See also, [Instance.IsAncestorOf](https://developer.roblox.com/api-reference/function/Instance/IsAncestorOf).
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param ancestor The ancestor `Instance`.
 	 * @returns True if the `Instance` is a descendant of the given ancestor.
 	 */
@@ -929,7 +885,9 @@ object.AncestryChanged:Connect(function(_, parent)
 	end
 end)
 ```
-	 *
+	 * 
+
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 */
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance) => void>;
 	/** 
@@ -948,6 +906,8 @@ end)
 	 * Note, this function only works for immediate children of the `Instance`. For a function that captures all descendants, use [Instance.DescendantAdded](https://developer.roblox.com/api-reference/event/Instance/DescendantAdded).
 	 *
 	 * See also, [Instance.ChildRemoved](https://developer.roblox.com/api-reference/event/Instance/ChildRemoved).
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 */
 	readonly ChildAdded: RBXScriptSignal<(child: Instance) => void>;
 	/** 
@@ -958,6 +918,8 @@ end)
 	 * This function only works for immediate children of the `Instance`. For a function that captures all descendants, use [Instance.DescendantRemoved](https://developer.roblox.com/search#stq=DescendantRemoved).
 	 *
 	 * See also [Instance.ChildAdded](https://developer.roblox.com/api-reference/event/Instance/ChildAdded).
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 */
 	readonly ChildRemoved: RBXScriptSignal<(child: Instance) => void>;
 	/** 
@@ -968,55 +930,35 @@ end)
 	 * Developers only concerned with the immediate children of the `Instance` should use [Instance.ChildAdded](https://developer.roblox.com/api-reference/event/Instance/ChildAdded) instead.
 	 *
 	 * See also [Instance.DescendantRemoving](https://developer.roblox.com/api-reference/event/Instance/DescendantRemoving).
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 */
 	readonly DescendantAdded: RBXScriptSignal<(descendant: Instance) => void>;
 	/** 
-	 * DescendantRemoving fires **immediately before** the [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) of a descendant of the `Instance` changes such that the object is no longer a descendant of the Instance. [Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy) and [Remove](https://developer.roblox.com/api-reference/function/Instance/Remove) change an object's Parent to nil, so calling these on a descendant of an object will therefore cause this event to fire.
+	 * Fires immediately before a descendant of the `Instance` is removed.
 	 *
-	 * Since this event fires before the the descendant's removal, the Parent of the descendant will be unchanged, i.e., it will still be a descendant at the time of this event firing. If the descendant is also a child of the object, It will also fire before ChildRemoved. There is no similar event called "DescendantRemoved".
+	 * Removed refers to when an object's parent is changed from this `Instance` or a descendant of this `Instance` to something not descending from this `Instance`. Note, this event will also fire when a descendant is destroyed (using [Instance.Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy)) as the destroy function sets an object's parent to nil.
 	 *
-	 * If a descendant has children, this event fires with the descendant first followed by its descendants.
-	 *
-	 * ## Example
-	 *
-	 * The example below should help clarify how DescendantRemoving fires when there are several objects involved.
-	 *
-	 * ![A cropped screenshot of the Explorer window. A Model contains ModelA and ModelB, which each contain a Part, PartA and PartB respectively. PartA contains a Fire object named FireA.][1]
-	 *
-	 * * Calling [Remove](https://developer.roblox.com/api-reference/function/Instance/Remove) on **PartA** would cause DescendantRemoving to fire on both **ModelA** and **Model**, in that order.
-	 *
-	 * * Setting the [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) of **PartA** to **ModelB** would cause DescendantRemoving to fire on **ModelA** but not **Model** (as Model would still be an ancestor of PartA).
-	 *
-	 * * Calling [Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy) on **ModelA** would cause DescendantRemoving to fire multiple times on several objects:
-	 *
-	 * 	1. On **Model** with **ModelA**, **PartA** then **FireA**.
-	 *
-	 * 	2. On **ModelA**, with **PartA** then **FireA**.
-	 *
-	 * 	3. On **PartA** with **FireA**.
-	 *
-	 * ## Warning
-	 *
-	 * This event fires with the descendant object that is being removed. Attempting to set the [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) of the descendant being removed to something else **will fail** with the following warning: "Something unexpectedly tried to set the parent of X to Y while trying to set the parent of X. Current parent is Z", where X is the removing descendant, Y is the ignored parent setting, and Z is the original parent of X. Below is an example that demonstrates this:
+	 * Note, developers should not attempt to set the descendants parent to something else when the event fires, or it will fail with the following warning:
 	 *
 	 * ```lua
-workspace.DescendantRemoving:Connect(function(descendant)
-	-- Don't manipulate the parent of descendant in this function!
-	-- This event fires BECAUSE the parent of descendant was manipulated,
-	-- and the change hasn't happened yet, i.e. this function fires before that happens.
-	-- Therefore, it is problematic to change the parent like this:
+workspace.DescendantRemoving:connect(function(descendant)
 	descendant.Parent = game
 end)
 local part = Instance.new("Part")
 part.Parent = workspace
-part.Parent = nil -- This triggers DescendantRemoving on Workspace:
+part.Parent = nil
 --&gt; Something unexpectedly tried to set the parent of Part to NULL while trying to set the parent of Part. Current parent is Workspace.
 ```
 	 * 
 
-	 * See also [DescendantAdded](https://developer.roblox.com/api-reference/event/Instance/DescendantAdded).
+	 * Additionally, as this event fires for all descendants, removing an object from the `Instance` will fire an event for the object and all of its descendants individually.
 	 *
-	 * [1]: https://developer.roblox.com/assets/5bedf8a8a79094cd2b6a1c41/DescendantRemoving2.png
+	 * Developers only concerned with the immediate children of the `Instance` should use [Instance.ChildRemoved](https://developer.roblox.com/api-reference/event/Instance/ChildRemoved) instead.
+	 *
+	 * See also [Instance.DescendantAdded](https://developer.roblox.com/api-reference/event/Instance/DescendantAdded).
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 */
 	readonly DescendantRemoving: RBXScriptSignal<(descendant: Instance) => void>;
 }
@@ -1100,29 +1042,7 @@ interface Hat extends Accoutrement {
 }
 
 /** 
- * This AdService class was historically a service used to display mobile video ads as a form of game monetization. It has been decommissioned and is no longer operational.
- *
- * ![iPad displaying an ad](https://developer.roblox.com/assets/5c3e6293ae0aa2bf7f3a52fe/AdserviceIPad.png)
- *
- * It allowed game creators to utilize a the service and display video ads to mobile players on supported iOS and Android devices. Players were able to view up to 5 ads per hour across the site.
- *
- * ## Best Practices
- *
- *  - You couldn’t play an ad more than five times in an hour, in any mobile instance.
- *
- *  - [GUIs](https://developer.roblox.com/api-reference/class/GuiObject) were extremely important in getting your ads out. They made sure players knew they were seeing an ad and that gameplay would begin once it was over. Particularly something that said, “and now a word from our sponsor,” or “gameplay sponsored by…”
- *
- *  - You had to make sure players inside your game didn’t take damage or get knocked out while they were watching an ad (this could be as simple as giving them a forcefield while the ad plays).
- *
- *  - It was important to always show ads when it didn’t interfere with gameplay (like between rounds, before the game starts, or after a player gets knocked out).
- *
- * ## Benefits
- *
- * Implementing video ad impressions in mobile gameplay sessions offers a variety of positive things for Roblox developers.
- *
- * The more hits your ad got, the more ROBUX you earned (at a rate of one ROBUX per 20 impressions). So if you were trying to utilize the heavy traffic you received in your game, it was recommended to using the API to call the commercial before your game started. For those who already had a hit game, this this could have functioned as supplemental income.
- *
- * Thinking of the bigger picture. You could tie the API call to, say, a button inside your game, which would only play the ad when pressed. Many Roblox players wanted to earn exclusive items for your game, but maybe couldn't afford them. Perhaps you could tie one of those items into the ad — couldn’t afford the Green Balloon? Here was another option: watch a 30 second ad. The player got the item, you got the impression, and the cycle continued that way. Maybe your game was round-based. Why not play an ad between rounds? That was easily 20 impressions just while waiting for the next level to load. And more ad impressions meant more ROBUX in your pocket.
+ * A decommissioned service that is no longer operational.
  */
 interface AdService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -1221,7 +1141,9 @@ animationTrack:Play()
 }
 
 /** 
- * Controls the playback of an animation on a `Humanoid` or `AnimationController`. This object cannot be created, instead it is returned by the [Humanoid.LoadAnimation](https://developer.roblox.com/api-reference/function/Humanoid/LoadAnimation) method.
+ * Controls the playback of an animation on a [Humanoid](https://wiki.roblox.com/index.php?title=Humanoid) or [AnimationController](https://wiki.roblox.com/index.php?title=AnimationController) .
+ *
+ * This object cannot be created, rather it is returned by the [LoadAnimation](https://wiki.roblox.com/index.php?title=LoadAnimation) method.
  */
 interface AnimationTrack extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -1329,7 +1251,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	
@@ -1341,7 +1263,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 *
@@ -1357,7 +1279,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	
@@ -1369,7 +1291,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 *
@@ -1379,7 +1301,7 @@ interface AnimationTrack extends Instance {
 	/** 
 	 * This function changes the [AnimationTrack.Speed](https://developer.roblox.com/api-reference/property/AnimationTrack/Speed) of an animation.  A positive value for speed plays the animation forward, a negative one plays it backwards, and 0 pauses it.
 	 *
-	 * An AnimationTrack's initial speed is set as a parameter in [AnimationTrack.Play](https://developer.roblox.com/api-reference/function/AnimationTrack/Play). However a track's Speed can be changed during playback, using AdjustSpeed. When speed is equal to 1, the amount of time an animation takes to complete is equal to [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds).
+	 * An AnimationTrack's initial speed is set as a parameter in [AnimationTrack.Play](https://developer.roblox.com/api-reference/function/AnimationTrack/Play). However a track's Speed can be changed, both before and during playback, using AdjustSpeed. When speed is equal to 1, the amount of time an animation takes to complete is equal to [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds).
 	 *
 	 * When is adjusted, then the actual time it will take a track to play can be computed by dividing the length by the speed. Speed is a unitless quantity.
 	 *
@@ -1398,7 +1320,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 * @param weight The weight the animation is to be changed to.
@@ -5398,7 +5320,7 @@ interface Controller extends Instance {
 }
 
 /** 
- * A HumanoidController is an internal object responsible for translating PlayerAciton movements to the user's character (specifically, their `Humanoid`).
+ * A HumanoidController is an object responsible for translating [PlayerActions](https://wiki.roblox.com/index.php?title=PlayerActions) to movements with the user's character (specifically, their `Humanoid`).
  *
  * This object can be found inside of the `ControllerService`, via:
  *
@@ -6558,7 +6480,7 @@ texture.StudsPerTileV = 1
  *
  *  - If the effect of lighting on the image needs to be altered, the `SurfaceGui` object should be used
  *
- * [1]: https://developer.roblox.com/articles/How-to-upload-a-Decal
+ * [1]: http://wiki.roblox.com/index.php?title=How_to_upload_a_Decal
  */
 interface Texture extends Decal {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -7100,23 +7022,31 @@ interface GlobalDataStore extends Instance {
 }
 
 /** 
- * A **OrderedDataStore** is essentially a `GlobalDataStore` with the exception that stored values must be **positive integers**. It exposes a method [GetSortedAsync()](https://developer.roblox.com/api-reference/function/OrderedDataStore/GetSortedAsync) which allows inspection of the entries in sorted order using a `DataStorePages` object.
- *
- * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an overview on using ordered data stores.
+ * A OrderedDataStore is essentially a `GlobalDataStore` with the exception that stored values must be **positive integers** and it exposes a method `GetSortedPagesAsync`. This method allows inspection of the entries in sorted order using a `DataStorePages` object. OrderedDataStores are useful for creating leaderboards wherein data must kept **sorted**.
  */
 	/** @rbxts server */
 interface OrderedDataStore extends GlobalDataStore {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "OrderedDataStore";
 	/** 
-	 * Returns a `DataStorePages` object. The sort order is determined by **isAscending**, the length of each page by **pageSize**, and **minValue***maxValue** are optional parameters which filter the results.
+	 * Returns a `DataStorePages` object. The length of each page is determined by pageSize, and the order is determined by isAscending. minValue and maxValue are optional parameters which will filter the result. See [this article](https://wiki.roblox.com/index.php?title=Ordered_data_store) for a good explanation of using this. You can not use this too often, as there is a [limit](https://wiki.roblox.com/index.php?title=Data_store#Limitations) on the usage of this method.
 	 *
-	 * If this function throws an error, the [error message](https://developer.roblox.com/search#stq=Datastore%20Errors) will describe the problem.
-	 * @param ascending A boolean indicating whether the returned data pages are in ascending order.
+	 * If this function throws an error, the error message will describe the problem. A full list of DataStore errors can be seen [here](https://wiki.roblox.com/index.php?title=Datastore_Errors).
+	 *
+	 * ## Notes
+	 *
+	 * The maximum pagesize is 100.
+	 *
+	 * ## See Also
+	 *
+	 * * [Ordered data store (article)](https://wiki.roblox.com/index.php?title=Ordered_data_store)
+	 *
+	 * * [Article about Data Stores in general](https://wiki.roblox.com/index.php?title=Data_store)
+	 * @param ascending A boolean indicating whether DataStorePage returned is in ascending order.
 	 * @param pagesize The length of each page.
-	 * @param minValue Optional parameter. If set, data pages with a value less than than **minValue** will be excluded.
-	 * @param maxValue Optional parameter. If set, data pages with a value greater than **maxValue** will be excluded.
-	 * @returns A sorted `DataStorePages` object based on the provided arguments.
+	 * @param minValue Optional parameter. If set, data pages with a value less than than *minValue* will be excluded.
+	 * @param maxValue Optional parameter. If set, data pages with a value greater than *maxValue* will be excluded.
+	 * @returns A sorted DataStorePage object based on the provided arguments.
 	 */
 	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
 }
@@ -9148,9 +9078,6 @@ interface DockWidgetPluginGui extends PluginGui {
 	readonly HostWidgetWasRestored: boolean;
 }
 
-/** 
- 
- */
 interface QWidgetPluginGui extends PluginGui {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "QWidgetPluginGui";
@@ -15497,33 +15424,17 @@ interface Part extends FormFactorPart {
 }
 
 /** 
- * The `Flag` and `FlagStand` objects were created to allow developers to make 'Capture the Flag' style games quickly. However they have been deprecated and developers are advised to design their own systems which will be more flexible and reliable.
- *
- * To get started with this, developers can use the 'Capture The Flag' template place provided by Roblox which has a fully functioning system developers can take and use in their own games. A link to the place, which is free to edit, is [here][1].
- *
- * [1]: https://www.roblox.com/games/92721754/Capture-The-Flag#!/about
+ * The FlagStand and `Flag` are deprecated objects that were used to make capture the flag games.
  */
 interface FlagStand extends Part {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "FlagStand";
 	/** 
 	 * The Team that owns the `FlagStand`. Corresponds with the TeamColors in the `Teams` service.
-	 *
-	 * The `Flag` and `FlagStand` objects were created to allow developers to make 'Capture the Flag' style games quickly. However they have been deprecated and developers are advised to design their own systems which will be more flexible and reliable.
-	 *
-	 * To get started with this, developers can use the 'Capture The Flag' template place provided by Roblox which has a fully functioning system developers can take and use in their own games. A link to the place, which is free to edit, is [here][1].
-	 *
-	 * [1]: https://www.roblox.com/games/92721754/Capture-The-Flag#!/about
 	 */
 	TeamColor: BrickColor;
 	/** 
-	 * This event fires when a player bearing an opposing flag, and having the same [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) as the stand, touches the `FlagStand`.
-	 *
-	 * The `Flag` and `FlagStand` objects were created to allow developers to make 'Capture the Flag' style games quickly. However they have been deprecated and developers are advised to design their own systems which will be more flexible and reliable.
-	 *
-	 * To get started with this, developers can use the 'Capture The Flag' template place provided by Roblox which has a fully functioning system developers can take and use in their own games. A link to the place, which is free to edit, is [here][1].
-	 *
-	 * [1]: https://www.roblox.com/games/92721754/Capture-The-Flag#!/about
+	 * Fires when a player bearing an opposing flag, and having the same [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) as the stand, touches the `FlagStand`.
 	 */
 	readonly FlagCaptured: RBXScriptSignal<(player: Player) => void>;
 }
@@ -16887,7 +16798,7 @@ interface StandardPages extends Pages {
 }
 
 /** 
- * An internal instance used to save/load [solid models](https://developer.roblox.com/articles/3D-Modeling-with-Parts) onto the Roblox cloud.
+ * A type of instance used to save/load [solid models](https://wiki.roblox.com/index.php?title=Solid_modeling) onto the Roblox cloud.
  */
 interface PartOperationAsset extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -16921,9 +16832,9 @@ interface PartOperationAsset extends Instance {
  *
  * [1]: https://en.wikipedia.org/wiki/Particle_system
  *
- * [2]: https://developer.roblox.com/assets/blt7bc5555538e06faa/ParticleEmitter.png
+ * [2]: https://developer.roblox.com/assets/5b0b4fb29ff66f1e10708c9c/ParticleEmitter.png
  *
- * [3]: https://developer.roblox.com/assets/blt14277a5a3c807db6/ParticleEmitter_Insertion.png
+ * [3]: https://developer.roblox.com/assets/5b0b50925e35cad03cb39860/ParticleEmitter_Insertion.png
  *
  * [4]: https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/blt885ce1cfde491cd3/5b0b5148dc1dd5cd0f3c9cb5/ParticleEmitter_Insertion2.png
  *
@@ -16943,7 +16854,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Acceleration is most often used to apply a gravity effect to particles (try a value of (0, -3, 0) for this). You can also use small values on the X/Z axes to make it look like particles are being blown away by wind. If you emit a bubble particle downwards, you could use an acceleration of (0, 5, 0) to cause the bubbles to decelerate and then float back upwards.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltaeb3393ea3390868/ParticleEmitter_Acceleration.png
+	 * [1]: https://developer.roblox.com/assets/5b0b7dcc7f08d31910651c1d/ParticleEmitter_Acceleration.png
 	 */
 	Acceleration: Vector3;
 	/** 
@@ -16957,7 +16868,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Changing this property applies changes to all particles present in the system. This is because the color of a particle is determined using its present lifetime and this ColorSequence (the ColorSequence when the particle was emit is not stored on a per-particle basis).
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt07a957ff7394b365/ParticleEmitter_Color.png
+	 * [1]: https://developer.roblox.com/assets/5b0b68679ff66f1e10708cbe/ParticleEmitter_Color.png
 	 */
 	Color: ColorSequence;
 	/** 
@@ -16969,7 +16880,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Warning: if Drag is set to a sufficiently negative value, this can cause all particles emit by the emitter to completely disappear. Be careful when setting this property lower than -100.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt9a58d2b5746274de/ParticleEmitter_Drag.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b66930108c1d50fed413e/ParticleEmitter_Drag.gif
 	 */
 	Drag: number;
 	/** 
@@ -16977,7 +16888,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * ![Two identical ParticleEmitters except with differing EmissionDirection (left is Top, right is Front)][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt529991a1b0fa24f4/ParticleEmitter_EmissionDirection.png
+	 * [1]: https://developer.roblox.com/assets/5b0b64860108c1d50fed4138/ParticleEmitter_EmissionDirection.png
 	 */
 	EmissionDirection: Enum.NormalId;
 	/** 
@@ -17005,9 +16916,9 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * This property should not be confused with [ParticleEmitter.LightInfluence](https://developer.roblox.com/api-reference/property/ParticleEmitter/LightInfluence), which determines how particles are affected by environment light. This property does not cause particles to light the environment around them. To do that, consider using a `PointLight`.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltfaa542eee7781432/ParticleEmitter_LightEmission.png
+	 * [1]: https://developer.roblox.com/assets/5b0b7f970108c1d50fed4158/ParticleEmitter_LightEmission.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/bltf793b94e42b0b6bf/aura.png
+	 * [2]: https://developer.roblox.com/assets/5b0b723e43098c11102a541f/aura.png
 	 */
 	LightEmission: number;
 	/** 
@@ -17021,7 +16932,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * [1]: https://www.youtube.com/watch?v=bLIVeQgS_pI
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt0978dec6faf6d7ae/ParticleEmitter_LightInfluence.png
+	 * [2]: https://developer.roblox.com/assets/5b0b6b057f08d31910651c09/ParticleEmitter_LightInfluence.png
 	 */
 	LightInfluence: number;
 	/** 
@@ -17033,7 +16944,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Also consider using the [ParticleEmitter.VelocityInheritance](https://developer.roblox.com/api-reference/property/ParticleEmitter/VelocityInheritance) property set to 1, which may be more appropriate for some effects.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltdf5045209fff8b32/ParticleEmitter_LockedToPart.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b80e8dc1dd5cd0f3c9cdf/ParticleEmitter_LockedToPart.gif
 	 */
 	LockedToPart: boolean;
 	/** 
@@ -17055,9 +16966,9 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Particles with very high angular speeds can appear to rotate slower or not at all - this is because the angle of rotation is synchronized with the software render speed. In other words, if the particle is rotating at exactly 360 degrees every frame, there will be no apparent change in rotation.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltfe2427c2a9f0f3ad/ParticleEmitter_RotSpeed.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b820d7f08d31910651c23/ParticleEmitter_RotSpeed.gif
 	 *
-	 * [2]: https://developer.roblox.com/assets/bltc50865c165e13d07/ParticleEmitter_RotSpeed2_swirl.gif
+	 * [2]: https://developer.roblox.com/assets/5b0b84bd7f08d31910651c29/ParticleEmitter_RotSpeed2_swirl.gif
 	 *
 	 * [3]: https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/blt6c03c8e2536b2634/5b0b84d09a16a6df0e4973b5/ParticleEmitter_RotSpeed2.gif
 	 */
@@ -17071,7 +16982,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Changes to this value only affect new particles; existing particles will maintain the rotation at which they were originally emitted.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltb0b7b9f3f01688b2/ParticleEmitter_Rotation.png
+	 * [1]: https://developer.roblox.com/assets/5b0b6c53344ad0d40f77ffe8/ParticleEmitter_Rotation.png
 	 */
 	Rotation: NumberRange;
 	/** 
@@ -17089,7 +17000,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * When designing particle effects, size is probably the most important of all properties. Too large or too subtle can ruin a particle effect! The first thing you should do is decide how you want particles to enter and exit view - fade in/out, or grow/shrink from size 0? The choice is yours - start with a size NumberSequence from 0 to 3 or the reverse and go from there.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt908c9ca9b5bddace/ParticleEmitter_Size.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b78ac5e35cad03cb3988e/ParticleEmitter_Size.gif
 	 */
 	Size: NumberSequence;
 	/** 
@@ -17101,7 +17012,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * [ParticleEmitter.VelocityInheritance](https://developer.roblox.com/api-reference/property/ParticleEmitter/VelocityInheritance), [ParticleEmitter.Acceleration](https://developer.roblox.com/api-reference/property/ParticleEmitter/Acceleration) and [ParticleEmitter.Drag](https://developer.roblox.com/api-reference/property/ParticleEmitter/Drag) will affect a particle's speed over its lifetime. Changing Speed will not affect already existing particles - they will retain whatever speed they have already.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blte13fc189c250bd2b/ParticleEmitter_Speed.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b7b7c7f08d31910651c17/ParticleEmitter_Speed.gif
 	 */
 	Speed: NumberRange;
 	/** 
@@ -17113,7 +17024,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Setting one axis to 360 will cause particles to emit in all direction in a **circle**. Setting both to 360 will cause particles to emit in all directions in a **sphere**.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt05b793010052f4b7/ParticleEmitter_SpreadAngle.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b85c25e35cad03cb39898/ParticleEmitter_SpreadAngle.gif
 	 */
 	SpreadAngle: Vector2;
 	/** 
@@ -17133,11 +17044,11 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * ![An example particle texture][3]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt15e439cb32a655c1/ParticleEmitter_Texture.png
+	 * [1]: https://developer.roblox.com/assets/5b0b71b99a16a6df0e4973ab/ParticleEmitter_Texture.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/bltfe72f664112679bb/coin_01.png
+	 * [2]: https://developer.roblox.com/assets/5b0b729f5e35cad03cb3987c/coin_01.png
 	 *
-	 * [3]: https://developer.roblox.com/assets/bltf793b94e42b0b6bf/aura.png
+	 * [3]: https://developer.roblox.com/assets/5b0b723e43098c11102a541f/aura.png
 	 */
 	Texture: string;
 	/** 
@@ -17151,7 +17062,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Changing this property applies changes to all particles present in the system. This is because the transparency of a particle is determined using its present lifetime and this `NumberSequence` (the Transparency at the time the particle was emit is not stored on a per-particle basis).
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt7d318803556982ca/ParticleEmitter_Transparency.png
+	 * [1]: https://developer.roblox.com/assets/5b0b87df43098c11102a542b/ParticleEmitter_Transparency.png
 	 */
 	Transparency: NumberSequence;
 	/** 
@@ -17163,7 +17074,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * When used in conjunction with [ParticleEmitter.Drag](https://developer.roblox.com/api-reference/property/ParticleEmitter/Drag), a particle emitter can make appear to be "shedding" particles from a moving part.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt6b88061023429950/ParticleEmitter_VelocityInheritance.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b88fc7f08d31910651c37/ParticleEmitter_VelocityInheritance.gif
 	 */
 	VelocityInheritance: number;
 	/** 
@@ -17179,9 +17090,9 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Positive values will move particles closer to the camera, and negative values move particles away. Sufficiently negative values can cause particles to render inside or behind the parent part.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt216bd741511f3108/ParticleEmitter_ZOffset.png
+	 * [1]: https://developer.roblox.com/assets/5b0b6fae7f08d31910651c0f/ParticleEmitter_ZOffset.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt8b9262a841414c12/ParticleEmitter_ZOffset2.png
+	 * [2]: https://developer.roblox.com/assets/5b0b6ffadc1dd5cd0f3c9cd7/ParticleEmitter_ZOffset2.png
 	 */
 	ZOffset: number;
 	/** 
@@ -26400,10 +26311,7 @@ end
 	readonly UserCFrameEnabled: RBXScriptSignal<(type: Enum.UserCFrame, enabled: boolean) => void>;
 }
 
-/** 
- 
- */
-	/**
+/**
  * Used to hold a value.
  */
 interface ValueBase extends Instance {

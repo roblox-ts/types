@@ -714,7 +714,27 @@ interface RunService extends Instance {
 
 interface ScriptContext extends Instance {
 	/** 
-	 * Limits how long a script is allowed to run without yielding.
+	 * Limits how long a script is allowed to run without yielding. For example:
+	 *
+	 * ```lua
+game:GetService("ScriptContext"):SetTimeout(10)
+local s = Instance.new("Script")
+s.Source = "while true do end"
+s.Parent = workspace
+```
+	 * 
+
+	 * Running the above code from the [Command Bar](https://wiki.roblox.com/index.php?title=Command_Bar) in a running place will set the timeout to 10 seconds, and then create a script with the source "while true do end" (an infinite loop), and allow it to the run in the workspace. After 10 seconds you will see output similar to the following:
+	 *
+	 * ```lua
+15:43:05.115 - Game script timout
+15:43:05.116 - Stack Begin
+15:43:05.116 - Script 'Workspace.Script', Line 1
+15:43:05.116 - Stack End
+```
+	 * 
+
+	 * This means the script has timed out and it has been stopped.Limits how long a script is allowed to run without yielding.
 	 */
 	SetTimeout(seconds: number): void;
 }
