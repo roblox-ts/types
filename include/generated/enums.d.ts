@@ -13,7 +13,7 @@ declare namespace Enum {
 		Value: number;
 		EnumType: EnumItemGroup;
 	}
-	type EnumItemGroup = { GetEnumItems(): Array<EnumItem> } & { [index: string]: EnumItem };
+	type EnumItemGroup = { GetEnumItems(this: {}): Array<EnumItem> } & { [index: string]: EnumItem };
 	export function GetEnums(this: typeof Enum): Array<EnumItemGroup>;
 
 	export namespace ActionType {
@@ -57,7 +57,7 @@ declare namespace Enum {
 
 		export const Win: Win;
 
-		export function GetEnumItems(): Array<ActionType>
+		export function GetEnumItems(this: {}): Array<ActionType>
 	}
 	export type ActionType = ActionType.Nothing | ActionType.Pause | ActionType.Lose | ActionType.Draw | ActionType.Win;
 	export namespace ActuatorRelativeTo {
@@ -85,7 +85,7 @@ declare namespace Enum {
 
 		export const World: World;
 
-		export function GetEnumItems(): Array<ActuatorRelativeTo>
+		export function GetEnumItems(this: {}): Array<ActuatorRelativeTo>
 	}
 	export type ActuatorRelativeTo = ActuatorRelativeTo.Attachment0 | ActuatorRelativeTo.Attachment1 | ActuatorRelativeTo.World;
 	export namespace ActuatorType {
@@ -113,7 +113,7 @@ declare namespace Enum {
 
 		export const Servo: Servo;
 
-		export function GetEnumItems(): Array<ActuatorType>
+		export function GetEnumItems(this: {}): Array<ActuatorType>
 	}
 	export type ActuatorType = ActuatorType.None | ActuatorType.Motor | ActuatorType.Servo;
 	export namespace AlignType {
@@ -133,7 +133,7 @@ declare namespace Enum {
 
 		export const Perpendicular: Perpendicular;
 
-		export function GetEnumItems(): Array<AlignType>
+		export function GetEnumItems(this: {}): Array<AlignType>
 	}
 	export type AlignType = AlignType.Parallel | AlignType.Perpendicular;
 	export namespace AnimationPriority {
@@ -169,7 +169,7 @@ declare namespace Enum {
 
 		export const Core: Core;
 
-		export function GetEnumItems(): Array<AnimationPriority>
+		export function GetEnumItems(this: {}): Array<AnimationPriority>
 	}
 	export type AnimationPriority = AnimationPriority.Idle | AnimationPriority.Movement | AnimationPriority.Action | AnimationPriority.Core;
 	export namespace AppShellActionType {
@@ -261,7 +261,7 @@ declare namespace Enum {
 
 		export const AvatarEditorPageLoaded: AvatarEditorPageLoaded;
 
-		export function GetEnumItems(): Array<AppShellActionType>
+		export function GetEnumItems(this: {}): Array<AppShellActionType>
 	}
 	export type AppShellActionType = AppShellActionType.None | AppShellActionType.OpenApp | AppShellActionType.TapChatTab | AppShellActionType.TapConversationEntry | AppShellActionType.TapAvatarTab | AppShellActionType.ReadConversation | AppShellActionType.TapGamePageTab | AppShellActionType.TapHomePageTab | AppShellActionType.GamePageLoaded | AppShellActionType.HomePageLoaded | AppShellActionType.AvatarEditorPageLoaded;
 	export namespace AspectType {
@@ -281,7 +281,7 @@ declare namespace Enum {
 
 		export const ScaleWithParentSize: ScaleWithParentSize;
 
-		export function GetEnumItems(): Array<AspectType>
+		export function GetEnumItems(this: {}): Array<AspectType>
 	}
 	export type AspectType = AspectType.FitWithinMaxSize | AspectType.ScaleWithParentSize;
 	export namespace AssetFetchStatus {
@@ -301,7 +301,7 @@ declare namespace Enum {
 
 		export const Failure: Failure;
 
-		export function GetEnumItems(): Array<AssetFetchStatus>
+		export function GetEnumItems(this: {}): Array<AssetFetchStatus>
 	}
 	export type AssetFetchStatus = AssetFetchStatus.Success | AssetFetchStatus.Failure;
 	export namespace AssetType {
@@ -657,7 +657,7 @@ declare namespace Enum {
 
 		export const EmoteAnimation: EmoteAnimation;
 
-		export function GetEnumItems(): Array<AssetType>
+		export function GetEnumItems(this: {}): Array<AssetType>
 	}
 	export type AssetType = AssetType.Image | AssetType.TeeShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation;
 	export namespace AutoJointsMode {
@@ -685,7 +685,7 @@ declare namespace Enum {
 
 		export const LegacyImplicit: LegacyImplicit;
 
-		export function GetEnumItems(): Array<AutoJointsMode>
+		export function GetEnumItems(this: {}): Array<AutoJointsMode>
 	}
 	export type AutoJointsMode = AutoJointsMode.Default | AutoJointsMode.Explicit | AutoJointsMode.LegacyImplicit;
 	export namespace AvatarContextMenuOption {
@@ -721,7 +721,7 @@ declare namespace Enum {
 
 		export const InspectMenu: InspectMenu;
 
-		export function GetEnumItems(): Array<AvatarContextMenuOption>
+		export function GetEnumItems(this: {}): Array<AvatarContextMenuOption>
 	}
 	export type AvatarContextMenuOption = AvatarContextMenuOption.Friend | AvatarContextMenuOption.Chat | AvatarContextMenuOption.Emote | AvatarContextMenuOption.InspectMenu;
 	export namespace AvatarJointPositionType {
@@ -741,7 +741,7 @@ declare namespace Enum {
 
 		export const ArtistIntent: ArtistIntent;
 
-		export function GetEnumItems(): Array<AvatarJointPositionType>
+		export function GetEnumItems(this: {}): Array<AvatarJointPositionType>
 	}
 	export type AvatarJointPositionType = AvatarJointPositionType.Fixed | AvatarJointPositionType.ArtistIntent;
 	export namespace Axis {
@@ -769,7 +769,7 @@ declare namespace Enum {
 
 		export const Z: Z;
 
-		export function GetEnumItems(): Array<Axis>
+		export function GetEnumItems(this: {}): Array<Axis>
 	}
 	export type Axis = Axis.X | Axis.Y | Axis.Z;
 	export namespace BinType {
@@ -813,7 +813,7 @@ declare namespace Enum {
 
 		export const Hammer: Hammer;
 
-		export function GetEnumItems(): Array<BinType>
+		export function GetEnumItems(this: {}): Array<BinType>
 	}
 	export type BinType = BinType.Script | BinType.GameTool | BinType.Grab | BinType.Clone | BinType.Hammer;
 	export namespace BodyPart {
@@ -865,7 +865,7 @@ declare namespace Enum {
 
 		export const RightLeg: RightLeg;
 
-		export function GetEnumItems(): Array<BodyPart>
+		export function GetEnumItems(this: {}): Array<BodyPart>
 	}
 	export type BodyPart = BodyPart.Head | BodyPart.Torso | BodyPart.LeftArm | BodyPart.RightArm | BodyPart.LeftLeg | BodyPart.RightLeg;
 	export namespace BodyPartR15 {
@@ -1005,7 +1005,7 @@ declare namespace Enum {
 
 		export const Unknown: Unknown;
 
-		export function GetEnumItems(): Array<BodyPartR15>
+		export function GetEnumItems(this: {}): Array<BodyPartR15>
 	}
 	export type BodyPartR15 = BodyPartR15.Head | BodyPartR15.UpperTorso | BodyPartR15.LowerTorso | BodyPartR15.LeftFoot | BodyPartR15.LeftLowerLeg | BodyPartR15.LeftUpperLeg | BodyPartR15.RightFoot | BodyPartR15.RightLowerLeg | BodyPartR15.RightUpperLeg | BodyPartR15.LeftHand | BodyPartR15.LeftLowerArm | BodyPartR15.LeftUpperArm | BodyPartR15.RightHand | BodyPartR15.RightLowerArm | BodyPartR15.RightUpperArm | BodyPartR15.RootPart | BodyPartR15.Unknown;
 	export namespace Button {
@@ -1025,7 +1025,7 @@ declare namespace Enum {
 
 		export const Dismount: Dismount;
 
-		export function GetEnumItems(): Array<Button>
+		export function GetEnumItems(this: {}): Array<Button>
 	}
 	export type Button = Button.Jump | Button.Dismount;
 	export namespace ButtonStyle {
@@ -1077,7 +1077,7 @@ declare namespace Enum {
 
 		export const RobloxRoundDropdownButton: RobloxRoundDropdownButton;
 
-		export function GetEnumItems(): Array<ButtonStyle>
+		export function GetEnumItems(this: {}): Array<ButtonStyle>
 	}
 	export type ButtonStyle = ButtonStyle.Custom | ButtonStyle.RobloxButtonDefault | ButtonStyle.RobloxButton | ButtonStyle.RobloxRoundButton | ButtonStyle.RobloxRoundDefaultButton | ButtonStyle.RobloxRoundDropdownButton;
 	export namespace CameraMode {
@@ -1097,7 +1097,7 @@ declare namespace Enum {
 
 		export const LockFirstPerson: LockFirstPerson;
 
-		export function GetEnumItems(): Array<CameraMode>
+		export function GetEnumItems(this: {}): Array<CameraMode>
 	}
 	export type CameraMode = CameraMode.Classic | CameraMode.LockFirstPerson;
 	export namespace CameraPanMode {
@@ -1117,7 +1117,7 @@ declare namespace Enum {
 
 		export const EdgeBump: EdgeBump;
 
-		export function GetEnumItems(): Array<CameraPanMode>
+		export function GetEnumItems(this: {}): Array<CameraPanMode>
 	}
 	export type CameraPanMode = CameraPanMode.Classic | CameraPanMode.EdgeBump;
 	export namespace CameraType {
@@ -1185,7 +1185,7 @@ declare namespace Enum {
 
 		export const Orbital: Orbital;
 
-		export function GetEnumItems(): Array<CameraType>
+		export function GetEnumItems(this: {}): Array<CameraType>
 	}
 	export type CameraType = CameraType.Fixed | CameraType.Watch | CameraType.Attach | CameraType.Track | CameraType.Follow | CameraType.Custom | CameraType.Scriptable | CameraType.Orbital;
 	export namespace CellBlock {
@@ -1229,7 +1229,7 @@ declare namespace Enum {
 
 		export const HorizontalWedge: HorizontalWedge;
 
-		export function GetEnumItems(): Array<CellBlock>
+		export function GetEnumItems(this: {}): Array<CellBlock>
 	}
 	export type CellBlock = CellBlock.Solid | CellBlock.VerticalWedge | CellBlock.CornerWedge | CellBlock.InverseCornerWedge | CellBlock.HorizontalWedge;
 	export namespace CellMaterial {
@@ -1377,7 +1377,7 @@ declare namespace Enum {
 
 		export const Water: Water;
 
-		export function GetEnumItems(): Array<CellMaterial>
+		export function GetEnumItems(this: {}): Array<CellMaterial>
 	}
 	export type CellMaterial = CellMaterial.Empty | CellMaterial.Grass | CellMaterial.Sand | CellMaterial.Brick | CellMaterial.Granite | CellMaterial.Asphalt | CellMaterial.Iron | CellMaterial.Aluminum | CellMaterial.Gold | CellMaterial.WoodPlank | CellMaterial.WoodLog | CellMaterial.Gravel | CellMaterial.CinderBlock | CellMaterial.MossyStone | CellMaterial.Cement | CellMaterial.RedPlastic | CellMaterial.BluePlastic | CellMaterial.Water;
 	export namespace CellOrientation {
@@ -1413,7 +1413,7 @@ declare namespace Enum {
 
 		export const NegX: NegX;
 
-		export function GetEnumItems(): Array<CellOrientation>
+		export function GetEnumItems(this: {}): Array<CellOrientation>
 	}
 	export type CellOrientation = CellOrientation.NegZ | CellOrientation.X | CellOrientation.Z | CellOrientation.NegX;
 	export namespace CenterDialogType {
@@ -1449,7 +1449,7 @@ declare namespace Enum {
 
 		export const QuitDialog: QuitDialog;
 
-		export function GetEnumItems(): Array<CenterDialogType>
+		export function GetEnumItems(this: {}): Array<CenterDialogType>
 	}
 	export type CenterDialogType = CenterDialogType.UnsolicitedDialog | CenterDialogType.PlayerInitiatedDialog | CenterDialogType.ModalDialog | CenterDialogType.QuitDialog;
 	export namespace ChatCallbackType {
@@ -1485,7 +1485,7 @@ declare namespace Enum {
 
 		export const OnServerReceivingMessage: OnServerReceivingMessage;
 
-		export function GetEnumItems(): Array<ChatCallbackType>
+		export function GetEnumItems(this: {}): Array<ChatCallbackType>
 	}
 	export type ChatCallbackType = ChatCallbackType.OnCreatingChatWindow | ChatCallbackType.OnClientSendingMessage | ChatCallbackType.OnClientFormattingMessage | ChatCallbackType.OnServerReceivingMessage;
 	export namespace ChatColor {
@@ -1521,7 +1521,7 @@ declare namespace Enum {
 
 		export const White: White;
 
-		export function GetEnumItems(): Array<ChatColor>
+		export function GetEnumItems(this: {}): Array<ChatColor>
 	}
 	export type ChatColor = ChatColor.Blue | ChatColor.Green | ChatColor.Red | ChatColor.White;
 	export namespace ChatMode {
@@ -1541,7 +1541,7 @@ declare namespace Enum {
 
 		export const TextAndMenu: TextAndMenu;
 
-		export function GetEnumItems(): Array<ChatMode>
+		export function GetEnumItems(this: {}): Array<ChatMode>
 	}
 	export type ChatMode = ChatMode.Menu | ChatMode.TextAndMenu;
 	export namespace ChatPrivacyMode {
@@ -1569,7 +1569,7 @@ declare namespace Enum {
 
 		export const Friends: Friends;
 
-		export function GetEnumItems(): Array<ChatPrivacyMode>
+		export function GetEnumItems(this: {}): Array<ChatPrivacyMode>
 	}
 	export type ChatPrivacyMode = ChatPrivacyMode.AllUsers | ChatPrivacyMode.NoOne | ChatPrivacyMode.Friends;
 	export namespace ChatStyle {
@@ -1597,7 +1597,7 @@ declare namespace Enum {
 
 		export const ClassicAndBubble: ClassicAndBubble;
 
-		export function GetEnumItems(): Array<ChatStyle>
+		export function GetEnumItems(this: {}): Array<ChatStyle>
 	}
 	export type ChatStyle = ChatStyle.Classic | ChatStyle.Bubble | ChatStyle.ClassicAndBubble;
 	export namespace CollisionFidelity {
@@ -1625,7 +1625,7 @@ declare namespace Enum {
 
 		export const Box: Box;
 
-		export function GetEnumItems(): Array<CollisionFidelity>
+		export function GetEnumItems(this: {}): Array<CollisionFidelity>
 	}
 	export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box;
 	export namespace ComputerCameraMovementMode {
@@ -1661,7 +1661,7 @@ declare namespace Enum {
 
 		export const Orbital: Orbital;
 
-		export function GetEnumItems(): Array<ComputerCameraMovementMode>
+		export function GetEnumItems(this: {}): Array<ComputerCameraMovementMode>
 	}
 	export type ComputerCameraMovementMode = ComputerCameraMovementMode.Default | ComputerCameraMovementMode.Follow | ComputerCameraMovementMode.Classic | ComputerCameraMovementMode.Orbital;
 	export namespace ComputerMovementMode {
@@ -1689,7 +1689,7 @@ declare namespace Enum {
 
 		export const ClickToMove: ClickToMove;
 
-		export function GetEnumItems(): Array<ComputerMovementMode>
+		export function GetEnumItems(this: {}): Array<ComputerMovementMode>
 	}
 	export type ComputerMovementMode = ComputerMovementMode.Default | ComputerMovementMode.KeyboardMouse | ComputerMovementMode.ClickToMove;
 	export namespace ConnectionError {
@@ -2085,7 +2085,7 @@ declare namespace Enum {
 
 		export const TeleportIsTeleporting: TeleportIsTeleporting;
 
-		export function GetEnumItems(): Array<ConnectionError>
+		export function GetEnumItems(this: {}): Array<ConnectionError>
 	}
 	export type ConnectionError = ConnectionError.OK | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 	export namespace ConnectionState {
@@ -2105,7 +2105,7 @@ declare namespace Enum {
 
 		export const Disconnected: Disconnected;
 
-		export function GetEnumItems(): Array<ConnectionState>
+		export function GetEnumItems(this: {}): Array<ConnectionState>
 	}
 	export type ConnectionState = ConnectionState.Connected | ConnectionState.Disconnected;
 	export namespace ContextActionPriority {
@@ -2141,7 +2141,7 @@ declare namespace Enum {
 
 		export const High: High;
 
-		export function GetEnumItems(): Array<ContextActionPriority>
+		export function GetEnumItems(this: {}): Array<ContextActionPriority>
 	}
 	export type ContextActionPriority = ContextActionPriority.Low | ContextActionPriority.Medium | ContextActionPriority.Default | ContextActionPriority.High;
 	export namespace ContextActionResult {
@@ -2161,7 +2161,7 @@ declare namespace Enum {
 
 		export const Sink: Sink;
 
-		export function GetEnumItems(): Array<ContextActionResult>
+		export function GetEnumItems(this: {}): Array<ContextActionResult>
 	}
 	export type ContextActionResult = ContextActionResult.Pass | ContextActionResult.Sink;
 	export namespace ControlMode {
@@ -2181,7 +2181,7 @@ declare namespace Enum {
 
 		export const Classic: Classic;
 
-		export function GetEnumItems(): Array<ControlMode>
+		export function GetEnumItems(this: {}): Array<ControlMode>
 	}
 	export type ControlMode = ControlMode.MouseLockSwitch | ControlMode.Classic;
 	export namespace CoreGuiType {
@@ -2233,7 +2233,7 @@ declare namespace Enum {
 
 		export const EmotesMenu: EmotesMenu;
 
-		export function GetEnumItems(): Array<CoreGuiType>
+		export function GetEnumItems(this: {}): Array<CoreGuiType>
 	}
 	export type CoreGuiType = CoreGuiType.PlayerList | CoreGuiType.Health | CoreGuiType.Backpack | CoreGuiType.Chat | CoreGuiType.All | CoreGuiType.EmotesMenu;
 	export namespace CreatorType {
@@ -2253,7 +2253,7 @@ declare namespace Enum {
 
 		export const Group: Group;
 
-		export function GetEnumItems(): Array<CreatorType>
+		export function GetEnumItems(this: {}): Array<CreatorType>
 	}
 	export type CreatorType = CreatorType.User | CreatorType.Group;
 	export namespace CurrencyType {
@@ -2281,7 +2281,7 @@ declare namespace Enum {
 
 		export const Tix: Tix;
 
-		export function GetEnumItems(): Array<CurrencyType>
+		export function GetEnumItems(this: {}): Array<CurrencyType>
 	}
 	export type CurrencyType = CurrencyType.Default | CurrencyType.Robux | CurrencyType.Tix;
 	export namespace CustomCameraMode {
@@ -2309,7 +2309,7 @@ declare namespace Enum {
 
 		export const Classic: Classic;
 
-		export function GetEnumItems(): Array<CustomCameraMode>
+		export function GetEnumItems(this: {}): Array<CustomCameraMode>
 	}
 	export type CustomCameraMode = CustomCameraMode.Default | CustomCameraMode.Follow | CustomCameraMode.Classic;
 	export namespace DataStoreRequestType {
@@ -2361,7 +2361,7 @@ declare namespace Enum {
 
 		export const OnUpdate: OnUpdate;
 
-		export function GetEnumItems(): Array<DataStoreRequestType>
+		export function GetEnumItems(this: {}): Array<DataStoreRequestType>
 	}
 	export type DataStoreRequestType = DataStoreRequestType.GetAsync | DataStoreRequestType.SetIncrementAsync | DataStoreRequestType.UpdateAsync | DataStoreRequestType.GetSortedAsync | DataStoreRequestType.SetIncrementSortedAsync | DataStoreRequestType.OnUpdate;
 	export namespace DevCameraOcclusionMode {
@@ -2381,7 +2381,7 @@ declare namespace Enum {
 
 		export const Invisicam: Invisicam;
 
-		export function GetEnumItems(): Array<DevCameraOcclusionMode>
+		export function GetEnumItems(this: {}): Array<DevCameraOcclusionMode>
 	}
 	export type DevCameraOcclusionMode = DevCameraOcclusionMode.Zoom | DevCameraOcclusionMode.Invisicam;
 	export namespace DevComputerCameraMovementMode {
@@ -2417,7 +2417,7 @@ declare namespace Enum {
 
 		export const Orbital: Orbital;
 
-		export function GetEnumItems(): Array<DevComputerCameraMovementMode>
+		export function GetEnumItems(this: {}): Array<DevComputerCameraMovementMode>
 	}
 	export type DevComputerCameraMovementMode = DevComputerCameraMovementMode.UserChoice | DevComputerCameraMovementMode.Classic | DevComputerCameraMovementMode.Follow | DevComputerCameraMovementMode.Orbital;
 	export namespace DevComputerMovementMode {
@@ -2453,7 +2453,7 @@ declare namespace Enum {
 
 		export const Scriptable: Scriptable;
 
-		export function GetEnumItems(): Array<DevComputerMovementMode>
+		export function GetEnumItems(this: {}): Array<DevComputerMovementMode>
 	}
 	export type DevComputerMovementMode = DevComputerMovementMode.UserChoice | DevComputerMovementMode.KeyboardMouse | DevComputerMovementMode.ClickToMove | DevComputerMovementMode.Scriptable;
 	export namespace DevTouchCameraMovementMode {
@@ -2489,7 +2489,7 @@ declare namespace Enum {
 
 		export const Orbital: Orbital;
 
-		export function GetEnumItems(): Array<DevTouchCameraMovementMode>
+		export function GetEnumItems(this: {}): Array<DevTouchCameraMovementMode>
 	}
 	export type DevTouchCameraMovementMode = DevTouchCameraMovementMode.UserChoice | DevTouchCameraMovementMode.Classic | DevTouchCameraMovementMode.Follow | DevTouchCameraMovementMode.Orbital;
 	export namespace DevTouchMovementMode {
@@ -2549,7 +2549,7 @@ declare namespace Enum {
 
 		export const DynamicThumbstick: DynamicThumbstick;
 
-		export function GetEnumItems(): Array<DevTouchMovementMode>
+		export function GetEnumItems(this: {}): Array<DevTouchMovementMode>
 	}
 	export type DevTouchMovementMode = DevTouchMovementMode.UserChoice | DevTouchMovementMode.Thumbstick | DevTouchMovementMode.DPad | DevTouchMovementMode.Thumbpad | DevTouchMovementMode.ClickToMove | DevTouchMovementMode.Scriptable | DevTouchMovementMode.DynamicThumbstick;
 	export namespace DeveloperMemoryTag {
@@ -2729,7 +2729,7 @@ declare namespace Enum {
 
 		export const Navigation: Navigation;
 
-		export function GetEnumItems(): Array<DeveloperMemoryTag>
+		export function GetEnumItems(this: {}): Array<DeveloperMemoryTag>
 	}
 	export type DeveloperMemoryTag = DeveloperMemoryTag.Internal | DeveloperMemoryTag.HttpCache | DeveloperMemoryTag.Instances | DeveloperMemoryTag.Signals | DeveloperMemoryTag.LuaHeap | DeveloperMemoryTag.Script | DeveloperMemoryTag.PhysicsCollision | DeveloperMemoryTag.PhysicsParts | DeveloperMemoryTag.GraphicsSolidModels | DeveloperMemoryTag.GraphicsMeshParts | DeveloperMemoryTag.GraphicsParticles | DeveloperMemoryTag.GraphicsParts | DeveloperMemoryTag.GraphicsSpatialHash | DeveloperMemoryTag.GraphicsTerrain | DeveloperMemoryTag.GraphicsTexture | DeveloperMemoryTag.GraphicsTextureCharacter | DeveloperMemoryTag.Sounds | DeveloperMemoryTag.StreamingSounds | DeveloperMemoryTag.TerrainVoxels | DeveloperMemoryTag.Gui | DeveloperMemoryTag.Animation | DeveloperMemoryTag.Navigation;
 	export namespace DeviceType {
@@ -2765,7 +2765,7 @@ declare namespace Enum {
 
 		export const Phone: Phone;
 
-		export function GetEnumItems(): Array<DeviceType>
+		export function GetEnumItems(this: {}): Array<DeviceType>
 	}
 	export type DeviceType = DeviceType.Unknown | DeviceType.Desktop | DeviceType.Tablet | DeviceType.Phone;
 	export namespace DialogBehaviorType {
@@ -2785,7 +2785,7 @@ declare namespace Enum {
 
 		export const MultiplePlayers: MultiplePlayers;
 
-		export function GetEnumItems(): Array<DialogBehaviorType>
+		export function GetEnumItems(this: {}): Array<DialogBehaviorType>
 	}
 	export type DialogBehaviorType = DialogBehaviorType.SinglePlayer | DialogBehaviorType.MultiplePlayers;
 	export namespace DialogPurpose {
@@ -2813,7 +2813,7 @@ declare namespace Enum {
 
 		export const Shop: Shop;
 
-		export function GetEnumItems(): Array<DialogPurpose>
+		export function GetEnumItems(this: {}): Array<DialogPurpose>
 	}
 	export type DialogPurpose = DialogPurpose.Quest | DialogPurpose.Help | DialogPurpose.Shop;
 	export namespace DialogTone {
@@ -2841,7 +2841,7 @@ declare namespace Enum {
 
 		export const Enemy: Enemy;
 
-		export function GetEnumItems(): Array<DialogTone>
+		export function GetEnumItems(this: {}): Array<DialogTone>
 	}
 	export type DialogTone = DialogTone.Neutral | DialogTone.Friendly | DialogTone.Enemy;
 	export namespace DominantAxis {
@@ -2861,7 +2861,7 @@ declare namespace Enum {
 
 		export const Height: Height;
 
-		export function GetEnumItems(): Array<DominantAxis>
+		export function GetEnumItems(this: {}): Array<DominantAxis>
 	}
 	export type DominantAxis = DominantAxis.Width | DominantAxis.Height;
 	export namespace EasingDirection {
@@ -2889,7 +2889,7 @@ declare namespace Enum {
 
 		export const InOut: InOut;
 
-		export function GetEnumItems(): Array<EasingDirection>
+		export function GetEnumItems(this: {}): Array<EasingDirection>
 	}
 	export type EasingDirection = EasingDirection.In | EasingDirection.Out | EasingDirection.InOut;
 	export namespace EasingStyle {
@@ -2957,7 +2957,7 @@ declare namespace Enum {
 
 		export const Elastic: Elastic;
 
-		export function GetEnumItems(): Array<EasingStyle>
+		export function GetEnumItems(this: {}): Array<EasingStyle>
 	}
 	export type EasingStyle = EasingStyle.Linear | EasingStyle.Sine | EasingStyle.Back | EasingStyle.Quad | EasingStyle.Quart | EasingStyle.Quint | EasingStyle.Bounce | EasingStyle.Elastic;
 	export namespace ElasticBehavior {
@@ -2985,7 +2985,7 @@ declare namespace Enum {
 
 		export const Never: Never;
 
-		export function GetEnumItems(): Array<ElasticBehavior>
+		export function GetEnumItems(this: {}): Array<ElasticBehavior>
 	}
 	export type ElasticBehavior = ElasticBehavior.WhenScrollable | ElasticBehavior.Always | ElasticBehavior.Never;
 	export namespace EnviromentalPhysicsThrottle {
@@ -3045,7 +3045,7 @@ declare namespace Enum {
 
 		export const Skip16: Skip16;
 
-		export function GetEnumItems(): Array<EnviromentalPhysicsThrottle>
+		export function GetEnumItems(this: {}): Array<EnviromentalPhysicsThrottle>
 	}
 	export type EnviromentalPhysicsThrottle = EnviromentalPhysicsThrottle.DefaultAuto | EnviromentalPhysicsThrottle.Disabled | EnviromentalPhysicsThrottle.Always | EnviromentalPhysicsThrottle.Skip2 | EnviromentalPhysicsThrottle.Skip4 | EnviromentalPhysicsThrottle.Skip8 | EnviromentalPhysicsThrottle.Skip16;
 	export namespace ErrorReporting {
@@ -3073,7 +3073,7 @@ declare namespace Enum {
 
 		export const Report: Report;
 
-		export function GetEnumItems(): Array<ErrorReporting>
+		export function GetEnumItems(this: {}): Array<ErrorReporting>
 	}
 	export type ErrorReporting = ErrorReporting.DontReport | ErrorReporting.Prompt | ErrorReporting.Report;
 	export namespace ExplosionType {
@@ -3101,7 +3101,7 @@ declare namespace Enum {
 
 		export const CratersAndDebris: CratersAndDebris;
 
-		export function GetEnumItems(): Array<ExplosionType>
+		export function GetEnumItems(this: {}): Array<ExplosionType>
 	}
 	export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters | ExplosionType.CratersAndDebris;
 	export namespace FillDirection {
@@ -3121,7 +3121,7 @@ declare namespace Enum {
 
 		export const Vertical: Vertical;
 
-		export function GetEnumItems(): Array<FillDirection>
+		export function GetEnumItems(this: {}): Array<FillDirection>
 	}
 	export type FillDirection = FillDirection.Horizontal | FillDirection.Vertical;
 	export namespace FilterResult {
@@ -3141,7 +3141,7 @@ declare namespace Enum {
 
 		export const Accepted: Accepted;
 
-		export function GetEnumItems(): Array<FilterResult>
+		export function GetEnumItems(this: {}): Array<FilterResult>
 	}
 	export type FilterResult = FilterResult.Rejected | FilterResult.Accepted;
 	export namespace Font {
@@ -3313,7 +3313,7 @@ declare namespace Enum {
 
 		export const GothamBlack: GothamBlack;
 
-		export function GetEnumItems(): Array<Font>
+		export function GetEnumItems(this: {}): Array<Font>
 	}
 	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansSemibold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.Gotham | Font.GothamSemibold | Font.GothamBold | Font.GothamBlack;
 	export namespace FontSize {
@@ -3437,7 +3437,7 @@ declare namespace Enum {
 
 		export const Size96: Size96;
 
-		export function GetEnumItems(): Array<FontSize>
+		export function GetEnumItems(this: {}): Array<FontSize>
 	}
 	export type FontSize = FontSize.Size8 | FontSize.Size9 | FontSize.Size10 | FontSize.Size11 | FontSize.Size12 | FontSize.Size14 | FontSize.Size18 | FontSize.Size24 | FontSize.Size36 | FontSize.Size48 | FontSize.Size28 | FontSize.Size32 | FontSize.Size42 | FontSize.Size60 | FontSize.Size96;
 	export namespace FormFactor {
@@ -3473,7 +3473,7 @@ declare namespace Enum {
 
 		export const Custom: Custom;
 
-		export function GetEnumItems(): Array<FormFactor>
+		export function GetEnumItems(this: {}): Array<FormFactor>
 	}
 	export type FormFactor = FormFactor.Symmetric | FormFactor.Brick | FormFactor.Plate | FormFactor.Custom;
 	export namespace FrameStyle {
@@ -3533,7 +3533,7 @@ declare namespace Enum {
 
 		export const DropShadow: DropShadow;
 
-		export function GetEnumItems(): Array<FrameStyle>
+		export function GetEnumItems(this: {}): Array<FrameStyle>
 	}
 	export type FrameStyle = FrameStyle.Custom | FrameStyle.ChatBlue | FrameStyle.RobloxSquare | FrameStyle.RobloxRound | FrameStyle.ChatGreen | FrameStyle.ChatRed | FrameStyle.DropShadow;
 	export namespace FramerateManagerMode {
@@ -3561,7 +3561,7 @@ declare namespace Enum {
 
 		export const Off: Off;
 
-		export function GetEnumItems(): Array<FramerateManagerMode>
+		export function GetEnumItems(this: {}): Array<FramerateManagerMode>
 	}
 	export type FramerateManagerMode = FramerateManagerMode.Automatic | FramerateManagerMode.On | FramerateManagerMode.Off;
 	export namespace FriendRequestEvent {
@@ -3597,7 +3597,7 @@ declare namespace Enum {
 
 		export const Deny: Deny;
 
-		export function GetEnumItems(): Array<FriendRequestEvent>
+		export function GetEnumItems(this: {}): Array<FriendRequestEvent>
 	}
 	export type FriendRequestEvent = FriendRequestEvent.Issue | FriendRequestEvent.Revoke | FriendRequestEvent.Accept | FriendRequestEvent.Deny;
 	export namespace FriendStatus {
@@ -3641,7 +3641,7 @@ declare namespace Enum {
 
 		export const FriendRequestReceived: FriendRequestReceived;
 
-		export function GetEnumItems(): Array<FriendStatus>
+		export function GetEnumItems(this: {}): Array<FriendStatus>
 	}
 	export type FriendStatus = FriendStatus.Unknown | FriendStatus.NotFriend | FriendStatus.Friend | FriendStatus.FriendRequestSent | FriendStatus.FriendRequestReceived;
 	export namespace FunctionalTestResult {
@@ -3669,7 +3669,7 @@ declare namespace Enum {
 
 		export const Error: Error;
 
-		export function GetEnumItems(): Array<FunctionalTestResult>
+		export function GetEnumItems(this: {}): Array<FunctionalTestResult>
 	}
 	export type FunctionalTestResult = FunctionalTestResult.Passed | FunctionalTestResult.Warning | FunctionalTestResult.Error;
 	export namespace GameAvatarType {
@@ -3697,7 +3697,7 @@ declare namespace Enum {
 
 		export const PlayerChoice: PlayerChoice;
 
-		export function GetEnumItems(): Array<GameAvatarType>
+		export function GetEnumItems(this: {}): Array<GameAvatarType>
 	}
 	export type GameAvatarType = GameAvatarType.R6 | GameAvatarType.R15 | GameAvatarType.PlayerChoice;
 	export namespace GearGenreSetting {
@@ -3717,7 +3717,7 @@ declare namespace Enum {
 
 		export const MatchingGenreOnly: MatchingGenreOnly;
 
-		export function GetEnumItems(): Array<GearGenreSetting>
+		export function GetEnumItems(this: {}): Array<GearGenreSetting>
 	}
 	export type GearGenreSetting = GearGenreSetting.AllGenres | GearGenreSetting.MatchingGenreOnly;
 	export namespace GearType {
@@ -3793,7 +3793,7 @@ declare namespace Enum {
 
 		export const Transport: Transport;
 
-		export function GetEnumItems(): Array<GearType>
+		export function GetEnumItems(this: {}): Array<GearType>
 	}
 	export type GearType = GearType.MeleeWeapons | GearType.RangedWeapons | GearType.Explosives | GearType.PowerUps | GearType.NavigationEnhancers | GearType.MusicalInstruments | GearType.SocialItems | GearType.BuildingTools | GearType.Transport;
 	export namespace Genre {
@@ -3909,7 +3909,7 @@ declare namespace Enum {
 
 		export const Tutorial: Tutorial;
 
-		export function GetEnumItems(): Array<Genre>
+		export function GetEnumItems(this: {}): Array<Genre>
 	}
 	export type Genre = Genre.All | Genre.TownAndCity | Genre.Fantasy | Genre.SciFi | Genre.Ninja | Genre.Scary | Genre.Pirate | Genre.Adventure | Genre.Sports | Genre.Funny | Genre.WildWest | Genre.War | Genre.SkatePark | Genre.Tutorial;
 	export namespace GraphicsMode {
@@ -3969,7 +3969,7 @@ declare namespace Enum {
 
 		export const NoGraphics: NoGraphics;
 
-		export function GetEnumItems(): Array<GraphicsMode>
+		export function GetEnumItems(this: {}): Array<GraphicsMode>
 	}
 	export type GraphicsMode = GraphicsMode.Automatic | GraphicsMode.Direct3D9 | GraphicsMode.Direct3D11 | GraphicsMode.OpenGL | GraphicsMode.Metal | GraphicsMode.Vulkan | GraphicsMode.NoGraphics;
 	export namespace HandlesStyle {
@@ -3989,7 +3989,7 @@ declare namespace Enum {
 
 		export const Movement: Movement;
 
-		export function GetEnumItems(): Array<HandlesStyle>
+		export function GetEnumItems(this: {}): Array<HandlesStyle>
 	}
 	export type HandlesStyle = HandlesStyle.Resize | HandlesStyle.Movement;
 	export namespace HorizontalAlignment {
@@ -4017,7 +4017,7 @@ declare namespace Enum {
 
 		export const Right: Right;
 
-		export function GetEnumItems(): Array<HorizontalAlignment>
+		export function GetEnumItems(this: {}): Array<HorizontalAlignment>
 	}
 	export type HorizontalAlignment = HorizontalAlignment.Center | HorizontalAlignment.Left | HorizontalAlignment.Right;
 	export namespace HoverAnimateSpeed {
@@ -4061,7 +4061,7 @@ declare namespace Enum {
 
 		export const VeryFast: VeryFast;
 
-		export function GetEnumItems(): Array<HoverAnimateSpeed>
+		export function GetEnumItems(this: {}): Array<HoverAnimateSpeed>
 	}
 	export type HoverAnimateSpeed = HoverAnimateSpeed.VerySlow | HoverAnimateSpeed.Slow | HoverAnimateSpeed.Medium | HoverAnimateSpeed.Fast | HoverAnimateSpeed.VeryFast;
 	export namespace HttpCachePolicy {
@@ -4105,7 +4105,7 @@ declare namespace Enum {
 
 		export const InternalRedirectRefresh: InternalRedirectRefresh;
 
-		export function GetEnumItems(): Array<HttpCachePolicy>
+		export function GetEnumItems(this: {}): Array<HttpCachePolicy>
 	}
 	export type HttpCachePolicy = HttpCachePolicy.None | HttpCachePolicy.Full | HttpCachePolicy.DataOnly | HttpCachePolicy.Default | HttpCachePolicy.InternalRedirectRefresh;
 	export namespace HttpContentType {
@@ -4149,7 +4149,7 @@ declare namespace Enum {
 
 		export const TextXml: TextXml;
 
-		export function GetEnumItems(): Array<HttpContentType>
+		export function GetEnumItems(this: {}): Array<HttpContentType>
 	}
 	export type HttpContentType = HttpContentType.ApplicationJson | HttpContentType.ApplicationXml | HttpContentType.ApplicationUrlEncoded | HttpContentType.TextPlain | HttpContentType.TextXml;
 	export namespace HttpError {
@@ -4249,7 +4249,7 @@ declare namespace Enum {
 
 		export const Unknown: Unknown;
 
-		export function GetEnumItems(): Array<HttpError>
+		export function GetEnumItems(this: {}): Array<HttpError>
 	}
 	export type HttpError = HttpError.OK | HttpError.InvalidUrl | HttpError.DnsResolve | HttpError.ConnectFail | HttpError.OutOfMemory | HttpError.TimedOut | HttpError.TooManyRedirects | HttpError.InvalidRedirect | HttpError.NetFail | HttpError.Aborted | HttpError.SslConnectFail | HttpError.Unknown;
 	export namespace HttpRequestType {
@@ -4309,7 +4309,7 @@ declare namespace Enum {
 
 		export const Localization: Localization;
 
-		export function GetEnumItems(): Array<HttpRequestType>
+		export function GetEnumItems(this: {}): Array<HttpRequestType>
 	}
 	export type HttpRequestType = HttpRequestType.Default | HttpRequestType.MarketplaceService | HttpRequestType.Players | HttpRequestType.Chat | HttpRequestType.Avatar | HttpRequestType.Analytics | HttpRequestType.Localization;
 	export namespace HumanoidCollisionType {
@@ -4329,7 +4329,7 @@ declare namespace Enum {
 
 		export const InnerBox: InnerBox;
 
-		export function GetEnumItems(): Array<HumanoidCollisionType>
+		export function GetEnumItems(this: {}): Array<HumanoidCollisionType>
 	}
 	export type HumanoidCollisionType = HumanoidCollisionType.OuterBox | HumanoidCollisionType.InnerBox;
 	export namespace HumanoidDisplayDistanceType {
@@ -4357,7 +4357,7 @@ declare namespace Enum {
 
 		export const None: None;
 
-		export function GetEnumItems(): Array<HumanoidDisplayDistanceType>
+		export function GetEnumItems(this: {}): Array<HumanoidDisplayDistanceType>
 	}
 	export type HumanoidDisplayDistanceType = HumanoidDisplayDistanceType.Viewer | HumanoidDisplayDistanceType.Subject | HumanoidDisplayDistanceType.None;
 	export namespace HumanoidHealthDisplayType {
@@ -4385,7 +4385,7 @@ declare namespace Enum {
 
 		export const AlwaysOff: AlwaysOff;
 
-		export function GetEnumItems(): Array<HumanoidHealthDisplayType>
+		export function GetEnumItems(this: {}): Array<HumanoidHealthDisplayType>
 	}
 	export type HumanoidHealthDisplayType = HumanoidHealthDisplayType.DisplayWhenDamaged | HumanoidHealthDisplayType.AlwaysOn | HumanoidHealthDisplayType.AlwaysOff;
 	export namespace HumanoidRigType {
@@ -4405,7 +4405,7 @@ declare namespace Enum {
 
 		export const R15: R15;
 
-		export function GetEnumItems(): Array<HumanoidRigType>
+		export function GetEnumItems(this: {}): Array<HumanoidRigType>
 	}
 	export type HumanoidRigType = HumanoidRigType.R6 | HumanoidRigType.R15;
 	export namespace HumanoidStateType {
@@ -4545,7 +4545,7 @@ declare namespace Enum {
 
 		export const None: None;
 
-		export function GetEnumItems(): Array<HumanoidStateType>
+		export function GetEnumItems(this: {}): Array<HumanoidStateType>
 	}
 	export type HumanoidStateType = HumanoidStateType.FallingDown | HumanoidStateType.Running | HumanoidStateType.RunningNoPhysics | HumanoidStateType.Climbing | HumanoidStateType.StrafingNoPhysics | HumanoidStateType.Ragdoll | HumanoidStateType.GettingUp | HumanoidStateType.Jumping | HumanoidStateType.Landed | HumanoidStateType.Flying | HumanoidStateType.Freefall | HumanoidStateType.Seated | HumanoidStateType.PlatformStanding | HumanoidStateType.Dead | HumanoidStateType.Swimming | HumanoidStateType.Physics | HumanoidStateType.None;
 	export namespace InOut {
@@ -4573,7 +4573,7 @@ declare namespace Enum {
 
 		export const Center: Center;
 
-		export function GetEnumItems(): Array<InOut>
+		export function GetEnumItems(this: {}): Array<InOut>
 	}
 	export type InOut = InOut.Edge | InOut.Inset | InOut.Center;
 	export namespace InfoType {
@@ -4601,7 +4601,7 @@ declare namespace Enum {
 
 		export const GamePass: GamePass;
 
-		export function GetEnumItems(): Array<InfoType>
+		export function GetEnumItems(this: {}): Array<InfoType>
 	}
 	export type InfoType = InfoType.Asset | InfoType.Product | InfoType.GamePass;
 	export namespace InitialDockState {
@@ -4645,7 +4645,7 @@ declare namespace Enum {
 
 		export const Float: Float;
 
-		export function GetEnumItems(): Array<InitialDockState>
+		export function GetEnumItems(this: {}): Array<InitialDockState>
 	}
 	export type InitialDockState = InitialDockState.Top | InitialDockState.Bottom | InitialDockState.Left | InitialDockState.Right | InitialDockState.Float;
 	export namespace InlineAlignment {
@@ -4673,7 +4673,7 @@ declare namespace Enum {
 
 		export const Top: Top;
 
-		export function GetEnumItems(): Array<InlineAlignment>
+		export function GetEnumItems(this: {}): Array<InlineAlignment>
 	}
 	export type InlineAlignment = InlineAlignment.Bottom | InlineAlignment.Center | InlineAlignment.Top;
 	export namespace InputType {
@@ -4701,7 +4701,7 @@ declare namespace Enum {
 
 		export const Sin: Sin;
 
-		export function GetEnumItems(): Array<InputType>
+		export function GetEnumItems(this: {}): Array<InputType>
 	}
 	export type InputType = InputType.NoInput | InputType.Constant | InputType.Sin;
 	export namespace JointCreationMode {
@@ -4729,7 +4729,7 @@ declare namespace Enum {
 
 		export const None: None;
 
-		export function GetEnumItems(): Array<JointCreationMode>
+		export function GetEnumItems(this: {}): Array<JointCreationMode>
 	}
 	export type JointCreationMode = JointCreationMode.All | JointCreationMode.Surface | JointCreationMode.None;
 	export namespace JointType {
@@ -4789,7 +4789,7 @@ declare namespace Enum {
 
 		export const Snap: Snap;
 
-		export function GetEnumItems(): Array<JointType>
+		export function GetEnumItems(this: {}): Array<JointType>
 	}
 	export type JointType = JointType.None | JointType.Rotate | JointType.RotateP | JointType.RotateV | JointType.Glue | JointType.Weld | JointType.Snap;
 	export namespace KeyCode {
@@ -6825,7 +6825,7 @@ declare namespace Enum {
 
 		export const Thumbstick2: Thumbstick2;
 
-		export function GetEnumItems(): Array<KeyCode>
+		export function GetEnumItems(this: {}): Array<KeyCode>
 	}
 	export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.LeftShift | KeyCode.RightShift | KeyCode.LeftMeta | KeyCode.RightMeta | KeyCode.LeftAlt | KeyCode.RightAlt | KeyCode.LeftControl | KeyCode.RightControl | KeyCode.CapsLock | KeyCode.NumLock | KeyCode.ScrollLock | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2;
 	export namespace KeywordFilterType {
@@ -6845,7 +6845,7 @@ declare namespace Enum {
 
 		export const Exclude: Exclude;
 
-		export function GetEnumItems(): Array<KeywordFilterType>
+		export function GetEnumItems(this: {}): Array<KeywordFilterType>
 	}
 	export type KeywordFilterType = KeywordFilterType.Include | KeywordFilterType.Exclude;
 	export namespace Language {
@@ -6857,7 +6857,7 @@ declare namespace Enum {
 
 		export const Default: Default;
 
-		export function GetEnumItems(): Array<Language>
+		export function GetEnumItems(this: {}): Array<Language>
 	}
 	export type Language = Language.Default;
 	export namespace LanguagePreference {
@@ -6885,7 +6885,7 @@ declare namespace Enum {
 
 		export const SimplifiedChinese: SimplifiedChinese;
 
-		export function GetEnumItems(): Array<LanguagePreference>
+		export function GetEnumItems(this: {}): Array<LanguagePreference>
 	}
 	export type LanguagePreference = LanguagePreference.SystemDefault | LanguagePreference.English | LanguagePreference.SimplifiedChinese;
 	export namespace LeftRight {
@@ -6913,7 +6913,7 @@ declare namespace Enum {
 
 		export const Right: Right;
 
-		export function GetEnumItems(): Array<LeftRight>
+		export function GetEnumItems(this: {}): Array<LeftRight>
 	}
 	export type LeftRight = LeftRight.Left | LeftRight.Center | LeftRight.Right;
 	export namespace LevelOfDetailSetting {
@@ -6941,7 +6941,7 @@ declare namespace Enum {
 
 		export const Low: Low;
 
-		export function GetEnumItems(): Array<LevelOfDetailSetting>
+		export function GetEnumItems(this: {}): Array<LevelOfDetailSetting>
 	}
 	export type LevelOfDetailSetting = LevelOfDetailSetting.High | LevelOfDetailSetting.Medium | LevelOfDetailSetting.Low;
 	export namespace Limb {
@@ -7001,7 +7001,7 @@ declare namespace Enum {
 
 		export const Unknown: Unknown;
 
-		export function GetEnumItems(): Array<Limb>
+		export function GetEnumItems(this: {}): Array<Limb>
 	}
 	export type Limb = Limb.Head | Limb.Torso | Limb.LeftArm | Limb.RightArm | Limb.LeftLeg | Limb.RightLeg | Limb.Unknown;
 	export namespace ListDisplayMode {
@@ -7021,7 +7021,7 @@ declare namespace Enum {
 
 		export const Vertical: Vertical;
 
-		export function GetEnumItems(): Array<ListDisplayMode>
+		export function GetEnumItems(this: {}): Array<ListDisplayMode>
 	}
 	export type ListDisplayMode = ListDisplayMode.Horizontal | ListDisplayMode.Vertical;
 	export namespace ListenerType {
@@ -7057,7 +7057,7 @@ declare namespace Enum {
 
 		export const ObjectCFrame: ObjectCFrame;
 
-		export function GetEnumItems(): Array<ListenerType>
+		export function GetEnumItems(this: {}): Array<ListenerType>
 	}
 	export type ListenerType = ListenerType.Camera | ListenerType.CFrame | ListenerType.ObjectPosition | ListenerType.ObjectCFrame;
 	export namespace Material {
@@ -7357,7 +7357,7 @@ declare namespace Enum {
 
 		export const ForceField: ForceField;
 
-		export function GetEnumItems(): Array<Material>
+		export function GetEnumItems(this: {}): Array<Material>
 	}
 	export type Material = Material.Plastic | Material.Wood | Material.Slate | Material.Concrete | Material.CorrodedMetal | Material.DiamondPlate | Material.Foil | Material.Grass | Material.Ice | Material.Marble | Material.Granite | Material.Brick | Material.Pebble | Material.Sand | Material.Fabric | Material.SmoothPlastic | Material.Metal | Material.WoodPlanks | Material.Cobblestone | Material.Air | Material.Water | Material.Rock | Material.Glacier | Material.Snow | Material.Sandstone | Material.Mud | Material.Basalt | Material.Ground | Material.CrackedLava | Material.Neon | Material.Glass | Material.Asphalt | Material.LeafyGrass | Material.Salt | Material.Limestone | Material.Pavement | Material.ForceField;
 	export namespace MembershipType {
@@ -7393,7 +7393,7 @@ declare namespace Enum {
 
 		export const OutrageousBuildersClub: OutrageousBuildersClub;
 
-		export function GetEnumItems(): Array<MembershipType>
+		export function GetEnumItems(this: {}): Array<MembershipType>
 	}
 	export type MembershipType = MembershipType.None | MembershipType.BuildersClub | MembershipType.TurboBuildersClub | MembershipType.OutrageousBuildersClub;
 	export namespace MeshType {
@@ -7493,7 +7493,7 @@ declare namespace Enum {
 
 		export const FileMesh: FileMesh;
 
-		export function GetEnumItems(): Array<MeshType>
+		export function GetEnumItems(this: {}): Array<MeshType>
 	}
 	export type MeshType = MeshType.Head | MeshType.Torso | MeshType.Wedge | MeshType.Prism | MeshType.Pyramid | MeshType.ParallelRamp | MeshType.RightAngleRamp | MeshType.CornerWedge | MeshType.Brick | MeshType.Sphere | MeshType.Cylinder | MeshType.FileMesh;
 	export namespace MessageType {
@@ -7529,7 +7529,7 @@ declare namespace Enum {
 
 		export const MessageError: MessageError;
 
-		export function GetEnumItems(): Array<MessageType>
+		export function GetEnumItems(this: {}): Array<MessageType>
 	}
 	export type MessageType = MessageType.MessageOutput | MessageType.MessageInfo | MessageType.MessageWarning | MessageType.MessageError;
 	export namespace MouseBehavior {
@@ -7557,7 +7557,7 @@ declare namespace Enum {
 
 		export const LockCurrentPosition: LockCurrentPosition;
 
-		export function GetEnumItems(): Array<MouseBehavior>
+		export function GetEnumItems(this: {}): Array<MouseBehavior>
 	}
 	export type MouseBehavior = MouseBehavior.Default | MouseBehavior.LockCenter | MouseBehavior.LockCurrentPosition;
 	export namespace MoveState {
@@ -7601,7 +7601,7 @@ declare namespace Enum {
 
 		export const AirFree: AirFree;
 
-		export function GetEnumItems(): Array<MoveState>
+		export function GetEnumItems(this: {}): Array<MoveState>
 	}
 	export type MoveState = MoveState.Stopped | MoveState.Coasting | MoveState.Pushing | MoveState.Stopping | MoveState.AirFree;
 	export namespace NameOcclusion {
@@ -7629,7 +7629,7 @@ declare namespace Enum {
 
 		export const NoOcclusion: NoOcclusion;
 
-		export function GetEnumItems(): Array<NameOcclusion>
+		export function GetEnumItems(this: {}): Array<NameOcclusion>
 	}
 	export type NameOcclusion = NameOcclusion.OccludeAll | NameOcclusion.EnemyOcclusion | NameOcclusion.NoOcclusion;
 	export namespace NetworkOwnership {
@@ -7657,7 +7657,7 @@ declare namespace Enum {
 
 		export const OnContact: OnContact;
 
-		export function GetEnumItems(): Array<NetworkOwnership>
+		export function GetEnumItems(this: {}): Array<NetworkOwnership>
 	}
 	export type NetworkOwnership = NetworkOwnership.Automatic | NetworkOwnership.Manual | NetworkOwnership.OnContact;
 	export namespace NormalId {
@@ -7709,7 +7709,7 @@ declare namespace Enum {
 
 		export const Left: Left;
 
-		export function GetEnumItems(): Array<NormalId>
+		export function GetEnumItems(this: {}): Array<NormalId>
 	}
 	export type NormalId = NormalId.Top | NormalId.Bottom | NormalId.Back | NormalId.Front | NormalId.Right | NormalId.Left;
 	export namespace OutputLayoutMode {
@@ -7729,7 +7729,7 @@ declare namespace Enum {
 
 		export const Vertical: Vertical;
 
-		export function GetEnumItems(): Array<OutputLayoutMode>
+		export function GetEnumItems(this: {}): Array<OutputLayoutMode>
 	}
 	export type OutputLayoutMode = OutputLayoutMode.Horizontal | OutputLayoutMode.Vertical;
 	export namespace OverrideMouseIconBehavior {
@@ -7757,7 +7757,7 @@ declare namespace Enum {
 
 		export const ForceHide: ForceHide;
 
-		export function GetEnumItems(): Array<OverrideMouseIconBehavior>
+		export function GetEnumItems(this: {}): Array<OverrideMouseIconBehavior>
 	}
 	export type OverrideMouseIconBehavior = OverrideMouseIconBehavior.None | OverrideMouseIconBehavior.ForceShow | OverrideMouseIconBehavior.ForceHide;
 	export namespace PacketPriority {
@@ -7793,7 +7793,7 @@ declare namespace Enum {
 
 		export const LOW_PRIORITY: LOW_PRIORITY;
 
-		export function GetEnumItems(): Array<PacketPriority>
+		export function GetEnumItems(this: {}): Array<PacketPriority>
 	}
 	export type PacketPriority = PacketPriority.IMMEDIATE_PRIORITY | PacketPriority.HIGH_PRIORITY | PacketPriority.MEDIUM_PRIORITY | PacketPriority.LOW_PRIORITY;
 	export namespace PartType {
@@ -7821,7 +7821,7 @@ declare namespace Enum {
 
 		export const Cylinder: Cylinder;
 
-		export function GetEnumItems(): Array<PartType>
+		export function GetEnumItems(this: {}): Array<PartType>
 	}
 	export type PartType = PartType.Ball | PartType.Block | PartType.Cylinder;
 	export namespace PathStatus {
@@ -7873,7 +7873,7 @@ declare namespace Enum {
 
 		export const NoPath: NoPath;
 
-		export function GetEnumItems(): Array<PathStatus>
+		export function GetEnumItems(this: {}): Array<PathStatus>
 	}
 	export type PathStatus = PathStatus.Success | PathStatus.ClosestNoPath | PathStatus.ClosestOutOfRange | PathStatus.FailStartNotEmpty | PathStatus.FailFinishNotEmpty | PathStatus.NoPath;
 	export namespace PathWaypointAction {
@@ -7893,7 +7893,7 @@ declare namespace Enum {
 
 		export const Jump: Jump;
 
-		export function GetEnumItems(): Array<PathWaypointAction>
+		export function GetEnumItems(this: {}): Array<PathWaypointAction>
 	}
 	export type PathWaypointAction = PathWaypointAction.Walk | PathWaypointAction.Jump;
 	export namespace PermissionLevelShown {
@@ -7937,7 +7937,7 @@ declare namespace Enum {
 
 		export const Roblox: Roblox;
 
-		export function GetEnumItems(): Array<PermissionLevelShown>
+		export function GetEnumItems(this: {}): Array<PermissionLevelShown>
 	}
 	export type PermissionLevelShown = PermissionLevelShown.Game | PermissionLevelShown.RobloxGame | PermissionLevelShown.RobloxScript | PermissionLevelShown.Studio | PermissionLevelShown.Roblox;
 	export namespace Platform {
@@ -8101,7 +8101,7 @@ declare namespace Enum {
 
 		export const None: None;
 
-		export function GetEnumItems(): Array<Platform>
+		export function GetEnumItems(this: {}): Array<Platform>
 	}
 	export type Platform = Platform.Windows | Platform.OSX | Platform.IOS | Platform.Android | Platform.XBoxOne | Platform.PS4 | Platform.PS3 | Platform.XBox360 | Platform.WiiU | Platform.NX | Platform.Ouya | Platform.AndroidTV | Platform.Chromecast | Platform.Linux | Platform.SteamOS | Platform.WebOS | Platform.DOS | Platform.BeOS | Platform.UWP | Platform.None;
 	export namespace PlaybackState {
@@ -8153,7 +8153,7 @@ declare namespace Enum {
 
 		export const Cancelled: Cancelled;
 
-		export function GetEnumItems(): Array<PlaybackState>
+		export function GetEnumItems(this: {}): Array<PlaybackState>
 	}
 	export type PlaybackState = PlaybackState.Begin | PlaybackState.Delayed | PlaybackState.Playing | PlaybackState.Paused | PlaybackState.Completed | PlaybackState.Cancelled;
 	export namespace PlayerActions {
@@ -8197,7 +8197,7 @@ declare namespace Enum {
 
 		export const CharacterJump: CharacterJump;
 
-		export function GetEnumItems(): Array<PlayerActions>
+		export function GetEnumItems(this: {}): Array<PlayerActions>
 	}
 	export type PlayerActions = PlayerActions.CharacterForward | PlayerActions.CharacterBackward | PlayerActions.CharacterLeft | PlayerActions.CharacterRight | PlayerActions.CharacterJump;
 	export namespace PlayerChatType {
@@ -8225,7 +8225,7 @@ declare namespace Enum {
 
 		export const Whisper: Whisper;
 
-		export function GetEnumItems(): Array<PlayerChatType>
+		export function GetEnumItems(this: {}): Array<PlayerChatType>
 	}
 	export type PlayerChatType = PlayerChatType.All | PlayerChatType.Team | PlayerChatType.Whisper;
 	export namespace PoseEasingDirection {
@@ -8253,7 +8253,7 @@ declare namespace Enum {
 
 		export const In: In;
 
-		export function GetEnumItems(): Array<PoseEasingDirection>
+		export function GetEnumItems(this: {}): Array<PoseEasingDirection>
 	}
 	export type PoseEasingDirection = PoseEasingDirection.Out | PoseEasingDirection.InOut | PoseEasingDirection.In;
 	export namespace PoseEasingStyle {
@@ -8297,7 +8297,7 @@ declare namespace Enum {
 
 		export const Bounce: Bounce;
 
-		export function GetEnumItems(): Array<PoseEasingStyle>
+		export function GetEnumItems(this: {}): Array<PoseEasingStyle>
 	}
 	export type PoseEasingStyle = PoseEasingStyle.Linear | PoseEasingStyle.Constant | PoseEasingStyle.Elastic | PoseEasingStyle.Cubic | PoseEasingStyle.Bounce;
 	export namespace PrivilegeType {
@@ -8341,7 +8341,7 @@ declare namespace Enum {
 
 		export const Banned: Banned;
 
-		export function GetEnumItems(): Array<PrivilegeType>
+		export function GetEnumItems(this: {}): Array<PrivilegeType>
 	}
 	export type PrivilegeType = PrivilegeType.Owner | PrivilegeType.Admin | PrivilegeType.Member | PrivilegeType.Visitor | PrivilegeType.Banned;
 	export namespace ProductPurchaseDecision {
@@ -8361,7 +8361,7 @@ declare namespace Enum {
 
 		export const PurchaseGranted: PurchaseGranted;
 
-		export function GetEnumItems(): Array<ProductPurchaseDecision>
+		export function GetEnumItems(this: {}): Array<ProductPurchaseDecision>
 	}
 	export type ProductPurchaseDecision = ProductPurchaseDecision.NotProcessedYet | ProductPurchaseDecision.PurchaseGranted;
 	export namespace QualityLevel {
@@ -8541,7 +8541,7 @@ declare namespace Enum {
 
 		export const Level21: Level21;
 
-		export function GetEnumItems(): Array<QualityLevel>
+		export function GetEnumItems(this: {}): Array<QualityLevel>
 	}
 	export type QualityLevel = QualityLevel.Automatic | QualityLevel.Level01 | QualityLevel.Level02 | QualityLevel.Level03 | QualityLevel.Level04 | QualityLevel.Level05 | QualityLevel.Level06 | QualityLevel.Level07 | QualityLevel.Level08 | QualityLevel.Level09 | QualityLevel.Level10 | QualityLevel.Level11 | QualityLevel.Level12 | QualityLevel.Level13 | QualityLevel.Level14 | QualityLevel.Level15 | QualityLevel.Level16 | QualityLevel.Level17 | QualityLevel.Level18 | QualityLevel.Level19 | QualityLevel.Level20 | QualityLevel.Level21;
 	export namespace R15CollisionType {
@@ -8561,7 +8561,7 @@ declare namespace Enum {
 
 		export const InnerBox: InnerBox;
 
-		export function GetEnumItems(): Array<R15CollisionType>
+		export function GetEnumItems(this: {}): Array<R15CollisionType>
 	}
 	export type R15CollisionType = R15CollisionType.OuterBox | R15CollisionType.InnerBox;
 	export namespace RenderFidelity {
@@ -8581,7 +8581,7 @@ declare namespace Enum {
 
 		export const Precise: Precise;
 
-		export function GetEnumItems(): Array<RenderFidelity>
+		export function GetEnumItems(this: {}): Array<RenderFidelity>
 	}
 	export type RenderFidelity = RenderFidelity.Automatic | RenderFidelity.Precise;
 	export namespace RenderPriority {
@@ -8625,7 +8625,7 @@ declare namespace Enum {
 
 		export const Last: Last;
 
-		export function GetEnumItems(): Array<RenderPriority>
+		export function GetEnumItems(this: {}): Array<RenderPriority>
 	}
 	export type RenderPriority = RenderPriority.First | RenderPriority.Input | RenderPriority.Camera | RenderPriority.Character | RenderPriority.Last;
 	export namespace RenderingTestComparisonMethod {
@@ -8645,7 +8645,7 @@ declare namespace Enum {
 
 		export const diff: diff;
 
-		export function GetEnumItems(): Array<RenderingTestComparisonMethod>
+		export function GetEnumItems(this: {}): Array<RenderingTestComparisonMethod>
 	}
 	export type RenderingTestComparisonMethod = RenderingTestComparisonMethod.psnr | RenderingTestComparisonMethod.diff;
 	export namespace ReverbType {
@@ -8841,7 +8841,7 @@ declare namespace Enum {
 
 		export const UnderWater: UnderWater;
 
-		export function GetEnumItems(): Array<ReverbType>
+		export function GetEnumItems(this: {}): Array<ReverbType>
 	}
 	export type ReverbType = ReverbType.NoReverb | ReverbType.GenericReverb | ReverbType.PaddedCell | ReverbType.Room | ReverbType.Bathroom | ReverbType.LivingRoom | ReverbType.StoneRoom | ReverbType.Auditorium | ReverbType.ConcertHall | ReverbType.Cave | ReverbType.Arena | ReverbType.Hangar | ReverbType.CarpettedHallway | ReverbType.Hallway | ReverbType.StoneCorridor | ReverbType.Alley | ReverbType.Forest | ReverbType.City | ReverbType.Mountains | ReverbType.Quarry | ReverbType.Plain | ReverbType.ParkingLot | ReverbType.SewerPipe | ReverbType.UnderWater;
 	export namespace RibbonTool {
@@ -8925,7 +8925,7 @@ declare namespace Enum {
 
 		export const None: None;
 
-		export function GetEnumItems(): Array<RibbonTool>
+		export function GetEnumItems(this: {}): Array<RibbonTool>
 	}
 	export type RibbonTool = RibbonTool.Select | RibbonTool.Scale | RibbonTool.Rotate | RibbonTool.Move | RibbonTool.Transform | RibbonTool.ColorPicker | RibbonTool.MaterialPicker | RibbonTool.Group | RibbonTool.Ungroup | RibbonTool.None;
 	export namespace RollOffMode {
@@ -8961,7 +8961,7 @@ declare namespace Enum {
 
 		export const LinearSquare: LinearSquare;
 
-		export function GetEnumItems(): Array<RollOffMode>
+		export function GetEnumItems(this: {}): Array<RollOffMode>
 	}
 	export type RollOffMode = RollOffMode.Inverse | RollOffMode.Linear | RollOffMode.InverseTapered | RollOffMode.LinearSquare;
 	export namespace RotationType {
@@ -8981,7 +8981,7 @@ declare namespace Enum {
 
 		export const CameraRelative: CameraRelative;
 
-		export function GetEnumItems(): Array<RotationType>
+		export function GetEnumItems(this: {}): Array<RotationType>
 	}
 	export type RotationType = RotationType.MovementRelative | RotationType.CameraRelative;
 	export namespace RuntimeUndoBehavior {
@@ -9009,7 +9009,7 @@ declare namespace Enum {
 
 		export const Hybrid: Hybrid;
 
-		export function GetEnumItems(): Array<RuntimeUndoBehavior>
+		export function GetEnumItems(this: {}): Array<RuntimeUndoBehavior>
 	}
 	export type RuntimeUndoBehavior = RuntimeUndoBehavior.Aggregate | RuntimeUndoBehavior.Snapshot | RuntimeUndoBehavior.Hybrid;
 	export namespace SaveFilter {
@@ -9037,7 +9037,7 @@ declare namespace Enum {
 
 		export const SaveGame: SaveGame;
 
-		export function GetEnumItems(): Array<SaveFilter>
+		export function GetEnumItems(this: {}): Array<SaveFilter>
 	}
 	export type SaveFilter = SaveFilter.SaveAll | SaveFilter.SaveWorld | SaveFilter.SaveGame;
 	export namespace SavedQualitySetting {
@@ -9129,7 +9129,7 @@ declare namespace Enum {
 
 		export const QualityLevel10: QualityLevel10;
 
-		export function GetEnumItems(): Array<SavedQualitySetting>
+		export function GetEnumItems(this: {}): Array<SavedQualitySetting>
 	}
 	export type SavedQualitySetting = SavedQualitySetting.Automatic | SavedQualitySetting.QualityLevel1 | SavedQualitySetting.QualityLevel2 | SavedQualitySetting.QualityLevel3 | SavedQualitySetting.QualityLevel4 | SavedQualitySetting.QualityLevel5 | SavedQualitySetting.QualityLevel6 | SavedQualitySetting.QualityLevel7 | SavedQualitySetting.QualityLevel8 | SavedQualitySetting.QualityLevel9 | SavedQualitySetting.QualityLevel10;
 	export namespace ScaleType {
@@ -9173,7 +9173,7 @@ declare namespace Enum {
 
 		export const Crop: Crop;
 
-		export function GetEnumItems(): Array<ScaleType>
+		export function GetEnumItems(this: {}): Array<ScaleType>
 	}
 	export type ScaleType = ScaleType.Stretch | ScaleType.Slice | ScaleType.Tile | ScaleType.Fit | ScaleType.Crop;
 	export namespace ScreenOrientation {
@@ -9217,7 +9217,7 @@ declare namespace Enum {
 
 		export const Sensor: Sensor;
 
-		export function GetEnumItems(): Array<ScreenOrientation>
+		export function GetEnumItems(this: {}): Array<ScreenOrientation>
 	}
 	export type ScreenOrientation = ScreenOrientation.LandscapeLeft | ScreenOrientation.LandscapeRight | ScreenOrientation.LandscapeSensor | ScreenOrientation.Portrait | ScreenOrientation.Sensor;
 	export namespace ScrollBarInset {
@@ -9245,7 +9245,7 @@ declare namespace Enum {
 
 		export const Always: Always;
 
-		export function GetEnumItems(): Array<ScrollBarInset>
+		export function GetEnumItems(this: {}): Array<ScrollBarInset>
 	}
 	export type ScrollBarInset = ScrollBarInset.None | ScrollBarInset.ScrollBar | ScrollBarInset.Always;
 	export namespace ScrollingDirection {
@@ -9273,7 +9273,7 @@ declare namespace Enum {
 
 		export const XY: XY;
 
-		export function GetEnumItems(): Array<ScrollingDirection>
+		export function GetEnumItems(this: {}): Array<ScrollingDirection>
 	}
 	export type ScrollingDirection = ScrollingDirection.X | ScrollingDirection.Y | ScrollingDirection.XY;
 	export namespace ServerAudioBehavior {
@@ -9301,7 +9301,7 @@ declare namespace Enum {
 
 		export const OnlineGame: OnlineGame;
 
-		export function GetEnumItems(): Array<ServerAudioBehavior>
+		export function GetEnumItems(this: {}): Array<ServerAudioBehavior>
 	}
 	export type ServerAudioBehavior = ServerAudioBehavior.Enabled | ServerAudioBehavior.Muted | ServerAudioBehavior.OnlineGame;
 	export namespace SizeConstraint {
@@ -9329,7 +9329,7 @@ declare namespace Enum {
 
 		export const RelativeYY: RelativeYY;
 
-		export function GetEnumItems(): Array<SizeConstraint>
+		export function GetEnumItems(this: {}): Array<SizeConstraint>
 	}
 	export type SizeConstraint = SizeConstraint.RelativeXY | SizeConstraint.RelativeXX | SizeConstraint.RelativeYY;
 	export namespace SortOrder {
@@ -9357,7 +9357,7 @@ declare namespace Enum {
 
 		export const Custom: Custom;
 
-		export function GetEnumItems(): Array<SortOrder>
+		export function GetEnumItems(this: {}): Array<SortOrder>
 	}
 	export type SortOrder = SortOrder.LayoutOrder | SortOrder.Name | SortOrder.Custom;
 	export namespace SoundType {
@@ -9481,7 +9481,7 @@ declare namespace Enum {
 
 		export const Victory: Victory;
 
-		export function GetEnumItems(): Array<SoundType>
+		export function GetEnumItems(this: {}): Array<SoundType>
 	}
 	export type SoundType = SoundType.NoSound | SoundType.Boing | SoundType.Bomb | SoundType.Break | SoundType.Click | SoundType.Clock | SoundType.Slingshot | SoundType.Page | SoundType.Ping | SoundType.Snap | SoundType.Splat | SoundType.Step | SoundType.StepOn | SoundType.Swoosh | SoundType.Victory;
 	export namespace SpecialKey {
@@ -9533,7 +9533,7 @@ declare namespace Enum {
 
 		export const ChatHotkey: ChatHotkey;
 
-		export function GetEnumItems(): Array<SpecialKey>
+		export function GetEnumItems(this: {}): Array<SpecialKey>
 	}
 	export type SpecialKey = SpecialKey.Insert | SpecialKey.Home | SpecialKey.End | SpecialKey.PageUp | SpecialKey.PageDown | SpecialKey.ChatHotkey;
 	export namespace StartCorner {
@@ -9569,7 +9569,7 @@ declare namespace Enum {
 
 		export const BottomRight: BottomRight;
 
-		export function GetEnumItems(): Array<StartCorner>
+		export function GetEnumItems(this: {}): Array<StartCorner>
 	}
 	export type StartCorner = StartCorner.TopLeft | StartCorner.TopRight | StartCorner.BottomLeft | StartCorner.BottomRight;
 	export namespace Status {
@@ -9589,7 +9589,7 @@ declare namespace Enum {
 
 		export const Confusion: Confusion;
 
-		export function GetEnumItems(): Array<Status>
+		export function GetEnumItems(this: {}): Array<Status>
 	}
 	export type Status = Status.Poison | Status.Confusion;
 	export namespace StreamingPauseMode {
@@ -9617,7 +9617,7 @@ declare namespace Enum {
 
 		export const ClientPhysicsPause: ClientPhysicsPause;
 
-		export function GetEnumItems(): Array<StreamingPauseMode>
+		export function GetEnumItems(this: {}): Array<StreamingPauseMode>
 	}
 	export type StreamingPauseMode = StreamingPauseMode.Default | StreamingPauseMode.Disabled | StreamingPauseMode.ClientPhysicsPause;
 	export namespace StudioStyleGuideColor {
@@ -10333,7 +10333,7 @@ declare namespace Enum {
 
 		export const DialogMainButtonText: DialogMainButtonText;
 
-		export function GetEnumItems(): Array<StudioStyleGuideColor>
+		export function GetEnumItems(this: {}): Array<StudioStyleGuideColor>
 	}
 	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptPreprocessor | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText;
 	export namespace StudioStyleGuideModifier {
@@ -10377,7 +10377,7 @@ declare namespace Enum {
 
 		export const Hover: Hover;
 
-		export function GetEnumItems(): Array<StudioStyleGuideModifier>
+		export function GetEnumItems(this: {}): Array<StudioStyleGuideModifier>
 	}
 	export type StudioStyleGuideModifier = StudioStyleGuideModifier.Default | StudioStyleGuideModifier.Selected | StudioStyleGuideModifier.Pressed | StudioStyleGuideModifier.Disabled | StudioStyleGuideModifier.Hover;
 	export namespace Style {
@@ -10405,7 +10405,7 @@ declare namespace Enum {
 
 		export const NoSupports: NoSupports;
 
-		export function GetEnumItems(): Array<Style>
+		export function GetEnumItems(this: {}): Array<Style>
 	}
 	export type Style = Style.AlternatingSupports | Style.BridgeStyleSupports | Style.NoSupports;
 	export namespace SurfaceConstraint {
@@ -10441,7 +10441,7 @@ declare namespace Enum {
 
 		export const Motor: Motor;
 
-		export function GetEnumItems(): Array<SurfaceConstraint>
+		export function GetEnumItems(this: {}): Array<SurfaceConstraint>
 	}
 	export type SurfaceConstraint = SurfaceConstraint.None | SurfaceConstraint.Hinge | SurfaceConstraint.SteppingMotor | SurfaceConstraint.Motor;
 	export namespace SurfaceGuiSizingMode {
@@ -10461,7 +10461,7 @@ declare namespace Enum {
 
 		export const PixelsPerStud: PixelsPerStud;
 
-		export function GetEnumItems(): Array<SurfaceGuiSizingMode>
+		export function GetEnumItems(this: {}): Array<SurfaceGuiSizingMode>
 	}
 	export type SurfaceGuiSizingMode = SurfaceGuiSizingMode.FixedSize | SurfaceGuiSizingMode.PixelsPerStud;
 	export namespace SurfaceType {
@@ -10545,7 +10545,7 @@ declare namespace Enum {
 
 		export const SmoothNoOutlines: SmoothNoOutlines;
 
-		export function GetEnumItems(): Array<SurfaceType>
+		export function GetEnumItems(this: {}): Array<SurfaceType>
 	}
 	export type SurfaceType = SurfaceType.Smooth | SurfaceType.Glue | SurfaceType.Weld | SurfaceType.Studs | SurfaceType.Inlet | SurfaceType.Universal | SurfaceType.Hinge | SurfaceType.Motor | SurfaceType.SteppingMotor | SurfaceType.SmoothNoOutlines;
 	export namespace SwipeDirection {
@@ -10589,7 +10589,7 @@ declare namespace Enum {
 
 		export const None: None;
 
-		export function GetEnumItems(): Array<SwipeDirection>
+		export function GetEnumItems(this: {}): Array<SwipeDirection>
 	}
 	export type SwipeDirection = SwipeDirection.Right | SwipeDirection.Left | SwipeDirection.Up | SwipeDirection.Down | SwipeDirection.None;
 	export namespace TableMajorAxis {
@@ -10609,7 +10609,7 @@ declare namespace Enum {
 
 		export const ColumnMajor: ColumnMajor;
 
-		export function GetEnumItems(): Array<TableMajorAxis>
+		export function GetEnumItems(this: {}): Array<TableMajorAxis>
 	}
 	export type TableMajorAxis = TableMajorAxis.RowMajor | TableMajorAxis.ColumnMajor;
 	export namespace Technology {
@@ -10645,7 +10645,7 @@ declare namespace Enum {
 
 		export const ShadowMap: ShadowMap;
 
-		export function GetEnumItems(): Array<Technology>
+		export function GetEnumItems(this: {}): Array<Technology>
 	}
 	export type Technology = Technology.Legacy | Technology.Voxel | Technology.Compatibility | Technology.ShadowMap;
 	export namespace TeleportResult {
@@ -10713,7 +10713,7 @@ declare namespace Enum {
 
 		export const IsTeleporting: IsTeleporting;
 
-		export function GetEnumItems(): Array<TeleportResult>
+		export function GetEnumItems(this: {}): Array<TeleportResult>
 	}
 	export type TeleportResult = TeleportResult.Success | TeleportResult.Failure | TeleportResult.GameNotFound | TeleportResult.GameEnded | TeleportResult.GameFull | TeleportResult.Unauthorized | TeleportResult.Flooded | TeleportResult.IsTeleporting;
 	export namespace TeleportState {
@@ -10757,7 +10757,7 @@ declare namespace Enum {
 
 		export const InProgress: InProgress;
 
-		export function GetEnumItems(): Array<TeleportState>
+		export function GetEnumItems(this: {}): Array<TeleportState>
 	}
 	export type TeleportState = TeleportState.RequestedFromServer | TeleportState.Started | TeleportState.WaitingForServer | TeleportState.Failed | TeleportState.InProgress;
 	export namespace TeleportType {
@@ -10785,7 +10785,7 @@ declare namespace Enum {
 
 		export const ToReservedServer: ToReservedServer;
 
-		export function GetEnumItems(): Array<TeleportType>
+		export function GetEnumItems(this: {}): Array<TeleportType>
 	}
 	export type TeleportType = TeleportType.ToPlace | TeleportType.ToInstance | TeleportType.ToReservedServer;
 	export namespace TextFilterContext {
@@ -10805,7 +10805,7 @@ declare namespace Enum {
 
 		export const PrivateChat: PrivateChat;
 
-		export function GetEnumItems(): Array<TextFilterContext>
+		export function GetEnumItems(this: {}): Array<TextFilterContext>
 	}
 	export type TextFilterContext = TextFilterContext.PublicChat | TextFilterContext.PrivateChat;
 	export namespace TextTruncate {
@@ -10825,7 +10825,7 @@ declare namespace Enum {
 
 		export const AtEnd: AtEnd;
 
-		export function GetEnumItems(): Array<TextTruncate>
+		export function GetEnumItems(this: {}): Array<TextTruncate>
 	}
 	export type TextTruncate = TextTruncate.None | TextTruncate.AtEnd;
 	export namespace TextXAlignment {
@@ -10853,7 +10853,7 @@ declare namespace Enum {
 
 		export const Right: Right;
 
-		export function GetEnumItems(): Array<TextXAlignment>
+		export function GetEnumItems(this: {}): Array<TextXAlignment>
 	}
 	export type TextXAlignment = TextXAlignment.Left | TextXAlignment.Center | TextXAlignment.Right;
 	export namespace TextYAlignment {
@@ -10881,7 +10881,7 @@ declare namespace Enum {
 
 		export const Bottom: Bottom;
 
-		export function GetEnumItems(): Array<TextYAlignment>
+		export function GetEnumItems(this: {}): Array<TextYAlignment>
 	}
 	export type TextYAlignment = TextYAlignment.Top | TextYAlignment.Center | TextYAlignment.Bottom;
 	export namespace TextureMode {
@@ -10909,7 +10909,7 @@ declare namespace Enum {
 
 		export const Static: Static;
 
-		export function GetEnumItems(): Array<TextureMode>
+		export function GetEnumItems(this: {}): Array<TextureMode>
 	}
 	export type TextureMode = TextureMode.Stretch | TextureMode.Wrap | TextureMode.Static;
 	export namespace TextureQueryType {
@@ -10945,7 +10945,7 @@ declare namespace Enum {
 
 		export const HumanoidOrphaned: HumanoidOrphaned;
 
-		export function GetEnumItems(): Array<TextureQueryType>
+		export function GetEnumItems(this: {}): Array<TextureQueryType>
 	}
 	export type TextureQueryType = TextureQueryType.NonHumanoid | TextureQueryType.NonHumanoidOrphaned | TextureQueryType.Humanoid | TextureQueryType.HumanoidOrphaned;
 	export namespace ThreadPoolConfig {
@@ -11037,7 +11037,7 @@ declare namespace Enum {
 
 		export const Threads16: Threads16;
 
-		export function GetEnumItems(): Array<ThreadPoolConfig>
+		export function GetEnumItems(this: {}): Array<ThreadPoolConfig>
 	}
 	export type ThreadPoolConfig = ThreadPoolConfig.Auto | ThreadPoolConfig.PerCore1 | ThreadPoolConfig.PerCore2 | ThreadPoolConfig.PerCore3 | ThreadPoolConfig.PerCore4 | ThreadPoolConfig.Threads1 | ThreadPoolConfig.Threads2 | ThreadPoolConfig.Threads3 | ThreadPoolConfig.Threads4 | ThreadPoolConfig.Threads8 | ThreadPoolConfig.Threads16;
 	export namespace ThrottlingPriority {
@@ -11065,7 +11065,7 @@ declare namespace Enum {
 
 		export const Default: Default;
 
-		export function GetEnumItems(): Array<ThrottlingPriority>
+		export function GetEnumItems(this: {}): Array<ThrottlingPriority>
 	}
 	export type ThrottlingPriority = ThrottlingPriority.Extreme | ThrottlingPriority.ElevatedOnServer | ThrottlingPriority.Default;
 	export namespace ThumbnailSize {
@@ -11125,7 +11125,7 @@ declare namespace Enum {
 
 		export const Size352x352: Size352x352;
 
-		export function GetEnumItems(): Array<ThumbnailSize>
+		export function GetEnumItems(this: {}): Array<ThumbnailSize>
 	}
 	export type ThumbnailSize = ThumbnailSize.Size48x48 | ThumbnailSize.Size180x180 | ThumbnailSize.Size420x420 | ThumbnailSize.Size60x60 | ThumbnailSize.Size100x100 | ThumbnailSize.Size150x150 | ThumbnailSize.Size352x352;
 	export namespace ThumbnailType {
@@ -11153,7 +11153,7 @@ declare namespace Enum {
 
 		export const AvatarThumbnail: AvatarThumbnail;
 
-		export function GetEnumItems(): Array<ThumbnailType>
+		export function GetEnumItems(this: {}): Array<ThumbnailType>
 	}
 	export type ThumbnailType = ThumbnailType.HeadShot | ThumbnailType.AvatarBust | ThumbnailType.AvatarThumbnail;
 	export namespace TickCountSampleMethod {
@@ -11181,7 +11181,7 @@ declare namespace Enum {
 
 		export const Precise: Precise;
 
-		export function GetEnumItems(): Array<TickCountSampleMethod>
+		export function GetEnumItems(this: {}): Array<TickCountSampleMethod>
 	}
 	export type TickCountSampleMethod = TickCountSampleMethod.Fast | TickCountSampleMethod.Benchmark | TickCountSampleMethod.Precise;
 	export namespace TopBottom {
@@ -11209,7 +11209,7 @@ declare namespace Enum {
 
 		export const Bottom: Bottom;
 
-		export function GetEnumItems(): Array<TopBottom>
+		export function GetEnumItems(this: {}): Array<TopBottom>
 	}
 	export type TopBottom = TopBottom.Top | TopBottom.Center | TopBottom.Bottom;
 	export namespace TouchCameraMovementMode {
@@ -11245,7 +11245,7 @@ declare namespace Enum {
 
 		export const Orbital: Orbital;
 
-		export function GetEnumItems(): Array<TouchCameraMovementMode>
+		export function GetEnumItems(this: {}): Array<TouchCameraMovementMode>
 	}
 	export type TouchCameraMovementMode = TouchCameraMovementMode.Default | TouchCameraMovementMode.Follow | TouchCameraMovementMode.Classic | TouchCameraMovementMode.Orbital;
 	export namespace TouchMovementMode {
@@ -11297,7 +11297,7 @@ declare namespace Enum {
 
 		export const DynamicThumbstick: DynamicThumbstick;
 
-		export function GetEnumItems(): Array<TouchMovementMode>
+		export function GetEnumItems(this: {}): Array<TouchMovementMode>
 	}
 	export type TouchMovementMode = TouchMovementMode.Default | TouchMovementMode.Thumbstick | TouchMovementMode.DPad | TouchMovementMode.Thumbpad | TouchMovementMode.ClickToMove | TouchMovementMode.DynamicThumbstick;
 	export namespace TweenStatus {
@@ -11317,7 +11317,7 @@ declare namespace Enum {
 
 		export const Completed: Completed;
 
-		export function GetEnumItems(): Array<TweenStatus>
+		export function GetEnumItems(this: {}): Array<TweenStatus>
 	}
 	export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
 	export namespace UITheme {
@@ -11337,7 +11337,7 @@ declare namespace Enum {
 
 		export const Dark: Dark;
 
-		export function GetEnumItems(): Array<UITheme>
+		export function GetEnumItems(this: {}): Array<UITheme>
 	}
 	export type UITheme = UITheme.Light | UITheme.Dark;
 	export namespace UiMessageType {
@@ -11357,7 +11357,7 @@ declare namespace Enum {
 
 		export const UiMessageInfo: UiMessageInfo;
 
-		export function GetEnumItems(): Array<UiMessageType>
+		export function GetEnumItems(this: {}): Array<UiMessageType>
 	}
 	export type UiMessageType = UiMessageType.UiMessageError | UiMessageType.UiMessageInfo;
 	export namespace UploadSetting {
@@ -11385,7 +11385,7 @@ declare namespace Enum {
 
 		export const Always: Always;
 
-		export function GetEnumItems(): Array<UploadSetting>
+		export function GetEnumItems(this: {}): Array<UploadSetting>
 	}
 	export type UploadSetting = UploadSetting.Never | UploadSetting.Ask | UploadSetting.Always;
 	export namespace UserCFrame {
@@ -11413,7 +11413,7 @@ declare namespace Enum {
 
 		export const RightHand: RightHand;
 
-		export function GetEnumItems(): Array<UserCFrame>
+		export function GetEnumItems(this: {}): Array<UserCFrame>
 	}
 	export type UserCFrame = UserCFrame.Head | UserCFrame.LeftHand | UserCFrame.RightHand;
 	export namespace UserInputState {
@@ -11457,7 +11457,7 @@ declare namespace Enum {
 
 		export const None: None;
 
-		export function GetEnumItems(): Array<UserInputState>
+		export function GetEnumItems(this: {}): Array<UserInputState>
 	}
 	export type UserInputState = UserInputState.Begin | UserInputState.Change | UserInputState.End | UserInputState.Cancel | UserInputState.None;
 	export namespace UserInputType {
@@ -11629,7 +11629,7 @@ declare namespace Enum {
 
 		export const None: None;
 
-		export function GetEnumItems(): Array<UserInputType>
+		export function GetEnumItems(this: {}): Array<UserInputType>
 	}
 	export type UserInputType = UserInputType.MouseButton1 | UserInputType.MouseButton2 | UserInputType.MouseButton3 | UserInputType.MouseWheel | UserInputType.MouseMovement | UserInputType.Touch | UserInputType.Keyboard | UserInputType.Focus | UserInputType.Accelerometer | UserInputType.Gyro | UserInputType.Gamepad1 | UserInputType.Gamepad2 | UserInputType.Gamepad3 | UserInputType.Gamepad4 | UserInputType.Gamepad5 | UserInputType.Gamepad6 | UserInputType.Gamepad7 | UserInputType.Gamepad8 | UserInputType.TextInput | UserInputType.InputMethod | UserInputType.None;
 	export namespace VRTouchpad {
@@ -11649,7 +11649,7 @@ declare namespace Enum {
 
 		export const Right: Right;
 
-		export function GetEnumItems(): Array<VRTouchpad>
+		export function GetEnumItems(this: {}): Array<VRTouchpad>
 	}
 	export type VRTouchpad = VRTouchpad.Left | VRTouchpad.Right;
 	export namespace VRTouchpadMode {
@@ -11677,7 +11677,7 @@ declare namespace Enum {
 
 		export const ABXY: ABXY;
 
-		export function GetEnumItems(): Array<VRTouchpadMode>
+		export function GetEnumItems(this: {}): Array<VRTouchpadMode>
 	}
 	export type VRTouchpadMode = VRTouchpadMode.Touch | VRTouchpadMode.VirtualThumbstick | VRTouchpadMode.ABXY;
 	export namespace VerticalAlignment {
@@ -11705,7 +11705,7 @@ declare namespace Enum {
 
 		export const Bottom: Bottom;
 
-		export function GetEnumItems(): Array<VerticalAlignment>
+		export function GetEnumItems(this: {}): Array<VerticalAlignment>
 	}
 	export type VerticalAlignment = VerticalAlignment.Center | VerticalAlignment.Top | VerticalAlignment.Bottom;
 	export namespace VerticalScrollBarPosition {
@@ -11725,7 +11725,7 @@ declare namespace Enum {
 
 		export const Right: Right;
 
-		export function GetEnumItems(): Array<VerticalScrollBarPosition>
+		export function GetEnumItems(this: {}): Array<VerticalScrollBarPosition>
 	}
 	export type VerticalScrollBarPosition = VerticalScrollBarPosition.Left | VerticalScrollBarPosition.Right;
 	export namespace VibrationMotor {
@@ -11777,7 +11777,7 @@ declare namespace Enum {
 
 		export const RightHand: RightHand;
 
-		export function GetEnumItems(): Array<VibrationMotor>
+		export function GetEnumItems(this: {}): Array<VibrationMotor>
 	}
 	export type VibrationMotor = VibrationMotor.Large | VibrationMotor.Small | VibrationMotor.LeftTrigger | VibrationMotor.RightTrigger | VibrationMotor.LeftHand | VibrationMotor.RightHand;
 	export namespace VideoQualitySettings {
@@ -11805,7 +11805,7 @@ declare namespace Enum {
 
 		export const HighResolution: HighResolution;
 
-		export function GetEnumItems(): Array<VideoQualitySettings>
+		export function GetEnumItems(this: {}): Array<VideoQualitySettings>
 	}
 	export type VideoQualitySettings = VideoQualitySettings.LowResolution | VideoQualitySettings.MediumResolution | VideoQualitySettings.HighResolution;
 	export namespace VirtualInputMode {
@@ -11833,7 +11833,7 @@ declare namespace Enum {
 
 		export const None: None;
 
-		export function GetEnumItems(): Array<VirtualInputMode>
+		export function GetEnumItems(this: {}): Array<VirtualInputMode>
 	}
 	export type VirtualInputMode = VirtualInputMode.Recording | VirtualInputMode.Playing | VirtualInputMode.None;
 	export namespace WaterDirection {
@@ -11885,7 +11885,7 @@ declare namespace Enum {
 
 		export const Z: Z;
 
-		export function GetEnumItems(): Array<WaterDirection>
+		export function GetEnumItems(this: {}): Array<WaterDirection>
 	}
 	export type WaterDirection = WaterDirection.NegX | WaterDirection.X | WaterDirection.NegY | WaterDirection.Y | WaterDirection.NegZ | WaterDirection.Z;
 	export namespace WaterForce {
@@ -11929,7 +11929,7 @@ declare namespace Enum {
 
 		export const Max: Max;
 
-		export function GetEnumItems(): Array<WaterForce>
+		export function GetEnumItems(this: {}): Array<WaterForce>
 	}
 	export type WaterForce = WaterForce.None | WaterForce.Small | WaterForce.Medium | WaterForce.Strong | WaterForce.Max;
 	export namespace ZIndexBehavior {
@@ -11949,7 +11949,7 @@ declare namespace Enum {
 
 		export const Sibling: Sibling;
 
-		export function GetEnumItems(): Array<ZIndexBehavior>
+		export function GetEnumItems(this: {}): Array<ZIndexBehavior>
 	}
 	export type ZIndexBehavior = ZIndexBehavior.Global | ZIndexBehavior.Sibling;
 }

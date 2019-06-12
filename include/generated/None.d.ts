@@ -3976,51 +3976,51 @@ interface BodyColors extends CharacterAppearance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "BodyColors";
 	/** 
-	 * Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).
+	 * Sets the color of this limb, as a [BrickColor](https://wiki.roblox.com/index.php?title=API:BrickColor).
 	 */
 	HeadColor: BrickColor;
 	/** 
-	 * Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * Sets the color of this limb, as a [Color3](https://wiki.roblox.com/index.php?title=API:Color3).
 	 */
 	HeadColor3: Color3;
 	/** 
-	 * Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).
+	 * Sets the color of this limb, as a [BrickColor](https://wiki.roblox.com/index.php?title=API:BrickColor).
 	 */
 	LeftArmColor: BrickColor;
 	/** 
-	 * Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * Sets the color of this limb, as a [Color3](https://wiki.roblox.com/index.php?title=API:Color3).
 	 */
 	LeftArmColor3: Color3;
 	/** 
-	 * Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).
+	 * Sets the color of this limb, as a [BrickColor](https://wiki.roblox.com/index.php?title=API:BrickColor).
 	 */
 	LeftLegColor: BrickColor;
 	/** 
-	 * Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * Sets the color of this limb, as a [Color3](https://wiki.roblox.com/index.php?title=API:Color3).
 	 */
 	LeftLegColor3: Color3;
 	/** 
-	 * Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).
+	 * Sets the color of this limb, as a [BrickColor](https://wiki.roblox.com/index.php?title=API:BrickColor).
 	 */
 	RightArmColor: BrickColor;
 	/** 
-	 * Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * Sets the color of this limb, as a [Color3](https://wiki.roblox.com/index.php?title=API:Color3).
 	 */
 	RightArmColor3: Color3;
 	/** 
-	 * Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).
+	 * Sets the color of this limb, as a [BrickColor](https://wiki.roblox.com/index.php?title=API:BrickColor).
 	 */
 	RightLegColor: BrickColor;
 	/** 
-	 * Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * Sets the color of this limb, as a [Color3](https://wiki.roblox.com/index.php?title=API:Color3).
 	 */
 	RightLegColor3: Color3;
 	/** 
-	 * Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).
+	 * Sets the color of this limb, as a [BrickColor](https://wiki.roblox.com/index.php?title=API:BrickColor).
 	 */
 	TorsoColor: BrickColor;
 	/** 
-	 * Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * Sets the color of this limb, as a [Color3](https://wiki.roblox.com/index.php?title=API:Color3).
 	 */
 	TorsoColor3: Color3;
 }
@@ -5414,7 +5414,7 @@ interface HumanoidController extends Controller {
 }
 
 /** 
- * A SkateboardController is an object  responsible for translating PlayerActions to movements with a  `SkateboardPlatform`.
+ * A SkateboardController is an object  responsible for translating [PlayerActions](https://wiki.roblox.com/index.php?title=PlayerActions) to movements with a  `SkateboardPlatform`.
  */
 interface SkateboardController extends Controller {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -5438,7 +5438,7 @@ interface SkateboardController extends Controller {
 	/** 
 	 * Fired when any input state of the skateboard controller is updated.
 	 *
-	 * The _axis_ is fired with either ["Throttle"](https://developer.roblox.com/articles/String) if the throttle state of the skateboard was updated or ["Steer"](https://developer.roblox.com/articles/String) if the steering state of the skateboard was updated.Fired when any input state of the skateboard controller is updated.
+	 * The _axis_ is fired with either ["Throttle"](https://wiki.roblox.com/index.php?title=String) if the throttle state of the skateboard was updated or ["Steer"](https://wiki.roblox.com/index.php?title=String) if the steering state of the skateboard was updated.Fired when any input state of the skateboard controller is updated.
 	 */
 	readonly AxisChanged: RBXScriptSignal<(axis: string) => void>;
 }
@@ -6178,9 +6178,7 @@ interface DebuggerWatch extends Instance {
  *
  * **See Also:**
  *
- * * [How to use Dialogs][1]
- *
- * [1]: https://developer.roblox.com/articles/Usage-of-dialogs
+ * * [How to use Dialog](https://wiki.roblox.com/index.php?title=How_to_use_Dialog)
  */
 interface Dialog extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -6223,17 +6221,9 @@ multiplePlayersDialog.Parent = multiplePlayersPart
 	/** 
 	 * Toggles whether the goodbye option will be displayed. If true, the dialog will display the content of [Dialog.GoodbyeDialog](https://developer.roblox.com/api-reference/property/Dialog/GoodbyeDialog) as the last option after other dialog choices. Clicking on the goodbye option will exit the dialog.
 	 *
-	 * ## GoodbyeChoiceActive = true
+	 * *GoodbyeChoiceActive **true**
 	 *
-	 * ![Active][1]
-	 *
-	 * ## GoodbyeChoiceActive = false
-	 *
-	 * ![Inactive][2]
-	 *
-	 * [1]: https://developer.roblox.com/assets/5b6101077eac3e673d5e5e19/GoodbyeChoiceActive.png
-	 *
-	 * [2]: https://developer.roblox.com/assets/5b610107858e507e4016cc26/GoodbyeChoiceInactive.png
+	 * *GoodbyeChoiceActive **false*
 	 */
 	GoodbyeChoiceActive: boolean;
 	/** 
@@ -6269,9 +6259,7 @@ multiplePlayersDialog.Parent = multiplePlayersPart
 	 */
 	GetCurrentPlayers(): Array<Player>;
 	/** 
-	 * Fired when a player chooses something to say, through a `Dialog` instance.
-	 *
-	 * This event is client-side only and will not fire on the server. It should be connected to in either a `LocalScript` or a `ModuleScript` required by a `LocalScript`.
+	 * Fired when a player chooses something to say, through a Dialog instance.
 	 */
 	readonly DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
 }
@@ -16880,6 +16868,9 @@ interface InventoryPages extends Pages {
 	readonly ClassName: "InventoryPages" | "EmotesPages";
 }
 
+/** 
+ 
+ */
 interface EmotesPages extends InventoryPages {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "EmotesPages";
@@ -22266,6 +22257,9 @@ print("The current Studio theme is:", settings().Studio.Theme)
 	["Warning Color"]: Color3;
 }
 
+/** 
+ 
+ */
 interface StudioData extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "StudioData";
@@ -23641,15 +23635,17 @@ trail.FaceCamera = false
 	 */
 	MinLength: number;
 	/** 
-	 * The Texture property is the texture to draw on a `Trail`'s segments. This property sets which image asset to use for the texture. This is set the same way as textures in other objects, such as `ImageLabel` or `ParticleEmitter`. The simplest way to set this property is to use an image uploaded to the Game Explorer (this requires the current place to be Published to Roblox).
+	 * The Texture property is the texture to draw on a `Trail`'s segments. This property sets which image asset to use for the texture. This is set the same way as textures in other objects, such as `ImageLabel` or `ParticleEmitter`. The simplest way to set this property is to use an image uploaded to the [Game Explorer][1] (this requires the current place to be Published to Roblox).
 	 *
 	 * If a texture is not provided, then just the [Trail.Color](https://developer.roblox.com/api-reference/property/Trail/Color) of the Trail will be used. With a texture, the trail will draw the texture as its attachments move.
 	 *
-	 * ![A trail with a pawprint texture.][1]
+	 * ![A trail with a pawprint texture.][2]
 	 *
 	 * Textures can be displayed in a variety of different ways based on the trail's [Trail.TextureMode](https://developer.roblox.com/api-reference/property/Trail/TextureMode) and [Trail.TextureLength](https://developer.roblox.com/api-reference/property/Trail/TextureLength) properties.
 	 *
-	 * [1]: https://developer.roblox.com/assets/5b3d51c779099e4b58a78818/TrailTexture.gif
+	 * [1]: https://wiki.roblox.com/index.php?title=Manual/Studio_Overview/Interface/Game_explorer
+	 *
+	 * [2]: https://developer.roblox.com/assets/5b3d51c779099e4b58a78818/TrailTexture.gif
 	 */
 	Texture: string;
 	/** 
