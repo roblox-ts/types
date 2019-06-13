@@ -1486,6 +1486,8 @@ interface CheckableTypes extends CheckablePrimitives {
 	NumberSequenceKeypoint: NumberSequenceKeypoint;
 	PathWaypoint: PathWaypoint;
 	PhysicalProperties: PhysicalProperties;
+	RBXScriptSignal: RBXScriptSignal;
+	RBXScriptConnection: RBXScriptConnection;
 	Random: Random;
 	Ray: Ray;
 	Rect: Rect;
