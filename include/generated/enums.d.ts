@@ -7393,9 +7393,17 @@ declare namespace Enum {
 
 		export const OutrageousBuildersClub: OutrageousBuildersClub;
 
+		export interface Premium {
+			Name: "Premium";
+			Value: 4;
+			EnumType: EnumType<Enum.MembershipType>;
+		}
+
+		export const Premium: Premium;
+
 		export function GetEnumItems(this: {}): Array<MembershipType>
 	}
-	export type MembershipType = MembershipType.None | MembershipType.BuildersClub | MembershipType.TurboBuildersClub | MembershipType.OutrageousBuildersClub;
+	export type MembershipType = MembershipType.None | MembershipType.BuildersClub | MembershipType.TurboBuildersClub | MembershipType.OutrageousBuildersClub | MembershipType.Premium;
 	export namespace MeshType {
 		export interface Head {
 			Name: "Head";
