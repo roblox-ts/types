@@ -231,44 +231,7 @@ interface NetworkSettings extends Instance {
 	readonly FreeMemoryMBytes: number;
 }
 
-interface Workspace extends Omit<Model, "BreakJoints" | "MakeJoints" | "Clone"> {
-	Clone(): this
-	/** 
-	 * Goes through all `BasePart`s given, breaking any joints connected to these parts.
-	 *
-	 * This function will break any of the following types of joints:
-	 *
-	 *  - `JointInstance`s such as `Connectors`, `Welds` and `Snaps`
-	 *
-	 *  - `WeldConstraint`s
-	 *
-	 * Unlike [Break.MakeJoints](https://developer.roblox.com/search#stq=MakeJoints), this function requires an array of `BasePart`s as a parameter. This array is given as follows:
-	 *
-	 * ```lua
-workspace:BreakJoints({part1, part2, part3})
-```
-	 * 
-
-	 * Note, this function cannot be used by scripts and will only function in plugins.
-	 * @param objects An array of `BasePart`s for whom joints are to be broken.
-	 */
-	BreakJoints(objects: Array<Instance>): void;
-	/** 
-	 * Goes through all `BasePart`s given. If any part's side has a [Enum.SurfaceType](https://developer.roblox.com/search#stq=SurfaceType) that can make a joint it will create a joint with any adjacent parts.
-	 *
-	 * Unlike [Model.MakeJoints](https://developer.roblox.com/api-reference/function/Model/MakeJoints), this function requires an array of `BasePart`s as a parameter. This array is given as follows:
-	 *
-	 * ```lua
-workspace:MakeJoints({part1, part2, part3})
-```
-	 * 
-
-	 * Joints are broken if enough force is applied to them due to an `Explosion`, unless a `ForceField` object is parented to the `BasePart` or ancestor `Model`. For this reason, they are often used to make simple destructible buildings and other models.
-	 *
-	 * Note, this function cannot be used by scripts and will only function in plugins.
-	 * @param objects An array of `BasePart`s for whom joints are to be made.
-	 */
-	MakeJoints(objects: Array<Instance>): void;
+interface Workspace extends Model {
 	/** 
 	 * Positions and zooms the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) to show the extent of `BasePart`s currently in the `Workspace`.
 	 *
@@ -281,11 +244,11 @@ workspace:MakeJoints({part1, part2, part3})
 
 interface Player extends Instance {
 	/** 
-	 * Sets the [AccountAge](https://wiki.roblox.com/index.php?title=AccountAge "AccountAge") of the player.
+	 * Sets the [AccountAge](https://wiki.roblox.com/index.php?title=AccountAge) of the player.
 	 */
 	SetAccountAge(accountAge: number): void;
 	/** 
-	 * Sets whether or not the player sees [filtered chats](https://wiki.roblox.com/index.php?title=FilterStringForPlayerAsync "FilterStringForPlayerAsync"), rather than normal chats.
+	 * Sets whether or not the player sees [filtered chats](https://wiki.roblox.com/index.php?title=FilterStringForPlayerAsync), rather than normal chats.
 	 */
 	SetSuperSafeChat(value: boolean): void;
 }
@@ -353,7 +316,7 @@ interface Plugin extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to Plugins), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginMenu`, a context menu that can be shown in Studio which displays a list of PluginActions and supports submenus
 	 *
@@ -379,7 +342,7 @@ interface Plugin extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to Plugins), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 *
@@ -503,7 +466,7 @@ interface Plugin extends Instance {
 	/** 
 	 * This function creates a `DockWidgetPluginGui` using the provided [DataType.DockWidgetPluginGuiInfo](https://developer.roblox.com/search#stq=DockWidgetPluginGuiInfo).
 	 *
-	 * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio widgets) tutorial for details on working with custom Studio widgets.
+	 * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
 	 * @param pluginGuiId Consistent identifier used for storing/preserving the widget dock state and other internal details.
 	 * @param dockWidgetPluginGuiInfo Datatype describing details for the new `DockWidgetPluginGui`.
 	 */
@@ -574,7 +537,7 @@ interface PluginMenu extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to Plugins), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 *
@@ -602,7 +565,7 @@ interface PluginMenu extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to Plugins), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 *
@@ -638,7 +601,7 @@ interface PluginMenu extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to Plugins), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 *
@@ -665,7 +628,7 @@ interface PluginMenu extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to Plugins), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 *
@@ -691,7 +654,7 @@ interface PluginMenu extends Instance {
 	 *
 	 * ## See also
 	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to Plugins), an introductory article to plugin use and development
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
 	 *
 	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 *
@@ -1025,7 +988,7 @@ settings().Studio:GetAvailableThemes()
 	/** 
 	 * The **ThemeChanged** event fires when Studio's [Theme](https://developer.roblox.com/api-reference/property/Studio/Theme) changes. The best use of this event is to get the colors from the theme that changed and update your plugin’s UI accordingly.
 	 *
-	 * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio widgets) tutorial for details on working with custom Studio widgets.
+	 * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
 	 */
 	readonly ThemeChanged: RBXScriptSignal<() => void>;
 }
