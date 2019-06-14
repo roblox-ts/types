@@ -1043,29 +1043,7 @@ interface Hat extends Accoutrement {
 }
 
 /** 
- * This AdService class was historically a service used to display mobile video ads as a form of game monetization. It has been decommissioned and is no longer operational.
- *
- * ![iPad displaying an ad](https://developer.roblox.com/assets/5c3e6293ae0aa2bf7f3a52fe/AdserviceIPad.png)
- *
- * It allowed game creators to utilize a the service and display video ads to mobile players on supported iOS and Android devices. Players were able to view up to 5 ads per hour across the site.
- *
- * ## Best Practices
- *
- *  - You couldn’t play an ad more than five times in an hour, in any mobile instance.
- *
- *  - [GUIs](https://developer.roblox.com/api-reference/class/GuiObject) were extremely important in getting your ads out. They made sure players knew they were seeing an ad and that gameplay would begin once it was over. Particularly something that said, “and now a word from our sponsor,” or “gameplay sponsored by…”
- *
- *  - You had to make sure players inside your game didn’t take damage or get knocked out while they were watching an ad (this could be as simple as giving them a forcefield while the ad plays).
- *
- *  - It was important to always show ads when it didn’t interfere with gameplay (like between rounds, before the game starts, or after a player gets knocked out).
- *
- * ## Benefits
- *
- * Implementing video ad impressions in mobile gameplay sessions offers a variety of positive things for Roblox developers.
- *
- * The more hits your ad got, the more ROBUX you earned (at a rate of one ROBUX per 20 impressions). So if you were trying to utilize the heavy traffic you received in your game, it was recommended to using the API to call the commercial before your game started. For those who already had a hit game, this this could have functioned as supplemental income.
- *
- * Thinking of the bigger picture. You could tie the API call to, say, a button inside your game, which would only play the ad when pressed. Many Roblox players wanted to earn exclusive items for your game, but maybe couldn't afford them. Perhaps you could tie one of those items into the ad — couldn’t afford the Green Balloon? Here was another option: watch a 30 second ad. The player got the item, you got the impression, and the cycle continued that way. Maybe your game was round-based. Why not play an ad between rounds? That was easily 20 impressions just while waiting for the next level to load. And more ad impressions meant more ROBUX in your pocket.
+ * A decommissioned service that is no longer operational.
  */
 interface AdService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -1164,7 +1142,9 @@ animationTrack:Play()
 }
 
 /** 
- * Controls the playback of an animation on a `Humanoid` or `AnimationController`. This object cannot be created, instead it is returned by the [Humanoid.LoadAnimation](https://developer.roblox.com/api-reference/function/Humanoid/LoadAnimation) method.
+ * Controls the playback of an animation on a [Humanoid](https://wiki.roblox.com/index.php?title=Humanoid) or [AnimationController](https://wiki.roblox.com/index.php?title=AnimationController) .
+ *
+ * This object cannot be created, rather it is returned by the [LoadAnimation](https://wiki.roblox.com/index.php?title=LoadAnimation) method.
  */
 interface AnimationTrack extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -1272,7 +1252,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	
@@ -1284,7 +1264,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 *
@@ -1300,7 +1280,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	
@@ -1312,7 +1292,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 *
@@ -1322,7 +1302,7 @@ interface AnimationTrack extends Instance {
 	/** 
 	 * This function changes the [AnimationTrack.Speed](https://developer.roblox.com/api-reference/property/AnimationTrack/Speed) of an animation.  A positive value for speed plays the animation forward, a negative one plays it backwards, and 0 pauses it.
 	 *
-	 * An AnimationTrack's initial speed is set as a parameter in [AnimationTrack.Play](https://developer.roblox.com/api-reference/function/AnimationTrack/Play). However a track's Speed can be changed during playback, using AdjustSpeed. When speed is equal to 1, the amount of time an animation takes to complete is equal to [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds).
+	 * An AnimationTrack's initial speed is set as a parameter in [AnimationTrack.Play](https://developer.roblox.com/api-reference/function/AnimationTrack/Play). However a track's Speed can be changed, both before and during playback, using AdjustSpeed. When speed is equal to 1, the amount of time an animation takes to complete is equal to [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds).
 	 *
 	 * When is adjusted, then the actual time it will take a track to play can be computed by dividing the length by the speed. Speed is a unitless quantity.
 	 *
@@ -1341,44 +1321,14 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 * @param weight The weight the animation is to be changed to.
 	 * @param fadeTime The duration of time that the animation will fade between the old weight and the new weight for.
 	 */
 	AdjustWeight(weight?: number, fadeTime?: number): void;
-	/** 
-	 * This function returns an [event](https://developer.roblox.com/search#stq=RBXScriptSignal) similar to the [AnimationTrack.KeyframeReached](https://developer.roblox.com/api-reference/event/AnimationTrack/KeyframeReached) event, except it only fires when a specified `KeyframeMarker` has been hit in an [animation](https://developer.roblox.com/api-reference/class/Animation). The difference allows for greater control of when the event will fire.
-	 *
-	 * This event allows a developer to run code at predefined points in an animation (set by `Keyframe` names). This allows the default functionality of Roblox animations to be expanded upon by adding things such as [Sounds](https://developer.roblox.com/api-reference/class/Sound) or [ParticleEffects](https://developer.roblox.com/api-reference/class/ParticleEmitter) at different points in an animation.
-	 *
-	 * To learn more about using this function, see **Animation&nbsp;Events** in the [Using the Animation Editor](https://developer.roblox.com/search#stq=using%20animation%20editor) article.
-	 *
-	 * ## Using the Returned Event
-	 *
-	 * The RBXScriptSignal (event) returned by this can be connected to another function. The connection creates a [DataType.RBXScriptConnection](https://developer.roblox.com/search#stq=RBXScriptConnection) listener that executes the connected function every time the animation hits the specified KeyframeMarker until disconnected using Disconnect().
-	 *
-	 * ## More about Keyframes
-	 *
-	 * `Keyframe` names do not need to be unique. For example, if an Animation has three keyframes named "Particles" the connected event returned by this function will fire each time one of these keyframes is reached.
-	 *
-	 * `Keyframe` names can be set in the Roblox Animation Editor when creating or editing an animation. They cannot however be set by a `Script` on an existing animation prior to playing it.
-	 *
-	 * ## See also
-	 *
-	 *  - `AnimationTrack`, controls the playback of an animation on a `Humanoid` or `AnimationController`
-	 *
-	 *  - `Keyframe`,  holds the [Poses](https://developer.roblox.com/api-reference/class/Pose) applied to joints in a `Model` at a given point of time in an animation
-	 *
-	 *  - [Keyframe.AddMarker](https://developer.roblox.com/api-reference/function/Keyframe/AddMarker)
-	 *
-	 *  - [Keyframe.RemoveMarker](https://developer.roblox.com/api-reference/function/Keyframe/RemoveMarker)
-	 *
-	 *  - [Keyframe.GetMarkers](https://developer.roblox.com/api-reference/function/Keyframe/GetMarkers)
-	 * @param name The name of the `KeyFrameMarker` the signal is being created for
-	 * @returns The signal created and fired when the animation reaches the created `KeyFrameMarker`
-	 */
+	/** [NO DOCUMENTATION] */
 	GetMarkerReachedSignal(name: string): RBXScriptSignal;
 	/** 
 	 * Returns the time position of the first `Keyframe` of the given name in an `AnimationTrack`. If multiple `Keyframe`s share the same name, it will return the earliest one in the animation.
@@ -5665,7 +5615,7 @@ interface FileMesh extends DataModelMesh {
 	 *
 	 * Meshes can currently only be be uploaded using `MeshPart`s or the game explorer. Once uploaded however, the content ID for the mesh can be used for the MeshId property. For more information on how to do this please see [this tutorial](https://developer.roblox.com/search#stq=Mesh%20Parts).
 	 *
-	 * [1]: https://developer.roblox.com/articles/Mesh-Parts
+	 * [1]: http://wiki.roblox.com/index.php?title=Mesh_Parts
 	 */
 	MeshId: string;
 	/** 
@@ -5975,11 +5925,11 @@ interface DebugSettings extends Instance {
 	/** 
 	 * The purpose of this property is unknown.
 	 *
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
+	 * Its value is always ["?"](https://wiki.roblox.com/index.php?title=String).
 	
 	 * The purpose of this property is unknown.
 	 *
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
+	 * Its value is always ["?"](https://wiki.roblox.com/index.php?title=String).
 	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -14489,7 +14439,7 @@ interface NetworkSettings extends Instance {
 	 *
 	 * This will only be shown if [Workspace.StreamingEnabled](https://developer.roblox.com/api-reference/property/Workspace/StreamingEnabled) is set to true.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blte3c189bb8bdbf8e3/ShowStreamedRegions.png
+	 * [1]: https://developer.roblox.com/assets/5ade6872baed3a514c372354/ShowStreamedRegions.png
 	 */
 	RenderStreamedRegions: boolean;
 	/** 
