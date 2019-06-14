@@ -14516,6 +14516,9 @@ interface NetworkSettings extends Instance {
 	UsePhysicsPacketCache: boolean;
 }
 
+/** 
+ 
+ */
 interface NoCollisionConstraint extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "NoCollisionConstraint";
@@ -18859,6 +18862,9 @@ interface SunRaysEffect extends PostEffect {
 	Spread: number;
 }
 
+/** 
+ 
+ */
 interface RbxAnalyticsService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RbxAnalyticsService";
@@ -19450,6 +19456,9 @@ interface ReplicatedStorage extends Instance {
 	readonly ClassName: "ReplicatedStorage";
 }
 
+/** 
+ 
+ */
 interface RobloxPluginGuiService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RobloxPluginGuiService";
@@ -24024,6 +24033,9 @@ interface UIGridLayout extends UIGridStyleLayout {
 	StartCorner: Enum.StartCorner;
 }
 
+/** 
+ 
+ */
 interface UIInlineLayout extends UIGridStyleLayout {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "UIInlineLayout";
