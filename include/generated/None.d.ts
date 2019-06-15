@@ -1043,29 +1043,7 @@ interface Hat extends Accoutrement {
 }
 
 /** 
- * This AdService class was historically a service used to display mobile video ads as a form of game monetization. It has been decommissioned and is no longer operational.
- *
- * ![iPad displaying an ad](https://developer.roblox.com/assets/5c3e6293ae0aa2bf7f3a52fe/AdserviceIPad.png)
- *
- * It allowed game creators to utilize a the service and display video ads to mobile players on supported iOS and Android devices. Players were able to view up to 5 ads per hour across the site.
- *
- * ## Best Practices
- *
- *  - You couldn’t play an ad more than five times in an hour, in any mobile instance.
- *
- *  - [GUIs](https://developer.roblox.com/api-reference/class/GuiObject) were extremely important in getting your ads out. They made sure players knew they were seeing an ad and that gameplay would begin once it was over. Particularly something that said, “and now a word from our sponsor,” or “gameplay sponsored by…”
- *
- *  - You had to make sure players inside your game didn’t take damage or get knocked out while they were watching an ad (this could be as simple as giving them a forcefield while the ad plays).
- *
- *  - It was important to always show ads when it didn’t interfere with gameplay (like between rounds, before the game starts, or after a player gets knocked out).
- *
- * ## Benefits
- *
- * Implementing video ad impressions in mobile gameplay sessions offers a variety of positive things for Roblox developers.
- *
- * The more hits your ad got, the more ROBUX you earned (at a rate of one ROBUX per 20 impressions). So if you were trying to utilize the heavy traffic you received in your game, it was recommended to using the API to call the commercial before your game started. For those who already had a hit game, this this could have functioned as supplemental income.
- *
- * Thinking of the bigger picture. You could tie the API call to, say, a button inside your game, which would only play the ad when pressed. Many Roblox players wanted to earn exclusive items for your game, but maybe couldn't afford them. Perhaps you could tie one of those items into the ad — couldn’t afford the Green Balloon? Here was another option: watch a 30 second ad. The player got the item, you got the impression, and the cycle continued that way. Maybe your game was round-based. Why not play an ad between rounds? That was easily 20 impressions just while waiting for the next level to load. And more ad impressions meant more ROBUX in your pocket.
+ * A decommissioned service that is no longer operational.
  */
 interface AdService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -1164,7 +1142,9 @@ animationTrack:Play()
 }
 
 /** 
- * Controls the playback of an animation on a `Humanoid` or `AnimationController`. This object cannot be created, instead it is returned by the [Humanoid.LoadAnimation](https://developer.roblox.com/api-reference/function/Humanoid/LoadAnimation) method.
+ * Controls the playback of an animation on a [Humanoid](https://wiki.roblox.com/index.php?title=Humanoid) or [AnimationController](https://wiki.roblox.com/index.php?title=AnimationController) .
+ *
+ * This object cannot be created, rather it is returned by the [LoadAnimation](https://wiki.roblox.com/index.php?title=LoadAnimation) method.
  */
 interface AnimationTrack extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -1272,7 +1252,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	
@@ -1284,7 +1264,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 *
@@ -1300,7 +1280,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	
@@ -1312,7 +1292,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 *
@@ -1322,7 +1302,7 @@ interface AnimationTrack extends Instance {
 	/** 
 	 * This function changes the [AnimationTrack.Speed](https://developer.roblox.com/api-reference/property/AnimationTrack/Speed) of an animation.  A positive value for speed plays the animation forward, a negative one plays it backwards, and 0 pauses it.
 	 *
-	 * An AnimationTrack's initial speed is set as a parameter in [AnimationTrack.Play](https://developer.roblox.com/api-reference/function/AnimationTrack/Play). However a track's Speed can be changed during playback, using AdjustSpeed. When speed is equal to 1, the amount of time an animation takes to complete is equal to [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds).
+	 * An AnimationTrack's initial speed is set as a parameter in [AnimationTrack.Play](https://developer.roblox.com/api-reference/function/AnimationTrack/Play). However a track's Speed can be changed, both before and during playback, using AdjustSpeed. When speed is equal to 1, the amount of time an animation takes to complete is equal to [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds).
 	 *
 	 * When is adjusted, then the actual time it will take a track to play can be computed by dividing the length by the speed. Speed is a unitless quantity.
 	 *
@@ -1341,44 +1321,14 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 * @param weight The weight the animation is to be changed to.
 	 * @param fadeTime The duration of time that the animation will fade between the old weight and the new weight for.
 	 */
 	AdjustWeight(weight?: number, fadeTime?: number): void;
-	/** 
-	 * This function returns an [event](https://developer.roblox.com/search#stq=RBXScriptSignal) similar to the [AnimationTrack.KeyframeReached](https://developer.roblox.com/api-reference/event/AnimationTrack/KeyframeReached) event, except it only fires when a specified `KeyframeMarker` has been hit in an [animation](https://developer.roblox.com/api-reference/class/Animation). The difference allows for greater control of when the event will fire.
-	 *
-	 * This event allows a developer to run code at predefined points in an animation (set by `Keyframe` names). This allows the default functionality of Roblox animations to be expanded upon by adding things such as [Sounds](https://developer.roblox.com/api-reference/class/Sound) or [ParticleEffects](https://developer.roblox.com/api-reference/class/ParticleEmitter) at different points in an animation.
-	 *
-	 * To learn more about using this function, see **Animation&nbsp;Events** in the [Using the Animation Editor](https://developer.roblox.com/search#stq=using%20animation%20editor) article.
-	 *
-	 * ## Using the Returned Event
-	 *
-	 * The RBXScriptSignal (event) returned by this can be connected to another function. The connection creates a [DataType.RBXScriptConnection](https://developer.roblox.com/search#stq=RBXScriptConnection) listener that executes the connected function every time the animation hits the specified KeyframeMarker until disconnected using Disconnect().
-	 *
-	 * ## More about Keyframes
-	 *
-	 * `Keyframe` names do not need to be unique. For example, if an Animation has three keyframes named "Particles" the connected event returned by this function will fire each time one of these keyframes is reached.
-	 *
-	 * `Keyframe` names can be set in the Roblox Animation Editor when creating or editing an animation. They cannot however be set by a `Script` on an existing animation prior to playing it.
-	 *
-	 * ## See also
-	 *
-	 *  - `AnimationTrack`, controls the playback of an animation on a `Humanoid` or `AnimationController`
-	 *
-	 *  - `Keyframe`,  holds the [Poses](https://developer.roblox.com/api-reference/class/Pose) applied to joints in a `Model` at a given point of time in an animation
-	 *
-	 *  - [Keyframe.AddMarker](https://developer.roblox.com/api-reference/function/Keyframe/AddMarker)
-	 *
-	 *  - [Keyframe.RemoveMarker](https://developer.roblox.com/api-reference/function/Keyframe/RemoveMarker)
-	 *
-	 *  - [Keyframe.GetMarkers](https://developer.roblox.com/api-reference/function/Keyframe/GetMarkers)
-	 * @param name The name of the `KeyFrameMarker` the signal is being created for
-	 * @returns The signal created and fired when the animation reaches the created `KeyFrameMarker`
-	 */
+	/** [NO DOCUMENTATION] */
 	GetMarkerReachedSignal(name: string): RBXScriptSignal;
 	/** 
 	 * Returns the time position of the first `Keyframe` of the given name in an `AnimationTrack`. If multiple `Keyframe`s share the same name, it will return the earliest one in the animation.
@@ -5341,7 +5291,7 @@ interface Controller extends Instance {
 }
 
 /** 
- * A HumanoidController is an internal object responsible for translating PlayerAciton movements to the user's character (specifically, their `Humanoid`).
+ * A HumanoidController is an object responsible for translating [PlayerActions](https://wiki.roblox.com/index.php?title=PlayerActions) to movements with the user's character (specifically, their `Humanoid`).
  *
  * This object can be found inside of the `ControllerService`, via:
  *
@@ -5975,11 +5925,11 @@ interface DebugSettings extends Instance {
 	/** 
 	 * The purpose of this property is unknown.
 	 *
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
+	 * Its value is always ["?"](https://wiki.roblox.com/index.php?title=String).
 	
 	 * The purpose of this property is unknown.
 	 *
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
+	 * Its value is always ["?"](https://wiki.roblox.com/index.php?title=String).
 	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -8992,15 +8942,29 @@ interface PluginGui extends LayerCollector {
 	BindToClose(callback?: Function): void;
 }
 
+/** 
+ * **DockWidgetPluginGui** is a `PluginGui` that displays its contents inside a dockable Roblox Studio window. It is used to create widgets similar to the built-in **Animation Editor** and **Terrain Tools**.
+ *
+ * This GUI can be created using [Plugin:CreateDockWidgetPluginGui()](https://developer.roblox.com/api-reference/function/Plugin/CreateDockWidgetPluginGui).
+ *
+ * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
+ */
 interface DockWidgetPluginGui extends PluginGui {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DockWidgetPluginGui";
-	/** [NO DOCUMENTATION] *
+	/** 
+	 * Describes whether the previous state of this `DockWidgetPluginGui` was restored when it was created.
+	
+	 * Describes whether the previous state of this `DockWidgetPluginGui` was restored when it was created.
+	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly HostWidgetWasRestored: boolean;
 }
 
+/** 
+ 
+ */
 interface QWidgetPluginGui extends PluginGui {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "QWidgetPluginGui";
@@ -11938,7 +11902,7 @@ interface KeyframeMarker extends Instance {
  *
  * In some cases the developer may wish to download the KeyframeSequence corresponding to an existing uploaded Animation. This can be done so using [KeyframeSequenceProvider.GetKeyframeSequenceAsync](https://developer.roblox.com/api-reference/function/KeyframeSequenceProvider/GetKeyframeSequenceAsync).
  *
- * [1]: https://developer.roblox.com/assets/blt2e767397c28fecda/KeyframeSequence_-_Copy.png
+ * [1]: https://developer.roblox.com/assets/5aa797693595493f77511b1d/KeyframeSequence_-_Copy.png
  */
 interface KeyframeSequence extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -13560,32 +13524,32 @@ local mouseHitDirection = mouse.Hit.lookVector
 	 */
 	Icon: string;
 	/** 
-	 * A [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) positioned at the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) and oriented toward the `Mouse`'s 3D position.
+	 * The origin `Mouse` property is a [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) indicating where the mouse originated from. It is positioned at the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) and oriented toward the `Mouse`'s 3D position.
 	 *
 	 * [Mouse.UnitRay](https://developer.roblox.com/api-reference/property/Mouse/UnitRay) starts at the same position as Origin, and extends for a stud in the same direction.
 	 *
-	 * ```lua
-local unitRay = mouse.UnitRay
-local origin = mouse.Origin
--- unitRay.Direction = origin.p
--- unitRay.Direction ≈ origin.lookVector
-```
-	 * 
-
+	 * local unitRay = mouse.UnitRay
+	 *
+	 * local origin = mouse.Origin
+	 *
+	 * -- unitRay.Direction = origin.p
+	 *
+	 * -- unitRay.Direction ≈ origin.lookVector
+	 *
 	 * For the position of the `Mouse` in 3D space, see [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit).
 	
-	 * A [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) positioned at the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) and oriented toward the `Mouse`'s 3D position.
+	 * The origin `Mouse` property is a [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) indicating where the mouse originated from. It is positioned at the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) and oriented toward the `Mouse`'s 3D position.
 	 *
 	 * [Mouse.UnitRay](https://developer.roblox.com/api-reference/property/Mouse/UnitRay) starts at the same position as Origin, and extends for a stud in the same direction.
 	 *
-	 * ```lua
-local unitRay = mouse.UnitRay
-local origin = mouse.Origin
--- unitRay.Direction = origin.p
--- unitRay.Direction ≈ origin.lookVector
-```
-	 * 
-
+	 * local unitRay = mouse.UnitRay
+	 *
+	 * local origin = mouse.Origin
+	 *
+	 * -- unitRay.Direction = origin.p
+	 *
+	 * -- unitRay.Direction ≈ origin.lookVector
+	 *
 	 * For the position of the `Mouse` in 3D space, see [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit).
 	 *
 	 * Tags: ReadOnly, NotReplicated
@@ -13873,9 +13837,9 @@ end)
 	 */
 	readonly Move: RBXScriptSignal<() => void>;
 	/** 
-	 * Fires when the mouse wheel is scrolled backwards.
+	 * The WheelBackward event fires when the mouse wheel is scrolled backwards. Possible uses for this event include toggling a gun's scope in a first person shooter (FPS) or zooming the player's camera.
 	 *
-	 * See [Mouse.WheelForward](https://developer.roblox.com/api-reference/event/Mouse/WheelForward) for the scrolling forward event.
+	 * This can be used alongside the scrolling forward event, [Mouse.WheelForward](https://developer.roblox.com/api-reference/event/Mouse/WheelForward).
 	 *
 	 * For information on how to obtain the `Mouse` object, please see the `Mouse` page.
 	 *
@@ -13883,9 +13847,9 @@ end)
 	 */
 	readonly WheelBackward: RBXScriptSignal<() => void>;
 	/** 
-	 * Fires when the mouse wheel is scrolled forwards.
+	 * The WheelForward event fires when the mouse wheel is scrolled forwards. Possible uses for this event include toggling a gun's scope in a first person shooter (FPS) or zooming the player's camera.
 	 *
-	 * See [Mouse.WheelBackward](https://developer.roblox.com/api-reference/event/Mouse/WheelBackward) for the scrolling backwards event.
+	 * This can be used alongside the scrolling backward event, [Mouse.WheelBackward](https://developer.roblox.com/api-reference/event/Mouse/WheelBackward).
 	 *
 	 * For information on how to obtain the `Mouse` object, please see the `Mouse` page.
 	 *
@@ -14489,7 +14453,7 @@ interface NetworkSettings extends Instance {
 	 *
 	 * This will only be shown if [Workspace.StreamingEnabled](https://developer.roblox.com/api-reference/property/Workspace/StreamingEnabled) is set to true.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blte3c189bb8bdbf8e3/ShowStreamedRegions.png
+	 * [1]: https://developer.roblox.com/assets/5ade6872baed3a514c372354/ShowStreamedRegions.png
 	 */
 	RenderStreamedRegions: boolean;
 	/** 
@@ -15361,11 +15325,7 @@ interface Part extends FormFactorPart {
 }
 
 /** 
- * The `Flag` and `FlagStand` objects were created to allow developers to make 'Capture the Flag' style games quickly. However they have been deprecated and developers are advised to design their own systems which will be more flexible and reliable.
- *
- * To get started with this, developers can use the 'Capture The Flag' template place provided by Roblox which has a fully functioning system developers can take and use in their own games. A link to the place, which is free to edit, is [here][1].
- *
- * [1]: https://www.roblox.com/games/92721754/Capture-The-Flag#!/about
+ * The FlagStand and `Flag` are deprecated objects that were used to make capture the flag games.
  */
 interface FlagStand extends Part {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -15375,13 +15335,7 @@ interface FlagStand extends Part {
 	 */
 	TeamColor: BrickColor;
 	/** 
-	 * This event fires when a player bearing an opposing flag, and having the same [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) as the stand, touches the `FlagStand`.
-	 *
-	 * The `Flag` and `FlagStand` objects were created to allow developers to make 'Capture the Flag' style games quickly. However they have been deprecated and developers are advised to design their own systems which will be more flexible and reliable.
-	 *
-	 * To get started with this, developers can use the 'Capture The Flag' template place provided by Roblox which has a fully functioning system developers can take and use in their own games. A link to the place, which is free to edit, is [here][1].
-	 *
-	 * [1]: https://www.roblox.com/games/92721754/Capture-The-Flag#!/about
+	 * Fires when a player bearing an opposing flag, and having the same [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) as the stand, touches the `FlagStand`.
 	 */
 	readonly FlagCaptured: RBXScriptSignal<(player: Player) => void>;
 }
@@ -16745,7 +16699,7 @@ interface StandardPages extends Pages {
 }
 
 /** 
- * An internal instance used to save/load [solid models](https://developer.roblox.com/articles/3D-Modeling-with-Parts) onto the Roblox cloud.
+ * A type of instance used to save/load [solid models](https://wiki.roblox.com/index.php?title=Solid_modeling) onto the Roblox cloud.
  */
 interface PartOperationAsset extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -26275,7 +26229,10 @@ end
 	readonly UserCFrameEnabled: RBXScriptSignal<(type: Enum.UserCFrame, enabled: boolean) => void>;
 }
 
-/**
+/** 
+ 
+ */
+	/**
  * Used to hold a value.
  */
 interface ValueBase extends Instance {
