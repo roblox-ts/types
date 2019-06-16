@@ -1434,7 +1434,6 @@ declare const shared: object;
 declare function delay(delayTime: number, callback: Callback): void;
 declare function elapsedTime(): number;
 declare function require(moduleScript: ModuleScript | number): unknown;
-declare function settings(): GlobalSettings;
 declare function spawn(callback: Callback): void;
 declare function tick(): number;
 declare function time(): number;
