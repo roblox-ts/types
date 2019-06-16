@@ -7394,7 +7394,15 @@ interface GuiObject extends GuiBase2d {
 	 */
 	AnchorPoint: Vector2;
 	/** 
-	 * BackgroundColor3 determines the color of a UI element's rectangular background (the fill color). Another property that determines the visual properties of the background is [GuiObject.BackgroundTransparency](https://developer.roblox.com/api-reference/property/GuiObject/BackgroundTransparency).
+	 * This property determines the color of a [UI](https://developer.roblox.com/api-reference/class/GuiObject) background (the fill color).
+	 *
+	 * Another property that determines the visual properties of the background is [GuiObject.BackgroundTransparency](https://developer.roblox.com/api-reference/property/GuiObject/BackgroundTransparency). If an element's BackgroundTransparency is set to 1, neither the background nor the border will render and the element will be transparent.
+	 *
+	 * If your element contains text, such as a `TextBox`, `TextButton`, or `TextLabel`, make sure the color of your background contrasts the text's color.
+	 *
+	 * ## See also
+	 *
+	 *  - [GuiObject.BorderColor3](https://developer.roblox.com/api-reference/property/GuiObject/BorderColor3)
 	 */
 	BackgroundColor3: Color3;
 	/** 
@@ -7416,7 +7424,13 @@ interface GuiObject extends GuiBase2d {
 	 */
 	BorderColor3: Color3;
 	/** 
-	 * BorderSizePixel determines how wide a UI element's border should render, in pixels. This property and [GuiObject.BorderColor3](https://developer.roblox.com/api-reference/property/GuiObject/BorderColor3) and [GuiObject.BackgroundTransparency](https://developer.roblox.com/api-reference/property/GuiObject/BackgroundTransparency) determine how the border of a UI element should look. Setting BorderSizePixel to 0 will disable the border altogether. The border width extends outward the perimeter of the rectangle.
+	 * This property determines how wide a [GUI's](https://developer.roblox.com/api-reference/class/GuiObject) border should render, in pixels.
+	 *
+	 * This property, [GuiObject.BorderColor3](https://developer.roblox.com/api-reference/property/GuiObject/BorderColor3), and [GuiObject.BackgroundTransparency](https://developer.roblox.com/api-reference/property/GuiObject/BackgroundTransparency) determine how the border of a GUI element should look.
+	 *
+	 * The border width extends outward the perimeter of the rectangle. For instance, a GUI with a width of 100 pixels and BorderSizePixel set to 2 will actually render 102 pixels wide.
+	 *
+	 * Setting this to 0 will disable the border altogether.
 	 */
 	BorderSizePixel: number;
 	/** 
@@ -7540,7 +7554,17 @@ end
 	 */
 	Rotation: number;
 	/** 
-	 * The Selectable property determines whether a UI element can be selected when navigating UI elements with a gamepad. If false, the object cannot be navigated to and [GuiService.SelectedObject](https://developer.roblox.com/api-reference/property/GuiService/SelectedObject) will not be set to the UI element; setting this property to false will not change [GuiService.SelectedObject](https://developer.roblox.com/api-reference/property/GuiService/SelectedObject) if it is already to the UI element.
+	 * This property determines whether a ~GuiObject|GUI` can be selected when navigating GUIs using a gamepad.
+	 *
+	 * If this property is true, a GUI can be selected. Selecting a GUI also sets the [GuiService.SelectedObject](https://developer.roblox.com/api-reference/property/GuiService/SelectedObject) property to that object.
+	 *
+	 * When this is false, the GUI cannot be selected. However, setting this to false when a GUI is selected will not deselect it nor change the value of the GuiService's SelectedObject property.
+	 *
+	 * Add [GuiObject.SelectionGained](https://developer.roblox.com/api-reference/event/GuiObject/SelectionGained) and [GuiObject.SelectionLost](https://developer.roblox.com/api-reference/event/GuiObject/SelectionLost) will not fire for the element.
+	 *
+	 * To deselect a GuiObject, you must change [GuiService's](https://developer.roblox.com/api-reference/class/GuiService) SelectedObject property.
+	 *
+	 * This property is useful if a GUI is connected to several GUIs via properties such as this [GuiObject.NextSelectionUp](https://developer.roblox.com/api-reference/property/GuiObject/NextSelectionUp), [GuiObject.NextSelectionDown](https://developer.roblox.com/api-reference/property/GuiObject/NextSelectionDown), [NextSelectionRight](https://developer.roblox.com/api-reference/class/GuiObject), or [NextSelectionLeft](https://developer.roblox.com/api-reference/class/GuiObject). Rather than change all of the properties so that the Gamepad cannot select the GUI, you can disable its Selectable property to temporarily prevent it from being selected. Then, when you want  the gamepad selector to be able to select the GUI, simply re-enable its selectable property.
 	 */
 	Selectable: boolean;
 	/** 
@@ -7610,7 +7634,7 @@ end
 	 *
 	 * By default, GUIs render in ascending priority order where lower values are rendered first. As a result, GUIs with lower ZIndex values appear under higher values. You can change the render order by changing the value of `ScreenGui.ZIndexBehavior`.
 	 *
-	 * The range of valid values is 1 to 999,999,999, inclusive. If you are unsure if you will need to layer an element between two already-existing elements in the future, it can be a good idea to use multiples of 100, i.e. 0, 100, 200. This ensures a large gap of ZIndex values you can use for elements rendered in-between other elements.
+	 * The range of valid values is -MAX_INT to MAX_INT, inclusive (2,147,483,647 or (2^31 - 1)). If you are unsure if you will need to layer an element between two already-existing elements in the future, it can be a good idea to use multiples of 100, i.e. 0, 100, 200. This ensures a large gap of ZIndex values you can use for elements rendered in-between other elements.
 	 *
 	 * ## See also
 	 *
@@ -7868,27 +7892,53 @@ CustomScrollingFrame.MouseMoved:Connect(getPosition)
 	/** 
 	 * The TouchLongPress event fires after a brief moment when the player holds their finger on the UI element using a touch-enabled device. It fires with a table of [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2) that describe the relative screen positions of the fingers involved in the gesture. In addition, it fires multiple times with multiple [Enum.UserInputState](https://developer.roblox.com/search#stq=UserInputState)s: Begin after a brief delay, Change if the player moves their finger during the gesture and finally with End. The delay is platform dependent; in Studio it is a little longer than one second.
 	 *
-	 * Since this event only requires one finger, this event can be simulated in Studio using the emulator and a mouse. Below is an example of TouchLongPress firing on a Frame that is [GuiObject.Active](https://developer.roblox.com/api-reference/property/GuiObject/Active). Below, the event fires after a brief delay (Begin) and then continually as as the finger is moved (Change). It fires one last time after it is released (End).
+	 * Since this event only requires one finger, this event can be simulated in Studio using the emulator and a mouse.
+	 *
+	 * Below is an example of TouchLongPress firing on a Frame that is [GuiObject.Active](https://developer.roblox.com/api-reference/property/GuiObject/Active). Below, the event fires after a brief delay (Begin) and then continually as as the finger is moved (Change). It fires one last time after it is released (End).
 	 *
 	 * ![TouchLongPress gesture][1]
 	 *
-	 * This event is part of a family of touch-related events. Other events like this one are [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap), [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate), [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch), [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan) and [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe). In addition, `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.TouchLongPress](https://developer.roblox.com/api-reference/event/UserInputService/TouchLongPress).
+	 * ## See also
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt0bff2c10ae8eddd2/TouchLongPress.gif
+	 *  - [UserInputService.TouchLongPress](https://developer.roblox.com/api-reference/event/UserInputService/TouchLongPress), an event with the same functionality but is not restricted to a specific [GUI](https://developer.roblox.com/api-reference/class/GuiObject)
+	 *
+	 *  - [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan)
+	 *
+	 *  - [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch)
+	 *
+	 *  - [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate)
+	 *
+	 *  - [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap)
+	 *
+	 *  - [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe)
+	 *
+	 * [1]: https://developer.roblox.com/assets/5c32985585f098b517e881d4/GuiObjectTouchLongPressDemo.gif
 	 */
 	readonly TouchLongPress: RBXScriptSignal<(touchPositions: Array<Vector2>, state: Enum.UserInputState) => void>;
 	/** 
-	 * The TouchPan event fires when the player moves their finger on the UI element using a touch-enabled device. It fires shortly before [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe) would, and does not fire with [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap). This event is useful for allowing the player to manipulate the position of UI elements on the screen.
+	 * This event fires when the player moves their finger on the UI element using a touch-enabled device. It fires shortly before [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe) would, and does not fire with [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap). This event is useful for allowing the player to manipulate the position of UI elements on the screen.
 	 *
 	 * This event fires with a table of [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2) that describe the relative screen positions of the fingers involved in the gesture. In addition, it fires several times with multiple [Enum.UserInputState](https://developer.roblox.com/search#stq=UserInputState)s: Begin after a brief delay, Change when the player moves their finger during the gesture and finally once more with End.
 	 *
-	 * This event cannot be simulated in Studio using the emulator and a mouse; you must have a real touch enabled device to fire this event. Below is an animation of TouchPan firing on the black semitransparent `Frame` that covers the screen. The event is being used to manipulate the position of the pink inner `Frame`. The code for this can be found in the code samples.
+	 * This event cannot be simulated in Studio using the emulator and a mouse; you must have a real touch enabled device to fire this event.
+	 *
+	 * Below is an animation of TouchPan firing on the black semitransparent `Frame` that covers the screen. The event is being used to manipulate the position of the pink inner `Frame`. The code for this can be found in the code samples.
 	 *
 	 * ![TouchPan firing on a real touch-enabled device][1]
 	 *
-	 * This event is part of a family of touch-related events. Other events like this one are [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap), [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate), [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch), [GuiObject.TouchLongPress](https://developer.roblox.com/api-reference/event/GuiObject/TouchLongPress) and [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe). In addition, `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.TouchPan](https://developer.roblox.com/api-reference/event/UserInputService/TouchPan).
+	 * ## See also
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltdc72a67282ec5330/TouchPan.gif
+	 *  - [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch)
+	 *
+	 *  - [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate)
+	 *
+	 *  - [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap)
+	 *
+	 *  - [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe)
+	 *
+	 *  - [GuiObject.TouchLongPress](https://developer.roblox.com/api-reference/event/GuiObject/TouchLongPress)
+	 *
+	 * [1]: https://developer.roblox.com/assets/5c32972dc31029a3164215ed/GuiObjectTouchPanDemo.gif
 	 */
 	readonly TouchPan: RBXScriptSignal<
 		(
@@ -7907,9 +7957,19 @@ CustomScrollingFrame.MouseMoved:Connect(getPosition)
 	 *
 	 * ![TouchPinch firing on a real touch device][1]
 	 *
-	 * This event is part of a family of touch-related events. Other events like this one are [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap), [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate), [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan), [GuiObject.TouchLongPress](https://developer.roblox.com/api-reference/event/GuiObject/TouchLongPress) and [Guiobject.TouchSwipe](https://developer.roblox.com/search#stq=TouchSwipe). In addition, `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.TouchPinch](https://developer.roblox.com/api-reference/event/UserInputService/TouchPinch).
+	 * ## See also
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltca171fa11cf4782d/TouchPinch.gif
+	 *  - [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan)
+	 *
+	 *  - [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate)
+	 *
+	 *  - [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap)
+	 *
+	 *  - [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe)
+	 *
+	 *  - [GuiObject.TouchLongPress](https://developer.roblox.com/api-reference/event/GuiObject/TouchLongPress)
+	 *
+	 * [1]: https://developer.roblox.com/assets/5c3297b484e971731662e5d4/GuiObjectTouchPinchDemo.gif
 	 */
 	readonly TouchPinch: RBXScriptSignal<
 		(touchPositions: Array<Vector2>, scale: number, velocity: number, state: Enum.UserInputState) => void
@@ -7921,7 +7981,17 @@ CustomScrollingFrame.MouseMoved:Connect(getPosition)
 	 *
 	 * Since this event requires at least two fingers, it is not possible to be simulated in Studio using the emulator and a mouse; you must have a real touch-enabled device (and also least two fingers, try asking a friend).
 	 *
-	 * This event is part of a family of touch-related events. Other events like this one are [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap), [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch), [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan), [GuiObject.TouchLongPress](https://developer.roblox.com/api-reference/event/GuiObject/TouchLongPress) and [Guiobject.TouchSwipe](https://developer.roblox.com/search#stq=TouchSwipe). In addition, `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.TouchRotate](https://developer.roblox.com/api-reference/event/UserInputService/TouchRotate).
+	 * ## See also
+	 *
+	 *  - [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan)
+	 *
+	 *  - [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch)
+	 *
+	 *  - [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap)
+	 *
+	 *  - [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe)
+	 *
+	 *  - [GuiObject.TouchLongPress](https://developer.roblox.com/api-reference/event/GuiObject/TouchLongPress)
 	 */
 	readonly TouchRotate: RBXScriptSignal<
 		(touchPositions: Array<Vector2>, rotation: number, velocity: number, state: Enum.UserInputState) => void
@@ -7933,9 +8003,19 @@ CustomScrollingFrame.MouseMoved:Connect(getPosition)
 	 *
 	 * ![TouchSwipe event firing on a Frame][1]
 	 *
-	 * This event is part of a family of touch-related events. Other events like this one are [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap), [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate), [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch), [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan) and [Guiobject.TouchLongPress](https://developer.roblox.com/search#stq=TouchLongPress). In addition, `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe).
+	 * ## See also
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltca477d4e524ee20d/TouchSwipe.gif
+	 *  - [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan)
+	 *
+	 *  - [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch)
+	 *
+	 *  - [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate)
+	 *
+	 *  - [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap)
+	 *
+	 *  - [GuiObject.TouchLongPress](https://developer.roblox.com/api-reference/event/GuiObject/TouchLongPress)
+	 *
+	 * [1]: https://developer.roblox.com/assets/5c329815aa947ddb167556d4/GuiObjectTouchSwipeDemo.gif
 	 */
 	readonly TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number) => void>;
 	/** 
@@ -7945,9 +8025,19 @@ CustomScrollingFrame.MouseMoved:Connect(getPosition)
 	 *
 	 * ![TouchTap being fired on a Frame using Studio's emulator][1]
 	 *
-	 * This event is part of a family of touch-related events. Other events like this one are [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe), [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate), [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch), [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan) and [Guiobject.TouchLongPress](https://developer.roblox.com/search#stq=TouchLongPress). In addition, `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe).
+	 * ## See also
 	 *
-	 * [1]: https://developer.roblox.com/assets/blta6f0c03b744fa52b/TouchTap.gif
+	 *  - [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan)
+	 *
+	 *  - [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch)
+	 *
+	 *  - [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate)
+	 *
+	 *  - [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe)
+	 *
+	 *  - [GuiObject.TouchLongPress](https://developer.roblox.com/api-reference/event/GuiObject/TouchLongPress)
+	 *
+	 * [1]: https://developer.roblox.com/assets/5c3297f9ca8fb5f5163471b7/GuiObjectTouchTapDemo.gif
 	 */
 	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>) => void>;
 }
@@ -7973,7 +8063,13 @@ interface GuiButton extends GuiObject {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "GuiButton" | "ImageButton" | "TextButton";
 	/** 
-	 * If true, the button will automatically change color when the mouse hovers over or clicks on it.
+	 * The AutoButtonColor determines whether the button automatically changes color when the user's `Mouse` hovers over or clicks on it.
+	 *
+	 * If true, the button will automatically change color when the mouse hovers over or clicks on it. If false, the button will not change.
+	 *
+	 * If you would like to customize how a button changes when the user's mouse hovers over or clicks on it, consider using an `ImageButton` GUI and changing the element's [ImageButton.HoverImage](https://developer.roblox.com/api-reference/property/ImageButton/HoverImage) and `ImageButton.PressedImage`.
+	 *
+	 * Please note that this property will not have an effect on an `ImageButton` if it's [ImageButton.Image](https://developer.roblox.com/api-reference/property/ImageButton/Image) property is set to an image and is not null. Additionally, the property will not affect an ImageButton element on mouse hover when its [ImageButton.HoverImage](https://developer.roblox.com/api-reference/property/ImageButton/HoverImage) is not null nor on mouse click if [ImageButton.PressedImage](https://developer.roblox.com/api-reference/property/ImageButton/PressedImage) is not null.
 	 */
 	AutoButtonColor: boolean;
 	/** 
@@ -7993,27 +8089,63 @@ interface GuiButton extends GuiObject {
 	 */
 	readonly Activated: RBXScriptSignal<(inputObject: InputObject) => void>;
 	/** 
-	 * Fired when the mouse has fully left clicked the GUI object. By clicking, the mouse has to be in bounds of the button and has to be pressed down and up again before this event fires.
+	 * The MouseButton1Click event fires when the user's `Mouse` fully left clicks the GUI button.
+	 *
+	 * By clicking, the mouse has to be in bounds of the button and has to be pressed down and up again before this event fires. If the mouse leaves the bounds of the button and is released, the even will not fire. If you would like to avoid this limitation, you can use [GuiButton.MouseButton1Down](https://developer.roblox.com/api-reference/event/GuiButton/MouseButton1Down) and `MouseButton1Up`. These events are similar, but will fire whenever the user pressed their left mouse down or up, respectively.
+	 *
+	 * This event is similar to [GuiButton.MouseButton2Click](https://developer.roblox.com/api-reference/event/GuiButton/MouseButton2Click), which behaves identically except that it is connected to the user's right mouse button.
+	 *
+	 * Note that this event will only fire for GUI buttons, including [TextButtons](https://developer.roblox.com/api-reference/class/TextButton) and [ImageButton](https://developer.roblox.com/api-reference/class/ImageButton). It will not fire for other [GuiObjects](https://developer.roblox.com/api-reference/class/GuiObject).
 	 */
 	readonly MouseButton1Click: RBXScriptSignal<() => void>;
 	/** 
-	 * Fired when the mouse is in the left mouse down state on the GUI object.
+	 * The MouseButton2Down event fires when the user presses their left `Mouse` button down on the GUI object.
+	 *
+	 * This event is similar to [GuiButton.MouseButton2Down](https://developer.roblox.com/api-reference/event/GuiButton/MouseButton2Down), which behaves identically except that it is connected to the user's right mouse button.
+	 *
+	 * If you are looking for an event requiring the user to press and release their left mouse on a GUI in order for the event to fire, consider using [GuiButton.MouseButton2Click](https://developer.roblox.com/api-reference/event/GuiButton/MouseButton2Click).
+	 *
+	 * Note that this event will only fire for GUI buttons, including [TextButtons](https://developer.roblox.com/api-reference/class/TextButton) and [ImageButton](https://developer.roblox.com/api-reference/class/ImageButton). It will not fire for other [GuiObjects](https://developer.roblox.com/api-reference/class/GuiObject).
 	 */
 	readonly MouseButton1Down: RBXScriptSignal<(x: number, y: number) => void>;
 	/** 
-	 * Fired when the left mouse has released the GUI object.
+	 * The MouseButton1Up event fires when the user releases their left  `Mouse` up off of the GUI object.
+	 *
+	 * This event is similar to [GuiButton.MouseButton2Up](https://developer.roblox.com/api-reference/event/GuiButton/MouseButton2Up), which behaves identically except that it is connected to the user's right mouse button.
+	 *
+	 * If you are looking for an event requiring the user to press and release their left mouse on a GUI in order for the event to fire, consider using [GuiButton.MouseButton1Click](https://developer.roblox.com/api-reference/event/GuiButton/MouseButton1Click).
+	 *
+	 * Note that this event will only fire for GUI buttons, including [TextButtons](https://developer.roblox.com/api-reference/class/TextButton) and [ImageButton](https://developer.roblox.com/api-reference/class/ImageButton). It will not fire for other [GuiObjects](https://developer.roblox.com/api-reference/class/GuiObject).
 	 */
 	readonly MouseButton1Up: RBXScriptSignal<(x: number, y: number) => void>;
 	/** 
-	 * Fired when the mouse has right clicked the GUI object.
+	 * The MouseButton1Click event fires when the user's `Mouse` fully right clicks the GUI button.
+	 *
+	 * By clicking, the mouse has to be in bounds of the button and has to be pressed down and up again before this event fires. If the mouse leaves the bounds of the button and is released, the even will not fire. If you would like to avoid this limitation, you can use [GuiButton.MouseButton2Down](https://developer.roblox.com/api-reference/event/GuiButton/MouseButton2Down) and `MouseButton2Up`. These events are similar, but will fire whenever the user pressed their left mouse down or up, respectively.
+	 *
+	 * This event is similar to [GuiButton.MouseButton1Click](https://developer.roblox.com/api-reference/event/GuiButton/MouseButton1Click), which behaves identically except that it is connected to the user's left mouse button.
+	 *
+	 * Note that this event will only fire for GUI buttons, including [TextButtons](https://developer.roblox.com/api-reference/class/TextButton) and [ImageButton](https://developer.roblox.com/api-reference/class/ImageButton). It will not fire for other [GuiObjects](https://developer.roblox.com/api-reference/class/GuiObject).
 	 */
 	readonly MouseButton2Click: RBXScriptSignal<() => void>;
 	/** 
-	 * Fired when the mouse is in the right mouse down state on the GUI object.
+	 * The MouseButton2Down event fires when the user presses their left `Mouse` button down on the GUI object.
+	 *
+	 * This event is similar to [GuiButton.MouseButton1Down](https://developer.roblox.com/api-reference/event/GuiButton/MouseButton1Down), which behaves identically except that it is connected to the user's left mouse button.
+	 *
+	 * If you are looking for an event requiring the user to press and release their right mouse on a GUI in order for the event to fire, consider using [GuiButton.MouseButton2Click](https://developer.roblox.com/api-reference/event/GuiButton/MouseButton2Click).
+	 *
+	 * Note that this event will only fire for GUI buttons, including [TextButtons](https://developer.roblox.com/api-reference/class/TextButton) and [ImageButton](https://developer.roblox.com/api-reference/class/ImageButton). It will not fire for other [GuiObjects](https://developer.roblox.com/api-reference/class/GuiObject).
 	 */
 	readonly MouseButton2Down: RBXScriptSignal<(x: number, y: number) => void>;
 	/** 
-	 * Fired when the right mouse button has been released on a GUI Object.
+	 * The MouseButton2Up event fires when the user releases their right  `Mouse` up off of the GUI object.
+	 *
+	 * This event is similar to [GuiButton.MouseButton1Up](https://developer.roblox.com/api-reference/event/GuiButton/MouseButton1Up), which behaves identically except that it is connected to the user's left mouse button.
+	 *
+	 * If you are looking for an event requiring the user to press and release their right mouse on a GUI in order for the event to fire, consider using [GuiButton.MouseButton2Click](https://developer.roblox.com/api-reference/event/GuiButton/MouseButton2Click).
+	 *
+	 * Note that this event will only fire for GUI buttons, including [TextButtons](https://developer.roblox.com/api-reference/class/TextButton) and [ImageButton](https://developer.roblox.com/api-reference/class/ImageButton). It will not fire for other [GuiObjects](https://developer.roblox.com/api-reference/class/GuiObject).
 	 */
 	readonly MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
 }
@@ -10006,7 +10138,7 @@ interface Humanoid extends Instance {
 	 */
 	AutoJumpEnabled: boolean;
 	/** 
-	 * The AutoRotate property is a boolean that describes whether or not the Humanoid will automatically rotate to face in the direction they are moving. When set to true, the character model will gradually turn to face their movement direction as the Humanoid walks around. When set to false, the character model will remain fixated in its current rotation, unless a rotating force is applied to the *HumanoidRootPart*.
+	 * The AutoRotate property describes whether or not the Humanoid will automatically rotate to face in the direction they are moving. When set to true, the character model will gradually turn to face their movement direction as the Humanoid walks around. When set to false, the character model will remain fixated in its current rotation, unless a rotating force is applied to the *HumanoidRootPart*.
 	 *
 	 * If the character model happens to be the character of a player, then the behavior of the Humanoid's rotation is influenced by the UserGameSetting's RotateType property.
 	 *
@@ -10026,9 +10158,9 @@ interface Humanoid extends Instance {
 	 */
 	BreakJointsOnDeath: boolean;
 	/** 
-	 * CameraOffset specifies an offset to the Camera's subject position when its CameraSubject is set to this Humanoid.
+	 * The CameraOffset property specifies an offset to the `Camera`'s subject position when its [Camera.CameraSubject](https://developer.roblox.com/api-reference/property/Camera/CameraSubject) is set to this `Humanoid`.
 	 *
-	 * The offset is applied in object-space, relative to the orientation of the Humanoid's *HumanoidRootPart*.
+	 * The offset is applied in object-space, relative to the orientation of the Humanoid's *HumanoidRootPart*. For example, an offset [DataType.Vector3](https://developer.roblox.com/search#stq=Vector3) value of *(0, 10, 0)* offsets the player's camera to 10 studs above the player's humanoid.
 	 */
 	CameraOffset: Vector3;
 	/** 
@@ -10075,6 +10207,8 @@ interface Humanoid extends Instance {
 	 *
 	 * In this example all of the NPC characters have their DisplayDistanceType set to Viewer. This means the distance the information will be displayed will be taken from the humanoid that is viewing them. In this case, the player character (who is in the foreground) has its HealthDisplayDistance set to 10 and NameDisplayDistance set to 20. The health bar is only visible on the closest NPC because it is within 10 studs, and the names of only the two closer NPCs are visible because they are within 20 studs.
 	 *
+	 * When the DisplayDistanceType is set to **Viewer** and there is no local `Humanoid`, a default value of 100 will be used.
+	 *
 	 * ----------
 	 *
 	 * Subject
@@ -10093,83 +10227,71 @@ interface Humanoid extends Instance {
 	 *
 	 * * The NPC on the right has its HealthDisplayDistance and NameDisplayDistance set to 20. Both name and health are visible, as the NPC is only 15 studs away.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blta3653f27a817f4f1/HumanoidViewerDistance.png
+	 * [1]: https://developer.roblox.com/assets/5a98d152b1425ac06f6f91a7/HumanoidViewerDistance.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt0484c3c0f5a98d64/HumanoidSubjectDistance.png
+	 * [2]: https://developer.roblox.com/assets/5a98d11654d8bf946f48d338/HumanoidSubjectDistance.png
 	 */
 	DisplayDistanceType: Enum.HumanoidDisplayDistanceType;
 	/** 
 	 * ![A visualization of the FloorMaterial property in action][1]
 	 *
-	 * **FloorMaterial** is a read-only property that describes what type of Material the Humanoid is currently standing on.
+	 * **FloorMaterial** is a read-only property that describes the [Enum.Material](https://developer.roblox.com/search#stq=Material) the `Humanoid` is currently standing on.
 	 *
-	 * It works with both regular parts and terrain voxels.
+	 * It works with both regular [Parts](https://developer.roblox.com/api-reference/class/BasePartr) and `Terrain` voxels.
 	 *
 	 * ## Caveats ##
 	 *
-	 * * When the Humanoid is not standing on a floor, the value of this property will be set to *Air*.
+	 * * When the `Humanoid` is not standing on a floor, the value of this property will be set to *Air*.
 	 *
 	 *   * This occurs because Enum properties cannot have an empty value.
 	 *
 	 *   * This can cause some confusion if a part has its material is set to Air, though in practice, parts are not supposed to use that material in the first place.
 	 *
-	 * * The Humanoid's character model must be able to collide with the floor, or else it will not be detected.
+	 * * The [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) character model must be able to collide with the floor, or else it will not be detected.
 	 *
-	 *   * You cannot test if the Humanoid is swimming with this property. You should instead use the Humanoid's GetState function.
+	 *   * You cannot test if the `Humanoid` is swimming with this property. You should instead use the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) [Humanoid.GetState](https://developer.roblox.com/api-reference/function/Humanoid/GetState) function.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt911c31b19922748b/FloorMaterial.gif
+	 * [1]: https://developer.roblox.com/assets/5a9d58ec20a7ba3e77cef50c/FloorMaterial.gif
 	 */
 	readonly FloorMaterial: Enum.Material;
 	/** 
+	 * **Health** is a property that represents the current health of the `Humanoid`. The value is restricted to the range [0, [Humanoid.MaxHealth](https://developer.roblox.com/api-reference/property/Humanoid/MaxHealth)]. If the Humanoid is dead, Health is continually set to 0.
+	 *
 	 * ![A Humanoid with half of its health left.][1]
 	 *
-	 * **Health** is a property that represents the current health of the Humanoid.
+	 * ## Dealing Damage
 	 *
-	 * Its value is constrained between 0, and the value of the Humanoid's MaxHealth.
+	 * The [TakeDamage](https://developer.roblox.com/api-reference/function/Humanoid/TakeDamage) function should be used to subtract from Health. If a Humanoid has a `ForceField` as a sibling, the function will **not** lower Health.
 	 *
-	 * ----------
+	 * ## Regeneration
 	 *
-	 * ## Display Behavior ##
+	 * If there is no `Script` named "Health" within `StarterCharacterScripts`, a passive health regeneration script is automatically inserted. This causes players' characters to spawn with the same health regeneration script, which adds 1% of [MaxHealth](https://developer.roblox.com/api-reference/property/Humanoid/MaxHealth) to Health each second, while the Humanoid is not dead. To disable this health regeneration behavior, add an empty Script named "Health" to `StarterCharacterScripts`.
 	 *
-	 * ![The behavior of the HealthDIsplayType property][2]
+	 * ## Health Bar Display
 	 *
-	 * By default, the Humanoid displays a health bar under its name label when the Humanoid has taken damage. The display behavior of the health bar is dependent on the Humanoid's HealthDisplayDistance and HealthDisplayType properties.
+	 * ![The behavior of the HealthDisplayType property][2]
 	 *
-	 * ![The default health bar displayed in Roblox's top bar][3]
+	 * When Health is less than [MaxHealth](https://developer.roblox.com/api-reference/property/Humanoid/MaxHealth), a health bar is displayed under the Humanoid's name in-game. The display behavior of the health bar is dependent on the [HealthDisplayDistance](https://developer.roblox.com/api-reference/property/Humanoid/HealthDisplayDistance) and [HealthDisplayType](https://developer.roblox.com/api-reference/property/Humanoid/HealthDisplayType).
 	 *
-	 * From the perspective of a Player, their character will never display the standard humanoid name &amp; health label. Instead, it is displayed in the top right corner of the screen. The health bar will only be shown when the character's health isn't full.
+	 * ![The default health bar displayed in the top bar][3]
 	 *
-	 * The player's character also has a default script inserted into it called **Health**, that regenerates their health by 1% continuously every second, until it is restored to full health.
+	 * A `Player` will not see their own name and health bar above their [Character](https://developer.roblox.com/api-reference/property/Player/Character).  Instead, it is displayed in the top right corner of the screen on the top bar. The health bar is visible when Health is less than [MaxHealth](https://developer.roblox.com/api-reference/property/Humanoid/MaxHealth).
 	 *
-	 * ----------
+	 * ## Death
 	 *
-	 * ## Damaging Humanoids ##
-	 *
-	 * ![ForceFields make you immune to explosions!][4]
-	 *
-	 * When making Humanoids take damage, you are advised to utilize the Humanoid's TakeDamage function. The TakeDamage function properly ignores damage when the Humanoid's character model has a ForceField parented inside of it.
-	 *
-	 * The ForceField object makes the character immune to explosions and is expected to make them immune to damage as well. You are allowed to just subtract from the Humanoid's health, but it ultimately depends on whether or not you incorporate ForceFields into your game.
-	 *
-	 * ----------
-	 *
-	 * ## Out of Health! ##
+	 * When the value of the character's health reaches 0, the `Humanoid` will automatically transitions to the *Dead* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType). In this state, Health is locked to 0; however, there is no error or warning for setting the Health of a dead Humanoid to a positive nonzero value.
 	 *
 	 * ![The same Humanoid from the beginning, after being bloxxed by an explosion.][5]
 	 *
-	 * When the value of the character's health reaches 0, the Humanoid will automatically change into its *Dead* state, which makes the character break its joints and fall into pieces.
+	 * [1]: https://developer.roblox.com/assets/5a9da52be013266b7733e1c6/Half-Health.png
 	 *
-	 * If there is a joint connecting the Head part to the character, the Head **must** remain connected to the character, such that `Head:GetRootPart() == Humanoid.RootPart`. You can think of the joint connection as the character's neck. If you don't have a neck between your head and torso, you are very dead.
+	 * [2]: https://developer.roblox.com/assets/5a9efa0ee013266b7733e627/HealthDisplayType.gif
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt1c35a737d3dcdb25/Half-Health.png
+	 * [3]: https://developer.roblox.com/assets/5a9da9c5e98228956fe51344/CoreGuiHealth.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt25d44cecfd3e9e09/HealthDisplayType.gif
+	 * [4]: https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/bltfa7dc6cd34b05fae/5a9dc4fa54d8bf946f48da6a/ExplosionImmunity.png
 	 *
-	 * [3]: https://developer.roblox.com/assets/blt081a90d0f606c745/CoreGuiHealth.png
-	 *
-	 * [4]: https://developer.roblox.com/assets/bltfa7dc6cd34b05fae/ExplosionImmunity.png
-	 *
-	 * [5]: https://developer.roblox.com/assets/blt9978f529dfcc80e6/Ooof.png
+	 * [5]: https://developer.roblox.com/assets/5a9da4dde98228956fe5133e/Ooof.png
 	 */
 	Health: number;
 	/** 
@@ -10205,13 +10327,13 @@ interface Humanoid extends Instance {
 	/** 
 	 * ![A side by side visualization of how HealthDisplayType impacts the behavior of the health bar's display][1]
 	 *
-	 * HealthDisplayType controls when a humanoid's health bar is allowed to be displayed.
+	 * HealthDisplayType controls when a [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) health bar is allowed to be displayed.
 	 *
-	 * By default, this property is set to **DisplayWhenDamaged**, which makes the health bar only display when a humanoid's Health is less than its MaxHealth. It can also be set to **AlwaysOn**, which makes the health bar always display, or **AlwaysOff**, which prevents it from ever displaying.
+	 * By default, this property is set to **DisplayWhenDamaged**, which makes the health bar only display when a humanoid's [Humanoid.Health](https://developer.roblox.com/api-reference/property/Humanoid/Health) is less than its [Humanoid.MaxHealth](https://developer.roblox.com/api-reference/property/Humanoid/MaxHealth). It can also be set to **AlwaysOn**, which makes the health bar always display, or **AlwaysOff**, which prevents it from ever displaying.
 	 *
-	 * This property functions independently of the humanoid's HealthDisplayDistance property, which is responsible for making the health bar fade out at certain distances. If the HealthDisplayType is set to AlwaysOn, it will still fade out depending the how the DisplayDistanceType is configured.
+	 * This property functions independently of the humanoid's [Humanoid.HealthDisplayDistance](https://developer.roblox.com/api-reference/property/Humanoid/HealthDisplayDistance) property, which is responsible for making the health bar fade out at certain distances. If the HealthDisplayType is set to AlwaysOn, it will still fade out depending the how the [Humanoid.HealthDisplayDistance](https://developer.roblox.com/api-reference/property/Humanoid/HealthDisplayDistance) is configured.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt25d44cecfd3e9e09/HealthDisplayType.gif
+	 * [1]: https://developer.roblox.com/assets/5a9efa0ee013266b7733e627/HealthDisplayType.gif
 	 */
 	HealthDisplayType: Enum.HumanoidHealthDisplayType;
 	/** 
@@ -10237,13 +10359,13 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 */
 	HipHeight: number;
 	/** 
-	 * Whether the Humanoid is jumping. If set to true, it will cause the Humanoid to jump. The humanoid jumps with an upwards force equal to the value of its JumpPower property.
+	 * Whether the `Humanoid` is jumping. If set to true, it will cause the `Humanoid` to jump. The humanoid jumps with an upwards force equal to the value of its [Humanoid.JumpPower](https://developer.roblox.com/api-reference/property/Humanoid/JumpPower) property.
 	 *
 	 * ![A character jumping over stairs that are 7 studs tall][1]
 	 *
-	 * Humanoids are able to jump roughly 7.5 studs high by default, depending on both the Workspace's Gravity, and the JumpPower of the humanoid itself.
+	 * [Humanoids](https://developer.roblox.com/api-reference/class/Humanoid) are able to jump roughly 7.5 studs high by default, depending on both the [Workspace's](https://developer.roblox.com/api-reference/class/Workspace) [Workspace.Gravity](https://developer.roblox.com/api-reference/property/Workspace/Gravity), and the [Humanoid.JumpPower](https://developer.roblox.com/api-reference/property/Humanoid/JumpPower) of the humanoid itself.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt61a464c982798678/Jumping.gif
+	 * [1]: https://developer.roblox.com/assets/5aa69f8d159ece6a77287374/Jumping.gif
 	 */
 	Jump: boolean;
 	JumpHeight: number;
@@ -10258,33 +10380,37 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 */
 	JumpPower: number;
 	/** 
-	 * The maximum value of a humanoid's Health. The value of this property is used with the value of the health property to size the default health bar display.
+	 * The maximum value of a [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) [Humanoid.Health](https://developer.roblox.com/api-reference/property/Humanoid/Health).  The value of this property is used with the value of the [Humanoid.Health](https://developer.roblox.com/api-reference/property/Humanoid/Health) property to size the default health bar display.
 	 *
-	 * When a humanoid's health reaches its maximum value, its health bar may not be displayed anymore, depending on its HealthDisplayType, as seen below:
+	 * When a [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) [Humanoid.Health](https://developer.roblox.com/api-reference/property/Humanoid/Health) reaches its maximum value, its health bar may not be displayed anymore, depending on its [Humanoid.HealthDisplayType](https://developer.roblox.com/api-reference/property/Humanoid/HealthDisplayType) property, as seen below:
 	 *
 	 * ![HealthDisplayType behaviors][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt25d44cecfd3e9e09/HealthDisplayType.gif
+	 * [1]: https://developer.roblox.com/assets/5a9efa0ee013266b7733e627/HealthDisplayType.gif
 	 */
 	MaxHealth: number;
 	/** 
-	 * ![A visualization of how MaxSlopeAngle impacts characters walking on slanted surfaces.][1]
-	 *
-	 * MaxSlopeAngle is a property of the Humanoid class, that determines the maximum slope angle that a humanoid can climb. If the angle of a slope is greater than a humanoid's MaxSlopeAngle, they will slide down the slope.
-	 *
-	 * In the visualization above, the MaxSlopeAngle is shown above each character's head. As you can see, the character with a MaxSlopeAngle lower than the 45° ramp ends up slipping into the lava.
+	 * MaxSlopeAngle is a property of the `Humanoid` class, that determines the maximum slope angle that a humanoid can climb. If the angle of a slope is greater than a humanoid's MaxSlopeAngle, they will slide down the slope.
 	 *
 	 * The value of this property is constrained to values between 0° and 89°. It defaults to 89°, so humanoids can climb pretty much any slope they want by default.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltd54b9a9a3f7ed230/MaxSlopeAngle.gif
+	 * In the visualization below, the MaxSlopeAngle is shown above each character's head. As you can see, the [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) whose humanoid has a MaxSlopeAngle lower than the 45° ramp ends up slipping into the lava.
+	 *
+	 * ![A visualization of how MaxSlopeAngle impacts characters walking on slanted surfaces.][1]
+	 *
+	 * [1]: https://developer.roblox.com/assets/5aa6e170b1425ac06f6faada/MaxSlopeAngle.gif
 	 */
 	MaxSlopeAngle: number;
 	/** 
+	 * MoveDirection is a read-only property that describes the direction a `Humanoid` is walking in, as a unit vector along the X/Z axis. The direction is described in world space.
+	 *
+	 * Because the property is read-only, it cannot be set by a `Script` or `LocalScript`.
+	 *
+	 * The animation below visualizes the property:
+	 *
 	 * ![A visualization of the MoveDirection property.][1]
 	 *
-	 * MoveDirection is a read-only property that describes the direction a humanoid is walking in, as a unit vector along the X/Z axis. The direction is described in world space.
-	 *
-	 * [1]: https://developer.roblox.com/assets/blt2dece3266cda1b29/MoveDirection.gif
+	 * [1]: https://developer.roblox.com/assets/5aa6fabbe013266b7733f479/MoveDirection.gif
 	 */
 	readonly MoveDirection: Vector3;
 	/** 
@@ -10318,7 +10444,17 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 */
 	NameDisplayDistance: number;
 	/** 
-	 * Controls whether a Humanoid's name can be seen behind walls or other objects. This property applies based on the viewing players Humanoid. If the viewing player's Humanoid.NameOcclusion is set to OccludeAll, all humanoid name tags will be occluded for that player.
+	 * Controls whether a [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) name can be seen behind walls or other objects.
+	 *
+	 * This property is a [Enum.NameOcclusion](https://developer.roblox.com/search#stq=NameOcclusion) value and can be configured to occlude all names, enemies names only or disable occlusion entirely.
+	 *
+	 * ## How does NameOcclusion work?
+	 *
+	 * This property applies based on the viewing [Player's](https://developer.roblox.com/api-reference/class/Player) `Humanoid`. If the viewing [Player's](https://developer.roblox.com/api-reference/class/Player) `Humanoid` NameOcclusion property is set to OccludeAll, all `Humanoid` name tags will be occluded for that `Player`.
+	 *
+	 * ## NameOcclusion when there is no local Humanoid
+	 *
+	 * In cases where the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) has no `Humanoid` associated with it. This property will instead apply for the subject `Humanoid`. This means in such cases, a [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) [Humanoid.NameOcclusion](https://developer.roblox.com/api-reference/property/Humanoid/NameOcclusion) property determines the occlusion of that [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) name for the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer).
 	 */
 	NameOcclusion: Enum.NameOcclusion;
 	/** 
@@ -10330,29 +10466,43 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	/** 
 	 * ![A comparison between the R6 rig and the R15 rig][1]
 	 *
-	 * RigType describes whether a humanoid is utilizing the legacy R6 character rig, or the new R15 character rig.
+	 * RigType describes whether a `Humanoid` is utilizing the legacy R6 character rig, or the new R15 character rig.
 	 *
-	 * The R6 rig uses 6 visible parts, while the R15 rig uses 15 visible parts.
+	 * The R6 rig uses 6 visible [Parts](https://developer.roblox.com/api-reference/class/Part), while the R15 rig uses 15 visible [Parts](https://developer.roblox.com/api-reference/class/Part).
 	 *
-	 * R15 rigs also have more joints than R6 rigs, making them much more versatile to being animated.
+	 * R15 rigs have more joints than R6 rigs, making them much more versatile when being animated.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt2fb53ef69c9e060f/R6vsR15.png
+	 * ## Notes
+	 *
+	 *  - If this property is set incorrectly, then the `Humanoid` will not function correctly. For example, if a R15 [Character's](https://developer.roblox.com/api-reference/property/Player/Character) `Humanoid` RigType is set to R6 then the `Humanoid` will die as there is no `BasePart` called *Torso* connected to a `BasePart` called *Head*
+	 *
+	 * [1]: https://developer.roblox.com/assets/5aa81176159ece6a77287890/R6vsR15.png
 	 */
 	RigType: Enum.HumanoidRigType;
 	/** 
 	 * ![The HumanoidRootPart made visible!][1]
 	 *
-	 * A reference to the Humanoid's HumanoidRootPart, which is the root driving part of the Humanoid, that controls a humanoid's movement through the game world. This part is normally invisible.
+	 * A reference to the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) HumanoidRootPart, which is the root driving part of the Humanoid, that controls a humanoid's movement through the game world. This part is normally invisible.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt477f5d6ada5478e2/HumanoidRootPart.gif
+	 * ## Notes
+	 *
+	 *  - In the case of `Player` [Characters](https://developer.roblox.com/api-reference/property/Player/Character) the RootPart is also the [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) of the [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) `Model`
+	 *
+	 *  - The RootPart is the [RootPart](https://developer.roblox.com/api-reference/function/BasePart/GetRootPart) of the `Humanoid` [Model's](https://developer.roblox.com/api-reference/class/Model) assembly. As such, if a developer wishes to move the `Humanoid` they should do so via the RootPart
+	 *
+	 * [1]: https://developer.roblox.com/assets/5aaad8dd337959630baa461e/HumanoidRootPart.gif
 	 */
 	readonly RootPart?: BasePart;
 	/** 
 	 * ![A humanoid sitting on a Seat][1]
 	 *
-	 * SeatPart is a reference to the seat that a humanoid is currently sitting in, if any. The value of this property can be either a Seat, or a VehicleSeat. It will be nil if the Humanoid is not currently sitting in a seat.
+	 * SeatPart is a reference to the seat that a `Humanoid` is currently sitting in, if any. The value of this property can be either a `Seat`, or a `VehicleSeat`. It will be *nil* if the Humanoid is not currently sitting in a seat.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt8e6f26110beea0c1/SeatPart.png
+	 * ## Notes
+	 *
+	 *  - For a bool describing if the `Humanoid` is currently sitting or not, see [Humanoid.Sit](https://developer.roblox.com/api-reference/property/Humanoid/Sit)
+	 *
+	 * [1]: https://developer.roblox.com/assets/5aaada2ae9d017730bcd8b2f/SeatPart.png
 	 */
 	readonly SeatPart?: BasePart;
 	/** 
@@ -10368,7 +10518,7 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 * [1]:
 	 *
-	 * /assets/blt8e6f26110beea0c1/SeatPart.png
+	 * /assets/5aaada2ae9d017730bcd8b2f/SeatPart.png
 	 */
 	Sit: boolean;
 	/** 
@@ -10379,9 +10529,17 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	TargetPoint: Vector3;
 	UseJumpPower: boolean;
 	/** 
-	 * WalkSpeed is a property that describes how quickly this Humanoid is able to walk, in studs per second. This property defaults to 16, so a Roblox character can move 16 studs in any direction each second by default.
+	 * WalkSpeed is a property that describes how quickly this `Humanoid` is able to walk, in studs per second. This property defaults to 16, so a Roblox [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) can move 16 studs in any direction each second by default.
 	 *
-	 * When controlled on a mobile device or a gamepad, a humanoid can walk slower than their WalkSpeed if the controlling joystick is moved closer to its center. Roblox's default animation script scales a humanoid's movement animations based on how fast it is moving relative to the default speed of 16 studs/sec.
+	 * ## Notes
+	 *
+	 *  - When controlled on a mobile device or a gamepad, a humanoid can walk slower than their WalkSpeed if the controlling joystick is moved closer to its center
+	 *
+	 *  - Roblox's default animation script scales a humanoid's movement animations based on how fast it is moving relative to the default speed of 16 studs/sec
+	 *
+	 *  - The speed the `Humanoid` is currently walking at can be obtained using the [Humanoid.Running](https://developer.roblox.com/api-reference/event/Humanoid/Running) event
+	 *
+	 *  - Movement speed is reduced to *87.5%* WalkSpeed when swimming and *70%* WalkSpeed when climbing
 	 */
 	WalkSpeed: number;
 	/** 
@@ -10393,8 +10551,11 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 * This can be described in Lua as:
 	 *
-	 * `goal = humanoid.WalkToPart.CFrame:pointToObjectSpace(humanoid.WalkToPoint)`
-	 *
+	 * ```lua
+goal = humanoid.WalkToPart.CFrame:pointToObjectSpace(humanoid.WalkToPoint)
+```
+	 * 
+
 	 * Caveats
 	 *
 	 * ----
@@ -10411,7 +10572,7 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 *  * If you don't want this to happen, you should repeatedly call MoveTo so that the timeout will keep resetting.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltc76671f1665d7da0/WalkToPart.gif
+	 * [1]: https://developer.roblox.com/assets/5aade17a781602830bdf6662/WalkToPart.gif
 	 */
 	WalkToPart?: BasePart;
 	/** 
@@ -10439,7 +10600,7 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 *  * If you don't want this to happen, you should repeatedly call MoveTo so that the timeout will keep resetting.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltc76671f1665d7da0/WalkToPart.gif
+	 * [1]: https://developer.roblox.com/assets/5aade17a781602830bdf6662/WalkToPart.gif
 	 */
 	WalkToPoint: Vector3;
 	/** 
@@ -10522,10 +10683,23 @@ Workspace.Player1.Humanoid:EquipTool(Workspace.Tool)
 	 * ## See also
 	 *
 	 *  - Use [Humanoid.AddAccessory](https://developer.roblox.com/api-reference/function/Humanoid/AddAccessory) to attach an `Accessory` to a `Humanoid`
-	 * @returns An array of `Accessory|Accessories` that are parented to the `Humanoid|Humanoid's` parent.
+	 * @returns An array of `Accessory|Accessories` that are parented to the `Humanoid|Humanoid's` parent
 	 */
 	GetAccessories(): Array<Accessory>;
-
+	/** 
+	 * This blocking function returns back a copy of the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) cached `HumanoidDescription`, which describes its current look.
+	 *
+	 * This can be used to quickly determine a player's look and to assign their look to other players using the [Humanoid.ApplyDescription](https://developer.roblox.com/api-reference/function/Humanoid/ApplyDescription) function.
+	 *
+	 * ## See also
+	 *
+	 *  - [Players.GetHumanoidDescriptionFromUserId](https://developer.roblox.com/api-reference/function/Players/GetHumanoidDescriptionFromUserId), gives back a HumanoidDescription which describes the Avatar for the passed in user
+	 *
+	 *  - [Players.GetHumanoidDescriptionFromOutfitId](https://developer.roblox.com/api-reference/function/Players/GetHumanoidDescriptionFromOutfitId), gives back a HumanoidDescription whose parameters are initialized to match that of the passed in server-side outfit asset
+	 *
+	 *  - [Player.LoadCharacterWithHumanoidDescription](https://developer.roblox.com/api-reference/function/Player/LoadCharacterWithHumanoidDescription), spawns a player with the look from the HumanoidDescription Instance passed in
+	 * @returns An instantiated and initialized `HumanoidDescription` Instance, which is a copy of the one currently cached in the `Humanoid` which represents its current look
+	 */
 	GetAppliedDescription(): HumanoidDescription;
 	/** Returns a Enum.BodyPartR15 given a body part in the Humanoid's Character. */
 	GetBodyPartR15(part: BasePart): Enum.BodyPartR15;
@@ -10686,7 +10860,7 @@ RunService:BindToRenderStep("move",
 	 *
 	 * The *reach goal* state of a humanoid will timeout after 8 seconds if it doesn't reach its goal. This is done so that NPCs won't get stuck waiting for [Humanoid.MoveToFinished](https://developer.roblox.com/api-reference/event/Humanoid/MoveToFinished) to fire. If you don't want this to happen, you should repeatedly call MoveTo so that the timeout will keep resetting.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltc76671f1665d7da0/WalkToPart.gif
+	 * [1]: https://developer.roblox.com/assets/5aade17a781602830bdf6662/WalkToPart.gif
 	 * @param location The position to set `Humanoid/WalkToPoint` to
 	 * @param part The `BasePart` to set `Humanoid/WalkToPart` to
 	 */
@@ -10730,7 +10904,24 @@ RunService:BindToRenderStep("move",
 	 */
 	SetStateEnabled(state: CastsToEnum<Enum.HumanoidStateType>, enabled: boolean): void;
 	/** 
-	 * Subtracts the damage from the health of the targeted humanoid unless the character has a `ForceField`.
+	 * This function subtracts damage from the [Humanoid.Health](https://developer.roblox.com/api-reference/property/Humanoid/Health) of the `Humanoid` if it is not protected by a `ForceField`.
+	 *
+	 * ## How do ForceFields protect against TakeDamage
+	 *
+	 * A `Humanoid` is considered protected by a `ForceField` if a `ForceField` meets one of the following criteria:
+	 *
+	 *  - The `ForceField` shares the same [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) as the `Humanoid`
+	 *
+	 *  - The `ForceField` is parented to the [Humanoid.RootPart](https://developer.roblox.com/api-reference/property/Humanoid/RootPart) of the `Humanoid`
+	 *
+	 *  - The `ForceField` is parented to an ancestor of the `Humanoid` other than the `Workspace`
+	 *
+	 * This function accepts negative values for the *amount* parameter, this results in an increase in [Humanoid.Health](https://developer.roblox.com/api-reference/property/Humanoid/Health). However this will only have an effect if no `ForceField` is present.
+	 *
+	 * To do damage to a `Humanoid` irrespective of any [ForceFields](https://developer.roblox.com/api-reference/class/ForceField) present, set [Humanoid.Health](https://developer.roblox.com/api-reference/property/Humanoid/Health) directly.
+	 *
+	 * For more information on how [ForceFields](https://developer.roblox.com/api-reference/class/ForceField) protect [Humanoids](https://developer.roblox.com/api-reference/class/Humanoid) see the `ForceField` page
+	 * @param amount The damage, or amount to be deduced from the `Humanoid/Health`
 	 */
 	TakeDamage(amount: number): void;
 	/** 
@@ -10748,7 +10939,7 @@ RunService:BindToRenderStep("move",
 	 */
 	UnequipTools(): void;
 	/** 
-	 * This yield function makes the [character's](https://developer.roblox.com/api-reference/class/Character) look match that of the passed in `HumanoidDescription`. A copy of the passed look will then be cached in the `Humanoid` as the current HumanoidDescription for the Humanoid.
+	 * This yield function makes the [character's](https://developer.roblox.com/api-reference/property/Player/Character) look match that of the passed in `HumanoidDescription`. A copy of the passed look will then be cached in the `Humanoid` as the current HumanoidDescription for the Humanoid.
 	 *
 	 * It allows you to quickly set and store a character's appearance using a stored look without having to set each property every time.
 	 *
@@ -19799,10 +19990,15 @@ interface RuntimeScriptService extends Instance {
 	readonly ClassName: "RuntimeScriptService";
 }
 
+/** 
+ * This service controls all `BaseScript` objects. Most of the properties and methods of this service are locked for internal use, however you may use the [ScriptContext.ScriptsDisabled](https://developer.roblox.com/api-reference/property/ScriptContext/ScriptsDisabled) property to disable all scripts from a thread with normal security access.
+ */
 interface ScriptContext extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ScriptContext";
-	/** [NO DOCUMENTATION] */
+	/** 
+	 * Fired when an error occurs.
+	 */
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: Instance) => void>;
 }
 
@@ -22280,7 +22476,7 @@ print("The current Studio theme is:", settings().Studio.Theme)
 ```
 	 *
 	 */
-	Theme?: StudioTheme;
+	Theme: StudioTheme;
 	/** 
 	 * Specifies the color scheme of Roblox Studio.
 	 */
@@ -22856,7 +23052,7 @@ TeleportService:SetTeleportSetting("isCrouching", isCrouching)
 		customLoadingScreen?: ScreenGui | GuiMain,
 	): void;
 	/** 
-	 * This function teleports one of more [Players](https://developer.roblox.com/api-reference/class/Player) to a reserved server created using [TeleportService.ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer).
+	 * This function teleports one or more [Players](https://developer.roblox.com/api-reference/class/Player) to a reserved server created using [TeleportService.ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer).
 	 *
 	 * The *reservedServerAccessCode* parameter is the access code returned by [ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer).
 	 *
@@ -24055,7 +24251,7 @@ interface UIAspectRatioConstraint extends UIConstraint {
 	 *
 	 * ![A width-to-height ratio of 0.8][1]![A width-to-height ratio of 1.25][2]
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltb4147bb1d3de0224/UIAspectRatioConstraint_Ratio_0.8.png
+	 * [1]: https://developer.roblox.com/assets/5af8c4e5d951a7d46014aa13/UIAspectRatioConstraint_Ratio_0.8.png
 	 *
 	 * [2]: https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/blt9874bdf1824f7688/5af8c4f8a3fbc195609fc267/UIAspectRatioConstraint_Ratio_1.25.png
 	 */

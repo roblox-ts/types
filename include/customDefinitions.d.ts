@@ -609,7 +609,7 @@ interface SoundService extends Instance {
 }
 
 interface Studio extends Instance {
-	Theme?: StudioTheme;
+	Theme: StudioTheme;
 }
 
 /** @rbxts server */

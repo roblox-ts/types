@@ -507,6 +507,15 @@ interface Plugin extends Instance {
 	 *   - [Plugin.Unloading](https://developer.roblox.com/api-reference/event/Plugin/Unloading), fires immediately before the plugin is unloaded or reloaded via uninstallation, deactivation, or updating
 	 */
 	readonly Deactivation: RBXScriptSignal<() => void>;
+	/** 
+	 * This event fires immediately before the `Plugin` is unloaded or reloaded via uninstallation, [deactivation](https://developer.roblox.com/api-reference/function/Plugin/Deactivate), or updating.
+	 *
+	 * It enables a plugin to clean up after itself before its scripts stop running, e.g. to remove unnecessary instances from the `DataModel`. If a plugin does not clean up properly,  the old copies keep running alongside the new ones, causing issues like duplicate [guis](https://developer.roblox.com/api-reference/class/PluginGui) and keybinds registering twice. When this occurs, users will be forced to close and reopen the place which is a bad user experience. It is not necessary to clean up plugin-related instances such as PluginButtons or DockWidgetPluginGuis because they will be automatically removed when the plugin is unloaded.
+	 *
+	 * ## See also
+	 *
+	 * [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
+	 */
 	readonly Unloading: RBXScriptSignal<() => void>;
 }
 
@@ -722,7 +731,9 @@ interface RunService extends Instance {
 }
 
 interface ScriptContext extends Instance {
-	/** [NO DOCUMENTATION] */
+	/** 
+	 * Limits how long a script is allowed to run without yielding.
+	 */
 	SetTimeout(seconds: number): void;
 }
 
