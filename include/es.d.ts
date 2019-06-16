@@ -5,7 +5,9 @@ interface IArguments {}
 interface Number {}
 interface Object {}
 interface RegExp {}
-interface Function {}
+interface Function {
+	prototype: never;
+}
 interface CallableFunction extends Function {}
 interface NewableFunction extends Function {}
 

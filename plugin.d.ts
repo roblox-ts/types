@@ -3,6 +3,8 @@
 
 declare const plugin: Plugin;
 
+declare function settings(): GlobalSettings;
+
 interface GlobalSettings extends GenericSettings {
 	DebugSettings: DebugSettings;
 	GameSettings: GameSettings;
