@@ -101,15 +101,72 @@ interface File extends Instance {
 }
 
 interface PluginGui extends LayerCollector {
-	/** [NO DOCUMENTATION] */
+	/** 
+	 * GetRelativeMousePosition returns the position of the mouse relative to the top-left corner of the `PluginGui`. The returned value changes only if a mouse input began on the PluginGui, or if the mouse is presently hovering over the window.
+	 *
+	 * ![An animation of the return value of Plugin:GetRelativeMousePosition][2]
+	 *
+	 * The animation above displays the value returned by this function (the left mouse button is pressed in the animation). Notice how the X-value is negative when the mouse is on the left of the window.
+	 *
+	 * [2]: https://developer.roblox.com/assets/5cc9f4878ea860b569347887/PluginGui.GetRelativeMousePosition.gif
+	 * @returns The screen position of the mouse relative to the PluginGui in pixels
+	 */
 	GetRelativeMousePosition(): Vector2;
-	/** [NO DOCUMENTATION] */
+	/** 
+	 * This event fires when the user releases their mouse to stop dragging a `Plugin` GUI during a `PluginDragEvent`.
+	 *
+	 * ## See also
+	 *
+	 *   - [Plugin.StartDrag](https://developer.roblox.com/api-reference/function/Plugin/StartDrag)
+	 *
+	 *   - [PluginGui.PluginDragEntered](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragEntered)
+	 *
+	 *   - [PluginGui.PluginDragLeft](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragLeft)
+	 *
+	 *   - [PluginGui.PluginDragMoved](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragMoved)
+	 */
 	readonly PluginDragDropped: RBXScriptSignal<(dragData: object) => void>;
-	/** [NO DOCUMENTATION] */
+	/** 
+	 * This event fires when the user's mouse enters a `Plugin` GUI during a `PluginDragEvent`.
+	 *
+	 * ## See also
+	 *
+	 *   - [Plugin.StartDrag](https://developer.roblox.com/api-reference/function/Plugin/StartDrag)
+	 *
+	 *   - [PluginGui.PluginDragLeft](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragLeft)
+	 *
+	 *   - [PluginGui.PluginDragMoved](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragMoved)
+	 *
+	 *   - [PluginGui.PluginDragDropped](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragDropped)
+	 */
 	readonly PluginDragEntered: RBXScriptSignal<(dragData: object) => void>;
-	/** [NO DOCUMENTATION] */
+	/** 
+	 * This event fires when the user's mouse leaves a `Plugin` GUI during a `PluginDragEvent`.
+	 *
+	 * ## See also
+	 *
+	 *   - [Plugin.StartDrag](https://developer.roblox.com/api-reference/function/Plugin/StartDrag)
+	 *
+	 *   - [PluginGui.PluginDragEntered](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragEntered)
+	 *
+	 *   - [PluginGui.PluginDragMoved](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragMoved)
+	 *
+	 *   - [PluginGui.PluginDragDropped](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragDropped)
+	 */
 	readonly PluginDragLeft: RBXScriptSignal<(dragData: object) => void>;
-	/** [NO DOCUMENTATION] */
+	/** 
+	 * This event fires when the user's mouse moves within a `Plugin` GUI during a `PluginDragEvent`.
+	 *
+	 * ## See also
+	 *
+	 *   - [Plugin.StartDrag](https://developer.roblox.com/api-reference/function/Plugin/StartDrag)
+	 *
+	 *   - [PluginGui.PluginDragEntered](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragEntered)
+	 *
+	 *   - [PluginGui.PluginDragLeft](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragLeft)
+	 *
+	 *   - [PluginGui.PluginDragDropped](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragDropped)
+	 */
 	readonly PluginDragMoved: RBXScriptSignal<(dragData: object) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly WindowFocusReleased: RBXScriptSignal<() => void>;
@@ -665,9 +722,7 @@ interface RunService extends Instance {
 }
 
 interface ScriptContext extends Instance {
-	/** 
-	 * Limits how long a script is allowed to run without yielding.
-	 */
+	/** [NO DOCUMENTATION] */
 	SetTimeout(seconds: number): void;
 }
 
