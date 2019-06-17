@@ -253,11 +253,31 @@ interface Workspace extends Model {
 
 interface Player extends Instance {
 	/** 
-	 * Sets the [AccountAge](https://wiki.roblox.com/index.php?title=AccountAge) of the player.
+	 * The SetAccountAge function sets the [Player.AccountAge](https://developer.roblox.com/api-reference/property/Player/AccountAge) of the player in days.
+	 *
+	 * It is used to set the `Player` property that describes how long ago a player's account was registered in days.
+	 *
+	 * This does not set the age of the player on the account, but the age of the account itself relative to when it was first created.
+	 * @param accountAge The age of the account in days.
+	 * @returns void
 	 */
 	SetAccountAge(accountAge: number): void;
 	/** 
-	 * Sets whether or not the player sees [filtered chats](https://wiki.roblox.com/index.php?title=FilterStringForPlayerAsync), rather than normal chats.
+	 * The SetSuperSafeChat `Player` function sets whether or not the player sees chat filtered by `TextService`'s [TextService.FilterStringAsync](https://developer.roblox.com/api-reference/function/TextService/FilterStringAsync) rather than normal chats.
+	 *
+	 * SuperSafeChat is a chat mode where player's cannot see unfiltered messages.
+	 *
+	 * For example, entering the following command in the command prompt would enabled SuperSafeChat for the player named polarpanda16, as long as that player is in the game:
+	 *
+	 * ![Command prompt example enabling SuperSafeChat.][1]
+	 *
+	 * ##Note
+	 *
+	 * Regardless of whether a player has SuperSafeChat enabled, all chat should be filtered by TextService when broadcasted to other players or on the player's own screen. [TextService.FilterStringAsync](https://developer.roblox.com/api-reference/function/TextService/FilterStringAsync) returns a `TextFilterResult` object that can be filtered differently according to the message's intended use.
+	 *
+	 * [1]: https://developer.roblox.com/assets/5b5d1cc074c0756340c85b85/Screen_Shot_2018-07-28_at_9.46.09_PM.png
+	 * @param value A boolean indicating whether or not the player sees filtered chat.
+	 * @returns void
 	 */
 	SetSuperSafeChat(value: boolean): void;
 }
@@ -699,8 +719,14 @@ interface PluginMenu extends Instance {
 interface PluginToolbar extends Instance {
 	/** 
 	 * Creates ` PluginToolbarButton` that allows the user to initiate a single, one-off action in Roblox Studio through the [Click](https://developer.roblox.com/api-reference/event/PluginToolbarButton/Click) event.
+	 *
+	 * ## See also
+	 *
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory level article for users looking to create custom plugins
+	 * @param buttonId A unique button Id
 	 * @param tooltip The text displayed in the tooltip shown when a user hovers over the button
-	 * @param iconname The displayed button name
+	 * @param iconname The asset Id (e.g. rbxassetid://1507949215) of the icon displayed in the button
+	 * @param text Text displayed under the button icon. Optional. If this field is not provided, the **Id** will be used instead
 	 * @returns The created `PluginToolbarButton` instance
 	 */
 	CreateButton(buttonId: string, tooltip: string, iconname: string, text?: string): PluginToolbarButton;

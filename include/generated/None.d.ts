@@ -1170,11 +1170,11 @@ interface AnimationController extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AnimationController";
 	/** 
-	 * Returns a table of all `AnimationTrack`s that are currently being played by an `AnimationController`.
+	 * Returns an array of all [AnimationTracks](https://developer.roblox.com/api-reference/class/AnimationTrack) that are currently being played by the `AnimationController`.
 	 *
 	 * A typical use for this function is stopping currently playing tracks using [AnimationTrack.Stop](https://developer.roblox.com/api-reference/function/AnimationTrack/Stop).
 	 *
-	 * Note this function will not return `AnimationTrack`s that have loaded but are not playing. If the developer wishes to track these they will need to index them manually. See below for one example of how this could be achieved:
+	 * Note this function will not return [AnimationTracks](https://developer.roblox.com/api-reference/class/AnimationTrack) that have loaded but are not playing. If the developer wishes to track these they will need to index them manually. See below for one example of how this could be achieved:
 	 *
 	 * ```lua
 local animationTracks = {}
@@ -1813,6 +1813,12 @@ interface Flag extends Tool {
 	readonly ClassName: "Flag";
 	/** 
 	 * The `Team` this flag is for. Corresponds with the TeamColors in the `Teams` service.
+	 *
+	 * The `Flag` and `FlagStand` objects were created to allow developers to make 'Capture the Flag' style games quickly. However they have been deprecated and developers are advised to design their own systems which will be more flexible and reliable.
+	 *
+	 * To get started with this, developers can use the 'Capture The Flag' template place provided by Roblox which has a fully functioning system developers can take and use in their own games. A link to the place, which is free to edit, is [here][1].
+	 *
+	 * [1]: https://www.roblox.com/games/92721754/Capture-The-Flag#!/about
 	 */
 	TeamColor: BrickColor;
 }
@@ -5267,22 +5273,60 @@ interface ContentProvider extends Instance {
 }
 
 /** 
- * The ContextActionService is a game service that allows a game to bind user input to contextual actions, or actions that are only enabled under some condition or period of time. For example, allowing a player to open a door only while close by. In code, an action is simply a string (the name of the action) used by the service to differentiate between unique actions. The string is provided to BindAction and UnbindAction, among other member functions. If two actions are bound to the same input, the most recent takes priority. When the most recent action is unbound, the one bound before that takes control again.
+ * ContextActionService is a game service that allows a game to bind user input to contextual actions, or actions that are only enabled under some condition or period of time. For example, allowing a player to open a door only while close by. In code, an action is simply a string (the name of the action) used by the service to differentiate between unique actions. The action string is provided to [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) and [UnbindAction](https://developer.roblox.com/api-reference/function/ContextActionService/UnbindAction), among other member functions. If two actions are bound to the same input, the most recently bound will take priority. When the most recent action is unbound, the one bound before that takes control again. Since ContextActionService deals with user input, you can only use it in [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript) which run on the client.
  *
- * You can inspect the currently bound actions in the developer console under the "Action Bindings" tab. You'll also see bindings from the Roblox engine too. This is useful in checking if your actions are binding/unbinding at the correct times, or if some other action is stealing input from your actions. For exmaple, if you are attempting to bind WASD, it may be the case that character movement scripts is binding over those same keys.
+ * ## What is a context?
  *
- * ContextActionService is especially useful for supporting keyboard-less players, in which on-screen touch buttons can be used in place of key presses. The buttons will display only when the action is bound, and the position, text and/or images of these buttons can be configured through this service.
+ * A **context** is simply a condition during which a player may perform some action. Some examples include holding  a `Tool`, being [seated](https://developer.roblox.com/api-reference/class/Seat) in a car or standing near a door. Whatever the case may be, it is up to your [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript) to call BindAction when the context is entered and UnbindAction when the context is left.
  *
- * It's better to use ContextActionService's BindAction than UserInputService's InputBegan for most cases. For example, if you want to use the `R` key to reload a weapon while it is equipped, the player might type "roblox is fun" in chat or otherwise use the `R` key for something else. The weapon could reload when the player didn't mean to! If you instead use BindAction and UnbindAction when the weapon is equipped/unequipped, ContextActionService will make sure that `R` key presses trigger the reload action only when it is the most recently bound action.
+ * ## What is an action?
+ *
+ * An **action** is simply some input that can be performed by the player while in that context. Such an action could open/close some menu, trigger a secondary tool action or send a request to the server using [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer). An action is identified by a unique string as the first parameter of both [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) and [UnbindAction](https://developer.roblox.com/api-reference/function/ContextActionService/UnbindAction). The string can be anything, but it should reflect the **action being performed, not the input being used**. For example, don't use "KeyH" as an action name - use "CarHorn" instead. It is best to define your actions as a constant at the top of your script since you will use it in at least three different places in your code.
+ *
+ * ## Why bind actions contextually?
+ *
+ * It's better to use ContextActionService's [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) than [UserInputService.InputBegan](https://developer.roblox.com/api-reference/event/UserInputService/InputBegan) for most cases. For InputBegan, your connected function would have to check if the player is in the context of the action begin performed. In most cases, this is harder than just calling a function when a context is entered/left. For example, if you want to have the `H` key trigger a car horn sound while the player is sitting in it, the player might type "hello" in chat or otherwise use the `H` key for something else. It is harder to determine if something else is using the H key (like chat) - the car might honk when the player didn't mean to! If you instead use [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) and [UnbindAction](https://developer.roblox.com/api-reference/function/ContextActionService/UnbindAction) when the player enters/leaves the car, ContextActionService will make sure that `H` key presses trigger the honk action only when it is the most recently bound action. If something else (like chat) takes control, you won't have to worry about checking that.
+ *
+ * ## Inspecting Bound Actions
+ *
+ * To see a list of actions and their bound inputs, you can inspect the "Action Bindings" tab in the Developer Console (F9 while in game). This shows all bindings - including those bound by Roblox CoreScripts and default camera/control scripts too. This is useful for debugging: check if your actions are being bound/unbound at the correct times, or if some other action is stealing input from your actions. For example, if you are attempting to bind WASD, it may be the case that default character movement scripts are binding over those same keys. Similarly, the camera control script can steal right-click input if the script runs after yours.
+ *
+ * ## Keyboardless Input
+ *
+ * ContextActionService is especially useful for supporting gamepad and touch input. For gamepad input, you might choose to bind the B button to an action that returns the user to the previous menu when they entire another menu. For touch, on-screen touch buttons can be used in place of key presses: these buttons display only while the action is bound, and the position, text and/or images of these buttons can be configured through this service. They are somewhat limited in the amount of customization provided by this service; it's usually a better idea to make your own on-screen buttons using `ImageButton` or `TextButton`.
  */
 	/** @rbxts client */
 interface ContextActionService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ContextActionService";
 	/** 
-	 * BindAction will bind an action to user input given an action handling function. The action handler function will be called when some input matches the provided user input enums.
+	 * BindAction will bind an action to user input given an action handling function. The action handler function will be called when some input matches the provided user input enums. Call this function when a player enters the context in which an action can be performed, then call [UnbindAction](https://developer.roblox.com/api-reference/function/ContextActionService/UnbindAction) with the same `actionName` when that context is left. You can call the action handling function of an action by using [CallFunction](https://developer.roblox.com/api-reference/function/ContextActionService/CallFunction).
 	 *
-	 * The method behaves like a stack: if two actions are bound to the same user input, only the most recent action handler will be called.  When UnbindAction is called, the action handler is removed from the stack. If an action handler returns `Enum.ContextActionResult.Pass`, an input will call to the next most recently bound action handler.
+	 * ## Action Bindings Stack
+	 *
+	 * Action bindings behave like a stack: if two actions are bound to the same user input, the **most recently bound** action handler will be used. If an action handler returns `Enum.ContextActionResult.Pass`, the next most recently bound action handler will be called, and so on until a handler sinks the input (by returning `nil` or `Enum.ContextActionResult.Sink`). When [UnbindAction](https://developer.roblox.com/api-reference/function/ContextActionService/UnbindAction) is called, the action handler is removed from the stack. This stack behavior can be overridden using [BindActionAtPriority](https://developer.roblox.com/api-reference/function/ContextActionService/BindActionAtPriority), where an additional priority parameter after `createTouchButton` may override the order in which actions are bound (higher before lower).
+	 *
+	 * ## Touch Buttons
+	 *
+	 * In addition to input types, this function's third parameter controls whether a button is created for [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) devices. Upon the first touch button's creation, a `ScreenGui` named "ContextActionGui" is added to the `PlayerGui`. Inside the ScreenGui is a `Frame` called "ContextButtonFrame" is added. It is in this frame in which [ImageButtons](https://developer.roblox.com/api-reference/class/ImageButton) for bound actions are parented; you can use [GetButton](https://developer.roblox.com/api-reference/function/ContextActionService/GetButton) to retrieve such buttons for customization.
+	 *
+	 * ## Action Handler Parameters
+	 *
+	 * The action handler functions are called with the following parameters:
+	 *
+	 * | # | Type | Description |
+	 * | --- | --- | --- |
+	 * | 1 | `string` | The same string that was originally passed to BindAction† |
+	 * | 2 | `Enum.UserInputState` | The state of the input (Begin, Change, End or Cancel)* |
+	 * | 3 |  `InputObject` | An object that contains information about the input (varies based on UserInputType) |
+	 *
+	 * †This allows one function to handle multiple actions at once, if necessary.
+	 *
+	 * *Cancel is sent if some input was in-progress and another action bound over the in-progress input, or if the in-progress bound action was [unbound](https://developer.roblox.com/api-reference/function/ContextActionService/UnbindAction).
+	 * @param actionName A string representing the action being performed (e.g. "HonkHorn" or "OpenDoor")
+	 * @param functionToBind The action-handling function, called with the following parameters when the bound inputs are triggered: string (actionName), Enum.UserInputState and an InputObject
+	 * @param createTouchButton Whether a GUI button should be created for the action on touch input devices
+	 * @param inputTypes Any number of Enum.KeyCode or Enum.UserInputType representing the inputs to bind to the action
 	 */
 	BindAction(
 		actionName: string,
@@ -5291,9 +5335,12 @@ interface ContextActionService extends Instance {
 		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
 	/** 
-	 * Binds function to fire when specified inputTypes occur. Allows the priority of the bound action to be specified.
-	 *
-	 * If there are multiple actions bound to one of the _inputTypes_, the priority of this action will determine if it will be passed first.Binds function to fire when specified inputTypes occur. Allows the priority of the bound action to be specified.
+	 * BindActionAtPriority behaves like [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) but also allows a priority to be assigned to the bound action. If multiple actions are bound to the same input, the higher priority function is called regardless of the order in which the actions were bound. In other words, this function overrides the normal "stack" behavior of BindAction.
+	 * @param actionName A string representing the action being performed (e.g. "HonkHorn" or "OpenDoor")
+	 * @param functionToBind The action-handling function, called with the following parameters when the bound inputs are triggered: string (actionName), Enum.UserInputState and an InputObject
+	 * @param createTouchButton Whether a GUI button should be created for the action on touch input devices
+	 * @param priorityLevel The priority level at which the action should be bound (higher considered before lower)
+	 * @param inputTypes Any number of Enum.KeyCode or Enum.UserInputType representing the inputs to bind to the action
 	 */
 	BindActionAtPriority(
 		actionName: string,
@@ -5303,55 +5350,82 @@ interface ContextActionService extends Instance {
 		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
 	/** 
-	 * Specifies the [Enum.KeyCode](https://developer.roblox.com/search#stq=KeyCode) that can be used with a [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) to activate a [Tool](https://wiki.roblox.com/index.php?title=Tool), or a [HopperBin](https://wiki.roblox.com/index.php?title=HopperBin) .
+	 * Bind an [Enum.KeyCode](https://developer.roblox.com/search#stq=KeyCode) that can be used with an [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) to activate a `Tool` (or a `HopperBin`). When the respective key is pressed, it will fire the [Mouse.Button1Down](https://developer.roblox.com/api-reference/event/Mouse/Button1Down) event on the mouse sent to [Tool.Equipped](https://developer.roblox.com/api-reference/event/Tool/Equipped) (or [HopperBin.Selected](https://developer.roblox.com/api-reference/event/HopperBin/Selected)). This in turn fires the [Tool.Activated](https://developer.roblox.com/api-reference/event/Tool/Activated) event if [Tool.ManualActivationOnly](https://developer.roblox.com/api-reference/property/Tool/ManualActivationOnly) is not set to true.
 	 *
-	 * When the KeyCode is used, it will fire the [Button1Down](https://wiki.roblox.com/index.php?title=Button1Down) event under the [Mouse](https://wiki.roblox.com/index.php?title=Mouse) returned by [Tool.Equipped](https://developer.roblox.com/api-reference/event/Tool/Equipped) or [HopperBin.Selected](https://developer.roblox.com/api-reference/event/HopperBin/Selected), and it will fire the [Tool](https://wiki.roblox.com/index.php?title=Tool)'s [Tool.Activated](https://developer.roblox.com/api-reference/event/Tool/Activated) event.Specifies the [Enum.KeyCode](https://developer.roblox.com/search#stq=KeyCode) that can be used with a [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) to activate a [Tool](https://wiki.roblox.com/index.php?title=Tool), or a [HopperBin](https://wiki.roblox.com/index.php?title=HopperBin).
-	 *
-	 * ## Notes
-	 *
-	 * * You should only use the following [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) with the _userInputTypeForActivation_ parameter, as the others will not do anything:
-	 *
-	 *   - _Keyboard_
-	 *
-	 *   - _Gamepad1_ through _Gamepad8_
-	 *
-	 * * If a [Tool](https://wiki.roblox.com/index.php?title=Tool)'s [Tool.ManualActivationOnly](https://developer.roblox.com/api-reference/property/Tool/ManualActivationOnly) property is set to true, you will be unable to activate the tool using this.
+	 * Note that the [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) specified must be `Keyboard` or `Gamepad1` through `Gamepad8` in order to be valid.
+	 * @param userInputTypeForActivation Must be Keyboard or Gamepad1 through Gamepad8
+	 * @param keyCodeForActivation The KeyCode (e.g. ButtonX) to bind
 	 */
 	BindActivate(userInputTypeForActivation: CastsToEnum<Enum.UserInputType>, keyCodeForActivation?: CastsToEnum<Enum.KeyCode>): void;
 	/** 
-	 * Returns a table with all bound action info. Each entry is a key with _actionName_ and value being the same table you would get from [ContextActionService.GetBoundActionInfo](https://developer.roblox.com/api-reference/function/ContextActionService/GetBoundActionInfo).
+	 * GetAllBoundActioninfo returns a table which maps all actions' names (those originally passed to [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction)) to a table returned by [GetBoundActionInfo](https://developer.roblox.com/api-reference/function/ContextActionService/GetBoundActionInfo) when called with the action name itself. Using this function, you can inspect all presently bound actions. This is useful when debugging their priority levels or stack orders.
 	 */
 	GetAllBoundActionInfo(): Map<string, BoundActionInfo>;
 	/** 
-	 * Returns a table with info regarding the function bound with _actionName_ . Table has the keys _title_ (current title that was set with [ContextActionService.SetTitle](https://developer.roblox.com/api-reference/function/ContextActionService/SetTitle)) _image_ (image set with [ContextActionService.SetImage](https://developer.roblox.com/api-reference/function/ContextActionService/SetImage)) _description_ (description set with [ContextActionService.SetDescription](https://developer.roblox.com/api-reference/function/ContextActionService/SetDescription)) _inputTypes_ (tuple containing all input bound for this _actionName_) _createTouchButton_ (whether or not we created a touch button for this _actionName_).
+	 * GetBoundActionInfo returns a table with the following keys describing a bound action given its name. To get the same information for all actions at once, use [GetAllBoundActionInfo](https://developer.roblox.com/api-reference/function/ContextActionService/GetAllBoundActionInfo).
+	 *
+	 * | Name | Type | Description |
+	 * | --- | --- | --- |
+	 * | `stackOrder` | number | Describes the index of the action on the stack (increasing) |
+	 * | `priorityLevel` * | number | Describes the [priority](https://developer.roblox.com/api-reference/function/ContextActionService/BindActionAtPriority) level of the action |
+	 * | `createTouchButton` | bool | Describes whether a touch button should be created on [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) devices |
+	 * | `inputTypes` | table | The input types passed to [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) for which this action will trigger |
+	 * | `description` † | string | The description of action set by [SetDescription](https://developer.roblox.com/api-reference/function/ContextActionService/SetDescription) |
+	 * | `title` † | string | The title of the action set by [SetTitle](https://developer.roblox.com/api-reference/function/ContextActionService/SetTitle) |
+	 * | `image` † | string | The image of the action's touch button set by [SetImage](https://developer.roblox.com/api-reference/function/ContextActionService/SetImage) |
+	 *
+	 * *Priority level will still be included even if [BindActionAtPriority](https://developer.roblox.com/api-reference/function/ContextActionService/BindActionAtPriority) wasn't used - by default it will be 2000.
+	 *
+	 * †Indicates that this field will be `nil` if the associated method was not called for the given action.
 	 */
 	GetBoundActionInfo(actionName: string): BoundActionInfo;
 	/** 
-	 * Returns the [BackpackItem.TextureId](https://developer.roblox.com/api-reference/property/BackpackItem/TextureId) of a [tool](https://wiki.roblox.com/index.php?title=Tool) currently equipped by the [Player](https://wiki.roblox.com/index.php?title=Player), if one is equipped.
+	 * GetCurrentLocalToolIcon will return the [BackpackItem.TextureId](https://developer.roblox.com/api-reference/property/BackpackItem/TextureId) of a `Tool` currently [equipped](https://developer.roblox.com/api-reference/event/Tool/Equipped) by the `Player`, or `nil` if there is no such Tool or if the player lacks a [Character](https://developer.roblox.com/api-reference/property/Player/Character).
+	 * @returns A content string from the Tool's TextureId, or nil if one could not be found
 	 */
 	GetCurrentLocalToolIcon(): string;
 	/** 
-	 * If _actionName_ key contains a bound action, then _description_ is set as the description of the bound action. This description will appear for users in a listing of current actions available.
+	 * SetDescription will set the description of an action bound by [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction). In a list of available actions, this would be text that describes the given action.
+	 *
+	 * Although the name may suggest that this method is related to the family of functions that customize a touch button for actions that create them ([SetTitle](https://developer.roblox.com/api-reference/function/ContextActionService/SetTitle), [SetImage](https://developer.roblox.com/api-reference/function/ContextActionService/SetImage) and [SetPosition](https://developer.roblox.com/api-reference/function/ContextActionService/SetPosition)), this method does not affect such a button. This method merely sets a text description of an action, and nothing more.
+	 * @param actionName The name of the action originally passed to BindAction
+	 * @param description A text description of the action, such as "Honk the car's horn" or "Open the inventory"
 	 */
 	SetDescription(actionName: string, description: string): void;
 	/** 
-	 * If _actionName_ key contains a bound action, then _image_ is set as the image of the touch button. Does nothing if a touch button was not created. No guarantees are made whether image will be set when button is manipulated.
+	 * SetPosition will set the text shown on a touch button created by [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction). Specifically, this sets the [ImageLabel.Image](https://developer.roblox.com/api-reference/property/ImageLabel/Image) property of the `ImageLabel` within the `ImageButton` that would be returned by [GetButton](https://developer.roblox.com/api-reference/function/ContextActionService/GetButton). If no such bound action exists (e.g. nothing is returned by GetButton), this function does nothing and throws no error.
+	 *
+	 * This function is part of a family of methods that customize the touch button of an action. Others in this family include [SetPosition](https://developer.roblox.com/api-reference/function/ContextActionService/SetPosition) and [SetTitle](https://developer.roblox.com/api-reference/function/ContextActionService/SetTitle).
+	 * @param actionName The name of the action originally passed to BindAction
+	 * @param image The value to which the Image property should be set
 	 */
 	SetImage(actionName: string, image: string): void;
 	/** 
-	 * If _actionName_ key contains a bound action, then _position_ is set as the position of the touch button. Does nothing if a touch button was not created. No guarantees are made whether position will be set when button is manipulated.
+	 * SetPosition will set the text shown on a touch button created by [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction). Specifically, this sets the [GuiObject.Position](https://developer.roblox.com/api-reference/property/GuiObject/Position) property of the `ImageButton` that would be returned by [GetButton](https://developer.roblox.com/api-reference/function/ContextActionService/GetButton). If no such bound action exists (e.g. nothing is returned by GetButton), this function does nothing and throws no error.
+	 *
+	 * This function is part of a family of methods that customize the touch button of an action. Others in this family include [SetImage](https://developer.roblox.com/api-reference/function/ContextActionService/SetImage) and [SetTitle](https://developer.roblox.com/api-reference/function/ContextActionService/SetTitle).
+	 * @param actionName The name of the action originally passed to BindAction
+	 * @param position The position within the ContextButtonFrame
 	 */
 	SetPosition(actionName: string, position: UDim2): void;
 	/** 
-	 * If _actionName_ key contains a bound action, then _title_ is set as the title of the touch button. Does nothing if a touch button was not created. No guarantees are made whether title will be set when button is manipulated.
+	 * SetTitle will set the text shown on a touch button created by [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction). Specifically, this sets the [TextLabel.Text](https://developer.roblox.com/api-reference/property/TextLabel/Text) property of a `TextLabel` within the `ImageButton` that would be returned by [GetButton](https://developer.roblox.com/api-reference/function/ContextActionService/GetButton). If no such bound action exists (e.g. nothing is returned by GetButton), this function does nothing and throws no error.
+	 *
+	 * This function is part of a family of methods that customize the touch button of an action. Others in this family include [SetImage](https://developer.roblox.com/api-reference/function/ContextActionService/SetImage) and [SetPosition](https://developer.roblox.com/api-reference/function/ContextActionService/SetPosition).
+	 * @param actionName The name of the action originally passed to BindAction
+	 * @param title The text to display on the button
 	 */
 	SetTitle(actionName: string, title: string): void;
 	/** 
-	 * UnbindAction will unbind an action by name from user inputs. Use this function when the context for some action is no longer applicable. For instance, if a gun Tool is unequipped, you might use UnbindAction on a Reload action since a gun can only be reloaded if it is equipped.
+	 * UnbindAction will unbind an action by name from user inputs so that the action handler function will no longer be called. Call this function when the context for some action is no longer applicable, such as closing a user interface, exiting a car or [unequipping](https://developer.roblox.com/api-reference/event/Tool/Unequipped) a `Tool`. See [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) for more information on how bound actions operate.
+	 *
+	 * This function **will not** throw an error if there is no such action bound with the given string. Using [GetAllBoundActionInfo](https://developer.roblox.com/api-reference/function/ContextActionService/GetAllBoundActionInfo) or the Developer Console's "Action Bindings" tab, you can find out what actions are presently bound.
 	 */
 	UnbindAction(actionName: string): void;
 	/** 
-	 * Undos the specification of a [Enum.KeyCode](https://developer.roblox.com/search#stq=KeyCode) that can be used with a [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) to activate a [Tool](https://wiki.roblox.com/index.php?title=Tool), or a [HopperBin](https://wiki.roblox.com/index.php?title=HopperBin), if it was set earlier using [ContextActionService.BindActivate](https://developer.roblox.com/api-reference/function/ContextActionService/BindActivate).
+	 * UnbindActivate unbinds an [Enum.KeyCode](https://developer.roblox.com/search#stq=KeyCode) used with an [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) for activating a `Tool` (or a `HopperBin`) using [BindActivate](https://developer.roblox.com/api-reference/function/ContextActionService/BindActivate). This function essentially undoes the action performed by that function.
+	 * @param userInputTypeForActivation The same UserInputType originally sent to BindActivate
+	 * @param keyCodeForActivation The same KeyCode originally sent to BindActivate
 	 */
 	UnbindActivate(userInputTypeForActivation: CastsToEnum<Enum.UserInputType>, keyCodeForActivation?: CastsToEnum<Enum.KeyCode>): void;
 	/** 
@@ -5359,7 +5433,11 @@ interface ContextActionService extends Instance {
 	 */
 	UnbindAllActions(): void;
 	/** 
-	 * If _actionName_ key contains a bound action, then this will return the touch button (if was created). Returns nil if a touch button was not created. No guarantees are made whether button will be retrievable when button is manipulated.
+	 * GetButton returns the `ImageButton` created by [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) if its third parameter was true and the device is [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled). The only parameter to this function must match exactly the name of the action originally sent to BindAction.
+	 *
+	 * If no such action was bound or if a button was not created, this function returns `nil`.
+	 * @param actionName The name of the action originally passed to BindAction
+	 * @returns An ImageButton created by BindAction
 	 */
 	GetButton(actionName: string): ImageButton | undefined;
 	/** 
@@ -5565,7 +5643,7 @@ interface DataModelMesh extends Instance {
 	 *
 	 *  - Changing the relationship between the mesh and its collision extents (determined by the `BasePart`)
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltd3942dca6b981850/OffsetAnim.gif
+	 * [1]: https://developer.roblox.com/assets/5ac3671fc7db666d0b74d6e2/OffsetAnim.gif
 	 */
 	Offset: Vector3;
 	/** 
@@ -5609,11 +5687,11 @@ interface DataModelMesh extends Instance {
 	 *
 	 *  - Changing the relationship between the mesh and its collision extents (determined by the `BasePart`)
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltd4a34d2e19dc865c/Scale1.gif
+	 * [1]: https://developer.roblox.com/assets/5ac3b045337959630baa70fe/Scale1.gif
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt3eff78f21fd4de1d/Scale2.gif
+	 * [2]: https://developer.roblox.com/assets/5ac3b050609eca650bf80aca/Scale2.gif
 	 *
-	 * [3]: https://developer.roblox.com/assets/blt543d8e7d5ba8c404/Scale3.gif
+	 * [3]: https://developer.roblox.com/assets/5ac3b06370d93c810bee0d48/Scale3.gif
 	 */
 	Scale: Vector3;
 	/** 
@@ -5641,7 +5719,7 @@ workspace.Baseplate.Mesh.VertexColor = yVector
 	 *
 	 * Although VertexColor can be used to make changes to the appearance of a Mesh's texture much more flexibility is offered by uploading a new texture for the mesh. For more information on textures, see the page for `MeshPart`s.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt554914f560c80848/VertexColor_-_Copy.gif
+	 * [1]: https://developer.roblox.com/assets/5ac3b3bd781602830bdf8d95/VertexColor_-_Copy.gif
 	 */
 	VertexColor: Vector3;
 }
@@ -6314,7 +6392,7 @@ interface DialogChoice extends Instance {
 /** 
  * The **Dragger** object is a helper object used to create tools that can drag parts. It is expected (but not required) to be used with `Mouse` events.
  *
- * Its implementation is primarily used in the `RbxStamper` library.
+ * Its implementation is primarily used in the RbxStamper library.
  */
 interface Dragger extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -6684,9 +6762,9 @@ interface File extends Instance {
  *
  * Unlike actual flames, Fire objects on Roblox do not spread on their own. If you notice this behavior in your game, it is happening because a `Script` is spreading fire.
  *
- * [1]: https://developer.roblox.com/assets/blt614752ba08bb2e7c/Fire.png
+ * [1]: https://developer.roblox.com/assets/5b0ab6b343098c11102a53b5/Fire.png
  *
- * [2]: https://developer.roblox.com/assets/blt925890091ac70b39/Fire_Colors.png
+ * [2]: https://developer.roblox.com/assets/5b0ab6ed9a16a6df0e497313/Fire_Colors.png
  */
 interface Fire extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -6698,7 +6776,7 @@ interface Fire extends Instance {
 	 *
 	 * In general, the cooler flames are on the outside of a fire. Therefore, fire looks more realistic if the outer portions are red or orange-yellow. A fire that is bright all throughout doesn't look very realistic, so avoid setting this property to yellow. Try adding a `PointLight` with the [PointLight.Color](https://developer.roblox.com/search#stq=Color) as a sibling to the `Fire`. This will provide light to the surrounding environment and make it feel more cohesive with the flame particles.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt925890091ac70b39/Fire_Colors.png
+	 * [1]: https://developer.roblox.com/assets/5b0ab6ed9a16a6df0e497313/Fire_Colors.png
 	 */
 	Color: Color3;
 	/** 
@@ -6721,13 +6799,13 @@ douseFlames(part.Fire)
 	 *
 	 * ![Two torches - the left has Heat = 9 and the right has Heat = 18][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltc9bf8cb45c829244/Fire_Heat.png
+	 * [1]: https://developer.roblox.com/assets/5b0abdf843098c11102a53bd/Fire_Heat.png
 	
 	 * The Heat property determines how fast particles are emit from the `Fire` object. It is limited to the range [-25, 25]. Positive values are in the top (+Y) direction of the parent `BasePart` or `Attachment`. It also affects the [ParticleEmitter.Acceleration](https://developer.roblox.com/api-reference/property/ParticleEmitter/Acceleration) of the inner particles. Below, you can see the effects of higher heat on the velocity/acceleration of the flame particles (left has Heat = 9, right has Heat = 18).
 	 *
 	 * ![Two torches - the left has Heat = 9 and the right has Heat = 18][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltc9bf8cb45c829244/Fire_Heat.png
+	 * [1]: https://developer.roblox.com/assets/5b0abdf843098c11102a53bd/Fire_Heat.png
 	 *
 	 * Tags: NotReplicated
 	 */
@@ -6737,7 +6815,7 @@ douseFlames(part.Fire)
 	 *
 	 * ![A Fire with SecondaryColor set to white][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt925890091ac70b39/Fire_Colors.png
+	 * [1]: https://developer.roblox.com/assets/5b0ab6ed9a16a6df0e497313/Fire_Colors.png
 	 */
 	SecondaryColor: Color3;
 	/** 
@@ -6819,7 +6897,7 @@ local folder = game:GetService("ReplicatedStorage"):FindFirstChild("Folder")
  *
  * ![enter image description here][1]
  *
- * [1]: https://developer.roblox.com/assets/blta82462d9370edb83/Folders_-_Copy.png
+ * [1]: https://developer.roblox.com/assets/5ab25002e9d017730bcd9804/Folders_-_Copy.png
  */
 interface Folder extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -8212,7 +8290,17 @@ interface ImageButton extends GuiButton {
 	 * The SliceCenter property determines the center of a nine-slice image when [ImageButton.ScaleType](https://developer.roblox.com/api-reference/property/ImageButton/ScaleType) is set to [Enum.ScaleType/Slice](https://developer.roblox.com/search#stq=ScaleType/Slice).
 	 */
 	SliceCenter: Rect;
-	/** [NO DOCUMENTATION] */
+	/** 
+	 * Scales the 9slice edges by the specified ratio. This means that the edges around the 9slice will grow as if you'd uploaded a new version of the texture upscaled. Defaults to 1.0.
+	 *
+	 * ## See also
+	 *
+	 *   - [ImageButton.ScaleType](https://developer.roblox.com/api-reference/property/ImageButton/ScaleType), determines how an image will scale if displayed in a UI element whose size differs from the source image
+	 *
+	 *   - [ImageLabel.ScaleCenter](https://developer.roblox.com/search#stq=ScaleCenter),determines the center of a 9slice image
+	 *
+	 *   - [ImageButton.SliceScale](https://developer.roblox.com/api-reference/property/ImageButton/SliceScale), the same property in terms of functionality but for [ImageButtons](https://developer.roblox.com/api-reference/class/ImageButton)
+	 */
 	SliceScale: number;
 	/** 
 	 * TileSize sets the tiling size of the ImageButton. The default `UDim2` values are 1,0,1,0. The scale component of the UDim2 will scale the tile based on the size of the ImageButton. The offset is in raw pixels. The tiling starts at the upper left-hand corner of the image. For example a scale of 0.5 will mean the tile will be half the size of the ImageButton (in the corresponding axis).
@@ -8874,90 +8962,17 @@ end)
 }
 
 /** 
- * A [GUI](https://developer.roblox.com/api-reference/class/GuiObject) that can display children 3D objects inside its viewport. Children objects will not be rendered in the main scene. Background color is transparent.
+ * A **ViewportFrame** is a type of [GUI](https://developer.roblox.com/api-reference/class/GuiObject) that can render 3D objects inside its bounds. This is a great way to display 3D objects/models in a 2D&nbsp;GUI space like a `ScreenGui`.
  *
- * This is a great way to display 3D objects/models in a 2D&nbsp;GUI space like a `ScreenGui`.
+ * For a step-by-step walkthrough, see the [ViewportFrame GUI](https://developer.roblox.com/search#stq=ViewportFrame%20GUI) article.
  *
- * ![ViewportFrame Catalog][1]
+ * ## Caveats
  *
- * ![ViewportFrame Model][2]
+ * * Currently, 3D objects can only be displayed in [ScreenGuis](https://developer.roblox.com/api-reference/class/ScreenGui) or [PluginGuis](https://developer.roblox.com/api-reference/class/PluginGui).
  *
- * ### Caveats
+ * * Objects inside viewport frames are rendered using a fixed [Lighting](https://developer.roblox.com/api-reference/class/Lighting) setting.
  *
- *   - Currently 3D objects can only be displayed on [ScreenGuis](https://developer.roblox.com/api-reference/class/ScreenGui) or [PluginGuis](https://developer.roblox.com/api-reference/class/PluginGui)
- *
- *   - Objects inside ViewportFrames are rendered using a fixed [lighting](https://developer.roblox.com/api-reference/class/Lighting) setting
- *
- *   - No shadow or post effects are available. Neon and Glass [materials](https://developer.roblox.com/search#stq=Material) will be rendered on lowest quality
- *
- * ### Using ViewportFrames
- *
- * #### Through Studio UI
- *
- *  1. Add a ViewportFrame into a [GuiLayerCollector](https://developer.roblox.com/api-reference/class/LayerCollector), such as a ScreenGui or `SurfaceGui`. This will cause a blank UI element to appear in the main window.
- *
- * ![ScreenGui->ViewportFrame in Explorer][3]
- *
- * ![Empty ViewportFrame in Workspace][4]
- *
- *  2. Add a model that you want to show in the ViewportFrame into `Workspace`. Target your camera towards the [model](https://developer.roblox.com/api-reference/class/Model).
- *
- * ![Model being displayed by ViewportFrame][5]
- *
- *  3. Set [ViewportFrame.CurrentCamera](https://developer.roblox.com/api-reference/property/ViewportFrame/CurrentCamera) to Workspace.Camera. Drag the model into the ViewportFrame. The model should show up there.
- *
- * ![ScreenGui->ViewportFrame->Model in Explorer][6]
- *
- * ![ViewportFrame Rendering Model][7]
- *
- *  4. You can change the size, position or other properties of ViewportFrame like other GUIs. Now the CurrentCamera is a reference to the main camera in Workspace, so if you move the camera in the main scene, it will also affect ViewportFrame. When you find a good position, duplicate the camera and make sure it is not the one Workspace is using. Then set it to ViewportFrame.CurrentCamera so the camera won’t be changed by Workspace operations.
- *
- * ![Gif of ViewportFrame Rendering Model][8]
- *
- * #### Through Scripts
- *
- * You can also set up a ViewportFrame using scripts. Add the following `LocalScript` into a ScreenGui (or other proper Guis), run the game and you will get a [Part](https://developer.roblox.com/api-reference/class/BasePart) rendered inside a ViewportFrame.
- *
- * ```lua
-local vf = Instance.new("ViewportFrame", script.Parent)
-vf.Size = UDim2.new(0.5, 0, 0.5, 0)
-vf.Position = UDim2.new(0.25, 0, 0.25, 0)
-vf.BackgroundColor3 = Color3.new(1, 1, 1)
-
-local part = Instance.new("Part", vf)
-part.Position = Vector3.new(0, 0, 0)
-
-local camera = Instance.new("Camera", vf)
-vf.CurrentCamera = camera
-
-local cameraPosition = Vector3.new(3, 3, 3)
-camera.CFrame = CFrame.new(cameraPosition, part.Position)
-```
- * 
-
- * ![ViewportFrame rendering Part from LocalScript][9]
- *
- * ### See also
- *
- * If you are looking for an in-depth article exploring how the ViewportFrame GUI can render 3D objects inside its bounds, including a strep-by-step walkthrough, take a look at the [ViewportFrame-GUI](https://developer.roblox.com/search#stq=ViewportFrame%20GUI) article.
- *
- * [1]: https://developer.roblox.com/assets/5c5e4f396d61b3c84129f2a9/ViewportFrame1.gif
- *
- * [2]: https://developer.roblox.com/assets/5c5e4f481a6434cd416210fd/ViewportFrame2.gif
- *
- * [3]: https://developer.roblox.com/assets/5c5e4fa022bf52f7439e2708/ViewportFrameThroughStudioUI1.png
- *
- * [4]: https://developer.roblox.com/assets/5c5e4fa800babade43223631/ViewportFrameThroughStudioUI2.png
- *
- * [5]: https://developer.roblox.com/assets/5c5e4fb70ab91ed943f43e17/ViewportFrameThroughStudioUI3.png
- *
- * [6]: https://developer.roblox.com/assets/5c5e4fd5ab181759419c65d6/ViewportFrameThroughStudioUI4.png
- *
- * [7]: https://developer.roblox.com/assets/5c5e5a5922bf52f7439e271e/ViewportFrameThroughStudioUI5.png
- *
- * [8]: https://developer.roblox.com/assets/5c5e4ff73f992ead41225138/ViewportFrameThroughStudioUI6.gif
- *
- * [9]: https://developer.roblox.com/assets/5c5e4f84c7b669b24175ebf0/ViewportFrameThroughScripts1.png
+ * * No shadow or post effects are available. Neon and Glass [materials](https://developer.roblox.com/search#stq=Material) will be rendered on lowest quality.
  */
 interface ViewportFrame extends GuiObject {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -9464,7 +9479,7 @@ interface HandleAdornment extends PVAdornment {
 	/** 
 	 * The positional offset of the adornment based on the adornee’s [BasePart.Size](https://developer.roblox.com/api-reference/property/BasePart/Size). By default, an adornment draws in the center of its adornee. By using this property, the position of the adornment can be shifted relative to the center of the adornee. The units of **SizeRelativeOffset** are a scale based on the size of the adornee itself. This scale is such that a value of 1 will move the adornment to the corresponding edge of the adornee.
 	 *
-	 * This property is intended to allow adornments to easily be moved to the edges of a part.
+	 * This property is intended to allow adornments to easily be moved to the edges of a parts.
 	 *
 	 * For example, if the **SizeRelativeOffset** is set to (0,1,0), the adornment will be drawn with its center at the exact top of the adornee. If set to (1,1,1), the adornment will be drawn in the upper corner of the adornee.
 	 */
@@ -9803,11 +9818,15 @@ interface GuiService extends Instance {
 	 */
 	GuiNavigationEnabled: boolean;
 	/** 
-	 * Status of the Roblox escape menu CoreGui. Returns true if the menu is open, false if not.
+	 * Returns true if any menu of `CoreGui` is open.
 	 */
 	readonly MenuIsOpen: boolean;
 	/** 
-	 * Sets the [GuiObject](https://developer.roblox.com/api-reference/class/GuiObject) currently being focused on by the GUI Navigator (used for Gamepads). This may reset to nil if the object is off-screen.
+	 * Sets the `GuiObject` currently being focused on by the GUI Navigator (used for Gamepads). This may reset to nil if the object is off-screen.
+	 *
+	 * This property is changed by the [GuiObject.SelectionGained](https://developer.roblox.com/api-reference/event/GuiObject/SelectionGained) and [GuiObject.SelectionLost](https://developer.roblox.com/api-reference/event/GuiObject/SelectionLost) events.
+	 *
+	 * If you would like to determine when this property changes without tracking the SelectionGained and SelectionLost events for all GUI elements, you can use the [Changed](https://developer.roblox.com/api-reference/event/Instance/Changed) event.
 	 */
 	SelectedObject?: GuiObject;
 	/** 
@@ -9962,9 +9981,19 @@ interface HttpService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "HttpService";
 	/** 
-	 * GenerateGUID randomly creates a [universally unique identifier (UUID)][1] string. The sixteen octets of a UUID are represented as 32 hexadecimal (base 16) digits, displayed in 5 groups separated by hyphens in the form `8-4-4-4-12` for a total of 36 characters. For example: `123e4567-e89b-12d3-a456-426655440000`.
+	 * The GenerateGUID function randomly creates a [universally unique identifier (UUID)][1] string.
+	 *
+	 * The sixteen octets of a UUID are represented as 32 hexadecimal (base 16) digits, displayed in 5 groups separated by hyphens in the form `8-4-4-4-12` for a total of 36 characters. For example: `123e4567-e89b-12d3-a456-426655440000`.
+	 *
+	 * The *wrapInCurlyBraces* argument determines whether the returned string is wrapped in curly braces *{}*. For instance:
+	 *
+	 *  - **true** - *{94b717b2-d54f-4340-a504-bd809ef5bf5c}*
+	 *
+	 *  - **false** - *db454790-7563-44ed-ab4b-397ff5df737b*
 	 *
 	 * [1]: https://en.wikipedia.org/wiki/Universally_unique_identifier
+	 * @param wrapInCurlyBraces Whether the returned string should be wrapped in *{curly braces}*
+	 * @returns The randomly generated UUID
 	 */
 	GenerateGUID(wrapInCurlyBraces?: boolean): string;
 	/** 
@@ -9992,40 +10021,102 @@ interface HttpService extends Instance {
 	 */
 	JSONDecode(input: string): unknown;
 	/** 
-	 * JSONEncode transforms a Lua table into a JSON object or array.
+	 * The JSONEncode function transforms a Lua [table][1] into a [JSON object or array][2] based on the following guidelines:
 	 *
-	 *  - Keys of the table must be either strings or numbers. If a table
-	 *
-	 *    contains both, an array takes priority (string keys are ignored).
+	 *  - Keys of the table must be either strings or numbers. If a table contains both, an array takes priority (string keys are ignored).
 	 *
 	 *  - An empty Lua table `{}` generates an empty JSON array.
 	 *
 	 *  - The value `nil` is never generated.
 	 *
-	 *  - Cyclic table references generate the string `*** certain entries
+	 *  - Cyclic table references generate the string `*** certain entries belong to the same table ***`.
 	 *
-	 *    belong to the same table ***`.
+	 * To reverse the encoding process, and decode a JSON object, you can use [HttpService's](https://developer.roblox.com/api-reference/class/HttpService)  [HttpService.JSONDecode](https://developer.roblox.com/api-reference/function/HttpService/JSONDecode) function.
 	 *
-	 * Many web endpoints use JSON, and is commonly used on the Internet. Visit [JSON.org][1] to become more familiar with the format.
+	 * Many web endpoints use JSON, as it is commonly used on the Internet. Visit [JSON.org][2] to become more familiar with the format.
 	 *
-	 * This method can be used regardless if HTTP Requests are enabled.
+	 * This method can be used regardless of whether HTTP Requests are [enabled](https://developer.roblox.com/api-reference/property/HttpService/HttpEnabled).
 	 *
-	 * [1]: http://www.json.org/
+	 * [1]: http://robloxdev.com/articles/Table
+	 *
+	 * [2]: http://robloxdev.com/articles/JSON-Storage-Format
+	 *
+	 * [3]: http://www.json.org/
+	 * @param input The input Lua table
+	 * @returns The returned JSON string
 	 */
 	JSONEncode(input?: any): string;
 	/** 
-	 * [Percent-encodes][1] a given string so that reserved characters properly encoded with '%' and two hexadecimal characters. This is useful when formatting URLs for use with `GetAsync`/`PostAsync`, or POST data of the media type [application.x-www-form-urlencoded](https://developer.roblox.com/search#stq=x-www-form-urlencoded) (`Enum.HttpContentType.ApplicationUrlEncoded`).
+	 * The UrlEncode function [percent-encodes][1] a given string so that reserved characters properly encoded with '%' and two hexadecimal characters.
 	 *
+	 * This is useful when formatting URLs for use with [HttpService.GetAsync](https://developer.roblox.com/api-reference/function/HttpService/GetAsync)/[HttpService.PostAsync](https://developer.roblox.com/api-reference/function/HttpService/PostAsync), or POST data of the media type [application.x-www-form-urlencoded](https://developer.roblox.com/search#stq=x-www-form-urlencoded) ([Enum.HttpContentType.ApplicationUrlEncoded](https://developer.roblox.com/search#stq=HttpContentType)).
+	 *
+	 * For instance, when you encode the URL:
+	 *
+	 * ```lua
+http://robloxdev.com/api-reference/function/HttpService/UrlEncode
+```
+	 * 
+
+	 * the function returns the string:
+	 *
+	 * ```lua
+http%3A%2F%2Frobloxdev%2Ecom%2Fapi%2Dreference%2Ffunction%2FHttpService%2FUrlEncode
+```
+	 * 
+
 	 * [1]: https://en.wikipedia.org/wiki/Percent-encoding
+	 * @param input The string (URL) to encode
+	 * @returns The encoded string
 	 */
 	UrlEncode(input: string): string;
 	/** 
-	 * Send an HTTP GET request, blocking the current thread until a response is received. If the HTTP response code is not in 200 class of status codes, this function raises an error. A useful endpoint that can help you debug GET request is https://httpbin.org/get. It provides a JSON response with information about a GET request, such as headers and URL arguments.
+	 * Calling the GetAsync function sends an HTTP GET request to the specified URL. Your script will yield until either **a)** the request is completed or **b)** the request times out. A timeout happens when a server goes a certain amount of time without a response.
+	 *
+	 * If the HTTP response code is not in 200 class of status codes, this function raises an error.
+	 *
+	 * If the request is cached, it will return old data from a previous request instead of fetching new data from the target address. If your data changes frequently, or accuracy is important, consider setting the `nocache` argument to true.
+	 *
+	 * A useful endpoint that can help you debug GET request is https://httpbin.org/get. It provides a JSON response with information about a GET request, such as headers and URL arguments.
+	 *
+	 * See [here][1] for a detailed guide on [sending](https://developer.roblox.com/api-reference/function/HttpService/PostAsync) and retrieving data via HTTP requests.
+	 *
+	 * [1]: http://robloxdev.com/articles/Sending-HTTP-requests
+	 * @param url The web address you are requesting data from
+	 * @param nocache Whether the request stores (caches) the response
+	 * @param headers Tells the server the return format of the data being requested
+	 * @returns The GET request's response body
 	 */
 	/** @rbxts server */
 	GetAsync(url: string, nocache?: boolean, headers?: HttpHeaders): string;
 	/** 
-	 * Send an HTTP POST request, blocking the current thread until a response is received. Certain HTTP response codes (like 404 or 403) will raise errors.  A useful endpoint that can help you debug POST requests is https://httpbin.org/post. It provides a JSON response with information about a POST request, such as headers and URL arguments.
+	 * The PostAsync function sends an HTTP POST request, blocking the current thread until a response is received. Certain HTTP response codes (like **404** or **403**) will raise errors.
+	 *
+	 * A useful endpoint that can help you debug POST requests is https://httpbin.org/post. It provides a JSON response with information about a POST request, such as headers and URL arguments.
+	 *
+	 * See [here][1] for a detailed guide on sending and `[retrieving](https://developer.roblox.com/api-reference/function/HttpService/PostAsync) data via HTTP requests.
+	 *
+	 * ##Function arguments
+	 *
+	 *  * Compression uses gzip. If you set the compress parameter to true, your data will be gzipped.
+	 *
+	 *  * PostAsync sends the data in the `data` argument to the address given by `url`. The `content_type` argument modifies the value in the `Content-Type` header sent with the request, which tells the server the format of the data passed in `data`.
+	 *
+	 * ##Requirements and limitations
+	 *
+	 *  * The protocol ("http://" or "https://") ***must*** be present at the beginning of `url`, or PostAsync will throw a "trust check failed" error.
+	 *
+	 *  * Posting 1024KB or more of data will result in an error. (1024KB: A string with a length of 1024^2 characters)
+	 *
+	 *  * See also the restrictions documented at `HttpService`
+	 *
+	 * [1]: http://robloxdev.com/articles/Sending-HTTP-requests
+	 * @param url The destination address for the data
+	 * @param data The data being sent
+	 * @param content_type Modifies the value in the *Content-Type* header sent with the request
+	 * @param compress Determines whether the data is compressed (gzipped) when sent
+	 * @param headers Tells the server the format of the data passed in *data*
+	 * @returns The HTTP response sent back indicating the request result
 	 */
 	/** @rbxts server */
 	PostAsync(
@@ -10042,10 +10133,10 @@ interface HttpService extends Instance {
 	 *
 	 * | Name | Type | Required | Description |
 	 * | --- | --- | --- | --- |
-	 * | **Url** | string | yes | The target URL for this request. Must use `http` or `https` protocols. |
-	 * | **Method** | string | no | The HTTP method being used by this request, most often GET or POST. |
-	 * | **Headers** | dictionary | no | A dictionary of headers to be used with this request. Most HTTP headers are accepted here, but not all. |
-	 * | **Body** | string | no | The request body. Can be any string, including binary data. Must be excluded when using the GET or HEAD HTTP methods. It might be necessary to specify the `Content-Type` header when sending JSON or other formats. |
+	 * | **Url** | String | yes | The target URL for this request. Must use `http` or `https` protocols. |
+	 * | **Method** | String | no | The HTTP method being used by this request, most often GET or POST. |
+	 * | **Headers** | Dictionary | no | A dictionary of headers to be used with this request. Most HTTP headers are accepted here, but not all. |
+	 * | **Body** | String | no | The request body. Can be any string, including binary data. Must be excluded when using the GET or HEAD HTTP methods. It might be necessary to specify the `Content-Type` header when sending JSON or other formats. |
 	 *
 	 * ### HTTP Headers
 	 *
@@ -10059,10 +10150,10 @@ interface HttpService extends Instance {
 	 *
 	 * | Name | Type | Description |
 	 * | --- | --- | --- |
-	 * | **Success** | boolean | The success status of the request. This is true if and only if the **StatusCode** lies within the range [200, 299]. |
-	 * | **StatusCode** | integer | The HTTP response code identifying the status of the response. |
-	 * | **StatusMessage** | string | The status message that was sent back. |
-	 * | **Headers** | dictionary | A dictionary of headers that were set in this response. |
+	 * | **Success** | Boolean | The success status of the request. This is true if and only if the **StatusCode** lies within the range [200, 299]. |
+	 * | **StatusCode** | Integer | The HTTP response code identifying the status of the response. |
+	 * | **StatusMessage** | String | The status message that was sent back. |
+	 * | **Headers** | Dictionary | A dictionary of headers that were set in this response. |
 	 * | **Body** |  | The request body (content) received in the response. |
 	 *
 	 * ## Error Cases
@@ -12290,7 +12381,7 @@ interface KeyframeMarker extends Instance {
  *
  * In some cases the developer may wish to download the KeyframeSequence corresponding to an existing uploaded Animation. This can be done so using [KeyframeSequenceProvider.GetKeyframeSequenceAsync](https://developer.roblox.com/api-reference/function/KeyframeSequenceProvider/GetKeyframeSequenceAsync).
  *
- * [1]: https://developer.roblox.com/assets/blt2e767397c28fecda/KeyframeSequence_-_Copy.png
+ * [1]: https://developer.roblox.com/assets/5aa797693595493f77511b1d/KeyframeSequence_-_Copy.png
  */
 interface KeyframeSequence extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -13717,10 +13808,6 @@ interface Hint extends Message {
 }
 
 /** 
- * **Beta**
- *
- * This feature is in beta and may have unexpected or unreliable behavior.
- *
  * The MessagingService allows game servers in the same game to communicate with each other in real time (< 1 second) using topics. Topics are developer defined strings (1-80 characters) that game servers can send and receive messages.
  *
  * Delivery is best effort and not guaranteed. Make sure to architect your game so delivery failures are not critical.
@@ -13912,32 +13999,32 @@ local mouseHitDirection = mouse.Hit.lookVector
 	 */
 	Icon: string;
 	/** 
-	 * A [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) positioned at the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) and oriented toward the `Mouse`'s 3D position.
+	 * The origin `Mouse` property is a [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) indicating where the mouse originated from. It is positioned at the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) and oriented toward the `Mouse`'s 3D position.
 	 *
 	 * [Mouse.UnitRay](https://developer.roblox.com/api-reference/property/Mouse/UnitRay) starts at the same position as Origin, and extends for a stud in the same direction.
 	 *
-	 * ```lua
-local unitRay = mouse.UnitRay
-local origin = mouse.Origin
--- unitRay.Direction = origin.p
--- unitRay.Direction ≈ origin.lookVector
-```
-	 * 
-
+	 * local unitRay = mouse.UnitRay
+	 *
+	 * local origin = mouse.Origin
+	 *
+	 * -- unitRay.Direction = origin.p
+	 *
+	 * -- unitRay.Direction ≈ origin.lookVector
+	 *
 	 * For the position of the `Mouse` in 3D space, see [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit).
 	
-	 * A [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) positioned at the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) and oriented toward the `Mouse`'s 3D position.
+	 * The origin `Mouse` property is a [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) indicating where the mouse originated from. It is positioned at the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) and oriented toward the `Mouse`'s 3D position.
 	 *
 	 * [Mouse.UnitRay](https://developer.roblox.com/api-reference/property/Mouse/UnitRay) starts at the same position as Origin, and extends for a stud in the same direction.
 	 *
-	 * ```lua
-local unitRay = mouse.UnitRay
-local origin = mouse.Origin
--- unitRay.Direction = origin.p
--- unitRay.Direction ≈ origin.lookVector
-```
-	 * 
-
+	 * local unitRay = mouse.UnitRay
+	 *
+	 * local origin = mouse.Origin
+	 *
+	 * -- unitRay.Direction = origin.p
+	 *
+	 * -- unitRay.Direction ≈ origin.lookVector
+	 *
 	 * For the position of the `Mouse` in 3D space, see [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit).
 	 *
 	 * Tags: ReadOnly, NotReplicated
@@ -14225,9 +14312,9 @@ end)
 	 */
 	readonly Move: RBXScriptSignal<() => void>;
 	/** 
-	 * Fires when the mouse wheel is scrolled backwards.
+	 * The WheelBackward event fires when the mouse wheel is scrolled backwards. Possible uses for this event include toggling a gun's scope in a first person shooter (FPS) or zooming the player's camera.
 	 *
-	 * See [Mouse.WheelForward](https://developer.roblox.com/api-reference/event/Mouse/WheelForward) for the scrolling forward event.
+	 * This can be used alongside the scrolling forward event, [Mouse.WheelForward](https://developer.roblox.com/api-reference/event/Mouse/WheelForward).
 	 *
 	 * For information on how to obtain the `Mouse` object, please see the `Mouse` page.
 	 *
@@ -14235,9 +14322,9 @@ end)
 	 */
 	readonly WheelBackward: RBXScriptSignal<() => void>;
 	/** 
-	 * Fires when the mouse wheel is scrolled forwards.
+	 * The WheelForward event fires when the mouse wheel is scrolled forwards. Possible uses for this event include toggling a gun's scope in a first person shooter (FPS) or zooming the player's camera.
 	 *
-	 * See [Mouse.WheelBackward](https://developer.roblox.com/api-reference/event/Mouse/WheelBackward) for the scrolling backwards event.
+	 * This can be used alongside the scrolling backward event, [Mouse.WheelBackward](https://developer.roblox.com/api-reference/event/Mouse/WheelBackward).
 	 *
 	 * For information on how to obtain the `Mouse` object, please see the `Mouse` page.
 	 *
@@ -14841,7 +14928,7 @@ interface NetworkSettings extends Instance {
 	 *
 	 * This will only be shown if [Workspace.StreamingEnabled](https://developer.roblox.com/api-reference/property/Workspace/StreamingEnabled) is set to true.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blte3c189bb8bdbf8e3/ShowStreamedRegions.png
+	 * [1]: https://developer.roblox.com/assets/5ade6872baed3a514c372354/ShowStreamedRegions.png
 	 */
 	RenderStreamedRegions: boolean;
 	/** 
@@ -16490,15 +16577,37 @@ print(elapsedTime()) --&gt; Time since Roblox started running
 	 */
 	Gravity: number;
 	/** 
-	 * Whether network streaming is enabled for the place or not.
+	 * The StreamingEnabled property determines whether network streaming is enabled for the place.
 	 *
-	 * This property is not replicated, and therefore cannot be changed once the game has started. For this reason, it is advised it is set in Roblox Studio.
+	 * This property is not scriptable, and therefore cannot be changed once the game has started. For this reason, it is advised it is set in Roblox Studio.
 	 *
-	 * ## What is network streaming?
+	 * Since it is replicated, both client and server can access the property to determine, but not set, whether network streaming is enabled. As a result, both the code snippets below will print the same value when executed from a `LocalScript` and `Script` in the same game.
 	 *
-	 * Streaming is an opt-in feature builders can enable for their places. It'll allow places to have more `BasePart`s, faster join times, and allow more games to run on less powerful hardware. It does this by allowing games to be played whilst objects are still being downloaded, and removing objects that are no longer needed.
+	 * ```lua
+-- LocalScript
+local isStreamingEnabled = game.Workspace.StreamingEnabled
+print(isStreamingEnabled)
+```
+	 * 
 	 *
-	 * The downside of network streaming is it means the client can no longer rely on specific objects being available. Developers should not enable StreamingEnabled unless they understand its implications and have put processes in place to manage them. For example, `LocalScript`s may have to use [Instance.WaitForChild](https://developer.roblox.com/api-reference/function/Instance/WaitForChild) in order to access parts of the game.
+	 * ```lua
+-- Script
+local isStreamingEnabled = game.Workspace.StreamingEnabled
+print(isStreamingEnabled)
+```
+	 * 
+
+	 * ### What is network streaming?
+	 *
+	 * Streaming is an opt-in feature builders can enable for their places. It’ll allow places to have more [BaseParts](https://developer.roblox.com/api-reference/class/BasePart), faster join times, and allow more games to run on less powerful hardware. It does this by allowing games to be played whilst objects are still being downloaded, and removing objects that are no longer needed.
+	 *
+	 * The downside of network streaming is it means the client can no longer rely on specific objects being available. Developers should not enable StreamingEnabled unless they understand its implications and have put processes in place to manage them. For example, [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript) may have to use [Instance.WaitForChild](https://developer.roblox.com/api-reference/function/Instance/WaitForChild) in order to access parts of the game.
+	 *
+	 * ### See also
+	 *
+	 *   - [Blog post: With streaming join, levels load as you play][1], an archived blog post demonstrating the property
+	 *
+	 * [1]: http://blog.roblox.com/2013/09/with-streaming-join-levels-load-as-you-play
 	 */
 	StreamingEnabled: boolean;
 	/** 
@@ -16685,7 +16794,7 @@ local parts = workspace:FindPartsInRegion3(region, part) --  ignore part
 	 * @param region The `DataType/Region3` to be checked.
 	 * @param ignoreDescendantsInstance An `Instance` to be ignored.
 	 * @param maxParts The maximum amount of `BasePart`s to be returned.
-	 * @returns An array of `BasePart`s within the `DataType/Region3`.
+	 * @returns An array of `BasePart`s within the `DataType/Region3`
 	 */
 	FindPartsInRegion3(region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<Instance>;
 	/** 
@@ -18110,7 +18219,20 @@ local character = player.Character or player.CharacterAdded:wait()
 	 */
 	ClearCharacterAppearance(): void;
 	/** 
-	 * Returns the distance between the character's head and the given Vector3 point. Returns 0 if the player has no character.
+	 * The DistanceFromCharacter `Player` function returns the distance between the character's head and the given [DataType.Vector3](https://developer.roblox.com/search#stq=Vector3) point. It returns 0 if the player has no [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character).
+	 *
+	 * This is useful when determining the distance between a player and another object or location in game.
+	 *
+	 * ##Note
+	 *
+	 * If you would like to determine the distance between two non-player instances or positions, you can use the following:
+	 *
+	 * ```lua
+local distance = (position1 - position2).magnitude
+```
+	 *
+	 * @param point The location from which player's distance to is being measured.
+	 * @returns The distance in studs between the player and the location.
 	 */
 	DistanceFromCharacter(point: Vector3): number;
 	/** 
@@ -18122,7 +18244,7 @@ local character = player.Character or player.CharacterAdded:wait()
 	 * | --- | --- | --- |
 	 * | SourcePlaceId | int64 | The [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) of the place the `Player` was teleported from. Only present if the player was teleported to the current place. |
 	 * | Members | array | An array containing the [UserIds](https://developer.roblox.com/api-reference/property/Player/UserId) teleported alongside the `Player`. Only present if the player was teleported in using [TeleportService.TeleportPartyAsync](https://developer.roblox.com/api-reference/function/TeleportService/TeleportPartyAsync). |
-	 * | TeleportData | variant | The _teleportData_ parameter specified in the original teleport function. Only present if _teleportData_ was specified and the teleport function was called from the server. |
+	 * | TeleportData | variant | Reflects the _teleportData_ parameter specified in the original teleport function. This is useful in order to share information when teleporting a player from one place to another. It is only present if _teleportData_ was specified and the teleport function was called from the server. |
 	 *
 	 * ## GetJoinData and TeleportData
 	 *
@@ -18151,22 +18273,58 @@ local character = player.Character or player.CharacterAdded:wait()
 	 */
 	GetJoinData(): PlayerJoinInfo;
 	/** 
-	 * Returns the mouse being used by the client.
+	 * The GetMouse `Player` function returns the `Mouse` being used by the client. The player's mouse instance can be used to track user mouse input including left and right mouse button clicks and movement and location.
+	 *
+	 * The `UserInputService` service provides additional functions and events to track user input - especially for devices that do not use a mouse.
+	 *
+	 * ##Notes
+	 *
+	 *  - This item **must** be used in a `LocalScript` to work as expected online.
+	 *
+	 *  - Following an update in July 2014, the mouse's icon can now be set with this method.
+	 * @returns An instance of the player's mouse.
 	 */
 	GetMouse(): PlayerMouse;
 	/** 
-	 * Returns whether or not the appearance of the player's character has loaded
+	 * The HasAppearanceLoaded `Player` function returns whether or not the appearance of the player's [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) has loaded.
+	 *
+	 * A player's appearance includes items such as the player's `Shirt`, `Pants`, and [Accessories](https://developer.roblox.com/api-reference/class/Accessory).
+	 *
+	 * This is useful when determining whether a player's appearance has loaded after they first join the game, which can be tracked using the [Players.PlayerAdded](https://developer.roblox.com/api-reference/event/Players/PlayerAdded) event.
+	 * @returns A boolean indicating whether or not the appearance of the player's character has loaded.
 	 */
 	HasAppearanceLoaded(): boolean;
 	/** 
-	 * The Kick method allows a game to gracefully disconnect a client from the game and optionally provide a message to the disconnected player. This is useful for moderating abusive players. When used in conjunction with a `DataStore`, it is possible to create ban lists with expiration dates. Only allow specific whitelisted users whom you trust to trigger this method on other players.
+	 * The Kick `Player` method allows a game to gracefully disconnect a client from the game and optionally provide a message to the disconnected player. This is useful for moderating abusive players. When used in conjunction with a `DataStore`, it is possible to create ban lists with expiration dates. Only allow specific whitelisted users whom you trust to trigger this method on other players.
 	 *
-	 * When used from a LocalScript, only the local player's client can be kicked.
+	 * When used from a `LocalScript`, only the local player's client can be kicked.
+	 *
+	 * ##Example
+	 *
+	 * When calling this method on a Player with no arguments, they will be disconnected from the server and receive the default message: This game has shut down.
+	 *
+	 * ![Getting kicked without a message.][1]
+	 *
+	 * Calling this method on a player but providing a string as the first argument will replace this message with the contents of the string.
+	 *
+	 * ![Getting kicked with a message.][2]
+	 *
+	 * [1]: https://developer.roblox.com/assets/5b579f618d4b275620d2ab05/GettingKickedCropped.png
+	 *
+	 * [2]: https://developer.roblox.com/assets/5b579f7584622d3c1d79fc99/KickedWithANoteCropped.png
 	 * @param message The message to show the player upon kicking.
+	 * @returns void
 	 */
 	Kick(message?: string): void;
 	/** 
-	 * Causes the player's character to walk in the given direction until stopped, or interrupted by the player (by using their controls).
+	 * The Move `Player` function causes the player's character to walk in the given direction until stopped, or interrupted by the player (by using their controls).
+	 *
+	 * This is useful when scripting NPC `Humanoid`s that move around a map - but are not controlled by an actual player's input.
+	 *
+	 * Note that the function's second argument indicates whether the provided [DataType.Vector3](https://developer.roblox.com/search#stq=Vector3) should move the player relative to world coordinates (*false*) or the player's `Camera` (*true*).
+	 * @param walkDirection The Vector3 direction that the player should move.
+	 * @param relativeToCamera A boolean indicating whether the player should move relative to the player's camera.
+	 * @returns void
 	 */
 	Move(walkDirection: Vector3, relativeToCamera?: boolean): void;
 	/** 
@@ -18196,11 +18354,27 @@ local character = player.Character or player.CharacterAdded:wait()
 	 */
 	GetFriendsOnline(maxFriends?: number): Array<FriendOnlineInfo>;
 	/** 
-	 * Returns the player's rank in the group as an integer between 0 and 255, where 0 is a non-member and 255 is the group's owner.
+	 * The GetRankInGroup `Player` function returns the player's rank in the group as an integer between 0 and 255, where 0 is a non-member and 255 is the group's owner.
+	 *
+	 * ##Note
+	 *
+	 * Using this in a `Script`, as opposed to a `LocalScript`, will not get you the most up-to-date information. If a player leaves a group while they are in the game, GetRankInGroup will still think they're in that group until they leave. However, this does not happen when used with a LocalScript.
+	 *
+	 * This is because the method caches results, so multiple calls of GetRankInGroup on the same player with the same group ID will yield the same result as when the method was first called with the given group ID. The caching behavior is on a per-peer basis: a server does not share the same cache as a client.
+	 * @param groupId The `groupId` of the specified group.
+	 * @returns The player's rank in the group.
 	 */
 	GetRankInGroup(groupId: number): number;
 	/** 
-	 * Returns the player's role in the group as a string, or "Guest" if the player isn't part of the group.
+	 * The GetRoleInGroup `Player` function returns the player's role in the group as a string, or *Guest* if the player isn't part of the group.
+	 *
+	 * ##Note
+	 *
+	 * Using this in a `Script`, as opposed to a `LocalScript`, will not get you the most up-to-date information. If a player leaves a group while they are in the game, GetRoleInGroup will still think they're in that group until they leave. However, this does not happen when used with a LocalScript.
+	 *
+	 * This is because the method caches results, so multiple calls of GetRoleInGroup on the same player with the same group ID will yield the same result as when the method was first called with the given group ID. The caching behavior is on a per-peer basis: a server does not share the same cache as a client.
+	 * @param groupId The *groupId* of the specified group.
+	 * @returns The player's role in the specified group, or *Guest* of the player is not a member.
 	 */
 	GetRoleInGroup(groupId: number): string;
 	/** 
@@ -18218,13 +18392,26 @@ local character = player.Character or player.CharacterAdded:wait()
 	 */
 	IsFriendsWith(userId: number): boolean;
 	/** 
-	 * IsInGroup sends a request to the Roblox website asking whether a player is a member of a group, given the ID of that group.
+	 * The IsInGroup `Player` function sends a request to the Roblox website asking whether a player is a member of a group, given the ID of that group.
 	 *
-	 * This method will caches results, so multiple calls of [Player.IsInGroup](https://developer.roblox.com/api-reference/function/Player/IsInGroup) on the same player with the same group ID will yield the same result as when the method was first called with the given group ID. The caching behavior is on a per-peer basis: a server does not share the same cache as a client. Therefore, calling this method from a LocalScript may yield more up-to-date results.
+	 * ##Note
+	 *
+	 * Using this in a `Script`, as opposed to a `LocalScript`, will not get you the most up-to-date information. If a player leaves a group while they are in the game, IsInGroup will still think they're in that group until they leave. However, this does not happen when used with a LocalScript.
+	 *
+	 * This is because the method caches results, so multiple calls of IsInGroup on the same player with the same group ID will yield the same result as when the method was first called with the given group ID. The caching behavior is on a per-peer basis: a server does not share the same cache as a client.
+	 * @param groupId The *groupId* of the specified group.
+	 * @returns A boolean indicating whether the player is in the specified group.
 	 */
 	IsInGroup(groupId: number): boolean;
 	/** 
-	 * Creates a new character for the player, removing the old one. Also clears the player's `Backpack` and `PlayerGui`.
+	 * The LoadCharacter `Player` function creates a new character for the player, removing the old one. It also clears the player's `Backpack` and `PlayerGui`.
+	 *
+	 * This is useful in cases where you want to reload the character without killing the player, such as when you want to load a new character appearance after changing the player's `Player.CharacterAppearance`.
+	 *
+	 * ## Note
+	 *
+	 * The function is similar to [Player.LoadCharacterBlocking](https://developer.roblox.com/api-reference/function/Player/LoadCharacterBlocking), but the request is processed asynchronously instead of synchronously. This means other tasks will be able to continue while the character is being loaded, including the rendering of the game and any other tasks. Also, this function can be used in script, while LoadCharacterBlocking cannot.
+	 * @returns void
 	 */
 	/** @rbxts server */
 	LoadCharacter(): void;
@@ -18957,7 +19144,7 @@ game:GetService("PointsService").PointsAwarded:Connect(pointsAwarded)
  *
  * The Roblox animation system applies [Pose.CFrame](https://developer.roblox.com/api-reference/property/Pose/CFrame) to the corresponding `Motor6D` by manipulating the relative transformation of the motor, the [Motor6D.Transform](https://developer.roblox.com/api-reference/property/Motor6D/Transform) property. The original [C0](https://developer.roblox.com/api-reference/property/JointInstance/C1) and [C1](https://developer.roblox.com/api-reference/property/JointInstance/C1) values are not changed.
  *
- * [1]: https://developer.roblox.com/assets/blt2e767397c28fecda/KeyframeSequence_-_Copy.png
+ * [1]: https://developer.roblox.com/assets/5aa797693595493f77511b1d/KeyframeSequence_-_Copy.png
  */
 interface Pose extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -19019,7 +19206,7 @@ interface Pose extends Instance {
 	 *
 	 * The way in which a joint will interpolate between two `Pose`s during animation playback is determined by the [Pose.EasingStyle](https://developer.roblox.com/api-reference/property/Pose/EasingStyle) and EasingDirection of the first pose.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt5b5cb41b1d832713/Easing_-_Copy.gif
+	 * [1]: https://developer.roblox.com/assets/5aba54079b0b756f0b8151f7/Easing_-_Copy.gif
 	 */
 	EasingStyle: Enum.PoseEasingStyle;
 	Weight: number;
@@ -20611,7 +20798,7 @@ interface Sky extends Instance {
  *
  * Smoke particles are only emit from the center of `BasePart` to which they are parented. Parenting a Smoke object to an `Attachment` instead allows customization of the particles' start position.
  *
- * [1]: https://developer.roblox.com/assets/blt3634602492a8e3eb/Smoke.png
+ * [1]: https://developer.roblox.com/assets/5b0ac45b344ad0d40f77ff85/Smoke.png
  */
 interface Smoke extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -20625,9 +20812,9 @@ interface Smoke extends Instance {
 	 *
 	 * ![A Smoke object complimenting a Fire object on a torch][2]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt6952d1f0943c1f61/Smoke_Color.png
+	 * [1]: https://developer.roblox.com/assets/5b0ac61e9ff66f1e10708c50/Smoke_Color.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt02d5fee090b5bc62/Smoke_Fire.png
+	 * [2]: https://developer.roblox.com/assets/5b0ac74943098c11102a53c9/Smoke_Fire.png
 	 */
 	Color: Color3;
 	/** 
@@ -20652,7 +20839,7 @@ stopSmoke(part.Smoke)
 	 *
 	 * It should be noted that the texture that Roblox uses for `Smoke` particles is partially transparent, so setting this property to 1 will still yield transparency in rendered smoke.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt40432eff6f9ab4f2/Smoke_Opacity.png
+	 * [1]: https://developer.roblox.com/assets/5b0acc8e7f08d31910651ba1/Smoke_Opacity.png
 	
 	 * Opacity determines the opaqueness of the smoke particles. It must be in the range [0, 1]. This property works **inversely** in comparison to a part's [BasePart.Transparency](https://developer.roblox.com/api-reference/property/BasePart/Transparency) or ParticleEmitter's [ParticleEmitter.Transparency](https://developer.roblox.com/api-reference/property/ParticleEmitter/Transparency): a value of 0 is completely invisible, 1 is completely visible. Below, the left `Smoke` effect has an Opacity of 0.25 (or, 25%), the center has the default 0.5 (50%), and the right has 1.0 (or 100%).
 	 *
@@ -20660,7 +20847,7 @@ stopSmoke(part.Smoke)
 	 *
 	 * It should be noted that the texture that Roblox uses for `Smoke` particles is partially transparent, so setting this property to 1 will still yield transparency in rendered smoke.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt40432eff6f9ab4f2/Smoke_Opacity.png
+	 * [1]: https://developer.roblox.com/assets/5b0acc8e7f08d31910651ba1/Smoke_Opacity.png
 	 *
 	 * Tags: NotReplicated
 	 */
@@ -24545,9 +24732,9 @@ interface UIPageLayout extends UIGridStyleLayout {
  *
  * Cells will continue to respect `UISizeConstraint` objects within them. In other words, setting [UISizeConstraint.MinSize](https://developer.roblox.com/api-reference/property/UISizeConstraint/MinSize) on `UISizeConstraint`s within the header cells can determine the size of the rest of the cells. If [UISizeConstraint.MaxSize](https://developer.roblox.com/api-reference/property/UISizeConstraint/MaxSize) restricts a cell's size from filling the allotted space (i.e. another row/column is wider than it), it will align to the top-left.
  *
- * [1]: https://developer.roblox.com/assets/bltad6d3e2ee82def82/UITableLayout_Hierarchy.png
+ * [1]: https://developer.roblox.com/assets/5af895edfb3ef84362f407bc/UITableLayout_Hierarchy.png
  *
- * [2]: https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/bltff6ce5d154eee764/5af89441d951a7d46014aa05/UITableLayout_Padding.png
+ * [2]: https://developer.roblox.com/assets/5af89441d951a7d46014aa05/UITableLayout_Padding.png
  */
 interface UITableLayout extends UIGridStyleLayout {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -24571,7 +24758,7 @@ interface UITableLayout extends UIGridStyleLayout {
 	 *
 	 * **Note: it seems that this property isn't making noticeable changes, and rather its behavior is determined by [UIGridStyleLayout.FillDirection](https://developer.roblox.com/api-reference/property/UIGridStyleLayout/FillDirection) instead.**
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltff6ce5d154eee764/UITableLayout_Padding.png
+	 * [1]: https://developer.roblox.com/assets/5af89441d951a7d46014aa05/UITableLayout_Padding.png
 	 *
 	 * [2]: https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/bltd94eef328b68fed5/5af8b0b0fb3ef84362f407ca/UITableLayout_FillDirection.png
 	 */
@@ -24581,7 +24768,7 @@ interface UITableLayout extends UIGridStyleLayout {
 	 *
 	 * ![UITableLayout with padding between cells][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltff6ce5d154eee764/UITableLayout_Padding.png
+	 * [1]: https://developer.roblox.com/assets/5af89441d951a7d46014aa05/UITableLayout_Padding.png
 	 */
 	Padding: UDim2;
 }
