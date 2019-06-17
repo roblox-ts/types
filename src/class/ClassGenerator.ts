@@ -849,7 +849,7 @@ export class ClassGenerator extends Generator {
 
 			if (this.security === "None") {
 				this.write(
-					`/** A read-only string representing the class this Instance belongs to. \`isClassName()\` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */`,
+					`/** A read-only string representing the class this Instance belongs to. \`classIs()\` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */`,
 				);
 				this.write(
 					`readonly ClassName: ${[name, ...this.subclassify(name)]
