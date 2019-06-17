@@ -18,6 +18,7 @@ script:
   - git clone --depth=50 --branch=deploy https://github.com/roblox-ts/types.git deploy
 
   - ls
+  - mkdir -p deploy/include
   - rm -rf deploy/include/*
   - cp -r types/include/* deploy/include
   - cp types/plugin.d.ts deploy/plugin.d.ts
