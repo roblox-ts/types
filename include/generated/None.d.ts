@@ -1328,7 +1328,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	
@@ -1340,7 +1340,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 *
@@ -1356,7 +1356,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	
@@ -1368,7 +1368,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 *
@@ -1397,7 +1397,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 * @param weight The weight the animation is to be changed to.
@@ -1711,75 +1711,226 @@ interface HopperBin extends BackpackItem {
 }
 
 /** 
- * Tools are objects that a Humanoid object can equip. For players, they are stored in a Backpack object parented to a Player object. In-game, players may have multiple tools which appear as icons at the bottom of the screen. Equipping a tool moves it from the Backpack and into a player's character model in the Workspace. By default, tools are held in the right hand and have a handle in them, which is a Part named "Handle" inside (though one is not required if RequiresHandle is off). Tools that are to be provided to (re)spawning players ought to be stored in the StarterPack.
+ * Tools are objects that a `Humanoid` object can equip. For players, they are stored in a `Backpack` object parented to a `Player` object. In-game, players may have multiple tools which appear as icons at the bottom of the screen. Equipping a tool moves it from the Backpack and into a player's [character](https://developer.roblox.com/api-reference/class/Character) model in the `Workspace`. By default, tools are held in the right hand and have a handle in them, which is a [Part](https://developer.roblox.com/api-reference/class/BasePart) named "Handle" inside (though one is not required if [Tool.RequiresHandle](https://developer.roblox.com/api-reference/property/Tool/RequiresHandle) is off). Tools that are to be provided to (re)spawning players ought to be stored in the `StarterPack`.
  *
- * On desktop, pressing a number key (1, 2, 3...) will equip a tool. Equipped tools can be dropped into the Workspace by pressing Backspace. It's recommended that you turn CanBeDropped off so it is not possible to drop a tool, die, respawn and drop again to duplicate tools. On gamepads, LB and RB buttons will equip tools. You can disable activation via left click (or right trigger on gamepad) by setting ManualActivationOnly on. Doing so requires that you call Activate yourself through some sort of other user input.
+ * On desktop, pressing a number key (1, 2, 3...) will equip a tool. Equipped tools can be dropped into the Workspace by pressing Backspace. It's recommended that you turn [Tool.CanBeDropped](https://developer.roblox.com/api-reference/property/Tool/CanBeDropped) off so it is not possible to drop a tool, die, respawn and drop again to duplicate tools. On gamepads, LB and RB buttons will equip tools. You can disable activation via left click (or right trigger on gamepad) by setting [Tool.ManualActivationOnly](https://developer.roblox.com/api-reference/property/Tool/ManualActivationOnly) on. Doing so requires that you call Activate yourself through some sort of other user input.
  *
- * Tools are not the only way to capture user input. You can also use ContextActionService, UserInputService or GetMouse. If you need a Tool to have multiple actions, such as pressing a key while the Tool is equipped, you should use ContextActionService's BindAction and UnbindAction in the Equipped and Unequipped events, respectively. Use a LocalScript send these actions to the server via a RemoteFunction inside the Tool.
+ * Tools are not the only way to capture user input. You can also use `ContextActionService`, `UserInputService` or [Player.GetMouse](https://developer.roblox.com/api-reference/function/Player/GetMouse). If you need a Tool to have multiple actions, such as pressing a key while the Tool is equipped, you should use ContextActionService's [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) and [UnbindAction](https://developer.roblox.com/api-reference/function/ContextActionService/UnbindAction) in the [Equipped](https://developer.roblox.com/api-reference/event/Tool/Equipped) and [Unequipped](https://developer.roblox.com/api-reference/event/Tool/Unequipped) events, respectively. Use a `LocalScript` send these actions to the server via a `RemoteFunction` inside the Tool.
  */
 interface Tool extends BackpackItem {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Tool" | "Flag";
 	/** 
-	 * If true, when the backspace button is pressed the tool will be parented to the workspace and removed from the player's backpack. If false, when the backspace button is pressed the tool will go back to the Player's Backpack.
+	 * The CanBeDropped property controls whether the player can drop the `Tool`.
+	 *
+	 * If true, when the backspace button is pressed the tool will be parented to the `Workspace` and removed from the player's `Backpack`. If false, the when the backspace button is pressed the tool will go back to the player's Backpack and it will not be dropped.
 	 */
 	CanBeDropped: boolean;
 	/** 
-	 * Relates to whether or not the tool can be used.
+	 * The Enabled property relates to whether or not the `Tool` can be used. This is useful if you want to prevent a player from using a tool, but do not want to remove it from their `Backpack`.
+	 *
+	 * When set to true, the tool can use the tool.
+	 *
+	 * When set to false, the tool is disabled and the player cannot use the tool. It prevents the tool from being activated or deactivated by `the Tool/Activate` and [Tool.Deactivate](https://developer.roblox.com/api-reference/function/Tool/Deactivate) functions. It also prevents the [Tool.Activated](https://developer.roblox.com/api-reference/event/Tool/Activated) and [Tool.Deactivated](https://developer.roblox.com/api-reference/event/Tool/Deactivated) events from firing for the tool.
 	 */
 	Enabled: boolean;
 	/** 
-	 * Stores the Tool's Grip properties as one CFrame.
+	 * The Grip property stores the [Tool's](https://developer.roblox.com/api-reference/class/Tool) Grip properties as a single [CFrame](https://developer.roblox.com/search#stq=CFrame). This includes the [Up](https://developer.roblox.com/search#stq=Up), [Right](https://developer.roblox.com/search#stq=Right), [Forward](https://developer.roblox.com/search#stq=Forward), and [Pos](https://developer.roblox.com/search#stq=Pos) properties.
+	 *
+	 * The grip properties are used to position how the player holds the tool.
+	 *
+	 * Unlike the grip properties that it stores, this property is not visible in a tool's `Properties` window in Studio. Regardless, it can be set and retrieved using a `Script` or `LocalScript`.
+	 *
+	 * ![Grip properties in Studio's Properties Window][1]
+	 *
+	 * In order to change a tool's grip properties, you must either use a `Script` or `LocalScript` or a Studio plugin such as [this][1] one.
+	 *
+	 * [1]: https://developer.roblox.com/assets/5b83478322d8d14d0bcdd010/Screen_Shot_2018-08-26_at_8.35.48_PM.png
+	 *
+	 * [2]: https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin
 	 */
 	Grip: CFrame;
 	/** 
-	 * One of the properties that specifies a Tool's orientation in a character's hand. This represents the R02, R12, and R22 values of the Grip CFrame's rotation matrix.
+	 * The GripForward properties is one of the properties that specifies a Tool's orientation in a character's hand. This represents the R02, R12, and R22 values of the Grip [CFrame's](https://developer.roblox.com/search#stq=CFrame) rotation matrix.
+	 *
+	 * Other tool properties that control how a player holds a tool include: [Up](https://developer.roblox.com/search#stq=GripUp), [Right](https://developer.roblox.com/search#stq=GripRight), and [Pos](https://developer.roblox.com/search#stq=GripPos) properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/api-reference/property/Tool/Grip) property.
+	 *
+	 * In order to change a tool's grip properties, you must either use a `Script` or `LocalScript` or a Studio plugin such as [this][1] one.
+	 *
+	 * [1]: https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin
 	 */
 	GripForward: Vector3;
 	/** 
-	 * The positional offset of a Tool weld matrix.
+	 * The GripPos property controls the positional offset of a `Tool` weld matrix. It is one of several properties used to position how the player holds the tool.
+	 *
+	 * Other tool properties that control how a player holds a tool include: [Up](https://developer.roblox.com/search#stq=GripUp), [Right](https://developer.roblox.com/search#stq=GripRight), and [Forward](https://developer.roblox.com/search#stq=GripForward) properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/api-reference/property/Tool/Grip) property.
+	 *
+	 * In order to change a tool's grip properties, you must either use a `Script` or `LocalScript` or a plugin such as [this][1] one.
+	 *
+	 * [1]: https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin
 	 */
 	GripPos: Vector3;
 	/** 
-	 * One of the properties that specifies a Tool's orientation in a character's hand. This represents the R00, R10, and R20 values of the Grip CFrame's rotation matrix.
+	 * The GripRight property is one of the properties that specifies a [Tool's](https://developer.roblox.com/api-reference/class/Tool) orientation in a character's hand. This represents the R00, R10, and R20 values of the Grip [CFrame's](https://developer.roblox.com/search#stq=CFrame) rotation matrix.
+	 *
+	 * Other tool properties that control how a player holds a tool include: [Up](https://developer.roblox.com/search#stq=GripUp), [Forward](https://developer.roblox.com/search#stq=GripForward), and [Pos](https://developer.roblox.com/search#stq=GripPos) properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/api-reference/property/Tool/Grip) property.
+	 *
+	 * In order to change a tool's grip properties, you must either use a `Script` or `LocalScript` or a plugin such as [this][1] one.
+	 *
+	 * [1]: https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin
 	 */
 	GripRight: Vector3;
 	/** 
-	 * One of the properties that specifies a Tool's orientation in a character's hand. This represents the R01, R11, and R21 values of the Grip CFrame's rotation matrix.
+	 * The GripUp property is one of the properties that specifies a Tool's orientation in a character's hand. This represents the R01, R11, and R21 values of the Grip [CFrame's](https://developer.roblox.com/search#stq=CFrame) rotation matrix.
+	 *
+	 * Other tool properties that control how a player holds a tool include: [Right](https://developer.roblox.com/search#stq=GripRight), [Forward](https://developer.roblox.com/search#stq=GripForward), and [Pos](https://developer.roblox.com/search#stq=GripPos) properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/api-reference/property/Tool/Grip) property.
+	 *
+	 * In order to change a tool's grip properties, you must either use a `Script` or `LocalScript` or a plugin such as [this][1] one.
+	 *
+	 * [1]: https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin
 	 */
 	GripUp: Vector3;
 	/** 
+	 * The ManualActivationOnly property controls whether the `Tool` can be activated without explicitly executing [Tool.Activate](https://developer.roblox.com/api-reference/function/Tool/Activate) in a script.
+	 *
 	 * When set to true, the tool will only fire [Tool.Activated](https://developer.roblox.com/api-reference/event/Tool/Activated) when [Tool.Activate](https://developer.roblox.com/api-reference/function/Tool/Activate) is called. This also suppresses the `ContextActionService`'s [ContextActionService.BindActivate](https://developer.roblox.com/api-reference/function/ContextActionService/BindActivate) function.
 	 *
 	 * When set to false, mouse clicks (when the tool is equipped) will also fire [Tool.Activated](https://developer.roblox.com/api-reference/event/Tool/Activated).
 	 */
 	ManualActivationOnly: boolean;
 	/** 
-	 * If set to false the tool will function without a handle.
+	 * The RequiresTool property determines whether a `Tool` functions without a handle.
+	 *
+	 * A tool has a handle when it has a child part named "Handle". Tools without handles are typically ones that do not require the player equipping them to hold anything to use them. For instance, handles may not be necessary for *fly* or *build* tools. Tools with handles are typically ones that require the player equipping them to hold an object to use them. For instance, handle are likely necessary for weapons such as guns and swords.
+	 *
+	 * When set to true, the tool will function and be [activated](https://developer.roblox.com/api-reference/event/Tool/Activated) and [deactivated](https://developer.roblox.com/api-reference/event/Tool/Deactivated) without a handle.
+	 *
+	 * When set to false, the tool will not function without a handle.
 	 */
 	RequiresHandle: boolean;
 	/** 
-	 * This property controls the message that will be displayed when the player's mouse is hovering over the tool in their backpack.
+	 * The ToolTip property controls the message that will be displayed when the player's `Mouse` hovers over the `Tool` in their `Backpack`.
+	 *
+	 * Generally, the value of this property should describe the what the tool is or its use. For instance, for a shovel tool, you may choose to set the ToolTip to:
+	 *
+	 * ```lua
+	tool.ToolTip = "Shovel"
+```
+	 * 
+
+	 * or
+	 *
+	 * ```lua
+	tool.ToolTip = "Use to dig"
+```
+	 * 
+
+	 * or
+	 *
+	 * ```lua
+	tool.ToolTip = "Shovel - Use to dig"
+```
+	 *
 	 */
 	ToolTip: string;
 	/** 
-	 * Simulates a click on a Tool. Tool must be equipped.
+	 * The Activate function simulates a click on a `Tool`. The Tool must be equipped for this function to work.
+	 *
+	 * Tools will normally trigger the [Tool.Activated](https://developer.roblox.com/api-reference/event/Tool/Activated) event when the player releases the left mouse button, while the tool is equipped.
+	 *
+	 * The below code, when placed in a `LocalScript`, would create a tool in the [LocalPlayer's](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) `Backpack`. It will simulate the tool being activated and print "Tool activated" when the player equips the tool.
+	 *
+	 * ```lua
+local tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+tool.Equipped:Connect(function()
+	tool:Activate()
+end)
+
+function toolActivated()
+	print("Tool activated")
+end
+
+tool.Activated:Connect(toolActivated)
+```
+	 *
+	 * @returns void
 	 */
 	Activate(): void;
 	/** 
-	 * The event simulates the deactivation of a [Tool](https://developer.roblox.com/api-reference/class/Tool). Tools will normally trigger the [Tool.Deactivated](https://developer.roblox.com/api-reference/event/Tool/Deactivated) event when the player releases the left mouse button, while the tool is equipped.
+	 * The Deactivate function simulates the deactivation of a `Tool`. The Tool must be equipped for this function to work.
+	 *
+	 * Tools will normally trigger the [Tool.Deactivated](https://developer.roblox.com/api-reference/event/Tool/Deactivated) event when the player releases the left mouse button, while the tool is equipped.
+	 *
+	 * The below code, when placed in a `LocalScript`, would create a tool in the [LocalPlayer's](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) `Backpack`. It will simulate the tool being deactivated and print "Tool deactivated" when the player equips the tool.
+	 *
+	 * ```lua
+local tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+tool.Equipped:Connect(function()
+	tool:Deactivate()
+end)
+
+function toolDeactivated()
+	print("Tool deactivated")
+end
+
+tool.Deactivated:Connect(toolDeactivated)
+```
+	 *
+	 * @returns void
 	 */
 	Deactivate(): void;
 	/** 
-	 * Fired when the player clicks while a tool is equipped.
+	 * The Activated event fires when the player clicks while a `Tool` is equipped.
+	 *
+	 * This function is used to perform an action when the player uses the tool. For instance, when the player clicks while a *Rocket Launcher* tool is equipped, the activated event executes the code to create and launch a rocket.
+	 *
+	 * The below code, when placed in a `LocalScript`, would create a tool in the [LocalPlayer's](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) `Backpack`. It will print "Tool activated" when the player clicks while the created tool is equipped.
+	 *
+	 * ```lua
+local tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Parent = game.Players.LocalPlayer.Backpack
+ 
+function onActivation()
+	print("Tool activated")
+end
+ 
+tool.Activated:Connect(onActivation)
+```
+	 *
 	 */
 	readonly Activated: RBXScriptSignal<() => void>;
 	/** 
-	 * Fired when the left mouse button is released.
+	 * The Deactivated event fires when the left mouse button is released while a `Tool` is equipped.
+	 *
+	 * This function is used to perform an action when the player stops using a tool. For instance, a tool may make a player fly until they release their left mouse button.
+	 *
+	 * The below code, when placed in a `LocalScript`, would create a tool in the [LocalPlayer's](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) `Backpack`. It will print "Tool deactivated" when the player releases the left mouse button, while the tool is equipped.
+	 *
+	 * ```lua
+local tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Parent = game.Players.LocalPlayer.Backpack
+ 
+function toolDeactivated()
+	print("Tool deactivated")
+end
+ 
+tool.Deactivated:Connect(toolDeactivated)
+```
+	 *
 	 */
 	readonly Deactivated: RBXScriptSignal<() => void>;
 	/** 
-	 * Fired when the tool is equipped.
+	 * The Equipped event fires when a player when a player takes a `Tool` out of their `Backpack` to use. This event can be used to determine when a player stops using and puts a tool away.
+	 *
+	 * The opposite of this event, [Tool.Unequipped](https://developer.roblox.com/api-reference/event/Tool/Unequipped), can be used alongside this event to determine unequips a `Tool` by putting in back in their backpack.
 	 */
 	readonly Equipped: RBXScriptSignal<(mouse: Mouse) => void>;
 	/** 
@@ -2572,7 +2723,7 @@ local colorSequence = ColorSequence.new({
 	 *
 	 * Note the `Beam`'s coloration also depends on the number of [Beam.Segments](https://developer.roblox.com/api-reference/property/Beam/Segments) the `Beam` has. Each segment of the beam can only show a transition between two colors. Therefore a `Beam` will need to have at least n-1 segments in order for the color to display correctly, where n is the number of [DataType.ColorSequenceKeypoint](https://developer.roblox.com/search#stq=ColorSequenceKeypoint)s in the [DataType.ColorSequence](https://developer.roblox.com/search#stq=ColorSequence)
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt44487f7a1e259ab2/BeamColor.png
+	 * [1]: https://developer.roblox.com/assets/5b212d0b6b57a78e04a1076c/BeamColor.png
 	 */
 	Color: ColorSequence;
 	/** 
@@ -2678,7 +2829,7 @@ local controlPoint2 = Beam.Attachment1.WorldPosition - (Beam.Attachment1.CFrame.
 	 *
 	 * This property should not be confused with [Beam.LightInfluence](https://developer.roblox.com/api-reference/property/Beam/LightInfluence), which determines how particles are affected by environment light. This property does not cause the `Beam` to light the environment. To do that, consider using a `SurfaceLight`.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blta7d562b91fdd7f61/BeamLightEmission.png
+	 * [1]: https://developer.roblox.com/assets/5b2122606a3544a82611b5a0/BeamLightEmission.png
 	 */
 	LightEmission: number;
 	/** 
@@ -2692,9 +2843,9 @@ local controlPoint2 = Beam.Attachment1.WorldPosition - (Beam.Attachment1.CFrame.
 	 *
 	 * ![enter image description here][2]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt58bbd58122916e57/BeamLight1.png
+	 * [1]: https://developer.roblox.com/assets/5b211a9cb54f861f064bd2ea/BeamLight1.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt1d1d4b30144114c3/BeamLight2.png
+	 * [2]: https://developer.roblox.com/assets/5b211aa66b57a78e04a1073a/BeamLight2.png
 	 */
 	LightInfluence: number;
 	/** 
@@ -2744,9 +2895,9 @@ local controlPoint2 = Beam.Attachment1.WorldPosition - (Beam.Attachment1.CFrame.
 	 *
 	 * ![beamTexture2][2]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt92742bad209f4935/beamTexture.gif
+	 * [1]: https://developer.roblox.com/assets/5b20fcabb54f861f064bd269/beamTexture.gif
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt034506939f5674b3/beamTexture2.gif
+	 * [2]: https://developer.roblox.com/assets/5b20fcb1a00a67ed26443616/beamTexture2.gif
 	 */
 	TextureLength: number;
 	/** 
@@ -2766,9 +2917,9 @@ local controlPoint2 = Beam.Attachment1.WorldPosition - (Beam.Attachment1.CFrame.
 	 *
 	 * ![enter image description here][2]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt92742bad209f4935/beamTexture.gif
+	 * [1]: https://developer.roblox.com/assets/5b20fcabb54f861f064bd269/beamTexture.gif
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt034506939f5674b3/beamTexture2.gif
+	 * [2]: https://developer.roblox.com/assets/5b20fcb1a00a67ed26443616/beamTexture2.gif
 	 */
 	TextureMode: Enum.TextureMode;
 	/** 
@@ -2802,7 +2953,7 @@ local numberSequence = NumberSequence.new({
 	 *
 	 * Note the [Beam's](https://developer.roblox.com/api-reference/class/Beam) transparency also depends on the number of [Beam.Segments](https://developer.roblox.com/api-reference/property/Beam/Segments) the `Beam` has. Each segment of the beam can only show a transition between two transparencies. Therefore a `Beam` will need to have at least n-1 segments in order to display correctly, where n is the number of [DataType.NumberSequenceKeypoint](https://developer.roblox.com/search#stq=NumberSequenceKeypoint)s in the [DataType.NumberSequence](https://developer.roblox.com/search#stq=NumberSequence)
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltb919bbb4d83c7ba8/BeamTransparency.png
+	 * [1]: https://developer.roblox.com/assets/5b213349b54f861f064bd389/BeamTransparency.png
 	 */
 	Transparency: NumberSequence;
 	/** 
@@ -2814,7 +2965,7 @@ local numberSequence = NumberSequence.new({
 	 *
 	 * The width properties should not be confused with [Beam.CurveSize0](https://developer.roblox.com/api-reference/property/Beam/CurveSize0) and [Beam.CurveSize1](https://developer.roblox.com/api-reference/property/Beam/CurveSize1) which control the curvature of the beam.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltaa8ac3288251010b/Width.png
+	 * [1]: https://developer.roblox.com/assets/5b154b5c9a16a6df0e498f8f/Width.png
 	 */
 	Width0: number;
 	/** 
@@ -2826,7 +2977,7 @@ local numberSequence = NumberSequence.new({
 	 *
 	 * The width properties should not be confused with [Beam.CurveSize0](https://developer.roblox.com/api-reference/property/Beam/CurveSize0) and [Beam.CurveSize1](https://developer.roblox.com/api-reference/property/Beam/CurveSize1) which control the curvature of the beam.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltaa8ac3288251010b/Width.png
+	 * [1]: https://developer.roblox.com/assets/5b154b5c9a16a6df0e498f8f/Width.png
 	 */
 	Width1: number;
 	/** 
@@ -2842,7 +2993,7 @@ local numberSequence = NumberSequence.new({
 	 *
 	 * [1]: https://en.wikipedia.org/wiki/Z-fighting
 	 *
-	 * [2]: https://developer.roblox.com/assets/blta08e9828cbe14d33/ZOffset.gif
+	 * [2]: https://developer.roblox.com/assets/5b154661344ad0d40f781c07/ZOffset.gif
 	 */
 	ZOffset: number;
 	/** 
@@ -4296,21 +4447,52 @@ interface Chat extends Instance {
 }
 
 /** 
- * ClickDetector allows both [Scripts](https://developer.roblox.com/api-reference/class/Script) and [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript) to receive user input. They are placed inside [Models](https://developer.roblox.com/api-reference/class/Model), [Folders](https://developer.roblox.com/api-reference/class/Folder), and [BaseParts](https://developer.roblox.com/api-reference/class/BasePart). They mirror user input to the server through FilteringEnabled. They can detect basic mouse events: enter, leave, left click and right click.
+ * ![](https://developer.roblox.com/assets/5be74d4925039c7a0b8f8581/ClickDetector.png)
  *
- * If an action bound with `/ContextActionService` uses the same input as a ClickDetector, the bound action will take priority and the ClickDetector events will not fire.
+ * ![](https://developer.roblox.com/assets/5be74d9c25039c7a0b8f8587/ClickDetector2.png)
  *
- * With gamepad input, the right trigger button will fire the MouseClick event and center dot will trigger MouseHoverEnter/MouseHoverLeave.
+ * **ClickDetector** allows [Scripts](https://developer.roblox.com/api-reference/class/Script) and [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript) to receive pointer input on 3D objects. They are placed inside [BaseParts](https://developer.roblox.com/api-reference/class/BasePart), [Models](https://developer.roblox.com/api-reference/class/Model) and [Folders](https://developer.roblox.com/api-reference/class/Folder). They can detect basic mouse events: enter, leave, left click and right click. Touch input on [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) devices will also fire click events. For gamepad input, the right trigger button will fire the [MouseClick](https://developer.roblox.com/api-reference/event/ClickDetector/MouseClick) event and center dot will trigger [MouseHoverEnter](https://developer.roblox.com/api-reference/event/ClickDetector/MouseHoverEnter)/[MouseHoverLeave](https://developer.roblox.com/api-reference/event/ClickDetector/MouseHoverLeave).
  *
- * LocalScripts can connect to ClickDetector events and they will fire on the client. Since LocalScripts only run if they are descendants of a `/Player` or Player's Character, it's not a good idea to put LocalScripts inside ClickDetectors. If you need a LocalScript to detect ClickDetector events, `/StarterPlayerScripts` may be a better place instead.
+ * Below is a simple template script for working with ClickDetectors. Paste it into a `Script` or a `LocalScript`.
  *
- * If multiple ClickDetectors would detect a user input, only the deepest ClickDetector will fire events. If two ClickDetectors are siblings, the first ClickDetector takes priority. Due to the nature of user input, you ought not depend on all MouseHoverEnter events to fire a matching MouseHoverLeave event.
+ * ```lua
+local clickDetector = workspace.Part.ClickDetector
+
+function onMouseClick()
+	print("You clicked me!")
+end
+
+clickDetector.MouseClick:connect(onMouseClick)
+```
+ * 
+
+ * [MaxActivationDistance](https://developer.roblox.com/api-reference/property/ClickDetector/MaxActivationDistance) can be used to limit the distance a player may be from a ClickDetector object before it is no longer clickable.
+ *
+ * ClickDetector events fire on both the client and the server, even when [FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled) is on. Since [LocalScript](https://developer.roblox.com/api-reference/class/LocalScripts) will only run if they are descendants of a `Player` or Player's Character, it's usually not useful to put a LocalScript inside a ClickDetector (since the script won't run, or the object won't be clickable). If you need a LocalScript to detect ClickDetector events, `StarterPlayerScripts` may be a better place instead.
+ *
+ * ## Input Priority
+ *
+ * If multiple ClickDetectors would detect a user input, only the deepest ClickDetector will fire events. If an action bound with `ContextActionService` uses the same input as a ClickDetector, the action bound with ContextActionService will take priority over ClickDetector events. If two ClickDetectors are siblings, the first ClickDetector will take priority. [UserInputService.InputBegan](https://developer.roblox.com/api-reference/event/UserInputService/InputBegan) will fire before ClickDetector events. Due to the nature of user input, you ought not depend on all [MouseHoverEnter](https://developer.roblox.com/api-reference/event/ClickDetector/MouseHoverEnter) events to fire a matching [MouseHoverLeave](https://developer.roblox.com/api-reference/event/ClickDetector/MouseHoverLeave) event.
  */
 interface ClickDetector extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ClickDetector";
 	/** 
-	 * Sets the mouse icon that will be displayed when the mouse is hovered over this ClickDetector.
+	 * The CursorIcon sets the mouse icon that will be displayed when the [Mouse.mouse](https://developer.roblox.com/search#stq=mouse) hovers over this `ClickDetector`.
+	 *
+	 * If this property is left blank, the ClickDetector will use the default icon:
+	 *
+	 * ![Default cursor icon][1]
+	 *
+	 * To change the ClickDetector's cursor icon, set the property to the asset id or URL of the image you would like to use. For instance, setting the property to `2287179377` or [this][2] URL changes the cursor icon to:
+	 *
+	 * ![Custom cursor icon][3]
+	 *
+	 * [1]: https://developer.roblox.com/assets/5b8745b5acedd45c0bf7ccfa/ClickDetectorCursorIcon.png
+	 *
+	 * [2]: https://www.roblox.com/My/Item.aspx?ID=2287179377
+	 *
+	 * [3]: https://developer.roblox.com/assets/5b874ff0fcd8df450b22f391/InterestCursorIcon.png
 	 */
 	CursorIcon: string;
 	/** 
@@ -5968,11 +6150,11 @@ interface Debris extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Debris";
 	/** 
-	 * The AddItem method allows the developer to schedule the removal of the object without yielding any code.
+	 * This function allows the developer to schedule the removal of the object without yielding any code.
 	 *
 	 * Registers a given `Instance` to the `Debris` service for removal after the specified delay. The first argument is the object being removed, and the second argument is the amount of time in seconds the `Debris` service will wait before removing the object. The delay argument is optional, if it is not specified, it defaults to 10 seconds. The delay argument is a number, so it accepts decimal points, such as '1.5', or '0.25'.
 	 *
-	 * **Why use Debris?**
+	 * ### Why use Debris?
 	 *
 	 * Beyond creating a bit of a mess, objects that are no longer required can use up system memory and cause the game to run slower over time. For this reason it is always advised to run the [Instance.Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy) function on objects you no longer need. However in many cases an object may have a specific period of utility after which it needs to be destroyed.
 	 *
@@ -6002,8 +6184,9 @@ end)
 	 *     Debris:AddItem(projectile, 3)
 	 *
 	 * Debris does not yield the current thread, does not require a new thread and will not error if the object is already destroyed. For this reason it is the recommended method for cleaning up objects with a fixed lifetime.
-	 * @param item The `Instance` to be added to `Debris`.
-	 * @param lifetime The number of seconds before the `Instance` should be destroyed.
+	 * @param item The `Instance` to be added to `Debris`
+	 * @param lifetime The number of seconds before the `Instance` should be destroyed
+	 * @returns void
 	 */
 	AddItem(item: Instance, lifetime?: number): void;
 }
@@ -8501,7 +8684,17 @@ interface ImageLabel extends GuiLabel {
 	 * The SliceCenter property determines the center of a nine-slice image when [ImageLabel.ScaleType](https://developer.roblox.com/api-reference/property/ImageLabel/ScaleType) is set to [Enum.ScaleType.Slice](https://developer.roblox.com/search#stq=ScaleType).
 	 */
 	SliceCenter: Rect;
-	/** [NO DOCUMENTATION] */
+	/** 
+	 * Scales the 9slice edges by the specified ratio. This means that the edges around the 9slice will grow as if you'd uploaded a new version of the texture upscaled. Defaults to 1.0.
+	 *
+	 * ## See also
+	 *
+	 *   - [ImageLabel.ScaleType](https://developer.roblox.com/api-reference/property/ImageLabel/ScaleType), determines how an image will scale if displayed in a UI element whose size differs from the source image
+	 *
+	 *   - [ImageLabel.ScaleCenter](https://developer.roblox.com/search#stq=ScaleCenter),determines the center of a 9slice image
+	 *
+	 *   - [ImageLabel.SliceScale](https://developer.roblox.com/api-reference/property/ImageLabel/SliceScale), the same property in terms of functionality but for [ImageLabels](https://developer.roblox.com/api-reference/class/ImageLabel)
+	 */
 	SliceScale: number;
 	/** 
 	 * TileSize sets the tiling size of the ImageLabel. The default `UDim2` values are 1,0,1,0. The scale component of the UDim2 will scale the tile based on the size of the ImageLabel. The offset is in raw pixels. The tiling starts at the upper left-hand corner of the image. For example a scale of 0.5 will mean the tile will be half the size of the ImageLabel (in the corresponding axis).
@@ -11828,15 +12021,15 @@ interface InsertService extends Instance {
 	 *
 	 * ```lua
 [1] = {
-	CurrentStartIndex = 1; -- This can vary depending on the page you input.
-	TotalCount = 21; -- Always 21.
+	CurrentStartIndex = 1, -- This can vary depending on the page you input.
+	TotalCount = 21, -- Always 21.
 	Results = {
 		-- All parameters here are psuedo. They can vary depending on the asset.
 		[1] = {	
-			Name = "Asset Name"; 
-			AssetId = 0000000;
-			AssetVersionId = 0000000;
-			CreatorName = "Roblox";
+			Name = "Asset Name",
+			AssetId = 0000000,
+			AssetVersionId = 0000000,
+			CreatorName = "Roblox",
 		},
 		-- [2], [3], and so on... up to [21]
 	},
@@ -12253,7 +12446,7 @@ interface KeyboardService extends Instance {
  *
  * During animation playback the poses in different keyframes are interpolated between. This allows a smooth animation to be created without needing to define every frame. Note, the style of interpolation is determined in the `Pose` object. The Keyframe object merely holds the `Pose`s at a defined point of time in the animation ([Keyframe.Time](https://developer.roblox.com/api-reference/property/Keyframe/Time)).
  *
- * [1]: https://developer.roblox.com/assets/blt2e767397c28fecda/KeyframeSequence_-_Copy.png
+ * [1]: https://developer.roblox.com/assets/5aa797693595493f77511b1d/KeyframeSequence_-_Copy.png
  */
 interface Keyframe extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -12544,6 +12737,8 @@ interface PointLight extends Light {
  *
  * This shows the dimensions of the ice cream cone-shaped spotlight:
  *
+ * ![FinishedSL.png](https://developer.roblox.com/assets/5b2db585cfc846f95726a902/FinishedSL.png)
+ *
  * For more light types, see the **see also** section.
  *
  * See Also
@@ -12634,7 +12829,7 @@ interface Lighting extends Instance {
 	 *
 	 * For more properties that influence the color of lighting, please see [Lighting.ColorShift_Bottom](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Bottom) and [Lighting.ColorShift_Top](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Top).
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt6e6c67086eab8c57/Ambient.png
+	 * [1]: https://developer.roblox.com/assets/5afee40af5d3ca4711f85722/Ambient.png
 	 */
 	Ambient: Color3;
 	/** 
@@ -12780,7 +12975,7 @@ end
 	 *
 	 * Note, [Lighting.ColorShift_Top](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Top) and ColorShift_Bottom will interact with the [Lighting.Ambient](https://developer.roblox.com/api-reference/property/Lighting/Ambient) and [Lighting.OutdoorAmbient](https://developer.roblox.com/api-reference/property/Lighting/OutdoorAmbient) properties if they are greater than 0, 0, 0. Also, the influence of ColorShift_Bottom can be very hard to identify when [Lighting.GlobalShadows](https://developer.roblox.com/api-reference/property/Lighting/GlobalShadows) is enabled (as it is by default).
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt6316b01e497fa7aa/ColorShift.png
+	 * [1]: https://developer.roblox.com/assets/5afeea5eaa88f4481181eec5/ColorShift.png
 	 */
 	ColorShift_Bottom: Color3;
 	/** 
@@ -12796,7 +12991,7 @@ end
 	 *
 	 * Note, ColorShift_Top and [Lighting.ColorShift_Bottom](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Bottom) will interact with the [Lighting.Ambient](https://developer.roblox.com/api-reference/property/Lighting/Ambient) and [Lighting.OutdoorAmbient](https://developer.roblox.com/api-reference/property/Lighting/OutdoorAmbient) properties if they are greater than 0, 0, 0.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt6316b01e497fa7aa/ColorShift.png
+	 * [1]: https://developer.roblox.com/assets/5afeea5eaa88f4481181eec5/ColorShift.png
 	 */
 	ColorShift_Top: Color3;
 	/** 
@@ -12945,7 +13140,7 @@ Lighting.FogEnd = 200
 	 *
 	 * [1]: https://blog.roblox.com/2013/02/dynamic-lighting-and-shadows-the-voxel-solution/
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt23745970e2437872/GlobalShadows.png
+	 * [2]: https://developer.roblox.com/assets/5aff031c00d367bf11f1e487/GlobalShadows.png
 	 */
 	GlobalShadows: boolean;
 	/** 
@@ -12961,7 +13156,7 @@ Lighting.FogEnd = 200
 	 *
 	 * For more properties that influence the color of lighting, please see [Lighting.ColorShift_Bottom](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Bottom) and [Lighting.ColorShift_Top](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Top).
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt6e6c67086eab8c57/Ambient.png
+	 * [1]: https://developer.roblox.com/assets/5afee40af5d3ca4711f85722/Ambient.png
 	 */
 	OutdoorAmbient: Color3;
 	/** 
@@ -13473,13 +13668,13 @@ print("Hello, world")
  *
  *  - Disabled property is false
  *
- *  - The Script object is a descendant of the Workspace or
+ *  - The Script object is a descendant of the `Workspace` or
  *
- *    ServerScriptService
+ *    `ServerScriptService`
  *
- * The Script will continue to run until the above conditions are not met, it terminates or it raises an error (unless that error is raised by a function connected to some event that is firing). Additionally, the thread will be stopped if the Script or one of its ancestors is destroyed.  A script will continue to run even if the Parent property is set to nil (and the Script is not destroyed).
+ * The Script will continue to run until the above conditions are not met, it terminates or it raises an error (unless that error is raised by a function connected to some event that is firing). Additionally, the thread will be stopped if the Script or one of its ancestors is destroyed.  A script will continue to run even if the [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property is set to nil (and the Script is not destroyed).
  *
- * It has access to server-side objects, properties and events. For example, Scripts can award badges to players using BadgeService, while a LocalScript on the client cannot. Actions taken by LocalScripts that are not replicated (due to FilteringEnabled) will not be visible to Scripts.
+ * It has access to server-side objects, properties and events. For example, Scripts can award badges to players using `BadgeService`, while a `LocalScript` on the client cannot. Actions taken by LocalScripts that are not replicated (due to [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled)) will not be visible to Scripts.
  */
 interface Script extends BaseScript {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -18547,7 +18742,11 @@ interface Players extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Players";
 	/** 
-	 * Indicates whether or not bubble chat is enabled. It is set with the [Players.SetChatStyle](https://developer.roblox.com/api-reference/function/Players/SetChatStyle) method.
+	 * The BubbleChat `Players` property indicates whether or not bubble chat is enabled. It is set with the [Players.SetChatStyle](https://developer.roblox.com/api-reference/function/Players/SetChatStyle) method using the [Enum.ChatStyle](https://developer.roblox.com/search#stq=ChatStyle) enum.
+	 *
+	 * When this chat mode is enabled, the game displays chats in the chat user interface at the top-left corner of the screen.
+	 *
+	 * There are two other chat modes, [Players.ClassicChat](https://developer.roblox.com/api-reference/property/Players/ClassicChat) and a chat mode where both classic and bubble chat are enabled.
 	 */
 	readonly BubbleChat: boolean;
 	/** 
@@ -18586,7 +18785,11 @@ local player = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPla
 	/** @rbxts client */
 	readonly LocalPlayer: Player;
 	/** 
-	 * The maximum amount of players that can be in this server.
+	 * The MaxPlayers `Players` property determines the maximum amount of players that can be in this server.
+	 *
+	 * While this property cannot be set through `Script`s or `LocalScript`s in-game, it can be set from the place settings' *Access* tab on the site.
+	 *
+	 * You can change this value depending on the number of player's you would like to limit in a single server. The number of players in a server affects the feel of your game and it's performance.
 	 */
 	readonly MaxPlayers: number;
 	/** 
@@ -18605,6 +18808,27 @@ local player = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPla
 	 * * If the player has **no friends** in the server, a new server is started since the existing server has met the number of PreferredPlayers (the player could still join the server by manually selecting it or following another user).
 	 */
 	readonly PreferredPlayers: number;
+	/** 
+	 * The RespawnTime property controls the time, in seconds, it takes for a player to respawn when [Players.CharacterAutoLoads](https://developer.roblox.com/api-reference/property/Players/CharacterAutoLoads) is *true*. It defaults to 5.0 seconds.
+	 *
+	 * ![RespawnTime property in Studio Explorer Window][1]
+	 *
+	 * This is useful when you want to change how long it takes to respawn based on the type of your game but don't want to handle spawning players individually. Social games may want to decrease the respawn time whereas action games may want to increase it.
+	 *
+	 * Although this can be set from within a `Script`, you will likely set the property from within Studio via the Players service property window.
+	 *
+	 * ```lua
+local Players = game:GetService(“Players”)
+Players.RespawnTime = 10.0
+```
+	 * 
+
+	 * ### See also
+	 *
+	 *   - [Player.SpawnLocation](https://developer.roblox.com/search#stq=SpawnLocation), if set, the player will respawn at the given `SpawnLocation`
+	 *
+	 * [1]: https://developer.roblox.com/assets/5c8af0a4574d119437783086/RespawnTimeInExplorer.png
+	 */
 	RespawnTime: number;
 	/** 
 	 * This function searches each [player](https://developer.roblox.com/api-reference/class/Player) in `Players` for one whose [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId) matches the given UserId. If such a player does not exist, it simply returns `nil`. It is equivalent to the following function:
@@ -21845,7 +22069,7 @@ print(listenerType, listener)
  *
  * Sparkles particles are only emit from the center of `BasePart` to which they are parented. Parenting a Sparkles object to an `Attachment` instead allows customization of the particles' start position.
  *
- * [1]: https://developer.roblox.com/assets/bltb4fd95f7dbbb308a/Sparkles.png
+ * [1]: https://developer.roblox.com/assets/5b0acf189ff66f1e10708c5c/Sparkles.png
  */
 interface Sparkles extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -21857,7 +22081,7 @@ interface Sparkles extends Instance {
 	 *
 	 * It should be noted that sparkles have a partial [ParticleEmitter.LightEmission](https://developer.roblox.com/api-reference/property/ParticleEmitter/LightEmission) effect, so dark colors tend to render more transparent and white colors look very bright.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt22f35a953a5b6687/Sparkles_SparkleColor.png
+	 * [1]: https://developer.roblox.com/assets/5b0ad06b7f08d31910651bab/Sparkles_SparkleColor.png
 	 *
 	 * Note
 	 *
@@ -21871,7 +22095,7 @@ interface Sparkles extends Instance {
 	 *
 	 * It should be noted that sparkles have a partial [ParticleEmitter.LightEmission](https://developer.roblox.com/api-reference/property/ParticleEmitter/LightEmission) effect, so dark colors tend to render more transparent and white colors look very bright.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt22f35a953a5b6687/Sparkles_SparkleColor.png
+	 * [1]: https://developer.roblox.com/assets/5b0ad06b7f08d31910651bab/Sparkles_SparkleColor.png
 	 *
 	 * Note
 	 *
@@ -21904,7 +22128,7 @@ stopSparkling(part.Sparkles)
 	 *
 	 * It should be noted that sparkles have a partial [ParticleEmitter.LightEmission](https://developer.roblox.com/api-reference/property/ParticleEmitter/LightEmission) effect, so dark colors tend to render more transparent and white colors look very bright.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt22f35a953a5b6687/Sparkles_SparkleColor.png
+	 * [1]: https://developer.roblox.com/assets/5b0ad06b7f08d31910651bab/Sparkles_SparkleColor.png
 	 *
 	 * Note
 	 *
@@ -24556,7 +24780,7 @@ interface UIGridStyleLayout extends UILayout {
  *
  * This layout is appropriate when line breaks are OK after arbitrary cells. For example, a set of inventory spaces is a good use of this layout. If building a table of values in which a line break is not appropriate in the middle of tabular data, it might be a better idea to use a `UITableLayout` instead.
  *
- * [1]: https://developer.roblox.com/assets/bltb9ddab50d7fdebee/UIGridLayout.png
+ * [1]: https://developer.roblox.com/assets/5af8babb46ab6b416257973e/UIGridLayout.png
  */
 interface UIGridLayout extends UIGridStyleLayout {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -24590,7 +24814,7 @@ interface UIGridLayout extends UIGridStyleLayout {
 	 *
 	 * Above, the potion is the first `ImageLabel`, followed by the gem and the sword. The UIGridLayout is using a [Enum.StartCorner](https://developer.roblox.com/search#stq=StartCorner) of BottomRight. The [UIGridStyleLayout.FillDirection](https://developer.roblox.com/api-reference/property/UIGridStyleLayout/FillDirection) is Horizontal.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltb27258f9e16b81e2/UIGridLayout_StartCorner.png
+	 * [1]: https://developer.roblox.com/assets/5af8bf466aa152d560c4b684/UIGridLayout_StartCorner.png
 	 */
 	StartCorner: Enum.StartCorner;
 }
@@ -24841,7 +25065,7 @@ interface UserGameSettings extends Instance {
 	 */
 	GamepadCameraSensitivity: number;
 	/** 
-	 * A [float](https://wiki.roblox.com/index.php?title=Float) between 0 and 1 representing the volume of the game's client.
+	 * A [float](https://developer.roblox.com/articles/Numbers) between 0 and 1 representing the volume of the game's client.
 	 */
 	MasterVolume: number;
 	/** 
@@ -25001,7 +25225,7 @@ end
 	 */
 	readonly GamepadEnabled: boolean;
 	/** 
-	 * This property describes whether the user's device has a gyroscope. I
+	 * This property describes whether the user's device has a gyroscope.
 	 *
 	 * A gyroscope is an component found in most mobile devices that detects orientation and rotational speed.
 	 *
@@ -25481,13 +25705,41 @@ local connectedGamepads = userInputService:GetConnectedGamepads()
 	 */
 	GetGamepadConnected(gamepadNum: CastsToEnum<Enum.UserInputType>): boolean;
 	/** 
-	 * The GetGamepadState function returns an array of [InputObjects](https://developer.roblox.com/api-reference/class/InputObject) for each input on the gamepad with each input's last input state. You can iterate through the returned array to determine the last state of each valid input type for the gamepad.
+	 * This function returns an array of [InputObjects](https://developer.roblox.com/api-reference/class/InputObject) for all available inputs on the given [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) gamepad, representing each input’s last input state.
 	 *
-	 * To determine which [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) Gamepads are connected, you can use the [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads) function.
+	 * To find the [UserInputTypes](https://developer.roblox.com/search#stq=UserInputType) of connected gamepads, use [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads).
 	 *
-	 * Since it only fires locally, it can only be used in a `LocalScript`.
-	 * @param gamepadNum A `Enum/UserInputType` value corresponding to the gamepad you want to get the state of.
-	 * @returns Array of `InputObject`s.
+	 * As this function only fires locally, it can only be used in a `LocalScript`.
+	 *
+	 * See [this][1] page for articles on cross-platform development.
+	 *
+	 * ## See also
+	 *
+	 *  - [UserInputService.GamepadConnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadConnected)
+	 *
+	 *  - [UserInputService.GamepadDisconnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadDisconnected)
+	 *
+	 *  - [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads)
+	 *
+	 *  - [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads)
+	 *
+	 *  - [UserInputService.SetNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/SetNavigationGamepad)
+	 *
+	 *  - [UserInputService.IsNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/IsNavigationGamepad)
+	 *
+	 *  - [UserInputService.IsGamepadButtonDown](https://developer.roblox.com/api-reference/function/UserInputService/IsGamepadButtonDown)
+	 *
+	 *  - [UserInputService.GetSupportedGamepadKeyCodes](https://developer.roblox.com/api-reference/function/UserInputService/GetSupportedGamepadKeyCodes)
+	 *
+	 *  - [UserInputService.GetGamepadConnected](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadConnected)
+	 *
+	 *  - [UserInputService.GamepadSupports](https://developer.roblox.com/api-reference/function/UserInputService/GamepadSupports)
+	 *
+	 *  - [UserInputService.GamepadEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GamepadEnabled)
+	 *
+	 * [1]: https://developer.roblox.com/learn-roblox/cross-platform
+	 * @param gamepadNum The `Enum/UserInputType` corresponding with the gamepad in question
+	 * @returns An array of `InputObject|InputObjects` representing the current state of all available inputs for the given gamepad
 	 */
 	GetGamepadState(gamepadNum: CastsToEnum<Enum.UserInputType>): Array<InputObject>;
 	/** 
@@ -25539,12 +25791,12 @@ local connectedGamepads = userInputService:GetConnectedGamepads()
 	 */
 	GetMouseDelta(): Vector2;
 	/** 
-	 * The GetMouseLocation function returns a [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2) of the current screen location of the player's `Mouse` in pixels.
+	 * This function returns a [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2) representing the current screen location of the player's `Mouse` in pixels relative to the top left corner. This does not account for the [GUI](https://developer.roblox.com/api-reference/class/GuiObject) inset.
 	 *
-	 * **Note:** If the location of the mouse pointer is offscreen or the players device does not have a mouse, such as a gamepad or touchscreen, the value returned will be undetermined.
+	 * If the location of the mouse pointer is offscreen or the players device does not have a mouse, the value returned will be undetermined instead of Vector2.
 	 *
-	 * Since `UserInputService` only runs client-side, this function will only work when used in a `LocalScript`.
-	 * @returns The current screen location of the mouse.
+	 * As `UserInputService` is client-side  only, this function can only be used in a `LocalScript`.
+	 * @returns A `DataType/Vector2|Vector2` representing the current screen location of the mouse, in pixels
 	 */
 	GetMouseLocation(): Vector2;
 	/** 
