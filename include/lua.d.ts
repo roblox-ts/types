@@ -196,7 +196,7 @@ interface String {
 	format(...args: Array<number | string>): string;
 
 	/** Returns an iterator function that, each time it is called, returns the next captures from pattern over the string s. */
-	gmatch(pattern: string): IterableFunction<LuaTuple<Array<string>>>;
+	gmatch(pattern: string): IterableFunction<LuaTuple<Array<string | undefined>>>;
 
 	/** Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. */
 	gsub(pattern: string, repl: unknown, n?: number): string;
