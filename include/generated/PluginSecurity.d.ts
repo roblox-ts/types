@@ -32,7 +32,7 @@ interface Instance {
 
 interface Animator extends Instance {
 	/** 
-	 * Increments the [AnimationTrack.TimePosition](https://developer.roblox.com/api-reference/property/AnimationTrack/TimePosition) of all playing `AnimationTrack`s that are loaded onto the `Animator`, applying the offsets to the model associated with the `Animator`. For use in the command bar or by plugins only.
+	 * Increments the [Animation.TimePosition](https://developer.roblox.com/search#stq=TimePosition) of all playing `AnimationTrack`s that are loaded onto the `Animator`, applying the offsets to the model associated with the `Animator`. For use in the command bar or by plugins only.
 	 *
 	 * The deltaTime paramater determines the number of seconds to increment on the animation's progress. Typically this function will be called in a loop to preview the length of an animation (see example).
 	 *
@@ -103,61 +103,13 @@ interface File extends Instance {
 interface PluginGui extends LayerCollector {
 	/** [NO DOCUMENTATION] */
 	GetRelativeMousePosition(): Vector2;
-	/** 
-	 * This event fires when the user releases their mouse to stop dragging a `Plugin` GUI during a `PluginDragEvent`.
-	 *
-	 * ## See also
-	 *
-	 *   - [Plugin.StartDrag](https://developer.roblox.com/api-reference/function/Plugin/StartDrag)
-	 *
-	 *   - [PluginGui.PluginDragEntered](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragEntered)
-	 *
-	 *   - [PluginGui.PluginDragLeft](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragLeft)
-	 *
-	 *   - [PluginGui.PluginDragMoved](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragMoved)
-	 */
+	/** [NO DOCUMENTATION] */
 	readonly PluginDragDropped: RBXScriptSignal<(dragData: object) => void>;
-	/** 
-	 * This event fires when the user's mouse enters a `Plugin` GUI during a `PluginDragEvent`.
-	 *
-	 * ## See also
-	 *
-	 *   - [Plugin.StartDrag](https://developer.roblox.com/api-reference/function/Plugin/StartDrag)
-	 *
-	 *   - [PluginGui.PluginDragLeft](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragLeft)
-	 *
-	 *   - [PluginGui.PluginDragMoved](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragMoved)
-	 *
-	 *   - [PluginGui.PluginDragDropped](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragDropped)
-	 */
+	/** [NO DOCUMENTATION] */
 	readonly PluginDragEntered: RBXScriptSignal<(dragData: object) => void>;
-	/** 
-	 * This event fires when the user's mouse leaves a `Plugin` GUI during a `PluginDragEvent`.
-	 *
-	 * ## See also
-	 *
-	 *   - [Plugin.StartDrag](https://developer.roblox.com/api-reference/function/Plugin/StartDrag)
-	 *
-	 *   - [PluginGui.PluginDragEntered](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragEntered)
-	 *
-	 *   - [PluginGui.PluginDragMoved](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragMoved)
-	 *
-	 *   - [PluginGui.PluginDragDropped](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragDropped)
-	 */
+	/** [NO DOCUMENTATION] */
 	readonly PluginDragLeft: RBXScriptSignal<(dragData: object) => void>;
-	/** 
-	 * This event fires when the user's mouse moves within a `Plugin` GUI during a `PluginDragEvent`.
-	 *
-	 * ## See also
-	 *
-	 *   - [Plugin.StartDrag](https://developer.roblox.com/api-reference/function/Plugin/StartDrag)
-	 *
-	 *   - [PluginGui.PluginDragEntered](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragEntered)
-	 *
-	 *   - [PluginGui.PluginDragLeft](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragLeft)
-	 *
-	 *   - [PluginGui.PluginDragDropped](https://developer.roblox.com/api-reference/event/PluginGui/PluginDragDropped)
-	 */
+	/** [NO DOCUMENTATION] */
 	readonly PluginDragMoved: RBXScriptSignal<(dragData: object) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly WindowFocusReleased: RBXScriptSignal<() => void>;
@@ -255,39 +207,15 @@ interface Player extends Instance {
 
 interface Players extends Instance {
 	/** 
-	 * This function makes the local player chat the given message. Since this item is protected, attempting to use it in a `Script` or `LocalScript` will cause an error.
-	 *
-	 * Instead, when creating a custom chat system, or a system that needs access to the chat, you can use the `Chat` service's [Chat.Chat](https://developer.roblox.com/api-reference/function/Chat/Chat) function instead.
-	 *
-	 * ## See also
-	 *
-	 *  - [Lua Chat System](https://developer.roblox.com/search#stq=Lua-Chat-System), a tutorial for creating a more advanced chat system
-	 * @param message The message chatted.
-	 * @returns void
+	 * Makes the local player chat the given message.
 	 */
 	Chat(message: string): void;
 	/** 
-	 * This function sets whether BubbleChat and ClassicChat are being used, and tells TeamChat and Chat what to do using the `ChatStyle` enum. Since this item is protected, attempting to use it in a `Script` or `LocalScript` will cause an error.
-	 *
-	 * This function is used internally when the chat mode is set by the game.
-	 *
-	 * If you would like to create a custom chat system where you can define custom functions such as these, take a look at the tutorial [here][1].
-	 *
-	 * [1]: https://developer.roblox.com/articles/Lua-Chat-System
-	 * @param style The specified chat style being set
-	 * @returns void
+	 * Sets whether BubbleChat and ClassicChat are being used, and tells TeamChat and Chat what to do.
 	 */
 	SetChatStyle(style?: CastsToEnum<Enum.ChatStyle>): void;
 	/** 
-	 * This function makes the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) chat the given message, which will only be viewable by users on the same team. Since this item is protected, attempting to use it in a `Script` or `LocalScript` will cause an error.
-	 *
-	 * This function is used internally when the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) sends a message to their team.
-	 *
-	 * If you would like to create a custom chat system where you can define custom functions such as these, take a look at the tutorial [here][1].
-	 *
-	 * [1]: https://developer.roblox.com/articles/Lua-Chat-System
-	 * @param message The message being chatted.
-	 * @returns void
+	 * Makes the LocalPlayer chat the given message, which will only be viewable by users on the same team.
 	 */
 	TeamChat(message: string): void;
 }
@@ -308,25 +236,11 @@ interface Plugin extends Instance {
 	 */
 	Activate(exclusiveMouse: boolean): void;
 	/** 
-	 * This function creates a `PluginAction` which is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`. In Roblox Studio, they can be assigned a keyboard shortcut under `File → Advanced → Customize Shortcuts…`, and they can also be added to the Quick Access Toolbar.
-	 *
-	 * When an action is triggered, the [PluginAction.Triggered](https://developer.roblox.com/api-reference/event/PluginAction/Triggered) event is signaled.
-	 *
-	 * In order for PluginActions work as expected, they must be created using this function.
-	 *
-	 * ## See also
-	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
-	 *
-	 *   - `PluginMenu`, a context menu that can be shown in Studio which displays a list of PluginActions and supports submenus
-	 *
-	 *   - [Plugin.CreatePluginMenu](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginMenu), creates a PluginMenu
-	 * @param actionId Must be a unique string that identifies this PluginAction from others
-	 * @param text The displayed name of the action
-	 * @param statusTip The displayed description of the action
-	 * @param iconName The name of the icon used to display the plugin
-	 * @param allowBinding Whether the `PluginAction` will be hidden from Studio's shortcuts view. Useful for contextual actions. Defaults to true
-	 * @returns The newly created PluginAction object
+	 * Creates a PluginAction. See the `PluginAction` class page for more information on how PluginActions work.
+	 * @param actionId Must be a unique string that identifies this PluginAction from others. 
+	 * @param text The displayed name of the action.
+	 * @param statusTip The displayed description of the action.
+	 * @returns The newly created PluginAction object.
 	 */
 	CreatePluginAction(
 		actionId: string,
@@ -335,39 +249,7 @@ interface Plugin extends Instance {
 		iconName?: string,
 		allowBinding?: boolean,
 	): PluginAction;
-	/** 
-	 * This function creates a new `PluginMenu`, which is a context menu that can be shown in Studio that displays a list of [PluginActions](https://developer.roblox.com/api-reference/class/PluginAction) and supports submenus.
-	 *
-	 * In order for PluginMenus to work as expected, they must be created using this function.
-	 *
-	 * ## See also
-	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
-	 *
-	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
-	 *
-	 *   - [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
-	 *
-	 *   - [PluginMenu.Title](https://developer.roblox.com/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.Icon](https://developer.roblox.com/api-reference/property/PluginMenu/Icon), the icon to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.AddAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddAction), adds the given action to the menu
-	 *
-	 *   - [PluginMenu.AddNewAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddNewAction), creates a temporary action that is hidden from Studio's customize shortcuts window
-	 *
-	 *   - [PluginMenu.AddMenu](https://developer.roblox.com/api-reference/function/PluginMenu/AddMenu), adds the given menu as a separator
-	 *
-	 *   - [PluginMenu.AddSeparator](https://developer.roblox.com/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
-	 *
-	 *   - [PluginMenu.Clear](https://developer.roblox.com/api-reference/function/PluginMenu/Clear), clears the menu
-	 *
-	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
-	 * @param id Unique ID for the menu
-	 * @param title The text to be displayed when used as a sub menu
-	 * @param icon The icon to be displayed when used as a sub menu
-	 * @returns The created `PluginMenu` instance
-	 */
+
 	CreatePluginMenu(id: string, title?: string, icon?: string): PluginMenu;
 	/** 
 	 * Gets or creates a new `Toolbar` with the specified name, which is then used to create a plugin button.
@@ -465,10 +347,6 @@ interface Plugin extends Instance {
 	Union(objects: Array<BasePart>): UnionOperation;
 	/** 
 	 * This function creates a `DockWidgetPluginGui` using the provided [DataType.DockWidgetPluginGuiInfo](https://developer.roblox.com/search#stq=DockWidgetPluginGuiInfo).
-	 *
-	 * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
-	 * @param pluginGuiId Consistent identifier used for storing/preserving the widget dock state and other internal details.
-	 * @param dockWidgetPluginGuiInfo Datatype describing details for the new `DockWidgetPluginGui`.
 	 */
 	CreateDockWidgetPluginGui(
 		pluginGuiId: string,
@@ -532,159 +410,19 @@ interface PluginManager extends Instance {
 }
 
 interface PluginMenu extends Instance {
-	/** 
-	 * This function adds the given action to the menu.
-	 *
-	 * ## See also
-	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
-	 *
-	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
-	 *
-	 *   - [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
-	 *
-	 *   - [PluginMenu.Title](https://developer.roblox.com/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.Icon](https://developer.roblox.com/api-reference/property/PluginMenu/Icon), the icon to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.AddNewAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddNewAction), creates a temporary action that is hidden from Studio's customize shortcuts window
-	 *
-	 *   - [PluginMenu.AddMenu](https://developer.roblox.com/api-reference/function/PluginMenu/AddMenu), adds the given menu as a separator
-	 *
-	 *   - [PluginMenu.AddSeparator](https://developer.roblox.com/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
-	 *
-	 *   - [PluginMenu.Clear](https://developer.roblox.com/api-reference/function/PluginMenu/Clear), clears the menu
-	 *
-	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
-	 * @param action The action to add
-	 * @returns void
-	 */
+
 	AddAction(action: PluginAction): void;
-	/** 
-	 * This function adds the given menu as a separator.
-	 *
-	 * ## See also
-	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
-	 *
-	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
-	 *
-	 *   - [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
-	 *
-	 *   - [PluginMenu.Title](https://developer.roblox.com/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.Icon](https://developer.roblox.com/api-reference/property/PluginMenu/Icon), the icon to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.AddAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddAction), adds the given action to the menu
-	 *
-	 *   - [PluginMenu.AddNewAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddNewAction), creates a temporary action that is hidden from Studio's customize shortcuts window
-	 *
-	 *   - [PluginMenu.AddSeparator](https://developer.roblox.com/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
-	 *
-	 *   - [PluginMenu.Clear](https://developer.roblox.com/api-reference/function/PluginMenu/Clear), clears the menu
-	 *
-	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
-	 * @param menu The menu to add as a sub menu. Uses its `PluginMenu/Title` and `PluginMenu/Icon` to display
-	 * @returns void
-	 */
+
 	AddMenu(menu: PluginMenu): void;
-	/** 
-	 
-	 * @param actionId Must be a unique string that identifies this PluginAction from others
-	 * @param text The text to be displayed
-	 * @param icon The icon to be displayed
-	 * @returns The created `PluginAction`
-	 */
+
 	AddNewAction(actionId: string, text: string, icon?: string): PluginAction;
-	/** 
-	 * This function adds a separator between items in the menu.
-	 *
-	 * ## See also
-	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
-	 *
-	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
-	 *
-	 *   - [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
-	 *
-	 *   - [PluginMenu.Title](https://developer.roblox.com/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.Icon](https://developer.roblox.com/api-reference/property/PluginMenu/Icon), the icon to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.AddAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddAction), adds the given action to the menu
-	 *
-	 *   - [PluginMenu.AddNewAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddNewAction), creates a temporary action that is hidden from Studio's customize shortcuts window
-	 *
-	 *   - [PluginMenu.AddMenu](https://developer.roblox.com/api-reference/function/PluginMenu/AddMenu), adds the given menu as a separator
-	 *
-	 *   - [PluginMenu.Clear](https://developer.roblox.com/api-reference/function/PluginMenu/Clear), clears the menu
-	 *
-	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
-	 * @returns void
-	 */
 	AddSeparator(): void;
-	/** 
-	 * This function clears the menu
-	 *
-	 * ## See also
-	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
-	 *
-	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
-	 *
-	 *   - [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
-	 *
-	 *   - [PluginMenu.Title](https://developer.roblox.com/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.Icon](https://developer.roblox.com/api-reference/property/PluginMenu/Icon), the icon to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.AddAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddAction), adds the given action to the menu
-	 *
-	 *   - [PluginMenu.AddNewAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddNewAction), creates a temporary action that is hidden from Studio's customize shortcuts window
-	 *
-	 *   - [PluginMenu.AddMenu](https://developer.roblox.com/api-reference/function/PluginMenu/AddMenu), adds the given menu as a separator
-	 *
-	 *   - [PluginMenu.AddSeparator](https://developer.roblox.com/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
-	 *
-	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
-	 */
 	Clear(): void;
-	/** 
-	 * This function shows the menu at the mouse cursor. It yields until either an item is selected or the menu is closed. The selected action fires its [PluginAction.Triggered](https://developer.roblox.com/api-reference/event/PluginAction/Triggered) event
-	 *
-	 * ## See also
-	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
-	 *
-	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
-	 *
-	 *   - [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
-	 *
-	 *   - [PluginMenu.Title](https://developer.roblox.com/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.Icon](https://developer.roblox.com/api-reference/property/PluginMenu/Icon), the icon to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.AddAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddAction), adds the given action to the menu
-	 *
-	 *   - [PluginMenu.AddNewAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddNewAction), creates a temporary action that is hidden from Studio's customize shortcuts window
-	 *
-	 *   - [PluginMenu.AddMenu](https://developer.roblox.com/api-reference/function/PluginMenu/AddMenu), adds the given menu as a separator
-	 *
-	 *   - [PluginMenu.AddSeparator](https://developer.roblox.com/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
-	 *
-	 *   - [PluginMenu.Clear](https://developer.roblox.com/api-reference/function/PluginMenu/Clear), clears the menu
-	 * @returns The `PluginAction` item that was selected or nil
-	 */
 	ShowAsync(): Instance | undefined;
 }
 
 interface PluginToolbar extends Instance {
-	/** 
-	 * Creates ` PluginToolbarButton` that allows the user to initiate a single, one-off action in Roblox Studio through the [Click](https://developer.roblox.com/api-reference/event/PluginToolbarButton/Click) event.
-	 * @param tooltip The text displayed in the tooltip shown when a user hovers over the button
-	 * @param iconname The displayed button name
-	 * @returns The created `PluginToolbarButton` instance
-	 */
+
 	CreateButton(buttonId: string, tooltip: string, iconname: string, text?: string): PluginToolbarButton;
 }
 
@@ -714,7 +452,27 @@ interface RunService extends Instance {
 
 interface ScriptContext extends Instance {
 	/** 
-	 * Limits how long a script is allowed to run without yielding.
+	 * Limits how long a script is allowed to run without yielding. For example:
+	 *
+	 * ```lua
+game:GetService("ScriptContext"):SetTimeout(10)
+local s = Instance.new("Script")
+s.Source = "while true do end"
+s.Parent = workspace
+```
+	 * 
+
+	 * Running the above code from the [Command Bar](https://wiki.roblox.com/index.php?title=Command_Bar) in a running place will set the timeout to 10 seconds, and then create a script with the source "while true do end" (an infinite loop), and allow it to the run in the workspace. After 10 seconds you will see output similar to the following:
+	 *
+	 * ```lua
+15:43:05.115 - Game script timout
+15:43:05.116 - Stack Begin
+15:43:05.116 - Script 'Workspace.Script', Line 1
+15:43:05.116 - Stack End
+```
+	 * 
+
+	 * This means the script has timed out and it has been stopped.Limits how long a script is allowed to run without yielding.
 	 */
 	SetTimeout(seconds: number): void;
 }
@@ -759,206 +517,23 @@ interface DataModel extends ServiceProvider {
 	 */
 	GetJobTimePeakFraction(jobname: string, greaterThan: number): number;
 	/** 
-	 * This function is currently broken
-	 *
-	 * This function returns a table containing extended statistics on the jobs performed by the task scheduler.
-	 *
-	 * In computing, a task scheduler is a system responsible for executing key tasks at the appropriate intervals.
-	 *
-	 * This function is currently broken and does not return the correct values. You can find live task scheduler statistics in the Task Scheduler window in Roblox Studio.
-	 *
-	 * The first entry in the table returned is a reference dictionary containing the statistics (or headings) available. It is in the following format:
-	 *
-	 * ```lua
-{
-```
-	 * 
-
-	 * lua
-	 *
-	 * ["name"] = "name",
-	 *
-	 * ["time.average"] = "time.average",
-	 *
-	 * ["time.variance"] = "time.variance",
-	 *
-	 * ["time.samples"] = "time.samples",
-	 *
-	 * ["interval.average"] = "interval.average",
-	 *
-	 * ["interval.variance"] = "interval.variance",
-	 *
-	 * ["interval.samples"] = "interval.samples",
-	 *
-	 * ["dutyfraction"] = "dutyfraction"
-	 *
-	 * ```lua
-}
-```
-	 * 
-
-	 * The subsequent entries in the table returned are dictionaries containing the above statistics for jobs performed by the task scheduler. For example:
-	 *
-	 * ```lua
-{
-```
-	 * 
-
-	 * lua
-	 *
-	 * ["name"] = "Heartbeat",
-	 *
-	 * ["time.average"] = 0,
-	 *
-	 * ["time.variance"] = 0,
-	 *
-	 * ["time.samples"] = 0,
-	 *
-	 * ["interval.average"] = 0,
-	 *
-	 * ["interval.variance"] = 0,
-	 *
-	 * ["interval.samples"] = 0,
-	 *
-	 * ["dutyfraction"] = 0
-	 *
-	 * ```lua
-}
-```
-	 * 
-
-	 * ## See also
-	 *
-	 *  - `TaskScheduler`
-	 *
-	 *  - [DataModel.GetJobsInfo](https://developer.roblox.com/api-reference/function/DataModel/GetJobsInfo)
-	 *
-	 *  - [DataModel.GetJobIntervalPeakFraction](https://developer.roblox.com/api-reference/function/DataModel/GetJobIntervalPeakFraction)
-	 *
-	 *  - [DataModel.GetJobTimePeakFraction](https://developer.roblox.com/api-reference/function/DataModel/GetJobTimePeakFraction)
-	 * @returns A table containing statistics on the jobs performed by the task scheduler, see above for the format
+	 * Returns a table containing the jobs performed by the game, and one reference table.
 	 */
 	GetJobsExtendedStats(): unknown;
 	/** 
-	 * Returns a table containing basic information about the jobs performed by the task scheduler
-	 *
-	 * In computing, a task scheduler is a system responsible for executing key tasks at the appropriate intervals.
-	 *
-	 * You can also find live task scheduler statistics in the Task Scheduler window in Roblox Studio.
-	 *
-	 * The first entry in the table returned is a reference dictionary containing the statistics (or headings) available. It is in the following format:
-	 *
-	 * ```lua
-{
-```
-	 * 
-
-	 * lua
-	 *
-	 * ["name"] = "name",
-	 *
-	 * ["averageDutyCycle"] = "averageDutyCycle",
-	 *
-	 * ["averageStepsPerSecond"] = "averageStepsPerSecond",
-	 *
-	 * ["averageStepTime"] = "averageStepTime",
-	 *
-	 * ["averageError"] = "averageError",
-	 *
-	 * ["isRunning"] = "isRunning",
-	 *
-	 * ```lua
-}
-```
-	 * 
-
-	 * The subsequent entries in the table returned are dictionaries containing the above statistics for jobs performed by the task scheduler. For example:
-	 *
-	 * ```lua
-{
-```
-	 * 
-
-	 * lua
-	 *
-	 * ["name"] = "Heartbeat",
-	 *
-	 * ["averageDutyCycle"] = 0,
-	 *
-	 * ["averageStepsPerSecond"] = 0,
-	 *
-	 * ["averageStepTime"] = 0,
-	 *
-	 * ["averageError"] = 0,
-	 *
-	 * ["isRunning"] = false,
-	 *
-	 * ```lua
-}
-```
-	 * 
-
-	 * ## See also
-	 *
-	 *  - `TaskScheduler`
-	 *
-	 *  - [DataModel.GetJobsExtendedStats](https://developer.roblox.com/api-reference/function/DataModel/GetJobsExtendedStats)
-	 *
-	 *  - [DataModel.GetJobIntervalPeakFraction](https://developer.roblox.com/api-reference/function/DataModel/GetJobIntervalPeakFraction)
-	 *
-	 *  - [DataModel.GetJobTimePeakFraction](https://developer.roblox.com/api-reference/function/DataModel/GetJobTimePeakFraction)
-	 * @returns A table containing information about the jobs performed by the task scheduler, see above for the format
+	 * Returns a table containing the jobs performed by the game, and one reference table.
 	 */
 	GetJobsInfo(): unknown;
 	/** 
-	 * This function returns an array of [Instances](https://developer.roblox.com/api-reference/class/Instance) associated with the given [content](https://developer.roblox.com/search#stq=Content) URL.
-	 *
-	 * This function can be used to insert content from the Roblox [library][1], such as:
-	 *
-	 *  - Models
-	 *
-	 *  - Decals
-	 *
-	 *  - Meshes
-	 *
-	 *  - Plugins
-	 *
-	 *  - Animations
-	 *
-	 * It is not possible to insert [Sounds](https://developer.roblox.com/api-reference/class/Sound) using this method as they do not have an `Instance` associated with them (rather just a [content](https://developer.roblox.com/search#stq=Content) URL).
-	 *
-	 * Unlike [InsertService.LoadAsset](https://developer.roblox.com/api-reference/function/InsertService/LoadAsset), GetObjects does not require an asset to be ‘trusted’. This means that an asset does not need to be owned by the logged in user, or created by Roblox, to be inserted. However, if the asset is not owned by the logged in user it must be freely available.
-	 *
-	 * Due to this function’s security context it can only be used by plugins or the command bar. For an alternative that can be used in [Scripts](https://developer.roblox.com/api-reference/class/Script) and [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript), see [InsertService.LoadAsset](https://developer.roblox.com/api-reference/function/InsertService/LoadAsset).
-	 *
-	 * [1]: https://www.roblox.com/develop/library
-	 * @param url The given `Articles/Content|content` URL
-	 * @returns An array of `Instance|Instances` associated with the `Articles/Content|content` URL
+	 * The GetObjects function returns an array of Instances based on the specified content url. The ''url'' should point to a model asset.
 	 */
 	GetObjects(url: string): Array<Instance>;
 	/** 
-	 * This function sets the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) of the game instance to the given *placeId*.
-	 *
-	 * Setting the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) is required to access the `DataStoreService` when the place is unpublished (for example a local .rbxl file). See below for an example. Note this will only work when the *‘Enable Studio Access to API Services`* option is enabled under game settings.
-	 *
-	 * ```lua
-local DataStoreService = game:GetService("DataStoreService")
-
--- access DataStore 'Data' as place placeId
-game:SetPlaceId(placeId)
-local dataStore = DataStoreService:GetDataStore("Data")
-```
-	 * 
-
-	 * You can use [DataModel.SetUniverseId](https://developer.roblox.com/api-reference/function/DataModel/SetUniverseId) to set the [DataModel.GameId](https://developer.roblox.com/api-reference/property/DataModel/GameId) of the game instance. However, it is the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) that must be set to access the `DataStoreService`.
-	 * @param placeId The ID to set the `DataModel/PlaceId` to
+	 * Sets the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) of the current game to the specified _placeId_.
 	 */
 	SetPlaceId(placeId: number): void;
 	/** 
-	 * This function sets the [DataModel.GameId](https://developer.roblox.com/api-reference/property/DataModel/GameId) of the current game instance to the given *universeId*. This is useful when testing local .rbxl files that have not been published to Roblox.
-	 *
-	 * If you want to access the `DataStoreService` in an unpublished place, you should use [DataModel.SetPlaceId](https://developer.roblox.com/api-reference/function/DataModel/SetPlaceId) instead.
-	 * @param universeId The ID to set the `DataModel/GameId` to
+	 * Sets the [DataModel.GameId](https://developer.roblox.com/api-reference/property/DataModel/GameId) of the current game to the specified _universeId_
 	 */
 	SetUniverseId(universeId: number): void;
 }
@@ -975,21 +550,7 @@ interface StatsItem extends Instance {
 }
 
 interface Studio extends Instance {
-	/** 
-	 * The **GetAvailableThemes()** function returns a list of [StudioThemes](https://developer.roblox.com/api-reference/class/StudioTheme) available in `Studio`. You can access the function via:
-	 *
-	 * ```lua
-settings().Studio:GetAvailableThemes()
-```
-	 *
-	 * @returns A list of themes available in Studio
-	 */
 	GetAvailableThemes(): unknown;
-	/** 
-	 * The **ThemeChanged** event fires when Studio's [Theme](https://developer.roblox.com/api-reference/property/Studio/Theme) changes. The best use of this event is to get the colors from the theme that changed and update your plugin’s UI accordingly.
-	 *
-	 * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
-	 */
 	readonly ThemeChanged: RBXScriptSignal<() => void>;
 }
 
@@ -1007,36 +568,9 @@ interface StudioService extends Instance {
 }
 
 interface StudioTheme extends Instance {
-	/** 
-	 * The **GetColor()** function returns the [DataType.Color3](https://developer.roblox.com/search#stq=Color3) corresponding to the arguments provided. For instance, if you would like to get the [DataType.Color3](https://developer.roblox.com/search#stq=Color3) of the Studio "MainButton" when it's **disabled**, you can use the following code:
-	 *
-	 * ```lua
-settings().Studio.Theme:GetColor(Enum.StudioStyleGuideColor.MainButton, Enum.StudioStyleGuideModifier.Disabled)
-```
-	 * 
-
-	 * See the [StudioStyleGuideColor](https://developer.roblox.com/search#stq=StudioStyleGuideColor) reference for a list of Studio elements and [StudioStyleGuideModifier](https://developer.roblox.com/search#stq=StudioStyleGuideModifier) for a list of modifiers.
-	 * @param styleguideitem The element you want to get the theme color for
-	 * @param modifier The modifier you want to place on the `StyleGuideColor` element
-	 * @returns The corresponding Color3 theme value
-	 */
+	/** [NO DOCUMENTATION] */
 	GetColor(styleguideitem: CastsToEnum<Enum.StudioStyleGuideColor>, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): Color3;
-	/** 
-	 * The GetPath function returns the path of an asset (or image) for the `Id` and `Modifier`. We can have different icons to be loaded depending on the theme.
-	 *
-	 * The `StyleGuideModifer` argument's default value is `Enum\StyleGuideModifier`, which applies no modifier.
-	 *
-	 * This is intended for use within [Plugins](https://developer.roblox.com/api-reference/class/Plugin), but will also execute in the Command Line.
-	 *
-	 * For instance, if you would like to get the path of the "MoreButton" image, you would use the following code:
-	 *
-	 * ```lua
-	 *
-	 * settings().Studio.Theme:GetPath("MoreButton")
-	 * @param assetid The asset id you want the path for
-	 * @param modifier The modifier you want to apply to the specified asset
-	 * @returns The path of the id with the modifier
-	 */
+	/** [NO DOCUMENTATION] */
 	GetPath(assetid: string, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): string;
 }
 

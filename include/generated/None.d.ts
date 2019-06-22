@@ -228,6 +228,7 @@ interface CreatableInstances {
 	ModuleScript: ModuleScript;
 	Message: Message;
 	Hint: Hint;
+	NoCollisionConstraint: NoCollisionConstraint;
 	CornerWedgePart: CornerWedgePart;
 	Part: Part;
 	FlagStand: FlagStand;
@@ -430,7 +431,7 @@ interface Instances extends Services, CreatableInstances {
  */
 interface Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Instance" | "ABTestService" | "Accoutrement" | "AdService" | "AdvancedDragger" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AssetService" | "Attachment" | "Backpack" | "BackpackItem" | "BadgeService" | "BasePlayerGui" | "Beam" | "BindableEvent" | "BindableFunction" | "BodyMover" | "BrowserService" | "CacheableContentProvider" | "Camera" | "ChangeHistoryService" | "CharacterAppearance" | "Chat" | "ClickDetector" | "ClusterPacketCache" | "CollectionService" | "Configuration" | "Constraint" | "ContentProvider" | "ContextActionService" | "Controller" | "ControllerService" | "CookiesService" | "CorePackages" | "CoreScriptSyncService" | "CustomEvent" | "CustomEventReceiver" | "DataModelMesh" | "DataStoreService" | "Debris" | "DebugSettings" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "Dialog" | "DialogChoice" | "Dragger" | "Explosion" | "FaceInstance" | "Feature" | "File" | "Fire" | "FlagStandService" | "FlyweightService" | "Folder" | "ForceField" | "FriendService" | "FunctionalTest" | "GamePassService" | "GameSettings" | "GamepadService" | "Geometry" | "GlobalDataStore" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuiBase" | "GuiService" | "GuidRegistryService" | "HapticService" | "Hopper" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidDescription" | "InputObject" | "InsertService" | "JointInstance" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "Light" | "Lighting" | "LocalStorageService" | "LocalizationService" | "LocalizationTable" | "LogService" | "LoginService" | "LuaSettings" | "LuaSourceContainer" | "LuaWebService" | "MarketplaceService" | "Message" | "MessagingService" | "Mouse" | "MouseService" | "NetworkMarker" | "NetworkPeer" | "NetworkReplicator" | "NetworkSettings" | "NotificationService" | "PVInstance" | "PackageLink" | "PackageService" | "Pages" | "PartOperationAsset" | "ParticleEmitter" | "Path" | "PathfindingService" | "PhysicsPacketCache" | "PhysicsService" | "PhysicsSettings" | "Player" | "PlayerScripts" | "Players" | "Plugin" | "PluginAction" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginMenu" | "PluginToolbar" | "PluginToolbarButton" | "PointsService" | "Pose" | "PostEffect" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClasses" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderSettings" | "RenderingTest" | "ReplicatedFirst" | "ReplicatedStorage" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RunService" | "RuntimeScriptService" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "Selection" | "ServerScriptService" | "ServerStorage" | "ServiceProvider" | "Sky" | "Smoke" | "SocialService" | "Sound" | "SoundEffect" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "StarterGear" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "StatsItem" | "StopWatchReporter" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "TerrainRegion" | "TestService" | "TextFilterResult" | "TextService" | "ThirdPartyUserService" | "TimerService" | "TouchInputService" | "TouchTransmitter" | "Trail" | "Translator" | "TweenBase" | "TweenService" | "UIBase" | "UserGameSettings" | "UserInputService" | "VRService" | "ValueBase" | "VirtualInputManager" | "VirtualUser" | "Visit" | "WeldConstraint" | "Accessory" | "Hat" | "HopperBin" | "Tool" | "Flag" | "CoreGui" | "PlayerGui" | "StarterGui" | "BodyAngularVelocity" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "RocketPropulsion" | "MeshContentProvider" | "SolidModelContentProvider" | "BodyColors" | "CharacterMesh" | "Clothing" | "ShirtGraphic" | "Skin" | "Pants" | "Shirt" | "AlignOrientation" | "AlignPosition" | "AngularVelocity" | "BallSocketConstraint" | "HingeConstraint" | "LineForce" | "RodConstraint" | "RopeConstraint" | "SlidingBallConstraint" | "SpringConstraint" | "Torque" | "VectorForce" | "CylindricalConstraint" | "PrismaticConstraint" | "HumanoidController" | "SkateboardController" | "VehicleController" | "BevelMesh" | "FileMesh" | "BlockMesh" | "CylinderMesh" | "SpecialMesh" | "Decal" | "Texture" | "Hole" | "MotorFeature" | "CSGDictionaryService" | "NonReplicatedCSGDictionaryService" | "OrderedDataStore" | "GuiBase2d" | "GuiBase3d" | "GuiObject" | "LayerCollector" | "Frame" | "GuiButton" | "GuiLabel" | "ScrollingFrame" | "TextBox" | "ViewportFrame" | "ImageButton" | "TextButton" | "ImageLabel" | "TextLabel" | "BillboardGui" | "PluginGui" | "ScreenGui" | "SurfaceGui" | "DockWidgetPluginGui" | "QWidgetPluginGui" | "GuiMain" | "FloorWire" | "PVAdornment" | "PartAdornment" | "SelectionLasso" | "HandleAdornment" | "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment" | "HandlesBase" | "SurfaceSelection" | "ArcHandles" | "Handles" | "SelectionPartLasso" | "SelectionPointLasso" | "DynamicRotate" | "Glue" | "ManualSurfaceJointInstance" | "Motor" | "Rotate" | "Snap" | "VelocityMotor" | "Weld" | "RotateP" | "RotateV" | "ManualGlue" | "ManualWeld" | "Motor6D" | "PointLight" | "SpotLight" | "SurfaceLight" | "AppStorageService" | "UserStorageService" | "BaseScript" | "ModuleScript" | "CoreScript" | "Script" | "LocalScript" | "Hint" | "PlayerMouse" | "PluginMouse" | "NetworkClient" | "NetworkServer" | "ClientReplicator" | "ServerReplicator" | "BasePart" | "Model" | "CornerWedgePart" | "FormFactorPart" | "Terrain" | "TriangleMeshPart" | "TrussPart" | "VehicleSeat" | "Part" | "WedgePart" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation" | "Status" | "Workspace" | "DataStorePages" | "FriendPages" | "InventoryPages" | "StandardPages" | "EmotesPages" | "BloomEffect" | "BlurEffect" | "ColorCorrectionEffect" | "SunRaysEffect" | "ReflectionMetadataClass" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataMember" | "DataModel" | "GenericSettings" | "AnalysticsSettings" | "GlobalSettings" | "UserSettings" | "ChorusSoundEffect" | "CompressorSoundEffect" | "DistortionSoundEffect" | "EchoSoundEffect" | "EqualizerSoundEffect" | "FlangeSoundEffect" | "PitchShiftSoundEffect" | "ReverbSoundEffect" | "TremoloSoundEffect" | "StarterCharacterScripts" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "TotalCountTimeIntervalItem" | "Tween" | "UIComponent" | "UIConstraint" | "UILayout" | "UIPadding" | "UIScale" | "UIAspectRatioConstraint" | "UISizeConstraint" | "UITextSizeConstraint" | "UIGridStyleLayout" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPageLayout" | "UITableLayout" | "BinaryStringValue" | "BoolValue" | "BrickColorValue" | "CFrameValue" | "Color3Value" | "DoubleConstrainedValue" | "IntConstrainedValue" | "IntValue" | "NumberValue" | "ObjectValue" | "RayValue" | "StringValue" | "Vector3Value";
+	readonly ClassName: "Instance" | "ABTestService" | "Accoutrement" | "AdService" | "AdvancedDragger" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AssetService" | "Attachment" | "Backpack" | "BackpackItem" | "BadgeService" | "BasePlayerGui" | "Beam" | "BindableEvent" | "BindableFunction" | "BodyMover" | "BrowserService" | "CacheableContentProvider" | "Camera" | "ChangeHistoryService" | "CharacterAppearance" | "Chat" | "ClickDetector" | "ClusterPacketCache" | "CollectionService" | "Configuration" | "Constraint" | "ContentProvider" | "ContextActionService" | "Controller" | "ControllerService" | "CookiesService" | "CorePackages" | "CoreScriptSyncService" | "CustomEvent" | "CustomEventReceiver" | "DataModelMesh" | "DataStoreService" | "Debris" | "DebugSettings" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "Dialog" | "DialogChoice" | "Dragger" | "Explosion" | "FaceInstance" | "Feature" | "File" | "Fire" | "FlagStandService" | "FlyweightService" | "Folder" | "ForceField" | "FriendService" | "FunctionalTest" | "GamePassService" | "GameSettings" | "GamepadService" | "Geometry" | "GlobalDataStore" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuiBase" | "GuiService" | "GuidRegistryService" | "HapticService" | "Hopper" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidDescription" | "InputObject" | "InsertService" | "JointInstance" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "Light" | "Lighting" | "LocalStorageService" | "LocalizationService" | "LocalizationTable" | "LogService" | "LoginService" | "LuaSettings" | "LuaSourceContainer" | "LuaWebService" | "MarketplaceService" | "Message" | "MessagingService" | "Mouse" | "MouseService" | "NetworkMarker" | "NetworkPeer" | "NetworkReplicator" | "NetworkSettings" | "NoCollisionConstraint" | "NotificationService" | "PVInstance" | "PackageLink" | "PackageService" | "Pages" | "PartOperationAsset" | "ParticleEmitter" | "Path" | "PathfindingService" | "PhysicsPacketCache" | "PhysicsService" | "PhysicsSettings" | "Player" | "PlayerScripts" | "Players" | "Plugin" | "PluginAction" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginMenu" | "PluginToolbar" | "PluginToolbarButton" | "PointsService" | "Pose" | "PostEffect" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClasses" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderSettings" | "RenderingTest" | "ReplicatedFirst" | "ReplicatedStorage" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RunService" | "RuntimeScriptService" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "Selection" | "ServerScriptService" | "ServerStorage" | "ServiceProvider" | "Sky" | "Smoke" | "SocialService" | "Sound" | "SoundEffect" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "StarterGear" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "StatsItem" | "StopWatchReporter" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "TerrainRegion" | "TestService" | "TextFilterResult" | "TextService" | "ThirdPartyUserService" | "TimerService" | "TouchInputService" | "TouchTransmitter" | "Trail" | "Translator" | "TweenBase" | "TweenService" | "UIBase" | "UserGameSettings" | "UserInputService" | "VRService" | "ValueBase" | "VirtualInputManager" | "VirtualUser" | "Visit" | "WeldConstraint" | "Accessory" | "Hat" | "HopperBin" | "Tool" | "Flag" | "CoreGui" | "PlayerGui" | "StarterGui" | "BodyAngularVelocity" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "RocketPropulsion" | "MeshContentProvider" | "SolidModelContentProvider" | "BodyColors" | "CharacterMesh" | "Clothing" | "ShirtGraphic" | "Skin" | "Pants" | "Shirt" | "AlignOrientation" | "AlignPosition" | "AngularVelocity" | "BallSocketConstraint" | "HingeConstraint" | "LineForce" | "RodConstraint" | "RopeConstraint" | "SlidingBallConstraint" | "SpringConstraint" | "Torque" | "VectorForce" | "CylindricalConstraint" | "PrismaticConstraint" | "HumanoidController" | "SkateboardController" | "VehicleController" | "BevelMesh" | "FileMesh" | "BlockMesh" | "CylinderMesh" | "SpecialMesh" | "Decal" | "Texture" | "Hole" | "MotorFeature" | "CSGDictionaryService" | "NonReplicatedCSGDictionaryService" | "OrderedDataStore" | "GuiBase2d" | "GuiBase3d" | "GuiObject" | "LayerCollector" | "Frame" | "GuiButton" | "GuiLabel" | "ScrollingFrame" | "TextBox" | "ViewportFrame" | "ImageButton" | "TextButton" | "ImageLabel" | "TextLabel" | "BillboardGui" | "PluginGui" | "ScreenGui" | "SurfaceGui" | "DockWidgetPluginGui" | "QWidgetPluginGui" | "GuiMain" | "FloorWire" | "PVAdornment" | "PartAdornment" | "SelectionLasso" | "HandleAdornment" | "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment" | "HandlesBase" | "SurfaceSelection" | "ArcHandles" | "Handles" | "SelectionPartLasso" | "SelectionPointLasso" | "DynamicRotate" | "Glue" | "ManualSurfaceJointInstance" | "Motor" | "Rotate" | "Snap" | "VelocityMotor" | "Weld" | "RotateP" | "RotateV" | "ManualGlue" | "ManualWeld" | "Motor6D" | "PointLight" | "SpotLight" | "SurfaceLight" | "AppStorageService" | "UserStorageService" | "BaseScript" | "ModuleScript" | "CoreScript" | "Script" | "LocalScript" | "Hint" | "PlayerMouse" | "PluginMouse" | "NetworkClient" | "NetworkServer" | "ClientReplicator" | "ServerReplicator" | "BasePart" | "Model" | "CornerWedgePart" | "FormFactorPart" | "Terrain" | "TriangleMeshPart" | "TrussPart" | "VehicleSeat" | "Part" | "WedgePart" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation" | "Status" | "Workspace" | "DataStorePages" | "FriendPages" | "InventoryPages" | "StandardPages" | "EmotesPages" | "BloomEffect" | "BlurEffect" | "ColorCorrectionEffect" | "SunRaysEffect" | "ReflectionMetadataClass" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataMember" | "DataModel" | "GenericSettings" | "AnalysticsSettings" | "GlobalSettings" | "UserSettings" | "ChorusSoundEffect" | "CompressorSoundEffect" | "DistortionSoundEffect" | "EchoSoundEffect" | "EqualizerSoundEffect" | "FlangeSoundEffect" | "PitchShiftSoundEffect" | "ReverbSoundEffect" | "TremoloSoundEffect" | "StarterCharacterScripts" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "TotalCountTimeIntervalItem" | "Tween" | "UIComponent" | "UIConstraint" | "UILayout" | "UIPadding" | "UIScale" | "UIAspectRatioConstraint" | "UISizeConstraint" | "UITextSizeConstraint" | "UIGridStyleLayout" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPageLayout" | "UITableLayout" | "BinaryStringValue" | "BoolValue" | "BrickColorValue" | "CFrameValue" | "Color3Value" | "DoubleConstrainedValue" | "IntConstrainedValue" | "IntValue" | "NumberValue" | "ObjectValue" | "RayValue" | "StringValue" | "Vector3Value";
 	/** 
 	 * Determines if an `Instance` can be cloned using [Instance.Clone](https://developer.roblox.com/api-reference/function/Instance/Clone) or saved to file.
 	 *
@@ -467,46 +468,24 @@ local baseplate = workspace:FindFirstChild("BasePlate")
 	 */
 	Name: string;
 	/** 
-	 * The Parent property determines the hierarchical parent of the `Instance`. The following terminology is commonly used when talking about how this property is set:
+	 * The hierarchical parent of the `Instance`.
 	 *
-	 *   - An object is a **child** (**parented to**) another object when its Parent is set to that object.
-	 *
-	 *   - The **descendants** of an `Instance` are the children of that object, plus the descendants of the children as well.
-	 *
-	 *   - The **ancestors** of an `Instance` are all the objects that the Instance is a descendant of.
-	 *
-	 * It is from this property that many other API members get their name, such as [GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) and [FindFirstChild](https://developer.roblox.com/api-reference/function/Instance/FindFirstChild).
-	 *
-	 * The [Remove](https://developer.roblox.com/api-reference/function/Instance/Remove) function sets this property to nil. Calling [Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy) will set the Parent of an `Instance` and all of its descendants to `nil`, and also **lock** the Parent property. An error is raised when setting the Parent of a destroyed object.
-	 *
-	 * This property is also used to manage whether an object exists in the game or needs be be removed. As long as an objects parent is in the `DataModel`, is stored in a variable, or is referenced by another objects property, then the object remains in the game. Otherwise, the object will automatically be removed. The top level `DataModel` object (the one referred to as the `game` by scripts) has no parent, but always has a reference held to it by the game engine, and exists for the duration of a session.
-	 *
-	 * Newly created objects using `Instance.new` will not have a parent, and usually will not be visible or function until one is set. The most elementary creation of an object has two steps: creating the object, then setting its parent.
+	 * This property is also used to manage whether an object exists in the game or needs be be removed. As long as an objects parent is in the `DataModel`, is stored in a variable, or is referenced by another objects property, then the object will remain in the game. Otherwise, the game engine will automatically remove the object. The top level `DataModel` object (the one referred to as the "game" by scripts) has no parent, but always has a reference held to it by the game engine, and exists for the duration of a session.
 	 *
 	 * ```lua
--- Create a part and parent it to the workspace
-local part = Instance.new("Part")
-part.Parent = workspace
--- Instance new can also take Parent as a second parameter
-Instance.new("NumberValue", workspace)
+part.Parent = workspace --&gt; parent part to the Workspace
 ```
 	 * 
 
-	 * # Object Replication
+	 * Calling [Instance.Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy) sets the parent of an `Instance` and all of its descendants to nil, and locks the parent property. Attempting to set [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) on a destroyed object will produce an error.
 	 *
-	 * An object created by server will not replicate to clients until it is parented to some object that is replicated. When creating an object then setting many properties, it's recommended to **set Parent last**. This ensures the object replicates once, instead of replicating many property changes.
+	 * &lt;1--
 	 *
-	 * ```lua
-local part = Instance.new("Part") -- Avoid using the second parameter here
-part.Anchored = true
-part.BrickColor = BrickColor.new("Really red")
--- Potentially many other property changes could go here here...
--- Always set parent last!
-part.Parent = workspace
-```
-	 * 
-
-	 * However, if you were parenting your parts to a `Model` whose parent hasn't been set yet, then setting the parent first would not matter as the model would not have replicated yet.
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * --&gt;
+	 *
+	 * [1]: https://wiki.roblox.com/index.php?title=Place_hierarchy
 	 */
 	Parent?: Instance;
 	/** 
@@ -539,22 +518,11 @@ end
 	 */
 	Clone(): this;
 	/** 
-	 * Sets the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property to nil, locks the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property, disconnects all connections and calls Destroy on all children. This function is the correct way to dispose of objects that are no longer required. Disposing of unneeded objects is important, since unnecessary objects and connections in a place use up memory (this is called a **memory leak**) which can lead to serious performance issues over time.
+	 * Sets the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property to nil, locks the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property, disconnects all connections and calls Destroy on all children.
 	 *
-	 * **Tip:** After calling Destroy on an object, set any variables referencing the object (or its descendants) to nil. This prevents your code from accessing anything to do with the object.
+	 * This function is the correct way to dispose of objects that are no longer required. Disposing of objects is important as unnecessary objects and connections in a place use up memory which can lead to serious performance issues over time.
 	 *
-	 * ```lua
-local part = Instance.new("Part")
-part.Name = "Hello, world"
-part:Destroy()
--- Don't do this:
-print(part.Name) --> "Hello, world"
--- Do this to prevent the above line from working:
-part = nil
-```
-	 * 
-
-	 * Once an `Instance` has been destroyed by this method it cannot be reused because the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property is locked. To temporarily remove an object, set [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) it to nil instead. For example:
+	 * Note, once an `Instance` has been destroyed it cannot be reused. This is because the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property is locked. Developers wishing to temporarily remove an object from the game should parent it to nil instead. For example:
 	 *
 	 * ```lua
 object.Parent = nil
@@ -563,7 +531,7 @@ object.Parent = workspace
 ```
 	 * 
 
-	 * To Destroy an object after a set amount of time, use [Debris.AddItem](https://developer.roblox.com/api-reference/function/Debris/AddItem).
+	 * Those looking to destroy an `Instance` after a predetermined amount of time should use the [Debris.AddItem](https://developer.roblox.com/api-reference/function/Debris/AddItem) function in `Debris` instead.
 	 */
 	Destroy(): void;
 	/** 
@@ -579,6 +547,10 @@ local car = object:FindFirstAncestor("Car")
 	 * 
 
 	 * For variants of this function that find ancestors of a specific class, please see [Instance.FindFirstAncestorOfClass](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestorOfClass) and [Instance.FindFirstAncestorWhichIsA](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestorWhichIsA).
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param name The `Instance/Name` to be looked for.
 	 * @returns The `Instance` found.
 	 */
@@ -596,6 +568,10 @@ local model = part:FindFirstAncestorOfClass("Model")
 	 * 
 
 	 * This function is a variant of [Instance.FindFirstAncestor](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestor) which checks the [Instance.ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) property rather than [Instance.Name](https://developer.roblox.com/api-reference/property/Instance/Name). [Instance.FindFirstAncestorWhichIsA](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestorWhichIsA) also exists, using the [Instance.IsA](https://developer.roblox.com/api-reference/function/Instance/IsA) method instead to respect class inheritance.
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param className The `Instance/ClassName` to be looked for.
 	 * @returns The `Instance` found.
 	 */
@@ -623,77 +599,80 @@ local part = object:FindFirstAncestorWhichIsA("BasePart")
 	 * 
 
 	 * See also, [Instance.FindFirstAncestor](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestor).
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param className The `Instance/ClassName` to be looked for.
 	 * @returns The `Instance` found.
 	 */
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
 	FindFirstAncestorWhichIsA(className: string): Instance | undefined;
 	/** 
-	 * Returns the first child of the `Instance` found with the given name. If no child exists with the given name, this function returns nil. If the optional recursive argument is true, this function searches all descendants rather than only the immediate children of the `Instance`. Use this function if your code cannot guarantee the existence of an object with a given name.
+	 * Returns the first child of the `Instance` found with the given name.
 	 *
-	 * ## Checking the Existence of An Object
+	 * If no child of the given name exists, this function will return nil. If the optional recursive argument is true, this function searches all descendants rather than only the immediate children of the `Instance`.
 	 *
-	 * FindFirstChild is necessary if you need to verify an object something exists before continuing. Attempting to index a child by name using the dot operator throws an error if the child doesn't exist.
+	 * ## When should I use FindFirstChild?
+	 *
+	 * FindFirstChild is particularly useful if you want to verify an object something exists before continuing. Using the dot operator to index a child will cause an error if the child doesn't exist.
 	 *
 	 * ```lua
- -- The following line errors if Part doesn't exist in the Workspace:
-workspace.Part.Transparency = .5
+Model.Humanoid:TakeDamage(10)
+ -- Will error if Humanoid doesn't exist
 ```
 	 * 
 
-	 * Use FindFirstChild to first check for Part, then use an if-statement to run code that needs it.
+	 * In this case, FindFirstChild would avoid this error.
 	 *
 	 * ```lua
-local part = workspace:FindFirstChild("Part")
-if part then
-	part.Transparency = .5
+local humanoid = Model:FindFirstChild("Humanoid")
+if humanoid then
+	humanoid:TakeDamage(10)
 end
+-- Will only try to damage humanoid if it exists
 ```
 	 * 
 
-	 * ## Finding a Child Whose Name Matches a Property
-	 *
-	 * Sometimes the [Name](https://developer.roblox.com/api-reference/property/Instance/Name) of an object is the same as that of a property of its [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent). When using the dot operator, properties take precedence over children if they share a name.
-	 *
-	 * In the following example, a `Folder` called "Color" is added to a `Part`, which also has the [Part.Color](https://developer.roblox.com/search#stq=Color) property. `Part.Color` refers to the [datatype.Color3](https://developer.roblox.com/search#stq=Color3), not the Folder.
+	 * Another strength of FindFirstChild is it avoids the possibility of inadvertently accessing the property of an `Instance` rather than the child of one. For example:
 	 *
 	 * ```lua
 local part = Instance.new("Part")
-local folder = Instance.new("Folder")
-folder.Name = "Color"
-folder.Parent = part
-local c = part.Color --> A Color3
-local c2 = part:FindFirstChild("Color") --> The Folder
+local color = part.Color -- The Part's Color property
+local color = part:FindFirstChild("Color") -- A descendant of the Part called 'Color'
 ```
 	 * 
 
-	 * A benefit of using FindFirstChild in this way is that the introduction of new properties does not impose a risk on your code.
+	 * Using FindFirstChild when accessing descendants of the `DataModel` reduces the risk of this happening, and future proofs your code against new properties being added.
 	 *
-	 * **Tip:** If you only need to use the result of a FindFirstChild call once, such as getting the property of a child if it exists, you can use the following syntax with the `and` operator:
+	 * However, FindFirstChild is less efficient than the dot operator. Therefore, developers are advised not to use FindFirstChild to access the same object repeatedly and instead store it in a local variable after the first time. For example:
 	 *
 	 * ```lua
-local myColor = workspace:FindFirstChild("SomePart") and workspace.SomePart.Color
+local ship = workspace:FindFirstChild("Ship")
+print(ship)
 ```
 	 * 
 
-	 * If SomePart exists, `myColor` will contain the Color of SomePart. Otherwise, it'll be nil without throwing an error. This works due to short-circuiting: Lua ignores the right side if the left is nil/false
+	 * For more information on instance hierarchy please see [this page][1].
 	 *
-	 * ## Performance Note
-	 *
-	 * FindFirstChild takes about 20% longer than using dot operator, and almost 8 times longer than simply storing a reference to an object. Therefore, you should avoid calling FindFirstChild in performance dependent code, such as in tight loops or functions connected to [RunService.Heartbeat](https://developer.roblox.com/api-reference/event/RunService/Heartbeat)/[RunService.RenderStepped](https://developer.roblox.com/api-reference/event/RunService/RenderStepped). **Store the result in a variable,** or consider using [ChildAdded](https://developer.roblox.com/api-reference/event/Instance/ChildAdded) or [WaitForChild](https://developer.roblox.com/api-reference/function/Instance/WaitForChild) to detect when a child of a given name becomes available.
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param name The `Instance/Name` to be searched for.
 	 * @param recursive Whether or not the search should be conducted recursively.
 	 * @returns The `Instance` found.
 	 */
 	FindFirstChild<T extends Instance = Instance>(name: string, recursive?: boolean): T | undefined;
 	/** 
-	 * Returns the first child of the `Instance` whose [ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) is equal to the given className.
+	 * Returns the first child of the `Instance` whose [Instance.ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) is equal to the given className.
 	 *
 	 * If no matching child is found, this function returns nil.
 	 *
 	 * Unlike [Instance.FindFirstChildWhichIsA](https://developer.roblox.com/api-reference/function/Instance/FindFirstChildWhichIsA) this function uses only returns objects whose class matches the given className, ignoring class inheritance.
 	 *
 	 * Developers looking for a child by name, should use [Instance.FindFirstChild](https://developer.roblox.com/api-reference/function/Instance/FindFirstChild) instead.
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param className The `Instance/ClassName` to be looked for.
 	 * @returns The `Instance` found.
 	 */
@@ -707,20 +686,24 @@ local myColor = workspace:FindFirstChild("SomePart") and workspace.SomePart.Colo
 	 * Unlike [Instance.FindFirstChildOfClass](https://developer.roblox.com/api-reference/function/Instance/FindFirstChildOfClass), this function uses [Instance.IsA](https://developer.roblox.com/api-reference/function/Instance/IsA) which respects class inheritance. For example:
 	 *
 	 * ```lua
-print(part:IsA("Part")) --> true
-print(part:IsA("BasePart")) --> true
-print(part:IsA("Instance")) --> true
+print(part:IsA("Part")) --&gt; true
+print(part:IsA("BasePart")) --&gt; true
+print(part:IsA("Instance")) --&gt; true
 ```
 	 * 
 
 	 * Therefore, the following code sample will return the first `BasePart` child, regardless of if it is a `WedgePart`, `MeshPart` or `Part`.
 	 *
 	 * ```lua
-local part = object:FindFirstChildWhichIsA("BasePart")
+local part object:FindFirstChildWhichIsA("BasePart")
 ```
 	 * 
 
 	 * Developers looking for a child by name, should use [Instance.FindFirstChild](https://developer.roblox.com/api-reference/function/Instance/FindFirstChild) instead.
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param className The `Instance/ClassName` to be searched for.
 	 * @param recursive Whether or not the search should be conducted recursively. 
 	 * @returns The `Instance` found.
@@ -728,80 +711,46 @@ local part = object:FindFirstChildWhichIsA("BasePart")
 	FindFirstChildWhichIsA<T extends keyof Instances>(className: T, recursive?: boolean): Instances[T] | undefined;
 	FindFirstChildWhichIsA(className: string, recursive?: boolean): Instance | undefined;
 	/** 
-	 * Returns an array (a numerically indexed table) containing all of the `Instance`'s direct children, or every `Instance` whose [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) is equal to the object. The array can be iterated upon using either a numeric or generic for-loop:
+	 * Returns an array containing all of the `Instance`'s children.
 	 *
-	 * ```lua
--- Numeric for-loop example
-local children = workspace:GetChildren()
-for i = 1, #children do
-	local child = children[i]
-	print(child.Name .. " is child number " .. i)
-end
-```
-	 * 
+	 * Running this function will collect every object parented to this `Instance` and return them in an array.
 	 *
-	 * ```lua
--- Generic for-loop example
-local children = workspace:GetChildren()
-for i, child in ipairs(children) do
-	print(child.Name .. " is child number " .. i)
-end
-```
-	 * 
-
-	 * The children are sorted by the order in which their [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property was set to the object.
-	 *
-	 * See also the [GetDescendants](https://developer.roblox.com/api-reference/function/Instance/GetDescendants) function.
+	 * Note this function only returns direct children of the `Instance`, if all descendants are required use [Instance.GetDescendants](https://developer.roblox.com/api-reference/function/Instance/GetDescendants) instead.
 	 * @returns An array containing the `Instance`'s children.
 	 */
 	GetChildren<T extends Instance = Instance>(): Array<T>;
 	/** 
-	 * The **GetDescendants** function of an object returns an array that contains all of the descendants of that object. Unlike [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren), which only returns the immediate children of an object, GetDescendants will find every child of the object, every child of those children, and so on and so forth.
+	 * Returns an array containing all of the `Instance`'s descendants.
 	 *
-	 * The arrays returned by GetDescendants are arranged so that parents come earlier than their children. For example, let’s look at the following setup:
+	 * Running this function will collect every object descending from this `Instance` and return them in an array.
 	 *
-	 * ![Workspace Descendants][1]
+	 * Note this function returns all descendants of the `Instance`, if only direct children are required use [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) instead.
 	 *
-	 * Here we have a `Model` in the `Workspace`. Inside this model is three parts (C, D, and E) and another model (InnerModel). Inside the inner model are two more parts (A and B). If we use GetDescendants on the first model and print out the contents of the returned array, we can see that the first level of children, InnerModel, C, D, and E, are printed out before A and B.
+	 * For more information on instance hierarchy please see [this page][1].
 	 *
-	 * ```lua
-local descendants = game.Workspace.Model:GetDescendants()
- 
--- Loop through all of the descendants of the model and
--- print out their name
-for index, descendant in pairs(descendants) do
-	print(descendant.Name)
-end
- 
--- Prints:
--- C
--- D
--- E
--- InnerModel
--- A
--- B
-```
-	 * 
-
-	 * [1]: https://developer.roblox.com/assets/5c5622a2005d89b20bb84fee/GetDescendantsExample.png
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @returns An array containing the `Instance`'s descendants.
 	 */
 	GetDescendants(): Array<Instance>;
 	/** 
-	 * Returns a string describing the `Instance`'s ancestry. The string is a concatenation of the [Name](https://developer.roblox.com/api-reference/property/Instance/Name) of the object and its ancestors, separated by periods. The `DataModel` (`game`) is not considered. For example, a `Part` in the `Workspace` may return `Workspace.Part`.
+	 * Returns a string showing the `Instance`'s ancestry.
 	 *
-	 * When called on an `Instance` that is not a descendant of the `DataModel`, this function considers all ancestors up to and including the topmost one without a [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent).
+	 * ## Notes
 	 *
-	 * This function is useful for logging and debugging. You shouldn't attempt to parse the returned string for any useful operation; this function does not escape periods (or any other symbol) in object names. In other words, although its output often appears to be a valid Lua identifier, it is not guaranteed.
+	 * * This method is intended to be used for logging and debugging. Developers are advised not to attempt to parse the returned string
+	 *
+	 * * If used on an `Instance` not descending from the `DataModel`, the `Instance`'s [Instance.Name](https://developer.roblox.com/api-reference/property/Instance/Name) will be returned instead
+	 *
+	 * .
 	 * @returns The full name of the `Instance`.
 	 */
 	GetFullName(): string;
 	/** 
-	 * This method returns an event that behaves exactly like the `Changed` event, except that the event only fires when the given property changes. It's generally a good idea to use this method instead of a connection to `Changed` with a function that checks the property name. Subsequent calls to this method on the same object with the same property name return the same event.
+	 * This method returns an event that behaves exactly like the `Changed` event, except that the event only fires when the given property changes. Subsequent calls to this method on the same object with the same property name return the same event. It's generally a good idea to use this method instead of a connection to `Changed` with a function that checks the property name.
 	 *
 	 * `print(object:GetPropertyChangedSignal("Name") == object:GetPropertyChangedSignal("Name")) --&gt; always true`
 	 *
-	 * `ValueBase` objects, such as `IntValue` and `StringValue`, use a modified `Changed` event that fires with the contents of the `Value` property. As such, this method provides a way to detect changes in other properties of those objects. For example, to detect changes in the `Name` property of an `IntValue`, use `IntValue:GetPropertyChangedSignal("Name"):Connect(someFunc)` since the `Changed` event of `IntValue` objects only detect changes on the `Value` property.
+	 * For "-Value" objects which use a different `Changed` event that fires with their present value, this method is the only way to detect changes in other properties of those objects. For example, to detect changes in the `Name` property of an `IntValue`, you will need to use `IntValue:GetPropertyChangedSignal("Name"):connect(someFunc)` since the `Changed` event of `IntValue` objects only detect changes on the `Value` property. On the other hand, you will not need to call `IntValue:GetPropertyChangedSignal("Value")` since the `Changed` event behaves like this anyway.
 	 */
 	GetPropertyChangedSignal<T extends GetProperties<this>>(propertyName: T): RBXScriptSignal;
 	GetPropertyChangedSignal(propertyName: string): RBXScriptSignal;
@@ -847,6 +796,10 @@ paintFigure(game.Players.Player.Character, BrickColor.new("Bright blue"))
 	 * An `Instance` is considered the ancestor of an object if the object's [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) or one of it's parent's [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) is set to the `Instance`.
 	 *
 	 * See also, [Instance.IsDescendantOf](https://developer.roblox.com/api-reference/function/Instance/IsDescendantOf).
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param descendant The descendant `Instance`.
 	 * @returns True if the `Instance` is an ancestor of the given descendant.
 	 */
@@ -859,6 +812,10 @@ paintFigure(game.Players.Player.Character, BrickColor.new("Bright blue"))
 	 * Note, `DataModel` is a descendant of nil. This means IsDescendantOf cannot be used with a parameter of nil to check if an object has been removed.
 	 *
 	 * See also, [Instance.IsAncestorOf](https://developer.roblox.com/api-reference/function/Instance/IsAncestorOf).
+	 *
+	 * For more information on instance hierarchy please see [this page][1].
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 * @param ancestor The ancestor `Instance`.
 	 * @returns True if the `Instance` is a descendant of the given ancestor.
 	 */
@@ -929,7 +886,9 @@ object.AncestryChanged:Connect(function(_, parent)
 	end
 end)
 ```
-	 *
+	 * 
+
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 */
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance) => void>;
 	/** 
@@ -948,6 +907,8 @@ end)
 	 * Note, this function only works for immediate children of the `Instance`. For a function that captures all descendants, use [Instance.DescendantAdded](https://developer.roblox.com/api-reference/event/Instance/DescendantAdded).
 	 *
 	 * See also, [Instance.ChildRemoved](https://developer.roblox.com/api-reference/event/Instance/ChildRemoved).
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 */
 	readonly ChildAdded: RBXScriptSignal<(child: Instance) => void>;
 	/** 
@@ -958,6 +919,8 @@ end)
 	 * This function only works for immediate children of the `Instance`. For a function that captures all descendants, use [Instance.DescendantRemoved](https://developer.roblox.com/search#stq=DescendantRemoved).
 	 *
 	 * See also [Instance.ChildAdded](https://developer.roblox.com/api-reference/event/Instance/ChildAdded).
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 */
 	readonly ChildRemoved: RBXScriptSignal<(child: Instance) => void>;
 	/** 
@@ -968,55 +931,35 @@ end)
 	 * Developers only concerned with the immediate children of the `Instance` should use [Instance.ChildAdded](https://developer.roblox.com/api-reference/event/Instance/ChildAdded) instead.
 	 *
 	 * See also [Instance.DescendantRemoving](https://developer.roblox.com/api-reference/event/Instance/DescendantRemoving).
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 */
 	readonly DescendantAdded: RBXScriptSignal<(descendant: Instance) => void>;
 	/** 
-	 * DescendantRemoving fires **immediately before** the [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) of a descendant of the `Instance` changes such that the object is no longer a descendant of the Instance. [Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy) and [Remove](https://developer.roblox.com/api-reference/function/Instance/Remove) change an object's Parent to nil, so calling these on a descendant of an object will therefore cause this event to fire.
+	 * Fires immediately before a descendant of the `Instance` is removed.
 	 *
-	 * Since this event fires before the the descendant's removal, the Parent of the descendant will be unchanged, i.e., it will still be a descendant at the time of this event firing. If the descendant is also a child of the object, It will also fire before ChildRemoved. There is no similar event called "DescendantRemoved".
+	 * Removed refers to when an object's parent is changed from this `Instance` or a descendant of this `Instance` to something not descending from this `Instance`. Note, this event will also fire when a descendant is destroyed (using [Instance.Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy)) as the destroy function sets an object's parent to nil.
 	 *
-	 * If a descendant has children, this event fires with the descendant first followed by its descendants.
-	 *
-	 * ## Example
-	 *
-	 * The example below should help clarify how DescendantRemoving fires when there are several objects involved.
-	 *
-	 * ![A cropped screenshot of the Explorer window. A Model contains ModelA and ModelB, which each contain a Part, PartA and PartB respectively. PartA contains a Fire object named FireA.][1]
-	 *
-	 * * Calling [Remove](https://developer.roblox.com/api-reference/function/Instance/Remove) on **PartA** would cause DescendantRemoving to fire on both **ModelA** and **Model**, in that order.
-	 *
-	 * * Setting the [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) of **PartA** to **ModelB** would cause DescendantRemoving to fire on **ModelA** but not **Model** (as Model would still be an ancestor of PartA).
-	 *
-	 * * Calling [Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy) on **ModelA** would cause DescendantRemoving to fire multiple times on several objects:
-	 *
-	 * 	1. On **Model** with **ModelA**, **PartA** then **FireA**.
-	 *
-	 * 	2. On **ModelA**, with **PartA** then **FireA**.
-	 *
-	 * 	3. On **PartA** with **FireA**.
-	 *
-	 * ## Warning
-	 *
-	 * This event fires with the descendant object that is being removed. Attempting to set the [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) of the descendant being removed to something else **will fail** with the following warning: "Something unexpectedly tried to set the parent of X to Y while trying to set the parent of X. Current parent is Z", where X is the removing descendant, Y is the ignored parent setting, and Z is the original parent of X. Below is an example that demonstrates this:
+	 * Note, developers should not attempt to set the descendants parent to something else when the event fires, or it will fail with the following warning:
 	 *
 	 * ```lua
-workspace.DescendantRemoving:Connect(function(descendant)
-	-- Don't manipulate the parent of descendant in this function!
-	-- This event fires BECAUSE the parent of descendant was manipulated,
-	-- and the change hasn't happened yet, i.e. this function fires before that happens.
-	-- Therefore, it is problematic to change the parent like this:
+workspace.DescendantRemoving:connect(function(descendant)
 	descendant.Parent = game
 end)
 local part = Instance.new("Part")
 part.Parent = workspace
-part.Parent = nil -- This triggers DescendantRemoving on Workspace:
+part.Parent = nil
 --&gt; Something unexpectedly tried to set the parent of Part to NULL while trying to set the parent of Part. Current parent is Workspace.
 ```
 	 * 
 
-	 * See also [DescendantAdded](https://developer.roblox.com/api-reference/event/Instance/DescendantAdded).
+	 * Additionally, as this event fires for all descendants, removing an object from the `Instance` will fire an event for the object and all of its descendants individually.
 	 *
-	 * [1]: https://developer.roblox.com/assets/5bedf8a8a79094cd2b6a1c41/DescendantRemoving2.png
+	 * Developers only concerned with the immediate children of the `Instance` should use [Instance.ChildRemoved](https://developer.roblox.com/api-reference/event/Instance/ChildRemoved) instead.
+	 *
+	 * See also [Instance.DescendantAdded](https://developer.roblox.com/api-reference/event/Instance/DescendantAdded).
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Place_hierarchy
 	 */
 	readonly DescendantRemoving: RBXScriptSignal<(descendant: Instance) => void>;
 }
@@ -1030,11 +973,7 @@ interface ABTestService extends Instance {
 }
 
 /** 
- * An Accoutrement is an object that welds its child [part](https://developer.roblox.com/api-reference/class/Part) called "Handle" to the Head of a player's character. The position and rotation of the Handle part can be changed with the [AttachmentPos](https://developer.roblox.com/api-reference/property/Accoutrement/AttachmentPos)/[Right](https://developer.roblox.com/api-reference/property/Accoutrement/AttachmentRight)/[Forward](https://developer.roblox.com/api-reference/property/Accoutrement/AttachmentForward)/[Up](https://developer.roblox.com/api-reference/property/Accoutrement/AttachmentUp) properties.
- *
- * Parts descending from an accoutrement will be massless when attached to other parts (e.g. with a Weld) as long as they are not the root part of the assembly returned by [GetRootPart()](https://developer.roblox.com/api-reference/function/BasePart/GetRootPart). [GetMass()](https://developer.roblox.com/api-reference/function/BasePart/GetMass) will return 0 for parts in this case and it will not add to the total mass or rotational inertia of the Assembly.
- *
- * This will not apply to a part descending from an accoutrement when an accoutrement is not welded to another part that is ***not*** massless or one if its parts otherwise becomes root. This will not apply for the root part, it will have mass like a normal part.
+ * An Accoutrement is an object that welds its child [part](https://wiki.roblox.com/index.php?title=Part) called "Handle" to the Head of a player's character. The position and rotation of the Handle part can be changed with the [AttachmentPos](https://wiki.roblox.com/index.php?title=AttachmentPos)/[Right](https://wiki.roblox.com/index.php?title=AttachmentRight)/[Forward](https://wiki.roblox.com/index.php?title=AttachmentForward)/[Up](https://wiki.roblox.com/index.php?title=AttachmentUp) properties.
  */
 interface Accoutrement extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -1100,29 +1039,7 @@ interface Hat extends Accoutrement {
 }
 
 /** 
- * This AdService class was historically a service used to display mobile video ads as a form of game monetization. It has been decommissioned and is no longer operational.
- *
- * ![iPad displaying an ad](https://developer.roblox.com/assets/5c3e6293ae0aa2bf7f3a52fe/AdserviceIPad.png)
- *
- * It allowed game creators to utilize a the service and display video ads to mobile players on supported iOS and Android devices. Players were able to view up to 5 ads per hour across the site.
- *
- * ## Best Practices
- *
- *  - You couldn’t play an ad more than five times in an hour, in any mobile instance.
- *
- *  - [GUIs](https://developer.roblox.com/api-reference/class/GuiObject) were extremely important in getting your ads out. They made sure players knew they were seeing an ad and that gameplay would begin once it was over. Particularly something that said, “and now a word from our sponsor,” or “gameplay sponsored by…”
- *
- *  - You had to make sure players inside your game didn’t take damage or get knocked out while they were watching an ad (this could be as simple as giving them a forcefield while the ad plays).
- *
- *  - It was important to always show ads when it didn’t interfere with gameplay (like between rounds, before the game starts, or after a player gets knocked out).
- *
- * ## Benefits
- *
- * Implementing video ad impressions in mobile gameplay sessions offers a variety of positive things for Roblox developers.
- *
- * The more hits your ad got, the more ROBUX you earned (at a rate of one ROBUX per 20 impressions). So if you were trying to utilize the heavy traffic you received in your game, it was recommended to using the API to call the commercial before your game started. For those who already had a hit game, this this could have functioned as supplemental income.
- *
- * Thinking of the bigger picture. You could tie the API call to, say, a button inside your game, which would only play the ad when pressed. Many Roblox players wanted to earn exclusive items for your game, but maybe couldn't afford them. Perhaps you could tie one of those items into the ad — couldn’t afford the Green Balloon? Here was another option: watch a 30 second ad. The player got the item, you got the impression, and the cycle continued that way. Maybe your game was round-based. Why not play an ad between rounds? That was easily 20 impressions just while waiting for the next level to load. And more ad impressions meant more ROBUX in your pocket.
+ * A decommissioned service that is no longer operational.
  */
 interface AdService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -1153,9 +1070,9 @@ interface Animation extends Instance {
 	 * It’s important to remember the URL is not the same as the content ID. It will work when pasted directly into the AnimationId property of an `Animation` in Roblox studio, as Studio will automatically correct it, however if it is being set from a `Script` then the correct content ID will need to be used, using the number from the URL. For example:
 	 *
 	 * ```lua
-"https://www.roblox.com/catalog/507771019" -- Web URL (will not work)
-"http://www.roblox.com/asset/?id=507771019" -- Content ID (will work)
-"rbxassetid://507771019" -- Content ID (alternative version, will work)
+“https://www.roblox.com/catalog/507771019” -- Web URL (will not work)
+“http://www.roblox.com/asset/?id=507771019” -- Content ID (will work)
+“rbxassetid://507771019” -- Content ID (alternative version, will work)
 ```
 	 * 
 
@@ -1221,7 +1138,9 @@ animationTrack:Play()
 }
 
 /** 
- * Controls the playback of an animation on a `Humanoid` or `AnimationController`. This object cannot be created, instead it is returned by the [Humanoid.LoadAnimation](https://developer.roblox.com/api-reference/function/Humanoid/LoadAnimation) method.
+ * Controls the playback of an animation on a [Humanoid](https://wiki.roblox.com/index.php?title=Humanoid) or [AnimationController](https://wiki.roblox.com/index.php?title=AnimationController) .
+ *
+ * This object cannot be created, rather it is returned by the [LoadAnimation](https://wiki.roblox.com/index.php?title=LoadAnimation) method.
  */
 interface AnimationTrack extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -1329,7 +1248,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	
@@ -1341,7 +1260,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 *
@@ -1357,7 +1276,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	
@@ -1369,7 +1288,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 *
@@ -1379,7 +1298,7 @@ interface AnimationTrack extends Instance {
 	/** 
 	 * This function changes the [AnimationTrack.Speed](https://developer.roblox.com/api-reference/property/AnimationTrack/Speed) of an animation.  A positive value for speed plays the animation forward, a negative one plays it backwards, and 0 pauses it.
 	 *
-	 * An AnimationTrack's initial speed is set as a parameter in [AnimationTrack.Play](https://developer.roblox.com/api-reference/function/AnimationTrack/Play). However a track's Speed can be changed during playback, using AdjustSpeed. When speed is equal to 1, the amount of time an animation takes to complete is equal to [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds).
+	 * An AnimationTrack's initial speed is set as a parameter in [AnimationTrack.Play](https://developer.roblox.com/api-reference/function/AnimationTrack/Play). However a track's Speed can be changed, both before and during playback, using AdjustSpeed. When speed is equal to 1, the amount of time an animation takes to complete is equal to [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds).
 	 *
 	 * When is adjusted, then the actual time it will take a track to play can be computed by dividing the length by the speed. Speed is a unitless quantity.
 	 *
@@ -1398,44 +1317,14 @@ interface AnimationTrack extends Instance {
 	 *
 	 * ![Animation Weight Blending][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
+	 * [1]: https://developer.roblox.com/assets/5a8fe5750243b3fe6cf3e89f/Animation_Weight_-_Copy.png
 	 *
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 * @param weight The weight the animation is to be changed to.
 	 * @param fadeTime The duration of time that the animation will fade between the old weight and the new weight for.
 	 */
 	AdjustWeight(weight?: number, fadeTime?: number): void;
-	/** 
-	 * This function returns an [event](https://developer.roblox.com/search#stq=RBXScriptSignal) similar to the [AnimationTrack.KeyframeReached](https://developer.roblox.com/api-reference/event/AnimationTrack/KeyframeReached) event, except it only fires when a specified `KeyframeMarker` has been hit in an [animation](https://developer.roblox.com/api-reference/class/Animation). The difference allows for greater control of when the event will fire.
-	 *
-	 * This event allows a developer to run code at predefined points in an animation (set by `Keyframe` names). This allows the default functionality of Roblox animations to be expanded upon by adding things such as [Sounds](https://developer.roblox.com/api-reference/class/Sound) or [ParticleEffects](https://developer.roblox.com/api-reference/class/ParticleEmitter) at different points in an animation.
-	 *
-	 * To learn more about using this function, see **Animation&nbsp;Events** in the [Using the Animation Editor](https://developer.roblox.com/search#stq=using%20animation%20editor) article.
-	 *
-	 * ## Using the Returned Event
-	 *
-	 * The RBXScriptSignal (event) returned by this can be connected to another function. The connection creates a [DataType.RBXScriptConnection](https://developer.roblox.com/search#stq=RBXScriptConnection) listener that executes the connected function every time the animation hits the specified KeyframeMarker until disconnected using Disconnect().
-	 *
-	 * ## More about Keyframes
-	 *
-	 * `Keyframe` names do not need to be unique. For example, if an Animation has three keyframes named "Particles" the connected event returned by this function will fire each time one of these keyframes is reached.
-	 *
-	 * `Keyframe` names can be set in the Roblox Animation Editor when creating or editing an animation. They cannot however be set by a `Script` on an existing animation prior to playing it.
-	 *
-	 * ## See also
-	 *
-	 *  - `AnimationTrack`, controls the playback of an animation on a `Humanoid` or `AnimationController`
-	 *
-	 *  - `Keyframe`,  holds the [Poses](https://developer.roblox.com/api-reference/class/Pose) applied to joints in a `Model` at a given point of time in an animation
-	 *
-	 *  - [Keyframe.AddMarker](https://developer.roblox.com/api-reference/function/Keyframe/AddMarker)
-	 *
-	 *  - [Keyframe.RemoveMarker](https://developer.roblox.com/api-reference/function/Keyframe/RemoveMarker)
-	 *
-	 *  - [Keyframe.GetMarkers](https://developer.roblox.com/api-reference/function/Keyframe/GetMarkers)
-	 * @param name The name of the `KeyFrameMarker` the signal is being created for
-	 * @returns The signal created and fired when the animation reaches the created `KeyFrameMarker`
-	 */
+	/** [NO DOCUMENTATION] */
 	GetMarkerReachedSignal(name: string): RBXScriptSignal;
 	/** 
 	 * Returns the time position of the first `Keyframe` of the given name in an `AnimationTrack`. If multiple `Keyframe`s share the same name, it will return the earliest one in the animation.
@@ -1494,7 +1383,7 @@ interface AnimationTrack extends Instance {
 }
 
 /** 
- * The `Animator` is the main class responsible for controlling an `Animation`. It is created when `LoadAnimation` is called under a `Humanoid` or `AnimationController` for the first time.
+ * The Animator is the main class responsible for controlling `Animation`. It is created when [LoadAnimation](https://wiki.roblox.com/index.php?title=LoadAnimation) is called under a `Humanoid` or a `AnimationController` for the first time. If destroyed, all animations playing under it will stop running.
  */
 interface Animator extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -1596,11 +1485,11 @@ interface Attachment extends Instance {
 	 */
 	CFrame: CFrame;
 	/** 
-	 * A [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3) that describes the orientation of the Attachment relative to the orientation of its parent, in degrees. Rotations are applied in Z, X, Y order.
+	 * A [Vector3](https://wiki.roblox.com/index.php?title=Vector3) that describes the orientation of the Attachment relative to the orientation of its parent, in degrees. Rotations are applied in Z, X, Y order.
 	 */
 	Orientation: Vector3;
 	/** 
-	 * A [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3) that describes the positional offset of the Attachment, relative to the position and orientation of its parent.
+	 * A [Vector3](https://wiki.roblox.com/index.php?title=Vector3) that describes the positional offset of the Attachment, relative to the position and orientation of its parent.
 	 */
 	Position: Vector3;
 	/** 
@@ -1768,7 +1657,7 @@ interface Tool extends BackpackItem {
 	 */
 	Activate(): void;
 	/** 
-	 * The event simulates the deactivation of a [Tool](https://developer.roblox.com/api-reference/class/Tool). Tools will normally trigger the [Tool.Deactivated](https://developer.roblox.com/api-reference/event/Tool/Deactivated) event when the player releases the left mouse button, while the tool is equipped.
+	 * The event simulates the deactivation of a [Tool](https://wiki.roblox.com/index.php?title=Tool). Tools will normally trigger the [Tool.Deactivated](https://developer.roblox.com/api-reference/event/Tool/Deactivated) event when the player releases the left mouse button, while the tool is equipped.
 	 */
 	Deactivate(): void;
 	/** 
@@ -1784,18 +1673,7 @@ interface Tool extends BackpackItem {
 	 */
 	readonly Equipped: RBXScriptSignal<(mouse: Mouse) => void>;
 	/** 
-	 * The Unequipped event fires when a player unequips a `Tool` by putting in back in their `Backpack`. This event can be used to determine when a player stops using and puts a tool away.
-	 *
-	 * The opposite of this event, [Tool.Equipped](https://developer.roblox.com/api-reference/event/Tool/Equipped), can be used alongside this event to determine when a player takes a tool out of their backpack to use.
-	 *
-	 * The example shown below will print "A tool was unequipped" each time the tool is unequipped by the player. Please note that the below example assumes that you've already defined what "Tool" is.
-	 *
-	 * ```lua
-Tool.Unequipped:Connect(function()
-	print("The tool was unequipped")
-end)
-```
-	 *
+	 * Fired when the tool is unequipped.
 	 */
 	readonly Unequipped: RBXScriptSignal<() => void>;
 }
@@ -1805,7 +1683,7 @@ end)
  *
  * When a player touches this object's Handle, which must be a child of the Flag object, which is a Part named "Handle", the flag will be added to the player's backpack and will appear in their hand. A player cannot select other weapons while carrying a flag, and can drop the flag at anytime by pressing "Backspace" on the keyboard.
  *
- * If the player carrying a flag steps onto another FlagStand of a different team color, the flag will be removed from the player's backpack and a point will be added to the user's [leaderstats](https://developer.roblox.com/articles/Leaderboards), if provided. The flag will then regenerate at the originating flag stand.
+ * If the player carrying a flag steps onto another FlagStand of a different team color, the flag will be removed from the player's backpack and a point will be added to the user's [leaderstats](https://wiki.roblox.com/index.php?title=Leaderstats), if provided. The flag will then regenerate at the originating flag stand.
  *
  * This allows for 'Capture the Flag' to be made games very easily, which was the reason for its creation.
  */
@@ -1918,16 +1796,7 @@ interface BadgeService extends Instance {
 interface BasePlayerGui extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "BasePlayerGui" | "CoreGui" | "PlayerGui" | "StarterGui";
-	/** 
-	 * This function takes a screen position and returns a list of all the visible [GuiObjects](https://developer.roblox.com/api-reference/class/GuiObject) that are occupying that screen position.
-	 *
-	 * The main use case is to get GUI objects under the player’s [Player.Mouse](https://developer.roblox.com/search#stq=Mouse) or touch inputs to do things like allow selection or highlighting. These effects can already be achieved using [GuiObject.MouseEnter](https://developer.roblox.com/api-reference/event/GuiObject/MouseEnter) and [GuiObject.MouseLeave](https://developer.roblox.com/api-reference/event/GuiObject/MouseLeave) but this requires the developer to track these events for their UI objects all the time even if they only need this functionality in specific circumstances.
-	 *
-	 * Since the child classes of `BasePlayerGui` inherit this function, it can be fired by class objects such as the `PlayerGui` and `StarterGui` folders.
-	 * @param x The x position on the screen relative to the top left corner after the `GuiService/GuiInset|GuiInset` is applied
-	 * @param y The y position on the screen relative to the top left corner after the `GuiService/GuiInset|GuiInset` is applied
-	 * @returns A table of the visible `GuiObject|GuiObjects` that occupy the given screen space
-	 */
+	/** [NO DOCUMENTATION] */
 	GetGuiObjectsAtPosition(x: number, y: number): Array<Instance>;
 }
 
@@ -1980,21 +1849,7 @@ interface PlayerGui extends BasePlayerGui {
 	 */
 	GetTopbarTransparency(): number;
 	/** 
-	 * SetTopbarTransparency sets the transparency of the Topbar CoreGui. A value of 0 is completely opaque, and a value of 1 is completely transparent. Values outside of the range [0, 1] are clamped. The default transparency of the topbar is 0.5. The current transparency can be retrieved using the similarly-named [GetTopbarTransparency](https://developer.roblox.com/api-reference/function/PlayerGui/GetTopbarTransparency) function.
-	 *
-	 * ## Comparison of Values
-	 *
-	 * The screenshots below show the topbar at 1.0, 0.5 and 0.0 transparency.
-	 *
-	 * ![The TopBar with a transparency of 1.0 (completely hidden)]](https://developer.roblox.com/assets/5c2a51f2ad2d87331bc45024/Topbar_Transparency_1.0.png)&nbsp;![The TopBar with a transparency of 0.5 (50% transparency)]](https://developer.roblox.com/assets/5c2a5257ac4084cd1b196622/Topbar_Transparency_0.5.png)&nbsp;![The TopBar with a transparency of 0.0 (completely opaque)](https://developer.roblox.com/assets/5c2a5230be5779ad1a89484d/Topbar_Transparency_0.png)
-	 *
-	 * ## Usage
-	 *
-	 * This method is often used when re-styling the topbar to match the visual aesthetic of a game. By hiding the topbar, you can create your own custom topbar. See the code samples for an example.
-	 *
-	 * ## Alternative
-	 *
-	 * Using the [StarterGui.SetCore](https://developer.roblox.com/api-reference/function/StarterGui/SetCore) method with the `TopbarEnabled` option allows you to enable/disable the entire topbar and all of its features (player list, health, etc). By contrast, this method only affects how the topbar is displayed.
+	 * Sets the transparency of the Topbar CoreGui.
 	 */
 	SetTopbarTransparency(transparency: number): void;
 	/** 
@@ -2004,68 +1859,21 @@ interface PlayerGui extends BasePlayerGui {
 }
 
 /** 
- * The StarterGui service is a container object designed to hold [GUI objects](https://developer.roblox.com/api-reference/class/LayerCollector) such as [ScreenGuis](https://developer.roblox.com/api-reference/class/ScreenGui).
- *
- * ## StarterGui as a container
- *
- * When a [Players’](https://developer.roblox.com/api-reference/class/Player) [character](https://developer.roblox.com/api-reference/property/Player/Character) respawns, the contents of their `PlayerGui` is emptied. Children of the `StarterGui` are then copied (along with their descendants) into the `StarterGui`.
- *
- * [GUI objects](https://developer.roblox.com/api-reference/class/LayerCollector) such as [ScreenGuis](https://developer.roblox.com/api-reference/class/ScreenGui) with their [ResetOnSpawn](https://developer.roblox.com/api-reference/property/LayerCollector/ResetOnSpawn) property set to false will only be placed into each [Player’s](https://developer.roblox.com/api-reference/class/Player) `PlayerGui` once and will not be deleted when the `Player` respawns.
- *
- * ## StarterGui as an interface
- *
- * The StarterGui also includes a range of functions allowing you to interact with the `CoreGui`. For example [StarterGui.SetCoreGuiEnabled](https://developer.roblox.com/api-reference/function/StarterGui/SetCoreGuiEnabled) can be used to disable elements of the `CoreGui`. [StarterGui.SetCore](https://developer.roblox.com/api-reference/function/StarterGui/SetCore) can perform a range of functions including creating notifications and system messages.
+ * The StarterGui object is a service object that holds GUIs and `LocalScript`. Children of this object get cloned into a Player's `PlayerGui` when their character spawns. If [StarterGui.ResetPlayerGuiOnSpawn](https://developer.roblox.com/api-reference/property/StarterGui/ResetPlayerGuiOnSpawn) is false then the children will only be copied to PlayerGui the first time the player's character spawns.
  */
 interface StarterGui extends BasePlayerGui {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "StarterGui";
 	/** 
-	 * This property sets the preferred orientation mode for users with mobile devices. For the different modes available, see [Enum.ScreenOrientation](https://developer.roblox.com/search#stq=ScreenOrientation).
-	 *
-	 * When a `Player` joins the game, if they are using a mobile device, this property will determine the device’s starting orientation. [PlayerGui.ScreenOrientation](https://developer.roblox.com/api-reference/property/PlayerGui/ScreenOrientation) will be set to this value for [Players](https://developer.roblox.com/api-reference/class/Player) joining the game. For example, the following code would set the default to *‘Portrait’*:
-	 *
-	 * ```lua
-game:GetService("StarterGui").ScreenOrientation = Enum.ScreenOrientation.Portrait
-```
-	 * 
-
-	 * By default, this property is set to *‘LandscapeSensor’*, meaning the viewport will rotate so it is always right-side-up in landscape.
-	 *
-	 * Changing this property will not change the [Enum.ScreenOrientation](https://developer.roblox.com/search#stq=ScreenOrientation) for [Players](https://developer.roblox.com/api-reference/class/Player) already in the game. To change the orientation for an existing player use their [PlayerGui.ScreenOrientation](https://developer.roblox.com/api-reference/property/PlayerGui/ScreenOrientation) property.
-	 *
-	 * You can also get the current screen orientation for a user’s device using [PlayerGui.CurrentScreenOrientation](https://developer.roblox.com/api-reference/property/PlayerGui/CurrentScreenOrientation). This is useful when using the ‘sensor’ [Enum.ScreenOrientation](https://developer.roblox.com/search#stq=ScreenOrientation) settings.
-	 *
-	 * For more information, please see this article on [device orientation](https://developer.roblox.com/search#stq=Device%20Orientation%20for%20Mobile%20Roblox%20Games).
+	 * Sets the preferred screen orientation mode on mobile devices.
 	 */
 	ScreenOrientation: Enum.ScreenOrientation;
 	/** 
-	 * This property determines whether [GUI objects](https://developer.roblox.com/api-reference/class/LayerCollector) descending from the `StarterGui` are visible in Studio’s edit mode.
-	 *
-	 * As this property defaults to true, [ScreenGuis](https://developer.roblox.com/api-reference/class/ScreenGui), [BillboardGuis](https://developer.roblox.com/api-reference/class/BillboardGui) and [SurfaceGuis](https://developer.roblox.com/api-reference/class/SurfaceGui) descending from the `StarterGui` are not hidden.
-	 *
-	 * Setting this property to false will only affect objects not descending from the `StarterGui`. This means [BillboardGuis](https://developer.roblox.com/api-reference/class/BillboardGui) and [SurfaceGuis](https://developer.roblox.com/api-reference/class/SurfaceGui) descending from the `Workspace` will not be hidden.
-	 *
-	 * This property has no effect outside of Roblox Studio and is intended as a tool to hide the contents of `StarterGui` whilst working in the 3d world.
-	 *
-	 * ## Disabling ShowDevelopmentGui by default
-	 *
-	 * You can set this property to be false by default in new places by saving a `Script` with the following code into your local plugins folder.
-	 *
-	 * ```lua
-print("StarterGui.ShowDevelopmentGui = false") -- a reminder this plugin is active
-game:GetService("StarterGui").ShowDevelopmentGui = false
-```
-	 *
+	 * Whether or not GUI objects are visible in Studio's edit mode. This property has no effect in online mode.
 	 */
 	ShowDevelopmentGui: boolean;
 	/** 
-	 * This function returns whether the given [Enum.CoreGuiType](https://developer.roblox.com/search#stq=CoreGuiType) is enabled or if it has been disabled using [StarterGui.SetCoreGuiEnabled](https://developer.roblox.com/api-reference/function/StarterGui/SetCoreGuiEnabled).
-	 *
-	 * This function should be called on the client and is used by the core scripts to help determine which core GUI elements to show.
-	 *
-	 * GetCoreGuiEnabled only returns *false* if the given [Enum.CoreGuiType](https://developer.roblox.com/search#stq=CoreGuiType) has been disabled using [StarterGui.SetCoreGuiEnabled](https://developer.roblox.com/api-reference/function/StarterGui/SetCoreGuiEnabled). Setting *TopbarEnabled* to *false* using [StarterGui.SetCore](https://developer.roblox.com/api-reference/function/StarterGui/SetCore) hides all [CoreGuiTypes](https://developer.roblox.com/search#stq=CoreGuiType) and does not affect the result of function.
-	 * @param coreGuiType The given `Enum/CoreGuiType`
-	 * @returns Whether the given `Enum/CoreGuiType` is enabled
+	 * Returns whether or not the given CoreGui is enabled.
 	 */
 	GetCoreGuiEnabled(coreGuiType: CastsToEnum<Enum.CoreGuiType>): boolean;
 	/** 
@@ -2386,83 +2194,11 @@ end
 		connections: { [name: string]: BindableEvent | BindableFunction },
 	): void;
 	/** 
-	 * This function sets whether the `CoreGui` element associated with the given [Enum.CoreGuiType](https://developer.roblox.com/search#stq=CoreGuiType) is enabled or disabled.
-	 *
-	 * The top bar can not be disabled using this function. To disable the top bar, set *TopbarEnabled* to *false* using [StarterGui.SetCore](https://developer.roblox.com/api-reference/function/StarterGui/SetCore). This will also disable the element associated with all [CoreGuiTypes](https://developer.roblox.com/search#stq=CoreGuiType).
-	 *
-	 * For more information on how to use this function, see the article on [disabling the game interface](https://developer.roblox.com/search#stq=Disabling%20Parts%20of%20Game%20Interface).
-	 * @param coreGuiType The given `Enum/CoreGuiType`
-	 * @param enabled Whether to enable or disable the given `Enum/CoreGuiType`
+	 * Allows for certain CoreGui elements to be disabled/enabled.
 	 */
 	SetCoreGuiEnabled(coreGuiType: CastsToEnum<Enum.CoreGuiType>, enabled: boolean): void;
 	/** 
-	 * GetCore returns data set or made available by Roblox's [CoreScripts](https://developer.roblox.com/api-reference/class/CoreScript). The first and only parameter is a string that selects the information to be fetched. The following sections describe the strings and the data they return by this function.
-	 *
-	 * Each of these is registered by a CoreScript and calling this function may yield. Many of these also register an equivalent [SetCore](https://developer.roblox.com/api-reference/function/StarterGui/SetCore) function (these are marked with an asterisk).
-	 *
-	 * ## PointsNotificationsActive*
-	 *
-	 * Returns true if player point notifications are enabled.
-	 *
-	 * ## BadgesNotificationsActive*
-	 *
-	 * Returns true if badge notifications are enabled.
-	 *
-	 * ## AvatarContextMenuEnabled*
-	 *
-	 * Returns true if the Avatar Context Menu is enabled.
-	 *
-	 * ## ChatActive*
-	 *
-	 * Returns whether the chat is active or not. This is indicated by the selection state of the top bar's chat icon.
-	 *
-	 * ## ChatWindowSize*
-	 *
-	 * Returns the size of the chat window as a UDim2.
-	 *
-	 * ## ChatWindowPosition*
-	 *
-	 * Returns the size of the chat window as a UDim2.
-	 *
-	 * ## ChatBarDisabled*
-	 *
-	 * Returns true if the chat bar is disabled.
-	 *
-	 * ## GetBlockedUserIds
-	 *
-	 * Returns a list of [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId)s associated with users that have been blocked by the local player.
-	 *
-	 * ## PlayerBlockedEvent
-	 *
-	 * Returns a BindableEvent that is fired whenever a player is blocked by the local player.
-	 *
-	 * ## PlayerUnblockedEvent
-	 *
-	 * Returns a BindableEvent that is fired whenever a player is unblocked by the local player.
-	 *
-	 * ## PlayerMutedEvent
-	 *
-	 * Returns a BindableEvent that is fired whenever a player is muted by the local player.
-	 *
-	 * ## PlayerUnmutedEvent
-	 *
-	 * Returns a BindableEvent that is fired whenever a player is unmuted by the local player.
-	 *
-	 * ## PlayerFriendedEvent
-	 *
-	 * Returns a BindableEvent that is fired whenever a player is friended by the local player.
-	 *
-	 * ## PlayerUnfriendedEvent
-	 *
-	 * Returns a BindableEvent that is fired whenever a player is unfriended by the local player.
-	 *
-	 * ## DeveloperConsoleVisible*
-	 *
-	 * Returns true if the developer console is visible.
-	 *
-	 * ## VRRotationIntensity
-	 *
-	 * Returns a string describing the camera rotation sensitivity in VR: `Low`, `High` and `Smooth`. *This will not be available unless [VRService.VREnabled](https://developer.roblox.com/api-reference/property/VRService/VREnabled) is true.*
+	 * Returns a variable that has been specified by a Roblox CoreScript.
 	 */
 	GetCore(parameterName: "AvatarContextMenuEnabled"): boolean;
 	GetCore(parameterName: "PointsNotificationsActive"): boolean;
@@ -2567,7 +2303,7 @@ local colorSequence = ColorSequence.new({
 	 *
 	 * Note the `Beam`'s coloration also depends on the number of [Beam.Segments](https://developer.roblox.com/api-reference/property/Beam/Segments) the `Beam` has. Each segment of the beam can only show a transition between two colors. Therefore a `Beam` will need to have at least n-1 segments in order for the color to display correctly, where n is the number of [DataType.ColorSequenceKeypoint](https://developer.roblox.com/search#stq=ColorSequenceKeypoint)s in the [DataType.ColorSequence](https://developer.roblox.com/search#stq=ColorSequence)
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt44487f7a1e259ab2/BeamColor.png
+	 * [1]: https://developer.roblox.com/assets/5b212d0b6b57a78e04a1076c/BeamColor.png
 	 */
 	Color: ColorSequence;
 	/** 
@@ -2673,7 +2409,7 @@ local controlPoint2 = Beam.Attachment1.WorldPosition - (Beam.Attachment1.CFrame.
 	 *
 	 * This property should not be confused with [Beam.LightInfluence](https://developer.roblox.com/api-reference/property/Beam/LightInfluence), which determines how particles are affected by environment light. This property does not cause the `Beam` to light the environment. To do that, consider using a `SurfaceLight`.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blta7d562b91fdd7f61/BeamLightEmission.png
+	 * [1]: https://developer.roblox.com/assets/5b2122606a3544a82611b5a0/BeamLightEmission.png
 	 */
 	LightEmission: number;
 	/** 
@@ -2687,9 +2423,9 @@ local controlPoint2 = Beam.Attachment1.WorldPosition - (Beam.Attachment1.CFrame.
 	 *
 	 * ![enter image description here][2]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt58bbd58122916e57/BeamLight1.png
+	 * [1]: https://developer.roblox.com/assets/5b211a9cb54f861f064bd2ea/BeamLight1.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt1d1d4b30144114c3/BeamLight2.png
+	 * [2]: https://developer.roblox.com/assets/5b211aa66b57a78e04a1073a/BeamLight2.png
 	 */
 	LightInfluence: number;
 	/** 
@@ -2739,9 +2475,9 @@ local controlPoint2 = Beam.Attachment1.WorldPosition - (Beam.Attachment1.CFrame.
 	 *
 	 * ![beamTexture2][2]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt92742bad209f4935/beamTexture.gif
+	 * [1]: https://developer.roblox.com/assets/5b20fcabb54f861f064bd269/beamTexture.gif
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt034506939f5674b3/beamTexture2.gif
+	 * [2]: https://developer.roblox.com/assets/5b20fcb1a00a67ed26443616/beamTexture2.gif
 	 */
 	TextureLength: number;
 	/** 
@@ -2761,9 +2497,9 @@ local controlPoint2 = Beam.Attachment1.WorldPosition - (Beam.Attachment1.CFrame.
 	 *
 	 * ![enter image description here][2]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt92742bad209f4935/beamTexture.gif
+	 * [1]: https://developer.roblox.com/assets/5b20fcabb54f861f064bd269/beamTexture.gif
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt034506939f5674b3/beamTexture2.gif
+	 * [2]: https://developer.roblox.com/assets/5b20fcb1a00a67ed26443616/beamTexture2.gif
 	 */
 	TextureMode: Enum.TextureMode;
 	/** 
@@ -2797,7 +2533,7 @@ local numberSequence = NumberSequence.new({
 	 *
 	 * Note the [Beam's](https://developer.roblox.com/api-reference/class/Beam) transparency also depends on the number of [Beam.Segments](https://developer.roblox.com/api-reference/property/Beam/Segments) the `Beam` has. Each segment of the beam can only show a transition between two transparencies. Therefore a `Beam` will need to have at least n-1 segments in order to display correctly, where n is the number of [DataType.NumberSequenceKeypoint](https://developer.roblox.com/search#stq=NumberSequenceKeypoint)s in the [DataType.NumberSequence](https://developer.roblox.com/search#stq=NumberSequence)
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltb919bbb4d83c7ba8/BeamTransparency.png
+	 * [1]: https://developer.roblox.com/assets/5b213349b54f861f064bd389/BeamTransparency.png
 	 */
 	Transparency: NumberSequence;
 	/** 
@@ -2809,7 +2545,7 @@ local numberSequence = NumberSequence.new({
 	 *
 	 * The width properties should not be confused with [Beam.CurveSize0](https://developer.roblox.com/api-reference/property/Beam/CurveSize0) and [Beam.CurveSize1](https://developer.roblox.com/api-reference/property/Beam/CurveSize1) which control the curvature of the beam.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltaa8ac3288251010b/Width.png
+	 * [1]: https://developer.roblox.com/assets/5b154b5c9a16a6df0e498f8f/Width.png
 	 */
 	Width0: number;
 	/** 
@@ -2821,7 +2557,7 @@ local numberSequence = NumberSequence.new({
 	 *
 	 * The width properties should not be confused with [Beam.CurveSize0](https://developer.roblox.com/api-reference/property/Beam/CurveSize0) and [Beam.CurveSize1](https://developer.roblox.com/api-reference/property/Beam/CurveSize1) which control the curvature of the beam.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltaa8ac3288251010b/Width.png
+	 * [1]: https://developer.roblox.com/assets/5b154b5c9a16a6df0e498f8f/Width.png
 	 */
 	Width1: number;
 	/** 
@@ -2837,7 +2573,7 @@ local numberSequence = NumberSequence.new({
 	 *
 	 * [1]: https://en.wikipedia.org/wiki/Z-fighting
 	 *
-	 * [2]: https://developer.roblox.com/assets/blta08e9828cbe14d33/ZOffset.gif
+	 * [2]: https://developer.roblox.com/assets/5b154661344ad0d40f781c07/ZOffset.gif
 	 */
 	ZOffset: number;
 	/** 
@@ -2878,7 +2614,11 @@ end
 }
 
 /** 
- * **Note:** If a Table is passed as an argument to a BindableEvent it must be an array without missing entries or have string keys, not a mixture, or else the string keys will be lost. Allows events defined in one script to be subscribed to by another script. However, please note that BindableEvents do not allow for communication between the server and client. If you are looking for this functionality use `RemoteEvent`.
+ * A BindableEvent is an object that exposes a single custom event which any script can fire or connect to. Any script can call Fire to fire the event, and any script can connect to the "Event" event to subscribe to any firings of the BindableEvent. BindableEvents do not have networking capabilities; for that you'll want a RemoteEvent instead.
+ *
+ * As with BindableFunctions, there are restrictions regarding the kinds of values you can send as arguments when firing BindableEvents. You can send numbers, strings, booleans, nil, userdata (e.g. Roblox objects) and tables. For tables, you can only use either number or string keys (not both). If you use number keys, each index must be non-nil and valid. Metatables are not preserved, either. Values in tables follow the same restrictions as normal parameters or return values. If you need to bypass any of these restrictions, you'll need to use a ModuleScript. See the code samples for valid values.
+ *
+ * BindableEvents, like all events, create individual threads per connected function. The return values of connected functions is ignored, and if a function errors it does not stop the thread that fired the event. Connected functions can also yield. See the BindableEvent Threading Behavior code sample.
  */
 interface BindableEvent extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -2894,7 +2634,13 @@ interface BindableEvent extends Instance {
 }
 
 /** 
- * A BindableFunction is a Roblox object that allows you to give access to functions to external scripts. Functions put in BindableFunctions will not be replicated, therefore making it impossible to use these objects to pass functions between scripts. Functions are invoked through [BindableFunction.Invoke](https://developer.roblox.com/api-reference/function/BindableFunction/Invoke), which calls [BindableFunction.OnInvoke](https://developer.roblox.com/api-reference/callback/BindableFunction/OnInvoke).
+ * A BindableFunction is an object that expose one function set by the OnInvoke callback to other scripts, which can use that function by calling the Invoke method. BindableFunctions do not have networking capabilities; for that you'll want a RemoteFunction instead.
+ *
+ * If you need to expose more than one function at a time, you'll need to use multiple BindableFunctions or a ModuleScript.
+ *
+ * As with BindableEvents, there are restrictions regarding the kinds of values you can send as arguments and return through BindableFunctions. You can send numbers, strings, booleans, nil, userdata (e.g. Roblox objects) and tables. For tables, you can only use either number or string keys (not both). If you use number keys, each index must be non-nil and valid. Metatables are not preserved, either. Values in tables follow the same restrictions as normal parameters or return values. If you need to bypass any of these restrictions, you'll need to use a ModuleScript. See the code samples for valid values.
+ *
+ * If Invoke is called on a BindableFunction and no function has been set as the OnInvoke callback, the invoking thread will yield until one is set.
  */
 interface BindableFunction extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -3275,9 +3021,6 @@ interface BrowserService extends Instance {
 	readonly ClassName: "BrowserService";
 }
 
-/** 
- * A variant of the `ContentProvider` that caches assets that have already been received. This service is not used directly, but it is used by the services that inherit from it.
- */
 interface CacheableContentProvider extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "CacheableContentProvider" | "MeshContentProvider" | "SolidModelContentProvider";
@@ -3292,7 +3035,7 @@ interface MeshContentProvider extends CacheableContentProvider {
 }
 
 /** 
- * An internal `ContentProvider` for preloading solid models.
+ * An internal [ContentProvider](https://wiki.roblox.com/index.php?title=ContentProvider) for [solid models](https://wiki.roblox.com/index.php?title=Solid_modeling).
  */
 interface SolidModelContentProvider extends CacheableContentProvider {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -3976,51 +3719,51 @@ interface BodyColors extends CharacterAppearance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "BodyColors";
 	/** 
-	 * Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).
+	 * Sets the color of this limb, as a [BrickColor](https://wiki.roblox.com/index.php?title=API:BrickColor).
 	 */
 	HeadColor: BrickColor;
 	/** 
-	 * Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * Sets the color of this limb, as a [Color3](https://wiki.roblox.com/index.php?title=API:Color3).
 	 */
 	HeadColor3: Color3;
 	/** 
-	 * Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).
+	 * Sets the color of this limb, as a [BrickColor](https://wiki.roblox.com/index.php?title=API:BrickColor).
 	 */
 	LeftArmColor: BrickColor;
 	/** 
-	 * Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * Sets the color of this limb, as a [Color3](https://wiki.roblox.com/index.php?title=API:Color3).
 	 */
 	LeftArmColor3: Color3;
 	/** 
-	 * Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).
+	 * Sets the color of this limb, as a [BrickColor](https://wiki.roblox.com/index.php?title=API:BrickColor).
 	 */
 	LeftLegColor: BrickColor;
 	/** 
-	 * Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * Sets the color of this limb, as a [Color3](https://wiki.roblox.com/index.php?title=API:Color3).
 	 */
 	LeftLegColor3: Color3;
 	/** 
-	 * Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).
+	 * Sets the color of this limb, as a [BrickColor](https://wiki.roblox.com/index.php?title=API:BrickColor).
 	 */
 	RightArmColor: BrickColor;
 	/** 
-	 * Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * Sets the color of this limb, as a [Color3](https://wiki.roblox.com/index.php?title=API:Color3).
 	 */
 	RightArmColor3: Color3;
 	/** 
-	 * Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).
+	 * Sets the color of this limb, as a [BrickColor](https://wiki.roblox.com/index.php?title=API:BrickColor).
 	 */
 	RightLegColor: BrickColor;
 	/** 
-	 * Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * Sets the color of this limb, as a [Color3](https://wiki.roblox.com/index.php?title=API:Color3).
 	 */
 	RightLegColor3: Color3;
 	/** 
-	 * Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).
+	 * Sets the color of this limb, as a [BrickColor](https://wiki.roblox.com/index.php?title=API:BrickColor).
 	 */
 	TorsoColor: BrickColor;
 	/** 
-	 * Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * Sets the color of this limb, as a [Color3](https://wiki.roblox.com/index.php?title=API:Color3).
 	 */
 	TorsoColor3: Color3;
 }
@@ -4062,23 +3805,7 @@ interface Clothing extends CharacterAppearance {
 }
 
 /** 
- * The Pants object displays shirts on a character model. Pants are items of clothing that cover the legs and torso of the character based on a predefined texture uploaded to Roblox.
- *
- * ## How do Pants work?
- *
- * Pants only have one property, [Pants.PantsTemplate](https://developer.roblox.com/api-reference/property/Pants/PantsTemplate). This is a content ID pointing to the pant's texture on the Roblox website.
- *
- * A Pants object parented to a model will display the pants on the model provided a `Humanoid` is present and the limbs required for the pants corresponding with the humanoid's [Humanoid.RigType](https://developer.roblox.com/api-reference/property/Humanoid/RigType) exist.
- *
- * Note if multiple Pants objects are present in a model only one will be shown. However both a `Shirt` and Pants object will be shown together with the shirt drawn on top (as pants also cover the torso).
- *
- * Pants automatically load onto new characters spawning based on the [Player.CharacterAppearance](https://developer.roblox.com/api-reference/property/Player/CharacterAppearance) property.
- *
- * ## How do I make Pants?
- *
- * In order to make a pants a texture (image) determining what will be displayed on what limbs needs to be uploaded to the Roblox website. For more information, please see [this tutorial][1].
- *
- * [1]: https://developer.roblox.com/articles/How-to-Make-Shirts-and-Pants-for-Roblox-Characters
+ * The Pants object is what displays Pants on a character. The legs and torso are covered by this object.
  */
 interface Pants extends Clothing {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -4138,7 +3865,11 @@ end
 }
 
 /** 
- * The ShirtGraphic object applies a texture to the front surface of a character's Torso. It is the object used to display T-shirts.
+ * The ShirtGraphic object properly applies a texture to the front surface of a character's Torso.
+ *
+ * It also seems to forcefully prevent any [Decal](https://wiki.roblox.com/index.php?title=Decal) parented to the character's Torso from being drawn.
+ *
+ * This is used for [T-Shirts](https://wiki.roblox.com/index.php?title=T-Shirts&action=edit&redlink=1)").
  */
 interface ShirtGraphic extends CharacterAppearance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -4184,13 +3915,13 @@ interface Skin extends CharacterAppearance {
 }
 
 /** 
- * The Chat service is a special service that houses the Lua code responsible for running the [Lua Chat System](https://developer.roblox.com/articles/Lua-Chat-System). Similar to `StarterPlayerScripts`, default objects (`Script`s, `ModuleScript`s and other objects) are inserted into the Chat service. Individual objects may be overridden by providing objects with the same name as those inserted. The following objects are guaranteed to exist inside of the Chat service, and can be overridden:
+ * The Chat service is a special service that houses all of the Lua code responsible for running Roblox's in-game chat.
+ *
+ * Similarly to the `StarterPlayerScripts`, there are default objects that are inserted into the Chat service, that can be overridden with your own scripts.
+ *
+ * The following objects are guaranteed to exist inside of the Chat service, and can be overridden by your own objects:
  *
  * ![The contents of the Chat service which are loaded when the game runs.][1]
- *
- * ## Text Filtering
- *
- * In addition to housing the Lua Chat System, the Chat service also exposes functions used to filter text - [FilterStringAsync](https://developer.roblox.com/api-reference/function/Chat/FilterStringAsync) and [FilterStringForBroadcast](https://developer.roblox.com/api-reference/function/Chat/FilterStringForBroadcast). Chat filtering is built into the Lua Chat System already, but **games that implement custom chat systems must use these functions to filter chat properly.** For more information, see [Text and Chat Filtering](https://developer.roblox.com/articles/Text-and-Chat-Filtering).
  *
  * [1]: https://developer.roblox.com/assets/5b2d98148fbd570b783cb0d2/Chat.png
  */
@@ -4215,31 +3946,6 @@ interface Chat extends Instance {
 	 */
 	Chat(partOrCharacter: BasePart | Model, message: string, color?: CastsToEnum<Enum.ChatColor>): void;
 	InvokeChatCallback(callbackType: CastsToEnum<Enum.ChatCallbackType>, callbackArguments: Array<any>): unknown;
-	/** 
-	 * RegisterChatCallback binds a function to some chat system event in order to affect the behavior of the Lua chat system. The first argument determines the event (using the `ChatCallbackType` enum) to which the second argument, the function, shall be bound. The default Lua chat system uses [InvokeChatCallback](https://developer.roblox.com/api-reference/function/Chat/InvokeChatCallback) to invoke registered functions. Attempting to register a server- or client- only callback on a peer that isn't a server or client respectively will raise an error. The following sections describe in what ways registered functions will be used.
-	 *
-	 * ## OnCreatingChatWindow
-	 *
-	 * Client-only. Invoked before the client constructs the chat window. Must return a table of settings to be merged into the information returned by the ChatSettings module.
-	 *
-	 * ## OnClientFormattingMessage
-	 *
-	 * Client-only. Invoked before the client displays a message (whether it is a player chat message, system message, or /me command). This function is invoked with the message object and may (or may not) return a table to be merged into `message.ExtraData`.
-	 *
-	 * ## OnClientSendingMessage
-	 *
-	 * Not invoked at this time.
-	 *
-	 * ## OnServerReceivingMessage
-	 *
-	 * Server-only. Invoked when the server receives a message from a speaker (note that speakers may not necessarily be a `Player` chatting). This callback is called with the Message object. The function can make changes to the Message object to change the manner in which the message is processed. **The Message object must be returned for this callback to do anything.** Setting this callback can allow the server to, for example:
-	 *
-	 * * Set `message.ShouldDeliver` to false in order to cancel delivery of the message to players (useful for implementing a chat blacklist)
-	 *
-	 * * Get/set the speaker's name color (`message.ExtraData.NameColor`, a Color3) on a message-by-message basis
-	 * @param callbackType The callback to which the function shall be registered (this determines in what way the function is called)
-	 * @param callbackFunction The function to call when the callback is invoked using Chat:InvokeChatCallback
-	 */
 	RegisterChatCallback(callbackType: CastsToEnum<Enum.ChatCallbackType>, callbackFunction: Function): void;
 	/** 
 	 * Will return false if the player with the specified [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId) is not allowed to chat because of their account settings.
@@ -4250,7 +3956,7 @@ interface Chat extends Instance {
 	 */
 	CanUsersChatAsync(userIdFrom: number, userIdTo: number): boolean;
 	/** 
-	 * Filters a [string](https://developer.roblox.com/articles/String) being sent to _playerTo_ from _playerFrom_ with filtering that is appropriate to the given player's account settings. This function should be used any time a user can enter custom text in any context. Some examples of text that should be filtered:
+	 * Filters a [string](https://wiki.roblox.com/index.php?title=String) being sent to _playerTo_ from _playerFrom_ with filtering that is appropriate to the given player's account settings. This function should be used any time a user can enter custom text in any context. Some examples of text that should be filtered:
 	 *
 	 * * Custom chat messages
 	 *
@@ -4309,51 +4015,23 @@ interface ClickDetector extends Instance {
 	 */
 	CursorIcon: string;
 	/** 
-	 * The MaxActivationDistance property controls the maximum distance, in studs, between a [Character](https://developer.roblox.com/api-reference/property/Player/Character) and the `ClickDetector` for the character to be able to click it. This is used to limit from how far a player can interact with a ClickDetector.
-	 *
-	 * For instance, a character within `10` studs of a ClickDetector with a MaxActivationDistance of `5` would not be able to click the ClickDetector because they are out of range. If, however, the MaxActivationDistance was `15`, the character would be able to click it.
+	 * Maximum distance between a character and the ClickDetector for the character to be able to click it.
 	 */
 	MaxActivationDistance: number;
 	/** 
-	 * The MouseClick event fires when a player presses and releases the left mouse button while the cursor is hovering over a `BasePart` or `Model` with a `ClickDetector`. Additionally, the Player's [Character](https://developer.roblox.com/api-reference/property/Player/Character) must be within the [MaxActivationDistance](https://developer.roblox.com/api-reference/property/ClickDetector/MaxActivationDistance) of the clicked object. This event fires when using either a `Script` or `LocalScript`.
-	 *
-	 * ## Platform Support
-	 *
-	 * * On [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) platforms, this event fires when the user taps on the same model.
-	 *
-	 * * On [GamepadEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GamepadEnabled) platforms, this event fires when the center dot is over the same model and the A button is pressed and released.
-	 *
-	 * ## Related Events
-	 *
-	 * * If you want to check when a player right clicks on the ClickDetector, you can use the [RightMouseClick](https://developer.roblox.com/api-reference/event/ClickDetector/RightMouseClick) event.
-	 *
-	 * * If you want a function to fire when a player hovers on or off of the ClickDetector without mouse clicking it you can use the [MouseHoverEnter](https://developer.roblox.com/api-reference/event/ClickDetector/MouseHoverEnter) and [MouseHoverLeave](https://developer.roblox.com/api-reference/event/ClickDetector/MouseHoverLeave) events.
+	 * Fires when a player left clicks on the ClickDetector.
 	 */
 	readonly MouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
 	/** 
-	 * The MouseHoverEnter event fires when the player's [mouse](https://developer.roblox.com/api-reference/class/Mouse) begins hovering over the `ClickDetector`'s parent. This event fires when using either a `Script` or `LocalScript`.
-	 *
-	 * Due to the nature of user input, you ought not depend on all MouseHoverEnter events to fire a matching [MouseHoverLeave](https://developer.roblox.com/api-reference/event/ClickDetector/MouseHoverLeave) event.
-	 *
-	 * The player does not have to click the ClickDetector for this event to fire. If you want an event to execute when the player clicks, you can use [ClickDetector.MouseClick](https://developer.roblox.com/api-reference/event/ClickDetector/MouseClick) and [ClickDetector.RightMouseClick](https://developer.roblox.com/api-reference/event/ClickDetector/RightMouseClick) events.
+	 * Fired when the `ClickDetector`'s parent is hovered upon by a player.
 	 */
 	readonly MouseHoverEnter: RBXScriptSignal<(playerWhoHovered: Player) => void>;
 	/** 
-	 * The MouseHoverLeave event fires when a player's [mouse](https://developer.roblox.com/api-reference/class/Mouse) moves off of the `ClickDetector`'s parent. This event fires when using either a `Script` or `LocalScript`.
-	 *
-	 * Due to the nature of user input, you ought not depend on all [MouseHoverEnter](https://developer.roblox.com/api-reference/event/ClickDetector/MouseHoverEnter) events to fire a matching MouseHoverLeave event.
-	 *
-	 * The player does not have to click the ClickDetector for this event to fire. If you want an function to run when the player clicks, you can use [ClickDetector.MouseClick](https://developer.roblox.com/api-reference/event/ClickDetector/MouseClick) and [ClickDetector.RightMouseClick](https://developer.roblox.com/api-reference/event/ClickDetector/RightMouseClick) events.
+	 * Fired when a player's mouse moves off of the `ClickDetector`'s parent.
 	 */
 	readonly MouseHoverLeave: RBXScriptSignal<(playerWhoHovered: Player) => void>;
 	/** 
-	 * The RightMouseClick event fires when a player presses and releases the right mouse button while the cursor is hovering over a `BasePart` or `Model` with a `ClickDetector`. Additionally, the Player's [Character](https://developer.roblox.com/api-reference/property/Player/Character) must be within the [MaxActivationDistance](https://developer.roblox.com/api-reference/property/ClickDetector/MaxActivationDistance) of the clicked object. This event fires when using either a `Script` or `LocalScript`.
-	 *
-	 * ## Related Events
-	 *
-	 * * If you want to check when a player left clicks on the ClickDetector, you can use the [MouseClick](https://developer.roblox.com/api-reference/event/ClickDetector/MouseClick) event.
-	 *
-	 * * If you want a function to fire when a player hovers on or off of the ClickDetector without clicking it you can use the [MouseHoverEnter](https://developer.roblox.com/api-reference/event/ClickDetector/MouseHoverEnter) and [MouseHoverLeave](https://developer.roblox.com/api-reference/event/ClickDetector/MouseHoverLeave) events.
+	 * Fires when a player right clicks on the ClickDetector.
 	 */
 	readonly RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
 }
@@ -4507,15 +4185,7 @@ interface Configuration extends Instance {
 interface Constraint extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Constraint" | "AlignOrientation" | "AlignPosition" | "AngularVelocity" | "BallSocketConstraint" | "HingeConstraint" | "LineForce" | "RodConstraint" | "RopeConstraint" | "SlidingBallConstraint" | "SpringConstraint" | "Torque" | "VectorForce" | "CylindricalConstraint" | "PrismaticConstraint";
-	/** 
-	 * True if the constraint is currently active in the world.
-	 *
-	 * True if the constraint and both of its parts are in the `Workspace` and the constraint's [Constraint.Enabled](https://developer.roblox.com/api-reference/property/Constraint/Enabled) property is true.
-	
-	 * True if the constraint is currently active in the world.
-	 *
-	 * True if the constraint and both of its parts are in the `Workspace` and the constraint's [Constraint.Enabled](https://developer.roblox.com/api-reference/property/Constraint/Enabled) property is true.
-	 *
+	/** Read-only boolean, true if the Constraint is active in world.Read-only boolean, true if the Constraint is active in world. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Active: boolean;
@@ -5203,7 +4873,7 @@ interface Torque extends Constraint {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Torque";
 	/** 
-	 * The [CFrame](https://developer.roblox.com/api-reference/datatype/CFrame) in which the Torque is expressed.
+	 * The [CFrame](https://wiki.roblox.com/index.php?title=CFrame) in which the Torque is expressed.
 	 */
 	RelativeTo: Enum.ActuatorRelativeTo;
 	/** 
@@ -5227,7 +4897,7 @@ interface VectorForce extends Constraint {
 	 */
 	Force: Vector3;
 	/** 
-	 * The [CFrame](https://developer.roblox.com/api-reference/datatype/CFrame) in which the force is expressed.
+	 * The [CFrame](https://wiki.roblox.com/index.php?title=CFrame) in which the force is expressed.
 	 */
 	RelativeTo: Enum.ActuatorRelativeTo;
 }
@@ -5259,7 +4929,7 @@ interface ContentProvider extends Instance {
 	 */
 	readonly RequestQueueSize: number;
 	/** 
-	 * This function takes an array of [Instances](https://developer.roblox.com/api-reference/class/Instance) as a parameter and yields until all of assets associated with those instances have loaded. This can be used to pause a script and not use content until it is certain that the content has been loaded into the game.
+	 * The PreloadAsync function takes an array of `Instance`s as a parameter and yields until all of assets associated with those instances have loaded. This can be used to pause a script and not use content until it is certain that the content has been loaded into the game.
 	 *
 	 * When the function is called, the engine will go through all of the instances in the passed in array (and all of the descendants of the passed in instances). If any of the instances have a property that defines a link to content, such as a `Decal` or a `Sound`, then the function will attempt to load the asset from the Roblox website. If any of the assets fail to load, an error message will appear in the places output, but the PreloadAsync function itself will not error and will continue executing until it has processed each passed in instance.
 	 * @param contentIdList An array of `Instance`s to be preloaded.
@@ -5281,9 +4951,33 @@ interface ContextActionService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ContextActionService";
 	/** 
-	 * BindAction will bind an action to user input given an action handling function. The action handler function will be called when some input matches the provided user input enums.
+	 * BindAction will bind an action to user input given an action handling function. The action handler function will be called when some input matches the provided user input enums. Call this function when a player enters the context in which an action can be performed, then call [UnbindAction](https://developer.roblox.com/api-reference/function/ContextActionService/UnbindAction) with the same `actionName` when that context is left.
 	 *
-	 * The method behaves like a stack: if two actions are bound to the same user input, only the most recent action handler will be called.  When UnbindAction is called, the action handler is removed from the stack. If an action handler returns `Enum.ContextActionResult.Pass`, an input will call to the next most recently bound action handler.
+	 * ## Action Bindings Stack
+	 *
+	 * Action bindings behave like a stack: if two actions are bound to the same user input, the **most recently bound** action handler will be used. If an action handler returns `Enum.ContextActionResult.Pass`, the next most recently bound action handler will be called, and so on until a handler sinks the input (by returning `nil` or `Enum.ContextActionResult.Sink`). When [UnbindAction](https://developer.roblox.com/api-reference/function/ContextActionService/UnbindAction) is called, the action handler is removed from the stack. This stack behavior can be overridden using [BindActionAtPriority](https://developer.roblox.com/api-reference/function/ContextActionService/BindActionAtPriority), where an additional priority parameter after `createTouchButton` may override the order in which actions are bound (higher before lower).
+	 *
+	 * ## Touch Buttons
+	 *
+	 * In addition to input types, this function's third parameter controls whether a button is created for [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) devices. Upon the first touch button's creation, a `ScreenGui` named "ContextActionGui" is added to the `PlayerGui`. Inside the ScreenGui is a `Frame` called "ContextButtonFrame" is added. It is in this frame in which [ImageButtons](https://developer.roblox.com/api-reference/class/ImageButton) for bound actions are parented; you can use [GetButton](https://developer.roblox.com/api-reference/function/ContextActionService/GetButton) to retrieve such buttons for customization.
+	 *
+	 * ## Action Handler Parameters
+	 *
+	 * The action handler functions are called with the following parameters:
+	 *
+	 * | # | Type | Description |
+	 * | --- | --- | --- |
+	 * | 1 | `string` | The same string that was originally passed to BindAction† |
+	 * | 2 | `Enum.UserInputState` | The state of the input (Begin, Change, End or Cancel)* |
+	 * | 3 |  `InputObject` | An object that contains information about the input (varies based on UserInputType) |
+	 *
+	 * †This allows one function to handle multiple actions at once, if necessary.
+	 *
+	 * *Cancel is sent if some input was in-progress and another action bound over the in-progress input, or if the in-progress bound action was [unbound](https://developer.roblox.com/api-reference/function/ContextActionService/UnbindAction).
+	 * @param actionName A string representing the action being performed (e.g. "HonkHorn" or "OpenDoor")
+	 * @param functionToBind The action-handling function, called with the following parameters when the bound inputs are triggered: string (actionName), Enum.UserInputState and an InputObject
+	 * @param createTouchButton Whether a GUI button should be created for the action on touch input devices
+	 * @param inputTypes Any number of Enum.KeyCode or Enum.UserInputType representing the inputs to bind to the action
 	 */
 	BindAction(
 		actionName: string,
@@ -5292,9 +4986,12 @@ interface ContextActionService extends Instance {
 		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
 	/** 
-	 * Binds function to fire when specified inputTypes occur. Allows the priority of the bound action to be specified.
-	 *
-	 * If there are multiple actions bound to one of the _inputTypes_, the priority of this action will determine if it will be passed first.Binds function to fire when specified inputTypes occur. Allows the priority of the bound action to be specified.
+	 * BindActionAtPriority behaves like [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) but also allows a priority to be assigned to the bound action. If multiple actions are bound to the same input, the higher priority function is called regardless of the order in which the actions were bound. In other words, this function overrides the normal "stack" behavior of BindAction.
+	 * @param actionName A string representing the action being performed (e.g. "HonkHorn" or "OpenDoor")
+	 * @param functionToBind The action-handling function, called with the following parameters when the bound inputs are triggered: string (actionName), Enum.UserInputState and an InputObject
+	 * @param createTouchButton Whether a GUI button should be created for the action on touch input devices
+	 * @param priorityLevel The priority level at which the action should be bound (higher considered before lower)
+	 * @param inputTypes Any number of Enum.KeyCode or Enum.UserInputType representing the inputs to bind to the action
 	 */
 	BindActionAtPriority(
 		actionName: string,
@@ -5304,19 +5001,11 @@ interface ContextActionService extends Instance {
 		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
 	/** 
-	 * Specifies the [Enum.KeyCode](https://developer.roblox.com/search#stq=KeyCode) that can be used with a [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) to activate a [Tool](https://wiki.roblox.com/index.php?title=Tool), or a [HopperBin](https://wiki.roblox.com/index.php?title=HopperBin) .
+	 * Bind an [Enum.KeyCode](https://developer.roblox.com/search#stq=KeyCode) that can be used with an [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) to activate a `Tool` (or a `HopperBin`). When the respective key is pressed, it will fire the [Mouse.Button1Down](https://developer.roblox.com/api-reference/event/Mouse/Button1Down) event on the mouse sent to [Tool.Equipped](https://developer.roblox.com/api-reference/event/Tool/Equipped) (or [HopperBin.Selected](https://developer.roblox.com/api-reference/event/HopperBin/Selected)). This in turn fires the [Tool.Activated](https://developer.roblox.com/api-reference/event/Tool/Activated) event if [Tool.ManualActivationOnly](https://developer.roblox.com/api-reference/property/Tool/ManualActivationOnly) is not set to true.
 	 *
-	 * When the KeyCode is used, it will fire the [Button1Down](https://wiki.roblox.com/index.php?title=Button1Down) event under the [Mouse](https://wiki.roblox.com/index.php?title=Mouse) returned by [Tool.Equipped](https://developer.roblox.com/api-reference/event/Tool/Equipped) or [HopperBin.Selected](https://developer.roblox.com/api-reference/event/HopperBin/Selected), and it will fire the [Tool](https://wiki.roblox.com/index.php?title=Tool)'s [Tool.Activated](https://developer.roblox.com/api-reference/event/Tool/Activated) event.Specifies the [Enum.KeyCode](https://developer.roblox.com/search#stq=KeyCode) that can be used with a [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) to activate a [Tool](https://wiki.roblox.com/index.php?title=Tool), or a [HopperBin](https://wiki.roblox.com/index.php?title=HopperBin).
-	 *
-	 * ## Notes
-	 *
-	 * * You should only use the following [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) with the _userInputTypeForActivation_ parameter, as the others will not do anything:
-	 *
-	 *   - _Keyboard_
-	 *
-	 *   - _Gamepad1_ through _Gamepad8_
-	 *
-	 * * If a [Tool](https://wiki.roblox.com/index.php?title=Tool)'s [Tool.ManualActivationOnly](https://developer.roblox.com/api-reference/property/Tool/ManualActivationOnly) property is set to true, you will be unable to activate the tool using this.
+	 * Note that the [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) specified must be `Keyboard` or `Gamepad1` through `Gamepad8` in order to be valid.
+	 * @param userInputTypeForActivation Must be Keyboard or Gamepad1 through Gamepad8
+	 * @param keyCodeForActivation The KeyCode (e.g. ButtonX) to bind
 	 */
 	BindActivate(userInputTypeForActivation: CastsToEnum<Enum.UserInputType>, keyCodeForActivation?: CastsToEnum<Enum.KeyCode>): void;
 	/** 
@@ -5324,7 +5013,21 @@ interface ContextActionService extends Instance {
 	 */
 	GetAllBoundActionInfo(): Map<string, BoundActionInfo>;
 	/** 
-	 * Returns a table with info regarding the function bound with _actionName_ . Table has the keys _title_ (current title that was set with [ContextActionService.SetTitle](https://developer.roblox.com/api-reference/function/ContextActionService/SetTitle)) _image_ (image set with [ContextActionService.SetImage](https://developer.roblox.com/api-reference/function/ContextActionService/SetImage)) _description_ (description set with [ContextActionService.SetDescription](https://developer.roblox.com/api-reference/function/ContextActionService/SetDescription)) _inputTypes_ (tuple containing all input bound for this _actionName_) _createTouchButton_ (whether or not we created a touch button for this _actionName_).
+	 * GetBoundActionInfo returns a table with the following keys describing a bound action given its name:
+	 *
+	 * | Name | Type | Description |
+	 * | --- | --- | --- |
+	 * | `stackOrder` | number | Describes the index of the action on the stack (increasing) |
+	 * | `priorityLevel` * | number | Describes the [priority](https://developer.roblox.com/api-reference/function/ContextActionService/BindActionAtPriority) level of the action |
+	 * | `createTouchButton` | bool | Describes whether a touch button should be created on [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) devices |
+	 * | `inputTypes` | table | The input types passed to [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) for which this action will trigger |
+	 * | `description` † | description | The description of action set by [SetDescription](https://developer.roblox.com/api-reference/function/ContextActionService/SetDescription) |
+	 * | `title` † | string | The title of the action set by [SetTitle](https://developer.roblox.com/api-reference/function/ContextActionService/SetTitle) |
+	 * | `image` † | string (content) | The image of the action's touch button set by [SetImage](https://developer.roblox.com/api-reference/function/ContextActionService/SetImage) |
+	 *
+	 * *Priority level will still be included even if [BindActionAtPriority](https://developer.roblox.com/api-reference/function/ContextActionService/BindActionAtPriority) wasn't used - by default it will be 2000.
+	 *
+	 * †Indicates that this field will be `nil` if the associated method was not called for the given action.
 	 */
 	GetBoundActionInfo(actionName: string): BoundActionInfo;
 	/** 
@@ -5332,23 +5035,41 @@ interface ContextActionService extends Instance {
 	 */
 	GetCurrentLocalToolIcon(): string;
 	/** 
-	 * If _actionName_ key contains a bound action, then _description_ is set as the description of the bound action. This description will appear for users in a listing of current actions available.
+	 * SetDescription will set the description of an action bound by [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction). In a list of available actions, this would be text that describes the given action.
+	 *
+	 * Although the name may suggest that this method is related to the family of functions that customize a touch button for actions that create them ([SetTitle](https://developer.roblox.com/api-reference/function/ContextActionService/SetTitle), [SetImage](https://developer.roblox.com/api-reference/function/ContextActionService/SetImage) and [SetPosition](https://developer.roblox.com/api-reference/function/ContextActionService/SetPosition)), this method does not affect such a button. This method merely sets a text description of an action, and nothing more.
+	 * @param actionName The name of the action originally passed to BindAction
+	 * @param description A text description of the action, such as "Honk the car's horn" or "Open the inventory"
 	 */
 	SetDescription(actionName: string, description: string): void;
 	/** 
-	 * If _actionName_ key contains a bound action, then _image_ is set as the image of the touch button. Does nothing if a touch button was not created. No guarantees are made whether image will be set when button is manipulated.
+	 * SetPosition will set the text shown on a touch button created by [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction). Specifically, this sets the [ImageLabel.Image](https://developer.roblox.com/api-reference/property/ImageLabel/Image) property of the `ImageLabel` within the `ImageButton` that would be returned by [GetButton](https://developer.roblox.com/api-reference/function/ContextActionService/GetButton). If no such bound action exists (e.g. nothing is returned by GetButton), this function does nothing and throws no error.
+	 *
+	 * This function is part of a family of methods that customize the touch button of an action. Others in this family include [SetPosition](https://developer.roblox.com/api-reference/function/ContextActionService/SetPosition) and [SetTitle](https://developer.roblox.com/api-reference/function/ContextActionService/SetTitle).
+	 * @param actionName The name of the action originally passed to BindAction
+	 * @param image The value to which the Image property should be set
 	 */
 	SetImage(actionName: string, image: string): void;
 	/** 
-	 * If _actionName_ key contains a bound action, then _position_ is set as the position of the touch button. Does nothing if a touch button was not created. No guarantees are made whether position will be set when button is manipulated.
+	 * SetPosition will set the text shown on a touch button created by [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction). Specifically, this sets the [GuiObject.Position](https://developer.roblox.com/api-reference/property/GuiObject/Position) property of the `ImageButton` that would be returned by [GetButton](https://developer.roblox.com/api-reference/function/ContextActionService/GetButton). If no such bound action exists (e.g. nothing is returned by GetButton), this function does nothing and throws no error.
+	 *
+	 * This function is part of a family of methods that customize the touch button of an action. Others in this family include [SetImage](https://developer.roblox.com/api-reference/function/ContextActionService/SetImage) and [SetTitle](https://developer.roblox.com/api-reference/function/ContextActionService/SetTitle).
+	 * @param actionName The name of the action originally passed to BindAction
+	 * @param position The position within the ContextButtonFrame
 	 */
 	SetPosition(actionName: string, position: UDim2): void;
 	/** 
-	 * If _actionName_ key contains a bound action, then _title_ is set as the title of the touch button. Does nothing if a touch button was not created. No guarantees are made whether title will be set when button is manipulated.
+	 * SetTitle will set the text shown on a touch button created by [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction). Specifically, this sets the [TextLabel.Text](https://developer.roblox.com/api-reference/property/TextLabel/Text) property of a `TextLabel` within the `ImageButton` that would be returned by [GetButton](https://developer.roblox.com/api-reference/function/ContextActionService/GetButton). If no such bound action exists (e.g. nothing is returned by GetButton), this function does nothing and throws no error.
+	 *
+	 * This function is part of a family of methods that customize the touch button of an action. Others in this family include [SetImage](https://developer.roblox.com/api-reference/function/ContextActionService/SetImage) and [SetPosition](https://developer.roblox.com/api-reference/function/ContextActionService/SetPosition).
+	 * @param actionName The name of the action originally passed to BindAction
+	 * @param title The text to display on the button
 	 */
 	SetTitle(actionName: string, title: string): void;
 	/** 
-	 * UnbindAction will unbind an action by name from user inputs. Use this function when the context for some action is no longer applicable. For instance, if a gun Tool is unequipped, you might use UnbindAction on a Reload action since a gun can only be reloaded if it is equipped.
+	 * UnbindAction will unbind an action by name from user inputs so that the action handler function will no longer be called. Call this function when the context for some action is no longer applicable, such as closing a user interface, exiting a car or [unequipping](https://developer.roblox.com/api-reference/event/Tool/Unequipped) a `Tool`. See [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) for more information on how bound actions operate.
+	 *
+	 * This function **will not** throw an error if there is no such action bound with the given string. Using [GetAllBoundActionInfo](https://developer.roblox.com/api-reference/function/ContextActionService/GetAllBoundActionInfo) or the Developer Console's "Action Bindings" tab, you can find out what actions are presently bound.
 	 */
 	UnbindAction(actionName: string): void;
 	/** 
@@ -5360,15 +5081,19 @@ interface ContextActionService extends Instance {
 	 */
 	UnbindAllActions(): void;
 	/** 
-	 * If _actionName_ key contains a bound action, then this will return the touch button (if was created). Returns nil if a touch button was not created. No guarantees are made whether button will be retrievable when button is manipulated.
+	 * GetButton returns the `ImageButton` created by [BindAction](https://developer.roblox.com/api-reference/function/ContextActionService/BindAction) if its third parameter was true and the device is [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled). The only parameter to this function must match exactly the name of the action originally sent to BindAction.
+	 *
+	 * If no such action was bound or if a button was not created, this function returns `nil`.
+	 * @param actionName The name of the action originally passed to BindAction
+	 * @returns An ImageButton created by BindAction
 	 */
 	GetButton(actionName: string): ImageButton | undefined;
 	/** 
-	 * Fires when the current player equips a [Tool](https://developer.roblox.com/api-reference/class/Tool).
+	 * Fires when the current player equips a [Tool](https://wiki.roblox.com/index.php?title=Tool).
 	 */
 	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool | Flag) => void>;
 	/** 
-	 * Fires when the current player unequips a [Tool](https://developer.roblox.com/api-reference/class/Tool).
+	 * Fires when the current player unequips a [Tool](https://wiki.roblox.com/index.php?title=Tool).
 	 */
 	readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool | Flag) => void>;
 }
@@ -5398,7 +5123,7 @@ interface Controller extends Instance {
 }
 
 /** 
- * A HumanoidController is an internal object responsible for translating PlayerAciton movements to the user's character (specifically, their `Humanoid`).
+ * A HumanoidController is an object responsible for translating [PlayerActions](https://wiki.roblox.com/index.php?title=PlayerActions) to movements with the user's character (specifically, their `Humanoid`).
  *
  * This object can be found inside of the `ControllerService`, via:
  *
@@ -5414,7 +5139,7 @@ interface HumanoidController extends Controller {
 }
 
 /** 
- * A SkateboardController is an object  responsible for translating PlayerActions to movements with a  `SkateboardPlatform`.
+ * A SkateboardController is an object  responsible for translating [PlayerActions](https://wiki.roblox.com/index.php?title=PlayerActions) to movements with a  `SkateboardPlatform`.
  */
 interface SkateboardController extends Controller {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -5438,13 +5163,13 @@ interface SkateboardController extends Controller {
 	/** 
 	 * Fired when any input state of the skateboard controller is updated.
 	 *
-	 * The _axis_ is fired with either ["Throttle"](https://developer.roblox.com/articles/String) if the throttle state of the skateboard was updated or ["Steer"](https://developer.roblox.com/articles/String) if the steering state of the skateboard was updated.Fired when any input state of the skateboard controller is updated.
+	 * The _axis_ is fired with either ["Throttle"](https://wiki.roblox.com/index.php?title=String) if the throttle state of the skateboard was updated or ["Steer"](https://wiki.roblox.com/index.php?title=String) if the steering state of the skateboard was updated.Fired when any input state of the skateboard controller is updated.
 	 */
 	readonly AxisChanged: RBXScriptSignal<(axis: string) => void>;
 }
 
 /** 
- * A VehicleController is an object responsible for translating [PlayerActions](https://developer.roblox.com/api-reference/enum/PlayerActions) to movements with a  `VehicleSeat`.
+ * A VehicleController is an object responsible for translating [PlayerActions](https://wiki.roblox.com/index.php?title=PlayerActions) to movements with a  `VehicleSeat`.
  */
 interface VehicleController extends Controller {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -5486,49 +5211,49 @@ interface CoreScriptSyncService extends Instance {
 }
 
 /** 
- 
+ * This item is deprecated. Do not use it for new work. Use `BindableEvent` instead.
  */
 interface CustomEvent extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "CustomEvent";
 	/** 
-	 * This function returns the [CustomEventReceivers](https://developer.roblox.com/api-reference/class/CustomEventReceiver) that are connected to the `CustomEvent`.
+	 * Returns the CustomEventReceivers that are connected to the CustomEvent.
 	 */
 	GetAttachedReceivers(): Array<Instance>;
 	/** 
-	 * This function sets the value of the `CustomEvent` and fires the [CustomEventReceiver.SourceValueChanged](https://developer.roblox.com/api-reference/event/CustomEventReceiver/SourceValueChanged) event for all connected [recievers](https://developer.roblox.com/api-reference/class/CustomEventReciever).
+	 * Sets the value of the CustomEvent and fires the [CustomEventReceiver.SourceValueChanged](https://developer.roblox.com/api-reference/event/CustomEventReceiver/SourceValueChanged) event of all the receivers connected to the CustomEvent.
 	 */
 	SetValue(newValue: number): void;
 	/** 
-	 * This event fires when a receiver is connected to the `CustomEvent`
+	 * Fires when a receiver is connected to the CustomEvent instance.
 	 */
 	readonly ReceiverConnected: RBXScriptSignal<(receiver: Instance) => void>;
 	/** 
-	 * This event fires when a receiver is disconnected from the `CustomEvent`.
+	 * Fires when a receiver is disconnected from the CustomEvent instance.
 	 */
 	readonly ReceiverDisconnected: RBXScriptSignal<(receiver: Instance) => void>;
 }
 
 /** 
- 
+ * This item is deprecated. Do not use it for new work. Use `BindableEvent` instead.
  */
 interface CustomEventReceiver extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "CustomEventReceiver";
 	/** 
-	 * This property attaches the `CustomEventReceiver` object to a `CustomEvent`.
+	 * Attaches the Receiver object to a CustomEvent.
 	 */
 	Source?: Instance;
 	/** 
-	 * This function returns the current value of the reciever's [CustomEventReciever.Source](https://developer.roblox.com/search#stq=Source) property.
+	 * Returns the current value of the CustomEventReceiver's source property.
 	 */
 	GetCurrentValue(): number;
 	/** 
-	 * This event fires when the receiver is attached to a different `CustomEvent`, when the [CustomEventReciever.Source](https://developer.roblox.com/search#stq=Source) property is changed.
+	 * Fires when the receiver is attached to a different CustomEvent instance, when the Source property is changed.
 	 */
 	readonly EventConnected: RBXScriptSignal<(event: Instance) => void>;
 	/** 
-	 * This event fires when the receiver is attached to a different `CustomEvent`, when the [CustomEventReciever.Source](https://developer.roblox.com/search#stq=Source) property is changed.
+	 * Fires when the receiver is attached to a different CustomEvent instance, when the Source property is changed.
 	 */
 	readonly EventDisconnected: RBXScriptSignal<(event: Instance) => void>;
 	/** 
@@ -5566,7 +5291,7 @@ interface DataModelMesh extends Instance {
 	 *
 	 *  - Changing the relationship between the mesh and its collision extents (determined by the `BasePart`)
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltd3942dca6b981850/OffsetAnim.gif
+	 * [1]: https://developer.roblox.com/assets/5ac3671fc7db666d0b74d6e2/OffsetAnim.gif
 	 */
 	Offset: Vector3;
 	/** 
@@ -5610,11 +5335,11 @@ interface DataModelMesh extends Instance {
 	 *
 	 *  - Changing the relationship between the mesh and its collision extents (determined by the `BasePart`)
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltd4a34d2e19dc865c/Scale1.gif
+	 * [1]: https://developer.roblox.com/assets/5ac3b045337959630baa70fe/Scale1.gif
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt3eff78f21fd4de1d/Scale2.gif
+	 * [2]: https://developer.roblox.com/assets/5ac3b050609eca650bf80aca/Scale2.gif
 	 *
-	 * [3]: https://developer.roblox.com/assets/blt543d8e7d5ba8c404/Scale3.gif
+	 * [3]: https://developer.roblox.com/assets/5ac3b06370d93c810bee0d48/Scale3.gif
 	 */
 	Scale: Vector3;
 	/** 
@@ -5642,13 +5367,13 @@ workspace.Baseplate.Mesh.VertexColor = yVector
 	 *
 	 * Although VertexColor can be used to make changes to the appearance of a Mesh's texture much more flexibility is offered by uploading a new texture for the mesh. For more information on textures, see the page for `MeshPart`s.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt554914f560c80848/VertexColor_-_Copy.gif
+	 * [1]: https://developer.roblox.com/assets/5ac3b3bd781602830bdf8d95/VertexColor_-_Copy.gif
 	 */
 	VertexColor: Vector3;
 }
 
 /** 
- * This is an abstract class that `BlockMesh` and `CylinderMesh` inherit from.
+ * An abstract class that `BlockMesh` and `CylinderMesh` inherit from.
  */
 interface BevelMesh extends DataModelMesh {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -5722,7 +5447,7 @@ interface FileMesh extends DataModelMesh {
 	 *
 	 * Meshes can currently only be be uploaded using `MeshPart`s or the game explorer. Once uploaded however, the content ID for the mesh can be used for the MeshId property. For more information on how to do this please see [this tutorial](https://developer.roblox.com/search#stq=Mesh%20Parts).
 	 *
-	 * [1]: https://developer.roblox.com/articles/Mesh-Parts
+	 * [1]: http://wiki.roblox.com/index.php?title=Mesh_Parts
 	 */
 	MeshId: string;
 	/** 
@@ -5776,11 +5501,11 @@ interface FileMesh extends DataModelMesh {
  *
  *  - `MeshPart`s include the [MeshPart.CollisionFidelity](https://developer.roblox.com/search#stq=CollisionFidelity) property, meaning the collision model of a `MeshPart` can be set to resemble the geometry of the mesh. The SpecialMesh object by contrast, uses the parent `BasePart`s collision model
  *
- *  - The mesh of a `MeshPart` scales on all axis depending on the [Size](https://developer.roblox.com/api-reference/property/BasePart/Size) property of the `MeshPart`, the mesh of a SpecialMesh does not
+ *  - The mesh of a `MeshPart` scales on all axis depending on the [BasePart.Size](https://developer.roblox.com/api-reference/property/BasePart/Size) property of the `MeshPart`, the mesh of a SpecialMesh does not
  *
- *  - The SpecialMesh object includes the [Offset](https://developer.roblox.com/api-reference/property/DataModelMesh/Offset) and [Scale](https://developer.roblox.com/api-reference/property/DataModelMesh/Scale) properties whereas `MeshPart`s do not
+ *  - The SpecialMesh object includes the [DataModelMesh.Offset](https://developer.roblox.com/api-reference/property/DataModelMesh/Offset) and [DataModelMesh.Scale](https://developer.roblox.com/api-reference/property/DataModelMesh/Scale) properties whereas `MeshPart`s do not
  *
- *  - The [MeshId](https://developer.roblox.com/api-reference/property/FileMesh/MeshId) property of a `SpecialMesh` can be changed by a `Script` or `LocalScript` during runtime. The [MeshId](https://developer.roblox.com/api-reference/property/MeshPart/MeshId) property of a `MeshPart` can not.
+ *  - The [DataModelMesh.MeshId](https://developer.roblox.com/search#stq=MeshId) property of a `SpecialMesh` can be changed by a `Script` or `LocalScript` during runtime. The [MeshPart.MeshId](https://developer.roblox.com/api-reference/property/MeshPart/MeshId) property of a `MeshPart` can not.
  *
  * In most, but not all cases, using a `MeshPart` is more suitable. As `MeshPart`s are a relatively new feature however, developers should expect some of the above behaviour to change.
  *
@@ -5788,7 +5513,7 @@ interface FileMesh extends DataModelMesh {
  *
  * Although a developer uploaded mesh can be used on a `SpecialMesh`, meshes can currently only be be uploaded using `MeshPart`s or the game explorer. For more information on how to do this please see [this tutorial](https://developer.roblox.com/search#stq=Mesh%20Parts).
  *
- * [1]: https://developer.roblox.com/articles/Mesh-Parts
+ * [1]: http://wiki.roblox.com/index.php?title=Mesh_Parts
  */
 interface SpecialMesh extends FileMesh {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -5816,35 +5541,47 @@ interface SpecialMesh extends FileMesh {
 }
 
 /** 
- * **DataStoreService** exposes methods for getting `GlobalDataStore` and `OrderedDataStore` objects. Data stores can only be accessed by game servers, so you can only use **DataStoreService** within a `Script` or a `ModuleScript` that is used by a `Script`.
+ * The DataStoreService exposes methods for getting `GlobalDataStore` and `OrderedDataStore` objects through the methods [DataStoreService.GetGlobalDataStore](https://developer.roblox.com/api-reference/function/DataStoreService/GetGlobalDataStore), [DataStoreService.GetDataStore](https://developer.roblox.com/api-reference/function/DataStoreService/GetDataStore) and [DataStoreService.GetOrderedDataStore](https://developer.roblox.com/api-reference/function/DataStoreService/GetOrderedDataStore). Data stores can only be accessed by game servers, so you can only use DataStoreService within a Script or a ModuleScript that is used by a Script.
  *
- * ## Using Data Stores in Studio
+ * Like with all game services, you can use [DataModel.GetService](https://developer.roblox.com/search#stq=GetService) to access it:
  *
- * **DataStoreService** cannot be used in Studio if a game is not configured to allow access to API services. See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for instructions.
+ * `local DataStoreService = game:GetService("DataStoreService")`
+ *
+ * ## Data Stores within Studio
+ *
+ * DataStoreService cannot be used in studio if a game is not configured to allow studio access to API services. This option can be found under a game's configuration on the Roblox website. Note that this is a game setting, not a place setting. In addition, if you are not editing a place through the Roblox website (e.g. a **local rbxl file**), you will need to call `game:SetPlaceId(placeIdHere)` in the **Command bar** before an in-studio game can access a game's data store.
  *
  * ## Request Limits
  *
- * There are limits applied to the data store model. Please see [Data Store Errors and Limits](https://developer.roblox.com/search#stq=Datastore%20Errors) for details.
+ * All data store requests are under request limits. This service also allows a game to query the budget of data store requests available on a per-method basis through the [DataStoreService.GetRequestBudgetForRequestType](https://developer.roblox.com/api-reference/function/DataStoreService/GetRequestBudgetForRequestType) method. See the code samples for a script that displays the present budget for all data store methods. Each place in a game is budgeted the following number of requests per minute:
+ *
+ * | Request type | Methods | Requests Allowed (per minute) |
+ * | --- | --- | --- |
+ * | Gets |  `GetAsync` | 60 + numPlayers * 10 |
+ * | Sets | SetAsync, IncrementAsync, UpdateAsync, RemoveAsync | 60 + numPlayers * 10 |
+ * | GetSorted (per page) | GetSortedAsync | 5 + numPlayers * 2 |
+ * | OnUpdate | OnUpdate | 30 + numPlayers * 5 |
+ *
+ * In addition to the above request limits, there is also a 6 second write delay on the **same key** (this applies to calls on the same key with [GlobalDataStore.SetAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/SetAsync), [GlobalDataStore.IncrementAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/IncrementAsync), [GlobalDataStore.UpdateAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync), and [GlobalDataStore.RemoveAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/RemoveAsync)). Finally, individual keys on data stores can be throttled if many servers for the same game are trying to write to the same key. Should a key be throttled, you will see the message: "Request was throttled. Try sending fewer requests. Key =
  */
 	/** @rbxts server */
 interface DataStoreService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DataStoreService";
 	/** 
-	 * This method returns a `GlobalDataStore` by name/scope. Subsequent calls to this method with the same name/scope will return the same object.
+	 * This method returns a `GlobalDataStore`. Subsequent calls to this method with the same name/scope will return the same object.
 	 */
 	GetDataStore(name: string, scope?: string): GlobalDataStore;
 	/** 
-	 * This function returns the default `GlobalDataStore`. If you want to access a specific **named** data store instead, you should use the [GetDataStore()](https://developer.roblox.com/api-reference/function/DataStoreService/GetDataStore) function.
-	 * @returns Default `GlobalDataStore` instance
+	 * Returns the default data store.
 	 */
 	GetGlobalDataStore(): GlobalDataStore;
 	/** 
-	 * This method returns an `OrderedDataStore`, similar to the way [GetDataStore()](https://developer.roblox.com/api-reference/function/DataStoreService/GetDataStore) does with [GlobalDataStores](https://developer.roblox.com/api-reference/class/GlobalDataStore). Subsequent calls to this method with the same name/scope will return the same object.
+	 * This method returns an `OrderedDataStore` (similar to the way [DataStoreService.GetDataStore](https://developer.roblox.com/api-reference/function/DataStoreService/GetDataStore) does with `GlobalDataStores`). Subsequent calls to this method with the same name/scope will return the same object.
 	 */
 	GetOrderedDataStore(name: string, scope?: string): OrderedDataStore;
 	/** 
-	 * This function returns the number of data store requests that the current place can make based on the given [enum.DataStoreRequestType](https://developer.roblox.com/search#stq=DataStoreRequestType). Any requests made that exceed this budget are subject to [throttling](https://developer.roblox.com/search#stq=Datastore%20Errors). Monitoring and adjusting the frequency of data store requests using this function is recommended.
+	 * The GetRequestBudgetForRequestType function returns the number of data store requests that the current place can make based on the given [Enum.DataStoreRequestType](https://developer.roblox.com/search#stq=DataStoreRequestType). Any requests made that exceed this budget are subject to [throttling](https://wiki.roblox.com/index.php?title=Data_store#Per_Place_Limit). Monitoring and adjusting the frequency of data store requests using this function is recommended.
 	 */
 	GetRequestBudgetForRequestType(requestType: CastsToEnum<Enum.DataStoreRequestType>): number;
 }
@@ -6032,11 +5769,11 @@ interface DebugSettings extends Instance {
 	/** 
 	 * The purpose of this property is unknown.
 	 *
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
+	 * Its value is always ["?"](https://wiki.roblox.com/index.php?title=String).
 	
 	 * The purpose of this property is unknown.
 	 *
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
+	 * Its value is always ["?"](https://wiki.roblox.com/index.php?title=String).
 	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -6080,7 +5817,7 @@ interface DebugSettings extends Instance {
 }
 
 /** 
- * Represents a breakpoint in Roblox's Lua Debugger.
+ * Represents a [Breakpoint](https://wiki.roblox.com/index.php?title=Lua_debugger#Breakpoints) in Roblox's Lua Debugger.
  *
  * This object cannot be created, but it can be retrieved from the `ScriptDebugger` class.
  */
@@ -6134,29 +5871,29 @@ interface DebuggerManager extends Instance {
 	 */
 	Resume(): void;
 	/** 
-	 * Performs a [step into](https://developer.roblox.com/articles/Lua-debugger) operation on the Lua Debugger.
+	 * Performs a [step into](https://wiki.roblox.com/index.php?title=Lua_Debugger#Step_Into) operation on the Lua Debugger.
 	 */
 	StepIn(): void;
 	/** 
-	 * Performs a [step out](https://developer.roblox.com/articles/Lua-debugger) operation on the Lua Debugger.
+	 * Performs a [step out](https://wiki.roblox.com/index.php?title=Lua_Debugger#Step_Out) operation on the Lua Debugger.
 	 */
 	StepOut(): void;
 	/** 
-	 * Performs a [step over](https://developer.roblox.com/articles/Lua-debugger) operation on the Lua Debugger.
+	 * Performs a [step over](https://wiki.roblox.com/index.php?title=Lua_Debugger#Step_Over) operation on the Lua Debugger.
 	 */
 	StepOver(): void;
 	/** 
-	 * Fired when a new [ScriptDebugger](https://developer.roblox.com/api-reference/class/ScriptDebugger) is created through the [AddDebugger](https://developer.roblox.com/api-reference/function/DebuggerManager/AddDebugger) method.
+	 * Fired when a new [ScriptDebugger](https://wiki.roblox.com/index.php?title=ScriptDebugger) is created through the [AddDebugger](https://wiki.roblox.com/index.php?title=AddDebugger) method.
 	 */
 	readonly DebuggerAdded: RBXScriptSignal<(debug: Instance) => void>;
 	/** 
-	 * Fired when a registered [ScriptDebugger](https://developer.roblox.com/api-reference/class/ScriptDebugger) has been discontinued.
+	 * Fired when a registered [ScriptDebugger](https://wiki.roblox.com/index.php?title=ScriptDebugger) has been discontinued.
 	 */
 	readonly DebuggerRemoved: RBXScriptSignal<(debug: Instance) => void>;
 }
 
 /** 
- * Represents a watch in Roblox's Lua Debugger.
+ * Represents a [watch](https://wiki.roblox.com/index.php?title=Lua_debugger#Watching_a_variable) in Roblox's Lua Debugger.
  *
  * This object cannot be created, but it can be retrieved from the `ScriptDebugger` class.
  */
@@ -6178,9 +5915,7 @@ interface DebuggerWatch extends Instance {
  *
  * **See Also:**
  *
- * * [How to use Dialogs][1]
- *
- * [1]: https://developer.roblox.com/articles/Usage-of-dialogs
+ * * [How to use Dialog](https://wiki.roblox.com/index.php?title=How_to_use_Dialog)
  */
 interface Dialog extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -6223,17 +5958,9 @@ multiplePlayersDialog.Parent = multiplePlayersPart
 	/** 
 	 * Toggles whether the goodbye option will be displayed. If true, the dialog will display the content of [Dialog.GoodbyeDialog](https://developer.roblox.com/api-reference/property/Dialog/GoodbyeDialog) as the last option after other dialog choices. Clicking on the goodbye option will exit the dialog.
 	 *
-	 * ## GoodbyeChoiceActive = true
+	 * *GoodbyeChoiceActive **true**
 	 *
-	 * ![Active][1]
-	 *
-	 * ## GoodbyeChoiceActive = false
-	 *
-	 * ![Inactive][2]
-	 *
-	 * [1]: https://developer.roblox.com/assets/5b6101077eac3e673d5e5e19/GoodbyeChoiceActive.png
-	 *
-	 * [2]: https://developer.roblox.com/assets/5b610107858e507e4016cc26/GoodbyeChoiceInactive.png
+	 * *GoodbyeChoiceActive **false*
 	 */
 	GoodbyeChoiceActive: boolean;
 	/** 
@@ -6269,9 +5996,7 @@ multiplePlayersDialog.Parent = multiplePlayersPart
 	 */
 	GetCurrentPlayers(): Array<Player>;
 	/** 
-	 * Fired when a player chooses something to say, through a `Dialog` instance.
-	 *
-	 * This event is client-side only and will not fire on the server. It should be connected to in either a `LocalScript` or a `ModuleScript` required by a `LocalScript`.
+	 * Fired when a player chooses something to say, through a Dialog instance.
 	 */
 	readonly DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
 }
@@ -6285,17 +6010,9 @@ interface DialogChoice extends Instance {
 	/** 
 	 * Toggles whether the goodbye option will be displayed. If true, the dialog will display the content of [DialogChoice.GoodbyeDialog](https://developer.roblox.com/api-reference/property/DialogChoice/GoodbyeDialog) as the last option after other dialog choices. Clicking on the goodbye option will exit the dialog.
 	 *
-	 * ## GoodbyeChoiceActive = true
+	 * *GoodbyeChoiceActive **true**
 	 *
-	 * ![Active][1]
-	 *
-	 * ## GoodbyeChoiceActive = false
-	 *
-	 * ![Inactive][2]
-	 *
-	 * [1]: https://developer.roblox.com/assets/5b6101077eac3e673d5e5e19/GoodbyeChoiceActive.png
-	 *
-	 * [2]: https://developer.roblox.com/assets/5b610107858e507e4016cc26/GoodbyeChoiceInactive.png
+	 * *GoodbyeChoiceActive **false*
 	 */
 	GoodbyeChoiceActive: boolean;
 	/** 
@@ -6333,7 +6050,7 @@ interface Dragger extends Instance {
 	 */
 	MouseMove(mouseRay: Ray): void;
 	/** 
-	 * Stops the current dragging action (made by [MouseDown](https://developer.roblox.com/api-reference/function/Dragger/MouseDown))
+	 * Stops the current dragging action (made by [MouseDown](https://wiki.roblox.com/index.php?title=MouseDown))
 	 */
 	MouseUp(): void;
 }
@@ -6459,7 +6176,7 @@ interface FaceInstance extends Instance {
  *
  *  - If the effect of lighting on the image needs to be altered, the `SurfaceGui` object should be used
  *
- * [1]: https://developer.roblox.com/articles/How-to-upload-a-Decal
+ * [1]: http://wiki.roblox.com/index.php?title=How_to_upload_a_Decal
  */
 interface Decal extends FaceInstance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -6473,7 +6190,7 @@ interface Decal extends FaceInstance {
 	 */
 	Color3: Color3;
 	/** 
-	 * Acts as a multiplier for the `Decal`'s [Decal.Transparency](https://developer.roblox.com/api-reference/property/Decal/Transparency) property. The effects are only visible to the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer).
+	 * Acts as a multiplier for the `Decal`'s [Decal.Transparency](https://developer.roblox.com/api-reference/property/Decal/Transparency) property. The effects are only visible to the local player.
 	 *
 	 * This property should be used in situations where [Decal.Transparency](https://developer.roblox.com/api-reference/property/Decal/Transparency) is being set by a different script. The benefit of LocalTransparencyModifier is that it can be changed without concern for the original [Decal.Transparency](https://developer.roblox.com/api-reference/property/Decal/Transparency) of the `Decal`
 	 *
@@ -6488,7 +6205,7 @@ Displayed Transparency = Transparency + ((1 - Transparency) * LocalTransparencyM
 	 *
 	 * For a variant of this property for `BasePart`s, see [BasePart.LocalTransparencyModifier](https://developer.roblox.com/api-reference/property/BasePart/LocalTransparencyModifier).
 	
-	 * Acts as a multiplier for the `Decal`'s [Decal.Transparency](https://developer.roblox.com/api-reference/property/Decal/Transparency) property. The effects are only visible to the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer).
+	 * Acts as a multiplier for the `Decal`'s [Decal.Transparency](https://developer.roblox.com/api-reference/property/Decal/Transparency) property. The effects are only visible to the local player.
 	 *
 	 * This property should be used in situations where [Decal.Transparency](https://developer.roblox.com/api-reference/property/Decal/Transparency) is being set by a different script. The benefit of LocalTransparencyModifier is that it can be changed without concern for the original [Decal.Transparency](https://developer.roblox.com/api-reference/property/Decal/Transparency) of the `Decal`
 	 *
@@ -6521,7 +6238,7 @@ Displayed Transparency = Transparency + ((1 - Transparency) * LocalTransparencyM
 	 *
 	 *  - Insert the Decal into the game, this is generally done through the Toolbox under 'My Decals'. The Content ID can be found in the decal that is inserted. Note, [InsertService.LoadAsset](https://developer.roblox.com/api-reference/function/InsertService/LoadAsset) can also be used if developers wish to automate this method.
 	 *
-	 * [1]: https://developer.roblox.com/articles/How-to-upload-a-Decal
+	 * [1]: http://wiki.roblox.com/index.php?title=How_to_upload_a_Decal
 	 */
 	Texture: string;
 	/** 
@@ -6570,7 +6287,7 @@ texture.StudsPerTileV = 1
  *
  *  - If the effect of lighting on the image needs to be altered, the `SurfaceGui` object should be used
  *
- * [1]: https://developer.roblox.com/articles/How-to-upload-a-Decal
+ * [1]: http://wiki.roblox.com/index.php?title=How_to_upload_a_Decal
  */
 interface Texture extends Decal {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -6685,9 +6402,9 @@ interface File extends Instance {
  *
  * Unlike actual flames, Fire objects on Roblox do not spread on their own. If you notice this behavior in your game, it is happening because a `Script` is spreading fire.
  *
- * [1]: https://developer.roblox.com/assets/blt614752ba08bb2e7c/Fire.png
+ * [1]: https://developer.roblox.com/assets/5b0ab6b343098c11102a53b5/Fire.png
  *
- * [2]: https://developer.roblox.com/assets/blt925890091ac70b39/Fire_Colors.png
+ * [2]: https://developer.roblox.com/assets/5b0ab6ed9a16a6df0e497313/Fire_Colors.png
  */
 interface Fire extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -6699,7 +6416,7 @@ interface Fire extends Instance {
 	 *
 	 * In general, the cooler flames are on the outside of a fire. Therefore, fire looks more realistic if the outer portions are red or orange-yellow. A fire that is bright all throughout doesn't look very realistic, so avoid setting this property to yellow. Try adding a `PointLight` with the [PointLight.Color](https://developer.roblox.com/search#stq=Color) as a sibling to the `Fire`. This will provide light to the surrounding environment and make it feel more cohesive with the flame particles.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt925890091ac70b39/Fire_Colors.png
+	 * [1]: https://developer.roblox.com/assets/5b0ab6ed9a16a6df0e497313/Fire_Colors.png
 	 */
 	Color: Color3;
 	/** 
@@ -6722,13 +6439,13 @@ douseFlames(part.Fire)
 	 *
 	 * ![Two torches - the left has Heat = 9 and the right has Heat = 18][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltc9bf8cb45c829244/Fire_Heat.png
+	 * [1]: https://developer.roblox.com/assets/5b0abdf843098c11102a53bd/Fire_Heat.png
 	
 	 * The Heat property determines how fast particles are emit from the `Fire` object. It is limited to the range [-25, 25]. Positive values are in the top (+Y) direction of the parent `BasePart` or `Attachment`. It also affects the [ParticleEmitter.Acceleration](https://developer.roblox.com/api-reference/property/ParticleEmitter/Acceleration) of the inner particles. Below, you can see the effects of higher heat on the velocity/acceleration of the flame particles (left has Heat = 9, right has Heat = 18).
 	 *
 	 * ![Two torches - the left has Heat = 9 and the right has Heat = 18][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltc9bf8cb45c829244/Fire_Heat.png
+	 * [1]: https://developer.roblox.com/assets/5b0abdf843098c11102a53bd/Fire_Heat.png
 	 *
 	 * Tags: NotReplicated
 	 */
@@ -6738,25 +6455,25 @@ douseFlames(part.Fire)
 	 *
 	 * ![A Fire with SecondaryColor set to white][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt925890091ac70b39/Fire_Colors.png
+	 * [1]: https://developer.roblox.com/assets/5b0ab6ed9a16a6df0e497313/Fire_Colors.png
 	 */
 	SecondaryColor: Color3;
 	/** 
-	 * This  property determines the size of the flame particles. It must be in the range of [2, 30]. Unlike [ParticleEmitter.Size](https://developer.roblox.com/api-reference/property/ParticleEmitter/Size), the actual size of the flames will not match 1-to-1 with the equivalent size in studs; it is somewhat smaller.
+	 * The Size property determines the size of the flame particles. It must be in the range of [2, 30]. Unlike [ParticleEmitter.Size](https://developer.roblox.com/api-reference/property/ParticleEmitter/Size), the actual size of the flames will not match 1-to-1 with the equivalent size in studs; it is somewhat smaller.
 	 *
 	 * ![Two torches - the left has Size = 5 and the right has Size = 10][1]
 	 *
 	 * To make your environment more cohesive, try adding a `PointLight` as a sibling to the `Fire` object. Set the [PointLight.Brightness](https://developer.roblox.com/search#stq=Brightness) and [PointLight.Range](https://developer.roblox.com/api-reference/property/PointLight/Range) proportional to this property so that larger flames produce more light.
 	 *
-	 * [1]: https://developer.roblox.com/assets/5c4e6f08d626b8290a8e3f7b/Fire_Size.png
+	 * [1]: https://developer.roblox.com/assets/5b0abe6c9a16a6df0e497319/Fire_Size.png
 	
-	 * This  property determines the size of the flame particles. It must be in the range of [2, 30]. Unlike [ParticleEmitter.Size](https://developer.roblox.com/api-reference/property/ParticleEmitter/Size), the actual size of the flames will not match 1-to-1 with the equivalent size in studs; it is somewhat smaller.
+	 * The Size property determines the size of the flame particles. It must be in the range of [2, 30]. Unlike [ParticleEmitter.Size](https://developer.roblox.com/api-reference/property/ParticleEmitter/Size), the actual size of the flames will not match 1-to-1 with the equivalent size in studs; it is somewhat smaller.
 	 *
 	 * ![Two torches - the left has Size = 5 and the right has Size = 10][1]
 	 *
 	 * To make your environment more cohesive, try adding a `PointLight` as a sibling to the `Fire` object. Set the [PointLight.Brightness](https://developer.roblox.com/search#stq=Brightness) and [PointLight.Range](https://developer.roblox.com/api-reference/property/PointLight/Range) proportional to this property so that larger flames produce more light.
 	 *
-	 * [1]: https://developer.roblox.com/assets/5c4e6f08d626b8290a8e3f7b/Fire_Size.png
+	 * [1]: https://developer.roblox.com/assets/5b0abe6c9a16a6df0e497319/Fire_Size.png
 	 *
 	 * Tags: NotReplicated
 	 */
@@ -6764,13 +6481,7 @@ douseFlames(part.Fire)
 }
 
 /** 
- * This class was an internal service responsible for handling the now deprecated `FlagStand` and `Flag` objects.
- *
- * The `Flag` and `FlagStand` objects were created to allow developers to make 'Capture the Flag' style games quickly. However they have been deprecated and developers are advised to design their own systems which will be more flexible and reliable.
- *
- * To get started with this, developers can use the 'Capture The Flag' template place provided by Roblox which has a fully functioning system developers can take and use in their own games. A link to the place, which is free to edit, is [here][1].
- *
- * [1]: https://www.roblox.com/games/92721754/Capture-The-Flag#!/about
+ * An internal service responsible for handling the now deprecated `FlagStand` and `Flag` objects.
  */
 interface FlagStandService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -6778,7 +6489,7 @@ interface FlagStandService extends Instance {
 }
 
 /** 
- * Internal service with no functionality available to developers.
+ * The purpose of this internal service is unknown, though the [CSGDictionaryService](https://wiki.roblox.com/index.php?title=CSGDictionaryService) and [NonReplicatedCSGDictionaryService](https://wiki.roblox.com/index.php?title=NonReplicatedCSGDictionaryService&action=edit&redlink=1)") inherit from it, so it might have something to do with [Solid modeling](https://wiki.roblox.com/index.php?title=Solid_modeling).
  */
 interface FlyweightService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -6786,9 +6497,9 @@ interface FlyweightService extends Instance {
 }
 
 /** 
- * CSGDictionaryService is an internal service that stores a cache of `BinaryStringValue` objects, each value representing a unique data set for [solid modeling][1] data. In general, it serves no purpose to developers.
+ * An internal service, which appears to simply hold [BinaryStringValues](https://wiki.roblox.com/index.php?title=BinaryStringValue) .
  *
- * [1]: https://developer.roblox.com/articles/3D-Modeling-with-Parts
+ * It may be a cache for [solid models](https://wiki.roblox.com/index.php?title=Solid_modeling).
  */
 interface CSGDictionaryService extends FlyweightService {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -6796,7 +6507,7 @@ interface CSGDictionaryService extends FlyweightService {
 }
 
 /** 
- * A version of the `CSGDictionaryService` that does not replicate to clients.
+ * A version of the [CSGDictionaryService](https://wiki.roblox.com/index.php?title=CSGDictionaryService) that does not replicate to clients.
  */
 interface NonReplicatedCSGDictionaryService extends FlyweightService {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -6820,7 +6531,7 @@ local folder = game:GetService("ReplicatedStorage"):FindFirstChild("Folder")
  *
  * ![enter image description here][1]
  *
- * [1]: https://developer.roblox.com/assets/blta82462d9370edb83/Folders_-_Copy.png
+ * [1]: https://developer.roblox.com/assets/5ab25002e9d017730bcd9804/Folders_-_Copy.png
  */
 interface Folder extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -6911,32 +6622,11 @@ interface FunctionalTest extends Instance {
 }
 
 /** 
+ * GamePassService will not work with new game passes, use `MarketplaceService` instead.
+ *
  * The GamePassService is a service that supports legacy game passes using  *Asset IDs*. `MarketplaceService` should be used for all new game passes.
  *
  * For more information about game passes, please see [this article][1].
- *
- * ## Legacy Game Passes
- *
- * Historically, game passes on Roblox had an *Asset ID* associated with them. Although game passes created with an *Asset ID* still have an *Asset ID*, they now also have a *Game Pass ID*. All new game passes created today **only** have a *Game Pass ID*.
- *
- * You can retrieve the *Game Pass ID* of any pass through its URL, for example the *Game Pass ID* of the below pass is 1:
- *
- * ```lua
-https://www.roblox.com/game-pass/1/myGamePass
-```
- * 
-
- * Whether you are using an *Asset ID* or a *Game Pass ID* determines which API members you can use.
- *
- * |  | Works with _Asset ID_ (Legacy) | Works with _Game Pass ID_ (Current) |
- * | Verify Ownership | [GamePassService:PlayerHasPass](https://developer.roblox.com/api-reference/function/GamePassService/PlayerHasPass) | [MarketplaceService:UserOwnsGamePassAsync](https://developer.roblox.com/api-reference/function/MarketplaceService/UserOwnsGamePassAsync) |
- * | --- | --- |
- * | Prompt a purchase | [MarketplaceService:PromptPurchase](https://developer.roblox.com/api-reference/function/MarketplaceService/PromptPurchase) | [MarketplaceService:PromptGamePassPurchase](https://developer.roblox.com/api-reference/function/MarketplaceService/PromptGamePassPurchase) |
- * | --- | --- |
- * | Prompted purchase finished | [MarketplaceService.PromptPurchaseFinished](https://developer.roblox.com/api-reference/event/MarketplaceService/PromptPurchaseFinished) | [MarketplaceService.PromptGamePassPurchaseFinished](https://developer.roblox.com/api-reference/event/MarketplaceService/PromptGamePassPurchaseFinished) |
- * | --- | --- |
- *
- * API members that work with *Asset IDs* **will not** work with new game passes as they do not have them.
  *
  * [1]: https://developer.roblox.com/articles/Game-Passes-One-Time-Purchases
  */
@@ -7016,94 +6706,215 @@ interface Geometry extends Instance {
 }
 
 /** 
- * A **GlobalDataStore** exposes functions for saving and loading data for the `DataStoreService`.
- *
- * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an in-depth guide on data structure, management, error handling, etc.
+ * A GlobalDataStore exposes functions for saving and loading data for the `DataStoreService`. A GlobalDataStore is returned from a call to the `DataStoreService` method.
  */
 	/** @rbxts server */
 interface GlobalDataStore extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "GlobalDataStore" | "OrderedDataStore";
 	/** 
-	 * This function sets **callback** as the function to be executed any time the value associated with the [data store's](https://developer.roblox.com/api-reference/class/GlobalDataStore) key changes. For instance, the connected function will execute when functions like [IncrementAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/IncrementAsync), [SetAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/SetAsync), and [UpdateAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync) change the key's value in the data store.
-	 *
-	 * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an in-depth guide on data structure, management, error handling, etc.
-	 *
-	 * It's recommended that you **disconnect** the connection when the subscription to the key is no longer needed.
-	 * @param key The key identifying the entry being retrieved from the data store
-	 * @param callback The function to be executed any time the value associated with **key** is changed
-	 * @returns The connection to the key being tracked for updates
+	 * Sets callback as a function to be executed any time the value associated with key is changed. It is important to [disconnect](https://wiki.roblox.com/index.php?title=Disconnect#Methods_2) the connection when the subscription to the key is no longer needed. See [this guide](https://wiki.roblox.com/index.php?title=Data_store#Limitations) for more information, including the limits of OnUpdate.
 	 */
 	OnUpdate<T = unknown>(key: string, callback: (value: T) => void): RBXScriptConnection;
 	/** 
-	 * This function returns the value of the entry in the `GlobalDataStore` with the given key. If the key does not exist, returns `nil`. This function caches for about 4 seconds, so you cannot be sure that it returns the current value saved on the Roblox servers.
+	 * The GetAsync function returns the value of the entry in the `GlobalDataStore` with the given key. If the key does not exist, returns nil. This function caches for about 4 seconds: you cannot be sure that this function returns the current value saved on the Roblox servers. Mind that there are [limits][1] that apply to this.
 	 *
-	 * If this function throws an error, the [error message](https://developer.roblox.com/search#stq=Datastore%20Errors) will describe the problem. Note that there are also [limits](https://developer.roblox.com/search#stq=Datastore%20Errors) that apply to this function.
+	 * If this function throws an error, the error message will describe the problem. A full list of DataStore errors can be seen [here][2]. Returns the value of the entry in the DataStore with the given key.
 	 *
-	 * To save a data store entry, you can use one of several possible functions, including [SetAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/SetAsync), [UpdateAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync), and [IncrementAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/IncrementAsync).
-	 * @param key The key identifying the entry being retrieved from the data store
-	 * @returns The value of the entry in the data store with the given key
+	 * To save a DataStore entry, you can use one of several possible functions, including [GlobalDataStore.SetAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/SetAsync), [GlobalDataStore.UpdateAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync), and [GlobalDataStore.IncrementAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/IncrementAsync).
+	 *
+	 * ## Example
+	 *
+	 * The below example would retrieve a player's saved "Gold" from a DataStore, and put the returned value onto the leaderboard.
+	 *
+	 * ```lua
+	local DataStore = game:GetService("DataStoreService"):GetDataStore("Gold")
+```
+	 * 
+
+	 * lua
+	 *
+	 * game.Players.PlayerAdded:connect(function(Player)
+	 *
+	 * local PlayerKey = "user_" .. Player.userId --// Never use the player's name as a key.
+	 *
+	 * ```lua
+
+```
+	 * 
+
+	 * lua
+	 *
+	 * local leaderstats = Instance.new("IntValue", Player)
+	 *
+	 * leaderstats.Name = "leaderstats"
+	 *
+	 * ```lua
+
+```
+	 * 
+
+	 * lua
+	 *
+	 * local Gold = Instance.new("IntValue", leaderstats)
+	 *
+	 * Gold.Name = "Gold"
+	 *
+	 * Gold.Value = DataStore:GetAsync(PlayerKey) --// Retrieving the value of the saved key.
+	 *
+	 * ```lua
+end)
+```
+	 * 
+
+	 * ## Errors
+	 *
+	 * This function has the potential to error. It is recommended to wrap this function in a [pcall][3]. Here are the potential errors that can be thrown:
+	 *
+	 * ## Key too long
+	 *
+	 * Data store keys must be strings no more than 50 characters long. Attempting to use longer strings will result in this error.
+	 *
+	 * ## Request Limit
+	 *
+	 * A game is [limited][4] in how many requests it can make across all of its servers. If this error occurs the game should be restructured to make fewer DataStore requests.
+	 *
+	 * ## Web Error
+	 *
+	 * All DataStore requests create web requests to perform the desired operation. If there is a connection issue or back-end problem, this function will throw a web error. In cases like this it is recommended to retry the request after a short delay.
+	 *
+	 * ## See Also
+	 *
+	 *  - [Saving Player Data][5]
+	 *
+	 *  - [DataStore Manual][6]
+	 *
+	 * [1]: https://wiki.roblox.com/index.php?title=Data_store#Limitations
+	 *
+	 * [2]: https://wiki.roblox.com/index.php?title=Datastore_Errors
+	 *
+	 * [3]: https://wiki.roblox.com/index.php?title=Data_store#Global_Request_Limit
+	 *
+	 * [4]: https://wiki.roblox.com/index.php?title=Data_store#Global_Request_Limit
+	 *
+	 * [5]: http://a%20href=%22https://wiki.roblox.com/index.php?title=Saving_Player_Data
+	 *
+	 * [6]: https://wiki.roblox.com/index.php?title=Data_store
+	 * @param key The key identifying the entry being retrieved from the DataStore.
+	 * @returns The value of the entry in the DataStore with the given key.
 	 */
 	GetAsync<T = unknown>(key: string): T | undefined;
 	/** 
-	 * Increments the value for a particular key and returns the incremented value. Only works on values that are integers. Note that you can use [OnUpdate()](https://developer.roblox.com/api-reference/function/GlobalDataStore/OnUpdate) to execute a function every time the database updates the key's value, such as after calling this function.
+	 * Increments the value for a particular key and returns the incremented value. Only works on values that are integers. Mind that there are [limits](https://wiki.roblox.com/index.php?title=Data_store#Limitations) that apply to this.
 	 *
-	 * If this function throws an error, the [error message](https://developer.roblox.com/search#stq=Datastore%20Errors) will describe the problem. Note that there are also [limits](https://developer.roblox.com/search#stq=Datastore%20Errors) that apply to this function.
+	 * If this function throws an error, the error message will describe the problem. A full list of DataStore errors can be seen [here](https://wiki.roblox.com/index.php?title=Datastore_Errors).Increments the value of a particular key and returns the incremented value.
 	 *
-	 * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an in-depth guide on data structure, management, error handling, etc.
-	 * @param key The key identifying the entry being retrieved from the data store
-	 * @param delta The increment amount
-	 * @returns The value of the entry in the data store with the given key
+	 * ## Example
+	 *
+	 * In the following example we will use a DataStore to increase the value of a key, so as to reflect how many times a player has visited your game. Due to IncrementAsync returning the incremented value, we can award the player based on how many times they have visited.
+	 *
+	 * ```lua
+local DataStore = game:GetService("DataStoreService"):GetDataStore("PlayerVisits")
+
+game.Players.PlayerAdded:connect(function(Player)
+```
+	 * 
+
+	 * lua
+	 *
+	 * local PlayerKey = "user_" .. Player.userId
+	 *
+	 * local Visits = DataStore:IncrementAsync(PlayerKey, 1)
+	 *
+	 * if Visits == 10 then
+	 *
+	 *     --// Reward them for visiting ten times.
+	 *
+	 * end
+	 *
+	 * ```lua
+end)
+```
+	 *
 	 */
 	IncrementAsync(key: string, delta?: number): number;
 	/** 
-	 * This function removes the given key from the provided `GlobalDataStore` and returns the value that was associated with that key. If the key is not found in the data store, this function returns `nil`.
+	 * The **RemoveAsync** function removes the given key from the function’s `GlobalDataStore`. The function returns the value that was associated with that key (values in DataStores are set with [GlobalDataStore.SetAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/SetAsync) and [GlobalDataStore.UpdateAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync)). If the key is not found in the DataStore, then the function will return nil. If [GlobalDataStore.GetAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/GetAsync) is called on a key that was removed with this function, GetAsync will return nil.
 	 *
-	 * If this function throws an error, the [error message](https://developer.roblox.com/search#stq=Datastore%20Errors) will describe the problem. Note that there are also [limits](https://developer.roblox.com/search#stq=Datastore%20Errors) that apply to this function.
+	 * Like other data store functions, this function cannot be called too often. It shares a [throttling budget](https://wiki.roblox.com/index.php?title=Data_store#Using_Data_Stores_in_Studio) with SetAsync and IncrementAsync. The remaining budget for a place can be checked while the place is running with the [DataStoreService.GetRequestBudgetForRequestType](https://developer.roblox.com/api-reference/function/DataStoreService/GetRequestBudgetForRequestType) function.
 	 *
-	 * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an in-depth guide on data structure, management, error handling, etc.
-	 * @param key The key identifying the entry being retrieved from the data store
-	 * @returns The value that was associated with the data store key, or `nil` if the key was not found
+	 * If this function throws an error, the error message will describe the problem. A full list of DataStore errors can be seen [here](https://wiki.roblox.com/index.php?title=Datastore_Errors).
+	 *
+	 * This function currently has a bug where it always returns a string version of the stored value, not the actual value itself.
 	 */
 	RemoveAsync<T = unknown>(key: string): T | undefined;
 	/** 
 	 * Sets the value of the key. This overwrites any existing data stored in the key.
 	 *
-	 * If the previous value of the key is important, use [UpdateAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync) instead. Using [GetAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/GetAsync) to retrieve a value and then setting the key with [SetAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/SetAsync) is risky because [GetAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/GetAsync) sometimes returns cached data and other game servers may have modified the key.
+	 * If the previous value of the key is important, use [GlobalDataStore.UpdateAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync). Using [GlobalDataStore.GetAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/GetAsync) to retrieve a value and then setting the key with SetAsync is dangerous because [GlobalDataStore.GetAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/GetAsync) sometimes returns cached data, and other game servers may have modified the key. Mind that there are [limits](https://wiki.roblox.com/index.php?title=Data_store#Limitations) that apply to this.
 	 *
-	 * Any string being stored in a data store must be valid [UTF-8](https://developer.roblox.com/search#stq=Lua%20Libraries/utf8). In UTF-8, values greater than 127 are used exclusively for encoding multi-byte codepoints, so a single byte greater than 127 will not be valid UTF-8 and the [SetAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/SetAsync) attempt will fail.
+	 * If this function throws an error, the error message will describe the problem. A full list of DataStore errors can be seen [here](https://wiki.roblox.com/index.php?title=Datastore_Errors).Sets the value of the key. This overwrites any existing data stored in the key.
 	 *
-	 * If this function throws an error, the [error message](https://developer.roblox.com/search#stq=Datastore%20Errors) will describe the problem. Note that there are also [limits](https://developer.roblox.com/search#stq=Datastore%20Errors) that apply to this function.
+	 * ## Example
 	 *
-	 * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an in-depth guide on data structure, management, error handling, etc.
-	 * @param key The key identifying the entry being retrieved from the data store
-	 * @param value The value of the entry in the data store with the given key
-	 * @returns void
+	 * The following example is how you would generally use SetAsync. However, if more than one server will likely be writing to this key, it is recommended that you use [GlobalDataStore.UpdateAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync) instead.
+	 *
+	 * ```lua
+local DataStore = game:GetService("DataStoreService"):GetDataStore("PlayerVisits")
+
+game.Players.PlayerAdded:connect(function(Player)
+```
+	 * 
+
+	 * lua
+	 *
+	 * local PlayerKey = "user_" .. Player.userId
+	 *
+	 * DataStore:SetAsync(PlayerKey, 0)
+	 *
+	 * ```lua
+end)
+```
+	 * 
+
+	 * ## See Also
+	 *
+	 * * [Saving Player Data](https://wiki.roblox.com/index.php?title=Saving_Player_Data)
+	 *
+	 * * [DataStore Manual](https://wiki.roblox.com/index.php?title=Data_store)
 	 */
 	SetAsync(key: string, value?: any): void;
 	/** 
-	 * This function retrieves the value of a key from a data store and updates it with a new value. Since this function validates the data, it should be used in favor of [SetAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/SetAsync) when there's a chance that more than one server can edit the same data at the same time.
-	 *
-	 * The second parameter is a function which you need to provide. The function takes the key's old value as input and returns the new value, with these exceptions:
-	 *
-	 *  * If the key does not exist, the old value passed to the function will be `nil`.
-	 *
-	 *  * If the function returns `nil`, the update is cancelled.
+	 * Retrieves the value of the key from the website, and updates it with a new value. This function validates the data and must therefore be the standard function to edit data when there is a chance more than one server can edit the same data at the same time.
 	 *
 	 * The value returned by this function is the new value, returned once the altered data is properly saved.
 	 *
-	 * In cases where another game server updated the key in the short timespan between retrieving the key's current value and setting the key's value, [UpdateAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync) will call the function again to ensure that no data is overwritten. The function will be called as many times as needed until the data is saved.
+	 * The second parameter of UpdateAsync is a function you need to provide that takes the key's old value as input and return the new value. After the function is called, the key is set to the new value.
 	 *
-	 * The function you define as the second parameter of [UpdateAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync) cannot yield, so do **not** include calls like `wait()`.
+	 * If the key does not exist, the oldValue passed in to the function will be nil. If the function returns nil, the update is cancelled. In cases where another game server updated the key in the short timespan between retrieving the key's current value and setting the key's value, UpdateAsync will call the function again to ensure that no data is overwritten. The function will be called as many times as needed until the data is saved.
 	 *
-	 * Any string being stored in a data store must be valid [UTF-8](https://developer.roblox.com/search#stq=Lua%20Libraries/utf8). In UTF-8, values greater than 127 are used exclusively for encoding multi-byte codepoints, so a single byte greater than 127 will not be valid UTF-8 and the [UpdateAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync) attempt will fail.
+	 * Note: The function you define in UpdateAsync cannot yield (so do not use calls like wait(), WaitForChild(), etc).
 	 *
-	 * If this function throws an error, the [error message](https://developer.roblox.com/search#stq=Datastore%20Errors) will describe the problem. Note that there are also [limits](https://developer.roblox.com/search#stq=Datastore%20Errors) that apply to this function.
+	 * Note: There are [limits](https://wiki.roblox.com/index.php?title=Data_store#Limitations) that apply to this, which means you should think very good about your saving system.
 	 *
-	 * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an in-depth guide on data structure, management, error handling, etc.
-	 * @param key The key identifying the entry being retrieved from the data store.
-	 * @param transformFunction A function which you need to provide. The function takes the key's old value as input and returns the new value.
-	 * @returns The value of the entry in the data store with the given key.
+	 * If this function throws an error, the error message will describe the problem. A full list of DataStore errors can be seen [here](https://wiki.roblox.com/index.php?title=Datastore_Errors).Retrieves the value of the key from the website, and updates it with a new value.
+	 *
+	 * ## Example
+	 *
+	 * ```lua
+local DataStore = game:GetService("DataStoreService"):GetDataStore("Points")
+
+game.Players.PlayerAdded:connect(function(player)
+	local key = "user_" .. player.userId
+	--we want to give 50 points to users each time they visit
+	DataStore:UpdateAsync(key, function(oldValue)
+		local newValue = oldValue or 0 --oldValue might be nil
+		newValue = newValue + 50
+		return newValue
+	end)
+end)
+```
+	 *
 	 */
 	UpdateAsync<O = unknown, R = unknown>(
 		key: string,
@@ -7112,23 +6923,31 @@ interface GlobalDataStore extends Instance {
 }
 
 /** 
- * A **OrderedDataStore** is essentially a `GlobalDataStore` with the exception that stored values must be **positive integers**. It exposes a method [GetSortedAsync()](https://developer.roblox.com/api-reference/function/OrderedDataStore/GetSortedAsync) which allows inspection of the entries in sorted order using a `DataStorePages` object.
- *
- * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an overview on using ordered data stores.
+ * A OrderedDataStore is essentially a `GlobalDataStore` with the exception that stored values must be **positive integers** and it exposes a method `GetSortedPagesAsync`. This method allows inspection of the entries in sorted order using a `DataStorePages` object. OrderedDataStores are useful for creating leaderboards wherein data must kept **sorted**.
  */
 	/** @rbxts server */
 interface OrderedDataStore extends GlobalDataStore {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "OrderedDataStore";
 	/** 
-	 * Returns a `DataStorePages` object. The sort order is determined by **isAscending**, the length of each page by **pageSize**, and **minValue***maxValue** are optional parameters which filter the results.
+	 * Returns a `DataStorePages` object. The length of each page is determined by pageSize, and the order is determined by isAscending. minValue and maxValue are optional parameters which will filter the result. See [this article](https://wiki.roblox.com/index.php?title=Ordered_data_store) for a good explanation of using this. You can not use this too often, as there is a [limit](https://wiki.roblox.com/index.php?title=Data_store#Limitations) on the usage of this method.
 	 *
-	 * If this function throws an error, the [error message](https://developer.roblox.com/search#stq=Datastore%20Errors) will describe the problem.
-	 * @param ascending A boolean indicating whether the returned data pages are in ascending order.
+	 * If this function throws an error, the error message will describe the problem. A full list of DataStore errors can be seen [here](https://wiki.roblox.com/index.php?title=Datastore_Errors).
+	 *
+	 * ## Notes
+	 *
+	 * The maximum pagesize is 100.
+	 *
+	 * ## See Also
+	 *
+	 * * [Ordered data store (article)](https://wiki.roblox.com/index.php?title=Ordered_data_store)
+	 *
+	 * * [Article about Data Stores in general](https://wiki.roblox.com/index.php?title=Data_store)
+	 * @param ascending A boolean indicating whether DataStorePage returned is in ascending order.
 	 * @param pagesize The length of each page.
-	 * @param minValue Optional parameter. If set, data pages with a value less than than **minValue** will be excluded.
-	 * @param maxValue Optional parameter. If set, data pages with a value greater than **maxValue** will be excluded.
-	 * @returns A sorted `DataStorePages` object based on the provided arguments.
+	 * @param minValue Optional parameter. If set, data pages with a value less than than *minValue* will be excluded.
+	 * @param maxValue Optional parameter. If set, data pages with a value greater than *maxValue* will be excluded.
+	 * @returns A sorted DataStorePage object based on the provided arguments.
 	 */
 	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
 }
@@ -7381,17 +7200,19 @@ interface GuiObject extends GuiBase2d {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "GuiObject" | "Frame" | "GuiButton" | "GuiLabel" | "ScrollingFrame" | "TextBox" | "ViewportFrame" | "ImageButton" | "TextButton" | "ImageLabel" | "TextLabel";
 	/** 
-	 * This property determines whether a `GuiObject` will sink input to 3D space, such as underlying models with a `ClickDetector`. In other words, if the player attempts to click a ClickDetector with the mouse hovering over an Active UI element, the UI will block the input from reaching the ClickDetector.
+	 * This property determines whether a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) element will sink input to other GUI elements underneath the object, or the 3D space itself (such as underlying models with a `ClickDetector`).
 	 *
-	 * For `GuiButton` objects (`ImageButton` and `TextButton`), this property determines whether [GuiButton.Activated](https://developer.roblox.com/api-reference/event/GuiButton/Activated) fires ([GuiButton.AutoButtonColor](https://developer.roblox.com/api-reference/property/GuiButton/AutoButtonColor) will still work for those as well). The events [InputBegan](https://developer.roblox.com/api-reference/event/GuiObject/InputBegan), [InputChanged](https://developer.roblox.com/api-reference/event/GuiObject/InputChanged), and [InputEnded](https://developer.roblox.com/api-reference/event/GuiObject/InputEnded) work as normal no matter the value of this property.
+	 * In the case of `GuiButton` objects, this will determine whether or not [GuiButton.Activated](https://developer.roblox.com/api-reference/event/GuiButton/Activated) fires. However, [GuiButton.AutoButtonColor](https://developer.roblox.com/api-reference/property/GuiButton/AutoButtonColor) will still partially work.
+	 *
+	 * For example, if a `Frame` with Active set to true covers a `TextButton` with Active also set to true, clicks over the Frame and TextButton it will not reach the TextButton. The Frame "sinks" the input. Disabling Active on the Frame will allow a click to ignore the Frame and continue to the TextButton. In general, if you want an Active button to be clickable, be sure the button is not obscured by another Active element. Conversely, if you do not want anything under a GUI element (such as a pop-up window) to be clickable, set Active to true to prevent this.
 	 */
 	Active: boolean;
 	/** 
-	 * This property determines a [GUI](https://developer.roblox.com/api-reference/class/GuiObject), which is relative to its absolute size. The origin point determines from where the element is positioned (through [GuiObject.Position](https://developer.roblox.com/api-reference/property/GuiObject/Position)) and from which the rendered [GuiObject.Size](https://developer.roblox.com/api-reference/property/GuiObject/Size) expands.
+	 * The AnchorPoint of a UI element is the origin point of a UI element, which is relative to its absolute size. The origin point determines from where the element is positioned (through [GuiObject.Position](https://developer.roblox.com/api-reference/property/GuiObject/Position)) and from which the rendered [GuiObject.Size](https://developer.roblox.com/api-reference/property/GuiObject/Size) expands.
 	 *
-	 * A good rule of thumb for this property: if the GUI in question is aligned to the left, the X value should be 0. If horizontally centered, set to 0.5. Finally, if the element is aligned to the right, the X value ought to be 1. Similarly, set the Y value to 0, 0.5, and 1 for top, middle, and bottom for Y alignment.
+	 * A good rule of thumb for setting AnchorPoint: if the UI element in question is aligned to the left, the X value should be 0. If horizontally centered, set to 0.5. Finally, if the element is aligned to the right, the X value ought to be 1. Similarly, set the Y value to 0, 0.5, and 1 for top, middle, and bottom for Y alignment.
 	 *
-	 * To understand how AnchorPoint works, try creating a `Frame` with [Frame.Position](https://developer.roblox.com/search#stq=Position) set to [UDim2.new(0.5, 0, 0.5, 0)](https://developer.roblox.com/search#stq=UDim2) (this will set the Frame in the center of its parent object). If you were to change [Frame.Size](https://developer.roblox.com/search#stq=Size), you would notice that the Frame will expand to the right and downward. The very center of the frame would also not be at the exact center of the parent object. However, if you were to set the AnchorPoint to `(0.5, 0.5)`, the Frame would expand in all directions and the center of the frame would indeed be at the parent object's center.
+	 * To understand how AnchorPoint works, try creating a `Frame` with [Frame.Position](https://developer.roblox.com/search#stq=Position) set to `{0.5, 0}, {0.5, 0}` (this will set the Frame in the center of its parent object). If you were to change [Frame.Size](https://developer.roblox.com/search#stq=Size), you would notice that the Frame will expand to the right and downward. The very center of the frame would also not be at the exact center of the parent object. However, if you were to set the AnchorPoint to `0.5, 0.5`, the Frame would expand in all directions and the center of the frame would indeed be at the parent object's center.
 	 */
 	AnchorPoint: Vector2;
 	/** 
@@ -7421,39 +7242,15 @@ interface GuiObject extends GuiBase2d {
 	 */
 	BorderSizePixel: number;
 	/** 
-	 * This property determines if a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) will *clip* (or make invisible) any portion of descendant GUI elements that would otherwise render outside the bounds of the rectangle. Further descendant GUI elements can also use ClipsDescendants. The behavior is similar to a `ScrollingFrame`.
+	 * ClipsDescendants determines if a UI element will "clip" (or make invisible) any descendant UI elements that would otherwise render outside the bounds of the rectangle. Further descendant UI elements can also use ClipsDescendants. The behavior is similar to a `ScrollingFrame`.
 	 *
-	 * Note that [GuiObject.Rotation](https://developer.roblox.com/api-reference/property/GuiObject/Rotation) isn't supported by this property. If this or any ancestor GUI has a **non-zero** [GuiObject.Rotation](https://developer.roblox.com/api-reference/property/GuiObject/Rotation), this property is **ignored** and descendant GUI elements will be rendered regardless of this property's value.
-	 *
-	 * The gif and code sample below demonstrate how to enabled and disable the property using a `LocalScript`. They also illustrate the affects the property has on descendant GUI elements.
-	 *
-	 * ```lua
-while true do
-	script.Parent.ClipDescendants = true
-	wait(2)
-	script.Parent.ClipDescendants = false
-	wait(2)
-end
-```
-	 * 
-
-	 * ![ClipDescendants Demo][1]
-	 *
-	 * In the gif below, the element labelled *Parent* toggles between ClipsDescendants enabled and disabled every two seconds. The elements labelled *Child* are descendants of `Parent` that are affected by changing the property. Also note that the rotated *Child* element is not affected by the property.
-	 *
-	 * [1]: https://developer.roblox.com/assets/5b8d8873a3326f570bb89bae/ClipDescendantsDemo.gif
+	 * [GuiObject.Rotation](https://developer.roblox.com/api-reference/property/GuiObject/Rotation) isn't supported by this property, i.e. if the UI element or any ancestor GuiObjects have a **non-zero** [GuiObject.Rotation](https://developer.roblox.com/api-reference/property/GuiObject/Rotation), this property is **ignored** and descendant UI elements will be rendered regardless of ClipsDescendants.
 	 */
 	ClipsDescendants: boolean;
 	/** 
-	 * This property controls the sorting order of a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) when using a `UIGridStyleLayout` (such as `UIListLayout` or `UIPageLayout`) with [UIGridStyleLayout.SortOrder](https://developer.roblox.com/api-reference/property/UIGridStyleLayout/SortOrder) set to [Enum.SortOrder.LayoutOrder](https://developer.roblox.com/search#stq=SortOrder). It has no functionality if the GUI does not have a sibling UI Layout.
+	 * LayoutOrder controls the sorting order of a `GuiObject` when using a `UIGridStyleLayout` (such as `UIListLayout` or `UIPageLayout`) with [UIGridStyleLayout.SortOrder](https://developer.roblox.com/api-reference/property/UIGridStyleLayout/SortOrder) set to `Enum.SortOrder.LayoutOrder`. Lower values take more priority (come before) over values that are higher. If two `GuiObject` have LayoutOrder set to equal values, the behavior defaults to the order in which the objects were added to their parent. This property doesn't have any other use if there is no sibling `UIGridStyleLayout`.
 	 *
-	 * It is a signed 32-bit int, so it can be set to any value from -2,147,483,648 to 2,147,483,647 (inclusive). GUIs are placed in ascending order where lower values take more priority over, and are ordered before, higher values. Values that are equal will fall back to the order they were added in.
-	 *
-	 * If you are unsure if you will need to add an element between two already-existing elements in the future, it can be a good idea to use multiples of 100, i.e. 0, 100, 200. This ensures a large gap of LayoutOrder values you can use for elements ordered in-between other elements.
-	 *
-	 * ## See also
-	 *
-	 *  - [GuiObject.ZIndex](https://developer.roblox.com/api-reference/property/GuiObject/ZIndex), which determines the GUI render order instead of placement order.
+	 * LayoutOrder is a signed 32-bit int, so it can be set to any value from -2,147,483,648 to 2,147,483,647 (inclusive).
 	 */
 	LayoutOrder: number;
 	/** 
@@ -7521,23 +7318,15 @@ end
 	 */
 	NextSelectionUp?: GuiObject;
 	/** 
-	 * This property determines a [GUI's](https://developer.roblox.com/api-reference/class/GuiObject) pixel and scalar size using a `UDim2`. Its value can be expressed as `UDim2.new(ScalarX, PixelX, ScalarY, PixelY)` or `({ScalarX, PixelX}, {ScalarY, PixelY})`. Position is centered around a GUI's [GuiObject.AnchorPoint](https://developer.roblox.com/api-reference/property/GuiObject/AnchorPoint).
+	 * The Position property determines the size of a UI element on both scalar and pixel levels using a `UDim2`. The rendered position of an object is also influenced by [GuiObject.AnchorPoint](https://developer.roblox.com/api-reference/property/GuiObject/AnchorPoint). An object's actual pixel position can be read from the [GuiBase2d.AbsolutePosition](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsolutePosition) property.
 	 *
-	 * An element’s position can also be set by modifying both its scalar and pixel positions at the same time. For instance, tits position can be set to `({0.25, 100}, {0.25, 100})`.
-	 *
-	 * The scalar size is relative to the scalar size of parent GUI elements, if any. For example, if AnchorPoint is set to `{0, 0}{0, 0}`  and Position is set to `{0, 0}, {0, 0}`, the element will render at the top left corner of the parent element. Similarly, if AnchorPoint is set to `{0, 0}{0, 0}` and Position is set to `{0.5, 0}, {0.5, 0}`, the top left corner of the element will render at the center of the parent element.
-	 *
-	 * The pixel portions of the `UDim2` value are the same regardless of the parent GUI's size. The values represent the position of the object in pixels. For example, if set to `{0, 100}, {0, 150}` the element's AnchorPoint will render with on the screen 100 pixels from the left and 150 pixels from the top.
-	 *
-	 * An object's actual pixel position can be read from the [GuiBase2d.AbsolutePosition](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsolutePosition) property.
+	 * The scalar portions of the `UDim2` value are relative to the parent UI element's size. For example, if Position is set to `{0.5, 0}, {0.5, 0}`, the element will render at the center of the parent element. Note that [GuiObject.AnchorPoint](https://developer.roblox.com/api-reference/property/GuiObject/AnchorPoint) also ought to be set to refine the origin point of the element.
 	 */
 	Position: UDim2;
 	/** 
-	 * This property determines the number of degrees by which a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) is rotated. Rotation is relative to the **center** of its parent GUI.
+	 * The Rotation property determines the number of degrees by which a UI element is rotated, relative to the **center** of the parent UI element.
 	 *
-	 * A GUI's [GuiObject.AnchorPoint](https://developer.roblox.com/api-reference/property/GuiObject/AnchorPoint) does not influence it's rotation. This means that you cannot change the center of rotation since it will always be in the center of the object.
-	 *
-	 * Additionally, this property is **not compatible** with [GuiObject.ClipsDescendants](https://developer.roblox.com/api-reference/property/GuiObject/ClipsDescendants). If an ancestor (parent) object has ClipsDescendants enabled and this property is nonzero, then descendant GUI elements will not be clipped.
+	 * A UI element's [GuiObject.AnchorPoint](https://developer.roblox.com/api-reference/property/GuiObject/AnchorPoint) does not influence the rotation of a UI element. In other words, you cannot change the center of rotation since it will always be in the center of the object. Additionally, this property is **not compatible** with [GuiObject.ClipsDescendants](https://developer.roblox.com/api-reference/property/GuiObject/ClipsDescendants). If some ancestor object has [GuiObject.ClipsDescendants](https://developer.roblox.com/api-reference/property/GuiObject/ClipsDescendants) enabled and this property is nonzero, then descendant UI elements will not be clipped.
 	 */
 	Rotation: number;
 	/** 
@@ -7545,49 +7334,15 @@ end
 	 */
 	Selectable: boolean;
 	/** 
-	 * This property overrides the default selection adornment (used for gamepads). For best results, this should point to a [GUI](https://developer.roblox.com/api-reference/class/GuiObject).
-	 *
-	 * Note that the SelectionImageObject overlays the selected GUI with the [GuiObject.Size](https://developer.roblox.com/api-reference/property/GuiObject/Size) of the image. For best results when using a non-default SelectionImageObject, you should size the SelectionImageObject via the scale [DataType.UDim2](https://developer.roblox.com/search#stq=UDim2) values. This helps ensure that the object scales properly over the selected element.
-	 *
-	 * The default SelectionImageObject is a blue and white square outline around the selected GUI element. In the image below, the selected GUI is a white `Frame`.
-	 *
-	 * ![Default SelectionImageObject][1]
-	 *
-	 * For instance, changing the SelectionImageObject to a `ImageLabel` with red and white square outline [image][2], [GuiObject.BackgroundTransparency](https://developer.roblox.com/api-reference/property/GuiObject/BackgroundTransparency) of 1,  [GuiObject.Size](https://developer.roblox.com/api-reference/property/GuiObject/Size) of *UDim2(1.1, 0, 1.1, 0)*, and [GuiObject.Position](https://developer.roblox.com/api-reference/property/GuiObject/Position) of *UDim2(-0.05, 0, -0.05, 0)* results in the image below:
-	 *
-	 * ![Custom SelectionImageObject][3]
-	 *
-	 * Changing the SelectionImageObject for a GUI element only affects that element. To change the SelectionImageObject for all of a user's GUI elements, you can set the [PlayerGui.SelectionImageObject](https://developer.roblox.com/api-reference/property/PlayerGui/SelectionImageObject) property.
-	 *
-	 * To determine or set which GUI element is selected by the user, you can use the [GuiService.SelectedObject](https://developer.roblox.com/api-reference/property/GuiService/SelectedObject) property. The user uses the gamepad to select different GUI elements, invoking the [GuiObject.NextSelectionUp](https://developer.roblox.com/api-reference/property/GuiObject/NextSelectionUp), [GuiObject.NextSelectionDown](https://developer.roblox.com/api-reference/property/GuiObject/NextSelectionDown), [GuiObject.NextSelectionLeft](https://developer.roblox.com/api-reference/property/GuiObject/NextSelectionLeft), and [GuiObject.NextSelectionRight](https://developer.roblox.com/api-reference/property/GuiObject/NextSelectionRight) events.
-	 *
-	 * [1]: https://developer.roblox.com/assets/5b9b1d450b3d1789514ebdd7/Screen_Shot_2018-09-13_at_9.57.14_PM.png
-	 *
-	 * [2]: https://www.roblox.com/library/2347505468/SelectionImage-Red
-	 *
-	 * [3]: https://developer.roblox.com/assets/5b9b17dd1a346e537cf02152/Screen_Shot_2018-09-13_at_9.53.54_PM.png
+	 * Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject.
 	 */
 	SelectionImageObject?: GuiObject;
 	/** 
-	 * This property determines a [GUI's](https://developer.roblox.com/api-reference/class/GuiObject) scalar and pixel size using a `UDim2`. Its value can be expressed as `UDim2.new(ScalarX, PixelX, ScalarY, PixelY)` or `({ScalarX, PixelX}, {ScalarY, PixelY})`.
-	 *
-	 * The scalar size is relative to the scalar size of parent GUI elements, if any. For example, if the GUI's scalar size is `UDim2.new(0.5, 0, 0.5, 0) and it is not the descendant of a GUI, then it will occupy half of the screen horizontally and vertically. However, if the GUI is the child of a GUI with a scalar size of `UDim2.new(0.5, 0, 0.5, 0), then the GUI's scalar size will render to be half the scalar size of its parent both horizontally and vertically and will occupy a quarter of the screen in both dimensions.
-	 *
-	 * The pixel portions of the `UDim2` value are the same regardless of the parent GUI's size. The values represent the size of the object in pixels. For example, if Position is set to `{0, 100}, {0, 150}` the element will render with a width of 100 pixels and height of 150 pixels.
-	 *
-	 * If the GUI has a parent, its size of each axis is also influenced by the parent's [GuiObject.SizeConstraint](https://developer.roblox.com/api-reference/property/GuiObject/SizeConstraint).
-	 *
-	 * Although it is possible to use negative sizes when creating GUIs, it's more often better to manipulate [GuiObject.AnchorPoint](https://developer.roblox.com/api-reference/property/GuiObject/AnchorPoint) instead.
-	 *
-	 * An object's actual pixel size can be read from the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) property.
+	 * The Size property determines the size of a UI element on both scalar and pixel levels using a `UDim2`. The parent GuiObject's size influences each axis based on [GuiObject.SizeConstraint](https://developer.roblox.com/api-reference/property/GuiObject/SizeConstraint). Although it is possible to use negative sizes when creating UIs, it's more often better to manipulate [GuiObject.AnchorPoint](https://developer.roblox.com/api-reference/property/GuiObject/AnchorPoint) instead. An object's actual pixel size can be read from the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) property.
 	 */
 	Size: UDim2;
 	/** 
-	 * This property works in conjunction with the `GuiObject.Size|Size` property to determine the screen size of a GUI element.
-	 *
-	 * The [Enum.SizeConstraint](https://developer.roblox.com/search#stq=SizeConstraint) enum will determine the axes that influence the scalar size of an object.
-	 *
-	 * This property is useful for creating onscreen controls that are meant to scale with either the width or height of a parent object, but not both. This preserves the aspect ratio of the GUI element in question. For example, setting to RelativeYY with a Size of `{1, 0}, {1, 0}` will make the UI element square, with both the X and Y sizes equal to the parent element's Y size.
+	 * SizeConstraint works in conjunction with `GuiObject.Size` to determine the screen size of a UI element. The SizeConstraint enum will determine the axes that influence the scalar size of an object. This property is useful for creating onscreen controls that are meant to scale with either the width or height of a parent object, but not both. This preserves the aspect ratio of the UI element in question. For example, setting to RelativeYY with a Size of `{1, 0}, {1, 0}` will make the UI element square, with both the X and Y sizes equal to the parent element's Y size.
 	 */
 	SizeConstraint: Enum.SizeConstraint;
 	/** 
@@ -7595,27 +7350,19 @@ end
 	 *
 	 * When indexing, this will return the BackgroundTranparency.
 	 *
-	 * When setting, this will change the BackgroundTransparency **and** TextTransparency of a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) element.
+	 * When setting, this will change the BackgroundTransparency **and** TextTransparencyA mixed property of BackgroundTransparency and TextTransparency
 	 */
 	Transparency: number;
 	/** 
-	 * This property determines whether a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) will render shapes, images and/or text on screen. If set to false, the GUI and all of its descedants (children) will not render.
+	 * The Visible property determines whether a UI element will render shapes, images and/or text on screen. If set to false, no descendant `GuiObject` will render either. The rendering of individual parts of a UI element can be controlled individually through transparency properties such as  [Frame.BackgroundTransparency](https://developer.roblox.com/search#stq=BackgroundTransparency), [TextLabel.TextTransparency](https://developer.roblox.com/api-reference/property/TextLabel/TextTransparency) or [ImageLabel.ImageTransparency](https://developer.roblox.com/api-reference/property/ImageLabel/ImageTransparency).
 	 *
-	 * The rendering of individual components of a GUI can be controlled individually through transparency properties such as  [GuiObject.BackgroundTransparency](https://developer.roblox.com/api-reference/property/GuiObject/BackgroundTransparency), [TextLabel.TextTransparency](https://developer.roblox.com/api-reference/property/TextLabel/TextTransparency) and [ImageLabel.ImageTransparency](https://developer.roblox.com/api-reference/property/ImageLabel/ImageTransparency).
-	 *
-	 * When this property is true, the GUI will be ignored by `UIGridStyleLayout` objects (such as `UIGridLayout`, `UIListLayout` and `UITableLayout`). In other words, the space that the element would otherwise occupy in the layout is used by other elements instead.
+	 * A GuiObject that is not Visible will also be ignored by `UIGridStyleLayout` objects (such as `UIGridLayout`, `UIListLayout` and `UITableLayout`). In other words, the space that the element would otherwise occupy in the layout is used by other elements instead.
 	 */
 	Visible: boolean;
 	/** 
-	 * This property determines the order in which a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) renders to the screen relative to other GUIs.
+	 * ZIndex determines the order in which UI elements are rendered to the screen in ascending priority order. Lower values are rendered first, so lower values appear under higher values. The `ScreenGui.ZIndexBehavior` property also helps determine the rendering order of UI elements.
 	 *
-	 * By default, GUIs render in ascending priority order where lower values are rendered first. As a result, GUIs with lower ZIndex values appear under higher values. You can change the render order by changing the value of `ScreenGui.ZIndexBehavior`.
-	 *
-	 * The range of valid values is 1 to 999,999,999, inclusive. If you are unsure if you will need to layer an element between two already-existing elements in the future, it can be a good idea to use multiples of 100, i.e. 0, 100, 200. This ensures a large gap of ZIndex values you can use for elements rendered in-between other elements.
-	 *
-	 * ## See also
-	 *
-	 *  -  [GuiObject.LayoutOrder](https://developer.roblox.com/api-reference/property/GuiObject/LayoutOrder), which controls the sort order of a GUI when used with a `UIGridStyleLayout` instead of render order.
+	 * The range of valid ZIndex values is 1 to 999,999,999, inclusive. If you are unsure if you will need to layer an element between two already-existing elements in the future, it can be a good idea to use multiples of 100, i.e. 0, 100, 200. This ensures a large gap of ZIndex values you can use for elements rendered in-between other elements..
 	 */
 	ZIndex: number;
 	/** 
@@ -7623,11 +7370,7 @@ end
 	 *
 	 * This function will return whether the tween will play. It will not play if another tween is acting on the `GuiObject` and the override parameter is false.
 	 *
-	 * ## See also
-	 *
-	 *  - [GuiObject.TweenSize](https://developer.roblox.com/api-reference/function/GuiObject/TweenSize), tweens a GUI's size
-	 *
-	 *  - [GuiObject.TweenSizeAndPosition](https://developer.roblox.com/api-reference/function/GuiObject/TweenSizeAndPosition), tweens a GUI's size and position synchronously
+	 * If you want to tween a GUI's [GuiObject.Size](https://developer.roblox.com/api-reference/property/GuiObject/Size), you can use the [GuiObject.TweenSize](https://developer.roblox.com/api-reference/function/GuiObject/TweenSize). You can also tween a GUI's size and position at the same time using the [GuiObject.TweenSizeAndPosition](https://developer.roblox.com/api-reference/function/GuiObject/TweenSizeAndPosition) function.
 	 * @param endPosition Where the GUI should move to
 	 * @param easingDirection The direction in which to ease the GUI to the *endPosition*
 	 * @param easingStyle The style in which to ease the GUI to the *endPosition*
@@ -7645,22 +7388,7 @@ end
 		callback?: (finishedTween: Enum.TweenStatus) => void,
 	): boolean;
 	/** 
-	 * Smoothly resizes a GUI to a new [DataType.UDim2](https://developer.roblox.com/search#stq=UDim2) in the specified time using the specified [EasingDirection](https://developer.roblox.com/search#stq=EasingDirection) and [EasingStyle](https://developer.roblox.com/search#stq=EasingStyle).
-	 *
-	 * This function will return whether the tween will play. Normally this will always return true, but it will return false if another tween is active and override is set to false.
-	 *
-	 * ## See also
-	 *
-	 *  - [GuiObject.TweenPosition](https://developer.roblox.com/api-reference/function/GuiObject/TweenPosition), tweens a GUI's position
-	 *
-	 *  - [GuiObject.TweenSizeAndPosition](https://developer.roblox.com/api-reference/function/GuiObject/TweenSizeAndPosition), tweens a GUI's size and position synchronously
-	 * @param endSize The size that the GUI should resize
-	 * @param easingDirection The direction in which to ease the GUI to the *endPosition*
-	 * @param easingStyle The style in which to ease the GUI to the *endPosition*
-	 * @param time How long, in seconds, the tween should take to complete
-	 * @param override Whether another tween play, cancelling this tween, before the GUI reaches the *endPosition*
-	 * @param callback A callback function to execute when the tween completes
-	 * @returns Whether the tween will play
+	 * Smoothly resizes a GUI to a new [UDim2](https://wiki.roblox.com/index.php?title=UDim2). This function will return whether the tween will play. Normally this will always return true, but it will return false if another tween is active and override is set to false.
 	 */
 	TweenSize(
 		endSize: UDim2,
@@ -7671,23 +7399,7 @@ end
 		callback?: (finishedTween: Enum.TweenStatus) => void,
 	): boolean;
 	/** 
-	 * Smoothly resizes and moves a GUI to a new [DataType.UDim2](https://developer.roblox.com/search#stq=UDim2) size and position in the specified time using the specified [EasingDirection](https://developer.roblox.com/search#stq=EasingDirection) and [EasingStyle](https://developer.roblox.com/search#stq=EasingStyle).
-	 *
-	 * This function will return whether the tween will play. Normally this will always return true, but it will return false if another tween is active and override is set to false.
-	 *
-	 * ## See also
-	 *
-	 *  - [GuiObject.TweenSize](https://developer.roblox.com/api-reference/function/GuiObject/TweenSize), tweens a GUI's size
-	 *
-	 *  - [GuiObject.TweenPosition](https://developer.roblox.com/api-reference/function/GuiObject/TweenPosition), tweens a GUI's position
-	 * @param endSize The size that the GUI should resize
-	 * @param endPosition Where the GUI should move to
-	 * @param easingDirection The direction in which to ease the GUI to the *endPosition*
-	 * @param easingStyle The style in which to ease the GUI to the *endPosition*
-	 * @param time How long, in seconds, the tween should take to complete
-	 * @param override Whether another tween play, cancelling this tween, before the GUI reaches the *endPosition*
-	 * @param callback A callback function to execute when the tween completes
-	 * @returns Whether the tween will play
+	 * Smoothly moves a GUI to a new size and position. This function will return whether the tween will play. Normally this will always return true, but it will return false if another tween is active and override is set to false.
 	 */
 	TweenSizeAndPosition(
 		endSize: UDim2,
@@ -7699,171 +7411,43 @@ end
 		callback?: (finishedTween: Enum.TweenStatus) => void,
 	): boolean;
 	/** 
-	 * This event fires when a user begins interacting with the `GuiObject` via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc).
-	 *
-	 * The `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.InputBegan](https://developer.roblox.com/api-reference/event/UserInputService/InputBegan).
-	 *
-	 * This event will always fire regardless of game state.
-	 *
-	 * ## See also
-	 *
-	 *  - [GuiObject.InputEnded](https://developer.roblox.com/api-reference/event/GuiObject/InputEnded)
-	 *
-	 *  - [GuiObject.InputChanged](https://developer.roblox.com/api-reference/event/GuiObject/InputChanged)
+	 * Fired when a user begins interacting with the GuiObject via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc). '`InputObject`' is an instance, which contains useful data for querying user input. This event will always fire regardless of game state.
 	 */
 	readonly InputBegan: RBXScriptSignal<(input: InputObject) => void>;
 	/** 
-	 * This event fires when a user changes how they're interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc).
-	 *
-	 * The `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.InputChanged](https://developer.roblox.com/api-reference/event/UserInputService/InputChanged).
-	 *
-	 * This event will always fire regardless of game state.
-	 *
-	 * ## See also
-	 *
-	 *  - [GuiObject.InputBegan](https://developer.roblox.com/api-reference/event/GuiObject/InputBegan)
-	 *
-	 *  - [GuiObject.InputEnded](https://developer.roblox.com/api-reference/event/GuiObject/InputEnded)
+	 * Fired when a user changes how they're interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc). '`InputObject`' is an instance, which contains useful data for querying user input. This event will always fire regardless of game state.
 	 */
 	readonly InputChanged: RBXScriptSignal<(input: InputObject) => void>;
 	/** 
-	 * The InputEnded event fires when a user stops interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc).
-	 *
-	 * The `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.InputEnded](https://developer.roblox.com/api-reference/event/UserInputService/InputEnded).
-	 *
-	 * This event will always fire regardless of game state.
-	 *
-	 * ## See also
-	 *
-	 *  - [GuiObject.InputBegan](https://developer.roblox.com/api-reference/event/GuiObject/InputBegan)
-	 *
-	 *  - [GuiObject.InputChanged](https://developer.roblox.com/api-reference/event/GuiObject/InputChanged)
+	 * Fired when a user stops interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc). '`InputObject`' is an instance, which contains useful data for querying user input. This event will always fire regardless of game state.
 	 */
 	readonly InputEnded: RBXScriptSignal<(input: InputObject) => void>;
 	/** 
-	 * The MouseEnter event fires when a user moves their mouse into a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) element.
-	 *
-	 * Please do not rely on the `x` and `y` arguments passed by this event as a fool-proof way to to determine where the user's mouse is when it enters a GUI. These coordinates may vary even when the mouse enters the GUI via the same edge - particularly when the mouse enters the element quickly. This is due to the fact the coordinates indicate the position of the mouse when the event fires rather than the exact moment the mouse enters the GUI.
-	 *
-	 * This event fires even when the GUI element renders beneath another element.
-	 *
-	 * If you would like to track when a user's mouse leaves a GUI element, you can use the [GuiObject.MouseLeave](https://developer.roblox.com/api-reference/event/GuiObject/MouseLeave) event.
-	 *
-	 * ## See also
-	 *
-	 *  - [GuiObject.MouseLeave](https://developer.roblox.com/api-reference/event/GuiObject/MouseLeave)
-	 *
-	 *  - [GuiObject.MouseMoved](https://developer.roblox.com/api-reference/event/GuiObject/MouseMoved)
-	 *
-	 *  - [GuiObject.MouseWheelForward](https://developer.roblox.com/api-reference/event/GuiObject/MouseWheelForward)
-	 *
-	 *  - [GuiObject.MouseWheelBackward](https://developer.roblox.com/api-reference/event/GuiObject/MouseWheelBackward)
+	 * Fires when a user moves their mouse into a GUI element.
 	 */
 	readonly MouseEnter: RBXScriptSignal<(x: number, y: number) => void>;
 	/** 
-	 * The MouseLeave event fires when a user moves their mouse out of a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) element.
-	 *
-	 * Please do not rely on the `x` and `y` arguments passed by this event as a fool-proof way to to determine where the user's mouse is when it leaves a GUI. These coordinates may vary even when the mouse leaves the GUI via the same edge - particularly when the mouse leaves the element quickly. This is due to the fact the coordinates indicate the position of the mouse when the event fires rather than the exact moment the mouse leaves the GUI.
-	 *
-	 * This event fires even when the GUI element renders beneath another element.
-	 *
-	 * ## See also
-	 *
-	 *  - [GuiObject.MouseEnter](https://developer.roblox.com/api-reference/event/GuiObject/MouseEnter)
-	 *
-	 *  - [GuiObject.MouseMoved](https://developer.roblox.com/api-reference/event/GuiObject/MouseMoved)
-	 *
-	 *  - [GuiObject.MouseWheelForward](https://developer.roblox.com/api-reference/event/GuiObject/MouseWheelForward)
-	 *
-	 *  - [GuiObject.MouseWheelBackward](https://developer.roblox.com/api-reference/event/GuiObject/MouseWheelBackward)
+	 * Fires when a user moves their mouse out of a GUI element.
 	 */
 	readonly MouseLeave: RBXScriptSignal<(x: number, y: number) => void>;
 	/** 
-	 * Fires whenever a user moves their mouse while it is inside a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) element. It is similar to [Mouse.Move](https://developer.roblox.com/api-reference/event/Mouse/Move), which fires regardless whether the user's mouse is over a GUI element.
-	 *
-	 * Note, this event fires when the mouse's position is updated, therefore it will fire repeatedly whilst being moved.
-	 *
-	 * The `x` and `y` arguments indicate the updated screen coordinates of the user's mouse in pixels. These can be useful to determine the mouse's location on the GUI, screen, and delta since the mouse's previous position if it is being tracked in a global variable.
-	 *
-	 * The code below demonstrates how to determine the [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2) offset of the user's mouse relative to a GUI element:
-	 *
-	 * ```lua
-local CustomScrollingFrame = script.Parent
-local SubFrame = CustomScrollingFrame:FindFirstChild("SubFrame")
-
-local mouse = game.Players.LocalPlayer:GetMouse()
-function getPosition(X, Y)
-	local gui_X = CustomScrollingFrame.AbsolutePosition.X
-	local gui_Y = CustomScrollingFrame.AbsolutePosition.Y
-	
-	
-	local pos = Vector2.new(math.abs(X - gui_X), math.abs(Y - gui_Y - 36))
-	print(pos)
-end
-
-CustomScrollingFrame.MouseMoved:Connect(getPosition)
-```
-	 * 
-
-	 * Note that this event may not fire exactly when the user's mouse enters or exits a GUI element. Therefore, the `x` and `y` arguments may not match up perfectly to the coordinates of the GUI's edges.
-	 *
-	 * ## See also
-	 *
-	 *  - [GuiObject.MouseEnter](https://developer.roblox.com/api-reference/event/GuiObject/MouseEnter)
-	 *
-	 *  - [GuiObject.MouseLeave](https://developer.roblox.com/api-reference/event/GuiObject/MouseLeave)
-	 *
-	 *  - [GuiObject.MouseWheelForward](https://developer.roblox.com/api-reference/event/GuiObject/MouseWheelForward)
-	 *
-	 *  - [GuiObject.MouseWheelBackward](https://developer.roblox.com/api-reference/event/GuiObject/MouseWheelBackward)
+	 * Fires whenever a user moves their mouse while it is inside a GUI element.
 	 */
 	readonly MouseMoved: RBXScriptSignal<(x: number, y: number) => void>;
 	/** 
-	 * The WheelBackward event fires when a user scrolls their mouse wheel back when the mouse is over a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) element. It is similar to [Mouse.WheelBackward](https://developer.roblox.com/api-reference/event/Mouse/WheelBackward), which fires regardless whether the user's mouse is over a GUI element.
-	 *
-	 * This event fires merely as an indicator of the wheel's forward movement. This means that the x and y mouse coordinate arguments do not change as a result of this event. These coordinates only change when the mouse moves, which can be tracked by the [GuiObject.MouseMoved](https://developer.roblox.com/api-reference/event/GuiObject/MouseMoved) event.
-	 *
-	 * ## See also
-	 *
-	 *  - [GuiObject.MouseEnter](https://developer.roblox.com/api-reference/event/GuiObject/MouseEnter)
-	 *
-	 *  - [GuiObject.MouseLeave](https://developer.roblox.com/api-reference/event/GuiObject/MouseLeave)
-	 *
-	 *  - [GuiObject.MouseMoved](https://developer.roblox.com/api-reference/event/GuiObject/MouseMoved)
-	 *
-	 *  - [GuiObject.MouseWheelForward](https://developer.roblox.com/api-reference/event/GuiObject/MouseWheelForward)
+	 * Fires when a user scrolls their mouse wheel back when the mouse is over a GUI element. _x_ and _y_ are the X and Y coordinates of the Mouse.
 	 */
 	readonly MouseWheelBackward: RBXScriptSignal<(x: number, y: number) => void>;
 	/** 
-	 * The WheelForward event fires when a user scrolls their mouse wheel forward when the mouse is over a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) element. It is similar to [Mouse.WheelForward](https://developer.roblox.com/api-reference/event/Mouse/WheelForward), which fires regardless whether the user's mouse is over a GUI element.
-	 *
-	 * This event fires merely as an indicator of the wheel's forward movement. This means that the x and y mouse coordinate arguments do not change as a result of this event. These coordinates only change when the mouse moves, which can be tracked by the [GuiObject.MouseMoved](https://developer.roblox.com/api-reference/event/GuiObject/MouseMoved) event.
-	 *
-	 * ## See also
-	 *
-	 *  - [GuiObject.MouseEnter](https://developer.roblox.com/api-reference/event/GuiObject/MouseEnter)
-	 *
-	 *  - [GuiObject.MouseLeave](https://developer.roblox.com/api-reference/event/GuiObject/MouseLeave)
-	 *
-	 *  - [GuiObject.MouseMoved](https://developer.roblox.com/api-reference/event/GuiObject/MouseMoved)
-	 *
-	 *  - [GuiObject.MouseWheelBackward](https://developer.roblox.com/api-reference/event/GuiObject/MouseWheelBackward)
+	 * Fires when a user scrolls their mouse wheel forward when the mouse is over a GUI element. _x_ and _y_ are the X and Y coordinates of the Mouse.
 	 */
 	readonly MouseWheelForward: RBXScriptSignal<(x: number, y: number) => void>;
 	/** 
-	 * This event fires when the Gamepad selector starts focusing on the `GuiObject`.
-	 *
-	 * If you want to check from the Gamepad select stops focusing on the GUI element, you can use the [GuiObject.SelectionLost](https://developer.roblox.com/api-reference/event/GuiObject/SelectionLost) event.
-	 *
-	 * When a GUI gains selection focus, the value of the [SelectionObject](https://developer.roblox.com/search#stq=SelectionObject) property also changes to the that gains selection. To determine which GUI gained selection, check the value of this property.
+	 * Fired when the GuiObject is being focused on with the Gamepad selector.
 	 */
 	readonly SelectionGained: RBXScriptSignal<() => void>;
 	/** 
-	 * This event fires when the Gamepad selector stops focusing on the [GUI](https://developer.roblox.com/api-reference/class/GuiObject).
-	 *
-	 * If you want to check from the Gamepad select starts focusing on the GUI element, you can use the [GuiObject.SelectionGained](https://developer.roblox.com/api-reference/event/GuiObject/SelectionGained) event.
-	 *
-	 * When a GUI loses selection focus, the value of the [SelectionObject](https://developer.roblox.com/search#stq=SelectionObject) property changes either to nil or to the GUI element that gains selection focus. To determine which GUI gained selection, or if no GUI is selected, check the value of this property.
+	 * Fired when the Gamepad selector stops focusing on the GuiObject.
 	 */
 	readonly SelectionLost: RBXScriptSignal<() => void>;
 	/** 
@@ -7875,7 +7459,7 @@ CustomScrollingFrame.MouseMoved:Connect(getPosition)
 	 *
 	 * This event is part of a family of touch-related events. Other events like this one are [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap), [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate), [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch), [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan) and [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe). In addition, `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.TouchLongPress](https://developer.roblox.com/api-reference/event/UserInputService/TouchLongPress).
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt0bff2c10ae8eddd2/TouchLongPress.gif
+	 * [1]: https://developer.roblox.com/assets/5b02240da15f0009112b1c7c/TouchLongPress.gif
 	 */
 	readonly TouchLongPress: RBXScriptSignal<(touchPositions: Array<Vector2>, state: Enum.UserInputState) => void>;
 	/** 
@@ -7889,7 +7473,7 @@ CustomScrollingFrame.MouseMoved:Connect(getPosition)
 	 *
 	 * This event is part of a family of touch-related events. Other events like this one are [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap), [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate), [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch), [GuiObject.TouchLongPress](https://developer.roblox.com/api-reference/event/GuiObject/TouchLongPress) and [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe). In addition, `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.TouchPan](https://developer.roblox.com/api-reference/event/UserInputService/TouchPan).
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltdc72a67282ec5330/TouchPan.gif
+	 * [1]: https://developer.roblox.com/assets/5b022e8d673e4a08116fdfff/TouchPan.gif
 	 */
 	readonly TouchPan: RBXScriptSignal<
 		(
@@ -7910,7 +7494,7 @@ CustomScrollingFrame.MouseMoved:Connect(getPosition)
 	 *
 	 * This event is part of a family of touch-related events. Other events like this one are [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap), [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate), [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan), [GuiObject.TouchLongPress](https://developer.roblox.com/api-reference/event/GuiObject/TouchLongPress) and [Guiobject.TouchSwipe](https://developer.roblox.com/search#stq=TouchSwipe). In addition, `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.TouchPinch](https://developer.roblox.com/api-reference/event/UserInputService/TouchPinch).
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltca171fa11cf4782d/TouchPinch.gif
+	 * [1]: https://developer.roblox.com/assets/5b02359baa88f4481181f0e3/TouchPinch.gif
 	 */
 	readonly TouchPinch: RBXScriptSignal<
 		(touchPositions: Array<Vector2>, scale: number, velocity: number, state: Enum.UserInputState) => void
@@ -7936,7 +7520,7 @@ CustomScrollingFrame.MouseMoved:Connect(getPosition)
 	 *
 	 * This event is part of a family of touch-related events. Other events like this one are [GuiObject.TouchTap](https://developer.roblox.com/api-reference/event/GuiObject/TouchTap), [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate), [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch), [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan) and [Guiobject.TouchLongPress](https://developer.roblox.com/search#stq=TouchLongPress). In addition, `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe).
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltca477d4e524ee20d/TouchSwipe.gif
+	 * [1]: https://developer.roblox.com/assets/5b021ee1673e4a08116fdff1/TouchSwipe.gif
 	 */
 	readonly TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number) => void>;
 	/** 
@@ -7948,7 +7532,7 @@ CustomScrollingFrame.MouseMoved:Connect(getPosition)
 	 *
 	 * This event is part of a family of touch-related events. Other events like this one are [GuiObject.TouchSwipe](https://developer.roblox.com/api-reference/event/GuiObject/TouchSwipe), [GuiObject.TouchRotate](https://developer.roblox.com/api-reference/event/GuiObject/TouchRotate), [GuiObject.TouchPinch](https://developer.roblox.com/api-reference/event/GuiObject/TouchPinch), [GuiObject.TouchPan](https://developer.roblox.com/api-reference/event/GuiObject/TouchPan) and [Guiobject.TouchLongPress](https://developer.roblox.com/search#stq=TouchLongPress). In addition, `UserInputService` has a similarly named event that is not restricted to a specific UI element: [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe).
 	 *
-	 * [1]: https://developer.roblox.com/assets/blta6f0c03b744fa52b/TouchTap.gif
+	 * [1]: https://developer.roblox.com/assets/5b0226bd00d367bf11f1e60f/TouchTap.gif
 	 */
 	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>) => void>;
 }
@@ -8138,7 +7722,7 @@ interface TextButton extends GuiButton {
 	 */
 	readonly TextBounds: Vector2;
 	/** 
-	 * This property determines the color of all the text rendered by a [GUI](https://developer.roblox.com/api-reference/class/TextButton) element. This property along with [TextButton.Font](https://developer.roblox.com/api-reference/property/TextButton/Font), [TextButton.TextSize](https://developer.roblox.com/api-reference/property/TextButton/TextSize) and [TextButton.TextTransparency](https://developer.roblox.com/api-reference/property/TextButton/TextTransparency) will determine the visual properties of text. Text is rendered after the text stroke ([TextButton.TextStrokeColor3](https://developer.roblox.com/api-reference/property/TextButton/TextStrokeColor3)).
+	 * The TextColor3 property determines the color of all the text rendered by a UI element. This property along with [TextButton.Font](https://developer.roblox.com/api-reference/property/TextButton/Font), [TextButton.TextSize](https://developer.roblox.com/api-reference/property/TextButton/TextSize) and [TextButton.TextTransparency](https://developer.roblox.com/api-reference/property/TextButton/TextTransparency) will determine the visual properties of text. Text is rendered after the text stroke ([TextButton.TextStrokeColor3](https://developer.roblox.com/api-reference/property/TextButton/TextStrokeColor3)).
 	 *
 	 * It's important that text is easily read by players! Be sure to choose colors with little-to-no saturation, like white, grey, or black. Make sure the color of your text is contrasted by the [TextButton.BackgroundColor3](https://developer.roblox.com/search#stq=BackgroundColor3) of the UI element. If the element has a transparent background, try applying a black [TextButton.TextStrokeColor3](https://developer.roblox.com/api-reference/property/TextButton/TextStrokeColor3) to help contrast the text with the 3D world behind it.
 	 */
@@ -8191,11 +7775,7 @@ end
 	 */
 	TextTruncate: Enum.TextTruncate;
 	/** 
-	 * When enabled, this property will render text on multiple lines within a [GUI](https://developer.roblox.com/api-reference/class/TextButton) element's space so that [TextButton.TextBounds](https://developer.roblox.com/api-reference/property/TextButton/TextBounds) will never exceed the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) of the UI element.
-	 *
-	 * This is achieved by breaking long lines of text into multiple lines. Line breaks will prefer whitespace; should a long unbroken word exceed the width of the element, that word will be broken into multiple lines.
-	 *
-	 * If further line breaks would cause the vertical height of the text (the Y component of [TextButton.TextBounds](https://developer.roblox.com/api-reference/property/TextButton/TextBounds)) to exceed the vertical height of the element (the Y component of [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize)), then that line will not be rendered at all.
+	 * When enabled, the TextWrap property will render text on multiple lines within a UI element's space so that [TextButton.TextBounds](https://developer.roblox.com/api-reference/property/TextButton/TextBounds) will never exceed the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) of the UI element. This is achieved by breaking long lines of text into multiple lines. Line breaks will prefer whitespace; should a long unbroken word exceed the width of the element, that word will be broken into multiple lines. If further line breaks would cause the vertical height of the text (the Y component of [TextButton.TextBounds](https://developer.roblox.com/api-reference/property/TextButton/TextBounds)) to exceed the vertical height of the element (the Y component of [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize)), then that line will not be rendered at all.
 	 */
 	TextWrapped: boolean;
 	/** 
@@ -8279,7 +7859,7 @@ interface ImageLabel extends GuiLabel {
 	 */
 	ScaleType: Enum.ScaleType;
 	/** 
-	 * The SliceCenter property determines the center of a nine-slice image when [ImageLabel.ScaleType](https://developer.roblox.com/api-reference/property/ImageLabel/ScaleType) is set to [Enum.ScaleType.Slice](https://developer.roblox.com/search#stq=ScaleType).
+	 * The SliceCenter property determines the center of a nine-slice image when [ImageLabel.ScaleType](https://developer.roblox.com/api-reference/property/ImageLabel/ScaleType) is set to [Enum.ScaleType/Slice](https://developer.roblox.com/search#stq=ScaleType/Slice).
 	 */
 	SliceCenter: Rect;
 	/** [NO DOCUMENTATION] */
@@ -8343,9 +7923,9 @@ interface TextLabel extends GuiLabel {
 	 */
 	readonly TextBounds: Vector2;
 	/** 
-	 * This property determines the color of all the text rendered by a [GUI](https://developer.roblox.com/api-reference/class/TextLabel) element. This property along with [TextLabel.Font](https://developer.roblox.com/api-reference/property/TextLabel/Font), [TextLabel.TextSize](https://developer.roblox.com/api-reference/property/TextLabel/TextSize) and [TextLabel.TextTransparency](https://developer.roblox.com/api-reference/property/TextLabel/TextTransparency) will determine the visual properties of text. Text is rendered after the text stroke ([TextLabel.TextStrokeColor3](https://developer.roblox.com/api-reference/property/TextLabel/TextStrokeColor3)).
+	 * The TextColor3 property determines the color of all the text rendered by a UI element. This property along with [TextLabel.Font](https://developer.roblox.com/api-reference/property/TextLabel/Font), [TextLabel.TextSize](https://developer.roblox.com/api-reference/property/TextLabel/TextSize) and [TextLabel.TextTransparency](https://developer.roblox.com/api-reference/property/TextLabel/TextTransparency) will determine the visual properties of text. Text is rendered after the text stroke ([TextLabel.TextStrokeColor3](https://developer.roblox.com/api-reference/property/TextLabel/TextStrokeColor3)).
 	 *
-	 * It's important that text is easily read by players! Be sure to choose colors with little-to-no saturation, like white, grey, or black. Make sure the color of your text is contrasted by the [TextLabel.BackgroundColor3](https://developer.roblox.com/search#stq=BackgroundColor3) of the GUI element. If the element has a transparent background, try applying a black [TextLabel.TextStrokeColor3](https://developer.roblox.com/api-reference/property/TextLabel/TextStrokeColor3) to help contrast the text with the 3D world behind it.
+	 * It's important that text is easily read by players! Be sure to choose colors with little-to-no saturation, like white, grey, or black. Make sure the color of your text is contrasted by the [TextLabel.BackgroundColor3](https://developer.roblox.com/search#stq=BackgroundColor3) of the UI element. If the element has a transparent background, try applying a black [TextLabel.TextStrokeColor3](https://developer.roblox.com/api-reference/property/TextLabel/TextStrokeColor3) to help contrast the text with the 3D world behind it.
 	 */
 	TextColor3: Color3;
 	/** 
@@ -8402,11 +7982,7 @@ end
 	 */
 	TextTruncate: Enum.TextTruncate;
 	/** 
-	 * When enabled, this property will render text on multiple lines within a [GUI](https://developer.roblox.com/api-reference/class/TextLabel) element's space so that [TextLabel.TextBounds](https://developer.roblox.com/api-reference/property/TextLabel/TextBounds) will never exceed the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) of the UI element.
-	 *
-	 * This is achieved by breaking long lines of text into multiple lines. Line breaks will prefer whitespace; should a long unbroken word exceed the width of the element, that word will be broken into multiple lines.
-	 *
-	 * If further line breaks would cause the vertical height of the text (the Y component of [TextLabel.TextBounds](https://developer.roblox.com/api-reference/property/TextLabel/TextBounds)) to exceed the vertical height of the element (the Y component of [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize)), then that line will not be rendered at all.
+	 * When enabled, the TextWrap property will render text on multiple lines within a UI element's space so that [TextLabel.TextBounds](https://developer.roblox.com/api-reference/property/TextLabel/TextBounds) will never exceed the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) of the UI element. This is achieved by breaking long lines of text into multiple lines. Line breaks will prefer whitespace; should a long unbroken word exceed the width of the element, that word will be broken into multiple lines. If further line breaks would cause the vertical height of the text (the Y component of [TextLabel.TextBounds](https://developer.roblox.com/api-reference/property/TextLabel/TextBounds)) to exceed the vertical height of the element (the Y component of [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize)), then that line will not be rendered at all.
 	 */
 	TextWrapped: boolean;
 	/** 
@@ -8424,7 +8000,7 @@ end
 }
 
 /** 
- * The ScrollingFrame is a special `Frame` that handles all scrolling for you, with a range of different ways to customize how the scrolling works. An in-depth tutorial for the ScrollingFrame can be found [here](https://developer.roblox.com/articles/Creating-a-Scrolling-Frame-GUI).
+ * The ScrollingFrame is a special `Frame` that handles all scrolling for you, with a range of different ways to customize how the scrolling works. An in-depth tutorial for the ScrollingFrame can be found [here](https://wiki.roblox.com/index.php?title=Scrolling_Frame_Tutorial).
  */
 interface ScrollingFrame extends GuiObject {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -8450,39 +8026,7 @@ interface ScrollingFrame extends GuiObject {
 	 */
 	CanvasSize: UDim2;
 	/** 
-	 * This property determines when elastic scrolling is allowed. It can be used to dictate if and when the [ScrollingFrame](https://developer.roblox.com/api-reference/class/ScrollingFrame) canvas is elastic. Defaults to WhenScrollable.
-	 *
-	 * ## What's the Differences Between Elastic and Non-Elastic
-	 *
-	 * ### Elastic
-	 *
-	 * The image below demonstrates Enum.Elasticity.Always an Enum.Elasticity.WhenScrollable when the canvas is scrollable:
-	 *
-	 * ![Enum.Elasticity.Always][1]
-	 *
-	 * ### Non-Elastic
-	 *
-	 * The image below demonstrates Enum.Elasticity.Never:
-	 *
-	 * ![Enum.Elasticity.Never][2]
-	 *
-	 * ## Enums
-	 *
-	 * It can be set to several [Enum.ElasticBehavior](https://developer.roblox.com/search#stq=ElasticBehavior) enum values, which determine how elastic scrolling behaves:
-	 *
-	 * | Name | Description |
-	 * | --- | --- |
-	 * | Always | Regardless of scrolling, you can always move the canvas a bit outside the bounds |
-	 * | Never | You can never move the canvas outside the rect bounds |
-	 * | WhenScrollable | (default) Elastic scrolling is allowed when canvas size is larger than the rect size |
-	 *
-	 * ## See also
-	 *
-	 *   - [ScrollingFrame.ScrollingDirection](https://developer.roblox.com/api-reference/property/ScrollingFrame/ScrollingDirection), the direction scrolling is allowed in this scrolling frame
-	 *
-	 * [1]: https://developer.roblox.com/assets/5c6366ca0a42866d41de58a4/ElasticityAlways.gif
-	 *
-	 * [2]: https://developer.roblox.com/assets/5c6366e26d61b3c84129fe2f/ElasticityNever.gif
+	 * Controls the elasticity behavior of the ScrollingFrame on mobile devices.
 	 */
 	ElasticBehavior: Enum.ElasticBehavior;
 	/** 
@@ -8502,47 +8046,7 @@ interface ScrollingFrame extends GuiObject {
 	 */
 	ScrollBarThickness: number;
 	/** 
-	 * This property determines the direction scrolling is allowed. If scrolling is disallowed in a direction, the scrollbar will not appear. Defaults to XY.
-	 *
-	 * ## What are the Different Scrolling Directions
-	 *
-	 * ### XY (Default)
-	 *
-	 * The image below demonstrates Enum.ScrollingDirection.XY:
-	 *
-	 * ![Enum.ScrollingDirection.XY][1]
-	 *
-	 * ### X
-	 *
-	 * The image below demonstrates Enum.ScrollingDirection.X:
-	 *
-	 * ![Enum.ScrollingDirection.X][2]
-	 *
-	 * ### Y
-	 *
-	 * The image below demonstrates Enum.ScrollingDirection.Y:
-	 *
-	 * ![Enum.ScrollingDirection.Y][3]
-	 *
-	 * ## Enums
-	 *
-	 * It can be set to several [Enum.ScrollingDirection](https://developer.roblox.com/search#stq=ScrollingDirection) enum values, which determine how elastic scrolling behaves:
-	 *
-	 * | Name | Description |
-	 * | --- | --- |
-	 * | XY | (default) Canvas can be scrolled along both X and Y axes |
-	 * | X | Canvas can only be scrolled along the X axis |
-	 * | Y | Canvas can only be scrolled along the Y axis |
-	 *
-	 * ## See also
-	 *
-	 *   - [ScrollingFrame.ElasticBehavior](https://developer.roblox.com/api-reference/property/ScrollingFrame/ElasticBehavior), how elastic scrolling behaves for touch input
-	 *
-	 * [1]: https://developer.roblox.com/assets/5c636ba20a42866d41de58cc/ScrollingDirectionXY.gif
-	 *
-	 * [2]: https://developer.roblox.com/assets/5c636bbfe2c86a6c4191bc61/ScrollingDirectionX.gif
-	 *
-	 * [3]: https://developer.roblox.com/assets/5c636bcb6d61b3c84129fe45/ScrollingDirectionY.gif
+	 * Controls the directions that a ScrollingFrame is allowed to scroll in.
 	 */
 	ScrollingDirection: Enum.ScrollingDirection;
 	/** 
@@ -8579,7 +8083,7 @@ interface TextBox extends GuiObject {
 	ClearTextOnFocus: boolean;
 	CursorPosition: number;
 	/** 
-	 * The Font property selects one of several pre-defined [fonts](https://developer.roblox.com/search#stq=Font) with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
+	 * The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 *
 	 * With the exception of the "Legacy" font, each font will render text with the line height equal to the [TextBox.TextSize](https://developer.roblox.com/api-reference/property/TextBox/TextSize) property. The "Code" font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextBox.TextSize](https://developer.roblox.com/api-reference/property/TextBox/TextSize) property.
 	 */
@@ -8619,7 +8123,7 @@ interface TextBox extends GuiObject {
 	 */
 	readonly TextBounds: Vector2;
 	/** 
-	 * This property determines the color of all the text rendered by a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) element. This property along with [TextBox.Font](https://developer.roblox.com/api-reference/property/TextBox/Font), [TextBox.TextSize](https://developer.roblox.com/api-reference/property/TextBox/TextSize) and [TextBox.TextTransparency](https://developer.roblox.com/api-reference/property/TextBox/TextTransparency) will determine the visual properties of text. Text is rendered after the text stroke ([TextBox.TextStrokeColor3](https://developer.roblox.com/api-reference/property/TextBox/TextStrokeColor3)).
+	 * The TextColor3 property determines the color of all the text rendered by a UI element. This property along with [TextBox.Font](https://developer.roblox.com/api-reference/property/TextBox/Font), [TextBox.TextSize](https://developer.roblox.com/api-reference/property/TextBox/TextSize) and [TextBox.TextTransparency](https://developer.roblox.com/api-reference/property/TextBox/TextTransparency) will determine the visual properties of text. Text is rendered after the text stroke ([TextBox.TextStrokeColor3](https://developer.roblox.com/api-reference/property/TextBox/TextStrokeColor3)).
 	 *
 	 * It's important that text is easily read by players! Be sure to choose colors with little-to-no saturation, like white, grey, or black. Make sure the color of your text is contrasted by the [TextBox.BackgroundColor3](https://developer.roblox.com/search#stq=BackgroundColor3) of the UI element. If the element has a transparent background, try applying a black [TextBox.TextStrokeColor3](https://developer.roblox.com/api-reference/property/TextBox/TextStrokeColor3) to help contrast the text with the 3D world behind it.
 	 */
@@ -8668,11 +8172,7 @@ end
 	 */
 	TextTruncate: Enum.TextTruncate;
 	/** 
-	 * When enabled, this property will render text on multiple lines within a [GUI](https://developer.roblox.com/api-reference/class/TextBox) element's space so that [TextBox.TextBounds](https://developer.roblox.com/api-reference/property/TextBox/TextBounds) will never exceed the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) of the GUI element.
-	 *
-	 * This is achieved by breaking long lines of text into multiple lines. Line breaks will prefer whitespace; should a long unbroken word exceed the width of the element, that word will be broken into multiple lines.
-	 *
-	 * If further line breaks would cause the vertical height of the text (the Y component of [TextBox.TextBounds](https://developer.roblox.com/api-reference/property/TextBox/TextBounds)) to exceed the vertical height of the element (the Y component of [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize)), then that line will not be rendered at all.
+	 * When enabled, the TextWrap property will render text on multiple lines within a UI element's space so that [TextBox.TextBounds](https://developer.roblox.com/api-reference/property/TextBox/TextBounds) will never exceed the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) of the UI element. This is achieved by breaking long lines of text into multiple lines. Line breaks will prefer whitespace; should a long unbroken word exceed the width of the element, that word will be broken into multiple lines. If further line breaks would cause the vertical height of the text (the Y component of [TextBox.TextBounds](https://developer.roblox.com/api-reference/property/TextBox/TextBounds)) to exceed the vertical height of the element (the Y component of [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize)), then that line will not be rendered at all.
 	 */
 	TextWrapped: boolean;
 	/** 
@@ -8698,7 +8198,7 @@ end
 	/** 
 	 * Forces the client to unfocus the TextBox.
 	 *
-	 * The _submitted_ parameter allows you to over-ride the _enterPressed_ parameter in the [FocusLost](https://developer.roblox.com/api-reference/event/TextBox/FocusLost) event.
+	 * The _submitted_ parameter allows you to over-ride the _enterPressed_ parameter in the [FocusLost](https://wiki.roblox.com/index.php?title=FocusLost) event.
 	 *
 	 * ## Notes
 	 *
@@ -8710,7 +8210,7 @@ end
 	 *
 	 * ```lua
 local TextBox = script.Parent
-TextBox.Focused:Connect(function()
+TextBox.Focused:connect(function()
 	wait(5)
 	TextBox:ReleaseFocus()
 end)
@@ -8833,73 +8333,13 @@ interface ViewportFrame extends GuiObject {
 	readonly ClassName: "ViewportFrame";
 	/** Changing this changes the color tint of all objects in the ViewportFrame. */
 	Ambient: Color3;
-	/** 
-	 * This property is a `Camera` instance that is used to render children objects. Defaults to *nil*.
-	 *
-	 * The `Camera` object will not replicate so the [ViewportFrame.CurrentCamera](https://developer.roblox.com/api-reference/property/ViewportFrame/CurrentCamera) won’t replicate either. If you save a Camera in the server, it will not appear in the client. When you set this property, [Camera.CFrame](https://developer.roblox.com/api-reference/property/Camera/CFrame) and [Camera.FieldOfView](https://developer.roblox.com/api-reference/property/Camera/FieldOfView) will be saved and replicate with `ViewportFrame` internally so the client can render ViewportFrame without a Camera object. If you want to change the client’s Camera, you have to create a new Camera using a `LocalScript` at runtime.
-	 *
-	 * ### See also
-	 *
-	 *   - [ViewportFrame-GUI](https://developer.roblox.com/search#stq=ViewportFrame%20GUI), an article exploring how the ViewportFrame GUI can render 3D objects inside its bounds
-	
-	 * This property is a `Camera` instance that is used to render children objects. Defaults to *nil*.
-	 *
-	 * The `Camera` object will not replicate so the [ViewportFrame.CurrentCamera](https://developer.roblox.com/api-reference/property/ViewportFrame/CurrentCamera) won’t replicate either. If you save a Camera in the server, it will not appear in the client. When you set this property, [Camera.CFrame](https://developer.roblox.com/api-reference/property/Camera/CFrame) and [Camera.FieldOfView](https://developer.roblox.com/api-reference/property/Camera/FieldOfView) will be saved and replicate with `ViewportFrame` internally so the client can render ViewportFrame without a Camera object. If you want to change the client’s Camera, you have to create a new Camera using a `LocalScript` at runtime.
-	 *
-	 * ### See also
-	 *
-	 *   - [ViewportFrame-GUI](https://developer.roblox.com/search#stq=ViewportFrame%20GUI), an article exploring how the ViewportFrame GUI can render 3D objects inside its bounds
-	 *
+	/** Current Camera of children objectsCurrent Camera of children objects *
 	 * Tags: NotReplicated
 	 */
 	CurrentCamera?: Camera;
-	/** 
-	 * This property determines how a rendered image will be colorized. It allows you to change the image color without directly modifying the rendered object.The default colorization value is [DataType.Color3|Color3.new(1,1,1) (white). When set to white no colorization occurs.
-	 *
-	 * It functions similarly to ](https://developer.roblox.com/search#stq=Color3|Color3.new(1,1,1)%20(white).%20When%20set%20to%20white%20no%20colorization%20occurs.%20%20It%20functions%20similarly%20to%20)ImageLabel/ImageColor3` and [Decal.Color3](https://developer.roblox.com/api-reference/property/Decal/Color3)except that it is applied to the rendered image.
-	 *
-	 * The image below demonstrates the same ViewportFrame with two different colorizations. The first image has the default (white) colorization and the second image has a `Color3.new(255, 255, 102)` (yellow) colorization.
-	 *
-	 * ![ViewportFrame with the default white colorization][1]
-	 *
-	 * ![ViewportFrame with a yellow colorization][2]
-	 *
-	 * ### See also
-	 *
-	 *   - [ViewportFrame-GUI](https://developer.roblox.com/search#stq=ViewportFrame%20GUI), an article exploring how the ViewportFrame GUI can render 3D objects inside its bounds
-	 *
-	 *   - [ViewportFrame.ImageTransparency](https://developer.roblox.com/api-reference/property/ViewportFrame/ImageTransparency), determines the transparency of the rendered image
-	 *
-	 *   - [ViewportFrame.CurrentCamera](https://developer.roblox.com/api-reference/property/ViewportFrame/CurrentCamera), the `Camera` that is used to render children objects
-	 *
-	 * [1]: https://developer.roblox.com/assets/5c5f7f26e2c86a6c4191b094/Screen_Shot_2019-02-09_at_8.03.48_PM.png
-	 *
-	 * [2]: https://developer.roblox.com/assets/5c5f7f3222bf52f7439e274e/Screen_Shot_2019-02-09_at_8.08.58_PM.png
-	 */
+	/** The rendered image of the ViewportFrame will be mutiplied by this color */
 	ImageColor3: Color3;
-	/** 
-	 * This property determines the transparency of the rendered image. It allows you to change the image transparency without directly modifying the rendered object. A value of 0 is completely opaque, and a value of 1 is completely transparent (invisible). The default transparency is 0.
-	 *
-	 * This property behaves similarly to [GuiObject.BackgroundTransparency](https://developer.roblox.com/api-reference/property/GuiObject/BackgroundTransparency) or [BasePart.Transparency](https://developer.roblox.com/api-reference/property/BasePart/Transparency) except that it is applied to the rendered image.
-	 *
-	 * The image below demonstrates the same ViewportFrame with two different transparency. The first image has a transparency of 0 and the second image has a transparency of 0.5.
-	 *
-	 * ![ViewportFrame with default 0 transparency][1]
-	 *
-	 * ![ViewportFrame with 0.5 transparencu][2]
-	 *
-	 * ### See also
-	 *
-	 *   - [ViewportFrame-GUI](https://developer.roblox.com/search#stq=ViewportFrame%20GUI), an article exploring how the ViewportFrame GUI can render 3D objects inside its bounds
-	 *
-	 *   - [ViewportFrame.ImageColor3](https://developer.roblox.com/api-reference/property/ViewportFrame/ImageColor3), determines how a rendered image will be colorized
-	 *
-	 *   - [ViewportFrame.CurrentCamera](https://developer.roblox.com/api-reference/property/ViewportFrame/CurrentCamera), the `Camera` that is used to render children objects
-	 *
-	 * [1]: https://developer.roblox.com/assets/5c5f7f26e2c86a6c4191b094/Screen_Shot_2019-02-09_at_8.03.48_PM.png
-	 *
-	 * [2]: https://developer.roblox.com/assets/5c5f835fc7b669b24175ec32/Screen_Shot_2019-02-09_at_8.23.38_PM.png
-	 */
+	/** A number value that specifies how transparent the rendered image of the ViewportFrame is */
 	ImageTransparency: number;
 	/** Directional light color for objects in the ViewportFrame. */
 	LightColor: Color3;
@@ -8968,9 +8408,9 @@ interface BillboardGui extends LayerCollector {
 	 */
 	LightInfluence: number;
 	/** 
-	 * The MaxDistance property of a `BillboardGui` sets how far away in studs that billboard can be from the camera and still be drawn. If the camera and billboard are moved further apart than the maximum distance, then the billboard will not be visible regardless of any other properties of the billboard or any GUI objects it contains. The default value of this property is infinity
+	 * The MaxDistance property of a `BillboardGui` sets how far away in studs that billboard can be from the camera and still be drawn. If the camera and billboard are moved further apart than the maximum distance, then the billboard will not be visible regardless of any other properties of the billboard or any GUI objects it contains. The default value of this property is infinity ([math.huge](https://wiki.roblox.com/index.php?title=Global_namespace/Mathematical_functions#math.huge)).
 	 *
-	 * If this value is set to less than or equal to 0 then the maximum distance will be treated as infinite and the billboard will always be drawable.
+	 * If this value is set to less than or equal to 0 then the maximum distance will be treated as infinite and the billboard will always be drawable.Sets the maximum distance a billboard can be from the camera and still be drawn.
 	 *
 	 * ## Example
 	 *
@@ -9049,120 +8489,19 @@ interface PluginGui extends LayerCollector {
 	 * The title that is displayed above the contents of the `PluginGui`. Defaults to empty string.
 	 */
 	Title: string;
-	/** 
-	 * This function binds a function to the [PluginGui’s](https://developer.roblox.com/api-reference/class/PluginGui) close button, overriding the default behavior.
-	 *
-	 * By default, when the user clicks the ‘x’ button in the top right corner of the `PluginGui` the [Enabled](https://developer.roblox.com/api-reference/property/LayerCollector/Enabled) property is set to *false*, closing the window. When a custom function is bound using BindToClose this behavior is overwritten, allowing you to check if the user really wants to close the window or give them an opportunity to save their work.
-	 *
-	 * As the default closing behavior is overwritten by this function, you’ll need to configure the `PluginGui` to close manually by setting [PluginGui.Enabled](https://developer.roblox.com/api-reference/property/LayerCollector/Enabled) to *false*. For example, in the below snippet users are required to click a confirm button to close the GUI:
-	 *
-	 * ```lua
-local closing = false
-pluginGui:BindToClose(function()
-```
-	 * 
-
-	 * lua
-	 *
-	 * -- make sure we haven't already made a button
-	 *
-	 * if closing then
-	 *
-	 *     return
-	 *
-	 * end
-	 *
-	 * closing = true
-	 *
-	 * ```lua
-
-```
-	 * 
-
-	 * lua
-	 *
-	 * -- create confirm button
-	 *
-	 * local confirmButton = Instance.new("TextButton")
-	 *
-	 * confirmButton.AnchorPoint = Vector2.new(0.5, 0.5)
-	 *
-	 * confirmButton.Size = UDim2.new(0.5, 0, 0.5, 0)
-	 *
-	 * confirmButton.Position = UDim2.new(0.5, 0, 0.5, 0)
-	 *
-	 * confirmButton.BackgroundColor3 = Color3.new(1, 0, 0)
-	 *
-	 * confirmButton.Text = "Close?"
-	 *
-	 * confirmButton.Parent = pluginGui
-	 *
-	 * ```lua
-
-```
-	 * 
-
-	 * lua
-	 *
-	 * -- listen for click
-	 *
-	 * confirmButton.Activated:Connect(function()
-	 *
-	 *     -- close the gui
-	 *
-	 *     pluginGui.Enabled = false
-	 *
-	 *     -- remove confirm button
-	 *
-	 *     confirmButton:Destroy()
-	 *
-	 * end)
-	 *
-	 * ```lua
-end)
-```
-	 * 
-
-	 * You can call BindToClose with no argument to ‘unbind’ and revert to the default behavior described above. For example:
-	 *
-	 * ```lua
-pluginGui:BindToClose()
-```
-	 * 
-
-	 * ## See also
-	 *
-	 *  - [Plugin.CreateDockWidgetPluginGui](https://developer.roblox.com/api-reference/function/Plugin/CreateDockWidgetPluginGui) to create a `PluginGui`
-	 *
-	 *  - [DataModel.BindToClose](https://developer.roblox.com/api-reference/function/DataModel/BindToClose), which can be used to bind a function to the game ending and should not be confused with this function
-	 * @param function The function to bind the close button to. If no function is specified then any previously specified function will be unbound 
-	 */
+	/** [NO DOCUMENTATION] */
 	BindToClose(callback?: Function): void;
 }
 
-/** 
- * **DockWidgetPluginGui** is a `PluginGui` that displays its contents inside a dockable Roblox Studio window. It is used to create widgets similar to the built-in **Animation Editor** and **Terrain Tools**.
- *
- * This GUI can be created using [Plugin:CreateDockWidgetPluginGui()](https://developer.roblox.com/api-reference/function/Plugin/CreateDockWidgetPluginGui).
- *
- * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
- */
 interface DockWidgetPluginGui extends PluginGui {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DockWidgetPluginGui";
-	/** 
-	 * Describes whether the previous state of this `DockWidgetPluginGui` was restored when it was created.
-	
-	 * Describes whether the previous state of this `DockWidgetPluginGui` was restored when it was created.
-	 *
+	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly HostWidgetWasRestored: boolean;
 }
 
-/** 
- 
- */
 interface QWidgetPluginGui extends PluginGui {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "QWidgetPluginGui";
@@ -9182,9 +8521,7 @@ interface ScreenGui extends LayerCollector {
 	 * ScreenGuis with a higher DisplayOrder will be drawn on top of ScreenGuis with a lower DisplayOrder. DisplayOrder can have any value greater than 0 and defaults to 0.Controls the order that multiple ScreenGuis are drawn.
 	 */
 	DisplayOrder: number;
-	/** 
-	 * IgnoreGuiInset is a boolean property of ScreenGuis that, when set to true, will force the [GUI Inset](https://developer.roblox.com/api-reference/function/GuiService/GetGuiInset) imposed by Roblox's CoreGuis to be ignored by this ScreenGui and its descendants. This means that an element with a UDim2 size of `{1,0},{1,0}` will fill up the entire screen, without a 36 pixel gap reserved for Roblox's top bar.
-	 */
+	/** [NO DOCUMENTATION] */
 	IgnoreGuiInset: boolean;
 }
 
@@ -9309,7 +8646,7 @@ interface PVAdornment extends GuiBase3d {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PVAdornment" | "HandleAdornment" | "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment";
 	/** 
-	 * The [PVInstance](https://developer.roblox.com/api-reference/class/PVInstance) the PVAdornment is attached to. An adornment will stay positioned and rotated relative to its adornee, even if the adornee moves.
+	 * The [PVInstance](https://wiki.roblox.com/index.php?title=PVInstance) the PVAdornment is attached to. An adornment will stay positioned and rotated relative to its adornee, even if the adornee moves.
 	 */
 	Adornee?: PVInstance;
 }
@@ -9475,7 +8812,7 @@ interface ParabolaAdornment extends PVAdornment {
 }
 
 /** 
- * An object which is used to put a 3D box around the part it's adorned to. For more information on how to use SelectionBoxes go [here](https://developer.roblox.com/articles/Selection-Boxes).
+ * An object which is used to put a 3D box around the part it's adorned to. For more information on how to use SelectionBoxes go [here](https://wiki.roblox.com/index.php?title=How_to_use_a_SelectionBox).
  */
 interface SelectionBox extends PVAdornment {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -9511,7 +8848,7 @@ interface SelectionSphere extends PVAdornment {
 }
 
 /** 
- * An abstract class for GUI elements that are adorned to (displayed as attached to) objects deriving from `BasePart`.
+ * An [abstract class](https://wiki.roblox.com/index.php?title=Abstract_class) for GUI elements that are adorned to (drawn attached to) objects deriving from `BasePart`.
  */
 interface PartAdornment extends GuiBase3d {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -9676,7 +9013,7 @@ interface GuiService extends Instance {
 	 */
 	readonly MenuIsOpen: boolean;
 	/** 
-	 * Sets the [GuiObject](https://developer.roblox.com/api-reference/class/GuiObject) currently being focused on by the GUI Navigator (used for Gamepads). This may reset to nil if the object is off-screen.
+	 * Sets the [GuiObject](https://wiki.roblox.com/index.php?title=GuiObject) currently being focused on by the GUI Navigator (used for Gamepads). This may reset to nil if the object is off-screen.
 	 */
 	SelectedObject?: GuiObject;
 	/** 
@@ -9695,10 +9032,7 @@ interface GuiService extends Instance {
 	CloseInspectMenu(): void;
 	GetEmotesMenuOpen(): boolean;
 	/** 
-	 * Returns two [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2) values representing the inset of user GUIs in pixels, from the top left corner of the screen and the bottom right corner of the screen respectively.
-	 *
-	 * The inset values supplied by this function only take effect on [ScreenGuis](https://developer.roblox.com/api-reference/class/ScreenGui) that have their [IgnoreGuiInset](https://developer.roblox.com/api-reference/property/ScreenGui/IgnoreGuiInset) property set to false.
-	 * @returns A tuple of two Vector2 values describing the current specified Gui Inset.
+	 * Returns two [Vector2](https://wiki.roblox.com/index.php?title=Vector2) values representing the offset of user GUIs in pixels from the top left corner of the screen and the bottom right corner of the screen respectively.
 	 */
 	GetGuiInset(): LuaTuple<[Vector2, Vector2]>;
 	GetInspectMenuEnabled(): boolean;
@@ -9727,7 +9061,9 @@ interface GuiService extends Instance {
 }
 
 /** 
- * An internal service, whose functionality is not accessible to developers.
+ * An internal service, whose purpose is a mystery.
+ *
+ * It might be best to assume it has to do with the [GenerateGUID](https://wiki.roblox.com/index.php?title=GenerateGUID) method.
  */
 interface GuidRegistryService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -9741,9 +9077,9 @@ interface HapticService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "HapticService";
 	/** 
-	 * Returns the current vibration value set to the specified [UserInputType](https://developer.roblox.com/api-reference/property/InputObject/UserInputType) and [VibrationMotor](https://developer.roblox.com/api-reference/enum/VibrationMotor) .
+	 * Returns the current vibration value set to the specified [UserInputType](https://wiki.roblox.com/index.php?title=UserInputType) and [VibrationMotor](https://wiki.roblox.com/index.php?title=VibrationMotor) .
 	 *
-	 * This will not return anything if [SetMotor](https://developer.roblox.com/api-reference/function/HapticService/SetMotor) has not been called prior.
+	 * This will not return anything if [SetMotor](https://wiki.roblox.com/index.php?title=SetMotor) has not been called prior.
 	 */
 	GetMotor(inputType: CastsToEnum<Enum.UserInputType>, vibrationMotor: CastsToEnum<Enum.VibrationMotor>): unknown;
 	/** 
@@ -9755,7 +9091,7 @@ interface HapticService extends Instance {
 	 */
 	IsVibrationSupported(inputType: CastsToEnum<Enum.UserInputType>): boolean;
 	/** 
-	 * Sets the vibration intensity of the specified [UserInputType](https://developer.roblox.com/api-reference/property/InputObject/UserInputType) and [VibrationMotor](https://developer.roblox.com/api-reference/enum/VibrationMotor).
+	 * Sets the vibration intensity of the specified [UserInputType](https://wiki.roblox.com/index.php?title=UserInputType) and [VibrationMotor](https://wiki.roblox.com/index.php?title=VibrationMotor).
 	 */
 	SetMotor(inputType: CastsToEnum<Enum.UserInputType>, vibrationMotor: CastsToEnum<Enum.VibrationMotor>, vibrationValues: Array<any>): void;
 }
@@ -9787,45 +9123,17 @@ interface HttpRequest extends Instance {
 }
 
 /** 
- * This service allows HTTP requests to be sent from game servers. This enables users to create integration with a wide range of third party services such as analytics and storage. One exciting prospect for this service is that if you run and manage your own website, and communicate with it from Roblox, it opens the possibility of remote server management and real time communication with the server, through your site.
+ * `HttpService` allows a game server to send HTTP GET and POST requests to remote web URLs, with some limitations. This allows integration with a wide range of third-party services for data storage and analytics. In addition, it also provides some useful functions for working with web APIs, such as URL encoding and JSON encoding/decoding.
  *
- * If the limit of 500 http [GET](https://developer.roblox.com/api-reference/function/HttpService/GetAsync) / [POST](https://developer.roblox.com/api-reference/function/HttpService/PostAsync) requests per minute is exceeded, the Service will stall entirely for approximately 30 seconds.
+ * Before using HttpService, you must enable HTTP Requests in your Game Settings (On the ribbon bar, find this setting under Home > Game Settings). Calls to `GetAsync`/`PostAsync` will fail if requests aren't enabled.
  *
- * ## Enabling HTTP requests
+ * There are a wide variety of features one can add to their game using web requests. For example, you could create a cross-server marketplace for players to sell items to players in other game servers, or create a real-time stock market. If DataStores don't meet your needs for data storage or leaderboard creation, you could create your own services by sending relevant data to your own website. If you want to gain a deeper insight into player behavior, send event data to a 3rd party analytics service, e,.g. Google Analytics, GameAnalytics, Mixpanel, etc.
  *
- * HttpService starts off as disabled by default.
+ * There is a limit of 500 requests per minute. If this is exceeded, the entire service will stall for approximately 30 seconds. For this reason, you should conserve your requests and make as few as possible. For instance, when using HttpService for analytics purposes, consider bundling multiple events into one request if the target service allows for this.
  *
- * To [enable](https://developer.roblox.com/api-reference/property/HttpService/HttpEnabled) HTTP requests, the HttpService must be enabled through Studio's Game Settings by opening the game's settings via the **Game Settings** button on the *Home* tab of the game's studio window (see image below):
+ * In addition to the request limit, you cannot send HttpRequests to any Roblox website, such as www.roblox.com or api.roblox.com. However, it is possible to set up a proxy for requests to Roblox web APIs. Requests made using HttpService have the User-Agent header set to "RobloxStudio/WinInet".
  *
- * ![Navigate to the Game Settings button][1]
- *
- * Within the Game Settings window, navigate to the **Security** tab and select the *On* option under **Allow HTTP Requests** (see image below).
- *
- * ![Allow HTTP Requests][2]
- *
- * ## Usage ideas
- *
- *   * Cross server marketplace
- *
- *   * Real time stock market
- *
- *   * Cross server leaderboard
- *
- * ## Restrictions
- *
- *   * Limit of 500 requests a minute (Per server)
- *
- *   * This service is not allowed to send requests to any of the Roblox websites such as www.roblox.com or api.roblox.com
- *
- * ## See also
- *
- * See [here][3] for a detailed guide on sending HTTP requests.Sending HTTP requests.
- *
- * [1]: https://developer.roblox.com/assets/5b7cc11cfcd8df450b22da14/HttpRequestsSetting.png
- *
- * [2]: https://developer.roblox.com/assets/5b7cc0dfacedd45c0bf7b421/GameSettingsButton.png
- *
- * [3]: http://robloxdev.com/articles/Sending-HTTP-requests
+ * HttpService also allows for local requests (i.e. to localhost). This allows Studio plugins to communicate with other software on the user's computer.
  */
 interface HttpService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -9837,27 +9145,7 @@ interface HttpService extends Instance {
 	 */
 	GenerateGUID(wrapInCurlyBraces?: boolean): string;
 	/** 
-	 * The JSONDecode function transforms a [JSON object or array][1] into a Lua [table][2] with the following characteristics:
-	 *
-	 *  - Keys of the table are strings or numbers but not both. If a JSON object contains both, string keys are ignored.
-	 *
-	 *  - An empty JSON object generates an empty Lua table `{}`.
-	 *
-	 *  - If the *input* string is not a valid JSON object, this function will throw an error.
-	 *
-	 * To encode a Lua table into a JSON object, you can use [HttpService's](https://developer.roblox.com/api-reference/class/HttpService) [HttpService.JSONEncode](https://developer.roblox.com/api-reference/function/HttpService/JSONEncode) function.
-	 *
-	 * Many web endpoints use JSON, as it is commonly used on the Internet. Visit [JSON.org][3] to become more familiar with the format.
-	 *
-	 * This method can be used regardless of whether HTTP Requests are [enabled](https://developer.roblox.com/api-reference/property/HttpService/HttpEnabled).
-	 *
-	 * [1]: http://robloxdev.com/articles/JSON-Storage-Format
-	 *
-	 * [2]: http://robloxdev.com/articles/Table
-	 *
-	 * [3]: http://www.json.org/
-	 * @param input The JSON object being decoded
-	 * @returns The decoded JSON object as a Lua table
+	 * Decodes a JSON string into a Lua table. Does not require [HttpService.HttpEnabled](https://developer.roblox.com/api-reference/property/HttpService/HttpEnabled) to be true.
 	 */
 	JSONDecode(input: string): unknown;
 	/** 
@@ -9904,48 +9192,6 @@ interface HttpService extends Instance {
 		compress?: boolean,
 		headers?: HttpHeaders,
 	): string;
-	/** 
-	 * The **RequestAsync()** function sends an HTTP request using a dictionary to specify the request data, such as the target URL, method, headers and request body data. It returns a dictionary that describes the response data received.
-	 *
-	 * ## Request Dictionary Fields
-	 *
-	 * | Name | Type | Required | Description |
-	 * | --- | --- | --- | --- |
-	 * | **Url** | string | yes | The target URL for this request. Must use `http` or `https` protocols. |
-	 * | **Method** | string | no | The HTTP method being used by this request, most often GET or POST. |
-	 * | **Headers** | dictionary | no | A dictionary of headers to be used with this request. Most HTTP headers are accepted here, but not all. |
-	 * | **Body** | string | no | The request body. Can be any string, including binary data. Must be excluded when using the GET or HEAD HTTP methods. It might be necessary to specify the `Content-Type` header when sending JSON or other formats. |
-	 *
-	 * ### HTTP Headers
-	 *
-	 * In the request dictionary, you can specify custom HTTP headers to use in the request. However, some headers cannot be specified. For example, `Content-Length` is determined from the request body. `User-Agent` and `Roblox-Id` are locked by Roblox. Other headers like `Accept` or `Cache-Control` use default values but can be overridden. More commonly, some REST APIs may require API keys or other service authentication to be specified in request headers.
-	 *
-	 * This method does not detect the format of body content. Many web servers require the `Content-Type` header be set appropriately when sending certain formats. Other methods of `HttpService` use the [HttpContentType](https://developer.roblox.com/search#stq=HttpContentType) enum; for this method set the `Content-Type` header appropriately: [text.plain](https://developer.roblox.com/search#stq=plain), [text.xml](https://developer.roblox.com/search#stq=xml), [application.xml](https://developer.roblox.com/search#stq=xml), [application.json](https://developer.roblox.com/search#stq=json) or [application.x-www-form-urlencoded](https://developer.roblox.com/search#stq=x-www-form-urlencoded) are replacement `Content-Type` header values for the respective enum values.
-	 *
-	 * ## Response Dictionary Fields
-	 *
-	 * The function returns a dictionary containing the following fields:
-	 *
-	 * | Name | Type | Description |
-	 * | --- | --- | --- |
-	 * | **Success** | boolean | The success status of the request. This is true if and only if the **StatusCode** lies within the range [200, 299]. |
-	 * | **StatusCode** | integer | The HTTP response code identifying the status of the response. |
-	 * | **StatusMessage** | string | The status message that was sent back. |
-	 * | **Headers** | dictionary | A dictionary of headers that were set in this response. |
-	 * | **Body** |  | The request body (content) received in the response. |
-	 *
-	 * ## Error Cases
-	 *
-	 * This method raises an error if the response times out or if the target server rejects the request. If a web service goes down for some reason, it can cause scripts that use this method to stop functioning altogether. It is often a good idea to wrap calls to this method in `pcall` and gracefully handle failure cases if the required information isn't available.
-	 *
-	 * ## Limitations
-	 *
-	 * The current limitation for sending and receiving HTTP requests is 500 requests per minute. Requests over this threshold will fail. Additionally, Roblox domains are blacklisted. This means that HTTP requests cannot be sent to any Roblox owned site, such as [www.roblox.com][3].
-	 *
-	 * [3]: https://www.roblox.com
-	 * @param requestOptions A dictionary containing information to be requested from the server specified.
-	 * @returns A dictionary containing response information from the server specified.
-	 */
 	/** @rbxts server */
 	RequestAsync(requestOptions: RequestAsyncRequest): RequestAsyncResponse;
 }
@@ -10094,9 +9340,9 @@ interface Humanoid extends Instance {
 	 *
 	 * * The NPC on the right has its HealthDisplayDistance and NameDisplayDistance set to 20. Both name and health are visible, as the NPC is only 15 studs away.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blta3653f27a817f4f1/HumanoidViewerDistance.png
+	 * [1]: https://developer.roblox.com/assets/5a98d152b1425ac06f6f91a7/HumanoidViewerDistance.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt0484c3c0f5a98d64/HumanoidSubjectDistance.png
+	 * [2]: https://developer.roblox.com/assets/5a98d11654d8bf946f48d338/HumanoidSubjectDistance.png
 	 */
 	DisplayDistanceType: Enum.HumanoidDisplayDistanceType;
 	/** 
@@ -10118,7 +9364,7 @@ interface Humanoid extends Instance {
 	 *
 	 *   * You cannot test if the Humanoid is swimming with this property. You should instead use the Humanoid's GetState function.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt911c31b19922748b/FloorMaterial.gif
+	 * [1]: https://developer.roblox.com/assets/5a9d58ec20a7ba3e77cef50c/FloorMaterial.gif
 	 */
 	readonly FloorMaterial: Enum.Material;
 	/** 
@@ -10162,15 +9408,15 @@ interface Humanoid extends Instance {
 	 *
 	 * If there is a joint connecting the Head part to the character, the Head **must** remain connected to the character, such that `Head:GetRootPart() == Humanoid.RootPart`. You can think of the joint connection as the character's neck. If you don't have a neck between your head and torso, you are very dead.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt1c35a737d3dcdb25/Half-Health.png
+	 * [1]: https://developer.roblox.com/assets/5a9da52be013266b7733e1c6/Half-Health.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt25d44cecfd3e9e09/HealthDisplayType.gif
+	 * [2]: https://developer.roblox.com/assets/5a9efa0ee013266b7733e627/HealthDisplayType.gif
 	 *
-	 * [3]: https://developer.roblox.com/assets/blt081a90d0f606c745/CoreGuiHealth.png
+	 * [3]: https://developer.roblox.com/assets/5a9da9c5e98228956fe51344/CoreGuiHealth.png
 	 *
-	 * [4]: https://developer.roblox.com/assets/bltfa7dc6cd34b05fae/ExplosionImmunity.png
+	 * [4]: https://developer.roblox.com/assets/5a9dc4fa54d8bf946f48da6a/ExplosionImmunity.png
 	 *
-	 * [5]: https://developer.roblox.com/assets/blt9978f529dfcc80e6/Ooof.png
+	 * [5]: https://developer.roblox.com/assets/5a9da4dde98228956fe5133e/Ooof.png
 	 */
 	Health: number;
 	/** 
@@ -10212,29 +9458,13 @@ interface Humanoid extends Instance {
 	 *
 	 * This property functions independently of the humanoid's HealthDisplayDistance property, which is responsible for making the health bar fade out at certain distances. If the HealthDisplayType is set to AlwaysOn, it will still fade out depending the how the DisplayDistanceType is configured.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt25d44cecfd3e9e09/HealthDisplayType.gif
+	 * [1]: https://developer.roblox.com/assets/5a9efa0ee013266b7733e627/HealthDisplayType.gif
 	 */
 	HealthDisplayType: Enum.HumanoidHealthDisplayType;
 	/** 
-	 * HipHeight determines the distance (in studs) off the ground the [Humanoid.RootPart](https://developer.roblox.com/api-reference/property/Humanoid/RootPart) should be when the Humanoid is standing. The [RigType](https://developer.roblox.com/api-reference/property/Humanoid/RigType) influences the way this property behaves:
+	 * Sets how many studs off the ground the Humanoid's RootPart should be when standing on a floor.
 	 *
-	 * ## HipHeight for R15 Humanoids
-	 *
-	 * With R15 rigs, a suitable HipHeight is preset to ensure the height of the [Humanoid.RootPart](https://developer.roblox.com/api-reference/property/Humanoid/RootPart) is correct. The height of the legs is not used. The overall height of the Humanoid can be described in the following formula:
-	 *
-	 * ```lua
-Height = (0.5 * RootPart.Size.Y) + HipHeight
-```
-	 * 
-
-	 * ## HipHeight for R6 Humanoids
-	 *
-	 * For R6 rigs, the [RootPart's](https://developer.roblox.com/api-reference/property/Humanoid/RootPart) height is determined by the height of the character's legs and [Humanoid.RootPart](https://developer.roblox.com/api-reference/property/Humanoid/RootPart). HipHeight instead describes a relative offset. The overall height of the Humanoid can be described in the following formula:
-	 *
-	 * ```lua
-Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
-```
-	 *
+	 * This property is intended to be used with R15 characters, as R6 characters compute their hip height automatically based on the height of their legs.
 	 */
 	HipHeight: number;
 	/** 
@@ -10244,7 +9474,7 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 * Humanoids are able to jump roughly 7.5 studs high by default, depending on both the Workspace's Gravity, and the JumpPower of the humanoid itself.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt61a464c982798678/Jumping.gif
+	 * [1]: https://developer.roblox.com/assets/5aa69f8d159ece6a77287374/Jumping.gif
 	 */
 	Jump: boolean;
 	JumpHeight: number;
@@ -10265,7 +9495,7 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 * ![HealthDisplayType behaviors][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt25d44cecfd3e9e09/HealthDisplayType.gif
+	 * [1]: https://developer.roblox.com/assets/5a9efa0ee013266b7733e627/HealthDisplayType.gif
 	 */
 	MaxHealth: number;
 	/** 
@@ -10277,7 +9507,7 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 * The value of this property is constrained to values between 0° and 89°. It defaults to 89°, so humanoids can climb pretty much any slope they want by default.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltd54b9a9a3f7ed230/MaxSlopeAngle.gif
+	 * [1]: https://developer.roblox.com/assets/5aa6e170b1425ac06f6faada/MaxSlopeAngle.gif
 	 */
 	MaxSlopeAngle: number;
 	/** 
@@ -10285,7 +9515,7 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 * MoveDirection is a read-only property that describes the direction a humanoid is walking in, as a unit vector along the X/Z axis. The direction is described in world space.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt2dece3266cda1b29/MoveDirection.gif
+	 * [1]: https://developer.roblox.com/assets/5aa6fabbe013266b7733f479/MoveDirection.gif
 	 */
 	readonly MoveDirection: Vector3;
 	/** 
@@ -10323,9 +9553,11 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 */
 	NameOcclusion: Enum.NameOcclusion;
 	/** 
-	 * PlatformStand describes whether the `Humanoid` is currently in the *PlatformStanding* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType). When true, the Humanoid is in a state where it is free-falling and cannot move. This state behaves similar to sitting, except that jumping does not free the humanoid from the state.
+	 * When set to true on a humanoid, it will be put into a state where it cannot move.
 	 *
-	 * The now-deprecated `SkateboardPlatform` puts the Humanoid into this state, much like how a `Seat` causes a sitting state.
+	 * This state is similar to a humanoid siting, except they cannot jump to free themselves.
+	 *
+	 * A humanoid is normally only put into this state when they are on a SkateboardPlatform, which is a deprecated type of part.
 	 */
 	PlatformStand: boolean;
 	/** 
@@ -10337,7 +9569,7 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 * R15 rigs also have more joints than R6 rigs, making them much more versatile to being animated.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt2fb53ef69c9e060f/R6vsR15.png
+	 * [1]: https://developer.roblox.com/assets/5aa81176159ece6a77287890/R6vsR15.png
 	 */
 	RigType: Enum.HumanoidRigType;
 	/** 
@@ -10345,7 +9577,7 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 * A reference to the Humanoid's HumanoidRootPart, which is the root driving part of the Humanoid, that controls a humanoid's movement through the game world. This part is normally invisible.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt477f5d6ada5478e2/HumanoidRootPart.gif
+	 * [1]: https://developer.roblox.com/assets/5aaad8dd337959630baa461e/HumanoidRootPart.gif
 	 */
 	readonly RootPart?: BasePart;
 	/** 
@@ -10353,29 +9585,25 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 * SeatPart is a reference to the seat that a humanoid is currently sitting in, if any. The value of this property can be either a Seat, or a VehicleSeat. It will be nil if the Humanoid is not currently sitting in a seat.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt8e6f26110beea0c1/SeatPart.png
+	 * [1]: https://developer.roblox.com/assets/5aaada2ae9d017730bcd8b2f/SeatPart.png
 	 */
 	readonly SeatPart?: BasePart;
 	/** 
 	 * ![A humanoid sitting on a Seat.][1]
 	 *
-	 * The Sit property is a boolean that indicates whether the `Humanoid` is currently sitting. [Humanoids](https://developer.roblox.com/api-reference/class/Humanoid) can be forced into a sitting state by setting this property's value to true. If the `Humanoid` isn't attached to a seat while in its sitting state, it will trip over with no collision in its legs. A `Humanoid` can escape from the sitting state by jumping.
-	 *
-	 * ## Notes
-	 *
-	 *  - The `Seat` or `VehicleSeat` the `Humanoid` is sitting on can be obtained using the [Humanoid.SeatPart](https://developer.roblox.com/api-reference/property/Humanoid/SeatPart) property
-	 *
-	 *  - It is possible to detect when a Humanoid sits by connecting to the [Humanoid.Seated](https://developer.roblox.com/api-reference/event/Humanoid/Seated) event.
+	 * The Sit property is a boolean indicates whether or not a humanoid is currently sitting. Humanoids can be forced into a sitting state by setting this property's value to true. If the humanoid isn't attached to a seat while in its sitting state, it will trip over with no collision in its legs. A humanoid can escape from the sitting state by jumping.
 	 *
 	 * [1]:
 	 *
-	 * /assets/blt8e6f26110beea0c1/SeatPart.png
+	 * /assets/5aaada2ae9d017730bcd8b2f/SeatPart.png
 	 */
 	Sit: boolean;
 	/** 
-	 * **TargetPoint** describes a 3D position in space where the `Player` controlling this `Humanoid` last clicked with a `Tool` equipped.
+	 * TargetPoint describes a 3D position in space where the Player controlling this Humanoid last clicked with a Tool equipped.
 	 *
-	 * This property is primarily used by classic tools to determine what a humanoid is targeting when they activate a tool. If you give an NPC a classic rocket launcher, set their **TargetPoint**, and then call the tool's [Tool.Activate](https://developer.roblox.com/api-reference/function/Tool/Activate) function, you can make the NPC fire a rocket at the target point.
+	 * This property is primarily used by classic tools to determine what a humanoid is targeting when they activate a tool. If you give an NPC a classic rocket launcher, set their TargetPoint, and then call the tool's Activate function, you can make the NPC fire a rocket at the TargetPoint.
+	 *
+	 * One important thing to note is that this property currently does not work on the server when Workspace.FilteringEnabled is set to true.
 	 */
 	TargetPoint: Vector3;
 	UseJumpPower: boolean;
@@ -10412,7 +9640,7 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 *  * If you don't want this to happen, you should repeatedly call MoveTo so that the timeout will keep resetting.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltc76671f1665d7da0/WalkToPart.gif
+	 * [1]: https://developer.roblox.com/assets/5aade17a781602830bdf6662/WalkToPart.gif
 	 */
 	WalkToPart?: BasePart;
 	/** 
@@ -10440,32 +9668,25 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 *
 	 *  * If you don't want this to happen, you should repeatedly call MoveTo so that the timeout will keep resetting.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltc76671f1665d7da0/WalkToPart.gif
+	 * [1]: https://developer.roblox.com/assets/5aade17a781602830bdf6662/WalkToPart.gif
 	 */
 	WalkToPoint: Vector3;
 	/** 
 	 * ![A humanoid with an accessory that was attached using AddAccessory][1]
 	 *
-	 * AddAccessory is a function that attaches the specified `Accessory` to the `Humanoid`.
-	 *
-	 * ## How are Accessories attached to Humanoids?
+	 * AddAccessory is a function that attaches the specified `Accessory` to a humanoid.
 	 *
 	 * ![Attachments that share the same name, and thus are used to connect the accessory.][2]
 	 *
-	 * The `Accessory` is parented to the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) parent and then attached.
-	 *
-	 * An `Accessory` is attached to the character by searching for an `Attachment` in the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) parent that shares the same name as an `Attachment` in the accessory's *Handle* `Part`. If one is found, the *Handle* part will be connected to the parent of the `Attachment` using a `Weld`. This weld will be configured so the [Attachments](https://developer.roblox.com/api-reference/class/Attachment) occupy the same space.
-	 *
-	 * If the required `Attachment` can not be found, then the `Accessory` will remain parented to the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) parent but it will be unattached.
+	 * An accessory is attached to the character by searching for an attachment in the character that shares the same name as an attachment in the accessory's *Handle* part. If one is found, it will fuse the attachments together so that they occupy the same space, while connecting the parts together.
 	 *
 	 * [1]: https://developer.roblox.com/assets/5aae3895c7db666d0b74b15a/AddAccessory.png
 	 *
 	 * [2]: https://developer.roblox.com/assets/5aae3cca23d67a790b463318/AccessoryAttachment.png
-	 * @param accessory The `Accessory` to be attached
 	 */
 	AddAccessory(accessory: Accessory): void;
 	/** 
-	 * BuildRigFromAttachments assembles a tree of `Motor6D` joints for a `Humanoid`. Motor6D joints are required for the playback of [Animations](https://developer.roblox.com/api-reference/class/Animation)
+	 * BuildRigFromAttachments assembles a tree of `Motor6D` joints for a humanoid. Motor6D joints are required for the playback of `Animation`-based sequences.
 	 *
 	 * Starting from the humanoid's [Humanoid.RootPart](https://developer.roblox.com/api-reference/property/Humanoid/RootPart), the function collects all `Attachment`s parented in the current part, whose name ends with "RigAttachment". It then searches for a matching attachment in the character that shares the same name as the attachment. Using those two attachments, a Motor6D joint is generated based on the parts associated with the two attachments, and the [Attachment.CFrame](https://developer.roblox.com/api-reference/property/Attachment/CFrame)s of the attachments.
 	 *
@@ -10473,241 +9694,68 @@ Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
 	 */
 	BuildRigFromAttachments(): void;
 	/** 
-	 * This function causes the `Humanoid` to enter the given [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType).
-	 *
-	 * The humanoid state describes the activity the `Humanoid` is currently doing.
-	 *
-	 * You should check the page for [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType) for more information on what particular states do as some may have misleading names. For example, running describes a state where the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) legs are on the ground, including when stationary
-	 *
-	 * Due to the default behavior of the `Humanoid` some states will automatically be changed when set to. Below are some examples of this:
-	 *
-	 *  - Setting the state to *'Swimming*' when the `Humanoid` is not in the water will lead to it being automatically set to *'GettingUp'*
-	 *
-	 *  - As it is unused, setting the state to *'PlatformStanding'* will lead to it being automatically set to *'Running'*
-	 *
-	 * ## See also
-	 *
-	 *  - To enable or disable a paticular state use [Humanoid.SetStateEnabled](https://developer.roblox.com/api-reference/function/Humanoid/SetStateEnabled)
-	 *
-	 *  - To get the current state use [Humanoid.GetState](https://developer.roblox.com/api-reference/function/Humanoid/GetState)
-	 * @param state The `Enum/HumanoidStateType` that the `Humanoid` is to perform
+	 * Sets the current activity that the Humanoid is carrying out.
 	 */
 	ChangeState(state?: CastsToEnum<Enum.HumanoidStateType>): void;
 	/** 
-	 * This function makes the `Humanoid` equip the given `Tool`.
+	 * Makes a humanoid forcefully equip the specified `Tool`.
 	 *
-	 * The below example would cause *Player1* to equip a tool in `Workspace` named *'Tool'*.
-	 *
-	 * ```lua
-Workspace.Player1.Humanoid:EquipTool(Workspace.Tool)
-```
-	 * 
-
-	 * When this function is called, the humanoid will automatically unequip any [Tools](https://developer.roblox.com/api-reference/class/Tool) that it currently has equipped
-	 *
-	 * Although they will be equipped, [Tools](https://developer.roblox.com/api-reference/class/Tool) for which [Tool.RequiresHandle](https://developer.roblox.com/api-reference/property/Tool/RequiresHandle) is *true* will not function if they have no handle, regardless if this function is used to equip them or not
-	 *
-	 * ## See also
-	 *
-	 *  - To unequip tools, use [Humanoid.UnequipTools](https://developer.roblox.com/api-reference/function/Humanoid/UnequipTools)
-	 * @param tool The `Tool` to equip
+	 * When this function is called, the humanoid will automatically unequip any tools that it currently has equipped.
 	 */
 	EquipTool(tool: Tool | Flag): void;
 	/** 
-	 * This function returns an array of [Accessories](https://developer.roblox.com/api-reference/class/Accessory) that the `Humanoid` is currently wearing.
+	 * Returns a table of accessories that a humanoid is currently wearing.
 	 *
-	 * All `Accessory` objects parented to the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) parent will be included, regardless of if they are attached to the `Humanoid` or not. If the humanoid is not wearing any accessories, the array will be empty.
+	 * If the humanoid is not wearing any accessories, the array will be empty.
+	 */
+	GetAccessories(): Array<Accessory>;
+	/** 
+	 * This blocking function returns back a copy of the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) cached `HumanoidDescription`, which describes its current look.
 	 *
-	 * If the `Humanoid` has no [Accessories](https://developer.roblox.com/api-reference/class/Accessory) an empty array will be returned
+	 * This can be used to quickly determine a player's look and to assign their look to other players using the [Humanoid.ApplyDescription](https://developer.roblox.com/api-reference/function/Humanoid/ApplyDescription) function.
 	 *
 	 * ## See also
 	 *
-	 *  - Use [Humanoid.AddAccessory](https://developer.roblox.com/api-reference/function/Humanoid/AddAccessory) to attach an `Accessory` to a `Humanoid`
-	 * @returns An array of `Accessory|Accessories` that are parented to the `Humanoid|Humanoid's` parent.
+	 *  - [Players.GetHumanoidDescriptionFromUserId](https://developer.roblox.com/api-reference/function/Players/GetHumanoidDescriptionFromUserId), gives back a HumanoidDescription which describes the Avatar for the passed in user
+	 *
+	 *  - [Players.GetHumanoidDescriptionFromOutfitId](https://developer.roblox.com/api-reference/function/Players/GetHumanoidDescriptionFromOutfitId), gives back a HumanoidDescription whose parameters are initialized to match that of the passed in server-side outfit asset
+	 *
+	 *  - [Player.LoadCharacterWithHumanoidDescription](https://developer.roblox.com/api-reference/function/Player/LoadCharacterWithHumanoidDescription), spawns a player with the look from the HumanoidDescription Instance passed in
+	 * @returns An instantiated and initialized `HumanoidDescription` Instance, which is a copy of the one currently cached in the `Humanoid` which represents its current look
 	 */
-	GetAccessories(): Array<Accessory>;
-
 	GetAppliedDescription(): HumanoidDescription;
 	/** Returns a Enum.BodyPartR15 given a body part in the Humanoid's Character. */
 	GetBodyPartR15(part: BasePart): Enum.BodyPartR15;
 	/** 
-	 * This function returns the [Enum.Limb](https://developer.roblox.com/search#stq=Limb) enum that is associated with the given `Part`
-	 *
-	 * This function works for both R15 and R6 rigs, for example:
-	 *
-	 * ```lua
--- For R15
-print(humanoid:GetLimb(character.LeftUpperLeg)) -- Enum.Limb.LeftLeg
-print(humanoid:GetLimb(character.LeftLowerLeg)) -- Enum.Limb.LeftLeg
-print(humanoid:GetLimb(character.LeftFoot)) -- Enum.Limb.LeftLeg
-
--- For R6
-print(humanoid:GetLimb(character:FindFirstChild("Left Leg"))) -- Enum.Limb.LeftLeg
-```
-	 * 
-
-	 * GetLimb will throw an error if the [Part's](https://developer.roblox.com/api-reference/class/Part) parent is not set to the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) parent.
-	 * @param part The `Part` for which the `Enum/Limb` enum is to be retrieved.
-	 * @returns The `Enum/Limb` the part corresponds with.
+	 * Returns the [Enum.Limb](https://developer.roblox.com/search#stq=Limb) that is associated with the given part.
 	 */
 	GetLimb(part: BasePart): Enum.Limb;
 	/** 
-	 * This function returns an array of all [AnimationTracks](https://developer.roblox.com/api-reference/class/AnimationTrack) that are currently being played on the `Humanoid`.
-	 *
-	 * A typical use for this function is stopping currently playing tracks using [AnimationTrack.Stop](https://developer.roblox.com/api-reference/function/AnimationTrack/Stop).
-	 *
-	 * Note this function will not return [AnimationTracks](https://developer.roblox.com/api-reference/class/AnimationTrack) that have loaded but are not playing. If the developer wishes to track these they will need to index them manually. See below for one example of how this could be achieved:
-	 *
-	 * ```lua
-local animationTracks = {}
-local track = humanoid:LoadTrack(animation)
-table.insert(animationTracks, track)
-```
-	 *
-	 * @returns An array of currently playing `AnimationTrack|AnimationTracks`
+	 * Returns an array of the [AnimationTracks](https://wiki.roblox.com/index.php?title=AnimationTrack) currently being played on the Humanoid.
 	 */
 	GetPlayingAnimationTracks(): Array<AnimationTrack>;
 	/** 
-	 * This function returns the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) current [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType).
-	 *
-	 * The humanoid state describes the activity the `Humanoid` is currently doing, such as jumping or freefalling.
-	 *
-	 * ## See also
-	 *
-	 *  - To change the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) state use [Humanoid.ChangeState](https://developer.roblox.com/api-reference/function/Humanoid/ChangeState)
-	 *
-	 *  - To enable or disable a particular state use [Humanoid.SetStateEnabled](https://developer.roblox.com/api-reference/function/Humanoid/SetStateEnabled)
-	 *
-	 *  - For more information on the different states available, see [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType)
-	 * @returns The current `Enum/HumanoidStateType` of the `Humanoid`
+	 * Returns the Enum of the current activity being carried out by Humanoid.
 	 */
 	GetState(): Enum.HumanoidStateType;
 	/** 
-	 * The GetStateEnabled function returns whether a [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType) is enabled for the `Humanoid`.
-	 *
-	 * The humanoid state describes the activity the humanoid is currently doing.
-	 *
-	 * When a particular [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType) is disabled, the humanoid can never enter that state. This is true regardless if the attempt to change state is made using [Humanoid.ChangeState](https://developer.roblox.com/api-reference/function/Humanoid/ChangeState) or Roblox internal humanoid code.
-	 *
-	 * ## See also
-	 *
-	 *  - For an event that fires when a humanoid state is enabled or disabled see [Humanoid.StateEnabledChanged](https://developer.roblox.com/api-reference/event/Humanoid/StateEnabledChanged)
-	 *
-	 *  - To enable or disable a `Humanoid` state use [Humanoid.SetStateEnabled](https://developer.roblox.com/api-reference/function/Humanoid/SetStateEnabled)
-	 * @param state The given `Enum/HumanoidStateType`
-	 * @returns Whether the given `Enum/HumanoidStateType` is enabled
+	 * Gets whether or not a HumanoidStateType is allowed to be fired/selected
 	 */
 	GetStateEnabled(state: CastsToEnum<Enum.HumanoidStateType>): boolean;
 	/** 
-	 * This function loads an `Animation` onto a `Humanoid`, returning an `AnimationTrack` that can be used for playback.
-	 *
-	 * ## How to load an Animation
-	 *
-	 * The following code can be used to load an `Animation` onto a `Humanoid`.
-	 *
-	 * ```lua
-local animationTrack = humanoid:LoadAnimation(animation)
-animationTrack:Play()
-```
-	 * 
-
-	 * ## Should I load an Animation on the client or server?
-	 *
-	 * If the `Humanoid` is controlled by a particular client, as is the case with `Player` [Characters](https://developer.roblox.com/api-reference/property/Player/Character) then [Animations](https://developer.roblox.com/api-reference/class/Animation) should be loaded and played from that client.
-	 *
-	 * If the `Humanoid` belongs to a NPC (Non Player Character) which the server has [network ownership][1] of then the [Animations](https://developer.roblox.com/api-reference/class/Animation) should be loaded and played from the server.
-	 *
-	 * Although generally it is not advisable to do so, these rules can be bypassed using the `Animator` object.
-	 *
-	 * [1]: http://robloxdev.com/articles/Network-Ownership
-	 * @param animation The `Animation` to load
-	 * @returns The `AnimationTrack` created
+	 * Used to load an animation into the Humanoid as a variable.
 	 */
 	LoadAnimation(animation: Animation): AnimationTrack;
 	/** 
-	 * This function causes the `Humanoid` to walk in the given direction.
-	 *
-	 * When used on a NPC (Non Player Character) this function will cause the `Humanoid` to move until it is called again.
-	 *
-	 * This function can be called on the client and the server, but the *relativeToCamera* paramater will not work correctly on the server as it has no `Camera`.
-	 *
-	 * For `Player` [Characters](https://developer.roblox.com/api-reference/property/Player/Character) however this function needs calling every frame as the default control scripts overwrite it. This should be run from a `LocalScript` on the client. See below for an example:
-	 *
-	 * ```lua
-RunService:BindToRenderStep("move",
-```
-	 * 
-
-	 * lua
-	 *
-	 * -- run after the character
-	 *
-	 * Enum.RenderPriority.Character.Value + 1,
-	 *
-	 * function()
-	 *
-	 *     if localPlayer.Character then
-	 *
-	 *         -- can save the below by using localPlayer:Move() instead
-	 *
-	 *         local humanoid = localPlayer.Character:FindFirstChild("Humanoid")
-	 *
-	 *         if humanoid then
-	 *
-	 *             humanoid:Move(Vector3.new(0, 0, -1), true)
-	 *
-	 *         end
-	 *
-	 *     end
-	 *
-	 * end
-	 *
-	 * ```lua
-)
-```
-	 * 
-
-	 * ## See also
-	 *
-	 *  - To make a`Humanoid` walk to a point, use the [Humanoid.MoveTo](https://developer.roblox.com/api-reference/function/Humanoid/MoveTo) function
-	 *
-	 *  - For [Players](https://developer.roblox.com/api-reference/class/Player) the [Player:Move](https://developer.roblox.com/api-reference/function/Player/Move) function exists that calls this function
-	 * @param moveDirection The direction to walk in
-	 * @param relativeToCamera *True* if the *direction* parameter should be taken as relative to the `Workspace/CurrentCamera`
+	 * Causes the Humanoid to walk in the given direction until stopped, or interrupted by the player (by using their controls).
 	 */
 	Move(moveDirection: Vector3, relativeToCamera?: boolean): void;
 	/** 
-	 * This function causes the `Humanoid` to attempt to walk to the given location by setting the [Humanoid.WalkToPoint](https://developer.roblox.com/api-reference/property/Humanoid/WalkToPoint) and [Humanoid.WalkToPart](https://developer.roblox.com/api-reference/property/Humanoid/WalkToPart) properties.
-	 *
-	 * The *location* and *part* parameters correspond with what [Humanoid.WalkToPoint](https://developer.roblox.com/api-reference/property/Humanoid/WalkToPoint) and [Humanoid.WalkToPart](https://developer.roblox.com/api-reference/property/Humanoid/WalkToPart) will be set to.
-	 *
-	 * If the *part* parameter is specified, the `Humanoid` will still attempt to walk to the point. However, if the part moves then the point the `Humanoid` is walking to will move to be at the same position relative to the part. For a visual demonstration of this, see below.
-	 *
-	 * ![A visualization of how WalkToPart changes the behavior of WalkToPoint][1]
-	 *
-	 * The *reach goal* state of a humanoid will timeout after 8 seconds if it doesn't reach its goal. This is done so that NPCs won't get stuck waiting for [Humanoid.MoveToFinished](https://developer.roblox.com/api-reference/event/Humanoid/MoveToFinished) to fire. If you don't want this to happen, you should repeatedly call MoveTo so that the timeout will keep resetting.
-	 *
-	 * [1]: https://developer.roblox.com/assets/bltc76671f1665d7da0/WalkToPart.gif
-	 * @param location The position to set `Humanoid/WalkToPoint` to
-	 * @param part The `BasePart` to set `Humanoid/WalkToPart` to
+	 * Causes the Humanoid to attempt to walk to the given location. If a Part is specified in the parameters, then the Humanoid will still attempt to walk to the point, but if the part moves then the point will also move to stay the same relative distance away from the part.
 	 */
 	MoveTo(location: Vector3, part?: BasePart): void;
 	/** 
-	 * This function removes all [Accessories](https://developer.roblox.com/api-reference/class/Accessory) worn by the `Humanoid`.
-	 *
-	 * ## How does RemoveAccessories work?
-	 *
-	 * When this function is called, all [Accessories](https://developer.roblox.com/api-reference/class/Accessory) sharing an [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) with the `Humanoid` will be removed. For `Player`, [Characters](https://developer.roblox.com/api-reference/property/Player/Character) this will remove all hats being worn as hats take the form of [Accessories](https://developer.roblox.com/api-reference/class/Accessory) in the data model.
-	 *
-	 * [Instance.Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy) is called on the removed [Accessories](https://developer.roblox.com/api-reference/class/Accessory), meaning their [Parents](https://developer.roblox.com/api-reference/property/Instance/Parent) are set to nil and locked.
-	 *
-	 * The `Humanoid` does not need to belong to a `Player` [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) for this to work. This function will remove [Accessories](https://developer.roblox.com/api-reference/class/Accessory) parented to the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) regardless of where the `Humanoid` is.
-	 *
-	 * ## See also
-	 *
-	 *  - To attach an `Accessory` use the [Humanoid.AddAccessory](https://developer.roblox.com/api-reference/function/Humanoid/AddAccessory) function
-	 *
-	 *  - To get all [Accessories](https://developer.roblox.com/api-reference/class/Accessory) belonging to a `Humanoid` use the [Humanoid.GetAccessories](https://developer.roblox.com/api-reference/function/Humanoid/GetAccessories) function
+	 * Removes all [Accessories](https://wiki.roblox.com/index.php?title=Accessory) from the humanoid.
 	 */
 	RemoveAccessories(): void;
 	/** 
@@ -10721,13 +9769,7 @@ RunService:BindToRenderStep("move",
 	 */
 	ReplaceBodyPartR15(bodyPart: Enum.BodyPartR15, part: BasePart): boolean;
 	/** 
-	 * This function sets whether a given [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType) is enabled for the `Humanoid`.
-	 *
-	 * The humanoid state describes the activity the `Humanoid` is currently doing.
-	 *
-	 * When a particular [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType) is disabled, the `Humanoid` can never enter that state. This is true regardless if the attempt to change state is made using [Humanoid.ChangeState](https://developer.roblox.com/api-reference/function/Humanoid/ChangeState) or Roblox internal `Humanoid` code.
-	 * @param state The `Enum/HumanoidStateType` to be enabled or disabled
-	 * @param enabled *True* if this state is to be enabled, *false* if it is to be disabled
+	 * Sets whether or not a HumanoidStateType is allowed to be fired/selected
 	 */
 	SetStateEnabled(state: CastsToEnum<Enum.HumanoidStateType>, enabled: boolean): void;
 	/** 
@@ -10735,226 +9777,128 @@ RunService:BindToRenderStep("move",
 	 */
 	TakeDamage(amount: number): void;
 	/** 
-	 * This function unequips any `Tool` currently equipped by the `Humanoid`
-	 *
-	 * The unequipped `Tool` will be parented to the `Backpack` of the `Player` associated with the `Humanoid`.
-	 *
-	 * If no `Tool` is equipped, this function will do nothing.
-	 *
-	 * Although [Tools](https://developer.roblox.com/api-reference/class/Tool) can be equipped by NPCs (Non Player Characters), this function only works on [Humanoids](https://developer.roblox.com/api-reference/class/Humanoid) with a corresponding `Player`. This is because a `Backpack` object is required to parent the unequipped `Tool` to.
-	 *
-	 * ## See also
-	 *
-	 *  - To instead equip a `Tool`, use [Humanoid.EquipTool](https://developer.roblox.com/api-reference/function/Humanoid/EquipTool)
+	 * Unequips all tools that the humanoid might have equipped at the time of use.
 	 */
 	UnequipTools(): void;
-	/** 
-	 * This yield function makes the [character's](https://developer.roblox.com/api-reference/class/Character) look match that of the passed in `HumanoidDescription`. A copy of the passed look will then be cached in the `Humanoid` as the current HumanoidDescription for the Humanoid.
-	 *
-	 * It allows you to quickly set and store a character's appearance using a stored look without having to set each property every time.
-	 *
-	 * ## See also
-	 *
-	 *  - [Humanoid.GetAppliedDescription](https://developer.roblox.com/api-reference/function/Humanoid/GetAppliedDescription), returns the HumanoidDescription currently applied to the Humanoid
-	 *
-	 *  - [Players.GetHumanoidDescriptionFromUserId](https://developer.roblox.com/api-reference/function/Players/GetHumanoidDescriptionFromUserId), gives back a HumanoidDescription which describes the Avatar for the passed in user
-	 *
-	 *  - [Players.GetHumanoidDescriptionFromOutfitId](https://developer.roblox.com/api-reference/function/Players/GetHumanoidDescriptionFromOutfitId), gives back a HumanoidDescription whose parameters are initialized to match that of the passed in server-side outfit asset
-	 *
-	 *  - [Player.LoadCharacterWithHumanoidDescription](https://developer.roblox.com/api-reference/function/Player/LoadCharacterWithHumanoidDescription), spawns a player with the look from the HumanoidDescription Instance passed in
-	 * @param humanoidDescription The `HumanoidDescription` Instance which you want to set the character to match
-	 * @returns void
-	 */
+
 	ApplyDescription(humanoidDescription: HumanoidDescription): void;
 	PlayEmote(emoteName: string): boolean;
 	/** 
-	 * The AnimationPlayed event fires when an `AnimationTrack` begins playing on the `Humanoid`.
-	 *
-	 * A common use for this function is to connect the [AnimationTrack.KeyframeReached](https://developer.roblox.com/api-reference/event/AnimationTrack/KeyframeReached) event for the playing AnimationTrack, so additional effects can be added to the animation (for example [Sounds](https://developer.roblox.com/api-reference/class/Sound) and [ParticleEmitters](https://developer.roblox.com/api-reference/class/ParticleEmitter)).
-	 *
-	 * This event can be used for any `Humanoid` regardless if it belongs to the local player's client or not.
-	 *
-	 * ## See also
-	 *
-	 *  - For the `AnimationController` equivalent of this event, please see [AnimationController.AnimationPlayed](https://developer.roblox.com/api-reference/event/AnimationController/AnimationPlayed)
+	 * This event fires whenever the Humanoid in question begins playing an animation. It returns an AnimationTrack, which allows you to access things like that AnimationTrack's KeyframeReached event, allowing you to perform high-fidelity audio and visual effects in time with an animation -- even if it was played by another client.
 	 */
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 	/** 
 	 * Fires when the speed at which a `Humanoid` is climbing changes.
 	 *
-	 * [Humanoids](https://developer.roblox.com/api-reference/class/Humanoid) can climb up ladders made out of [Parts](https://developer.roblox.com/api-reference/class/BasePart) or [TrussParts](https://developer.roblox.com/api-reference/class/TrussPart).
+	 * [Characters](https://developer.roblox.com/api-reference/property/Player/Character) can climb up ladders made out of [Parts](https://developer.roblox.com/api-reference/class/BasePart) and [TrussParts](https://developer.roblox.com/api-reference/class/TrussPart).
 	 *
 	 * [Humanoids](https://developer.roblox.com/api-reference/class/Humanoid) climb at 70% of their [Humanoid.WalkSpeed](https://developer.roblox.com/api-reference/property/Humanoid/WalkSpeed).
 	 *
-	 * This event will not always fire with a speed of 0 when the `Humanoid` stops climbing.
-	 *
-	 * ## See also
+	 * ## Notes
 	 *
 	 *  - For swimming and running see the [Humanoid.Swimming](https://developer.roblox.com/api-reference/event/Humanoid/Swimming) and [Humanoid.Running](https://developer.roblox.com/api-reference/event/Humanoid/Running) events
 	 *
-	 *  - You can also detect when a `Humanoid` is climbing using the [Humanoid.StateChanged](https://developer.roblox.com/api-reference/event/Humanoid/StateChanged) event
+	 *  - Developers can also detect when a `Humanoid` is climbing using the [Humanoid.StateChanged](https://developer.roblox.com/api-reference/event/Humanoid/StateChanged) event
 	 *
-	 *  - You can disable climbing using the [Humanoid.SetStateEnabled](https://developer.roblox.com/api-reference/function/Humanoid/SetStateEnabled) function
+	 *  - Developers can disable climbing using the [Humanoid.SetStateEnabled](https://developer.roblox.com/api-reference/function/Humanoid/SetStateEnabled) function
+	 *
+	 *  - Currently when a `Humanoid` stops climbing this event will not always fire with a speed of 0
 	 */
 	readonly Climbing: RBXScriptSignal<(speed: number) => void>;
 	/** 
-	 * This event fires when the `Humanoid` dies, usually when [Humanoid.Health](https://developer.roblox.com/api-reference/property/Humanoid/Health) reaches 0. This could be caused either by disconnecting their head from their [Humanoid.Torso](https://developer.roblox.com/api-reference/property/Humanoid/Torso), or directly setting the health property.
+	 * Fired after a character has entered the dead state, usually when their [Humanoid.Health](https://developer.roblox.com/api-reference/property/Humanoid/Health) reaches 0. This could be caused either by disconnecting their head from their [Humanoid.Torso](https://developer.roblox.com/api-reference/property/Humanoid/Torso), or directly setting the health property.
 	 *
-	 * This event only fires if the `Humanoid` is a descendant of the `Workspace`. If the *Dead* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType) is disabled it will not fire.
+	 * This is useful in combat games where players are rewarded for killing other players and/or penalized upon death.
+	 *
+	 * Notes
+	 *
+	 * ----------
+	 *
+	 *  - Only fires when humanoid is a descendant of the `Workspace`.
+	 *
+	 *  - If the dead state is disabled then this event will not fire.
 	 */
 	readonly Died: RBXScriptSignal<() => void>;
 	/** 
-	 * The FallingDown event fires when the `Humanoid` enters and leaves the *FallingDown* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType). It indicates whether the humanoid is falling.
-	 *
-	 * Unless the `Humanoid` state is otherwise changed, this event will fire with an *active* value of *false* as the [Humanoid.GettingUp](https://developer.roblox.com/api-reference/event/Humanoid/GettingUp) event fires with an *active* value of *true*.
+	 * Fired when the Humanoid is falling due to being tripped over.
 	 */
 	readonly FallingDown: RBXScriptSignal<(active: boolean) => void>;
 	/** 
-	 * This event fires when the `Humanoid` enters or leaves the *Freefall* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType).
-	 *
-	 * The *active* parameter represents whether the `Humanoid` is entering or leaving the *Freefall* state.
-	 *
-	 * Although the *Freefall* state generally ends when the `Humanoid` reaches the ground, this event may fire with *active* equal to *false* if the state is changed whilst the `Humanoid` is falling. For this reason, developers should use [Humanoid.StateChanged](https://developer.roblox.com/api-reference/event/Humanoid/StateChanged) and listen for the *Landed* state to work out when a `Humanoid` has landed.
+	 * Fired when the Humanoid is falling.
 	 */
 	readonly FreeFalling: RBXScriptSignal<(active: boolean) => void>;
 	/** 
-	 * This event fires when the `Humanoid` enters or leaves the *GettingUp* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType).
-	 *
-	 * When a `Humanoid` attempts to get back up, this event will first fire with an *active* parameter of *true* before shortly after firing again with an *active* parameter of *false*.
-	 *
-	 * ## See also
-	 *
-	 *  - To force a `Humanoid` to fall over, use the [Humanoid.ChangeState](https://developer.roblox.com/api-reference/function/Humanoid/ChangeState) function to change the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) state to *FallingDown*
+	 * Fired when a Humanoid gets up after falling over.
 	 */
 	readonly GettingUp: RBXScriptSignal<(active: boolean) => void>;
 	/** 
-	 * Fires when the [Humanoid.Health](https://developer.roblox.com/api-reference/property/Humanoid/Health) changes to a value equal or below the [Humanoid.MaxHealth](https://developer.roblox.com/api-reference/property/Humanoid/MaxHealth) value.
-	 *
-	 * This event can be used to show custom heatlh bars.
-	 *
-	 * When [Humanoid.Health](https://developer.roblox.com/api-reference/property/Humanoid/Health) reaches zero, the `Humanoid` will die and the [Humanoid.Died](https://developer.roblox.com/api-reference/event/Humanoid/Died) event will fire. This event will fire with a value of zero.
+	 * The HealthChanged event fires when the `Humanoid`'s [Humanoid.Health](https://developer.roblox.com/api-reference/property/Humanoid/Health) changes to a value equal to or below the Humanoid's [Humanoid.MaxHealth](https://developer.roblox.com/api-reference/property/Humanoid/MaxHealth) value.
 	 */
 	readonly HealthChanged: RBXScriptSignal<(health: number) => void>;
 	/** 
-	 * This event fires when the `Humanoid` enters and leaves the *Jumping* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType).
-	 *
-	 * When a `Humanoid` jumps this will fire with a *active* parameter of *true* before shortly afterwards firing again with an active parameter of *false*. This does not correspond with when a `Humanoid` has landed. For that, developers should listen for the *Landed* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType) using [Humanoid.StateChanged](https://developer.roblox.com/api-reference/event/Humanoid/StateChanged).
-	 *
-	 * The *active* parameter of this event also corresponds with the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) [Humanoid.Jump](https://developer.roblox.com/api-reference/property/Humanoid/Jump) property.
-	 *
-	 * You can disable jumping using the [Humanoid.SetStateEnabled](https://developer.roblox.com/api-reference/function/Humanoid/SetStateEnabled) function.
+	 * Fired when the Humanoid jumps.
 	 */
 	readonly Jumping: RBXScriptSignal<(active: boolean) => void>;
 	/** 
-	 * This event fires when the `Humanoid` finishes walking to a goal declared by the [Humanoid.WalkToPoint](https://developer.roblox.com/api-reference/property/Humanoid/WalkToPoint) and [Humanoid.WalkToPart](https://developer.roblox.com/api-reference/property/Humanoid/WalkToPart) properties.
-	 *
-	 * The [Humanoid.WalkToPoint](https://developer.roblox.com/api-reference/property/Humanoid/WalkToPoint) and [Humanoid.WalkToPart](https://developer.roblox.com/api-reference/property/Humanoid/WalkToPart) properties can be set individually, or using the [Humanoid.MoveTo](https://developer.roblox.com/api-reference/function/Humanoid/MoveTo) function.
-	 *
-	 * If the `Humanoid` reaches its goal within 8 seconds, this event will return with *reached* as true. If the goal is not reached within 8 seconds the `Humanoid` will stop walking and *reached* will be false. This timeout can be reset be calling [Humanoid.MoveTo](https://developer.roblox.com/api-reference/function/Humanoid/MoveTo) again within the timeout period.
+	 * Fires when the Humanoid finishes walking to a goal declared by [Humanoid.MoveTo](https://developer.roblox.com/api-reference/function/Humanoid/MoveTo).
 	 */
 	readonly MoveToFinished: RBXScriptSignal<(reached: boolean) => void>;
 	/** 
-	 * This event fires when the `Humanoid` enters or leaves the *PlatformStanding* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType).
-	 *
-	 * Whilst the `Humanoid` is in the *PlatformStanding* state, the [Humanoid.PlatformStand](https://developer.roblox.com/api-reference/property/Humanoid/PlatformStand) property will be *true*.
-	 *
-	 * Whilst [Humanoid.PlatformStand](https://developer.roblox.com/api-reference/property/Humanoid/PlatformStand) is set to *true*, the `Humanoid` will be unable to move. For more information please see the page for [Humanoid.PlatformStand](https://developer.roblox.com/api-reference/property/Humanoid/PlatformStand).
-	 *
-	 * The PlatformStand [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType) was associated with the now disabled `Platform` part. Despite this, it can still be used by developers.
+	 * The PlatformStanding event fires when the Humanoid's PlatformStand property is changed.
 	 */
 	readonly PlatformStanding: RBXScriptSignal<(active: boolean) => void>;
 	/** 
-	 * This event fires when the `Humanoid` enters or leaves the *Ragdoll* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType).
-	 *
-	 * When the `Humanoid` enters the *Ragdoll* state this event will fire with an *active* parameter of *true*. The event will fire again when the `Humanoid` leaves the *Ragdoll* state, generally for the *GettingUp* [Enum.HumanoidStateType'.
-	 *
-	 * You can disable tripping by disabling the *Ragdoll* and *FallingDown* states using ](https://developer.roblox.com/search#stq=HumanoidStateType'.%20%20You%20can%20disable%20tripping%20by%20disabling%20the%20*Ragdoll*%20and%20*FallingDown*%20states%20using%20)Humanoid/SetStateEnabled`.
-	 *
-	 * ## See also
-	 *
-	 *  - [Humanoid.FallingDown](https://developer.roblox.com/api-reference/event/Humanoid/FallingDown) for the `Humanoid` event connected with the *FallingDown* state, which behaves similarly to *Ragdoll*
+	 * Fires when a player gets hit by a large, fast-moving object, causing the character to get tripped and get shoved in the direction it was hit.
 	 */
 	readonly Ragdoll: RBXScriptSignal<(active: boolean) => void>;
 	/** 
-	 * This event fires when the speed at which a `Humanoid` is running changes.
+	 * Fires when the speed at which a `Humanoid` is running changes.
 	 *
 	 * Whilst running [Humanoids](https://developer.roblox.com/api-reference/class/Humanoid) cover, on average,  their [Humanoid.WalkSpeed](https://developer.roblox.com/api-reference/property/Humanoid/WalkSpeed) in studs per second.
 	 *
-	 * When the `Humanoid` stops running this event will fire with a speed of 0.
-	 *
-	 * ## See also
+	 * ## Notes
 	 *
 	 *  - For swimming and climbing see the [Humanoid.Swimming](https://developer.roblox.com/api-reference/event/Humanoid/Swimming) and [Humanoid.Climbing](https://developer.roblox.com/api-reference/event/Humanoid/Climbing) events
 	 *
-	 *  - You can also detect when a `Humanoid` is running using the [Humanoid.StateChanged](https://developer.roblox.com/api-reference/event/Humanoid/StateChanged) event
+	 *  - Developers can also detect when a `Humanoid` is running using the [Humanoid.StateChanged](https://developer.roblox.com/api-reference/event/Humanoid/StateChanged) event
+	 *
+	 *  - Currently when a `Humanoid` stops running this event will fire with a speed of 0
 	 */
 	readonly Running: RBXScriptSignal<(speed: number) => void>;
 	/** 
-	 * This event fires when a `Humanoid` either sits in a `Seat` or `VehicleSeat` or gets up.
-	 *
-	 * When a [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) comes into contact with a seat they are attached to the seat and a sitting animation plays. For more information on this, please see the `Seat` page.
-	 *
-	 * The *active* parameter will be true if a player has sat down, and false if they have gotten up. The *currentSeatPart* parameter will be the seat part the humanoid is sitting in if they are sat down, or *nil* if they have gotten up.
-	 *
-	 * ## See also
-	 *
-	 *  - You can check if a humanoid is currently sitting using the [Humanoid.Sit](https://developer.roblox.com/api-reference/property/Humanoid/Sit) property
-	 *
-	 *  - You can also check the current humanoid seat part using the [Humanoid.SeatPart](https://developer.roblox.com/api-reference/property/Humanoid/SeatPart) property
+	 * Fired when a Humanoid sits.
 	 */
 	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
 	/** 
-	 * This event fires when the state of the `Humanoid` is changed.
-	 *
-	 * The humanoid state describes the activity the `Humanoid` is currently doing. It takes the form of a [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType) value.
-	 *
-	 * ## See also:
-	 *
-	 *  - To get and set the state use [Humanoid.GetState](https://developer.roblox.com/api-reference/function/Humanoid/GetState) and [Humanoid.ChangeState](https://developer.roblox.com/api-reference/function/Humanoid/ChangeState)
-	 *
-	 *  - Individual states can be disabled using [Humanoid.SetStateEnabled](https://developer.roblox.com/api-reference/function/Humanoid/SetStateEnabled)
-	 *
-	 *  - As there is no idle humanoid state, you should instead use the [Humanoid.Running](https://developer.roblox.com/api-reference/event/Humanoid/Running) event or listen to the [RootPart's](https://developer.roblox.com/api-reference/property/Humanoid/RootPart) [BasePart.Velocity](https://developer.roblox.com/api-reference/property/BasePart/Velocity) to work out when the `Humanoid` is standing still
+	 * Fired when the state of the Humanoid is changed.
 	 */
 	readonly StateChanged: RBXScriptSignal<(oldValue: Enum.HumanoidStateType, newValue: Enum.HumanoidStateType) => void>;
 	/** 
-	 * The StateEnableChanged event fires when [Humanoid.SetStateEnabled](https://developer.roblox.com/api-reference/function/Humanoid/SetStateEnabled) is called on the `Humanoid`.
-	 *
-	 * Parameters include the [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType) in question along with a bool indicating if this state is now enabled.
-	 *
-	 * ## See also
-	 *
-	 *  - To find if a state is currently enabled, use [Humanoid.GetStateEnabled](https://developer.roblox.com/api-reference/function/Humanoid/GetStateEnabled)
-	 *
-	 *  - To listen to `Humanoid` state changes use [Humanoid.StateChanged](https://developer.roblox.com/api-reference/event/Humanoid/StateChanged)
+	 * Fired when [SetStateEnabled](https://wiki.roblox.com/index.php?title=SetStateEnabled) is called on the Humanoid.
 	 */
 	readonly StateEnabledChanged: RBXScriptSignal<(state: Enum.HumanoidStateType, isEnabled: boolean) => void>;
 	/** 
-	 * This event is fired when the `Humanoid` enters or leaves the *StrafingNoPhysics* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType).
-	 *
-	 * When the `Humanoid` enters the *StrafingNoPhysics* state this event will fire with an *active* parameter of *true*. The event will fire again with *active* equal to *false* when the `Humanoid` leaves the *StrafingNoPhysics* state.
-	 *
-	 * This event is associated with the *StrafingNoPhysics* `Humanoid` state and does **not** fire when the `Humanoid` is moving perpendicular to the direction it is facing. This state is currently unused, if it is set using [Humanoid.ChangeState](https://developer.roblox.com/api-reference/function/Humanoid/ChangeState) the state will revert to *RunningNoPhysics*.
+	 * Fires when a `Humanoid` is strafing.
 	 */
 	readonly Strafing: RBXScriptSignal<(active: boolean) => void>;
 	/** 
-	 * This event fires when the speed at which a `Humanoid` is swimming in `Terrain` water changes.
+	 * Fires when the speed at which a `Humanoid` is swimming in `Terrain` water changes.
 	 *
 	 * [Humanoids](https://developer.roblox.com/api-reference/class/Humanoid) swim at 87.5% of their [Humanoid.WalkSpeed](https://developer.roblox.com/api-reference/property/Humanoid/WalkSpeed).
 	 *
-	 * This event will not always fire with a speed of 0 when the `Humanoid` stops swimming.
-	 *
-	 * ## See also
+	 * ## Notes
 	 *
 	 *  - For running and climbing see the [Humanoid.Running](https://developer.roblox.com/api-reference/event/Humanoid/Running) and [Humanoid.Climbing](https://developer.roblox.com/api-reference/event/Humanoid/Climbing) events
 	 *
-	 *  - You can also detect when a `Humanoid` is swimming using the [Humanoid.StateChanged](https://developer.roblox.com/api-reference/event/Humanoid/StateChanged) event
+	 *  - Developers can also detect when a `Humanoid` is swimming using the [Humanoid.StateChanged](https://developer.roblox.com/api-reference/event/Humanoid/StateChanged) event
 	 *
-	 *  - You can disable swimming using the [Humanoid.SetStateEnabled](https://developer.roblox.com/api-reference/function/Humanoid/SetStateEnabled) function
+	 *  - Developers can disable swimming using the [Humanoid.SetStateEnabled](https://developer.roblox.com/api-reference/function/Humanoid/SetStateEnabled) function
+	 *
+	 *  - Currently when a `Humanoid` stops swimming this event will not always fire with a speed of 0
 	 */
 	readonly Swimming: RBXScriptSignal<(speed: number) => void>;
 	/** 
-	 * This event fires when one of the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) limbs come in contact with another `BasePart`.
+	 * Fires when one of the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) limbs come in contact with another `BasePart`.
 	 *
 	 * The `BasePart` the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) limb is touching along with the limb itself is given.
 	 *
@@ -11038,41 +9982,21 @@ interface HumanoidDescription extends Instance {
 }
 
 /** 
- * An object created when an input begins that describes a particular user input, such as mouse movement, touches, keyboard, and more.
+ * An object that describes a particular user input, such as mouse movement, touches, keyboard, and more.
  *
- * The object's properties vary according the the type of input. Properties can be used to determine input [state](https://developer.roblox.com/search#stq=UserInputState), [type](https://developer.roblox.com/search#stq=UserInputType), [position](https://developer.roblox.com/search#stq=Vector3), [delta](https://developer.roblox.com/search#stq=Vector3), and the [Enum.KeyCode](https://developer.roblox.com/search#stq=KeyCode) that triggered the input (if applicable).
- *
- * Once created at the beginning of an input, the same object persists and is updated until the input ends. As a result, you can track the object's changes using the [Changed](https://developer.roblox.com/api-reference/event/Instance/Changed) event as the user changes the input in question. You can also place these objects into a list of active inputs track and interact with the object after it's creation by an event such as [UserInputService.InputBegan](https://developer.roblox.com/api-reference/event/UserInputService/InputBegan).
- *
- * #See also
- *
- *  - Most `UserInputService` events and functions return an InputObject to describe user input events and states
- *
- *  -  `GuiObject` events related to user input return an InputObject to describe user input
+ * InputObjects are created when an input begins. The Changed event may fire as the user changes the input in question.
  */
 interface InputObject extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "InputObject";
 	/** 
-	 * A `Vector3` describing the Delta (change) between mouse/joystick movements.
-	 *
-	 * This is useful when used with the input's [position](https://developer.roblox.com/api-reference/property/InputObject/Position) to track the position and movement of the user's mouse/joystick, such as when you're creating custom movement or camera scripts. Consider tracking input object changes using the [Instance.Changed](https://developer.roblox.com/api-reference/event/Instance/Changed) event or when user input changes via events such as [UserInputService.InputChanged](https://developer.roblox.com/api-reference/event/UserInputService/InputChanged) and [GuiObject.InputChanged](https://developer.roblox.com/api-reference/event/GuiObject/InputChanged).
-	 *
-	 * ## See also
-	 *
-	 *  - [InputObject.KeyCode](https://developer.roblox.com/api-reference/property/InputObject/KeyCode)
-	 *
-	 *  - [InputObject.Position](https://developer.roblox.com/api-reference/property/InputObject/Position)
-	 *
-	 *  - [InputObject.UserInputState](https://developer.roblox.com/api-reference/property/InputObject/UserInputState)
-	 *
-	 *  - [InputObject.UserInputType](https://developer.roblox.com/api-reference/property/InputObject/UserInputType)
+	 * A Vector3 describing the Delta between mouse/joystick movements.
 	 */
 	Delta: Vector3;
 	/** 
 	 * Contains a [KeyCode](https://developer.roblox.com/search#stq=KeyCode) enum that describes what kind of input was used. For types of input like keyboard, this describes what key was pressed. For inputs like the mouse, this provides no additional information.
 	 *
-	 * ### Enums
+	 * Valid KeyCodes include:
 	 *
 	 * | Name | Value | Description |
 	 * | --- | --- | --- |
@@ -11330,198 +10254,18 @@ interface InputObject extends Instance {
 	 * | DPadDown | 1015 |  |
 	 * | Thumbstick1 | 1016 |  |
 	 * | Thumbstick2 | 1017 |
-	 * | --- | --- |
-	 *
-	 * ### See also
-	 *
-	 *  - [InputObject.Delta](https://developer.roblox.com/api-reference/property/InputObject/Delta)
-	 *
-	 *  - [InputObject.Position](https://developer.roblox.com/api-reference/property/InputObject/Position)
-	 *
-	 *  - [InputObject.UserInputState](https://developer.roblox.com/api-reference/property/InputObject/UserInputState)
-	 *
-	 *  - [InputObject.UserInputType](https://developer.roblox.com/api-reference/property/InputObject/UserInputType)
 	 */
 	KeyCode: Enum.KeyCode;
 	/** 
-	 * This property describes a [Vector2](https://developer.roblox.com/search#stq=Vector2) positional value of this input.
-	 *
-	 * For mouse and touch input, this is the screen position of the mouse/touch, described in the x and y components.
-	 *
-	 * For the mouse wheel input, the z component describes whether the wheel was moved forward (1), backwards (-1), or not at all (0).
-	 *
-	 * For [KeyCode](https://developer.roblox.com/search#stq=KeyCode) input, this indicate's the position of the player's `Mouse`.
-	 *
-	 * #See also
-	 *
-	 *  - [InputObject.Delta](https://developer.roblox.com/api-reference/property/InputObject/Delta)
-	 *
-	 *  - [InputObject.KeyCode](https://developer.roblox.com/api-reference/property/InputObject/KeyCode)
-	 *
-	 *  - [InputObject.UserInputState](https://developer.roblox.com/api-reference/property/InputObject/UserInputState)
-	 *
-	 *  - [InputObject.UserInputType](https://developer.roblox.com/api-reference/property/InputObject/UserInputType)
+	 * Describes a positional value of this input. For mouse and touch input, this is the screen position of the mouse/touch, described in the x and y components. For the mouse wheel input, the z component describes whether the wheel was moved forward (1), backwards (-1), or not at all (0).
 	 */
 	Position: Vector3;
 	/** 
-	 * Contains a [Enum.UserInputState](https://developer.roblox.com/search#stq=UserInputState) enum that describes the state of the user's input and indicates how a user’s input is currently interacting with your game.
-	 *
-	 * ## Enums
-	 *
-	 * | Name | Value | Description |
-	 * | --- | --- | --- |
-	 * | Begin | 0 |
-	 * | --- | --- |
-	 *
-	 * When an `InputObject`starts to interact with the game. For example, a mouse button down, or a key down, or when a touch begins touching the screen.  |
-	 *
-	 * | Change | 1 |
-	 * | --- | --- |
-	 *
-	 * When an `InputObject`has already begun interacting with the game, and part of it's state is changing. For example, a mouse position move, or a thumbstick moving, or when a touch begins to move across the screen.  |
-	 *
-	 * | End | 2 |
-	 * | --- | --- |
-	 *
-	 * When an `InputObject`finishes interacting with the game. For example, a mouse button up, or a key up, or when a touch stops touching the screen.  |
-	 *
-	 * | Cancel | 3 |
-	 * | --- | --- |
-	 *
-	 * A special circumstance state that indicates this input is now being used for some other function. For example, binding two actions to the same input will cause a function to fire with Cancel.  |
-	 *
-	 * | None | 4 |
-	 * | --- | --- |
-	 *
-	 * A state that should never be seen in a game, essentially just marks the end of the enum.  |
-	 *
-	 * ## See also
-	 *
-	 *  - [InputObject.Delta](https://developer.roblox.com/api-reference/property/InputObject/Delta)
-	 *
-	 *  - [InputObject.KeyCode](https://developer.roblox.com/api-reference/property/InputObject/KeyCode)
-	 *
-	 *  - [InputObject.Position](https://developer.roblox.com/api-reference/property/InputObject/Position)
-	 *
-	 *  - [InputObject.UserInputType](https://developer.roblox.com/api-reference/property/InputObject/UserInputType)
+	 * The state of the user's input.
 	 */
 	UserInputState: Enum.UserInputState;
 	/** 
-	 * Contains a [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) enum that describes the type of user input, such as whether the input is via keyboard, mouse, touch, gamepad, to name a few.
-	 *
-	 * ## Enums
-	 *
-	 * | Name | Value | Description |
-	 * | --- | --- | --- |
-	 * | MouseButton1 | 0 |
-	 * | --- | --- |
-	 *
-	 * The left mouse button.  |
-	 *
-	 * | MouseButton2 | 1 |
-	 * | --- | --- |
-	 *
-	 * The right mouse button.  |
-	 *
-	 * | MouseButton3 | 2 |
-	 * | --- | --- |
-	 *
-	 * The middle mouse button.  |
-	 *
-	 * | MouseWheel | 3 |
-	 * | --- | --- |
-	 *
-	 * The mouse wheel.  |
-	 *
-	 * | MouseMovement | 4 |
-	 * | --- | --- |
-	 *
-	 * Movement of the mouse.  |
-	 *
-	 * | Touch | 7 |
-	 * | --- | --- |
-	 *
-	 * A tap on the screen from a mobile device.  |
-	 *
-	 * | Keyboard | 8 |
-	 * | --- | --- |
-	 *
-	 * Key press on a keyboard.  |
-	 *
-	 * | Focus | 9 |
-	 * | --- | --- |
-	 *
-	 * The client regaining focus of the Roblox window.  |
-	 *
-	 * | Accelerometer | 10 |
-	 * | --- | --- |
-	 *
-	 * The accelerometer of a mobile device.  |
-	 *
-	 * | Gyro | 11 |
-	 * | --- | --- |
-	 *
-	 * The Gyroscope of a mobile device.  |
-	 *
-	 * | Gamepad1 | 12 |
-	 * | --- | --- |
-	 *
-	 * Input from the 1st plugged in Gamepad.  |
-	 *
-	 * | Gamepad2 | 13 |
-	 * | --- | --- |
-	 *
-	 * Input from the 2nd plugged in Gamepad.  |
-	 *
-	 * | Gamepad3 | 14 |
-	 * | --- | --- |
-	 *
-	 * Input from the 3rd plugged in Gamepad.  |
-	 *
-	 * | Gamepad4 | 15 |
-	 * | --- | --- |
-	 *
-	 * Input from the 4th plugged in Gamepad.  |
-	 *
-	 * | Gamepad5 | 16 |
-	 * | --- | --- |
-	 *
-	 * Input from the 5th plugged in Gamepad  |
-	 *
-	 * | Gamepad6 | 17 |
-	 * | --- | --- |
-	 *
-	 * Input from the 6th plugged in Gamepad.  |
-	 *
-	 * | Gamepad7 | 18 |
-	 * | --- | --- |
-	 *
-	 * Input from the 7th plugged in Gamepad.  |
-	 *
-	 * | Gamepad8 | 19 |
-	 * | --- | --- |
-	 *
-	 * Input from the 8th plugged in Gamepad.  |
-	 *
-	 * | TextInput | 20 |
-	 * | --- | --- |
-	 *
-	 * Input of Text into a text-based `GuiObject`. Normally this is only a `TextBox`.  |
-	 *
-	 * | None | 21 |
-	 * | --- | --- |
-	 *
-	 * Unknown UserInputType.  |
-	 *
-	 * ## See also
-	 *
-	 *  - [InputObject.Delta](https://developer.roblox.com/api-reference/property/InputObject/Delta)
-	 *
-	 *  - [InputObject.KeyCode](https://developer.roblox.com/api-reference/property/InputObject/KeyCode)
-	 *
-	 *  - [InputObject.Position](https://developer.roblox.com/api-reference/property/InputObject/Position)
-	 *
-	 *  - [InputObject.UserInputState](https://developer.roblox.com/api-reference/property/InputObject/UserInputState)
+	 * The type of user input.
 	 */
 	UserInputType: Enum.UserInputType;
 }
@@ -11541,25 +10285,28 @@ interface InsertService extends Instance {
 	 */
 	GetCollection(categoryId: number): Array<CollectionInfo>;
 	/** 
-	 * The GetFreeDecals function retrieves a list of Free `Decal`s from the Catalog. The return type for this method is very odd, as it returns a single table wrapped in a table.
+	 * The GetFreeDecals function retrieves a list of Free `/Decal`s from the Catalog. The return type for this method is very odd, as it returns a single table wrapped in a table.
 	 *
 	 * The best way to explain it is to show a visual of the array returned:
 	 *
 	 * ```lua
-[1] = {
-	CurrentStartIndex = 1; -- This can vary depending on the page you input.
-	TotalCount = 21; -- Always 21.
-	Results = {
-		-- All parameters here are psuedo. They can vary depending on the asset.
-		[1] = {	
-			Name = "Asset Name"; 
-			AssetId = 0000000;
-			AssetVersionId = 0000000;
-			CreatorName = "Roblox";
-		},
-		-- [2], [3], and so on... up to [21]
-	},
-}
+[1] =
+	{
+		CurrentStartIndex = 1; -- This can vary depending on the page you input.
+		TotalCount = 21; -- Always 21.
+		Results =
+		{
+			-- All parameters here are psuedo. They can vary depending on the asset.
+			[1] =
+			{	
+				Name = "Asset Name"; 
+				AssetId = 0000000;
+				AssetVersionId = 0000000;
+				CreatorName = "Roblox";
+			};
+			-- [2], [3], and so on... up to [21]
+		};
+	};
 ```
 	 * 
 
@@ -11567,57 +10314,53 @@ interface InsertService extends Instance {
 	 *
 	 * Thankfully, an example for iterating over this list has been provided at the bottom of this page.
 	 *
-	 * Additionally, if you want to insert [Models](https://developer.roblox.com/api-reference/class/Model) instead, you can use the [InsertService.GetFreeModels](https://developer.roblox.com/api-reference/function/InsertService/GetFreeModels) function.
+	 * Additionally, if you want to insert `Model`s instead, you can use the [InsertService.GetFreeModels](https://developer.roblox.com/api-reference/function/InsertService/GetFreeModels) function.
 	 *
 	 * *Note:* The page argument starts at 0. So Page 1 = 0, Page 2 = 1, etc.
-	 * @param searchText String used to search for free decals in the Catalog
-	 * @param pageNum The page number in the Catalog to return
-	 * @returns A single table (of returned free decals) wrapped in a table
+	 * @param searchText String used to search for free decals in the Catalog.
+	 * @param pageNum The page number in the Catalog to return.
+	 * @returns A single table (of returned free decals) wrapped in a table.
 	 */
 	GetFreeDecals(searchText: string, pageNum: number): [Array<FreeSearchResult>];
 	/** 
-	 * The GetFreeModels function retrieves a list of Free [Models](https://developer.roblox.com/api-reference/class/Model) from the Catalog. The return type for this method is very odd, as it returns a single table wrapped in a table.
+	 * The GetFreeModels function retrieves a list of Free `Model`s from the Catalog. The return type for this method is very odd, as it returns a single table wrapped in a table.
 	 *
 	 * The best way to explain it is to show a visual of the array returned:
 	 *
 	 * ```lua
-[1] = {
-	CurrentStartIndex = 1, -- This can vary depending on the page you input.
-	TotalCount = 21, -- Always 21.
-	Results = {
-		-- All parameters here are psuedo. They can vary depending on the asset.
-		[1] = {	
-			Name = "Asset Name",
-			AssetId = 0000000,
-			AssetVersionId = 0000000,
-			CreatorName = "Roblox",
+[1] =
+	{
+		CurrentStartIndex = 1; -- This can vary depending on the page you input.
+		TotalCount = 21; -- Always 21.
+		Results =
+		{
+			-- All parameters here are psuedo. They can vary depending on the asset.
+			[1] =
+			{	
+				Name = "Asset Name"; 
+				AssetId = 0000000;
+				AssetVersionId = 0000000;
+				CreatorName = "Roblox";
+			};
+			-- [2], [3], and so on... up to [21]
+		};
+	};
+}
 ```
 	 * 
 
-	 * lua
-	 *
-	 * 		}
-	 *
-	 * 		-- [2], [3], and so on... up to [21]
-	 *
-	 * 	}
-	 *
-	 * ```
-	 *
-	 * }
-	 *
 	 * An example for iterating over this list has been provided at the bottom of this page.
 	 *
-	 * Additionally, if you would like to insert free [Decals](https://developer.roblox.com/api-reference/class/Decal), you can use the [InsertService.GetFreeDecals](https://developer.roblox.com/api-reference/function/InsertService/GetFreeDecals) function.
-	 * @param searchText String used to search for free decals in the Catalog
-	 * @param pageNum The page number in the Catalog to return
-	 * @returns A single table (of returned free models) wrapped in a table
+	 * Additionally, if you would like to insert free `Decal`s, you can use the [InsertService.GetFreeDecals](https://developer.roblox.com/api-reference/function/InsertService/GetFreeDecals) function.
+	 * @param searchText String used to search for free decals in the Catalog.
+	 * @param pageNum The page number in the Catalog to return.
+	 * @returns A single table (of returned free models) wrapped in a table.
 	 */
 	GetFreeModels(searchText: string, pageNum: number): [Array<FreeSearchResult>];
 	/** 
 	 * Returns the latest AssetVersionId of an asset for assets created by the place creator.
 	 *
-	 * Can be used in combination with [LoadAssetVersion](https://developer.roblox.com/api-reference/function/InsertService/LoadAssetVersion) to load the latest version of a model, even if it gets updated while the game is running.
+	 * Can be used in combination with [LoadAssetVersion](https://wiki.roblox.com/index.php?title=LoadAssetVersion) to load the latest version of a model, even if it gets updated while the game is running.
 	 */
 	GetLatestAssetVersionAsync(assetId: number): number;
 	/** 
@@ -11635,7 +10378,7 @@ interface InsertService extends Instance {
 	 *
 	 * ## Notes
 	 *
-	 * * All values in the dictionaries are [strings](https://developer.roblox.com/articles/String), even if they are a number.
+	 * * All values in the dictionaries are [strings](https://wiki.roblox.com/index.php?title=Strings), even if they are a number.
 	 *
 	 * **Dictionary Contents**
 	 *
@@ -11651,7 +10394,7 @@ interface InsertService extends Instance {
 	 */
 	GetUserSets(userId: number): Array<SetInfo>;
 	/** 
-	 * The LoadAsset function returns a [model](https://developer.roblox.com/api-reference/class/Model) inserted into `InsertService` containing the asset.
+	 * The LoadAsset function returns a model inserted into `/InsertService` containing the asset.
 	 *
 	 * For instance, if you want to load a [Doge][1] `Model`, which has the asset Id ***257489726***, you would use the following statement:
 	 *
@@ -11659,13 +10402,13 @@ interface InsertService extends Instance {
 	 *
 	 * This line would return an `Instance` of the Doge model within your game. Changing the asset Id passed as an argument changes the asset that is loaded into your game.
 	 *
-	 * Interested in finding Free Models or [Decals](https://developer.roblox.com/api-reference/class/Decal) into your game? You can use the [InsertService.GetFreeModels](https://developer.roblox.com/api-reference/function/InsertService/GetFreeModels) and [InsertService.GetFreeDecals](https://developer.roblox.com/api-reference/function/InsertService/GetFreeDecals) functions!
+	 * Interested in finding Free Models or `Decal`s into your game? You can use the [InsertService.GetFreeModels](https://developer.roblox.com/api-reference/function/InsertService/GetFreeModels) and [InsertService.GetFreeDecals](https://developer.roblox.com/api-reference/function/InsertService/GetFreeDecals) functions!
 	 *
 	 * See another example below!
 	 *
 	 * [1]: https://www.roblox.com/library/257489726/Doge
-	 * @param assetId The asset Id of the asset being loaded
-	 * @returns An instance of the loaded asset
+	 * @param assetId The asset Id of the asset being loaded.
+	 * @returns An instance of the loaded asset.
 	 */
 	LoadAsset(assetId: number): Model;
 	/** 
@@ -11680,13 +10423,7 @@ interface InsertService extends Instance {
 interface JointInstance extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "JointInstance" | "DynamicRotate" | "Glue" | "ManualSurfaceJointInstance" | "Motor" | "Rotate" | "Snap" | "VelocityMotor" | "Weld" | "RotateP" | "RotateV" | "ManualGlue" | "ManualWeld" | "Motor6D";
-	/** 
-	 * This property determines if the joint is currently active in the world. If true, the joint is active.
-	 *
-	 * If the `JointInstance` is not in `Workspace` or `JointsService`, or one of its parts is not in Workspace the joint will be inactive.
-	 *
-	 * Rigid joints like `Weld`, `Snap`, `WeldConstraint`, `Motor`, or `Motor6D` may also be disabled due to conflicts with other rigid joints, such as joints between the same two parts or indirect cycles in the weld graph. Joints disabled this way may be re-enabled later when another joint or part is added or removed.
-	 */
+	/** Read-only boolean, true if the joint is active in world. Rigid joints may be inactive if they are redundant or form cycles. */
 	readonly Active: boolean;
 	/** 
 	 * C0 is the position aspect of the orientation between two parts in a weld. [JointInstance.Part0](https://developer.roblox.com/api-reference/property/JointInstance/Part0) and [JointInstance.Part0](https://developer.roblox.com/api-reference/property/JointInstance/Part0) move accordingly to this value, which denotes their respective positions.
@@ -11791,7 +10528,7 @@ interface ManualGlue extends ManualSurfaceJointInstance {
 }
 
 /** 
- * A ManualWeld object holds two parts together. It is commonly created when the *Join Always* setting in Studio is turned on. ManualWeld functions identically to `Weld`.
+ * A ManualWeld object holds two parts rigidly together. Most commonly created when the [Join Always](https://wiki.roblox.com/index.php?title=Joint#Join_Always) setting in Studio is turned on. Functionally identical to `Weld`.
  */
 interface ManualWeld extends ManualSurfaceJointInstance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -11833,21 +10570,9 @@ interface Motor6D extends Motor {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Motor6D";
 	/** 
-	 * The internal CFrame that is manipulated by Animations when a Motor6D is being animated. It is recommended to use this property for custom animations rather than [JointInstance.C0](https://developer.roblox.com/api-reference/property/JointInstance/C0) and [JointInstance.C1](https://developer.roblox.com/api-reference/property/JointInstance/C1).
-	 *
-	 * Transform is the transformation between the "parent" [part](https://developer.roblox.com/api-reference/class/BasePart) and the "child" part. The "parent" part will always be the part that is more directly connected to the JointInstance.C0. This is not affected by which part is assigned to [JointInstance.Part0](https://developer.roblox.com/api-reference/property/JointInstance/Part0) and which is [JointInstance.Part1](https://developer.roblox.com/api-reference/property/JointInstance/Part1). If the side the root part is on changes the interpretation of Transform will be inverted.
-	 *
-	 * Similar to a [WeldJoint](https://developer.roblox.com/search#stq=Weld), an active Motor6D will rigidly hold its two parts such that:
-	 *
-	 * `PartParent.CFrame * CParent * Transform == PartChild.CFrame * Child`
+	 * This property exposes the internal CFrame that is manipulated by Animations when a Motor6D is being animated. By using this property, it is possible to blend Roblox Animations with custom animations in Lua. It is recommended to use this property for custom animations rather than [JointInstance.C0](https://developer.roblox.com/api-reference/property/JointInstance/C0) and [JointInstance.C1](https://developer.roblox.com/api-reference/property/JointInstance/C1).
 	
-	 * The internal CFrame that is manipulated by Animations when a Motor6D is being animated. It is recommended to use this property for custom animations rather than [JointInstance.C0](https://developer.roblox.com/api-reference/property/JointInstance/C0) and [JointInstance.C1](https://developer.roblox.com/api-reference/property/JointInstance/C1).
-	 *
-	 * Transform is the transformation between the "parent" [part](https://developer.roblox.com/api-reference/class/BasePart) and the "child" part. The "parent" part will always be the part that is more directly connected to the JointInstance.C0. This is not affected by which part is assigned to [JointInstance.Part0](https://developer.roblox.com/api-reference/property/JointInstance/Part0) and which is [JointInstance.Part1](https://developer.roblox.com/api-reference/property/JointInstance/Part1). If the side the root part is on changes the interpretation of Transform will be inverted.
-	 *
-	 * Similar to a [WeldJoint](https://developer.roblox.com/search#stq=Weld), an active Motor6D will rigidly hold its two parts such that:
-	 *
-	 * `PartParent.CFrame * CParent * Transform == PartChild.CFrame * Child`
+	 * This property exposes the internal CFrame that is manipulated by Animations when a Motor6D is being animated. By using this property, it is possible to blend Roblox Animations with custom animations in Lua. It is recommended to use this property for custom animations rather than [JointInstance.C0](https://developer.roblox.com/api-reference/property/JointInstance/C0) and [JointInstance.C1](https://developer.roblox.com/api-reference/property/JointInstance/C1).
 	 *
 	 * Tags: Hidden, NotReplicated
 	 */
@@ -11855,7 +10580,7 @@ interface Motor6D extends Motor {
 }
 
 /** 
- * The Rotate object is used to allow rotation between two parts. Most commonly created through the Hinge SurfaceType on a `BasePart`. If created like this, the rotation will be about the normal vector from the face of the part the hinge is placed on. If created through a script the axis and point of rotation can be defined arbitrarily.
+ * The Rotate object is used to allow rotation between two parts. Most commonly created through the Hinge [Enum.SurfaceType](https://developer.roblox.com/search#stq=SurfaceType) on a `BasePart`. If so the rotation will be about the normal vector from the face of the part the hinge is placed on. If created through a script the axis and point of rotation can be defined arbitrarily. See [Joint](https://wiki.roblox.com/index.php?title=Joint) for more information on how to setup a Rotate joint.
  */
 interface Rotate extends JointInstance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -11906,12 +10631,6 @@ interface VelocityMotor extends JointInstance {
 
 /** 
  * The Weld object is used to hold two objects together in a relative position. They don't need to be touching.
- *
- * ## See also
- *
- *  - [Weld Joints](https://developer.roblox.com/search#stq=Weld), for more information on how to use [Welds](https://developer.roblox.com/api-reference/class/Weld) in your game.
- *
- *  - `WeldConstraint`, for a newer alternative using the [constraints](https://developer.roblox.com/search#stq=Constraints) system that does not require [C0](https://developer.roblox.com/api-reference/property/JointInstance/C0) or [C1](https://developer.roblox.com/api-reference/property/JointInstance/C1) properties to be manually set
  */
 interface Weld extends JointInstance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -11934,11 +10653,11 @@ interface JointsService extends Instance {
 	 */
 	CreateJoinAfterMoveJoints(): void;
 	/** 
-	 * Sets the PVInstance that will be connected with the target PVInstance specified by [SetJoinAfterMoveTarget](https://developer.roblox.com/api-reference/function/JointsService/SetJoinAfterMoveTarget).
+	 * Sets the PVInstance that will be connected with the target PVInstance specified by [SetJoinAfterMoveTarget](https://wiki.roblox.com/index.php?title=SetJoinAfterMoveTarget).
 	 */
 	SetJoinAfterMoveInstance(joinInstance: PVInstance): void;
 	/** 
-	 * Sets the PVInstance that will be connected with the PVInstance specified by [SetJoinAfterMoveInstance](https://developer.roblox.com/api-reference/function/JointsService/SetJoinAfterMoveInstance).
+	 * Sets the PVInstance that will be connected with the PVInstance specified by [SetJoinAfterMoveInstance](https://wiki.roblox.com/index.php?title=SetJoinAfterMoveInstance).
 	 */
 	SetJoinAfterMoveTarget(joinTarget: PVInstance): void;
 	/** 
@@ -11972,7 +10691,7 @@ interface KeyboardService extends Instance {
  *
  * During animation playback the poses in different keyframes are interpolated between. This allows a smooth animation to be created without needing to define every frame. Note, the style of interpolation is determined in the `Pose` object. The Keyframe object merely holds the `Pose`s at a defined point of time in the animation ([Keyframe.Time](https://developer.roblox.com/api-reference/property/Keyframe/Time)).
  *
- * [1]: https://developer.roblox.com/assets/blt2e767397c28fecda/KeyframeSequence_-_Copy.png
+ * [1]: https://developer.roblox.com/assets/5aa797693595493f77511b1d/KeyframeSequence_-_Copy.png
  */
 interface Keyframe extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -12014,7 +10733,9 @@ interface Keyframe extends Instance {
 	AddPose(pose: Pose): void;
 	GetMarkers(): Array<Instance>;
 	/** 
-	 * This function returns an array containing all [Poses](https://developer.roblox.com/api-reference/class/Pose) that have been added to a `Keyframe`.
+	 * This function returns an array containing all `Pose`s that have been added to a `Keyframe`. This is functionally the same as using the [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) function on the `Keyframe`.
+	 *
+	 * Note, this function will return all children of the `Keyframe`, including non `Pose`s if any are present.
 	 * @returns An array of `Pose`s.
 	 */
 	GetPoses(): Array<Pose>;
@@ -12031,37 +10752,10 @@ interface Keyframe extends Instance {
 	RemovePose(pose: Pose): void;
 }
 
-/** 
- * A KeyframeMarker is an instance meant to represent an event that will eventually be fired when a `Keyframe` is hit.
- *
- * ## Using a KeyframeMarker
- *
- * KeyframeMarkers should always be parented to a Keyframe via setting the parent directly or using the [Keyframe.AddMarker](https://developer.roblox.com/api-reference/function/Keyframe/AddMarker) function of Keyframe. KeyframeMarkers can also be removed directly or using the [Keyframe.RemoveMarker](https://developer.roblox.com/api-reference/function/Keyframe/RemoveMarker) function, and polled to check which markers are attached to a specific Keyframe using [Keyframe.GetMarkers](https://developer.roblox.com/api-reference/function/Keyframe/GetMarkers).
- *
- * Whenever a Keyframe is detected as an animation is running, there will be an event fired for each KeyframeMarker that is parented to the Keyframe. These events are identifiable by the name of the KeyframeMarker. You can retrieve and listen to these events using the [AnimationTrack.GetKeyframeMarkerReached](https://developer.roblox.com/search#stq=GetKeyframeMarkerReached) function. Optionally, you may set the [KeyframeMarker.Value](https://developer.roblox.com/api-reference/property/KeyframeMarker/Value) property of the KeyframeMarker in order to pass along a value with the event being fired.
- *
- * It inherits the [Keyframe.Name](https://developer.roblox.com/api-reference/property/Instance/Name) property from `Instance` and behaves identically. Names are used for identification and no not need to be unique. When multiple KeyFrameMarkers with the same name are attached to a KeyFrame, events such as the one returned by [AnimationTrack.GetMarkerReachedSignal](https://developer.roblox.com/api-reference/function/AnimationTrack/GetMarkerReachedSignal) will fire for every marker.
- *
- * ## See also
- *
- *  - `Keyframe`,  holds the [Poses](https://developer.roblox.com/api-reference/class/Pose) applied to joints in a `Model` at a given point of time in an animation
- *
- *  - `AnimationTrack`, controls the playback of an animation on a `Humanoid` or `AnimationController`
- *
- *  - `Animation`, holds a reference to animation data required to play custom animations on characters or other models using the Roblox animation system
- */
 interface KeyframeMarker extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "KeyframeMarker";
-	/** 
-	 * A value that is specified for a `KeyframeMarker`. Whenever the signal created from [AnimationTrack.GetMarkerReachedSignal](https://developer.roblox.com/api-reference/function/AnimationTrack/GetMarkerReachedSignal) gets fired, this value will be passed into the connected function.
-	 *
-	 * ## See also
-	 *
-	 *  - `Keyframe`,  holds the [Poses](https://developer.roblox.com/api-reference/class/Pose) applied to joints in a `Model` at a given point of time in an animation
-	 *
-	 *  - `AnimationTrack`, controls the playback of an animation on a `Humanoid` or `AnimationController`
-	 */
+	/** [NO DOCUMENTATION] */
 	Value: string;
 }
 
@@ -12100,7 +10794,7 @@ interface KeyframeMarker extends Instance {
  *
  * In some cases the developer may wish to download the KeyframeSequence corresponding to an existing uploaded Animation. This can be done so using [KeyframeSequenceProvider.GetKeyframeSequenceAsync](https://developer.roblox.com/api-reference/function/KeyframeSequenceProvider/GetKeyframeSequenceAsync).
  *
- * [1]: https://developer.roblox.com/assets/blt2e767397c28fecda/KeyframeSequence_-_Copy.png
+ * [1]: https://developer.roblox.com/assets/5aa797693595493f77511b1d/KeyframeSequence_-_Copy.png
  */
 interface KeyframeSequence extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -12353,7 +11047,7 @@ interface Lighting extends Instance {
 	 *
 	 * For more properties that influence the color of lighting, please see [Lighting.ColorShift_Bottom](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Bottom) and [Lighting.ColorShift_Top](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Top).
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt6e6c67086eab8c57/Ambient.png
+	 * [1]: https://developer.roblox.com/assets/5afee40af5d3ca4711f85722/Ambient.png
 	 */
 	Ambient: Color3;
 	/** 
@@ -12499,7 +11193,7 @@ end
 	 *
 	 * Note, [Lighting.ColorShift_Top](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Top) and ColorShift_Bottom will interact with the [Lighting.Ambient](https://developer.roblox.com/api-reference/property/Lighting/Ambient) and [Lighting.OutdoorAmbient](https://developer.roblox.com/api-reference/property/Lighting/OutdoorAmbient) properties if they are greater than 0, 0, 0. Also, the influence of ColorShift_Bottom can be very hard to identify when [Lighting.GlobalShadows](https://developer.roblox.com/api-reference/property/Lighting/GlobalShadows) is enabled (as it is by default).
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt6316b01e497fa7aa/ColorShift.png
+	 * [1]: https://developer.roblox.com/assets/5afeea5eaa88f4481181eec5/ColorShift.png
 	 */
 	ColorShift_Bottom: Color3;
 	/** 
@@ -12515,39 +11209,10 @@ end
 	 *
 	 * Note, ColorShift_Top and [Lighting.ColorShift_Bottom](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Bottom) will interact with the [Lighting.Ambient](https://developer.roblox.com/api-reference/property/Lighting/Ambient) and [Lighting.OutdoorAmbient](https://developer.roblox.com/api-reference/property/Lighting/OutdoorAmbient) properties if they are greater than 0, 0, 0.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt6316b01e497fa7aa/ColorShift.png
+	 * [1]: https://developer.roblox.com/assets/5afeea5eaa88f4481181eec5/ColorShift.png
 	 */
 	ColorShift_Top: Color3;
-	/** 
-	 * This property determines the exposure compensation amount which applies a bias to the exposure level of the scene prior to the tonemap step. Defaults to 0.
-	 *
-	 *   - A value of +1 indicates twice as much exposure and -1 means half as much exposure.
-	 *
-	 *   - A value of 0 indicates no exposure compensation will be done.
-	 *
-	 *   - Range: -5 to 5
-	 *
-	 * This property is replicated and can be set from scripts or `Studio`.
-	 *
-	 * ```lua
-local Lighting = game:GetService(“Lighting”)
-Lighting.ExposureCompensation = 5
-```
-	 * 
-
-	 * You can use this property to adjust the exposure amount prior to the tonemap step to show more detail either in lighter or darker areas. This is needed as we move to a HDR pipeline.
-	 *
-	 * When [Lighting.Technology](https://developer.roblox.com/api-reference/property/Lighting/Technology) is set to [Legacy](https://developer.roblox.com/search#stq=Technology), this property has no effect.
-	 *
-	 * ```lua
-local Lighting = game:GetService(“Lighting”)
-
--- ExposureCompensation has no effect because Lighting’s Technology is Legacy
-Lighting.Technology = Enum.Technology.Legacy
-Lighting.ExposureCompensation = 5
-```
-	 *
-	 */
+	/** Exposure compensation amount. Applies a bias to the exposure level prior to the tonemap step. +1 indicates twice as much exposure and -1 means half as much exposure. */
 	ExposureCompensation: number;
 	/** 
 	 * A [DataType.Color3](https://developer.roblox.com/search#stq=Color3) value giving the hue of `Lighting`'s fog.
@@ -12664,7 +11329,7 @@ Lighting.FogEnd = 200
 	 *
 	 * [1]: https://blog.roblox.com/2013/02/dynamic-lighting-and-shadows-the-voxel-solution/
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt23745970e2437872/GlobalShadows.png
+	 * [2]: https://developer.roblox.com/assets/5aff031c00d367bf11f1e487/GlobalShadows.png
 	 */
 	GlobalShadows: boolean;
 	/** 
@@ -12680,7 +11345,7 @@ Lighting.FogEnd = 200
 	 *
 	 * For more properties that influence the color of lighting, please see [Lighting.ColorShift_Bottom](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Bottom) and [Lighting.ColorShift_Top](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Top).
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt6e6c67086eab8c57/Ambient.png
+	 * [1]: https://developer.roblox.com/assets/5afee40af5d3ca4711f85722/Ambient.png
 	 */
 	OutdoorAmbient: Color3;
 	/** 
@@ -12782,7 +11447,7 @@ end
 	 */
 	GetMoonDirection(): Vector3;
 	/** 
-	 * Returns the moon's current phase. There is no way to change the moon's phase so this will always return 0.75
+	 * Returns the moon's current phase. There is no way to change the moon's phase so this will always return 0.75.
 	 */
 	GetMoonPhase(): number;
 	/** 
@@ -12871,25 +11536,16 @@ end
 	readonly LightingChanged: RBXScriptSignal<(skyboxChanged: boolean) => void>;
 }
 
-/** 
- 
- */
 interface LocalStorageService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "LocalStorageService" | "AppStorageService" | "UserStorageService";
 }
 
-/** 
- 
- */
 interface AppStorageService extends LocalStorageService {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AppStorageService";
 }
 
-/** 
- 
- */
 interface UserStorageService extends LocalStorageService {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "UserStorageService";
@@ -12919,44 +11575,12 @@ interface LocalizationService extends Instance {
 	GetCorescriptLocalizations(): Array<Instance>;
 	GetTableEntries(instance?: Instance): unknown;
 	/** 
-	 * This function takes a player an argument and yields until the cloud localization data for that [player's](https://developer.roblox.com/api-reference/class/Player) locale has been loaded, and then returns a `Translator` object which can be used to perform translations for that locale if any are available.
-	 *
-	 * ## See also
-	 *
-	 *   - [LocalizationService.GetTranslatorForPlayerAsync](https://developer.roblox.com/api-reference/function/LocalizationService/GetTranslatorForPlayerAsync), same functionality as this function except that it yields until the translator has been loaded
-	 *
-	 *   - [LocalizationService.GetTranslatorForLocaleAsync](https://developer.roblox.com/api-reference/function/LocalizationService/GetTranslatorForLocaleAsync), returns a Translator to be used for translations using the locale data loaded
-	 * @param player The `Player` that you are getting the `Translator` for
-	 * @returns The `Translator` instance for the specified locale
+	 * Returns a `Translator` that works with the specified player's language, and all `LocalizationTable` available as children of `LocalizationService` to provide translated strings.
 	 */
 	GetTranslatorForPlayer(player: Player): Translator;
-	/** 
-	 * This function takes a language code as an argument and yields until the cloud localization data for that locale has been loaded, and then returns a `Translator` object which can be used to perform translations for that locale if any are available.
-	 *
-	 * This function can error and thus should be wrapped in a [pcall](https://developer.roblox.com/search#stq=Built-in%20Functions%20&%20Variables%20—%20Lua).
-	 *
-	 * ## See also
-	 *
-	 *   - [LocalizationService.GetTranslatorForPlayer](https://developer.roblox.com/api-reference/function/LocalizationService/GetTranslatorForPlayer), same functionality as this function except that it does not yield
-	 *
-	 *   - [LocalizationService.GetTranslatorForPlayerAsync](https://developer.roblox.com/api-reference/function/LocalizationService/GetTranslatorForPlayerAsync), same functionality as this function except that it yields until the translator has been loaded
-	 * @param locale A Roblox supported language code. The currently supported language codes are “en” (English), “fr” (French), “de” (German), “ko” (Korean), “pt” (Portuguese), “es” (Spanish)
-	 * @returns The `Translator` instance for the specified locale
-	 */
+
 	GetTranslatorForLocaleAsync(locale: string): Translator;
-	/** 
-	 * This function takes a player an argument and yields until the cloud localization data for that player's locale has been loaded, and then returns a `Translator` object which can be used to perform translations for that locale if any are available.
-	 *
-	 * This function can error and thus should be wrapped in a pcall.
-	 *
-	 * ## See also
-	 *
-	 *   - [LocalizationService.GetTranslatorForPlayer](https://developer.roblox.com/api-reference/function/LocalizationService/GetTranslatorForPlayer), same functionality as this function except that it does not yield
-	 *
-	 *   - [LocalizationService.GetTranslatorForLocaleAsync](https://developer.roblox.com/api-reference/function/LocalizationService/GetTranslatorForLocaleAsync), returns a Translator to be used for translations using the locale data loaded
-	 * @param player The `Player` that you are getting the `Translator` for
-	 * @returns The `Translator` instance for the specified locale
-	 */
+
 	GetTranslatorForPlayerAsync(player: Player): Translator;
 }
 
@@ -12979,7 +11603,7 @@ interface LocalizationService extends Instance {
  *
  * All of these fields are optional, but at least either Key or Source must be non-empty. No two entries can have the same Key, Source, and Context.
  *
- * The **Source** field and all translation strings must be valid [LocalizationService format strings](https://developer.roblox.com/articles/Format-Strings).
+ * The **Source** field and all translation strings must be valid [LocalizationService format strings](https://wiki.roblox.com/index.php?title=LocalizationService_Format_Strings).
  */
 interface LocalizationTable extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -13088,7 +11712,7 @@ interface LuaSettings extends Instance {
 	 */
 	AreScriptStartsReported: boolean;
 	/** 
-	 * How long a call to `wait()` with no arguments will yield.
+	 * How long a call to [wait](https://wiki.roblox.com/index.php?title=Wait)() with no arguments will yield.
 	 */
 	DefaultWaitTime: number;
 	/** 
@@ -13206,19 +11830,13 @@ interface Script extends BaseScript {
 }
 
 /** 
- * A LocalScript is a Lua source container that runs Lua code on a client connected to a Roblox server. They are used to access client-only objects, such as the player's `Camera`. For code run through LocalScripts, the LocalPlayer property of the `Players` service will return the player whose client is running the script.
+ * LocalScripts are Lua source containers that run Lua code much like `/Script`s, except that the code is executed on a player's client instead of a Roblox server. They can be used to access client-only objects such as the player's `/Camera`, or handle input through services like `/ContextActionService`. The LocalPlayer property of Players will reflect the player whose client that is running LocalScript code.
  *
- * A LocalScript will **only** run Lua code if it is a descendant of one of the following objects:
+ * It is important to understand the underlying client-server relationship of Roblox games in order to effectively use LocalScripts. LocalScripts are very useful for scripting user interfaces or special effects that don't need to be replicated to the server. For example, the server does not need to handle interface animations, so code for that is best put in a LocalScript. Many features require the use of a LocalScript, such as `/ContextActionService` or `/UserInputService`. Other features cannot be used in LocalScripts at all, such as `/BadgeService`.
  *
- * * A Player's `Backpack`, such as a child of a `Tool`
+ * LocalScripts run under the same conditions as Scripts (i.e. must not be Disabled), except with one key restriction: LocalScripts **only** run code if they are descendant of a Player's `/Backpack`, Character, or `/PlayerGui`. This will determine which client that the Lua code will be run on.
  *
- * * A Player's [character](https://developer.roblox.com/api-reference/property/Player/Character) model
- *
- * * A Player's `PlayerGui`
- *
- * * A Player's `PlayerScripts`.
- *
- * * The `ReplicatedFirst` service
+ * LocalScripts can use `require` with `/ModuleScript`s the same way Script objects can. Code in the ModuleScript will run on the client just as the LocalScript's code does. If a ModuleScript is required by a Script and then a LocalScript, the ModuleScript's code will run on the server and then client.
  */
 interface LocalScript extends Script {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -13294,8 +11912,6 @@ interface MarketplaceService extends Instance {
 	): void;
 	/** 
 	 * Used to prompt a user to purchase an item with the given assetId.
-	 *
-	 * For game passes, use [MarketplaceService.PromptGamePassPurchase](https://developer.roblox.com/api-reference/function/MarketplaceService/PromptGamePassPurchase).
 	 */
 	PromptPurchase(
 		player: Player,
@@ -13394,102 +12010,40 @@ print("The image icon is: rbxassetid://" .. productInfo.IconImageAssetId)
 	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.Product>): DeveloperProductInfo;
 	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.GamePass>): AssetProductInfo;
 	/** 
-	 * Returns whether the inventory of given `Player` contains an asset, given the ID. This method can query for hats, models, sounds, etc. This function takes a small amount of time to send a request the Roblox website.
-	 *
-	 * In the case that a query fails, this function will throw an error. Therefore, it is recommended to wrap calls to this function in `pcall`.
-	 *
-	 * * This method should not be used for **game passes**, since they use a separate ID system. Legacy game passes that still depend on an asset ID should use [GamePassService.PlayerHasPass](https://developer.roblox.com/api-reference/function/GamePassService/PlayerHasPass) instead of this method.
-	 *
-	 * * This method cannot be used to check for **developer products** since they can be purchased multiple times but not owned themselves. Use a `GlobalDataStore` to save when a developer has bought a developer product instead.
-	 * @param player A Player object whose inventory shall be tested for the ownership of the given asset
-	 * @param assetId The ID of an asset for which the given player's inventory shall be tested
-	 * @returns Indicates whether the given Player's inventory contains the given asset
+	 * Returns whether the given player has the given asset.
 	 */
 	PlayerOwnsAsset(player: Player, assetId: number): boolean;
 	/** 
-	 * UserOwnsGamePassAsync returns true if the `Player` with the given [UserId](https://developer.roblox.com/api-reference/property/Player/UserId) owns the game pass with the given **game pass ID** (not to be confused with asset ID).
-	 *
-	 * ## Caching Behavior
-	 *
-	 * Results of this function are remembered so that repeated calls will return quicker. This function will always return true if the player owns the game pass upon first entering a server after having purchased the game pass. If the game pass is purchased in-game (through [PromptGamePassPurchase](https://developer.roblox.com/api-reference/function/MarketplaceService/PromptGamePassPurchase)), this function may return false due to the caching behavior. Conversely, should the player delete the game pass from their inventory, this function may return true despite the player not owning the game pass.
-	 *
-	 * ## History
-	 *
-	 * Previously, querying player ownership of game passes required the use of the now-deprecated [GamePassService.PlayerHasPass](https://developer.roblox.com/api-reference/function/GamePassService/PlayerHasPass) function. This was changed in April 2018 when [game passes received their own ID system](https://devforum.roblox.com/t/live-changes-to-game-passes/116918).
-	 *
-	 * On [Release 350](https://developer.roblox.com/resources/release-note/Release-Note-for-350) (August 2018), this function was changed so that the result is cached. Previously, it made a request every time it was called.
-	 * @param userId The `Player/UserId|UserId` of the `Player` whose inventory shall be queried
-	 * @param gamePassId The game pass ID of the game pass to be checked, not to be confused with asset ID
+	 * Returns true if the player with the specified _userId_, owns the game pass with the specified _gamePassId_.
 	 */
 	UserOwnsGamePassAsync(userId: number, gamePassId: number): boolean;
 	/** 
-	 * This event fires when a purchase dialogue of a game pass is closed. This fires right as the dialogue closes when the player presses "Cancel" at the prompt, or "OK" at the success/error message.
-	 *
-	 *  - For **developer product** purchase prompts, connect to
-	 *
-	 *    [MarketplaceService.PromptProductPurchaseFinished](https://developer.roblox.com/api-reference/event/MarketplaceService/PromptProductPurchaseFinished). In order to
-	 *
-	 *    process such purchases you need to set the
-	 *
-	 *    [ProcessReceipt](https://developer.roblox.com/api-reference/callback/MarketplaceService/ProcessReceipt) callback in a
-	 *
-	 *    single script.
-	 *
-	 *  - For **affiliate gear sales** or other assets, use
-	 *
-	 *    [MarketplaceService.PromptPurchaseFinished](https://developer.roblox.com/api-reference/event/MarketplaceService/PromptPurchaseFinished).
+	 * Fires when a gamepass purchase is finished.
 	 */
 	readonly PromptGamePassPurchaseFinished: RBXScriptSignal<
 		(player: Player, gamePassId: number, wasPurchased: boolean) => void
 	>;
 	/** 
-	 * PromptPurchaseFinished fires when a purchase dialogue of an affiliate gear sale or other asset is closed. This fires right as the dialogue closes when the player presses "Cancel" at the prompt, or "OK" at the success/error message.
-	 *
-	 * * For **game passes**, use [MarketplaceService.PromptGamePassPurchaseFinished](https://developer.roblox.com/api-reference/event/MarketplaceService/PromptGamePassPurchaseFinished).
-	 *
-	 * * For **developer product** purchase prompts, connect to [MarketplaceService.PromptProductPurchaseFinished](https://developer.roblox.com/api-reference/event/MarketplaceService/PromptProductPurchaseFinished). In order to process such purchases you need to set the [ProcessReceipt](https://developer.roblox.com/api-reference/callback/MarketplaceService/ProcessReceipt) callback in a single script.
-	 *
-	 * ## Example
-	 *
-	 * Below is a screenshot of an affiliate gear sale prompt. The function in the code sample runs immediately after the player presses "Cancel" or after the user buys the item then presses "OK". Should there be an issue with the purchase, the event also fires.
-	 *
-	 * ![A product purchase prompt for an affiliate gear sale][1]
-	 *
-	 * ```lua
-local MarketplaceService = game:GetService("MarketplaceService")
-
-MarketplaceService.PromptPurchaseFinished:connect(function (...)
-	-- Print all the details of the prompt, for example:
-	-- PromptPurchaseFinished PlayerName 11377306 true
-	print("PromptPurchaseFinished", ...)
-end)
-```
-	 * 
-
-	 * [1]: https://developer.roblox.com/assets/5c3f7bb9aae307c07f2f485f/PromptProductPurchase-confirm.png
+	 * Fires when a purchase is either denied or accepted.
 	 */
 	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
 	/** 
-	 * After a player makes a purchase through a [PromptProductPurchase()](https://developer.roblox.com/api-reference/function/MarketplaceService/PromptProductPurchase) dialog, this callback is called multiple times until it returns `Enum.ProductPurchaseDecision.PurchaseGranted`. For example, the function is called again for a product when the player joins the game&nbsp;&mdash; or even after they have bought something else&nbsp;&mdash; **unless** you return `Enum.ProductPurchaseDecision.PurchaseGranted`.
-	 *
-	 * It's important to carefully examine the information passed to the callback via the **receipt info table** and properly process the receipt. See the code sample below for a model of how to create a receipt handling callback.
+	 * After a player makes a purchase through a `PromptProductPurchase` dialog, this callback is called multiple times until it returns `Enum.ProductPurchaseDecision.Granted`. The function is called again for a purchase when the player joins the game, or after they have bought something else. It is important to carefully examine the information passed to the callback via the `receiptInfo` table in order to properly process the receipt. See the code samples for a good idea of how to properly create a receipt handling callback.
 	 *
 	 * Care and caution are highly recommended in implementing this callback as small mistakes run the risk of failed sales.
 	 *
-	 * As with all callbacks, this function should be set **once and only once** by a single `Script`. If you're selling multiple products in your game, this callback must handle receipts for all of them.
+	 * As with all callbacks, this function ought to be set **once and only once** by **one Script** on the server. If you are selling multiple products in your game, this callback must handle receipts for all of them.
 	 *
-	 * ## Receipt Info Table
+	 * ## Receipt Table
 	 *
-	 * The receipt info table passed to this callback will contain the following data:
-	 *
-	 * | Key | Type | Description |
+	 * | Name | Type | Description |
 	 * | --- | --- | --- |
-	 * | `PurchaseId` | string | A unique identifier for the specific purchase. |
-	 * | `PlayerId` | number | The ID of the player who made the purchase. |
-	 * | `ProductId` | number | The ID of the purchased product. |
-	 * | `CurrencySpent` | number | The amount of currency spent in the purchase. |
-	 * | `CurrencyType` | [CurrencyType](https://developer.roblox.com/search#stq=CurrencyType) | The type of currency spent in the purchase; always `Enum.CurrencyType.Robux`. |
-	 * | `PlaceIdWherePurchased` | number | The ID of the place where the product was purchased (not necessarily the same as the current place's ID). |
+	 * | `PurchaseId` | string | A unique identifier for the purchase to prevent granting the product multiple times. |
+	 * | `PlayerId` | number | The user ID of the player who made the purchase. |
+	 * | `ProductId` | number | The ID of the purchased product |
+	 * | `CurrencySpent` | number | The amount of currency spent in the purchase |
+	 * | `CurrencyType` | CurrencyType (Enum) | The type of currency spent in the purchase; always `Enum.CurrencyType.Robux`. |
+	 * | `PlaceIdWherePurchased` | number | The ID of the place where the product was purchased (not necessarily the same as the current place's ID) |
 	 */
 	ProcessReceipt: (receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision;
 }
@@ -13527,10 +12081,6 @@ interface Hint extends Message {
 }
 
 /** 
- * **Beta**
- *
- * This feature is in beta and may have unexpected or unreliable behavior.
- *
  * The MessagingService allows game servers in the same game to communicate with each other in real time (< 1 second) using topics. Topics are developer defined strings (1-80 characters) that game servers can send and receive messages.
  *
  * Delivery is best effort and not guaranteed. Make sure to architect your game so delivery failures are not critical.
@@ -13642,7 +12192,9 @@ interface Mouse extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Mouse" | "PlayerMouse" | "PluginMouse";
 	/** 
-	 * This property indicates [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) of the mouse's position in 3D space. Note that [Mouse.TargetFilter](https://developer.roblox.com/api-reference/property/Mouse/TargetFilter) and its descendants will be ignored.
+	 * The [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) of the mouse's position in 3D space.
+	 *
+	 * Note, [Mouse.TargetFilter](https://developer.roblox.com/api-reference/property/Mouse/TargetFilter) and its descendants will be ignored.
 	 *
 	 * Developers can get obtain the position of Hit like so:
 	 *
@@ -13657,23 +12209,25 @@ local position = mouse.Hit.p
 	 *
 	 * ## How is Mouse.Hit calculated?
 	 *
-	 * The position of the Hit CFrame is calculated as the point of intersection between the mouse's internal [DataType.Ray](https://developer.roblox.com/search#stq=Ray) (an extended version of [Mouse.UnitRay](https://developer.roblox.com/api-reference/property/Mouse/UnitRay)) and an object in 3D space (such as a part).
+	 * The position of the Hit [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) is calculated as the point of intersection between the mouse's internal [DataType.Ray](https://developer.roblox.com/search#stq=Ray) (an extended version of [Mouse.UnitRay](https://developer.roblox.com/api-reference/property/Mouse/UnitRay)) and an object in 3D space (such as a `BasePart`).
 	 *
-	 * The orientation of the Hit CFrame corresponds with the direction of the [Mouse.UnitRay](https://developer.roblox.com/api-reference/property/Mouse/UnitRay).
+	 * The orientation of the Hit [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) corresponds with the direction of the [Mouse.UnitRay](https://developer.roblox.com/api-reference/property/Mouse/UnitRay).
 	 *
 	 * ```lua
 local unitRayDirection = mouse.UnitRay.Direction
 local mouseHitDirection = mouse.Hit.lookVector
 -- unitRayDirection ≈ mouseHitDirection
--- the vectors are approximately equal
+-- the vectors are aproximately equal
 ```
 	 * 
 
 	 * Note, the roll of the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) is not used when calculating the orientation of the Hit [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame).
 	 *
-	 * The mouse's internal ray extends for 1000 studs. If the mouse is not pointing at an object in 3D space (for example when pointing at the sky), this property will be 1000 studs away from the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera).
+	 * The `Mouse`'s internal ray extends for 1000 studs. If the mouse is not pointing at an object in 3D space (for example when pointing at the sky), Mouse.Hit will be 1000 studs away from the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera).
 	
-	 * This property indicates [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) of the mouse's position in 3D space. Note that [Mouse.TargetFilter](https://developer.roblox.com/api-reference/property/Mouse/TargetFilter) and its descendants will be ignored.
+	 * The [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) of the mouse's position in 3D space.
+	 *
+	 * Note, [Mouse.TargetFilter](https://developer.roblox.com/api-reference/property/Mouse/TargetFilter) and its descendants will be ignored.
 	 *
 	 * Developers can get obtain the position of Hit like so:
 	 *
@@ -13688,21 +12242,21 @@ local position = mouse.Hit.p
 	 *
 	 * ## How is Mouse.Hit calculated?
 	 *
-	 * The position of the Hit CFrame is calculated as the point of intersection between the mouse's internal [DataType.Ray](https://developer.roblox.com/search#stq=Ray) (an extended version of [Mouse.UnitRay](https://developer.roblox.com/api-reference/property/Mouse/UnitRay)) and an object in 3D space (such as a part).
+	 * The position of the Hit [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) is calculated as the point of intersection between the mouse's internal [DataType.Ray](https://developer.roblox.com/search#stq=Ray) (an extended version of [Mouse.UnitRay](https://developer.roblox.com/api-reference/property/Mouse/UnitRay)) and an object in 3D space (such as a `BasePart`).
 	 *
-	 * The orientation of the Hit CFrame corresponds with the direction of the [Mouse.UnitRay](https://developer.roblox.com/api-reference/property/Mouse/UnitRay).
+	 * The orientation of the Hit [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) corresponds with the direction of the [Mouse.UnitRay](https://developer.roblox.com/api-reference/property/Mouse/UnitRay).
 	 *
 	 * ```lua
 local unitRayDirection = mouse.UnitRay.Direction
 local mouseHitDirection = mouse.Hit.lookVector
 -- unitRayDirection ≈ mouseHitDirection
--- the vectors are approximately equal
+-- the vectors are aproximately equal
 ```
 	 * 
 
 	 * Note, the roll of the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) is not used when calculating the orientation of the Hit [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame).
 	 *
-	 * The mouse's internal ray extends for 1000 studs. If the mouse is not pointing at an object in 3D space (for example when pointing at the sky), this property will be 1000 studs away from the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera).
+	 * The `Mouse`'s internal ray extends for 1000 studs. If the mouse is not pointing at an object in 3D space (for example when pointing at the sky), Mouse.Hit will be 1000 studs away from the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera).
 	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -13710,6 +12264,12 @@ local mouseHitDirection = mouse.Hit.lookVector
 	/** 
 	 * The content ID of the image used as the `Mouse`'s icon.
 	 *
+	 * ```lua
+local mouse = game.Players.LocalPlayer:GetMouse()
+mouse.Icon = "http://www.roblox.com/asset?id=163023520"
+```
+	 * 
+
 	 * The size of the mouse's icon is dependent on the dimensions of the image used, and the center of the image should be the mouse's tip. The default mouse image is 64x64 pixels, with the mouse taking up 17x24 pixels of space. Developers can consult the default images which are stored in the following directory:
 	 *
 	 * *AppData/Local/Roblox/Versions/[version]/content/textures*
@@ -13718,7 +12278,7 @@ local mouseHitDirection = mouse.Hit.lookVector
 	 *
 	 * Note, this property is overridden when the mouse is hovering over a `GuiButton`.
 	 *
-	 * For more information on how to change the mouse's icon, please see [this tutorial](https://developer.roblox.com/search#stq=Mouse%20Icon%20Appearance).
+	 * For more information on how to change the mouse's icon, please see [this tutorial](https://developer.roblox.com/search#stq=Customizing%20Mouse%20Appearance).
 	 */
 	Icon: string;
 	/** 
@@ -13754,31 +12314,27 @@ local origin = mouse.Origin
 	 */
 	readonly Origin: CFrame;
 	/** 
-	 * The object in 3D space the [mouse](https://developer.roblox.com/api-reference/class/Mouse) is pointing to.
+	 * The object in 3D space the mouse is pointing to.
 	 *
-	 * ## Notes
+	 * If [Mouse.TargetFilter](https://developer.roblox.com/api-reference/property/Mouse/TargetFilter) has been set, the target filter and its descendants will be ignored.
 	 *
-	 *  - If [Mouse.TargetFilter](https://developer.roblox.com/api-reference/property/Mouse/TargetFilter) has been set, the target filter and its descendants will be ignored.
+	 * When the mouse is not pointing at a `BasePart`, for example when it is pointing at the sky, Target will be nil.
 	 *
-	 *  - When the mouse is not pointing at a `BasePart`, for example when it is pointing at the sky, Target will be nil.
-	 *
-	 *  - Developers looking for the position of the mouse in 3D space should use [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit).
+	 * Developers looking for the position of the mouse in 3D space should use [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit).
 	
-	 * The object in 3D space the [mouse](https://developer.roblox.com/api-reference/class/Mouse) is pointing to.
+	 * The object in 3D space the mouse is pointing to.
 	 *
-	 * ## Notes
+	 * If [Mouse.TargetFilter](https://developer.roblox.com/api-reference/property/Mouse/TargetFilter) has been set, the target filter and its descendants will be ignored.
 	 *
-	 *  - If [Mouse.TargetFilter](https://developer.roblox.com/api-reference/property/Mouse/TargetFilter) has been set, the target filter and its descendants will be ignored.
+	 * When the mouse is not pointing at a `BasePart`, for example when it is pointing at the sky, Target will be nil.
 	 *
-	 *  - When the mouse is not pointing at a `BasePart`, for example when it is pointing at the sky, Target will be nil.
-	 *
-	 *  - Developers looking for the position of the mouse in 3D space should use [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit).
+	 * Developers looking for the position of the mouse in 3D space should use [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit).
 	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Target?: BasePart;
 	/** 
-	 * This property determines an object to be ignored by the mouse when calculating [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit) and [Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target). The descendants of the object are also ignored, so it is possible to ignore multiple objects so long as they are a descendant of the object to which this property is set. This property is useful when filtering models containing special effects or decorations that should not affect [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit) or [Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target).
+	 * The TargetFilter determines an object to be ignored by the mouse when calculating [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit) and [Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target). The descendants of the object are also ignored, so it is possible to ignore multiple objects so long as they are a descendant of the object to which this property is set. This property is useful when filtering models containing special effects or decorations that should not affect [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit) or [Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target).
 	 *
 	 * This property can be set to any `Instance` or nil, for example:
 	 *
@@ -13799,9 +12355,9 @@ mouse.TargetFilter = workspace.Model
 	 */
 	TargetFilter?: Instance;
 	/** 
-	 * This property indicates the [Enum.NormalId](https://developer.roblox.com/search#stq=NormalId) of the `BasePart` surface at which the mouse is pointing. This property is derived from the world position of mouse ([Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit)) and the part toward which the mouse is pointing ([Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target)).
+	 * The TargetSurface property describes the [Enum.NormalId](https://developer.roblox.com/search#stq=NormalId) of the `BasePart` surface at which the mouse is pointing. This property is derived from the world position of mouse ([Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit)) and the `BasePart` toward which the mouse is pointing ([Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target)).
 	 *
-	 * This property isn't meaningful when the mouse is not pointing at a part, for example when the mouse is pointing at the sky. At the moment, this property is set to 'Right' under these circumstances. Before using this property, check that the mouse's target is not nil.
+	 * This property isn't meaningful when the mouse is not pointing at a `BasePart`, for example when the mouse is pointing at the sky. At the moment, this property is set to 'Right' under these circumstances. Before using this property, check that [Target](https://developer.roblox.com/api-reference/property/Mouse/Target) is not nil.
 	 *
 	 * ```lua
 local Players = game:GetService("Players")
@@ -13816,9 +12372,9 @@ end
 ```
 	 *
 	
-	 * This property indicates the [Enum.NormalId](https://developer.roblox.com/search#stq=NormalId) of the `BasePart` surface at which the mouse is pointing. This property is derived from the world position of mouse ([Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit)) and the part toward which the mouse is pointing ([Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target)).
+	 * The TargetSurface property describes the [Enum.NormalId](https://developer.roblox.com/search#stq=NormalId) of the `BasePart` surface at which the mouse is pointing. This property is derived from the world position of mouse ([Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit)) and the `BasePart` toward which the mouse is pointing ([Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target)).
 	 *
-	 * This property isn't meaningful when the mouse is not pointing at a part, for example when the mouse is pointing at the sky. At the moment, this property is set to 'Right' under these circumstances. Before using this property, check that the mouse's target is not nil.
+	 * This property isn't meaningful when the mouse is not pointing at a `BasePart`, for example when the mouse is pointing at the sky. At the moment, this property is set to 'Right' under these circumstances. Before using this property, check that [Target](https://developer.roblox.com/api-reference/property/Mouse/Target) is not nil.
 	 *
 	 * ```lua
 local Players = game:GetService("Players")
@@ -13929,26 +12485,25 @@ local position = Vector2.new(mouse.X, mouse.Y)
 	 */
 	readonly Y: number;
 	/** 
-	 * The Button1Down even fires when the the player presses their left mouse button.
+	 * Fired when the mouse is in the left mouse down state.
 	 *
-	 * This can also be accessed from a `Tool`. For example, when placed in a `LocalScript`, the code below prints Button1Down whenever the left mouse button is pressed:
+	 * }}
 	 *
-	 * ```lua
-local Tool = script.Parent --make sure this is a Tool object
-
-Tool.Equipped:Connect(function(Mouse)
-	Mouse.Button1Down:Connect(function()
-		print("Button1Down")
-	end)
-end).
-```
-	 * 
-
-	 * Developers can find out the position of the mouse in world-space, and if it is pointing at any `BasePart`, using the [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit) and [Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target) properties.
+	 * This can also be accessed from a tool. When the left mouse button is pressed and a `/samp&gt; whenever the left mouse button is pressed:
 	 *
-	 * For information on how to obtain the mouse object, please see the `Mouse` page.
+	 * {{Lua|=
 	 *
-	 * Note, developers are recommended to use `UserInputService` instead of the `Mouse` object in new work.
+	 * local Tool = script.Parent --make sure this is a Tool object
+	 *
+	 * Tool.Equipped:connect(function(Mouse)
+	 *
+	 * 	Mouse.Button1Down:connect(function()
+	 *
+	 * 		print("Button1Down")
+	 *
+	 * 	end)
+	 *
+	 * end).
 	 */
 	readonly Button1Down: RBXScriptSignal<() => void>;
 	/** 
@@ -13962,24 +12517,18 @@ end).
 	 */
 	readonly Button1Up: RBXScriptSignal<() => void>;
 	/** 
-	 * The Button2Down even fires when the the player presses their right mouse button.
-	 *
-	 * This can also be accessed from a `Tool`. For example, when placed in a `LocalScript`, the code below prints Button2Down whenever the right mouse button is pressed:
+	 * Fired when the right mouse button is pressed.
 	 *
 	 * ```lua
-local Tool = script.Parent --make sure this is a Tool object
-
-Tool.Equipped:Connect(function(Mouse)
-	Mouse.Button2Down:Connect(function()
-		print("Button2Down")
-	end)
-end).
+mouse.Button2Down:Connect(function()
+print("button 2 down!")
+end
 ```
 	 * 
 
-	 * Developers can find out the position of the mouse in world-space, and if it is pointing at any `BasePart`, using the [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit) and [Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target) properties.
+	 * For information on how to obtain the `Mouse` object, please see the `Mouse` page.
 	 *
-	 * For information on how to obtain the mouse object, please see the `Mouse` page.
+	 * Developers can find out the position of the mouse in world-space, and if it is pointing at any `BasePart` using the [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit) and [Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target) properties.
 	 *
 	 * Note, developers are recommended to use `UserInputService` instead of the `Mouse` object in new work.
 	 */
@@ -14123,15 +12672,15 @@ interface NetworkClient extends NetworkPeer {
 	 */
 	Ticket: string;
 	/** 
-	 * Fired when the client successfully connects to a server. Returns a string showing the server's IP and Port, and the client's `ClientReplicator`.
+	 * Fired when [PlayerConnect](https://wiki.roblox.com/index.php?title=PlayerConnect) successfully connects to a server. Returns a string showing the server's IP and Port, and the client's [ClientReplicator](https://wiki.roblox.com/index.php?title=ClientReplicator).
 	 */
 	readonly ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: ClientReplicator) => void>;
 	/** 
-	 * Fired if the client fails to connect to the server.
+	 * Fired if [PlayerConnect](https://wiki.roblox.com/index.php?title=PlayerConnect) fails to connect to the server.
 	 */
 	readonly ConnectionFailed: RBXScriptSignal<(peer: string, code: number, reason: string) => void>;
 	/** 
-	 * Fires if the client tries to connect to a server, but the request to join was rejected.
+	 * Fired when [PlayerConnect](https://wiki.roblox.com/index.php?title=PlayerConnect) connects to a server, but the request to join it was rejected.
 	 *
 	 * This usually occurs when the client isn't on the right version of Roblox.
 	 */
@@ -14651,7 +13200,7 @@ interface NetworkSettings extends Instance {
 	 *
 	 * This will only be shown if [Workspace.StreamingEnabled](https://developer.roblox.com/api-reference/property/Workspace/StreamingEnabled) is set to true.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blte3c189bb8bdbf8e3/ShowStreamedRegions.png
+	 * [1]: https://developer.roblox.com/assets/5ade6872baed3a514c372354/ShowStreamedRegions.png
 	 */
 	RenderStreamedRegions: boolean;
 	/** 
@@ -14679,6 +13228,20 @@ interface NetworkSettings extends Instance {
 }
 
 /** 
+ 
+ */
+interface NoCollisionConstraint extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "NoCollisionConstraint";
+	/** If true Part0 and Part1 will not collide, if false the parts will collide. */
+	Enabled: boolean;
+	/** [NO DOCUMENTATION] */
+	Part0?: BasePart;
+	/** [NO DOCUMENTATION] */
+	Part1?: BasePart;
+}
+
+/** 
  * An unfinished service that would allow you to schedule notifications.
  *
  * Currently goes unimplemented, and cannot be enabled.
@@ -14689,7 +13252,7 @@ interface NotificationService extends Instance {
 }
 
 /** 
- * A PVInstance is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically `BasePart` and `Model`. The PV in PVInstance stands for _Position-Velocity_. This class has existed since 2005, and while the class itself no longer has any functionality, it is used for adornable objects that can be connected to both BaseParts and Models.
+ * A PVInstance is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically `/BasePart`s and `/Model`s. The PV in PVInstance stands for ''Position-Velocity''. This class has existed since 2005, and while the class itself no longer has any functionality, it is used for adornable objects that can be connected to both BaseParts and Models. .
  */
 interface PVInstance extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -14942,25 +13505,7 @@ interface BasePart extends PVInstance {
 	 * The Locked property determines whether a [part](https://developer.roblox.com/api-reference/class/BasePart) (or a [model](https://developer.roblox.com/api-reference/class/Model) it is contained within) may be selected in Roblox Studio by clicking on it. This property is most often enabled on parts within environment models that aren't being edited at the moment. Roblox Studio has a Lock/Unlock All tool that can toggle the Locked state of every part descendant in a model at once.
 	 */
 	Locked: boolean;
-	/** 
-	 * If this property is enabled, the [part](https://developer.roblox.com/api-reference/class/BasePart) will not contribute to the total mass or inertia of its rigid body as long as it is [welded](https://developer.roblox.com/api-reference/class/Weld) to another part that has mass.
-	 *
-	 * If the part is its own root part according to [BasePart.GetRootPart](https://developer.roblox.com/api-reference/function/BasePart/GetRootPart) then this will be ignored for that part, and it will still contribute mass and inertia to its rigid body like a normal part. Parts that are massless should never become an assembly root part unless all other parts in the assembly are also massless.
-	 *
-	 * This might be useful for things like optional accessories on vehicles that you don’t want to affect the handling of the car or a massless render mesh welded to a simpler collision mesh. For instance, to create a massless `MeshPart`, you would use the follow code:
-	 *
-	 * ```lua
-local mesh = Instance.new("MeshPart")
-mesh.Parent = game.Workspace
-mesh.MeshId = "insert meshId here"
-mesh.Massless = true
-```
-	 * 
-
-	 * ## See also
-	 *
-	 * - [Understanding Root Parts](https://developer.roblox.com/search#stq=understanding%20root%20parts), an article documenting what root parts are and how to use them
-	 */
+	/** If true the part will be massless when welded to another part that is not massless. The part will still have mass like a normal part if it is an assembly root part according to GetRootPart(). */
 	Massless: boolean;
 	/** 
 	 * The Material property allows a builder to set a part's texture and default physical properties (in the case that [BasePart.CustomPhysicalProperties](https://developer.roblox.com/api-reference/property/BasePart/CustomPhysicalProperties) is unset). The default Plastic material has a very light texture, and the SmoothPlastic material has no texture at all. Some material textures like DiamondPlate and Granite have very visible textures. Each material's texture reflects sunlight differently, especially Foil.
@@ -15134,16 +13679,29 @@ mesh.Massless = true
 	 */
 	CanCollideWith(part: BasePart): boolean;
 	/** 
-	 * The CanSetNetworkOwnership function checks whether you can set a [part's](https://developer.roblox.com/api-reference/class/BasePart) network ownership.
+	 * Verifies whether or not you can call [BasePart.SetNetworkOwner](https://developer.roblox.com/api-reference/function/BasePart/SetNetworkOwner) or [BasePart.SetNetworkOwnershipAuto](https://developer.roblox.com/api-reference/function/BasePart/SetNetworkOwnershipAuto) without encountering an error. Returns true if you can modify/read the network ownership, or returns false + the reason you can't, as a string.
 	 *
-	 * The function’s return value verifies whether or not you can call [BasePart.SetNetworkOwner](https://developer.roblox.com/api-reference/function/BasePart/SetNetworkOwner) or [BasePart.SetNetworkOwnershipAuto](https://developer.roblox.com/api-reference/function/BasePart/SetNetworkOwnershipAuto) without encountering an error. It returns true if you can modify/read the network ownership, or returns false and the reason you can't, as a string.
+	 * ## Example
 	 *
-	 * ##See Also
+	 * This example checks whether or not the network ownership of the first `BasePart` named "Part" in the `Workspace` can be set.
 	 *
-	 *  * [Network ownership][1]
+	 * ```lua
+local part = workspace:FindFirstChild("Part")
+
+if part and part:IsA("BasePart") then
+	local canSet,errorReason = part:CanSetNetworkOwnership()
+	if canSet then
+		print(part:GetFullName().."'s Network Ownership can be changed!")
+	else
+		warn("Cannot change the Network Ownership of "..part:GetFullName().." because: "..errorReason)
+	end
+end
+```
+	 * 
+
+	 * ## See Also
 	 *
-	 * [1]: https://developer.roblox.com/articles/Network-Ownership
-	 * @returns Whether you can modify/read the network ownership, as well as a reason if you cannot
+	 * * [Network ownership](https://wiki.roblox.com/index.php?title=Network_ownership)
 	 */
 	/** @rbxts server */
 	CanSetNetworkOwnership(): LuaTuple<[boolean, string | undefined]>;
@@ -15174,16 +13732,7 @@ mesh.Massless = true
 	 */
 	GetJoints(): Array<Constraint | JointInstance>;
 	/** 
-	 * The GetMass function returns the [part's](https://developer.roblox.com/api-reference/class/BasePart) mass.
-	 *
-	 * This can vary depending on the part's [material](https://developer.roblox.com/api-reference/property/BasePart/Material) and the size. The [ material enum](https://developer.roblox.com/search#stq=Material) page contains a table of all materials and their densities. Parts made of materials with greater densities have more mass than equally sized parts made of materials with lesser densities.
-	 *
-	 * Note that a part’s density differs from the densities listed on the [material][1] page if the part’s [BasePart.CustomPhysicalProperties](https://developer.roblox.com/api-reference/property/BasePart/CustomPhysicalProperties) property is set.
-	 *
-	 * You can also determine location of the part's center of mass via the [BasePart.CenterOfMass](https://developer.roblox.com/api-reference/property/BasePart/CenterOfMass) property.
-	 *
-	 * [1]: http://wiki.roblox.com/index.php?title=API:Enum/Material
-	 * @returns The part's mass
+	 * Returns the object's mass. This can vary depending on the [Material](https://wiki.roblox.com/index.php?title=Material) in use by the object, and the size of the object.
 	 */
 	GetMass(): number;
 	/** 
@@ -15199,13 +13748,13 @@ mesh.Massless = true
 	/** @rbxts server */
 	GetNetworkOwnershipAuto(): boolean;
 	/** 
-	 * Returns the base part of an assembly (a collection of parts connected together). When moving an assembly of parts using a [CFrame](https://developer.roblox.com/api-reference/datatype/CFrame) it is important to move this base part (this will move all other parts connected to it accordingly.
-	 * @returns The base part of an assembly (a collection of parts connected together)
+	 * Returns the base part of an assembly (a collection of parts connected together). When moving an assembly of parts using a [CFrame](https://wiki.roblox.com/index.php?title=CFrame) it is important to move this base part (this will move all other parts connected to it accordingly.
 	 */
 	GetRootPart(): BasePart;
 	/** 
-	 * Returns a table of all parts that are physically interacting with this part. If the part itself has CanCollide set to false, then this function will return an empty table UNLESS it has a `TouchInterest` (AKA: Something is connected to its Touched event). Parts that are adjacent but not intersecting are not considered touching.
-	 * @returns A table of all parts that intersect and can collide with this part
+	 * Returns a table of all [CanCollide](https://wiki.roblox.com/index.php?title=CanCollide) true parts that intersect with this part. If the part itself is CanCollide false, then this function will return an empty table UNLESS it has a TouchInterest (AKA: Something is connected to its Touched event). Parts that are adjacent but not intersecting are not considered touching.
+	 *
+	 * These parts are not touchingThese parts are touching
 	 */
 	GetTouchingParts(): Array<BasePart>;
 	/** 
@@ -15232,9 +13781,7 @@ mesh.Massless = true
 	 *
 	 * ## See Also
 	 *
-	 * * [NetworkOwnership](https://developer.roblox.com/articles/Network-Ownership)
-	 * @param playerInstance The player being given network ownership of the part
-	 * @returns void
+	 * * [NetworkOwnership](https://wiki.roblox.com/index.php?title=NetworkOwnership)
 	 */
 	/** @rbxts server */
 	SetNetworkOwner(playerInstance?: Player): void;
@@ -15509,43 +14056,27 @@ interface Part extends FormFactorPart {
 }
 
 /** 
- * The `Flag` and `FlagStand` objects were created to allow developers to make 'Capture the Flag' style games quickly. However they have been deprecated and developers are advised to design their own systems which will be more flexible and reliable.
- *
- * To get started with this, developers can use the 'Capture The Flag' template place provided by Roblox which has a fully functioning system developers can take and use in their own games. A link to the place, which is free to edit, is [here][1].
- *
- * [1]: https://www.roblox.com/games/92721754/Capture-The-Flag#!/about
+ * The FlagStand and `Flag` are deprecated objects that were used to make capture the flag games.
  */
 interface FlagStand extends Part {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "FlagStand";
 	/** 
 	 * The Team that owns the `FlagStand`. Corresponds with the TeamColors in the `Teams` service.
-	 *
-	 * The `Flag` and `FlagStand` objects were created to allow developers to make 'Capture the Flag' style games quickly. However they have been deprecated and developers are advised to design their own systems which will be more flexible and reliable.
-	 *
-	 * To get started with this, developers can use the 'Capture The Flag' template place provided by Roblox which has a fully functioning system developers can take and use in their own games. A link to the place, which is free to edit, is [here][1].
-	 *
-	 * [1]: https://www.roblox.com/games/92721754/Capture-The-Flag#!/about
 	 */
 	TeamColor: BrickColor;
 	/** 
-	 * This event fires when a player bearing an opposing flag, and having the same [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) as the stand, touches the `FlagStand`.
-	 *
-	 * The `Flag` and `FlagStand` objects were created to allow developers to make 'Capture the Flag' style games quickly. However they have been deprecated and developers are advised to design their own systems which will be more flexible and reliable.
-	 *
-	 * To get started with this, developers can use the 'Capture The Flag' template place provided by Roblox which has a fully functioning system developers can take and use in their own games. A link to the place, which is free to edit, is [here][1].
-	 *
-	 * [1]: https://www.roblox.com/games/92721754/Capture-The-Flag#!/about
+	 * Fires when a player bearing an opposing flag, and having the same [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) as the stand, touches the `FlagStand`.
 	 */
 	readonly FlagCaptured: RBXScriptSignal<(player: Player) => void>;
 }
 
 /** 
- * The Platform object creates a brick that when touched by a `Player` will anchor their torso to the brick. This allows for the creation of vehicles that players can stand in and not be flung about the cabin/deck of the vehicle.
+ * The Platform object creates a brick that when touched by a player will anchor their torso to the brick. This allows for the creation of vehicles that players can stand in and not be flung about the cabin/deck of the vehicle.
  *
- * The Platform is almost identical to the `Seat` object, except that instead of sitting down the player will be standing while locked in place. Good for ships.
+ * The Platform is almost identical to the `/Seat` object, except that instead of sitting down the player will be standing while locked in place.  The Platform object is missing the [Seat.Occupant](https://developer.roblox.com/api-reference/property/Seat/Occupant) property that the other seat classes have.
  *
- * The Platform object is very useful for making people's characters staying in one spot while they move around, such as a ship or truck. When a player touches the Platform a `Weld` constraint is created, so they are 'attached' to the Platform and can't move until that weld is broken. It can be removed by hitting the spacebar, when the player jumps to exit the Platform.
+ * The Platform object is very useful for making people's characters staying in one spot while they move around, such as a ship or truck. When a player touches the Platform a `/Weld` constraint is created, so they are 'attached' to the Platform and can't move until that weld is broken. It can be removed by hitting the spacebar, when the player jumps to exit the Platform.
  */
 interface Platform extends Part {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -15557,7 +14088,7 @@ interface Platform extends Part {
  *
  * ## How do Seats work?
  *
- * When a model containing a `Humanoid` and a `BasePart` called 'HumanoidRootPart' (generally a player character) touches a seat, a `Weld` is created between the seat and the part. The [C0](https://developer.roblox.com/api-reference/property/JointInstance/C0) and [C1](https://developer.roblox.com/api-reference/property/JointInstance/C1) properties are configured so that the character is welded 2 studs above the seat. This weld is named 'SeatWeld' and parented to the seat.
+ * When a model containing a `Humanoid` and a `BasePart` called 'HumanoidRootPart' (generally a player character) touches a seat, a `Weld` is created between the seat and the part. The [Weld.C0](https://developer.roblox.com/search#stq=C0) and [Weld.C1](https://developer.roblox.com/search#stq=C1) properties are configured so that the character is welded 2 studs above the seat. This weld is named 'SeatWeld' and parented to the seat.
  *
  * When sitting the [Seat.Occupant](https://developer.roblox.com/api-reference/property/Seat/Occupant) property is set to the `Humanoid` that is 'sitting' in the seat. Furthermore the [Humanoid.SeatPart](https://developer.roblox.com/api-reference/property/Humanoid/SeatPart) property of the humanoid is set to the seat.
  *
@@ -15591,7 +14122,7 @@ interface Seat extends Part {
 	 */
 	readonly Occupant?: Humanoid;
 	/** 
-	 * Forces the character with the specified [Humanoid](https://developer.roblox.com/api-reference/class/Humanoid) to sit in the Seat.
+	 * Forces the character with the specified [Humanoid](https://wiki.roblox.com/index.php?title=Humanoid) to sit in the Seat.
 	 */
 	Sit(humanoid: Humanoid): void;
 }
@@ -15641,7 +14172,7 @@ interface SkateboardPlatform extends Part {
 }
 
 /** 
- * SpawnLocations, or "spawns" determine where a `Player` respawns when they die. They can be configured to allow only certain players to use each spawn, using [Teams](https://developer.roblox.com/api-reference/class/Team). They also control how [ForceFields](https://developer.roblox.com/api-reference/class/ForceField) are set up for newly-spawned players.
+ * SpawnLocations, or "spawns" determine where a `Player` respawns when they die. They can be configured to allow only certain players to use each spawn, using `Team`s. They also control how `ForceField`s are set up for newly-spawned players.
  *
  * SpawnLocations can be used as checkpoints, such as in an obstacle course, using the [SpawnLocation.AllowTeamChangeOnTouch](https://developer.roblox.com/api-reference/property/SpawnLocation/AllowTeamChangeOnTouch) property, so that when a player touches it, they will change teams to the SpawnLocation's team. In this case, only the first `Team` should have [Team.AutoAssignable](https://developer.roblox.com/api-reference/property/Team/AutoAssignable) set to true, else players will not start at the first checkpoint.
  *
@@ -15649,25 +14180,33 @@ interface SkateboardPlatform extends Part {
  *
  * **Spawning Rules**
  *
- *  - When [SpawnLocation.Neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) is set to false only [Players](https://developer.roblox.com/api-reference/class/Player) with [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) matching [SpawnLocation.TeamColor](https://developer.roblox.com/api-reference/property/SpawnLocation/TeamColor) will respawn above it
+ *  - When [SpawnLocation.Neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) is set to false only `Player`s with [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) matching [SpawnLocation.TeamColor](https://developer.roblox.com/api-reference/property/SpawnLocation/TeamColor) will respawn above it
  *
  *  - When [SpawnLocation.Neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) is set to true any Player can spawn above it regardless of [SpawnLocation.TeamColor](https://developer.roblox.com/api-reference/property/SpawnLocation/TeamColor)
  *
  *  - If multiple eligible spawns are available to a `Player`, a random one will be chosen
  *
- *  - Players will spawn at different points on top of a SpawnLocation, but currently, they may still spawn on top of each other if they spawn right after one and other
+ *  - Players will spawn at different points on top of a SpawnLocation, but currently they may still spawn on top of each other if they spawn right after one and other
  */
 interface SpawnLocation extends Part {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "SpawnLocation";
 	/** 
-	 * Allows a `Player` to join the team by touching the `SpawnLocation`. When set to true, if a `Player` character comes into contact with the `SpawnLocation`, the player's [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) will be set to [SpawnLocation.TeamColor](https://developer.roblox.com/api-reference/property/SpawnLocation/TeamColor). [Player.Neutral](https://developer.roblox.com/api-reference/property/Player/Neutral) will also be set to [SpawnLocation.Neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) upon contact, meaning a player can also become neutral by touching a spawn location.
+	 * Allows a `Player` to join the team by touching the `SpawnLocation`. When set to true, when a `Player` character comes into contact with the `SpawnLocation`, the Player's [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) will be set to [SpawnLocation.TeamColor](https://developer.roblox.com/api-reference/property/SpawnLocation/TeamColor).
 	 *
-	 * This will not function when [SpawnLocation.Enabled](https://developer.roblox.com/api-reference/property/SpawnLocation/Enabled) is set to false.
+	 * [Player.Neutral](https://developer.roblox.com/api-reference/property/Player/Neutral) will also be set to [SpawnLocation.Neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) upon contact. This means a player can become neutral by touching a spawn location too.
 	 *
-	 * ## Making Checkpoints
+	 * Note this will not function when [SpawnLocation.Enabled](https://developer.roblox.com/api-reference/property/SpawnLocation/Enabled) is set to false.
 	 *
-	 * This feature is often used to make checkpoints in obstacle courses or similar games. See [Using Player Spawns](https://developer.roblox.com/search#stq=How%20to%20use%20Spawn%20Objects%20with%20Roblox%20Studio) for details.
+	 * **Making checkpoints**
+	 *
+	 * This feature is commonly used to make checkpoints in obstacle courses or similar games. To achieve this, create a `SpawnLocation` corresponding to a different `Team` for each checkpoint. Set AllowTeamChangeOnTouch for each checkpoint. Only the Team corresponding with the first `SpawnLocation` should be have [Team.AutoAssignable](https://developer.roblox.com/api-reference/property/Team/AutoAssignable) set to true, else players will not start at the first checkpoint. [SpawnLocation.Neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) should be set to false for all spawns.
+	 *
+	 * When a player touches the `SpawnLocation` their team will be changed. This means when they die they will re-spawn at that `SpawnLocation` (as each team only has one spawn).
+	 *
+	 * Note that under this setup it is possible for `Player`s to go backwards through checkpoints as well, if they touch a `SpawnLocation` for a previous checkpoint. One answer to this, in places with Experimental Mode disabled, is setting AllowTeamChangeOnTouch to false once the player touches a checkpoint in a `LocalScript`. This will not replicate to the server and means the Player can not lose progress by inadvertently touching an old checkpoint.
+	 *
+	 * However developers more comfortable with Lua often chose to make their own checkpoint system.
 	 */
 	AllowTeamChangeOnTouch: boolean;
 	/** 
@@ -15695,7 +14234,7 @@ interface SpawnLocation extends Part {
 	 */
 	Neutral: boolean;
 	/** 
-	 * The TeamColor property sets what team the `SpawnLocation` is affiliated to. If [SpawnLocation.Neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) property is false, only `Player`s with the same [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) as the spawn's TeamColor will be able to spawn there.
+	 * Sets what team the `SpawnLocation` is affiliated to. If [SpawnLocation.Neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) property is false, only `Player`s with the same [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) as the spawn's TeamColor will be able to spawn there.
 	 *
 	 * If [SpawnLocation.AllowTeamChangeOnTouch](https://developer.roblox.com/api-reference/property/SpawnLocation/AllowTeamChangeOnTouch) is true [Player.Neutral](https://developer.roblox.com/api-reference/property/Player/Neutral) will be set to this property upon contact with the spawn.
 	 */
@@ -15703,7 +14242,7 @@ interface SpawnLocation extends Part {
 }
 
 /** 
- * WedgeParts are great for building slopes because of their slanted surface. They can even be rotated onto their slant so that they can be used at an angle to make a triangular ramp. Due to their collision, WedgeParts can be good for quickly rotating bricks to a certain angle within Roblox Studio, making them a quick solution to using scripting methods such as CFrame to perform the same function. WedgeParts can be adjusted to any size a regular brick can so that they can be aligned with the rest of your building work. WedgeParts, when used next to each other at different angles, can also make great curved ramps without the need for CFrame too
+ * WedgeParts are great for building slopes because of their slanted surface. They can even be rotated onto their slant so that they can be used at an angle to make a triangular ramp. Due to their collision, WedgeParts can be good for quickly rotating bricks to a certain angle within [Roblox Studio](https://wiki.roblox.com/index.php?title=Roblox_Studio), making them a quick solution to using scripting methods such as CFrame to perform the same function. WedgeParts can be adjusted to any size a regular brick can so that they can be aligned with the rest of your building work. WedgeParts, when used next to each other at different angles, can also make great curved ramps without the need for CFrame too.
  */
 interface WedgePart extends FormFactorPart {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -15769,7 +14308,7 @@ interface Terrain extends BasePart {
 	 */
 	FillBlock(cframe: CFrame, size: Vector3, material: CastsToEnum<Enum.Material>): void;
 	/** 
-	 * Fills a [Region3](https://developer.roblox.com/api-reference/datatype/Region3) space with smooth terrain.
+	 * Fills a [Region3](https://wiki.roblox.com/index.php?title=Region3) space with smooth terrain.
 	 */
 	FillRegion(region: Region3, resolution: number, material: CastsToEnum<Enum.Material>): void;
 	/** 
@@ -15781,7 +14320,7 @@ interface Terrain extends BasePart {
 	 */
 	PasteRegion(region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): void;
 	/** 
-	 * Returns a certain region of [smooth terrain](https://developer.roblox.com/articles/Intro-To-Terrain) in [table format](https://developer.roblox.com/articles/Intro-To-Terrain#Reading_and_writing_voxels) . Both of the return arrays have an additional `.Size` property, a [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3).
+	 * Returns a certain region of [smooth terrain](https://wiki.roblox.com/index.php?title=Smooth_terrain) in [table format](https://wiki.roblox.com/index.php?title=Smooth_terrain#Reading_and_writing_voxels) . Both of the return arrays have an additional `.Size` property, a [Vector3](https://wiki.roblox.com/index.php?title=Vector3).
 	 */
 	ReadVoxels(
 		region: Region3,
@@ -15804,7 +14343,7 @@ interface Terrain extends BasePart {
 	 */
 	WorldToCellPreferSolid(position: Vector3): Vector3;
 	/** 
-	 * Sets a certain region of [smooth terrain](https://developer.roblox.com/articles/Intro-To-Terrain) using the [table format](https://developer.roblox.com/articles/Intro-To-Terrain#Reading_and_writing_voxels)
+	 * Sets a certain region of [smooth terrain](https://wiki.roblox.com/index.php?title=Smooth_terrain) using the [table format](https://wiki.roblox.com/index.php?title=Smooth_terrain#Reading_and_writing_voxels)
 	 */
 	WriteVoxels(
 		region: Region3,
@@ -15851,9 +14390,15 @@ interface MeshPart extends TriangleMeshPart {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "MeshPart";
 	/** 
-	 * The **MeshId** is the content ID of the mesh that is to be displayed on the `MeshPart`.
+	 * The MeshId is the content ID of the mesh that is to be displayed on the `MeshPart`.
 	 *
-	 * Note that this property currently cannot be changed by scripts as the collision model of the mesh cannot be recomputed during runtime. Developers should not rely on this behavior as it may change in the future. Those looking for a custom mesh object that can be updated during runtime should use `SpecialMesh`.
+	 * ## How do I create a mesh?
+	 *
+	 * Meshes can currently only be be uploaded using `MeshPart`s or the game explorer. Once uploaded however, the content ID for the mesh can be used for the MeshId property. For more information on how to do this please see [this tutorial](https://developer.roblox.com/search#stq=Mesh%20Parts).
+	 *
+	 * Note currently this property cannot be changed by scripts as the collision model of the mesh cannot be recomputed during run-time. Developers should not rely on this behavior as it is possible it may change in the future. Those looking for a custom mesh object that can be updated during runtime should use `SpecialMesh`.
+	 *
+	 * [1]: http://wiki.roblox.com/index.php?title=Mesh_Parts
 	 */
 	readonly MeshId: string;
 	/** [NO DOCUMENTATION] */
@@ -15906,7 +14451,7 @@ interface PartOperation extends TriangleMeshPart {
 }
 
 /** 
- * A CSG part created by the "Negate" option in studio ([Solid modeling](https://developer.roblox.com/articles/3D-Modeling-with-Parts)).
+ * A CSG part created by the "Negate" option in studio ([Solid modeling](https://wiki.roblox.com/index.php?title=Solid_modeling)).
  *
  * Union this with another part, to cut this part out of the second one.
  */
@@ -15916,7 +14461,7 @@ interface NegateOperation extends PartOperation {
 }
 
 /** 
- * A CSG part created by the "Union" option in studio ([Solid modeling](https://developer.roblox.com/articles/3D-Modeling-with-Parts)).
+ * A CSG part created by the "Union" option in studio ([Solid modeling](https://wiki.roblox.com/index.php?title=Solid_modeling)).
  *
  * It is two (or more) parts merged into each other, which can be separated again.
  */
@@ -15996,7 +14541,7 @@ interface VehicleSeat extends BasePart {
 	 */
 	TurnSpeed: number;
 	/** 
-	 * Forces the character with the specified [Humanoid](https://developer.roblox.com/api-reference/class/Humanoid) to sit in the VehicleSeat.
+	 * Forces the character with the specified [Humanoid](https://wiki.roblox.com/index.php?title=Humanoid) to sit in the VehicleSeat.
 	 */
 	Sit(humanoid: Humanoid): void;
 }
@@ -16156,11 +14701,11 @@ interface Workspace extends Model {
 	 *
 	 * Note, [developer products](https://developer.roblox.com/search#stq=Developer%20Products%20–%20In-Game%20Purchases) can only be sold in the game they are associated with, regardless of what AllowThirdPartySales is set to. This property will function for [game passes](https://developer.roblox.com/search#stq=Game%20Passes%20–%20Abilities%20and%20Bonuses) and [clothing](https://developer.roblox.com/search#stq=How%20to%20Make%20Shirts%20and%20Pants%20for%20Roblox%20Characters) however.
 	 *
-	 * [1]: https://developer.roblox.com/articles/Developer-Products-In-Game-Purchases
+	 * [1]: http://wiki.roblox.com/index.php?title=Developer_Products_%E2%80%93_In-Game_Purchases
 	 *
-	 * [2]: https://developer.roblox.com/articles/Game-Passes-One-Time-Purchases
+	 * [2]: http://wiki.roblox.com/index.php?title=Game_Passes_%E2%80%93_Abilities_and_Bonuses
 	 *
-	 * [3]: https://developer.roblox.com/articles/How-to-Make-Shirts-and-Pants-for-Roblox-Characters
+	 * [3]: http://wiki.roblox.com/index.php/How_to_Make_Shirts_and_Pants
 	 */
 	AllowThirdPartySales: boolean;
 	/** 
@@ -16208,15 +14753,13 @@ print(elapsedTime()) --&gt; Time since Roblox started running
 	 */
 	DistributedGameTime: number;
 	/** 
-	 * This property determines the height at which falling [BaseParts](https://developer.roblox.com/api-reference/class/BasePart) (and their ancestor [Models](https://developer.roblox.com/api-reference/class/Model)) are destroyed.
-	 *
-	 * ![Parts being destroyed at the FallenPartsDestroyHeight][1]
+	 * Sets the height at which falling `BasePart`s (and their ancestor `Model`s) are destroyed.
 	 *
 	 * ## What happens to falling parts?
 	 *
-	 * For performance reasons, Roblox automatically destroys (using [Instance.Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy)) parts that fall below this value. This is to prevent parts that have fallen off the map from continuing to fall forever.
+	 * For performance reasons, Roblox automatically destroys (using [Instance.Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy)) `BasePart`s that fall below this value. This is to prevent `BasePart`s that have fallen off the map from continuing to fall forever.
 	 *
-	 * If a part destroyed due to this behavior is the last part in a model, then that `model will also be destroyed. This applies to all model ancestors of the part.
+	 * If a `BasePart` destroyed due to this behavior is the last `BasePart` in a `Model`, then that `Model` will also be destroyed. This applies to all `Model` ancestors of the `BasePart`.
 	 *
 	 * This property can be read by scripts, but can only be set by plugins, the command bar or the properties window in Roblox Studio.
 	 *
@@ -16225,13 +14768,9 @@ print(elapsedTime()) --&gt; Time since Roblox started running
 	 *  - Developers should also use the `Debris` service to clean up parts that are no longer needed, but have not fallen off the map
 	 *
 	 *  - This property is clamped between -50,000 and 50,000. This is because `BasePart`s do not simulate or render properly at a great distance from the origin due to floating point inaccuracies
-	 *
-	 * [1]: https://developer.roblox.com/assets/5b65c33eba048a343db86bf8/FallenPartsDestroyHeight.gif
 	 */
 	readonly FallenPartsDestroyHeight: number;
 	/** 
-	 * **Warning!** Experimental Mode has been discontinued, meaning this property will no longer take effect.
-	 *
 	 * Determines whether changes made from the client will replicate to the server or not. When this property is disabled, the game is in 'Experimental Mode'.
 	 *
 	 * This property is not replicated, meaning it cannot be changed once the game has started. For this reason, developers should only set this property in Roblox Studio.
@@ -16270,15 +14809,15 @@ print(elapsedTime()) --&gt; Time since Roblox started running
 	 *
 	 *  - [Game Security][5] How to use FilteringEnabled to improve the security of your game
 	 *
-	 * [1]: https://developer.roblox.com/articles/Network-Ownership
+	 * [1]: http://wiki.roblox.com/index.php?title=Network_ownership
 	 *
-	 * [2]: https://developer.roblox.com/articles/Experimental-Mode
+	 * [2]: https://wiki.roblox.com/index.php?title=Experimental_Mode
 	 *
-	 * [3]: https://developer.roblox.com/articles/Building-Games-with-Experimental-Mode-Off
+	 * [3]: https://wiki.roblox.com/index.php?title=Building_Games_with_Experimental_Mode_Off
 	 *
-	 * [4]: https://developer.roblox.com/articles/Converting-From-Experimental-Mode
+	 * [4]: https://wiki.roblox.com/index.php?title=Converting_Experimental_Mode_Games
 	 *
-	 * [5]: https://developer.roblox.com/articles/Game-Security
+	 * [5]: https://wiki.roblox.com/index.php?title=Game_Security
 	 */
 	readonly FilteringEnabled: boolean;
 	/** 
@@ -16298,46 +14837,39 @@ print(elapsedTime()) --&gt; Time since Roblox started running
 	 */
 	StreamingEnabled: boolean;
 	/** 
-	 * This property is a reference to the `Terrain` object parented to the `Workspace`.
-	 *
-	 * ![An example of Roblox terrain][1]
+	 * A reference to the `Terrain` object parented to the `Workspace`.
 	 *
 	 * This property, like [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera), ensures that developers to not inadvertently index a descendant of `Workspace` named 'Terrain' when looking for a game's `Terrain` object. Without this property, developers would need to use the [Instance.FindFirstChildOfClass](https://developer.roblox.com/api-reference/function/Instance/FindFirstChildOfClass) function.
 	 *
 	 * ```lua
 workspace.Terrain.WaterColor = Color3.new(0, 1, 0) -- make the water green
 ```
-	 * 
-
-	 * [1]: https://developer.roblox.com/assets/5b65bf0c4bf5bf624023ee26/Terrain.png
+	 *
 	 */
 	Terrain: Terrain;
 	/** 
-	 * FindPartOnRay uses [raycasting][1] to find the first `BasePart` intersecting with a given [DataType.Ray](https://developer.roblox.com/search#stq=Ray). This function returns the position of intersection, the surface normal of the intersecting `BasePart` at the point of intersection, and the `BasePart`'s [BasePart.Material](https://developer.roblox.com/api-reference/property/BasePart/Material).
+	 * Returns the first `BasePart` intersecting with the given [DataType.Ray](https://developer.roblox.com/search#stq=Ray).
+	 *
+	 * This function also returns the position of intersection, the surface normal of the intersecting `BasePart` at the point of intersection, and the `BasePart`'s [BasePart.Material](https://developer.roblox.com/api-reference/property/BasePart/Material).
+	 *
+	 * This optional ignoreDescendantsInstance parameter allows developers to specify a specific object which (with the addition of its descendants) is to be ignored. For example, the following code snippet would cast a ray from a player's head, ignoring the character.
 	 *
 	 * ```lua
 local character = game.Players.LocalPlayer.Character
--- Get the head
+-- get the head
 local head = character:FindFirstChild("Head")
--- Build a ray in the direction the head is facing
+-- build a ray in the direction the head is facing
 local origin = head.Position
 local lookDirection = head.CFrame.lookVector
 local ray = Ray.new(origin, lookDirection * 500)
--- Raycast, ignoring the player's character
-local part, hitPosition = workspace:FindPartOnRay(ray, character)
-if part then
-	print("Hit part: " .. part:GetFullName())
-else
-	print("Did not hit part")
-end
+-- ignore the character
+local rayHit, hitPosition = workspace:FindPartOnRay(ray, character)
 ```
 	 * 
 
-	 * The `terrainCellsAreCubes` and `ignoreWater` parameters determine whether `Terrain` cells should be treated as cubes or not, and whether water should be ignored or not.
+	 * The terrainCellsAreCubes and ignoreWater parameters determine whether terrain cells should be treated as cubes or not, and whether water should be ignored or not.
 	 *
-	 * If the `ignoreDescendantsInstance` parameter is provided, the raycasting calculation will ignore the given object and all of its descendants. It behaves similar to the [Mouse.TargetFilter](https://developer.roblox.com/api-reference/property/Mouse/TargetFilter) property.
-	 *
-	 * In order to white-list or ignore multiple objects and their descendants, use these variants: [FindPartOnRayWithWhitelist](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRayWithWhitelist) and [FindPartOnRayWithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRayWithIgnoreList).
+	 * Developers looking to white-list or ignore certain objects and their descendants in the raycasting calculation should use the variants of this function [Workspace.FindPartOnRayWithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRayWithIgnoreList) and [Workspace.FindPartOnRayWithWhitelist](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRayWithWhitelist).
 	 *
 	 * ## Notes
 	 *
@@ -16347,13 +14879,11 @@ end
 	 *
 	 *  - If the ray does not intersect a part, the return values will be nil and the point at the end of the ray, respectively
 	 *
-	 *  - Parts that are in a [collision group](https://developer.roblox.com/api-reference/function/PhysicsService/SetPartCollisionGroup) that does not collide with the "Default" collision group are ignored implicitly
-	 *
 	 * For more information on how raycasting works in Roblox, please see the articles on [raycasting basics][1] and [how to make raycasting guns][2].
 	 *
-	 * [1]: https://developer.roblox.com/articles/Raycasting
+	 * [1]: https://wiki.roblox.com/index.php?title=Raycasting_Basics
 	 *
-	 * [2]: https://developer.roblox.com/articles/Making-a-ray-casting-laser-gun-in-Roblox
+	 * [2]: https://wiki.roblox.com/index.php?title=Making_a_ray-casting_laser_gun
 	 * @param ray The `DataType/Ray`.
 	 * @param ignoreDescendantsInstance An `Instance` to be ignored.
 	 * @param terrainCellsAreCubes True if terrain cells should be treated as cubes.
@@ -16657,17 +15187,17 @@ local isEmpty = workspace:IsRegion3EmptyWithIgnoreList(region3, ignoreList)
 	 */
 	IsRegion3EmptyWithIgnoreList(region: Region3, ignoreDescendentsTable: Array<Instance>): boolean;
 	/** 
-	 * This function creates joints between the specified [Parts](https://developer.roblox.com/api-reference/class/BasePart) and any touching parts depending on the parts' surfaces and the specified joint creation mode.
+	 * Creates joints between the specified `BasePart`s and any touching parts depending on the `BasePart`'s surfaces and the specified joint creation mode.
 	 *
-	 * The first parameter is an array of [BaseParts](https://developer.roblox.com/api-reference/class/BasePart). Joints will only be create between the parts in the array and not in the array. Joints will not be created between the parts in the array.
+	 * The first parameter of this function is an array of `BasePart`s. Note, joints will not be created between these `BasePart`s (each other), only between these `BasePart`s and other `BasePart`s not in the array.
 	 *
 	 * The second parameter is a [Enum.JointCreationMode](https://developer.roblox.com/search#stq=JointCreationMode) that determines how joints will be created. The following options are available:
 	 *
-	 * | Name | Description |
-	 * | --- | --- |
-	 * | All | Joints created between any touching parts |
-	 * | Surface | Joints created between parts with compatible surfaces |
-	 * | None | No joints created. Causes this function to do nothing |
+	 *  - **All:** Joints created between any touching parts
+	 *
+	 *  - **Surface:** Joints created between parts with compatible surfaces
+	 *
+	 *  - **None:** No joints created. Causes this function to do nothing.
 	 *
 	 * This function is used by the Roblox Studio Move tool when the user finishes moving a selection. In conjunction with [Plugin.GetJoinMode](https://developer.roblox.com/api-reference/function/Plugin/GetJoinMode) and [Workspace.UnjoinFromOutsiders](https://developer.roblox.com/api-reference/function/Workspace/UnjoinFromOutsiders) it can be used to retain join functionality when developing custom studio build tools. See the snippets below for an example.
 	 *
@@ -16714,7 +15244,7 @@ print(workspace:PGSIsEnabled()) -- false = Legacy solver enabled
 	 *
 	 * For more information on the PGS Solver, please see [this article][1].
 	 *
-	 * [1]: https://developer.roblox.com/articles/Building-with-PGS
+	 * [1]: http://wiki.roblox.com/index.php?title=Building_with_PGS
 	 * @returns True if the PGS solver is enabled.
 	 */
 	PGSIsEnabled(): boolean;
@@ -16849,7 +15379,7 @@ interface Pages extends Instance {
 }
 
 /** 
- * A special type of `Pages` object whose pages contain key/value pairs from an `OrderedDataStore`. For this object, [GetCurrentPage()](https://developer.roblox.com/api-reference/function/Pages/GetCurrentPage) returns an array of tables, each containing keys named **key** and **value**; these reflect the key/value pair data.
+ * A special type of `Pages` object whose pages contain key/value pairs from an `OrderedDataStore`. For this type of `Pages`, `GetCurrentPage` returns an array of tables with keys `key` and `value`; these reflect the key/value pair data.
  */
 interface DataStorePages extends Pages {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -16857,15 +15387,7 @@ interface DataStorePages extends Pages {
 }
 
 /** 
- * FriendPages is a special version of the `Pages` returned by [Players.GetFriendsAsync](https://developer.roblox.com/api-reference/function/Players/GetFriendsAsync). The items contained within describe information about a player's friends, and have the following structure:
- *
- * | Name | Type | Description |
- * | --- | --- | --- |
- * | `Id` | int64 | The user ID of the friend |
- * | `Username` | string | The current username of the friend |
- * | `IsOnline` | boolean | Whether or not the user is presently online. |
- *
- * See the code samples for an easy way to iterate over a player's friends.
+ * A special version of the [Pages](https://wiki.roblox.com/index.php?title=Pages) object that is returned by the [Players.GetFriendsAsync](https://developer.roblox.com/api-reference/function/Players/GetFriendsAsync) method.
  */
 interface FriendPages extends Pages {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -16880,6 +15402,9 @@ interface InventoryPages extends Pages {
 	readonly ClassName: "InventoryPages" | "EmotesPages";
 }
 
+/** 
+ 
+ */
 interface EmotesPages extends InventoryPages {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "EmotesPages";
@@ -16896,7 +15421,7 @@ interface StandardPages extends Pages {
 }
 
 /** 
- * An internal instance used to save/load [solid models](https://developer.roblox.com/articles/3D-Modeling-with-Parts) onto the Roblox cloud.
+ * A type of instance used to save/load [solid models](https://wiki.roblox.com/index.php?title=Solid_modeling) onto the Roblox cloud.
  */
 interface PartOperationAsset extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -16930,9 +15455,9 @@ interface PartOperationAsset extends Instance {
  *
  * [1]: https://en.wikipedia.org/wiki/Particle_system
  *
- * [2]: https://developer.roblox.com/assets/blt7bc5555538e06faa/ParticleEmitter.png
+ * [2]: https://developer.roblox.com/assets/5b0b4fb29ff66f1e10708c9c/ParticleEmitter.png
  *
- * [3]: https://developer.roblox.com/assets/blt14277a5a3c807db6/ParticleEmitter_Insertion.png
+ * [3]: https://developer.roblox.com/assets/5b0b50925e35cad03cb39860/ParticleEmitter_Insertion.png
  *
  * [4]: https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/blt885ce1cfde491cd3/5b0b5148dc1dd5cd0f3c9cb5/ParticleEmitter_Insertion2.png
  *
@@ -16952,7 +15477,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Acceleration is most often used to apply a gravity effect to particles (try a value of (0, -3, 0) for this). You can also use small values on the X/Z axes to make it look like particles are being blown away by wind. If you emit a bubble particle downwards, you could use an acceleration of (0, 5, 0) to cause the bubbles to decelerate and then float back upwards.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltaeb3393ea3390868/ParticleEmitter_Acceleration.png
+	 * [1]: https://developer.roblox.com/assets/5b0b7dcc7f08d31910651c1d/ParticleEmitter_Acceleration.png
 	 */
 	Acceleration: Vector3;
 	/** 
@@ -16966,7 +15491,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Changing this property applies changes to all particles present in the system. This is because the color of a particle is determined using its present lifetime and this ColorSequence (the ColorSequence when the particle was emit is not stored on a per-particle basis).
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt07a957ff7394b365/ParticleEmitter_Color.png
+	 * [1]: https://developer.roblox.com/assets/5b0b68679ff66f1e10708cbe/ParticleEmitter_Color.png
 	 */
 	Color: ColorSequence;
 	/** 
@@ -16978,7 +15503,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Warning: if Drag is set to a sufficiently negative value, this can cause all particles emit by the emitter to completely disappear. Be careful when setting this property lower than -100.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt9a58d2b5746274de/ParticleEmitter_Drag.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b66930108c1d50fed413e/ParticleEmitter_Drag.gif
 	 */
 	Drag: number;
 	/** 
@@ -16986,7 +15511,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * ![Two identical ParticleEmitters except with differing EmissionDirection (left is Top, right is Front)][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt529991a1b0fa24f4/ParticleEmitter_EmissionDirection.png
+	 * [1]: https://developer.roblox.com/assets/5b0b64860108c1d50fed4138/ParticleEmitter_EmissionDirection.png
 	 */
 	EmissionDirection: Enum.NormalId;
 	/** 
@@ -17014,9 +15539,9 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * This property should not be confused with [ParticleEmitter.LightInfluence](https://developer.roblox.com/api-reference/property/ParticleEmitter/LightInfluence), which determines how particles are affected by environment light. This property does not cause particles to light the environment around them. To do that, consider using a `PointLight`.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltfaa542eee7781432/ParticleEmitter_LightEmission.png
+	 * [1]: https://developer.roblox.com/assets/5b0b7f970108c1d50fed4158/ParticleEmitter_LightEmission.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/bltf793b94e42b0b6bf/aura.png
+	 * [2]: https://developer.roblox.com/assets/5b0b723e43098c11102a541f/aura.png
 	 */
 	LightEmission: number;
 	/** 
@@ -17030,7 +15555,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * [1]: https://www.youtube.com/watch?v=bLIVeQgS_pI
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt0978dec6faf6d7ae/ParticleEmitter_LightInfluence.png
+	 * [2]: https://developer.roblox.com/assets/5b0b6b057f08d31910651c09/ParticleEmitter_LightInfluence.png
 	 */
 	LightInfluence: number;
 	/** 
@@ -17042,7 +15567,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Also consider using the [ParticleEmitter.VelocityInheritance](https://developer.roblox.com/api-reference/property/ParticleEmitter/VelocityInheritance) property set to 1, which may be more appropriate for some effects.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltdf5045209fff8b32/ParticleEmitter_LockedToPart.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b80e8dc1dd5cd0f3c9cdf/ParticleEmitter_LockedToPart.gif
 	 */
 	LockedToPart: boolean;
 	/** 
@@ -17064,9 +15589,9 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Particles with very high angular speeds can appear to rotate slower or not at all - this is because the angle of rotation is synchronized with the software render speed. In other words, if the particle is rotating at exactly 360 degrees every frame, there will be no apparent change in rotation.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltfe2427c2a9f0f3ad/ParticleEmitter_RotSpeed.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b820d7f08d31910651c23/ParticleEmitter_RotSpeed.gif
 	 *
-	 * [2]: https://developer.roblox.com/assets/bltc50865c165e13d07/ParticleEmitter_RotSpeed2_swirl.gif
+	 * [2]: https://developer.roblox.com/assets/5b0b84bd7f08d31910651c29/ParticleEmitter_RotSpeed2_swirl.gif
 	 *
 	 * [3]: https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/blt6c03c8e2536b2634/5b0b84d09a16a6df0e4973b5/ParticleEmitter_RotSpeed2.gif
 	 */
@@ -17080,7 +15605,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Changes to this value only affect new particles; existing particles will maintain the rotation at which they were originally emitted.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltb0b7b9f3f01688b2/ParticleEmitter_Rotation.png
+	 * [1]: https://developer.roblox.com/assets/5b0b6c53344ad0d40f77ffe8/ParticleEmitter_Rotation.png
 	 */
 	Rotation: NumberRange;
 	/** 
@@ -17098,7 +15623,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * When designing particle effects, size is probably the most important of all properties. Too large or too subtle can ruin a particle effect! The first thing you should do is decide how you want particles to enter and exit view - fade in/out, or grow/shrink from size 0? The choice is yours - start with a size NumberSequence from 0 to 3 or the reverse and go from there.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt908c9ca9b5bddace/ParticleEmitter_Size.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b78ac5e35cad03cb3988e/ParticleEmitter_Size.gif
 	 */
 	Size: NumberSequence;
 	/** 
@@ -17110,7 +15635,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * [ParticleEmitter.VelocityInheritance](https://developer.roblox.com/api-reference/property/ParticleEmitter/VelocityInheritance), [ParticleEmitter.Acceleration](https://developer.roblox.com/api-reference/property/ParticleEmitter/Acceleration) and [ParticleEmitter.Drag](https://developer.roblox.com/api-reference/property/ParticleEmitter/Drag) will affect a particle's speed over its lifetime. Changing Speed will not affect already existing particles - they will retain whatever speed they have already.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blte13fc189c250bd2b/ParticleEmitter_Speed.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b7b7c7f08d31910651c17/ParticleEmitter_Speed.gif
 	 */
 	Speed: NumberRange;
 	/** 
@@ -17122,7 +15647,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Setting one axis to 360 will cause particles to emit in all direction in a **circle**. Setting both to 360 will cause particles to emit in all directions in a **sphere**.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt05b793010052f4b7/ParticleEmitter_SpreadAngle.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b85c25e35cad03cb39898/ParticleEmitter_SpreadAngle.gif
 	 */
 	SpreadAngle: Vector2;
 	/** 
@@ -17142,11 +15667,11 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * ![An example particle texture][3]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt15e439cb32a655c1/ParticleEmitter_Texture.png
+	 * [1]: https://developer.roblox.com/assets/5b0b71b99a16a6df0e4973ab/ParticleEmitter_Texture.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/bltfe72f664112679bb/coin_01.png
+	 * [2]: https://developer.roblox.com/assets/5b0b729f5e35cad03cb3987c/coin_01.png
 	 *
-	 * [3]: https://developer.roblox.com/assets/bltf793b94e42b0b6bf/aura.png
+	 * [3]: https://developer.roblox.com/assets/5b0b723e43098c11102a541f/aura.png
 	 */
 	Texture: string;
 	/** 
@@ -17160,7 +15685,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Changing this property applies changes to all particles present in the system. This is because the transparency of a particle is determined using its present lifetime and this `NumberSequence` (the Transparency at the time the particle was emit is not stored on a per-particle basis).
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt7d318803556982ca/ParticleEmitter_Transparency.png
+	 * [1]: https://developer.roblox.com/assets/5b0b87df43098c11102a542b/ParticleEmitter_Transparency.png
 	 */
 	Transparency: NumberSequence;
 	/** 
@@ -17172,7 +15697,7 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * When used in conjunction with [ParticleEmitter.Drag](https://developer.roblox.com/api-reference/property/ParticleEmitter/Drag), a particle emitter can make appear to be "shedding" particles from a moving part.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt6b88061023429950/ParticleEmitter_VelocityInheritance.gif
+	 * [1]: https://developer.roblox.com/assets/5b0b88fc7f08d31910651c37/ParticleEmitter_VelocityInheritance.gif
 	 */
 	VelocityInheritance: number;
 	/** 
@@ -17188,9 +15713,9 @@ interface ParticleEmitter extends Instance {
 	 *
 	 * Positive values will move particles closer to the camera, and negative values move particles away. Sufficiently negative values can cause particles to render inside or behind the parent part.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt216bd741511f3108/ParticleEmitter_ZOffset.png
+	 * [1]: https://developer.roblox.com/assets/5b0b6fae7f08d31910651c0f/ParticleEmitter_ZOffset.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt8b9262a841414c12/ParticleEmitter_ZOffset2.png
+	 * [2]: https://developer.roblox.com/assets/5b0b6ffadc1dd5cd0f3c9cd7/ParticleEmitter_ZOffset2.png
 	 */
 	ZOffset: number;
 	/** 
@@ -17227,18 +15752,16 @@ interface Path extends Instance {
 	 */
 	readonly Status: Enum.PathStatus;
 	/** 
-	 * This function returns an array of all the [PathWaypoints](https://developer.roblox.com/search#stq=PathWaypoint) in a `Path`, as computed by [Path.ComputeAsync](https://developer.roblox.com/api-reference/function/Path/ComputeAsync).
+	 * The GetWaypoints function returns an array of all the `PathWaypoint`s in its `Path`. The array is arranged in the order of the waypoints in the path.
 	 *
-	 * Each waypoint in the array specifies a [DataType.Vector3](https://developer.roblox.com/search#stq=Vector3) position and [action](https://developer.roblox.com/search#stq=PathWaypointAction) to take when this PathWaypoint is reached. The array is arranged in the order of waypoints from the path start to path end.
+	 * If a path was not able to be found, GetWaypoints will return an empty array.
 	 *
-	 * If a path could not be computed, this function will return an empty array.
-	 * @returns An array of `DataType/PathWaypoint|PathWaypoints` ordered from path start to path end
+	 * To generate a path between two Vector3 coordinates, you can use PathWaypoint's [PathWayPoint.FindPathAsync](https://developer.roblox.com/search#stq=FindPathAsync) function.
+	 * @returns An array of waypoints.
 	 */
 	GetWaypoints(): Array<PathWaypoint>;
 	/** 
-	 * This function checks if a path is blocked starting at the waypoint indicated by **start**.
-	 *
-	 * It returns the first waypoint of occlusion if blocked, -1 if not. it returns an error if **start** is less than 0 or greater than the number of waypoints in the `Path`.
+	 * Checks if path is blocked starting at _start_ . Will return the first point of occlusion if blocked, -1 if not. Will return an error if _start_ is less than 0 or greater than the number of points in the `Path`.
 	 */
 	CheckOcclusionAsync(start: number): number;
 	ComputeAsync(start: Vector3, finish: Vector3): void;
@@ -17287,14 +15810,14 @@ interface PathfindingService extends Instance {
 	 */
 	CreatePath(agentParameters?: AgentParameters): Path;
 	/** 
-	 * This function is used to find a `Path` between two provided points. This path uses the navigation grid created by `PathfindingService` and makes sure that the path can be followed by a regular-sized Roblox character.
+	 * The FindPathAsync function is used to find a path between the two provided points. This path uses the navigation grid created by the `PathfindingService` and makes sure that the path can be followed by a regular sized Roblox character. This function returns a PathfindingService object which contains the coordinates of the path. If no path is found between the two points, this function will still return a `Path` object, but that objects PathfindingService will be set to NoPath.
 	 *
-	 * This function returns a `Path` object which contains the coordinates of the path. If no path is found between the two points, this function will still return a `Path` object, but that object's [Path.Status](https://developer.roblox.com/api-reference/property/Path/Status) will be `Enum.PathStatus.NoPath`.
+	 * To get the waypoints of a Path object, you can use the [Path.GetWaypoints](https://developer.roblox.com/api-reference/function/Path/GetWaypoints) function.
 	 *
-	 * To get the waypoints of a `Path` object, you can use the [Path.GetWaypoints](https://developer.roblox.com/api-reference/function/Path/GetWaypoints) function.
+	 * Finding paths is a complicated problem, so this function can take some time to run, especially if the points are far apart or there are lots of obstacles in the way.
 	 * @param start Path start coordinates.
 	 * @param finish Path finish coordinates.
-	 * @returns A `Path` object
+	 * @returns A `Path` object.
 	 */
 	FindPathAsync(start: Vector3, finish: Vector3): Path;
 }
@@ -17308,11 +15831,9 @@ interface PhysicsPacketCache extends Instance {
 }
 
 /** 
- * PhysicsService is a game service that has functions for working with **collision groups**, which define a set of parts that may or may not collide with parts assigned to other collision groups. Assign a part to a collision group using [SetPartCollisionGroup](https://developer.roblox.com/api-reference/function/PhysicsService/SetPartCollisionGroup). Collision groups and their relationships are saved to and loaded from file.
+ * The PhysicsService is responsible for handling the physics of Roblox.
  *
- * ## Network Replication
- *
- * Creating, deleting and modifying collision relationships between collision groups is limited to server-side `Script`s. However, client-side `LocalScript`s may only set individual parts' associated collision group.
+ * It allows you to establish part collision groups, where certain parts are able to collide with each other while others can't.
  */
 interface PhysicsService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -17345,11 +15866,37 @@ interface PhysicsService extends Instance {
 	 */
 	CreateCollisionGroup(name: string): number;
 	/** 
-	 * The GetCollisionGroupId function returns the id of the collision group with the specified name.
+	 * Returns the id of the collision group with the specified name.
 	 *
-	 * This function will throw an error if no group with the given name exists.
-	 * @param name The name of the collision group being retrieved.
-	 * @returns The id of the retrieved collision group, or nil if no such group exists.
+	 * This function will throw an error if no group with the given name exists.Returns the id of the group with the specified name.
+	 *
+	 * ## Example
+	 *
+	 * ```lua
+local physicsService = game:GetService("PhysicsService")
+
+-- returns a valid group id (int) or nil
+function getGroupId(name)
+	-- GetCollisionGroupId will throw if it does not exist
+	local ok, groupId = pcall(physicsService.GetCollisionGroupId, physicsService, name)
+	return ok and groupId or nil
+end
+
+-- returns a valid group id (int) or nil
+function getOrCreateGroupId(name)
+	local ok, groupId = pcall(physicsService.GetCollisionGroupId, physicsService, name)
+	if not ok then
+		-- Create may fail if we have hit the maximum of 32 different groups
+		ok, groupId = pcall(physicsService.CreateCollisionGroup, physicsService, name)
+	end
+	return ok and groupId or nil
+end
+
+print(getGroupId("Test")) -- prints nil
+print(getOrCreateGroupId("Test")) -- prints 1
+print(getGroupId("Test")) -- prints 1
+```
+	 *
 	 */
 	GetCollisionGroupId(name: string): number;
 	/** 
@@ -17359,13 +15906,7 @@ interface PhysicsService extends Instance {
 	 */
 	GetCollisionGroupName(name: number): string;
 	/** 
-	 * Returns a table with info on all of the place's collision groups. Each value in this table is itself a table and contains 3 members:
-	 *
-	 * | Member | Type | Description |
-	 * | --- | --- | --- |
-	 * | **id** | integer | The ID of the group |
-	 * | **mask** | integer | The mask of the group (for internal use) |
-	 * | **name** | string | The name of the group |
+	 * Returns a table with info on all of the place’s collision groups. Each value in this table is itself a table and contains 3 members:
 	 */
 	GetCollisionGroups(): Array<CollisionGroupInfo>;
 	/** 
@@ -17397,20 +15938,17 @@ interface PhysicsService extends Instance {
 	 */
 	RenameCollisionGroup(from: string, to: string): void;
 	/** 
-	 * The SetPartCollisionGroup function sets the collision group of the specified part to the group with the specified name.
+	 * Sets the collision group of the specified part to the group with the specified name.
 	 *
-	 * This function is equivalent to setting the [BasePart.CollisionGroupId](https://developer.roblox.com/api-reference/property/BasePart/CollisionGroupId), although this function is the recommended method of configuring a part’s collision group.
+	 * This function is equivalent to setting the [BasePart.CollisionGroupId](https://developer.roblox.com/api-reference/property/BasePart/CollisionGroupId), although this function is the recommended method of configuring a part's collision group.
 	 *
 	 * Note that for a part to respect its collision filter setting it must have its [BasePart.CanCollide](https://developer.roblox.com/api-reference/property/BasePart/CanCollide) property set to true.
 	 *
 	 * This function will throw a runtime error in the following circumstances:
 	 *
-	 *  * The part parameter is not a `BasePart` instance.
+	 * * The part parameter is not a BasePart instance.
 	 *
-	 *  * The specified group does not exist.
-	 * @param part The part being set.
-	 * @param name The name of collision group that the part's collision group is being set to.
-	 * @returns void
+	 * * The specified group does not exist.Sets the collision group of a part.
 	 */
 	SetPartCollisionGroup(part: BasePart, name: string): void;
 }
@@ -17533,7 +16071,7 @@ interface PhysicsSettings extends Instance {
 	 */
 	AreWorldCoordsShown: boolean;
 	/** 
-	 * When set to true, Roblox will fall back to using its legacy CSG solver when performing [solid model operations](https://developer.roblox.com/articles/3D-Modeling-with-Parts).
+	 * When set to true, Roblox will fall back to using its legacy CSG solver when performing [solid model operations](https://wiki.roblox.com/index.php?title=Solid_modeling).
 	 */
 	DisableCSGv2: boolean;
 	/** 
@@ -17562,7 +16100,7 @@ interface PhysicsSettings extends Instance {
 	/** 
 	 * Controls the throttle rate of Roblox's physics engine.
 	 *
-	 * By default, the physics engine will adjust the physics environment throttle depending on how much work the physics engine is doing, and the current framerate. See the enum page for [EnviromentalPhysicsThrottle](https://developer.roblox.com/api-reference/enum/EnviromentalPhysicsThrottle) for more information.Controls the throttle rate of Roblox's physics engine.
+	 * By default, the physics engine will adjust the physics environment throttle depending on how much work the physics engine is doing, and the current framerate. See the enum page for [EnviromentalPhysicsThrottle](https://wiki.roblox.com/index.php?title=EnviromentalPhysicsThrottle) for more information.Controls the throttle rate of Roblox's physics engine.
 	 */
 	PhysicsEnvironmentalThrottle: Enum.EnviromentalPhysicsThrottle;
 	/** 
@@ -17596,281 +16134,101 @@ interface Player extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Player";
 	/** 
-	 * The AccountAge is a `Player` property that describes how long ago a player's account was registered in days. It is set using the [Player.SetAccountAge](https://developer.roblox.com/api-reference/function/Player/SetAccountAge) function, which cannot be accessed by scripts.
-	 *
-	 * This property is useful for conditionally showing new Roblox players content such as tutorials.
+	 * The AccountAge property describes how long ago a player's account was registered in days. It is useful for conditionally showing new Roblox players content. Veteran players are those that joined Roblox one year (365 days) ago or longer.
 	 */
 	readonly AccountAge: number;
 	/** 
-	 * The AutoJumpEnabled property determines whether the [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) of a `Player` using a mobile device will automatically jump when they hit an obstacle. This can make levels more navigable while on a mobile device.
+	 * The AutoJumpEnabled property determines whether the [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) of a `Player` using a mobile device will automatically jump when they hit an obstacle. This is useful to make levels more navigable while on a mobile device.
 	 *
-	 * When the player joins the game, the [StarterPlayer.AutoJumpEnabled](https://developer.roblox.com/api-reference/property/StarterPlayer/AutoJumpEnabled) value determines the initial state of this property. Then, this property determines the value of the [Humanoid.AutoJumpEnabled](https://developer.roblox.com/api-reference/property/Humanoid/AutoJumpEnabled) property of the [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character)s `Humanoid` on spawn. In other words, it is possible to set the auto-jump behavior on a per-character, per-player and per-game basis using these three properties.
+	 * The value of [StarterPlayer.AutoJumpEnabled](https://developer.roblox.com/api-reference/property/StarterPlayer/AutoJumpEnabled) is copied to this property when a player joins the game. Following that. the value of this property is copied to [Humanoid.AutoJumpEnabled](https://developer.roblox.com/api-reference/property/Humanoid/AutoJumpEnabled) property of the [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character)s `Humanoid` on spawn. In other words, it is possible to set the auto-jump behavior on a per-character, per-player and per-game basis using these three properties.
 	 */
 	AutoJumpEnabled: boolean;
 	/** 
-	 * The CameraMaxZoomDistance `Player` property sets the maximum distance in studs the camera can be from the character with the default cameras.
-	 *
-	 * In other words, it controls the maximum distance the player's camera is allowed to zoom out.
-	 *
-	 * The default value of this property is set by [StarterPlayer.CameraMaxZoomDistance](https://developer.roblox.com/api-reference/property/StarterPlayer/CameraMaxZoomDistance). If this value is set to a lower value than [Player.CameraMinZoomDistance](https://developer.roblox.com/api-reference/property/Player/CameraMinZoomDistance), it will be increased to CameraMinZoomDistance.
+	 * The maximum distance the player's camera is allowed to zoom out.
 	 */
 	CameraMaxZoomDistance: number;
 	/** 
-	 * The CameraMinZoonDistance `Player` property sets the minimum distance in studs the camera can be from the character with the default cameras.
-	 *
-	 * In other words, it controls the minimum distance the player's camera is allowed to zoom in.
-	 *
-	 * The default value of this property is set by [StarterPlayer.CameraMinZoomDistance](https://developer.roblox.com/api-reference/property/StarterPlayer/CameraMinZoomDistance). If this value is set to a higher value than [Player.CameraMaxZoomDistance](https://developer.roblox.com/api-reference/property/Player/CameraMaxZoomDistance) it will be decreased to CameraMaxZoomDistance.
+	 * The minimum distance the player's camera is allowed to zoom in.
 	 */
 	CameraMinZoomDistance: number;
 	/** 
-	 * The CameraMode `Player` property sets what mode that the player's camera is in. By default, the camera mode is set to third person.
-	 *
-	 * The camera has two modes:
-	 *
-	 *  1. First person
-	 *
-	 *  2. Third person
-	 *
-	 * The [Enum.CameraMode](https://developer.roblox.com/search#stq=CameraMode) Enum is used to set CameraMode in Player, and determines when first and third person cameras should be used.
-	 *
-	 * First-person
-	 *
-	 * ------------
-	 *
-	 * In first-person mode, the player's camera is zoomed all the way in. Unless there is a visible GUI present with the [GuiButton.Modal](https://developer.roblox.com/api-reference/property/GuiButton/Modal) property set to *true*, the mouse will be locked and the user's camera will turn as the mouse moves.
-	 *
-	 * ![First Person CameraMode][1]
-	 *
-	 * Third-person
-	 *
-	 * ------------
-	 *
-	 * In third-person mode, the character can be seen in the camera. While in third-person mode on Roblox:
-	 *
-	 * * You may right-click and drag to rotate your camera, or use the arrow keys at the bottom right-hand corner of the screen.
-	 *
-	 * * When you move your mouse, your camera does not change (unless you move the mouse to the end of the screen).
-	 *
-	 * * When you press any of the arrow keys, the user's character will face in the corresponding arrow key's direction.
-	 *
-	 * * You can zoom in and out freely.
-	 *
-	 * Third-person is the default camera setting.
-	 *
-	 * ![Third Person CameraMode][2]
-	 *
-	 * ## Note
-	 *
-	 *  - This item should be used in a `LocalScript` to work as expected online.
-	 *
-	 * [1]: https://developer.roblox.com/assets/5ade20a13a314ce34a0f6878/CameraMode_FirstPerson.jpg
-	 *
-	 * [2]: https://developer.roblox.com/assets/5ade20afbaed3a514c3722c4/CameraMode_ThirdPerson.jpg
+	 * Changes the camera's mode to either first or third person.
 	 */
 	CameraMode: Enum.CameraMode;
 	/** 
-	 * The CanLoadCharacterAppearance `Player` property determines whether the character's appearance will be loaded when the player spawns. The default value of this property is set by [StarterPlayer.LoadPlayerAppearance](https://developer.roblox.com/search#stq=LoadPlayerAppearance).
-	 *
-	 * If *true*, the character will load the appearance of the player corresponding to the player's [Player.CharacterAppearanceId](https://developer.roblox.com/api-reference/property/Player/CharacterAppearanceId).
-	 *
-	 * If *false*, the player will spawn with a default appearance - a grey character model without any hats, shirts, pants, etc.
-	 *
-	 * Attempting to set the property after the character has spawned will not change the character, you must call [Player.LoadCharacter](https://developer.roblox.com/api-reference/function/Player/LoadCharacter) to load the new appearance.
+	 * Determines whether the character's appearance will be loaded when the player spawns. If false, the player will spawn with a default appearance.
 	 */
 	CanLoadCharacterAppearance: boolean;
 	/** 
-	 * The Character property contains a reference to a `Model` containing a `Humanoid`, body parts, scripts and other objects required for simulating the player's avatar in-game. The model is parented to the `Workspace`, but may be moved.
-	 *
-	 * Initially, this property is nil then set when the player's character first spawns. Use the [Player.CharacterAdded](https://developer.roblox.com/api-reference/event/Player/CharacterAdded) event to detect when a player's character properly loads, and the [Player.CharacterRemoving](https://developer.roblox.com/api-reference/event/Player/CharacterRemoving) event to detect when the character is about to despawn. Avoid using [Instance.GetPropertyChangedSignal](https://developer.roblox.com/api-reference/function/Instance/GetPropertyChangedSignal) on this property.
-	 *
-	 * ## Notes
-	 *
-	 * LocalScripts that are cloned from `StarterGui` or `StarterPack` into a player's `Backpack` or `PlayerGui` are often run before the old Character model is deleted. Player.Character still refers to a model, but that model's parent is nil and it is has been destroyed. Because of this, if the Character already exists, you should check to make sure that the Character's parent is not nil before using it.
-	 *
-	 * So if you're writing a `LocalScript`, do this:
-	 *
-	 * ```lua
-local player = game.Players.LocalPlayer
-local character = player.Character
-if not character or not character.Parent then
-	character = player.CharacterAdded:wait()
-end
-```
-	 * 
-
-	 * But from the server it's fine to do this:
-	 *
-	 * ```lua
-if player.Character then
-	-- do something
-end
-```
-	 * 
-
-	 * Or if you want to wait until the character respawns from a server `Script`:
-	 *
-	 * ```lua
-local character = player.Character or player.CharacterAdded:wait()
-```
-	 *
+	 * A model containing the humanoid, arms, legs, torso, and scripts of a player's character. Initially this property is set to nil, and is set when the player's character spawns.
 	 */
 	Character?: Model;
 	/** 
-	 * This property determines the user ID of the account whose character appearance is used for a player's `character. By default, this property is the `Player`'s [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId), which uses the player's avatar as they have created it on the Roblox website.
-	 *
-	 * Changing this property to the user ID of another account will cause the player to spawn with that account's appearance (hats, shirt, pants, etc).
-	 *
-	 * Games can also toggle whether or not a player's character appearance is loaded in game by changing the [StarterPlayer.LoadCharacterAppearance](https://developer.roblox.com/api-reference/property/StarterPlayer/LoadCharacterAppearance) property.
+	 * The CharacterAppearanceId property determines the user ID of the account whose character appearance is used for a player's character. By default, this property is that of the `Player`'s [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId), which uses the player's account appearance as they have created it on the Roblox website. Changing this property to the user ID of another account will cause the player to spawn with that account's appearance (hats, shirt, pants, etc). Try setting this property to your friend's user ID to look like them in-game!
 	 */
 	CharacterAppearanceId: number;
 	/** 
-	 * The DevCameraOcclusionMode `Player` property sets how the default camera handles objects between the camera and the player. Set by default by [StarterPlayer.DevCameraOcclusionMode](https://developer.roblox.com/api-reference/property/StarterPlayer/DevCameraOcclusionMode).
+	 * This property sets how the default camera handles objects between the camera and the player. Set by default by [StarterPlayer.DevCameraOcclusionMode](https://developer.roblox.com/api-reference/property/StarterPlayer/DevCameraOcclusionMode).
 	 *
-	 * The default value is *Zoom* (0): The camera will zoom in until there is nothing between the player and camera.
-	 *
-	 * See [Enum.DevCameraOcclusionMode](https://developer.roblox.com/search#stq=DevCameraOcclusionMode) for the different occlusion modes available. Sets how the default camera handles objects between the camera and the player.
+	 * See [Enum.DevCameraOcclusionMode](https://developer.roblox.com/search#stq=DevCameraOcclusionMode) for the different occlusion modes available.Sets how the default camera handles objects between the camera and the player.
 	 */
 	DevCameraOcclusionMode: Enum.DevCameraOcclusionMode;
 	/** 
-	 * The DevComputerCameraMode property determines the manner in which a player moves their camera when using a mouse-and-keyboard device device. See [Enum.DevComputerCameraMovementMode](https://developer.roblox.com/search#stq=DevComputerCameraMovementMode) for a description of each camera control mode available. This property cannot be set using a `LocalScript` (it must be set on the server using a `Script`).
+	 * This property lets the developer overwrite the player's camera mode if the player is on a computer. If set to **UserChoice** then the player's camera movement mode will be determined by whatever the player set in the game settings. Otherwise, the mode will be set based on this property. This property is set by default by [StarterPlayer.DevComputerCameraMovementMode](https://developer.roblox.com/api-reference/property/StarterPlayer/DevComputerCameraMovementMode).
 	 *
-	 * The default value of this property is determined by [StarterPlayer.DevComputerCameraMovementMode](https://developer.roblox.com/api-reference/property/StarterPlayer/DevComputerCameraMovementMode).
-	 *
-	 * ## Note
-	 *
-	 * * The word "Computer" in this property name refers to non-[TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled), non-[GamepadEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GamepadEnabled) devices.
-	 *
-	 * * When set to **UserChoice**, a player can choose between any control mode (except **Scriptable**) in the Roblox game settings. In general, it is a good idea to allow players to choose their control mode to maximize accessibility.
-	 *
-	 * * It is possible to create a custom control scheme by setting this property to **Scriptable**.
-	 *
-	 * * This property does not affect players using a touch enabled device. See [Player.DevTouchCameraMode ](https://developer.roblox.com/search#stq=DevTouchCameraMode%20) instead.
+	 * See [Enum.DevComputerCameraMovementMode](https://developer.roblox.com/search#stq=DevComputerCameraMovementMode) for the different camera modes available.Lets developer overwrite the default camera mode for each player if the player is on a computer.
 	 */
 	DevComputerCameraMode: Enum.DevComputerCameraMovementMode;
 	/** 
-	 * The DevComputerMovementMode property determines the manner in which a player moves their character when using a mouse-and-keyboard device device. See [Enum.DevComputerMovementMode](https://developer.roblox.com/search#stq=DevComputerMovementMode) for a description of each movement control mode available. This property cannot be set using a `LocalScript` (it must be set on the server using a `Script`).
+	 * This property lets the developer overwrite the player's movement mode if the player is on a computer. If set to **UserChoice** then the player's movement mode will be determined by whatever the player set in the game settings. Otherwise, the mode will be set based on this property. Set by default by [StarterPlayer.DevComputerMovementMode](https://developer.roblox.com/api-reference/property/StarterPlayer/DevComputerMovementMode).
 	 *
-	 * The default value of this property is determined by [StarterPlayer.DevComputerMovementMode](https://developer.roblox.com/api-reference/property/StarterPlayer/DevComputerMovementMode).
-	 *
-	 * ## Note
-	 *
-	 * * The word "Computer" in this property name refers to non-[TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) devices.
-	 *
-	 * * When set to **UserChoice**, a player can choose between any control mode (except **Scriptable**) in the Roblox game settings. In general, it is a good idea to allow players to choose their control mode to maximize accessibility.
-	 *
-	 * * It is possible to create a custom control scheme by setting this property to **Scriptable**.
-	 *
-	 * * This property does not affect players using a touch enabled device. See [Player.DevTouchMovementMode ](https://developer.roblox.com/search#stq=DevTouchMovementMode%20) instead.
+	 * See [Enum.DevComputerMovementMode](https://developer.roblox.com/search#stq=DevComputerMovementMode) for the different camera modes available.Lets developer overwrite the default movement mode for each player if the player is on a computer.
 	 */
 	DevComputerMovementMode: Enum.DevComputerMovementMode;
 	/** 
-	 * This property determines if a player is able to toggle **[mouse](https://developer.roblox.com/api-reference/class/Mouse) lock** by pressing **Shift**. A player can disable the mouse lock switch in Roblox's game settings. By default, this property is set to the value of [StarterPlayer.EnableMouseLockOption](https://developer.roblox.com/api-reference/property/StarterPlayer/EnableMouseLockOption). This can be set during run-time by using a `LocalScript`,
-	 *
-	 * ## What is Mouse Lock?
-	 *
-	 * When mouse lock is enabled, the player's cursor is locked to the center of the screen. Moving the mouse will orbit the camera around the player's [character](https://developer.roblox.com/api-reference/property/Player/Character), and character will face the same direction as the [camera](https://developer.roblox.com/api-reference/class/Camera). It also offsets the camera view just over the right shoulder of the player's character.
-	 *
-	 * Below, the camera is moved left and right first by holding right-click. Then, mouse lock is enabled which changes the mouse to a target reticule, and offsets the camera. The camera is again moved left and right (without holding right click).
+	 * This property determines if a player can toggle mouse lock. Mouselock will lock the player's cursor to the center of the screen. Moving the mouse will rotate the camera and player will move relative to the current rotation of the camera. This property is set by the value of [StarterPlayer.EnableMouseLockOption](https://developer.roblox.com/api-reference/property/StarterPlayer/EnableMouseLockOption).
 	 */
 	DevEnableMouseLock: boolean;
 	/** 
-	 * The DevTouchCameraMode property determines the manner in which a player moves their camera when using a [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) device. See [Enum.DevTouchCameraMovementMode](https://developer.roblox.com/search#stq=DevTouchCameraMovementMode) for a description of each camera control mode available. This property cannot be set using a `LocalScript` (it must be set on the server using a `Script`).
+	 * This property lets the developer overwrite the player's camera mode if the player is on a touch device. If set to UserChoice then the player's camera movement mode will be determined by whatever the player set in the game settings. Otherwise, the mode will be set based on this property. This property is set by default by [StarterPlayer.DevTouchCameraMovementMode](https://developer.roblox.com/api-reference/property/StarterPlayer/DevTouchCameraMovementMode).
 	 *
-	 * The default value of this property is determined by [StarterPlayer.DevTouchCameraMovementMode](https://developer.roblox.com/api-reference/property/StarterPlayer/DevTouchCameraMovementMode).
-	 *
-	 * ## Note
-	 *
-	 * * When set to **UserChoice**, a player can choose between any control mode (except **Scriptable**) in the Roblox game settings. In general, it is a good idea to allow players to choose their control mode to maximize accessibility.
-	 *
-	 * * It is possible to create a custom control scheme by setting this property to **Scriptable**.
-	 *
-	 * * This property does not affect players who are not using a touch enabled device. See [Player.DevComputerCameraMovementMode](https://developer.roblox.com/search#stq=DevComputerCameraMovementMode) instead.
+	 * See [Enum.DevTouchCameraMovementMode](https://developer.roblox.com/search#stq=DevTouchCameraMovementMode) for the different camera modes available.Lets developer overwrite the default camera movement mode for each player if the player is on a mobile device.
 	 */
 	DevTouchCameraMode: Enum.DevTouchCameraMovementMode;
 	/** 
-	 * The DevTouchMovementMode property determines the manner in which a player moves their character when using a [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) device. See [Enum.DevTouchMovementMode](https://developer.roblox.com/search#stq=DevTouchMovementMode) for a description of each movement control mode available. This property cannot be set using a `LocalScript` (it must be set on the server using a `Script`).
+	 * This property lets the developer overwrite the player's movement mode if the player is on a touch device. If set to **UserChoice** then the player's movement mode will be determined by whatever the player set in the game settings. Otherwise, the mode will be set based on this property. This property is set by default by [StarterPlayer.DevTouchMovementMode](https://developer.roblox.com/api-reference/property/StarterPlayer/DevTouchMovementMode).
 	 *
-	 * The default value of this property is determined by [StarterPlayer.DevTouchMovementMode](https://developer.roblox.com/api-reference/property/StarterPlayer/DevTouchMovementMode).
-	 *
-	 * ## Note
-	 *
-	 * * When set to **UserChoice**, a player can choose between any control mode (except **Scriptable**) in the Roblox game settings. In general, it is a good idea to allow players to choose their control mode to maximize accessibility.
-	 *
-	 * * It is possible to create a custom control scheme by setting this property to **Scriptable**.
-	 *
-	 * * This property does not affect players who are not using a touch enabled device. See [Player.DevComputerMovementMode](https://developer.roblox.com/api-reference/property/Player/DevComputerMovementMode) instead.
+	 * See [Enum.DevTouchMovementMode](https://developer.roblox.com/search#stq=DevTouchMovementMode) for the different movement modes available.Lets developer overwrite the player's movement mode if the player is on a touch device.
 	 */
 	DevTouchMovementMode: Enum.DevTouchMovementMode;
 	/** 
-	 * The FollowUserId is a `Player` property that contains the [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId) of the user that a player followed into the game. If the player did not follow anyone into the game, this property will be 0. This property is useful for alerting players who have been followed by another player into the game.
-	 *
-	 * You can get the name of the player followed using this user ID and the [Players.GetNameFromUserIdAsync](https://developer.roblox.com/api-reference/function/Players/GetNameFromUserIdAsync) function.
+	 * FollowUserId contains the user ID of the user that a player followed into the game. If the player did not follow anyone into the game, this property will be 0. This property is useful for alerting players who have been followed by another player into the game.
 	 */
 	readonly FollowUserId: number;
 	readonly GameplayPaused: boolean;
 	/** 
-	 * The HealthDisplayDistance `Player` property sets the distance in studs at which this player will see other `Humanoid`’s health bars. If set to 0, the health bars will not be displayed. This property is set to [StarterPlayer.HealthDisplayDistance](https://developer.roblox.com/api-reference/property/StarterPlayer/HealthDisplayDistance) by default.
-	 *
-	 * ## Note
-	 *
-	 * If a Humanoid's health bar is visible, you can set the display type using [Humanoid.DisplayDistanceType](https://developer.roblox.com/api-reference/property/Humanoid/DisplayDistanceType).
+	 * Sets the distance at which this player will see other Humanoid’s health bars. If set to 0, the health bars will not be displayed.
 	 */
 	HealthDisplayDistance: number;
-	/** 
-	 * The LocaleId `Player` property shows the locale id that the local player has set for their Roblox account. It holds a string with the two letter code (for example, "en-us") for the locale.
-	 *
-	 * This can be used to determine the geographic demographic of your game's player base.
-	 *
-	 * The property is similar to `LocalizationService`'s [LocalizationService.RobloxLocaleId](https://developer.roblox.com/api-reference/property/LocalizationService/RobloxLocaleId) property.
-	 */
 	readonly LocaleId: string;
 	/** 
-	 * The MembershipType `Player` property can be used to determine the membership type of the player. It holds an Enum of the account's membership type (NBC, BC, TBC and OBC). The enum held is [Enum.MembershipType](https://developer.roblox.com/search#stq=MembershipType).
-	 *
-	 * ##Note
-	 *
-	 * This property can only be read from to determine membership. It cannot be set to another membership type. The property can only be changed via `CoreScript`s using [Player.SetMembershipType](https://developer.roblox.com/api-reference/function/Player/SetMembershipType) - which are not accessible.
+	 * Holds an Enum of the account's membership type (NBC, BC, TBC and OBC).
 	 */
 	readonly MembershipType: Enum.MembershipType;
 	/** 
-	 * The NameDisplayDistance `StarterPlayer` property sets the distance in studs at which this player will see other `Humanoid`’s names. If the property is set to 0, names are hidden. This property is set to [StarterPlayer.NameDisplayDistance](https://developer.roblox.com/api-reference/property/StarterPlayer/NameDisplayDistance) by default.
-	 *
-	 * ## Note
-	 *
-	 * If a Humanoid's health bar is visible, you can set the display type using [Humanoid.DisplayDistanceType](https://developer.roblox.com/api-reference/property/Humanoid/DisplayDistanceType).
+	 * Sets the distance at which this player will see other Humanoid's names. If set to 0, names are hidden.
 	 */
 	NameDisplayDistance: number;
 	/** 
-	 * The Neutral property determines whether the player is on a specific team.
-	 *
-	 * * When *true*, the player is not on a specific team. This also means that the [Player.Team](https://developer.roblox.com/api-reference/property/Player/Team) property will be nil and the [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) will be white.
-	 *
-	 * * When *false*, the player is on a specific team. The [Player.Team](https://developer.roblox.com/api-reference/property/Player/Team) property will correspond to the `Team` that the player is on, as will the [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor).
+	 * Determines whether the player is on a specific team or not.
 	 */
 	Neutral: boolean;
 	/** 
-	 * The ReplicationFocus `Player` property sets the part to focus replication around a Player. Different Roblox systems that communicate over the network (such as physics, streaming, etc) replicate at different rates depending on how close objects are to the replication focus.
-	 *
-	 * When this property is nil, it reverts to its default behavior which is to treat the local player's character's head as the replication focus.
-	 *
-	 * This property should only be set on the server with a `Script`, not a `LocalScript`. Note that this property does not change or update network ownership of parts.
+	 * This property sets the part to focus replication around a Player. Different Roblox systems that communicate over the network (such as physics, streaming, etc) replicate at different rates depending on how close objects are to the replication focus. When this property is nil, it reverts to its default behavior which is to treat the local player's character's head as the replication focus.
 	 */
 	ReplicationFocus: BasePart | undefined;
 	/** 
-	 * If set, the player will respawn at the given `SpawnLocation`. This property can only be set through Lua and must contain a reference to a valid `SpawnLocation`, which must meet the following criteria:
-	 *
-	 *  - Descendant of `Workspace`
-	 *
-	 *  - [SpawnLocation.TeamColor](https://developer.roblox.com/api-reference/property/SpawnLocation/TeamColor) is set to the [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) or [SpawnLocation.Neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) is set to true
-	 *
-	 * If RespawnLocation is not set to a valid `SpawnLocation` then the default spawning logic will apply. For more information on this see the page for `SpawnLocation`.
-	 *
-	 * ## Alternatives to RespawnLocation
-	 *
-	 *  - A `Player` will spawn from [SpawnLocations](https://developer.roblox.com/api-reference/class/SpawnLocation) belonging to their team. In some cases it may be simpler to change the [Player's](https://developer.roblox.com/api-reference/class/Player) [Player.Team](https://developer.roblox.com/api-reference/property/Player/Team) instead. This method also allows the `Player` to respawn from multiple [SpawnLocations](https://developer.roblox.com/api-reference/class/SpawnLocation).
-	 *
-	 *  - Developers may wish to implement their own custom spawn logic, using [Model.SetPrimaryPartCFrame](https://developer.roblox.com/api-reference/function/Model/SetPrimaryPartCFrame) to move the [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) manually.
+	 * If set, the player will respawn at the given SpawnLocation.
 	 */
 	RespawnLocation?: SpawnLocation;
 	/** 
@@ -17886,20 +16244,11 @@ local character = player.Character or player.CharacterAdded:wait()
 	 */
 	TeamColor: BrickColor;
 	/** 
-	 * The UserId is a `Player` property that contains a read-only integer that **uniquely and consistently** identifies every user account on Roblox. Unlike the [Instance.Name](https://developer.roblox.com/api-reference/property/Instance/Name) of a Player, which may change according the user's present username, this value will never change for the same account.
-	 *
-	 * This property is essential when saving/loading player data using [GlobalDataStores](https://developer.roblox.com/api-reference/class/GlobalDataStore). Use a player's UserId as the data store key so that each player has a unique key.
+	 * The UserId property contains a read-only integer that **uniquely and consistently** identifies all user accounts on the Roblox website. Unlike a Player's [Instance.Name](https://developer.roblox.com/api-reference/property/Instance/Name), which changes according the user's present username, this value will never change for the same account. This makes the property essential when working with data stores.
 	 */
 	readonly UserId: number;
 	/** 
-	 * The ClearCharacterAppearance function removes all `Hat`, `Shirt`, `Pants`, `CharacterMesh`, and `BodyColors` from the given player's [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character). In addition, it also removes the T-Shirt `Decal` on the player's torso. The character's body part colors and face will remain unchanged. This method does nothing if the player does not have a Character.
-	 *
-	 * ##Note
-	 *
-	 * It does not remove [t-shirts](https://developer.roblox.com/api-reference/class/ShirtGraphic), head meshes, or [Faces][1].
-	 *
-	 * [1]: https://developer.roblox.com/api-reference/datatype/Faces
-	 * @returns void
+	 * ClearCharacterAppearance removes all `Hat`, `Shirt`, `Pants`, `CharacterMesh`, and `BodyColors` from the given player's [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character). In addition, it also removes the T-Shirt `Decal` on the player's torso. The character's body part colors and face will remain unchanged. This method does nothing if the player does not have a Character.
 	 */
 	ClearCharacterAppearance(): void;
 	/** 
@@ -17907,40 +16256,17 @@ local character = player.Character or player.CharacterAdded:wait()
 	 */
 	DistanceFromCharacter(point: Vector3): number;
 	/** 
-	 * This function returns a dictionary containing information on how the `Player` joined the game.
+	 * Returns a dictionary of data pertaining to how this player joined the game.
 	 *
-	 * The dictionary contains the fields below. Please note, whether these fields exists depends on the circumstances under which the `Player` joined the game.
+	 * The dictionary contains the following contents:
 	 *
 	 * | Key | Value Type | Description |
-	 * | --- | --- | --- |
-	 * | SourcePlaceId | int64 | The [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) of the place the `Player` was teleported from. Only present if the player was teleported to the current place. |
-	 * | Members | array | An array containing the [UserIds](https://developer.roblox.com/api-reference/property/Player/UserId) teleported alongside the `Player`. Only present if the player was teleported in using [TeleportService.TeleportPartyAsync](https://developer.roblox.com/api-reference/function/TeleportService/TeleportPartyAsync). |
-	 * | TeleportData | variant | The _teleportData_ parameter specified in the original teleport function. Only present if _teleportData_ was specified and the teleport function was called from the server. |
+	 * |---|---|---|
+	 * | SourcePlaceID |int64 | The [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) that this player was teleported from. |
+	 * | Members | array int64 | A list of [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId)s associated with the players who were teleported with this player. |
 	 *
-	 * ## GetJoinData and TeleportData
-	 *
-	 * If the teleport the `Player` arrived in the current place due to was initiated on a server (as opposed to a client) the [Player’s](https://developer.roblox.com/api-reference/class/Player) *teleportData* is included in the dictionary returned by this function.
-	 *
-	 * This function can only be used to fetch *teleportData* on the server, to retrieve it on the client use [TeleportService.GetLocalPlayerTeleportData](https://developer.roblox.com/api-reference/function/TeleportService/GetLocalPlayerTeleportData).
-	 *
-	 * In contrast to [TeleportService.GetLocalPlayerTeleportData](https://developer.roblox.com/api-reference/function/TeleportService/GetLocalPlayerTeleportData), this function provides a number of security checks to the *teleportData*:
-	 *
-	 *  - It is guaranteed to have been sent by a Roblox server in the last 48 hours
-	 *
-	 *  - It is guaranteed to have been sent with this `Player`
-	 *
-	 *  - The SourcePlaceId returned is guaranteed to be the place the data was sent from. This means you can verify the TeleportData came from an approved place
-	 *
-	 * However, as this data is transmitted by the client, it not 100% secure. Although the user cannot modify this data it is possible for them to view it or insert data from a previous teleport.
-	 *
-	 * Despite this, it is still appropriate for the secure transmission of [immutable data][1] (data that can not be changed). For example, if the user has completed a level that cannot be uncompleted. Such data can be securely transmitted using this function avoiding the need to use up and wait for [DataStore](https://developer.roblox.com/api-reference/class/GlobalDataStore) requests when teleporting.
-	 *
-	 * You should not use this function for data that can be changed. For example, the amount of in-game currency the user currently has. This is because GetJoinData cannot guarantee a malicious user is not transmitting data from a previous session. For data like this, you should rely on [GlobalDataStores](https://developer.roblox.com/api-reference/class/GlobalDataStore).
-	 *
-	 * As with all cases, you should implement proper server validation to ensure your game is secure. For more information see this article on [Articles.Game Security](https://developer.roblox.com/search#stq=Game%20Security).
-	 *
-	 * [1]: https://en.wikipedia.org/wiki/Immutable_object
-	 * @returns A dictionary containing PlaceId and UserId values (see table in description).
+	 * *Note: * This API currently only works for teleports initiated by [TeleportService.TeleportPartyAsync](https://developer.roblox.com/api-reference/function/TeleportService/TeleportPartyAsync)
+	 * @returns A dictionary containing PlacId and UserId values (see table in description).
 	 */
 	GetJoinData(): PlayerJoinInfo;
 	/** 
@@ -17963,26 +16289,7 @@ local character = player.Character or player.CharacterAdded:wait()
 	 */
 	Move(walkDirection: Vector3, relativeToCamera?: boolean): void;
 	/** 
-	 * The GetFriendsOnline `Player` function returns a [Articles.Table#dictionaries](https://developer.roblox.com/search#stq=Table#dictionaries) of online friends, specified by *maxFriends*.
-	 *
-	 * ## The Array's Content
-	 *
-	 * Some fields are only present for certain location types. For example, *PlaceId* won't be present when the location type is *(mobile) website*.
-	 *
-	 * | Name         | Type    | Description                                                                                                                            |
-	 * |--------------|---------|----------------------------------------------------------------------------------------------------------------------------------------|
-	 * | VisitorId    | number  | The [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId) of the friend.                                                                                                              |
-	 * | UserName     | string  | The user name of the friend.                                                                                                           |
-	 * | LastOnline   | string  | When the user was last online.                                                                                                         |
-	 * | IsOnline     | boolean | If the friend is currently online.                                                                                                     |
-	 * | LastLocation | string  | The name of the friends current location.                                                                                              |
-	 * | PlaceId      | number  | The placeId of the friends last location.                                                                                              |
-	 * | GameId       | string  | The [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) of the friends last location.                                                                                               |
-	 * | LocationType | number  | The location type of the friends last location. 0 for mobile website. 1 for mobile in game. 2 for website. 3 for studio. 4 for ingame. |
-	 *
-	 * [1]: http://robloxdev.com/articles/Table#dictionaries
-	 * @param maxFriends The maximum number of online friends to return. The default is 200.
-	 * @returns An dictionary of online friends (see the table in the description to see what each the format of an entry).
+	 * Return a [dictionary](https://wiki.roblox.com/index.php?title=API:Type/dictionary) of online friends, specified by _maxFriends_.
 	 */
 	/** ### TS Usage
 	 * One should check the LocationType of each member of this array in order to verify which members are present. Should be compared to the LocationType const enum.
@@ -18024,81 +16331,85 @@ local character = player.Character or player.CharacterAdded:wait()
 	/** @rbxts server */
 	LoadCharacterWithHumanoidDescription(humanoidDescription: HumanoidDescription): void;
 	/** 
-	 * The CharacterAdded event fires when a player's character spawns (or respawns). This event fires soon after setting [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) to a non-nil value or calling [Player.LoadCharacter](https://developer.roblox.com/api-reference/function/Player/LoadCharacter). Note, CharacterAdded fires when the Character is assigned to the `Player`, which is before the Character is parented to the `Workspace`.
+	 * The CharacterAdded event fires when a player's character spawns or respawns, such as loading a custom appearance for a player's character.
 	 *
-	 * This can be used alongside the [Player.CharacterRemoving](https://developer.roblox.com/api-reference/event/Player/CharacterRemoving) event, which fires right before a player's character is about to be removed, typically after death. As such, both of these event can potentially fire many times as players die then respawn in a place. If you want to detect when a player joins or leaves the game, you can use the [Players.PlayerAdded](https://developer.roblox.com/api-reference/event/Players/PlayerAdded) and [Players.PlayerRemoving](https://developer.roblox.com/api-reference/event/Players/PlayerRemoving) events instead.
-	 *
-	 * Note that the `Humanoid` and its body parts (head, torso and limbs) will exist when this event fires, but clothing items like [Hats](https://developer.roblox.com/api-reference/class/Hat) and [Shirts](https://developer.roblox.com/api-reference/class/Shirt), `Pants` may take a few seconds to be added to the character (connect [Instance.ChildAdded](https://developer.roblox.com/api-reference/event/Instance/ChildAdded) on the added character to detect these).
-	 */
-	readonly CharacterAdded: RBXScriptSignal<(character: Model) => void>;
-	/** 
-	 * This event fires when the the full appearance of a `Player`'s [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) has been inserted.
-	 *
-	 * [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character)'s generally have a range of objects modifying their appearance including [Accoutrements](https://developer.roblox.com/api-reference/class/Accoutrement), [Shirts](https://developer.roblox.com/api-reference/class/Shirt), `Pants` and [CharacterMeshes](https://developer.roblox.com/api-reference/class/CharacterMesh). This event will fire when all such objects have been inserted into the [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character).
-	 *
-	 * One use for this event, is to remove and save aspects of a [Characters](https://developer.roblox.com/api-reference/property/Player/Character) appearance to be used later. See below for an example of this.
-	 */
-	readonly CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
-	/** 
-	 * The CharacterRemoving event fires right before a player's character is removed, such as when the player is respawning.
-	 *
-	 * This event can be used alongside the [Player.CharacterAdded](https://developer.roblox.com/api-reference/event/Player/CharacterAdded) event, which fires when a player's character spawns or respawns. For instance, if you would like print a message every time a player spawns and dies:
+	 * This can be used alongside the [Player.CharacterRemoving](https://developer.roblox.com/api-reference/event/Player/CharacterRemoving) event, which fires when a player's character is about to be removed, typically on death. For instance, if you would like print a message every time a player spawns and dies:
 	 *
 	 * ```lua
 local Players = game:GetService("Players")
 
-local function onCharacterSpawned(player)
-	print(player.Name .. " is spawning")
-end
+Players.CharacterAdded:Connect(function(player)
+	print(player.Name + " spawned!")
+end)
 
-local function onCharacterDespawned(player)
-	print(player.Name .. " is despawning")
-end
-
-local function onPlayerAdded(player)
-	player.CharacterAdded:connect(function ()
-		onCharacterDespawned(player)
-	end)
-	player.CharacterRemoving:connect(function ()
-		onCharacterDespawned(player)
-	end)
-end
-
-Players.PlayerAdded:connect(onPlayerAdded)
+Players.CharacterRemoving:Connect(function(player)
+	print(player.Name + "  died!")
+end)
 ```
 	 * 
 
-	 * This event is only concerned with the [Character](https://developer.roblox.com/api-reference/property/Player/Character) of a `Player`. If you instead need to track when a player joins/leaves the game, use the events [Players.PlayerAdded](https://developer.roblox.com/api-reference/event/Players/PlayerAdded) and [Players.PlayerRemoving](https://developer.roblox.com/api-reference/event/Players/PlayerRemoving).
+	 * If you want to track when a player's joins or leaves the game, you can use the [Player.PlayerAdded](https://developer.roblox.com/search#stq=PlayerAdded) and [Player.PlayerRemoving](https://developer.roblox.com/search#stq=PlayerRemoving) functions.
+	 *
+	 * Notes
+	 *
+	 * ----------
+	 *
+	 *  - CharacterAdded fires when the Character is added to the `Workspace`. The `Humanoid`, [Humanoid.Torso](https://developer.roblox.com/api-reference/property/Humanoid/Torso), and other parts of a character exist, but clothing items like `Hat`s and `Shirt`s/`Pant`s may take a few seconds to be added to the character.
+	 */
+	readonly CharacterAdded: RBXScriptSignal<(character: Model) => void>;
+	/** 
+	 * Fires whenever a character has loaded its appearance. This means that all the hats, meshes, ... are inserted into the character.
+	 */
+	readonly CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
+	/** 
+	 * The CharacterRemoving event fires when a player's character is about to be removed, such as when the player dies.
+	 *
+	 * This can be used alongside the [Player.CharacterAdded](https://developer.roblox.com/api-reference/event/Player/CharacterAdded) event, which fires when a player's character spawns or respawns. For instance, if you would like print a message every time a player spawns and dies:
+	 *
+	 * ```lua
+local Players = game:GetService("Players")
+
+Players.CharacterAdded:Connect(function(player)
+	print(player.Name + " spawned!")
+end)
+
+Players.CharacterRemoving:Connect(function(player)
+	print(player.Name + "  died!")
+end)
+```
+	 * 
+
+	 * If you want to track when a player's joins or leaves the game, you can use the [Player.PlayerAdded](https://developer.roblox.com/search#stq=PlayerAdded) and [Player.PlayerRemoving](https://developer.roblox.com/search#stq=PlayerRemoving) functions.
 	 */
 	readonly CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
 	/** 
 	 * The Chatted event fires when a `Player` types a message and presses enter in Roblox's provided chat bar. This is done using some Lua bindings by the default chat script. You can prevent players from chatting by using [StarterGui.SetCoreGuiEnabled](https://developer.roblox.com/api-reference/function/StarterGui/SetCoreGuiEnabled) and disabling the Chat [Enum.CoreGuiType](https://developer.roblox.com/search#stq=CoreGuiType).
 	 *
-	 * ## Chat Commands
+	 * # Chat Commands
 	 *
 	 * Using this event and some string manipulation functions like `string.sub` and `string.lower`, it is possible to create chat commands, even with arguments like player names. Usually, commands are prefixed such as `/heal PlayerName`. To check for a prefix in a string, use `string.sub` on the message to check a substring of the message: `string.sub(message, 1, 6) == "/heal "` (note the inclusion of the space) . Then, extract the rest of the command using `string.sub` again: `string.sub(message, 7)` will be equal to the player name. Check if that player exists, and if so, perform the command's action (in this example, healing them). Check the code samples for examples of chat commands.
 	 *
-	 * ## Filtering
+	 * # Filtering
 	 *
 	 * The message text fired with this event is **unfiltered**. If you are displaying player input like chat to other players in any form, it must be filtered using [Chat.FilterStringAsync](https://developer.roblox.com/api-reference/function/Chat/FilterStringAsync). Keep this in mind when creating your own chat systems; if your game does not properly filter chat it may have moderation action taken against it.
 	 */
 	readonly Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
 	/** 
-	 * This event is usually fired two minutes after the game engine classifies the [player](https://developer.roblox.com/api-reference/class/Player) as idle. Time is the amount of seconds since this point.
+	 * The Idled is a `Player` event that is usually fired two minutes after the game engine classifies the player as idle. Time is the amount of seconds since this point.
 	 *
 	 * This can be used to track when a player has been idled for approximately two minutes - which can be useful for implementing away from keyboard (AFK) features into a game.
 	 *
-	 * When the game engine classifies a player as idle, this event is called after two minutes. After every check, if the player is still idled, the event will continue to fire until the check reveals the player is no longer idle.
+	 * Notes
 	 *
-	 * This event is used by Roblox to automatically disconnect players that have been idle for at least 20 minutes. If you would like to track when this disconnect occurs, considering using [Players.PlayerRemoving](https://developer.roblox.com/api-reference/event/Players/PlayerRemoving) alongside this event.
+	 * ----------
+	 *
+	 *  - When the game engine classifies a player as idle, this event is called after two minutes. After every check, if the player is still idled, the event will continue to fire until the check reveals the player is no longer idle.
+	 *
+	 *  - This event is used by Roblox to automatically disconnect players that have been idle for at least 20 minutes. If you would like to track when this disconnect occurs, considering using [Players.PlayerRemoving](https://developer.roblox.com/api-reference/event/Players/PlayerRemoving) alongside this event.
 	 */
 	readonly Idled: RBXScriptSignal<(time: number) => void>;
 	/** 
-	 * Fired when the TeleportState of a player changes. This event is useful for detecting whether a teleportation was successful.
-	 *
-	 * ## What is the TeleportState?
-	 *
-	 * When a teleportation request is made using `TeleportService`, there are a series of stages before the `Player` is teleported. The current stage is represented by the [Enum.TeleportState](https://developer.roblox.com/search#stq=TeleportState) value which is given by OnTeleport. See below for a practical example of this.
+	 * Fired when the TeleportState of a player changes.
 	 */
 	readonly OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
 }
@@ -18147,7 +16458,7 @@ interface PlayerScripts extends Instance {
 }
 
 /** 
- * The Players game service contains only `Player` objects for presently connected clients to a Roblox game server. It also contains information about a place's configuration (such as bubble chat or classic chat). It can fetch information about players not connected to the server, such as character appearances, friends and avatar thumbnail.
+ * The Players game service contains only Player objects of players who are presently connected to a Roblox game server. It also contains information about a place's configuration (such as bubble chat or classic chat). It can fetch information about players not connected to the server, such as character appearances, friends and avatar thumbnail.
  */
 interface Players extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -18157,37 +16468,15 @@ interface Players extends Instance {
 	 */
 	readonly BubbleChat: boolean;
 	/** 
-	 * The CharacterAutoLoads `Players` property indicates whether `Character`s will respawn automatically. The default value is *true*.
-	 *
-	 * If this property is disabled (*false*), players `Characters` will not spawn until the [Player.LoadCharacter](https://developer.roblox.com/api-reference/function/Player/LoadCharacter) function is called for each `Player` - including when players join the game.
-	 *
-	 * This can be useful in games where players have finite lives, such as competitive games in which players do not respawn until a game round ends.
+	 * Indicates whether [Characters](https://wiki.roblox.com/index.php?title=Character) will respawn automatically.
 	 */
 	CharacterAutoLoads: boolean;
 	/** 
-	 * Indicates whether or not classic chat is enabled. This property is set by the [Players.SetChatStyle](https://developer.roblox.com/api-reference/function/Players/SetChatStyle) method using the [Enum.ChatStyle](https://developer.roblox.com/search#stq=ChatStyle) enum.
-	 *
-	 * When this chat mode is enabled, the game displays chats in a bubble above the sender's head.
-	 *
-	 * There are two other chat modes, [Players.BubbleChat](https://developer.roblox.com/api-reference/property/Players/BubbleChat) and a chat mode where both classic and bubble chat are enabled.
+	 * Indicates whether or not classic chat is enabled. This property is set by the [Players.SetChatStyle](https://developer.roblox.com/api-reference/function/Players/SetChatStyle) method.
 	 */
 	readonly ClassicChat: boolean;
 	/** 
-	 * This is a read-only property which contains a reference to the `Player` instance for which a `LocalScript` is running. For `Script`s running on the server, this property is nil.
-	 *
-	 * This property is useful when creating GUIs that display information about the player. You can use it to accessing the player's [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character), `PlayerGui`, and `Backpack`.
-	 *
-	 * ## Loading GUIs
-	 *
-	 * When creating loading GUIs using `ReplicatedFirst`, sometimes a `LocalScript` may run before the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) is created and becomes available. In such cases, it is useful to yield until it is by using [Instance.GetPropertyChangedSignal](https://developer.roblox.com/api-reference/function/Instance/GetPropertyChangedSignal)
-	 *
-	 * ```lua
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPlayer"):wait()
-```
-	 * 
-
-	 * Note that this technique is not required for [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript) within in `StarterGui`, `StarterPlayerScripts` or `StarterCharacterScripts`, as these kinds of scripts only run if the `Player` object is already available.
+	 * The Player that the LocalScript is running for.
 	 */
 	/** @rbxts client */
 	readonly LocalPlayer: Player;
@@ -18196,63 +16485,36 @@ local player = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPla
 	 */
 	readonly MaxPlayers: number;
 	/** 
-	 * The PreferredPlayers property determines the number of players to which Roblox's matchmaker will fill servers. This is number should be less than the maximum number of players supported by the game in order to leave some spaces for additional players (such as friends or those following another player) to join.
+	 * This setting is set from the place settings on the site.
 	 *
-	 * This property can be set from the place settings' *Access* tab on the site. It cannot be set through `Script`s or `LocalScript`s in-game.
+	 * When someone press the Play-button, Roblox will try to fill all servers up to the amount of given players. If there is a server that has friends on you in it, Roblox will send you to that server instead. (Unless the server is completely full)
 	 *
-	 * When a player press the Play button to join a game server, Roblox attempts to match that player to a server such that the player count will try not to exceed PreferredPlayers. If a friend (or friends) of the player are in a server that is not full, Roblox prioritizes that server instead.
+	 * Example: A server with 8 players. The MaximumPlayers is 10, the PreferredPlayers is 8. Whenever a player press the Play-button, 2 things can happen:
 	 *
-	 * ## Example
+	 * * The player has friends in the server, which makes Roblox send him to that server
 	 *
-	 * There are 8 players in a server where the [Player.MaximumPlayers](https://developer.roblox.com/search#stq=MaximumPlayers) is 10 and the PreferredPlayers is 8. A player presses the play button:
+	 * * The player has no friends in it, and will start a new server, as the server is already "filled" up to PreferredPlayers amount.
 	 *
-	 * * If the player has **at least one friend** in the server, Roblox selects the already-existing server so the player can play with their friend.
-	 *
-	 * * If the player has **no friends** in the server, a new server is started since the existing server has met the number of PreferredPlayers (the player could still join the server by manually selecting it or following another user).
+	 * This system allows developers to have servers more friends-friendly. Normally, when PreferredPlayers ~= MaxPlayers, a server would never fill up, unless a player follows another player, or a player pressing the Play button has one or more friends in that server.The preferred amount of players for this server.
 	 */
 	readonly PreferredPlayers: number;
 	RespawnTime: number;
 	/** 
-	 * This function searches each [player](https://developer.roblox.com/api-reference/class/Player) in `Players` for one whose [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId) matches the given UserId. If such a player does not exist, it simply returns `nil`. It is equivalent to the following function:
-	 *
-	 * ```lua
-local Players = game:GetService("Players")
-local function getPlayerByUserId(userId)
-	for _, player in pairs(Players:GetPlayers()) do
-		if player.UserId == userId then
-			return player
-		end
-	end
-end
-```
-	 * 
-
-	 * This method is useful in finding the purchaser of a developer product using [MarketplaceService.ProcessReceipt](https://developer.roblox.com/api-reference/callback/MarketplaceService/ProcessReceipt), which provides a table that includes the purchaser's UserId and not a reference to the Player object itself. Most games will require a reference to the player in order to grant products.
-	 * @param userId The `Player/UserId` of the player being specified
-	 * @returns The player with the specified `Player/UserId`, or **nil** if that player is not in the game
+	 * Returns the player with the specified [userId](https://wiki.roblox.com/index.php?title=UserId), or [nil](https://wiki.roblox.com/index.php?title=Nil) if that player is not in the game.
 	 */
 	GetPlayerByUserId(userId: number): Player | undefined;
 	/** 
-	 * This function returns the `Player` associated with the given [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character), or `nil` if one cannot be found. It is equivalent to the following function:
+	 * The GetPlayerFromCharacter function returns the `Player` associated with the given character, or nil if the character is not controlled by a player.
 	 *
-	 * ```lua
-local function getPlayerFromCharacter(character)
-	for _, player in pairs(game:GetService("Players"):GetPlayers()) do
-		if player.Character == character then
-			return player
-		end
-	end
-end
-```
-	 * 
-
-	 * This method is often used when some event in player's character fires (such as their `Humanoid` [dying](https://developer.roblox.com/api-reference/event/Humanoid/Died)). Such an event might not directly reference the Player object, but this method provides easy access. The inverse of this function can be described as getting the Character of a Player. To do this, simply access the Character property.
+	 * For instance, if you pass the Character instance of Player1 (i.e. their character model in workspace), the function will return the Player `Model` of Player1.
+	 *
+	 * To get a character from a player, the opposite of this function, you can use the `Player.Character` player property.
 	 * @param character A character instance that you want to get the player from.
 	 * @returns A player instance corresponding to the character passed as input.
 	 */
 	GetPlayerFromCharacter(character: Model): Player | undefined;
 	/** 
-	 * This method returns a table of all presently connected `Player`. It functions the same way [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) would except that it only returns Player objects. It functions similarly to [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) when called on `Players`. 0 When used in conjunction with a for-loop, it is useful for iterating over all players in a game.
+	 * This method returns a table of all presently connected Player objects. It functions the same way GetChildren would except that it only returns Player objects. When used in conjunction with a for-loop, it is useful for iterating over all players in a game.
 	 *
 	 * ```lua
 Players = game:GetService("Players")
@@ -18260,83 +16522,19 @@ for i, player in pairs(Players:GetPlayers()) do
 	print(player.Name)
 end
 ```
-	 * 
-
-	 * Scripts that connect to [Players.PlayerAdded](https://developer.roblox.com/api-reference/event/Players/PlayerAdded) are often trying to process every Player that connects to the game. This method is useful for iterating over already-connected players that wouldn't fire [PlayerAdded](https://developer.roblox.com/api-reference/event/Players/PlayerAdded). Using this method ensures that no player is missed!
 	 *
-	 * ```lua
-local Players = game:GetService("Players")
-
-local onPlayerAdded(player)
-	print("Player: " .. player.Name)
-end
-
-for _, player in pairs(Players:GetPlayers()) do
-	onPlayerAdded(player)
-end
-Players.PlayerAdded:Connect(onPlayerAdded)
-```
-	 *
-	 * @returns A table containing all the players in the server.
 	 */
 	GetPlayers(): Array<Player>;
 	/** 
-	 * This function returns a `Model` containing the assets which the player is wearing, excluding gear.
-	 *
-	 * If you prefer a Lua table of information about these assets instead of a model, use [Players.GetCharacterAppearanceInfoAsync](https://developer.roblox.com/api-reference/function/Players/GetCharacterAppearanceInfoAsync).
-	 *
-	 * This method behaves similar to [InsertService.LoadAsset](https://developer.roblox.com/api-reference/function/InsertService/LoadAsset), and is like using [LoadAsset](https://developer.roblox.com/api-reference/function/InsertService/LoadAsset) on the asset information returned by [Players.GetCharacterAppearanceInfoAsync](https://developer.roblox.com/api-reference/function/Players/GetCharacterAppearanceInfoAsync) except faster.
-	 * @param userId The `Player/UserId` of the specified player
-	 * @returns A `Model` containing the assets which the player is wearing, excluding gear
+	 * Returns a `Model` containing the assets which the player is wearing, excluding gear.
 	 */
 	GetCharacterAppearanceAsync(userId: number): Model | undefined;
 	/** 
-	 * This function returns information about a player's avatar (ignoring gear) on the Roblox website in the form of a dictionary. It is not to be confused with [GetCharacterAppearanceAsync](https://developer.roblox.com/api-reference/function/Players/GetCharacterAppearanceAsync), which actually loads the assets described by this method. You can use [InsertService.LoadAsset](https://developer.roblox.com/api-reference/function/InsertService/LoadAsset) to load the assets that are used in the player's avatar. The structure of the returned dictionary is as follows:
-	 *
-	 * | Name | Type | Description |
-	 * | --- | --- | --- |
-	 * | `bodyColors` | table (see below) | Describes the BrickColor values for each limb |
-	 * | `assets` | table (see below) | Describes the equipped assets (hats, body parts, etc) |
-	 * | `defaultPantsApplied` | bool | Describes whether default pants are applied |
-	 * | `defaultShirtApplied` | bool | Describes whether default shirt is applied |
-	 * | `playerAvatarType` | string | Either "R15" or "R6" |
-	 * | `scales` | table (see below) | Describes various body scaling factors |
-	 *
-	 * ### Assets sub-table
-	 *
-	 * The assets table is an array of tables containing the following keys that describe the assets currently equipped by the player:
-	 *
-	 * | Name | Type | Description |
-	 * | --- | --- | --- |
-	 * | `id` | number | The asset ID of the equipped asset |
-	 * | `assetType` | table | A table with `name` and `id` fields, each describing the kind of asset equipped ("Hat", "Face", etc.) |
-	 * | `name` | string | The name of the equipped asset |
-	 *
-	 * ### Scales sub-table
-	 *
-	 * The scales table has the following keys, each a number corresponding to one `Humanoid` scaling property:
-	 *
-	 * `bodyType`, `head`, `height`, `proportion`, `depth`, `width`
-	 *
-	 * ### Body Colors sub-table
-	 *
-	 * The body colors table has the following keys, each a number corresponding to a [DataType.BrickColor](https://developer.roblox.com/search#stq=BrickColor) ID number which can be used with `BrickColor.new(id)`: `leftArmColorId`, `torsoColorId`, `rightArmColorId`, `headColorId`, `leftLegColorId`, `rightLegColorId`
-	 * @param userId The **userId* of the specified player.
-	 * @returns A dictionary containing information about the character appearance of a given user.
+	 * Returns information about the character appearance of a given user.
 	 */
 	GetCharacterAppearanceInfoAsync(userId: number): CharacterAppearanceInfo;
 	/** 
-	 * The GetFriends `Players` function returns a `FriendPages` object which contains information for all of the given [Player's](https://developer.roblox.com/api-reference/class/Player) friends. The items within the FriendPages object are tables with the following fields:
-	 *
-	 * | Name | Type | Description |
-	 * | --- | --- | --- |
-	 * | Id | int64 | The friend's UserId |
-	 * | Username | string | The friend's username |
-	 * | IsOnline | bool | If the friend is currently online |
-	 *
-	 * See the code samples for an easy way to iterate over all a player's friends.
-	 * @param userId The **userId** of the player being specified.
-	 * @returns A `FriendPages` object which contains information for all of the given player's friends.
+	 * Returns a `FriendPages` object which contains information for all of the given player's friends.
 	 */
 	GetFriendsAsync(userId: number): FriendPages;
 
@@ -18360,28 +16558,7 @@ Players.PlayerAdded:Connect(onPlayerAdded)
 	 */
 	GetUserIdFromNameAsync(userName: string): number;
 	/** 
-	 * This function fetches a [content URL](https://developer.roblox.com/search#stq=Content) of an image of a player's avatar given their [UserId](https://developer.roblox.com/api-reference/property/Player/UserId), the image size (as an enum) and type (also an enum: avatar, bust, headshot). It also returns a bool describing if the image is ready to be used.
-	 *
-	 * Most often, this method is used with [ImageLabel.Image](https://developer.roblox.com/api-reference/property/ImageLabel/Image) to display player pictures next to their username in-game. It is also appropriate for [Decal.Texture](https://developer.roblox.com/api-reference/property/Decal/Texture) as well.
-	 *
-	 * ## Available Sizes
-	 *
-	 * `Enum.ThumbnailSize`: `Size48x48`, `Size60x60`, `Size100x100`, `Size150x150`, `Size180x180`, `Size353x353`, `Size420x420`
-	 *
-	 * ## Types of User Thumbnails
-	 *
-	 * | Enum.ThumbnailType | Description | Example (60px) |
-	 * | --- | --- | --- |
-	 * | `AvatarBust` | Upper chest and head | ![](https://www.roblox.com/bust-thumbnail/image?userId=269323&width=60&height=60&format=png) |
-	 * | --- |
-	 * | `AvatarThumbnail` | Entire avatar | ![](https://www.roblox.com/avatar-thumbnail/image?userId=269323&width=60&height=60&format=png) |
-	 * | --- |
-	 * | `HeadShot` |Just the head and face | ![](https://www.roblox.com/headshot-thumbnail/image?userId=269323&width=60&height=60&format=png) |
-	 * | --- |
-	 * @param userId The `Player/UserId` of the player being specified
-	 * @param thumbnailType A `Enum/ThumbnailType` describing the type of thumbnail
-	 * @param thumbnailSize A `Enum/ThumbnailSize` specifying the size of the thumbnail
-	 * @returns A tuple containing the content URL of a user thumbnail based on the specified parameters, and a bool describing if the image is ready to be used or not
+	 * Returns the content URL of a user thumbnail based on the specified parameters, and a bool describing if the image is ready to be used or not.
 	 */
 	GetUserThumbnailAsync(
 		userId: number,
@@ -18418,7 +16595,7 @@ end)
 	 */
 	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
 	/** 
-	 * The PlayerRemoving event fires right before a `Player` is leaves the game. This event fires before [ChildRemoved](https://developer.roblox.com/api-reference/event/Instance/ChildRemoved) does on `Players`, and behaves somewhat similarly to [Instance.DescendantRemoving](https://developer.roblox.com/api-reference/event/Instance/DescendantRemoving). Since event fires before the actual removal of a `Player`, this event is useful to store player data using a `GlobalDataStore`.
+	 * The PlayerRemoving event fires when a player is about to leave the game. This is used to fire an event when a player is leaving a game, such as ensuring that a player's data is saved to the game's `GlobalDataStore`.
 	 *
 	 * This can be used alongside the [Player.PlayerAdded](https://developer.roblox.com/search#stq=PlayerAdded) event, which fires when a player joins the game. For instance, if you would like print a message every time a new player joins or leaves the game:
 	 *
@@ -18436,6 +16613,12 @@ end)
 	 * 
 
 	 * If you want to track when a player's character is added or removed from the game, such as when a player respawns or dies, you can use the [Player.CharacterAdded](https://developer.roblox.com/api-reference/event/Player/CharacterAdded) and [Player.CharacterRemoving](https://developer.roblox.com/api-reference/event/Player/CharacterRemoving) functions.
+	 *
+	 * Notes
+	 *
+	 * ----------
+	 *
+	 *  - Up until recently, this event didn't work on the client (in `Localscript`s), but this has been changed
 	 */
 	readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
 }
@@ -18547,9 +16730,9 @@ interface PluginGuiService extends Instance {
 }
 
 /** 
- * A singleton class used to create [Plugins](https://developer.roblox.com/api-reference/class/Plugin). Has been superseded by the [official plugins feature](https://developer.roblox.com/articles/Intro-to-Plugins), but can be used to create plugins with the command bar.
+ * A singleton class used to create `Plugin`. Has been superseded by the [official plugins feature](https://wiki.roblox.com/index.php?title=Tutorial:Plugins), but can be used to create `Plugin` with the [command bar](https://wiki.roblox.com/index.php?title=Command_bar) .
  *
- * The PluginManager object can be retrieved using the deprecated `PluginManager()` function.
+ * Can be retrieved by using the [PluginManager()](https://wiki.roblox.com/index.php?title=Function_dump/Functions_specific_to_ROBLOX#PluginManager) function.
  */
 interface PluginManager extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -18557,132 +16740,20 @@ interface PluginManager extends Instance {
 }
 
 /** 
- * A context menu that can be shown in Studio. It displays a list of PluginActions and supports submenus.
- *
- * PluginMenus must be created using the [Plugin.CreatePluginMenu](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginMenu) function in order to work as expected.
- *
- * ## See also
- *
- *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
- *
- *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
- *
- *   - [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
- *
- *   - [PluginMenu.Title](https://developer.roblox.com/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
- *
- *   - [PluginMenu.Icon](https://developer.roblox.com/api-reference/property/PluginMenu/Icon), the icon to be displayed when used as a sub menu
- *
- *   - [PluginMenu.AddAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddAction), adds the given action to the menu
- *
- *   - [PluginMenu.AddNewAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddNewAction), creates a temporary action that is hidden from Studio's customize shortcuts window
- *
- *   - [PluginMenu.AddMenu](https://developer.roblox.com/api-reference/function/PluginMenu/AddMenu), adds the given menu as a separator
- *
- *   - [PluginMenu.AddSeparator](https://developer.roblox.com/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
- *
- *   - [PluginMenu.Clear](https://developer.roblox.com/api-reference/function/PluginMenu/Clear), clears the menu
- *
- *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
+ 
  */
 interface PluginMenu extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PluginMenu";
-	/** 
-	 * This property determines the icon to be displayed when used as a sub menu. It defaults to an empty string `””`.
-	 *
-	 * ## See also
-	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
-	 *
-	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
-	 *
-	 *   - [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
-	 *
-	 *   - [PluginMenu.Title](https://developer.roblox.com/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.AddAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddAction), adds the given action to the menu
-	 *
-	 *   - [PluginMenu.AddNewAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddNewAction), creates a temporary action that is hidden from Studio's customize shortcuts window
-	 *
-	 *   - [PluginMenu.AddMenu](https://developer.roblox.com/api-reference/function/PluginMenu/AddMenu), adds the given menu as a separator
-	 *
-	 *   - [PluginMenu.AddSeparator](https://developer.roblox.com/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
-	 *
-	 *   - [PluginMenu.Clear](https://developer.roblox.com/api-reference/function/PluginMenu/Clear), clears the menu
-	 *
-	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
-	 */
 	Icon: string;
-	/** 
-	 * This property determines the text to be displayed when a `PluginMenu` is used as a sub menu. It defaults to an empty string `””`.
-	 *
-	 * ## See also
-	 *
-	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
-	 *
-	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
-	 *
-	 *   - [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
-	 *
-	 *   - [PluginMenu.Icon](https://developer.roblox.com/api-reference/property/PluginMenu/Icon), the icon to be displayed when used as a sub menu
-	 *
-	 *   - [PluginMenu.AddAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddAction), adds the given action to the menu
-	 *
-	 *   - [PluginMenu.AddNewAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddNewAction), creates a temporary action that is hidden from Studio's customize shortcuts window
-	 *
-	 *   - [PluginMenu.AddMenu](https://developer.roblox.com/api-reference/function/PluginMenu/AddMenu), adds the given menu as a separator
-	 *
-	 *   - [PluginMenu.AddSeparator](https://developer.roblox.com/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
-	 *
-	 *   - [PluginMenu.Clear](https://developer.roblox.com/api-reference/function/PluginMenu/Clear), clears the menu
-	 *
-	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
-	 */
 	Title: string;
 }
 
-/** 
- * A PluginToolbar is an object created by using the [Plugin.CreateToolbar](https://developer.roblox.com/api-reference/function/Plugin/CreateToolbar) method. It is used to create `PluginToolbarButton`s using the [CreateButton](https://developer.roblox.com/api-reference/function/PluginToolbar/CreateButton) function. In general, it is good practice for a plugin to use **one and only one** uniquely named toolbar for all of its buttons. In Roblox Studio, toolbars are rendered under the Plugins tab.
- *
- * ![A screenshot of Roblox Studio's Plugins tab, rendering several PluginToolbars][1]
- *
- * Pictured above are three PluginToolbars in Roblox Studio: Animations, Three Wise Monkeys and Localization. The center toolbar is a custom toolbar created by a plugin; the other toolbars are created by built-in Roblox Studio plugins.
- *
- * ## Example
- *
- * The following code sample creates a basic toolbar with one button. It should be run as a Roblox Studio plugin, and not run as a `Script`.
- *
- * ```lua
-local toolbar = plugin:CreateToolbar("Three Wise Monkeys")
-local button = toolbar:CreateButton("Mizaru", "See No Evil", "rbxassetid://2778270261")
-```
- * 
-
- * [1]: https://developer.roblox.com/assets/5c48e228da4c5b970f6efb58/PluginToolbar-light.png
- */
 interface PluginToolbar extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PluginToolbar";
 }
 
-/** 
- * A PluginToolbarButton is an object created by the [PluginToolbar.CreateButton](https://developer.roblox.com/api-reference/function/PluginToolbar/CreateButton) function. It allows the user to initiate a single, one-off action in Roblox Studio through the [Click](https://developer.roblox.com/api-reference/event/PluginToolbarButton/Click) event. Pictured below are three PluginToolbarButtons. From left to right: the default, hover and pressed states. The hovered button in the center shows tooltip text, which is the 2nd argument passed to [PluginToolbar.CreateButton](https://developer.roblox.com/api-reference/function/PluginToolbar/CreateButton).
- *
- * ![Three PluginToolbarButtons rendered on a PluginToolbar titled "Three Wise Monkeys"][1]
- *
- * ## Behavior
- *
- * When pressed, the [Click](https://developer.roblox.com/api-reference/event/PluginToolbarButton/Click) event fires. A button will also remain in the pressed state, which may be set manually using [SetActive](https://developer.roblox.com/api-reference/function/PluginToolbarButton/SetActive). Upon plugin activation ([Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate)), buttons in all other `PluginToolbar`s will be toggled off. If all buttons in a toolbar are off, the toolbar's plugin is deactivated ([Plugin.Deactivate](https://developer.roblox.com/api-reference/function/Plugin/Deactivate)).
- *
- * When the game viewport is not visible, buttons will be disabled as if their [Enabled](https://developer.roblox.com/api-reference/property/PluginToolbarButton/Enabled) property were false. Disabled buttons are desaturated and do not respond to user clicks. By setting [ClickableWhenViewportHidden](https://developer.roblox.com/api-reference/property/PluginToolbarButton/ClickableWhenViewportHidden) to true, you can allow plugin buttons to remain clickable (such as during script editing).
- *
- * ## History
- *
- * * Prior to an update released in January 2019, this class was simply known as "Button". This was changed to reduce confusion with similarly named in-game UI element classes, such as `TextButton`.
- *
- * [1]: https://developer.roblox.com/assets/5c48e310f8a426690c84250e/PluginToolbarButton-light.png
- */
 interface PluginToolbarButton extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PluginToolbarButton";
@@ -18701,32 +16772,13 @@ interface PluginToolbarButton extends Instance {
 }
 
 /** 
- * The PointsService class controls points.
- *
- * Points are an award system used to showcase a player's achievements and participation throughout Roblox. How points are awarded through this service is at the discretion of the game's developer.
+ * This service controls points. Points are an award system used to showcase a player's achievements and participation throughout Roblox. How points are awarded through this service is at the discretion of the game's developer.
  */
 interface PointsService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PointsService";
 	/** 
-	 * This event fires when points have been successfully awarded to a player, whilst also passing along the updated balance of points the player has in the current game and all games.
-	 *
-	 * When a player is awarded points successfully the below example would print the userId and their new point balance. If, for example, the Roblox account was awarded thirty points (and had none to begin with)
-	 *
-	 * > User: 1 has now earned 30 (+30) points in the current game, now making
-	 *
-	 * > their total balance
-	 *
-	 * would be printed.
-	 *
-	 * ```lua
-local function pointsAwarded(userId, pointsAwarded, userBalanceInGame, userTotalBalance)
-	print("User: " .. userId .. " has now earned " .. userBalanceInGame .. " (+" .. pointsAwarded ..") points in the current game, now making their total balance " .. userTotalBalance)
-end
-
-game:GetService("PointsService").PointsAwarded:Connect(pointsAwarded)
-```
-	 *
+	 * Fires when points have been successfully awarded to a player, whilst also passing along the updated balance of points the player has in the current game and all games.
 	 */
 	readonly PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
 }
@@ -18750,7 +16802,7 @@ game:GetService("PointsService").PointsAwarded:Connect(pointsAwarded)
  *
  * The Roblox animation system applies [Pose.CFrame](https://developer.roblox.com/api-reference/property/Pose/CFrame) to the corresponding `Motor6D` by manipulating the relative transformation of the motor, the [Motor6D.Transform](https://developer.roblox.com/api-reference/property/Motor6D/Transform) property. The original [C0](https://developer.roblox.com/api-reference/property/JointInstance/C1) and [C1](https://developer.roblox.com/api-reference/property/JointInstance/C1) values are not changed.
  *
- * [1]: https://developer.roblox.com/assets/blt2e767397c28fecda/KeyframeSequence_-_Copy.png
+ * [1]: https://developer.roblox.com/assets/5aa797693595493f77511b1d/KeyframeSequence_-_Copy.png
  */
 interface Pose extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -18812,7 +16864,7 @@ interface Pose extends Instance {
 	 *
 	 * The way in which a joint will interpolate between two `Pose`s during animation playback is determined by the [Pose.EasingStyle](https://developer.roblox.com/api-reference/property/Pose/EasingStyle) and EasingDirection of the first pose.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt5b5cb41b1d832713/Easing_-_Copy.gif
+	 * [1]: https://developer.roblox.com/assets/5aba54079b0b756f0b8151f7/Easing_-_Copy.gif
 	 */
 	EasingStyle: Enum.PoseEasingStyle;
 	Weight: number;
@@ -18857,6 +16909,8 @@ interface PostEffect extends Instance {
  * The BloomEffect creates the effect of a camera viewing very bright light. It causes brighter colors to glow, similar to applying the Neon [Material](https://developer.roblox.com/api-reference/property/BasePart/Material) to everything, including the the `Sky`. Multiple BloomEffect objects can be used at the same time; doing so can further strengthen the result. Like other post-processing effects, objects of this type will only work while [Enabled](https://developer.roblox.com/api-reference/property/PostEffect/Enabled) and when parented to `Lighting` or the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera).
  *
  * The render behavior may also change or **disable completely** depending on the [EditQualityLevel](https://developer.roblox.com/api-reference/property/RenderSettings/EditQualityLevel) (in Studio) or the [QualityLevel](https://developer.roblox.com/api-reference/property/RenderSettings/QualityLevel). If you don't see BloomEffect rendering, check Roblox's settings. If set to Automatic, Roblox may choose a lower quality level which isn't high enough to render BloomEffect. You can override this manually: In Studio, at Level07 and below, BloomEffect does not render at all. At Level08 through Level11 a simple algorithm is used, and at Level12 and above the default behavior is used.
+ *
+ * # Example
  */
 interface BloomEffect extends PostEffect {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -19023,6 +17077,9 @@ interface SunRaysEffect extends PostEffect {
 	Spread: number;
 }
 
+/** 
+ 
+ */
 interface RbxAnalyticsService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RbxAnalyticsService";
@@ -19055,9 +17112,7 @@ interface ReflectionMetadataClasses extends Instance {
 }
 
 /** 
- * The ReflectionMetadataEnums is the class that acts as a `Folder` for `ReflectionMetadataEnum` objects.
- *
- * Since it is an internal object, it cannot be used by developers.
+ * Acts as a `Folder` for `ReflectionMetadataEnum` objects.
  */
 interface ReflectionMetadataEnums extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -19107,8 +17162,8 @@ interface ReflectionMetadataItem extends Instance {
 	 *
 	 * | Constraint | Description |
 	 * | --- | --- |
-	 * | isScriptCreatable | The specified class must be creatable with Instance.new |
-	 * | isService | The specified class must be a service. |
+	 * | isScriptCreatable | The specified class must be creatable with [Instance.new](https://wiki.roblox.com/index.php?title=Instance.new) |
+	 * | isService | The specified class must be a [service](https://wiki.roblox.com/index.php?title=Service). |
 	 */
 	Constraint: string;
 	/** 
@@ -19126,9 +17181,9 @@ interface ReflectionMetadataItem extends Instance {
 	/** 
 	 * Describes the context where this member can be used.
 	 *
-	 * If set to ["Server"](https://developer.roblox.com/articles/String), this member will not be available to auto fill when editing a `LocalScript`.
+	 * If set to ["Server"](https://wiki.roblox.com/index.php?title=String), this member will not be available to auto fill when editing a `LocalScript`.
 	 *
-	 * If set to ["Client"](https://developer.roblox.com/articles/String), this member will not be available to auto fill when editing a `Script`.
+	 * If set to ["Client"](https://wiki.roblox.com/index.php?title=String), this member will not be available to auto fill when editing a `Script`.
 	 */
 	ScriptContext: string;
 	/** [NO DOCUMENTATION] */
@@ -19142,7 +17197,7 @@ interface ReflectionMetadataItem extends Instance {
 	 */
 	UIMinimum: number;
 	/** 
-	 * The number of potential values the property's slider bar can be set to, between [UIMinimum](https://developer.roblox.com/api-reference/property/ReflectionMetadataItem/UIMinimum) and [UIMaximum](https://developer.roblox.com/api-reference/property/ReflectionMetadataItem/UIMaximum).
+	 * The number of potential values the property's slider bar can be set to, between [UIMinimum](https://wiki.roblox.com/index.php?title=UIMinimum) and [UIMaximum](https://wiki.roblox.com/index.php?title=UIMaximum).
 	 */
 	UINumTicks: number;
 	/** 
@@ -19180,9 +17235,9 @@ interface ReflectionMetadataClass extends ReflectionMetadataItem {
 }
 
 /** 
- * The ReflectionMetadataEnum is the class that registers information about an Enum, and its EnumItems. It should be parented to `ReflectionMetadataEnums`.
+ * Registers information about an Enum, and its EnumItems.
  *
- * Since it is an internal object, it cannot be used by developers.
+ * Should be parented to `ReflectionMetadataEnums`
  */
 interface ReflectionMetadataEnum extends ReflectionMetadataItem {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -19190,9 +17245,9 @@ interface ReflectionMetadataEnum extends ReflectionMetadataItem {
 }
 
 /** 
- * The ReflectionMetadataEnumItem is the class containing information about a specific EnumItem embedded within an Enum and should be parented to a `ReflectionMetadataEnum`.
+ * Describes information about a specific EnumItem embedded within an Enum.
  *
- * Since it is an internal object, it cannot be used by developers.
+ * Should be parented to a `ReflectionMetadataEnum`
  */
 interface ReflectionMetadataEnumItem extends ReflectionMetadataItem {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -19228,169 +17283,57 @@ interface ReflectionMetadataYieldFunctions extends Instance {
 }
 
 /** 
- * A **RemoteEvent** is designed to provide a one-way message between the server and clients, allowing [Scripts](https://developer.roblox.com/api-reference/class/Script) to call code in [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript) and vice-versa. This message can be directed from one client to the server, from the server to a particular client, or from the server to all clients.
+ * Similar to `/BindableEvent`, but allow crossing the client/server boundary. This allows a `/Script` to call code in a `/LocalScript` and vice versa. This can be useful when building games with `/RemoteFunction`. Otherwise a *RemoteEvent* is recommended as it will minimize network traffic and latency. RemoteEvents don't yield the script and wait for a response when they're called.
  *
- * In order for both the server and clients to utilize a remote event, the RemoteEvent object itself must be in a place where both sides can see it. As such, we recommend that you store the RemoteEvent inside of `ReplicatedStorage`, although in some cases it's appropriate to store it in the workspace or inside a `Tool`.
- *
- * If you need the result of the call, you should use a `RemoteFunction` instead. Otherwise a remote event is recommended since it will minimize network traffic/latency and won't yield the script to wait for a response. See [Remote Functions and Events](https://developer.roblox.com/search#stq=Remote%20Functions%20and%20Events) for more info.
+ * Mind that there are some '.
  */
 interface RemoteEvent extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RemoteEvent";
 	/** 
-	 * The FireAllClients function fires the [RemoteEvent.OnClientEvent](https://developer.roblox.com/api-reference/event/RemoteEvent/OnClientEvent) event for each client.
-	 *
-	 * Unlike [RemoteEvent.FireClient](https://developer.roblox.com/api-reference/function/RemoteEvent/FireClient), this event does not take a target player as an argument. Instead it will fire to all clients who have the same remote event connected to an OnClientEvent event.
-	 *
-	 * Since this function is used to communicate from the server to the client, it will only work when used in a `Script`.
-	 *
-	 * The functionality of this function, as well as other `RemoteEvent` and `RemoteFunction` events and functions, is well documented in [this][1] article.
-	 *
-	 * Note
-	 *
-	 * ----------
-	 *
-	 *  - Data can be passed from server to client through remote events in the same way data is passed from client to server. Any extra information can be passed in as arguments to the [RemoteEvent.FireClient](https://developer.roblox.com/api-reference/function/RemoteEvent/FireClient) and FireAllClients functions. Note that the FireClient function still needs to pass the player to send the message to as the first argument.
-	 *
-	 * [1]: https://developer.roblox.com/articles/Remote-Functions-and-Events
-	 * @param arguments The arguments that will be passed to all `RemoteEvent/OnClientEvent` methods.
-	 * @returns void
+	 * Fires the [RemoteEvent.OnClientEvent](https://developer.roblox.com/api-reference/event/RemoteEvent/OnClientEvent) event for each client.
 	 */
 	FireAllClients(...arguments: Array<unknown>): void;
 	/** 
-	 * Fires [RemoteEvent.OnClientEvent](https://developer.roblox.com/api-reference/event/RemoteEvent/OnClientEvent) for the specified player.  Only [connections][1] in `LocalScript`s that are running on the specified player's client will fire. This varies from the RemoteFunction class which will queue requests.
-	 *
-	 * Since this function is used to communicate from the server to the client, it will only work when used in a `Script`.
-	 *
-	 * The functionality of this function, as well as other `RemoteEvent` and `RemoteFunction` events and functions, is well documented in [this][2] article.
-	 *
-	 * Notes
-	 *
-	 * ----------
-	 *
-	 *  - Data can be passed from server to client through remote events in the same way data is passed from client to server. Any extra information can be passed in as arguments to the FireClient and [RemoteEvent.FireAllClients](https://developer.roblox.com/api-reference/function/RemoteEvent/FireAllClients) functions. Note that the FireClient function still needs to pass the player to send the message to as the first argument.
-	 *
-	 *  - Sometimes a game will need to send information from one client to another. Roblox does not support direct client to client contact, so any communication must first go through the server. This is typically done using remote events (although functions could be used if desired). First, the sending client would call FireServer. On the server, the function connected to OnServerEvent would hear this firing, and itself would then call FireClient.
-	 *
-	 * [1]: https://developer.roblox.com/api-reference/datatype/RBXScriptConnection
-	 *
-	 * [2]: https://developer.roblox.com/articles/Remote-Functions-and-Events
-	 * @param player The `Player` that the remote event is being fired to.
-	 * @param arguments The arguments passed to the `RemoteEvent/OnClientEvent` method.
-	 * @returns void
+	 * Fires [RemoteEvent.OnClientEvent](https://developer.roblox.com/api-reference/event/RemoteEvent/OnClientEvent) for the specified player.  Only [connections](https://wiki.roblox.com/index.php?title=RBXScriptConnection) in `LocalScript` that are running on the specified player's client will fire. This varies from the RemoteFunction class which will queue requests.
 	 */
 	FireClient(player: Player, ...arguments: Array<unknown>): void;
 	/** 
-	 * The FireServer event fires the [RemoteEvent.OnServerEvent](https://developer.roblox.com/api-reference/event/RemoteEvent/OnServerEvent) event on the server using the arguments specified with an additional player argument at the beginning.
-	 *
-	 * Since this function is used to communicate from the client to the server, it will only work when used in a `LocalScript`.
-	 *
-	 * When firing from the client note that nothing has to be passed in by default (unlike firing to the client from the server - where the player is passed in).
-	 *
-	 * The functionality of this function, as well as other `RemoteEvent` and `RemoteFunction` events and functions, is well documented in [this][1] article.
-	 *
-	 * [1]: https://developer.roblox.com/articles/Remote-Functions-and-Events
-	 * @param arguments The arguments passed to the `RemoteEvent/OnServerEvent` method.
-	 * @returns void
+	 * Fires the [RemoteEvent.OnServerEvent](https://developer.roblox.com/api-reference/event/RemoteEvent/OnServerEvent) event on the server using the arguments specified with an additional player argument at the beginning.
 	 */
 	FireServer(...arguments: Array<unknown>): void;
 	/** 
-	 * The OnClientEvent event fires listening functions in `LocalScript` when either [RemoteEvent.FireClient](https://developer.roblox.com/api-reference/function/RemoteEvent/FireClient) or [RemoteEvent.FireAllClients](https://developer.roblox.com/api-reference/function/RemoteEvent/FireAllClients) is fired by the server from a `Script`.
+	 * The OnClientEvent event fires listening functions in `LocalScript` when either [RemoteEvent.FireClient](https://developer.roblox.com/api-reference/function/RemoteEvent/FireClient) or [RemoteEvent.FireAllClients](https://developer.roblox.com/api-reference/function/RemoteEvent/FireAllClients) is called from a `Script`.
 	 *
-	 * This is used to retrieve remote events fired by the server and intended for the client. This event is in place to provide a method for communicating between the server and client, which is well documented in [this][1] article. This event retrieves remote events fired by the server to the client.
-	 *
-	 * To fire from the client to the server, you should use [RemoteEvent.FireServer](https://developer.roblox.com/api-reference/function/RemoteEvent/FireServer) and [RemoteEvent.OnServerEvent](https://developer.roblox.com/api-reference/event/RemoteEvent/OnServerEvent).
-	 *
-	 * [1]: https://developer.roblox.com/articles/Remote-Functions-and-Events
+	 * "arguments" will be the arguments passed to these methods.Fires listening functions in `LocalScript` when either [RemoteEvent.FireClient](https://developer.roblox.com/api-reference/function/RemoteEvent/FireClient) or [RemoteEvent.FireAllClients](https://developer.roblox.com/api-reference/function/RemoteEvent/FireAllClients) is called from a `Script`.
 	 */
 	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
 	/** 
-	 * Fires listening functions in `Script` when [RemoteEvent.FireServer](https://developer.roblox.com/api-reference/function/RemoteEvent/FireServer) is called from a `LocalScript`.
-	 *
-	 * This is used to retrieve remote events fired by the client and intended for the server. This event is in place to provide a method for communicating between the client and server, which is well documented in [this][1] article. This event retrieves remote events fired by the client to the server.
-	 *
-	 * To fire from the server to the client, you should use [RemoteEvent.FireClient](https://developer.roblox.com/api-reference/function/RemoteEvent/FireClient) and [RemoteEvent.OnClientEvent](https://developer.roblox.com/api-reference/event/RemoteEvent/OnClientEvent).
-	 *
-	 * [1]: https://developer.roblox.com/articles/Remote-Functions-and-Events
+	 * Fires listening functions in `Script` when [RemoteEvent.FireServer](https://developer.roblox.com/api-reference/function/RemoteEvent/FireServer) is called from a `LocalScript` player will be the `Player` associated with the client that the FireServer call originates from. arguments will be the arguments passed to the FireServer method.
 	 */
 	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
 }
 
 /** 
- * A **RemoteFunction** is used to create in-game APIs that both the client and the server can use to communicate with each other. Like `BindableFunction`, a RemoteFunction can be invoked (called) to do a certain action and return the results.
- *
- * If the result is **not** needed, we recommend that you use a `RemoteEvent` instead, since its call is asynchronous and doesn't need to wait for a response to continue execution. See `Remote Functions and Events` for more info.
+ * *RemoteFunctions* are used to create in-game APIs that both the client and the server can use to communicate with each other.  Like `/BindableFunction`, *RemoteFunctions* can be invoked [called] to do a certain action, and return the results of this action. If the result is not needed then it is recommended to use a `/RemoteEvent` instead, as its call is asynchronous and doesn't need to wait for a response to continue execution. Mind that there are some '.
  */
 interface RemoteFunction extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RemoteFunction";
 	/** 
 	 * Calls the method bound to the RemoteFunction by [RemoteFunction.OnClientInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnClientInvoke) for the given `Player`. Use from a `Script`.
-	 *
-	 * If the result is not needed then it is recommended to use a [RemoteEvent.FireClient](https://developer.roblox.com/api-reference/function/RemoteEvent/FireClient) instead, as its call is asynchronous and doesn't need to wait for a response to continue execution.
-	 *
-	 * This is used to bind functions to invoke the client when the remote event is invoked by the server. This function is in place to provide a method for communicating between the client and server, which is well documented in [this][1] article.
-	 *
-	 * To fire from the server to the client, you should use [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer) and [RemoteFunction.OnServerInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnServerInvoke).
-	 *
-	 * Note
-	 *
-	 * ----------
-	 *
-	 * In practice, the server does not often invoke the client. Clients typically do not have information the server doesn’t have and the actions that only a client can take (displaying a GUI for instance), often do not require a callback. That said, the server invoking clients is still an action that the Roblox engine will support and may be useful in niche situations.
-	 *
-	 * Warning
-	 *
-	 * ----------
-	 *
-	 * If a client disconnects or leaves the game while it is being invoked from the server, the InvokeClient function will error. It is therefore recommended to wrap this function in a pcall so it does stop the execution of other code.
-	 *
-	 * [1]: https://developer.roblox.com/articles/Remote-Functions-and-Events
-	 * @param player The `Player` that the remote function is being fired to.
-	 * @param arguments The arguments passed to the `RemoteEvent/OnClientInvoke` method.
-	 * @returns Values returned by `RemoteFunction/OnClientInvoke`.
 	 */
 	InvokeClient(player: Player, ...arguments: Array<any>): unknown;
 	/** 
-	 * Clients invoking the server is often used because the server either has access to information the client does not, or the client is requesting a game action that only the server can perform. When invoked, this calls the method bound to the RemoteFunction by [RemoteFunction.OnServerInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnServerInvoke). Use from a `LocalScript`.
-	 *
-	 * If the result is not needed then it is recommended to use a [RemoteEvent.FireServer](https://developer.roblox.com/api-reference/function/RemoteEvent/FireServer) instead, as its call is asynchronous and doesn't need to wait for a response to continue execution.
-	 *
-	 * This is used to bind functions to invoke the server when the remote event is invoked by a client. This function is in place to provide a method for communicating between the client and server, which is well documented in [this][1] article.
-	 *
-	 * To fire from the client to the server, you should use [RemoteFunction.InvokeClient](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeClient) and [RemoteFunction.OnClientInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnClientInvoke).
-	 *
-	 * Note
-	 *
-	 * ----------
-	 *
-	 * When handling the invocation from the client note that nothing has to be passed in by default (unlike invoking the server where the player is passed in).
-	 * @param arguments The arguments passed to the `RemoteEvent/OnServerInvoke` method.
-	 * @returns Values returned by `RemoteFunction/OnServerInvoke`.
+	 * Calls the method bound to the RemoteFunction by [RemoteFunction.OnServerInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnServerInvoke). Use from a `LocalScript`. Returns what [RemoteFunction.OnServerInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnServerInvoke) returns.
 	 */
 	InvokeServer<R = unknown>(...arguments: Array<any>): R;
 	/** 
-	 * The OnClientInvoke event fires the bound functions in `LocalScript`s when [RemoteFunction.InvokeClient](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeClient) is called by the server from a `Script`. When the bound function returns, the returned values are sent back to the server.
-	 *
-	 * This is used to listen to remote functions invoked by the server and intended for the client. This callback is in place to provide a method for communicating between the server and client.
-	 *
-	 * To fire from the client to the server, you should use [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer) and [RemoteFunction.OnServerInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnServerInvoke).
+	 * Called when [RemoteFunction.InvokeClient](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeClient) is called. Arguments passed to [RemoteFunction.InvokeClient](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeClient) are passed to the function. Values returned by the function are returned by [RemoteFunction.InvokeClient](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeClient).
 	 */
 	OnClientInvoke: (arguments: Array<any>) => void;
 	/** 
-	 * The OnServerInvoke event fires the bound functions in `Script`s when [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer) is called by the server from a `LocalScript`. When the bound function returns, the returned values are sent back to the client.
-	 *
-	 * This is used to retrieve remote events fired by the client and intended for the server. This event is in place to provide a method for communicating between the client and server, which is well documented in [this][1] article.
-	 *
-	 * To fire from the server to the client, you should use [RemoteFunction.InvokeClient](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeClient) and [RemoteFunction.OnClientInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnClientInvoke).
-	 *
-	 * Note
-	 *
-	 * ----------
-	 *
-	 *  - Binding a function to OnServerInvoke is done with the assignment operator `=`, and not with an event. That is because OnServerInvoke is a callback and expects a function to be assigned to it. When the RemoteFunction is invoked, it will execute the function that was assigned to the onInvoke function.
-	 *
-	 *  - Only one function can be assigned to OnServerInvoke at a time. If multiple functions are assigned, only the last function to be assigned will be used.
+	 * Called when [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer) is called. Arguments passed to [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer) are passed to the function. Values returned by the function are returned by [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer). player is the `Player` corresponding to the client where the [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer) function call originated from.
 	 */
 	OnServerInvoke: (player: Player, arguments: Array<any>) => void;
 }
@@ -19511,9 +17454,7 @@ interface RenderingTest extends Instance {
 	 * This property is only used if the RenderingTest's ComparisonMethod is set to **psnr**.
 	 */
 	ComparisonPsnrThreshold: number;
-	/** 
-	 * A description to describe this RenderingTest.
-	 */
+	/** [NO DOCUMENTATION] */
 	Description: string;
 	/** 
 	 * The FieldOfView that will be used by the `Camera` when running this RenderingTest.
@@ -19543,13 +17484,9 @@ interface RenderingTest extends Instance {
 	 * Should fall between 1 and 21 in order to work as expected.
 	 */
 	QualityLevel: number;
-	/** 
-	 * Indicates whether or not this RenderingTest should be skipped.
-	 */
+	/** [NO DOCUMENTATION] */
 	ShouldSkip: boolean;
-	/** 
-	 * A label of the internal JIRA ticket this RenderingTest is associated with.
-	 */
+	/** [NO DOCUMENTATION] */
 	Ticket: string;
 	/** [NO DOCUMENTATION] */
 	RenderdocTriggerCapture(): void;
@@ -19590,30 +17527,28 @@ interface ReplicatedFirst extends Instance {
 }
 
 /** 
- * Complex games often require a range of assets that are held in storage until they're required. **ReplicatedStorage** is a container whose contents are replicated to all connected clients, allowing such objects to be stored until needed. ReplicatedStorage is also an ideal location for [RemoteFunctions](https://developer.roblox.com/api-reference/class/RemoteFunction) and [RemoteEvents](https://developer.roblox.com/api-reference/class/RemoteEvent) since they can be found on both the client and server.
+ * A container whose contents are replicated to all connected clients. Objects descending from ReplicatedStorage can be accessed from `Script`s and `LocalScript`s on both the server and client.
  *
- * Note these additional details about ReplicatedStorage:
+ * Complex games often require a range of assets that are to be held in storage until they are required. ReplicatedStorage allows such objects to be stored until they are required. ReplicatedStorage is also an ideal location for `RemoteFunctions` and `RemoteEvents` as they can be found on both the client and server.
  *
- * * Objects descending from ReplicatedStorage can be accessed from a `Script` or `LocalScript` on both the server and client.
+ * Objects can be replicated to the client, by parenting them to ReplicatedStorage.
  *
- * * Objects can be replicated to the client by parenting them to ReplicatedStorage:
+ *     object.Parent = game:GetService("ReplicatedStorage") -- from the server
  *
- * ```lua
-object.Parent = game:GetService("ReplicatedStorage")  -- From the server
-```
- * 
-
- * * Although the client can access and modify ReplicatedStorage, these changes will not replicate to the server or other clients.
+ * Although the client can access and modify ReplicatedStorage, provided Experimental Mode is disabled these changes will not replicate to the server or other clients.
  *
- * * [Scripts](https://developer.roblox.com/api-reference/class/Script) and [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript) will not run when they are parented to ReplicatedStorage, although [ModuleScripts](https://developer.roblox.com/api-reference/class/ModuleScript) contained within it can be accessed and executed. There are a number of alternative containers where client-side scripts will run, such as `StarterPlayerScripts` and `ReplicatedFirst`.
+ * `Script`s and `LocalScript`s will not run when they are parented to ReplicatedStorage, although `ModuleScript`s contained within it can be accessed and ran. There are a number of alternative containers where client side scripts will be ran, such as `StarterPlayerScripts` and `ReplicatedFirst`.
  *
- * * For objects that only the server requires access to, we recommended you use `ServerStorage` to minimize network traffic.
+ * For objects that only the server requires access to, developers are recommended to use `ServerStorage` to save network traffic.
  */
 interface ReplicatedStorage extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ReplicatedStorage";
 }
 
+/** 
+ 
+ */
 interface RobloxPluginGuiService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RobloxPluginGuiService";
@@ -19644,13 +17579,11 @@ interface RunService extends Instance {
 	/** 
 	 * The `BindToRenderStep` function binds a custom function to be called at a specific time during the render step. There are three main arguments for BindToRenderStep: `name`, `priority`, and `what function to call`.
 	 *
-	 * As it is linked to the client's rendering process, BindToRenderStep can only be called on the client.
-	 *
 	 * Name
 	 *
 	 * ----------
 	 *
-	 * The `name` parameter is a label for the binding, and can be used with [RunService.UnbindFromRenderStep](https://developer.roblox.com/api-reference/function/RunService/UnbindFromRenderStep) if the binding is no longer needed.
+	 * The `name` parameter is a label for the binding, and can be used with [RunService.Unbind](https://developer.roblox.com/search#stq=Unbind) if the binding is no longer needed.
 	 *
 	 * ```lua
 local RunService = game:GetService("RunService")
@@ -19726,35 +17659,39 @@ For convenience, the '''RenderPriority''' enum can be used to determine the inte
 	 */
 	IsStudio(): boolean;
 	/** 
-	 * Given a name of a function sent to [BindToRenderStep](https://developer.roblox.com/api-reference/function/RunService/BindToRenderStep), this method will unbind the function from being called during RenderStepped. This is used to unbind bound functions once they are no longer needed, or when they no longer need to fire every *step*.
+	 * Given a name of a function sent to [RunService.BindToRenderStep](https://developer.roblox.com/api-reference/function/RunService/BindToRenderStep), this method will unbind the function from being called during RenderStepped. This is used to unbind bound functions once they are no longer needed, or when they no longer need to fire ever *step*.
 	 *
-	 * If there is no bound function by the given name, this method raises an error. You can prevent such an error from being raised by using `pcall`. For example, if you bind a function named `drawImage` using [BindToRenderStep](https://developer.roblox.com/api-reference/function/RunService/BindToRenderStep), the following code would unbind the function, suppressing errors if there wasn't already a function with the name `drawImage` bound.
+	 * For instance, if you bind a function named `drawImage` to the `RunService` using BindToRenderStep, the following function call would unbind the function:
 	 *
-	 *     local RunService = game:GetService("RunService")
-	 *
-	 *     local success, message = pcall(function() RunService:UnbindFromRenderStep("drawImage") end)
-	 *
-	 *     if success then
-	 *
-	 *         print("Success: Function unbound!")
-	 *
-	 *     else
-	 *
-	 *         print("An error occurred: "..message)
-	 *
-	 *     end
+	 * ```lua
+local RunService = game:GetService("RunService")
+
+local success, message = pcall(RunService:UnbindFromRenderStep("drawImage"))
+if success then
+	print("Success: Function unbound!")
+else 
+	print("An error occurred: "..message)
+end
+```
+	 * 
+
+	 * If there is no bound function by the given name, this method raises an error.
 	 * @param name The name of the function being unbound.
 	 * @returns None.
 	 */
 	UnbindFromRenderStep(name: string): void;
 	/** 
-	 * The Heartbeat event fires every **frame** in the `RunService`. The step argument indicates how much time has passed between frames - usually around 1/60th of a second.
+	 * The Heartbeat event fires every *frame* un the `RunService1. The step argument indicates how much time has passed between frames - usually around 1/60th of a second.
 	 *
 	 * Please note that this will vary depending on the performance of the machine. If the game is only running at 40 FPS, that means that Heartbeat will fire 40 times per second, and the step argument will be roughly 1/40th of a second.
+	 *
+	 * Unlike [RunService.RenderStepped](https://developer.roblox.com/api-reference/event/RunService/RenderStepped), this function guarantees that functions connected to this event will fire simultaneously according to their **render priority**.
+	 *
+	 * Also note that Hearbeat must only be used in `LocalScript`s, as they refer to each frame that is being rendered.
 	 */
 	readonly Heartbeat: RBXScriptSignal<(step: number) => void>;
 	/** 
-	 * The RenderStepped event fires when a frame is rendered on the client. It fires at around 60 times per second, so the time step is around 0.0166 seconds. If the framerate drops, this event fires less often.
+	 * The RenderStepped event fires on ever render frame. It fires at around 60 times per second, so the time step is around 0.0166 seconds. If the framerate drops, this event fires less often. It is recommended that this event be used for visual effects; use [RunService.Heartbeat](https://developer.roblox.com/api-reference/event/RunService/Heartbeat) for gameplay-related events.
 	 *
 	 * There's no guarantee that functions connected to this event will fire at the exact same time. To be sure that certain functions are called in synchronization with each other, use [RunService.BindToRenderStep](https://developer.roblox.com/api-reference/function/RunService/BindToRenderStep) instead, which allows specification of a "render priority".
 	 *
@@ -19765,6 +17702,8 @@ For convenience, the '''RenderPriority''' enum can be used to determine the inte
 	 * The Stepped event fires on every *step* in the `RunService`, which is approximately every 1/60th (or 0.0166) seconds. If the framerate drops, this event fires less often. It is recommended that this event be used for visual effects; use RunService/Heartbeat for gameplay-related events.
 	 *
 	 * There’s no guarantee that functions connected to this event will fire at the exact same time. To be sure that certain functions are called in synchronization with each other, use [RunService.BindToRenderStep](https://developer.roblox.com/api-reference/function/RunService/BindToRenderStep) instead, which allows specification of a ***render priority***.
+	 *
+	 * Also note that RenderStepped must only be used in `LocalScript`s, as they refer to each frame that is being rendered.
 	 */
 	readonly Stepped: RBXScriptSignal<(time: number, step: number) => void>;
 }
@@ -19911,7 +17850,7 @@ game.Selection:Get()[1]:SetPrimaryPartCFrame(CFrame.new()) -- move the selected 
 
  * Note this class only applies to Roblox Studio and has no applicability to games.
  *
- * [1]: https://developer.roblox.com/articles/Intro-to-Plugins
+ * [1]: http://wiki.roblox.com/index.php?title=Intro_to_Plugins
  */
 interface Selection extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -19997,173 +17936,34 @@ interface DataModel extends ServiceProvider {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DataModel";
 	/** 
-	 * This property describes the ID of the user or group that owns the [place](https://developer.roblox.com/search#stq=Place)
-	 *
-	 * If the [DataModel.CreatorType](https://developer.roblox.com/api-reference/property/DataModel/CreatorType) property is *’User’* then CreatorId will be the [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId) of the place’s owner. If the [DataModel.CreatorType](https://developer.roblox.com/api-reference/property/DataModel/CreatorType) is *’Group’* then CreatorId will be the ID of the group that owns the place.
+	 * The place creator's [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId).
 	 */
 	readonly CreatorId: number;
 	/** 
-	 * This property describes the [Enum.CreatorType](https://developer.roblox.com/search#stq=CreatorType) of the [place](https://developer.roblox.com/search#stq=Place), whether the place is owned by a user or a group.
-	 *
-	 * If the [Enum.CreatorType](https://developer.roblox.com/search#stq=CreatorType) is *‘User’*, then the [DataModel.CreatorId](https://developer.roblox.com/api-reference/property/DataModel/CreatorId) property will describe the [UserId](https://developer.roblox.com/api-reference/property/Player/UserId) of the account that owns the game. If the CreatorType is *‘Group’* then it will describe the group ID.
+	 * The [Enum.CreatorType](https://developer.roblox.com/search#stq=CreatorType) of the current place.
 	 */
 	readonly CreatorType: Enum.CreatorType;
 	/** 
-	 * This property describes the ID of the [game](https://developer.roblox.com/search#stq=Multi%20Place%20Games) the [place](https://developer.roblox.com/search#stq=Place) running on the server belongs to.
-	 *
-	 * This ID can be found in the top right corner of the [game explorer][1] in Roblox Studio.
-	 *
-	 * When using Roblox Studio, if the place has not been published to Roblox then the GameId will correspond with the template being used.
-	 *
-	 * [1]: https://www.robloxdev.com/resources/studio/Game-Explorer
-	 *
-	 * ## See also
-	 *
-	 *  - [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId), which describes the ID of the [place](https://developer.roblox.com/search#stq=Place) running on the server
-	 *
-	 *  - [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId), which is a unique identifier for the server game instance running
-	 *
-	 *  - `TeleportService`, which is a service that can be used to transport [Players](https://developer.roblox.com/api-reference/class/Player) between games
+	 * The GameId is the id of the Game that the current Place is a part of. If the place is unpublished, then GameId will be 0.
 	 */
 	readonly GameId: number;
 	/** 
-	 * This property is broken and should not be used.
-	 *
-	 * This property historically described the [Enum.Genre](https://developer.roblox.com/search#stq=Genre) of the [place](https://developer.roblox.com/search#stq=Place) as set on the Roblox website.
-	 *
-	 * This property, along with [DataModel.GearGenreSetting](https://developer.roblox.com/api-reference/property/DataModel/GearGenreSetting), no longer functions correctly due to genres existing on the Roblox website that are not reflected in the [Genre](https://developer.roblox.com/search#stq=Genre) enum. As a result, attempting to read this property may throw an error.
+	 * The game's genre.
 	 */
 	readonly Genre: Enum.Genre;
 	/** 
-	 * This property is a unique identifier for the game server instance running.
-	 *
-	 * The JobId is a [universally unique identifier (UUID)][1] meaning that no two servers, past or present, will ever have the same JobId.
-	 *
-	 * JobId defaults to an empty string in Roblox Studio.
-	 *
-	 * ## See also
-	 *
-	 *  - [TeleportService.GetPlayerPlaceInstanceAsync](https://developer.roblox.com/api-reference/function/TeleportService/GetPlayerPlaceInstanceAsync) which can be used to retrieve the JobId of a [Player’s](https://developer.roblox.com/api-reference/class/Player) current server
-	 *
-	 *  - [TeleportService.TeleportToPlaceInstance](https://developer.roblox.com/api-reference/function/TeleportService/TeleportToPlaceInstance) which can be used to teleport a `Player` to a specific server
-	 *
-	 *  - [DataModel.PrivateServerId](https://developer.roblox.com/api-reference/property/DataModel/PrivateServerId) describes the ID of the private server the game server instance belongs to
-	 *
-	 *  - [HttpService.GenerateGUID](https://developer.roblox.com/api-reference/function/HttpService/GenerateGUID), a function that can be used to generate your own UUIDs
-	 *
-	 * [1]: https://en.wikipedia.org/wiki/Universally_unique_identifier
+	 * A unique identifier for the current game server. Defaults to the empty string in offline mode.
 	 */
 	readonly JobId: string;
 	/** 
-	 * This property describes the ID of the [place](https://developer.roblox.com/search#stq=Place) running on the server.
-	 *
-	 * This ID corresponds with the number in the [place’s](https://developer.roblox.com/search#stq=Place) URL. For example, the ID of the place at the following URL is *1818*:
-	 *
-	 * ```lua
-https://www.roblox.com/games/1818/Classic-Crossroads
-```
-	 * 
-
-	 * The place ID can also be found in the [game explorer][1] in Roblox Studio by right clicking on the place and selecting ‘Copy ID to clipboard’.
-	 *
-	 * When using Roblox Studio, if the place has not been published to Roblox then the PlaceId will correspond with the template being used.
-	 *
-	 * ## See also
-	 *
-	 *  - [DataModel.GameId](https://developer.roblox.com/api-reference/property/DataModel/GameId), which describes the ID of the [game](https://developer.roblox.com/search#stq=Multi%20Place%20Games) the current [place](https://developer.roblox.com/search#stq=Place) belongs to
-	 *
-	 *  - [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId), which is a unique identifier for the server game instance running
-	 *
-	 *  - `TeleportService`, which is a service that can be used to transport [Players](https://developer.roblox.com/api-reference/class/Player) between places
-	 *
-	 * [1]: https://www.robloxdev.com/resources/studio/Game-Explorer
+	 * The Asset Id of the current place.
 	 */
 	readonly PlaceId: number;
 	/** 
-	 * This property describes the version of the [place](https://developer.roblox.com/search#stq=Place) the server is running on.
-	 *
-	 * This version number corresponds with the version number shown under the *Version History* section of the [place’s](https://developer.roblox.com/search#stq=Place) settings. It is not the current version of the Roblox client.
-	 *
-	 * In Roblox Studio, this property is set to *0*.
-	 *
-	 * When a server instance is created for a [place](https://developer.roblox.com/search#stq=Place) it is done so at the place’s current version. If the place is later updated whilst this server is running, the server will remain at its current version.
-	 *
-	 * This property can be used to display a `ScreenGui` showing the current version of the game to [Players](https://developer.roblox.com/api-reference/class/Player) to assist with debugging.
+	 * The version of the game that the server is running on.
 	 */
 	readonly PlaceVersion: number;
-	/** 
-	 * This property describes the private server ID of the server, if the server is a private server.
-	 *
-	 * If the server is not a private server then this property will be an empty string.
-	 *
-	 * ## Private servers
-	 *
-	 * Private servers refer to the following:
-	 *
-	 *  - [VIP servers](https://developer.roblox.com/search#stq=Creating%20a%20VIP%20Server%20on%20Roblox), private servers that can be purchased by players from the games page
-	 *
-	 *  -  Reserved servers, private servers created by the developer using [TeleportService.ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer)
-	 *
-	 * ## PrivateServerId vs JobId
-	 *
-	 * The PrivateServerId of a server is different to the [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId). The [JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) is the unique identifier of the current server instance.
-	 *
-	 * Private servers (VIP or reserved servers) can have multiple server instances associated with them over time. This is because, although only one server instance can be running at once for a private server, new server instances can open and close as players join and leave the game. For example, no server instance is running when nobody is playing in the server. The PrivateServerId will be consistent across all of these server instances, the [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) will be unique for each once.
-	 *
-	 * ## See also
-	 *
-	 *  - [DataModel.PrivateServerOwnerId](https://developer.roblox.com/api-reference/property/DataModel/PrivateServerOwnerId), a property describing the owner of a VIP server
-	 *
-	 *  - [TeleportService.ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer), a function which creates a reserved server
-	 */
 	readonly PrivateServerId: string;
-	/** 
-	 * This property describes the [UserId](https://developer.roblox.com/api-reference/property/Player/UserId) of the `Player` that owns the [VIP server](https://developer.roblox.com/search#stq=Creating%20a%20VIP%20Server%20on%20Roblox) if the server is a VIP server.
-	 *
-	 * If the server is a standard or reserved server then this property will be set to *0*.
-	 *
-	 * This property could be used to identify if a `Player` is the owner of the VIP server, for example:
-	 *
-	 * ```lua
-local Players = game:GetService("Players")
-
--- is this a VIP server?
-if game.PrivateServerId ~= "" and game.PrivateServerOwnerId ~= 0 then
-```
-	 * 
-
-	 * lua
-	 *
-	 * -- listen for new players being added
-	 *
-	 * Players.PlayerAdded:Connect(function(player)
-	 *
-	 * ```lua
-
-```
-	 * 
-
-	 * lua
-	 *
-	 *     -- check if the player is the server owner
-	 *
-	 *     if player.UserId == game.PrivateServerOwnerId then
-	 *
-	 *         print("The private server owned has joined the game")
-	 *
-	 *     end
-	 *
-	 * end)
-	 *
-	 * ```lua
-End
-```
-	 * 
-
-	 * ## See also
-	 *
-	 *  - [DataModel.PrivateServerId](https://developer.roblox.com/api-reference/property/DataModel/PrivateServerId), a property describing the unique ID of VIP and [reserved servers](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer)
-	 */
 	readonly PrivateServerOwnerId: number;
 	/** 
 	 * The Workspace property is a reference to the `Workspace` service.
@@ -20181,84 +17981,38 @@ game:GetService("Workspace") -- workspace is a service
 	 */
 	readonly Workspace: Workspace;
 	/** 
-	 * This function binds a function to be called prior to the game shutting down.
-	 *
-	 * Multiple functions can be bound using BindToClose if it is called repeatedly. The game will wait a maximum of 30 seconds for all bound functions to complete running before shutting down. After 30 seconds, the game will shut down regardless if all bound functions have completed or not.
-	 *
-	 * Bound functions will be called in parallel, meaning they will run at the same time.
-	 *
-	 * When using the `DataStoreService`, best practice is to bind a function saving all unsaved data to [DataStores](https://developer.roblox.com/api-reference/class/GlobalDataStore) using BindToClose. Otherwise, data may be lost if the game shuts down unexpectedly. For an example of this, see below.
-	 *
-	 * You are advised to use [RunService.IsStudio](https://developer.roblox.com/api-reference/function/RunService/IsStudio) to verify the current session is not Roblox Studio. If this is not done, all bound functions will be required to complete in offline testing sessions.
-	 *
-	 * ## See also
-	 *
-	 *  - [PluginGui.BindToClose](https://developer.roblox.com/api-reference/function/PluginGui/BindToClose), which is used to bind a function to a `PluginGui` close button and should not be confused with this function
-	 * @param function A function to be called prior to the game shutting down
+	 * Schedules the given function to be called when the game is about to shut down.
 	 */
 	BindToClose(callback: Function): void;
 	/** 
-	 * This function returns true if the client has finished loading the game for the first time.
-	 *
-	 * When all initial [Instances](https://developer.roblox.com/api-reference/class/Instance) in the game has finished replicating to the client, this function will return true.
-	 *
-	 * Unless they are parented to `ReplicatedFirst`, [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript) will not run while the game has not loaded. The following snippet, ran from a `LocalScript` in `ReplicatedFirst` will yield until the game has loaded:
-	 *
-	 * ```lua
-if not game:IsLoaded() then
-	game.Loaded:Wait()
-end
-```
-	 * 
-
-	 * ## See also
-	 *
-	 *  - [DataModel.Loaded](https://developer.roblox.com/api-reference/event/DataModel/Loaded), an event that fires when the game has loaded
-	 *
-	 *  - [Instance.WaitForChild](https://developer.roblox.com/api-reference/function/Instance/WaitForChild), a function which can be used to wait for an individual `Instance` to replicate without having to wait for the whole game to
-	 * @returns Whether the client has finished loading the game for the first time
+	 * Returns true if the game has finished loading for the first time.
 	 */
 	IsLoaded(): boolean;
 	/** 
-	 * This event is fired when the user prompts an increase or decrease in graphics quality using the hotkeys.
+	 * Fired when the user wants to increase/decrease the graphics quality.
 	 *
 	 * This event fires under the following conditions:
 	 *
-	 *  - If the user presses F10, this event fires with a *betterQuality* argument of *true*
+	 * * If the user presses F10, this will fire with [true](https://wiki.roblox.com/index.php?title=True).
 	 *
-	 *  - If the user presses Shift + F10, this event fires with a *betterQuality* argument of *false*
+	 * * If the user presses Shift + F10, this will fire with [false](https://wiki.roblox.com/index.php?title=False).Fired when the user wants to increase/decrease the graphics quality.
 	 *
-	 * GraphicsQualityChangeRequest does not provide the current graphics quality level or cover all updates to the graphics quality. For example, changes made in the core GUI escape menu are not registered. This event is intended to be used by Roblox core scripts to update the graphics quality and display notifications.
-	 *
-	 * You can retrieve a user's [Enum.SavedQualitySetting](https://developer.roblox.com/search#stq=SavedQualitySetting) using `UserGameSettings` with the following snippet:
+	 * ## Example
 	 *
 	 * ```lua
-UserSettings():GetService("UserGameSettings").SavedQualityLevel
+game.GraphicsQualityChangeRequest:connect(function (betterQuality)
+	if betterQuality then
+		print("The user has requested an increase in graphics quality!")
+	else
+		print("The user has requested a decrease in graphics quality!")
+	end
+end)
 ```
-	 * 
-
-	 * Note, if the user’s graphics settings are set to automatic then the [Enum.SavedQualitySetting](https://developer.roblox.com/search#stq=SavedQualitySetting) will be *‘Automatic’*. There is currently no way for developers to reliably get the current graphics quality level of a user’s machine.
+	 *
 	 */
 	readonly GraphicsQualityChangeRequest: RBXScriptSignal<(betterQuality: boolean) => void>;
 	/** 
-	 * This event fires on the client when the game finishes loading for the first time.
-	 *
-	 * The Loaded event fires when all initial [Instances](https://developer.roblox.com/api-reference/class/Instance) in the game have finished replicating to the client.
-	 *
-	 * Unless they are parented to `ReplicatedFirst`, [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript) will not run prior to this event firing. The following snippet, ran from a `LocalScript` in `ReplicatedFirst`, will yield until the game has loaded:
-	 *
-	 * ```lua
-if not game:IsLoaded() then
-	game.Loaded:Wait()
-end
-```
-	 * 
-
-	 * ## See also
-	 *
-	 *  - [DataModel.IsLoaded](https://developer.roblox.com/api-reference/function/DataModel/IsLoaded), a function that returns if the game is loaded or not
-	 *
-	 *  - [Instance.WaitForChild](https://developer.roblox.com/api-reference/function/Instance/WaitForChild), a function which can be used to wait for an individual `Instance` to replicate without having to wait for the whole game to
+	 * Fires when the game is loaded for the first time.
 	 */
 	readonly Loaded: RBXScriptSignal<() => void>;
 }
@@ -20398,7 +18152,7 @@ interface Sky extends Instance {
  *
  * Smoke particles are only emit from the center of `BasePart` to which they are parented. Parenting a Smoke object to an `Attachment` instead allows customization of the particles' start position.
  *
- * [1]: https://developer.roblox.com/assets/blt3634602492a8e3eb/Smoke.png
+ * [1]: https://developer.roblox.com/assets/5b0ac45b344ad0d40f77ff85/Smoke.png
  */
 interface Smoke extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -20412,9 +18166,9 @@ interface Smoke extends Instance {
 	 *
 	 * ![A Smoke object complimenting a Fire object on a torch][2]
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt6952d1f0943c1f61/Smoke_Color.png
+	 * [1]: https://developer.roblox.com/assets/5b0ac61e9ff66f1e10708c50/Smoke_Color.png
 	 *
-	 * [2]: https://developer.roblox.com/assets/blt02d5fee090b5bc62/Smoke_Fire.png
+	 * [2]: https://developer.roblox.com/assets/5b0ac74943098c11102a53c9/Smoke_Fire.png
 	 */
 	Color: Color3;
 	/** 
@@ -20439,7 +18193,7 @@ stopSmoke(part.Smoke)
 	 *
 	 * It should be noted that the texture that Roblox uses for `Smoke` particles is partially transparent, so setting this property to 1 will still yield transparency in rendered smoke.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt40432eff6f9ab4f2/Smoke_Opacity.png
+	 * [1]: https://developer.roblox.com/assets/5b0acc8e7f08d31910651ba1/Smoke_Opacity.png
 	
 	 * Opacity determines the opaqueness of the smoke particles. It must be in the range [0, 1]. This property works **inversely** in comparison to a part's [BasePart.Transparency](https://developer.roblox.com/api-reference/property/BasePart/Transparency) or ParticleEmitter's [ParticleEmitter.Transparency](https://developer.roblox.com/api-reference/property/ParticleEmitter/Transparency): a value of 0 is completely invisible, 1 is completely visible. Below, the left `Smoke` effect has an Opacity of 0.25 (or, 25%), the center has the default 0.5 (50%), and the right has 1.0 (or 100%).
 	 *
@@ -20447,7 +18201,7 @@ stopSmoke(part.Smoke)
 	 *
 	 * It should be noted that the texture that Roblox uses for `Smoke` particles is partially transparent, so setting this property to 1 will still yield transparency in rendered smoke.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt40432eff6f9ab4f2/Smoke_Opacity.png
+	 * [1]: https://developer.roblox.com/assets/5b0acc8e7f08d31910651ba1/Smoke_Opacity.png
 	 *
 	 * Tags: NotReplicated
 	 */
@@ -20585,23 +18339,21 @@ interface SocialService extends Instance {
 }
 
 /** 
- * A `Sound` is an object that emits sound. See [Adding Sounds](https://developer.roblox.com/search#stq=Adding%20Sounds) for more info on how to upload a sound file.
+ * A `Sound` is an object that emits sound. Sounds can be uploaded in either .mp3 or .ogg formats. See [Sounds](https://developer.roblox.com/search#stq=Sounds) for more info on how to upload a sound file.
  *
- * ## 2D and 3D Sound
+ * **2D and 3D sound**
  *
- * A sound placed in a `BasePart` or an `Attachment` will emit its sound from that part's [BasePart.Position](https://developer.roblox.com/api-reference/property/BasePart/Position) or the attachment's [Attachment.WorldPosition](https://developer.roblox.com/api-reference/property/Attachment/WorldPosition). A sound exhibits the Doppler effect, meaning its frequency and pitch varies with the relative motion of whatever attachment or part it is attached to. The volume of the sound will be determined by the distance between the client's sound listener (by default the `Camera` position) and the position of the sound's parent. For more information on this see [Sound.RollOffMode](https://developer.roblox.com/api-reference/property/Sound/RollOffMode).
+ * A sound placed in a `BasePart` or an `Attachment` will emit its sound from that part's [BasePart.Position](https://developer.roblox.com/api-reference/property/BasePart/Position) or the attachment's [Attachment.WorldPosition](https://developer.roblox.com/api-reference/property/Attachment/WorldPosition). A sound exhibits the Doppler effect, meaning its frequency and pitch varies with the relative motion of whatever attachment or part it is attached to. The volume of the sound will be determined by the distance between the client's sound listener (by default the `Camera`'s position) and the position of the Sound's parent. For more information on this see [Sound.RollOffMode](https://developer.roblox.com/api-reference/property/Sound/RollOffMode).
  *
- * A sound is considered "global" if it is not parented to a `BasePart` or an `Attachment`. In this case, the sound will play at the same volume throughout the entire place.
+ * A sound is considered global if it is not parented to a `BasePart` or an `Attachment`. In this case, the sound will play at the same volume throughout the entire place.
  *
- * ## Sound Replication
+ * **Sound replication**
  *
- * Sound playback is not filtered. If a particular client starts playing a sound, all of the other clients will also play it unless [SoundService.RespectFilteringEnabled](https://developer.roblox.com/api-reference/property/SoundService/RespectFilteringEnabled) is set to true.
+ * Sound playback is not filtered when Experimental Mode is disabled. This means the [Sound.TimePosition](https://developer.roblox.com/api-reference/property/Sound/TimePosition) and [Sound.Playing](https://developer.roblox.com/api-reference/property/Sound/Playing) properties will replicate from the client to the server. If a particular client starts playing a sound, all the other clients will play it too. It is important to note that while the playback of sounds will replicate, other properties (such as the playback speed, pitch, volume, etc) will not replicate. This behavior can be avoided by creating all sounds locally on the client, as instancing sounds will not replicate to the server.
  *
- * #### Important
+ * [Sound.TimePosition](https://developer.roblox.com/api-reference/property/Sound/TimePosition), [Sound.TimeLength](https://developer.roblox.com/api-reference/property/Sound/TimeLength), [Sound.Playing](https://developer.roblox.com/api-reference/property/Sound/Playing) will all properly replicate when set from the server.
  *
- * * While the playback of sounds will replicate, other properties such as the playback speed, pitch, volume, etc. will **not** replicate. This behavior can be avoided by creating all sounds locally on the client, as instancing sounds will not replicate to the server.
- *
- * * [Sound.TimePosition](https://developer.roblox.com/api-reference/property/Sound/TimePosition), [Sound.TimeLength](https://developer.roblox.com/api-reference/property/Sound/TimeLength), and [Sound.Playing](https://developer.roblox.com/api-reference/property/Sound/Playing) will all properly replicate when set from the server.
+ * [1]: http://wiki.roblox.com/index.php?title=Sounds
  */
 interface Sound extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -20706,12 +18458,20 @@ interface Sound extends Instance {
 	 * For example, a value of 2 will cause the `Sound` to play 2x faster, whereas a value of 0.5 will cause it to play 2x slower. When PlaybackSpeed is equal to 1, the sound will take [Sound.TimeLength](https://developer.roblox.com/api-reference/property/Sound/TimeLength) (in seconds) to complete.
 	 *
 	 * Note that increasing the PlaybackSpeed of a sound will cause it to play at a higher pitch.
+	
+	 * Determines the speed at which a `Sound` will play. The greater the value the faster the sound will play back.
+	 *
+	 * For example, a value of 2 will cause the `Sound` to play 2x faster, whereas a value of 0.5 will cause it to play 2x slower. When PlaybackSpeed is equal to 1, the sound will take [Sound.TimeLength](https://developer.roblox.com/api-reference/property/Sound/TimeLength) (in seconds) to complete.
+	 *
+	 * Note that increasing the PlaybackSpeed of a sound will cause it to play at a higher pitch.
+	 *
+	 * Tags: NotReplicated
 	 */
 	PlaybackSpeed: number;
 	/** 
-	 * Indicates whether the `Sound` is currently playing. This can be toggled, and this property will always replicate.
+	 * Indicates whether the `Sound` is currently playing. This can be toggled, and this property will always replicate, even with Experimental Mode disabled.
 	 *
-	 * This property should not be confused with [Sound.IsPlaying](https://developer.roblox.com/api-reference/property/Sound/IsPlaying) which is a read-only property. Playing can be set to true or false to start or stop the playback of a sound.
+	 * This property should not be confused with [Sound.IsPlaying](https://developer.roblox.com/api-reference/property/Sound/IsPlaying), which is a read only property. Playing can be set to true or false to start or stop the playback of a sound.
 	 *
 	 * Note that when Playing is set to false, the [Sound.TimePosition](https://developer.roblox.com/api-reference/property/Sound/TimePosition) property of the sound will not reset. This means when the Playing is set to true again the audio will continue from the time position it was at when it was stopped. However, if the [Sound.Play](https://developer.roblox.com/api-reference/function/Sound/Play) function is used to resume the sound the time position will reset to 0.
 	 */
@@ -20732,11 +18492,11 @@ sound.RollOffMode = Enum.RollOffMode.Linear
 	 *
 	 *  - **Linear**: Volume attenuates between [Sound.EmitterSize](https://developer.roblox.com/api-reference/property/Sound/EmitterSize) and [Sound.MaxDistance](https://developer.roblox.com/api-reference/property/Sound/MaxDistance) with a linear relationship.
 	 *
-	 *  - **LinearSquare:** Volume attenuates between [Sound.EmitterSize](https://developer.roblox.com/api-reference/property/Sound/EmitterSize) and [Sound.MaxDistance](https://developer.roblox.com/api-reference/property/Sound/MaxDistance) with a linear squared relationship
+	 *  - **LinearSquare:** Volume attenuates between [Sound.EmitterSize](https://developer.roblox.com/api-reference/property/Sound/EmitterSize) and [Sound.MaxDistance with a linear squared relationship
 	 *
 	 * **Inverse vs Linear Distance Attenuation**
 	 *
-	 * By default sounds are set to use inverse distance attenuation (Enum.RollOffMode.Inverse) which mirrors how sounds attenuate in the real world. Under inverse distance attenuation, sounds will begin to attenuate once the distance between the listener and the Sound's parent exceeds [Sound.EmitterSize](https://developer.roblox.com/api-reference/property/Sound/EmitterSize). The rate of attenuation depends on the emitter size, as sounds with larger EmitterSize's will attenuate at a slower rate. Inverse rate of inverse distance attenuation is further influenced by [SoundService.RolloffScale](https://developer.roblox.com/api-reference/property/SoundService/RolloffScale).
+	 * By default sounds are set to use inverse distance attenuation (Enum.RollOffMode.Inverse) which mirrors how sounds attenuate in the real world. Under inverse distance attenuation, sounds will begin to attenuate once the distance between the listener and the Sound's parent exceeds ](https://developer.roblox.com/search#stq=MaxDistance%20with%20a%20linear%20squared%20relationship%20%20**Inverse%20vs%20Linear%20Distance%20Attenuation**%20%20%20By%20default%20sounds%20are%20set%20to%20use%20inverse%20distance%20attenuation%20(Enum.RollOffMode.Inverse)%20which%20mirrors%20how%20sounds%20attenuate%20in%20the%20real%20world.%20Under%20inverse%20distance%20attenuation,%20sounds%20will%20begin%20to%20attenuate%20once%20the%20distance%20between%20the%20listener%20and%20the%20Sound's%20parent%20exceeds%20)Sound/EmitterSize`. The rate of attenuation depends on the emitter size, as sounds with larger EmitterSize's will attenuate at a slower rate. Inverse rate of inverse distance attenuation is further influenced by [SoundService.RolloffScale](https://developer.roblox.com/api-reference/property/SoundService/RolloffScale).
 	 *
 	 * Note, [Sound.MaxDistance](https://developer.roblox.com/api-reference/property/Sound/MaxDistance) will not effect attenuation under the inverse model but will cause the sound to cut off completely once this distance is reached. This can be particularly abrupt when using low values for max distance.
 	 *
@@ -20754,12 +18514,11 @@ sound.RollOffMode = Enum.RollOffMode.Linear
 	 *
 	 * It’s important to remember the URL is not the same as the content ID. It will work when pasted directly into the SoundId property of a `Sound` in Roblox studio, as Studio will automatically correct it, however if it is being set from a `Script` then the correct content ID will need to be used, using the number from the URL. For example:
 	 *
-	 * ```lua
-"https://www.roblox.com/catalog/12222216" -- Web URL (will not work)
-"http://www.roblox.com/asset/?id=12222216" -- Content ID (will work)
-"rbxassetid://12222216" -- Content ID (alternative version, will work)
-```
+	 *     “https://www.roblox.com/catalog/12222216” -- Web URL (will not work)
 	 *
+	 *     “http://www.roblox.com/asset/?id=12222216” -- Content ID (will work)
+	 *
+	 *     “rbxassetid://12222216” -- Content ID (alternative version, will work)
 	 */
 	SoundId: string;
 	/** 
@@ -21178,7 +18937,7 @@ interface ReverbSoundEffect extends SoundEffect {
 /** 
  * The TremoloSoundEffect creates a trembling effect on a sound by varying the volume of the sound up and down.
  *
- * Like all other `SoundEffect`s, a TremoloSoundEffect can be applied either to a `Sound` or `SoundGroup` by being parented to either.
+ * Like all other `SoundEffect`, a TremoloSoundEffect can be applied either to a `Sound` or `SoundGroup` by being parented to either.
  */
 interface TremoloSoundEffect extends SoundEffect {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -21325,9 +19084,11 @@ SoundService.DopplerEffect = 0.5 -- subdued Doppler effect
 	/** 
 	 * This `SoundService` property determines whether or not `Sound` playback will replicate from the client to the server and onto other clients.
 	 *
-	 * * When **RespectFilteringEnabled** is set to false (default), sounds played by a client will replicate to the server and play for other clients.
+	 * When RespectFilteringEnabled is set to false (as is it currently is by default) sounds played by a client will replicate to the server and play for other clients. This applies regardless of whether [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled) is set to true or false.
 	 *
-	 * * When **RespectFilteringEnabled** is set to true, sound playback will not replicate from client-side scripts ([LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript)).
+	 * When RespectFilteringEnabled is set to true, `Sound` playback will not replicate if [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled) is true.
+	 *
+	 * Note, sound playback will never be replicated if the sound only exists on the client. This can happen, for example, when Sounds created by the client when [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled) is set to true.
 	 */
 	RespectFilteringEnabled: boolean;
 	/** 
@@ -21387,7 +19148,19 @@ print(listenerType, listener)
 		| [Enum.ListenerType.ObjectCFrame, BasePart]
 		| [Enum.ListenerType.ObjectPosition, BasePart];
 	/** 
-	 * Plays a `Sound` locally, meaning the sound will only be heard by the client calling this function, regardless of where it's parented to. This function is most useful for playing a `Sound` locally in the Studio client, for instance in a `Script` for a [custom plugin](https://developer.roblox.com/search#stq=Intro%20to%20Plugins).
+	 * Plays a `Sound` locally, meaning the `Sound` will only be heard by the client calling this function regardless of where it is parented to.
+	 *
+	 * This function can be used for both 3D (`Sound`s parented to a `BasePart` or `Attachment`) and 2D `Sound`s. If the given `Sound` has no parent, it will be played as a 2D sound.
+	 *
+	 * ## Local Sounds
+	 *
+	 * Typically, when [SoundService.RespectFilteringEnabled](https://developer.roblox.com/api-reference/property/SoundService/RespectFilteringEnabled) is set to false (as is it currently is by default) sounds played by a client will replicate to the server and play for other clients. In some cases, a developer may wish to play a `Sound` on only one client.
+	 *
+	 * The PlayLocalSound function allows developers to play a sound exclusively on the client. This means developers can play local sounds whilst still enjoying the benefit of other sounds replicating to other clients.
+	 *
+	 * If a developer wishes to disable sound replication entirely, they are advised to enable [SoundService.RespectFilteringEnabled](https://developer.roblox.com/api-reference/property/SoundService/RespectFilteringEnabled). Note this will only work when [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled) is set to true. For more information on filtering please see the page on [Experimental Mode][1].
+	 *
+	 * [1]: https://wiki.roblox.com/index.php?title=Experimental_Mode
 	 * @param sound The `Sound` to be played.
 	 */
 	PlayLocalSound(sound: Sound): void;
@@ -21437,7 +19210,7 @@ print(listenerType, listener)
  *
  * Sparkles particles are only emit from the center of `BasePart` to which they are parented. Parenting a Sparkles object to an `Attachment` instead allows customization of the particles' start position.
  *
- * [1]: https://developer.roblox.com/assets/bltb4fd95f7dbbb308a/Sparkles.png
+ * [1]: https://developer.roblox.com/assets/5b0acf189ff66f1e10708c5c/Sparkles.png
  */
 interface Sparkles extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -21449,7 +19222,7 @@ interface Sparkles extends Instance {
 	 *
 	 * It should be noted that sparkles have a partial [ParticleEmitter.LightEmission](https://developer.roblox.com/api-reference/property/ParticleEmitter/LightEmission) effect, so dark colors tend to render more transparent and white colors look very bright.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt22f35a953a5b6687/Sparkles_SparkleColor.png
+	 * [1]: https://developer.roblox.com/assets/5b0ad06b7f08d31910651bab/Sparkles_SparkleColor.png
 	 *
 	 * Note
 	 *
@@ -21463,7 +19236,7 @@ interface Sparkles extends Instance {
 	 *
 	 * It should be noted that sparkles have a partial [ParticleEmitter.LightEmission](https://developer.roblox.com/api-reference/property/ParticleEmitter/LightEmission) effect, so dark colors tend to render more transparent and white colors look very bright.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt22f35a953a5b6687/Sparkles_SparkleColor.png
+	 * [1]: https://developer.roblox.com/assets/5b0ad06b7f08d31910651bab/Sparkles_SparkleColor.png
 	 *
 	 * Note
 	 *
@@ -21496,7 +19269,7 @@ stopSparkling(part.Sparkles)
 	 *
 	 * It should be noted that sparkles have a partial [ParticleEmitter.LightEmission](https://developer.roblox.com/api-reference/property/ParticleEmitter/LightEmission) effect, so dark colors tend to render more transparent and white colors look very bright.
 	 *
-	 * [1]: https://developer.roblox.com/assets/blt22f35a953a5b6687/Sparkles_SparkleColor.png
+	 * [1]: https://developer.roblox.com/assets/5b0ad06b7f08d31910651bab/Sparkles_SparkleColor.png
 	 *
 	 * Note
 	 *
@@ -21516,42 +19289,32 @@ interface SpawnerService extends Instance {
 }
 
 /** 
- * StarterGear is a container that is automatically inserted into each `Player` when the player joins the game. When a player spawns, the contents of that player's StarterGear is copied into the player's `Backpack`. Additionally,  when a player connects to a game that permits gear, all of the appropriate gear `Tool` objects that the player owns are inserted into that player's StarterGear.
+ * StarterGear is a container that is automatically inserted into each `Player` when the player joins the game. If a game allows gear, all of a player's appropriate gear will be inserted into StarterGear when the player joins the game. Whenever the `Player`'s character spawns, all of the contents of that player's StarterGear will get copied into the player's `Backpack`.
  *
- * Unlike `StarterPack`, StarterGear is not a service but rather a child of each `Player` object -- this means that its contents are player-specific so that each player can have different `Tool`s within their `StarterGear`. It is not replicated to any client, including the owning player.
+ * Unlike `StarterPack`, StarterGear is not a service but a descendant of `Player` -- this means that its contents are player-specific so that each player can have different `Tool`s within their `StarterGear`.
  *
- * ## Accessing StarterGear
- *
- * Listening to the [Players.PlayerAdded](https://developer.roblox.com/api-reference/event/Players/PlayerAdded) event is useful for
+ * StarterGear can be accessed from both the client and the server. For this reason some developers chose to use it as a form of a player-specific starter pack, granting different `Player`s `Tool`s when they spawn. Although it is possible to do this by parenting tools to a player's StarterGear it is not the intended use of this object.
  *
  * ```lua
 local Players = game:GetService("Players")
 
-local toolExamplePrefab = Instance.new("Tool")
-toolExamplePrefab.Name = "Example Tool"
-
 -- Accessing StarterGear from Server Script
-local function onPlayerAdded(player)
-	-- Wait for the StarterGear to be added
-	local starterGear = player:WaitForChild("StarterGear")
-	-- Add a Tool to the StarterGear
-	local toolExample = toolExamplePrefab:Clone()
-	toolExample.Parent = starterGear
-end
-
-Players.PlayerAdded:connect(onPlayerAdded)
+local starterGear = Players:GetPlayerByUserId(userId):FindFirstChild("StarterGear")
+ 
+-- Accessing StarterGear from LocalScript
+local starterGear = Players.LocalPlayer:FindFirstChild("StarterGear")
 ```
  * 
 
- * ## Allowing Gear
+ * ## Allowing gear
  *
  * Whether or not gear can be permitted is determined in a place's settings page under 'Permissions'. On the permissions page gear can be disabled and enabled by genre and type. To disable gear, ensure all the gear types are not selected.
  *
- * Individual gear can also be added to a game using the 'Add to game' feature in the Roblox catalog. This option can be found on the page of any gear that is on sale. When gear is added to a game in this manner it will appear under the 'Store' heading on the game's page. The owner of the game (group or user) receives a commission when gear is sold in this manner.
+ * Individual gear can also be added to a game using the 'Add to game' feature in the Roblox catalog. This option can be found on the page of any gear that is on sale. When gear is added to a game in this manner it will appear under the 'Store' heading on the game's page and the developer will receive a commission from purchases.
  *
- * ## Gameplay Considerations
+ * ## Considerations
  *
- * Before adding any gear to a game, consider the implication of doing so. Gear includes `Script`s and allows the player to perform actions that the developer may not have considered. For example, a navigational gear may allow the player to access a part of the map the developer does not want to be accessed. Weapons allow players with gear to damage other players, possibly without the ability to retaliate. Always play-test games after adding gear to them to make sure there are no abuse cases.
+ * Before adding any gear to a game, developers should always consider the implication of doing so. Gear includes `Script`s and allows the player to perform actions that the developer may not have considered. For example, a navigational gear may allow the player to access a part of the map the developer does not want to be accessed.
  */
 interface StarterGear extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -21603,13 +19366,13 @@ interface StarterPlayer extends Instance {
 	 *
 	 * As such, this value cannot be changed from within the game. It can only be changed by changing the game's permission levels within the game's setting's page on the website.
 	 *
-	 * This property is not intended for use in the game.
+	 * This property is not intended for wise use in the game.
 	
 	 * The AllowCustomAnimations `StarterPlayer` property describes the current game's permission levels regarding custom avatar `Animation`s from the website.
 	 *
 	 * As such, this value cannot be changed from within the game. It can only be changed by changing the game's permission levels within the game's setting's page on the website.
 	 *
-	 * This property is not intended for use in the game.
+	 * This property is not intended for wise use in the game.
 	 *
 	 * Tags: Hidden
 	 */
@@ -21809,11 +19572,11 @@ interface StarterPlayerScripts extends Instance {
 }
 
 /** 
- * The StarterCharacterScripts class stores scripts to be parented in a player's [Character](https://developer.roblox.com/api-reference/property/Player/Character), when they spawn.
+ * The StarterCharacterScripts class stores scripts to be parented in a player's [Character](https://wiki.roblox.com/index.php?title=Character), when they spawn.
  *
- * Unlike scripts stored in the [PlayerScripts](https://developer.roblox.com/api-reference/class/PlayerScripts) folder, these scripts will not persist when the player respawns.
+ * Unlike scripts stored in the [PlayerScripts](https://wiki.roblox.com/index.php?title=PlayerScripts) folder, these scripts will not persist when the player respawns.
  *
- * If a script named **Animate**, **Sound** or **Health** is placed in this folder, they will replace the default scripts that are added to each [Character](https://developer.roblox.com/api-reference/property/Player/Character) that is created.
+ * If a script named **Animate**, **Sound** or **Health** is placed in this folder, they will replace the default scripts that are added to each [Character](https://wiki.roblox.com/index.php?title=Character) that is created.
  */
 interface StarterCharacterScripts extends StarterPlayerScripts {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -21871,11 +19634,11 @@ interface Stats extends Instance {
 	/** 
 	 * InstanceCount is a read-only measurement of how many `Instance` are currently in memory.
 	 *
-	 * This includes the `DataModel`, its descendants, as well as any object created with `Instance.new` which is still present in memory.
+	 * This includes the `DataModel`, its descendants, as well as any object created by [Instance.new](https://wiki.roblox.com/index.php?title=Instance.new) which is still present in memory.
 	
 	 * InstanceCount is a read-only measurement of how many `Instance` are currently in memory.
 	 *
-	 * This includes the `DataModel`, its descendants, as well as any object created with `Instance.new` which is still present in memory.
+	 * This includes the `DataModel`, its descendants, as well as any object created by [Instance.new](https://wiki.roblox.com/index.php?title=Instance.new) which is still present in memory.
 	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -21937,7 +19700,7 @@ interface Stats extends Instance {
 /** 
  * A StatsItem is an internal measurement item that is created by the engine to benchmark many of the backend components of Roblox.
  *
- * It cannot be created using `Instance.new`, but its value can be read by plugins. They can be found stored inside of the `Stats` service.
+ * It cannot be created using [Instance.new](https://wiki.roblox.com/index.php?title=Instance.new), but its value can be read by plugins. They can be found stored inside of the `Stats` service.
  */
 interface StatsItem extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -21945,7 +19708,7 @@ interface StatsItem extends Instance {
 }
 
 /** 
- * A special type of `StatsItem` which measures the runtime average of an internal **double** value.
+ * A special type of [StatsItem](https://wiki.roblox.com/index.php?title=StatsItem) which measures the runtime average of an internal [double](https://wiki.roblox.com/index.php?title=Double) value.
  */
 interface RunningAverageItemDouble extends StatsItem {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -21953,7 +19716,7 @@ interface RunningAverageItemDouble extends StatsItem {
 }
 
 /** 
- * A special type of `StatsItem` which measures the runtime average of an internal integer value.
+ * A special type of [StatsItem](https://wiki.roblox.com/index.php?title=StatsItem) which measures the runtime average of an internal [integer](https://wiki.roblox.com/index.php?title=Integer) value.
  *
  * As of right now, this StatsItem goes unused.
  */
@@ -21963,7 +19726,7 @@ interface RunningAverageItemInt extends StatsItem {
 }
 
 /** 
- * A special type of `StatsItem` which measures a runtime average time interval.
+ * A special type of [StatsItem](https://wiki.roblox.com/index.php?title=StatsItem) which measures a runtime average time interval.
  *
  * As of right now, this StatsItem goes unused.
  */
@@ -21973,7 +19736,7 @@ interface RunningAverageTimeIntervalItem extends StatsItem {
 }
 
 /** 
- * A special type of [StatsItem](https://developer.roblox.com/api-reference/class/StatsItem) which measures a total-count-over-time interval.
+ * A special type of [StatsItem](https://wiki.roblox.com/index.php?title=StatsItem) which measures a total-count-over-time interval.
  *
  * As of right now, this StatsItem goes unused.
  */
@@ -22100,7 +19863,7 @@ interface Studio extends Instance {
 	 */
 	["Line Thickness"]: number;
 	/** 
-	 * Specifies whether or not the [Lua Debugger](https://developer.roblox.com/articles/Lua-debugger) feature is enabled.
+	 * Specifies whether or not the [Lua Debugger](https://wiki.roblox.com/index.php?title=Lua_Debugger) feature is enabled.
 	 */
 	LuaDebuggerEnabled: boolean;
 	readonly LuaDebuggerEnabledAtStartup: boolean;
@@ -22238,27 +20001,8 @@ interface Studio extends Instance {
 	 * If set to true, text in the script editor will be wrapped.
 	 */
 	["Text Wrapping"]: boolean;
-	/** 
-	 * The Theme property is used to get/set the current `StudioTheme` used by `Studio`.
-	 *
-	 * This is intended for use within [Plugins](https://developer.roblox.com/api-reference/class/Plugin), but will also execute in the Command Line. You can access the function via:
-	 *
-	 * ```lua
-settings().Studio.Theme
-```
-	 * 
 
-	 * For instance, if you would like to print the current Studio theme:
-	 *
-	 * ```lua
-print("The current Studio theme is:", settings().Studio.Theme)
-```
-	 *
-	 */
 	Theme?: StudioTheme;
-	/** 
-	 * Specifies the color scheme of Roblox Studio.
-	 */
 	readonly ["UI Theme"]: Enum.UITheme;
 	/** 
 	 * Specifies the color of the wavy underline shown when the script analyzer picks up a problem that should be addressed in the script editor.
@@ -22266,6 +20010,9 @@ print("The current Studio theme is:", settings().Studio.Theme)
 	["Warning Color"]: Color3;
 }
 
+/** 
+ 
+ */
 interface StudioData extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "StudioData";
@@ -22287,18 +20034,15 @@ interface StudioService extends Instance {
 	readonly StudioLocaleId: string;
 }
 
-/** 
- 
- */
 interface StudioTheme extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "StudioTheme";
 }
 
 /** 
- * TaskScheduler is a read-only settings class responsible for the Task Scheduler  feature.
+ * An internal class responsible for the [Task Scheduler](https://wiki.roblox.com/index.php?title=Manual/Studio_Overview/Interface/View#Show) feature.
  *
- * Can be found in Roblox Studio's settings with the name *Task Scheduler*.
+ * Can be found in Roblox Studio's settings with the name _Task Scheduler_.
  */
 interface TaskScheduler extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -22457,7 +20201,7 @@ interface Teams extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Teams";
 	/** 
-	 * The GetTeam function returns a table containing the game's `Team` objects.
+	 * Returns a table containing the game's `Team` objects.
 	 *
 	 * Note this will only return Team objects that are directly parented to the `Teams` service. For this reason it is recommended developers only parent `Team` objects to the `Teams` service and not to other `Instance`s (or to each other).
 	 * @returns An array of `Team`s in the game.
@@ -22466,299 +20210,32 @@ interface Teams extends Instance {
 }
 
 /** 
- * The TeleportService is responsible for transporting [Players](https://developer.roblox.com/api-reference/class/Player) between [places](https://developer.roblox.com/search#stq=Place) and servers.
- *
- * ‘Teleporting’ in Roblox, describes the transportation of [Players](https://developer.roblox.com/api-reference/class/Player) between different places and servers. TeleportService provides a range of functions allowing single or groups of users to be teleported. As Roblox [games](https://developer.roblox.com/search#stq=Multi%20Place%20Games) can contain multiple places, you can use the TeleportService to teleport players between different levels.
- *
- * ## Which teleport function should I use?
- *
- * A variety of teleportation functions are available and are all suitable for different circumstances:
- *
- *  - [Teleport](https://developer.roblox.com/api-reference/function/TeleportService/Teleport) for teleporting a single `Player` to a place
- *
- *  - [TeleportToSpawnByName](https://developer.roblox.com/api-reference/function/TeleportService/TeleportToSpawnByName) for teleporting a single `Player` to a place, spawning at a particular `SpawnLocation`
- *
- *  - [TeleportToPlaceInstance](https://developer.roblox.com/api-reference/function/TeleportService/TeleportToPlaceInstance) for teleporting a single `Player` to a specific server instance in a place that is part of the same game
- *
- *  - [TeleportService.TeleportPartyAsync](https://developer.roblox.com/api-reference/function/TeleportService/TeleportPartyAsync) for teleporting a group of [Players](https://developer.roblox.com/api-reference/class/Player) to one server in a place that is part of the same game
- *
- *  - [TeleportService.TeleportToPrivateServer](https://developer.roblox.com/api-reference/function/TeleportService/TeleportToPrivateServer) for teleporting a group of [Players](https://developer.roblox.com/api-reference/class/Player) to a reserved server created using [TeleportService.ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer)
+ * This service makes it possible to teleport players from one [place](https://developer.roblox.com/articles/Place) to another. Since a [game](https://developer.roblox.com/articles/Multi-Place-Games) can contain multiple places, this allows a game to contain different levels and players can be transported from one place to another.
  */
 interface TeleportService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "TeleportService";
-	/** 
-	 * This function returns the *customLoadingScreen* the [LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) arrived into the place with.
-	 *
-	 * Note, the *customLoadingScreen* will not be used if the destination place is in a different game.
-	 *
-	 * ## Loading screen
-	 *
-	 * During a teleport, whilst the destination place is loading, the *customLoadingScreen* is parented to the `CoreGui`. Once the place has loaded the [loading screen](https://developer.roblox.com/api-reference/class/ScreenGui) is [parented](https://developer.roblox.com/api-reference/property/Instance/Parent) to *nil*.
-	 *
-	 * If you wish to preserve the *customLoadingScreen* and perform your own transitions, you will need to parent it to the [LocalPlayer’s](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) `PlayerGui`. For an example of this, see the code sample below.
-	 * @returns The *customLoadingScreen* the `Players/LocalPlayer|LocalPlayer` arrived into the place with
-	 */
 	/** @rbxts client */
 	GetArrivingTeleportGui(): ScreenGui | GuiMain | undefined;
 	/** 
-	 * This function returns the *teleportData* the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) arrived into the place with. It can only be used on the client and can be called at any time.
-	 *
-	 * For example, the following snippet would send the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) and [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) in a dictionary:
-	 *
-	 * ```lua
-local Players = game:GetService("Players")
-
-local player = Players.LocalPlayer
-local teleportData = {
-```
-	 * 
-
-	 * lua
-	 *
-	 * placeId = game.PlaceId,
-	 *
-	 * jobId = game.JobId
-	 *
-	 * ```lua
-}
-TeleportService:Teleport(placeId, player, teleportData)
-```
-	 * 
-
-	 * This data could then be retrieved upon arrival using the GetLocalPlayerTeleportData function as follows:
-	 *
-	 * ```lua
-local TeleportService = game:GetService("TeleportService")
-
-local teleportData = TeleportService:GetLocalPlayerTeleportData()
-if teleportData then
-```
-	 * 
-
-	 * lua
-	 *
-	 * local placeId = teleportData.placeId
-	 *
-	 * local jobId = teleportData.JobId
-	 *
-	 * ```lua
-end)
-```
-	 * 
-
-	 * If no *teleportData* was set in the teleportation function this function will return *nil*.
-	 *
-	 * Note this function will not return teleportation settings set using [TeleportService.SetTeleportSetting](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportSetting), to retrieve these settings use [TeleportService.GetTeleportSetting](https://developer.roblox.com/api-reference/function/TeleportService/GetTeleportSetting).
-	 * @returns The *teleportData* the `Players/LocalPlayer` arrived into the place with
+	 * Returns what was set as the [LocalPlayer](https://wiki.roblox.com/index.php?title=LocalPlayer)'s _teleportData_ parameter, when either [Teleport](https://wiki.roblox.com/index.php?title=Teleport), [TeleportToPlaceInstance](https://wiki.roblox.com/index.php?title=TeleportToPlaceInstance), [TeleportToPrivateServer](https://wiki.roblox.com/index.php?title=TeleportToPrivateServer), or [TeleportToBySpawnName](https://wiki.roblox.com/index.php?title=TeleportToBySpawnName) was called from a previous game.
 	 */
 	/** @rbxts client */
 	GetLocalPlayerTeleportData(): unknown;
 	/** 
-	 * This function retrieves a teleport setting saved using [TeleportService.SetTeleportSetting](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportSetting) using the given key.
-	 *
-	 * This method is intended for use on the client only and should not be used on the server.
-	 *
-	 * Teleport settings are preserved across teleportations within the same game. This means data can be saved using [TeleportService.SetTeleportSetting](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportSetting) in one place and retrieved using GetTeleportSetting in another place the user has been teleported to.
-	 *
-	 * For example, in a game that allowed crouching you could save whether the user is currently crouching prior to teleporting as a teleport setting. This could then be retrieved in the destination place after the teleportation:
-	 *
-	 * ```lua
-local TeleportService = game:GetService("TeleportService")
-
-local isCrouching =  TeleportService:GetTeleportSetting("isCrouching")
-```
-	 * 
-
-	 * If no teleport setting exists under the given key, this function will return *nil*.
-	 *
-	 * ## Differences from GlobalDataStores
-	 *
-	 * Although they share some similarities, there are some key differences between teleport settings and datastores:
-	 *
-	 *  - [GlobalDataStore.SetAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/SetAsync) stores the data on Roblox servers whereas SetTeleportSetting stores the data locally
-	 *
-	 *  - Data stored in a `GlobalDataStore` is preserved after the user leaves the game universe whereas teleport settings are not
-	 *
-	 *  - [GlobalDataStores](https://developer.roblox.com/api-reference/class/GlobalDataStore) can only be accessed on the server, whereas teleport settings can only be accessed on the client
-	 *
-	 *  - [GlobalDataStores](https://developer.roblox.com/api-reference/class/GlobalDataStore) have usage limits, whereas teleport settings do not
-	 *
-	 * In general teleport settings should be used to preserve client side information within a single play session across different places in a game. [GlobalDataStores](https://developer.roblox.com/api-reference/class/GlobalDataStore) should be used to save important player data that needs to be accessed across player sessions.
-	 *
-	 * ## Teleport settings and security
-	 *
-	 * As teleport settings are stored locally, it is possible they can be manipulated by malicious users. This risk can be mitigated by employing server side validation, for more information on this please see the article on [Articles.Game Security](https://developer.roblox.com/search#stq=Game%20Security).
-	 * @param setting The key the value was stored under using `TeleportService/SetTeleportSetting`
-	 * @returns The value stored under the given key
+	 * Retrieves a previously stored value with the given key, or nil if the given key doesn't exist. Note: This method is intended for storing information on the client that can persist between game instances when teleporting, it should not be used on the server.
 	 */
 	/** @rbxts client */
 	GetTeleportSetting(setting: string): unknown;
-	/** 
-	 * This function sets the custom [teleport GUI](https://developer.roblox.com/api-reference/class/ScreenGui) that will be shown to the local user during teleportation, prior to the teleport being invoked.
-	 *
-	 * Note, the [teleport GUI](https://developer.roblox.com/api-reference/class/ScreenGui) will not be used if the destination place is in a different game. It will also not persist across multiple teleports and will need to be set prior to each one.
-	 *
-	 * This function should only be used on the client. If the teleportation function is called from the server (as is the case with [TeleportService.TeleportPartyAsync](https://developer.roblox.com/api-reference/function/TeleportService/TeleportPartyAsync)) then this function should be called on the client prior to this. One way of doing this is listening to a `RemoteEvent` that fires several seconds before teleportation.
-	 *
-	 * ```lua
--- Client
-
-local TeleportService = game:GetService("TeleportService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
-
-local localPlayer = Players.LocalPlayer
-local teleportGui = Instance.new("ScreenGui") -- for demonstration purposes
-
--- this RemoteEvent needs to be created on the server and fired before teleporting
-local teleportEvent = ReplicatedStorage:WaitForChild("TeleportPrepare")
-
--- set the teleport gui so we are ready
-TeleportService:SetTeleportGui(teleportGui)
-
-teleportEvent.OnClientEvent:Connect(function()
-```
-	 * 
-
-	 * lua
-	 *
-	 * -- show the gui prior to the teleport
-	 *
-	 * local playerGui = localPlayer:WaitForChild("PlayerGui")
-	 *
-	 * teleportGui.Parent = playerGui
-	 *
-	 * ```lua
-end)
-```
-	 * 
-
-	 * ## Loading screen
-	 *
-	 * During a teleport, whilst the destination place is loading, the *customLoadingScreen* is parented to the `CoreGui`. Once the place has loaded the [loading screen](https://developer.roblox.com/api-reference/class/ScreenGui) is [parented](https://developer.roblox.com/api-reference/property/Instance/Parent) to *nil*.
-	 *
-	 * This `ScreenGui` can be fetched at the destination place using [TeleportService.GetArrivingTeleportGui](https://developer.roblox.com/api-reference/function/TeleportService/GetArrivingTeleportGui), allowing you to parent it to the `PlayerGui` and perform your own transitions.
-	 *
-	 * You are advised to also [parent](https://developer.roblox.com/api-reference/property/Instance/Parent) the `ScreenGui` to the `PlayerGui` in the start place whilst the teleport is initiating.
-	 * @param gui The loading `ScreenGui` that is to be displayed during teleportation
-
-	 * @returns This function does not return anything!
-	 */
 	/** @rbxts client */
 	SetTeleportGui(gui: ScreenGui): void;
 	/** 
-	 * This function stores a value under a given key that persists across all teleportations in the same game.
-	 *
-	 * This method is intended for use on the client only and should not be used on the server.
-	 *
-	 * The stored value can later be retrieved using [TeleportService.GetTeleportSetting](https://developer.roblox.com/api-reference/function/TeleportService/GetTeleportSetting). This will work in the current place and any subsequent places the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) teleports to, provided they are in the same game.
-	 *
-	 * For example, in a game that allowed crouching you could save whether the user is currently crouching prior to teleporting as a teleport setting:
-	 *
-	 * ```lua
-local TeleportService = game:GetService("TeleportService")
-
-local isCrouching = false
-TeleportService:SetTeleportSetting("isCrouching", isCrouching)
-```
-	 * 
-
-	 * The stored value can take one of the following forms:
-	 *
-	 *  - A table without mixed keys (all strings or all integers)
-	 *
-	 *  - A string
-	 *
-	 *  - A number
-	 *
-	 *  - A bool
-	 *
-	 * If data is already stored under the given key, the previous value will be overwritten by the new value.
-	 *
-	 * ## Differences from GlobalDataStores
-	 *
-	 * Although they share some similarities, there are some key differences between teleport settings and datastores:
-	 *
-	 *  - [GlobalDataStore.SetAsync](https://developer.roblox.com/api-reference/function/GlobalDataStore/SetAsync) stores the data on Roblox servers whereas SetTeleportSetting stores the data locally
-	 *
-	 *  - Data stored in a `GlobalDataStore` is preserved after the user leaves the game universe whereas teleport settings are not
-	 *
-	 *  - [GlobalDataStores](https://developer.roblox.com/api-reference/class/GlobalDataStore) can only be accessed on the server, whereas teleport settings can only be accessed on the client
-	 *
-	 *  - [GlobalDataStores](https://developer.roblox.com/api-reference/class/GlobalDataStore) have usage limits, whereas teleport settings do not
-	 *
-	 * In general teleport settings should be used to preserve client side information within a single play session across different places in a game. [GlobalDataStores](https://developer.roblox.com/api-reference/class/GlobalDataStore) should be used to save important player data that needs to be accessed across player sessions.
-	 *
-	 * ## Teleport settings and security
-	 *
-	 * As teleport settings are stored locally, it is possible they can be manipulated by malicious users. This risk can be mitigated by employing server side validation, for more information on this please see the article on [Articles.Game Security](https://developer.roblox.com/search#stq=Game%20Security).
-	 * @param setting The key to store the *value* under. This key can be used to retrieve the value using `TeleportService/GetTeleportSetting`
-
-	 * @param value The value to store
+	 * Stores a given value for later use under the given key. The value will persist across place teleportations as long as they are in the same game. Note: this method is intended for use on the client only and should not be used on the server.
 	 */
 	/** @rbxts client */
 	SetTeleportSetting(setting: string, value: TeleportData): void;
 	/** 
-	 * This function teleports a `Player` to the place associated with the given *placeId*.
-	 *
-	 * Teleport can be called both from the client and the server (see examples below).
-	 *
-	 * When teleporting from the client, as only the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) can be teleported, no *player* argument is required.
-	 *
-	 * You may only teleport players to places within the same game or active start places for other games.
-	 *
-	 * ## Teleport data
-	 *
-	 * A *teleportData* parameter can be specified. This is data the client will transmit to the destination place and can be retrieved using [TeleportService.GetLocalPlayerTeleportData](https://developer.roblox.com/api-reference/function/TeleportService/GetLocalPlayerTeleportData).
-	 *
-	 * The *teleportData* can take any of the following forms:
-	 *
-	 *  - A table without mixed keys (all keys are strings or integers)
-	 *
-	 *  - A string
-	 *
-	 *  - A number
-	 *
-	 *  - A bool
-	 *
-	 * As the *teleportData* is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency).
-	 *
-	 * If you need teleport data to persist across multiple teleports, you can use [TeleportService.SetTeleportSetting](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportSetting) and [TeleportService.GetTeleportSetting](https://developer.roblox.com/api-reference/function/TeleportService/GetTeleportSetting).
-	 *
-	 * ## Loading screen
-	 *
-	 * A *customLoadingScreen* argument can be specified. This is a `ScreenGui` that is copied (without scripts) into the `CoreGui` of the destination place.
-	 *
-	 * Note, [TeleportService.SetTeleportGui](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportGui) is the preferred alternative to the *customLoadingScreen* argument as it can be called prior to the teleport.
-	 *
-	 * The loading `ScreenGui` can be obtained in the destination place using [TeleportService.GetArrivingTeleportGui](https://developer.roblox.com/api-reference/function/TeleportService/GetArrivingTeleportGui), where developers can parent it to the `PlayerGui`. It will not be used if the destination place is in a different game.
-	 *
-	 * ## Teleport failure
-	 *
-	 * In some circumstances a teleport may fail. This can be due to the developer configuring the teleport incorrectly or issues with Roblox’s servers.
-	 *
-	 *  - If a teleportation request is rejected the [TeleportService.TeleportInitFailed](https://developer.roblox.com/api-reference/event/TeleportService/TeleportInitFailed) event will fire the error message and a [Enum.TeleportResult](https://developer.roblox.com/search#stq=TeleportResult) enumerator describing the issue
-	 *
-	 *  - Teleports can fail ‘in transit’, after the user has left the server, due to issues with Roblox’s servers. In this case the user will be shown an error message and be required to rejoin the game
-	 *
-	 * ## Alternative teleport functions
-	 *
-	 * Before using Teleport, you should check to see if an alternative teleport function is more suitable:
-	 *
-	 *  - [TeleportService.TeleportToSpawnByName](https://developer.roblox.com/api-reference/function/TeleportService/TeleportToSpawnByName) is used to teleport a player to a place and spawn them at a specific `SpawnLocation`
-	 *
-	 *  - [TeleportService.TeleportPartyAsync](https://developer.roblox.com/api-reference/function/TeleportService/TeleportPartyAsync) is used to teleport a group of players together to the same server
-	 *
-	 *  - [TeleportService.TeleportToPlaceInstance](https://developer.roblox.com/api-reference/function/TeleportService/TeleportToPlaceInstance) is used to teleport a player to a specific server in a place
-	 *
-	 *  - [TeleportService.TeleportToPrivateServer](https://developer.roblox.com/api-reference/function/TeleportService/TeleportToPrivateServer) is used to teleport a player to a reserved server created using [TeleportService.ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer)
-	 *
-	 * For more information on how to teleport players, see the [Articles.Teleporting Between Places](https://developer.roblox.com/search#stq=Teleporting%20Between%20Places) tutorial.
-	 * @param placeId The ID of the place to teleport to
-	 * @param player The `Player` to teleport, if this function is being called from the client this defaults to the `Players/LocalPlayer`
-	 * @param teleportData Optional data to be passed to the destination place. Can be retrieved using `TeleportService/GetLocalPlayerTeleportData`
-	 * @param customLoadingScreen Optional custom loading screen to be placed in the `CoreGui` at the destination place. Can be retrieved using `TeleportService/GetArrivingTeleportGui`
+	 * Used to teleport a player to the place with ID placeId. The given teleportData can be any value that can be stored in a datastore, and will be transported along with the player. The customLoadingScreen is a GUI that'll be made static (scripts don't run, TweenPosition etc doesn't work, ...) and displayed during teleporting. You can see these arguments after the player has been teleported, using [TeleportService.LocalPlayerArrivedFromTeleport](https://developer.roblox.com/api-reference/event/TeleportService/LocalPlayerArrivedFromTeleport).
 	 */
 	Teleport(
 		placeId: number,
@@ -22767,57 +20244,7 @@ TeleportService:SetTeleportSetting("isCrouching", isCrouching)
 		customLoadingScreen?: ScreenGui | GuiMain,
 	): void;
 	/** 
-	 * This function teleports a `Player` to the place instance associated with the given *placeId* and *instanceId*. It can only be used to teleport to places in the same game.
-	 *
-	 * The *placeId* is the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) of the server and the *instanceId* is the [JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId).
-	 *
-	 * This function can not be used to teleport [Players](https://developer.roblox.com/api-reference/class/Player) to servers created using [TeleportService.ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer) (reserved servers). For this, see [TeleportService.TeleportToPrivateServer](https://developer.roblox.com/api-reference/function/TeleportService/TeleportToPrivateServer).
-	 *
-	 * ## Spawn name
-	 *
-	 * An optional *spawnName* parameter can be provided, which will cause the `Player` to initially spawn at the `SpawnLocation` of that name in the destination place. The `SpawnLocation` must be valid for the `Player` to spawn on. For example, it must be [neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) or set to the same [TeamColor](https://developer.roblox.com/api-reference/property/SpawnLocation/TeamColor) as the `Team` the `Player` will be assigned to upon joining the game.
-	 *
-	 * ## Teleport data
-	 *
-	 * A *teleportData* parameter can be specified. This is data the client will transmit to the destination place and can be retrieved using [TeleportService.GetLocalPlayerTeleportData](https://developer.roblox.com/api-reference/function/TeleportService/GetLocalPlayerTeleportData).
-	 *
-	 * The *teleportData* can take any of the following forms:
-	 *
-	 *  - A table without mixed keys (all keys are strings or integers)
-	 *
-	 *  - A string
-	 *
-	 *  - A number
-	 *
-	 *  - A bool
-	 *
-	 * As the *teleportData* is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency).
-	 *
-	 * If you need teleport data to persist across multiple teleports, you can use [TeleportService.SetTeleportSetting](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportSetting) and [TeleportService.GetTeleportSetting](https://developer.roblox.com/api-reference/function/TeleportService/GetTeleportSetting).
-	 *
-	 * ## Loading screen
-	 *
-	 * A *customLoadingScreen* argument can be specified. This is a `ScreenGui` that is copied (without scripts) into the `CoreGui` of the destination place.
-	 *
-	 * Note, [TeleportService.SetTeleportGui](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportGui) is the preferred alternative to the *customLoadingScreen* argument as it can be called prior to the teleport.
-	 *
-	 * The loading `ScreenGui` can be obtained in the destination place using [TeleportService.GetArrivingTeleportGui](https://developer.roblox.com/api-reference/function/TeleportService/GetArrivingTeleportGui), where developers can parent it to the `PlayerGui`.
-	 *
-	 * ## Teleport failure
-	 *
-	 * In some circumstances a teleport may fail. This can be due to the developer configuring the teleport incorrectly or issues with Roblox’s servers.
-	 *
-	 *  - If a teleportation request is rejected the [TeleportService.TeleportInitFailed](https://developer.roblox.com/api-reference/event/TeleportService/TeleportInitFailed) event will fire the error message and a [Enum.TeleportResult](https://developer.roblox.com/search#stq=TeleportResult) enumerator describing the issue
-	 *
-	 *  - Teleports can fail ‘in transit’, after the user has left the server, due to issues with Roblox’s servers. In this case the user will be shown an error message and be required to rejoin the game
-	 *
-	 * For more information on how to teleport players, see the [Articles.Teleporting Between Places](https://developer.roblox.com/search#stq=Teleporting%20Between%20Places) tutorial.
-	 * @param placeId The ID of the place to teleport to
-	 * @param instanceId The `DataMode/JobId` of the server instance to teleport to
-	 * @param player The `Player` to teleport, if this function is being called from the client this defaults to the `Players/LocalPlayer`
-	 * @param spawnName Optional name of the `SpawnLocation` to spawn at
-	 * @param teleportData Optional data to be passed to the destination place. Can be retrieved using `TeleportService/GetLocalPlayerTeleportData`
-	 * @param customLoadingScreen Optional custom loading screen to be placed in the `CoreGui` at the destination place. Can be retrieved using `TeleportService/GetArrivingTeleportGui`
+	 * Will teleport the given player to a specific place instance given a placeId and an instanceId. Will error if attempted on a place instanceId not within the calling place's [Game](https://wiki.roblox.com/index.php?title=Games). The given teleportData can be any value that can be stored in a datastore, and will be transported along with the player. The customLoadingScreen is a GUI that'll be made static (scripts don't run, TweenPosition etc doesn't work, ...) and displayed during teleporting. You can see these arguments after the player has been teleported, using [TeleportService.LocalPlayerArrivedFromTeleport](https://developer.roblox.com/api-reference/event/TeleportService/LocalPlayerArrivedFromTeleport).
 	 */
 	TeleportToPlaceInstance(
 		placeId: number,
@@ -22828,57 +20255,7 @@ TeleportService:SetTeleportSetting("isCrouching", isCrouching)
 		customLoadingScreen?: ScreenGui | GuiMain,
 	): void;
 	/** 
-	 * This function teleports one of more [Players](https://developer.roblox.com/api-reference/class/Player) to a reserved server created using [TeleportService.ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer).
-	 *
-	 * The *reservedServerAccessCode* parameter is the access code returned by [ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer).
-	 *
-	 * TeleportToPrivateServer can only be called on the server.
-	 *
-	 * ## Spawn name
-	 *
-	 * An optional *spawnName* parameter can be provided, which will cause the [Players](https://developer.roblox.com/api-reference/class/Player) to initially spawn at the `SpawnLocation` of that name in the destination place. The `SpawnLocation` must be valid for the [Players](https://developer.roblox.com/api-reference/class/Player) to spawn on. For example, it must be [neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) or set to the same [TeamColor](https://developer.roblox.com/api-reference/property/SpawnLocation/TeamColor) as the `Team` the [Players](https://developer.roblox.com/api-reference/class/Player) will be assigned to upon joining the game.
-	 *
-	 * ## Teleport data
-	 *
-	 * A *teleportData* parameter can be specified. This is data the clients will transmit to the destination place and can be retrieved using [TeleportService.GetLocalPlayerTeleportData](https://developer.roblox.com/api-reference/function/TeleportService/GetLocalPlayerTeleportData).
-	 *
-	 * The *teleportData* can take any of the following forms:
-	 *
-	 *  - A table without mixed keys (all keys are strings or integers)
-	 *
-	 *  - A string
-	 *
-	 *  - A number
-	 *
-	 *  - A bool
-	 *
-	 * As the *teleportData* is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency).
-	 *
-	 * If you need teleport data to persist across multiple teleports, you can use [TeleportService.SetTeleportSetting](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportSetting) and [TeleportService.GetTeleportSetting](https://developer.roblox.com/api-reference/function/TeleportService/GetTeleportSetting).
-	 *
-	 * ## Loading screen
-	 *
-	 * A *customLoadingScreen* argument can be specified. This is a `ScreenGui` that is copied (without scripts) into the `CoreGui` of the destination place.
-	 *
-	 * You are advised to instead set the loading screen on the client using [TeleportService.SetTeleportGui](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportGui). The loading `ScreenGui` should also be parented to the [Player’s](https://developer.roblox.com/api-reference/class/Player) `PlayerGui` a few seconds before the teleport to ensure a smooth transition using a `RemoteEvent`. For an example of this see [SetTeleportGui](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportGui)
-	 *
-	 * The loading `ScreenGui` can be obtained in the destination place using [TeleportService.GetArrivingTeleportGui](https://developer.roblox.com/api-reference/function/TeleportService/GetArrivingTeleportGui), where developers can parent it to the `PlayerGui`.
-	 *
-	 * ## Teleport failure
-	 *
-	 * In some circumstances a teleport may fail. This can be due to the developer configuring the teleport incorrectly or issues with Roblox’s servers.
-	 *
-	 *  - If a teleportation request is rejected the [TeleportService.TeleportInitFailed](https://developer.roblox.com/api-reference/event/TeleportService/TeleportInitFailed) event will fire the error message and a [Enum.TeleportResult](https://developer.roblox.com/search#stq=TeleportResult) enumerator describing the issue
-	 *
-	 *  - Teleports can fail ‘in transit’, after the user has left the server, due to issues with Roblox’s servers. In this case the user will be shown an error message and be required to rejoin the game
-	 *
-	 * For more information on how to teleport players, see the [Articles.Teleporting Between Places](https://developer.roblox.com/search#stq=Teleporting%20Between%20Places) tutorial.
-	 * @param placeId The ID of the place to teleport to
-	 * @param reservedServerAccessCode The reserved server access code returned by `TeleportService/ReserveServer`
-	 * @param players An array of `Player|Players` to teleport
-	 * @param spawnName Optional name of the `SpawnLocation` to spawn at
-	 * @param teleportData Optional data to be passed to the destination place. Can be retrieved using `TeleportService/GetLocalPlayerTeleportData`
-	 * @param customLoadingScreen Optional custom loading screen to be placed in the `CoreGui` at the destination place. Can be retrieved using `TeleportService/GetArrivingTeleportGui`
+	 * Used to teleport one or more players to a reserved server. _reservedServerAccessCode_ can be created using [TeleportService.ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer) The given teleportData can be any value that can be stored in a datastore, and will be transported along with each player. The customLoadingScreen is a GUI that'll be made static (scripts don't run, TweenPosition etc doesn't work, ...) and displayed during teleporting. You can see these arguments after each player has been teleported, using [TeleportService.LocalPlayerArrivedFromTeleport](https://developer.roblox.com/api-reference/event/TeleportService/LocalPlayerArrivedFromTeleport).
 	 */
 	TeleportToPrivateServer(
 		placeId: number,
@@ -22889,20 +20266,7 @@ TeleportService:SetTeleportSetting("isCrouching", isCrouching)
 		customLoadingScreen?: ScreenGui | GuiMain,
 	): void;
 	/** 
-	 * This function behaves the same as [TeleportService.Teleport](https://developer.roblox.com/api-reference/function/TeleportService/Teleport) with the exception that it includes a *spawnName* parameter, causing the `Player` to spawn at the `SpawnLocation` of that name at the destination place.
-	 *
-	 * The `SpawnLocation` must be valid for the `Player` to spawn on. For example, it must be [neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) or set to the same [TeamColor](https://developer.roblox.com/api-reference/property/SpawnLocation/TeamColor) as the `Team` the `Player` will be assigned to upon joining the game.
-	 *
-	 * The `Player` will still spawn at the correct `SpawnLocation` even the teleport is to a place in a different universe. The spawn will also be correct if [Players.CharacterAutoLoads](https://developer.roblox.com/api-reference/property/Players/CharacterAutoLoads) is false in the destination place and the [Character](https://developer.roblox.com/api-reference/property/Player/Character) is loaded manually using [LoadCharacter](https://developer.roblox.com/api-reference/function/Player/LoadCharacter).
-	 *
-	 * The teleportation will only affect the `SpawnLocation` used initially. If the `Player` respawns again subsequently it will not necessarily be at this `SpawnLocation`.
-	 *
-	 * For more information about teleporting please see [TeleportService.Teleport](https://developer.roblox.com/api-reference/function/TeleportService/Teleport) or the [Articles.Teleporting Between Places](https://developer.roblox.com/search#stq=Teleporting%20Between%20Places) tutorial.
-	 * @param placeId The ID of the place to teleport to
-	 * @param spawnName The name of the `SpawnLocation` to spawn at
-	 * @param player The `Player` to teleport, if this function is being called from the client this defaults to the `Players/LocalPlayer`
-	 * @param teleportData Optional data to be passed to the destination place. Can be retrieved using `TeleportService/GetLocalPlayerTeleportData`
-	 * @param customLoadingScreen Optional custom loading screen to be placed in the `CoreGui` at the destination place. Can be retrieved using `TeleportService/GetArrivingTeleportGui`
+	 * Teleports someone like [TeleportService.Teleport](https://developer.roblox.com/api-reference/function/TeleportService/Teleport), but has a second argument allowing someone to teleport to a certain spawn. However, the spawn must have its [SpawnLocation.Neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) property set to true. The given teleportData can be any value that can be stored in a datastore, and will be transported along with the player. The customLoadingScreen is a GUI that'll be made static (scripts don't run, TweenPosition etc doesn't work, ...) and displayed during teleporting. You can see these arguments after the player has been teleported, using [TeleportService.LocalPlayerArrivedFromTeleport](https://developer.roblox.com/api-reference/event/TeleportService/LocalPlayerArrivedFromTeleport).
 	 */
 	TeleportToSpawnByName(
 		placeId: number,
@@ -22912,43 +20276,12 @@ TeleportService:SetTeleportSetting("isCrouching", isCrouching)
 		customLoadingScreen?: ScreenGui | GuiMain,
 	): void;
 	/** 
-	 * This function returns the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) and [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) of the server the user with the given [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId) is in provided it is in the same game as the current place.
-	 *
-	 * [TeleportService.TeleportToPlaceInstance](https://developer.roblox.com/api-reference/function/TeleportService/TeleportToPlaceInstance) can then be called with this information to allow a user to join the target user’s server.
-	 *
-	 * This function returns the following values:
-	 *
-	 * | # | Name | Type | Description |
-	 * | --- | --- | --- | --- |
-	 * | 1 | success | bool | A bool indicating if the user was found in the same game universe |
-	 * | 2 | error | string | An error message in the event of the lookup failing |
-	 * | 3 | placeId | int64 | The [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) of the server the user is in |
-	 * | 4 | instanceId | string | The [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) of the server the user is in |
-	 *
-	 * ## Caveats
-	 *
-	 * You should be aware of the following limitations when using this function:
-	 *
-	 *  - This function can only be called by the server
-	 *
-	 *  - This function may fail to return the correct information if the user is teleporting
-	 *
-	 *  - It is possible for this function to throw an error, hence developers should wrap it in a pcall (see example below)
-	 *
-	 *  - As this function returns the [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) of the server and not the access code returned by [TeleportService.ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer) the id returned is not appropriate for use with reserved servers
-	 *
-	 * ## See also
-	 *
-	 *  - For the [PlaceIds](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) and [JobIds](https://developer.roblox.com/api-reference/property/DataModel/JobId) of a [Player’s](https://developer.roblox.com/api-reference/class/Player) friends, use [Player.GetFriendsOnline](https://developer.roblox.com/api-reference/function/Player/GetFriendsOnline)
-	 * @param userId The `Player/UserId` of the `Player`
-	 * @returns See the table above
+	 * The first returned value is true if the player was found in the same instance. The second returned value is the error message if anything went wrong with the lookup. The third returned value is the PlaceId of the place that the player is playing. The fourth returned value is the [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) of the game instance that a player is in. This can be used in conjunction with the [TeleportService.TeleportToPlaceInstance](https://developer.roblox.com/api-reference/function/TeleportService/TeleportToPlaceInstance) method to teleport groups of people to the same instance of a place so they do not get split up. Will not return the correct instanceId or will error if used with the userId of a Player not inside the [Game](https://wiki.roblox.com/index.php?title=Game) of the place where the method is called.
 	 */
 	/** @rbxts server */
 	GetPlayerPlaceInstanceAsync(userId: number): LuaTuple<[boolean, string, number, string]>;
 	/** 
 	 * This function returns an access code that can be used to teleport players to a reserved server, along with the [DataModel.PrivateServerId](https://developer.roblox.com/api-reference/property/DataModel/PrivateServerId) for it.
-	 *
-	 * ReserveServer can only be called on the server.
 	 *
 	 * ## Reserved Servers
 	 *
@@ -22971,58 +20304,10 @@ local isReserved = game.PrivateServerId ~= "" and game.PrivateServerOwnerId == 0
 
 	 * The [DataModel.PrivateServerId](https://developer.roblox.com/api-reference/property/DataModel/PrivateServerId) is constant across all server instances associated with the server access code, the [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) is not.
 	 * @param placeId The `DataModel/PlaceId` of the place the reserved server is being created for
-	 * @returns The server access code required by `TeleportService/TeleportToPrivateServer` and the `DataModel/PrivateServerId` for the reserved server
 	 */
 	/** @rbxts server */
 	ReserveServer(placeId: number): LuaTuple<[string, string]>;
-	/** 
-	 * This function teleports a group of [Players](https://developer.roblox.com/api-reference/class/Player) to the same server instance in the given place. It returns the [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) of the server instance the players were teleported to.
-	 *
-	 * This function can only be called from the server.
-	 *
-	 * You may only use this function to teleport to a place in the same game. This function can not teleport more than 50 [Players](https://developer.roblox.com/api-reference/class/Player) in a single party.
-	 *
-	 * Currently this function may not work reliably when teleporting [Players](https://developer.roblox.com/api-reference/class/Player) to the same place they are currently in.
-	 *
-	 * ## Teleport data
-	 *
-	 * A *teleportData* parameter can be specified. This is data the clients will transmit to the destination place and can be retrieved using [TeleportService.GetLocalPlayerTeleportData](https://developer.roblox.com/api-reference/function/TeleportService/GetLocalPlayerTeleportData).
-	 *
-	 * The *teleportData* can take any of the following forms:
-	 *
-	 *  - A table without mixed keys (all keys are strings or integers)
-	 *
-	 *  - A string
-	 *
-	 *  - A number
-	 *
-	 *  - A bool
-	 *
-	 * As the *teleportData* is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency).
-	 *
-	 * ## Loading screen
-	 *
-	 * A *customLoadingScreen* argument can be specified. This is a `ScreenGui` that is copied (without scripts) into the `CoreGui` of the destination place. It can be retrieved at the destination place using [TeleportService.GetArrivingTeleportGui](https://developer.roblox.com/api-reference/function/TeleportService/GetArrivingTeleportGui) and will not be used if the destination place is in a different game.
-	 *
-	 * You are advised to instead set the loading screen on the client using [TeleportService.SetTeleportGui](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportGui). The loading `ScreenGui` should also be parented to the [Players'](https://developer.roblox.com/api-reference/class/Player) [PlayerGuis](https://developer.roblox.com/api-reference/class/PlayerGui) a few seconds before the teleport to ensure a smooth transition using a `RemoteEvent`. For an example of this see [SetTeleportGui](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportGui).
-	 *
-	 * ## Teleport failure
-	 *
-	 * In some circumstances a teleport may fail. This can be due to the developer configuring the teleport incorrectly or issues with Roblox’s servers.
-	 *
-	 *  - If a teleportation request is rejected the [TeleportService.TeleportInitFailed](https://developer.roblox.com/api-reference/event/TeleportService/TeleportInitFailed) event will fire the error message and a [Enum.TeleportResult](https://developer.roblox.com/search#stq=TeleportResult) enumerator describing the issue
-	 *
-	 *  - Teleports can fail ‘in transit’, after the user has left the server, due to issues with Roblox’s servers. In this case the user will be shown an error message and be required to rejoin the game
-	 *
-	 * ## See also
-	 *
-	 *  - [Player.GetJoinData](https://developer.roblox.com/api-reference/function/Player/GetJoinData) to get the [UserIds](https://developer.roblox.com/api-reference/property/Player/UserId) of [Players](https://developer.roblox.com/api-reference/class/Player) teleported together
-	 * @param placeId The ID of the place to teleport to
-	 * @param players An array containing the `Player|Players` to teleport
-	 * @param teleportData Optional data to be passed to the destination place. Can be retrieved using `TeleportService/GetLocalPlayerTeleportData`
-	 * @param customLoadingScreen Optional custom loading screen to be placed in the `CoreGui` at the destination place. Can be retrieved using `TeleportService/GetArrivingTeleportGui`
-	 * @returns The `DataModel/JobId` of the server instance the `Player|Players` were teleported to
-	 */
+
 	TeleportPartyAsync(
 		placeId: number,
 		players: Array<Player>,
@@ -23030,56 +20315,7 @@ local isReserved = game.PrivateServerId ~= "" and game.PrivateServerOwnerId == 0
 		customLoadingScreen?: ScreenGui | GuiMain,
 	): string;
 	/** 
-	 * This function fires when the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) enters the place following a teleport. The *teleportData* and *customLoadingScreen* are provided as arguments.
-	 *
-	 * When fetching *teleportData* and the *customLoadingScreen* you are advised to use [TeleportService.GetLocalPlayerTeleportData](https://developer.roblox.com/api-reference/function/TeleportService/GetLocalPlayerTeleportData) and [TeleportService.GetArrivingTeleportGui](https://developer.roblox.com/api-reference/function/TeleportService/GetArrivingTeleportGui) instead. This is because these functions can be called immediately without having to wait for this event to fire.
-	 *
-	 * This event should be connected immediately in a `LocalScript` parented to `ReplicatedFirst`. Otherwise, when the connection is made the event may have already fired.
-	 *
-	 * ## Loading screen
-	 *
-	 * During a teleport, whilst the destination place is loading, the *customLoadingScreen* is parented to the `CoreGui`. Once the place has loaded the [loading screen](https://developer.roblox.com/api-reference/class/ScreenGui) is [parented](https://developer.roblox.com/api-reference/property/Instance/Parent) to *nil*.
-	 *
-	 * If you wish to preserve the *customLoadingScreen* and perform your own transitions, you will need to parent it to the [LocalPlayer’s](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) `PlayerGui`. For example, using the following code inside a `LocalScript` in `ReplicatedFirst`:
-	 *
-	 * ```lua
-local TeleportService = game:GetService("TeleportService")
-local Players = game:GetService("Players")
-local ReplicatedFirst = game:GetService("ReplicatedFirst")
-
-TeleportService.LocalPlayerArrivedFromTeleport:Connect(function(customLoadingScreen, teleportData)
-```
-	 * 
-
-	 * lua
-	 *
-	 * local playerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
-	 *
-	 * ReplicatedFirst:RemoveDefaultLoadingScreen()
-	 *
-	 * ```lua
-
-```
-	 * 
-
-	 * lua
-	 *
-	 * customLoadingScreen.Parent = playerGui
-	 *
-	 * -- animate screen here
-	 *
-	 * wait(5)
-	 *
-	 * -- destroy screen
-	 *
-	 * customLoadingScreen:Destroy()
-	 *
-	 * ```lua
-end)
-```
-	 * 
-
-	 * Note, the *customLoadingScreen* will not be used if the destination place is in a different game.
+	 * The teleportData and customLoadingScreen from the [TeleportService.Teleport](https://developer.roblox.com/api-reference/function/TeleportService/Teleport) methods. This event has to be connected by a localscript in the `ReplicatedFirst` as soon as the script runs, as connecting to the event later can lead to missing it firing.
 	 */
 	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<
 		(loadingGui: ScreenGui | GuiMain, dataTable?: unknown) => void
@@ -23121,7 +20357,7 @@ end)
 }
 
 /** 
- * A TerrainRegion is a snapshot of `Terrain` retrieved from the [CopyRegion](https://developer.roblox.com/api-reference/function/Terrain/CopyRegion) method. Can be later pasted into the Terrain using [PasteRegion](https://developer.roblox.com/api-reference/function/Terrain/PasteRegion).
+ * A TerrainRegion is a snapshot of `Terrain` retrieved from the [CopyRegion](https://wiki.roblox.com/index.php?title=CopyRegion) method. Can be later pasted into the Terrain using [PasteRegion](https://wiki.roblox.com/index.php?title=PasteRegion).
  */
 interface TerrainRegion extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -23224,15 +20460,7 @@ interface TestService extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly ErrorCount: number;
-	/** 
-	 * When set to true, the TestService will be executed when using the _Run_ action in Roblox Studio.
-	 *
-	 * ## Notes
-	 *
-	 * * If the [TestService.NumberOfPlayers](https://developer.roblox.com/api-reference/property/TestService/NumberOfPlayers) property is set to a value above 0, running the game will open `NumberOfPlayers + 1` studio windows, where one window is a server, and the rest are players connected to that server.
-	 *
-	 * 	* Try to keep this value within a rational range (1 to 8 players at most), or else your computer's CPU will get overloaded.
-	 */
+	/** [NO DOCUMENTATION] */
 	ExecuteWithStudioRun: boolean;
 	/** 
 	 * Sets whether or not the physics engine should be throttled to 30 FPS while the test is being ran.
@@ -23293,7 +20521,7 @@ interface TestService extends Instance {
 	/** 
 	 * Indicates a fatal error in a TestService run.
 	 *
-	 * If this is called inside of a script running inside of the TestService, this will initiate a [breakpoint](https://developer.roblox.com/articles/Lua-debugger) on the line that invoked the error.
+	 * If this is called inside of a script running inside of the TestService, this will initiate a [breakpoint](https://wiki.roblox.com/index.php?title=Lua_Debugger#Breakpoints) on the line that invoked the error.
 	 */
 	Fail(description: string, source?: Instance, line?: number): void;
 	/** 
@@ -23301,7 +20529,7 @@ interface TestService extends Instance {
 	 */
 	Message(text: string, source?: Instance, line?: number): void;
 	/** 
-	 * If `condition` is true, prints `Require passed: `, followed by `description`, to the output in blue text. Otherwise, prints `Require failed. Test ended: `, followed by `description`, to the output in red text.
+	 * If condition is true, prints Require passed: , followed by description, to the output, in blue text. Otherwise, prints Require failed. Test ended: , followed by description, to the output, in red text, and calls the [Done](https://wiki.roblox.com/index.php?title=Done_(Method)&action=edit&redlink=1 "Done (Method) (page does not exist)") method of the `TestService`.
 	 */
 	Require(condition: boolean, description: string, source?: Instance, line?: number): void;
 	/** 
@@ -23379,40 +20607,17 @@ interface TextFilterResult extends Instance {
 }
 
 /** 
- * The TextService is a service internally responsible for handling the display of text in the game.
- *
- * This class has two member functions,
- *
- * The [TextService.GetTextSize](https://developer.roblox.com/api-reference/function/TextService/GetTextSize) function gives developers the ability to calculate the space required for a specific text string with specified formatting, returning a [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2) pixel size.
- *
- * The [TextService.FilterStringAsync](https://developer.roblox.com/api-reference/function/TextService/FilterStringAsync) function is required to properly filter user specified text (such as chat messages or other inputs) in the interests of user safety. Developers not using the Roblox default `Chat`, or allowing users to otherwise input text must use this function.
- *
- * For more information on text filtering please see [this article][1].
- *
- * [1]: http://robloxdev.com/articles/Text-and-Chat-Filtering
+ * This service is internally responsible for handling the display of [text](https://wiki.roblox.com/index.php?title=Text) in-engine.
  */
 interface TextService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "TextService";
 	/** 
-	 * Computes the [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2) dimensions (in pixels) that will be taken up with text when using the specified formatting parameters and size constraints.
-	 *
-	 * Note, the fontSize parameter will not accept the [Enum.FontSize](https://developer.roblox.com/search#stq=FontSize) Enum. Instead the integer size corresponding with the [Enum.FontSize](https://developer.roblox.com/search#stq=FontSize) Enum should be used. This is not equal to the value of the [Enum.FontSize](https://developer.roblox.com/search#stq=FontSize) Enum. For example, for *Size11* font, the integer *11* should be used.
-	 *
-	 * This function is a useful alternative to the [TextLabel.TextBounds](https://developer.roblox.com/api-reference/property/TextLabel/TextBounds) property of the `TextLabel` and `TextButton` objects. Using the [TextLabel.TextBounds](https://developer.roblox.com/api-reference/property/TextLabel/TextBounds) property to calculate the dimensions text requires is often impractical as it requires a `TextLabel` object to be created.
-	 *
-	 * With GetTextSize, the dimensions required by a particular text string in a particular `TextLabel` or `TextButton` can be calculated before any object is created or text property set.
-	 *
-	 * Developers are recommended to add a pixel of padding to the result to ensure no text is cut off.
-	 * @param string The string for which the text size is to be calculated.
-	 * @param fontSize The integer representing the font size used.
-	 * @param font The font used.
-	 * @param frameSize The `TextLabel/AbsoluteSize` of the text object to be used. Required to compute how the text will wrap.
-	 * @returns The size of the space required, in pixels, by the string with the specified formatting.
+	 * Computes the Vector2 dimensions that will be taken up with text when using the specified parameters.
 	 */
 	GetTextSize(string: string, fontSize: number, font: CastsToEnum<Enum.Font>, frameSize: Vector2): Vector2;
 	/** 
-	 * The FilterStringAsync function filters a string being received from a user, using the `TextService`, and returns a `TextFilterResult` which can be used to distribute the correctly filtered text accordingly.
+	 * FilterStringAsync filters a string being received from a user, and returns a `TextFilterResult` which can be used to distribute the correctly filtered text accordingly.
 	 *
 	 * ## Usage
 	 *
@@ -23420,21 +20625,15 @@ interface TextService extends Instance {
 	 *
 	 * However, it is encouraged to keep these result objects to display the same message to users who join the server later. For example: this can be used to safely and efficiently implement a server chat log that always uses the least restrictive filtering for users who join later, or for efficiently displaying text like a pet name to a user who joins the game after the pet was first spawned and name filtered.
 	 *
-	 * The optional [Enum.TextFilterContext](https://developer.roblox.com/search#stq=TextFilterContext) parameter will not impact the filtered result of the query. This value will be used to improve Roblox's text filtering.
-	 *
-	 * Private text is anything that is seen only by specific players, rather than every player. For example, if the chat is seen by a single player, or by a selected group of players, then the chat is considered private. Chat for teams or chat that is potentially visible to a wider group, such as the server, is considered public. If you are unsure what your text qualifies as, leave the optional field blank.
+	 * The optional TextFilterContext parameter will not impact the filtered result of the query. This value will be used to improve Roblox's text filtering. Private text is anything that is seen only by specific players, rather than every player. For example, if the chat is seen by a single player, or by a selected group of players, then the chat is considered private. Chat for teams or chat that is potentially visible to a wider group, such as the server, is considered public. If you are unsure what your text qualifies as, leave the optional field blank.Filters a string being received from a user, and returns a `TextFilterResult` which can be used to distribute the correctly filtered text accordingly.
 	 *
 	 * ## Notes
 	 *
-	 *  - This method always yields to make a text filtering service call
+	 * * This method always yields to make a text filtering service call.
 	 *
-	 *  - This method may throw if there is a service error that can not be resolved. If this function throws an error please do not retry the request; this method implements it’s own retry logic internally. If this method fails do not display the text to any user.
+	 * * This method may throw if there is a service error that can not be resolved. If this function throws an error please do not retry the request; this method implements it's own retry logic internally. If this method fails do not display the text to any user.
 	 *
-	 *  - This method currently throws if *fromUserId* is not online on the current server. We plan to support users who are offline or on a different server in the future.
-	 * @param stringToFilter The text to be filtered.
-	 * @param fromUserId The userId of the player filtering the text.
-	 * @param textContext The context that the filtered message will be used in. The default is PrivateChat.
-	 * @returns Can be used to distribute the correctly filtered text accordingly.
+	 * * This method currently throws if _fromUserId_ is not online on the current server. We plan to support users who are offline or on a different server in the future.
 	 */
 	/** @rbxts server */
 	FilterStringAsync(
@@ -23641,15 +20840,17 @@ trail.FaceCamera = false
 	 */
 	MinLength: number;
 	/** 
-	 * The Texture property is the texture to draw on a `Trail`'s segments. This property sets which image asset to use for the texture. This is set the same way as textures in other objects, such as `ImageLabel` or `ParticleEmitter`. The simplest way to set this property is to use an image uploaded to the Game Explorer (this requires the current place to be Published to Roblox).
+	 * The Texture property is the texture to draw on a `Trail`'s segments. This property sets which image asset to use for the texture. This is set the same way as textures in other objects, such as `ImageLabel` or `ParticleEmitter`. The simplest way to set this property is to use an image uploaded to the [Game Explorer][1] (this requires the current place to be Published to Roblox).
 	 *
 	 * If a texture is not provided, then just the [Trail.Color](https://developer.roblox.com/api-reference/property/Trail/Color) of the Trail will be used. With a texture, the trail will draw the texture as its attachments move.
 	 *
-	 * ![A trail with a pawprint texture.][1]
+	 * ![A trail with a pawprint texture.][2]
 	 *
 	 * Textures can be displayed in a variety of different ways based on the trail's [Trail.TextureMode](https://developer.roblox.com/api-reference/property/Trail/TextureMode) and [Trail.TextureLength](https://developer.roblox.com/api-reference/property/Trail/TextureLength) properties.
 	 *
-	 * [1]: https://developer.roblox.com/assets/5b3d51c779099e4b58a78818/TrailTexture.gif
+	 * [1]: https://wiki.roblox.com/index.php?title=Manual/Studio_Overview/Interface/Game_explorer
+	 *
+	 * [2]: https://developer.roblox.com/assets/5b3d51c779099e4b58a78818/TrailTexture.gif
 	 */
 	Texture: string;
 	/** 
@@ -23737,73 +20938,11 @@ interface Translator extends Instance {
 	 */
 	readonly LocaleId: string;
 	/** 
-	 * Returns the localized text string in a `LocalizationTable` based on its `Translator` locale, by key. The optional **args** table is used for filling format parameters in the matching text entry.
-	 *
-	 * Note that this method will throw an error in the following cases:
-	 *
-	 * * If none of the [LocalizationTables](https://developer.roblox.com/api-reference/class/LocalizationTable) available to this `Translator` include a value for the given key.
-	 *
-	 * * If the [format string](https://developer.roblox.com/search#stq=localization%20format%20strings) for the key uses numbered parameters and **args** is not an array.
-	 *
-	 * * If the [format string](https://developer.roblox.com/search#stq=localization%20format%20strings) uses named parameters and **args** is not a table of key-value pairs.
-	 *
-	 * * If **args** is missing values for parameters that are used in the matching [format string](https://developer.roblox.com/search#stq=localization%20format%20strings).
-	 *
-	 * See [Utilizing Localization APIs](https://developer.roblox.com/search#stq=utilizing%20localization%20apis) for more details and usage examples of this function.
-	 * @param key The **Key** value to look up and translate.
-	 * @param args If the **Source** text and translations contain `articles/localization format strings|format strings`, a Lua table of values **or** <span class="text-nowrap">key-value</span> pairs, depending on whether the format strings are numbered or named.
+	 * Looks up localized text in a `LocalizationTable` for this Translator's locale by key.
 	 */
 	FormatByKey(key: string, args?: any): string;
 	/** 
-	 * Returns the localized text string in a `LocalizationTable` based on its `Translator` locale. This string will be in the context of the provided object, given the provided **Source** text.
-	 *
-	 * See [Utilizing Localization APIs](https://developer.roblox.com/search#stq=utilizing%20localization%20apis) for more details and usage examples of this function.
-	 *
-	 * ## Context OverridesIn some cases, duplicate **Source** strings may have completely different translations in other languages. For example, the English noun "Screen" can indicate both a computer screen and a window screen, but the Spanish translations are completely different:
-	 *
-	 * | A | B | C | D | E |
-	 * | --- | --- | --- | --- | --- |
-	 * | Key | Context | **Source** | Example | **es** |
-	 * | --- | --- | --- | --- | --- |
-	 * |  |  | Screen |  | Pantalla |
-	 * | --- |
-	 * |  |  | Screen |  | Mosquitero |
-	 * | --- |
-	 *
-	 * |  |  |  |  |  |
-	 *
-	 * In these cases, the first argument to this function — a valid in-game `Instance`&nbsp;&mdash; can be used as a "tie&nbsp;breaker" when multiple GUI objects use the same source string. To implement this, specify the "path" to the `Instance` you'd like to override as the **Context** value of the translation data:
-	 *
-	 * | A | B | C | D | E |
-	 * | --- | --- | --- | --- | --- |
-	 * | Key | **Context** | Source | Example | es |
-	 * | --- | --- | --- | --- | --- |
-	 * |  | workspace.ComputerScreen.SurfaceGui.TextLabel | Screen |  | Pantalla |
-	 * | --- |
-	 * |  |  | Screen |  | Mosquitero |
-	 * | --- |
-	 *
-	 * |  |  |  |  |  |
-	 *
-	 * Then, when calling this function in a script, pass the same `Instance` as the first argument, followed by the **Source** lookup text as the second argument:
-	 *
-	 * ```lua
-local LocalizationService = game:GetService("LocalizationService")
-
-local success, translator = pcall(function()
-	return LocalizationService:GetTranslatorForPlayerAsync(game.Players.LocalPlayer)
-end)
-
-if success then
-	local trans = translator:Translate(workspace.ComputerScreen.SurfaceGui.TextLabel, "Screen")
-	print(trans)
-else
-	warn("Cannot load translator for player!")
-end
-```
-	 *
-	 * @param context A valid <span class="text-nowrap">in-game</span> `Instance` to use for <a href="#translate-context-overrides">context&nbsp;override</a> as outlined above. Note that this argument can be arbitrary, for example `game`, if you don't require a context override.
-	 * @param text The **Source** text to look up and translate.
+	 * Returns the automated text translation that will appear in the context of the provided object, given the provided text.
 	 */
 	Translate(context: Instance, text: string): string;
 }
@@ -24018,7 +21157,7 @@ interface UIAspectRatioConstraint extends UIConstraint {
 	 *
 	 * ![A width-to-height ratio of 0.8][1]![A width-to-height ratio of 1.25][2]
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltb4147bb1d3de0224/UIAspectRatioConstraint_Ratio_0.8.png
+	 * [1]: https://developer.roblox.com/assets/5af8c4e5d951a7d46014aa13/UIAspectRatioConstraint_Ratio_0.8.png
 	 *
 	 * [2]: https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/blt9874bdf1824f7688/5af8c4f8a3fbc195609fc267/UIAspectRatioConstraint_Ratio_1.25.png
 	 */
@@ -24098,11 +21237,11 @@ interface UIGridStyleLayout extends UILayout {
 	/** 
 	 * The AbsoluteContentSize property of a `UIGridStyleLayout` shows how much space the elements of the grid are taking up, including any padding created by the grid. This property is particularly useful to size containers of grids such as `Frame`s and Frame to make sure they aren't any larger than the grid itself.
 	 *
-	 * It updates as soon as it's read. It won't fire a changed event immediately after the UI has changed, but if the value is read it will be up to date. A [Instance.Changed](https://developer.roblox.com/api-reference/event/Instance/Changed) event should fire on the next render step.
+	 * It is important to note that this property does not get updated immediately. When a grid's size is changed the AbsoluteContentSize will be updated on the next render step. When using AbsoluteContentSize to determine the size of a container element, it is recommended to either listen for the property to change with the Frame, or by waiting for the [RunService.RenderStepped](https://developer.roblox.com/api-reference/event/RunService/RenderStepped) with Frame.
 	
 	 * The AbsoluteContentSize property of a `UIGridStyleLayout` shows how much space the elements of the grid are taking up, including any padding created by the grid. This property is particularly useful to size containers of grids such as `Frame`s and Frame to make sure they aren't any larger than the grid itself.
 	 *
-	 * It updates as soon as it's read. It won't fire a changed event immediately after the UI has changed, but if the value is read it will be up to date. A [Instance.Changed](https://developer.roblox.com/api-reference/event/Instance/Changed) event should fire on the next render step.
+	 * It is important to note that this property does not get updated immediately. When a grid's size is changed the AbsoluteContentSize will be updated on the next render step. When using AbsoluteContentSize to determine the size of a container element, it is recommended to either listen for the property to change with the Frame, or by waiting for the [RunService.RenderStepped](https://developer.roblox.com/api-reference/event/RunService/RenderStepped) with Frame.
 	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -24136,7 +21275,7 @@ interface UIGridStyleLayout extends UILayout {
  *
  * This layout is appropriate when line breaks are OK after arbitrary cells. For example, a set of inventory spaces is a good use of this layout. If building a table of values in which a line break is not appropriate in the middle of tabular data, it might be a better idea to use a `UITableLayout` instead.
  *
- * [1]: https://developer.roblox.com/assets/bltb9ddab50d7fdebee/UIGridLayout.png
+ * [1]: https://developer.roblox.com/assets/5af8babb46ab6b416257973e/UIGridLayout.png
  */
 interface UIGridLayout extends UIGridStyleLayout {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -24170,11 +21309,14 @@ interface UIGridLayout extends UIGridStyleLayout {
 	 *
 	 * Above, the potion is the first `ImageLabel`, followed by the gem and the sword. The UIGridLayout is using a [Enum.StartCorner](https://developer.roblox.com/search#stq=StartCorner) of BottomRight. The [UIGridStyleLayout.FillDirection](https://developer.roblox.com/api-reference/property/UIGridStyleLayout/FillDirection) is Horizontal.
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltb27258f9e16b81e2/UIGridLayout_StartCorner.png
+	 * [1]: https://developer.roblox.com/assets/5af8bf466aa152d560c4b684/UIGridLayout_StartCorner.png
 	 */
 	StartCorner: Enum.StartCorner;
 }
 
+/** 
+ 
+ */
 interface UIInlineLayout extends UIGridStyleLayout {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "UIInlineLayout";
@@ -24309,7 +21451,7 @@ interface UIPageLayout extends UIGridStyleLayout {
  *
  * Cells will continue to respect `UISizeConstraint` objects within them. In other words, setting [UISizeConstraint.MinSize](https://developer.roblox.com/api-reference/property/UISizeConstraint/MinSize) on `UISizeConstraint`s within the header cells can determine the size of the rest of the cells. If [UISizeConstraint.MaxSize](https://developer.roblox.com/api-reference/property/UISizeConstraint/MaxSize) restricts a cell's size from filling the allotted space (i.e. another row/column is wider than it), it will align to the top-left.
  *
- * [1]: https://developer.roblox.com/assets/bltad6d3e2ee82def82/UITableLayout_Hierarchy.png
+ * [1]: https://developer.roblox.com/assets/5af895edfb3ef84362f407bc/UITableLayout_Hierarchy.png
  *
  * [2]: https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/bltff6ce5d154eee764/5af89441d951a7d46014aa05/UITableLayout_Padding.png
  */
@@ -24335,7 +21477,7 @@ interface UITableLayout extends UIGridStyleLayout {
 	 *
 	 * **Note: it seems that this property isn't making noticeable changes, and rather its behavior is determined by [UIGridStyleLayout.FillDirection](https://developer.roblox.com/api-reference/property/UIGridStyleLayout/FillDirection) instead.**
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltff6ce5d154eee764/UITableLayout_Padding.png
+	 * [1]: https://developer.roblox.com/assets/5af89441d951a7d46014aa05/UITableLayout_Padding.png
 	 *
 	 * [2]: https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/bltd94eef328b68fed5/5af8b0b0fb3ef84362f407ca/UITableLayout_FillDirection.png
 	 */
@@ -24345,7 +21487,7 @@ interface UITableLayout extends UIGridStyleLayout {
 	 *
 	 * ![UITableLayout with padding between cells][1]
 	 *
-	 * [1]: https://developer.roblox.com/assets/bltff6ce5d154eee764/UITableLayout_Padding.png
+	 * [1]: https://developer.roblox.com/assets/5af89441d951a7d46014aa05/UITableLayout_Padding.png
 	 */
 	Padding: UDim2;
 }
@@ -24375,7 +21517,7 @@ interface UIPadding extends UIComponent {
 }
 
 /** 
- * A UIScale object simply contains a number that is used to multiply the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) of the parent UI element. This number is stored in [UIScale.Scale](https://developer.roblox.com/api-reference/property/UIScale/Scale).
+ * A UIScale object simply contains a number that is used to multiply the [GuiBase2D.AbsoluteSize](https://developer.roblox.com/search#stq=AbsoluteSize) of the parent UI element. This number is stored in [UiScale.Scale](https://developer.roblox.com/search#stq=Scale).
  */
 interface UIScale extends UIComponent {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -24422,7 +21564,7 @@ interface UserGameSettings extends Instance {
 	 */
 	MasterVolume: number;
 	/** 
-	 * A [float](https://developer.roblox.com/articles/Numbers) representing the sensitivity of the client's mouse.
+	 * A [float](https://wiki.roblox.com/index.php?title=Float) representing the sensitivity of the client's mouse.
 	 */
 	MouseSensitivity: number;
 	/** [NO DOCUMENTATION] */
@@ -24472,7 +21614,7 @@ interface UserGameSettings extends Instance {
 	/** 
 	 * Records that the user has finished the specified _onboardingId_ .
 	 *
-	 * Currently, this function only accepts ["DynamicThumbstick"](https://developer.roblox.com/articles/String), and it is used to persistently track whether or not the player has finished the tutorial for the _Dynamic Thumbstick_ control scheme.
+	 * Currently, this function only accepts ["DynamicThumbstick"](https://wiki.roblox.com/index.php?title=String), and it is used to persistently track whether or not the player has finished the tutorial for the _Dynamic Thumbstick_ control scheme.
 	 */
 	SetOnboardingCompleted(onboardingId: string): void;
 	/** 
@@ -24507,27 +21649,11 @@ interface UserInputService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "UserInputService";
 	/** 
-	 * This property describes whether the the user’s device has an accelerometer
+	 * The AccelerometerEnabled property indicates whether the the local device has an accelerometer. The property is *true* if the user's device has an enabled accelerometer, and *false* if not.
 	 *
-	 * An accelerometer is a component found in most mobile devices that measures acceleration (change in speed).
-	 *
-	 * For example, the following code snippet demonstrates how to check if the user's device has an accelerometer.
-	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-
-local accelerometerEnabled = oserInputService.AccelerometerEnabled
-if accelerometerEnabled then
-	print("Accelerometer enabled!")
-else
-	print("Accelerometer not enabled!")
-end
-```
-	 * 
-
 	 * If the device has an enabled accelerometer, you can get it's current acceleration by using the [UserInputService.GetDeviceAcceleration](https://developer.roblox.com/api-reference/function/UserInputService/GetDeviceAcceleration) function or track when the device's acceleration changes by using the [UserInputService.DeviceAccelerationChanged](https://developer.roblox.com/api-reference/event/UserInputService/DeviceAccelerationChanged) event.
 	 *
-	 * As `UserInputService` is client-side only, this property can only be used in a `LocalScript`.
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly AccelerometerEnabled: boolean;
 	/** 
@@ -24578,45 +21704,23 @@ end
 	 */
 	readonly GamepadEnabled: boolean;
 	/** 
-	 * This property describes whether the user's device has a gyroscope. I
+	 * The GyroscopeEnabled property indicates if the user's device has a gyroscope. It returns *true* if the local device has a gyroscope, otherwise returns *false*.
 	 *
-	 * A gyroscope is an component found in most mobile devices that detects orientation and rotational speed.
+	 * If a user's device has a gyroscope, you can use incorporate it into your game using the [UserInputService.GetDeviceRotation](https://developer.roblox.com/api-reference/function/UserInputService/GetDeviceRotation) function and [UserInputService.DeviceRotationChanged](https://developer.roblox.com/api-reference/event/UserInputService/DeviceRotationChanged) event!
 	 *
-	 * If a user's device has a gyroscope, you can use incorporate it into your game using the [UserInputService.GetDeviceRotation](https://developer.roblox.com/api-reference/function/UserInputService/GetDeviceRotation) function and [UserInputService.DeviceRotationChanged](https://developer.roblox.com/api-reference/event/UserInputService/DeviceRotationChanged) event.
-	 *
-	 * ```lua
-local UserInputService = game:GetService("UserInputService")
-
-local gyroIsEnabled = UserInputService.GyroscopeEnabled
-if (gyroIsEnabled) then
-	print("Gyroscope is enabled!")
-else
-	print("Gyroscope is not enabled!")
-end
-```
-	 * 
-
-	 * As `UserInputService` is client-side only, this property can only be used in a `LocalScript`.
-	 *
-	 * See [this][1] page for articles on cross-platform development.
-	 *
-	 * [1]: https://developer.roblox.com/learn-roblox/cross-platform
+	 * Since `UserInputService` only runs client-side, this property will only work when used in a `LocalScript`.
 	 */
 	readonly GyroscopeEnabled: boolean;
 	/** 
-	 * This property describes whether the user’s device has a keyboard available. This property is *true* when the user's device has an available keyboard, and *false* when it does not.
+	 * The KeyboardEnabled property becomes true if the device being used by a user has a keyboard available. This boolean property is *true* when the user's device has an available keyboard, and *false* when the user's device does not have an available keyboard.
 	 *
-	 * It can be used to determine whether the user has an available keyboard - which can be important if you want to check if you can use [UserInputService.IsKeyDown](https://developer.roblox.com/api-reference/function/UserInputService/IsKeyDown) or [UserInputService.GetKeysPressed](https://developer.roblox.com/api-reference/function/UserInputService/GetKeysPressed) to check for keyboard input.
+	 * It can be used to determine whether the user has an available keyboard - which can be important if you want to check if you can use `UserInputService` functions such as [UserInputService.IsKeyDown](https://developer.roblox.com/api-reference/function/UserInputService/IsKeyDown), [UserInputService.GetKeysPressed](https://developer.roblox.com/api-reference/function/UserInputService/GetKeysPressed), etc. to check for keyboard input. (see the UserInputService class page for a full list).
 	 *
-	 * As `UserInputService` is client-side only, this property can only be used in a `LocalScript`.
+	 * Since `UserInputService` only runs client-side, this property will only work when used in a `LocalScript`.
 	 */
 	readonly KeyboardEnabled: boolean;
 	/** 
-	 * The ModalEnabled property toggles whether Roblox's mobile controls are hidden on a player's mobile device. The default value of this property is *false*. The controls are hidden when set to *true*, and not hidden when set to *false*. See the images below for examples.
-	 *
-	 * ![ModalEnabled = false][1]
-	 *
-	 * ![ModalEnabled = true][2]
+	 * The ModalEnabled property toggles whether or not Roblox's mobile controls are hidden on a player's mobile device or not. The default value of this property is *false*. The controls are hidden when set to *true*, and not hidden when set to *false*.
 	 *
 	 * This property can be used when you want to hide or display Roblox's mobile controls for a player.
 	 *
@@ -24624,173 +21728,73 @@ end
 	 *
 	 * Since `UserInputService` only runs client-side, this property will only work when used in a `LocalScript`.
 	 *
-	 * ##See Also
+	 * **Tutorials Used In**
 	 *
-	 * The tutorial on disabling parts of the game interface, found [here][3], provides excellent documentation on using this property.
+	 * ----------
 	 *
-	 * [1]: https://developer.roblox.com/assets/5c2d53a7be5779ad1a894d50/UISModalEnabledFalse.png
+	 *  1. [Disabling parts of the game interface](https://developer.roblox.com/search#stq=Disabling%20Parts%20of%20the%20Game%20Interface)
 	 *
-	 * [2]: https://developer.roblox.com/assets/5c2d54601e85fe011cdd73c8/UISModalEnabledTrue.png
-	 *
-	 * [3]: https://www.robloxdev.com/articles/Disabling-Parts-of-Game-Interface
+	 * [1]: http://wiki.roblox.com/index.php?title=Disabling_parts_of_the_game_interface
 	 */
 	ModalEnabled: boolean;
 	/** 
-	 * This property sets how the user's mouse behaves based on the [Enum.MouseBehavior](https://developer.roblox.com/search#stq=MouseBehavior) Enum. The default value is Enum.MouseBehavior.Default.
+	 * The MouseBehavior property sets how the user's mouse behaves based on the [Enum.MouseBehavior](https://developer.roblox.com/search#stq=MouseBehavior) Enum. Please see the MouseBehavior Enum for more info on the states that this property can be set to in order to influence the user's mouse behavior.
 	 *
-	 * It can be set to three values:
+	 * Since `UserInputService` only runs client-side, this property will only work when used in a `LocalScript`.
 	 *
-	 *  1. *Default*: The mouse moves freely around the user’s screen.
+	 * *Notes*
 	 *
-	 *  2. *LockCenter*: The mouse is locked, and cannot move from, the center of the user’s screen.
+	 * ----------
 	 *
-	 *  3. *LockCurrentPosition*: The mouse is locked, and cannot move from, it’s current position on the user’s screen at the time of locking.
+	 *  1.  If the mouse is locked, InputChanged will still fire when the player moves the mouse and will pass in the Delta that the mouse attempted to move by.
 	 *
-	 * The value of this property does not affect the sensitivity of events tracking mouse movement. For example, [GetMouseDelta](https://developer.roblox.com/api-reference/function/UserInputService/GetMouseDelta) returns the same [Vector2](https://developer.roblox.com/search#stq=Vector2) screen position in pixels regardless of whether the mouse is locked or able to move freely around the user’s screen. As a result, default scripts like those controlling the camera are not impacted by this property.
-	 *
-	 * This property is overridden if a `GuiButton` with [Modal](https://developer.roblox.com/api-reference/property/GuiButton/Modal) enabled is [GuiButton.Visible](https://developer.roblox.com/search#stq=Visible) unless the player’s right mouse button is down.
-	 *
-	 * Note that, if the mouse is locked, [UserInputService.InputChanged](https://developer.roblox.com/api-reference/event/UserInputService/InputChanged) will still fire when the player moves the mouse and will pass in the Delta that the mouse attempted to move by. Additionally, if the player is kicked from the game, the mouse will be forcefully unlocked.
-	 *
-	 * As `UserInputService` is client-side only, this property can only be used in a `LocalScript`.
+	 *  2. If the player is kicked from the game, the mouse will be forcefully unlocked.
 	 */
 	MouseBehavior: Enum.MouseBehavior;
 	/** 
-	 * This property determines the sensitivity of the user’s `Mouse`.
+	 * The MouseDeltaSensitivity property scales the `InputObject`.Delta (change) output of the user's mouse. This has a maximum value of 10 and a minimum value of 0.
 	 *
-	 * The sensitivity determines the extent to which a movement of the physical mouse translates to a movement of the mouse in-game. This can be used to adjusted how sensitive events tracking mouse movement, like [GetMouseDelta](https://developer.roblox.com/api-reference/function/UserInputService/GetMouseDelta), are to mouse movement.
+	 * This can be used to adjusted how sensitive the user's mouse is to movement. A lower delta corresponds to lower sensitivity, and higher delta to higher sensitivity. A mouse's sensitivity determines how much a user's camera rotates when the player rotates the camera by moving their physical mouse.
 	 *
-	 * This property does not affect the movement of the mouse icon. Nor does it affect the *Camera Sensitivity* setting found in the *Settings* tab of the client’s *Settings* menu, which also adjusts the sensitivity of events tracking mouse movement.
-	 *
-	 * This property has a maximum value of 10 and a minimum value of 0. A lower value corresponds to lower sensitivity, and a higher value to higher sensitivity.
-	 *
-	 * When sensitivity is 0, events that track the mouse’s movement will still fire but all parameters and properties indicating the change in mouse position will return [Vector2.new()](https://developer.roblox.com/search#stq=Vector2), or [Vector3.new()](https://developer.roblox.com/search#stq=Vector3) in the case of [InputObject.Delta](https://developer.roblox.com/api-reference/property/InputObject/Delta). For example, [GetMouseDelta](https://developer.roblox.com/api-reference/function/UserInputService/GetMouseDelta) will always return (0, 0).
+	 * Since `UserInputService` only runs client-side, this property will only work when used in a `LocalScript`.
 	 */
 	MouseDeltaSensitivity: number;
 	/** 
-	 * This property describes whether the user’s device has a mouse available.  This property is *true* when the user's device has an available mouse, and *false* when it does not.
+	 * The MouseEnabled property becomes true if the device being used by a user has a mouse available. This boolean property is *true* when the user's device has an available mouse, and *false* when the user's device does not have an available mouse.
 	 *
-	 * ```lua
-local UserInputService = game:GetService("UserInputService")
-
-if (UserInputService.MouseEnabled) then
-	print("The user's device has an available mouse!")
-else
-	print("The user's device does not have an available mouse!")
-end
-```
-	 * 
-
-	 * It is  important to check this before using `UserInputService` mouse functions such as [UserInputService.GetMouseLocation](https://developer.roblox.com/api-reference/function/UserInputService/GetMouseLocation).
+	 * It can be used to determine whether the user has an available mouse - which can be important if you want to check if you can use `UserInputService` mouse functions such as [UserInputService.GetMouseLocation](https://developer.roblox.com/api-reference/function/UserInputService/GetMouseLocation), [UserInputService.IsMouseButtonPressed](https://developer.roblox.com/api-reference/function/UserInputService/IsMouseButtonPressed), etc. (see the UserInputService class page for a full list).
 	 *
-	 * As `UserInputService` is client-side only, this property can only be used in a `LocalScript`.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.MouseBehavior](https://developer.roblox.com/api-reference/property/UserInputService/MouseBehavior)
-	 *
-	 *  - [UserInputService.MouseDeltaSensitivity](https://developer.roblox.com/api-reference/property/UserInputService/MouseDeltaSensitivity)
-	 *
-	 *  - [UserInputService.MouseIconEnabled](https://developer.roblox.com/api-reference/property/UserInputService/MouseIconEnabled)
-	 *
-	 *  - [UserInputService.GetMouseLocation](https://developer.roblox.com/api-reference/function/UserInputService/GetMouseLocation)
-	 *
-	 *  - [UserInputService.GetMouseDelta](https://developer.roblox.com/api-reference/function/UserInputService/GetMouseDelta)
-	 *
-	 *  - [UserInputService.GetMouseButtonsPressed](https://developer.roblox.com/api-reference/function/UserInputService/GetMouseButtonsPressed)
+	 * Since `UserInputService` only runs client-side, this property will only work when used in a `LocalScript`.
 	 */
 	readonly MouseEnabled: boolean;
 	/** 
-	 * This property determines whether the [Mouse’s](https://developer.roblox.com/api-reference/class/Mouse) icon is visible When *true* the mouse’s icon is visible, when *false* it is not.
+	 * The MouseIconEnabled allows for the `Mouse` icon's visibility to be toggled on and off. This is a boolean property that can be set to *true* to toggle the mouse icon's visibility on, and *false* to toggle the mouse icon's visibility off.
 	 *
-	 * For example, the code snippet below hides the mouse's icon.
-	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-
-userInputService.MouseIconEnabled = false
-```
-	 * 
-
-	 * As `UserInputService` is client-side only, this property can only be used in a `LocalScript`.
+	 * Since `UserInputService` only runs client-side, this property will only work when used in a `LocalScript`.
 	 */
 	MouseIconEnabled: boolean;
 	/** 
-	 * This property describes the position of the on-screen keyboard in pixels. The keyboard’s position is [Vector2.new(0, 0)](https://developer.roblox.com/search#stq=Vector2) when it is not [visible](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardVisible).
+	 * The OnScreenKeyboardPosition determines the position of the on-screen keyboard. The keyboard is displayed on-screen at this position if the [UserInputService.OnScreenKeyboardVisible](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardVisible) property is true.
 	 *
-	 * The code snippet below prints the position of the keyboard.
+	 * If the [UserInputService.OnScreenKeyboardVisible](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardVisible) property is *true*, and the on-screen keyboard is visible, you can also use the property [UserInputService.OnScreenKeyboardSize](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardSize) to determine the size that the keyboard will be displayed on screen.
 	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-print(userInputService.OnScreenKeyboardPosition)
-```
-	 * 
-
-	 * As `UserInputService` is client-side only, this property can only be used in a `LocalScript`.
-	 *
-	 * ![On screen keyboard][1]
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.OnScreenKeyboardVisible](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardVisible)
-	 *
-	 *  - [UserInputService.OnScreenKeyboardSize](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardSize)
-	 *
-	 * [1]: https://developer.roblox.com/assets/5bce5dd5edb71a1476d19609/ClientKeyboard.png
+	 * Since `UserInputService` only runs client-side, this property will only work when used in a `LocalScript`.
 	 */
 	readonly OnScreenKeyboardPosition: Vector2;
 	/** 
-	 * This property describes the size of the on-screen keyboard in pixels. The keyboard’s size is [Vector2.new(0, 0)](https://developer.roblox.com/search#stq=Vector2) when it is not [visible](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardVisible).
+	 * The OnScreenKeyboardSize determines the size of the on-screen keyboard.
 	 *
-	 * The code snippet below prints the size of the keyboard.
+	 * If the [UserInputService.OnScreenKeyboardVisible](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardVisible) property is *true*, and the on-screen keyboard is visible, you can also use the property [UserInputService.OnScreenKeyboardPosition](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardPosition) to determine the position that the keyboard will be displayed on screen.
 	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-print(userInputService.OnScreenKeyboardSize)
-```
-	 * 
-
-	 * As `UserInputService` is client-side only, this property can only be used in a `LocalScript`.
-	 *
-	 * ![On screen keyboard][1]
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.OnScreenKeyboardVisible](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardVisible)
-	 *
-	 *  - [UserInputService.OnScreenKeyboardPosition](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardPosition)
-	 *
-	 * [1]: https://images.contentstack.io/v3/assets/bltc2ad39afa86662c8/bltd883fb9830c26628/5bce5c708e52425c44bf870e/Screenshot_(6).png
+	 * Since `UserInputService` only runs client-side, this property will only work when used in a `LocalScript`.
 	 */
 	readonly OnScreenKeyboardSize: Vector2;
 	/** 
-	 * This property describes whether an on-screen keyboard is currently visible on the user's screen.
+	 * The OnScreenKeyboard property determines whether an on-screen keyboard is currently visible on the user's screen. If *true*, an on-screen keyboard is currently visible. Otherwise, if *false*, an on-screen keyboard is not currently visible.
 	 *
-	 * The code snippet below prints whether the keyboard is visible.
+	 * You can also determine the size and position of the user's on-screen keyboard. To do this, you can check the [UserInputService.OnScreenKeyboardSize](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardSize) and [UserInputService.OnScreenKeyboardPosition](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardPosition) properties.
 	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-
-local keyboardIsVisible = userInputService.OnScreenKeyboardIsVisible
-if (keyboardIsVisible) then
-	print("On-screen keyboard is visible!")
-else
-	print("On-screen keyboard is not visible!")
-end
-```
-	 * 
-
-	 * As `UserInputService` is client-side only, this property can only be used in a `LocalScript`.
-	 *
-	 * ![On screen keyboard][1]
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.OnScreenKeyboardSize](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardSize)
-	 *
-	 *  - [UserInputService.OnScreenKeyboardPosition](https://developer.roblox.com/api-reference/property/UserInputService/OnScreenKeyboardPosition)
-	 *
-	 * [1]: https://developer.roblox.com/assets/5bce5dd5edb71a1476d19609/ClientKeyboard.png
+	 * Since `UserInputService` only runs client-side, this property will only work when used in a `LocalScript`.
 	 */
 	readonly OnScreenKeyboardVisible: boolean;
 	/** 
@@ -24837,123 +21841,33 @@ end
 	 */
 	readonly TouchEnabled: boolean;
 	/** 
-	 * This property describes whether the user is using a virtual reality (VR) device.
+	 * The VREnabled property indicates whether the user is using a virtual reality (VR) headset. It becomes *true* if the user is using a VR headset, and *false* if the user is not using a VR headset.
 	 *
-	 * If a VR device is enabled, you can interact with its location and movement through functions such as [UserInputService.GetUserCFrame](https://developer.roblox.com/api-reference/function/UserInputService/GetUserCFrame)`. You can also react to VR device movement using the [UserInputService.UserCFrameChanged](https://developer.roblox.com/api-reference/event/UserInputService/UserCFrameChanged) event.
+	 * If a VR headset is enabled, you can interact with it's location and movement through functions such as [UserInputService.GetUserCFrame](https://developer.roblox.com/api-reference/function/UserInputService/GetUserCFrame) and [UserInputService.RecenterUserHeadCFrame](https://developer.roblox.com/api-reference/function/UserInputService/RecenterUserHeadCFrame). You can also react to VR headset position changes using the [UserInputService.UserCFrameChanged](https://developer.roblox.com/api-reference/event/UserInputService/UserCFrameChanged) event.
 	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-
-local isUsingVR = userInputService.VREnabled
-if (isUsingVR) then
-	print("User is using a VR headset!")
-else
-	print("User is not using a VR headset!")
-end
-```
-	 * 
-
-	 * As `UserInputService` isclient-side only, this property can only be used in a `LocalScript`.
-	 *
-	 * See [this][1] article for VR best practices.
-	 *
-	 * ## See also
-	 *
-	 *  - `VRService`
-	 *
-	 *  - [Camera.HeadLocked](https://developer.roblox.com/api-reference/property/Camera/HeadLocked)
-	 *
-	 *  - [UserInputService.GetUserCFrame](https://developer.roblox.com/api-reference/function/UserInputService/GetUserCFrame)
-	 *
-	 *  -  [UserInputService.UserCFrameChanged](https://developer.roblox.com/api-reference/event/UserInputService/UserCFrameChanged)
-	 *
-	 * [1]: https://developer.roblox.com/articles/Virtual-Reality-Best-Practices
+	 * Since `UserInputService` only runs client-side, this property will only work when used in a `LocalScript`.
 	 */
 	readonly VREnabled: boolean;
 	/** 
-	 * This function returns whether the given [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) gamepad supports a button corresponding with the given [Enum./KeyCode](https://developer.roblox.com/search#stq=/KeyCode). This function is used to determine valid gamepad inputs.
+	 * The GamepadSupports function returns whether a specified gamepad supports a corresponding [Enum./KeyCode](https://developer.roblox.com/search#stq=/KeyCode) button. This can be used to determine the valid inputs for a specified gamepad.
 	 *
-	 * To determine which [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) gamepads are connected, use [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads).
+	 * To determine which [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) Gamepads are connected, you can use the [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads) function.
 	 *
-	 * As `UserInputService` is client-side only, this function can only be used in a `LocalScript`.
-	 *
-	 * See [this][1] page for articles on cross-platform development.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.GamepadConnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadDisconnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadDisconnected)
-	 *
-	 *  - [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads)
-	 *
-	 *  - [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads)
-	 *
-	 *  - [UserInputService.SetNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/SetNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/IsNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsGamepadButtonDown](https://developer.roblox.com/api-reference/function/UserInputService/IsGamepadButtonDown)
-	 *
-	 *  - [UserInputService.GetSupportedGamepadKeyCodes](https://developer.roblox.com/api-reference/function/UserInputService/GetSupportedGamepadKeyCodes)
-	 *
-	 *  - [UserInputService.GetGamepadState](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadState)
-	 *
-	 *  - [UserInputService.GetGamepadConnected](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GamepadEnabled)
-	 *
-	 * [1]: https://developer.roblox.com/learn-roblox/cross-platform
-	 * @param gamepadNum The `Enum/UserInputType` of the gamepad
-	 * @param gamepadKeyCode The `Enum/KeyCode` of the button in question
-	 * @returns Whether the given gamepad supports a button corresponding with the given `Enum/KeyCode|KeyCode`
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
+	 * @param gamepadNum Gamepad being checked
+	 * @param gamepadKeyCode KeyCode being checked
+	 * @returns Indicates whether gamepad supports the keycode argument
 	 */
 	GamepadSupports(gamepadNum: CastsToEnum<Enum.UserInputType>, gamepadKeyCode: CastsToEnum<Enum.KeyCode>): boolean;
 	/** 
-	 * This function returns an array of [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) gamepads currently connected. If no gamepads are connected, this array will be empty. Additionally, it only returns UserInputType objects that are gamepads. For instance, this event will return a connected Gamepad1 object but not a Keyboard object.
+	 * The GetConnectedGamepads function returns a list of [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) Gamepad 's currently connected. If no gamepads are connected, this list will be empty.
 	 *
-	 * For example, the following code snippet retrieves the connected gamepads and stores them in a variable named *connectedGamepads*.
+	 * This can be used to retrieve a list of all gamepads connected to a client, which can then be iterated through (see example below).
 	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-local connectedGamepads = userInputService:GetConnectedGamepads()
-```
-	 * 
-
-	 * To check if a specific gamepad is connected, use  [UserInputService.GetGamepadConnected](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadConnected).
+	 * If you want to check if a specific gamepad is connected instead, you can use the [UserInputService.GetGamepadConnected](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadConnected) function.
 	 *
-	 * As `UserInputService` is client-side only, this function can only be used in a `LocalScript`.
-	 *
-	 * See [this][1] page for articles on cross-platform development.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.GamepadConnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadDisconnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadDisconnected)
-	 *
-	 *  - [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads)
-	 *
-	 *  - [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads)
-	 *
-	 *  - [UserInputService.SetNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/SetNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/IsNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsGamepadButtonDown](https://developer.roblox.com/api-reference/function/UserInputService/IsGamepadButtonDown)
-	 *
-	 *  - [UserInputService.GetSupportedGamepadKeyCodes](https://developer.roblox.com/api-reference/function/UserInputService/GetSupportedGamepadKeyCodes)
-	 *
-	 *  - [UserInputService.GetGamepadState](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadState)
-	 *
-	 *  - [UserInputService.GetGamepadConnected](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadSupports](https://developer.roblox.com/api-reference/function/UserInputService/GamepadSupports)
-	 *
-	 *  - [UserInputService.GamepadEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GamepadEnabled)
-	 *
-	 * [1]: https://developer.roblox.com/learn-roblox/cross-platform
-	 * @returns An array of `Enum/UserInputType|UserInputTypes` corresponding with the gamepads connected to the user’s device
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
+	 * @returns An array of `Enum/UserInputType` gamepads connected to the user's device.
 	 */
 	GetConnectedGamepads(): Array<Enum.UserInputType>;
 	/** 
@@ -24963,130 +21877,86 @@ local connectedGamepads = userInputService:GetConnectedGamepads()
 	 *
 	 * If you want to track when the user's device's acceleration changes instead, you can use the [UserInputService.DeviceAccelerationChanged](https://developer.roblox.com/api-reference/event/UserInputService/DeviceAccelerationChanged) event.
 	 *
-	 * Since it only fires locally, it can only be used in a `LocalScript`.
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 * @returns An InputObject that describes the device's current acceleration.
 	 */
 	GetDeviceAcceleration(): InputObject;
 	/** 
-	 * This function returns an `InputObject` describing the device's current gravity vector.
+	 * The GetDeviceGravity function returns an `/InputObject` that describes the device's current gravity vector.
 	 *
-	 * The gravity vector is determined by the device’s orientation relative to the real-world force of gravity. For instance, if a device is perfectly upright (portrait), the gravity vector is [Vector3.new(0, 0, -9.18)](https://developer.roblox.com/search#stq=Vector3). If the left side of the device is pointing down, the vector is Vector3.new(9.81, 0, 0). Finally, if the back of the device is pointing down, the vector is Vector3.new(0, -9.81, 0).
+	 * Gravity is only tracked for players using a device with an enabled accelerometer - such as an Apple iPad or iPhone or a Google Android phone.
 	 *
-	 * This function might be used to enable the user’s device to impact or control gravity within the game or move in-game objects such as a ball.
+	 * To check if a user's device has an enabled accelerometer, check the value of [UserInputService.AccelerometerEnabled](https://developer.roblox.com/api-reference/property/UserInputService/AccelerometerEnabled). If the device has an enabled accelerometer, you can also use the [UserInputService.DeviceGravityChanged](https://developer.roblox.com/api-reference/event/UserInputService/DeviceGravityChanged) event to track when force of gravity on the user's device changes.
 	 *
-	 * Gravity is only tracked for players using a device with an enabled gyroscope - such as a mobile device.
-	 *
-	 * To check if a user's device has an enabled gyroscope, check the value of [UserInputService.GyroscopeEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GyroscopeEnabled). If the device has an enabled gyroscope, you can also use the [UserInputService.DeviceGravityChanged](https://developer.roblox.com/api-reference/event/UserInputService/DeviceGravityChanged) event to track when force of gravity on the user's device changes.
-	 *
-	 * As `UserInputService` is client-side only, this function can only be used in a `LocalScript`.
-	 * @returns An `InputObject` that describes the device's current gravity vector
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
+	 * @returns An `InputObject` that describes the device's current gravity vector.
 	 */
 	GetDeviceGravity(): InputObject;
 	/** 
-	 * This function returns an `InputObject` and a [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) describing the device's current rotation vector.
+	 * The GetDeviceRotation function returns an `InputObject` and a [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) that describes the device's current rotation vector.
 	 *
-	 * This is fired with an InputObject. The *Position* property of the input object is a [Enum.InputType.Gyroscope](https://developer.roblox.com/search#stq=InputType) that tracks the total rotation in each local device axis.
+	 * This is fired with an InputObject, which has type *Enum.InputType.Gyroscope* ([Enum.InputType](https://developer.roblox.com/search#stq=InputType)), and position that shows total rotation in each local device axis.
 	 *
-	 * Device rotation can only be tracked on devices with a [UserInputService.GyroscopeEnabled|gyroscope.
+	 * To check if a user's device has an enabled gyroscope, check the value of [UserInputService.GyroscopeEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GyroscopeEnabled).
 	 *
-	 * As this function fires locally, it can only be used in a ](https://developer.roblox.com/search#stq=GyroscopeEnabled|gyroscope.%20%20As%20this%20function%20fires%20locally,%20it%20can%20only%20be%20used%20in%20a%20)LocalScript`.
+	 * Since it only fires locally, it can only be used in a `LocalScript`.
 	 * @returns A tuple containing two properties:
 
- 1. The delta property describes the amount of rotation that last happened
- 2. The CFrame is the device's current rotation relative to its default reference frame
+ 1. The delta property describes the amount of rotation that last happened.
+ 2. The CFrame is the device's current rotation relative to it's default reference frame.
 	 */
 	GetDeviceRotation(): LuaTuple<[InputObject, CFrame]>;
 	/** 
-	 * This function returns the `TextBox` the client is currently focused on. A TextBox can be manually selected by the user, or selection can be forced using the [TextBox.CaptureFocus](https://developer.roblox.com/api-reference/function/TextBox/CaptureFocus) function. If no TextBox is selected, this function will return *nil*.
+	 * The GetFocusedTextBox event returns an Instance of the TextBox currently selected by the player - such as when the player has selected a TextBox to input text.
 	 *
-	 * As `UserInputService` is client-side only, this function can only be used in a `LocalScript`.
+	 * **Note:** If the player has not selected a TextBox when this function is used, it will return nil.
 	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.TextBoxFocused](https://developer.roblox.com/api-reference/event/UserInputService/TextBoxFocused)
-	 *
-	 *  - [UserInputService.TextBoxFocusReleased](https://developer.roblox.com/api-reference/event/UserInputService/TextBoxFocusReleased)
-	 *
-	 *  - [TextBox.CaptureFocus](https://developer.roblox.com/api-reference/function/TextBox/CaptureFocus)
-	 *
-	 *  - [TextBox.IsFocused](https://developer.roblox.com/api-reference/function/TextBox/IsFocused)
-	 *
-	 *  - [TextBox.ReleaseFocus](https://developer.roblox.com/api-reference/function/TextBox/ReleaseFocus)
-	 * @returns The `TextBox` currently in focus, or *nil* if none are selected
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
+	 * @returns The currently selected `/TextBox`, or nil if none is selected.
 	 */
 	GetFocusedTextBox(): TextBox | undefined;
 	/** 
-	 * This function returns whether a gamepad with the given [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType)  is connected to the client.
+	 * The GetGamepadConnected function checks if a [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) gamepad is connected to the client. It returns  true if **gamepadNum** is connected to the client.
 	 *
-	 * This can be used to check if a specific gamepad, such as *’Gamepad1’* is connected to the client's device.
+	 * This can be used to check if a specific gamepad, such as Enum.UserInputType.Gamepad1 is connected or not connected to the client's device.
 	 *
-	 * To retrieve a list of all connected gamepads, use [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads).
+	 * If you want to retrieve a list of all connected gamepads instead, you can use the [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads) function.
 	 *
-	 * As `UserInputService` is client-side only, this function can only be used in a `LocalScript`.
-	 *
-	 * Check out this [article][2] to learn more about adding support for gamepad input into your game and [this][1] page for articles on cross-platform development.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.GamepadConnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadDisconnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadDisconnected)
-	 *
-	 *  - [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads)
-	 *
-	 *  - [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads)
-	 *
-	 *  - [UserInputService.SetNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/SetNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/IsNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsGamepadButtonDown](https://developer.roblox.com/api-reference/function/UserInputService/IsGamepadButtonDown)
-	 *
-	 *  - [UserInputService.GetSupportedGamepadKeyCodes](https://developer.roblox.com/api-reference/function/UserInputService/GetSupportedGamepadKeyCodes)
-	 *
-	 *  - [UserInputService.GetGamepadState](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadState)
-	 *
-	 *  - [UserInputService.GamepadSupports](https://developer.roblox.com/api-reference/function/UserInputService/GamepadSupports)
-	 *
-	 *  - [UserInputService.GamepadEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GamepadEnabled)
-	 *
-	 * [1]: https://developer.roblox.com/learn-roblox/cross-platform
-	 *
-	 * [2]: https://developer.roblox.com/articles/Gamepad-Haptic-Feedback
-	 * @param gamepadNum The `Enum/UserInputType` of the gamepad in question
-	 * @returns Whether a gamepad associated with `Enum/UserInputType` is connected
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
+	 * @param gamepadNum The *gamepadNum* being checked if connected.
+	 * @returns Indicates whether the *gamepadNum* gamepad argument is connected to the client. Returns *true* if connected and *false* if not.
 	 */
 	GetGamepadConnected(gamepadNum: CastsToEnum<Enum.UserInputType>): boolean;
 	/** 
-	 * The GetGamepadState function returns an array of [InputObjects](https://developer.roblox.com/api-reference/class/InputObject) for each input on the gamepad with each input's last input state. You can iterate through the returned array to determine the last state of each valid input type for the gamepad.
+	 * The GetGamepadState function returns an array of `InputObject`s for each input on the gamepad with each input's last input state. You can iterate through the returned array to determine the last state of each valid input type for the gamepad.
 	 *
 	 * To determine which [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) Gamepads are connected, you can use the [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads) function.
 	 *
-	 * Since it only fires locally, it can only be used in a `LocalScript`.
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 * @param gamepadNum A `Enum/UserInputType` value corresponding to the gamepad you want to get the state of.
 	 * @returns Array of `InputObject`s.
 	 */
 	GetGamepadState(gamepadNum: CastsToEnum<Enum.UserInputType>): Array<InputObject>;
 	/** 
-	 * This function returns an array of [InputObjects](https://developer.roblox.com/api-reference/class/InputObject) associated with the keys currently being pressed down.
+	 * The GetKeysPressed function returns a table of `InputObject`s, whose [Enum.KeyCode](https://developer.roblox.com/search#stq=KeyCode)s are currently being pressed.
 	 *
-	 * This array can be iterated through to determine which keys are currently being pressed, using the [InputObject.KeyCode](https://developer.roblox.com/api-reference/property/InputObject/KeyCode) values.
+	 * It can be used to retrieve a list of all pressed KeyCodes, which can then be iterated through using a for loop to determine which specific keys are pressed.
 	 *
-	 * To check if a specific key is being pressed, use [UserInputService.IsKeyDown](https://developer.roblox.com/api-reference/function/UserInputService/IsKeyDown).
+	 * If you want to check if a specific key is pressed instead, you can use the [UserInputService.IsKeyDown](https://developer.roblox.com/api-reference/function/UserInputService/IsKeyDown) function.
 	 *
-	 * As `UserInputService` is client-side only, this function can only be used in a `LocalScript`.
-	 * @returns An array of `InputObject|InputObjects` associated with the keys currently being pressed
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
+	 * @returns The array of currently pressed KeyCodes.
 	 */
 	GetKeysPressed(): Array<InputObject>;
 	/** 
-	 * This function returns 'Enum/UserInputType` associated with the user’s most recent input.
+	 * The GetLastInputType function indicates the most recent 'UserInputType` that the client has used. The function's return is the UserInputType last used by the client.
 	 *
-	 * For example, if the user’s previous input had been pressing the spacebar, the [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) returned would be *‘Keyboard’*.
+	 * For instance, if, at the time this function is called, the client's last interaction with the game is pressing the spacebar, the `UserInputType` returned would be UserInputType.Keyboard, since the spacebar is the keyboard's button.
 	 *
-	 * The [UserInputService.LastInputTypeChanged](https://developer.roblox.com/api-reference/event/UserInputService/LastInputTypeChanged) event can be used to track when the last [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) used by the user changes.
+	 * If you want to track when the last input type used by the client changes, you can use the [UserInputService.LastInputTypeChanged](https://developer.roblox.com/api-reference/event/UserInputService/LastInputTypeChanged) event.
 	 *
-	 * As `UserInputService` is client-side only, this function can only be used in a `LocalScript`.
-	 * @returns The `Enum/UserInputType` associated with the user’s most recent input
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
+	 * @returns An Enum indicating the last UserInputType used by the client.
 	 */
 	GetLastInputType(): Enum.UserInputType;
 	/** 
@@ -25107,20 +21977,20 @@ local connectedGamepads = userInputService:GetConnectedGamepads()
 	 */
 	GetMouseButtonsPressed(): Array<InputObject>;
 	/** 
-	 * This function returns the change, in pixels, of the position of the player’s `Mouse` in the last rendered frame as a [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2). This function only works if the mouse has been locked using the `UserInputService.MouseBehavior` property. If the mouse has not been locked, the returned [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2) values will be zero.
+	 * The GetMouseDelta function returns the current change in movement of the mouse as a Vector2, but only if the mouse is locked. If the mouse isn't locked the values in the returned Vector2 will be zero.
 	 *
-	 * The sensitivity of the mouse, determined in the client’s settings and [UserInputService.MouseDeltaSensitivity](https://developer.roblox.com/api-reference/property/UserInputService/MouseDeltaSensitivity), will influence the result.
+	 * It measures any mouse movement in pixels from the last [RunService.RenderStepped ](https://developer.roblox.com/search#stq=RenderStepped%20) to the current render step. If the user has set their `/Camera` sensitivity to be higher or lower than 1 in the in-game menu this will affect the value returned by GetMouseDelta. The camera sensitivity is a multiplier to the amount the camera moves as a result of mouse input.
 	 *
-	 * As `UserInputService` is client-side only, this function can only be used in a `LocalScript`.
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
 	 * @returns Change in movement of the mouse
 	 */
 	GetMouseDelta(): Vector2;
 	/** 
-	 * The GetMouseLocation function returns a [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2) of the current screen location of the player's `Mouse` in pixels.
+	 * The GetMouseLocation function returns a [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2) of the current screen location of the player's mouse in pixels.
 	 *
 	 * **Note:** If the location of the mouse pointer is offscreen or the players device does not have a mouse, such as a gamepad or touchscreen, the value returned will be undetermined.
 	 *
-	 * Since `UserInputService` only runs client-side, this function will only work when used in a `LocalScript`.
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
 	 * @returns The current screen location of the mouse.
 	 */
 	GetMouseLocation(): Vector2;
@@ -25143,49 +22013,17 @@ local connectedGamepads = userInputService:GetConnectedGamepads()
 	GetNavigationGamepads(): Array<Enum.UserInputType>;
 	GetStringForKeyCode(keyCode: CastsToEnum<Enum.KeyCode>): string;
 	/** 
-	 * This function returns an array of [KeyCodes](https://developer.roblox.com/search#stq=KeyCode) that the gamepad associated with the given [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) supports.
+	 * The GetSupportedGamepadKeyCodes function returns the [Enum.KeyCode](https://developer.roblox.com/search#stq=KeyCode) that the connected *gamepadNum* supports.
 	 *
-	 * This function can be used to determine which KeyCodes are supported and not supported by a connected gamepad. To determine if a specific KeyCode is supported, use [UserInputService.GamepadSupports](https://developer.roblox.com/api-reference/function/UserInputService/GamepadSupports).
+	 * This can be used to retrieve a list of supported KeyCodes for a gamepad - which can then be iterated through to determine what KeyCodes are and are not supported.
 	 *
-	 * If called on a non existent, or non connected, gamepad, this function will return an empty array.
-	 *
-	 * As `UserInputService` is client-side only, this function can only be used in a `LocalScript`.
-	 *
-	 * Check out this [article][2] to learn more about adding support for gamepad input into your game and [this][1] page for articles on cross-platform development.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.GamepadConnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadDisconnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadDisconnected)
-	 *
-	 *  - [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads)
-	 *
-	 *  - [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads)
-	 *
-	 *  - [UserInputService.SetNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/SetNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/IsNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsGamepadButtonDown](https://developer.roblox.com/api-reference/function/UserInputService/IsGamepadButtonDown)
-	 *
-	 *  - [UserInputService.GetGamepadState](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadState)
-	 *
-	 *  - [UserInputService.GetGamepadConnected](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadSupports](https://developer.roblox.com/api-reference/function/UserInputService/GamepadSupports)
-	 *
-	 *  - [UserInputService.GamepadEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GamepadEnabled)
-	 *
-	 * [1]: https://developer.roblox.com/learn-roblox/cross-platform
-	 *
-	 * [2]: https://developer.roblox.com/articles/Gamepad-Haptic-Feedback
-	 * @param gamepadNum The `Enum/UserInputType` of the gamepad
-	 * @returns An array of `Enum/KeyCode|KeyCodes` supported by the given gamepad
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
+	 * @param gamepadNum The `Enum/UserInputType` being checked
+	 * @returns An array of `Enum/KeyCode`s supported by the gamepad.
 	 */
 	GetSupportedGamepadKeyCodes(gamepadNum: CastsToEnum<Enum.UserInputType>): Array<Enum.KeyCode>;
 	/** 
-	 * The GetUserCFrame function returns a [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) describing the position and orientation of a specified [Enum.UserCFrame](https://developer.roblox.com/search#stq=UserCFrame) virtual reality (VR) device. If the specified device is not connected, the function returns [CFrame.new()](https://developer.roblox.com/search#stq=CFrame).
+	 * The GetUserCFrame function returns a [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) describing the position and orientation of a specified [Enum.UserCFrame](https://developer.roblox.com/search#stq=UserCFrame) virtual reality (VR) device. If the specified device is not connected, the function returns [CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)](https://developer.roblox.com/search#stq=CFrame).
 	 *
 	 * For example, the code snippet below prints the CFrame of the user’s VR headset.
 	 *
@@ -25211,83 +22049,14 @@ print(cframe)
 	 */
 	GetUserCFrame(type: CastsToEnum<Enum.UserCFrame>): CFrame;
 	/** 
-	 * This functions allows a developer to quickly check if a particular button is pressed on a particular gamepad. It returns true if the [gamepad](https://developer.roblox.com/search#stq=UserInputType) has the specified [button](https://developer.roblox.com/search#stq=KeyCode) pressed down, otherwise it returns false.
+	 * The IsGamepadButtonDown function indicated whether the specified [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) gamepad button is being pressed, for the specified gamepad number.
 	 *
-	 * ## Valid UserInputTypes
+	 * It can be used to determine whether the user is interacting with a specified button of a specified gamepad. For instance, you can use this function to determine if the user's H button of their keyboard is down.
 	 *
-	 * The specified gamepad should be one of the following UserInputType enum values:
-	 *
-	 * | Name |
-	 * | --- |
-	 * | Enum.UserInputType.Gamepad1-8< |  |
-	 *
-	 * ## Valid KeyCodes
-	 *
-	 * The specified button should be one of the following KeyCodes enum values:
-	 *
-	 * | Name |
-	 * | --- |
-	 * | Enum.KeyCode.ButtonX< |  |
-	 * | Enum.KeyCode.ButtonY< |  |
-	 * | Enum.KeyCode.ButtonA< |  |
-	 * | Enum.KeyCode.ButtonB< |  |
-	 * | Enum.KeyCode.ButtonR1< |  |
-	 * | Enum.KeyCode.ButtonL1< |  |
-	 * | Enum.KeyCode.ButtonR3< |  |
-	 * | Enum.KeyCode.ButtonL3< |  |
-	 * | Enum.KeyCode.ButtonStart< |  |
-	 * | Enum.KeyCode.ButtonSelect< |  |
-	 * | Enum.KeyCode.DPadLeft< |  |
-	 * | Enum.KeyCode.DPadRight< |  |
-	 * | Enum.KeyCode.DPadUp< |  |
-	 * | Enum.KeyCode.DPadDown< |  |
-	 *
-	 * This can be used to check whether a specific button, such as A, is being held down. For example:
-	 *
-	 * ```lua
-local UserInputService = game:GetService("UserInputService")
-
-local button = Enum.KeyCode.ButtonA
-local gamepad = Enum.UserInputType.Gamepad1
-
-local isButtonHeld = UserInputService:IsGamepadButtonDown(gamepad, button)
-```
-	 * 
-
-	 * Since `UserInputService` is client-side only, this function can only be used in a `LocalScript`.
-	 *
-	 * See [this][1] page for articles on cross-platform development.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.GamepadConnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadDisconnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadDisconnected)
-	 *
-	 *  - [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads)
-	 *
-	 *  - [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads)
-	 *
-	 *  - [UserInputService.SetNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/SetNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/IsNavigationGamepad)
-	 *
-	 *  - [UserInputService.GetSupportedGamepadKeyCodes](https://developer.roblox.com/api-reference/function/UserInputService/GetSupportedGamepadKeyCodes)
-	 *
-	 *  - [UserInputService.GetGamepadState](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadState)
-	 *
-	 *  - [UserInputService.GetGamepadConnected](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadSupports](https://developer.roblox.com/api-reference/function/UserInputService/GamepadSupports)
-	 *
-	 *  - [UserInputService.GamepadEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GamepadEnabled)
-	 *
-	 *  - [UserInputType.IsKeyDown](https://developer.roblox.com/search#stq=IsKeyDown) - A similar event with a different use: To check if a given [key](https://developer.roblox.com/search#stq=KeyCode) on a [keyboard](https://developer.roblox.com/search#stq=UserInputType) is pressed.
-	 *
-	 * [1]: https://developer.roblox.com/learn-roblox/cross-platform
-	 * @param gamepadNum The `Enum/UserInputType` of the given gamepad
-	 * @param gamepadKeyCode The `Enum\KeyCode` of the specified button
-	 * @returns Whether the specified gamepad button on the given gamepad is pressed is pressed
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
+	 * @param gamepadNum The specified gamepad.
+	 * @param gamepadKeyCode The specified `Enum\KeyCode` button corresponding to the specified gamepad.
+	 * @returns A boolean indicating whether the specified gamepad button is pressed (*true*) or not pressed (*false*).
 	 */
 	IsGamepadButtonDown(gamepadNum: CastsToEnum<Enum.UserInputType>, gamepadKeyCode: CastsToEnum<Enum.KeyCode>): boolean;
 	/** 
@@ -25326,381 +22095,169 @@ local pressed = UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseBu
 	 * 
 
 	 * Since `UserInputService` is client-side only, this function can only be used in a `LocalScript`.
-	 * @param mouseButton The `Enum/UserInputType` of the mouse button
-	 * @returns Whether the given mouse button is currently held down
+	 * @param mouseButton A mouse button `/Enum/UserInputType`.
+	 * @returns Indicates whether it is currently pressed or not.
 	 */
 	IsMouseButtonPressed(mouseButton: CastsToEnum<Enum.UserInputType>): boolean;
 	/** 
-	 * This function returns *true* if the specified [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) Gamepad is allowed to control Navigation and Selection [GUIs](https://developer.roblox.com/api-reference/class/GuiObject).
+	 * The IsNavigationGamepad function returns true if the specified [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) Gamepad is allowed to toggle GUI Navigation &amp; Selection. The boolean returned indicated whether the specified gamepad is a navigation gamepad (*true*) or not (*false*).
 	 *
-	 * If you want to set a navigation gamepad, you can use [UserInputService.SetNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/SetNavigationGamepad). You can also use [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads) to get a list of all navigation gamepads.
+	 * If you want to set a navigation gamepad, you can use the [UserInputService.SetNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/SetNavigationGamepad) function. You can also use the [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads) function to get a list of all navigation gamepads
 	 *
-	 * For example, the code below checks if the gamepad1 is as a navigation gamepad:
+	 * To retrieve a list of all connected gamepads, regardless of navigation control, you can also use the [UserInput.GetConnectedGamepads](https://developer.roblox.com/search#stq=GetConnectedGamepads) function.
 	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-
-if (userInputService:IsNavigationGamepad(UserInputType.Gamepad1) then
-	print("Gamepad is a navigation gamepad!")
-else
-	print("Gamepad is not a navigation gamepad!")
-end
-```
-	 * 
-
-	 * A list of all connected gamepads, regardless of navigation can be retrieved using[UserInput.GetConnectedGamepads.
-	 *
-	 * Since ](https://developer.roblox.com/search#stq=GetConnectedGamepads.%20%20Since%20)UserInputService` is client-side only, this function can only be used in a `LocalScript`.
-	 *
-	 * See [this][1] page for articles on cross-platform development.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.GamepadConnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadDisconnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadDisconnected)
-	 *
-	 *  - [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads)
-	 *
-	 *  - [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads)
-	 *
-	 *  - [UserInputService.SetNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/SetNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsGamepadButtonDown](https://developer.roblox.com/api-reference/function/UserInputService/IsGamepadButtonDown)
-	 *
-	 *  - [UserInputService.GetSupportedGamepadKeyCodes](https://developer.roblox.com/api-reference/function/UserInputService/GetSupportedGamepadKeyCodes)
-	 *
-	 *  - [UserInputService.GetGamepadState](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadState)
-	 *
-	 *  - [UserInputService.GetGamepadConnected](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadSupports](https://developer.roblox.com/api-reference/function/UserInputService/GamepadSupports)
-	 *
-	 *  - [UserInputService.GamepadEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GamepadEnabled)
-	 *
-	 * [1]: https://developer.roblox.com/learn-roblox/cross-platform
-	 * @param gamepadEnum The `Enum/UserInputType` of the specified gamepad
-	 * @returns Whether the specified gamepad is a navigation gamepad
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
+	 * @param gamepadEnum The specified gamepad.
+	 * @returns A boolean indicating whether the specified gamepad is a navigation gamepad (*true*) or not (*false*).
 	 */
 	IsNavigationGamepad(gamepadEnum: CastsToEnum<Enum.UserInputType>): boolean;
 	/** 
-	 * This function recenters the [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) of the VR headset to the current orientation of the headset worn by the user. This means that the headset’s current orientation is set to `CFrame.new()`.
+	 * The RecentUserHeadCFrame function recenters the [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) of the user's head to the current location of the VR headset being worn by the user.
 	 *
-	 * Use this function to to move the headset CFrame to the center of the play area if it seems to be at a weird offset.
+	 * This function can be used to ensure that the user's in-game head is positioned according to the location of the user's VR headset.
 	 *
-	 * This behaves identically to the `VRService` function, [VRService.RecenterUserHeadCFrame](https://developer.roblox.com/api-reference/function/VRService/RecenterUserHeadCFrame).
+	 * This is similar to the `VRService` function, [VRService.RecenterUserHeadCFrame](https://developer.roblox.com/api-reference/function/VRService/RecenterUserHeadCFrame).
 	 *
-	 * Since `UserInputService` is client-side only, this function can only be used in a `LocalScript`.
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
 	 */
 	RecenterUserHeadCFrame(): void;
 	/** 
-	 * The SetNavigationGamepad function sets whether the specified [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) gamepad can move the GUI navigator. A gamepad that is allowed to move the GUI navigator is considered a *navigation gamepad*.
+	 * The SetNavigationGamepad sets whether or not the specified [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) Gamepad is allowed to move the GUI navigator around. A gamepad that is allowed to move the GUI navigator is considered a *navigation gamepad*.
 	 *
-	 * If the *enabled* argument is passed as *true*, the Gamepad can move the GUI navigator. If the argument is *false*, the Gamepad can not move the GUI navigator.
+	 * If the *enabled* argument is passed as *true*, the Gamepad is allowed to move the GUI navigator. If the argument is *false*, the Gamepad is not allowed to move the GUI navigator.
 	 *
 	 * If you want to check if a specified Gamepad is a set to be a navigation gamepad, you can use the [UserInputService.IsNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/IsNavigationGamepad) function. You can also use the [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads) to retrieve a list of all navigation gamepads.
 	 *
-	 * Since `UserInputService` is client-side only, this function can only be used in a  `LocalScript`.
-	 *
-	 * See [this][1] page for articles on cross-platform development.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.GamepadConnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadDisconnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadDisconnected)
-	 *
-	 *  - [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads)
-	 *
-	 *  - [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads)
-	 *
-	 *  - [UserInputService.IsNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/IsNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsGamepadButtonDown](https://developer.roblox.com/api-reference/function/UserInputService/IsGamepadButtonDown)
-	 *
-	 *  - [UserInputService.GetSupportedGamepadKeyCodes](https://developer.roblox.com/api-reference/function/UserInputService/GetSupportedGamepadKeyCodes)
-	 *
-	 *  - [UserInputService.GetGamepadState](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadState)
-	 *
-	 *  - [UserInputService.GetGamepadConnected](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadSupports](https://developer.roblox.com/api-reference/function/UserInputService/GamepadSupports)
-	 *
-	 *  - [UserInputService.GamepadEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GamepadEnabled)
-	 *
-	 * [1]: https://developer.roblox.com/learn-roblox/cross-platform
-	 * @param gamepadEnum The `Enum/UserInputType` of the specified gamepad
-	 * @param enabled Whether the specified gamepad can move the GUI navigator
+	 * Since `/UserInputService` only runs client-side, this function will only work when used in a `/LocalScript`.
+	 * @param gamepadEnum The specified gamepad.
+	 * @param enabled A boolean indicating whether the specified Gamepad is allowed to move the GUI navigator around.
 	 * @returns void
 	 */
 	SetNavigationGamepad(gamepadEnum: CastsToEnum<Enum.UserInputType>, enabled: boolean): void;
 	/** 
-	 * The DeviceAccelerationChanged event fires when a user moves a device that has an accelerometer.
+	 * The `/UserInputService` event, DeviceAccelerationChanged, fires when a user moves a device that has an accelerometer - which tracks the device's real-world movement. Devices that may have an accelerometer include Apple devices such as an iPad or iPhone.
 	 *
-	 * An accelerometer is a component found in most mobile devices that measures acceleration (change in speed).
+	 * To determine whether a user's device has an accelerometer enabled, check the value of [UserInputService.AccelerometerEnabled](https://developer.roblox.com/api-reference/property/UserInputService/AccelerometerEnabled), a UserInputService property.
 	 *
-	 * To determine whether a user's device has an accelerometer enabled, see[UserInputService.AccelerometerEnabled](https://developer.roblox.com/api-reference/property/UserInputService/AccelerometerEnabled).
+	 * This event can be used to track the movement of a device that has an accelerometer. A sample usage includes moving the player character when a mobile device is accelerated.
 	 *
-	 * This event can be used to track the movement of a device that has an accelerometer. A sample usage includes moving the player character when a mobile device accelerates.
+	 * Additionally, this event can be used along with [UserInputService.GetDeviceAcceleration](https://developer.roblox.com/api-reference/function/UserInputService/GetDeviceAcceleration), a UserInputService function, to determine the current movement of a user's device if the device has an accelerometer.
 	 *
-	 * Additionally, this event can be used along with [UserInputService.GetDeviceAcceleration](https://developer.roblox.com/api-reference/function/UserInputService/GetDeviceAcceleration) to determine the current movement of a user's device if the device has an accelerometer.
-	 *
-	 * This event only fires locally - which means that only the player whose device moves can use the event and it will only work in a `LocalScript`.
+	 * This event only fires locally - which means that only the player whose device moves can use the event.
 	 */
 	readonly DeviceAccelerationChanged: RBXScriptSignal<(acceleration: InputObject) => void>;
 	/** 
-	 * The DeviceGravityChanged event fires when the device’s gravity [DataType.Vector3/vector](https://developer.roblox.com/search#stq=Vector3/vector) changes on a device that has an accelerometer.
-	 *
-	 * A device’s gravity vector represent the force of gravity on each of the device’s X, Y, and Z axes. While gravity never changes, the force it exerts on each axis changes when the device rotates and changes orientation. The force value exerted on each axis is a unit vector ranging from -1 to 1.
-	 *
-	 * An accelerometer is a component found in most mobile devices that measures acceleration (change in speed).
+	 * The DeviceGravityChanged event is fired when the force of gravity changes on a device that has an accelerometer.
 	 *
 	 * This event can be used to determine the real-world direction of the force of gravity on a user's device. This even can then be used to simulate the force of gravity on a user's device within the game, such as on in-game objects (see example below).
 	 *
-	 * To check if a user's device has an enabled accelerometer, see [UserInputService.AccelerometerEnabled](https://developer.roblox.com/api-reference/property/UserInputService/AccelerometerEnabled). If the device has an enabled accelerometer, you can use the [UserInputService.GetDeviceGravity](https://developer.roblox.com/api-reference/function/UserInputService/GetDeviceGravity) function to get the current force of gravity on the user's device.
+	 * To check if a user's device has an enabled accelerometer, check the value of [UserInputService.AccelerometerEnabled](https://developer.roblox.com/api-reference/property/UserInputService/AccelerometerEnabled). If the device has an enabled accelerometer, you can use the [UserInputService.GetDeviceGravity](https://developer.roblox.com/api-reference/function/UserInputService/GetDeviceGravity) function to get the current force of gravity on the user's device.
+	 *
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly DeviceGravityChanged: RBXScriptSignal<(gravity: InputObject) => void>;
 	/** 
 	 * The DeviceRotationChanged event fires when a user rotates a device that has a gyroscope.
 	 *
-	 * A gyroscope is an component found in most mobile devices that detects orientation and rotational speed.
+	 * The event is useful when tracking the orientation of the device and how changes as the user rotates their device. To determine the current device rotation, you can use the `/UserInputService:GetDeviceRotation` function.
 	 *
-	 * The event is useful when tracking the orientation of the device and how changes as the user rotates their device. To determine the current device rotation, you can use the [UserInputService.GetDeviceRotation](https://developer.roblox.com/api-reference/function/UserInputService/GetDeviceRotation) function.
+	 * To check if a user's device has an enabled Gyroscope, and that this event will fire, check the value of [UserInputService.GyroscopeEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GyroscopeEnabled).
 	 *
-	 * To check if a user's device has an enabled gyroscope, and that this event will fire, see [UserInputService.GyroscopeEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GyroscopeEnabled).
-	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
+	 * If a user's device is TouchEnabled, this event will fire regardless of game state. Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly DeviceRotationChanged: RBXScriptSignal<(rotation: InputObject, cframe: CFrame) => void>;
 	/** 
-	 * The GamepadConnected event fires when a gamepad is connected to the client.
+	 * The GamepadConnected event fires when a gamepad is connected to the client. The term gamepad refers to USB gamepads such as Xbox and Playstation controllers.
 	 *
-	 * Since a Roblox game supports multiple controllers, this event is useful when paired with the [UserInputService.GamepadDisconnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadDisconnected) event to track which controllers/gamepads are active. You can also use [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads) and [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads) to find the correct gamepad to use.
+	 * Since a Roblox game can support up to 4 local controllers per client, this event is useful when paired with the [UserInputService.GamepadDisconnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadDisconnected) event to track which controllers/gamepads are active. In most cases the controller will be Enum.UserInputType.Gamepad1 but if your game supports local multiplayer then you will have to check.
 	 *
-	 * The following example demonstrates a usage example of a tracking when a gamepad is connected to the client.
-	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-
-local function GamepadConnected(gamepad)
-	print("Player has plugged controller: " .. tostring(gamepad))
-end)
-
-userInputService.GamepadConnected:Connect(GamepadDisconnected)
-```
-	 * 
-
 	 * If you want to see which devices are connected, you can use the [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads) function.
 	 *
-	 * As this event fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * See [this][1] page for articles on cross-platform development.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.GamepadDisconnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadDisconnected)
-	 *
-	 *  - [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads)
-	 *
-	 *  - [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads)
-	 *
-	 *  - [UserInputService.SetNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/SetNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/IsNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsGamepadButtonDown](https://developer.roblox.com/api-reference/function/UserInputService/IsGamepadButtonDown)
-	 *
-	 *  - [UserInputService.GetSupportedGamepadKeyCodes](https://developer.roblox.com/api-reference/function/UserInputService/GetSupportedGamepadKeyCodes)
-	 *
-	 *  - [UserInputService.GetGamepadState](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadState)
-	 *
-	 *  - [UserInputService.GetGamepadConnected](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadSupports](https://developer.roblox.com/api-reference/function/UserInputService/GamepadSupports)
-	 *
-	 *  - [UserInputService.GamepadEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GamepadEnabled)
-	 *
-	 * [1]: https://developer.roblox.com/learn-roblox/cross-platform
+	 * Since this this event fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly GamepadConnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
 	/** 
-	 * The GamepadDisconnected event fires when a gamepad is disconnected.
+	 * The GamepadDisconnected event fires when a gamepad is disconnected. The term gamepad refers to USB gamepads such as Xbox and Playstation controllers.
 	 *
-	 * Since a Roblox game supports multiple controllers, this event is useful when paired with the [UserInputService.GamepadConnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadConnected) event to track which controllers/gamepads are active. You can also use [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads) and [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads) to find the correct gamepad to use.
+	 * Since a Roblox game can support up to 4 local controllers per client, this event is useful when paired with the [UserInputService.GamepadConnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadConnected) event to track which controllers/gamepads are active. In most cases the controller will be Enum.UserInputType.Gamepad1 but if your game supports local multiplayer then you will have to check.
 	 *
-	 * The following example demonstrates a usage example of a tracking when a gamepad is disconnected from the client.
+	 * If you want to see which devices are connected, you can use the [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads) function.
 	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-
-local function GamepadDisconnected(gamepad)
-	print("Player has unplugged controller: " .. tostring(gamepad))
-end)
-
-userInputService.GamepadDisconnected:Connect(GamepadDisconnected)
-```
-	 * 
-
-	 * As this event fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * See [this][1] page for articles on cross-platform development.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.GamepadConnected](https://developer.roblox.com/api-reference/event/UserInputService/GamepadConnected)
-	 *
-	 *  - [UserInputService.GetConnectedGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetConnectedGamepads)
-	 *
-	 *  - [UserInputService.GetNavigationGamepads](https://developer.roblox.com/api-reference/function/UserInputService/GetNavigationGamepads)
-	 *
-	 *  - [UserInputService.SetNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/SetNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsNavigationGamepad](https://developer.roblox.com/api-reference/function/UserInputService/IsNavigationGamepad)
-	 *
-	 *  - [UserInputService.IsGamepadButtonDown](https://developer.roblox.com/api-reference/function/UserInputService/IsGamepadButtonDown)
-	 *
-	 *  - [UserInputService.GetSupportedGamepadKeyCodes](https://developer.roblox.com/api-reference/function/UserInputService/GetSupportedGamepadKeyCodes)
-	 *
-	 *  - [UserInputService.GetGamepadState](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadState)
-	 *
-	 *  - [UserInputService.GetGamepadConnected](https://developer.roblox.com/api-reference/function/UserInputService/GetGamepadConnected)
-	 *
-	 *  - [UserInputService.GamepadSupports](https://developer.roblox.com/api-reference/function/UserInputService/GamepadSupports)
-	 *
-	 *  - [UserInputService.GamepadEnabled](https://developer.roblox.com/api-reference/property/UserInputService/GamepadEnabled)
-	 *
-	 * [1]: https://developer.roblox.com/learn-roblox/cross-platform
+	 * This this event fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly GamepadDisconnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
 	/** 
-	 * The InputBegan event fires when a user begins interacting via a Human-Computer Interface device (mouse button down, touch begin, keyboard button down, etc.).
+	 * The InputBegan event fires when a user begins interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc).
 	 *
-	 * It can be used to track the beginning of user interaction, such as when a user first interacts with a GUI element, a gamepad, etc. It does not capture mouse wheel movements.
+	 * It can be used to track the beginning of user interaction, such as when a user first interacts with a GUI element, a gamepad, etc.
 	 *
 	 * This event can be used along with [UserInputService.InputChanged](https://developer.roblox.com/api-reference/event/UserInputService/InputChanged) and [UserInputService.InputEnded](https://developer.roblox.com/api-reference/event/UserInputService/InputEnded) to track when user input begins, changes, and ends.
 	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
+	 * This event will always fire regardless of game state.
 	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	/** 
-	 * The InputChanged event fires when a user changes how they're interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc).
+	 * The InputChanges event fires when a user changes how they're interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc).
 	 *
-	 * To ignore events that are automatically handled by Roblox, like scrolling in a `ScrollingFrame`, check the *gameProcessedEvent* argument is false.
+	 * To ignore events that are automatically handled by Roblox, like scrolling in a `/ScrollingFrame`, make sure that the gameProcessedEvent argument is false before using it.
 	 *
 	 * This event can be used along with [UserInputService.InputBegan](https://developer.roblox.com/api-reference/event/UserInputService/InputBegan) and [UserInputService.InputEnded](https://developer.roblox.com/api-reference/event/UserInputService/InputEnded) to track when user input begins, changes, and ends.
 	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
+	 * This event will always fire regardless of game state.
 	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly InputChanged: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	/** 
-	 * The InputEnded event fires when a user stops interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc). This is useful when tracking when a user releases a keyboard key, mouse button, touchscreen input, etc.
+	 * The InputEnded event fires when a user stops interacting via a Human-Computer Interface device (Mouse button down, touch begin, keyboard button down, etc). This is useful when tracking when a user releases a keyboard key, mouse, stops releases touchscreen input, etc.
 	 *
 	 * This event can be used along with [UserInputService.InputBegan](https://developer.roblox.com/api-reference/event/UserInputService/InputBegan) and [UserInputService.InputChanged](https://developer.roblox.com/api-reference/event/UserInputService/InputChanged) to track when user input begins, changes, and ends.
 	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
+	 * This event will always fire regardless of game state.
 	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly InputEnded: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	/** 
-	 * The `UserInputService` JumpRequest event fires when there is a jump request from the client (i.e. when the client pressed the spacebar or [jump GUI button][2] on mobile).
+	 * The `/UserInputService` JumpRequest event fires when there is a jump request from the client (i.e. when the client pressed the spacebar or JumpButton on mobile).
 	 *
-	 * This event fires whenever the user tries to make their [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) jump. Default behavior responds to a jump request by setting the player’s [Humanoid.Jump](https://developer.roblox.com/api-reference/property/Humanoid/Jump) property to true, which makes the player’s character jump.
+	 * Since this event fires multiple times for a single jump request, using a debounce is suggested.
 	 *
-	 * The event can be used to track every time a player wants to jump. Instead of using it to make a player jump, this should be used to change default jump behavior - such as disabling jumping.
+	 * The event can be used to track every time a player wants to jump - with a sample usage being to display an affect or GUI every time the player jumps.
 	 *
-	 * For example, the code below prints "Jump" every time the player sends a jump request.
+	 * If you would like to connect keys or buttons to other actions, consider using events such as `/UserInputService:GetKeysPressed` and [UserInputService.InputBegan](https://developer.roblox.com/api-reference/event/UserInputService/InputBegan).
 	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-
-function jumpRequest()
-	print("Jump!")
-end
-
-userInputService.JumpRequest:Connect(JumpRequest)
-```
-	 * 
-
-	 * Since this event fires multiple times for a single jump request, using a [debounce][1] is suggested.
-	 *
-	 * If you would like to connect keys or buttons to other actions, consider using events such as [UserInputService.GetKeysPressed](https://developer.roblox.com/api-reference/function/UserInputService/GetKeysPressed) and [UserInputService.InputBegan](https://developer.roblox.com/api-reference/event/UserInputService/InputBegan) or the `ContextActionService`.
-	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * [1]: https://developer.roblox.com/articles/Debounce
-	 *
-	 * [2]: https://developer.roblox.com/articles/Mobile-Controls
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly JumpRequest: RBXScriptSignal<() => void>;
 	/** 
-	 * The LastInputTypeChanged event fires whenever the client changes how they are interacting via a Human-Computer Interface device. (i.e. from MouseMovement to MouseWheel or from Thumbstick1 to Thumbstick2).
+	 * The LastInputTypeChanged event fires whenever the client changes how they are interacting via a Human-Computer Interface device (i.e. from MouseMovement to MouseWheel or from Thumbstick1 to Thumbstick2).
 	 *
 	 * To get the value of LastInputType, regardless of whether it has changed, you can use the [UserInputService.GetLastInputType](https://developer.roblox.com/api-reference/function/UserInputService/GetLastInputType) function.
 	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly LastInputTypeChanged: RBXScriptSignal<(lastInputType: Enum.UserInputType) => void>;
 	/** 
 	 * The TextBoxFocusReleased event fires when a client loses focus on a TextBox - typically when a client stops text entry into a TextBox by pressing return or clicking/touching elsewhere on the screen.
 	 *
-	 * For example, the code below prints the the name of the TextBox losing focus when the event fires.
-	 *
-	 * ```lua
-local UserInputService = game:GetService("UserInputService")
-
-function TextBoxFocusReleased(textbox)
-	print(textbox.Name)
-end
-
-UserInputService.TextBoxFocusReleased:Connect(TextBoxFocusReleased)
-```
-	 * 
-
 	 * It can be used alongside [UserInputService.TextBoxFocused](https://developer.roblox.com/api-reference/event/UserInputService/TextBoxFocused) to track when a TextBox gains and loses focus.
 	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
+	 * See also the [TextBox.Focus](https://developer.roblox.com/search#stq=Focus) and [TextBox.FocusLost](https://developer.roblox.com/api-reference/event/TextBox/FocusLost) for similar functions that rely on the TextBox class.
 	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.GetFocusedTextBox](https://developer.roblox.com/api-reference/function/UserInputService/GetFocusedTextBox)
-	 *
-	 *  - [TextBox.Focused](https://developer.roblox.com/api-reference/event/TextBox/Focused)
-	 *
-	 *  - [TextBox.FocusLost](https://developer.roblox.com/api-reference/event/TextBox/FocusLost)
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly TextBoxFocusReleased: RBXScriptSignal<(textboxReleased: TextBox) => void>;
 	/** 
-	 * The TextBoxFocused event fires when a gains focus on a `TextBox` - typically when a client clicks/taps on a text box to begin inputting text. This also fires if a text box focus is focused using [TextBox.CaptureFocus](https://developer.roblox.com/api-reference/function/TextBox/CaptureFocus).
+	 * The TextBoxFocusReleased event fires when a gains focus on a TextBox - typically when a client clicks/taps on a TextBox to begin text entry. This also fires if a TextBox forces focus on the user.
 	 *
-	 * For example, the code below prints the the name of the TextBox focused when the event fires.
+	 * It can be used alongside [UserInputService.FocusReleased](https://developer.roblox.com/search#stq=FocusReleased) to track when a TextBox gains and loses focus.
 	 *
-	 * ```lua
-local UserInputService = game:GetService("UserInputService")
-
-function TextBoxFocused(textbox)
-	print(textbox.Name)
-end)
-
-UserInputService.TextBoxFocused:Connect(TextBoxFocused)
-```
-	 * 
-
-	 * It can be used alongside [UserInputService.FocusReleased](https://developer.roblox.com/search#stq=FocusReleased) to track when a text box gains and loses focus.
+	 * See also the [TextBox.Focus](https://developer.roblox.com/search#stq=Focus) and [TextBox.FocusLost](https://developer.roblox.com/api-reference/event/TextBox/FocusLost) for similar functions that rely on the TextBox class.
 	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.GetFocusedTextBox](https://developer.roblox.com/api-reference/function/UserInputService/GetFocusedTextBox)
-	 *
-	 *  - [TextBox.Focused](https://developer.roblox.com/api-reference/event/TextBox/Focused)
-	 *
-	 *  - [TextBox.FocusLost](https://developer.roblox.com/api-reference/event/TextBox/FocusLost)
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly TextBoxFocused: RBXScriptSignal<(textboxFocused: TextBox) => void>;
 	/** 
@@ -25708,93 +22265,23 @@ UserInputService.TextBoxFocused:Connect(TextBoxFocused)
 	 *
 	 * This event can be used to determine when a user stops touching the screen of their device. It can be paired with [UserInputService.TouchStarted](https://developer.roblox.com/api-reference/event/UserInputService/TouchStarted) to determine when a user starts and stops touching the screen.
 	 *
-	 * For example, the code below prints the screen position where the user stops touching the screen.
+	 * To check if a user's device is TouchEnabled, and that touch events will fire, check the value of [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
 	 *
-	 * ```lua
-local UserInputService = game:GetService("UserInputService")
-
-function TouchEnded(touch, gameProcessedEvent)
-	print("Touch ended at "..tostring(touch.Position))
-end
-
-UserInputService.TouchEnded:Connect(TouchEnded)
-```
-	 * 
-
-	 * The touch input object is the same input object throughout the lifetime of the touch. So comparing [InputObjects](https://developer.roblox.com/api-reference/class/InputObject) when they are touch objects is valid to determine if it is the same finger.
-	 *
-	 * To check if a user's device is TouchEnabled, and that touch events will fire, see [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
-	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
-	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.TouchTap](https://developer.roblox.com/api-reference/event/UserInputService/TouchTap)
-	 *
-	 *  - [UserInputService.TouchTapInWorld](https://developer.roblox.com/api-reference/event/UserInputService/TouchTapInWorld)
-	 *
-	 *  - [UserInputService.TouchLongPress](https://developer.roblox.com/api-reference/event/UserInputService/TouchLongPress)
-	 *
-	 *  - [UserInputService.TouchMoved](https://developer.roblox.com/api-reference/event/UserInputService/TouchMoved)
-	 *
-	 *  - [UserInputService.TouchPan](https://developer.roblox.com/api-reference/event/UserInputService/TouchPan)
-	 *
-	 *  - [UserInputService.TouchPinch](https://developer.roblox.com/api-reference/event/UserInputService/TouchPinch)
-	 *
-	 *  - [UserInputService.TouchRotate](https://developer.roblox.com/api-reference/event/UserInputService/TouchRotate)
-	 *
-	 *  - [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe)
-	 *
-	 *  - [UserInputService.TouchStarted](https://developer.roblox.com/api-reference/event/UserInputService/TouchStarted)
+	 * If a user's device is TouchEnabled, this event will fire regardless of game state. Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly TouchEnded: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
 	/** 
 	 * Fired when a user holds at least one finger for a short amount of time on the same screen position of a TouchEnabled device.
 	 *
-	 * This event can be used to determine when a user holds their finger down on an an-game [GUI](https://developer.roblox.com/api-reference/class/GuiObject) or element.
+	 * This event can be used to determine when a user holds their finger down on an an-game GUI or element.
 	 *
-	 * The example below prints the [state](https://developer.roblox.com/search#stq=UserInputState) of the long press when the user user holds at least one finger for a short amount of time on the same screen position. Possible states include: *Begin*, *Change*, *End*, *Cancel*, and *None*.
+	 * A sample usage of this event includes creating a LocalScript within a GUI that requires the user to press a GUI button for a short period of time.
 	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-
-function TouchLongPress(TouchPositions, state, gameProcessedEvent)
-	print("Long press event fired. State of press: "..tostring(state))
-end
-
-userInputService.TouchLongPress:Connect(TouchLongPress)
-```
-	 * 
-
-	 * To check if a user's device is TouchEnabled, and that touch events will fire, see[UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
+	 * To check if a user's device is TouchEnabled, and that touch events will fire, check the value of [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
 	 *
 	 * It can be paired with [UserInputService.TouchStarted](https://developer.roblox.com/api-reference/event/UserInputService/TouchStarted) and [UserInputService.TouchEnded](https://developer.roblox.com/api-reference/event/UserInputService/TouchEnded) to determine when a user starts and stops touching the screen.
 	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
-	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.TouchTap](https://developer.roblox.com/api-reference/event/UserInputService/TouchTap)
-	 *
-	 *  - [UserInputService.TouchTapInWorld](https://developer.roblox.com/api-reference/event/UserInputService/TouchTapInWorld)
-	 *
-	 *  - [UserInputService.TouchMoved](https://developer.roblox.com/api-reference/event/UserInputService/TouchMoved)
-	 *
-	 *  - [UserInputService.TouchPan](https://developer.roblox.com/api-reference/event/UserInputService/TouchPan)
-	 *
-	 *  - [UserInputService.TouchPinch](https://developer.roblox.com/api-reference/event/UserInputService/TouchPinch)
-	 *
-	 *  - [UserInputService.TouchRotate](https://developer.roblox.com/api-reference/event/UserInputService/TouchRotate)
-	 *
-	 *  - [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe)
-	 *
-	 *  - [UserInputService.TouchStarted](https://developer.roblox.com/api-reference/event/UserInputService/TouchStarted)
-	 *
-	 *  - [UserInputService.TouchEnded](https://developer.roblox.com/api-reference/event/UserInputService/TouchEnded)
+	 * If a user's device is TouchEnabled, this event will fire regardless of game state. Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly TouchLongPress: RBXScriptSignal<
 		(touchPositions: Array<InputObject>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void
@@ -25804,90 +22291,25 @@ userInputService.TouchLongPress:Connect(TouchLongPress)
 	 *
 	 * This event can be used to determine when a user moves their finger while touching the screen of a TouchEnabled device. It can be useful to track whether a user is moving their finger on the screen, as well as where the user is moving their finger.
 	 *
-	 * The code below prints "Touch moved from" the previous Vector2 position "to " the new Vector2 position of the user's touch on a TouchEnabled device.
+	 * A sample usage of this event includes creating a LocalScript that draws a GUI line displaying the path the user moves their finger along while their finger is on a GUI element - much like drawing on a notepad.
 	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-
-function(touch, gameProcessedEvent)
-	local oldPosition = touch.Position - touch.Delta
-	print("Touch moved from "..tostring(oldPosition).."to "..tostring(touch.Position))
-end
-
-userInputService.TouchMoved:Connect(TouchMoved)
-```
-	 * 
-
 	 * It can be paired with  [UserInputService.TouchStarted](https://developer.roblox.com/api-reference/event/UserInputService/TouchStarted) and  [UserInputService.TouchEnded](https://developer.roblox.com/api-reference/event/UserInputService/TouchEnded) to determine when a user starts touching the screen, how their finger moves while touching it, and when the they stop touching the screen.
 	 *
-	 * To check if a user's device is TouchEnabled, and that touch events will fire, see [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
+	 * To check if a user's device is TouchEnabled, and that touch events will fire, check the value of [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
 	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
-	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.TouchTap](https://developer.roblox.com/api-reference/event/UserInputService/TouchTap)
-	 *
-	 *  - [UserInputService.TouchTapInWorld](https://developer.roblox.com/api-reference/event/UserInputService/TouchTapInWorld)
-	 *
-	 *  - [UserInputService.TouchLongPress](https://developer.roblox.com/api-reference/event/UserInputService/TouchLongPress)
-	 *
-	 *  - [UserInputService.TouchPan](https://developer.roblox.com/api-reference/event/UserInputService/TouchPan)
-	 *
-	 *  - [UserInputService.TouchPinch](https://developer.roblox.com/api-reference/event/UserInputService/TouchPinch)
-	 *
-	 *  - [UserInputService.TouchRotate](https://developer.roblox.com/api-reference/event/UserInputService/TouchRotate)
-	 *
-	 *  - [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe)
-	 *
-	 *  - [UserInputService.TouchStarted](https://developer.roblox.com/api-reference/event/UserInputService/TouchStarted)
-	 *
-	 *  - [UserInputService.TouchEnded](https://developer.roblox.com/api-reference/event/UserInputService/TouchEnded)
+	 * If a user's device is TouchEnabled, this event will fire regardless of game state. Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly TouchMoved: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
 	/** 
-	 * The TouchPan event fires when a user drags at least one finger on a [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) device.
+	 * The TouchPan event fires when a user drags at least one finger on a TouchEnabled device.
 	 *
-	 * This event can be used to determine when a user pans their finger along screen of a TouchEnabled device - such as to rotate the `Camera` in a custom camera script.
+	 * This event can be used to determine when a user pans their finger along screen of a TouchEnabled device, such as when they want to change the direction their camera is facing to view another part of the game world.
 	 *
-	 * The snippet below prints "Speed of touch drag" followed by the velocity of the user's touch when the user drags their finger on the screen.
+	 * Take a look at another useful `/UserInputService` function here [UserInputService.TouchRotate](https://developer.roblox.com/api-reference/event/UserInputService/TouchRotate).
 	 *
-	 * ```lua
-local userInputService = game:GetService("UserInputService")
-
-userInputService.TouchPan:Connect(function(touchPositions, totalTranslation, velocity, state, gameProcessedEvent)
-	print("Speed of touch drag: "..tostring(velocity))
-end)
-```
-	 * 
-
-	 * Take a look at another useful `UserInputService` function here [UserInputService.TouchRotate](https://developer.roblox.com/api-reference/event/UserInputService/TouchRotate).
+	 * To check if a user's device is TouchEnabled, and that touch events will fire, check the value of [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
 	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
-	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.TouchTap](https://developer.roblox.com/api-reference/event/UserInputService/TouchTap)
-	 *
-	 *  - [UserInputService.TouchTapInWorld](https://developer.roblox.com/api-reference/event/UserInputService/TouchTapInWorld)
-	 *
-	 *  - [UserInputService.TouchLongPress](https://developer.roblox.com/api-reference/event/UserInputService/TouchLongPress)
-	 *
-	 *  - [UserInputService.TouchMoved](https://developer.roblox.com/api-reference/event/UserInputService/TouchMoved)
-	 *
-	 *  - [UserInputService.TouchPinch](https://developer.roblox.com/api-reference/event/UserInputService/TouchPinch)
-	 *
-	 *  - [UserInputService.TouchRotate](https://developer.roblox.com/api-reference/event/UserInputService/TouchRotate)
-	 *
-	 *  - [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe)
-	 *
-	 *  - [UserInputService.TouchStarted](https://developer.roblox.com/api-reference/event/UserInputService/TouchStarted)
-	 *
-	 *  - [UserInputService.TouchEnded](https://developer.roblox.com/api-reference/event/UserInputService/TouchEnded)
+	 * If a user's device is TouchEnabled, this event will fire regardless of game state. Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly TouchPan: RBXScriptSignal<
 		(
@@ -25899,48 +22321,15 @@ end)
 		) => void
 	>;
 	/** 
-	 * Fired when a user places and moves two fingers on the screen of a [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) device.
+	 * Fired when a user pinches their fingers on a TouchEnabled device.
 	 *
-	 * For instance, the snippet below prints how much the camera zoom scale has changed since the beginning of the touch pinch,
+	 * This event can be used to determine when a user users two fingers on the screen of their device, such as when they want to increase or decrease the [Camera.FieldOfView](https://developer.roblox.com/api-reference/property/Camera/FieldOfView).
 	 *
-	 * ```lua
-local UserInputService = game:GetService("UserInputService")
-
-UserInputService.TouchPinch:Connect(function(touchPositions, scale, velocity, state, gameProcessedEvent)
-	print("Scale difference since beginning of pinch: "..tostring(scale))
-end)
-```
-	 * 
-
-	 * To check if a user's device is TouchEnabled, and that touch events will fire, see [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
+	 * To check if a user's device is TouchEnabled, and that touch events will fire, check the value of [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
 	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
+	 * If a user's device is TouchEnabled, this event will fire regardless of game state. Since it only fires locally, it can only be used in a `/LocalScript`.
 	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * [Core scripts](https://developer.roblox.com/api-reference/class/CoreScript) use similar logic to zoom the user’s camera when a user pinches their fingers on a mobile device. For more info on these scripts, see [here][1]. Best practice for this event is to use it when creating a mobile camera system to override the default core script.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.TouchTap](https://developer.roblox.com/api-reference/event/UserInputService/TouchTap)
-	 *
-	 *  - [UserInputService.TouchTapInWorld](https://developer.roblox.com/api-reference/event/UserInputService/TouchTapInWorld)
-	 *
-	 *  - [UserInputService.TouchMoved](https://developer.roblox.com/api-reference/event/UserInputService/TouchMoved)
-	 *
-	 *  - [UserInputService.TouchLongPress](https://developer.roblox.com/api-reference/event/UserInputService/TouchLongPress)
-	 *
-	 *  - [UserInputService.TouchPan](https://developer.roblox.com/api-reference/event/UserInputService/TouchPan)
-	 *
-	 *  - [UserInputService.TouchRotate](https://developer.roblox.com/api-reference/event/UserInputService/TouchRotate)
-	 *
-	 *  - [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe)
-	 *
-	 *  - [UserInputService.TouchStarted](https://developer.roblox.com/api-reference/event/UserInputService/TouchStarted)
-	 *
-	 *  - [UserInputService.TouchEnded](https://developer.roblox.com/api-reference/event/UserInputService/TouchEnded)
-	 *
-	 * [1]: https://www.robloxdev.com/articles/Movement-and-camera-controls
+	 * *Warning:* The Roblox client on Android sends zero (0) as the velocity. This is a known issue.
 	 */
 	readonly TouchPinch: RBXScriptSignal<
 		(
@@ -25952,48 +22341,15 @@ end)
 		) => void
 	>;
 	/** 
-	 * The TouchRotate event fires when a user rotates two fingers on a [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) device.
+	 * The TouchRotate event fires when a user rotates two fingers on a TouchEnabled device.
 	 *
-	 * For example, the following code prints  how much the camera has rotated since the beginning of the touch rotation.
+	 * This event can be used to determine when a user uses two fingers on the screen of their device, such as when they want to change the direction their camera is facing to view another part of the game world.
 	 *
-	 * ```lua
-local UserInputService = game:GetService("UserInputService")
-
-UserInputService.TouchRotate:Connect(function(touchPositions, rotation, velocity, state, gameProcessedEvent)
-	print("Camera has rotated "..tostring(rotation).." degrees!")
-end)
-```
-	 * 
-
-	 * To check if a user's device is TouchEnabled, and that touch events will fire, see [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
+	 * Take a look at another useful `/UserInputService` function here [UserInputService.TouchPan](https://developer.roblox.com/api-reference/event/UserInputService/TouchPan).
 	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
+	 * To check if a user's device is TouchEnabled, and that touch events will fire, check the value of [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
 	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * The core scripts that control the user's camera on a mobile device use code that functions similarly to this event. For more info on these scripts, see [here][1]. Best practice for this event is to use it when creating a mobile camera system to override the default core scripts.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.TouchTap](https://developer.roblox.com/api-reference/event/UserInputService/TouchTap)
-	 *
-	 *  - [UserInputService.TouchTapInWorld](https://developer.roblox.com/api-reference/event/UserInputService/TouchTapInWorld)
-	 *
-	 *  - [UserInputService.TouchMoved](https://developer.roblox.com/api-reference/event/UserInputService/TouchMoved)
-	 *
-	 *  - [UserInputService.TouchLongPress](https://developer.roblox.com/api-reference/event/UserInputService/TouchLongPress)
-	 *
-	 *  - [UserInputService.TouchPan](https://developer.roblox.com/api-reference/event/UserInputService/TouchPan)
-	 *
-	 *  - [UserInputService.TouchPinch](https://developer.roblox.com/api-reference/event/UserInputService/TouchPinch)
-	 *
-	 *  - [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe)
-	 *
-	 *  - [UserInputService.TouchStarted](https://developer.roblox.com/api-reference/event/UserInputService/TouchStarted)
-	 *
-	 *  - [UserInputService.TouchEnded](https://developer.roblox.com/api-reference/event/UserInputService/TouchEnded)
-	 *
-	 * [1]:/articles/Movement-and-camera-controls
+	 * If a user's device is TouchEnabled, this event will fire regardless of game state. Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly TouchRotate: RBXScriptSignal<
 		(
@@ -26005,193 +22361,79 @@ end)
 		) => void
 	>;
 	/** 
-	 * The TouchStarted event fires when a user places their finger on a [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) device, beginning touch input with the device.
+	 * The `/UserInputService` TouchStarted event fires when a user places their finger on a TouchEnabled device, beginning touch input with the device.
 	 *
 	 * This event can be used to determine when a user starts touching the screen of their device. It can be paired with [UserInputService.TouchEnded](https://developer.roblox.com/api-reference/event/UserInputService/TouchEnded) to determine when a user starts and stops touching the screen.
 	 *
-	 * The touch input object is the same input object throughout the lifetime of the touch. So comparing [InputObjects](https://developer.roblox.com/api-reference/class/InputObject) when they are touch objects is valid to determine if it is the same finger.
+	 * A sample usage of this event includes  determining when a user touches a GUI button, or an in-game part.
 	 *
-	 * To check if a user's device is TouchEnabled, and that touch events will fire, see [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
+	 * To check if a user's device is TouchEnabled, and that touch events will fire, check the value of [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
 	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
-	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.TouchTap](https://developer.roblox.com/api-reference/event/UserInputService/TouchTap)
-	 *
-	 *  - [UserInputService.TouchTapInWorld](https://developer.roblox.com/api-reference/event/UserInputService/TouchTapInWorld)
-	 *
-	 *  - [UserInputService.TouchLongPress](https://developer.roblox.com/api-reference/event/UserInputService/TouchLongPress)
-	 *
-	 *  - [UserInputService.TouchMoved](https://developer.roblox.com/api-reference/event/UserInputService/TouchMoved)
-	 *
-	 *  - [UserInputService.TouchPan](https://developer.roblox.com/api-reference/event/UserInputService/TouchPan)
-	 *
-	 *  - [UserInputService.TouchPinch](https://developer.roblox.com/api-reference/event/UserInputService/TouchPinch)
-	 *
-	 *  - [UserInputService.TouchRotate](https://developer.roblox.com/api-reference/event/UserInputService/TouchRotate)
-	 *
-	 *  - [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe)
-	 *
-	 *  - [UserInputService.TouchEnded](https://developer.roblox.com/api-reference/event/UserInputService/TouchEnded)
+	 * If a user's device is TouchEnabled, this event will fire regardless of game state. Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly TouchStarted: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
 	/** 
-	 * The TouchSwipe event fires when a user swipes their fingers on a [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) device.
+	 * The TouchSwipe event fires when a user swipes their fingers on a TouchEnabled device.
 	 *
-	 * This event can be used to determine when a user swipes their fingers on the screen of their device and the direction that the user swiped.
+	 * This event can be used to determine when a user swipes their fingers on the screen of their device and the direction that the user swiped. A possible usage includes creating a GUI that can be swiped/moved in different directions depending on the direction of the swipe over that GUI element.
 	 *
-	 * For more precise tracking of touch input movement, use using [UserInputService.TouchMoved](https://developer.roblox.com/api-reference/event/UserInputService/TouchMoved)
+	 * If you would like to track more precise touch input movement, consider using [UserInputService.TouchMoved](https://developer.roblox.com/api-reference/event/UserInputService/TouchMoved)
 	 *
-	 * To check if a user's device is TouchEnabled, and that touch events will fire, see [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
+	 * To check if a user's device is TouchEnabled, and that touch events will fire, check the value of [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
 	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
-	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.TouchTap](https://developer.roblox.com/api-reference/event/UserInputService/TouchTap)
-	 *
-	 *  - [UserInputService.TouchTapInWorld](https://developer.roblox.com/api-reference/event/UserInputService/TouchTapInWorld)
-	 *
-	 *  - [UserInputService.TouchLongPress](https://developer.roblox.com/api-reference/event/UserInputService/TouchLongPress)
-	 *
-	 *  - [UserInputService.TouchMoved](https://developer.roblox.com/api-reference/event/UserInputService/TouchMoved)
-	 *
-	 *  - [UserInputService.TouchPan](https://developer.roblox.com/api-reference/event/UserInputService/TouchPan)
-	 *
-	 *  - [UserInputService.TouchPinch](https://developer.roblox.com/api-reference/event/UserInputService/TouchPinch)
-	 *
-	 *  - [UserInputService.TouchRotate](https://developer.roblox.com/api-reference/event/UserInputService/TouchRotate)
-	 *
-	 *  - [UserInputService.TouchStarted](https://developer.roblox.com/api-reference/event/UserInputService/TouchStarted)
-	 *
-	 *  - [UserInputService.TouchEnded](https://developer.roblox.com/api-reference/event/UserInputService/TouchEnded)
+	 * If a user's device is TouchEnabled, this event will fire regardless of game state. Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number, gameProcessedEvent: boolean) => void>;
 	/** 
-	 * The TouchTap event fires when the user touches/taps their finger on the screen on a [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) device.
+	 * The TouchTapInWorld event fires when the user touches/taps their finger on the screen on a TouchEnabled device.
 	 *
-	 * This event will fire regardless of whether the user touches/taps the game world or a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) element. If you are looking for an event that only fires when the user touches/taps the game world, use [UserInputService.TouchTapInWorld](https://developer.roblox.com/api-reference/event/UserInputService/TouchTapInWorld).
+	 * This event will fire regardless of whether the user touches/taps the game world or a GUI element. If you are looking for an event that only fires when the user touches/taps the game world,
 	 *
-	 * To check if a user's device is TouchEnabled, and that touch events will fire, see [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
+	 *  use [UserInputService.TouchTapInWorld](https://developer.roblox.com/api-reference/event/UserInputService/TouchTapInWorld).
 	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
+	 * To check if a user's device is TouchEnabled, and that touch events will fire, check the value of [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
 	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.TouchTapInWorld](https://developer.roblox.com/api-reference/event/UserInputService/TouchTapInWorld)
-	 *
-	 *  - [UserInputService.TouchLongPress](https://developer.roblox.com/api-reference/event/UserInputService/TouchLongPress)
-	 *
-	 *  - [UserInputService.TouchMoved](https://developer.roblox.com/api-reference/event/UserInputService/TouchMoved)
-	 *
-	 *  - [UserInputService.TouchPan](https://developer.roblox.com/api-reference/event/UserInputService/TouchPan)
-	 *
-	 *  - [UserInputService.TouchPinch](https://developer.roblox.com/api-reference/event/UserInputService/TouchPinch)
-	 *
-	 *  - [UserInputService.TouchRotate](https://developer.roblox.com/api-reference/event/UserInputService/TouchRotate)
-	 *
-	 *  - [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe)
-	 *
-	 *  - [UserInputService.TouchStarted](https://developer.roblox.com/api-reference/event/UserInputService/TouchStarted)
-	 *
-	 *  - [UserInputService.TouchEnded](https://developer.roblox.com/api-reference/event/UserInputService/TouchEnded)
+	 * If a user's device is TouchEnabled, this event will fire regardless of game state. Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<InputObject>, gameProcessedEvent: boolean) => void>;
 	/** 
-	 * The TouchTapInWorld event fires when the user touches/taps their finger on the screen on a [TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled) device. It is fired when the user taps in the game world.
+	 * The TouchTapInWorld event fires when the user touches/taps their finger on the screen on a TouchEnabled device. It is fired when the user taps in the game world.
 	 *
-	 * This event can be used to determine when a user taps the screen and does not tap a [GUI](https://developer.roblox.com/api-reference/class/GuiObject) element. If the user taps a GUI element, [UserInputService.TouchTap](https://developer.roblox.com/api-reference/event/UserInputService/TouchTap) will fire instead of TouchTapInWorld.
+	 * This event can be used to determine when a user taps the screen and does not tap a GUI element. If the user taps a GUI element, [UserInputService.TouchTap](https://developer.roblox.com/api-reference/event/UserInputService/TouchTap) will fire instead of TouchTapInWorld.
 	 *
-	 * To check if a user's device is TouchEnabled, and that touch events will fire, see  [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
+	 * To check if a user's device is TouchEnabled, and that touch events will fire, check the value of [UserInputService.TouchEnabled](https://developer.roblox.com/api-reference/property/UserInputService/TouchEnabled).
 	 *
-	 * This event only fires when the Roblox client window is in focus. For example, inputs will not be captured when the window is minimized.
-	 *
-	 * As it only fires locally, it can only be used in a `LocalScript`.
-	 *
-	 * ## See also
-	 *
-	 *  - [UserInputService.TouchTap](https://developer.roblox.com/api-reference/event/UserInputService/TouchTap)
-	 *
-	 *  - [UserInputService.TouchLongPress](https://developer.roblox.com/api-reference/event/UserInputService/TouchLongPress)
-	 *
-	 *  - [UserInputService.TouchMoved](https://developer.roblox.com/api-reference/event/UserInputService/TouchMoved)
-	 *
-	 *  - [UserInputService.TouchPan](https://developer.roblox.com/api-reference/event/UserInputService/TouchPan)
-	 *
-	 *  - [UserInputService.TouchPinch](https://developer.roblox.com/api-reference/event/UserInputService/TouchPinch)
-	 *
-	 *  - [UserInputService.TouchRotate](https://developer.roblox.com/api-reference/event/UserInputService/TouchRotate)
-	 *
-	 *  - [UserInputService.TouchSwipe](https://developer.roblox.com/api-reference/event/UserInputService/TouchSwipe)
-	 *
-	 *  - [UserInputService.TouchStarted](https://developer.roblox.com/api-reference/event/UserInputService/TouchStarted)
-	 *
-	 *  - [UserInputService.TouchEnded](https://developer.roblox.com/api-reference/event/UserInputService/TouchEnded)
+	 * If a user's device is TouchEnabled, this event will fire regardless of game state. Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly TouchTapInWorld: RBXScriptSignal<(position: Vector2, processedByUI: boolean) => void>;
 	/** 
-	 * The UserCFrameChanged event fires when the [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) of a VR device changes.
+	 * The UserCFrameChanged event fires when the CFrame of a specified VR device changes .
 	 *
-	 * This event can be used to track the movement of a connected VR device.
+	 * This event should be used when implementing VR compatibility into a game to track the movement of a connected VR device.
 	 *
-	 * Using the event, you can implement features such as moving the user's in-game character limbs as the user moves their VR device. This can be done by changing the CFrame of the user's in-game limbs to match the CFrame changes of the VR device using the [Enum.UserCFrame](https://developer.roblox.com/search#stq=UserCFrame) enum and *CFrame* value arguments passed by the event.
+	 * By using the event, players can implement features such as moving the user's in-game character as the user moves their VR device. This can be done by changing the CFrame of the user's in-game character to match the CFrame changes of the VR device using the [Enum.UserCFrame](https://developer.roblox.com/search#stq=UserCFrame) enum and *CFrame* value arguments passed by the event.
 	 *
-	 * To retrieve the [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) of a connected VR device, use [UserInputService.GetUserCFrame](https://developer.roblox.com/api-reference/function/UserInputService/GetUserCFrame).
+	 * The `/UserInputService` service also provides a function [UserInputService.GetUserCFrame](https://developer.roblox.com/api-reference/function/UserInputService/GetUserCFrame) that returns the *CFrame* of connected a specified VR device regardless of whether its *CFrame* has changed.
 	 *
-	 * As the event fires locally, it can only be used in a `LocalScript`.
+	 * This `/UserInputService` event can be used alongside `/VRService` service events and functions.
 	 *
-	 * ## See also
-	 *
-	 * - `VRService`, used to implement support, including an identical event [VRService.UserHeadCFrameChanged](https://developer.roblox.com/search#stq=UserHeadCFrameChanged)
-	 *
-	 *  - [Camera.HeadLocked](https://developer.roblox.com/api-reference/property/Camera/HeadLocked), when this property is *true* the `Camera` will automatically track the head motion of a player using a VR device
-	 *
-	 *  - [Camera.GetRenderCFrame](https://developer.roblox.com/api-reference/function/Camera/GetRenderCFrame), a function which retrieves the [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) the `Camera` is being orientated at, including the impact of VR devices
+	 * Since the event fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
 	/** 
-	 * The `UserInputService` WindowFocusReleased event fires when the window of the Roblox client loses focus - typically when the Roblox client is minimized by the user.
+	 * The `/UserInputService` WindowFocusReleased event fires when the Roblox client loses focus - typically when the Roblox client is minimized by the user.
 	 *
-	 * For example, the code below prints *"Window focus released"* whenever the Roblox client loses focus.
-	 *
-	 * ```lua
-local UserInputService = game:GetService("UserInputService")
-
-UserInputService.WindowFocusReleased:Connect(function()
-	print("Window focus released")
-end)
-```
-	 * 
-
 	 * This event can be used alongside [UserInputService.WindowFocused](https://developer.roblox.com/api-reference/event/UserInputService/WindowFocused) to track whether the Roblox client is actively focused on a user's screen.
 	 *
-	 * Since it only fires locally, it can only be used in a `LocalScript`.
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly WindowFocusReleased: RBXScriptSignal<() => void>;
 	/** 
-	 * The `UserInputService` WindowFocused event fires when the window of the Roblox client gains focus - typically when the Roblox client is maximized/actively open on the user's screen.
+	 * The `/UserInputService` WindowFocused event fires when the Roblox client gains focus - typically when the Roblox client is maximized/actively open on the user's screen.
 	 *
-	 * For example, the code below prints *"Window focused"* whenever the Roblox client gains focus.
-	 *
-	 * ```lua
-local UserInputService = game:GetService("UserInputService")
-
-UserInputService.WindowFocused:Connect(function()
-	print("Window focused")
-end)
-```
-	 * 
-
 	 * This event can be used alongside [UserInputService.WindowFocusReleased](https://developer.roblox.com/api-reference/event/UserInputService/WindowFocusReleased) to track whether the Roblox client is actively focused on a user's screen.
 	 *
-	 * As this event only fires locally, it can only be used in a `LocalScript`.
+	 * Since it only fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly WindowFocused: RBXScriptSignal<() => void>;
 }
@@ -26404,10 +22646,7 @@ end
 	readonly UserCFrameEnabled: RBXScriptSignal<(type: Enum.UserCFrame, enabled: boolean) => void>;
 }
 
-/** 
- 
- */
-	/**
+/**
  * Used to hold a value.
  */
 interface ValueBase extends Instance {
@@ -26416,21 +22655,17 @@ interface ValueBase extends Instance {
 }
 
 /** 
- * An internal type of `StringValue` object, that stores a `BinaryString` value.
+ * An internal type of [StringValue](https://wiki.roblox.com/index.php?title=StringValue) used to hold compressed information.
+ *
+ * This class seems to be used with [Solid modeling](https://wiki.roblox.com/index.php?title=Solid_modeling), via the [CSGDictionaryService](https://wiki.roblox.com/index.php?title=CSGDictionaryService), as a lot of these are stored in there.
  */
 interface BinaryStringValue extends ValueBase {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "BinaryStringValue";
 	/** 
-	 * Fires if the [BinaryStringValue.Value](https://developer.roblox.com/search#stq=Value) of the `BinaryStringValue` is changed by the engine.
+	 * Fires if the value of the BinaryStringValue is changed by the engine.
 	 *
 	 * In practice, this object is stored out of reach from normal scripts, so this event cannot be connected to. If a BinaryStringValue is created by a script, the engine will not do anything with it, so the event will never fire.
-	 *
-	 * Note
-	 *
-	 * ----------
-	 *
-	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
 	 */
 	readonly Changed: RBXScriptSignal<(value: null) => void>;
 }
@@ -26446,17 +22681,7 @@ interface BoolValue extends ValueBase {
 	 */
 	Value: boolean;
 	/** 
-	 * Fired whenever the [BoolValue.Value](https://developer.roblox.com/api-reference/property/BoolValue/Value) of the `BoolValue` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
-	 *
-	 * This event, like other changed events, can be used to track when an BoolValue changes and to track the different values that it may change to.
-	 *
-	 * For instance, this may be useful in games that rely on BoolValues to track game states and values, such as switch or enabled states.
-	 *
-	 * Note
-	 *
-	 * ----------
-	 *
-	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 * Fired whenever the [BoolValue.Value](https://developer.roblox.com/api-reference/property/BoolValue/Value) of the BoolValue is changed.
 	 */
 	readonly Changed: RBXScriptSignal<(value: boolean) => void>;
 }
@@ -26468,71 +22693,43 @@ interface BrickColorValue extends ValueBase {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "BrickColorValue";
 	/** 
-	 * Used to hold a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor) value.
+	 * Used to hold a [BrickColor](https://wiki.roblox.com/index.php?title=BrickColor) value.
 	 */
 	Value: BrickColor;
 	/** 
-	 * Fired whenever the [BrickColorValue.Value](https://developer.roblox.com/api-reference/property/BrickColorValue/Value) of the `BrickColorValue` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
-	 *
-	 * This event, like other changed events, can be used to track when an BrickColorValue changes and to track the different values that it may change to.
-	 *
-	 * Note
-	 *
-	 * ----------
-	 *
-	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 * Fired whenever the [BrickColorValue.Value](https://developer.roblox.com/api-reference/property/BrickColorValue/Value) of the BrickColorValue is changed.
 	 */
 	readonly Changed: RBXScriptSignal<(value: BrickColor) => void>;
 }
 
 /** 
- * A container object for a single [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) value.
+ * An instance used to store a [CFrame](https://wiki.roblox.com/index.php?title=CFrame) value.
  */
 interface CFrameValue extends ValueBase {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "CFrameValue";
 	/** 
-	 * Used to hold a [CFrame](https://developer.roblox.com/api-reference/datatype/CFrame) value.
+	 * Used to hold a [CFrame](https://wiki.roblox.com/index.php?title=CFrame) value.
 	 */
 	Value: CFrame;
 	/** 
-	 * Fired whenever the [CFrameValue.Value](https://developer.roblox.com/api-reference/property/CFrameValue/Value) of the `CFrameValue` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
-	 *
-	 * This event, like other changed events, can be used to track when an CFrameValue changes and to track the different values that it may change to.
-	 *
-	 * For instance, this even may be useful in games that rely on CFrameValues to track game object [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) positions and movements.
-	 *
-	 * Note
-	 *
-	 * ----------
-	 *
-	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 * Fired whenever the [CFrameValue.Value](https://developer.roblox.com/api-reference/property/CFrameValue/Value) of the CFrameValue is changed.
 	 */
 	readonly Changed: RBXScriptSignal<(value: CFrame) => void>;
 }
 
 /** 
- * A container object for a single [DataType.Color3](https://developer.roblox.com/search#stq=Color3) value.
+ * A Color3Value holds a [Color3](https://wiki.roblox.com/index.php?title=Color3).
  */
 interface Color3Value extends ValueBase {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Color3Value";
 	/** 
-	 * The stored [Color3](https://developer.roblox.com/api-reference/datatype/Color3).
+	 * The stored [Color3](https://wiki.roblox.com/index.php?title=Color3).
 	 */
 	Value: Color3;
 	/** 
-	 * Fired whenever the [Color3Value.Value](https://developer.roblox.com/api-reference/property/Color3Value/Value) of the `Color3Value` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
-	 *
-	 * This event, like other changed events, can be used to track when an Color3Value changes and to track the different values that it may change to.
-	 *
-	 * For instance, this may be useful in games that rely on Color3Values to track values such as colors for games using customizable outfits or items.
-	 *
-	 * Note
-	 *
-	 * ----------
-	 *
-	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 * Fired whenever the [Color3Value.Value](https://developer.roblox.com/api-reference/property/Color3Value/Value) is changed.
 	 */
 	readonly Changed: RBXScriptSignal<(value: Color3) => void>;
 }
@@ -26564,7 +22761,7 @@ interface DoubleConstrainedValue extends ValueBase {
 	 */
 	Value: number;
 	/** 
-	 * Fired whenever the [DoubleConstrainedValue.Value](https://developer.roblox.com/api-reference/property/DoubleConstrainedValue/Value) of the `DoubleConstrainedValue` is changed.
+	 * Fired whenever the Value of the DoubleConstrainedValue is changed.
 	 */
 	readonly Changed: RBXScriptSignal<(value: number) => void>;
 }
@@ -26606,7 +22803,7 @@ interface IntConstrainedValue extends ValueBase {
 }
 
 /** 
- * An IntValue is an object that stores a single signed 32-bit integer. Integers do not include decimal points. The highest value that can be stored is 2^31 - 1, or 2,147,483,647. Attempting to store numbers larger than this may cause [integer overflow][1]. The lowest value that can be stored is -(2^31), or -2,147,483,648. For values outside of this range, use a NumberValue instead. Like all "-Value" objects, this single value is stored in the Value property. The [IntValue.Changed](https://developer.roblox.com/api-reference/event/IntValue/Changed) event for this (and other objects like it) will run with the new value being stored in the object, instead of a string representing the property being changed.
+ * An IntValue is an object that stores a single signed 32-bit integer. Integers do not include decimal points. The highest value that can be stored is 2^31 - 1, or 2,147,483,647. Attempting to store numbers larger than this may cause [integer overflow][1]. The lowest value that can be stored is -(2^31), or -2,147,483,648. For values outside of this range, use a NumberValue instead. Like all "-Value" objects, this single value is stored in the Value property. The Changed event for this (and other objects like it) will run with the new value being stored in the object, instead of a string representing the property being changed.
  *
  * [1]: https://en.wikipedia.org/wiki/Integer_overflow
  */
@@ -26614,21 +22811,11 @@ interface IntValue extends ValueBase {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "IntValue";
 	/** 
-	 * Used to hold an [Integer](https://developer.roblox.com/articles/Integers).
+	 * Used to hold an [Integer](https://wiki.roblox.com/index.php?title=Integer).
 	 */
 	Value: number;
 	/** 
-	 * The Changed event fires whenever the [IntValue.Value](https://developer.roblox.com/api-reference/property/IntValue/Value) of the `IntValue` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
-	 *
-	 * This event, like other changed events, can be used to track when an IntValue changes and to track the different values that it may change to.
-	 *
-	 * For instance, this may be useful in games that rely on IntValues to track game states and values, such as item IDs.
-	 *
-	 * Note
-	 *
-	 * ----------
-	 *
-	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 * Fired whenever the [IntValue.Value](https://developer.roblox.com/api-reference/property/IntValue/Value) of the IntValue is changed.
 	 */
 	readonly Changed: RBXScriptSignal<(value: number) => void>;
 }
@@ -26650,15 +22837,7 @@ interface NumberValue extends ValueBase {
 	 */
 	Value: number;
 	/** 
-	 * This event fires whenever the [NumberValue.Value](https://developer.roblox.com/api-reference/property/NumberValue/Value) property is changed.
-	 *
-	 * This event, like other changed events, can be used to track when an NumberValue changes and to track the different values that it may change to.
-	 *
-	 * For instance, this even may be useful in games that rely on NumberValues to track game states and values, such as item IDs.
-	 *
-	 * ## See also
-	 *
-	 * Equivalent changed events exist for similar objects, such as `ObjectValue` and `StringValue`, depending on what object type best suits the need.
+	 * Fired whenever the [NumberValue.Value](https://developer.roblox.com/api-reference/property/NumberValue/Value) of the NumberValue is changed.
 	 */
 	readonly Changed: RBXScriptSignal<(value: number) => void>;
 }
@@ -26678,15 +22857,7 @@ interface ObjectValue extends ValueBase {
 	 */
 	Value?: Instance;
 	/** 
-	 * This event fires whenever the [ObjectValue.Value](https://developer.roblox.com/api-reference/property/ObjectValue/Value) property is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
-	 *
-	 * This event, like other changed events, can be used to track when an ObjectValue changes and to track the different values that it may change to.
-	 *
-	 * For instance, this even may be useful in games that rely on ObjectValues to track game states and values, such as RPG  targeting systems.
-	 *
-	 * ## See also
-	 *
-	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 * Fired whenever the [ObjectValue.Value](https://developer.roblox.com/api-reference/property/ObjectValue/Value) of the ObjectValue is changed.
 	 */
 	readonly Changed: RBXScriptSignal<(value?: Instance) => void>;
 }
@@ -26708,13 +22879,7 @@ interface RayValue extends ValueBase {
 	 */
 	Value: Ray;
 	/** 
-	 * This event fires whenever the [RayValue.Value](https://developer.roblox.com/api-reference/property/RayValue/Value) property is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
-	 *
-	 * This event, like other changed events, can be used to track when an RayValue changes and to track the different values that it may change to.
-	 *
-	 * ## See also
-	 *
-	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 * Fired when [RayValue.Value](https://developer.roblox.com/api-reference/property/RayValue/Value) is changed.
 	 */
 	readonly Changed: RBXScriptSignal<(value: Ray) => void>;
 }
@@ -26730,21 +22895,11 @@ interface StringValue extends ValueBase {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "StringValue";
 	/** 
-	 * The stored [string](https://developer.roblox.com/articles/String).
+	 * The stored [string](https://wiki.roblox.com/index.php?title=API:Type/string).
 	 */
 	Value: string;
 	/** 
-	 * Fired whenever the [StringValue.Value](https://developer.roblox.com/api-reference/property/StringValue/Value) of the `StringValue` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
-	 *
-	 * This event, like other changed events, can be used to track when an StringValue changes and to track the different values that it may change to.
-	 *
-	 * For instance, this may be useful in games that rely on StringValues to track values such as NPC or item names.
-	 *
-	 * Note
-	 *
-	 * ----------
-	 *
-	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `BoolValue`, depending on what object type best suits the need.
+	 * Fired whenever [StringValue.Value](https://developer.roblox.com/api-reference/property/StringValue/Value) is changed.
 	 */
 	readonly Changed: RBXScriptSignal<(value: string) => void>;
 }
@@ -26756,21 +22911,11 @@ interface Vector3Value extends ValueBase {
 	/** A read-only string representing the class this Instance belongs to. `isClassName()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Vector3Value";
 	/** 
-	 * The stored [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3).
+	 * The stored [Vector3](https://wiki.roblox.com/index.php?title=Vector3).
 	 */
 	Value: Vector3;
 	/** 
-	 * Fired whenever the [Vector3Value.Value](https://developer.roblox.com/api-reference/property/Vector3Value/Value) of the `Vector3Value` is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
-	 *
-	 * This event, like other changed events, can be used to track when an Vector3Value changes and to track the different values that it may change to.
-	 *
-	 * For instance, this may be useful in games that rely on Vector3Values to track positions in the game world.
-	 *
-	 * Note
-	 *
-	 * ----------
-	 *
-	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
+	 * Fired whenever [Vector3Value.Value](https://developer.roblox.com/api-reference/property/Vector3Value/Value) is changed.
 	 */
 	readonly Changed: RBXScriptSignal<(value: Vector3) => void>;
 }

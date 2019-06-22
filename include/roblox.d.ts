@@ -630,7 +630,7 @@ interface Axes {
 type AxesConstructor = new (...axes: Array<Enum.Axis | Enum.NormalId>) => Axes;
 declare const Axes: AxesConstructor;
 
-interface BrickColor<Number extends number = number, Name extends string = string> {
+interface BrickColor<Number extends number = any, Name extends string = any> {
 	/** The unique number that identifies the BrickColor */
 	readonly Number: number extends Number ? keyof BrickColorsByNumber : Number;
 	/** The name associated with the BrickColor */
@@ -1000,8 +1000,6 @@ interface BrickColorsByPalette {
 type GetByName<T extends BrickColorsByNumber[keyof BrickColorsByNumber]> = {
 	[K in keyof BrickColorsByNumber]: T extends BrickColorsByNumber[K] ? K : never
 }[keyof BrickColorsByNumber];
-
-type Zl = GetByName<"Turquoise">;
 
 interface BrickColorConstructor {
 	/** Returns a random BrickColor. */
@@ -1436,7 +1434,6 @@ declare const shared: object;
 declare function delay(delayTime: number, callback: Callback): void;
 declare function elapsedTime(): number;
 declare function require(moduleScript: ModuleScript | number): unknown;
-declare function settings(): GlobalSettings;
 declare function spawn(callback: Callback): void;
 declare function tick(): number;
 declare function time(): number;
@@ -1486,6 +1483,8 @@ interface CheckableTypes extends CheckablePrimitives {
 	NumberSequenceKeypoint: NumberSequenceKeypoint;
 	PathWaypoint: PathWaypoint;
 	PhysicalProperties: PhysicalProperties;
+	RBXScriptSignal: RBXScriptSignal;
+	RBXScriptConnection: RBXScriptConnection;
 	Random: Random;
 	Ray: Ray;
 	Rect: Rect;
