@@ -227,7 +227,7 @@ interface IterableIterator<T> extends Iterator<T> {
 	[Symbol.iterator](): IterableIterator<T>;
 }
 
-type IterableFunction<T> = Iterable<T> & (() => T | undefined);
+type IterableFunction<T> = Iterable<T> & (() => T);
 
 /** @rbxts array */
 interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
