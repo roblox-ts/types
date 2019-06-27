@@ -1008,6 +1008,42 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<BodyPartR15>
 	}
 	export type BodyPartR15 = BodyPartR15.Head | BodyPartR15.UpperTorso | BodyPartR15.LowerTorso | BodyPartR15.LeftFoot | BodyPartR15.LeftLowerLeg | BodyPartR15.LeftUpperLeg | BodyPartR15.RightFoot | BodyPartR15.RightLowerLeg | BodyPartR15.RightUpperLeg | BodyPartR15.LeftHand | BodyPartR15.LeftLowerArm | BodyPartR15.LeftUpperArm | BodyPartR15.RightHand | BodyPartR15.RightLowerArm | BodyPartR15.RightUpperArm | BodyPartR15.RootPart | BodyPartR15.Unknown;
+	export namespace BreakReason {
+		export interface Other {
+			Name: "Other";
+			Value: 0;
+			EnumType: EnumType<Enum.BreakReason>;
+		}
+
+		export const Other: Other;
+
+		export interface Error {
+			Name: "Error";
+			Value: 1;
+			EnumType: EnumType<Enum.BreakReason>;
+		}
+
+		export const Error: Error;
+
+		export interface UserBreakpoint {
+			Name: "UserBreakpoint";
+			Value: 3;
+			EnumType: EnumType<Enum.BreakReason>;
+		}
+
+		export const UserBreakpoint: UserBreakpoint;
+
+		export interface SpecialBreakpoint {
+			Name: "SpecialBreakpoint";
+			Value: 2;
+			EnumType: EnumType<Enum.BreakReason>;
+		}
+
+		export const SpecialBreakpoint: SpecialBreakpoint;
+
+		export function GetEnumItems(this: {}): Array<BreakReason>
+	}
+	export type BreakReason = BreakReason.Other | BreakReason.Error | BreakReason.UserBreakpoint | BreakReason.SpecialBreakpoint;
 	export namespace Button {
 		export interface Jump {
 			Name: "Jump";
@@ -1901,6 +1937,22 @@ declare namespace Enum {
 
 		export const DisconnectWrongVersion: DisconnectWrongVersion;
 
+		export interface DisconnectBySecurityPolicy {
+			Name: "DisconnectBySecurityPolicy";
+			Value: 281;
+			EnumType: EnumType<Enum.ConnectionError>;
+		}
+
+		export const DisconnectBySecurityPolicy: DisconnectBySecurityPolicy;
+
+		export interface DisconnectBlockedIP {
+			Name: "DisconnectBlockedIP";
+			Value: 282;
+			EnumType: EnumType<Enum.ConnectionError>;
+		}
+
+		export const DisconnectBlockedIP: DisconnectBlockedIP;
+
 		export interface PlacelaunchErrors {
 			Name: "PlacelaunchErrors";
 			Value: 512;
@@ -2087,7 +2139,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: {}): Array<ConnectionError>
 	}
-	export type ConnectionError = ConnectionError.OK | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+	export type ConnectionError = ConnectionError.OK | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 	export namespace ConnectionState {
 		export interface Connected {
 			Name: "Connected";
@@ -11979,6 +12031,7 @@ declare type CastsToEnum<T extends
 	| Enum.BinType
 	| Enum.BodyPart
 	| Enum.BodyPartR15
+	| Enum.BreakReason
 	| Enum.Button
 	| Enum.ButtonStyle
 	| Enum.CameraMode
