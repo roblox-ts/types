@@ -7971,7 +7971,23 @@ interface ImageButton extends GuiButton {
 	 * The SliceCenter property determines the center of a nine-slice image when [ImageButton.ScaleType](https://developer.roblox.com/api-reference/property/ImageButton/ScaleType) is set to [Enum.ScaleType/Slice](https://developer.roblox.com/search#stq=ScaleType/Slice).
 	 */
 	SliceCenter: Rect;
-	/** [NO DOCUMENTATION] */
+	/** 
+	 * Scales the 9slice edges by the specified ratio. This means that the edges around the 9slice will grow as if you'd uploaded a new version of the texture upscaled. Defaults to 1.0.
+	 *
+	 * As a multiplier for the borders of a 9slice, it is useful for reusing one rounded corner image for multiple radii
+	 *
+	 * ![Scaling example][1]
+	 *
+	 * ## See also
+	 *
+	 *   - [ImageButton.ScaleType](https://developer.roblox.com/api-reference/property/ImageButton/ScaleType), determines how an image will scale if displayed in a UI element whose size differs from the source image
+	 *
+	 *   - [ImageLabel.ScaleCenter](https://developer.roblox.com/search#stq=ScaleCenter),determines the center of a 9slice image
+	 *
+	 *   - [ImageButton.SliceScale](https://developer.roblox.com/api-reference/property/ImageButton/SliceScale), the same property in terms of functionality but for [ImageButtons](https://developer.roblox.com/api-reference/class/ImageButton)
+	 *
+	 * [1]: https://developer.roblox.com/assets/5d12bcee77f34fd55839cc1d/image.png
+	 */
 	SliceScale: number;
 	/** 
 	 * TileSize sets the tiling size of the ImageButton. The default `UDim2` values are 1,0,1,0. The scale component of the UDim2 will scale the tile based on the size of the ImageButton. The offset is in raw pixels. The tiling starts at the upper left-hand corner of the image. For example a scale of 0.5 will mean the tile will be half the size of the ImageButton (in the corresponding axis).
@@ -8172,7 +8188,23 @@ interface ImageLabel extends GuiLabel {
 	 * The SliceCenter property determines the center of a nine-slice image when [ImageLabel.ScaleType](https://developer.roblox.com/api-reference/property/ImageLabel/ScaleType) is set to [Enum.ScaleType.Slice](https://developer.roblox.com/search#stq=ScaleType).
 	 */
 	SliceCenter: Rect;
-	/** [NO DOCUMENTATION] */
+	/** 
+	 * Scales the 9slice edges by the specified ratio. This means that the edges around the 9slice will grow as if you'd uploaded a new version of the texture upscaled. Defaults to 1.0.
+	 *
+	 * As a multiplier for the borders of a 9slice, it is useful for reusing one rounded corner image for multiple radii
+	 *
+	 * ![Scaling example][1]
+	 *
+	 * ## See also
+	 *
+	 *   - [ImageLabel.ScaleType](https://developer.roblox.com/api-reference/property/ImageLabel/ScaleType), determines how an image will scale if displayed in a UI element whose size differs from the source image
+	 *
+	 *   - [ImageLabel.ScaleCenter](https://developer.roblox.com/search#stq=ScaleCenter),determines the center of a 9slice image
+	 *
+	 *   - [ImageLabel.SliceScale](https://developer.roblox.com/api-reference/property/ImageLabel/SliceScale), the same property in terms of functionality but for [ImageLabels](https://developer.roblox.com/api-reference/class/ImageLabel)
+	 *
+	 * [1]: https://developer.roblox.com/assets/5d12bcee77f34fd55839cc1d/image.png
+	 */
 	SliceScale: number;
 	/** 
 	 * TileSize sets the tiling size of the ImageLabel. The default `UDim2` values are 1,0,1,0. The scale component of the UDim2 will scale the tile based on the size of the ImageLabel. The offset is in raw pixels. The tiling starts at the upper left-hand corner of the image. For example a scale of 0.5 will mean the tile will be half the size of the ImageLabel (in the corresponding axis).
@@ -9687,13 +9719,7 @@ interface HttpRequest extends Instance {
  *
  * HttpService starts off as disabled by default.
  *
- * To [enable](https://developer.roblox.com/api-reference/property/HttpService/HttpEnabled) HTTP requests, the HttpService must be enabled through Studio's Game Settings by opening the game's settings via the **Game Settings** button on the *Home* tab of the game's studio window (see image below):
- *
- * ![Navigate to the Game Settings button][1]
- *
- * Within the Game Settings window, navigate to the **Security** tab and select the *On* option under **Allow HTTP Requests** (see image below).
- *
- * ![Allow HTTP Requests][2]
+ * To [enable](https://developer.roblox.com/api-reference/property/HttpService/HttpEnabled) HTTP requests, the HttpService must be enabled through Studio's Game Settings by opening the game's settings via the `Game Settings` button on the `Home` tab of the game's studio window. Within the Game Settings window, navigate to the `Options` tab and select the *On* option under `Allow HTTP Requests`.
  *
  * ## Usage ideas
  *
@@ -9712,10 +9738,6 @@ interface HttpRequest extends Instance {
  * ## See also
  *
  * See [here][3] for a detailed guide on sending HTTP requests.Sending HTTP requests.
- *
- * [1]: https://developer.roblox.com/assets/5b7cc11cfcd8df450b22da14/HttpRequestsSetting.png
- *
- * [2]: https://developer.roblox.com/assets/5b7cc0dfacedd45c0bf7b421/GameSettingsButton.png
  *
  * [3]: http://robloxdev.com/articles/Sending-HTTP-requests
  */
@@ -18203,7 +18225,19 @@ interface PluginAction extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly ActionId: string;
-	/** [NO DOCUMENTATION] *
+	/** 
+	 * This property determines whether the `PluginAction` will be hidden from Studio's shortcuts view. Useful for contextual actions. It defaults to true.
+	 *
+	 * ## See also
+	 *
+	 *   - [Plugin.CreationPluginAction](https://developer.roblox.com/search#stq=CreationPluginAction), creates a PluginAction
+	
+	 * This property determines whether the `PluginAction` will be hidden from Studio's shortcuts view. Useful for contextual actions. It defaults to true.
+	 *
+	 * ## See also
+	 *
+	 *   - [Plugin.CreationPluginAction](https://developer.roblox.com/search#stq=CreationPluginAction), creates a PluginAction
+	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly AllowBinding: boolean;
@@ -18734,6 +18768,9 @@ interface SunRaysEffect extends PostEffect {
 	Spread: number;
 }
 
+/** 
+ 
+ */
 interface RbxAnalyticsService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RbxAnalyticsService";
@@ -23774,6 +23811,9 @@ interface UIGridLayout extends UIGridStyleLayout {
 	StartCorner: Enum.StartCorner;
 }
 
+/** 
+ 
+ */
 interface UIInlineLayout extends UIGridStyleLayout {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "UIInlineLayout";
@@ -26376,6 +26416,9 @@ interface Vector3Value extends ValueBase {
 	readonly Changed: RBXScriptSignal<(value: Vector3) => void>;
 }
 
+/** 
+ 
+ */
 interface VersionControlService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "VersionControlService";
