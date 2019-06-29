@@ -500,8 +500,7 @@ namespace ClassInformation {
 					.replace(/^\s+\*/, "");
 
 				return myStr.concat(
-					trimmedCode ? tabChar + " *\n" + tabChar + " * " + trimmedCode + "\n" + tabChar + " * " : "",
-					"\n",
+					trimmedCode ? tabChar + " *\n" + tabChar + " * " + trimmedCode + "\n" + tabChar + " *" : "",
 				);
 			});
 
@@ -677,6 +676,10 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
+	private formatDescription(desc: string) {
+		return `/** ${desc} */`;
+	}
+
 	private writeSignatures(
 		rbxMember: ApiMemberBase,
 		getNodes: (tsImplInterface: ts.InterfaceDeclaration) => Array<ts.PropertySignature | ts.MethodSignature>,
@@ -688,7 +691,7 @@ export class ClassGenerator extends Generator {
 			const signatures = Array<string>();
 			const documentations = Array<string>();
 			if (description) {
-				documentations.push(`/** ${description} */`);
+				documentations.push(this.formatDescription(description));
 			}
 			const nodes = getNodes(tsImplInterface);
 			nodes
@@ -832,8 +835,8 @@ export class ClassGenerator extends Generator {
 			if (this.security === "None") {
 				const descriptions = new Array<string>();
 				const desc = rbxClass.Description;
-				if (desc) {
-					descriptions.push(`/** ${desc} */`);
+				if (desc && desc.trim()) {
+					descriptions.push(this.formatDescription(desc));
 				}
 				if (tsImplInterface) {
 					tsImplInterface.getLeadingCommentRanges().forEach(comment => descriptions.push(comment.getText()));
