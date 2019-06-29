@@ -578,8 +578,8 @@ interface RemoteEvent extends Instance {
 }
 
 interface RemoteFunction extends Instance {
-	OnClientInvoke: (arguments: Array<any>) => void;
-	OnServerInvoke: (player: Player, arguments: Array<any>) => void;
+	OnClientInvoke: (...arguments: Array<any>) => void;
+	OnServerInvoke: (player: Player, ...arguments: Array<any>) => void;
 	InvokeClient(player: Player, ...arguments: Array<any>): unknown;
 	InvokeServer<R = unknown>(...arguments: Array<any>): R;
 }
@@ -619,48 +619,8 @@ interface ServerScriptService {}
 interface ServerStorage {}
 
 interface StarterGui extends BasePlayerGui {
-	GetCore(parameterName: "AvatarContextMenuEnabled"): boolean;
-	GetCore(parameterName: "PointsNotificationsActive"): boolean;
-	GetCore(parameterName: "BadgesNotificationsActive"): boolean;
-	GetCore(parameterName: "ChatActive"): boolean;
-	GetCore(parameterName: "ChatWindowSize"): UDim2;
-	GetCore(parameterName: "ChatWindowPosition"): UDim2;
-	GetCore(parameterName: "ChatBarDisabled"): boolean;
-	GetCore(parameterName: "GetBlockedUserIds"): Array<number>;
-	GetCore(parameterName: "PlayerBlockedEvent"): BindableEvent;
-	GetCore(parameterName: "PlayerUnblockedEvent"): BindableEvent;
-	GetCore(parameterName: "PlayerMutedEvent"): BindableEvent;
-	GetCore(parameterName: "PlayerUnmutedEvent"): BindableEvent;
-	GetCore(parameterName: "PlayerFriendedEvent"): BindableEvent;
-	GetCore(parameterName: "PlayerUnfriendedEvent"): BindableEvent;
-	GetCore(parameterName: "DeveloperConsoleVisible"): boolean;
-	GetCore(parameterName: "VRRotationIntensity"): "Low" | "High" | "Smooth";
-
-	SetCore(parameterName: "ChatActive", active: boolean): void;
-	SetCore(parameterName: "PointsNotificationsActive", active: boolean): void;
-	SetCore(parameterName: "BadgeNotificationsActive", active: boolean): void;
-	SetCore(parameterName: "ResetButtonCallback", enabled: boolean): void;
-	SetCore(parameterName: "ResetButtonCallback", callback: BindableEvent): void;
-	SetCore(parameterName: "ChatMakeSystemMessage", configTable: MakeSystemMessageConfig): void;
-	SetCore(parameterName: "ChatWindowSize", windowSize: UDim2): void;
-	SetCore(parameterName: "ChatWindowPosition", windowPosition: UDim2): void;
-	SetCore(parameterName: "ChatBarDisabled", disabled: boolean): void;
-	SetCore(parameterName: "SendNotification", configTable: boolean): void;
-	SetCore(parameterName: "TopbarEnabled", enabled: boolean): void;
-	SetCore(parameterName: "DeveloperConsoleVisible", visibility: boolean): void;
-	SetCore(parameterName: "PromptSendFriendRequest", player: Player): void;
-	SetCore(parameterName: "PromptUnfriend", player: Player): void;
-	SetCore(parameterName: "PromptBlockPlayer", player: Player): void;
-	SetCore(parameterName: "PromptUnblockPlayer", player: Player): void;
-	SetCore(parameterName: "AvatarContextMenuEnabled", enabled: boolean): void;
-	SetCore(parameterName: "AddAvatarContextMenuOption", option: Enum.AvatarContextMenuOption): void;
-	SetCore(parameterName: "AddAvatarContextMenuOption", option: [string, BindableFunction]): void;
-	SetCore(parameterName: "RemoveAvatarContextMenuOption", option: Enum.AvatarContextMenuOption): void;
-	SetCore(parameterName: "RemoveAvatarContextMenuOption", option: [string, BindableFunction]): void;
-	SetCore(
-		parameterName: "CoreGuiChatConnections",
-		connections: { [name: string]: BindableEvent | BindableFunction },
-	): void;
+	GetCore<T extends keyof GettableCores>(parameter: T, option: GettableCores[T]): void;
+	SetCore<T extends keyof SettableCores>(parameter: T, option: SettableCores[T]): void;
 }
 
 interface SurfaceGui extends LayerCollector {

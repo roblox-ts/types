@@ -1453,6 +1453,47 @@ declare namespace math {
 	function clamp(n: number, min: number, max: number): number;
 }
 
+interface GettableCores {
+	AvatarContextMenuEnabled: boolean;
+	PointsNotificationsActive: boolean;
+	BadgesNotificationsActive: boolean;
+	ChatActive: boolean;
+	ChatWindowSize: UDim2;
+	ChatWindowPosition: UDim2;
+	ChatBarDisabled: boolean;
+	GetBlockedUserIds: Array<number>;
+	PlayerBlockedEvent: BindableEvent;
+	PlayerUnblockedEvent: BindableEvent;
+	PlayerMutedEvent: BindableEvent;
+	PlayerUnmutedEvent: BindableEvent;
+	PlayerFriendedEvent: BindableEvent;
+	PlayerUnfriendedEvent: BindableEvent;
+	DeveloperConsoleVisible: boolean;
+	VRRotationIntensity: "Low" | "High" | "Smooth";
+}
+
+interface SettableCores {
+	ChatActive: boolean;
+	PointsNotificationsActive: boolean;
+	BadgeNotificationsActive: boolean;
+	ResetButtonCallback: boolean | BindableEvent;
+	ChatMakeSystemMessage: MakeSystemMessageConfig;
+	ChatWindowSize: UDim2;
+	ChatWindowPosition: UDim2;
+	ChatBarDisabled: boolean;
+	SendNotification: boolean;
+	TopbarEnabled: boolean;
+	DeveloperConsoleVisible: boolean;
+	PromptSendFriendRequest: Player;
+	PromptUnfriend: Player;
+	PromptBlockPlayer: Player;
+	PromptUnblockPlayer: Player;
+	AvatarContextMenuEnabled: boolean;
+	AddAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
+	RemoveAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
+	CoreGuiChatConnections: { [name: string]: BindableEvent | BindableFunction };
+}
+
 // type
 interface CheckablePrimitives {
 	nil: undefined;
