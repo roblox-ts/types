@@ -578,8 +578,8 @@ interface RemoteEvent extends Instance {
 }
 
 interface RemoteFunction extends Instance {
-	OnClientInvoke: (arguments: Array<any>) => void;
-	OnServerInvoke: (player: Player, arguments: Array<any>) => void;
+	OnClientInvoke: (...arguments: Array<any>) => void;
+	OnServerInvoke: (player: Player, ...arguments: Array<any>) => void;
 	InvokeClient(player: Player, ...arguments: Array<any>): unknown;
 	InvokeServer<R = unknown>(...arguments: Array<any>): R;
 }

@@ -19122,7 +19122,7 @@ interface RemoteFunction extends Instance {
 	 *
 	 * To fire from the client to the server, you should use [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer) and [RemoteFunction.OnServerInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnServerInvoke).
 	 */
-	OnClientInvoke: (arguments: Array<any>) => void;
+	OnClientInvoke: (...arguments: Array<any>) => void;
 	/** 
 	 * The OnServerInvoke event fires the bound functions in `Script`s when [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer) is called by the server from a `LocalScript`. When the bound function returns, the returned values are sent back to the client.
 	 *
@@ -19138,7 +19138,7 @@ interface RemoteFunction extends Instance {
 	 *
 	 *  - Only one function can be assigned to OnServerInvoke at a time. If multiple functions are assigned, only the last function to be assigned will be used.
 	 */
-	OnServerInvoke: (player: Player, arguments: Array<any>) => void;
+	OnServerInvoke: (player: Player, ...arguments: Array<any>) => void;
 }
 
 /** 
