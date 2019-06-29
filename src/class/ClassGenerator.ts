@@ -500,8 +500,7 @@ namespace ClassInformation {
 					.replace(/^\s+\*/, "");
 
 				return myStr.concat(
-					trimmedCode ? tabChar + " *\n" + tabChar + " * " + trimmedCode + "\n" + tabChar + " * " : "",
-					"\n",
+					trimmedCode ? tabChar + " *\n" + tabChar + " * " + trimmedCode + "\n" + tabChar + " *" : "",
 				);
 			});
 
@@ -832,7 +831,7 @@ export class ClassGenerator extends Generator {
 			if (this.security === "None") {
 				const descriptions = new Array<string>();
 				const desc = rbxClass.Description;
-				if (desc) {
+				if (desc && desc.trim()) {
 					descriptions.push(`/** ${desc} */`);
 				}
 				if (tsImplInterface) {

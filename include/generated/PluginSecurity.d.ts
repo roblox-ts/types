@@ -681,7 +681,6 @@ interface DataModel extends ServiceProvider {
 {
 ```
 	 * 
-
 	 * lua
 	 *
 	 * ["name"] = "name",
@@ -704,14 +703,12 @@ interface DataModel extends ServiceProvider {
 }
 ```
 	 * 
-
 	 * The subsequent entries in the table returned are dictionaries containing the above statistics for jobs performed by the task scheduler. For example:
 	 *
 	 * ```lua
 {
 ```
 	 * 
-
 	 * lua
 	 *
 	 * ["name"] = "Heartbeat",
@@ -734,7 +731,6 @@ interface DataModel extends ServiceProvider {
 }
 ```
 	 * 
-
 	 * ## See also
 	 *
 	 *  - `TaskScheduler`
@@ -760,7 +756,6 @@ interface DataModel extends ServiceProvider {
 {
 ```
 	 * 
-
 	 * lua
 	 *
 	 * ["name"] = "name",
@@ -779,14 +774,12 @@ interface DataModel extends ServiceProvider {
 }
 ```
 	 * 
-
 	 * The subsequent entries in the table returned are dictionaries containing the above statistics for jobs performed by the task scheduler. For example:
 	 *
 	 * ```lua
 {
 ```
 	 * 
-
 	 * lua
 	 *
 	 * ["name"] = "Heartbeat",
@@ -805,7 +798,6 @@ interface DataModel extends ServiceProvider {
 }
 ```
 	 * 
-
 	 * ## See also
 	 *
 	 *  - `TaskScheduler`
@@ -857,7 +849,6 @@ game:SetPlaceId(placeId)
 local dataStore = DataStoreService:GetDataStore("Data")
 ```
 	 * 
-
 	 * You can use [DataModel.SetUniverseId](https://developer.roblox.com/api-reference/function/DataModel/SetUniverseId) to set the [DataModel.GameId](https://developer.roblox.com/api-reference/property/DataModel/GameId) of the game instance. However, it is the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) that must be set to access the `DataStoreService`.
 	 * @param placeId The ID to set the `DataModel/PlaceId` to
 	 */
@@ -922,7 +913,6 @@ interface StudioTheme extends Instance {
 settings().Studio.Theme:GetColor(Enum.StudioStyleGuideColor.MainButton, Enum.StudioStyleGuideModifier.Disabled)
 ```
 	 * 
-
 	 * See the [StudioStyleGuideColor](https://developer.roblox.com/search#stq=StudioStyleGuideColor) reference for a list of Studio elements and [StudioStyleGuideModifier](https://developer.roblox.com/search#stq=StudioStyleGuideModifier) for a list of modifiers.
 	 * @param styleguideitem The element you want to get the theme color for
 	 * @param modifier The modifier you want to place on the `StyleGuideColor` element
