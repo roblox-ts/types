@@ -12,14 +12,14 @@
 	"types": "include/roblox.d.ts",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/roblox-ts/rbx-types.git"
+		"url": "git+https://github.com/roblox-ts/types.git"
 	},
 	"author": "roblox-ts",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/roblox-ts/rbx-types/issues"
+		"url": "https://github.com/roblox-ts/types/issues"
 	},
-	"homepage": "https://github.com/roblox-ts/rbx-types#readme",
+	"homepage": "https://github.com/roblox-ts/types#readme",
 	"devDependencies": {
 		"@types/fs-extra": "^7.0.0",
 		"@types/jsdom": "^12.2.3",

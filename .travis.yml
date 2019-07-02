@@ -15,13 +15,14 @@ script:
   - node out/index.js
 
   - cd ..
-  - git clone --depth=50 --branch=deploy https://github.com/roblox-ts/rbx-types.git deploy
+  - git clone --depth=50 --branch=deploy https://github.com/roblox-ts/types.git deploy
 
   - ls
+  - mkdir -p deploy/include
   - rm -rf deploy/include/*
-  - cp -r rbx-types/include/* deploy/include
-  - cp rbx-types/plugin.d.ts deploy/plugin.d.ts
-  - cp rbx-types/README.md deploy/README.md
+  - cp -r types/include/* deploy/include
+  - cp types/plugin.d.ts deploy/plugin.d.ts
+  - cp types/README.md deploy/README.md
   - cd deploy
 
   - git add -A
@@ -32,4 +33,4 @@ script:
     else
       git diff-index --quiet HEAD || git commit -m "Manual Update";
     fi
-  - git push https://${GIT_TOKEN}@github.com/roblox-ts/rbx-types.git deploy
+  - git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git deploy
