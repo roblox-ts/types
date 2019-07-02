@@ -4404,17 +4404,11 @@ interface Constraint extends Instance {
 }
 
 /** 
- * An AlignOrientation is a constraint that applies a torque to make its attachments align. Like other constraints, this has two `Attachment`s. In this case the two attachments are constrained to be oriented in the same direction but not necessarily the same position.
+ * **AlignOrientation** is a constraint that applies a torque to make its attachments align. Like other constraints, this has two [Attachments](https://developer.roblox.com/api-reference/class/Attachment). In this case, the two attachments are constrained to be **oriented** in the same direction but not necessarily the same position.
  *
- * By default, this constraint only applies torque on [Constraint.Attachment0](https://developer.roblox.com/api-reference/property/Constraint/Attachment0)'s parent, although it can be configured to apply torque on both attachments. Note that this torque can also be limited to a max amount via [AlignOrientation.MaxTorque](https://developer.roblox.com/api-reference/property/AlignOrientation/MaxTorque).
+ * By default, this constraint only applies torque on the parent of [Attachment0](https://developer.roblox.com/api-reference/property/Constraint/Attachment0), although it can be configured to apply torque on both attachments. This torque can be limited to a max amount via [AlignOrientation.MaxTorque](https://developer.roblox.com/api-reference/property/AlignOrientation/MaxTorque).
  *
- * Note that any torque created by AlignOrientation will be applied about the center of mass of the parent of the attachments (or the center of mass of rigidly connected parts to the parents).
- *
- * Take a look at the gif below for a demonstration of AlignmentOrientation on a `BasePart`!
- *
- * ![AlignmentOrientation Demonstration][1]
- *
- * [1]: https://developer.roblox.com/assets/5b38275a073818f8577295aa/alignorientation.gif
+ * Note that any torque created by **AlignOrientation** will be applied about the center of mass of the parent of the attachments (or the center of mass of parts rigidly connected to the parents). Also note that if this constraint attaches one part (**A**) to another part (**B**) that is anchored or connected to an anchored part (**Z**), part **A** will not be locally simulated when interacting with a player.
  */
 interface AlignOrientation extends Constraint {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -4943,22 +4937,48 @@ interface PrismaticConstraint extends SlidingBallConstraint {
 }
 
 /** 
- * A SpringConstraint applies a force to its `Attachment` based on spring and damper behavior. Assuming the SpringConstraint has [SpringConstraint.Stiffness](https://developer.roblox.com/api-reference/property/SpringConstraint/Stiffness), it will apply forces based on how far apart the Attachments are. If the Attachments are further apart than the SpringConstraint’s [SpringConstraint.FreeLength](https://developer.roblox.com/api-reference/property/SpringConstraint/FreeLength) then the Attachments will be forced together. If they are closer than the FreeLength then the Attachments will be forced apart. In addition, if [SpringConstraint.Damping](https://developer.roblox.com/api-reference/property/SpringConstraint/Damping) is set then there will be a damping component to the applied force that scales with the velocity of the attachments.
+ * A **SpringConstraint** applies a force to its [Attachments](https://developer.roblox.com/api-reference/class/Attachment) based on spring and damper behavior. Assuming the constraint has [SpringConstraint.Stiffness](https://developer.roblox.com/api-reference/property/SpringConstraint/Stiffness), it will apply forces based on how far apart the attachments are. If the attachments are further apart than the constraint's [SpringConstraint.FreeLength](https://developer.roblox.com/api-reference/property/SpringConstraint/FreeLength), the attachments will be forced together. If they are closer than the [SpringConstraint.FreeLength](https://developer.roblox.com/api-reference/property/SpringConstraint/FreeLength), the attachments will be forced apart. In addition, if [SpringConstraint.Damping](https://developer.roblox.com/api-reference/property/SpringConstraint/Damping) is set, there will be a damping component to the applied force that scales with the velocity of the attachments.
  *
- * The following code shows how the force of a SpringConstraint is calculated:
+ * This constraint, along with a `CylindricalConstraint`, is ideal for building vehicle suspension as demonstrated in [Building a Basic Car](https://developer.roblox.com/search#stq=building%20carkit%201).
+ *
+ * Note that if this constraint attaches one part (**A**) to another part (**B**) that is anchored or connected to an anchored part (**Z**), part **A** will not be locally simulated when interacting with a player.
+ *
+ * ## Calculating SpringConstraint Force
+ *
+ * The following helper function exhibits how the force of a `SpringConstraint` is calculated based on various properties of the constraint and its attachments.
  *
  * ```lua
-length = constraint.CurrentLength
-if constraint.LimitsEnabled then
-	length = clamp(constraint.CurrentLength, constraint.MinLength, constraint.MaxLength) -- Constrain the length between the Min/Max length.
+local function getSpringForce(spring)
+	if not spring:IsA("SpringConstraint") then
+		warn(spring .. " is not a spring constraint!")
+		return
+	end
+
+	local currentLength = spring.CurrentLength
+	local freeLength = spring.FreeLength
+	if (spring.LimitsEnabled) then
+		currentLength = math.clamp(currentLength, spring.MinLength, spring.MaxLength)
+		freeLength = math.clamp(freeLength, spring.MinLength, spring.MaxLength)
+	end
+	local springLength = currentLength - freeLength
+
+	local axis = spring.Attachment0.WorldPosition - spring.Attachment1.WorldPosition
+	if axis.Magnitude > 0 then
+		axis = axis.Unit
+	end
+	local effectiveVelocity = spring.Attachment0.Parent.Velocity - spring.Attachment1.Parent.Velocity
+
+	-- https://en.wikipedia.org/wiki/Harmonic_oscillator
+	-- f = -k * x - c * dx/dt + fext
+	-- Gravity may not be all of the external forces; friction may affect this, but it's harder to account for
+	local forceExternal = Vector3.new(0, -workspace.Gravity, 0)
+	local force = -spring.Stiffness * springLength - spring.Damping * axis:Dot(effectiveVelocity) + axis:Dot(forceExternal)
+
+	force = math.clamp(force, -spring.MaxForce, spring.MaxForce)
+	return force
 end
-axis = (Attachment0.Position - Attachment1.Position).unit
-deltaV = Attachment0.Velocity - Attachment1.Velocity
-force = -constraint.Stiffness * length - constraint.Damping * deltaV:Dot(axis)
-force = clamp(force, -constraint.MaxForce, constraint.MaxForce)
 ```
  *
- * `force * axis` will be applied to Attachment0's part at Attachment0's Position. `-force * axis` will be applied to Attachment1’s part at Attachment1’s Position.
  */
 interface SpringConstraint extends Constraint {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -9493,7 +9513,7 @@ interface GuiService extends Instance {
 	 */
 	GuiNavigationEnabled: boolean;
 	/** 
-	 * Status of the Roblox escape menu CoreGui. Returns true if the menu is open, false if not.
+	 * Returns true if any menu of `CoreGui` is open.
 	 */
 	readonly MenuIsOpen: boolean;
 	/** 
@@ -19175,11 +19195,21 @@ interface RobloxReplicatedStorage extends Instance {
  *
  * `RunService` also provides events that help you manage time. `Stepped` and `Heartbeat` can be used for game logic while `RenderStepped` can be used for visual effects. These events fire with "delta time" values. `Stepped` also includes the total amount of time passed in a game. Correctly using the change in time values for game logic is important for changing values over time. As a general rule, multiply your change in time by the rate of change to get the amount a value should change in one frame. For example:
  *
- *     -- Note: delta just means "change in/of"
+ * ```lua
+```
  *
- *     speed = deltaPosition / deltaTime
+ * lua
  *
- *     deltaPosition = speed * deltaTime
+ * -- Note: delta just means "change in/of"
+ *
+ * speed = deltaPosition / deltaTime
+ *
+ * deltaPosition = speed * deltaTime
+ *
+ * ```lua
+
+```
+ *
  */
 interface RunService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -19247,11 +19277,72 @@ For convenience, the '''RenderPriority''' enum can be used to determine the inte
 	 */
 	BindToRenderStep(name: string, priority: number, callback: Function): void;
 	/** 
-	 * If the code that invoked this method is running in a client context (within or originating from a LocalScript), this method returns true. In all other cases, it returns false. If this returns true, the code has access to client-side features like `RunService.RenderStepped` or `Players.LocalPlayer`.
+	 * This function returns whether the current environment is running on the client.
+	 *
+	 * If the code that invoked this method is running in a client context (in a `LocalScript` or a `ModuleScript` required by a `LocalScript`) then this method will return *true*. In all other cases, this function will return *false*.
+	 *
+	 * If this function returns true, then the current environment can access client-only features like [RunService.RenderStepped](https://developer.roblox.com/api-reference/event/RunService/RenderStepped) or [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer).
+	 *
+	 * ## RunService test function results
+	 *
+	 * | Environment | IsStudio | IsClient | IsServer | IsEdit | IsRunning | IsRunMode |
+	 * | --- | --- | --- | --- | --- | --- | --- |
+	 * | Live Player | false | true | false |
+	 * | --- | --- | --- |
+	 * | Live Server | false | false | true |
+	 * | --- | --- | --- |
+	 * | Edit Mode | true | true | true | true | false | false |
+	 * | --- | --- | --- | --- | --- | --- |
+	 * | Edit Mode (Team Create) | true | true | false | true | false | false |
+	 * | --- | --- | --- | --- | --- | --- |
+	 * | Run Mode | true | true | true | false | true | true |
+	 * | --- | --- | --- | --- | --- | --- |
+	 * | Play Mode (Client) | true | true | false | false | true | false |
+	 * | --- | --- | --- | --- | --- | --- |
+	 * | Play Mode (Server) | true | false | true | false | true | true |
+	 * | --- | --- | --- | --- | --- | --- |
+	 * | Team Test Player | true | true | false | false | true | false |
+	 * | --- | --- | --- | --- | --- | --- |
+	 * | Legacy Play Mode[^1] | true | true | true | false | true | false |
+	 * | --- | --- | --- | --- | --- | --- |
+	 *
+	 * ## See also
+	 *
+	 *  - [RunService.IsServer](https://developer.roblox.com/api-reference/function/RunService/IsServer)
+	 *
+	 *  - [RunService.IsStudio](https://developer.roblox.com/api-reference/function/RunService/IsStudio)
+	 *
+	 *  - [RunService.IsEdit](https://developer.roblox.com/api-reference/function/RunService/IsEdit)
+	 *
+	 *  - [RunService.IsRunning](https://developer.roblox.com/api-reference/function/RunService/IsRunning)
+	 *
+	 *  - [RunService.IsRunMode](https://developer.roblox.com/api-reference/function/RunService/IsRunMode)
+	 *
+	 * [^1]: ‘Legacy Play Mode’ refers to Play Mode with Accurate Play Solo disabled
+	 * @returns Whether the current environment is running the client
 	 */
 	IsClient(): boolean;
 	/** 
-	 * This method returns true if and only if the "Run" button was pressed within Studio.
+	 * This function returns whether the ‘Run’ button has been pressed to run the simulation in Roblox Studio.
+	 *
+	 * If the user has pressed ‘Run’, then this function will return *true*. This function will continue to return *true* if the simulation has been paused using the ‘Pause’ button. However, once it has been stopped using the ‘Stop’ button it will revert to returning *false*.
+	 *
+	 * Roblox Studio only enters run mode when the ‘Run’ button is pressed, not the ‘Play’ button. This function will also return false if the simulation was started using [RunService.Run](https://developer.roblox.com/api-reference/function/RunService/Run) rather than the ‘Run’ button.
+	 *
+	 * ## RunService test function results
+	 *
+	 * ## See also
+	 *
+	 *  - [RunService.IsClient](https://developer.roblox.com/api-reference/function/RunService/IsClient)
+	 *
+	 *  - [RunService.IsServer](https://developer.roblox.com/api-reference/function/RunService/IsServer)
+	 *
+	 *  - [RunService.IsStudio](https://developer.roblox.com/api-reference/function/RunService/IsStudio)
+	 *
+	 *  - [RunService.IsRunning](https://developer.roblox.com/api-reference/function/RunService/IsRunning)
+	 *
+	 *  - [RunService.IsEdit](https://developer.roblox.com/api-reference/function/RunService/IsEdit)
+	 * @returns Whether the ‘Run’ button has been pressed to run the simulation in Roblox Studio
 	 */
 	IsRunMode(): boolean;
 	/** 
@@ -19494,39 +19585,19 @@ interface ServerStorage extends Instance {
 	readonly ClassName: "ServerStorage";
 }
 
-/** 
- * A ServiceProvider is an abstract class, which stores, and provides certain singleton classes, depending on what inherited class you are using its members with.
- */
 interface ServiceProvider extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ServiceProvider" | "DataModel" | "GenericSettings" | "AnalysticsSettings" | "GlobalSettings" | "UserSettings";
-	/** 
-	 * Returns the service specified by the given className if it's already created, errors for an invalid name.
-	 */
+
 	FindService(className: string): Instance | undefined;
 	FindService(className: string): Services[keyof Services] | undefined;
-	/** 
-	 * Returns a service with the class name requested. When called with the name of a service (such as `Debris`) it will return the instance of that service. If the service does not yet exist it will be created and the new service is returned. This is the only way to create some services, and can also be used for services that have unusual names, e.g. RunService's name is "Run Service".
-	 *
-	 * ## Notes
-	 *
-	 * * This function will return nil if the className parameter is an existing class, but the class is not a service.
-	 *
-	 * * If you attempt to fetch a service that is present under another Object, an error will be thrown stating that the "singleton serviceName already exists".
-	 */
+
 	GetService<T extends keyof Services>(className: T): Services[T];
 	GetService(className: string): Services[keyof Services] | undefined;
-	/** 
-	 * Fires when the current place is exited.
-	 */
 	readonly Close: RBXScriptSignal<() => void>;
-	/** 
-	 * Fired when a service is created.
-	 */
+
 	readonly ServiceAdded: RBXScriptSignal<(service: Services[keyof Services]) => void>;
-	/** 
-	 * Fired when a service is about to be removed.
-	 */
+
 	readonly ServiceRemoving: RBXScriptSignal<(service: Services[keyof Services]) => void>;
 }
 
