@@ -1503,6 +1503,7 @@ interface CheckablePrimitives {
 	table: object & Array<unknown>;
 	userdata: unknown;
 	function: Callback;
+	thread: thread;
 }
 
 /**  Returns the type of its only argument, coded as a string. */
