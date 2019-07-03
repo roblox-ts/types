@@ -19585,19 +19585,39 @@ interface ServerStorage extends Instance {
 	readonly ClassName: "ServerStorage";
 }
 
+/** 
+ * A ServiceProvider is an abstract class, which stores, and provides certain singleton classes, depending on what inherited class you are using its members with.
+ */
 interface ServiceProvider extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ServiceProvider" | "DataModel" | "GenericSettings" | "AnalysticsSettings" | "GlobalSettings" | "UserSettings";
-
+	/** 
+	 * Returns the service specified by the given className if it's already created, errors for an invalid name.
+	 */
 	FindService(className: string): Instance | undefined;
 	FindService(className: string): Services[keyof Services] | undefined;
-
+	/** 
+	 * Returns a service with the class name requested. When called with the name of a service (such as `Debris`) it will return the instance of that service. If the service does not yet exist it will be created and the new service is returned. This is the only way to create some services, and can also be used for services that have unusual names, e.g. RunService's name is "Run Service".
+	 *
+	 * ## Notes
+	 *
+	 * * This function will return nil if the className parameter is an existing class, but the class is not a service.
+	 *
+	 * * If you attempt to fetch a service that is present under another Object, an error will be thrown stating that the "singleton serviceName already exists".
+	 */
 	GetService<T extends keyof Services>(className: T): Services[T];
 	GetService(className: string): Services[keyof Services] | undefined;
+	/** 
+	 * Fires when the current place is exited.
+	 */
 	readonly Close: RBXScriptSignal<() => void>;
-
+	/** 
+	 * Fired when a service is created.
+	 */
 	readonly ServiceAdded: RBXScriptSignal<(service: Services[keyof Services]) => void>;
-
+	/** 
+	 * Fired when a service is about to be removed.
+	 */
 	readonly ServiceRemoving: RBXScriptSignal<(service: Services[keyof Services]) => void>;
 }
 
