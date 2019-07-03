@@ -866,3 +866,8 @@ type ReturnType<T extends (...args: Array<any>) => any> = T extends (...args: Ar
 type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (...args: Array<any>) => infer R
 	? R
 	: any;
+
+/**
+ * Marker for contextual 'this' type
+ */
+interface ThisType<T> { }
