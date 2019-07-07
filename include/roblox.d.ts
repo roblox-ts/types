@@ -1414,7 +1414,7 @@ interface Vector3 {
 	/** Returns the cross product of the two vectors. */
 	Cross(other: Vector3): Vector3;
 	/** Returns true if the other Vector3 falls within the epsilon radius of this Vector3. */
-	IsClose(other: Vector3, epsilon: number): boolean;
+	isClose(other: Vector3, epsilon: number): boolean;
 }
 interface Vector3Constructor {
 	FromNormalId: (norm: Enum.NormalId) => Vector3;
