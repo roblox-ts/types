@@ -334,6 +334,9 @@ declare namespace math {
 declare namespace table {
 	/** Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`. Comp is a function that receives two list elements and returns true when the first element must come before the second in the final order (so that `not comp(list[i+1],list[i])` will be true after the sort). */
 	function sort<T>(t: Array<T>, comp?: (a: T, b: T) => boolean): void;
+		
+	/** Concatenate the elements of a table to form a string. Each element must be able to be coerced into a string. A separator can be specified which is placed between concatenated elements. Additionally a range can be specified within the table, starting at the i-th element and finishing at the j-th element. */
+	function concat<T>(t: Array<T>, sep?: string, i?: number, j?: number): string;
 }
 
 type thread = {} & { readonly LUA_THREAD?: never };
