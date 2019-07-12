@@ -6,7 +6,8 @@
 	},
 	"description": "TypeScript typings for the Roblox platform. Partially handwritten and partially automatically generated.",
 	"scripts": {
-		"build": "ts-node src/index.ts"
+		"build": "ts-node src/index.ts",
+		"typedoc": "cd include && npx typedoc --out ../docs --includeDeclarations --ignoreCompilerErrors . --exclude customDefinitions.d.ts"
 	},
 	"main": "include/roblox.d.ts",
 	"types": "include/roblox.d.ts",

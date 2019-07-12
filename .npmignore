@@ -1,5 +1,6 @@
 src
 out
+docs
 node_modules
 tsconfig.json
 .travis.yml
