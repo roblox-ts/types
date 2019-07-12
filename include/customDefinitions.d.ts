@@ -578,10 +578,10 @@ interface RemoteEvent extends Instance {
 }
 
 interface RemoteFunction extends Instance {
-	OnClientInvoke: (...arguments: Array<any>) => void;
-	OnServerInvoke: (player: Player, ...arguments: Array<any>) => void;
-	InvokeClient(player: Player, ...arguments: Array<any>): unknown;
-	InvokeServer<R = unknown>(...arguments: Array<any>): R;
+	OnClientInvoke: (...arguments: Array<unknown>) => void;
+	OnServerInvoke: (player: Player, ...arguments: Array<unknown>) => void;
+	InvokeClient(player: Player, ...arguments: Array<unknown>): unknown;
+	InvokeServer<R = unknown>(...arguments: Array<unknown>): R;
 }
 
 interface Pose extends Instance {
