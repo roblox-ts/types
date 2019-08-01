@@ -34,8 +34,6 @@ type StrictInstances = {
 		? Instances[Key]
 		: Instances[Key] & { ClassName: Key }
 };
-/** @deprecated Use `StrictInstances` instead */
-type StrictInstanceByName<Q extends keyof Instances> = StrictInstances[Q];
 
 /** Given an Instance `T`, returns a unioned type of all properties, except "ClassName". */
 type GetProperties<T extends Instance> = {
