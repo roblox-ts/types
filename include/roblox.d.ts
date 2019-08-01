@@ -143,7 +143,7 @@ interface HttpHeaders {
 
 interface RequestAsyncRequest {
 	Url: string;
-	Method?: "GET" | "HEAD" | "POST" | "PUT" | "DELETE";
+	Method?: "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "PATCH";
 	Body?: string;
 	Headers?: HttpHeaders;
 }
