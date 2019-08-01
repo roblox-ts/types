@@ -301,6 +301,14 @@ interface InsertService extends Instance {
 
 interface Instance {
 	Clone(): this;
+	/** `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
+	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Instance.Changed` event.
+	 * @example
+	 * function f(p: Part) {
+	 * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
+	 * }
+	 */
+	Changed: unknown;
 	GetChildren<T extends Instance = Instance>(): Array<T>;
 	GetDescendants(): Array<Instance>;
 
@@ -801,6 +809,10 @@ interface UserInputService {
 }
 
 interface Workspace extends Model {
+	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
+	BreakJoints: any;
+	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
+	MakeJoints: any;
 	Terrain: Terrain;
 	FindPartOnRay(
 		ray: Ray,

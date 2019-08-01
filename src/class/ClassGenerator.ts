@@ -105,8 +105,7 @@ const MEMBER_BLACKLIST: {
 		  }
 		| undefined;
 } = {
-	Instance: { ClassName: true, Changed: true },
-	Workspace: { BreakJoints: true, MakeJoints: true },
+	Instance: { ClassName: true },
 };
 
 function containsBadChar(name: string) {
