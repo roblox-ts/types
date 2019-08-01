@@ -1052,8 +1052,6 @@ declare const BrickColor: BrickColorConstructor;
 interface CFrame {
 	/** The 3D position of the CFrame */
 	readonly Position: Vector3;
-	/** The 3D position of the CFrame */
-	readonly p: Vector3;
 	/** The x-coordinate of the position */
 	readonly X: number;
 	/** The y-coordinate of the position */
@@ -1071,29 +1069,29 @@ interface CFrame {
 	/** Returns a CFrame interpolated between this CFrame and the goal by the fraction alpha */
 	Lerp(goal: CFrame, alpha: number): CFrame;
 	/** Returns a CFrame transformed from Object to World space. Equivalent to `[CFrame * cf]` */
-	toWorldSpace(cf: CFrame): CFrame;
+	ToWorldSpace(cf: CFrame): CFrame;
 	/** Returns a CFrame transformed from World to Object space. Equivalent to `[CFrame:inverse() * cf]` */
-	toObjectSpace(cf: CFrame): CFrame;
+	ToObjectSpace(cf: CFrame): CFrame;
 	/** Returns a Vector3 transformed from Object to World space. Equivalent to `[CFrame * v3]` */
-	pointToWorldSpace(v3: Vector3): Vector3;
+	PointToWorldSpace(v3: Vector3): Vector3;
 	/** Returns a Vector3 transformed from World to Object space. Equivalent to `[CFrame:inverse() * v3]` */
-	pointToObjectSpace(v3: Vector3): Vector3;
+	PointToObjectSpace(v3: Vector3): Vector3;
 	/** Returns a Vector3 rotated from Object to World space. Equivalent to `[(CFrame - CFrame.p) *v3]` */
-	vectorToWorldSpace(v3: Vector3): Vector3;
+	VectorToWorldSpace(v3: Vector3): Vector3;
 	/** Returns a Vector3 rotated from World to Object space. Equivalent to `[(CFrame:inverse() - CFrame:inverse().p) * v3]` */
-	vectorToObjectSpace(v3: Vector3): Vector3;
+	VectorToObjectSpace(v3: Vector3): Vector3;
 	/** Returns the values: x, y, z, R00, R01, R02, R10, R11, R12, R20, R21, R22, where R00-R22 represent the 3x3 rotation matrix of the CFrame, and xyz represent the position of the CFrame. */
-	components(): LuaTuple<
+	GetComponents(): LuaTuple<
 		[number, number, number, number, number, number, number, number, number, number, number, number]
 	>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, Y, X order */
-	toEulerAnglesXYZ(): LuaTuple<[number, number, number]>;
+	ToEulerAnglesXYZ(): LuaTuple<[number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order */
-	toEulerAnglesYXZ(): LuaTuple<[number, number, number]>;
+	ToEulerAnglesYXZ(): LuaTuple<[number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order (Equivalent to toEulerAnglesYXZ) */
-	toOrientation(): LuaTuple<[number, number, number]>;
+	ToOrientation(): LuaTuple<[number, number, number]>;
 	/** Returns a tuple of a Vector3 and a number which represent the rotation of the CFrame in the axis-angle representation */
-	toAxisAngle(): LuaTuple<[Vector3, number]>;
+	ToAxisAngle(): LuaTuple<[Vector3, number]>;
 }
 interface CFrameConstructor {
 	/** Equivalent to fromEulerAnglesXYZ */
