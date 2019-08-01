@@ -309,17 +309,7 @@ interface Instance {
 	WaitForChild<T extends Instance = Instance>(childName: string): T;
 	WaitForChild<T extends Instance = Instance>(childName: string, timeOut: number): T | undefined;
 
-	IsA<
-		T extends {
-			[K in keyof Instances]: Instances[K]["ClassName"] extends this["ClassName"]
-				? this extends Instances[K]
-					? never
-					: K
-				: never
-		}[keyof Instances]
-	>(
-		className: T,
-	): this is Instances[T];
+	IsA<T extends keyof Instances>(className: T): this is Instances[T];
 	IsA(className: string): boolean;
 
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
@@ -334,7 +324,7 @@ interface Instance {
 	FindFirstChildOfClass<T extends Instance["ClassName"]>(className: T): StrictInstances[T] | undefined;
 	FindFirstChildOfClass(className: string): Instance | undefined;
 
-	GetPropertyChangedSignal<T extends GetProperties<this>>(propertyName: T): RBXScriptSignal;
+	GetPropertyChangedSignal(propertyName: GetProperties<this>): RBXScriptSignal;
 	GetPropertyChangedSignal(propertyName: string): RBXScriptSignal;
 }
 
