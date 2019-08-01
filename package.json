@@ -22,7 +22,7 @@
 	},
 	"homepage": "https://github.com/roblox-ts/types#readme",
 	"devDependencies": {
-		"@types/fs-extra": "^7.0.0",
+		"@types/fs-extra": "^8.0.0",
 		"@types/jsdom": "^12.2.3",
 		"@types/libxmljs": "^0.18.2",
 		"@types/node-fetch": "^2.3.3",
