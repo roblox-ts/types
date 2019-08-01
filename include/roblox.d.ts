@@ -1372,10 +1372,15 @@ declare const UDim2: UDim2Constructor;
 interface Vector2 {
 	readonly X: number;
 	readonly Y: number;
+	/** A normalized copy of the vector - has a magnitude of 1. */
 	readonly Unit: Vector2;
+	/** The length of the vector */
 	readonly Magnitude: number;
+	/** Returns a scalar dot product of the two vectors */
 	Dot(other: Vector2): number;
+	/** Returns a Vector2 linearly interpolated between this Vector2 and the goal by the fraction alpha */
 	Lerp(goal: Vector2, alpha: number): Vector2;
+	/** Returns the cross product of the two vectors */
 	Cross(other: Vector2): Vector2;
 }
 type Vector2Constructor = new (x?: number, y?: number) => Vector2;
@@ -1394,11 +1399,17 @@ interface Vector3 {
 	readonly X: number;
 	readonly Y: number;
 	readonly Z: number;
+	/** A normalized copy of the vector - one which has the same direction as the original but a magnitude of 1. */
 	readonly Unit: Vector3;
+	/** The length of the vector */
 	readonly Magnitude: number;
+	/** Returns a Vector3 linearly interpolated between this Vector3 and the goal by the fraction alpha. */
 	Lerp(goal: Vector3, alpha: number): Vector3;
+	/** Returns a scalar dot product of the two vectors. */
 	Dot(other: Vector3): number;
+	/** Returns the cross product of the two vectors. */
 	Cross(other: Vector3): Vector3;
+	/** Returns true if the other Vector3 falls within the epsilon radius of this Vector3. */
 	isClose(other: Vector3, epsilon: number): boolean;
 }
 interface Vector3Constructor {
