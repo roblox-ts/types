@@ -997,10 +997,6 @@ interface BrickColorsByPalette {
 	[127]: 1003;
 }
 
-type GetByName<T extends BrickColorsByNumber[keyof BrickColorsByNumber]> = {
-	[K in keyof BrickColorsByNumber]: T extends BrickColorsByNumber[K] ? K : never
-}[keyof BrickColorsByNumber];
-
 interface BrickColorConstructor {
 	/** Returns a random BrickColor. */
 	random: () => BrickColor;
