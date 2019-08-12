@@ -1,0 +1,1 @@
+Deactivates this plugin. This will disengage the associated `PluginMouse` if it has been activated.

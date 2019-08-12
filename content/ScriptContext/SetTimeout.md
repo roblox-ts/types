@@ -1,0 +1,1 @@
+Limits how long a script is allowed to run without yielding.

@@ -1,0 +1,1 @@
+Fired when the user reverses the undo command. Waypoint describes the type action that has been redone.

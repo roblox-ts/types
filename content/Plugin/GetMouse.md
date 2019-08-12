@@ -1,0 +1,1 @@
+Returns a mouse that can be used with the plugin.
