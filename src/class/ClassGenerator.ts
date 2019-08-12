@@ -971,14 +971,18 @@ export class ClassGenerator extends Generator {
 			const classPath = path.join(CONTENT_DIR, rbxClassName);
 
 			function processDesc(desc: string, tabs: number) {
-				return (
-					desc
-						.split("\n")
-						.map((v, i) => (i === 0 ? v : `${"\t".repeat(tabs)} * ${v}`))
-						.join("\n") +
-					"\n" +
-					"\t".repeat(tabs)
-				);
+				if (desc.indexOf("\n") !== -1) {
+					return (
+						desc
+							.split("\n")
+							.map((v, i) => (i === 0 ? v : `${"\t".repeat(tabs)} * ${v}`))
+							.join("\n") +
+						"\n" +
+						"\t".repeat(tabs)
+					);
+				} else {
+					return desc;
+				}
 			}
 
 			promises.push(
