@@ -108,6 +108,8 @@ interface NetworkSettings extends Instance {
 }
 
 interface Workspace extends Model {
+	BreakJoints(objects: Array<Instance>): void;
+	MakeJoints(objects: Array<Instance>): void;
 	ZoomToExtents(): void;
 }
 

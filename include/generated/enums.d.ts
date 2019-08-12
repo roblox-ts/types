@@ -660,34 +660,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<AssetType>
 	}
 	export type AssetType = AssetType.Image | AssetType.TeeShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation;
-	export namespace AutoJointsMode {
-		export interface Default {
-			Name: "Default";
-			Value: 0;
-			EnumType: EnumType<Enum.AutoJointsMode>;
-		}
-
-		export const Default: Default;
-
-		export interface Explicit {
-			Name: "Explicit";
-			Value: 1;
-			EnumType: EnumType<Enum.AutoJointsMode>;
-		}
-
-		export const Explicit: Explicit;
-
-		export interface LegacyImplicit {
-			Name: "LegacyImplicit";
-			Value: 2;
-			EnumType: EnumType<Enum.AutoJointsMode>;
-		}
-
-		export const LegacyImplicit: LegacyImplicit;
-
-		export function GetEnumItems(this: {}): Array<AutoJointsMode>
-	}
-	export type AutoJointsMode = AutoJointsMode.Default | AutoJointsMode.Explicit | AutoJointsMode.LegacyImplicit;
 	export namespace AvatarContextMenuOption {
 		export interface Friend {
 			Name: "Friend";
@@ -2916,6 +2888,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<DominantAxis>
 	}
 	export type DominantAxis = DominantAxis.Width | DominantAxis.Height;
+	export namespace DraftStatusCode {
+		export interface OK {
+			Name: "OK";
+			Value: 0;
+			EnumType: EnumType<Enum.DraftStatusCode>;
+		}
+
+		export const OK: OK;
+
+		export interface DraftOutdated {
+			Name: "DraftOutdated";
+			Value: 1;
+			EnumType: EnumType<Enum.DraftStatusCode>;
+		}
+
+		export const DraftOutdated: DraftOutdated;
+
+		export interface ScriptRemoved {
+			Name: "ScriptRemoved";
+			Value: 2;
+			EnumType: EnumType<Enum.DraftStatusCode>;
+		}
+
+		export const ScriptRemoved: ScriptRemoved;
+
+		export function GetEnumItems(this: {}): Array<DraftStatusCode>
+	}
+	export type DraftStatusCode = DraftStatusCode.OK | DraftStatusCode.DraftOutdated | DraftStatusCode.ScriptRemoved;
 	export namespace EasingDirection {
 		export interface In {
 			Name: "In";
@@ -3009,9 +3009,33 @@ declare namespace Enum {
 
 		export const Elastic: Elastic;
 
+		export interface Exponential {
+			Name: "Exponential";
+			Value: 8;
+			EnumType: EnumType<Enum.EasingStyle>;
+		}
+
+		export const Exponential: Exponential;
+
+		export interface Circular {
+			Name: "Circular";
+			Value: 9;
+			EnumType: EnumType<Enum.EasingStyle>;
+		}
+
+		export const Circular: Circular;
+
+		export interface Cubic {
+			Name: "Cubic";
+			Value: 10;
+			EnumType: EnumType<Enum.EasingStyle>;
+		}
+
+		export const Cubic: Cubic;
+
 		export function GetEnumItems(this: {}): Array<EasingStyle>
 	}
-	export type EasingStyle = EasingStyle.Linear | EasingStyle.Sine | EasingStyle.Back | EasingStyle.Quad | EasingStyle.Quart | EasingStyle.Quint | EasingStyle.Bounce | EasingStyle.Elastic;
+	export type EasingStyle = EasingStyle.Linear | EasingStyle.Sine | EasingStyle.Back | EasingStyle.Quad | EasingStyle.Quart | EasingStyle.Quint | EasingStyle.Bounce | EasingStyle.Elastic | EasingStyle.Exponential | EasingStyle.Circular | EasingStyle.Cubic;
 	export namespace ElasticBehavior {
 		export interface WhenScrollable {
 			Name: "WhenScrollable";
@@ -4653,9 +4677,25 @@ declare namespace Enum {
 
 		export const GamePass: GamePass;
 
+		export interface Subscription {
+			Name: "Subscription";
+			Value: 3;
+			EnumType: EnumType<Enum.InfoType>;
+		}
+
+		export const Subscription: Subscription;
+
+		export interface Bundle {
+			Name: "Bundle";
+			Value: 4;
+			EnumType: EnumType<Enum.InfoType>;
+		}
+
+		export const Bundle: Bundle;
+
 		export function GetEnumItems(this: {}): Array<InfoType>
 	}
-	export type InfoType = InfoType.Asset | InfoType.Product | InfoType.GamePass;
+	export type InfoType = InfoType.Asset | InfoType.Product | InfoType.GamePass | InfoType.Subscription | InfoType.Bundle;
 	export namespace InitialDockState {
 		export interface Top {
 			Name: "Top";
@@ -10393,9 +10433,33 @@ declare namespace Enum {
 
 		export const DialogMainButtonText: DialogMainButtonText;
 
+		export interface Merge3HighlightOriginal {
+			Name: "Merge3HighlightOriginal";
+			Value: 89;
+			EnumType: EnumType<Enum.StudioStyleGuideColor>;
+		}
+
+		export const Merge3HighlightOriginal: Merge3HighlightOriginal;
+
+		export interface Merge3HighlightMine {
+			Name: "Merge3HighlightMine";
+			Value: 90;
+			EnumType: EnumType<Enum.StudioStyleGuideColor>;
+		}
+
+		export const Merge3HighlightMine: Merge3HighlightMine;
+
+		export interface Merge3HighlightTheirs {
+			Name: "Merge3HighlightTheirs";
+			Value: 91;
+			EnumType: EnumType<Enum.StudioStyleGuideColor>;
+		}
+
+		export const Merge3HighlightTheirs: Merge3HighlightTheirs;
+
 		export function GetEnumItems(this: {}): Array<StudioStyleGuideColor>
 	}
-	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptPreprocessor | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText;
+	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptPreprocessor | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.Merge3HighlightOriginal | StudioStyleGuideColor.Merge3HighlightMine | StudioStyleGuideColor.Merge3HighlightTheirs;
 	export namespace StudioStyleGuideModifier {
 		export interface Default {
 			Name: "Default";
@@ -12024,7 +12088,6 @@ declare type CastsToEnum<T extends
 	| Enum.AspectType
 	| Enum.AssetFetchStatus
 	| Enum.AssetType
-	| Enum.AutoJointsMode
 	| Enum.AvatarContextMenuOption
 	| Enum.AvatarJointPositionType
 	| Enum.Axis
@@ -12070,6 +12133,7 @@ declare type CastsToEnum<T extends
 	| Enum.DialogPurpose
 	| Enum.DialogTone
 	| Enum.DominantAxis
+	| Enum.DraftStatusCode
 	| Enum.EasingDirection
 	| Enum.EasingStyle
 	| Enum.ElasticBehavior
