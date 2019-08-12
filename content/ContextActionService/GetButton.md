@@ -1,0 +1,1 @@
+If _actionName_ key contains a bound action, then this will return the touch button (if was created). Returns nil if a touch button was not created. No guarantees are made whether button will be retrievable when button is manipulated.

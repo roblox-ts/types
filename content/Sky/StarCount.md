@@ -1,0 +1,1 @@
+How many stars are shown in the skybox. Note that too many stars may cause severe lag. Only works if [Sky.CelestialBodiesShown](https://developer.roblox.com/api-reference/property/Sky/CelestialBodiesShown) is true.

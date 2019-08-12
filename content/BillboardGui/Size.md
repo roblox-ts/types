@@ -1,0 +1,1 @@
+Sets the size of the BillboardGui as it'll appear in the Roblox "world".

@@ -1,0 +1,1 @@
+**Note:** For handles to be interactive, they must be parented to a player's `PlayerGui` or the `CoreGui`.**HandleAdornment** is an abstract class inherited by 3D handle adornments.

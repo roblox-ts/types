@@ -1,0 +1,1 @@
+Describes if this ScriptDebugger is paused.

@@ -1,0 +1,1 @@
+Fired when the server should collect a conditional test result.

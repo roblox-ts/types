@@ -1,0 +1,5 @@
+The GetNameFromUserIdAsync `Players` function will send a query to the Roblox website asking what the username is of the account with the given [UserId](https://developer.roblox.com/api-reference/property/Player/UserId). This function **does not cache**; it always sends a web request even if a UserId was already queried or if the player is already connected to the server (and thus has their username exposed).
+
+This method errors if no account exists with the given UserId. If you aren't certain such an account exists, it's recommended to wrap calls to this function with `pcall`. In addition, you can manually cache results to make future calls with the same UserId fast. See the code samples to learn how to do this.
+@param userId The **userId** of the player being specified.
+@returns The name of a user with the specified **userId**.

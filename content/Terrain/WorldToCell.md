@@ -1,0 +1,1 @@
+Returns the grid cell location that contains the point **position**.

@@ -1,0 +1,1 @@
+Sets the GUI style of the handles. Currently there are only two types; Resize and Movement.

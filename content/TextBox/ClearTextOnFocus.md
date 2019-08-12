@@ -1,0 +1,1 @@
+Determines whether clicking on the TextBox will clear its [TextBox.Text](https://developer.roblox.com/api-reference/property/TextBox/Text) property

@@ -1,0 +1,1 @@
+Controls the use of scroll wheel, in case that it is intended for something else. Defaults to true.

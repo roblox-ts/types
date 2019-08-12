@@ -1,0 +1,1 @@
+A Vector3 (x,y,z) defined in studs that will offset the GUI from the extents of the 3D object it is rendering from.

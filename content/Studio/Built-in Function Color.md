@@ -1,0 +1,1 @@
+Sets the color of built-in functions and keywords in the script editor.

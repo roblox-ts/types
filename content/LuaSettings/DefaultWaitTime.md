@@ -1,0 +1,1 @@
+How long a call to `wait()` with no arguments will yield.

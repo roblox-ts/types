@@ -1,0 +1,1 @@
+Changes how ZIndex behaves on all descendants of the LayerCollector. "Global" indicates current behavior (ZIndex sorts all guis regardless of hierarchy positioning, ties broken by hierarchy). "Sibling" would only use ZIndex property to sort order among sibling elements in the hierarchy, otherwise ordering is done via hierarchy (children are drawn on top of parents).

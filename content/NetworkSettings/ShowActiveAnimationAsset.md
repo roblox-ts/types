@@ -1,0 +1,1 @@
+When set to true, a label will be shown above each `Player`'s head, showing the current animation being played by the Player's `Humanoid`, if any.

@@ -1,0 +1,1 @@
+Specifies the color of numbers in Roblox Studio's script editor.

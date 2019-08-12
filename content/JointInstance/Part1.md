@@ -1,0 +1,1 @@
+The second `BasePart` that the joint connects.

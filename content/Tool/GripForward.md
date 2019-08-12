@@ -1,0 +1,1 @@
+One of the properties that specifies a Tool's orientation in a character's hand. This represents the R02, R12, and R22 values of the Grip CFrame's rotation matrix.

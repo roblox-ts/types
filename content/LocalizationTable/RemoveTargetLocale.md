@@ -1,0 +1,1 @@
+Removes all translations from the LocalizationTable with the specified localeId.

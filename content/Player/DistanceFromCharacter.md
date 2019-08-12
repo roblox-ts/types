@@ -1,0 +1,1 @@
+Returns the distance between the character's head and the given Vector3 point. Returns 0 if the player has no character.

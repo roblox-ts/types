@@ -1,0 +1,1 @@
+Returns a `Translator` for keys in this LocalizationTable, in the specified language.

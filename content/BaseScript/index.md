@@ -1,0 +1,1 @@
+The base class for all script objects which run automatically.

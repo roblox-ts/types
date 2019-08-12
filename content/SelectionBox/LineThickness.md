@@ -1,0 +1,1 @@
+The thickness of the `SelectionBox` outlines. Measured in studs.

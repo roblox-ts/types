@@ -1,0 +1,3 @@
+Forces this object to render on top of all 3d objects in the Workspace. Even if the adornment is behind a part based on its [HandleAdornment.CFrame](https://developer.roblox.com/api-reference/property/HandleAdornment/CFrame), if **AlwaysOnTop** is true then the adornment will still draw on top.
+
+The one exception to this behavior is if the [HandleAdornment.ZIndex](https://developer.roblox.com/api-reference/property/HandleAdornment/ZIndex) of the adornment is set to -1. If this is the case, the adornment will always draw behind 3d geometry.Forces this object to render on top of all 3d objects in the Workspace.

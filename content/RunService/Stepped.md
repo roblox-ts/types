@@ -1,0 +1,3 @@
+The Stepped event fires on every *step* in the `RunService`, which is approximately every 1/60th (or 0.0166) seconds. If the framerate drops, this event fires less often. It is recommended that this event be used for visual effects; use RunService/Heartbeat for gameplay-related events.
+
+There’s no guarantee that functions connected to this event will fire at the exact same time. To be sure that certain functions are called in synchronization with each other, use [RunService.BindToRenderStep](https://developer.roblox.com/api-reference/function/RunService/BindToRenderStep) instead, which allows specification of a ***render priority***.

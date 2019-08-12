@@ -1,0 +1,1 @@
+Sets a certain region of [smooth terrain](https://developer.roblox.com/articles/Intro-To-Terrain) using the [table format](https://developer.roblox.com/articles/Intro-To-Terrain#Reading_and_writing_voxels)

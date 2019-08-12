@@ -1,0 +1,3 @@
+BindAction will bind an action to user input given an action handling function. The action handler function will be called when some input matches the provided user input enums.
+
+The method behaves like a stack: if two actions are bound to the same user input, only the most recent action handler will be called.  When UnbindAction is called, the action handler is removed from the stack. If an action handler returns `Enum.ContextActionResult.Pass`, an input will call to the next most recently bound action handler.

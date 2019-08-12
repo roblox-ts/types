@@ -1,0 +1,3 @@
+The TextScaled property determines whether text is scaled so that it fills the entire UI element's space. When this is enabled, [TextLabel.TextSize](https://developer.roblox.com/api-reference/property/TextLabel/TextSize) is ignored and [TextLabel.TextWrapped](https://developer.roblox.com/api-reference/property/TextLabel/TextWrapped) is automatically enabled. This property is useful for text-rendering UI elements within `BillboardGuis`.
+
+When this property is used for screen-space UI, it may be desirable to use a `UITextSizeConstraint` to restrict the range of possible text sizes.

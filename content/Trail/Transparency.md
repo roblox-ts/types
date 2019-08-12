@@ -1,0 +1,3 @@
+The Transparency property of a `Trail` sets how transparent the segments of the trail are over the trail's [Trail.Lifetime](https://developer.roblox.com/api-reference/property/Trail/Lifetime). This value is a [DataType.NumberSequence](https://developer.roblox.com/search#stq=NumberSequence), meaning it can be a static value or can change throughout the lifetime of the trail segments.
+
+The values in the NumberSequence can be any number, but the effective range of transparency is 0 (completely opaque) to 1 (completely see-through). The Transparency property for TrailEffects defaults to 0.5.

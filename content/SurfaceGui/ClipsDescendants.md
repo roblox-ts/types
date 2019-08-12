@@ -1,0 +1,1 @@
+When set to true, portions of GuiObjects that fall outside of the SurfaceGui's canvas borders will not be drawn.

@@ -1,0 +1,1 @@
+Sets the text color of built-in Lua keywords.

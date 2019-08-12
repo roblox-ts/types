@@ -1,0 +1,1 @@
+When set to true, the `PluginGuiService` will be shown in Roblox Studio's explorer.

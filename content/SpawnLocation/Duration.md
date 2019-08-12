@@ -1,0 +1,5 @@
+The length of time, in seconds, that a `ForceField` will be applied to a `Player` character spawning at this `SpawnLocation`. If Duration is zero, the `ForceField` is never created, and it will not trigger the [Instance.DescendantAdded](https://developer.roblox.com/api-reference/event/Instance/DescendantAdded) or [Instance.ChildAdded](https://developer.roblox.com/api-reference/event/Instance/ChildAdded) events.
+
+This default value of this property is 10 seconds.
+
+The duration feature allows developers to easily give `Player`s protection from 'spawn killing' which can be a frustrating experience for players. Note, `ForceField`s will only protect users from `Explosion`s and Weapons that use [Humanoid.TakeDamage](https://developer.roblox.com/api-reference/function/Humanoid/TakeDamage) to deal damage or otherwise check for a `ForceField`.

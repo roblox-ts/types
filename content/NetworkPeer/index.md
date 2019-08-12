@@ -1,0 +1,1 @@
+The NetworkPeer object is the most basic class of the network objects.

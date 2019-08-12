@@ -1,0 +1,1 @@
+The specified thread pooling configuration for the task scheduler.

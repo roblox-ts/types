@@ -1,0 +1,1 @@
+If _actionName_ key contains a bound action, then _image_ is set as the image of the touch button. Does nothing if a touch button was not created. No guarantees are made whether image will be set when button is manipulated.

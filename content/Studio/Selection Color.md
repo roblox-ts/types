@@ -1,0 +1,1 @@
+Sets the text color of selected text in the script editor.

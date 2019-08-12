@@ -1,0 +1,1 @@
+Sets the transparency of a GUI object, where 1 is invisible and 0 is completely visible.

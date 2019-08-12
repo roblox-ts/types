@@ -1,0 +1,1 @@
+Returns a dictionary of all upvalues present in the stack specified.

@@ -1,0 +1,1 @@
+Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor).

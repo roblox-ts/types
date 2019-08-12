@@ -1,0 +1,1 @@
+Fired when the mouse leaves the GUI handle.

@@ -1,0 +1,1 @@
+Determines whether the object and its descendants will be displayed.

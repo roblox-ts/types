@@ -1,0 +1,1 @@
+The ratio between the [CompressorSoundEffect.SideChain](https://developer.roblox.com/api-reference/property/CompressorSoundEffect/SideChain) sound effect, and this sound effect.

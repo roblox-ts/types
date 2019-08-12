@@ -1,0 +1,1 @@
+Hopper is the original name of the StarterPack service. If this service is ever instantiated, it moves all of its children into the StarterPack, and then deletes itself.

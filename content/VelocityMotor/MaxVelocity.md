@@ -1,0 +1,1 @@
+The maximum amount of velocity able to be reached.

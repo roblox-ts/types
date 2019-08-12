@@ -1,0 +1,1 @@
+A currently unused object whose functionality was split into `ReflectionMetadataClasses` and `ReflectionMetadataEnums`.

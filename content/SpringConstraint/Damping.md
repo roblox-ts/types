@@ -1,0 +1,1 @@
+Damping constant for the `SpringConstraint`. Multiplied to the velocity of the constraint’s `Attachment` to reduce the spring force applied.

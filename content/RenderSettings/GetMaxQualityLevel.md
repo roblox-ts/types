@@ -1,0 +1,1 @@
+Returns the maximum quality level.

@@ -1,0 +1,1 @@
+Sets the layout mode of the output.
