@@ -573,10 +573,44 @@ interface Instance {
 	 * @returns The `Instance` found.
 	 */
 	FindFirstAncestor<T extends Instance = Instance>(name: string): T | undefined;
-	/** Returns the first ancestor of this Instance with a ClassName equal to 'className'.  The function will return nil if no Instance is found. */
+	/** Returns the first ancestor of the `Instance` whose [Instance.ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) is equal to the given className.
+	 * 
+	 * This function works upwards, meaning it starts at the `Instance`'s immediate [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) and works up towards the `DataModel`. If no matching ancestor is found, it returns nil.
+	 * 
+	 * A common use of this function is finding the `Model` a `BasePart` belongs to. For example:
+	 * 
+	 * ```lua
+	 * local model = part:FindFirstAncestorOfClass("Model")
+	 * ```
+	 * 
+	 * This function is a variant of [Instance.FindFirstAncestor](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestor) which checks the [Instance.ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) property rather than [Instance.Name](https://developer.roblox.com/api-reference/property/Instance/Name). [Instance.FindFirstAncestorWhichIsA](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestorWhichIsA) also exists, using the [Instance.IsA](https://developer.roblox.com/api-reference/function/Instance/IsA) method instead to respect class inheritance.
+	 * @param className The `Instance/ClassName` to be looked for.
+	 * @returns The `Instance` found.
+	 */
 	FindFirstAncestorOfClass<T extends Instance["ClassName"]>(className: T): StrictInstances[T] | undefined;
 	FindFirstAncestorOfClass(className: string): Instance | undefined;
-	/** Returns the first ancestor of this Instance that :IsA(className).  The function will return nil if no Instance is found. */
+	/** Returns the first ancestor of the `Instance` for whom [Instance.IsA](https://developer.roblox.com/api-reference/function/Instance/IsA) returns true for the given className.
+	 * 
+	 * This function works upwards, meaning it starts at the `Instance`'s immediate [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) and works up towards the `DataModel`. If no matching ancestor is found, it returns nil.
+	 * 
+	 * Unlike [Instance.FindFirstAncestorOfClass](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestorOfClass), this function uses [Instance.IsA](https://developer.roblox.com/api-reference/function/Instance/IsA) which respects class inheritance. For example:
+	 * 
+	 * ```lua
+	 * print(part:IsA("Part")) --&gt; true
+	 * print(part:IsA("BasePart")) --&gt; true
+	 * print(part:IsA("Instance")) --&gt; true
+	 * ```
+	 * 
+	 * Therefore, the following code sample will return the first `BasePart` ancestor, regardless of if it is a `WedgePart`, `MeshPart` or `Part`.
+	 * 
+	 * ```lua
+	 * local part = object:FindFirstAncestorWhichIsA("BasePart")
+	 * ```
+	 * 
+	 * See also, [Instance.FindFirstAncestor](https://developer.roblox.com/api-reference/function/Instance/FindFirstAncestor).
+	 * @param className The `Instance/ClassName` to be looked for.
+	 * @returns The `Instance` found.
+	 */
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
 	FindFirstAncestorWhichIsA(className: string): Instance | undefined;
 	/** Returns the first child of the `Instance` found with the given name. If no child exists with the given name, this function returns nil. If the optional recursive argument is true, this function searches all descendants rather than only the immediate children of the `Instance`. Use this function if your code cannot guarantee the existence of an object with a given name.
@@ -632,10 +666,41 @@ interface Instance {
 	 * @returns The `Instance` found.
 	 */
 	FindFirstChild<T extends Instance = Instance>(name: string, recursive?: boolean): T | undefined;
-	/** Returns the first child of this Instance that with a ClassName equal to 'className'.  The function will return nil if no Instance is found. */
+	/** Returns the first child of the `Instance` whose [ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) is equal to the given className.
+	 * 
+	 * If no matching child is found, this function returns nil.
+	 * 
+	 * Unlike [Instance.FindFirstChildWhichIsA](https://developer.roblox.com/api-reference/function/Instance/FindFirstChildWhichIsA) this function uses only returns objects whose class matches the given className, ignoring class inheritance.
+	 * 
+	 * Developers looking for a child by name, should use [Instance.FindFirstChild](https://developer.roblox.com/api-reference/function/Instance/FindFirstChild) instead.
+	 * @param className The `Instance/ClassName` to be looked for.
+	 * @returns The `Instance` found.
+	 */
 	FindFirstChildOfClass<T extends Instance["ClassName"]>(className: T): StrictInstances[T] | undefined;
 	FindFirstChildOfClass(className: string): Instance | undefined;
-	/** Returns the first child of this Instance that :IsA(className).  The second argument 'recursive' is an optional boolean (defaults to false) that will force the call to traverse down thru all of this Instance's descendants until it finds an object with a name that matches the 'className' argument.  The function will return nil if no Instance is found. */
+	/** Returns the first child of the `Instance` for whom [Instance.IsA](https://developer.roblox.com/api-reference/function/Instance/IsA) returns true for the given className.
+	 * 
+	 * If no matching child is found, this function returns nil. If the optional recursive argument is true, this function searches all descendants rather than only the immediate children of the `Instance`.
+	 * 
+	 * Unlike [Instance.FindFirstChildOfClass](https://developer.roblox.com/api-reference/function/Instance/FindFirstChildOfClass), this function uses [Instance.IsA](https://developer.roblox.com/api-reference/function/Instance/IsA) which respects class inheritance. For example:
+	 * 
+	 * ```lua
+	 * print(part:IsA("Part")) --> true
+	 * print(part:IsA("BasePart")) --> true
+	 * print(part:IsA("Instance")) --> true
+	 * ```
+	 * 
+	 * Therefore, the following code sample will return the first `BasePart` child, regardless of if it is a `WedgePart`, `MeshPart` or `Part`.
+	 * 
+	 * ```lua
+	 * local part = object:FindFirstChildWhichIsA("BasePart")
+	 * ```
+	 * 
+	 * Developers looking for a child by name, should use [Instance.FindFirstChild](https://developer.roblox.com/api-reference/function/Instance/FindFirstChild) instead.
+	 * @param className The `Instance/ClassName` to be searched for.
+	 * @param recursive Whether or not the search should be conducted recursively. 
+	 * @returns The `Instance` found.
+	 */
 	FindFirstChildWhichIsA<T extends keyof Instances>(className: T, recursive?: boolean): Instances[T] | undefined;
 	FindFirstChildWhichIsA(className: string, recursive?: boolean): Instance | undefined;
 	/** Returns an array (a numerically indexed table) containing all of the `Instance`'s direct children, or every `Instance` whose [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) is equal to the object. The array can be iterated upon using either a numeric or generic for-loop:
@@ -701,10 +766,36 @@ interface Instance {
 	 * @returns The full name of the `Instance`.
 	 */
 	GetFullName(): string;
-
+	/** This method returns an event that behaves exactly like the `Changed` event, except that the event only fires when the given property changes. It's generally a good idea to use this method instead of a connection to `Changed` with a function that checks the property name. Subsequent calls to this method on the same object with the same property name return the same event.
+	 * 
+	 * `print(object:GetPropertyChangedSignal("Name") == object:GetPropertyChangedSignal("Name")) --&gt; always true`
+	 * 
+	 * `ValueBase` objects, such as `IntValue` and `StringValue`, use a modified `Changed` event that fires with the contents of the `Value` property. As such, this method provides a way to detect changes in other properties of those objects. For example, to detect changes in the `Name` property of an `IntValue`, use `IntValue:GetPropertyChangedSignal("Name"):Connect(someFunc)` since the `Changed` event of `IntValue` objects only detect changes on the `Value` property.
+	 */
 	GetPropertyChangedSignal(propertyName: GetProperties<this>): RBXScriptSignal;
 	GetPropertyChangedSignal(propertyName: string): RBXScriptSignal;
-	/** Returns a boolean if this Instance is of type 'className' or a is a subclass of type 'className'.  If 'className' is not a valid class type in ROBLOX, this function will always return false.  [More info](http://wiki.roblox.com/index.php/IsA) */
+	/** IsA returns true if the `Instance`'s class is **equivalent to** or a **subclass** of a given class. This function is similar to the **instanceof** operators in other languages, and is a form of [type introspection](https://en.wikipedia.org/wiki/Type_introspection). To ignore class inheritance, test the [ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) property directly instead. For checking native Lua data types (number, string, etc) use the functions `type` and `typeof`.
+	 * 
+	 * Most commonly, this function is used to test if an object is some kind of part, such as `Part` or `WedgePart`, which inherits from `BasePart` (an abstract class). For example, if your goal is to change all of a [Character](https://developer.roblox.com/api-reference/property/Player/Character)'s limbs to the same color, you might use [GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) to iterate over the children, then use IsA to filter non-`BasePart` objects which lack the `BrickColor` property:
+	 * 
+	 * ```lua
+	 * local function paintFigure(character, color)
+	 * 	-- Iterate over the child objects of the character
+	 * 	for _, child in pairs(character:GetChildren()) do
+	 * 		-- Filter out non-part objects, such as Shirt, Pants and Humanoid
+	 * 		-- R15 use MeshPart and R6 use Part, so we use BasePart here to detect both:
+	 * 		if child:IsA("BasePart") then
+	 * 			child.BrickColor = color
+	 * 		end
+	 * 	end
+	 * end
+	 * paintFigure(game.Players.Player.Character, BrickColor.new("Bright blue"))
+	 * ```
+	 * 
+	 * Since all classes inherit from `Instance`, calling `object:IsA("Instance")` will always return true.
+	 * @param className The class against which the Instance's class will be checked. Case-sensitive.
+	 * @returns Describes whether the Instance's class matched or is a subclass of the given class
+	 */
 	IsA<T extends keyof Instances>(className: T): this is Instances[T];
 	IsA(className: string): boolean;
 	/** Returns true if an `Instance` is an ancestor of the given descendant.
@@ -727,7 +818,52 @@ interface Instance {
 	 * @returns True if the `Instance` is a descendant of the given ancestor.
 	 */
 	IsDescendantOf(ancestor: Instance): boolean;
-
+	/** Returns the child of the `Instance` with the given name. If the child does not exist, it will yield the current thread until it does.
+	 * 
+	 * If the *timeOut* parameter is specified, this function will return nil and time out after *timeOut* seconds elapsing without the child being found.
+	 * 
+	 * ## Where should I use WaitForChild?
+	 * 
+	 * WaitForChild is extremely important when working on code ran by the client. Roblox does not guarantee the time or order in which objects are replicated from the server to the client. This can cause scripts to break when indexing objects that do not exist yet.
+	 * 
+	 * For example, a `LocalScript` may access a `Model` in the `Workspace` called 'Ship' like so:
+	 * 
+	 * ```lua
+	 * local ship = workspace.Ship
+	 * -- Will error if ship hasn't replicated
+	 * ```
+	 * 
+	 * However if the model 'Ship' has not replicated to the client when this code is ran an error will be returned breaking the `LocalScript`.
+	 * 
+	 * Another alternative is using [Instance.FindFirstChild](https://developer.roblox.com/api-reference/function/Instance/FindFirstChild). Not only is this good practice when indexing objects in the `DataModel` (as it avoids accidentally accessing properties) but it does not break if the object does not exist. For example:
+	 * 
+	 * ```lua
+	 * local ship = workspace:FindFirstChild("Ship")
+	 * -- Won't error, but ship will be nil if the ship hasn't replicated
+	 * ```
+	 * 
+	 * Here, if the model doesn't exist the code will not error. Instead the value ship will be equal to nil. This is better, but still not much good if we want to use the ship model.
+	 * 
+	 * Instead WaitForChild should be used:
+	 * 
+	 * ```lua
+	 * local ship = workspace:WaitForChild("Ship")
+	 * -- Will wait until the ship has replicated before continuing
+	 * ```
+	 * 
+	 * Here, the thread will be yielded until the ship model has been found. This means the ship model can be used as soon as it is ready.
+	 * 
+	 * ## Notes
+	 * 
+	 *  - If a call to this function exceeds 5 seconds without returning, and no *timeOut* parameter has been specified, a warning will be printed to the output that the thread may yield indefinitely
+	 * 
+	 *  - This function will return immediately without yielding if the child exists when the call is made
+	 * 
+	 *  - WaitForChild is less efficient than [Instance.FindFirstChild](https://developer.roblox.com/api-reference/function/Instance/FindFirstChild) or the dot operator. Therefore it should only be used when the developer is not sure if the object has replicated to the client. Generally this is only the first time the object is accessed
+	 * @param childName The `Instance/Name` to be looked for.
+	 * @param timeOut An optional time out parameter.
+	 * @returns The `Instance` found.
+	 */
 	WaitForChild<T extends Instance = Instance>(childName: string): T;
 	WaitForChild<T extends Instance = Instance>(childName: string, timeOut: number): T | undefined;
 	/** Fires when the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property of the object or one of its ancestors is changed.
@@ -11962,7 +12098,86 @@ interface MarketplaceService extends Instance {
 	PromptSubscriptionPurchase(player: Instance, subscriptionId: number): void;
 	/** Returns a `Pages` object which contains information for all of the current game's developer products. */
 	GetDeveloperProductsAsync(): Pages;
-	/** Takes one argument "assetId" which should be a number of an asset on www.roblox.com.  Returns a table containing the product information (if this process fails, returns an empty table). */
+	/** This function provides information about an asset, developer product or game pass given its **assetId** and the [Enum.InfoType](https://developer.roblox.com/search#stq=InfoType) (Asset, Product or GamePass respectively).
+	 * 
+	 * Information about the queried item is provided in a dictionary with the following keys. Note that not all information is provided or necessarily relevant for the kind of object you are querying.
+	 * 
+	 * | Name | Type | Description |
+	 * | --- | --- | --- |
+	 * | `Name` | string | The name shown on the asset's page |
+	 * | `Description` | string | The description as shown on the asset's page; can be nil if blank |
+	 * | `PriceInRobux` | number | The cost of purchasing the asset using Robux |
+	 * | `Created` | timestamp | Timestamp of when the asset was created, e.g. `2018-08-01T17:55:11.98Z` |
+	 * | `Updated` | timestamp | Timestamp of when the asset was last updated by its creator, e.g. `2018-08-01T17:55:11.98Z` |
+	 * | `ContentRatingTypeId` | number | Indicates whether the item is marked as 13+ in catalog |
+	 * | `MinimumMembershipLevel` | number | The minimum Builder's Club subscription necessary to purchase the item |
+	 * | `IsPublicDomain` | boolean | Describes whether the asset can be taken for free |
+	 * |  **Creator Information** |
+	 * | `Creator` | Dictionary | A table of information describing the creator of the asset (see following lines) |
+	 * | `Creator.CreatorType` | string | Either `User` or `Group` |
+	 * | `Creator.CreatorTargetId` | number | The ID of the creator user or group |
+	 * | `Creator.Name` | string | The name/username of the creator |
+	 * | `Creator.Id` | number | (Use CreatorTargetId instead) |
+	 * |  **Assets** |
+	 * | `AssetId` | number | If InfoType was Asset, this is the ID of the given asset. |
+	 * | `AssetTypeId` | number | The type of asset (e.g. place, model, shirt) [*](#assettypes) |
+	 * | `IsForSale` | boolean | Describes whether the asset is purchasable |
+	 * | `IsLimited` | boolean | Describes whether the asset is a "limited item" that is no longer (if ever) sold |
+	 * | `IsLimitedUnique` | boolean | Describes whether the asset is a "limited unique" ("Limited U") item that only has a fixed number sold |
+	 * | `IsNew` | boolean | Describes whether the asset is marked as "new" in the catalog |
+	 * | `Remaining` | number | The remaining number of items a limited unique item may be sold |
+	 * | `Sales` | number | The number of items the asset has been sold |
+	 * |  **Developer Products** |
+	 * | `ProductId` | number | If the InfoType was Product, this is the product ID |
+	 * | `IconImageAssetId` | number | For developer products, this is the asset ID of the product's icon (or 0 if the product does not have one) |
+	 * 
+	 * \* See [Asset Types](https://developer.roblox.com/search#stq=Asset-types) for the asset type ID numbers. †Timestamps are formatted using [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+	 * 
+	 * ## Developer Product Example
+	 * 
+	 * The following example loads information about a developer product.
+	 * 
+	 * ```lua
+	 * local PRODUCT_ID = 336755544
+	 * 
+	 * local MarketplaceService = game:GetService("MarketplaceService")
+	 * 
+	 * local productInfo = MarketplaceService:GetProductInfo(PRODUCT_ID, Enum.InfoType.Product)
+	 * 
+	 * print("Product ID " .. PRODUCT_ID .. " name: " .. productInfo.Name) 
+	 * 
+	 * if productInfo.Description then
+	 * 	print("Description: " .. productInfo.Description)
+	 * else
+	 * 	print("No description!")
+	 * end
+	 * 
+	 * if productInfo.IsForSale then
+	 * 	print("It is on sale for " .. productInfo.PriceInRobux .. " Robux.")
+	 * end
+	 * 
+	 * print("The image icon is: rbxassetid://" .. productInfo.IconImageAssetId)
+	 * ```
+	 * 
+	 * ## Use in Studio Plugins
+	 * 
+	 * This method is often used by plugins to detect old versions and notify the user to manually update a plugin. The plugin author uploads a dummy asset, such as a decal or model, then puts the present version of the plugin in that asset's description. The plugin then calls this method and checks an internal version number for a newer version.
+	 * 
+	 * ## Possible Errors
+	 * 
+	 * If no such item exists with the given ID, this function will throw an error:
+	 * 
+	 *  - For developer products, the error is:
+	 * 
+	 * > *MarketplaceService:getProductInfo() failed because rawProductInfo was empty*
+	 * 
+	 *  - For game passes and assets, the error is:
+	 * 
+	 * > *MarketplaceService:getProductInfo() failed because HTTP 0 (HTTP 400 (HTTP/1.1 400 BadRequest))*
+	 * @param assetId The assetId of the specified product
+	 * @param infoType An `Enum/InfoType` enum value specifying the type of information being retrieved
+	 * @returns A dictionary containing information about the queried item (described in the table above). Note that not all information is provided or necessarily relevant for the kind of object you are querying
+	 */
 	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.Asset>): AssetProductInfo;
 	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.Product>): DeveloperProductInfo;
 	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.GamePass>): AssetProductInfo;
@@ -15725,7 +15940,14 @@ interface PhysicsPacketCache extends Instance {
 interface PhysicsService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PhysicsService";
-
+	/** Returns whether the specified part is in the specified collision group.
+	 * 
+	 * This function will throw a runtime error in the following circumstances:
+	 * 
+	 * * The specified group does not exist.
+	 * 
+	 * * The specified part is not a BasePart.Returns whether the part is in the collision group.
+	 */
 	CollisionGroupContainsPart(name: string, part: BasePart): boolean;
 	CollisionGroupContainsPart(name: string, part: BasePart): boolean;
 	/** Sets the collision status between two groups.
@@ -18081,10 +18303,17 @@ interface ServerStorage extends Instance {
 interface ServiceProvider extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ServiceProvider" | "DataModel" | "GenericSettings" | "AnalysticsSettings" | "GlobalSettings" | "UserSettings";
-
+	/** Returns the service specified by the given className if it's already created, errors for an invalid name. */
 	FindService(className: string): Instance | undefined;
 	FindService(className: string): Services[keyof Services] | undefined;
-
+	/** Returns a service with the class name requested. When called with the name of a service (such as `Debris`) it will return the instance of that service. If the service does not yet exist it will be created and the new service is returned. This is the only way to create some services, and can also be used for services that have unusual names, e.g. RunService's name is "Run Service".
+	 * 
+	 * ## Notes
+	 * 
+	 * * This function will return nil if the className parameter is an existing class, but the class is not a service.
+	 * 
+	 * * If you attempt to fetch a service that is present under another Object, an error will be thrown stating that the "singleton serviceName already exists".
+	 */
 	GetService<T extends keyof Services>(className: T): Services[T];
 	GetService(className: string): Services[keyof Services] | undefined;
 	/** Fires when the current place is exited. */
@@ -19367,7 +19596,35 @@ interface SoundService extends Instance {
 	 * @param sound The `Sound` to be played.
 	 */
 	PlayLocalSound(sound: Sound): void;
-
+	/** Sets the listener used by the client.
+	 * 
+	 * The first parameter is the [Enum.ListenerType](https://developer.roblox.com/search#stq=ListenerType) of the listener, the second paramater is dependent on the listener type.
+	 * 
+	 *  - Camera ListenerType - Does not return a listener object as [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) is always used
+	 * 
+	 *  - CFrame ListenerType - The [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) to be used
+	 * 
+	 *  - ObjectPosition ListenerType - The `BasePart` to be used
+	 * 
+	 *  - ObjectCFrame ListenerType - The `BasePart` to be used
+	 * 
+	 * The listener can be retrieved using [SoundService.GetListener](https://developer.roblox.com/api-reference/function/SoundService/GetListener).
+	 * 
+	 * ```lua
+	 * local SoundService = game:GetService("SoundService")
+	 * SoundService:SetListener(Enum.ListenerType.CFrame, CFrame.new(0, 0, 0))
+	 * local listenerType, listener = SoundService:GetListener()
+	 * print(listenerType, listener)
+	 * ```
+	 * 
+	 * ## What is a listener?
+	 * 
+	 * The `SoundService`'s listener determines the point from which audio in the game is being 'heard' by the player. For 3D `Sound`s (`Sound`s parented to a `BasePart` or `Attachment`) the listener influences the volume and left/right balance of a playing sound. Listeners have no influence on the playback of 2D `Sound`s as they have no position of emission.
+	 * 
+	 * By default, the listener is set to the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera). However, a range of different types of listeners can be used.
+	 * @param listenerType The `Enum/ListenerType` of the listener.
+	 * @param listener Dependent on the `Enum/ListenerType`. `BasePart` for 'ObjectPosition' or 'ObjectCFrame', `DataType/CFrame` for 'CFrame', nil for 'Camera'.
+	 */
 	SetListener(listenerType: CastsToEnum<Enum.ListenerType.Camera>): void;
 	SetListener(listenerType: CastsToEnum<Enum.ListenerType.CFrame>, cframe: CFrame): void;
 	SetListener(listenerType: CastsToEnum<Enum.ListenerType.ObjectCFrame>, basePart: BasePart): void;
