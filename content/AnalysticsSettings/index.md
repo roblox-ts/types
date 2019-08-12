@@ -1,0 +1,1 @@
+AnalysticsSettings is an internal settings provider that stores the `GoogleAnalyticsConfiguration` object.

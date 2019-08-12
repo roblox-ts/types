@@ -1,0 +1,1 @@
+Removes an entry from the LocalizationTable, using the specified _key_, _source_, and _context_ to narrow down the specific entry to be removed.

@@ -1,0 +1,5 @@
+The EmissionDirection property determines the face ([Enum.NormalId](https://developer.roblox.com/search#stq=NormalId)) of the parent object towards which particles will be emit. By default, this is the top (+Y) direction. A negative [ParticleEmitter.Speed](https://developer.roblox.com/api-reference/property/ParticleEmitter/Speed) will emit in the opposite direction. [ParticleEmitter.SpreadAngle](https://developer.roblox.com/api-reference/property/ParticleEmitter/SpreadAngle) will further vary the emission direction. If a `ParticleEmitter` is added to an `Attachment`, which has a direction, the the Attachment itself can be rotated ([Attachment.Orientation](https://developer.roblox.com/api-reference/property/Attachment/Orientation)) instead of using this property. Below are pictured two ParticleEmitters which are otherwise the same, except the left has an EmissionDirection of Top (+Y, default) and the right uses Front (-Z).
+
+![Two identical ParticleEmitters except with differing EmissionDirection (left is Top, right is Front)][1]
+
+[1]: https://developer.roblox.com/assets/blt529991a1b0fa24f4/ParticleEmitter_EmissionDirection.png

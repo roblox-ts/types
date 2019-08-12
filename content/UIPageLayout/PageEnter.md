@@ -1,0 +1,1 @@
+Fires when a page comes into view, and is going to be rendered.

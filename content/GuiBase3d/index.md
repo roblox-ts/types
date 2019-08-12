@@ -1,0 +1,1 @@
+An abstract class for 3D GUI elements that are rendered in the world.

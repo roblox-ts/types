@@ -1,0 +1,1 @@
+When set to true, every individual mechanism of parts is given a unique color.

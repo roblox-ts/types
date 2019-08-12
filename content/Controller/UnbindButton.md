@@ -1,0 +1,1 @@
+Removes the bind on button.

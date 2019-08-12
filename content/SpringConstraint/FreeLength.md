@@ -1,0 +1,1 @@
+Natural resting length of the spring.

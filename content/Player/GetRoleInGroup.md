@@ -1,0 +1,1 @@
+Returns the player's role in the group as a string, or "Guest" if the player isn't part of the group.

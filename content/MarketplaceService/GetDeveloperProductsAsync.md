@@ -1,0 +1,1 @@
+Returns a `Pages` object which contains information for all of the current game's developer products.

@@ -1,0 +1,1 @@
+The Shirt object is what displays Shirts on a character. The arms and torso are covered by this object.

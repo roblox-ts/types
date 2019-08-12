@@ -1,0 +1,4 @@
+This function takes an array of [Instances](https://developer.roblox.com/api-reference/class/Instance) as a parameter and yields until all of assets associated with those instances have loaded. This can be used to pause a script and not use content until it is certain that the content has been loaded into the game.
+
+When the function is called, the engine will go through all of the instances in the passed in array (and all of the descendants of the passed in instances). If any of the instances have a property that defines a link to content, such as a `Decal` or a `Sound`, then the function will attempt to load the asset from the Roblox website. If any of the assets fail to load, an error message will appear in the places output, but the PreloadAsync function itself will not error and will continue executing until it has processed each passed in instance.
+@param contentIdList An array of `Instance`s to be preloaded.

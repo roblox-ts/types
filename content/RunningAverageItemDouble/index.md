@@ -1,0 +1,1 @@
+A special type of `StatsItem` which measures the runtime average of an internal **double** value.

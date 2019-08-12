@@ -1,0 +1,1 @@
+Changes whether text is resized to fit within the TextButton.

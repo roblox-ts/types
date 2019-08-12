@@ -1,0 +1,3 @@
+The Completed event of a `Tween` fires when the tween finishes playing. This will happen either when the tween naturally finishes playing, or if it is stopped with [TweenBase.Cancel](https://developer.roblox.com/api-reference/function/TweenBase/Cancel).
+
+A function connected to this event will be passed the PlaybackState of the tween when it finished to give indication about why the tween ended. If the tween finishes naturally the status will be Completed, if cancelled then the state will be Cancelled. Note that calling [TweenBase.Pause](https://developer.roblox.com/api-reference/function/TweenBase/Pause) will not fire the Completed event.

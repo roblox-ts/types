@@ -1,0 +1,1 @@
+This event fires when a receiver is connected to the `CustomEvent`

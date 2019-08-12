@@ -1,0 +1,1 @@
+DominantAxis determines which axis to use when setting the new size of the UI element if it would otherwise exceed the size of the parent.

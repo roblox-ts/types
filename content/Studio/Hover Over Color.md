@@ -1,0 +1,1 @@
+Specifies the color that the hover selection box uses.

@@ -1,0 +1,1 @@
+Forces the character with the specified [Humanoid](https://developer.roblox.com/api-reference/class/Humanoid) to sit in the VehicleSeat.

@@ -1,0 +1,1 @@
+An internal service which stores `ModuleScript`s used by Roblox's `CoreScript`s.

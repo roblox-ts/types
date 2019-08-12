@@ -1,0 +1,1 @@
+This is a corner piece which has the same properties as a `Part`.

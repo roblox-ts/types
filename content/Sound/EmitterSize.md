@@ -1,0 +1,5 @@
+The minimum distance at which a 3D `Sound` (direct child of a `BasePart` or `Attachment`) will begin to attenuate (decrease in volume).
+
+Sounds parented to a `BasePart` or `Attachment` that are descendants of the `Workspace` are considered 3D sounds and their volume whilst playing is dependent on the distance between the client's sound listener (`Camera` position by default) and the Sound's parent. Two properties influence this behavior [Sound.EmitterSize](https://developer.roblox.com/api-reference/property/Sound/EmitterSize) and [Sound.RollOffMode](https://developer.roblox.com/api-reference/property/Sound/RollOffMode).
+
+The way the `Sound` attenuates (fades out) after the distance between the listener and the sound exceeds the [Sound.EmitterSize](https://developer.roblox.com/api-reference/property/Sound/EmitterSize) is determined by [Sound.RollOffMode](https://developer.roblox.com/api-reference/property/Sound/RollOffMode).

@@ -1,0 +1,3 @@
+`PlayerScripts` is a container object located inside `Player` objects within the `Players` game service. It is created automatically when a player joins the game. Its main purpose is to contain `LocalScript`s copied from the `StarterPlayerScripts` container within the `StarterPlayer` game service, which happens once upon creation. Descendant `LocalScripts` of `PlayerScripts` will run code on the client of the `Player`.
+
+Unlike the `Backpack` and `PlayerGui` containers, the `PlayerScripts` container is not accessible to the server. Server `Script` objects will not run when parented to `PlayerScripts`.

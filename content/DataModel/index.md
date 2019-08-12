@@ -1,0 +1,1 @@
+The DataModel (commonly known as **game** after the global variable used to access it) is the root of Roblox's parent-child hierarchy. Its direct children are services (such as the `Workspace` and `Lighting`) that act as the fundamental components of a Roblox game.

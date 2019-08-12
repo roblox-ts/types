@@ -1,0 +1,1 @@
+Specifies the behavior of the framerate manager.

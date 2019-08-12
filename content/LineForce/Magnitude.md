@@ -1,0 +1,1 @@
+The magnitude of the force.

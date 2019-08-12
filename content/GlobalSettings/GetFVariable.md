@@ -1,0 +1,1 @@
+Returns the value of an FVariable, if it exists.

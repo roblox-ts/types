@@ -1,0 +1,1 @@
+Fired when the left mouse has released the GUI object.

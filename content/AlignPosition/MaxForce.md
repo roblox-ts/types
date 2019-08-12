@@ -1,0 +1,1 @@
+Maximum force the constraint can apply to achieve its goal. Only used if RigidityEnabled is false.

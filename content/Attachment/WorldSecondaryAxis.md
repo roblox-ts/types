@@ -1,0 +1,1 @@
+Represents the direction of the Y-Axis of the Attachment, relative to the world, as a unit [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3) with a length of 1.

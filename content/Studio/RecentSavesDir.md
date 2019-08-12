@@ -1,0 +1,1 @@
+The directory where recent saves are stored in.

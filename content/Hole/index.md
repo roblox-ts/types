@@ -1,0 +1,1 @@
+A Hole is an unused type of surface joint. It can be connected to a `MotorFeature` object by using a `VelocityMotor`.

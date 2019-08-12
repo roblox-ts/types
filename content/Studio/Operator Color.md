@@ -1,0 +1,1 @@
+Sets the text color of operator characters in the script editor.

@@ -1,0 +1,1 @@
+The `Attachment` that is connected to [Constraint.Attachment1](https://developer.roblox.com/api-reference/property/Constraint/Attachment1)

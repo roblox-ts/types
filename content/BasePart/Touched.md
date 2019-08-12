@@ -1,0 +1,5 @@
+The Touched event fires when a part comes in contact with another part. For instance, if PartA bumps into PartB, then PartA.Touched fires with PartB, and PartB fires with PartA.
+
+This event only fires as a result of physics movement, so it will not fire if the CFrame property was changed such that the part overlaps another part. This also means that at least one of the parts involved must not be [BasePart.Anchored](https://developer.roblox.com/api-reference/property/BasePart/Anchored) at the time of the collision.
+
+Many types of parts are removed or destroyed as soon as they hit another part. This means that it is possible for the other part's [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) to be nil. Be sure to check that `otherPart.Parent` is not nil before using it, such as calling [Instance.FindFirstChild](https://developer.roblox.com/api-reference/function/Instance/FindFirstChild).

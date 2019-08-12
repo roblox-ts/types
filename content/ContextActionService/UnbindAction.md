@@ -1,0 +1,1 @@
+UnbindAction will unbind an action by name from user inputs. Use this function when the context for some action is no longer applicable. For instance, if a gun Tool is unequipped, you might use UnbindAction on a Reload action since a gun can only be reloaded if it is equipped.

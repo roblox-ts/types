@@ -1,0 +1,1 @@
+The maximum number of chats that can be shown in the chat history. Does not seem to work because the chat gui's code does not read from here.

@@ -1,0 +1,1 @@
+Intensity determines the opacity of the sun rays. Values closer to 0 are less visible, while values closer 1 become more visible. By default, this value is 0.25. Although this property can be set to any float, only values in the range [0, 1] are valid. Values outside of this range have undefined behavior.

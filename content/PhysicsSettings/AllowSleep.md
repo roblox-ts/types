@@ -1,0 +1,1 @@
+When set to true, physically simulated objects will stop being simulated if they have little to no motion for a set period of time.
