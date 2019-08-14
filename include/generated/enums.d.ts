@@ -980,6 +980,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<BodyPartR15>
 	}
 	export type BodyPartR15 = BodyPartR15.Head | BodyPartR15.UpperTorso | BodyPartR15.LowerTorso | BodyPartR15.LeftFoot | BodyPartR15.LeftLowerLeg | BodyPartR15.LeftUpperLeg | BodyPartR15.RightFoot | BodyPartR15.RightLowerLeg | BodyPartR15.RightUpperLeg | BodyPartR15.LeftHand | BodyPartR15.LeftLowerArm | BodyPartR15.LeftUpperArm | BodyPartR15.RightHand | BodyPartR15.RightLowerArm | BodyPartR15.RightUpperArm | BodyPartR15.RootPart | BodyPartR15.Unknown;
+	export namespace BorderMode {
+		export interface Outline {
+			Name: "Outline";
+			Value: 0;
+			EnumType: EnumType<Enum.BorderMode>;
+		}
+
+		export const Outline: Outline;
+
+		export interface Middle {
+			Name: "Middle";
+			Value: 1;
+			EnumType: EnumType<Enum.BorderMode>;
+		}
+
+		export const Middle: Middle;
+
+		export interface Inset {
+			Name: "Inset";
+			Value: 2;
+			EnumType: EnumType<Enum.BorderMode>;
+		}
+
+		export const Inset: Inset;
+
+		export function GetEnumItems(this: {}): Array<BorderMode>
+	}
+	export type BorderMode = BorderMode.Outline | BorderMode.Middle | BorderMode.Inset;
 	export namespace BreakReason {
 		export interface Other {
 			Name: "Other";
@@ -12094,6 +12122,7 @@ declare type CastsToEnum<T extends
 	| Enum.BinType
 	| Enum.BodyPart
 	| Enum.BodyPartR15
+	| Enum.BorderMode
 	| Enum.BreakReason
 	| Enum.Button
 	| Enum.ButtonStyle
