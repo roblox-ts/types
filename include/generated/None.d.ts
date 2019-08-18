@@ -2383,7 +2383,7 @@ interface StarterGui extends BasePlayerGui {
 	 * 
 	 * Returns a string describing the camera rotation sensitivity in VR: `Low`, `High` and `Smooth`. *This will not be available unless [VRService.VREnabled](https://developer.roblox.com/api-reference/property/VRService/VREnabled) is true.*
 	 */
-	GetCore<T extends keyof GettableCores>(parameter: T, option: GettableCores[T]): void;
+	GetCore<T extends keyof GettableCores>(parameter: T): GettableCores[T];
 }
 
 /** A Beam object connects two `Attachment`s by drawing a texture between them.

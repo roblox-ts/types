@@ -617,7 +617,7 @@ interface ServerScriptService {}
 interface ServerStorage {}
 
 interface StarterGui extends BasePlayerGui {
-	GetCore<T extends keyof GettableCores>(parameter: T, option: GettableCores[T]): void;
+	GetCore<T extends keyof GettableCores>(parameter: T): GettableCores[T];
 	SetCore<T extends keyof SettableCores>(parameter: T, option: SettableCores[T]): void;
 }
 
