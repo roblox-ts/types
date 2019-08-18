@@ -1484,7 +1484,7 @@ interface SettableCores {
 	ChatWindowSize: UDim2;
 	ChatWindowPosition: UDim2;
 	ChatBarDisabled: boolean;
-	SendNotification: boolean;
+	SendNotification: SendNotificationConfig;
 	TopbarEnabled: boolean;
 	DeveloperConsoleVisible: boolean;
 	PromptSendFriendRequest: Player;
