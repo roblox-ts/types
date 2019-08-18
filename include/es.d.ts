@@ -402,7 +402,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 *
 	 * Searches recursively.
 	 */
-	deepEquals<U>(other: Array<U>): boolean;
+	deepEquals<U>(other: ReadonlyArray<U>): boolean;
 
 	/**
 	 * The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth. Also removes empty slots in arrays.
@@ -623,22 +623,22 @@ interface ReadonlySet<T> extends Iterable<T> {
 	/**
 	 * Returns a new set with every element that occurs at least once in either `this` or a given set
 	 */
-	union<U>(set: Set<U>): Set<T | U>;
+	union<U>(set: ReadonlySet<U>): Set<T | U>;
 
 	/**
 	 * Returns a new set with every element that occurs in both `this` and a given set
 	 */
-	intersect<U>(set: Set<U>): Set<T | U>;
+	intersect<U>(set: ReadonlySet<U>): Set<T | U>;
 
 	/**
 	 * Returns a new set which is the result of subtracting a given set from `this`
 	 */
-	difference<U>(set: Set<U>): Set<T | U>;
+	difference<U>(set: ReadonlySet<U>): Set<T | U>;
 
 	/**
 	 * Returns true if `this` and a given set have no elements in common, else false.
 	 */
-	isDisjointWith<U>(set: Set<U>): boolean;
+	isDisjointWith<U>(set: ReadonlySet<U>): boolean;
 
 	/**
 	 * Returns a boolean for whether `this` is a subset of a given set.
@@ -649,7 +649,7 @@ interface ReadonlySet<T> extends Iterable<T> {
 set1.isSubsetOf(set2) && !set2.isSubsetOf(set1)
 ```
 	 */
-	isSubsetOf<U>(set: Set<U>): boolean;
+	isSubsetOf<U>(set: ReadonlySet<U>): boolean;
 }
 
 interface ReadonlySetConstructor {
