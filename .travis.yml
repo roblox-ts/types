@@ -26,7 +26,7 @@ script:
       echo "git commit"
       git commit -m "Update generated files [skip ci]"
       echo "git push"
-      git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git master --force
+      git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git HEAD:master
 
       echo "run typedoc"
       npm run typedoc
@@ -38,31 +38,31 @@ script:
         echo "git commit"
         git commit -m "Update typedoc files [skip ci]"
         echo "git push"
-        git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git master --force
+        git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git HEAD:master
       fi
     fi
 
-#   # clone deploy branch
-#   - cd ..
-#   - git clone --depth=50 --branch=deploy https://${GIT_TOKEN}@github.com/roblox-ts/types.git deploy
+  # clone deploy branch
+  - cd ..
+  - git clone --depth=50 --branch=deploy https://${GIT_TOKEN}@github.com/roblox-ts/types.git HEAD:deploy
 
-#   # copy files that might've changed
-#   - ls
-#   - mkdir -p deploy/include
-#   - rm -rf deploy/include/*
-#   - cp -r types/include/* deploy/include
-#   - cp types/plugin.d.ts deploy/plugin.d.ts
-#   - cp types/README.md deploy/README.md
-#   - cd deploy
+  # copy files that might've changed
+  - ls
+  - mkdir -p deploy/include
+  - rm -rf deploy/include/*
+  - cp -r types/include/* deploy/include
+  - cp types/plugin.d.ts deploy/plugin.d.ts
+  - cp types/README.md deploy/README.md
+  - cd deploy
 
-#   # detect changes and push to deploy branch
-#   - git add .
-#   - |
-#     if ! git diff-index --quiet HEAD --; then
-#       if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
-#         git commit -m "Automatic Update"
-#       else
-#         git commit -m "Manual Update"
-#       fi
-#       git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git deploy
-#     fi
+  # detect changes and push to deploy branch
+  - git add .
+  - |
+    if ! git diff-index --quiet HEAD --; then
+      if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
+        git commit -m "Automatic Update"
+      else
+        git commit -m "Manual Update"
+      fi
+      git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git HEAD:deploy
+    fi
