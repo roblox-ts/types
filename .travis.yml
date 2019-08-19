@@ -15,12 +15,14 @@ script:
   - npx tsc
   - node out/index.js
 
+  - git add .
+  - git status
+
   # detect changes for generated files, run typedoc if there are any
   - |
     if ! git diff-index --quiet HEAD --; then
       echo "generated files changed!"
       echo "git add"
-      git add .
       echo "git commit"
       git commit -m "Update generated files [skip ci]"
       echo "git push"
