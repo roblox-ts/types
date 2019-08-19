@@ -8778,7 +8778,7 @@ interface GuiService extends Instance {
 	 */
 	GetGuiInset(): LuaTuple<[Vector2, Vector2]>;
 	GetInspectMenuEnabled(): boolean;
-	InspectPlayerFromHumanoidDescription(humanoidDescription: Instance, name: string): void;
+	InspectPlayerFromHumanoidDescription(humanoidDescription: HumanoidDescription, name: string): void;
 	InspectPlayerFromUserId(userId: number): void;
 	/** Returns true if the client is using the ten foot interface, which is a special version of Roblox's UI, exclusive to consoles.
 	 * 
