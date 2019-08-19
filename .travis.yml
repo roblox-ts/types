@@ -20,7 +20,7 @@ script:
     if ! git diff-index --quiet HEAD --; then
       echo "generated files changed!"
       echo "git add"
-      git add -A
+      git add .
       echo "git commit"
       git commit -m "Update generated files [skip ci]"
       echo "git push"
@@ -32,7 +32,7 @@ script:
       if ! git diff-index --quiet HEAD --; then
         echo "typedoc changed!"
         echo "git add"
-        git add -A
+        git add .
         echo "git commit"
         git commit -m "Update typedoc files [skip ci]"
         echo "git push"
@@ -54,7 +54,7 @@ script:
 #   - cd deploy
 
 #   # detect changes and push to deploy branch
-#   - git add -A
+#   - git add .
 #   - |
 #     if ! git diff-index --quiet HEAD --; then
 #       if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
