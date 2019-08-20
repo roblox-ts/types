@@ -42,23 +42,23 @@ const REFLECTION_METADATA_URL = BASE_URL + "ReflectionMetadata.xml";
 	await new EnumGenerator(path.join(targetDir, "generated", "enums.d.ts"), reflectionMetadata).generate(api.Enums);
 	console.log(`\tDone! (${enumTimer.get()}ms)`);
 
-	const classTimer = new Timer();
-	console.log("\tGenerating classes..");
+	// const classTimer = new Timer();
+	// console.log("\tGenerating classes..");
 
-	const generatorTasks = new Array<Promise<void>>();
-	for (let i = 0; i < SECURITY_LEVELS.length; i++) {
-		await generatorTasks.push(
-			new ClassGenerator(
-				path.join(targetDir, "generated", SECURITY_LEVELS[i] + ".d.ts"),
-				reflectionMetadata,
-				SECURITY_LEVELS[i],
-				SECURITY_LEVELS[i - 1],
-			).generate(api.Classes),
-		);
-	}
-	await Promise.all(generatorTasks);
+	// const generatorTasks = new Array<Promise<void>>();
+	// for (let i = 0; i < SECURITY_LEVELS.length; i++) {
+	// 	await generatorTasks.push(
+	// 		new ClassGenerator(
+	// 			path.join(targetDir, "generated", SECURITY_LEVELS[i] + ".d.ts"),
+	// 			reflectionMetadata,
+	// 			SECURITY_LEVELS[i],
+	// 			SECURITY_LEVELS[i - 1],
+	// 		).generate(api.Classes),
+	// 	);
+	// }
+	// await Promise.all(generatorTasks);
 
-	console.log(`\tDone! (${classTimer.get()}ms)`);
+	// console.log(`\tDone! (${classTimer.get()}ms)`);
 
 	console.log(`Done! (${totalTimer.get()}ms)`);
 })();
