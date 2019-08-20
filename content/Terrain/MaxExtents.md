@@ -1,0 +1,1 @@
+Displays the boundaries of the largest possible editable region.

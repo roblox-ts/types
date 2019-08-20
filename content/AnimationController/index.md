@@ -1,0 +1,1 @@
+This object functions similar to an `Animation`. However, this does not require a `Humanoid` to load an `AnimationTrack`. Instead, it has a built in [AnimationController.LoadAnimation](https://developer.roblox.com/api-reference/function/AnimationController/LoadAnimation) method, which can load animations onto any object (Regardless if it contains a Humanoid or not).

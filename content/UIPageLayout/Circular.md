@@ -1,0 +1,1 @@
+Whether or not the page layout wraps around at the ends.

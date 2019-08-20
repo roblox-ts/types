@@ -1,0 +1,3 @@
+PlatformStand describes whether the `Humanoid` is currently in the *PlatformStanding* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType). When true, the Humanoid is in a state where it is free-falling and cannot move. This state behaves similar to sitting, except that jumping does not free the humanoid from the state.
+
+The now-deprecated `SkateboardPlatform` puts the Humanoid into this state, much like how a `Seat` causes a sitting state.

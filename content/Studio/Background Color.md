@@ -1,0 +1,1 @@
+Specifies the background color of Roblox Studio's script editor.

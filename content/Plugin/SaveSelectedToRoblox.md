@@ -1,0 +1,1 @@
+Opens an upload window for the user's current selection.

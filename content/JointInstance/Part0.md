@@ -1,0 +1,1 @@
+The first `BasePart` that the joint connects.

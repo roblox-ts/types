@@ -1,0 +1,5 @@
+This event fires when the `Humanoid` finishes walking to a goal declared by the [Humanoid.WalkToPoint](https://developer.roblox.com/api-reference/property/Humanoid/WalkToPoint) and [Humanoid.WalkToPart](https://developer.roblox.com/api-reference/property/Humanoid/WalkToPart) properties.
+
+The [Humanoid.WalkToPoint](https://developer.roblox.com/api-reference/property/Humanoid/WalkToPoint) and [Humanoid.WalkToPart](https://developer.roblox.com/api-reference/property/Humanoid/WalkToPart) properties can be set individually, or using the [Humanoid.MoveTo](https://developer.roblox.com/api-reference/function/Humanoid/MoveTo) function.
+
+If the `Humanoid` reaches its goal within 8 seconds, this event will return with *reached* as true. If the goal is not reached within 8 seconds the `Humanoid` will stop walking and *reached* will be false. This timeout can be reset be calling [Humanoid.MoveTo](https://developer.roblox.com/api-reference/function/Humanoid/MoveTo) again within the timeout period.

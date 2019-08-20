@@ -1,0 +1,13 @@
+The BodyPosition obejct applies a [force][1] on a `BasePart` such that it will maintain a constant position in the world. The [Position](https://developer.roblox.com/api-reference/property/BodyPosition/Position) property, not to be confused with [BasePart.Position](https://developer.roblox.com/api-reference/property/BasePart/Position), controls the target world position. This is the translational counterpart to a `BodyGyro`. If you need further control on a force applied to an object, consider using a `BodyForce` or `BodyThrust` instead.
+
+The strength of the force applied by this object is controlled by several factors, namely the distance to the goal position: the force is stronger when farther away from the goal. This is amplified by [P](https://developer.roblox.com/api-reference/property/BodyPosition/P) (power). The present velocity will also dampen the force applied by this object, and this is amplified by [D](https://developer.roblox.com/api-reference/property/BodyPosition/D) (dampening). The resulting force is then capped by [MaxForce](https://developer.roblox.com/api-reference/property/BodyPosition/MaxForce). Note the force applied on the part to achieve the goal position may vary on a per-axis basis.
+
+## Troubleshooting
+
+* If an assembly with a BodyPosition isn't moving, it is likely the [MaxForce](https://developer.roblox.com/api-reference/property/BodyPosition/MaxForce) is too low. Also check for any [Anchored](https://developer.roblox.com/api-reference/property/BasePart/Anchored) parts within the assembly or in the way of the assembly.
+
+* If an assembly with a BodyPosition is moving horizontally but not vertically, it is likely the [MaxForce](https://developer.roblox.com/api-reference/property/BodyPosition/MaxForce) is strong enough to overcome friction but not gravity. Consider raising the Y component of [MaxForce](https://developer.roblox.com/api-reference/property/BodyPosition/MaxForce) in order to get the object off the ground.
+
+* If an assembly with a BodyPosition is **overshooting** the goal position and **rubber banding back**, it is likely that the [D](https://developer.roblox.com/api-reference/property/BodyPosition/D) (dampening) is too low. Alternatively, the [MaxForce](https://developer.roblox.com/api-reference/property/BodyPosition/MaxForce) and/or [P](https://developer.roblox.com/api-reference/property/BodyPosition/P) may be too high.
+
+[1]: https://en.wikipedia.org/wiki/Force

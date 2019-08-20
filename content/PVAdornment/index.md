@@ -1,0 +1,1 @@
+The PVAdornment class is an abstract class of which the inheritors can be adorned to objects of the PVInstance class.

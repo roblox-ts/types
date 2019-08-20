@@ -1,0 +1,1 @@
+Stores the Tool's Grip properties as one CFrame.

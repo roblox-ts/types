@@ -1,0 +1,1 @@
+Fired when the user undoes an action in studio. Waypoint describes the type action that has been undone.

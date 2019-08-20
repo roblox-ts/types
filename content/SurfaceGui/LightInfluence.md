@@ -1,0 +1,1 @@
+Controls how much the SurfaceGui is influenced by the lighting in the game world.

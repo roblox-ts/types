@@ -1,0 +1,1 @@
+The color of the `SelectionBox` surface

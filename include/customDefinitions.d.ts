@@ -301,6 +301,14 @@ interface InsertService extends Instance {
 
 interface Instance {
 	Clone(): this;
+	/** `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
+	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Instance.Changed` event.
+	 * @example
+	 * function f(p: Part) {
+	 * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
+	 * }
+	 */
+	Changed: unknown;
 	GetChildren<T extends Instance = Instance>(): Array<T>;
 	GetDescendants(): Array<Instance>;
 
@@ -309,17 +317,7 @@ interface Instance {
 	WaitForChild<T extends Instance = Instance>(childName: string): T;
 	WaitForChild<T extends Instance = Instance>(childName: string, timeOut: number): T | undefined;
 
-	IsA<
-		T extends {
-			[K in keyof Instances]: Instances[K]["ClassName"] extends this["ClassName"]
-				? this extends Instances[K]
-					? never
-					: K
-				: never
-		}[keyof Instances]
-	>(
-		className: T,
-	): this is Instances[T];
+	IsA<T extends keyof Instances>(className: T): this is Instances[T];
 	IsA(className: string): boolean;
 
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
@@ -334,7 +332,7 @@ interface Instance {
 	FindFirstChildOfClass<T extends Instance["ClassName"]>(className: T): StrictInstances[T] | undefined;
 	FindFirstChildOfClass(className: string): Instance | undefined;
 
-	GetPropertyChangedSignal<T extends GetProperties<this>>(propertyName: T): RBXScriptSignal;
+	GetPropertyChangedSignal(propertyName: GetProperties<this>): RBXScriptSignal;
 	GetPropertyChangedSignal(propertyName: string): RBXScriptSignal;
 }
 
@@ -579,9 +577,9 @@ interface RemoteEvent extends Instance {
 
 interface RemoteFunction extends Instance {
 	OnClientInvoke: (...arguments: Array<any>) => void;
-	OnServerInvoke: (player: Player, ...arguments: Array<any>) => void;
+	OnServerInvoke: (player: Player, ...arguments: Array<unknown>) => void;
 	InvokeClient(player: Player, ...arguments: Array<any>): unknown;
-	InvokeServer<R = unknown>(...arguments: Array<any>): R;
+	InvokeServer<R = unknown>(...arguments: Array<unknown>): R;
 }
 
 interface Pose extends Instance {
@@ -619,7 +617,7 @@ interface ServerScriptService {}
 interface ServerStorage {}
 
 interface StarterGui extends BasePlayerGui {
-	GetCore<T extends keyof GettableCores>(parameter: T, option: GettableCores[T]): void;
+	GetCore<T extends keyof GettableCores>(parameter: T): GettableCores[T];
 	SetCore<T extends keyof SettableCores>(parameter: T, option: SettableCores[T]): void;
 }
 
@@ -811,6 +809,10 @@ interface UserInputService {
 }
 
 interface Workspace extends Model {
+	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
+	BreakJoints: any;
+	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
+	MakeJoints: any;
 	Terrain: Terrain;
 	FindPartOnRay(
 		ray: Ray,

@@ -1,0 +1,1 @@
+The strength and direction of the force.

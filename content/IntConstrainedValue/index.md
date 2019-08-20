@@ -1,0 +1,1 @@
+An IntConstrainedValue is used to store a value which can never be less than MinValue and can never be more than MaxValue.

@@ -11,7 +11,7 @@
  *
  * @example
  * function f(p: Part) {
- * 	(p as Part & ChangedSignal).Changed.Connect(() => {})
+ * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
  * }
  */
 type ChangedSignal = {
@@ -26,7 +26,7 @@ type ChangedSignal = {
 	 *
 	 * For "-Value" objects, this event behaves differently: it only fires when the `Value` property changes. See individual pages for `IntValue`, `StringValue`, etc for more information. To detect other changes in these objects, you must use `GetPropertyChangedSignal` instead.
 	 */
-	readonly Changed: RBXScriptSignal<(value: string) => void>;
+	readonly Changed: RBXScriptSignal<(changedPropertyName: string) => void>;
 };
 
 type StrictInstances = {
@@ -34,8 +34,6 @@ type StrictInstances = {
 		? Instances[Key]
 		: Instances[Key] & { ClassName: Key }
 };
-/** @deprecated Use `StrictInstances` instead */
-type StrictInstanceByName<Q extends keyof Instances> = StrictInstances[Q];
 
 /** Given an Instance `T`, returns a unioned type of all properties, except "ClassName". */
 type GetProperties<T extends Instance> = {
@@ -143,7 +141,7 @@ interface HttpHeaders {
 
 interface RequestAsyncRequest {
 	Url: string;
-	Method?: "GET" | "HEAD" | "POST" | "PUT" | "DELETE";
+	Method?: "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "PATCH";
 	Body?: string;
 	Headers?: HttpHeaders;
 }
@@ -997,10 +995,6 @@ interface BrickColorsByPalette {
 	[127]: 1003;
 }
 
-type GetByName<T extends BrickColorsByNumber[keyof BrickColorsByNumber]> = {
-	[K in keyof BrickColorsByNumber]: T extends BrickColorsByNumber[K] ? K : never
-}[keyof BrickColorsByNumber];
-
 interface BrickColorConstructor {
 	/** Returns a random BrickColor. */
 	random: () => BrickColor;
@@ -1058,8 +1052,6 @@ declare const BrickColor: BrickColorConstructor;
 interface CFrame {
 	/** The 3D position of the CFrame */
 	readonly Position: Vector3;
-	/** The 3D position of the CFrame */
-	readonly p: Vector3;
 	/** The x-coordinate of the position */
 	readonly X: number;
 	/** The y-coordinate of the position */
@@ -1077,29 +1069,29 @@ interface CFrame {
 	/** Returns a CFrame interpolated between this CFrame and the goal by the fraction alpha */
 	Lerp(goal: CFrame, alpha: number): CFrame;
 	/** Returns a CFrame transformed from Object to World space. Equivalent to `[CFrame * cf]` */
-	toWorldSpace(cf: CFrame): CFrame;
+	ToWorldSpace(cf: CFrame): CFrame;
 	/** Returns a CFrame transformed from World to Object space. Equivalent to `[CFrame:inverse() * cf]` */
-	toObjectSpace(cf: CFrame): CFrame;
+	ToObjectSpace(cf: CFrame): CFrame;
 	/** Returns a Vector3 transformed from Object to World space. Equivalent to `[CFrame * v3]` */
-	pointToWorldSpace(v3: Vector3): Vector3;
+	PointToWorldSpace(v3: Vector3): Vector3;
 	/** Returns a Vector3 transformed from World to Object space. Equivalent to `[CFrame:inverse() * v3]` */
-	pointToObjectSpace(v3: Vector3): Vector3;
+	PointToObjectSpace(v3: Vector3): Vector3;
 	/** Returns a Vector3 rotated from Object to World space. Equivalent to `[(CFrame - CFrame.p) *v3]` */
-	vectorToWorldSpace(v3: Vector3): Vector3;
+	VectorToWorldSpace(v3: Vector3): Vector3;
 	/** Returns a Vector3 rotated from World to Object space. Equivalent to `[(CFrame:inverse() - CFrame:inverse().p) * v3]` */
-	vectorToObjectSpace(v3: Vector3): Vector3;
+	VectorToObjectSpace(v3: Vector3): Vector3;
 	/** Returns the values: x, y, z, R00, R01, R02, R10, R11, R12, R20, R21, R22, where R00-R22 represent the 3x3 rotation matrix of the CFrame, and xyz represent the position of the CFrame. */
-	components(): LuaTuple<
+	GetComponents(): LuaTuple<
 		[number, number, number, number, number, number, number, number, number, number, number, number]
 	>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, Y, X order */
-	toEulerAnglesXYZ(): LuaTuple<[number, number, number]>;
+	ToEulerAnglesXYZ(): LuaTuple<[number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order */
-	toEulerAnglesYXZ(): LuaTuple<[number, number, number]>;
+	ToEulerAnglesYXZ(): LuaTuple<[number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order (Equivalent to toEulerAnglesYXZ) */
-	toOrientation(): LuaTuple<[number, number, number]>;
+	ToOrientation(): LuaTuple<[number, number, number]>;
 	/** Returns a tuple of a Vector3 and a number which represent the rotation of the CFrame in the axis-angle representation */
-	toAxisAngle(): LuaTuple<[Vector3, number]>;
+	ToAxisAngle(): LuaTuple<[Vector3, number]>;
 }
 interface CFrameConstructor {
 	/** Equivalent to fromEulerAnglesXYZ */
@@ -1376,10 +1368,15 @@ declare const UDim2: UDim2Constructor;
 interface Vector2 {
 	readonly X: number;
 	readonly Y: number;
+	/** A normalized copy of the vector - has a magnitude of 1. */
 	readonly Unit: Vector2;
+	/** The length of the vector */
 	readonly Magnitude: number;
+	/** Returns a scalar dot product of the two vectors */
 	Dot(other: Vector2): number;
+	/** Returns a Vector2 linearly interpolated between this Vector2 and the goal by the fraction alpha */
 	Lerp(goal: Vector2, alpha: number): Vector2;
+	/** Returns the cross product of the two vectors */
 	Cross(other: Vector2): Vector2;
 }
 type Vector2Constructor = new (x?: number, y?: number) => Vector2;
@@ -1398,11 +1395,17 @@ interface Vector3 {
 	readonly X: number;
 	readonly Y: number;
 	readonly Z: number;
+	/** A normalized copy of the vector - one which has the same direction as the original but a magnitude of 1. */
 	readonly Unit: Vector3;
+	/** The length of the vector */
 	readonly Magnitude: number;
+	/** Returns a Vector3 linearly interpolated between this Vector3 and the goal by the fraction alpha. */
 	Lerp(goal: Vector3, alpha: number): Vector3;
+	/** Returns a scalar dot product of the two vectors. */
 	Dot(other: Vector3): number;
+	/** Returns the cross product of the two vectors. */
 	Cross(other: Vector3): Vector3;
+	/** Returns true if the other Vector3 falls within the epsilon radius of this Vector3. */
 	isClose(other: Vector3, epsilon: number): boolean;
 }
 interface Vector3Constructor {
@@ -1481,7 +1484,7 @@ interface SettableCores {
 	ChatWindowSize: UDim2;
 	ChatWindowPosition: UDim2;
 	ChatBarDisabled: boolean;
-	SendNotification: boolean;
+	SendNotification: SendNotificationConfig;
 	TopbarEnabled: boolean;
 	DeveloperConsoleVisible: boolean;
 	PromptSendFriendRequest: Player;
@@ -1589,5 +1592,3 @@ declare function classIs<T extends Instance, Q extends T["ClassName"]>(
 ): instance is Instances[Q] extends T
 	? (Instances[Q]["ClassName"] extends Q ? Instances[Q] : Instances[Q] & { ClassName: Q })
 	: T;
-
-declare function classIs(instance: Instance, type: string): boolean;

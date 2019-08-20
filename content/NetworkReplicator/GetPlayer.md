@@ -1,0 +1,1 @@
+Returns the player that is connected to the NetworkReplicator.

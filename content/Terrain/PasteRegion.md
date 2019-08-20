@@ -1,0 +1,1 @@
+Applies a chunk of terrain to the Terrain object. Note: `TerrainRegion` data does not replicate between server and client.

@@ -1,0 +1,1 @@
+ReceiveRate controls the maximum rate per second at which the network replicator is willing to receive packets.

@@ -1,0 +1,1 @@
+A LineForce is used to apply a force along a line between two points. As the end points of the line move, the direction of the force will change accordingly.

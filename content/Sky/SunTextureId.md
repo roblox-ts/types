@@ -1,0 +1,1 @@
+The texture of the sun while using this skybox.

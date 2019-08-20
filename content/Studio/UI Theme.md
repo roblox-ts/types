@@ -1,0 +1,1 @@
+Specifies the color scheme of Roblox Studio.

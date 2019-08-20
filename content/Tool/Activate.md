@@ -1,0 +1,1 @@
+Simulates a click on a Tool. Tool must be equipped.

@@ -1,0 +1,1 @@
+DataGCRate specifies how frequently old replication data is garbage collected, per second.

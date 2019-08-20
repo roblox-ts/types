@@ -1,0 +1,1 @@
+Sets which sides the GUI handles will appear.

@@ -1,0 +1,1 @@
+Fired when a breakpoint is added to the script.

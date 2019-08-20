@@ -1,0 +1,7 @@
+A TextLabel renders a rectangle, like a `Frame`, with styled text. The rectangle can be used to define text boundaries, text scaling ([TextLabel.TextScaled](https://developer.roblox.com/api-reference/property/TextLabel/TextScaled)) and wrapping ([TextLabel.TextWrapped](https://developer.roblox.com/api-reference/property/TextLabel/TextWrapped), [TextLabel.TextXAlignment](https://developer.roblox.com/api-reference/property/TextLabel/TextXAlignment), [TextLabel.TextYAlignment](https://developer.roblox.com/api-reference/property/TextLabel/TextYAlignment)).
+
+This class contains properties that control the display of the text, such as [TextLabel.Font](https://developer.roblox.com/api-reference/property/TextLabel/Font) and [TextLabel.TextColor3](https://developer.roblox.com/api-reference/property/TextLabel/TextColor3). All text rendered by a single text label will have the same visual properties; multiple TextLabel objects must be used in order to render multiple styles of text. To display only text and hide the rectangle, set [GuiObject.BackgroundTransparency](https://developer.roblox.com/api-reference/property/GuiObject/BackgroundTransparency) to 1.
+
+[TextService.GetTextSize](https://developer.roblox.com/api-reference/function/TextService/GetTextSize) can be used to get the size (bounds) of text that would be rendered in a TextLabel given a font size, font, and frame size.
+
+A `UITextSizeConstraint` object can be used to constrain the size of text with [TextLabel.TextScaled](https://developer.roblox.com/api-reference/property/TextLabel/TextScaled) enabled.

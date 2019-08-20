@@ -1,0 +1,1 @@
+A number index, which refers to a specific class icon.

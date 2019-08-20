@@ -1,0 +1,1 @@
+Sets the **Key** field of a LocalizationTable entry to _newKey_, using the specified _key_, _source_, and _context_ to narrow down the entry that will have this change applied.

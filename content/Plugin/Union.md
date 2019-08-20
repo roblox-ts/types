@@ -1,0 +1,1 @@
+Unions the given parts and returns the resulting UnionOperation.

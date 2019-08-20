@@ -1,0 +1,1 @@
+Fired when the right mouse button has been released on a GUI Object.

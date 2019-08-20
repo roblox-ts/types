@@ -1,0 +1,2 @@
+This function returns the default `GlobalDataStore`. If you want to access a specific **named** data store instead, you should use the [GetDataStore()](https://developer.roblox.com/api-reference/function/DataStoreService/GetDataStore) function.
+@returns Default `GlobalDataStore` instance

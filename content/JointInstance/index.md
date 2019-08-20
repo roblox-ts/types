@@ -1,0 +1,1 @@
+JointInstance is the base class for joints, such as Connectors, Welds, and Snaps.

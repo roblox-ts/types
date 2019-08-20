@@ -1,0 +1,1 @@
+Returns the [BackpackItem.TextureId](https://developer.roblox.com/api-reference/property/BackpackItem/TextureId) of a [tool](https://wiki.roblox.com/index.php?title=Tool) currently equipped by the [Player](https://wiki.roblox.com/index.php?title=Player), if one is equipped.

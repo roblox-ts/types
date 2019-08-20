@@ -1,0 +1,1 @@
+Determines whether the SurfaceGui will always be rendered on top of other objects.

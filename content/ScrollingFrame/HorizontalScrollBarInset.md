@@ -1,0 +1,1 @@
+Indicates the inset behavior of the horizontal scrolling bar.

@@ -1,0 +1,1 @@
+Sets the maximum distance that a dialog can be triggered from.

@@ -1,0 +1,1 @@
+The visualized thickness of the spring's coils.

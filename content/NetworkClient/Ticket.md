@@ -1,0 +1,1 @@
+The client's authorization ticket. This is only used when connecting to non-local Roblox servers.

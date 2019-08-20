@@ -17,6 +17,10 @@ import {
 } from "../api";
 import { Generator } from "./Generator";
 import { ReflectionMetadata } from "./ReflectionMetadata";
+import fs from "fs-extra";
+
+const ROOT_DIR = path.join(__dirname, "..", "..");
+const CONTENT_DIR = path.join(ROOT_DIR, "content");
 
 interface BreakdanceNodeBase {
 	type: string;
@@ -105,8 +109,7 @@ const MEMBER_BLACKLIST: {
 		  }
 		| undefined;
 } = {
-	Instance: { ClassName: true, Changed: true },
-	Workspace: { BreakJoints: true, MakeJoints: true },
+	Instance: { ClassName: true },
 };
 
 function containsBadChar(name: string) {
@@ -286,13 +289,6 @@ function multifilter<T>(list: Array<T>, numResultArrays: number, condition: (ele
 	}
 
 	return results;
-}
-
-class NumberHelper {
-	private n = 0;
-	public get() {
-		return this.n++;
-	}
 }
 
 namespace ClassInformation {
@@ -822,7 +818,7 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile, n: NumberHelper) {
+	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile) {
 		const name = this.generateClassName(rbxClass.Name);
 		const tsImplInterface = tsFile.getInterface(name);
 		let extendsStr = "";
@@ -948,16 +944,18 @@ export class ClassGenerator extends Generator {
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {
 		this.write(`// GENERATED ROBLOX INSTANCE CLASSES`);
 		this.write(``);
-		const helper = new NumberHelper();
-		rbxClasses.forEach(rbxClass => this.generateClass(rbxClass, sourceFile, helper));
+		for (const rbxClass of rbxClasses) {
+			this.generateClass(rbxClass, sourceFile);
+		}
 	}
 
 	public async generate(rbxClasses: Array<ApiClass>) {
-		const linkData = new Array<{
-			rbxMember: ApiClass;
-			link: string;
-		}>();
+		// const linkData = new Array<{
+		// 	rbxMember: ApiClass;
+		// 	link: string;
+		// }>();
 
+		const promises = new Array<Promise<void>>();
 		for (const rbxClass of rbxClasses) {
 			const rbxClassName = rbxClass.Name;
 
@@ -970,36 +968,80 @@ export class ClassGenerator extends Generator {
 				superclass.Subclasses.push(rbxClassName);
 			}
 
-			linkData.push({
-				rbxMember: rbxClass,
-				link: `https://developer.roblox.com/api-reference/class/${rbxClassName}.json`,
-			});
-		}
+			const classPath = path.join(CONTENT_DIR, rbxClassName);
 
-		const interval = 60;
-		let k = 0;
-		for (let i = interval; i < linkData.length; i += interval) {
-			const myLinks = new Array<Promise<any>>();
-			for (k = i - interval; k < i; k++) {
-				const linkDatum = linkData[k];
-				if (linkDatum) {
-					handleLinkData(myLinks, linkDatum, linkData, rbxClasses);
+			function processDesc(desc: string, tabs: number) {
+				if (desc.indexOf("\n") !== -1) {
+					return (
+						desc
+							.split("\n")
+							.map((v, i) => (i === 0 ? v : `${"\t".repeat(tabs)} * ${v}`))
+							.join("\n") +
+						"\n" +
+						"\t".repeat(tabs)
+					);
+				} else {
+					return desc;
 				}
 			}
-			await Promise.all(myLinks);
-		}
 
-		const leftoverLinks = new Array<Promise<any>>();
-		for (; k < linkData.length; k++) {
-			const linkDatum = linkData[k];
-			if (linkDatum) {
-				handleLinkData(leftoverLinks, linkDatum, linkData, rbxClasses);
+			promises.push(
+				(async () => {
+					const classDescPath = path.join(classPath, "index.md");
+					if (await fs.pathExists(classDescPath)) {
+						const classDesc = (await fs.readFile(classDescPath)).toString();
+						if (classDesc.trim().length > 0) {
+							rbxClass.Description = processDesc(classDesc, 0);
+						}
+					}
+				})(),
+			);
+
+			for (const rbxMember of rbxClass.Members) {
+				promises.push(
+					(async () => {
+						const memberDescPath = path.join(classPath, `${rbxMember.Name}.md`);
+						if (await fs.pathExists(memberDescPath)) {
+							const memberDesc = (await fs.readFile(memberDescPath)).toString();
+							if (memberDesc.trim().length > 0) {
+								rbxMember.Description = processDesc(memberDesc, 1);
+							}
+						}
+					})(),
+				);
 			}
+
+			// linkData.push({
+			// 	rbxMember: rbxClass,
+			// 	link: `https://developer.roblox.com/api-reference/class/${rbxClassName}.json`,
+			// });
 		}
-		await Promise.all(leftoverLinks);
+		await Promise.all(promises);
+
+		// const interval = 60;
+		// let k = 0;
+		// for (let i = interval; i < linkData.length; i += interval) {
+		// 	const myLinks = new Array<Promise<any>>();
+		// 	for (k = i - interval; k < i; k++) {
+		// 		const linkDatum = linkData[k];
+		// 		if (linkDatum) {
+		// 			handleLinkData(myLinks, linkDatum, linkData, rbxClasses);
+		// 		}
+		// 	}
+		// 	await Promise.all(myLinks);
+		// }
+
+		// const leftoverLinks = new Array<Promise<any>>();
+		// for (; k < linkData.length; k++) {
+		// 	const linkDatum = linkData[k];
+		// 	if (linkDatum) {
+		// 		handleLinkData(leftoverLinks, linkDatum, linkData, rbxClasses);
+		// 	}
+		// }
+		// await Promise.all(leftoverLinks);
 
 		const project = new Project({
-			tsConfigFilePath: path.join(__dirname, "..", "..", "include", "tsconfig.json"),
+			tsConfigFilePath: path.join(ROOT_DIR, "include", "tsconfig.json"),
 		});
 		const sourceFile = project.getSourceFileOrThrow("customDefinitions.d.ts");
 		this.generateHeader();

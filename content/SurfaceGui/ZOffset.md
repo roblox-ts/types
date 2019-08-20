@@ -1,0 +1,1 @@
+Offsets the SurfaceGui relative to the normal of the surface it is attached to.
