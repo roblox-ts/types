@@ -114,6 +114,11 @@ interface ModuleScript extends LuaSourceContainer {
 	Source: string;
 }
 
+interface MemStorageConnection extends Instance {
+	/** [NO DOCUMENTATION] */
+	Disconnect(): void;
+}
+
 interface PluginMouse extends Mouse {
 	/** Fired when Instances are being selected while the mouse is dragging. */
 	readonly DragEnter: RBXScriptSignal<(instances: Array<Instance>) => void>;

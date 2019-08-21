@@ -8779,6 +8779,7 @@ interface GuiService extends Instance {
 	AddSelectionTuple(selectionName: string, selections: Array<any>): void;
 	CloseInspectMenu(): void;
 	GetEmotesMenuOpen(): boolean;
+	GetGameplayPausedNotificationEnabled(): boolean;
 	/** Returns two [DataType.Vector2](https://developer.roblox.com/search#stq=Vector2) values representing the inset of user GUIs in pixels, from the top left corner of the screen and the bottom right corner of the screen respectively.
 	 * 
 	 * The inset values supplied by this function only take effect on [ScreenGuis](https://developer.roblox.com/api-reference/class/ScreenGui) that have their [IgnoreGuiInset](https://developer.roblox.com/api-reference/property/ScreenGui/IgnoreGuiInset) property set to false.
@@ -8796,6 +8797,7 @@ interface GuiService extends Instance {
 	/** Removes a group that was created with [GuiService.AddSelectionParent](https://developer.roblox.com/api-reference/function/GuiService/AddSelectionParent) or [GuiService.AddSelectionTuple](https://developer.roblox.com/api-reference/function/GuiService/AddSelectionTuple). */
 	RemoveSelectionGroup(selectionName: string): void;
 	SetEmotesMenuOpen(isOpen: boolean): void;
+	SetGameplayPausedNotificationEnabled(enabled: boolean): void;
 	SetInspectMenuEnabled(enabled: boolean): void;
 	/** Fires when the user **closes** the Roblox coregui escape menu. */
 	readonly MenuClosed: RBXScriptSignal<() => void>;
@@ -13461,6 +13463,8 @@ interface NetworkSettings extends Instance {
 	 * ---
 	 */
 	PrintInstances: boolean;
+	/** [NO DOCUMENTATION] */
+	PrintJoinSizeBreakdown: boolean;
 	/** When set to true, debug messages will be printed into the output, pertaining to physics replication errors. There are several debug outputs that are made available when this property is set to true, as listed below.
 	 * 
 	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
@@ -14565,6 +14569,10 @@ interface Terrain extends BasePart {
 interface TriangleMeshPart extends BasePart {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "TriangleMeshPart" | "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation";
+	/** [NO DOCUMENTATION] *
+	 * Tags: NotReplicated
+	 */
+	readonly CollisionFidelity: Enum.CollisionFidelity;
 }
 
 /** MeshParts are a form of `BasePart` that includes a physically simulated custom mesh. Unlike with other mesh classes, such as `SpecialMesh` and `BlockMesh`, they are not parented to a `BasePart` but rather behave as a `BasePart` in their own right.
@@ -23554,6 +23562,7 @@ interface UserInputService extends Instance {
 	 * As this event only fires locally, it can only be used in a `LocalScript`.
 	 */
 	readonly LastInputTypeChanged: RBXScriptSignal<(lastInputType: Enum.UserInputType) => void>;
+	readonly PointerAction: RBXScriptSignal<(wheel: number, pan: Vector2, pinch: number, gameProcessedEvent: boolean) => void>;
 	/** The TextBoxFocusReleased event fires when a client loses focus on a TextBox - typically when a client stops text entry into a TextBox by pressing return or clicking/touching elsewhere on the screen.
 	 * 
 	 * For example, the code below prints the the name of the TextBox losing focus when the event fires.
