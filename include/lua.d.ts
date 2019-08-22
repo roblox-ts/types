@@ -186,6 +186,7 @@ interface String {
 	byte(i?: number, j?: number): LuaTuple<Array<number>>;
 
 	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if `plain` is given, then `init` must be given as well. */
+	/** @rbxts disallow-tuple-truthy */
 	find(
 		pattern: string,
 		init?: number,
@@ -205,6 +206,7 @@ interface String {
 	lower(): string;
 
 	/** Looks for the first match of pattern in the string s. If a match is found, it is returned; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. */
+	/** @rbxts disallow-tuple-truthy */
 	match(pattern: string, init?: number): LuaTuple<Array<string> | Array<undefined>>;
 
 	/** Returns a string that is the concatenation of n copies of the string s separated by the string sep. */
