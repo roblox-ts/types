@@ -16626,7 +16626,7 @@ interface Player extends Instance {
 	 * 
 	 * The message text fired with this event is **unfiltered**. If you are displaying player input like chat to other players in any form, it must be filtered using [Chat.FilterStringAsync](https://developer.roblox.com/api-reference/function/Chat/FilterStringAsync). Keep this in mind when creating your own chat systems; if your game does not properly filter chat it may have moderation action taken against it.
 	 */
-	readonly Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
+	readonly Chatted: RBXScriptSignal<(message: string, recipient?: Player) => void>;
 	/** This event is usually fired two minutes after the game engine classifies the [player](https://developer.roblox.com/api-reference/class/Player) as idle. Time is the amount of seconds since this point.
 	 * 
 	 * This can be used to track when a player has been idled for approximately two minutes - which can be useful for implementing away from keyboard (AFK) features into a game.
