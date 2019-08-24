@@ -508,7 +508,7 @@ interface Player extends Instance {
 	readonly CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
 	readonly CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
 
-	readonly Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
+	readonly Chatted: RBXScriptSignal<(message: string, recipient?: Player) => void>;
 	/** ### TS Usage
 	 * One should check the LocationType of each member of this array in order to verify which members are present. Should be compared to the LocationType const enum.
 	 */
