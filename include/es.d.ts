@@ -765,13 +765,13 @@ interface PromiseConstructor {
 	 * Creates an immediately rejected Promise with the given value.
 	 * @param value The value to reject with.
 	 */
-	reject: <T>(value: T) => Promise<T>;
+	reject: <T = undefined>(value?: T) => Promise<T>;
 
 	/**
 	 * Creates an immediately resolved Promise with the given value.
 	 * @param value The value to resolve with.
 	 */
-	resolve: <T>(value: T) => Promise<T>;
+	resolve: <T = undefined>(value?: T) => Promise<T>;
 
 	/**
 	 * Accepts an array of Promises and returns a new Promise that is resolved when all input Promises resolve,
