@@ -12,19 +12,24 @@ export class EnumGenerator extends Generator {
 		this.write(``);
 		this.write(`// GENERATED ROBLOX ENUMS`);
 		this.write(``);
-		this.write(`declare namespace Enum {`);
-		this.pushIndent();
-		this.write(`type EnumType<T extends { Name: string }> = { [K in T["Name"]]: Extract<T, { Name: K }> };`);
+		this.write(`type Enums = typeof Enum;`);
 		this.write(``);
 		this.write(`interface EnumItem {`);
 		this.pushIndent();
 		this.write(`Name: string;`);
 		this.write(`Value: number;`);
-		this.write(`EnumType: EnumItemGroup;`);
+		this.write(`EnumType: Enum;`);
 		this.popIndent();
 		this.write(`}`);
-		this.write(`type EnumItemGroup = { GetEnumItems(this: {}): Array<EnumItem> } & { [index: string]: EnumItem };`);
-		this.write(`export function GetEnums(this: typeof Enum): Array<EnumItemGroup>;`);
+		this.write(``);
+		this.write(`type Enum = { GetEnumItems(this: {}): Array<EnumItem> } & { [index: string]: EnumItem };`);
+		this.write(``);
+		this.write(`declare namespace Enum {`);
+		this.pushIndent();
+		this.write(
+			`type EnumType<T extends { Name: string }> = { GetEnumItems(this: {}): Array<T> } & { [K in T["Name"]]: Extract<T, { Name: K }> };`,
+		);
+		this.write(`export function GetEnums(this: Enums): Array<Enum>;`);
 		this.write(``);
 
 		for (const { Name: enumTypeName, Items: enumTypeItems } of rbxEnums) {
@@ -39,7 +44,7 @@ export class EnumGenerator extends Generator {
 				this.pushIndent();
 				this.write(`Name: "${enumItemName}";`);
 				this.write(`Value: ${enumItemValue};`);
-				this.write(`EnumType: EnumType<Enum.${enumTypeName}>;`);
+				this.write(`EnumType: EnumType<${enumTypeName}>;`);
 				this.popIndent();
 				this.write(`}`);
 				this.write(``);

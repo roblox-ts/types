@@ -5,7 +5,6 @@ import { ClassGenerator } from "./class/ClassGenerator";
 import { EnumGenerator } from "./class/EnumGenerator";
 import { ReflectionMetadata } from "./class/ReflectionMetadata";
 import { Timer } from "./class/Timer";
-import fs from "fs-extra";
 
 const SECURITY_LEVELS = ["None", "PluginSecurity"];
 
