@@ -1512,9 +1512,8 @@ interface CheckablePrimitives {
 /**  Returns the type of its only argument, coded as a string. */
 declare function type(value: any): keyof CheckablePrimitives;
 
-// typeOf
+/** The strings which can be returned by typeOf and their corresponding types */
 interface CheckableTypes extends CheckablePrimitives {
-	Instance: Instance;
 	Axes: Axes;
 	BrickColor: BrickColor;
 	CFrame: CFrame;
@@ -1522,14 +1521,18 @@ interface CheckableTypes extends CheckablePrimitives {
 	ColorSequence: ColorSequence;
 	ColorSequenceKeypoint: ColorSequenceKeypoint;
 	DockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo;
+	Enum: Enum;
+	EnumItem: EnumItem;
+	Enums: Enums;
 	Faces: Faces;
+	Instance: Instance;
 	NumberRange: NumberRange;
 	NumberSequence: NumberSequence;
 	NumberSequenceKeypoint: NumberSequenceKeypoint;
 	PathWaypoint: PathWaypoint;
 	PhysicalProperties: PhysicalProperties;
-	RBXScriptSignal: RBXScriptSignal;
 	RBXScriptConnection: RBXScriptConnection;
+	RBXScriptSignal: RBXScriptSignal;
 	Random: Random;
 	Ray: Ray;
 	Rect: Rect;
