@@ -738,6 +738,14 @@ interface Promise<T> {
 	 * Calls the Promise's cancellation hook if it is set.
 	 */
 	cancel(): void;
+	
+	/**
+	 * Awaits the promise synchronously utilizing the Roblox thread scheduler.
+	 * Functionally equivalent to `await promise`, but can be used in cases where the function cannot be async,
+	 * such as in `MarketplaceService.ProcessReceipt`.
+	 * @returns The value returned by the promise.
+	 */
+	await(): T;
 
 	/**
 	 * Returns true if this Promise has been rejected.
