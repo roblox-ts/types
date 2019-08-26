@@ -9751,6 +9751,58 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<StreamingPauseMode>
 	}
 	export type StreamingPauseMode = StreamingPauseMode.Default | StreamingPauseMode.Disabled | StreamingPauseMode.ClientPhysicsPause;
+	export namespace StudioDataModelType {
+		export interface Edit {
+			Name: "Edit";
+			Value: 0;
+			EnumType: EnumType<StudioDataModelType>;
+		}
+
+		export const Edit: Edit;
+
+		export interface PlayClient {
+			Name: "PlayClient";
+			Value: 2;
+			EnumType: EnumType<StudioDataModelType>;
+		}
+
+		export const PlayClient: PlayClient;
+
+		export interface PlayServer {
+			Name: "PlayServer";
+			Value: 3;
+			EnumType: EnumType<StudioDataModelType>;
+		}
+
+		export const PlayServer: PlayServer;
+
+		export interface RobloxPlugin {
+			Name: "RobloxPlugin";
+			Value: 4;
+			EnumType: EnumType<StudioDataModelType>;
+		}
+
+		export const RobloxPlugin: RobloxPlugin;
+
+		export interface UserPlugin {
+			Name: "UserPlugin";
+			Value: 5;
+			EnumType: EnumType<StudioDataModelType>;
+		}
+
+		export const UserPlugin: UserPlugin;
+
+		export interface Null {
+			Name: "Null";
+			Value: 6;
+			EnumType: EnumType<StudioDataModelType>;
+		}
+
+		export const Null: Null;
+
+		export function GetEnumItems(this: {}): Array<StudioDataModelType>
+	}
+	export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.RobloxPlugin | StudioDataModelType.UserPlugin | StudioDataModelType.Null;
 	export namespace StudioStyleGuideColor {
 		export interface MainBackground {
 			Name: "MainBackground";
@@ -10963,6 +11015,50 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<TextFilterContext>
 	}
 	export type TextFilterContext = TextFilterContext.PublicChat | TextFilterContext.PrivateChat;
+	export namespace TextInputType {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<TextInputType>;
+		}
+
+		export const Default: Default;
+
+		export interface NoSuggestions {
+			Name: "NoSuggestions";
+			Value: 1;
+			EnumType: EnumType<TextInputType>;
+		}
+
+		export const NoSuggestions: NoSuggestions;
+
+		export interface Number {
+			Name: "Number";
+			Value: 2;
+			EnumType: EnumType<TextInputType>;
+		}
+
+		export const Number: Number;
+
+		export interface Email {
+			Name: "Email";
+			Value: 3;
+			EnumType: EnumType<TextInputType>;
+		}
+
+		export const Email: Email;
+
+		export interface Phone {
+			Name: "Phone";
+			Value: 4;
+			EnumType: EnumType<TextInputType>;
+		}
+
+		export const Phone: Phone;
+
+		export function GetEnumItems(this: {}): Array<TextInputType>
+	}
+	export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone;
 	export namespace TextTruncate {
 		export interface None {
 			Name: "None";
@@ -12263,6 +12359,7 @@ declare type CastsToEnum<T extends
 	| Enum.StartCorner
 	| Enum.Status
 	| Enum.StreamingPauseMode
+	| Enum.StudioDataModelType
 	| Enum.StudioStyleGuideColor
 	| Enum.StudioStyleGuideModifier
 	| Enum.Style
@@ -12276,6 +12373,7 @@ declare type CastsToEnum<T extends
 	| Enum.TeleportState
 	| Enum.TeleportType
 	| Enum.TextFilterContext
+	| Enum.TextInputType
 	| Enum.TextTruncate
 	| Enum.TextXAlignment
 	| Enum.TextYAlignment
