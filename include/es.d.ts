@@ -726,9 +726,9 @@ interface Promise<T> {
 	 * Awaits the promise synchronously utilizing the Roblox thread scheduler.
 	 * Functionally equivalent to `await promise`, but can be used in cases where the function cannot be async,
 	 * such as in `MarketplaceService.ProcessReceipt`.
-	 * @returns The value returned by the promise.
+	 * @returns A tuple with the success of the promise along with the result it provided.
 	 */
-	await(): T;
+	await<TResult = unknown>(): LuaTuple<[true, T] | [false, TResult]>;
 
 	/**
 	 * Returns true if this Promise has been rejected.
