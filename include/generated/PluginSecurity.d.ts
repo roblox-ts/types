@@ -68,6 +68,25 @@ interface ChangeHistoryService extends Instance {
 	readonly OnUndo: RBXScriptSignal<(waypoint: string) => void>;
 }
 
+interface DataModelSession extends Instance {
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CurrentGameStateType: Enum.StudioDataModelType;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly SessionId: string;
+	/** [NO DOCUMENTATION] */
+	readonly CurrentGameStateTypeAboutToChange: RBXScriptSignal<(gameStateType: number) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly CurrentGameStateTypeChanged: RBXScriptSignal<() => void>;
+	/** [NO DOCUMENTATION] */
+	readonly DataModelCreated: RBXScriptSignal<(gameStateType: number) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly DataModelWillBeDestroyed: RBXScriptSignal<(gameStateType: number) => void>;
+}
+
 interface File extends Instance {
 	/** 
 	 * Tags: Hidden, ReadOnly, NotReplicated
@@ -112,6 +131,21 @@ interface Script extends BaseScript {
 interface ModuleScript extends LuaSourceContainer {
 	/** The code to be executed. */
 	Source: string;
+}
+
+interface MDIInstance extends Instance {
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly FocusedDataModelSession?: Instance;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly FocusedDataModelSessionId: string;
+	/** [NO DOCUMENTATION] */
+	readonly DataModelSessionEnded: RBXScriptSignal<(sessionId: string) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly DataModelSessionStarted: RBXScriptSignal<(sessionId: string) => void>;
 }
 
 interface MemStorageConnection extends Instance {
@@ -237,6 +271,7 @@ interface Players extends Instance {
 }
 
 interface Plugin extends Instance {
+	readonly MDIInstance?: MDIInstance;
 	/** Sets the state of the calling plugin to activated. Allows mouse control through the [Plugin.GetMouse](https://developer.roblox.com/api-reference/function/Plugin/GetMouse) method. */
 	Activate(exclusiveMouse: boolean): void;
 	/** This function creates a `PluginAction` which is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`. In Roblox Studio, they can be assigned a keyboard shortcut under `File → Advanced → Customize Shortcuts…`, and they can also be added to the Quick Access Toolbar.
