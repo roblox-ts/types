@@ -22,38 +22,21 @@ interface ArrayLike<T> {
 
 interface ObjectConstructor {
 	/**
-	 * Copy the values of all of the enumerable own properties from one or more source objects to a
-	 * target object. Returns the target object.
-	 * @param target The target object to copy to.
-	 * @param source The source object from which to copy properties.
+	 * Copy the values of all of the enumerable own properties from one or more source objects to a target object.
+	 * Returns the target object.
 	 */
-	assign<T extends object, U>(target: T, source: U): T & U;
-
-	/**
-	 * Copy the values of all of the enumerable own properties from one or more source objects to a
-	 * target object. Returns the target object.
-	 * @param target The target object to copy to.
-	 * @param source1 The first source object from which to copy properties.
-	 * @param source2 The second source object from which to copy properties.
-	 */
-	assign<T extends object, U, V>(target: T, source1: U, source2: V): T & U & V;
-
-	/**
-	 * Copy the values of all of the enumerable own properties from one or more source objects to a
-	 * target object. Returns the target object.
-	 * @param target The target object to copy to.
-	 * @param source1 The first source object from which to copy properties.
-	 * @param source2 The second source object from which to copy properties.
-	 * @param source3 The third source object from which to copy properties.
-	 */
-	assign<T extends object, U, V, W>(target: T, source1: U, source2: V, source3: W): T & U & V & W;
-
-	/**
-	 * Copy the values of all of the enumerable own properties from one or more source objects to a
-	 * target object. Returns the target object.
-	 * @param target The target object to copy to.
-	 * @param sources One or more source objects from which to copy properties
-	 */
+	assign<A, B>(target: A, source: B): A & B;
+	assign<A, B, C>(target: A, source1: B, source2: C): A & B & C;
+	assign<A, B, C, D>(target: A, source1: B, source2: C, source3: D): A & B & C & D;
+	assign<A, B, C, D, E>(target: A, source1: B, source2: C, source3: D, source4: E): A & B & C & D & E;
+	assign<A, B, C, D, E, F>(
+		target: A,
+		source1: B,
+		source2: C,
+		source3: D,
+		source4: E,
+		source5: F,
+	): A & B & C & D & E & F;
 	assign(target: object, ...sources: Array<any>): any;
 
 	/**
@@ -740,6 +723,14 @@ interface Promise<T> {
 	cancel(): void;
 
 	/**
+	 * Awaits the promise synchronously utilizing the Roblox thread scheduler.
+	 * Functionally equivalent to `await promise`, but can be used in cases where the function cannot be async,
+	 * such as in `MarketplaceService.ProcessReceipt`.
+	 * @returns A tuple with the success of the promise along with the result it provided.
+	 */
+	await<TResult = unknown>(): LuaTuple<[true, T] | [false, TResult]>;
+
+	/**
 	 * Returns true if this Promise has been rejected.
 	 */
 	isRejected(): boolean;
@@ -765,13 +756,13 @@ interface PromiseConstructor {
 	 * Creates an immediately rejected Promise with the given value.
 	 * @param value The value to reject with.
 	 */
-	reject: <T>(value: T) => Promise<T>;
+	reject: <T = undefined>(value?: T) => Promise<T>;
 
 	/**
 	 * Creates an immediately resolved Promise with the given value.
 	 * @param value The value to resolve with.
 	 */
-	resolve: <T>(value: T) => Promise<T>;
+	resolve: <T = undefined>(value?: T) => Promise<T>;
 
 	/**
 	 * Accepts an array of Promises and returns a new Promise that is resolved when all input Promises resolve,
@@ -870,4 +861,4 @@ type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (.
 /**
  * Marker for contextual 'this' type
  */
-interface ThisType<T> { }
+interface ThisType<T> {}
