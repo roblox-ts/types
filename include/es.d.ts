@@ -11,6 +11,7 @@ interface Function {
 interface CallableFunction extends Function {}
 interface NewableFunction extends Function {}
 
+/** Hello */
 /** @rbxts array */
 interface ArrayLike<T> {
 	/**
