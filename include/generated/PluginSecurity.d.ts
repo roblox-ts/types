@@ -557,7 +557,6 @@ interface PluginMenu extends Instance {
 }
 
 interface PluginToolbar extends Instance {
-
 	CreateButton(buttonId: string, tooltip: string, iconname: string, text?: string): PluginToolbarButton;
 }
 

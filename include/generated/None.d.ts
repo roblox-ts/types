@@ -887,13 +887,6 @@ interface Instance {
 	 */
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance) => void>;
 	/** Fired after a property changes value.  The property argument is the name of the property */
-	/** `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
-	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Instance.Changed` event.
-	 * @example
-	 * function f(p: Part) {
-	 * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
-	 * }
-	 */
 	Changed: unknown;
 	/** Fires when an object is parented to this `Instance`.
 	 * 
@@ -1577,7 +1570,6 @@ interface Animator extends Instance {
 /** The AssetService is a non-replicated service that handles asset related queries to the Roblox web API. Eventually, this will house all asset related queries for Roblox objects stored in the web. One should mind the [limitations](https://developer.roblox.com/search#stq=Multi%20Place%20Games) this API has.
  * @rbxts server
  */
-	/** @rbxts server */
 interface AssetService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AssetService";
@@ -1592,7 +1584,6 @@ interface AssetService extends Instance {
 	): number;
 	/** Returns an array of assetIds that are contained in a specified package. */
 	GetAssetIdsForPackage(packageAssetId: number): Array<number>;
-
 	GetBundleDetailsAsync(bundleId: number): BundleInfo;
 	/** Returns a `StandardPages` object which contains the name and placeId of places within the current 'Game' (otherwise known as a 'Universe'). */
 	GetGamePlacesAsync(): StandardPages;
@@ -1825,7 +1816,6 @@ interface BadgeService extends Instance {
 	 * @returns True if the badge was rewarded successfully. 
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	AwardBadge(userId: number, badgeId: number): boolean;
 	/** This function fteches information about a badge given its ID. It takes a brief moment to load the information from the Roblox website; repeated calls will cache for a short duration. It returns a dictionary with the following fields:
 	 * 
@@ -1845,7 +1835,6 @@ interface BadgeService extends Instance {
 	 * @returns A dictionary of information about the specified badge.
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	GetBadgeInfoAsync(badgeId: number): BadgeInfo;
 	/** UserHasBadgeAsync checks whether a player owns a badge given the `Player`'s [UserId](https://developer.roblox.com/api-reference/property/Player/UserId) and the badge's id. Such a query can only be made under the following conditions:
 	 * 
@@ -1871,7 +1860,6 @@ interface BadgeService extends Instance {
 	 * @returns A bool indicating if the specified user has the specified badge.
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	UserHasBadgeAsync(userId: number, badgeId: number): boolean;
 }
 
@@ -4755,7 +4743,6 @@ interface ContentProvider extends Instance {
  * It's better to use ContextActionService's BindAction than UserInputService's InputBegan for most cases. For example, if you want to use the `R` key to reload a weapon while it is equipped, the player might type "roblox is fun" in chat or otherwise use the `R` key for something else. The weapon could reload when the player didn't mean to! If you instead use BindAction and UnbindAction when the weapon is equipped/unequipped, ContextActionService will make sure that `R` key presses trigger the reload action only when it is the most recently bound action.
  * @rbxts client
  */
-	/** @rbxts client */
 interface ContextActionService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ContextActionService";
@@ -5231,7 +5218,6 @@ interface DataModelSession extends Instance {
  * There are limits applied to the data store model. Please see [Data Store Errors and Limits](https://developer.roblox.com/search#stq=Datastore%20Errors) for details.
  * @rbxts server
  */
-	/** @rbxts server */
 interface DataStoreService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DataStoreService";
@@ -6410,7 +6396,6 @@ interface Geometry extends Instance {
  * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an in-depth guide on data structure, management, error handling, etc.
  * @rbxts server
  */
-	/** @rbxts server */
 interface GlobalDataStore extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "GlobalDataStore" | "OrderedDataStore";
@@ -6500,7 +6485,6 @@ interface GlobalDataStore extends Instance {
  * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an overview on using ordered data stores.
  * @rbxts server
  */
-	/** @rbxts server */
 interface OrderedDataStore extends GlobalDataStore {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "OrderedDataStore";
@@ -8759,7 +8743,6 @@ interface SelectionPointLasso extends SelectionLasso {
  * This service has a lot of hidden members, which are mainly used internally by Roblox's [CoreScripts](https://developer.roblox.com/api-reference/class/CoreScript).
  * @rbxts client
  */
-	/** @rbxts client */
 interface GuiService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "GuiService";
@@ -8945,12 +8928,10 @@ interface HttpService extends Instance {
 	/** Send an HTTP GET request, blocking the current thread until a response is received. If the HTTP response code is not in 200 class of status codes, this function raises an error. A useful endpoint that can help you debug GET request is https://httpbin.org/get. It provides a JSON response with information about a GET request, such as headers and URL arguments.
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	GetAsync(url: string, nocache?: boolean, headers?: HttpHeaders): string;
 	/** Send an HTTP POST request, blocking the current thread until a response is received. Certain HTTP response codes (like 404 or 403) will raise errors.  A useful endpoint that can help you debug POST requests is https://httpbin.org/post. It provides a JSON response with information about a POST request, such as headers and URL arguments.
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	PostAsync(
 		url: string,
 		data: string,
@@ -9000,7 +8981,6 @@ interface HttpService extends Instance {
 	 * @returns A dictionary containing response information from the server specified.
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	RequestAsync(requestOptions: RequestAsyncRequest): RequestAsyncResponse;
 }
 
@@ -9526,7 +9506,6 @@ interface Humanoid extends Instance {
 	 * @returns An array of `Accessory|Accessories` that are parented to the `Humanoid|Humanoid's` parent.
 	 */
 	GetAccessories(): Array<Accessory>;
-
 	GetAppliedDescription(): HumanoidDescription;
 	/** Returns a Enum.BodyPartR15 given a body part in the Humanoid's Character. */
 	GetBodyPartR15(part: BasePart): Enum.BodyPartR15;
@@ -9936,13 +9915,6 @@ interface Humanoid extends Instance {
 
 /** **HumanoidDescription** is an `Instance` which can be placed anywhere in the Explorer hierarchy. It allows you to dynamically change `Humanoid` traits like body parts/colors, body scaling, accessories, clothing, and default animations. For more details and code examples, see the [HumanoidDescription System](https://developer.roblox.com/search#stq=humanoiddescription%20system) article.
  * #### Related methods:
- * - Humanoid.ApplyDescription()
- * - Humanoid.GetAppliedDescription()
- * - Player.LoadCharacterWithHumanoidDescription()
- * - Players.GetHumanoidDescriptionFromOutfitId()
- * - Players.GetHumanoidDescriptionFromUserId()
- */
-	/** #### Related methods:
  * - Humanoid.ApplyDescription()
  * - Humanoid.GetAppliedDescription()
  * - Player.LoadCharacterWithHumanoidDescription()
@@ -10907,7 +10879,6 @@ interface Keyframe extends Instance {
 	 * @returns An array of `Pose`s.
 	 */
 	GetPoses(): Array<Pose>;
-
 	RemoveMarker(marker: KeyframeMarker): void;
 	/** This function removes a `Pose` from the `Keyframe` by setting its [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) to nil.
 	 * 
@@ -12357,7 +12328,6 @@ interface Hint extends Message {
  * When released as a beta feature, this was available in live servers but not in Studio.
  * @rbxts server
  */
-	/** @rbxts server */
 interface MessagingService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "MessagingService";
@@ -14088,7 +14058,6 @@ interface BasePart extends PVInstance {
 	 * @returns Whether you can modify/read the network ownership, as well as a reason if you cannot
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	CanSetNetworkOwnership(): LuaTuple<[boolean, string | undefined]>;
 	/** Returns a table of parts connected to the the object by any kind of rigid joint.
 	 * 
@@ -14130,13 +14099,11 @@ interface BasePart extends PVInstance {
 	 * @returns The current player who is the network owner of this part, or nil in case of the server
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	GetNetworkOwner(): Player | undefined;
 	/** Returns true if the game engine automatically decides the network owner for this part.
 	 * @returns Whether the game engine automatically decides the network owner for this part
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	GetNetworkOwnershipAuto(): boolean;
 	/** Returns the base part of an assembly (a collection of parts connected together). When moving an assembly of parts using a [CFrame](https://developer.roblox.com/api-reference/datatype/CFrame) it is important to move this base part (this will move all other parts connected to it accordingly.
 	 * @returns The base part of an assembly (a collection of parts connected together)
@@ -14171,13 +14138,11 @@ interface BasePart extends PVInstance {
 	 * @returns void
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	SetNetworkOwner(playerInstance?: Player): void;
 	/** Lets the game engine dynamically decide who will handle the part's physics (one of the clients or the server).
 	 * @returns void
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	SetNetworkOwnershipAuto(): void;
 	/** This is a server-only function that uses [CSG][1] to subtract the geometry of a table of [BaseParts](https://developer.roblox.com/api-reference/class/BasePart) from the calling `BasePart`. It returns a parentless `UnionOperation` named **Union** with the following specs:
 	 * 
@@ -14212,7 +14177,6 @@ interface BasePart extends PVInstance {
 	 * @returns The resulting union from the subtraction operation
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	SubtractAsync(parts: Array<BasePart>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>): UnionOperation;
 	/** This is a server-only function that uses [CSG][1] to combine the geometry of the calling `BasePart` with a table of other [BaseParts](https://developer.roblox.com/api-reference/class/BasePart). It returns a parentless `UnionOperation` named **Union** with the following specs:
 	 * 
@@ -14247,7 +14211,6 @@ interface BasePart extends PVInstance {
 	 * @returns The resulting `UnionOperation`
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	UnionAsync(parts: Array<BasePart>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>): UnionOperation;
 	/** Fired when a [part](https://developer.roblox.com/api-reference/class/BasePart) stops touching another part. This event fires under similar conditions to those of [BasePart.Touched](https://developer.roblox.com/api-reference/event/BasePart/Touched). */
 	readonly TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
@@ -14771,7 +14734,6 @@ interface Model extends PVInstance {
 	 * Note that although joints produced by surface connections with adjacent Parts can technically be recreated using [Model.MakeJoints](https://developer.roblox.com/api-reference/function/Model/MakeJoints), this will only recreate joints produced by surfaces. Developers should not rely on this as following the joints being broken parts may no longer be in contact with each other.
 	 */
 	BreakJoints(): void;
-
 	GetBoundingBox(): LuaTuple<[CFrame, Vector3]>;
 	/** Returns the size of the smallest bounding box that contains all of the `BasePart`s in the `Model`. If [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) exists then the bounding box will be aligned to that part. If a primary part has not been set then the function will chose a part in the model to align the bounding box to. As the the selection of this part is not deterministic it is recommended to set a [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) to get consistent results with this function.
 	 * 
@@ -16550,9 +16512,6 @@ interface Player extends Instance {
 	 * ### TS Usage
 	 * One should check the LocationType of each member of this array in order to verify which members are present. Should be compared to the LocationType const enum.
 	 */
-	/** ### TS Usage
-	 * One should check the LocationType of each member of this array in order to verify which members are present. Should be compared to the LocationType const enum.
-	 */
 	GetFriendsOnline(maxFriends?: number): Array<FriendOnlineInfo>;
 	/** Returns the player's rank in the group as an integer between 0 and 255, where 0 is a non-member and 255 is the group's owner. */
 	GetRankInGroup(groupId: number): number;
@@ -16579,9 +16538,7 @@ interface Player extends Instance {
 	/** Creates a new character for the player, removing the old one. Also clears the player's `Backpack` and `PlayerGui`.
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	LoadCharacter(): void;
-	/** @rbxts server */
 	/** @rbxts server */
 	LoadCharacterWithHumanoidDescription(humanoidDescription: HumanoidDescription): void;
 	/** The CharacterAdded event fires when a player's character spawns (or respawns). This event fires soon after setting [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) to a non-nil value or calling [Player.LoadCharacter](https://developer.roblox.com/api-reference/function/Player/LoadCharacter). Note, CharacterAdded fires when the Character is assigned to the `Player`, which is before the Character is parented to the `Workspace`.
@@ -16720,7 +16677,6 @@ interface Players extends Instance {
 	 * Note that this technique is not required for [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript) within in `StarterGui`, `StarterPlayerScripts` or `StarterCharacterScripts`, as these kinds of scripts only run if the `Player` object is already available.
 	 * @rbxts client
 	 */
-	/** @rbxts client */
 	readonly LocalPlayer: Player;
 	/** The maximum amount of players that can be in this server. */
 	readonly MaxPlayers: number;
@@ -16858,9 +16814,7 @@ interface Players extends Instance {
 	 * @returns A `FriendPages` object which contains information for all of the given player's friends.
 	 */
 	GetFriendsAsync(userId: number): FriendPages;
-
 	GetHumanoidDescriptionFromOutfitId(outfitId: number): HumanoidDescription;
-
 	GetHumanoidDescriptionFromUserId(userId: number): HumanoidDescription;
 	/** The GetNameFromUserIdAsync `Players` function will send a query to the Roblox website asking what the username is of the account with the given [UserId](https://developer.roblox.com/api-reference/property/Player/UserId). This function **does not cache**; it always sends a web request even if a UserId was already queried or if the player is already connected to the server (and thus has their username exposed).
 	 * 
@@ -18309,7 +18263,6 @@ interface Selection extends Instance {
 /** A semantic, organized place to put your server-sided game logic, which does not interfere with the world. Scripts will run inside this service, and will not replicate to game clients, allowing for secure storage of your scripts.
  * @rbxts server
  */
-	/** @rbxts server */
 interface ServerScriptService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ServerScriptService";
@@ -18326,7 +18279,6 @@ interface ServerScriptService extends Instance {
  * Note that as the contents of ServerStorage can only be accessed by the server, its contents will need to be parented elsewhere (such as `Workspace`) before clients can access them. Developers who require a container that is accessible by both the server and client are advised to use `ReplicatedStorage` instead.
  * @rbxts server
  */
-	/** @rbxts server */
 interface ServerStorage extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ServerStorage";
@@ -18813,11 +18765,8 @@ interface Smoke extends Instance {
 interface SocialService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "SocialService";
-
 	PromptGameInvite(targetPlayer: Player): void;
-
 	CanSendGameInviteAsync(targetPlayer: Player): boolean;
-
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
 }
 
@@ -20563,18 +20512,14 @@ interface Team extends Instance {
 	readonly ClassName: "Team";
 	AutoAssignable: boolean;
 	TeamColor: BrickColor;
-
 	GetPlayers(): Array<Player>;
-
 	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
-
 	readonly PlayerRemoved: RBXScriptSignal<(player: Player) => void>;
 }
 
 interface Teams extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Teams";
-
 	GetTeams(): Array<Team>;
 }
 
@@ -20611,7 +20556,6 @@ interface TeleportService extends Instance {
 	 * @returns The *customLoadingScreen* the `Players/LocalPlayer|LocalPlayer` arrived into the place with
 	 * @rbxts client
 	 */
-	/** @rbxts client */
 	GetArrivingTeleportGui(): ScreenGui | GuiMain | undefined;
 	/** This function returns the *teleportData* the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) arrived into the place with. It can only be used on the client and can be called at any time.
 	 * 
@@ -20660,7 +20604,6 @@ interface TeleportService extends Instance {
 	 * @returns The *teleportData* the `Players/LocalPlayer` arrived into the place with
 	 * @rbxts client
 	 */
-	/** @rbxts client */
 	GetLocalPlayerTeleportData(): unknown;
 	/** This function retrieves a teleport setting saved using [TeleportService.SetTeleportSetting](https://developer.roblox.com/api-reference/function/TeleportService/SetTeleportSetting) using the given key.
 	 * 
@@ -20699,7 +20642,6 @@ interface TeleportService extends Instance {
 	 * @returns The value stored under the given key
 	 * @rbxts client
 	 */
-	/** @rbxts client */
 	GetTeleportSetting(setting: string): unknown;
 	/** This function sets the custom [teleport GUI](https://developer.roblox.com/api-reference/class/ScreenGui) that will be shown to the local user during teleportation, prior to the teleport being invoked.
 	 * 
@@ -20750,7 +20692,6 @@ interface TeleportService extends Instance {
 	 * @returns This function does not return anything!
 	 * @rbxts client
 	 */
-	/** @rbxts client */
 	SetTeleportGui(gui: ScreenGui): void;
 	/** This function stores a value under a given key that persists across all teleportations in the same game.
 	 * 
@@ -20801,7 +20742,6 @@ interface TeleportService extends Instance {
 	 * @param value The value to store
 	 * @rbxts client
 	 */
-	/** @rbxts client */
 	SetTeleportSetting(setting: string, value: TeleportData): void;
 	/** This function teleports a `Player` to the place associated with the given *placeId*.
 	 * 
@@ -21043,7 +20983,6 @@ interface TeleportService extends Instance {
 	 * @returns See the table above
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	GetPlayerPlaceInstanceAsync(userId: number): LuaTuple<[boolean, string, number, string]>;
 	/** This function returns an access code that can be used to teleport players to a reserved server, along with the [DataModel.PrivateServerId](https://developer.roblox.com/api-reference/property/DataModel/PrivateServerId) for it.
 	 * 
@@ -21072,7 +21011,6 @@ interface TeleportService extends Instance {
 	 * @returns The server access code required by `TeleportService/TeleportToPrivateServer` and the `DataModel/PrivateServerId` for the reserved server
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	ReserveServer(placeId: number): LuaTuple<[string, string]>;
 	/** This function teleports a group of [Players](https://developer.roblox.com/api-reference/class/Player) to the same server instance in the given place. It returns the [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) of the server instance the players were teleported to.
 	 * 
@@ -21531,7 +21469,6 @@ interface TextService extends Instance {
 	 * @returns Can be used to distribute the correctly filtered text accordingly.
 	 * @rbxts server
 	 */
-	/** @rbxts server */
 	FilterStringAsync(
 		stringToFilter: string,
 		fromUserId: number,
@@ -22496,7 +22433,6 @@ interface UserGameSettings extends Instance {
  *  - `ContextActionService`, a service which allows you to bind functions to multiple user inputs
  * @rbxts client
  */
-	/** @rbxts client */
 interface UserInputService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "UserInputService";
@@ -24360,9 +24296,6 @@ interface VRService extends Instance {
 }
 
 /** Used to hold a value. */
-	/**
- * Used to hold a value.
- */
 interface ValueBase extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ValueBase" | "BinaryStringValue" | "BoolValue" | "BrickColorValue" | "CFrameValue" | "Color3Value" | "DoubleConstrainedValue" | "IntConstrainedValue" | "IntValue" | "NumberValue" | "ObjectValue" | "RayValue" | "StringValue" | "Vector3Value";
