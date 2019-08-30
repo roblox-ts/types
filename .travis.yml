@@ -14,6 +14,7 @@ script:
   - tsc
 
   - node out/index.js
+  - git add -A
   - |
     if ! git diff-index --quiet HEAD --; then
       git commit -m "Update generated files [skip ci]"
@@ -21,6 +22,7 @@ script:
     fi
 
   - npm run typedoc
+  - git add -A
   - |
     if ! git diff-index --quiet HEAD --; then
       git commit -m "Update typedocs [skip ci]"
@@ -39,7 +41,6 @@ script:
   - cd deploy
 
   - git add -A
-  - git status
   - |
     if ! git diff-index --quiet HEAD --; then
       if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
