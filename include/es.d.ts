@@ -615,7 +615,7 @@ interface MapConstructor {
 }
 declare var Map: MapConstructor;
 
-/** A Map object with its `__mode` metamethod set to "k"*/
+/** A Map object with its `__mode` metamethod set to "k" */
 interface WeakMap<K, V> extends Map<K, V> {}
 
 interface WeakMapConstructor {
