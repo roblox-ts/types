@@ -12,14 +12,20 @@ script:
 
   - npm install -g typescript
   - tsc
-  - node out/index.js
 
-  - git diff-index --quiet HEAD || git commit -m "Update generated files [skip ci]"
-  - git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git master
+  - node out/index.js
+  - |
+    if ! git diff-index --quiet HEAD --; then
+      git commit -m "Update generated files [skip ci]"
+      git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git master
+    fi
 
   - npm run typedoc
-  - git diff-index --quiet HEAD || git commit -m "Update typedocs [skip ci]"
-  - git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git master
+  - |
+    if ! git diff-index --quiet HEAD --; then
+      git commit -m "Update typedocs [skip ci]"
+      git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git master
+    fi
 
   - cd ..
   - git clone --depth=50 --branch=deploy https://github.com/roblox-ts/types.git deploy
@@ -35,9 +41,11 @@ script:
   - git add -A
   - git status
   - |
-    if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
-      git diff-index --quiet HEAD || git commit -m "Automatic Update";
-    else
-      git diff-index --quiet HEAD || git commit -m "Manual Update";
+    if ! git diff-index --quiet HEAD --; then
+      if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
+        git commit -m "Automatic Update"
+      else
+        git commit -m "Manual Update"
+      fi
     fi
   - git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git deploy
