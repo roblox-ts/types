@@ -15,13 +15,15 @@ script:
 
   - node out/index.js
   - git add -A
+  - git status
   - git diff-index --quiet HEAD || git commit -m "Update generated files [skip ci]";
-  - git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git master
+  - git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git
 
   - npm run typedoc
   - git add -A
+  - git status
   - git diff-index --quiet HEAD || git commit -m "Update typedoc files [skip ci]";
-  - git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git master
+  - git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git
 
   - cd ..
   - git clone --depth=50 --branch=deploy https://github.com/roblox-ts/types.git deploy
