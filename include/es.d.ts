@@ -780,6 +780,15 @@ interface PromiseConstructor {
 	spawn: <T extends Array<any>>(callback: (...args: T) => void, ...args: T) => void;
 
 	/**
+	 * Returns a boolean indicating whether or not the given `value` is a Promise.
+	 * You can use the generic argument to assert a specific type of Promise.
+	 *
+	 * i.e. `Promise.is<number>(x)` => `x is Promise<number>`
+	 * @param value The value to verify
+	 */
+	is: <T = unknown>(value: unknown) => value is Promise<T>;
+
+	/**
 	 * Creates a new Promise.
 	 * @param executor A callback used to initialize the promise. This callback is passed a resolve
 	 * callback used resolve the promise with a value or the result of another promise,
