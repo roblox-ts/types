@@ -71,9 +71,32 @@
 		<div class="col-8 col-content">
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The Map object holds key-value pairs but doesn&#39;t remember the original insertion order of the keys (like JS would). Any value (both objects and primitive values) may be used as either a key or a value.
+						Maps are the best choice for dynamic indexing/newindexing, whereas Objects are better for explicit indexing.</p>
+					</div>
 					<dl class="tsd-comment-tags">
 						<dt>rbxts</dt>
 						<dd><p>map</p>
+						</dd>
+						<dt>example</dt>
+						<dd><p>const playerData = new Map&lt;Player, PlayerData&gt;();</p>
+							<p>function f(plr: Player) {
+								const data = playerData.get(plr); // <code>data</code> could be undefined
+								if (data) { // check to make sure <code>data</code> is defined
+								print(<code>${plr.Name} has ${data.NumItems} item${data.NumItems === 1 ? &quot;&quot; : &quot;s&quot;}</code>);
+								}
+								}
+							// Do not use Maps when you can easily explicitly index from an object:</p>
+							<p>// TS doesn&#39;t assume &quot;x&quot; | &quot;y&quot; are the only possible fields.
+								// You could manually type this as Map&lt;&quot;x&quot; | &quot;y&quot;, number&gt;
+								const point = new Map([[&quot;x&quot;, 5], [&quot;y&quot;, 10]]);
+								// this is typed as possibly undefined, because &quot;x&quot; can be deleted
+							print(point.get(&quot;x&quot;));</p>
+							<p>// Instead use an object
+								const point = { x: 5, y: 10 };
+								print(point.y++);
+							point.z = 15 // error!</p>
 						</dd>
 					</dl>
 				</div>
@@ -146,7 +169,7 @@
 					<div class="tsd-signature tsd-kind-icon">Readonly<wbr>Map<span class="tsd-signature-symbol">:</span> <a href="_es_d_.readonlymapconstructor.html" class="tsd-signature-type">ReadonlyMapConstructor</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L556">es.d.ts:556</a></li>
+							<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L566">es.d.ts:566</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -164,7 +187,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_es_d_.iterable.html">Iterable</a>.<a href="_es_d_.iterable.html#___iterator">__@iterator</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L223">es.d.ts:223</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L206">es.d.ts:206</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="_es_d_.iterator.html" class="tsd-signature-type">Iterator</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -181,7 +204,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L575">es.d.ts:575</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L610">es.d.ts:610</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -203,7 +226,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L570">es.d.ts:570</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L605">es.d.ts:605</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -233,7 +256,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_es_d_.readonlymap.html">ReadonlyMap</a>.<a href="_es_d_.readonlymap.html#entries">entries</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L545">es.d.ts:545</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L555">es.d.ts:555</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -256,7 +279,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_es_d_.readonlymap.html">ReadonlyMap</a>.<a href="_es_d_.readonlymap.html#foreach">forEach</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L520">es.d.ts:520</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L530">es.d.ts:530</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -312,7 +335,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_es_d_.readonlymap.html">ReadonlyMap</a>.<a href="_es_d_.readonlymap.html#get">get</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L540">es.d.ts:540</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L550">es.d.ts:550</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -344,7 +367,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_es_d_.readonlymap.html">ReadonlyMap</a>.<a href="_es_d_.readonlymap.html#has">has</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L535">es.d.ts:535</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L545">es.d.ts:545</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -373,7 +396,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_es_d_.readonlymap.html">ReadonlyMap</a>.<a href="_es_d_.readonlymap.html#isempty">isEmpty</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L509">es.d.ts:509</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L519">es.d.ts:519</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -396,7 +419,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_es_d_.readonlymap.html">ReadonlyMap</a>.<a href="_es_d_.readonlymap.html#keys">keys</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L550">es.d.ts:550</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L560">es.d.ts:560</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -418,7 +441,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L563">es.d.ts:563</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L598">es.d.ts:598</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -450,7 +473,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_es_d_.readonlymap.html">ReadonlyMap</a>.<a href="_es_d_.readonlymap.html#size">size</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L525">es.d.ts:525</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L535">es.d.ts:535</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -473,7 +496,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_es_d_.readonlymap.html">ReadonlyMap</a>.<a href="_es_d_.readonlymap.html#tostring">toString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L514">es.d.ts:514</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L524">es.d.ts:524</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -496,7 +519,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_es_d_.readonlymap.html">ReadonlyMap</a>.<a href="_es_d_.readonlymap.html#values">values</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/bb5a4bf/include/es.d.ts#L530">es.d.ts:530</a></li>
+									<li>Defined in <a href="https://github.com/roblox-ts/types/blob/af10ca5/include/es.d.ts#L540">es.d.ts:540</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -609,6 +632,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -657,7 +681,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
