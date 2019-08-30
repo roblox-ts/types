@@ -695,7 +695,8 @@ export class ClassGenerator extends Generator {
 				.forEach(node => {
 					const [signature, documentation] = this.getSignature(node);
 					signatures.push(signature);
-					documentations.push(documentation);
+					// we don't do this anymore, because of the new TS comment behavior. It automatically combines docs
+					// documentations.push(documentation);
 				});
 
 			if (documentations.length > 0) {
@@ -834,9 +835,10 @@ export class ClassGenerator extends Generator {
 				if (desc && desc.trim()) {
 					descriptions.push(this.formatDescription(desc));
 				}
-				if (tsImplInterface) {
-					tsImplInterface.getLeadingCommentRanges().forEach(comment => descriptions.push(comment.getText()));
-				}
+				// we don't do this anymore, because of the new TS comment behavior. It automatically combines docs
+				// if (tsImplInterface) {
+				// 	tsImplInterface.getLeadingCommentRanges().forEach(comment => descriptions.push(comment.getText()));
+				// }
 				const description = descriptions.join("\n\t").trim();
 				if (description) {
 					this.write(description);
