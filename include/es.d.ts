@@ -37,7 +37,7 @@ interface ObjectConstructor {
 		source4: E,
 		source5: F,
 	): A & B & C & D & E & F;
-	assign(target: object, ...sources: Array<any>): any;
+	assign(target: object, ...sources: Array<any>): object;
 
 	/**
 	 * Returns the names of the enumerable properties and methods of an object.
