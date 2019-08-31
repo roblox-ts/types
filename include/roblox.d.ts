@@ -60,6 +60,7 @@ type GetWritableProperties<T extends Instance> = Extract<
 	}[keyof T]
 >;
 
+/** Returns a given objects parameters in a tuple. Defaults to `[]` */
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : [];
 type Callback = (...args: Array<any>) => void;
 
