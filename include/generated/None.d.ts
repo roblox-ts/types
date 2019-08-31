@@ -8898,7 +8898,7 @@ interface HttpService extends Instance {
 	 * @param input The JSON object being decoded
 	 * @returns The decoded JSON object as a Lua table
 	 */
-	JSONDecode(input: string): unknown;
+	JSONDecode<T>(input: string): T;
 	/** JSONEncode transforms a Lua table into a JSON object or array.
 	 * 
 	 *  - Keys of the table must be either strings or numbers. If a table
