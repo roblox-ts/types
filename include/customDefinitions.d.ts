@@ -270,6 +270,8 @@ interface HttpService extends Instance {
 
 	/** @rbxts server */
 	RequestAsync(requestOptions: RequestAsyncRequest): RequestAsyncResponse;
+
+	JSONDecode<T>(input: string): T;
 }
 
 interface Humanoid extends Instance {
