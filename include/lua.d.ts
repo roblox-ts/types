@@ -458,3 +458,45 @@ declare namespace coroutine {
 	/** Suspends the execution of the calling coroutine. Any arguments to yield are passed as extra results to resume. */
 	function yield(...params: Array<unknown>): unknown;
 }
+
+declare function next<T extends readonly any[]>(
+	object: T,
+	index?: number,
+): T extends readonly [infer A]
+	? LuaTuple<[number, A]>
+	: T extends readonly [infer A, infer B]
+	? LuaTuple<[number, A | B]>
+	: T extends readonly [infer A, infer B, infer C]
+	? LuaTuple<[number, A | B | C]>
+	: T extends readonly [infer A, infer B, infer C, infer D]
+	? LuaTuple<[number, A | B | C | D]>
+	: T extends readonly [infer A, infer B, infer C, infer D, infer E]
+	? LuaTuple<[number, A | B | C | D | E]>
+	: T extends readonly [infer A, infer B, infer C, infer D, infer E, infer F]
+	? LuaTuple<[number, A | B | C | D | E | F]>
+	: T extends readonly (infer U)[]
+	? LuaTuple<Array<U>>
+	: LuaTuple<[unknown, unknown]>;
+declare function next<T extends any[]>(
+	object: T,
+	index?: number,
+): T extends [infer A]
+	? LuaTuple<[number, A]>
+	: T extends [infer A, infer B]
+	? LuaTuple<[number, A | B]>
+	: T extends [infer A, infer B, infer C]
+	? LuaTuple<[number, A | B | C]>
+	: T extends [infer A, infer B, infer C, infer D]
+	? LuaTuple<[number, A | B | C | D]>
+	: T extends [infer A, infer B, infer C, infer D, infer E]
+	? LuaTuple<[number, A | B | C | D | E]>
+	: T extends [infer A, infer B, infer C, infer D, infer E, infer F]
+	? LuaTuple<[number, A | B | C | D | E | F]>
+	: T extends (infer U)[]
+	? LuaTuple<Array<U>>
+	: LuaTuple<[unknown, unknown]>;
+declare function next<T>(object: Array<T>, index?: number): LuaTuple<[number, T]>;
+declare function next<T>(object: Set<T>, index?: T): LuaTuple<[T, true]>;
+declare function next<K, V>(object: Map<K, V>, index?: K): LuaTuple<[K, V]>;
+declare function next<T>(object: T, index?: keyof T): LuaTuple<[keyof T, T[keyof T]]>;
+declare function next(object: object, index?: unknown): LuaTuple<[unknown, unknown]>;
