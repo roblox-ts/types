@@ -2,12 +2,11 @@
 
 // LUA API
 
-interface Table {}
-
 type LuaTuple<T extends Array<any>> = T & { readonly LUA_TUPLE?: never };
 
 /** A table that is shared between all scripts of the same context level. */
-declare const _G: Table;
+interface _G {}
+declare const _G: _G;
 
 /** A string containing the current interpreter version. */
 declare const _VERSION: string;
