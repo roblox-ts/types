@@ -78,13 +78,13 @@ interface DataModelSession extends Instance {
 	 */
 	readonly SessionId: string;
 	/** [NO DOCUMENTATION] */
-	readonly CurrentGameStateTypeAboutToChange: RBXScriptSignal<(gameStateType: number) => void>;
+	readonly CurrentGameStateTypeAboutToChange: RBXScriptSignal<(gameStateType: Enum.StudioDataModelType) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly CurrentGameStateTypeChanged: RBXScriptSignal<() => void>;
 	/** [NO DOCUMENTATION] */
-	readonly DataModelCreated: RBXScriptSignal<(gameStateType: number) => void>;
+	readonly DataModelCreated: RBXScriptSignal<(gameStateType: Enum.StudioDataModelType) => void>;
 	/** [NO DOCUMENTATION] */
-	readonly DataModelWillBeDestroyed: RBXScriptSignal<(gameStateType: number) => void>;
+	readonly DataModelWillBeDestroyed: RBXScriptSignal<(gameStateType: Enum.StudioDataModelType) => void>;
 }
 
 interface File extends Instance {
@@ -271,9 +271,12 @@ interface Players extends Instance {
 }
 
 interface Plugin extends Instance {
+	readonly HostDataModelType: Enum.StudioDataModelType;
 	readonly MDIInstance?: MDIInstance;
 	/** Sets the state of the calling plugin to activated. Allows mouse control through the [Plugin.GetMouse](https://developer.roblox.com/api-reference/function/Plugin/GetMouse) method. */
 	Activate(exclusiveMouse: boolean): void;
+	Bind(key: string, callback: Function): Instance | undefined;
+	BindAndFire(key: string, callback: Function): Instance | undefined;
 	/** This function creates a `PluginAction` which is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`. In Roblox Studio, they can be assigned a keyboard shortcut under `File → Advanced → Customize Shortcuts…`, and they can also be added to the Quick Access Toolbar.
 	 * 
 	 * When an action is triggered, the [PluginAction.Triggered](https://developer.roblox.com/api-reference/event/PluginAction/Triggered) event is signaled.
@@ -338,6 +341,8 @@ interface Plugin extends Instance {
 	CreateToolbar(name: string): PluginToolbar;
 	/** Deactivates this plugin. This will disengage the associated `PluginMouse` if it has been activated. */
 	Deactivate(): void;
+	Fire(key: string, value?: string): void;
+	GetItem(key: string, defaultValue?: string): string;
 	/** Returns the [Enum.JointCreationMode](https://developer.roblox.com/search#stq=JointCreationMode) the user has set in studio under the Model tab. */
 	GetJoinMode(): Enum.JointCreationMode;
 	/** Returns a mouse that can be used with the plugin. */
@@ -348,6 +353,7 @@ interface Plugin extends Instance {
 	GetSetting(key: string): unknown;
 	/** Returns the studio user’s userId if they're logged in, otherwise returns 0. */
 	GetStudioUserId(): number;
+	HasItem(key: string): boolean;
 	/** Returns true if this plugin is currently active, after having been activated via the [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate) function. */
 	IsActivated(): boolean;
 	/** Returns true if this plugin is currently active with an exclusive mouse, after having been activated via the [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate) function.If this returns true, a `PluginMouse` can be retrieved via [Plugin.GetMouse](https://developer.roblox.com/api-reference/function/Plugin/GetMouse). */
@@ -358,6 +364,7 @@ interface Plugin extends Instance {
 	OpenScript(script: Instance, lineNumber?: number): void;
 	/** Opens the context help window to the wiki page that `url` links to. */
 	OpenWikiPage(url: string): void;
+	RemoveItem(key: string): boolean;
 	/** Opens an upload window for the user's current selection. */
 	SaveSelectedToRoblox(): void;
 	/** Activates the specified Roblox Studio tool.
@@ -373,6 +380,7 @@ interface Plugin extends Instance {
 	SelectRibbonTool(tool: CastsToEnum<Enum.RibbonTool>, position: UDim2): void;
 	/** Separates the given UnionOperations and returns the resulting parts. */
 	Separate(objects: Array<Instance>): Array<Instance>;
+	SetItem(key: string, value?: string): void;
 	/** Stores a given value for later use under the given key. The value will persist even after studio is closed. */
 	SetSetting(key: string, value?: any): void;
 	StartDrag(dragData: object): void;
