@@ -200,11 +200,11 @@ interface IteratorReturnResult<Returns> {
 
 interface Iterator<Yields, Returns = void, Next = undefined> {
 	// Takes either 0 or 1 arguments - doesn't accept 'undefined'
-	next(...args: [] | [Next]): IteratorResult<Yields, Returns>;
+	next: (...args: [] | [Next]) => IteratorResult<Yields, Returns>;
 }
 
 interface Generator<Yields = unknown, Returns = void, Next = unknown> extends Iterator<Yields, Returns, Next> {
-	next(...args: [] | [Next]): IteratorResult<Yields, Returns>;
+	next: (...args: [] | [Next]) => IteratorResult<Yields, Returns>;
 	[Symbol.iterator](): Generator<Yields, Returns, Next>;
 }
 
