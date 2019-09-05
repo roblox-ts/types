@@ -186,20 +186,26 @@ interface SymbolConstructor {
 }
 declare var Symbol: SymbolConstructor;
 
-type IteratorResult<T> =
-	| {
-			done: false;
-			value: T;
-	  }
-	| {
-			done: true;
-			value: undefined;
-	  };
+type IteratorResult<Yields, Returns = any> = IteratorYieldResult<Yields> | IteratorReturnResult<Returns>;
 
-interface Iterator<T> {
-	next: (value?: any) => IteratorResult<T>;
-	//	return?: (value?: any) => IteratorResult<T>;
-	//	throw?: (e?: any) => IteratorResult<T>;
+interface IteratorYieldResult<Yields> {
+	done: false;
+	value: Yields;
+}
+
+interface IteratorReturnResult<Returns> {
+	done: true;
+	value: Returns;
+}
+
+interface Iterator<Yields, Returns = any, Next = undefined> {
+	// Takes either 0 or 1 arguments - doesn't accept 'undefined'
+	next(...args: [] | [Next]): IteratorResult<Yields, Returns>;
+}
+
+interface Generator<Yields = unknown, Returns = any, Next = unknown> extends Iterator<Yields, Returns, Next> {
+	next(...args: [] | [Next]): IteratorResult<Yields, Returns>;
+	[Symbol.iterator](): Generator<Yields, Returns, Next>;
 }
 
 interface Iterable<T> {
