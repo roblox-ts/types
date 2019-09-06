@@ -198,7 +198,7 @@ interface IteratorReturnResult<Returns> {
 	value: Returns;
 }
 
-interface Iterator<Yields, Returns = any, Next = undefined> {
+interface Iterator<Yields, Returns = void, Next = undefined> {
 	// Takes either 0 or 1 arguments - doesn't accept 'undefined'
 	next: (...args: [] | [Next]) => IteratorResult<Yields, Returns>;
 }
