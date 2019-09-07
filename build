@@ -22,7 +22,7 @@ git add .
 if git diff-index --quiet HEAD --; then
 	echo "push master (generated files)"
 	git commit -m "Update generated files [skip ci]" > /dev/null
-	git push $REPO_URL HEAD:master > /dev/null
+	git push $REPO_URL > /dev/null
 
 	echo "run typedoc"
 	npm run typedoc > /dev/null
@@ -32,7 +32,7 @@ if git diff-index --quiet HEAD --; then
 	if git diff-index --quiet HEAD --; then
 		echo "push master (typedoc)"
 		git commit -m "Update typedoc files [skip ci]" > /dev/null
-		git push $REPO_URL HEAD:master > /dev/null
+		git push $REPO_URL > /dev/null
 	fi
 fi
 
