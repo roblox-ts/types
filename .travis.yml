@@ -6,4 +6,52 @@ branches:
   only:
     - master
     - deploy
-script: ./build
+script:
+  # setup git config
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "Travis CI"
+
+  # run build scripts
+  - npx tsc
+  - node out/index.js
+
+  # detect changes for generated files, run typedoc if there are any
+  - git add .
+  - |
+    if git diff-index --quiet HEAD --; then
+      git commit -m "Update generated files [skip ci]"
+      git push "https://${GIT_TOKEN}@github.com/roblox-ts/types.git" master --force
+
+      npm run typedoc
+
+      git add .
+      if git diff-index --quiet HEAD --; then
+        git commit -m "Update typedoc files [skip ci]"
+        git push "https://${GIT_TOKEN}@github.com/roblox-ts/types.git" master --force
+      fi
+    fi
+
+#   # clone deploy branch
+#   - cd ..
+#   - git clone --depth=50 --branch=deploy "https://${GIT_TOKEN}@github.com/roblox-ts/types.git" deploy
+
+#   # copy files that might've changed
+#   - ls
+#   - mkdir -p deploy/include
+#   - rm -rf deploy/include/*
+#   - cp -r types/include/* deploy/include
+#   - cp types/plugin.d.ts deploy/plugin.d.ts
+#   - cp types/README.md deploy/README.md
+#   - cd deploy
+
+#   # detect changes and push to deploy branch
+#   - git add .
+#   - |
+#     if git diff-index --quiet HEAD --; then
+#       if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
+#         git commit -m "Automatic Update"
+#       else
+#         git commit -m "Manual Update"
+#       fi
+#       git push "https://${GIT_TOKEN}@github.com/roblox-ts/types.git" deploy
+#     fi
