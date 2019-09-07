@@ -16,7 +16,7 @@ script:
   - node out/index.js
 
   # detect changes for generated files, run typedoc if there are any
-  - git add .
+  - git add -A
   - |
     if git diff-index --quiet HEAD --; then
       git commit -m "Update generated files [skip ci]"
@@ -24,7 +24,7 @@ script:
 
       npm run typedoc
 
-      git add .
+      git add -A
       if git diff-index --quiet HEAD --; then
         git commit -m "Update typedoc files [skip ci]"
         git push "https://${GIT_TOKEN}@github.com/roblox-ts/types.git" master --force
@@ -45,7 +45,7 @@ script:
 #   - cd deploy
 
 #   # detect changes and push to deploy branch
-#   - git add .
+#   - git add -A
 #   - |
 #     if git diff-index --quiet HEAD --; then
 #       if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
