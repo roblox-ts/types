@@ -21,18 +21,18 @@ echo "detect master changes (generated files)"
 git add .
 if git diff-index --quiet HEAD --; then
 	echo "push master (generated files)"
-	git commit -m "Update generated files [skip ci]"
-	git push $REPO_URL HEAD:master
+	git commit -m "Update generated files [skip ci]" > /dev/null
+	git push $REPO_URL HEAD:master > /dev/null
 
 	echo "run typedoc"
-	npm run typedoc
+	npm run typedoc > /dev/null
 
 	echo "detect master changes (typedoc)"
 	git add .
 	if git diff-index --quiet HEAD --; then
 		echo "push master (typedoc)"
-		git commit -m "Update typedoc files [skip ci]"
-		git push $REPO_URL HEAD:master
+		git commit -m "Update typedoc files [skip ci]" > /dev/null
+		git push $REPO_URL HEAD:master > /dev/null
 	fi
 fi
 
@@ -53,10 +53,10 @@ echo "detect deploy changes"
 git add .
 if git diff-index --quiet HEAD --; then
 	if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
-		git commit -m "Automatic Update"
+		git commit -m "Automatic Update" > /dev/null
 	else
-		git commit -m "Manual Update"
+		git commit -m "Manual Update" > /dev/null
 	fi
 	echo "push deploy"
-	git push $REPO_URL deploy
+	git push $REPO_URL deploy > /dev/null
 fi
