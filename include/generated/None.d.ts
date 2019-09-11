@@ -5376,8 +5376,6 @@ interface DebugSettings extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly JobCount: number;
-	/** Sets a RAM limit in bytes for Lua if greater than 0. */
-	LuaRamLimit: number;
 	/** Whether your OS is a 64 bit OS or a 32 bit one.
 	 * 	
 	 * Whether your OS is a 64 bit OS or a 32 bit one.
