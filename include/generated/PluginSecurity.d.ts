@@ -841,6 +841,8 @@ interface Studio extends Instance {
 
 interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
+	ConvertToPackageUpload(uploadUrl: string): void;
+	/** [NO DOCUMENTATION] */
 	GetClassIcon(className: string): object;
 	/** 
 	 * Tags: Yields
