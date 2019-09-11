@@ -316,7 +316,6 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 */
 	reduce(
 		callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
-		initialValue?: T,
 	): T;
 
 	/**
@@ -336,7 +335,6 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 */
 	reduceRight(
 		callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
-		initialValue?: T,
 	): T;
 
 	/**
@@ -397,7 +395,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	deepEquals<U>(other: ReadonlyArray<U>): boolean;
 
 	/**
-	 * The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth. Also removes empty slots in arrays.
+	 * The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
 	 * @param depth The depth level specifying how deep a nested array structure should be flattened. Defaults to 1.
 	 * @returns A new array with the sub-array elements concatenated into it.
 	 */
