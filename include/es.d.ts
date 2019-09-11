@@ -37,7 +37,7 @@ interface ObjectConstructor {
 		source4: E,
 		source5: F,
 	): A & B & C & D & E & F;
-	assign(target: object, ...sources: Array<any>): any;
+	assign(target: object, ...sources: Array<any>): object;
 
 	/**
 	 * Returns the names of the enumerable properties and methods of an object.
@@ -186,20 +186,26 @@ interface SymbolConstructor {
 }
 declare var Symbol: SymbolConstructor;
 
-type IteratorResult<T> =
-	| {
-			done: false;
-			value: T;
-	  }
-	| {
-			done: true;
-			value: undefined;
-	  };
+type IteratorResult<Yields, Returns = void> = IteratorYieldResult<Yields> | IteratorReturnResult<Returns>;
 
-interface Iterator<T> {
-	next: (value?: any) => IteratorResult<T>;
-	//	return?: (value?: any) => IteratorResult<T>;
-	//	throw?: (e?: any) => IteratorResult<T>;
+interface IteratorYieldResult<Yields> {
+	done: false;
+	value: Yields;
+}
+
+interface IteratorReturnResult<Returns> {
+	done: true;
+	value: Returns;
+}
+
+interface Iterator<Yields, Returns = void, Next = undefined> {
+	// Takes either 0 or 1 arguments - doesn't accept 'undefined'
+	next: (...args: [] | [Next]) => IteratorResult<Yields, Returns>;
+}
+
+interface Generator<Yields = unknown, Returns = void, Next = unknown> extends Iterator<Yields, Returns, Next> {
+	next: (...args: [] | [Next]) => IteratorResult<Yields, Returns>;
+	[Symbol.iterator](): Generator<Yields, Returns, Next>;
 }
 
 interface Iterable<T> {
@@ -212,7 +218,10 @@ interface IterableIterator<T> extends Iterator<T> {
 
 type IterableFunction<T> = Iterable<T> & (() => T);
 
-/** @rbxts array */
+/**
+ * An array object which cannot be written to.
+ * @rbxts array
+ */
 interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	/**
 	 * Returns true if empty, otherwise false.
@@ -401,7 +410,10 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	sort(compareFunction?: (a: T, b: T) => number): Array<T>;
 }
 
-/** @rbxts array */
+/**
+ * An Array object
+ * @rbxts array
+ */
 interface Array<T> extends ReadonlyArray<T> {
 	/**
 	 * Appends new elements to an array and returns the new length of the array.
@@ -484,7 +496,28 @@ declare const Array: ArrayConstructor;
 /** @rbxts array */
 interface TemplateStringsArray extends Array<string> {}
 
-/** @rbxts map */
+/**
+ * A Map object which cannot be written to. The Map object holds key-value pairs but doesn't remember the original insertion order of the keys (like JS would). Any value (both objects and primitive values) may be used as either a key or a value.
+ * Maps are the best choice for dynamic indexing/newindexing, whereas Objects are better for explicit indexing.
+ * @rbxts map
+ * @example
+ * // ReadonlyMaps are particularly useful for defining readonly-associations with non-numeric, non-string keys.
+ * new ReadonlyMap<Enum.HumanoidRigType, () => void>([
+ * 	[Enum.HumanoidRigType.R6, () => {}],
+ * 	[Enum.HumanoidRigType.R15, () => {}],
+ * ]);
+ * // Do not use Maps when you can easily index from an object:
+ *
+ * // TS doesn't assume "x" | "y" are the only possible fields.
+ * // You could manually type this as ReadonlyMap<"x" | "y", number>
+ * const point = new ReadonlyMap([["x", 5], ["y", 10]]);
+ * // this is typed as possibly undefined, which isn't ideal
+ * print(point.get("x"));
+ *
+ * // Instead use an object
+ * const point = { x: 5, y: 10 } as const;
+ * print(point.x);
+ */
 interface ReadonlyMap<K, V> extends Iterable<[K, V]> {
 	/**
 	 * Returns true if empty, otherwise false.
@@ -538,7 +571,32 @@ interface ReadonlyMapConstructor {
 }
 declare var ReadonlyMap: ReadonlyMapConstructor;
 
-/** @rbxts map */
+/**
+ * The Map object holds key-value pairs but doesn't remember the original insertion order of the keys (like JS would). Any value (both objects and primitive values) may be used as either a key or a value.
+ * Maps are the best choice for dynamic indexing/newindexing, whereas Objects are better for explicit indexing.
+ * @rbxts map
+ * @example
+ * const playerData = new Map<Player, PlayerData>();
+ *
+ * function f(plr: Player) {
+ * 	const data = playerData.get(plr); // `data` could be undefined
+ * 	if (data) { // check to make sure `data` is defined
+ * 		print(`${plr.Name} has ${data.NumItems} item${data.NumItems === 1 ? "" : "s"}`);
+ * 	}
+ * }
+ * // Do not use Maps when you can easily explicitly index from an object:
+ *
+ * // TS doesn't assume "x" | "y" are the only possible fields.
+ * // You could manually type this as Map<"x" | "y", number>
+ * const point = new Map([["x", 5], ["y", 10]]);
+ * // this is typed as possibly undefined, because "x" can be deleted
+ * print(point.get("x"));
+ *
+ * // Instead use an object
+ * const point = { x: 5, y: 10 };
+ * print(point.y++);
+ * point.z = 15 // error!
+ */
 interface Map<K, V> extends ReadonlyMap<K, V> {
 	/**
 	 * Associates a key with a value which can be accessed later by `Map.get`
@@ -563,6 +621,7 @@ interface MapConstructor {
 }
 declare var Map: MapConstructor;
 
+/** A Map object with its `__mode` metamethod set to "k" */
 interface WeakMap<K, V> extends Map<K, V> {}
 
 interface WeakMapConstructor {
@@ -780,6 +839,15 @@ interface PromiseConstructor {
 	spawn: <T extends Array<any>>(callback: (...args: T) => void, ...args: T) => void;
 
 	/**
+	 * Returns a boolean indicating whether or not the given `value` is a Promise.
+	 * You can use the generic argument to assert a specific type of Promise.
+	 *
+	 * i.e. `Promise.is<number>(x)` => `x is Promise<number>`
+	 * @param value The value to verify
+	 */
+	is: <T = unknown>(value: unknown) => value is Promise<T>;
+
+	/**
 	 * Creates a new Promise.
 	 * @param executor A callback used to initialize the promise. This callback is passed a resolve
 	 * callback used resolve the promise with a value or the result of another promise,
@@ -845,6 +913,16 @@ type Extract<T, U> = T extends U ? T : never;
  * Exclude null and undefined from T
  */
 type NonNullable<T> = T extends null | undefined ? never : T;
+
+/**
+ * Obtain the parameters of a function type in a `tuple | never`.
+ */
+type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
+
+/**
+ * Obtain the parameters of a constructor function type in a `tuple | never`
+ */
+type ConstructorParameters<T extends new (...args: any) => any> = T extends new (...args: infer P) => any ? P : never;
 
 /**
  * Obtain the return type of a function type

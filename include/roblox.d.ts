@@ -32,7 +32,7 @@ type ChangedSignal = {
 type StrictInstances = {
 	[Key in keyof Instances]: Instances[Key]["ClassName"] extends Key
 		? Instances[Key]
-		: Instances[Key] & { ClassName: Key }
+		: Instances[Key] & { ClassName: Key };
 };
 
 /** Given an Instance `T`, returns a unioned type of all properties, except "ClassName". */
@@ -43,7 +43,7 @@ type GetProperties<T extends Instance> = {
 		? never
 		: (() => any) extends T[Key]
 		? never
-		: Key
+		: Key;
 }[keyof T];
 
 /** Given an Instance `T`, returns a unioned type of all non-readonly properties. */
@@ -56,10 +56,11 @@ type GetWritableProperties<T extends Instance> = Extract<
 					? 1
 					: 2)
 			? K
-			: never
+			: never;
 	}[keyof T]
 >;
 
+/** Returns a given objects parameters in a tuple. Defaults to `[]` */
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : [];
 type Callback = (...args: Array<any>) => void;
 
@@ -78,7 +79,7 @@ type PresentFields<T, K extends keyof T> = { [P in keyof T]: P extends K ? T[P] 
 
 /** When a member (M) of T is a particular Value (E), Pick<K> */
 type FieldsPresentWhen<T, M extends keyof T, E extends T[M], K extends keyof T> = {
-	[P in keyof T]: P extends M ? E : P extends K ? T[P] : undefined
+	[P in keyof T]: P extends M ? E : P extends K ? T[P] : undefined;
 };
 
 /** @rbxts array */
@@ -1595,3 +1596,8 @@ declare function classIs<T extends Instance, Q extends T["ClassName"]>(
 ): instance is Instances[Q] extends T
 	? (Instances[Q]["ClassName"] extends Q ? Instances[Q] : Instances[Q] & { ClassName: Q })
 	: T;
+
+/**
+ * This variable will be automatically replaced by the "version" string from the package.json file
+ */
+declare const PKG_VERSION: string;

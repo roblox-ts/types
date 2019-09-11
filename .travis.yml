@@ -7,16 +7,46 @@ branches:
     - master
     - deploy
 script:
+  # setup git config
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
 
-  - npm install -g typescript
-  - tsc
+  # run build scripts
+  - npx tsc
   - node out/index.js
 
-  - cd ..
-  - git clone --depth=50 --branch=deploy https://github.com/roblox-ts/types.git deploy
+  - git add .
+  - git status
 
+  # detect changes for generated files, run typedoc if there are any
+  - |
+    if ! git diff-index --quiet HEAD --; then
+      echo "generated files changed!"
+      echo "git add"
+      echo "git commit"
+      git commit -m "Update generated files [skip ci]"
+      echo "git push"
+      git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git HEAD:master
+
+      echo "run typedoc"
+      npm run typedoc
+
+      if ! git diff-index --quiet HEAD --; then
+        echo "typedoc changed!"
+        echo "git add"
+        git add .
+        echo "git commit"
+        git commit -m "Update typedoc files [skip ci]"
+        echo "git push"
+        git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git HEAD:master
+      fi
+    fi
+
+  # clone deploy branch
+  - cd ..
+  - git clone --depth=50 --branch=deploy https://${GIT_TOKEN}@github.com/roblox-ts/types.git deploy
+
+  # copy files that might've changed
   - ls
   - mkdir -p deploy/include
   - rm -rf deploy/include/*
@@ -25,12 +55,14 @@ script:
   - cp types/README.md deploy/README.md
   - cd deploy
 
-  - git add -A
-  - git status
+  # detect changes and push to deploy branch
+  - git add .
   - |
-    if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
-      git diff-index --quiet HEAD || git commit -m "Automatic Update";
-    else
-      git diff-index --quiet HEAD || git commit -m "Manual Update";
+    if ! git diff-index --quiet HEAD --; then
+      if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
+        git commit -m "Automatic Update"
+      else
+        git commit -m "Manual Update"
+      fi
+      git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git deploy
     fi
-  - git push https://${GIT_TOKEN}@github.com/roblox-ts/types.git deploy

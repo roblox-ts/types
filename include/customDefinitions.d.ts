@@ -240,6 +240,7 @@ interface GuiObject extends GuiBase2d {
 interface GuiService extends Instance {
 	AddSelectionParent(selectionName: string, selectionParent: Instance): void;
 	AddSelectionTuple(selectionName: string, selections: Array<any>): void;
+	InspectPlayerFromHumanoidDescription(humanoidDescription: HumanoidDescription, name: string): void;
 	GetGuiInset(): LuaTuple<[Vector2, Vector2]>;
 }
 
@@ -270,6 +271,8 @@ interface HttpService extends Instance {
 
 	/** @rbxts server */
 	RequestAsync(requestOptions: RequestAsyncRequest): RequestAsyncResponse;
+
+	JSONDecode<T>(input: string): T;
 }
 
 interface Humanoid extends Instance {

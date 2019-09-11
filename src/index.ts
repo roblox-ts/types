@@ -46,7 +46,7 @@ const REFLECTION_METADATA_URL = BASE_URL + "ReflectionMetadata.xml";
 
 	const generatorTasks = new Array<Promise<void>>();
 	for (let i = 0; i < SECURITY_LEVELS.length; i++) {
-		await generatorTasks.push(
+		generatorTasks.push(
 			new ClassGenerator(
 				path.join(targetDir, "generated", SECURITY_LEVELS[i] + ".d.ts"),
 				reflectionMetadata,
