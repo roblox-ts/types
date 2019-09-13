@@ -366,7 +366,7 @@ declare namespace bit32 {
 	function btest(...operands: Array<number>): boolean;
 
 	/** Returns the bitwise _exclusive or_ of its operands. */
-	function bxor(...operands: Array<number>): boolean;
+	function bxor(...operands: Array<number>): number;
 
 	/**
 	 * Returns the unsigned number formed by the bits `field` to `field + width - 1` from `n`.
