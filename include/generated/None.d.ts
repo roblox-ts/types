@@ -12081,8 +12081,8 @@ interface MarketplaceService extends Instance {
 		equipIfPurchased?: boolean,
 		currencyType?: CastsToEnum<Enum.CurrencyType>,
 	): void;
-	PromptSubscriptionCancellation(player: Instance, subscriptionId: number): void;
-	PromptSubscriptionPurchase(player: Instance, subscriptionId: number): void;
+	PromptSubscriptionCancellation(player: Player, subscriptionId: number): void;
+	PromptSubscriptionPurchase(player: Player, subscriptionId: number): void;
 	/** Returns a `Pages` object which contains information for all of the current game's developer products. */
 	GetDeveloperProductsAsync(): Pages;
 	/** This function provides information about an asset, developer product or game pass given its **assetId** and the [Enum.InfoType](https://developer.roblox.com/search#stq=InfoType) (Asset, Product or GamePass respectively).
