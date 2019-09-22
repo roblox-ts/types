@@ -129,44 +129,56 @@ declare function xpcall<T extends Array<any>, U>(
 >;
 
 interface LuaMetatable<T> {
-	__index?: (self: T, index: unknown) => void;
-	__newindex?: (self: T, index: unknown, value: unknown) => void;
-	__add?: (self: T, other: unknown) => unknown;
-	__sub?: (self: T, other: unknown) => unknown;
-	__mul?: (self: T, other: unknown) => unknown;
-	__div?: (self: T, other: unknown) => unknown;
-	__mod?: (self: T, other: unknown) => unknown;
-	__pow?: (self: T, other: unknown) => unknown;
-	__unm?: (self: T) => unknown;
-	__eq?: (self: T, other: unknown) => boolean;
-	__lt?: (self: T, other: unknown) => boolean;
-	__le?: (self: T, other: unknown) => boolean;
-	__call?: (self: T, ...arguments: Array<unknown>) => unknown;
-	__concat?: (self: T, ...arguments: Array<unknown>) => string;
+	__index?: (self: T, index: any) => void;
+	__newindex?: (self: T, index: any, value: any) => void;
+	__add?: (self: T, other: T) => T;
+	__sub?: (self: T, other: T) => T;
+	__mul?: (self: T, other: T) => T;
+	__div?: (self: T, other: T) => T;
+	__mod?: (self: T, other: T) => T;
+	__pow?: (self: T, other: T) => T;
+	__unm?: (self: T) => T;
+	__eq?: (self: T, other: T) => boolean;
+	__lt?: (self: T, other: T) => boolean;
+	__le?: (self: T, other: T) => boolean;
+	__call?: (self: T, ...arguments: Array<any>) => void;
+	__concat?: (self: T, ...arguments: Array<any>) => string;
 	__tostring?: (self: T) => string;
-	__len?: (self: T) => unknown;
-	__mode?: string;
+	__len?: (self: T) => number;
+	__mode?: "k" | "v" | "kv";
 	__metatable?: string;
 }
 
-/** Sets the metatable for the given table. If setTo is nil, the metatable of the given table is removed. If the original metatable has a "__metatable" field, this will raise an error. This function returns the table t, which was passed to the function. */
+/** Sets the metatable for the given table. If `metatable` is nil, the metatable of the given table is removed. If the original metatable has a "__metatable" field, this will raise an error. This function returns the table t, which was passed to the function. */
 declare function setmetatable<T extends object>(object: T, metatable: LuaMetatable<T>): T;
 
+/** An object the represents a date or time. Used with `os.date` and `os.time`. */
 interface DateTable {
+	/** The year. */
 	year: number;
+	/** The month. [1, 12] */
 	month: number;
+	/** The day. [1, 31] */
 	day: number;
 
+	/** The hour. [0, 23] */
 	hour?: number;
+	/** The minute. [0, 59] */
 	min?: number;
+	/** The second. [0, 59] */
 	sec?: number;
+	/** Whether this object represents a daylight savings time. */
 	isdst?: boolean;
+	/** The number of days into the year. [1, 366] */
 	yday?: number;
+	/** The day of the week. [1, 7] */
 	wday?: number;
 }
 
 declare namespace os {
+	/** Returns the current number of seconds since Jan 1, 1970 in the UTC timezone. */
 	function time(): number;
+	/** Returns the number of seconds past Jan 1, 1970 in the UTC timezone for a given dateTable object. */
 	function time(dateTable: DateTable): number;
 	function date(formatString: "*t" | "!*t", time?: number): Required<DateTable>;
 	function difftime(t2: number, t1: number): number;
