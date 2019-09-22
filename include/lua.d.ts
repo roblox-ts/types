@@ -149,24 +149,36 @@ interface LuaMetatable<T> {
 	__metatable?: string;
 }
 
-/** Sets the metatable for the given table. If setTo is nil, the metatable of the given table is removed. If the original metatable has a "__metatable" field, this will raise an error. This function returns the table t, which was passed to the function. */
+/** Sets the metatable for the given table. If `metatable` is nil, the metatable of the given table is removed. If the original metatable has a "__metatable" field, this will raise an error. This function returns the table t, which was passed to the function. */
 declare function setmetatable<T extends object>(object: T, metatable: LuaMetatable<T>): T;
 
+/** An object the represents a date or time. Used with `os.date` and `os.time`. */
 interface DateTable {
+	/** The year. */
 	year: number;
+	/** The month. [1, 12] */
 	month: number;
+	/** The day. [1, 31] */
 	day: number;
 
+	/** The hour. [0, 23] */
 	hour?: number;
+	/** The minute. [0, 59] */
 	min?: number;
+	/** The second. [0, 59] */
 	sec?: number;
+	/** Whether this object represents a daylight savings time. */
 	isdst?: boolean;
+	/** The number of days into the year. */
 	yday?: number;
+	/** The day of the week. [1, 7] */
 	wday?: number;
 }
 
 declare namespace os {
+	/** Returns the current number of seconds since Jan 1, 1970 in the UTC timezone. */
 	function time(): number;
+	/** Returns the number of seconds past Jan 1, 1970 in the UTC timezone for a given dateTable object. */
 	function time(dateTable: DateTable): number;
 	function date(formatString: "*t" | "!*t", time?: number): Required<DateTable>;
 	function difftime(t2: number, t1: number): number;
