@@ -421,6 +421,8 @@ interface MarketplaceService extends Instance {
 	): void;
 	PlayerOwnsAsset(player: Player, assetId: number): boolean;
 	GetDeveloperProductsAsync(): Pages;
+	PromptSubscriptionCancellation(player: Player, subscriptionId: number): void;
+	PromptSubscriptionPurchase(player: Player, subscriptionId: number): void;
 }
 
 interface Model extends PVInstance {
