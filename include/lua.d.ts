@@ -129,23 +129,23 @@ declare function xpcall<T extends Array<any>, U>(
 >;
 
 interface LuaMetatable<T> {
-	__index?: (self: T, index: unknown) => void;
-	__newindex?: (self: T, index: unknown, value: unknown) => void;
-	__add?: (self: T, other: unknown) => unknown;
-	__sub?: (self: T, other: unknown) => unknown;
-	__mul?: (self: T, other: unknown) => unknown;
-	__div?: (self: T, other: unknown) => unknown;
-	__mod?: (self: T, other: unknown) => unknown;
-	__pow?: (self: T, other: unknown) => unknown;
-	__unm?: (self: T) => unknown;
-	__eq?: (self: T, other: unknown) => boolean;
-	__lt?: (self: T, other: unknown) => boolean;
-	__le?: (self: T, other: unknown) => boolean;
-	__call?: (self: T, ...arguments: Array<unknown>) => unknown;
-	__concat?: (self: T, ...arguments: Array<unknown>) => string;
+	__index?: (self: T, index: any) => void;
+	__newindex?: (self: T, index: any, value: any) => void;
+	__add?: (self: T, other: T) => T;
+	__sub?: (self: T, other: T) => T;
+	__mul?: (self: T, other: T) => T;
+	__div?: (self: T, other: T) => T;
+	__mod?: (self: T, other: T) => T;
+	__pow?: (self: T, other: T) => T;
+	__unm?: (self: T) => T;
+	__eq?: (self: T, other: T) => boolean;
+	__lt?: (self: T, other: T) => boolean;
+	__le?: (self: T, other: T) => boolean;
+	__call?: (self: T, ...arguments: Array<any>) => void;
+	__concat?: (self: T, ...arguments: Array<any>) => string;
 	__tostring?: (self: T) => string;
-	__len?: (self: T) => unknown;
-	__mode?: string;
+	__len?: (self: T) => number;
+	__mode?: "k" | "v" | "kv";
 	__metatable?: string;
 }
 
