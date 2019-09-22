@@ -169,7 +169,7 @@ interface DateTable {
 	sec?: number;
 	/** Whether this object represents a daylight savings time. */
 	isdst?: boolean;
-	/** The number of days into the year. */
+	/** The number of days into the year. [1, 366] */
 	yday?: number;
 	/** The day of the week. [1, 7] */
 	wday?: number;
