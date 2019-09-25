@@ -72,15 +72,15 @@ interface DataModelSession extends Instance {
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
-	readonly CurrentGameStateType: Enum.StudioDataModelType;
+	readonly CurrentDataModelType: Enum.StudioDataModelType;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly SessionId: string;
 	/** [NO DOCUMENTATION] */
-	readonly CurrentGameStateTypeAboutToChange: RBXScriptSignal<(gameStateType: Enum.StudioDataModelType) => void>;
+	readonly CurrentDataModelTypeAboutToChange: RBXScriptSignal<(dataModelType: Enum.StudioDataModelType) => void>;
 	/** [NO DOCUMENTATION] */
-	readonly CurrentGameStateTypeChanged: RBXScriptSignal<() => void>;
+	readonly CurrentDataModelTypeChanged: RBXScriptSignal<() => void>;
 	/** [NO DOCUMENTATION] */
 	readonly DataModelCreated: RBXScriptSignal<(gameStateType: Enum.StudioDataModelType) => void>;
 	/** [NO DOCUMENTATION] */
@@ -272,6 +272,7 @@ interface Players extends Instance {
 
 interface Plugin extends Instance {
 	readonly HostDataModelType: Enum.StudioDataModelType;
+	readonly HostDataModelTypeIsCurrent: boolean;
 	readonly MDIInstance?: MDIInstance;
 	/** Sets the state of the calling plugin to activated. Allows mouse control through the [Plugin.GetMouse](https://developer.roblox.com/api-reference/function/Plugin/GetMouse) method. */
 	Activate(exclusiveMouse: boolean): void;
