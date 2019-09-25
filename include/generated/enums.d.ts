@@ -3200,17 +3200,9 @@ declare namespace Enum {
 
 		export const Craters: Craters;
 
-		export interface CratersAndDebris {
-			Name: "CratersAndDebris";
-			Value: 2;
-			EnumType: EnumType<ExplosionType>;
-		}
-
-		export const CratersAndDebris: CratersAndDebris;
-
 		export function GetEnumItems(this: {}): Array<ExplosionType>
 	}
-	export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters | ExplosionType.CratersAndDebris;
+	export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters;
 	export namespace FillDirection {
 		export interface Horizontal {
 			Name: "Horizontal";
@@ -10820,13 +10812,13 @@ declare namespace Enum {
 	}
 	export type TableMajorAxis = TableMajorAxis.RowMajor | TableMajorAxis.ColumnMajor;
 	export namespace Technology {
-		export interface Legacy {
-			Name: "Legacy";
-			Value: 0;
+		export interface Compatibility {
+			Name: "Compatibility";
+			Value: 2;
 			EnumType: EnumType<Technology>;
 		}
 
-		export const Legacy: Legacy;
+		export const Compatibility: Compatibility;
 
 		export interface Voxel {
 			Name: "Voxel";
@@ -10836,14 +10828,6 @@ declare namespace Enum {
 
 		export const Voxel: Voxel;
 
-		export interface Compatibility {
-			Name: "Compatibility";
-			Value: 2;
-			EnumType: EnumType<Technology>;
-		}
-
-		export const Compatibility: Compatibility;
-
 		export interface ShadowMap {
 			Name: "ShadowMap";
 			Value: 3;
@@ -10852,9 +10836,17 @@ declare namespace Enum {
 
 		export const ShadowMap: ShadowMap;
 
+		export interface Legacy {
+			Name: "Legacy";
+			Value: 0;
+			EnumType: EnumType<Technology>;
+		}
+
+		export const Legacy: Legacy;
+
 		export function GetEnumItems(this: {}): Array<Technology>
 	}
-	export type Technology = Technology.Legacy | Technology.Voxel | Technology.Compatibility | Technology.ShadowMap;
+	export type Technology = Technology.Compatibility | Technology.Voxel | Technology.ShadowMap | Technology.Legacy;
 	export namespace TeleportResult {
 		export interface Success {
 			Name: "Success";
@@ -11056,9 +11048,17 @@ declare namespace Enum {
 
 		export const Phone: Phone;
 
+		export interface Password {
+			Name: "Password";
+			Value: 5;
+			EnumType: EnumType<TextInputType>;
+		}
+
+		export const Password: Password;
+
 		export function GetEnumItems(this: {}): Array<TextInputType>
 	}
-	export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone;
+	export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone | TextInputType.Password;
 	export namespace TextTruncate {
 		export interface None {
 			Name: "None";
