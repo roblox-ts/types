@@ -60,6 +60,17 @@ type GetWritableProperties<T extends Instance> = Extract<
 	}[keyof T]
 >;
 
+/** Returns an Object type which can be merged with a given Instance type via Object.assign.
+ * @example
+ * const props: PartialProperties<Part> = {
+ * 	Size: new Vector3(),
+ * 	Anchored: false,
+ * }
+ *
+ * Object.assign(new Instance("Part"), props);
+ */
+type PartialProperties<T extends Instance> = Partial<Pick<T, GetWritableProperties<T>>>;
+
 /** Returns a given objects parameters in a tuple. Defaults to `[]` */
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : [];
 type Callback = (...args: Array<any>) => void;
