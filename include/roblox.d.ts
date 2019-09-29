@@ -35,7 +35,7 @@ type StrictInstances = {
 		: Instances[Key] & { ClassName: Key };
 };
 
-/** Given an Instance `T`, returns a unioned type of all properties, except "ClassName". */
+/** Given an Instance `T`, returns a unioned type of all property names, except "ClassName". */
 type GetProperties<T extends Instance> = {
 	[Key in keyof T]-?: Key extends "GetPropertyChangedSignal" | "ClassName"
 		? never
@@ -46,7 +46,7 @@ type GetProperties<T extends Instance> = {
 		: Key;
 }[keyof T];
 
-/** Given an Instance `T`, returns a unioned type of all non-readonly properties. */
+/** Given an Instance `T`, returns a unioned type of all non-readonly property names. */
 type GetWritableProperties<T extends Instance> = Extract<
 	GetProperties<T>,
 	{
@@ -60,7 +60,7 @@ type GetWritableProperties<T extends Instance> = Extract<
 	}[keyof T]
 >;
 
-/** Returns an Object type which can be merged with a given Instance type via Object.assign.
+/** Given an Instance `T`, returns an object which can hold the writable properties of T. Good to use with `Object.assign`.
  * @example
  * const props: PartialProperties<Part> = {
  * 	Size: new Vector3(),
