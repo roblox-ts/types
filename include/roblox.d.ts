@@ -35,7 +35,7 @@ type StrictInstances = {
 		: Instances[Key] & { ClassName: Key };
 };
 
-/** Given an Instance `T`, returns a unioned type of all properties, except "ClassName". */
+/** Given an Instance `T`, returns a unioned type of all property names, except "ClassName". */
 type GetProperties<T extends Instance> = {
 	[Key in keyof T]-?: Key extends "GetPropertyChangedSignal" | "ClassName"
 		? never
@@ -46,7 +46,7 @@ type GetProperties<T extends Instance> = {
 		: Key;
 }[keyof T];
 
-/** Given an Instance `T`, returns a unioned type of all non-readonly properties. */
+/** Given an Instance `T`, returns a unioned type of all non-readonly property names. */
 type GetWritableProperties<T extends Instance> = Extract<
 	GetProperties<T>,
 	{
@@ -59,6 +59,17 @@ type GetWritableProperties<T extends Instance> = Extract<
 			: never;
 	}[keyof T]
 >;
+
+/** Given an Instance `T`, returns an object which can hold the writable properties of T. Good to use with `Object.assign`.
+ * @example
+ * const props: PartialProperties<Part> = {
+ * 	Size: new Vector3(),
+ * 	Anchored: false,
+ * }
+ *
+ * Object.assign(new Instance("Part"), props);
+ */
+type PartialProperties<T extends Instance> = Partial<Pick<T, GetWritableProperties<T>>>;
 
 /** Returns a given objects parameters in a tuple. Defaults to `[]` */
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : [];
