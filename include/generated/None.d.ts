@@ -5606,8 +5606,6 @@ interface DebuggerWatch extends Instance {
 	readonly ClassName: "DebuggerWatch";
 	/** The expression set for the DebuggerWatch. */
 	Expression: string;
-	/** Checks the syntax of the DebuggerWatch. */
-	CheckSyntax(): void;
 }
 
 /** The Dialog object allows users to create non-player characters (NPCs) that players can talk to using a list of choices. The Dialog object can be inserted into a part such as a Humanoid's head, and then a player will see a speech bubble above the part that they can click on to start a conversation. The creator of a place can choose what choices the player can say by inserting `DialogChoice` objects into the dialog.
@@ -6399,16 +6397,6 @@ interface Geometry extends Instance {
 interface GlobalDataStore extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "GlobalDataStore" | "OrderedDataStore";
-	/** This function sets **callback** as the function to be executed any time the value associated with the [data store's](https://developer.roblox.com/api-reference/class/GlobalDataStore) key changes. For instance, the connected function will execute when functions like [IncrementAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/IncrementAsync), [SetAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/SetAsync), and [UpdateAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync) change the key's value in the data store.
-	 * 
-	 * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an in-depth guide on data structure, management, error handling, etc.
-	 * 
-	 * It's recommended that you **disconnect** the connection when the subscription to the key is no longer needed.
-	 * @param key The key identifying the entry being retrieved from the data store
-	 * @param callback The function to be executed any time the value associated with **key** is changed
-	 * @returns The connection to the key being tracked for updates
-	 */
-	OnUpdate<T = unknown>(key: string, callback: (value: T) => void): RBXScriptConnection;
 	/** This function returns the value of the entry in the `GlobalDataStore` with the given key. If the key does not exist, returns `nil`. This function caches for about 4 seconds, so you cannot be sure that it returns the current value saved on the Roblox servers.
 	 * 
 	 * If this function throws an error, the [error message](https://developer.roblox.com/search#stq=Datastore%20Errors) will describe the problem. Note that there are also [limits](https://developer.roblox.com/search#stq=Datastore%20Errors) that apply to this function.
