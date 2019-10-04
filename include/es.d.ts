@@ -53,7 +53,7 @@ interface ObjectConstructor {
 	 * Returns an array of values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
-	values<T>(o: Array<T>): Array<T>;
+	values<T>(o: Array<T>): Array<NonNullable<T>>;
 	values<T>(o: Set<T>): Array<true>;
 	values<K, V>(o: Map<K, V>): Array<V>;
 	values<T>(o: T): Array<T[keyof T]>;
@@ -64,7 +64,7 @@ interface ObjectConstructor {
 	 * Returns an array of key/values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
-	entries<T>(o: Array<T>): Array<[number, T]>;
+	entries<T>(o: Array<T>): Array<[number, NonNullable<T>]>;
 	entries<T>(o: Set<T>): Array<[T, true]>;
 	entries<K, V>(o: Map<K, V>): Array<[K, V]>;
 	entries<T>(o: T): Array<[keyof T, T[keyof T]]>;
