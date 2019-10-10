@@ -587,6 +587,10 @@ interface RemoteFunction extends Instance {
 	InvokeServer<R = unknown>(...arguments: Array<unknown>): R;
 }
 
+interface RunService extends Instance {
+	BindToRenderStep(name: string, priority: number, callback: (deltaTime: number) => void): void;
+}
+
 interface Pose extends Instance {
 	AddSubPose(pose: Pose): void;
 	RemoveSubPose(pose: Pose): void;
