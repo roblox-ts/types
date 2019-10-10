@@ -340,8 +340,8 @@ interface Instance {
 }
 
 interface JointInstance extends Instance {
-	Part0: BasePart | undefined;
-	Part1: BasePart | undefined;
+	Part0?: BasePart;
+	Part1?: BasePart;
 }
 
 interface Keyframe extends Instance {
