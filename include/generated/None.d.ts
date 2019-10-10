@@ -10864,7 +10864,7 @@ interface Keyframe extends Instance {
 	 * @param pose The `Pose` to be added.
 	 */
 	AddPose(pose: Pose): void;
-	GetMarkers(): Array<Instance>;
+	GetMarkers(): Array<KeyframeMarker>;
 	/** This function returns an array containing all [Poses](https://developer.roblox.com/api-reference/class/Pose) that have been added to a `Keyframe`.
 	 * @returns An array of `Pose`s.
 	 */
