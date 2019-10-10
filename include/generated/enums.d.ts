@@ -8771,6 +8771,58 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<RenderingTestComparisonMethod>
 	}
 	export type RenderingTestComparisonMethod = RenderingTestComparisonMethod.psnr | RenderingTestComparisonMethod.diff;
+	export namespace ReturnKeyType {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<ReturnKeyType>;
+		}
+
+		export const Default: Default;
+
+		export interface Done {
+			Name: "Done";
+			Value: 1;
+			EnumType: EnumType<ReturnKeyType>;
+		}
+
+		export const Done: Done;
+
+		export interface Go {
+			Name: "Go";
+			Value: 2;
+			EnumType: EnumType<ReturnKeyType>;
+		}
+
+		export const Go: Go;
+
+		export interface Next {
+			Name: "Next";
+			Value: 3;
+			EnumType: EnumType<ReturnKeyType>;
+		}
+
+		export const Next: Next;
+
+		export interface Search {
+			Name: "Search";
+			Value: 4;
+			EnumType: EnumType<ReturnKeyType>;
+		}
+
+		export const Search: Search;
+
+		export interface Send {
+			Name: "Send";
+			Value: 5;
+			EnumType: EnumType<ReturnKeyType>;
+		}
+
+		export const Send: Send;
+
+		export function GetEnumItems(this: {}): Array<ReturnKeyType>
+	}
+	export type ReturnKeyType = ReturnKeyType.Default | ReturnKeyType.Done | ReturnKeyType.Go | ReturnKeyType.Next | ReturnKeyType.Search | ReturnKeyType.Send;
 	export namespace ReverbType {
 		export interface NoReverb {
 			Name: "NoReverb";
@@ -12340,6 +12392,7 @@ declare type CastsToEnum<T extends
 	| Enum.RenderFidelity
 	| Enum.RenderPriority
 	| Enum.RenderingTestComparisonMethod
+	| Enum.ReturnKeyType
 	| Enum.ReverbType
 	| Enum.RibbonTool
 	| Enum.RollOffMode
