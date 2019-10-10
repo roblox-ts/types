@@ -11,7 +11,7 @@ jobs:
   build:
     if: contains(github.event.commits[0].message, '[skip ci]') == false &&
         github.repository == 'roblox-ts/types' &&
-        github.ref == 'refs/heads/master
+        github.ref == 'refs/heads/master'
 
     runs-on: ubuntu-latest
 
