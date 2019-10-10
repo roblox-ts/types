@@ -24,7 +24,7 @@ jobs:
           node-version: 11.x
 
       - name: Install node_modules
-        run: npm install
+        run: npm ci
 
       - name: Configure Git
         run: |
