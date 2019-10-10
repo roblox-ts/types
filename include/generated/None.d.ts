@@ -18499,7 +18499,7 @@ interface DataModel extends ServiceProvider {
 	 *  - [PluginGui.BindToClose](https://developer.roblox.com/api-reference/function/PluginGui/BindToClose), which is used to bind a function to a `PluginGui` close button and should not be confused with this function
 	 * @param function A function to be called prior to the game shutting down
 	 */
-	BindToClose(callback: Function): void;
+	BindToClose(callback: () => void): void;
 	/** This function returns true if the client has finished loading the game for the first time.
 	 * 
 	 * When all initial [Instances](https://developer.roblox.com/api-reference/class/Instance) in the game has finished replicating to the client, this function will return true.

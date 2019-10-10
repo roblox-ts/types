@@ -395,6 +395,7 @@ interface CompressorSoundEffect extends SoundEffect {
 
 interface DataModel extends ServiceProvider {
 	readonly Workspace: Workspace;
+	BindToClose(callback: () => void): void;
 }
 
 interface MarketplaceService extends Instance {
