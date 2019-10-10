@@ -10593,9 +10593,9 @@ interface JointInstance extends Instance {
 	/** Is subtracted from the [JointInstance.C0](https://developer.roblox.com/api-reference/property/JointInstance/C0) property to create an offset point for [JointInstance.Part1](https://developer.roblox.com/api-reference/property/JointInstance/Part1). */
 	C1: CFrame;
 	/** The first `BasePart` that the joint connects. */
-	Part0: BasePart | undefined;
+	Part0?: BasePart;
 	/** The second `BasePart` that the joint connects. */
-	Part1: BasePart | undefined;
+	Part1?: BasePart;
 }
 
 /** The base class for classic motor joints. */
