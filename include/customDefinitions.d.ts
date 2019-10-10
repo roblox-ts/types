@@ -350,6 +350,7 @@ interface Keyframe extends Instance {
 	GetPoses(): Array<Pose>;
 	AddMarker(marker: KeyframeMarker): void;
 	RemoveMarker(marker: KeyframeMarker): void;
+	GetMarkers(): Array<KeyframeMarker>;
 }
 
 interface KeyframeSequence extends Instance {
