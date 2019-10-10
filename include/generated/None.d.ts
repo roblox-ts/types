@@ -18108,7 +18108,7 @@ interface RunService extends Instance {
 	 * @param function The custom function being bound.
 	 * @returns None.
 	 */
-	BindToRenderStep(name: string, priority: number, callback: Function): void;
+	BindToRenderStep(name: string, priority: number, callback: (deltaTime: number) => void): void;
 	/** If the code that invoked this method is running in a client context (within or originating from a LocalScript), this method returns true. In all other cases, it returns false. If this returns true, the code has access to client-side features like `RunService.RenderStepped` or `Players.LocalPlayer`. */
 	IsClient(): boolean;
 	/** This method returns true if and only if the "Run" button was pressed within Studio. */
