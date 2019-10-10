@@ -23,6 +23,9 @@ jobs:
         with:
           node-version: 11.x
 
+      - name: Install node_modules
+        run: npm install
+
       - name: Configure Git
         run: |
           git config --global user.name "GitHub Actions"
@@ -35,6 +38,8 @@ jobs:
 
       - name: Generate Files
         run: |
+          git add -A
+          git status
           if ! git diff-index --quiet HEAD --; then
             git commit -m "Update generated files [skip ci]"
             git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:master
