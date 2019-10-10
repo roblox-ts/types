@@ -51,23 +51,20 @@ jobs:
             fi
           fi
 
+      - run: echo $GITHUB_EVENT_NAME
+
       - name: Copy files to deploy branch
         run: |
           cd ..
           git clone --depth=50 --branch=deploy https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git deploy
-          ls
           mkdir -p deploy/include
           rm -rf deploy/include/*
           cp -r types/include/* deploy/include
           cp types/plugin.d.ts deploy/plugin.d.ts
           cp types/README.md deploy/README.md
+
           cd deploy
 
-      - run: echo $GITHUB_EVENT_NAME
-
-      - name: Detect Changes and Push to Deploy Branch
-        run: |
-          cd ../deploy
           if ! git diff-index --quiet HEAD --; then
             if [ "$GITHUB_EVENT_NAME" == "schedule" ]; then
               git commit -m "Automatic Update"
@@ -76,4 +73,3 @@ jobs:
             fi
             git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git deploy
           fi
-
