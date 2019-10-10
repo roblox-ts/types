@@ -577,7 +577,6 @@ interface PluginToolbarButton extends Instance {
 }
 
 interface RunService extends Instance {
-	/** [NO DOCUMENTATION] */
 	IsEdit(): boolean;
 	/** Pauses the physics and scripts in a place. */
 	Pause(): void;
