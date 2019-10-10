@@ -41,10 +41,12 @@ jobs:
           git add -A
           git status
           if ! git diff-index --quiet HEAD --; then
+            echo "Generated files changed!"
             git commit -m "Update generated files [skip ci]"
             git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:master
             npm run typedoc
             if ! git diff-index --quiet HEAD --; then
+              echo "Typedoc changed!"
               git add .
               git commit -m "Update typedoc files [skip ci]"
               git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:master
@@ -66,6 +68,7 @@ jobs:
           cd deploy
 
           if ! git diff-index --quiet HEAD --; then
+            echo "Deploy changed!"
             if [ "$GITHUB_EVENT_NAME" == "schedule" ]; then
               git commit -m "Automatic Update"
             else
