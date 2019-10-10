@@ -12232,8 +12232,12 @@ interface MarketplaceService extends Instance {
 	 * [1]: https://developer.roblox.com/assets/5c3f7bb9aae307c07f2f485f/PromptProductPurchase-confirm.png
 	 */
 	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
-	readonly PromptSubscriptionCancellationFinished: RBXScriptSignal<(player: Instance, subscriptionId: number, wasCanceled: boolean) => void>;
-	readonly PromptSubscriptionPurchaseFinished: RBXScriptSignal<(player: Instance, subscriptionId: number, wasPurchased: boolean) => void>;
+	readonly PromptSubscriptionCancellationFinished: RBXScriptSignal<
+		(player: Player, subscriptionId: number, wasCanceled: boolean) => void
+	>;
+	readonly PromptSubscriptionPurchaseFinished: RBXScriptSignal<
+		(player: Player, subscriptionId: number, wasPurchased: boolean) => void
+	>;
 	/** After a player makes a purchase through a [PromptProductPurchase()](https://developer.roblox.com/api-reference/function/MarketplaceService/PromptProductPurchase) dialog, this callback is called multiple times until it returns `Enum.ProductPurchaseDecision.PurchaseGranted`. For example, the function is called again for a product when the player joins the game&nbsp;&mdash; or even after they have bought something else&nbsp;&mdash; **unless** you return `Enum.ProductPurchaseDecision.PurchaseGranted`.
 	 * 
 	 * It's important to carefully examine the information passed to the callback via the **receipt info table** and properly process the receipt. See the code sample below for a model of how to create a receipt handling callback.

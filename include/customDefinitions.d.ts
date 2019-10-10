@@ -404,6 +404,12 @@ interface MarketplaceService extends Instance {
 		(player: Player, gamePassId: number, wasPurchased: boolean) => void
 	>;
 	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
+	readonly PromptSubscriptionCancellationFinished: RBXScriptSignal<
+		(player: Player, subscriptionId: number, wasCanceled: boolean) => void
+	>;
+	readonly PromptSubscriptionPurchaseFinished: RBXScriptSignal<
+		(player: Player, subscriptionId: number, wasPurchased: boolean) => void
+	>;
 	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.Asset>): AssetProductInfo;
 	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.Product>): DeveloperProductInfo;
 	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.GamePass>): AssetProductInfo;
