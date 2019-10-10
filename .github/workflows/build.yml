@@ -1,0 +1,76 @@
+name: Build
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    if: contains(github.event.commits[0].message, '[skip ci]') == false &&
+        github.repository == 'roblox-ts/types' &&
+        github.ref == 'refs/heads/master
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Install NodeJS
+        uses: actions/setup-node@master
+        with:
+          node-version: 11.x
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "noreply@github.com"
+
+      - name: Build
+        run: |
+          npx tsc
+          node out/index.js
+
+      - name: Generate Files
+        run: |
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "Update generated files [skip ci]"
+            git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:master
+            npm run typedoc
+            if ! git diff-index --quiet HEAD --; then
+              git add .
+              git commit -m "Update typedoc files [skip ci]"
+              git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:master
+            fi
+          fi
+
+      - name: Clone Deploy Branch
+        run: |
+          cd ..
+          git clone --depth=50 --branch=deploy https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git deploy
+
+      - name: Copy Files That Might've Changed
+        run: |
+          ls
+          mkdir -p deploy/include
+          rm -rf deploy/include/*
+          cp -r types/include/* deploy/include
+          cp types/plugin.d.ts deploy/plugin.d.ts
+          cp types/README.md deploy/README.md
+          cd deploy
+
+      - run: echo $GITHUB_EVENT_NAME
+
+      - name: Detect Changes and Push to Deploy Branch
+        run: |
+          if ! git diff-index --quiet HEAD --; then
+            if [ "$GITHUB_EVENT_NAME" == "cron" ]; then
+              git commit -m "Automatic Update"
+            else
+              git commit -m "Manual Update"
+            fi
+            git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git deploy
+          fi
+
