@@ -53,8 +53,6 @@ jobs:
             fi
           fi
 
-      - run: echo $GITHUB_EVENT_NAME
-
       - name: Copy files to deploy branch
         run: |
           cd ..
