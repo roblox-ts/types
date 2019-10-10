@@ -31,23 +31,22 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "noreply@github.com"
 
-      - name: Build
+      - name: Generate Files
         run: |
           npx tsc
           node out/index.js
 
-      - name: Generate Files
-        run: |
           git add -A
-          git status
           if ! git diff-index --quiet HEAD --; then
             echo "Generated files changed!"
             git commit -m "Update generated files [skip ci]"
             git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:master
+
             npm run typedoc
+
+            git add -A
             if ! git diff-index --quiet HEAD --; then
               echo "Typedoc changed!"
-              git add .
               git commit -m "Update typedoc files [skip ci]"
               git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:master
             fi
@@ -67,6 +66,7 @@ jobs:
 
           cd deploy
 
+          git add -A
           if ! git diff-index --quiet HEAD --; then
             echo "Deploy changed!"
             if [ "$GITHUB_EVENT_NAME" == "schedule" ]; then
