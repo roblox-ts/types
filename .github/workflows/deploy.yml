@@ -26,7 +26,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "noreply@github.com"
-          npm version patch -m "package.json version bump to %s [ci skip]"
+          npm version patch -m "package.json version bump to %s [skip ci]"
           git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:deploy
           npm publish
         env:
