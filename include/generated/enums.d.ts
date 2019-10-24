@@ -3155,34 +3155,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<EnviromentalPhysicsThrottle>
 	}
 	export type EnviromentalPhysicsThrottle = EnviromentalPhysicsThrottle.DefaultAuto | EnviromentalPhysicsThrottle.Disabled | EnviromentalPhysicsThrottle.Always | EnviromentalPhysicsThrottle.Skip2 | EnviromentalPhysicsThrottle.Skip4 | EnviromentalPhysicsThrottle.Skip8 | EnviromentalPhysicsThrottle.Skip16;
-	export namespace ErrorReporting {
-		export interface DontReport {
-			Name: "DontReport";
-			Value: 0;
-			EnumType: EnumType<ErrorReporting>;
-		}
-
-		export const DontReport: DontReport;
-
-		export interface Prompt {
-			Name: "Prompt";
-			Value: 1;
-			EnumType: EnumType<ErrorReporting>;
-		}
-
-		export const Prompt: Prompt;
-
-		export interface Report {
-			Name: "Report";
-			Value: 2;
-			EnumType: EnumType<ErrorReporting>;
-		}
-
-		export const Report: Report;
-
-		export function GetEnumItems(this: {}): Array<ErrorReporting>
-	}
-	export type ErrorReporting = ErrorReporting.DontReport | ErrorReporting.Prompt | ErrorReporting.Report;
 	export namespace ExplosionType {
 		export interface NoCraters {
 			Name: "NoCraters";
@@ -4847,66 +4819,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<JointCreationMode>
 	}
 	export type JointCreationMode = JointCreationMode.All | JointCreationMode.Surface | JointCreationMode.None;
-	export namespace JointType {
-		export interface None {
-			Name: "None";
-			Value: 28;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const None: None;
-
-		export interface Rotate {
-			Name: "Rotate";
-			Value: 7;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const Rotate: Rotate;
-
-		export interface RotateP {
-			Name: "RotateP";
-			Value: 8;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const RotateP: RotateP;
-
-		export interface RotateV {
-			Name: "RotateV";
-			Value: 9;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const RotateV: RotateV;
-
-		export interface Glue {
-			Name: "Glue";
-			Value: 10;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const Glue: Glue;
-
-		export interface Weld {
-			Name: "Weld";
-			Value: 1;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const Weld: Weld;
-
-		export interface Snap {
-			Name: "Snap";
-			Value: 3;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const Snap: Snap;
-
-		export function GetEnumItems(this: {}): Array<JointType>
-	}
-	export type JointType = JointType.None | JointType.Rotate | JointType.RotateP | JointType.RotateV | JointType.Glue | JointType.Weld | JointType.Snap;
 	export namespace KeyCode {
 		export interface Unknown {
 			Name: "Unknown";
@@ -9836,17 +9748,17 @@ declare namespace Enum {
 
 		export const UserPlugin: UserPlugin;
 
-		export interface Null {
-			Name: "Null";
+		export interface None {
+			Name: "None";
 			Value: 6;
 			EnumType: EnumType<StudioDataModelType>;
 		}
 
-		export const Null: Null;
+		export const None: None;
 
 		export function GetEnumItems(this: {}): Array<StudioDataModelType>
 	}
-	export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.RobloxPlugin | StudioDataModelType.UserPlugin | StudioDataModelType.Null;
+	export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.RobloxPlugin | StudioDataModelType.UserPlugin | StudioDataModelType.None;
 	export namespace StudioStyleGuideColor {
 		export interface MainBackground {
 			Name: "MainBackground";
@@ -12318,7 +12230,6 @@ declare type CastsToEnum<T extends
 	| Enum.EasingStyle
 	| Enum.ElasticBehavior
 	| Enum.EnviromentalPhysicsThrottle
-	| Enum.ErrorReporting
 	| Enum.ExplosionType
 	| Enum.FillDirection
 	| Enum.FilterResult
@@ -12353,7 +12264,6 @@ declare type CastsToEnum<T extends
 	| Enum.InlineAlignment
 	| Enum.InputType
 	| Enum.JointCreationMode
-	| Enum.JointType
 	| Enum.KeyCode
 	| Enum.KeywordFilterType
 	| Enum.Language

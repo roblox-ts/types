@@ -5330,22 +5330,6 @@ interface DebugSettings extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly DataModel: number;
-	/** The action Roblox should take when reporting an error. */
-	ErrorReporting: Enum.ErrorReporting;
-	/** The GfxCard currently installed into your machine.
-	 * 	
-	 * The GfxCard currently installed into your machine.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The GfxCard currently installed into your machine.
-	 * 	
-	 * The GfxCard currently installed into your machine.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly GfxCard: string;
 	/** The number of instances active in the simulation.
 	 * 	
 	 * The number of instances active in the simulation.
@@ -5378,62 +5362,6 @@ interface DebugSettings extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly JobCount: number;
-	/** Whether your OS is a 64 bit OS or a 32 bit one.
-	 * 	
-	 * Whether your OS is a 64 bit OS or a 32 bit one.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	Whether your OS is a 64 bit OS or a 32 bit one.
-	 * 	
-	 * Whether your OS is a 64 bit OS or a 32 bit one.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly OsIs64Bit: boolean;
-	/** A string representing the type of Operating System Platform your machine is on.
-	 * 	
-	 * A string representing the type of Operating System Platform your machine is on.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	A string representing the type of Operating System Platform your machine is on.
-	 * 	
-	 * A string representing the type of Operating System Platform your machine is on.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly OsPlatform: string;
-	/** The PlatformId of your Operating System.
-	 * 	
-	 * The PlatformId of your Operating System.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The PlatformId of your Operating System.
-	 * 	
-	 * The PlatformId of your Operating System.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly OsPlatformId: number;
-	/** The current version of your Operating System.
-	 * 	
-	 * The current version of your Operating System.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The current version of your Operating System.
-	 * 	
-	 * The current version of your Operating System.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly OsVer: string;
 	/** The number of players currently in the active game-instance.
 	 * 	
 	 * The number of players currently in the active game-instance.
@@ -5450,28 +5378,6 @@ interface DebugSettings extends Instance {
 	readonly PlayerCount: number;
 	/** Whether or not sound warnings should be reported. */
 	ReportSoundWarnings: boolean;
-	/** The purpose of this property is unknown.
-	 * 
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
-	 * 	
-	 * The purpose of this property is unknown.
-	 * 
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The purpose of this property is unknown.
-	 * 
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
-	 * 	
-	 * The purpose of this property is unknown.
-	 * 
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly RobloxProductName: string;
 	/** The current client version of Roblox. Can also be retrieved by using the version() function.
 	 * 	
 	 * The current client version of Roblox. Can also be retrieved by using the version() function.
@@ -5486,50 +5392,8 @@ interface DebugSettings extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly RobloxVersion: string;
-	/** The type of SIMD instruction set used by your machine.
-	 * 	
-	 * The type of SIMD instruction set used by your machine.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The type of SIMD instruction set used by your machine.
-	 * 	
-	 * The type of SIMD instruction set used by your machine.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly SIMD: string;
-	/** The name of your System's Model.
-	 * 	
-	 * The name of your System's Model.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The name of your System's Model.
-	 * 	
-	 * The name of your System's Model.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly SystemProductName: string;
 	/** Sets the internal sampling method used to measure elapsed time with consistency across platforms. */
 	TickCountPreciseOverride: Enum.TickCountSampleMethod;
-	/** The total amount of video memory on your machine, in bytes as a negative integer.
-	 * 	
-	 * The total amount of video memory on your machine, in bytes as a negative integer.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The total amount of video memory on your machine, in bytes as a negative integer.
-	 * 	
-	 * The total amount of video memory on your machine, in bytes as a negative integer.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly VideoMemory: number;
 }
 
 /** Represents a breakpoint in Roblox's Lua Debugger.
@@ -11432,6 +11296,10 @@ interface Lighting extends Instance {
 	 * [1]: https://developer.roblox.com/assets/blt6316b01e497fa7aa/ColorShift.png
 	 */
 	ColorShift_Top: Color3;
+	/** Sets scale [0-1] of Diffuse Environment Lighting to add to Ambient. */
+	EnvironmentDiffuseScale: number;
+	/** Sets scale [0-1] of Specular Environment Lighting to add to Ambient. */
+	EnvironmentSpecularScale: number;
 	/** Exposure compensation amount. Applies a bias to the exposure level prior to the tonemap step. +1 indicates twice as much exposure and -1 means half as much exposure. */
 	ExposureCompensation: number;
 	/** A [DataType.Color3](https://developer.roblox.com/search#stq=Color3) value giving the hue of `Lighting`'s fog.
