@@ -75,7 +75,7 @@ jobs:
               git commit -m "Automatic Update"
             fi
 
-            npm version patch -m "package.json version bump to %s [ci skip]"
+            npm version patch -m "package.json version bump to %s [skip ci]"
             git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:deploy
             npm publish
           fi
