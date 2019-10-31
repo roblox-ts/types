@@ -7567,6 +7567,42 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<MessageType>
 	}
 	export type MessageType = MessageType.MessageOutput | MessageType.MessageInfo | MessageType.MessageWarning | MessageType.MessageError;
+	export namespace ModifierKey {
+		export interface Alt {
+			Name: "Alt";
+			Value: 2;
+			EnumType: EnumType<ModifierKey>;
+		}
+
+		export const Alt: Alt;
+
+		export interface Ctrl {
+			Name: "Ctrl";
+			Value: 1;
+			EnumType: EnumType<ModifierKey>;
+		}
+
+		export const Ctrl: Ctrl;
+
+		export interface Meta {
+			Name: "Meta";
+			Value: 3;
+			EnumType: EnumType<ModifierKey>;
+		}
+
+		export const Meta: Meta;
+
+		export interface Shift {
+			Name: "Shift";
+			Value: 0;
+			EnumType: EnumType<ModifierKey>;
+		}
+
+		export const Shift: Shift;
+
+		export function GetEnumItems(this: {}): Array<ModifierKey>
+	}
+	export type ModifierKey = ModifierKey.Alt | ModifierKey.Ctrl | ModifierKey.Meta | ModifierKey.Shift;
 	export namespace MouseBehavior {
 		export interface Default {
 			Name: "Default";
@@ -12277,6 +12313,7 @@ declare type CastsToEnum<T extends
 	| Enum.MembershipType
 	| Enum.MeshType
 	| Enum.MessageType
+	| Enum.ModifierKey
 	| Enum.MouseBehavior
 	| Enum.MoveState
 	| Enum.NameOcclusion

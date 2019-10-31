@@ -576,6 +576,7 @@ interface Selection extends Instance {
 }
 
 interface DataModel extends ServiceProvider {
+	EnableScriptCollabOnLoad: boolean;
 	/** Returns the job interval peak fraction of the specified task scheduler job. */
 	GetJobIntervalPeakFraction(jobname: string, greaterThan: number): number;
 	/** Returns the job time peak fraction of the specified task scheduler job. */
