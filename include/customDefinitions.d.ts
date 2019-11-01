@@ -835,19 +835,19 @@ interface Workspace extends Model {
 	FindPartsInRegion3(
 		region: Region3,
 		ignoreDescendantsInstance?: Instance,
-		maxParts?: number
+		maxParts?: number,
 	): Array<BasePart>;
 
 	FindPartsInRegion3WithIgnoreList(
 		region: Region3,
 		ignoreDescendantsTable: Array<Instance>,
-		maxParts?: number
+		maxParts?: number,
 	): Array<BasePart>;
 
 	FindPartsInRegion3WithWhiteList(
 		region: Region3,
 		whitelistDescendantsTable: Array<Instance>,
-		maxParts?: number
+		maxParts?: number,
 	): Array<BasePart>;
 }
 
