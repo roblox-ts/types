@@ -850,6 +850,24 @@ interface Workspace extends Model {
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+
+	FindPartsInRegion3(
+		region: Region3,
+		ignoreDescendantsInstance?: Instance,
+		maxParts?: number,
+	): Array<BasePart>;
+
+	FindPartsInRegion3WithIgnoreList(
+		region: Region3,
+		ignoreDescendantsTable: Array<Instance>,
+		maxParts?: number,
+	): Array<BasePart>;
+
+	FindPartsInRegion3WithWhiteList(
+		region: Region3,
+		whitelistDescendantsTable: Array<Instance>,
+		maxParts?: number,
+	): Array<BasePart>;
 }
 
 /**

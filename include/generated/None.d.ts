@@ -15040,7 +15040,11 @@ interface Workspace extends Model {
 	 * @param maxParts The maximum amount of `BasePart`s to be returned.
 	 * @returns An array of `BasePart`s within the `DataType/Region3`.
 	 */
-	FindPartsInRegion3(region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<Instance>;
+	FindPartsInRegion3(
+		region: Region3,
+		ignoreDescendantsInstance?: Instance,
+		maxParts?: number,
+	): Array<BasePart>;
 	/** Returns an array of `BasePart`s in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3) that aren't in, or a descendant of an entry in, the given IgnoreList.
 	 * 
 	 * This function takes an optional maxParts parameter (default 20) which limits the number of `BasePart`s that can be returned. Once this number has been reached, the search for `BasePart`s will stop. This means some `BasePart`s may not be returned even if they are within the [DataType.Region3](https://developer.roblox.com/search#stq=Region3)
@@ -15065,7 +15069,11 @@ interface Workspace extends Model {
 	 * @param maxParts The maximum number of `BasePart`s to be returned.
 	 * @returns An array of `BasePart`s found within the `DataType/Region3`.
 	 */
-	FindPartsInRegion3WithIgnoreList(region: Region3, ignoreDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
+	FindPartsInRegion3WithIgnoreList(
+		region: Region3,
+		ignoreDescendantsTable: Array<Instance>,
+		maxParts?: number,
+	): Array<BasePart>;
 	/** Returns an array of `BasePart`s in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3) that are in, or descendant of an object in, a given white list.
 	 * 
 	 * This function takes an optional maxParts parameter (default 20) which limits the number of `BasePart`s that can be returned. Once this number has been reached, the search for `BasePart`s will stop. This means some `BasePart`s may not be returned even if they are within the [DataType.Region3](https://developer.roblox.com/search#stq=Region3)
@@ -15090,7 +15098,11 @@ interface Workspace extends Model {
 	 * @param maxParts The maximum number of `BasePart`s to be returned.
 	 * @returns An array of `BasePart`s within the `DataType/Region3`.
 	 */
-	FindPartsInRegion3WithWhiteList(region: Region3, whitelistDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
+	FindPartsInRegion3WithWhiteList(
+		region: Region3,
+		whitelistDescendantsTable: Array<Instance>,
+		maxParts?: number,
+	): Array<BasePart>;
 	/** Returns the number of `BasePart`s that are deemed physically active, due to being recently under the influence of physics.
 	 * 
 	 * This function provides a measure of how many `BasePart`s are being influenced by, or recently under the influence of, physical forces.
