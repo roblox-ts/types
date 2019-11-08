@@ -576,7 +576,6 @@ interface Selection extends Instance {
 }
 
 interface DataModel extends ServiceProvider {
-	EnableScriptCollabOnLoad: boolean;
 	/** Returns the job interval peak fraction of the specified task scheduler job. */
 	GetJobIntervalPeakFraction(jobname: string, greaterThan: number): number;
 	/** Returns the job time peak fraction of the specified task scheduler job. */
@@ -794,6 +793,13 @@ interface Studio extends Instance {
 	 * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
 	 */
 	readonly ThemeChanged: RBXScriptSignal<() => void>;
+}
+
+interface StudioData extends Instance {
+	/** [NO DOCUMENTATION] *
+	 * Tags: Hidden
+	 */
+	EnableScriptCollabOnLoad: boolean;
 }
 
 interface StudioService extends Instance {
