@@ -85,7 +85,7 @@ interface ObjectConstructor {
 		? Array<[K, NonNullable<V>]>
 		: T extends ArrayLike<infer W>
 		? Array<[number, NonNullable<W>]>
-		: Array<{ [K in keyof T]: T[K] extends undefined ? never : [K, T[K]] }[keyof T]>;
+		: Array<NonNullable<{ [K in keyof T]: [K, NonNullable<T[K]>] }[keyof T]>>;
 
 	/**
 	 * Returns true if empty, otherwise false.
