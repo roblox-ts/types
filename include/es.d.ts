@@ -43,33 +43,49 @@ interface ObjectConstructor {
 	 * Returns the names of the enumerable properties and methods of an object.
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
-	keys<T>(o: Array<T>): Array<number>;
-	keys<T>(o: Set<T>): Array<T>;
-	keys<K, V>(o: Map<K, V>): Array<K>;
-	keys<T>(o: T): Array<keyof T>;
-	keys(o: {}): Array<string>;
+	keys<T extends object>(
+		o: T,
+	): T extends Array<any>
+		? Array<number>
+		: T extends Set<infer U>
+		? Array<U>
+		: T extends Map<infer K, any>
+		? Array<K>
+		: T extends ArrayLike<any>
+		? Array<number>
+		: Array<keyof T>;
 
 	/**
 	 * Returns an array of values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
-	values<T>(o: Array<T>): Array<NonNullable<T>>;
-	values<T>(o: Set<T>): Array<true>;
-	values<K, V>(o: Map<K, V>): Array<V>;
-	values<T extends object>(o: T): Array<NonNullable<T[keyof T]>>;
-	values<T>(o: { [s: string]: T } | ArrayLike<T>): Array<NonNullable<T>>;
-	values(o: {}): Array<any>;
+	values<T extends object>(
+		o: T,
+	): T extends Array<infer U>
+		? Array<NonNullable<U>>
+		: T extends Set<any>
+		? Array<true>
+		: T extends Map<any, infer V>
+		? Array<NonNullable<V>>
+		: T extends ArrayLike<infer W>
+		? Array<NonNullable<W>>
+		: Array<NonNullable<T[keyof T]>>;
 
 	/**
 	 * Returns an array of key/values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
-	entries<T>(o: Array<T>): Array<[number, NonNullable<T>]>;
-	entries<T>(o: Set<T>): Array<[T, true]>;
-	entries<K, V>(o: Map<K, V>): Array<[K, V]>;
-	entries<T extends object>(o: T): Array<[keyof T, NonNullable<T[keyof T]>]>;
-	entries<T>(o: { [s: string]: T } | ArrayLike<T>): Array<[string, NonNullable<T>]>;
-	entries<T extends { [key: string]: any }, K extends keyof T>(o: T): Array<T[K] extends undefined ? never : [K, T[K]]>;
+	entries<T extends object>(
+		o: T,
+	): T extends Array<infer U>
+		? Array<[number, NonNullable<U>]>
+		: T extends Set<infer E>
+		? Array<[E, true]>
+		: T extends Map<infer K, infer V>
+		? Array<[K, NonNullable<V>]>
+		: T extends ArrayLike<infer W>
+		? Array<[number, NonNullable<W>]>
+		: Array<[keyof T, NonNullable<T[keyof T]>]>;
 
 	/**
 	 * Returns true if empty, otherwise false.
