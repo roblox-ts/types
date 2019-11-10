@@ -47,18 +47,19 @@ type GetProperties<T extends Instance> = {
 }[keyof T];
 
 /** Given an Instance `T`, returns a unioned type of all non-readonly property names. */
-type GetWritableProperties<T extends Instance> = Extract<
-	GetProperties<T>,
-	{
-		[K in keyof T]: K extends "GetPropertyChangedSignal"
-			? never
-			: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends (<F>() => F extends { -readonly [Q in K]: T[K] }
-					? 1
-					: 2)
-			? K
-			: never;
-	}[keyof T]
->;
+type GetWritableProperties<T extends Instance> = {
+	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName"
+		? never
+		: T[K] extends RBXScriptSignal
+		? never
+		: (() => any) extends T[K]
+		? never
+		: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends (<F>() => F extends { -readonly [Q in K]: T[K] }
+				? 1
+				: 2)
+		? K
+		: never;
+}[keyof T];
 
 /** Given an Instance `T`, returns an object which can hold the writable properties of T. Good to use with `Object.assign`.
  * @example
