@@ -1,15 +1,15 @@
 /// <reference no-default-lib="true"/>
 
-interface Boolean { }
-interface IArguments { }
-interface Number { }
-interface Object { }
-interface RegExp { }
+interface Boolean {}
+interface IArguments {}
+interface Number {}
+interface Object {}
+interface RegExp {}
 interface Function {
 	prototype: never;
 }
-interface CallableFunction extends Function { }
-interface NewableFunction extends Function { }
+interface CallableFunction extends Function {}
+interface NewableFunction extends Function {}
 
 /** @rbxts array */
 interface ArrayLike<T> {
@@ -25,11 +25,11 @@ interface ObjectConstructor {
 	 * Copy the values of all of the enumerable own properties from one or more source objects to a target object.
 	 * Returns the target object.
 	 */
-	assign<A, B>(target: A, source: B): A & B;
-	assign<A, B, C>(target: A, source1: B, source2: C): A & B & C;
-	assign<A, B, C, D>(target: A, source1: B, source2: C, source3: D): A & B & C & D;
-	assign<A, B, C, D, E>(target: A, source1: B, source2: C, source3: D, source4: E): A & B & C & D & E;
-	assign<A, B, C, D, E, F>(
+	assign<A extends object, B>(target: A, source: B): A & B;
+	assign<A extends object, B, C>(target: A, source1: B, source2: C): A & B & C;
+	assign<A extends object, B, C, D>(target: A, source1: B, source2: C, source3: D): A & B & C & D;
+	assign<A extends object, B, C, D, E>(target: A, source1: B, source2: C, source3: D, source4: E): A & B & C & D & E;
+	assign<A extends object, B, C, D, E, F>(
 		target: A,
 		source1: B,
 		source2: C,
@@ -43,33 +43,49 @@ interface ObjectConstructor {
 	 * Returns the names of the enumerable properties and methods of an object.
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
-	keys<T>(o: Array<T>): Array<number>;
-	keys<T>(o: Set<T>): Array<T>;
-	keys<K, V>(o: Map<K, V>): Array<K>;
-	keys<T>(o: T): Array<keyof T>;
-	keys(o: {}): Array<string>;
+	keys<T extends object>(
+		o: T,
+	): T extends Array<any>
+		? Array<number>
+		: T extends Set<infer U>
+		? Array<U>
+		: T extends Map<infer K, any>
+		? Array<K>
+		: T extends ArrayLike<any>
+		? Array<number>
+		: Array<keyof T>;
 
 	/**
 	 * Returns an array of values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
-	values<T>(o: Array<T>): Array<NonNullable<T>>;
-	values<T>(o: Set<T>): Array<true>;
-	values<K, V>(o: Map<K, V>): Array<V>;
-	values<T>(o: T): Array<T[keyof T]>;
-	values<T>(o: { [s: string]: T } | ArrayLike<T>): Array<T>;
-	values(o: {}): Array<any>;
+	values<T extends object>(
+		o: T,
+	): T extends Array<infer U>
+		? Array<NonNullable<U>>
+		: T extends Set<any>
+		? Array<true>
+		: T extends Map<any, infer V>
+		? Array<NonNullable<V>>
+		: T extends ArrayLike<infer W>
+		? Array<NonNullable<W>>
+		: Array<NonNullable<T[keyof T]>>;
 
 	/**
 	 * Returns an array of key/values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
-	entries<T>(o: Array<T>): Array<[number, NonNullable<T>]>;
-	entries<T>(o: Set<T>): Array<[T, true]>;
-	entries<K, V>(o: Map<K, V>): Array<[K, V]>;
-	entries<T>(o: T): Array<[keyof T, T[keyof T]]>;
-	entries<T>(o: { [s: string]: T } | ArrayLike<T>): Array<[string, T]>;
-	entries<T extends { [key: string]: any }, K extends keyof T>(o: T): Array<[K, T[K]]>;
+	entries<T extends object>(
+		o: T,
+	): T extends Array<infer U>
+		? Array<[number, NonNullable<U>]>
+		: T extends Set<infer E>
+		? Array<[E, true]>
+		: T extends Map<infer K, infer V>
+		? Array<[K, NonNullable<V>]>
+		: T extends ArrayLike<infer W>
+		? Array<[number, NonNullable<W>]>
+		: Array<NonNullable<{ [K in keyof T]: [K, NonNullable<T[K]>] }[keyof T]>>;
 
 	/**
 	 * Returns true if empty, otherwise false.
@@ -274,16 +290,18 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	lastIndexOf(searchElement: T, fromIndex?: number): number;
 
 	/**
-	 * Determines whether all the members of an array satisfy the specified test.
+	 * Returns whether **all** the members of an array satisfy the specified test.
+	 * Returns true for empty Arrays.
 	 * @param callbackfn A function that accepts up to three arguments. The every method calls the callbackfn function for each element in array1 until the callbackfn returns false, or until the end of the array.
 	 */
-	every(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean): boolean;
+	every(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean | undefined): boolean;
 
 	/**
-	 * Determines whether the specified callback function returns true for any element of an array.
+	 * Returns whether the specified callback function returns true for any element of an array.
+	 * Returns false for empty Arrays.
 	 * @param callbackfn A function that accepts up to three arguments. The some method calls the callbackfn function for each element in array1 until the callbackfn returns true, or until the end of the array.
 	 */
-	some(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean): boolean;
+	some(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean | undefined): boolean;
 
 	/**
 	 * Performs the specified action for each element in an array.
@@ -307,16 +325,14 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
 	 */
-	filter(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean): Array<T>;
+	filter(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean | undefined): Array<T>;
 
 	/**
 	 * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 	 * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
-	reduce(
-		callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
-	): T;
+	reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T): T;
 
 	/**
 	 * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
@@ -333,9 +349,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
-	reduceRight(
-		callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
-	): T;
+	reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T): T;
 
 	/**
 	 * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
@@ -365,7 +379,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * immediately returns that element value. Otherwise, find returns undefined.
 	 */
 	find<S extends T>(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => value is S): S | undefined;
-	find(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean): T | undefined;
+	find(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean | undefined): T | undefined;
 
 	/**
 	 * Returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1, indicating no element passed the test.
@@ -373,7 +387,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * order, until it finds one where predicate returns true. If such an element is found, find
 	 * immediately returns the index at which it was found. Otherwise, find returns -1.
 	 */
-	findIndex(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean): number;
+	findIndex(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean | undefined): number;
 
 	/**
 	 * Returns a shallow copy of the array
@@ -492,7 +506,7 @@ interface ArrayConstructor {
 declare const Array: ArrayConstructor;
 
 /** @rbxts array */
-interface TemplateStringsArray extends Array<string> { }
+interface TemplateStringsArray extends Array<string> {}
 
 /**
  * A Map object which cannot be written to. The Map object holds key-value pairs but doesn't remember the original insertion order of the keys (like JS would). Any value (both objects and primitive values) may be used as either a key or a value.
@@ -620,7 +634,7 @@ interface MapConstructor {
 declare var Map: MapConstructor;
 
 /** A Map object with its `__mode` metamethod set to "k" */
-interface WeakMap<K, V> extends Map<K, V> { }
+interface WeakMap<K, V> extends Map<K, V> {}
 
 interface WeakMapConstructor {
 	new <K extends object = object, V = any>(entries?: ReadonlyArray<[K, V]> | null): WeakMap<K, V>;
@@ -722,7 +736,7 @@ interface SetConstructor {
 }
 declare const Set: SetConstructor;
 
-interface WeakSet<T> extends Set<T> { }
+interface WeakSet<T> extends Set<T> {}
 
 interface WeakSetConstructor {
 	new <T extends object = object>(values?: ReadonlyArray<T> | null): WeakSet<T>;
@@ -937,4 +951,4 @@ type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (.
 /**
  * Marker for contextual 'this' type
  */
-interface ThisType<T> { }
+interface ThisType<T> {}

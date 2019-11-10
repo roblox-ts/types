@@ -6,7 +6,7 @@ import { EnumGenerator } from "./class/EnumGenerator";
 import { ReflectionMetadata } from "./class/ReflectionMetadata";
 import { Timer } from "./class/Timer";
 
-const SECURITY_LEVELS = ["None", "PluginSecurity"];
+const SECURITY_LEVELS = ["None", "PluginSecurity"] as const;
 
 const BASE_URL = "https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Client-Watch/roblox/";
 const API_DUMP_URL = BASE_URL + "API-Dump.json";

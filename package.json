@@ -23,20 +23,20 @@
 	"homepage": "https://github.com/roblox-ts/types#readme",
 	"devDependencies": {
 		"@types/fs-extra": "^8.0.1",
-		"@types/jsdom": "^12.2.3",
-		"@types/libxmljs": "^0.18.2",
-		"@types/node-fetch": "^2.3.3",
-		"@types/showdown": "^1.9.2",
+		"@types/jsdom": "^12.2.4",
+		"@types/libxmljs": "^0.18.4",
+		"@types/node-fetch": "^2.5.3",
+		"@types/showdown": "^1.9.3",
 		"axios": "^0.19.0",
 		"breakdance": "^3.0.1",
-		"libxmljs": "^0.19.5",
-		"node-fetch": "^2.5.0",
+		"libxmljs": "^0.19.7",
+		"node-fetch": "^2.6.0",
 		"ts-morph": "^5.0.0",
-		"typescript": "^3.4.5"
+		"typescript": "^3.7.2"
 	},
 	"bundleDependencies": [],
 	"dependencies": {
-		"fs-extra": "^8.0.1"
+		"fs-extra": "^8.1.0"
 	},
 	"keywords": [
 		"types",
