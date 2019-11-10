@@ -2419,6 +2419,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<DataStoreRequestType>
 	}
 	export type DataStoreRequestType = DataStoreRequestType.GetAsync | DataStoreRequestType.SetIncrementAsync | DataStoreRequestType.UpdateAsync | DataStoreRequestType.GetSortedAsync | DataStoreRequestType.SetIncrementSortedAsync | DataStoreRequestType.OnUpdate;
+	export namespace DateTimeKind {
+		export interface Utc {
+			Name: "Utc";
+			Value: 0;
+			EnumType: EnumType<DateTimeKind>;
+		}
+
+		export const Utc: Utc;
+
+		export interface Local {
+			Name: "Local";
+			Value: 1;
+			EnumType: EnumType<DateTimeKind>;
+		}
+
+		export const Local: Local;
+
+		export function GetEnumItems(this: {}): Array<DateTimeKind>
+	}
+	export type DateTimeKind = DateTimeKind.Utc | DateTimeKind.Local;
 	export namespace DevCameraOcclusionMode {
 		export interface Zoom {
 			Name: "Zoom";
@@ -3155,34 +3175,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<EnviromentalPhysicsThrottle>
 	}
 	export type EnviromentalPhysicsThrottle = EnviromentalPhysicsThrottle.DefaultAuto | EnviromentalPhysicsThrottle.Disabled | EnviromentalPhysicsThrottle.Always | EnviromentalPhysicsThrottle.Skip2 | EnviromentalPhysicsThrottle.Skip4 | EnviromentalPhysicsThrottle.Skip8 | EnviromentalPhysicsThrottle.Skip16;
-	export namespace ErrorReporting {
-		export interface DontReport {
-			Name: "DontReport";
-			Value: 0;
-			EnumType: EnumType<ErrorReporting>;
-		}
-
-		export const DontReport: DontReport;
-
-		export interface Prompt {
-			Name: "Prompt";
-			Value: 1;
-			EnumType: EnumType<ErrorReporting>;
-		}
-
-		export const Prompt: Prompt;
-
-		export interface Report {
-			Name: "Report";
-			Value: 2;
-			EnumType: EnumType<ErrorReporting>;
-		}
-
-		export const Report: Report;
-
-		export function GetEnumItems(this: {}): Array<ErrorReporting>
-	}
-	export type ErrorReporting = ErrorReporting.DontReport | ErrorReporting.Prompt | ErrorReporting.Report;
 	export namespace ExplosionType {
 		export interface NoCraters {
 			Name: "NoCraters";
@@ -3200,17 +3192,9 @@ declare namespace Enum {
 
 		export const Craters: Craters;
 
-		export interface CratersAndDebris {
-			Name: "CratersAndDebris";
-			Value: 2;
-			EnumType: EnumType<ExplosionType>;
-		}
-
-		export const CratersAndDebris: CratersAndDebris;
-
 		export function GetEnumItems(this: {}): Array<ExplosionType>
 	}
-	export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters | ExplosionType.CratersAndDebris;
+	export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters;
 	export namespace FillDirection {
 		export interface Horizontal {
 			Name: "Horizontal";
@@ -4855,66 +4839,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<JointCreationMode>
 	}
 	export type JointCreationMode = JointCreationMode.All | JointCreationMode.Surface | JointCreationMode.None;
-	export namespace JointType {
-		export interface None {
-			Name: "None";
-			Value: 28;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const None: None;
-
-		export interface Rotate {
-			Name: "Rotate";
-			Value: 7;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const Rotate: Rotate;
-
-		export interface RotateP {
-			Name: "RotateP";
-			Value: 8;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const RotateP: RotateP;
-
-		export interface RotateV {
-			Name: "RotateV";
-			Value: 9;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const RotateV: RotateV;
-
-		export interface Glue {
-			Name: "Glue";
-			Value: 10;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const Glue: Glue;
-
-		export interface Weld {
-			Name: "Weld";
-			Value: 1;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const Weld: Weld;
-
-		export interface Snap {
-			Name: "Snap";
-			Value: 3;
-			EnumType: EnumType<JointType>;
-		}
-
-		export const Snap: Snap;
-
-		export function GetEnumItems(this: {}): Array<JointType>
-	}
-	export type JointType = JointType.None | JointType.Rotate | JointType.RotateP | JointType.RotateV | JointType.Glue | JointType.Weld | JointType.Snap;
 	export namespace KeyCode {
 		export interface Unknown {
 			Name: "Unknown";
@@ -7663,6 +7587,42 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<MessageType>
 	}
 	export type MessageType = MessageType.MessageOutput | MessageType.MessageInfo | MessageType.MessageWarning | MessageType.MessageError;
+	export namespace ModifierKey {
+		export interface Alt {
+			Name: "Alt";
+			Value: 2;
+			EnumType: EnumType<ModifierKey>;
+		}
+
+		export const Alt: Alt;
+
+		export interface Ctrl {
+			Name: "Ctrl";
+			Value: 1;
+			EnumType: EnumType<ModifierKey>;
+		}
+
+		export const Ctrl: Ctrl;
+
+		export interface Meta {
+			Name: "Meta";
+			Value: 3;
+			EnumType: EnumType<ModifierKey>;
+		}
+
+		export const Meta: Meta;
+
+		export interface Shift {
+			Name: "Shift";
+			Value: 0;
+			EnumType: EnumType<ModifierKey>;
+		}
+
+		export const Shift: Shift;
+
+		export function GetEnumItems(this: {}): Array<ModifierKey>
+	}
+	export type ModifierKey = ModifierKey.Alt | ModifierKey.Ctrl | ModifierKey.Meta | ModifierKey.Shift;
 	export namespace MouseBehavior {
 		export interface Default {
 			Name: "Default";
@@ -8779,6 +8739,58 @@ declare namespace Enum {
 		export function GetEnumItems(this: {}): Array<RenderingTestComparisonMethod>
 	}
 	export type RenderingTestComparisonMethod = RenderingTestComparisonMethod.psnr | RenderingTestComparisonMethod.diff;
+	export namespace ReturnKeyType {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<ReturnKeyType>;
+		}
+
+		export const Default: Default;
+
+		export interface Done {
+			Name: "Done";
+			Value: 1;
+			EnumType: EnumType<ReturnKeyType>;
+		}
+
+		export const Done: Done;
+
+		export interface Go {
+			Name: "Go";
+			Value: 2;
+			EnumType: EnumType<ReturnKeyType>;
+		}
+
+		export const Go: Go;
+
+		export interface Next {
+			Name: "Next";
+			Value: 3;
+			EnumType: EnumType<ReturnKeyType>;
+		}
+
+		export const Next: Next;
+
+		export interface Search {
+			Name: "Search";
+			Value: 4;
+			EnumType: EnumType<ReturnKeyType>;
+		}
+
+		export const Search: Search;
+
+		export interface Send {
+			Name: "Send";
+			Value: 5;
+			EnumType: EnumType<ReturnKeyType>;
+		}
+
+		export const Send: Send;
+
+		export function GetEnumItems(this: {}): Array<ReturnKeyType>
+	}
+	export type ReturnKeyType = ReturnKeyType.Default | ReturnKeyType.Done | ReturnKeyType.Go | ReturnKeyType.Next | ReturnKeyType.Search | ReturnKeyType.Send;
 	export namespace ReverbType {
 		export interface NoReverb {
 			Name: "NoReverb";
@@ -9792,17 +9804,17 @@ declare namespace Enum {
 
 		export const UserPlugin: UserPlugin;
 
-		export interface Null {
-			Name: "Null";
+		export interface None {
+			Name: "None";
 			Value: 6;
 			EnumType: EnumType<StudioDataModelType>;
 		}
 
-		export const Null: Null;
+		export const None: None;
 
 		export function GetEnumItems(this: {}): Array<StudioDataModelType>
 	}
-	export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.RobloxPlugin | StudioDataModelType.UserPlugin | StudioDataModelType.Null;
+	export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.RobloxPlugin | StudioDataModelType.UserPlugin | StudioDataModelType.None;
 	export namespace StudioStyleGuideColor {
 		export interface MainBackground {
 			Name: "MainBackground";
@@ -10820,13 +10832,13 @@ declare namespace Enum {
 	}
 	export type TableMajorAxis = TableMajorAxis.RowMajor | TableMajorAxis.ColumnMajor;
 	export namespace Technology {
-		export interface Legacy {
-			Name: "Legacy";
-			Value: 0;
+		export interface Compatibility {
+			Name: "Compatibility";
+			Value: 2;
 			EnumType: EnumType<Technology>;
 		}
 
-		export const Legacy: Legacy;
+		export const Compatibility: Compatibility;
 
 		export interface Voxel {
 			Name: "Voxel";
@@ -10836,14 +10848,6 @@ declare namespace Enum {
 
 		export const Voxel: Voxel;
 
-		export interface Compatibility {
-			Name: "Compatibility";
-			Value: 2;
-			EnumType: EnumType<Technology>;
-		}
-
-		export const Compatibility: Compatibility;
-
 		export interface ShadowMap {
 			Name: "ShadowMap";
 			Value: 3;
@@ -10852,9 +10856,17 @@ declare namespace Enum {
 
 		export const ShadowMap: ShadowMap;
 
+		export interface Legacy {
+			Name: "Legacy";
+			Value: 0;
+			EnumType: EnumType<Technology>;
+		}
+
+		export const Legacy: Legacy;
+
 		export function GetEnumItems(this: {}): Array<Technology>
 	}
-	export type Technology = Technology.Legacy | Technology.Voxel | Technology.Compatibility | Technology.ShadowMap;
+	export type Technology = Technology.Compatibility | Technology.Voxel | Technology.ShadowMap | Technology.Legacy;
 	export namespace TeleportResult {
 		export interface Success {
 			Name: "Success";
@@ -11056,9 +11068,17 @@ declare namespace Enum {
 
 		export const Phone: Phone;
 
+		export interface Password {
+			Name: "Password";
+			Value: 5;
+			EnumType: EnumType<TextInputType>;
+		}
+
+		export const Password: Password;
+
 		export function GetEnumItems(this: {}): Array<TextInputType>
 	}
-	export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone;
+	export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone | TextInputType.Password;
 	export namespace TextTruncate {
 		export interface None {
 			Name: "None";
@@ -12250,6 +12270,7 @@ declare type CastsToEnum<T extends
 	| Enum.CurrencyType
 	| Enum.CustomCameraMode
 	| Enum.DataStoreRequestType
+	| Enum.DateTimeKind
 	| Enum.DevCameraOcclusionMode
 	| Enum.DevComputerCameraMovementMode
 	| Enum.DevComputerMovementMode
@@ -12266,7 +12287,6 @@ declare type CastsToEnum<T extends
 	| Enum.EasingStyle
 	| Enum.ElasticBehavior
 	| Enum.EnviromentalPhysicsThrottle
-	| Enum.ErrorReporting
 	| Enum.ExplosionType
 	| Enum.FillDirection
 	| Enum.FilterResult
@@ -12301,7 +12321,6 @@ declare type CastsToEnum<T extends
 	| Enum.InlineAlignment
 	| Enum.InputType
 	| Enum.JointCreationMode
-	| Enum.JointType
 	| Enum.KeyCode
 	| Enum.KeywordFilterType
 	| Enum.Language
@@ -12315,6 +12334,7 @@ declare type CastsToEnum<T extends
 	| Enum.MembershipType
 	| Enum.MeshType
 	| Enum.MessageType
+	| Enum.ModifierKey
 	| Enum.MouseBehavior
 	| Enum.MoveState
 	| Enum.NameOcclusion
@@ -12340,6 +12360,7 @@ declare type CastsToEnum<T extends
 	| Enum.RenderFidelity
 	| Enum.RenderPriority
 	| Enum.RenderingTestComparisonMethod
+	| Enum.ReturnKeyType
 	| Enum.ReverbType
 	| Enum.RibbonTool
 	| Enum.RollOffMode

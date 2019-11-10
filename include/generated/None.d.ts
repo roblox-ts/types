@@ -73,6 +73,7 @@ interface Services {
 	Players: Players;
 	PluginGuiService: PluginGuiService;
 	PointsService: PointsService;
+	PolicyService: PolicyService;
 	RbxAnalyticsService: RbxAnalyticsService;
 	RenderSettings: RenderSettings;
 	ReplicatedFirst: ReplicatedFirst;
@@ -105,6 +106,7 @@ interface Services {
 	TimerService: TimerService;
 	TouchInputService: TouchInputService;
 	TweenService: TweenService;
+	UGCValidationService: UGCValidationService;
 	UserGameSettings: UserGameSettings;
 	UserInputService: UserInputService;
 	VRService: VRService;
@@ -366,11 +368,11 @@ interface Instances extends Services, CreatableInstances {
 	LuaSourceContainer: LuaSourceContainer;
 	BaseScript: BaseScript;
 	CoreScript: CoreScript;
-	MDIInstance: MDIInstance;
 	MemStorageConnection: MemStorageConnection;
 	Mouse: Mouse;
 	PlayerMouse: PlayerMouse;
 	PluginMouse: PluginMouse;
+	MultipleDocumentInterfaceInstance: MultipleDocumentInterfaceInstance;
 	NetworkMarker: NetworkMarker;
 	NetworkPeer: NetworkPeer;
 	NetworkReplicator: NetworkReplicator;
@@ -438,7 +440,7 @@ interface Instances extends Services, CreatableInstances {
  */
 interface Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Instance" | "ABTestService" | "Accoutrement" | "AdService" | "AdvancedDragger" | "AnalyticsService" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AssetService" | "Attachment" | "Backpack" | "BackpackItem" | "BadgeService" | "BasePlayerGui" | "Beam" | "BindableEvent" | "BindableFunction" | "BodyMover" | "BrowserService" | "CacheableContentProvider" | "Camera" | "ChangeHistoryService" | "CharacterAppearance" | "Chat" | "ClickDetector" | "ClusterPacketCache" | "CollectionService" | "Configuration" | "Constraint" | "ContentProvider" | "ContextActionService" | "Controller" | "ControllerService" | "CookiesService" | "CorePackages" | "CoreScriptSyncService" | "CustomEvent" | "CustomEventReceiver" | "DataModelMesh" | "DataModelSession" | "DataStoreService" | "Debris" | "DebugSettings" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "Dialog" | "DialogChoice" | "DraftsService" | "Dragger" | "Explosion" | "FaceInstance" | "Feature" | "File" | "Fire" | "FlagStandService" | "FlyweightService" | "Folder" | "ForceField" | "FriendService" | "FunctionalTest" | "GamePassService" | "GameSettings" | "GamepadService" | "Geometry" | "GlobalDataStore" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuiBase" | "GuiService" | "GuidRegistryService" | "HapticService" | "Hopper" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidDescription" | "InputObject" | "InsertService" | "JointInstance" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "Light" | "Lighting" | "LocalStorageService" | "LocalizationService" | "LocalizationTable" | "LogService" | "LoginService" | "LuaSettings" | "LuaSourceContainer" | "LuaWebService" | "MDIInstance" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "Message" | "MessagingService" | "Mouse" | "MouseService" | "NetworkMarker" | "NetworkPeer" | "NetworkReplicator" | "NetworkSettings" | "NoCollisionConstraint" | "NotificationService" | "PVInstance" | "PackageLink" | "PackageService" | "Pages" | "PartOperationAsset" | "ParticleEmitter" | "Path" | "PathfindingService" | "PhysicsPacketCache" | "PhysicsService" | "PhysicsSettings" | "Player" | "PlayerScripts" | "Players" | "Plugin" | "PluginAction" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginMenu" | "PluginToolbar" | "PluginToolbarButton" | "PointsService" | "Pose" | "PostEffect" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClasses" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderSettings" | "RenderingTest" | "ReplicatedFirst" | "ReplicatedStorage" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RunService" | "RuntimeScriptService" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "Selection" | "ServerScriptService" | "ServerStorage" | "ServiceProvider" | "Sky" | "Smoke" | "SocialService" | "Sound" | "SoundEffect" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "StandalonePluginScripts" | "StarterGear" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "StatsItem" | "StopWatchReporter" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "TerrainRegion" | "TestService" | "TextFilterResult" | "TextService" | "ThirdPartyUserService" | "TimerService" | "TouchInputService" | "TouchTransmitter" | "Trail" | "Translator" | "TweenBase" | "TweenService" | "UIBase" | "UserGameSettings" | "UserInputService" | "VRService" | "ValueBase" | "VersionControlService" | "VirtualInputManager" | "VirtualUser" | "Visit" | "WeldConstraint" | "Accessory" | "Hat" | "HopperBin" | "Tool" | "Flag" | "CoreGui" | "PlayerGui" | "StarterGui" | "BodyAngularVelocity" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "RocketPropulsion" | "MeshContentProvider" | "SolidModelContentProvider" | "BodyColors" | "CharacterMesh" | "Clothing" | "ShirtGraphic" | "Skin" | "Pants" | "Shirt" | "AlignOrientation" | "AlignPosition" | "AngularVelocity" | "BallSocketConstraint" | "HingeConstraint" | "LineForce" | "RodConstraint" | "RopeConstraint" | "SlidingBallConstraint" | "SpringConstraint" | "Torque" | "VectorForce" | "CylindricalConstraint" | "PrismaticConstraint" | "HumanoidController" | "SkateboardController" | "VehicleController" | "BevelMesh" | "FileMesh" | "BlockMesh" | "CylinderMesh" | "SpecialMesh" | "Decal" | "Texture" | "Hole" | "MotorFeature" | "CSGDictionaryService" | "NonReplicatedCSGDictionaryService" | "OrderedDataStore" | "GuiBase2d" | "GuiBase3d" | "GuiObject" | "LayerCollector" | "Frame" | "GuiButton" | "GuiLabel" | "ScrollingFrame" | "TextBox" | "ViewportFrame" | "ImageButton" | "TextButton" | "ImageLabel" | "TextLabel" | "BillboardGui" | "PluginGui" | "ScreenGui" | "SurfaceGui" | "DockWidgetPluginGui" | "QWidgetPluginGui" | "GuiMain" | "FloorWire" | "PVAdornment" | "PartAdornment" | "SelectionLasso" | "HandleAdornment" | "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment" | "HandlesBase" | "SurfaceSelection" | "ArcHandles" | "Handles" | "SelectionPartLasso" | "SelectionPointLasso" | "DynamicRotate" | "Glue" | "ManualSurfaceJointInstance" | "Motor" | "Rotate" | "Snap" | "VelocityMotor" | "Weld" | "RotateP" | "RotateV" | "ManualGlue" | "ManualWeld" | "Motor6D" | "PointLight" | "SpotLight" | "SurfaceLight" | "AppStorageService" | "UserStorageService" | "BaseScript" | "ModuleScript" | "CoreScript" | "Script" | "LocalScript" | "Hint" | "PlayerMouse" | "PluginMouse" | "NetworkClient" | "NetworkServer" | "ClientReplicator" | "ServerReplicator" | "BasePart" | "Model" | "CornerWedgePart" | "FormFactorPart" | "Terrain" | "TriangleMeshPart" | "TrussPart" | "VehicleSeat" | "Part" | "WedgePart" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation" | "Status" | "Workspace" | "DataStorePages" | "FriendPages" | "InventoryPages" | "StandardPages" | "EmotesPages" | "BloomEffect" | "BlurEffect" | "ColorCorrectionEffect" | "SunRaysEffect" | "ReflectionMetadataClass" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataMember" | "DataModel" | "GenericSettings" | "AnalysticsSettings" | "GlobalSettings" | "UserSettings" | "ChorusSoundEffect" | "CompressorSoundEffect" | "DistortionSoundEffect" | "EchoSoundEffect" | "EqualizerSoundEffect" | "FlangeSoundEffect" | "PitchShiftSoundEffect" | "ReverbSoundEffect" | "TremoloSoundEffect" | "StarterCharacterScripts" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "TotalCountTimeIntervalItem" | "Tween" | "UIComponent" | "UIConstraint" | "UILayout" | "UIPadding" | "UIScale" | "UIAspectRatioConstraint" | "UISizeConstraint" | "UITextSizeConstraint" | "UIGridStyleLayout" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPageLayout" | "UITableLayout" | "BinaryStringValue" | "BoolValue" | "BrickColorValue" | "CFrameValue" | "Color3Value" | "DoubleConstrainedValue" | "IntConstrainedValue" | "IntValue" | "NumberValue" | "ObjectValue" | "RayValue" | "StringValue" | "Vector3Value";
+	readonly ClassName: "Instance" | "ABTestService" | "Accoutrement" | "AdService" | "AdvancedDragger" | "AnalyticsService" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AssetService" | "Attachment" | "Backpack" | "BackpackItem" | "BadgeService" | "BasePlayerGui" | "Beam" | "BindableEvent" | "BindableFunction" | "BodyMover" | "BrowserService" | "CacheableContentProvider" | "Camera" | "ChangeHistoryService" | "CharacterAppearance" | "Chat" | "ClickDetector" | "ClusterPacketCache" | "CollectionService" | "Configuration" | "Constraint" | "ContentProvider" | "ContextActionService" | "Controller" | "ControllerService" | "CookiesService" | "CorePackages" | "CoreScriptSyncService" | "CustomEvent" | "CustomEventReceiver" | "DataModelMesh" | "DataModelSession" | "DataStoreService" | "Debris" | "DebugSettings" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "Dialog" | "DialogChoice" | "DraftsService" | "Dragger" | "Explosion" | "FaceInstance" | "Feature" | "File" | "Fire" | "FlagStandService" | "FlyweightService" | "Folder" | "ForceField" | "FriendService" | "FunctionalTest" | "GamePassService" | "GameSettings" | "GamepadService" | "Geometry" | "GlobalDataStore" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuiBase" | "GuiService" | "GuidRegistryService" | "HapticService" | "Hopper" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidDescription" | "InputObject" | "InsertService" | "JointInstance" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "Light" | "Lighting" | "LocalStorageService" | "LocalizationService" | "LocalizationTable" | "LogService" | "LoginService" | "LuaSettings" | "LuaSourceContainer" | "LuaWebService" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "Message" | "MessagingService" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NetworkMarker" | "NetworkPeer" | "NetworkReplicator" | "NetworkSettings" | "NoCollisionConstraint" | "NotificationService" | "PVInstance" | "PackageLink" | "PackageService" | "Pages" | "PartOperationAsset" | "ParticleEmitter" | "Path" | "PathfindingService" | "PhysicsPacketCache" | "PhysicsService" | "PhysicsSettings" | "Player" | "PlayerScripts" | "Players" | "Plugin" | "PluginAction" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginMenu" | "PluginToolbar" | "PluginToolbarButton" | "PointsService" | "PolicyService" | "Pose" | "PostEffect" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClasses" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderSettings" | "RenderingTest" | "ReplicatedFirst" | "ReplicatedStorage" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RunService" | "RuntimeScriptService" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "Selection" | "ServerScriptService" | "ServerStorage" | "ServiceProvider" | "Sky" | "Smoke" | "SocialService" | "Sound" | "SoundEffect" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "StandalonePluginScripts" | "StarterGear" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "StatsItem" | "StopWatchReporter" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "TerrainRegion" | "TestService" | "TextFilterResult" | "TextService" | "ThirdPartyUserService" | "TimerService" | "TouchInputService" | "TouchTransmitter" | "Trail" | "Translator" | "TweenBase" | "TweenService" | "UGCValidationService" | "UIBase" | "UserGameSettings" | "UserInputService" | "VRService" | "ValueBase" | "VersionControlService" | "VirtualInputManager" | "VirtualUser" | "Visit" | "WeldConstraint" | "Accessory" | "Hat" | "HopperBin" | "Tool" | "Flag" | "CoreGui" | "PlayerGui" | "StarterGui" | "BodyAngularVelocity" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "RocketPropulsion" | "MeshContentProvider" | "SolidModelContentProvider" | "BodyColors" | "CharacterMesh" | "Clothing" | "ShirtGraphic" | "Skin" | "Pants" | "Shirt" | "AlignOrientation" | "AlignPosition" | "AngularVelocity" | "BallSocketConstraint" | "HingeConstraint" | "LineForce" | "RodConstraint" | "RopeConstraint" | "SlidingBallConstraint" | "SpringConstraint" | "Torque" | "VectorForce" | "CylindricalConstraint" | "PrismaticConstraint" | "HumanoidController" | "SkateboardController" | "VehicleController" | "BevelMesh" | "FileMesh" | "BlockMesh" | "CylinderMesh" | "SpecialMesh" | "Decal" | "Texture" | "Hole" | "MotorFeature" | "CSGDictionaryService" | "NonReplicatedCSGDictionaryService" | "OrderedDataStore" | "GuiBase2d" | "GuiBase3d" | "GuiObject" | "LayerCollector" | "Frame" | "GuiButton" | "GuiLabel" | "ScrollingFrame" | "TextBox" | "ViewportFrame" | "ImageButton" | "TextButton" | "ImageLabel" | "TextLabel" | "BillboardGui" | "PluginGui" | "ScreenGui" | "SurfaceGui" | "DockWidgetPluginGui" | "QWidgetPluginGui" | "GuiMain" | "FloorWire" | "PVAdornment" | "PartAdornment" | "SelectionLasso" | "HandleAdornment" | "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment" | "HandlesBase" | "SurfaceSelection" | "ArcHandles" | "Handles" | "SelectionPartLasso" | "SelectionPointLasso" | "DynamicRotate" | "Glue" | "ManualSurfaceJointInstance" | "Motor" | "Rotate" | "Snap" | "VelocityMotor" | "Weld" | "RotateP" | "RotateV" | "ManualGlue" | "ManualWeld" | "Motor6D" | "PointLight" | "SpotLight" | "SurfaceLight" | "AppStorageService" | "UserStorageService" | "BaseScript" | "ModuleScript" | "CoreScript" | "Script" | "LocalScript" | "Hint" | "PlayerMouse" | "PluginMouse" | "NetworkClient" | "NetworkServer" | "ClientReplicator" | "ServerReplicator" | "BasePart" | "Model" | "CornerWedgePart" | "FormFactorPart" | "Terrain" | "TriangleMeshPart" | "TrussPart" | "VehicleSeat" | "Part" | "WedgePart" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation" | "Status" | "Workspace" | "DataStorePages" | "FriendPages" | "InventoryPages" | "StandardPages" | "EmotesPages" | "BloomEffect" | "BlurEffect" | "ColorCorrectionEffect" | "SunRaysEffect" | "ReflectionMetadataClass" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataMember" | "DataModel" | "GenericSettings" | "AnalysticsSettings" | "GlobalSettings" | "UserSettings" | "ChorusSoundEffect" | "CompressorSoundEffect" | "DistortionSoundEffect" | "EchoSoundEffect" | "EqualizerSoundEffect" | "FlangeSoundEffect" | "PitchShiftSoundEffect" | "ReverbSoundEffect" | "TremoloSoundEffect" | "StarterCharacterScripts" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "TotalCountTimeIntervalItem" | "Tween" | "UIComponent" | "UIConstraint" | "UILayout" | "UIPadding" | "UIScale" | "UIAspectRatioConstraint" | "UISizeConstraint" | "UITextSizeConstraint" | "UIGridStyleLayout" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPageLayout" | "UITableLayout" | "BinaryStringValue" | "BoolValue" | "BrickColorValue" | "CFrameValue" | "Color3Value" | "DoubleConstrainedValue" | "IntConstrainedValue" | "IntValue" | "NumberValue" | "ObjectValue" | "RayValue" | "StringValue" | "Vector3Value";
 	/** Determines if an `Instance` can be cloned using [Instance.Clone](https://developer.roblox.com/api-reference/function/Instance/Clone) or saved to file.
 	 * 
 	 * This property determines whether an object should be included when the game is published or saved, or when [Instance.Clone](https://developer.roblox.com/api-reference/function/Instance/Clone) is called on one of the objects ancestors. Calling Clone directly on an object will return nil if the cloned object is not archivable. Copying an object in Studio (using the 'Duplicate' or 'Copy' options) will ignore the Archivable property and set Archivable to true for the copy.
@@ -708,6 +710,9 @@ interface Instance {
 	 */
 	FindFirstChildWhichIsA<T extends keyof Instances>(className: T, recursive?: boolean): Instances[T] | undefined;
 	FindFirstChildWhichIsA(className: string, recursive?: boolean): Instance | undefined;
+	GetAttribute(attribute: string): unknown;
+	GetAttributeChangedSignal(attribute: string): RBXScriptSignal;
+	GetAttributes(): object;
 	/** Returns an array (a numerically indexed table) containing all of the `Instance`'s direct children, or every `Instance` whose [Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) is equal to the object. The array can be iterated upon using either a numeric or generic for-loop:
 	 * 
 	 * ```lua
@@ -823,6 +828,7 @@ interface Instance {
 	 * @returns True if the `Instance` is a descendant of the given ancestor.
 	 */
 	IsDescendantOf(ancestor: Instance): boolean;
+	SetAttribute(attribute: string, value?: any): void;
 	/** Returns the child of the `Instance` with the given name. If the child does not exist, it will yield the current thread until it does.
 	 * 
 	 * If the *timeOut* parameter is specified, this function will return nil and time out after *timeOut* seconds elapsing without the child being found.
@@ -887,6 +893,7 @@ interface Instance {
 	 * 
 	 */
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance) => void>;
+	readonly AttributeChanged: RBXScriptSignal<(attribute: string) => void>;
 	/** Fired after a property changes value.  The property argument is the name of the property */
 	Changed: unknown;
 	/** Fires when an object is parented to this `Instance`.
@@ -1555,6 +1562,7 @@ interface AnimationTrack extends Instance {
 interface Animator extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Animator";
+	GetPlayingAnimationTracks(): unknown;
 	/** Loads an `Animation` onto an `Animator`, returning an `AnimationTrack`. Used to load animations on locally controlled models (such as player characters) from the server.
 	 * 
 	 * A `Model` is considered locally controlled if it has network ownership of the model, clients have network ownership of the local character model by default and other models can be assigned to a different client using [BasePart.SetNetworkOwner](https://developer.roblox.com/api-reference/function/BasePart/SetNetworkOwner).
@@ -1566,6 +1574,7 @@ interface Animator extends Instance {
 	 * @returns The `AnimationTrack` created.
 	 */
 	LoadAnimation(animation: Animation): AnimationTrack;
+	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: Instance) => void>;
 }
 
 /** The AssetService is a non-replicated service that handles asset related queries to the Roblox web API. Eventually, this will house all asset related queries for Roblox objects stored in the web. One should mind the [limitations](https://developer.roblox.com/search#stq=Multi%20Place%20Games) this API has.
@@ -5328,22 +5337,6 @@ interface DebugSettings extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly DataModel: number;
-	/** The action Roblox should take when reporting an error. */
-	ErrorReporting: Enum.ErrorReporting;
-	/** The GfxCard currently installed into your machine.
-	 * 	
-	 * The GfxCard currently installed into your machine.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The GfxCard currently installed into your machine.
-	 * 	
-	 * The GfxCard currently installed into your machine.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly GfxCard: string;
 	/** The number of instances active in the simulation.
 	 * 	
 	 * The number of instances active in the simulation.
@@ -5376,62 +5369,6 @@ interface DebugSettings extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly JobCount: number;
-	/** Whether your OS is a 64 bit OS or a 32 bit one.
-	 * 	
-	 * Whether your OS is a 64 bit OS or a 32 bit one.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	Whether your OS is a 64 bit OS or a 32 bit one.
-	 * 	
-	 * Whether your OS is a 64 bit OS or a 32 bit one.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly OsIs64Bit: boolean;
-	/** A string representing the type of Operating System Platform your machine is on.
-	 * 	
-	 * A string representing the type of Operating System Platform your machine is on.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	A string representing the type of Operating System Platform your machine is on.
-	 * 	
-	 * A string representing the type of Operating System Platform your machine is on.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly OsPlatform: string;
-	/** The PlatformId of your Operating System.
-	 * 	
-	 * The PlatformId of your Operating System.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The PlatformId of your Operating System.
-	 * 	
-	 * The PlatformId of your Operating System.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly OsPlatformId: number;
-	/** The current version of your Operating System.
-	 * 	
-	 * The current version of your Operating System.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The current version of your Operating System.
-	 * 	
-	 * The current version of your Operating System.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly OsVer: string;
 	/** The number of players currently in the active game-instance.
 	 * 	
 	 * The number of players currently in the active game-instance.
@@ -5448,28 +5385,6 @@ interface DebugSettings extends Instance {
 	readonly PlayerCount: number;
 	/** Whether or not sound warnings should be reported. */
 	ReportSoundWarnings: boolean;
-	/** The purpose of this property is unknown.
-	 * 
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
-	 * 	
-	 * The purpose of this property is unknown.
-	 * 
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The purpose of this property is unknown.
-	 * 
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
-	 * 	
-	 * The purpose of this property is unknown.
-	 * 
-	 * Its value is always ["?"](https://developer.roblox.com/articles/String).
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly RobloxProductName: string;
 	/** The current client version of Roblox. Can also be retrieved by using the version() function.
 	 * 	
 	 * The current client version of Roblox. Can also be retrieved by using the version() function.
@@ -5484,50 +5399,8 @@ interface DebugSettings extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly RobloxVersion: string;
-	/** The type of SIMD instruction set used by your machine.
-	 * 	
-	 * The type of SIMD instruction set used by your machine.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The type of SIMD instruction set used by your machine.
-	 * 	
-	 * The type of SIMD instruction set used by your machine.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly SIMD: string;
-	/** The name of your System's Model.
-	 * 	
-	 * The name of your System's Model.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The name of your System's Model.
-	 * 	
-	 * The name of your System's Model.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly SystemProductName: string;
 	/** Sets the internal sampling method used to measure elapsed time with consistency across platforms. */
 	TickCountPreciseOverride: Enum.TickCountSampleMethod;
-	/** The total amount of video memory on your machine, in bytes as a negative integer.
-	 * 	
-	 * The total amount of video memory on your machine, in bytes as a negative integer.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The total amount of video memory on your machine, in bytes as a negative integer.
-	 * 	
-	 * The total amount of video memory on your machine, in bytes as a negative integer.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly VideoMemory: number;
 }
 
 /** Represents a breakpoint in Roblox's Lua Debugger.
@@ -5605,8 +5478,6 @@ interface DebuggerWatch extends Instance {
 	readonly ClassName: "DebuggerWatch";
 	/** The expression set for the DebuggerWatch. */
 	Expression: string;
-	/** Checks the syntax of the DebuggerWatch. */
-	CheckSyntax(): void;
 }
 
 /** The Dialog object allows users to create non-player characters (NPCs) that players can talk to using a list of choices. The Dialog object can be inserted into a part such as a Humanoid's head, and then a player will see a speech bubble above the part that they can click on to start a conversation. The creator of a place can choose what choices the player can say by inserting `DialogChoice` objects into the dialog.
@@ -6398,16 +6269,6 @@ interface Geometry extends Instance {
 interface GlobalDataStore extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "GlobalDataStore" | "OrderedDataStore";
-	/** This function sets **callback** as the function to be executed any time the value associated with the [data store's](https://developer.roblox.com/api-reference/class/GlobalDataStore) key changes. For instance, the connected function will execute when functions like [IncrementAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/IncrementAsync), [SetAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/SetAsync), and [UpdateAsync()](https://developer.roblox.com/api-reference/function/GlobalDataStore/UpdateAsync) change the key's value in the data store.
-	 * 
-	 * See the [Data Stores](https://developer.roblox.com/search#stq=Data%20store) article for an in-depth guide on data structure, management, error handling, etc.
-	 * 
-	 * It's recommended that you **disconnect** the connection when the subscription to the key is no longer needed.
-	 * @param key The key identifying the entry being retrieved from the data store
-	 * @param callback The function to be executed any time the value associated with **key** is changed
-	 * @returns The connection to the key being tracked for updates
-	 */
-	OnUpdate<T = unknown>(key: string, callback: (value: T) => void): RBXScriptConnection;
 	/** This function returns the value of the entry in the `GlobalDataStore` with the given key. If the key does not exist, returns `nil`. This function caches for about 4 seconds, so you cannot be sure that it returns the current value saved on the Roblox servers.
 	 * 
 	 * If this function throws an error, the [error message](https://developer.roblox.com/search#stq=Datastore%20Errors) will describe the problem. Note that there are also [limits](https://developer.roblox.com/search#stq=Datastore%20Errors) that apply to this function.
@@ -8017,6 +7878,7 @@ interface TextBox extends GuiObject {
 	 * This event will only fire when used in a `/LocalScript`.
 	 */
 	readonly Focused: RBXScriptSignal<() => void>;
+	readonly ReturnPressedFromOnScreenKeyboard: RBXScriptSignal<() => void>;
 }
 
 /** A [GUI](https://developer.roblox.com/api-reference/class/GuiObject) that can display children 3D objects inside its viewport. Children objects will not be rendered in the main scene. Background color is transparent.
@@ -10451,6 +10313,8 @@ interface InputObject extends Instance {
 	 *  - [InputObject.UserInputState](https://developer.roblox.com/api-reference/property/InputObject/UserInputState)
 	 */
 	UserInputType: Enum.UserInputType;
+	/** [NO DOCUMENTATION] */
+	IsModifierKeyDown(modifierKey: CastsToEnum<Enum.ModifierKey>): boolean;
 }
 
 /** Used to insert assets from Roblox into the current game. */
@@ -10601,10 +10465,11 @@ interface JointInstance extends Instance {
 	C0: CFrame;
 	/** Is subtracted from the [JointInstance.C0](https://developer.roblox.com/api-reference/property/JointInstance/C0) property to create an offset point for [JointInstance.Part1](https://developer.roblox.com/api-reference/property/JointInstance/Part1). */
 	C1: CFrame;
+	Enabled: boolean;
 	/** The first `BasePart` that the joint connects. */
-	Part0: BasePart | undefined;
+	Part0?: BasePart;
 	/** The second `BasePart` that the joint connects. */
-	Part1: BasePart | undefined;
+	Part1?: BasePart;
 }
 
 /** The base class for classic motor joints. */
@@ -10873,7 +10738,7 @@ interface Keyframe extends Instance {
 	 * @param pose The `Pose` to be added.
 	 */
 	AddPose(pose: Pose): void;
-	GetMarkers(): Array<Instance>;
+	GetMarkers(): Array<KeyframeMarker>;
 	/** This function returns an array containing all [Poses](https://developer.roblox.com/api-reference/class/Pose) that have been added to a `Keyframe`.
 	 * @returns An array of `Pose`s.
 	 */
@@ -11441,6 +11306,10 @@ interface Lighting extends Instance {
 	 * [1]: https://developer.roblox.com/assets/blt6316b01e497fa7aa/ColorShift.png
 	 */
 	ColorShift_Top: Color3;
+	/** Sets scale [0-1] of Diffuse Environment Lighting to add to Ambient. */
+	EnvironmentDiffuseScale: number;
+	/** Sets scale [0-1] of Specular Environment Lighting to add to Ambient. */
+	EnvironmentSpecularScale: number;
 	/** Exposure compensation amount. Applies a bias to the exposure level prior to the tonemap step. +1 indicates twice as much exposure and -1 means half as much exposure. */
 	ExposureCompensation: number;
 	/** A [DataType.Color3](https://developer.roblox.com/search#stq=Color3) value giving the hue of `Lighting`'s fog.
@@ -11772,6 +11641,7 @@ interface LocalizationService extends Instance {
 	 * @returns The `Translator` instance for the specified locale
 	 */
 	GetTranslatorForPlayer(player: Player): Translator;
+	GetCountryRegionForPlayerAsync(player: Instance): string;
 	/** This function takes a language code as an argument and yields until the cloud localization data for that locale has been loaded, and then returns a `Translator` object which can be used to perform translations for that locale if any are available.
 	 * 
 	 * This function can error and thus should be wrapped in a [pcall](https://developer.roblox.com/search#stq=Built-in%20Functions%20&%20Variables%20—%20Lua).
@@ -12032,11 +11902,6 @@ interface LuaWebService extends Instance {
 	readonly ClassName: "LuaWebService";
 }
 
-interface MDIInstance extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "MDIInstance";
-}
-
 /** MarketplaceService is the game service that is responsible for in-game transactions.
  * 
  * The most notable functions are [PromptProductPurchase](https://developer.roblox.com/api-reference/function/MarketplaceService/PromptProductPurchase) and [PromptPurchase](https://developer.roblox.com/api-reference/function/MarketplaceService/PromptPurchase), as well as the callback [ProcessReceipt](https://developer.roblox.com/api-reference/callback/MarketplaceService/ProcessReceipt) which must be well defined so that transactions do not fail.
@@ -12240,8 +12105,12 @@ interface MarketplaceService extends Instance {
 	 * [1]: https://developer.roblox.com/assets/5c3f7bb9aae307c07f2f485f/PromptProductPurchase-confirm.png
 	 */
 	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
-	readonly PromptSubscriptionCancellationFinished: RBXScriptSignal<(player: Instance, subscriptionId: number, wasCanceled: boolean) => void>;
-	readonly PromptSubscriptionPurchaseFinished: RBXScriptSignal<(player: Instance, subscriptionId: number, wasPurchased: boolean) => void>;
+	readonly PromptSubscriptionCancellationFinished: RBXScriptSignal<
+		(player: Player, subscriptionId: number, wasCanceled: boolean) => void
+	>;
+	readonly PromptSubscriptionPurchaseFinished: RBXScriptSignal<
+		(player: Player, subscriptionId: number, wasPurchased: boolean) => void
+	>;
 	/** After a player makes a purchase through a [PromptProductPurchase()](https://developer.roblox.com/api-reference/function/MarketplaceService/PromptProductPurchase) dialog, this callback is called multiple times until it returns `Enum.ProductPurchaseDecision.PurchaseGranted`. For example, the function is called again for a product when the player joins the game&nbsp;&mdash; or even after they have bought something else&nbsp;&mdash; **unless** you return `Enum.ProductPurchaseDecision.PurchaseGranted`.
 	 * 
 	 * It's important to carefully examine the information passed to the callback via the **receipt info table** and properly process the receipt. See the code sample below for a model of how to create a receipt handling callback.
@@ -13057,6 +12926,11 @@ interface PluginMouse extends Mouse {
 interface MouseService extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "MouseService";
+}
+
+interface MultipleDocumentInterfaceInstance extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "MultipleDocumentInterfaceInstance";
 }
 
 /** The NetworkMarker is used to tell the client when the server has finished loading the world for the client. */
@@ -15166,7 +15040,11 @@ interface Workspace extends Model {
 	 * @param maxParts The maximum amount of `BasePart`s to be returned.
 	 * @returns An array of `BasePart`s within the `DataType/Region3`.
 	 */
-	FindPartsInRegion3(region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<Instance>;
+	FindPartsInRegion3(
+		region: Region3,
+		ignoreDescendantsInstance?: Instance,
+		maxParts?: number,
+	): Array<BasePart>;
 	/** Returns an array of `BasePart`s in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3) that aren't in, or a descendant of an entry in, the given IgnoreList.
 	 * 
 	 * This function takes an optional maxParts parameter (default 20) which limits the number of `BasePart`s that can be returned. Once this number has been reached, the search for `BasePart`s will stop. This means some `BasePart`s may not be returned even if they are within the [DataType.Region3](https://developer.roblox.com/search#stq=Region3)
@@ -15191,7 +15069,11 @@ interface Workspace extends Model {
 	 * @param maxParts The maximum number of `BasePart`s to be returned.
 	 * @returns An array of `BasePart`s found within the `DataType/Region3`.
 	 */
-	FindPartsInRegion3WithIgnoreList(region: Region3, ignoreDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
+	FindPartsInRegion3WithIgnoreList(
+		region: Region3,
+		ignoreDescendantsTable: Array<Instance>,
+		maxParts?: number,
+	): Array<BasePart>;
 	/** Returns an array of `BasePart`s in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3) that are in, or descendant of an object in, a given white list.
 	 * 
 	 * This function takes an optional maxParts parameter (default 20) which limits the number of `BasePart`s that can be returned. Once this number has been reached, the search for `BasePart`s will stop. This means some `BasePart`s may not be returned even if they are within the [DataType.Region3](https://developer.roblox.com/search#stq=Region3)
@@ -15216,7 +15098,11 @@ interface Workspace extends Model {
 	 * @param maxParts The maximum number of `BasePart`s to be returned.
 	 * @returns An array of `BasePart`s within the `DataType/Region3`.
 	 */
-	FindPartsInRegion3WithWhiteList(region: Region3, whitelistDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
+	FindPartsInRegion3WithWhiteList(
+		region: Region3,
+		whitelistDescendantsTable: Array<Instance>,
+		maxParts?: number,
+	): Array<BasePart>;
 	/** Returns the number of `BasePart`s that are deemed physically active, due to being recently under the influence of physics.
 	 * 
 	 * This function provides a measure of how many `BasePart`s are being influenced by, or recently under the influence of, physical forces.
@@ -17250,6 +17136,15 @@ interface PointsService extends Instance {
 	readonly PointsAwarded: RBXScriptSignal<(userId: number, pointsAwarded: number, userBalanceInGame: number, userTotalBalance: number) => void>;
 }
 
+interface PolicyService extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "PolicyService";
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	GetPolicyInfoForPlayerAsync(player: Instance): object;
+}
+
 /** A Pose holds the `CFrame` applied to the `Motor6D` connected to its associated `BasePart`. The part which is controlled depends on the name of the Pose.
  * 
  * Poses are the fundamental building blocks of animations and, with `Keyframes`, make up `KeyframeSequences`.
@@ -18107,7 +18002,7 @@ interface RunService extends Instance {
 	 * @param function The custom function being bound.
 	 * @returns None.
 	 */
-	BindToRenderStep(name: string, priority: number, callback: Function): void;
+	BindToRenderStep(name: string, priority: number, callback: (deltaTime: number) => void): void;
 	/** If the code that invoked this method is running in a client context (within or originating from a LocalScript), this method returns true. In all other cases, it returns false. If this returns true, the code has access to client-side features like `RunService.RenderStepped` or `Players.LocalPlayer`. */
 	IsClient(): boolean;
 	/** This method returns true if and only if the "Run" button was pressed within Studio. */
@@ -18498,7 +18393,7 @@ interface DataModel extends ServiceProvider {
 	 *  - [PluginGui.BindToClose](https://developer.roblox.com/api-reference/function/PluginGui/BindToClose), which is used to bind a function to a `PluginGui` close button and should not be confused with this function
 	 * @param function A function to be called prior to the game shutting down
 	 */
-	BindToClose(callback: Function): void;
+	BindToClose(callback: () => void): void;
 	/** This function returns true if the client has finished loading the game for the first time.
 	 * 
 	 * When all initial [Instances](https://developer.roblox.com/api-reference/class/Instance) in the game has finished replicating to the client, this function will return true.
@@ -20005,7 +19900,7 @@ interface StarterPlayer extends Instance {
 	 */
 	NameDisplayDistance: number;
 	/** [NO DOCUMENTATION] */
-	readonly UserEmotesEnabled: boolean;
+	UserEmotesEnabled: boolean;
 }
 
 /** The StarterPlayerScripts is a container object located within the `StarterPlayer` service. It contains `LocalScript`s and other objects to be copied to the `PlayerScripts` container once when a `Player` joins the game. For example, if you want to create special effects on the client when certain conditions are met, you can place a `LocalScript` within this object to do that.
@@ -22037,6 +21932,11 @@ interface TweenService extends Instance {
 		propertyTable: Partial<FilterMembers<T, Tweenable>>,
 	): Tween;
 	GetValue(alpha: number, easingStyle: CastsToEnum<Enum.EasingStyle>, easingDirection: CastsToEnum<Enum.EasingDirection>): number;
+}
+
+interface UGCValidationService extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "UGCValidationService";
 }
 
 /** UIBase is the base class for UI layout and constraint classes. */

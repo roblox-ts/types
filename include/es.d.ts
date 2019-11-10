@@ -1,15 +1,15 @@
 /// <reference no-default-lib="true"/>
 
-interface Boolean {}
-interface IArguments {}
-interface Number {}
-interface Object {}
-interface RegExp {}
+interface Boolean { }
+interface IArguments { }
+interface Number { }
+interface Object { }
+interface RegExp { }
 interface Function {
 	prototype: never;
 }
-interface CallableFunction extends Function {}
-interface NewableFunction extends Function {}
+interface CallableFunction extends Function { }
+interface NewableFunction extends Function { }
 
 /** @rbxts array */
 interface ArrayLike<T> {
@@ -53,7 +53,7 @@ interface ObjectConstructor {
 	 * Returns an array of values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
-	values<T>(o: Array<T>): Array<T>;
+	values<T>(o: Array<T>): Array<NonNullable<T>>;
 	values<T>(o: Set<T>): Array<true>;
 	values<K, V>(o: Map<K, V>): Array<V>;
 	values<T>(o: T): Array<T[keyof T]>;
@@ -64,7 +64,7 @@ interface ObjectConstructor {
 	 * Returns an array of key/values of the enumerable properties of an object
 	 * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
 	 */
-	entries<T>(o: Array<T>): Array<[number, T]>;
+	entries<T>(o: Array<T>): Array<[number, NonNullable<T>]>;
 	entries<T>(o: Set<T>): Array<[T, true]>;
 	entries<K, V>(o: Map<K, V>): Array<[K, V]>;
 	entries<T>(o: T): Array<[keyof T, T[keyof T]]>;
@@ -378,12 +378,12 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	/**
 	 * Returns a shallow copy of the array
 	 */
-	copy(): this;
+	copy(): Array<T>;
 
 	/**
 	 * Returns a deep copy of the array
 	 */
-	deepCopy(): this;
+	deepCopy(): Array<T>;
 
 	/**
 	 * Returns true if
@@ -492,7 +492,7 @@ interface ArrayConstructor {
 declare const Array: ArrayConstructor;
 
 /** @rbxts array */
-interface TemplateStringsArray extends Array<string> {}
+interface TemplateStringsArray extends Array<string> { }
 
 /**
  * A Map object which cannot be written to. The Map object holds key-value pairs but doesn't remember the original insertion order of the keys (like JS would). Any value (both objects and primitive values) may be used as either a key or a value.
@@ -620,7 +620,7 @@ interface MapConstructor {
 declare var Map: MapConstructor;
 
 /** A Map object with its `__mode` metamethod set to "k" */
-interface WeakMap<K, V> extends Map<K, V> {}
+interface WeakMap<K, V> extends Map<K, V> { }
 
 interface WeakMapConstructor {
 	new <K extends object = object, V = any>(entries?: ReadonlyArray<[K, V]> | null): WeakMap<K, V>;
@@ -722,7 +722,7 @@ interface SetConstructor {
 }
 declare const Set: SetConstructor;
 
-interface WeakSet<T> extends Set<T> {}
+interface WeakSet<T> extends Set<T> { }
 
 interface WeakSetConstructor {
 	new <T extends object = object>(values?: ReadonlyArray<T> | null): WeakSet<T>;
@@ -937,4 +937,4 @@ type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (.
 /**
  * Marker for contextual 'this' type
  */
-interface ThisType<T> {}
+interface ThisType<T> { }

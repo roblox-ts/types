@@ -340,8 +340,8 @@ interface Instance {
 }
 
 interface JointInstance extends Instance {
-	Part0: BasePart | undefined;
-	Part1: BasePart | undefined;
+	Part0?: BasePart;
+	Part1?: BasePart;
 }
 
 interface Keyframe extends Instance {
@@ -350,6 +350,7 @@ interface Keyframe extends Instance {
 	GetPoses(): Array<Pose>;
 	AddMarker(marker: KeyframeMarker): void;
 	RemoveMarker(marker: KeyframeMarker): void;
+	GetMarkers(): Array<KeyframeMarker>;
 }
 
 interface KeyframeSequence extends Instance {
@@ -395,6 +396,7 @@ interface CompressorSoundEffect extends SoundEffect {
 
 interface DataModel extends ServiceProvider {
 	readonly Workspace: Workspace;
+	BindToClose(callback: () => void): void;
 }
 
 interface MarketplaceService extends Instance {
@@ -403,6 +405,12 @@ interface MarketplaceService extends Instance {
 		(player: Player, gamePassId: number, wasPurchased: boolean) => void
 	>;
 	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
+	readonly PromptSubscriptionCancellationFinished: RBXScriptSignal<
+		(player: Player, subscriptionId: number, wasCanceled: boolean) => void
+	>;
+	readonly PromptSubscriptionPurchaseFinished: RBXScriptSignal<
+		(player: Player, subscriptionId: number, wasPurchased: boolean) => void
+	>;
 	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.Asset>): AssetProductInfo;
 	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.Product>): DeveloperProductInfo;
 	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.GamePass>): AssetProductInfo;
@@ -585,6 +593,10 @@ interface RemoteFunction extends Instance {
 	OnServerInvoke: (player: Player, ...arguments: Array<unknown>) => void;
 	InvokeClient(player: Player, ...arguments: Array<any>): unknown;
 	InvokeServer<R = unknown>(...arguments: Array<unknown>): R;
+}
+
+interface RunService extends Instance {
+	BindToRenderStep(name: string, priority: number, callback: (deltaTime: number) => void): void;
 }
 
 interface Pose extends Instance {
@@ -838,6 +850,24 @@ interface Workspace extends Model {
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+
+	FindPartsInRegion3(
+		region: Region3,
+		ignoreDescendantsInstance?: Instance,
+		maxParts?: number,
+	): Array<BasePart>;
+
+	FindPartsInRegion3WithIgnoreList(
+		region: Region3,
+		ignoreDescendantsTable: Array<Instance>,
+		maxParts?: number,
+	): Array<BasePart>;
+
+	FindPartsInRegion3WithWhiteList(
+		region: Region3,
+		whitelistDescendantsTable: Array<Instance>,
+		maxParts?: number,
+	): Array<BasePart>;
 }
 
 /**
