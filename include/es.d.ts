@@ -290,16 +290,18 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	lastIndexOf(searchElement: T, fromIndex?: number): number;
 
 	/**
-	 * Determines whether all the members of an array satisfy the specified test.
+	 * Returns whether **all** the members of an array satisfy the specified test.
+	 * Returns true for empty Arrays.
 	 * @param callbackfn A function that accepts up to three arguments. The every method calls the callbackfn function for each element in array1 until the callbackfn returns false, or until the end of the array.
 	 */
-	every(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean): boolean;
+	every(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean | undefined): boolean;
 
 	/**
-	 * Determines whether the specified callback function returns true for any element of an array.
+	 * Returns whether the specified callback function returns true for any element of an array.
+	 * Returns false for empty Arrays.
 	 * @param callbackfn A function that accepts up to three arguments. The some method calls the callbackfn function for each element in array1 until the callbackfn returns true, or until the end of the array.
 	 */
-	some(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean): boolean;
+	some(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean | undefined): boolean;
 
 	/**
 	 * Performs the specified action for each element in an array.
@@ -323,7 +325,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
 	 */
-	filter(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean): Array<T>;
+	filter(callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean | undefined): Array<T>;
 
 	/**
 	 * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
@@ -377,7 +379,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * immediately returns that element value. Otherwise, find returns undefined.
 	 */
 	find<S extends T>(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => value is S): S | undefined;
-	find(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean): T | undefined;
+	find(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean | undefined): T | undefined;
 
 	/**
 	 * Returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1, indicating no element passed the test.
@@ -385,7 +387,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * order, until it finds one where predicate returns true. If such an element is found, find
 	 * immediately returns the index at which it was found. Otherwise, find returns -1.
 	 */
-	findIndex(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean): number;
+	findIndex(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean | undefined): number;
 
 	/**
 	 * Returns a shallow copy of the array
