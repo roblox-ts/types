@@ -1373,6 +1373,8 @@ interface UDim2Constructor {
 	new (): UDim2;
 	new (xScale: number, xOffset: number, yScale: number, yOffset: number): UDim2;
 	new (xDim: UDim, yDim: UDim): UDim2;
+	fromOffset(x: number, y: number): UDim2;
+	fromScale(x: number, y: number): UDim2;
 }
 declare const UDim2: UDim2Constructor;
 
