@@ -1,15 +1,15 @@
 /// <reference no-default-lib="true"/>
 
-interface Boolean { }
-interface IArguments { }
-interface Number { }
-interface Object { }
-interface RegExp { }
+interface Boolean {}
+interface IArguments {}
+interface Number {}
+interface Object {}
+interface RegExp {}
 interface Function {
 	prototype: never;
 }
-interface CallableFunction extends Function { }
-interface NewableFunction extends Function { }
+interface CallableFunction extends Function {}
+interface NewableFunction extends Function {}
 
 /** @rbxts array */
 interface ArrayLike<T> {
@@ -56,8 +56,8 @@ interface ObjectConstructor {
 	values<T>(o: Array<T>): Array<NonNullable<T>>;
 	values<T>(o: Set<T>): Array<true>;
 	values<K, V>(o: Map<K, V>): Array<V>;
-	values<T>(o: T): Array<T[keyof T]>;
-	values<T>(o: { [s: string]: T } | ArrayLike<T>): Array<T>;
+	values<T extends object>(o: T): Array<NonNullable<T[keyof T]>>;
+	values<T>(o: { [s: string]: T } | ArrayLike<T>): Array<NonNullable<T>>;
 	values(o: {}): Array<any>;
 
 	/**
@@ -67,9 +67,9 @@ interface ObjectConstructor {
 	entries<T>(o: Array<T>): Array<[number, NonNullable<T>]>;
 	entries<T>(o: Set<T>): Array<[T, true]>;
 	entries<K, V>(o: Map<K, V>): Array<[K, V]>;
-	entries<T>(o: T): Array<[keyof T, T[keyof T]]>;
-	entries<T>(o: { [s: string]: T } | ArrayLike<T>): Array<[string, T]>;
-	entries<T extends { [key: string]: any }, K extends keyof T>(o: T): Array<[K, T[K]]>;
+	entries<T extends object>(o: T): Array<[keyof T, NonNullable<T[keyof T]>]>;
+	entries<T>(o: { [s: string]: T } | ArrayLike<T>): Array<[string, NonNullable<T>]>;
+	entries<T extends { [key: string]: any }, K extends keyof T>(o: T): Array<T[K] extends undefined ? never : [K, T[K]]>;
 
 	/**
 	 * Returns true if empty, otherwise false.
@@ -314,9 +314,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
-	reduce(
-		callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
-	): T;
+	reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T): T;
 
 	/**
 	 * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
@@ -333,9 +331,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
-	reduceRight(
-		callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
-	): T;
+	reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T): T;
 
 	/**
 	 * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
@@ -492,7 +488,7 @@ interface ArrayConstructor {
 declare const Array: ArrayConstructor;
 
 /** @rbxts array */
-interface TemplateStringsArray extends Array<string> { }
+interface TemplateStringsArray extends Array<string> {}
 
 /**
  * A Map object which cannot be written to. The Map object holds key-value pairs but doesn't remember the original insertion order of the keys (like JS would). Any value (both objects and primitive values) may be used as either a key or a value.
@@ -620,7 +616,7 @@ interface MapConstructor {
 declare var Map: MapConstructor;
 
 /** A Map object with its `__mode` metamethod set to "k" */
-interface WeakMap<K, V> extends Map<K, V> { }
+interface WeakMap<K, V> extends Map<K, V> {}
 
 interface WeakMapConstructor {
 	new <K extends object = object, V = any>(entries?: ReadonlyArray<[K, V]> | null): WeakMap<K, V>;
@@ -722,7 +718,7 @@ interface SetConstructor {
 }
 declare const Set: SetConstructor;
 
-interface WeakSet<T> extends Set<T> { }
+interface WeakSet<T> extends Set<T> {}
 
 interface WeakSetConstructor {
 	new <T extends object = object>(values?: ReadonlyArray<T> | null): WeakSet<T>;
@@ -937,4 +933,4 @@ type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (.
 /**
  * Marker for contextual 'this' type
  */
-interface ThisType<T> { }
+interface ThisType<T> {}
