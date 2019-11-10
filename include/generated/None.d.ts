@@ -16047,6 +16047,7 @@ interface PhysicsSettings extends Instance {
 interface Player extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Player";
+	readonly Name: string;
 	/** The AccountAge is a `Player` property that describes how long ago a player's account was registered in days. It is set using the [Player.SetAccountAge](https://developer.roblox.com/api-reference/function/Player/SetAccountAge) function, which cannot be accessed by scripts.
 	 * 
 	 * This property is useful for conditionally showing new Roblox players content such as tutorials.
@@ -24216,6 +24217,14 @@ interface VRService extends Instance {
 interface ValueBase extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ValueBase" | "BinaryStringValue" | "BoolValue" | "BrickColorValue" | "CFrameValue" | "Color3Value" | "DoubleConstrainedValue" | "IntConstrainedValue" | "IntValue" | "NumberValue" | "ObjectValue" | "RayValue" | "StringValue" | "Vector3Value";
+	/** The value this object holds. */
+	Value?: unknown;
+	/**
+	 * This event fires whenever the `Value` property is changed.
+	 *
+	 * This event can be used to track when a ValueBase `Value` changes and to track the different values that it may change to.
+	 */
+	readonly Changed: RBXScriptSignal<(value?: unknown) => void>;
 }
 
 /** An internal type of `StringValue` object, that stores a `BinaryString` value. */
