@@ -25,7 +25,7 @@ interface Instance {
 	 * @param scopeLength The scope length.
 	 * @returns The Debug ID string.
 	 */
-	GetDebugId(scopeLength?: number): string;
+	GetDebugId(this: Instance, scopeLength?: number): string;
 }
 
 interface Animator extends Instance {
@@ -40,7 +40,7 @@ interface Animator extends Instance {
 	 * Developers designing their own custom animation editors are advised to use this function to preview animations, as it is the method the official Roblox Animation Editor plugin uses.
 	 * @param deltaTime The amount of time in seconds animation playback is to be incremented by.
 	 */
-	StepAnimations(deltaTime: number): void;
+	StepAnimations(this: Animator, deltaTime: number): void;
 }
 
 interface StarterGui extends BasePlayerGui {
@@ -49,19 +49,19 @@ interface StarterGui extends BasePlayerGui {
 
 interface ChangeHistoryService extends Instance {
 	/** Returns whether there are actions that can be redone, and, if there are, returns the last of them. */
-	GetCanRedo(): unknown;
+	GetCanRedo(this: ChangeHistoryService): unknown;
 	/** Returns whether there are actions that can be undone, and, if there are, returns the last of them. */
-	GetCanUndo(): unknown;
+	GetCanUndo(this: ChangeHistoryService): unknown;
 	/** Executes the last action that was undone. */
-	Redo(): void;
+	Redo(this: ChangeHistoryService): void;
 	/** Clears the history, causing all undo/redo waypoints to be removed. */
-	ResetWaypoints(): void;
+	ResetWaypoints(this: ChangeHistoryService): void;
 	/** Sets whether or not the ChangeHistoryService is enabled. When set to false, the undo/redo list is cleared, and does not repopulate. When set to true again, the original list is not restored, but further operations append to the list once more */
-	SetEnabled(state: boolean): void;
+	SetEnabled(this: ChangeHistoryService, state: boolean): void;
 	/** Sets a new waypoint which can be used as an undo or redo point. */
-	SetWaypoint(name: string): void;
+	SetWaypoint(this: ChangeHistoryService, name: string): void;
 	/** Undos the last action taken, for which there exists a waypoint. */
-	Undo(): void;
+	Undo(this: ChangeHistoryService): void;
 	/** Fired when the user reverses the undo command. Waypoint describes the type action that has been redone. */
 	readonly OnRedo: RBXScriptSignal<(waypoint: string) => void>;
 	/** Fired when the user undoes an action in studio. Waypoint describes the type action that has been undone. */
@@ -78,14 +78,14 @@ interface File extends Instance {
 	 */
 	readonly Size: number;
 	/** [NO DOCUMENTATION] */
-	GetBinaryContents(): string;
+	GetBinaryContents(this: File): string;
 	/** [NO DOCUMENTATION] */
-	GetTemporaryId(): string;
+	GetTemporaryId(this: File): string;
 }
 
 interface PluginGui extends LayerCollector {
 	/** [NO DOCUMENTATION] */
-	GetRelativeMousePosition(): Vector2;
+	GetRelativeMousePosition(this: PluginGui): Vector2;
 	/** [NO DOCUMENTATION] */
 	readonly PluginDragDropped: RBXScriptSignal<(dragData: object) => void>;
 	/** [NO DOCUMENTATION] */
@@ -116,7 +116,7 @@ interface ModuleScript extends LuaSourceContainer {
 
 interface MemStorageConnection extends Instance {
 	/** [NO DOCUMENTATION] */
-	Disconnect(): void;
+	Disconnect(this: MemStorageConnection): void;
 }
 
 interface PluginMouse extends Mouse {
@@ -126,12 +126,12 @@ interface PluginMouse extends Mouse {
 
 interface NetworkPeer extends Instance {
 	/** Sets the maximum outgoing bandwidth that Roblox can use. */
-	SetOutgoingKBPSLimit(limit: number): void;
+	SetOutgoingKBPSLimit(this: NetworkPeer, limit: number): void;
 }
 
 interface NetworkReplicator extends Instance {
 	/** Returns a string displaying how many bytes are being sent/received by the replicator, and the current packet-loss. The verbosity level determines how much information is returned in the string (0 = Basic, 1 = Detailed, 2 = Full). */
-	GetRakStatsString(verbosityLevel?: number): string;
+	GetRakStatsString(this: NetworkReplicator, verbosityLevel?: number): string;
 }
 
 interface NetworkSettings extends Instance {
@@ -182,22 +182,22 @@ interface NetworkSettings extends Instance {
 }
 
 interface Workspace extends Model {
-	BreakJoints: any;
-	MakeJoints: any;
+	BreakJoints(this: Workspace, objects: Array<Instance>): void;
+	MakeJoints(this: Workspace, objects: Array<Instance>): void;
 	/** Positions and zooms the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) to show the extent of `BasePart`s currently in the `Workspace`.
 	 * 
 	 * This function was used in the, now removed, 'Zoom To Extents' button in Roblox Studio. It exhibits similar behavior to the 'Zoom To' (F shortcut) feature, however it shows the extents of the `Workspace` rather than the currently selected object.
 	 * 
 	 * This function cannot be used in scripts but will function in the command bar or plugins.
 	 */
-	ZoomToExtents(): void;
+	ZoomToExtents(this: Workspace): void;
 }
 
 interface Player extends Instance {
 	/** Sets the [AccountAge](https://wiki.roblox.com/index.php?title=AccountAge) of the player. */
-	SetAccountAge(accountAge: number): void;
+	SetAccountAge(this: Player, accountAge: number): void;
 	/** Sets whether or not the player sees [filtered chats](https://wiki.roblox.com/index.php?title=FilterStringForPlayerAsync), rather than normal chats. */
-	SetSuperSafeChat(value: boolean): void;
+	SetSuperSafeChat(this: Player, value: boolean): void;
 }
 
 interface Players extends Instance {
@@ -211,7 +211,7 @@ interface Players extends Instance {
 	 * @param message The message chatted.
 	 * @returns void
 	 */
-	Chat(message: string): void;
+	Chat(this: Players, message: string): void;
 	/** This function sets whether BubbleChat and ClassicChat are being used, and tells TeamChat and Chat what to do using the `ChatStyle` enum. Since this item is protected, attempting to use it in a `Script` or `LocalScript` will cause an error.
 	 * 
 	 * This function is used internally when the chat mode is set by the game.
@@ -222,7 +222,7 @@ interface Players extends Instance {
 	 * @param style The specified chat style being set
 	 * @returns void
 	 */
-	SetChatStyle(style?: CastsToEnum<Enum.ChatStyle>): void;
+	SetChatStyle(this: Players, style?: CastsToEnum<Enum.ChatStyle>): void;
 	/** This function makes the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) chat the given message, which will only be viewable by users on the same team. Since this item is protected, attempting to use it in a `Script` or `LocalScript` will cause an error.
 	 * 
 	 * This function is used internally when the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) sends a message to their team.
@@ -233,12 +233,12 @@ interface Players extends Instance {
 	 * @param message The message being chatted.
 	 * @returns void
 	 */
-	TeamChat(message: string): void;
+	TeamChat(this: Players, message: string): void;
 }
 
 interface Plugin extends Instance {
 	/** Sets the state of the calling plugin to activated. Allows mouse control through the [Plugin.GetMouse](https://developer.roblox.com/api-reference/function/Plugin/GetMouse) method. */
-	Activate(exclusiveMouse: boolean): void;
+	Activate(this: Plugin, exclusiveMouse: boolean): void;
 	/** This function creates a `PluginAction` which is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`. In Roblox Studio, they can be assigned a keyboard shortcut under `File → Advanced → Customize Shortcuts…`, and they can also be added to the Quick Access Toolbar.
 	 * 
 	 * When an action is triggered, the [PluginAction.Triggered](https://developer.roblox.com/api-reference/event/PluginAction/Triggered) event is signaled.
@@ -260,6 +260,7 @@ interface Plugin extends Instance {
 	 * @returns The newly created PluginAction object
 	 */
 	CreatePluginAction(
+		this: Plugin,
 		actionId: string,
 		text: string,
 		statusTip: string,
@@ -298,33 +299,33 @@ interface Plugin extends Instance {
 	 * @param icon The icon to be displayed when used as a sub menu
 	 * @returns The created `PluginMenu` instance
 	 */
-	CreatePluginMenu(id: string, title?: string, icon?: string): PluginMenu;
+	CreatePluginMenu(this: Plugin, id: string, title?: string, icon?: string): PluginMenu;
 	/** Gets or creates a new `Toolbar` with the specified name, which is then used to create a plugin button. */
-	CreateToolbar(name: string): PluginToolbar;
+	CreateToolbar(this: Plugin, name: string): PluginToolbar;
 	/** Deactivates this plugin. This will disengage the associated `PluginMouse` if it has been activated. */
-	Deactivate(): void;
+	Deactivate(this: Plugin): void;
 	/** Returns the [Enum.JointCreationMode](https://developer.roblox.com/search#stq=JointCreationMode) the user has set in studio under the Model tab. */
-	GetJoinMode(): Enum.JointCreationMode;
+	GetJoinMode(this: Plugin): Enum.JointCreationMode;
 	/** Returns a mouse that can be used with the plugin. */
-	GetMouse(): PluginMouse;
+	GetMouse(this: Plugin): PluginMouse;
 	/** GetSelectedRibbonTool return the currently selected [Enum.RibbonTool](https://developer.roblox.com/search#stq=RibbonTool). It returns an Enum that corresponds to a particular tool. This will return whether the tool is selected manually or programmatically via [Plugin.SelectRibbonTool](https://developer.roblox.com/api-reference/function/Plugin/SelectRibbonTool). */
-	GetSelectedRibbonTool(): Enum.RibbonTool;
+	GetSelectedRibbonTool(this: Plugin): Enum.RibbonTool;
 	/** Retrieves a previously stored value with the given key, or nil if the given key doesn't exist. */
-	GetSetting(key: string): unknown;
+	GetSetting(this: Plugin, key: string): unknown;
 	/** Returns the studio user’s userId if they're logged in, otherwise returns 0. */
-	GetStudioUserId(): number;
+	GetStudioUserId(this: Plugin): number;
 	/** Returns true if this plugin is currently active, after having been activated via the [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate) function. */
-	IsActivated(): boolean;
+	IsActivated(this: Plugin): boolean;
 	/** Returns true if this plugin is currently active with an exclusive mouse, after having been activated via the [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate) function.If this returns true, a `PluginMouse` can be retrieved via [Plugin.GetMouse](https://developer.roblox.com/api-reference/function/Plugin/GetMouse). */
-	IsActivatedWithExclusiveMouse(): boolean;
+	IsActivatedWithExclusiveMouse(this: Plugin): boolean;
 	/** Negates the given parts and returns the resulting NegateOperations. */
-	Negate(objects: Array<Instance>): Array<Instance>;
+	Negate(this: Plugin, objects: Array<Instance>): Array<Instance>;
 	/** Used to open the given script instance in an editor window, in Roblox studio, at the given line. If no line is given as an argument it will default to 0. */
-	OpenScript(script: Instance, lineNumber?: number): void;
+	OpenScript(this: Plugin, script: Instance, lineNumber?: number): void;
 	/** Opens the context help window to the wiki page that `url` links to. */
-	OpenWikiPage(url: string): void;
+	OpenWikiPage(this: Plugin, url: string): void;
 	/** Opens an upload window for the user's current selection. */
-	SaveSelectedToRoblox(): void;
+	SaveSelectedToRoblox(this: Plugin): void;
 	/** Activates the specified Roblox Studio tool.
 	 * 
 	 * If the tool opens a window, the position parameter specifies where it should be shown on the screen.
@@ -335,14 +336,14 @@ interface Plugin extends Instance {
 	 * 
 	 * * Altering the scale fields of the _position_ property will not affect the dialog popups.
 	 */
-	SelectRibbonTool(tool: CastsToEnum<Enum.RibbonTool>, position: UDim2): void;
+	SelectRibbonTool(this: Plugin, tool: CastsToEnum<Enum.RibbonTool>, position: UDim2): void;
 	/** Separates the given UnionOperations and returns the resulting parts. */
-	Separate(objects: Array<Instance>): Array<Instance>;
+	Separate(this: Plugin, objects: Array<Instance>): Array<Instance>;
 	/** Stores a given value for later use under the given key. The value will persist even after studio is closed. */
-	SetSetting(key: string, value?: any): void;
-	StartDrag(dragData: object): void;
+	SetSetting(this: Plugin, key: string, value?: any): void;
+	StartDrag(this: Plugin, dragData: object): void;
 	/** Unions the given parts and returns the resulting UnionOperation. */
-	Union(objects: Array<BasePart>): UnionOperation;
+	Union(this: Plugin, objects: Array<BasePart>): UnionOperation;
 	/** This function creates a `DockWidgetPluginGui` using the provided [DataType.DockWidgetPluginGuiInfo](https://developer.roblox.com/search#stq=DockWidgetPluginGuiInfo).
 	 * 
 	 * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
@@ -350,17 +351,18 @@ interface Plugin extends Instance {
 	 * @param dockWidgetPluginGuiInfo Datatype describing details for the new `DockWidgetPluginGui`.
 	 */
 	CreateDockWidgetPluginGui(
+		this: Plugin,
 		pluginGuiId: string,
 		dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo,
 	): DockWidgetPluginGui;
 	/** This function prompts the user to open a .fbx animation file that can be loaded onto the _rigModel_, then proceeds to insert the animation as a `KeyframeSequence` in the `Workspace`. */
-	ImportFbxAnimation(rigModel: Instance, isR15?: boolean): Instance | undefined;
+	ImportFbxAnimation(this: Plugin, rigModel: Instance, isR15?: boolean): Instance | undefined;
 	/** Prompts the user to open a .fbx file, uploads the individual components of the model as meshes, and generates a character rig for use in animation, which is loaded into the `Workspace`. */
-	ImportFbxRig(isR15?: boolean): Model;
+	ImportFbxRig(this: Plugin, isR15?: boolean): Model;
 	/** Opens a window in Roblox Studio, which prompts the user to select an asset based on the _assetType_ specified. Returns what assetId was selected, or -1 if the window was closed. */
-	PromptForExistingAssetId(assetType: string): number;
+	PromptForExistingAssetId(this: Plugin, assetType: string): number;
 	/** Prompts the user to save their current selection with the specified file name. Returns true if the user did save the file. */
-	PromptSaveSelection(suggestedFileName?: string): boolean;
+	PromptSaveSelection(this: Plugin, suggestedFileName?: string): boolean;
 	/** Fired when the plugin is deactivated. This occurs when either the plugin code calls [Plugin.Deactivate](https://developer.roblox.com/api-reference/function/Plugin/Deactivate), or because some other plugin called [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate), which forces all other plugins to lose their active state. */
 	readonly Deactivation: RBXScriptSignal<() => void>;
 	readonly Unloading: RBXScriptSignal<() => void>;
@@ -373,11 +375,11 @@ interface PluginAction extends Instance {
 
 interface PluginManager extends Instance {
 	/** Returns a `Plugin` */
-	CreatePlugin(): Plugin;
+	CreatePlugin(this: PluginManager): Plugin;
 	/** If the FilePath argument is provided, the place is saved in the given location, otherwise it opens the "Export Place" window. (*.OBJ) */
-	ExportPlace(filePath?: string): void;
+	ExportPlace(this: PluginManager, filePath?: string): void;
 	/** If the FilePath argument is provided, the selected instance is exported as an OBJ in the given location, otherwise it opens the "Export Place" window. */
-	ExportSelection(filePath?: string): void;
+	ExportSelection(this: PluginManager, filePath?: string): void;
 }
 
 interface PluginMenu extends Instance {
@@ -407,7 +409,7 @@ interface PluginMenu extends Instance {
 	 * @param action The action to add
 	 * @returns void
 	 */
-	AddAction(action: PluginAction): void;
+	AddAction(this: PluginMenu, action: PluginAction): void;
 	/** This function adds the given menu as a separator.
 	 * 
 	 * ## See also
@@ -434,14 +436,14 @@ interface PluginMenu extends Instance {
 	 * @param menu The menu to add as a sub menu. Uses its `PluginMenu/Title` and `PluginMenu/Icon` to display
 	 * @returns void
 	 */
-	AddMenu(menu: PluginMenu): void;
+	AddMenu(this: PluginMenu, menu: PluginMenu): void;
 	/** 	 
 	 * @param actionId Must be a unique string that identifies this PluginAction from others
 	 * @param text The text to be displayed
 	 * @param icon The icon to be displayed
 	 * @returns The created `PluginAction`
 	 */
-	AddNewAction(actionId: string, text: string, icon?: string): PluginAction;
+	AddNewAction(this: PluginMenu, actionId: string, text: string, icon?: string): PluginAction;
 	/** This function adds a separator between items in the menu.
 	 * 
 	 * ## See also
@@ -467,7 +469,7 @@ interface PluginMenu extends Instance {
 	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
 	 * @returns void
 	 */
-	AddSeparator(): void;
+	AddSeparator(this: PluginMenu): void;
 	/** This function clears the menu
 	 * 
 	 * ## See also
@@ -492,7 +494,7 @@ interface PluginMenu extends Instance {
 	 * 
 	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
 	 */
-	Clear(): void;
+	Clear(this: PluginMenu): void;
 	/** This function shows the menu at the mouse cursor. It yields until either an item is selected or the menu is closed. The selected action fires its [PluginAction.Triggered](https://developer.roblox.com/api-reference/event/PluginAction/Triggered) event
 	 * 
 	 * ## See also
@@ -518,33 +520,39 @@ interface PluginMenu extends Instance {
 	 *   - [PluginMenu.Clear](https://developer.roblox.com/api-reference/function/PluginMenu/Clear), clears the menu
 	 * @returns The `PluginAction` item that was selected or nil
 	 */
-	ShowAsync(): Instance | undefined;
+	ShowAsync(this: PluginMenu): Instance | undefined;
 }
 
 interface PluginToolbar extends Instance {
-	CreateButton(buttonId: string, tooltip: string, iconname: string, text?: string): PluginToolbarButton;
+	CreateButton(
+		this: PluginToolbar,
+		buttonId: string,
+		tooltip: string,
+		iconname: string,
+		text?: string,
+	): PluginToolbarButton;
 }
 
 interface PluginToolbarButton extends Instance {
 	/** [NO DOCUMENTATION] */
-	SetActive(active: boolean): void;
+	SetActive(this: PluginToolbarButton, active: boolean): void;
 	/** [NO DOCUMENTATION] */
 	readonly Click: RBXScriptSignal<() => void>;
 }
 
 interface RunService extends Instance {
-	IsEdit(): boolean;
+	IsEdit(this: RunService): boolean;
 	/** Pauses the physics and scripts in a place. */
-	Pause(): void;
+	Pause(this: RunService): void;
 	/** Creates a waypoint and then runs the game just like the Play button does in studio. */
-	Run(): void;
+	Run(this: RunService): void;
 	/** Stops the running simulation. */
-	Stop(): void;
+	Stop(this: RunService): void;
 }
 
 interface ScriptContext extends Instance {
 	/** Limits how long a script is allowed to run without yielding. */
-	SetTimeout(seconds: number): void;
+	SetTimeout(this: ScriptContext, seconds: number): void;
 }
 
 interface Selection extends Instance {
@@ -557,7 +565,7 @@ interface Selection extends Instance {
 	 * For changing the current selection, please see [Selection.Set](https://developer.roblox.com/api-reference/function/Selection/Set).
 	 * @returns An array of currently selected `Instance`s.
 	 */
-	Get(): Array<Instance>;
+	Get(this: Selection): Array<Instance>;
 	/** Sets the currently selected objects in Roblox Studio to `Instance`s in the given array.
 	 * 
 	 * Calling this function will cause the [Selection.SelectionChanged](https://developer.roblox.com/api-reference/event/Selection/SelectionChanged) event to fire, unless the new selection set is identical to the previous selection.
@@ -572,14 +580,14 @@ interface Selection extends Instance {
 	 * 
 	 * @param selection An array of `Instance`s to set the current selection to.
 	 */
-	Set(selection: Array<Instance>): void;
+	Set(this: Selection, selection: Array<Instance>): void;
 }
 
 interface DataModel extends ServiceProvider {
 	/** Returns the job interval peak fraction of the specified task scheduler job. */
-	GetJobIntervalPeakFraction(jobname: string, greaterThan: number): number;
+	GetJobIntervalPeakFraction(this: DataModel, jobname: string, greaterThan: number): number;
 	/** Returns the job time peak fraction of the specified task scheduler job. */
-	GetJobTimePeakFraction(jobname: string, greaterThan: number): number;
+	GetJobTimePeakFraction(this: DataModel, jobname: string, greaterThan: number): number;
 	/** This function is currently broken
 	 * 
 	 * This function returns a table containing extended statistics on the jobs performed by the task scheduler.
@@ -655,7 +663,7 @@ interface DataModel extends ServiceProvider {
 	 *  - [DataModel.GetJobTimePeakFraction](https://developer.roblox.com/api-reference/function/DataModel/GetJobTimePeakFraction)
 	 * @returns A table containing statistics on the jobs performed by the task scheduler, see above for the format
 	 */
-	GetJobsExtendedStats(): unknown;
+	GetJobsExtendedStats(this: DataModel): unknown;
 	/** Returns a table containing basic information about the jobs performed by the task scheduler
 	 * 
 	 * In computing, a task scheduler is a system responsible for executing key tasks at the appropriate intervals.
@@ -721,7 +729,7 @@ interface DataModel extends ServiceProvider {
 	 *  - [DataModel.GetJobTimePeakFraction](https://developer.roblox.com/api-reference/function/DataModel/GetJobTimePeakFraction)
 	 * @returns A table containing information about the jobs performed by the task scheduler, see above for the format
 	 */
-	GetJobsInfo(): unknown;
+	GetJobsInfo(this: DataModel): unknown;
 	/** This function returns an array of [Instances](https://developer.roblox.com/api-reference/class/Instance) associated with the given [content](https://developer.roblox.com/search#stq=Content) URL.
 	 * 
 	 * This function can be used to insert content from the Roblox [library][1], such as:
@@ -746,7 +754,7 @@ interface DataModel extends ServiceProvider {
 	 * @param url The given `Articles/Content|content` URL
 	 * @returns An array of `Instance|Instances` associated with the `Articles/Content|content` URL
 	 */
-	GetObjects(url: string): Array<Instance>;
+	GetObjects(this: DataModel, url: string): Array<Instance>;
 	/** This function sets the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) of the game instance to the given *placeId*.
 	 * 
 	 * Setting the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) is required to access the `DataStoreService` when the place is unpublished (for example a local .rbxl file). See below for an example. Note this will only work when the *‘Enable Studio Access to API Services`* option is enabled under game settings.
@@ -762,20 +770,20 @@ interface DataModel extends ServiceProvider {
 	 * You can use [DataModel.SetUniverseId](https://developer.roblox.com/api-reference/function/DataModel/SetUniverseId) to set the [DataModel.GameId](https://developer.roblox.com/api-reference/property/DataModel/GameId) of the game instance. However, it is the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) that must be set to access the `DataStoreService`.
 	 * @param placeId The ID to set the `DataModel/PlaceId` to
 	 */
-	SetPlaceId(placeId: number): void;
+	SetPlaceId(this: DataModel, placeId: number): void;
 	/** This function sets the [DataModel.GameId](https://developer.roblox.com/api-reference/property/DataModel/GameId) of the current game instance to the given *universeId*. This is useful when testing local .rbxl files that have not been published to Roblox.
 	 * 
 	 * If you want to access the `DataStoreService` in an unpublished place, you should use [DataModel.SetPlaceId](https://developer.roblox.com/api-reference/function/DataModel/SetPlaceId) instead.
 	 * @param universeId The ID to set the `DataModel/GameId` to
 	 */
-	SetUniverseId(universeId: number): void;
+	SetUniverseId(this: DataModel, universeId: number): void;
 }
 
 interface StatsItem extends Instance {
 	/** Returns the StatsItem's value. */
-	GetValue(): number;
+	GetValue(this: StatsItem): number;
 	/** Returns the StatsItem's value as a formatted string. */
-	GetValueString(): string;
+	GetValueString(this: StatsItem): string;
 }
 
 interface Studio extends Instance {
@@ -787,7 +795,7 @@ interface Studio extends Instance {
 	 * 
 	 * @returns A list of themes available in Studio
 	 */
-	GetAvailableThemes(): unknown;
+	GetAvailableThemes(this: Studio): unknown;
 	/** The **ThemeChanged** event fires when Studio's [Theme](https://developer.roblox.com/api-reference/property/Studio/Theme) changes. The best use of this event is to get the colors from the theme that changed and update your plugin’s UI accordingly.
 	 * 
 	 * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
@@ -804,9 +812,9 @@ interface StudioData extends Instance {
 
 interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
-	ConvertToPackageUpload(uploadUrl: string): void;
+	ConvertToPackageUpload(this: StudioService, uploadUrl: string): void;
 	/** [NO DOCUMENTATION] */
-	GetClassIcon(className: string): object;
+	GetClassIcon(this: StudioService, className: string): object;
 	/** 
 	 * Tags: Yields
 	
@@ -814,7 +822,7 @@ interface StudioService extends Instance {
 	 *
 	 * Tags: Yields
 	 */
-	PromptImportFile(fileTypeFilter?: Array<any>): Instance | undefined;
+	PromptImportFile(this: StudioService, fileTypeFilter?: Array<any>): Instance | undefined;
 	/** 
 	 * Tags: Yields
 	
@@ -822,7 +830,7 @@ interface StudioService extends Instance {
 	 *
 	 * Tags: Yields
 	 */
-	PromptImportFiles(fileTypeFilter?: Array<any>): Array<Instance>;
+	PromptImportFiles(this: StudioService, fileTypeFilter?: Array<any>): Array<Instance>;
 }
 
 interface StudioTheme extends Instance {
@@ -837,7 +845,7 @@ interface StudioTheme extends Instance {
 	 * @param modifier The modifier you want to place on the `StyleGuideColor` element
 	 * @returns The corresponding Color3 theme value
 	 */
-	GetColor(styleguideitem: CastsToEnum<Enum.StudioStyleGuideColor>, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): Color3;
+	GetColor(this: StudioTheme, styleguideitem: CastsToEnum<Enum.StudioStyleGuideColor>, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): Color3;
 	/** The GetPath function returns the path of an asset (or image) for the `Id` and `Modifier`. We can have different icons to be loaded depending on the theme.
 	 * 
 	 * The `StyleGuideModifer` argument's default value is `Enum\StyleGuideModifier`, which applies no modifier.
@@ -853,7 +861,7 @@ interface StudioTheme extends Instance {
 	 * @param modifier The modifier you want to apply to the specified asset
 	 * @returns The path of the id with the modifier
 	 */
-	GetPath(assetid: string, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): string;
+	GetPath(this: StudioTheme, assetid: string, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): string;
 }
 
 interface TestService extends Instance {
@@ -864,6 +872,6 @@ interface TestService extends Instance {
 	 *
 	 * Tags: Yields
 	 */
-	Run(): void;
+	Run(this: TestService): void;
 }
 
