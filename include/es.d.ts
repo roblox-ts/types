@@ -25,11 +25,11 @@ interface ObjectConstructor {
 	 * Copy the values of all of the enumerable own properties from one or more source objects to a target object.
 	 * Returns the target object.
 	 */
-	assign<A, B>(target: A, source: B): A & B;
-	assign<A, B, C>(target: A, source1: B, source2: C): A & B & C;
-	assign<A, B, C, D>(target: A, source1: B, source2: C, source3: D): A & B & C & D;
-	assign<A, B, C, D, E>(target: A, source1: B, source2: C, source3: D, source4: E): A & B & C & D & E;
-	assign<A, B, C, D, E, F>(
+	assign<A extends object, B>(target: A, source: B): A & B;
+	assign<A extends object, B, C>(target: A, source1: B, source2: C): A & B & C;
+	assign<A extends object, B, C, D>(target: A, source1: B, source2: C, source3: D): A & B & C & D;
+	assign<A extends object, B, C, D, E>(target: A, source1: B, source2: C, source3: D, source4: E): A & B & C & D & E;
+	assign<A extends object, B, C, D, E, F>(
 		target: A,
 		source1: B,
 		source2: C,
@@ -85,7 +85,7 @@ interface ObjectConstructor {
 		? Array<[K, NonNullable<V>]>
 		: T extends ArrayLike<infer W>
 		? Array<[number, NonNullable<W>]>
-		: Array<[keyof T, NonNullable<T[keyof T]>]>;
+		: Array<{ [K in keyof T]: T[K] extends undefined ? never : [K, T[K]] }[keyof T]>;
 
 	/**
 	 * Returns true if empty, otherwise false.
