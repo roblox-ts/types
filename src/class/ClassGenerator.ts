@@ -14,6 +14,7 @@ import {
 	ApiValueType,
 	ClassTag,
 	MemberTag,
+	SecurityType,
 } from "../api";
 import { Generator } from "./Generator";
 import { ReflectionMetadata } from "./ReflectionMetadata";
@@ -635,14 +636,16 @@ function handleLinkData(
 	);
 }
 
+const cacher = new Map<ts.InterfaceDeclaration, Array<ts.PropertySignature | ts.MethodSignature>>();
+
 export class ClassGenerator extends Generator {
 	private ClassReferences = new Map<string, ApiClass>();
 
 	constructor(
 		filePath: string,
 		protected metadata: ReflectionMetadata,
-		private security: string,
-		private lowerSecurity: string | undefined,
+		private security: SecurityType,
+		private lowerSecurity: SecurityType | undefined,
 	) {
 		super(filePath, metadata);
 	}
@@ -678,11 +681,9 @@ export class ClassGenerator extends Generator {
 
 	private writeSignatures(
 		rbxMember: ApiMemberBase,
-		getNodes: (tsImplInterface: ts.InterfaceDeclaration) => Array<ts.PropertySignature | ts.MethodSignature>,
 		tsImplInterface?: ts.InterfaceDeclaration,
 		description?: string,
 	) {
-		// this.writeSignatures(rbxProperty, impl => impl.getProperties(), tsImplInterface, description);
 		if (tsImplInterface) {
 			const name = rbxMember.Name;
 			const signatures = Array<string>();
@@ -690,7 +691,10 @@ export class ClassGenerator extends Generator {
 			if (description) {
 				documentations.push(this.formatDescription(description));
 			}
-			const nodes = getNodes(tsImplInterface);
+
+			let nodes = cacher.get(tsImplInterface);
+			if (!nodes) cacher.set(tsImplInterface, (nodes = [...tsImplInterface.getProperties(), ...tsImplInterface.getMethods()]));
+
 			nodes
 				.filter(prop => prop.getName() === name)
 				.forEach(node => {
@@ -730,7 +734,7 @@ export class ClassGenerator extends Generator {
 				? wikiDescription
 				: this.metadata.getCallbackDescription(className, name);
 
-		if (!this.writeSignatures(rbxCallback, impl => impl.getProperties(), tsImplInterface, description)) {
+		if (!this.writeSignatures(rbxCallback, tsImplInterface, description)) {
 			this.write(`${name}: (${args}) => void;`);
 		}
 	}
@@ -744,7 +748,7 @@ export class ClassGenerator extends Generator {
 				? wikiDescription
 				: this.metadata.getEventDescription(className, name);
 
-		if (!this.writeSignatures(rbxEvent, impl => impl.getProperties(), tsImplInterface, description)) {
+		if (!this.writeSignatures(rbxEvent, tsImplInterface, description)) {
 			this.write(`readonly ${name}: RBXScriptSignal<(${args}) => void>;`);
 		}
 	}
@@ -759,7 +763,7 @@ export class ClassGenerator extends Generator {
 				wikiDescription && wikiDescription.trim() !== ""
 					? wikiDescription
 					: this.metadata.getMethodDescription(className, name);
-			if (!this.writeSignatures(rbxFunction, impl => impl.getMethods(), tsImplInterface, description)) {
+			if (!this.writeSignatures(rbxFunction, tsImplInterface, description)) {
 				this.write(`${name}(${args}): ${returnType};`);
 			}
 		} else {
@@ -779,7 +783,7 @@ export class ClassGenerator extends Generator {
 			const surelyDefined = rbxProperty.ValueType.Category !== "Class";
 			const prefix = this.canWrite(rbxProperty) && !memberHasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
 
-			if (!this.writeSignatures(rbxProperty, impl => impl.getProperties(), tsImplInterface, description)) {
+			if (!this.writeSignatures(rbxProperty, tsImplInterface, description)) {
 				this.write(`${prefix}${safeName(name)}${surelyDefined ? "" : "?"}: ${valueType};`);
 			}
 		} else {
