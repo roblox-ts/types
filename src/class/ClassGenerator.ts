@@ -682,6 +682,7 @@ export class ClassGenerator extends Generator {
 		tsImplInterface?: ts.InterfaceDeclaration,
 		description?: string,
 	) {
+		// this.writeSignatures(rbxProperty, impl => impl.getProperties(), tsImplInterface, description);
 		if (tsImplInterface) {
 			const name = rbxMember.Name;
 			const signatures = Array<string>();
@@ -761,6 +762,8 @@ export class ClassGenerator extends Generator {
 			if (!this.writeSignatures(rbxFunction, impl => impl.getMethods(), tsImplInterface, description)) {
 				this.write(`${name}(${args}): ${returnType};`);
 			}
+		} else {
+			console.log(name, "is very bad!!!", className);
 		}
 	}
 
@@ -779,6 +782,8 @@ export class ClassGenerator extends Generator {
 			if (!this.writeSignatures(rbxProperty, impl => impl.getProperties(), tsImplInterface, description)) {
 				this.write(`${prefix}${safeName(name)}${surelyDefined ? "" : "?"}: ${valueType};`);
 			}
+		} else {
+			console.log(name, "is very bad!!!", className);
 		}
 	}
 
@@ -794,23 +799,6 @@ export class ClassGenerator extends Generator {
 		);
 	}
 
-	private generateMember(
-		rbxClass: ApiClass,
-		rbxMember: ApiMember,
-		className: string,
-		tsImplInterface?: ts.InterfaceDeclaration,
-	) {
-		if (rbxMember.MemberType === "Callback") {
-			this.generateCallback(rbxMember, className, tsImplInterface);
-		} else if (rbxMember.MemberType === "Event") {
-			this.generateEvent(rbxMember, className, tsImplInterface);
-		} else if (rbxMember.MemberType === "Function") {
-			this.generateFunction(rbxMember, className, tsImplInterface);
-		} else if (rbxMember.MemberType === "Property") {
-			this.generateProperty(rbxMember, className, tsImplInterface);
-		}
-	}
-
 	private generateClassName(rbxClassName: string) {
 		if (this.ClassReferences.get(rbxClassName)) {
 			return rbxClassName;
@@ -820,16 +808,18 @@ export class ClassGenerator extends Generator {
 	}
 
 	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile) {
-		const name = this.generateClassName(rbxClass.Name);
-		const tsImplInterface = tsFile.getInterface(name);
+		const className = this.generateClassName(rbxClass.Name);
+		console.log(className);
+		const tsImplInterface = tsFile.getInterface(className);
 		let extendsStr = "";
 		if (rbxClass.Superclass !== ROOT_CLASS_NAME) {
 			extendsStr = `extends ${this.generateClassName(rbxClass.Superclass)} `;
 		}
 
 		const members = rbxClass.Members.filter(rbxMember => this.shouldGenerateMember(rbxClass, rbxMember));
-		if (this.security === "None" || members.length > 0) {
-			if (this.security === "None") {
+		const noSecurity = this.security === "None";
+		if (noSecurity || members.length > 0) {
+			if (noSecurity) {
 				const descriptions = new Array<string>();
 				const desc = rbxClass.Description;
 				if (desc && desc.trim()) {
@@ -845,21 +835,50 @@ export class ClassGenerator extends Generator {
 				}
 			}
 
-			this.write(`interface ${name} ${extendsStr}{`);
+			this.write(`interface ${className} ${extendsStr}{`);
 			this.pushIndent();
 
-			if (this.security === "None") {
+			if (noSecurity) {
 				this.write(
 					`/** A read-only string representing the class this Instance belongs to. \`classIs()\` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */`,
 				);
 				this.write(
-					`readonly ClassName: ${[name, ...this.subclassify(name)]
+					`readonly ClassName: ${[className, ...this.subclassify(className)]
 						.map(subName => `"${subName}"`)
 						.join(" | ")};`,
 				);
 			}
 
-			members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
+			if (noSecurity && tsImplInterface) {
+				// console.log(className);
+				for (const custom of tsImplInterface.getProperties()) {
+					const name = custom.getName();
+					if (!rbxClass.Members.some(({ Name }) => name === Name)) {
+						const [signature, documentation] = this.getSignature(custom);
+						console.log("\t", className + "." + name);
+						if (documentation.trim()) this.write(documentation);
+						this.write(signature);
+					}
+				}
+			}
+
+			for (const rbxMember of members) {
+				switch (rbxMember.MemberType) {
+					case "Callback":
+						this.generateCallback(rbxMember, className, tsImplInterface);
+						break;
+					case "Event":
+						this.generateEvent(rbxMember, className, tsImplInterface);
+						break;
+					case "Function":
+						this.generateFunction(rbxMember, className, tsImplInterface);
+						break;
+					case "Property":
+						this.generateProperty(rbxMember, className, tsImplInterface);
+						break;
+				}
+			}
+
 			this.popIndent();
 			this.write(`}`);
 			this.write(``);
