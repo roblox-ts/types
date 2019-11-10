@@ -255,8 +255,7 @@ function isCreatable(rbxClass: ApiClass) {
 	);
 }
 
-function generateArgs(params: Array<ApiParameter>, canImplicitlyConvertEnum: boolean = true) {
-	const args = new Array<string>();
+function generateArgs(params: Array<ApiParameter>, canImplicitlyConvertEnum: boolean = true, args = new Array<string>()) {
 	const paramNames = params.map(param => param.Name);
 	for (let i = 0; i < paramNames.length; i++) {
 		const name = paramNames[i];
@@ -752,7 +751,7 @@ export class ClassGenerator extends Generator {
 		const name = rbxFunction.Name;
 		const returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
 		if (returnType !== null) {
-			const args = generateArgs(rbxFunction.Parameters);
+			const args = generateArgs(rbxFunction.Parameters, true, [`this: ${className}`]);
 			const { Description: wikiDescription } = rbxFunction;
 			const description =
 				wikiDescription && wikiDescription.trim() !== ""
