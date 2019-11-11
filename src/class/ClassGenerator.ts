@@ -812,7 +812,6 @@ export class ClassGenerator extends Generator {
 
 	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile) {
 		const className = this.generateClassName(rbxClass.Name);
-		console.log(className);
 		const tsImplInterface = tsFile.getInterface(className);
 		let extendsStr = "";
 		if (rbxClass.Superclass !== ROOT_CLASS_NAME) {
@@ -853,12 +852,10 @@ export class ClassGenerator extends Generator {
 			}
 
 			if (noSecurity && tsImplInterface) {
-				// console.log(className);
 				for (const custom of tsImplInterface.getProperties()) {
 					const name = custom.getName();
 					if (!rbxClass.Members.some(({ Name }) => name === Name)) {
 						const [signature, documentation] = this.getSignature(custom);
-						console.log("\t", className + "." + name);
 						if (documentation.trim()) this.write(documentation);
 						this.write(signature);
 					}
