@@ -194,48 +194,49 @@ declare namespace debug {
 /** @rbxts string */
 interface String {
 	/** Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`, `...`, `s[j]`. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
-	byte(i?: number, j?: number): LuaTuple<Array<number>>;
+	byte(this: string, i?: number, j?: number): LuaTuple<Array<number>>;
 
 	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if `plain` is given, then `init` must be given as well. */
 	/** @rbxts disallow-tuple-truthy */
 	find(
+		this: string,
 		pattern: string,
 		init?: number,
 		plain?: boolean,
 	): LuaTuple<[number, number, ...Array<string>] | Array<undefined>>;
 
 	/** Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). */
-	format(...args: Array<number | string>): string;
+	format(this: string, ...args: Array<number | string>): string;
 
 	/** Returns an iterator function that, each time it is called, returns the next captures from pattern over the string s. */
-	gmatch(pattern: string): IterableFunction<LuaTuple<Array<string>>>;
+	gmatch(this: string, pattern: string): IterableFunction<LuaTuple<Array<string>>>;
 
 	/** Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. */
-	gsub(pattern: string, repl: unknown, n?: number): LuaTuple<[string, number]>;
+	gsub(this: string, pattern: string, repl: unknown, n?: number): LuaTuple<[string, number]>;
 
 	/** Receives a string and returns a copy of this string with all uppercase letters changed to lowercase. */
-	lower(): string;
+	lower(this: string): string;
 
 	/** Looks for the first match of pattern in the string s. If a match is found, it is returned; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. */
 	/** @rbxts disallow-tuple-truthy */
-	match(pattern: string, init?: number): LuaTuple<Array<string> | Array<undefined>>;
+	match(this: string, pattern: string, init?: number): LuaTuple<Array<string> | Array<undefined>>;
 
 	/** Returns a string that is the concatenation of n copies of the string s separated by the string sep. */
-	rep(n: number): string;
+	rep(this: string, n: number): string;
 
 	/** Returns a string that is the string s reversed. */
-	reverse(): string;
+	reverse(this: string): string;
 
 	/** Returns an array of substrings, separated by each `sep`.
 	 * Does not handle Lua character classes, thus, the separator string will be interpreted literally.
 	 */
-	split(sep: string): Array<string>;
+	split(this: string, sep: string): Array<string>;
 
 	/** Returns the substring of s that starts at i and continues until j; i and j can be negative. If j is absent, then it is assumed to be equal to -1 (which is the same as the string length). */
-	sub(i: number, j?: number): string;
+	sub(this: string, i: number, j?: number): string;
 
 	/** Receives a string and returns a copy of this string with all lowercase letters changed to uppercase. All other characters are left unchanged. */
-	upper(): string;
+	upper(this: string): string;
 }
 
 declare namespace string {

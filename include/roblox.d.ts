@@ -552,7 +552,7 @@ interface RBXScriptConnection {
 	 */
 	Connected: boolean;
 	/** Disconnects the connection from the event. */
-	Disconnect(): void;
+	Disconnect(this: RBXScriptConnection): void;
 }
 
 /**
@@ -568,13 +568,14 @@ interface RBXScriptSignal<T = Function, P = false> {
 	 * @param callback The function to be called whenever the event is fired.
 	 */
 	Connect<O extends Array<unknown> = FunctionArguments<T>>(
+		this: RBXScriptSignal<T, P>,
 		callback: P extends true ? (FunctionArguments<T> extends Array<unknown> ? (...args: O) => void : T) : T,
 	): RBXScriptConnection;
 
 	/**
 	 * Yields the current thread until this signal is fired. Returns what was fired to the signal.
 	 */
-	Wait(): LuaTuple<FunctionArguments<T>>;
+	Wait(this: RBXScriptSignal<T, P>): LuaTuple<FunctionArguments<T>>;
 }
 
 // generated in generated_classes.d.ts
@@ -608,11 +609,6 @@ interface InstanceConstructor {
 }
 
 declare const Instance: InstanceConstructor;
-
-interface PointsService extends Instance {
-	/** This function was once part of the PointService class used to control an ancient achievement system since removed and deprecated. It should not be used in new work. */
-	AwardPoints(userId: number, amount: number): LuaTuple<[number, number, number, 0]>;
-}
 
 /**
  * Axes is a datatype used for the ArcHandles class to control what rotation axes are currently enabled.
@@ -663,7 +659,7 @@ interface Color3 {
 	readonly g: number;
 	/** The blue component (between 0 and 1) */
 	readonly b: number;
-	Lerp(goal: Color3, alpha: number): Color3;
+	Lerp(this: Color3, goal: Color3, alpha: number): Color3;
 }
 
 interface BrickColorsByNumber {
@@ -1051,12 +1047,13 @@ interface BrickColorConstructor {
 	new (color: Color3): BrickColor;
 
 	/** Constructs a BrickColor from its palette index. */
-	palette<T extends keyof BrickColorsByPalette>(
-		paletteValue: T,
-	): BrickColor<BrickColorsByPalette[T], BrickColorsByNumber[BrickColorsByPalette[T]]>;
-
-	/** Constructs a BrickColor from its palette index. */
-	palette(paletteValue: number): BrickColor;
+	palette: {
+		<T extends keyof BrickColorsByPalette>(paletteValue: T): BrickColor<
+			BrickColorsByPalette[T],
+			BrickColorsByNumber[BrickColorsByPalette[T]]
+		>;
+		(paletteValue: number): BrickColor;
+	};
 }
 
 declare const BrickColor: BrickColorConstructor;
@@ -1078,33 +1075,33 @@ interface CFrame {
 	/** The up-direction component of the CFrame’s orientation. */
 	readonly UpVector: Vector3;
 	/** Returns the inverse of this CFrame */
-	Inverse(): CFrame;
+	Inverse(this: CFrame): CFrame;
 	/** Returns a CFrame interpolated between this CFrame and the goal by the fraction alpha */
-	Lerp(goal: CFrame, alpha: number): CFrame;
+	Lerp(this: CFrame, goal: CFrame, alpha: number): CFrame;
 	/** Returns a CFrame transformed from Object to World space. Equivalent to `[CFrame * cf]` */
-	ToWorldSpace(cf: CFrame): CFrame;
+	ToWorldSpace(this: CFrame, cf: CFrame): CFrame;
 	/** Returns a CFrame transformed from World to Object space. Equivalent to `[CFrame:inverse() * cf]` */
-	ToObjectSpace(cf: CFrame): CFrame;
+	ToObjectSpace(this: CFrame, cf: CFrame): CFrame;
 	/** Returns a Vector3 transformed from Object to World space. Equivalent to `[CFrame * v3]` */
-	PointToWorldSpace(v3: Vector3): Vector3;
+	PointToWorldSpace(this: CFrame, v3: Vector3): Vector3;
 	/** Returns a Vector3 transformed from World to Object space. Equivalent to `[CFrame:inverse() * v3]` */
-	PointToObjectSpace(v3: Vector3): Vector3;
+	PointToObjectSpace(this: CFrame, v3: Vector3): Vector3;
 	/** Returns a Vector3 rotated from Object to World space. Equivalent to `[(CFrame - CFrame.p) *v3]` */
-	VectorToWorldSpace(v3: Vector3): Vector3;
+	VectorToWorldSpace(this: CFrame, v3: Vector3): Vector3;
 	/** Returns a Vector3 rotated from World to Object space. Equivalent to `[(CFrame:inverse() - CFrame:inverse().p) * v3]` */
-	VectorToObjectSpace(v3: Vector3): Vector3;
+	VectorToObjectSpace(this: CFrame, v3: Vector3): Vector3;
 	/** Returns the values: x, y, z, R00, R01, R02, R10, R11, R12, R20, R21, R22, where R00-R22 represent the 3x3 rotation matrix of the CFrame, and xyz represent the position of the CFrame. */
-	GetComponents(): LuaTuple<
-		[number, number, number, number, number, number, number, number, number, number, number, number]
-	>;
+	GetComponents(
+		this: CFrame,
+	): LuaTuple<[number, number, number, number, number, number, number, number, number, number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, Y, X order */
-	ToEulerAnglesXYZ(): LuaTuple<[number, number, number]>;
+	ToEulerAnglesXYZ(this: CFrame): LuaTuple<[number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order */
-	ToEulerAnglesYXZ(): LuaTuple<[number, number, number]>;
+	ToEulerAnglesYXZ(this: CFrame): LuaTuple<[number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order (Equivalent to toEulerAnglesYXZ) */
-	ToOrientation(): LuaTuple<[number, number, number]>;
+	ToOrientation(this: CFrame): LuaTuple<[number, number, number]>;
 	/** Returns a tuple of a Vector3 and a number which represent the rotation of the CFrame in the axis-angle representation */
-	ToAxisAngle(): LuaTuple<[Vector3, number]>;
+	ToAxisAngle(this: CFrame): LuaTuple<[Vector3, number]>;
 }
 interface CFrameConstructor {
 	/** Equivalent to fromEulerAnglesXYZ */
@@ -1283,10 +1280,10 @@ declare const PhysicalProperties: PhysicalPropertiesConstructor;
 
 // Random
 interface Random {
-	NextInteger(min: number, max: number): number;
-	NextNumber(): number;
-	NextNumber(min: number, max: number): number;
-	Clone(): Random;
+	NextInteger(this: Random, min: number, max: number): number;
+	NextNumber(this: Random): number;
+	NextNumber(this: Random, min: number, max: number): number;
+	Clone(this: Random): Random;
 }
 interface RandomConstructor {
 	new (seed: number): Random;
@@ -1299,8 +1296,8 @@ interface Ray {
 	readonly Origin: Vector3;
 	readonly Direction: Vector3;
 	readonly Unit: Ray;
-	ClosestPoint(point: Vector3): Vector3;
-	Distance(point: Vector3): number;
+	ClosestPoint(this: Ray, point: Vector3): Vector3;
+	Distance(this: Ray, point: Vector3): number;
 }
 type RayConstructor = new (origin: Vector3, direction: Vector3) => Ray;
 declare const Ray: RayConstructor;
@@ -1322,7 +1319,7 @@ declare const Rect: RectConstructor;
 interface Region3 {
 	readonly CFrame: CFrame;
 	readonly Size: Vector3;
-	ExpandToGrid(resolution: number): Region3;
+	ExpandToGrid(this: Region3, resolution: number): Region3;
 }
 type Region3Constructor = new (min: Vector3, max: Vector3) => Region3;
 declare const Region3: Region3Constructor;
@@ -1368,7 +1365,7 @@ interface UDim2 {
 	readonly Y: UDim;
 	readonly Width: UDim;
 	readonly Height: UDim;
-	Lerp(goal: UDim2, alpha: number): UDim2;
+	Lerp(this: UDim2, goal: UDim2, alpha: number): UDim2;
 }
 interface UDim2Constructor {
 	new (): UDim2;
@@ -1388,11 +1385,11 @@ interface Vector2 {
 	/** The length of the vector */
 	readonly Magnitude: number;
 	/** Returns a scalar dot product of the two vectors */
-	Dot(other: Vector2): number;
+	Dot(this: Vector2, other: Vector2): number;
 	/** Returns a Vector2 linearly interpolated between this Vector2 and the goal by the fraction alpha */
-	Lerp(goal: Vector2, alpha: number): Vector2;
+	Lerp(this: Vector2, goal: Vector2, alpha: number): Vector2;
 	/** Returns the cross product of the two vectors */
-	Cross(other: Vector2): Vector2;
+	Cross(this: Vector2, other: Vector2): Vector2;
 }
 type Vector2Constructor = new (x?: number, y?: number) => Vector2;
 declare const Vector2: Vector2Constructor;
@@ -1415,13 +1412,13 @@ interface Vector3 {
 	/** The length of the vector */
 	readonly Magnitude: number;
 	/** Returns a Vector3 linearly interpolated between this Vector3 and the goal by the fraction alpha. */
-	Lerp(goal: Vector3, alpha: number): Vector3;
+	Lerp(this: Vector3, goal: Vector3, alpha: number): Vector3;
 	/** Returns a scalar dot product of the two vectors. */
-	Dot(other: Vector3): number;
+	Dot(this: Vector3, other: Vector3): number;
 	/** Returns the cross product of the two vectors. */
-	Cross(other: Vector3): Vector3;
+	Cross(this: Vector3, other: Vector3): Vector3;
 	/** Returns true if the other Vector3 falls within the epsilon radius of this Vector3. */
-	isClose(other: Vector3, epsilon: number): boolean;
+	isClose(this: Vector3, other: Vector3, epsilon: number): boolean;
 }
 interface Vector3Constructor {
 	FromNormalId: (norm: Enum.NormalId) => Vector3;
