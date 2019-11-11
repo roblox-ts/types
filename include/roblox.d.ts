@@ -540,6 +540,12 @@ interface SendNotificationConfig {
 	Button2?: string;
 }
 
+interface PolicyInfo {
+	AllowedExternalLinkReferences: Array<string>; // probably right, but unconfirmed
+	ArePaidRandomItemsRestricted: boolean;
+	IsSubjectToChinaPolicies: boolean;
+}
+
 /**
  * RBXScriptConnection, also known as a Connection,
  * is a special object returned by the Connect method of an Event (RBXScriptSignal).

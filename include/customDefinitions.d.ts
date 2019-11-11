@@ -976,3 +976,7 @@ interface ValueBase extends Instance {
 interface ObjectValue extends ValueBase {
 	readonly Changed: RBXScriptSignal<(value?: Instance) => void>;
 }
+
+interface PolicyService extends Instance {
+	GetPolicyInfoForPlayerAsync(this: PolicyService, player: Instance): PolicyInfo;
+}
