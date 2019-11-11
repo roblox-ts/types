@@ -643,6 +643,7 @@ interface ScriptDebugger extends Instance {
 }
 
 interface PointsService extends Instance {
+	/** This function was once part of the PointService class used to control an ancient achievement system since removed and deprecated. It should not be used in new work. */
 	AwardPoints(this: PointsService, userId: number, amount: number): LuaTuple<[number, number, number, 0]>;
 }
 
