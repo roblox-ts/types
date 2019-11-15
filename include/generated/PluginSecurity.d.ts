@@ -181,7 +181,7 @@ interface NetworkSettings extends Instance {
 	readonly FreeMemoryMBytes: number;
 }
 
-interface Workspace extends Model {
+interface Workspace extends WorldRoot {
 	BreakJoints: any;
 	MakeJoints: any;
 	/** Positions and zooms the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) to show the extent of `BasePart`s currently in the `Workspace`.

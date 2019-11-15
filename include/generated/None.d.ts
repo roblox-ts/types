@@ -249,6 +249,7 @@ interface CreatableInstances {
 	TrussPart: TrussPart;
 	VehicleSeat: VehicleSeat;
 	Model: Model;
+	WorldModel: WorldModel;
 	PartOperationAsset: PartOperationAsset;
 	ParticleEmitter: ParticleEmitter;
 	PluginAction: PluginAction;
@@ -385,6 +386,7 @@ interface Instances extends Services, CreatableInstances {
 	Terrain: Terrain;
 	TriangleMeshPart: TriangleMeshPart;
 	Status: Status;
+	WorldRoot: WorldRoot;
 	PackageLink: PackageLink;
 	Pages: Pages;
 	DataStorePages: DataStorePages;
@@ -440,7 +442,7 @@ interface Instances extends Services, CreatableInstances {
  */
 interface Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Instance" | "ABTestService" | "Accoutrement" | "AdService" | "AdvancedDragger" | "AnalyticsService" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AssetService" | "Attachment" | "Backpack" | "BackpackItem" | "BadgeService" | "BasePlayerGui" | "Beam" | "BindableEvent" | "BindableFunction" | "BodyMover" | "BrowserService" | "CacheableContentProvider" | "Camera" | "ChangeHistoryService" | "CharacterAppearance" | "Chat" | "ClickDetector" | "ClusterPacketCache" | "CollectionService" | "Configuration" | "Constraint" | "ContentProvider" | "ContextActionService" | "Controller" | "ControllerService" | "CookiesService" | "CorePackages" | "CoreScriptSyncService" | "CustomEvent" | "CustomEventReceiver" | "DataModelMesh" | "DataModelSession" | "DataStoreService" | "Debris" | "DebugSettings" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "Dialog" | "DialogChoice" | "DraftsService" | "Dragger" | "Explosion" | "FaceInstance" | "Feature" | "File" | "Fire" | "FlagStandService" | "FlyweightService" | "Folder" | "ForceField" | "FriendService" | "FunctionalTest" | "GamePassService" | "GameSettings" | "GamepadService" | "Geometry" | "GlobalDataStore" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuiBase" | "GuiService" | "GuidRegistryService" | "HapticService" | "Hopper" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidDescription" | "InputObject" | "InsertService" | "JointInstance" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "Light" | "Lighting" | "LocalStorageService" | "LocalizationService" | "LocalizationTable" | "LogService" | "LoginService" | "LuaSettings" | "LuaSourceContainer" | "LuaWebService" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "Message" | "MessagingService" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NetworkMarker" | "NetworkPeer" | "NetworkReplicator" | "NetworkSettings" | "NoCollisionConstraint" | "NotificationService" | "PVInstance" | "PackageLink" | "PackageService" | "Pages" | "PartOperationAsset" | "ParticleEmitter" | "Path" | "PathfindingService" | "PhysicsPacketCache" | "PhysicsService" | "PhysicsSettings" | "Player" | "PlayerScripts" | "Players" | "Plugin" | "PluginAction" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginMenu" | "PluginToolbar" | "PluginToolbarButton" | "PointsService" | "PolicyService" | "Pose" | "PostEffect" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClasses" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderSettings" | "RenderingTest" | "ReplicatedFirst" | "ReplicatedStorage" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RunService" | "RuntimeScriptService" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "Selection" | "ServerScriptService" | "ServerStorage" | "ServiceProvider" | "Sky" | "Smoke" | "SocialService" | "Sound" | "SoundEffect" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "StandalonePluginScripts" | "StarterGear" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "StatsItem" | "StopWatchReporter" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "TerrainRegion" | "TestService" | "TextFilterResult" | "TextService" | "ThirdPartyUserService" | "TimerService" | "TouchInputService" | "TouchTransmitter" | "Trail" | "Translator" | "TweenBase" | "TweenService" | "UGCValidationService" | "UIBase" | "UserGameSettings" | "UserInputService" | "VRService" | "ValueBase" | "VersionControlService" | "VirtualInputManager" | "VirtualUser" | "Visit" | "WeldConstraint" | "Accessory" | "Hat" | "HopperBin" | "Tool" | "Flag" | "CoreGui" | "PlayerGui" | "StarterGui" | "BodyAngularVelocity" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "RocketPropulsion" | "MeshContentProvider" | "SolidModelContentProvider" | "BodyColors" | "CharacterMesh" | "Clothing" | "ShirtGraphic" | "Skin" | "Pants" | "Shirt" | "AlignOrientation" | "AlignPosition" | "AngularVelocity" | "BallSocketConstraint" | "HingeConstraint" | "LineForce" | "RodConstraint" | "RopeConstraint" | "SlidingBallConstraint" | "SpringConstraint" | "Torque" | "VectorForce" | "CylindricalConstraint" | "PrismaticConstraint" | "HumanoidController" | "SkateboardController" | "VehicleController" | "BevelMesh" | "FileMesh" | "BlockMesh" | "CylinderMesh" | "SpecialMesh" | "Decal" | "Texture" | "Hole" | "MotorFeature" | "CSGDictionaryService" | "NonReplicatedCSGDictionaryService" | "OrderedDataStore" | "GuiBase2d" | "GuiBase3d" | "GuiObject" | "LayerCollector" | "Frame" | "GuiButton" | "GuiLabel" | "ScrollingFrame" | "TextBox" | "ViewportFrame" | "ImageButton" | "TextButton" | "ImageLabel" | "TextLabel" | "BillboardGui" | "PluginGui" | "ScreenGui" | "SurfaceGui" | "DockWidgetPluginGui" | "QWidgetPluginGui" | "GuiMain" | "FloorWire" | "PVAdornment" | "PartAdornment" | "SelectionLasso" | "HandleAdornment" | "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment" | "HandlesBase" | "SurfaceSelection" | "ArcHandles" | "Handles" | "SelectionPartLasso" | "SelectionPointLasso" | "DynamicRotate" | "Glue" | "ManualSurfaceJointInstance" | "Motor" | "Rotate" | "Snap" | "VelocityMotor" | "Weld" | "RotateP" | "RotateV" | "ManualGlue" | "ManualWeld" | "Motor6D" | "PointLight" | "SpotLight" | "SurfaceLight" | "AppStorageService" | "UserStorageService" | "BaseScript" | "ModuleScript" | "CoreScript" | "Script" | "LocalScript" | "Hint" | "PlayerMouse" | "PluginMouse" | "NetworkClient" | "NetworkServer" | "ClientReplicator" | "ServerReplicator" | "BasePart" | "Model" | "CornerWedgePart" | "FormFactorPart" | "Terrain" | "TriangleMeshPart" | "TrussPart" | "VehicleSeat" | "Part" | "WedgePart" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation" | "Status" | "Workspace" | "DataStorePages" | "FriendPages" | "InventoryPages" | "StandardPages" | "EmotesPages" | "BloomEffect" | "BlurEffect" | "ColorCorrectionEffect" | "SunRaysEffect" | "ReflectionMetadataClass" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataMember" | "DataModel" | "GenericSettings" | "AnalysticsSettings" | "GlobalSettings" | "UserSettings" | "ChorusSoundEffect" | "CompressorSoundEffect" | "DistortionSoundEffect" | "EchoSoundEffect" | "EqualizerSoundEffect" | "FlangeSoundEffect" | "PitchShiftSoundEffect" | "ReverbSoundEffect" | "TremoloSoundEffect" | "StarterCharacterScripts" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "TotalCountTimeIntervalItem" | "Tween" | "UIComponent" | "UIConstraint" | "UILayout" | "UIPadding" | "UIScale" | "UIAspectRatioConstraint" | "UISizeConstraint" | "UITextSizeConstraint" | "UIGridStyleLayout" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPageLayout" | "UITableLayout" | "BinaryStringValue" | "BoolValue" | "BrickColorValue" | "CFrameValue" | "Color3Value" | "DoubleConstrainedValue" | "IntConstrainedValue" | "IntValue" | "NumberValue" | "ObjectValue" | "RayValue" | "StringValue" | "Vector3Value";
+	readonly ClassName: "Instance" | "ABTestService" | "Accoutrement" | "AdService" | "AdvancedDragger" | "AnalyticsService" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AssetService" | "Attachment" | "Backpack" | "BackpackItem" | "BadgeService" | "BasePlayerGui" | "Beam" | "BindableEvent" | "BindableFunction" | "BodyMover" | "BrowserService" | "CacheableContentProvider" | "Camera" | "ChangeHistoryService" | "CharacterAppearance" | "Chat" | "ClickDetector" | "ClusterPacketCache" | "CollectionService" | "Configuration" | "Constraint" | "ContentProvider" | "ContextActionService" | "Controller" | "ControllerService" | "CookiesService" | "CorePackages" | "CoreScriptSyncService" | "CustomEvent" | "CustomEventReceiver" | "DataModelMesh" | "DataModelSession" | "DataStoreService" | "Debris" | "DebugSettings" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "Dialog" | "DialogChoice" | "DraftsService" | "Dragger" | "Explosion" | "FaceInstance" | "Feature" | "File" | "Fire" | "FlagStandService" | "FlyweightService" | "Folder" | "ForceField" | "FriendService" | "FunctionalTest" | "GamePassService" | "GameSettings" | "GamepadService" | "Geometry" | "GlobalDataStore" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuiBase" | "GuiService" | "GuidRegistryService" | "HapticService" | "Hopper" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidDescription" | "InputObject" | "InsertService" | "JointInstance" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "Light" | "Lighting" | "LocalStorageService" | "LocalizationService" | "LocalizationTable" | "LogService" | "LoginService" | "LuaSettings" | "LuaSourceContainer" | "LuaWebService" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "Message" | "MessagingService" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NetworkMarker" | "NetworkPeer" | "NetworkReplicator" | "NetworkSettings" | "NoCollisionConstraint" | "NotificationService" | "PVInstance" | "PackageLink" | "PackageService" | "Pages" | "PartOperationAsset" | "ParticleEmitter" | "Path" | "PathfindingService" | "PhysicsPacketCache" | "PhysicsService" | "PhysicsSettings" | "Player" | "PlayerScripts" | "Players" | "Plugin" | "PluginAction" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginMenu" | "PluginToolbar" | "PluginToolbarButton" | "PointsService" | "PolicyService" | "Pose" | "PostEffect" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClasses" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderSettings" | "RenderingTest" | "ReplicatedFirst" | "ReplicatedStorage" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RunService" | "RuntimeScriptService" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "Selection" | "ServerScriptService" | "ServerStorage" | "ServiceProvider" | "Sky" | "Smoke" | "SocialService" | "Sound" | "SoundEffect" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "StandalonePluginScripts" | "StarterGear" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "StatsItem" | "StopWatchReporter" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "TerrainRegion" | "TestService" | "TextFilterResult" | "TextService" | "ThirdPartyUserService" | "TimerService" | "TouchInputService" | "TouchTransmitter" | "Trail" | "Translator" | "TweenBase" | "TweenService" | "UGCValidationService" | "UIBase" | "UserGameSettings" | "UserInputService" | "VRService" | "ValueBase" | "VersionControlService" | "VirtualInputManager" | "VirtualUser" | "Visit" | "WeldConstraint" | "Accessory" | "Hat" | "HopperBin" | "Tool" | "Flag" | "CoreGui" | "PlayerGui" | "StarterGui" | "BodyAngularVelocity" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "RocketPropulsion" | "MeshContentProvider" | "SolidModelContentProvider" | "BodyColors" | "CharacterMesh" | "Clothing" | "ShirtGraphic" | "Skin" | "Pants" | "Shirt" | "AlignOrientation" | "AlignPosition" | "AngularVelocity" | "BallSocketConstraint" | "HingeConstraint" | "LineForce" | "RodConstraint" | "RopeConstraint" | "SlidingBallConstraint" | "SpringConstraint" | "Torque" | "VectorForce" | "CylindricalConstraint" | "PrismaticConstraint" | "HumanoidController" | "SkateboardController" | "VehicleController" | "BevelMesh" | "FileMesh" | "BlockMesh" | "CylinderMesh" | "SpecialMesh" | "Decal" | "Texture" | "Hole" | "MotorFeature" | "CSGDictionaryService" | "NonReplicatedCSGDictionaryService" | "OrderedDataStore" | "GuiBase2d" | "GuiBase3d" | "GuiObject" | "LayerCollector" | "Frame" | "GuiButton" | "GuiLabel" | "ScrollingFrame" | "TextBox" | "ViewportFrame" | "ImageButton" | "TextButton" | "ImageLabel" | "TextLabel" | "BillboardGui" | "PluginGui" | "ScreenGui" | "SurfaceGui" | "DockWidgetPluginGui" | "QWidgetPluginGui" | "GuiMain" | "FloorWire" | "PVAdornment" | "PartAdornment" | "SelectionLasso" | "HandleAdornment" | "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment" | "HandlesBase" | "SurfaceSelection" | "ArcHandles" | "Handles" | "SelectionPartLasso" | "SelectionPointLasso" | "DynamicRotate" | "Glue" | "ManualSurfaceJointInstance" | "Motor" | "Rotate" | "Snap" | "VelocityMotor" | "Weld" | "RotateP" | "RotateV" | "ManualGlue" | "ManualWeld" | "Motor6D" | "PointLight" | "SpotLight" | "SurfaceLight" | "AppStorageService" | "UserStorageService" | "BaseScript" | "ModuleScript" | "CoreScript" | "Script" | "LocalScript" | "Hint" | "PlayerMouse" | "PluginMouse" | "NetworkClient" | "NetworkServer" | "ClientReplicator" | "ServerReplicator" | "BasePart" | "Model" | "CornerWedgePart" | "FormFactorPart" | "Terrain" | "TriangleMeshPart" | "TrussPart" | "VehicleSeat" | "Part" | "WedgePart" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation" | "Status" | "WorldRoot" | "Workspace" | "WorldModel" | "DataStorePages" | "FriendPages" | "InventoryPages" | "StandardPages" | "EmotesPages" | "BloomEffect" | "BlurEffect" | "ColorCorrectionEffect" | "SunRaysEffect" | "ReflectionMetadataClass" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataMember" | "DataModel" | "GenericSettings" | "AnalysticsSettings" | "GlobalSettings" | "UserSettings" | "ChorusSoundEffect" | "CompressorSoundEffect" | "DistortionSoundEffect" | "EchoSoundEffect" | "EqualizerSoundEffect" | "FlangeSoundEffect" | "PitchShiftSoundEffect" | "ReverbSoundEffect" | "TremoloSoundEffect" | "StarterCharacterScripts" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "TotalCountTimeIntervalItem" | "Tween" | "UIComponent" | "UIConstraint" | "UILayout" | "UIPadding" | "UIScale" | "UIAspectRatioConstraint" | "UISizeConstraint" | "UITextSizeConstraint" | "UIGridStyleLayout" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPageLayout" | "UITableLayout" | "BinaryStringValue" | "BoolValue" | "BrickColorValue" | "CFrameValue" | "Color3Value" | "DoubleConstrainedValue" | "IntConstrainedValue" | "IntValue" | "NumberValue" | "ObjectValue" | "RayValue" | "StringValue" | "Vector3Value";
 	/** Determines if an `Instance` can be cloned using [Instance.Clone](https://developer.roblox.com/api-reference/function/Instance/Clone) or saved to file.
 	 * 
 	 * This property determines whether an object should be included when the game is published or saved, or when [Instance.Clone](https://developer.roblox.com/api-reference/function/Instance/Clone) is called on one of the objects ancestors. Calling Clone directly on an object will return nil if the cloned object is not archivable. Copying an object in Studio (using the 'Duplicate' or 'Copy' options) will ignore the Archivable property and set Archivable to true for the copy.
@@ -13601,7 +13603,7 @@ interface NotificationService extends Instance {
 /** A PVInstance is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically `BasePart` and `Model`. The PV in PVInstance stands for _Position-Velocity_. This class has existed since 2005, and while the class itself no longer has any functionality, it is used for adornable objects that can be connected to both BaseParts and Models. */
 interface PVInstance extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PVInstance" | "BasePart" | "Model" | "CornerWedgePart" | "FormFactorPart" | "Terrain" | "TriangleMeshPart" | "TrussPart" | "VehicleSeat" | "Part" | "WedgePart" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation" | "Status" | "Workspace";
+	readonly ClassName: "PVInstance" | "BasePart" | "Model" | "CornerWedgePart" | "FormFactorPart" | "Terrain" | "TriangleMeshPart" | "TrussPart" | "VehicleSeat" | "Part" | "WedgePart" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation" | "Status" | "WorldRoot" | "Workspace" | "WorldModel";
 }
 
 /** BasePart is an abstract base class for in-world objects that render and are physically simulated while in the `Workspace`. There are several implementations of BasePart, the most common is `Part`, a simple 6-face rectangular prism. Others include `SpawnLocation`, `WedgePart` and the singleton `Terrain` object within the `Workspace`. Most of the time, when documentation refers to a part, most BasePart implementations will work and not just `Part`.
@@ -14649,7 +14651,7 @@ interface VehicleSeat extends BasePart {
  */
 interface Model extends PVInstance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Model" | "Status" | "Workspace";
+	readonly ClassName: "Model" | "Status" | "WorldRoot" | "Workspace" | "WorldModel";
 	/** Points to the `Model`'s primary part. The part is the `BasePart` that is used as a basis when positioning the model using the [Model.MoveTo](https://developer.roblox.com/api-reference/function/Model/MoveTo) and [Model.SetPrimaryPartCFrame](https://developer.roblox.com/api-reference/function/Model/SetPrimaryPartCFrame) functions.
 	 * 
 	 * Note when assigning the PrimaryPart that the part must be a `BasePart` that is descendant of the Model. If this is not the case, the PrimaryPart will be set to nil in Roblox studio, or produce an error if done so by a Script.
@@ -14725,6 +14727,27 @@ interface Status extends Model {
 	readonly ClassName: "Status";
 }
 
+interface WorldRoot extends Model {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "WorldRoot" | "Workspace" | "WorldModel";
+	/** [NO DOCUMENTATION] */
+	FindPartOnRay(this: WorldRoot, ray: Ray, ignoreDescendantsInstance?: Instance, terrainCellsAreCubes?: boolean, ignoreWater?: boolean): unknown;
+	/** [NO DOCUMENTATION] */
+	FindPartOnRayWithIgnoreList(this: WorldRoot, ray: Ray, ignoreDescendantsTable: Array<Instance>, terrainCellsAreCubes?: boolean, ignoreWater?: boolean): unknown;
+	/** [NO DOCUMENTATION] */
+	FindPartOnRayWithWhitelist(this: WorldRoot, ray: Ray, whitelistDescendantsTable: Array<Instance>, ignoreWater?: boolean): unknown;
+	/** [NO DOCUMENTATION] */
+	FindPartsInRegion3(this: WorldRoot, region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<Instance>;
+	/** [NO DOCUMENTATION] */
+	FindPartsInRegion3WithIgnoreList(this: WorldRoot, region: Region3, ignoreDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
+	/** [NO DOCUMENTATION] */
+	FindPartsInRegion3WithWhiteList(this: WorldRoot, region: Region3, whitelistDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
+	/** [NO DOCUMENTATION] */
+	IsRegion3Empty(this: WorldRoot, region: Region3, ignoreDescendentsInstance?: Instance): boolean;
+	/** [NO DOCUMENTATION] */
+	IsRegion3EmptyWithIgnoreList(this: WorldRoot, region: Region3, ignoreDescendentsTable: Array<Instance>): boolean;
+}
+
 /** The Workspace is the service in which any objects that are to be rendered in the 3D world exist. Objects not descending from Workspace will not be rendered or physically interact with the world.
  * 
  * ## What does the Workspace do?
@@ -14759,7 +14782,7 @@ interface Status extends Model {
  * 
  *  - The `Terrain` object can be accessed using the [Workspace.Terrain](https://developer.roblox.com/api-reference/property/Workspace/Terrain) property
  */
-interface Workspace extends Model {
+interface Workspace extends WorldRoot {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Workspace";
 	/** This `Workspace` property determines whether assets created by other uses can be sold in the game.
@@ -14932,234 +14955,6 @@ interface Workspace extends Model {
 	 * [1]: https://developer.roblox.com/assets/5b65bf0c4bf5bf624023ee26/Terrain.png
 	 */
 	Terrain: Terrain;
-	/** FindPartOnRay uses [raycasting][1] to find the first `BasePart` intersecting with a given [DataType.Ray](https://developer.roblox.com/search#stq=Ray). This function returns the position of intersection, the surface normal of the intersecting `BasePart` at the point of intersection, and the `BasePart`'s [BasePart.Material](https://developer.roblox.com/api-reference/property/BasePart/Material).
-	 * 
-	 * ```lua
-	 * local character = game.Players.LocalPlayer.Character
-	 * -- Get the head
-	 * local head = character:FindFirstChild("Head")
-	 * -- Build a ray in the direction the head is facing
-	 * local origin = head.Position
-	 * local lookDirection = head.CFrame.lookVector
-	 * 500)
-	 * -- Raycast, ignoring the player's character
-	 * local part, hitPosition = workspace:FindPartOnRay(ray, character)
-	 * if part then
-	 * 	print("Hit part: " .. part:GetFullName())
-	 * else
-	 * 	print("Did not hit part")
-	 * end
-	 * ```
-	 * 
-	 * The `terrainCellsAreCubes` and `ignoreWater` parameters determine whether `Terrain` cells should be treated as cubes or not, and whether water should be ignored or not.
-	 * 
-	 * If the `ignoreDescendantsInstance` parameter is provided, the raycasting calculation will ignore the given object and all of its descendants. It behaves similar to the [Mouse.TargetFilter](https://developer.roblox.com/api-reference/property/Mouse/TargetFilter) property.
-	 * 
-	 * In order to white-list or ignore multiple objects and their descendants, use these variants: [FindPartOnRayWithWhitelist](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRayWithWhitelist) and [FindPartOnRayWithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRayWithIgnoreList).
-	 * 
-	 * ## Notes
-	 * 
-	 *  - Theoretically, a ray extends infinitely in one direction. However, the max length of the direction vector on Roblox is 5000 studs
-	 * 
-	 *  - The length of the direction vector is important - parts further away than its length will not be tested
-	 * 
-	 *  - If the ray does not intersect a part, the return values will be nil and the point at the end of the ray, respectively
-	 * 
-	 *  - Parts that are in a [collision group](https://developer.roblox.com/api-reference/function/PhysicsService/SetPartCollisionGroup) that does not collide with the "Default" collision group are ignored implicitly
-	 * 
-	 * For more information on how raycasting works in Roblox, please see the articles on [raycasting basics][1] and [how to make raycasting guns][2].
-	 * 
-	 * [1]: https://developer.roblox.com/articles/Raycasting
-	 * 
-	 * [2]: https://developer.roblox.com/articles/Making-a-ray-casting-laser-gun-in-Roblox
-	 * @param ray The `DataType/Ray`.
-	 * @param ignoreDescendantsInstance An `Instance` to be ignored.
-	 * @param terrainCellsAreCubes True if terrain cells should be treated as cubes.
-	 * @param ignoreWater True if terrain water should be ignored.
-	 * @returns The `BasePart` (or `Terrain`) hit, the `DataType/Vector3` point of intersection, the `DataType/Vector3` surface normal at the point of intersection and the `Enum/Material` of the `BasePart` or terrain cell hit.
-	 */
-	FindPartOnRay(
-		this: Workspace,
-		ray: Ray,
-		ignoreDescendantsInstance?: Instance,
-		terrainCellsAreCubes?: boolean,
-		ignoreWater?: boolean,
-	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-	/** This function returns the first `BasePart` intersecting with the given [DataType.Ray](https://developer.roblox.com/search#stq=Ray) that isn't in, or a descendant of an object in, the given ignore list. It also returns the position of intersection, the surface normal of the intersecting part at the point of intersection, and the part's [BasePart.Material](https://developer.roblox.com/api-reference/property/BasePart/Material).
-	 * 
-	 * This function is a variant of [Workspace.FindPartOnRay](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRay) with the addition of an ignore list. This allows the developer to ignore certain parts or `Model`s.
-	 * 
-	 * The terrainCellsAreCubes and ignoreWater parameters determine whether terrain cells should be treated as cubes, and whether water should be ignored.
-	 * 
-	 * Those looking to utilize a white list instead should use [Workspace.FindPartOnRayWithWhitelist](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRayWithWhitelist).
-	 * 
-	 * For more information on how raycasting works in Roblox, please see the articles on [raycasting basics][1] and [how to make raycasting guns][2].
-	 * 
-	 * ## Notes
-	 * 
-	 *  - Theoretically, a ray extends infinitely in one direction. However, the max length of the direction vector on Roblox is 5000 studs
-	 * 
-	 *  - The length of the direction vector is important - parts further away than its length will not be tested
-	 * 
-	 *  - If the ray does not intersect a part, the return values will be nil and the point at the end of the ray, respectively
-	 * 
-	 *  - If a nil value is given in the ignore list, instances after this value will not be ignored
-	 * 
-	 *  - Parts that are in a [collision group](https://developer.roblox.com/api-reference/function/PhysicsService/SetPartCollisionGroup) that does not collide with the "Default" collision group are ignored implicitly
-	 * 
-	 * [1]: https://developer.roblox.com/articles/Raycasting
-	 * 
-	 * [2]: https://developer.roblox.com/articles/Making-a-ray-casting-laser-gun-in-Roblox
-	 * @param ray The `DataType/Ray`.
-	 * @param ignoreDescendantsTable An array of objects to be ignored.
-	 * @param terrainCellsAreCubes True if terrain cells should be treated as cubes.
-	 * @param ignoreWater True if terrain water should be ignored.
-	 * @returns The `BasePart` (or `Terrain`) hit, the `DataType/Vector3` point of intersection, the `DataType/Vector3` surface normal at the point of intersection and the `Enum/Material` of the `BasePart` or terrain cell hit.
-	 */
-	FindPartOnRayWithIgnoreList(
-		this: Workspace,
-		ray: Ray,
-		ignoreDescendantsTable: Array<Instance>,
-		terrainCellsAreCubes?: boolean,
-		ignoreWater?: boolean,
-	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-	/** This function returns the first `BasePart` intersecting with the given [DataType.Ray](https://developer.roblox.com/search#stq=Ray) that is in, or is a descendant of an object in, the given white-list. It also returns the position of intersection, the surface normal of the intersecting part at the point of intersection, and the part's [BasePart.Material](https://developer.roblox.com/api-reference/property/BasePart/Material).
-	 * 
-	 * This function is a variant of [Workspace.FindPartOnRay](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRay) with the addition of a whitelist. This allows the developer to only look at certain parts or [Models](https://developer.roblox.com/api-reference/class/Model). This can be particularly useful when, for example, looking for points of intersection between a ray and a single part.
-	 * 
-	 * ```lua
-	 * local function getIntersection(part, ray)
-	 * 	local whiteList = {part}
-	 * 	local _, position, normal = workspace:FindPartOnRayWithWhitelist(ray, whiteList)
-	 * 	return position, normal
-	 * end
-	 * ```
-	 * 
-	 * Those looking to utilize an ignore list instead should use [Workspace.FindPartOnRayWithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/FindPartOnRayWithIgnoreList).
-	 * 
-	 * ## Notes
-	 * 
-	 *  - Theoretically, a ray extends infinitely in one direction. However, the max length of the direction vector on Roblox is 5000 studs
-	 * 
-	 *  - The length of the direction vector is important - parts further away than its length will not be tested
-	 * 
-	 *  - If the ray does not intersect a part, the return values will be nil and the point at the end of the ray, respectively
-	 * 
-	 *  - If a nil value is given in the white list, instances after this value will be disregarded
-	 * 
-	 *  - Parts that are in a [collision group](https://developer.roblox.com/api-reference/function/PhysicsService/SetPartCollisionGroup) that does not collide with the "Default" collision group are ignored implicitly
-	 * 
-	 * For more information on how raycasting works in Roblox, please see the articles on [raycasting basics][1] and [how to make raycasting guns][2].
-	 * 
-	 * [1]: https://developer.roblox.com/articles/Raycasting
-	 * 
-	 * [2]: https://developer.roblox.com/articles/Making-a-ray-casting-laser-gun-in-Roblox
-	 * @param ray The specified `DataType/Ray`
-	 * @param whitelistDescendantsTable An array of objects to be checked
-	 * @param ignoreWater Whether water will be ignored or not. This only applies if the `Workspace|Workspace's` `Terrain` has been included in the white-list. Otherwise, otherwise water is ignored along with terrain by default
-	 * 
-	 * @returns A tuple containing:
-	 *  - The `BasePart` (or `Terrain`) hit
-	 *  - The `DataType/Vector3` point of intersection
-	 *  - The `DataType/Vector3` surface normal at the point of intersection and the 
-	 *  - `Enum/Material` of the `BasePart` or terrain cell hit
-	 */
-	FindPartOnRayWithWhitelist(
-		this: Workspace,
-		ray: Ray,
-		whitelistDescendantsTable: Array<Instance>,
-		ignoreWater?: boolean,
-	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-	/** Returns an array of `BasePart`s in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3).
-	 * 
-	 * This function takes an optional maxParts parameter (default 20) which limits the number of `BasePart`s that can be returned. Once this number has been reached, the search for `BasePart`s will stop. This means some `BasePart`s may not be returned even if they are within the [DataType.Region3](https://developer.roblox.com/search#stq=Region3)
-	 * 
-	 * The optional ignoreDescendentsInstance parameter can be used to specify a specific instance for whom itself and all of its descendants should be ignored by this function. This can be useful when, for example, looking to see if any `BasePart`s are inside a `BasePart` other than the `BasePart` itself.
-	 * 
-	 * ```lua
-	 * part.Size)
-	 * part.Size)
-	 * local region = Region3.new(min, max)
-	 * local parts = workspace:FindPartsInRegion3(region, part) --  ignore part
-	 * ```
-	 * 
-	 * Variants of this function exist with ignore-list and white-list functionality, [Workspace.FindPartsInRegion3WithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3WithIgnoreList) and [Workspace.FindPartsInRegion3WithWhiteList](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3WithWhiteList).
-	 * 
-	 * If no `BasePart`s are found, an empty array will be returned.
-	 * 
-	 * ## How do Region3 checks work?
-	 * 
-	 * Checking if a part overlaps a [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is not a simple process. It actually is time consuming and complicated. Instead it checks if parts are roughly in the same area. When this function is called, it figures out which voxels contain the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). It then figures out which parts might be in those voxels. It does this by comparing the axis-aligned bounding box (sometimes called the AABB) of the part with the voxels. The axis-aligned bounding box can be seen in Roblox Studio when a part is selected.
-	 * 
-	 * This means that the area that is inspected by the function may be larger than the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). For this reason it is recommended to make sure that the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is on the voxel grid. The best way to do this is by setting the coordinates of the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) to multiples of 4 (since voxels are 4 x 4 x 4 studs).
-	 * 
-	 * This method is a fairly quick and easy way to see if parts are in a general area. If a game needs to know if parts are exactly in an area, then [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) should be used. There is a higher cost to using [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) since a part is needed in the `Workspace` and the function takes more time to run.
-	 * @param region The `DataType/Region3` to be checked.
-	 * @param ignoreDescendantsInstance An `Instance` to be ignored.
-	 * @param maxParts The maximum amount of `BasePart`s to be returned.
-	 * @returns An array of `BasePart`s within the `DataType/Region3`.
-	 */
-	FindPartsInRegion3(region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<BasePart>;
-	/** Returns an array of `BasePart`s in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3) that aren't in, or a descendant of an entry in, the given IgnoreList.
-	 * 
-	 * This function takes an optional maxParts parameter (default 20) which limits the number of `BasePart`s that can be returned. Once this number has been reached, the search for `BasePart`s will stop. This means some `BasePart`s may not be returned even if they are within the [DataType.Region3](https://developer.roblox.com/search#stq=Region3)
-	 * 
-	 * If no `BasePart`s are found, an empty array will be returned.
-	 * 
-	 * This function is a variant of [Workspace.FindPartsInRegion3](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3) with the addition of an ignore list. This allows the developer to exclude certain `BasePart`s or `Model`s, for example characters, from the search. Those looking to find `BasePart`s in a Region3 using a white list, should use [Workspace.FindPartsInRegion3WithWhitelist](https://developer.roblox.com/search#stq=FindPartsInRegion3WithWhitelist).
-	 * 
-	 * ## How do Region3 checks work?
-	 * 
-	 * Checking if a part overlaps a [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is not a simple process. It actually is time consuming and complicated. Instead it checks if parts are roughly in the same area. When this function is called, it figures out which voxels contain the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). It then figures out which parts might be in those voxels. It does this by comparing the axis-aligned bounding box (sometimes called the AABB) of the part with the voxels. The axis-aligned bounding box can be seen in Roblox Studio when a part is selected.
-	 * 
-	 * This means that the area that is inspected by the function may be larger than the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). For this reason it is recommended to make sure that the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is on the voxel grid. The best way to do this is by setting the coordinates of the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) to multiples of 4 (since voxels are 4 x 4 x 4 studs).
-	 * 
-	 * This method is a fairly quick and easy way to see if parts are in a general area. If a game needs to know if parts are exactly in an area, then [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) should be used. There is a higher cost to using [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) since a part is needed in the `Workspace` and the function takes more time to run.
-	 * 
-	 * ## Notes
-	 * 
-	 *  - If a nil value is given in the ignore list, instances after this value will not be ignored
-	 * @param region The `DataType/Region3` to be checked.
-	 * @param ignoreDescendantsTable An array of objects to be ignored.
-	 * @param maxParts The maximum number of `BasePart`s to be returned.
-	 * @returns An array of `BasePart`s found within the `DataType/Region3`.
-	 */
-	FindPartsInRegion3WithIgnoreList(
-		this: Workspace,
-		region: Region3,
-		ignoreDescendantsTable: Array<Instance>,
-		maxParts?: number,
-	): Array<BasePart>;
-	/** Returns an array of `BasePart`s in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3) that are in, or descendant of an object in, a given white list.
-	 * 
-	 * This function takes an optional maxParts parameter (default 20) which limits the number of `BasePart`s that can be returned. Once this number has been reached, the search for `BasePart`s will stop. This means some `BasePart`s may not be returned even if they are within the [DataType.Region3](https://developer.roblox.com/search#stq=Region3)
-	 * 
-	 * If no `BasePart`s are found, an empty array will be returned.
-	 * 
-	 * This function is a variant of [Workspace.FindPartsInRegion3](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3) with the addition of a white list. Those looking to find `BasePart`s in a Region3 using an ignore list, should use [Workspace.FindPartsInRegion3WithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3WithIgnoreList).
-	 * 
-	 * ## How do Region3 checks work?
-	 * 
-	 * Checking if a part overlaps a [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is not a simple process. It actually is time consuming and complicated. Instead it checks if parts are roughly in the same area. When this function is called, it figures out which voxels contain the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). It then figures out which parts might be in those voxels. It does this by comparing the axis-aligned bounding box (sometimes called the AABB) of the part with the voxels. The axis-aligned bounding box can be seen in Roblox Studio when a part is selected.
-	 * 
-	 * This means that the area that is inspected by the function may be larger than the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). For this reason it is recommended to make sure that the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is on the voxel grid. The best way to do this is by setting the coordinates of the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) to multiples of 4 (since voxels are 4 x 4 x 4 studs).
-	 * 
-	 * This method is a fairly quick and easy way to see if parts are in a general area. If a game needs to know if parts are exactly in an area, then [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) should be used. There is a higher cost to using [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) since a part is needed in the `Workspace` and the function takes more time to run.
-	 * 
-	 * ## Notes
-	 * 
-	 *  - If a nil value is given in the white list, instances after this value will be disregarded
-	 * @param region The `DataType/Region3` to be checked.
-	 * @param whitelistDescendantsTable An array of objects to check.
-	 * @param maxParts The maximum number of `BasePart`s to be returned.
-	 * @returns An array of `BasePart`s within the `DataType/Region3`.
-	 */
-	FindPartsInRegion3WithWhiteList(
-		this: Workspace,
-		region: Region3,
-		whitelistDescendantsTable: Array<Instance>,
-		maxParts?: number,
-	): Array<BasePart>;
 	/** Returns the number of `BasePart`s that are deemed physically active, due to being recently under the influence of physics.
 	 * 
 	 * This function provides a measure of how many `BasePart`s are being influenced by, or recently under the influence of, physical forces.
@@ -15214,64 +15009,6 @@ interface Workspace extends Model {
 	 * @returns Returns the number of frames per second that physics is currently being simulated at.
 	 */
 	GetRealPhysicsFPS(this: Workspace): number;
-	/** Returns a bool stating if no `BasePart`s are in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3).
-	 * 
-	 * The optional ignoreDescendentsInstance parameter can be used to specify a specific instance for whom itself and all of its descendants should be ignored by this function. This can be useful when, for example, looking to see if any `BasePart`s are inside a `BasePart` other than the `BasePart` itself.
-	 * 
-	 * ```lua
-	 * part.Size)
-	 * part.Size)
-	 * local region = Region3.new(min, max)
-	 * local isPartEmpty = workspace:IsRegion3Empty(region, part) --  ignore part
-	 * ```
-	 * 
-	 * If more than one object and its descendants need to be excluded from the search, developers should use [Workspace.IsRegion3EmptyWithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/IsRegion3EmptyWithIgnoreList).
-	 * 
-	 * This function only returns if a region is empty or not. Developers looking to find `BasePart`s in a region should use [Workspace.FindPartsInRegion3](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3).
-	 * 
-	 * ## How do Region3 checks work?
-	 * 
-	 * Checking if a part overlaps a [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is not a simple process. It actually is time consuming and complicated. Instead it checks if parts are roughly in the same area. When this function is called, it figures out which voxels contain the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). It then figures out which parts might be in those voxels. It does this by comparing the axis-aligned bounding box (sometimes called the AABB) of the part with the voxels. The axis-aligned bounding box can be seen in Roblox Studio when a part is selected.
-	 * 
-	 * This means that the area that is inspected by the function may be larger than the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). For this reason it is recommended to make sure that the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is on the voxel grid. The best way to do this is by setting the coordinates of the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) to multiples of 4 (since voxels are 4 x 4 x 4 studs).
-	 * 
-	 * This method is a fairly quick and easy way to see if any parts are in a general area. If a game needs to know if parts are exactly in an area, then [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) should be used. There is a higher cost to using [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) since a part is needed in the `Workspace` and the function takes more time to run.
-	 * @param region The `DataType/Region3` to be checked.
-	 * @param ignoreDescendentsInstance An `Instance` to be ignored.
-	 * @returns True if the `DataType/Region3` is empty.
-	 */
-	IsRegion3Empty(this: Workspace, region: Region3, ignoreDescendentsInstance?: Instance): boolean;
-	/** Returns a bool stating if no `BasePart`s are in the given [DataType.Region3](https://developer.roblox.com/search#stq=Region3), ignoring any `BasePart`s that are in, or descend from objects in, the ignore list given.
-	 * 
-	 * For example, the following code snippet will check to see if the Region is empty, ignoring the descendants of a `Model` named 'Scenery'.
-	 * 
-	 * ```lua
-	 * local region3 = Region3.new(Vector3.new(0, 0, 0), Vector3.new(10, 10, 10))
-	 * local scenery = workspace:FindFirstChild("Scenery")
-	 * local ignoreList = {scenery}
-	 * local isEmpty = workspace:IsRegion3EmptyWithIgnoreList(region3, ignoreList)
-	 * ```
-	 * 
-	 * This function only returns if a region is empty or not. Developers looking to find `BasePart`s in a region should use [Workspace.FindPartsInRegion3WithIgnoreList](https://developer.roblox.com/api-reference/function/Workspace/FindPartsInRegion3WithIgnoreList).
-	 * 
-	 * This function is a variant of [Workspace.IsRegion3Empty](https://developer.roblox.com/api-reference/function/Workspace/IsRegion3Empty) with the addition of an ignore list. In cases where a white list is required instead, developers should check to see if any parts are returned by [Workspace.FindPartsinRegion3WithWhitelist](https://developer.roblox.com/search#stq=FindPartsinRegion3WithWhitelist).
-	 * 
-	 * ## How do Region3 checks work?
-	 * 
-	 * Checking if a part overlaps a [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is not a simple process. It actually is time consuming and complicated. Instead it checks if parts are roughly in the same area. When this function is called, it figures out which voxels contain the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). It then figures out which parts might be in those voxels. It does this by comparing the axis-aligned bounding box (sometimes called the AABB) of the part with the voxels. The axis-aligned bounding box can be seen in Roblox Studio when a part is selected.
-	 * 
-	 * This means that the area that is inspected by the function may be larger than the [DataType.Region3](https://developer.roblox.com/search#stq=Region3). For this reason it is recommended to make sure that the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) is on the voxel grid. The best way to do this is by setting the coordinates of the [DataType.Region3](https://developer.roblox.com/search#stq=Region3) to multiples of 4 (since voxels are 4 x 4 x 4 studs).
-	 * 
-	 * This method is a fairly quick and easy way to see if any parts are in a general area. If a game needs to know if parts are exactly in an area, then [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) should be used. There is a higher cost to using [BasePart.GetTouchingParts](https://developer.roblox.com/api-reference/function/BasePart/GetTouchingParts) since a part is needed in the `Workspace` and the function takes more time to run.
-	 * 
-	 * ## Notes
-	 * 
-	 *  - If a nil value is given in the ignore list, instances after this value will not be ignored
-	 * @param region The `DataType/Region3` to be checked.
-	 * @param ignoreDescendentsTable An array of objects to be ignored.
-	 * @returns True if the `DataType/Region3` is empty.
-	 */
-	IsRegion3EmptyWithIgnoreList(this: Workspace, region: Region3, ignoreDescendentsTable: Array<Instance>): boolean;
 	/** This function creates joints between the specified [Parts](https://developer.roblox.com/api-reference/class/BasePart) and any touching parts depending on the parts' surfaces and the specified joint creation mode.
 	 * 
 	 * The first parameter is an array of [BaseParts](https://developer.roblox.com/api-reference/class/BasePart). Joints will only be create between the parts in the array and not in the array. Joints will not be created between the parts in the array.
@@ -15356,6 +15093,11 @@ interface Workspace extends Model {
 	 * @param objects An array of `BasePart`s for whom joints are to be broken.
 	 */
 	UnjoinFromOutsiders(this: Workspace, objects: Array<Instance>): void;
+}
+
+interface WorldModel extends WorldRoot {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "WorldModel";
 }
 
 interface PackageLink extends Instance {
