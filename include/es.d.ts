@@ -339,6 +339,15 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	map<U extends {}>(this: ReadonlyArray<{}>, callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => U): Array<U>;
 
 	/**
+	 * Calls a defined callback function on each element of an array, and returns an array that contains the results. Undefined values will not be included, so keep in mind this does not create a 1:1 map.
+	 * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
+	 * @example
+	 * // Gets an Array of all existing characters
+	 * const characters = playerlist.mapFiltered(plr => plr.Character);
+	 */
+	mapFiltered<U>(this: ReadonlyArray<{}>, callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => U): Array<NonNullable<U>>;
+
+	/**
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
 	 */
