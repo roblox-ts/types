@@ -279,7 +279,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	join(this: ReadonlyArray<T>, separator?: string): string;
 
 	/**
-	 * Returns a section of an array.
+	 * Returns a shallow copy of part of this array selected from begin to end (end not included) where begin and end represent the index of items in that array.
 	 * @param start The beginning of the specified portion of the array.
 	 * @param end The end of the specified portion of the array.
 	 */
