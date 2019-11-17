@@ -14730,21 +14730,45 @@ interface Status extends Model {
 interface WorldRoot extends Model {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "WorldRoot" | "Workspace" | "WorldModel";
-	/** [NO DOCUMENTATION] */
-	FindPartOnRay(this: WorldRoot, ray: Ray, ignoreDescendantsInstance?: Instance, terrainCellsAreCubes?: boolean, ignoreWater?: boolean): unknown;
-	/** [NO DOCUMENTATION] */
-	FindPartOnRayWithIgnoreList(this: WorldRoot, ray: Ray, ignoreDescendantsTable: Array<Instance>, terrainCellsAreCubes?: boolean, ignoreWater?: boolean): unknown;
-	/** [NO DOCUMENTATION] */
-	FindPartOnRayWithWhitelist(this: WorldRoot, ray: Ray, whitelistDescendantsTable: Array<Instance>, ignoreWater?: boolean): unknown;
-	/** [NO DOCUMENTATION] */
-	FindPartsInRegion3(this: WorldRoot, region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<Instance>;
-	/** [NO DOCUMENTATION] */
-	FindPartsInRegion3WithIgnoreList(this: WorldRoot, region: Region3, ignoreDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
-	/** [NO DOCUMENTATION] */
-	FindPartsInRegion3WithWhiteList(this: WorldRoot, region: Region3, whitelistDescendantsTable: Array<Instance>, maxParts?: number): Array<Instance>;
-	/** [NO DOCUMENTATION] */
+	FindPartOnRay(
+		this: WorldRoot,
+		ray: Ray,
+		ignoreDescendantsInstance?: Instance,
+		terrainCellsAreCubes?: boolean,
+		ignoreWater?: boolean,
+	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+	FindPartOnRayWithIgnoreList(
+		this: WorldRoot,
+		ray: Ray,
+		ignoreDescendantsTable: Array<Instance>,
+		terrainCellsAreCubes?: boolean,
+		ignoreWater?: boolean,
+	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+	FindPartOnRayWithWhitelist(
+		this: WorldRoot,
+		ray: Ray,
+		whitelistDescendantsTable: Array<Instance>,
+		ignoreWater?: boolean,
+	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+	FindPartsInRegion3(
+		this: WorldRoot,
+		region: Region3,
+		ignoreDescendantsInstance?: Instance,
+		maxParts?: number,
+	): Array<BasePart>;
+	FindPartsInRegion3WithIgnoreList(
+		this: WorldRoot,
+		region: Region3,
+		ignoreDescendantsTable: Array<Instance>,
+		maxParts?: number,
+	): Array<BasePart>;
+	FindPartsInRegion3WithWhiteList(
+		this: WorldRoot,
+		region: Region3,
+		whitelistDescendantsTable: Array<Instance>,
+		maxParts?: number,
+	): Array<BasePart>;
 	IsRegion3Empty(this: WorldRoot, region: Region3, ignoreDescendentsInstance?: Instance): boolean;
-	/** [NO DOCUMENTATION] */
 	IsRegion3EmptyWithIgnoreList(this: WorldRoot, region: Region3, ignoreDescendentsTable: Array<Instance>): boolean;
 }
 
