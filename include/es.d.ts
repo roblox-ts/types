@@ -462,10 +462,10 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	flat(this: ReadonlyArray<T>, depth?: number): Array<T>;
 
 	/**
-	 * The sort() method copies the elements of an array and returns a sorted array. The default sort order is built upon converting the elements into strings, then comparing via the < operator.
-	 * @param compareFunction Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code point value, according to the string conversion of each element. (a, b) => a - b is a good starting point for numbers. If compareFunction(a, b) is less than 0, sort a to an index lower than b (i.e. a comes first), and vice versa.
+	 * Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`, so that (`!comp(list[i+1], list[i])` will be true after the sort). Alias to Lua's `table.sort`.
+	 * @param compareFunction A function that defines the sort order. Returns true when the first element must come before the second. If omitted, the array is sorted according to the `<` operator.
 	 */
-	sort(this: ReadonlyArray<T>, compareFunction?: (a: T, b: T) => number): Array<T>;
+	sort(this: ReadonlyArray<{}>, compareFunction?: (a: T, b: T) => boolean): Array<T>;
 }
 
 /**
