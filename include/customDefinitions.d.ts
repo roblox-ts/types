@@ -913,14 +913,9 @@ interface UserInputService {
 	GetFocusedTextBox(this: UserInputService): TextBox | undefined;
 }
 
-interface Workspace extends Model {
-	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
-	BreakJoints: any;
-	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
-	MakeJoints: any;
-	Terrain: Terrain;
+interface WorldRoot extends Model {
 	FindPartOnRay(
-		this: Workspace,
+		this: WorldRoot,
 		ray: Ray,
 		ignoreDescendantsInstance?: Instance,
 		terrainCellsAreCubes?: boolean,
@@ -928,7 +923,7 @@ interface Workspace extends Model {
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 
 	FindPartOnRayWithIgnoreList(
-		this: Workspace,
+		this: WorldRoot,
 		ray: Ray,
 		ignoreDescendantsTable: Array<Instance>,
 		terrainCellsAreCubes?: boolean,
@@ -936,27 +931,40 @@ interface Workspace extends Model {
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 
 	FindPartOnRayWithWhitelist(
-		this: Workspace,
+		this: WorldRoot,
 		ray: Ray,
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 
-	FindPartsInRegion3(region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<BasePart>;
+	FindPartsInRegion3(
+		this: WorldRoot,
+		region: Region3,
+		ignoreDescendantsInstance?: Instance,
+		maxParts?: number,
+	): Array<BasePart>;
 
 	FindPartsInRegion3WithIgnoreList(
-		this: Workspace,
+		this: WorldRoot,
 		region: Region3,
 		ignoreDescendantsTable: Array<Instance>,
 		maxParts?: number,
 	): Array<BasePart>;
 
 	FindPartsInRegion3WithWhiteList(
-		this: Workspace,
+		this: WorldRoot,
 		region: Region3,
 		whitelistDescendantsTable: Array<Instance>,
 		maxParts?: number,
 	): Array<BasePart>;
+}
+
+interface Workspace extends WorldRoot {
+	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
+	BreakJoints: any;
+	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
+	MakeJoints: any;
+	Terrain: Terrain;
 }
 
 /**
