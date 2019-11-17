@@ -259,52 +259,52 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	/**
 	 * Returns true if empty, otherwise false.
 	 */
-	isEmpty(this: ReadonlyArray<T>): boolean;
+	isEmpty(this: ReadonlyArray<any>): boolean;
 
 	/**
-	 * Returns a string representation of this data structure.
+	 * Returns a string representation of this data structure. Meant for debugging only.
 	 */
-	toString(this: ReadonlyArray<T>): string;
+	toString(this: ReadonlyArray<any>): string;
 
 	/**
 	 * Creates a new array and shallow copies `this` and the items into the new array, in that order.
 	 * @param items Additional items to add to the end of array1.
 	 */
-	concat(this: ReadonlyArray<T>, ...items: Array<ReadonlyArray<T>>): Array<T>;
+	concat(this: ReadonlyArray<{}>, ...items: Array<ReadonlyArray<T>>): Array<T>;
 
 	/**
 	 * Adds all the elements of an array separated by the specified separator string.
 	 * @param separator A string used to separate one element of an array from the next in the resulting String. If omitted, the array elements are separated with a comma.
 	 */
-	join(this: ReadonlyArray<T>, separator?: string): string;
+	join(this: ReadonlyArray<{}>, separator?: string): string;
 
 	/**
-	 * Returns a section of an array.
+	 * Shallow copies a section of this array selected from `begin` to `end` (`end` not included) where `begin` and `end` represent the index of items in that array.
 	 * @param start The beginning of the specified portion of the array.
 	 * @param end The end of the specified portion of the array.
 	 */
-	slice(this: ReadonlyArray<T>, start?: number, end?: number): Array<T>;
+	slice(this: ReadonlyArray<{}>, start?: number, end?: number): Array<T>;
 
 	/**
 	 * Returns whether an array includes a certain element.
 	 * @param searchElement The element to search for.
 	 * @param fromIndex The position in this array at which to begin searching for searchElement.
 	 */
-	includes(this: ReadonlyArray<T>, searchElement: T, fromIndex?: number): boolean;
+	includes(this: ReadonlyArray<{}>, searchElement: T, fromIndex?: number): boolean;
 
 	/**
 	 * Returns the index of the first occurrence of a value in an array, else returns -1.
 	 * @param searchElement The value to locate in the array.
 	 * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0.
 	 */
-	indexOf(this: ReadonlyArray<T>, searchElement: T, fromIndex?: number): number;
+	indexOf(this: ReadonlyArray<{}>, searchElement: T, fromIndex?: number): number;
 
 	/**
 	 * Returns the index of the last occurrence of a specified value in an array.
 	 * @param searchElement The value to locate in the array.
 	 * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the search starts at the last index in the array.
 	 */
-	lastIndexOf(this: ReadonlyArray<T>, searchElement: T, fromIndex?: number): number;
+	lastIndexOf(this: ReadonlyArray<{}>, searchElement: T, fromIndex?: number): number;
 
 	/**
 	 * Returns whether **all** the members of an array satisfy the specified test.
@@ -312,7 +312,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param callbackfn A function that accepts up to three arguments. The every method calls the callbackfn function for each element in array1 until the callbackfn returns false, or until the end of the array.
 	 */
 	every(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<{}>,
 		callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean | undefined,
 	): boolean;
 
@@ -322,7 +322,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param callbackfn A function that accepts up to three arguments. The some method calls the callbackfn function for each element in array1 until the callbackfn returns true, or until the end of the array.
 	 */
 	some(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<{}>,
 		callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean | undefined,
 	): boolean;
 
@@ -330,20 +330,29 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * Performs the specified action for each element in an array.
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.
 	 */
-	forEach(this: ReadonlyArray<T>, callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => void): void;
+	forEach(this: ReadonlyArray<{}>, callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => void): void;
 
 	/**
 	 * Calls a defined callback function on each element of an array, and returns an array that contains the results.
 	 * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
 	 */
-	map<U>(this: ReadonlyArray<T>, callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => U): Array<U>;
+	map<U extends {}>(this: ReadonlyArray<{}>, callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => U): Array<U>;
+
+	/**
+	 * Calls a defined callback function on each element of an array, and returns an array that contains the results. Undefined values will not be included, so keep in mind this does not create a 1:1 map.
+	 * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
+	 * @example
+	 * // Gets an Array of all existing characters
+	 * const characters = playerlist.mapFiltered(plr => plr.Character);
+	 */
+	mapFiltered<U>(this: ReadonlyArray<{}>, callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => U): Array<NonNullable<U>>;
 
 	/**
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
 	 */
 	filter<S extends T>(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<{}>,
 		callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => value is S,
 	): Array<S>;
 
@@ -352,7 +361,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
 	 */
 	filter(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<{}>,
 		callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => boolean | undefined,
 	): Array<T>;
 
@@ -362,7 +371,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
 	reduce(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<{}>,
 		callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
 	): T;
 
@@ -372,7 +381,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
 	reduce<U>(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<{}>,
 		callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => U,
 		initialValue: U,
 	): U;
@@ -383,7 +392,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
 	reduceRight(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<{}>,
 		callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
 	): T;
 
@@ -393,7 +402,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
 	reduceRight<U>(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<{}>,
 		callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => U,
 		initialValue: U,
 	): U;
@@ -401,12 +410,12 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	/**
 	 * Returns a copy of the array with elements in reverse order. The compiler will automatically optimize this away when used in-line in a for..of loop.
 	 */
-	reverse(this: ReadonlyArray<T>): Array<T>;
+	reverse(this: ReadonlyArray<{}>): Array<T>;
 
 	/**
 	 * Returns an array of every index-value pair in this array. The compiler will automatically optimize this away when used in-line in a for..of loop.
 	 */
-	entries(this: ReadonlyArray<T>): Array<[number, T]>;
+	entries(this: ReadonlyArray<{}>): Array<[number, T]>;
 
 	/**
 	 * Returns the value of the first element in the array where predicate is true, and undefined
@@ -416,11 +425,11 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * immediately returns that element value. Otherwise, find returns undefined.
 	 */
 	find<S extends T>(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<{}>,
 		predicate: (value: T, index: number, obj: ReadonlyArray<T>) => value is S,
 	): S | undefined;
 	find(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<{}>,
 		predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean | undefined,
 	): T | undefined;
 
@@ -431,19 +440,19 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * immediately returns the index at which it was found. Otherwise, find returns -1.
 	 */
 	findIndex(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<{}>,
 		predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean | undefined,
 	): number;
 
 	/**
 	 * Returns a shallow copy of the array
 	 */
-	copy(this: ReadonlyArray<T>): Array<T>;
+	copy(this: ReadonlyArray<{}>): Array<T>;
 
 	/**
 	 * Returns a deep copy of the array
 	 */
-	deepCopy(this: ReadonlyArray<T>): Array<T>;
+	deepCopy(this: ReadonlyArray<{}>): Array<T>;
 
 	/**
 	 * Returns true if
@@ -452,14 +461,14 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 *
 	 * Searches recursively.
 	 */
-	deepEquals<U>(this: ReadonlyArray<T>, other: ReadonlyArray<U>): boolean;
+	deepEquals(this: ReadonlyArray<{}>, other: ReadonlyArray<{}>): boolean;
 
 	/**
 	 * The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
 	 * @param depth The depth level specifying how deep a nested array structure should be flattened. Defaults to 1.
 	 * @returns A new array with the sub-array elements concatenated into it.
 	 */
-	flat(this: ReadonlyArray<T>, depth?: number): Array<T>;
+	// flat(this: ReadonlyArray<T>, depth?: number): Array<T>;
 
 	/**
 	 * Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`, so that (`!comp(list[i+1], list[i])` will be true after the sort). Alias to Lua's `table.sort`.
@@ -477,24 +486,24 @@ interface Array<T> extends ReadonlyArray<T> {
 	 * Appends new elements to an array and returns the new length of the array.
 	 * @param items New elements of the Array.
 	 */
-	push(this: Array<T>, ...items: Array<T>): number;
+	push(this: Array<{}>, ...items: Array<T>): number;
 
 	/**
 	 * Removes the last element from an array and returns it.
 	 */
-	pop(this: Array<T>): T | undefined;
+	pop(this: Array<{}>): T | undefined;
 
 	/**
 	 * Removes the first element from an array and returns it.
 	 */
-	shift(this: Array<T>): T | undefined;
+	shift(this: Array<{}>): T | undefined;
 
 	/**
 	 * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
 	 * @param start The zero-based location in the array from which to start removing elements.
 	 * @param deleteCount The number of elements to remove.
 	 */
-	splice(this: Array<T>, start: number, deleteCount?: number): Array<T>;
+	splice(this: Array<{}>, start: number, deleteCount?: number): Array<T>;
 
 	/**
 	 * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
@@ -502,13 +511,13 @@ interface Array<T> extends ReadonlyArray<T> {
 	 * @param deleteCount The number of elements to remove.
 	 * @param items Elements to insert into the array in place of the deleted elements.
 	 */
-	splice(this: Array<T>, start: number, deleteCount: number, ...items: Array<T>): Array<T>;
+	splice(this: Array<{}>, start: number, deleteCount: number, ...items: Array<T>): Array<T>;
 
 	/**
 	 * Inserts new elements at the start of an array and returns the new length of the array.
 	 * @param items  Elements to insert at the start of the Array.
 	 */
-	unshift(this: Array<T>, ...items: Array<T>): number;
+	unshift(this: Array<{}>, ...items: Array<T>): number;
 
 	/**
 	 * Shallow copies part of an array to another location in the same array and returns it, without modifying its size.
@@ -516,24 +525,24 @@ interface Array<T> extends ReadonlyArray<T> {
 	 * @param start Zero based index at which to start copying elements from. If negative, start will be counted from the end. If start is omitted, copyWithin will copy from the start (defaults to 0).
 	 * @param end Zero based index at which to end copying elements from. copyWithin copies up to but not including end. If negative, end will be counted from the end. If end is omitted, copyWithin will copy until the end (default to arr.length).
 	 */
-	copyWithin(this: Array<T>, target: number, start?: number, end?: number): this;
+	copyWithin(this: Array<{}>, target: number, start?: number, end?: number): this;
 
 	/**
 	 * Inserts `value` into the array at `index` and shifts array members forwards if needed.
 	 */
-	insert(this: Array<T>, index: number, value: T): void;
+	insert(this: Array<{}>, index: number, value: T): void;
 
 	/**
 	 * Removes the array member at `index` and returns it and shifts array members backwards if needed.
 	 */
-	remove(this: Array<T>, index: number): T | undefined;
+	remove(this: Array<{}>, index: number): T | undefined;
 
 	/**
 	 * Removes a value at `index` from this array, replacing it with the last value in this array and popping the last value.
 	 * Returns the value removed from `index` in this way if it exists, otherwise `undefined`.
 	 * @param index The index to remove from this array and return
 	 */
-	unorderedRemove(this: Array<T>, index: number): T | undefined;
+	unorderedRemove(this: Array<{}>, index: number): T | undefined;
 
 	[n: number]: T;
 }
@@ -576,56 +585,56 @@ interface TemplateStringsArray extends Array<string> {}
  * const point = { x: 5, y: 10 } as const;
  * print(point.x);
  */
-interface ReadonlyMap<K, V> extends Iterable<[K, V]> {
+interface ReadonlyMap<K extends {}, V extends {}> extends Iterable<[K, V]> {
 	/**
 	 * Returns true if empty, otherwise false.
 	 */
-	isEmpty(this: ReadonlyMap<K, V>): boolean;
+	isEmpty(this: ReadonlyMap<{}, {}>): boolean;
 
 	/**
 	 * Returns a string representation of this data structure.
 	 */
-	toString(this: ReadonlyMap<K, V>): string;
+	toString(this: ReadonlyMap<{}, {}>): string;
 
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the Map
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
 	 */
-	forEach(this: ReadonlyMap<K, V>, callbackfn: (value: V, key: K, self: this) => void): void;
+	forEach(this: ReadonlyMap<{}, {}>, callbackfn: (value: V, key: K, self: this) => void): void;
 
 	/**
 	 * Returns the number of elements in the Map
 	 */
-	size(this: ReadonlyMap<K, V>): number;
+	size(this: ReadonlyMap<{}, {}>): number;
 
 	/**
 	 * Returns an array with all values of this Map
 	 */
-	values(this: ReadonlyMap<K, V>): Array<V>;
+	values(this: ReadonlyMap<{}, {}>): Array<V>;
 
 	/**
 	 * Returns a boolean for whether the given key exists in the Map
 	 */
-	has(this: ReadonlyMap<K, V>, key: K): boolean;
+	has(this: ReadonlyMap<{}, {}>, key: K): boolean;
 
 	/**
 	 * Returns the value associated with the given key
 	 */
-	get(this: ReadonlyMap<K, V>, key: K): V | undefined;
+	get(this: ReadonlyMap<{}, {}>, key: K): V | undefined;
 
 	/**
 	 * Returns an array of tuples for all members of this Map
 	 */
-	entries(this: ReadonlyMap<K, V>): Array<[K, V]>;
+	entries(this: ReadonlyMap<{}, {}>): Array<[K, V]>;
 
 	/**
 	 * Returns an array with all of this map's keys
 	 */
-	keys(this: ReadonlyMap<K, V>): Array<K>;
+	keys(this: ReadonlyMap<{}, {}>): Array<K>;
 }
 
 interface ReadonlyMapConstructor {
-	new <K = any, V = any>(entries?: ReadonlyArray<[K, V]> | null): ReadonlyMap<K, V>;
+	new <K extends {} = {}, V extends {} = {}>(entries?: ReadonlyArray<[K, V]>): ReadonlyMap<K, V>;
 }
 declare var ReadonlyMap: ReadonlyMapConstructor;
 
@@ -655,90 +664,90 @@ declare var ReadonlyMap: ReadonlyMapConstructor;
  * print(point.y++);
  * point.z = 15 // error!
  */
-interface Map<K, V> extends ReadonlyMap<K, V> {
+interface Map<K extends {}, V extends {}> extends ReadonlyMap<K, V> {
 	/**
 	 * Associates a key with a value which can be accessed later by `Map.get`
 	 */
-	set(this: Map<K, V>, key: K, value: V): this;
+	set(this: Map<{}, {}>, key: K, value: V): this;
 
 	/**
 	 * Deletes the given key from the Map.
 	 *
 	 * Returns a boolean indicating whether or not a value was removed.
 	 */
-	delete(this: Map<K, V>, key: K): boolean;
+	delete(this: Map<{}, {}>, key: K): boolean;
 
 	/**
 	 * Deletes all members of the Map
 	 */
-	clear(this: Map<K, V>): void;
+	clear(this: Map<{}, {}>): void;
 }
 
 interface MapConstructor {
-	new <K = any, V = any>(entries?: ReadonlyArray<[K, V]> | null): Map<K, V>;
+	new <K extends {} = {}, V extends {} = {}>(entries?: ReadonlyArray<[K, V]>): Map<K, V>;
 }
 declare var Map: MapConstructor;
 
 /** A Map object with its `__mode` metamethod set to "k" */
-interface WeakMap<K, V> extends Map<K, V> {}
+interface WeakMap<K extends object, V extends {}> extends Map<K, V> {}
 
 interface WeakMapConstructor {
-	new <K extends object = object, V = any>(entries?: ReadonlyArray<[K, V]> | null): WeakMap<K, V>;
+	new <K extends object = object, V extends {} = {}>(entries?: ReadonlyArray<[K, V]>): WeakMap<K, V>;
 }
 declare var WeakMap: WeakMapConstructor;
 
 /** @rbxts set */
-interface ReadonlySet<T> extends Iterable<T> {
+interface ReadonlySet<T extends {}> extends Iterable<T> {
 	/**
 	 * Returns true if empty, otherwise false.
 	 */
-	isEmpty(this: ReadonlySet<T>): boolean;
+	isEmpty(this: ReadonlySet<{}>): boolean;
 
 	/**
 	 * Returns a string representation of this data structure.
 	 */
-	toString(this: ReadonlySet<T>): string;
+	toString(this: ReadonlySet<{}>): string;
 
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the set
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
 	 */
-	forEach(this: ReadonlySet<T>, callbackfn: (value: T, value2: T, self: this) => void): void;
+	forEach(this: ReadonlySet<{}>, callbackfn: (value: T, value2: T, self: ReadonlySet<T>) => void): void;
 
 	/**
 	 * Returns the number of elements in the set
 	 */
-	size(this: ReadonlySet<T>): number;
+	size(this: ReadonlySet<{}>): number;
 
 	/**
 	 * Returns an array with all values of this set
 	 */
-	values(this: ReadonlySet<T>): Array<T>;
+	values(this: ReadonlySet<{}>): Array<T>;
 
 	/**
 	 * Returns a boolean for whether the given key exists in the set
 	 */
-	has(this: ReadonlySet<T>, value: T): boolean;
+	has(this: ReadonlySet<{}>, value: T): boolean;
 
 	/**
 	 * Returns a new set with every element that occurs at least once in either `this` or a given set
 	 */
-	union<U>(this: ReadonlySet<T>, set: ReadonlySet<U>): Set<T | U>;
+	union<U>(this: ReadonlySet<{}>, set: ReadonlySet<U>): Set<T | U>;
 
 	/**
 	 * Returns a new set with every element that occurs in both `this` and a given set
 	 */
-	intersect<U>(this: ReadonlySet<T>, set: ReadonlySet<U>): Set<T | U>;
+	intersect<U>(this: ReadonlySet<{}>, set: ReadonlySet<U>): Set<T | U>;
 
 	/**
 	 * Returns a new set which is the result of subtracting a given set from `this`
 	 */
-	difference<U>(this: ReadonlySet<T>, set: ReadonlySet<U>): Set<T | U>;
+	difference<U>(this: ReadonlySet<{}>, set: ReadonlySet<U>): Set<T | U>;
 
 	/**
 	 * Returns true if `this` and a given set have no elements in common, else false.
 	 */
-	isDisjointWith<U>(this: ReadonlySet<T>, set: ReadonlySet<U>): boolean;
+	isDisjointWith(this: ReadonlySet<{}>, set: ReadonlySet<{}>): boolean;
 
 	/**
 	 * Returns a boolean for whether `this` is a subset of a given set.
@@ -749,43 +758,43 @@ interface ReadonlySet<T> extends Iterable<T> {
 set1.isSubsetOf(set2) && !set2.isSubsetOf(set1)
 ```
 	 */
-	isSubsetOf<U>(this: ReadonlySet<T>, set: ReadonlySet<U>): boolean;
+	isSubsetOf(this: ReadonlySet<{}>, set: ReadonlySet<{}>): boolean;
 }
 
 interface ReadonlySetConstructor {
-	new <T = any>(values?: ReadonlyArray<T> | null): ReadonlySet<T>;
+	new <T extends {} = {}>(values?: ReadonlyArray<T>): ReadonlySet<T>;
 }
 declare const ReadonlySet: ReadonlySetConstructor;
 
 /** @rbxts set */
-interface Set<T> extends ReadonlySet<T> {
+interface Set<T extends {}> extends ReadonlySet<T> {
 	/**
 	 * Adds a value to the set
 	 */
-	add(this: Set<T>, value: T): this;
+	add(this: Set<{}>, value: T): this;
 
 	/**
 	 * Deletes the given key from the set.
 	 *
 	 * Returns a boolean indicating whether or not a value was removed.
 	 */
-	delete(this: Set<T>, value: T): boolean;
+	delete(this: Set<{}>, value: T): boolean;
 
 	/**
 	 * Deletes all members of the set.
 	 */
-	clear(this: Set<T>): void;
+	clear(this: Set<{}>): void;
 }
 
 interface SetConstructor {
-	new <T = any>(values?: ReadonlyArray<T> | null): Set<T>;
+	new <T extends {} = {}>(values?: ReadonlyArray<T>): Set<T>;
 }
 declare const Set: SetConstructor;
 
-interface WeakSet<T> extends Set<T> {}
+interface WeakSet<T extends object> extends Set<T> {}
 
 interface WeakSetConstructor {
-	new <T extends object = object>(values?: ReadonlyArray<T> | null): WeakSet<T>;
+	new <T extends object = object>(values?: ReadonlyArray<T>): WeakSet<T>;
 }
 declare const WeakSet: WeakSetConstructor;
 
