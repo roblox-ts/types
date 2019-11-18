@@ -987,7 +987,7 @@ type Extract<T, U> = T extends U ? T : never;
 /**
  * Exclude null and undefined from T
  */
-type NonNullable<T> = T extends null | undefined ? never : T;
+type NonNullable<T> = unknown extends T ? {} : T extends null | undefined ? never : T;
 
 /**
  * Obtain the parameters of a function type in a `tuple | never`.
