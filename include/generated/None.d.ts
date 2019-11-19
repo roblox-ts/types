@@ -581,7 +581,7 @@ interface Instance {
 	 * @param name The `Instance/Name` to be looked for.
 	 * @returns The `Instance` found.
 	 */
-	FindFirstAncestor<T extends Instance = Instance>(this: Instance, name: string): T | undefined;
+	FindFirstAncestor(this: Instance, name: string): Instance | undefined;
 	/** Returns the first ancestor of the `Instance` whose [Instance.ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) is equal to the given className.
 	 * 
 	 * This function works upwards, meaning it starts at the `Instance`'s immediate [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) and works up towards the `DataModel`. If no matching ancestor is found, it returns nil.
@@ -677,7 +677,7 @@ interface Instance {
 	 * @param recursive Whether or not the search should be conducted recursively.
 	 * @returns The `Instance` found.
 	 */
-	FindFirstChild<T extends Instance = Instance>(this: Instance, name: string, recursive?: boolean): T | undefined;
+	FindFirstChild(this: Instance, name: string, recursive?: boolean): Instance | undefined;
 	/** Returns the first child of the `Instance` whose [ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) is equal to the given className.
 	 * 
 	 * If no matching child is found, this function returns nil.
@@ -749,7 +749,7 @@ interface Instance {
 	 * See also the [GetDescendants](https://developer.roblox.com/api-reference/function/Instance/GetDescendants) function.
 	 * @returns An array containing the `Instance`'s children.
 	 */
-	GetChildren<T extends Instance = Instance>(this: Instance): Array<T>;
+	GetChildren(this: Instance): Array<Instance>;
 	/** The **GetDescendants** function of an object returns an array that contains all of the descendants of that object. Unlike [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren), which only returns the immediate children of an object, GetDescendants will find every child of the object, every child of those children, and so on and so forth.
 	 * 
 	 * The arrays returned by GetDescendants are arranged so that parents come earlier than their children. For example, let’s look at the following setup:
@@ -887,8 +887,8 @@ interface Instance {
 	 * @param timeOut An optional time out parameter.
 	 * @returns The `Instance` found.
 	 */
-	WaitForChild<T extends Instance = Instance>(this: Instance, childName: string): T;
-	WaitForChild<T extends Instance = Instance>(this: Instance, childName: string, timeOut: number): T | undefined;
+	WaitForChild(this: Instance, childName: string): Instance;
+	WaitForChild(this: Instance, childName: string, timeOut: number): Instance | undefined;
 	/** Fires when the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property of the object or one of its ancestors is changed.
 	 * 
 	 * This event includes two parameters, *child* and *parent*. *Child* refers to the `Instance` whose [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) was actually changed. *Parent* refers to this `Instance`'s new [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent).
@@ -4082,7 +4082,7 @@ interface CollectionService extends Instance {
 	 * 
 	 * This method does not guarantee any ordering of the returned objects. Additionally, it is possible that objects can have the given tag assigned to them, but not be a descendant of the `DataModel`, i.e. its parent is nil. This method will not return such objects.
 	 */
-	GetTagged<T extends Instance = Instance>(this: CollectionService, tag: string): Array<T>;
+	GetTagged<T extends Instance>(this: CollectionService, tag: string): Array<Instance>;
 	/** GetTags is given an object and returns a table of strings, which are the tags applied to the given object.
 	 * 
 	 * ```lua
