@@ -449,7 +449,7 @@ declare namespace table {
 	function sort<T>(t: Array<T>, comp?: (a: T, b: T) => boolean): void;
 }
 
-type thread = {} & { readonly LUA_THREAD?: never };
+type thread = { readonly LUA_THREAD?: never };
 
 declare namespace coroutine {
 	/** Creates a new coroutine, with body f. f must be a Lua function. */

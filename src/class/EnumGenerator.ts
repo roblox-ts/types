@@ -22,12 +22,12 @@ export class EnumGenerator extends Generator {
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
-		this.write(`type Enum = { GetEnumItems(this: {}): Array<EnumItem> } & { [index: string]: EnumItem };`);
+		this.write(`type Enum = { GetEnumItems(this: defined): Array<EnumItem> } & { [index: string]: EnumItem };`);
 		this.write(``);
 		this.write(`declare namespace Enum {`);
 		this.pushIndent();
 		this.write(
-			`type EnumType<T extends { Name: string }> = { GetEnumItems(this: {}): Array<T> } & { [K in T["Name"]]: Extract<T, { Name: K }> };`,
+			`type EnumType<T extends { Name: string }> = { GetEnumItems(this: defined): Array<T> } & { [K in T["Name"]]: Extract<T, { Name: K }> };`,
 		);
 		this.write(`export function GetEnums(this: Enums): Array<Enum>;`);
 		this.write(``);
@@ -51,7 +51,7 @@ export class EnumGenerator extends Generator {
 				this.write(`export const ${enumItemName}: ${enumItemName};`);
 				this.write(``);
 			}
-			this.write(`export function GetEnumItems(this: {}): Array<${enumTypeName}>`);
+			this.write(`export function GetEnumItems(this: defined): Array<${enumTypeName}>`);
 			this.popIndent();
 			this.write(`}`);
 			this.write(`export type ${enumTypeName} = ${enumTypeName}.${enumItemNames.join(` | ${enumTypeName}.`)};`);
