@@ -593,56 +593,56 @@ interface TemplateStringsArray extends Array<string> {}
  * const point = { x: 5, y: 10 } as const;
  * print(point.x);
  */
-interface ReadonlyMap<K extends defined, V extends defined> extends Iterable<[K, V]> {
+interface ReadonlyMap<K, V> extends Iterable<[K, V]> {
 	/**
 	 * Returns true if empty, otherwise false.
 	 */
-	isEmpty(this: ReadonlyMap<defined, defined>): boolean;
+	isEmpty(this: ReadonlyMap<K, V>): boolean;
 
 	/**
 	 * Returns a string representation of this data structure.
 	 */
-	toString(this: ReadonlyMap<defined, defined>): string;
+	toString(this: ReadonlyMap<K, V>): string;
 
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the Map
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
 	 */
-	forEach(this: ReadonlyMap<defined, defined>, callbackfn: (value: V, key: K, self: this) => void): void;
+	forEach(this: ReadonlyMap<K, V>, callbackfn: (value: V, key: K, self: this) => void): void;
 
 	/**
 	 * Returns the number of elements in the Map
 	 */
-	size(this: ReadonlyMap<defined, defined>): number;
+	size(this: ReadonlyMap<K, V>): number;
 
 	/**
 	 * Returns an array with all values of this Map
 	 */
-	values(this: ReadonlyMap<defined, defined>): Array<V>;
+	values(this: ReadonlyMap<K, V>): Array<V>;
 
 	/**
 	 * Returns a boolean for whether the given key exists in the Map
 	 */
-	has(this: ReadonlyMap<defined, defined>, key: K): boolean;
+	has(this: ReadonlyMap<K, V>, key: K): boolean;
 
 	/**
 	 * Returns the value associated with the given key
 	 */
-	get(this: ReadonlyMap<defined, defined>, key: K): V | undefined;
+	get(this: ReadonlyMap<K, V>, key: K): V | undefined;
 
 	/**
 	 * Returns an array of tuples for all members of this Map
 	 */
-	entries(this: ReadonlyMap<defined, defined>): Array<[K, V]>;
+	entries(this: ReadonlyMap<K, V>): Array<[K, V]>;
 
 	/**
 	 * Returns an array with all of this map's keys
 	 */
-	keys(this: ReadonlyMap<defined, defined>): Array<K>;
+	keys(this: ReadonlyMap<K, V>): Array<K>;
 }
 
 interface ReadonlyMapConstructor {
-	new <K extends defined = defined, V extends defined = defined>(entries?: ReadonlyArray<[K, V]>): ReadonlyMap<K, V>;
+	new <K, V>(entries?: ReadonlyArray<[K, V]>): ReadonlyMap<K, V>;
 }
 declare var ReadonlyMap: ReadonlyMapConstructor;
 
@@ -672,90 +672,90 @@ declare var ReadonlyMap: ReadonlyMapConstructor;
  * print(point.y++);
  * point.z = 15 // error!
  */
-interface Map<K extends defined, V extends defined> extends ReadonlyMap<K, V> {
+interface Map<K, V> extends ReadonlyMap<K, V> {
 	/**
 	 * Associates a key with a value which can be accessed later by `Map.get`
 	 */
-	set(this: Map<defined, defined>, key: K, value: V): this;
+	set(this: Map<K, V>, key: K, value: V): this;
 
 	/**
 	 * Deletes the given key from the Map.
 	 *
 	 * Returns a boolean indicating whether or not a value was removed.
 	 */
-	delete(this: Map<defined, defined>, key: K): boolean;
+	delete(this: Map<K, V>, key: K): boolean;
 
 	/**
 	 * Deletes all members of the Map
 	 */
-	clear(this: Map<defined, defined>): void;
+	clear(this: Map<K, V>): void;
 }
 
 interface MapConstructor {
-	new <K extends defined = defined, V extends defined = defined>(entries?: ReadonlyArray<[K, V]>): Map<K, V>;
+	new <K, V>(entries?: ReadonlyArray<[K, V]>): Map<K, V>;
 }
 declare var Map: MapConstructor;
 
 /** A Map object with its `__mode` metamethod set to "k" */
-interface WeakMap<K extends object, V extends defined> extends Map<K, V> {}
+interface WeakMap<K extends object, V> extends Map<K, V> {}
 
 interface WeakMapConstructor {
-	new <K extends object = object, V extends defined = defined>(entries?: ReadonlyArray<[K, V]>): WeakMap<K, V>;
+	new <K extends object, V>(entries?: ReadonlyArray<[K, V]>): WeakMap<K, V>;
 }
 declare var WeakMap: WeakMapConstructor;
 
 /** @rbxts set */
-interface ReadonlySet<T extends defined> extends Iterable<T> {
+interface ReadonlySet<T> extends Iterable<T> {
 	/**
 	 * Returns true if empty, otherwise false.
 	 */
-	isEmpty(this: ReadonlySet<defined>): boolean;
+	isEmpty(this: ReadonlySet<T>): boolean;
 
 	/**
 	 * Returns a string representation of this data structure.
 	 */
-	toString(this: ReadonlySet<defined>): string;
+	toString(this: ReadonlySet<T>): string;
 
 	/**
 	 * Performs the specified action for each (element / pair of elements) in the set
 	 * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each (element / pair of elements) in the array.
 	 */
-	forEach(this: ReadonlySet<defined>, callbackfn: (value: T, value2: T, self: ReadonlySet<T>) => void): void;
+	forEach(this: ReadonlySet<T>, callbackfn: (value: T, value2: T, self: ReadonlySet<T>) => void): void;
 
 	/**
 	 * Returns the number of elements in the set
 	 */
-	size(this: ReadonlySet<defined>): number;
+	size(this: ReadonlySet<T>): number;
 
 	/**
 	 * Returns an array with all values of this set
 	 */
-	values(this: ReadonlySet<defined>): Array<T>;
+	values(this: ReadonlySet<T>): Array<T>;
 
 	/**
 	 * Returns a boolean for whether the given key exists in the set
 	 */
-	has(this: ReadonlySet<defined>, value: T): boolean;
+	has(this: ReadonlySet<T>, value: T): boolean;
 
 	/**
 	 * Returns a new set with every element that occurs at least once in either `this` or a given set
 	 */
-	union<U>(this: ReadonlySet<defined>, set: ReadonlySet<U>): Set<T | U>;
+	union<U>(this: ReadonlySet<T>, set: ReadonlySet<U>): Set<T | U>;
 
 	/**
 	 * Returns a new set with every element that occurs in both `this` and a given set
 	 */
-	intersect<U>(this: ReadonlySet<defined>, set: ReadonlySet<U>): Set<T | U>;
+	intersect<U>(this: ReadonlySet<T>, set: ReadonlySet<U>): Set<T | U>;
 
 	/**
 	 * Returns a new set which is the result of subtracting a given set from `this`
 	 */
-	difference<U>(this: ReadonlySet<defined>, set: ReadonlySet<U>): Set<T | U>;
+	difference<U>(this: ReadonlySet<T>, set: ReadonlySet<U>): Set<T | U>;
 
 	/**
 	 * Returns true if `this` and a given set have no elements in common, else false.
 	 */
-	isDisjointWith(this: ReadonlySet<defined>, set: ReadonlySet<defined>): boolean;
+	isDisjointWith(this: ReadonlySet<T>, set: ReadonlySet<T>): boolean;
 
 	/**
 	 * Returns a boolean for whether `this` is a subset of a given set.
@@ -766,43 +766,43 @@ interface ReadonlySet<T extends defined> extends Iterable<T> {
 set1.isSubsetOf(set2) && !set2.isSubsetOf(set1)
 ```
 	 */
-	isSubsetOf(this: ReadonlySet<defined>, set: ReadonlySet<defined>): boolean;
+	isSubsetOf(this: ReadonlySet<T>, set: ReadonlySet<T>): boolean;
 }
 
 interface ReadonlySetConstructor {
-	new <T extends defined = defined>(values?: ReadonlyArray<T>): ReadonlySet<T>;
+	new <T>(values?: ReadonlyArray<T>): ReadonlySet<T>;
 }
 declare const ReadonlySet: ReadonlySetConstructor;
 
 /** @rbxts set */
-interface Set<T extends defined> extends ReadonlySet<T> {
+interface Set<T> extends ReadonlySet<T> {
 	/**
 	 * Adds a value to the set
 	 */
-	add(this: Set<defined>, value: T): this;
+	add(this: Set<T>, value: T): this;
 
 	/**
 	 * Deletes the given key from the set.
 	 *
 	 * Returns a boolean indicating whether or not a value was removed.
 	 */
-	delete(this: Set<defined>, value: T): boolean;
+	delete(this: Set<T>, value: T): boolean;
 
 	/**
 	 * Deletes all members of the set.
 	 */
-	clear(this: Set<defined>): void;
+	clear(this: Set<T>): void;
 }
 
 interface SetConstructor {
-	new <T extends defined = defined>(values?: ReadonlyArray<T>): Set<T>;
+	new <T>(values?: ReadonlyArray<T>): Set<T>;
 }
 declare const Set: SetConstructor;
 
 interface WeakSet<T extends object> extends Set<T> {}
 
 interface WeakSetConstructor {
-	new <T extends object = object>(values?: ReadonlyArray<T>): WeakSet<T>;
+	new <T extends object>(values?: ReadonlyArray<T>): WeakSet<T>;
 }
 declare const WeakSet: WeakSetConstructor;
 
