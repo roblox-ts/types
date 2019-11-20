@@ -351,6 +351,11 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	mapFiltered<U>(this: ReadonlyArray<defined>, callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => U): Array<NonNullable<U>>;
 
 	/**
+	 * Removes all undefined values from the array safely
+	 */
+	filterUndefined(this: undefined extends T ? ReadonlyArray<T> : never): Array<NonNullable<T>>;
+
+	/**
 	 * Returns the elements of an array that meet the condition specified in a callback function.
 	 * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
 	 */
