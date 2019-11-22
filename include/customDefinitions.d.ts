@@ -6,6 +6,7 @@ interface AnimationController extends Instance {
 
 interface Animator extends Instance {
 	LoadAnimation(this: Animator, animation: Animation): AnimationTrack;
+	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
 }
 
 /** @rbxts server */

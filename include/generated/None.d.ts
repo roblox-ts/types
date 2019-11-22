@@ -1574,7 +1574,7 @@ interface AnimationTrack extends Instance {
 interface Animator extends Instance {
 	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Animator";
-	GetPlayingAnimationTracks(this: Animator): unknown;
+	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
 	/** Loads an `Animation` onto an `Animator`, returning an `AnimationTrack`. Used to load animations on locally controlled models (such as player characters) from the server.
 	 * 
 	 * A `Model` is considered locally controlled if it has network ownership of the model, clients have network ownership of the local character model by default and other models can be assigned to a different client using [BasePart.SetNetworkOwner](https://developer.roblox.com/api-reference/function/BasePart/SetNetworkOwner).
