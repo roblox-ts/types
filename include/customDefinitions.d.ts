@@ -6,6 +6,7 @@ interface AnimationController extends Instance {
 
 interface Animator extends Instance {
 	LoadAnimation(this: Animator, animation: Animation): AnimationTrack;
+	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
 }
 
 /** @rbxts server */
@@ -117,7 +118,7 @@ interface ClickDetector extends Instance {
 interface CollectionService extends Instance {
 	GetInstanceAddedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetInstanceRemovedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
-	GetTagged<T extends Instance = Instance>(this: CollectionService, tag: string): Array<T>;
+	GetTagged<T extends Instance>(this: CollectionService, tag: string): Array<Instance>;
 	GetTags(this: CollectionService, instance: Instance): Array<string>;
 }
 
@@ -339,13 +340,13 @@ interface Instance {
 	 * }
 	 */
 	Changed: unknown;
-	GetChildren<T extends Instance = Instance>(this: Instance): Array<T>;
+	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
 
-	FindFirstAncestor<T extends Instance = Instance>(this: Instance, name: string): T | undefined;
-	FindFirstChild<T extends Instance = Instance>(this: Instance, name: string, recursive?: boolean): T | undefined;
-	WaitForChild<T extends Instance = Instance>(this: Instance, childName: string): T;
-	WaitForChild<T extends Instance = Instance>(this: Instance, childName: string, timeOut: number): T | undefined;
+	FindFirstAncestor(this: Instance, name: string): Instance | undefined;
+	FindFirstChild(this: Instance, name: string, recursive?: boolean): Instance | undefined;
+	WaitForChild(this: Instance, childName: string): Instance;
+	WaitForChild(this: Instance, childName: string, timeOut: number): Instance | undefined;
 
 	IsA<T extends keyof Instances>(this: Instance, className: T): this is Instances[T];
 	IsA(this: Instance, className: string): boolean;
@@ -913,14 +914,9 @@ interface UserInputService {
 	GetFocusedTextBox(this: UserInputService): TextBox | undefined;
 }
 
-interface Workspace extends Model {
-	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
-	BreakJoints: any;
-	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
-	MakeJoints: any;
-	Terrain: Terrain;
+interface WorldRoot extends Model {
 	FindPartOnRay(
-		this: Workspace,
+		this: WorldRoot,
 		ray: Ray,
 		ignoreDescendantsInstance?: Instance,
 		terrainCellsAreCubes?: boolean,
@@ -928,7 +924,7 @@ interface Workspace extends Model {
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 
 	FindPartOnRayWithIgnoreList(
-		this: Workspace,
+		this: WorldRoot,
 		ray: Ray,
 		ignoreDescendantsTable: Array<Instance>,
 		terrainCellsAreCubes?: boolean,
@@ -936,27 +932,40 @@ interface Workspace extends Model {
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 
 	FindPartOnRayWithWhitelist(
-		this: Workspace,
+		this: WorldRoot,
 		ray: Ray,
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 
-	FindPartsInRegion3(region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<BasePart>;
+	FindPartsInRegion3(
+		this: WorldRoot,
+		region: Region3,
+		ignoreDescendantsInstance?: Instance,
+		maxParts?: number,
+	): Array<BasePart>;
 
 	FindPartsInRegion3WithIgnoreList(
-		this: Workspace,
+		this: WorldRoot,
 		region: Region3,
 		ignoreDescendantsTable: Array<Instance>,
 		maxParts?: number,
 	): Array<BasePart>;
 
 	FindPartsInRegion3WithWhiteList(
-		this: Workspace,
+		this: WorldRoot,
 		region: Region3,
 		whitelistDescendantsTable: Array<Instance>,
 		maxParts?: number,
 	): Array<BasePart>;
+}
+
+interface Workspace extends WorldRoot {
+	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
+	BreakJoints: any;
+	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
+	MakeJoints: any;
+	Terrain: Terrain;
 }
 
 /**

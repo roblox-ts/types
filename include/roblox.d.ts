@@ -1418,7 +1418,7 @@ interface Vector3 {
 	/** Returns the cross product of the two vectors. */
 	Cross(this: Vector3, other: Vector3): Vector3;
 	/** Returns true if the other Vector3 falls within the epsilon radius of this Vector3. */
-	isClose(this: Vector3, other: Vector3, epsilon: number): boolean;
+	FuzzyEq(this: Vector3, other: Vector3, epsilon: number): boolean;
 }
 interface Vector3Constructor {
 	FromNormalId: (norm: Enum.NormalId) => Vector3;
