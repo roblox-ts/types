@@ -1084,9 +1084,9 @@ export class ClassGenerator extends Generator {
 			hasTag(rbxClass, "Service") ? 2 : isCreatable(rbxClass) ? 0 : 1,
 		);
 
-		if (Services.length) this.generateInstanceInterface("Services", Services);
-		if (CreatableInstances.length) this.generateInstanceInterface("CreatableInstances", CreatableInstances);
-		if (Instances.length) this.generateInstanceInterface("Instances", Instances, "Services, CreatableInstances");
+		if (0 < Services.length) this.generateInstanceInterface("Services", Services);
+		if (0 < CreatableInstances.length) this.generateInstanceInterface("CreatableInstances", CreatableInstances);
+		if (0 < Instances.length) this.generateInstanceInterface("Instances", Instances, "Services, CreatableInstances");
 	}
 
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {
