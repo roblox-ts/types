@@ -118,6 +118,9 @@ const PLUGIN_ONLY_CLASSES = new Set([
 	"PluginToolbar",
 	"PluginToolbarButton",
 	"RobloxPluginGuiService",
+	"ChangeHistoryService",
+	"KeyframeSequenceProvider",
+	"VersionControlService",
 
 	"GlobalSettings",
 	"DebugSettings",
@@ -141,6 +144,7 @@ const CLASS_BLACKLIST = new Set([
 	"CorePackages",
 	"CoreScript",
 	"CoreScriptSyncService",
+	"DraftsService",
 	"FlagStandService",
 	"FlyweightService",
 	"GamepadService",
@@ -148,8 +152,8 @@ const CLASS_BLACKLIST = new Set([
 	"GoogleAnalyticsConfiguration",
 	"GuidRegistryService",
 	"HttpRbxApiService",
-	// "KeyboardService",
-	// "LocalStorageService",
+	"KeyboardService",
+	"LocalStorageService",
 	"LuaWebService",
 	"MemStorageService",
 	"PartOperationAsset",
@@ -199,9 +203,19 @@ const CLASS_BLACKLIST = new Set([
 	// "SkateboardPlatform",
 	"Skin",
 
+	"ReflectionMetadata",
+	"ReflectionMetadataCallbacks",
+	"ReflectionMetadataClasses",
+	"ReflectionMetadataEnums",
+	"ReflectionMetadataEvents",
+	"ReflectionMetadataFunctions",
+	"ReflectionMetadataProperties",
+	"ReflectionMetadataYieldFunctions",
+
 	// unused
 	"UGCValidationService",
 	"Status",
+	"RbxAnalyticsService",
 ]);
 
 const MEMBER_BLACKLIST: {
@@ -1086,7 +1100,8 @@ export class ClassGenerator extends Generator {
 
 		if (0 < Services.length) this.generateInstanceInterface("Services", Services);
 		if (0 < CreatableInstances.length) this.generateInstanceInterface("CreatableInstances", CreatableInstances);
-		if (0 < Instances.length) this.generateInstanceInterface("Instances", Instances, "Services, CreatableInstances");
+		if (0 < Instances.length)
+			this.generateInstanceInterface("Instances", Instances, "Services, CreatableInstances");
 	}
 
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {

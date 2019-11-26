@@ -128,8 +128,8 @@ interface ContentProvider extends Instance {
 
 /** @rbxts client */
 interface ContextActionService extends Instance {
-	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool | Flag) => void>;
-	readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool | Flag) => void>;
+	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
+	readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
 	BindAction(
 		this: ContextActionService,
 		actionName: string,
@@ -312,7 +312,7 @@ interface Humanoid extends Instance {
 	GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
 	LoadAnimation(this: Humanoid, animation: Animation): AnimationTrack;
 	AddAccessory(this: Humanoid, accessory: Accessory): void;
-	EquipTool(this: Humanoid, tool: Tool | Flag): void;
+	EquipTool(this: Humanoid, tool: Tool): void;
 	GetAccessories(this: Humanoid): Array<Accessory>;
 	GetLimb(this: Humanoid, part: BasePart): Enum.Limb;
 	GetBodyPartR15(this: Humanoid, part: BasePart): Enum.BodyPartR15;
@@ -732,7 +732,7 @@ interface Teams extends Instance {
 
 interface TeleportService {
 	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<
-		(loadingGui: ScreenGui | GuiMain, dataTable?: unknown) => void
+		(loadingGui: ScreenGui, dataTable?: unknown) => void
 	>;
 
 	readonly TeleportInitFailed: RBXScriptSignal<
@@ -743,7 +743,7 @@ interface TeleportService {
 	/** @rbxts server */
 	ReserveServer(this: TeleportService, placeId: number): LuaTuple<[string, string]>;
 	/** @rbxts client */
-	GetArrivingTeleportGui(this: TeleportService): ScreenGui | GuiMain | undefined;
+	GetArrivingTeleportGui(this: TeleportService): ScreenGui | undefined;
 	/** @rbxts client */
 	GetLocalPlayerTeleportData(this: TeleportService): unknown;
 	/** @rbxts client */
@@ -757,7 +757,7 @@ interface TeleportService {
 		placeId: number,
 		player?: Player,
 		teleportData?: TeleportData,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): void;
 
 	TeleportToPrivateServer(
@@ -767,7 +767,7 @@ interface TeleportService {
 		players: Array<Player>,
 		spawnName?: string,
 		teleportData?: TeleportData,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): void;
 
 	TeleportPartyAsync(
@@ -775,7 +775,7 @@ interface TeleportService {
 		placeId: number,
 		players: Array<Player>,
 		teleportData?: TeleportData,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): string;
 
 	TeleportToPlaceInstance(
@@ -785,7 +785,7 @@ interface TeleportService {
 		player?: Player,
 		spawnName?: string,
 		teleportData?: TeleportData,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): void;
 
 	TeleportToSpawnByName(
@@ -794,7 +794,7 @@ interface TeleportService {
 		spawnName: string,
 		player?: Player,
 		teleportData?: any,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): void;
 }
 

@@ -11,8 +11,6 @@ interface Services {
 	BadgeService: BadgeService;
 	CoreGui: CoreGui;
 	StarterGui: StarterGui;
-	BrowserService: BrowserService;
-	ChangeHistoryService: ChangeHistoryService;
 	Chat: Chat;
 	CollectionService: CollectionService;
 	ContentProvider: ContentProvider;
@@ -20,7 +18,6 @@ interface Services {
 	ControllerService: ControllerService;
 	DataStoreService: DataStoreService;
 	Debris: Debris;
-	DraftsService: DraftsService;
 	FriendService: FriendService;
 	GamePassService: GamePassService;
 	GroupService: GroupService;
@@ -29,12 +26,7 @@ interface Services {
 	HttpService: HttpService;
 	InsertService: InsertService;
 	JointsService: JointsService;
-	KeyboardService: KeyboardService;
-	KeyframeSequenceProvider: KeyframeSequenceProvider;
 	Lighting: Lighting;
-	LocalStorageService: LocalStorageService;
-	AppStorageService: AppStorageService;
-	UserStorageService: UserStorageService;
 	LocalizationService: LocalizationService;
 	LogService: LogService;
 	MarketplaceService: MarketplaceService;
@@ -49,7 +41,6 @@ interface Services {
 	Players: Players;
 	PointsService: PointsService;
 	PolicyService: PolicyService;
-	RbxAnalyticsService: RbxAnalyticsService;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedStorage: ReplicatedStorage;
 	RunService: RunService;
@@ -71,7 +62,6 @@ interface Services {
 	UserGameSettings: UserGameSettings;
 	UserInputService: UserInputService;
 	VRService: VRService;
-	VersionControlService: VersionControlService;
 }
 
 interface CreatableInstances {
@@ -204,14 +194,6 @@ interface CreatableInstances {
 	BlurEffect: BlurEffect;
 	ColorCorrectionEffect: ColorCorrectionEffect;
 	SunRaysEffect: SunRaysEffect;
-	ReflectionMetadata: ReflectionMetadata;
-	ReflectionMetadataCallbacks: ReflectionMetadataCallbacks;
-	ReflectionMetadataClasses: ReflectionMetadataClasses;
-	ReflectionMetadataEnums: ReflectionMetadataEnums;
-	ReflectionMetadataEvents: ReflectionMetadataEvents;
-	ReflectionMetadataFunctions: ReflectionMetadataFunctions;
-	ReflectionMetadataProperties: ReflectionMetadataProperties;
-	ReflectionMetadataYieldFunctions: ReflectionMetadataYieldFunctions;
 	RemoteEvent: RemoteEvent;
 	RemoteFunction: RemoteFunction;
 	Sky: Sky;
@@ -2945,11 +2927,6 @@ interface RocketPropulsion extends BodyMover {
 	readonly ReachedTarget: RBXScriptSignal<() => void>;
 }
 
-interface BrowserService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BrowserService";
-}
-
 /** The Camera object defines a view of the 3D game world. In an instance of the game, each client has its own Camera object associated with it. Camera objects exist only upon the viewer's client, residing in that user's local Workspace, and therefore cannot be edited directly from the server. As of the most recent versions of the game, the only way to access a client's Camera object is through a LocalScript running on that client. Each client's particular Camera object can be accessed through the [CurrentCamera](https://wiki.roblox.com/index.php?title=CurrentCamera) property of its local Workspace, assuming your code is running on that specific client.
  * 
  * A camera's state is defined in the following way:
@@ -3536,12 +3513,6 @@ interface Camera extends Instance {
 	 * You are advised to use `TweenService` to animate the `Camera` instead, as it is more reliable and provides more options for easing styles.
 	 */
 	readonly InterpolationFinished: RBXScriptSignal<() => void>;
-}
-
-/** The ChangeHistoryService provides a way for plugins to undo and redo changes and to create waypoints when changes are made to the place. */
-interface ChangeHistoryService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ChangeHistoryService";
 }
 
 /** Base class for objects that change a character's appearance. */
@@ -4664,9 +4635,9 @@ interface ContextActionService extends Instance {
 	/** If _actionName_ key contains a bound action, then this will return the touch button (if was created). Returns nil if a touch button was not created. No guarantees are made whether button will be retrievable when button is manipulated. */
 	GetButton(this: ContextActionService, actionName: string): ImageButton | undefined;
 	/** Fires when the current player equips a [Tool](https://developer.roblox.com/api-reference/class/Tool). */
-	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool | Flag) => void>;
+	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
 	/** Fires when the current player unequips a [Tool](https://developer.roblox.com/api-reference/class/Tool). */
-	readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool | Flag) => void>;
+	readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
 }
 
 /** The base class for controller objects, such as the `HumanoidController` object. */
@@ -5303,11 +5274,6 @@ interface DialogChoice extends Instance {
 	ResponseDialog: string;
 	/** Sets what the player will say when they choose this DialogChoice. */
 	UserDialog: string;
-}
-
-interface DraftsService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DraftsService";
 }
 
 /** The **Dragger** object is a helper object used to create tools that can drag parts. It is expected (but not required) to be used with `Mouse` events.
@@ -8837,7 +8803,7 @@ interface Humanoid extends Instance {
 	 *  - To unequip tools, use [Humanoid.UnequipTools](https://developer.roblox.com/api-reference/function/Humanoid/UnequipTools)
 	 * @param tool The `Tool` to equip
 	 */
-	EquipTool(this: Humanoid, tool: Tool | Flag): void;
+	EquipTool(this: Humanoid, tool: Tool): void;
 	/** This function returns an array of [Accessories](https://developer.roblox.com/api-reference/class/Accessory) that the `Humanoid` is currently wearing.
 	 * 
 	 * All `Accessory` objects parented to the [Humanoid's](https://developer.roblox.com/api-reference/class/Humanoid) parent will be included, regardless of if they are attached to the `Humanoid` or not. If the humanoid is not wearing any accessories, the array will be empty.
@@ -10163,11 +10129,6 @@ interface JointsService extends Instance {
 	ShowPermissibleJoints(this: JointsService): void;
 }
 
-interface KeyboardService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "KeyboardService";
-}
-
 /** A Keyframe holds the `Pose`s applied to joints in a `Model` at a given point of time in an animation. `Keyframe`s are interpolated between during animation playback.
  * 
  * Note, in most cases developers do not need to manipulate `KeyframeSequence`s as the animation editor covers most animation functionality. However, in some cases a developer may wish to generate an animation from a `Script` or build their own plugin.
@@ -10338,63 +10299,6 @@ interface KeyframeSequence extends Instance {
 	 * @param keyframe The `Keyframe` to be removed.
 	 */
 	RemoveKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
-}
-
-/** The KeyframeSequenceProvider is a service that is used to load and preview `KeyframeSequence`s. It includes a number of functions that are useful when working with `Animation`s.
- * 
- * ## What is a KeyframeSequence?
- * 
- * The animation data Roblox uses in the playback of an animation, referenced by the [Animation.AnimationId](https://developer.roblox.com/api-reference/property/Animation/AnimationId) property, is constructed from a `KeyframeSequence`. Every animation has a `KeyframeSequence` associated with it. `KeyframeSequence`s are usually created by the Roblox Animation Editor but can be created through other plugins or even manually.
- * 
- * For more information, see the `KeyframeSequence` page.
- * 
- * ## What does the KeyframeSequenceProvider do?
- * 
- * The KeyframeSequenceProvider has a number of uses.
- * 
- *  - Download the `KeyframeSequence` associated with an animation content ID from the Roblox website
- * 
- *  - Generate a temporary id to locally preview an animation
- * 
- *  - Fetch the content IDs of animations owned by a particular user.
- */
-interface KeyframeSequenceProvider extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "KeyframeSequenceProvider";
-	/** Generates a temporary asset ID from a `KeyframeSequence` that can be used for localized testing of an animation.
-	 * 
-	 * This function performs the same function to [KeyframeSequenceProvider.RegisterKeyframeSequence](https://developer.roblox.com/api-reference/function/KeyframeSequenceProvider/RegisterKeyframeSequence) however this function generates an *active:/ URL instead of a hash.
-	 * 
-	 * The ID generated can be used in an `Animation`'s [Animation.AnimationId](https://developer.roblox.com/api-reference/property/Animation/AnimationId) property for testing.
-	 * 
-	 * The asset ID generated by this function is temporary and cannot be used outside of Studio. Developers wishing to generate an asset ID that can be used online should upload the `KeyframeSequence` to Roblox.
-	 * @param keyframeSequence The `KeyframeSequence` to be used.
-	 * @returns A temporary asset ID generated for localized animation playback.
-	 */
-	RegisterActiveKeyframeSequence(this: KeyframeSequenceProvider, keyframeSequence: KeyframeSequence): string;
-	/** Generates a temporary asset ID from a `KeyframeSequence` that can be used for localized testing of an animation.
-	 * 
-	 * This function performs the same function to [KeyframeSequenceProvider.RegisterActiveKeyframeSequence](https://developer.roblox.com/api-reference/function/KeyframeSequenceProvider/RegisterActiveKeyframeSequence) however this function generates a hash instead of an *active:/ URL.
-	 * 
-	 * The ID generated can be used for the [Animation.AnimationId](https://developer.roblox.com/api-reference/property/Animation/AnimationId) property to test animations.
-	 * 
-	 * The asset ID generated by this function is temporary and cannot be used outside of Studio. Developers wishing to generate an asset ID that can be used online should upload the `KeyframeSequence` to Roblox.
-	 * @param keyframeSequence The `KeyframeSequence` to be used.
-	 * @returns A temporary asset ID generated for localized animation playback.
-	 */
-	RegisterKeyframeSequence(this: KeyframeSequenceProvider, keyframeSequence: KeyframeSequence): string;
-	/** This function returns an `InventoryPages` object which can be used to iterate over animations owned by a specific user.
-	 * 
-	 * This function has a number of potential uses, such as allowing users to browse and import animations into a custom animation plugin.
-	 * @param userId The user ID of the user.
-	 * @returns An `InventoryPages` of animations.
-	 */
-	GetAnimations(this: KeyframeSequenceProvider, userId: number): InventoryPages;
-	/** GetKeyframeSequenceAsync returns a `KeyframeSequence` based on the specified assetId. The assetId must correspond to an animation. The function will yield until the `KeyframeSequence` is loaded from the website. Because this is a webcall it should wrapped in a pcall.
-	 * @param assetId The content ID of the animation.
-	 * @returns The `KeyframeSequence` found.
-	 */
-	GetKeyframeSequenceAsync(this: KeyframeSequenceProvider, assetId: string): KeyframeSequence;
 }
 
 /** Light is a root class for dynamic lighting related objects. */
@@ -11080,21 +10984,6 @@ interface Lighting extends Instance {
 	 * In cases where this behavior is not desired, the [Instance.Changed](https://developer.roblox.com/api-reference/event/Instance/Changed) event or [Instance.GetPropertyChangedSignal](https://developer.roblox.com/api-reference/function/Instance/GetPropertyChangedSignal) function can be used.
 	 */
 	readonly LightingChanged: RBXScriptSignal<(skyboxChanged: boolean) => void>;
-}
-
-interface LocalStorageService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "LocalStorageService" | "AppStorageService" | "UserStorageService";
-}
-
-interface AppStorageService extends LocalStorageService {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AppStorageService";
-}
-
-interface UserStorageService extends LocalStorageService {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UserStorageService";
 }
 
 /** LocalizationService is the service responsible for handling automated translation.
@@ -15560,77 +15449,6 @@ interface SunRaysEffect extends PostEffect {
 	Spread: number;
 }
 
-interface RbxAnalyticsService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RbxAnalyticsService";
-}
-
-/** A currently unused object whose functionality was split into `ReflectionMetadataClasses` and `ReflectionMetadataEnums`. */
-interface ReflectionMetadata extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ReflectionMetadata";
-}
-
-/** Acts as a `Folder` containing information about callbacks for a `ReflectionMetadataClass`, and should be parented to it.
- * 
- * `ReflectionMetadataMember`s that are parented to this object will be perceived as callbacks under the class this is parented to.
- */
-interface ReflectionMetadataCallbacks extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ReflectionMetadataCallbacks";
-}
-
-/** Acts as a `Folder` for `ReflectionMetadataClass` objects. */
-interface ReflectionMetadataClasses extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ReflectionMetadataClasses";
-}
-
-/** The ReflectionMetadataEnums is the class that acts as a `Folder` for `ReflectionMetadataEnum` objects.
- * 
- * Since it is an internal object, it cannot be used by developers.
- */
-interface ReflectionMetadataEnums extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ReflectionMetadataEnums";
-}
-
-/** Acts as a `Folder` containing information about events for a `ReflectionMetadataClass`, and should be parented to it.
- * 
- * `ReflectionMetadataMember`s that are parented to this object will be perceived as events under the class this is parented to.
- */
-interface ReflectionMetadataEvents extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ReflectionMetadataEvents";
-}
-
-/** Acts as a `Folder` containing information about functions for a `ReflectionMetadataClass`, and should be parented to it.
- * 
- * `ReflectionMetadataMember`s that are parented to this object will be perceived as functions under the class this is parented to.
- */
-interface ReflectionMetadataFunctions extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ReflectionMetadataFunctions";
-}
-
-/** Acts as a `Folder` containing information about properties for a `ReflectionMetadataClass`, and should be parented to it.
- * 
- * `ReflectionMetadataMember`s that are parented to this object will be perceived as properties under the class this is parented to.
- */
-interface ReflectionMetadataProperties extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ReflectionMetadataProperties";
-}
-
-/** Acts as a `Folder` containing information about yielding functions for a `ReflectionMetadataClass`, and should be parented to it.
- * 
- * `ReflectionMetadataMember`s that are parented to this object will be perceived as yielding functions under the class this is parented to.
- */
-interface ReflectionMetadataYieldFunctions extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ReflectionMetadataYieldFunctions";
-}
-
 /** A **RemoteEvent** is designed to provide a one-way message between the server and clients, allowing [Scripts](https://developer.roblox.com/api-reference/class/Script) to call code in [LocalScripts](https://developer.roblox.com/api-reference/class/LocalScript) and vice-versa. This message can be directed from one client to the server, from the server to a particular client, or from the server to all clients.
  * 
  * In order for both the server and clients to utilize a remote event, the RemoteEvent object itself must be in a place where both sides can see it. As such, we recommend that you store the RemoteEvent inside of `ReplicatedStorage`, although in some cases it's appropriate to store it in the workspace or inside a `Tool`.
@@ -18046,7 +17864,7 @@ interface TeleportService extends Instance {
 	 * @returns The *customLoadingScreen* the `Players/LocalPlayer|LocalPlayer` arrived into the place with
 	 * @rbxts client
 	 */
-	GetArrivingTeleportGui(this: TeleportService): ScreenGui | GuiMain | undefined;
+	GetArrivingTeleportGui(this: TeleportService): ScreenGui | undefined;
 	/** This function returns the *teleportData* the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) arrived into the place with. It can only be used on the client and can be called at any time.
 	 * 
 	 * For example, the following snippet would send the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) and [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) in a dictionary:
@@ -18298,7 +18116,7 @@ interface TeleportService extends Instance {
 		placeId: number,
 		player?: Player,
 		teleportData?: TeleportData,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): void;
 	/** This function teleports a `Player` to the place instance associated with the given *placeId* and *instanceId*. It can only be used to teleport to places in the same game.
 	 * 
@@ -18359,7 +18177,7 @@ interface TeleportService extends Instance {
 		player?: Player,
 		spawnName?: string,
 		teleportData?: TeleportData,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): void;
 	/** This function teleports one of more [Players](https://developer.roblox.com/api-reference/class/Player) to a reserved server created using [TeleportService.ReserveServer](https://developer.roblox.com/api-reference/function/TeleportService/ReserveServer).
 	 * 
@@ -18420,7 +18238,7 @@ interface TeleportService extends Instance {
 		players: Array<Player>,
 		spawnName?: string,
 		teleportData?: TeleportData,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): void;
 	/** This function behaves the same as [TeleportService.Teleport](https://developer.roblox.com/api-reference/function/TeleportService/Teleport) with the exception that it includes a *spawnName* parameter, causing the `Player` to spawn at the `SpawnLocation` of that name at the destination place.
 	 * 
@@ -18443,7 +18261,7 @@ interface TeleportService extends Instance {
 		spawnName: string,
 		player?: Player,
 		teleportData?: any,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): void;
 	/** This function returns the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) and [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) of the server the user with the given [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId) is in provided it is in the same game as the current place.
 	 * 
@@ -18558,7 +18376,7 @@ interface TeleportService extends Instance {
 		placeId: number,
 		players: Array<Player>,
 		teleportData?: TeleportData,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): string;
 	/** This function fires when the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) enters the place following a teleport. The *teleportData* and *customLoadingScreen* are provided as arguments.
 	 * 
@@ -18609,7 +18427,7 @@ interface TeleportService extends Instance {
 	 * Note, the *customLoadingScreen* will not be used if the destination place is in a different game.
 	 */
 	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<
-		(loadingGui: ScreenGui | GuiMain, dataTable?: unknown) => void
+		(loadingGui: ScreenGui, dataTable?: unknown) => void
 	>;
 	/** This event fires if a request to teleport (from a function such as [TeleportService.Teleport](https://developer.roblox.com/api-reference/function/TeleportService/Teleport)) fails and the player does not leave the current place server.
 	 * 
@@ -21939,11 +21757,6 @@ interface Vector3Value extends ValueBase {
 	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
 	 */
 	readonly Changed: RBXScriptSignal<(value: Vector3) => void>;
-}
-
-interface VersionControlService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "VersionControlService";
 }
 
 /** **WeldConstraints** are used to attach two [parts](https://developer.roblox.com/api-reference/class/BasePart) together. The constraint makes sure that the parts stay in the same relative position and orientation to one another. This means that if one part moves, the other will move the same amount. Even if the two parts are not touching one another, they can be welded together with a WeldConstraint.
