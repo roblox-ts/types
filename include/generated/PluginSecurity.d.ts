@@ -3,6 +3,46 @@
 /// <reference no-default-lib="true"/>
 /// <reference path="None.d.ts" />
 
+interface Services {
+	ABTestService: ABTestService;
+	NetworkSettings: NetworkSettings;
+	PluginGuiService: PluginGuiService;
+	RenderSettings: RenderSettings;
+	RobloxPluginGuiService: RobloxPluginGuiService;
+	Studio: Studio;
+	StudioData: StudioData;
+	StudioService: StudioService;
+	TaskScheduler: TaskScheduler;
+	TestService: TestService;
+}
+
+interface CreatableInstances {
+	PluginAction: PluginAction;
+	RenderingTest: RenderingTest;
+}
+
+interface Instances extends Services, CreatableInstances {
+	DebugSettings: DebugSettings;
+	GameSettings: GameSettings;
+	PluginGui: PluginGui;
+	DockWidgetPluginGui: DockWidgetPluginGui;
+	QWidgetPluginGui: QWidgetPluginGui;
+	LuaSettings: LuaSettings;
+	PluginMouse: PluginMouse;
+	PhysicsSettings: PhysicsSettings;
+	Plugin: Plugin;
+	PluginDragEvent: PluginDragEvent;
+	PluginMenu: PluginMenu;
+	PluginToolbar: PluginToolbar;
+	PluginToolbarButton: PluginToolbarButton;
+	GlobalSettings: GlobalSettings;
+	StatsItem: StatsItem;
+	RunningAverageItemDouble: RunningAverageItemDouble;
+	RunningAverageItemInt: RunningAverageItemInt;
+	RunningAverageTimeIntervalItem: RunningAverageTimeIntervalItem;
+	TotalCountTimeIntervalItem: TotalCountTimeIntervalItem;
+}
+
 // GENERATED ROBLOX INSTANCE CLASSES
 
 interface Instance {
@@ -26,6 +66,25 @@ interface Instance {
 	 * @returns The Debug ID string.
 	 */
 	GetDebugId(this: Instance, scopeLength?: number): string;
+}
+
+interface ABTestService extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "ABTestService";
+	/** [NO DOCUMENTATION] */
+	ClearUserVariations(this: ABTestService): void;
+	/** [NO DOCUMENTATION] */
+	GetVariant(this: ABTestService, name: string): string;
+	/** [NO DOCUMENTATION] */
+	InitializeForUserId(this: ABTestService, userId: number): void;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	WaitUntilBrowserTrackerABTestsInitialized(this: ABTestService): void;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	WaitUntilUserABTestsInitialized(this: ABTestService): void;
 }
 
 interface Animator extends Instance {
@@ -68,6 +127,90 @@ interface ChangeHistoryService extends Instance {
 	readonly OnUndo: RBXScriptSignal<(waypoint: string) => void>;
 }
 
+/** The DebugSettings allows you to view diagnostics information regarding Roblox. It is labeled as **Diagnostics** in the Roblox Studio Settings menu. */
+interface DebugSettings extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "DebugSettings";
+	/** Describes whether a `DataModel` is actively in memory, as an integer (where 1 = true, and 0 = false).
+	 * 	
+	 * Describes whether a `DataModel` is actively in memory, as an integer (where 1 = true, and 0 = false).
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	Describes whether a `DataModel` is actively in memory, as an integer (where 1 = true, and 0 = false).
+	 * 	
+	 * Describes whether a `DataModel` is actively in memory, as an integer (where 1 = true, and 0 = false).
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly DataModel: number;
+	/** The number of instances active in the simulation.
+	 * 	
+	 * The number of instances active in the simulation.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	The number of instances active in the simulation.
+	 * 	
+	 * The number of instances active in the simulation.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly InstanceCount: number;
+	/** Toggles whether or not profiling of the Fmod library (which is responsible for sounds) is enabled. */
+	readonly IsFmodProfilingEnabled: boolean;
+	/** Whether or not a stacktrace is displayed in the output for an error. */
+	readonly IsScriptStackTracingEnabled: boolean;
+	/** Returns the number of internal DataModel jobs actively being processed.
+	 * 	
+	 * Returns the number of internal DataModel jobs actively being processed.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	Returns the number of internal DataModel jobs actively being processed.
+	 * 	
+	 * Returns the number of internal DataModel jobs actively being processed.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly JobCount: number;
+	/** The number of players currently in the active game-instance.
+	 * 	
+	 * The number of players currently in the active game-instance.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	The number of players currently in the active game-instance.
+	 * 	
+	 * The number of players currently in the active game-instance.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly PlayerCount: number;
+	/** Whether or not sound warnings should be reported. */
+	readonly ReportSoundWarnings: boolean;
+	/** The current client version of Roblox. Can also be retrieved by using the version() function.
+	 * 	
+	 * The current client version of Roblox. Can also be retrieved by using the version() function.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	The current client version of Roblox. Can also be retrieved by using the version() function.
+	 * 	
+	 * The current client version of Roblox. Can also be retrieved by using the version() function.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly RobloxVersion: string;
+	/** Sets the internal sampling method used to measure elapsed time with consistency across platforms. */
+	readonly TickCountPreciseOverride: Enum.TickCountSampleMethod;
+}
+
 interface File extends Instance {
 	/** 
 	 * Tags: Hidden, ReadOnly, NotReplicated
@@ -83,7 +226,128 @@ interface File extends Instance {
 	GetTemporaryId(this: File): string;
 }
 
+/** Various miscellaneous options for in-game. Can be accessed from Roblox Studio's settings menu under the _Game_ tab. */
+interface GameSettings extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "GameSettings";
+	/** Used internally by Roblox to add additional CoreScript loading directories.
+	 * 
+	 * The value of this string should be full paths to each directory, separated only by semicolons (`;`)
+	 */
+	readonly AdditionalCoreIncludeDirs: string;
+	/** When a bubble of the official bubblechat appears, this property determines after how much seconds it should disappear automaticly. */
+	readonly BubbleChatLifetime: number;
+	/** Max amounts of chat bubbles that may appear above one player's head. */
+	readonly BubbleChatMaxBubbles: number;
+	/** The maximum number of chats that can be shown in the chat history. Does not seem to work because the chat gui's code does not read from here. */
+	readonly ChatHistory: number;
+	/** The maximum number of chats that can stack and show on the screen. Does not seem to work because the chat gui's code does not read from here. */
+	readonly ChatScrollLength: number;
+	/** Toggles whether or not Roblox should use the Hardware Mouse or the Software Mouse. */
+	readonly HardwareMouse: boolean;
+	/** Describes a path to a .lua file that will be ran in place of the default StarterScript. */
+	readonly OverrideStarterScript: string;
+	/** Sets how many of the latest chat messages should be included in an abuse report request. */
+	readonly ReportAbuseChatHistory: number;
+	/** **(OBSOLETE)** */
+	readonly SoftwareSound: boolean;
+	/** Toggles whether or not video capture is enabled. */
+	readonly VideoCaptureEnabled: boolean;
+	/** Sets the quality level of Roblox's built-in video capture. */
+	readonly VideoQuality: Enum.VideoQualitySettings;
+	/** [NO DOCUMENTATION] */
+	readonly VideoRecordingChangeRequest: RBXScriptSignal<(recording: boolean) => void>;
+}
+
+/** PluginGui is an abstract class for GUIs that allow the display of [GuiObjects](https://developer.roblox.com/api-reference/class/GuiObject) in various Roblox Studio widgets. As of right now, the only available PluginGui type is `DockWidgetPluginGui`, but there may be more in the future! */
 interface PluginGui extends LayerCollector {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "PluginGui" | "DockWidgetPluginGui" | "QWidgetPluginGui";
+	/** The title that is displayed above the contents of the PluginGui. */
+	readonly Title: string;
+	/** This function binds a function to the [PluginGui’s](https://developer.roblox.com/api-reference/class/PluginGui) close button, overriding the default behavior.
+	 * 
+	 * By default, when the user clicks the ‘x’ button in the top right corner of the `PluginGui` the [Enabled](https://developer.roblox.com/api-reference/property/LayerCollector/Enabled) property is set to *false*, closing the window. When a custom function is bound using BindToClose this behavior is overwritten, allowing you to check if the user really wants to close the window or give them an opportunity to save their work.
+	 * 
+	 * As the default closing behavior is overwritten by this function, you’ll need to configure the `PluginGui` to close manually by setting [PluginGui.Enabled](https://developer.roblox.com/api-reference/property/LayerCollector/Enabled) to *false*. For example, in the below snippet users are required to click a confirm button to close the GUI:
+	 * 
+	 * ```lua
+	 * local closing = false
+	 * pluginGui:BindToClose(function()
+	 * ```
+	 * 
+	 * lua
+	 * 
+	 * -- make sure we haven't already made a button
+	 * 
+	 * if closing then
+	 * 
+	 *     return
+	 * 
+	 * end
+	 * 
+	 * closing = true
+	 * 
+	 * ```lua
+	 * 
+	 * ```
+	 * 
+	 * lua
+	 * 
+	 * -- create confirm button
+	 * 
+	 * local confirmButton = Instance.new("TextButton")
+	 * 
+	 * confirmButton.AnchorPoint = Vector2.new(0.5, 0.5)
+	 * 
+	 * confirmButton.Size = UDim2.new(0.5, 0, 0.5, 0)
+	 * 
+	 * confirmButton.Position = UDim2.new(0.5, 0, 0.5, 0)
+	 * 
+	 * confirmButton.BackgroundColor3 = Color3.new(1, 0, 0)
+	 * 
+	 * confirmButton.Text = "Close?"
+	 * 
+	 * confirmButton.Parent = pluginGui
+	 * 
+	 * ```lua
+	 * 
+	 * ```
+	 * 
+	 * lua
+	 * 
+	 * -- listen for click
+	 * 
+	 * confirmButton.Activated:Connect(function()
+	 * 
+	 *     -- close the gui
+	 * 
+	 *     pluginGui.Enabled = false
+	 * 
+	 *     -- remove confirm button
+	 * 
+	 *     confirmButton:Destroy()
+	 * 
+	 * end)
+	 * 
+	 * ```lua
+	 * end)
+	 * ```
+	 * 
+	 * You can call BindToClose with no argument to ‘unbind’ and revert to the default behavior described above. For example:
+	 * 
+	 * ```lua
+	 * pluginGui:BindToClose()
+	 * ```
+	 * 
+	 * ## See also
+	 * 
+	 *  - [Plugin.CreateDockWidgetPluginGui](https://developer.roblox.com/api-reference/function/Plugin/CreateDockWidgetPluginGui) to create a `PluginGui`
+	 * 
+	 *  - [DataModel.BindToClose](https://developer.roblox.com/api-reference/function/DataModel/BindToClose), which can be used to bind a function to the game ending and should not be confused with this function
+	 * @param function The function to bind the close button to. If no function is specified then any previously specified function will be unbound 
+	 */
+	BindToClose(this: PluginGui, callback?: Function): void;
 	/** [NO DOCUMENTATION] */
 	GetRelativeMousePosition(this: PluginGui): Vector2;
 	/** [NO DOCUMENTATION] */
@@ -100,8 +364,53 @@ interface PluginGui extends LayerCollector {
 	readonly WindowFocused: RBXScriptSignal<() => void>;
 }
 
+/** **DockWidgetPluginGui** is a `PluginGui` that displays its contents inside a dockable Roblox Studio window. It is used to create widgets similar to the built-in **Animation Editor** and **Terrain Tools**.
+ * 
+ * This GUI can be created using [Plugin:CreateDockWidgetPluginGui()](https://developer.roblox.com/api-reference/function/Plugin/CreateDockWidgetPluginGui).
+ * 
+ * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
+ */
+interface DockWidgetPluginGui extends PluginGui {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "DockWidgetPluginGui";
+}
+
+interface QWidgetPluginGui extends PluginGui {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "QWidgetPluginGui";
+}
+
 interface KeyframeSequence extends Instance {
 	AuthoredHipHeight: number;
+}
+
+/** The LuaSettings allows you to change certain properties, in regards to how Roblox handles Lua.
+ * 
+ * It is labeled as **Lua** in the Roblox Studio Settings menu.
+ */
+interface LuaSettings extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "LuaSettings";
+	/** Toggles whether or not script starts are logged in the output.
+	 * 
+	 * If set to true, the output will print blue text indicating what scripts are running, and their origin point in the DataModel.
+	 */
+	readonly AreScriptStartsReported: boolean;
+	/** How long a call to `wait()` with no arguments will yield. */
+	readonly DefaultWaitTime: number;
+	/** How many heartbeats there are between manual GC steps in Lua. */
+	readonly GcFrequency: number;
+	/** The ideal limit above which Roblox triggers aggressive garbage collection, in average KB per [LuaSettings.GcFrequency](https://developer.roblox.com/api-reference/property/LuaSettings/GcFrequency). */
+	readonly GcLimit: number;
+	/** Sets the size of pauses between successive garbage collections in Lua. */
+	readonly GcPause: number;
+	/** Sets the value of Lua's garbage collection step multiplier, which controls the 'granularity' of Lua's garbage collector. */
+	readonly GcStepMul: number;
+	/** Sets the maximum percent of Roblox's duty cycle that can be used to resume waiting Lua threads.
+	 * 
+	 * This defaults to 0.1 (or 10%)
+	 */
+	readonly WaitingThreadsBudget: number;
 }
 
 interface Script extends BaseScript {
@@ -119,7 +428,17 @@ interface MemStorageConnection extends Instance {
 	Disconnect(this: MemStorageConnection): void;
 }
 
+/** The PluginMouse object gives `Plugin`s access to the mouse. It works like the `Mouse` object and can be obtained using the plugin [Plugin.GetMouse](https://developer.roblox.com/api-reference/function/Plugin/GetMouse) method.
+ * 
+ * Note the PluginMouse can only be used when the plugin has been activated using [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate).
+ * 
+ * In addition to the functions from the `Mouse` object, the PluginMouse includes the [PluginMouse.DragEnter](https://developer.roblox.com/api-reference/event/PluginMouse/DragEnter) function which keeps track of items being selected whilst the mouse is dragging.
+ * 
+ * For more information on how to use mouse objects, see the `Mouse` page.
+ */
 interface PluginMouse extends Mouse {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "PluginMouse";
 	/** Fired when Instances are being selected while the mouse is dragging. */
 	readonly DragEnter: RBXScriptSignal<(instances: Array<Instance>) => void>;
 }
@@ -134,7 +453,126 @@ interface NetworkReplicator extends Instance {
 	GetRakStatsString(this: NetworkReplicator, verbosityLevel?: number): string;
 }
 
+/** NetworkSettings is a settings class that allow you to debug a lot of features with Roblox's server/client networking.
+ * 
+ * It can be found in Roblox Studio's settings, under the **Network** tab.
+ */
 interface NetworkSettings extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "NetworkSettings";
+	/** When set to true, a debug message will be printed to the output in cases where the physics receiver rejects a request that it received.
+	 * 
+	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox's network code is always changing behind the scenes.
+	 * 
+	 * ---
+	 * 
+	 * Incorrect Root Primitive
+	 * 
+	 * If a part receiving physics changes is not the root primitive of the assembly it belongs to, the following debug message is printed:
+	 * 
+	 * `!isAssemblyRootPrimitive {PartName}`
+	 * 
+	 * (Where `{PartName}` is the name of the part.)
+	 * 
+	 * ---
+	 * 
+	 * Grounded Part
+	 * 
+	 * If the part receiving physics changes is grounded (see: [BasePart.IsGrounded](https://developer.roblox.com/api-reference/function/BasePart/IsGrounded)), then the following debug message is printed:
+	 * 
+	 * `computeIsGrounded {PartName}`
+	 * 
+	 * (Where `{PartName}` is the name of the part.)
+	 */
+	readonly ArePhysicsRejectionsReported: boolean;
+	/** ClientPhysicsSendRate specifies how many times physics changes can be submitted from the client to the server, per second.
+	 * 
+	 * This defaults to 20.
+	 */
+	readonly ClientPhysicsSendRate: number;
+	/** DataGCRate specifies how frequently old replication data is garbage collected, per second. */
+	readonly DataGCRate: number;
+	/** DataMtuAdjust is a property that is added to the *maximum transmission unit* size of all replication data packets.
+	 * 
+	 * The value of this property is constrained to [-1000,0), and defaults to -200.
+	 */
+	readonly DataMtuAdjust: number;
+	/** DataSendPriority controls the send priority of regular packets in Roblox's underlying Raknet replication layer.
+	 * 
+	 * It can be set to the following values:
+	 * 
+	 * | Name | Description |
+	 * | --- | --- |
+	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
+	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
+	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
+	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
+	 * 
+	 * The value of this currently defaults to MEDIUM_PRIORITY. Changing it requires you to use the command bar.
+	 * 
+	 * For example, this will set the DataSendPriority to HIGH_PRIORITY:
+	 * 
+	 * `settings().Network.DataSendPriority = Enum.DataSendPriority.HIGH_PRIORITY`
+	 * 	
+	 * DataSendPriority controls the send priority of regular packets in Roblox's underlying Raknet replication layer.
+	 * 
+	 * It can be set to the following values:
+	 * 
+	 * | Name | Description |
+	 * | --- | --- |
+	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
+	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
+	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
+	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
+	 * 
+	 * The value of this currently defaults to MEDIUM_PRIORITY. Changing it requires you to use the command bar.
+	 * 
+	 * For example, this will set the DataSendPriority to HIGH_PRIORITY:
+	 * 
+	 * `settings().Network.DataSendPriority = Enum.DataSendPriority.HIGH_PRIORITY`
+	 * 
+	 * Tags: Hidden, NotReplicated
+	DataSendPriority controls the send priority of regular packets in Roblox's underlying Raknet replication layer.
+	 * 
+	 * It can be set to the following values:
+	 * 
+	 * | Name | Description |
+	 * | --- | --- |
+	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
+	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
+	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
+	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
+	 * 
+	 * The value of this currently defaults to MEDIUM_PRIORITY. Changing it requires you to use the command bar.
+	 * 
+	 * For example, this will set the DataSendPriority to HIGH_PRIORITY:
+	 * 
+	 * `settings().Network.DataSendPriority = Enum.DataSendPriority.HIGH_PRIORITY`
+	 * 	
+	 * DataSendPriority controls the send priority of regular packets in Roblox's underlying Raknet replication layer.
+	 * 
+	 * It can be set to the following values:
+	 * 
+	 * | Name | Description |
+	 * | --- | --- |
+	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
+	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
+	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
+	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
+	 * 
+	 * The value of this currently defaults to MEDIUM_PRIORITY. Changing it requires you to use the command bar.
+	 * 
+	 * For example, this will set the DataSendPriority to HIGH_PRIORITY:
+	 * 
+	 * `settings().Network.DataSendPriority = Enum.DataSendPriority.HIGH_PRIORITY`
+	 * 
+	 * Tags: Hidden, NotReplicated
+	 *
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly DataSendPriority: Enum.PacketPriority;
+	/** DataSendRate specifies how frequently data packets are sent back and forth between the server and client, per second. */
+	readonly DataSendRate: number;
 	/** ExtraMemoryUsed is an unused debug property intended for streaming.
 	 * 
 	 * It appears to specify how much extra memory is allocated to streaming, in MBs.
@@ -179,6 +617,412 @@ interface NetworkSettings extends Instance {
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly FreeMemoryMBytes: number;
+	/** IncommingReplicationLag is a property that allows you to simulate high-latency situations. It adds a delay time between when packets are actually sent and received. The property is measured in seconds, and defaults to 0. */
+	readonly IncommingReplicationLag: number;
+	/** .The purpose of this property is unknown, as it does not appear to be used anywhere in the engine. */
+	readonly IsQueueErrorComputed: boolean;
+	/** NetworkOwnerRate specifies how frequently the network owner of a `/BasePart` can be automatically changed by the server, per second. It currently defaults to 10 times per second. */
+	readonly NetworkOwnerRate: number;
+	/** PhysicsMtuAdjust is a property that is added to the *maximum transmission unit* size of all physics data packets.
+	 * 
+	 * The value of this property is constrained to [-1000,0), and defaults to -200.
+	 */
+	readonly PhysicsMtuAdjust: number;
+	/** PhysicsSendPriority controls the send priority of physics packets in Roblox's underlying RakNet replication layer.
+	 * 
+	 * It can be set to the following values:
+	 * 
+	 * | Name | Description |
+	 * | --- | --- |
+	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
+	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
+	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
+	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
+	 * 
+	 * The value of this currently defaults to HIGH_PRIORITY. Changing it requires you to use the command bar.
+	 * 
+	 * For example, this will set the PhysicsSendPriority to MEDIUM_PRIORITY:
+	 * 
+	 * `settings().Network.PhysicsSendPriority = Enum.DataSendPriority.MEDIUM_PRIORITY`
+	 * 	
+	 * PhysicsSendPriority controls the send priority of physics packets in Roblox's underlying RakNet replication layer.
+	 * 
+	 * It can be set to the following values:
+	 * 
+	 * | Name | Description |
+	 * | --- | --- |
+	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
+	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
+	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
+	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
+	 * 
+	 * The value of this currently defaults to HIGH_PRIORITY. Changing it requires you to use the command bar.
+	 * 
+	 * For example, this will set the PhysicsSendPriority to MEDIUM_PRIORITY:
+	 * 
+	 * `settings().Network.PhysicsSendPriority = Enum.DataSendPriority.MEDIUM_PRIORITY`
+	 * 
+	 * Tags: Hidden, NotReplicated
+	PhysicsSendPriority controls the send priority of physics packets in Roblox's underlying RakNet replication layer.
+	 * 
+	 * It can be set to the following values:
+	 * 
+	 * | Name | Description |
+	 * | --- | --- |
+	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
+	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
+	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
+	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
+	 * 
+	 * The value of this currently defaults to HIGH_PRIORITY. Changing it requires you to use the command bar.
+	 * 
+	 * For example, this will set the PhysicsSendPriority to MEDIUM_PRIORITY:
+	 * 
+	 * `settings().Network.PhysicsSendPriority = Enum.DataSendPriority.MEDIUM_PRIORITY`
+	 * 	
+	 * PhysicsSendPriority controls the send priority of physics packets in Roblox's underlying RakNet replication layer.
+	 * 
+	 * It can be set to the following values:
+	 * 
+	 * | Name | Description |
+	 * | --- | --- |
+	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
+	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
+	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
+	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
+	 * 
+	 * The value of this currently defaults to HIGH_PRIORITY. Changing it requires you to use the command bar.
+	 * 
+	 * For example, this will set the PhysicsSendPriority to MEDIUM_PRIORITY:
+	 * 
+	 * `settings().Network.PhysicsSendPriority = Enum.DataSendPriority.MEDIUM_PRIORITY`
+	 * 
+	 * Tags: Hidden, NotReplicated
+	 *
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly PhysicsSendPriority: Enum.PacketPriority;
+	/** PhysicsSendRate specifies how frequently physics packets are sent back and forth between the server and client, per second. */
+	readonly PhysicsSendRate: number;
+	/** PreferredClientPort specifies the preferred port to be used by the client when connecting to a local server.
+	 * 
+	 * Note that the port should be a value between 0-65535. Any value outside this range will make the client fail to connect to the server.
+	 */
+	readonly PreferredClientPort: number;
+	/** PrintBits is a diagnostics property that no longer appears to be in use. It would likely print information about bits being streamed between the server and client. */
+	readonly PrintBits: boolean;
+	/** PrintEvents is a diagnostics property that no longer appears to be in use. It would have likely printed information about events being replicated across the server/client boundary. */
+	readonly PrintEvents: boolean;
+	/** PrintFilters is a diagnostics property that allows developers to see what changes are being filtered while [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled) is set to true. It's important to note that this property will only work while in a local server.
+	 * 
+	 * When set to true, there are several conditions where warnings will be printed into the output, as listed below:
+	 * 
+	 * ----------
+	 * 
+	 * Instance Replication
+	 * 
+	 * If the client creates an instance and parents it into another instance that is visible to the server, the following warning is printed:
+	 * 
+	 * "**Filtering is enabled. New Instance `{1}` will not be replicated.**"
+	 * 
+	 * •  `{1}` — The hierarchical location of the hew instance in the `DataModel`.
+	 * 
+	 * ----------
+	 * 
+	 * Property Replication
+	 * 
+	 * If the client changes the property of an instance that is visible to the server, the following warning is printed:
+	 * 
+	 * "**Filtering is enabled. Property `{1}` change for instance `{2}` will not be replicated.**"
+	 * 
+	 * • `{1}` — The name of the property.
+	 * 
+	 * • `{2}` — The hierarchical location of the instance in the `DataModel`.
+	 * 
+	 * ----------
+	 * 
+	 * Event Replication
+	 * 
+	 * If an instance's event is fired by the client and it's normally able to replicate to the server, the following warning is printed:
+	 * 
+	 * "**Filtering is enabled. Event `{1}` for instance `{2}` will not be replicated.**"
+	 * 
+	 * • `{1}` — The name of the event.
+	 * 
+	 * • `{2}` — The hierarchical location of the instance in the `DataModel`.
+	 * 
+	 * ----------
+	 * 
+	 * Terrain Voxel Replication
+	 * 
+	 * If the client changes a `Terrain` cell, the following warning is printed:
+	 * 
+	 * "**Filtering is enabled, terrain cell change will not be replicated.**"
+	 * 
+	 * ----------
+	 */
+	readonly PrintFilters: boolean;
+	/** PrintInstances is an internal property that prints debug information about instance replication across the server/client boundary.
+	 * 
+	 * There are several debug outputs that are made available when this property is set to true, as listed below.
+	 * 
+	 * Note that this property is intended for Roblox engineers who are debugging network replication.
+	 * 
+	 * This documentation may become outdated in the future, as Roblox's network code is always changing behind the scenes.
+	 * 
+	 * ---
+	 * 
+	 * Instance Creation
+	 * 
+	 * **When a new Instance is replicated, the following debug message is printed:**
+	 * 
+	 * `Replication NewInstance::write from cache: {1}:{2}:{3} &gt;&gt; {4}, {5} bits`
+	 * 
+	 * **The numbers in curly braces are substituted, and can be described as:**
+	 * 
+	 * • `{1}` – The [Instance.ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) of the new Instance.
+	 * 
+	 * • `{2}` – The GUID string of the new Instance (which can be retrieved via [Instance.GetDebugId](https://developer.roblox.com/api-reference/function/Instance/GetDebugId)).
+	 * 
+	 * • `{3}` – The [Instance.Name](https://developer.roblox.com/api-reference/property/Instance/Name) of the new Instance.
+	 * 
+	 * • `{4}` – The IP address of the peer creating the Instance.
+	 * 
+	 * • `{5}` – The number of bits that were written to create the Instance.
+	 * 
+	 * ---
+	 * 
+	 * Instance Removal
+	 * 
+	 * ---
+	 * 
+	 * **When the removal of an Instance is requested, the following debug message is printed:**
+	 * 
+	 * `Replication: ~{1}:{2} &lt;&lt; {3}`
+	 * 
+	 * **The numbers in curly braces are substituted, and can be described as:**
+	 * 
+	 * • `{1}`  – The [Instance.ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) of the new Instance.
+	 * 
+	 * • `{2}` – The GUID string of the new Instance (which can be retrieved via [Instance.GetDebugId](https://developer.roblox.com/api-reference/function/Instance/GetDebugId)).
+	 * 
+	 * • `{3}` – The IP address of the peer requesting the removal of the Instance.
+	 * 
+	 * ---
+	 */
+	readonly PrintInstances: boolean;
+	/** [NO DOCUMENTATION] */
+	readonly PrintJoinSizeBreakdown: boolean;
+	/** When set to true, debug messages will be printed into the output, pertaining to physics replication errors. There are several debug outputs that are made available when this property is set to true, as listed below.
+	 * 
+	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
+	 * 
+	 * ---
+	 * 
+	 * Outdated Physics Packet
+	 * 
+	 * This following debug message is printed if the PhysicsReceiver receives a mechanism update packet for a part that has been updated ahead of the packet's submission time:
+	 * 
+	 * `Physics-in old packet`
+	 * 
+	 * This happens if the packet is received late, and a newer packet has already been processed.
+	 * 
+	 * ---
+	 * 
+	 * Unknown Part
+	 * 
+	 * This following debug message is printed if the PhysicsReceiver cannot find the part that is trying to be updated, because the provided Instance identifier was invalid:
+	 * 
+	 * `Physics-in of unidentified {GUID}`
+	 * 
+	 * (Where `{GUID}` is the unknown [Instance.GetDebugId](https://developer.roblox.com/api-reference/function/Instance/GetDebugId) identifier that is supposed to be targeting the part)
+	 * 
+	 * This typically happens if a part is removed before the physics update packet is received.
+	 * 
+	 * ---
+	 * 
+	 * Invalid Part
+	 * 
+	 * This following debug message is printed if the PhysicsReceiver receives a request to update the physics of a part that is not a descendant of the Workspace:
+	 * 
+	 * `Physics-in of part not in workspace {GUID}`
+	 * 
+	 * (Where `{GUID}` is the [Instance.GetDebugId](https://developer.roblox.com/api-reference/function/Instance/GetDebugId) identifier of the target part)
+	 * 
+	 * This usually happens if the part was just moved out of the Workspace, and was previously being simulated.
+	 * 
+	 * ---
+	 */
+	readonly PrintPhysicsErrors: boolean;
+	/** A diagnostics property that no longer appears to be in use. Would likely print information about property changes being streamed between the server and client. */
+	readonly PrintProperties: boolean;
+	/** When set to true, debug information is printed regarding messages that have been split up into multiple packets.
+	 * 
+	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
+	 * 
+	 * ---
+	 * 
+	 * Debug Output Format
+	 * 
+	 * The debug outputs are formatted as such:
+	 * 
+	 * `split message, id {1}, size {2}, split count {3}`
+	 * 
+	 * **The numbers in curly braces are substituted, and can be described as:**
+	 * 
+	 * • `{1}` – The id of the split packet.
+	 * 
+	 * • `{2}` – The number of bits being transmitted in each payload.
+	 * 
+	 * • `{3}` – The total number of split packets that should be received.
+	 * 
+	 * ---
+	 */
+	readonly PrintSplitMessage: boolean;
+	/** When set to true, debug information is printed to the output regarding the replication of instances when [Workspace.StreamingEnabled](https://developer.roblox.com/api-reference/property/Workspace/StreamingEnabled) is set to true. There are several debug outputs that are made available when this property is set to true, as listed below.
+	 * 
+	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
+	 * 
+	 * ---
+	 * 
+	 * Streaming Capacity Update
+	 * 
+	 * When the client's streaming capacity is updated, the following debug message will be printed:
+	 * 
+	 * `clientInstanceQuota {1}, packet in queue {2}, predictedTotalInstanceProcessTime {3}, avgStreamDataReadTime {4}, avgInstancesPerStreamData {5}`
+	 * 
+	 * **The numbers in curly braces are substituted, and can be described as:**
+	 * 
+	 * • `{1}` – The id of the client instance quota.
+	 * 
+	 * • `{2}` – The current number of incoming packets that have been queued.
+	 * 
+	 * • `{3}` – A prediction for how long it will take to update the quota.
+	 * 
+	 * • `{4}` – The current average time it takes to read the stream data.
+	 * 
+	 * • `{5}` – The average number of instances in the stream data.
+	 * 
+	 * ---
+	 * 
+	 * Instance Quota Update
+	 * 
+	 * When the client receives an instance quota update, the following debug message will be printed:
+	 * 
+	 * `Received new client instance quota: {1}, max region radius: {2}`
+	 * 
+	 * **The numbers in curly braces are substituted, and can be described as:**
+	 * 
+	 * • `{1}` – The id of the client instance quota.
+	 * 
+	 * • `{2}` – The maximum radius of space around the client's [Player.ReplicationFocus](https://developer.roblox.com/api-reference/property/Player/ReplicationFocus) that can have physical instances streamed in.
+	 * 
+	 * ---
+	 */
+	readonly PrintStreamInstanceQuota: boolean;
+	/** When set to true, a debug message will be printed to the output, when a physics `Touched` event is replicated. This includes the [BasePart.Touched](https://developer.roblox.com/api-reference/event/BasePart/Touched) event, and the [BasePart.TouchEnded](https://developer.roblox.com/api-reference/event/BasePart/TouchEnded) event.
+	 * 
+	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
+	 * 
+	 * ---
+	 * 
+	 * Sending 'Contact Start'
+	 * 
+	 * When the replicator is sending that contact between two parts has started, the following debug message will be printed:
+	 * 
+	 * `Replication: Touch:{1}-&gt;{2} &gt;&gt; {3}, bytes: {4}`
+	 * 
+	 * **The numbers in curly braces are substituted, and can be described as:**
+	 * 
+	 * • `{1}` – The name of the 1st part.
+	 * 
+	 * • `{2}` – The name of the 2nd part.
+	 * 
+	 * • `{3}` – The IP of the peer sending the change.
+	 * 
+	 * • `{4}` – The number of bytes that were sent to send the change.
+	 * 
+	 * ---
+	 * 
+	 * Sending 'Contact End'
+	 * 
+	 * When the replicator is sending that contact between two parts has ended, the following debug message will be printed:
+	 * 
+	 * `Replication: Untouch:{1}-&gt;{2} &gt;&gt; {3}, bytes: {4}`
+	 * 
+	 * **The numbers in curly braces are substituted, and can be described as:**
+	 * 
+	 * • `{1}` – The name of the 1st part.
+	 * 
+	 * • `{2}` – The name of the 2nd part.
+	 * 
+	 * • `{3}` – The IP of the peer sending the change.
+	 * 
+	 * • `{4}` – The number of bytes that were sent to send the change.
+	 * 
+	 * ---
+	 * 
+	 * Receiving 'Contact Start'
+	 * 
+	 * When the replicator is receiving that contact between two parts has started, the following debug message will be printed:
+	 * 
+	 * `Replication: Touch:{1}-&gt;{2} &lt;&lt; {3}`
+	 * 
+	 * **The numbers in curly braces are substituted, and can be described as:**
+	 * 
+	 * • `{1}` – The name of the 1st part.
+	 * 
+	 * • `{2}` – The name of the 2nd part.
+	 * 
+	 * • `{3}` – The IP of the peer receiving the change.
+	 * 
+	 * ---
+	 * 
+	 * Receiving 'Contact End'
+	 * 
+	 * When the replicator is receiving that contact between two parts has ended, the following debug message will be printed:
+	 * 
+	 * `Replication: Untouch:{1}-&gt;{2} &lt;&lt; {3}`
+	 * 
+	 * **The numbers in curly braces are substituted, and can be described as:**
+	 * 
+	 * • `{1}` – The name of the 1st part.
+	 * 
+	 * • `{2}` – The name of the 2nd part.
+	 * 
+	 * • `{3}` – The IP of the peer receiving the change.
+	 * 
+	 * ---
+	 */
+	readonly PrintTouches: boolean;
+	/** [NO DOCUMENTATION] */
+	readonly ProxyEnabled: boolean;
+	/** [NO DOCUMENTATION] */
+	readonly ProxyURL: string;
+	/** ReceiveRate controls the maximum rate per second at which the network replicator is willing to receive packets. */
+	readonly ReceiveRate: number;
+	/** ![RenderStreamedRegions in action!][1]
+	 * 
+	 * When set to true, regions of space that are being streamed to the client will be outlined in red.
+	 * 
+	 * This will only be shown if [Workspace.StreamingEnabled](https://developer.roblox.com/api-reference/property/Workspace/StreamingEnabled) is set to true.
+	 * 
+	 * [1]: https://developer.roblox.com/assets/blte3c189bb8bdbf8e3/ShowStreamedRegions.png
+	 */
+	readonly RenderStreamedRegions: boolean;
+	/** When set to true, a label will be shown above each `Player`'s head, showing the current animation being played by the Player's `Humanoid`, if any. */
+	readonly ShowActiveAnimationAsset: boolean;
+	/** TouchSendRate describes the rate per second in which `Touched` events are replicated back and forth between the server and the client. This includes both the [BasePart.Touched](https://developer.roblox.com/api-reference/event/BasePart/Touched) event, and the [BasePart.TouchEnded](https://developer.roblox.com/api-reference/event/BasePart/TouchEnded) event. */
+	readonly TouchSendRate: number;
+	/** TrackDataTypes is a diagnostics property that, when set to true, tells the replicator stats to sample data about packets that are being sent. */
+	readonly TrackDataTypes: boolean;
+	/** TrackPhysicsDetails is a diagnostics property that, when set to true, tells the replicator stats to sample replication physics details. */
+	readonly TrackPhysicsDetails: boolean;
+	/** UsePhysicsPacketCache is a property that, when set to true, will make the `PhysicsPacketCache` service be created alongside the `NetworkServer` when a server is being initialized.
+	 * 
+	 * Roblox will always set the value of this property to true when initializing a server, so this property is technically obsolete.
+	 */
+	readonly UsePhysicsPacketCache: boolean;
 }
 
 interface Workspace extends WorldRoot {
@@ -191,6 +1035,132 @@ interface Workspace extends WorldRoot {
 	 * This function cannot be used in scripts but will function in the command bar or plugins.
 	 */
 	ZoomToExtents(this: Workspace): void;
+}
+
+/** The PhysicsSettings is a singleton class, which lets developers view  debugging features in Roblox's physics engine.It can be found under the Physics tab in Roblox Studio's settings menu. */
+interface PhysicsSettings extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "PhysicsSettings";
+	/** When set to true, physically simulated objects will stop being simulated if they have little to no motion for a set period of time. */
+	readonly AllowSleep: boolean;
+	/** When set to true, parts that are [BasePart.Anchored](https://developer.roblox.com/api-reference/property/BasePart/Anchored) will show a gray surface outline on the surface of the part's bounding box that is currently facing the ground. */
+	readonly AreAnchorsShown: boolean;
+	/** When set to true, each physics assembly is assigned a unique color and the `Part` associated with the assembly are outlined with the color. Parts that are attached together by `JointInstance` will share the same color. */
+	readonly AreAssembliesShown: boolean;
+	/** When set to true, parts that are actively being physically simulated will have a red outline. */
+	readonly AreAwakePartsHighlighted: boolean;
+	/** When set to true, `Part` will be outlined with a specific color, depending on the state of its root simulation body.
+	 * 
+	 * ## Body Types
+	 * 
+	 * | Color | Body Type | Description |
+	 * | --- |
+	 * |  | Real Time Body | Physics Body that is always simulated in real time, and is never throttled. Used for Humanoids. |
+	 * |  | Free Fall Body | Physics Body that is freely moving with no physical contact. |
+	 * |  | Joint Body | Physics Body that is being influenced by a physically simulated joint, such as a Motor or a Hinge. |
+	 * |  | Contact Body | Physics Body that is in contact with another physics body. |
+	 * |  | Symmetric Contact Body | Physics Body that is experiencing a torquing force, while in contact with another body. |
+	 * |  | Vertical Contact Body | Physics Body that is moving very little along the Y plane, while in contact with another body. |
+	 */
+	readonly AreBodyTypesShown: boolean;
+	/** When set to true, each contact island will render `SelectionBox` adorns on the parts in contact islands, where each contact island is assigned a random color. */
+	readonly AreContactIslandsShown: boolean;
+	/** When set to true, sphere adorns will be drawn at the contact points of each part where physics interactions are occurring.
+	 * 
+	 * Each sphere also has an arrow drawn in 3D, facing the surface that the contact point is detecting.
+	 * 
+	 * ## Solver Variations
+	 * 
+	 * The behavior of this property varies depending on whether Roblox's physics engine is using the _PGS Physics Solver_, or the _Spring Physics Solver_.
+	 * 
+	 * This is controlled by the `Workspace`'s [Workspace.PGSPhysicsSolverEnabled](https://developer.roblox.com/search#stq=PGSPhysicsSolverEnabled) property.
+	 * 
+	 * ### Spring Physics Solver
+	 * 
+	 * When [Workspace.PGSPhysicsSolverEnabled](https://developer.roblox.com/search#stq=PGSPhysicsSolverEnabled) is set to false, the contact points are color coded as listed below.
+	 * 
+	 * The length of the arrow extruding from the sphere depends on how much force the contact point is exerting, and what the contact type is.
+	 * 
+	 * | Color | Contact Type | Description |
+	 * | --- |
+	 * |  | Normal Contact | Contact point with no special conditions. |
+	 * |  | Resting Contact | Contact point that has been active for at least 4 frames. |
+	 * |  | Second Pass Contact | Contact point that was made by a kernel joint going through a second pass. Rarely seen. |
+	 * |  | Real Time Contact | Contact point that was made with a real-time physics body. This applies to tripped `Humanoid`. |
+	 * |  | Joint Contact | Contact point that was made under the context of a physically simulated joint. This applies to Motors and Hinges. |
+	 * 
+	 * ### PGS Physics Solver
+	 * 
+	 * When [Workspace.PGSPhysicsSolverEnabled](https://developer.roblox.com/search#stq=PGSPhysicsSolverEnabled) is set to true, the contact points are always colored **RED**, and the length of the arrow will always be 1 stud.
+	 * 
+	 * There are no special conditions tracked, because the PGS solver does not keep specific lookup tables for the states listed in the Spring Solver.
+	 * 
+	 * | Color | Contact Type | Description |
+	 * | --- |
+	 * |  | Normal Contact | Contact point with no special conditions. |
+	 */
+	readonly AreContactPointsShown: boolean;
+	/** When set to true, XYZ axes are rendered at the [BasePart.CFrame](https://developer.roblox.com/api-reference/property/BasePart/CFrame) of every part. */
+	readonly AreJointCoordinatesShown: boolean;
+	/** When set to true, every individual mechanism of parts is given a unique color. */
+	readonly AreMechanismsShown: boolean;
+	/** An ancient property that hasn't work correctly since late 2007.
+	 * 
+	 * It's supposed to render an XYZ axis on the root part of a `Model`, but the axis rendering component doesn't work correctly.
+	 */
+	readonly AreModelCoordsShown: boolean;
+	/** When set to true, each `Player`'s character is outlined with a unique color, and each part that the player has network ownership over is outlined with the same color. */
+	readonly AreOwnersShown: boolean;
+	/** An ancient property that hasn't worked correctly since late 2007.
+	 * 
+	 * It's supposed to render a large XYZ axis in the center of each `BasePart`, but the axis rendering component doesn't work correctly.
+	 */
+	readonly ArePartCoordsShown: boolean;
+	/** When set to true, a cylinder is drawn around each `Player`'s character, representing their [Player.SimulationRadius](https://developer.roblox.com/api-reference/property/Player/SimulationRadius).
+	 * 
+	 * Each physically simulated object will check to see which player is closest to that object, and if they are within the player's simulation radius. If both conditions are met, that player will becomes the network owner of that object.When set to true, a cylinder is drawn around each `Player`'s character, representing their [Player.SimulationRadius](https://developer.roblox.com/api-reference/property/Player/SimulationRadius).
+	 */
+	readonly AreRegionsShown: boolean;
+	/** When set to true, parts that aren't aligned on the 1x1x1 grid will be outlined yellow. */
+	readonly AreUnalignedPartsShown: boolean;
+	/** An ancient property that hasn't worked correctly since late 2007.
+	 * 
+	 * It's supposed to render a large XYZ axis in the center of the world, but the axis rendering component doesn't work correctly.
+	 */
+	readonly AreWorldCoordsShown: boolean;
+	/** When set to true, Roblox will fall back to using its legacy CSG solver when performing [solid model operations](https://developer.roblox.com/articles/3D-Modeling-with-Parts). */
+	readonly DisableCSGv2: boolean;
+	/** This property is supposed to show the [BasePart.ReceiveAge](https://developer.roblox.com/api-reference/property/BasePart/ReceiveAge) of a part, but it does not work correctly. */
+	readonly IsReceiveAgeShown: boolean;
+	/** When set to true, the joint connections of each part, and the states of their underlying primitive components are visualized as a spanning tree.
+	 * 
+	 * ## Spanning Tree Table
+	 * 
+	 * There are several visualizations made available when this property is set to true:
+	 * 
+	 * | Color | Adorn Type | Description |
+	 * | --- |
+	 * |  | Box | Root Primitive of a Mechanism that is currently anchored, or connected to an anchored primitive. (See: [BasePart.IsGrounded](https://developer.roblox.com/api-reference/function/BasePart/IsGrounded)) |
+	 * |  | Box | Root Primitive of a Mechanism that is free to be physically simulated. |
+	 * |  | Box | Root Primitive of a Mechanism that has moving components. |
+	 * |  | Sphere | Root Primitive of an Assembly. |
+	 * |  | Cylinder | Root Primitive of a Clump. |
+	 * |  | Line | Connection between two Primitives that share the same Assembly and Clump. |
+	 * |  | Line | Connection between two Primitives that share the same Assembly. |
+	 * |  | Line | Connection between two Primitives. |
+	 */
+	readonly IsTreeShown: boolean;
+	/** Controls the throttle rate of Roblox's physics engine.
+	 * 
+	 * By default, the physics engine will adjust the physics environment throttle depending on how much work the physics engine is doing, and the current framerate. See the enum page for [EnviromentalPhysicsThrottle](https://developer.roblox.com/api-reference/enum/EnviromentalPhysicsThrottle) for more information.Controls the throttle rate of Roblox's physics engine.
+	 */
+	readonly PhysicsEnvironmentalThrottle: Enum.EnviromentalPhysicsThrottle;
+	/** When set to true, the underlying collision geometry for `PartOperation` and `MeshPart` is rendered. */
+	readonly ShowDecompositionGeometry: boolean;
+	/** If the [PhysicsSettings.PhysicsEnvironmentalThrottle](https://developer.roblox.com/api-reference/property/PhysicsSettings/PhysicsEnvironmentalThrottle) is set to _DefaultAuto_, this specifies the maximum time that the physics environmental throttle has to wait before it is allowed to automatically change. */
+	readonly ThrottleAdjustTime: number;
+	/** If set to true, version 2 of Roblox's CSG solver will be used instead of version 1. */
+	readonly UseCSGv2: boolean;
 }
 
 interface Player extends Instance {
@@ -236,7 +1206,40 @@ interface Players extends Instance {
 	TeamChat(this: Players, message: string): void;
 }
 
+/** Plugin is the main object responsible for creating basic studio widgets. It is a custom add-on to Studio which adds new behavior and features that are not normally included.
+ * 
+ * Both the [Animation Editor](https://developer.roblox.com/search#stq=using%20animation%20editor) and [Terrain Tools](https://developer.roblox.com/search#stq=Intro%20To%20Terrain) were originally developed as plugins. There are also many plugins made by the Roblox community that you can use to help make games and experiences.
+ * 
+ * ## See also
+ * 
+ * [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
+ */
 interface Plugin extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "Plugin";
+	/** Returns whether the user enabled _Collisions_ in studio under the Model tab. */
+	readonly CollisionEnabled: boolean;
+	/** Returns the grid size the user has set in studio under the Model tab. This can be 1, 0.2 or 0.01, but has rounding errors.
+	 * 
+	 * The 1/5th option should return 0.2, but could return 0.20000000298023 instead. This code can be used to get the real gridsize:
+	 * 
+	 * ```lua
+	 * local gridsize = plugin.GridSize
+	 * if math.abs(gridsize-0.2) < 0.005 then -- Check if the gridsize is between 0.195 and 0.205
+	 * 	gridsize = 0.2
+	 * elseif math.abs(gridsize-0.01) < 0.005 then -- Between 0.005 and 0.015
+	 * 	gridsize = 0.01
+	 * else -- Assume it's 1
+	 * 	gridsize = 1
+	 * end
+	 * ```
+	 * 
+	 */
+	readonly GridSize: number;
+	readonly HostDataModelType: Enum.StudioDataModelType;
+	readonly HostDataModelTypeIsCurrent: boolean;
+	readonly MultipleDocumentInterfaceInstance?: MultipleDocumentInterfaceInstance;
+	readonly UsesAssetInsertionDrag: boolean;
 	/** Sets the state of the calling plugin to activated. Allows mouse control through the [Plugin.GetMouse](https://developer.roblox.com/api-reference/function/Plugin/GetMouse) method. */
 	Activate(this: Plugin, exclusiveMouse: boolean): void;
 	/** This function creates a `PluginAction` which is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`. In Roblox Studio, they can be assigned a keyboard shortcut under `File → Advanced → Customize Shortcuts…`, and they can also be added to the Quick Access Toolbar.
@@ -304,6 +1307,7 @@ interface Plugin extends Instance {
 	CreateToolbar(this: Plugin, name: string): PluginToolbar;
 	/** Deactivates this plugin. This will disengage the associated `PluginMouse` if it has been activated. */
 	Deactivate(this: Plugin): void;
+	GetItem(this: Plugin, key: string, defaultValue?: any): unknown;
 	/** Returns the [Enum.JointCreationMode](https://developer.roblox.com/search#stq=JointCreationMode) the user has set in studio under the Model tab. */
 	GetJoinMode(this: Plugin): Enum.JointCreationMode;
 	/** Returns a mouse that can be used with the plugin. */
@@ -314,16 +1318,22 @@ interface Plugin extends Instance {
 	GetSetting(this: Plugin, key: string): unknown;
 	/** Returns the studio user’s userId if they're logged in, otherwise returns 0. */
 	GetStudioUserId(this: Plugin): number;
+	Invoke(this: Plugin, key: string, arguments: Array<any>): void;
 	/** Returns true if this plugin is currently active, after having been activated via the [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate) function. */
 	IsActivated(this: Plugin): boolean;
 	/** Returns true if this plugin is currently active with an exclusive mouse, after having been activated via the [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate) function.If this returns true, a `PluginMouse` can be retrieved via [Plugin.GetMouse](https://developer.roblox.com/api-reference/function/Plugin/GetMouse). */
 	IsActivatedWithExclusiveMouse(this: Plugin): boolean;
 	/** Negates the given parts and returns the resulting NegateOperations. */
 	Negate(this: Plugin, objects: Array<Instance>): Array<Instance>;
+	OnInvoke(this: Plugin, key: string, callback: Function): Instance | undefined;
+	OnSetItem(this: Plugin, key: string, callback: Function): Instance | undefined;
 	/** Used to open the given script instance in an editor window, in Roblox studio, at the given line. If no line is given as an argument it will default to 0. */
 	OpenScript(this: Plugin, script: Instance, lineNumber?: number): void;
 	/** Opens the context help window to the wiki page that `url` links to. */
 	OpenWikiPage(this: Plugin, url: string): void;
+	PauseSound(this: Plugin, soundChannel: Instance): void;
+	PlaySound(this: Plugin, soundChannel: Instance): void;
+	ResumeSound(this: Plugin, soundChannel: Instance): void;
 	/** Opens an upload window for the user's current selection. */
 	SaveSelectedToRoblox(this: Plugin): void;
 	/** Activates the specified Roblox Studio tool.
@@ -339,9 +1349,12 @@ interface Plugin extends Instance {
 	SelectRibbonTool(this: Plugin, tool: CastsToEnum<Enum.RibbonTool>, position: UDim2): void;
 	/** Separates the given UnionOperations and returns the resulting parts. */
 	Separate(this: Plugin, objects: Array<Instance>): Array<Instance>;
+	SetItem(this: Plugin, key: string, value?: any): void;
 	/** Stores a given value for later use under the given key. The value will persist even after studio is closed. */
 	SetSetting(this: Plugin, key: string, value?: any): void;
+	StartDecalDrag(this: Plugin, decal: Instance): void;
 	StartDrag(this: Plugin, dragData: object): void;
+	StopAllSounds(this: Plugin): void;
 	/** Unions the given parts and returns the resulting UnionOperation. */
 	Union(this: Plugin, objects: Array<BasePart>): UnionOperation;
 	/** This function creates a `DockWidgetPluginGui` using the provided [DataType.DockWidgetPluginGuiInfo](https://developer.roblox.com/search#stq=DockWidgetPluginGuiInfo).
@@ -355,6 +1368,7 @@ interface Plugin extends Instance {
 		pluginGuiId: string,
 		dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo,
 	): DockWidgetPluginGui;
+	CreateQWidgetPluginGui(this: Plugin, pluginGuiId: string, pluginGuiOptions: object): Instance | undefined;
 	/** This function prompts the user to open a .fbx animation file that can be loaded onto the _rigModel_, then proceeds to insert the animation as a `KeyframeSequence` in the `Workspace`. */
 	ImportFbxAnimation(this: Plugin, rigModel: Instance, isR15?: boolean): Instance | undefined;
 	/** Prompts the user to open a .fbx file, uploads the individual components of the model as meshes, and generates a character rig for use in animation, which is loaded into the `Workspace`. */
@@ -368,21 +1382,225 @@ interface Plugin extends Instance {
 	readonly Unloading: RBXScriptSignal<() => void>;
 }
 
+/** PluginAction is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`. In Roblox Studio, they can be assigned a keyboard shortcut under `File → Advanced → Customize Shortcuts...`, and they can also be added to the Quick Access Toolbar.
+ * 
+ * PluginActions must be created using the [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction) function in order to work as expected.
+ */
 interface PluginAction extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "PluginAction";
+	/** A string that uniquely identifies this action. This string is the key used when saving and loading the action's state in Roblox Studio.
+	 * 	
+	 * A string that uniquely identifies this action. This string is the key used when saving and loading the action's state in Roblox Studio.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	A string that uniquely identifies this action. This string is the key used when saving and loading the action's state in Roblox Studio.
+	 * 	
+	 * A string that uniquely identifies this action. This string is the key used when saving and loading the action's state in Roblox Studio.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ActionId: string;
+	/** This property determines whether the `PluginAction` will be hidden from Studio's shortcuts view. Useful for contextual actions. It defaults to true.
+	 * 
+	 * ## See also
+	 * 
+	 *   - [Plugin.CreationPluginAction](https://developer.roblox.com/search#stq=CreationPluginAction), creates a PluginAction
+	 * 	
+	 * This property determines whether the `PluginAction` will be hidden from Studio's shortcuts view. Useful for contextual actions. It defaults to true.
+	 * 
+	 * ## See also
+	 * 
+	 *   - [Plugin.CreationPluginAction](https://developer.roblox.com/search#stq=CreationPluginAction), creates a PluginAction
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	This property determines whether the `PluginAction` will be hidden from Studio's shortcuts view. Useful for contextual actions. It defaults to true.
+	 * 
+	 * ## See also
+	 * 
+	 *   - [Plugin.CreationPluginAction](https://developer.roblox.com/search#stq=CreationPluginAction), creates a PluginAction
+	 * 	
+	 * This property determines whether the `PluginAction` will be hidden from Studio's shortcuts view. Useful for contextual actions. It defaults to true.
+	 * 
+	 * ## See also
+	 * 
+	 *   - [Plugin.CreationPluginAction](https://developer.roblox.com/search#stq=CreationPluginAction), creates a PluginAction
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly AllowBinding: boolean;
+	/** [NO DOCUMENTATION] *
+	 * Tags: NotReplicated
+	 */
+	readonly Checked: boolean;
+	/** [NO DOCUMENTATION] *
+	 * Tags: NotReplicated
+	 */
+	readonly DefaultShortcut: string;
+	/** [NO DOCUMENTATION] *
+	 * Tags: NotReplicated
+	 */
+	readonly Enabled: boolean;
+	/** The description of the action, when viewing it from the keyboard shortcuts window in Roblox Studio.
+	 * 	
+	 * The description of the action, when viewing it from the keyboard shortcuts window in Roblox Studio.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	The description of the action, when viewing it from the keyboard shortcuts window in Roblox Studio.
+	 * 	
+	 * The description of the action, when viewing it from the keyboard shortcuts window in Roblox Studio.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly StatusTip: string;
+	/** The text that is displayed when viewing this action in Roblox Studio.
+	 * 	
+	 * The text that is displayed when viewing this action in Roblox Studio.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	The text that is displayed when viewing this action in Roblox Studio.
+	 * 	
+	 * The text that is displayed when viewing this action in Roblox Studio.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Text: string;
 	/** Fires when the action is triggered. This can be done by either activating the action from the Quick Access Toolbar, or by using the keyboard shortcut that was bound to it. */
 	readonly Triggered: RBXScriptSignal<() => void>;
 }
 
-interface PluginManager extends Instance {
-	/** Returns a `Plugin` */
-	CreatePlugin(this: PluginManager): Plugin;
-	/** If the FilePath argument is provided, the place is saved in the given location, otherwise it opens the "Export Place" window. (*.OBJ) */
-	ExportPlace(this: PluginManager, filePath?: string): void;
-	/** If the FilePath argument is provided, the selected instance is exported as an OBJ in the given location, otherwise it opens the "Export Place" window. */
-	ExportSelection(this: PluginManager, filePath?: string): void;
+interface PluginDragEvent extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "PluginDragEvent";
+	/** 
+	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Data: string;
+	/** 
+	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly MimeType: string;
+	/** 
+	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Position: Vector2;
+	/** 
+	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Sender: string;
 }
 
+/** PluginGuiService is a service that stores `PluginGui` objects to be displayed in Roblox Studio. It only allows PluginGuis to be direct children of the service, and PluginGuis are not allowed to be parented anywhere besides the service. */
+interface PluginGuiService extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "PluginGuiService";
+}
+
+/** A context menu that can be shown in Studio. It displays a list of PluginActions and supports submenus.
+ * 
+ * PluginMenus must be created using the [Plugin.CreatePluginMenu](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginMenu) function in order to work as expected.
+ * 
+ * ## See also
+ * 
+ *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
+ * 
+ *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
+ * 
+ *   - [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
+ * 
+ *   - [PluginMenu.Title](https://developer.roblox.com/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
+ * 
+ *   - [PluginMenu.Icon](https://developer.roblox.com/api-reference/property/PluginMenu/Icon), the icon to be displayed when used as a sub menu
+ * 
+ *   - [PluginMenu.AddAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddAction), adds the given action to the menu
+ * 
+ *   - [PluginMenu.AddNewAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddNewAction), creates a temporary action that is hidden from Studio's customize shortcuts window
+ * 
+ *   - [PluginMenu.AddMenu](https://developer.roblox.com/api-reference/function/PluginMenu/AddMenu), adds the given menu as a separator
+ * 
+ *   - [PluginMenu.AddSeparator](https://developer.roblox.com/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
+ * 
+ *   - [PluginMenu.Clear](https://developer.roblox.com/api-reference/function/PluginMenu/Clear), clears the menu
+ * 
+ *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
+ */
 interface PluginMenu extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "PluginMenu";
+	/** This property determines the icon to be displayed when used as a sub menu. It defaults to an empty string `””`.
+	 * 
+	 * ## See also
+	 * 
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
+	 * 
+	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
+	 * 
+	 *   - [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
+	 * 
+	 *   - [PluginMenu.Title](https://developer.roblox.com/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
+	 * 
+	 *   - [PluginMenu.AddAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddAction), adds the given action to the menu
+	 * 
+	 *   - [PluginMenu.AddNewAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddNewAction), creates a temporary action that is hidden from Studio's customize shortcuts window
+	 * 
+	 *   - [PluginMenu.AddMenu](https://developer.roblox.com/api-reference/function/PluginMenu/AddMenu), adds the given menu as a separator
+	 * 
+	 *   - [PluginMenu.AddSeparator](https://developer.roblox.com/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
+	 * 
+	 *   - [PluginMenu.Clear](https://developer.roblox.com/api-reference/function/PluginMenu/Clear), clears the menu
+	 * 
+	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
+	 */
+	readonly Icon: string;
+	/** This property determines the text to be displayed when a `PluginMenu` is used as a sub menu. It defaults to an empty string `””`.
+	 * 
+	 * ## See also
+	 * 
+	 *   - [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
+	 * 
+	 *   - `PluginAction`, an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
+	 * 
+	 *   - [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
+	 * 
+	 *   - [PluginMenu.Icon](https://developer.roblox.com/api-reference/property/PluginMenu/Icon), the icon to be displayed when used as a sub menu
+	 * 
+	 *   - [PluginMenu.AddAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddAction), adds the given action to the menu
+	 * 
+	 *   - [PluginMenu.AddNewAction](https://developer.roblox.com/api-reference/function/PluginMenu/AddNewAction), creates a temporary action that is hidden from Studio's customize shortcuts window
+	 * 
+	 *   - [PluginMenu.AddMenu](https://developer.roblox.com/api-reference/function/PluginMenu/AddMenu), adds the given menu as a separator
+	 * 
+	 *   - [PluginMenu.AddSeparator](https://developer.roblox.com/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
+	 * 
+	 *   - [PluginMenu.Clear](https://developer.roblox.com/api-reference/function/PluginMenu/Clear), clears the menu
+	 * 
+	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
+	 */
+	readonly Title: string;
 	/** This function adds the given action to the menu.
 	 * 
 	 * ## See also
@@ -523,7 +1741,26 @@ interface PluginMenu extends Instance {
 	ShowAsync(this: PluginMenu): Instance | undefined;
 }
 
+/** A PluginToolbar is an object created by using the [Plugin.CreateToolbar](https://developer.roblox.com/api-reference/function/Plugin/CreateToolbar) method. It is used to create `PluginToolbarButton`s using the [CreateButton](https://developer.roblox.com/api-reference/function/PluginToolbar/CreateButton) function. In general, it is good practice for a plugin to use **one and only one** uniquely named toolbar for all of its buttons. In Roblox Studio, toolbars are rendered under the Plugins tab.
+ * 
+ * ![A screenshot of Roblox Studio's Plugins tab, rendering several PluginToolbars][1]
+ * 
+ * Pictured above are three PluginToolbars in Roblox Studio: Animations, Three Wise Monkeys and Localization. The center toolbar is a custom toolbar created by a plugin; the other toolbars are created by built-in Roblox Studio plugins.
+ * 
+ * ## Example
+ * 
+ * The following code sample creates a basic toolbar with one button. It should be run as a Roblox Studio plugin, and not run as a `Script`.
+ * 
+ * ```lua
+ * local toolbar = plugin:CreateToolbar("Three Wise Monkeys")
+ * local button = toolbar:CreateButton("Mizaru", "See No Evil", "rbxassetid://2778270261")
+ * ```
+ * 
+ * [1]: https://developer.roblox.com/assets/5c48e228da4c5b970f6efb58/PluginToolbar-light.png
+ */
 interface PluginToolbar extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "PluginToolbar";
 	CreateButton(
 		this: PluginToolbar,
 		buttonId: string,
@@ -533,11 +1770,199 @@ interface PluginToolbar extends Instance {
 	): PluginToolbarButton;
 }
 
+/** A PluginToolbarButton is an object created by the [PluginToolbar.CreateButton](https://developer.roblox.com/api-reference/function/PluginToolbar/CreateButton) function. It allows the user to initiate a single, one-off action in Roblox Studio through the [Click](https://developer.roblox.com/api-reference/event/PluginToolbarButton/Click) event. Pictured below are three PluginToolbarButtons. From left to right: the default, hover and pressed states. The hovered button in the center shows tooltip text, which is the 2nd argument passed to [PluginToolbar.CreateButton](https://developer.roblox.com/api-reference/function/PluginToolbar/CreateButton).
+ * 
+ * ![Three PluginToolbarButtons rendered on a PluginToolbar titled "Three Wise Monkeys"][1]
+ * 
+ * ## Behavior
+ * 
+ * When pressed, the [Click](https://developer.roblox.com/api-reference/event/PluginToolbarButton/Click) event fires. A button will also remain in the pressed state, which may be set manually using [SetActive](https://developer.roblox.com/api-reference/function/PluginToolbarButton/SetActive). Upon plugin activation ([Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate)), buttons in all other `PluginToolbar`s will be toggled off. If all buttons in a toolbar are off, the toolbar's plugin is deactivated ([Plugin.Deactivate](https://developer.roblox.com/api-reference/function/Plugin/Deactivate)).
+ * 
+ * When the game viewport is not visible, buttons will be disabled as if their [Enabled](https://developer.roblox.com/api-reference/property/PluginToolbarButton/Enabled) property were false. Disabled buttons are desaturated and do not respond to user clicks. By setting [ClickableWhenViewportHidden](https://developer.roblox.com/api-reference/property/PluginToolbarButton/ClickableWhenViewportHidden) to true, you can allow plugin buttons to remain clickable (such as during script editing).
+ * 
+ * ## History
+ * 
+ * * Prior to an update released in January 2019, this class was simply known as "Button". This was changed to reduce confusion with similarly named in-game UI element classes, such as `TextButton`.
+ * 
+ * [1]: https://developer.roblox.com/assets/5c48e310f8a426690c84250e/PluginToolbarButton-light.png
+ */
 interface PluginToolbarButton extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "PluginToolbarButton";
+	/** 
+	 * Tags: NotReplicated
+	
+	 * Tags: NotReplicated
+	 *
+	 * Tags: NotReplicated
+	 */
+	readonly ClickableWhenViewportHidden: boolean;
+	/** 
+	 * Tags: NotReplicated
+	
+	 * Tags: NotReplicated
+	 *
+	 * Tags: NotReplicated
+	 */
+	readonly Enabled: boolean;
+	/** 
+	 * Tags: NotReplicated
+	
+	 * Tags: NotReplicated
+	 *
+	 * Tags: NotReplicated
+	 */
+	readonly Icon: string;
 	/** [NO DOCUMENTATION] */
 	SetActive(this: PluginToolbarButton, active: boolean): void;
 	/** [NO DOCUMENTATION] */
 	readonly Click: RBXScriptSignal<() => void>;
+}
+
+/** The RenderSettings is a singleton class, which lets developers debug components of Roblox's graphics engine.
+ * 
+ * It can be found under the _Rendering_ tab in Roblox Studio's settings menu.
+ */
+interface RenderSettings extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "RenderSettings";
+	/** Sets the starting quality level of the framerate manager, when [RenderSettings.EnableFRM](https://developer.roblox.com/api-reference/property/RenderSettings/EnableFRM) is set to true. */
+	readonly AutoFRMLevel: number;
+	/** When set to true, all scene updates will be given an unlimited budget, regardless of how computationally expensive it may be.
+	 * 
+	 * This ensures each frame will look as it should, at the cost of a more unstable frame rate.When set to true, all scene updates will be given an unlimited budget, regardless of how computationally expensive it may be.
+	 * 
+	 * ## Notes
+	 * 
+	 * * This is used when rendering game thumbnails.
+	 */
+	readonly EagerBulkExecution: boolean;
+	/** Sets the graphics quality level in Roblox Studio, when [RenderSettings.EnableFRM](https://developer.roblox.com/api-reference/property/RenderSettings/EnableFRM) is set to false. */
+	readonly EditQualityLevel: Enum.QualityLevel;
+	/** Toggles the enabled state of the framerate manager.
+	 * 	
+	 * Toggles the enabled state of the framerate manager.
+	 * 
+	 * Tags: Hidden, NotReplicated
+	Toggles the enabled state of the framerate manager.
+	 * 	
+	 * Toggles the enabled state of the framerate manager.
+	 * 
+	 * Tags: Hidden, NotReplicated
+	 *
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly EnableFRM: boolean;
+	/** Sets whether materials should be generated per part, or per unique appearance in Roblox's obj exporter. */
+	readonly ExportMergeByMaterial: boolean;
+	/** Specifies the behavior of the framerate manager. */
+	readonly FrameRateManager: Enum.FramerateManagerMode;
+	/** The graphics API that Roblox will use on startup. */
+	readonly GraphicsMode: Enum.GraphicsMode;
+	/** The size in bytes of the mesh cache.
+	 * 
+	 * Defaults to 32 MBs.
+	 */
+	readonly MeshCacheSize: number;
+	/** If [RenderSettings.EnableFRM](https://developer.roblox.com/api-reference/property/RenderSettings/EnableFRM) is set to true, this property controls the quality level in Roblox Studio. */
+	readonly QualityLevel: Enum.QualityLevel;
+	/** When set to true, Roblox Studio will automatically reload changes that are made to files in Roblox's `content` folder. */
+	readonly ReloadAssets: boolean;
+	/** When set to true, a wireframe of polygons will be shown on all `PartOperation` objects. */
+	readonly RenderCSGTrianglesDebug: boolean;
+	/** If set to true, renders bounding boxes around each individual rendered entity in the scene. */
+	readonly ShowBoundingBoxes: boolean;
+	/** Returns the maximum quality level. */
+	GetMaxQualityLevel(this: RenderSettings): number;
+}
+
+/** RenderingTest is an internal testing utility used by Roblox engineers to do performance/regression tests on the rendering pipeline. It is expected to be parented inside of the `TestService`, and will run LocalScripts parented inside of it when the TestService is ran via [TestService.Run](https://developer.roblox.com/api-reference/function/TestService/Run).
+ * 
+ * ![Selected RenderingTest][1]
+ * 
+ * One of its more notable features is that, upon being selected in the Explorer, it draws an accurate wireframe of the Camera frustum, visualizing what a Camera would see in the RenderingTest's configuration.
+ * 
+ * ## Recording Test Results
+ * 
+ * When a RenderingTest is executed by the TestService, the [CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) of the `Workspace` has its properties updated so it mirrors the Camera configuration of the RenderingTest.
+ * 
+ * The recorded data is then sent as JSON with an HTTP-POST request to: `localhost:8001/api/v1/submit_test`.
+ * 
+ * For the RenderingTest to pass in Roblox Studio, the request expects the response to be the string `"passed"`. It will also acknowledge the strings `"failed"` or `"golden"` as a string response.
+ * 
+ * [1]: https://developer.roblox.com/assets/5b404eddcbdac88b0b7f2e4e/RenderingTest.png
+ */
+interface RenderingTest extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "RenderingTest";
+	/** The CFrame that the `Camera` will use when this RenderingTest is executed.
+	 * 
+	 * The value of this property is reflected into [RenderingTest.Position](https://developer.roblox.com/api-reference/property/RenderingTest/Position) and [RenderingTest.Orientation](https://developer.roblox.com/api-reference/property/RenderingTest/Orientation).
+	 */
+	readonly CFrame: CFrame;
+	/** The maximum difference that this RenderingTest can have between the image it captures and the original image.
+	 * 
+	 * This property is only used if the RenderingTest's ComparisonMethod is set to **diff**.
+	 */
+	readonly ComparisonDiffThreshold: number;
+	/** The comparison method that is expected to be used when this RenderingTest's image capture is compared to its original image. */
+	readonly ComparisonMethod: Enum.RenderingTestComparisonMethod;
+	/** The maximum peak signal-to-noise ratio that this RenderingTest can have between the image it captures and the original image.
+	 * 
+	 * This property is only used if the RenderingTest's ComparisonMethod is set to **psnr**.
+	 */
+	readonly ComparisonPsnrThreshold: number;
+	/** A description to describe this RenderingTest. */
+	readonly Description: string;
+	/** The FieldOfView that will be used by the `Camera` when running this RenderingTest.
+	 * 
+	 * Should fall between 1 and 120 in order to work as expected.
+	 */
+	readonly FieldOfView: number;
+	/** The derived orientation of the RenderingTest’s CFrame.
+	 * 	
+	 * The derived orientation of the RenderingTest’s CFrame.
+	 * 
+	 * Tags: NotReplicated
+	The derived orientation of the RenderingTest’s CFrame.
+	 * 	
+	 * The derived orientation of the RenderingTest’s CFrame.
+	 * 
+	 * Tags: NotReplicated
+	 *
+	 * Tags: NotReplicated
+	 */
+	readonly Orientation: Vector3;
+	/** The derived position of the RenderingTest's CFrame.
+	 * 	
+	 * The derived position of the RenderingTest's CFrame.
+	 * 
+	 * Tags: NotReplicated
+	The derived position of the RenderingTest's CFrame.
+	 * 	
+	 * The derived position of the RenderingTest's CFrame.
+	 * 
+	 * Tags: NotReplicated
+	 *
+	 * Tags: NotReplicated
+	 */
+	readonly Position: Vector3;
+	/** The graphics quality that will be used by the rendering pipeline when running this RenderingTest.
+	 * 
+	 * Should fall between 1 and 21 in order to work as expected.
+	 */
+	readonly QualityLevel: number;
+	/** Indicates whether or not this RenderingTest should be skipped. */
+	readonly ShouldSkip: boolean;
+	/** A label of the internal JIRA ticket this RenderingTest is associated with. */
+	readonly Ticket: string;
+	/** [NO DOCUMENTATION] */
+	RenderdocTriggerCapture(this: RenderingTest): void;
+}
+
+interface RobloxPluginGuiService extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "RobloxPluginGuiService";
 }
 
 interface RunService extends Instance {
@@ -779,14 +2204,245 @@ interface DataModel extends ServiceProvider {
 	SetUniverseId(this: DataModel, universeId: number): void;
 }
 
+/** The base object used for Roblox Studio's settings menu.
+ * 
+ * Can be accessed by using the `settings()` function.
+ * 
+ * ## Settings classes under the GlobalSettings
+ * 
+ * * `DebugSettings`
+ * 
+ * * `GameSettings`
+ * 
+ * * `LuaSettings`
+ * 
+ * * `NetworkSettings`
+ * 
+ * * `PhysicsSettings`
+ * 
+ * * `RenderSettings`
+ * 
+ * * `Studio`
+ */
+interface GlobalSettings extends GenericSettings {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "GlobalSettings";
+	/** Returns the value of an FFlag if it exists. */
+	GetFFlag(this: GlobalSettings, name: string): boolean;
+	/** Returns the value of an FVariable, if it exists. */
+	GetFVariable(this: GlobalSettings, name: string): string;
+}
+
+/** A StatsItem is an internal measurement item that is created by the engine to benchmark many of the backend components of Roblox.
+ * 
+ * It cannot be created using `Instance.new`, but its value can be read by plugins. They can be found stored inside of the `Stats` service.
+ */
 interface StatsItem extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "StatsItem" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "TotalCountTimeIntervalItem";
 	/** Returns the StatsItem's value. */
 	GetValue(this: StatsItem): number;
 	/** Returns the StatsItem's value as a formatted string. */
 	GetValueString(this: StatsItem): string;
 }
 
+/** A special type of `StatsItem` which measures the runtime average of an internal **double** value. */
+interface RunningAverageItemDouble extends StatsItem {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "RunningAverageItemDouble";
+}
+
+/** A special type of `StatsItem` which measures the runtime average of an internal integer value.
+ * 
+ * As of right now, this StatsItem goes unused.
+ */
+interface RunningAverageItemInt extends StatsItem {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "RunningAverageItemInt";
+}
+
+/** A special type of `StatsItem` which measures a runtime average time interval.
+ * 
+ * As of right now, this StatsItem goes unused.
+ */
+interface RunningAverageTimeIntervalItem extends StatsItem {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "RunningAverageTimeIntervalItem";
+}
+
+/** A special type of [StatsItem](https://developer.roblox.com/api-reference/class/StatsItem) which measures a total-count-over-time interval.
+ * 
+ * As of right now, this StatsItem goes unused.
+ */
+interface TotalCountTimeIntervalItem extends StatsItem {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "TotalCountTimeIntervalItem";
+}
+
+/** The Studio object is a settings object that is exclusive to Roblox Studio. It can be found in Roblox Studio's settings under the Studio tab. */
 interface Studio extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "Studio";
+	/** If set to true, Roblox Studio will attempt to transfer script changes that were made during a Play Solo session to the opened place. */
+	readonly ["Always Save Script Changes"]: boolean;
+	/** If set to true, the hover selection box that is shown when mousing over selectable objects in the `Workspace` will flash between [Studio.Hover Over Color](https://developer.roblox.com/api-reference/property/Studio/Hover) and [Studio.Select Color](https://developer.roblox.com/api-reference/property/Studio/Select) based on the [Studio.Hover Animate Speed](https://developer.roblox.com/api-reference/property/Studio/Hover). */
+	readonly ["Animate Hover Over"]: boolean;
+	readonly ["Auto Closing Brackets"]: boolean;
+	readonly ["Auto Closing Quotes"]: boolean;
+	/** If set to true, the script editor will automatically indent when a new stack is created in the script. */
+	readonly ["Auto Indent"]: boolean;
+	readonly ["Auto-Recovery Enabled"]: boolean;
+	readonly ["Auto-Recovery Interval (Minutes)"]: number;
+	readonly ["Auto-Recovery Path"]: QDir;
+	/** Specifies the background color of Roblox Studio's script editor. */
+	readonly ["Background Color"]: Color3;
+	/** Sets the scrolling mode of the _Advanced Objects_ tab in Roblox Studio. */
+	readonly ["Basic Objects Display Mode"]: Enum.ListDisplayMode;
+	/** Sets the color of built-in functions and keywords in the script editor. */
+	readonly ["Built-in Function Color"]: Color3;
+	/** Sets how many studs the camera will move forward or backwards when using the mouse wheel. */
+	readonly ["Camera Mouse Wheel Speed"]: number;
+	/** Sets the speed in studs/sec that the camera moves while holding down Shift with the movement keys. */
+	readonly ["Camera Shift Speed"]: number;
+	/** Sets the speed in studs/sec that the camera moves when movement keys are pressed. */
+	readonly ["Camera Speed"]: number;
+	readonly ["Camera Zoom to Mouse Position"]: boolean;
+	/** If set to true, the output will be automatically cleared when game sessions are switched. */
+	readonly ["Clear Output On Start"]: boolean;
+	/** Specifies the color of comments in Roblox Studio's script editor. */
+	readonly ["Comment Color"]: Color3;
+	/** Specifies the default prompt directory that will be opened when the user activates the _Execute Script_ button in Roblox Studio. */
+	readonly DefaultScriptFileDir: QDir;
+	/** If set to true, deprecated objects will be shown in the Advanced Objects window, as well as the Object Browser. */
+	readonly DeprecatedObjectsShown: boolean;
+	/** A 4 digit code that can be used by Roblox's mobile pairing app to connect to your instance of Roblox Studio on the local network. */
+	readonly ["Device Pairing Code"]: number;
+	readonly ["Disable Accurate Play Solo"]: boolean;
+	/** If set to true, the bounding box of a selection will be used for collision detection while dragging, instead of each individual part being checked.
+	 * 
+	 * This makes the dragger perform smoother, but with notably less precision.
+	 */
+	readonly ["Drag Multiple Parts As Single Part"]: boolean;
+	/** When set to true, the script editor and command bar will show an autocomplete menu while writing. */
+	readonly ["Enable Autocomplete"]: boolean;
+	readonly ["Enable CoreScript Debugger"]: boolean;
+	/** Specifies the color of the wavy underline shown when malformed code is detected in the script editor. */
+	readonly ["Error Color"]: Color3;
+	/** Sets the highlight color of matches in the script editor's Find Selection operation (Ctrl+F). */
+	readonly ["Find Selection Background Color"]: Color3;
+	/** Specifies the font used in the script editor. */
+	readonly Font: QFont;
+	/** Specifies how frequently the hover animation flashes when the mouse is hovering over a selectable object in the `Workspace`. */
+	readonly ["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
+	/** Specifies the color that the hover selection box uses. */
+	readonly ["Hover Over Color"]: Color3;
+	/** Sets the text color of built-in Lua keywords. */
+	readonly ["Keyword Color"]: Color3;
+	readonly Language: Enum.LanguagePreference;
+	/** Sets the thickness of the [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) selection adornee.
+	 * 
+	 * This value is constrained between 0 and 0.05
+	 */
+	readonly ["Line Thickness"]: number;
+	/** Specifies whether or not the [Lua Debugger](https://developer.roblox.com/articles/Lua-debugger) feature is enabled. */
+	readonly LuaDebuggerEnabled: boolean;
+	readonly LuaDebuggerEnabledAtStartup: boolean;
+	/** Sets the highlight color of double-clicked variables in the script editor. */
+	readonly ["Matching Word Background Color"]: Color3;
+	/** The maximum number of lines that can be displayed in the output. */
+	readonly ["Maximum Output Lines"]: number;
+	/** Specifies the color of numbers in Roblox Studio's script editor. */
+	readonly ["Number Color"]: Color3;
+	/** If set to true, audio being played will only be heard if the game window is being focused on. */
+	readonly ["Only Play Audio from Window in Focus"]: boolean;
+	/** Sets the text color of operator characters in the script editor. */
+	readonly ["Operator Color"]: Color3;
+	/** Specifies the font used by the output. */
+	readonly ["Output Font"]: QFont;
+	/** Sets the layout mode of the output. */
+	readonly ["Output Layout Mode"]: Enum.OutputLayoutMode;
+	/** If set to true, the [Studio.OverrideCoreScriptsDir](https://developer.roblox.com/api-reference/property/Studio/OverrideCoreScriptsDir) will be used for CoreScripts in Roblox Studio, instead of the default `rbxasset://scripts` directory. */
+	readonly OverrideCoreScripts: boolean;
+	/** The directory used when overriding core scripts.
+	 * 
+	 * This should point to a clone of [Roblox's CoreScript GitHub repository](https://github.com/ROBLOX/Core-Scripts).
+	 */
+	readonly OverrideCoreScriptsDir: QDir;
+	/** Sets the highest permission level that APIs have to have in order to be shown in the Object Browser.
+	 * 
+	 * See [Enum.PermissionLevelShown](https://developer.roblox.com/search#stq=PermissionLevelShown) for more info.
+	 */
+	readonly PermissionLevelShown: Enum.PermissionLevelShown;
+	/** The directory where local plugins are stored. */
+	readonly PluginsDir: QDir;
+	/** **(OBSOLETE)** */
+	readonly ["Preprocessor Color"]: Color3;
+	/** The directory where recent saves are stored in. */
+	readonly RecentSavesDir: QDir;
+	/** Scales how much rendering will be throttled when the game window isn't being focused on.
+	 * 
+	 * In practice, this property isn't very well understood, and is probably intended for internal use only.
+	 */
+	readonly ["Render Throttle Percentage"]: number;
+	/** When set to true, Roblox Studio shortcuts will take priority over inputs being captured in the game window. */
+	readonly ["Respect Studio shortcuts when game has focus"]: boolean;
+	readonly RuntimeUndoBehavior: Enum.RuntimeUndoBehavior;
+	/** The time (in seconds) a script can wait to be resumed before timing out. */
+	readonly ScriptTimeoutLength: number;
+	/** The color of the selection box used with object selections in the `Workspace` */
+	readonly ["Select Color"]: Color3;
+	/** Sets the color of the [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) selection box. */
+	readonly ["Select/Hover Color"]: Color3;
+	/** Sets the background color of selected text in the script editor. */
+	readonly ["Selection Background Color"]: Color3;
+	/** Sets the text color of selected text in the script editor. */
+	readonly ["Selection Color"]: Color3;
+	/** An unused Roblox Studio setting that does not appear to have any functionality. */
+	readonly ["Server Audio Behavior"]: Enum.ServerAudioBehavior;
+	/** If set to true, the `CoreGui` will be visible in the Explorer while the game is running. */
+	readonly ["Show Core GUI in Explorer while Playing"]: boolean;
+	/** If set to true, basic diagnostic information is shown in the bottom right. */
+	readonly ["Show Diagnostics Bar"]: boolean;
+	readonly ["Show Hidden Objects in Explorer"]: boolean;
+	/** If set to true, hovering over an object in the `Workspace` will show a selection box. */
+	readonly ["Show Hover Over"]: boolean;
+	/** When set to true, the navigation mesh used by the `PathfindingService` will be visualized. */
+	readonly ["Show Navigation Mesh"]: boolean;
+	/** When set to true, the `PluginGuiService` will be shown in Roblox Studio's explorer. */
+	readonly ["Show Plugin GUI Service in Explorer"]: boolean;
+	/** If set to true, certain internal error messages regarding the QT framework that Roblox uses will be shown in the output. */
+	readonly ["Show QT warnings in output"]: boolean;
+	readonly ["Show Roblox Plugin GUI Service in Explorer"]: boolean;
+	readonly ["Show plus button on hover in Explorer"]: boolean;
+	readonly ["Skip Closing Brackets and Quotes"]: boolean;
+	/** Specifies the color of strings in the script editor. */
+	readonly ["String Color"]: Color3;
+	/** Specifies how many spaces are used to represent a tab in the script editor. */
+	readonly ["Tab Width"]: number;
+	/** Specifies the color of normal text in the script editor. */
+	readonly ["Text Color"]: Color3;
+	/** If set to true, text in the script editor will be wrapped. */
+	readonly ["Text Wrapping"]: boolean;
+	/** The Theme property is used to get/set the current `StudioTheme` used by `Studio`.
+	 * 
+	 * This is intended for use within [Plugins](https://developer.roblox.com/api-reference/class/Plugin), but will also execute in the Command Line. You can access the function via:
+	 * 
+	 * ```lua
+	 * settings().Studio.Theme
+	 * ```
+	 * 
+	 * For instance, if you would like to print the current Studio theme:
+	 * 
+	 * ```lua
+	 * print("The current Studio theme is:", settings().Studio.Theme)
+	 * ```
+	 * 
+	 */
+	Theme: StudioTheme;
+	/** Specifies the color scheme of Roblox Studio. */
+	readonly ["UI Theme"]: Enum.UITheme;
+	/** Specifies the color of the wavy underline shown when the script analyzer picks up a problem that should be addressed in the script editor. */
+	readonly ["Warning Color"]: Color3;
 	/** The **GetAvailableThemes()** function returns a list of [StudioThemes](https://developer.roblox.com/api-reference/class/StudioTheme) available in `Studio`. You can access the function via:
 	 * 
 	 * ```lua
@@ -804,17 +2460,93 @@ interface Studio extends Instance {
 }
 
 interface StudioData extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "StudioData";
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden
 	 */
 	EnableScriptCollabOnLoad: boolean;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly SrcPlaceId: number;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly SrcUniverseId: number;
 }
 
 interface StudioService extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "StudioService";
+	/** 
+	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ActiveScript?: Instance;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly GridSize: number;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly InstalledPluginData: string;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly RotateIncrement: number;
+	/** 
+	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly StudioLocaleId: string;
+	/** [NO DOCUMENTATION] *
+	 * Tags: NotReplicated
+	 */
+	readonly UseLocalSpace: boolean;
 	/** [NO DOCUMENTATION] */
 	ConvertToPackageUpload(this: StudioService, uploadUrl: string): void;
 	/** [NO DOCUMENTATION] */
+	CopyToClipboard(this: StudioService, stringToCopy: string): void;
+	/** [NO DOCUMENTATION] */
+	EmitPlacePublishedSignal(this: StudioService): void;
+	/** [NO DOCUMENTATION] */
 	GetClassIcon(this: StudioService, className: string): object;
+	/** [NO DOCUMENTATION] */
+	GetResourceByCategory(this: StudioService, category: string): object;
+	/** [NO DOCUMENTATION] */
+	GetStartupPluginId(this: StudioService): string;
+	/** [NO DOCUMENTATION] */
+	GetUserId(this: StudioService): number;
+	/** [NO DOCUMENTATION] */
+	IsPluginInstalled(this: StudioService, assetId: number): boolean;
+	/** [NO DOCUMENTATION] */
+	IsPluginUpToDate(this: StudioService, assetId: number, currentAssetVersion: number): boolean;
+	/** [NO DOCUMENTATION] */
+	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
+	/** [NO DOCUMENTATION] */
+	OpenPluginInsertPage(this: StudioService, assetId: number): void;
+	/** [NO DOCUMENTATION] */
+	PublishAs(this: StudioService, universeId: number, placeId: number): void;
+	/** [NO DOCUMENTATION] */
+	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
+	/** [NO DOCUMENTATION] */
+	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
+	/** [NO DOCUMENTATION] */
+	SetUniverseDisplayName(this: StudioService, newName: string): void;
+	/** [NO DOCUMENTATION] */
+	ShowPublishToRoblox(this: StudioService): void;
+	/** [NO DOCUMENTATION] */
+	UninstallPlugin(this: StudioService, assetId: number): void;
+	/** [NO DOCUMENTATION] */
+	UpdatePluginManagement(this: StudioService): void;
 	/** 
 	 * Tags: Yields
 	
@@ -831,6 +2563,28 @@ interface StudioService extends Instance {
 	 * Tags: Yields
 	 */
 	PromptImportFiles(this: StudioService, fileTypeFilter?: Array<any>): Array<Instance>;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
+	/** [NO DOCUMENTATION] */
+	readonly GamePublishFinished: RBXScriptSignal<(success: boolean) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly OnConvertToPackageResult: RBXScriptSignal<(isSuccessful: boolean, errorMessage: string) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly OnOpenConvertToPackagePlugin: RBXScriptSignal<(instances: Array<Instance>, name: string) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly OnOpenManagePackagePlugin: RBXScriptSignal<(userId: number, assetId: number) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly OnPluginInstalledFromToolbox: RBXScriptSignal<() => void>;
+	/** [NO DOCUMENTATION] */
+	readonly OnPluginInstalledFromWeb: RBXScriptSignal<(pluginId: string) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly OnPublishAsPlugin: RBXScriptSignal<(instances: Array<Instance>) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly OnPublishPlaceToRoblox: RBXScriptSignal<() => void>;
+	/** [NO DOCUMENTATION] */
+	readonly OnSaveToRoblox: RBXScriptSignal<(instances: Array<Instance>) => void>;
 }
 
 interface StudioTheme extends Instance {
@@ -864,7 +2618,218 @@ interface StudioTheme extends Instance {
 	GetPath(this: StudioTheme, assetid: string, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): string;
 }
 
+/** TaskScheduler is a read-only settings class responsible for the Task Scheduler  feature.
+ * 
+ * Can be found in Roblox Studio's settings with the name *Task Scheduler*.
+ */
+interface TaskScheduler extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "TaskScheduler";
+	/** The average time divided by the average interval of the duty cycle.
+	 * 	
+	 * The average time divided by the average interval of the duty cycle.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	The average time divided by the average interval of the duty cycle.
+	 * 	
+	 * The average time divided by the average interval of the duty cycle.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly SchedulerDutyCycle: number;
+	/** The current average rate of the task scheduler.
+	 * 	
+	 * The current average rate of the task scheduler.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	The current average rate of the task scheduler.
+	 * 	
+	 * The current average rate of the task scheduler.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly SchedulerRate: number;
+	/** The specified thread pooling configuration for the task scheduler. */
+	readonly ThreadPoolConfig: Enum.ThreadPoolConfig;
+	/** The current size of the thread pool.
+	 * 	
+	 * The current size of the thread pool.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	The current size of the thread pool.
+	 * 	
+	 * The current size of the thread pool.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ThreadPoolSize: number;
+}
+
+/** The TestService is a service used by Roblox internally to run analytical tests on their engine.
+ * 
+ * It makes it possible to write sophisticated tests right inside a game.
+ * 
+ * ## Macros
+ * 
+ * Scripts that are executed inside of the TestService (via [TestService.Run](https://developer.roblox.com/api-reference/function/TestService/Run)) have access to special macros that directly invoke functions under the TestService. Macros are essentially substitutions for large blocks of code that shouldn't need to be rewritten each time you want to call them.
+ * 
+ * ### RBX_CHECK
+ * 
+ * This macro does tests with calls to the [TestService.Check](https://developer.roblox.com/api-reference/function/TestService/Check) function.
+ * 
+ * | Macro | Test Condition |
+ * | --- | --- |
+ * | RBX_CHECK(cond) | cond == true |
+ * | RBX_CHECK_MESSAGE(cond, failMsg) | cond == true |
+ * | RBX_CHECK_THROW(CODE) | pcall(function () CODE end) == false |
+ * | RBX_CHECK_NO_THROW(CODE) | pcall(function () CODE end) == true |
+ * | RBX_CHECK_EQUAL(a,b) | a == b |
+ * | RBX_CHECK_NE(a,b) | a ~= b |
+ * | RBX_CHECK_GE(a,b) | a >= b |
+ * | RBX_CHECK_LE(a,b) | a  b |
+ * | RBX_CHECK_LT(a,b) | a < b |
+ * 
+ * ### RBX_REQUIRE
+ * 
+ * This macro does tests with calls to the [TestService.Require](https://developer.roblox.com/api-reference/function/TestService/Require) function.
+ * 
+ * | Macro | Test Condition |
+ * | --- | --- |
+ * | RBX_REQUIRE(cond) | cond == true |
+ * | RBX_REQUIRE_MESSAGE(cond, failMsg) | cond == true |
+ * | RBX_REQUIRE_THROW(CODE) | pcall(function () CODE end) == false |
+ * | RBX_REQUIRE_NO_THROW(CODE) | pcall(function () CODE end) == true |
+ * | RBX_REQUIRE_EQUAL(a,b) | a == b |
+ * | RBX_REQUIRE_NE(a,b) | a ~= b |
+ * | RBX_REQUIRE_GE(a,b) | a >= b |
+ * | RBX_REQUIRE_LE(a,b) | a  b |
+ * | RBX_REQUIRE_LT(a,b) | a < b |
+ * 
+ * ### RBX_WARN
+ * 
+ * This macro does tests with calls to the [TestService.Warn](https://developer.roblox.com/api-reference/function/TestService/Warn) function.
+ * 
+ * | Macro | Test Condition |
+ * | --- | --- |
+ * | RBX_WARN(cond) | cond == true |
+ * | RBX_WARN_MESSAGE(cond, failMsg) | cond == true |
+ * | RBX_WARN_THROW(CODE) | pcall(function () CODE end) == false |
+ * | RBX_WARN_NO_THROW(CODE) | pcall(function () CODE end) == true |
+ * | RBX_WARN_EQUAL(a,b) | a == b |
+ * | RBX_WARN_NE(a,b) | a ~= b |
+ * | RBX_WARN_GE(a,b) | a >= b |
+ * | RBX_WARN_LE(a,b) | a  b |
+ * | RBX_WARN_LT(a,b) | a < b |
+ * 
+ * ### Additional Macros
+ * 
+ * | Macro | Description |
+ * | --- | --- |
+ * | RBX_ERROR(msg) | Directly calls the [TestService.Error](https://developer.roblox.com/api-reference/function/TestService/Error) function. |
+ * | RBX_FAIL(msg) | Directly calls the [TestService.Fail](https://developer.roblox.com/api-reference/function/TestService/Fail) function. |
+ * | RBX_MESSAGE(msg) | Directly calls the [TestService.Message](https://developer.roblox.com/api-reference/function/TestService/Message) function. |
+ * 
+ * ## See Also
+ * 
+ * * [Speeding Roblox Development with Continuous Testing](http://blog.roblox.com/2012/04/speeding-roblox-development-with-continuous-testing)
+ */
 interface TestService extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "TestService";
+	/** If set to true, the game will start running when the TestService's [TestService.Run](https://developer.roblox.com/api-reference/function/TestService/Run) method is called. */
+	readonly AutoRuns: boolean;
+	/** A description of the test being executed. */
+	readonly Description: string;
+	/** Measures how many errors have been recorded in the test session.
+	 * 	
+	 * Measures how many errors have been recorded in the test session.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	Measures how many errors have been recorded in the test session.
+	 * 	
+	 * Measures how many errors have been recorded in the test session.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ErrorCount: number;
+	/** When set to true, the TestService will be executed when using the _Run_ action in Roblox Studio.
+	 * 
+	 * ## Notes
+	 * 
+	 * * If the [TestService.NumberOfPlayers](https://developer.roblox.com/api-reference/property/TestService/NumberOfPlayers) property is set to a value above 0, running the game will open `NumberOfPlayers + 1` studio windows, where one window is a server, and the rest are players connected to that server.
+	 * 
+	 * 	* Try to keep this value within a rational range (1 to 8 players at most), or else your computer's CPU will get overloaded.
+	 */
+	readonly ExecuteWithStudioRun: boolean;
+	/** Sets whether or not the physics engine should be throttled to 30 FPS while the test is being ran. */
+	readonly Is30FpsThrottleEnabled: boolean;
+	/** Sets whether or not the physics environment should be throttled while running this test. */
+	readonly IsPhysicsEnvironmentalThrottled: boolean;
+	/** Sets whether or not physics objects will be allowed to fall asleep while the test simulation is running. */
+	readonly IsSleepAllowed: boolean;
+	/** The number of players expected in this test, if any. */
+	readonly NumberOfPlayers: number;
+	/** Sets a specific amount of additional latency experienced by players during the test session. */
+	readonly SimulateSecondsLag: number;
+	/** Measures how many test calls have been recorded in the test session.
+	 * 	
+	 * Measures how many test calls have been recorded in the test session.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	Measures how many test calls have been recorded in the test session.
+	 * 	
+	 * Measures how many test calls have been recorded in the test session.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly TestCount: number;
+	/** The maximum amount of time that tests are allowed to run for. */
+	readonly Timeout: number;
+	/** Measures how many warning calls have been recorded in the test session.
+	 * 	
+	 * Measures how many warning calls have been recorded in the test session.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	Measures how many warning calls have been recorded in the test session.
+	 * 	
+	 * Measures how many warning calls have been recorded in the test session.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly WarnCount: number;
+	/** If condition is true, prints "Check passed: ", followed by description to the output, in blue text. Otherwise, prints "Check failed: ", again, followed by description, but in red text. */
+	Check(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
+	/** Prints "Test checkpoint: ", followed by text, to the output, in blue text. */
+	Checkpoint(this: TestService, text: string, source?: Instance, line?: number): void;
+	/** Prints Testing Done to the output, in blue text. */
+	Done(this: TestService): void;
+	/** Prints a red message to the output, prefixed by `TestService: `. */
+	Error(this: TestService, description: string, source?: Instance, line?: number): void;
+	/** Indicates a fatal error in a TestService run.
+	 * 
+	 * If this is called inside of a script running inside of the TestService, this will initiate a [breakpoint](https://developer.roblox.com/articles/Lua-debugger) on the line that invoked the error.
+	 */
+	Fail(this: TestService, description: string, source?: Instance, line?: number): void;
+	/** Prints Test message, followed by text to the output, in blue text. */
+	Message(this: TestService, text: string, source?: Instance, line?: number): void;
+	/** If `condition` is true, prints `Require passed: `, followed by `description`, to the output in blue text. Otherwise, prints `Require failed. Test ended: `, followed by `description`, to the output in red text. */
+	Require(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
+	/** If condition is true, prints Warning passed: , followed by description, to the output, in blue text. Otherwise, prints Warning: , followed by description, to the output, in yellow text. */
+	Warn(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
+	/** [NO DOCUMENTATION] */
+	isFeatureEnabled(this: TestService, name: string): boolean;
 	/** 
 	 * Tags: Yields
 	
@@ -873,5 +2838,9 @@ interface TestService extends Instance {
 	 * Tags: Yields
 	 */
 	Run(this: TestService): void;
+	/** Fired when the server should collect a conditional test result. */
+	readonly ServerCollectConditionalResult: RBXScriptSignal<(condition: boolean, text: string, script: Instance, line: number) => void>;
+	/** Fired when the server should collect a test result. */
+	readonly ServerCollectResult: RBXScriptSignal<(text: string, script: Instance, line: number) => void>;
 }
 

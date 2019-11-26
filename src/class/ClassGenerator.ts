@@ -103,6 +103,107 @@ const CREATABLE_BLACKLIST: { [index: string]: true | undefined } = {
 	Player: true,
 };
 
+const PLUGIN_ONLY_CLASSES = new Set([
+	"StatsItem",
+	"ABTestService",
+	"TestService",
+	"RenderingTest",
+	"Plugin",
+	"PluginGui",
+	"PluginMouse",
+	"PluginAction",
+	"PluginDragEvent",
+	"PluginGuiService",
+	"PluginMenu",
+	"PluginToolbar",
+	"PluginToolbarButton",
+	"RobloxPluginGuiService",
+
+	"GlobalSettings",
+	"DebugSettings",
+	"GameSettings",
+	"LuaSettings",
+	"NetworkSettings",
+	"PhysicsSettings",
+	"RenderSettings",
+	"Studio",
+	"StudioData",
+	"StudioService",
+	"TaskScheduler",
+]);
+
+const CLASS_BLACKLIST = new Set([
+	// Classes which Roblox leverages internally/in the CoreScripts but serve no purpose to developers
+	"BrowserService",
+	"CacheableContentProvider",
+	"ClusterPacketCache",
+	"CookiesService",
+	"CorePackages",
+	"CoreScript",
+	"CoreScriptSyncService",
+	"FlagStandService",
+	"FlyweightService",
+	"GamepadService",
+	"Geometry",
+	"GoogleAnalyticsConfiguration",
+	"GuidRegistryService",
+	"HttpRbxApiService",
+	// "KeyboardService",
+	// "LocalStorageService",
+	"LuaWebService",
+	"MemStorageService",
+	"PartOperationAsset",
+	"PhysicsPacketCache",
+	"ReflectionMetadataItem",
+	"RobloxReplicatedStorage",
+	"RuntimeScriptService",
+	"AnalysticsSettings",
+	"SpawnerService",
+	"ThirdPartyUserService",
+	"TimerService",
+	"TouchInputService",
+	"VirtualInputManager",
+	"Visit",
+
+	// never implemented
+	"LoginService",
+
+	// super deprecated / never implemented:
+	"PluginManager",
+	"FunctionalTest",
+	"VirtualUser",
+	"NotificationService",
+
+	// "BevelMesh",
+	"CustomEvent",
+	"CustomEventReceiver",
+	// "CylinderMesh",
+	// "DoubleConstrainedValue",
+	"Flag",
+	"FlagStand",
+	// "FloorWire",
+	// "Glue",
+	"GuiMain",
+	// "Hat",
+	"Hint",
+	// "Hole",
+	"Hopper",
+	"HopperBin",
+	// "IntConstrainedValue",
+	// "JointsService",
+	"Message",
+	// "MotorFeature",
+	// "PointsService",
+	// "SelectionPartLasso",
+	// "SelectionPointLasso",
+	// "SkateboardPlatform",
+	"Skin",
+
+	// unused
+	"UGCValidationService",
+	"Status",
+]);
+
 const MEMBER_BLACKLIST: {
 	[index: string]:
 		| {
@@ -234,29 +335,21 @@ function getSecurity(member: ApiMemberBase) {
 	return security;
 }
 
-function classHasTag(api: ApiClass, tag: ClassTag) {
-	if (api.Tags) {
-		return api.Tags.indexOf(tag) !== -1;
-	}
-	return false;
-}
-
-function memberHasTag(api: ApiMemberBase, tag: MemberTag) {
-	if (api.Tags) {
-		return api.Tags.indexOf(tag) !== -1;
-	}
-	return false;
+function hasTag(member: ApiClass, tag: ClassTag): boolean;
+function hasTag(member: ApiMemberBase, tag: MemberTag): boolean;
+function hasTag({ Tags }: ApiClass | ApiMemberBase, tag: string) {
+	return Tags ? Tags.includes(tag as ClassTag & MemberTag) : false;
 }
 
 function isCreatable(rbxClass: ApiClass) {
-	return (
-		!CREATABLE_BLACKLIST[rbxClass.Name] &&
-		!classHasTag(rbxClass, "NotCreatable") &&
-		!classHasTag(rbxClass, "Service")
-	);
+	return !CREATABLE_BLACKLIST[rbxClass.Name] && !hasTag(rbxClass, "NotCreatable") && !hasTag(rbxClass, "Service");
 }
 
-function generateArgs(params: Array<ApiParameter>, canImplicitlyConvertEnum: boolean = true, args = new Array<string>()) {
+function generateArgs(
+	params: Array<ApiParameter>,
+	canImplicitlyConvertEnum: boolean = true,
+	args = new Array<string>(),
+) {
 	const paramNames = params.map(param => param.Name);
 	for (let i = 0; i < paramNames.length; i++) {
 		const name = paramNames[i];
@@ -643,6 +736,7 @@ export class ClassGenerator extends Generator {
 	constructor(
 		filePath: string,
 		protected metadata: ReflectionMetadata,
+		private definedClassNames: Set<string>,
 		private security: SecurityType,
 		private lowerSecurity: SecurityType | undefined,
 	) {
@@ -678,11 +772,7 @@ export class ClassGenerator extends Generator {
 		return `/** ${desc} */`;
 	}
 
-	private writeSignatures(
-		rbxMember: ApiMemberBase,
-		tsImplInterface?: ts.InterfaceDeclaration,
-		description?: string,
-	) {
+	private writeSignatures(rbxMember: ApiMemberBase, tsImplInterface?: ts.InterfaceDeclaration, description?: string) {
 		if (tsImplInterface) {
 			const name = rbxMember.Name;
 			const signatures = Array<string>();
@@ -692,7 +782,11 @@ export class ClassGenerator extends Generator {
 			}
 
 			let nodes = cacher.get(tsImplInterface);
-			if (!nodes) cacher.set(tsImplInterface, (nodes = [...tsImplInterface.getProperties(), ...tsImplInterface.getMethods()]));
+			if (!nodes)
+				cacher.set(
+					tsImplInterface,
+					(nodes = [...tsImplInterface.getProperties(), ...tsImplInterface.getMethods()]),
+				);
 
 			nodes
 				.filter(prop => prop.getName() === name)
@@ -780,7 +874,7 @@ export class ClassGenerator extends Generator {
 					? wikiDescription
 					: this.metadata.getPropertyDescription(className, name);
 			const surelyDefined = rbxProperty.ValueType.Category !== "Class";
-			const prefix = this.canWrite(rbxProperty) && !memberHasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
+			const prefix = this.canWrite(rbxProperty) && !hasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
 
 			if (!this.writeSignatures(rbxProperty, tsImplInterface, description)) {
 				this.write(`${prefix}${safeName(name)}${surelyDefined ? "" : "?"}: ${valueType};`);
@@ -790,15 +884,47 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
+	private isPluginOnlyClass(rbxClass: ApiClass): boolean {
+		if (PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) {
+			return true;
+		} else {
+			const superclass = this.ClassReferences.get(rbxClass.Superclass);
+			return superclass ? this.isPluginOnlyClass(superclass) : false;
+		}
+	}
+
+	private shouldGenerateClass(rbxClass: ApiClass) {
+		const superclass = this.ClassReferences.get(rbxClass.Superclass);
+
+		if (superclass) {
+			if (!this.shouldGenerateClass(superclass)) {
+				return false;
+			}
+		}
+
+		if (CLASS_BLACKLIST.has(rbxClass.Name)) {
+			return false;
+		}
+
+		if (this.security !== "PluginSecurity") {
+			if (PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	private shouldGenerateMember(rbxClass: ApiClass, rbxMember: ApiMember) {
 		const blacklist = MEMBER_BLACKLIST[rbxClass.Name];
 		if (blacklist && blacklist[rbxMember.Name] === true) {
 			return false;
 		}
 		return (
-			this.canRead(rbxMember) &&
-			!memberHasTag(rbxMember, "Deprecated") &&
-			!memberHasTag(rbxMember, "NotScriptable")
+			((this.security === "PluginSecurity" && PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) ||
+				this.canRead(rbxMember)) &&
+			!hasTag(rbxMember, "Deprecated") &&
+			!hasTag(rbxMember, "NotScriptable")
 		);
 	}
 
@@ -811,6 +937,7 @@ export class ClassGenerator extends Generator {
 	}
 
 	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile) {
+		this.definedClassNames.add(rbxClass.Name);
 		const className = this.generateClassName(rbxClass.Name);
 		const tsImplInterface = tsFile.getInterface(className);
 		let extendsStr = "";
@@ -819,7 +946,7 @@ export class ClassGenerator extends Generator {
 		}
 
 		const members = rbxClass.Members.filter(rbxMember => this.shouldGenerateMember(rbxClass, rbxMember));
-		const noSecurity = this.security === "None";
+		const noSecurity = this.security === "None" || this.isPluginOnlyClass(rbxClass);
 		if (noSecurity || members.length > 0) {
 			if (noSecurity) {
 				const descriptions = new Array<string>();
@@ -954,19 +1081,19 @@ export class ClassGenerator extends Generator {
 
 	private generateInstancesTables(rbxClasses: Array<ApiClass>) {
 		const [CreatableInstances, Instances, Services] = multifilter(rbxClasses, 3, rbxClass =>
-			classHasTag(rbxClass, "Service") ? 2 : isCreatable(rbxClass) ? 0 : 1,
+			hasTag(rbxClass, "Service") ? 2 : isCreatable(rbxClass) ? 0 : 1,
 		);
 
-		this.generateInstanceInterface("Services", Services);
-		this.generateInstanceInterface("CreatableInstances", CreatableInstances);
-		this.generateInstanceInterface("Instances", Instances, "Services, CreatableInstances");
+		if (Services.length) this.generateInstanceInterface("Services", Services);
+		if (CreatableInstances.length) this.generateInstanceInterface("CreatableInstances", CreatableInstances);
+		if (Instances.length) this.generateInstanceInterface("Instances", Instances, "Services, CreatableInstances");
 	}
 
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {
 		this.write(`// GENERATED ROBLOX INSTANCE CLASSES`);
 		this.write(``);
 		for (const rbxClass of rbxClasses) {
-			this.generateClass(rbxClass, sourceFile);
+			if (this.shouldGenerateClass(rbxClass)) this.generateClass(rbxClass, sourceFile);
 		}
 	}
 
@@ -986,6 +1113,8 @@ export class ClassGenerator extends Generator {
 			const superclass = this.ClassReferences.get(rbxClass.Superclass);
 
 			if (superclass) {
+				// TODO: Erase bad subclasses
+				// TODO: Add subclasses which are only good for plugins
 				superclass.Subclasses.push(rbxClassName);
 			}
 
@@ -1065,10 +1194,11 @@ export class ClassGenerator extends Generator {
 			tsConfigFilePath: path.join(ROOT_DIR, "include", "tsconfig.json"),
 		});
 		const sourceFile = project.getSourceFileOrThrow("customDefinitions.d.ts");
+
+		rbxClasses = rbxClasses.filter(rbxClass => this.shouldGenerateClass(rbxClass));
+
 		this.generateHeader();
-		if (this.security === "None") {
-			this.generateInstancesTables(rbxClasses);
-		}
+		this.generateInstancesTables(rbxClasses.filter(rbxClass => !this.definedClassNames.has(rbxClass.Name)));
 		this.generateClasses(rbxClasses, sourceFile);
 	}
 }
