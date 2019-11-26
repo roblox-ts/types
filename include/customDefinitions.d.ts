@@ -176,16 +176,15 @@ interface PlayerGui extends BasePlayerGui {}
 
 /** @rbxts server */
 interface GlobalDataStore extends Instance {
-	GetAsync<T = unknown>(this: GlobalDataStore, key: string): T | undefined;
+	GetAsync<T>(this: GlobalDataStore, key: string): T | undefined;
 	IncrementAsync(this: GlobalDataStore, key: string, delta?: number): number;
-	RemoveAsync<T = unknown>(this: GlobalDataStore, key: string): T | undefined;
+	RemoveAsync<T>(this: GlobalDataStore, key: string): T | undefined;
 	SetAsync(this: GlobalDataStore, key: string, value?: any): void;
-	UpdateAsync<O = unknown, R = unknown>(
+	UpdateAsync<O, R>(
 		this: GlobalDataStore,
 		key: string,
 		transformFunction: (oldValue: O | undefined) => R,
 	): R extends undefined ? O | undefined : R;
-	OnUpdate<T = unknown>(this: GlobalDataStore, key: string, callback: (value: T) => void): RBXScriptConnection;
 }
 
 interface GroupService extends Instance {
@@ -361,13 +360,13 @@ interface Instance {
 	): Instances[T] | undefined;
 	FindFirstChildWhichIsA(this: Instance, className: string, recursive?: boolean): Instance | undefined;
 
-	FindFirstAncestorOfClass<T extends Instance["ClassName"]>(
+	FindFirstAncestorOfClass<T extends keyof StrictInstances>(
 		this: Instance,
 		className: T,
 	): StrictInstances[T] | undefined;
 	FindFirstAncestorOfClass(this: Instance, className: string): Instance | undefined;
 
-	FindFirstChildOfClass<T extends Instance["ClassName"]>(
+	FindFirstChildOfClass<T extends keyof StrictInstances>(
 		this: Instance,
 		className: T,
 	): StrictInstances[T] | undefined;
@@ -633,19 +632,12 @@ interface Players extends Instance {
 		thumbnailType: CastsToEnum<Enum.ThumbnailType>,
 		thumbnailSize: CastsToEnum<Enum.ThumbnailSize>,
 	): LuaTuple<[string, boolean]>;
-
-	GetJoinData(this: Players): PlayerJoinInfo;
 }
 
 interface ScriptDebugger extends Instance {
 	GetGlobals(this: ScriptDebugger): Map<string, any>;
 	GetLocals(this: ScriptDebugger, stackFrame?: number): Map<string, any>;
 	GetUpvalues(this: ScriptDebugger, stackFrame?: number): Map<string, any>;
-}
-
-interface PointsService extends Instance {
-	/** This function was once part of the PointService class used to control an ancient achievement system since removed and deprecated. It should not be used in new work. */
-	AwardPoints(this: PointsService, userId: number, amount: number): LuaTuple<[number, number, number, 0]>;
 }
 
 interface RemoteEvent extends Instance {
@@ -660,7 +652,7 @@ interface RemoteFunction extends Instance {
 	OnClientInvoke: (...arguments: Array<any>) => void;
 	OnServerInvoke: (player: Player, ...arguments: Array<unknown>) => void;
 	InvokeClient(this: RemoteFunction, player: Player, ...arguments: Array<any>): unknown;
-	InvokeServer<R = unknown>(this: RemoteFunction, ...arguments: Array<unknown>): R;
+	InvokeServer<R>(this: RemoteFunction, ...arguments: Array<unknown>): R;
 }
 
 interface RunService extends Instance {
@@ -731,9 +723,7 @@ interface Teams extends Instance {
 }
 
 interface TeleportService {
-	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<
-		(loadingGui: ScreenGui, dataTable?: unknown) => void
-	>;
+	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: ScreenGui, dataTable?: unknown) => void>;
 
 	readonly TeleportInitFailed: RBXScriptSignal<
 		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string) => void
@@ -984,4 +974,10 @@ interface ValueBase extends Instance {
 
 interface ObjectValue extends ValueBase {
 	readonly Changed: RBXScriptSignal<(value?: Instance) => void>;
+}
+
+interface MultipleDocumentInterfaceInstance extends Instance {
+	readonly FocusedDataModelSession?: DataModelSession;
+	readonly DataModelSessionEnded: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
+	readonly DataModelSessionStarted: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
 }

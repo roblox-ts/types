@@ -54,9 +54,9 @@ type GetWritableProperties<T extends Instance> = {
 		? never
 		: (() => any) extends T[K]
 		? never
-		: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends (<F>() => F extends { -readonly [Q in K]: T[K] }
+		: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends <F>() => F extends { -readonly [Q in K]: T[K] }
 				? 1
-				: 2)
+				: 2
 		? K
 		: never;
 }[keyof T];
@@ -561,7 +561,7 @@ interface RBXScriptConnection {
  * When a certain event happens, the Event is fired, calling any listeners that are connected to the Event.
  * An Event may also pass arguments to each listener, to provide extra information about the event that occurred.
  */
-interface RBXScriptSignal<T = Function, P = false> {
+interface RBXScriptSignal<T = (...args: any) => any, P = false> {
 	/**
 	 * Establishes a function to be called whenever the event is raised.
 	 * Returns a RBXScriptConnection object associated with the connection.
@@ -1601,11 +1601,13 @@ declare function opcall<T extends Array<any>, U>(
  * @param instance
  * @param className
  */
-declare function classIs<T extends Instance, Q extends T["ClassName"]>(
+declare function classIs<T extends Instance, Q extends Extract<T["ClassName"], keyof Instances>>(
 	instance: T,
 	className: Q,
 ): instance is Instances[Q] extends T
-	? (Instances[Q]["ClassName"] extends Q ? Instances[Q] : Instances[Q] & { ClassName: Q })
+	? Instances[Q]["ClassName"] extends Q
+		? Instances[Q]
+		: Instances[Q] & { ClassName: Q }
 	: T;
 
 /**

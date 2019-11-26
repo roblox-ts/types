@@ -92,52 +92,70 @@ const ROOT_CLASS_NAME = "<<<ROOT>>>";
 
 const BAD_NAME_CHARS = [" ", "/"];
 
-const CREATABLE_BLACKLIST: { [index: string]: true | undefined } = {
-	UserSettings: true,
-	DebugSettings: true,
-	Studio: true,
-	GameSettings: true,
-	ParabolaAdornment: true,
-	LuaSettings: true,
-	PhysicsSettings: true,
-	Player: true,
-};
+/**
+ * These classes are tagged as Createable by the API Dump, probably because they are instantiable to CoreScripts.
+ * Developers, however, cannot create these.
+ */
+const CREATABLE_BLACKLIST = new Map<string, true>([
+	["UserSettings", true],
+	["DebugSettings", true],
+	["Studio", true],
+	["GameSettings", true],
+	["ParabolaAdornment", true],
+	["LuaSettings", true],
+	["PhysicsSettings", true],
+	["Player", true],
+]);
+
+const PLUGIN_ONLY_MEMBERS = new Map<string, Array<string>>([["StarterGui", ["ShowDevelopmentGui"]]]);
 
 const PLUGIN_ONLY_CLASSES = new Set([
-	"StatsItem",
 	"ABTestService",
-	"TestService",
-	"RenderingTest",
-	"Plugin",
-	"PluginGui",
-	"PluginMouse",
-	"PluginAction",
-	"PluginDragEvent",
-	"PluginGuiService",
-	"PluginMenu",
-	"PluginToolbar",
-	"PluginToolbarButton",
-	"RobloxPluginGuiService",
 	"ChangeHistoryService",
-	"KeyframeSequenceProvider",
-	"VersionControlService",
-
-	"ScriptContext",
-	"GlobalSettings",
+	"CoreGui",
+	"DataModelSession",
+	"DebuggerBreakpoint",
+	"DebuggerManager",
+	"DebuggerWatch",
 	"DebugSettings",
 	"GameSettings",
+	"GlobalSettings",
+	"KeyframeSequenceProvider",
 	"LuaSettings",
+	"MemStorageConnection",
+	"MultipleDocumentInterfaceInstance",
 	"NetworkSettings",
+	"PackageService",
 	"PhysicsSettings",
+	"Plugin",
+	"PluginAction",
+	"PluginDragEvent",
+	"PluginGui",
+	"PluginGuiService",
+	"PluginMenu",
+	"PluginMouse",
+	"PluginToolbar",
+	"PluginToolbarButton",
+	"RenderingTest",
 	"RenderSettings",
+	"RobloxPluginGuiService",
+	"ScriptContext",
+	"ScriptDebugger",
+	"Selection",
+	"StatsItem",
 	"Studio",
 	"StudioData",
 	"StudioService",
+	"StudioTheme",
 	"TaskScheduler",
+	"TestService",
+	"VersionControlService",
 ]);
 
 const CLASS_BLACKLIST = new Set([
 	// Classes which Roblox leverages internally/in the CoreScripts but serve no purpose to developers
+	"AnalysticsSettings",
+	"AnalyticsService",
 	"BrowserService",
 	"CacheableContentProvider",
 	"ClusterPacketCache",
@@ -153,17 +171,20 @@ const CLASS_BLACKLIST = new Set([
 	"GoogleAnalyticsConfiguration",
 	"GuidRegistryService",
 	"HttpRbxApiService",
+	"HttpRequest",
 	"KeyboardService",
 	"LocalStorageService",
 	"LuaWebService",
 	"MemStorageService",
+	"MouseService",
 	"PartOperationAsset",
 	"PhysicsPacketCache",
 	"ReflectionMetadataItem",
 	"RobloxReplicatedStorage",
 	"RuntimeScriptService",
-	"AnalysticsSettings",
 	"SpawnerService",
+	"StandalonePluginScripts",
+	"StopWatchReporter",
 	"ThirdPartyUserService",
 	"TimerService",
 	"TouchInputService",
@@ -172,8 +193,11 @@ const CLASS_BLACKLIST = new Set([
 
 	// never implemented
 	"LoginService",
+	"ScriptService",
+	"AdvancedDragger",
 
 	// super deprecated / never implemented:
+	"AdService",
 	"PluginManager",
 	"FunctionalTest",
 	"VirtualUser",
@@ -198,7 +222,7 @@ const CLASS_BLACKLIST = new Set([
 	// "JointsService",
 	"Message",
 	// "MotorFeature",
-	// "PointsService",
+	"PointsService",
 	// "SelectionPartLasso",
 	// "SelectionPointLasso",
 	// "SkateboardPlatform",
@@ -219,15 +243,10 @@ const CLASS_BLACKLIST = new Set([
 	"RbxAnalyticsService",
 ]);
 
-const MEMBER_BLACKLIST: {
-	[index: string]:
-		| {
-				[index: string]: true | undefined;
-		  }
-		| undefined;
-} = {
-	Instance: { ClassName: true },
-};
+const MEMBER_BLACKLIST = new Map<string, Array<string>>([
+	["Instance", ["ClassName"]],
+	["Workspace", ["FilteringEnabled"]],
+]);
 
 function containsBadChar(name: string) {
 	for (const badChar of BAD_NAME_CHARS) {
@@ -353,7 +372,7 @@ function hasTag({ Tags }: ApiClass | ApiMemberBase, tag: string) {
 }
 
 function isCreatable(rbxClass: ApiClass) {
-	return !CREATABLE_BLACKLIST[rbxClass.Name] && !hasTag(rbxClass, "NotCreatable") && !hasTag(rbxClass, "Service");
+	return !CREATABLE_BLACKLIST.get(rbxClass.Name) && !hasTag(rbxClass, "NotCreatable") && !hasTag(rbxClass, "Service");
 }
 
 function generateArgs(
@@ -927,12 +946,11 @@ export class ClassGenerator extends Generator {
 	}
 
 	private shouldGenerateMember(rbxClass: ApiClass, rbxMember: ApiMember) {
-		if (rbxMember.Name === "ScriptsDisabled") {
-			console.log(rbxMember.Name, rbxMember.Tags, rbxMember.Security);
-		}
+		// if (rbxMember.Name === "PlayerHasPass") {
+		// 	console.log(rbxMember.Name, rbxMember.Tags, rbxMember.Security);
+		// }
 
-		const blacklist = MEMBER_BLACKLIST[rbxClass.Name];
-		if (blacklist && blacklist[rbxMember.Name] === true) {
+		if (MEMBER_BLACKLIST.get(rbxClass.Name)?.includes(rbxMember.Name)) {
 			return false;
 		}
 
@@ -995,9 +1013,15 @@ export class ClassGenerator extends Generator {
 			}
 
 			if (noSecurity && tsImplInterface) {
-				for (const custom of tsImplInterface.getProperties()) {
+				for (const custom of [...tsImplInterface.getProperties(), ...tsImplInterface.getMethods()]) {
 					const name = custom.getName();
-					if (!rbxClass.Members.some(({ Name }) => name === Name)) {
+					if (!members.some(({ Name }) => name === Name)) {
+						const obj = rbxClass.Members.find(member => member.Name === name);
+						if (obj) {
+							console.log(obj.MemberType, className, name, obj.Tags, obj.Security);
+						} else {
+							console.warn("could not find", className + "." + name);
+						}
 						const [signature, documentation] = this.getSignature(custom);
 						if (documentation.trim()) this.write(documentation);
 						this.write(signature);
@@ -1100,10 +1124,12 @@ export class ClassGenerator extends Generator {
 			hasTag(rbxClass, "Service") ? 2 : isCreatable(rbxClass) ? 0 : 1,
 		);
 
-		if (0 < Services.length) this.generateInstanceInterface("Services", Services);
-		if (0 < CreatableInstances.length) this.generateInstanceInterface("CreatableInstances", CreatableInstances);
+		const byName = (a: ApiClass, b: ApiClass) => (a.Name < b.Name ? -1 : 1);
+
+		if (0 < Services.length) this.generateInstanceInterface("Services", Services.sort(byName));
+		if (0 < CreatableInstances.length) this.generateInstanceInterface("CreatableInstances", CreatableInstances.sort(byName));
 		if (0 < Instances.length)
-			this.generateInstanceInterface("Instances", Instances, "Services, CreatableInstances");
+			this.generateInstanceInterface("Instances", Instances.sort(byName), "Services, CreatableInstances");
 	}
 
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {

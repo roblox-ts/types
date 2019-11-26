@@ -24,8 +24,8 @@
 	"devDependencies": {
 		"@types/fs-extra": "^8.0.1",
 		"@types/jsdom": "^12.2.4",
-		"@types/libxmljs": "^0.18.4",
-		"@types/node-fetch": "^2.5.3",
+		"@types/libxmljs": "^0.18.5",
+		"@types/node-fetch": "^2.5.4",
 		"@types/showdown": "^1.9.3",
 		"axios": "^0.19.0",
 		"breakdance": "^3.0.1",

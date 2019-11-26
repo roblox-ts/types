@@ -6,11 +6,15 @@
 interface Services {
 	ABTestService: ABTestService;
 	ChangeHistoryService: ChangeHistoryService;
+	CoreGui: CoreGui;
 	KeyframeSequenceProvider: KeyframeSequenceProvider;
 	NetworkSettings: NetworkSettings;
+	PackageService: PackageService;
 	PluginGuiService: PluginGuiService;
 	RenderSettings: RenderSettings;
 	RobloxPluginGuiService: RobloxPluginGuiService;
+	ScriptContext: ScriptContext;
+	Selection: Selection;
 	Studio: Studio;
 	StudioData: StudioData;
 	StudioService: StudioService;
@@ -20,29 +24,37 @@ interface Services {
 }
 
 interface CreatableInstances {
+	DebuggerWatch: DebuggerWatch;
 	PluginAction: PluginAction;
 	RenderingTest: RenderingTest;
 }
 
 interface Instances extends Services, CreatableInstances {
+	DataModelSession: DataModelSession;
 	DebugSettings: DebugSettings;
-	GameSettings: GameSettings;
-	PluginGui: PluginGui;
+	DebuggerBreakpoint: DebuggerBreakpoint;
+	DebuggerManager: DebuggerManager;
 	DockWidgetPluginGui: DockWidgetPluginGui;
-	QWidgetPluginGui: QWidgetPluginGui;
+	GameSettings: GameSettings;
+	GlobalSettings: GlobalSettings;
 	LuaSettings: LuaSettings;
-	PluginMouse: PluginMouse;
+	MemStorageConnection: MemStorageConnection;
+	MultipleDocumentInterfaceInstance: MultipleDocumentInterfaceInstance;
 	PhysicsSettings: PhysicsSettings;
 	Plugin: Plugin;
 	PluginDragEvent: PluginDragEvent;
+	PluginGui: PluginGui;
 	PluginMenu: PluginMenu;
+	PluginMouse: PluginMouse;
 	PluginToolbar: PluginToolbar;
 	PluginToolbarButton: PluginToolbarButton;
-	GlobalSettings: GlobalSettings;
-	StatsItem: StatsItem;
+	QWidgetPluginGui: QWidgetPluginGui;
 	RunningAverageItemDouble: RunningAverageItemDouble;
 	RunningAverageItemInt: RunningAverageItemInt;
 	RunningAverageTimeIntervalItem: RunningAverageTimeIntervalItem;
+	ScriptDebugger: ScriptDebugger;
+	StatsItem: StatsItem;
+	StudioTheme: StudioTheme;
 	TotalCountTimeIntervalItem: TotalCountTimeIntervalItem;
 }
 
@@ -105,6 +117,37 @@ interface Animator extends Instance {
 	StepAnimations(this: Animator, deltaTime: number): void;
 }
 
+/** The CoreGui is a service used to store Guis created in-game by Roblox for the core user interface found in every game (such as the game menu, the playerlist, the backpack, etc.). It can also be used by [Plugins](https://developer.roblox.com/api-reference/class/Plugin) in Roblox Studio.
+ * 
+ * You can use the [StarterGui.SetCoreGuiEnabled](https://developer.roblox.com/api-reference/function/StarterGui/SetCoreGuiEnabled) and [StarterGui.GetCoreGuiEnabled](https://developer.roblox.com/api-reference/function/StarterGui/GetCoreGuiEnabled) methods in a `LocalScript` to enable and disable most elements of the CoreGui. You can also use [PlayerGui.SetTopbarTransparency](https://developer.roblox.com/api-reference/function/PlayerGui/SetTopbarTransparency) to set the transparency of the top bar.
+ */
+interface CoreGui extends BasePlayerGui {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "CoreGui";
+	/** [NO DOCUMENTATION] */
+	readonly SelectionImageObject?: GuiObject;
+	/** The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
+	 * 	
+	 * The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
+	 * 	
+	 * The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Version: number;
+	/** [NO DOCUMENTATION] */
+	SetUserGuiRendering(this: CoreGui, enabled: boolean, guiAdornee: Instance, faceId: CastsToEnum<Enum.NormalId>): void;
+	/** [NO DOCUMENTATION] */
+	TakeScreenshot(this: CoreGui): void;
+	/** [NO DOCUMENTATION] */
+	ToggleRecording(this: CoreGui): void;
+}
+
 interface StarterGui extends BasePlayerGui {
 	ProcessUserInput: boolean;
 }
@@ -131,6 +174,27 @@ interface ChangeHistoryService extends Instance {
 	readonly OnRedo: RBXScriptSignal<(waypoint: string) => void>;
 	/** Fired when the user undoes an action in studio. Waypoint describes the type action that has been undone. */
 	readonly OnUndo: RBXScriptSignal<(waypoint: string) => void>;
+}
+
+interface DataModelSession extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "DataModelSession";
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CurrentDataModelType: Enum.StudioDataModelType;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly SessionId: string;
+	/** [NO DOCUMENTATION] */
+	readonly CurrentDataModelTypeAboutToChange: RBXScriptSignal<(dataModelType: Enum.StudioDataModelType) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly CurrentDataModelTypeChanged: RBXScriptSignal<() => void>;
+	/** [NO DOCUMENTATION] */
+	readonly DataModelCreated: RBXScriptSignal<(gameStateType: Enum.StudioDataModelType) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly DataModelWillBeDestroyed: RBXScriptSignal<(gameStateType: Enum.StudioDataModelType) => void>;
 }
 
 /** The DebugSettings allows you to view diagnostics information regarding Roblox. It is labeled as **Diagnostics** in the Roblox Studio Settings menu. */
@@ -215,6 +279,85 @@ interface DebugSettings extends Instance {
 	readonly RobloxVersion: string;
 	/** Sets the internal sampling method used to measure elapsed time with consistency across platforms. */
 	readonly TickCountPreciseOverride: Enum.TickCountSampleMethod;
+}
+
+/** Represents a breakpoint in Roblox's Lua Debugger.
+ * 
+ * This object cannot be created, but it can be retrieved from the `ScriptDebugger` class.
+ */
+interface DebuggerBreakpoint extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "DebuggerBreakpoint";
+	/** The condition of the debugger breakpoint. */
+	readonly Condition: string;
+	/** Whether or not the breakpoint is enabled. */
+	readonly IsEnabled: boolean;
+	/** The line that the breakpoint has been placed on.
+	 * 	
+	 * The line that the breakpoint has been placed on.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	The line that the breakpoint has been placed on.
+	 * 	
+	 * The line that the breakpoint has been placed on.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Line: number;
+}
+
+/** The DebuggerManager is a special singleton class responsible for managing Roblox's Lua Debugger feature.
+ * 
+ * It can be retrieved via the `DebuggerManager()` function, but only from plugins or the command bar.
+ */
+interface DebuggerManager extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "DebuggerManager";
+	/** Whether the debugger is enabled or disabled.
+	 * 	
+	 * Whether the debugger is enabled or disabled.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	Whether the debugger is enabled or disabled.
+	 * 	
+	 * Whether the debugger is enabled or disabled.
+	 * 
+	 * Tags: ReadOnly, NotReplicated
+	 *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly DebuggingEnabled: boolean;
+	/** Registers a script to be used in the Lua Debugger. Returns a `ScriptDebugger` for the script. */
+	AddDebugger(this: DebuggerManager, script: Instance): Instance | undefined;
+	/** [NO DOCUMENTATION] */
+	EnableDebugging(this: DebuggerManager): void;
+	/** Returns a list of `ScriptDebugger` present in the game. */
+	GetDebuggers(this: DebuggerManager): Array<Instance>;
+	/** Resumes the Lua Debugger if it paused. */
+	Resume(this: DebuggerManager): void;
+	/** Performs a [step into](https://developer.roblox.com/articles/Lua-debugger) operation on the Lua Debugger. */
+	StepIn(this: DebuggerManager): void;
+	/** Performs a [step out](https://developer.roblox.com/articles/Lua-debugger) operation on the Lua Debugger. */
+	StepOut(this: DebuggerManager): void;
+	/** Performs a [step over](https://developer.roblox.com/articles/Lua-debugger) operation on the Lua Debugger. */
+	StepOver(this: DebuggerManager): void;
+	/** Fired when a new [ScriptDebugger](https://developer.roblox.com/api-reference/class/ScriptDebugger) is created through the [AddDebugger](https://developer.roblox.com/api-reference/function/DebuggerManager/AddDebugger) method. */
+	readonly DebuggerAdded: RBXScriptSignal<(debug: Instance) => void>;
+	/** Fired when a registered [ScriptDebugger](https://developer.roblox.com/api-reference/class/ScriptDebugger) has been discontinued. */
+	readonly DebuggerRemoved: RBXScriptSignal<(debug: Instance) => void>;
+}
+
+/** Represents a watch in Roblox's Lua Debugger.
+ * 
+ * This object cannot be created, but it can be retrieved from the `ScriptDebugger` class.
+ */
+interface DebuggerWatch extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "DebuggerWatch";
+	/** The expression set for the DebuggerWatch. */
+	readonly Expression: string;
 }
 
 interface File extends Instance {
@@ -488,6 +631,8 @@ interface ModuleScript extends LuaSourceContainer {
 }
 
 interface MemStorageConnection extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "MemStorageConnection";
 	/** [NO DOCUMENTATION] */
 	Disconnect(this: MemStorageConnection): void;
 }
@@ -505,6 +650,14 @@ interface PluginMouse extends Mouse {
 	readonly ClassName: "PluginMouse";
 	/** Fired when Instances are being selected while the mouse is dragging. */
 	readonly DragEnter: RBXScriptSignal<(instances: Array<Instance>) => void>;
+}
+
+interface MultipleDocumentInterfaceInstance extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "MultipleDocumentInterfaceInstance";
+	readonly FocusedDataModelSession?: DataModelSession;
+	readonly DataModelSessionEnded: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
+	readonly DataModelSessionStarted: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
 }
 
 interface NetworkPeer extends Instance {
@@ -1099,6 +1252,11 @@ interface Workspace extends WorldRoot {
 	 * This function cannot be used in scripts but will function in the command bar or plugins.
 	 */
 	ZoomToExtents(this: Workspace): void;
+}
+
+interface PackageService extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "PackageService";
 }
 
 /** The PhysicsSettings is a singleton class, which lets developers view  debugging features in Roblox's physics engine.It can be found under the Physics tab in Roblox Studio's settings menu. */
@@ -2039,12 +2197,95 @@ interface RunService extends Instance {
 	Stop(this: RunService): void;
 }
 
+/** This service controls all `BaseScript` objects. Most of the properties and methods of this service are locked for internal use, however you may use the [ScriptContext.ScriptsDisabled](https://developer.roblox.com/api-reference/property/ScriptContext/ScriptsDisabled) property to disable all scripts from a thread with normal security access. */
 interface ScriptContext extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "ScriptContext";
+	/** [NO DOCUMENTATION] *
+	 * Tags: NotReplicated
+	 */
+	readonly ScriptsDisabled: boolean;
+	/** [NO DOCUMENTATION] */
+	AddCoreScriptLocal(this: ScriptContext, name: string, parent: Instance): void;
+	/** [NO DOCUMENTATION] */
+	GetCoverageStats(this: ScriptContext): unknown;
 	/** Limits how long a script is allowed to run without yielding. */
 	SetTimeout(this: ScriptContext, seconds: number): void;
+	/** Fired when an error occurs. */
+	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: Instance) => void>;
 }
 
+/** A ScriptDebugger is used to handle the debugging of a specific script. It can be retrieved from the `DebuggerManager`. */
+interface ScriptDebugger extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "ScriptDebugger";
+	/** The current line that the script is on. */
+	readonly CurrentLine: number;
+	/** Describes if this ScriptDebugger is actually debugging the script attached to it. */
+	readonly IsDebugging: boolean;
+	/** Describes if this ScriptDebugger is paused. */
+	readonly IsPaused: boolean;
+	/** The script object this debugger is linked to. */
+	readonly Script?: Instance;
+	/** Adds a watch with the given expression. */
+	AddWatch(this: ScriptDebugger, expression: string): Instance | undefined;
+	/** Returns a list of `DebuggerBreakpoint` present in the script. */
+	GetBreakpoints(this: ScriptDebugger): Array<Instance>;
+	/** Returns a dictionary of all variables that are visible to the script's global stack, where the keys are the names of the variables, and the values are the actual values of the variables. */
+	GetGlobals(this: ScriptDebugger): Map<string, any>;
+	/** Returns a dictionary of all local variables in the specified stack, where the keys are the names of the variables, and the values are the actual values of the variables. */
+	GetLocals(this: ScriptDebugger, stackFrame?: number): Map<string, any>;
+	/** Returns an array of all active call stacks in the script. */
+	GetStack(this: ScriptDebugger): unknown;
+	/** Returns a dictionary of all upvalues present in the stack specified. */
+	GetUpvalues(this: ScriptDebugger, stackFrame?: number): Map<string, any>;
+	/** Returns the current value of a variable being watched by a `DebuggerWatch`. */
+	GetWatchValue(this: ScriptDebugger, watch: Instance): unknown;
+	/** Returns a list with all the watches for this debugger */
+	GetWatches(this: ScriptDebugger): Array<Instance>;
+	/** Sets the specified line of the script as a breakpoint. Returns a `DebuggerBreakpoint` that you can use to manage the breakpoint. */
+	SetBreakpoint(this: ScriptDebugger, line: number): Instance | undefined;
+	/** Sets the value of the variable _name_ as _value_ in the script's main stack. */
+	SetGlobal(this: ScriptDebugger, name: string, value?: any): void;
+	/** Sets the value of the variable _name_ as _value_ in the stack specified. */
+	SetLocal(this: ScriptDebugger, name: string, value?: any, stackFrame?: number): void;
+	/** Sets the value of the upvalue _name_ as _value_ in the stack specified. */
+	SetUpvalue(this: ScriptDebugger, name: string, value?: any, stackFrame?: number): void;
+	/** Fired when a breakpoint is added to the script. */
+	readonly BreakpointAdded: RBXScriptSignal<(breakpoint: Instance) => void>;
+	/** Fired when a breakpoint is removed from the script. */
+	readonly BreakpointRemoved: RBXScriptSignal<(breakpoint: Instance) => void>;
+	/** Fired when a breakpoint is encountered by the script. */
+	readonly EncounteredBreak: RBXScriptSignal<(line: number, breakReason: Enum.BreakReason) => void>;
+	/** Fired when the game is resumed after being paused by a breakpoint. */
+	readonly Resuming: RBXScriptSignal<() => void>;
+	/** Fired when an expression watch is added to this script debugger. */
+	readonly WatchAdded: RBXScriptSignal<(watch: Instance) => void>;
+	/** Fired when an expression watch is removed from this script debugger. */
+	readonly WatchRemoved: RBXScriptSignal<(watch: Instance) => void>;
+}
+
+/** The Selection service controls the `Instance`s that are selected in Roblox Studio.
+ * 
+ * This service is particularly useful when developing `Plugin`s, as it allows the developer to access and manipulate the current selection.
+ * 
+ * Currently selected `Instance`s can be obtained and set using the [Selection.Get](https://developer.roblox.com/api-reference/function/Selection/Get) and [Selection.Set](https://developer.roblox.com/api-reference/function/Selection/Set) functions. The [Selection.SelectionChanged](https://developer.roblox.com/api-reference/event/Selection/SelectionChanged) event fires whenever the current selection changes.
+ * 
+ * For more information on using Selection and `Plugin`s please see [this tutorial](https://developer.roblox.com/search#stq=Intro%20to%20Plugins).
+ * 
+ * Selection is also often used in the command bar, to set hidden properties or run functions for selected `Instance`s. For example:
+ * 
+ * ```lua
+ * game.Selection:Get()[1]:SetPrimaryPartCFrame(CFrame.new()) -- move the selected model to the origin
+ * ```
+ * 
+ * Note this class only applies to Roblox Studio and has no applicability to games.
+ * 
+ * [1]: https://developer.roblox.com/articles/Intro-to-Plugins
+ */
 interface Selection extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "Selection";
 	/** Returns an array of currently selected `Instance`s in Roblox Studio.
 	 * 
 	 * If no `Instance`s are selected, the array returned be empty. This function can be used in conjunction with the [Selection.SelectionChanged](https://developer.roblox.com/api-reference/event/Selection/SelectionChanged) event to get the selection whenever it changes.
@@ -2070,6 +2311,15 @@ interface Selection extends Instance {
 	 * @param selection An array of `Instance`s to set the current selection to.
 	 */
 	Set(this: Selection, selection: Array<Instance>): void;
+	/** Fires when the `Instance`s selected in Roblox Studio changes.
+	 * 
+	 * Note this event does not give the new selection. Developers will need to use `Selection`'s [Selection.Get](https://developer.roblox.com/api-reference/function/Selection/Get) function to obtain the current selection.
+	 * 
+	 * Although this event can be used outside of plugins and the command bar, it only applies to the selection in Roblox Studio and therefore has no functionality outside of Studio.
+	 * 
+	 * To change the selection use the [Selection.Set](https://developer.roblox.com/api-reference/function/Selection/Set) function.
+	 */
+	readonly SelectionChanged: RBXScriptSignal<() => void>;
 }
 
 interface DataModel extends ServiceProvider {
@@ -2652,6 +2902,8 @@ interface StudioService extends Instance {
 }
 
 interface StudioTheme extends Instance {
+	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "StudioTheme";
 	/** The **GetColor()** function returns the [DataType.Color3](https://developer.roblox.com/search#stq=Color3) corresponding to the arguments provided. For instance, if you would like to get the [DataType.Color3](https://developer.roblox.com/search#stq=Color3) of the Studio "MainButton" when it's **disabled**, you can use the following code:
 	 * 
 	 * ```lua
