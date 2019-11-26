@@ -479,7 +479,7 @@ interface MarketplaceService extends Instance {
 		currencyType?: CastsToEnum<Enum.CurrencyType>,
 	): void;
 	PlayerOwnsAsset(this: MarketplaceService, player: Player, assetId: number): boolean;
-	GetDeveloperProductsAsync(this: MarketplaceService): Pages;
+	GetDeveloperProductsAsync(this: MarketplaceService): StandardPages;
 	PromptSubscriptionCancellation(this: MarketplaceService, player: Player, subscriptionId: number): void;
 	PromptSubscriptionPurchase(this: MarketplaceService, player: Player, subscriptionId: number): void;
 }
