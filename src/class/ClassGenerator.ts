@@ -122,6 +122,7 @@ const PLUGIN_ONLY_CLASSES = new Set([
 	"KeyframeSequenceProvider",
 	"VersionControlService",
 
+	"ScriptContext",
 	"GlobalSettings",
 	"DebugSettings",
 	"GameSettings",
@@ -241,30 +242,30 @@ function safeName(name: string) {
 	return containsBadChar(name) ? `["${name}"]` : name;
 }
 
-const VALUE_TYPE_MAP: { [index: string]: string | null } = {
-	Array: "Array<any>",
-	BinaryString: null,
-	bool: "boolean",
-	Connection: "RBXScriptConnection",
-	Content: "string",
-	CoordinateFrame: "CFrame",
-	Dictionary: "object",
-	double: "number",
-	EventInstance: "RBXScriptSignal",
-	float: "number",
-	int: "number",
-	int64: "number",
-	Map: "object",
-	Object: "Instance",
-	Objects: "Array<Instance>",
-	Property: "string",
-	ProtectedString: "string",
-	Rect2D: "Rect",
-	Tuple: "Array<any>",
-	Variant: "any",
-};
+const VALUE_TYPE_MAP = new Map<string, string | null>([
+	["Array", "Array<any>"],
+	["BinaryString", null],
+	["bool", "boolean"],
+	["Connection", "RBXScriptConnection"],
+	["Content", "string"],
+	["CoordinateFrame", "CFrame"],
+	["Dictionary", "object"],
+	["double", "number"],
+	["EventInstance", "RBXScriptSignal"],
+	["float", "number"],
+	["int", "number"],
+	["int64", "number"],
+	["Map", "object"],
+	["Object", "Instance"],
+	["Objects", "Array<Instance>"],
+	["Property", "string"],
+	["ProtectedString", "string"],
+	["Rect2D", "Rect"],
+	["Tuple", "Array<any>"],
+	["Variant", "any"],
+]);
 
-const PROP_TYPE_MAP: { [index: string]: string } = {};
+const PROP_TYPE_MAP = new Map<string, string>();
 
 function safePropType(valueType: string | undefined | null) {
 	if (valueType === null) {
@@ -273,15 +274,11 @@ function safePropType(valueType: string | undefined | null) {
 	if (valueType === undefined) {
 		throw new Error("Undefined valueType!");
 	}
-	const mappedType = PROP_TYPE_MAP[valueType];
-	if (mappedType !== undefined) {
-		return mappedType;
-	}
-	return valueType;
+	return PROP_TYPE_MAP.get(valueType) ?? valueType;
 }
 
 function safeValueType(valueType: ApiValueType, canImplicitlyConvertEnum: boolean = false) {
-	const mappedType = VALUE_TYPE_MAP[valueType.Name];
+	const mappedType = VALUE_TYPE_MAP.get(valueType.Name);
 	if (mappedType !== undefined) {
 		return mappedType;
 	} else if (valueType.Category === "Enum") {
@@ -297,11 +294,11 @@ function safeValueType(valueType: ApiValueType, canImplicitlyConvertEnum: boolea
 	}
 }
 
-const RETURN_TYPE_MAP: { [index: string]: string | null } = {
-	Instance: "Instance | undefined", // api dump lies :(
-	any: "unknown",
-	["Array<any>"]: "unknown",
-};
+const RETURN_TYPE_MAP = new Map([
+	["Instance", "Instance | undefined"], // api dump lies :(
+	["any", "unknown"],
+	["Array<any>", "unknown"],
+]);
 
 function safeReturnType(valueType: string | undefined | null) {
 	if (valueType === null) {
@@ -310,7 +307,7 @@ function safeReturnType(valueType: string | undefined | null) {
 	if (valueType === undefined) {
 		throw new Error("Undefined valueType!");
 	}
-	const mappedType = RETURN_TYPE_MAP[valueType];
+	const mappedType = RETURN_TYPE_MAP.get(valueType);
 	if (mappedType !== undefined) {
 		return mappedType;
 	}
@@ -930,10 +927,15 @@ export class ClassGenerator extends Generator {
 	}
 
 	private shouldGenerateMember(rbxClass: ApiClass, rbxMember: ApiMember) {
+		if (rbxMember.Name === "ScriptsDisabled") {
+			console.log(rbxMember.Name, rbxMember.Tags, rbxMember.Security);
+		}
+
 		const blacklist = MEMBER_BLACKLIST[rbxClass.Name];
 		if (blacklist && blacklist[rbxMember.Name] === true) {
 			return false;
 		}
+
 		return (
 			((this.security === "PluginSecurity" && PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) ||
 				this.canRead(rbxMember)) &&
