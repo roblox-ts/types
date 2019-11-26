@@ -118,6 +118,7 @@ const PLUGIN_ONLY_CLASSES = new Set([
 	"DebuggerManager",
 	"DebuggerWatch",
 	"DebugSettings",
+	"File",
 	"GameSettings",
 	"GlobalSettings",
 	"KeyframeSequenceProvider",
@@ -246,6 +247,11 @@ const CLASS_BLACKLIST = new Set([
 const MEMBER_BLACKLIST = new Map<string, Array<string>>([
 	["Instance", ["ClassName"]],
 	["Workspace", ["FilteringEnabled"]],
+]);
+
+const EXPECTED_EXTRA_MEMBERS = new Map([
+	["Player", ["Name"]],
+	["ValueBase", ["Value", "Changed"]],
 ]);
 
 function containsBadChar(name: string) {
@@ -946,10 +952,6 @@ export class ClassGenerator extends Generator {
 	}
 
 	private shouldGenerateMember(rbxClass: ApiClass, rbxMember: ApiMember) {
-		// if (rbxMember.Name === "PlayerHasPass") {
-		// 	console.log(rbxMember.Name, rbxMember.Tags, rbxMember.Security);
-		// }
-
 		if (MEMBER_BLACKLIST.get(rbxClass.Name)?.includes(rbxMember.Name)) {
 			return false;
 		}
@@ -1017,9 +1019,8 @@ export class ClassGenerator extends Generator {
 					const name = custom.getName();
 					if (!members.some(({ Name }) => name === Name)) {
 						const obj = rbxClass.Members.find(member => member.Name === name);
-						if (obj) {
-							console.log(obj.MemberType, className, name, obj.Tags, obj.Security);
-						} else {
+
+						if (obj === undefined && !EXPECTED_EXTRA_MEMBERS.get(className)?.includes(name)) {
 							console.warn("could not find", className + "." + name);
 						}
 						const [signature, documentation] = this.getSignature(custom);
@@ -1127,7 +1128,8 @@ export class ClassGenerator extends Generator {
 		const byName = (a: ApiClass, b: ApiClass) => (a.Name < b.Name ? -1 : 1);
 
 		if (0 < Services.length) this.generateInstanceInterface("Services", Services.sort(byName));
-		if (0 < CreatableInstances.length) this.generateInstanceInterface("CreatableInstances", CreatableInstances.sort(byName));
+		if (0 < CreatableInstances.length)
+			this.generateInstanceInterface("CreatableInstances", CreatableInstances.sort(byName));
 		if (0 < Instances.length)
 			this.generateInstanceInterface("Instances", Instances.sort(byName), "Services, CreatableInstances");
 	}
