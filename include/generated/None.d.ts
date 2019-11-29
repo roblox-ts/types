@@ -1430,7 +1430,7 @@ interface AssetService extends Instance {
 	GetAssetIdsForPackage(this: AssetService, packageAssetId: number): Array<number>;
 	GetBundleDetailsAsync(this: AssetService, bundleId: number): BundleInfo;
 	/** Returns a `StandardPages` object which contains the name and placeId of places within the current 'Game' (otherwise known as a 'Universe'). */
-	GetGamePlacesAsync(this: AssetService): StandardPages;
+	GetGamePlacesAsync(this: AssetService): StandardPages<{ Name: string; PlaceId: number }>;
 	/** Saves the state of the current place. This will only work for places that have been created with [AssetService.CreatePlaceAsync](https://developer.roblox.com/api-reference/function/AssetService/CreatePlaceAsync) or [AssetService.CreatePlaceInPlayerInventoryAsync](https://developer.roblox.com/api-reference/function/AssetService/CreatePlaceInPlayerInventoryAsync). */
 	SavePlaceAsync(this: AssetService): void;
 }
@@ -5805,7 +5805,7 @@ interface GroupService extends Instance {
 	 * @param groupId The group's ID.
 	 * @returns A `StandardPages` object of the group's allies.
 	 */
-	GetAlliesAsync(this: GroupService, groupId: number): StandardPages;
+	GetAlliesAsync(this: GroupService, groupId: number): StandardPages<GroupInfo>;
 	/** Returns a `StandardPages` object including information on all of the specified group's enemies.
 	 * 
 	 * This pages does not include a list of group IDs but instead a list of group information tables, mirroring the format of those returned by [GroupService.GetGroupInfoAsync](https://developer.roblox.com/api-reference/function/GroupService/GetGroupInfoAsync). See below for the structure of these tables.
@@ -5845,7 +5845,7 @@ interface GroupService extends Instance {
 	 * @param groupId The group's ID.
 	 * @returns A `StandardPages` object of the group's enemies.
 	 */
-	GetEnemiesAsync(this: GroupService, groupId: number): StandardPages;
+	GetEnemiesAsync(this: GroupService, groupId: number): StandardPages<GroupInfo>;
 	/** Returns a table containing information about the given group.
 	 * 
 	 * The table returned is the same format as that returned in [GroupService.GetAlliesAsync](https://developer.roblox.com/api-reference/function/GroupService/GetAlliesAsync) and [GroupService.GetEnemiesAsync](https://developer.roblox.com/api-reference/function/GroupService/GetEnemiesAsync). This format can be seen below.
@@ -13573,7 +13573,7 @@ interface EmotesPages extends InventoryPages {
  * 
  * See the `Pages` class for more information.
  */
-interface StandardPages extends Pages {
+interface StandardPages<T = unknown> extends Pages<T> {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "StandardPages";
 }

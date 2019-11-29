@@ -18,7 +18,7 @@ interface AssetService extends Instance {
 		templatePlaceID: number,
 		description?: string,
 	): number;
-	GetGamePlacesAsync(this: AssetService): StandardPages;
+	GetGamePlacesAsync(this: AssetService): StandardPages<{ Name: string; PlaceId: number }>;
 	GetAssetIdsForPackage(this: AssetService, packageAssetId: number): Array<number>;
 	GetBundleDetailsAsync(this: AssetService, bundleId: number): BundleInfo;
 }
@@ -188,8 +188,8 @@ interface GlobalDataStore extends Instance {
 }
 
 interface GroupService extends Instance {
-	GetAlliesAsync(this: GroupService, groupId: number): StandardPages;
-	GetEnemiesAsync(this: GroupService, groupId: number): StandardPages;
+	GetAlliesAsync(this: GroupService, groupId: number): StandardPages<GroupInfo>;
+	GetEnemiesAsync(this: GroupService, groupId: number): StandardPages<GroupInfo>;
 	GetGroupInfoAsync(this: GroupService, groupId: number): GroupInfo;
 	GetGroupsAsync(this: GroupService, userId: number): Array<GetGroupsAsyncResult>;
 }
@@ -992,3 +992,5 @@ interface FriendPages
 	extends Pages<{ AvatarFinal: boolean; AvatarUri: string; Id: number; Username: string; IsOnline: boolean }> {}
 
 interface InventoryPages extends Pages<number> {}
+
+interface StandardPages<T = unknown> extends Pages<T> {}
