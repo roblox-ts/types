@@ -96,18 +96,17 @@ const BAD_NAME_CHARS = [" ", "/"];
  * These classes are tagged as Createable by the API Dump, probably because they are instantiable to CoreScripts.
  * Developers, however, cannot create these.
  */
-const CREATABLE_BLACKLIST = new Map<string, true>([
-	["UserSettings", true],
-	["DebugSettings", true],
-	["Studio", true],
-	["GameSettings", true],
-	["ParabolaAdornment", true],
-	["LuaSettings", true],
-	["PhysicsSettings", true],
-	["Player", true],
+const CREATABLE_BLACKLIST = new Set([
+	"UserSettings",
+	"DebugSettings",
+	"Studio",
+	"GameSettings",
+	"ParabolaAdornment",
+	"LuaSettings",
+	"PhysicsSettings",
+	"Player",
+	"DebuggerWatch",
 ]);
-
-const PLUGIN_ONLY_MEMBERS = new Map<string, Array<string>>([["StarterGui", ["ShowDevelopmentGui"]]]);
 
 const PLUGIN_ONLY_CLASSES = new Set([
 	"ABTestService",
@@ -125,6 +124,8 @@ const PLUGIN_ONLY_CLASSES = new Set([
 	"LuaSettings",
 	"MemStorageConnection",
 	"MultipleDocumentInterfaceInstance",
+	"NetworkPeer",
+	"NetworkReplicator",
 	"NetworkSettings",
 	"PackageService",
 	"PhysicsSettings",
@@ -267,6 +268,61 @@ function safeName(name: string) {
 	return containsBadChar(name) ? `["${name}"]` : name;
 }
 
+const ABSTRACT_CLASSES = new Set<string>([
+	"BackpackItem",
+	"BasePart",
+	"BasePlayerGui",
+	"BaseScript",
+	"BevelMesh",
+	"BodyMover",
+	"CharacterAppearance",
+	"Clothing",
+	"Constraint",
+	"Controller",
+	"DataModelMesh",
+	"DynamicRotate",
+	"FaceInstance",
+	"Feature",
+	"FormFactorPart",
+	"GenericSettings",
+	"GuiBase",
+	"GuiBase2d",
+	"GuiBase3d",
+	"GuiButton",
+	"GuiLabel",
+	"GuiObject",
+	"HandleAdornment",
+	"HandlesBase",
+	"Instance",
+	"JointInstance",
+	"LayerCollector",
+	"Light",
+	"LuaSourceContainer",
+	"ManualSurfaceJointInstance",
+	"NetworkPeer",
+	"NetworkReplicator",
+	"Pages",
+	"PartAdornment",
+	"PluginGui",
+	"PostEffect",
+	"PVAdornment",
+	"PVInstance",
+	"SelectionLasso",
+	"ServiceProvider",
+	"SlidingBallConstraint",
+	"SoundEffect",
+	"StatsItem",
+	"TriangleMeshPart",
+	"TweenBase",
+	"UIBase",
+	"UIComponent",
+	"UIConstraint",
+	"UIGridStyleLayout",
+	"UILayout",
+	"ValueBase",
+	"WorldRoot",
+]);
+
 const VALUE_TYPE_MAP = new Map<string, string | null>([
 	["Array", "Array<any>"],
 	["BinaryString", null],
@@ -339,12 +395,12 @@ function safeReturnType(valueType: string | undefined | null) {
 	return valueType;
 }
 
-const ARG_NAME_MAP: { [index: string]: string | null } = {
-	["function"]: "callback",
-	["debugger"]: "debug",
-	["old"]: "oldValue",
-	["new"]: "newValue",
-};
+const ARG_NAME_MAP = new Map([
+	["function", "callback"],
+	["debugger", "debug"],
+	["old", "oldValue"],
+	["new", "newValue"],
+]);
 
 function safeArgName(name: string | undefined | null) {
 	if (name === null) {
@@ -353,22 +409,16 @@ function safeArgName(name: string | undefined | null) {
 	if (name === undefined) {
 		throw new Error("Undefined name!");
 	}
-	const mappedType = ARG_NAME_MAP[name];
-	if (mappedType !== undefined) {
-		return mappedType;
-	}
-	return name;
+	return ARG_NAME_MAP.get(name) ?? name;
 }
 
-function getSecurity(member: ApiMemberBase) {
-	const security = member.Security || "None";
-	if (typeof security === "string") {
-		return {
-			Read: security,
-			Write: security,
-		};
-	}
-	return security;
+const securityOverride = new Map<string, Map<string, ApiMemberBase["Security"]>>([
+	["StarterGui", new Map([["ShowDevelopmentGui", "PluginSecurity"]])],
+]);
+
+function getSecurity(className: string, member: ApiMemberBase) {
+	const security = securityOverride.get(className)?.get(member.Name) || member.Security || "None";
+	return typeof security === "string" ? { Read: security, Write: security } : security;
 }
 
 function hasTag(member: ApiClass, tag: ClassTag): boolean;
@@ -378,7 +428,7 @@ function hasTag({ Tags }: ApiClass | ApiMemberBase, tag: string) {
 }
 
 function isCreatable(rbxClass: ApiClass) {
-	return !CREATABLE_BLACKLIST.get(rbxClass.Name) && !hasTag(rbxClass, "NotCreatable") && !hasTag(rbxClass, "Service");
+	return !CREATABLE_BLACKLIST.has(rbxClass.Name) && !hasTag(rbxClass, "NotCreatable") && !hasTag(rbxClass, "Service");
 }
 
 function generateArgs(
@@ -779,12 +829,12 @@ export class ClassGenerator extends Generator {
 		super(filePath, metadata);
 	}
 
-	private canRead(member: ApiMemberBase) {
-		return getSecurity(member).Read === this.security;
+	private canRead(className: string, member: ApiMemberBase) {
+		return getSecurity(className, member).Read === this.security;
 	}
 
-	private canWrite(member: ApiMemberBase) {
-		return getSecurity(member).Write === this.security;
+	private canWrite(className: string, member: ApiMemberBase) {
+		return getSecurity(className, member).Write === this.security;
 	}
 
 	private getSignature(node?: ts.Node) {
@@ -910,7 +960,7 @@ export class ClassGenerator extends Generator {
 					? wikiDescription
 					: this.metadata.getPropertyDescription(className, name);
 			const surelyDefined = rbxProperty.ValueType.Category !== "Class";
-			const prefix = this.canWrite(rbxProperty) && !hasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
+			const prefix = this.canWrite(className, rbxProperty) && !hasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
 
 			if (!this.writeSignatures(rbxProperty, tsImplInterface, description)) {
 				this.write(`${prefix}${safeName(name)}${surelyDefined ? "" : "?"}: ${valueType};`);
@@ -958,7 +1008,7 @@ export class ClassGenerator extends Generator {
 
 		return (
 			((this.security === "PluginSecurity" && PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) ||
-				this.canRead(rbxMember)) &&
+				this.canRead(rbxClass.Name, rbxMember)) &&
 			!hasTag(rbxMember, "Deprecated") &&
 			!hasTag(rbxMember, "NotScriptable")
 		);
@@ -978,7 +1028,16 @@ export class ClassGenerator extends Generator {
 		const tsImplInterface = tsFile.getInterface(className);
 		let extendsStr = "";
 		if (rbxClass.Superclass !== ROOT_CLASS_NAME) {
-			extendsStr = `extends ${this.generateClassName(rbxClass.Superclass)} `;
+			const superClassName = this.generateClassName(rbxClass.Superclass);
+			extendsStr = `extends ${superClassName} `;
+			if (tsImplInterface) {
+				const originalExtends = tsImplInterface.getExtends()[0]?.getText();
+				if (!originalExtends?.startsWith(superClassName)) {
+					console.warn(
+						`\`${rbxClass.Name}\` had its parent class changed to \`${superClassName}\`, was \`${originalExtends}\``,
+					);
+				}
+			}
 		}
 
 		const members = rbxClass.Members.filter(rbxMember => this.shouldGenerateMember(rbxClass, rbxMember));
@@ -1000,15 +1059,31 @@ export class ClassGenerator extends Generator {
 				}
 			}
 
-			this.write(`interface ${className} ${extendsStr}{`);
+			let declarationString = "";
+
+			if (tsImplInterface) {
+				const children = tsImplInterface.getChildren();
+				declarationString =
+					children
+						.slice(
+							1 + children.findIndex(child => child.getKindName() === "InterfaceKeyword"),
+							children.findIndex(child => child.getKindName() === "OpenBraceToken"),
+						)
+						.reduce((p, c) => {
+							return p + c.getFullText();
+						}, "interface") + " {";
+			}
+
+			this.write(declarationString || `interface ${className} ${extendsStr}{`);
 			this.pushIndent();
 
 			if (noSecurity) {
 				this.write(
-					`/** A read-only string representing the class this Instance belongs to. \`classIs()\` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */`,
+					`/** The string representing the class this Instance belongs to. \`classIs()\` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */`,
 				);
 				this.write(
 					`readonly ClassName: ${[className, ...this.subclassify(className)]
+						.filter(className => !ABSTRACT_CLASSES.has(className))
 						.map(subName => `"${subName}"`)
 						.join(" | ")};`,
 				);
@@ -1125,7 +1200,7 @@ export class ClassGenerator extends Generator {
 			hasTag(rbxClass, "Service") ? 2 : isCreatable(rbxClass) ? 0 : 1,
 		);
 
-		const byName = (a: ApiClass, b: ApiClass) => (a.Name < b.Name ? -1 : 1);
+		const byName = (a: ApiClass, b: ApiClass) => (a.Name.toLowerCase() < b.Name.toLowerCase() ? -1 : 1);
 
 		if (0 < Services.length) this.generateInstanceInterface("Services", Services.sort(byName));
 		if (0 < CreatableInstances.length)

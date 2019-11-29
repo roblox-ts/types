@@ -698,10 +698,10 @@ interface Studio extends Instance {
 }
 
 /** @rbxts server */
-interface ServerScriptService {}
+interface ServerScriptService extends Instance {}
 
 /** @rbxts server */
-interface ServerStorage {}
+interface ServerStorage extends Instance {}
 
 interface StarterGui extends BasePlayerGui {
 	GetCore<T extends keyof GettableCores>(this: StarterGui, parameter: T): GettableCores[T];
@@ -722,7 +722,7 @@ interface Teams extends Instance {
 	GetTeams(this: Teams): Array<Team>;
 }
 
-interface TeleportService {
+interface TeleportService extends Instance {
 	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: ScreenGui, dataTable?: unknown) => void>;
 
 	readonly TeleportInitFailed: RBXScriptSignal<
@@ -836,7 +836,7 @@ interface TextBox extends GuiObject {
 	readonly FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: InputObject) => void>;
 }
 
-interface TweenService {
+interface TweenService extends Instance {
 	Create<T extends Instances[keyof Instances]>(
 		this: TweenService,
 		instance: T,
@@ -846,7 +846,7 @@ interface TweenService {
 }
 
 /** @rbxts client */
-interface UserInputService {
+interface UserInputService extends Instance {
 	readonly InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly InputChanged: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly InputEnded: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
@@ -981,3 +981,14 @@ interface MultipleDocumentInterfaceInstance extends Instance {
 	readonly DataModelSessionEnded: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
 	readonly DataModelSessionStarted: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
 }
+
+interface Pages<T = unknown> extends Instance {
+	GetCurrentPage(this: Pages): Array<T>;
+}
+
+interface DataStorePages extends Pages<{ key: string; value: any }> {}
+
+interface FriendPages
+	extends Pages<{ AvatarFinal: boolean; AvatarUri: string; Id: number; Username: string; IsOnline: boolean }> {}
+
+interface InventoryPages extends Pages<number> {}

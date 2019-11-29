@@ -8,6 +8,8 @@ interface Services {
 	ChangeHistoryService: ChangeHistoryService;
 	CoreGui: CoreGui;
 	KeyframeSequenceProvider: KeyframeSequenceProvider;
+	NetworkClient: NetworkClient;
+	NetworkServer: NetworkServer;
 	NetworkSettings: NetworkSettings;
 	PackageService: PackageService;
 	PluginGuiService: PluginGuiService;
@@ -24,22 +26,26 @@ interface Services {
 }
 
 interface CreatableInstances {
-	DebuggerWatch: DebuggerWatch;
 	PluginAction: PluginAction;
 	RenderingTest: RenderingTest;
 }
 
 interface Instances extends Services, CreatableInstances {
+	ClientReplicator: ClientReplicator;
 	DataModelSession: DataModelSession;
-	DebugSettings: DebugSettings;
 	DebuggerBreakpoint: DebuggerBreakpoint;
 	DebuggerManager: DebuggerManager;
+	DebuggerWatch: DebuggerWatch;
+	DebugSettings: DebugSettings;
 	DockWidgetPluginGui: DockWidgetPluginGui;
+	File: File;
 	GameSettings: GameSettings;
 	GlobalSettings: GlobalSettings;
 	LuaSettings: LuaSettings;
 	MemStorageConnection: MemStorageConnection;
 	MultipleDocumentInterfaceInstance: MultipleDocumentInterfaceInstance;
+	NetworkPeer: NetworkPeer;
+	NetworkReplicator: NetworkReplicator;
 	PhysicsSettings: PhysicsSettings;
 	Plugin: Plugin;
 	PluginDragEvent: PluginDragEvent;
@@ -53,6 +59,7 @@ interface Instances extends Services, CreatableInstances {
 	RunningAverageItemInt: RunningAverageItemInt;
 	RunningAverageTimeIntervalItem: RunningAverageTimeIntervalItem;
 	ScriptDebugger: ScriptDebugger;
+	ServerReplicator: ServerReplicator;
 	StatsItem: StatsItem;
 	StudioTheme: StudioTheme;
 	TotalCountTimeIntervalItem: TotalCountTimeIntervalItem;
@@ -84,7 +91,7 @@ interface Instance {
 }
 
 interface ABTestService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ABTestService";
 	/** [NO DOCUMENTATION] */
 	ClearUserVariations(this: ABTestService): void;
@@ -122,7 +129,7 @@ interface Animator extends Instance {
  * You can use the [StarterGui.SetCoreGuiEnabled](https://developer.roblox.com/api-reference/function/StarterGui/SetCoreGuiEnabled) and [StarterGui.GetCoreGuiEnabled](https://developer.roblox.com/api-reference/function/StarterGui/GetCoreGuiEnabled) methods in a `LocalScript` to enable and disable most elements of the CoreGui. You can also use [PlayerGui.SetTopbarTransparency](https://developer.roblox.com/api-reference/function/PlayerGui/SetTopbarTransparency) to set the transparency of the top bar.
  */
 interface CoreGui extends BasePlayerGui {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "CoreGui";
 	/** [NO DOCUMENTATION] */
 	readonly SelectionImageObject?: GuiObject;
@@ -150,11 +157,30 @@ interface CoreGui extends BasePlayerGui {
 
 interface StarterGui extends BasePlayerGui {
 	ProcessUserInput: boolean;
+	/** This property determines whether [GUI objects](https://developer.roblox.com/api-reference/class/LayerCollector) descending from the `StarterGui` are visible in Studio’s edit mode.
+	 * 
+	 * As this property defaults to true, [ScreenGuis](https://developer.roblox.com/api-reference/class/ScreenGui), [BillboardGuis](https://developer.roblox.com/api-reference/class/BillboardGui) and [SurfaceGuis](https://developer.roblox.com/api-reference/class/SurfaceGui) descending from the `StarterGui` are not hidden.
+	 * 
+	 * Setting this property to false will only affect objects not descending from the `StarterGui`. This means [BillboardGuis](https://developer.roblox.com/api-reference/class/BillboardGui) and [SurfaceGuis](https://developer.roblox.com/api-reference/class/SurfaceGui) descending from the `Workspace` will not be hidden.
+	 * 
+	 * This property has no effect outside of Roblox Studio and is intended as a tool to hide the contents of `StarterGui` whilst working in the 3d world.
+	 * 
+	 * ## Disabling ShowDevelopmentGui by default
+	 * 
+	 * You can set this property to be false by default in new places by saving a `Script` with the following code into your local plugins folder.
+	 * 
+	 * ```lua
+	 * print("StarterGui.ShowDevelopmentGui = false") -- a reminder this plugin is active
+	 * game:GetService("StarterGui").ShowDevelopmentGui = false
+	 * ```
+	 * 
+	 */
+	ShowDevelopmentGui: boolean;
 }
 
 /** The ChangeHistoryService provides a way for plugins to undo and redo changes and to create waypoints when changes are made to the place. */
 interface ChangeHistoryService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ChangeHistoryService";
 	/** Returns whether there are actions that can be redone, and, if there are, returns the last of them. */
 	GetCanRedo(this: ChangeHistoryService): unknown;
@@ -177,7 +203,7 @@ interface ChangeHistoryService extends Instance {
 }
 
 interface DataModelSession extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DataModelSession";
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
@@ -199,7 +225,7 @@ interface DataModelSession extends Instance {
 
 /** The DebugSettings allows you to view diagnostics information regarding Roblox. It is labeled as **Diagnostics** in the Roblox Studio Settings menu. */
 interface DebugSettings extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DebugSettings";
 	/** Describes whether a `DataModel` is actively in memory, as an integer (where 1 = true, and 0 = false).
 	 * 	
@@ -286,7 +312,7 @@ interface DebugSettings extends Instance {
  * This object cannot be created, but it can be retrieved from the `ScriptDebugger` class.
  */
 interface DebuggerBreakpoint extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DebuggerBreakpoint";
 	/** The condition of the debugger breakpoint. */
 	readonly Condition: string;
@@ -313,7 +339,7 @@ interface DebuggerBreakpoint extends Instance {
  * It can be retrieved via the `DebuggerManager()` function, but only from plugins or the command bar.
  */
 interface DebuggerManager extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DebuggerManager";
 	/** Whether the debugger is enabled or disabled.
 	 * 	
@@ -354,13 +380,15 @@ interface DebuggerManager extends Instance {
  * This object cannot be created, but it can be retrieved from the `ScriptDebugger` class.
  */
 interface DebuggerWatch extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DebuggerWatch";
 	/** The expression set for the DebuggerWatch. */
 	readonly Expression: string;
 }
 
 interface File extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "File";
 	/** 
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	
@@ -377,7 +405,7 @@ interface File extends Instance {
 
 /** Various miscellaneous options for in-game. Can be accessed from Roblox Studio's settings menu under the _Game_ tab. */
 interface GameSettings extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "GameSettings";
 	/** Used internally by Roblox to add additional CoreScript loading directories.
 	 * 
@@ -410,8 +438,8 @@ interface GameSettings extends Instance {
 
 /** PluginGui is an abstract class for GUIs that allow the display of [GuiObjects](https://developer.roblox.com/api-reference/class/GuiObject) in various Roblox Studio widgets. As of right now, the only available PluginGui type is `DockWidgetPluginGui`, but there may be more in the future! */
 interface PluginGui extends LayerCollector {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PluginGui" | "DockWidgetPluginGui" | "QWidgetPluginGui";
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "DockWidgetPluginGui" | "QWidgetPluginGui";
 	/** The title that is displayed above the contents of the PluginGui. */
 	readonly Title: string;
 	/** This function binds a function to the [PluginGui’s](https://developer.roblox.com/api-reference/class/PluginGui) close button, overriding the default behavior.
@@ -520,12 +548,12 @@ interface PluginGui extends LayerCollector {
  * See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.
  */
 interface DockWidgetPluginGui extends PluginGui {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DockWidgetPluginGui";
 }
 
 interface QWidgetPluginGui extends PluginGui {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "QWidgetPluginGui";
 }
 
@@ -552,7 +580,7 @@ interface KeyframeSequence extends Instance {
  *  - Fetch the content IDs of animations owned by a particular user.
  */
 interface KeyframeSequenceProvider extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "KeyframeSequenceProvider";
 	GetMemStats(this: KeyframeSequenceProvider): object;
 	/** Generates a temporary asset ID from a `KeyframeSequence` that can be used for localized testing of an animation.
@@ -596,7 +624,7 @@ interface KeyframeSequenceProvider extends Instance {
  * It is labeled as **Lua** in the Roblox Studio Settings menu.
  */
 interface LuaSettings extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "LuaSettings";
 	/** Toggles whether or not script starts are logged in the output.
 	 * 
@@ -631,7 +659,7 @@ interface ModuleScript extends LuaSourceContainer {
 }
 
 interface MemStorageConnection extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "MemStorageConnection";
 	/** [NO DOCUMENTATION] */
 	Disconnect(this: MemStorageConnection): void;
@@ -646,28 +674,62 @@ interface MemStorageConnection extends Instance {
  * For more information on how to use mouse objects, see the `Mouse` page.
  */
 interface PluginMouse extends Mouse {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PluginMouse";
 	/** Fired when Instances are being selected while the mouse is dragging. */
 	readonly DragEnter: RBXScriptSignal<(instances: Array<Instance>) => void>;
 }
 
 interface MultipleDocumentInterfaceInstance extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "MultipleDocumentInterfaceInstance";
 	readonly FocusedDataModelSession?: DataModelSession;
 	readonly DataModelSessionEnded: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
 	readonly DataModelSessionStarted: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
 }
 
+/** The NetworkPeer object is the most basic class of the network objects. */
 interface NetworkPeer extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "NetworkClient" | "NetworkServer";
 	/** Sets the maximum outgoing bandwidth that Roblox can use. */
 	SetOutgoingKBPSLimit(this: NetworkPeer, limit: number): void;
 }
 
+/** This service is responsible for connecting a client to a server. */
+interface NetworkClient extends NetworkPeer {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "NetworkClient";
+	readonly ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: ClientReplicator) => void>;
+}
+
+/** The NetworkServer stores all the `NetworkReplicator` in the game and handles all connections. [NetworkPeer.SetOutgoingKBPSLimit](https://developer.roblox.com/api-reference/function/NetworkPeer/SetOutgoingKBPSLimit) can be used to imitate latency while using _Start Server_. */
+interface NetworkServer extends NetworkPeer {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "NetworkServer";
+}
+
+/** An object which handles the replication of other objects either from the server to the client, or from the client to the server. */
 interface NetworkReplicator extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "ClientReplicator" | "ServerReplicator";
+	CloseConnection(this: NetworkReplicator): void;
+	/** Returns the player that is connected to the NetworkReplicator. */
+	GetPlayer(this: NetworkReplicator): Player;
 	/** Returns a string displaying how many bytes are being sent/received by the replicator, and the current packet-loss. The verbosity level determines how much information is returned in the string (0 = Basic, 1 = Detailed, 2 = Full). */
 	GetRakStatsString(this: NetworkReplicator, verbosityLevel?: number): string;
+}
+
+/** The ClientReplicator is in charge of replicating changes from the server over to the client. It represents the client's connection to a server. */
+interface ClientReplicator extends NetworkReplicator {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "ClientReplicator";
+}
+
+/** The ServerReplicator's job is to replicate changes from other clients and the server over to a certain client. */
+interface ServerReplicator extends NetworkReplicator {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "ServerReplicator";
 }
 
 /** NetworkSettings is a settings class that allow you to debug a lot of features with Roblox's server/client networking.
@@ -675,7 +737,7 @@ interface NetworkReplicator extends Instance {
  * It can be found in Roblox Studio's settings, under the **Network** tab.
  */
 interface NetworkSettings extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "NetworkSettings";
 	/** When set to true, a debug message will be printed to the output in cases where the physics receiver rejects a request that it received.
 	 * 
@@ -1255,13 +1317,13 @@ interface Workspace extends WorldRoot {
 }
 
 interface PackageService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PackageService";
 }
 
 /** The PhysicsSettings is a singleton class, which lets developers view  debugging features in Roblox's physics engine.It can be found under the Physics tab in Roblox Studio's settings menu. */
 interface PhysicsSettings extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PhysicsSettings";
 	/** When set to true, physically simulated objects will stop being simulated if they have little to no motion for a set period of time. */
 	readonly AllowSleep: boolean;
@@ -1437,7 +1499,7 @@ interface Players extends Instance {
  * [articles.Intro to Plugins](https://developer.roblox.com/search#stq=Intro%20to%20Plugins), an introductory article to plugin use and development
  */
 interface Plugin extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Plugin";
 	/** Returns whether the user enabled _Collisions_ in studio under the Model tab. */
 	readonly CollisionEnabled: boolean;
@@ -1609,7 +1671,7 @@ interface Plugin extends Instance {
  * PluginActions must be created using the [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction) function in order to work as expected.
  */
 interface PluginAction extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PluginAction";
 	/** A string that uniquely identifies this action. This string is the key used when saving and loading the action's state in Roblox Studio.
 	 * 	
@@ -1700,7 +1762,7 @@ interface PluginAction extends Instance {
 }
 
 interface PluginDragEvent extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PluginDragEvent";
 	/** 
 	 * Tags: ReadOnly, NotReplicated
@@ -1738,7 +1800,7 @@ interface PluginDragEvent extends Instance {
 
 /** PluginGuiService is a service that stores `PluginGui` objects to be displayed in Roblox Studio. It only allows PluginGuis to be direct children of the service, and PluginGuis are not allowed to be parented anywhere besides the service. */
 interface PluginGuiService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PluginGuiService";
 }
 
@@ -1771,7 +1833,7 @@ interface PluginGuiService extends Instance {
  *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
  */
 interface PluginMenu extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PluginMenu";
 	/** This property determines the icon to be displayed when used as a sub menu. It defaults to an empty string `””`.
 	 * 
@@ -1981,7 +2043,7 @@ interface PluginMenu extends Instance {
  * [1]: https://developer.roblox.com/assets/5c48e228da4c5b970f6efb58/PluginToolbar-light.png
  */
 interface PluginToolbar extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PluginToolbar";
 	CreateButton(
 		this: PluginToolbar,
@@ -2009,7 +2071,7 @@ interface PluginToolbar extends Instance {
  * [1]: https://developer.roblox.com/assets/5c48e310f8a426690c84250e/PluginToolbarButton-light.png
  */
 interface PluginToolbarButton extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PluginToolbarButton";
 	/** 
 	 * Tags: NotReplicated
@@ -2046,7 +2108,7 @@ interface PluginToolbarButton extends Instance {
  * It can be found under the _Rendering_ tab in Roblox Studio's settings menu.
  */
 interface RenderSettings extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RenderSettings";
 	/** Sets the starting quality level of the framerate manager, when [RenderSettings.EnableFRM](https://developer.roblox.com/api-reference/property/RenderSettings/EnableFRM) is set to true. */
 	readonly AutoFRMLevel: number;
@@ -2115,7 +2177,7 @@ interface RenderSettings extends Instance {
  * [1]: https://developer.roblox.com/assets/5b404eddcbdac88b0b7f2e4e/RenderingTest.png
  */
 interface RenderingTest extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RenderingTest";
 	/** The CFrame that the `Camera` will use when this RenderingTest is executed.
 	 * 
@@ -2183,7 +2245,7 @@ interface RenderingTest extends Instance {
 }
 
 interface RobloxPluginGuiService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RobloxPluginGuiService";
 }
 
@@ -2199,7 +2261,7 @@ interface RunService extends Instance {
 
 /** This service controls all `BaseScript` objects. Most of the properties and methods of this service are locked for internal use, however you may use the [ScriptContext.ScriptsDisabled](https://developer.roblox.com/api-reference/property/ScriptContext/ScriptsDisabled) property to disable all scripts from a thread with normal security access. */
 interface ScriptContext extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ScriptContext";
 	/** [NO DOCUMENTATION] *
 	 * Tags: NotReplicated
@@ -2217,7 +2279,7 @@ interface ScriptContext extends Instance {
 
 /** A ScriptDebugger is used to handle the debugging of a specific script. It can be retrieved from the `DebuggerManager`. */
 interface ScriptDebugger extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ScriptDebugger";
 	/** The current line that the script is on. */
 	readonly CurrentLine: number;
@@ -2284,7 +2346,7 @@ interface ScriptDebugger extends Instance {
  * [1]: https://developer.roblox.com/articles/Intro-to-Plugins
  */
 interface Selection extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Selection";
 	/** Returns an array of currently selected `Instance`s in Roblox Studio.
 	 * 
@@ -2539,7 +2601,7 @@ interface DataModel extends ServiceProvider {
  * * `Studio`
  */
 interface GlobalSettings extends GenericSettings {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "GlobalSettings";
 	/** Returns the value of an FFlag if it exists. */
 	GetFFlag(this: GlobalSettings, name: string): boolean;
@@ -2552,8 +2614,8 @@ interface GlobalSettings extends GenericSettings {
  * It cannot be created using `Instance.new`, but its value can be read by plugins. They can be found stored inside of the `Stats` service.
  */
 interface StatsItem extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StatsItem" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "TotalCountTimeIntervalItem";
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "TotalCountTimeIntervalItem";
 	/** Returns the StatsItem's value. */
 	GetValue(this: StatsItem): number;
 	/** Returns the StatsItem's value as a formatted string. */
@@ -2562,7 +2624,7 @@ interface StatsItem extends Instance {
 
 /** A special type of `StatsItem` which measures the runtime average of an internal **double** value. */
 interface RunningAverageItemDouble extends StatsItem {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RunningAverageItemDouble";
 }
 
@@ -2571,7 +2633,7 @@ interface RunningAverageItemDouble extends StatsItem {
  * As of right now, this StatsItem goes unused.
  */
 interface RunningAverageItemInt extends StatsItem {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RunningAverageItemInt";
 }
 
@@ -2580,7 +2642,7 @@ interface RunningAverageItemInt extends StatsItem {
  * As of right now, this StatsItem goes unused.
  */
 interface RunningAverageTimeIntervalItem extends StatsItem {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RunningAverageTimeIntervalItem";
 }
 
@@ -2589,13 +2651,13 @@ interface RunningAverageTimeIntervalItem extends StatsItem {
  * As of right now, this StatsItem goes unused.
  */
 interface TotalCountTimeIntervalItem extends StatsItem {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "TotalCountTimeIntervalItem";
 }
 
 /** The Studio object is a settings object that is exclusive to Roblox Studio. It can be found in Roblox Studio's settings under the Studio tab. */
 interface Studio extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Studio";
 	/** If set to true, Roblox Studio will attempt to transfer script changes that were made during a Play Solo session to the opened place. */
 	readonly ["Always Save Script Changes"]: boolean;
@@ -2726,7 +2788,6 @@ interface Studio extends Instance {
 	readonly ["Show Plugin GUI Service in Explorer"]: boolean;
 	/** If set to true, certain internal error messages regarding the QT framework that Roblox uses will be shown in the output. */
 	readonly ["Show QT warnings in output"]: boolean;
-	readonly ["Show Roblox Plugin GUI Service in Explorer"]: boolean;
 	readonly ["Show plus button on hover in Explorer"]: boolean;
 	readonly ["Skip Closing Brackets and Quotes"]: boolean;
 	/** Specifies the color of strings in the script editor. */
@@ -2774,7 +2835,7 @@ interface Studio extends Instance {
 }
 
 interface StudioData extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "StudioData";
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden
@@ -2791,7 +2852,7 @@ interface StudioData extends Instance {
 }
 
 interface StudioService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "StudioService";
 	/** 
 	 * Tags: ReadOnly, NotReplicated
@@ -2902,7 +2963,7 @@ interface StudioService extends Instance {
 }
 
 interface StudioTheme extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "StudioTheme";
 	/** The **GetColor()** function returns the [DataType.Color3](https://developer.roblox.com/search#stq=Color3) corresponding to the arguments provided. For instance, if you would like to get the [DataType.Color3](https://developer.roblox.com/search#stq=Color3) of the Studio "MainButton" when it's **disabled**, you can use the following code:
 	 * 
@@ -2939,7 +3000,7 @@ interface StudioTheme extends Instance {
  * Can be found in Roblox Studio's settings with the name *Task Scheduler*.
  */
 interface TaskScheduler extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "TaskScheduler";
 	/** The average time divided by the average interval of the duty cycle.
 	 * 	
@@ -3056,7 +3117,7 @@ interface TaskScheduler extends Instance {
  * * [Speeding Roblox Development with Continuous Testing](http://blog.roblox.com/2012/04/speeding-roblox-development-with-continuous-testing)
  */
 interface TestService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "TestService";
 	/** If set to true, the game will start running when the TestService's [TestService.Run](https://developer.roblox.com/api-reference/function/TestService/Run) method is called. */
 	readonly AutoRuns: boolean;
@@ -3161,7 +3222,7 @@ interface TestService extends Instance {
 }
 
 interface VersionControlService extends Instance {
-	/** A read-only string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "VersionControlService";
 }
 

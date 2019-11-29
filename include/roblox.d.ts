@@ -202,7 +202,7 @@ interface LocalizationEntry {
 	Source: string;
 	Context: string;
 	Example: string;
-	Values: { [index: string]: string };
+	Values: Map<string, string>;
 }
 
 interface LogInfo {
