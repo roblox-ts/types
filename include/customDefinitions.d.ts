@@ -412,6 +412,7 @@ interface LocalizationService extends Instance {
 interface LocalizationTable extends Instance {
 	GetEntries(this: LocalizationTable): Array<LocalizationEntry>;
 	GetTranslator(this: LocalizationTable, localeId: string): Translator;
+	SetEntries(this: LocalizationTable, entries: Array<LocalizationEntry>): void;
 }
 
 interface LogService extends Instance {
@@ -783,7 +784,7 @@ interface TeleportService extends Instance {
 		placeId: number,
 		spawnName: string,
 		player?: Player,
-		teleportData?: any,
+		teleportData?: TeleportData,
 		customLoadingScreen?: ScreenGui,
 	): void;
 }

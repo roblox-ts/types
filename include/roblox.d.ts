@@ -1506,7 +1506,7 @@ interface SettableCores {
 	AvatarContextMenuEnabled: boolean;
 	AddAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
 	RemoveAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
-	CoreGuiChatConnections: { [name: string]: BindableEvent | BindableFunction };
+	CoreGuiChatConnections: { [name: string]: BindableEvent | BindableFunction } | Map<string, BindableEvent | BindableFunction>;
 }
 
 // type

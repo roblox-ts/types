@@ -10890,7 +10890,7 @@ interface LocalizationTable extends Instance {
 	 * 
 	 * The entries parameter should be an array of dictionaries in the same format as the one returned from the [LocalizationTable.GetEntries](https://developer.roblox.com/api-reference/function/LocalizationTable/GetEntries) function.
 	 */
-	SetEntries(this: LocalizationTable, entries?: any): void;
+	SetEntries(this: LocalizationTable, entries: Array<LocalizationEntry>): void;
 	/** Sets the **Context** field of a LocalizationTable entry to _newContext_, using the specified _key_, _source_, and _context_ to narrow down the entry that will have this change applied. */
 	SetEntryContext(this: LocalizationTable, key: string, source: string, context: string, newContext: string): void;
 	/** Sets the **Example** field of a LocalizationTable entry to _example_, using the specified _key_, _source_, and _context_ to narrow down the entry that will have this change applied. */
@@ -17772,7 +17772,7 @@ interface TeleportService extends Instance {
 		placeId: number,
 		spawnName: string,
 		player?: Player,
-		teleportData?: any,
+		teleportData?: TeleportData,
 		customLoadingScreen?: ScreenGui,
 	): void;
 	/** This function returns the [DataModel.PlaceId](https://developer.roblox.com/api-reference/property/DataModel/PlaceId) and [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) of the server the user with the given [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId) is in provided it is in the same game as the current place.
