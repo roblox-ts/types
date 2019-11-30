@@ -61,6 +61,9 @@ type GetWritableProperties<T extends Instance> = {
 		: never;
 }[keyof T];
 
+// type GetProperties
+// type GetWritableProperties
+
 /** Given an Instance `T`, returns an object which can hold the writable properties of T. Good to use with `Object.assign`.
  * @example
  * const props: PartialProperties<Part> = {
@@ -1506,7 +1509,9 @@ interface SettableCores {
 	AvatarContextMenuEnabled: boolean;
 	AddAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
 	RemoveAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
-	CoreGuiChatConnections: { [name: string]: BindableEvent | BindableFunction } | Map<string, BindableEvent | BindableFunction>;
+	CoreGuiChatConnections:
+		| { [name: string]: BindableEvent | BindableFunction }
+		| Map<string, BindableEvent | BindableFunction>;
 }
 
 // type

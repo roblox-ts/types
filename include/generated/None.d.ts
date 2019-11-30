@@ -228,8 +228,7 @@ interface CreatableInstances {
 	WorldModel: WorldModel;
 }
 
-interface Instances extends Services, CreatableInstances {
-	AnimationTrack: AnimationTrack;
+interface AbstractInstances {
 	BackpackItem: BackpackItem;
 	BasePart: BasePart;
 	BasePlayerGui: BasePlayerGui;
@@ -240,17 +239,12 @@ interface Instances extends Services, CreatableInstances {
 	Clothing: Clothing;
 	Constraint: Constraint;
 	Controller: Controller;
-	DataModel: DataModel;
 	DataModelMesh: DataModelMesh;
-	DataStorePages: DataStorePages;
 	DynamicRotate: DynamicRotate;
-	EmotesPages: EmotesPages;
 	FaceInstance: FaceInstance;
 	Feature: Feature;
 	FormFactorPart: FormFactorPart;
-	FriendPages: FriendPages;
 	GenericSettings: GenericSettings;
-	GlobalDataStore: GlobalDataStore;
 	GuiBase: GuiBase;
 	GuiBase2d: GuiBase2d;
 	GuiBase3d: GuiBase3d;
@@ -259,27 +253,14 @@ interface Instances extends Services, CreatableInstances {
 	GuiObject: GuiObject;
 	HandleAdornment: HandleAdornment;
 	HandlesBase: HandlesBase;
-	InputObject: InputObject;
 	Instance: Instance;
-	InventoryPages: InventoryPages;
 	JointInstance: JointInstance;
 	LayerCollector: LayerCollector;
 	Light: Light;
 	LuaSourceContainer: LuaSourceContainer;
 	ManualSurfaceJointInstance: ManualSurfaceJointInstance;
-	Mouse: Mouse;
-	NetworkMarker: NetworkMarker;
-	OrderedDataStore: OrderedDataStore;
-	PackageLink: PackageLink;
 	Pages: Pages;
-	ParabolaAdornment: ParabolaAdornment;
 	PartAdornment: PartAdornment;
-	Path: Path;
-	Platform: Platform;
-	Player: Player;
-	PlayerGui: PlayerGui;
-	PlayerMouse: PlayerMouse;
-	PlayerScripts: PlayerScripts;
 	PostEffect: PostEffect;
 	PVAdornment: PVAdornment;
 	PVInstance: PVInstance;
@@ -287,13 +268,6 @@ interface Instances extends Services, CreatableInstances {
 	ServiceProvider: ServiceProvider;
 	SlidingBallConstraint: SlidingBallConstraint;
 	SoundEffect: SoundEffect;
-	StandardPages: StandardPages;
-	StarterCharacterScripts: StarterCharacterScripts;
-	StarterPlayerScripts: StarterPlayerScripts;
-	Terrain: Terrain;
-	TextFilterResult: TextFilterResult;
-	TouchTransmitter: TouchTransmitter;
-	Translator: Translator;
 	TriangleMeshPart: TriangleMeshPart;
 	TweenBase: TweenBase;
 	UIBase: UIBase;
@@ -301,9 +275,38 @@ interface Instances extends Services, CreatableInstances {
 	UIConstraint: UIConstraint;
 	UIGridStyleLayout: UIGridStyleLayout;
 	UILayout: UILayout;
-	UserSettings: UserSettings;
 	ValueBase: ValueBase;
 	WorldRoot: WorldRoot;
+}
+
+interface Instances extends Services, CreatableInstances, AbstractInstances {
+	AnimationTrack: AnimationTrack;
+	DataModel: DataModel;
+	DataStorePages: DataStorePages;
+	EmotesPages: EmotesPages;
+	FriendPages: FriendPages;
+	GlobalDataStore: GlobalDataStore;
+	InputObject: InputObject;
+	InventoryPages: InventoryPages;
+	Mouse: Mouse;
+	NetworkMarker: NetworkMarker;
+	OrderedDataStore: OrderedDataStore;
+	PackageLink: PackageLink;
+	ParabolaAdornment: ParabolaAdornment;
+	Path: Path;
+	Platform: Platform;
+	Player: Player;
+	PlayerGui: PlayerGui;
+	PlayerMouse: PlayerMouse;
+	PlayerScripts: PlayerScripts;
+	StandardPages: StandardPages;
+	StarterCharacterScripts: StarterCharacterScripts;
+	StarterPlayerScripts: StarterPlayerScripts;
+	Terrain: Terrain;
+	TextFilterResult: TextFilterResult;
+	TouchTransmitter: TouchTransmitter;
+	Translator: Translator;
+	UserSettings: UserSettings;
 }
 
 // GENERATED ROBLOX INSTANCE CLASSES
@@ -386,7 +389,7 @@ interface Instance {
 	 * 
 	 * However, if you were parenting your parts to a `Model` whose parent hasn't been set yet, then setting the parent first would not matter as the model would not have replicated yet.
 	 */
-	Parent?: Instance;
+	Parent: Instance | undefined;
 	/** This function destroys all of an `Instance`'s children.
 	 * 
 	 * As [Instance.Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy) also calls itself on the children of an object it is used on, this function will destroy all descendants.
@@ -1046,7 +1049,7 @@ interface AnimationTrack extends Instance {
 	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
-	readonly Animation?: Animation;
+	readonly Animation: Animation | undefined;
 	/** A read only property that returns true when the `AnimationTrack` is playing.
 	 * 
 	 * This property can be used by developers to check if an animation is already playing before playing it (as that would cause it to restart). If a developer wishes to obtain all playing `AnimationTrack`s on a `Humanoid` or `AnimationController` they should use [Humanoid.GetPlayingAnimationTracks](https://developer.roblox.com/api-reference/function/Humanoid/GetPlayingAnimationTracks)
@@ -1701,7 +1704,7 @@ interface PlayerGui extends BasePlayerGui {
 	/** Sets the preferred screen orientation mode for this user, if the user is on a mobile device. */
 	ScreenOrientation: Enum.ScreenOrientation;
 	/** Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject. */
-	SelectionImageObject?: GuiObject;
+	SelectionImageObject: GuiObject | undefined;
 	/** Returns the transparency of the Topbar. */
 	GetTopbarTransparency(this: PlayerGui): number;
 	/** SetTopbarTransparency sets the transparency of the Topbar CoreGui. A value of 0 is completely opaque, and a value of 1 is completely transparent. Values outside of the range [0, 1] are clamped. The default transparency of the topbar is 0.5. The current transparency can be retrieved using the similarly-named [GetTopbarTransparency](https://developer.roblox.com/api-reference/function/PlayerGui/GetTopbarTransparency) function.
@@ -2183,7 +2186,7 @@ interface Beam extends Instance {
 	 * 
 	 * [1]: https://en.wikipedia.org/wiki/B%C3%A9zier_curve
 	 */
-	Attachment0?: Attachment;
+	Attachment0: Attachment | undefined;
 	/** The `Attachment` the `Beam` ends at.
 	 * 
 	 * A `Beam`'s Attachment1 is the fourth and final control point on the `Beam`'s [cubic Bézier curve][1]. The orientation of Attachment1, alongside the `Beam`'s [Beam.CurveSize1](https://developer.roblox.com/api-reference/property/Beam/CurveSize1) property, determine the position of the third control point.
@@ -2194,7 +2197,7 @@ interface Beam extends Instance {
 	 * 
 	 * [1]: https://en.wikipedia.org/wiki/B%C3%A9zier_curve
 	 */
-	Attachment1?: Attachment;
+	Attachment1: Attachment | undefined;
 	/** Determines the color of the `Beam`.
 	 * 
 	 * If the `Beam`'s [Beam.Texture](https://developer.roblox.com/api-reference/property/Beam/Texture) is set, this color will be applied to the `Beam`'s texture. If no [Beam.Texture](https://developer.roblox.com/api-reference/property/Beam/Texture) has been set then the `Beam` will appear as a solid bar colored in accordance with this property.
@@ -2788,7 +2791,7 @@ interface RocketPropulsion extends BodyMover {
 	/** The MaxTorque property determines the upper limit on the amount of torque that may be exerted in order to rotate the part towards the [Target](https://developer.roblox.com/api-reference/property/RocketPropulsion/Target). It functions similarly to [BodyGyro.MaxTorque](https://developer.roblox.com/api-reference/property/BodyGyro/MaxTorque). */
 	MaxTorque: Vector3;
 	/** The Target property determines the object towards which the `RocketPropulsion` will exert force/torque. If set to `nil`, the the [TargetOffset](https://developer.roblox.com/api-reference/property/RocketPropulsion/TargetOffset) will be used instead. */
-	Target?: BasePart;
+	Target: BasePart | undefined;
 	/** The TargetOffset property determines the world offset from the [Target](https://developer.roblox.com/api-reference/property/RocketPropulsion/Target). Basically, it makes the `RocketPropulsion` behave as if the target were really offset by this property. It is especially useful when Target is set to nil, since this property then acts as the target position. */
 	TargetOffset: Vector3;
 	/** The TargetRadius property determines the maximum distance from the [RocketPropulsion.Target](https://developer.roblox.com/api-reference/property/RocketPropulsion/Target) the part must be in order for the [RocketPropulsion.ReachedTarget](https://developer.roblox.com/api-reference/event/RocketPropulsion/ReachedTarget) event to be fired. It does not affect the exerted forces in any way. */
@@ -3868,9 +3871,9 @@ interface Constraint extends Instance {
 	 */
 	readonly Active: boolean;
 	/** The `Attachment` that is connected to [Constraint.Attachment1](https://developer.roblox.com/api-reference/property/Constraint/Attachment1) */
-	Attachment0?: Attachment;
+	Attachment0: Attachment | undefined;
 	/** The `Attachment` that is connected to [Constraint.Attachment0](https://developer.roblox.com/api-reference/property/Constraint/Attachment0) */
-	Attachment1?: Attachment;
+	Attachment1: Attachment | undefined;
 	/** The color of the constraint. */
 	Color: BrickColor;
 	/** Toggles whether or not this Constraint is enabled. */
@@ -5999,7 +6002,7 @@ interface GuiBase2d extends GuiBase {
 	 * 
 	 * If there is no translation available in the referenced table it will look for a translation in the parent of that table, if it is also a LocalizationTable, and so on.
 	 */
-	RootLocalizationTable?: LocalizationTable;
+	RootLocalizationTable: LocalizationTable | undefined;
 }
 
 /** GuiObject is an abstract class (much like `BasePart`) for a 2D user interface object. It defines all the properties relating to the display of a graphical user interface (GUI) object such as [GuiObject.Size](https://developer.roblox.com/api-reference/property/GuiObject/Size) and [GuiObject.Position](https://developer.roblox.com/api-reference/property/GuiObject/Position). It also has some useful read-only properties like [GuiObject.AbsolutePosition](https://developer.roblox.com/search#stq=AbsolutePosition), [GuiObject.AbsoluteSize](https://developer.roblox.com/search#stq=AbsoluteSize), and [GuiObject.AbsoluteRotation](https://developer.roblox.com/search#stq=AbsoluteRotation). It should be noted that `GuiObject` can have negative sizes and render normally, though [GuiObject.AnchorPoint](https://developer.roblox.com/api-reference/property/GuiObject/AnchorPoint) ought to be used to better control rendering.
@@ -6093,7 +6096,7 @@ interface GuiObject extends GuiBase2d {
 	 * 
 	 *  - [GuiObject.NextSelectionRight](https://developer.roblox.com/api-reference/property/GuiObject/NextSelectionRight)
 	 */
-	NextSelectionDown?: GuiObject;
+	NextSelectionDown: GuiObject | undefined;
 	/** This property sets the [GUI](https://developer.roblox.com/api-reference/class/GuiObject) selected when the user moves the Gamepad selector to the left. If this property is left blank, the moving the Gamepad left will not change which selected GUI.
 	 * 
 	 * Moving the Gamepad selector left sets the [GuiService.SelectedObject](https://developer.roblox.com/api-reference/property/GuiService/SelectedObject) to this object unless the GUI is not [Selectable](https://developer.roblox.com/api-reference/property/GuiObject/Selectable). If the specified GUI is not selectable, it will not be selected when the gamepad selected moves upward.
@@ -6108,7 +6111,7 @@ interface GuiObject extends GuiBase2d {
 	 * 
 	 *  - [GuiObject.NextSelectionRight](https://developer.roblox.com/api-reference/property/GuiObject/NextSelectionRight)
 	 */
-	NextSelectionLeft?: GuiObject;
+	NextSelectionLeft: GuiObject | undefined;
 	/** This property sets the [GUI](https://developer.roblox.com/api-reference/class/GuiObject) selected when the user moves the Gamepad selector to the right. If this property is left blank, the moving the Gamepad right will not change which selected GUI.
 	 * 
 	 * Moving the Gamepad selector right sets the [GuiService.SelectedObject](https://developer.roblox.com/api-reference/property/GuiService/SelectedObject) to this object unless the GUI is not [Selectable](https://developer.roblox.com/api-reference/property/GuiObject/Selectable). If the GUI is not selectable, it will not be selected when the gamepad selected moves right.
@@ -6123,7 +6126,7 @@ interface GuiObject extends GuiBase2d {
 	 * 
 	 *  - [GuiObject.NextSelectionLeft](https://developer.roblox.com/api-reference/property/GuiObject/NextSelectionLeft)
 	 */
-	NextSelectionRight?: GuiObject;
+	NextSelectionRight: GuiObject | undefined;
 	/** This property sets the [GUI](https://developer.roblox.com/api-reference/class/GuiObject) selected when the user moves the Gamepad selector upward. If this property is left blank, the moving the Gamepad upward will not change the selected GUI.
 	 * 
 	 * Moving the Gamepad selector upward sets the [GuiService.SelectedObject](https://developer.roblox.com/api-reference/property/GuiService/SelectedObject) to this object unless the GUI is not [Selectable](https://developer.roblox.com/api-reference/property/GuiObject/Selectable). If the specified GUI is not selectable, it will not be selected when the gamepad selected moves upward.
@@ -6138,7 +6141,7 @@ interface GuiObject extends GuiBase2d {
 	 * 
 	 *  - [GuiObject.NextSelectionRight](https://developer.roblox.com/api-reference/property/GuiObject/NextSelectionRight)
 	 */
-	NextSelectionUp?: GuiObject;
+	NextSelectionUp: GuiObject | undefined;
 	/** This property determines a [GUI's](https://developer.roblox.com/api-reference/class/GuiObject) pixel and scalar size using a `UDim2`. Its value can be expressed as `UDim2.new(ScalarX, PixelX, ScalarY, PixelY)` or `({ScalarX, PixelX}, {ScalarY, PixelY})`. Position is centered around a GUI's [GuiObject.AnchorPoint](https://developer.roblox.com/api-reference/property/GuiObject/AnchorPoint).
 	 * 
 	 * An element’s position can also be set by modifying both its scalar and pixel positions at the same time. For instance, tits position can be set to `({0.25, 100}, {0.25, 100})`.
@@ -6181,7 +6184,7 @@ interface GuiObject extends GuiBase2d {
 	 * 
 	 * [3]: https://developer.roblox.com/assets/5b9b17dd1a346e537cf02152/Screen_Shot_2018-09-13_at_9.53.54_PM.png
 	 */
-	SelectionImageObject?: GuiObject;
+	SelectionImageObject: GuiObject | undefined;
 	/** This property determines a [GUI's](https://developer.roblox.com/api-reference/class/GuiObject) scalar and pixel size using a `UDim2`. Its value can be expressed as `UDim2.new(ScalarX, PixelX, ScalarY, PixelY)` or `({ScalarX, PixelX}, {ScalarY, PixelY})`.
 	 * 
 	 * The scalar size is relative to the scalar size of parent GUI elements, if any. For example, if the GUI's scalar size is `UDim2.new(0.5, 0, 0.5, 0) and it is not the descendant of a GUI, then it will occupy half of the screen horizontally and vertically. However, if the GUI is the child of a GUI with a scalar size of `UDim2.new(0.5, 0, 0.5, 0), then the GUI's scalar size will render to be half the scalar size of its parent both horizontally and vertically and will occupy a quarter of the screen in both dimensions.
@@ -7399,7 +7402,7 @@ interface ViewportFrame extends GuiObject {
 	 *
 	 * Tags: NotReplicated
 	 */
-	CurrentCamera?: Camera;
+	CurrentCamera: Camera | undefined;
 	/** This property determines how a rendered image will be colorized. It allows you to change the image color without directly modifying the rendered object.The default colorization value is [DataType.Color3|Color3.new(1,1,1) (white). When set to white no colorization occurs.
 	 * 
 	 * It functions similarly to ](https://developer.roblox.com/search#stq=Color3|Color3.new(1,1,1)%20(white).%20When%20set%20to%20white%20no%20colorization%20occurs.%20%20It%20functions%20similarly%20to%20)ImageLabel/ImageColor3` and [Decal.Color3](https://developer.roblox.com/api-reference/property/Decal/Color3)except that it is applied to the rendered image.
@@ -7611,7 +7614,7 @@ interface FloorWire extends GuiBase3d {
 	/** A decimal number between 0 and 1, through which you can control how far all of the decals are along the wire. */
 	CycleOffset: number;
 	/** The object that the FloorWire travels from. */
-	From?: BasePart;
+	From: BasePart | undefined;
 	/** The number of studs between each FloorWire segment. */
 	StudsBetweenTextures: number;
 	/** Sets the texture to be displayed on the FloorWire. */
@@ -7619,7 +7622,7 @@ interface FloorWire extends GuiBase3d {
 	/** Sets the size of the texture used with the FloorWire. */
 	TextureSize: Vector2;
 	/** The object that the FloorWire travels to. */
-	To?: BasePart;
+	To: BasePart | undefined;
 	/** The speed that the textures flow along the wire. */
 	Velocity: number;
 	/** The radius of the wire. */
@@ -7631,7 +7634,7 @@ interface PVAdornment extends GuiBase3d {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment";
 	/** The [PVInstance](https://developer.roblox.com/api-reference/class/PVInstance) the PVAdornment is attached to. An adornment will stay positioned and rotated relative to its adornee, even if the adornee moves. */
-	Adornee?: PVInstance;
+	Adornee: PVInstance | undefined;
 }
 
 /** **Note:** For handles to be interactive, they must be parented to a player's `PlayerGui` or the `CoreGui`.**HandleAdornment** is an abstract class inherited by 3D handle adornments. */
@@ -7779,7 +7782,7 @@ interface PartAdornment extends GuiBase3d {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "SurfaceSelection" | "ArcHandles" | "Handles";
 	/** Sets the object to adorn to. */
-	Adornee?: BasePart;
+	Adornee: BasePart | undefined;
 }
 
 /** An abstract class for Handle objects, such as `/ArcHandles` and `/Handles`. */
@@ -7845,7 +7848,7 @@ interface SelectionLasso extends GuiBase3d {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "SelectionPartLasso" | "SelectionPointLasso";
 	/** The Humanoid that the Lasso belongs to, and will come from. */
-	Humanoid?: Humanoid;
+	Humanoid: Humanoid | undefined;
 }
 
 /** An instance used to display a "lasso" between a `Humanoid` Torso and a `BasePart`. It should be noted that the [GuiBase3d.Transparency](https://developer.roblox.com/api-reference/property/GuiBase3d/Transparency) property doesn't currently work. */
@@ -7853,7 +7856,7 @@ interface SelectionPartLasso extends SelectionLasso {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "SelectionPartLasso";
 	/** Sets the target of the lasso object. */
-	Part?: BasePart;
+	Part: BasePart | undefined;
 }
 
 /** A 3D GUI object which displays a lasso between the defined Humanoid and a given Vector3 point. */
@@ -7881,7 +7884,7 @@ interface GuiService extends Instance {
 	/** Status of the Roblox escape menu CoreGui. Returns true if the menu is open, false if not. */
 	readonly MenuIsOpen: boolean;
 	/** Sets the [GuiObject](https://developer.roblox.com/api-reference/class/GuiObject) currently being focused on by the GUI Navigator (used for Gamepads). This may reset to nil if the object is off-screen. */
-	SelectedObject?: GuiObject;
+	SelectedObject: GuiObject | undefined;
 	/** Creates a gui selection group where gamepad gui navigation will only consider selectable gui objects that are within the group (children of selectionParent).
 	 * 
 	 * A use case is you have a menu pop open, but there are other selectable objects on the screen (maybe from previous menus), but you want to the user to only be able to select gui objects in the new menu.Creates a gui selection group where gamepad gui navigation will only consider selectable gui objects that are within the group (children of selectionParent).
@@ -8444,14 +8447,14 @@ interface Humanoid extends Instance {
 	 * 
 	 * [1]: https://developer.roblox.com/assets/blt477f5d6ada5478e2/HumanoidRootPart.gif
 	 */
-	readonly RootPart?: BasePart;
+	readonly RootPart: BasePart | undefined;
 	/** ![A humanoid sitting on a Seat][1]
 	 * 
 	 * SeatPart is a reference to the seat that a humanoid is currently sitting in, if any. The value of this property can be either a Seat, or a VehicleSeat. It will be nil if the Humanoid is not currently sitting in a seat.
 	 * 
 	 * [1]: https://developer.roblox.com/assets/blt8e6f26110beea0c1/SeatPart.png
 	 */
-	readonly SeatPart?: BasePart;
+	readonly SeatPart: BasePart | undefined;
 	/** ![A humanoid sitting on a Seat.][1]
 	 * 
 	 * The Sit property is a boolean that indicates whether the `Humanoid` is currently sitting. [Humanoids](https://developer.roblox.com/api-reference/class/Humanoid) can be forced into a sitting state by setting this property's value to true. If the `Humanoid` isn't attached to a seat while in its sitting state, it will trip over with no collision in its legs. A `Humanoid` can escape from the sitting state by jumping.
@@ -8506,7 +8509,7 @@ interface Humanoid extends Instance {
 	 * 
 	 * [1]: https://developer.roblox.com/assets/bltc76671f1665d7da0/WalkToPart.gif
 	 */
-	WalkToPart?: BasePart;
+	WalkToPart: BasePart | undefined;
 	/** ![A humanoid attempting to reach the goal specified using WalkToPoint and WalkToPart][1]
 	 * 
 	 * WalkToPoint describes the 3D position in space that a humanoid is trying to reach, after having been prompted to do so by the
@@ -9888,7 +9891,7 @@ interface VelocityMotor extends JointInstance {
 	/** The desired angle to be reached. The motor will attempt to reach this angle. */
 	DesiredAngle: number;
 	/** The `Hole` linked to this VelocityMotor. */
-	Hole?: Hole;
+	Hole: Hole | undefined;
 	/** The maximum amount of velocity able to be reached. */
 	MaxVelocity: number;
 }
@@ -11613,7 +11616,7 @@ interface Mouse extends Instance {
 	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
-	readonly Target?: BasePart;
+	readonly Target: BasePart | undefined;
 	/** This property determines an object to be ignored by the mouse when calculating [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit) and [Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target). The descendants of the object are also ignored, so it is possible to ignore multiple objects so long as they are a descendant of the object to which this property is set. This property is useful when filtering models containing special effects or decorations that should not affect [Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit) or [Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target).
 	 * 
 	 * This property can be set to any `Instance` or nil, for example:
@@ -11632,7 +11635,7 @@ interface Mouse extends Instance {
 	 * 
 	 * The [Character](https://developer.roblox.com/api-reference/property/Player/Character) of the [Players.LocalPlayer](https://developer.roblox.com/api-reference/property/Players/LocalPlayer) is ignored by the mouse automatically.
 	 */
-	TargetFilter?: Instance;
+	TargetFilter: Instance | undefined;
 	/** This property indicates the [Enum.NormalId](https://developer.roblox.com/search#stq=NormalId) of the `BasePart` surface at which the mouse is pointing. This property is derived from the world position of mouse ([Mouse.Hit](https://developer.roblox.com/api-reference/property/Mouse/Hit)) and the part toward which the mouse is pointing ([Mouse.Target](https://developer.roblox.com/api-reference/property/Mouse/Target)).
 	 * 
 	 * This property isn't meaningful when the mouse is not pointing at a part, for example when the mouse is pointing at the sky. At the moment, this property is set to 'Right' under these circumstances. Before using this property, check that the mouse's target is not nil.
@@ -12016,9 +12019,9 @@ interface NoCollisionConstraint extends Instance {
 	/** If true Part0 and Part1 will not collide, if false the parts will collide. */
 	Enabled: boolean;
 	/** [NO DOCUMENTATION] */
-	Part0?: BasePart;
+	Part0: BasePart | undefined;
 	/** [NO DOCUMENTATION] */
-	Part1?: BasePart;
+	Part1: BasePart | undefined;
 }
 
 /** A PVInstance is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically `BasePart` and `Model`. The PV in PVInstance stands for _Position-Velocity_. This class has existed since 2005, and while the class itself no longer has any functionality, it is used for adornable objects that can be connected to both BaseParts and Models. */
@@ -12712,7 +12715,7 @@ interface Seat extends Part {
 	/** Whether or not the seat is usable. If set to true, the seat will act as a normal part. */
 	Disabled: boolean;
 	/** The humanoid that is sitting in the seat */
-	readonly Occupant?: Humanoid;
+	readonly Occupant: Humanoid | undefined;
 	/** Forces the character with the specified [Humanoid](https://developer.roblox.com/api-reference/class/Humanoid) to sit in the Seat. */
 	Sit(this: Seat, humanoid: Humanoid): void;
 }
@@ -12722,9 +12725,9 @@ interface SkateboardPlatform extends Part {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "SkateboardPlatform";
 	/** The SkateboardPlatform's active SkateboardController. */
-	readonly Controller?: SkateboardController;
+	readonly Controller: SkateboardController | undefined;
 	/** The `/Humanoid` that is controlling the SkateboardPlatform. */
-	readonly ControllingHumanoid?: Humanoid;
+	readonly ControllingHumanoid: Humanoid | undefined;
 	/** The direction of movement, tied to the keys A and D. Must be 1 (right), 0 (straight), or -1 (left). Will refresh back to 0 unless constantly set. */
 	Steer: number;
 	/** If true, wheels won't roll without user input. */
@@ -13012,7 +13015,7 @@ interface VehicleSeat extends BasePart {
 	/** The maximum speed that can be attained. */
 	MaxSpeed: number;
 	/** The humanoid that is sitting in the seat */
-	readonly Occupant?: Humanoid;
+	readonly Occupant: Humanoid | undefined;
 	/** The direction of movement, tied to the keys A and D. Must be one of 1 (right), 0 (straight), or -1 (left). Will refresh back to 0 unless constantly set. */
 	Steer: number;
 	/** Functions identically to [VehicleSeat.Steer](https://developer.roblox.com/api-reference/property/VehicleSeat/Steer), but the value is not an integer. */
@@ -13241,7 +13244,7 @@ interface Workspace extends WorldRoot {
 	 * ```
 	 * 
 	 */
-	CurrentCamera?: Camera;
+	CurrentCamera: Camera | undefined;
 	/** The amount of time, in seconds, that the game has been running.
 	 * 
 	 * Despite the title, this value is currently not 'Distributed' across the client and the server. Instead, on the server it represents how long the server has been running. On the client, it represents how long the client has been connected to the server.
@@ -14165,7 +14168,7 @@ interface Player extends Instance {
 	 * ```
 	 * 
 	 */
-	Character?: Model;
+	Character: Model | undefined;
 	/** This property determines the user ID of the account whose character appearance is used for a player's `character. By default, this property is the `Player`'s [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId), which uses the player's avatar as they have created it on the Roblox website.
 	 * 
 	 * Changing this property to the user ID of another account will cause the player to spawn with that account's appearance (hats, shirt, pants, etc).
@@ -14307,9 +14310,9 @@ interface Player extends Instance {
 	 * 
 	 *  - Developers may wish to implement their own custom spawn logic, using [Model.SetPrimaryPartCFrame](https://developer.roblox.com/api-reference/function/Model/SetPrimaryPartCFrame) to move the [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) manually.
 	 */
-	RespawnLocation?: SpawnLocation;
+	RespawnLocation: SpawnLocation | undefined;
 	/** The Team property is a reference to a `Team` object within the `Teams` service. It determines the team the player is on; if the `Player` isn't on a team or has an invalid [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor), this property is nil. When this property is set, the player has joined the `Team` and the [Team.PlayerAdded](https://developer.roblox.com/api-reference/event/Team/PlayerAdded) event fires on the associated team. Similarly, [Team.PlayerRemoved](https://developer.roblox.com/api-reference/event/Team/PlayerRemoved) fires when the property is unset from a certain `Team`. */
-	Team?: Team;
+	Team: Team | undefined;
 	/** The TeamColor property determines which team a Player is associated with according to that Team's [Team.TeamColor](https://developer.roblox.com/api-reference/property/Team/TeamColor). Changing this property will change [Player.Team](https://developer.roblox.com/api-reference/property/Player/Team) according to whichever team has the same [DataType.BrickColor](https://developer.roblox.com/search#stq=BrickColor) for their [Team.TeamColor](https://developer.roblox.com/api-reference/property/Team/TeamColor). If no Team object has the associated TeamColor, the player will not be associated with a team.
 	 * 
 	 * It's often a better idea to set [Player.Team](https://developer.roblox.com/api-reference/property/Player/Team) to the respective `Team` instead of using this property. Setting this property often leads to repetition of the same BrickColor value for a certain teams across many scripts; this is something you want to avoid when adhering to the [don't-repeat-yourself][1] principle.
@@ -16112,7 +16115,7 @@ interface Sound extends Instance {
 	 * 
 	 * `SoundGroup`s are used to manage the volume and effects of multiple `Sound`s at once. A `Sound` is added to a `SoundGroup` by setting the SoundGroup property of the sound.
 	 */
-	SoundGroup?: SoundGroup;
+	SoundGroup: SoundGroup | undefined;
 	/** This property is the content ID of the sound file a `Sound` object is associated with. Once a sound has been uploaded to Roblox the content ID can be found in the uploaded sound’s URL.
 	 * 
 	 * It’s important to remember the URL is not the same as the content ID. It will work when pasted directly into the SoundId property of a `Sound` in Roblox studio, as Studio will automatically correct it, however if it is being set from a `Script` then the correct content ID will need to be used, using the number from the URL. For example:
@@ -18181,7 +18184,7 @@ interface Trail extends Instance {
 	 * 
 	 * Changing the Attachments of a Trail while a trail is drawing will remove all of the segments the trail has already drawn.
 	 */
-	Attachment0?: Attachment;
+	Attachment0: Attachment | undefined;
 	/** A `Trail` starts drawing its segments at the positions of its **Attachment0** and [Trail.Attachment1](https://developer.roblox.com/api-reference/property/Trail/Attachment1).
 	 * 
 	 * When the Trail is [Trail.Enabled](https://developer.roblox.com/api-reference/property/Trail/Enabled) it will record the positions of its attachments every frame. It will connect these positions to the positions of the attachments on the previous frame. This creates a polygon that is then filled in by the Trail's [Trail.Color](https://developer.roblox.com/api-reference/property/Trail/Color) and [Trail.Texture](https://developer.roblox.com/api-reference/property/Trail/Texture) (if that Texture exists).
@@ -18190,7 +18193,7 @@ interface Trail extends Instance {
 	 * 
 	 * Changing the Attachments of a Trail while a trail is drawing will remove all of the segments the trail has already drawn.
 	 */
-	Attachment1?: Attachment;
+	Attachment1: Attachment | undefined;
 	/** The color of a `Trail` can be set with the effect's Color property. This property determines what color the segments of the trail will have through their [Trail.Lifetime](https://developer.roblox.com/api-reference/property/Trail/Lifetime).
 	 * 
 	 * Color is a [DataType.ColorSequence](https://developer.roblox.com/search#stq=ColorSequence), which means that the segments in a trail can shift between several colors. Note that if the color for a trail changes after some of the trail segments have been drawn, all of the old segments will be updated to match the new colors.
@@ -18560,7 +18563,7 @@ interface Tween extends TweenBase {
 	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
-	readonly Instance?: Instance;
+	readonly Instance: Instance | undefined;
 	/** Read-only property that includes information on how the interpolation of the `Tween` is to be carried out, using the `TweenInfo` data type. The TweenInfo data type includes a range of properties that can be used to achieve various styles of animation, including reversing and looping `Tween`s (see examples).
 	 * 
 	 * As with all `Tween` properties, the TweenInfo property is read only. If a developer wants to modify the TweenInfo of a Tween they must create a new `Tween` using [TweenService.Create](https://developer.roblox.com/api-reference/function/TweenService/Create).
@@ -18901,7 +18904,7 @@ interface UIPageLayout extends UIGridStyleLayout {
 	/** Whether or not the page layout wraps around at the ends. */
 	Circular: boolean;
 	/** The page that is either currently being displayed or is the target of the current animation. */
-	readonly CurrentPage?: GuiObject;
+	readonly CurrentPage: GuiObject | undefined;
 	/** The easing direction to use when performing an animation. */
 	EasingDirection: Enum.EasingDirection;
 	/** The easing style to use when performing an animation. */
@@ -21197,7 +21200,7 @@ interface ObjectValue extends ValueBase {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ObjectValue";
 	/** Holds a reference to an instance. */
-	Value?: Instance;
+	Value: Instance | undefined;
 	/** This event fires whenever the [ObjectValue.Value](https://developer.roblox.com/api-reference/property/ObjectValue/Value) property is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
 	 * 
 	 * This event, like other changed events, can be used to track when an ObjectValue changes and to track the different values that it may change to.
@@ -21489,7 +21492,7 @@ interface WeldConstraint extends Instance {
 	 *
 	 * Tags: NotReplicated
 	 */
-	Part0?: BasePart;
+	Part0: BasePart | undefined;
 	/** The [WeldConstraint.Part0](https://developer.roblox.com/api-reference/property/WeldConstraint/Part0) and **Part1** properties of a `WeldConstraint` set which two `BasePart` the weld connects. As soon as both properties are set and the weld is [WeldConstraint.Enabled](https://developer.roblox.com/api-reference/property/WeldConstraint/Enabled), the weld will lock the two parts together.
 	 * 
 	 * If Part0 or Part1 are ever set to new parts, then the WeldConstraint will instantly link the new part. The old part will no longer be constrained.The second part connected by the constraint.
@@ -21587,6 +21590,6 @@ interface WeldConstraint extends Instance {
 	 *
 	 * Tags: NotReplicated
 	 */
-	Part1?: BasePart;
+	Part1: BasePart | undefined;
 }
 

@@ -963,7 +963,7 @@ export class ClassGenerator extends Generator {
 			const prefix = this.canWrite(className, rbxProperty) && !hasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
 
 			if (!this.writeSignatures(rbxProperty, tsImplInterface, description)) {
-				this.write(`${prefix}${safeName(name)}${surelyDefined ? "" : "?"}: ${valueType};`);
+				this.write(`${prefix}${safeName(name)}: ${valueType}${surelyDefined ? "" : " | undefined"};`);
 			}
 		} else {
 			console.log(name, "is very bad!!!", className);
@@ -1196,8 +1196,8 @@ export class ClassGenerator extends Generator {
 	}
 
 	private generateInstancesTables(rbxClasses: Array<ApiClass>) {
-		const [CreatableInstances, Instances, Services] = multifilter(rbxClasses, 3, rbxClass =>
-			hasTag(rbxClass, "Service") ? 2 : isCreatable(rbxClass) ? 0 : 1,
+		const [Services, CreatableInstances, AbstractInstances, Instances] = multifilter(rbxClasses, 4, rbxClass =>
+			hasTag(rbxClass, "Service") ? 0 : isCreatable(rbxClass) ? 1 : ABSTRACT_CLASSES.has(rbxClass.Name) ? 2 : 3,
 		);
 
 		const byName = (a: ApiClass, b: ApiClass) => (a.Name.toLowerCase() < b.Name.toLowerCase() ? -1 : 1);
@@ -1205,8 +1205,14 @@ export class ClassGenerator extends Generator {
 		if (0 < Services.length) this.generateInstanceInterface("Services", Services.sort(byName));
 		if (0 < CreatableInstances.length)
 			this.generateInstanceInterface("CreatableInstances", CreatableInstances.sort(byName));
+		if (0 < CreatableInstances.length)
+			this.generateInstanceInterface("AbstractInstances", AbstractInstances.sort(byName));
 		if (0 < Instances.length)
-			this.generateInstanceInterface("Instances", Instances.sort(byName), "Services, CreatableInstances");
+			this.generateInstanceInterface(
+				"Instances",
+				Instances.sort(byName),
+				"Services, CreatableInstances, AbstractInstances",
+			);
 	}
 
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {

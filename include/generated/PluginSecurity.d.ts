@@ -30,7 +30,14 @@ interface CreatableInstances {
 	RenderingTest: RenderingTest;
 }
 
-interface Instances extends Services, CreatableInstances {
+interface AbstractInstances {
+	NetworkPeer: NetworkPeer;
+	NetworkReplicator: NetworkReplicator;
+	PluginGui: PluginGui;
+	StatsItem: StatsItem;
+}
+
+interface Instances extends Services, CreatableInstances, AbstractInstances {
 	ClientReplicator: ClientReplicator;
 	DataModelSession: DataModelSession;
 	DebuggerBreakpoint: DebuggerBreakpoint;
@@ -44,12 +51,9 @@ interface Instances extends Services, CreatableInstances {
 	LuaSettings: LuaSettings;
 	MemStorageConnection: MemStorageConnection;
 	MultipleDocumentInterfaceInstance: MultipleDocumentInterfaceInstance;
-	NetworkPeer: NetworkPeer;
-	NetworkReplicator: NetworkReplicator;
 	PhysicsSettings: PhysicsSettings;
 	Plugin: Plugin;
 	PluginDragEvent: PluginDragEvent;
-	PluginGui: PluginGui;
 	PluginMenu: PluginMenu;
 	PluginMouse: PluginMouse;
 	PluginToolbar: PluginToolbar;
@@ -60,7 +64,6 @@ interface Instances extends Services, CreatableInstances {
 	RunningAverageTimeIntervalItem: RunningAverageTimeIntervalItem;
 	ScriptDebugger: ScriptDebugger;
 	ServerReplicator: ServerReplicator;
-	StatsItem: StatsItem;
 	StudioTheme: StudioTheme;
 	TotalCountTimeIntervalItem: TotalCountTimeIntervalItem;
 }
@@ -132,7 +135,7 @@ interface CoreGui extends BasePlayerGui {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "CoreGui";
 	/** [NO DOCUMENTATION] */
-	readonly SelectionImageObject?: GuiObject;
+	readonly SelectionImageObject: GuiObject | undefined;
 	/** The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
 	 * 	
 	 * The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
@@ -1522,7 +1525,7 @@ interface Plugin extends Instance {
 	readonly GridSize: number;
 	readonly HostDataModelType: Enum.StudioDataModelType;
 	readonly HostDataModelTypeIsCurrent: boolean;
-	readonly MultipleDocumentInterfaceInstance?: MultipleDocumentInterfaceInstance;
+	readonly MultipleDocumentInterfaceInstance: MultipleDocumentInterfaceInstance | undefined;
 	readonly UsesAssetInsertionDrag: boolean;
 	/** Sets the state of the calling plugin to activated. Allows mouse control through the [Plugin.GetMouse](https://developer.roblox.com/api-reference/function/Plugin/GetMouse) method. */
 	Activate(this: Plugin, exclusiveMouse: boolean): void;
@@ -2288,7 +2291,7 @@ interface ScriptDebugger extends Instance {
 	/** Describes if this ScriptDebugger is paused. */
 	readonly IsPaused: boolean;
 	/** The script object this debugger is linked to. */
-	readonly Script?: Instance;
+	readonly Script: Instance | undefined;
 	/** Adds a watch with the given expression. */
 	AddWatch(this: ScriptDebugger, expression: string): Instance | undefined;
 	/** Returns a list of `DebuggerBreakpoint` present in the script. */
@@ -2861,7 +2864,7 @@ interface StudioService extends Instance {
 	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
-	readonly ActiveScript?: Instance;
+	readonly ActiveScript: Instance | undefined;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
