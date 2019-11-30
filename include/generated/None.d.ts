@@ -11067,7 +11067,15 @@ interface MarketplaceService extends Instance {
 	PromptSubscriptionCancellation(this: MarketplaceService, player: Player, subscriptionId: number): void;
 	PromptSubscriptionPurchase(this: MarketplaceService, player: Player, subscriptionId: number): void;
 	/** Returns a `Pages` object which contains information for all of the current game's developer products. */
-	GetDeveloperProductsAsync(this: MarketplaceService): StandardPages;
+	GetDeveloperProductsAsync(
+		this: MarketplaceService,
+	): StandardPages<{
+		Description: string;
+		PriceInRobux: number;
+		ProductId: number;
+		IconImageAssetId: number;
+		Name: string;
+	}>;
 	/** This function provides information about an asset, developer product or game pass given its **assetId** and the [Enum.InfoType](https://developer.roblox.com/search#stq=InfoType) (Asset, Product or GamePass respectively).
 	 * 
 	 * Information about the queried item is provided in a dictionary with the following keys. Note that not all information is provided or necessarily relevant for the kind of object you are querying.

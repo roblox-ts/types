@@ -30,10 +30,15 @@ type ChangedSignal = {
 };
 
 type StrictInstances = {
-	[Key in keyof Instances]: Instances[Key]["ClassName"] extends Key
-		? Instances[Key]
-		: Instances[Key] & { ClassName: Key };
+	[Key in keyof Instances]: Instances[Key] &
+		(Instances[Key]["ClassName"] extends Key
+			? unknown
+			: Key extends keyof AbstractInstances
+			? unknown
+			: { ClassName: Key });
 };
+
+type X = StrictInstances["Part"] & unknown;
 
 /** Given an Instance `T`, returns a unioned type of all property names, except "ClassName". */
 type GetProperties<T extends Instance> = {

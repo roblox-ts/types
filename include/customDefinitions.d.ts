@@ -480,7 +480,15 @@ interface MarketplaceService extends Instance {
 		currencyType?: CastsToEnum<Enum.CurrencyType>,
 	): void;
 	PlayerOwnsAsset(this: MarketplaceService, player: Player, assetId: number): boolean;
-	GetDeveloperProductsAsync(this: MarketplaceService): StandardPages;
+	GetDeveloperProductsAsync(
+		this: MarketplaceService,
+	): StandardPages<{
+		Description: string;
+		PriceInRobux: number;
+		ProductId: number;
+		IconImageAssetId: number;
+		Name: string;
+	}>;
 	PromptSubscriptionCancellation(this: MarketplaceService, player: Player, subscriptionId: number): void;
 	PromptSubscriptionPurchase(this: MarketplaceService, player: Player, subscriptionId: number): void;
 }
