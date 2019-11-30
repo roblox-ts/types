@@ -1604,7 +1604,7 @@ declare function opcall<T extends Array<any>, U>(
  * @param instance
  * @param className
  */
-declare function classIs<T extends Instance, Q extends Extract<T["ClassName"], keyof Instances>>(
+declare function classIs<T extends Instance, Q extends Extract<T["ClassName"], Exclude<keyof Instances, keyof AbstractInstances>>>(
 	instance: T,
 	className: Q,
 ): instance is Instances[Q] extends T
