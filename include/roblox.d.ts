@@ -64,9 +64,6 @@ type GetWritableProperties<T extends Instance> = {
 		: never;
 }[keyof T];
 
-// type GetProperties
-// type GetWritableProperties
-
 /** Given an Instance `T`, returns an object which can hold the writable properties of T. Good to use with `Object.assign`.
  * @example
  * const props: PartialProperties<Part> = {
