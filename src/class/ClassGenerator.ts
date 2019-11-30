@@ -929,7 +929,7 @@ export class ClassGenerator extends Generator {
 					paramType = found;
 				}
 			}
-			args.push(`${argName || `arg${i}`}${optional ? "?" : ""}: ${paramType}`);
+			args.push(`${argName || `arg${i}`}${optional ? "?" : ""}: ${paramType || "unknown"}`);
 		}
 		return args.join(", ");
 	}
@@ -1115,6 +1115,7 @@ export class ClassGenerator extends Generator {
 					`readonly ClassName: ${[className, ...this.subclassify(className)]
 						.filter(className => !ABSTRACT_CLASSES.has(className))
 						.map(subName => `"${subName}"`)
+						.sort((a, b) => (a.toLowerCase() < b.toLowerCase() ? -1 : 1))
 						.join(" | ")};`,
 				);
 			}
@@ -1230,6 +1231,7 @@ export class ClassGenerator extends Generator {
 			hasTag(rbxClass, "Service") ? 0 : isCreatable(rbxClass) ? 1 : ABSTRACT_CLASSES.has(rbxClass.Name) ? 2 : 3,
 		);
 
+		// for sorting
 		const byName = (a: ApiClass, b: ApiClass) => (a.Name.toLowerCase() < b.Name.toLowerCase() ? -1 : 1);
 
 		if (0 < Services.length) this.generateInstanceInterface("Services", Services.sort(byName));

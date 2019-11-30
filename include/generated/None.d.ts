@@ -317,7 +317,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
  */
 interface Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ABTestService" | "Accoutrement" | "AdService" | "AdvancedDragger" | "AnalyticsService" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AssetService" | "Attachment" | "Backpack" | "BadgeService" | "Beam" | "BindableEvent" | "BindableFunction" | "BrowserService" | "CacheableContentProvider" | "Camera" | "ChangeHistoryService" | "Chat" | "ClickDetector" | "ClusterPacketCache" | "CollectionService" | "Configuration" | "ContentProvider" | "ContextActionService" | "ControllerService" | "CookiesService" | "CorePackages" | "CoreScriptSyncService" | "CustomEvent" | "CustomEventReceiver" | "DataModelSession" | "DataStoreService" | "Debris" | "DebugSettings" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "Dialog" | "DialogChoice" | "DraftsService" | "Dragger" | "Explosion" | "File" | "Fire" | "FlagStandService" | "FlyweightService" | "Folder" | "ForceField" | "FriendService" | "FunctionalTest" | "GamePassService" | "GameSettings" | "GamepadService" | "Geometry" | "GlobalDataStore" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuiService" | "GuidRegistryService" | "HapticService" | "Hopper" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidDescription" | "InputObject" | "InsertService" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "Lighting" | "LocalStorageService" | "LocalizationService" | "LocalizationTable" | "LogService" | "LoginService" | "LuaSettings" | "LuaWebService" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "Message" | "MessagingService" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NetworkMarker" | "NetworkSettings" | "NoCollisionConstraint" | "NotificationService" | "PackageLink" | "PackageService" | "PartOperationAsset" | "ParticleEmitter" | "Path" | "PathfindingService" | "PhysicsPacketCache" | "PhysicsService" | "PhysicsSettings" | "Player" | "PlayerScripts" | "Players" | "Plugin" | "PluginAction" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginMenu" | "PluginToolbar" | "PluginToolbarButton" | "PointsService" | "PolicyService" | "Pose" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClasses" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderSettings" | "RenderingTest" | "ReplicatedFirst" | "ReplicatedStorage" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RunService" | "RuntimeScriptService" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "Selection" | "ServerScriptService" | "ServerStorage" | "Sky" | "Smoke" | "SocialService" | "Sound" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "StandalonePluginScripts" | "StarterGear" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "StopWatchReporter" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "TerrainRegion" | "TestService" | "TextFilterResult" | "TextService" | "ThirdPartyUserService" | "TimerService" | "TouchInputService" | "TouchTransmitter" | "Trail" | "Translator" | "TweenService" | "UGCValidationService" | "UserGameSettings" | "UserInputService" | "VRService" | "VersionControlService" | "VirtualInputManager" | "VirtualUser" | "Visit" | "WeldConstraint" | "Accessory" | "Hat" | "HopperBin" | "Tool" | "Flag" | "CoreGui" | "PlayerGui" | "StarterGui" | "BodyAngularVelocity" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "RocketPropulsion" | "MeshContentProvider" | "SolidModelContentProvider" | "BodyColors" | "CharacterMesh" | "ShirtGraphic" | "Skin" | "Pants" | "Shirt" | "AlignOrientation" | "AlignPosition" | "AngularVelocity" | "BallSocketConstraint" | "HingeConstraint" | "LineForce" | "RodConstraint" | "RopeConstraint" | "SpringConstraint" | "Torque" | "VectorForce" | "CylindricalConstraint" | "PrismaticConstraint" | "HumanoidController" | "SkateboardController" | "VehicleController" | "FileMesh" | "BlockMesh" | "CylinderMesh" | "SpecialMesh" | "Decal" | "Texture" | "Hole" | "MotorFeature" | "CSGDictionaryService" | "NonReplicatedCSGDictionaryService" | "OrderedDataStore" | "Frame" | "ScrollingFrame" | "TextBox" | "ViewportFrame" | "ImageButton" | "TextButton" | "ImageLabel" | "TextLabel" | "BillboardGui" | "ScreenGui" | "SurfaceGui" | "DockWidgetPluginGui" | "QWidgetPluginGui" | "GuiMain" | "FloorWire" | "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment" | "SurfaceSelection" | "ArcHandles" | "Handles" | "SelectionPartLasso" | "SelectionPointLasso" | "Glue" | "Motor" | "Rotate" | "Snap" | "VelocityMotor" | "Weld" | "RotateP" | "RotateV" | "ManualGlue" | "ManualWeld" | "Motor6D" | "PointLight" | "SpotLight" | "SurfaceLight" | "AppStorageService" | "UserStorageService" | "ModuleScript" | "CoreScript" | "Script" | "LocalScript" | "Hint" | "PlayerMouse" | "PluginMouse" | "NetworkClient" | "NetworkServer" | "ClientReplicator" | "ServerReplicator" | "Model" | "CornerWedgePart" | "Terrain" | "TrussPart" | "VehicleSeat" | "Part" | "WedgePart" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation" | "Status" | "Workspace" | "WorldModel" | "DataStorePages" | "FriendPages" | "InventoryPages" | "StandardPages" | "EmotesPages" | "BloomEffect" | "BlurEffect" | "ColorCorrectionEffect" | "SunRaysEffect" | "ReflectionMetadataClass" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataMember" | "DataModel" | "AnalysticsSettings" | "GlobalSettings" | "UserSettings" | "ChorusSoundEffect" | "CompressorSoundEffect" | "DistortionSoundEffect" | "EchoSoundEffect" | "EqualizerSoundEffect" | "FlangeSoundEffect" | "PitchShiftSoundEffect" | "ReverbSoundEffect" | "TremoloSoundEffect" | "StarterCharacterScripts" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "TotalCountTimeIntervalItem" | "Tween" | "UIGradient" | "UIPadding" | "UIScale" | "UIAspectRatioConstraint" | "UISizeConstraint" | "UITextSizeConstraint" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPageLayout" | "UITableLayout" | "BinaryStringValue" | "BoolValue" | "BrickColorValue" | "CFrameValue" | "Color3Value" | "DoubleConstrainedValue" | "IntConstrainedValue" | "IntValue" | "NumberValue" | "ObjectValue" | "RayValue" | "StringValue" | "Vector3Value";
+	readonly ClassName: "ABTestService" | "Accessory" | "Accoutrement" | "AdService" | "AdvancedDragger" | "AlignOrientation" | "AlignPosition" | "AnalysticsSettings" | "AnalyticsService" | "AngularVelocity" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AppStorageService" | "ArcHandles" | "AssetService" | "Attachment" | "Backpack" | "BadgeService" | "BallSocketConstraint" | "Beam" | "BillboardGui" | "BinaryStringValue" | "BindableEvent" | "BindableFunction" | "BlockMesh" | "BloomEffect" | "BlurEffect" | "BodyAngularVelocity" | "BodyColors" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "BoolValue" | "BoxHandleAdornment" | "BrickColorValue" | "BrowserService" | "CacheableContentProvider" | "Camera" | "CFrameValue" | "ChangeHistoryService" | "CharacterMesh" | "Chat" | "ChorusSoundEffect" | "ClickDetector" | "ClientReplicator" | "ClusterPacketCache" | "CollectionService" | "Color3Value" | "ColorCorrectionEffect" | "CompressorSoundEffect" | "ConeHandleAdornment" | "Configuration" | "ContentProvider" | "ContextActionService" | "ControllerService" | "CookiesService" | "CoreGui" | "CorePackages" | "CoreScript" | "CoreScriptSyncService" | "CornerWedgePart" | "CSGDictionaryService" | "CustomEvent" | "CustomEventReceiver" | "CylinderHandleAdornment" | "CylinderMesh" | "CylindricalConstraint" | "DataModel" | "DataModelSession" | "DataStorePages" | "DataStoreService" | "Debris" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "DebugSettings" | "Decal" | "Dialog" | "DialogChoice" | "DistortionSoundEffect" | "DockWidgetPluginGui" | "DoubleConstrainedValue" | "DraftsService" | "Dragger" | "EchoSoundEffect" | "EmotesPages" | "EqualizerSoundEffect" | "Explosion" | "File" | "FileMesh" | "Fire" | "Flag" | "FlagStand" | "FlagStandService" | "FlangeSoundEffect" | "FloorWire" | "FlyweightService" | "Folder" | "ForceField" | "Frame" | "FriendPages" | "FriendService" | "FunctionalTest" | "GamepadService" | "GamePassService" | "GameSettings" | "Geometry" | "GlobalDataStore" | "GlobalSettings" | "Glue" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuidRegistryService" | "GuiMain" | "GuiService" | "Handles" | "HapticService" | "Hat" | "HingeConstraint" | "Hint" | "Hole" | "Hopper" | "HopperBin" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidController" | "HumanoidDescription" | "ImageButton" | "ImageHandleAdornment" | "ImageLabel" | "InputObject" | "InsertService" | "IntConstrainedValue" | "IntValue" | "InventoryPages" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "Lighting" | "LineForce" | "LineHandleAdornment" | "LocalizationService" | "LocalizationTable" | "LocalScript" | "LocalStorageService" | "LoginService" | "LogService" | "LuaSettings" | "LuaWebService" | "ManualGlue" | "ManualWeld" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "MeshContentProvider" | "MeshPart" | "Message" | "MessagingService" | "Model" | "ModuleScript" | "Motor" | "Motor6D" | "MotorFeature" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NegateOperation" | "NetworkClient" | "NetworkMarker" | "NetworkServer" | "NetworkSettings" | "NoCollisionConstraint" | "NonReplicatedCSGDictionaryService" | "NotificationService" | "NumberValue" | "ObjectValue" | "OrderedDataStore" | "PackageLink" | "PackageService" | "Pants" | "ParabolaAdornment" | "Part" | "ParticleEmitter" | "PartOperation" | "PartOperationAsset" | "Path" | "PathfindingService" | "PhysicsPacketCache" | "PhysicsService" | "PhysicsSettings" | "PitchShiftSoundEffect" | "Platform" | "Player" | "PlayerGui" | "PlayerMouse" | "Players" | "PlayerScripts" | "Plugin" | "PluginAction" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginMenu" | "PluginMouse" | "PluginToolbar" | "PluginToolbarButton" | "PointLight" | "PointsService" | "PolicyService" | "Pose" | "PrismaticConstraint" | "QWidgetPluginGui" | "RayValue" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClass" | "ReflectionMetadataClasses" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataMember" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderingTest" | "RenderSettings" | "ReplicatedFirst" | "ReplicatedStorage" | "ReverbSoundEffect" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RocketPropulsion" | "RodConstraint" | "RopeConstraint" | "Rotate" | "RotateP" | "RotateV" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "RunService" | "RuntimeScriptService" | "ScreenGui" | "Script" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "ScrollingFrame" | "Seat" | "Selection" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "ServerReplicator" | "ServerScriptService" | "ServerStorage" | "Shirt" | "ShirtGraphic" | "SkateboardController" | "SkateboardPlatform" | "Skin" | "Sky" | "Smoke" | "Snap" | "SocialService" | "SolidModelContentProvider" | "Sound" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "SpawnLocation" | "SpecialMesh" | "SphereHandleAdornment" | "SpotLight" | "SpringConstraint" | "StandalonePluginScripts" | "StandardPages" | "StarterCharacterScripts" | "StarterGear" | "StarterGui" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "Status" | "StopWatchReporter" | "StringValue" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "SunRaysEffect" | "SurfaceGui" | "SurfaceLight" | "SurfaceSelection" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "Terrain" | "TerrainRegion" | "TestService" | "TextBox" | "TextButton" | "TextFilterResult" | "TextLabel" | "TextService" | "Texture" | "ThirdPartyUserService" | "TimerService" | "Tool" | "Torque" | "TotalCountTimeIntervalItem" | "TouchInputService" | "TouchTransmitter" | "Trail" | "Translator" | "TremoloSoundEffect" | "TrussPart" | "Tween" | "TweenService" | "UGCValidationService" | "UIAspectRatioConstraint" | "UIGradient" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint" | "UnionOperation" | "UserGameSettings" | "UserInputService" | "UserSettings" | "UserStorageService" | "Vector3Value" | "VectorForce" | "VehicleController" | "VehicleSeat" | "VelocityMotor" | "VersionControlService" | "ViewportFrame" | "VirtualInputManager" | "VirtualUser" | "Visit" | "VRService" | "WedgePart" | "Weld" | "WeldConstraint" | "Workspace" | "WorldModel";
 	/** Determines if an `Instance` can be cloned using [Instance.Clone](https://developer.roblox.com/api-reference/function/Instance/Clone) or saved to file.
 	 *
 	 * This property determines whether an object should be included when the game is published or saved, or when [Instance.Clone](https://developer.roblox.com/api-reference/function/Instance/Clone) is called on one of the objects ancestors. Calling Clone directly on an object will return nil if the cloned object is not archivable. Copying an object in Studio (using the 'Duplicate' or 'Copy' options) will ignore the Archivable property and set Archivable to true for the copy.
@@ -874,7 +874,7 @@ interface Instance {
  */
 interface Accoutrement extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Accoutrement" | "Accessory" | "Hat";
+	readonly ClassName: "Accessory" | "Accoutrement" | "Hat";
 	/** Sets the offset position of the object on the Player.
 	 *
 	 * Sets the offset position of the object on the Player.
@@ -1512,7 +1512,7 @@ interface Backpack extends Instance {
 /** BackpackItem is an abstract class for backpack items such as HopperBins and Tools. */
 interface BackpackItem extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "HopperBin" | "Tool" | "Flag";
+	readonly ClassName: "Flag" | "HopperBin" | "Tool";
 	/** The texture icon that is displayed for a tool in the `Player`'s backpack.
 	 *
 	 * This property should be set to the content ID of an image uploaded to the Roblox website.
@@ -1530,7 +1530,7 @@ interface BackpackItem extends Instance {
  */
 interface Tool extends BackpackItem {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Tool" | "Flag";
+	readonly ClassName: "Flag" | "Tool";
 	/** If true, when the backspace button is pressed the tool will be parented to the workspace and removed from the player's backpack. If false, when the backspace button is pressed the tool will go back to the Player's Backpack. */
 	CanBeDropped: boolean;
 	/** Relates to whether or not the tool can be used. */
@@ -3414,7 +3414,7 @@ interface Camera extends Instance {
 /** Base class for objects that change a character's appearance. */
 interface CharacterAppearance extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BodyColors" | "CharacterMesh" | "ShirtGraphic" | "Skin" | "Pants" | "Shirt";
+	readonly ClassName: "BodyColors" | "CharacterMesh" | "Pants" | "Shirt" | "ShirtGraphic" | "Skin";
 }
 
 /** BodyColors is a utility object used by Roblox to load avatar body colors from the website.
@@ -3855,7 +3855,7 @@ interface Configuration extends Instance {
 /** The base class for Constraint-based objects. */
 interface Constraint extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AlignOrientation" | "AlignPosition" | "AngularVelocity" | "BallSocketConstraint" | "HingeConstraint" | "LineForce" | "RodConstraint" | "RopeConstraint" | "SpringConstraint" | "Torque" | "VectorForce" | "CylindricalConstraint" | "PrismaticConstraint";
+	readonly ClassName: "AlignOrientation" | "AlignPosition" | "AngularVelocity" | "BallSocketConstraint" | "CylindricalConstraint" | "HingeConstraint" | "LineForce" | "PrismaticConstraint" | "RodConstraint" | "RopeConstraint" | "SpringConstraint" | "Torque" | "VectorForce";
 	/** This property determines if the `Constraint` is currently active in the world. If true, it is currently active.
 	 *
 	 * True if the constraint and both of its [parts](https://developer.roblox.com/api-reference/class/BasePart) are in the `Workspace` and the constraint's [Constraint.Enabled](https://developer.roblox.com/api-reference/property/Constraint/Enabled) property is true.
@@ -4624,7 +4624,7 @@ interface ControllerService extends Instance {
  */
 interface DataModelMesh extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "FileMesh" | "BlockMesh" | "CylinderMesh" | "SpecialMesh";
+	readonly ClassName: "BlockMesh" | "CylinderMesh" | "FileMesh" | "SpecialMesh";
 	/** The Offset of a mesh determines the distance from the [BasePart.Position](https://developer.roblox.com/api-reference/property/BasePart/Position) of a `BasePart` that the mesh will be displayed.
 	 *
 	 * ## How to use mesh offset
@@ -5925,13 +5925,13 @@ interface GroupService extends Instance {
 /** GuiBase is an abstract class which most graphical user interface objects inherit from. */
 interface GuiBase extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Frame" | "ScrollingFrame" | "TextBox" | "ViewportFrame" | "ImageButton" | "TextButton" | "ImageLabel" | "TextLabel" | "BillboardGui" | "ScreenGui" | "SurfaceGui" | "DockWidgetPluginGui" | "QWidgetPluginGui" | "GuiMain" | "FloorWire" | "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment" | "SurfaceSelection" | "ArcHandles" | "Handles" | "SelectionPartLasso" | "SelectionPointLasso";
+	readonly ClassName: "ArcHandles" | "BillboardGui" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "DockWidgetPluginGui" | "FloorWire" | "Frame" | "GuiMain" | "Handles" | "ImageButton" | "ImageHandleAdornment" | "ImageLabel" | "LineHandleAdornment" | "ParabolaAdornment" | "QWidgetPluginGui" | "ScreenGui" | "ScrollingFrame" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "SphereHandleAdornment" | "SurfaceGui" | "SurfaceSelection" | "TextBox" | "TextButton" | "TextLabel" | "ViewportFrame";
 }
 
 /** GuiBase2d is an abstract class inherited by 2D GUI Objects. */
 interface GuiBase2d extends GuiBase {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Frame" | "ScrollingFrame" | "TextBox" | "ViewportFrame" | "ImageButton" | "TextButton" | "ImageLabel" | "TextLabel" | "BillboardGui" | "ScreenGui" | "SurfaceGui" | "DockWidgetPluginGui" | "QWidgetPluginGui" | "GuiMain";
+	readonly ClassName: "BillboardGui" | "DockWidgetPluginGui" | "Frame" | "GuiMain" | "ImageButton" | "ImageLabel" | "QWidgetPluginGui" | "ScreenGui" | "ScrollingFrame" | "SurfaceGui" | "TextBox" | "TextButton" | "TextLabel" | "ViewportFrame";
 	/** AbsolutePosition is a read-only property that provides the screen position of a UI element in pixels. This represents the actual pixel position at which an element renders as a result of its ancestors' sizes and positions. The [GuiObject.AnchorPoint](https://developer.roblox.com/api-reference/property/GuiObject/AnchorPoint) also influences the AbsolutePosition. This property, [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) and [GuiBase2d.AbsoluteRotation](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteRotation) are a group of properties that all describe the final rendered orientation of a UI element.
 	 *
 	 * For example, on a 1920 by 1080 screen, a `Frame` with position {0.5, 0}, {0.5, 0} would have an AbsolutePosition of (960, 540). If you were to place another Frame with position {0, 50}, {0, 50} inside that one, its AbsolutePosition would be (1010, 590). This example assumes each Frame has the defualt [GuiObject.AnchorPoint](https://developer.roblox.com/api-reference/property/GuiObject/AnchorPoint) of (0, 0), the top left corner.
@@ -6023,7 +6023,7 @@ interface GuiBase2d extends GuiBase {
  */
 interface GuiObject extends GuiBase2d {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Frame" | "ScrollingFrame" | "TextBox" | "ViewportFrame" | "ImageButton" | "TextButton" | "ImageLabel" | "TextLabel";
+	readonly ClassName: "Frame" | "ImageButton" | "ImageLabel" | "ScrollingFrame" | "TextBox" | "TextButton" | "TextLabel" | "ViewportFrame";
 	/** This property determines whether a `GuiObject` will sink input to 3D space, such as underlying models with a `ClickDetector`. In other words, if the player attempts to click a ClickDetector with the mouse hovering over an Active UI element, the UI will block the input from reaching the ClickDetector.
 	 *
 	 * For `GuiButton` objects (`ImageButton` and `TextButton`), this property determines whether [GuiButton.Activated](https://developer.roblox.com/api-reference/event/GuiButton/Activated) fires ([GuiButton.AutoButtonColor](https://developer.roblox.com/api-reference/property/GuiButton/AutoButtonColor) will still work for those as well). The events [InputBegan](https://developer.roblox.com/api-reference/event/GuiObject/InputBegan), [InputChanged](https://developer.roblox.com/api-reference/event/GuiObject/InputChanged), and [InputEnded](https://developer.roblox.com/api-reference/event/GuiObject/InputEnded) work as normal no matter the value of this property.
@@ -7466,7 +7466,7 @@ interface ViewportFrame extends GuiObject {
 /** LayerCollector is an abstract class inherited by 2D GUI Objects which render GuiObjects in layers. */
 interface LayerCollector extends GuiBase2d {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BillboardGui" | "ScreenGui" | "SurfaceGui" | "DockWidgetPluginGui" | "QWidgetPluginGui" | "GuiMain";
+	readonly ClassName: "BillboardGui" | "DockWidgetPluginGui" | "GuiMain" | "QWidgetPluginGui" | "ScreenGui" | "SurfaceGui";
 	/** Toggles the visibility of the LayerCollector. */
 	Enabled: boolean;
 	/** If set to false, this LayerCollector will only be cloned once into each `Player` `PlayerGui`, and the LayerCollector will not be deleted when the player respawns.
@@ -7567,7 +7567,7 @@ interface BillboardGui extends LayerCollector {
  */
 interface ScreenGui extends LayerCollector {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ScreenGui" | "GuiMain";
+	readonly ClassName: "GuiMain" | "ScreenGui";
 	/** This property controls the order that multiple ScreenGuis are drawn.
 	 *
 	 * ScreenGuis with a higher DisplayOrder will be drawn on top of ScreenGuis with a lower DisplayOrder. DisplayOrder can have any value greater than 0 and defaults to 0.Controls the order that multiple ScreenGuis are drawn.
@@ -7606,7 +7606,7 @@ interface SurfaceGui extends LayerCollector {
 /** An abstract class for 3D GUI elements that are rendered in the world. */
 interface GuiBase3d extends GuiBase {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "FloorWire" | "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment" | "SurfaceSelection" | "ArcHandles" | "Handles" | "SelectionPartLasso" | "SelectionPointLasso";
+	readonly ClassName: "ArcHandles" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "FloorWire" | "Handles" | "ImageHandleAdornment" | "LineHandleAdornment" | "ParabolaAdornment" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "SphereHandleAdornment" | "SurfaceSelection";
 	/** Sets the color of a GUI object. */
 	Color3: Color3;
 	/** Sets the transparency of a GUI object, where 1 is invisible and 0 is completely visible. */
@@ -7640,7 +7640,7 @@ interface FloorWire extends GuiBase3d {
 /** The PVAdornment class is an abstract class of which the inheritors can be adorned to objects of the PVInstance class. */
 interface PVAdornment extends GuiBase3d {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment";
+	readonly ClassName: "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "ParabolaAdornment" | "SelectionBox" | "SelectionSphere" | "SphereHandleAdornment";
 	/** The [PVInstance](https://developer.roblox.com/api-reference/class/PVInstance) the PVAdornment is attached to. An adornment will stay positioned and rotated relative to its adornee, even if the adornee moves. */
 	Adornee: PVInstance | undefined;
 }
@@ -7788,7 +7788,7 @@ interface SelectionSphere extends PVAdornment {
 /** An abstract class for GUI elements that are adorned to (displayed as attached to) objects deriving from `BasePart`. */
 interface PartAdornment extends GuiBase3d {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SurfaceSelection" | "ArcHandles" | "Handles";
+	readonly ClassName: "ArcHandles" | "Handles" | "SurfaceSelection";
 	/** Sets the object to adorn to. */
 	Adornee: BasePart | undefined;
 }
@@ -9708,7 +9708,7 @@ interface InsertService extends Instance {
 /** JointInstance is the base class for joints, such as Connectors, Welds, and Snaps. */
 interface JointInstance extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Glue" | "Motor" | "Rotate" | "Snap" | "VelocityMotor" | "Weld" | "RotateP" | "RotateV" | "ManualGlue" | "ManualWeld" | "Motor6D";
+	readonly ClassName: "Glue" | "ManualGlue" | "ManualWeld" | "Motor" | "Motor6D" | "Rotate" | "RotateP" | "RotateV" | "Snap" | "VelocityMotor" | "Weld";
 	/** This property determines if the joint is currently active in the world. If true, the joint is active.
 	 *
 	 * If the `JointInstance` is not in `Workspace` or `JointsService`, or one of its parts is not in Workspace the joint will be inactive.
@@ -10927,13 +10927,13 @@ interface LogService extends Instance {
 /** The base class for all objects which contain Lua code. `Script`, `LocalScript`, `ModuleScript` and `CoreScript` all inherit from LuaSourceContainer. */
 interface LuaSourceContainer extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ModuleScript" | "CoreScript" | "Script" | "LocalScript";
+	readonly ClassName: "CoreScript" | "LocalScript" | "ModuleScript" | "Script";
 }
 
 /** The base class for all script objects which run automatically. */
 interface BaseScript extends LuaSourceContainer {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CoreScript" | "Script" | "LocalScript";
+	readonly ClassName: "CoreScript" | "LocalScript" | "Script";
 	/** Determines whether a `BaseScript` will run or not.
 	 *
 	 * `Script`s and `LocalScript`s, when parented to a valid parent, will run when Disabled is false.
@@ -10987,7 +10987,7 @@ interface BaseScript extends LuaSourceContainer {
  */
 interface Script extends BaseScript {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Script" | "LocalScript";
+	readonly ClassName: "LocalScript" | "Script";
 }
 
 /** A LocalScript is a Lua source container that runs Lua code on a client connected to a Roblox server. They are used to access client-only objects, such as the player's `Camera`. For code run through LocalScripts, the LocalPlayer property of the `Players` service will return the player whose client is running the script.
@@ -12037,7 +12037,7 @@ interface NoCollisionConstraint extends Instance {
 /** A PVInstance is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically `BasePart` and `Model`. The PV in PVInstance stands for _Position-Velocity_. This class has existed since 2005, and while the class itself no longer has any functionality, it is used for adornable objects that can be connected to both BaseParts and Models. */
 interface PVInstance extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Model" | "CornerWedgePart" | "Terrain" | "TrussPart" | "VehicleSeat" | "Part" | "WedgePart" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation" | "Status" | "Workspace" | "WorldModel";
+	readonly ClassName: "CornerWedgePart" | "FlagStand" | "MeshPart" | "Model" | "NegateOperation" | "Part" | "PartOperation" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "Status" | "Terrain" | "TrussPart" | "UnionOperation" | "VehicleSeat" | "WedgePart" | "Workspace" | "WorldModel";
 }
 
 /** BasePart is an abstract base class for in-world objects that render and are physically simulated while in the `Workspace`. There are several implementations of BasePart, the most common is `Part`, a simple 6-face rectangular prism. Others include `SpawnLocation`, `WedgePart` and the singleton `Terrain` object within the `Workspace`. Most of the time, when documentation refers to a part, most BasePart implementations will work and not just `Part`.
@@ -12074,7 +12074,7 @@ interface PVInstance extends Instance {
  */
 interface BasePart extends PVInstance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CornerWedgePart" | "Terrain" | "TrussPart" | "VehicleSeat" | "Part" | "WedgePart" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation";
+	readonly ClassName: "CornerWedgePart" | "FlagStand" | "MeshPart" | "NegateOperation" | "Part" | "PartOperation" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "Terrain" | "TrussPart" | "UnionOperation" | "VehicleSeat" | "WedgePart";
 	/** The Anchored property determines whether the part will be **immovable** by physics. When enabled, a part will never change position due to gravity, other parts collisions, overlapping other parts, or any other physics-related causes. A part that is not anchored is called **unanchored**. As a result, two anchored parts will never fire the [BasePart.Touched](https://developer.roblox.com/api-reference/event/BasePart/Touched) event on each other. An anchored part may still be moved by changing its [BasePart.CFrame](https://developer.roblox.com/api-reference/property/BasePart/CFrame) or [BasePart.Position](https://developer.roblox.com/api-reference/property/BasePart/Position), and it still may have a nonzero [BasePart.Velocity](https://developer.roblox.com/api-reference/property/BasePart/Velocity) and [BasePart.RotVelocity](https://developer.roblox.com/api-reference/property/BasePart/RotVelocity). Finally, if an unanchored part is joined with an anchored part through an object like a `/Weld`, it too will act anchored. If such a joint breaks the part may be affected by physics again.
 	 *
 	 * It's a good idea to anchor parts that are part of your game's environment (and therefore shouldn't move). In fact, if you don't have a good reason to keep a part unanchored, you should anchor it. Unanchored parts can cause performance issues if there are many. In Roblox Studio, you can anchor/unanchor an entire model using the Anchor tool. Be sure to keep static environment models anchored, like in-world buttons, signs, and trees.
@@ -12598,7 +12598,7 @@ interface CornerWedgePart extends BasePart {
  */
 interface FormFactorPart extends BasePart {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Part" | "WedgePart" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation";
+	readonly ClassName: "FlagStand" | "Part" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "WedgePart";
 }
 
 /** ## What is a Part
@@ -12625,7 +12625,7 @@ interface FormFactorPart extends BasePart {
  */
 interface Part extends FormFactorPart {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Part" | "FlagStand" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation";
+	readonly ClassName: "FlagStand" | "Part" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation";
 	/** The Shape property sets the type of shape the object has.
 	 *
 	 * The [Enum.PartType](https://developer.roblox.com/search#stq=PartType) enum controls the shape value, and has three possible shapes:
@@ -12886,7 +12886,7 @@ interface Terrain extends BasePart {
 
 interface TriangleMeshPart extends BasePart {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "MeshPart" | "PartOperation" | "NegateOperation" | "UnionOperation";
+	readonly ClassName: "MeshPart" | "NegateOperation" | "PartOperation" | "UnionOperation";
 	/** [NO DOCUMENTATION] *
 	 * Tags: NotReplicated
 	 */
@@ -12953,7 +12953,7 @@ interface MeshPart extends TriangleMeshPart {
 /** An abstract class that all [solid modeling](https://developer.roblox.com/articles/3D-Modeling-with-Parts) based parts inherit from. */
 interface PartOperation extends TriangleMeshPart {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PartOperation" | "NegateOperation" | "UnionOperation";
+	readonly ClassName: "NegateOperation" | "PartOperation" | "UnionOperation";
 	/** [NO DOCUMENTATION] */
 	readonly RenderFidelity: Enum.RenderFidelity;
 	/** The number of polygons in this solid model. This value will always be &lt;= 5000.
@@ -13540,7 +13540,7 @@ interface PackageLink extends Instance {
  */
 interface Pages<T = unknown> extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DataStorePages" | "FriendPages" | "InventoryPages" | "StandardPages" | "EmotesPages";
+	readonly ClassName: "DataStorePages" | "EmotesPages" | "FriendPages" | "InventoryPages" | "StandardPages";
 	/** Whether or not the current page is the last page available.
 	 *
 	 * Whether or not the current page is the last page available.
@@ -13584,7 +13584,7 @@ interface FriendPages
 /** The InventoryPages class is used in the case of iterating over a specific category in a user's inventory. */
 interface InventoryPages extends Pages<number> {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "InventoryPages" | "EmotesPages";
+	readonly ClassName: "EmotesPages" | "InventoryPages";
 }
 
 interface EmotesPages extends InventoryPages {
@@ -15458,7 +15458,7 @@ interface ServerStorage extends Instance {
 /** A ServiceProvider is an abstract class, which stores, and provides certain singleton classes, depending on what inherited class you are using its members with. */
 interface ServiceProvider extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DataModel" | "AnalysticsSettings" | "GlobalSettings" | "UserSettings";
+	readonly ClassName: "AnalysticsSettings" | "DataModel" | "GlobalSettings" | "UserSettings";
 	/** Returns the service specified by the given className if it's already created, errors for an invalid name. */
 	FindService(this: ServiceProvider, className: string): Services[keyof Services] | undefined;
 	FindService(this: ServiceProvider, className: string): Instance | undefined;
@@ -17151,7 +17151,7 @@ interface StarterPlayer extends Instance {
  */
 interface StarterPlayerScripts extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StarterPlayerScripts" | "StarterCharacterScripts";
+	readonly ClassName: "StarterCharacterScripts" | "StarterPlayerScripts";
 }
 
 /** The StarterCharacterScripts class stores scripts to be parented in a player's [Character](https://developer.roblox.com/api-reference/property/Player/Character), when they spawn.
@@ -18687,13 +18687,13 @@ interface TweenService extends Instance {
 /** UIBase is the base class for UI layout and constraint classes. */
 interface UIBase extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIGradient" | "UIPadding" | "UIScale" | "UIAspectRatioConstraint" | "UISizeConstraint" | "UITextSizeConstraint" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPageLayout" | "UITableLayout";
+	readonly ClassName: "UIAspectRatioConstraint" | "UIGradient" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint";
 }
 
 /** A base class for UI constraint and layout classes, inherits from `UiBase`. */
 interface UIComponent extends UIBase {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIGradient" | "UIPadding" | "UIScale" | "UIAspectRatioConstraint" | "UISizeConstraint" | "UITextSizeConstraint" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPageLayout" | "UITableLayout";
+	readonly ClassName: "UIAspectRatioConstraint" | "UIGradient" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint";
 }
 
 /** The base class for UI constraint classes. */
@@ -21001,7 +21001,7 @@ interface BinaryStringValue extends ValueBase {
 	 *
 	 * Equivalent changed events exist for similar objects, such as `NumberValue` and `StringValue`, depending on what object type best suits the need.
 	 */
-	readonly Changed: RBXScriptSignal<(value: null) => void>;
+	readonly Changed: RBXScriptSignal<(value: unknown) => void>;
 }
 
 /** An instance which is used to hold a boolean value. The value can be used for many things, including to communicate between scripts. */
