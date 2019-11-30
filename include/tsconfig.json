@@ -6,7 +6,7 @@
 		"module": "commonjs",
 		"noLib": true,
 		"strict": true,
-		"target": "es6",
+		"target": "esnext",
 		"types": [],
 		"strictNullChecks": true,
 		// required, configurable

@@ -199,6 +199,7 @@ interface SymbolConstructor {
 	 * for-of statement.
 	 */
 	readonly iterator: symbol;
+	readonly asyncIterator: symbol;
 
 	/**
 	 * Returns a new unique Symbol value.
@@ -239,13 +240,30 @@ interface Iterator<Yields, Returns = void, Next = undefined> {
 	next: (...args: [] | [Next]) => IteratorResult<Yields, Returns>;
 }
 
+interface AsyncIterator<Yields, Returns = any, Next = undefined> {
+	next: (...args: [] | [Next]) => Promise<IteratorResult<Yields, Returns>>;
+}
+
 interface Generator<Yields = unknown, Returns = void, Next = unknown> extends Iterator<Yields, Returns, Next> {
 	next: (...args: [] | [Next]) => IteratorResult<Yields, Returns>;
 	[Symbol.iterator](): Generator<Yields, Returns, Next>;
 }
 
+interface AsyncGenerator<Yields = unknown, Returns = any, Next = unknown> extends AsyncIterator<Yields, Returns, Next> {
+	next: (...args: [] | [Next]) => Promise<IteratorResult<Yields, Returns>>;
+	[Symbol.asyncIterator](): AsyncGenerator<Yields, Returns, Next>;
+}
+
+interface AsyncIterable<T> {
+	[Symbol.asyncIterator](): AsyncIterator<T>;
+}
+
 interface Iterable<T> {
 	[Symbol.iterator](): Iterator<T>;
+}
+
+interface AsyncIterableIterator<T> extends AsyncIterator<T> {
+	[Symbol.asyncIterator](): AsyncIterableIterator<T>;
 }
 
 interface IterableIterator<T> extends Iterator<T> {
@@ -339,7 +357,10 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * Calls a defined callback function on each element of an array, and returns an array that contains the results.
 	 * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
 	 */
-	map<U extends defined>(this: ReadonlyArray<defined>, callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => U): Array<U>;
+	map<U extends defined>(
+		this: ReadonlyArray<defined>,
+		callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => U,
+	): Array<U>;
 
 	/**
 	 * Calls a defined callback function on each element of an array, and returns an array that contains the results. Undefined values will not be included, so keep in mind this does not create a 1:1 map.
@@ -348,7 +369,10 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * // Gets an Array of all existing characters
 	 * const characters = playerlist.mapFiltered(plr => plr.Character);
 	 */
-	mapFiltered<U>(this: ReadonlyArray<defined>, callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => U): Array<NonNullable<U>>;
+	mapFiltered<U>(
+		this: ReadonlyArray<defined>,
+		callbackfn: (value: T, index: number, array: ReadonlyArray<T>) => U,
+	): Array<NonNullable<U>>;
 
 	/**
 	 * Removes all undefined values from the array safely
