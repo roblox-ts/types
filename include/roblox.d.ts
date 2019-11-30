@@ -30,10 +30,8 @@ type ChangedSignal = {
 };
 
 type StrictInstances = {
-	[Key in keyof Instances]: Instances[Key] &
+	[Key in Exclude<keyof Instances, keyof AbstractInstances>]: Instances[Key] &
 		(Instances[Key]["ClassName"] extends Key
-			? unknown
-			: Key extends keyof AbstractInstances
 			? unknown
 			: { ClassName: Key });
 };
