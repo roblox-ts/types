@@ -358,6 +358,17 @@ function safePropType(valueType: string | undefined | null) {
 	return PROP_TYPE_MAP.get(valueType) ?? valueType;
 }
 
+const RENAMEABLE_AUTO_TYPES = new Map<string, string>([
+	["Part", "BasePart"],
+	["Script", "LuaSourceContainer"],
+]);
+
+function safeRenamedInstance(name: string): string;
+function safeRenamedInstance(name: string | undefined): string | undefined;
+function safeRenamedInstance(name: string | undefined) {
+	return name && (RENAMEABLE_AUTO_TYPES.get(name) ?? name);
+}
+
 function safeValueType(valueType: ApiValueType, canImplicitlyConvertEnum: boolean = false) {
 	const mappedType = VALUE_TYPE_MAP.get(valueType.Name);
 	if (mappedType !== undefined) {
@@ -429,31 +440,6 @@ function hasTag({ Tags }: ApiClass | ApiMemberBase, tag: string) {
 
 function isCreatable(rbxClass: ApiClass) {
 	return !CREATABLE_BLACKLIST.has(rbxClass.Name) && !hasTag(rbxClass, "NotCreatable") && !hasTag(rbxClass, "Service");
-}
-
-function generateArgs(
-	params: Array<ApiParameter>,
-	canImplicitlyConvertEnum: boolean = true,
-	args = new Array<string>(),
-) {
-	const paramNames = params.map(param => param.Name);
-	for (let i = 0; i < paramNames.length; i++) {
-		const name = paramNames[i];
-		if (paramNames.indexOf(name, i + 1) !== -1) {
-			let n = 0;
-			for (let j = i; j < params.length; j++) {
-				paramNames[j] = `${name}${n++}`;
-			}
-		}
-	}
-	let optional = false;
-	for (let i = 0; i < params.length; i++) {
-		const param = params[i];
-		const paramType = safeValueType(param.Type, canImplicitlyConvertEnum);
-		optional = optional || param.Default !== undefined || paramType === "any";
-		args.push(`${safeArgName(paramNames[i])}${optional ? "?" : ""}: ${paramType}`);
-	}
-	return args.join(", ");
 }
 
 function multifilter<T>(list: Array<T>, numResultArrays: number, condition: (element: T) => number) {
@@ -904,9 +890,53 @@ export class ClassGenerator extends Generator {
 		this.write(`/** ${(description.trim() !== "" ? description : "[NO DOCUMENTATION]") + tagStr} */`);
 	}
 
+	private generateArgs(
+		params: Array<ApiParameter>,
+		canImplicitlyConvertEnum: boolean = true,
+		args = new Array<string>(),
+	) {
+		const paramNames = params.map(param => param.Name);
+		for (let i = 0; i < paramNames.length; i++) {
+			const name = paramNames[i];
+			if (paramNames.indexOf(name, i + 1) !== -1) {
+				let n = 0;
+				for (let j = i; j < params.length; j++) {
+					paramNames[j] = `${name}${n++}`;
+				}
+			}
+		}
+		let optional = false;
+		for (let i = 0; i < params.length; i++) {
+			const param = params[i];
+			let paramType = safeValueType(param.Type, canImplicitlyConvertEnum);
+			optional = optional || param.Default !== undefined || paramType === "any";
+			const argName = safeArgName(paramNames[i]);
+			if (argName && paramType === "Instance") {
+				const lowerName = argName.toLowerCase();
+				const findings = [...this.ClassReferences.keys()].filter(k => {
+					const l = k.toLowerCase();
+					return k !== "Instance" && lowerName.includes(l); // || l.includes(lowerName);
+				});
+				if (findings.length > 0) {
+					const partPos = findings.indexOf("Part");
+					if (partPos !== -1 && findings.length > 1) {
+						findings.splice(partPos, 1);
+					}
+					const found =
+						safeRenamedInstance(findings.find(found => found.toLowerCase() === lowerName)) ||
+						findings.map(found => safeRenamedInstance(found)).join(" | ");
+
+					paramType = found;
+				}
+			}
+			args.push(`${argName || `arg${i}`}${optional ? "?" : ""}: ${paramType}`);
+		}
+		return args.join(", ");
+	}
+
 	private generateCallback(rbxCallback: ApiCallback, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxCallback.Name;
-		const args = generateArgs(rbxCallback.Parameters);
+		const args = this.generateArgs(rbxCallback.Parameters);
 		const { Description: wikiDescription } = rbxCallback;
 		const description =
 			wikiDescription && wikiDescription.trim() !== ""
@@ -920,7 +950,7 @@ export class ClassGenerator extends Generator {
 
 	private generateEvent(rbxEvent: ApiEvent, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxEvent.Name;
-		const args = generateArgs(rbxEvent.Parameters, false);
+		const args = this.generateArgs(rbxEvent.Parameters, false);
 		const { Description: wikiDescription } = rbxEvent;
 		const description =
 			wikiDescription && wikiDescription.trim() !== ""
@@ -936,7 +966,7 @@ export class ClassGenerator extends Generator {
 		const name = rbxFunction.Name;
 		const returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
 		if (returnType !== null) {
-			const args = generateArgs(rbxFunction.Parameters, true, [`this: ${className}`]);
+			const args = this.generateArgs(rbxFunction.Parameters, true, [`this: ${className}`]);
 			const { Description: wikiDescription } = rbxFunction;
 			const description =
 				wikiDescription && wikiDescription.trim() !== ""

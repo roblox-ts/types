@@ -359,7 +359,7 @@ interface DebuggerManager extends Instance {
 	 */
 	readonly DebuggingEnabled: boolean;
 	/** Registers a script to be used in the Lua Debugger. Returns a `ScriptDebugger` for the script. */
-	AddDebugger(this: DebuggerManager, script: Instance): Instance | undefined;
+	AddDebugger(this: DebuggerManager, script: LuaSourceContainer): Instance | undefined;
 	/** [NO DOCUMENTATION] */
 	EnableDebugging(this: DebuggerManager): void;
 	/** Returns a list of `ScriptDebugger` present in the game. */
@@ -686,8 +686,13 @@ interface PluginMouse extends Mouse {
 interface MultipleDocumentInterfaceInstance extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "MultipleDocumentInterfaceInstance";
-	readonly FocusedDataModelSession?: DataModelSession;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly FocusedDataModelSession: Instance | undefined;
+	/** [NO DOCUMENTATION] */
 	readonly DataModelSessionEnded: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
+	/** [NO DOCUMENTATION] */
 	readonly DataModelSessionStarted: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
 }
 
@@ -1615,12 +1620,12 @@ interface Plugin extends Instance {
 	OnInvoke(this: Plugin, key: string, callback: Function): Instance | undefined;
 	OnSetItem(this: Plugin, key: string, callback: Function): Instance | undefined;
 	/** Used to open the given script instance in an editor window, in Roblox studio, at the given line. If no line is given as an argument it will default to 0. */
-	OpenScript(this: Plugin, script: Instance, lineNumber?: number): void;
+	OpenScript(this: Plugin, script: LuaSourceContainer, lineNumber?: number): void;
 	/** Opens the context help window to the wiki page that `url` links to. */
 	OpenWikiPage(this: Plugin, url: string): void;
-	PauseSound(this: Plugin, soundChannel: Instance): void;
-	PlaySound(this: Plugin, soundChannel: Instance): void;
-	ResumeSound(this: Plugin, soundChannel: Instance): void;
+	PauseSound(this: Plugin, soundChannel: Sound): void;
+	PlaySound(this: Plugin, soundChannel: Sound): void;
+	ResumeSound(this: Plugin, soundChannel: Sound): void;
 	/** Opens an upload window for the user's current selection. */
 	SaveSelectedToRoblox(this: Plugin): void;
 	/** Activates the specified Roblox Studio tool.
@@ -1639,7 +1644,7 @@ interface Plugin extends Instance {
 	SetItem(this: Plugin, key: string, value?: any): void;
 	/** Stores a given value for later use under the given key. The value will persist even after studio is closed. */
 	SetSetting(this: Plugin, key: string, value?: any): void;
-	StartDecalDrag(this: Plugin, decal: Instance): void;
+	StartDecalDrag(this: Plugin, decal: Decal): void;
 	StartDrag(this: Plugin, dragData: object): void;
 	StopAllSounds(this: Plugin): void;
 	/** Unions the given parts and returns the resulting UnionOperation. */
@@ -1657,7 +1662,7 @@ interface Plugin extends Instance {
 	): DockWidgetPluginGui;
 	CreateQWidgetPluginGui(this: Plugin, pluginGuiId: string, pluginGuiOptions: object): Instance | undefined;
 	/** This function prompts the user to open a .fbx animation file that can be loaded onto the _rigModel_, then proceeds to insert the animation as a `KeyframeSequence` in the `Workspace`. */
-	ImportFbxAnimation(this: Plugin, rigModel: Instance, isR15?: boolean): Instance | undefined;
+	ImportFbxAnimation(this: Plugin, rigModel: Model, isR15?: boolean): Instance | undefined;
 	/** Prompts the user to open a .fbx file, uploads the individual components of the model as meshes, and generates a character rig for use in animation, which is loaded into the `Workspace`. */
 	ImportFbxRig(this: Plugin, isR15?: boolean): Model;
 	/** Opens a window in Roblox Studio, which prompts the user to select an asset based on the _assetType_ specified. Returns what assetId was selected, or -1 if the window was closed. */
@@ -2277,7 +2282,7 @@ interface ScriptContext extends Instance {
 	/** Limits how long a script is allowed to run without yielding. */
 	SetTimeout(this: ScriptContext, seconds: number): void;
 	/** Fired when an error occurs. */
-	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: Instance) => void>;
+	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: LuaSourceContainer) => void>;
 }
 
 /** A ScriptDebugger is used to handle the debugging of a specific script. It can be retrieved from the `DebuggerManager`. */
@@ -3219,9 +3224,9 @@ interface TestService extends Instance {
 	 */
 	Run(this: TestService): void;
 	/** Fired when the server should collect a conditional test result. */
-	readonly ServerCollectConditionalResult: RBXScriptSignal<(condition: boolean, text: string, script: Instance, line: number) => void>;
+	readonly ServerCollectConditionalResult: RBXScriptSignal<(condition: boolean, text: string, script: LuaSourceContainer, line: number) => void>;
 	/** Fired when the server should collect a test result. */
-	readonly ServerCollectResult: RBXScriptSignal<(text: string, script: Instance, line: number) => void>;
+	readonly ServerCollectResult: RBXScriptSignal<(text: string, script: LuaSourceContainer, line: number) => void>;
 }
 
 interface VersionControlService extends Instance {

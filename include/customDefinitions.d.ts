@@ -1,5 +1,4 @@
 interface AnimationController extends Instance {
-	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 	GetPlayingAnimationTracks(this: AnimationController): Array<AnimationTrack>;
 	LoadAnimation(this: AnimationController, animation: Animation): AnimationTrack;
 }
@@ -108,13 +107,6 @@ interface Chat extends Instance {
 	FilterStringForBroadcast(this: Chat, stringToFilter: string, playerFrom: Player): string;
 }
 
-interface ClickDetector extends Instance {
-	readonly MouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
-	readonly MouseHoverEnter: RBXScriptSignal<(playerWhoHovered: Player) => void>;
-	readonly MouseHoverLeave: RBXScriptSignal<(playerWhoHovered: Player) => void>;
-	readonly RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
-}
-
 interface CollectionService extends Instance {
 	GetInstanceAddedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetInstanceRemovedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
@@ -128,8 +120,6 @@ interface ContentProvider extends Instance {
 
 /** @rbxts client */
 interface ContextActionService extends Instance {
-	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool) => void>;
-	readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool) => void>;
 	BindAction(
 		this: ContextActionService,
 		actionName: string,
@@ -161,10 +151,6 @@ interface DataStoreService extends Instance {
 interface Dialog extends Instance {
 	readonly DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
 	GetCurrentPlayers(this: Dialog): Array<Player>;
-}
-
-interface FlagStand extends Part {
-	readonly FlagCaptured: RBXScriptSignal<(player: Player) => void>;
 }
 
 interface GamePassService extends Instance {
@@ -258,8 +244,8 @@ interface GuiObject extends GuiBase2d {
 
 /** @rbxts client */
 interface GuiService extends Instance {
-	AddSelectionParent(this: GuiService, selectionName: string, selectionParent: Instance): void;
-	AddSelectionTuple(this: GuiService, selectionName: string, selections: Array<any>): void;
+	AddSelectionParent(this: GuiService, selectionName: string, selectionParent: GuiObject): void;
+	AddSelectionTuple(this: GuiService, selectionName: string, selections: Array<GuiObject>): void;
 	InspectPlayerFromHumanoidDescription(
 		this: GuiService,
 		humanoidDescription: HumanoidDescription,
@@ -306,17 +292,10 @@ interface Humanoid extends Instance {
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
 	readonly Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
-	ApplyDescription(this: Humanoid, humanoidDescription: HumanoidDescription): void;
 	GetAppliedDescription(this: Humanoid): HumanoidDescription;
 	GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
 	LoadAnimation(this: Humanoid, animation: Animation): AnimationTrack;
-	AddAccessory(this: Humanoid, accessory: Accessory): void;
-	EquipTool(this: Humanoid, tool: Tool): void;
 	GetAccessories(this: Humanoid): Array<Accessory>;
-	GetLimb(this: Humanoid, part: BasePart): Enum.Limb;
-	GetBodyPartR15(this: Humanoid, part: BasePart): Enum.BodyPartR15;
-	MoveTo(this: Humanoid, location: Vector3, part?: BasePart): void;
-	ReplaceBodyPartR15(this: Humanoid, bodyPart: Enum.BodyPartR15, part: BasePart): boolean;
 }
 
 interface InsertService extends Instance {
@@ -342,8 +321,6 @@ interface Instance {
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
 
-	FindFirstAncestor(this: Instance, name: string): Instance | undefined;
-	FindFirstChild(this: Instance, name: string, recursive?: boolean): Instance | undefined;
 	WaitForChild(this: Instance, childName: string): Instance;
 	WaitForChild(this: Instance, childName: string, timeOut: number): Instance | undefined;
 
@@ -382,8 +359,6 @@ interface JointInstance extends Instance {
 }
 
 interface Keyframe extends Instance {
-	AddPose(this: Keyframe, pose: Pose): void;
-	RemovePose(this: Keyframe, pose: Pose): void;
 	GetPoses(this: Keyframe): Array<Pose>;
 	AddMarker(this: Keyframe, marker: KeyframeMarker): void;
 	RemoveMarker(this: Keyframe, marker: KeyframeMarker): void;
@@ -391,14 +366,10 @@ interface Keyframe extends Instance {
 }
 
 interface KeyframeSequence extends Instance {
-	AddKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
 	GetKeyframes(this: KeyframeSequence): Array<Keyframe>;
-	RemoveKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
 }
 
 interface KeyframeSequenceProvider extends Instance {
-	RegisterActiveKeyframeSequence(this: KeyframeSequenceProvider, keyframeSequence: KeyframeSequence): string;
-	RegisterKeyframeSequence(this: KeyframeSequenceProvider, keyframeSequence: KeyframeSequence): string;
 	GetAnimations(this: KeyframeSequenceProvider, userId: number): InventoryPages;
 	GetKeyframeSequenceAsync(this: KeyframeSequenceProvider, assetId: string): KeyframeSequence;
 }
@@ -422,10 +393,10 @@ interface LogService extends Instance {
 interface ServiceProvider extends Instance {
 	readonly ServiceAdded: RBXScriptSignal<(service: Services[keyof Services]) => void>;
 	readonly ServiceRemoving: RBXScriptSignal<(service: Services[keyof Services]) => void>;
+	FindService(this: ServiceProvider, className: string): Services[keyof Services] | undefined;
 	FindService(this: ServiceProvider, className: string): Instance | undefined;
 	GetService<T extends keyof Services>(this: ServiceProvider, className: T): Services[T];
 	GetService(this: ServiceProvider, className: string): Services[keyof Services] | undefined;
-	FindService(this: ServiceProvider, className: string): Services[keyof Services] | undefined;
 }
 
 interface CompressorSoundEffect extends SoundEffect {
@@ -439,16 +410,6 @@ interface DataModel extends ServiceProvider {
 
 interface MarketplaceService extends Instance {
 	ProcessReceipt: (receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision;
-	readonly PromptGamePassPurchaseFinished: RBXScriptSignal<
-		(player: Player, gamePassId: number, wasPurchased: boolean) => void
-	>;
-	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
-	readonly PromptSubscriptionCancellationFinished: RBXScriptSignal<
-		(player: Player, subscriptionId: number, wasCanceled: boolean) => void
-	>;
-	readonly PromptSubscriptionPurchaseFinished: RBXScriptSignal<
-		(player: Player, subscriptionId: number, wasPurchased: boolean) => void
-	>;
 	GetProductInfo(
 		this: MarketplaceService,
 		assetId: number,
@@ -464,7 +425,6 @@ interface MarketplaceService extends Instance {
 		assetId: number,
 		infoType: CastsToEnum<Enum.InfoType.GamePass>,
 	): AssetProductInfo;
-	PromptGamePassPurchase(this: MarketplaceService, player: Player, gamePassId: number): void;
 	PromptProductPurchase(
 		this: MarketplaceService,
 		player: Player,
@@ -479,7 +439,6 @@ interface MarketplaceService extends Instance {
 		equipIfPurchased?: boolean,
 		currencyType?: CastsToEnum<Enum.CurrencyType>,
 	): void;
-	PlayerOwnsAsset(this: MarketplaceService, player: Player, assetId: number): boolean;
 	GetDeveloperProductsAsync(
 		this: MarketplaceService,
 	): StandardPages<{
@@ -489,12 +448,10 @@ interface MarketplaceService extends Instance {
 		IconImageAssetId: number;
 		Name: string;
 	}>;
-	PromptSubscriptionCancellation(this: MarketplaceService, player: Player, subscriptionId: number): void;
-	PromptSubscriptionPurchase(this: MarketplaceService, player: Player, subscriptionId: number): void;
 }
 
 interface Model extends PVInstance {
-	PrimaryPart?: BasePart;
+	PrimaryPart: BasePart | undefined;
 	GetBoundingBox(this: Model): LuaTuple<[CFrame, Vector3]>;
 }
 
@@ -519,10 +476,7 @@ interface PathfindingService extends Instance {
 }
 
 interface PhysicsService extends Instance {
-	CollisionGroupContainsPart(this: PhysicsService, name: string, part: BasePart): boolean;
 	GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
-	CollisionGroupContainsPart(this: PhysicsService, name: string, part: BasePart): boolean;
-	SetPartCollisionGroup(this: PhysicsService, part: BasePart, name: string): void;
 }
 
 interface Plugin extends Instance {
@@ -566,25 +520,12 @@ interface PluginToolbar extends Instance {
 	): PluginToolbarButton;
 }
 
-interface VehicleSeat extends BasePart {
-	Sit(this: VehicleSeat, humanoid: Humanoid): void;
-}
-
 interface NetworkClient extends NetworkPeer {
 	readonly ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: ClientReplicator) => void>;
 }
 
 interface NetworkReplicator extends Instance {
 	GetPlayer(this: NetworkReplicator): Player;
-}
-
-interface Seat extends Part {
-	Sit(this: Seat, humanoid: Humanoid): void;
-}
-
-interface SkateboardPlatform extends Part {
-	readonly Equipped: RBXScriptSignal<(humanoid: Humanoid, skateboardController: SkateboardController) => void>;
-	readonly Unequipped: RBXScriptSignal<(humanoid: Humanoid) => void>;
 }
 
 interface Player extends Instance {
@@ -620,9 +561,6 @@ interface HumanoidDescription extends Instance {}
 interface Players extends Instance {
 	/** @rbxts client */
 	readonly LocalPlayer: Player;
-	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
-	readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
-
 	GetPlayerByUserId(this: Players, userId: number): Player | undefined;
 
 	GetPlayerFromCharacter(this: Players, character: Model): Player | undefined;
@@ -668,15 +606,8 @@ interface RunService extends Instance {
 	BindToRenderStep(this: RunService, name: string, priority: number, callback: (deltaTime: number) => void): void;
 }
 
-interface Pose extends Instance {
-	AddSubPose(this: Pose, pose: Pose): void;
-	RemoveSubPose(this: Pose, pose: Pose): void;
-}
-
 interface SocialService extends Instance {
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
-	CanSendGameInviteAsync(this: SocialService, targetPlayer: Player): boolean;
-	PromptGameInvite(this: SocialService, targetPlayer: Player): void;
 }
 
 interface SoundService extends Instance {
@@ -722,8 +653,6 @@ interface SurfaceGui extends LayerCollector {
 }
 
 interface Team extends Instance {
-	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
-	readonly PlayerRemoved: RBXScriptSignal<(player: Player) => void>;
 	GetPlayers(this: Team): Array<Player>;
 }
 
@@ -814,31 +743,20 @@ interface Terrain extends BasePart {
 	): void;
 }
 
-interface Tool extends BackpackItem {
-	readonly Equipped: RBXScriptSignal<(mouse: Mouse) => void>;
-}
-
 interface UIPageLayout extends UIGridStyleLayout {
 	readonly PageEnter: RBXScriptSignal<(page: GuiObject) => void>;
 	readonly PageLeave: RBXScriptSignal<(page: GuiObject) => void>;
-	readonly Stopped: RBXScriptSignal<(currentPage: GuiObject) => void>;
+	readonly Stopped: RBXScriptSignal<(page: GuiObject) => void>;
 	JumpTo(this: UIPageLayout, page: GuiObject): void;
-}
-
-interface Explosion extends Instance {
-	readonly Hit: RBXScriptSignal<(part: BasePart, distance: number) => void>;
 }
 
 interface Dragger extends Instance {
 	MouseDown(this: Dragger, mousePart: BasePart, pointOnMousePart: Vector3, parts: Array<BasePart>): void;
 }
+
 interface JointsService extends Instance {
 	SetJoinAfterMoveInstance(this: JointsService, joinInstance: PVInstance): void;
 	SetJoinAfterMoveTarget(this: JointsService, joinTarget: PVInstance): void;
-}
-
-interface GuiButton extends GuiObject {
-	readonly Activated: RBXScriptSignal<(inputObject: InputObject) => void>;
 }
 
 interface TextBox extends GuiObject {
@@ -972,7 +890,7 @@ interface Workspace extends WorldRoot {
  */
 interface ValueBase extends Instance {
 	/** The value this object holds. */
-	Value?: unknown;
+	Value: unknown;
 	/**
 	 * This event fires whenever the `Value` property is changed.
 	 *
@@ -983,12 +901,6 @@ interface ValueBase extends Instance {
 
 interface ObjectValue extends ValueBase {
 	readonly Changed: RBXScriptSignal<(value?: Instance) => void>;
-}
-
-interface MultipleDocumentInterfaceInstance extends Instance {
-	readonly FocusedDataModelSession?: DataModelSession;
-	readonly DataModelSessionEnded: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
-	readonly DataModelSessionStarted: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
 }
 
 interface Pages<T = unknown> extends Instance {
