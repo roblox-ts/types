@@ -38,8 +38,6 @@ type StrictInstances = {
 			: { ClassName: Key });
 };
 
-type X = StrictInstances["Part"] & unknown;
-
 /** Given an Instance `T`, returns a unioned type of all property names, except "ClassName". */
 type GetProperties<T extends Instance> = {
 	[Key in keyof T]-?: Key extends "GetPropertyChangedSignal" | "ClassName"
