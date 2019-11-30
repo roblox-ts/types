@@ -93,7 +93,7 @@ const ROOT_CLASS_NAME = "<<<ROOT>>>";
 const BAD_NAME_CHARS = [" ", "/"];
 
 /**
- * These classes are tagged as Createable by the API Dump, probably because they are instantiable to CoreScripts.
+ * These classes are tagged as Creatable by the API Dump, probably because they are instantiable to CoreScripts.
  * Developers, however, cannot create these.
  */
 const CREATABLE_BLACKLIST = new Set([
@@ -106,6 +106,8 @@ const CREATABLE_BLACKLIST = new Set([
 	"PhysicsSettings",
 	"Player",
 	"DebuggerWatch",
+	"Tween",
+	"UserGameSettings",
 ]);
 
 const PLUGIN_ONLY_CLASSES = new Set([
