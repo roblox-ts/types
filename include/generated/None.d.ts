@@ -14,7 +14,6 @@ interface Services {
 	ControllerService: ControllerService;
 	DataStoreService: DataStoreService;
 	Debris: Debris;
-	FriendService: FriendService;
 	GamePassService: GamePassService;
 	GroupService: GroupService;
 	GuiService: GuiService;
@@ -5617,12 +5616,6 @@ interface ForceField extends Instance {
 	 * One use for this property is replacing the default particle effect with a custom effect using `ParticleEmitter`s.
 	 */
 	Visible: boolean;
-}
-
-/** A service which is used to send, cancel, accept and decline friend requests in-game. It is primarily used by the PlayerListScript to send friend requests with the leaderboard. */
-interface FriendService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "FriendService";
 }
 
 /** The GamePassService is a service that supports legacy game passes using  *Asset IDs*. `MarketplaceService` should be used for all new game passes.
