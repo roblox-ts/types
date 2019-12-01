@@ -170,6 +170,7 @@ const CLASS_BLACKLIST = new Set([
 	"DraftsService",
 	"FlagStandService",
 	"FlyweightService",
+	"FriendService",
 	"GamepadService",
 	"Geometry",
 	"GoogleAnalyticsConfiguration",
