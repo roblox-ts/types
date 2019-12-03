@@ -2796,6 +2796,7 @@ interface Studio extends Instance {
 	readonly ["Show Plugin GUI Service in Explorer"]: boolean;
 	/** If set to true, certain internal error messages regarding the QT framework that Roblox uses will be shown in the output. */
 	readonly ["Show QT warnings in output"]: boolean;
+	readonly ["Show Roblox Plugin GUI Service in Explorer"]: boolean;
 	readonly ["Show plus button on hover in Explorer"]: boolean;
 	readonly ["Skip Closing Brackets and Quotes"]: boolean;
 	/** Specifies the color of strings in the script editor. */
