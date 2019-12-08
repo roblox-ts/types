@@ -43,15 +43,6 @@ jobs:
             echo "Generated files changed!"
             git commit -m "Update generated files [skip ci]"
             git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:master
-
-            npm run typedoc
-
-            git add -A
-            if ! git diff-index --quiet HEAD --; then
-              echo "Typedoc changed!"
-              git commit -m "Update typedoc files [skip ci]"
-              git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:master
-            fi
           fi
 
       - name: Copy files to deploy branch
