@@ -45,19 +45,15 @@ const REFLECTION_METADATA_URL = BASE_URL + "ReflectionMetadata.xml";
 	console.log("\tGenerating classes..");
 
 	const definedClassNames = new Set<string>();
-	const generatorTasks = new Array<Promise<void>>();
 	for (let i = 0; i < SECURITY_LEVELS.length; i++) {
-		generatorTasks.push(
-			new ClassGenerator(
-				path.join(targetDir, "generated", SECURITY_LEVELS[i] + ".d.ts"),
-				reflectionMetadata,
-				definedClassNames,
-				SECURITY_LEVELS[i],
-				SECURITY_LEVELS[i - 1],
-			).generate(api.Classes),
-		);
+		await new ClassGenerator(
+			path.join(targetDir, "generated", SECURITY_LEVELS[i] + ".d.ts"),
+			reflectionMetadata,
+			definedClassNames,
+			SECURITY_LEVELS[i],
+			SECURITY_LEVELS[i - 1],
+		).generate(api.Classes)
 	}
-	await Promise.all(generatorTasks);
 
 	console.log(`\tDone! (${classTimer.get()}ms)`);
 
