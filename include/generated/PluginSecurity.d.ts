@@ -904,6 +904,10 @@ interface NetworkSettings extends Instance {
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly FreeMemoryMBytes: number;
+	/** [NO DOCUMENTATION] */
+	readonly HttpProxyEnabled: boolean;
+	/** [NO DOCUMENTATION] */
+	readonly HttpProxyURL: string;
 	/** IncommingReplicationLag is a property that allows you to simulate high-latency situations. It adds a delay time between when packets are actually sent and received. The property is measured in seconds, and defaults to 0. */
 	readonly IncommingReplicationLag: number;
 	/** .The purpose of this property is unknown, as it does not appear to be used anywhere in the engine. */
@@ -1282,10 +1286,6 @@ interface NetworkSettings extends Instance {
 	 * ---
 	 */
 	readonly PrintTouches: boolean;
-	/** [NO DOCUMENTATION] */
-	readonly ProxyEnabled: boolean;
-	/** [NO DOCUMENTATION] */
-	readonly ProxyURL: string;
 	/** ReceiveRate controls the maximum rate per second at which the network replicator is willing to receive packets. */
 	readonly ReceiveRate: number;
 	/** ![RenderStreamedRegions in action!][1]
