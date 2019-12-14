@@ -24,8 +24,7 @@ jobs:
           node-version: 12.x
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install node_modules
-        run: npm ci
+      - uses: bahmutov/npm-install@v1
 
       - name: Configure Git
         run: |
