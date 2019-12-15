@@ -184,6 +184,20 @@ interface String extends Iterable<string> {
 	 * If this value is not specified, the substring continues to the end of stringObj.
 	 */
 	slice(this: string, start: number, end?: number): string;
+
+	/**
+	 * Returns the index of the first occurrence of a value in a string, else returns -1.
+	 * @param searchElement The value to locate in the string.
+	 * @param fromIndex The string index at which to begin the search. If fromIndex is omitted, the search starts at index 0.
+	 */
+	indexOf(this: string, searchElement: string, fromIndex?: number): number;
+
+	/**
+	 * Returns whether a string includes a certain string.
+	 * @param searchElement The element to search for.
+	 * @param fromIndex The position in this string at which to begin searching for searchElement.
+	 */
+	includes(this: string, searchElement: string, fromIndex?: number): boolean;
 }
 
 interface Symbol {
@@ -580,14 +594,22 @@ interface Array<T> extends ReadonlyArray<T> {
 }
 
 interface ArrayConstructor {
-	/** Instantiates a new array.
-	 * If length is provided, roblox-TS will load `length` amount of nil's into the new array.
-	 * Note that this does not affect the `length` property of the array,
+	/** Instantiates a new empty array.
+	 */
+	new <T>(): Array<T>;
+
+	/** Instantiates a new preallocated array.
+	 * If length is provided, there will be allocated `length` amount of nil's into the new array.
+	 * If value is provided, instead of nil, the value will be allocated instead.
+	 * Note that this does not affect the `length` property of the array if no `value` is provided.
 	 * it only keeps it from needing to resize to this `length` later.
 	 *
-	 * @param length A literal integer between 0 and 200 inclusive, which is the number of nil's to push onto the array
+	 * This is the same as `table.create` in Lua.
+	 *
+	 * @param length The length of the array to allocate
+	 * @param value The value that the array will be filled with (amount based on `length`) (defaults to `nil`)
 	 */
-	new <T>(length?: number): Array<T>;
+	new <T>(length: number, value?: T): Array<T>;
 }
 
 declare const Array: ArrayConstructor;
