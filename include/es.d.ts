@@ -3,15 +3,42 @@
 /** unknown - undefined = defined */
 type defined = {};
 
+/**
+ * **DO NOT USE!** This type only exists because TypeScript requires it!
+ *
+ * **Use `boolean` instead!**
+ */
 interface Boolean {}
+/** **DO NOT USE!** This type only exists because TypeScript requires it! */
 interface IArguments {}
+/**
+ * **DO NOT USE!** This type only exists because TypeScript requires it!
+ *
+ * **Use `number` instead!**
+ */
 interface Number {}
 interface Object {}
+/** **DO NOT USE!** This type only exists because TypeScript requires it! */
 interface RegExp {}
+/**
+ * **DO NOT USE!** This type only exists because TypeScript requires it!
+ *
+ * **Use the arrow function form instead!**
+ *
+ * For example,`(a: string, b: number) => boolean` represents a function that takes a `string` and a `number` and
+ * returns a `boolean`.
+ *
+ * More generally, `(a: A, b: B, c: C) => R`, where `A`, `B`, and `C` are different function argument types and `R` is
+ * the return type.
+ *
+ * You can use `void` as a return type for functions that do not return anything: `() => void`
+ */
 interface Function {
 	prototype: never;
 }
+/** **DO NOT USE!** This type only exists because TypeScript requires it! */
 interface CallableFunction extends Function {}
+/** **DO NOT USE!** This type only exists because TypeScript requires it! */
 interface NewableFunction extends Function {}
 
 /** @rbxts array */
@@ -65,9 +92,9 @@ interface ObjectConstructor {
 		o: T,
 	): T extends Array<any>
 		? Array<number>
-		: T extends Set<infer U>
+		: T extends ReadonlySet<infer U>
 		? Array<U>
-		: T extends Map<infer K, any>
+		: T extends ReadonlyMap<infer K, any>
 		? Array<K>
 		: T extends ArrayLike<any>
 		? Array<number>
@@ -82,9 +109,9 @@ interface ObjectConstructor {
 		o: T,
 	): T extends Array<infer U>
 		? Array<NonNullable<U>>
-		: T extends Set<any>
+		: T extends ReadonlySet<any>
 		? Array<true>
-		: T extends Map<any, infer V>
+		: T extends ReadonlyMap<any, infer V>
 		? Array<NonNullable<V>>
 		: T extends ArrayLike<infer W>
 		? Array<NonNullable<W>>
@@ -99,9 +126,9 @@ interface ObjectConstructor {
 		o: T,
 	): T extends Array<infer U>
 		? Array<[number, NonNullable<U>]>
-		: T extends Set<infer E>
+		: T extends ReadonlySet<infer E>
 		? Array<[E, true]>
-		: T extends Map<infer K, infer V>
+		: T extends ReadonlyMap<infer K, infer V>
 		? Array<[K, NonNullable<V>]>
 		: T extends ArrayLike<infer W>
 		? Array<[number, NonNullable<W>]>
