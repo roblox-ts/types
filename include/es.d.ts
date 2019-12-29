@@ -3,15 +3,42 @@
 /** unknown - undefined = defined */
 type defined = {};
 
+/**
+ * **DO NOT USE!** This type only exists because TypeScript requires it!
+ *
+ * **Use `boolean` instead!**
+ */
 interface Boolean {}
+/** **DO NOT USE!** This type only exists because TypeScript requires it! */
 interface IArguments {}
+/**
+ * **DO NOT USE!** This type only exists because TypeScript requires it!
+ *
+ * **Use `number` instead!**
+ */
 interface Number {}
 interface Object {}
+/** **DO NOT USE!** This type only exists because TypeScript requires it! */
 interface RegExp {}
+/**
+ * **DO NOT USE!** This type only exists because TypeScript requires it!
+ *
+ * **Use the arrow function form instead!**
+ *
+ * For example,`(a: string, b: number) => boolean` represents a function that takes a `string` and a `number` and
+ * returns a `boolean`.
+ *
+ * More generally, `(a: A, b: B, c: C) => R`, where `A`, `B`, and `C` are different function argument types and `R` is
+ * the return type.
+ *
+ * You can use `void` as a return type for functions that do not return anything: `() => void`
+ */
 interface Function {
 	prototype: never;
 }
+/** **DO NOT USE!** This type only exists because TypeScript requires it! */
 interface CallableFunction extends Function {}
+/** **DO NOT USE!** This type only exists because TypeScript requires it! */
 interface NewableFunction extends Function {}
 
 /** @rbxts array */
