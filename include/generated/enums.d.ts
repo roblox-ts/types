@@ -1700,9 +1700,17 @@ declare namespace Enum {
 
 		export const Orbital: Orbital;
 
+		export interface CameraToggle {
+			Name: "CameraToggle";
+			Value: 4;
+			EnumType: EnumType<ComputerCameraMovementMode>;
+		}
+
+		export const CameraToggle: CameraToggle;
+
 		export function GetEnumItems(this: defined): Array<ComputerCameraMovementMode>
 	}
-	export type ComputerCameraMovementMode = ComputerCameraMovementMode.Default | ComputerCameraMovementMode.Follow | ComputerCameraMovementMode.Classic | ComputerCameraMovementMode.Orbital;
+	export type ComputerCameraMovementMode = ComputerCameraMovementMode.Default | ComputerCameraMovementMode.Follow | ComputerCameraMovementMode.Classic | ComputerCameraMovementMode.Orbital | ComputerCameraMovementMode.CameraToggle;
 	export namespace ComputerMovementMode {
 		export interface Default {
 			Name: "Default";
@@ -2492,9 +2500,17 @@ declare namespace Enum {
 
 		export const Orbital: Orbital;
 
+		export interface CameraToggle {
+			Name: "CameraToggle";
+			Value: 4;
+			EnumType: EnumType<DevComputerCameraMovementMode>;
+		}
+
+		export const CameraToggle: CameraToggle;
+
 		export function GetEnumItems(this: defined): Array<DevComputerCameraMovementMode>
 	}
-	export type DevComputerCameraMovementMode = DevComputerCameraMovementMode.UserChoice | DevComputerCameraMovementMode.Classic | DevComputerCameraMovementMode.Follow | DevComputerCameraMovementMode.Orbital;
+	export type DevComputerCameraMovementMode = DevComputerCameraMovementMode.UserChoice | DevComputerCameraMovementMode.Classic | DevComputerCameraMovementMode.Follow | DevComputerCameraMovementMode.Orbital | DevComputerCameraMovementMode.CameraToggle;
 	export namespace DevComputerMovementMode {
 		export interface UserChoice {
 			Name: "UserChoice";

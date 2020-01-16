@@ -1413,6 +1413,8 @@ interface PhysicsSettings extends Instance {
 	 * Each physically simulated object will check to see which player is closest to that object, and if they are within the player's simulation radius. If both conditions are met, that player will becomes the network owner of that object.When set to true, a cylinder is drawn around each `Player`'s character, representing their [Player.SimulationRadius](https://developer.roblox.com/api-reference/property/Player/SimulationRadius).
 	 */
 	readonly AreRegionsShown: boolean;
+	/** [NO DOCUMENTATION] */
+	readonly AreTerrainReplicationRegionsShown: boolean;
 	/** When set to true, parts that aren't aligned on the 1x1x1 grid will be outlined yellow. */
 	readonly AreUnalignedPartsShown: boolean;
 	/** An ancient property that hasn't worked correctly since late 2007.
