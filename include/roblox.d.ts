@@ -1518,7 +1518,7 @@ interface CheckablePrimitives {
 	boolean: boolean;
 	string: string;
 	number: number;
-	table: object & Array<unknown>;
+	table: object;
 	userdata: unknown;
 	function: Callback;
 	thread: thread;
