@@ -11089,6 +11089,7 @@ interface MarketplaceService extends Instance {
 	readonly ClassName: "MarketplaceService";
 	/** Used to prompt a user to purchase a game pass with the given assetId. */
 	PromptGamePassPurchase(this: MarketplaceService, player: Player, gamePassId: number): void;
+	PromptPremiumPurchase(this: MarketplaceService, player: Player): void;
 	/** Used to prompt a user to purchase a product with the given product id. */
 	PromptProductPurchase(
 		this: MarketplaceService,
@@ -11260,6 +11261,7 @@ interface MarketplaceService extends Instance {
 	 *    [MarketplaceService.PromptPurchaseFinished](https://developer.roblox.com/api-reference/event/MarketplaceService/PromptPurchaseFinished).
 	 */
 	readonly PromptGamePassPurchaseFinished: RBXScriptSignal<(player: Player, gamePassId: number, wasPurchased: boolean) => void>;
+	readonly PromptPremiumPurchaseFinished: RBXScriptSignal<() => void>;
 	/** PromptPurchaseFinished fires when a purchase dialogue of an affiliate gear sale or other asset is closed. This fires right as the dialogue closes when the player presses "Cancel" at the prompt, or "OK" at the success/error message.
 	 * 
 	 * * For **game passes**, use [MarketplaceService.PromptGamePassPurchaseFinished](https://developer.roblox.com/api-reference/event/MarketplaceService/PromptGamePassPurchaseFinished).
@@ -14842,6 +14844,7 @@ interface Players extends Instance {
 	 *  - This event does not work as expected in *solo mode*, because the player is created before scripts that connect to PlayerAdded run. To handle this case, as well as cases in which the script is added into the game after a player enters, create an OnPlayerAdded function that you can call to handle a player's entrance.
 	 */
 	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
+	readonly PlayerMembershipChanged: RBXScriptSignal<(player: Player) => void>;
 	/** The PlayerRemoving event fires right before a `Player` is leaves the game. This event fires before [ChildRemoved](https://developer.roblox.com/api-reference/event/Instance/ChildRemoved) does on `Players`, and behaves somewhat similarly to [Instance.DescendantRemoving](https://developer.roblox.com/api-reference/event/Instance/DescendantRemoving). Since event fires before the actual removal of a `Player`, this event is useful to store player data using a `GlobalDataStore`.
 	 * 
 	 * This can be used alongside the [Player.PlayerAdded](https://developer.roblox.com/search#stq=PlayerAdded) event, which fires when a player joins the game. For instance, if you would like print a message every time a new player joins or leaves the game:
