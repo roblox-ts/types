@@ -888,7 +888,7 @@ interface PromiseLike<T> {
 	 */
 	then<TResult1 = T, TResult2 = never>(
 		this: PromiseLike<T>,
-		onResolved?: ((value: T) => TResult1 | PromiseLike<TResult1>) | void,
+		onResolved?: ((value: T extends LuaTuple<infer U> ? U : [T]) => TResult1 | PromiseLike<TResult1>) | void,
 		onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | void,
 	): PromiseLike<TResult1 | TResult2>;
 }
@@ -905,7 +905,7 @@ interface Promise<T> {
 	 */
 	then<TResult1 = T, TResult2 = never>(
 		this: Promise<T>,
-		onResolved?: ((value: T) => TResult1 | PromiseLike<TResult1>) | void,
+		onResolved?: ((value: T extends LuaTuple<infer U> ? U : [T]) => TResult1 | PromiseLike<TResult1>) | void,
 		onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | void,
 	): Promise<TResult1 | TResult2>;
 
