@@ -907,7 +907,7 @@ interface Pages<T = unknown> extends Instance {
 	GetCurrentPage(this: Pages): Array<T>;
 }
 
-interface DataStorePages extends Pages<{ key: string; value: any }> {}
+interface DataStorePages extends Pages<{ key: string; value: unknown }> {}
 
 interface FriendPages
 	extends Pages<{ AvatarFinal: boolean; AvatarUri: string; Id: number; Username: string; IsOnline: boolean }> {}

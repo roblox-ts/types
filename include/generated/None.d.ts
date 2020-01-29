@@ -13598,7 +13598,7 @@ interface Pages<T = unknown> extends Instance {
 }
 
 /** A special type of `Pages` object whose pages contain key/value pairs from an `OrderedDataStore`. For this object, [GetCurrentPage()](https://developer.roblox.com/api-reference/function/Pages/GetCurrentPage) returns an array of tables, each containing keys named **key** and **value**; these reflect the key/value pair data. */
-interface DataStorePages extends Pages<{ key: string; value: any }> {
+interface DataStorePages extends Pages<{ key: string; value: unknown }> {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DataStorePages";
 }
