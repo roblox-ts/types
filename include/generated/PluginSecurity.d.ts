@@ -2285,6 +2285,8 @@ interface ScriptContext extends Instance {
 	SetTimeout(this: ScriptContext, seconds: number): void;
 	/** Fired when an error occurs. */
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: LuaSourceContainer) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly ErrorDetailed: RBXScriptSignal<(message: string, stackTrace: string, script: LuaSourceContainer, details: string) => void>;
 }
 
 /** A ScriptDebugger is used to handle the debugging of a specific script. It can be retrieved from the `DebuggerManager`. */
@@ -2932,6 +2934,10 @@ interface StudioService extends Instance {
 	UninstallPlugin(this: StudioService, assetId: number): void;
 	/** [NO DOCUMENTATION] */
 	UpdatePluginManagement(this: StudioService): void;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	LaunchBulkImport(this: StudioService, assetTypeToImport: number): number;
 	/** 
 	 * Tags: Yields
 	
