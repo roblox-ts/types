@@ -2980,9 +2980,17 @@ declare namespace Enum {
 
 		export const ScriptRemoved: ScriptRemoved;
 
+		export interface DraftCommitted {
+			Name: "DraftCommitted";
+			Value: 3;
+			EnumType: EnumType<DraftStatusCode>;
+		}
+
+		export const DraftCommitted: DraftCommitted;
+
 		export function GetEnumItems(this: defined): Array<DraftStatusCode>
 	}
-	export type DraftStatusCode = DraftStatusCode.OK | DraftStatusCode.DraftOutdated | DraftStatusCode.ScriptRemoved;
+	export type DraftStatusCode = DraftStatusCode.OK | DraftStatusCode.DraftOutdated | DraftStatusCode.ScriptRemoved | DraftStatusCode.DraftCommitted;
 	export namespace EasingDirection {
 		export interface In {
 			Name: "In";

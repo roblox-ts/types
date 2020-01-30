@@ -12893,6 +12893,7 @@ interface Terrain extends BasePart {
 	FillCylinder(this: Terrain, cframe: CFrame, height: number, radius: number, material: CastsToEnum<Enum.Material>): void;
 	/** Fills a [Region3](https://developer.roblox.com/api-reference/datatype/Region3) space with smooth terrain. */
 	FillRegion(this: Terrain, region: Region3, resolution: number, material: CastsToEnum<Enum.Material>): void;
+	FillWedge(this: Terrain, cframe: CFrame, size: Vector3, material: CastsToEnum<Enum.Material>): void;
 	/** Returns the current terrain material color for the specified terrain material. */
 	GetMaterialColor(this: Terrain, material: CastsToEnum<Enum.Material>): Color3;
 	/** Applies a chunk of terrain to the Terrain object. Note: `TerrainRegion` data does not replicate between server and client. */
@@ -16148,6 +16149,13 @@ interface Sound extends Instance {
 	 * This property should not be confused with [Sound.IsPlaying](https://developer.roblox.com/api-reference/property/Sound/IsPlaying) which is a read-only property. Playing can be set to true or false to start or stop the playback of a sound.
 	 * 
 	 * Note that when Playing is set to false, the [Sound.TimePosition](https://developer.roblox.com/api-reference/property/Sound/TimePosition) property of the sound will not reset. This means when the Playing is set to true again the audio will continue from the time position it was at when it was stopped. However, if the [Sound.Play](https://developer.roblox.com/api-reference/function/Sound/Play) function is used to resume the sound the time position will reset to 0.
+	Indicates whether the `Sound` is currently playing. This can be toggled, and this property will always replicate.
+	 * 
+	 * This property should not be confused with [Sound.IsPlaying](https://developer.roblox.com/api-reference/property/Sound/IsPlaying) which is a read-only property. Playing can be set to true or false to start or stop the playback of a sound.
+	 * 
+	 * Note that when Playing is set to false, the [Sound.TimePosition](https://developer.roblox.com/api-reference/property/Sound/TimePosition) property of the sound will not reset. This means when the Playing is set to true again the audio will continue from the time position it was at when it was stopped. However, if the [Sound.Play](https://developer.roblox.com/api-reference/function/Sound/Play) function is used to resume the sound the time position will reset to 0.
+	 *
+	 * Tags: NotReplicated
 	 */
 	Playing: boolean;
 	/** This property sets how 3D `Sound`s attenuate (fade out) as the distance between the listener and the `Sound`'s parent increase. The following code will set RollOffMode to Linear.
@@ -16228,6 +16236,22 @@ interface Sound extends Instance {
 	 * ```
 	 * 
 	 * Setting TimePosition to a value less than zero currently does not influence playback, but this behavior should not be relied upon.
+	Shows the progress in seconds of the `Sound`. Can be changed to move the playback position of the sound. If the sound is already playing then playback will snap to the specified position. If it is not playing the `Sound` will begin playback at the set position when the sound is next played.
+	 * 
+	 * As a `Sound` is played, TimePosition increases at a rate of [Sound.PlaybackSpeed](https://developer.roblox.com/api-reference/property/Sound/PlaybackSpeed) per second. Once TimePosition reaches [Sound.TimeLength](https://developer.roblox.com/api-reference/property/Sound/TimeLength) the Sound will stop unless it is looped. This means, unless [Sound.Looped](https://developer.roblox.com/api-reference/property/Sound/Looped) is set to true setting TimePosition to a value equal or greater to [Sound.TimeLength](https://developer.roblox.com/api-reference/property/Sound/TimeLength) will stop the sound.
+	 * 
+	 * Note that setting TimePositio` to a value greater than the length in a looped track will not cause it to wrap around. If that behavior is desired the developer should do the following.
+	 * 
+	 * ```lua
+	 * if newPosition &gt;= sound.TimeLength then
+	 * 	newPosition = newPosition - sound.TimeLength
+	 * end
+	 * sound.TimePosition = newPosition
+	 * ```
+	 * 
+	 * Setting TimePosition to a value less than zero currently does not influence playback, but this behavior should not be relied upon.
+	 *
+	 * Tags: NotReplicated
 	 */
 	TimePosition: number;
 	/** The volume of the `Sound`. Can be set between 0 and 10. Defaults to 0.5
