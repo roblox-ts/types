@@ -50,6 +50,10 @@ interface ArrayLike<T> {
 	readonly [n: number]: T;
 }
 
+type ToUnaryFunctionUnion<U> = U extends any ? (arg: U) => void : never;
+type _<T> = T;
+type Merge<T> = _<{ [k in keyof T]: T[k] }>;
+
 interface ObjectConstructor {
 	/**
 	 * Copy the values of all of the enumerable own properties from one or more source objects to a target object.
@@ -133,6 +137,21 @@ interface ObjectConstructor {
 		: T extends ArrayLike<infer W>
 		? Array<[number, NonNullable<W>]>
 		: Array<NonNullable<{ [K in keyof T]: [K, NonNullable<T[K]>] }[keyof T]>>;
+
+	/** Creates an object from a set of entries */
+	fromEntries<P extends readonly [string | number | symbol, any]>(
+		i: ReadonlyArray<P>,
+	): Merge<
+		ToUnaryFunctionUnion<
+			P extends any
+				? {
+						[k in P[0]]: P[1];
+				}
+				: never
+		> extends (arg: infer I) => void
+			? I
+			: never
+	>;
 
 	/**
 	 * Returns true if empty, otherwise false.
