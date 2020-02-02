@@ -225,6 +225,20 @@ interface String extends Iterable<string> {
 	 * @param fromIndex The position in this string at which to begin searching for searchElement.
 	 */
 	includes(this: string, searchElement: string, fromIndex?: number): boolean;
+
+	/**
+     * Returns whether the characters at the end of this string match the searchString, starting at position.
+	 * @param searchString The element to search for.
+	 * @param position The position in this string at which to begin searching for searchElement.
+     */
+	endsWith(this: string, searchString: string, endPosition?: number): boolean;
+
+    /**
+     * Returns whether the characters at the beginning of this string match the searchString, starting at position.
+	 * @param searchString The element to search for.
+	 * @param position The position in this string at which to begin searching for searchElement.
+     */
+	startsWith(this: string, searchString: string, position?: number): boolean;
 }
 
 interface Symbol {
@@ -311,7 +325,9 @@ interface IterableIterator<T> extends Iterator<T> {
 	[Symbol.iterator](): IterableIterator<T>;
 }
 
-type IterableFunction<T> = Iterable<T> & (() => T);
+interface IterableFunction<T> extends Iterable<T> {
+	(): T;
+}
 
 /**
  * An array object which cannot be written to.
