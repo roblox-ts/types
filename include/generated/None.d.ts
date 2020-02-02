@@ -28,7 +28,6 @@ interface Services {
 	MessagingService: MessagingService;
 	PathfindingService: PathfindingService;
 	PhysicsService: PhysicsService;
-	PlayerEmulatorService: PlayerEmulatorService;
 	Players: Players;
 	PolicyService: PolicyService;
 	ReplicatedFirst: ReplicatedFirst;
@@ -14566,11 +14565,6 @@ interface Player extends Instance {
 	 * When a teleportation request is made using `TeleportService`, there are a series of stages before the `Player` is teleported. The current stage is represented by the [Enum.TeleportState](https://developer.roblox.com/search#stq=TeleportState) value which is given by OnTeleport. See below for a practical example of this.
 	 */
 	readonly OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
-}
-
-interface PlayerEmulatorService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PlayerEmulatorService";
 }
 
 /** `PlayerScripts` is a container object located inside `Player` objects within the `Players` game service. It is created automatically when a player joins the game. Its main purpose is to contain `LocalScript`s copied from the `StarterPlayerScripts` container within the `StarterPlayer` game service, which happens once upon creation. Descendant `LocalScripts` of `PlayerScripts` will run code on the client of the `Player`.
