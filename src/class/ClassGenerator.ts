@@ -184,6 +184,7 @@ const CLASS_BLACKLIST = new Set([
 	"MouseService",
 	"PartOperationAsset",
 	"PhysicsPacketCache",
+	"PlayerEmulatorService",
 	"ReflectionMetadataItem",
 	"RobloxReplicatedStorage",
 	"RuntimeScriptService",
