@@ -1469,25 +1469,26 @@ declare namespace math {
 	function clamp(n: number, min: number, max: number): number;
 }
 
+/** @rbxts utf8 */
 declare namespace utf8 {
 	/** Receives zero or more codepoints as integers, converts each one to its corresponding UTF-8 byte sequence and returns a string with the concatenation of all these sequences. */
-	function char(...args: Array<number>): string;
+	function char(this: typeof utf8, ...codepoints: Array<number>): string;
 	/** Returns an iterator function that will iterate over all codepoints in string str. It raises an error if it meets any invalid byte sequence. */
-	function codes(str: string): IterableFunction<LuaTuple<[number, number]>>;
-	/** Returns the codepoints (as integers) from all codepoints in the provided string (str) that start between byte positions i and j (both included). The default for i is 1 and for j is i. It raises an error if it meets any invalid byte sequence. */
-	function codepoint(str: string, i?: number, j?: number): LuaTuple<Array<number>>;
-	/** Returns the number of UTF-8 codepoints in the string str that start between positions i and j (both inclusive). The default for i is 1 and for j is -1. If it finds any invalid byte sequence, returns a false value plus the position of the first invalid byte. */
-	function len(s: string, i?: number, j?: number): number;
-	/** Returns the position (in bytes) where the encoding of the n-th codepoint of s (counting from byte position i) starts. A negative n gets characters before position i. The default for i is 1 when n is non-negative and #s + 1 otherwise, so that utf8.offset(s, -n) gets the offset of the n-th character from the end of the string. If the specified character is neither in the subject nor right after its end, the function returns nil. */
-	function offset(s: string, n: number, i?: number): number;
+	function codes(this: typeof utf8, str: string): FirstDecrementedIterableFunction;
+	/** Returns the codepoints (as integers) from all codepoints in the provided string (str) that start between byte positions i and j (both included). The default for i is 0 and for j is i. It raises an error if it meets any invalid byte sequence. Similar to `string.byte`.*/
+	function codepoint(this: typeof utf8, str: string, i?: number, j?: number): LuaTuple<Array<number>>;
+	/** Returns the number of UTF-8 codepoints in the string str that start between positions i and j (both inclusive). The default for i is 0 and for j is -1. If it finds any invalid byte sequence, returns a false value plus the position of the first invalid byte. */
+	function len(this: typeof utf8, s: string, i?: number, j?: number): LuaTuple<[number, undefined] | [false, number]>;
+	/** Returns the position (in bytes) where the encoding of the n-th codepoint of s (counting from byte position i) starts. A negative n gets characters before position i. The default for i is 0 when n is non-negative and #s + 1 otherwise, so that utf8.offset(s, -n) gets the offset of the n-th character from the end of the string. If the specified character is neither in the subject nor right after its end, the function returns nil. */
+	function offset(this: typeof utf8, s: string, n: number, i?: number): number | undefined;
 	/** Returns an iterator function that will iterate the grapheme clusters of the string. */
-	function graphemes(s: string, i?: number, j?: number): IterableFunction<LuaTuple<[number, number]>>;
+	function graphemes(this: typeof utf8, s: string, i?: number, j?: number): DoubleDecrementedIterableFunction;
 	/** Converts the input string to Normal Form C, which tries to convert decomposed characters into composed characters. */
-	function nfcnormalize(str: string): string;
+	function nfcnormalize(this: typeof utf8, str: string): string;
 	/** Converts the input string to Normal Form D, which tries to break up composed characters into decomposed characters. */
-	function nfdnormalize(str: string): string;
+	function nfdnormalize(this: typeof utf8, str: string): string;
 	/** The pattern which matches exactly one UTF-8 byte sequence, assuming that the subject is a valid UTF-8 string. */
-	const charpattern: "[%z-\x7F\xC2-\xF4][\x80-\xBF]";
+	const charpattern: "[%z\x01-\x7F\xC2-\xF4][\x80-\xBF]*";
 }
 
 interface GettableCores {

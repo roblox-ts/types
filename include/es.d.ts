@@ -325,6 +325,14 @@ interface IterableIterator<T> extends Iterator<T> {
 	[Symbol.iterator](): IterableIterator<T>;
 }
 
+interface FirstDecrementedIterableFunction extends Iterable<LuaTuple<[number, number]>> {
+	(): LuaTuple<[number, number]>;
+}
+
+interface DoubleDecrementedIterableFunction extends Iterable<LuaTuple<[number, number]>> {
+	(): LuaTuple<[number, number]>;
+}
+
 interface IterableFunction<T> extends Iterable<T> {
 	(): T;
 }
