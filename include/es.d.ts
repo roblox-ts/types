@@ -140,6 +140,7 @@ interface ObjectConstructor {
 
 	/** Creates an object from a set of entries */
 	fromEntries<P extends readonly [string | number | symbol, any]>(
+		this: ObjectConstructor,
 		i: ReadonlyArray<P>,
 	): Merge<
 		ToUnaryFunctionUnion<
