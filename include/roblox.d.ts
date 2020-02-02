@@ -1446,16 +1446,47 @@ declare const game: DataModel;
 declare const script: LuaSourceContainer;
 declare const shared: object;
 
+type DelayedCallback =
+	/**
+	 * @param delayedTime The amount of time in seconds which elapsed since the function invoking this callback was called
+	 * @param gameTime The total time Roblox Lua has been running
+	 */
+	(delayedTime: number, gameTime: number) => void;
+
 // built-in functions
-declare function delay(delayTime: number, callback: Callback): void;
+
+/** Schedules a function to be executed after delayTime seconds have passed, without yielding the current thread. This function allows multiple Lua threads to be executed in parallel from the same stack. The delay will have a minimum duration of 29 milliseconds, but this minimum may be higher depending on the target framerate and various throttling conditions. If the delayTime parameter is not specified, the minimum duration will be used. */
+declare function delay(delayTime: number, callback: DelayedCallback): void;
+/** Returns how much time has elapsed since the current instance of Roblox was started.
+In Roblox Studio, this begins counting up from the moment Roblox Studio starts running, not just when opening a place.*/
 declare function elapsedTime(): number;
+/** Runs the supplied ModuleScript if it has not been run already, and returns what the ModuleScript returned (in both cases).
+
+If the ModuleScript the user wants to use has been uploaded to Roblox (with the instance’s name being ‘MainModule’), it can be loaded by using the require function on the asset ID of the ModuleScript, though only on the server. */
 declare function require(moduleScript: ModuleScript | number): unknown;
-declare function spawn(callback: Callback): void;
+/** Runs the specified callback function in a separate thread, without yielding the current thread.
+The function will be executed the next time Roblox’s Task Scheduler runs an update cycle. This delay will take at least 29 milliseconds but can arbitrarily take longer, depending on the target framerate and various throttling conditions. */
+declare function spawn(callback: DelayedCallback): void;
 declare function tick(): number;
+/** Time since the game started running. Will be 0 in Studio when not running the game. */
 declare function time(): number;
 declare function UserSettings(): UserSettings;
+/** Returns the current version of Roblox as a string. The integers in the version string are separated by periods, and each integers represent the following, in order:
+
+Generation - The current generation of the application shell that is hosting the client.
+Version - The current release version of Roblox.
+Patch - The current patch number for this version of Roblox.
+Commit - The ID of the last internal commit that was accepted into this version of the client. */
 declare function version(): string;
+/** Yields the current thread until the specified amount of seconds have elapsed.
+The delay will have a minimum duration of 29 milliseconds, but this minimum may be higher depending on the target framerate and various throttling conditions. If the seconds parameter is not specified, the minimum duration will be used.
+This function returns:
+
+Actual time yielded (in seconds)
+Total time since the software was initialized (in seconds) */
 declare function wait(seconds?: number): LuaTuple<[number, number]>;
+/** Behaves identically to Lua’s print function, except the output is styled as a warning, with yellow text and a timestamp.
+This function accepts any number of arguments, and will attempt to convert them into strings which will then be joined together with spaces between them. */
 declare function warn(...params: Array<any>): void;
 
 // math functions
