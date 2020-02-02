@@ -50,6 +50,10 @@ interface ArrayLike<T> {
 	readonly [n: number]: T;
 }
 
+type ToUnaryFunctionUnion<U> = U extends any ? (arg: U) => void : never;
+type _<T> = T;
+type Merge<T> = _<{ [k in keyof T]: T[k] }>;
+
 interface ObjectConstructor {
 	/**
 	 * Copy the values of all of the enumerable own properties from one or more source objects to a target object.
@@ -133,6 +137,22 @@ interface ObjectConstructor {
 		: T extends ArrayLike<infer W>
 		? Array<[number, NonNullable<W>]>
 		: Array<NonNullable<{ [K in keyof T]: [K, NonNullable<T[K]>] }[keyof T]>>;
+
+	/** Creates an object from a set of entries */
+	fromEntries<P extends readonly [string | number | symbol, any]>(
+		this: ObjectConstructor,
+		i: ReadonlyArray<P>,
+	): Merge<
+		ToUnaryFunctionUnion<
+			P extends any
+				? {
+						[k in P[0]]: P[1];
+				}
+				: never
+		> extends (arg: infer I) => void
+			? I
+			: never
+	>;
 
 	/**
 	 * Returns true if empty, otherwise false.
@@ -225,6 +245,20 @@ interface String extends Iterable<string> {
 	 * @param fromIndex The position in this string at which to begin searching for searchElement.
 	 */
 	includes(this: string, searchElement: string, fromIndex?: number): boolean;
+
+	/**
+     * Returns whether the characters at the end of this string match the searchString, starting at position.
+	 * @param searchString The element to search for.
+	 * @param position The position in this string at which to begin searching for searchElement.
+     */
+	endsWith(this: string, searchString: string, endPosition?: number): boolean;
+
+    /**
+     * Returns whether the characters at the beginning of this string match the searchString, starting at position.
+	 * @param searchString The element to search for.
+	 * @param position The position in this string at which to begin searching for searchElement.
+     */
+	startsWith(this: string, searchString: string, position?: number): boolean;
 }
 
 interface Symbol {
@@ -311,7 +345,17 @@ interface IterableIterator<T> extends Iterator<T> {
 	[Symbol.iterator](): IterableIterator<T>;
 }
 
-type IterableFunction<T> = Iterable<T> & (() => T);
+interface FirstDecrementedIterableFunction extends Iterable<LuaTuple<[number, number]>> {
+	(): LuaTuple<[number, number]>;
+}
+
+interface DoubleDecrementedIterableFunction extends Iterable<LuaTuple<[number, number]>> {
+	(): LuaTuple<[number, number]>;
+}
+
+interface IterableFunction<T> extends Iterable<T> {
+	(): T;
+}
 
 /**
  * An array object which cannot be written to.
