@@ -14683,7 +14683,7 @@ interface Players extends Instance {
 	 * @param character A character instance that you want to get the player from.
 	 * @returns A player instance corresponding to the character passed as input.
 	 */
-	GetPlayerFromCharacter(this: Players, character: Model): Player | undefined;
+	GetPlayerFromCharacter(this: Players, character: Instance): Player | undefined;
 	/** This method returns a table of all presently connected `Player`. It functions the same way [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) would except that it only returns Player objects. It functions similarly to [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) when called on `Players`. 0 When used in conjunction with a for-loop, it is useful for iterating over all players in a game.
 	 * 
 	 * ```lua
