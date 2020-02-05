@@ -824,7 +824,8 @@ export class ClassGenerator extends Generator {
 	}
 
 	private canWrite(className: string, member: ApiMemberBase) {
-		return getSecurity(className, member).Write === this.security;
+		const writeSecurity = getSecurity(className, member).Write;
+		return writeSecurity === this.security || writeSecurity === this.lowerSecurity; // hack
 	}
 
 	private getSignature(node?: ts.Node) {
