@@ -444,7 +444,7 @@ interface PluginGui extends LayerCollector {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DockWidgetPluginGui" | "QWidgetPluginGui";
 	/** The title that is displayed above the contents of the PluginGui. */
-	readonly Title: string;
+	Title: string;
 	/** This function binds a function to the [PluginGui’s](https://developer.roblox.com/api-reference/class/PluginGui) close button, overriding the default behavior.
 	 * 
 	 * By default, when the user clicks the ‘x’ button in the top right corner of the `PluginGui` the [Enabled](https://developer.roblox.com/api-reference/property/LayerCollector/Enabled) property is set to *false*, closing the window. When a custom function is bound using BindToClose this behavior is overwritten, allowing you to check if the user really wants to close the window or give them an opportunity to save their work.
@@ -528,19 +528,12 @@ interface PluginGui extends LayerCollector {
 	 * @param function The function to bind the close button to. If no function is specified then any previously specified function will be unbound 
 	 */
 	BindToClose(this: PluginGui, callback?: Function): void;
-	/** [NO DOCUMENTATION] */
 	GetRelativeMousePosition(this: PluginGui): Vector2;
-	/** [NO DOCUMENTATION] */
 	readonly PluginDragDropped: RBXScriptSignal<(dragData: object) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly PluginDragEntered: RBXScriptSignal<(dragData: object) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly PluginDragLeft: RBXScriptSignal<(dragData: object) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly PluginDragMoved: RBXScriptSignal<(dragData: object) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly WindowFocusReleased: RBXScriptSignal<() => void>;
-	/** [NO DOCUMENTATION] */
 	readonly WindowFocused: RBXScriptSignal<() => void>;
 }
 
@@ -1610,8 +1603,6 @@ interface Plugin extends Instance {
 	GetSelectedRibbonTool(this: Plugin): Enum.RibbonTool;
 	/** Retrieves a previously stored value with the given key, or nil if the given key doesn't exist. */
 	GetSetting(this: Plugin, key: string): unknown;
-	/** Returns the studio user’s userId if they're logged in, otherwise returns 0. */
-	GetStudioUserId(this: Plugin): number;
 	Invoke(this: Plugin, key: string, arguments: Array<any>): void;
 	/** Returns true if this plugin is currently active, after having been activated via the [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate) function. */
 	IsActivated(this: Plugin): boolean;
@@ -2732,6 +2723,7 @@ interface Studio extends Instance {
 	 * This value is constrained between 0 and 0.05
 	 */
 	readonly ["Line Thickness"]: number;
+	readonly LocalAssetsFolder: QDir;
 	/** Specifies whether or not the [Lua Debugger](https://developer.roblox.com/articles/Lua-debugger) feature is enabled. */
 	readonly LuaDebuggerEnabled: boolean;
 	readonly LuaDebuggerEnabledAtStartup: boolean;
@@ -2826,8 +2818,6 @@ interface Studio extends Instance {
 	 * 
 	 */
 	Theme: StudioTheme;
-	/** Specifies the color scheme of Roblox Studio. */
-	readonly ["UI Theme"]: Enum.UITheme;
 	/** Specifies the color of the wavy underline shown when the script analyzer picks up a problem that should be addressed in the script editor. */
 	readonly ["Warning Color"]: Color3;
 	/** The **GetAvailableThemes()** function returns a list of [StudioThemes](https://developer.roblox.com/api-reference/class/StudioTheme) available in `Studio`. You can access the function via:
@@ -2928,6 +2918,8 @@ interface StudioService extends Instance {
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
 	/** [NO DOCUMENTATION] */
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
+	/** [NO DOCUMENTATION] */
+	ShowBulkImportView(this: StudioService): void;
 	/** [NO DOCUMENTATION] */
 	ShowPublishToRoblox(this: StudioService): void;
 	/** [NO DOCUMENTATION] */
