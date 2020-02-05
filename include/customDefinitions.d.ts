@@ -500,6 +500,10 @@ interface Plugin extends Instance {
 	Union(this: Plugin, objects: Array<BasePart>): UnionOperation;
 }
 
+interface PluginGui extends LayerCollector {
+	Title: string;
+}
+
 interface PluginManager extends Instance {
 	CreatePlugin(this: PluginManager): Plugin;
 }
