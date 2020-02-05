@@ -1667,6 +1667,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<CollisionFidelity>
 	}
 	export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box;
+	export namespace CollisionsMode {
+		export interface NoCollisions {
+			Name: "NoCollisions";
+			Value: 0;
+			EnumType: EnumType<CollisionsMode>;
+		}
+
+		export const NoCollisions: NoCollisions;
+
+		export interface OtherMechanismsAnchored {
+			Name: "OtherMechanismsAnchored";
+			Value: 1;
+			EnumType: EnumType<CollisionsMode>;
+		}
+
+		export const OtherMechanismsAnchored: OtherMechanismsAnchored;
+
+		export interface IncludeContactedMechanisms {
+			Name: "IncludeContactedMechanisms";
+			Value: 2;
+			EnumType: EnumType<CollisionsMode>;
+		}
+
+		export const IncludeContactedMechanisms: IncludeContactedMechanisms;
+
+		export function GetEnumItems(this: defined): Array<CollisionsMode>
+	}
+	export type CollisionsMode = CollisionsMode.NoCollisions | CollisionsMode.OtherMechanismsAnchored | CollisionsMode.IncludeContactedMechanisms;
 	export namespace ComputerCameraMovementMode {
 		export interface Default {
 			Name: "Default";
@@ -12258,6 +12286,7 @@ declare type CastsToEnum<T extends
 	| Enum.ChatPrivacyMode
 	| Enum.ChatStyle
 	| Enum.CollisionFidelity
+	| Enum.CollisionsMode
 	| Enum.ComputerCameraMovementMode
 	| Enum.ComputerMovementMode
 	| Enum.ConnectionError
