@@ -259,9 +259,9 @@ interface DebugSettings extends Instance {
 	 */
 	readonly InstanceCount: number;
 	/** Toggles whether or not profiling of the Fmod library (which is responsible for sounds) is enabled. */
-	readonly IsFmodProfilingEnabled: boolean;
+	IsFmodProfilingEnabled: boolean;
 	/** Whether or not a stacktrace is displayed in the output for an error. */
-	readonly IsScriptStackTracingEnabled: boolean;
+	IsScriptStackTracingEnabled: boolean;
 	/** Returns the number of internal DataModel jobs actively being processed.
 	 * 	
 	 * Returns the number of internal DataModel jobs actively being processed.
@@ -291,7 +291,7 @@ interface DebugSettings extends Instance {
 	 */
 	readonly PlayerCount: number;
 	/** Whether or not sound warnings should be reported. */
-	readonly ReportSoundWarnings: boolean;
+	ReportSoundWarnings: boolean;
 	/** The current client version of Roblox. Can also be retrieved by using the version() function.
 	 * 	
 	 * The current client version of Roblox. Can also be retrieved by using the version() function.
@@ -307,7 +307,7 @@ interface DebugSettings extends Instance {
 	 */
 	readonly RobloxVersion: string;
 	/** Sets the internal sampling method used to measure elapsed time with consistency across platforms. */
-	readonly TickCountPreciseOverride: Enum.TickCountSampleMethod;
+	TickCountPreciseOverride: Enum.TickCountSampleMethod;
 }
 
 /** Represents a breakpoint in Roblox's Lua Debugger.
@@ -318,9 +318,9 @@ interface DebuggerBreakpoint extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DebuggerBreakpoint";
 	/** The condition of the debugger breakpoint. */
-	readonly Condition: string;
+	Condition: string;
 	/** Whether or not the breakpoint is enabled. */
-	readonly IsEnabled: boolean;
+	IsEnabled: boolean;
 	/** The line that the breakpoint has been placed on.
 	 * 	
 	 * The line that the breakpoint has been placed on.
@@ -386,7 +386,7 @@ interface DebuggerWatch extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DebuggerWatch";
 	/** The expression set for the DebuggerWatch. */
-	readonly Expression: string;
+	Expression: string;
 }
 
 interface File extends Instance {
@@ -416,25 +416,25 @@ interface GameSettings extends Instance {
 	 */
 	readonly AdditionalCoreIncludeDirs: string;
 	/** When a bubble of the official bubblechat appears, this property determines after how much seconds it should disappear automaticly. */
-	readonly BubbleChatLifetime: number;
+	BubbleChatLifetime: number;
 	/** Max amounts of chat bubbles that may appear above one player's head. */
-	readonly BubbleChatMaxBubbles: number;
+	BubbleChatMaxBubbles: number;
 	/** The maximum number of chats that can be shown in the chat history. Does not seem to work because the chat gui's code does not read from here. */
-	readonly ChatHistory: number;
+	ChatHistory: number;
 	/** The maximum number of chats that can stack and show on the screen. Does not seem to work because the chat gui's code does not read from here. */
-	readonly ChatScrollLength: number;
+	ChatScrollLength: number;
 	/** Toggles whether or not Roblox should use the Hardware Mouse or the Software Mouse. */
-	readonly HardwareMouse: boolean;
+	HardwareMouse: boolean;
 	/** Describes a path to a .lua file that will be ran in place of the default StarterScript. */
 	readonly OverrideStarterScript: string;
 	/** Sets how many of the latest chat messages should be included in an abuse report request. */
-	readonly ReportAbuseChatHistory: number;
+	ReportAbuseChatHistory: number;
 	/** **(OBSOLETE)** */
-	readonly SoftwareSound: boolean;
+	SoftwareSound: boolean;
 	/** Toggles whether or not video capture is enabled. */
-	readonly VideoCaptureEnabled: boolean;
+	VideoCaptureEnabled: boolean;
 	/** Sets the quality level of Roblox's built-in video capture. */
-	readonly VideoQuality: Enum.VideoQualitySettings;
+	VideoQuality: Enum.VideoQualitySettings;
 	/** [NO DOCUMENTATION] */
 	readonly VideoRecordingChangeRequest: RBXScriptSignal<(recording: boolean) => void>;
 }
@@ -528,12 +528,19 @@ interface PluginGui extends LayerCollector {
 	 * @param function The function to bind the close button to. If no function is specified then any previously specified function will be unbound 
 	 */
 	BindToClose(this: PluginGui, callback?: Function): void;
+	/** [NO DOCUMENTATION] */
 	GetRelativeMousePosition(this: PluginGui): Vector2;
+	/** [NO DOCUMENTATION] */
 	readonly PluginDragDropped: RBXScriptSignal<(dragData: object) => void>;
+	/** [NO DOCUMENTATION] */
 	readonly PluginDragEntered: RBXScriptSignal<(dragData: object) => void>;
+	/** [NO DOCUMENTATION] */
 	readonly PluginDragLeft: RBXScriptSignal<(dragData: object) => void>;
+	/** [NO DOCUMENTATION] */
 	readonly PluginDragMoved: RBXScriptSignal<(dragData: object) => void>;
+	/** [NO DOCUMENTATION] */
 	readonly WindowFocusReleased: RBXScriptSignal<() => void>;
+	/** [NO DOCUMENTATION] */
 	readonly WindowFocused: RBXScriptSignal<() => void>;
 }
 
@@ -626,22 +633,22 @@ interface LuaSettings extends Instance {
 	 * 
 	 * If set to true, the output will print blue text indicating what scripts are running, and their origin point in the DataModel.
 	 */
-	readonly AreScriptStartsReported: boolean;
+	AreScriptStartsReported: boolean;
 	/** How long a call to `wait()` with no arguments will yield. */
-	readonly DefaultWaitTime: number;
+	DefaultWaitTime: number;
 	/** How many heartbeats there are between manual GC steps in Lua. */
-	readonly GcFrequency: number;
+	GcFrequency: number;
 	/** The ideal limit above which Roblox triggers aggressive garbage collection, in average KB per [LuaSettings.GcFrequency](https://developer.roblox.com/api-reference/property/LuaSettings/GcFrequency). */
-	readonly GcLimit: number;
+	GcLimit: number;
 	/** Sets the size of pauses between successive garbage collections in Lua. */
-	readonly GcPause: number;
+	GcPause: number;
 	/** Sets the value of Lua's garbage collection step multiplier, which controls the 'granularity' of Lua's garbage collector. */
-	readonly GcStepMul: number;
+	GcStepMul: number;
 	/** Sets the maximum percent of Roblox's duty cycle that can be used to resume waiting Lua threads.
 	 * 
 	 * This defaults to 0.1 (or 10%)
 	 */
-	readonly WaitingThreadsBudget: number;
+	WaitingThreadsBudget: number;
 }
 
 interface Script extends BaseScript {
@@ -764,19 +771,19 @@ interface NetworkSettings extends Instance {
 	 * 
 	 * (Where `{PartName}` is the name of the part.)
 	 */
-	readonly ArePhysicsRejectionsReported: boolean;
+	ArePhysicsRejectionsReported: boolean;
 	/** ClientPhysicsSendRate specifies how many times physics changes can be submitted from the client to the server, per second.
 	 * 
 	 * This defaults to 20.
 	 */
-	readonly ClientPhysicsSendRate: number;
+	ClientPhysicsSendRate: number;
 	/** DataGCRate specifies how frequently old replication data is garbage collected, per second. */
-	readonly DataGCRate: number;
+	DataGCRate: number;
 	/** DataMtuAdjust is a property that is added to the *maximum transmission unit* size of all replication data packets.
 	 * 
 	 * The value of this property is constrained to [-1000,0), and defaults to -200.
 	 */
-	readonly DataMtuAdjust: number;
+	DataMtuAdjust: number;
 	/** DataSendPriority controls the send priority of regular packets in Roblox's underlying Raknet replication layer.
 	 * 
 	 * It can be set to the following values:
@@ -850,9 +857,9 @@ interface NetworkSettings extends Instance {
 	 *
 	 * Tags: Hidden, NotReplicated
 	 */
-	readonly DataSendPriority: Enum.PacketPriority;
+	DataSendPriority: Enum.PacketPriority;
 	/** DataSendRate specifies how frequently data packets are sent back and forth between the server and client, per second. */
-	readonly DataSendRate: number;
+	DataSendRate: number;
 	/** ExtraMemoryUsed is an unused debug property intended for streaming.
 	 * 
 	 * It appears to specify how much extra memory is allocated to streaming, in MBs.
@@ -902,16 +909,16 @@ interface NetworkSettings extends Instance {
 	/** [NO DOCUMENTATION] */
 	readonly HttpProxyURL: string;
 	/** IncommingReplicationLag is a property that allows you to simulate high-latency situations. It adds a delay time between when packets are actually sent and received. The property is measured in seconds, and defaults to 0. */
-	readonly IncommingReplicationLag: number;
+	IncommingReplicationLag: number;
 	/** .The purpose of this property is unknown, as it does not appear to be used anywhere in the engine. */
-	readonly IsQueueErrorComputed: boolean;
+	IsQueueErrorComputed: boolean;
 	/** NetworkOwnerRate specifies how frequently the network owner of a `/BasePart` can be automatically changed by the server, per second. It currently defaults to 10 times per second. */
-	readonly NetworkOwnerRate: number;
+	NetworkOwnerRate: number;
 	/** PhysicsMtuAdjust is a property that is added to the *maximum transmission unit* size of all physics data packets.
 	 * 
 	 * The value of this property is constrained to [-1000,0), and defaults to -200.
 	 */
-	readonly PhysicsMtuAdjust: number;
+	PhysicsMtuAdjust: number;
 	/** PhysicsSendPriority controls the send priority of physics packets in Roblox's underlying RakNet replication layer.
 	 * 
 	 * It can be set to the following values:
@@ -985,18 +992,18 @@ interface NetworkSettings extends Instance {
 	 *
 	 * Tags: Hidden, NotReplicated
 	 */
-	readonly PhysicsSendPriority: Enum.PacketPriority;
+	PhysicsSendPriority: Enum.PacketPriority;
 	/** PhysicsSendRate specifies how frequently physics packets are sent back and forth between the server and client, per second. */
-	readonly PhysicsSendRate: number;
+	PhysicsSendRate: number;
 	/** PreferredClientPort specifies the preferred port to be used by the client when connecting to a local server.
 	 * 
 	 * Note that the port should be a value between 0-65535. Any value outside this range will make the client fail to connect to the server.
 	 */
-	readonly PreferredClientPort: number;
+	PreferredClientPort: number;
 	/** PrintBits is a diagnostics property that no longer appears to be in use. It would likely print information about bits being streamed between the server and client. */
-	readonly PrintBits: boolean;
+	PrintBits: boolean;
 	/** PrintEvents is a diagnostics property that no longer appears to be in use. It would have likely printed information about events being replicated across the server/client boundary. */
-	readonly PrintEvents: boolean;
+	PrintEvents: boolean;
 	/** PrintFilters is a diagnostics property that allows developers to see what changes are being filtered while [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled) is set to true. It's important to note that this property will only work while in a local server.
 	 * 
 	 * When set to true, there are several conditions where warnings will be printed into the output, as listed below:
@@ -1045,7 +1052,7 @@ interface NetworkSettings extends Instance {
 	 * 
 	 * ----------
 	 */
-	readonly PrintFilters: boolean;
+	PrintFilters: boolean;
 	/** PrintInstances is an internal property that prints debug information about instance replication across the server/client boundary.
 	 * 
 	 * There are several debug outputs that are made available when this property is set to true, as listed below.
@@ -1094,9 +1101,9 @@ interface NetworkSettings extends Instance {
 	 * 
 	 * ---
 	 */
-	readonly PrintInstances: boolean;
+	PrintInstances: boolean;
 	/** [NO DOCUMENTATION] */
-	readonly PrintJoinSizeBreakdown: boolean;
+	PrintJoinSizeBreakdown: boolean;
 	/** When set to true, debug messages will be printed into the output, pertaining to physics replication errors. There are several debug outputs that are made available when this property is set to true, as listed below.
 	 * 
 	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
@@ -1137,9 +1144,9 @@ interface NetworkSettings extends Instance {
 	 * 
 	 * ---
 	 */
-	readonly PrintPhysicsErrors: boolean;
+	PrintPhysicsErrors: boolean;
 	/** A diagnostics property that no longer appears to be in use. Would likely print information about property changes being streamed between the server and client. */
-	readonly PrintProperties: boolean;
+	PrintProperties: boolean;
 	/** When set to true, debug information is printed regarding messages that have been split up into multiple packets.
 	 * 
 	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
@@ -1162,7 +1169,7 @@ interface NetworkSettings extends Instance {
 	 * 
 	 * ---
 	 */
-	readonly PrintSplitMessage: boolean;
+	PrintSplitMessage: boolean;
 	/** When set to true, debug information is printed to the output regarding the replication of instances when [Workspace.StreamingEnabled](https://developer.roblox.com/api-reference/property/Workspace/StreamingEnabled) is set to true. There are several debug outputs that are made available when this property is set to true, as listed below.
 	 * 
 	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
@@ -1203,7 +1210,7 @@ interface NetworkSettings extends Instance {
 	 * 
 	 * ---
 	 */
-	readonly PrintStreamInstanceQuota: boolean;
+	PrintStreamInstanceQuota: boolean;
 	/** When set to true, a debug message will be printed to the output, when a physics `Touched` event is replicated. This includes the [BasePart.Touched](https://developer.roblox.com/api-reference/event/BasePart/Touched) event, and the [BasePart.TouchEnded](https://developer.roblox.com/api-reference/event/BasePart/TouchEnded) event.
 	 * 
 	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
@@ -1278,9 +1285,9 @@ interface NetworkSettings extends Instance {
 	 * 
 	 * ---
 	 */
-	readonly PrintTouches: boolean;
+	PrintTouches: boolean;
 	/** ReceiveRate controls the maximum rate per second at which the network replicator is willing to receive packets. */
-	readonly ReceiveRate: number;
+	ReceiveRate: number;
 	/** ![RenderStreamedRegions in action!][1]
 	 * 
 	 * When set to true, regions of space that are being streamed to the client will be outlined in red.
@@ -1289,20 +1296,20 @@ interface NetworkSettings extends Instance {
 	 * 
 	 * [1]: https://developer.roblox.com/assets/blte3c189bb8bdbf8e3/ShowStreamedRegions.png
 	 */
-	readonly RenderStreamedRegions: boolean;
+	RenderStreamedRegions: boolean;
 	/** When set to true, a label will be shown above each `Player`'s head, showing the current animation being played by the Player's `Humanoid`, if any. */
-	readonly ShowActiveAnimationAsset: boolean;
+	ShowActiveAnimationAsset: boolean;
 	/** TouchSendRate describes the rate per second in which `Touched` events are replicated back and forth between the server and the client. This includes both the [BasePart.Touched](https://developer.roblox.com/api-reference/event/BasePart/Touched) event, and the [BasePart.TouchEnded](https://developer.roblox.com/api-reference/event/BasePart/TouchEnded) event. */
-	readonly TouchSendRate: number;
+	TouchSendRate: number;
 	/** TrackDataTypes is a diagnostics property that, when set to true, tells the replicator stats to sample data about packets that are being sent. */
-	readonly TrackDataTypes: boolean;
+	TrackDataTypes: boolean;
 	/** TrackPhysicsDetails is a diagnostics property that, when set to true, tells the replicator stats to sample replication physics details. */
-	readonly TrackPhysicsDetails: boolean;
+	TrackPhysicsDetails: boolean;
 	/** UsePhysicsPacketCache is a property that, when set to true, will make the `PhysicsPacketCache` service be created alongside the `NetworkServer` when a server is being initialized.
 	 * 
 	 * Roblox will always set the value of this property to true when initializing a server, so this property is technically obsolete.
 	 */
-	readonly UsePhysicsPacketCache: boolean;
+	UsePhysicsPacketCache: boolean;
 }
 
 interface Workspace extends WorldRoot {
@@ -1327,13 +1334,13 @@ interface PhysicsSettings extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PhysicsSettings";
 	/** When set to true, physically simulated objects will stop being simulated if they have little to no motion for a set period of time. */
-	readonly AllowSleep: boolean;
+	AllowSleep: boolean;
 	/** When set to true, parts that are [BasePart.Anchored](https://developer.roblox.com/api-reference/property/BasePart/Anchored) will show a gray surface outline on the surface of the part's bounding box that is currently facing the ground. */
-	readonly AreAnchorsShown: boolean;
+	AreAnchorsShown: boolean;
 	/** When set to true, each physics assembly is assigned a unique color and the `Part` associated with the assembly are outlined with the color. Parts that are attached together by `JointInstance` will share the same color. */
-	readonly AreAssembliesShown: boolean;
+	AreAssembliesShown: boolean;
 	/** When set to true, parts that are actively being physically simulated will have a red outline. */
-	readonly AreAwakePartsHighlighted: boolean;
+	AreAwakePartsHighlighted: boolean;
 	/** When set to true, `Part` will be outlined with a specific color, depending on the state of its root simulation body.
 	 * 
 	 * ## Body Types
@@ -1347,9 +1354,9 @@ interface PhysicsSettings extends Instance {
 	 * |  | Symmetric Contact Body | Physics Body that is experiencing a torquing force, while in contact with another body. |
 	 * |  | Vertical Contact Body | Physics Body that is moving very little along the Y plane, while in contact with another body. |
 	 */
-	readonly AreBodyTypesShown: boolean;
+	AreBodyTypesShown: boolean;
 	/** When set to true, each contact island will render `SelectionBox` adorns on the parts in contact islands, where each contact island is assigned a random color. */
-	readonly AreContactIslandsShown: boolean;
+	AreContactIslandsShown: boolean;
 	/** When set to true, sphere adorns will be drawn at the contact points of each part where physics interactions are occurring.
 	 * 
 	 * Each sphere also has an arrow drawn in 3D, facing the surface that the contact point is detecting.
@@ -1384,41 +1391,41 @@ interface PhysicsSettings extends Instance {
 	 * | --- |
 	 * |  | Normal Contact | Contact point with no special conditions. |
 	 */
-	readonly AreContactPointsShown: boolean;
+	AreContactPointsShown: boolean;
 	/** When set to true, XYZ axes are rendered at the [BasePart.CFrame](https://developer.roblox.com/api-reference/property/BasePart/CFrame) of every part. */
-	readonly AreJointCoordinatesShown: boolean;
+	AreJointCoordinatesShown: boolean;
 	/** When set to true, every individual mechanism of parts is given a unique color. */
-	readonly AreMechanismsShown: boolean;
+	AreMechanismsShown: boolean;
 	/** An ancient property that hasn't work correctly since late 2007.
 	 * 
 	 * It's supposed to render an XYZ axis on the root part of a `Model`, but the axis rendering component doesn't work correctly.
 	 */
-	readonly AreModelCoordsShown: boolean;
+	AreModelCoordsShown: boolean;
 	/** When set to true, each `Player`'s character is outlined with a unique color, and each part that the player has network ownership over is outlined with the same color. */
-	readonly AreOwnersShown: boolean;
+	AreOwnersShown: boolean;
 	/** An ancient property that hasn't worked correctly since late 2007.
 	 * 
 	 * It's supposed to render a large XYZ axis in the center of each `BasePart`, but the axis rendering component doesn't work correctly.
 	 */
-	readonly ArePartCoordsShown: boolean;
+	ArePartCoordsShown: boolean;
 	/** When set to true, a cylinder is drawn around each `Player`'s character, representing their [Player.SimulationRadius](https://developer.roblox.com/api-reference/property/Player/SimulationRadius).
 	 * 
 	 * Each physically simulated object will check to see which player is closest to that object, and if they are within the player's simulation radius. If both conditions are met, that player will becomes the network owner of that object.When set to true, a cylinder is drawn around each `Player`'s character, representing their [Player.SimulationRadius](https://developer.roblox.com/api-reference/property/Player/SimulationRadius).
 	 */
-	readonly AreRegionsShown: boolean;
+	AreRegionsShown: boolean;
 	/** [NO DOCUMENTATION] */
-	readonly AreTerrainReplicationRegionsShown: boolean;
+	AreTerrainReplicationRegionsShown: boolean;
 	/** When set to true, parts that aren't aligned on the 1x1x1 grid will be outlined yellow. */
-	readonly AreUnalignedPartsShown: boolean;
+	AreUnalignedPartsShown: boolean;
 	/** An ancient property that hasn't worked correctly since late 2007.
 	 * 
 	 * It's supposed to render a large XYZ axis in the center of the world, but the axis rendering component doesn't work correctly.
 	 */
-	readonly AreWorldCoordsShown: boolean;
+	AreWorldCoordsShown: boolean;
 	/** When set to true, Roblox will fall back to using its legacy CSG solver when performing [solid model operations](https://developer.roblox.com/articles/3D-Modeling-with-Parts). */
-	readonly DisableCSGv2: boolean;
+	DisableCSGv2: boolean;
 	/** This property is supposed to show the [BasePart.ReceiveAge](https://developer.roblox.com/api-reference/property/BasePart/ReceiveAge) of a part, but it does not work correctly. */
-	readonly IsReceiveAgeShown: boolean;
+	IsReceiveAgeShown: boolean;
 	/** When set to true, the joint connections of each part, and the states of their underlying primitive components are visualized as a spanning tree.
 	 * 
 	 * ## Spanning Tree Table
@@ -1436,18 +1443,18 @@ interface PhysicsSettings extends Instance {
 	 * |  | Line | Connection between two Primitives that share the same Assembly. |
 	 * |  | Line | Connection between two Primitives. |
 	 */
-	readonly IsTreeShown: boolean;
+	IsTreeShown: boolean;
 	/** Controls the throttle rate of Roblox's physics engine.
 	 * 
 	 * By default, the physics engine will adjust the physics environment throttle depending on how much work the physics engine is doing, and the current framerate. See the enum page for [EnviromentalPhysicsThrottle](https://developer.roblox.com/api-reference/enum/EnviromentalPhysicsThrottle) for more information.Controls the throttle rate of Roblox's physics engine.
 	 */
-	readonly PhysicsEnvironmentalThrottle: Enum.EnviromentalPhysicsThrottle;
+	PhysicsEnvironmentalThrottle: Enum.EnviromentalPhysicsThrottle;
 	/** When set to true, the underlying collision geometry for `PartOperation` and `MeshPart` is rendered. */
-	readonly ShowDecompositionGeometry: boolean;
+	ShowDecompositionGeometry: boolean;
 	/** If the [PhysicsSettings.PhysicsEnvironmentalThrottle](https://developer.roblox.com/api-reference/property/PhysicsSettings/PhysicsEnvironmentalThrottle) is set to _DefaultAuto_, this specifies the maximum time that the physics environmental throttle has to wait before it is allowed to automatically change. */
-	readonly ThrottleAdjustTime: number;
+	ThrottleAdjustTime: number;
 	/** If set to true, version 2 of Roblox's CSG solver will be used instead of version 1. */
-	readonly UseCSGv2: boolean;
+	UseCSGv2: boolean;
 }
 
 interface Player extends Instance {
@@ -1860,7 +1867,7 @@ interface PluginMenu extends Instance {
 	 * 
 	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
 	 */
-	readonly Icon: string;
+	Icon: string;
 	/** This property determines the text to be displayed when a `PluginMenu` is used as a sub menu. It defaults to an empty string `””`.
 	 * 
 	 * ## See also
@@ -1885,7 +1892,7 @@ interface PluginMenu extends Instance {
 	 * 
 	 *   - [PluginMenu.ShowAsync](https://developer.roblox.com/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
 	 */
-	readonly Title: string;
+	Title: string;
 	/** This function adds the given action to the menu.
 	 * 
 	 * ## See also
@@ -2081,7 +2088,7 @@ interface PluginToolbarButton extends Instance {
 	 *
 	 * Tags: NotReplicated
 	 */
-	readonly ClickableWhenViewportHidden: boolean;
+	ClickableWhenViewportHidden: boolean;
 	/** 
 	 * Tags: NotReplicated
 	
@@ -2089,7 +2096,7 @@ interface PluginToolbarButton extends Instance {
 	 *
 	 * Tags: NotReplicated
 	 */
-	readonly Enabled: boolean;
+	Enabled: boolean;
 	/** 
 	 * Tags: NotReplicated
 	
@@ -2097,7 +2104,7 @@ interface PluginToolbarButton extends Instance {
 	 *
 	 * Tags: NotReplicated
 	 */
-	readonly Icon: string;
+	Icon: string;
 	/** [NO DOCUMENTATION] */
 	SetActive(this: PluginToolbarButton, active: boolean): void;
 	/** [NO DOCUMENTATION] */
@@ -2112,7 +2119,7 @@ interface RenderSettings extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RenderSettings";
 	/** Sets the starting quality level of the framerate manager, when [RenderSettings.EnableFRM](https://developer.roblox.com/api-reference/property/RenderSettings/EnableFRM) is set to true. */
-	readonly AutoFRMLevel: number;
+	AutoFRMLevel: number;
 	/** When set to true, all scene updates will be given an unlimited budget, regardless of how computationally expensive it may be.
 	 * 
 	 * This ensures each frame will look as it should, at the cost of a more unstable frame rate.When set to true, all scene updates will be given an unlimited budget, regardless of how computationally expensive it may be.
@@ -2121,9 +2128,9 @@ interface RenderSettings extends Instance {
 	 * 
 	 * * This is used when rendering game thumbnails.
 	 */
-	readonly EagerBulkExecution: boolean;
+	EagerBulkExecution: boolean;
 	/** Sets the graphics quality level in Roblox Studio, when [RenderSettings.EnableFRM](https://developer.roblox.com/api-reference/property/RenderSettings/EnableFRM) is set to false. */
-	readonly EditQualityLevel: Enum.QualityLevel;
+	EditQualityLevel: Enum.QualityLevel;
 	/** Toggles the enabled state of the framerate manager.
 	 * 	
 	 * Toggles the enabled state of the framerate manager.
@@ -2137,26 +2144,26 @@ interface RenderSettings extends Instance {
 	 *
 	 * Tags: Hidden, NotReplicated
 	 */
-	readonly EnableFRM: boolean;
+	EnableFRM: boolean;
 	/** Sets whether materials should be generated per part, or per unique appearance in Roblox's obj exporter. */
-	readonly ExportMergeByMaterial: boolean;
+	ExportMergeByMaterial: boolean;
 	/** Specifies the behavior of the framerate manager. */
-	readonly FrameRateManager: Enum.FramerateManagerMode;
+	FrameRateManager: Enum.FramerateManagerMode;
 	/** The graphics API that Roblox will use on startup. */
-	readonly GraphicsMode: Enum.GraphicsMode;
+	GraphicsMode: Enum.GraphicsMode;
 	/** The size in bytes of the mesh cache.
 	 * 
 	 * Defaults to 32 MBs.
 	 */
-	readonly MeshCacheSize: number;
+	MeshCacheSize: number;
 	/** If [RenderSettings.EnableFRM](https://developer.roblox.com/api-reference/property/RenderSettings/EnableFRM) is set to true, this property controls the quality level in Roblox Studio. */
-	readonly QualityLevel: Enum.QualityLevel;
+	QualityLevel: Enum.QualityLevel;
 	/** When set to true, Roblox Studio will automatically reload changes that are made to files in Roblox's `content` folder. */
-	readonly ReloadAssets: boolean;
+	ReloadAssets: boolean;
 	/** When set to true, a wireframe of polygons will be shown on all `PartOperation` objects. */
-	readonly RenderCSGTrianglesDebug: boolean;
+	RenderCSGTrianglesDebug: boolean;
 	/** If set to true, renders bounding boxes around each individual rendered entity in the scene. */
-	readonly ShowBoundingBoxes: boolean;
+	ShowBoundingBoxes: boolean;
 	/** Returns the maximum quality level. */
 	GetMaxQualityLevel(this: RenderSettings): number;
 }
@@ -2184,26 +2191,26 @@ interface RenderingTest extends Instance {
 	 * 
 	 * The value of this property is reflected into [RenderingTest.Position](https://developer.roblox.com/api-reference/property/RenderingTest/Position) and [RenderingTest.Orientation](https://developer.roblox.com/api-reference/property/RenderingTest/Orientation).
 	 */
-	readonly CFrame: CFrame;
+	CFrame: CFrame;
 	/** The maximum difference that this RenderingTest can have between the image it captures and the original image.
 	 * 
 	 * This property is only used if the RenderingTest's ComparisonMethod is set to **diff**.
 	 */
-	readonly ComparisonDiffThreshold: number;
+	ComparisonDiffThreshold: number;
 	/** The comparison method that is expected to be used when this RenderingTest's image capture is compared to its original image. */
-	readonly ComparisonMethod: Enum.RenderingTestComparisonMethod;
+	ComparisonMethod: Enum.RenderingTestComparisonMethod;
 	/** The maximum peak signal-to-noise ratio that this RenderingTest can have between the image it captures and the original image.
 	 * 
 	 * This property is only used if the RenderingTest's ComparisonMethod is set to **psnr**.
 	 */
-	readonly ComparisonPsnrThreshold: number;
+	ComparisonPsnrThreshold: number;
 	/** A description to describe this RenderingTest. */
-	readonly Description: string;
+	Description: string;
 	/** The FieldOfView that will be used by the `Camera` when running this RenderingTest.
 	 * 
 	 * Should fall between 1 and 120 in order to work as expected.
 	 */
-	readonly FieldOfView: number;
+	FieldOfView: number;
 	/** The derived orientation of the RenderingTest’s CFrame.
 	 * 	
 	 * The derived orientation of the RenderingTest’s CFrame.
@@ -2217,7 +2224,7 @@ interface RenderingTest extends Instance {
 	 *
 	 * Tags: NotReplicated
 	 */
-	readonly Orientation: Vector3;
+	Orientation: Vector3;
 	/** The derived position of the RenderingTest's CFrame.
 	 * 	
 	 * The derived position of the RenderingTest's CFrame.
@@ -2231,16 +2238,16 @@ interface RenderingTest extends Instance {
 	 *
 	 * Tags: NotReplicated
 	 */
-	readonly Position: Vector3;
+	Position: Vector3;
 	/** The graphics quality that will be used by the rendering pipeline when running this RenderingTest.
 	 * 
 	 * Should fall between 1 and 21 in order to work as expected.
 	 */
-	readonly QualityLevel: number;
+	QualityLevel: number;
 	/** Indicates whether or not this RenderingTest should be skipped. */
-	readonly ShouldSkip: boolean;
+	ShouldSkip: boolean;
 	/** A label of the internal JIRA ticket this RenderingTest is associated with. */
-	readonly Ticket: string;
+	Ticket: string;
 	/** [NO DOCUMENTATION] */
 	RenderdocTriggerCapture(this: RenderingTest): void;
 }
@@ -2663,84 +2670,84 @@ interface Studio extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Studio";
 	/** If set to true, Roblox Studio will attempt to transfer script changes that were made during a Play Solo session to the opened place. */
-	readonly ["Always Save Script Changes"]: boolean;
+	["Always Save Script Changes"]: boolean;
 	/** If set to true, the hover selection box that is shown when mousing over selectable objects in the `Workspace` will flash between [Studio.Hover Over Color](https://developer.roblox.com/api-reference/property/Studio/Hover) and [Studio.Select Color](https://developer.roblox.com/api-reference/property/Studio/Select) based on the [Studio.Hover Animate Speed](https://developer.roblox.com/api-reference/property/Studio/Hover). */
-	readonly ["Animate Hover Over"]: boolean;
-	readonly ["Auto Closing Brackets"]: boolean;
-	readonly ["Auto Closing Quotes"]: boolean;
+	["Animate Hover Over"]: boolean;
+	["Auto Closing Brackets"]: boolean;
+	["Auto Closing Quotes"]: boolean;
 	/** If set to true, the script editor will automatically indent when a new stack is created in the script. */
-	readonly ["Auto Indent"]: boolean;
-	readonly ["Auto-Recovery Enabled"]: boolean;
-	readonly ["Auto-Recovery Interval (Minutes)"]: number;
-	readonly ["Auto-Recovery Path"]: QDir;
+	["Auto Indent"]: boolean;
+	["Auto-Recovery Enabled"]: boolean;
+	["Auto-Recovery Interval (Minutes)"]: number;
+	["Auto-Recovery Path"]: QDir;
 	/** Specifies the background color of Roblox Studio's script editor. */
-	readonly ["Background Color"]: Color3;
+	["Background Color"]: Color3;
 	/** Sets the scrolling mode of the _Advanced Objects_ tab in Roblox Studio. */
-	readonly ["Basic Objects Display Mode"]: Enum.ListDisplayMode;
+	["Basic Objects Display Mode"]: Enum.ListDisplayMode;
 	/** Sets the color of built-in functions and keywords in the script editor. */
-	readonly ["Built-in Function Color"]: Color3;
+	["Built-in Function Color"]: Color3;
 	/** Sets how many studs the camera will move forward or backwards when using the mouse wheel. */
-	readonly ["Camera Mouse Wheel Speed"]: number;
+	["Camera Mouse Wheel Speed"]: number;
 	/** Sets the speed in studs/sec that the camera moves while holding down Shift with the movement keys. */
-	readonly ["Camera Shift Speed"]: number;
+	["Camera Shift Speed"]: number;
 	/** Sets the speed in studs/sec that the camera moves when movement keys are pressed. */
-	readonly ["Camera Speed"]: number;
-	readonly ["Camera Zoom to Mouse Position"]: boolean;
+	["Camera Speed"]: number;
+	["Camera Zoom to Mouse Position"]: boolean;
 	/** If set to true, the output will be automatically cleared when game sessions are switched. */
-	readonly ["Clear Output On Start"]: boolean;
+	["Clear Output On Start"]: boolean;
 	/** Specifies the color of comments in Roblox Studio's script editor. */
-	readonly ["Comment Color"]: Color3;
+	["Comment Color"]: Color3;
 	/** Specifies the default prompt directory that will be opened when the user activates the _Execute Script_ button in Roblox Studio. */
-	readonly DefaultScriptFileDir: QDir;
+	DefaultScriptFileDir: QDir;
 	/** If set to true, deprecated objects will be shown in the Advanced Objects window, as well as the Object Browser. */
-	readonly DeprecatedObjectsShown: boolean;
+	DeprecatedObjectsShown: boolean;
 	/** A 4 digit code that can be used by Roblox's mobile pairing app to connect to your instance of Roblox Studio on the local network. */
-	readonly ["Device Pairing Code"]: number;
-	readonly ["Disable Accurate Play Solo"]: boolean;
+	["Device Pairing Code"]: number;
+	["Disable Accurate Play Solo"]: boolean;
 	/** If set to true, the bounding box of a selection will be used for collision detection while dragging, instead of each individual part being checked.
 	 * 
 	 * This makes the dragger perform smoother, but with notably less precision.
 	 */
-	readonly ["Drag Multiple Parts As Single Part"]: boolean;
+	["Drag Multiple Parts As Single Part"]: boolean;
 	/** When set to true, the script editor and command bar will show an autocomplete menu while writing. */
-	readonly ["Enable Autocomplete"]: boolean;
-	readonly ["Enable CoreScript Debugger"]: boolean;
+	["Enable Autocomplete"]: boolean;
+	["Enable CoreScript Debugger"]: boolean;
 	/** Specifies the color of the wavy underline shown when malformed code is detected in the script editor. */
-	readonly ["Error Color"]: Color3;
+	["Error Color"]: Color3;
 	/** Sets the highlight color of matches in the script editor's Find Selection operation (Ctrl+F). */
-	readonly ["Find Selection Background Color"]: Color3;
+	["Find Selection Background Color"]: Color3;
 	/** Specifies the font used in the script editor. */
-	readonly Font: QFont;
+	Font: QFont;
 	/** Specifies how frequently the hover animation flashes when the mouse is hovering over a selectable object in the `Workspace`. */
-	readonly ["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
+	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
 	/** Specifies the color that the hover selection box uses. */
-	readonly ["Hover Over Color"]: Color3;
+	["Hover Over Color"]: Color3;
 	/** Sets the text color of built-in Lua keywords. */
-	readonly ["Keyword Color"]: Color3;
-	readonly Language: Enum.LanguagePreference;
+	["Keyword Color"]: Color3;
+	Language: Enum.LanguagePreference;
 	/** Sets the thickness of the [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) selection adornee.
 	 * 
 	 * This value is constrained between 0 and 0.05
 	 */
-	readonly ["Line Thickness"]: number;
+	["Line Thickness"]: number;
 	readonly LocalAssetsFolder: QDir;
 	/** Specifies whether or not the [Lua Debugger](https://developer.roblox.com/articles/Lua-debugger) feature is enabled. */
-	readonly LuaDebuggerEnabled: boolean;
+	LuaDebuggerEnabled: boolean;
 	readonly LuaDebuggerEnabledAtStartup: boolean;
 	/** Sets the highlight color of double-clicked variables in the script editor. */
-	readonly ["Matching Word Background Color"]: Color3;
+	["Matching Word Background Color"]: Color3;
 	/** The maximum number of lines that can be displayed in the output. */
-	readonly ["Maximum Output Lines"]: number;
+	["Maximum Output Lines"]: number;
 	/** Specifies the color of numbers in Roblox Studio's script editor. */
-	readonly ["Number Color"]: Color3;
+	["Number Color"]: Color3;
 	/** If set to true, audio being played will only be heard if the game window is being focused on. */
-	readonly ["Only Play Audio from Window in Focus"]: boolean;
+	["Only Play Audio from Window in Focus"]: boolean;
 	/** Sets the text color of operator characters in the script editor. */
-	readonly ["Operator Color"]: Color3;
+	["Operator Color"]: Color3;
 	/** Specifies the font used by the output. */
-	readonly ["Output Font"]: QFont;
+	["Output Font"]: QFont;
 	/** Sets the layout mode of the output. */
-	readonly ["Output Layout Mode"]: Enum.OutputLayoutMode;
+	["Output Layout Mode"]: Enum.OutputLayoutMode;
 	/** If set to true, the [Studio.OverrideCoreScriptsDir](https://developer.roblox.com/api-reference/property/Studio/OverrideCoreScriptsDir) will be used for CoreScripts in Roblox Studio, instead of the default `rbxasset://scripts` directory. */
 	readonly OverrideCoreScripts: boolean;
 	/** The directory used when overriding core scripts.
@@ -2752,56 +2759,56 @@ interface Studio extends Instance {
 	 * 
 	 * See [Enum.PermissionLevelShown](https://developer.roblox.com/search#stq=PermissionLevelShown) for more info.
 	 */
-	readonly PermissionLevelShown: Enum.PermissionLevelShown;
+	PermissionLevelShown: Enum.PermissionLevelShown;
 	/** The directory where local plugins are stored. */
-	readonly PluginsDir: QDir;
+	PluginsDir: QDir;
 	/** **(OBSOLETE)** */
-	readonly ["Preprocessor Color"]: Color3;
+	["Preprocessor Color"]: Color3;
 	/** The directory where recent saves are stored in. */
-	readonly RecentSavesDir: QDir;
+	RecentSavesDir: QDir;
 	/** Scales how much rendering will be throttled when the game window isn't being focused on.
 	 * 
 	 * In practice, this property isn't very well understood, and is probably intended for internal use only.
 	 */
-	readonly ["Render Throttle Percentage"]: number;
+	["Render Throttle Percentage"]: number;
 	/** When set to true, Roblox Studio shortcuts will take priority over inputs being captured in the game window. */
-	readonly ["Respect Studio shortcuts when game has focus"]: boolean;
-	readonly RuntimeUndoBehavior: Enum.RuntimeUndoBehavior;
+	["Respect Studio shortcuts when game has focus"]: boolean;
+	RuntimeUndoBehavior: Enum.RuntimeUndoBehavior;
 	/** The time (in seconds) a script can wait to be resumed before timing out. */
-	readonly ScriptTimeoutLength: number;
+	ScriptTimeoutLength: number;
 	/** The color of the selection box used with object selections in the `Workspace` */
-	readonly ["Select Color"]: Color3;
+	["Select Color"]: Color3;
 	/** Sets the color of the [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) selection box. */
-	readonly ["Select/Hover Color"]: Color3;
+	["Select/Hover Color"]: Color3;
 	/** Sets the background color of selected text in the script editor. */
-	readonly ["Selection Background Color"]: Color3;
+	["Selection Background Color"]: Color3;
 	/** Sets the text color of selected text in the script editor. */
-	readonly ["Selection Color"]: Color3;
+	["Selection Color"]: Color3;
 	/** An unused Roblox Studio setting that does not appear to have any functionality. */
-	readonly ["Server Audio Behavior"]: Enum.ServerAudioBehavior;
+	["Server Audio Behavior"]: Enum.ServerAudioBehavior;
 	/** If set to true, the `CoreGui` will be visible in the Explorer while the game is running. */
-	readonly ["Show Core GUI in Explorer while Playing"]: boolean;
+	["Show Core GUI in Explorer while Playing"]: boolean;
 	/** If set to true, basic diagnostic information is shown in the bottom right. */
-	readonly ["Show Diagnostics Bar"]: boolean;
-	readonly ["Show Hidden Objects in Explorer"]: boolean;
+	["Show Diagnostics Bar"]: boolean;
+	["Show Hidden Objects in Explorer"]: boolean;
 	/** If set to true, hovering over an object in the `Workspace` will show a selection box. */
-	readonly ["Show Hover Over"]: boolean;
+	["Show Hover Over"]: boolean;
 	/** When set to true, the navigation mesh used by the `PathfindingService` will be visualized. */
-	readonly ["Show Navigation Mesh"]: boolean;
+	["Show Navigation Mesh"]: boolean;
 	/** When set to true, the `PluginGuiService` will be shown in Roblox Studio's explorer. */
-	readonly ["Show Plugin GUI Service in Explorer"]: boolean;
+	["Show Plugin GUI Service in Explorer"]: boolean;
 	/** If set to true, certain internal error messages regarding the QT framework that Roblox uses will be shown in the output. */
-	readonly ["Show QT warnings in output"]: boolean;
-	readonly ["Show plus button on hover in Explorer"]: boolean;
-	readonly ["Skip Closing Brackets and Quotes"]: boolean;
+	["Show QT warnings in output"]: boolean;
+	["Show plus button on hover in Explorer"]: boolean;
+	["Skip Closing Brackets and Quotes"]: boolean;
 	/** Specifies the color of strings in the script editor. */
-	readonly ["String Color"]: Color3;
+	["String Color"]: Color3;
 	/** Specifies how many spaces are used to represent a tab in the script editor. */
-	readonly ["Tab Width"]: number;
+	["Tab Width"]: number;
 	/** Specifies the color of normal text in the script editor. */
-	readonly ["Text Color"]: Color3;
+	["Text Color"]: Color3;
 	/** If set to true, text in the script editor will be wrapped. */
-	readonly ["Text Wrapping"]: boolean;
+	["Text Wrapping"]: boolean;
 	/** The Theme property is used to get/set the current `StudioTheme` used by `Studio`.
 	 * 
 	 * This is intended for use within [Plugins](https://developer.roblox.com/api-reference/class/Plugin), but will also execute in the Command Line. You can access the function via:
@@ -2819,7 +2826,7 @@ interface Studio extends Instance {
 	 */
 	Theme: StudioTheme;
 	/** Specifies the color of the wavy underline shown when the script analyzer picks up a problem that should be addressed in the script editor. */
-	readonly ["Warning Color"]: Color3;
+	["Warning Color"]: Color3;
 	/** The **GetAvailableThemes()** function returns a list of [StudioThemes](https://developer.roblox.com/api-reference/class/StudioTheme) available in `Studio`. You can access the function via:
 	 * 
 	 * ```lua
@@ -2887,7 +2894,7 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] *
 	 * Tags: NotReplicated
 	 */
-	readonly UseLocalSpace: boolean;
+	UseLocalSpace: boolean;
 	/** [NO DOCUMENTATION] */
 	ConvertToPackageUpload(this: StudioService, uploadUrl: string): void;
 	/** [NO DOCUMENTATION] */
@@ -3039,7 +3046,7 @@ interface TaskScheduler extends Instance {
 	 */
 	readonly SchedulerRate: number;
 	/** The specified thread pooling configuration for the task scheduler. */
-	readonly ThreadPoolConfig: Enum.ThreadPoolConfig;
+	ThreadPoolConfig: Enum.ThreadPoolConfig;
 	/** The current size of the thread pool.
 	 * 	
 	 * The current size of the thread pool.
@@ -3128,9 +3135,9 @@ interface TestService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "TestService";
 	/** If set to true, the game will start running when the TestService's [TestService.Run](https://developer.roblox.com/api-reference/function/TestService/Run) method is called. */
-	readonly AutoRuns: boolean;
+	AutoRuns: boolean;
 	/** A description of the test being executed. */
-	readonly Description: string;
+	Description: string;
 	/** Measures how many errors have been recorded in the test session.
 	 * 	
 	 * Measures how many errors have been recorded in the test session.
@@ -3153,17 +3160,17 @@ interface TestService extends Instance {
 	 * 
 	 * 	* Try to keep this value within a rational range (1 to 8 players at most), or else your computer's CPU will get overloaded.
 	 */
-	readonly ExecuteWithStudioRun: boolean;
+	ExecuteWithStudioRun: boolean;
 	/** Sets whether or not the physics engine should be throttled to 30 FPS while the test is being ran. */
-	readonly Is30FpsThrottleEnabled: boolean;
+	Is30FpsThrottleEnabled: boolean;
 	/** Sets whether or not the physics environment should be throttled while running this test. */
-	readonly IsPhysicsEnvironmentalThrottled: boolean;
+	IsPhysicsEnvironmentalThrottled: boolean;
 	/** Sets whether or not physics objects will be allowed to fall asleep while the test simulation is running. */
-	readonly IsSleepAllowed: boolean;
+	IsSleepAllowed: boolean;
 	/** The number of players expected in this test, if any. */
-	readonly NumberOfPlayers: number;
+	NumberOfPlayers: number;
 	/** Sets a specific amount of additional latency experienced by players during the test session. */
-	readonly SimulateSecondsLag: number;
+	SimulateSecondsLag: number;
 	/** Measures how many test calls have been recorded in the test session.
 	 * 	
 	 * Measures how many test calls have been recorded in the test session.
@@ -3179,7 +3186,7 @@ interface TestService extends Instance {
 	 */
 	readonly TestCount: number;
 	/** The maximum amount of time that tests are allowed to run for. */
-	readonly Timeout: number;
+	Timeout: number;
 	/** Measures how many warning calls have been recorded in the test session.
 	 * 	
 	 * Measures how many warning calls have been recorded in the test session.
