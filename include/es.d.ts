@@ -932,7 +932,7 @@ interface PromiseLike<T> {
 	 */
 	then<TResult1 = T, TResult2 = never>(
 		this: PromiseLike<T>,
-		onResolved?: ((value: T extends LuaTuple<infer U> ? U : [T]) => TResult1 | PromiseLike<TResult1>) | void,
+		onResolved?: ((...values: T extends LuaTuple<infer U> ? U : [T]) => TResult1 | PromiseLike<TResult1>) | void,
 		onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | void,
 	): PromiseLike<TResult1 | TResult2>;
 }
@@ -949,7 +949,7 @@ interface Promise<T> {
 	 */
 	then<TResult1 = T, TResult2 = never>(
 		this: Promise<T>,
-		onResolved?: ((value: T extends LuaTuple<infer U> ? U : [T]) => TResult1 | PromiseLike<TResult1>) | void,
+		onResolved?: ((...values: T extends LuaTuple<infer U> ? U : [T]) => TResult1 | PromiseLike<TResult1>) | void,
 		onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | void,
 	): Promise<TResult1 | TResult2>;
 
@@ -1057,7 +1057,7 @@ interface PromiseConstructor {
 	 */
 	new <T>(
 		executor: (
-			resolve: (value?: T | PromiseLike<T>) => void,
+			resolve: (...values: (T extends LuaTuple<infer U> ? U : [T]) | [PromiseLike<T>]) => void,
 			reject: (reason?: any) => void,
 			onCancel: (cancellationHook: () => void) => void,
 		) => void,

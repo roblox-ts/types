@@ -2,7 +2,7 @@
 
 // LUA API
 
-type LuaTuple<T extends Array<any>> = T & { readonly LUA_TUPLE?: never };
+type LuaTuple<T extends Array<any>> = T & { readonly LUA_TUPLE: never };
 
 /** A table that is shared between all scripts of the same context level. */
 interface _G {}
