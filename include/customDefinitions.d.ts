@@ -390,20 +390,25 @@ interface LogService extends Instance {
 	GetLogHistory(this: LogService): Array<LogInfo>;
 }
 
-interface ServiceProvider extends Instance {
-	readonly ServiceAdded: RBXScriptSignal<(service: Services[keyof Services]) => void>;
-	readonly ServiceRemoving: RBXScriptSignal<(service: Services[keyof Services]) => void>;
-	FindService(this: ServiceProvider, className: string): Services[keyof Services] | undefined;
-	FindService(this: ServiceProvider, className: string): Instance | undefined;
-	GetService<T extends keyof Services>(this: ServiceProvider, className: T): Services[T];
-	GetService(this: ServiceProvider, className: string): Services[keyof Services] | undefined;
+interface ServiceProvider<S = unknown> extends Instance {
+	readonly ServiceAdded: RBXScriptSignal<(service: S[keyof S]) => void>;
+	readonly ServiceRemoving: RBXScriptSignal<(service: S[keyof S]) => void>;
+	FindService(this: ServiceProvider<S>, className: string): S[keyof S] | undefined;
+	FindService(this: ServiceProvider<S>, className: string): Instance | undefined;
+	GetService<T extends keyof S>(this: ServiceProvider<S>, className: T): S[T];
+	GetService(this: ServiceProvider<S>, className: string): S[keyof S] | undefined;
 }
+
+interface GenericSettings<S = unknown> extends ServiceProvider<S> {
+}
+
+interface UserSettings extends GenericSettings<{ UserGameSettings: UserGameSettings }> {}
 
 interface CompressorSoundEffect extends SoundEffect {
 	SideChain?: Sound | SoundGroup;
 }
 
-interface DataModel extends ServiceProvider {
+interface DataModel extends ServiceProvider<Services> {
 	readonly Workspace: Workspace;
 	BindToClose(this: DataModel, callback: () => void): void;
 }
