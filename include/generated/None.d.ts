@@ -5,6 +5,7 @@
 /// <reference path="enums.d.ts" />
 
 interface Services {
+	AnalyticsService: AnalyticsService;
 	AssetService: AssetService;
 	BadgeService: BadgeService;
 	Chat: Chat;
@@ -951,6 +952,14 @@ interface Accessory extends Accoutrement {
 interface Hat extends Accoutrement {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Hat";
+}
+
+/** An internal service intended for handling analytics on Roblox. */
+interface AnalyticsService extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "AnalyticsService";
+	/** [NO DOCUMENTATION] */
+	FireEvent(this: AnalyticsService, category: string, value?: any): void;
 }
 
 /** An object which allows animations to be applied to a player's character and make the parts that make said character up react in the way that is described within the animation file (AnimationId). */
