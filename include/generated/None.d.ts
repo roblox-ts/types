@@ -15504,12 +15504,12 @@ interface ServerStorage extends Instance {
 }
 
 /** A ServiceProvider is an abstract class, which stores, and provides certain singleton classes, depending on what inherited class you are using its members with. */
-interface ServiceProvider extends Instance {
+interface ServiceProvider<S = unknown> extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AnalysticsSettings" | "DataModel" | "GlobalSettings" | "UserSettings";
 	/** Returns the service specified by the given className if it's already created, errors for an invalid name. */
-	FindService(this: ServiceProvider, className: string): Services[keyof Services] | undefined;
-	FindService(this: ServiceProvider, className: string): Instance | undefined;
+	FindService(this: ServiceProvider<S>, className: string): S[keyof S] | undefined;
+	FindService(this: ServiceProvider<S>, className: string): Instance | undefined;
 	/** Returns a service with the class name requested. When called with the name of a service (such as `Debris`) it will return the instance of that service. If the service does not yet exist it will be created and the new service is returned. This is the only way to create some services, and can also be used for services that have unusual names, e.g. RunService's name is "Run Service".
 	 * 
 	 * ## Notes
@@ -15518,18 +15518,18 @@ interface ServiceProvider extends Instance {
 	 * 
 	 * * If you attempt to fetch a service that is present under another Object, an error will be thrown stating that the "singleton serviceName already exists".
 	 */
-	GetService<T extends keyof Services>(this: ServiceProvider, className: T): Services[T];
-	GetService(this: ServiceProvider, className: string): Services[keyof Services] | undefined;
+	GetService<T extends keyof S>(this: ServiceProvider<S>, className: T): S[T];
+	GetService(this: ServiceProvider<S>, className: string): S[keyof S] | undefined;
 	/** Fires when the current place is exited. */
 	readonly Close: RBXScriptSignal<() => void>;
 	/** Fired when a service is created. */
-	readonly ServiceAdded: RBXScriptSignal<(service: Services[keyof Services]) => void>;
+	readonly ServiceAdded: RBXScriptSignal<(service: S[keyof S]) => void>;
 	/** Fired when a service is about to be removed. */
-	readonly ServiceRemoving: RBXScriptSignal<(service: Services[keyof Services]) => void>;
+	readonly ServiceRemoving: RBXScriptSignal<(service: S[keyof S]) => void>;
 }
 
 /** The DataModel (commonly known as **game** after the global variable used to access it) is the root of Roblox's parent-child hierarchy. Its direct children are services (such as the `Workspace` and `Lighting`) that act as the fundamental components of a Roblox game. */
-interface DataModel extends ServiceProvider {
+interface DataModel extends ServiceProvider<Services> {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DataModel";
 	/** This property describes the ID of the user or group that owns the [place](https://developer.roblox.com/search#stq=Place)
@@ -15779,7 +15779,7 @@ interface DataModel extends ServiceProvider {
 }
 
 /** The abstract class for settings database classes. */
-interface GenericSettings extends ServiceProvider {
+interface GenericSettings<S = unknown> extends ServiceProvider<S> {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AnalysticsSettings" | "GlobalSettings" | "UserSettings";
 }
@@ -15788,7 +15788,7 @@ interface GenericSettings extends ServiceProvider {
  * 
  * You can retrieve a reference to this object via the `UserSettings()` function, which returns it.
  */
-interface UserSettings extends GenericSettings {
+interface UserSettings extends GenericSettings<{ UserGameSettings: UserGameSettings }> {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "UserSettings";
 	/** Returns true if the specified user feature is enabled. This will throw an error if the user feature does not exist.
