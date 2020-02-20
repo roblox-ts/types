@@ -253,20 +253,6 @@ interface GuiService extends Instance {
 	GetGuiInset(this: GuiService): LuaTuple<[Vector2, Vector2]>;
 }
 
-interface HapticService extends Instance {
-	GetMotor(
-		this: HapticService,
-		inputType: CastsToEnum<Enum.UserInputType>,
-		vibrationMotor: CastsToEnum<Enum.VibrationMotor>,
-	): LuaTuple<[number]>;
-	SetMotor(
-		this: HapticService,
-		inputType: CastsToEnum<Enum.UserInputType>,
-		vibrationMotor: CastsToEnum<Enum.VibrationMotor>,
-		...vibrationValues: Array<number>
-	): void;
-}
-
 interface HttpService extends Instance {
 	/** @rbxts server */
 	GetAsync(this: HttpService, url: string, nocache?: boolean, headers?: HttpHeaders): string;
