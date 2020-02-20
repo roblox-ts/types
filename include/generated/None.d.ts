@@ -7994,22 +7994,13 @@ interface HapticService extends Instance {
 	 * 
 	 * This will not return anything if [SetMotor](https://developer.roblox.com/api-reference/function/HapticService/SetMotor) has not been called prior.
 	 */
-	GetMotor(
-		this: HapticService,
-		inputType: CastsToEnum<Enum.UserInputType>,
-		vibrationMotor: CastsToEnum<Enum.VibrationMotor>,
-	): LuaTuple<[number]>;
+	GetMotor(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>, vibrationMotor: CastsToEnum<Enum.VibrationMotor>): unknown;
 	/** Returns true if the specified motor is available to be used with the specified [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType). */
 	IsMotorSupported(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>, vibrationMotor: CastsToEnum<Enum.VibrationMotor>): boolean;
 	/** Returns true if the specified [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) supports haptic feedback. */
 	IsVibrationSupported(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>): boolean;
 	/** Sets the vibration intensity of the specified [UserInputType](https://developer.roblox.com/api-reference/property/InputObject/UserInputType) and [VibrationMotor](https://developer.roblox.com/api-reference/enum/VibrationMotor). */
-	SetMotor(
-		this: HapticService,
-		inputType: CastsToEnum<Enum.UserInputType>,
-		vibrationMotor: CastsToEnum<Enum.VibrationMotor>,
-		...vibrationValues: Array<number>
-	): void;
+	SetMotor(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>, vibrationMotor: CastsToEnum<Enum.VibrationMotor>, vibrationValues: Array<any>): void;
 }
 
 /** This service allows HTTP requests to be sent from game servers. This enables users to create integration with a wide range of third party services such as analytics and storage. One exciting prospect for this service is that if you run and manage your own website, and communicate with it from Roblox, it opens the possibility of remote server management and real time communication with the server, through your site.
