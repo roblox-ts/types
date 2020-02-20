@@ -7994,13 +7994,22 @@ interface HapticService extends Instance {
 	 * 
 	 * This will not return anything if [SetMotor](https://developer.roblox.com/api-reference/function/HapticService/SetMotor) has not been called prior.
 	 */
-	GetMotor(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>, vibrationMotor: CastsToEnum<Enum.VibrationMotor>): unknown;
+	GetMotor(
+		this: HapticService,
+		inputType: CastsToEnum<Enum.UserInputType>,
+		vibrationMotor: CastsToEnum<Enum.VibrationMotor>,
+	): LuaTuple<[number]>;
 	/** Returns true if the specified motor is available to be used with the specified [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType). */
 	IsMotorSupported(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>, vibrationMotor: CastsToEnum<Enum.VibrationMotor>): boolean;
 	/** Returns true if the specified [Enum.UserInputType](https://developer.roblox.com/search#stq=UserInputType) supports haptic feedback. */
 	IsVibrationSupported(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>): boolean;
 	/** Sets the vibration intensity of the specified [UserInputType](https://developer.roblox.com/api-reference/property/InputObject/UserInputType) and [VibrationMotor](https://developer.roblox.com/api-reference/enum/VibrationMotor). */
-	SetMotor(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>, vibrationMotor: CastsToEnum<Enum.VibrationMotor>, vibrationValues: Array<any>): void;
+	SetMotor(
+		this: HapticService,
+		inputType: CastsToEnum<Enum.UserInputType>,
+		vibrationMotor: CastsToEnum<Enum.VibrationMotor>,
+		...vibrationValues: Array<number>
+	): void;
 }
 
 /** This service allows HTTP requests to be sent from game servers. This enables users to create integration with a wide range of third party services such as analytics and storage. One exciting prospect for this service is that if you run and manage your own website, and communicate with it from Roblox, it opens the possibility of remote server management and real time communication with the server, through your site.
@@ -14890,10 +14899,7 @@ interface PluginDebugService extends Instance {
 interface PolicyService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PolicyService";
-	/** [NO DOCUMENTATION] *
-	 * Tags: Yields
-	 */
-	GetPolicyInfoForPlayerAsync(this: PolicyService, player: Player): object;
+	GetPolicyInfoForPlayerAsync(this: PolicyService, player: Player): PolicyInfo;
 }
 
 /** A Pose holds the `CFrame` applied to the `Motor6D` connected to its associated `BasePart`. The part which is controlled depends on the name of the Pose.

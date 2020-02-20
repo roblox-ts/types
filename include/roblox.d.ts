@@ -31,9 +31,7 @@ type ChangedSignal = {
 
 type StrictInstances = {
 	[Key in Exclude<keyof Instances, keyof AbstractInstances>]: Instances[Key] &
-		(Instances[Key]["ClassName"] extends Key
-			? unknown
-			: { ClassName: Key });
+		(Instances[Key]["ClassName"] extends Key ? unknown : { ClassName: Key });
 };
 
 /** Given an Instance `T`, returns a unioned type of all property names, except "ClassName". */
@@ -539,6 +537,15 @@ interface SendNotificationConfig {
 	Callback?: BindableFunction;
 	Button1?: string;
 	Button2?: string;
+}
+
+interface PolicyInfo {
+	/** Whether the player can interact with paid random item generators. */
+	ArePaidRandomItemsRestricted: boolean;
+	/** See [here](https://devforum.roblox.com/t/about-our-upcoming-global-compliance-system/461447) for details. */
+	IsSubjectToChinaPolicies: boolean;
+	/** Which external link references are allowed in a country/region. */
+	AllowedExternalLinkReferences: Array<string>;
 }
 
 /**
@@ -1657,7 +1664,10 @@ declare function opcall<T extends Array<any>, U>(
  * @param instance
  * @param className
  */
-declare function classIs<T extends Instance, Q extends Extract<T["ClassName"], Exclude<keyof Instances, keyof AbstractInstances>>>(
+declare function classIs<
+	T extends Instance,
+	Q extends Extract<T["ClassName"], Exclude<keyof Instances, keyof AbstractInstances>>
+>(
 	instance: T,
 	className: Q,
 ): instance is Instances[Q] extends T
