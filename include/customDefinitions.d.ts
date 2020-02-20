@@ -586,6 +586,11 @@ interface PluginToolbar extends Instance {
 	): PluginToolbarButton;
 }
 
+interface PolicyService extends Instance {
+	/** Returns policy information about a player which is based on geolocation, age group, and platform. */
+	GetPolicyInfoForPlayerAsync(this: PolicyService, player: Player): PolicyInfo;
+}
+
 interface RemoteEvent extends Instance {
 	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
 	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
