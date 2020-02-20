@@ -8707,6 +8707,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<R15CollisionType>
 	}
 	export type R15CollisionType = R15CollisionType.OuterBox | R15CollisionType.InnerBox;
+	export namespace RaycastFilterType {
+		export interface Blacklist {
+			Name: "Blacklist";
+			Value: 0;
+			EnumType: EnumType<RaycastFilterType>;
+		}
+
+		export const Blacklist: Blacklist;
+
+		export interface Whitelist {
+			Name: "Whitelist";
+			Value: 1;
+			EnumType: EnumType<RaycastFilterType>;
+		}
+
+		export const Whitelist: Whitelist;
+
+		export function GetEnumItems(this: defined): Array<RaycastFilterType>
+	}
+	export type RaycastFilterType = RaycastFilterType.Blacklist | RaycastFilterType.Whitelist;
 	export namespace RenderFidelity {
 		export interface Automatic {
 			Name: "Automatic";
@@ -12386,6 +12406,7 @@ declare type CastsToEnum<T extends
 	| Enum.ProductPurchaseDecision
 	| Enum.QualityLevel
 	| Enum.R15CollisionType
+	| Enum.RaycastFilterType
 	| Enum.RenderFidelity
 	| Enum.RenderPriority
 	| Enum.RenderingTestComparisonMethod

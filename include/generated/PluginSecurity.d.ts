@@ -26,6 +26,7 @@ interface Services {
 }
 
 interface CreatableInstances {
+	DebuggablePlugin: DebuggablePlugin;
 	PluginAction: PluginAction;
 	RenderingTest: RenderingTest;
 }
@@ -636,14 +637,6 @@ interface LuaSettings extends Instance {
 	AreScriptStartsReported: boolean;
 	/** How long a call to `wait()` with no arguments will yield. */
 	DefaultWaitTime: number;
-	/** How many heartbeats there are between manual GC steps in Lua. */
-	GcFrequency: number;
-	/** The ideal limit above which Roblox triggers aggressive garbage collection, in average KB per [LuaSettings.GcFrequency](https://developer.roblox.com/api-reference/property/LuaSettings/GcFrequency). */
-	GcLimit: number;
-	/** Sets the size of pauses between successive garbage collections in Lua. */
-	GcPause: number;
-	/** Sets the value of Lua's garbage collection step multiplier, which controls the 'granularity' of Lua's garbage collector. */
-	GcStepMul: number;
 	/** Sets the maximum percent of Roblox's duty cycle that can be used to resume waiting Lua threads.
 	 * 
 	 * This defaults to 0.1 (or 10%)
@@ -747,38 +740,6 @@ interface ServerReplicator extends NetworkReplicator {
 interface NetworkSettings extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "NetworkSettings";
-	/** When set to true, a debug message will be printed to the output in cases where the physics receiver rejects a request that it received.
-	 * 
-	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox's network code is always changing behind the scenes.
-	 * 
-	 * ---
-	 * 
-	 * Incorrect Root Primitive
-	 * 
-	 * If a part receiving physics changes is not the root primitive of the assembly it belongs to, the following debug message is printed:
-	 * 
-	 * `!isAssemblyRootPrimitive {PartName}`
-	 * 
-	 * (Where `{PartName}` is the name of the part.)
-	 * 
-	 * ---
-	 * 
-	 * Grounded Part
-	 * 
-	 * If the part receiving physics changes is grounded (see: [BasePart.IsGrounded](https://developer.roblox.com/api-reference/function/BasePart/IsGrounded)), then the following debug message is printed:
-	 * 
-	 * `computeIsGrounded {PartName}`
-	 * 
-	 * (Where `{PartName}` is the name of the part.)
-	 */
-	ArePhysicsRejectionsReported: boolean;
-	/** ClientPhysicsSendRate specifies how many times physics changes can be submitted from the client to the server, per second.
-	 * 
-	 * This defaults to 20.
-	 */
-	ClientPhysicsSendRate: number;
-	/** DataGCRate specifies how frequently old replication data is garbage collected, per second. */
-	DataGCRate: number;
 	/** DataMtuAdjust is a property that is added to the *maximum transmission unit* size of all replication data packets.
 	 * 
 	 * The value of this property is constrained to [-1000,0), and defaults to -200.
@@ -910,10 +871,6 @@ interface NetworkSettings extends Instance {
 	readonly HttpProxyURL: string;
 	/** IncommingReplicationLag is a property that allows you to simulate high-latency situations. It adds a delay time between when packets are actually sent and received. The property is measured in seconds, and defaults to 0. */
 	IncommingReplicationLag: number;
-	/** .The purpose of this property is unknown, as it does not appear to be used anywhere in the engine. */
-	IsQueueErrorComputed: boolean;
-	/** NetworkOwnerRate specifies how frequently the network owner of a `/BasePart` can be automatically changed by the server, per second. It currently defaults to 10 times per second. */
-	NetworkOwnerRate: number;
 	/** PhysicsMtuAdjust is a property that is added to the *maximum transmission unit* size of all physics data packets.
 	 * 
 	 * The value of this property is constrained to [-1000,0), and defaults to -200.
@@ -993,17 +950,11 @@ interface NetworkSettings extends Instance {
 	 * Tags: Hidden, NotReplicated
 	 */
 	PhysicsSendPriority: Enum.PacketPriority;
-	/** PhysicsSendRate specifies how frequently physics packets are sent back and forth between the server and client, per second. */
-	PhysicsSendRate: number;
 	/** PreferredClientPort specifies the preferred port to be used by the client when connecting to a local server.
 	 * 
 	 * Note that the port should be a value between 0-65535. Any value outside this range will make the client fail to connect to the server.
 	 */
 	PreferredClientPort: number;
-	/** PrintBits is a diagnostics property that no longer appears to be in use. It would likely print information about bits being streamed between the server and client. */
-	PrintBits: boolean;
-	/** PrintEvents is a diagnostics property that no longer appears to be in use. It would have likely printed information about events being replicated across the server/client boundary. */
-	PrintEvents: boolean;
 	/** PrintFilters is a diagnostics property that allows developers to see what changes are being filtered while [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled) is set to true. It's important to note that this property will only work while in a local server.
 	 * 
 	 * When set to true, there are several conditions where warnings will be printed into the output, as listed below:
@@ -1145,8 +1096,6 @@ interface NetworkSettings extends Instance {
 	 * ---
 	 */
 	PrintPhysicsErrors: boolean;
-	/** A diagnostics property that no longer appears to be in use. Would likely print information about property changes being streamed between the server and client. */
-	PrintProperties: boolean;
 	/** When set to true, debug information is printed regarding messages that have been split up into multiple packets.
 	 * 
 	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
@@ -1305,11 +1254,6 @@ interface NetworkSettings extends Instance {
 	TrackDataTypes: boolean;
 	/** TrackPhysicsDetails is a diagnostics property that, when set to true, tells the replicator stats to sample replication physics details. */
 	TrackPhysicsDetails: boolean;
-	/** UsePhysicsPacketCache is a property that, when set to true, will make the `PhysicsPacketCache` service be created alongside the `NetworkServer` when a server is being initialized.
-	 * 
-	 * Roblox will always set the value of this property to true when initializing a server, so this property is technically obsolete.
-	 */
-	UsePhysicsPacketCache: boolean;
 }
 
 interface Workspace extends WorldRoot {
@@ -1510,7 +1454,7 @@ interface Players extends Instance {
  */
 interface Plugin extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Plugin";
+	readonly ClassName: "DebuggablePlugin" | "Plugin";
 	/** Returns whether the user enabled _Collisions_ in studio under the Model tab. */
 	readonly CollisionEnabled: boolean;
 	/** Returns the grid size the user has set in studio under the Model tab. This can be 1, 0.2 or 0.01, but has rounding errors.
@@ -1672,6 +1616,11 @@ interface Plugin extends Instance {
 	/** Fired when the plugin is deactivated. This occurs when either the plugin code calls [Plugin.Deactivate](https://developer.roblox.com/api-reference/function/Plugin/Deactivate), or because some other plugin called [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate), which forces all other plugins to lose their active state. */
 	readonly Deactivation: RBXScriptSignal<() => void>;
 	readonly Unloading: RBXScriptSignal<() => void>;
+}
+
+interface DebuggablePlugin extends Plugin {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "DebuggablePlugin";
 }
 
 /** PluginAction is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`. In Roblox Studio, they can be assigned a keyboard shortcut under `File → Advanced → Customize Shortcuts...`, and they can also be added to the Quick Access Toolbar.
@@ -2394,7 +2343,7 @@ interface Selection extends Instance {
 	readonly SelectionChanged: RBXScriptSignal<() => void>;
 }
 
-interface DataModel extends ServiceProvider {
+interface DataModel extends ServiceProvider<Services> {
 	/** Returns the job interval peak fraction of the specified task scheduler job. */
 	GetJobIntervalPeakFraction(this: DataModel, jobname: string, greaterThan: number): number;
 	/** Returns the job time peak fraction of the specified task scheduler job. */
@@ -2764,8 +2713,6 @@ interface Studio extends Instance {
 	PluginsDir: QDir;
 	/** **(OBSOLETE)** */
 	["Preprocessor Color"]: Color3;
-	/** The directory where recent saves are stored in. */
-	RecentSavesDir: QDir;
 	/** Scales how much rendering will be throttled when the game window isn't being focused on.
 	 * 
 	 * In practice, this property isn't very well understood, and is probably intended for internal use only.
@@ -2849,6 +2796,10 @@ interface StudioData extends Instance {
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden
 	 */
+	EnableScriptCollabByDefaultOnLoad: boolean;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Hidden
+	 */
 	EnableScriptCollabOnLoad: boolean;
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden, NotReplicated
@@ -2910,9 +2861,13 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
 	GetUserId(this: StudioService): number;
 	/** [NO DOCUMENTATION] */
+	GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): unknown;
+	/** [NO DOCUMENTATION] */
 	IsPluginInstalled(this: StudioService, assetId: number): boolean;
 	/** [NO DOCUMENTATION] */
 	IsPluginUpToDate(this: StudioService, assetId: number, currentAssetVersion: number): boolean;
+	/** [NO DOCUMENTATION] */
+	LaunchBulkImport(this: StudioService, assetTypeToImport: number): void;
 	/** [NO DOCUMENTATION] */
 	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
 	/** [NO DOCUMENTATION] */
@@ -2933,10 +2888,6 @@ interface StudioService extends Instance {
 	UninstallPlugin(this: StudioService, assetId: number): void;
 	/** [NO DOCUMENTATION] */
 	UpdatePluginManagement(this: StudioService): void;
-	/** [NO DOCUMENTATION] *
-	 * Tags: Yields
-	 */
-	LaunchBulkImport(this: StudioService, assetTypeToImport: number): number;
 	/** 
 	 * Tags: Yields
 	
@@ -2957,6 +2908,8 @@ interface StudioService extends Instance {
 	 * Tags: Yields
 	 */
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
+	/** [NO DOCUMENTATION] */
+	readonly BulkImportFinished: RBXScriptSignal<(state: number) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly GamePublishFinished: RBXScriptSignal<(success: boolean) => void>;
 	/** [NO DOCUMENTATION] */

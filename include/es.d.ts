@@ -923,6 +923,8 @@ interface WeakSetConstructor {
 }
 declare const WeakSet: WeakSetConstructor;
 
+type PromiseResolveArguments<T> = T extends void ? [] : T extends LuaTuple<infer U> ? U : [T];
+
 interface PromiseLike<T> {
 	/**
 	 * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -932,7 +934,7 @@ interface PromiseLike<T> {
 	 */
 	then<TResult1 = T, TResult2 = never>(
 		this: PromiseLike<T>,
-		onResolved?: ((value: T extends LuaTuple<infer U> ? U : [T]) => TResult1 | PromiseLike<TResult1>) | void,
+		onResolved?: ((...values: PromiseResolveArguments<T>) => TResult1 | PromiseLike<TResult1>) | void,
 		onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | void,
 	): PromiseLike<TResult1 | TResult2>;
 }
@@ -949,7 +951,7 @@ interface Promise<T> {
 	 */
 	then<TResult1 = T, TResult2 = never>(
 		this: Promise<T>,
-		onResolved?: ((value: T extends LuaTuple<infer U> ? U : [T]) => TResult1 | PromiseLike<TResult1>) | void,
+		onResolved?: ((...values: PromiseResolveArguments<T>) => TResult1 | PromiseLike<TResult1>) | void,
 		onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | void,
 	): Promise<TResult1 | TResult2>;
 
@@ -1057,7 +1059,7 @@ interface PromiseConstructor {
 	 */
 	new <T>(
 		executor: (
-			resolve: (value?: T | PromiseLike<T>) => void,
+			resolve: (...values: (PromiseResolveArguments<T>) | [T] | [PromiseLike<T>]) => void,
 			reject: (reason?: any) => void,
 			onCancel: (cancellationHook: () => void) => void,
 		) => void,
