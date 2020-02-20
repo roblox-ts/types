@@ -26,6 +26,7 @@ interface Services {
 }
 
 interface CreatableInstances {
+	DebuggablePlugin: DebuggablePlugin;
 	PluginAction: PluginAction;
 	RenderingTest: RenderingTest;
 }
@@ -1453,7 +1454,7 @@ interface Players extends Instance {
  */
 interface Plugin extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Plugin";
+	readonly ClassName: "DebuggablePlugin" | "Plugin";
 	/** Returns whether the user enabled _Collisions_ in studio under the Model tab. */
 	readonly CollisionEnabled: boolean;
 	/** Returns the grid size the user has set in studio under the Model tab. This can be 1, 0.2 or 0.01, but has rounding errors.
@@ -1615,6 +1616,11 @@ interface Plugin extends Instance {
 	/** Fired when the plugin is deactivated. This occurs when either the plugin code calls [Plugin.Deactivate](https://developer.roblox.com/api-reference/function/Plugin/Deactivate), or because some other plugin called [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate), which forces all other plugins to lose their active state. */
 	readonly Deactivation: RBXScriptSignal<() => void>;
 	readonly Unloading: RBXScriptSignal<() => void>;
+}
+
+interface DebuggablePlugin extends Plugin {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "DebuggablePlugin";
 }
 
 /** PluginAction is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`. In Roblox Studio, they can be assigned a keyboard shortcut under `File → Advanced → Customize Shortcuts...`, and they can also be added to the Quick Access Toolbar.
@@ -2854,6 +2860,8 @@ interface StudioService extends Instance {
 	GetStartupPluginId(this: StudioService): string;
 	/** [NO DOCUMENTATION] */
 	GetUserId(this: StudioService): number;
+	/** [NO DOCUMENTATION] */
+	GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): unknown;
 	/** [NO DOCUMENTATION] */
 	IsPluginInstalled(this: StudioService, assetId: number): boolean;
 	/** [NO DOCUMENTATION] */
