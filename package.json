@@ -30,7 +30,7 @@
 		"breakdance": "^3.0.1",
 		"libxmljs": "^0.19.7",
 		"node-fetch": "^2.6.0",
-		"ts-morph": "^6.0.2",
+		"ts-morph": "^7.0.0",
 		"typescript": "^3.7.2"
 	},
 	"bundleDependencies": [],
