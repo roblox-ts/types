@@ -3,8 +3,6 @@ import { Generator } from "./Generator";
 
 export class EnumGenerator extends Generator {
 	public async generate(rbxEnums: Array<ApiEnum>) {
-		const enumTypeNames = new Array<string>();
-
 		this.write(`// THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!`);
 		this.write(``);
 		this.write('/// <reference no-default-lib="true"/>');
@@ -33,7 +31,6 @@ export class EnumGenerator extends Generator {
 		this.write(``);
 
 		for (const { Name: enumTypeName, Items: enumTypeItems } of rbxEnums) {
-			enumTypeNames.push(enumTypeName);
 			const enumItemNames = new Array<string>();
 
 			this.write(`export namespace ${enumTypeName} {`);
@@ -59,11 +56,6 @@ export class EnumGenerator extends Generator {
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
-
-		this.write(
-			`declare type CastsToEnum<T extends \n\t| Enum.${enumTypeNames.join(
-				`\n\t| Enum.`,
-			)}\n> = T | T["Name" | "Value"];`,
-		);
+		this.write(`declare type CastsToEnum<T extends EnumItem> = T | T["Name" | "Value"];`);
 	}
 }
