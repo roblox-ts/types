@@ -92,7 +92,6 @@ interface Camera extends Instance {
 
 interface Chat extends Instance {
 	readonly Chatted: RBXScriptSignal<(part: BasePart, message: string, color: Enum.ChatColor) => void>;
-	Chat(this: Chat, partOrCharacter: BasePart | Model, message: string, color?: CastsToEnum<Enum.ChatColor>): void;
 	FilterStringAsync(this: Chat, stringToFilter: string, playerFrom: Player, playerTo: Player): string;
 	FilterStringForBroadcast(this: Chat, stringToFilter: string, playerFrom: Player): string;
 }
@@ -491,10 +490,6 @@ interface Player extends Instance {
 	readonly Name: string;
 	readonly UserId: number;
 	ReplicationFocus: BasePart | undefined;
-	readonly CharacterAdded: RBXScriptSignal<(character: Model) => void>;
-	readonly CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
-	readonly CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
-
 	readonly Chatted: RBXScriptSignal<(message: string, recipient?: Player) => void>;
 	/** ### TS Usage
 	 * One should check the LocationType of each member of this array in order to verify which members are present. Should be compared to the LocationType const enum.
@@ -514,8 +509,7 @@ interface Players extends Instance {
 	/** @rbxts client */
 	readonly LocalPlayer: Player;
 	GetPlayerByUserId(this: Players, userId: number): Player | undefined;
-
-	GetPlayerFromCharacter(this: Players, character: Instance | undefined): Player | undefined;
+	GetPlayerFromCharacter(this: Players, character: Model): Player | undefined;
 	GetPlayers(this: Players): Array<Player>;
 
 	GetCharacterAppearanceAsync(this: Players, userId: number): Model | undefined;

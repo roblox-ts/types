@@ -43,6 +43,7 @@ interface BreakdanceNodeNodes extends BreakdanceNodeBase {
 
 type BreakdanceNode = BreakdanceNodeVal | BreakdanceNodeNodes;
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const breakdance = require("breakdance") as (
 	HTMLtoConvert: string,
 	options?: {
@@ -248,7 +249,7 @@ const CLASS_BLACKLIST = new Set([
 	"RbxAnalyticsService",
 ]);
 
-const MEMBER_BLACKLIST = new Map<string, Array<string>>([
+const MEMBER_BLACKLIST = new Map([
 	["Instance", ["ClassName"]],
 	["Workspace", ["FilteringEnabled"]],
 ]);
@@ -364,6 +365,8 @@ function safePropType(valueType: string | undefined | null) {
 const RENAMEABLE_AUTO_TYPES = new Map<string, string>([
 	["Part", "BasePart"],
 	["Script", "LuaSourceContainer"],
+	["Character", "Model"],
+	["Input", "InputObject"],
 ]);
 
 function safeRenamedInstance(name: string): string;
@@ -372,7 +375,7 @@ function safeRenamedInstance(name: string | undefined) {
 	return name && (RENAMEABLE_AUTO_TYPES.get(name) ?? name);
 }
 
-function safeValueType(valueType: ApiValueType, canImplicitlyConvertEnum: boolean = false) {
+function safeValueType(valueType: ApiValueType, canImplicitlyConvertEnum = false) {
 	const mappedType = VALUE_TYPE_MAP.get(valueType.Name);
 	if (mappedType !== undefined) {
 		return mappedType;
@@ -501,7 +504,7 @@ namespace ClassInformation {
 		callback: Array<Callback>;
 	}
 
-	function processBreakdownNode(node: BreakdanceNode, index: number = 0) {
+	function processBreakdownNode(node: BreakdanceNode, index = 0) {
 		if (node.nodes) {
 			node.nodes.forEach(processBreakdownNode);
 
@@ -713,7 +716,7 @@ namespace ClassInformation {
 const { processDescriptionInfo: processDescription } = ClassInformation;
 
 function handleLinkData(
-	myLinks: Array<Promise<any>>,
+	myLinks: Array<Promise<unknown>>,
 	linkDatum: {
 		rbxMember: ApiClass;
 		link: string;
@@ -894,11 +897,7 @@ export class ClassGenerator extends Generator {
 		this.write(`/** ${(description.trim() !== "" ? description : "[NO DOCUMENTATION]") + tagStr} */`);
 	}
 
-	private generateArgs(
-		params: Array<ApiParameter>,
-		canImplicitlyConvertEnum: boolean = true,
-		args = new Array<string>(),
-	) {
+	private generateArgs(params: Array<ApiParameter>, canImplicitlyConvertEnum = true, args = new Array<string>()) {
 		const paramNames = params.map(param => param.Name);
 		for (let i = 0; i < paramNames.length; i++) {
 			const name = paramNames[i];
@@ -917,13 +916,14 @@ export class ClassGenerator extends Generator {
 			const argName = safeArgName(paramNames[i]);
 			if (argName && paramType === "Instance") {
 				const lowerName = argName.toLowerCase();
-				const findings = [...this.ClassReferences.keys()].filter(k => {
+				const findings = [...this.ClassReferences.keys(), "Character", "Input"].filter(k => {
 					const l = k.toLowerCase();
 					return k !== "Instance" && lowerName.includes(l); // || l.includes(lowerName);
 				});
+
 				if (findings.length > 0) {
 					const partPos = findings.indexOf("Part");
-					if (partPos !== -1 && findings.length > 1) {
+					if (partPos !== -1 && findings.length > 1 && !lowerName.includes("or")) {
 						findings.splice(partPos, 1);
 					}
 					const found =
@@ -931,6 +931,7 @@ export class ClassGenerator extends Generator {
 						findings.map(found => safeRenamedInstance(found)).join(" | ");
 
 					paramType = found;
+					console.log(findings, lowerName, paramType);
 				}
 			}
 			args.push(`${argName || `arg${i}`}${optional ? "?" : ""}: ${paramType || "unknown"}`);
@@ -940,6 +941,7 @@ export class ClassGenerator extends Generator {
 
 	private generateCallback(rbxCallback: ApiCallback, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxCallback.Name;
+		console.log(name);
 		const args = this.generateArgs(rbxCallback.Parameters);
 		const { Description: wikiDescription } = rbxCallback;
 		const description =
@@ -954,6 +956,7 @@ export class ClassGenerator extends Generator {
 
 	private generateEvent(rbxEvent: ApiEvent, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxEvent.Name;
+		console.log(name);
 		const args = this.generateArgs(rbxEvent.Parameters, false);
 		const { Description: wikiDescription } = rbxEvent;
 		const description =
@@ -970,6 +973,7 @@ export class ClassGenerator extends Generator {
 		const name = rbxFunction.Name;
 		const returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
 		if (returnType !== null) {
+			console.log(name);
 			const args = this.generateArgs(rbxFunction.Parameters, true, [`this: ${className}`]);
 			const { Description: wikiDescription } = rbxFunction;
 			const description =
@@ -1206,7 +1210,7 @@ export class ClassGenerator extends Generator {
 		this.write(``);
 	}
 
-	private subclassify(rbxClassName: string, omission: string = ""): Array<string> {
+	private subclassify(rbxClassName: string, omission = ""): Array<string> {
 		const rbxClass = this.ClassReferences.get(rbxClassName);
 
 		if (rbxClass) {

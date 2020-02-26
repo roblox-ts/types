@@ -3659,6 +3659,7 @@ interface Chat extends Instance {
 	 * 
 	 * A game not using this filter function for custom chat or other user generated text may be subjected to moderation action.
 	 */
+	// Chat(this: Chat, partOrCharacter: BasePart | Model, message: string, color?: CastsToEnum<Enum.ChatColor>): void;
 	FilterStringAsync(this: Chat, stringToFilter: string, playerFrom: Player, playerTo: Player): string;
 	/** Filters a string sent from *playerFrom* for broadcast to no particular target. The filtered message has more restrictions than [Chat.FilterStringAsync](https://developer.roblox.com/api-reference/function/Chat/FilterStringAsync).
 	 * 
@@ -13381,7 +13382,7 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * The downside of network streaming is it means the client can no longer rely on specific objects being available. Developers should not enable StreamingEnabled unless they understand its implications and have put processes in place to manage them. For example, `LocalScript`s may have to use [Instance.WaitForChild](https://developer.roblox.com/api-reference/function/Instance/WaitForChild) in order to access parts of the game.
 	 */
-	StreamingEnabled: boolean;
+	readonly StreamingEnabled: boolean;
 	/** This property is a reference to the `Terrain` object parented to the `Workspace`.
 	 * 
 	 * ![An example of Roblox terrain][1]
@@ -14569,6 +14570,10 @@ interface Player extends Instance {
 	 * 
 	 * The message text fired with this event is **unfiltered**. If you are displaying player input like chat to other players in any form, it must be filtered using [Chat.FilterStringAsync](https://developer.roblox.com/api-reference/function/Chat/FilterStringAsync). Keep this in mind when creating your own chat systems; if your game does not properly filter chat it may have moderation action taken against it.
 	 */
+	// readonly CharacterAdded: RBXScriptSignal<(character: Model) => void>;
+	// readonly CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
+	// readonly CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
+
 	readonly Chatted: RBXScriptSignal<(message: string, recipient?: Player) => void>;
 	/** This event is usually fired two minutes after the game engine classifies the [player](https://developer.roblox.com/api-reference/class/Player) as idle. Time is the amount of seconds since this point.
 	 * 
@@ -14704,7 +14709,7 @@ interface Players extends Instance {
 	 * @param character A character instance that you want to get the player from.
 	 * @returns A player instance corresponding to the character passed as input.
 	 */
-	GetPlayerFromCharacter(this: Players, character: Instance | undefined): Player | undefined;
+	GetPlayerFromCharacter(this: Players, character: Model): Instance | undefined;
 	/** This method returns a table of all presently connected `Player`. It functions the same way [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) would except that it only returns Player objects. It functions similarly to [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) when called on `Players`. 0 When used in conjunction with a for-loop, it is useful for iterating over all players in a game.
 	 * 
 	 * ```lua
@@ -14731,6 +14736,7 @@ interface Players extends Instance {
 	 * 
 	 * @returns A table containing all the players in the server.
 	 */
+	// GetPlayerFromCharacter(this: Players, character: Instance | undefined): Player | undefined;
 	GetPlayers(this: Players): Array<Player>;
 	/** This function returns a `Model` containing the assets which the player is wearing, excluding gear.
 	 * 
