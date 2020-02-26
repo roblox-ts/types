@@ -931,7 +931,6 @@ export class ClassGenerator extends Generator {
 						findings.map(found => safeRenamedInstance(found)).join(" | ");
 
 					paramType = found;
-					console.log(findings, lowerName, paramType);
 				}
 			}
 			args.push(`${argName || `arg${i}`}${optional ? "?" : ""}: ${paramType || "unknown"}`);
@@ -941,7 +940,6 @@ export class ClassGenerator extends Generator {
 
 	private generateCallback(rbxCallback: ApiCallback, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxCallback.Name;
-		console.log(name);
 		const args = this.generateArgs(rbxCallback.Parameters);
 		const { Description: wikiDescription } = rbxCallback;
 		const description =
@@ -956,7 +954,6 @@ export class ClassGenerator extends Generator {
 
 	private generateEvent(rbxEvent: ApiEvent, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxEvent.Name;
-		console.log(name);
 		const args = this.generateArgs(rbxEvent.Parameters, false);
 		const { Description: wikiDescription } = rbxEvent;
 		const description =
@@ -973,7 +970,6 @@ export class ClassGenerator extends Generator {
 		const name = rbxFunction.Name;
 		const returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
 		if (returnType !== null) {
-			console.log(name);
 			const args = this.generateArgs(rbxFunction.Parameters, true, [`this: ${className}`]);
 			const { Description: wikiDescription } = rbxFunction;
 			const description =
