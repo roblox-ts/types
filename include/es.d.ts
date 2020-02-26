@@ -50,7 +50,7 @@ interface ArrayLike<T> {
 	readonly [n: number]: T;
 }
 
-type ToUnaryFunctionUnion<U> = U extends any ? (arg: U) => void : never;
+type ToUnaryFunctionUnion<U> = U extends any ? (arg: U) => void : never
 type _<T> = T;
 type Merge<T> = _<{ [k in keyof T]: T[k] }>;
 
