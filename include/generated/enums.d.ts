@@ -2455,26 +2455,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<DataStoreRequestType>
 	}
 	export type DataStoreRequestType = DataStoreRequestType.GetAsync | DataStoreRequestType.SetIncrementAsync | DataStoreRequestType.UpdateAsync | DataStoreRequestType.GetSortedAsync | DataStoreRequestType.SetIncrementSortedAsync | DataStoreRequestType.OnUpdate;
-	export namespace DateTimeKind {
-		export interface Utc {
-			Name: "Utc";
-			Value: 0;
-			EnumType: EnumType<DateTimeKind>;
-		}
-
-		export const Utc: Utc;
-
-		export interface Local {
-			Name: "Local";
-			Value: 1;
-			EnumType: EnumType<DateTimeKind>;
-		}
-
-		export const Local: Local;
-
-		export function GetEnumItems(this: defined): Array<DateTimeKind>
-	}
-	export type DateTimeKind = DateTimeKind.Utc | DateTimeKind.Local;
 	export namespace DevCameraOcclusionMode {
 		export interface Zoom {
 			Name: "Zoom";
@@ -12319,7 +12299,6 @@ declare type CastsToEnum<T extends
 	| Enum.CurrencyType
 	| Enum.CustomCameraMode
 	| Enum.DataStoreRequestType
-	| Enum.DateTimeKind
 	| Enum.DevCameraOcclusionMode
 	| Enum.DevComputerCameraMovementMode
 	| Enum.DevComputerMovementMode

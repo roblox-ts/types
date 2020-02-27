@@ -13381,7 +13381,7 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * The downside of network streaming is it means the client can no longer rely on specific objects being available. Developers should not enable StreamingEnabled unless they understand its implications and have put processes in place to manage them. For example, `LocalScript`s may have to use [Instance.WaitForChild](https://developer.roblox.com/api-reference/function/Instance/WaitForChild) in order to access parts of the game.
 	 */
-	StreamingEnabled: boolean;
+	readonly StreamingEnabled: boolean;
 	/** This property is a reference to the `Terrain` object parented to the `Workspace`.
 	 * 
 	 * ![An example of Roblox terrain][1]
