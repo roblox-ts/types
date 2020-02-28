@@ -28,10 +28,8 @@ interface Services {
 	MarketplaceService: MarketplaceService;
 	MessagingService: MessagingService;
 	PathfindingService: PathfindingService;
-	PermissionsService: PermissionsService;
 	PhysicsService: PhysicsService;
 	Players: Players;
-	PluginDebugService: PluginDebugService;
 	PolicyService: PolicyService;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedStorage: ReplicatedStorage;
@@ -14021,11 +14019,6 @@ interface PathfindingService extends Instance {
 	FindPathAsync(this: PathfindingService, start: Vector3, finish: Vector3): Path;
 }
 
-interface PermissionsService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PermissionsService";
-}
-
 /** PhysicsService is a game service that has functions for working with **collision groups**, which define a set of parts that may or may not collide with parts assigned to other collision groups. Assign a part to a collision group using [SetPartCollisionGroup](https://developer.roblox.com/api-reference/function/PhysicsService/SetPartCollisionGroup). Collision groups and their relationships are saved to and loaded from file.
  * 
  * ## Network Replication
@@ -14704,7 +14697,7 @@ interface Players extends Instance {
 	 * @param character A character instance that you want to get the player from.
 	 * @returns A player instance corresponding to the character passed as input.
 	 */
-	GetPlayerFromCharacter(this: Players, character: Model): Player | undefined;
+	GetPlayerFromCharacter(this: Players, character: Instance | undefined): Player | undefined;
 	/** This method returns a table of all presently connected `Player`. It functions the same way [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) would except that it only returns Player objects. It functions similarly to [Instance.GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) when called on `Players`. 0 When used in conjunction with a for-loop, it is useful for iterating over all players in a game.
 	 * 
 	 * ```lua
@@ -14880,11 +14873,6 @@ interface Players extends Instance {
 	 * If you want to track when a player's character is added or removed from the game, such as when a player respawns or dies, you can use the [Player.CharacterAdded](https://developer.roblox.com/api-reference/event/Player/CharacterAdded) and [Player.CharacterRemoving](https://developer.roblox.com/api-reference/event/Player/CharacterRemoving) functions.
 	 */
 	readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
-}
-
-interface PluginDebugService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PluginDebugService";
 }
 
 interface PolicyService extends Instance {

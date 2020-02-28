@@ -12,6 +12,7 @@ interface Services {
 	NetworkServer: NetworkServer;
 	NetworkSettings: NetworkSettings;
 	PackageService: PackageService;
+	PluginDebugService: PluginDebugService;
 	PluginGuiService: PluginGuiService;
 	RenderSettings: RenderSettings;
 	RobloxPluginGuiService: RobloxPluginGuiService;
@@ -1716,6 +1717,11 @@ interface PluginAction extends Instance {
 	readonly Text: string;
 	/** Fires when the action is triggered. This can be done by either activating the action from the Quick Access Toolbar, or by using the keyboard shortcut that was bound to it. */
 	readonly Triggered: RBXScriptSignal<() => void>;
+}
+
+interface PluginDebugService extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "PluginDebugService";
 }
 
 interface PluginDragEvent extends Instance {
