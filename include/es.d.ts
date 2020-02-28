@@ -1143,3 +1143,6 @@ type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (.
 
 /** Combines a series of intersections into one object, e.g. { x: number } & { y: number } becomes { x: number, y: number } */
 type Reconstruct<T> = _<{ [k in keyof T]: T[k] }>;
+
+/** Converts a series of object unions to a series of intersections, e.g. A | B becomes A & B */
+type UnionToIntersection<U> = (U extends object ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
