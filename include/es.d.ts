@@ -61,8 +61,33 @@ interface ObjectConstructor {
 	assign<A extends object, S extends Array<unknown>>(
 		this: ObjectConstructor,
 		target: A,
-		...sources: A extends Instance ? Array<PartialProperties<A> | undefined> : S
-	): A extends Instance ? A : A & UnionToIntersection<S[Exclude<keyof S, keyof Array<unknown> | "length">]>
+		...sources: A extends CheckableTypes[Exclude<keyof CheckableTypes, keyof CheckablePrimitives | "Instance">] // invalidate calls when target is a Vector2/Vector3/etc
+			? never
+			: A extends Instance
+			? Array<PartialInstance<A> | undefined | boolean | string | number | Callback | thread>
+			: S
+	): A extends Instance
+		? A
+		: A &
+				UnionToIntersection<
+					{
+						[K in Exclude<keyof S, keyof Array<unknown> | "length">]: S[K] extends infer M
+							? ((M extends object
+								? M
+								: undefined) extends undefined
+								? never
+								: M extends object
+								? M
+								: undefined) extends infer C
+								? undefined extends C
+									? Partial<Exclude<C, undefined>>
+									: C
+								: never
+							: never;
+					} extends infer V
+						? V[keyof V]
+						: never
+				>;
 
 	/**
 	 * Returns the names of the enumerable properties and methods of an object.
@@ -1118,6 +1143,3 @@ type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (.
 
 /** Combines a series of intersections into one object, e.g. { x: number } & { y: number } becomes { x: number, y: number } */
 type Reconstruct<T> = _<{ [k in keyof T]: T[k] }>;
-
-/** Converts a series of unions to a series of intersections, e.g. A | B becomes A & B */
-type UnionToIntersection<U> = (U extends unknown ? (k: U) => void : never) extends (k: infer I) => void ? I : never;

@@ -35,7 +35,7 @@ type StrictInstances = {
 };
 
 /** Given an Instance `T`, returns a unioned type of all property names, except "ClassName". */
-type GetProperties<T extends Instance> = {
+type InstanceProperties<T extends Instance> = {
 	[Key in keyof T]-?: Key extends "GetPropertyChangedSignal" | "ClassName"
 		? never
 		: T[Key] extends RBXScriptSignal
@@ -46,30 +46,41 @@ type GetProperties<T extends Instance> = {
 }[keyof T];
 
 /** Given an Instance `T`, returns a unioned type of all non-readonly property names. */
-type GetWritableProperties<T extends Instance> = {
+type WritableInstanceProperties<T extends Instance> = {
 	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName"
-		? never
-		: T[K] extends RBXScriptSignal
-		? never
-		: (() => any) extends T[K]
-		? never
-		: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends <F>() => F extends { -readonly [Q in K]: T[K] }
-				? 1
-				: 2
-		? K
-		: never;
+	? never
+	: T[K] extends RBXScriptSignal
+	? never
+	: (() => any) extends T[K]
+	? never
+	: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends <F>() => F extends { -readonly [Q in K]: T[K] }
+		? 1
+		: 2
+	? K
+	: never;
 }[keyof T];
 
 /** Given an Instance `T`, returns an object which can hold the writable properties of T. Good to use with `Object.assign`.
  * @example
- * const props: PartialProperties<Part> = {
+ * const props: PartialInstance<Part> = {
  * 	Size: new Vector3(),
  * 	Anchored: false,
  * }
  *
  * Object.assign(new Instance("Part"), props);
  */
-type PartialProperties<T extends Instance> = Partial<Pick<T, GetWritableProperties<T>>>;
+type PartialInstance<T extends Instance> = Partial<Pick<T, GetWritableProperties<T>>>;
+
+// temporary backwards compatibility:
+
+/** @rbxts deprecated */
+type GetProperties<T extends Instance> = InstanceProperties<T>;
+
+/** @rbxts deprecated */
+type GetWritableProperties<T extends Instance> = WritableInstanceProperties<T>;
+
+/** @rbxts deprecated */
+type PartialProperties<T extends Instance> = PartialInstance<T>;
 
 /** Returns a given objects parameters in a tuple. Defaults to `[]` */
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : [];

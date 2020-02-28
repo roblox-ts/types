@@ -358,13 +358,13 @@ declare namespace math {
  */
 declare namespace bit32 {
 	/**
-	 * Returns the number `x` shifted `disp` bits to the right. The number `disp` may be any representable integer.
+	 * Returns the number `x` shifted `displacement` bits to the right. The number `displacement` may be any representable integer.
 	 * Negative displacements shift to the left. This shift operation is what is called arithmetic shift.
 	 * Vacant bits on the left are filled with copies of the higher bit of `x`; vacant bits on the right are filled
 	 * with zeros. In particular, displacements with absolute values higher than 31 result in zero or `0xFFFFFFFF`
 	 * (all original bits are shifted out).
 	 */
-	function arshift(x: number, disp: number): number;
+	function arshift(x: number, displacement: number): number;
 
 	/** Returns the bitwise _and_ of its operands. */
 	function band(...operands: Array<number>): number;
@@ -402,50 +402,50 @@ declare namespace bit32 {
 	function replace(n: number, v: number, field: number, width?: number): number;
 
 	/**
-	 * Returns the number `x` rotated `disp` bits to the left. The number `disp` may be any representable integer.
+	 * Returns the number `x` rotated `displacement` bits to the left. The number `displacement` may be any representable integer.
 	 *
 	 * For any valid displacement, the following identity holds:
 	 *
-	 * `assert(bit32.lrotate(x, disp) == bit32.lrotate(x, disp % 32))`
+	 * `assert(bit32.lrotate(x, displacement) == bit32.lrotate(x, displacement % 32))`
 	 *
 	 * In particular, negative displacements rotate to the right.
 	 */
-	function lrotate(x: number, disp: number): number;
+	function lrotate(x: number, displacement: number): number;
 
 	/**
-	 * Returns the number `x` shifted `disp` bits to the left. The number `disp` may be any representable integer.
+	 * Returns the number `x` shifted `displacement` bits to the left. The number `displacement` may be any representable integer.
 	 * Negative displacements shift to the right. In any direction, vacant bits are filled with zeros.
 	 * In particular, displacements with absolute values higher than 31 result in zero (all bits are shifted out).
 	 *
 	 * For positive displacements, the following equality holds:
 	 *
-	 * `assert(bit32.lshift(b, disp) == (b * 2^disp) % 2^32)`
+	 * `assert(bit32.lshift(b, displacement) == (b * 2^displacement) % 2^32)`
 	 */
-	function lshift(x: number, disp: number): number;
+	function lshift(x: number, displacement: number): number;
 
 	/**
-	 * Returns the number `x` rotated `disp` bits to the right. The number `disp` may be any representable integer.
+	 * Returns the number `x` rotated `displacement` bits to the right. The number `displacement` may be any representable integer.
 	 *
 	 * For any valid displacement, the following identity holds:
 	 *
-	 * `assert(bit32.rrotate(x, disp) == bit32.rrotate(x, disp % 32))`
+	 * `assert(bit32.rrotate(x, displacement) == bit32.rrotate(x, displacement % 32))`
 	 *
 	 * In particular, negative displacements rotate to the left.
 	 */
-	function rrotate(x: number, disp: number): number;
+	function rrotate(x: number, displacement: number): number;
 
 	/**
-	 * Returns the number `x` shifted `disp` bits to the right. The number `disp` may be any representable integer.
+	 * Returns the number `x` shifted `displacement` bits to the right. The number `displacement` may be any representable integer.
 	 * Negative displacements shift to the left. In any direction, vacant bits are filled with zeros.
 	 * In particular, displacements with absolute values higher than 31 result in zero (all bits are shifted out).
 	 *
 	 * For positive displacements, the following equality holds:
 	 *
-	 * `assert(bit32.rshift(b, disp) == math.floor(b % 2^32 / 2^disp))`
+	 * `assert(bit32.rshift(b, displacement) == math.floor(b % 2^32 / 2^displacement))`
 	 *
 	 * This shift operation is what is called logical shift.
 	 */
-	function rshift(x: number, disp: number): number;
+	function rshift(x: number, displacement: number): number;
 }
 
 declare namespace table {
