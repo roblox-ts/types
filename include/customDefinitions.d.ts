@@ -509,7 +509,7 @@ interface Players extends Instance {
 	/** @rbxts client */
 	readonly LocalPlayer: Player;
 	GetPlayerByUserId(this: Players, userId: number): Player | undefined;
-	GetPlayerFromCharacter(this: Players, character: Model): Player | undefined;
+	GetPlayerFromCharacter(this: Players, character: Instance | undefined): Player | undefined;
 	GetPlayers(this: Players): Array<Player>;
 
 	GetCharacterAppearanceAsync(this: Players, userId: number): Model | undefined;
