@@ -139,6 +139,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AlignType>
 	}
 	export type AlignType = AlignType.Parallel | AlignType.Perpendicular;
+	export namespace AlphaMode {
+		export interface Overlay {
+			Name: "Overlay";
+			Value: 0;
+			EnumType: EnumType<AlphaMode>;
+		}
+
+		export const Overlay: Overlay;
+
+		export interface Transparency {
+			Name: "Transparency";
+			Value: 1;
+			EnumType: EnumType<AlphaMode>;
+		}
+
+		export const Transparency: Transparency;
+
+		export function GetEnumItems(this: defined): Array<AlphaMode>
+	}
+	export type AlphaMode = AlphaMode.Overlay | AlphaMode.Transparency;
 	export namespace AnimationPriority {
 		export interface Idle {
 			Name: "Idle";
@@ -12258,6 +12278,7 @@ declare type CastsToEnum<T extends
 	| Enum.ActuatorRelativeTo
 	| Enum.ActuatorType
 	| Enum.AlignType
+	| Enum.AlphaMode
 	| Enum.AnimationPriority
 	| Enum.AppShellActionType
 	| Enum.AspectType
