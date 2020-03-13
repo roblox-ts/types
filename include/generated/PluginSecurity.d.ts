@@ -2876,7 +2876,7 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
 	OpenPluginInsertPage(this: StudioService, assetId: number): void;
 	/** [NO DOCUMENTATION] */
-	PublishAs(this: StudioService, universeId: number, placeId: number): void;
+	PublishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
 	/** [NO DOCUMENTATION] */
 	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
 	/** [NO DOCUMENTATION] */
