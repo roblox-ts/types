@@ -147,7 +147,7 @@ interface ObjectConstructor {
 			P extends any
 				? {
 						[k in P[0]]: P[1];
-				}
+				  }
 				: never
 		> extends (arg: infer I) => void
 			? I
@@ -247,17 +247,17 @@ interface String extends Iterable<string> {
 	includes(this: string, searchElement: string, fromIndex?: number): boolean;
 
 	/**
-     * Returns whether the characters at the end of this string match the searchString, starting at position.
+	 * Returns whether the characters at the end of this string match the searchString, starting at position.
 	 * @param searchString The element to search for.
 	 * @param position The position in this string at which to begin searching for searchElement.
-     */
+	 */
 	endsWith(this: string, searchString: string, endPosition?: number): boolean;
 
-    /**
-     * Returns whether the characters at the beginning of this string match the searchString, starting at position.
+	/**
+	 * Returns whether the characters at the beginning of this string match the searchString, starting at position.
 	 * @param searchString The element to search for.
 	 * @param position The position in this string at which to begin searching for searchElement.
-     */
+	 */
 	startsWith(this: string, searchString: string, position?: number): boolean;
 }
 
@@ -813,7 +813,10 @@ interface MapConstructor {
 }
 declare var Map: MapConstructor;
 
-/** A Map object with its `__mode` metamethod set to "k" */
+/**
+ * A Map object with its `__mode` metamethod set to "k"
+ * @rbxts map
+ */
 interface WeakMap<K extends object, V> extends Map<K, V> {}
 
 interface WeakMapConstructor {
@@ -916,6 +919,10 @@ interface SetConstructor {
 }
 declare const Set: SetConstructor;
 
+/**
+ * A Set object with its `__mode` metamethod set to "k"
+ * @rbxts set
+ */
 interface WeakSet<T extends object> extends Set<T> {}
 
 interface WeakSetConstructor {
@@ -1059,7 +1066,7 @@ interface PromiseConstructor {
 	 */
 	new <T>(
 		executor: (
-			resolve: (...values: (PromiseResolveArguments<T>) | [T] | [PromiseLike<T>]) => void,
+			resolve: (...values: PromiseResolveArguments<T> | [T] | [PromiseLike<T>]) => void,
 			reject: (reason?: any) => void,
 			onCancel: (cancellationHook: () => void) => void,
 		) => void,

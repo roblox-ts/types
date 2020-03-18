@@ -2870,8 +2870,6 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
 	IsPluginUpToDate(this: StudioService, assetId: number, currentAssetVersion: number): boolean;
 	/** [NO DOCUMENTATION] */
-	LaunchBulkImport(this: StudioService, assetTypeToImport: number): void;
-	/** [NO DOCUMENTATION] */
 	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
 	/** [NO DOCUMENTATION] */
 	OpenPluginInsertPage(this: StudioService, assetId: number): void;
@@ -2883,8 +2881,6 @@ interface StudioService extends Instance {
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
 	/** [NO DOCUMENTATION] */
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
-	/** [NO DOCUMENTATION] */
-	ShowBulkImportView(this: StudioService): void;
 	/** [NO DOCUMENTATION] */
 	ShowPublishToRoblox(this: StudioService): void;
 	/** [NO DOCUMENTATION] */
@@ -2911,8 +2907,6 @@ interface StudioService extends Instance {
 	 * Tags: Yields
 	 */
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
-	/** [NO DOCUMENTATION] */
-	readonly BulkImportFinished: RBXScriptSignal<(state: number) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly GamePublishFinished: RBXScriptSignal<(success: boolean) => void>;
 	/** [NO DOCUMENTATION] */
