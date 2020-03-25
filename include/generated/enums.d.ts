@@ -13,7 +13,6 @@ interface EnumItem {
 	EnumType: Enum;
 }
 
-type Enum = { GetEnumItems(this: defined): Array<EnumItem> } & { [index: string]: EnumItem };
 interface Enum {
 	GetEnumItems(this: defined): Array<EnumItem>;
 }
