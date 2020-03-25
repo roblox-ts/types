@@ -73,7 +73,7 @@ interface ObjectConstructor {
 					{
 						[K in Exclude<keyof S, keyof Array<unknown> | "length">]: Exclude<
 							S[K],
-							CheckableTypes[Exclude<keyof CheckableTypes, keyof CheckablePrimitives>] // Exclude non-enumerable Roblox datatypes from being unioned
+							CheckableTypes[Exclude<keyof CheckableTypes, keyof CheckablePrimitives> | "function" | "thread"] // Exclude non-enumerable Roblox datatype objects from being unioned
 						> extends infer M
 							? ((M extends object
 								? M
