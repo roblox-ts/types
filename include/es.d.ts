@@ -41,6 +41,9 @@ interface CallableFunction extends Function {}
 /** **DO NOT USE!** This type only exists because TypeScript requires it! */
 interface NewableFunction extends Function {}
 
+/** Marker for contextual 'this' type */
+interface ThisType<T> {}
+
 /** @rbxts array */
 interface ArrayLike<T> {
 	/**
@@ -50,42 +53,41 @@ interface ArrayLike<T> {
 	readonly [n: number]: T;
 }
 
-type ToUnaryFunctionUnion<U> = U extends any ? (arg: U) => void : never;
-type _<T> = T;
-type Merge<T> = _<{ [k in keyof T]: T[k] }>;
-
 interface ObjectConstructor {
 	/**
 	 * Copy the values of all of the enumerable own properties from one or more source objects to a target object.
 	 * Returns the target object.
 	 */
-	assign<A extends object, B>(this: ObjectConstructor, target: A, source: B): A & B;
-	assign<A extends object, B, C>(this: ObjectConstructor, target: A, source1: B, source2: C): A & B & C;
-	assign<A extends object, B, C, D>(
+	assign<A extends object, S extends Array<unknown>>(
 		this: ObjectConstructor,
 		target: A,
-		source1: B,
-		source2: C,
-		source3: D,
-	): A & B & C & D;
-	assign<A extends object, B, C, D, E>(
-		this: ObjectConstructor,
-		target: A,
-		source1: B,
-		source2: C,
-		source3: D,
-		source4: E,
-	): A & B & C & D & E;
-	assign<A extends object, B, C, D, E, F>(
-		this: ObjectConstructor,
-		target: A,
-		source1: B,
-		source2: C,
-		source3: D,
-		source4: E,
-		source5: F,
-	): A & B & C & D & E & F;
-	assign(this: ObjectConstructor, target: object, ...sources: Array<any>): object;
+		...sources: A extends CheckableTypes[Exclude<keyof CheckableTypes, keyof CheckablePrimitives | "Instance">] // invalidate calls when target is a Vector2/Vector3/etc
+			? never
+			: A extends Instance
+			? Array<PartialInstance<A> | undefined | boolean | string | number | Callback | thread>
+			: S
+	): A extends Instance
+		? A
+		: A &
+				UnionToIntersection<
+					{
+						[K in Exclude<keyof S, keyof Array<unknown> | "length">]: S[K] extends infer M
+							? ((M extends object
+								? M
+								: undefined) extends undefined
+								? never
+								: M extends object
+								? M
+								: undefined) extends infer C
+								? undefined extends C
+									? Partial<Exclude<C, undefined>>
+									: C
+								: never
+							: never;
+					} extends infer V
+						? V[keyof V]
+						: never
+				>;
 
 	/**
 	 * Returns the names of the enumerable properties and methods of an object.
@@ -139,19 +141,17 @@ interface ObjectConstructor {
 		: Array<NonNullable<{ [K in keyof T]: [K, NonNullable<T[K]>] }[keyof T]>>;
 
 	/** Creates an object from a set of entries */
-	fromEntries<P extends readonly [string | number | symbol, any]>(
+	fromEntries<P extends readonly [string | number | symbol, unknown]>(
 		this: ObjectConstructor,
 		i: ReadonlyArray<P>,
-	): Merge<
-		ToUnaryFunctionUnion<
-			P extends any
+	): Reconstruct<
+		UnionToIntersection<
+			P extends unknown
 				? {
 						[k in P[0]]: P[1];
 				  }
 				: never
-		> extends (arg: infer I) => void
-			? I
-			: never
+		>
 	>;
 
 	/**
@@ -1075,6 +1075,9 @@ interface PromiseConstructor {
 
 declare var Promise: PromiseConstructor;
 
+/** Placeholder that sometimes helps force TS to display what you want it to. */
+type _<T> = T;
+
 /**
  * Make all properties in T optional
  */
@@ -1145,7 +1148,8 @@ type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (.
 	? R
 	: any;
 
-/**
- * Marker for contextual 'this' type
- */
-interface ThisType<T> {}
+/** Combines a series of intersections into one object, e.g. { x: number } & { y: number } becomes { x: number, y: number } */
+type Reconstruct<T> = _<{ [k in keyof T]: T[k] }>;
+
+/** Converts a series of object unions to a series of intersections, e.g. A | B becomes A & B */
+type UnionToIntersection<U> = (U extends object ? (k: U) => void : never) extends (k: infer I) => void ? I : never;

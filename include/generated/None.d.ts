@@ -32,10 +32,8 @@ interface Services {
 	MarketplaceService: MarketplaceService;
 	MessagingService: MessagingService;
 	PathfindingService: PathfindingService;
-	PermissionsService: PermissionsService;
 	PhysicsService: PhysicsService;
 	Players: Players;
-	PluginDebugService: PluginDebugService;
 	PolicyService: PolicyService;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedStorage: ReplicatedStorage;
@@ -678,7 +676,7 @@ interface Instance {
 	 * 
 	 * `ValueBase` objects, such as `IntValue` and `StringValue`, use a modified `Changed` event that fires with the contents of the `Value` property. As such, this method provides a way to detect changes in other properties of those objects. For example, to detect changes in the `Name` property of an `IntValue`, use `IntValue:GetPropertyChangedSignal("Name"):Connect(someFunc)` since the `Changed` event of `IntValue` objects only detect changes on the `Value` property.
 	 */
-	GetPropertyChangedSignal(this: Instance, propertyName: GetProperties<this>): RBXScriptSignal;
+	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal;
 	GetPropertyChangedSignal(this: Instance, propertyName: string): RBXScriptSignal;
 	/** IsA returns true if the `Instance`'s class is **equivalent to** or a **subclass** of a given class. This function is similar to the **instanceof** operators in other languages, and is a form of [type introspection](https://en.wikipedia.org/wiki/Type_introspection). To ignore class inheritance, test the [ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) property directly instead. For checking native Lua data types (number, string, etc) use the functions `type` and `typeof`.
 	 * 
@@ -13948,11 +13946,6 @@ interface PathfindingService extends Instance {
 	FindPathAsync(this: PathfindingService, start: Vector3, finish: Vector3): Path;
 }
 
-interface PermissionsService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PermissionsService";
-}
-
 /** PhysicsService is a game service that has functions for working with **collision groups**, which define a set of parts that may or may not collide with parts assigned to other collision groups. Assign a part to a collision group using [SetPartCollisionGroup](https://developer.roblox.com/api-reference/function/PhysicsService/SetPartCollisionGroup). Collision groups and their relationships are saved to and loaded from file.
  * 
  * ## Network Replication
@@ -14807,11 +14800,6 @@ interface Players extends Instance {
 	 * If you want to track when a player's character is added or removed from the game, such as when a player respawns or dies, you can use the [Player.CharacterAdded](https://developer.roblox.com/api-reference/event/Player/CharacterAdded) and [Player.CharacterRemoving](https://developer.roblox.com/api-reference/event/Player/CharacterRemoving) functions.
 	 */
 	readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
-}
-
-interface PluginDebugService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PluginDebugService";
 }
 
 interface PolicyService extends Instance {
