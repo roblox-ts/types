@@ -61,7 +61,7 @@ interface ObjectConstructor {
 	assign<A extends object, S extends Array<unknown>>(
 		this: ObjectConstructor,
 		target: A,
-		...sources: A extends CheckableTypes[Exclude<keyof CheckableTypes, keyof CheckablePrimitives | "Instance">] // invalidate calls when target is a Vector2/Vector3/etc
+		...sources: A extends CheckableTypes[Exclude<keyof CheckableTypes, keyof CheckablePrimitives | "Instance"> | "function"] // invalidate calls when target is a Vector2/Vector3/function/etc
 			? never
 			: A extends Instance
 			? Array<PartialInstance<A> | undefined | boolean | string | number | Callback | thread>
@@ -71,7 +71,10 @@ interface ObjectConstructor {
 		: A &
 				UnionToIntersection<
 					{
-						[K in Exclude<keyof S, keyof Array<unknown> | "length">]: S[K] extends infer M
+						[K in Exclude<keyof S, keyof Array<unknown> | "length">]: Exclude<
+							S[K],
+							CheckableTypes[Exclude<keyof CheckableTypes, keyof CheckablePrimitives> | "function" | "thread"] // Exclude non-enumerable Roblox datatype objects from being unioned
+						> extends infer M
 							? ((M extends object
 								? M
 								: undefined) extends undefined
