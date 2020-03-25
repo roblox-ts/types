@@ -69,7 +69,7 @@ type WritableInstanceProperties<T extends Instance> = {
  *
  * Object.assign(new Instance("Part"), props);
  */
-type PartialInstance<T extends Instance> = Partial<Pick<T, GetWritableProperties<T>>>;
+type PartialInstance<T extends Instance> = Partial<Pick<T, WritableInstanceProperties<T>>>;
 
 // temporary backwards compatibility:
 

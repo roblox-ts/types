@@ -21,6 +21,11 @@ export class EnumGenerator extends Generator {
 		this.write(`}`);
 		this.write(``);
 		this.write(`type Enum = { GetEnumItems(this: defined): Array<EnumItem> } & { [index: string]: EnumItem };`);
+		this.write(`interface Enum {`);
+		this.pushIndent();
+		this.write(`GetEnumItems(this: defined): Array<EnumItem>;`);
+		this.popIndent();
+		this.write(`}`);
 		this.write(``);
 		this.write(`declare namespace Enum {`);
 		this.pushIndent();

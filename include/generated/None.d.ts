@@ -6,8 +6,10 @@
 
 interface Services {
 	AnalyticsService: AnalyticsService;
+	AssetManagerService: AssetManagerService;
 	AssetService: AssetService;
 	BadgeService: BadgeService;
+	BulkImportService: BulkImportService;
 	Chat: Chat;
 	CollectionService: CollectionService;
 	ContentProvider: ContentProvider;
@@ -15,6 +17,7 @@ interface Services {
 	ControllerService: ControllerService;
 	DataStoreService: DataStoreService;
 	Debris: Debris;
+	EventIngestService: EventIngestService;
 	GamePassService: GamePassService;
 	GroupService: GroupService;
 	GuiService: GuiService;
@@ -22,6 +25,7 @@ interface Services {
 	HttpService: HttpService;
 	InsertService: InsertService;
 	JointsService: JointsService;
+	LanguageService: LanguageService;
 	Lighting: Lighting;
 	LocalizationService: LocalizationService;
 	LogService: LogService;
@@ -36,6 +40,7 @@ interface Services {
 	RunService: RunService;
 	ServerScriptService: ServerScriptService;
 	ServerStorage: ServerStorage;
+	SessionService: SessionService;
 	SocialService: SocialService;
 	SoundService: SoundService;
 	StarterGui: StarterGui;
@@ -188,6 +193,7 @@ interface CreatableInstances {
 	StarterGear: StarterGear;
 	StringValue: StringValue;
 	SunRaysEffect: SunRaysEffect;
+	SurfaceAppearance: SurfaceAppearance;
 	SurfaceGui: SurfaceGui;
 	SurfaceLight: SurfaceLight;
 	SurfaceSelection: SurfaceSelection;
@@ -318,7 +324,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
  */
 interface Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ABTestService" | "Accessory" | "Accoutrement" | "AdService" | "AdvancedDragger" | "AlignOrientation" | "AlignPosition" | "AnalysticsSettings" | "AnalyticsService" | "AngularVelocity" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AppStorageService" | "ArcHandles" | "AssetService" | "Attachment" | "Backpack" | "BadgeService" | "BallSocketConstraint" | "Beam" | "BillboardGui" | "BinaryStringValue" | "BindableEvent" | "BindableFunction" | "BlockMesh" | "BloomEffect" | "BlurEffect" | "BodyAngularVelocity" | "BodyColors" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "BoolValue" | "BoxHandleAdornment" | "BrickColorValue" | "BrowserService" | "CacheableContentProvider" | "Camera" | "CFrameValue" | "ChangeHistoryService" | "CharacterMesh" | "Chat" | "ChorusSoundEffect" | "ClickDetector" | "ClientReplicator" | "ClusterPacketCache" | "CollectionService" | "Color3Value" | "ColorCorrectionEffect" | "CompressorSoundEffect" | "ConeHandleAdornment" | "Configuration" | "ContentProvider" | "ContextActionService" | "ControllerService" | "CookiesService" | "CoreGui" | "CorePackages" | "CoreScript" | "CoreScriptSyncService" | "CornerWedgePart" | "CSGDictionaryService" | "CustomEvent" | "CustomEventReceiver" | "CylinderHandleAdornment" | "CylinderMesh" | "CylindricalConstraint" | "DataModel" | "DataModelSession" | "DataStorePages" | "DataStoreService" | "Debris" | "DebuggablePlugin" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "DebugSettings" | "Decal" | "Dialog" | "DialogChoice" | "DistortionSoundEffect" | "DockWidgetPluginGui" | "DoubleConstrainedValue" | "DraftsService" | "Dragger" | "EchoSoundEffect" | "EmotesPages" | "EqualizerSoundEffect" | "Explosion" | "File" | "FileMesh" | "Fire" | "Flag" | "FlagStand" | "FlagStandService" | "FlangeSoundEffect" | "FloorWire" | "FlyweightService" | "Folder" | "ForceField" | "Frame" | "FriendPages" | "FriendService" | "FunctionalTest" | "GamepadService" | "GamePassService" | "GameSettings" | "Geometry" | "GlobalDataStore" | "GlobalSettings" | "Glue" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuidRegistryService" | "GuiMain" | "GuiService" | "Handles" | "HapticService" | "Hat" | "HingeConstraint" | "Hint" | "Hole" | "Hopper" | "HopperBin" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidController" | "HumanoidDescription" | "ImageButton" | "ImageHandleAdornment" | "ImageLabel" | "InputObject" | "InsertService" | "IntConstrainedValue" | "IntValue" | "InventoryPages" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "Lighting" | "LineForce" | "LineHandleAdornment" | "LocalizationService" | "LocalizationTable" | "LocalScript" | "LocalStorageService" | "LoginService" | "LogService" | "LuaSettings" | "LuaWebService" | "ManualGlue" | "ManualWeld" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "MeshContentProvider" | "MeshPart" | "Message" | "MessagingService" | "Model" | "ModuleScript" | "Motor" | "Motor6D" | "MotorFeature" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NegateOperation" | "NetworkClient" | "NetworkMarker" | "NetworkServer" | "NetworkSettings" | "NoCollisionConstraint" | "NonReplicatedCSGDictionaryService" | "NotificationService" | "NumberValue" | "ObjectValue" | "OrderedDataStore" | "PackageLink" | "PackageService" | "Pants" | "ParabolaAdornment" | "Part" | "ParticleEmitter" | "PartOperation" | "PartOperationAsset" | "Path" | "PathfindingService" | "PermissionsService" | "PhysicsService" | "PhysicsSettings" | "PitchShiftSoundEffect" | "Platform" | "Player" | "PlayerEmulatorService" | "PlayerGui" | "PlayerMouse" | "Players" | "PlayerScripts" | "Plugin" | "PluginAction" | "PluginDebugService" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginMenu" | "PluginMouse" | "PluginToolbar" | "PluginToolbarButton" | "PointLight" | "PointsService" | "PolicyService" | "Pose" | "PrismaticConstraint" | "QWidgetPluginGui" | "RayValue" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClass" | "ReflectionMetadataClasses" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataMember" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderingTest" | "RenderSettings" | "ReplicatedFirst" | "ReplicatedStorage" | "ReverbSoundEffect" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RocketPropulsion" | "RodConstraint" | "RopeConstraint" | "Rotate" | "RotateP" | "RotateV" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "RunService" | "RuntimeScriptService" | "ScreenGui" | "Script" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "ScrollingFrame" | "Seat" | "Selection" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "ServerReplicator" | "ServerScriptService" | "ServerStorage" | "Shirt" | "ShirtGraphic" | "SkateboardController" | "SkateboardPlatform" | "Skin" | "Sky" | "Smoke" | "Snap" | "SocialService" | "SolidModelContentProvider" | "Sound" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "SpawnLocation" | "SpecialMesh" | "SphereHandleAdornment" | "SpotLight" | "SpringConstraint" | "StandalonePluginScripts" | "StandardPages" | "StarterCharacterScripts" | "StarterGear" | "StarterGui" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "Status" | "StopWatchReporter" | "StringValue" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "SunRaysEffect" | "SurfaceGui" | "SurfaceLight" | "SurfaceSelection" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "Terrain" | "TerrainRegion" | "TestService" | "TextBox" | "TextButton" | "TextFilterResult" | "TextLabel" | "TextService" | "Texture" | "ThirdPartyUserService" | "TimerService" | "Tool" | "Torque" | "TotalCountTimeIntervalItem" | "TouchInputService" | "TouchTransmitter" | "Trail" | "Translator" | "TremoloSoundEffect" | "TrussPart" | "Tween" | "TweenService" | "UGCValidationService" | "UIAspectRatioConstraint" | "UIGradient" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint" | "UnionOperation" | "UserGameSettings" | "UserInputService" | "UserSettings" | "UserStorageService" | "Vector3Value" | "VectorForce" | "VehicleController" | "VehicleSeat" | "VelocityMotor" | "VersionControlService" | "VideoFrame" | "ViewportFrame" | "VirtualInputManager" | "VirtualUser" | "Visit" | "VRService" | "WedgePart" | "Weld" | "WeldConstraint" | "Workspace" | "WorldModel";
+	readonly ClassName: "ABTestService" | "Accessory" | "Accoutrement" | "AdService" | "AdvancedDragger" | "AlignOrientation" | "AlignPosition" | "AnalysticsSettings" | "AnalyticsService" | "AngularVelocity" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AppStorageService" | "ArcHandles" | "AssetManagerService" | "AssetService" | "Attachment" | "Backpack" | "BadgeService" | "BallSocketConstraint" | "Beam" | "BillboardGui" | "BinaryStringValue" | "BindableEvent" | "BindableFunction" | "BlockMesh" | "BloomEffect" | "BlurEffect" | "BodyAngularVelocity" | "BodyColors" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "BoolValue" | "BoxHandleAdornment" | "BrickColorValue" | "BrowserService" | "BulkImportService" | "CacheableContentProvider" | "Camera" | "CFrameValue" | "ChangeHistoryService" | "CharacterMesh" | "Chat" | "ChorusSoundEffect" | "ClickDetector" | "ClientReplicator" | "ClusterPacketCache" | "CollectionService" | "Color3Value" | "ColorCorrectionEffect" | "CompressorSoundEffect" | "ConeHandleAdornment" | "Configuration" | "ContentProvider" | "ContextActionService" | "ControllerService" | "CookiesService" | "CoreGui" | "CorePackages" | "CoreScript" | "CoreScriptSyncService" | "CornerWedgePart" | "CSGDictionaryService" | "CustomEvent" | "CustomEventReceiver" | "CylinderHandleAdornment" | "CylinderMesh" | "CylindricalConstraint" | "DataModel" | "DataModelSession" | "DataStorePages" | "DataStoreService" | "Debris" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "DebugSettings" | "Decal" | "Dialog" | "DialogChoice" | "DistortionSoundEffect" | "DockWidgetPluginGui" | "DoubleConstrainedValue" | "DraftsService" | "Dragger" | "EchoSoundEffect" | "EmotesPages" | "EqualizerSoundEffect" | "EventIngestService" | "Explosion" | "File" | "FileMesh" | "Fire" | "Flag" | "FlagStand" | "FlagStandService" | "FlangeSoundEffect" | "FloorWire" | "FlyweightService" | "Folder" | "ForceField" | "Frame" | "FriendPages" | "FriendService" | "FunctionalTest" | "GamepadService" | "GamePassService" | "GameSettings" | "Geometry" | "GlobalDataStore" | "GlobalSettings" | "Glue" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuidRegistryService" | "GuiMain" | "GuiService" | "Handles" | "HapticService" | "Hat" | "HingeConstraint" | "Hint" | "Hole" | "Hopper" | "HopperBin" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidController" | "HumanoidDescription" | "ImageButton" | "ImageHandleAdornment" | "ImageLabel" | "InputObject" | "InsertService" | "IntConstrainedValue" | "IntValue" | "InventoryPages" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "LanguageService" | "Lighting" | "LineForce" | "LineHandleAdornment" | "LocalizationService" | "LocalizationTable" | "LocalScript" | "LocalStorageService" | "LoginService" | "LogService" | "LuaSettings" | "LuaWebService" | "ManualGlue" | "ManualWeld" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "MeshContentProvider" | "MeshPart" | "Message" | "MessagingService" | "Model" | "ModuleScript" | "Motor" | "Motor6D" | "MotorFeature" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NegateOperation" | "NetworkClient" | "NetworkMarker" | "NetworkServer" | "NetworkSettings" | "NoCollisionConstraint" | "NonReplicatedCSGDictionaryService" | "NotificationService" | "NumberValue" | "ObjectValue" | "OrderedDataStore" | "PackageLink" | "PackageService" | "Pants" | "ParabolaAdornment" | "Part" | "ParticleEmitter" | "PartOperation" | "PartOperationAsset" | "Path" | "PathfindingService" | "PermissionsService" | "PhysicsService" | "PhysicsSettings" | "PitchShiftSoundEffect" | "Platform" | "Player" | "PlayerEmulatorService" | "PlayerGui" | "PlayerMouse" | "Players" | "PlayerScripts" | "Plugin" | "PluginAction" | "PluginDebugService" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginMenu" | "PluginMouse" | "PluginToolbar" | "PluginToolbarButton" | "PointLight" | "PointsService" | "PolicyService" | "Pose" | "PrismaticConstraint" | "QWidgetPluginGui" | "RayValue" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClass" | "ReflectionMetadataClasses" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataMember" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderingTest" | "RenderSettings" | "ReplicatedFirst" | "ReplicatedStorage" | "ReverbSoundEffect" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RocketPropulsion" | "RodConstraint" | "RopeConstraint" | "Rotate" | "RotateP" | "RotateV" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "RunService" | "RuntimeScriptService" | "ScreenGui" | "Script" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "ScrollingFrame" | "Seat" | "Selection" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "ServerReplicator" | "ServerScriptService" | "ServerStorage" | "SessionService" | "Shirt" | "ShirtGraphic" | "SkateboardController" | "SkateboardPlatform" | "Skin" | "Sky" | "Smoke" | "Snap" | "SocialService" | "SolidModelContentProvider" | "Sound" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "SpawnLocation" | "SpecialMesh" | "SphereHandleAdornment" | "SpotLight" | "SpringConstraint" | "StandalonePluginScripts" | "StandardPages" | "StarterCharacterScripts" | "StarterGear" | "StarterGui" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "Status" | "StopWatchReporter" | "StringValue" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "SunRaysEffect" | "SurfaceAppearance" | "SurfaceGui" | "SurfaceLight" | "SurfaceSelection" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "Terrain" | "TerrainRegion" | "TestService" | "TextBox" | "TextButton" | "TextFilterResult" | "TextLabel" | "TextService" | "Texture" | "ThirdPartyUserService" | "TimerService" | "Tool" | "Torque" | "TotalCountTimeIntervalItem" | "TouchInputService" | "TouchTransmitter" | "Trail" | "Translator" | "TremoloSoundEffect" | "TrussPart" | "Tween" | "TweenService" | "UGCValidationService" | "UIAspectRatioConstraint" | "UIGradient" | "UIGridLayout" | "UIInlineLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint" | "UnionOperation" | "UserGameSettings" | "UserInputService" | "UserSettings" | "UserStorageService" | "Vector3Value" | "VectorForce" | "VehicleController" | "VehicleSeat" | "VelocityMotor" | "VersionControlService" | "VideoFrame" | "ViewportFrame" | "VirtualInputManager" | "VirtualUser" | "Visit" | "VRService" | "WedgePart" | "Weld" | "WeldConstraint" | "Workspace" | "WorldModel";
 	/** Determines if an `Instance` can be cloned using [Instance.Clone](https://developer.roblox.com/api-reference/function/Instance/Clone) or saved to file.
 	 * 
 	 * This property determines whether an object should be included when the game is published or saved, or when [Instance.Clone](https://developer.roblox.com/api-reference/function/Instance/Clone) is called on one of the objects ancestors. Calling Clone directly on an object will return nil if the cloned object is not archivable. Copying an object in Studio (using the 'Duplicate' or 'Copy' options) will ignore the Archivable property and set Archivable to true for the copy.
@@ -670,7 +676,7 @@ interface Instance {
 	 * 
 	 * `ValueBase` objects, such as `IntValue` and `StringValue`, use a modified `Changed` event that fires with the contents of the `Value` property. As such, this method provides a way to detect changes in other properties of those objects. For example, to detect changes in the `Name` property of an `IntValue`, use `IntValue:GetPropertyChangedSignal("Name"):Connect(someFunc)` since the `Changed` event of `IntValue` objects only detect changes on the `Value` property.
 	 */
-	GetPropertyChangedSignal(this: Instance, propertyName: GetProperties<this>): RBXScriptSignal;
+	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal;
 	GetPropertyChangedSignal(this: Instance, propertyName: string): RBXScriptSignal;
 	/** IsA returns true if the `Instance`'s class is **equivalent to** or a **subclass** of a given class. This function is similar to the **instanceof** operators in other languages, and is a form of [type introspection](https://en.wikipedia.org/wiki/Type_introspection). To ignore class inheritance, test the [ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) property directly instead. For checking native Lua data types (number, string, etc) use the functions `type` and `typeof`.
 	 * 
@@ -1407,6 +1413,7 @@ interface AnimationTrack extends Instance {
 interface Animator extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Animator";
+	ApplyJointVelocities(this: Animator, motors?: any): void;
 	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
 	/** Loads an `Animation` onto an `Animator`, returning an `AnimationTrack`. Used to load animations on locally controlled models (such as player characters) from the server.
 	 * 
@@ -1420,6 +1427,11 @@ interface Animator extends Instance {
 	 */
 	LoadAnimation(this: Animator, animation: Animation): AnimationTrack;
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
+}
+
+interface AssetManagerService extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "AssetManagerService";
 }
 
 /** The AssetService is a non-replicated service that handles asset related queries to the Roblox web API. Eventually, this will house all asset related queries for Roblox objects stored in the web. One should mind the [limitations](https://developer.roblox.com/search#stq=Multi%20Place%20Games) this API has.
@@ -2832,6 +2844,11 @@ interface RocketPropulsion extends BodyMover {
 	readonly ReachedTarget: RBXScriptSignal<() => void>;
 }
 
+interface BulkImportService extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "BulkImportService";
+}
+
 /** The Camera object defines a view of the 3D game world. In an instance of the game, each client has its own Camera object associated with it. Camera objects exist only upon the viewer's client, residing in that user's local Workspace, and therefore cannot be edited directly from the server. As of the most recent versions of the game, the only way to access a client's Camera object is through a LocalScript running on that client. Each client's particular Camera object can be accessed through the [CurrentCamera](https://wiki.roblox.com/index.php?title=CurrentCamera) property of its local Workspace, assuming your code is running on that specific client.
  * 
  * A camera's state is defined in the following way:
@@ -3074,25 +3091,6 @@ interface Camera extends Instance {
 	 * [1]: https://developer.roblox.com/assets/5b65d49954f6677d407bbad6/ViewportSize.png
 	 */
 	readonly ViewportSize: Vector2;
-	/** This function is used by *‘PopperCam’* in the default [camera scripts][1] to ensure obstructions do not come between the `Camera` and the [Camera’s](https://developer.roblox.com/api-reference/class/Camera) subject.
-	 * 
-	 * This function will check all [BaseParts](https://developer.roblox.com/api-reference/class/BasePart) and `Terrain` in the `Workspace` with the following exceptions:
-	 * 
-	 *  - Any `Instance` specified in the *ignoreList* (including its descendants) will be ignored
-	 * 
-	 *  - [BaseParts](https://developer.roblox.com/api-reference/class/BasePart) with [BasePart.CanCollide](https://developer.roblox.com/api-reference/property/BasePart/CanCollide) set to false are ignored
-	 * 
-	 *  - [BaseParts](https://developer.roblox.com/api-reference/class/BasePart) with a [BasePart.Transparency](https://developer.roblox.com/api-reference/property/BasePart/Transparency) greater than 0.95 will be ignored
-	 * 
-	 * Water `Terrain` is ignored
-	 * 
-	 * Note, as this function requires an *ignoreList* to run, you should pass an empty table when none is required.
-	 * 
-	 * [1]: http://robloxdev.com/articles/Movement-and-camera-controls
-	 * @param ignoreList An array of `Instance|Instances` to ignore. Descendants of these instances will also be ignored.
-	 * @returns The distance, in studs, that the `Camera` needs to be pushed towards its `Camera/Focus` to ensure there are no obstructions between the `Camera/Focus` and `Camera/CFrame` of the `Camera`
-	 */
-	GetLargestCutoffDistance(this: Camera, ignoreList: Array<Instance>): number;
 	/** This function is broken and should not be used
 	 * 
 	 * This function returns the current ‘pan’ speed of the `Camera`.
@@ -3191,70 +3189,6 @@ interface Camera extends Instance {
 	 * @returns The speed at which the `Camera` is rotating around its `Camera/Focus` around the `Camera|Camera’s` X axis
 	 */
 	GetTiltSpeed(this: Camera): number;
-	/** This function tweens the `Camera` in a linear fashion towards a new [Camera.CFrame](https://developer.roblox.com/api-reference/property/Camera/CFrame) and [Camera.Focus](https://developer.roblox.com/api-reference/property/Camera/Focus) over a given duration, for example:
-	 * 
-	 * ```lua
-	 * local camera = workspace.CurrentCamera
-	 * camera.CameraType = Enum.CameraType.Scriptable
-	 * 
-	 * camera:Interpolate(
-	 * 	CFrame.new(0, 10, 100),
-	 * 	CFrame.new(0, 0, 100),
-	 * 	5
-	 * )
-	 * ```
-	 * 
-	 * Throughout the tween, the [Camera’s](https://developer.roblox.com/api-reference/class/Camera) [Camera.CFrame](https://developer.roblox.com/api-reference/property/Camera/CFrame) will be orientated towards the [Camera’s](https://developer.roblox.com/api-reference/class/Camera) [Camera.Focus](https://developer.roblox.com/api-reference/property/Camera/Focus).
-	 * 
-	 * When the tween has completed, the [Camera’s](https://developer.roblox.com/api-reference/class/Camera) [Camera.InterpolationFinished](https://developer.roblox.com/api-reference/event/Camera/InterpolationFinished) event will fire.
-	 * 
-	 * If this function is called while the `Camera` is already tweening the older tween will be stopped (without firing [Camera.InterpolationFinished](https://developer.roblox.com/api-reference/event/Camera/InterpolationFinished)) and overridden by the new tween.
-	 * 
-	 * Interpolate can only be used if the current [Camera.CameraType](https://developer.roblox.com/api-reference/property/Camera/CameraType) is *’Scriptable’*, regardless of whether the default [camera scripts][1] are being used. If it is used with any other [Camera.CameraType](https://developer.roblox.com/api-reference/property/Camera/CameraType) an error will be thrown.
-	 * 
-	 * You are advised to use `TweenService` to tween the `Camera` instead as it is more reliable and offers a variety of easing styles. See below for an example:
-	 * 
-	 * ```lua
-	 * local TweenService = game:GetService("TweenService")
-	 * 
-	 * local camera = workspace.CurrentCamera
-	 * camera.CameraType = Enum.CameraType.Scriptable
-	 * 
-	 * local tween = TweenService:Create(
-	 * 	camera,
-	 * 	TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-	 * 	{
-	 * 		CFrame = CFrame.new(0, 10, 100),
-	 * 		Focus = CFrame.new(0, 0, 100)
-	 * 	}
-	 * )
-	 * 
-	 * tween:Play()
-	 * ```
-	 * 
-	 * [1]: http://robloxdev.com/articles/Movement-and-camera-controls
-	 * @param endPos The `DataType/CFrame` for the `Camera` to tween to
-	 * @param endFocus The `DataType/CFrame`  for the `Camera|Camera’s` `Camera/Focus` to tween to
-	 * @param duration The duration, in seconds, of the tween
-	 * @returns void
-	 */
-	Interpolate(this: Camera, endPos: CFrame, endFocus: CFrame, duration: number): void;
-	/** This function pans the `Camera` around the [Camera.Focus](https://developer.roblox.com/api-reference/property/Camera/Focus) in 45 degree increments around the Y axis.
-	 * 
-	 * The rotation is applied to the [Camera’s](https://developer.roblox.com/api-reference/class/Camera) [Camera.CFrame](https://developer.roblox.com/api-reference/property/Camera/CFrame) property.
-	 * 
-	 * This function pans the `Camera` in 45 degree increments, for example:
-	 * 
-	 * ```lua
-	 * workspace.CurrentCamera:PanUnits(1) -- 45 degrees
-	 * workspace.CurrentCamera:PanUnits(-2) -- -90 degrees
-	 * ```
-	 * 
-	 * PanUnits does not require the [Camera.CameraType](https://developer.roblox.com/api-reference/property/Camera/CameraType) to be *’Scriptable’*.
-	 * @param units The number of 45 degree increments by which to pan the `Camera`
-	 * @returns void
-	 */
-	PanUnits(this: Camera, units: number): void;
 	/** This function creates a unit [DataType.Ray](https://developer.roblox.com/search#stq=Ray) from a 2D position on the screen (defined in pixels). This position accounts for the GUI inset. The [DataType.Ray](https://developer.roblox.com/search#stq=Ray) originates from the [DataType.Vector3](https://developer.roblox.com/search#stq=Vector3) equivalent of the 2D position in the world at the given depth (in studs) away from the `Camera`.
 	 * 
 	 * As this function accounts for the GUI inset, the offset applied to GUI elements (such as from the top bar) is accounted for. This means the screen position specified will start in the top left corner below the top bar. For an otherwise identical function that does not account for the GUI offset, use [Camera.ViewportPointToRay](https://developer.roblox.com/api-reference/function/Camera/ViewportPointToRay).
@@ -3314,26 +3248,6 @@ interface Camera extends Instance {
 	 * @returns void
 	 */
 	SetRoll(this: Camera, rollAngle: number): void;
-	/** This function ‘tilts’ the `Camera` by rotating it around the [Camera.Focus](https://developer.roblox.com/api-reference/property/Camera/Focus) around the [Camera’s](https://developer.roblox.com/api-reference/class/Camera) X axis by a given multiple of 10 degrees.
-	 * 
-	 * The rotation is applied to the [Camera’s](https://developer.roblox.com/api-reference/class/Camera) [Camera.CFrame](https://developer.roblox.com/api-reference/property/Camera/CFrame) property and is constrained between *-81.05* and *81.05* degrees.
-	 * 
-	 * This function tilts the `Camera` in 10 degree increments, for example:
-	 * 
-	 * ```lua
-	 * workspace.CurrentCamera:TiltUnits(2) -- 20 degrees
-	 * workspace.CurrentCamera:TiltUnits(-5) -- -50 degrees
-	 * ```
-	 * 
-	 * TiltUnits does not require the [Camera.CameraType](https://developer.roblox.com/api-reference/property/Camera/CameraType) to be *’Scriptable’*.
-	 * 
-	 * ## See also
-	 * 
-	 *  - [Camera.PanUnits](https://developer.roblox.com/api-reference/function/Camera/PanUnits)
-	 * @param units The number of 10 degree units by which to to tilt the `Camera`
-	 * @returns Whether the `Camera` tilt applied was constrained
-	 */
-	TiltUnits(this: Camera, units: number): boolean;
 	/** This function creates a unit [DataType.Ray](https://developer.roblox.com/search#stq=Ray) from a 2D position on the viewport (defined in pixels). This position does not account for the GUI inset. The [DataType.Ray](https://developer.roblox.com/search#stq=Ray) originates from the [DataType.Vector3](https://developer.roblox.com/search#stq=Vector3) equivalent of the 2D position in the world at the given depth (in studs) away from the `Camera`.
 	 * 
 	 * As this function does not account for the GUI inset, the viewport position given is not equivalent to the screen position used by GUI elements. If you are not using [ScreenGui.IgnoreGuiInset](https://developer.roblox.com/api-reference/property/ScreenGui/IgnoreGuiInset) and need an otherwise identical function that accounts for the GUI offset, use [Camera.ScreenPointToRay](https://developer.roblox.com/api-reference/function/Camera/ScreenPointToRay).
@@ -5120,6 +5034,11 @@ interface Dragger extends Instance {
 	MouseUp(this: Dragger): void;
 }
 
+interface EventIngestService extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "EventIngestService";
+}
+
 /** An Explosion applies force to `BaseParts` within the explosion's [Explosion.BlastRadius](https://developer.roblox.com/api-reference/property/Explosion/BlastRadius). This force breaks joints between parts and kills `Humanoid` characters not protected by a `ForceField`.
  * 
  * If an explosion is instanced whilst the game is running, it will destroy itself shortly afterwards meaning they do not need to be cleaned up using the `Debris` service.
@@ -6587,7 +6506,7 @@ interface GuiButton extends GuiObject {
 	/** Sets the style of the GuiButton based on a list of pre-determined styles. */
 	Style: Enum.ButtonStyle;
 	/** Fires when the button is activated. */
-	readonly Activated: RBXScriptSignal<(inputObject: InputObject) => void>;
+	readonly Activated: RBXScriptSignal<(inputObject: InputObject, clickCount: number) => void>;
 	/** Fired when the mouse has fully left clicked the GUI object. By clicking, the mouse has to be in bounds of the button and has to be pressed down and up again before this event fires. */
 	readonly MouseButton1Click: RBXScriptSignal<() => void>;
 	/** Fired when the mouse is in the left mouse down state on the GUI object. */
@@ -7316,6 +7235,8 @@ interface VideoFrame extends GuiObject {
 	Video: string;
 	/** [NO DOCUMENTATION] */
 	Volume: number;
+	/** [NO DOCUMENTATION] */
+	GetInfo(this: VideoFrame): object;
 	/** [NO DOCUMENTATION] */
 	Pause(this: VideoFrame): void;
 	/** [NO DOCUMENTATION] */
@@ -10155,6 +10076,11 @@ interface KeyframeSequence extends Instance {
 	RemoveKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
 }
 
+interface LanguageService extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "LanguageService";
+}
+
 /** Light is a root class for dynamic lighting related objects. */
 interface Light extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -12305,6 +12231,7 @@ interface BasePart extends PVInstance {
 	LocalTransparencyModifier: number;
 	/** The Locked property determines whether a [part](https://developer.roblox.com/api-reference/class/BasePart) (or a [model](https://developer.roblox.com/api-reference/class/Model) it is contained within) may be selected in Roblox Studio by clicking on it. This property is most often enabled on parts within environment models that aren't being edited at the moment. Roblox Studio has a Lock/Unlock All tool that can toggle the Locked state of every part descendant in a model at once. */
 	Locked: boolean;
+	readonly Mass: number;
 	/** If true the part will be massless when welded to another part that is not massless. The part will still have mass like a normal part if it is an assembly root part according to GetRootPart(). */
 	Massless: boolean;
 	/** The Material property allows a builder to set a part's texture and default physical properties (in the case that [BasePart.CustomPhysicalProperties](https://developer.roblox.com/api-reference/property/BasePart/CustomPhysicalProperties) is unset). The default Plastic material has a very light texture, and the SmoothPlastic material has no texture at all. Some material textures like DiamondPlate and Granite have very visible textures. Each material's texture reflects sunlight differently, especially Foil.
@@ -13230,7 +13157,7 @@ interface WorldRoot extends Model {
 	): Array<BasePart>;
 	IsRegion3Empty(this: WorldRoot, region: Region3, ignoreDescendentsInstance?: Instance): boolean;
 	IsRegion3EmptyWithIgnoreList(this: WorldRoot, region: Region3, ignoreDescendentsTable: Array<Instance>): boolean;
-	Raycast(this: WorldRoot, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): unknown;
+	Raycast(this: WorldRoot, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult;
 }
 
 /** The Workspace is the service in which any objects that are to be rendered in the 3D world exist. Objects not descending from Workspace will not be rendered or physically interact with the world.
@@ -15802,6 +15729,11 @@ interface UserSettings extends GenericSettings<{ UserGameSettings: UserGameSetti
 	Reset(this: UserSettings): void;
 }
 
+interface SessionService extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "SessionService";
+}
+
 /** The Sky object is an object, when placed inside `Lighting`, will change the appearance of the game's sky. This allows for a custom sky to be used as opposed to the Roblox default sky. The Skybox is composed of six sides, much like that of a cube. If the skybox is changed/customised, the Sun and other objects in the sky will remain visible, unless you turn off the Sky object's [Sky.CelestialBodiesShown](https://developer.roblox.com/api-reference/property/Sky/CelestialBodiesShown) property, which will remove the Sun, Moon, and stars from the sky. The recommended picture dimensions for a Skybox side are 256x256 pixels. By adjusting the [Sky.StarCount](https://developer.roblox.com/api-reference/property/Sky/StarCount) property of the Sky object, you can change how many stars will appear in the sky at night. */
 interface Sky extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -17423,6 +17355,13 @@ interface Stats extends Instance {
 	GetTotalMemoryUsageMb(this: Stats): number;
 }
 
+interface SurfaceAppearance extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "SurfaceAppearance";
+	/** Determines how the ColorMap's alpha channel behaves. */
+	AlphaMode: Enum.AlphaMode;
+}
+
 interface Team extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Team";
@@ -18843,6 +18782,8 @@ interface UIGradient extends UIComponent {
 	readonly ClassName: "UIGradient";
 	/** The (sequence of) color3 of the gradient. */
 	Color: ColorSequence;
+	/** [NO DOCUMENTATION] */
+	Enabled: boolean;
 	/** Offset of gradient center in scale. */
 	Offset: Vector2;
 	/** Clockwise rotation in degrees. */

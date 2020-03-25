@@ -14,6 +14,9 @@ interface EnumItem {
 }
 
 type Enum = { GetEnumItems(this: defined): Array<EnumItem> } & { [index: string]: EnumItem };
+interface Enum {
+	GetEnumItems(this: defined): Array<EnumItem>;
+}
 
 declare namespace Enum {
 	type EnumType<T extends { Name: string }> = { GetEnumItems(this: defined): Array<T> } & { [K in T["Name"]]: Extract<T, { Name: K }> };
@@ -139,6 +142,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AlignType>
 	}
 	export type AlignType = AlignType.Parallel | AlignType.Perpendicular;
+	export namespace AlphaMode {
+		export interface Overlay {
+			Name: "Overlay";
+			Value: 0;
+			EnumType: EnumType<AlphaMode>;
+		}
+
+		export const Overlay: Overlay;
+
+		export interface Transparency {
+			Name: "Transparency";
+			Value: 1;
+			EnumType: EnumType<AlphaMode>;
+		}
+
+		export const Transparency: Transparency;
+
+		export function GetEnumItems(this: defined): Array<AlphaMode>
+	}
+	export type AlphaMode = AlphaMode.Overlay | AlphaMode.Transparency;
 	export namespace AnimationPriority {
 		export interface Idle {
 			Name: "Idle";

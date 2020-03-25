@@ -342,7 +342,7 @@ interface Instance {
 	): StrictInstances[T] | undefined;
 	FindFirstChildOfClass(this: Instance, className: string): Instance | undefined;
 
-	GetPropertyChangedSignal(this: Instance, propertyName: GetProperties<this>): RBXScriptSignal;
+	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal;
 	GetPropertyChangedSignal(this: Instance, propertyName: string): RBXScriptSignal;
 }
 

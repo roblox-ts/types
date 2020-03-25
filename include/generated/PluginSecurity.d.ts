@@ -27,7 +27,6 @@ interface Services {
 }
 
 interface CreatableInstances {
-	DebuggablePlugin: DebuggablePlugin;
 	PluginAction: PluginAction;
 	RenderingTest: RenderingTest;
 }
@@ -1455,7 +1454,7 @@ interface Players extends Instance {
  */
 interface Plugin extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DebuggablePlugin" | "Plugin";
+	readonly ClassName: "Plugin";
 	/** Returns whether the user enabled _Collisions_ in studio under the Model tab. */
 	readonly CollisionEnabled: boolean;
 	/** Returns the grid size the user has set in studio under the Model tab. This can be 1, 0.2 or 0.01, but has rounding errors.
@@ -1617,11 +1616,6 @@ interface Plugin extends Instance {
 	/** Fired when the plugin is deactivated. This occurs when either the plugin code calls [Plugin.Deactivate](https://developer.roblox.com/api-reference/function/Plugin/Deactivate), or because some other plugin called [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate), which forces all other plugins to lose their active state. */
 	readonly Deactivation: RBXScriptSignal<() => void>;
 	readonly Unloading: RBXScriptSignal<() => void>;
-}
-
-interface DebuggablePlugin extends Plugin {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DebuggablePlugin";
 }
 
 /** PluginAction is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`. In Roblox Studio, they can be assigned a keyboard shortcut under `File → Advanced → Customize Shortcuts...`, and they can also be added to the Quick Access Toolbar.
@@ -2715,6 +2709,7 @@ interface Studio extends Instance {
 	 * See [Enum.PermissionLevelShown](https://developer.roblox.com/search#stq=PermissionLevelShown) for more info.
 	 */
 	PermissionLevelShown: Enum.PermissionLevelShown;
+	PluginDebuggingEnabled: boolean;
 	/** The directory where local plugins are stored. */
 	PluginsDir: QDir;
 	/** **(OBSOLETE)** */
@@ -2831,6 +2826,10 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
+	readonly DraggerSolveConstraints: boolean;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
 	readonly GridSize: number;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
@@ -2840,6 +2839,10 @@ interface StudioService extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly RotateIncrement: number;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ShowConstraintDetails: boolean;
 	/** 
 	 * Tags: ReadOnly, NotReplicated
 	
@@ -2867,27 +2870,23 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
 	GetUserId(this: StudioService): number;
 	/** [NO DOCUMENTATION] */
-	GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): unknown;
+	GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult;
 	/** [NO DOCUMENTATION] */
 	IsPluginInstalled(this: StudioService, assetId: number): boolean;
 	/** [NO DOCUMENTATION] */
 	IsPluginUpToDate(this: StudioService, assetId: number, currentAssetVersion: number): boolean;
 	/** [NO DOCUMENTATION] */
-	LaunchBulkImport(this: StudioService, assetTypeToImport: number): void;
-	/** [NO DOCUMENTATION] */
 	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
 	/** [NO DOCUMENTATION] */
 	OpenPluginInsertPage(this: StudioService, assetId: number): void;
 	/** [NO DOCUMENTATION] */
-	PublishAs(this: StudioService, universeId: number, placeId: number): void;
+	PublishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
 	/** [NO DOCUMENTATION] */
 	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
 	/** [NO DOCUMENTATION] */
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
 	/** [NO DOCUMENTATION] */
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
-	/** [NO DOCUMENTATION] */
-	ShowBulkImportView(this: StudioService): void;
 	/** [NO DOCUMENTATION] */
 	ShowPublishToRoblox(this: StudioService): void;
 	/** [NO DOCUMENTATION] */
@@ -2914,8 +2913,6 @@ interface StudioService extends Instance {
 	 * Tags: Yields
 	 */
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
-	/** [NO DOCUMENTATION] */
-	readonly BulkImportFinished: RBXScriptSignal<(state: number) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly GamePublishFinished: RBXScriptSignal<(success: boolean) => void>;
 	/** [NO DOCUMENTATION] */
