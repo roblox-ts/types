@@ -12,7 +12,7 @@ const BASE_URL = "https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Clie
 const API_DUMP_URL = BASE_URL + "API-Dump.json";
 const REFLECTION_METADATA_URL = BASE_URL + "ReflectionMetadata.xml";
 
-(async () => {
+void (async () => {
 	const targetDir = path.resolve(__dirname, "..", "include");
 
 	const totalTimer = new Timer();
@@ -52,7 +52,7 @@ const REFLECTION_METADATA_URL = BASE_URL + "ReflectionMetadata.xml";
 			definedClassNames,
 			SECURITY_LEVELS[i],
 			SECURITY_LEVELS[i - 1],
-		).generate(api.Classes)
+		).generate(api.Classes);
 	}
 
 	console.log(`\tDone! (${classTimer.get()}ms)`);

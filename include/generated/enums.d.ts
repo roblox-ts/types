@@ -14,6 +14,9 @@ interface EnumItem {
 }
 
 type Enum = { GetEnumItems(this: defined): Array<EnumItem> } & { [index: string]: EnumItem };
+interface Enum {
+	GetEnumItems(this: defined): Array<EnumItem>;
+}
 
 declare namespace Enum {
 	type EnumType<T extends { Name: string }> = { GetEnumItems(this: defined): Array<T> } & { [K in T["Name"]]: Extract<T, { Name: K }> };
@@ -139,6 +142,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AlignType>
 	}
 	export type AlignType = AlignType.Parallel | AlignType.Perpendicular;
+	export namespace AlphaMode {
+		export interface Overlay {
+			Name: "Overlay";
+			Value: 0;
+			EnumType: EnumType<AlphaMode>;
+		}
+
+		export const Overlay: Overlay;
+
+		export interface Transparency {
+			Name: "Transparency";
+			Value: 1;
+			EnumType: EnumType<AlphaMode>;
+		}
+
+		export const Transparency: Transparency;
+
+		export function GetEnumItems(this: defined): Array<AlphaMode>
+	}
+	export type AlphaMode = AlphaMode.Overlay | AlphaMode.Transparency;
 	export namespace AnimationPriority {
 		export interface Idle {
 			Name: "Idle";
@@ -2455,26 +2478,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<DataStoreRequestType>
 	}
 	export type DataStoreRequestType = DataStoreRequestType.GetAsync | DataStoreRequestType.SetIncrementAsync | DataStoreRequestType.UpdateAsync | DataStoreRequestType.GetSortedAsync | DataStoreRequestType.SetIncrementSortedAsync | DataStoreRequestType.OnUpdate;
-	export namespace DateTimeKind {
-		export interface Utc {
-			Name: "Utc";
-			Value: 0;
-			EnumType: EnumType<DateTimeKind>;
-		}
-
-		export const Utc: Utc;
-
-		export interface Local {
-			Name: "Local";
-			Value: 1;
-			EnumType: EnumType<DateTimeKind>;
-		}
-
-		export const Local: Local;
-
-		export function GetEnumItems(this: defined): Array<DateTimeKind>
-	}
-	export type DateTimeKind = DateTimeKind.Utc | DateTimeKind.Local;
 	export namespace DevCameraOcclusionMode {
 		export interface Zoom {
 			Name: "Zoom";
@@ -12273,206 +12276,4 @@ declare namespace Enum {
 	export type ZIndexBehavior = ZIndexBehavior.Global | ZIndexBehavior.Sibling;
 }
 
-declare type CastsToEnum<T extends 
-	| Enum.ActionType
-	| Enum.ActuatorRelativeTo
-	| Enum.ActuatorType
-	| Enum.AlignType
-	| Enum.AnimationPriority
-	| Enum.AppShellActionType
-	| Enum.AspectType
-	| Enum.AssetFetchStatus
-	| Enum.AssetType
-	| Enum.AvatarContextMenuOption
-	| Enum.AvatarJointPositionType
-	| Enum.Axis
-	| Enum.BinType
-	| Enum.BodyPart
-	| Enum.BodyPartR15
-	| Enum.BorderMode
-	| Enum.BreakReason
-	| Enum.Button
-	| Enum.ButtonStyle
-	| Enum.CameraMode
-	| Enum.CameraPanMode
-	| Enum.CameraType
-	| Enum.CellBlock
-	| Enum.CellMaterial
-	| Enum.CellOrientation
-	| Enum.CenterDialogType
-	| Enum.ChatCallbackType
-	| Enum.ChatColor
-	| Enum.ChatMode
-	| Enum.ChatPrivacyMode
-	| Enum.ChatStyle
-	| Enum.CollisionFidelity
-	| Enum.CollisionsMode
-	| Enum.ComputerCameraMovementMode
-	| Enum.ComputerMovementMode
-	| Enum.ConnectionError
-	| Enum.ConnectionState
-	| Enum.ContextActionPriority
-	| Enum.ContextActionResult
-	| Enum.ControlMode
-	| Enum.CoreGuiType
-	| Enum.CreatorType
-	| Enum.CurrencyType
-	| Enum.CustomCameraMode
-	| Enum.DataStoreRequestType
-	| Enum.DateTimeKind
-	| Enum.DevCameraOcclusionMode
-	| Enum.DevComputerCameraMovementMode
-	| Enum.DevComputerMovementMode
-	| Enum.DevTouchCameraMovementMode
-	| Enum.DevTouchMovementMode
-	| Enum.DeveloperMemoryTag
-	| Enum.DeviceType
-	| Enum.DialogBehaviorType
-	| Enum.DialogPurpose
-	| Enum.DialogTone
-	| Enum.DominantAxis
-	| Enum.DraftStatusCode
-	| Enum.EasingDirection
-	| Enum.EasingStyle
-	| Enum.ElasticBehavior
-	| Enum.EnviromentalPhysicsThrottle
-	| Enum.ExplosionType
-	| Enum.FillDirection
-	| Enum.FilterResult
-	| Enum.Font
-	| Enum.FontSize
-	| Enum.FormFactor
-	| Enum.FrameStyle
-	| Enum.FramerateManagerMode
-	| Enum.FriendRequestEvent
-	| Enum.FriendStatus
-	| Enum.FunctionalTestResult
-	| Enum.GameAvatarType
-	| Enum.GearGenreSetting
-	| Enum.GearType
-	| Enum.Genre
-	| Enum.GraphicsMode
-	| Enum.HandlesStyle
-	| Enum.HorizontalAlignment
-	| Enum.HoverAnimateSpeed
-	| Enum.HttpCachePolicy
-	| Enum.HttpContentType
-	| Enum.HttpError
-	| Enum.HttpRequestType
-	| Enum.HumanoidCollisionType
-	| Enum.HumanoidDisplayDistanceType
-	| Enum.HumanoidHealthDisplayType
-	| Enum.HumanoidRigType
-	| Enum.HumanoidStateType
-	| Enum.InOut
-	| Enum.InfoType
-	| Enum.InitialDockState
-	| Enum.InlineAlignment
-	| Enum.InputType
-	| Enum.JointCreationMode
-	| Enum.KeyCode
-	| Enum.KeywordFilterType
-	| Enum.Language
-	| Enum.LanguagePreference
-	| Enum.LeftRight
-	| Enum.LevelOfDetailSetting
-	| Enum.Limb
-	| Enum.ListDisplayMode
-	| Enum.ListenerType
-	| Enum.Material
-	| Enum.MembershipType
-	| Enum.MeshType
-	| Enum.MessageType
-	| Enum.ModifierKey
-	| Enum.MouseBehavior
-	| Enum.MoveState
-	| Enum.NameOcclusion
-	| Enum.NetworkOwnership
-	| Enum.NormalId
-	| Enum.OutputLayoutMode
-	| Enum.OverrideMouseIconBehavior
-	| Enum.PacketPriority
-	| Enum.PartType
-	| Enum.PathStatus
-	| Enum.PathWaypointAction
-	| Enum.PermissionLevelShown
-	| Enum.Platform
-	| Enum.PlaybackState
-	| Enum.PlayerActions
-	| Enum.PlayerChatType
-	| Enum.PoseEasingDirection
-	| Enum.PoseEasingStyle
-	| Enum.PrivilegeType
-	| Enum.ProductPurchaseDecision
-	| Enum.QualityLevel
-	| Enum.R15CollisionType
-	| Enum.RaycastFilterType
-	| Enum.RenderFidelity
-	| Enum.RenderPriority
-	| Enum.RenderingTestComparisonMethod
-	| Enum.ReturnKeyType
-	| Enum.ReverbType
-	| Enum.RibbonTool
-	| Enum.RollOffMode
-	| Enum.RotationType
-	| Enum.RuntimeUndoBehavior
-	| Enum.SaveFilter
-	| Enum.SavedQualitySetting
-	| Enum.ScaleType
-	| Enum.ScreenOrientation
-	| Enum.ScrollBarInset
-	| Enum.ScrollingDirection
-	| Enum.ServerAudioBehavior
-	| Enum.SizeConstraint
-	| Enum.SortOrder
-	| Enum.SoundType
-	| Enum.SpecialKey
-	| Enum.StartCorner
-	| Enum.Status
-	| Enum.StreamingPauseMode
-	| Enum.StudioDataModelType
-	| Enum.StudioStyleGuideColor
-	| Enum.StudioStyleGuideModifier
-	| Enum.Style
-	| Enum.SurfaceConstraint
-	| Enum.SurfaceGuiSizingMode
-	| Enum.SurfaceType
-	| Enum.SwipeDirection
-	| Enum.TableMajorAxis
-	| Enum.Technology
-	| Enum.TeleportResult
-	| Enum.TeleportState
-	| Enum.TeleportType
-	| Enum.TextFilterContext
-	| Enum.TextInputType
-	| Enum.TextTruncate
-	| Enum.TextXAlignment
-	| Enum.TextYAlignment
-	| Enum.TextureMode
-	| Enum.TextureQueryType
-	| Enum.ThreadPoolConfig
-	| Enum.ThrottlingPriority
-	| Enum.ThumbnailSize
-	| Enum.ThumbnailType
-	| Enum.TickCountSampleMethod
-	| Enum.TopBottom
-	| Enum.TouchCameraMovementMode
-	| Enum.TouchMovementMode
-	| Enum.TweenStatus
-	| Enum.UITheme
-	| Enum.UiMessageType
-	| Enum.UploadSetting
-	| Enum.UserCFrame
-	| Enum.UserInputState
-	| Enum.UserInputType
-	| Enum.VRTouchpad
-	| Enum.VRTouchpadMode
-	| Enum.VerticalAlignment
-	| Enum.VerticalScrollBarPosition
-	| Enum.VibrationMotor
-	| Enum.VideoQualitySettings
-	| Enum.VirtualInputMode
-	| Enum.WaterDirection
-	| Enum.WaterForce
-	| Enum.ZIndexBehavior
-> = T | T["Name" | "Value"];
+declare type CastsToEnum<T extends EnumItem> = T | T["Name" | "Value"];

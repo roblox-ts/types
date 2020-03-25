@@ -10,7 +10,7 @@
 		"strictNullChecks": true,
 		"esModuleInterop": true,
 		// required, configurable
-		"rootDir": "src",
+		"rootDir": ".",
 		"outDir": "out",
 		// optional
 		"baseUrl": "src",
@@ -26,7 +26,8 @@
 	},
 	"include": [
 		"src/**/*.ts",
-		"src/**/*.d.ts"
+		"src/**/*.d.ts",
+		"include/test.ts"
 	],
 	"exclude": [
 		"node_modules/**/*",
