@@ -71,7 +71,10 @@ interface ObjectConstructor {
 		: A &
 				UnionToIntersection<
 					{
-						[K in Exclude<keyof S, keyof Array<unknown> | "length">]: S[K] extends infer M
+						[K in Exclude<keyof S, keyof Array<unknown> | "length">]: Exclude<
+							S[K],
+							CheckableTypes[Exclude<keyof CheckableTypes, keyof CheckablePrimitives>] // Exclude non-enumerable Roblox datatypes from being unioned
+						> extends infer M
 							? ((M extends object
 								? M
 								: undefined) extends undefined
