@@ -61,7 +61,7 @@ interface ObjectConstructor {
 	assign<A extends object, S extends Array<unknown>>(
 		this: ObjectConstructor,
 		target: A,
-		...sources: A extends CheckableTypes[Exclude<keyof CheckableTypes, keyof CheckablePrimitives | "Instance"> | "function" | "thread"] // invalidate calls when target is a Vector2/Vector3/function/etc
+		...sources: A extends CheckableTypes[Exclude<keyof CheckableTypes, keyof CheckablePrimitives | "Instance"> | "function"] // invalidate calls when target is a Vector2/Vector3/function/etc
 			? never
 			: A extends Instance
 			? Array<PartialInstance<A> | undefined | boolean | string | number | Callback | thread>
