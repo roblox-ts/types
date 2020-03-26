@@ -2803,6 +2803,10 @@ interface StudioData extends Instance {
 	 */
 	EnableScriptCollabOnLoad: boolean;
 	/** [NO DOCUMENTATION] *
+	 * Tags: Hidden
+	 */
+	EnableScriptCollabVersionHistoryOnLoad: boolean;
+	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden, NotReplicated
 	 */
 	readonly SrcPlaceId: number;
@@ -2827,6 +2831,10 @@ interface StudioService extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly DraggerSolveConstraints: boolean;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly DrawConstraintsOnTop: boolean;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
