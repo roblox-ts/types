@@ -614,17 +614,6 @@ interface InstanceConstructor {
 	 * You can read [this thread on the developer forum](https://devforum.roblox.com/t/psa-dont-use-instance-new-with-parent-argument/30296) for more information.
 	 */
 	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): StrictInstances[T];
-	/**
-	 * Creates an new object of type val. The parent argument is optional;
-	 * If it is supplied, the object will be parented to that object.
-	 * Performance note: When the Parent of an object is set,
-	 * Roblox begins listening to a variety of different property changes for replication,
-	 * rendering and physics.
-	 * Therefore, it is recommended to set the Parent property last when creating new objects.
-	 * As such, you should avoid using the second argument (parent) of this function.
-	 * You can read [this thread on the developer forum](https://devforum.roblox.com/t/psa-dont-use-instance-new-with-parent-argument/30296) for more information.
-	 */
-	new (className: string, parent?: Instance): Instance;
 }
 
 declare const Instance: InstanceConstructor;
@@ -893,134 +882,134 @@ interface BrickColorsByNumber {
 }
 
 interface BrickColorsByPalette {
-	[0]: 141;
-	[1]: 301;
-	[2]: 107;
-	[3]: 26;
-	[4]: 1012;
-	[5]: 303;
-	[6]: 1011;
-	[7]: 304;
-	[8]: 28;
-	[9]: 1018;
-	[10]: 302;
-	[11]: 305;
-	[12]: 306;
-	[13]: 307;
-	[14]: 308;
-	[15]: 1021;
-	[16]: 309;
-	[17]: 310;
-	[18]: 1019;
-	[19]: 135;
-	[20]: 102;
-	[21]: 23;
-	[22]: 1010;
-	[23]: 312;
-	[24]: 313;
-	[25]: 37;
-	[26]: 1022;
-	[27]: 1020;
-	[28]: 1027;
-	[29]: 311;
-	[30]: 315;
-	[31]: 1023;
-	[32]: 1031;
-	[33]: 316;
-	[34]: 151;
-	[35]: 317;
-	[36]: 318;
-	[37]: 319;
-	[38]: 1024;
-	[39]: 314;
-	[40]: 1013;
-	[41]: 1006;
-	[42]: 321;
-	[43]: 322;
-	[44]: 104;
-	[45]: 1008;
-	[46]: 119;
-	[47]: 323;
-	[48]: 324;
-	[49]: 325;
-	[50]: 320;
-	[51]: 11;
-	[52]: 1026;
-	[53]: 1016;
-	[54]: 1032;
-	[55]: 1015;
-	[56]: 327;
-	[57]: 1005;
-	[58]: 1009;
-	[59]: 29;
-	[60]: 328;
-	[61]: 1028;
-	[62]: 208;
-	[63]: 45;
-	[64]: 329;
-	[65]: 330;
-	[66]: 331;
-	[67]: 1004;
-	[68]: 21;
-	[69]: 332;
-	[70]: 333;
-	[71]: 24;
-	[72]: 334;
-	[73]: 226;
-	[74]: 1029;
-	[75]: 335;
-	[76]: 336;
-	[77]: 342;
-	[78]: 343;
-	[79]: 338;
-	[80]: 1007;
-	[81]: 339;
-	[82]: 133;
-	[83]: 106;
-	[84]: 340;
-	[85]: 341;
-	[86]: 1001;
-	[87]: 1;
-	[88]: 9;
-	[89]: 1025;
-	[90]: 337;
-	[91]: 344;
-	[92]: 345;
-	[93]: 1014;
-	[94]: 105;
-	[95]: 346;
-	[96]: 347;
-	[97]: 348;
-	[98]: 349;
-	[99]: 1030;
-	[100]: 125;
-	[101]: 101;
-	[102]: 350;
-	[103]: 192;
-	[104]: 351;
-	[105]: 352;
-	[106]: 353;
-	[107]: 354;
-	[108]: 1002;
-	[109]: 5;
-	[110]: 18;
-	[111]: 217;
-	[112]: 355;
-	[113]: 356;
-	[114]: 153;
-	[115]: 357;
-	[116]: 358;
-	[117]: 359;
-	[118]: 360;
-	[119]: 38;
-	[120]: 361;
-	[121]: 362;
-	[122]: 199;
-	[123]: 194;
-	[124]: 363;
-	[125]: 364;
-	[126]: 365;
-	[127]: 1003;
+	0: 141;
+	1: 301;
+	2: 107;
+	3: 26;
+	4: 1012;
+	5: 303;
+	6: 1011;
+	7: 304;
+	8: 28;
+	9: 1018;
+	10: 302;
+	11: 305;
+	12: 306;
+	13: 307;
+	14: 308;
+	15: 1021;
+	16: 309;
+	17: 310;
+	18: 1019;
+	19: 135;
+	20: 102;
+	21: 23;
+	22: 1010;
+	23: 312;
+	24: 313;
+	25: 37;
+	26: 1022;
+	27: 1020;
+	28: 1027;
+	29: 311;
+	30: 315;
+	31: 1023;
+	32: 1031;
+	33: 316;
+	34: 151;
+	35: 317;
+	36: 318;
+	37: 319;
+	38: 1024;
+	39: 314;
+	40: 1013;
+	41: 1006;
+	42: 321;
+	43: 322;
+	44: 104;
+	45: 1008;
+	46: 119;
+	47: 323;
+	48: 324;
+	49: 325;
+	50: 320;
+	51: 11;
+	52: 1026;
+	53: 1016;
+	54: 1032;
+	55: 1015;
+	56: 327;
+	57: 1005;
+	58: 1009;
+	59: 29;
+	60: 328;
+	61: 1028;
+	62: 208;
+	63: 45;
+	64: 329;
+	65: 330;
+	66: 331;
+	67: 1004;
+	68: 21;
+	69: 332;
+	70: 333;
+	71: 24;
+	72: 334;
+	73: 226;
+	74: 1029;
+	75: 335;
+	76: 336;
+	77: 342;
+	78: 343;
+	79: 338;
+	80: 1007;
+	81: 339;
+	82: 133;
+	83: 106;
+	84: 340;
+	85: 341;
+	86: 1001;
+	87: 1;
+	88: 9;
+	89: 1025;
+	90: 337;
+	91: 344;
+	92: 345;
+	93: 1014;
+	94: 105;
+	95: 346;
+	96: 347;
+	97: 348;
+	98: 349;
+	99: 1030;
+	100: 125;
+	101: 101;
+	102: 350;
+	103: 192;
+	104: 351;
+	105: 352;
+	106: 353;
+	107: 354;
+	108: 1002;
+	109: 5;
+	110: 18;
+	111: 217;
+	112: 355;
+	113: 356;
+	114: 153;
+	115: 357;
+	116: 358;
+	117: 359;
+	118: 360;
+	119: 38;
+	120: 361;
+	121: 362;
+	122: 199;
+	123: 194;
+	124: 363;
+	125: 364;
+	126: 365;
+	127: 1003;
 }
 
 interface BrickColorConstructor {
@@ -1049,9 +1038,6 @@ interface BrickColorConstructor {
 		{ [K in keyof BrickColorsByNumber]: T extends BrickColorsByNumber[K] ? K : never }[keyof BrickColorsByNumber],
 		T
 	>;
-
-	/** Constructs a BrickColor from its name. */
-	new (val: string): BrickColor;
 
 	/** Constructs a BrickColor from its numerical index. */
 	new <T extends keyof BrickColorsByNumber>(val: T): BrickColor<T, BrickColorsByNumber[T]>;
@@ -1647,7 +1633,6 @@ if (typeIs(v, "Vector3")) {
 ```
  **/
 declare function typeIs<T extends keyof CheckableTypes>(value: any, type: T): value is CheckableTypes[T];
-declare function typeIs(value: any, type: string): boolean;
 
 /**
  * Calls the function func with the given arguments in protected mode.
