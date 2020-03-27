@@ -483,7 +483,6 @@ interface Instance {
 		this: Instance,
 		className: T,
 	): StrictInstances[T] | undefined;
-	FindFirstAncestorOfClass(this: Instance, className: string): Instance | undefined;
 	/** Returns the first ancestor of the `Instance` for whom [Instance.IsA](https://developer.roblox.com/api-reference/function/Instance/IsA) returns true for the given className.
 	 * 
 	 * This function works upwards, meaning it starts at the `Instance`'s immediate [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) and works up towards the `DataModel`. If no matching ancestor is found, it returns nil.
@@ -507,7 +506,6 @@ interface Instance {
 	 * @returns The `Instance` found.
 	 */
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
-	FindFirstAncestorWhichIsA(this: Instance, className: string): Instance | undefined;
 	/** Returns the first child of the `Instance` found with the given name. If no child exists with the given name, this function returns nil. If the optional recursive argument is true, this function searches all descendants rather than only the immediate children of the `Instance`. Use this function if your code cannot guarantee the existence of an object with a given name.
 	 * 
 	 * ## Checking the Existence of An Object
@@ -575,7 +573,6 @@ interface Instance {
 		this: Instance,
 		className: T,
 	): StrictInstances[T] | undefined;
-	FindFirstChildOfClass(this: Instance, className: string): Instance | undefined;
 	/** Returns the first child of the `Instance` for whom [Instance.IsA](https://developer.roblox.com/api-reference/function/Instance/IsA) returns true for the given className.
 	 * 
 	 * If no matching child is found, this function returns nil. If the optional recursive argument is true, this function searches all descendants rather than only the immediate children of the `Instance`.
@@ -604,7 +601,6 @@ interface Instance {
 		className: T,
 		recursive?: boolean,
 	): Instances[T] | undefined;
-	FindFirstChildWhichIsA(this: Instance, className: string, recursive?: boolean): Instance | undefined;
 	GetAttribute(this: Instance, attribute: string): unknown;
 	GetAttributeChangedSignal(this: Instance, attribute: string): RBXScriptSignal;
 	GetAttributes(this: Instance): object;
@@ -678,7 +674,6 @@ interface Instance {
 	 * `ValueBase` objects, such as `IntValue` and `StringValue`, use a modified `Changed` event that fires with the contents of the `Value` property. As such, this method provides a way to detect changes in other properties of those objects. For example, to detect changes in the `Name` property of an `IntValue`, use `IntValue:GetPropertyChangedSignal("Name"):Connect(someFunc)` since the `Changed` event of `IntValue` objects only detect changes on the `Value` property.
 	 */
 	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal;
-	GetPropertyChangedSignal(this: Instance, propertyName: string): RBXScriptSignal;
 	/** IsA returns true if the `Instance`'s class is **equivalent to** or a **subclass** of a given class. This function is similar to the **instanceof** operators in other languages, and is a form of [type introspection](https://en.wikipedia.org/wiki/Type_introspection). To ignore class inheritance, test the [ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) property directly instead. For checking native Lua data types (number, string, etc) use the functions `type` and `typeof`.
 	 * 
 	 * Most commonly, this function is used to test if an object is some kind of part, such as `Part` or `WedgePart`, which inherits from `BasePart` (an abstract class). For example, if your goal is to change all of a [Character](https://developer.roblox.com/api-reference/property/Player/Character)'s limbs to the same color, you might use [GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) to iterate over the children, then use IsA to filter non-`BasePart` objects which lack the `BrickColor` property:
@@ -702,7 +697,6 @@ interface Instance {
 	 * @returns Describes whether the Instance's class matched or is a subclass of the given class
 	 */
 	IsA<T extends keyof Instances>(this: Instance, className: T): this is Instances[T];
-	IsA(this: Instance, className: string): boolean;
 	/** Returns true if an `Instance` is an ancestor of the given descendant.
 	 * 
 	 * An `Instance` is considered the ancestor of an object if the object's [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) or one of it's parent's [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) is set to the `Instance`.
@@ -15458,7 +15452,6 @@ interface ServiceProvider<S = unknown> extends Instance {
 	 * * If you attempt to fetch a service that is present under another Object, an error will be thrown stating that the "singleton serviceName already exists".
 	 */
 	GetService<T extends keyof S>(this: ServiceProvider<S>, className: T): S[T];
-	GetService(this: ServiceProvider<S>, className: string): S[keyof S] | undefined;
 	/** Fires when the current place is exited. */
 	readonly Close: RBXScriptSignal<() => void>;
 	/** Fired when a service is created. */
