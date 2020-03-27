@@ -318,32 +318,26 @@ interface Instance {
 	WaitForChild(this: Instance, childName: string, timeOut: number): Instance | undefined;
 
 	IsA<T extends keyof Instances>(this: Instance, className: T): this is Instances[T];
-	IsA(this: Instance, className: string): boolean;
 
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
-	FindFirstAncestorWhichIsA(this: Instance, className: string): Instance | undefined;
 
 	FindFirstChildWhichIsA<T extends keyof Instances>(
 		this: Instance,
 		className: T,
 		recursive?: boolean,
 	): Instances[T] | undefined;
-	FindFirstChildWhichIsA(this: Instance, className: string, recursive?: boolean): Instance | undefined;
 
 	FindFirstAncestorOfClass<T extends keyof StrictInstances>(
 		this: Instance,
 		className: T,
 	): StrictInstances[T] | undefined;
-	FindFirstAncestorOfClass(this: Instance, className: string): Instance | undefined;
 
 	FindFirstChildOfClass<T extends keyof StrictInstances>(
 		this: Instance,
 		className: T,
 	): StrictInstances[T] | undefined;
-	FindFirstChildOfClass(this: Instance, className: string): Instance | undefined;
 
 	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal;
-	GetPropertyChangedSignal(this: Instance, propertyName: string): RBXScriptSignal;
 }
 
 interface InventoryPages extends Pages<number> {}
@@ -610,7 +604,6 @@ interface ServiceProvider<S = unknown> extends Instance {
 	FindService(this: ServiceProvider<S>, className: string): S[keyof S] | undefined;
 	FindService(this: ServiceProvider<S>, className: string): Instance | undefined;
 	GetService<T extends keyof S>(this: ServiceProvider<S>, className: T): S[T];
-	GetService(this: ServiceProvider<S>, className: string): S[keyof S] | undefined;
 }
 
 interface SocialService extends Instance {
