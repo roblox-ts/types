@@ -2922,7 +2922,7 @@ interface StudioService extends Instance {
 	 */
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
 	/** [NO DOCUMENTATION] */
-	readonly GamePublishFinished: RBXScriptSignal<(success: boolean) => void>;
+	readonly GamePublishFinished: RBXScriptSignal<(success: boolean, gameId: number) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly OnConvertToPackageResult: RBXScriptSignal<(isSuccessful: boolean, errorMessage: string) => void>;
 	/** [NO DOCUMENTATION] */

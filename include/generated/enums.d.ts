@@ -1686,9 +1686,17 @@ declare namespace Enum {
 
 		export const Box: Box;
 
+		export interface PreciseConvexDecomposition {
+			Name: "PreciseConvexDecomposition";
+			Value: 3;
+			EnumType: EnumType<CollisionFidelity>;
+		}
+
+		export const PreciseConvexDecomposition: PreciseConvexDecomposition;
+
 		export function GetEnumItems(this: defined): Array<CollisionFidelity>
 	}
-	export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box;
+	export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition;
 	export namespace CollisionsMode {
 		export interface NoCollisions {
 			Name: "NoCollisions";
