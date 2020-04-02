@@ -48,16 +48,16 @@ type InstanceProperties<T extends Instance> = {
 /** Given an Instance `T`, returns a unioned type of all non-readonly property names. */
 type WritableInstanceProperties<T extends Instance> = {
 	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName"
-	? never
-	: T[K] extends RBXScriptSignal
-	? never
-	: (() => any) extends T[K]
-	? never
-	: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends <F>() => F extends { -readonly [Q in K]: T[K] }
-		? 1
-		: 2
-	? K
-	: never;
+		? never
+		: T[K] extends RBXScriptSignal
+		? never
+		: (() => any) extends T[K]
+		? never
+		: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends <F>() => F extends { -readonly [Q in K]: T[K] }
+				? 1
+				: 2
+		? K
+		: never;
 }[keyof T];
 
 /** Given an Instance `T`, returns an object which can hold the writable properties of T. Good to use with `Object.assign`.
@@ -406,6 +406,8 @@ interface AgentParameters {
 	 * Empty space smaller than this value, like the space under stairs, will be marked as non-traversable.
 	 */
 	AgentHeight?: number;
+	/** Sets whether off-mesh links for jumping are allowed. */
+	AgentCanJump?: boolean;
 }
 
 interface CollisionGroupInfo {
