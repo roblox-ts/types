@@ -322,6 +322,8 @@ interface DebuggerBreakpoint extends Instance {
 	Condition: string;
 	/** Whether or not the breakpoint is enabled. */
 	IsEnabled: boolean;
+	/** [NO DOCUMENTATION] */
+	IsLocal: boolean;
 	/** The line that the breakpoint has been placed on.
 	 * 	
 	 * The line that the breakpoint has been placed on.
@@ -436,6 +438,10 @@ interface GameSettings extends Instance {
 	VideoCaptureEnabled: boolean;
 	/** Sets the quality level of Roblox's built-in video capture. */
 	VideoQuality: Enum.VideoQualitySettings;
+	/** [NO DOCUMENTATION] *
+	 * Tags: NotReplicated
+	 */
+	readonly VideoRecording: boolean;
 	/** [NO DOCUMENTATION] */
 	readonly VideoRecordingChangeRequest: RBXScriptSignal<(recording: boolean) => void>;
 }
@@ -1254,6 +1260,10 @@ interface NetworkSettings extends Instance {
 	TrackDataTypes: boolean;
 	/** TrackPhysicsDetails is a diagnostics property that, when set to true, tells the replicator stats to sample replication physics details. */
 	TrackPhysicsDetails: boolean;
+}
+
+interface WorldRoot extends Model {
+	IKMoveTo(this: WorldRoot, part: BasePart, target: CFrame, translateStiffness?: number, rotateStiffness?: number, collisionsMode?: CastsToEnum<Enum.IKCollisionsMode>): void;
 }
 
 interface Workspace extends WorldRoot {
@@ -2265,7 +2275,7 @@ interface ScriptDebugger extends Instance {
 	/** Returns a list with all the watches for this debugger */
 	GetWatches(this: ScriptDebugger): Array<Instance>;
 	/** Sets the specified line of the script as a breakpoint. Returns a `DebuggerBreakpoint` that you can use to manage the breakpoint. */
-	SetBreakpoint(this: ScriptDebugger, line: number): Instance | undefined;
+	SetBreakpoint(this: ScriptDebugger, line: number, isLocalBreakpoint: boolean): Instance | undefined;
 	/** Sets the value of the variable _name_ as _value_ in the script's main stack. */
 	SetGlobal(this: ScriptDebugger, name: string, value?: any): void;
 	/** Sets the value of the variable _name_ as _value_ in the stack specified. */
@@ -2747,6 +2757,7 @@ interface Studio extends Instance {
 	["Show Plugin GUI Service in Explorer"]: boolean;
 	/** If set to true, certain internal error messages regarding the QT framework that Roblox uses will be shown in the output. */
 	["Show QT warnings in output"]: boolean;
+	["Show Whitespace"]: boolean;
 	["Show plus button on hover in Explorer"]: boolean;
 	["Skip Closing Brackets and Quotes"]: boolean;
 	/** Specifies the color of strings in the script editor. */
@@ -2775,6 +2786,7 @@ interface Studio extends Instance {
 	Theme: StudioTheme;
 	/** Specifies the color of the wavy underline shown when the script analyzer picks up a problem that should be addressed in the script editor. */
 	["Warning Color"]: Color3;
+	["Whitespace Color"]: Color3;
 	/** The **GetAvailableThemes()** function returns a list of [StudioThemes](https://developer.roblox.com/api-reference/class/StudioTheme) available in `Studio`. You can access the function via:
 	 * 
 	 * ```lua
@@ -2864,6 +2876,8 @@ interface StudioService extends Instance {
 	 */
 	UseLocalSpace: boolean;
 	/** [NO DOCUMENTATION] */
+	AnimationIdSelected(this: StudioService, id: number): void;
+	/** [NO DOCUMENTATION] */
 	ConvertToPackageUpload(this: StudioService, uploadUrl: string): void;
 	/** [NO DOCUMENTATION] */
 	CopyToClipboard(this: StudioService, stringToCopy: string): void;
@@ -2925,6 +2939,8 @@ interface StudioService extends Instance {
 	readonly GamePublishFinished: RBXScriptSignal<(success: boolean, gameId: number) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly OnConvertToPackageResult: RBXScriptSignal<(isSuccessful: boolean, errorMessage: string) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly OnImportFromRoblox: RBXScriptSignal<() => void>;
 	/** [NO DOCUMENTATION] */
 	readonly OnOpenConvertToPackagePlugin: RBXScriptSignal<(instances: Array<Instance>, name: string) => void>;
 	/** [NO DOCUMENTATION] */
