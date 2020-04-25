@@ -303,7 +303,7 @@ interface BundleInfo {
 	Name: string;
 }
 
-type TeleportData = string | number | boolean | Array<any> | Map<any, any>;
+type TeleportData = string | number | boolean | Array<unknown> | Map<unknown, unknown>;
 
 type PlayerJoinInfo =
 	| {
