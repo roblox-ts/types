@@ -307,20 +307,24 @@ type TeleportData = string | number | boolean | Array<any> | Map<any, any>;
 
 type PlayerJoinInfo =
 	| {
+			/** The DataModel.GameId of the game the Player was teleported from. */
+			SourceGameId: undefined;
 			/** The DataModel.PlaceId of the place the Player was teleported from. Only present if the player was teleported to the current place. */
 			SourcePlaceId: undefined;
 			/** An array containing the UserIds teleported alongside the Player. Only present if the player was teleported in using TeleportService:TeleportPartyAsync. */
 			Members: undefined;
 			/** Data passed along with the players. As this is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency). */
-			teleportData?: TeleportData;
+			TeleportData?: TeleportData;
 	  }
 	| {
+			/** The DataModel.GameId of the game the Player was teleported from. */
+			SourceGameId: number;
 			/** The DataModel.PlaceId of the place the Player was teleported from. Only present if the player was teleported to the current place. */
 			SourcePlaceId: number;
 			/** An array containing the UserIds teleported alongside the Player. Only present if the player was teleported in using TeleportService:TeleportPartyAsync. */
 			Members: Array<number>;
 			/** Data passed along with the players. As this is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency). */
-			teleportData?: TeleportData;
+			TeleportData?: TeleportData;
 	  };
 
 interface BoundActionInfo {
