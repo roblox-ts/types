@@ -1313,6 +1313,14 @@ interface Ray {
 type RayConstructor = new (origin: Vector3, direction: Vector3) => Ray;
 declare const Ray: RayConstructor;
 
+// RaycastParams
+interface RaycastParams {}
+type RaycastParamsConstructor = new () => RaycastParams;
+declare const RaycastParams: RaycastParamsConstructor;
+
+// RaycastResult
+interface RaycastResult {}
+
 // Rect
 interface Rect {
 	readonly Min: Vector2;
