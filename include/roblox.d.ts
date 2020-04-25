@@ -1314,7 +1314,14 @@ type RayConstructor = new (origin: Vector3, direction: Vector3) => Ray;
 declare const Ray: RayConstructor;
 
 // RaycastParams
-interface RaycastParams {}
+interface RaycastParams {
+	/** Instances to ignore or whitelist */
+	FilterDescendantsInstances: Array<Instance>;
+	/** Whether to use the filters fields of the RaycastParams as a blacklist or as a whitelist */
+	FilterType: Enum.RaycastFilterType;
+	/** Should a raycast ignore Terrain water */
+	IgnoreWater: boolean;
+}
 type RaycastParamsConstructor = new () => RaycastParams;
 declare const RaycastParams: RaycastParamsConstructor;
 
