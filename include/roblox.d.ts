@@ -1321,10 +1321,10 @@ declare const RaycastParams: RaycastParamsConstructor;
 
 // RaycastResult
 interface RaycastResult {
-	Instance: BasePart;
-	Material: Enum.Material;
-	Normal: Vector3;
-	Position: Vector3;
+	readonly Instance: BasePart;
+	readonly Material: Enum.Material;
+	readonly Normal: Vector3;
+	readonly Position: Vector3;
 }
 
 // Rect
