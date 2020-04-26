@@ -583,7 +583,7 @@ interface RBXScriptConnection {
  * When a certain event happens, the Event is fired, calling any listeners that are connected to the Event.
  * An Event may also pass arguments to each listener, to provide extra information about the event that occurred.
  */
-interface RBXScriptSignal<T extends ((...args: Array<any>) => void) = (() => void)> {
+interface RBXScriptSignal<T = ((...args: Array<any>) => void)> {
 	/**
 	 * Establishes a function to be called whenever the event is raised.
 	 * Returns a RBXScriptConnection object associated with the connection.

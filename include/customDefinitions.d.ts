@@ -337,7 +337,7 @@ interface Instance {
 		className: T,
 	): StrictInstances[T] | undefined;
 
-	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal;
+	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal<() => void>;
 }
 
 interface InventoryPages extends Pages<number> {}
