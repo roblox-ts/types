@@ -29,29 +29,29 @@ type ChangedSignal = {
 	readonly Changed: RBXScriptSignal<(changedPropertyName: string) => void>;
 };
 
+/** A mapping between Instance ClassNames and corresponding types with `ClassName` narrowed, if necessary.
+ * For example, A `Part` type could mean a `SpawnLocation`, a `Seat`, or an object whose ClassName is "Part".
+ * Thus, `StrictInstances["Part"]` gives `Part & { ClassName: "Part" }` for when you want a `Part` whose ClassName is "Part".
+ */
 type StrictInstances = {
-	[Key in Exclude<keyof Instances, keyof AbstractInstances>]: Instances[Key] &
-		(Instances[Key]["ClassName"] extends Key ? unknown : { ClassName: Key });
+	[K in Exclude<keyof Instances, keyof AbstractInstances>]: Instances[K] &
+		(Instances[K]["ClassName"] extends K ? unknown : { ClassName: K });
 };
 
 /** Given an Instance `T`, returns a unioned type of all property names, except "ClassName". */
 type InstanceProperties<T extends Instance> = {
-	[Key in keyof T]-?: Key extends "GetPropertyChangedSignal" | "ClassName"
+	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed"
 		? never
-		: T[Key] extends RBXScriptSignal
+		: T[K] extends RBXScriptSignal | ((...args: Array<any>) => void)
 		? never
-		: (() => any) extends T[Key]
-		? never
-		: Key;
+		: K;
 }[keyof T];
 
 /** Given an Instance `T`, returns a unioned type of all non-readonly property names. */
 type WritableInstanceProperties<T extends Instance> = {
-	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName"
+	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed"
 		? never
-		: T[K] extends RBXScriptSignal
-		? never
-		: (() => any) extends T[K]
+		: T[K] extends RBXScriptSignal | ((...args: Array<any>) => void)
 		? never
 		: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends <F>() => F extends { -readonly [Q in K]: T[K] }
 				? 1
@@ -305,27 +305,24 @@ interface BundleInfo {
 
 type TeleportData = string | number | boolean | Array<unknown> | Map<unknown, unknown>;
 
-type PlayerJoinInfo =
+type PlayerJoinInfo = {
+	/** Data passed along with the players. As this is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency). */
+	TeleportData?: TeleportData;
+} & (
 	| {
-			/** The DataModel.GameId of the game the Player was teleported from. */
 			SourceGameId: undefined;
-			/** The DataModel.PlaceId of the place the Player was teleported from. Only present if the player was teleported to the current place. */
 			SourcePlaceId: undefined;
-			/** An array containing the UserIds teleported alongside the Player. Only present if the player was teleported in using TeleportService:TeleportPartyAsync. */
 			Members: undefined;
-			/** Data passed along with the players. As this is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency). */
-			TeleportData?: TeleportData;
 	  }
 	| {
-			/** The DataModel.GameId of the game the Player was teleported from. */
+			/** The DataModel.GameId of the game the Player was teleported from. Only present if the player was teleported to the current place. */
 			SourceGameId: number;
 			/** The DataModel.PlaceId of the place the Player was teleported from. Only present if the player was teleported to the current place. */
 			SourcePlaceId: number;
 			/** An array containing the UserIds teleported alongside the Player. Only present if the player was teleported in using TeleportService:TeleportPartyAsync. */
 			Members: Array<number>;
-			/** Data passed along with the players. As this is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency). */
-			TeleportData?: TeleportData;
-	  };
+	  }
+);
 
 interface BoundActionInfo {
 	inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType | string>;
@@ -586,21 +583,18 @@ interface RBXScriptConnection {
  * When a certain event happens, the Event is fired, calling any listeners that are connected to the Event.
  * An Event may also pass arguments to each listener, to provide extra information about the event that occurred.
  */
-interface RBXScriptSignal<T = (...args: any) => any, P = false> {
+interface RBXScriptSignal<T extends ((...args: Array<any>) => void) = (() => void)> {
 	/**
 	 * Establishes a function to be called whenever the event is raised.
 	 * Returns a RBXScriptConnection object associated with the connection.
 	 * @param callback The function to be called whenever the event is fired.
 	 */
-	Connect<O extends Array<unknown> = FunctionArguments<T>>(
-		this: RBXScriptSignal<T, P>,
-		callback: P extends true ? (FunctionArguments<T> extends Array<unknown> ? (...args: O) => void : T) : T,
-	): RBXScriptConnection;
+	Connect(this: RBXScriptSignal, callback: T): RBXScriptConnection;
 
 	/**
 	 * Yields the current thread until this signal is fired. Returns what was fired to the signal.
 	 */
-	Wait(this: RBXScriptSignal<T, P>): LuaTuple<FunctionArguments<T>>;
+	Wait(this: RBXScriptSignal): LuaTuple<FunctionArguments<T>>;
 }
 
 // generated in generated_classes.d.ts
@@ -1326,7 +1320,12 @@ type RaycastParamsConstructor = new () => RaycastParams;
 declare const RaycastParams: RaycastParamsConstructor;
 
 // RaycastResult
-interface RaycastResult {}
+interface RaycastResult {
+	Instance: BasePart;
+	Material: Enum.Material;
+	Normal: Vector3;
+	Position: Vector3;
+}
 
 // Rect
 interface Rect {
@@ -1628,6 +1627,8 @@ interface CheckableTypes extends CheckablePrimitives {
 	RBXScriptSignal: RBXScriptSignal;
 	Random: Random;
 	Ray: Ray;
+	RaycastParams: RaycastParams,
+	RaycastResult: RaycastResult,
 	Rect: Rect;
 	Region3: Region3;
 	Region3int16: Region3int16;

@@ -2561,7 +2561,7 @@ interface BindableEvent extends Instance {
 	/** Calling this method will fire the "Event" event. This function does not yield, even no script has connected to the "Event" event and even if a connected function yields. There are limitations on the values that can be sent as arguments; see the code samples */
 	Fire(this: BindableEvent, ...arguments: Array<unknown>): void;
 	/** This event is fired when any script calls the Fire method of the BindableEvent. */
-	readonly Event: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
+	readonly Event: RBXScriptSignal<(...arguments: Array<any>) => void>;
 }
 
 /** A BindableFunction is a Roblox object that allows you to give access to functions to external scripts. Functions put in BindableFunctions will not be replicated, therefore making it impossible to use these objects to pass functions between scripts. Functions are invoked through [BindableFunction.Invoke](https://developer.roblox.com/api-reference/function/BindableFunction/Invoke), which calls [BindableFunction.OnInvoke](https://developer.roblox.com/api-reference/callback/BindableFunction/OnInvoke). */
@@ -15182,7 +15182,7 @@ interface RemoteEvent extends Instance {
 	 * 
 	 * [1]: https://developer.roblox.com/articles/Remote-Functions-and-Events
 	 */
-	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
+	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<any>) => void>;
 	/** Fires listening functions in `Script` when [RemoteEvent.FireServer](https://developer.roblox.com/api-reference/function/RemoteEvent/FireServer) is called from a `LocalScript`.
 	 * 
 	 * This is used to retrieve remote events fired by the client and intended for the server. This event is in place to provide a method for communicating between the client and server, which is well documented in [this][1] article. This event retrieves remote events fired by the client to the server.

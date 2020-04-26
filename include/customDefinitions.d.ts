@@ -74,7 +74,7 @@ interface BillboardGui extends LayerCollector {
 }
 
 interface BindableEvent extends Instance {
-	readonly Event: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
+	readonly Event: RBXScriptSignal<(...arguments: Array<any>) => void>;
 	Fire(this: BindableEvent, ...arguments: Array<unknown>): void;
 }
 
@@ -568,7 +568,7 @@ interface PolicyService extends Instance {
 }
 
 interface RemoteEvent extends Instance {
-	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
+	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<any>) => void>;
 	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
 	FireAllClients(this: RemoteEvent, ...arguments: Array<unknown>): void;
 	FireClient(this: RemoteEvent, player: Player, ...arguments: Array<unknown>): void;
