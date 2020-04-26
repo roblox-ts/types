@@ -3,6 +3,10 @@ interface AnimationController extends Instance {
 	LoadAnimation(this: AnimationController, animation: Animation): AnimationTrack;
 }
 
+interface AnimationTrack {
+	GetMarkerReachedSignal(this: AnimationTrack, name: string): RBXScriptSignal<(param?: string) => void>;
+}
+
 interface Animator extends Instance {
 	LoadAnimation(this: Animator, animation: Animation): AnimationTrack;
 	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
@@ -339,6 +343,8 @@ interface Instance {
 
 	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal<() => void>;
 }
+
+
 
 interface InventoryPages extends Pages<number> {}
 
