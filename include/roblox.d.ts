@@ -40,7 +40,7 @@ type StrictInstances = {
 
 /** Given an Instance `T`, returns a unioned type of all property names, except "ClassName". */
 type InstanceProperties<T extends Instance> = {
-	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed"
+	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed" | "BreakJoints" | "MakeJoints"
 		? never
 		: T[K] extends RBXScriptSignal | ((...args: Array<any>) => void)
 		? never
@@ -49,7 +49,7 @@ type InstanceProperties<T extends Instance> = {
 
 /** Given an Instance `T`, returns a unioned type of all non-readonly property names. */
 type WritableInstanceProperties<T extends Instance> = {
-	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed"
+	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed" | "BreakJoints" | "MakeJoints"
 		? never
 		: T[K] extends RBXScriptSignal | ((...args: Array<any>) => void)
 		? never
