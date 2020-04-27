@@ -676,7 +676,7 @@ interface Instance {
 	 * 
 	 * `ValueBase` objects, such as `IntValue` and `StringValue`, use a modified `Changed` event that fires with the contents of the `Value` property. As such, this method provides a way to detect changes in other properties of those objects. For example, to detect changes in the `Name` property of an `IntValue`, use `IntValue:GetPropertyChangedSignal("Name"):Connect(someFunc)` since the `Changed` event of `IntValue` objects only detect changes on the `Value` property.
 	 */
-	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal;
+	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal<() => void>;
 	/** IsA returns true if the `Instance`'s class is **equivalent to** or a **subclass** of a given class. This function is similar to the **instanceof** operators in other languages, and is a form of [type introspection](https://en.wikipedia.org/wiki/Type_introspection). To ignore class inheritance, test the [ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) property directly instead. For checking native Lua data types (number, string, etc) use the functions `type` and `typeof`.
 	 * 
 	 * Most commonly, this function is used to test if an object is some kind of part, such as `Part` or `WedgePart`, which inherits from `BasePart` (an abstract class). For example, if your goal is to change all of a [Character](https://developer.roblox.com/api-reference/property/Player/Character)'s limbs to the same color, you might use [GetChildren](https://developer.roblox.com/api-reference/function/Instance/GetChildren) to iterate over the children, then use IsA to filter non-`BasePart` objects which lack the `BrickColor` property:
@@ -1038,7 +1038,7 @@ interface AnimationController extends Instance {
 }
 
 /** Controls the playback of an animation on a `Humanoid` or `AnimationController`. This object cannot be created, instead it is returned by the [Humanoid.LoadAnimation](https://developer.roblox.com/api-reference/function/Humanoid/LoadAnimation) method. */
-interface AnimationTrack extends Instance {
+interface AnimationTrack {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AnimationTrack";
 	/** The `Animation` object that was used to create this `AnimationTrack`. To create an `AnimationTrack` the developer must load an `Animation` object onto a `Humanoid` or `AnimationController` using the [Humanoid.LoadAnimation](https://developer.roblox.com/api-reference/function/Humanoid/LoadAnimation) method.
@@ -1049,17 +1049,6 @@ interface AnimationTrack extends Instance {
 	 * 
 	 * The Animation property is used to identify the underlying `Animation` of an `AnimationTrack`.
 	 * 
-	 * Tags: ReadOnly, NotReplicated
-	The `Animation` object that was used to create this `AnimationTrack`. To create an `AnimationTrack` the developer must load an `Animation` object onto a `Humanoid` or `AnimationController` using the [Humanoid.LoadAnimation](https://developer.roblox.com/api-reference/function/Humanoid/LoadAnimation) method.
-	 * 
-	 * The Animation property is used to identify the underlying `Animation` of an `AnimationTrack`.
-	 * 	
-	 * The `Animation` object that was used to create this `AnimationTrack`. To create an `AnimationTrack` the developer must load an `Animation` object onto a `Humanoid` or `AnimationController` using the [Humanoid.LoadAnimation](https://developer.roblox.com/api-reference/function/Humanoid/LoadAnimation) method.
-	 * 
-	 * The Animation property is used to identify the underlying `Animation` of an `AnimationTrack`.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Animation: Animation | undefined;
@@ -1072,17 +1061,6 @@ interface AnimationTrack extends Instance {
 	 * This property can be used by developers to check if an animation is already playing before playing it (as that would cause it to restart). If a developer wishes to obtain all playing `AnimationTrack`s on a `Humanoid` or `AnimationController` they should use [Humanoid.GetPlayingAnimationTracks](https://developer.roblox.com/api-reference/function/Humanoid/GetPlayingAnimationTracks)
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	A read only property that returns true when the `AnimationTrack` is playing.
-	 * 
-	 * This property can be used by developers to check if an animation is already playing before playing it (as that would cause it to restart). If a developer wishes to obtain all playing `AnimationTrack`s on a `Humanoid` or `AnimationController` they should use [Humanoid.GetPlayingAnimationTracks](https://developer.roblox.com/api-reference/function/Humanoid/GetPlayingAnimationTracks)
-	 * 	
-	 * A read only property that returns true when the `AnimationTrack` is playing.
-	 * 
-	 * This property can be used by developers to check if an animation is already playing before playing it (as that would cause it to restart). If a developer wishes to obtain all playing `AnimationTrack`s on a `Humanoid` or `AnimationController` they should use [Humanoid.GetPlayingAnimationTracks](https://developer.roblox.com/api-reference/function/Humanoid/GetPlayingAnimationTracks)
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly IsPlaying: boolean;
 	/** A read only property that returns the length (in seconds) of an `AnimationTrack`. This will return 0 until the animation has fully loaded and thus may not be immediately available.
@@ -1093,17 +1071,6 @@ interface AnimationTrack extends Instance {
 	 * 
 	 * When the [AnimationTrack.Speed](https://developer.roblox.com/api-reference/property/AnimationTrack/Speed) of an `AnimationTrack` is equal to 1, the animation will take [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds) to complete.
 	 * 
-	 * Tags: ReadOnly, NotReplicated
-	A read only property that returns the length (in seconds) of an `AnimationTrack`. This will return 0 until the animation has fully loaded and thus may not be immediately available.
-	 * 
-	 * When the [AnimationTrack.Speed](https://developer.roblox.com/api-reference/property/AnimationTrack/Speed) of an `AnimationTrack` is equal to 1, the animation will take [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds) to complete.
-	 * 	
-	 * A read only property that returns the length (in seconds) of an `AnimationTrack`. This will return 0 until the animation has fully loaded and thus may not be immediately available.
-	 * 
-	 * When the [AnimationTrack.Speed](https://developer.roblox.com/api-reference/property/AnimationTrack/Speed) of an `AnimationTrack` is equal to 1, the animation will take [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds) to complete.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Length: number;
@@ -1148,25 +1115,6 @@ interface AnimationTrack extends Instance {
 	 * This property is read only and is changed using [AnimationTrack.AdjustSpeed](https://developer.roblox.com/api-reference/function/AnimationTrack/AdjustSpeed).
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	The Speed of an `AnimationTrack` is a read only property that gives the current playback speed of the `AnimationTrack`. This has a default value of 1.  When speed is equal to 1, the amount of time an animation takes to complete is equal to [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds).
-	 * 
-	 * If the speed is adjusted, then the actual time it will take a track to play can be computed by dividing the length by the speed. Speed is a unitless quantity.
-	 * 
-	 * Speed can be used to link the length of an animation to different game events (for example recharging an ability) without having to upload different variants of the same animation.
-	 * 
-	 * This property is read only and is changed using [AnimationTrack.AdjustSpeed](https://developer.roblox.com/api-reference/function/AnimationTrack/AdjustSpeed).
-	 * 	
-	 * The Speed of an `AnimationTrack` is a read only property that gives the current playback speed of the `AnimationTrack`. This has a default value of 1.  When speed is equal to 1, the amount of time an animation takes to complete is equal to [AnimationTrack.Length](https://developer.roblox.com/api-reference/property/AnimationTrack/Length) (in seconds).
-	 * 
-	 * If the speed is adjusted, then the actual time it will take a track to play can be computed by dividing the length by the speed. Speed is a unitless quantity.
-	 * 
-	 * Speed can be used to link the length of an animation to different game events (for example recharging an ability) without having to upload different variants of the same animation.
-	 * 
-	 * This property is read only and is changed using [AnimationTrack.AdjustSpeed](https://developer.roblox.com/api-reference/function/AnimationTrack/AdjustSpeed).
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Speed: number;
 	/** Returns the position in time in seconds that an `AnimationTrack` is through playing its source animation. Can be set to make the track jump to a specific moment in the animation.
@@ -1177,17 +1125,6 @@ interface AnimationTrack extends Instance {
 	 * 
 	 * TimePosition can be set to go to a specific point in the animation, but the `AnimationTrack` must be playing to do so. It can also be used in combination with [AnimationTrack.AdjustSpeed](https://developer.roblox.com/api-reference/function/AnimationTrack/AdjustSpeed) to freeze the animation at a desired point (by setting speed to 0).
 	 * 
-	 * Tags: NotReplicated
-	Returns the position in time in seconds that an `AnimationTrack` is through playing its source animation. Can be set to make the track jump to a specific moment in the animation.
-	 * 
-	 * TimePosition can be set to go to a specific point in the animation, but the `AnimationTrack` must be playing to do so. It can also be used in combination with [AnimationTrack.AdjustSpeed](https://developer.roblox.com/api-reference/function/AnimationTrack/AdjustSpeed) to freeze the animation at a desired point (by setting speed to 0).
-	 * 	
-	 * Returns the position in time in seconds that an `AnimationTrack` is through playing its source animation. Can be set to make the track jump to a specific moment in the animation.
-	 * 
-	 * TimePosition can be set to go to a specific point in the animation, but the `AnimationTrack` must be playing to do so. It can also be used in combination with [AnimationTrack.AdjustSpeed](https://developer.roblox.com/api-reference/function/AnimationTrack/AdjustSpeed) to freeze the animation at a desired point (by setting speed to 0).
-	 * 
-	 * Tags: NotReplicated
-	 *
 	 * Tags: NotReplicated
 	 */
 	TimePosition: number;
@@ -1216,33 +1153,6 @@ interface AnimationTrack extends Instance {
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	When weight is set in an `AnimationTrack` it does not change instantaneously but moves from WeightCurrent to [AnimationTrack.WeightTarget](https://developer.roblox.com/api-reference/property/AnimationTrack/WeightTarget). The time it takes to do this is determined by the fadeTime parameter given when the animation is played, or the weight is adjusted.
-	 * 
-	 * WeightCurrent can be checked against [AnimationTrack.WeightTarget](https://developer.roblox.com/api-reference/property/AnimationTrack/WeightTarget) to see if the desired weight has been reached. Note that these values should not be checked for equality with the == operator, as both of these values are floats. To see if WeightCurrent has reached the target weight, it is recommended to see if the distance between those values is sufficiently small (see code sample below).
-	 * 
-	 * The animation weighting system is used to determine how `AnimationTrack`s playing at the same priority are blended together. The default weight is one, and no movement will be visible on an `AnimationTrack` with a weight of zero. The pose that is shown at any point in time is determined by the weighted average of all the `Pose`s and the WeightCurrent of each `AnimationTrack`. See below for an example of animation blending in practice.
-	 * 
-	 * ![Animation Weight Blending][1]
-	 * 
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
-	 * 
-	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
-	 * 	
-	 * When weight is set in an `AnimationTrack` it does not change instantaneously but moves from WeightCurrent to [AnimationTrack.WeightTarget](https://developer.roblox.com/api-reference/property/AnimationTrack/WeightTarget). The time it takes to do this is determined by the fadeTime parameter given when the animation is played, or the weight is adjusted.
-	 * 
-	 * WeightCurrent can be checked against [AnimationTrack.WeightTarget](https://developer.roblox.com/api-reference/property/AnimationTrack/WeightTarget) to see if the desired weight has been reached. Note that these values should not be checked for equality with the == operator, as both of these values are floats. To see if WeightCurrent has reached the target weight, it is recommended to see if the distance between those values is sufficiently small (see code sample below).
-	 * 
-	 * The animation weighting system is used to determine how `AnimationTrack`s playing at the same priority are blended together. The default weight is one, and no movement will be visible on an `AnimationTrack` with a weight of zero. The pose that is shown at any point in time is determined by the weighted average of all the `Pose`s and the WeightCurrent of each `AnimationTrack`. See below for an example of animation blending in practice.
-	 * 
-	 * ![Animation Weight Blending][1]
-	 * 
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
-	 * 
-	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly WeightCurrent: number;
 	/** When weight is set in an `AnimationTrack` it does not change instantaneously but moves from WeightCurrent to [AnimationTrack.WeightTarget](https://developer.roblox.com/api-reference/property/AnimationTrack/WeightTarget). The time it takes to do this is determined by the fadeTime parameter given when the animation is played, or the weight is adjusted.
@@ -1269,33 +1179,6 @@ interface AnimationTrack extends Instance {
 	 * 
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 * 
-	 * Tags: ReadOnly, NotReplicated
-	When weight is set in an `AnimationTrack` it does not change instantaneously but moves from WeightCurrent to [AnimationTrack.WeightTarget](https://developer.roblox.com/api-reference/property/AnimationTrack/WeightTarget). The time it takes to do this is determined by the fadeTime parameter given when the animation is played, or the weight is adjusted.
-	 * 
-	 * WeightCurrent can be checked against [AnimationTrack.WeightTarget](https://developer.roblox.com/api-reference/property/AnimationTrack/WeightTarget) to see if the desired weight has been reached. Note that these values should not be checked for equality with the == operator, as both of these values are floats. To see if WeightCurrent has reached the target weight, it is recommended to see if the distance between those values is sufficiently small (see code sample below).
-	 * 
-	 * The animation weighting system is used to determine how `AnimationTrack`s playing at the same priority are blended together. The default weight is one, and no movement will be visible on an `AnimationTrack` with a weight of zero. The pose that is shown at any point in time is determined by the weighted average of all the `Pose`s and the WeightCurrent of each `AnimationTrack`. See below for an example of animation blending in practice.
-	 * 
-	 * ![Animation Weight Blending][1]
-	 * 
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
-	 * 
-	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
-	 * 	
-	 * When weight is set in an `AnimationTrack` it does not change instantaneously but moves from WeightCurrent to [AnimationTrack.WeightTarget](https://developer.roblox.com/api-reference/property/AnimationTrack/WeightTarget). The time it takes to do this is determined by the fadeTime parameter given when the animation is played, or the weight is adjusted.
-	 * 
-	 * WeightCurrent can be checked against [AnimationTrack.WeightTarget](https://developer.roblox.com/api-reference/property/AnimationTrack/WeightTarget) to see if the desired weight has been reached. Note that these values should not be checked for equality with the == operator, as both of these values are floats. To see if WeightCurrent has reached the target weight, it is recommended to see if the distance between those values is sufficiently small (see code sample below).
-	 * 
-	 * The animation weighting system is used to determine how `AnimationTrack`s playing at the same priority are blended together. The default weight is one, and no movement will be visible on an `AnimationTrack` with a weight of zero. The pose that is shown at any point in time is determined by the weighted average of all the `Pose`s and the WeightCurrent of each `AnimationTrack`. See below for an example of animation blending in practice.
-	 * 
-	 * ![Animation Weight Blending][1]
-	 * 
-	 * [1]: https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png
-	 * 
-	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/api-reference/property/AnimationTrack/Priority) is more suitable.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly WeightTarget: number;
@@ -1356,7 +1239,7 @@ interface AnimationTrack extends Instance {
 	 * @param name The name of the `KeyFrameMarker` the signal is being created for
 	 * @returns The signal created and fired when the animation reaches the created `KeyFrameMarker`
 	 */
-	GetMarkerReachedSignal(this: AnimationTrack, name: string): RBXScriptSignal;
+	GetMarkerReachedSignal(this: AnimationTrack, name: string): RBXScriptSignal<(param?: string) => void>;
 	/** Returns the time position of the first `Keyframe` of the given name in an `AnimationTrack`. If multiple `Keyframe`s share the same name, it will return the earliest one in the animation.
 	 * 
 	 * This function will return an error if it is uses with an invalid keyframe name (one that does not exist for example) or if the underlying `Animation` has not yet loaded. To address this make sure only correct keyframe names are used and the animation has loaded before calling this function.
@@ -2561,7 +2444,7 @@ interface BindableEvent extends Instance {
 	/** Calling this method will fire the "Event" event. This function does not yield, even no script has connected to the "Event" event and even if a connected function yields. There are limitations on the values that can be sent as arguments; see the code samples */
 	Fire(this: BindableEvent, ...arguments: Array<unknown>): void;
 	/** This event is fired when any script calls the Fire method of the BindableEvent. */
-	readonly Event: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
+	readonly Event: RBXScriptSignal<(...arguments: Array<any>) => void>;
 }
 
 /** A BindableFunction is a Roblox object that allows you to give access to functions to external scripts. Functions put in BindableFunctions will not be replicated, therefore making it impossible to use these objects to pass functions between scripts. Functions are invoked through [BindableFunction.Invoke](https://developer.roblox.com/api-reference/function/BindableFunction/Invoke), which calls [BindableFunction.OnInvoke](https://developer.roblox.com/api-reference/callback/BindableFunction/OnInvoke). */
@@ -15182,7 +15065,7 @@ interface RemoteEvent extends Instance {
 	 * 
 	 * [1]: https://developer.roblox.com/articles/Remote-Functions-and-Events
 	 */
-	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
+	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<any>) => void>;
 	/** Fires listening functions in `Script` when [RemoteEvent.FireServer](https://developer.roblox.com/api-reference/function/RemoteEvent/FireServer) is called from a `LocalScript`.
 	 * 
 	 * This is used to retrieve remote events fired by the client and intended for the server. This event is in place to provide a method for communicating between the client and server, which is well documented in [this][1] article. This event retrieves remote events fired by the client to the server.
