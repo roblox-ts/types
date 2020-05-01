@@ -15084,7 +15084,7 @@ interface RemoteEvent<T extends (...args: Array<any>) => void = (...args: Array<
  * 
  * If the result is **not** needed, we recommend that you use a `RemoteEvent` instead, since its call is asynchronous and doesn't need to wait for a response to continue execution. See `Remote Functions and Events` for more info.
  */
-interface RemoteFunction extends Instance {
+interface RemoteFunction<T extends (...args: Array<any>) => void = (...args: Array<any>) => void> extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RemoteFunction";
 	/** Calls the method bound to the RemoteFunction by [RemoteFunction.OnClientInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnClientInvoke) for the given `Player`. Use from a `Script`.
@@ -15112,7 +15112,7 @@ interface RemoteFunction extends Instance {
 	 * @param arguments The arguments passed to the `RemoteEvent/OnClientInvoke` method.
 	 * @returns Values returned by `RemoteFunction/OnClientInvoke`.
 	 */
-	InvokeClient(this: RemoteFunction, player: Player, ...args: Array<any>): unknown;
+	InvokeClient(this: RemoteFunction, player: Player, ...args: Parameters<T>): unknown;
 	/** Clients invoking the server is often used because the server either has access to information the client does not, or the client is requesting a game action that only the server can perform. When invoked, this calls the method bound to the RemoteFunction by [RemoteFunction.OnServerInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnServerInvoke). Use from a `LocalScript`.
 	 * 
 	 * If the result is not needed then it is recommended to use a [RemoteEvent.FireServer](https://developer.roblox.com/api-reference/function/RemoteEvent/FireServer) instead, as its call is asynchronous and doesn't need to wait for a response to continue execution.
@@ -15129,14 +15129,14 @@ interface RemoteFunction extends Instance {
 	 * @param arguments The arguments passed to the `RemoteEvent/OnServerInvoke` method.
 	 * @returns Values returned by `RemoteFunction/OnServerInvoke`.
 	 */
-	InvokeServer<R>(this: RemoteFunction, ...args: Array<unknown>): R;
+	InvokeServer(this: RemoteFunction, ...args: Parameters<T>): ReturnType<T>;
 	/** The OnClientInvoke event fires the bound functions in `LocalScript`s when [RemoteFunction.InvokeClient](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeClient) is called by the server from a `Script`. When the bound function returns, the returned values are sent back to the server.
 	 * 
 	 * This is used to listen to remote functions invoked by the server and intended for the client. This callback is in place to provide a method for communicating between the server and client.
 	 * 
 	 * To fire from the client to the server, you should use [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer) and [RemoteFunction.OnServerInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnServerInvoke).
 	 */
-	OnClientInvoke: (...args: Array<any>) => void;
+	OnClientInvoke: T;
 	/** The OnServerInvoke event fires the bound functions in `Script`s when [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer) is called by the server from a `LocalScript`. When the bound function returns, the returned values are sent back to the client.
 	 * 
 	 * This is used to retrieve remote events fired by the client and intended for the server. This event is in place to provide a method for communicating between the client and server, which is well documented in [this][1] article.
