@@ -51,7 +51,7 @@ type InstanceProperties<T extends Instance> = {
 type WritableInstanceProperties<T extends Instance> = {
 	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed" | "BreakJoints" | "MakeJoints"
 		? never
-		: T[K] extends RBXScriptSignal | (Callback)
+		: T[K] extends RBXScriptSignal | Callback
 		? never
 		: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends <F>() => F extends { -readonly [Q in K]: T[K] }
 				? 1
