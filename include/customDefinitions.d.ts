@@ -575,15 +575,16 @@ interface PolicyService extends Instance {
 
 interface RemoteEvent<T extends (...args: Array<any>) => void = (...args: Array<any>) => void> extends Instance {
 	readonly OnClientEvent: RBXScriptSignal<T>;
-	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether a given value is a number and you might also want to make sure it isn't a `NaN` value. In code, this looks like:
-	 * @example
+	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
+	 * ```ts
 	 * (new Instance("RemoteEvent") as RemoteEvent<(num: number) => void>).OnServerEvent.Connect((plr, num) => {
-	 * 	if (typeIs(num, "number") && num === num) {
-	 * 		print(`Yay! Valid number: ${num}`);
-	 * 	} else {
-	 * 		print(`Bad argument received from ${plr.Name}! Exploit or bug?`);
-	 * 	}
+	 *     if (typeIs(num, "number") && num === num) {
+	 *         print(`Yay! Valid number: ${num}`);
+	 *     } else {
+	 *         print(`Bad argument received from ${plr.Name}! Exploit or bug?`);
+	 *     }
 	 * });
+	 * ```
 	 */
 	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...args: Array<unknown>) => void>;
 	FireAllClients(this: RemoteEvent, ...args: Parameters<T>): void;
@@ -593,15 +594,16 @@ interface RemoteEvent<T extends (...args: Array<any>) => void = (...args: Array<
 
 interface RemoteFunction<T extends (...args: Array<any>) => void = (...args: Array<any>) => void> extends Instance {
 	OnClientInvoke: T;
-	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether a given value is a number and you might also want to make sure it isn't a `NaN` value. In code, this looks like:
-	 * @example
+	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
+	 * ```ts
 	 * (new Instance("RemoteFunction") as RemoteFunction<(num: number) => void>).OnServerInvoke = (plr, num) => {
-	 * 	if (typeIs(num, "number") && num === num) {
-	 * 		print(`Yay! Valid number: ${num}`);
-	 * 	} else {
-	 * 		print(`Bad argument received from ${plr.Name}! Exploit or bug?`);
-	 * 	}
+	 *     if (typeIs(num, "number") && num === num) {
+	 *         print(`Yay! Valid number: ${num}`);
+	 *     } else {
+	 *         print(`Bad argument received from ${plr.Name}! Exploit or bug?`);
+	 *     }
 	 * };
+	 * ```
 	 */
 	OnServerInvoke: (player: Player, ...args: Array<unknown>) => void;
 	InvokeClient(this: RemoteFunction, player: Player, ...args: Parameters<T>): unknown;
