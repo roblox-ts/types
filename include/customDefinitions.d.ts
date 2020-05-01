@@ -3,7 +3,7 @@ interface AnimationController extends Instance {
 	LoadAnimation(this: AnimationController, animation: Animation): AnimationTrack;
 }
 
-interface AnimationTrack {
+interface AnimationTrack extends Instance {
 	GetMarkerReachedSignal(this: AnimationTrack, name: string): RBXScriptSignal<(param?: string) => void>;
 }
 
@@ -77,14 +77,14 @@ interface BillboardGui extends LayerCollector {
 	PlayerToHideFrom: Player | undefined;
 }
 
-interface BindableEvent extends Instance {
-	readonly Event: RBXScriptSignal<(...arguments: Array<any>) => void>;
-	Fire(this: BindableEvent, ...arguments: Array<unknown>): void;
+interface BindableEvent<T extends Callback = Callback> extends Instance {
+	readonly Event: RBXScriptSignal<T>;
+	Fire(this: BindableEvent, ...args: Parameters<T>): void;
 }
 
-interface BindableFunction extends Instance {
-	OnInvoke: (...arguments: Array<unknown>) => any;
-	Invoke(this: BindableFunction, ...arguments: Array<unknown>): Array<unknown>;
+interface BindableFunction<T extends Callback = Callback> extends Instance {
+	OnInvoke: T;
+	Invoke(this: BindableFunction, ...args: Parameters<T>): ReturnType<T>;
 }
 
 interface Camera extends Instance {
@@ -573,19 +573,41 @@ interface PolicyService extends Instance {
 	GetPolicyInfoForPlayerAsync(this: PolicyService, player: Player): PolicyInfo;
 }
 
-interface RemoteEvent extends Instance {
-	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<any>) => void>;
-	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
-	FireAllClients(this: RemoteEvent, ...arguments: Array<unknown>): void;
-	FireClient(this: RemoteEvent, player: Player, ...arguments: Array<unknown>): void;
-	FireServer(this: RemoteEvent, ...arguments: Array<unknown>): void;
+interface RemoteEvent<T extends Callback = Callback> extends Instance {
+	readonly OnClientEvent: RBXScriptSignal<T>;
+	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
+	 * ```ts
+	 * (new Instance("RemoteEvent") as RemoteEvent<(num: number) => void>).OnServerEvent.Connect((plr, num) => {
+	 *     if (typeIs(num, "number") && num === num) {
+	 *         print(`Yay! Valid number: ${num}`);
+	 *     } else {
+	 *         print(`Bad argument received from ${plr.Name}! Exploit or bug?`);
+	 *     }
+	 * });
+	 * ```
+	 */
+	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...args: Array<unknown>) => void>;
+	FireAllClients(this: RemoteEvent, ...args: Parameters<T>): void;
+	FireClient(this: RemoteEvent, player: Player, ...args: Parameters<T>): void;
+	FireServer(this: RemoteEvent, ...args: Parameters<T>): void;
 }
 
-interface RemoteFunction extends Instance {
-	OnClientInvoke: (...arguments: Array<any>) => void;
-	OnServerInvoke: (player: Player, ...arguments: Array<unknown>) => void;
-	InvokeClient(this: RemoteFunction, player: Player, ...arguments: Array<any>): unknown;
-	InvokeServer<R>(this: RemoteFunction, ...arguments: Array<unknown>): R;
+interface RemoteFunction<T extends Callback = Callback> extends Instance {
+	OnClientInvoke: T;
+	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
+	 * ```ts
+	 * (new Instance("RemoteFunction") as RemoteFunction<(num: number) => void>).OnServerInvoke = (plr, num) => {
+	 *     if (typeIs(num, "number") && num === num) {
+	 *         print(`Yay! Valid number: ${num}`);
+	 *     } else {
+	 *         print(`Bad argument received from ${plr.Name}! Exploit or bug?`);
+	 *     }
+	 * };
+	 * ```
+	 */
+	OnServerInvoke: (player: Player, ...args: Array<unknown>) => void;
+	InvokeClient(this: RemoteFunction, player: Player, ...args: Parameters<T>): unknown;
+	InvokeServer(this: RemoteFunction, ...args: Parameters<T>): ReturnType<T>;
 }
 
 interface RunService extends Instance {

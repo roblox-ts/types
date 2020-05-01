@@ -42,7 +42,7 @@ type StrictInstances = {
 type InstanceProperties<T extends Instance> = {
 	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed" | "BreakJoints" | "MakeJoints"
 		? never
-		: T[K] extends RBXScriptSignal | ((...args: Array<any>) => void)
+		: T[K] extends RBXScriptSignal | Callback
 		? never
 		: K;
 }[keyof T];
@@ -51,7 +51,7 @@ type InstanceProperties<T extends Instance> = {
 type WritableInstanceProperties<T extends Instance> = {
 	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed" | "BreakJoints" | "MakeJoints"
 		? never
-		: T[K] extends RBXScriptSignal | ((...args: Array<any>) => void)
+		: T[K] extends RBXScriptSignal | Callback
 		? never
 		: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends <F>() => F extends { -readonly [Q in K]: T[K] }
 				? 1
@@ -583,7 +583,7 @@ interface RBXScriptConnection {
  * When a certain event happens, the Event is fired, calling any listeners that are connected to the Event.
  * An Event may also pass arguments to each listener, to provide extra information about the event that occurred.
  */
-interface RBXScriptSignal<T = ((...args: Array<any>) => void)> {
+interface RBXScriptSignal<T extends Callback = Callback> {
 	/**
 	 * Establishes a function to be called whenever the event is raised.
 	 * Returns a RBXScriptConnection object associated with the connection.
