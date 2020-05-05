@@ -2439,7 +2439,7 @@ interface Beam extends Instance {
 }
 
 /** **Note:** If a Table is passed as an argument to a BindableEvent it must be an array without missing entries or have string keys, not a mixture, or else the string keys will be lost. Allows events defined in one script to be subscribed to by another script. However, please note that BindableEvents do not allow for communication between the server and client. If you are looking for this functionality use `RemoteEvent`. */
-interface BindableEvent<T extends (...args: Array<any>) => void = (...args: Array<any>) => void> extends Instance {
+interface BindableEvent<T extends Callback = Callback> extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "BindableEvent";
 	/** Calling this method will fire the "Event" event. This function does not yield, even no script has connected to the "Event" event and even if a connected function yields. There are limitations on the values that can be sent as arguments; see the code samples */
@@ -2449,7 +2449,7 @@ interface BindableEvent<T extends (...args: Array<any>) => void = (...args: Arra
 }
 
 /** A BindableFunction is a Roblox object that allows you to give access to functions to external scripts. Functions put in BindableFunctions will not be replicated, therefore making it impossible to use these objects to pass functions between scripts. Functions are invoked through [BindableFunction.Invoke](https://developer.roblox.com/api-reference/function/BindableFunction/Invoke), which calls [BindableFunction.OnInvoke](https://developer.roblox.com/api-reference/callback/BindableFunction/OnInvoke). */
-interface BindableFunction<T extends (...args: Array<any>) => void = (...args: Array<any>) => void> extends Instance {
+interface BindableFunction<T extends Callback = Callback> extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "BindableFunction";
 	/** Invoke will call the OnInvoke callback and return any values that were returned by the callback (if any). If the OnInvoke callback is not set, this method will yield until one is set. If OnInvoke yields, this method will also yield. There are limitations on the values that can be sent as arguments; see the code samples. */
@@ -15003,7 +15003,7 @@ interface SunRaysEffect extends PostEffect {
  * 
  * If you need the result of the call, you should use a `RemoteFunction` instead. Otherwise a remote event is recommended since it will minimize network traffic/latency and won't yield the script to wait for a response. See [Remote Functions and Events](https://developer.roblox.com/search#stq=Remote%20Functions%20and%20Events) for more info.
  */
-interface RemoteEvent<T extends (...args: Array<any>) => void = (...args: Array<any>) => void> extends Instance {
+interface RemoteEvent<T extends Callback = Callback> extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RemoteEvent";
 	/** The FireAllClients function fires the [RemoteEvent.OnClientEvent](https://developer.roblox.com/api-reference/event/RemoteEvent/OnClientEvent) event for each client.
@@ -15084,7 +15084,7 @@ interface RemoteEvent<T extends (...args: Array<any>) => void = (...args: Array<
  * 
  * If the result is **not** needed, we recommend that you use a `RemoteEvent` instead, since its call is asynchronous and doesn't need to wait for a response to continue execution. See `Remote Functions and Events` for more info.
  */
-interface RemoteFunction<T extends (...args: Array<any>) => void = (...args: Array<any>) => void> extends Instance {
+interface RemoteFunction<T extends Callback = Callback> extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "RemoteFunction";
 	/** Calls the method bound to the RemoteFunction by [RemoteFunction.OnClientInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnClientInvoke) for the given `Player`. Use from a `Script`.
