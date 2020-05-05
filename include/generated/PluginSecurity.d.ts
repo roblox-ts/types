@@ -259,8 +259,6 @@ interface DebugSettings extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly InstanceCount: number;
-	/** Toggles whether or not profiling of the Fmod library (which is responsible for sounds) is enabled. */
-	IsFmodProfilingEnabled: boolean;
 	/** Whether or not a stacktrace is displayed in the output for an error. */
 	IsScriptStackTracingEnabled: boolean;
 	/** Returns the number of internal DataModel jobs actively being processed.

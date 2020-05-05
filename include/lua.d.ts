@@ -141,8 +141,8 @@ interface LuaMetatable<T> {
 	__eq?: (self: T, other: T) => boolean;
 	__lt?: (self: T, other: T) => boolean;
 	__le?: (self: T, other: T) => boolean;
-	__call?: (self: T, ...arguments: Array<any>) => void;
-	__concat?: (self: T, ...arguments: Array<any>) => string;
+	__call?: (self: T, ...args: Array<any>) => void;
+	__concat?: (self: T, ...args: Array<any>) => string;
 	__tostring?: (self: T) => string;
 	__len?: (self: T) => number;
 	__mode?: "k" | "v" | "kv";
