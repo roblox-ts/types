@@ -84,7 +84,9 @@ type PartialProperties<T extends Instance> = PartialInstance<T>;
 
 /** Returns a given objects parameters in a tuple. Defaults to `[]` */
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : [];
-type Callback = (...args: Array<any>) => void;
+
+/** A function definition which any function is assignable to. Note: we use `...args: any` so `...args: infer U` is assignable to it. */
+type Callback = (...args: any) => void;
 
 declare const enum LocationType {
 	MobileWebsite = 0,
