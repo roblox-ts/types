@@ -31,9 +31,10 @@ interface RegExp {}
  * More generally, `(a: A, b: B, c: C) => R`, where `A`, `B`, and `C` are different function argument types and `R` is
  * the return type.
  *
- * You can use `void` as a return type for functions that do not return anything: `() => void`
+ * You can use `void` as a return type for functions that do not return anything (or for when the return value doesn't matter): `() => void`
  */
 interface Function {
+	/** Not useable in roblox-ts code. We need to have this defined, however, so that function calls work properly within the TS type system. */
 	prototype: never;
 }
 /** **DO NOT USE!** This type only exists because TypeScript requires it! */
@@ -50,6 +51,8 @@ interface ArrayLike<T> {
 	 * Gets the length of the array. This is one higher than the highest index defined in an array.
 	 */
 	size(): number;
+	/** Not useable in roblox-ts code. It is, however, necessary for tuple types, because `length` is written to by the type system in the case of fixed-length arrays (tuples). */
+	length: never;
 	readonly [n: number]: T;
 }
 
