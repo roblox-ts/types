@@ -2634,6 +2634,7 @@ interface Studio extends Instance {
 	["Auto Closing Quotes"]: boolean;
 	/** If set to true, the script editor will automatically indent when a new stack is created in the script. */
 	["Auto Indent"]: boolean;
+	["Auto Indent Rule"]: Enum.AutoIndentRule;
 	["Auto-Recovery Enabled"]: boolean;
 	["Auto-Recovery Interval (Minutes)"]: number;
 	["Auto-Recovery Path"]: QDir;
@@ -2849,6 +2850,10 @@ interface StudioService extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly GridSize: number;
+	/** [NO DOCUMENTATION] *
+	 * Tags: NotReplicated
+	 */
+	readonly HoverInstance: Instance | undefined;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
