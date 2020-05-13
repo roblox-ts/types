@@ -7125,6 +7125,10 @@ interface VideoFrame extends GuiObject {
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
+	readonly Resolution: Vector2;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
 	readonly TimeLength: number;
 	/** [NO DOCUMENTATION] *
 	 * Tags: NotReplicated

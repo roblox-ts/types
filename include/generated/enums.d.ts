@@ -685,6 +685,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AssetType>
 	}
 	export type AssetType = AssetType.Image | AssetType.TeeShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation;
+	export namespace AutoIndentRule {
+		export interface Off {
+			Name: "Off";
+			Value: 0;
+			EnumType: EnumType<AutoIndentRule>;
+		}
+
+		export const Off: Off;
+
+		export interface Absolute {
+			Name: "Absolute";
+			Value: 1;
+			EnumType: EnumType<AutoIndentRule>;
+		}
+
+		export const Absolute: Absolute;
+
+		export interface Relative {
+			Name: "Relative";
+			Value: 2;
+			EnumType: EnumType<AutoIndentRule>;
+		}
+
+		export const Relative: Relative;
+
+		export function GetEnumItems(this: defined): Array<AutoIndentRule>
+	}
+	export type AutoIndentRule = AutoIndentRule.Off | AutoIndentRule.Absolute | AutoIndentRule.Relative;
 	export namespace AvatarContextMenuOption {
 		export interface Friend {
 			Name: "Friend";
