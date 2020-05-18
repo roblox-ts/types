@@ -1589,6 +1589,8 @@ interface SettableCores {
 	CoreGuiChatConnections:
 		| { [name: string]: BindableEvent | BindableFunction }
 		| Map<string, BindableEvent | BindableFunction>;
+	VREnableControllerModels: boolean;
+	VRLaserPointerMode: "Disabled" | "Pointer" | "Navigation" | "Hidden";
 }
 
 // type
@@ -1629,8 +1631,8 @@ interface CheckableTypes extends CheckablePrimitives {
 	RBXScriptSignal: RBXScriptSignal;
 	Random: Random;
 	Ray: Ray;
-	RaycastParams: RaycastParams,
-	RaycastResult: RaycastResult,
+	RaycastParams: RaycastParams;
+	RaycastResult: RaycastResult;
 	Rect: Rect;
 	Region3: Region3;
 	Region3int16: Region3int16;
