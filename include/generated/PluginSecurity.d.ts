@@ -2676,6 +2676,7 @@ interface Studio extends Instance {
 	["Find Selection Background Color"]: Color3;
 	/** Specifies the font used in the script editor. */
 	Font: QFont;
+	["Format On Type"]: boolean;
 	/** Specifies how frequently the hover animation flashes when the mouse is hovering over a selectable object in the `Workspace`. */
 	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
 	/** Specifies the color that the hover selection box uses. */
@@ -2730,6 +2731,7 @@ interface Studio extends Instance {
 	["Render Throttle Percentage"]: number;
 	/** When set to true, Roblox Studio shortcuts will take priority over inputs being captured in the game window. */
 	["Respect Studio shortcuts when game has focus"]: boolean;
+	Rulers: string;
 	RuntimeUndoBehavior: Enum.RuntimeUndoBehavior;
 	/** The time (in seconds) a script can wait to be resumed before timing out. */
 	ScriptTimeoutLength: number;
