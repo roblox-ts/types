@@ -31,12 +31,17 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "noreply@github.com"
 
-      - name: Generate Files
+      - name: Compile
         run: |
           npm install -g typescript
           tsc
+
+      - name: Generate Files
+        run: |
           node out/index.js
 
+      - name: Push Generated Files
+        run: |
           git add -A
           if ! git diff-index --quiet HEAD --; then
             echo "Generated files changed!"
@@ -44,7 +49,7 @@ jobs:
             git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:master
           fi
 
-      - name: Copy files to deploy branch
+      - name: Copy Files to Deploy Branch and Publish
         run: |
           cd ..
 
