@@ -58,39 +58,27 @@ interface ObjectConstructor {
 	 * Copy the values of all of the enumerable own properties from one or more source objects to a target object.
 	 * Returns the target object.
 	 */
-	assign<A extends object, S extends Array<unknown>>(
+	assign<A, B>(this: ObjectConstructor, target: A, source: B): A & B;
+	assign<A, B, C>(this: ObjectConstructor, target: A, source1: B, source2: C): A & B & C;
+	assign<A, B, C, D>(this: ObjectConstructor, target: A, source1: B, source2: C, source3: D): A & B & C & D;
+	assign<A, B, C, D, E>(
 		this: ObjectConstructor,
 		target: A,
-		...sources: A extends CheckableTypes[Exclude<keyof CheckableTypes, keyof CheckablePrimitives | "Instance"> | "function"] // invalidate calls when target is a Vector2/Vector3/function/etc
-			? never
-			: A extends Instance
-			? Array<PartialInstance<A> | undefined | boolean | string | number | Callback | thread>
-			: S
-	): A extends Instance
-		? A
-		: A &
-				UnionToIntersection<
-					{
-						[K in Exclude<keyof S, keyof Array<unknown> | "length">]: Exclude<
-							S[K],
-							CheckableTypes[Exclude<keyof CheckableTypes, keyof CheckablePrimitives> | "function" | "thread"] // Exclude non-enumerable Roblox datatype objects from being unioned
-						> extends infer M
-							? ((M extends object
-								? M
-								: undefined) extends undefined
-								? never
-								: M extends object
-								? M
-								: undefined) extends infer C
-								? undefined extends C
-									? Partial<Exclude<C, undefined>>
-									: C
-								: never
-							: never;
-					} extends infer V
-						? V[keyof V]
-						: never
-				>;
+		source1: B,
+		source2: C,
+		source3: D,
+		source4: E,
+	): A & B & C & D & E;
+	assign<A, B, C, D, E, F>(
+		this: ObjectConstructor,
+		target: A,
+		source1: B,
+		source2: C,
+		source3: D,
+		source4: E,
+		source5: F,
+	): A & B & C & D & E & F;
+	assign(this: ObjectConstructor, target: object, ...sources: Array<any>): any;
 
 	/**
 	 * Returns the names of the enumerable properties and methods of an object.
@@ -1165,4 +1153,8 @@ type ThisParameterType<T> = T extends (this: infer U, ...args: any[]) => any ? U
 /**
  * Removes the 'this' parameter from a function type.
  */
-type OmitThisParameter<T> = unknown extends ThisParameterType<T> ? T : T extends (...args: infer A) => infer R ? (...args: A) => R : T;
+type OmitThisParameter<T> = unknown extends ThisParameterType<T>
+	? T
+	: T extends (...args: infer A) => infer R
+	? (...args: A) => R
+	: T;
