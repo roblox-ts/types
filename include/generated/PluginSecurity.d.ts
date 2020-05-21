@@ -2915,6 +2915,8 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
 	/** [NO DOCUMENTATION] */
+	ShowPlaceVersionHistoryDialog(this: StudioService): void;
+	/** [NO DOCUMENTATION] */
 	ShowPublishToRoblox(this: StudioService): void;
 	/** [NO DOCUMENTATION] */
 	UninstallPlugin(this: StudioService, assetId: number): void;
