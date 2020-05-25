@@ -85,7 +85,7 @@ type PartialProperties<T extends Instance> = PartialInstance<T>;
 /** Returns a given objects parameters in a tuple. Defaults to `[]` */
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : [];
 
-/** A function definition which is assignable to any function (and any function is assignable to). */
+/** A function type which is assignable to any other function type (and any function is assignable to). */
 type Callback = (...args: any) => any;
 // Note: we use `...args: any` so `...args: infer U` is assignable to it (as opposed to `...args: Array<any>`)
 
