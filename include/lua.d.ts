@@ -297,8 +297,8 @@ declare namespace math {
 	/** Returns m*2^e (e should be an integer). */
 	function ldexp(m: number, e: number): number;
 
-	/** Returns the natural logarithm of x. */
-	function log(n: number): number;
+	/** Returns the natural logarithm of x. If base is provided, returns the logarithm of x with respect to base, which is equivalent to log(x) / log(base) */
+	function log(x: number, base?: number): number;
 
 	/** Returns the base-10 logarithm of x. */
 	function log10(n: number): number;
