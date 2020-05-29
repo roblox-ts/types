@@ -100,6 +100,12 @@ interface ABTestService extends Instance {
 	/** [NO DOCUMENTATION] */
 	ClearUserVariations(this: ABTestService): void;
 	/** [NO DOCUMENTATION] */
+	GetBrowserTrackerABTestLoadingStatus(this: ABTestService): Enum.ABTestLoadingStatus;
+	/** [NO DOCUMENTATION] */
+	GetPendingOrInitializedUserId(this: ABTestService): number;
+	/** [NO DOCUMENTATION] */
+	GetUserABTestLoadingStatus(this: ABTestService): Enum.ABTestLoadingStatus;
+	/** [NO DOCUMENTATION] */
 	GetVariant(this: ABTestService, name: string): string;
 	/** [NO DOCUMENTATION] */
 	InitializeForUserId(this: ABTestService, userId: number): void;
@@ -111,6 +117,10 @@ interface ABTestService extends Instance {
 	 * Tags: Yields
 	 */
 	WaitUntilUserABTestsInitialized(this: ABTestService): void;
+	/** [NO DOCUMENTATION] */
+	readonly OnBrowserTrackerABTestLoadingStatusChanged: RBXScriptSignal<(status: Enum.ABTestLoadingStatus) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly OnUserABTestLoadingStatusChanged: RBXScriptSignal<(status: Enum.ABTestLoadingStatus, userId: number) => void>;
 }
 
 interface Animator extends Instance {
@@ -1767,6 +1777,13 @@ interface PluginDragEvent extends Instance {
 interface PluginGuiService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PluginGuiService";
+}
+
+interface PluginManagerInterface extends Instance {
+	/** [NO DOCUMENTATION] */
+	ExportPlace(this: PluginManagerInterface, filePath?: string): void;
+	/** [NO DOCUMENTATION] */
+	ExportSelection(this: PluginManagerInterface, filePath?: string): void;
 }
 
 /** A context menu that can be shown in Studio. It displays a list of PluginActions and supports submenus.

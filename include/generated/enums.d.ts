@@ -21,6 +21,58 @@ declare namespace Enum {
 	type EnumType<T extends { Name: string }> = { GetEnumItems(this: defined): Array<T> } & { [K in T["Name"]]: Extract<T, { Name: K }> };
 	export function GetEnums(this: Enums): Array<Enum>;
 
+	export namespace ABTestLoadingStatus {
+		export interface None {
+			Name: "None";
+			Value: 0;
+			EnumType: EnumType<ABTestLoadingStatus>;
+		}
+
+		export const None: None;
+
+		export interface Pending {
+			Name: "Pending";
+			Value: 1;
+			EnumType: EnumType<ABTestLoadingStatus>;
+		}
+
+		export const Pending: Pending;
+
+		export interface Initialized {
+			Name: "Initialized";
+			Value: 2;
+			EnumType: EnumType<ABTestLoadingStatus>;
+		}
+
+		export const Initialized: Initialized;
+
+		export interface Error {
+			Name: "Error";
+			Value: 3;
+			EnumType: EnumType<ABTestLoadingStatus>;
+		}
+
+		export const Error: Error;
+
+		export interface TimedOut {
+			Name: "TimedOut";
+			Value: 4;
+			EnumType: EnumType<ABTestLoadingStatus>;
+		}
+
+		export const TimedOut: TimedOut;
+
+		export interface ShutOff {
+			Name: "ShutOff";
+			Value: 5;
+			EnumType: EnumType<ABTestLoadingStatus>;
+		}
+
+		export const ShutOff: ShutOff;
+
+		export function GetEnumItems(this: defined): Array<ABTestLoadingStatus>
+	}
+	export type ABTestLoadingStatus = ABTestLoadingStatus.None | ABTestLoadingStatus.Pending | ABTestLoadingStatus.Initialized | ABTestLoadingStatus.Error | ABTestLoadingStatus.TimedOut | ABTestLoadingStatus.ShutOff;
 	export namespace ActionType {
 		export interface Nothing {
 			Name: "Nothing";
