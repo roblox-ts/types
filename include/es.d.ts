@@ -512,7 +512,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	reduceRight<U>(
 		this: ReadonlyArray<defined>,
 		callbackfn: (accumulator: U, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => U,
-		initialValue: T,
+		initialValue: U,
 	): U;
 
 	/**
