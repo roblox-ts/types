@@ -480,7 +480,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 */
 	reduce(
 		this: ReadonlyArray<defined>,
-		callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
+		callbackfn: (accumulator: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
 	): T;
 
 	/**
@@ -490,7 +490,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 */
 	reduce<U>(
 		this: ReadonlyArray<defined>,
-		callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => U,
+		callbackfn: (accumulator: U, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => U,
 		initialValue: U,
 	): U;
 
@@ -501,7 +501,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 */
 	reduceRight(
 		this: ReadonlyArray<defined>,
-		callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
+		callbackfn: (accumulator: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
 	): T;
 
 	/**
@@ -511,7 +511,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 */
 	reduceRight<U>(
 		this: ReadonlyArray<defined>,
-		callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => U,
+		callbackfn: (accumulator: U, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => U,
 		initialValue: U,
 	): U;
 
