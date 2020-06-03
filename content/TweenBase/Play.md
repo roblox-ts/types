@@ -1,0 +1,3 @@
+The Play function starts the playback of its `Tween`. Note that if a tween has already begun calling Play will have no effect unless the tween has finished or has been stopped (either by [TweenBase.Cancel](https://developer.roblox.com/api-reference/function/TweenBase/Cancel) or [TweenBase.Pause](https://developer.roblox.com/api-reference/function/TweenBase/Pause)).
+
+Multiple tweens can be played on the same object at the same time, but they must not be animating the same property. If two tweens attempt to modify the same property, the initial tween will be cancelled and overwritten by the most recent tween (see examples).

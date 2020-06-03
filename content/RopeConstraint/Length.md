@@ -1,0 +1,1 @@
+The maximum distance two `Attachment` can be when connected with a `RopeConstraint`. Measured in studs.

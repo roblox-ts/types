@@ -1,0 +1,1 @@
+Creates a new collision group with the given name, and returns the id of the created group.

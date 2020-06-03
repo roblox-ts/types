@@ -1,0 +1,1 @@
+Fires when a user moves their mouse over the adornment.

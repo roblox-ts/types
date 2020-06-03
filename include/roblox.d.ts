@@ -11,7 +11,7 @@
  *
  * @example
  * function f(p: Part) {
- * 	(p as Part & ChangedSignal).Changed.Connect(() => {})
+ * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
  * }
  */
 type ChangedSignal = {
@@ -26,44 +26,68 @@ type ChangedSignal = {
 	 *
 	 * For "-Value" objects, this event behaves differently: it only fires when the `Value` property changes. See individual pages for `IntValue`, `StringValue`, etc for more information. To detect other changes in these objects, you must use `GetPropertyChangedSignal` instead.
 	 */
-	readonly Changed: RBXScriptSignal<(value: string) => void>;
+	readonly Changed: RBXScriptSignal<(changedPropertyName: string) => void>;
 };
 
+/** A mapping between Instance ClassNames and corresponding types with `ClassName` narrowed, if necessary.
+ * For example, A `Part` type could mean a `SpawnLocation`, a `Seat`, or an object whose ClassName is "Part".
+ * Thus, `StrictInstances["Part"]` gives `Part & { ClassName: "Part" }` for when you want a `Part` whose ClassName is "Part".
+ */
 type StrictInstances = {
-	[Key in keyof Instances]: Instances[Key]["ClassName"] extends Key
-		? Instances[Key]
-		: Instances[Key] & { ClassName: Key }
+	[K in Exclude<keyof Instances, keyof AbstractInstances>]: Instances[K] &
+		(Instances[K]["ClassName"] extends K ? unknown : { ClassName: K });
 };
-/** @deprecated Use `StrictInstances` instead */
-type StrictInstanceByName<Q extends keyof Instances> = StrictInstances[Q];
 
-/** Given an Instance `T`, returns a unioned type of all properties, except "ClassName". */
-type GetProperties<T extends Instance> = {
-	[Key in keyof T]-?: Key extends "GetPropertyChangedSignal" | "ClassName"
+/** Given an Instance `T`, returns a unioned type of all property names, except "ClassName". */
+type InstanceProperties<T extends Instance> = {
+	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed" | "BreakJoints" | "MakeJoints"
 		? never
-		: T[Key] extends RBXScriptSignal
+		: T[K] extends RBXScriptSignal | Callback
 		? never
-		: (() => any) extends T[Key]
-		? never
-		: Key
+		: K;
 }[keyof T];
 
-/** Given an Instance `T`, returns a unioned type of all non-readonly properties. */
-type GetWritableProperties<T extends Instance> = Extract<
-	GetProperties<T>,
-	{
-		[K in keyof T]: K extends "GetPropertyChangedSignal"
-			? never
-			: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends (<F>() => F extends { -readonly [Q in K]: T[K] }
-					? 1
-					: 2)
-			? K
-			: never
-	}[keyof T]
->;
+/** Given an Instance `T`, returns a unioned type of all non-readonly property names. */
+type WritableInstanceProperties<T extends Instance> = {
+	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed" | "BreakJoints" | "MakeJoints"
+		? never
+		: T[K] extends RBXScriptSignal | Callback
+		? never
+		: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends <F>() => F extends { -readonly [Q in K]: T[K] }
+				? 1
+				: 2
+		? K
+		: never;
+}[keyof T];
 
+/** Given an Instance `T`, returns an object which can hold the writable properties of T. Good to use with `Object.assign`.
+ * @example
+ * const props: PartialInstance<Part> = {
+ * 	Size: new Vector3(),
+ * 	Anchored: false,
+ * }
+ *
+ * Object.assign(new Instance("Part"), props);
+ */
+type PartialInstance<T extends Instance> = Partial<Pick<T, WritableInstanceProperties<T>>>;
+
+// temporary backwards compatibility:
+
+/** @rbxts deprecated */
+type GetProperties<T extends Instance> = InstanceProperties<T>;
+
+/** @rbxts deprecated */
+type GetWritableProperties<T extends Instance> = WritableInstanceProperties<T>;
+
+/** @rbxts deprecated */
+type PartialProperties<T extends Instance> = PartialInstance<T>;
+
+/** Returns a given objects parameters in a tuple. Defaults to `[]` */
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : [];
-type Callback = (...args: Array<any>) => void;
+
+/** A function type which is assignable to any other function type (and any function is assignable to). */
+type Callback = (...args: any) => any;
+// Note: we use `...args: any` so `...args: infer U` is assignable to it (as opposed to `...args: Array<any>`)
 
 declare const enum LocationType {
 	MobileWebsite = 0,
@@ -80,7 +104,7 @@ type PresentFields<T, K extends keyof T> = { [P in keyof T]: P extends K ? T[P] 
 
 /** When a member (M) of T is a particular Value (E), Pick<K> */
 type FieldsPresentWhen<T, M extends keyof T, E extends T[M], K extends keyof T> = {
-	[P in keyof T]: P extends M ? E : P extends K ? T[P] : undefined
+	[P in keyof T]: P extends M ? E : P extends K ? T[P] : undefined;
 };
 
 /** @rbxts array */
@@ -143,7 +167,7 @@ interface HttpHeaders {
 
 interface RequestAsyncRequest {
 	Url: string;
-	Method?: "GET" | "HEAD" | "POST" | "PUT" | "DELETE";
+	Method?: "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "PATCH";
 	Body?: string;
 	Headers?: HttpHeaders;
 }
@@ -191,7 +215,7 @@ interface LocalizationEntry {
 	Source: string;
 	Context: string;
 	Example: string;
-	Values: { [index: string]: string };
+	Values: Map<string, string>;
 }
 
 interface LogInfo {
@@ -282,25 +306,26 @@ interface BundleInfo {
 	Name: string;
 }
 
-type TeleportData = string | number | boolean | Array<any> | Map<any, any>;
+type TeleportData = string | number | boolean | Array<unknown> | Map<unknown, unknown>;
 
-type PlayerJoinInfo =
+type PlayerJoinInfo = {
+	/** Data passed along with the players. As this is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency). */
+	TeleportData?: TeleportData;
+} & (
 	| {
-			/** The DataModel.PlaceId of the place the Player was teleported from. Only present if the player was teleported to the current place. */
+			SourceGameId: undefined;
 			SourcePlaceId: undefined;
-			/** An array containing the UserIds teleported alongside the Player. Only present if the player was teleported in using TeleportService:TeleportPartyAsync. */
 			Members: undefined;
-			/** Data passed along with the players. As this is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency). */
-			teleportData?: TeleportData;
 	  }
 	| {
+			/** The DataModel.GameId of the game the Player was teleported from. Only present if the player was teleported to the current place. */
+			SourceGameId: number;
 			/** The DataModel.PlaceId of the place the Player was teleported from. Only present if the player was teleported to the current place. */
 			SourcePlaceId: number;
 			/** An array containing the UserIds teleported alongside the Player. Only present if the player was teleported in using TeleportService:TeleportPartyAsync. */
 			Members: Array<number>;
-			/** Data passed along with the players. As this is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency). */
-			teleportData?: TeleportData;
-	  };
+	  }
+);
 
 interface BoundActionInfo {
 	inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType | string>;
@@ -385,6 +410,8 @@ interface AgentParameters {
 	 * Empty space smaller than this value, like the space under stairs, will be marked as non-traversable.
 	 */
 	AgentHeight?: number;
+	/** Sets whether off-mesh links for jumping are allowed. */
+	AgentCanJump?: boolean;
 }
 
 interface CollisionGroupInfo {
@@ -529,6 +556,15 @@ interface SendNotificationConfig {
 	Button2?: string;
 }
 
+interface PolicyInfo {
+	/** Whether the player can interact with paid random item generators. */
+	ArePaidRandomItemsRestricted: boolean;
+	/** See [here](https://devforum.roblox.com/t/about-our-upcoming-global-compliance-system/461447) for details. */
+	IsSubjectToChinaPolicies: boolean;
+	/** Which external link references are allowed in a country/region. */
+	AllowedExternalLinkReferences: Array<string>;
+}
+
 /**
  * RBXScriptConnection, also known as a Connection,
  * is a special object returned by the Connect method of an Event (RBXScriptSignal).
@@ -541,7 +577,7 @@ interface RBXScriptConnection {
 	 */
 	Connected: boolean;
 	/** Disconnects the connection from the event. */
-	Disconnect(): void;
+	Disconnect(this: RBXScriptConnection): void;
 }
 
 /**
@@ -550,20 +586,18 @@ interface RBXScriptConnection {
  * When a certain event happens, the Event is fired, calling any listeners that are connected to the Event.
  * An Event may also pass arguments to each listener, to provide extra information about the event that occurred.
  */
-interface RBXScriptSignal<T = Function, P = false> {
+interface RBXScriptSignal<T extends Callback = Callback> {
 	/**
 	 * Establishes a function to be called whenever the event is raised.
 	 * Returns a RBXScriptConnection object associated with the connection.
 	 * @param callback The function to be called whenever the event is fired.
 	 */
-	Connect<O extends Array<unknown> = FunctionArguments<T>>(
-		callback: P extends true ? (FunctionArguments<T> extends Array<unknown> ? (...args: O) => void : T) : T,
-	): RBXScriptConnection;
+	Connect(this: RBXScriptSignal, callback: T): RBXScriptConnection;
 
 	/**
 	 * Yields the current thread until this signal is fired. Returns what was fired to the signal.
 	 */
-	Wait(): LuaTuple<FunctionArguments<T>>;
+	Wait(this: RBXScriptSignal): LuaTuple<FunctionArguments<T>>;
 }
 
 // generated in generated_classes.d.ts
@@ -583,25 +617,9 @@ interface InstanceConstructor {
 	 * You can read [this thread on the developer forum](https://devforum.roblox.com/t/psa-dont-use-instance-new-with-parent-argument/30296) for more information.
 	 */
 	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): StrictInstances[T];
-	/**
-	 * Creates an new object of type val. The parent argument is optional;
-	 * If it is supplied, the object will be parented to that object.
-	 * Performance note: When the Parent of an object is set,
-	 * Roblox begins listening to a variety of different property changes for replication,
-	 * rendering and physics.
-	 * Therefore, it is recommended to set the Parent property last when creating new objects.
-	 * As such, you should avoid using the second argument (parent) of this function.
-	 * You can read [this thread on the developer forum](https://devforum.roblox.com/t/psa-dont-use-instance-new-with-parent-argument/30296) for more information.
-	 */
-	new (className: string, parent?: Instance): Instance;
 }
 
 declare const Instance: InstanceConstructor;
-
-interface PointsService extends Instance {
-	/** This function was once part of the PointService class used to control an ancient achievement system since removed and deprecated. It should not be used in new work. */
-	AwardPoints(userId: number, amount: number): LuaTuple<[number, number, number, 0]>;
-}
 
 /**
  * Axes is a datatype used for the ArcHandles class to control what rotation axes are currently enabled.
@@ -652,7 +670,7 @@ interface Color3 {
 	readonly g: number;
 	/** The blue component (between 0 and 1) */
 	readonly b: number;
-	Lerp(goal: Color3, alpha: number): Color3;
+	Lerp(this: Color3, goal: Color3, alpha: number): Color3;
 }
 
 interface BrickColorsByNumber {
@@ -867,139 +885,135 @@ interface BrickColorsByNumber {
 }
 
 interface BrickColorsByPalette {
-	[0]: 141;
-	[1]: 301;
-	[2]: 107;
-	[3]: 26;
-	[4]: 1012;
-	[5]: 303;
-	[6]: 1011;
-	[7]: 304;
-	[8]: 28;
-	[9]: 1018;
-	[10]: 302;
-	[11]: 305;
-	[12]: 306;
-	[13]: 307;
-	[14]: 308;
-	[15]: 1021;
-	[16]: 309;
-	[17]: 310;
-	[18]: 1019;
-	[19]: 135;
-	[20]: 102;
-	[21]: 23;
-	[22]: 1010;
-	[23]: 312;
-	[24]: 313;
-	[25]: 37;
-	[26]: 1022;
-	[27]: 1020;
-	[28]: 1027;
-	[29]: 311;
-	[30]: 315;
-	[31]: 1023;
-	[32]: 1031;
-	[33]: 316;
-	[34]: 151;
-	[35]: 317;
-	[36]: 318;
-	[37]: 319;
-	[38]: 1024;
-	[39]: 314;
-	[40]: 1013;
-	[41]: 1006;
-	[42]: 321;
-	[43]: 322;
-	[44]: 104;
-	[45]: 1008;
-	[46]: 119;
-	[47]: 323;
-	[48]: 324;
-	[49]: 325;
-	[50]: 320;
-	[51]: 11;
-	[52]: 1026;
-	[53]: 1016;
-	[54]: 1032;
-	[55]: 1015;
-	[56]: 327;
-	[57]: 1005;
-	[58]: 1009;
-	[59]: 29;
-	[60]: 328;
-	[61]: 1028;
-	[62]: 208;
-	[63]: 45;
-	[64]: 329;
-	[65]: 330;
-	[66]: 331;
-	[67]: 1004;
-	[68]: 21;
-	[69]: 332;
-	[70]: 333;
-	[71]: 24;
-	[72]: 334;
-	[73]: 226;
-	[74]: 1029;
-	[75]: 335;
-	[76]: 336;
-	[77]: 342;
-	[78]: 343;
-	[79]: 338;
-	[80]: 1007;
-	[81]: 339;
-	[82]: 133;
-	[83]: 106;
-	[84]: 340;
-	[85]: 341;
-	[86]: 1001;
-	[87]: 1;
-	[88]: 9;
-	[89]: 1025;
-	[90]: 337;
-	[91]: 344;
-	[92]: 345;
-	[93]: 1014;
-	[94]: 105;
-	[95]: 346;
-	[96]: 347;
-	[97]: 348;
-	[98]: 349;
-	[99]: 1030;
-	[100]: 125;
-	[101]: 101;
-	[102]: 350;
-	[103]: 192;
-	[104]: 351;
-	[105]: 352;
-	[106]: 353;
-	[107]: 354;
-	[108]: 1002;
-	[109]: 5;
-	[110]: 18;
-	[111]: 217;
-	[112]: 355;
-	[113]: 356;
-	[114]: 153;
-	[115]: 357;
-	[116]: 358;
-	[117]: 359;
-	[118]: 360;
-	[119]: 38;
-	[120]: 361;
-	[121]: 362;
-	[122]: 199;
-	[123]: 194;
-	[124]: 363;
-	[125]: 364;
-	[126]: 365;
-	[127]: 1003;
+	0: 141;
+	1: 301;
+	2: 107;
+	3: 26;
+	4: 1012;
+	5: 303;
+	6: 1011;
+	7: 304;
+	8: 28;
+	9: 1018;
+	10: 302;
+	11: 305;
+	12: 306;
+	13: 307;
+	14: 308;
+	15: 1021;
+	16: 309;
+	17: 310;
+	18: 1019;
+	19: 135;
+	20: 102;
+	21: 23;
+	22: 1010;
+	23: 312;
+	24: 313;
+	25: 37;
+	26: 1022;
+	27: 1020;
+	28: 1027;
+	29: 311;
+	30: 315;
+	31: 1023;
+	32: 1031;
+	33: 316;
+	34: 151;
+	35: 317;
+	36: 318;
+	37: 319;
+	38: 1024;
+	39: 314;
+	40: 1013;
+	41: 1006;
+	42: 321;
+	43: 322;
+	44: 104;
+	45: 1008;
+	46: 119;
+	47: 323;
+	48: 324;
+	49: 325;
+	50: 320;
+	51: 11;
+	52: 1026;
+	53: 1016;
+	54: 1032;
+	55: 1015;
+	56: 327;
+	57: 1005;
+	58: 1009;
+	59: 29;
+	60: 328;
+	61: 1028;
+	62: 208;
+	63: 45;
+	64: 329;
+	65: 330;
+	66: 331;
+	67: 1004;
+	68: 21;
+	69: 332;
+	70: 333;
+	71: 24;
+	72: 334;
+	73: 226;
+	74: 1029;
+	75: 335;
+	76: 336;
+	77: 342;
+	78: 343;
+	79: 338;
+	80: 1007;
+	81: 339;
+	82: 133;
+	83: 106;
+	84: 340;
+	85: 341;
+	86: 1001;
+	87: 1;
+	88: 9;
+	89: 1025;
+	90: 337;
+	91: 344;
+	92: 345;
+	93: 1014;
+	94: 105;
+	95: 346;
+	96: 347;
+	97: 348;
+	98: 349;
+	99: 1030;
+	100: 125;
+	101: 101;
+	102: 350;
+	103: 192;
+	104: 351;
+	105: 352;
+	106: 353;
+	107: 354;
+	108: 1002;
+	109: 5;
+	110: 18;
+	111: 217;
+	112: 355;
+	113: 356;
+	114: 153;
+	115: 357;
+	116: 358;
+	117: 359;
+	118: 360;
+	119: 38;
+	120: 361;
+	121: 362;
+	122: 199;
+	123: 194;
+	124: 363;
+	125: 364;
+	126: 365;
+	127: 1003;
 }
-
-type GetByName<T extends BrickColorsByNumber[keyof BrickColorsByNumber]> = {
-	[K in keyof BrickColorsByNumber]: T extends BrickColorsByNumber[K] ? K : never
-}[keyof BrickColorsByNumber];
 
 interface BrickColorConstructor {
 	/** Returns a random BrickColor. */
@@ -1028,9 +1042,6 @@ interface BrickColorConstructor {
 		T
 	>;
 
-	/** Constructs a BrickColor from its name. */
-	new (val: string): BrickColor;
-
 	/** Constructs a BrickColor from its numerical index. */
 	new <T extends keyof BrickColorsByNumber>(val: T): BrickColor<T, BrickColorsByNumber[T]>;
 
@@ -1044,12 +1055,13 @@ interface BrickColorConstructor {
 	new (color: Color3): BrickColor;
 
 	/** Constructs a BrickColor from its palette index. */
-	palette<T extends keyof BrickColorsByPalette>(
-		paletteValue: T,
-	): BrickColor<BrickColorsByPalette[T], BrickColorsByNumber[BrickColorsByPalette[T]]>;
-
-	/** Constructs a BrickColor from its palette index. */
-	palette(paletteValue: number): BrickColor;
+	palette: {
+		<T extends keyof BrickColorsByPalette>(paletteValue: T): BrickColor<
+			BrickColorsByPalette[T],
+			BrickColorsByNumber[BrickColorsByPalette[T]]
+		>;
+		(paletteValue: number): BrickColor;
+	};
 }
 
 declare const BrickColor: BrickColorConstructor;
@@ -1058,8 +1070,6 @@ declare const BrickColor: BrickColorConstructor;
 interface CFrame {
 	/** The 3D position of the CFrame */
 	readonly Position: Vector3;
-	/** The 3D position of the CFrame */
-	readonly p: Vector3;
 	/** The x-coordinate of the position */
 	readonly X: number;
 	/** The y-coordinate of the position */
@@ -1073,33 +1083,33 @@ interface CFrame {
 	/** The up-direction component of the CFrame’s orientation. */
 	readonly UpVector: Vector3;
 	/** Returns the inverse of this CFrame */
-	Inverse(): CFrame;
+	Inverse(this: CFrame): CFrame;
 	/** Returns a CFrame interpolated between this CFrame and the goal by the fraction alpha */
-	Lerp(goal: CFrame, alpha: number): CFrame;
+	Lerp(this: CFrame, goal: CFrame, alpha: number): CFrame;
 	/** Returns a CFrame transformed from Object to World space. Equivalent to `[CFrame * cf]` */
-	toWorldSpace(cf: CFrame): CFrame;
+	ToWorldSpace(this: CFrame, cf: CFrame): CFrame;
 	/** Returns a CFrame transformed from World to Object space. Equivalent to `[CFrame:inverse() * cf]` */
-	toObjectSpace(cf: CFrame): CFrame;
+	ToObjectSpace(this: CFrame, cf: CFrame): CFrame;
 	/** Returns a Vector3 transformed from Object to World space. Equivalent to `[CFrame * v3]` */
-	pointToWorldSpace(v3: Vector3): Vector3;
+	PointToWorldSpace(this: CFrame, v3: Vector3): Vector3;
 	/** Returns a Vector3 transformed from World to Object space. Equivalent to `[CFrame:inverse() * v3]` */
-	pointToObjectSpace(v3: Vector3): Vector3;
+	PointToObjectSpace(this: CFrame, v3: Vector3): Vector3;
 	/** Returns a Vector3 rotated from Object to World space. Equivalent to `[(CFrame - CFrame.p) *v3]` */
-	vectorToWorldSpace(v3: Vector3): Vector3;
+	VectorToWorldSpace(this: CFrame, v3: Vector3): Vector3;
 	/** Returns a Vector3 rotated from World to Object space. Equivalent to `[(CFrame:inverse() - CFrame:inverse().p) * v3]` */
-	vectorToObjectSpace(v3: Vector3): Vector3;
+	VectorToObjectSpace(this: CFrame, v3: Vector3): Vector3;
 	/** Returns the values: x, y, z, R00, R01, R02, R10, R11, R12, R20, R21, R22, where R00-R22 represent the 3x3 rotation matrix of the CFrame, and xyz represent the position of the CFrame. */
-	components(): LuaTuple<
-		[number, number, number, number, number, number, number, number, number, number, number, number]
-	>;
+	GetComponents(
+		this: CFrame,
+	): LuaTuple<[number, number, number, number, number, number, number, number, number, number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, Y, X order */
-	toEulerAnglesXYZ(): LuaTuple<[number, number, number]>;
+	ToEulerAnglesXYZ(this: CFrame): LuaTuple<[number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order */
-	toEulerAnglesYXZ(): LuaTuple<[number, number, number]>;
+	ToEulerAnglesYXZ(this: CFrame): LuaTuple<[number, number, number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order (Equivalent to toEulerAnglesYXZ) */
-	toOrientation(): LuaTuple<[number, number, number]>;
+	ToOrientation(this: CFrame): LuaTuple<[number, number, number]>;
 	/** Returns a tuple of a Vector3 and a number which represent the rotation of the CFrame in the axis-angle representation */
-	toAxisAngle(): LuaTuple<[Vector3, number]>;
+	ToAxisAngle(this: CFrame): LuaTuple<[Vector3, number]>;
 }
 interface CFrameConstructor {
 	/** Equivalent to fromEulerAnglesXYZ */
@@ -1278,10 +1288,10 @@ declare const PhysicalProperties: PhysicalPropertiesConstructor;
 
 // Random
 interface Random {
-	NextInteger(min: number, max: number): number;
-	NextNumber(): number;
-	NextNumber(min: number, max: number): number;
-	Clone(): Random;
+	NextInteger(this: Random, min: number, max: number): number;
+	NextNumber(this: Random): number;
+	NextNumber(this: Random, min: number, max: number): number;
+	Clone(this: Random): Random;
 }
 interface RandomConstructor {
 	new (seed: number): Random;
@@ -1294,11 +1304,31 @@ interface Ray {
 	readonly Origin: Vector3;
 	readonly Direction: Vector3;
 	readonly Unit: Ray;
-	ClosestPoint(point: Vector3): Vector3;
-	Distance(point: Vector3): number;
+	ClosestPoint(this: Ray, point: Vector3): Vector3;
+	Distance(this: Ray, point: Vector3): number;
 }
 type RayConstructor = new (origin: Vector3, direction: Vector3) => Ray;
 declare const Ray: RayConstructor;
+
+// RaycastParams
+interface RaycastParams {
+	/** Instances to ignore or whitelist */
+	FilterDescendantsInstances: Array<Instance>;
+	/** Whether to use the filters fields of the RaycastParams as a blacklist or as a whitelist */
+	FilterType: Enum.RaycastFilterType;
+	/** Should a raycast ignore Terrain water */
+	IgnoreWater: boolean;
+}
+type RaycastParamsConstructor = new () => RaycastParams;
+declare const RaycastParams: RaycastParamsConstructor;
+
+// RaycastResult
+interface RaycastResult {
+	readonly Instance: BasePart;
+	readonly Material: Enum.Material;
+	readonly Normal: Vector3;
+	readonly Position: Vector3;
+}
 
 // Rect
 interface Rect {
@@ -1317,7 +1347,7 @@ declare const Rect: RectConstructor;
 interface Region3 {
 	readonly CFrame: CFrame;
 	readonly Size: Vector3;
-	ExpandToGrid(resolution: number): Region3;
+	ExpandToGrid(this: Region3, resolution: number): Region3;
 }
 type Region3Constructor = new (min: Vector3, max: Vector3) => Region3;
 declare const Region3: Region3Constructor;
@@ -1363,12 +1393,14 @@ interface UDim2 {
 	readonly Y: UDim;
 	readonly Width: UDim;
 	readonly Height: UDim;
-	Lerp(goal: UDim2, alpha: number): UDim2;
+	Lerp(this: UDim2, goal: UDim2, alpha: number): UDim2;
 }
 interface UDim2Constructor {
 	new (): UDim2;
 	new (xScale: number, xOffset: number, yScale: number, yOffset: number): UDim2;
 	new (xDim: UDim, yDim: UDim): UDim2;
+	fromOffset: (x: number, y: number) => UDim2;
+	fromScale: (x: number, y: number) => UDim2;
 }
 declare const UDim2: UDim2Constructor;
 
@@ -1376,11 +1408,16 @@ declare const UDim2: UDim2Constructor;
 interface Vector2 {
 	readonly X: number;
 	readonly Y: number;
+	/** A normalized copy of the vector - has a magnitude of 1. */
 	readonly Unit: Vector2;
+	/** The length of the vector */
 	readonly Magnitude: number;
-	Dot(other: Vector2): number;
-	Lerp(goal: Vector2, alpha: number): Vector2;
-	Cross(other: Vector2): Vector2;
+	/** Returns a scalar dot product of the two vectors */
+	Dot(this: Vector2, other: Vector2): number;
+	/** Returns a Vector2 linearly interpolated between this Vector2 and the goal by the fraction alpha */
+	Lerp(this: Vector2, goal: Vector2, alpha: number): Vector2;
+	/** Returns the cross product of the two vectors */
+	Cross(this: Vector2, other: Vector2): Vector2;
 }
 type Vector2Constructor = new (x?: number, y?: number) => Vector2;
 declare const Vector2: Vector2Constructor;
@@ -1398,12 +1435,18 @@ interface Vector3 {
 	readonly X: number;
 	readonly Y: number;
 	readonly Z: number;
+	/** A normalized copy of the vector - one which has the same direction as the original but a magnitude of 1. */
 	readonly Unit: Vector3;
+	/** The length of the vector */
 	readonly Magnitude: number;
-	Lerp(goal: Vector3, alpha: number): Vector3;
-	Dot(other: Vector3): number;
-	Cross(other: Vector3): Vector3;
-	isClose(other: Vector3, epsilon: number): boolean;
+	/** Returns a Vector3 linearly interpolated between this Vector3 and the goal by the fraction alpha. */
+	Lerp(this: Vector3, goal: Vector3, alpha: number): Vector3;
+	/** Returns a scalar dot product of the two vectors. */
+	Dot(this: Vector3, other: Vector3): number;
+	/** Returns the cross product of the two vectors. */
+	Cross(this: Vector3, other: Vector3): Vector3;
+	/** Returns true if the other Vector3 falls within the epsilon radius of this Vector3. */
+	FuzzyEq(this: Vector3, other: Vector3, epsilon?: number): boolean;
 }
 interface Vector3Constructor {
 	FromNormalId: (norm: Enum.NormalId) => Vector3;
@@ -1430,16 +1473,47 @@ declare const game: DataModel;
 declare const script: LuaSourceContainer;
 declare const shared: object;
 
+type DelayedCallback =
+	/**
+	 * @param delayedTime The amount of time in seconds which elapsed since the function invoking this callback was called
+	 * @param gameTime The total time Roblox Lua has been running
+	 */
+	(delayedTime: number, gameTime: number) => void;
+
 // built-in functions
-declare function delay(delayTime: number, callback: Callback): void;
+
+/** Schedules a function to be executed after delayTime seconds have passed, without yielding the current thread. This function allows multiple Lua threads to be executed in parallel from the same stack. The delay will have a minimum duration of 29 milliseconds, but this minimum may be higher depending on the target framerate and various throttling conditions. If the delayTime parameter is not specified, the minimum duration will be used. */
+declare function delay(delayTime: number, callback: DelayedCallback): void;
+/** Returns how much time has elapsed since the current instance of Roblox was started.
+In Roblox Studio, this begins counting up from the moment Roblox Studio starts running, not just when opening a place.*/
 declare function elapsedTime(): number;
+/** Runs the supplied ModuleScript if it has not been run already, and returns what the ModuleScript returned (in both cases).
+
+If the ModuleScript the user wants to use has been uploaded to Roblox (with the instance’s name being ‘MainModule’), it can be loaded by using the require function on the asset ID of the ModuleScript, though only on the server. */
 declare function require(moduleScript: ModuleScript | number): unknown;
-declare function spawn(callback: Callback): void;
+/** Runs the specified callback function in a separate thread, without yielding the current thread.
+The function will be executed the next time Roblox’s Task Scheduler runs an update cycle. This delay will take at least 29 milliseconds but can arbitrarily take longer, depending on the target framerate and various throttling conditions. */
+declare function spawn(callback: DelayedCallback): void;
 declare function tick(): number;
+/** Time since the game started running. Will be 0 in Studio when not running the game. */
 declare function time(): number;
 declare function UserSettings(): UserSettings;
+/** Returns the current version of Roblox as a string. The integers in the version string are separated by periods, and each integers represent the following, in order:
+
+Generation - The current generation of the application shell that is hosting the client.
+Version - The current release version of Roblox.
+Patch - The current patch number for this version of Roblox.
+Commit - The ID of the last internal commit that was accepted into this version of the client. */
 declare function version(): string;
+/** Yields the current thread until the specified amount of seconds have elapsed.
+The delay will have a minimum duration of 29 milliseconds, but this minimum may be higher depending on the target framerate and various throttling conditions. If the seconds parameter is not specified, the minimum duration will be used.
+This function returns:
+
+Actual time yielded (in seconds)
+Total time since the software was initialized (in seconds) */
 declare function wait(seconds?: number): LuaTuple<[number, number]>;
+/** Behaves identically to Lua’s print function, except the output is styled as a warning, with yellow text and a timestamp.
+This function accepts any number of arguments, and will attempt to convert them into strings which will then be joined together with spaces between them. */
 declare function warn(...params: Array<any>): void;
 
 // math functions
@@ -1451,6 +1525,28 @@ declare namespace math {
 
 	/** Returns a number between min and max, inclusive. */
 	function clamp(n: number, min: number, max: number): number;
+}
+
+/** @rbxts utf8 */
+declare namespace utf8 {
+	/** Receives zero or more codepoints as integers, converts each one to its corresponding UTF-8 byte sequence and returns a string with the concatenation of all these sequences. */
+	function char(this: typeof utf8, ...codepoints: Array<number>): string;
+	/** Returns an iterator function that will iterate over all codepoints in string str. It raises an error if it meets any invalid byte sequence. */
+	function codes(this: typeof utf8, str: string): FirstDecrementedIterableFunction;
+	/** Returns the codepoints (as integers) from all codepoints in the provided string (str) that start between byte positions i and j (both included). The default for i is 0 and for j is i. It raises an error if it meets any invalid byte sequence. Similar to `string.byte`.*/
+	function codepoint(this: typeof utf8, str: string, i?: number, j?: number): LuaTuple<Array<number>>;
+	/** Returns the number of UTF-8 codepoints in the string str that start between positions i and j (both inclusive). The default for i is 0 and for j is -1. If it finds any invalid byte sequence, returns a false value plus the position of the first invalid byte. */
+	function len(this: typeof utf8, s: string, i?: number, j?: number): LuaTuple<[number, undefined] | [false, number]>;
+	/** Returns the position (in bytes) where the encoding of the n-th codepoint of s (counting from byte position i) starts. A negative n gets characters before position i. The default for i is 0 when n is non-negative and #s + 1 otherwise, so that utf8.offset(s, -n) gets the offset of the n-th character from the end of the string. If the specified character is neither in the subject nor right after its end, the function returns nil. */
+	function offset(this: typeof utf8, s: string, n: number, i?: number): number | undefined;
+	/** Returns an iterator function that will iterate the grapheme clusters of the string. */
+	function graphemes(this: typeof utf8, s: string, i?: number, j?: number): DoubleDecrementedIterableFunction;
+	/** Converts the input string to Normal Form C, which tries to convert decomposed characters into composed characters. */
+	function nfcnormalize(this: typeof utf8, str: string): string;
+	/** Converts the input string to Normal Form D, which tries to break up composed characters into decomposed characters. */
+	function nfdnormalize(this: typeof utf8, str: string): string;
+	/** The pattern which matches exactly one UTF-8 byte sequence, assuming that the subject is a valid UTF-8 string. */
+	const charpattern: "[%z\x01-\x7F\xC2-\xF4][\x80-\xBF]*";
 }
 
 interface GettableCores {
@@ -1481,7 +1577,7 @@ interface SettableCores {
 	ChatWindowSize: UDim2;
 	ChatWindowPosition: UDim2;
 	ChatBarDisabled: boolean;
-	SendNotification: boolean;
+	SendNotification: SendNotificationConfig;
 	TopbarEnabled: boolean;
 	DeveloperConsoleVisible: boolean;
 	PromptSendFriendRequest: Player;
@@ -1491,7 +1587,11 @@ interface SettableCores {
 	AvatarContextMenuEnabled: boolean;
 	AddAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
 	RemoveAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
-	CoreGuiChatConnections: { [name: string]: BindableEvent | BindableFunction };
+	CoreGuiChatConnections:
+		| { [name: string]: BindableEvent | BindableFunction }
+		| Map<string, BindableEvent | BindableFunction>;
+	VREnableControllerModels: boolean;
+	VRLaserPointerMode: "Disabled" | "Pointer" | "Navigation" | "Hidden";
 }
 
 // type
@@ -1500,7 +1600,7 @@ interface CheckablePrimitives {
 	boolean: boolean;
 	string: string;
 	number: number;
-	table: object & Array<unknown>;
+	table: object;
 	userdata: unknown;
 	function: Callback;
 	thread: thread;
@@ -1509,9 +1609,8 @@ interface CheckablePrimitives {
 /**  Returns the type of its only argument, coded as a string. */
 declare function type(value: any): keyof CheckablePrimitives;
 
-// typeOf
+/** The strings which can be returned by typeOf and their corresponding types */
 interface CheckableTypes extends CheckablePrimitives {
-	Instance: Instance;
 	Axes: Axes;
 	BrickColor: BrickColor;
 	CFrame: CFrame;
@@ -1519,16 +1618,22 @@ interface CheckableTypes extends CheckablePrimitives {
 	ColorSequence: ColorSequence;
 	ColorSequenceKeypoint: ColorSequenceKeypoint;
 	DockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo;
+	Enum: Enum;
+	EnumItem: EnumItem;
+	Enums: Enums;
 	Faces: Faces;
+	Instance: Instance;
 	NumberRange: NumberRange;
 	NumberSequence: NumberSequence;
 	NumberSequenceKeypoint: NumberSequenceKeypoint;
 	PathWaypoint: PathWaypoint;
 	PhysicalProperties: PhysicalProperties;
-	RBXScriptSignal: RBXScriptSignal;
 	RBXScriptConnection: RBXScriptConnection;
+	RBXScriptSignal: RBXScriptSignal;
 	Random: Random;
 	Ray: Ray;
+	RaycastParams: RaycastParams;
+	RaycastResult: RaycastResult;
 	Rect: Rect;
 	Region3: Region3;
 	Region3int16: Region3int16;
@@ -1555,7 +1660,6 @@ if (typeIs(v, "Vector3")) {
 ```
  **/
 declare function typeIs<T extends keyof CheckableTypes>(value: any, type: T): value is CheckableTypes[T];
-declare function typeIs(value: any, type: string): boolean;
 
 /**
  * Calls the function func with the given arguments in protected mode.
@@ -1583,11 +1687,19 @@ declare function opcall<T extends Array<any>, U>(
  * @param instance
  * @param className
  */
-declare function classIs<T extends Instance, Q extends T["ClassName"]>(
+declare function classIs<
+	T extends Instance,
+	Q extends Extract<T["ClassName"], Exclude<keyof Instances, keyof AbstractInstances>>
+>(
 	instance: T,
 	className: Q,
 ): instance is Instances[Q] extends T
-	? (Instances[Q]["ClassName"] extends Q ? Instances[Q] : Instances[Q] & { ClassName: Q })
+	? Instances[Q]["ClassName"] extends Q
+		? Instances[Q]
+		: Instances[Q] & { ClassName: Q }
 	: T;
 
-declare function classIs(instance: Instance, type: string): boolean;
+/**
+ * This variable will be automatically replaced by the "version" string from the package.json file
+ */
+declare const PKG_VERSION: string;

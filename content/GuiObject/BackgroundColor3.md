@@ -1,0 +1,1 @@
+BackgroundColor3 determines the color of a UI element's rectangular background (the fill color). Another property that determines the visual properties of the background is [GuiObject.BackgroundTransparency](https://developer.roblox.com/api-reference/property/GuiObject/BackgroundTransparency).

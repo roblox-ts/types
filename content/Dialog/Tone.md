@@ -1,0 +1,1 @@
+Sets the color of the NPC's speech bubble.

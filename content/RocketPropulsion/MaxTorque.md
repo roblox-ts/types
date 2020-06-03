@@ -1,0 +1,1 @@
+The MaxTorque property determines the upper limit on the amount of torque that may be exerted in order to rotate the part towards the [Target](https://developer.roblox.com/api-reference/property/RocketPropulsion/Target). It functions similarly to [BodyGyro.MaxTorque](https://developer.roblox.com/api-reference/property/BodyGyro/MaxTorque).

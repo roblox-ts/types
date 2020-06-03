@@ -1,4 +1,4 @@
-import libxmljs = require("libxmljs");
+import libxmljs from "libxmljs";
 
 function classPrefix(className: string) {
 	return `//Item[@class='ReflectionMetadataClass']/Properties/string[@name='Name'][text()='${className}']/../../`;

@@ -1,0 +1,1 @@
+Used to prompt a user to purchase a product with the given product id.

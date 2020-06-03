@@ -1,0 +1,3 @@
+The `CFrame` that will be applied to the `Motor6D` corresponding with the `Pose`. This `CFrame` is applied by changing the `Motor6D\Transform` property of the motor. The original [Motor6D.C0](https://developer.roblox.com/search#stq=C0) and [Motor6D.C1](https://developer.roblox.com/search#stq=C1) values are not changed.
+
+`Pose` objects are arranged in a `Keyframe` based on joint hierarchy. This means, the the [Pose.CFrame](https://developer.roblox.com/api-reference/property/Pose/CFrame) is applied to the motor connecting the part associated with the pose to the part associated with the pose’s parent.

@@ -1,0 +1,1 @@
+Fired when the pressed state of a bound button is changed. This event can be used in conjunction with [Controller.GetButton](https://developer.roblox.com/api-reference/function/Controller/GetButton) to see whether a bound button is being pressed down or not.

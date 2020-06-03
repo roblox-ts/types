@@ -1,0 +1,1 @@
+The speed at which the vehicle will turn. Higher numbers can cause problems and are not necessarily better.

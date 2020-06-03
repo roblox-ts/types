@@ -1,0 +1,1 @@
+Toggles whether or not objects in the `CoreGui` can be navigated using a Gamepad.

@@ -1,0 +1,1 @@
+The base class for classic motor joints.

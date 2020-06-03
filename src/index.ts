@@ -5,15 +5,14 @@ import { ClassGenerator } from "./class/ClassGenerator";
 import { EnumGenerator } from "./class/EnumGenerator";
 import { ReflectionMetadata } from "./class/ReflectionMetadata";
 import { Timer } from "./class/Timer";
-import fs from "fs-extra";
 
-const SECURITY_LEVELS = ["None", "PluginSecurity"];
+const SECURITY_LEVELS = ["None", "PluginSecurity"] as const;
 
 const BASE_URL = "https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Client-Watch/roblox/";
 const API_DUMP_URL = BASE_URL + "API-Dump.json";
 const REFLECTION_METADATA_URL = BASE_URL + "ReflectionMetadata.xml";
 
-(async () => {
+void (async () => {
 	const targetDir = path.resolve(__dirname, "..", "include");
 
 	const totalTimer = new Timer();
@@ -45,18 +44,16 @@ const REFLECTION_METADATA_URL = BASE_URL + "ReflectionMetadata.xml";
 	const classTimer = new Timer();
 	console.log("\tGenerating classes..");
 
-	const generatorTasks = new Array<Promise<void>>();
+	const definedClassNames = new Set<string>();
 	for (let i = 0; i < SECURITY_LEVELS.length; i++) {
-		await generatorTasks.push(
-			new ClassGenerator(
-				path.join(targetDir, "generated", SECURITY_LEVELS[i] + ".d.ts"),
-				reflectionMetadata,
-				SECURITY_LEVELS[i],
-				SECURITY_LEVELS[i - 1],
-			).generate(api.Classes),
-		);
+		await new ClassGenerator(
+			path.join(targetDir, "generated", SECURITY_LEVELS[i] + ".d.ts"),
+			reflectionMetadata,
+			definedClassNames,
+			SECURITY_LEVELS[i],
+			SECURITY_LEVELS[i - 1],
+		).generate(api.Classes);
 	}
-	await Promise.all(generatorTasks);
 
 	console.log(`\tDone! (${classTimer.get()}ms)`);
 

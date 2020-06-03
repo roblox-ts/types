@@ -1,0 +1,3 @@
+An Attachment is a special class used by constraint based objects. It represents an offset relative to the object it is parented to, in both its [Attachment.Position](https://developer.roblox.com/api-reference/property/Attachment/Position) and [Attachment.Orientation](https://developer.roblox.com/api-reference/property/Attachment/Orientation) properties.
+
+The Position/Orientation properties of this object correspond with the object's CFrame property, which are then outputted in real time to the WorldPosition and WorldOrientation properties.

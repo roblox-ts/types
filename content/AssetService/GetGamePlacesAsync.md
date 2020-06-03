@@ -1,0 +1,1 @@
+Returns a `StandardPages` object which contains the name and placeId of places within the current 'Game' (otherwise known as a 'Universe').

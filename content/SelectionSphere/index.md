@@ -1,0 +1,1 @@
+An object which is used to put a 3D sphere around the part it's adorned to. Intended for use on parts that have their [Part.Shape](https://developer.roblox.com/api-reference/property/Part/Shape) set to _Ball_.

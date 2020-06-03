@@ -1,0 +1,1 @@
+When set to true, each contact island will render `SelectionBox` adorns on the parts in contact islands, where each contact island is assigned a random color.

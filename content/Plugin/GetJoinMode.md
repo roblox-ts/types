@@ -1,0 +1,1 @@
+Returns the [Enum.JointCreationMode](https://developer.roblox.com/search#stq=JointCreationMode) the user has set in studio under the Model tab.

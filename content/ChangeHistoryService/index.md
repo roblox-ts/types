@@ -1,0 +1,1 @@
+The ChangeHistoryService provides a way for plugins to undo and redo changes and to create waypoints when changes are made to the place.

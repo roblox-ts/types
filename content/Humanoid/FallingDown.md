@@ -1,0 +1,3 @@
+The FallingDown event fires when the `Humanoid` enters and leaves the *FallingDown* [Enum.HumanoidStateType](https://developer.roblox.com/search#stq=HumanoidStateType). It indicates whether the humanoid is falling.
+
+Unless the `Humanoid` state is otherwise changed, this event will fire with an *active* value of *false* as the [Humanoid.GettingUp](https://developer.roblox.com/api-reference/event/Humanoid/GettingUp) event fires with an *active* value of *true*.

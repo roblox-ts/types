@@ -1,0 +1,1 @@
+A BallSocketConstraint constrains its `Attachment` so that they occupy the same position. By default it allows both attachments to freely rotate about all of their axes. If [BallSocketConstraint.LimitsEnabled](https://developer.roblox.com/api-reference/property/BallSocketConstraint/LimitsEnabled) is true then the attachments can only rotate in a limited cone.

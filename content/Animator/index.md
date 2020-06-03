@@ -1,0 +1,1 @@
+The `Animator` is the main class responsible for controlling an `Animation`. It is created when `LoadAnimation` is called under a `Humanoid` or `AnimationController` for the first time.

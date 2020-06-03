@@ -1,0 +1,1 @@
+When set to true, parts that aren't aligned on the 1x1x1 grid will be outlined yellow.

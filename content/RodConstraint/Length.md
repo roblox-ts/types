@@ -1,0 +1,1 @@
+The distance apart the `RodConstraint` attempts to keep its `Attachment` at. Measured in studs.

@@ -1,49 +1,29 @@
 interface AnimationController extends Instance {
-	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
-	GetPlayingAnimationTracks(): Array<AnimationTrack>;
-	LoadAnimation(animation: Animation): AnimationTrack;
+	GetPlayingAnimationTracks(this: AnimationController): Array<AnimationTrack>;
+	LoadAnimation(this: AnimationController, animation: Animation): AnimationTrack;
+}
+
+interface AnimationTrack extends Instance {
+	GetMarkerReachedSignal(this: AnimationTrack, name: string): RBXScriptSignal<(param?: string) => void>;
 }
 
 interface Animator extends Instance {
-	LoadAnimation(animation: Animation): AnimationTrack;
+	LoadAnimation(this: Animator, animation: Animation): AnimationTrack;
+	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
 }
 
 /** @rbxts server */
 interface AssetService extends Instance {
 	CreatePlaceInPlayerInventoryAsync(
+		this: AssetService,
 		player: Player,
 		placeName: string,
 		templatePlaceID: number,
 		description?: string,
 	): number;
-	GetGamePlacesAsync(): StandardPages;
-	GetAssetIdsForPackage(packageAssetId: number): Array<number>;
-	GetBundleDetailsAsync(bundleId: number): BundleInfo;
-}
-
-interface BasePart extends PVInstance {
-	readonly TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
-	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
-	CanCollideWith(part: BasePart): boolean;
-	GetConnectedParts(recursive?: boolean): Array<BasePart>;
-	GetRootPart(): BasePart;
-	GetJoints(): Array<Constraint | JointInstance>;
-	GetTouchingParts(): Array<BasePart>;
-	/** @rbxts server */
-	SubtractAsync(parts: Array<BasePart>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>): UnionOperation;
-	/** @rbxts server */
-	UnionAsync(parts: Array<BasePart>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>): UnionOperation;
-
-	/** @rbxts server */
-	CanSetNetworkOwnership(): LuaTuple<[boolean, string | undefined]>;
-	/** @rbxts server */
-	GetNetworkOwner(): Player | undefined;
-	/** @rbxts server */
-	SetNetworkOwner(playerInstance?: Player): void;
-	/** @rbxts server */
-	GetNetworkOwnershipAuto(): boolean;
-	/** @rbxts server */
-	SetNetworkOwnershipAuto(): void;
+	GetGamePlacesAsync(this: AssetService): StandardPages<{ Name: string; PlaceId: number }>;
+	GetAssetIdsForPackage(this: AssetService, packageAssetId: number): Array<number>;
+	GetBundleDetailsAsync(this: AssetService, bundleId: number): BundleInfo;
 }
 
 interface Attachment extends Instance {
@@ -52,20 +32,44 @@ interface Attachment extends Instance {
 
 interface BadgeService extends Instance {
 	/** @rbxts server */
-	AwardBadge(userId: number, badgeId: number): boolean;
+	AwardBadge(this: BadgeService, userId: number, badgeId: number): boolean;
 	/** @rbxts server */
-	GetBadgeInfoAsync(badgeId: number): BadgeInfo;
+	GetBadgeInfoAsync(this: BadgeService, badgeId: number): BadgeInfo;
 	/** @rbxts server */
-	UserHasBadgeAsync(userId: number, badgeId: number): boolean;
+	UserHasBadgeAsync(this: BadgeService, userId: number, badgeId: number): boolean;
 }
 
-interface TextService extends Instance {
+interface BasePart extends PVInstance {
+	readonly TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
+	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
+	CanCollideWith(this: BasePart, part: BasePart): boolean;
+	GetConnectedParts(this: BasePart, recursive?: boolean): Array<BasePart>;
+	GetRootPart(this: BasePart): BasePart;
+	GetJoints(this: BasePart): Array<Constraint | JointInstance>;
+	GetTouchingParts(this: BasePart): Array<BasePart>;
 	/** @rbxts server */
-	FilterStringAsync(
-		stringToFilter: string,
-		fromUserId: number,
-		textContext?: CastsToEnum<Enum.TextFilterContext>,
-	): TextFilterResult | undefined;
+	SubtractAsync(
+		this: BasePart,
+		parts: Array<BasePart>,
+		collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>,
+	): UnionOperation;
+	/** @rbxts server */
+	UnionAsync(
+		this: BasePart,
+		parts: Array<BasePart>,
+		collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>,
+	): UnionOperation;
+
+	/** @rbxts server */
+	CanSetNetworkOwnership(this: BasePart): LuaTuple<[boolean, string | undefined]>;
+	/** @rbxts server */
+	GetNetworkOwner(this: BasePart): Player | undefined;
+	/** @rbxts server */
+	SetNetworkOwner(this: BasePart, playerInstance?: Player): void;
+	/** @rbxts server */
+	GetNetworkOwnershipAuto(this: BasePart): boolean;
+	/** @rbxts server */
+	SetNetworkOwnershipAuto(this: BasePart): void;
 }
 
 interface BillboardGui extends LayerCollector {
@@ -73,53 +77,48 @@ interface BillboardGui extends LayerCollector {
 	PlayerToHideFrom: Player | undefined;
 }
 
-interface BindableEvent extends Instance {
-	readonly Event: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
-	Fire(...arguments: Array<unknown>): void;
+interface BindableEvent<T extends Callback = Callback> extends Instance {
+	readonly Event: RBXScriptSignal<T>;
+	Fire(this: BindableEvent, ...args: Parameters<T>): void;
 }
 
-interface BindableFunction extends Instance {
-	OnInvoke: (...arguments: Array<unknown>) => any;
-	Invoke(...arguments: Array<unknown>): Array<unknown>;
+interface BindableFunction<T extends Callback = Callback> extends Instance {
+	OnInvoke: T;
+	Invoke(this: BindableFunction, ...args: Parameters<T>): ReturnType<T>;
 }
 
 interface Camera extends Instance {
 	CameraSubject: Humanoid | BasePart | undefined;
-	GetPartsObscuringTarget(castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
-	WorldToScreenPoint(worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
-	WorldToViewportPoint(worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
+	GetPartsObscuringTarget(this: Camera, castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
+	WorldToScreenPoint(this: Camera, worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
+	WorldToViewportPoint(this: Camera, worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
 }
 
 interface Chat extends Instance {
 	readonly Chatted: RBXScriptSignal<(part: BasePart, message: string, color: Enum.ChatColor) => void>;
-	Chat(partOrCharacter: BasePart | Model, message: string, color?: CastsToEnum<Enum.ChatColor>): void;
-	FilterStringAsync(stringToFilter: string, playerFrom: Player, playerTo: Player): string;
-	FilterStringForBroadcast(stringToFilter: string, playerFrom: Player): string;
-}
-
-interface ClickDetector extends Instance {
-	readonly MouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
-	readonly MouseHoverEnter: RBXScriptSignal<(playerWhoHovered: Player) => void>;
-	readonly MouseHoverLeave: RBXScriptSignal<(playerWhoHovered: Player) => void>;
-	readonly RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
+	FilterStringAsync(this: Chat, stringToFilter: string, playerFrom: Player, playerTo: Player): string;
+	FilterStringForBroadcast(this: Chat, stringToFilter: string, playerFrom: Player): string;
 }
 
 interface CollectionService extends Instance {
-	GetInstanceAddedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
-	GetInstanceRemovedSignal(tag: string): RBXScriptSignal<(instance: Instance) => void>;
-	GetTagged<T extends Instance = Instance>(tag: string): Array<T>;
-	GetTags(instance: Instance): Array<string>;
+	GetInstanceAddedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
+	GetInstanceRemovedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
+	GetTagged<T extends Instance>(this: CollectionService, tag: string): Array<Instance>;
+	GetTags(this: CollectionService, instance: Instance): Array<string>;
+}
+
+interface CompressorSoundEffect extends SoundEffect {
+	SideChain?: Sound | SoundGroup;
 }
 
 interface ContentProvider extends Instance {
-	PreloadAsync(contentIdList: Array<Instance>): void;
+	PreloadAsync(this: ContentProvider, contentIdList: Array<Instance>): void;
 }
 
 /** @rbxts client */
 interface ContextActionService extends Instance {
-	readonly LocalToolEquipped: RBXScriptSignal<(toolEquipped: Tool | Flag) => void>;
-	readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Tool | Flag) => void>;
 	BindAction(
+		this: ContextActionService,
 		actionName: string,
 		functionToBind: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
 		createTouchButton: boolean,
@@ -127,63 +126,69 @@ interface ContextActionService extends Instance {
 	): void;
 
 	BindActionAtPriority(
+		this: ContextActionService,
 		actionName: string,
 		functionToBind: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
 		createTouchButton: boolean,
 		priorityLevel: number,
 		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
 	): void;
-	GetButton(actionName: string): ImageButton | undefined;
-	GetAllBoundActionInfo(): Map<string, BoundActionInfo>;
-	GetBoundActionInfo(actionName: string): BoundActionInfo;
+	GetButton(this: ContextActionService, actionName: string): ImageButton | undefined;
+	GetAllBoundActionInfo(this: ContextActionService): Map<string, BoundActionInfo>;
+	GetBoundActionInfo(this: ContextActionService, actionName: string): BoundActionInfo;
 }
+
+interface DataModel extends ServiceProvider<Services> {
+	readonly Workspace: Workspace;
+	BindToClose(this: DataModel, callback: () => void): void;
+}
+
+interface DataStorePages extends Pages<{ key: string; value: unknown }> {}
 
 /** @rbxts server */
 interface DataStoreService extends Instance {
-	GetDataStore(name: string, scope?: string): GlobalDataStore;
-	GetGlobalDataStore(): GlobalDataStore;
-	GetOrderedDataStore(name: string, scope?: string): OrderedDataStore;
+	GetDataStore(this: DataStoreService, name: string, scope?: string): GlobalDataStore;
+	GetGlobalDataStore(this: DataStoreService): GlobalDataStore;
+	GetOrderedDataStore(this: DataStoreService, name: string, scope?: string): OrderedDataStore;
 }
 
 interface Dialog extends Instance {
 	readonly DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
-	GetCurrentPlayers(): Array<Player>;
+	GetCurrentPlayers(this: Dialog): Array<Player>;
 }
 
-interface FlagStand extends Part {
-	readonly FlagCaptured: RBXScriptSignal<(player: Player) => void>;
+interface Dragger extends Instance {
+	MouseDown(this: Dragger, mousePart: BasePart, pointOnMousePart: Vector3, parts: Array<BasePart>): void;
 }
+
+interface FriendPages
+	extends Pages<{ AvatarFinal: boolean; AvatarUri: string; Id: number; Username: string; IsOnline: boolean }> {}
 
 interface GamePassService extends Instance {
 	/** This item is deprecated. Do not use it for new work. */
-	PlayerHasPass(player: Player, gamePassId: number): boolean;
+	PlayerHasPass(this: GamePassService, player: Player, gamePassId: number): boolean;
 }
 
-interface PlayerGui extends BasePlayerGui {}
+interface GenericSettings<S = unknown> extends ServiceProvider<S> {}
 
 /** @rbxts server */
 interface GlobalDataStore extends Instance {
-	GetAsync<T = unknown>(key: string): T | undefined;
-	IncrementAsync(key: string, delta?: number): number;
-	RemoveAsync<T = unknown>(key: string): T | undefined;
-	SetAsync(key: string, value?: any): void;
-	UpdateAsync<O = unknown, R = unknown>(
+	GetAsync<T>(this: GlobalDataStore, key: string): T | undefined;
+	IncrementAsync(this: GlobalDataStore, key: string, delta?: number): number;
+	RemoveAsync<T>(this: GlobalDataStore, key: string): T | undefined;
+	SetAsync(this: GlobalDataStore, key: string, value?: any): void;
+	UpdateAsync<O, R>(
+		this: GlobalDataStore,
 		key: string,
 		transformFunction: (oldValue: O | undefined) => R,
 	): R extends undefined ? O | undefined : R;
-	OnUpdate<T = unknown>(key: string, callback: (value: T) => void): RBXScriptConnection;
 }
 
 interface GroupService extends Instance {
-	GetAlliesAsync(groupId: number): StandardPages;
-	GetEnemiesAsync(groupId: number): StandardPages;
-	GetGroupInfoAsync(groupId: number): GroupInfo;
-	GetGroupsAsync(userId: number): Array<GetGroupsAsyncResult>;
-}
-
-/** @rbxts server */
-interface MessagingService extends Instance {
-	SubscribeAsync(topic: string, callback: (Data: any, Sent: number) => void): RBXScriptConnection;
+	GetAlliesAsync(this: GroupService, groupId: number): StandardPages<GroupInfo>;
+	GetEnemiesAsync(this: GroupService, groupId: number): StandardPages<GroupInfo>;
+	GetGroupInfoAsync(this: GroupService, groupId: number): GroupInfo;
+	GetGroupsAsync(this: GroupService, userId: number): Array<GetGroupsAsyncResult>;
 }
 
 interface GuiObject extends GuiBase2d {
@@ -208,6 +213,7 @@ interface GuiObject extends GuiBase2d {
 	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>) => void>;
 
 	TweenPosition(
+		this: GuiObject,
 		endPosition: UDim2,
 		easingDirection?: CastsToEnum<Enum.EasingDirection>,
 		easingStyle?: CastsToEnum<Enum.EasingStyle>,
@@ -217,6 +223,7 @@ interface GuiObject extends GuiBase2d {
 	): boolean;
 
 	TweenSize(
+		this: GuiObject,
 		endSize: UDim2,
 		easingDirection?: CastsToEnum<Enum.EasingDirection>,
 		easingStyle?: CastsToEnum<Enum.EasingStyle>,
@@ -226,6 +233,7 @@ interface GuiObject extends GuiBase2d {
 	): boolean;
 
 	TweenSizeAndPosition(
+		this: GuiObject,
 		endSize: UDim2,
 		endPosition: UDim2,
 		easingDirection?: CastsToEnum<Enum.EasingDirection>,
@@ -238,29 +246,23 @@ interface GuiObject extends GuiBase2d {
 
 /** @rbxts client */
 interface GuiService extends Instance {
-	AddSelectionParent(selectionName: string, selectionParent: Instance): void;
-	AddSelectionTuple(selectionName: string, selections: Array<any>): void;
-	GetGuiInset(): LuaTuple<[Vector2, Vector2]>;
-}
-
-interface _HapticService extends Instance {
-	GetMotor(
-		inputType: CastsToEnum<Enum.UserInputType>,
-		vibrationMotor: CastsToEnum<Enum.VibrationMotor>,
-	): LuaTuple<[number]>;
-	SetMotor(
-		inputType: CastsToEnum<Enum.UserInputType>,
-		vibrationMotor: CastsToEnum<Enum.VibrationMotor>,
-		...vibrationValues: Array<number>
+	AddSelectionParent(this: GuiService, selectionName: string, selectionParent: GuiObject): void;
+	AddSelectionTuple(this: GuiService, selectionName: string, selections: Array<GuiObject>): void;
+	InspectPlayerFromHumanoidDescription(
+		this: GuiService,
+		humanoidDescription: HumanoidDescription,
+		name: string,
 	): void;
+	GetGuiInset(this: GuiService): LuaTuple<[Vector2, Vector2]>;
 }
 
 interface HttpService extends Instance {
 	/** @rbxts server */
-	GetAsync(url: string, nocache?: boolean, headers?: HttpHeaders): string;
+	GetAsync(this: HttpService, url: string, nocache?: boolean, headers?: HttpHeaders): string;
 
 	/** @rbxts server */
 	PostAsync(
+		this: HttpService,
 		url: string,
 		data: string,
 		content_type?: CastsToEnum<Enum.HttpContentType>,
@@ -269,258 +271,19 @@ interface HttpService extends Instance {
 	): string;
 
 	/** @rbxts server */
-	RequestAsync(requestOptions: RequestAsyncRequest): RequestAsyncResponse;
+	RequestAsync(this: HttpService, requestOptions: RequestAsyncRequest): RequestAsyncResponse;
+
+	JSONDecode<T>(this: HttpService, input: string): T;
 }
 
 interface Humanoid extends Instance {
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
 	readonly Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
-	ApplyDescription(humanoidDescription: HumanoidDescription): void;
-	GetAppliedDescription(): HumanoidDescription;
-	GetPlayingAnimationTracks(): Array<AnimationTrack>;
-	LoadAnimation(animation: Animation): AnimationTrack;
-	AddAccessory(accessory: Accessory): void;
-	EquipTool(tool: Tool | Flag): void;
-	GetAccessories(): Array<Accessory>;
-	GetLimb(part: BasePart): Enum.Limb;
-	GetBodyPartR15(part: BasePart): Enum.BodyPartR15;
-	MoveTo(location: Vector3, part?: BasePart): void;
-	ReplaceBodyPartR15(bodyPart: Enum.BodyPartR15, part: BasePart): boolean;
-}
-
-interface InsertService extends Instance {
-	LoadAsset(assetId: number): Model;
-	LoadAssetVersion(assetVersionId: number): Model;
-	GetBaseSets(): Array<SetInfo>;
-	GetCollection(categoryId: number): Array<CollectionInfo>;
-	GetFreeDecals(searchText: string, pageNum: number): [Array<FreeSearchResult>];
-	GetFreeModels(searchText: string, pageNum: number): [Array<FreeSearchResult>];
-	GetUserSets(userId: number): Array<SetInfo>;
-}
-
-interface Instance {
-	Clone(): this;
-	GetChildren<T extends Instance = Instance>(): Array<T>;
-	GetDescendants(): Array<Instance>;
-
-	FindFirstAncestor<T extends Instance = Instance>(name: string): T | undefined;
-	FindFirstChild<T extends Instance = Instance>(name: string, recursive?: boolean): T | undefined;
-	WaitForChild<T extends Instance = Instance>(childName: string): T;
-	WaitForChild<T extends Instance = Instance>(childName: string, timeOut: number): T | undefined;
-
-	IsA<
-		T extends {
-			[K in keyof Instances]: Instances[K]["ClassName"] extends this["ClassName"]
-				? this extends Instances[K]
-					? never
-					: K
-				: never
-		}[keyof Instances]
-	>(
-		className: T,
-	): this is Instances[T];
-	IsA(className: string): boolean;
-
-	FindFirstAncestorWhichIsA<T extends keyof Instances>(className: T): Instances[T] | undefined;
-	FindFirstAncestorWhichIsA(className: string): Instance | undefined;
-
-	FindFirstChildWhichIsA<T extends keyof Instances>(className: T, recursive?: boolean): Instances[T] | undefined;
-	FindFirstChildWhichIsA(className: string, recursive?: boolean): Instance | undefined;
-
-	FindFirstAncestorOfClass<T extends Instance["ClassName"]>(className: T): StrictInstances[T] | undefined;
-	FindFirstAncestorOfClass(className: string): Instance | undefined;
-
-	FindFirstChildOfClass<T extends Instance["ClassName"]>(className: T): StrictInstances[T] | undefined;
-	FindFirstChildOfClass(className: string): Instance | undefined;
-
-	GetPropertyChangedSignal<T extends GetProperties<this>>(propertyName: T): RBXScriptSignal;
-	GetPropertyChangedSignal(propertyName: string): RBXScriptSignal;
-}
-
-interface JointInstance extends Instance {
-	Part0: BasePart | undefined;
-	Part1: BasePart | undefined;
-}
-
-interface Keyframe extends Instance {
-	AddPose(pose: Pose): void;
-	RemovePose(pose: Pose): void;
-	GetPoses(): Array<Pose>;
-	AddMarker(marker: KeyframeMarker): void;
-	RemoveMarker(marker: KeyframeMarker): void;
-}
-
-interface KeyframeSequence extends Instance {
-	AddKeyframe(keyframe: Keyframe): void;
-	GetKeyframes(): Array<Keyframe>;
-	RemoveKeyframe(keyframe: Keyframe): void;
-}
-
-interface KeyframeSequenceProvider extends Instance {
-	RegisterActiveKeyframeSequence(keyframeSequence: KeyframeSequence): string;
-	RegisterKeyframeSequence(keyframeSequence: KeyframeSequence): string;
-	GetAnimations(userId: number): InventoryPages;
-	GetKeyframeSequenceAsync(assetId: string): KeyframeSequence;
-}
-
-interface LocalizationService extends Instance {
-	GetTranslatorForPlayer(player: Player): Translator;
-	GetTranslatorForLocaleAsync(locale: string): Translator;
-	GetTranslatorForPlayerAsync(player: Player): Translator;
-}
-
-interface LocalizationTable extends Instance {
-	GetEntries(): Array<LocalizationEntry>;
-	GetTranslator(localeId: string): Translator;
-}
-
-interface LogService extends Instance {
-	GetLogHistory(): Array<LogInfo>;
-}
-
-interface ServiceProvider extends Instance {
-	readonly ServiceAdded: RBXScriptSignal<(service: Services[keyof Services]) => void>;
-	readonly ServiceRemoving: RBXScriptSignal<(service: Services[keyof Services]) => void>;
-	FindService(className: string): Instance | undefined;
-	GetService<T extends keyof Services>(className: T): Services[T];
-	GetService(className: string): Services[keyof Services] | undefined;
-	FindService(className: string): Services[keyof Services] | undefined;
-}
-
-interface CompressorSoundEffect extends SoundEffect {
-	SideChain?: Sound | SoundGroup;
-}
-
-interface DataModel extends ServiceProvider {
-	readonly Workspace: Workspace;
-}
-
-interface MarketplaceService extends Instance {
-	ProcessReceipt: (receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision;
-	readonly PromptGamePassPurchaseFinished: RBXScriptSignal<
-		(player: Player, gamePassId: number, wasPurchased: boolean) => void
-	>;
-	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
-	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.Asset>): AssetProductInfo;
-	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.Product>): DeveloperProductInfo;
-	GetProductInfo(assetId: number, infoType: CastsToEnum<Enum.InfoType.GamePass>): AssetProductInfo;
-	PromptGamePassPurchase(player: Player, gamePassId: number): void;
-	PromptProductPurchase(
-		player: Player,
-		productId: number,
-		equipIfPurchased?: boolean,
-		currencyType?: CastsToEnum<Enum.CurrencyType>,
-	): void;
-	PromptPurchase(
-		player: Player,
-		assetId: number,
-		equipIfPurchased?: boolean,
-		currencyType?: CastsToEnum<Enum.CurrencyType>,
-	): void;
-	PlayerOwnsAsset(player: Player, assetId: number): boolean;
-	GetDeveloperProductsAsync(): Pages;
-}
-
-interface Model extends PVInstance {
-	PrimaryPart?: BasePart;
-	GetBoundingBox(): LuaTuple<[CFrame, Vector3]>;
-}
-
-/** @rbxts server */
-interface OrderedDataStore extends GlobalDataStore {
-	GetSortedAsync(ascending: boolean, pagesize: number, minValue?: number, maxValue?: number): DataStorePages;
-}
-
-interface Path extends Instance {
-	GetWaypoints(): Array<PathWaypoint>;
-}
-
-interface PathfindingService extends Instance {
-	CreatePath(agentParameters?: AgentParameters): Path;
-	FindPathAsync(start: Vector3, finish: Vector3): Path;
-}
-
-interface PhysicsService extends Instance {
-	CollisionGroupContainsPart(name: string, part: BasePart): boolean;
-	GetCollisionGroups(): Array<CollisionGroupInfo>;
-	CollisionGroupContainsPart(name: string, part: BasePart): boolean;
-	SetPartCollisionGroup(part: BasePart, name: string): void;
-}
-
-interface Plugin extends Instance {
-	GetMouse(): PluginMouse;
-	CreateDockWidgetPluginGui(
-		pluginGuiId: string,
-		dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo,
-	): DockWidgetPluginGui;
-	CreatePluginAction(
-		actionId: string,
-		text: string,
-		statusTip: string,
-		iconName?: string,
-		allowBinding?: boolean,
-	): PluginAction;
-	CreatePluginMenu(id: string, title?: string, icon?: string): PluginMenu;
-	CreateToolbar(name: string): PluginToolbar;
-	ImportFbxRig(isR15?: boolean): Model;
-	Union(objects: Array<BasePart>): UnionOperation;
-}
-
-interface PluginManager extends Instance {
-	CreatePlugin(): Plugin;
-}
-
-interface PluginMenu extends Instance {
-	AddAction(action: PluginAction): void;
-	AddMenu(menu: PluginMenu): void;
-	AddNewAction(actionId: string, text: string, icon?: string): PluginAction;
-}
-
-interface PluginToolbar extends Instance {
-	CreateButton(buttonId: string, tooltip: string, iconname: string, text?: string): PluginToolbarButton;
-}
-
-interface VehicleSeat extends BasePart {
-	Sit(humanoid: Humanoid): void;
-}
-
-interface NetworkClient extends NetworkPeer {
-	readonly ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: ClientReplicator) => void>;
-}
-
-interface NetworkReplicator extends Instance {
-	GetPlayer(): Player;
-}
-
-interface Seat extends Part {
-	Sit(humanoid: Humanoid): void;
-}
-
-interface SkateboardPlatform extends Part {
-	readonly Equipped: RBXScriptSignal<(humanoid: Humanoid, skateboardController: SkateboardController) => void>;
-	readonly Unequipped: RBXScriptSignal<(humanoid: Humanoid) => void>;
-}
-
-interface Player extends Instance {
-	readonly Name: string;
-	readonly UserId: number;
-	ReplicationFocus: BasePart | undefined;
-	readonly CharacterAdded: RBXScriptSignal<(character: Model) => void>;
-	readonly CharacterAppearanceLoaded: RBXScriptSignal<(character: Model) => void>;
-	readonly CharacterRemoving: RBXScriptSignal<(character: Model) => void>;
-
-	readonly Chatted: RBXScriptSignal<(message: string, recipient: Instance) => void>;
-	/** ### TS Usage
-	 * One should check the LocationType of each member of this array in order to verify which members are present. Should be compared to the LocationType const enum.
-	 */
-	GetFriendsOnline(maxFriends?: number): Array<FriendOnlineInfo>;
-	/** @rbxts server */
-	LoadCharacter(): void;
-	/** @rbxts server */
-	LoadCharacterWithHumanoidDescription(humanoidDescription: HumanoidDescription): void;
-	GetMouse(): PlayerMouse;
-	GetJoinData(): PlayerJoinInfo;
+	GetAppliedDescription(this: Humanoid): HumanoidDescription;
+	GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
+	LoadAnimation(this: Humanoid, animation: Animation): AnimationTrack;
+	GetAccessories(this: Humanoid): Array<Accessory>;
 }
 
 /** #### Related methods:
@@ -532,95 +295,381 @@ interface Player extends Instance {
  */
 interface HumanoidDescription extends Instance {}
 
+interface InsertService extends Instance {
+	LoadAsset(this: InsertService, assetId: number): Model;
+	LoadAssetVersion(this: InsertService, assetVersionId: number): Model;
+	GetBaseSets(this: InsertService): Array<SetInfo>;
+	GetCollection(this: InsertService, categoryId: number): Array<CollectionInfo>;
+	GetFreeDecals(this: InsertService, searchText: string, pageNum: number): [Array<FreeSearchResult>];
+	GetFreeModels(this: InsertService, searchText: string, pageNum: number): [Array<FreeSearchResult>];
+	GetUserSets(this: InsertService, userId: number): Array<SetInfo>;
+}
+
+interface Instance {
+	Clone(this: Instance): this;
+	/** `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
+	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Instance.Changed` event.
+	 * @example
+	 * function f(p: Part) {
+	 * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
+	 * }
+	 */
+	Changed: unknown;
+	GetChildren(this: Instance): Array<Instance>;
+	GetDescendants(this: Instance): Array<Instance>;
+
+	WaitForChild(this: Instance, childName: string): Instance;
+	WaitForChild(this: Instance, childName: string, timeOut: number): Instance | undefined;
+
+	IsA<T extends keyof Instances>(this: Instance, className: T): this is Instances[T];
+
+	FindFirstAncestorWhichIsA<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
+
+	FindFirstChildWhichIsA<T extends keyof Instances>(
+		this: Instance,
+		className: T,
+		recursive?: boolean,
+	): Instances[T] | undefined;
+
+	FindFirstAncestorOfClass<T extends keyof StrictInstances>(
+		this: Instance,
+		className: T,
+	): StrictInstances[T] | undefined;
+
+	FindFirstChildOfClass<T extends keyof StrictInstances>(
+		this: Instance,
+		className: T,
+	): StrictInstances[T] | undefined;
+
+	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal<() => void>;
+}
+
+
+
+interface InventoryPages extends Pages<number> {}
+
+interface JointInstance extends Instance {
+	Part0?: BasePart;
+	Part1?: BasePart;
+}
+
+interface JointsService extends Instance {
+	SetJoinAfterMoveInstance(this: JointsService, joinInstance: PVInstance): void;
+	SetJoinAfterMoveTarget(this: JointsService, joinTarget: PVInstance): void;
+}
+
+interface Keyframe extends Instance {
+	GetPoses(this: Keyframe): Array<Pose>;
+	AddMarker(this: Keyframe, marker: KeyframeMarker): void;
+	RemoveMarker(this: Keyframe, marker: KeyframeMarker): void;
+	GetMarkers(this: Keyframe): Array<KeyframeMarker>;
+}
+
+interface KeyframeSequence extends Instance {
+	GetKeyframes(this: KeyframeSequence): Array<Keyframe>;
+}
+
+interface KeyframeSequenceProvider extends Instance {
+	GetAnimations(this: KeyframeSequenceProvider, userId: number): InventoryPages;
+	GetKeyframeSequenceAsync(this: KeyframeSequenceProvider, assetId: string): KeyframeSequence;
+}
+
+interface LocalizationService extends Instance {
+	GetTranslatorForPlayer(this: LocalizationService, player: Player): Translator;
+	GetTranslatorForLocaleAsync(this: LocalizationService, locale: string): Translator;
+	GetTranslatorForPlayerAsync(this: LocalizationService, player: Player): Translator;
+}
+
+interface LocalizationTable extends Instance {
+	GetEntries(this: LocalizationTable): Array<LocalizationEntry>;
+	GetTranslator(this: LocalizationTable, localeId: string): Translator;
+	SetEntries(this: LocalizationTable, entries: Array<LocalizationEntry>): void;
+}
+
+interface LogService extends Instance {
+	GetLogHistory(this: LogService): Array<LogInfo>;
+}
+
+interface MarketplaceService extends Instance {
+	ProcessReceipt: (receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision;
+	GetProductInfo(
+		this: MarketplaceService,
+		assetId: number,
+		infoType: CastsToEnum<Enum.InfoType.Asset>,
+	): AssetProductInfo;
+	GetProductInfo(
+		this: MarketplaceService,
+		assetId: number,
+		infoType: CastsToEnum<Enum.InfoType.Product>,
+	): DeveloperProductInfo;
+	GetProductInfo(
+		this: MarketplaceService,
+		assetId: number,
+		infoType: CastsToEnum<Enum.InfoType.GamePass>,
+	): AssetProductInfo;
+	PromptProductPurchase(
+		this: MarketplaceService,
+		player: Player,
+		productId: number,
+		equipIfPurchased?: boolean,
+		currencyType?: CastsToEnum<Enum.CurrencyType>,
+	): void;
+	PromptPurchase(
+		this: MarketplaceService,
+		player: Player,
+		assetId: number,
+		equipIfPurchased?: boolean,
+		currencyType?: CastsToEnum<Enum.CurrencyType>,
+	): void;
+	GetDeveloperProductsAsync(
+		this: MarketplaceService,
+	): StandardPages<{
+		Description: string;
+		PriceInRobux: number;
+		ProductId: number;
+		IconImageAssetId: number;
+		Name: string;
+	}>;
+}
+
+/** @rbxts server */
+interface MessagingService extends Instance {
+	SubscribeAsync(
+		this: MessagingService,
+		topic: string,
+		callback: (Data: any, Sent: number) => void,
+	): RBXScriptConnection;
+}
+
+interface Model extends PVInstance {
+	PrimaryPart: BasePart | undefined;
+	GetBoundingBox(this: Model): LuaTuple<[CFrame, Vector3]>;
+}
+
+interface NetworkClient extends NetworkPeer {
+	readonly ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: ClientReplicator) => void>;
+}
+
+interface NetworkReplicator extends Instance {
+	GetPlayer(this: NetworkReplicator): Player;
+}
+
+interface ObjectValue extends ValueBase {
+	readonly Changed: RBXScriptSignal<(value?: Instance) => void>;
+}
+
+/** @rbxts server */
+interface OrderedDataStore extends GlobalDataStore {
+	GetSortedAsync(
+		this: OrderedDataStore,
+		ascending: boolean,
+		pagesize: number,
+		minValue?: number,
+		maxValue?: number,
+	): DataStorePages;
+}
+
+interface Pages<T = unknown> extends Instance {
+	GetCurrentPage(this: Pages): Array<T>;
+}
+
+interface Path extends Instance {
+	GetWaypoints(this: Path): Array<PathWaypoint>;
+}
+
+interface PathfindingService extends Instance {
+	CreatePath(this: PathfindingService, agentParameters?: AgentParameters): Path;
+	FindPathAsync(this: PathfindingService, start: Vector3, finish: Vector3): Path;
+}
+
+interface PhysicsService extends Instance {
+	GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
+}
+
+interface Player extends Instance {
+	readonly Name: string;
+	readonly UserId: number;
+	ReplicationFocus: BasePart | undefined;
+	readonly Chatted: RBXScriptSignal<(message: string, recipient?: Player) => void>;
+	/** ### TS Usage
+	 * One should check the LocationType of each member of this array in order to verify which members are present. Should be compared to the LocationType const enum.
+	 */
+	GetFriendsOnline(this: Player, maxFriends?: number): Array<FriendOnlineInfo>;
+	/** @rbxts server */
+	LoadCharacter(this: Player): void;
+	/** @rbxts server */
+	LoadCharacterWithHumanoidDescription(this: Player, humanoidDescription: HumanoidDescription): void;
+	GetMouse(this: Player): PlayerMouse;
+	GetJoinData(this: Player): PlayerJoinInfo;
+}
+
+interface PlayerGui extends BasePlayerGui {}
+
 interface Players extends Instance {
 	/** @rbxts client */
 	readonly LocalPlayer: Player;
-	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
-	readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
+	GetPlayerByUserId(this: Players, userId: number): Player | undefined;
+	GetPlayerFromCharacter(this: Players, character: Instance | undefined): Player | undefined;
+	GetPlayers(this: Players): Array<Player>;
 
-	GetPlayerByUserId(userId: number): Player | undefined;
+	GetCharacterAppearanceAsync(this: Players, userId: number): Model | undefined;
+	GetCharacterAppearanceInfoAsync(this: Players, userId: number): CharacterAppearanceInfo;
+	GetFriendsAsync(this: Players, userId: number): FriendPages;
 
-	GetPlayerFromCharacter(character: Model): Player | undefined;
-	GetPlayers(): Array<Player>;
-
-	GetCharacterAppearanceAsync(userId: number): Model | undefined;
-	GetCharacterAppearanceInfoAsync(userId: number): CharacterAppearanceInfo;
-	GetFriendsAsync(userId: number): FriendPages;
-
-	GetHumanoidDescriptionFromOutfitId(outfitId: number): HumanoidDescription;
-	GetHumanoidDescriptionFromUserId(userId: number): HumanoidDescription;
+	GetHumanoidDescriptionFromOutfitId(this: Players, outfitId: number): HumanoidDescription;
+	GetHumanoidDescriptionFromUserId(this: Players, userId: number): HumanoidDescription;
 
 	GetUserThumbnailAsync(
+		this: Players,
 		userId: number,
 		thumbnailType: CastsToEnum<Enum.ThumbnailType>,
 		thumbnailSize: CastsToEnum<Enum.ThumbnailSize>,
 	): LuaTuple<[string, boolean]>;
+}
 
-	GetJoinData(): PlayerJoinInfo;
+interface Plugin extends Instance {
+	GetMouse(this: Plugin): PluginMouse;
+	CreateDockWidgetPluginGui(
+		this: Plugin,
+		pluginGuiId: string,
+		dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo,
+	): DockWidgetPluginGui;
+	CreatePluginAction(
+		this: Plugin,
+		actionId: string,
+		text: string,
+		statusTip: string,
+		iconName?: string,
+		allowBinding?: boolean,
+	): PluginAction;
+	CreatePluginMenu(this: Plugin, id: string, title?: string, icon?: string): PluginMenu;
+	CreateToolbar(this: Plugin, name: string): PluginToolbar;
+	ImportFbxRig(this: Plugin, isR15?: boolean): Model;
+	Union(this: Plugin, objects: Array<BasePart>): UnionOperation;
+}
+
+interface PluginManager extends Instance {
+	CreatePlugin(this: PluginManager): Plugin;
+}
+
+interface PluginMenu extends Instance {
+	AddAction(this: PluginMenu, action: PluginAction): void;
+	AddMenu(this: PluginMenu, menu: PluginMenu): void;
+	AddNewAction(this: PluginMenu, actionId: string, text: string, icon?: string): PluginAction;
+}
+
+interface PluginToolbar extends Instance {
+	CreateButton(
+		this: PluginToolbar,
+		buttonId: string,
+		tooltip: string,
+		iconname: string,
+		text?: string,
+	): PluginToolbarButton;
+}
+
+interface PolicyService extends Instance {
+	/** Returns policy information about a player which is based on geolocation, age group, and platform. */
+	GetPolicyInfoForPlayerAsync(this: PolicyService, player: Player): PolicyInfo;
+}
+
+interface RemoteEvent<T extends Callback = Callback> extends Instance {
+	readonly OnClientEvent: RBXScriptSignal<T>;
+	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
+	 * ```ts
+	 * (new Instance("RemoteEvent") as RemoteEvent<(num: number) => void>).OnServerEvent.Connect((plr, num) => {
+	 *     if (typeIs(num, "number") && num === num) {
+	 *         print(`Yay! Valid number: ${num}`);
+	 *     } else {
+	 *         print(`Bad argument received from ${plr.Name}! Exploit or bug?`);
+	 *     }
+	 * });
+	 * ```
+	 */
+	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...args: Array<unknown>) => void>;
+	FireAllClients(this: RemoteEvent, ...args: Parameters<T>): void;
+	FireClient(this: RemoteEvent, player: Player, ...args: Parameters<T>): void;
+	FireServer(this: RemoteEvent, ...args: Parameters<T>): void;
+}
+
+interface RemoteFunction<T extends Callback = Callback> extends Instance {
+	OnClientInvoke: T;
+	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
+	 * ```ts
+	 * (new Instance("RemoteFunction") as RemoteFunction<(num: number) => void>).OnServerInvoke = (plr, num) => {
+	 *     if (typeIs(num, "number") && num === num) {
+	 *         print(`Yay! Valid number: ${num}`);
+	 *     } else {
+	 *         print(`Bad argument received from ${plr.Name}! Exploit or bug?`);
+	 *     }
+	 * };
+	 * ```
+	 */
+	OnServerInvoke: (player: Player, ...args: Array<unknown>) => void;
+	InvokeClient(this: RemoteFunction, player: Player, ...args: Parameters<T>): unknown;
+	InvokeServer(this: RemoteFunction, ...args: Parameters<T>): ReturnType<T>;
+}
+
+interface RunService extends Instance {
+	BindToRenderStep(this: RunService, name: string, priority: number, callback: (deltaTime: number) => void): void;
 }
 
 interface ScriptDebugger extends Instance {
-	GetGlobals(): Map<string, any>;
-	GetLocals(stackFrame?: number): Map<string, any>;
-	GetUpvalues(stackFrame?: number): Map<string, any>;
+	GetGlobals(this: ScriptDebugger): Map<string, any>;
+	GetLocals(this: ScriptDebugger, stackFrame?: number): Map<string, any>;
+	GetUpvalues(this: ScriptDebugger, stackFrame?: number): Map<string, any>;
 }
 
-interface PointsService extends Instance {
-	AwardPoints(userId: number, amount: number): LuaTuple<[number, number, number, 0]>;
-}
+/** @rbxts server */
+interface ServerScriptService extends Instance {}
 
-interface RemoteEvent extends Instance {
-	readonly OnClientEvent: RBXScriptSignal<(...arguments: Array<unknown>) => void, true>;
-	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...arguments: Array<unknown>) => void>;
-	FireAllClients(...arguments: Array<unknown>): void;
-	FireClient(player: Player, ...arguments: Array<unknown>): void;
-	FireServer(...arguments: Array<unknown>): void;
-}
+/** @rbxts server */
+interface ServerStorage extends Instance {}
 
-interface RemoteFunction extends Instance {
-	OnClientInvoke: (...arguments: Array<any>) => void;
-	OnServerInvoke: (player: Player, ...arguments: Array<any>) => void;
-	InvokeClient(player: Player, ...arguments: Array<any>): unknown;
-	InvokeServer<R = unknown>(...arguments: Array<any>): R;
-}
-
-interface Pose extends Instance {
-	AddSubPose(pose: Pose): void;
-	RemoveSubPose(pose: Pose): void;
+interface ServiceProvider<S = unknown> extends Instance {
+	readonly ServiceAdded: RBXScriptSignal<(service: S[keyof S]) => void>;
+	readonly ServiceRemoving: RBXScriptSignal<(service: S[keyof S]) => void>;
+	FindService(this: ServiceProvider<S>, className: string): S[keyof S] | undefined;
+	FindService(this: ServiceProvider<S>, className: string): Instance | undefined;
+	GetService<T extends keyof S>(this: ServiceProvider<S>, className: T): S[T];
 }
 
 interface SocialService extends Instance {
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
-	CanSendGameInviteAsync(targetPlayer: Player): boolean;
-	PromptGameInvite(targetPlayer: Player): void;
 }
 
 interface SoundService extends Instance {
-	GetListener():
+	GetListener(
+		this: SoundService,
+	):
 		| [Enum.ListenerType.Camera, undefined]
 		| [Enum.ListenerType.CFrame, CFrame]
 		| [Enum.ListenerType.ObjectCFrame, BasePart]
 		| [Enum.ListenerType.ObjectPosition, BasePart];
-	SetListener(listenerType: CastsToEnum<Enum.ListenerType.Camera>): void;
-	SetListener(listenerType: CastsToEnum<Enum.ListenerType.CFrame>, cframe: CFrame): void;
-	SetListener(listenerType: CastsToEnum<Enum.ListenerType.ObjectCFrame>, basePart: BasePart): void;
-	SetListener(listenerType: CastsToEnum<Enum.ListenerType.ObjectPosition>, basePart: BasePart): void;
-	PlayLocalSound(sound: Sound): void;
+	SetListener(this: SoundService, listenerType: CastsToEnum<Enum.ListenerType.Camera>): void;
+	SetListener(this: SoundService, listenerType: CastsToEnum<Enum.ListenerType.CFrame>, cframe: CFrame): void;
+	SetListener(
+		this: SoundService,
+		listenerType: CastsToEnum<Enum.ListenerType.ObjectCFrame>,
+		basePart: BasePart,
+	): void;
+	SetListener(
+		this: SoundService,
+		listenerType: CastsToEnum<Enum.ListenerType.ObjectPosition>,
+		basePart: BasePart,
+	): void;
+	PlayLocalSound(this: SoundService, sound: Sound): void;
+}
+
+interface StandardPages<T = unknown> extends Pages<T> {}
+
+interface StarterGui extends BasePlayerGui {
+	GetCore<T extends keyof GettableCores>(this: StarterGui, parameter: T): GettableCores[T];
+	SetCore<T extends keyof SettableCores>(this: StarterGui, parameter: T, option: SettableCores[T]): void;
 }
 
 interface Studio extends Instance {
 	Theme: StudioTheme;
-}
-
-/** @rbxts server */
-interface ServerScriptService {}
-
-/** @rbxts server */
-interface ServerStorage {}
-
-interface StarterGui extends BasePlayerGui {
-	GetCore<T extends keyof GettableCores>(parameter: T, option: GettableCores[T]): void;
-	SetCore<T extends keyof SettableCores>(parameter: T, option: SettableCores[T]): void;
 }
 
 interface SurfaceGui extends LayerCollector {
@@ -628,86 +677,89 @@ interface SurfaceGui extends LayerCollector {
 }
 
 interface Team extends Instance {
-	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
-	readonly PlayerRemoved: RBXScriptSignal<(player: Player) => void>;
-	GetPlayers(): Array<Player>;
+	GetPlayers(this: Team): Array<Player>;
 }
 
 interface Teams extends Instance {
-	GetTeams(): Array<Team>;
+	GetTeams(this: Teams): Array<Team>;
 }
 
-interface TeleportService {
-	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<
-		(loadingGui: ScreenGui | GuiMain, dataTable?: unknown) => void
-	>;
+interface TeleportService extends Instance {
+	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: ScreenGui, dataTable?: unknown) => void>;
 
 	readonly TeleportInitFailed: RBXScriptSignal<
 		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string) => void
 	>;
 	/** @rbxts server */
-	GetPlayerPlaceInstanceAsync(userId: number): LuaTuple<[boolean, string, number, string]>;
+	GetPlayerPlaceInstanceAsync(this: TeleportService, userId: number): LuaTuple<[boolean, string, number, string]>;
 	/** @rbxts server */
-	ReserveServer(placeId: number): LuaTuple<[string, string]>;
+	ReserveServer(this: TeleportService, placeId: number): LuaTuple<[string, string]>;
 	/** @rbxts client */
-	GetArrivingTeleportGui(): ScreenGui | GuiMain | undefined;
+	GetArrivingTeleportGui(this: TeleportService): ScreenGui | undefined;
 	/** @rbxts client */
-	GetLocalPlayerTeleportData(): unknown;
+	GetLocalPlayerTeleportData(this: TeleportService): unknown;
 	/** @rbxts client */
-	GetTeleportSetting(setting: string): unknown;
+	GetTeleportSetting(this: TeleportService, setting: string): unknown;
 	/** @rbxts client */
-	SetTeleportGui(gui: ScreenGui): void;
+	SetTeleportGui(this: TeleportService, gui: ScreenGui): void;
 	/** @rbxts client */
-	SetTeleportSetting(setting: string, value: TeleportData): void;
+	SetTeleportSetting(this: TeleportService, setting: string, value: TeleportData): void;
 	Teleport(
+		this: TeleportService,
 		placeId: number,
 		player?: Player,
 		teleportData?: TeleportData,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): void;
 
 	TeleportToPrivateServer(
+		this: TeleportService,
 		placeId: number,
 		reservedServerAccessCode: string,
 		players: Array<Player>,
 		spawnName?: string,
 		teleportData?: TeleportData,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): void;
 
 	TeleportPartyAsync(
+		this: TeleportService,
 		placeId: number,
 		players: Array<Player>,
 		teleportData?: TeleportData,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): string;
 
 	TeleportToPlaceInstance(
+		this: TeleportService,
 		placeId: number,
 		instanceId: string,
 		player?: Player,
 		spawnName?: string,
 		teleportData?: TeleportData,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		customLoadingScreen?: ScreenGui,
 	): void;
 
 	TeleportToSpawnByName(
+		this: TeleportService,
 		placeId: number,
 		spawnName: string,
 		player?: Player,
-		teleportData?: any,
-		customLoadingScreen?: ScreenGui | GuiMain,
+		teleportData?: TeleportData,
+		customLoadingScreen?: ScreenGui,
 	): void;
 }
 
 interface Terrain extends BasePart {
-	CopyRegion(region: Region3int16): TerrainRegion;
-	PasteRegion(region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): void;
+	CopyRegion(this: Terrain, region: Region3int16): TerrainRegion;
+	PasteRegion(this: Terrain, region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): void;
 	ReadVoxels(
+		this: Terrain,
 		region: Region3,
 		resolution: number,
 	): LuaTuple<[ReadVoxelsArray<Enum.Material>, ReadVoxelsArray<number>]>;
 	WriteVoxels(
+		this: Terrain,
 		region: Region3,
 		resolution: number,
 		materials: Array<Array<Array<CastsToEnum<Enum.Material>>>>,
@@ -715,47 +767,38 @@ interface Terrain extends BasePart {
 	): void;
 }
 
-interface Tool extends BackpackItem {
-	readonly Equipped: RBXScriptSignal<(mouse: Mouse) => void>;
-}
-
-interface UIPageLayout extends UIGridStyleLayout {
-	readonly PageEnter: RBXScriptSignal<(page: GuiObject) => void>;
-	readonly PageLeave: RBXScriptSignal<(page: GuiObject) => void>;
-	readonly Stopped: RBXScriptSignal<(currentPage: GuiObject) => void>;
-	JumpTo(page: GuiObject): void;
-}
-
-interface Explosion extends Instance {
-	readonly Hit: RBXScriptSignal<(part: BasePart, distance: number) => void>;
-}
-
-interface Dragger extends Instance {
-	MouseDown(mousePart: BasePart, pointOnMousePart: Vector3, parts: Array<BasePart>): void;
-}
-interface JointsService extends Instance {
-	SetJoinAfterMoveInstance(joinInstance: PVInstance): void;
-	SetJoinAfterMoveTarget(joinTarget: PVInstance): void;
-}
-
-interface GuiButton extends GuiObject {
-	readonly Activated: RBXScriptSignal<(inputObject: InputObject) => void>;
-}
-
 interface TextBox extends GuiObject {
 	readonly FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: InputObject) => void>;
 }
 
-interface TweenService {
+interface TextService extends Instance {
+	/** @rbxts server */
+	FilterStringAsync(
+		this: TextService,
+		stringToFilter: string,
+		fromUserId: number,
+		textContext?: CastsToEnum<Enum.TextFilterContext>,
+	): TextFilterResult | undefined;
+}
+
+interface TweenService extends Instance {
 	Create<T extends Instances[keyof Instances]>(
+		this: TweenService,
 		instance: T,
 		tweenInfo: TweenInfo,
 		propertyTable: Partial<FilterMembers<T, Tweenable>>,
 	): Tween;
 }
 
+interface UIPageLayout extends UIGridStyleLayout {
+	readonly PageEnter: RBXScriptSignal<(page: GuiObject) => void>;
+	readonly PageLeave: RBXScriptSignal<(page: GuiObject) => void>;
+	readonly Stopped: RBXScriptSignal<(page: GuiObject) => void>;
+	JumpTo(this: UIPageLayout, page: GuiObject): void;
+}
+
 /** @rbxts client */
-interface UserInputService {
+interface UserInputService extends Instance {
 	readonly InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly InputChanged: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly InputEnded: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
@@ -798,47 +841,29 @@ interface UserInputService {
 	readonly DeviceAccelerationChanged: RBXScriptSignal<(acceleration: InputObject) => void>;
 	readonly DeviceGravityChanged: RBXScriptSignal<(gravity: InputObject) => void>;
 	readonly DeviceRotationChanged: RBXScriptSignal<(rotation: InputObject, cframe: CFrame) => void>;
-	GetConnectedGamepads(): Array<Enum.UserInputType>;
-	GetDeviceRotation(): LuaTuple<[InputObject, CFrame]>;
-	GetGamepadState(gamepadNum: CastsToEnum<Enum.UserInputType>): Array<InputObject>;
-	GetKeysPressed(): Array<InputObject>;
-	GetMouseButtonsPressed(): Array<InputObject>;
-	GetNavigationGamepads(): Array<Enum.UserInputType>;
-	GetSupportedGamepadKeyCodes(gamepadNum: CastsToEnum<Enum.UserInputType>): Array<Enum.KeyCode>;
-	GetDeviceAcceleration(): InputObject;
-	GetDeviceGravity(): InputObject;
-	GetFocusedTextBox(): TextBox | undefined;
+	GetConnectedGamepads(this: UserInputService): Array<Enum.UserInputType>;
+	GetDeviceRotation(this: UserInputService): LuaTuple<[InputObject, CFrame]>;
+	GetGamepadState(this: UserInputService, gamepadNum: CastsToEnum<Enum.UserInputType>): Array<InputObject>;
+	GetKeysPressed(this: UserInputService): Array<InputObject>;
+	GetMouseButtonsPressed(this: UserInputService): Array<InputObject>;
+	GetNavigationGamepads(this: UserInputService): Array<Enum.UserInputType>;
+	GetSupportedGamepadKeyCodes(
+		this: UserInputService,
+		gamepadNum: CastsToEnum<Enum.UserInputType>,
+	): Array<Enum.KeyCode>;
+	GetDeviceAcceleration(this: UserInputService): InputObject;
+	GetDeviceGravity(this: UserInputService): InputObject;
+	GetFocusedTextBox(this: UserInputService): TextBox | undefined;
 }
 
-interface Workspace extends Model {
-	Terrain: Terrain;
-	FindPartOnRay(
-		ray: Ray,
-		ignoreDescendantsInstance?: Instance,
-		terrainCellsAreCubes?: boolean,
-		ignoreWater?: boolean,
-	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-
-	FindPartOnRayWithIgnoreList(
-		ray: Ray,
-		ignoreDescendantsTable: Array<Instance>,
-		terrainCellsAreCubes?: boolean,
-		ignoreWater?: boolean,
-	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-
-	FindPartOnRayWithWhitelist(
-		ray: Ray,
-		whitelistDescendantsTable: Array<Instance>,
-		ignoreWater?: boolean,
-	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-}
+interface UserSettings extends GenericSettings<{ UserGameSettings: UserGameSettings }> {}
 
 /**
  * Used to hold a value.
  */
 interface ValueBase extends Instance {
 	/** The value this object holds. */
-	Value?: unknown;
+	Value: unknown;
 	/**
 	 * This event fires whenever the `Value` property is changed.
 	 *
@@ -847,6 +872,56 @@ interface ValueBase extends Instance {
 	readonly Changed: RBXScriptSignal<(value?: unknown) => void>;
 }
 
-interface ObjectValue extends ValueBase {
-	readonly Changed: RBXScriptSignal<(value?: Instance) => void>;
+interface Workspace extends WorldRoot {
+	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
+	BreakJoints: any;
+	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
+	MakeJoints: any;
+	Terrain: Terrain;
+}
+
+interface WorldRoot extends Model {
+	FindPartOnRay(
+		this: WorldRoot,
+		ray: Ray,
+		ignoreDescendantsInstance?: Instance,
+		terrainCellsAreCubes?: boolean,
+		ignoreWater?: boolean,
+	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+
+	FindPartOnRayWithIgnoreList(
+		this: WorldRoot,
+		ray: Ray,
+		ignoreDescendantsTable: Array<Instance>,
+		terrainCellsAreCubes?: boolean,
+		ignoreWater?: boolean,
+	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+
+	FindPartOnRayWithWhitelist(
+		this: WorldRoot,
+		ray: Ray,
+		whitelistDescendantsTable: Array<Instance>,
+		ignoreWater?: boolean,
+	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+
+	FindPartsInRegion3(
+		this: WorldRoot,
+		region: Region3,
+		ignoreDescendantsInstance?: Instance,
+		maxParts?: number,
+	): Array<BasePart>;
+
+	FindPartsInRegion3WithIgnoreList(
+		this: WorldRoot,
+		region: Region3,
+		ignoreDescendantsTable: Array<Instance>,
+		maxParts?: number,
+	): Array<BasePart>;
+
+	FindPartsInRegion3WithWhiteList(
+		this: WorldRoot,
+		region: Region3,
+		whitelistDescendantsTable: Array<Instance>,
+		maxParts?: number,
+	): Array<BasePart>;
 }

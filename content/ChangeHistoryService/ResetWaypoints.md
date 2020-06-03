@@ -1,0 +1,1 @@
+Clears the history, causing all undo/redo waypoints to be removed.

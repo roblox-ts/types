@@ -1,0 +1,1 @@
+Returns the StatsItem's value.

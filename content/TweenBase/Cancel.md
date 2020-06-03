@@ -1,0 +1,3 @@
+The Cancel function halts playback of its `Tween` and resets the tween variables. If [TweenBase.Play](https://developer.roblox.com/api-reference/function/TweenBase/Play) is called again the `Tween`'s properties will resume interpolating towards their destination but, as the tween variables have been reset, take the full length of the animation to do so.
+
+Only the tween variables are reset, not the properties being changed by the tween. This means if you cancel a tween half way through its animation the properties will not reset to their original values. Where Cancel differs from [TweenBase.Pause](https://developer.roblox.com/api-reference/function/TweenBase/Pause) is that once resumed, it will take the full duration of the tween to complete the animation.

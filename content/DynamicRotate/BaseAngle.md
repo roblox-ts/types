@@ -1,0 +1,1 @@
+The base angle of the DynamicRotate object, in radians.

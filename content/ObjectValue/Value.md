@@ -1,0 +1,1 @@
+Holds a reference to an instance.

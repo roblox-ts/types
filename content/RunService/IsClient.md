@@ -1,0 +1,1 @@
+If the code that invoked this method is running in a client context (within or originating from a LocalScript), this method returns true. In all other cases, it returns false. If this returns true, the code has access to client-side features like `RunService.RenderStepped` or `Players.LocalPlayer`.

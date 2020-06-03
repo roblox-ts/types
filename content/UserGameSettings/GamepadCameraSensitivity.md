@@ -1,0 +1,1 @@
+Describes how sensitive the camera is when using a gamepad.

@@ -1,0 +1,1 @@
+Light direction. Value will be normalized. All values valid except (0,0,0).

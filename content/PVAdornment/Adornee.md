@@ -1,0 +1,1 @@
+The [PVInstance](https://developer.roblox.com/api-reference/class/PVInstance) the PVAdornment is attached to. An adornment will stay positioned and rotated relative to its adornee, even if the adornee moves.

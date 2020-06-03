@@ -1,0 +1,1 @@
+Describes the category of this class.

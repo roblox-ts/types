@@ -1,0 +1,1 @@
+When this value is true, it means that this property/class can be seen in Studio, e.g. in the explorer.

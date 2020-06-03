@@ -1,0 +1,1 @@
+Toggles the visibility of the LayerCollector.

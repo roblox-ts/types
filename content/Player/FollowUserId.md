@@ -1,0 +1,3 @@
+The FollowUserId is a `Player` property that contains the [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId) of the user that a player followed into the game. If the player did not follow anyone into the game, this property will be 0. This property is useful for alerting players who have been followed by another player into the game.
+
+You can get the name of the player followed using this user ID and the [Players.GetNameFromUserIdAsync](https://developer.roblox.com/api-reference/function/Players/GetNameFromUserIdAsync) function.

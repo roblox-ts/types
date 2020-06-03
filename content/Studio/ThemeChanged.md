@@ -1,0 +1,3 @@
+The **ThemeChanged** event fires when Studio's [Theme](https://developer.roblox.com/api-reference/property/Studio/Theme) changes. The best use of this event is to get the colors from the theme that changed and update your plugin’s UI accordingly.
+
+See the [Building Studio Widgets](https://developer.roblox.com/search#stq=building%20studio%20widgets) tutorial for details on working with custom Studio widgets.

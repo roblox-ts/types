@@ -1,0 +1,1 @@
+Indicates whether or not this RenderingTest should be skipped.

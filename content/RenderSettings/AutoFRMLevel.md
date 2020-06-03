@@ -1,0 +1,1 @@
+Sets the starting quality level of the framerate manager, when [RenderSettings.EnableFRM](https://developer.roblox.com/api-reference/property/RenderSettings/EnableFRM) is set to true.

@@ -1,0 +1,1 @@
+Returns the current terrain material color for the specified terrain material.

@@ -1,0 +1,1 @@
+Used to hold a [CFrame](https://developer.roblox.com/api-reference/datatype/CFrame) value.

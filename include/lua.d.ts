@@ -2,18 +2,17 @@
 
 // LUA API
 
-interface Table {}
-
-type LuaTuple<T extends Array<any>> = T & { readonly LUA_TUPLE?: never };
+type LuaTuple<T extends Array<any>> = T & { readonly LUA_TUPLE: never };
 
 /** A table that is shared between all scripts of the same context level. */
-declare const _G: Table;
+interface _G {}
+declare const _G: _G;
 
 /** A string containing the current interpreter version. */
 declare const _VERSION: string;
 
 /** Throws an error if the provided value is false or nil . Returns the value that was passed into the function if the assertion passes. */
-declare function assert<T>(condition: T, message?: string): T;
+declare function assert<T>(condition: T, message?: string): Exclude<T, false | undefined>;
 
 /** Performs an operation on the Lua garbage collector based on the specified option. Roblox's Lua sandbox only allows the "count" option to be used, so none of the other standard options are available. The "count" option returns the total memory in use by Lua (in kilobytes). */
 declare function collectgarbage(option: "count"): number;
@@ -130,44 +129,56 @@ declare function xpcall<T extends Array<any>, U>(
 >;
 
 interface LuaMetatable<T> {
-	__index?: (self: T, index: unknown) => void;
-	__newindex?: (self: T, index: unknown, value: unknown) => void;
-	__add?: (self: T, other: unknown) => unknown;
-	__sub?: (self: T, other: unknown) => unknown;
-	__mul?: (self: T, other: unknown) => unknown;
-	__div?: (self: T, other: unknown) => unknown;
-	__mod?: (self: T, other: unknown) => unknown;
-	__pow?: (self: T, other: unknown) => unknown;
-	__unm?: (self: T) => unknown;
-	__eq?: (self: T, other: unknown) => boolean;
-	__lt?: (self: T, other: unknown) => boolean;
-	__le?: (self: T, other: unknown) => boolean;
-	__call?: (self: T, ...arguments: Array<unknown>) => unknown;
-	__concat?: (self: T, ...arguments: Array<unknown>) => string;
+	__index?: (self: T, index: any) => void;
+	__newindex?: (self: T, index: any, value: any) => void;
+	__add?: (self: T, other: T) => T;
+	__sub?: (self: T, other: T) => T;
+	__mul?: (self: T, other: T) => T;
+	__div?: (self: T, other: T) => T;
+	__mod?: (self: T, other: T) => T;
+	__pow?: (self: T, other: T) => T;
+	__unm?: (self: T) => T;
+	__eq?: (self: T, other: T) => boolean;
+	__lt?: (self: T, other: T) => boolean;
+	__le?: (self: T, other: T) => boolean;
+	__call?: (self: T, ...args: Array<any>) => void;
+	__concat?: (self: T, ...args: Array<any>) => string;
 	__tostring?: (self: T) => string;
-	__len?: (self: T) => unknown;
-	__mode?: string;
+	__len?: (self: T) => number;
+	__mode?: "k" | "v" | "kv";
 	__metatable?: string;
 }
 
-/** Sets the metatable for the given table. If setTo is nil, the metatable of the given table is removed. If the original metatable has a "__metatable" field, this will raise an error. This function returns the table t, which was passed to the function. */
+/** Sets the metatable for the given table. If `metatable` is nil, the metatable of the given table is removed. If the original metatable has a "__metatable" field, this will raise an error. This function returns the table t, which was passed to the function. */
 declare function setmetatable<T extends object>(object: T, metatable: LuaMetatable<T>): T;
 
+/** An object the represents a date or time. Used with `os.date` and `os.time`. */
 interface DateTable {
+	/** The year. */
 	year: number;
+	/** The month. [1, 12] */
 	month: number;
+	/** The day. [1, 31] */
 	day: number;
 
+	/** The hour. [0, 23] */
 	hour?: number;
+	/** The minute. [0, 59] */
 	min?: number;
+	/** The second. [0, 59] */
 	sec?: number;
+	/** Whether this object represents a daylight savings time. */
 	isdst?: boolean;
+	/** The number of days into the year. [1, 366] */
 	yday?: number;
+	/** The day of the week. [1, 7] */
 	wday?: number;
 }
 
 declare namespace os {
+	/** Returns the current number of seconds since Jan 1, 1970 in the UTC timezone. */
 	function time(): number;
+	/** Returns the number of seconds past Jan 1, 1970 in the UTC timezone for a given dateTable object. */
 	function time(dateTable: DateTable): number;
 	function date(formatString: "*t" | "!*t", time?: number): Required<DateTable>;
 	function difftime(t2: number, t1: number): number;
@@ -183,46 +194,53 @@ declare namespace debug {
 /** @rbxts string */
 interface String {
 	/** Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`, `...`, `s[j]`. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
-	byte(i?: number, j?: number): LuaTuple<Array<number>>;
+	byte(this: string, i?: number, j?: number): LuaTuple<Array<number>>;
 
 	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if `plain` is given, then `init` must be given as well. */
+	/** @rbxts disallow-tuple-truthy */
 	find(
+		this: string,
 		pattern: string,
 		init?: number,
 		plain?: boolean,
 	): LuaTuple<[number, number, ...Array<string>] | Array<undefined>>;
 
 	/** Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). */
-	format(...args: Array<number | string>): string;
+	format(this: string, ...args: Array<number | string>): string;
 
 	/** Returns an iterator function that, each time it is called, returns the next captures from pattern over the string s. */
-	gmatch(pattern: string): IterableFunction<LuaTuple<Array<string>>>;
+	gmatch(this: string, pattern: string): IterableFunction<LuaTuple<Array<string>>>;
 
 	/** Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. */
-	gsub(pattern: string, repl: unknown, n?: number): string;
+	gsub(this: string, pattern: string, repl: string, n?: number): LuaTuple<[string, number]>;
+	gsub(this: string, pattern: string, repl: number, n?: number): LuaTuple<[string, number]>;
+	gsub(this: string, pattern: string, repl: (value: string) => string | number | undefined, n?: number): LuaTuple<[string, number]>;
+	gsub(this: string, pattern: string, repl: Map<string, string | number>, n?: number): LuaTuple<[string, number]>;
+	gsub(this: string, pattern: string, repl: { [index: string]: string | number }, n?: number): LuaTuple<[string, number]>;
 
 	/** Receives a string and returns a copy of this string with all uppercase letters changed to lowercase. */
-	lower(): string;
+	lower(this: string): string;
 
 	/** Looks for the first match of pattern in the string s. If a match is found, it is returned; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. */
-	match(pattern: string, init?: number): LuaTuple<Array<string> | Array<undefined>>;
+	/** @rbxts disallow-tuple-truthy */
+	match(this: string, pattern: string, init?: number): LuaTuple<Array<string> | Array<undefined>>;
 
 	/** Returns a string that is the concatenation of n copies of the string s separated by the string sep. */
-	rep(n: number): string;
+	rep(this: string, n: number): string;
 
 	/** Returns a string that is the string s reversed. */
-	reverse(): string;
+	reverse(this: string): string;
 
 	/** Returns an array of substrings, separated by each `sep`.
 	 * Does not handle Lua character classes, thus, the separator string will be interpreted literally.
 	 */
-	split(sep: string): Array<string>;
+	split(this: string, sep: string): Array<string>;
 
 	/** Returns the substring of s that starts at i and continues until j; i and j can be negative. If j is absent, then it is assumed to be equal to -1 (which is the same as the string length). */
-	sub(i: number, j?: number): string;
+	sub(this: string, i: number, j?: number): string;
 
 	/** Receives a string and returns a copy of this string with all lowercase letters changed to uppercase. All other characters are left unchanged. */
-	upper(): string;
+	upper(this: string): string;
 }
 
 declare namespace string {
@@ -279,8 +297,8 @@ declare namespace math {
 	/** Returns m*2^e (e should be an integer). */
 	function ldexp(m: number, e: number): number;
 
-	/** Returns the natural logarithm of x. */
-	function log(n: number): number;
+	/** Returns the natural logarithm of x. If base is provided, returns the logarithm of x with respect to base, which is equivalent to log(x) / log(base) */
+	function log(x: number, base?: number): number;
 
 	/** Returns the base-10 logarithm of x. */
 	function log10(n: number): number;
@@ -331,12 +349,111 @@ declare namespace math {
 	function tanh(n: number): number;
 }
 
+/**
+ * Unless otherwise stated, all functions accept numeric arguments in the range `(-2^51, +2^51)`;
+ * each argument is normalized to the remainder of its division by `2^32` and truncated to an integer
+ * (in some unspecified way), so that its final value falls in the range `[0, 2^32 - 1]`.
+ * Similarly, all results are in the range `[0, 2^32 - 1]`.
+ * Note that `bit32.bnot(0)` is `0xFFFFFFFF`, which is different from -1.
+ */
+declare namespace bit32 {
+	/**
+	 * Returns the number `x` shifted `displacement` bits to the right. The number `displacement` may be any representable integer.
+	 * Negative displacements shift to the left. This shift operation is what is called arithmetic shift.
+	 * Vacant bits on the left are filled with copies of the higher bit of `x`; vacant bits on the right are filled
+	 * with zeros. In particular, displacements with absolute values higher than 31 result in zero or `0xFFFFFFFF`
+	 * (all original bits are shifted out).
+	 */
+	function arshift(x: number, displacement: number): number;
+
+	/** Returns the bitwise _and_ of its operands. */
+	function band(...operands: Array<number>): number;
+
+	/**
+	 * Returns the bitwise negation of `x`. For any integer `x`, the following identity holds:
+	 *
+	 * `assert(bit32.bnot(x) == (-1 - x) % 2^32)`
+	 */
+	function bnot(x: number): number;
+
+	/** Returns the bitwise _or_ of its operands. */
+	function bor(...operands: Array<number>): number;
+
+	/** Returns a boolean signaling whether the bitwise _and_ of its operands is different from zero. */
+	function btest(...operands: Array<number>): boolean;
+
+	/** Returns the bitwise _exclusive or_ of its operands. */
+	function bxor(...operands: Array<number>): number;
+
+	/**
+	 * Returns the unsigned number formed by the bits `field` to `field + width - 1` from `n`.
+	 * Bits are numbered from 0 (least significant) to 31 (most significant).
+	 * All accessed bits must be in the range `[0, 31]`.
+	 *
+	 * The default for `width` is 1.
+	 */
+	function extract(n: number, field: number, width?: number): number;
+
+	/**
+	 * Returns a copy of `n` with the bits `field` to `field + width - 1` replaced by the value `v`.
+	 *
+	 * See `bit32.extract` for details about `field` and `width`.
+	 */
+	function replace(n: number, v: number, field: number, width?: number): number;
+
+	/**
+	 * Returns the number `x` rotated `displacement` bits to the left. The number `displacement` may be any representable integer.
+	 *
+	 * For any valid displacement, the following identity holds:
+	 *
+	 * `assert(bit32.lrotate(x, displacement) == bit32.lrotate(x, displacement % 32))`
+	 *
+	 * In particular, negative displacements rotate to the right.
+	 */
+	function lrotate(x: number, displacement: number): number;
+
+	/**
+	 * Returns the number `x` shifted `displacement` bits to the left. The number `displacement` may be any representable integer.
+	 * Negative displacements shift to the right. In any direction, vacant bits are filled with zeros.
+	 * In particular, displacements with absolute values higher than 31 result in zero (all bits are shifted out).
+	 *
+	 * For positive displacements, the following equality holds:
+	 *
+	 * `assert(bit32.lshift(b, displacement) == (b * 2^displacement) % 2^32)`
+	 */
+	function lshift(x: number, displacement: number): number;
+
+	/**
+	 * Returns the number `x` rotated `displacement` bits to the right. The number `displacement` may be any representable integer.
+	 *
+	 * For any valid displacement, the following identity holds:
+	 *
+	 * `assert(bit32.rrotate(x, displacement) == bit32.rrotate(x, displacement % 32))`
+	 *
+	 * In particular, negative displacements rotate to the left.
+	 */
+	function rrotate(x: number, displacement: number): number;
+
+	/**
+	 * Returns the number `x` shifted `displacement` bits to the right. The number `displacement` may be any representable integer.
+	 * Negative displacements shift to the left. In any direction, vacant bits are filled with zeros.
+	 * In particular, displacements with absolute values higher than 31 result in zero (all bits are shifted out).
+	 *
+	 * For positive displacements, the following equality holds:
+	 *
+	 * `assert(bit32.rshift(b, displacement) == math.floor(b % 2^32 / 2^displacement))`
+	 *
+	 * This shift operation is what is called logical shift.
+	 */
+	function rshift(x: number, displacement: number): number;
+}
+
 declare namespace table {
 	/** Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`. Comp is a function that receives two list elements and returns true when the first element must come before the second in the final order (so that `not comp(list[i+1],list[i])` will be true after the sort). */
 	function sort<T>(t: Array<T>, comp?: (a: T, b: T) => boolean): void;
 }
 
-type thread = {} & { readonly LUA_THREAD?: never };
+type thread = { readonly LUA_THREAD?: never };
 
 declare namespace coroutine {
 	/** Creates a new coroutine, with body f. f must be a Lua function. */
@@ -357,3 +474,45 @@ declare namespace coroutine {
 	/** Suspends the execution of the calling coroutine. Any arguments to yield are passed as extra results to resume. */
 	function yield(...params: Array<unknown>): unknown;
 }
+
+declare function next<T extends readonly any[]>(
+	object: T,
+	index?: number,
+): T extends readonly [infer A]
+	? LuaTuple<[number, A]>
+	: T extends readonly [infer A, infer B]
+	? LuaTuple<[number, A | B]>
+	: T extends readonly [infer A, infer B, infer C]
+	? LuaTuple<[number, A | B | C]>
+	: T extends readonly [infer A, infer B, infer C, infer D]
+	? LuaTuple<[number, A | B | C | D]>
+	: T extends readonly [infer A, infer B, infer C, infer D, infer E]
+	? LuaTuple<[number, A | B | C | D | E]>
+	: T extends readonly [infer A, infer B, infer C, infer D, infer E, infer F]
+	? LuaTuple<[number, A | B | C | D | E | F]>
+	: T extends readonly (infer U)[]
+	? LuaTuple<Array<U>>
+	: LuaTuple<[unknown, unknown]>;
+declare function next<T extends any[]>(
+	object: T,
+	index?: number,
+): T extends [infer A]
+	? LuaTuple<[number, A]>
+	: T extends [infer A, infer B]
+	? LuaTuple<[number, A | B]>
+	: T extends [infer A, infer B, infer C]
+	? LuaTuple<[number, A | B | C]>
+	: T extends [infer A, infer B, infer C, infer D]
+	? LuaTuple<[number, A | B | C | D]>
+	: T extends [infer A, infer B, infer C, infer D, infer E]
+	? LuaTuple<[number, A | B | C | D | E]>
+	: T extends [infer A, infer B, infer C, infer D, infer E, infer F]
+	? LuaTuple<[number, A | B | C | D | E | F]>
+	: T extends (infer U)[]
+	? LuaTuple<Array<U>>
+	: LuaTuple<[unknown, unknown]>;
+declare function next<T>(object: Array<T>, index?: number): LuaTuple<[number, T]>;
+declare function next<T>(object: Set<T>, index?: T): LuaTuple<[T, true]>;
+declare function next<K, V>(object: Map<K, V>, index?: K): LuaTuple<[K, V]>;
+declare function next<T>(object: T, index?: keyof T): LuaTuple<[keyof T, T[keyof T]]>;
+declare function next(object: object, index?: unknown): LuaTuple<[unknown, unknown]>;

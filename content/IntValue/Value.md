@@ -1,0 +1,1 @@
+Used to hold an [Integer](https://developer.roblox.com/articles/Integers).

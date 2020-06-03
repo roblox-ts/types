@@ -1,0 +1,1 @@
+An object which allows animations to be applied to a player's character and make the parts that make said character up react in the way that is described within the animation file (AnimationId).

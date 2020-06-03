@@ -1,0 +1,1 @@
+IncommingReplicationLag is a property that allows you to simulate high-latency situations. It adds a delay time between when packets are actually sent and received. The property is measured in seconds, and defaults to 0.

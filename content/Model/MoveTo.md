@@ -1,0 +1,6 @@
+Moves the [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) to the given position. If a primary part has not been specified then the root part of the model will be used. Because the root part is not deterministic, it is recommended to always set a [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) when using MoveTo.
+
+If there are any obstructions where the model is to be moved to, such as `Terrain` or other `BasePart`s, then the model will be moved up in the Y direction until there is nothing in the way. If this behavior is not desired, [Model.SetPrimaryPartCFrame](https://developer.roblox.com/api-reference/function/Model/SetPrimaryPartCFrame) should be used instead.
+
+Note that rotation is not preserved when moving a model with MoveTo. It is recommended to use either [Model.TranslateBy](https://developer.roblox.com/api-reference/function/Model/TranslateBy) or [Model.SetPrimaryPartCFrame](https://developer.roblox.com/api-reference/function/Model/SetPrimaryPartCFrame) if the current rotation of the model needs to be preserved.
+@param position The `DataType/Position` the `Model` is to be moved to.

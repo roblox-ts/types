@@ -1,0 +1,1 @@
+The color of the selection box used with object selections in the `Workspace`

@@ -1,0 +1,79 @@
+name: Build
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    if: contains(github.event.commits[0].message, '[skip ci]') == false &&
+        github.repository == 'roblox-ts/types' &&
+        github.ref == 'refs/heads/master'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Install NodeJS
+        uses: actions/setup-node@master
+        with:
+          node-version: 12.16.2
+          registry-url: 'https://registry.npmjs.org'
+
+      - uses: bahmutov/npm-install@v1
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "noreply@github.com"
+
+      - name: Compile
+        run: |
+          npm install -g typescript
+          tsc
+
+      - name: Generate Files
+        run: |
+          node out/index.js
+
+      - name: Push Generated Files
+        run: |
+          git add -A
+          if ! git diff-index --quiet HEAD --; then
+            echo "Generated files changed!"
+            git commit -m "Update generated files [skip ci]"
+            git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:master
+          fi
+
+      - name: Copy Files to Deploy Branch and Publish
+        run: |
+          cd ..
+
+          git clone --depth=50 --branch=deploy https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git deploy
+          mkdir -p deploy/include
+          rm -rf deploy/include/*
+          cp -r types/include/* deploy/include
+          cp types/plugin.d.ts deploy/plugin.d.ts
+          cp types/README.md deploy/README.md
+
+          cd deploy
+
+          git add -A
+          if ! git diff-index --quiet HEAD --; then
+            echo "Deploy changed!"
+            if [ "$GITHUB_EVENT_NAME" == "push" ]; then
+              git commit -m "Manual Update"
+            else
+              git commit -m "Automatic Update"
+            fi
+
+            npm version patch -m "package.json version bump to %s [skip ci]"
+            git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:deploy
+            npm publish
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}

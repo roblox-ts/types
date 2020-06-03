@@ -1,0 +1,1 @@
+The lower position limit along the x-axis of [Constraint.Attachment0](https://developer.roblox.com/api-reference/property/Constraint/Attachment0) for a `SlidingBallConstraint` if [SlidingBallConstraint.LimitsEnabled](https://developer.roblox.com/api-reference/property/SlidingBallConstraint/LimitsEnabled) is true.

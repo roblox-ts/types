@@ -1,0 +1,1 @@
+The perceived angular size of the sun while using this skybox, in degrees.

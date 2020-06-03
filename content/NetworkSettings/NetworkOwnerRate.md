@@ -1,0 +1,1 @@
+NetworkOwnerRate specifies how frequently the network owner of a `/BasePart` can be automatically changed by the server, per second. It currently defaults to 10 times per second.

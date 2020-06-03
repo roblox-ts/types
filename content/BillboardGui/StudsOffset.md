@@ -1,0 +1,1 @@
+The offset of the BillboardGui in studs, relative to the `Camera`'s orientation.

@@ -1,0 +1,1 @@
+If the code that invoked this method is running in a server context (within or originating from a Script), this method returns true. In all other cases, it returns false. If this returns true, the code has access to server-side features like `ServerStorage` or `ServerScriptService`.

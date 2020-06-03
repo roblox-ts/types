@@ -1,0 +1,1 @@
+Fires when the current place is exited.

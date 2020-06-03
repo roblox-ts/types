@@ -1,0 +1,1 @@
+A 3D GUI object which displays a lasso between the defined Humanoid and a given Vector3 point.

@@ -1,0 +1,5 @@
+BuildRigFromAttachments assembles a tree of `Motor6D` joints for a `Humanoid`. Motor6D joints are required for the playback of [Animations](https://developer.roblox.com/api-reference/class/Animation)
+
+Starting from the humanoid's [Humanoid.RootPart](https://developer.roblox.com/api-reference/property/Humanoid/RootPart), the function collects all `Attachment`s parented in the current part, whose name ends with "RigAttachment". It then searches for a matching attachment in the character that shares the same name as the attachment. Using those two attachments, a Motor6D joint is generated based on the parts associated with the two attachments, and the [Attachment.CFrame](https://developer.roblox.com/api-reference/property/Attachment/CFrame)s of the attachments.
+
+See the provided code sample below to see how this function works.

@@ -1,0 +1,7 @@
+The intensity of illumination in the place.
+
+Changing this value will influence the impact of the light source (sun or moon) on the map's lighting. When brightness is set to 0, there will be no effect due to [Lighting.ColorShift_Top](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Top) or [Lighting.ColorShift_Bottom](https://developer.roblox.com/api-reference/property/Lighting/ColorShift_Bottom) as the light source is having no effect. Note, it will not influence the shadows created by the [Lighting.GlobalShadows](https://developer.roblox.com/api-reference/property/Lighting/GlobalShadows) property.
+
+Whilst this property is not clamped, the effect is clamped between 0 and 2. Meaning setting Brightness to 10 will be no different to setting it to 2.
+
+Note, [Lighting.Ambient](https://developer.roblox.com/api-reference/property/Lighting/Ambient) and [Lighting.OutdoorAmbient](https://developer.roblox.com/api-reference/property/Lighting/OutdoorAmbient) can also be used to influence how bright a place appears. For example, setting [Lighting.OutdoorAmbient](https://developer.roblox.com/api-reference/property/Lighting/OutdoorAmbient) to 255, 255, 255 will make the place appear brighter than its default value of 127, 127, 127 (as it is more white).

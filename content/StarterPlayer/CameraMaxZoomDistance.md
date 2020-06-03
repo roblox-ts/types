@@ -1,0 +1,3 @@
+The CameraMaxZoomDistance `StarterPlayer` property sets the maximum distance in studs the camera can be from the character with the default cameras.
+
+This property sets the default value of [Player.CameraMaxZoomDistance](https://developer.roblox.com/api-reference/property/Player/CameraMaxZoomDistance) for each player who joins the game. If this value is set to a lower value than [StarterPlayer.CameraMinZoomDistance](https://developer.roblox.com/api-reference/property/StarterPlayer/CameraMinZoomDistance) it will be increased to CameraMinZoomDistance.

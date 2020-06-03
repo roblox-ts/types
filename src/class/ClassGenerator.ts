@@ -14,9 +14,14 @@ import {
 	ApiValueType,
 	ClassTag,
 	MemberTag,
+	SecurityType,
 } from "../api";
 import { Generator } from "./Generator";
 import { ReflectionMetadata } from "./ReflectionMetadata";
+import fs from "fs-extra";
+
+const ROOT_DIR = path.join(__dirname, "..", "..");
+const CONTENT_DIR = path.join(ROOT_DIR, "content");
 
 interface BreakdanceNodeBase {
 	type: string;
@@ -38,6 +43,7 @@ interface BreakdanceNodeNodes extends BreakdanceNodeBase {
 
 type BreakdanceNode = BreakdanceNodeVal | BreakdanceNodeNodes;
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const breakdance = require("breakdance") as (
 	HTMLtoConvert: string,
 	options?: {
@@ -87,27 +93,173 @@ const ROOT_CLASS_NAME = "<<<ROOT>>>";
 
 const BAD_NAME_CHARS = [" ", "/"];
 
-const CREATABLE_BLACKLIST: { [index: string]: true | undefined } = {
-	UserSettings: true,
-	DebugSettings: true,
-	Studio: true,
-	GameSettings: true,
-	ParabolaAdornment: true,
-	LuaSettings: true,
-	PhysicsSettings: true,
-	Player: true,
-};
+/**
+ * These classes are tagged as Creatable by the API Dump, probably because they are instantiable to CoreScripts.
+ * Developers, however, cannot create these.
+ */
+const CREATABLE_BLACKLIST = new Set([
+	"UserSettings",
+	"DebugSettings",
+	"Studio",
+	"GameSettings",
+	"ParabolaAdornment",
+	"LuaSettings",
+	"PhysicsSettings",
+	"Player",
+	"DebuggerWatch",
+	"Tween",
+	"UserGameSettings",
+]);
 
-const MEMBER_BLACKLIST: {
-	[index: string]:
-		| {
-				[index: string]: true | undefined;
-		  }
-		| undefined;
-} = {
-	Instance: { ClassName: true, Changed: true },
-	Workspace: { BreakJoints: true, MakeJoints: true },
-};
+const PLUGIN_ONLY_CLASSES = new Set([
+	"ABTestService",
+	"ChangeHistoryService",
+	"CoreGui",
+	"DataModelSession",
+	"DebuggerBreakpoint",
+	"DebuggerManager",
+	"DebuggerWatch",
+	"DebugSettings",
+	"File",
+	"GameSettings",
+	"GlobalSettings",
+	"KeyframeSequenceProvider",
+	"LuaSettings",
+	"MemStorageConnection",
+	"MultipleDocumentInterfaceInstance",
+	"NetworkPeer",
+	"NetworkReplicator",
+	"NetworkSettings",
+	"PackageService",
+	"PhysicsSettings",
+	"Plugin",
+	"PluginAction",
+	"PluginDebugService",
+	"PluginDragEvent",
+	"PluginGui",
+	"PluginGuiService",
+	"PluginMenu",
+	"PluginMouse",
+	"PluginToolbar",
+	"PluginToolbarButton",
+	"RenderingTest",
+	"RenderSettings",
+	"RobloxPluginGuiService",
+	"ScriptContext",
+	"ScriptDebugger",
+	"Selection",
+	"StatsItem",
+	"Studio",
+	"StudioData",
+	"StudioService",
+	"StudioTheme",
+	"TaskScheduler",
+	"TestService",
+	"VersionControlService",
+]);
+
+const CLASS_BLACKLIST = new Set([
+	// Classes which Roblox leverages internally/in the CoreScripts but serve no purpose to developers
+	"AnalysticsSettings",
+	"BrowserService",
+	"CacheableContentProvider",
+	"ClusterPacketCache",
+	"CookiesService",
+	"CorePackages",
+	"CoreScript",
+	"CoreScriptSyncService",
+	"DraftsService",
+	"FlagStandService",
+	"FlyweightService",
+	"FriendService",
+	"GamepadService",
+	"Geometry",
+	"GoogleAnalyticsConfiguration",
+	"GuidRegistryService",
+	"HttpRbxApiService",
+	"HttpRequest",
+	"KeyboardService",
+	"LocalStorageService",
+	"LuaWebService",
+	"MemStorageService",
+	"MouseService",
+	"PartOperationAsset",
+	"PermissionsService",
+	"PhysicsPacketCache",
+	"PlayerEmulatorService",
+	"ReflectionMetadataItem",
+	"RobloxReplicatedStorage",
+	"RuntimeScriptService",
+	"SpawnerService",
+	"StandalonePluginScripts",
+	"StopWatchReporter",
+	"ThirdPartyUserService",
+	"TimerService",
+	"TouchInputService",
+	"VirtualInputManager",
+	"Visit",
+
+	// never implemented
+	"LoginService",
+	"ScriptService",
+	"AdvancedDragger",
+
+	// super deprecated / never implemented:
+	"AdService",
+	"PluginManager",
+	"FunctionalTest",
+	"VirtualUser",
+	"NotificationService",
+
+	// "BevelMesh",
+	"CustomEvent",
+	"CustomEventReceiver",
+	// "CylinderMesh",
+	// "DoubleConstrainedValue",
+	"Flag",
+	"FlagStand",
+	// "FloorWire",
+	// "Glue",
+	"GuiMain",
+	// "Hat",
+	"Hint",
+	// "Hole",
+	"Hopper",
+	"HopperBin",
+	// "IntConstrainedValue",
+	// "JointsService",
+	"Message",
+	// "MotorFeature",
+	"PointsService",
+	// "SelectionPartLasso",
+	// "SelectionPointLasso",
+	// "SkateboardPlatform",
+	"Skin",
+
+	"ReflectionMetadata",
+	"ReflectionMetadataCallbacks",
+	"ReflectionMetadataClasses",
+	"ReflectionMetadataEnums",
+	"ReflectionMetadataEvents",
+	"ReflectionMetadataFunctions",
+	"ReflectionMetadataProperties",
+	"ReflectionMetadataYieldFunctions",
+
+	// unused
+	"UGCValidationService",
+	"Status",
+	"RbxAnalyticsService",
+]);
+
+const MEMBER_BLACKLIST = new Map([
+	["Instance", ["ClassName"]],
+	["Workspace", ["FilteringEnabled"]],
+]);
+
+const EXPECTED_EXTRA_MEMBERS = new Map([
+	["Player", ["Name"]],
+	["ValueBase", ["Value", "Changed"]],
+]);
 
 function containsBadChar(name: string) {
 	for (const badChar of BAD_NAME_CHARS) {
@@ -122,30 +274,85 @@ function safeName(name: string) {
 	return containsBadChar(name) ? `["${name}"]` : name;
 }
 
-const VALUE_TYPE_MAP: { [index: string]: string | null } = {
-	Array: "Array<any>",
-	BinaryString: null,
-	bool: "boolean",
-	Connection: "RBXScriptConnection",
-	Content: "string",
-	CoordinateFrame: "CFrame",
-	Dictionary: "object",
-	double: "number",
-	EventInstance: "RBXScriptSignal",
-	float: "number",
-	int: "number",
-	int64: "number",
-	Map: "object",
-	Object: "Instance",
-	Objects: "Array<Instance>",
-	Property: "string",
-	ProtectedString: "string",
-	Rect2D: "Rect",
-	Tuple: "Array<any>",
-	Variant: "any",
-};
+const ABSTRACT_CLASSES = new Set<string>([
+	"BackpackItem",
+	"BasePart",
+	"BasePlayerGui",
+	"BaseScript",
+	"BevelMesh",
+	"BodyMover",
+	"CharacterAppearance",
+	"Clothing",
+	"Constraint",
+	"Controller",
+	"DataModelMesh",
+	"DynamicRotate",
+	"FaceInstance",
+	"Feature",
+	"FormFactorPart",
+	"GenericSettings",
+	"GuiBase",
+	"GuiBase2d",
+	"GuiBase3d",
+	"GuiButton",
+	"GuiLabel",
+	"GuiObject",
+	"HandleAdornment",
+	"HandlesBase",
+	"Instance",
+	"JointInstance",
+	"LayerCollector",
+	"Light",
+	"LuaSourceContainer",
+	"ManualSurfaceJointInstance",
+	"NetworkPeer",
+	"NetworkReplicator",
+	"Pages",
+	"PartAdornment",
+	"PluginGui",
+	"PostEffect",
+	"PVAdornment",
+	"PVInstance",
+	"SelectionLasso",
+	"ServiceProvider",
+	"SlidingBallConstraint",
+	"SoundEffect",
+	"StatsItem",
+	"TriangleMeshPart",
+	"TweenBase",
+	"UIBase",
+	"UIComponent",
+	"UIConstraint",
+	"UIGridStyleLayout",
+	"UILayout",
+	"ValueBase",
+	"WorldRoot",
+]);
 
-const PROP_TYPE_MAP: { [index: string]: string } = {};
+const VALUE_TYPE_MAP = new Map<string, string | null>([
+	["Array", "Array<any>"],
+	["BinaryString", null],
+	["bool", "boolean"],
+	["Connection", "RBXScriptConnection"],
+	["Content", "string"],
+	["CoordinateFrame", "CFrame"],
+	["Dictionary", "object"],
+	["double", "number"],
+	["EventInstance", "RBXScriptSignal"],
+	["float", "number"],
+	["int", "number"],
+	["int64", "number"],
+	["Map", "object"],
+	["Object", "Instance"],
+	["Objects", "Array<Instance>"],
+	["Property", "string"],
+	["ProtectedString", "string"],
+	["Rect2D", "Rect"],
+	["Tuple", "Array<any>"],
+	["Variant", "any"],
+]);
+
+const PROP_TYPE_MAP = new Map<string, string>();
 
 function safePropType(valueType: string | undefined | null) {
 	if (valueType === null) {
@@ -154,15 +361,24 @@ function safePropType(valueType: string | undefined | null) {
 	if (valueType === undefined) {
 		throw new Error("Undefined valueType!");
 	}
-	const mappedType = PROP_TYPE_MAP[valueType];
-	if (mappedType !== undefined) {
-		return mappedType;
-	}
-	return valueType;
+	return PROP_TYPE_MAP.get(valueType) ?? valueType;
 }
 
-function safeValueType(valueType: ApiValueType, canImplicitlyConvertEnum: boolean = false) {
-	const mappedType = VALUE_TYPE_MAP[valueType.Name];
+const RENAMEABLE_AUTO_TYPES = new Map<string, string>([
+	["Part", "BasePart"],
+	["Script", "LuaSourceContainer"],
+	["Character", "Model"],
+	["Input", "InputObject"],
+]);
+
+function safeRenamedInstance(name: string): string;
+function safeRenamedInstance(name: string | undefined): string | undefined;
+function safeRenamedInstance(name: string | undefined) {
+	return name && (RENAMEABLE_AUTO_TYPES.get(name) ?? name);
+}
+
+function safeValueType(valueType: ApiValueType, canImplicitlyConvertEnum = false) {
+	const mappedType = VALUE_TYPE_MAP.get(valueType.Name);
 	if (mappedType !== undefined) {
 		return mappedType;
 	} else if (valueType.Category === "Enum") {
@@ -178,11 +394,11 @@ function safeValueType(valueType: ApiValueType, canImplicitlyConvertEnum: boolea
 	}
 }
 
-const RETURN_TYPE_MAP: { [index: string]: string | null } = {
-	Instance: "Instance | undefined", // api dump lies :(
-	any: "unknown",
-	["Array<any>"]: "unknown",
-};
+const RETURN_TYPE_MAP = new Map([
+	["Instance", "Instance | undefined"], // api dump lies :(
+	["any", "unknown"],
+	["Array<any>", "unknown"],
+]);
 
 function safeReturnType(valueType: string | undefined | null) {
 	if (valueType === null) {
@@ -191,19 +407,19 @@ function safeReturnType(valueType: string | undefined | null) {
 	if (valueType === undefined) {
 		throw new Error("Undefined valueType!");
 	}
-	const mappedType = RETURN_TYPE_MAP[valueType];
+	const mappedType = RETURN_TYPE_MAP.get(valueType);
 	if (mappedType !== undefined) {
 		return mappedType;
 	}
 	return valueType;
 }
 
-const ARG_NAME_MAP: { [index: string]: string | null } = {
-	["function"]: "callback",
-	["debugger"]: "debug",
-	["old"]: "oldValue",
-	["new"]: "newValue",
-};
+const ARG_NAME_MAP = new Map([
+	["function", "callback"],
+	["debugger", "debug"],
+	["old", "oldValue"],
+	["new", "newValue"],
+]);
 
 function safeArgName(name: string | undefined | null) {
 	if (name === null) {
@@ -212,66 +428,26 @@ function safeArgName(name: string | undefined | null) {
 	if (name === undefined) {
 		throw new Error("Undefined name!");
 	}
-	const mappedType = ARG_NAME_MAP[name];
-	if (mappedType !== undefined) {
-		return mappedType;
-	}
-	return name;
+	return ARG_NAME_MAP.get(name) ?? name;
 }
 
-function getSecurity(member: ApiMemberBase) {
-	const security = member.Security || "None";
-	if (typeof security === "string") {
-		return {
-			Read: security,
-			Write: security,
-		};
-	}
-	return security;
+const securityOverride = new Map<string, Map<string, ApiMemberBase["Security"]>>([
+	["StarterGui", new Map([["ShowDevelopmentGui", "PluginSecurity"]])],
+]);
+
+function getSecurity(className: string, member: ApiMemberBase) {
+	const security = securityOverride.get(className)?.get(member.Name) || member.Security || "None";
+	return typeof security === "string" ? { Read: security, Write: security } : security;
 }
 
-function classHasTag(api: ApiClass, tag: ClassTag) {
-	if (api.Tags) {
-		return api.Tags.indexOf(tag) !== -1;
-	}
-	return false;
-}
-
-function memberHasTag(api: ApiMemberBase, tag: MemberTag) {
-	if (api.Tags) {
-		return api.Tags.indexOf(tag) !== -1;
-	}
-	return false;
+function hasTag(member: ApiClass, tag: ClassTag): boolean;
+function hasTag(member: ApiMemberBase, tag: MemberTag): boolean;
+function hasTag({ Tags }: ApiClass | ApiMemberBase, tag: string) {
+	return Tags ? Tags.includes(tag as ClassTag & MemberTag) : false;
 }
 
 function isCreatable(rbxClass: ApiClass) {
-	return (
-		!CREATABLE_BLACKLIST[rbxClass.Name] &&
-		!classHasTag(rbxClass, "NotCreatable") &&
-		!classHasTag(rbxClass, "Service")
-	);
-}
-
-function generateArgs(params: Array<ApiParameter>, canImplicitlyConvertEnum: boolean = true) {
-	const args = new Array<string>();
-	const paramNames = params.map(param => param.Name);
-	for (let i = 0; i < paramNames.length; i++) {
-		const name = paramNames[i];
-		if (paramNames.indexOf(name, i + 1) !== -1) {
-			let n = 0;
-			for (let j = i; j < params.length; j++) {
-				paramNames[j] = `${name}${n++}`;
-			}
-		}
-	}
-	let optional = false;
-	for (let i = 0; i < params.length; i++) {
-		const param = params[i];
-		const paramType = safeValueType(param.Type, canImplicitlyConvertEnum);
-		optional = optional || param.Default !== undefined || paramType === "any";
-		args.push(`${safeArgName(paramNames[i])}${optional ? "?" : ""}: ${paramType}`);
-	}
-	return args.join(", ");
+	return !CREATABLE_BLACKLIST.has(rbxClass.Name) && !hasTag(rbxClass, "NotCreatable") && !hasTag(rbxClass, "Service");
 }
 
 function multifilter<T>(list: Array<T>, numResultArrays: number, condition: (element: T) => number) {
@@ -286,13 +462,6 @@ function multifilter<T>(list: Array<T>, numResultArrays: number, condition: (ele
 	}
 
 	return results;
-}
-
-class NumberHelper {
-	private n = 0;
-	public get() {
-		return this.n++;
-	}
 }
 
 namespace ClassInformation {
@@ -337,7 +506,7 @@ namespace ClassInformation {
 		callback: Array<Callback>;
 	}
 
-	function processBreakdownNode(node: BreakdanceNode, index: number = 0) {
+	function processBreakdownNode(node: BreakdanceNode, index = 0) {
 		if (node.nodes) {
 			node.nodes.forEach(processBreakdownNode);
 
@@ -549,7 +718,7 @@ namespace ClassInformation {
 const { processDescriptionInfo: processDescription } = ClassInformation;
 
 function handleLinkData(
-	myLinks: Array<Promise<any>>,
+	myLinks: Array<Promise<unknown>>,
 	linkDatum: {
 		rbxMember: ApiClass;
 		link: string;
@@ -639,24 +808,28 @@ function handleLinkData(
 	);
 }
 
+const cacher = new Map<ts.InterfaceDeclaration, Array<ts.PropertySignature | ts.MethodSignature>>();
+
 export class ClassGenerator extends Generator {
 	private ClassReferences = new Map<string, ApiClass>();
 
 	constructor(
 		filePath: string,
 		protected metadata: ReflectionMetadata,
-		private security: string,
-		private lowerSecurity: string | undefined,
+		private definedClassNames: Set<string>,
+		private security: SecurityType,
+		private lowerSecurity: SecurityType | undefined,
 	) {
 		super(filePath, metadata);
 	}
 
-	private canRead(member: ApiMemberBase) {
-		return getSecurity(member).Read === this.security;
+	private canRead(className: string, member: ApiMemberBase) {
+		return getSecurity(className, member).Read === this.security;
 	}
 
-	private canWrite(member: ApiMemberBase) {
-		return getSecurity(member).Write === this.security;
+	private canWrite(className: string, member: ApiMemberBase) {
+		const writeSecurity = getSecurity(className, member).Write;
+		return writeSecurity === this.security || writeSecurity === this.lowerSecurity; // hack
 	}
 
 	private getSignature(node?: ts.Node) {
@@ -680,12 +853,7 @@ export class ClassGenerator extends Generator {
 		return `/** ${desc} */`;
 	}
 
-	private writeSignatures(
-		rbxMember: ApiMemberBase,
-		getNodes: (tsImplInterface: ts.InterfaceDeclaration) => Array<ts.PropertySignature | ts.MethodSignature>,
-		tsImplInterface?: ts.InterfaceDeclaration,
-		description?: string,
-	) {
+	private writeSignatures(rbxMember: ApiMemberBase, tsImplInterface?: ts.InterfaceDeclaration, description?: string) {
 		if (tsImplInterface) {
 			const name = rbxMember.Name;
 			const signatures = Array<string>();
@@ -693,13 +861,21 @@ export class ClassGenerator extends Generator {
 			if (description) {
 				documentations.push(this.formatDescription(description));
 			}
-			const nodes = getNodes(tsImplInterface);
+
+			let nodes = cacher.get(tsImplInterface);
+			if (!nodes)
+				cacher.set(
+					tsImplInterface,
+					(nodes = [...tsImplInterface.getProperties(), ...tsImplInterface.getMethods()]),
+				);
+
 			nodes
 				.filter(prop => prop.getName() === name)
 				.forEach(node => {
 					const [signature, documentation] = this.getSignature(node);
 					signatures.push(signature);
-					documentations.push(documentation);
+					// we don't do this anymore, because of the new TS comment behavior. It automatically combines docs
+					// documentations.push(documentation);
 				});
 
 			if (documentations.length > 0) {
@@ -723,30 +899,71 @@ export class ClassGenerator extends Generator {
 		this.write(`/** ${(description.trim() !== "" ? description : "[NO DOCUMENTATION]") + tagStr} */`);
 	}
 
+	private generateArgs(params: Array<ApiParameter>, canImplicitlyConvertEnum = true, args = new Array<string>()) {
+		const paramNames = params.map(param => param.Name);
+		for (let i = 0; i < paramNames.length; i++) {
+			const name = paramNames[i];
+			if (paramNames.indexOf(name, i + 1) !== -1) {
+				let n = 0;
+				for (let j = i; j < params.length; j++) {
+					paramNames[j] = `${name}${n++}`;
+				}
+			}
+		}
+		let optional = false;
+		for (let i = 0; i < params.length; i++) {
+			const param = params[i];
+			let paramType = safeValueType(param.Type, canImplicitlyConvertEnum);
+			optional = optional || param.Default !== undefined || paramType === "any";
+			const argName = safeArgName(paramNames[i]);
+			if (argName && paramType === "Instance") {
+				const lowerName = argName.toLowerCase();
+				const findings = [...this.ClassReferences.keys(), "Character", "Input"].filter(k => {
+					const l = k.toLowerCase();
+					return k !== "Instance" && lowerName.includes(l); // || l.includes(lowerName);
+				});
+
+				if (findings.length > 0) {
+					const partPos = findings.indexOf("Part");
+					if (partPos !== -1 && findings.length > 1 && !lowerName.includes("or")) {
+						findings.splice(partPos, 1);
+					}
+					const found =
+						safeRenamedInstance(findings.find(found => found.toLowerCase() === lowerName)) ||
+						findings.map(found => safeRenamedInstance(found)).join(" | ");
+
+					paramType = found;
+				}
+			}
+			args.push(`${argName || `arg${i}`}${optional ? "?" : ""}: ${paramType || "unknown"}`);
+		}
+		return args.join(", ");
+	}
+
 	private generateCallback(rbxCallback: ApiCallback, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxCallback.Name;
-		const args = generateArgs(rbxCallback.Parameters);
+		const args = this.generateArgs(rbxCallback.Parameters);
 		const { Description: wikiDescription } = rbxCallback;
 		const description =
 			wikiDescription && wikiDescription.trim() !== ""
 				? wikiDescription
 				: this.metadata.getCallbackDescription(className, name);
 
-		if (!this.writeSignatures(rbxCallback, impl => impl.getProperties(), tsImplInterface, description)) {
+		if (!this.writeSignatures(rbxCallback, tsImplInterface, description)) {
 			this.write(`${name}: (${args}) => void;`);
 		}
 	}
 
 	private generateEvent(rbxEvent: ApiEvent, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxEvent.Name;
-		const args = generateArgs(rbxEvent.Parameters, false);
+		const args = this.generateArgs(rbxEvent.Parameters, false);
 		const { Description: wikiDescription } = rbxEvent;
 		const description =
 			wikiDescription && wikiDescription.trim() !== ""
 				? wikiDescription
 				: this.metadata.getEventDescription(className, name);
 
-		if (!this.writeSignatures(rbxEvent, impl => impl.getProperties(), tsImplInterface, description)) {
+		if (!this.writeSignatures(rbxEvent, tsImplInterface, description)) {
 			this.write(`readonly ${name}: RBXScriptSignal<(${args}) => void>;`);
 		}
 	}
@@ -755,15 +972,17 @@ export class ClassGenerator extends Generator {
 		const name = rbxFunction.Name;
 		const returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
 		if (returnType !== null) {
-			const args = generateArgs(rbxFunction.Parameters);
+			const args = this.generateArgs(rbxFunction.Parameters, true, [`this: ${className}`]);
 			const { Description: wikiDescription } = rbxFunction;
 			const description =
 				wikiDescription && wikiDescription.trim() !== ""
 					? wikiDescription
 					: this.metadata.getMethodDescription(className, name);
-			if (!this.writeSignatures(rbxFunction, impl => impl.getMethods(), tsImplInterface, description)) {
+			if (!this.writeSignatures(rbxFunction, tsImplInterface, description)) {
 				this.write(`${name}(${args}): ${returnType};`);
 			}
+		} else {
+			console.log(name, "is very bad!!!", className);
 		}
 	}
 
@@ -777,41 +996,58 @@ export class ClassGenerator extends Generator {
 					? wikiDescription
 					: this.metadata.getPropertyDescription(className, name);
 			const surelyDefined = rbxProperty.ValueType.Category !== "Class";
-			const prefix = this.canWrite(rbxProperty) && !memberHasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
+			const prefix = this.canWrite(className, rbxProperty) && !hasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
 
-			if (!this.writeSignatures(rbxProperty, impl => impl.getProperties(), tsImplInterface, description)) {
-				this.write(`${prefix}${safeName(name)}${surelyDefined ? "" : "?"}: ${valueType};`);
+			if (!this.writeSignatures(rbxProperty, tsImplInterface, description)) {
+				this.write(`${prefix}${safeName(name)}: ${valueType}${surelyDefined ? "" : " | undefined"};`);
+			}
+		} else {
+			console.log(name, "is very bad!!!", className);
+		}
+	}
+
+	private isPluginOnlyClass(rbxClass: ApiClass): boolean {
+		if (PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) {
+			return true;
+		} else {
+			const superclass = this.ClassReferences.get(rbxClass.Superclass);
+			return superclass ? this.isPluginOnlyClass(superclass) : false;
+		}
+	}
+
+	private shouldGenerateClass(rbxClass: ApiClass) {
+		const superclass = this.ClassReferences.get(rbxClass.Superclass);
+
+		if (superclass) {
+			if (!this.shouldGenerateClass(superclass)) {
+				return false;
 			}
 		}
+
+		if (CLASS_BLACKLIST.has(rbxClass.Name)) {
+			return false;
+		}
+
+		if (this.security !== "PluginSecurity") {
+			if (PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	private shouldGenerateMember(rbxClass: ApiClass, rbxMember: ApiMember) {
-		const blacklist = MEMBER_BLACKLIST[rbxClass.Name];
-		if (blacklist && blacklist[rbxMember.Name] === true) {
+		if (MEMBER_BLACKLIST.get(rbxClass.Name)?.includes(rbxMember.Name)) {
 			return false;
 		}
-		return (
-			this.canRead(rbxMember) &&
-			!memberHasTag(rbxMember, "Deprecated") &&
-			!memberHasTag(rbxMember, "NotScriptable")
-		);
-	}
 
-	private generateMember(
-		rbxClass: ApiClass,
-		rbxMember: ApiMember,
-		className: string,
-		tsImplInterface?: ts.InterfaceDeclaration,
-	) {
-		if (rbxMember.MemberType === "Callback") {
-			this.generateCallback(rbxMember, className, tsImplInterface);
-		} else if (rbxMember.MemberType === "Event") {
-			this.generateEvent(rbxMember, className, tsImplInterface);
-		} else if (rbxMember.MemberType === "Function") {
-			this.generateFunction(rbxMember, className, tsImplInterface);
-		} else if (rbxMember.MemberType === "Property") {
-			this.generateProperty(rbxMember, className, tsImplInterface);
-		}
+		return (
+			((this.security === "PluginSecurity" && PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) ||
+				this.canRead(rbxClass.Name, rbxMember)) &&
+			!hasTag(rbxMember, "Deprecated") &&
+			!hasTag(rbxMember, "NotScriptable")
+		);
 	}
 
 	private generateClassName(rbxClassName: string) {
@@ -822,46 +1058,107 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile, n: NumberHelper) {
-		const name = this.generateClassName(rbxClass.Name);
-		const tsImplInterface = tsFile.getInterface(name);
+	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile) {
+		this.definedClassNames.add(rbxClass.Name);
+		const className = this.generateClassName(rbxClass.Name);
+		const tsImplInterface = tsFile.getInterface(className);
 		let extendsStr = "";
 		if (rbxClass.Superclass !== ROOT_CLASS_NAME) {
-			extendsStr = `extends ${this.generateClassName(rbxClass.Superclass)} `;
+			const superClassName = this.generateClassName(rbxClass.Superclass);
+			extendsStr = `extends ${superClassName} `;
+			if (tsImplInterface) {
+				const originalExtends = tsImplInterface.getExtends()[0]?.getText();
+				if (!originalExtends?.startsWith(superClassName)) {
+					console.warn(
+						`\`${rbxClass.Name}\` had its parent class changed to \`${superClassName}\`, was \`${originalExtends}\``,
+					);
+				}
+			}
 		}
 
 		const members = rbxClass.Members.filter(rbxMember => this.shouldGenerateMember(rbxClass, rbxMember));
-		if (this.security === "None" || members.length > 0) {
-			if (this.security === "None") {
+		const noSecurity = this.security === "None" || this.isPluginOnlyClass(rbxClass);
+		if (noSecurity || members.length > 0) {
+			if (noSecurity) {
 				const descriptions = new Array<string>();
 				const desc = rbxClass.Description;
 				if (desc && desc.trim()) {
 					descriptions.push(this.formatDescription(desc));
 				}
-				if (tsImplInterface) {
-					tsImplInterface.getLeadingCommentRanges().forEach(comment => descriptions.push(comment.getText()));
-				}
+				// we don't do this anymore, because of the new TS comment behavior. It automatically combines docs
+				// if (tsImplInterface) {
+				// 	tsImplInterface.getLeadingCommentRanges().forEach(comment => descriptions.push(comment.getText()));
+				// }
 				const description = descriptions.join("\n\t").trim();
 				if (description) {
 					this.write(description);
 				}
 			}
 
-			this.write(`interface ${name} ${extendsStr}{`);
+			let declarationString = "";
+
+			if (tsImplInterface) {
+				const children = tsImplInterface.getChildren();
+				declarationString =
+					children
+						.slice(
+							1 + children.findIndex(child => child.getKindName() === "InterfaceKeyword"),
+							children.findIndex(child => child.getKindName() === "OpenBraceToken"),
+						)
+						.reduce((p, c) => {
+							return p + c.getFullText();
+						}, "interface") + " {";
+			}
+
+			this.write(declarationString || `interface ${className} ${extendsStr}{`);
 			this.pushIndent();
 
-			if (this.security === "None") {
+			if (noSecurity) {
 				this.write(
-					`/** A read-only string representing the class this Instance belongs to. \`classIs()\` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */`,
+					`/** The string representing the class this Instance belongs to. \`classIs()\` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */`,
 				);
 				this.write(
-					`readonly ClassName: ${[name, ...this.subclassify(name)]
+					`readonly ClassName: ${[className, ...this.subclassify(className)]
+						.filter(className => !ABSTRACT_CLASSES.has(className))
 						.map(subName => `"${subName}"`)
+						.sort((a, b) => (a.toLowerCase() < b.toLowerCase() ? -1 : 1))
 						.join(" | ")};`,
 				);
 			}
 
-			members.forEach(rbxMember => this.generateMember(rbxClass, rbxMember, name, tsImplInterface));
+			if (noSecurity && tsImplInterface) {
+				for (const custom of [...tsImplInterface.getProperties(), ...tsImplInterface.getMethods()]) {
+					const name = custom.getName();
+					if (!members.some(({ Name }) => name === Name)) {
+						const obj = rbxClass.Members.find(member => member.Name === name);
+
+						if (obj === undefined && !EXPECTED_EXTRA_MEMBERS.get(className)?.includes(name)) {
+							console.warn("could not find", className + "." + name);
+						}
+						const [signature, documentation] = this.getSignature(custom);
+						if (documentation.trim()) this.write(documentation);
+						this.write(signature);
+					}
+				}
+			}
+
+			for (const rbxMember of members) {
+				switch (rbxMember.MemberType) {
+					case "Callback":
+						this.generateCallback(rbxMember, className, tsImplInterface);
+						break;
+					case "Event":
+						this.generateEvent(rbxMember, className, tsImplInterface);
+						break;
+					case "Function":
+						this.generateFunction(rbxMember, className, tsImplInterface);
+						break;
+					case "Property":
+						this.generateProperty(rbxMember, className, tsImplInterface);
+						break;
+				}
+			}
+
 			this.popIndent();
 			this.write(`}`);
 			this.write(``);
@@ -911,7 +1208,7 @@ export class ClassGenerator extends Generator {
 		this.write(``);
 	}
 
-	private subclassify(rbxClassName: string, omission: string = ""): Array<string> {
+	private subclassify(rbxClassName: string, omission = ""): Array<string> {
 		const rbxClass = this.ClassReferences.get(rbxClassName);
 
 		if (rbxClass) {
@@ -936,28 +1233,41 @@ export class ClassGenerator extends Generator {
 	}
 
 	private generateInstancesTables(rbxClasses: Array<ApiClass>) {
-		const [CreatableInstances, Instances, Services] = multifilter(rbxClasses, 3, rbxClass =>
-			classHasTag(rbxClass, "Service") ? 2 : isCreatable(rbxClass) ? 0 : 1,
+		const [Services, CreatableInstances, AbstractInstances, Instances] = multifilter(rbxClasses, 4, rbxClass =>
+			hasTag(rbxClass, "Service") ? 0 : isCreatable(rbxClass) ? 1 : ABSTRACT_CLASSES.has(rbxClass.Name) ? 2 : 3,
 		);
 
-		this.generateInstanceInterface("Services", Services);
-		this.generateInstanceInterface("CreatableInstances", CreatableInstances);
-		this.generateInstanceInterface("Instances", Instances, "Services, CreatableInstances");
+		// for sorting
+		const byName = (a: ApiClass, b: ApiClass) => (a.Name.toLowerCase() < b.Name.toLowerCase() ? -1 : 1);
+
+		if (0 < Services.length) this.generateInstanceInterface("Services", Services.sort(byName));
+		if (0 < CreatableInstances.length)
+			this.generateInstanceInterface("CreatableInstances", CreatableInstances.sort(byName));
+		if (0 < CreatableInstances.length)
+			this.generateInstanceInterface("AbstractInstances", AbstractInstances.sort(byName));
+		if (0 < Instances.length)
+			this.generateInstanceInterface(
+				"Instances",
+				Instances.sort(byName),
+				"Services, CreatableInstances, AbstractInstances",
+			);
 	}
 
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {
 		this.write(`// GENERATED ROBLOX INSTANCE CLASSES`);
 		this.write(``);
-		const helper = new NumberHelper();
-		rbxClasses.forEach(rbxClass => this.generateClass(rbxClass, sourceFile, helper));
+		for (const rbxClass of rbxClasses) {
+			if (this.shouldGenerateClass(rbxClass)) this.generateClass(rbxClass, sourceFile);
+		}
 	}
 
 	public async generate(rbxClasses: Array<ApiClass>) {
-		const linkData = new Array<{
-			rbxMember: ApiClass;
-			link: string;
-		}>();
+		// const linkData = new Array<{
+		// 	rbxMember: ApiClass;
+		// 	link: string;
+		// }>();
 
+		const promises = new Array<Promise<void>>();
 		for (const rbxClass of rbxClasses) {
 			const rbxClassName = rbxClass.Name;
 
@@ -967,45 +1277,92 @@ export class ClassGenerator extends Generator {
 			const superclass = this.ClassReferences.get(rbxClass.Superclass);
 
 			if (superclass) {
+				// TODO: Erase bad subclasses
+				// TODO: Add subclasses which are only good for plugins
 				superclass.Subclasses.push(rbxClassName);
 			}
 
-			linkData.push({
-				rbxMember: rbxClass,
-				link: `https://developer.roblox.com/api-reference/class/${rbxClassName}.json`,
-			});
-		}
+			const classPath = path.join(CONTENT_DIR, rbxClassName);
 
-		const interval = 60;
-		let k = 0;
-		for (let i = interval; i < linkData.length; i += interval) {
-			const myLinks = new Array<Promise<any>>();
-			for (k = i - interval; k < i; k++) {
-				const linkDatum = linkData[k];
-				if (linkDatum) {
-					handleLinkData(myLinks, linkDatum, linkData, rbxClasses);
+			function processDesc(desc: string, tabs: number) {
+				if (desc.indexOf("\n") !== -1) {
+					return (
+						desc
+							.split("\n")
+							.map((v, i) => (i === 0 ? v : `${"\t".repeat(tabs)} * ${v}`))
+							.join("\n") +
+						"\n" +
+						"\t".repeat(tabs)
+					);
+				} else {
+					return desc;
 				}
 			}
-			await Promise.all(myLinks);
-		}
 
-		const leftoverLinks = new Array<Promise<any>>();
-		for (; k < linkData.length; k++) {
-			const linkDatum = linkData[k];
-			if (linkDatum) {
-				handleLinkData(leftoverLinks, linkDatum, linkData, rbxClasses);
+			promises.push(
+				(async () => {
+					const classDescPath = path.join(classPath, "index.md");
+					if (await fs.pathExists(classDescPath)) {
+						const classDesc = (await fs.readFile(classDescPath)).toString();
+						if (classDesc.trim().length > 0) {
+							rbxClass.Description = processDesc(classDesc, 0);
+						}
+					}
+				})(),
+			);
+
+			for (const rbxMember of rbxClass.Members) {
+				promises.push(
+					(async () => {
+						const memberDescPath = path.join(classPath, `${rbxMember.Name}.md`);
+						if (await fs.pathExists(memberDescPath)) {
+							const memberDesc = (await fs.readFile(memberDescPath)).toString();
+							if (memberDesc.trim().length > 0) {
+								rbxMember.Description = processDesc(memberDesc, 1);
+							}
+						}
+					})(),
+				);
 			}
+
+			// linkData.push({
+			// 	rbxMember: rbxClass,
+			// 	link: `https://developer.roblox.com/api-reference/class/${rbxClassName}.json`,
+			// });
 		}
-		await Promise.all(leftoverLinks);
+		await Promise.all(promises);
+
+		// const interval = 60;
+		// let k = 0;
+		// for (let i = interval; i < linkData.length; i += interval) {
+		// 	const myLinks = new Array<Promise<any>>();
+		// 	for (k = i - interval; k < i; k++) {
+		// 		const linkDatum = linkData[k];
+		// 		if (linkDatum) {
+		// 			handleLinkData(myLinks, linkDatum, linkData, rbxClasses);
+		// 		}
+		// 	}
+		// 	await Promise.all(myLinks);
+		// }
+
+		// const leftoverLinks = new Array<Promise<any>>();
+		// for (; k < linkData.length; k++) {
+		// 	const linkDatum = linkData[k];
+		// 	if (linkDatum) {
+		// 		handleLinkData(leftoverLinks, linkDatum, linkData, rbxClasses);
+		// 	}
+		// }
+		// await Promise.all(leftoverLinks);
 
 		const project = new Project({
-			tsConfigFilePath: path.join(__dirname, "..", "..", "include", "tsconfig.json"),
+			tsConfigFilePath: path.join(ROOT_DIR, "include", "tsconfig.json"),
 		});
 		const sourceFile = project.getSourceFileOrThrow("customDefinitions.d.ts");
+
+		rbxClasses = rbxClasses.filter(rbxClass => this.shouldGenerateClass(rbxClass));
+
 		this.generateHeader();
-		if (this.security === "None") {
-			this.generateInstancesTables(rbxClasses);
-		}
+		this.generateInstancesTables(rbxClasses.filter(rbxClass => !this.definedClassNames.has(rbxClass.Name)));
 		this.generateClasses(rbxClasses, sourceFile);
 	}
 }

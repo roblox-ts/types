@@ -1,0 +1,1 @@
+Sets the distance left clicking starts acting on the surface gui instead of the held tool. If a character is within this distance of the surface gui, then the tool will not activate on click.
