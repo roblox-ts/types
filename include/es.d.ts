@@ -479,7 +479,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
 	reduce(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<defined>,
 		callbackfn: (accumulator: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
 	): T;
 
@@ -489,7 +489,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
 	reduce<U>(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<defined>,
 		callbackfn: (accumulator: U, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => U,
 		initialValue: U,
 	): U;
@@ -500,7 +500,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
 	reduceRight(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<defined>,
 		callbackfn: (accumulator: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
 	): T;
 
@@ -510,7 +510,7 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
 	reduceRight<U>(
-		this: ReadonlyArray<T>,
+		this: ReadonlyArray<defined>,
 		callbackfn: (accumulator: U, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => U,
 		initialValue: T,
 	): U;
