@@ -478,42 +478,22 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
-	reduce(
-		this: ReadonlyArray<defined>,
-		callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
-	): T;
-
-	/**
-	 * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
-	 * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
-	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
-	 */
-	reduce<U>(
-		this: ReadonlyArray<defined>,
-		callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => U,
-		initialValue: U,
-	): U;
+	reduce<T extends defined, R>(
+		this: ReadonlyArray<T>,
+		callbackfn: (accumulator: R, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => R,
+		initialValue?: T,
+	): R;
 
 	/**
 	 * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 	 * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
 	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
 	 */
-	reduceRight(
-		this: ReadonlyArray<defined>,
-		callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => T,
-	): T;
-
-	/**
-	 * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
-	 * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
-	 * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
-	 */
-	reduceRight<U>(
-		this: ReadonlyArray<defined>,
-		callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => U,
-		initialValue: U,
-	): U;
+	reduceRight<T extends defined, R>(
+		this: ReadonlyArray<T>,
+		callbackfn: (accumulator: R, currentValue: T, currentIndex: number, array: ReadonlyArray<T>) => R,
+		initialValue?: T,
+	): R;
 
 	/**
 	 * Returns a copy of the array with elements in reverse order. The compiler will automatically optimize this away when used in-line in a for..of loop.
