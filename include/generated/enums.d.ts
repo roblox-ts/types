@@ -1157,6 +1157,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<BreakReason>
 	}
 	export type BreakReason = BreakReason.Other | BreakReason.Error | BreakReason.UserBreakpoint | BreakReason.SpecialBreakpoint;
+	export namespace BulkMoveMode {
+		export interface FireAllEvents {
+			Name: "FireAllEvents";
+			Value: 0;
+			EnumType: EnumType<BulkMoveMode>;
+		}
+
+		export const FireAllEvents: FireAllEvents;
+
+		export interface FireCFrameChanged {
+			Name: "FireCFrameChanged";
+			Value: 1;
+			EnumType: EnumType<BulkMoveMode>;
+		}
+
+		export const FireCFrameChanged: FireCFrameChanged;
+
+		export interface FireNoEvents {
+			Name: "FireNoEvents";
+			Value: 2;
+			EnumType: EnumType<BulkMoveMode>;
+		}
+
+		export const FireNoEvents: FireNoEvents;
+
+		export function GetEnumItems(this: defined): Array<BulkMoveMode>
+	}
+	export type BulkMoveMode = BulkMoveMode.FireAllEvents | BulkMoveMode.FireCFrameChanged | BulkMoveMode.FireNoEvents;
 	export namespace Button {
 		export interface Jump {
 			Name: "Jump";
@@ -4454,9 +4482,17 @@ declare namespace Enum {
 
 		export const SslConnectFail: SslConnectFail;
 
+		export interface SslVerificationFail {
+			Name: "SslVerificationFail";
+			Value: 11;
+			EnumType: EnumType<HttpError>;
+		}
+
+		export const SslVerificationFail: SslVerificationFail;
+
 		export interface Unknown {
 			Name: "Unknown";
-			Value: 11;
+			Value: 12;
 			EnumType: EnumType<HttpError>;
 		}
 
@@ -4464,7 +4500,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<HttpError>
 	}
-	export type HttpError = HttpError.OK | HttpError.InvalidUrl | HttpError.DnsResolve | HttpError.ConnectFail | HttpError.OutOfMemory | HttpError.TimedOut | HttpError.TooManyRedirects | HttpError.InvalidRedirect | HttpError.NetFail | HttpError.Aborted | HttpError.SslConnectFail | HttpError.Unknown;
+	export type HttpError = HttpError.OK | HttpError.InvalidUrl | HttpError.DnsResolve | HttpError.ConnectFail | HttpError.OutOfMemory | HttpError.TimedOut | HttpError.TooManyRedirects | HttpError.InvalidRedirect | HttpError.NetFail | HttpError.Aborted | HttpError.SslConnectFail | HttpError.SslVerificationFail | HttpError.Unknown;
 	export namespace HttpRequestType {
 		export interface Default {
 			Name: "Default";
