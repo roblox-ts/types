@@ -2687,6 +2687,7 @@ interface Studio extends Instance {
 	/** When set to true, the script editor and command bar will show an autocomplete menu while writing. */
 	["Enable Autocomplete"]: boolean;
 	["Enable CoreScript Debugger"]: boolean;
+	["Enable Internal Features"]: boolean;
 	/** Specifies the color of the wavy underline shown when malformed code is detected in the script editor. */
 	["Error Color"]: Color3;
 	/** Sets the highlight color of matches in the script editor's Find Selection operation (Ctrl+F). */
@@ -2764,8 +2765,10 @@ interface Studio extends Instance {
 	["Server Audio Behavior"]: Enum.ServerAudioBehavior;
 	/** If set to true, the `CoreGui` will be visible in the Explorer while the game is running. */
 	["Show Core GUI in Explorer while Playing"]: boolean;
+	["Show CorePackages"]: boolean;
 	/** If set to true, basic diagnostic information is shown in the bottom right. */
 	["Show Diagnostics Bar"]: boolean;
+	["Show FileSyncService"]: boolean;
 	["Show Hidden Objects in Explorer"]: boolean;
 	/** If set to true, hovering over an object in the `Workspace` will show a selection box. */
 	["Show Hover Over"]: boolean;
