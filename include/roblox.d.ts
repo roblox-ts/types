@@ -29,6 +29,22 @@ type ChangedSignal = {
 	readonly Changed: RBXScriptSignal<(changedPropertyName: string) => void>;
 };
 
+/** Given an object `T`, returns a unioned type of all non-readonly property names. */
+type WritableProperties<T> = {
+	[K in keyof T]-?: T[K] extends Callback
+		? never
+		: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends <F>() => F extends {
+				-readonly [Q in K]: T[K];
+		  }
+				? 1
+				: 2
+		? K
+		: never;
+}[keyof T];
+
+/** Given an object `T`, returns a partial object definition containing only the writable properties of `T` */
+type PartialProperties<T> = Partial<Pick<T, WritableProperties<T>>>;
+
 /** A mapping between Instance ClassNames and corresponding types with `ClassName` narrowed, if necessary.
  * For example, A `Part` type could mean a `SpawnLocation`, a `Seat`, or an object whose ClassName is "Part".
  * Thus, `StrictInstances["Part"]` gives `Part & { ClassName: "Part" }` for when you want a `Part` whose ClassName is "Part".
@@ -38,27 +54,42 @@ type StrictInstances = {
 		(Instances[K]["ClassName"] extends K ? unknown : { ClassName: K });
 };
 
+/** For a given Instance type (with intersections) this returns the type without intersections. */
+type OriginalInstanceType<T extends Instance> = T extends any
+	? T["ClassName"] extends infer A
+		? T["ClassName"] extends infer B
+			? (A extends any ? (B extends A ? true : false) : never) extends true
+				? A extends keyof Instances
+					? Instances[A] // Grab our raw ClassName if there is only one possibility (either StrictInstance or classes which are not superclasses for anything)
+					: never
+				: Instances[{ // Otherwise, iterate through Instances and grab the class with the "ClassName" property which matches T's exactly
+						[K in keyof Instances]: T["ClassName"] extends Instances[K]["ClassName"]
+							? Instances[K]["ClassName"] extends T["ClassName"]
+								? K
+								: never
+							: never;
+				  }[keyof Instances]]
+			: never
+		: never
+	: never;
+
 /** Given an Instance `T`, returns a unioned type of all property names, except "ClassName". */
-type InstanceProperties<T extends Instance> = {
-	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed" | "BreakJoints" | "MakeJoints"
-		? never
-		: T[K] extends RBXScriptSignal | Callback
-		? never
-		: K;
-}[keyof T];
+type InstanceProperties<I extends Instance> = OriginalInstanceType<I> extends infer T
+	? {
+			[K in keyof T]-?: K extends
+				| "ClassName"
+				| "Changed"
+				| "BreakJoints"
+				| "MakeJoints"
+				? never
+				: T[K] extends RBXScriptSignal | Callback
+				? never
+				: K;
+	  }[keyof T]
+	: never;
 
 /** Given an Instance `T`, returns a unioned type of all non-readonly property names. */
-type WritableInstanceProperties<T extends Instance> = {
-	[K in keyof T]-?: K extends "GetPropertyChangedSignal" | "ClassName" | "Changed" | "BreakJoints" | "MakeJoints"
-		? never
-		: T[K] extends RBXScriptSignal | Callback
-		? never
-		: (<F>() => F extends { [Q in K]: T[K] } ? 1 : 2) extends <F>() => F extends { -readonly [Q in K]: T[K] }
-				? 1
-				: 2
-		? K
-		: never;
-}[keyof T];
+type WritableInstanceProperties<I extends Instance> = WritableProperties<OriginalInstanceType<I>>;
 
 /** Given an Instance `T`, returns an object which can hold the writable properties of T. Good to use with `Object.assign`.
  * @example
@@ -69,7 +100,7 @@ type WritableInstanceProperties<T extends Instance> = {
  *
  * Object.assign(new Instance("Part"), props);
  */
-type PartialInstance<T extends Instance> = Partial<Pick<T, WritableInstanceProperties<T>>>;
+type PartialInstance<T extends Instance> = Partial<Pick<T, Extract<WritableInstanceProperties<T>, keyof T>>>;
 
 // temporary backwards compatibility:
 
@@ -79,15 +110,11 @@ type GetProperties<T extends Instance> = InstanceProperties<T>;
 /** @rbxts deprecated */
 type GetWritableProperties<T extends Instance> = WritableInstanceProperties<T>;
 
-/** @rbxts deprecated */
-type PartialProperties<T extends Instance> = PartialInstance<T>;
-
 /** Returns a given objects parameters in a tuple. Defaults to `[]` */
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : [];
 
 /** A function type which is assignable to any other function type (and any function is assignable to). */
 type Callback = (...args: any) => any;
-// Note: we use `...args: any` so `...args: infer U` is assignable to it (as opposed to `...args: Array<any>`)
 
 declare const enum LocationType {
 	MobileWebsite = 0,
