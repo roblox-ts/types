@@ -344,8 +344,6 @@ interface Instance {
 	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal<() => void>;
 }
 
-
-
 interface InventoryPages extends Pages<number> {}
 
 interface JointInstance extends Instance {

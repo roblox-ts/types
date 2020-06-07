@@ -4,8 +4,7 @@
         "jsx": true,
         "useJSXTextNode": true,
         "ecmaVersion": 2018,
-        "sourceType": "module",
-        "project": "./tsconfig.json"
+        "sourceType": "module"
     },
     "plugins": [
         "@typescript-eslint",
@@ -34,12 +33,6 @@
             {
                 "default": "generic",
                 "readonly": "generic"
-            }
-        ],
-        "@typescript-eslint/no-floating-promises": [
-            "error",
-            {
-                "ignoreVoid": true
             }
         ],
         "@typescript-eslint/no-empty-interface": "off",

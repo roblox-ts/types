@@ -214,9 +214,19 @@ interface String {
 	/** Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. */
 	gsub(this: string, pattern: string, repl: string, n?: number): LuaTuple<[string, number]>;
 	gsub(this: string, pattern: string, repl: number, n?: number): LuaTuple<[string, number]>;
-	gsub(this: string, pattern: string, repl: (value: string) => string | number | undefined, n?: number): LuaTuple<[string, number]>;
+	gsub(
+		this: string,
+		pattern: string,
+		repl: (value: string) => string | number | undefined,
+		n?: number,
+	): LuaTuple<[string, number]>;
 	gsub(this: string, pattern: string, repl: Map<string, string | number>, n?: number): LuaTuple<[string, number]>;
-	gsub(this: string, pattern: string, repl: { [index: string]: string | number }, n?: number): LuaTuple<[string, number]>;
+	gsub(
+		this: string,
+		pattern: string,
+		repl: { [index: string]: string | number },
+		n?: number,
+	): LuaTuple<[string, number]>;
 
 	/** Receives a string and returns a copy of this string with all uppercase letters changed to lowercase. */
 	lower(this: string): string;
@@ -475,7 +485,7 @@ declare namespace coroutine {
 	function yield(...params: Array<unknown>): unknown;
 }
 
-declare function next<T extends readonly any[]>(
+declare function next<T extends ReadonlyArray<any>>(
 	object: T,
 	index?: number,
 ): T extends readonly [infer A]
@@ -490,10 +500,10 @@ declare function next<T extends readonly any[]>(
 	? LuaTuple<[number, A | B | C | D | E]>
 	: T extends readonly [infer A, infer B, infer C, infer D, infer E, infer F]
 	? LuaTuple<[number, A | B | C | D | E | F]>
-	: T extends readonly (infer U)[]
+	: T extends ReadonlyArray<infer U>
 	? LuaTuple<Array<U>>
 	: LuaTuple<[unknown, unknown]>;
-declare function next<T extends any[]>(
+declare function next<T extends Array<any>>(
 	object: T,
 	index?: number,
 ): T extends [infer A]
@@ -508,7 +518,7 @@ declare function next<T extends any[]>(
 	? LuaTuple<[number, A | B | C | D | E]>
 	: T extends [infer A, infer B, infer C, infer D, infer E, infer F]
 	? LuaTuple<[number, A | B | C | D | E | F]>
-	: T extends (infer U)[]
+	: T extends Array<infer U>
 	? LuaTuple<Array<U>>
 	: LuaTuple<[unknown, unknown]>;
 declare function next<T>(object: Array<T>, index?: number): LuaTuple<[number, T]>;
