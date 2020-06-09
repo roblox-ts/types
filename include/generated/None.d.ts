@@ -792,7 +792,7 @@ interface Instance {
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance) => void>;
 	readonly AttributeChanged: RBXScriptSignal<(attribute: string) => void>;
 	/** Fired after a property changes value.  The property argument is the name of the property */
-	Changed: unknown;
+	readonly Changed: unknown;
 	/** Fires when an object is parented to this `Instance`.
 	 * 
 	 * Note, when using this function on a client to detect objects created by the server it is necessary to use [Instance.WaitForChild](https://developer.roblox.com/api-reference/function/Instance/WaitForChild) when indexing these object's descendants. This is because the object and its descendants are not guaranteed to replicate from the server to the client simultaneously. For example:
@@ -13140,9 +13140,9 @@ interface Workspace extends WorldRoot {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Workspace";
 	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
-	BreakJoints: any;
+	readonly BreakJoints: any;
 	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
-	MakeJoints: any;
+	readonly MakeJoints: any;
 	/** This `Workspace` property determines whether assets created by other uses can be sold in the game.
 	 * 
 	 * ## What are third party sales?
