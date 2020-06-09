@@ -314,7 +314,7 @@ interface Instance {
 	 * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
 	 * }
 	 */
-	Changed: unknown;
+	readonly Changed: unknown;
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
 
@@ -874,9 +874,9 @@ interface ValueBase extends Instance {
 
 interface Workspace extends WorldRoot {
 	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
-	BreakJoints: any;
+	readonly BreakJoints: any;
 	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
-	MakeJoints: any;
+	readonly MakeJoints: any;
 	Terrain: Terrain;
 }
 
