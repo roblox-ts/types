@@ -95,6 +95,8 @@ interface ObjectConstructor {
 		? Array<K>
 		: T extends ArrayLike<any>
 		? Array<number>
+		: keyof T extends never
+		? Array<any>
 		: Array<keyof T>;
 
 	/**
@@ -112,6 +114,8 @@ interface ObjectConstructor {
 		? Array<NonNullable<V>>
 		: T extends ArrayLike<infer W>
 		? Array<NonNullable<W>>
+		: keyof T extends never
+		? Array<any>
 		: Array<NonNullable<T[keyof T]>>;
 
 	/**
@@ -129,7 +133,9 @@ interface ObjectConstructor {
 		? Array<[K, NonNullable<V>]>
 		: T extends ArrayLike<infer W>
 		? Array<[number, NonNullable<W>]>
-		: Array<NonNullable<{ [K in keyof T]: [K, NonNullable<T[K]>] }[keyof T]>>;
+		: keyof T extends never
+		? Array<[any, any]>
+		: Array<[keyof T, NonNullable<T[keyof T]>]>;
 
 	/** Creates an object from a set of entries */
 	fromEntries<P extends readonly [string | number | symbol, unknown]>(
