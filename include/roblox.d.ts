@@ -89,7 +89,7 @@ type InstanceProperties<I extends Instance> = OriginalInstanceType<I> extends in
 	: never;
 
 /** Given an Instance `T`, returns a unioned type of all non-readonly property names. */
-type WritableInstanceProperties<I extends Instance> = WritableProperties<OriginalInstanceType<I>>;
+type WritableInstanceProperties<I extends Instance> = Extract<WritableProperties<OriginalInstanceType<I>>, keyof I>;
 
 /** Given an Instance `T`, returns an object which can hold the writable properties of T. Good to use with `Object.assign`.
  * @example
@@ -100,7 +100,7 @@ type WritableInstanceProperties<I extends Instance> = WritableProperties<Origina
  *
  * Object.assign(new Instance("Part"), props);
  */
-type PartialInstance<T extends Instance> = Partial<Pick<T, Extract<WritableInstanceProperties<T>, keyof T>>>;
+type PartialInstance<T extends Instance> = Partial<Pick<T, WritableInstanceProperties<T>>>;
 
 // temporary backwards compatibility:
 
