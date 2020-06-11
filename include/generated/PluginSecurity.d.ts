@@ -2931,6 +2931,8 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
 	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
 	/** [NO DOCUMENTATION] */
+	SetDocumentDisplayName(this: StudioService, newName: string): void;
+	/** [NO DOCUMENTATION] */
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
 	/** [NO DOCUMENTATION] */
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
