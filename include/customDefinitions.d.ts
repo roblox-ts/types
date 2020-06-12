@@ -83,7 +83,7 @@ interface BindableEvent<T extends Callback = Callback> extends Instance {
 }
 
 interface BindableFunction<T extends Callback = Callback> extends Instance {
-	OnInvoke: T;
+	OnInvoke: T | undefined;
 	Invoke(this: BindableFunction, ...args: Parameters<T>): ReturnType<T>;
 }
 
