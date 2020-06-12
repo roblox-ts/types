@@ -2479,7 +2479,7 @@ interface BindableFunction<T extends Callback = Callback> extends Instance {
 	 * 
 	 * There are limitations on the valid parameters this callback can return (see the code samples to learn more).
 	 */
-	OnInvoke: T;
+	OnInvoke: T | undefined;
 }
 
 /** BodyMover is the abstract base class for the set of legacy objects that exert forces to `BasePart`s in different ways. In general, the subclasses of BodyMover can be placed into one of two categories based on the type of force(s) they exert:
