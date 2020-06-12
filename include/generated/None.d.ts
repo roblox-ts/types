@@ -11186,7 +11186,7 @@ interface MarketplaceService extends Instance {
 	 * | `CurrencyType` | [CurrencyType](https://developer.roblox.com/search#stq=CurrencyType) | The type of currency spent in the purchase; always `Enum.CurrencyType.Robux`. |
 	 * | `PlaceIdWherePurchased` | number | The ID of the place where the product was purchased (not necessarily the same as the current place's ID). |
 	 */
-	ProcessReceipt: (receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision;
+	ProcessReceipt: ((receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision) | undefined;
 }
 
 /** **Beta**
@@ -15177,7 +15177,7 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
 	 * 
 	 * To fire from the client to the server, you should use [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer) and [RemoteFunction.OnServerInvoke](https://developer.roblox.com/api-reference/callback/RemoteFunction/OnServerInvoke).
 	 */
-	OnClientInvoke: T;
+	OnClientInvoke: T | undefined;
 	/** The OnServerInvoke event fires the bound functions in `Script`s when [RemoteFunction.InvokeServer](https://developer.roblox.com/api-reference/function/RemoteFunction/InvokeServer) is called by the server from a `LocalScript`. When the bound function returns, the returned values are sent back to the client.
 	 * 
 	 * This is used to retrieve remote events fired by the client and intended for the server. This event is in place to provide a method for communicating between the client and server, which is well documented in [this][1] article.
@@ -15192,7 +15192,7 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
 	 * 
 	 *  - Only one function can be assigned to OnServerInvoke at a time. If multiple functions are assigned, only the last function to be assigned will be used.
 	 */
-	OnServerInvoke: (player: Player, ...args: Array<unknown>) => void;
+	OnServerInvoke: ((player: Player, ...args: Array<unknown>) => void) | undefined;
 }
 
 /** A container whose contents are replicated to all clients (but not back to the server) first before anything else.
