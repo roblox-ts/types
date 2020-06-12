@@ -344,8 +344,6 @@ interface Instance {
 	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal<() => void>;
 }
 
-
-
 interface InventoryPages extends Pages<number> {}
 
 interface JointInstance extends Instance {
@@ -391,7 +389,7 @@ interface LogService extends Instance {
 }
 
 interface MarketplaceService extends Instance {
-	ProcessReceipt: (receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision;
+	ProcessReceipt: ((receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision) | undefined;
 	GetProductInfo(
 		this: MarketplaceService,
 		assetId: number,
@@ -593,7 +591,7 @@ interface RemoteEvent<T extends Callback = Callback> extends Instance {
 }
 
 interface RemoteFunction<T extends Callback = Callback> extends Instance {
-	OnClientInvoke: T;
+	OnClientInvoke: T | undefined;
 	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
 	 * ```ts
 	 * (new Instance("RemoteFunction") as RemoteFunction<(num: number) => void>).OnServerInvoke = (plr, num) => {
@@ -605,7 +603,7 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
 	 * };
 	 * ```
 	 */
-	OnServerInvoke: (player: Player, ...args: Array<unknown>) => void;
+	OnServerInvoke: ((player: Player, ...args: Array<unknown>) => void) | undefined;
 	InvokeClient(this: RemoteFunction, player: Player, ...args: Parameters<T>): unknown;
 	InvokeServer(this: RemoteFunction, ...args: Parameters<T>): ReturnType<T>;
 }
