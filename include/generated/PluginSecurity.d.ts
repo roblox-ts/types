@@ -330,8 +330,6 @@ interface DebuggerBreakpoint extends Instance {
 	Condition: string;
 	/** Whether or not the breakpoint is enabled. */
 	IsEnabled: boolean;
-	/** [NO DOCUMENTATION] */
-	IsLocal: boolean;
 	/** The line that the breakpoint has been placed on.
 	 * 	
 	 * The line that the breakpoint has been placed on.
@@ -346,6 +344,8 @@ interface DebuggerBreakpoint extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Line: number;
+	/** [NO DOCUMENTATION] */
+	isContextDependentBreakpoint: boolean;
 }
 
 /** The DebuggerManager is a special singleton class responsible for managing Roblox's Lua Debugger feature.
@@ -2290,7 +2290,7 @@ interface ScriptDebugger extends Instance {
 	/** Returns a list with all the watches for this debugger */
 	GetWatches(this: ScriptDebugger): Array<Instance>;
 	/** Sets the specified line of the script as a breakpoint. Returns a `DebuggerBreakpoint` that you can use to manage the breakpoint. */
-	SetBreakpoint(this: ScriptDebugger, line: number, isLocalBreakpoint: boolean): Instance | undefined;
+	SetBreakpoint(this: ScriptDebugger, line: number, isContextDependentBreakpoint: boolean): Instance | undefined;
 	/** Sets the value of the variable _name_ as _value_ in the script's main stack. */
 	SetGlobal(this: ScriptDebugger, name: string, value?: any): void;
 	/** Sets the value of the variable _name_ as _value_ in the stack specified. */
@@ -2914,6 +2914,8 @@ interface StudioService extends Instance {
 	GetResourceByCategory(this: StudioService, category: string): object;
 	/** [NO DOCUMENTATION] */
 	GetStartupPluginId(this: StudioService): string;
+	/** [NO DOCUMENTATION] */
+	GetTermsOfUseUrl(this: StudioService): string;
 	/** [NO DOCUMENTATION] */
 	GetUserId(this: StudioService): number;
 	/** [NO DOCUMENTATION] */

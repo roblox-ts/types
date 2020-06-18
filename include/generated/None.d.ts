@@ -13242,6 +13242,7 @@ interface Workspace extends WorldRoot {
 	 * [1]: https://developer.roblox.com/articles/Gravity
 	 */
 	Gravity: number;
+	PhysicsSimulationRate: Enum.PhysicsSimulationRate;
 	/** Whether network streaming is enabled for the place or not.
 	 * 
 	 * This property is not replicated, and therefore cannot be changed once the game has started. For this reason, it is advised it is set in Roblox Studio.

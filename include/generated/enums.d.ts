@@ -1174,17 +1174,9 @@ declare namespace Enum {
 
 		export const FireCFrameChanged: FireCFrameChanged;
 
-		export interface FireNoEvents {
-			Name: "FireNoEvents";
-			Value: 2;
-			EnumType: EnumType<BulkMoveMode>;
-		}
-
-		export const FireNoEvents: FireNoEvents;
-
 		export function GetEnumItems(this: defined): Array<BulkMoveMode>
 	}
-	export type BulkMoveMode = BulkMoveMode.FireAllEvents | BulkMoveMode.FireCFrameChanged | BulkMoveMode.FireNoEvents;
+	export type BulkMoveMode = BulkMoveMode.FireAllEvents | BulkMoveMode.FireCFrameChanged;
 	export namespace Button {
 		export interface Jump {
 			Name: "Jump";
@@ -8225,6 +8217,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<PermissionLevelShown>
 	}
 	export type PermissionLevelShown = PermissionLevelShown.Game | PermissionLevelShown.RobloxGame | PermissionLevelShown.RobloxScript | PermissionLevelShown.Studio | PermissionLevelShown.Roblox;
+	export namespace PhysicsSimulationRate {
+		export interface Fixed240Hz {
+			Name: "Fixed240Hz";
+			Value: 0;
+			EnumType: EnumType<PhysicsSimulationRate>;
+		}
+
+		export const Fixed240Hz: Fixed240Hz;
+
+		export interface Fixed120Hz {
+			Name: "Fixed120Hz";
+			Value: 1;
+			EnumType: EnumType<PhysicsSimulationRate>;
+		}
+
+		export const Fixed120Hz: Fixed120Hz;
+
+		export interface Fixed60Hz {
+			Name: "Fixed60Hz";
+			Value: 2;
+			EnumType: EnumType<PhysicsSimulationRate>;
+		}
+
+		export const Fixed60Hz: Fixed60Hz;
+
+		export function GetEnumItems(this: defined): Array<PhysicsSimulationRate>
+	}
+	export type PhysicsSimulationRate = PhysicsSimulationRate.Fixed240Hz | PhysicsSimulationRate.Fixed120Hz | PhysicsSimulationRate.Fixed60Hz;
 	export namespace Platform {
 		export interface Windows {
 			Name: "Windows";
@@ -11070,9 +11090,17 @@ declare namespace Enum {
 
 		export const Legacy: Legacy;
 
+		export interface Future {
+			Name: "Future";
+			Value: 4;
+			EnumType: EnumType<Technology>;
+		}
+
+		export const Future: Future;
+
 		export function GetEnumItems(this: defined): Array<Technology>
 	}
-	export type Technology = Technology.Compatibility | Technology.Voxel | Technology.ShadowMap | Technology.Legacy;
+	export type Technology = Technology.Compatibility | Technology.Voxel | Technology.ShadowMap | Technology.Legacy | Technology.Future;
 	export namespace TeleportResult {
 		export interface Success {
 			Name: "Success";
