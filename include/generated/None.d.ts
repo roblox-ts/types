@@ -18656,7 +18656,7 @@ interface TweenService extends Instance {
 	 * @param propertyTable A dictionary of properties, and their target values, to be tweened.
 	 * @returns The `Tween` created.
 	 */
-	Create<T extends Instances[keyof Instances]>(
+	Create<T extends Instance>(
 		this: TweenService,
 		instance: T,
 		tweenInfo: TweenInfo,
