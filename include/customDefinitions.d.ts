@@ -780,7 +780,7 @@ interface TextService extends Instance {
 }
 
 interface TweenService extends Instance {
-	Create<T extends Instances[keyof Instances]>(
+	Create<T extends Instance>(
 		this: TweenService,
 		instance: T,
 		tweenInfo: TweenInfo,
