@@ -317,9 +317,11 @@ interface Instance {
 	readonly Changed: unknown;
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
+	
+	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
 
-	WaitForChild(this: Instance, childName: string): Instance;
-	WaitForChild(this: Instance, childName: string, timeOut: number): Instance | undefined;
+	WaitForChild(this: Instance, childName: string | number): Instance;
+	WaitForChild(this: Instance, childName: string | number, timeOut: number): Instance | undefined;
 
 	IsA<T extends keyof Instances>(this: Instance, className: T): this is Instances[T];
 
