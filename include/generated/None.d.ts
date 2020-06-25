@@ -967,8 +967,6 @@ interface Hat extends Accoutrement {
 interface AnalyticsService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AnalyticsService";
-	/** [NO DOCUMENTATION] */
-	FireEvent(this: AnalyticsService, category: string, value?: any): void;
 }
 
 /** An object which allows animations to be applied to a player's character and make the parts that make said character up react in the way that is described within the animation file (AnimationId). */
@@ -6545,6 +6543,8 @@ interface TextButton extends GuiButton {
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly LocalizedText: string;
+	/** [NO DOCUMENTATION] */
+	RichText: boolean;
 	/** The Text property determines the content rendered by the UI element. The visual properties of the string rendered to the screen is determined by [TextButton.TextColor3](https://developer.roblox.com/api-reference/property/TextButton/TextColor3), [TextButton.TextTransparency](https://developer.roblox.com/api-reference/property/TextButton/TextTransparency), [TextButton.TextSize](https://developer.roblox.com/api-reference/property/TextButton/TextSize), [TextButton.Font](https://developer.roblox.com/api-reference/property/TextButton/Font), [TextButton.TextScaled](https://developer.roblox.com/api-reference/property/TextButton/TextScaled), [TextButton.TextWrapped](https://developer.roblox.com/api-reference/property/TextButton/TextWrapped), [TextButton.TextXAlignment](https://developer.roblox.com/api-reference/property/TextButton/TextXAlignment) and [TextButton.TextYAlignment](https://developer.roblox.com/api-reference/property/TextButton/TextYAlignment).
 	 * 
 	 * It is possible to render emoji (for example, 😃) and other symbols. These special symbols aren't affected by the [TextButton.TextColor3](https://developer.roblox.com/api-reference/property/TextButton/TextColor3) property. These can be pasted into `Script` and `LocalScript` objects, as well as the field within the Properties window.
@@ -6760,6 +6760,8 @@ interface TextLabel extends GuiLabel {
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly LocalizedText: string;
+	/** [NO DOCUMENTATION] */
+	RichText: boolean;
 	/** The Text property determines the content rendered by the UI element. The visual properties of the string rendered to the screen is determined by [TextLabel.TextColor3](https://developer.roblox.com/api-reference/property/TextLabel/TextColor3), [TextLabel.TextTransparency](https://developer.roblox.com/api-reference/property/TextLabel/TextTransparency), [TextLabel.TextSize](https://developer.roblox.com/api-reference/property/TextLabel/TextSize), [TextLabel.Font](https://developer.roblox.com/api-reference/property/TextLabel/Font), [TextLabel.TextScaled](https://developer.roblox.com/api-reference/property/TextLabel/TextScaled), [TextLabel.TextWrapped](https://developer.roblox.com/api-reference/property/TextLabel/TextWrapped), [TextLabel.TextXAlignment](https://developer.roblox.com/api-reference/property/TextLabel/TextXAlignment) and [TextLabel.TextYAlignment](https://developer.roblox.com/api-reference/property/TextLabel/TextYAlignment).
 	 * 
 	 * It is possible to render emoji (for example, 😃) and other symbols. These special symbols aren't affected by the [TextLabel.TextColor3](https://developer.roblox.com/api-reference/property/TextLabel/TextColor3) property. These can be pasted into `Script` and `LocalScript` objects, as well as the field within the Properties window.
@@ -7012,6 +7014,7 @@ interface TextBox extends GuiObject {
 	PlaceholderColor3: Color3;
 	/** Sets the text that gets displayed when no text has been entered into the TextBox yet. */
 	PlaceholderText: string;
+	RichText: boolean;
 	SelectionStart: number;
 	/** If set to true, input native to the platform is used instead of Roblox's built-in keyboard. */
 	ShowNativeInput: boolean;
@@ -7159,8 +7162,6 @@ interface VideoFrame extends GuiObject {
 	Video: string;
 	/** [NO DOCUMENTATION] */
 	Volume: number;
-	/** [NO DOCUMENTATION] */
-	GetInfo(this: VideoFrame): object;
 	/** [NO DOCUMENTATION] */
 	Pause(this: VideoFrame): void;
 	/** [NO DOCUMENTATION] */

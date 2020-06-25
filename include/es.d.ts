@@ -583,12 +583,6 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @returns A new array with the sub-array elements concatenated into it.
 	 */
 	// flat(this: ReadonlyArray<T>, depth?: number): Array<T>;
-
-	/**
-	 * Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`, so that (`!comp(list[i+1], list[i])` will be true after the sort). Alias to Lua's `table.sort`.
-	 * @param compareFunction A function that defines the sort order. Returns true when the first element must come before the second. If omitted, the array is sorted according to the `<` operator.
-	 */
-	sort(this: ReadonlyArray<defined>, compareFunction?: (a: T, b: T) => boolean): Array<T>;
 }
 
 /**
@@ -657,6 +651,12 @@ interface Array<T> extends ReadonlyArray<T> {
 	 * @param index The index to remove from this array and return
 	 */
 	unorderedRemove(this: Array<defined>, index: number): T | undefined;
+
+	/**
+	 * Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`, so that (`!comp(list[i+1], list[i])` will be true after the sort). Alias to Lua's `table.sort`.
+	 * @param compareFunction A function that defines the sort order. Returns true when the first element must come before the second. If omitted, the array is sorted according to the `<` operator.
+	 */
+	sort(this: ReadonlyArray<defined>, compareFunction?: (a: T, b: T) => boolean): Array<T>;
 
 	[n: number]: T;
 }
