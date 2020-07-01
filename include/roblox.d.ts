@@ -1445,7 +1445,7 @@ interface Vector2 {
 	/** Returns a Vector2 linearly interpolated between this Vector2 and the goal by the fraction alpha */
 	Lerp(this: Vector2, goal: Vector2, alpha: number): Vector2;
 	/** Returns the cross product of the two vectors */
-	Cross(this: Vector2, other: Vector2): Vector2;
+	Cross(this: Vector2, other: Vector2): number;
 }
 type Vector2Constructor = new (x?: number, y?: number) => Vector2;
 declare const Vector2: Vector2Constructor;
