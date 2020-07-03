@@ -95,6 +95,8 @@ interface ObjectConstructor {
 		? Array<K>
 		: T extends ArrayLike<any>
 		? Array<number>
+		: keyof T extends never
+		? Array<unknown>
 		: Array<keyof T>;
 
 	/**
@@ -112,6 +114,8 @@ interface ObjectConstructor {
 		? Array<NonNullable<V>>
 		: T extends ArrayLike<infer W>
 		? Array<NonNullable<W>>
+		: keyof T extends never
+		? Array<unknown>
 		: Array<NonNullable<T[keyof T]>>;
 
 	/**
@@ -129,7 +133,9 @@ interface ObjectConstructor {
 		? Array<[K, NonNullable<V>]>
 		: T extends ArrayLike<infer W>
 		? Array<[number, NonNullable<W>]>
-		: Array<NonNullable<{ [K in keyof T]: [K, NonNullable<T[K]>] }[keyof T]>>;
+		: keyof T extends never
+		? Array<[unknown, unknown]>
+		: Array<[keyof T, NonNullable<T[keyof T]>]>;
 
 	/** Creates an object from a set of entries */
 	fromEntries<P extends readonly [string | number | symbol, unknown]>(
@@ -577,12 +583,6 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * @returns A new array with the sub-array elements concatenated into it.
 	 */
 	// flat(this: ReadonlyArray<T>, depth?: number): Array<T>;
-
-	/**
-	 * Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`, so that (`!comp(list[i+1], list[i])` will be true after the sort). Alias to Lua's `table.sort`.
-	 * @param compareFunction A function that defines the sort order. Returns true when the first element must come before the second. If omitted, the array is sorted according to the `<` operator.
-	 */
-	sort(this: ReadonlyArray<defined>, compareFunction?: (a: T, b: T) => boolean): Array<T>;
 }
 
 /**
@@ -651,6 +651,12 @@ interface Array<T> extends ReadonlyArray<T> {
 	 * @param index The index to remove from this array and return
 	 */
 	unorderedRemove(this: Array<defined>, index: number): T | undefined;
+
+	/**
+	 * Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`, so that (`!comp(list[i+1], list[i])` will be true after the sort). Alias to Lua's `table.sort`.
+	 * @param compareFunction A function that defines the sort order. Returns true when the first element must come before the second. If omitted, the array is sorted according to the `<` operator.
+	 */
+	sort(this: ReadonlyArray<defined>, compareFunction?: (a: T, b: T) => boolean): Array<T>;
 
 	[n: number]: T;
 }

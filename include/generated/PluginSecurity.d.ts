@@ -330,8 +330,6 @@ interface DebuggerBreakpoint extends Instance {
 	Condition: string;
 	/** Whether or not the breakpoint is enabled. */
 	IsEnabled: boolean;
-	/** [NO DOCUMENTATION] */
-	IsLocal: boolean;
 	/** The line that the breakpoint has been placed on.
 	 * 	
 	 * The line that the breakpoint has been placed on.
@@ -346,6 +344,8 @@ interface DebuggerBreakpoint extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Line: number;
+	/** [NO DOCUMENTATION] */
+	isContextDependentBreakpoint: boolean;
 }
 
 /** The DebuggerManager is a special singleton class responsible for managing Roblox's Lua Debugger feature.
@@ -728,11 +728,8 @@ interface NetworkServer extends NetworkPeer {
 interface NetworkReplicator extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ClientReplicator" | "ServerReplicator";
-	CloseConnection(this: NetworkReplicator): void;
 	/** Returns the player that is connected to the NetworkReplicator. */
 	GetPlayer(this: NetworkReplicator): Player;
-	/** Returns a string displaying how many bytes are being sent/received by the replicator, and the current packet-loss. The verbosity level determines how much information is returned in the string (0 = Basic, 1 = Detailed, 2 = Full). */
-	GetRakStatsString(this: NetworkReplicator, verbosityLevel?: number): string;
 }
 
 /** The ClientReplicator is in charge of replicating changes from the server over to the client. It represents the client's connection to a server. */
@@ -754,87 +751,6 @@ interface ServerReplicator extends NetworkReplicator {
 interface NetworkSettings extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "NetworkSettings";
-	/** DataMtuAdjust is a property that is added to the *maximum transmission unit* size of all replication data packets.
-	 * 
-	 * The value of this property is constrained to [-1000,0), and defaults to -200.
-	 */
-	DataMtuAdjust: number;
-	/** DataSendPriority controls the send priority of regular packets in Roblox's underlying Raknet replication layer.
-	 * 
-	 * It can be set to the following values:
-	 * 
-	 * | Name | Description |
-	 * | --- | --- |
-	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
-	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
-	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
-	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
-	 * 
-	 * The value of this currently defaults to MEDIUM_PRIORITY. Changing it requires you to use the command bar.
-	 * 
-	 * For example, this will set the DataSendPriority to HIGH_PRIORITY:
-	 * 
-	 * `settings().Network.DataSendPriority = Enum.DataSendPriority.HIGH_PRIORITY`
-	 * 	
-	 * DataSendPriority controls the send priority of regular packets in Roblox's underlying Raknet replication layer.
-	 * 
-	 * It can be set to the following values:
-	 * 
-	 * | Name | Description |
-	 * | --- | --- |
-	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
-	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
-	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
-	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
-	 * 
-	 * The value of this currently defaults to MEDIUM_PRIORITY. Changing it requires you to use the command bar.
-	 * 
-	 * For example, this will set the DataSendPriority to HIGH_PRIORITY:
-	 * 
-	 * `settings().Network.DataSendPriority = Enum.DataSendPriority.HIGH_PRIORITY`
-	 * 
-	 * Tags: Hidden, NotReplicated
-	DataSendPriority controls the send priority of regular packets in Roblox's underlying Raknet replication layer.
-	 * 
-	 * It can be set to the following values:
-	 * 
-	 * | Name | Description |
-	 * | --- | --- |
-	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
-	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
-	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
-	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
-	 * 
-	 * The value of this currently defaults to MEDIUM_PRIORITY. Changing it requires you to use the command bar.
-	 * 
-	 * For example, this will set the DataSendPriority to HIGH_PRIORITY:
-	 * 
-	 * `settings().Network.DataSendPriority = Enum.DataSendPriority.HIGH_PRIORITY`
-	 * 	
-	 * DataSendPriority controls the send priority of regular packets in Roblox's underlying Raknet replication layer.
-	 * 
-	 * It can be set to the following values:
-	 * 
-	 * | Name | Description |
-	 * | --- | --- |
-	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
-	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
-	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
-	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
-	 * 
-	 * The value of this currently defaults to MEDIUM_PRIORITY. Changing it requires you to use the command bar.
-	 * 
-	 * For example, this will set the DataSendPriority to HIGH_PRIORITY:
-	 * 
-	 * `settings().Network.DataSendPriority = Enum.DataSendPriority.HIGH_PRIORITY`
-	 * 
-	 * Tags: Hidden, NotReplicated
-	 *
-	 * Tags: Hidden, NotReplicated
-	 */
-	DataSendPriority: Enum.PacketPriority;
-	/** DataSendRate specifies how frequently data packets are sent back and forth between the server and client, per second. */
-	DataSendRate: number;
 	/** ExtraMemoryUsed is an unused debug property intended for streaming.
 	 * 
 	 * It appears to specify how much extra memory is allocated to streaming, in MBs.
@@ -885,90 +801,6 @@ interface NetworkSettings extends Instance {
 	readonly HttpProxyURL: string;
 	/** IncommingReplicationLag is a property that allows you to simulate high-latency situations. It adds a delay time between when packets are actually sent and received. The property is measured in seconds, and defaults to 0. */
 	IncommingReplicationLag: number;
-	/** PhysicsMtuAdjust is a property that is added to the *maximum transmission unit* size of all physics data packets.
-	 * 
-	 * The value of this property is constrained to [-1000,0), and defaults to -200.
-	 */
-	PhysicsMtuAdjust: number;
-	/** PhysicsSendPriority controls the send priority of physics packets in Roblox's underlying RakNet replication layer.
-	 * 
-	 * It can be set to the following values:
-	 * 
-	 * | Name | Description |
-	 * | --- | --- |
-	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
-	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
-	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
-	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
-	 * 
-	 * The value of this currently defaults to HIGH_PRIORITY. Changing it requires you to use the command bar.
-	 * 
-	 * For example, this will set the PhysicsSendPriority to MEDIUM_PRIORITY:
-	 * 
-	 * `settings().Network.PhysicsSendPriority = Enum.DataSendPriority.MEDIUM_PRIORITY`
-	 * 	
-	 * PhysicsSendPriority controls the send priority of physics packets in Roblox's underlying RakNet replication layer.
-	 * 
-	 * It can be set to the following values:
-	 * 
-	 * | Name | Description |
-	 * | --- | --- |
-	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
-	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
-	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
-	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
-	 * 
-	 * The value of this currently defaults to HIGH_PRIORITY. Changing it requires you to use the command bar.
-	 * 
-	 * For example, this will set the PhysicsSendPriority to MEDIUM_PRIORITY:
-	 * 
-	 * `settings().Network.PhysicsSendPriority = Enum.DataSendPriority.MEDIUM_PRIORITY`
-	 * 
-	 * Tags: Hidden, NotReplicated
-	PhysicsSendPriority controls the send priority of physics packets in Roblox's underlying RakNet replication layer.
-	 * 
-	 * It can be set to the following values:
-	 * 
-	 * | Name | Description |
-	 * | --- | --- |
-	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
-	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
-	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
-	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
-	 * 
-	 * The value of this currently defaults to HIGH_PRIORITY. Changing it requires you to use the command bar.
-	 * 
-	 * For example, this will set the PhysicsSendPriority to MEDIUM_PRIORITY:
-	 * 
-	 * `settings().Network.PhysicsSendPriority = Enum.DataSendPriority.MEDIUM_PRIORITY`
-	 * 	
-	 * PhysicsSendPriority controls the send priority of physics packets in Roblox's underlying RakNet replication layer.
-	 * 
-	 * It can be set to the following values:
-	 * 
-	 * | Name | Description |
-	 * | --- | --- |
-	 * | IMMEDIATE_PRIORITY | The highest possible priority. These packets are sent immediately, and are generally not buffered or aggregated into a single datagram. |
-	 * | HIGH_PRIORITY | For every 2 IMMEDIATE_PRIORITY packets, 1 HIGH_PRIORITY packet will be sent. |
-	 * | MEDIUM_PRIORITY | For every 2 HIGH_PRIORITY packets, 1 MEDIUM_PRIORITY packet will be sent. |
-	 * | LOW_PRIORITY | For every 2 MEDIUM_PRIORITY packets, 1 LOW_PRIORITY packet will be sent. |
-	 * 
-	 * The value of this currently defaults to HIGH_PRIORITY. Changing it requires you to use the command bar.
-	 * 
-	 * For example, this will set the PhysicsSendPriority to MEDIUM_PRIORITY:
-	 * 
-	 * `settings().Network.PhysicsSendPriority = Enum.DataSendPriority.MEDIUM_PRIORITY`
-	 * 
-	 * Tags: Hidden, NotReplicated
-	 *
-	 * Tags: Hidden, NotReplicated
-	 */
-	PhysicsSendPriority: Enum.PacketPriority;
-	/** PreferredClientPort specifies the preferred port to be used by the client when connecting to a local server.
-	 * 
-	 * Note that the port should be a value between 0-65535. Any value outside this range will make the client fail to connect to the server.
-	 */
-	PreferredClientPort: number;
 	/** PrintFilters is a diagnostics property that allows developers to see what changes are being filtered while [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled) is set to true. It's important to note that this property will only work while in a local server.
 	 * 
 	 * When set to true, there are several conditions where warnings will be printed into the output, as listed below:
@@ -1018,55 +850,6 @@ interface NetworkSettings extends Instance {
 	 * ----------
 	 */
 	PrintFilters: boolean;
-	/** PrintInstances is an internal property that prints debug information about instance replication across the server/client boundary.
-	 * 
-	 * There are several debug outputs that are made available when this property is set to true, as listed below.
-	 * 
-	 * Note that this property is intended for Roblox engineers who are debugging network replication.
-	 * 
-	 * This documentation may become outdated in the future, as Roblox's network code is always changing behind the scenes.
-	 * 
-	 * ---
-	 * 
-	 * Instance Creation
-	 * 
-	 * **When a new Instance is replicated, the following debug message is printed:**
-	 * 
-	 * `Replication NewInstance::write from cache: {1}:{2}:{3} &gt;&gt; {4}, {5} bits`
-	 * 
-	 * **The numbers in curly braces are substituted, and can be described as:**
-	 * 
-	 * • `{1}` – The [Instance.ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) of the new Instance.
-	 * 
-	 * • `{2}` – The GUID string of the new Instance (which can be retrieved via [Instance.GetDebugId](https://developer.roblox.com/api-reference/function/Instance/GetDebugId)).
-	 * 
-	 * • `{3}` – The [Instance.Name](https://developer.roblox.com/api-reference/property/Instance/Name) of the new Instance.
-	 * 
-	 * • `{4}` – The IP address of the peer creating the Instance.
-	 * 
-	 * • `{5}` – The number of bits that were written to create the Instance.
-	 * 
-	 * ---
-	 * 
-	 * Instance Removal
-	 * 
-	 * ---
-	 * 
-	 * **When the removal of an Instance is requested, the following debug message is printed:**
-	 * 
-	 * `Replication: ~{1}:{2} &lt;&lt; {3}`
-	 * 
-	 * **The numbers in curly braces are substituted, and can be described as:**
-	 * 
-	 * • `{1}`  – The [Instance.ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) of the new Instance.
-	 * 
-	 * • `{2}` – The GUID string of the new Instance (which can be retrieved via [Instance.GetDebugId](https://developer.roblox.com/api-reference/function/Instance/GetDebugId)).
-	 * 
-	 * • `{3}` – The IP address of the peer requesting the removal of the Instance.
-	 * 
-	 * ---
-	 */
-	PrintInstances: boolean;
 	/** [NO DOCUMENTATION] */
 	PrintJoinSizeBreakdown: boolean;
 	/** When set to true, debug messages will be printed into the output, pertaining to physics replication errors. There are several debug outputs that are made available when this property is set to true, as listed below.
@@ -1110,29 +893,6 @@ interface NetworkSettings extends Instance {
 	 * ---
 	 */
 	PrintPhysicsErrors: boolean;
-	/** When set to true, debug information is printed regarding messages that have been split up into multiple packets.
-	 * 
-	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
-	 * 
-	 * ---
-	 * 
-	 * Debug Output Format
-	 * 
-	 * The debug outputs are formatted as such:
-	 * 
-	 * `split message, id {1}, size {2}, split count {3}`
-	 * 
-	 * **The numbers in curly braces are substituted, and can be described as:**
-	 * 
-	 * • `{1}` – The id of the split packet.
-	 * 
-	 * • `{2}` – The number of bits being transmitted in each payload.
-	 * 
-	 * • `{3}` – The total number of split packets that should be received.
-	 * 
-	 * ---
-	 */
-	PrintSplitMessage: boolean;
 	/** When set to true, debug information is printed to the output regarding the replication of instances when [Workspace.StreamingEnabled](https://developer.roblox.com/api-reference/property/Workspace/StreamingEnabled) is set to true. There are several debug outputs that are made available when this property is set to true, as listed below.
 	 * 
 	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
@@ -1249,8 +1009,6 @@ interface NetworkSettings extends Instance {
 	 * ---
 	 */
 	PrintTouches: boolean;
-	/** ReceiveRate controls the maximum rate per second at which the network replicator is willing to receive packets. */
-	ReceiveRate: number;
 	/** ![RenderStreamedRegions in action!][1]
 	 * 
 	 * When set to true, regions of space that are being streamed to the client will be outlined in red.
@@ -1262,8 +1020,6 @@ interface NetworkSettings extends Instance {
 	RenderStreamedRegions: boolean;
 	/** When set to true, a label will be shown above each `Player`'s head, showing the current animation being played by the Player's `Humanoid`, if any. */
 	ShowActiveAnimationAsset: boolean;
-	/** TouchSendRate describes the rate per second in which `Touched` events are replicated back and forth between the server and the client. This includes both the [BasePart.Touched](https://developer.roblox.com/api-reference/event/BasePart/Touched) event, and the [BasePart.TouchEnded](https://developer.roblox.com/api-reference/event/BasePart/TouchEnded) event. */
-	TouchSendRate: number;
 	/** TrackDataTypes is a diagnostics property that, when set to true, tells the replicator stats to sample data about packets that are being sent. */
 	TrackDataTypes: boolean;
 	/** TrackPhysicsDetails is a diagnostics property that, when set to true, tells the replicator stats to sample replication physics details. */
@@ -1275,8 +1031,8 @@ interface WorldRoot extends Model {
 }
 
 interface Workspace extends WorldRoot {
-	BreakJoints: any;
-	MakeJoints: any;
+	readonly BreakJoints: any;
+	readonly MakeJoints: any;
 	/** Positions and zooms the [Workspace.CurrentCamera](https://developer.roblox.com/api-reference/property/Workspace/CurrentCamera) to show the extent of `BasePart`s currently in the `Workspace`.
 	 * 
 	 * This function was used in the, now removed, 'Zoom To Extents' button in Roblox Studio. It exhibits similar behavior to the 'Zoom To' (F shortcut) feature, however it shows the extents of the `Workspace` rather than the currently selected object.
@@ -2290,7 +2046,7 @@ interface ScriptDebugger extends Instance {
 	/** Returns a list with all the watches for this debugger */
 	GetWatches(this: ScriptDebugger): Array<Instance>;
 	/** Sets the specified line of the script as a breakpoint. Returns a `DebuggerBreakpoint` that you can use to manage the breakpoint. */
-	SetBreakpoint(this: ScriptDebugger, line: number, isLocalBreakpoint: boolean): Instance | undefined;
+	SetBreakpoint(this: ScriptDebugger, line: number, isContextDependentBreakpoint: boolean): Instance | undefined;
 	/** Sets the value of the variable _name_ as _value_ in the script's main stack. */
 	SetGlobal(this: ScriptDebugger, name: string, value?: any): void;
 	/** Sets the value of the variable _name_ as _value_ in the stack specified. */
@@ -2332,6 +2088,10 @@ interface ScriptDebugger extends Instance {
 interface Selection extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Selection";
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ActiveInstance: Instance | undefined;
 	/** Returns an array of currently selected `Instance`s in Roblox Studio.
 	 * 
 	 * If no `Instance`s are selected, the array returned be empty. This function can be used in conjunction with the [Selection.SelectionChanged](https://developer.roblox.com/api-reference/event/Selection/SelectionChanged) event to get the selection whenever it changes.
@@ -2643,6 +2403,8 @@ interface TotalCountTimeIntervalItem extends StatsItem {
 interface Studio extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Studio";
+	["Active Color"]: Color3;
+	["Active Hover Over Color"]: Color3;
 	/** If set to true, Roblox Studio will attempt to transfer script changes that were made during a Play Solo session to the opened place. */
 	["Always Save Script Changes"]: boolean;
 	/** If set to true, the hover selection box that is shown when mousing over selectable objects in the `Workspace` will flash between [Studio.Hover Over Color](https://developer.roblox.com/api-reference/property/Studio/Hover) and [Studio.Select Color](https://developer.roblox.com/api-reference/property/Studio/Select) based on the [Studio.Hover Animate Speed](https://developer.roblox.com/api-reference/property/Studio/Hover). */
@@ -2687,6 +2449,7 @@ interface Studio extends Instance {
 	/** When set to true, the script editor and command bar will show an autocomplete menu while writing. */
 	["Enable Autocomplete"]: boolean;
 	["Enable CoreScript Debugger"]: boolean;
+	["Enable Internal Features"]: boolean;
 	/** Specifies the color of the wavy underline shown when malformed code is detected in the script editor. */
 	["Error Color"]: Color3;
 	/** Sets the highlight color of matches in the script editor's Find Selection operation (Ctrl+F). */
@@ -2764,8 +2527,10 @@ interface Studio extends Instance {
 	["Server Audio Behavior"]: Enum.ServerAudioBehavior;
 	/** If set to true, the `CoreGui` will be visible in the Explorer while the game is running. */
 	["Show Core GUI in Explorer while Playing"]: boolean;
+	["Show CorePackages"]: boolean;
 	/** If set to true, basic diagnostic information is shown in the bottom right. */
 	["Show Diagnostics Bar"]: boolean;
+	["Show FileSyncService"]: boolean;
 	["Show Hidden Objects in Explorer"]: boolean;
 	/** If set to true, hovering over an object in the `Workspace` will show a selection box. */
 	["Show Hover Over"]: boolean;
@@ -2882,6 +2647,10 @@ interface StudioService extends Instance {
 	 */
 	readonly RotateIncrement: number;
 	/** [NO DOCUMENTATION] *
+	 * Tags: NotReplicated
+	 */
+	readonly ShowActiveInstanceHighlight: boolean;
+	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly ShowConstraintDetails: boolean;
@@ -2912,6 +2681,8 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
 	GetStartupPluginId(this: StudioService): string;
 	/** [NO DOCUMENTATION] */
+	GetTermsOfUseUrl(this: StudioService): string;
+	/** [NO DOCUMENTATION] */
 	GetUserId(this: StudioService): number;
 	/** [NO DOCUMENTATION] */
 	GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult;
@@ -2927,6 +2698,8 @@ interface StudioService extends Instance {
 	PublishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
 	/** [NO DOCUMENTATION] */
 	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
+	/** [NO DOCUMENTATION] */
+	SetDocumentDisplayName(this: StudioService, newName: string): void;
 	/** [NO DOCUMENTATION] */
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
 	/** [NO DOCUMENTATION] */
