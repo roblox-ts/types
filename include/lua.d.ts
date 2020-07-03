@@ -176,6 +176,8 @@ interface DateTable {
 }
 
 declare namespace os {
+	/** Returns the number of seconds of CPU time for the program. It's typical use is to benchmark a piece of code. */
+	function clock(): number;
 	/** Returns the current number of seconds since Jan 1, 1970 in the UTC timezone. */
 	function time(): number;
 	/** Returns the number of seconds past Jan 1, 1970 in the UTC timezone for a given dateTable object. */
