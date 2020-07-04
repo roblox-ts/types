@@ -62,7 +62,8 @@ type OriginalInstanceType<T extends Instance> = T extends any
 				? A extends keyof Instances
 					? Instances[A] // Grab our raw ClassName if there is only one possibility (either StrictInstance or classes which are not superclasses for anything)
 					: never
-				: Instances[{ // Otherwise, iterate through Instances and grab the class with the "ClassName" property which matches T's exactly
+				: Instances[{
+						// Otherwise, iterate through Instances and grab the class with the "ClassName" property which matches T's exactly
 						[K in keyof Instances]: T["ClassName"] extends Instances[K]["ClassName"]
 							? Instances[K]["ClassName"] extends T["ClassName"]
 								? K
@@ -76,11 +77,7 @@ type OriginalInstanceType<T extends Instance> = T extends any
 /** Given an Instance `T`, returns a unioned type of all property names, except "ClassName". */
 type InstanceProperties<I extends Instance> = OriginalInstanceType<I> extends infer T
 	? {
-			[K in keyof T]-?: K extends
-				| "ClassName"
-				| "Changed"
-				| "BreakJoints"
-				| "MakeJoints"
+			[K in keyof T]-?: K extends "ClassName" | "Changed" | "BreakJoints" | "MakeJoints"
 				? never
 				: T[K] extends RBXScriptSignal | Callback
 				? never
@@ -1214,11 +1211,10 @@ interface ColorSequenceKeypoint {
 type ColorSequenceKeypointConstructor = new (time: number, color: Color3) => ColorSequenceKeypoint;
 declare const ColorSequenceKeypoint: ColorSequenceKeypointConstructor;
 
-
 /**
  * Describes a time value, returned from many of DateTime's methods and used for some of DateTime's constructors
  */
-type TimeValueTable = {
+interface TimeValueTable {
 	/** Range: 1400-9999 */
 	readonly Year: number;
 
@@ -1242,7 +1238,7 @@ type TimeValueTable = {
 
 	/** Range: 0-999 */
 	readonly Millisecond: number;
-};
+}
 
 /**
  * A DateTime represents a moment in time using a [Unix timestamp](https://en.wikipedia.org/wiki/Unix_time).
