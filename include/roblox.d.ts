@@ -1222,28 +1222,28 @@ declare const ColorSequenceKeypoint: ColorSequenceKeypointConstructor;
  */
 interface TimeValueTable {
 	/** Range: 1400-9999 */
-	readonly Year: number;
+	Year: number;
 
 	/** Range: 1-12 */
-	readonly Month: number;
+	Month: number;
 
 	/** Range: 1-31 */
-	readonly Day: number;
+	Day: number;
 
 	/** Range: 0-23 */
-	readonly Hour: number;
+	Hour: number;
 
 	/** Range: 0-59 */
-	readonly Minute: number;
+	Minute: number;
 
 	/**
 	 * Range: 0-60
 	 * Usually 0–59, sometimes 60 to accommodate leap seconds in certain systems.
 	 */
-	readonly Second: number;
+	Second: number;
 
 	/** Range: 0-999 */
-	readonly Millisecond: number;
+	Millisecond: number;
 }
 
 /**
