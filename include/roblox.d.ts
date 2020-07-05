@@ -111,8 +111,7 @@ type GetWritableProperties<T extends Instance> = WritableInstanceProperties<T>;
 type FunctionArguments<T> = T extends (...args: infer U) => void ? U : [];
 
 /** A function type which is assignable to any other function type (and any function is assignable to). */
-type Callback = (...args: any) => any;
-// Note: we use `...args: any` so `...args: infer U` is assignable to it (as opposed to `...args: Array<any>`)
+type Callback = (...args: Array<any>) => any;
 
 declare const enum LocationType {
 	MobileWebsite = 0,
