@@ -8981,13 +8981,13 @@ interface HumanoidDescription extends Instance {
 	WalkAnimation: number;
 	WidthScale: number;
 	AddEmote(this: HumanoidDescription, name: string, assetId: number): void;
-	GetEmotes(this: HumanoidDescription): object;
-	GetEquippedEmotes(this: HumanoidDescription): unknown;
+	GetEmotes(this: HumanoidDescription): EmoteDictionary;
+	GetEquippedEmotes(this: HumanoidDescription): EquippedEmotes;
 	RemoveEmote(this: HumanoidDescription, name: string): void;
-	SetEmotes(this: HumanoidDescription, emotes: object): void;
-	SetEquippedEmotes(this: HumanoidDescription, equippedEmotes: Array<any>): void;
-	readonly EmotesChanged: RBXScriptSignal<(newEmotes: object) => void>;
-	readonly EquippedEmotesChanged: RBXScriptSignal<(newEquippedEmotes: Array<any>) => void>;
+	SetEmotes(this: HumanoidDescription, emotes: EmoteDictionary): void;
+	SetEquippedEmotes(this: HumanoidDescription, equippedEmotes: EquippedEmotes): void;
+	readonly EmotesChanged: RBXScriptSignal<(newEmotes: EmoteDictionary) => void>;
+	readonly EquippedEmotesChanged: RBXScriptSignal<(newEquippedEmotes: EquippedEmotes) => void>;
 }
 
 /** An object created when an input begins that describes a particular user input, such as mouse movement, touches, keyboard, and more.

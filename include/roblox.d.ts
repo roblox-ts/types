@@ -159,6 +159,13 @@ type FriendOnlineInfo =
 			"VisitorId" | "UserName" | "LastOnline" | "IsOnline" | "LastLocation" | "PlaceId"
 	  >;
 
+interface EmoteDictionary {
+	/** When these arrays have more than one emote id in them, it will randomly select one of the emotes to play from the list. */
+	[emoteName: string]: Array<number>;
+}
+
+type EquippedEmotes = Array<{ Name: string, Slot: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 }>;
+
 interface GroupInfo {
 	Name: string;
 	Id: number;
@@ -1215,28 +1222,28 @@ declare const ColorSequenceKeypoint: ColorSequenceKeypointConstructor;
  */
 interface TimeValueTable {
 	/** Range: 1400-9999 */
-	readonly Year: number;
+	Year: number;
 
 	/** Range: 1-12 */
-	readonly Month: number;
+	Month: number;
 
 	/** Range: 1-31 */
-	readonly Day: number;
+	Day: number;
 
 	/** Range: 0-23 */
-	readonly Hour: number;
+	Hour: number;
 
 	/** Range: 0-59 */
-	readonly Minute: number;
+	Minute: number;
 
 	/**
 	 * Range: 0-60
 	 * Usually 0–59, sometimes 60 to accommodate leap seconds in certain systems.
 	 */
-	readonly Second: number;
+	Second: number;
 
 	/** Range: 0-999 */
-	readonly Millisecond: number;
+	Millisecond: number;
 }
 
 /**
