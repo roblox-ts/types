@@ -1294,19 +1294,19 @@ interface DateTime {
 
 interface DateTimeConstructor {
 	/** Creates a new DateTime representing the current moment in time */
-	now(): DateTime;
+	now: () => DateTime;
 
 	/**
 	 * Creates a new DateTime object from the given [Unix timestamp](https://en.wikipedia.org/wiki/Unix_time), or the number of seconds since January 1st, 1970 at 00:00 (UTC).
 	 * @param unixTimestamp
 	 */
-	fromUnixTimestamp(unixTimestamp: number): DateTime;
+	fromUnixTimestamp: (unixTimestamp: number) => DateTime;
 
 	/**
 	 * Creates a new DateTime object from the given [Unix timestamp](https://en.wikipedia.org/wiki/Unix_time), or the number of milliseconds since January 1st, 1970 at 00:00 (UTC).
 	 * @param unixTimestampMillis
 	 */
-	fromUnixTimestampMillis(unixTimestampMillis: number): DateTime;
+	fromUnixTimestampMillis: (unixTimestampMillis: number) => DateTime;
 
 	/**
 	 * Creates a new DateTime using the given units from a UTC time
@@ -1322,7 +1322,7 @@ interface DateTimeConstructor {
 	 * @param second Defaults to 0
 	 * @param millisecond Defaults to 0
 	 */
-	fromUniversalTime(
+	fromUniversalTime: (
 		year?: number,
 		month?: number,
 		day?: number,
@@ -1330,7 +1330,7 @@ interface DateTimeConstructor {
 		minute?: number,
 		second?: number,
 		millisecond?: number,
-	): DateTime;
+	) => DateTime;
 
 	/**
 	 * Creates a new DateTime using the given units from a local time
@@ -1346,7 +1346,7 @@ interface DateTimeConstructor {
 	 * @param second Defaults to 0
 	 * @param millisecond Defaults to 0
 	 */
-	fromLocalTime(
+	fromLocalTime: (
 		year?: number,
 		month?: number,
 		day?: number,
@@ -1354,7 +1354,7 @@ interface DateTimeConstructor {
 		minute?: number,
 		second?: number,
 		millisecond?: number,
-	): DateTime;
+	) => DateTime;
 
 	/**
 	 * Creates a DateTime from an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time string in UTC time.
@@ -1362,7 +1362,7 @@ interface DateTimeConstructor {
 	 * An example ISO 8601 date-time string would be `2020-01-02T10:30:45Z`, which represents January nd 2020 at 10:30 AM, 45 seconds.
 	 * @param isoDate
 	 */
-	fromIsoDate(isoDate: string): DateTime | undefined;
+	fromIsoDate: (isoDate: string) => DateTime | undefined;
 }
 
 declare const DateTime: DateTimeConstructor;
@@ -1798,6 +1798,7 @@ interface CheckableTypes extends CheckablePrimitives {
 	Color3: Color3;
 	ColorSequence: ColorSequence;
 	ColorSequenceKeypoint: ColorSequenceKeypoint;
+	DateTime: DateTime;
 	DockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo;
 	Enum: Enum;
 	EnumItem: EnumItem;
