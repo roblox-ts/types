@@ -160,6 +160,13 @@ type FriendOnlineInfo =
 			"VisitorId" | "UserName" | "LastOnline" | "IsOnline" | "LastLocation" | "PlaceId"
 	  >;
 
+interface EmoteDictionary {
+	/** When these arrays have more than one emote id in them, it will randomly select one of the emotes to play from the list. */
+	[emoteName: string]: Array<number>;
+}
+
+type EquippedEmotes = Array<{ Name: string, Slot: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 }>;
+
 interface GroupInfo {
 	Name: string;
 	Id: number;

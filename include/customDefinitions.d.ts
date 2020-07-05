@@ -286,14 +286,14 @@ interface Humanoid extends Instance {
 	GetAccessories(this: Humanoid): Array<Accessory>;
 }
 
-/** #### Related methods:
- * - Humanoid.ApplyDescription()
- * - Humanoid.GetAppliedDescription()
- * - Player.LoadCharacterWithHumanoidDescription()
- * - Players.GetHumanoidDescriptionFromOutfitId()
- * - Players.GetHumanoidDescriptionFromUserId()
- */
-interface HumanoidDescription extends Instance {}
+interface HumanoidDescription extends Instance {
+	GetEmotes(this: HumanoidDescription): EmoteDictionary;
+	GetEquippedEmotes(this: HumanoidDescription): EquippedEmotes;
+	SetEmotes(this: HumanoidDescription, emotes: EmoteDictionary): void;
+	SetEquippedEmotes(this: HumanoidDescription, equippedEmotes: EquippedEmotes): void;
+	readonly EmotesChanged: RBXScriptSignal<(newEmotes: EmoteDictionary) => void>;
+	readonly EquippedEmotesChanged: RBXScriptSignal<(newEquippedEmotes: EquippedEmotes) => void>;
+}
 
 interface InsertService extends Instance {
 	LoadAsset(this: InsertService, assetId: number): Model;
