@@ -566,7 +566,7 @@ interface Instance {
 	 * @param recursive Whether or not the search should be conducted recursively.
 	 * @returns The `Instance` found.
 	 */
-	FindFirstChild(this: Instance, name: string, recursive?: boolean): Instance | undefined;
+	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
 	/** Returns the first child of the `Instance` whose [ClassName](https://developer.roblox.com/api-reference/property/Instance/ClassName) is equal to the given className.
 	 * 
 	 * If no matching child is found, this function returns nil.
@@ -772,8 +772,8 @@ interface Instance {
 	 * @param timeOut An optional time out parameter.
 	 * @returns The `Instance` found.
 	 */
-	WaitForChild(this: Instance, childName: string): Instance;
-	WaitForChild(this: Instance, childName: string, timeOut: number): Instance | undefined;
+	WaitForChild(this: Instance, childName: string | number): Instance;
+	WaitForChild(this: Instance, childName: string | number, timeOut: number): Instance | undefined;
 	/** Fires when the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) property of the object or one of its ancestors is changed.
 	 * 
 	 * This event includes two parameters, *child* and *parent*. *Child* refers to the `Instance` whose [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) was actually changed. *Parent* refers to this `Instance`'s new [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent).
