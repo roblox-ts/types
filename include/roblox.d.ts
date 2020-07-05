@@ -1799,6 +1799,7 @@ interface CheckableTypes extends CheckablePrimitives {
 	Color3: Color3;
 	ColorSequence: ColorSequence;
 	ColorSequenceKeypoint: ColorSequenceKeypoint;
+	DateTime: DateTime;
 	DockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo;
 	Enum: Enum;
 	EnumItem: EnumItem;
