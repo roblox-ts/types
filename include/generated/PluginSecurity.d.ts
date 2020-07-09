@@ -2461,6 +2461,7 @@ interface Studio extends Instance {
 	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
 	/** Specifies the color that the hover selection box uses. */
 	["Hover Over Color"]: Color3;
+	["Indent Using Spaces"]: boolean;
 	/** Sets the text color of built-in Lua keywords. */
 	["Keyword Color"]: Color3;
 	Language: Enum.LanguagePreference;
@@ -2515,6 +2516,7 @@ interface Studio extends Instance {
 	RuntimeUndoBehavior: Enum.RuntimeUndoBehavior;
 	/** The time (in seconds) a script can wait to be resumed before timing out. */
 	ScriptTimeoutLength: number;
+	["Search Content For Core Scripts"]: boolean;
 	/** The color of the selection box used with object selections in the `Workspace` */
 	["Select Color"]: Color3;
 	/** Sets the color of the [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) selection box. */
