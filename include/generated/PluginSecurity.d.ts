@@ -2434,6 +2434,7 @@ interface Studio extends Instance {
 	["Clear Output On Start"]: boolean;
 	/** Specifies the color of comments in Roblox Studio's script editor. */
 	["Comment Color"]: Color3;
+	["Current Line Highlight Color"]: Color3;
 	/** Specifies the default prompt directory that will be opened when the user activates the _Execute Script_ button in Roblox Studio. */
 	DefaultScriptFileDir: QDir;
 	/** If set to true, deprecated objects will be shown in the Advanced Objects window, as well as the Object Browser. */
@@ -2457,6 +2458,7 @@ interface Studio extends Instance {
 	/** Specifies the font used in the script editor. */
 	Font: QFont;
 	["Format On Type"]: boolean;
+	["Highlight Current Line"]: boolean;
 	/** Specifies how frequently the hover animation flashes when the mouse is hovering over a selectable object in the `Workspace`. */
 	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
 	/** Specifies the color that the hover selection box uses. */
@@ -2627,6 +2629,10 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
+	readonly AlignDraggedObjects: boolean;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
 	readonly DraggerSolveConstraints: boolean;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
@@ -2688,6 +2694,8 @@ interface StudioService extends Instance {
 	GetUserId(this: StudioService): number;
 	/** [NO DOCUMENTATION] */
 	GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult;
+	/** [NO DOCUMENTATION] */
+	HasInternalPermission(this: StudioService): boolean;
 	/** [NO DOCUMENTATION] */
 	IsPluginInstalled(this: StudioService, assetId: number): boolean;
 	/** [NO DOCUMENTATION] */
