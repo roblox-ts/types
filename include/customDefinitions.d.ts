@@ -304,7 +304,7 @@ interface InputObject extends Instance {
 	 * 
 	 * For [KeyCode](https://developer.roblox.com/search#stq=KeyCode) input, this indicate's the position of the player's `Mouse`.
 	 * 
-	 * #See also
+	 * # See also
 	 * 
 	 *  - [InputObject.Delta](https://developer.roblox.com/api-reference/property/InputObject/Delta)
 	 * 
