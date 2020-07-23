@@ -6,7 +6,10 @@
 	},
 	"description": "TypeScript typings for the Roblox platform. Partially handwritten and partially automatically generated.",
 	"scripts": {
-		"build": "ts-node src/index.ts"
+		"build": "ts-node src/index.ts",
+		"eslint-src": "npx eslint \"src/**/*.ts\" --max-warnings 0",
+		"eslint-include": "npx eslint \"include/*.ts\" --max-warnings 0",
+		"eslint": "npm run eslint-src && npm run eslint-include"
 	},
 	"main": "include/roblox.d.ts",
 	"types": "include/roblox.d.ts",
