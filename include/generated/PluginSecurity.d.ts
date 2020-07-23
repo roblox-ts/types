@@ -1886,6 +1886,8 @@ interface RenderSettings extends Instance {
 	 * Defaults to 32 MBs.
 	 */
 	MeshCacheSize: number;
+	/** [NO DOCUMENTATION] */
+	MeshPartDetailLevel: Enum.MeshPartDetailLevel;
 	/** If [RenderSettings.EnableFRM](https://developer.roblox.com/api-reference/property/RenderSettings/EnableFRM) is set to true, this property controls the quality level in Roblox Studio. */
 	QualityLevel: Enum.QualityLevel;
 	/** When set to true, Roblox Studio will automatically reload changes that are made to files in Roblox's `content` folder. */
@@ -2677,6 +2679,8 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
 	AnimationIdSelected(this: StudioService, id: number): void;
 	/** [NO DOCUMENTATION] */
+	BaseURLHasChineseHost(this: StudioService): boolean;
+	/** [NO DOCUMENTATION] */
 	ConvertToPackageUpload(this: StudioService, uploadUrl: string): void;
 	/** [NO DOCUMENTATION] */
 	CopyToClipboard(this: StudioService, stringToCopy: string): void;
@@ -2743,6 +2747,8 @@ interface StudioService extends Instance {
 	 */
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
 	/** [NO DOCUMENTATION] */
+	readonly DEPRECATED_OnPublishPlaceToRoblox: RBXScriptSignal<() => void>;
+	/** [NO DOCUMENTATION] */
 	readonly GamePublishFinished: RBXScriptSignal<(success: boolean, gameId: number) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly OnConvertToPackageResult: RBXScriptSignal<(isSuccessful: boolean, errorMessage: string) => void>;
@@ -2759,7 +2765,7 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
 	readonly OnPublishAsPlugin: RBXScriptSignal<(instances: Array<Instance>) => void>;
 	/** [NO DOCUMENTATION] */
-	readonly OnPublishPlaceToRoblox: RBXScriptSignal<() => void>;
+	readonly OnPublishPlaceToRoblox: RBXScriptSignal<(isOverwritePublish: boolean) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly OnSaveToRoblox: RBXScriptSignal<(instances: Array<Instance>) => void>;
 }

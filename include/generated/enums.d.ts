@@ -7637,6 +7637,50 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<MembershipType>
 	}
 	export type MembershipType = MembershipType.None | MembershipType.BuildersClub | MembershipType.TurboBuildersClub | MembershipType.OutrageousBuildersClub | MembershipType.Premium;
+	export namespace MeshPartDetailLevel {
+		export interface DistanceBased {
+			Name: "DistanceBased";
+			Value: 0;
+			EnumType: EnumType<MeshPartDetailLevel>;
+		}
+
+		export const DistanceBased: DistanceBased;
+
+		export interface Level01 {
+			Name: "Level01";
+			Value: 1;
+			EnumType: EnumType<MeshPartDetailLevel>;
+		}
+
+		export const Level01: Level01;
+
+		export interface Level02 {
+			Name: "Level02";
+			Value: 2;
+			EnumType: EnumType<MeshPartDetailLevel>;
+		}
+
+		export const Level02: Level02;
+
+		export interface Level03 {
+			Name: "Level03";
+			Value: 3;
+			EnumType: EnumType<MeshPartDetailLevel>;
+		}
+
+		export const Level03: Level03;
+
+		export interface Level04 {
+			Name: "Level04";
+			Value: 4;
+			EnumType: EnumType<MeshPartDetailLevel>;
+		}
+
+		export const Level04: Level04;
+
+		export function GetEnumItems(this: defined): Array<MeshPartDetailLevel>
+	}
+	export type MeshPartDetailLevel = MeshPartDetailLevel.DistanceBased | MeshPartDetailLevel.Level01 | MeshPartDetailLevel.Level02 | MeshPartDetailLevel.Level03 | MeshPartDetailLevel.Level04;
 	export namespace MeshType {
 		export interface Head {
 			Name: "Head";
@@ -8906,9 +8950,17 @@ declare namespace Enum {
 
 		export const Precise: Precise;
 
+		export interface Performance {
+			Name: "Performance";
+			Value: 2;
+			EnumType: EnumType<RenderFidelity>;
+		}
+
+		export const Performance: Performance;
+
 		export function GetEnumItems(this: defined): Array<RenderFidelity>
 	}
-	export type RenderFidelity = RenderFidelity.Automatic | RenderFidelity.Precise;
+	export type RenderFidelity = RenderFidelity.Automatic | RenderFidelity.Precise | RenderFidelity.Performance;
 	export namespace RenderPriority {
 		export interface First {
 			Name: "First";
