@@ -881,6 +881,14 @@ interface Workspace extends WorldRoot {
 }
 
 interface WorldRoot extends Model {
+	Raycast(
+		this: WorldRoot,
+		origin: Vector3,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
+
+	/** @deprecated */
 	FindPartOnRay(
 		this: WorldRoot,
 		ray: Ray,
@@ -889,6 +897,7 @@ interface WorldRoot extends Model {
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 
+	/** @deprecated */
 	FindPartOnRayWithIgnoreList(
 		this: WorldRoot,
 		ray: Ray,
@@ -897,6 +906,7 @@ interface WorldRoot extends Model {
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 
+	/** @deprecated */
 	FindPartOnRayWithWhitelist(
 		this: WorldRoot,
 		ray: Ray,
