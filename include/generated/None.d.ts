@@ -7624,8 +7624,12 @@ interface ConeHandleAdornment extends HandleAdornment {
 interface CylinderHandleAdornment extends HandleAdornment {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "CylinderHandleAdornment";
+	/** [NO DOCUMENTATION] */
+	Angle: number;
 	/** The height of the cylinder adornment. */
 	Height: number;
+	/** [NO DOCUMENTATION] */
+	InnerRadius: number;
 	/** The radius of the cylinder adornment. */
 	Radius: number;
 }
