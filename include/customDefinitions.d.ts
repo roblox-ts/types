@@ -317,7 +317,7 @@ interface Instance {
 	readonly Changed: unknown;
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
-	
+
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
 
 	WaitForChild(this: Instance, childName: string | number): Instance;
@@ -881,6 +881,23 @@ interface Workspace extends WorldRoot {
 }
 
 interface WorldRoot extends Model {
+	/**
+	 * Casts a ray using an origin, direction, and optional `RaycastParams`. If it finds an eligible `BasePart` or `Terrain` cell, a `RaycastResult` is returned containing the results of the operation. If no `RaycastParams` object is provided, the defaults are used (all parts are considered and Terrain water is not ignored).
+	 *
+	 * Note that the length (magnitude) of the directional vector is important, as objects/terrain further away than its length will not be tested. If you’re using a `CFrame` to help create the ray components, consider using `CFrame.LookVector` as the directional vector and multiply it by the desired length as shown in the example below.
+	 *
+	 * For a demonstration of how raycasting works, see the Intro to Raycasting article.
+	 *
+	 * This method does NOT use a `Ray` object, but its origin and direction components can be borrowed from `Ray.Origin` and `Ray.Direction`.
+	 */
+	Raycast(
+		this: WorldRoot,
+		origin: Vector3,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
+
+	/** @deprecated in favor of WorldRoot.Raycast*/
 	FindPartOnRay(
 		this: WorldRoot,
 		ray: Ray,
@@ -889,6 +906,7 @@ interface WorldRoot extends Model {
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 
+	/** @deprecated in favor of WorldRoot.Raycast*/
 	FindPartOnRayWithIgnoreList(
 		this: WorldRoot,
 		ray: Ray,
@@ -897,6 +915,7 @@ interface WorldRoot extends Model {
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 
+	/** @deprecated in favor of WorldRoot.Raycast*/
 	FindPartOnRayWithWhitelist(
 		this: WorldRoot,
 		ray: Ray,
