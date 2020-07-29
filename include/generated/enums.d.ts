@@ -7817,6 +7817,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<MessageType>
 	}
 	export type MessageType = MessageType.MessageOutput | MessageType.MessageInfo | MessageType.MessageWarning | MessageType.MessageError;
+	export namespace ModelLevelOfDetail {
+		export interface Automatic {
+			Name: "Automatic";
+			Value: 0;
+			EnumType: EnumType<ModelLevelOfDetail>;
+		}
+
+		export const Automatic: Automatic;
+
+		export interface StreamingMesh {
+			Name: "StreamingMesh";
+			Value: 1;
+			EnumType: EnumType<ModelLevelOfDetail>;
+		}
+
+		export const StreamingMesh: StreamingMesh;
+
+		export interface Disabled {
+			Name: "Disabled";
+			Value: 2;
+			EnumType: EnumType<ModelLevelOfDetail>;
+		}
+
+		export const Disabled: Disabled;
+
+		export function GetEnumItems(this: defined): Array<ModelLevelOfDetail>
+	}
+	export type ModelLevelOfDetail = ModelLevelOfDetail.Automatic | ModelLevelOfDetail.StreamingMesh | ModelLevelOfDetail.Disabled;
 	export namespace ModifierKey {
 		export interface Alt {
 			Name: "Alt";
@@ -9761,34 +9789,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<SizeConstraint>
 	}
 	export type SizeConstraint = SizeConstraint.RelativeXY | SizeConstraint.RelativeXX | SizeConstraint.RelativeYY;
-	export namespace SkinnedMeshAllowType {
-		export interface Default {
-			Name: "Default";
-			Value: 0;
-			EnumType: EnumType<SkinnedMeshAllowType>;
-		}
-
-		export const Default: Default;
-
-		export interface Disabled {
-			Name: "Disabled";
-			Value: 2;
-			EnumType: EnumType<SkinnedMeshAllowType>;
-		}
-
-		export const Disabled: Disabled;
-
-		export interface Enabled {
-			Name: "Enabled";
-			Value: 1;
-			EnumType: EnumType<SkinnedMeshAllowType>;
-		}
-
-		export const Enabled: Enabled;
-
-		export function GetEnumItems(this: defined): Array<SkinnedMeshAllowType>
-	}
-	export type SkinnedMeshAllowType = SkinnedMeshAllowType.Default | SkinnedMeshAllowType.Disabled | SkinnedMeshAllowType.Enabled;
 	export namespace SortOrder {
 		export interface LayoutOrder {
 			Name: "LayoutOrder";
@@ -11270,17 +11270,25 @@ declare namespace Enum {
 
 		export const TeleportToPrivateServer: TeleportToPrivateServer;
 
-		export interface TeleportToPartyAsync {
-			Name: "TeleportToPartyAsync";
+		export interface TeleportPartyAsync {
+			Name: "TeleportPartyAsync";
 			Value: 3;
 			EnumType: EnumType<TeleportMethod>;
 		}
 
-		export const TeleportToPartyAsync: TeleportToPartyAsync;
+		export const TeleportPartyAsync: TeleportPartyAsync;
+
+		export interface TeleportUnknown {
+			Name: "TeleportUnknown";
+			Value: 4;
+			EnumType: EnumType<TeleportMethod>;
+		}
+
+		export const TeleportUnknown: TeleportUnknown;
 
 		export function GetEnumItems(this: defined): Array<TeleportMethod>
 	}
-	export type TeleportMethod = TeleportMethod.TeleportToSpawnByName | TeleportMethod.TeleportToPlaceInstance | TeleportMethod.TeleportToPrivateServer | TeleportMethod.TeleportToPartyAsync;
+	export type TeleportMethod = TeleportMethod.TeleportToSpawnByName | TeleportMethod.TeleportToPlaceInstance | TeleportMethod.TeleportToPrivateServer | TeleportMethod.TeleportPartyAsync | TeleportMethod.TeleportUnknown;
 	export namespace TeleportResult {
 		export interface Success {
 			Name: "Success";

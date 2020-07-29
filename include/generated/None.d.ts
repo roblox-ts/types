@@ -13074,8 +13074,7 @@ interface Model extends PVInstance {
 interface WorldRoot extends Model {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Workspace" | "WorldModel";
-	ArePartsTouchingOthers(this: WorldRoot, partList: Array<Instance>, overlapIgnored?: number): boolean;
-	BulkMoveTo(this: WorldRoot, partList: Array<Instance>, cframeList: Array<any>, eventMode?: CastsToEnum<Enum.BulkMoveMode>): void;
+	/** @deprecated in favor of WorldRoot.Raycast*/
 	FindPartOnRay(
 		this: WorldRoot,
 		ray: Ray,
@@ -13083,6 +13082,7 @@ interface WorldRoot extends Model {
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+	/** @deprecated in favor of WorldRoot.Raycast*/
 	FindPartOnRayWithIgnoreList(
 		this: WorldRoot,
 		ray: Ray,
@@ -13090,12 +13090,15 @@ interface WorldRoot extends Model {
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+	/** @deprecated in favor of WorldRoot.Raycast*/
 	FindPartOnRayWithWhitelist(
 		this: WorldRoot,
 		ray: Ray,
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
+	ArePartsTouchingOthers(this: WorldRoot, partList: Array<Instance>, overlapIgnored?: number): boolean;
+	BulkMoveTo(this: WorldRoot, partList: Array<Instance>, cframeList: Array<any>, eventMode?: CastsToEnum<Enum.BulkMoveMode>): void;
 	FindPartsInRegion3(
 		this: WorldRoot,
 		region: Region3,
@@ -13116,7 +13119,12 @@ interface WorldRoot extends Model {
 	): Array<BasePart>;
 	IsRegion3Empty(this: WorldRoot, region: Region3, ignoreDescendentsInstance?: Instance): boolean;
 	IsRegion3EmptyWithIgnoreList(this: WorldRoot, region: Region3, ignoreDescendentsTable: Array<Instance>): boolean;
-	Raycast(this: WorldRoot, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult;
+	Raycast(
+		this: WorldRoot,
+		origin: Vector3,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
 }
 
 /** The Workspace is the service in which any objects that are to be rendered in the 3D world exist. Objects not descending from Workspace will not be rendered or physically interact with the world.
