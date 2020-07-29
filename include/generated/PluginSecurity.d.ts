@@ -1026,6 +1026,11 @@ interface NetworkSettings extends Instance {
 	TrackPhysicsDetails: boolean;
 }
 
+interface Model extends PVInstance {
+	/** Automatically generate impostor meshes to be rendered outside of streaming radius. */
+	LevelOfDetail: Enum.ModelLevelOfDetail;
+}
+
 interface WorldRoot extends Model {
 	IKMoveTo(this: WorldRoot, part: BasePart, target: CFrame, translateStiffness?: number, rotateStiffness?: number, collisionsMode?: CastsToEnum<Enum.IKCollisionsMode>): void;
 }
@@ -2016,7 +2021,7 @@ interface ScriptContext extends Instance {
 	/** Fired when an error occurs. */
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: LuaSourceContainer) => void>;
 	/** [NO DOCUMENTATION] */
-	readonly ErrorDetailed: RBXScriptSignal<(message: string, stackTrace: string, script: LuaSourceContainer, details: string) => void>;
+	readonly ErrorDetailed: RBXScriptSignal<(message: string, stackTrace: string, script: LuaSourceContainer, details: string, securityLevel: number) => void>;
 }
 
 /** A ScriptDebugger is used to handle the debugging of a specific script. It can be retrieved from the `DebuggerManager`. */
@@ -2482,6 +2487,7 @@ interface Studio extends Instance {
 	["Matching Word Background Color"]: Color3;
 	/** The maximum number of lines that can be displayed in the output. */
 	["Maximum Output Lines"]: number;
+	["Maximum Table Depth"]: number;
 	/** Specifies the color of numbers in Roblox Studio's script editor. */
 	["Number Color"]: Color3;
 	/** If set to true, audio being played will only be heard if the game window is being focused on. */
