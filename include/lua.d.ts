@@ -198,20 +198,21 @@ interface String {
 	/** Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`, `...`, `s[j]`. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
 	byte(this: string, i?: number, j?: number): LuaTuple<Array<number>>;
 
-	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if `plain` is given, then `init` must be given as well. */
-	/** @rbxts disallow-tuple-truthy */
+	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends, as well as any matches after that. Otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if `plain` is given, then `init` must be given as well. */
 	find(
 		this: string,
 		pattern: string,
 		init?: number,
 		plain?: boolean,
-	): LuaTuple<[number, number, ...Array<string>] | Array<undefined>>;
+	): LuaTuple<[number, number, ...Array<string | number>] | Array<undefined>>;
+	// A capture may be a number when we use `()` to capture the location
 
 	/** Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). */
 	format(this: string, ...args: Array<number | string>): string;
 
 	/** Returns an iterator function that, each time it is called, returns the next captures from pattern over the string s. */
-	gmatch(this: string, pattern: string): IterableFunction<LuaTuple<Array<string>>>;
+	gmatch(this: string, pattern: string): IterableFunction<LuaTuple<Array<string | number>>>;
+	// A capture may be a number when we use `()` to capture the location
 
 	/** Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. */
 	gsub(this: string, pattern: string, repl: string, n?: number): LuaTuple<[string, number]>;
@@ -223,9 +224,9 @@ interface String {
 	/** Receives a string and returns a copy of this string with all uppercase letters changed to lowercase. */
 	lower(this: string): string;
 
-	/** Looks for the first match of pattern in the string s. If a match is found, it is returned; otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. */
-	/** @rbxts disallow-tuple-truthy */
-	match(this: string, pattern: string, init?: number): LuaTuple<Array<string> | Array<undefined>>;
+	/** Looks for the first match of pattern in the string s. If a match is found it is returned. Otherwise, this returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. */
+	match(this: string, pattern: string, init?: number): LuaTuple<Array<string | number> | Array<undefined>>;
+	// A capture may be a number when we use `()` to capture the location
 
 	/** Returns a string that is the concatenation of n copies of the string s separated by the string sep. */
 	rep(this: string, n: number): string;
