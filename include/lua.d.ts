@@ -1,4 +1,6 @@
 /// <reference no-default-lib="true"/>
+/// <reference path="es.d.ts" />
+/// <reference path="generated/None.d.ts" />
 
 // LUA API
 
@@ -217,9 +219,19 @@ interface String {
 	/** Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. */
 	gsub(this: string, pattern: string, repl: string, n?: number): LuaTuple<[string, number]>;
 	gsub(this: string, pattern: string, repl: number, n?: number): LuaTuple<[string, number]>;
-	gsub(this: string, pattern: string, repl: (value: string) => string | number | undefined, n?: number): LuaTuple<[string, number]>;
+	gsub(
+		this: string,
+		pattern: string,
+		repl: (value: string) => string | number | undefined,
+		n?: number,
+	): LuaTuple<[string, number]>;
 	gsub(this: string, pattern: string, repl: Map<string, string | number>, n?: number): LuaTuple<[string, number]>;
-	gsub(this: string, pattern: string, repl: { [index: string]: string | number }, n?: number): LuaTuple<[string, number]>;
+	gsub(
+		this: string,
+		pattern: string,
+		repl: { [index: string]: string | number },
+		n?: number,
+	): LuaTuple<[string, number]>;
 
 	/** Receives a string and returns a copy of this string with all uppercase letters changed to lowercase. */
 	lower(this: string): string;
