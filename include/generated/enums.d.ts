@@ -4933,34 +4933,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<InitialDockState>
 	}
 	export type InitialDockState = InitialDockState.Top | InitialDockState.Bottom | InitialDockState.Left | InitialDockState.Right | InitialDockState.Float;
-	export namespace InlineAlignment {
-		export interface Bottom {
-			Name: "Bottom";
-			Value: 0;
-			EnumType: EnumType<InlineAlignment>;
-		}
-
-		export const Bottom: Bottom;
-
-		export interface Center {
-			Name: "Center";
-			Value: 1;
-			EnumType: EnumType<InlineAlignment>;
-		}
-
-		export const Center: Center;
-
-		export interface Top {
-			Name: "Top";
-			Value: 2;
-			EnumType: EnumType<InlineAlignment>;
-		}
-
-		export const Top: Top;
-
-		export function GetEnumItems(this: defined): Array<InlineAlignment>
-	}
-	export type InlineAlignment = InlineAlignment.Bottom | InlineAlignment.Center | InlineAlignment.Top;
 	export namespace InputType {
 		export interface NoInput {
 			Name: "NoInput";

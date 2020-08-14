@@ -2418,8 +2418,6 @@ interface Studio extends Instance {
 	["Animate Hover Over"]: boolean;
 	["Auto Closing Brackets"]: boolean;
 	["Auto Closing Quotes"]: boolean;
-	/** If set to true, the script editor will automatically indent when a new stack is created in the script. */
-	["Auto Indent"]: boolean;
 	["Auto Indent Rule"]: Enum.AutoIndentRule;
 	["Auto-Recovery Enabled"]: boolean;
 	["Auto-Recovery Interval (Minutes)"]: number;
@@ -2442,12 +2440,12 @@ interface Studio extends Instance {
 	/** Specifies the color of comments in Roblox Studio's script editor. */
 	["Comment Color"]: Color3;
 	["Current Line Highlight Color"]: Color3;
+	["Debugger Current Line Color"]: Color3;
+	["Debugger Error Line Color"]: Color3;
 	/** Specifies the default prompt directory that will be opened when the user activates the _Execute Script_ button in Roblox Studio. */
 	DefaultScriptFileDir: QDir;
 	/** If set to true, deprecated objects will be shown in the Advanced Objects window, as well as the Object Browser. */
 	DeprecatedObjectsShown: boolean;
-	/** A 4 digit code that can be used by Roblox's mobile pairing app to connect to your instance of Roblox Studio on the local network. */
-	["Device Pairing Code"]: number;
 	["Disable Accurate Play Solo"]: boolean;
 	/** If set to true, the bounding box of a selection will be used for collision detection while dragging, instead of each individual part being checked.
 	 * 
@@ -2464,6 +2462,7 @@ interface Studio extends Instance {
 	["Find Selection Background Color"]: Color3;
 	/** Specifies the font used in the script editor. */
 	Font: QFont;
+	["Format On Paste"]: boolean;
 	["Format On Type"]: boolean;
 	["Highlight Current Line"]: boolean;
 	/** Specifies how frequently the hover animation flashes when the mouse is hovering over a selectable object in the `Workspace`. */
@@ -2762,6 +2761,8 @@ interface StudioService extends Instance {
 	readonly OnImportFromRoblox: RBXScriptSignal<() => void>;
 	/** [NO DOCUMENTATION] */
 	readonly OnOpenConvertToPackagePlugin: RBXScriptSignal<(instances: Array<Instance>, name: string) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly OnOpenGameSettings: RBXScriptSignal<(pageIdentifier: string) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly OnOpenManagePackagePlugin: RBXScriptSignal<(userId: number, assetId: number) => void>;
 	/** [NO DOCUMENTATION] */
