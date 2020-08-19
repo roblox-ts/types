@@ -192,11 +192,12 @@ interface GetGroupsAsyncResult {
 	IsInClan: boolean;
 }
 
+type HttpHeaders = Record<string, string> | Map<string, string>;
 interface RequestAsyncRequest {
 	Url: string;
 	Method?: "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "PATCH";
 	Body?: string;
-	Headers?: Record<string, string> | Map<string, string>;
+	Headers?: HttpHeaders;
 }
 
 interface RequestAsyncResponse {
