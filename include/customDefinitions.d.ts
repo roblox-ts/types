@@ -61,7 +61,7 @@ interface BasePart extends PVInstance {
 	): UnionOperation;
 
 	/** @rbxts server */
-	CanSetNetworkOwnership(this: BasePart): LuaTuple<[boolean, string | undefined]>;
+	CanSetNetworkOwnership(this: BasePart): LuaTuple<[canSet: true]> | LuaTuple<[canSet: false, reason: string]>;
 	/** @rbxts server */
 	GetNetworkOwner(this: BasePart): Player | undefined;
 	/** @rbxts server */
@@ -90,8 +90,8 @@ interface BindableFunction<T extends Callback = Callback> extends Instance {
 interface Camera extends Instance {
 	CameraSubject: Humanoid | BasePart | undefined;
 	GetPartsObscuringTarget(this: Camera, castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
-	WorldToScreenPoint(this: Camera, worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
-	WorldToViewportPoint(this: Camera, worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
+	WorldToScreenPoint(this: Camera, worldPoint: Vector3): LuaTuple<[vector: Vector3, onScreen: boolean]>;
+	WorldToViewportPoint(this: Camera, worldPoint: Vector3): LuaTuple<[vector: Vector3, onScreen: boolean]>;
 }
 
 interface Chat extends Instance {
@@ -253,7 +253,7 @@ interface GuiService extends Instance {
 		humanoidDescription: HumanoidDescription,
 		name: string,
 	): void;
-	GetGuiInset(this: GuiService): LuaTuple<[Vector2, Vector2]>;
+	GetGuiInset(this: GuiService): LuaTuple<[fromTopLeft: Vector2, fromBottomRight: Vector2]>;
 }
 
 interface HttpService extends Instance {
@@ -443,7 +443,7 @@ interface MessagingService extends Instance {
 
 interface Model extends PVInstance {
 	PrimaryPart: BasePart | undefined;
-	GetBoundingBox(this: Model): LuaTuple<[CFrame, Vector3]>;
+	GetBoundingBox(this: Model): LuaTuple<[center: CFrame, size: Vector3]>;
 }
 
 interface NetworkClient extends NetworkPeer {
@@ -524,7 +524,7 @@ interface Players extends Instance {
 		userId: number,
 		thumbnailType: CastsToEnum<Enum.ThumbnailType>,
 		thumbnailSize: CastsToEnum<Enum.ThumbnailSize>,
-	): LuaTuple<[string, boolean]>;
+	): LuaTuple<[content: string, isReady: boolean]>;
 }
 
 interface Plugin extends Instance {
@@ -691,9 +691,11 @@ interface TeleportService extends Instance {
 		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string) => void
 	>;
 	/** @rbxts server */
-	GetPlayerPlaceInstanceAsync(this: TeleportService, userId: number): LuaTuple<[boolean, string, number, string]>;
+	GetPlayerPlaceInstanceAsync(
+		this: TeleportService, userId: number
+	): LuaTuple<[isCurrentInstance: boolean, error: string]> | LuaTuple<[isCurrentInstance: boolean, error: undefined, placeId: number, jobId: string]>;
 	/** @rbxts server */
-	ReserveServer(this: TeleportService, placeId: number): LuaTuple<[string, string]>;
+	ReserveServer(this: TeleportService, placeId: number): LuaTuple<[accessCode: string, privateServerId: string]>;
 	/** @rbxts client */
 	GetArrivingTeleportGui(this: TeleportService): ScreenGui | undefined;
 	/** @rbxts client */
@@ -757,7 +759,7 @@ interface Terrain extends BasePart {
 		this: Terrain,
 		region: Region3,
 		resolution: number,
-	): LuaTuple<[ReadVoxelsArray<Enum.Material>, ReadVoxelsArray<number>]>;
+	): LuaTuple<[materials: ReadVoxelsArray<Enum.Material>, occupancies: ReadVoxelsArray<number>]>;
 	WriteVoxels(
 		this: Terrain,
 		region: Region3,
@@ -842,7 +844,7 @@ interface UserInputService extends Instance {
 	readonly DeviceGravityChanged: RBXScriptSignal<(gravity: InputObject) => void>;
 	readonly DeviceRotationChanged: RBXScriptSignal<(rotation: InputObject, cframe: CFrame) => void>;
 	GetConnectedGamepads(this: UserInputService): Array<Enum.UserInputType>;
-	GetDeviceRotation(this: UserInputService): LuaTuple<[InputObject, CFrame]>;
+	GetDeviceRotation(this: UserInputService): LuaTuple<[delta: InputObject, current: CFrame]>;
 	GetGamepadState(this: UserInputService, gamepadNum: CastsToEnum<Enum.UserInputType>): Array<InputObject>;
 	GetKeysPressed(this: UserInputService): Array<InputObject>;
 	GetMouseButtonsPressed(this: UserInputService): Array<InputObject>;

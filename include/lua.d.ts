@@ -56,19 +56,9 @@ declare function tostring(value: unknown): string;
 declare function pcall<T extends Array<any>, U>(
 	func: (...args: T) => U,
 ): LuaTuple<
-	U extends [infer A]
-		? [true, A] | [false, string]
-		: U extends [infer A, infer B]
-		? [true, A, B] | [false, string, undefined]
-		: U extends [infer A, infer B, infer C]
-		? [true, A, B, C] | [false, string, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D]
-		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D, infer E]
-		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
-		: [true, U] | [false, string]
+	U extends Array<any>
+		? [true, ...U] | [success: false, error: string]
+		: [success: true, result: U] | [success: false, error: string]
 >;
 
 /** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
@@ -76,38 +66,18 @@ declare function pcall<T extends Array<any>, U>(
 	func: (...args: T) => U,
 	...args: T
 ): LuaTuple<
-	U extends [infer A]
-		? [true, A] | [false, string]
-		: U extends [infer A, infer B]
-		? [true, A, B] | [false, string, undefined]
-		: U extends [infer A, infer B, infer C]
-		? [true, A, B, C] | [false, string, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D]
-		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D, infer E]
-		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
-		: [true, U] | [false, string]
+	U extends Array<any>
+		? [true, ...U] | [success: false, error: string]
+		: [success: true, result: U] | [success: false, error: string]
 >;
 
 /** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, xpcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, xpcall also returns all results from the call, after this first result. In case of any error, xpcall returns false plus the error message. */
 declare function xpcall<T extends Array<any>, U>(
 	func: (...args: T) => U,
 ): LuaTuple<
-	U extends [infer A]
-		? [true, A] | [false, string]
-		: U extends [infer A, infer B]
-		? [true, A, B] | [false, string, undefined]
-		: U extends [infer A, infer B, infer C]
-		? [true, A, B, C] | [false, string, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D]
-		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D, infer E]
-		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
-		: [true, U] | [false, string]
+	U extends Array<any>
+	? [true, ...U] | [success: false, error: string]
+	: [success: true, result: U] | [success: false, error: string]
 >;
 
 /** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, xpcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, xpcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
@@ -115,19 +85,9 @@ declare function xpcall<T extends Array<any>, U>(
 	func: (...args: T) => U,
 	...args: T
 ): LuaTuple<
-	U extends [infer A]
-		? [true, A] | [false, string]
-		: U extends [infer A, infer B]
-		? [true, A, B] | [false, string, undefined]
-		: U extends [infer A, infer B, infer C]
-		? [true, A, B, C] | [false, string, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D]
-		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D, infer E]
-		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
-		: [true, U] | [false, string]
+	U extends Array<any>
+	? [true, ...U] | [success: false, error: string]
+	: [success: true, result: U] | [success: false, error: string]
 >;
 
 interface LuaMetatable<T> {
@@ -217,21 +177,21 @@ interface String {
 	// A capture may be a number when we use `()` to capture the location
 
 	/** Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. */
-	gsub(this: string, pattern: string, repl: string, n?: number): LuaTuple<[string, number]>;
-	gsub(this: string, pattern: string, repl: number, n?: number): LuaTuple<[string, number]>;
+	gsub(this: string, pattern: string, repl: string, n?: number): LuaTuple<[result: string, amount: number]>;
+	gsub(this: string, pattern: string, repl: number, n?: number): LuaTuple<[result: string, amount: number]>;
 	gsub(
 		this: string,
 		pattern: string,
 		repl: (value: string) => string | number | undefined,
 		n?: number,
-	): LuaTuple<[string, number]>;
-	gsub(this: string, pattern: string, repl: Map<string, string | number>, n?: number): LuaTuple<[string, number]>;
+	): LuaTuple<[result: string, amount: number]>;
+	gsub(this: string, pattern: string, repl: Map<string, string | number>, n?: number): LuaTuple<[result: string, amount: number]>;
 	gsub(
 		this: string,
 		pattern: string,
 		repl: { [index: string]: string | number },
 		n?: number,
-	): LuaTuple<[string, number]>;
+	): LuaTuple<[result: string, amount: number]>;
 
 	/** Receives a string and returns a copy of this string with all uppercase letters changed to lowercase. */
 	lower(this: string): string;
@@ -307,7 +267,7 @@ declare namespace math {
 	function fmod(x: number, y: number): number;
 
 	/** Returns m and e such that x = m*2^e, e is an integer and the absolute value of m is in the range [0.5, 1) (or zero when x is zero). */
-	function frexp(n: number): LuaTuple<[number, number]>;
+	function frexp(x: number): LuaTuple<[m: number, e: number]>;
 
 	/** Returns m*2^e (e should be an integer). */
 	function ldexp(m: number, e: number): number;
@@ -325,7 +285,7 @@ declare namespace math {
 	function min(...n: Array<number>): number;
 
 	/** Returns two numbers, the integral part of x and the fractional part of x. */
-	function modf(n: number): LuaTuple<[number, number]>;
+	function modf(n: number): LuaTuple<[integral: number, fractional: number]>;
 
 	/** Returns x^y. (You can also use the expression x^y to compute this value.) */
 	function pow(x: number, y: number): number;
@@ -490,44 +450,15 @@ declare namespace coroutine {
 	function yield(...params: Array<unknown>): unknown;
 }
 
+// Array with index key => any of the array elements
 declare function next<T extends readonly any[]>(
 	object: T,
 	index?: number,
-): T extends readonly [infer A]
-	? LuaTuple<[number, A]>
-	: T extends readonly [infer A, infer B]
-	? LuaTuple<[number, A | B]>
-	: T extends readonly [infer A, infer B, infer C]
-	? LuaTuple<[number, A | B | C]>
-	: T extends readonly [infer A, infer B, infer C, infer D]
-	? LuaTuple<[number, A | B | C | D]>
-	: T extends readonly [infer A, infer B, infer C, infer D, infer E]
-	? LuaTuple<[number, A | B | C | D | E]>
-	: T extends readonly [infer A, infer B, infer C, infer D, infer E, infer F]
-	? LuaTuple<[number, A | B | C | D | E | F]>
-	: T extends readonly (infer U)[]
-	? LuaTuple<Array<U>>
-	: LuaTuple<[unknown, unknown]>;
-declare function next<T extends any[]>(
-	object: T,
-	index?: number,
-): T extends [infer A]
-	? LuaTuple<[number, A]>
-	: T extends [infer A, infer B]
-	? LuaTuple<[number, A | B]>
-	: T extends [infer A, infer B, infer C]
-	? LuaTuple<[number, A | B | C]>
-	: T extends [infer A, infer B, infer C, infer D]
-	? LuaTuple<[number, A | B | C | D]>
-	: T extends [infer A, infer B, infer C, infer D, infer E]
-	? LuaTuple<[number, A | B | C | D | E]>
-	: T extends [infer A, infer B, infer C, infer D, infer E, infer F]
-	? LuaTuple<[number, A | B | C | D | E | F]>
-	: T extends (infer U)[]
-	? LuaTuple<Array<U>>
-	: LuaTuple<[unknown, unknown]>;
-declare function next<T>(object: Array<T>, index?: number): LuaTuple<[number, T]>;
+): T extends Array<infer A> ? LuaTuple<[index: number, value: A]> : never;
+// Array without index key => always first element
+declare function next<T>(object: [T, ...Array<any>]): LuaTuple<[index: number, value: T]>;
+
 declare function next<T>(object: Set<T>, index?: T): LuaTuple<[T, true]>;
-declare function next<K, V>(object: Map<K, V>, index?: K): LuaTuple<[K, V]>;
-declare function next<T>(object: T, index?: keyof T): LuaTuple<[keyof T, T[keyof T]]>;
-declare function next(object: object, index?: unknown): LuaTuple<[unknown, unknown]>;
+declare function next<K, V>(object: Map<K, V>, index?: K): LuaTuple<[key: K, value: V]>;
+declare function next<T>(object: T, index?: keyof T): LuaTuple<[key: keyof T, value: T[keyof T]]>;
+declare function next(object: object, index?: unknown): LuaTuple<[key: unknown, value: unknown]>;

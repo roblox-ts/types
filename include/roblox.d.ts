@@ -1132,15 +1132,15 @@ interface CFrame {
 	/** Returns the values: x, y, z, R00, R01, R02, R10, R11, R12, R20, R21, R22, where R00-R22 represent the 3x3 rotation matrix of the CFrame, and xyz represent the position of the CFrame. */
 	GetComponents(
 		this: CFrame,
-	): LuaTuple<[number, number, number, number, number, number, number, number, number, number, number, number]>;
+	): LuaTuple<[x: number, y: number, z: number, r00: number, r01: number, r02: number, r10: number, r11: number, r12: number, r20: number, r21: number, r22: number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, Y, X order */
-	ToEulerAnglesXYZ(this: CFrame): LuaTuple<[number, number, number]>;
+	ToEulerAnglesXYZ(this: CFrame): LuaTuple<[x: number, y: number, z: number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order */
-	ToEulerAnglesYXZ(this: CFrame): LuaTuple<[number, number, number]>;
+	ToEulerAnglesYXZ(this: CFrame): LuaTuple<[x: number, y: number, z: number]>;
 	/** Returns approximate angles that could be used to generate CFrame, if angles were applied in Z, X, Y order (Equivalent to toEulerAnglesYXZ) */
-	ToOrientation(this: CFrame): LuaTuple<[number, number, number]>;
+	ToOrientation(this: CFrame): LuaTuple<[x: number, y: number, z: number]>;
 	/** Returns a tuple of a Vector3 and a number which represent the rotation of the CFrame in the axis-angle representation */
-	ToAxisAngle(this: CFrame): LuaTuple<[Vector3, number]>;
+	ToAxisAngle(this: CFrame): LuaTuple<[axis: Vector3, angle: number]>;
 }
 interface CFrameConstructor {
 	/** Equivalent to fromEulerAnglesXYZ */
@@ -1191,7 +1191,7 @@ interface Color3Constructor {
 	/** Creates a Color3 with the given hue, saturation, and value. The numbers can range from 0 to 1. */
 	fromHSV: (hue: number, sat: number, val: number) => Color3;
 	/** Returns the hue, saturation, and value of a Color3. */
-	toHSV: (color: Color3) => LuaTuple<[number, number, number]>;
+	toHSV: (color: Color3) => LuaTuple<[hue: number, saturation: number, value: number]>;
 	/** Returns a Color3 with the given red, green, and blue values. The numbers can range from 0 to 1, defaulting to 0 */
 	new (red?: number, green?: number, blue?: number): Color3;
 }
@@ -1699,7 +1699,7 @@ This function returns:
 
 Actual time yielded (in seconds)
 Total time since the software was initialized (in seconds) */
-declare function wait(seconds?: number): LuaTuple<[number, number]>;
+declare function wait(seconds?: number): LuaTuple<[yielded: number, sinceInit: number]>;
 /** Behaves identically to Lua’s print function, except the output is styled as a warning, with yellow text and a timestamp.
 This function accepts any number of arguments, and will attempt to convert them into strings which will then be joined together with spaces between them. */
 declare function warn(...params: Array<any>): void;
@@ -1723,8 +1723,8 @@ declare namespace utf8 {
 	function codes(this: typeof utf8, str: string): FirstDecrementedIterableFunction;
 	/** Returns the codepoints (as integers) from all codepoints in the provided string (str) that start between byte positions i and j (both included). The default for i is 0 and for j is i. It raises an error if it meets any invalid byte sequence. Similar to `string.byte`.*/
 	function codepoint(this: typeof utf8, str: string, i?: number, j?: number): LuaTuple<Array<number>>;
-	/** Returns the number of UTF-8 codepoints in the string str that start between positions i and j (both inclusive). The default for i is 0 and for j is -1. If it finds any invalid byte sequence, returns a false value plus the position of the first invalid byte. */
-	function len(this: typeof utf8, s: string, i?: number, j?: number): LuaTuple<[number, undefined] | [false, number]>;
+	/** Returns the number of UTF-8 codepoints in the string str that start between positions i and j (both inclusive). The default for i is 0 and for j is -1. If it finds any invalid byte sequence, returns a nil value plus the position of the first invalid byte. */
+	function len(this: typeof utf8, s: string, i?: number, j?: number): LuaTuple<[number] | [undefined, number]>;
 	/** Returns the position (in bytes) where the encoding of the n-th codepoint of s (counting from byte position i) starts. A negative n gets characters before position i. The default for i is 0 when n is non-negative and #s + 1 otherwise, so that utf8.offset(s, -n) gets the offset of the n-th character from the end of the string. If the specified character is neither in the subject nor right after its end, the function returns nil. */
 	function offset(this: typeof utf8, s: string, n: number, i?: number): number | undefined;
 	/** Returns an iterator function that will iterate the grapheme clusters of the string. */

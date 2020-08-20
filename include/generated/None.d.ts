@@ -3216,7 +3216,7 @@ interface Camera extends Instance {
 	 * worldPoint* is within the bounds of the screen
 	 * 
 	 */
-	WorldToScreenPoint(this: Camera, worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
+	WorldToScreenPoint(this: Camera, worldPoint: Vector3): LuaTuple<[vector: Vector3, onScreen: boolean]>;
 	/** This function returns the screen location and depth of a [DataType.Vector3](https://developer.roblox.com/search#stq=Vector3) *worldPoint* and whether this point is visible on the screen or not.
 	 * 
 	 * This function does not take in account the current GUI inset (such as the space occupied by the top bar). This means the 2D position returned is taken from the top left corner of the viewport. This means, unless you are using [ScreenGui.IgnoreGuiInset](https://developer.roblox.com/api-reference/property/ScreenGui/IgnoreGuiInset) this position is not appropriate for placing GUI elements. For an otherwise identical function that accounts for the GUI inset, see [Camera.WorldToScreenPoint](https://developer.roblox.com/api-reference/function/Camera/WorldToScreenPoint).
@@ -3241,7 +3241,7 @@ interface Camera extends Instance {
 	 * worldPoint* is within the bounds of the viewport.
 	 * 
 	 */
-	WorldToViewportPoint(this: Camera, worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
+	WorldToViewportPoint(this: Camera, worldPoint: Vector3): LuaTuple<[vector: Vector3, onScreen: boolean]>;
 	/** This event fires when the `Camera` has finished interpolating using the [Camera.Interpolate](https://developer.roblox.com/api-reference/function/Camera/Interpolate) function.
 	 * 
 	 * This event will not fire if a tween is interrupted due to [Camera.Interpolate](https://developer.roblox.com/api-reference/function/Camera/Interpolate) being called again.
@@ -7816,7 +7816,7 @@ interface GuiService extends Instance {
 	 * The inset values supplied by this function only take effect on [ScreenGuis](https://developer.roblox.com/api-reference/class/ScreenGui) that have their [IgnoreGuiInset](https://developer.roblox.com/api-reference/property/ScreenGui/IgnoreGuiInset) property set to false.
 	 * @returns A tuple of two Vector2 values describing the current specified Gui Inset.
 	 */
-	GetGuiInset(this: GuiService): LuaTuple<[Vector2, Vector2]>;
+	GetGuiInset(this: GuiService): LuaTuple<[fromTopLeft: Vector2, fromBottomRight: Vector2]>;
 	GetInspectMenuEnabled(this: GuiService): boolean;
 	InspectPlayerFromHumanoidDescription(
 		this: GuiService,
@@ -12332,7 +12332,7 @@ interface BasePart extends PVInstance {
 	 * @returns Whether you can modify/read the network ownership, as well as a reason if you cannot
 	 * @rbxts server
 	 */
-	CanSetNetworkOwnership(this: BasePart): LuaTuple<[boolean, string | undefined]>;
+	CanSetNetworkOwnership(this: BasePart): LuaTuple<[canSet: true]> | LuaTuple<[canSet: false, reason: string]>;
 	/** Returns a table of parts connected to the the object by any kind of rigid joint.
 	 * 
 	 * If _recursive_ is true this function will return all of the parts in the assembly rigidly connected to the BasePart.
@@ -12784,7 +12784,7 @@ interface Terrain extends BasePart {
 		this: Terrain,
 		region: Region3,
 		resolution: number,
-	): LuaTuple<[ReadVoxelsArray<Enum.Material>, ReadVoxelsArray<number>]>;
+	): LuaTuple<[materials: ReadVoxelsArray<Enum.Material>, occupancies: ReadVoxelsArray<number>]>;
 	ReplaceMaterial(this: Terrain, region: Region3, resolution: number, sourceMaterial: CastsToEnum<Enum.Material>, targetMaterial: CastsToEnum<Enum.Material>): void;
 	/** Sets current terrain material color for specified terrain material. Terrain material will shift its base color toward specified color. */
 	SetMaterialColor(this: Terrain, material: CastsToEnum<Enum.Material>, value: Color3): void;
@@ -13015,7 +13015,7 @@ interface Model extends PVInstance {
 	 * Note that although joints produced by surface connections with adjacent Parts can technically be recreated using [Model.MakeJoints](https://developer.roblox.com/api-reference/function/Model/MakeJoints), this will only recreate joints produced by surfaces. Developers should not rely on this as following the joints being broken parts may no longer be in contact with each other.
 	 */
 	BreakJoints(this: Model): void;
-	GetBoundingBox(this: Model): LuaTuple<[CFrame, Vector3]>;
+	GetBoundingBox(this: Model): LuaTuple<[center: CFrame, size: Vector3]>;
 	/** Returns the size of the smallest bounding box that contains all of the `BasePart`s in the `Model`. If [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) exists then the bounding box will be aligned to that part. If a primary part has not been set then the function will chose a part in the model to align the bounding box to. As the the selection of this part is not deterministic it is recommended to set a [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) to get consistent results with this function.
 	 * 
 	 * Note this function only returns the size of the smallest bounding box, and the developer must employ their own method to obtain the position of the bounding box.
@@ -14723,7 +14723,7 @@ interface Players extends Instance {
 		userId: number,
 		thumbnailType: CastsToEnum<Enum.ThumbnailType>,
 		thumbnailSize: CastsToEnum<Enum.ThumbnailSize>,
-	): LuaTuple<[string, boolean]>;
+	): LuaTuple<[content: string, isReady: boolean]>;
 	/** The PlayerAdded event fires when a player enters the game. This is used to fire an event when a player joins a game, such as loading the player's saved `GlobalDataStore` data.
 	 * 
 	 * This can be used alongside the [Player.PlayerRemoving](https://developer.roblox.com/search#stq=PlayerRemoving) event, which fires when a player is about to leave the game. For instance, if you would like print a message every time a new player joins or leaves the game:
@@ -17833,7 +17833,9 @@ interface TeleportService extends Instance {
 	 * @returns See the table above
 	 * @rbxts server
 	 */
-	GetPlayerPlaceInstanceAsync(this: TeleportService, userId: number): LuaTuple<[boolean, string, number, string]>;
+	GetPlayerPlaceInstanceAsync(
+		this: TeleportService, userId: number
+	): LuaTuple<[isCurrentInstance: boolean, error: string]> | LuaTuple<[isCurrentInstance: boolean, error: undefined, placeId: number, jobId: string]>;
 	/** This function returns an access code that can be used to teleport players to a reserved server, along with the [DataModel.PrivateServerId](https://developer.roblox.com/api-reference/property/DataModel/PrivateServerId) for it.
 	 * 
 	 * ReserveServer can only be called on the server.
@@ -17861,7 +17863,7 @@ interface TeleportService extends Instance {
 	 * @returns The server access code required by `TeleportService/TeleportToPrivateServer` and the `DataModel/PrivateServerId` for the reserved server
 	 * @rbxts server
 	 */
-	ReserveServer(this: TeleportService, placeId: number): LuaTuple<[string, string]>;
+	ReserveServer(this: TeleportService, placeId: number): LuaTuple<[accessCode: string, privateServerId: string]>;
 	/** This function teleports a group of [Players](https://developer.roblox.com/api-reference/class/Player) to the same server instance in the given place. It returns the [DataModel.JobId](https://developer.roblox.com/api-reference/property/DataModel/JobId) of the server instance the players were teleported to.
 	 * 
 	 * This function can only be called from the server.
@@ -19573,7 +19575,7 @@ interface UserInputService extends Instance {
 	 *  1. The delta property describes the amount of rotation that last happened
 	 *  2. The CFrame is the device's current rotation relative to its default reference frame
 	 */
-	GetDeviceRotation(this: UserInputService): LuaTuple<[InputObject, CFrame]>;
+	GetDeviceRotation(this: UserInputService): LuaTuple<[delta: InputObject, current: CFrame]>;
 	/** This function returns the `TextBox` the client is currently focused on. A TextBox can be manually selected by the user, or selection can be forced using the [TextBox.CaptureFocus](https://developer.roblox.com/api-reference/function/TextBox/CaptureFocus) function. If no TextBox is selected, this function will return *nil*.
 	 * 
 	 * As `UserInputService` is client-side only, this function can only be used in a `LocalScript`.

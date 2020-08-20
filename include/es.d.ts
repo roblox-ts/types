@@ -993,7 +993,7 @@ interface Promise<T> {
 	 * such as in `MarketplaceService.ProcessReceipt`.
 	 * @returns A tuple with the success of the promise along with the result it provided.
 	 */
-	await<TResult = unknown>(this: Promise<T>): LuaTuple<[true, T] | [false, TResult]>;
+	await<TResult = unknown>(this: Promise<T>): LuaTuple<[success: true, returned: T] | [success: false, error: TResult]>;
 
 	/**
 	 * Returns true if this Promise has been rejected.
