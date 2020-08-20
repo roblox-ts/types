@@ -97,29 +97,21 @@ interface Instance {
 interface ABTestService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ABTestService";
-	/** [NO DOCUMENTATION] */
 	ClearUserVariations(this: ABTestService): void;
-	/** [NO DOCUMENTATION] */
 	GetBrowserTrackerABTestLoadingStatus(this: ABTestService): Enum.ABTestLoadingStatus;
-	/** [NO DOCUMENTATION] */
 	GetPendingOrInitializedUserId(this: ABTestService): number;
-	/** [NO DOCUMENTATION] */
 	GetUserABTestLoadingStatus(this: ABTestService): Enum.ABTestLoadingStatus;
-	/** [NO DOCUMENTATION] */
 	GetVariant(this: ABTestService, name: string): string;
-	/** [NO DOCUMENTATION] */
 	InitializeForUserId(this: ABTestService, userId: number): void;
-	/** [NO DOCUMENTATION] *
+	/** [NO DOCUMENTATION]
 	 * Tags: Yields
 	 */
 	WaitUntilBrowserTrackerABTestsInitialized(this: ABTestService): void;
-	/** [NO DOCUMENTATION] *
+	/** [NO DOCUMENTATION]
 	 * Tags: Yields
 	 */
 	WaitUntilUserABTestsInitialized(this: ABTestService): void;
-	/** [NO DOCUMENTATION] */
 	readonly OnBrowserTrackerABTestLoadingStatusChanged: RBXScriptSignal<(status: Enum.ABTestLoadingStatus) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly OnUserABTestLoadingStatusChanged: RBXScriptSignal<(status: Enum.ABTestLoadingStatus, userId: number) => void>;
 }
 
@@ -145,31 +137,25 @@ interface Animator extends Instance {
 interface CoreGui extends BasePlayerGui {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "CoreGui";
-	/** [NO DOCUMENTATION] */
 	readonly SelectionImageObject: GuiObject | undefined;
 	/** The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
 	 * 	
 	 * The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
-	 * 	
-	 * The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly Version: number;
-	/** [NO DOCUMENTATION] */
 	SetUserGuiRendering(this: CoreGui, enabled: boolean, guiAdornee: Instance, faceId: CastsToEnum<Enum.NormalId>): void;
-	/** [NO DOCUMENTATION] */
 	TakeScreenshot(this: CoreGui): void;
-	/** [NO DOCUMENTATION] */
 	ToggleRecording(this: CoreGui): void;
 }
 
 interface StarterGui extends BasePlayerGui {
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
+	 */
 	ProcessUserInput: boolean;
 	/** This property determines whether [GUI objects](https://developer.roblox.com/api-reference/class/LayerCollector) descending from the `StarterGui` are visible in Studio’s edit mode.
 	 * 
@@ -219,21 +205,17 @@ interface ChangeHistoryService extends Instance {
 interface DataModelSession extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "DataModelSession";
-	/** [NO DOCUMENTATION] *
-	 * Tags: ReadOnly, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly CurrentDataModelType: Enum.StudioDataModelType;
-	/** [NO DOCUMENTATION] *
-	 * Tags: ReadOnly, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly SessionId: string;
-	/** [NO DOCUMENTATION] */
 	readonly CurrentDataModelTypeAboutToChange: RBXScriptSignal<(dataModelType: Enum.StudioDataModelType) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly CurrentDataModelTypeChanged: RBXScriptSignal<() => void>;
-	/** [NO DOCUMENTATION] */
 	readonly DataModelCreated: RBXScriptSignal<(gameStateType: Enum.StudioDataModelType) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly DataModelWillBeDestroyed: RBXScriptSignal<(gameStateType: Enum.StudioDataModelType) => void>;
 }
 
@@ -246,13 +228,8 @@ interface DebugSettings extends Instance {
 	 * Describes whether a `DataModel` is actively in memory, as an integer (where 1 = true, and 0 = false).
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	Describes whether a `DataModel` is actively in memory, as an integer (where 1 = true, and 0 = false).
-	 * 	
-	 * Describes whether a `DataModel` is actively in memory, as an integer (where 1 = true, and 0 = false).
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly DataModel: number;
 	/** The number of instances active in the simulation.
@@ -260,13 +237,8 @@ interface DebugSettings extends Instance {
 	 * The number of instances active in the simulation.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	The number of instances active in the simulation.
-	 * 	
-	 * The number of instances active in the simulation.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly InstanceCount: number;
 	/** Whether or not a stacktrace is displayed in the output for an error. */
@@ -276,13 +248,8 @@ interface DebugSettings extends Instance {
 	 * Returns the number of internal DataModel jobs actively being processed.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	Returns the number of internal DataModel jobs actively being processed.
-	 * 	
-	 * Returns the number of internal DataModel jobs actively being processed.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly JobCount: number;
 	/** The number of players currently in the active game-instance.
@@ -290,13 +257,8 @@ interface DebugSettings extends Instance {
 	 * The number of players currently in the active game-instance.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	The number of players currently in the active game-instance.
-	 * 	
-	 * The number of players currently in the active game-instance.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly PlayerCount: number;
 	/** Whether or not sound warnings should be reported. */
@@ -306,13 +268,8 @@ interface DebugSettings extends Instance {
 	 * The current client version of Roblox. Can also be retrieved by using the version() function.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	The current client version of Roblox. Can also be retrieved by using the version() function.
-	 * 	
-	 * The current client version of Roblox. Can also be retrieved by using the version() function.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly RobloxVersion: string;
 	/** Sets the internal sampling method used to measure elapsed time with consistency across platforms. */
@@ -335,16 +292,10 @@ interface DebuggerBreakpoint extends Instance {
 	 * The line that the breakpoint has been placed on.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	The line that the breakpoint has been placed on.
-	 * 	
-	 * The line that the breakpoint has been placed on.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly Line: number;
-	/** [NO DOCUMENTATION] */
 	isContextDependentBreakpoint: boolean;
 }
 
@@ -360,18 +311,12 @@ interface DebuggerManager extends Instance {
 	 * Whether the debugger is enabled or disabled.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	Whether the debugger is enabled or disabled.
-	 * 	
-	 * Whether the debugger is enabled or disabled.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly DebuggingEnabled: boolean;
 	/** Registers a script to be used in the Lua Debugger. Returns a `ScriptDebugger` for the script. */
 	AddDebugger(this: DebuggerManager, script: LuaSourceContainer): Instance | undefined;
-	/** [NO DOCUMENTATION] */
 	EnableDebugging(this: DebuggerManager): void;
 	/** Returns a list of `ScriptDebugger` present in the game. */
 	GetDebuggers(this: DebuggerManager): Array<Instance>;
@@ -406,14 +351,10 @@ interface File extends Instance {
 	/** 
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 *
-	 * Tags: Hidden, ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly Size: number;
-	/** [NO DOCUMENTATION] */
 	GetBinaryContents(this: File): string;
-	/** [NO DOCUMENTATION] */
 	GetTemporaryId(this: File): string;
 }
 
@@ -446,11 +387,10 @@ interface GameSettings extends Instance {
 	VideoCaptureEnabled: boolean;
 	/** Sets the quality level of Roblox's built-in video capture. */
 	VideoQuality: Enum.VideoQualitySettings;
-	/** [NO DOCUMENTATION] *
+	/** [NO DOCUMENTATION]
 	 * Tags: NotReplicated
 	 */
 	readonly VideoRecording: boolean;
-	/** [NO DOCUMENTATION] */
 	readonly VideoRecordingChangeRequest: RBXScriptSignal<(recording: boolean) => void>;
 }
 
@@ -543,19 +483,12 @@ interface PluginGui extends LayerCollector {
 	 * @param function The function to bind the close button to. If no function is specified then any previously specified function will be unbound 
 	 */
 	BindToClose(this: PluginGui, callback?: Function): void;
-	/** [NO DOCUMENTATION] */
 	GetRelativeMousePosition(this: PluginGui): Vector2;
-	/** [NO DOCUMENTATION] */
 	readonly PluginDragDropped: RBXScriptSignal<(dragData: object) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly PluginDragEntered: RBXScriptSignal<(dragData: object) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly PluginDragLeft: RBXScriptSignal<(dragData: object) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly PluginDragMoved: RBXScriptSignal<(dragData: object) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly WindowFocusReleased: RBXScriptSignal<() => void>;
-	/** [NO DOCUMENTATION] */
 	readonly WindowFocused: RBXScriptSignal<() => void>;
 }
 
@@ -671,7 +604,6 @@ interface ModuleScript extends LuaSourceContainer {
 interface MemStorageConnection extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "MemStorageConnection";
-	/** [NO DOCUMENTATION] */
 	Disconnect(this: MemStorageConnection): void;
 }
 
@@ -693,13 +625,11 @@ interface PluginMouse extends Mouse {
 interface MultipleDocumentInterfaceInstance extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "MultipleDocumentInterfaceInstance";
-	/** [NO DOCUMENTATION] *
-	 * Tags: ReadOnly, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly FocusedDataModelSession: Instance | undefined;
-	/** [NO DOCUMENTATION] */
 	readonly DataModelSessionEnded: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly DataModelSessionStarted: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
 }
 
@@ -760,17 +690,8 @@ interface NetworkSettings extends Instance {
 	 * It appears to specify how much extra memory is allocated to streaming, in MBs.
 	 * 
 	 * Tags: Hidden, NotReplicated
-	ExtraMemoryUsed is an unused debug property intended for streaming.
-	 * 
-	 * It appears to specify how much extra memory is allocated to streaming, in MBs.
-	 * 	
-	 * ExtraMemoryUsed is an unused debug property intended for streaming.
-	 * 
-	 * It appears to specify how much extra memory is allocated to streaming, in MBs.
-	 * 
-	 * Tags: Hidden, NotReplicated
-	 *
-	 * Tags: Hidden, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	ExtraMemoryUsed: number;
 	/** FreeMemoryMBytes is a read-only property that describes how much free memory is available, in MBs.
@@ -782,22 +703,11 @@ interface NetworkSettings extends Instance {
 	 * It is stored as a floating point number, so it can be be read down at the level of available bytes by multiplying its value by `1024 * 1024`.
 	 * 
 	 * Tags: Hidden, ReadOnly, NotReplicated
-	FreeMemoryMBytes is a read-only property that describes how much free memory is available, in MBs.
-	 * 
-	 * It is stored as a floating point number, so it can be be read down at the level of available bytes by multiplying its value by `1024 * 1024`.
-	 * 	
-	 * FreeMemoryMBytes is a read-only property that describes how much free memory is available, in MBs.
-	 * 
-	 * It is stored as a floating point number, so it can be be read down at the level of available bytes by multiplying its value by `1024 * 1024`.
-	 * 
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 *
-	 * Tags: Hidden, ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly FreeMemoryMBytes: number;
-	/** [NO DOCUMENTATION] */
 	readonly HttpProxyEnabled: boolean;
-	/** [NO DOCUMENTATION] */
 	readonly HttpProxyURL: string;
 	/** IncommingReplicationLag is a property that allows you to simulate high-latency situations. It adds a delay time between when packets are actually sent and received. The property is measured in seconds, and defaults to 0. */
 	IncommingReplicationLag: number;
@@ -850,7 +760,6 @@ interface NetworkSettings extends Instance {
 	 * ----------
 	 */
 	PrintFilters: boolean;
-	/** [NO DOCUMENTATION] */
 	PrintJoinSizeBreakdown: boolean;
 	/** When set to true, debug messages will be printed into the output, pertaining to physics replication errors. There are several debug outputs that are made available when this property is set to true, as listed below.
 	 * 
@@ -1136,7 +1045,6 @@ interface PhysicsSettings extends Instance {
 	 * Each physically simulated object will check to see which player is closest to that object, and if they are within the player's simulation radius. If both conditions are met, that player will becomes the network owner of that object.When set to true, a cylinder is drawn around each `Player`'s character, representing their [Player.SimulationRadius](https://developer.roblox.com/api-reference/property/Player/SimulationRadius).
 	 */
 	AreRegionsShown: boolean;
-	/** [NO DOCUMENTATION] */
 	AreTerrainReplicationRegionsShown: boolean;
 	/** When set to true, parts that aren't aligned on the 1x1x1 grid will be outlined yellow. */
 	AreUnalignedPartsShown: boolean;
@@ -1253,9 +1161,21 @@ interface Plugin extends Instance {
 	 * 
 	 */
 	readonly GridSize: number;
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
+	 */
 	readonly HostDataModelType: Enum.StudioDataModelType;
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
+	 */
 	readonly HostDataModelTypeIsCurrent: boolean;
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
+	 */
 	readonly MultipleDocumentInterfaceInstance: MultipleDocumentInterfaceInstance | undefined;
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
+	 */
 	readonly UsesAssetInsertionDrag: boolean;
 	/** Sets the state of the calling plugin to activated. Allows mouse control through the [Plugin.GetMouse](https://developer.roblox.com/api-reference/function/Plugin/GetMouse) method. */
 	Activate(this: Plugin, exclusiveMouse: boolean): void;
@@ -1383,6 +1303,9 @@ interface Plugin extends Instance {
 		pluginGuiId: string,
 		dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo,
 	): DockWidgetPluginGui;
+	/** [NO DOCUMENTATION]
+	 * Tags: Yields
+	 */
 	CreateQWidgetPluginGui(this: Plugin, pluginGuiId: string, pluginGuiOptions: object): Instance | undefined;
 	/** This function prompts the user to open a .fbx animation file that can be loaded onto the _rigModel_, then proceeds to insert the animation as a `KeyframeSequence` in the `Workspace`. */
 	ImportFbxAnimation(this: Plugin, rigModel: Model, isR15?: boolean): Instance | undefined;
@@ -1409,13 +1332,8 @@ interface PluginAction extends Instance {
 	 * A string that uniquely identifies this action. This string is the key used when saving and loading the action's state in Roblox Studio.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	A string that uniquely identifies this action. This string is the key used when saving and loading the action's state in Roblox Studio.
-	 * 	
-	 * A string that uniquely identifies this action. This string is the key used when saving and loading the action's state in Roblox Studio.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly ActionId: string;
 	/** This property determines whether the `PluginAction` will be hidden from Studio's shortcuts view. Useful for contextual actions. It defaults to true.
@@ -1431,32 +1349,19 @@ interface PluginAction extends Instance {
 	 *   - [Plugin.CreationPluginAction](https://developer.roblox.com/search#stq=CreationPluginAction), creates a PluginAction
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	This property determines whether the `PluginAction` will be hidden from Studio's shortcuts view. Useful for contextual actions. It defaults to true.
-	 * 
-	 * ## See also
-	 * 
-	 *   - [Plugin.CreationPluginAction](https://developer.roblox.com/search#stq=CreationPluginAction), creates a PluginAction
-	 * 	
-	 * This property determines whether the `PluginAction` will be hidden from Studio's shortcuts view. Useful for contextual actions. It defaults to true.
-	 * 
-	 * ## See also
-	 * 
-	 *   - [Plugin.CreationPluginAction](https://developer.roblox.com/search#stq=CreationPluginAction), creates a PluginAction
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly AllowBinding: boolean;
-	/** [NO DOCUMENTATION] *
+	/** [NO DOCUMENTATION]
 	 * Tags: NotReplicated
 	 */
 	readonly Checked: boolean;
-	/** [NO DOCUMENTATION] *
+	/** [NO DOCUMENTATION]
 	 * Tags: NotReplicated
 	 */
 	readonly DefaultShortcut: string;
-	/** [NO DOCUMENTATION] *
+	/** [NO DOCUMENTATION]
 	 * Tags: NotReplicated
 	 */
 	readonly Enabled: boolean;
@@ -1465,13 +1370,8 @@ interface PluginAction extends Instance {
 	 * The description of the action, when viewing it from the keyboard shortcuts window in Roblox Studio.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	The description of the action, when viewing it from the keyboard shortcuts window in Roblox Studio.
-	 * 	
-	 * The description of the action, when viewing it from the keyboard shortcuts window in Roblox Studio.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly StatusTip: string;
 	/** The text that is displayed when viewing this action in Roblox Studio.
@@ -1479,13 +1379,8 @@ interface PluginAction extends Instance {
 	 * The text that is displayed when viewing this action in Roblox Studio.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	The text that is displayed when viewing this action in Roblox Studio.
-	 * 	
-	 * The text that is displayed when viewing this action in Roblox Studio.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly Text: string;
 	/** Fires when the action is triggered. This can be done by either activating the action from the Quick Access Toolbar, or by using the keyboard shortcut that was bound to it. */
@@ -1503,33 +1398,25 @@ interface PluginDragEvent extends Instance {
 	/** 
 	 * Tags: ReadOnly, NotReplicated
 	
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly Data: string;
 	/** 
 	 * Tags: ReadOnly, NotReplicated
 	
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly MimeType: string;
 	/** 
 	 * Tags: ReadOnly, NotReplicated
 	
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly Position: Vector2;
 	/** 
 	 * Tags: ReadOnly, NotReplicated
 	
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly Sender: string;
 }
@@ -1541,9 +1428,7 @@ interface PluginGuiService extends Instance {
 }
 
 interface PluginManagerInterface extends Instance {
-	/** [NO DOCUMENTATION] */
 	ExportPlace(this: PluginManagerInterface, filePath?: string): void;
-	/** [NO DOCUMENTATION] */
 	ExportSelection(this: PluginManagerInterface, filePath?: string): void;
 }
 
@@ -1820,15 +1705,11 @@ interface PluginToolbarButton extends Instance {
 	 * Tags: NotReplicated
 	
 	 * Tags: NotReplicated
-	 *
-	 * Tags: NotReplicated
 	 */
 	ClickableWhenViewportHidden: boolean;
 	/** 
 	 * Tags: NotReplicated
 	
-	 * Tags: NotReplicated
-	 *
 	 * Tags: NotReplicated
 	 */
 	Enabled: boolean;
@@ -1836,13 +1717,9 @@ interface PluginToolbarButton extends Instance {
 	 * Tags: NotReplicated
 	
 	 * Tags: NotReplicated
-	 *
-	 * Tags: NotReplicated
 	 */
 	Icon: string;
-	/** [NO DOCUMENTATION] */
 	SetActive(this: PluginToolbarButton, active: boolean): void;
-	/** [NO DOCUMENTATION] */
 	readonly Click: RBXScriptSignal<() => void>;
 }
 
@@ -1871,13 +1748,8 @@ interface RenderSettings extends Instance {
 	 * Toggles the enabled state of the framerate manager.
 	 * 
 	 * Tags: Hidden, NotReplicated
-	Toggles the enabled state of the framerate manager.
-	 * 	
-	 * Toggles the enabled state of the framerate manager.
-	 * 
-	 * Tags: Hidden, NotReplicated
-	 *
-	 * Tags: Hidden, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	EnableFRM: boolean;
 	/** Sets whether materials should be generated per part, or per unique appearance in Roblox's obj exporter. */
@@ -1891,7 +1763,6 @@ interface RenderSettings extends Instance {
 	 * Defaults to 32 MBs.
 	 */
 	MeshCacheSize: number;
-	/** [NO DOCUMENTATION] */
 	MeshPartDetailLevel: Enum.MeshPartDetailLevel;
 	/** If [RenderSettings.EnableFRM](https://developer.roblox.com/api-reference/property/RenderSettings/EnableFRM) is set to true, this property controls the quality level in Roblox Studio. */
 	QualityLevel: Enum.QualityLevel;
@@ -1953,12 +1824,7 @@ interface RenderingTest extends Instance {
 	 * The derived orientation of the RenderingTest’s CFrame.
 	 * 
 	 * Tags: NotReplicated
-	The derived orientation of the RenderingTest’s CFrame.
-	 * 	
-	 * The derived orientation of the RenderingTest’s CFrame.
-	 * 
-	 * Tags: NotReplicated
-	 *
+	
 	 * Tags: NotReplicated
 	 */
 	Orientation: Vector3;
@@ -1967,12 +1833,7 @@ interface RenderingTest extends Instance {
 	 * The derived position of the RenderingTest's CFrame.
 	 * 
 	 * Tags: NotReplicated
-	The derived position of the RenderingTest's CFrame.
-	 * 	
-	 * The derived position of the RenderingTest's CFrame.
-	 * 
-	 * Tags: NotReplicated
-	 *
+	
 	 * Tags: NotReplicated
 	 */
 	Position: Vector3;
@@ -1985,7 +1846,6 @@ interface RenderingTest extends Instance {
 	ShouldSkip: boolean;
 	/** A label of the internal JIRA ticket this RenderingTest is associated with. */
 	Ticket: string;
-	/** [NO DOCUMENTATION] */
 	RenderdocTriggerCapture(this: RenderingTest): void;
 }
 
@@ -2008,19 +1868,16 @@ interface RunService extends Instance {
 interface ScriptContext extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ScriptContext";
-	/** [NO DOCUMENTATION] *
+	/** [NO DOCUMENTATION]
 	 * Tags: NotReplicated
 	 */
 	readonly ScriptsDisabled: boolean;
-	/** [NO DOCUMENTATION] */
 	AddCoreScriptLocal(this: ScriptContext, name: string, parent: Instance): void;
-	/** [NO DOCUMENTATION] */
 	GetCoverageStats(this: ScriptContext): unknown;
 	/** Limits how long a script is allowed to run without yielding. */
 	SetTimeout(this: ScriptContext, seconds: number): void;
 	/** Fired when an error occurs. */
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: LuaSourceContainer) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly ErrorDetailed: RBXScriptSignal<(message: string, stackTrace: string, script: LuaSourceContainer, details: string, securityLevel: number) => void>;
 }
 
@@ -2095,8 +1952,8 @@ interface ScriptDebugger extends Instance {
 interface Selection extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Selection";
-	/** [NO DOCUMENTATION] *
-	 * Tags: ReadOnly, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly ActiveInstance: Instance | undefined;
 	/** Returns an array of currently selected `Instance`s in Roblox Studio.
@@ -2481,6 +2338,9 @@ interface Studio extends Instance {
 	readonly LocalAssetsFolder: QDir;
 	/** Specifies whether or not the [Lua Debugger](https://developer.roblox.com/articles/Lua-debugger) feature is enabled. */
 	LuaDebuggerEnabled: boolean;
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
+	 */
 	readonly LuaDebuggerEnabledAtStartup: boolean;
 	/** Sets the highlight color of double-clicked variables in the script editor. */
 	["Matching Word Background Color"]: Color3;
@@ -2600,24 +2460,15 @@ interface Studio extends Instance {
 interface StudioData extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "StudioData";
-	/** [NO DOCUMENTATION] *
-	 * Tags: Hidden
-	 */
 	EnableScriptCollabByDefaultOnLoad: boolean;
-	/** [NO DOCUMENTATION] *
-	 * Tags: Hidden
-	 */
 	EnableScriptCollabOnLoad: boolean;
-	/** [NO DOCUMENTATION] *
-	 * Tags: Hidden
-	 */
 	EnableScriptCollabVersionHistoryOnLoad: boolean;
-	/** [NO DOCUMENTATION] *
-	 * Tags: Hidden, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly SrcPlaceId: number;
-	/** [NO DOCUMENTATION] *
-	 * Tags: Hidden, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly SrcUniverseId: number;
 }
@@ -2628,114 +2479,83 @@ interface StudioService extends Instance {
 	/** 
 	 * Tags: ReadOnly, NotReplicated
 	
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly ActiveScript: Instance | undefined;
-	/** [NO DOCUMENTATION] *
-	 * Tags: ReadOnly, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly AlignDraggedObjects: boolean;
-	/** [NO DOCUMENTATION] *
-	 * Tags: ReadOnly, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly DraggerSolveConstraints: boolean;
-	/** [NO DOCUMENTATION] *
-	 * Tags: ReadOnly, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly DrawConstraintsOnTop: boolean;
-	/** [NO DOCUMENTATION] *
-	 * Tags: ReadOnly, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly GridSize: number;
-	/** [NO DOCUMENTATION] *
+	/** [NO DOCUMENTATION]
 	 * Tags: NotReplicated
 	 */
 	readonly HoverInstance: Instance | undefined;
-	/** [NO DOCUMENTATION] *
-	 * Tags: ReadOnly, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly InstalledPluginData: string;
-	/** [NO DOCUMENTATION] *
-	 * Tags: ReadOnly, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly RotateIncrement: number;
-	/** [NO DOCUMENTATION] *
+	/** [NO DOCUMENTATION]
 	 * Tags: NotReplicated
 	 */
 	readonly ShowActiveInstanceHighlight: boolean;
-	/** [NO DOCUMENTATION] *
-	 * Tags: ReadOnly, NotReplicated
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
 	 */
 	readonly ShowConstraintDetails: boolean;
 	/** 
 	 * Tags: ReadOnly, NotReplicated
 	
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly StudioLocaleId: string;
-	/** [NO DOCUMENTATION] *
+	/** [NO DOCUMENTATION]
 	 * Tags: NotReplicated
 	 */
 	UseLocalSpace: boolean;
-	/** [NO DOCUMENTATION] */
 	AnimationIdSelected(this: StudioService, id: number): void;
-	/** [NO DOCUMENTATION] */
 	BaseURLHasChineseHost(this: StudioService): boolean;
-	/** [NO DOCUMENTATION] */
 	ConvertToPackageUpload(this: StudioService, uploadUrl: string): void;
-	/** [NO DOCUMENTATION] */
 	CopyToClipboard(this: StudioService, stringToCopy: string): void;
-	/** [NO DOCUMENTATION] */
 	EmitPlacePublishedSignal(this: StudioService): void;
-	/** [NO DOCUMENTATION] */
 	GetClassIcon(this: StudioService, className: string): object;
-	/** [NO DOCUMENTATION] */
 	GetResourceByCategory(this: StudioService, category: string): object;
-	/** [NO DOCUMENTATION] */
 	GetStartupPluginId(this: StudioService): string;
-	/** [NO DOCUMENTATION] */
 	GetTermsOfUseUrl(this: StudioService): string;
-	/** [NO DOCUMENTATION] */
 	GetUserId(this: StudioService): number;
-	/** [NO DOCUMENTATION] */
 	GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult;
-	/** [NO DOCUMENTATION] */
 	HasInternalPermission(this: StudioService): boolean;
-	/** [NO DOCUMENTATION] */
 	IsPluginInstalled(this: StudioService, assetId: number): boolean;
-	/** [NO DOCUMENTATION] */
 	IsPluginUpToDate(this: StudioService, assetId: number, currentAssetVersion: number): boolean;
-	/** [NO DOCUMENTATION] */
 	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
-	/** [NO DOCUMENTATION] */
 	OpenPluginInsertPage(this: StudioService, assetId: number): void;
-	/** [NO DOCUMENTATION] */
 	PublishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
-	/** [NO DOCUMENTATION] */
 	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
-	/** [NO DOCUMENTATION] */
 	SetDocumentDisplayName(this: StudioService, newName: string): void;
-	/** [NO DOCUMENTATION] */
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
-	/** [NO DOCUMENTATION] */
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
-	/** [NO DOCUMENTATION] */
 	ShowPlaceVersionHistoryDialog(this: StudioService): void;
-	/** [NO DOCUMENTATION] */
 	ShowPublishToRoblox(this: StudioService): void;
-	/** [NO DOCUMENTATION] */
 	UninstallPlugin(this: StudioService, assetId: number): void;
-	/** [NO DOCUMENTATION] */
 	UpdatePluginManagement(this: StudioService): void;
 	/** 
 	 * Tags: Yields
 	
-	 * Tags: Yields
-	 *
 	 * Tags: Yields
 	 */
 	PromptImportFile(this: StudioService, fileTypeFilter?: Array<any>): Instance | undefined;
@@ -2743,37 +2563,23 @@ interface StudioService extends Instance {
 	 * Tags: Yields
 	
 	 * Tags: Yields
-	 *
-	 * Tags: Yields
 	 */
 	PromptImportFiles(this: StudioService, fileTypeFilter?: Array<any>): Array<Instance>;
-	/** [NO DOCUMENTATION] *
+	/** [NO DOCUMENTATION]
 	 * Tags: Yields
 	 */
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
-	/** [NO DOCUMENTATION] */
 	readonly DEPRECATED_OnPublishPlaceToRoblox: RBXScriptSignal<() => void>;
-	/** [NO DOCUMENTATION] */
 	readonly GamePublishFinished: RBXScriptSignal<(success: boolean, gameId: number) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly OnConvertToPackageResult: RBXScriptSignal<(isSuccessful: boolean, errorMessage: string) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly OnImportFromRoblox: RBXScriptSignal<() => void>;
-	/** [NO DOCUMENTATION] */
 	readonly OnOpenConvertToPackagePlugin: RBXScriptSignal<(instances: Array<Instance>, name: string) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly OnOpenGameSettings: RBXScriptSignal<(pageIdentifier: string) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly OnOpenManagePackagePlugin: RBXScriptSignal<(userId: number, assetId: number) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly OnPluginInstalledFromToolbox: RBXScriptSignal<() => void>;
-	/** [NO DOCUMENTATION] */
 	readonly OnPluginInstalledFromWeb: RBXScriptSignal<(pluginId: string) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly OnPublishAsPlugin: RBXScriptSignal<(instances: Array<Instance>) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly OnPublishPlaceToRoblox: RBXScriptSignal<(isOverwritePublish: boolean) => void>;
-	/** [NO DOCUMENTATION] */
 	readonly OnSaveToRoblox: RBXScriptSignal<(instances: Array<Instance>) => void>;
 }
 
@@ -2822,13 +2628,8 @@ interface TaskScheduler extends Instance {
 	 * The average time divided by the average interval of the duty cycle.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	The average time divided by the average interval of the duty cycle.
-	 * 	
-	 * The average time divided by the average interval of the duty cycle.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly SchedulerDutyCycle: number;
 	/** The current average rate of the task scheduler.
@@ -2836,13 +2637,8 @@ interface TaskScheduler extends Instance {
 	 * The current average rate of the task scheduler.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	The current average rate of the task scheduler.
-	 * 	
-	 * The current average rate of the task scheduler.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly SchedulerRate: number;
 	/** The specified thread pooling configuration for the task scheduler. */
@@ -2852,13 +2648,8 @@ interface TaskScheduler extends Instance {
 	 * The current size of the thread pool.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	The current size of the thread pool.
-	 * 	
-	 * The current size of the thread pool.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly ThreadPoolSize: number;
 }
@@ -2943,13 +2734,8 @@ interface TestService extends Instance {
 	 * Measures how many errors have been recorded in the test session.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	Measures how many errors have been recorded in the test session.
-	 * 	
-	 * Measures how many errors have been recorded in the test session.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly ErrorCount: number;
 	/** When set to true, the TestService will be executed when using the _Run_ action in Roblox Studio.
@@ -2976,13 +2762,8 @@ interface TestService extends Instance {
 	 * Measures how many test calls have been recorded in the test session.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	Measures how many test calls have been recorded in the test session.
-	 * 	
-	 * Measures how many test calls have been recorded in the test session.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly TestCount: number;
 	/** The maximum amount of time that tests are allowed to run for. */
@@ -2992,13 +2773,8 @@ interface TestService extends Instance {
 	 * Measures how many warning calls have been recorded in the test session.
 	 * 
 	 * Tags: ReadOnly, NotReplicated
-	Measures how many warning calls have been recorded in the test session.
-	 * 	
-	 * Measures how many warning calls have been recorded in the test session.
-	 * 
-	 * Tags: ReadOnly, NotReplicated
-	 *
-	 * Tags: ReadOnly, NotReplicated
+	
+	 * Tags: NotReplicated
 	 */
 	readonly WarnCount: number;
 	/** If condition is true, prints "Check passed: ", followed by description to the output, in blue text. Otherwise, prints "Check failed: ", again, followed by description, but in red text. */
@@ -3020,13 +2796,10 @@ interface TestService extends Instance {
 	Require(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
 	/** If condition is true, prints Warning passed: , followed by description, to the output, in blue text. Otherwise, prints Warning: , followed by description, to the output, in yellow text. */
 	Warn(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
-	/** [NO DOCUMENTATION] */
 	isFeatureEnabled(this: TestService, name: string): boolean;
 	/** 
 	 * Tags: Yields
 	
-	 * Tags: Yields
-	 *
 	 * Tags: Yields
 	 */
 	Run(this: TestService): void;

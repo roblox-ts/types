@@ -861,6 +861,8 @@ export class ClassGenerator extends Generator {
 			const documentations = Array<string>();
 			if (description) {
 				documentations.push(this.formatDescription(description));
+			} else {
+				this.writeDescription(rbxMember, description);
 			}
 
 			let nodes = cacher.get(tsImplInterface);
@@ -902,9 +904,18 @@ export class ClassGenerator extends Generator {
 
 	private writeDescription(rbxMember: ApiMemberBase, desc?: string) {
 		const description = desc || "";
-		const tags = rbxMember.Tags;
-		const tagStr = tags && tags.length > 0 ? description + " *\n\t * Tags: " + tags.join(", ") + "\n\t" : "";
-		this.write(`/** ${(description.trim() !== "" ? description : "[NO DOCUMENTATION]") + tagStr} */`);
+		const tagsToShow = rbxMember.Tags?.filter(tag =>
+			tag !== "Deprecated" &&
+			tag !== "Hidden" &&
+			tag !== "ReadOnly" &&
+			tag !== "NotScriptable" &&
+			tag !== "NotBrowsable"
+		);
+		const tagStr = tagsToShow && tagsToShow.length > 0 ? `\n\t * Tags: ${tagsToShow.join(", ")}` : "";
+		const deprecatedStr = rbxMember.Tags?.includes("Deprecated") ? "\n\t * @deprecated" : "";
+		if (desc || tagStr || deprecatedStr) {
+			this.write(`/** ${(description.trim() !== "" ? description : "[NO DOCUMENTATION]") + tagStr + deprecatedStr + (tagStr || deprecatedStr ? "\n\t" : "")} */`);
+		}
 	}
 
 	private generateArgs(params: Array<ApiParameter>, canImplicitlyConvertEnum = true, args = new Array<string>()) {
