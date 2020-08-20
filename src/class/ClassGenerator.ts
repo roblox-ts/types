@@ -1064,7 +1064,6 @@ export class ClassGenerator extends Generator {
 		return (
 			((this.security === "PluginSecurity" && PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) ||
 				this.canRead(rbxClass.Name, rbxMember)) &&
-			!hasTag(rbxMember, "Deprecated") &&
 			!hasTag(rbxMember, "NotScriptable")
 		);
 	}

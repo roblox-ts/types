@@ -348,6 +348,16 @@ interface DebuggerWatch extends Instance {
 interface File extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "File";
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
+	 * @deprecated
+	 */
+	readonly FileName: string;
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
+	 * @deprecated
+	 */
+	readonly FileSize: number;
 	/** 
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	
@@ -355,6 +365,10 @@ interface File extends Instance {
 	 */
 	readonly Size: number;
 	GetBinaryContents(this: File): string;
+	/** [NO DOCUMENTATION]
+	 * @deprecated
+	 */
+	GetFileContentsBinary(this: File): string;
 	GetTemporaryId(this: File): string;
 }
 
@@ -375,8 +389,23 @@ interface GameSettings extends Instance {
 	ChatHistory: number;
 	/** The maximum number of chats that can stack and show on the screen. Does not seem to work because the chat gui's code does not read from here. */
 	ChatScrollLength: number;
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
+	 * @deprecated
+	 */
+	CollisionSoundEnabled: boolean;
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
+	 * @deprecated
+	 */
+	CollisionSoundVolume: number;
 	/** Toggles whether or not Roblox should use the Hardware Mouse or the Software Mouse. */
 	HardwareMouse: boolean;
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
+	 * @deprecated
+	 */
+	MaxCollisionSounds: number;
 	/** Describes a path to a .lua file that will be ran in place of the default StarterScript. */
 	readonly OverrideStarterScript: string;
 	/** Sets how many of the latest chat messages should be included in an abuse report request. */
@@ -533,6 +562,14 @@ interface KeyframeSequence extends Instance {
 interface KeyframeSequenceProvider extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "KeyframeSequenceProvider";
+	/** [NO DOCUMENTATION]
+	 * @deprecated
+	 */
+	GetKeyframeSequence(this: KeyframeSequenceProvider, assetId: string): Instance | undefined;
+	/** [NO DOCUMENTATION]
+	 * @deprecated
+	 */
+	GetKeyframeSequenceById(this: KeyframeSequenceProvider, assetId: number, useCache: boolean): Instance | undefined;
 	GetMemStats(this: KeyframeSequenceProvider): object;
 	/** Generates a temporary asset ID from a `KeyframeSequence` that can be used for localized testing of an animation.
 	 * 
@@ -935,6 +972,13 @@ interface NetworkSettings extends Instance {
 	TrackPhysicsDetails: boolean;
 }
 
+interface Terrain extends BasePart {
+	/** [NO DOCUMENTATION]
+	 * @deprecated
+	 */
+	ConvertToSmooth(this: Terrain): void;
+}
+
 interface Model extends PVInstance {
 	/** Automatically generate impostor meshes to be rendered outside of streaming radius. */
 	LevelOfDetail: Enum.ModelLevelOfDetail;
@@ -1253,6 +1297,8 @@ interface Plugin extends Instance {
 	GetSelectedRibbonTool(this: Plugin): Enum.RibbonTool;
 	/** Retrieves a previously stored value with the given key, or nil if the given key doesn't exist. */
 	GetSetting(this: Plugin, key: string): unknown;
+	/** Returns the studio user’s userId if they're logged in, otherwise returns 0. */
+	GetStudioUserId(this: Plugin): number;
 	Invoke(this: Plugin, key: string, arguments: Array<any>): void;
 	/** Returns true if this plugin is currently active, after having been activated via the [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate) function. */
 	IsActivated(this: Plugin): boolean;
@@ -1428,6 +1474,11 @@ interface PluginGuiService extends Instance {
 }
 
 interface PluginManagerInterface extends Instance {
+	/** [NO DOCUMENTATION]
+	 * Tags: CustomLuaState
+	 * @deprecated
+	 */
+	CreatePlugin(this: PluginManagerInterface): Instance | undefined;
 	ExportPlace(this: PluginManagerInterface, filePath?: string): void;
 	ExportSelection(this: PluginManagerInterface, filePath?: string): void;
 }
@@ -1858,6 +1909,10 @@ interface RunService extends Instance {
 	IsEdit(this: RunService): boolean;
 	/** Pauses the physics and scripts in a place. */
 	Pause(this: RunService): void;
+	/** [NO DOCUMENTATION]
+	 * @deprecated
+	 */
+	Reset(this: RunService): void;
 	/** Creates a waypoint and then runs the game just like the Play button does in studio. */
 	Run(this: RunService): void;
 	/** Stops the running simulation. */
@@ -2312,6 +2367,11 @@ interface Studio extends Instance {
 	/** When set to true, the script editor and command bar will show an autocomplete menu while writing. */
 	["Enable Autocomplete"]: boolean;
 	["Enable CoreScript Debugger"]: boolean;
+	/** [NO DOCUMENTATION]
+	 * Tags: NotReplicated
+	 * @deprecated
+	 */
+	["Enable Intellisense"]: boolean;
 	["Enable Internal Features"]: boolean;
 	/** Specifies the color of the wavy underline shown when malformed code is detected in the script editor. */
 	["Error Color"]: Color3;
@@ -2438,6 +2498,8 @@ interface Studio extends Instance {
 	 * 
 	 */
 	Theme: StudioTheme;
+	/** Specifies the color scheme of Roblox Studio. */
+	readonly ["UI Theme"]: Enum.UITheme;
 	/** Specifies the color of the wavy underline shown when the script analyzer picks up a problem that should be addressed in the script editor. */
 	["Warning Color"]: Color3;
 	["Whitespace Color"]: Color3;
@@ -2567,6 +2629,16 @@ interface StudioService extends Instance {
 	PromptImportFiles(this: StudioService, fileTypeFilter?: Array<any>): Array<Instance>;
 	/** [NO DOCUMENTATION]
 	 * Tags: Yields
+	 * @deprecated
+	 */
+	PromptImportLocalAsset(this: StudioService, prompt: string, fileTypeFilter?: Array<any>): Instance | undefined;
+	/** [NO DOCUMENTATION]
+	 * Tags: Yields
+	 * @deprecated
+	 */
+	PromptImportLocalAssets(this: StudioService, prompt: string, fileTypeFilter?: Array<any>): Array<Instance>;
+	/** [NO DOCUMENTATION]
+	 * Tags: Yields
 	 */
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
 	readonly DEPRECATED_OnPublishPlaceToRoblox: RBXScriptSignal<() => void>;
@@ -2652,6 +2724,13 @@ interface TaskScheduler extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly ThreadPoolSize: number;
+}
+
+interface TerrainRegion extends Instance {
+	/** [NO DOCUMENTATION]
+	 * @deprecated
+	 */
+	ConvertToSmooth(this: TerrainRegion): void;
 }
 
 /** The TestService is a service used by Roblox internally to run analytical tests on their engine.
