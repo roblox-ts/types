@@ -8,6 +8,7 @@ interface AnimationTrack extends Instance {
 }
 
 interface Animator extends Instance {
+	ApplyJointVelocities(this: Animator, motors: Array<Motor6D>): void;
 	LoadAnimation(this: Animator, animation: Animation): AnimationTrack;
 	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
 }
