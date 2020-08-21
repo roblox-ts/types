@@ -39,7 +39,7 @@
 		"node-fetch": "^2.6.0",
 		"prettier": "^2.0.2",
 		"ts-morph": "^7.0.0",
-		"typescript": "^3.7.2"
+		"typescript": "^4.0.2"
 	},
 	"bundleDependencies": [],
 	"dependencies": {},
