@@ -1296,7 +1296,7 @@ interface AnimationTrack extends Instance {
 interface Animator extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Animator";
-	ApplyJointVelocities(this: Animator, motors?: any): void;
+	ApplyJointVelocities(this: Animator, motors: Array<Motor6D>): void;
 	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
 	/** Loads an `Animation` onto an `Animator`, returning an `AnimationTrack`. Used to load animations on locally controlled models (such as player characters) from the server.
 	 * 
