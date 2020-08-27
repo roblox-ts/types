@@ -184,7 +184,50 @@ declare namespace os {
 	function time(): number;
 	/** Returns the number of seconds past Jan 1, 1970 in the UTC timezone for a given dateTable object. */
 	function time(dateTable: DateTable): number;
+	/**
+	 * `*t` indicates local time
+	 * `!*t` indicates UTC time
+	 * 
+	 * If you want to format strings, the alternative os.date function is available.
+	*/
 	function date(formatString: "*t" | "!*t", time?: number): Required<DateTable>;
+	/**
+	 * Formats the given formatString with date/time information based on the given time
+	 * @param formatString The string to format with specifiers given (specifiers are based on the C function strftime)
+	 *  
+	 * The following specifiers are supported:
+	 * 
+	 * | Specifier | Meaning | Example |
+	 * | --- | --- | --- |
+	 * | %a | Abbreviated weekday name | Wed |
+	 * | %A | Full weekday name * | Wednesday |
+	 * | %b | Abbreviated month name * | Sep |
+	 * | %B | Full month name * | September |
+	 * | %c | Date and time * |  09/16/98 23:48:10 |
+	 * | %d | Day of the month | 16 |
+	 * | %H | Hour, using 24-hour clock | 23 |
+	 * | %I | Hour, using 12-hour clock | 11 |
+	 * | %j | Day of year | 259 |
+	 * | %m | Month | 09 |
+	 * | %M | Minute | 48 |
+	 * | %p | Either "am" or "pm" | pm |
+	 * | %S | Second | 10 |
+	 * | %U | Week number (first Sunday as the first day of week one) | 37 |
+	 * | %w | Weekday | 3 |
+	 * | %W | Week number (first Monday as the first day of week one) | 37 |
+	 * | %x | Date * | 09/16/98 |
+	 * | %X | Time * | 23:48:10 |
+	 * | %y | Two-digit year | 98 |
+	 * | %Y | Full year | 1998 |
+	 * | %z | ISO 8601 offset from UTC in timezone (1 minute = 1, 1 hour = 100) | -0400 |
+	 * | %Z | Timezone name or abbreviation * | Eastern Daylight Time |
+	 * | %% | The % character | % |
+	 * | --- | --- | --- |
+	 * 
+	 * This value can vary depending on the current locale.
+	 * @param time The timestamp to format the formatString from. Defaults to os.time
+	 */
+	function date(formatString: string, time?: number): string;
 	function difftime(t2: number, t1: number): number;
 }
 
@@ -261,6 +304,28 @@ interface String {
 declare namespace string {
 	/** Receives zero or more integers. Returns a string with length equal to the number of arguments, in which each character has the internal numerical code equal to its corresponding argument. */
 	function char(...args: Array<number>): string;
+
+	/**
+	 * Returns a binary string containing the values packed (that is, serialized in binary form) according to the format string fmt.
+	 * 
+	 * Follows the format convention of [lua 5.3's](https://www.lua.org/manual/5.3/manual.html#6.4.2)
+	 * 
+	 * Note that you cannot save binary strings in DataStores currently.
+	 * @param fmt The format string to use
+	 * @param value The values to pack
+	 */
+	function pack(fmt: string, ...value: Array<string>): string;
+
+	/**
+	 * Returns the size of a string resulting from string.pack with the given format. The format string cannot have the variable-length options 's' or 'z'.
+	 * @param fmt The format string to check
+	 */
+	function packsize(fmt: string): number;
+
+	/**
+	 * Returns the values packed in string s (see string.pack) according to the format string fmt. An optional pos marks where to start reading in s (default is 1). After the read values, this function also returns the index of the first unread byte in s.
+	 */
+	function unpack(fmt: string, s: string, pos?: number): number;
 }
 
 declare namespace math {
@@ -344,6 +409,9 @@ declare namespace math {
 
 	/** Sets x as the seed for the pseudo-random generator: equal seeds produce equal sequences of numbers. */
 	function randomseed(seed: number): number;
+
+	/** Rounds n to the nearest integer. */
+	function round(n: number): number;
 
 	/** Returns -1 if `x < 0`, 0 if `x == 0`, or 1 if `x > 0`. */
 	function sign(n: number): number;
