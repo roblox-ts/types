@@ -227,7 +227,7 @@ declare namespace os {
 	 * This value can vary depending on the current locale.
 	 * @param time The timestamp to format the formatString from. Defaults to os.time
 	 */
-	function date(formatString: string, time?: number): string;
+	function date(formatString: string, time?: number): string | Required<DateTable>;
 	function difftime(t2: number, t1: number): number;
 }
 
