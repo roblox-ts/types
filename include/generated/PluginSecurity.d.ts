@@ -2437,6 +2437,7 @@ interface Studio extends Instance {
 	["Camera Zoom to Mouse Position"]: boolean;
 	/** If set to true, the output will be automatically cleared when game sessions are switched. */
 	["Clear Output On Start"]: boolean;
+	CommandBarLocalState: boolean;
 	/** Specifies the color of comments in Roblox Studio's script editor. */
 	["Comment Color"]: Color3;
 	["Current Line Highlight Color"]: Color3;
