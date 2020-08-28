@@ -325,7 +325,7 @@ declare namespace string {
 	/**
 	 * Returns the values packed in string s (see string.pack) according to the format string fmt. An optional pos marks where to start reading in s (default is 1). After the read values, this function also returns the index of the first unread byte in s.
 	 */
-	function unpack(fmt: string, s: string, pos?: number): number;
+	function unpack(fmt: string, s: string, pos?: number): LuaTuple<Array<number>>;
 }
 
 declare namespace math {
@@ -410,7 +410,10 @@ declare namespace math {
 	/** Sets x as the seed for the pseudo-random generator: equal seeds produce equal sequences of numbers. */
 	function randomseed(seed: number): number;
 
-	/** Rounds n to the nearest integer. */
+	/** Rounds n to the nearest integer. 
+	 * 
+	 * This uses rounding away from 0, so -0.5 will become -1, likewise 0.5 will become 1.
+	*/
 	function round(n: number): number;
 
 	/** Returns -1 if `x < 0`, 0 if `x == 0`, or 1 if `x > 0`. */
