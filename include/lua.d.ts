@@ -185,18 +185,16 @@ declare namespace os {
 	/** Returns the number of seconds past Jan 1, 1970 in the UTC timezone for a given dateTable object. */
 	function time(dateTable: DateTable): number;
 	/**
-	 * `*t` indicates local time
-	 * `!*t` indicates UTC time
+	 * Formats the given formatString with date/time information based on the given time.
 	 * 
-	 * If you want to format strings, the alternative os.date function is available.
-	*/
-	function date(formatString: "*t" | "!*t", time?: number): Required<DateTable>;
-	/**
-	 * Formats the given formatString with date/time information based on the given time
-	 * @param formatString The string to format with specifiers given (specifiers are based on the C function strftime)
-	 *  
+	 * If the formatString is `*t`, it will use local time and return a DateTable.
+	 * 
+	 * If the formatString is `!*t`, it will use UTC time and return a DateTable.
+	 * 
+	 * Otherwise, it will format the string with the given specifiers (specifiers are based on the C function strftime)
+	 * 
 	 * The following specifiers are supported:
-	 * 
+	 *
 	 * | Specifier | Meaning | Example |
 	 * | --- | --- | --- |
 	 * | %a | Abbreviated weekday name | Wed |
@@ -223,11 +221,15 @@ declare namespace os {
 	 * | %Z | Timezone name or abbreviation * | Eastern Daylight Time |
 	 * | %% | The % character | % |
 	 * | --- | --- | --- |
-	 * 
-	 * This value can vary depending on the current locale.
+	 *
+	 * \* indicates the value can vary depending on the current locale.
+	 * @param formatString The string to format with either specifiers givenn, or the type of DateTable to return.
 	 * @param time The timestamp to format the formatString from. Defaults to os.time
-	 */
-	function date(formatString: string, time?: number): string | Required<DateTable>;
+	*/
+	function date<T extends string>(
+		formatString: T,
+		time?: number,
+	): string extends T ? string | Required<DateTable> : T extends "*t" | "!*t" ? Required<DateTable> : string;
 	function difftime(t2: number, t1: number): number;
 }
 
