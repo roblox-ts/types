@@ -4299,7 +4299,7 @@ interface ContentProvider extends Instance {
 	 * When the function is called, the engine will go through all of the instances in the passed in array (and all of the descendants of the passed in instances). If any of the instances have a property that defines a link to content, such as a `Decal` or a `Sound`, then the function will attempt to load the asset from the Roblox website. If any of the assets fail to load, an error message will appear in the places output, but the PreloadAsync function itself will not error and will continue executing until it has processed each passed in instance.
 	 * @param contentIdList An array of `Instance`s to be preloaded.
 	 */
-	PreloadAsync(this: ContentProvider, contentIdList: Array<Instance>): void;
+	PreloadAsync(this: ContentProvider, contentIdList: Array<Instance>, callback?: (contentId: string, status: Enum.AssetFetchStatus) => void): void;
 }
 
 /** The ContextActionService is a game service that allows a game to bind user input to contextual actions, or actions that are only enabled under some condition or period of time. For example, allowing a player to open a door only while close by. In code, an action is simply a string (the name of the action) used by the service to differentiate between unique actions. The string is provided to BindAction and UnbindAction, among other member functions. If two actions are bound to the same input, the most recent takes priority. When the most recent action is unbound, the one bound before that takes control again.

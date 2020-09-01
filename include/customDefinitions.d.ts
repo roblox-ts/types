@@ -113,7 +113,7 @@ interface CompressorSoundEffect extends SoundEffect {
 }
 
 interface ContentProvider extends Instance {
-	PreloadAsync(this: ContentProvider, contentIdList: Array<Instance>): void;
+	PreloadAsync(this: ContentProvider, contentIdList: Array<Instance>, callback?: (contentId: string, status: Enum.AssetFetchStatus) => void): void;
 }
 
 /** @rbxts client */
