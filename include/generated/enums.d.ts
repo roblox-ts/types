@@ -773,6 +773,226 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AutoIndentRule>
 	}
 	export type AutoIndentRule = AutoIndentRule.Off | AutoIndentRule.Absolute | AutoIndentRule.Relative;
+	export namespace AvatarAssetType {
+		export interface TShirt {
+			Name: "TShirt";
+			Value: 2;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const TShirt: TShirt;
+
+		export interface Hat {
+			Name: "Hat";
+			Value: 8;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const Hat: Hat;
+
+		export interface HairAccessory {
+			Name: "HairAccessory";
+			Value: 41;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const HairAccessory: HairAccessory;
+
+		export interface FaceAccessory {
+			Name: "FaceAccessory";
+			Value: 42;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const FaceAccessory: FaceAccessory;
+
+		export interface NeckAccessory {
+			Name: "NeckAccessory";
+			Value: 43;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const NeckAccessory: NeckAccessory;
+
+		export interface ShoulderAccessory {
+			Name: "ShoulderAccessory";
+			Value: 44;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const ShoulderAccessory: ShoulderAccessory;
+
+		export interface FrontAccessory {
+			Name: "FrontAccessory";
+			Value: 45;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const FrontAccessory: FrontAccessory;
+
+		export interface BackAccessory {
+			Name: "BackAccessory";
+			Value: 46;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const BackAccessory: BackAccessory;
+
+		export interface WaistAccessory {
+			Name: "WaistAccessory";
+			Value: 47;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const WaistAccessory: WaistAccessory;
+
+		export interface Shirt {
+			Name: "Shirt";
+			Value: 11;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const Shirt: Shirt;
+
+		export interface Pants {
+			Name: "Pants";
+			Value: 12;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const Pants: Pants;
+
+		export interface Gear {
+			Name: "Gear";
+			Value: 19;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const Gear: Gear;
+
+		export interface Head {
+			Name: "Head";
+			Value: 17;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const Head: Head;
+
+		export interface Face {
+			Name: "Face";
+			Value: 18;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const Face: Face;
+
+		export interface Torso {
+			Name: "Torso";
+			Value: 27;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const Torso: Torso;
+
+		export interface RightArm {
+			Name: "RightArm";
+			Value: 28;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const RightArm: RightArm;
+
+		export interface LeftArm {
+			Name: "LeftArm";
+			Value: 29;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const LeftArm: LeftArm;
+
+		export interface LeftLeg {
+			Name: "LeftLeg";
+			Value: 30;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const LeftLeg: LeftLeg;
+
+		export interface RightLeg {
+			Name: "RightLeg";
+			Value: 31;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const RightLeg: RightLeg;
+
+		export interface ClimbAnimation {
+			Name: "ClimbAnimation";
+			Value: 48;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const ClimbAnimation: ClimbAnimation;
+
+		export interface FallAnimation {
+			Name: "FallAnimation";
+			Value: 50;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const FallAnimation: FallAnimation;
+
+		export interface IdleAnimation {
+			Name: "IdleAnimation";
+			Value: 51;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const IdleAnimation: IdleAnimation;
+
+		export interface JumpAnimation {
+			Name: "JumpAnimation";
+			Value: 52;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const JumpAnimation: JumpAnimation;
+
+		export interface RunAnimation {
+			Name: "RunAnimation";
+			Value: 53;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const RunAnimation: RunAnimation;
+
+		export interface SwimAnimation {
+			Name: "SwimAnimation";
+			Value: 54;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const SwimAnimation: SwimAnimation;
+
+		export interface WalkAnimation {
+			Name: "WalkAnimation";
+			Value: 55;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const WalkAnimation: WalkAnimation;
+
+		export interface EmoteAnimation {
+			Name: "EmoteAnimation";
+			Value: 61;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const EmoteAnimation: EmoteAnimation;
+
+		export function GetEnumItems(this: defined): Array<AvatarAssetType>
+	}
+	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation;
 	export namespace AvatarContextMenuOption {
 		export interface Friend {
 			Name: "Friend";
@@ -4536,7 +4756,7 @@ declare namespace Enum {
 
 		export interface Analytics {
 			Name: "Analytics";
-			Value: 22;
+			Value: 23;
 			EnumType: EnumType<HttpRequestType>;
 		}
 
@@ -4544,7 +4764,7 @@ declare namespace Enum {
 
 		export interface Localization {
 			Name: "Localization";
-			Value: 24;
+			Value: 25;
 			EnumType: EnumType<HttpRequestType>;
 		}
 
@@ -4961,6 +5181,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<InputType>
 	}
 	export type InputType = InputType.NoInput | InputType.Constant | InputType.Sin;
+	export namespace ItemType {
+		export interface Asset {
+			Name: "Asset";
+			Value: 0;
+			EnumType: EnumType<ItemType>;
+		}
+
+		export const Asset: Asset;
+
+		export interface Bundle {
+			Name: "Bundle";
+			Value: 1;
+			EnumType: EnumType<ItemType>;
+		}
+
+		export const Bundle: Bundle;
+
+		export function GetEnumItems(this: defined): Array<ItemType>
+	}
+	export type ItemType = ItemType.Asset | ItemType.Bundle;
 	export namespace JointCreationMode {
 		export interface All {
 			Name: "All";

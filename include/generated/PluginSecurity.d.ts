@@ -1147,6 +1147,10 @@ interface PhysicsSettings extends Instance {
 	AreWorldCoordsShown: boolean;
 	/** When set to true, Roblox will fall back to using its legacy CSG solver when performing [solid model operations](https://developer.roblox.com/articles/3D-Modeling-with-Parts). */
 	DisableCSGv2: boolean;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Hidden, NotReplicated
+	 */
+	ForceCSGv2: boolean;
 	/** This property is supposed to show the [BasePart.ReceiveAge](https://developer.roblox.com/api-reference/property/BasePart/ReceiveAge) of a part, but it does not work correctly. */
 	IsReceiveAgeShown: boolean;
 	/** When set to true, the joint connections of each part, and the states of their underlying primitive components are visualized as a spanning tree.
@@ -2456,6 +2460,8 @@ interface Studio extends Instance {
 	/** When set to true, the script editor and command bar will show an autocomplete menu while writing. */
 	["Enable Autocomplete"]: boolean;
 	["Enable CoreScript Debugger"]: boolean;
+	["Enable Http Sandboxing"]: boolean;
+	["Enable Internal Beta Features"]: boolean;
 	["Enable Internal Features"]: boolean;
 	/** Specifies the color of the wavy underline shown when malformed code is detected in the script editor. */
 	["Error Color"]: Color3;
@@ -2691,11 +2697,15 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
 	CopyToClipboard(this: StudioService, stringToCopy: string): void;
 	/** [NO DOCUMENTATION] */
+	DEPRECATED_ShowPlaceVersionHistoryDialog(this: StudioService): void;
+	/** [NO DOCUMENTATION] */
 	EmitPlacePublishedSignal(this: StudioService): void;
 	/** [NO DOCUMENTATION] */
 	GetClassIcon(this: StudioService, className: string): object;
 	/** [NO DOCUMENTATION] */
 	GetResourceByCategory(this: StudioService, category: string): object;
+	/** [NO DOCUMENTATION] */
+	GetStartupAssetId(this: StudioService): string;
 	/** [NO DOCUMENTATION] */
 	GetStartupPluginId(this: StudioService): string;
 	/** [NO DOCUMENTATION] */
@@ -2725,7 +2735,7 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
 	/** [NO DOCUMENTATION] */
-	ShowPlaceVersionHistoryDialog(this: StudioService): void;
+	ShowPlaceVersionHistoryDialog(this: StudioService, placeId: number): void;
 	/** [NO DOCUMENTATION] */
 	ShowPublishToRoblox(this: StudioService): void;
 	/** [NO DOCUMENTATION] */
