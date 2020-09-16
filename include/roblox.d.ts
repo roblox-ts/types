@@ -1672,8 +1672,11 @@ type DelayedCallback =
 
 /** Schedules a function to be executed after delayTime seconds have passed, without yielding the current thread. This function allows multiple Lua threads to be executed in parallel from the same stack. The delay will have a minimum duration of 29 milliseconds, but this minimum may be higher depending on the target framerate and various throttling conditions. If the delayTime parameter is not specified, the minimum duration will be used. */
 declare function delay(delayTime: number, callback: DelayedCallback): void;
-/** Returns how much time has elapsed since the current instance of Roblox was started.
-In Roblox Studio, this begins counting up from the moment Roblox Studio starts running, not just when opening a place.*/
+/**
+ * Returns how much time has elapsed since the current instance of Roblox was started.
+ * In Roblox Studio, this begins counting up from the moment Roblox Studio starts running, not just when opening a place.
+ * @deprecated use os.clock() instead.
+ */
 declare function elapsedTime(): number;
 /** Runs the supplied ModuleScript if it has not been run already, and returns what the ModuleScript returned (in both cases).
 
