@@ -426,22 +426,12 @@ interface GameSettings extends Instance {
 	 * The value of this string should be full paths to each directory, separated only by semicolons (`;`)
 	 */
 	readonly AdditionalCoreIncludeDirs: string;
-	/** When a bubble of the official bubblechat appears, this property determines after how much seconds it should disappear automaticly. */
-	BubbleChatLifetime: number;
-	/** Max amounts of chat bubbles that may appear above one player's head. */
-	BubbleChatMaxBubbles: number;
 	/** The maximum number of chats that can be shown in the chat history. Does not seem to work because the chat gui's code does not read from here. */
 	ChatHistory: number;
-	/** The maximum number of chats that can stack and show on the screen. Does not seem to work because the chat gui's code does not read from here. */
-	ChatScrollLength: number;
-	/** Toggles whether or not Roblox should use the Hardware Mouse or the Software Mouse. */
-	HardwareMouse: boolean;
 	/** Describes a path to a .lua file that will be ran in place of the default StarterScript. */
 	readonly OverrideStarterScript: string;
 	/** Sets how many of the latest chat messages should be included in an abuse report request. */
 	ReportAbuseChatHistory: number;
-	/** **(OBSOLETE)** */
-	SoftwareSound: boolean;
 	/** Toggles whether or not video capture is enabled. */
 	VideoCaptureEnabled: boolean;
 	/** Sets the quality level of Roblox's built-in video capture. */

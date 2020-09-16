@@ -5181,6 +5181,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<InputType>
 	}
 	export type InputType = InputType.NoInput | InputType.Constant | InputType.Sin;
+	export namespace InterpolationThrottlingMode {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<InterpolationThrottlingMode>;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: EnumType<InterpolationThrottlingMode>;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: EnumType<InterpolationThrottlingMode>;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: defined): Array<InterpolationThrottlingMode>
+	}
+	export type InterpolationThrottlingMode = InterpolationThrottlingMode.Default | InterpolationThrottlingMode.Disabled | InterpolationThrottlingMode.Enabled;
 	export namespace ItemType {
 		export interface Asset {
 			Name: "Asset";
@@ -11710,9 +11738,25 @@ declare namespace Enum {
 
 		export const Password: Password;
 
+		export interface PasswordShown {
+			Name: "PasswordShown";
+			Value: 6;
+			EnumType: EnumType<TextInputType>;
+		}
+
+		export const PasswordShown: PasswordShown;
+
+		export interface Username {
+			Name: "Username";
+			Value: 7;
+			EnumType: EnumType<TextInputType>;
+		}
+
+		export const Username: Username;
+
 		export function GetEnumItems(this: defined): Array<TextInputType>
 	}
-	export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone | TextInputType.Password;
+	export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone | TextInputType.Password | TextInputType.PasswordShown | TextInputType.Username;
 	export namespace TextTruncate {
 		export interface None {
 			Name: "None";
@@ -12265,34 +12309,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<UiMessageType>
 	}
 	export type UiMessageType = UiMessageType.UiMessageError | UiMessageType.UiMessageInfo;
-	export namespace UploadSetting {
-		export interface Never {
-			Name: "Never";
-			Value: 0;
-			EnumType: EnumType<UploadSetting>;
-		}
-
-		export const Never: Never;
-
-		export interface Ask {
-			Name: "Ask";
-			Value: 1;
-			EnumType: EnumType<UploadSetting>;
-		}
-
-		export const Ask: Ask;
-
-		export interface Always {
-			Name: "Always";
-			Value: 2;
-			EnumType: EnumType<UploadSetting>;
-		}
-
-		export const Always: Always;
-
-		export function GetEnumItems(this: defined): Array<UploadSetting>
-	}
-	export type UploadSetting = UploadSetting.Never | UploadSetting.Ask | UploadSetting.Always;
 	export namespace UserCFrame {
 		export interface Head {
 			Name: "Head";
