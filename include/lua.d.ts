@@ -563,7 +563,7 @@ declare namespace coroutine {
 	function yield(...params: Array<unknown>): unknown;
 }
 
-declare function next<T extends readonly any[]>(
+declare function next<T extends ReadonlyArray<any>>(
 	object: T,
 	index?: number,
 ): T extends readonly [infer A]
@@ -578,10 +578,10 @@ declare function next<T extends readonly any[]>(
 	? LuaTuple<[number, A | B | C | D | E]>
 	: T extends readonly [infer A, infer B, infer C, infer D, infer E, infer F]
 	? LuaTuple<[number, A | B | C | D | E | F]>
-	: T extends readonly (infer U)[]
+	: T extends ReadonlyArray<infer U>
 	? LuaTuple<Array<U>>
 	: LuaTuple<[unknown, unknown]>;
-declare function next<T extends any[]>(
+declare function next<T extends Array<any>>(
 	object: T,
 	index?: number,
 ): T extends [infer A]
@@ -596,7 +596,7 @@ declare function next<T extends any[]>(
 	? LuaTuple<[number, A | B | C | D | E]>
 	: T extends [infer A, infer B, infer C, infer D, infer E, infer F]
 	? LuaTuple<[number, A | B | C | D | E | F]>
-	: T extends (infer U)[]
+	: T extends Array<infer U>
 	? LuaTuple<Array<U>>
 	: LuaTuple<[unknown, unknown]>;
 declare function next<T>(object: Array<T>, index?: number): LuaTuple<[number, T]>;

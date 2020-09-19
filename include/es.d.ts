@@ -293,7 +293,7 @@ interface SymbolConstructor {
 	 */
 	keyFor(this: SymbolConstructor, sym: symbol): string | undefined;
 }
-declare var Symbol: SymbolConstructor;
+declare const Symbol: SymbolConstructor;
 
 type IteratorResult<Yields, Returns = void> = IteratorYieldResult<Yields> | IteratorReturnResult<Returns>;
 
@@ -758,7 +758,7 @@ interface ReadonlyMap<K, V> extends Iterable<[K, V]> {
 interface ReadonlyMapConstructor {
 	new <K, V>(entries?: ReadonlyArray<readonly [K, V]>): ReadonlyMap<K, V>;
 }
-declare var ReadonlyMap: ReadonlyMapConstructor;
+declare const ReadonlyMap: ReadonlyMapConstructor;
 
 /**
  * The Map object holds key-value pairs but doesn't remember the original insertion order of the keys (like JS would). Any value (both objects and primitive values) may be used as either a key or a value.
@@ -808,7 +808,7 @@ interface Map<K, V> extends ReadonlyMap<K, V> {
 interface MapConstructor {
 	new <K, V>(entries?: ReadonlyArray<readonly [K, V]>): Map<K, V>;
 }
-declare var Map: MapConstructor;
+declare const Map: MapConstructor;
 
 /**
  * A Map object with its `__mode` metamethod set to "k"
@@ -819,7 +819,7 @@ interface WeakMap<K extends object, V> extends Map<K, V> {}
 interface WeakMapConstructor {
 	new <K extends object, V>(entries?: ReadonlyArray<readonly [K, V]>): WeakMap<K, V>;
 }
-declare var WeakMap: WeakMapConstructor;
+declare const WeakMap: WeakMapConstructor;
 
 /** @rbxts set */
 interface ReadonlySet<T> extends Iterable<T> {
@@ -1070,7 +1070,7 @@ interface PromiseConstructor {
 	): Promise<T>;
 }
 
-declare var Promise: PromiseConstructor;
+declare const Promise: PromiseConstructor;
 
 /** Placeholder that sometimes helps force TS to display what you want it to. */
 type _<T> = T;
@@ -1154,7 +1154,7 @@ type UnionToIntersection<U> = (U extends object ? (k: U) => void : never) extend
 /**
  * Extracts the type of the 'this' parameter of a function type, or 'unknown' if the function type has no 'this' parameter.
  */
-type ThisParameterType<T> = T extends (this: infer U, ...args: any[]) => any ? U : unknown;
+type ThisParameterType<T> = T extends (this: infer U, ...args: Array<any>) => any ? U : unknown;
 
 /**
  * Removes the 'this' parameter from a function type.
