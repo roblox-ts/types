@@ -34,10 +34,10 @@ declare interface Vector2 {
 	sub(this: Vector2, v2: Vector2): Vector2;
 	/** macro for Vector2 * Vector2 */
 	mul(this: Vector2, v2: Vector2): Vector2;
-	/** macro for Vector2 / Vector2 */
-	div(this: Vector2, v2: Vector2): Vector2;
 	/** macro for Vector2 * number */
 	mul(this: Vector2, n: number): Vector2;
+	/** macro for Vector2 / Vector2 */
+	div(this: Vector2, v2: Vector2): Vector2;
 	/** macro for Vector2 / number */
 	div(this: Vector2, n: number): Vector2;
 }
@@ -60,10 +60,10 @@ declare interface Vector3 {
 	sub(this: Vector3, v3: Vector3): Vector3;
 	/** macro for Vector3 * Vector3 */
 	mul(this: Vector3, v3: Vector3): Vector3;
-	/** macro for Vector3 / Vector3 */
-	div(this: Vector3, v3: Vector3): Vector3;
 	/** macro for Vector3 * number */
 	mul(this: Vector3, n: number): Vector3;
+	/** macro for Vector3 / Vector3 */
+	div(this: Vector3, v3: Vector3): Vector3;
 	/** macro for Vector3 / number */
 	div(this: Vector3, n: number): Vector3;
 }
