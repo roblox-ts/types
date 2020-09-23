@@ -3,11 +3,11 @@
 		"project": "./tsconfig.json"
 	},
 	"rules": {
-        "@typescript-eslint/no-floating-promises": [
-            "error",
-            {
-                "ignoreVoid": true
-            }
+		"@typescript-eslint/no-floating-promises": [
+			"error",
+			{
+				"ignoreVoid": true
+			}
 		]
 	}
 }
