@@ -200,16 +200,17 @@ const CLASS_BLACKLIST = new Set([
 	"Visit",
 
 	// never implemented
-	"LoginService",
-	"ScriptService",
 	"AdvancedDragger",
-
-	// super deprecated / never implemented:
-	"AdService",
-	"PluginManager",
-	"FunctionalTest",
-	"VirtualUser",
+	"LoginService",
 	"NotificationService",
+	"ScriptService",
+	"Status",
+
+	// super deprecated:
+	"AdService",
+	"FunctionalTest",
+	"PluginManager",
+	"VirtualUser",
 
 	// "BevelMesh",
 	"CustomEvent",
@@ -247,7 +248,6 @@ const CLASS_BLACKLIST = new Set([
 
 	// unused
 	"UGCValidationService",
-	"Status",
 	"RbxAnalyticsService",
 ]);
 
