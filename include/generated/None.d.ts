@@ -5913,6 +5913,7 @@ interface GuiObject extends GuiBase2d {
 	 * To understand how AnchorPoint works, try creating a `Frame` with [Frame.Position](https://developer.roblox.com/search#stq=Position) set to [UDim2.new(0.5, 0, 0.5, 0)](https://developer.roblox.com/search#stq=UDim2) (this will set the Frame in the center of its parent object). If you were to change [Frame.Size](https://developer.roblox.com/search#stq=Size), you would notice that the Frame will expand to the right and downward. The very center of the frame would also not be at the exact center of the parent object. However, if you were to set the AnchorPoint to `(0.5, 0.5)`, the Frame would expand in all directions and the center of the frame would indeed be at the parent object's center.
 	 */
 	AnchorPoint: Vector2;
+	AutomaticSize: Enum.AutomaticSize;
 	/** BackgroundColor3 determines the color of a UI element's rectangular background (the fill color). Another property that determines the visual properties of the background is [GuiObject.BackgroundTransparency](https://developer.roblox.com/api-reference/property/GuiObject/BackgroundTransparency). */
 	BackgroundColor3: Color3;
 	/** This property determines the transparency of the [GUI's](https://developer.roblox.com/api-reference/class/GuiObject) background and border.
@@ -6918,6 +6919,8 @@ interface ScrollingFrame extends GuiObject {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly AbsoluteWindowSize: Vector2;
+	/** [NO DOCUMENTATION] */
+	AutomaticCanvasSize: Enum.AutomaticSize;
 	/** The Down image on the vertical scrollbar. Size of this is always ScrollBarThickness by ScrollBarThickness. This is also used as the image on the horizontal scroll bar. */
 	BottomImage: string;
 	/** The location within the canvas, in pixels, that should be drawn at the top left of the scroll frame */

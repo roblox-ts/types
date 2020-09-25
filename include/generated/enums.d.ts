@@ -773,6 +773,42 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AutoIndentRule>
 	}
 	export type AutoIndentRule = AutoIndentRule.Off | AutoIndentRule.Absolute | AutoIndentRule.Relative;
+	export namespace AutomaticSize {
+		export interface None {
+			Name: "None";
+			Value: 0;
+			EnumType: EnumType<AutomaticSize>;
+		}
+
+		export const None: None;
+
+		export interface X {
+			Name: "X";
+			Value: 1;
+			EnumType: EnumType<AutomaticSize>;
+		}
+
+		export const X: X;
+
+		export interface Y {
+			Name: "Y";
+			Value: 2;
+			EnumType: EnumType<AutomaticSize>;
+		}
+
+		export const Y: Y;
+
+		export interface XY {
+			Name: "XY";
+			Value: 3;
+			EnumType: EnumType<AutomaticSize>;
+		}
+
+		export const XY: XY;
+
+		export function GetEnumItems(this: defined): Array<AutomaticSize>
+	}
+	export type AutomaticSize = AutomaticSize.None | AutomaticSize.X | AutomaticSize.Y | AutomaticSize.XY;
 	export namespace AvatarAssetType {
 		export interface TShirt {
 			Name: "TShirt";
@@ -3766,9 +3802,209 @@ declare namespace Enum {
 
 		export const GothamBlack: GothamBlack;
 
+		export interface AmaticSC {
+			Name: "AmaticSC";
+			Value: 21;
+			EnumType: EnumType<Font>;
+		}
+
+		export const AmaticSC: AmaticSC;
+
+		export interface Bangers {
+			Name: "Bangers";
+			Value: 22;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Bangers: Bangers;
+
+		export interface Creepster {
+			Name: "Creepster";
+			Value: 23;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Creepster: Creepster;
+
+		export interface DenkOne {
+			Name: "DenkOne";
+			Value: 24;
+			EnumType: EnumType<Font>;
+		}
+
+		export const DenkOne: DenkOne;
+
+		export interface Fondamento {
+			Name: "Fondamento";
+			Value: 25;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Fondamento: Fondamento;
+
+		export interface FredokaOne {
+			Name: "FredokaOne";
+			Value: 26;
+			EnumType: EnumType<Font>;
+		}
+
+		export const FredokaOne: FredokaOne;
+
+		export interface GrenzeGotisch {
+			Name: "GrenzeGotisch";
+			Value: 27;
+			EnumType: EnumType<Font>;
+		}
+
+		export const GrenzeGotisch: GrenzeGotisch;
+
+		export interface IndieFlower {
+			Name: "IndieFlower";
+			Value: 28;
+			EnumType: EnumType<Font>;
+		}
+
+		export const IndieFlower: IndieFlower;
+
+		export interface JosefinSans {
+			Name: "JosefinSans";
+			Value: 29;
+			EnumType: EnumType<Font>;
+		}
+
+		export const JosefinSans: JosefinSans;
+
+		export interface Jura {
+			Name: "Jura";
+			Value: 30;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Jura: Jura;
+
+		export interface Kalam {
+			Name: "Kalam";
+			Value: 31;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Kalam: Kalam;
+
+		export interface LuckiestGuy {
+			Name: "LuckiestGuy";
+			Value: 32;
+			EnumType: EnumType<Font>;
+		}
+
+		export const LuckiestGuy: LuckiestGuy;
+
+		export interface Merriweather {
+			Name: "Merriweather";
+			Value: 33;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Merriweather: Merriweather;
+
+		export interface Michroma {
+			Name: "Michroma";
+			Value: 34;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Michroma: Michroma;
+
+		export interface Nunito {
+			Name: "Nunito";
+			Value: 35;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Nunito: Nunito;
+
+		export interface Oswald {
+			Name: "Oswald";
+			Value: 36;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Oswald: Oswald;
+
+		export interface PatrickHand {
+			Name: "PatrickHand";
+			Value: 37;
+			EnumType: EnumType<Font>;
+		}
+
+		export const PatrickHand: PatrickHand;
+
+		export interface PermanentMarker {
+			Name: "PermanentMarker";
+			Value: 38;
+			EnumType: EnumType<Font>;
+		}
+
+		export const PermanentMarker: PermanentMarker;
+
+		export interface Roboto {
+			Name: "Roboto";
+			Value: 39;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Roboto: Roboto;
+
+		export interface RobotoCondensed {
+			Name: "RobotoCondensed";
+			Value: 40;
+			EnumType: EnumType<Font>;
+		}
+
+		export const RobotoCondensed: RobotoCondensed;
+
+		export interface RobotoMono {
+			Name: "RobotoMono";
+			Value: 41;
+			EnumType: EnumType<Font>;
+		}
+
+		export const RobotoMono: RobotoMono;
+
+		export interface Sarpanch {
+			Name: "Sarpanch";
+			Value: 42;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Sarpanch: Sarpanch;
+
+		export interface SpecialElite {
+			Name: "SpecialElite";
+			Value: 43;
+			EnumType: EnumType<Font>;
+		}
+
+		export const SpecialElite: SpecialElite;
+
+		export interface TitilliumWeb {
+			Name: "TitilliumWeb";
+			Value: 44;
+			EnumType: EnumType<Font>;
+		}
+
+		export const TitilliumWeb: TitilliumWeb;
+
+		export interface Ubuntu {
+			Name: "Ubuntu";
+			Value: 45;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Ubuntu: Ubuntu;
+
 		export function GetEnumItems(this: defined): Array<Font>
 	}
-	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansSemibold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.Gotham | Font.GothamSemibold | Font.GothamBold | Font.GothamBlack;
+	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansSemibold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.Gotham | Font.GothamSemibold | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu;
 	export namespace FontSize {
 		export interface Size8 {
 			Name: "Size8";
@@ -7921,6 +8157,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<MeshPartDetailLevel>
 	}
 	export type MeshPartDetailLevel = MeshPartDetailLevel.DistanceBased | MeshPartDetailLevel.Level01 | MeshPartDetailLevel.Level02 | MeshPartDetailLevel.Level03 | MeshPartDetailLevel.Level04;
+	export namespace MeshPartHeads {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<MeshPartHeads>;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: EnumType<MeshPartHeads>;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: EnumType<MeshPartHeads>;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: defined): Array<MeshPartHeads>
+	}
+	export type MeshPartHeads = MeshPartHeads.Default | MeshPartHeads.Disabled | MeshPartHeads.Enabled;
 	export namespace MeshType {
 		export interface Head {
 			Name: "Head";
@@ -10369,6 +10633,102 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<StudioDataModelType>
 	}
 	export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.RobloxPlugin | StudioDataModelType.UserPlugin | StudioDataModelType.None;
+	export namespace StudioScriptEditorColorCategories {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const Default: Default;
+
+		export interface Operator {
+			Name: "Operator";
+			Value: 1;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const Operator: Operator;
+
+		export interface Number {
+			Name: "Number";
+			Value: 2;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const Number: Number;
+
+		export interface String {
+			Name: "String";
+			Value: 3;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const String: String;
+
+		export interface Comment {
+			Name: "Comment";
+			Value: 4;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const Comment: Comment;
+
+		export interface Keyword {
+			Name: "Keyword";
+			Value: 5;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const Keyword: Keyword;
+
+		export interface Builtin {
+			Name: "Builtin";
+			Value: 6;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const Builtin: Builtin;
+
+		export function GetEnumItems(this: defined): Array<StudioScriptEditorColorCategories>
+	}
+	export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin;
+	export namespace StudioScriptEditorColorPresets {
+		export interface RobloxDefault {
+			Name: "RobloxDefault";
+			Value: 0;
+			EnumType: EnumType<StudioScriptEditorColorPresets>;
+		}
+
+		export const RobloxDefault: RobloxDefault;
+
+		export interface Extra1 {
+			Name: "Extra1";
+			Value: 1;
+			EnumType: EnumType<StudioScriptEditorColorPresets>;
+		}
+
+		export const Extra1: Extra1;
+
+		export interface Extra2 {
+			Name: "Extra2";
+			Value: 2;
+			EnumType: EnumType<StudioScriptEditorColorPresets>;
+		}
+
+		export const Extra2: Extra2;
+
+		export interface Custom {
+			Name: "Custom";
+			Value: 3;
+			EnumType: EnumType<StudioScriptEditorColorPresets>;
+		}
+
+		export const Custom: Custom;
+
+		export function GetEnumItems(this: defined): Array<StudioScriptEditorColorPresets>
+	}
+	export type StudioScriptEditorColorPresets = StudioScriptEditorColorPresets.RobloxDefault | StudioScriptEditorColorPresets.Extra1 | StudioScriptEditorColorPresets.Extra2 | StudioScriptEditorColorPresets.Custom;
 	export namespace StudioStyleGuideColor {
 		export interface MainBackground {
 			Name: "MainBackground";
@@ -12249,6 +12609,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<TouchMovementMode>
 	}
 	export type TouchMovementMode = TouchMovementMode.Default | TouchMovementMode.Thumbstick | TouchMovementMode.DPad | TouchMovementMode.Thumbpad | TouchMovementMode.ClickToMove | TouchMovementMode.DynamicThumbstick;
+	export namespace TriStateBoolean {
+		export interface Unknown {
+			Name: "Unknown";
+			Value: 0;
+			EnumType: EnumType<TriStateBoolean>;
+		}
+
+		export const Unknown: Unknown;
+
+		export interface True {
+			Name: "True";
+			Value: 1;
+			EnumType: EnumType<TriStateBoolean>;
+		}
+
+		export const True: True;
+
+		export interface False {
+			Name: "False";
+			Value: 2;
+			EnumType: EnumType<TriStateBoolean>;
+		}
+
+		export const False: False;
+
+		export function GetEnumItems(this: defined): Array<TriStateBoolean>
+	}
+	export type TriStateBoolean = TriStateBoolean.Unknown | TriStateBoolean.True | TriStateBoolean.False;
 	export namespace TweenStatus {
 		export interface Canceled {
 			Name: "Canceled";
