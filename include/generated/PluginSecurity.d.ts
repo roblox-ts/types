@@ -1341,7 +1341,7 @@ interface Plugin extends Instance {
 	/** Opens the context help window to the wiki page that `url` links to. */
 	OpenWikiPage(this: Plugin, url: string): void;
 	PauseSound(this: Plugin, soundChannel: Sound): void;
-	PlaySound(this: Plugin, soundChannel: Sound): void;
+	PlaySound(this: Plugin, soundChannel: Sound, normalizedTimePosition?: number): void;
 	ResumeSound(this: Plugin, soundChannel: Sound): void;
 	/** Opens an upload window for the user's current selection. */
 	SaveSelectedToRoblox(this: Plugin): void;
@@ -2093,6 +2093,8 @@ interface Selection extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly ActiveInstance: Instance | undefined;
+	/** [NO DOCUMENTATION] */
+	Add(this: Selection, instancesToAdd: Array<Instance>): void;
 	/** Returns an array of currently selected `Instance`s in Roblox Studio.
 	 * 
 	 * If no `Instance`s are selected, the array returned be empty. This function can be used in conjunction with the [Selection.SelectionChanged](https://developer.roblox.com/api-reference/event/Selection/SelectionChanged) event to get the selection whenever it changes.
@@ -2103,6 +2105,8 @@ interface Selection extends Instance {
 	 * @returns An array of currently selected `Instance`s.
 	 */
 	Get(this: Selection): Array<Instance>;
+	/** [NO DOCUMENTATION] */
+	Remove(this: Selection, instancesToRemove: Array<Instance>): void;
 	/** Sets the currently selected objects in Roblox Studio to `Instance`s in the given array.
 	 * 
 	 * Calling this function will cause the [Selection.SelectionChanged](https://developer.roblox.com/api-reference/event/Selection/SelectionChanged) event to fire, unless the new selection set is identical to the previous selection.
@@ -2462,6 +2466,7 @@ interface Studio extends Instance {
 	["Format On Paste"]: boolean;
 	["Format On Type"]: boolean;
 	["Highlight Current Line"]: boolean;
+	["Highlight Occurances"]: boolean;
 	/** Specifies how frequently the hover animation flashes when the mouse is hovering over a selectable object in the `Workspace`. */
 	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
 	/** Specifies the color that the hover selection box uses. */
@@ -2520,6 +2525,7 @@ interface Studio extends Instance {
 	["Respect Studio shortcuts when game has focus"]: boolean;
 	Rulers: string;
 	RuntimeUndoBehavior: Enum.RuntimeUndoBehavior;
+	["Script Editor Color Preset"]: Enum.StudioScriptEditorColorPresets;
 	/** The time (in seconds) a script can wait to be resumed before timing out. */
 	ScriptTimeoutLength: number;
 	["Search Content For Core Scripts"]: boolean;
