@@ -1497,12 +1497,29 @@ declare const Ray: RayConstructor;
 
 // RaycastParams
 interface RaycastParams {
-	/** Instances to ignore or whitelist */
+	/** An array of objects whose descendants will be used in filtering raycasting candidates. */
 	FilterDescendantsInstances: Array<Instance>;
-	/** Whether to use the filters fields of the RaycastParams as a blacklist or as a whitelist */
+	/**
+	 * Determines how the `FilterDescendantsInstances` list will be used, depending on the
+	 * [RaycastFilterType](https://developer.roblox.com/api-reference/enum/RaycastFilterType) provided.
+	 *
+	 * - `Enum.RaycastFilterType.Whitelist` — Only [BaseParts](https://developer.roblox.com/api-reference/class/BasePart)
+	 * which are descendants of objects in the filter list will be considered in the raycast operation.
+	 * - `Enum.RaycastFilterType.Blacklist` — Every [BasePart](https://developer.roblox.com/api-reference/class/BasePart)
+	 * in the game will be considered except those that are descendants of objects in the filter list.
+	 */
 	FilterType: Enum.RaycastFilterType;
-	/** Should a raycast ignore Terrain water */
+	/**
+	 * Determines whether the water material is considered when raycasting against
+	 * [Terrain](https://developer.roblox.com/api-reference/class/Terrain).
+	 */
 	IgnoreWater: boolean;
+	/**
+	 * Specifies a [collision group](https://developer.roblox.com/articles/Collision-Filtering) for the raycasting
+	 * operation. Parts in collision groups that are set to **not** collide with this group will be ignored. If this
+	 * property is omitted, the raycast will assume the **Default** collision group.
+	 */
+	CollisionGroup: string;
 }
 type RaycastParamsConstructor = new () => RaycastParams;
 declare const RaycastParams: RaycastParamsConstructor;
