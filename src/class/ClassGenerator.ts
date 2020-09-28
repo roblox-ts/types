@@ -43,7 +43,7 @@ interface BreakdanceNodeNodes extends BreakdanceNodeBase {
 
 type BreakdanceNode = BreakdanceNodeVal | BreakdanceNodeNodes;
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
+// eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
 const breakdance = require("breakdance") as (
 	HTMLtoConvert: string,
 	options?: {

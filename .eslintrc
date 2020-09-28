@@ -43,6 +43,7 @@
 		"@typescript-eslint/no-namespace": "off",
 		"@typescript-eslint/no-non-null-assertion": "off",
 		"@typescript-eslint/no-use-before-define": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
 		"@typescript-eslint/no-require-imports": "error",
 		"prefer-const": "warn",
 		"no-undef-init": "error"
