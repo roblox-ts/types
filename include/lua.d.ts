@@ -186,13 +186,13 @@ declare namespace os {
 	function time(dateTable: DateTable): number;
 	/**
 	 * Formats the given formatString with date/time information based on the given time.
-	 * 
+	 *
 	 * If the formatString is `*t`, it will use local time and return a DateTable.
-	 * 
+	 *
 	 * If the formatString is `!*t`, it will use UTC time and return a DateTable.
-	 * 
+	 *
 	 * Otherwise, it will format the string with the given specifiers (specifiers are based on the C function strftime)
-	 * 
+	 *
 	 * The following specifiers are supported:
 	 *
 	 * | Specifier | Meaning | Example |
@@ -225,7 +225,7 @@ declare namespace os {
 	 * \* indicates the value can vary depending on the current locale.
 	 * @param formatString The string to format with either specifiers givenn, or the type of DateTable to return.
 	 * @param time The timestamp to format the formatString from. Defaults to os.time
-	*/
+	 */
 	function date<T extends string>(
 		formatString: T,
 		time?: number,
@@ -309,9 +309,9 @@ declare namespace string {
 
 	/**
 	 * Returns a binary string containing the values packed (that is, serialized in binary form) according to the format string fmt.
-	 * 
+	 *
 	 * Follows the format convention of [lua 5.3's](https://www.lua.org/manual/5.3/manual.html#6.4.2)
-	 * 
+	 *
 	 * Note that you cannot save binary strings in DataStores currently.
 	 * @param fmt The format string to use
 	 * @param value The values to pack
@@ -412,10 +412,10 @@ declare namespace math {
 	/** Sets x as the seed for the pseudo-random generator: equal seeds produce equal sequences of numbers. */
 	function randomseed(seed: number): number;
 
-	/** Rounds n to the nearest integer. 
-	 * 
+	/** Rounds n to the nearest integer.
+	 *
 	 * This uses rounding away from 0, so -0.5 will become -1, likewise 0.5 will become 1.
-	*/
+	 */
 	function round(n: number): number;
 
 	/** Returns -1 if `x < 0`, 0 if `x == 0`, or 1 if `x > 0`. */
