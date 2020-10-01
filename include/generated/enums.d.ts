@@ -3593,6 +3593,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<ExplosionType>
 	}
 	export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters;
+	export namespace FieldOfViewMode {
+		export interface Vertical {
+			Name: "Vertical";
+			Value: 0;
+			EnumType: EnumType<FieldOfViewMode>;
+		}
+
+		export const Vertical: Vertical;
+
+		export interface Diagonal {
+			Name: "Diagonal";
+			Value: 1;
+			EnumType: EnumType<FieldOfViewMode>;
+		}
+
+		export const Diagonal: Diagonal;
+
+		export interface MaxAxis {
+			Name: "MaxAxis";
+			Value: 2;
+			EnumType: EnumType<FieldOfViewMode>;
+		}
+
+		export const MaxAxis: MaxAxis;
+
+		export function GetEnumItems(this: defined): Array<FieldOfViewMode>
+	}
+	export type FieldOfViewMode = FieldOfViewMode.Vertical | FieldOfViewMode.Diagonal | FieldOfViewMode.MaxAxis;
 	export namespace FillDirection {
 		export interface Horizontal {
 			Name: "Horizontal";
@@ -13089,34 +13117,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<VibrationMotor>
 	}
 	export type VibrationMotor = VibrationMotor.Large | VibrationMotor.Small | VibrationMotor.LeftTrigger | VibrationMotor.RightTrigger | VibrationMotor.LeftHand | VibrationMotor.RightHand;
-	export namespace VideoQualitySettings {
-		export interface LowResolution {
-			Name: "LowResolution";
-			Value: 0;
-			EnumType: EnumType<VideoQualitySettings>;
-		}
-
-		export const LowResolution: LowResolution;
-
-		export interface MediumResolution {
-			Name: "MediumResolution";
-			Value: 1;
-			EnumType: EnumType<VideoQualitySettings>;
-		}
-
-		export const MediumResolution: MediumResolution;
-
-		export interface HighResolution {
-			Name: "HighResolution";
-			Value: 2;
-			EnumType: EnumType<VideoQualitySettings>;
-		}
-
-		export const HighResolution: HighResolution;
-
-		export function GetEnumItems(this: defined): Array<VideoQualitySettings>
-	}
-	export type VideoQualitySettings = VideoQualitySettings.LowResolution | VideoQualitySettings.MediumResolution | VideoQualitySettings.HighResolution;
 	export namespace VirtualInputMode {
 		export interface Recording {
 			Name: "Recording";

@@ -2913,6 +2913,8 @@ interface Camera extends Instance {
 	 * [1]: http://robloxdev.com/articles/Movement-and-camera-controls
 	 */
 	CameraType: Enum.CameraType;
+	/** Describes the view angle along the diagonal viewport axis. */
+	DiagonalFieldOfView: number;
 	/** Field of view, often shortened to FOV, is the extent of the observable game world that can be seen on screen at a given moment. The FieldOfView property is clamped between 1 and 120 degrees and defaults at 70. Very low or very high fields of view are not recommended as they can be disorientating to players.
 	 * 
 	 * The FieldOfView property sets how many degrees in the vertical direction (y-axis) the camera can view. Uniform scaling is enforced meaning the vertical and horizontal field of view are always related by the [aspect ratio][1] of the screen. This means the FieldOfView property also determines the horizontal field of view.
@@ -2940,6 +2942,8 @@ interface Camera extends Instance {
 	 * [3]: https://developer.roblox.com/assets/5b676631f9cd894d3d8ace1f/Fov70.png
 	 */
 	FieldOfView: number;
+	/** Determines how the field of view responds to changes of screen size and aspect ratio. */
+	FieldOfViewMode: Enum.FieldOfViewMode;
 	/** The `Camera` Focus is a [DataType.CFrame](https://developer.roblox.com/search#stq=CFrame) that determines the area in 3D space the graphics engine will prioritize.
 	 * 
 	 * Certain graphical operations Roblox performs, such as updating lighting, can take a lot of time or computational effort to complete. Focus tells Roblox the area in 3D space to prioritize when performing such operations. For example dynamic lighting from objects such as [PointLights](https://developer.roblox.com/api-reference/class/PointLight) may not render at distances far from the Focus.
@@ -3009,6 +3013,8 @@ interface Camera extends Instance {
 	 *  - [Camera.GetRenderCFrame](https://developer.roblox.com/api-reference/function/Camera/GetRenderCFrame)
 	 */
 	HeadScale: number;
+	/** Describes the view angle along the maximum-length viewport axis. */
+	MaxAxisFieldOfView: number;
 	/** The NearPlaneZ property describes how far away the Camera’s near clipping plane is in studs. The near clipping plane is a geometric plane that sits in-front of the [Camera's](https://developer.roblox.com/api-reference/class/Camera) [Camera.CFrame](https://developer.roblox.com/api-reference/property/Camera/CFrame). Anything between this plane and the camera will not render. This creates a cutaway view when viewing objects at very short distances. See the images below for a visual example of this:
 	 * 
 	 * ![A demonstration of how the near clipping plane resides in front of the camera's view][1]
