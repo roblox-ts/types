@@ -426,16 +426,10 @@ interface GameSettings extends Instance {
 	 * The value of this string should be full paths to each directory, separated only by semicolons (`;`)
 	 */
 	readonly AdditionalCoreIncludeDirs: string;
-	/** The maximum number of chats that can be shown in the chat history. Does not seem to work because the chat gui's code does not read from here. */
-	ChatHistory: number;
 	/** Describes a path to a .lua file that will be ran in place of the default StarterScript. */
 	readonly OverrideStarterScript: string;
-	/** Sets how many of the latest chat messages should be included in an abuse report request. */
-	ReportAbuseChatHistory: number;
 	/** Toggles whether or not video capture is enabled. */
 	VideoCaptureEnabled: boolean;
-	/** Sets the quality level of Roblox's built-in video capture. */
-	VideoQuality: Enum.VideoQualitySettings;
 	/** [NO DOCUMENTATION] *
 	 * Tags: NotReplicated
 	 */
@@ -634,18 +628,6 @@ interface KeyframeSequenceProvider extends Instance {
 interface LuaSettings extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "LuaSettings";
-	/** Toggles whether or not script starts are logged in the output.
-	 * 
-	 * If set to true, the output will print blue text indicating what scripts are running, and their origin point in the DataModel.
-	 */
-	AreScriptStartsReported: boolean;
-	/** How long a call to `wait()` with no arguments will yield. */
-	DefaultWaitTime: number;
-	/** Sets the maximum percent of Roblox's duty cycle that can be used to resume waiting Lua threads.
-	 * 
-	 * This defaults to 0.1 (or 10%)
-	 */
-	WaitingThreadsBudget: number;
 }
 
 interface Script extends BaseScript {
@@ -789,57 +771,8 @@ interface NetworkSettings extends Instance {
 	readonly HttpProxyEnabled: boolean;
 	/** [NO DOCUMENTATION] */
 	readonly HttpProxyURL: string;
-	/** IncommingReplicationLag is a property that allows you to simulate high-latency situations. It adds a delay time between when packets are actually sent and received. The property is measured in seconds, and defaults to 0. */
-	IncommingReplicationLag: number;
-	/** PrintFilters is a diagnostics property that allows developers to see what changes are being filtered while [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled) is set to true. It's important to note that this property will only work while in a local server.
-	 * 
-	 * When set to true, there are several conditions where warnings will be printed into the output, as listed below:
-	 * 
-	 * ----------
-	 * 
-	 * Instance Replication
-	 * 
-	 * If the client creates an instance and parents it into another instance that is visible to the server, the following warning is printed:
-	 * 
-	 * "**Filtering is enabled. New Instance `{1}` will not be replicated.**"
-	 * 
-	 * •  `{1}` — The hierarchical location of the hew instance in the `DataModel`.
-	 * 
-	 * ----------
-	 * 
-	 * Property Replication
-	 * 
-	 * If the client changes the property of an instance that is visible to the server, the following warning is printed:
-	 * 
-	 * "**Filtering is enabled. Property `{1}` change for instance `{2}` will not be replicated.**"
-	 * 
-	 * • `{1}` — The name of the property.
-	 * 
-	 * • `{2}` — The hierarchical location of the instance in the `DataModel`.
-	 * 
-	 * ----------
-	 * 
-	 * Event Replication
-	 * 
-	 * If an instance's event is fired by the client and it's normally able to replicate to the server, the following warning is printed:
-	 * 
-	 * "**Filtering is enabled. Event `{1}` for instance `{2}` will not be replicated.**"
-	 * 
-	 * • `{1}` — The name of the event.
-	 * 
-	 * • `{2}` — The hierarchical location of the instance in the `DataModel`.
-	 * 
-	 * ----------
-	 * 
-	 * Terrain Voxel Replication
-	 * 
-	 * If the client changes a `Terrain` cell, the following warning is printed:
-	 * 
-	 * "**Filtering is enabled, terrain cell change will not be replicated.**"
-	 * 
-	 * ----------
-	 */
-	PrintFilters: boolean;
+	/** [NO DOCUMENTATION] */
+	IncomingReplicationLag: number;
 	/** [NO DOCUMENTATION] */
 	PrintJoinSizeBreakdown: boolean;
 	/** When set to true, debug messages will be printed into the output, pertaining to physics replication errors. There are several debug outputs that are made available when this property is set to true, as listed below.
@@ -924,81 +857,6 @@ interface NetworkSettings extends Instance {
 	 * ---
 	 */
 	PrintStreamInstanceQuota: boolean;
-	/** When set to true, a debug message will be printed to the output, when a physics `Touched` event is replicated. This includes the [BasePart.Touched](https://developer.roblox.com/api-reference/event/BasePart/Touched) event, and the [BasePart.TouchEnded](https://developer.roblox.com/api-reference/event/BasePart/TouchEnded) event.
-	 * 
-	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox’s network code is always changing behind the scenes.
-	 * 
-	 * ---
-	 * 
-	 * Sending 'Contact Start'
-	 * 
-	 * When the replicator is sending that contact between two parts has started, the following debug message will be printed:
-	 * 
-	 * `Replication: Touch:{1}-&gt;{2} &gt;&gt; {3}, bytes: {4}`
-	 * 
-	 * **The numbers in curly braces are substituted, and can be described as:**
-	 * 
-	 * • `{1}` – The name of the 1st part.
-	 * 
-	 * • `{2}` – The name of the 2nd part.
-	 * 
-	 * • `{3}` – The IP of the peer sending the change.
-	 * 
-	 * • `{4}` – The number of bytes that were sent to send the change.
-	 * 
-	 * ---
-	 * 
-	 * Sending 'Contact End'
-	 * 
-	 * When the replicator is sending that contact between two parts has ended, the following debug message will be printed:
-	 * 
-	 * `Replication: Untouch:{1}-&gt;{2} &gt;&gt; {3}, bytes: {4}`
-	 * 
-	 * **The numbers in curly braces are substituted, and can be described as:**
-	 * 
-	 * • `{1}` – The name of the 1st part.
-	 * 
-	 * • `{2}` – The name of the 2nd part.
-	 * 
-	 * • `{3}` – The IP of the peer sending the change.
-	 * 
-	 * • `{4}` – The number of bytes that were sent to send the change.
-	 * 
-	 * ---
-	 * 
-	 * Receiving 'Contact Start'
-	 * 
-	 * When the replicator is receiving that contact between two parts has started, the following debug message will be printed:
-	 * 
-	 * `Replication: Touch:{1}-&gt;{2} &lt;&lt; {3}`
-	 * 
-	 * **The numbers in curly braces are substituted, and can be described as:**
-	 * 
-	 * • `{1}` – The name of the 1st part.
-	 * 
-	 * • `{2}` – The name of the 2nd part.
-	 * 
-	 * • `{3}` – The IP of the peer receiving the change.
-	 * 
-	 * ---
-	 * 
-	 * Receiving 'Contact End'
-	 * 
-	 * When the replicator is receiving that contact between two parts has ended, the following debug message will be printed:
-	 * 
-	 * `Replication: Untouch:{1}-&gt;{2} &lt;&lt; {3}`
-	 * 
-	 * **The numbers in curly braces are substituted, and can be described as:**
-	 * 
-	 * • `{1}` – The name of the 1st part.
-	 * 
-	 * • `{2}` – The name of the 2nd part.
-	 * 
-	 * • `{3}` – The IP of the peer receiving the change.
-	 * 
-	 * ---
-	 */
-	PrintTouches: boolean;
 	/** ![RenderStreamedRegions in action!][1]
 	 * 
 	 * When set to true, regions of space that are being streamed to the client will be outlined in red.
@@ -2049,7 +1907,7 @@ interface ScriptDebugger extends Instance {
 	/** Sets the specified line of the script as a breakpoint. Returns a `DebuggerBreakpoint` that you can use to manage the breakpoint. */
 	SetBreakpoint(this: ScriptDebugger, line: number, isContextDependentBreakpoint: boolean): Instance | undefined;
 	/** Sets the value of the variable _name_ as _value_ in the script's main stack. */
-	SetGlobal(this: ScriptDebugger, name: string, value?: any): void;
+	SetGlobal(this: ScriptDebugger, name: string, value?: any, stackFrame?: number): void;
 	/** Sets the value of the variable _name_ as _value_ in the stack specified. */
 	SetLocal(this: ScriptDebugger, name: string, value?: any, stackFrame?: number): void;
 	/** Sets the value of the upvalue _name_ as _value_ in the stack specified. */
