@@ -11143,6 +11143,11 @@ interface MarketplaceService extends Instance {
 		assetId: number,
 		infoType: CastsToEnum<Enum.InfoType.GamePass>,
 	): AssetProductInfo;
+	GetProductInfo(
+		this: MarketplaceService,
+		assetId: number,
+		infoType: CastsToEnum<Enum.InfoType>,
+	): AssetProductInfo | DeveloperProductInfo;
 	IsPlayerSubscribed(this: MarketplaceService, player: Player, subscriptionId: number): boolean;
 	/** Returns whether the inventory of given `Player` contains an asset, given the ID. This method can query for hats, models, sounds, etc. This function takes a small amount of time to send a request the Roblox website.
 	 * 
