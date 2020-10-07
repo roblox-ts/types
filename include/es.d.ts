@@ -576,13 +576,6 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	 * Searches recursively.
 	 */
 	deepEquals(this: ReadonlyArray<defined>, other: ReadonlyArray<defined>): boolean;
-
-	/**
-	 * The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
-	 * @param depth The depth level specifying how deep a nested array structure should be flattened. Defaults to 1.
-	 * @returns A new array with the sub-array elements concatenated into it.
-	 */
-	// flat(this: ReadonlyArray<T>, depth?: number): Array<T>;
 }
 
 /**
