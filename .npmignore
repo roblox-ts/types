@@ -11,3 +11,4 @@ include/test.ts
 .prettierignore
 tslint.json
 include/customDefinitions.d.ts
+include/.eslintrc
