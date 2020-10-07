@@ -412,6 +412,11 @@ interface MarketplaceService extends Instance {
 		assetId: number,
 		infoType: CastsToEnum<Enum.InfoType.GamePass>,
 	): AssetProductInfo;
+	GetProductInfo(
+		this: MarketplaceService,
+		assetId: number,
+		infoType: CastsToEnum<Enum.InfoType>,
+	): AssetProductInfo | DeveloperProductInfo;
 	PromptProductPurchase(
 		this: MarketplaceService,
 		player: Player,
