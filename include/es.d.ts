@@ -382,6 +382,24 @@ interface ReadonlyArray<T> extends ArrayLike<T>, Iterable<T> {
 	join(this: ReadonlyArray<defined>, separator?: string): string;
 
 	/**
+	 * Moves elements to array a2. Returns the destination table a2.
+	 * @param f The beginning of the specified portion of a1.
+	 * @param e The end of the specified portion of a1.
+	 * @param t The beginning of the specified portion of a2.
+	 * @param a2 The target array.
+	 */
+	move(this: ReadonlyArray<defined>, f: number, e: number, t: number, a2: Array<T>): Array<T>;
+
+	/**
+	 * Moves elements to array a2. Returns the destination table a2. The destination range can overlap with the source range.
+	 * @param f The beginning of the specified portion of a1.
+	 * @param e The end of the specified portion of a1.
+	 * @param t The beginning of the specified portion of a2.
+	 * @param a2 The target array, or the current array if unspecified.
+	 */
+	move(this: Array<defined>, f: number, e: number, t: number, a2?: Array<T>): Array<T>;
+
+	/**
 	 * Shallow copies a section of this array selected from `begin` to `end` (`end` not included) where `begin` and `end` represent the index of items in that array.
 	 * @param start The beginning of the specified portion of the array.
 	 * @param end The end of the specified portion of the array.
