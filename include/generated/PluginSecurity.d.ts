@@ -2272,6 +2272,7 @@ interface Studio extends Instance {
 	["Always Save Script Changes"]: boolean;
 	/** If set to true, the hover selection box that is shown when mousing over selectable objects in the `Workspace` will flash between [Studio.Hover Over Color](https://developer.roblox.com/api-reference/property/Studio/Hover) and [Studio.Select Color](https://developer.roblox.com/api-reference/property/Studio/Select) based on the [Studio.Hover Animate Speed](https://developer.roblox.com/api-reference/property/Studio/Hover). */
 	["Animate Hover Over"]: boolean;
+	["Auto Clean Empty Line"]: boolean;
 	["Auto Closing Brackets"]: boolean;
 	["Auto Closing Quotes"]: boolean;
 	["Auto Indent Rule"]: Enum.AutoIndentRule;
@@ -2464,15 +2465,15 @@ interface StudioData extends Instance {
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden
 	 */
-	EnableScriptCollabByDefaultOnLoad: boolean;
+	readonly EnableScriptCollabByDefaultOnLoad: boolean;
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden
 	 */
-	EnableScriptCollabOnLoad: boolean;
+	readonly EnableScriptCollabOnLoad: boolean;
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden
 	 */
-	EnableScriptCollabVersionHistoryOnLoad: boolean;
+	readonly EnableScriptCollabVersionHistoryOnLoad: boolean;
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden, NotReplicated
 	 */
@@ -2640,6 +2641,8 @@ interface StudioService extends Instance {
 	readonly OnPublishPlaceToRoblox: RBXScriptSignal<(isOverwritePublish: boolean) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly OnSaveToRoblox: RBXScriptSignal<(instances: Array<Instance>) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly PromptTransformPluginCheckEnable: RBXScriptSignal<() => void>;
 }
 
 interface StudioTheme extends Instance {

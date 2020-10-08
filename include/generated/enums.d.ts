@@ -1065,6 +1065,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AvatarContextMenuOption>
 	}
 	export type AvatarContextMenuOption = AvatarContextMenuOption.Friend | AvatarContextMenuOption.Chat | AvatarContextMenuOption.Emote | AvatarContextMenuOption.InspectMenu;
+	export namespace AvatarItemType {
+		export interface Asset {
+			Name: "Asset";
+			Value: 1;
+			EnumType: EnumType<AvatarItemType>;
+		}
+
+		export const Asset: Asset;
+
+		export interface Bundle {
+			Name: "Bundle";
+			Value: 2;
+			EnumType: EnumType<AvatarItemType>;
+		}
+
+		export const Bundle: Bundle;
+
+		export function GetEnumItems(this: defined): Array<AvatarItemType>
+	}
+	export type AvatarItemType = AvatarItemType.Asset | AvatarItemType.Bundle;
 	export namespace AvatarJointPositionType {
 		export interface Fixed {
 			Name: "Fixed";
@@ -1433,6 +1453,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<BulkMoveMode>
 	}
 	export type BulkMoveMode = BulkMoveMode.FireAllEvents | BulkMoveMode.FireCFrameChanged;
+	export namespace BundleType {
+		export interface BodyParts {
+			Name: "BodyParts";
+			Value: 1;
+			EnumType: EnumType<BundleType>;
+		}
+
+		export const BodyParts: BodyParts;
+
+		export interface Animations {
+			Name: "Animations";
+			Value: 2;
+			EnumType: EnumType<BundleType>;
+		}
+
+		export const Animations: Animations;
+
+		export function GetEnumItems(this: defined): Array<BundleType>
+	}
+	export type BundleType = BundleType.BodyParts | BundleType.Animations;
 	export namespace Button {
 		export interface Jump {
 			Name: "Jump";
@@ -1613,6 +1653,94 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<CameraType>
 	}
 	export type CameraType = CameraType.Fixed | CameraType.Watch | CameraType.Attach | CameraType.Track | CameraType.Follow | CameraType.Custom | CameraType.Scriptable | CameraType.Orbital;
+	export namespace CatalogCategoryFilter {
+		export interface None {
+			Name: "None";
+			Value: 1;
+			EnumType: EnumType<CatalogCategoryFilter>;
+		}
+
+		export const None: None;
+
+		export interface Featured {
+			Name: "Featured";
+			Value: 2;
+			EnumType: EnumType<CatalogCategoryFilter>;
+		}
+
+		export const Featured: Featured;
+
+		export interface Collectibles {
+			Name: "Collectibles";
+			Value: 3;
+			EnumType: EnumType<CatalogCategoryFilter>;
+		}
+
+		export const Collectibles: Collectibles;
+
+		export interface CommunityCreations {
+			Name: "CommunityCreations";
+			Value: 4;
+			EnumType: EnumType<CatalogCategoryFilter>;
+		}
+
+		export const CommunityCreations: CommunityCreations;
+
+		export interface Premium {
+			Name: "Premium";
+			Value: 5;
+			EnumType: EnumType<CatalogCategoryFilter>;
+		}
+
+		export const Premium: Premium;
+
+		export function GetEnumItems(this: defined): Array<CatalogCategoryFilter>
+	}
+	export type CatalogCategoryFilter = CatalogCategoryFilter.None | CatalogCategoryFilter.Featured | CatalogCategoryFilter.Collectibles | CatalogCategoryFilter.CommunityCreations | CatalogCategoryFilter.Premium;
+	export namespace CatalogSortType {
+		export interface Relevance {
+			Name: "Relevance";
+			Value: 1;
+			EnumType: EnumType<CatalogSortType>;
+		}
+
+		export const Relevance: Relevance;
+
+		export interface PriceHighToLow {
+			Name: "PriceHighToLow";
+			Value: 2;
+			EnumType: EnumType<CatalogSortType>;
+		}
+
+		export const PriceHighToLow: PriceHighToLow;
+
+		export interface PriceLowToHigh {
+			Name: "PriceLowToHigh";
+			Value: 3;
+			EnumType: EnumType<CatalogSortType>;
+		}
+
+		export const PriceLowToHigh: PriceLowToHigh;
+
+		export interface RecentlyUpdated {
+			Name: "RecentlyUpdated";
+			Value: 4;
+			EnumType: EnumType<CatalogSortType>;
+		}
+
+		export const RecentlyUpdated: RecentlyUpdated;
+
+		export interface MostFavorited {
+			Name: "MostFavorited";
+			Value: 5;
+			EnumType: EnumType<CatalogSortType>;
+		}
+
+		export const MostFavorited: MostFavorited;
+
+		export function GetEnumItems(this: defined): Array<CatalogSortType>
+	}
+	export type CatalogSortType = CatalogSortType.Relevance | CatalogSortType.PriceHighToLow | CatalogSortType.PriceLowToHigh | CatalogSortType.RecentlyUpdated | CatalogSortType.MostFavorited;
 	export namespace CellBlock {
 		export interface Solid {
 			Name: "Solid";
@@ -5473,26 +5601,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<InterpolationThrottlingMode>
 	}
 	export type InterpolationThrottlingMode = InterpolationThrottlingMode.Default | InterpolationThrottlingMode.Disabled | InterpolationThrottlingMode.Enabled;
-	export namespace ItemType {
-		export interface Asset {
-			Name: "Asset";
-			Value: 0;
-			EnumType: EnumType<ItemType>;
-		}
-
-		export const Asset: Asset;
-
-		export interface Bundle {
-			Name: "Bundle";
-			Value: 1;
-			EnumType: EnumType<ItemType>;
-		}
-
-		export const Bundle: Bundle;
-
-		export function GetEnumItems(this: defined): Array<ItemType>
-	}
-	export type ItemType = ItemType.Asset | ItemType.Bundle;
 	export namespace JointCreationMode {
 		export interface All {
 			Name: "All";
