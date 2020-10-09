@@ -1,10 +1,8 @@
 /// <reference no-default-lib="true"/>
-/// <reference path="es.d.ts" />
 /// <reference path="generated/None.d.ts" />
+/// <reference types="@rbxts/compiler-types" />
 
 // LUA API
-
-type LuaTuple<T extends Array<any>> = T & { readonly LUA_TUPLE: never };
 
 /** A table that is shared between all scripts of the same context level. */
 interface _G {}

@@ -1,9 +1,9 @@
 /// <reference no-default-lib="true"/>
-/// <reference path="es.d.ts" />
 /// <reference path="lua.d.ts" />
 /// <reference path="macro_math.d.ts" />
 /// <reference path="generated/enums.d.ts" />
 /// <reference path="generated/None.d.ts" />
+/// <reference types="@rbxts/compiler-types" />
 
 // ROBLOX API
 /**
@@ -628,7 +628,7 @@ interface RBXScriptSignal<T extends Callback = Callback> {
 	Wait(this: RBXScriptSignal): LuaTuple<FunctionArguments<T>>;
 }
 
-// generated in generated_classes.d.ts
+// generated in generated/None.d.ts
 interface Instances {}
 interface CreatableInstances {}
 
