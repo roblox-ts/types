@@ -1,1 +1,0 @@
-If the FilePath argument is provided, the place is saved in the given location, otherwise it opens the "Export Place" window. (*.OBJ)

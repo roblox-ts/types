@@ -1,1 +1,0 @@
-Sets how many of the latest chat messages should be included in an abuse report request.

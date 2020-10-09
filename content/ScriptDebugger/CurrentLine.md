@@ -1,1 +1,0 @@
-The current line that the script is on.

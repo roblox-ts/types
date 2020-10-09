@@ -1,5 +1,0 @@
-A ObjectValue is an object whose purpose is to store a single reference to another object. If this object is duplicated within studio and the value refers to an object also being copied, then the new ObjectValue will point to the copied object instead of the original. Otherwise, the same value is kept. Copying and pasting this object will clear the value field.
-
-The value of this can be set within studio like other reference-type fields (such as [Modle.PrimaryPart](https://developer.roblox.com/search#stq=PrimaryPart)): click the field within the Properties window, then click the object you wish to set it to within the game view or Explorer window. You can clear the field (set it to `nil`) by clicking the X that appears when you click the field.
-
-Like all "-Value" objects, this single value is stored in the Value property. The Changed event for this (and other objects like it) will fire with the new value being stored in the object, instead of a string representing the property being changed.

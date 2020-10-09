@@ -1,1 +1,0 @@
-Sets a specific amount of additional latency experienced by players during the test session.

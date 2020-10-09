@@ -1,1 +1,0 @@
-The speed that the textures flow along the wire.

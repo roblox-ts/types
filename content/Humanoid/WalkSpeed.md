@@ -1,3 +1,0 @@
-WalkSpeed is a property that describes how quickly this Humanoid is able to walk, in studs per second. This property defaults to 16, so a Roblox character can move 16 studs in any direction each second by default.
-
-When controlled on a mobile device or a gamepad, a humanoid can walk slower than their WalkSpeed if the controlling joystick is moved closer to its center. Roblox's default animation script scales a humanoid's movement animations based on how fast it is moving relative to the default speed of 16 studs/sec.

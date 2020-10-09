@@ -1,1 +1,0 @@
-Sets the color of a GUI object.

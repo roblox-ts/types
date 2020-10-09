@@ -1,1 +1,0 @@
-The TargetOffset property determines the world offset from the [Target](https://developer.roblox.com/api-reference/property/RocketPropulsion/Target). Basically, it makes the `RocketPropulsion` behave as if the target were really offset by this property. It is especially useful when Target is set to nil, since this property then acts as the target position.

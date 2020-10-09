@@ -1,3 +1,0 @@
-Fires when the `Sound` is stopped due to the [Sound.Stop](https://developer.roblox.com/api-reference/function/Sound/Stop) function.
-
-As with [Sound.Played](https://developer.roblox.com/api-reference/event/Sound/Played), [Sound.Paused](https://developer.roblox.com/api-reference/event/Sound/Paused) and [Sound.Resumed](https://developer.roblox.com/api-reference/event/Sound/Resumed) only the respective sound function will cause the event to fire. This means that Stopped will only fire when [Sound.Stop](https://developer.roblox.com/api-reference/function/Sound/Stop) is called. Destroying a sound whilst it is playing will not cause this event to fire.

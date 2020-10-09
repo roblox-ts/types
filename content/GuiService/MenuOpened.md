@@ -1,1 +1,0 @@
-Fires when the user **opens** the Roblox coregui escape menu.

@@ -1,1 +1,0 @@
-Specifies the default prompt directory that will be opened when the user activates the _Execute Script_ button in Roblox Studio.

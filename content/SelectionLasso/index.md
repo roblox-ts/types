@@ -1,1 +1,0 @@
-The SelectionLasso class is an abstract class of which the inheritors are able to be attached to an object of the `Humanoid` class or the `BasePart` class. They can also be attached to a point in the tridimensional space indicated by a Vector3 value.

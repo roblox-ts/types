@@ -1,1 +1,0 @@
-Returns a list of `DebuggerBreakpoint` present in the script.

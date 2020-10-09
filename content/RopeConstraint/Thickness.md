@@ -1,1 +1,0 @@
-The visualized thickness of the RopeConstraint.

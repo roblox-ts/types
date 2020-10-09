@@ -1,1 +1,0 @@
-Fired when a mouse "enters" the GUI handle.

@@ -1,1 +1,0 @@
-A service that is internally responsible for fetching, parsing, and caching meshes.

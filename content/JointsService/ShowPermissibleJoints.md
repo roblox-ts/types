@@ -1,1 +1,0 @@
-When used it will visibly display a potential surface connection between the two `BasePart`, which were set with [JointsService.SetJoinAfterMoveTarget](https://developer.roblox.com/api-reference/function/JointsService/SetJoinAfterMoveTarget) and [JointsService.SetJoinAfterMoveInstance](https://developer.roblox.com/api-reference/function/JointsService/SetJoinAfterMoveInstance).

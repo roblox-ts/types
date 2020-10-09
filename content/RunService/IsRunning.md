@@ -1,1 +1,0 @@
-This method returns true if the game is not paused or stopped. In all other cases it returns false. This only changes within Roblox Studio.

@@ -1,1 +1,0 @@
-The language that the source material of this LocalizationTable was based on, as a locale-id.

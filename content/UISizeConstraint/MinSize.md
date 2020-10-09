@@ -1,1 +1,0 @@
-The smallest size in pixels the object is allowed to be. The X and Y of this value must be less than or equal to the corresponding components of [UISizeConstraint.MaxSize](https://developer.roblox.com/api-reference/property/UISizeConstraint/MaxSize).

@@ -1,1 +1,0 @@
-Fired when the left mouse button goes down on one of the GUI handles.

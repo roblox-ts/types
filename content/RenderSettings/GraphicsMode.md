@@ -1,1 +1,0 @@
-The graphics API that Roblox will use on startup.

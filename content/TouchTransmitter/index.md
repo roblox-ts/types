@@ -1,7 +1,0 @@
-An internal object used by networking and replication code to transmit [BasePart.Touched](https://developer.roblox.com/api-reference/event/BasePart/Touched) and [BasePart.TouchEnded](https://developer.roblox.com/api-reference/event/BasePart/TouchEnded) events.
-
-The TouchTransmitter object named 'TouchInterest' is created and parented to a `BasePart` when the [BasePart.Touched](https://developer.roblox.com/api-reference/event/BasePart/Touched) or [BasePart.TouchEnded](https://developer.roblox.com/api-reference/event/BasePart/TouchEnded) events are listened (connected) to.
-
-Removing the TouchTransmitter will prevent the touched events from working. The TouchTransmitter object can also be removed exclusively on the client (when [Workspace.FilteringEnabled](https://developer.roblox.com/api-reference/property/Workspace/FilteringEnabled) is set to true). This will prevent collisions from models the client has network ownership of (such as the player's character) from registering.
-
-Note, in almost all circumstances developers should disconnect the connection using [RBXScriptConnection.Disconnect](https://developer.roblox.com/search#stq=Disconnect) method rather than removing the TouchTransmitter. Otherwise the connection will not be cleaned up which can cause performance issues over time.

@@ -1,1 +1,0 @@
-Returns a string displaying how many bytes are being sent/received by the replicator, and the current packet-loss. The verbosity level determines how much information is returned in the string (0 = Basic, 1 = Detailed, 2 = Full).

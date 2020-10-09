@@ -1,1 +1,0 @@
-Fired whenever the skateboard is unequipped.

@@ -1,1 +1,0 @@
-The color of the emitted light.

@@ -1,1 +1,0 @@
-Returns the world position of the center of the terrain cell (x, y, z).

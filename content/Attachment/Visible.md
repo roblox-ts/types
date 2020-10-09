@@ -1,1 +1,0 @@
-Toggles the visibility of the Attachment in-game.

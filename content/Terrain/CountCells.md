@@ -1,1 +1,0 @@
-Returns the number of non-empty cells in the Terrain.

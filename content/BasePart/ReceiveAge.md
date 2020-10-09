@@ -1,1 +1,0 @@
-This returns the time in seconds since the part's physics got last updated on the local client (or the server). Returns 0 when the part has no physics (Anchored)

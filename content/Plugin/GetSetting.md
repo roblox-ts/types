@@ -1,1 +1,0 @@
-Retrieves a previously stored value with the given key, or nil if the given key doesn't exist.

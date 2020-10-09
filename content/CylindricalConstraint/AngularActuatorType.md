@@ -1,1 +1,0 @@
-Type of angular actuator: None, Motor, or Servo.

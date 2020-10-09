@@ -1,1 +1,0 @@
-Fired when the skateboard is equipped.

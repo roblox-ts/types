@@ -1,1 +1,0 @@
-The Humanoid that the Lasso belongs to, and will come from.

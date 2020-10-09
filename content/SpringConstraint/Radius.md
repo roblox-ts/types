@@ -1,1 +1,0 @@
-The visualized radius of the spring's coils.

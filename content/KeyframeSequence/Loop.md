@@ -1,3 +1,0 @@
-Determines whether the animation created from the `KeyframeSequence` will be looped. When set to true the animation will continuously repeat each time the animation finishes.
-
-When an `AnimationTrack` has been created from an `Animation`, its [AnimationTrack.Looped](https://developer.roblox.com/api-reference/property/AnimationTrack/Looped) property will default to the original `KeyframeSequence` value. Note this value can be overwritten.

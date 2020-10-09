@@ -1,1 +1,0 @@
-An unimplemented service that has zero functionality, in a similar manner to the `LocalWorkspace` service.

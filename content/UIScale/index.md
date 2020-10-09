@@ -1,1 +1,0 @@
-A UIScale object simply contains a number that is used to multiply the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) of the parent UI element. This number is stored in [UIScale.Scale](https://developer.roblox.com/api-reference/property/UIScale/Scale).

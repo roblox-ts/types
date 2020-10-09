@@ -1,1 +1,0 @@
-Stops the running simulation.

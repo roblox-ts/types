@@ -1,1 +1,0 @@
-Stores a given value for later use under the given key. The value will persist even after studio is closed.

@@ -1,1 +1,0 @@
-The script object this debugger is linked to.

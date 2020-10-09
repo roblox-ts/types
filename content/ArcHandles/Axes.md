@@ -1,1 +1,0 @@
-Sets the current Axes ArcHandles will show.

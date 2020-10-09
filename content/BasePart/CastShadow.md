@@ -1,1 +1,0 @@
-Determines whether this Part casts a shadow.

@@ -1,1 +1,0 @@
-The image to draw for the adornment.

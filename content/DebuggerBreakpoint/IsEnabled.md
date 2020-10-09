@@ -1,1 +1,0 @@
-Whether or not the breakpoint is enabled.

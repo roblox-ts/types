@@ -1,1 +1,0 @@
-This property controls the message that will be displayed when the player's mouse is hovering over the tool in their backpack.

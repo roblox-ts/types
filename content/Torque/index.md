@@ -1,1 +1,0 @@
-A Torque, as it's name suggests, is used to apply a rotational force to a part or assembly. When active, this object will find the center of mass of the part or assembly connected to its Attachment0 and will apply a torque, spinning the part or parts.

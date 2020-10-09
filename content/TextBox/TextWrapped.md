@@ -1,5 +1,0 @@
-When enabled, this property will render text on multiple lines within a [GUI](https://developer.roblox.com/api-reference/class/TextBox) element's space so that [TextBox.TextBounds](https://developer.roblox.com/api-reference/property/TextBox/TextBounds) will never exceed the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) of the GUI element.
-
-This is achieved by breaking long lines of text into multiple lines. Line breaks will prefer whitespace; should a long unbroken word exceed the width of the element, that word will be broken into multiple lines.
-
-If further line breaks would cause the vertical height of the text (the Y component of [TextBox.TextBounds](https://developer.roblox.com/api-reference/property/TextBox/TextBounds)) to exceed the vertical height of the element (the Y component of [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize)), then that line will not be rendered at all.

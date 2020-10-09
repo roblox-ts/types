@@ -1,1 +1,0 @@
-Sets the target of the lasso object.

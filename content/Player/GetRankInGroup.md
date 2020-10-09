@@ -1,1 +1,0 @@
-Returns the player's rank in the group as an integer between 0 and 255, where 0 is a non-member and 255 is the group's owner.

@@ -1,1 +1,0 @@
-Returns the mouse being used by the client.

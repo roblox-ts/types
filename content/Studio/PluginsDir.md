@@ -1,1 +1,0 @@
-The directory where local plugins are stored.

@@ -1,1 +1,0 @@
-The BasePlayerGui is an abstract class that all GUI drawing storage classes inherit from.

@@ -1,1 +1,0 @@
-The expression set for the DebuggerWatch.

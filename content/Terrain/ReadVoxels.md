@@ -1,1 +1,0 @@
-Returns a certain region of [smooth terrain](https://developer.roblox.com/articles/Intro-To-Terrain) in [table format](https://developer.roblox.com/articles/Intro-To-Terrain#Reading_and_writing_voxels) . Both of the return arrays have an additional `.Size` property, a [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3).

@@ -1,1 +1,0 @@
-The positional offset of a Tool weld matrix.

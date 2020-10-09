@@ -1,1 +1,0 @@
-Sets the texture to be displayed on the FloorWire.

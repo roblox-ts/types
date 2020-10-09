@@ -1,1 +1,0 @@
-GuiBase2d is an abstract class inherited by 2D GUI Objects.

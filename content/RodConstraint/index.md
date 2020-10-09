@@ -1,3 +1,0 @@
-A RodConstraint constrains two `Attachment` to remain separated by the value specified by [RodConstraint.Length](https://developer.roblox.com/api-reference/property/RodConstraint/Length). While the attachments remain at a set distance from one another they can both rotate freely.
-
-![RodConstraint.gif](https://images.contentstack.io/v3/assets/bltc2ad39afa86662c8/blt248d6584b75f2c1a/5b2db585ca8406e05d89fa34/RodConstraint.gif)

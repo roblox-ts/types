@@ -1,3 +1,0 @@
-An ImageButton behaves similarly to an `ImageLabel` in regards to rendering with the additional behaviors of a `GuiButton`. It defines the same image-rendering properties as a `ImageLabel` does.
-
-You can disable image rendering by setting [ImageButton.ImageTransparency](https://developer.roblox.com/api-reference/property/ImageButton/ImageTransparency) to 1. This will leave you with a plain rectangle that can be used as a button. However, it may be better to use a blank `TextButton` for this.

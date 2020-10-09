@@ -1,1 +1,0 @@
-Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject.

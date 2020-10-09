@@ -1,2 +1,0 @@
-Send an HTTP POST request, blocking the current thread until a response is received. Certain HTTP response codes (like 404 or 403) will raise errors.  A useful endpoint that can help you debug POST requests is https://httpbin.org/post. It provides a JSON response with information about a POST request, such as headers and URL arguments.
-@rbxts server

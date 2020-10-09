@@ -1,1 +1,0 @@
-If set to true, then the AlignOrientation will only apply torque if the primary axis of its Attachment0 becomes unaligned with Attachment1. This means that any rotation about the Attachment0’s primary axis will not create a torque.

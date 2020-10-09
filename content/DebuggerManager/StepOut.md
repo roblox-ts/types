@@ -1,1 +1,0 @@
-Performs a [step out](https://developer.roblox.com/articles/Lua-debugger) operation on the Lua Debugger.

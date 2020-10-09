@@ -1,1 +1,0 @@
-The maximum speed that can be attained.

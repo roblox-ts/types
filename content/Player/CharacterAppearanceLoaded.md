@@ -1,5 +1,0 @@
-This event fires when the the full appearance of a `Player`'s [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character) has been inserted.
-
-[Player.Character](https://developer.roblox.com/api-reference/property/Player/Character)'s generally have a range of objects modifying their appearance including [Accoutrements](https://developer.roblox.com/api-reference/class/Accoutrement), [Shirts](https://developer.roblox.com/api-reference/class/Shirt), `Pants` and [CharacterMeshes](https://developer.roblox.com/api-reference/class/CharacterMesh). This event will fire when all such objects have been inserted into the [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character).
-
-One use for this event, is to remove and save aspects of a [Characters](https://developer.roblox.com/api-reference/property/Player/Character) appearance to be used later. See below for an example of this.

@@ -1,1 +1,0 @@
-GuiBase is an abstract class which most graphical user interface objects inherit from.

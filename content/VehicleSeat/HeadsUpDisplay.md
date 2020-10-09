@@ -1,1 +1,0 @@
-If true, a fancy speed bar will be displayed speed on screen that tells you what speed the Vehicle is moving at.

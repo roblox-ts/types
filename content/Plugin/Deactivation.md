@@ -1,1 +1,0 @@
-Fired when the plugin is deactivated. This occurs when either the plugin code calls [Plugin.Deactivate](https://developer.roblox.com/api-reference/function/Plugin/Deactivate), or because some other plugin called [Plugin.Activate](https://developer.roblox.com/api-reference/function/Plugin/Activate), which forces all other plugins to lose their active state.

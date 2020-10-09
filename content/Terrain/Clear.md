@@ -1,1 +1,0 @@
-Clears the terrain.

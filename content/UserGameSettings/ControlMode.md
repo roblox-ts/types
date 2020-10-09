@@ -1,1 +1,0 @@
-Toggles whether or not the client can use the Mouse Lock Switch mode.

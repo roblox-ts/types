@@ -1,1 +1,0 @@
-Returns the StatsItem's value as a formatted string.

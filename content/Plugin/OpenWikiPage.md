@@ -1,1 +1,0 @@
-Opens the context help window to the wiki page that `url` links to.

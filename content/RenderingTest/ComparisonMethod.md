@@ -1,1 +1,0 @@
-The comparison method that is expected to be used when this RenderingTest's image capture is compared to its original image.

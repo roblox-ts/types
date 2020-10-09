@@ -1,1 +1,0 @@
-Fired when the tool is equipped.

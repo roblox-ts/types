@@ -1,1 +1,0 @@
-Sets a new waypoint which can be used as an undo or redo point.

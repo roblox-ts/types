@@ -1,1 +1,0 @@
-If the FilePath argument is provided, the selected instance is exported as an OBJ in the given location, otherwise it opens the "Export Place" window.

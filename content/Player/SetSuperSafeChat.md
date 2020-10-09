@@ -1,1 +1,0 @@
-Sets whether or not the player sees [filtered chats](https://wiki.roblox.com/index.php?title=FilterStringForPlayerAsync), rather than normal chats.

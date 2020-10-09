@@ -1,1 +1,0 @@
-Returns the job time peak fraction of the specified task scheduler job.

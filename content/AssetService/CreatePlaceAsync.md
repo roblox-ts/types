@@ -1,1 +1,0 @@
-Clones a place with placeId equal to given templatePlaceId. It is placed into the inventory of the place's creator with the given name and description. This method will also return the placeId of the new place, which can be used with TeleportService. This method cannot be used to clone places that you do not own.

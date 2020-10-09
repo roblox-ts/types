@@ -1,1 +1,0 @@
-The part of the Character's body that is affected.

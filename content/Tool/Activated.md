@@ -1,1 +1,0 @@
-Fired when the player clicks while a tool is equipped.

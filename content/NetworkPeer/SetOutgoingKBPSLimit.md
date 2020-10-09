@@ -1,1 +1,0 @@
-Sets the maximum outgoing bandwidth that Roblox can use.

@@ -1,1 +1,0 @@
-Determines whether the BillboardGui will always be rendered on top of other objects.

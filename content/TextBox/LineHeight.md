@@ -1,1 +1,0 @@
-Scales the spacing between lines of text in the TextBox.

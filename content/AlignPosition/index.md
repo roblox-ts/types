@@ -1,1 +1,0 @@
-An AlignPosition is used to apply a force towards a location. Like other constraints, AlignPositions have two Attachments. In this case the attachments are constrained to be in the same position, although not necessarily in the same orientation. By default, this constraint only applies forces on Attachment0, although it can be configured to apply forces on both attachments.

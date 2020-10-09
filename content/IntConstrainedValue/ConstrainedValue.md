@@ -1,5 +1,0 @@
-Hold a `Integer` value between [IntConstrainedValue.MinValue](https://developer.roblox.com/api-reference/property/IntConstrainedValue/MinValue) and [IntConstrainedValue.MaxValue](https://developer.roblox.com/api-reference/property/IntConstrainedValue/MaxValue). Replaced by [IntConstrainedValue.Value](https://developer.roblox.com/api-reference/property/IntConstrainedValue/Value), but still functional.
-	
-Hold a `Integer` value between [IntConstrainedValue.MinValue](https://developer.roblox.com/api-reference/property/IntConstrainedValue/MinValue) and [IntConstrainedValue.MaxValue](https://developer.roblox.com/api-reference/property/IntConstrainedValue/MaxValue). Replaced by [IntConstrainedValue.Value](https://developer.roblox.com/api-reference/property/IntConstrainedValue/Value), but still functional.
-
-Tags: Hidden, NotReplicated

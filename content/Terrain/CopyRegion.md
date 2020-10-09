@@ -1,1 +1,0 @@
-Stores a chunk of terrain into a `TerrainRegion` object so it can be loaded back later.  Note: `TerrainRegion` data does not replicate between server and client.

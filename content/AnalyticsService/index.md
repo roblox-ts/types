@@ -1,1 +1,0 @@
-An internal service intended for handling analytics on Roblox.

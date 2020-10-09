@@ -1,1 +1,0 @@
-How elastic `Attachment` connected by a `HingeConstraint` will be when they reach the end of the range  when [HingeConstraint.LimitsEnabled](https://developer.roblox.com/api-reference/property/HingeConstraint/LimitsEnabled) is true. Constrained between 0 and 1.

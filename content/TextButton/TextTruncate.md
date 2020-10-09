@@ -1,1 +1,0 @@
-Controls the truncation of the text displayed in this TextButton.

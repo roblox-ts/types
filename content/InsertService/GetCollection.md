@@ -1,1 +1,0 @@
-Returns the most recently uploaded models in the specified category.

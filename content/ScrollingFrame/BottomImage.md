@@ -1,1 +1,0 @@
-The Down image on the vertical scrollbar. Size of this is always ScrollBarThickness by ScrollBarThickness. This is also used as the image on the horizontal scroll bar.

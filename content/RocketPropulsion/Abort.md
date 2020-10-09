@@ -1,1 +1,0 @@
-Causes the Rocket to stop moving towards its target, making it fall.

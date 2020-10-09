@@ -1,1 +1,0 @@
-When a bubble of the official bubblechat appears, this property determines after how much seconds it should disappear automaticly.

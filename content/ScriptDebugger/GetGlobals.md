@@ -1,1 +1,0 @@
-Returns a dictionary of all variables that are visible to the script's global stack, where the keys are the names of the variables, and the values are the actual values of the variables.

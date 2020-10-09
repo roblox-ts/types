@@ -1,1 +1,0 @@
-Whether or not a stacktrace is displayed in the output for an error.

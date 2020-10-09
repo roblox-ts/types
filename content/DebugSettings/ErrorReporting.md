@@ -1,1 +1,0 @@
-The action Roblox should take when reporting an error.

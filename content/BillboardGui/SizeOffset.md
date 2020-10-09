@@ -1,1 +1,0 @@
-Offsets the BillboardGui relative to it's AbsoluteSize.

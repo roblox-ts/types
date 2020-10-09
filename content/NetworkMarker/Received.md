@@ -1,1 +1,0 @@
-Fired when the server has finished replicating the world to the client.

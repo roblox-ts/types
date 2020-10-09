@@ -1,1 +1,0 @@
-Negates the given parts and returns the resulting NegateOperations.

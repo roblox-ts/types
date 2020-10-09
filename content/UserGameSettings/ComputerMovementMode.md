@@ -1,1 +1,0 @@
-The movement type in-use by the client via Computer input.

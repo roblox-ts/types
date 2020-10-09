@@ -1,1 +1,0 @@
-PrintBits is a diagnostics property that no longer appears to be in use. It would likely print information about bits being streamed between the server and client.

@@ -1,3 +1,0 @@
-For handles to be interactive, they must be parented to a player's PlayerGui or the CoreGui.
-
-The **LineHandleAdornment** is a line that can be adorned to a `BasePart`. This line starts at the center of the adornment’s [HandleAdornment.CFrame](https://developer.roblox.com/api-reference/property/HandleAdornment/CFrame) (offset by the adornment’s [HandleAdornment.SizeRelativeOffset](https://developer.roblox.com/api-reference/property/HandleAdornment/SizeRelativeOffset)) and will be oriented along its CFrame. This adornment can listen to input events and is commonly used to make dragger tools.

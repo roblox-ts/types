@@ -1,1 +1,0 @@
-Toggles whether or not profiling of the Fmod library (which is responsible for sounds) is enabled.

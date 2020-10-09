@@ -1,1 +1,0 @@
-Returns the camera's Y-invert value.

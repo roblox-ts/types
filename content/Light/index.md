@@ -1,1 +1,0 @@
-Light is a root class for dynamic lighting related objects.

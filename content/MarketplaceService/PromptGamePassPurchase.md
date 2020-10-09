@@ -1,1 +1,0 @@
-Used to prompt a user to purchase a game pass with the given assetId.

@@ -1,1 +1,0 @@
-Checks the syntax of the DebuggerWatch.

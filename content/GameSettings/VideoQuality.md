@@ -1,1 +1,0 @@
-Sets the quality level of Roblox's built-in video capture.

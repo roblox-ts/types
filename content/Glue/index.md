@@ -1,1 +1,0 @@
-Glue is a type of joint that can break when enough force is applied.

@@ -1,1 +1,0 @@
-Sets the color of the [Model.PrimaryPart](https://developer.roblox.com/api-reference/property/Model/PrimaryPart) selection box.

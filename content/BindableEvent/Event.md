@@ -1,1 +1,0 @@
-This event is fired when any script calls the Fire method of the BindableEvent.

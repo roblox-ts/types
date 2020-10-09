@@ -1,5 +1,0 @@
-This function will send a query to the Roblox website asking what the [Player.UserId](https://developer.roblox.com/api-reference/property/Player/UserId) is of the account with the given `Player` name. This function **does not cache**; it always sends a web request even if a username was already queried or if the player is already connected to the server (and thus has their UserId exposed).
-
-This method errors if no account exists with the given username. If you aren't certain such an account exists, it's recommended to wrap calls to this function with `pcall`. In addition, you can manually cache results to quickly make future calls with the same username. See the code samples to learn how to do this.
-@param userName The **username** of the player being specified
-@returns The `Player/UserId` of a user whose name is specified

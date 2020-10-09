@@ -1,1 +1,0 @@
-This function prompts the user to open a .fbx animation file that can be loaded onto the _rigModel_, then proceeds to insert the animation as a `KeyframeSequence` in the `Workspace`.

@@ -1,1 +1,0 @@
-A base class for UI constraint and layout classes, inherits from `UiBase`.

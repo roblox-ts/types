@@ -1,1 +1,0 @@
-ReflectionMetadataMember represents either a _Function_, _YieldFunction_, or _Property_ in Roblox's ReflectionMetadata.

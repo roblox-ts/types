@@ -1,1 +1,0 @@
-Returns whether the user enabled _Collisions_ in studio under the Model tab.

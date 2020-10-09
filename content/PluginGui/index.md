@@ -1,1 +1,0 @@
-PluginGui is an abstract class for GUIs that allow the display of [GuiObjects](https://developer.roblox.com/api-reference/class/GuiObject) in various Roblox Studio widgets. As of right now, the only available PluginGui type is `DockWidgetPluginGui`, but there may be more in the future!

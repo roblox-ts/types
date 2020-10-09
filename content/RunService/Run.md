@@ -1,1 +1,0 @@
-Creates a waypoint and then runs the game just like the Play button does in studio.

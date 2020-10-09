@@ -1,3 +1,0 @@
-When set to true, the tool will only fire [Tool.Activated](https://developer.roblox.com/api-reference/event/Tool/Activated) when [Tool.Activate](https://developer.roblox.com/api-reference/function/Tool/Activate) is called. This also suppresses the `ContextActionService`'s [ContextActionService.BindActivate](https://developer.roblox.com/api-reference/function/ContextActionService/BindActivate) function.
-
-When set to false, mouse clicks (when the tool is equipped) will also fire [Tool.Activated](https://developer.roblox.com/api-reference/event/Tool/Activated).

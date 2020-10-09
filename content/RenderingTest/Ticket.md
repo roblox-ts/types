@@ -1,1 +1,0 @@
-A label of the internal JIRA ticket this RenderingTest is associated with.

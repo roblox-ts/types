@@ -1,1 +1,0 @@
-Fired when an expression watch is removed from this script debugger.

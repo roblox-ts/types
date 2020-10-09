@@ -1,1 +1,0 @@
-The exact CFrame of the Accoutrement.

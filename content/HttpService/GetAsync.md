@@ -1,2 +1,0 @@
-Send an HTTP GET request, blocking the current thread until a response is received. If the HTTP response code is not in 200 class of status codes, this function raises an error. A useful endpoint that can help you debug GET request is https://httpbin.org/get. It provides a JSON response with information about a GET request, such as headers and URL arguments.
-@rbxts server

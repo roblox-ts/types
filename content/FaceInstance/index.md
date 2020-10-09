@@ -1,1 +1,0 @@
-The FaceInstance class is an abstract class from which the `Decal` class inherits.

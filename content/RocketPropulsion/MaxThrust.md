@@ -1,1 +1,0 @@
-The MaxThrust property determines the upper limit of the thrust that may be exerted to move the part. Parts or assemblies that have high [mass](https://developer.roblox.com/api-reference/function/BasePart/GetMass) will require more thrust in order to to remain airborne, and thus track the [Target](https://developer.roblox.com/api-reference/property/RocketPropulsion/Target).

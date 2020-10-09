@@ -1,3 +1,0 @@
-The AutoJumpEnabled property sets whether the character will automatically jump when hitting an obstacle on a mobile device.
-
-This property is copied from the `StarterPlayer` to a `Player` when they join the game. Following that. the value of this property is copied to [Humanoid.AutoJumpEnabled](https://developer.roblox.com/api-reference/property/Humanoid/AutoJumpEnabled) property of the [Player.Character](https://developer.roblox.com/api-reference/property/Player/Character)s `Humanoid` on spawn. In other words, it is possible to set the auto-jump behavior on a per-character, per-player and per-game basis using these three properties.

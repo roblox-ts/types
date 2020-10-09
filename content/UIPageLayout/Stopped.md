@@ -1,1 +1,0 @@
-Fires when an animation to [UIPageLayout.CurrentPage](https://developer.roblox.com/api-reference/property/UIPageLayout/CurrentPage) is completed without being canceled, and the view stops scrolling.

@@ -1,1 +1,0 @@
-If _actionName_ key contains a bound action, then _title_ is set as the title of the touch button. Does nothing if a touch button was not created. No guarantees are made whether title will be set when button is manipulated.

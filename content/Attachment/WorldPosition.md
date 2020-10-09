@@ -1,1 +1,0 @@
-Describes the position of the attachment relative to the world, rather than the parent of the Attachment.

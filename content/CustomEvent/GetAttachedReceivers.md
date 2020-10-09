@@ -1,1 +1,0 @@
-This function returns the [CustomEventReceivers](https://developer.roblox.com/api-reference/class/CustomEventReceiver) that are connected to the `CustomEvent`.

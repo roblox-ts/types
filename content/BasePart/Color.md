@@ -1,3 +1,0 @@
-The Color property determines the color of a part. If the part has a [BasePart.Material](https://developer.roblox.com/api-reference/property/BasePart/Material), this also determines the color used when rendering the material texture. If this property is set, [BasePart.BrickColor](https://developer.roblox.com/api-reference/property/BasePart/BrickColor) will use the closest BrickColor to the Color3 value.
-
-Other visual properties of a part are determined by [BasePart.Transparency](https://developer.roblox.com/api-reference/property/BasePart/Transparency) and [BasePart.Reflectance](https://developer.roblox.com/api-reference/property/BasePart/Reflectance).

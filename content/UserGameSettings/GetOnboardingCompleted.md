@@ -1,1 +1,0 @@
-Returns true if the specified _onboardingId_ has been recorded as complete via [UserGameSettings.SetOnboardingCompleted](https://developer.roblox.com/api-reference/function/UserGameSettings/SetOnboardingCompleted).

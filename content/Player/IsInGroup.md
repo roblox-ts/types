@@ -1,3 +1,0 @@
-IsInGroup sends a request to the Roblox website asking whether a player is a member of a group, given the ID of that group.
-
-This method will caches results, so multiple calls of [Player.IsInGroup](https://developer.roblox.com/api-reference/function/Player/IsInGroup) on the same player with the same group ID will yield the same result as when the method was first called with the given group ID. The caching behavior is on a per-peer basis: a server does not share the same cache as a client. Therefore, calling this method from a LocalScript may yield more up-to-date results.

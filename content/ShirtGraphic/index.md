@@ -1,1 +1,0 @@
-The ShirtGraphic object applies a texture to the front surface of a character's Torso. It is the object used to display T-shirts.

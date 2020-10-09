@@ -1,3 +1,0 @@
-Allows the partial display of an image in conjunction with [ImageButton.ImageRectSize](https://developer.roblox.com/api-reference/property/ImageButton/ImageRectSize). This property determines the pixel offset (from the top-left) of the image area to be displayed.
-
-This property behaves identically to [ImageLabel.ImageRectSize](https://developer.roblox.com/api-reference/property/ImageLabel/ImageRectSize).

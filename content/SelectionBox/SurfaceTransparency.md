@@ -1,1 +1,0 @@
-The transparency of the SelectionBox's surface. A value of 1 makes the surface invisible, while a value of 0 makes it opaque.

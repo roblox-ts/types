@@ -1,1 +1,0 @@
-The `Team` this flag is for. Corresponds with the TeamColors in the `Teams` service.

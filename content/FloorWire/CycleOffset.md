@@ -1,1 +1,0 @@
-A decimal number between 0 and 1, through which you can control how far all of the decals are along the wire.

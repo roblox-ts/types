@@ -1,1 +1,0 @@
-Toggles whether or not video capture is enabled.

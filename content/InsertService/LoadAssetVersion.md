@@ -1,1 +1,0 @@
-Returns a model inserted into `InsertService` containing the asset with the given assetVersionId.

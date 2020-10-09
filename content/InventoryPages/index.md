@@ -1,1 +1,0 @@
-The InventoryPages class is used in the case of iterating over a specific category in a user's inventory.

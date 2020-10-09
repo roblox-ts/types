@@ -1,3 +1,0 @@
-The Position property describes the coordinates of a [part](https://developer.roblox.com/api-reference/class/BasePart) using a [DataType.Vector3](https://developer.roblox.com/search#stq=Vector3). It reflects the position of the part's [BasePart.CFrame](https://developer.roblox.com/api-reference/property/BasePart/CFrame), however it can also be set.
-
-When setting Position, **overlap checking takes place**: if moving the part would cause it to overlap with another part, the destination position shall be just high enough so no overlap occurs. To avoid this, set the part's CFrame instead.

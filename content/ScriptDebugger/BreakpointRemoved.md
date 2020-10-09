@@ -1,1 +1,0 @@
-Fired when a breakpoint is removed from the script.

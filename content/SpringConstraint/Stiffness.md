@@ -1,1 +1,0 @@
-The strength of the spring. The higher this value the more force will be applied when the attachments are separated a different length than the [SpringConstraint.FreeLength](https://developer.roblox.com/api-reference/property/SpringConstraint/FreeLength).

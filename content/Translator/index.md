@@ -1,1 +1,0 @@
-The **Translator** is an object used for getting display-ready localized text from a `LocalizationTable`. The source of the [Translator.LocaleId](https://developer.roblox.com/api-reference/property/Translator/LocaleId) property, the set of tables it will search, and order it will search them in depends on which method was used to create the Translator instance.

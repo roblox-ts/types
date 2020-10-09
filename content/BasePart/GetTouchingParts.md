@@ -1,2 +1,0 @@
-Returns a table of all parts that are physically interacting with this part. If the part itself has CanCollide set to false, then this function will return an empty table UNLESS it has a `TouchInterest` (AKA: Something is connected to its Touched event). Parts that are adjacent but not intersecting are not considered touching.
-@returns A table of all parts that intersect and can collide with this part

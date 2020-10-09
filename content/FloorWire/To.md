@@ -1,1 +1,0 @@
-The object that the FloorWire travels to.

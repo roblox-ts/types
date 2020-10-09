@@ -1,1 +1,0 @@
-The CartoonFactor property determines the tendency of the part to face the [Target](https://developer.roblox.com/api-reference/property/RocketPropulsion/Target). By default, this property is set to `0.7`. If set to `0`, the part will make no effort to face the target.

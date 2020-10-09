@@ -1,1 +1,0 @@
-Indicates whether or not bubble chat is enabled. It is set with the [Players.SetChatStyle](https://developer.roblox.com/api-reference/function/Players/SetChatStyle) method.

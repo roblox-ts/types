@@ -1,1 +1,0 @@
-The original name of the `ScreenGui`. This class functions identically to the ScreenGui, and should not be used.

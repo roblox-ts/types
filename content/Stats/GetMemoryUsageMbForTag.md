@@ -1,1 +1,0 @@
-Returns the number of megabytes that are being consumed in the specified _DeveloperMemoryTag_ category.

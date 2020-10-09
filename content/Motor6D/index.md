@@ -1,1 +1,0 @@
-The Motor6D object is used to make movable joints between two Parts. This is the motor Player characters use by default to move.

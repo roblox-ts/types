@@ -1,1 +1,0 @@
-The `/Humanoid` that is controlling the SkateboardPlatform.

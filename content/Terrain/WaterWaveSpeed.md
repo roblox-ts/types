@@ -1,1 +1,0 @@
-Sets how many times the Terrain water waves will move up and down per minute. This is currently constrained to between 0 and 100.

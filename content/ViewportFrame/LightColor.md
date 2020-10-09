@@ -1,1 +1,0 @@
-Directional light color for objects in the ViewportFrame.

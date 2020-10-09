@@ -1,1 +1,0 @@
-A version of the `CSGDictionaryService` that does not replicate to clients.

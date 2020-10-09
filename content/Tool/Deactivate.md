@@ -1,1 +1,0 @@
-The event simulates the deactivation of a [Tool](https://developer.roblox.com/api-reference/class/Tool). Tools will normally trigger the [Tool.Deactivated](https://developer.roblox.com/api-reference/event/Tool/Deactivated) event when the player releases the left mouse button, while the tool is equipped.

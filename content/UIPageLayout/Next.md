@@ -1,1 +1,0 @@
-Sets [UIPageLayout.CurrentPage](https://developer.roblox.com/api-reference/property/UIPageLayout/CurrentPage) to the page after the current page and animates to it, or does nothing if there isn't a next page.

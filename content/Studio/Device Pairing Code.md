@@ -1,1 +1,0 @@
-A 4 digit code that can be used by Roblox's mobile pairing app to connect to your instance of Roblox Studio on the local network.

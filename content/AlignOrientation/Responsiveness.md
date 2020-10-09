@@ -1,1 +1,0 @@
-Used to control how quickly the constraint will reach its goal. Higher values will cause the attachment to align quicker. Value can be between 5 and 200.

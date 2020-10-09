@@ -1,1 +1,0 @@
-The stored [string](https://developer.roblox.com/articles/String).

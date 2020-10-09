@@ -1,1 +1,0 @@
-Undos the last action taken, for which there exists a waypoint.

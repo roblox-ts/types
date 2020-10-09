@@ -1,7 +1,0 @@
-GroupService is a service that allows developers to fetch information about a Roblox group from within a game.
-
-Basic information on the group, including it's name, description, owner, roles and emblem can be fetched using [GroupService.GetGroupInfoAsync](https://developer.roblox.com/api-reference/function/GroupService/GetGroupInfoAsync). Lists of a group's allies and enemies can be fetched using [GroupService.GetAlliesAsync](https://developer.roblox.com/api-reference/function/GroupService/GetAlliesAsync) and [GroupService.GetEnemiesAsync](https://developer.roblox.com/api-reference/function/GroupService/GetEnemiesAsync).
-
-GroupService can also be used to fetch a list of group's a player is a member of, using [GroupService.GetGroupsAsync](https://developer.roblox.com/api-reference/function/GroupService/GetGroupsAsync). Note, developers wishing to verify if a player is in a group should use the `Player` [Player.IsInGroup](https://developer.roblox.com/api-reference/function/Player/IsInGroup) function rather than [GroupService.GetGroupsAsync](https://developer.roblox.com/api-reference/function/GroupService/GetGroupsAsync).
-
-The service has a number of useful applications, such as detecting if a player is an ally or enemy upon joining the game.

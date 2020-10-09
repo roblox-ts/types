@@ -1,3 +1,0 @@
-The TeamColor property sets what team the `SpawnLocation` is affiliated to. If [SpawnLocation.Neutral](https://developer.roblox.com/api-reference/property/SpawnLocation/Neutral) property is false, only `Player`s with the same [Player.TeamColor](https://developer.roblox.com/api-reference/property/Player/TeamColor) as the spawn's TeamColor will be able to spawn there.
-
-If [SpawnLocation.AllowTeamChangeOnTouch](https://developer.roblox.com/api-reference/property/SpawnLocation/AllowTeamChangeOnTouch) is true [Player.Neutral](https://developer.roblox.com/api-reference/property/Player/Neutral) will be set to this property upon contact with the spawn.

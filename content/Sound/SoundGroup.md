@@ -1,3 +1,0 @@
-The `SoundGroup` that is linked to this `Sound`. [SoundGroup.Volume](https://developer.roblox.com/api-reference/property/SoundGroup/Volume) and `SoundEffect`s applied to this sound group will pass onto the sound. A sound can only be in one sound group at a time.
-
-`SoundGroup`s are used to manage the volume and effects of multiple `Sound`s at once. A `Sound` is added to a `SoundGroup` by setting the SoundGroup property of the sound.

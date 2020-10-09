@@ -1,1 +1,0 @@
-Functions identically to [VehicleSeat.Steer](https://developer.roblox.com/api-reference/property/VehicleSeat/Steer), but the value is not an integer.

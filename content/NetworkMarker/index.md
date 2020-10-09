@@ -1,1 +1,0 @@
-The NetworkMarker is used to tell the client when the server has finished loading the world for the client.

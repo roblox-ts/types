@@ -1,3 +1,0 @@
-**TargetPoint** describes a 3D position in space where the `Player` controlling this `Humanoid` last clicked with a `Tool` equipped.
-
-This property is primarily used by classic tools to determine what a humanoid is targeting when they activate a tool. If you give an NPC a classic rocket launcher, set their **TargetPoint**, and then call the tool's [Tool.Activate](https://developer.roblox.com/api-reference/function/Tool/Activate) function, you can make the NPC fire a rocket at the target point.

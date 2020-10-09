@@ -1,1 +1,0 @@
-The maximum absolute force that can be applied. This property is enabled only when InverseSquareLaw is also enabled. This property is mainly used to address the issue that the force of the body mover becomes infinite the closer the two attachments are, causing explosions that can't be prevented by scripts. This property bounds the force's absolute value.

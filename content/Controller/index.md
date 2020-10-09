@@ -1,1 +1,0 @@
-The base class for controller objects, such as the `HumanoidController` object.

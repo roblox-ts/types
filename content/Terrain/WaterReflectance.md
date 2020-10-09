@@ -1,1 +1,0 @@
-Controls how opaque the Terrain's water reflections are.

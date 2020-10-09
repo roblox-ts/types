@@ -1,3 +1,0 @@
-This property describes the [Enum.CreatorType](https://developer.roblox.com/search#stq=CreatorType) of the [place](https://developer.roblox.com/search#stq=Place), whether the place is owned by a user or a group.
-
-If the [Enum.CreatorType](https://developer.roblox.com/search#stq=CreatorType) is *‘User’*, then the [DataModel.CreatorId](https://developer.roblox.com/api-reference/property/DataModel/CreatorId) property will describe the [UserId](https://developer.roblox.com/api-reference/property/Player/UserId) of the account that owns the game. If the CreatorType is *‘Group’* then it will describe the group ID.

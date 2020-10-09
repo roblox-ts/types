@@ -1,1 +1,0 @@
-Sets the first sentence that the dialog will show to the player, once a chat is commenced.

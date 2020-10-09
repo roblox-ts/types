@@ -1,1 +1,0 @@
-The target position a `SlidingBallConstraint` will attempt to translate to if its [SlidingBallConstraint.ActuatorType](https://developer.roblox.com/api-reference/property/SlidingBallConstraint/ActuatorType) is set to [Enum.ActuatorType](https://developer.roblox.com/search#stq=ActuatorType). Measured in studs.

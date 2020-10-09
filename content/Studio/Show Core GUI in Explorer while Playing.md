@@ -1,1 +1,0 @@
-If set to true, the `CoreGui` will be visible in the Explorer while the game is running.

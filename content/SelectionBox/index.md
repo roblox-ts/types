@@ -1,1 +1,0 @@
-An object which is used to put a 3D box around the part it's adorned to. For more information on how to use SelectionBoxes go [here](https://developer.roblox.com/articles/Selection-Boxes).

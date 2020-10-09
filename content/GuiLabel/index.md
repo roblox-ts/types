@@ -1,1 +1,0 @@
-GuiLabel is an abstract class that inherits from `GuiObject`. It is the base class for `ImageLabel` and `TextLabel`. Unlike `GuiButton`, objects of this type will not register click events, but instead serve as non-interactive labels. It does not implement any further properties, events or methods.

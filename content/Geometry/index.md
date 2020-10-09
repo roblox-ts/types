@@ -1,1 +1,0 @@
-An ancient internal Roblox service, which appears to be responsible for all raw geometry shown in the game.

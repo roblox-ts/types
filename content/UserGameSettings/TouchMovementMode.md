@@ -1,1 +1,0 @@
-The type of controls being used by the client on a mobile device.

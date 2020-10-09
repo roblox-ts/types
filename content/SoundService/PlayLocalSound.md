@@ -1,2 +1,0 @@
-Plays a `Sound` locally, meaning the sound will only be heard by the client calling this function, regardless of where it's parented to. This function is most useful for playing a `Sound` locally in the Studio client, for instance in a `Script` for a [custom plugin](https://developer.roblox.com/search#stq=Intro%20to%20Plugins).
-@param sound The `Sound` to be played.

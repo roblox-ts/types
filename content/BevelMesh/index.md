@@ -1,1 +1,0 @@
-This is an abstract class that `BlockMesh` and `CylinderMesh` inherit from.

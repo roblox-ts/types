@@ -1,1 +1,0 @@
-The distance from the SurfaceLight's face that will illuminate.

@@ -1,1 +1,0 @@
-Sets the [GuiObject](https://developer.roblox.com/api-reference/class/GuiObject) currently being focused on by the GUI Navigator (used for Gamepads). This may reset to nil if the object is off-screen.

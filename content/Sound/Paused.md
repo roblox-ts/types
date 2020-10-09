@@ -1,3 +1,0 @@
-Fires whenever the `Sound` is paused using [Sound.Pause](https://developer.roblox.com/api-reference/function/Sound/Pause).
-
-As with [Sound.Played](https://developer.roblox.com/api-reference/event/Sound/Played), [Sound.Resumed](https://developer.roblox.com/api-reference/event/Sound/Resumed) and [Sound.Stopped](https://developer.roblox.com/api-reference/event/Sound/Stopped) only the respective sound function will cause the event to fire. This means that Pause will only fire when [Sound.Pause](https://developer.roblox.com/api-reference/function/Sound/Pause) is called.

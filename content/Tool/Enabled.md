@@ -1,1 +1,0 @@
-Relates to whether or not the tool can be used.

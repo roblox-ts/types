@@ -1,1 +1,0 @@
-When set to false, the force will be applied to the part at the Attachment0’s location. This means that if the attachment is not at the center of the part, it can create a torque on the part.

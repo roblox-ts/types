@@ -1,1 +1,0 @@
-Fired when Instances are being selected while the mouse is dragging.

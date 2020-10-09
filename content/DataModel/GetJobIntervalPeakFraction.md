@@ -1,1 +1,0 @@
-Returns the job interval peak fraction of the specified task scheduler job.

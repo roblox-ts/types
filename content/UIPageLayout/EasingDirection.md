@@ -1,1 +1,0 @@
-The easing direction to use when performing an animation.

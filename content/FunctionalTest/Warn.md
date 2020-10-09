@@ -1,1 +1,0 @@
-Prints if a condition is true, otherwise prints a warning.

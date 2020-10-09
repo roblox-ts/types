@@ -1,1 +1,0 @@
-Gets or creates a new `Toolbar` with the specified name, which is then used to create a plugin button.

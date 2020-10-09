@@ -1,1 +1,0 @@
-Specifies the color of strings in the script editor.

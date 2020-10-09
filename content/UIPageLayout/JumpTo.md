@@ -1,1 +1,0 @@
-If the _page_ is in the UIPageLayout, then it sets [UIPageLayout.CurrentPage](https://developer.roblox.com/api-reference/property/UIPageLayout/CurrentPage) to it and animates to it. If the circular layout is enabled, it will take the shortest path to this page.

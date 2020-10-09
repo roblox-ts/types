@@ -1,3 +1,0 @@
-Fires when the `Sound` is resumed using [Sound.Resume](https://developer.roblox.com/api-reference/function/Sound/Resume).
-
-As with [Sound.Played](https://developer.roblox.com/api-reference/event/Sound/Played), [Sound.Paused](https://developer.roblox.com/api-reference/event/Sound/Paused) and [Sound.Stopped](https://developer.roblox.com/api-reference/event/Sound/Stopped) only the respective sound function will cause the event to fire. This means that Resumed will only fire when [Sound.Resume](https://developer.roblox.com/api-reference/function/Sound/Resume) is called.

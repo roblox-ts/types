@@ -1,1 +1,0 @@
-Fires when a user moves their mouse out of the adornment.

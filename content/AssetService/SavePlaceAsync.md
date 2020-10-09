@@ -1,1 +1,0 @@
-Saves the state of the current place. This will only work for places that have been created with [AssetService.CreatePlaceAsync](https://developer.roblox.com/api-reference/function/AssetService/CreatePlaceAsync) or [AssetService.CreatePlaceInPlayerInventoryAsync](https://developer.roblox.com/api-reference/function/AssetService/CreatePlaceInPlayerInventoryAsync).

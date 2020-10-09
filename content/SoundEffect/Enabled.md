@@ -1,1 +1,0 @@
-Toggles the effect on and off. True by default.

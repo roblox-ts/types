@@ -1,3 +1,0 @@
-An IntValue is an object that stores a single signed 32-bit integer. Integers do not include decimal points. The highest value that can be stored is 2^31 - 1, or 2,147,483,647. Attempting to store numbers larger than this may cause [integer overflow][1]. The lowest value that can be stored is -(2^31), or -2,147,483,648. For values outside of this range, use a NumberValue instead. Like all "-Value" objects, this single value is stored in the Value property. The [IntValue.Changed](https://developer.roblox.com/api-reference/event/IntValue/Changed) event for this (and other objects like it) will run with the new value being stored in the object, instead of a string representing the property being changed.
-
-[1]: https://en.wikipedia.org/wiki/Integer_overflow

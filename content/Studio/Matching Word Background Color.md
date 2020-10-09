@@ -1,1 +1,0 @@
-Sets the highlight color of double-clicked variables in the script editor.

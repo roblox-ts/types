@@ -1,1 +1,0 @@
-The humanoid that is sitting in the seat

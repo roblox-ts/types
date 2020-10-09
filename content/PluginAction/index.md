@@ -1,3 +1,0 @@
-PluginAction is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`. In Roblox Studio, they can be assigned a keyboard shortcut under `File → Advanced → Customize Shortcuts...`, and they can also be added to the Quick Access Toolbar.
-
-PluginActions must be created using the [Plugin.CreatePluginAction](https://developer.roblox.com/api-reference/function/Plugin/CreatePluginAction) function in order to work as expected.

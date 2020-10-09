@@ -1,1 +1,0 @@
-An internal service, used for physics networking. This service is not accessible to developers.

@@ -1,1 +1,0 @@
-The transparency of the Terrain water.

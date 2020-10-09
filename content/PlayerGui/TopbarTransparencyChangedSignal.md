@@ -1,1 +1,0 @@
-Fires when the transparency of the Topbar CoreGui changes.

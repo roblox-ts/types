@@ -1,1 +1,0 @@
-The `Hole` linked to this VelocityMotor.

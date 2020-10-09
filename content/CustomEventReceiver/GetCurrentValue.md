@@ -1,1 +1,0 @@
-This function returns the current value of the reciever's [CustomEventReciever.Source](https://developer.roblox.com/search#stq=Source) property.

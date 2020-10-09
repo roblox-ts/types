@@ -1,9 +1,0 @@
-Sparkles is one of several particle-emitting classes. Like other particle emitters of its kind, Sparkles objects emit particles when parented to a `BasePart` (such as a `Part`) or an `Attachment` within such a `BasePart`. Compared to the `ParticleEmitter` class, Sparkles lacks many different customization properties and special methods, such as [ParticleEmitter.Lifetime](https://developer.roblox.com/api-reference/property/ParticleEmitter/Lifetime) or [ParticleEmitter.Emit](https://developer.roblox.com/api-reference/function/ParticleEmitter/Emit). It is useful to create a quick special effect in a pinch; for more detailed work it is preferable to use a `ParticleEmitter` instead.
-
-![Sparkles emitting from a part][1]
-
-When [Sparkles.Enabled](https://developer.roblox.com/api-reference/property/Sparkles/Enabled) is toggled off, particles emit by this object will continue to render until their lifetime expires. When a Sparkles object's [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) is set to nil (and/or [Instance.Destroy](https://developer.roblox.com/api-reference/function/Instance/Destroy)ed), all particles will instantly disappear. If this effect is not desired, try hiding the parent object at a far away position, then removing the Sparkles after a few seconds using `Debris` to give the last particles a chance to expire. This object does not have a [ParticleEmitter.Clear](https://developer.roblox.com/api-reference/function/ParticleEmitter/Clear) method, but it is possible to set the [Instance.Parent](https://developer.roblox.com/api-reference/property/Instance/Parent) to nil and back to the exact same object for the same effect.
-
-Sparkles particles are only emit from the center of `BasePart` to which they are parented. Parenting a Sparkles object to an `Attachment` instead allows customization of the particles' start position.
-
-[1]: https://developer.roblox.com/assets/bltb4fd95f7dbbb308a/Sparkles.png

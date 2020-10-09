@@ -1,1 +1,0 @@
-The number of studs between each FloorWire segment.

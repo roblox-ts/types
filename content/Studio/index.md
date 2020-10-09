@@ -1,1 +1,0 @@
-The Studio object is a settings object that is exclusive to Roblox Studio. It can be found in Roblox Studio's settings under the Studio tab.

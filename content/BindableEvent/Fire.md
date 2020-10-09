@@ -1,1 +1,0 @@
-Calling this method will fire the "Event" event. This function does not yield, even no script has connected to the "Event" event and even if a connected function yields. There are limitations on the values that can be sent as arguments; see the code samples

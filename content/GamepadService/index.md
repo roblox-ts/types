@@ -1,1 +1,0 @@
-The GamepadService is internally responsible for handling inputs from various controllers (such as an Xbox One controller)

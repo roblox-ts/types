@@ -1,1 +1,0 @@
-Sets the [AccountAge](https://wiki.roblox.com/index.php?title=AccountAge) of the player.

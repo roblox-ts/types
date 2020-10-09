@@ -1,1 +1,0 @@
-This property attaches the `CustomEventReceiver` object to a `CustomEvent`.

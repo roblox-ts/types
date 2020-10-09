@@ -1,1 +1,0 @@
-Sets what face of the brick the object appears on.

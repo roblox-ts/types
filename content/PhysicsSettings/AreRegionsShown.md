@@ -1,3 +1,0 @@
-When set to true, a cylinder is drawn around each `Player`'s character, representing their [Player.SimulationRadius](https://developer.roblox.com/api-reference/property/Player/SimulationRadius).
-
-Each physically simulated object will check to see which player is closest to that object, and if they are within the player's simulation radius. If both conditions are met, that player will becomes the network owner of that object.When set to true, a cylinder is drawn around each `Player`'s character, representing their [Player.SimulationRadius](https://developer.roblox.com/api-reference/property/Player/SimulationRadius).

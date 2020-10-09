@@ -1,1 +1,0 @@
-An internal service responsible for scheduling timed events. It is used by the `Debris` class. Its functionality can not be accessed by developers.

@@ -1,1 +1,0 @@
-The stored [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3).

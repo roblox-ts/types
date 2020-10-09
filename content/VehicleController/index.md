@@ -1,1 +1,0 @@
-A VehicleController is an object responsible for translating [PlayerActions](https://developer.roblox.com/api-reference/enum/PlayerActions) to movements with a  `VehicleSeat`.

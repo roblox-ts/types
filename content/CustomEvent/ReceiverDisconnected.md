@@ -1,1 +1,0 @@
-This event fires when a receiver is disconnected from the `CustomEvent`.

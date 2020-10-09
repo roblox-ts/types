@@ -1,1 +1,0 @@
-The URL link to a picture for the top surface of the sky.

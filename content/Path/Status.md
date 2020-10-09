@@ -1,1 +1,0 @@
-The success of the generated `Path`.

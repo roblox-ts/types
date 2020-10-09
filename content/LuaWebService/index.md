@@ -1,1 +1,0 @@
-An internal service, which is responsible for retrieving HTTP data from websites. Used by a range of services, including `MarketplaceService`, `InsertService` and `HttpService`. Its functions cannot be accessed by developers.

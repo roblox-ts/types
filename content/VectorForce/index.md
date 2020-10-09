@@ -1,1 +1,0 @@
-A VectorForce is used to apply a force to a part or assembly of parts. The direction and strength of the force is determined by a Vector3 and can be relative to an attachment on the part, another attachment, or the world coordinate system.

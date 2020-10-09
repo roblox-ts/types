@@ -1,1 +1,0 @@
-Fired when the mouse is in the left mouse down state on the GUI object.

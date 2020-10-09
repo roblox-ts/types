@@ -1,1 +1,0 @@
-Initializes a dragging action, specifying which parts to use when dragging.

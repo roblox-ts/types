@@ -1,1 +1,0 @@
-Forces the client to focus on the TextBox.

@@ -1,1 +1,0 @@
-Returns a table with all bound action info. Each entry is a key with _actionName_ and value being the same table you would get from [ContextActionService.GetBoundActionInfo](https://developer.roblox.com/api-reference/function/ContextActionService/GetBoundActionInfo).

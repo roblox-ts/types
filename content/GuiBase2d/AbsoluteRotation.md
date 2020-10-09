@@ -1,9 +1,0 @@
-AbsoluteRotation is a read-only property that describes the actual screen rotation of a UI element, in degrees. This property, [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) and [GuiBase2d.AbsolutePosition](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsolutePosition) are a group of properties that all describe the final rendered orientation of a UI element. It composes (sums) each of the UI element's ancestors' [GuiObject.Rotation](https://developer.roblox.com/api-reference/property/GuiObject/Rotation) into one value. It does **not** perform bounds checking, so its value may not be in the range 0 ≤ x &lt; 360 degrees.
-
-For example, if FrameA has a rotation of 40 degrees, and FrameB within it has a [GuiObject.Rotation](https://developer.roblox.com/api-reference/property/GuiObject/Rotation) of 50 degrees, then FrameB's AbsoluteRotation would be 90 degrees.
-	
-AbsoluteRotation is a read-only property that describes the actual screen rotation of a UI element, in degrees. This property, [GuiBase2d.AbsoluteSize](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsoluteSize) and [GuiBase2d.AbsolutePosition](https://developer.roblox.com/api-reference/property/GuiBase2d/AbsolutePosition) are a group of properties that all describe the final rendered orientation of a UI element. It composes (sums) each of the UI element's ancestors' [GuiObject.Rotation](https://developer.roblox.com/api-reference/property/GuiObject/Rotation) into one value. It does **not** perform bounds checking, so its value may not be in the range 0 ≤ x &lt; 360 degrees.
-
-For example, if FrameA has a rotation of 40 degrees, and FrameB within it has a [GuiObject.Rotation](https://developer.roblox.com/api-reference/property/GuiObject/Rotation) of 50 degrees, then FrameB's AbsoluteRotation would be 90 degrees.
-
-Tags: ReadOnly, NotReplicated

@@ -1,1 +1,0 @@
-This property controls how blurry the shadows are.
