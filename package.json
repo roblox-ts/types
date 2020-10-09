@@ -47,7 +47,7 @@
 	},
 	"bundleDependencies": [],
 	"dependencies": {
-		"@rbxts/compiler-types": "^1.0.0-beta.2.1"
+		"@rbxts/compiler-types": "latest"
 	},
 	"keywords": [
 		"types",
