@@ -21,7 +21,7 @@ import { ReflectionMetadata } from "./ReflectionMetadata";
 import fs from "fs-extra";
 
 const ROOT_DIR = path.join(__dirname, "..", "..");
-const CONTENT_DIR = path.join(ROOT_DIR, "content");
+const CONTENT_DIR = path.join(ROOT_DIR, "devhub-scraper", "dist");
 
 interface BreakdanceNodeBase {
 	type: string;

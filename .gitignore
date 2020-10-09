@@ -5,3 +5,4 @@ cache
 include/test.ts
 node_modules
 out
+devhub-scraper

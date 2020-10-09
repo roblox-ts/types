@@ -12,3 +12,4 @@ include/test.ts
 tslint.json
 include/customDefinitions.d.ts
 include/.eslintrc
+devhub-scraper
