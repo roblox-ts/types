@@ -416,9 +416,9 @@ interface Instance {
 	 * 
 	 * ```lua
 	 * for _, instance in pairs(object:GetDescendants()) do
-	 * 	if instance:IsA("BasePart") then
-	 * 		instance:Destroy()
-	 * 	end
+	 *     if instance:IsA("BasePart") then
+	 *         instance:Destroy()
+	 *     end
 	 * end
 	 * ```
 	 */
@@ -517,16 +517,16 @@ interface Instance {
 	 *  ```lua
 	 * -- The following line errors if Part doesn't exist in the Workspace:
 	 * workspace.Part.Transparency = .5
-	 * ``` 
+	 * ```
 	 * 
 	 * Use FindFirstChild to first check for Part, then use an if-statement to run code that needs it.
 	 * 
 	 * ```lua
 	 * local part = workspace:FindFirstChild("Part")
 	 * if part then
-	 * 	part.Transparency = .5
+	 *     part.Transparency = .5
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Finding a Child Whose Name Matches a Property
 	 * ---------------------------------------------
@@ -542,7 +542,7 @@ interface Instance {
 	 * folder.Parent = part
 	 * local c = part.Color --> A Color3
 	 * local c2 = part:FindFirstChild("Color") --> The Folder
-	 * ``` 
+	 * ```
 	 * 
 	 * A benefit of using FindFirstChild in this way is that the introduction of new properties does not impose a risk on your code.
 	 * 
@@ -550,7 +550,7 @@ interface Instance {
 	 * 
 	 * ```lua
 	 * local myColor = workspace:FindFirstChild("SomePart") and workspace.SomePart.Color
-	 * ``` 
+	 * ```
 	 * 
 	 * If SomePart exists, `myColor` will contain the Color of SomePart. Otherwise, it'll be nil without throwing an error. This works due to short-circuiting: Lua ignores the right side if the left is nil/false
 	 * 
@@ -626,11 +626,11 @@ interface Instance {
 	 * 
 	 * ```lua
 	 * local function attributeChanged()
-	 * 	print(“Attribute changed”)
+	 *     print(“Attribute changed”)
 	 * end
 	 * 
 	 * instance:GetAttributeChangedSignal("InitialPosition"):Connect(attributeChanged)
-	 * ``` 
+	 * ```
 	 * 
 	 * Behavior
 	 * --------
@@ -667,9 +667,9 @@ interface Instance {
 	 * ```lua
 	 * local attributes = instance:GetAttributes
 	 * for name, value in pairs(instance:GetAttributes()) do
-	 * 	print(name .. “ “ .. value)
+	 *     print(name .. “ “ .. value)
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * See also
 	 * --------
@@ -686,16 +686,16 @@ interface Instance {
 	 * -- Numeric for-loop example
 	 * local children = workspace:GetChildren()
 	 * for i = 1, #children do
-	 * 	local child = children[i]
-	 * 	print(child.Name .. " is child number " .. i)
+	 *     local child = children[i]
+	 *     print(child.Name .. " is child number " .. i)
 	 * end
 	 * ``` ```lua
 	 * -- Generic for-loop example
 	 * local children = workspace:GetChildren()
 	 * for i, child in ipairs(children) do
-	 * 	print(child.Name .. " is child number " .. i)
+	 *     print(child.Name .. " is child number " .. i)
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * The children are sorted by the order in which their [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) property was set to the object.
 	 * 
@@ -712,13 +712,13 @@ interface Instance {
 	 * 
 	 * ```lua
 	 * local descendants = game.Workspace.Model:GetDescendants()
-	 *  
+	 * 
 	 * -- Loop through all of the descendants of the model and
 	 * -- print out their name
 	 * for index, descendant in pairs(descendants) do
-	 * 	print(descendant.Name)
+	 *     print(descendant.Name)
 	 * end
-	 *  
+	 * 
 	 * -- Prints:
 	 * -- C
 	 * -- D
@@ -749,17 +749,17 @@ interface Instance {
 	 * 
 	 * ```lua
 	 * local function paintFigure(character, color)
-	 * 	-- Iterate over the child objects of the character
-	 * 	for _, child in pairs(character:GetChildren()) do
-	 * 		-- Filter out non-part objects, such as Shirt, Pants and Humanoid
-	 * 		-- R15 use MeshPart and R6 use Part, so we use BasePart here to detect both:
-	 * 		if child:IsA("BasePart") then
-	 * 			child.BrickColor = color
-	 * 		end
-	 * 	end
+	 *     -- Iterate over the child objects of the character
+	 *     for _, child in pairs(character:GetChildren()) do
+	 *         -- Filter out non-part objects, such as Shirt, Pants and Humanoid
+	 *         -- R15 use MeshPart and R6 use Part, so we use BasePart here to detect both:
+	 *         if child:IsA("BasePart") then
+	 *             child.BrickColor = color
+	 *         end
+	 *     end
 	 * end
 	 * paintFigure(game.Players.Player.Character, BrickColor.new("Bright blue"))
-	 * ``` 
+	 * ```
 	 * 
 	 * Since all classes inherit from [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance), calling `object:IsA("Instance")` will always return true.
 	 */
@@ -860,9 +860,9 @@ interface Instance {
 	 * 
 	 * ```lua
 	 * object.AncestryChanged:Connect(function(_, parent)
-	 * 	if not parent then
-	 * 		print("object destroyed!")
-	 * 	end
+	 *     if not parent then
+	 *         print("object destroyed!")
+	 *     end
 	 * end)
 	 * ```
 	 */
@@ -905,10 +905,10 @@ interface Instance {
 	 * 
 	 * ```lua
 	 * workspace.ChildAdded:Connect(function(child)
-	 * 	-- need to use WaitForChild as descendants may not have replicated yet
-	 * 	local head = child:WaitForChild("Head")
+	 *     -- need to use WaitForChild as descendants may not have replicated yet
+	 *     local head = child:WaitForChild("Head")
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * Note, this function only works for immediate children of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance). For a function that captures all descendants, use [Instance.DescendantAdded](https://developer.roblox.com/en-us/api-reference/event/Instance/DescendantAdded).
 	 * 
@@ -960,17 +960,17 @@ interface Instance {
 	 * 
 	 * ```lua
 	 * workspace.DescendantRemoving:Connect(function(descendant)
-	 * 	-- Don't manipulate the parent of descendant in this function!
-	 * 	-- This event fires BECAUSE the parent of descendant was manipulated,
-	 * 	-- and the change hasn't happened yet, i.e. this function fires before that happens.
-	 * 	-- Therefore, it is problematic to change the parent like this:
-	 * 	descendant.Parent = game
+	 *     -- Don't manipulate the parent of descendant in this function!
+	 *     -- This event fires BECAUSE the parent of descendant was manipulated,
+	 *     -- and the change hasn't happened yet, i.e. this function fires before that happens.
+	 *     -- Therefore, it is problematic to change the parent like this:
+	 *     descendant.Parent = game
 	 * end)
 	 * local part = Instance.new("Part")
 	 * part.Parent = workspace
 	 * part.Parent = nil -- This triggers DescendantRemoving on Workspace:
 	 * --&gt; Something unexpectedly tried to set the parent of Part to NULL while trying to set the parent of Part. Current parent is Workspace.
-	 * ``` 
+	 * ```
 	 * 
 	 * See also [DescendantAdded](https://developer.roblox.com/en-us/api-reference/event/Instance/DescendantAdded).
 	 */
@@ -1807,7 +1807,7 @@ interface Tool extends BackpackItem {
 	 * tool.Parent = game.Players.LocalPlayer.Backpack
 	 * 
 	 * tool.Equipped:Connect(function()
-	 * 	tool:Activate()
+	 *     tool:Activate()
 	 * end)
 	 * 
 	 * function toolActivated()
@@ -1830,7 +1830,7 @@ interface Tool extends BackpackItem {
 	 * tool.Parent = game.Players.LocalPlayer.Backpack
 	 * 
 	 * tool.Equipped:Connect(function()
-	 * 	tool:Deactivate()
+	 *     tool:Deactivate()
 	 * end)
 	 * 
 	 * function toolDeactivated()
@@ -2620,103 +2620,103 @@ interface StarterGui extends BasePlayerGui {
 	 * ```lua
 	 * -- Create the Bindable objects
 	 * local ChatConnections = {}
-	 *  
+	 * 
 	 * local function AddObjects(bindableClass,targetName,...)
-	 * 	local target = ChatConnections[targetName]
-	 * 	if not target then
-	 * 		target = {}
-	 * 		ChatConnections[targetName] = target
-	 * 	end
-	 * 	local names = {...}
-	 * 	for _,name in pairs(names) do
-	 * 		local signal = Instance.new(bindableClass)
-	 * 		signal.Name = targetName .. "_" .. name
-	 * 		signal.Parent = script
-	 * 		target[name] = signal
-	 * 	end
+	 *     local target = ChatConnections[targetName]
+	 *     if not target then
+	 *         target = {}
+	 *         ChatConnections[targetName] = target
+	 *     end
+	 *     local names = {...}
+	 *     for _,name in pairs(names) do
+	 *         local signal = Instance.new(bindableClass)
+	 *         signal.Name = targetName .. "_" .. name
+	 *         signal.Parent = script
+	 *         target[name] = signal
+	 *     end
 	 * end
-	 *  
+	 * 
 	 * AddObjects("BindableEvent","ChatWindow",
-	 * 	---------------------------
-	 * 	-- Fired from the CoreGui
-	 * 	---------------------------
-	 * 	"ToggleVisibility", -- Fired when the CoreGui chat button is pressed.
-	 * 	"SetVisible", -- Fired when the CoreGui wants to directly change the visiblity state of the chat window.
-	 * 	"FocusChatBar", -- Fired when the CoreGui wants to capture the Chatbar's Focus.
-	 * 	"TopbarEnabledChanged", -- Fired when the visibility of the Topbar is changed.
-	 * 	"SpecialKeyPressed", -- Fired when the reserved ChatHotkey is pressed.
-	 * 	"CoreGuiEnabled", -- Fired when a user changes the SetCoreGuiEnabled state of the Chat Gui.
-	 *  
-	 * 	---------------------------
-	 * 	-- Fired to the CoreGui
-	 * 	---------------------------
-	 * 	"ChatBarFocusChanged",
-	 * 		-- ^ Fire this with 'true' when you want to assure the CoreGui that the ChatBar is being focused on.
-	 *  
-	 * 	"VisibilityStateChanged", 
-	 * 		-- ^ Fire this with 'true' when the user shows or hides the chat.
-	 *  
-	 * 	"MessagesChanged",
-	 * 		-- ^ Fire this with a number to change the number of messages that have been recorded by the chat window.
-	 * 		--   If the CoreGui thinks the chat window isn't visible, it will display the recorded difference between
-	 * 		--   the number of messages that was displayed when it was visible, and the number you supply.
-	 *  
-	 * 	"MessagePosted" 
-	 * 		-- ^ Fire this to make the player directly chat under Roblox's C++ API. 
-	 * 		--	 This will fire the LocalPlayer's Chatted event.
-	 * 		--   Please only fire this on the player's behalf. If you attempt to spoof a player's chat
-	 * 		--   to get them in trouble, you could face serious moderation action.
+	 *     ---------------------------
+	 *     -- Fired from the CoreGui
+	 *     ---------------------------
+	 *     "ToggleVisibility", -- Fired when the CoreGui chat button is pressed.
+	 *     "SetVisible", -- Fired when the CoreGui wants to directly change the visiblity state of the chat window.
+	 *     "FocusChatBar", -- Fired when the CoreGui wants to capture the Chatbar's Focus.
+	 *     "TopbarEnabledChanged", -- Fired when the visibility of the Topbar is changed.
+	 *     "SpecialKeyPressed", -- Fired when the reserved ChatHotkey is pressed.
+	 *     "CoreGuiEnabled", -- Fired when a user changes the SetCoreGuiEnabled state of the Chat Gui.
+	 * 
+	 *     ---------------------------
+	 *     -- Fired to the CoreGui
+	 *     ---------------------------
+	 *     "ChatBarFocusChanged",
+	 *         -- ^ Fire this with 'true' when you want to assure the CoreGui that the ChatBar is being focused on.
+	 * 
+	 *     "VisibilityStateChanged",
+	 *         -- ^ Fire this with 'true' when the user shows or hides the chat.
+	 * 
+	 *     "MessagesChanged",
+	 *         -- ^ Fire this with a number to change the number of messages that have been recorded by the chat window.
+	 *         --   If the CoreGui thinks the chat window isn't visible, it will display the recorded difference between
+	 *         --   the number of messages that was displayed when it was visible, and the number you supply.
+	 * 
+	 *     "MessagePosted"
+	 *         -- ^ Fire this to make the player directly chat under Roblox's C++ API.
+	 *         --     This will fire the LocalPlayer's Chatted event.
+	 *         --   Please only fire this on the player's behalf. If you attempt to spoof a player's chat
+	 *         --   to get them in trouble, you could face serious moderation action.
 	 * )
-	 *  
+	 * 
 	 * AddObjects("BindableFunction","ChatWindow",
-	 * 	"IsFocused" -- This will be invoked by the CoreGui when it wants to check if the chat window is active.
+	 *     "IsFocused" -- This will be invoked by the CoreGui when it wants to check if the chat window is active.
 	 * )
-	 *  
+	 * 
 	 * -- The following events are fired if the user calls StarterGui:SetCore(string name, Variant data)
 	 * -- Note that you can only hook onto these ones specifically.
 	 * AddObjects("BindableEvent","SetCore",
-	 * 	"ChatMakeSystemMessage",
-	 * 	"ChatWindowPosition",
-	 * 	"ChatWindowSize",
-	 * 	"ChatBarDisabled"
+	 *     "ChatMakeSystemMessage",
+	 *     "ChatWindowPosition",
+	 *     "ChatWindowSize",
+	 *     "ChatBarDisabled"
 	 * )
-	 *  
+	 * 
 	 * -- The following functions are invoked if the user calls StarterGui:GetCore(string name)
 	 * -- Note that you can only hook onto these ones specifically.
 	 * AddObjects("BindableFunction","GetCore",
-	 * 	"ChatWindowPosition", -- Should return a UDim2 representing the position of the chat window.
-	 * 	"ChatWindowSize", -- Should return a UDim2 representing the size of the chat window.
-	 * 	"ChatBarDisabled" -- Should return true if the chat bar is currently disabled.
+	 *     "ChatWindowPosition", -- Should return a UDim2 representing the position of the chat window.
+	 *     "ChatWindowSize", -- Should return a UDim2 representing the size of the chat window.
+	 *     "ChatBarDisabled" -- Should return true if the chat bar is currently disabled.
 	 * )
-	 *  
+	 * 
 	 * -- Connect ChatConnections to the CoreGui.
 	 * local StarterGui = game:GetService("StarterGui")
 	 * local tries = 0
 	 * local maxAttempts = 10
-	 *  
+	 * 
 	 * while (tries < maxAttempts) do
-	 * 	local success,result = pcall(function ()
-	 * 		StarterGui:SetCore("CoreGuiChatConnections",ChatConnections)
-	 * 	end)
-	 * 	if success then
-	 * 		break
-	 * 	else
-	 * 		tries = tries + 1
-	 * 		if tries == maxAttempts then
-	 * 			error("Error calling SetCore CoreGuiChatConnections: " .. result)
-	 * 		else
-	 * 			wait()
-	 * 		end
-	 * 	end
+	 *     local success,result = pcall(function ()
+	 *         StarterGui:SetCore("CoreGuiChatConnections",ChatConnections)
+	 *     end)
+	 *     if success then
+	 *         break
+	 *     else
+	 *         tries = tries + 1
+	 *         if tries == maxAttempts then
+	 *             error("Error calling SetCore CoreGuiChatConnections: " .. result)
+	 *         else
+	 *             wait()
+	 *         end
+	 *     end
 	 * end
-	 *  
+	 * 
 	 * while wait(0.2) do
-	 * 	local isVisible = (math.random() > 0.5)
-	 * 	ChatConnections.ChatWindow.VisibilityStateChanged:Fire(isVisible)
-	 * 	if not isVisible then
-	 * 		local messageCount = math.random(1,120)
-	 * 		ChatConnections.ChatWindow.MessagesChanged:Fire(messageCount)
-	 * 	end
+	 *     local isVisible = (math.random() > 0.5)
+	 *     ChatConnections.ChatWindow.VisibilityStateChanged:Fire(isVisible)
+	 *     if not isVisible then
+	 *         local messageCount = math.random(1,120)
+	 *         ChatConnections.ChatWindow.MessagesChanged:Fire(messageCount)
+	 *     end
 	 * end
 	 * ```
 	 */
@@ -2874,12 +2874,12 @@ interface Beam extends Instance {
 	 * 
 	 * ```lua
 	 * local colorSequence = ColorSequence.new({
-	 * 	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)), -- red
-	 * 	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)), -- green
-	 * 	ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 255)), -- blue
-	 * 	}
+	 *     ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)), -- red
+	 *     ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)), -- green
+	 *     ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 255)), -- blue
+	 *     }
 	 * )
-	 * ``` 
+	 * ```
 	 * 
 	 * Applying this [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence) to a [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam) would yield the following result:
 	 * 
@@ -3058,12 +3058,12 @@ interface Beam extends Instance {
 	 * 
 	 * ```lua
 	 * local numberSequence = NumberSequence.new({
-	 * 	NumberSequenceKeypoint.new(0, 1), -- transparent
-	 * 	NumberSequenceKeypoint.new(0.5, 0), -- opaque
-	 * 	NumberSequenceKeypoint.new(1, 1), -- transparent
-	 * 	}
+	 *     NumberSequenceKeypoint.new(0, 1), -- transparent
+	 *     NumberSequenceKeypoint.new(0.5, 0), -- opaque
+	 *     NumberSequenceKeypoint.new(1, 1), -- transparent
+	 *     }
 	 * )
-	 * ``` 
+	 * ```
 	 * 
 	 * Applying this [NumberSequence](https://developer.roblox.com/en-us/api-reference/datatype/NumberSequence) to a [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam) would yield the following result:
 	 * 
@@ -3107,19 +3107,19 @@ interface Beam extends Instance {
 	 * 
 	 * ```lua
 	 * beam:SetTextureOffset(0)
-	 * ``` 
+	 * ```
 	 * 
 	 * Where manual control is not required over the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s texture cycle, [Beam.TextureSpeed](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureSpeed) can be used instead to animate the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam). Although, for illustrative purposes, a similar function can be achieved with SetTextureOffset.
 	 * 
 	 * ```lua
 	 * local RunService = game:GetService("RunService")
 	 * while true do
-	 * 	for i = 1, 0, -0.01 do
-	 * 		RunService.RenderStepped:Wait()
-	 * 		beam:SetTextureOffset(i)
-	 * 	end	
+	 *     for i = 1, 0, -0.01 do
+	 *         RunService.RenderStepped:Wait()
+	 *         beam:SetTextureOffset(i)
+	 *     end
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Notes
 	 * -----
@@ -3492,12 +3492,12 @@ interface Camera extends Instance {
 	 * local localPlayer = Players.LocalPlayer
 	 * 
 	 * local function resetCameraSubject()
-	 * 	if workspace.CurrentCamera and localPlayer.Character then
-	 * 		local humanoid = localPlayer.Character:FindFirstChildOfClass("Humanoid")
-	 * 		if humanoid then
-	 * 			workspace.CurrentCamera.CameraSubject = humanoid
-	 * 		end
-	 * 	end
+	 *     if workspace.CurrentCamera and localPlayer.Character then
+	 *         local humanoid = localPlayer.Character:FindFirstChildOfClass("Humanoid")
+	 *         if humanoid then
+	 *             workspace.CurrentCamera.CameraSubject = humanoid
+	 *         end
+	 *     end
 	 * end
 	 * ```
 	 */
@@ -3694,12 +3694,12 @@ interface Camera extends Instance {
 	 * 
 	 * ```lua
 	 * local function getActualRoll()
-	 * 	local camera = workspace.CurrentCamera
+	 *     local camera = workspace.CurrentCamera
 	 * 
-	 * 	local trueUp = Vector3.new(0, 1, 0)
-	 * 	local cameraUp = camera:GetRenderCFrame().upVector
+	 *     local trueUp = Vector3.new(0, 1, 0)
+	 *     local cameraUp = camera:GetRenderCFrame().upVector
 	 * 
-	 * 	return math.acos(trueUp:Dot(cameraUp))
+	 *     return math.acos(trueUp:Dot(cameraUp))
 	 * end
 	 * ```
 	 */
@@ -3952,13 +3952,13 @@ interface Pants extends Clothing {
 	 * ```lua
 	 * local webURL = "https://www.roblox.com/catalog/1804739/Jeans"
 	 * local assetId = tonumber(string.match(webURL, "%d+") or 0) -- extract the number
-	 * local success, model = pcall(function() 
-	 * 	return game:GetService("InsertService"):LoadAsset(assetId) 
+	 * local success, model = pcall(function()
+	 *     return game:GetService("InsertService"):LoadAsset(assetId)
 	 * end)
-	 * if success then 
-	 * 	model.Parent = workspace
+	 * if success then
+	 *     model.Parent = workspace
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * For a [Shirt](https://developer.roblox.com/en-us/api-reference/class/Shirt) object's template, see [Shirt.ShirtTemplate](https://developer.roblox.com/en-us/api-reference/property/Shirt/ShirtTemplate).
 	 */
@@ -3981,11 +3981,11 @@ interface Shirt extends Clothing {
 	 * ```lua
 	 * local webURL = "https://www.roblox.com/catalog/1804747/White-Shirt"
 	 * local assetId = tonumber(string.match(webURL, "%d+") or 0)  -- Extract the number
-	 * local success, model = pcall(function() 
-	 * 	return game:GetService("InsertService"):LoadAsset(assetId) 
+	 * local success, model = pcall(function()
+	 *     return game:GetService("InsertService"):LoadAsset(assetId)
 	 * end)
-	 * if success then 
-	 * 	model.Parent = workspace
+	 * if success then
+	 *     model.Parent = workspace
 	 * end
 	 * ```
 	 */
@@ -4016,11 +4016,11 @@ interface ShirtGraphic extends CharacterAppearance {
 	 * local assetId = tonumber(string.match(webURL, "%d+") or 0)  -- Extract the number
 	 * 
 	 * local success, model = pcall(function()
-	 * 	return game:GetService("InsertService"):LoadAsset(assetId)
+	 *     return game:GetService("InsertService"):LoadAsset(assetId)
 	 * end)
 	 * 
 	 * if success then
-	 * 	model.Parent = workspace
+	 *     model.Parent = workspace
 	 * end
 	 * ```
 	 */
@@ -4041,7 +4041,7 @@ interface Chat extends Instance {
 	 * ```lua
 	 * local ChatService = game:GetService("Chat") -- Call ChatService
 	 * ChatService:RegisterChatCallback(Enum.ChatCallbackType.OnCreatingChatWindow, function()
-	 * 	return {BubbleChatEnabled = true} -- Call the API to change its boolean value to true
+	 *     return {BubbleChatEnabled = true} -- Call the API to change its boolean value to true
 	 * end)
 	 * ```
 	 */
@@ -4134,11 +4134,11 @@ interface Chat extends Instance {
  * local clickDetector = workspace.Part.ClickDetector
  * 
  * function onMouseClick()
- * 	print("You clicked me!")
+ *     print("You clicked me!")
  * end
  * 
  * clickDetector.MouseClick:connect(onMouseClick)
- * ``` 
+ * ```
  * 
  * [MaxActivationDistance](https://developer.roblox.com/en-us/api-reference/property/ClickDetector/MaxActivationDistance) can be used to limit the distance a player may be from a ClickDetector object before it is no longer clickable.
  * 
@@ -4852,33 +4852,33 @@ interface PrismaticConstraint extends SlidingBallConstraint {
  * The following helper function exhibits how the force of a [SpringConstraint](https://developer.roblox.com/en-us/api-reference/class/SpringConstraint) is calculated based on various properties of the constraint and its attachments.
  * 
  * local function getSpringForce(spring)
- * 	if not spring:IsA("SpringConstraint") then
- * 		warn(spring .. " is not a spring constraint!")
- * 		return
- * 	end
+ *     if not spring:IsA("SpringConstraint") then
+ *         warn(spring .. " is not a spring constraint!")
+ *         return
+ *     end
  * 
- * 	local currentLength = spring.CurrentLength
- * 	local freeLength = spring.FreeLength
- * 	if (spring.LimitsEnabled) then
- * 		currentLength = math.clamp(currentLength, spring.MinLength, spring.MaxLength)
- * 		freeLength = math.clamp(freeLength, spring.MinLength, spring.MaxLength)
- * 	end
- * 	local springLength = currentLength - freeLength
+ *     local currentLength = spring.CurrentLength
+ *     local freeLength = spring.FreeLength
+ *     if (spring.LimitsEnabled) then
+ *         currentLength = math.clamp(currentLength, spring.MinLength, spring.MaxLength)
+ *         freeLength = math.clamp(freeLength, spring.MinLength, spring.MaxLength)
+ *     end
+ *     local springLength = currentLength - freeLength
  * 
- * 	local axis = spring.Attachment0.WorldPosition - spring.Attachment1.WorldPosition
- * 	if axis.Magnitude > 0 then
- * 		axis = axis.Unit
- * 	end
- * 	local effectiveVelocity = spring.Attachment0.Parent.Velocity - spring.Attachment1.Parent.Velocity
+ *     local axis = spring.Attachment0.WorldPosition - spring.Attachment1.WorldPosition
+ *     if axis.Magnitude > 0 then
+ *         axis = axis.Unit
+ *     end
+ *     local effectiveVelocity = spring.Attachment0.Parent.Velocity - spring.Attachment1.Parent.Velocity
  * 
- * 	-- https://en.wikipedia.org/wiki/Harmonic\_oscillator
- * 	-- f = -k \* x - c \* dx/dt + fext
- * 	-- Gravity may not be all of the external forces; friction may affect this, but it's harder to account for
- * 	local forceExternal = Vector3.new(0, -workspace.Gravity, 0)
- * 	local force = -spring.Stiffness \* springLength - spring.Damping \* axis:Dot(effectiveVelocity) + axis:Dot(forceExternal)
+ *     -- https://en.wikipedia.org/wiki/Harmonic\_oscillator
+ *     -- f = -k \* x - c \* dx/dt + fext
+ *     -- Gravity may not be all of the external forces; friction may affect this, but it's harder to account for
+ *     local forceExternal = Vector3.new(0, -workspace.Gravity, 0)
+ *     local force = -spring.Stiffness \* springLength - spring.Damping \* axis:Dot(effectiveVelocity) + axis:Dot(forceExternal)
  * 
- * 	force = math.clamp(force, -spring.MaxForce, spring.MaxForce)
- * 	return force
+ *     force = math.clamp(force, -spring.MaxForce, spring.MaxForce)
+ *     return force
  * end
  */
 interface SpringConstraint extends Constraint {
@@ -5062,13 +5062,13 @@ interface ContextActionService extends Instance {
 	 * honkSound.SoundId = "rbxassetid://3017580236"
 	 * 
 	 * local function handleAction(actionName, inputState, inputObject)
-	 * 	if actionName == "HonkHorn" then
-	 * 		if inputState == Enum.UserInputState.Begin then
-	 * 			honkSound:Play()
-	 * 		else
-	 * 			honkSound:Pause()
-	 * 		end
-	 * 	end
+	 *     if actionName == "HonkHorn" then
+	 *         if inputState == Enum.UserInputState.Begin then
+	 *             honkSound:Play()
+	 *         else
+	 *             honkSound:Pause()
+	 *         end
+	 *     end
 	 * end
 	 * 
 	 * -- When the player sits in the vehicle:
@@ -5076,7 +5076,7 @@ interface ContextActionService extends Instance {
 	 * 
 	 * -- When the player gets out:
 	 * ContextActionService:UnbindAction("HonkHorn")
-	 * ``` 
+	 * ```
 	 * 
 	 * Action Handler Parameters
 	 * -------------------------
@@ -5107,7 +5107,7 @@ interface ContextActionService extends Instance {
 	 * 
 	 * An object that contains information about the input (varies based on UserInputType)
 	 * 
-	 * †This allows one function to handle multiple actions at once, if necessary.  
+	 * †This allows one function to handle multiple actions at once, if necessary.
 	 * \*Cancel is sent if some input was in-progress and another action bound over the in-progress input, or if the in-progress bound action was [unbound](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/UnbindAction).
 	 * 
 	 * Action Bindings Stack
@@ -5567,17 +5567,17 @@ interface DataStoreService extends Instance {
  * ```lua
  * wait(3)
  * projectile:Destroy()
- * ``` 
+ * ```
  * 
  * However there are a number of issues with this approach. Firstly, it requires yielding the code with a wait, which is not always desirable. Secondly, before the 3 seconds have elapsed the object may have already been destroyed (for example, if it reached [Workspace.FallenPartsDestroyHeight](https://developer.roblox.com/en-us/api-reference/property/Workspace/FallenPartsDestroyHeight)). In this case, the code would error as it tries to destroy an item that has already been destroyed. One answer may be:
  * 
  * ```lua
  * delay(3, function()
- * 	if projectile and projectile.Parent then
- * 		projectile:Destroy()
- * 	end
+ *     if projectile and projectile.Parent then
+ *         projectile:Destroy()
+ *     end
  * end)
- * ``` 
+ * ```
  * 
  * This solves the above issues, as it spawns a new thread to prevent the current one from yielding and checks to see if it can be destroyed. However at this point a simple command has already become quite complicated and an unnecessary thread is being created.
  * 
@@ -5585,7 +5585,7 @@ interface DataStoreService extends Instance {
  * 
  * ```lua
  * Debris:AddItem(projectile, 3)
- * ``` 
+ * ```
  * 
  * Debris does not yield the current thread, does not require a new thread and will not error if the object is already destroyed. For this reason it is the recommended method for cleaning up objects with a fixed lifetime.
  */
@@ -5605,17 +5605,17 @@ interface Debris extends Instance {
 	 * ```lua
 	 * wait(3)
 	 * projectile:Destroy()
-	 * ``` 
+	 * ```
 	 * 
 	 * However there are a number of issues with this approach. Firstly, it requires yielding the code with a wait, which is not always desirable. Secondly, before the 3 seconds have elapsed the object may have already been destroyed (for example, if it reached [Workspace.FallenPartsDestroyHeight](https://developer.roblox.com/en-us/api-reference/property/Workspace/FallenPartsDestroyHeight)). In this case, the code would error as it tries to destroy an item that has already been destroyed. One answer may be:
 	 * 
 	 * ```lua
 	 * delay(3, function()
-	 * 	if projectile and projectile.Parent then
-	 * 		projectile:Destroy()
-	 * 	end
+	 *     if projectile and projectile.Parent then
+	 *         projectile:Destroy()
+	 *     end
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * This solves the above issues, as it spawns a new thread to prevent the current one from yielding and checks to see if it can be destroyed. However at this point a simple command has already become quite complicated and an unnecessary thread is being created.
 	 * 
@@ -5623,7 +5623,7 @@ interface Debris extends Instance {
 	 * 
 	 * ```lua
 	 * Debris:AddItem(projectile, 3)
-	 * ``` 
+	 * ```
 	 * 
 	 * Debris does not yield the current thread, does not require a new thread and will not error if the object is already destroyed. For this reason it is the recommended method for cleaning up objects with a fixed lifetime.
 	 */
@@ -6096,8 +6096,8 @@ interface Fire extends Instance {
 	 * local Debris = game:GetService("Debris")
 	 * local part = script.Parent
 	 * function douseFlames(fire)
-	 * 	fire.Enabled = false -- No more new particles
-	 * 	Debris:AddItem(fire, 2) -- Remove the object after a delay (after existing particles have expired)
+	 *     fire.Enabled = false -- No more new particles
+	 *     Debris:AddItem(fire, 2) -- Remove the object after a delay (after existing particles have expired)
 	 * end
 	 * douseFlames(part.Fire)
 	 * ```
@@ -6174,9 +6174,9 @@ interface Folder extends Instance {
  * 
  * ```lua
  * if not characterModel:FindFirstChildOfClass("ForceField") then
- * 	humanoid.Health = humanoid.Health - 10
+ *     humanoid.Health = humanoid.Health - 10
  * end
- * ``` 
+ * ```
  * 
  * ForceField Visuals
  * ------------------
@@ -6640,12 +6640,12 @@ interface GuiObject extends GuiBase2d {
 	 * 
 	 * ```lua
 	 * while true do
-	 * 	script.Parent.ClipDescendants = true
-	 * 	wait(2)
-	 * 	script.Parent.ClipDescendants = false
-	 * 	wait(2)
+	 *     script.Parent.ClipDescendants = true
+	 *     wait(2)
+	 *     script.Parent.ClipDescendants = false
+	 *     wait(2)
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * ![ClipDescendants Demo](https://developer.roblox.com/assets/bltaf6f1a7233b2f3d8/ClipDescendantsDemo.gif)
 	 * 
@@ -6956,16 +6956,16 @@ interface GuiObject extends GuiBase2d {
 	 * 
 	 * local mouse = game.Players.LocalPlayer:GetMouse()
 	 * function getPosition(X, Y)
-	 * 	local gui_X = CustomScrollingFrame.AbsolutePosition.X
-	 * 	local gui_Y = CustomScrollingFrame.AbsolutePosition.Y
-	 * 	
-	 * 	
-	 * 	local pos = Vector2.new(math.abs(X - gui_X), math.abs(Y - gui_Y - 36))
-	 * 	print(pos)
+	 *     local gui_X = CustomScrollingFrame.AbsolutePosition.X
+	 *     local gui_Y = CustomScrollingFrame.AbsolutePosition.Y
+	 * 
+	 * 
+	 *     local pos = Vector2.new(math.abs(X - gui_X), math.abs(Y - gui_Y - 36))
+	 *     print(pos)
 	 * end
 	 * 
 	 * CustomScrollingFrame.MouseMoved:Connect(getPosition)
-	 * ``` 
+	 * ```
 	 * 
 	 * Note that this event may not fire exactly when the user's mouse enters or exits a GUI element. Therefore, the `x` and `y` arguments may not match up perfectly to the coordinates of the GUI's edges.
 	 * 
@@ -7843,8 +7843,8 @@ interface TextBox extends GuiObject {
 	 * 
 	 * local TextBox = script.Parent
 	 * TextBox.Focused:Connect(function()
-	 * 	wait(5)
-	 * 	TextBox:ReleaseFocus()
+	 *     wait(5)
+	 *     TextBox:ReleaseFocus()
 	 * end)
 	 * 
 	 * Please be aware that the above example assumes that it's in a LocalScript, as a child of a TextBox.
@@ -9325,15 +9325,15 @@ interface Humanoid extends Instance {
 	 * 
 	 * local player = Players:FindFirstChildOfClass(“Player”)
 	 * if player and player.Character then
-	 * 	local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
-	 * 	if humanoid then
-	 * 		local tool = workspace:FindFirstChild("Tool")
-	 * 		if tool then
-	 * 			humanoid:EquipTool(tool)	
-	 * 		end
-	 * 	end
+	 *     local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+	 *     if humanoid then
+	 *         local tool = workspace:FindFirstChild("Tool")
+	 *         if tool then
+	 *             humanoid:EquipTool(tool)
+	 *         end
+	 *     end
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * When this function is called, the humanoid will automatically unequip any [Tools](https://developer.roblox.com/en-us/api-reference/class/Tool) that it currently has equipped
 	 * 
@@ -12161,20 +12161,20 @@ interface InsertService extends Instance {
 	 * 
 	 * ```lua
 	 * [1] = {
-	 * 	CurrentStartIndex = 1, -- This can vary depending on the page you input.
-	 * 	TotalCount = 21, -- Always 21.
-	 * 	Results = {
-	 * 		-- All parameters here are psuedo. They can vary depending on the asset.
-	 * 		[1] = {	
-	 * 			Name = "Asset Name",
-	 * 			AssetId = 0000000,
-	 * 			AssetVersionId = 0000000,
-	 * 			CreatorName = "Roblox",
-	 * 		},
-	 * 		-- [2], [3], and so on... up to [21]
-	 * 	},
+	 *     CurrentStartIndex = 1, -- This can vary depending on the page you input.
+	 *     TotalCount = 21, -- Always 21.
+	 *     Results = {
+	 *         -- All parameters here are psuedo. They can vary depending on the asset.
+	 *         [1] = {
+	 *             Name = "Asset Name",
+	 *             AssetId = 0000000,
+	 *             AssetVersionId = 0000000,
+	 *             CreatorName = "Roblox",
+	 *         },
+	 *         -- [2], [3], and so on... up to [21]
+	 *     },
 	 * }
-	 * ``` 
+	 * ```
 	 * 
 	 * Yikes! That quite confusing. Unfortunately this method was added in the earlier days of Roblox, where easy to understand return-types weren't a priority.
 	 * 
@@ -12191,18 +12191,18 @@ interface InsertService extends Instance {
 	 * 
 	 * ```lua
 	 * [1] = {
-	 * 	CurrentStartIndex = 1, -- This can vary depending on the page you input.
-	 * 	TotalCount = 21, -- Always 21.
-	 * 	Results = {
-	 * 		-- All parameters here are psuedo. They can vary depending on the asset.
-	 * 		[1] = {	
-	 * 			Name = "Asset Name",
-	 * 			AssetId = 0000000,
-	 * 			AssetVersionId = 0000000,
-	 * 			CreatorName = "Roblox",
-	 *     		}
-	 *     		-- [2], [3], and so on... up to [21]
-	 *     	}
+	 *     CurrentStartIndex = 1, -- This can vary depending on the page you input.
+	 *     TotalCount = 21, -- Always 21.
+	 *     Results = {
+	 *         -- All parameters here are psuedo. They can vary depending on the asset.
+	 *         [1] = {
+	 *             Name = "Asset Name",
+	 *             AssetId = 0000000,
+	 *             AssetVersionId = 0000000,
+	 *             CreatorName = "Roblox",
+	 *             }
+	 *             -- [2], [3], and so on... up to [21]
+	 *         }
 	 * }
 	 * 
 	 * An example for iterating over this list has been provided at the bottom of this page.
@@ -12908,47 +12908,47 @@ interface Lighting extends Instance {
 	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
+	 *     minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 * 	local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 * 	local hours = minutesNormalised / 60
+	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
+	 *     local hours = minutesNormalised / 60
 	 * 
-	 * 	Lighting.ClockTime = hours
+	 *     Lighting.ClockTime = hours
 	 * 
-	 * 	wait()
+	 *     wait()
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Using [Lighting.TimeOfDay](https://developer.roblox.com/en-us/api-reference/property/Lighting/TimeOfDay) requires the time to be normalized and a string formatted:
 	 * 
 	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
+	 *     minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 * 	local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 * 	local seconds = minutesNormalised * 60
-	 * 	local hours = string.format("%02.f", math.floor(seconds/3600))
-	 * 	local mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)))
-	 * 	local secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60))
-	 * 	local timeString = hours..":"..mins..":"..secs
+	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
+	 *     local seconds = minutesNormalised * 60
+	 *     local hours = string.format("%02.f", math.floor(seconds/3600))
+	 *     local mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)))
+	 *     local secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60))
+	 *     local timeString = hours..":"..mins..":"..secs
 	 * 
-	 * 	Lighting.TimeOfDay = timeString
+	 *     Lighting.TimeOfDay = timeString
 	 * 
-	 * 	wait()
+	 *     wait()
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Using [Lighting:SetMinutesAfterMidnight](https://developer.roblox.com/en-us/api-reference/function/Lighting/SetMinutesAfterMidnight) requires no extra processing:
 	 * 
 	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
+	 *     minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 * 	Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
+	 *     Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
 	 * 
-	 * 	wait()
+	 *     wait()
 	 * end
 	 * ```
 	A numerical representation (in hours) of the current time of day used by [Lighting](https://developer.roblox.com/en-us/api-reference/class/Lighting).
@@ -12962,47 +12962,47 @@ interface Lighting extends Instance {
 	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
+	 *     minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 * 	local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 * 	local hours = minutesNormalised / 60
+	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
+	 *     local hours = minutesNormalised / 60
 	 * 
-	 * 	Lighting.ClockTime = hours
+	 *     Lighting.ClockTime = hours
 	 * 
-	 * 	wait()
+	 *     wait()
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Using [Lighting.TimeOfDay](https://developer.roblox.com/en-us/api-reference/property/Lighting/TimeOfDay) requires the time to be normalized and a string formatted:
 	 * 
 	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
+	 *     minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 * 	local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 * 	local seconds = minutesNormalised * 60
-	 * 	local hours = string.format("%02.f", math.floor(seconds/3600))
-	 * 	local mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)))
-	 * 	local secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60))
-	 * 	local timeString = hours..":"..mins..":"..secs
+	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
+	 *     local seconds = minutesNormalised * 60
+	 *     local hours = string.format("%02.f", math.floor(seconds/3600))
+	 *     local mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)))
+	 *     local secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60))
+	 *     local timeString = hours..":"..mins..":"..secs
 	 * 
-	 * 	Lighting.TimeOfDay = timeString
+	 *     Lighting.TimeOfDay = timeString
 	 * 
-	 * 	wait()
+	 *     wait()
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Using [Lighting:SetMinutesAfterMidnight](https://developer.roblox.com/en-us/api-reference/function/Lighting/SetMinutesAfterMidnight) requires no extra processing:
 	 * 
 	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
+	 *     minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 * 	Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
+	 *     Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
 	 * 
-	 * 	wait()
+	 *     wait()
 	 * end
 	 * ```
 	 *
@@ -13188,47 +13188,47 @@ interface Lighting extends Instance {
 	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
+	 *     minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 * 	local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 * 	local seconds = minutesNormalised * 60
-	 * 	local hours = string.format("%02.f", math.floor(seconds/3600))
-	 * 	local mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)))
-	 * 	local secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60))
-	 * 	local timeString = hours..":"..mins..":"..secs
+	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
+	 *     local seconds = minutesNormalised * 60
+	 *     local hours = string.format("%02.f", math.floor(seconds/3600))
+	 *     local mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)))
+	 *     local secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60))
+	 *     local timeString = hours..":"..mins..":"..secs
 	 * 
-	 * 	Lighting.TimeOfDay = timeString
+	 *     Lighting.TimeOfDay = timeString
 	 * 
-	 * 	wait()
+	 *     wait()
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Using [Lighting.ClockTime](https://developer.roblox.com/en-us/api-reference/property/Lighting/ClockTime) requires the time to be normalized:
 	 * 
 	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
+	 *     minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 * 	local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 * 	local hours = minutesNormalised / 60
+	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
+	 *     local hours = minutesNormalised / 60
 	 * 
-	 * 	Lighting.ClockTime = hours
+	 *     Lighting.ClockTime = hours
 	 * 
-	 * 	wait()
+	 *     wait()
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Using [Lighting:SetMinutesAfterMidnight](https://developer.roblox.com/en-us/api-reference/function/Lighting/SetMinutesAfterMidnight) requires no extra processing:
 	 * 
 	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
+	 *     minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 * 	Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
+	 *     Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
 	 * 
-	 * 	wait()
+	 *     wait()
 	 * end
 	 * ```
 	 */
@@ -13274,47 +13274,47 @@ interface Lighting extends Instance {
 	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
+	 *     minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 * 	local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 * 	local seconds = minutesNormalised * 60
-	 * 	local hours = string.format("%02.f", math.floor(seconds/3600))
-	 * 	local mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)))
-	 * 	local secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60))
-	 * 	local timeString = hours..":"..mins..":"..secs
+	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
+	 *     local seconds = minutesNormalised * 60
+	 *     local hours = string.format("%02.f", math.floor(seconds/3600))
+	 *     local mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)))
+	 *     local secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60))
+	 *     local timeString = hours..":"..mins..":"..secs
 	 * 
-	 * 	Lighting.TimeOfDay = timeString
+	 *     Lighting.TimeOfDay = timeString
 	 * 
-	 * 	wait()
+	 *     wait()
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Using [Lighting.ClockTime](https://developer.roblox.com/en-us/api-reference/property/Lighting/ClockTime) requires the time to be normalized:
 	 * 
 	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
+	 *     minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 * 	local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 * 	local hours = minutesNormalised / 60
+	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
+	 *     local hours = minutesNormalised / 60
 	 * 
-	 * 	Lighting.ClockTime = hours
+	 *     Lighting.ClockTime = hours
 	 * 
-	 * 	wait()
+	 *     wait()
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Using [Lighting:SetMinutesAfterMidnight](https://developer.roblox.com/en-us/api-reference/function/Lighting/SetMinutesAfterMidnight) requires no extra processing:
 	 * 
 	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
+	 *     minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 * 	Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
+	 *     Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
 	 * 
-	 * 	wait()
+	 *     wait()
 	 * end
 	 * ```
 	 */
@@ -14933,16 +14933,16 @@ interface MarketplaceService extends Instance {
 	 * Example
 	 * -------
 	 * 
-	 * Below is a screenshot of an affiliate gear sale prompt. The function in the code sample runs immediately after the player presses “Cancel” or after the user buys the item then presses “OK”. Should there be an issue with the purchase, the event also fires.  
+	 * Below is a screenshot of an affiliate gear sale prompt. The function in the code sample runs immediately after the player presses “Cancel” or after the user buys the item then presses “OK”. Should there be an issue with the purchase, the event also fires.
 	 * ![A product purchase prompt for an affiliate gear sale](https://developer.roblox.com/assets/blt881d0a28aa9fcf42/PromptProductPurchase-confirm.png)
 	 * 
 	 * ```lua
 	 * local MarketplaceService = game:GetService("MarketplaceService")
 	 * 
 	 * MarketplaceService.PromptPurchaseFinished:connect(function (...)
-	 * 	-- Print all the details of the prompt, for example:
-	 * 	-- PromptPurchaseFinished PlayerName 11377306 true
-	 * 	print("PromptPurchaseFinished", ...)
+	 *     -- Print all the details of the prompt, for example:
+	 *     -- PromptPurchaseFinished PlayerName 11377306 true
+	 *     print("PromptPurchaseFinished", ...)
 	 * end)
 	 * ```
 	 */
@@ -15333,9 +15333,9 @@ interface Mouse extends Instance {
 	 * local mouse = player:GetMouse()
 	 * -- Check that there exists a part at which the mouse is pointing
 	 * if mouse.Target then
-	 * 	print("The mouse is pointing to the " .. mouse.TargetSurface.Name .. " side of " .. mouse.Target.Name)
+	 *     print("The mouse is pointing to the " .. mouse.TargetSurface.Name .. " side of " .. mouse.Target.Name)
 	 * else
-	 * 	print("The mouse is not pointing at anything.")
+	 *     print("The mouse is not pointing at anything.")
 	 * end
 	 * ```
 	This property indicates the [NormalId](https://developer.roblox.com/en-us/api-reference/enum/NormalId) of the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) surface at which the mouse is pointing. This property is derived from the world position of mouse ([Mouse.Hit](https://developer.roblox.com/en-us/api-reference/property/Mouse/Hit)) and the part toward which the mouse is pointing ([Mouse.Target](https://developer.roblox.com/en-us/api-reference/property/Mouse/Target)).
@@ -15348,9 +15348,9 @@ interface Mouse extends Instance {
 	 * local mouse = player:GetMouse()
 	 * -- Check that there exists a part at which the mouse is pointing
 	 * if mouse.Target then
-	 * 	print("The mouse is pointing to the " .. mouse.TargetSurface.Name .. " side of " .. mouse.Target.Name)
+	 *     print("The mouse is pointing to the " .. mouse.TargetSurface.Name .. " side of " .. mouse.Target.Name)
 	 * else
-	 * 	print("The mouse is not pointing at anything.")
+	 *     print("The mouse is not pointing at anything.")
 	 * end
 	 * ```
 	 *
@@ -15437,11 +15437,11 @@ interface Mouse extends Instance {
 	 * local Tool = script.Parent --make sure this is a Tool object
 	 * 
 	 * Tool.Equipped:Connect(function(Mouse)
-	 * 	Mouse.Button1Down:Connect(function()
-	 * 		print("Button1Down")
-	 * 	end)
+	 *     Mouse.Button1Down:Connect(function()
+	 *         print("Button1Down")
+	 *     end)
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * Developers can find out the position of the mouse in world-space, and if it is pointing at any [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart), using the [Mouse.Hit](https://developer.roblox.com/en-us/api-reference/property/Mouse/Hit) and [Mouse.Target](https://developer.roblox.com/en-us/api-reference/property/Mouse/Target) properties.
 	 * 
@@ -15467,11 +15467,11 @@ interface Mouse extends Instance {
 	 * local Tool = script.Parent --make sure this is a Tool object
 	 * 
 	 * Tool.Equipped:Connect(function(Mouse)
-	 * 	Mouse.Button2Down:Connect(function()
-	 * 		print("Button2Down")
-	 * 	end)
+	 *     Mouse.Button2Down:Connect(function()
+	 *         print("Button2Down")
+	 *     end)
 	 * end).
-	 * ``` 
+	 * ```
 	 * 
 	 * Developers can find out the position of the mouse in world-space, and if it is pointing at any [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart), using the [Mouse.Hit](https://developer.roblox.com/en-us/api-reference/property/Mouse/Hit) and [Mouse.Target](https://developer.roblox.com/en-us/api-reference/property/Mouse/Target) properties.
 	 * 
@@ -15516,11 +15516,11 @@ interface Mouse extends Instance {
 	 * 
 	 * ```lua
 	 * mouse.Move:Connect(function()
-	 * 	local position = mouse.Hit.p
-	 * 	local target = mouse.Target
-	 * 	print(target, position)
+	 *     local position = mouse.Hit.p
+	 *     local target = mouse.Target
+	 *     print(target, position)
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * Note, developers are recommended to use [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) instead of the [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse) object in new work.
 	 */
@@ -15790,8 +15790,8 @@ interface BasePart extends PVInstance {
 	 * 
 	 *  ```lua
 	 * -- Calculate the part's client-side transparency. Values greater than 1 round down to 1.
-	 * 	local clientTransparency = part.Transparency + (1 * part.localTransparencyModifier)
-	 * ``` 
+	 *     local clientTransparency = part.Transparency + (1 * part.localTransparencyModifier)
+	 * ```
 	 * 
 	 * Take a look at the table below for an example of how this property affect's a part's client-side transparency:
 	 * 
@@ -16855,9 +16855,9 @@ interface Model extends PVInstance {
 	 * 
 	 * ```lua
 	 * if model.PrimaryPart then
-	 * 	model:SetPrimaryPartCFrame(cf)
+	 *     model:SetPrimaryPartCFrame(cf)
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * A common use for this is for the 'teleportation' of player characters to different positions.
 	 */
@@ -17240,11 +17240,11 @@ interface Workspace extends WorldRoot {
 	 * ```lua
 	 * local i = 0
 	 * while true do
-	 * 	i = i + 1
-	 * 	if i % 5 == 0 then
-	 * 		wait()
-	 * 	end
-	 * 	local part = Instance.new("Part", workspace)
+	 *     i = i + 1
+	 *     if i % 5 == 0 then
+	 *         wait()
+	 *     end
+	 *     local part = Instance.new("Part", workspace)
 	 * end
 	 * ```
 	 */
@@ -17274,15 +17274,15 @@ interface Workspace extends WorldRoot {
 	 * ```lua
 	 * -- finished moving a selection, make joints
 	 * local function finishedMovingParts(parts)
-	 * 	local joinMode = Plugin:GetJoinMode()
-	 * 	workspace:JoinToOutsiders(parts, joinMode)
+	 *     local joinMode = Plugin:GetJoinMode()
+	 *     workspace:JoinToOutsiders(parts, joinMode)
 	 * end
 	 * ``` ```lua
 	 * -- started moving a selection, break joints
 	 * local function startMovingParts(parts)
-	 * 	workspace:UnjoinFromOutsiders(parts)
+	 *     workspace:UnjoinFromOutsiders(parts)
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Developers interested in seeing how this function is used in the Roblox Studio should see the [Studio Tools GitHub repository](https://github.com/Roblox/Studio-Tools).
 	 */
@@ -17315,15 +17315,15 @@ interface Workspace extends WorldRoot {
 	 * ```lua
 	 * -- finished moving a selection, make joints
 	 * local function finishedMovingParts(parts)
-	 * 	local joinMode = Plugin:GetJoinMode()
-	 * 	workspace:JoinToOutsiders(parts, joinMode)
+	 *     local joinMode = Plugin:GetJoinMode()
+	 *     workspace:JoinToOutsiders(parts, joinMode)
 	 * end
 	 * ``` ```lua
 	 * -- started moving a selection, break joints
 	 * local function startMovingParts(parts)
-	 * 	workspace:UnjoinFromOutsiders(parts)
+	 *     workspace:UnjoinFromOutsiders(parts)
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Developers interested in seeing how this function is used in the Roblox Studio should see the [Studio Tools GitHub repository](https://github.com/Roblox/Studio-Tools).
 	 */
@@ -17360,29 +17360,29 @@ interface PackageLink extends Instance {
 	readonly VersionNumber: number;
 }
 
-/** An object which is essentially a table of pages, each of which is a sorted list of the key/value pairs.  
+/** An object which is essentially a table of pages, each of which is a sorted list of the key/value pairs.
  * When each page contains a list of multiple items, this iterator function may be handy:
  * 
  * function iterPageItems(pages)
- * 	return coroutine.wrap(function()
- * 		local pagenum = 1
- * 		while true do
- * 			for \_, item in ipairs(pages:GetCurrentPage()) do
- * 				coroutine.yield(item, pagenum)
- * 			end
- * 			if pages.IsFinished then
- * 				break
- * 			end
- * 			pages:AdvanceToNextPageAsync()
- * 			pagenum = pagenum + 1
- * 		end
- * 	end)
+ *     return coroutine.wrap(function()
+ *         local pagenum = 1
+ *         while true do
+ *             for \_, item in ipairs(pages:GetCurrentPage()) do
+ *                 coroutine.yield(item, pagenum)
+ *             end
+ *             if pages.IsFinished then
+ *                 break
+ *             end
+ *             pages:AdvanceToNextPageAsync()
+ *             pagenum = pagenum + 1
+ *         end
+ *     end)
  * end
  * 
  * Which can be used as
  * 
  * for item, pageNo in iterPageItems(myPageObject) do
- * 	-- look at item. Pages will advance automatically
+ *     -- look at item. Pages will advance automatically
  * end
  */
 interface Pages<T = unknown> extends Instance {
@@ -17975,15 +17975,15 @@ interface Player extends Instance {
 	 * if not character or not character.Parent then
 	 *     character = player.CharacterAdded:wait()
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * But from the server it's fine to do this:
 	 * 
 	 * ```lua
 	 * if player.Character then
-	 * 	-- do something
+	 *     -- do something
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Or if you want to wait until the character respawns from a server [Script](https://developer.roblox.com/en-us/api-reference/class/Script):
 	 * 
@@ -18435,24 +18435,24 @@ interface Player extends Instance {
 	 * local Players = game:GetService("Players")
 	 * 
 	 * local function onCharacterSpawned(player)
-	 * 	print(player.Name .. " is spawning")
+	 *     print(player.Name .. " is spawning")
 	 * end
 	 * 
 	 * local function onCharacterDespawned(player)
-	 * 	print(player.Name .. " is despawning")
+	 *     print(player.Name .. " is despawning")
 	 * end
 	 * 
 	 * local function onPlayerAdded(player)
-	 * 	player.CharacterAdded:Connect(function ()
-	 * 		onCharacterDespawned(player)
-	 * 	end)
-	 * 	player.CharacterRemoving:Connect(function ()
-	 * 		onCharacterDespawned(player)
-	 * 	end)
+	 *     player.CharacterAdded:Connect(function ()
+	 *         onCharacterDespawned(player)
+	 *     end)
+	 *     player.CharacterRemoving:Connect(function ()
+	 *         onCharacterDespawned(player)
+	 *     end)
 	 * end
 	 * 
 	 * Players.PlayerAdded:Connect(onPlayerAdded)
-	 * ``` 
+	 * ```
 	 * 
 	 * This event is only concerned with the [Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character) of a [Player](https://developer.roblox.com/en-us/api-reference/class/Player). If you instead need to track when a player joins/leaves the game, use the events [Players.PlayerAdded](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerAdded) and [Players.PlayerRemoving](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerRemoving).
 	 */
@@ -18622,13 +18622,13 @@ interface Players extends Instance {
 	 * ```lua
 	 * local Players = game:GetService("Players")
 	 * local function getPlayerByUserId(userId)
-	 * 	for _, player in pairs(Players:GetPlayers()) do
-	 * 		if player.UserId == userId then
-	 * 			return player
-	 * 		end
-	 * 	end
+	 *     for _, player in pairs(Players:GetPlayers()) do
+	 *         if player.UserId == userId then
+	 *             return player
+	 *         end
+	 *     end
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * This method is useful in finding the purchaser of a developer product using [MarketplaceService.ProcessReceipt](https://developer.roblox.com/en-us/api-reference/property/MarketplaceService/ProcessReceipt), which provides a table that includes the purchaser's UserId and not a reference to the Player object itself. Most games will require a reference to the player in order to grant products.
 	 */
@@ -18637,13 +18637,13 @@ interface Players extends Instance {
 	 * 
 	 * ```lua
 	 * local function getPlayerFromCharacter(character)
-	 * 	for _, player in pairs(game:GetService("Players"):GetPlayers()) do
-	 * 		if player.Character == character then
-	 * 			return player
-	 * 		end
-	 * 	end
+	 *     for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+	 *         if player.Character == character then
+	 *             return player
+	 *         end
+	 *     end
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * This method is often used when some event in player's character fires (such as their [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) [dying](https://developer.roblox.com/en-us/api-reference/event/Humanoid/Died)). Such an event might not directly reference the Player object, but this method provides easy access. The inverse of this function can be described as getting the Character of a Player. To do this, simply access the Character property.
 	 */
@@ -18655,7 +18655,7 @@ interface Players extends Instance {
 	 * for i, player in pairs(Players:GetPlayers()) do
 	 *     print(player.Name)
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * Scripts that connect to [Players.PlayerAdded](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerAdded) are often trying to process every Player that connects to the game. This method is useful for iterating over already-connected players that wouldn't fire [PlayerAdded](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerAdded). Using this method ensures that no player is missed!
 	 * 
@@ -18663,11 +18663,11 @@ interface Players extends Instance {
 	 * local Players = game:GetService("Players")
 	 * 
 	 * local function onPlayerAdded(player)
-	 * 	print("Player: " .. player.Name)
+	 *     print("Player: " .. player.Name)
 	 * end
 	 * 
 	 * for _, player in pairs(Players:GetPlayers()) do
-	 * 	onPlayerAdded(player)
+	 *     onPlayerAdded(player)
 	 * end
 	 * Players.PlayerAdded:Connect(onPlayerAdded)
 	 * ```
@@ -18856,13 +18856,13 @@ interface Players extends Instance {
 	 * local Players = game:GetService("Players")
 	 * 
 	 * Players.PlayerAdded:Connect(function(player)
-	 * 	print(player.Name .. " joined the game!")
+	 *     print(player.Name .. " joined the game!")
 	 * end)
 	 * 
 	 * Players.PlayerRemoving:Connect(function(player)
-	 * 	print(player.Name .. " left the game!")
+	 *     print(player.Name .. " left the game!")
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * If you want to track when a player's character is added or removed from the game, such as when a player respawns or dies, you can use the [Player.CharacterAdded](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterAdded) and [Player.CharacterRemoving](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterRemoving) functions.
 	 * 
@@ -18870,7 +18870,7 @@ interface Players extends Instance {
 	 * -----
 	 * 
 	 * *   Up until recently, this event didn't work on the client (in `Localscript`s), but this has been changed
-	 *     
+	 * 
 	 * *   This event does not work as expected in _solo mode_, because the player is created before scripts that connect to PlayerAdded run. To handle this case, as well as cases in which the script is added into the game after a player enters, create an OnPlayerAdded function that you can call to handle a player's entrance.
 	 */
 	readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
@@ -18893,13 +18893,13 @@ interface Players extends Instance {
 	 * local Players = game:GetService("Players")
 	 * 
 	 * Players.PlayerAdded:Connect(function(player)
-	 * 	print(player.Name + " joined the game!")
+	 *     print(player.Name + " joined the game!")
 	 * end)
 	 * 
 	 * Players.PlayerRemoving:Connect(function(player)
-	 * 	print(player.Name + " left the game!")
+	 *     print(player.Name + " left the game!")
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * If you want to track when a player's character is added or removed from the game, such as when a player respawns or dies, you can use the [Player.CharacterAdded](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterAdded) and [Player.CharacterRemoving](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterRemoving) functions.
 	 */
@@ -19362,14 +19362,14 @@ interface RunService extends Instance {
 	 * 
 	 * ```lua
 	 * local RunService = game:GetService("RunService")
-	 *     
+	 * 
 	 * local function functionToBind() end
-	 *     
+	 * 
 	 * -- Bind the function above to the binding named "tempBinding"
 	 * RunService:BindToRenderStep("tempBinding", 1, functionToBind)
 	 * -- Unbind the function bound to "tempBinding"
 	 * RunService:UnbindFromRenderStep("tempBinding")
-	 * ``` 
+	 * ```
 	 * 
 	 * Priority
 	 * --------
@@ -19377,20 +19377,20 @@ interface RunService extends Instance {
 	 * The `priority` of the binding is an integer, and determines when during the render step to call the custom function. The lower this number, the sooner the custom function will be called. If two bindings have the same priority the Roblox engine will randomly pick one to run first. The default Roblox control scripts run with these specific priorities:
 	 * 
 	 * *   Player Input: 100
-	 * *   Camera Controls: 200  
+	 * *   Camera Controls: 200
 	 *     For convenience, the [RenderPriority](https://developer.roblox.com/en-us/api-reference/enum/RenderPriority) enum can be used to determine the integer value to set a binding. For example, to make a binding right before the default camera update, simply subtract 1 from the camera priority level.
 	 * 
 	 * > **Note:** When using Enum.RenderPriority, remember to use _**InlineCode.Value**_ at the end of the desired enum. BindToRenderStep will not work if just the enum on its own is used.
 	 * 
 	 * ```lua
 	 * local RunService = game:GetService("RunService")
-	 *     
+	 * 
 	 * local function beforeCamera(delta)
-	 * 	-- Code in here will run before the default Roblox camera script
+	 *     -- Code in here will run before the default Roblox camera script
 	 * end
-	 *     
+	 * 
 	 * RunService:BindToRenderStep("Before camera", Enum.RenderPriority.Camera.Value - 1, beforeCamera)
-	 * ``` 
+	 * ```
 	 * 
 	 * Custom Function and Delta Time
 	 * ------------------------------
@@ -19623,12 +19623,12 @@ interface RunService extends Instance {
 	 * 
 	 * ```lua
 	 * local RunService = game:GetService("RunService")
-	 *     
+	 * 
 	 * local success, message = pcall(function() RunService:UnbindFromRenderStep("drawImage") end)
 	 * if success then
-	 * 	print("Success: Function unbound!")
+	 *     print("Success: Function unbound!")
 	 * else
-	 * 	print("An error occurred: "..message)
+	 *     print("An error occurred: "..message)
 	 * end
 	 * ```
 	 */
@@ -19645,9 +19645,9 @@ interface RunService extends Instance {
 	 * local RATE_PER_SECOND = 2
 	 * 
 	 * RunService.Heartbeat:Connect(function(step)
-	 * 	local increment = RATE_PER_SECOND * step
+	 *     local increment = RATE_PER_SECOND * step
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
 	 */
@@ -19666,9 +19666,9 @@ interface RunService extends Instance {
 	 * local RATE_PER_SECOND = 2
 	 * 
 	 * RunService.RenderStepped:Connect(function(step)
-	 * 	local increment = RATE_PER_SECOND * step
+	 *     local increment = RATE_PER_SECOND * step
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
 	 * 
@@ -19687,9 +19687,9 @@ interface RunService extends Instance {
 	 * local RATE_PER_SECOND = 2
 	 * 
 	 * RunService.Stepped:Connect(function(time, step)
-	 * 	local increment = RATE_PER_SECOND * step
+	 *     local increment = RATE_PER_SECOND * step
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
 	 */
@@ -20043,8 +20043,8 @@ interface Smoke extends Instance {
 	 * local Debris = game:GetService("Debris")
 	 * local part = script.Parent
 	 * function stopSmoke(smoke)
-	 * 	smoke.Enabled = false -- No more new particles
-	 * 	Debris:AddItem(smoke, 10) -- Remove the object after a delay (after existing particles have expired)
+	 *     smoke.Enabled = false -- No more new particles
+	 *     Debris:AddItem(smoke, 10) -- Remove the object after a delay (after existing particles have expired)
 	 * end
 	 * stopSmoke(part.Smoke)
 	 * ```
@@ -20323,10 +20323,10 @@ interface Sound extends Instance {
 	 * 
 	 * ```lua
 	 * if newPosition >= sound.TimeLength then
-	 * 	newPosition = newPosition - sound.TimeLength
+	 *     newPosition = newPosition - sound.TimeLength
 	 * end
 	 * sound.TimePosition = newPosition
-	 * ``` 
+	 * ```
 	 * 
 	 * Setting TimePosition to a value less than zero currently does not influence playback, but this behavior should not be relied upon.
 	Shows the progress in seconds of the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound). Can be changed to move the playback position of the sound. If the sound is already playing then playback will snap to the specified position. If it is not playing the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) will begin playback at the set position when the sound is next played.
@@ -20337,10 +20337,10 @@ interface Sound extends Instance {
 	 * 
 	 * ```lua
 	 * if newPosition >= sound.TimeLength then
-	 * 	newPosition = newPosition - sound.TimeLength
+	 *     newPosition = newPosition - sound.TimeLength
 	 * end
 	 * sound.TimePosition = newPosition
-	 * ``` 
+	 * ```
 	 * 
 	 * Setting TimePosition to a value less than zero currently does not influence playback, but this behavior should not be relied upon.
 	 *
@@ -21021,8 +21021,8 @@ interface Sparkles extends Instance {
 	 * local Debris = game:GetService("Debris")
 	 * local part = script.Parent
 	 * function stopSparkling(sparkles)
-	 * 	sparkles.Enabled = false -- No more new particles
-	 * 	Debris:AddItem(sparkles, 4) -- Remove the object after a delay (after existing particles have expired)
+	 *     sparkles.Enabled = false -- No more new particles
+	 *     Debris:AddItem(sparkles, 4) -- Remove the object after a delay (after existing particles have expired)
 	 * end
 	 * stopSparkling(part.Sparkles)
 	 * ```
@@ -21059,15 +21059,15 @@ interface Sparkles extends Instance {
  * 
  * -- Accessing StarterGear from Server Script
  * local function onPlayerAdded(player)
- * 	-- Wait for the StarterGear to be added
- * 	local starterGear = player:WaitForChild("StarterGear")
- * 	-- Add a Tool to the StarterGear
- * 	local toolExample = toolExamplePrefab:Clone()
- * 	toolExample.Parent = starterGear
+ *     -- Wait for the StarterGear to be added
+ *     local starterGear = player:WaitForChild("StarterGear")
+ *     -- Add a Tool to the StarterGear
+ *     local toolExample = toolExamplePrefab:Clone()
+ *     toolExample.Parent = starterGear
  * end
  * 
  * Players.PlayerAdded:connect(onPlayerAdded)
- * ``` 
+ * ```
  * 
  * Allowing Gear
  * -------------
@@ -21512,7 +21512,7 @@ interface Team extends Instance {
 	 * 
 	 * ```lua
 	 * Team.PlayerAdded:Connect(function(player)
-	 * 	print(player.Name.." has joined the team")
+	 *     print(player.Name.." has joined the team")
 	 * end)
 	 * ```
 	 */
@@ -21523,7 +21523,7 @@ interface Team extends Instance {
 	 * 
 	 * ```lua
 	 * Team.PlayerRemoved:Connect(function(player)
-	 * 	print(player.Name.." has left the team")
+	 *     print(player.Name.." has left the team")
 	 * end)
 	 * ```
 	 */
@@ -22618,14 +22618,14 @@ interface Translator extends Instance {
 	 * local LocalizationService = game:GetService("LocalizationService")
 	 * 
 	 * local success, translator = pcall(function()
-	 * 	return LocalizationService:GetTranslatorForPlayerAsync(game.Players.LocalPlayer)
+	 *     return LocalizationService:GetTranslatorForPlayerAsync(game.Players.LocalPlayer)
 	 * end)
 	 * 
 	 * if success then
-	 * 	local trans = translator:Translate(workspace.ComputerScreen.SurfaceGui.TextLabel, "Screen")
-	 * 	print(trans)
+	 *     local trans = translator:Translate(workspace.ComputerScreen.SurfaceGui.TextLabel, "Screen")
+	 *     print(trans)
 	 * else
-	 * 	warn("Cannot load translator for player!")
+	 *     warn("Cannot load translator for player!")
 	 * end
 	 * ```
 	 */
@@ -23244,11 +23244,11 @@ interface UserInputService extends Instance {
 	 * 
 	 * local accelerometerEnabled = oserInputService.AccelerometerEnabled
 	 * if accelerometerEnabled then
-	 * 	print("Accelerometer enabled!")
+	 *     print("Accelerometer enabled!")
 	 * else
-	 * 	print("Accelerometer not enabled!")
+	 *     print("Accelerometer not enabled!")
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * If the device has an enabled accelerometer, you can get it's current acceleration by using the [UserInputService:GetDeviceAcceleration](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GetDeviceAcceleration) function or track when the device's acceleration changes by using the [UserInputService.DeviceAccelerationChanged](https://developer.roblox.com/en-us/api-reference/event/UserInputService/DeviceAccelerationChanged) event.
 	 * 
@@ -23261,11 +23261,11 @@ interface UserInputService extends Instance {
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * if userInputService.GamepadEnabled then
-	 * 	print("Gamepad enabled")
+	 *     print("Gamepad enabled")
 	 * else
-	 * 	print("Gamepad not enabled")
+	 *     print("Gamepad not enabled")
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * If gamepads are available, you can use [UserInputService:GetConnectedGamepads](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GetConnectedGamepads) to retrieve a list of connected gamepads and [UserInputService:GetNavigationGamepads](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GetNavigationGamepads) to retrieve a list of connected gamepads that also controlnavigation GUIs.
 	 * 
@@ -23451,11 +23451,11 @@ interface UserInputService extends Instance {
 	 * 
 	 * local keyboardIsVisible = userInputService.OnScreenKeyboardIsVisible
 	 * if (keyboardIsVisible) then
-	 * 	print("On-screen keyboard is visible!")
+	 *     print("On-screen keyboard is visible!")
 	 * else
-	 * 	print("On-screen keyboard is not visible!")
+	 *     print("On-screen keyboard is not visible!")
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * As [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) is client-side only, this property can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
@@ -23478,11 +23478,11 @@ interface UserInputService extends Instance {
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * if userInputService.TouchEnabled then
-	 * 	print("The user's device has a touchscreen!")
+	 *     print("The user's device has a touchscreen!")
 	 * else
-	 * 	print("The user's device does not have a touchscreen!")
+	 *     print("The user's device does not have a touchscreen!")
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * See [this](https://developer.roblox.com/learn-roblox/cross-platform) page for articles on cross-platform development.
 	 * 
@@ -23983,11 +23983,11 @@ interface UserInputService extends Instance {
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * if (userInputService:IsNavigationGamepad(UserInputType.Gamepad1) then
-	 * 	print("Gamepad is a navigation gamepad!")
+	 *     print("Gamepad is a navigation gamepad!")
 	 * else
-	 * 	print("Gamepad is not a navigation gamepad!")
+	 *     print("Gamepad is not a navigation gamepad!")
 	 * end
-	 * ``` 
+	 * ```
 	 * 
 	 * A list of all connected gamepads, regardless of navigation can be retrieved using\`UserInput/GetConnectedGamepads.
 	 * 
@@ -24091,15 +24091,15 @@ interface UserInputService extends Instance {
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * local function GamepadConnected(gamepad)
-	 * 	print("Player has plugged controller: " .. tostring(gamepad))
+	 *     print("Player has plugged controller: " .. tostring(gamepad))
 	 * end)
 	 * 
 	 * userInputService.GamepadConnected:Connect(GamepadDisconnected)
-	 * ``` 
+	 * ```
 	 * 
 	 * If you want to see which devices are connected, you can use the [UserInputService:GetConnectedGamepads](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GetConnectedGamepads) function.
 	 * 
-	 * As this event fires locally, it can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).  
+	 * As this event fires locally, it can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * See [this](https://developer.roblox.com/learn-roblox/cross-platform) page for articles on cross-platform development.
 	 * 
 	 * See also
@@ -24128,11 +24128,11 @@ interface UserInputService extends Instance {
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * local function GamepadDisconnected(gamepad)
-	 * 	print("Player has unplugged controller: " .. tostring(gamepad))
+	 *     print("Player has unplugged controller: " .. tostring(gamepad))
 	 * end)
 	 * 
 	 * userInputService.GamepadDisconnected:Connect(GamepadDisconnected)
-	 * ``` 
+	 * ```
 	 * 
 	 * As this event fires locally, it can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
@@ -24225,11 +24225,11 @@ interface UserInputService extends Instance {
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * function TextBoxFocusReleased(textbox)
-	 * 	print(textbox.Name)
+	 *     print(textbox.Name)
 	 * end
 	 * 
 	 * UserInputService.TextBoxFocusReleased:Connect(TextBoxFocusReleased)
-	 * ``` 
+	 * ```
 	 * 
 	 * It can be used alongside [UserInputService.TextBoxFocused](https://developer.roblox.com/en-us/api-reference/event/UserInputService/TextBoxFocused) to track when a TextBox gains and loses focus.
 	 * 
@@ -24251,11 +24251,11 @@ interface UserInputService extends Instance {
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * function TextBoxFocused(textbox)
-	 * 	print(textbox.Name)
+	 *     print(textbox.Name)
 	 * end)
 	 * 
 	 * UserInputService.TextBoxFocused:Connect(TextBoxFocused)
-	 * ``` 
+	 * ```
 	 * 
 	 * It can be used alongside `UserInputService/FocusReleased` to track when a text box gains and loses focus.
 	 * 
@@ -24279,11 +24279,11 @@ interface UserInputService extends Instance {
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * function TouchEnded(touch, gameProcessedEvent)
-	 * 	print("Touch ended at "..tostring(touch.Position))
+	 *     print("Touch ended at "..tostring(touch.Position))
 	 * end
 	 * 
 	 * UserInputService.TouchEnded:Connect(TouchEnded)
-	 * ``` 
+	 * ```
 	 * 
 	 * The touch input object is the same input object throughout the lifetime of the touch. So comparing [InputObjects](https://developer.roblox.com/en-us/api-reference/class/InputObject) when they are touch objects is valid to determine if it is the same finger.
 	 * 
@@ -24317,11 +24317,11 @@ interface UserInputService extends Instance {
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * function TouchLongPress(TouchPositions, state, gameProcessedEvent)
-	 * 	print("Long press event fired. State of press: "..tostring(state))
+	 *     print("Long press event fired. State of press: "..tostring(state))
 	 * end
 	 * 
 	 * userInputService.TouchLongPress:Connect(TouchLongPress)
-	 * ``` 
+	 * ```
 	 * 
 	 * To check if a user's device is TouchEnabled, and that touch events will fire, see[UserInputService.TouchEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/TouchEnabled).
 	 * 
@@ -24357,12 +24357,12 @@ interface UserInputService extends Instance {
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * function onTouchMoved(touch, gameProcessedEvent)
-	 * 	local oldPosition = touch.Position - touch.Delta
-	 * 	print("Touch moved from " .. tostring(oldPosition) .. "to " .. tostring(touch.Position))
+	 *     local oldPosition = touch.Position - touch.Delta
+	 *     print("Touch moved from " .. tostring(oldPosition) .. "to " .. tostring(touch.Position))
 	 * end
 	 * 
 	 * UserInputService.TouchMoved:Connect(onTouchMoved)
-	 * ``` 
+	 * ```
 	 * 
 	 * It can be paired with [UserInputService.TouchStarted](https://developer.roblox.com/en-us/api-reference/event/UserInputService/TouchStarted) and [UserInputService.TouchEnded](https://developer.roblox.com/en-us/api-reference/event/UserInputService/TouchEnded) to determine when a user starts touching the screen, how their finger moves while touching it, and when the they stop touching the screen.
 	 * 
@@ -24396,9 +24396,9 @@ interface UserInputService extends Instance {
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * userInputService.TouchPan:Connect(function(touchPositions, totalTranslation, velocity, state, gameProcessedEvent)
-	 * 	print("Speed of touch drag: "..tostring(velocity))
+	 *     print("Speed of touch drag: "..tostring(velocity))
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * Take a look at another useful [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) function here [UserInputService.TouchRotate](https://developer.roblox.com/en-us/api-reference/event/UserInputService/TouchRotate).
 	 * 
@@ -24436,9 +24436,9 @@ interface UserInputService extends Instance {
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * UserInputService.TouchPinch:Connect(function(touchPositions, scale, velocity, state, gameProcessedEvent)
-	 * 	print("Scale difference since beginning of pinch: "..tostring(scale))
+	 *     print("Scale difference since beginning of pinch: "..tostring(scale))
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * To check if a user's device is TouchEnabled, and that touch events will fire, see [UserInputService.TouchEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/TouchEnabled).
 	 * 
@@ -24478,9 +24478,9 @@ interface UserInputService extends Instance {
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * UserInputService.TouchRotate:Connect(function(touchPositions, rotation, velocity, state, gameProcessedEvent)
-	 * 	print("Camera has rotated "..tostring(rotation).." degrees!")
+	 *     print("Camera has rotated "..tostring(rotation).." degrees!")
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * To check if a user's device is TouchEnabled, and that touch events will fire, see [UserInputService.TouchEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/TouchEnabled).
 	 * 
@@ -24625,9 +24625,9 @@ interface UserInputService extends Instance {
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * UserInputService.WindowFocusReleased:Connect(function()
-	 * 	print("Window focus released")
+	 *     print("Window focus released")
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * This event can be used alongside [UserInputService.WindowFocused](https://developer.roblox.com/en-us/api-reference/event/UserInputService/WindowFocused) to track whether the Roblox client is actively focused on a user's screen.
 	 * 
@@ -24642,9 +24642,9 @@ interface UserInputService extends Instance {
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * UserInputService.WindowFocused:Connect(function()
-	 * 	print("Window focused")
+	 *     print("Window focused")
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * This event can be used alongside [UserInputService.WindowFocusReleased](https://developer.roblox.com/en-us/api-reference/event/UserInputService/WindowFocusReleased) to track whether the Roblox client is actively focused on a user's screen.
 	 * 

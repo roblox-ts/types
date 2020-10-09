@@ -347,37 +347,37 @@ interface PluginGui extends LayerCollector {
 	 * ```lua
 	 * local closing = false
 	 * pluginGui:BindToClose(function()
-	 * 	-- make sure we haven't already made a button
-	 * 	if closing then
-	 * 		return
-	 * 	end
-	 * 	closing = true
+	 *     -- make sure we haven't already made a button
+	 *     if closing then
+	 *         return
+	 *     end
+	 *     closing = true
 	 * 
-	 * 	-- create confirm button
-	 * 	local confirmButton = Instance.new("TextButton")
-	 * 	confirmButton.AnchorPoint = Vector2.new(0.5, 0.5)
-	 * 	confirmButton.Size = UDim2.new(0.5, 0, 0.5, 0)
-	 * 	confirmButton.Position = UDim2.new(0.5, 0, 0.5, 0)
-	 * 	confirmButton.BackgroundColor3 = Color3.new(1, 0, 0)
-	 * 	confirmButton.Text = "Close?"
-	 * 	confirmButton.Parent = pluginGui
+	 *     -- create confirm button
+	 *     local confirmButton = Instance.new("TextButton")
+	 *     confirmButton.AnchorPoint = Vector2.new(0.5, 0.5)
+	 *     confirmButton.Size = UDim2.new(0.5, 0, 0.5, 0)
+	 *     confirmButton.Position = UDim2.new(0.5, 0, 0.5, 0)
+	 *     confirmButton.BackgroundColor3 = Color3.new(1, 0, 0)
+	 *     confirmButton.Text = "Close?"
+	 *     confirmButton.Parent = pluginGui
 	 * 
-	 * 	-- listen for click
-	 * 	confirmButton.Activated:Connect(function()
-	 * 		-- close the gui
-	 * 		pluginGui.Enabled = false
-	 * 	
-	 * 		-- remove confirm button
-	 * 		confirmButton:Destroy()
-	 * 	end)
+	 *     -- listen for click
+	 *     confirmButton.Activated:Connect(function()
+	 *         -- close the gui
+	 *         pluginGui.Enabled = false
+	 * 
+	 *         -- remove confirm button
+	 *         confirmButton:Destroy()
+	 *     end)
 	 * end)
-	 * ``` 
+	 * ```
 	 * 
 	 * You can call BindToClose with no argument to 'unbind' and revert to the default behavior described above. For example:
 	 * 
 	 * ```lua
 	 * pluginGui:BindToClose()
-	 * ``` 
+	 * ```
 	 * 
 	 * See also
 	 * --------
@@ -1093,11 +1093,11 @@ interface Plugin extends Instance {
 	 * 
 	 * local gridsize = plugin.GridSize
 	 * if math.abs(gridsize-0.2) < 0.005 then -- Check if the gridsize is between 0.195 and 0.205
-	 * 	gridsize = 0.2
+	 *     gridsize = 0.2
 	 * elseif math.abs(gridsize-0.01) < 0.005 then -- Between 0.005 and 0.015
-	 * 	gridsize = 0.01
+	 *     gridsize = 0.01
 	 * else -- Assume it's 1
-	 * 	gridsize = 1
+	 *     gridsize = 1
 	 * end
 	 */
 	readonly GridSize: number;
@@ -2339,12 +2339,12 @@ interface StudioService extends Instance {
 	 * local startTime = os.time()
 	 * local activeScript
 	 * local function onActiveScriptChanged(newActiveScript)
-	 * 	if newActiveScript ~= activeScript then
-	 * 		local deltaTime = os.time() - startTime
-	 * 		print(("You edited %s for %d:%2.d"):format(activeScript.Name, math.floor(deltaTime / 60), deltaTime % 60))
-	 * 	end
-	 * 	startTime = os.time()
-	 * 	activeScript = newActiveScript
+	 *     if newActiveScript ~= activeScript then
+	 *         local deltaTime = os.time() - startTime
+	 *         print(("You edited %s for %d:%2.d"):format(activeScript.Name, math.floor(deltaTime / 60), deltaTime % 60))
+	 *     end
+	 *     startTime = os.time()
+	 *     activeScript = newActiveScript
 	 * end
 	 * game:GetService("StudioService"):GetPropertyChangedSignal("ActiveScript"):Connect(onActiveScriptChanged)
 	 * ```
@@ -2354,12 +2354,12 @@ interface StudioService extends Instance {
 	 * local startTime = os.time()
 	 * local activeScript
 	 * local function onActiveScriptChanged(newActiveScript)
-	 * 	if newActiveScript ~= activeScript then
-	 * 		local deltaTime = os.time() - startTime
-	 * 		print(("You edited %s for %d:%2.d"):format(activeScript.Name, math.floor(deltaTime / 60), deltaTime % 60))
-	 * 	end
-	 * 	startTime = os.time()
-	 * 	activeScript = newActiveScript
+	 *     if newActiveScript ~= activeScript then
+	 *         local deltaTime = os.time() - startTime
+	 *         print(("You edited %s for %d:%2.d"):format(activeScript.Name, math.floor(deltaTime / 60), deltaTime % 60))
+	 *     end
+	 *     startTime = os.time()
+	 *     activeScript = newActiveScript
 	 * end
 	 * game:GetService("StudioService"):GetPropertyChangedSignal("ActiveScript"):Connect(onActiveScriptChanged)
 	 * ```
@@ -2543,11 +2543,11 @@ interface StudioService extends Instance {
 	 * 
 	 * ```lua
 	 * {
-	 * 	Image = "rbxasset://textures/ClassImages.png",
-	 * 	ImageRectOffset = Vector2.new(16, 0),
-	 * 	ImageRectSize = Vector2.new(16, 16)
+	 *     Image = "rbxasset://textures/ClassImages.png",
+	 *     ImageRectOffset = Vector2.new(16, 0),
+	 *     ImageRectSize = Vector2.new(16, 16)
 	 * }
-	 * ``` 
+	 * ```
 	 * 
 	 * The utility function below may prove useful when displaying class icons:
 	 * 
@@ -2555,9 +2555,9 @@ interface StudioService extends Instance {
 	 * local StudioService = game:GetService("StudioService")
 	 * local imageLabel = script.Parent
 	 * local function displayClassIcon(image, className)
-	 * 	for k, v in pairs(StudioService:GetClassIcon(className)) do
-	 * 		image[k] = v -- Set property
-	 * 	end
+	 *     for k, v in pairs(StudioService:GetClassIcon(className)) do
+	 *         image[k] = v -- Set property
+	 *     end
 	 * end
 	 * displayClassIcon(imageLabel, "Part")
 	 * ```
