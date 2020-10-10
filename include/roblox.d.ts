@@ -1930,20 +1930,3 @@ declare function classIs<
 		? Instances[Q]
 		: Instances[Q] & { ClassName: Q }
 	: T;
-
-/**
- * Returns the passed argument.
- *
- * This is useful for ensuring that a value matches the given type in areas where it is not directly possible to do so.
- * @example
- * type P = { x: number, y: number };
- * const obj = {
- *   pos: identity<P>({ x: 5, y: 10 });
- * }
- */
-declare function identity<T>(arg: T): T;
-
-/**
- * This variable will be automatically replaced by the "version" string from the package.json file
- */
-declare const PKG_VERSION: string;
