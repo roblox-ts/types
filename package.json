@@ -5,9 +5,9 @@
 		"access": "public"
 	},
 	"description": "TypeScript typings for the Roblox platform. Partially handwritten and partially automatically generated.",
+	"scripts": {},
 	"main": "include/roblox.d.ts",
 	"types": "include/roblox.d.ts",
-	"scripts": {},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/roblox-ts/types.git"
@@ -18,6 +18,9 @@
 		"url": "https://github.com/roblox-ts/types/issues"
 	},
 	"homepage": "https://github.com/roblox-ts/types#readme",
+	"dependencies": {
+		"@rbxts/compiler-types": "latest"
+	},
 	"keywords": [
 		"types",
 		"Roblox",
