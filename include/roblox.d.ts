@@ -1180,6 +1180,7 @@ interface CFrameConstructor {
 		R22: number,
 	): CFrame;
 }
+
 declare const CFrame: CFrameConstructor;
 
 interface Color3Constructor {
