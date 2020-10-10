@@ -19,7 +19,7 @@
 	},
 	"homepage": "https://github.com/roblox-ts/types#readme",
 	"dependencies": {
-		"@rbxts/compiler-types": "latest"
+		"@rbxts/compiler-types": "*"
 	},
 	"keywords": [
 		"types",
