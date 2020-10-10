@@ -603,9 +603,11 @@ declare function next<K, V>(object: ReadonlyMap<K, V>, index?: K): LuaTuple<[K, 
 declare function next<T>(object: T, index?: keyof T): LuaTuple<[keyof T, T[keyof T]]>;
 declare function next(object: object, index?: unknown): LuaTuple<[unknown, unknown]>;
 
-declare function pairs<T>(object: ReadonlyArray<T>): IterableFunction<LuaTuple<[number, T]>>;
+declare function pairs<T>(object: ReadonlyArray<T>): IterableFunction<LuaTuple<[number, Exclude<T, undefined>]>>;
 declare function pairs<T>(object: ReadonlySet<T>): IterableFunction<LuaTuple<[T, true]>>;
-declare function pairs<K, V>(object: ReadonlyMap<K, V>): IterableFunction<LuaTuple<[K, V]>>;
-declare function pairs<T>(object: T): IterableFunction<LuaTuple<[keyof T, T[keyof T]]>>;
+declare function pairs<K, V>(
+	object: ReadonlyMap<K, V>,
+): IterableFunction<LuaTuple<[Exclude<K, undefined>, Exclude<V, undefined>]>>;
+declare function pairs<T>(object: T): IterableFunction<LuaTuple<[keyof T, Exclude<T[keyof T], undefined>]>>;
 
-declare function ipairs<T>(object: Array<T>): IterableFunction<LuaTuple<[number, T]>>;
+declare function ipairs<T>(object: Array<T>): IterableFunction<LuaTuple<[number, Exclude<T, undefined>]>>;
