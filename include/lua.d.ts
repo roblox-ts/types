@@ -579,7 +579,7 @@ declare function next<T extends ReadonlyArray<any>>(
 	: T extends ReadonlyArray<infer U>
 	? LuaTuple<Array<U>>
 	: LuaTuple<[unknown, unknown]>;
-declare function next<T extends Array<any>>(
+declare function next<T extends ReadonlyArray<any>>(
 	object: T,
 	index?: number,
 ): T extends [infer A]
@@ -594,11 +594,18 @@ declare function next<T extends Array<any>>(
 	? LuaTuple<[number, A | B | C | D | E]>
 	: T extends [infer A, infer B, infer C, infer D, infer E, infer F]
 	? LuaTuple<[number, A | B | C | D | E | F]>
-	: T extends Array<infer U>
+	: T extends ReadonlyArray<infer U>
 	? LuaTuple<Array<U>>
 	: LuaTuple<[unknown, unknown]>;
-declare function next<T>(object: Array<T>, index?: number): LuaTuple<[number, T]>;
-declare function next<T>(object: Set<T>, index?: T): LuaTuple<[T, true]>;
-declare function next<K, V>(object: Map<K, V>, index?: K): LuaTuple<[K, V]>;
+declare function next<T>(object: ReadonlyArray<T>, index?: number): LuaTuple<[number, T]>;
+declare function next<T>(object: ReadonlySet<T>, index?: T): LuaTuple<[T, true]>;
+declare function next<K, V>(object: ReadonlyMap<K, V>, index?: K): LuaTuple<[K, V]>;
 declare function next<T>(object: T, index?: keyof T): LuaTuple<[keyof T, T[keyof T]]>;
 declare function next(object: object, index?: unknown): LuaTuple<[unknown, unknown]>;
+
+declare function pairs<T>(object: ReadonlyArray<T>): IterableFunction<LuaTuple<[number, T]>>;
+declare function pairs<T>(object: ReadonlySet<T>): IterableFunction<LuaTuple<[T, true]>>;
+declare function pairs<K, V>(object: ReadonlyMap<K, V>): IterableFunction<LuaTuple<[K, V]>>;
+declare function pairs<T>(object: T): IterableFunction<LuaTuple<[keyof T, T[keyof T]]>>;
+
+declare function ipairs<T>(object: Array<T>): IterableFunction<LuaTuple<[number, T]>>;
