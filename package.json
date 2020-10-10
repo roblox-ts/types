@@ -45,7 +45,6 @@
 		"ts-morph": "^8.1.1",
 		"typescript": "^4.0.3"
 	},
-	"bundleDependencies": [],
 	"dependencies": {
 		"@rbxts/compiler-types": "latest"
 	},
