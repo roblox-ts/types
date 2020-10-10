@@ -1478,10 +1478,12 @@ interface Random {
 	NextNumber(this: Random, min: number, max: number): number;
 	Clone(this: Random): Random;
 }
+
 interface RandomConstructor {
 	new (seed: number): Random;
 	new (): Random;
 }
+
 declare const Random: RandomConstructor;
 
 // Ray
@@ -1492,7 +1494,9 @@ interface Ray {
 	ClosestPoint(this: Ray, point: Vector3): Vector3;
 	Distance(this: Ray, point: Vector3): number;
 }
+
 type RayConstructor = new (origin: Vector3, direction: Vector3) => Ray;
+
 declare const Ray: RayConstructor;
 
 // RaycastParams
@@ -1521,7 +1525,9 @@ interface RaycastParams {
 	 */
 	CollisionGroup: string;
 }
+
 type RaycastParamsConstructor = new () => RaycastParams;
+
 declare const RaycastParams: RaycastParamsConstructor;
 
 // RaycastResult
@@ -1543,6 +1549,7 @@ interface RectConstructor {
 	new (min: Vector2, max: Vector2): Rect;
 	new (minX: number, minY: number, maxX: number, maxY: number): Rect;
 }
+
 declare const Rect: RectConstructor;
 
 // Region3
@@ -1551,7 +1558,9 @@ interface Region3 {
 	readonly Size: Vector3;
 	ExpandToGrid(this: Region3, resolution: number): Region3;
 }
+
 type Region3Constructor = new (min: Vector3, max: Vector3) => Region3;
+
 declare const Region3: Region3Constructor;
 
 // Region3int16
@@ -1559,7 +1568,9 @@ interface Region3int16 {
 	readonly Min: Vector3int16;
 	readonly Max: Vector3int16;
 }
+
 type Region3int16Constructor = new (min: Vector3int16, max: Vector3int16) => Region3int16;
+
 declare const Region3int16: Region3int16Constructor;
 
 // TweenInfo
@@ -1571,6 +1582,7 @@ interface TweenInfo {
 	readonly Reverses: boolean;
 	readonly DelayTime: number;
 }
+
 type TweenInfoConstructor = new (
 	time?: number,
 	easingStyle?: Enum.EasingStyle,
@@ -1579,6 +1591,7 @@ type TweenInfoConstructor = new (
 	reverses?: boolean,
 	delayTime?: number,
 ) => TweenInfo;
+
 declare const TweenInfo: TweenInfoConstructor;
 
 // UDim
@@ -1586,7 +1599,9 @@ interface UDim {
 	readonly Scale: number;
 	readonly Offset: number;
 }
+
 type UDimConstructor = new (scale: number, offset: number) => UDim;
+
 declare const UDim: UDimConstructor;
 
 // UDim2
@@ -1597,6 +1612,7 @@ interface UDim2 {
 	readonly Height: UDim;
 	Lerp(this: UDim2, goal: UDim2, alpha: number): UDim2;
 }
+
 interface UDim2Constructor {
 	new (): UDim2;
 	new (xScale: number, xOffset: number, yScale: number, yOffset: number): UDim2;
@@ -1604,6 +1620,7 @@ interface UDim2Constructor {
 	fromOffset: (x: number, y: number) => UDim2;
 	fromScale: (x: number, y: number) => UDim2;
 }
+
 declare const UDim2: UDim2Constructor;
 
 // Vector2
@@ -1621,7 +1638,9 @@ interface Vector2 {
 	/** Returns the cross product of the two vectors */
 	Cross(this: Vector2, other: Vector2): number;
 }
+
 type Vector2Constructor = new (x?: number, y?: number) => Vector2;
+
 declare const Vector2: Vector2Constructor;
 
 // Vector2int16
@@ -1629,7 +1648,9 @@ interface Vector2int16 {
 	readonly X: number;
 	readonly Y: number;
 }
+
 type Vector2int16Constructor = new (x?: number, y?: number) => Vector2int16;
+
 declare const Vector2int16: Vector2int16Constructor;
 
 // Vector3
@@ -1650,11 +1671,13 @@ interface Vector3 {
 	/** Returns true if the other Vector3 falls within the epsilon radius of this Vector3. */
 	FuzzyEq(this: Vector3, other: Vector3, epsilon?: number): boolean;
 }
+
 interface Vector3Constructor {
 	FromNormalId: (norm: Enum.NormalId) => Vector3;
 	FromAxis: (axis: Enum.Axis) => Vector3;
 	new (x?: number, y?: number, z?: number): Vector3;
 }
+
 declare const Vector3: Vector3Constructor;
 
 // Vector3int16
@@ -1663,7 +1686,9 @@ interface Vector3int16 {
 	readonly Y: number;
 	readonly Z: number;
 }
+
 type Vector3int16Constructor = new (x?: number, y?: number, z?: number) => Vector3;
+
 declare const Vector3int16: Vector3int16Constructor;
 
 // unusable internal studio classes
