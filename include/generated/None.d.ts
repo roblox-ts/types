@@ -6329,7 +6329,7 @@ interface GlobalDataStore extends Instance {
 interface OrderedDataStore extends GlobalDataStore {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "OrderedDataStore";
-	/** Returns a [DataStorePages](https://developer.roblox.com/en-us/api-reference/class/DataStorePages) object. The sort order is determined by **isAscending**, the length of each page by **pageSize**, and **minValue**/**maxValue** are optional parameters which filter the results.
+	/** Returns a [DataStorePages](https://developer.roblox.com/en-us/api-reference/class/DataStorePages) object. The sort order is determined by **isAscending**, the length of each page by **pageSize**, and **minValue** /**maxValue** are optional parameters which filter the results.
 	 * 
 	 * If this function throws an error, the `Articles/Datastore Errors|error message` will describe the problem.
 	 */
