@@ -610,4 +610,4 @@ declare function pairs<K, V>(
 ): IterableFunction<LuaTuple<[Exclude<K, undefined>, Exclude<V, undefined>]>>;
 declare function pairs<T>(object: T): IterableFunction<LuaTuple<[keyof T, Exclude<T[keyof T], undefined>]>>;
 
-declare function ipairs<T>(object: Array<T>): IterableFunction<LuaTuple<[number, Exclude<T, undefined>]>>;
+declare function ipairs<T>(object: ReadonlyArray<T>): IterableFunction<LuaTuple<[number, Exclude<T, undefined>]>>;
