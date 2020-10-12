@@ -366,18 +366,18 @@ interface PluginGui extends LayerCollector {
 	 *     confirmButton.Activated:Connect(function()
 	 *         -- close the gui
 	 *         pluginGui.Enabled = false
-	 * 
+	 *     
 	 *         -- remove confirm button
 	 *         confirmButton:Destroy()
 	 *     end)
 	 * end)
-	 * ```
+	 * ``` 
 	 * 
 	 * You can call BindToClose with no argument to 'unbind' and revert to the default behavior described above. For example:
 	 * 
 	 * ```lua
 	 * pluginGui:BindToClose()
-	 * ```
+	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -1093,11 +1093,11 @@ interface Plugin extends Instance {
 	 * 
 	 * local gridsize = plugin.GridSize
 	 * if math.abs(gridsize-0.2) < 0.005 then -- Check if the gridsize is between 0.195 and 0.205
-	 *     gridsize = 0.2
+	 * 	gridsize = 0.2
 	 * elseif math.abs(gridsize-0.01) < 0.005 then -- Between 0.005 and 0.015
-	 *     gridsize = 0.01
+	 * 	gridsize = 0.01
 	 * else -- Assume it's 1
-	 *     gridsize = 1
+	 * 	gridsize = 1
 	 * end
 	 */
 	readonly GridSize: number;
@@ -2547,7 +2547,7 @@ interface StudioService extends Instance {
 	 *     ImageRectOffset = Vector2.new(16, 0),
 	 *     ImageRectSize = Vector2.new(16, 16)
 	 * }
-	 * ```
+	 * ``` 
 	 * 
 	 * The utility function below may prove useful when displaying class icons:
 	 * 
