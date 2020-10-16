@@ -5005,7 +5005,9 @@ interface ContentProvider extends Instance {
 	readonly RequestQueueSize: number;
 	ListEncryptedAssets(this: ContentProvider): unknown;
 	RegisterDefaultEncryptionKey(this: ContentProvider, encryptionKey: string): void;
+	RegisterDefaultSessionKey(this: ContentProvider, sessionKey: string): void;
 	RegisterEncryptedAsset(this: ContentProvider, assetId: string, encryptionKey: string): void;
+	RegisterSessionEncryptedAsset(this: ContentProvider, contentId: string, sessionKey: string): void;
 	UnregisterDefaultEncryptionKey(this: ContentProvider): void;
 	UnregisterEncryptedAsset(this: ContentProvider, assetId: string): void;
 	/** This function takes an array of [Instances](https://developer.roblox.com/en-us/api-reference/class/Instance) as a parameter and yields until all of assets associated with those instances have loaded. This can be used to pause a script and not use content until it is certain that the content has been loaded into the game.
@@ -8222,6 +8224,8 @@ interface PVAdornment extends GuiBase3d {
 interface HandleAdornment extends PVAdornment {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment";
+	/** [NO DOCUMENTATION] */
+	AdornCullingMode: Enum.AdornCullingMode;
 	/** Forces this object to render on top of all 3d objects in the Workspace. Even if the adornment is behind a part based on its [HandleAdornment.CFrame](https://developer.roblox.com/en-us/api-reference/property/HandleAdornment/CFrame), if **AlwaysOnTop** is true then the adornment will still draw on top.
 	 * 
 	 * The one exception to this behavior is if the \`HandleAdornment/ZIndex\` of the adornment is set to -1. If this is the case, the adornment will always draw behind 3d geometry.Forces this object to render on top of all 3d objects in the Workspace.
