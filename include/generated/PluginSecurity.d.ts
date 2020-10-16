@@ -2165,6 +2165,13 @@ interface TotalCountTimeIntervalItem extends StatsItem {
 interface Studio extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Studio";
+	[""TODO" Color"]: Color3;
+	[""export" Color"]: Color3;
+	[""function" Color"]: Color3;
+	[""local" Color"]: Color3;
+	[""nil" Color"]: Color3;
+	[""self" Color"]: Color3;
+	[""type" Color"]: Color3;
 	["Active Color"]: Color3;
 	["Active Hover Over Color"]: Color3;
 	["Always Save Script Changes"]: boolean;
@@ -2178,6 +2185,7 @@ interface Studio extends Instance {
 	["Auto-Recovery Path"]: QDir;
 	["Background Color"]: Color3;
 	["Basic Objects Display Mode"]: Enum.ListDisplayMode;
+	["Bool Color"]: Color3;
 	["Built-in Function Color"]: Color3;
 	["Camera Mouse Wheel Speed"]: number;
 	["Camera Shift Speed"]: number;
@@ -2206,6 +2214,7 @@ interface Studio extends Instance {
 	Font: QFont;
 	["Format On Paste"]: boolean;
 	["Format On Type"]: boolean;
+	["Function Name Color"]: Color3;
 	["Highlight Current Line"]: boolean;
 	["Highlight Occurances"]: boolean;
 	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
@@ -2221,6 +2230,7 @@ interface Studio extends Instance {
 	["Matching Word Background Color"]: Color3;
 	["Maximum Output Lines"]: number;
 	["Maximum Table Depth"]: number;
+	["Method Color"]: Color3;
 	["Number Color"]: Color3;
 	["Only Play Audio from Window in Focus"]: boolean;
 	["Operator Color"]: Color3;
@@ -2240,6 +2250,7 @@ interface Studio extends Instance {
 	/** The directory where local plugins are stored. */
 	PluginsDir: QDir;
 	["Preprocessor Color"]: Color3;
+	["Property Color"]: Color3;
 	["Render Throttle Percentage"]: number;
 	["Respect Studio shortcuts when game has focus"]: boolean;
 	Rulers: string;
