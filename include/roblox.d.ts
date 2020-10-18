@@ -996,6 +996,21 @@ interface BrickColorConstructor {
 
 declare const BrickColor: BrickColorConstructor;
 
+// CatalogSearchParams
+interface CatalogSearchParams {
+	SearchKeyword: string;
+	CategoryFilter: Enum.CatalogCategoryFilter;
+	SortType: Enum.CatalogSortType;
+	BundleTypes: string;
+	AssetTypes: string;
+}
+
+interface CatalogSearchParamsConstructor {
+	new (): CatalogSearchParams;
+}
+
+declare const CatalogSearchParams: CatalogSearchParamsConstructor;
+
 // CFrame
 interface CFrame {
 	/** The 3D position of the CFrame */
@@ -1041,6 +1056,7 @@ interface CFrame {
 	/** Returns a tuple of a Vector3 and a number which represent the rotation of the CFrame in the axis-angle representation */
 	ToAxisAngle(this: CFrame): LuaTuple<[Vector3, number]>;
 }
+
 interface CFrameConstructor {
 	/** Equivalent to fromEulerAnglesXYZ */
 	Angles: (rX: number, rY: number, rZ: number) => CFrame;
