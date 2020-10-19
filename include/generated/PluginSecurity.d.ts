@@ -1629,7 +1629,17 @@ interface PluginToolbar extends Instance {
 interface PluginToolbarButton extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "PluginToolbarButton";
-	/** [NO DOCUMENTATION] *
+	/** **ClickableWhenViewportHIdden** determines whether a PluginToolbarButton may be clicked while the game viewport is hidden, such as when a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) is being edited in another tab. In the image below, various plugin toolbar buttons are visible. Some are enabled as a result of this property being true, such as the Localization Tools button.
+	 * 
+	 * ![Various plugin toolbar buttons visible while a Script is being edited, causing the game viewport to be hidden. Some of the buttons are enabled due to this property being true.](https://developer.roblox.com/assets/blt15abc50a70cd30be/PluginToolbarButton.ClickableWhenViewportHidden.jpg)
+	 * 
+	 * Typically, this property is good to enable if an action triggered by a plugin button's [Click](https://developer.roblox.com/en-us/api-reference/event/PluginToolbarButton/Click) event doesn't occur in the game world (Workspace). For example, a button that opens a widget should have this property be true, as showing a widget is visible to the user even if the game view isn't visible.
+	**ClickableWhenViewportHIdden** determines whether a PluginToolbarButton may be clicked while the game viewport is hidden, such as when a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) is being edited in another tab. In the image below, various plugin toolbar buttons are visible. Some are enabled as a result of this property being true, such as the Localization Tools button.
+	 * 
+	 * ![Various plugin toolbar buttons visible while a Script is being edited, causing the game viewport to be hidden. Some of the buttons are enabled due to this property being true.](https://developer.roblox.com/assets/blt15abc50a70cd30be/PluginToolbarButton.ClickableWhenViewportHidden.jpg)
+	 * 
+	 * Typically, this property is good to enable if an action triggered by a plugin button's [Click](https://developer.roblox.com/en-us/api-reference/event/PluginToolbarButton/Click) event doesn't occur in the game world (Workspace). For example, a button that opens a widget should have this property be true, as showing a widget is visible to the user even if the game view isn't visible.
+	 *
 	 * Tags: NotReplicated
 	 */
 	ClickableWhenViewportHidden: boolean;
@@ -1643,7 +1653,10 @@ interface PluginToolbarButton extends Instance {
 	Icon: string;
 	/** [NO DOCUMENTATION] */
 	SetActive(this: PluginToolbarButton, active: boolean): void;
-	/** [NO DOCUMENTATION] */
+	/** **Click** fires when the PluginToolbarButton is pressed and released by the user.
+	 * 
+	 * Clicking a PluginToolbarButton causes the state of the button to toggle. Call [SetActive](https://developer.roblox.com/en-us/api-reference/function/PluginToolbarButton/SetActive) to manually set the state of the button.
+	 */
 	readonly Click: RBXScriptSignal<() => void>;
 }
 

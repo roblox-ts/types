@@ -6771,13 +6771,13 @@ interface GuiObject extends GuiBase2d {
 	SelectionImageObject: GuiObject | undefined;
 	/** This property determines a `GuiObject|GUI's` scalar and pixel size using a `UDim2`. Its value can be expressed as `UDim2.new(ScalarX, PixelX, ScalarY, PixelY)` or `({ScalarX, PixelX}, {ScalarY, PixelY})`.
 	 * 
-	 * The scalar size is relative to the scalar size of parent GUI elements, if any. For example, if the GUI's scalar size is `UDim2.new(0.5, 0, 0.5, 0) and it is not the descendant of a GUI, then it will occupy half of the screen horizontally and vertically. However, if the GUI is the child of a GUI with a scalar size of`UDim2.new(0.5, 0, 0.5, 0), then the GUI's scalar size will render to be half the scalar size of its parent both horizontally and vertically and will occupy a quarter of the screen in both dimensions.
+	 * The scalar size is relative to the scalar size of parent GUI elements, if any. For example, if the GUI's scalar size is `UDim2.new(0.5, 0, 0.5, 0)` and it is not the descendant of a GUI, then it will occupy half of the screen horizontally and vertically. However, if the GUI is the child of a GUI with a scalar size of `UDim2.new(0.5, 0, 0.5, 0)`, then the GUI's scalar size will render to be half the scalar size of its parent both horizontally and vertically and will occupy a quarter of the screen in both dimensions.
 	 * 
 	 * The pixel portions of the `UDim2` value are the same regardless of the parent GUI's size. The values represent the size of the object in pixels. For example, if Position is set to `{0, 100}, {0, 150}` the element will render with a width of 100 pixels and height of 150 pixels.
 	 * 
-	 * If the GUI has a parent, its size of each axis is also influenced by the parent's [GuiObject.SizeConstraint](https://developer.roblox.com/en-us/api-reference/property/GuiObject/SizeConstraint).
+	 * If the GUI has a parent, its size of each axis is also influenced by the parent's [SizeConstraint](https://developer.roblox.com/en-us/api-reference/property/GuiObject/SizeConstraint).
 	 * 
-	 * Although it is possible to use negative sizes when creating GUIs, it's more often better to manipulate [GuiObject.AnchorPoint](https://developer.roblox.com/en-us/api-reference/property/GuiObject/AnchorPoint) instead.
+	 * Using negative sizes may result in undefined behavior in some cases, such as with [UIConstraint](https://developer.roblox.com/en-us/api-reference/class/UIConstraint). It is preferrable to change [AnchorPoint](https://developer.roblox.com/en-us/api-reference/property/GuiObject/AnchorPoint) instead of using negative sizes.
 	 * 
 	 * An object's actual pixel size can be read from the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteSize) property.
 	 */
@@ -8413,7 +8413,12 @@ interface Handles extends HandlesBase {
 	readonly MouseLeave: RBXScriptSignal<(face: Enum.NormalId) => void>;
 }
 
-/** An instance used to show a physical selection of a particular side of a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). However, it should be noted that the [GuiBase3d.Transparency](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Transparency) property doesn't appear to currently work with this instance. */
+/** A **SurfaceSelection** highlights a particular face, the [TargetSurface](https://developer.roblox.com/en-us/api-reference/property/SurfaceSelection/TargetSurface), of its [Adornee](https://developer.roblox.com/en-us/api-reference/property/PartAdornment/Adornee). The highlight's color is configurable using the [Color3](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Color3) property.
+ * 
+ * ![A screenshot of a SurfaceSelection](https://developer.roblox.com/assets/blt883782a763fb7fbd/SurfaceSelection.jpg)
+ * 
+ * The SurfaceSelection object is typically used by [Plugin](https://developer.roblox.com/en-us/api-reference/class/Plugin) when the user is selecting the face of a Part. However, it is not limited to plugin use.
+ */
 interface SurfaceSelection extends PartAdornment {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "SurfaceSelection";
@@ -15842,6 +15847,13 @@ interface BasePart extends PVInstance {
 	LocalTransparencyModifier: number;
 	/** The Locked property determines whether a [part](https://developer.roblox.com/en-us/api-reference/class/BasePart) (or a [model](https://developer.roblox.com/en-us/api-reference/class/Model) it is contained within) may be selected in Roblox Studio by clicking on it. This property is most often enabled on parts within environment models that aren't being edited at the moment. Roblox Studio has a Lock/Unlock All tool that can toggle the Locked state of every part descendant in a model at once. */
 	Locked: boolean;
+	/** **Mass** is a read-only property that describes the product of a part's volume and density. It is returned by the [GetMass](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetMass) function.
+	 * 
+	 * *   The volume of a part is determined by its [Size](https://developer.roblox.com/en-us/api-reference/property/BasePart/Size) and its [Shape](https://developer.roblox.com/en-us/api-reference/property/Part/Shape), which varies depending on the kind of BasePart used, such as [WedgePart](https://developer.roblox.com/en-us/api-reference/class/WedgePart).
+	 * *   The density of a part is determined by its [Material](https://developer.roblox.com/en-us/api-reference/property/BasePart/Material) or [CustomPhysicalProperties](https://developer.roblox.com/en-us/api-reference/property/BasePart/CustomPhysicalProperties), if specified.
+	 * 
+	 * A common use of the Mass property is using it to calculate the magnitude of a gravity-counteracting force. Using a [BodyForce](https://developer.roblox.com/en-us/api-reference/class/BodyForce), apply a upward force equal to the product of a part's Mass and [Workspace.Gravity](https://developer.roblox.com/en-us/api-reference/property/Workspace/Gravity). This will completely counteract the force of gravity on the part.
+	 */
 	readonly Mass: number;
 	/** If this property is enabled, the [part](https://developer.roblox.com/en-us/api-reference/class/BasePart) will not contribute to the total mass or inertia of its rigid body as long as it is [welded](https://developer.roblox.com/en-us/api-reference/class/Weld) to another part that has mass.
 	 * 
@@ -16036,13 +16048,9 @@ interface BasePart extends PVInstance {
 	GetConnectedParts(this: BasePart, recursive?: boolean): Array<BasePart>;
 	/** Return all Joints or Constraints that is connected to this Part. */
 	GetJoints(this: BasePart): Array<Constraint | JointInstance>;
-	/** The GetMass function returns the `BasePart|part's` mass.
+	/** **GetMass** returns the value of the read-only [Mass](https://developer.roblox.com/en-us/api-reference/property/BasePart/Mass) property.
 	 * 
-	 * This can vary depending on the part's [material](https://developer.roblox.com/en-us/api-reference/property/BasePart/Material) and the size. The `Enum/Material| material enum` page contains a table of all materials and their densities. Parts made of materials with greater densities have more mass than equally sized parts made of materials with lesser densities.
-	 * 
-	 * Note that a part's density differs from the densities listed on the [material](http://wiki.roblox.com/index.php?title=API:Enum/Material) page if the part's [BasePart.CustomPhysicalProperties](https://developer.roblox.com/en-us/api-reference/property/BasePart/CustomPhysicalProperties) property is set.
-	 * 
-	 * You can also determine location of the part's center of mass via the [BasePart.CenterOfMass](https://developer.roblox.com/en-us/api-reference/property/BasePart/CenterOfMass) property.
+	 * This function predates the Mass property. It remains supported for backward-compatibility; you should use the Mass property directly.
 	 */
 	GetMass(this: BasePart): number;
 	/** Returns the current player who is the network owner of this part, or nil in case of the server. */
@@ -16476,6 +16484,16 @@ interface Terrain extends BasePart {
 	FillCylinder(this: Terrain, cframe: CFrame, height: number, radius: number, material: CastsToEnum<Enum.Material>): void;
 	/** Fills a [Region3](https://developer.roblox.com/api-reference/datatype/Region3 "Region3") space with smooth terrain. */
 	FillRegion(this: Terrain, region: Region3, resolution: number, material: CastsToEnum<Enum.Material>): void;
+	/** **FillWedge** fills a wedge-shaped volume of Terrain with the given [Material](https://developer.roblox.com/en-us/api-reference/enum/Material) and the area's CFrame and Size. The orientation of the wedge is the same as an equivalent [WedgePart](https://developer.roblox.com/en-us/api-reference/class/WedgePart).
+	 * 
+	 * ![The results of a call to Terrain:FillWedge with CFrame (0, 50, 0), Size (20, 20, 20), and Material Asphalt](https://developer.roblox.com/assets/bltb36cd8e98c2f3f2f/Terrain.FillWedge.jpg)
+	 * 
+	 * In the image above, a floating chunk of Terrain was created by calling this function as in the following code. A transparent, pink part with the Front surface marked with a Motor indicates the provided CFrame and Size.
+	 * 
+	 * ```lua
+	 * workspace.Terrain:FillWedge(CFrame.new(0, 50, 0), Vector3.new(20, 20, 20), Enum.Material.Asphalt)
+	 * ```
+	 */
 	FillWedge(this: Terrain, cframe: CFrame, size: Vector3, material: CastsToEnum<Enum.Material>): void;
 	/** Returns the current terrain material color for the specified terrain material. */
 	GetMaterialColor(this: Terrain, material: CastsToEnum<Enum.Material>): Color3;
@@ -24220,6 +24238,7 @@ interface UserInputService extends Instance {
 	 * As this event only fires locally, it can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 */
 	readonly LastInputTypeChanged: RBXScriptSignal<(lastInputType: Enum.UserInputType) => void>;
+	/** **PointerAction** fires when the user performs a specific pointer action. In particular, scrolling the mouse wheel. */
 	readonly PointerAction: RBXScriptSignal<(wheel: number, pan: Vector2, pinch: number, gameProcessedEvent: boolean) => void>;
 	/** The TextBoxFocusReleased event fires when a client loses focus on a TextBox - typically when a client stops text entry into a TextBox by pressing return or clicking/touching elsewhere on the screen.
 	 * 
