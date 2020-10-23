@@ -33,7 +33,7 @@
 		"@types/showdown": "^1.9.3",
 		"@typescript-eslint/eslint-plugin": "^4.3.0",
 		"@typescript-eslint/parser": "^4.3.0",
-		"axios": "^0.20.0",
+		"axios": "^0.21.0",
 		"breakdance": "^3.0.1",
 		"eslint": "^7.11.0",
 		"eslint-config-prettier": "^6.12.0",
