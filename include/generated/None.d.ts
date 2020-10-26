@@ -1609,26 +1609,475 @@ interface Bone extends Attachment {
 	readonly TransformedWorldCFrame: CFrame;
 }
 
+/** A service to support developer Avatar Editors. Provides methods to modify the players platform avatar, request information about a users inventory and request information about the catalog. */
 interface AvatarEditorService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AvatarEditorService";
-	/** [NO DOCUMENTATION] *
+	/** This function returns the platform Avatar rules for things like scaling, default shirts and pants, number of wearable assets, ect.
+	 * 
+	 * Data is in the format:
+	 * 
+	 * ```lua
+	 * {
+	 *   "playerAvatarTypes": [
+	 *     "R6"
+	 *   ],
+	 *   "scales": {},
+	 *   "wearableAssetTypes": [
+	 *     {
+	 *       "maxNumber": 0,
+	 *       "id": 0,
+	 *       "name": "string"
+	 *     }
+	 *   ],
+	 *   "bodyColorsPalette": [
+	 *     {
+	 *       "brickColorId": 0,
+	 *       "hexColor": "string",
+	 *       "name": "string"
+	 *     }
+	 *   ],
+	 *   "basicBodyColorsPalette": [
+	 *     {
+	 *       "brickColorId": 0,
+	 *       "hexColor": "string",
+	 *       "name": "string"
+	 *     }
+	 *   ],
+	 *   "minimumDeltaEBodyColorDifference": 0,
+	 *   "proportionsAndBodyTypeEnabledForUser": true,
+	 *   "defaultClothingAssetLists": {
+	 *     "defaultShirtAssetIds": [
+	 *       0
+	 *     ],
+	 *     "defaultPantAssetIds": [
+	 *       0
+	 *     ]
+	 *   },
+	 *   "bundlesEnabledForUser": true,
+	 *   "emotesEnabledForUser": true
+	 * }
+	 * ```
+	This function returns the platform Avatar rules for things like scaling, default shirts and pants, number of wearable assets, ect.
+	 * 
+	 * Data is in the format:
+	 * 
+	 * ```lua
+	 * {
+	 *   "playerAvatarTypes": [
+	 *     "R6"
+	 *   ],
+	 *   "scales": {},
+	 *   "wearableAssetTypes": [
+	 *     {
+	 *       "maxNumber": 0,
+	 *       "id": 0,
+	 *       "name": "string"
+	 *     }
+	 *   ],
+	 *   "bodyColorsPalette": [
+	 *     {
+	 *       "brickColorId": 0,
+	 *       "hexColor": "string",
+	 *       "name": "string"
+	 *     }
+	 *   ],
+	 *   "basicBodyColorsPalette": [
+	 *     {
+	 *       "brickColorId": 0,
+	 *       "hexColor": "string",
+	 *       "name": "string"
+	 *     }
+	 *   ],
+	 *   "minimumDeltaEBodyColorDifference": 0,
+	 *   "proportionsAndBodyTypeEnabledForUser": true,
+	 *   "defaultClothingAssetLists": {
+	 *     "defaultShirtAssetIds": [
+	 *       0
+	 *     ],
+	 *     "defaultPantAssetIds": [
+	 *       0
+	 *     ]
+	 *   },
+	 *   "bundlesEnabledForUser": true,
+	 *   "emotesEnabledForUser": true
+	 * }
+	 * ```
+	 *
 	 * Tags: Yields
 	 */
 	GetAvatarRules(this: AvatarEditorService): object;
-	/** [NO DOCUMENTATION] *
+	/** This function returns the item details for the given item. It accepts two parameters - the first indicating the ID of the item being retrieved and the second indicating its [ItemType](https://developer.roblox.com/en-us/api-reference/enum/ItemType).
+	 * 
+	 * Data returned in the format:
+	 * 
+	 * ```lua
+	 * {
+	 *   "isForRent": true,
+	 *   "expectedSellerId": 0,
+	 *   "owned": true,
+	 *   "isPurchasable": true,
+	 *   "id": 0,
+	 *   "itemType": "Asset",
+	 *   "assetType": "Image",
+	 *   "bundleType": "BodyParts",
+	 *   "name": "string",
+	 *   "description": "string",
+	 *   "productId": 0,
+	 *   "genres": [
+	 *     "All"
+	 *   ],
+	 *   "bundledItems": [
+	 *     {
+	 *       "owned": true,
+	 *       "id": 0,
+	 *       "name": "string",
+	 *       "type": "string"
+	 *     }
+	 *   ],
+	 *   "itemStatus": [
+	 *     "New"
+	 *   ],
+	 *   "itemRestrictions": [
+	 *     "ThirteenPlus"
+	 *   ],
+	 *   "creatorType": "User",
+	 *   "creatorTargetId": 0,
+	 *   "creatorName": "string",
+	 *   "price": 0,
+	 *   "premiumPricing": {
+	 *     "premiumDiscountPercentage": 0,
+	 *     "premiumPriceInRobux": 0
+	 *   },
+	 *   "lowestPrice": 0,
+	 *   "priceStatus": "string",
+	 *   "unitsAvailableForConsumption": 0,
+	 *   "purchaseCount": 0,
+	 *   "favoriteCount": 0
+	 * }
+	 * ```
+	This function returns the item details for the given item. It accepts two parameters - the first indicating the ID of the item being retrieved and the second indicating its [ItemType](https://developer.roblox.com/en-us/api-reference/enum/ItemType).
+	 * 
+	 * Data returned in the format:
+	 * 
+	 * ```lua
+	 * {
+	 *   "isForRent": true,
+	 *   "expectedSellerId": 0,
+	 *   "owned": true,
+	 *   "isPurchasable": true,
+	 *   "id": 0,
+	 *   "itemType": "Asset",
+	 *   "assetType": "Image",
+	 *   "bundleType": "BodyParts",
+	 *   "name": "string",
+	 *   "description": "string",
+	 *   "productId": 0,
+	 *   "genres": [
+	 *     "All"
+	 *   ],
+	 *   "bundledItems": [
+	 *     {
+	 *       "owned": true,
+	 *       "id": 0,
+	 *       "name": "string",
+	 *       "type": "string"
+	 *     }
+	 *   ],
+	 *   "itemStatus": [
+	 *     "New"
+	 *   ],
+	 *   "itemRestrictions": [
+	 *     "ThirteenPlus"
+	 *   ],
+	 *   "creatorType": "User",
+	 *   "creatorTargetId": 0,
+	 *   "creatorName": "string",
+	 *   "price": 0,
+	 *   "premiumPricing": {
+	 *     "premiumDiscountPercentage": 0,
+	 *     "premiumPriceInRobux": 0
+	 *   },
+	 *   "lowestPrice": 0,
+	 *   "priceStatus": "string",
+	 *   "unitsAvailableForConsumption": 0,
+	 *   "purchaseCount": 0,
+	 *   "favoriteCount": 0
+	 * }
+	 * ```
+	 *
 	 * Tags: Yields
 	 */
 	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): object;
-	/** [NO DOCUMENTATION] *
+	/** This function returns a list of recommendations based on the given [AssetType](https://developer.roblox.com/en-us/api-reference/enum/AssetType). Take a look at the code sample below for more information on possible usages for this function.
+	 * 
+	 * Data is in the format:
+	 * 
+	 * ```lua
+	 * [
+	 *     {
+	 *       "item": {
+	 *         "assetId": 0,
+	 *         "name": "string",
+	 *         "price": 0,
+	 *         "premiumPrice": 0,
+	 *         "absoluteUrl": "string",
+	 *         "audioUrl": "string"
+	 *       },
+	 *       "creator": {
+	 *         "creatorId": 0,
+	 *         "creatorType": "string",
+	 *         "name": "string",
+	 *         "creatorProfileLink": "string"
+	 *       },
+	 *       "product": {
+	 *         "id": 0,
+	 *         "priceInRobux": 0,
+	 *         "isForSale": true,
+	 *         "isPublicDomain": true,
+	 *         "isResellable": true,
+	 *         "isLimited": true,
+	 *         "isLimitedUnique": true,
+	 *         "serialNumber": 0,
+	 *         "isRental": true,
+	 *         "rentalDurationInHours": 0,
+	 *         "bcRequirement": 0,
+	 *         "totalPrivateSales": 0,
+	 *         "sellerId": 0,
+	 *         "sellerName": "string",
+	 *         "lowestPrivateSaleUserAssetId": 0,
+	 *         "isXboxExclusiveItem": true,
+	 *         "offsaleDeadline": "string",
+	 *         "noPriceText": "string",
+	 *         "isFree": true
+	 *       }
+	 *     }
+	 * ]
+	 * ```
+	This function returns a list of recommendations based on the given [AssetType](https://developer.roblox.com/en-us/api-reference/enum/AssetType). Take a look at the code sample below for more information on possible usages for this function.
+	 * 
+	 * Data is in the format:
+	 * 
+	 * ```lua
+	 * [
+	 *     {
+	 *       "item": {
+	 *         "assetId": 0,
+	 *         "name": "string",
+	 *         "price": 0,
+	 *         "premiumPrice": 0,
+	 *         "absoluteUrl": "string",
+	 *         "audioUrl": "string"
+	 *       },
+	 *       "creator": {
+	 *         "creatorId": 0,
+	 *         "creatorType": "string",
+	 *         "name": "string",
+	 *         "creatorProfileLink": "string"
+	 *       },
+	 *       "product": {
+	 *         "id": 0,
+	 *         "priceInRobux": 0,
+	 *         "isForSale": true,
+	 *         "isPublicDomain": true,
+	 *         "isResellable": true,
+	 *         "isLimited": true,
+	 *         "isLimitedUnique": true,
+	 *         "serialNumber": 0,
+	 *         "isRental": true,
+	 *         "rentalDurationInHours": 0,
+	 *         "bcRequirement": 0,
+	 *         "totalPrivateSales": 0,
+	 *         "sellerId": 0,
+	 *         "sellerName": "string",
+	 *         "lowestPrivateSaleUserAssetId": 0,
+	 *         "isXboxExclusiveItem": true,
+	 *         "offsaleDeadline": "string",
+	 *         "noPriceText": "string",
+	 *         "isFree": true
+	 *       }
+	 *     }
+	 * ]
+	 * ```
+	 *
 	 * Tags: Yields
 	 */
 	GetRecommendedAssets(this: AvatarEditorService, assetType: CastsToEnum<Enum.AvatarAssetType>, contextAssetId?: number): unknown;
-	/** [NO DOCUMENTATION] *
+	/** This function returns a list of recommended bundles for a given bundle id.
+	 * 
+	 * Data is in the format:
+	 * 
+	 * ```lua
+	 * [
+	 *     {
+	 *       "id": 0,
+	 *       "name": "string",
+	 *       "description": "string",
+	 *       "bundleType": "string",
+	 *       "items": [
+	 *         {
+	 *           "owned": true,
+	 *           "id": 0,
+	 *           "name": "string",
+	 *           "type": "string"
+	 *         }
+	 *       ],
+	 *       "creator": {
+	 *         "id": 0,
+	 *         "name": "string",
+	 *         "type": "string"
+	 *       },
+	 *       "product": {
+	 *         "id": 0,
+	 *         "type": "string",
+	 *         "isPublicDomain": true,
+	 *         "isForSale": true,
+	 *         "priceInRobux": 0,
+	 *         "premiumPricing": {
+	 *           "premiumDiscountPercentage": 0,
+	 *           "premiumPriceInRobux": 0
+	 *         }
+	 *       }
+	 *     }
+	 * ]
+	 * ```
+	This function returns a list of recommended bundles for a given bundle id.
+	 * 
+	 * Data is in the format:
+	 * 
+	 * ```lua
+	 * [
+	 *     {
+	 *       "id": 0,
+	 *       "name": "string",
+	 *       "description": "string",
+	 *       "bundleType": "string",
+	 *       "items": [
+	 *         {
+	 *           "owned": true,
+	 *           "id": 0,
+	 *           "name": "string",
+	 *           "type": "string"
+	 *         }
+	 *       ],
+	 *       "creator": {
+	 *         "id": 0,
+	 *         "name": "string",
+	 *         "type": "string"
+	 *       },
+	 *       "product": {
+	 *         "id": 0,
+	 *         "type": "string",
+	 *         "isPublicDomain": true,
+	 *         "isForSale": true,
+	 *         "priceInRobux": 0,
+	 *         "premiumPricing": {
+	 *           "premiumDiscountPercentage": 0,
+	 *           "premiumPriceInRobux": 0
+	 *         }
+	 *       }
+	 *     }
+	 * ]
+	 * ```
+	 *
 	 * Tags: Yields
 	 */
 	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): unknown;
-	/** [NO DOCUMENTATION] *
+	/** This function returns a [CatalogPages](https://developer.roblox.com/en-us/api-reference/class/CatalogPages) object containing the result of the given search.
+	 * 
+	 * The returned data has the format:
+	 * 
+	 * ```lua
+	 * [
+	 *     {
+	 *       "id": 0,
+	 *       "itemType": "Asset",
+	 *       "assetType": "Image",
+	 *       "bundleType": "BodyParts",
+	 *       "name": "string",
+	 *       "description": "string",
+	 *       "productId": 0,
+	 *       "genres": [
+	 *         "All"
+	 *       ],
+	 *       "bundledItems": [
+	 *         {
+	 *           "owned": true,
+	 *           "id": 0,
+	 *           "name": "string",
+	 *           "type": "string"
+	 *         }
+	 *       ],
+	 *       "itemStatus": [
+	 *         "New"
+	 *       ],
+	 *       "itemRestrictions": [
+	 *         "ThirteenPlus"
+	 *       ],
+	 *       "creatorType": "User",
+	 *       "creatorTargetId": 0,
+	 *       "creatorName": "string",
+	 *       "price": 0,
+	 *       "premiumPricing": {
+	 *         "premiumDiscountPercentage": 0,
+	 *         "premiumPriceInRobux": 0
+	 *       },
+	 *       "lowestPrice": 0,
+	 *       "priceStatus": "string",
+	 *       "unitsAvailableForConsumption": 0,
+	 *       "purchaseCount": 0,
+	 *       "favoriteCount": 0
+	 *     }
+	 * ]
+	 * ```
+	This function returns a [CatalogPages](https://developer.roblox.com/en-us/api-reference/class/CatalogPages) object containing the result of the given search.
+	 * 
+	 * The returned data has the format:
+	 * 
+	 * ```lua
+	 * [
+	 *     {
+	 *       "id": 0,
+	 *       "itemType": "Asset",
+	 *       "assetType": "Image",
+	 *       "bundleType": "BodyParts",
+	 *       "name": "string",
+	 *       "description": "string",
+	 *       "productId": 0,
+	 *       "genres": [
+	 *         "All"
+	 *       ],
+	 *       "bundledItems": [
+	 *         {
+	 *           "owned": true,
+	 *           "id": 0,
+	 *           "name": "string",
+	 *           "type": "string"
+	 *         }
+	 *       ],
+	 *       "itemStatus": [
+	 *         "New"
+	 *       ],
+	 *       "itemRestrictions": [
+	 *         "ThirteenPlus"
+	 *       ],
+	 *       "creatorType": "User",
+	 *       "creatorTargetId": 0,
+	 *       "creatorName": "string",
+	 *       "price": 0,
+	 *       "premiumPricing": {
+	 *         "premiumDiscountPercentage": 0,
+	 *         "premiumPriceInRobux": 0
+	 *       },
+	 *       "lowestPrice": 0,
+	 *       "priceStatus": "string",
+	 *       "unitsAvailableForConsumption": 0,
+	 *       "purchaseCount": 0,
+	 *       "favoriteCount": 0
+	 *     }
+	 * ]
+	 * ```
+	 *
 	 * Tags: Yields
 	 */
 	SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): Instance | undefined;
@@ -4034,16 +4483,14 @@ interface ShirtGraphic extends CharacterAppearance {
 interface Chat extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Chat";
-	/** When set to true, player's chat messages will appear above their in-game avatar. The default value is false.
-	 * 
-	 * To enable BubbleChat without forking [Chat](https://developer.roblox.com/en-us/api-reference/class/Chat), developers only need to add a few lines of code inside of a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) in [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst).
+	/** If true, entering a message in the chat will result in a chat bubble popping up above the player's [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character). This behavior can either be enabled by directly ticking this checkbox in Studio, or by using a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript):
 	 * 
 	 * ```lua
-	 * local ChatService = game:GetService("Chat") -- Call ChatService
-	 * ChatService:RegisterChatCallback(Enum.ChatCallbackType.OnCreatingChatWindow, function()
-	 *     return {BubbleChatEnabled = true} -- Call the API to change its boolean value to true
-	 * end)
-	 * ```
+	 * local ChatService = game:GetService("Chat")
+	 * ChatService.BubbleChatEnabled = true
+	 * ``` 
+	 * 
+	 * This must be done on the client, toggling this value in a server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script) will have no effect.
 	 */
 	BubbleChatEnabled: boolean;
 	/** Toggles whether the default chat framework should be automatically loaded when the game runs. */
@@ -4086,6 +4533,152 @@ interface Chat extends Instance {
 	 * *   Get/set the speaker's name color (`message.ExtraData.NameColor`, a Color3) on a message-by-message basis
 	 */
 	RegisterChatCallback(this: Chat, callbackType: CastsToEnum<Enum.ChatCallbackType>, callbackFunction: Function): void;
+	/** This function customizes various settings of the in-game bubble chat.
+	 * 
+	 * Before using this, make sure that bubble chat is enabled by setting [Chat.BubbleChatEnabled](https://developer.roblox.com/en-us/api-reference/property/Chat/BubbleChatEnabled) to true.
+	 * 
+	 * The settings argument is a table where the keys are the names of the settings you want to edit and the values are what you want to change these settings to. Below is a list of all the supported settings. Note that you don't have to include all of them in the settings argument, omitting some will result in them keeping their default value. Examples are included near the end of this page.
+	 * 
+	 * This function is client-side only, attempting to call it on the server will trigger an error.
+	 * 
+	 * Note:
+	 * -----
+	 * 
+	 * Since this feature is still being rolled out, it might not exist on clients playing on older versions of Roblox, which is why it is heavily recommended to wrap calls to this function in a `pcall`.
+	 * 
+	 * Name
+	 * 
+	 * Explanation
+	 * 
+	 * Type
+	 * 
+	 * Default value
+	 * 
+	 * BubbleDuration
+	 * 
+	 * The amount of time, in seconds, to wait before a bubble fades out.
+	 * 
+	 * number
+	 * 
+	 * 15
+	 * 
+	 * MaxBubbles
+	 * 
+	 * The amount of messages to be displayed, before old ones disappear immediately when a new message comes in.
+	 * 
+	 * number
+	 * 
+	 * 3
+	 * 
+	 * BackgroundColor3
+	 * 
+	 * Background color of the bubbles
+	 * 
+	 * Color3
+	 * 
+	 * Color3.fromRGB(250, 250, 250)
+	 * 
+	 * TextColor3
+	 * 
+	 * Background color of the bubbles
+	 * 
+	 * Color3
+	 * 
+	 * Color3.fromRGB(57, 59, 61)
+	 * 
+	 * TextSize
+	 * 
+	 * Size of the text inside the bubbles
+	 * 
+	 * number
+	 * 
+	 * 16
+	 * 
+	 * Font
+	 * 
+	 * Font of the text inside the bubbles
+	 * 
+	 * Enum.Font
+	 * 
+	 * Enum.Font.GothamSemibold
+	 * 
+	 * Transparency
+	 * 
+	 * Transparency of the bubbles, between 0 and 1.
+	 * 
+	 * number
+	 * 
+	 * 0.1
+	 * 
+	 * CornerRadius
+	 * 
+	 * Radius of the bubble's corner
+	 * 
+	 * UDim
+	 * 
+	 * UDim.new(0, 12)
+	 * 
+	 * TailVisible
+	 * 
+	 * Whether or not the tail of the first bubble is visible
+	 * 
+	 * bool
+	 * 
+	 * True
+	 * 
+	 * Padding
+	 * 
+	 * Space between the text and the edges of the bubble, in pixels
+	 * 
+	 * number
+	 * 
+	 * 8
+	 * 
+	 * MaxWidth
+	 * 
+	 * Maximum width of the bubbles, in pixels
+	 * 
+	 * number
+	 * 
+	 * 300
+	 * 
+	 * VerticalStudsOffset
+	 * 
+	 * Extra space between the head of the character and the bubbles. Userful if you want to leave some space for other character billboard UIs
+	 * 
+	 * number
+	 * 
+	 * 0
+	 * 
+	 * BubblesSpacing
+	 * 
+	 * Space between two bubbles, in pixels
+	 * 
+	 * number
+	 * 
+	 * 6
+	 * 
+	 * MinimizeDistance
+	 * 
+	 * Distance (from the camera) that bubbles turn into a single bubble with ellipses (...) to indicate chatter
+	 * 
+	 * number
+	 * 
+	 * 40
+	 * 
+	 * MaxDistance
+	 * 
+	 * Maximum distance (from the camera) that bubbles are shown at
+	 * 
+	 * number
+	 * 
+	 * 100
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   Developers who are interested interested in configuring their games' chat system even further should take a look at the `Lua Chat System|articles/Lua-Chat-System/API` article
+	 */
 	SetBubbleChatSettings(this: Chat, settings?: any): void;
 	/** Will return false if the player with the specified [Player.UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) is not allowed to chat because of their account settings. */
 	CanUserChatAsync(this: Chat, userId: number): boolean;
@@ -6467,7 +7060,11 @@ interface GroupService extends Instance {
 	 * This function has a number of useful applications, including loading the latest description and logo of a group for display in a group base.
 	 */
 	GetGroupInfoAsync(this: GroupService, groupId: number): GroupInfo;
-	/** This function returns a list of tables containing information on all of the groups a given [Player](https://developer.roblox.com/en-us/api-reference/class/Player) is a member of.
+	/** **Warning**  
+	 * 
+	 * The **IsInClan** property in the returned table will always return **false** and exists for backwards compatibility. The Clans feature was sunset from the Roblox platform in 2016.
+	 * 
+	 * This function returns a list of tables containing information on all of the groups a given [Player](https://developer.roblox.com/en-us/api-reference/class/Player) is a member of.
 	 * 
 	 * The list returned will include an entry for every group the player is a member of. These entries are tables with the following fields.
 	 * 
@@ -8963,10 +9560,18 @@ interface Humanoid extends Instance {
 	 * When a Humanoid named `StarterHumanoid` is parented to [StarterPlayer](https://developer.roblox.com/api-reference/class/StarterPlayer), or when a Humanoid is present in a Model named `StarterCharacter`, the DisplayName property will be respected when Characters are loaded by Players in the game. The engine will only override the `DisplayName` property of the Humanoid with the `DisplayName` property of the player if the `StarterHumanoid`'s `DisplayName` property is an empty string.
 	 */
 	DisplayName: string;
-	/** ![A visualization of the FloorMaterial property in action](https://developer.roblox.com/assets/blt911c31b19922748b/FloorMaterial.gif)
+	/** This is a read-only property that describes the [Material](https://developer.roblox.com/en-us/api-reference/enum/Material) the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) is currently standing on.  
+	 * It works with both regular [Parts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) voxels.
 	 * 
-	 * **FloorMaterial** is a read-only property that describes the [Material](https://developer.roblox.com/en-us/api-reference/enum/Material) the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) is currently standing on.  
-	 * It works with both regular [Parts](https://developer.roblox.com/en-us/api-reference/class/BasePartr) and [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) voxels.
+	 * The code sample below demonstrates how to listen to when this property changes using [Instance:GetPropertyChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetPropertyChangedSignal). When the material the humanoid is standing on changes, it will print a message indicating the new material being stood on.
+	 * 
+	 * ```lua
+	 * local Humanoid = route.to.humanoid
+	 * 
+	 * Humanoid:GetPropertyChangedSignal("FloorMaterial"):Connect(function()
+	 *     print("New value for FloorMaterial: " .. Humanoid.FloorMaterial)
+	 * end)
+	 * ``` 
 	 * 
 	 * Caveats
 	 * -------
@@ -10371,16 +10976,18 @@ interface HumanoidDescription extends Instance {
 	readonly EquippedEmotesChanged: RBXScriptSignal<(newEquippedEmotes: EquippedEmotes) => void>;
 }
 
-/** An object created when an input begins that describes a particular user input, such as mouse movement, touches, keyboard, and more.
+/** An **InputObject** represents a single user input, such as mouse movement, touches, key presses and more. It is created when an input begins.
  * 
- * The object's properties vary according the the type of input. Properties can be used to determine input [state](https://developer.roblox.com/en-us/api-reference/enum/UserInputState), [type](https://developer.roblox.com/en-us/api-reference/enum/UserInputType), [position](https://developer.roblox.com/en-us/api-reference/datatype/Vector3), [delta](https://developer.roblox.com/en-us/api-reference/datatype/Vector3), and the [KeyCode](https://developer.roblox.com/en-us/api-reference/enum/KeyCode) that triggered the input (if applicable).
+ * The properties of this object vary according the [UserInputType](https://developer.roblox.com/en-us/api-reference/property/InputObject/UserInputType). Each kind of input will undergo various changes to its [UserInputState](https://developer.roblox.com/en-us/api-reference/property/InputObject/UserInputState). During the lifetime of an input, other properties which further describe the input may change, such as [Position](https://developer.roblox.com/en-us/api-reference/property/InputObject/Position) and [Delta](https://developer.roblox.com/en-us/api-reference/property/InputObject/Delta). Keyboard and gamepad button presses will have the [KeyCode](https://developer.roblox.com/en-us/api-reference/property/InputObject/KeyCode) property set.
  * 
- * Once created at the beginning of an input, the same object persists and is updated until the input ends. As a result, you can track the object's changes using the [Changed](https://developer.roblox.com/en-us/api-reference/event/Instance/Changed) event as the user changes the input in question. You can also place these objects into a list of active inputs track and interact with the object after it's creation by an event such as [UserInputService.InputBegan](https://developer.roblox.com/en-us/api-reference/event/UserInputService/InputBegan).
+ * Once created at the beginning of an input, the same object persists and is updated until the input ends. As a result, you can track the object's changes using the [Changed](https://developer.roblox.com/en-us/api-reference/event/Instance/Changed) event as the user changes the input in question. You can also place these objects into a list of active inputs track and interact with the object after it's creation by an event such as [UserInputService.InputBegan](https://developer.roblox.com/en-us/api-reference/event/UserInputService/InputBegan). This is mostly useful for touch events, as each touch point will have a separate InputObject.
  * 
- * #See also
+ * See also
+ * ========
  * 
- * *   Most [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) events and functions return an InputObject to describe user input events and states
- * *   [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) events related to user input return an InputObject to describe user input
+ * *   [ContextActionService](https://developer.roblox.com/en-us/api-reference/class/ContextActionService), which passes an InputObject to [bound](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction) action-handling functions
+ * *   [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService), whose events and functions often use InputObject
+ * *   [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject), whose events related to user input use InputObject
  */
 interface InputObject extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -11954,46 +12561,7 @@ interface InputObject extends Instance {
 	 * *   [InputObject.UserInputType](https://developer.roblox.com/en-us/api-reference/property/InputObject/UserInputType)
 	 */
 	Position: Vector3;
-	/** Contains a [UserInputState](https://developer.roblox.com/en-us/api-reference/enum/UserInputState) enum that describes the state of the user's input and indicates how a user's input is currently interacting with your game.
-	 * 
-	 * Enums
-	 * -----
-	 * 
-	 * Name
-	 * 
-	 * Value
-	 * 
-	 * Description
-	 * 
-	 * ### Begin
-	 * 
-	 * 0
-	 * 
-	 * When an `[InputObject](https://developer.roblox.com/api-reference/class/InputObject)` starts to interact with the game. For example, a mouse button down, or a key down, or when a touch begins touching the screen.
-	 * 
-	 * ### Change
-	 * 
-	 * 1
-	 * 
-	 * When an `[InputObject](https://developer.roblox.com/api-reference/class/InputObject)`has already begun interacting with the game, and part of it's state is changing. For example, a mouse position move, or a thumbstick moving, or when a touch begins to move across the screen.
-	 * 
-	 * ### End
-	 * 
-	 * 2
-	 * 
-	 * When an `[InputObject](https://developer.roblox.com/api-reference/class/InputObject)` finishes interacting with the game. For example, a mouse button up, or a key up, or when a touch stops touching the screen.
-	 * 
-	 * ### Cancel
-	 * 
-	 * 3
-	 * 
-	 * A special circumstance state that indicates this input is now being used for some other function. For example, binding two actions to the same input will cause a function to fire with Cancel.
-	 * 
-	 * ### None
-	 * 
-	 * 4
-	 * 
-	 * A state that should never be seen in a game, essentially just marks the end of the enum.
+	/** **UserInputState** describes the state of an input being performed, following a specific flow depending on the [UserInputType](https://developer.roblox.com/en-us/api-reference/property/InputObject/UserInputType). It uses the enum of the same name, [UserInputState](https://developer.roblox.com/en-us/api-reference/enum/UserInputState). See the enum page for a list of all possible values for this property.
 	 * 
 	 * See also
 	 * --------
@@ -12004,136 +12572,7 @@ interface InputObject extends Instance {
 	 * *   [InputObject.UserInputType](https://developer.roblox.com/en-us/api-reference/property/InputObject/UserInputType)
 	 */
 	UserInputState: Enum.UserInputState;
-	/** Contains a [UserInputType](https://developer.roblox.com/en-us/api-reference/enum/UserInputType) enum that describes the type of user input, such as whether the input is via keyboard, mouse, touch, gamepad, to name a few.
-	 * 
-	 * Enums
-	 * -----
-	 * 
-	 * Name
-	 * 
-	 * Value
-	 * 
-	 * Description
-	 * 
-	 * ### MouseButton1
-	 * 
-	 * 0
-	 * 
-	 * The left mouse button.
-	 * 
-	 * ### MouseButton2
-	 * 
-	 * 1
-	 * 
-	 * The right mouse button.
-	 * 
-	 * ### MouseButton3
-	 * 
-	 * 2
-	 * 
-	 * The middle mouse button.
-	 * 
-	 * ### MouseWheel
-	 * 
-	 * 3
-	 * 
-	 * The mouse wheel.
-	 * 
-	 * ### MouseMovement
-	 * 
-	 * 4
-	 * 
-	 * Movement of the mouse.
-	 * 
-	 * ### Touch
-	 * 
-	 * 7
-	 * 
-	 * A tap on the screen from a mobile device.
-	 * 
-	 * ### Keyboard
-	 * 
-	 * 8
-	 * 
-	 * Key press on a keyboard.
-	 * 
-	 * ### Focus
-	 * 
-	 * 9
-	 * 
-	 * The client regaining focus of the Roblox window.
-	 * 
-	 * ### Accelerometer
-	 * 
-	 * 10
-	 * 
-	 * The accelerometer of a mobile device.
-	 * 
-	 * ### Gyro
-	 * 
-	 * 11
-	 * 
-	 * The Gyroscope of a mobile device.
-	 * 
-	 * ### Gamepad1
-	 * 
-	 * 12
-	 * 
-	 * Input from the 1st plugged in Gamepad.
-	 * 
-	 * ### Gamepad2
-	 * 
-	 * 13
-	 * 
-	 * Input from the 2nd plugged in Gamepad.
-	 * 
-	 * ### Gamepad3
-	 * 
-	 * 14
-	 * 
-	 * Input from the 3rd plugged in Gamepad.
-	 * 
-	 * ### Gamepad4
-	 * 
-	 * 15
-	 * 
-	 * Input from the 4th plugged in Gamepad.
-	 * 
-	 * ### Gamepad5
-	 * 
-	 * 16
-	 * 
-	 * Input from the 5th plugged in Gamepad
-	 * 
-	 * ### Gamepad6
-	 * 
-	 * 17
-	 * 
-	 * Input from the 6th plugged in Gamepad.
-	 * 
-	 * ### Gamepad7
-	 * 
-	 * 18
-	 * 
-	 * Input from the 7th plugged in Gamepad.
-	 * 
-	 * ### Gamepad8
-	 * 
-	 * 19
-	 * 
-	 * Input from the 8th plugged in Gamepad.
-	 * 
-	 * ### TextInput
-	 * 
-	 * 20
-	 * 
-	 * Input of Text into a text-based `[GuiObject](https://developer.roblox.com/api-reference/class/GuiObject)`. Normally this is only a `[TextBox](https://developer.roblox.com/api-reference/class/TextBox)`.
-	 * 
-	 * ### None
-	 * 
-	 * 21
-	 * 
-	 * Unknown UserInputType.
+	/** **UserInputType** is a property that describes for what kind of input this [InputObject](https://developer.roblox.com/en-us/api-reference/class/InputObject) represents, such as mouse, keyboard, touch or gamepad input. It uses the enum of the same name, [UserInputType](https://developer.roblox.com/en-us/api-reference/enum/UserInputType). See the enum page for a list of all possible values for this property.
 	 * 
 	 * See also
 	 * --------
@@ -18150,7 +18589,7 @@ interface Player extends Instance {
 	Neutral: boolean;
 	/** The ReplicationFocus [Player](https://developer.roblox.com/en-us/api-reference/class/Player) property sets the part to focus replication around a Player. Different Roblox systems that communicate over the network (such as physics, streaming, etc) replicate at different rates depending on how close objects are to the replication focus.
 	 * 
-	 * When this property is nil, it reverts to its default behavior which is to treat the local player's character's head as the replication focus.
+	 * When this property is nil, it reverts to its default behavior which is to treat the local player's character's [PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart) as the replication focus.
 	 * 
 	 * This property should only be set on the server with a [Script](https://developer.roblox.com/en-us/api-reference/class/Script), not a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript). Note that this property does not change or update network ownership of parts.
 	 */
@@ -18181,10 +18620,12 @@ interface Player extends Instance {
 	 * This property is essential when saving/loading player data using [GlobalDataStores](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). Use a player's UserId as the data store key so that each player has a unique key.
 	 */
 	readonly UserId: number;
-	/** The ClearCharacterAppearance function removes all [Hat](https://developer.roblox.com/en-us/api-reference/class/Hat), [Shirt](https://developer.roblox.com/en-us/api-reference/class/Shirt), [Pants](https://developer.roblox.com/en-us/api-reference/class/Pants), [CharacterMesh](https://developer.roblox.com/en-us/api-reference/class/CharacterMesh), and [BodyColors](https://developer.roblox.com/en-us/api-reference/class/BodyColors) from the given player's [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character). In addition, it also removes the T-Shirt [Decal](https://developer.roblox.com/en-us/api-reference/class/Decal) on the player's torso. The character's body part colors and face will remain unchanged. This method does nothing if the player does not have a Character.
+	/** The ClearCharacterAppearance function removes all [Accessory](https://developer.roblox.com/en-us/api-reference/class/Accessory), [Shirt](https://developer.roblox.com/en-us/api-reference/class/Shirt), [Pants](https://developer.roblox.com/en-us/api-reference/class/Pants), [CharacterMesh](https://developer.roblox.com/en-us/api-reference/class/CharacterMesh), and [BodyColors](https://developer.roblox.com/en-us/api-reference/class/BodyColors) from the given player's [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character). In addition, it also removes the T-Shirt [Decal](https://developer.roblox.com/en-us/api-reference/class/Decal) on the player's torso. The character's body part colors and face will remain unchanged. This method does nothing if the player does not have a Character.
 	 * 
-	 * ##Note  
-	 * It does not remove `ShirtGraphic|t-shirts`, head meshes, or [Faces](https://developer.roblox.com/api-reference/datatype/Faces).
+	 * Note
+	 * ----
+	 * 
+	 * It does not remove `ShirtGraphic|t-shirts`, head meshes, or faces.
 	 */
 	ClearCharacterAppearance(this: Player): void;
 	/** The DistanceFromCharacter [Player](https://developer.roblox.com/en-us/api-reference/class/Player) function returns the distance between the character's head and the given [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) point. It returns 0 if the player has no [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character).
@@ -19360,15 +19801,9 @@ interface ReplicatedStorage extends Instance {
 	readonly ClassName: "ReplicatedStorage";
 }
 
-/** The RunService contains methods and events for time-management as well as for managing the context in which a game or script is running. Methods like `IsClient`, `IsServer`, `IsStudio`, can help you determine where Lua code is running. These methods are useful for ModuleScripts that could be required by both the client and server. In addition, you can use `IsStudio` to add special behavior for in-studio testing.
+/** **RunService** contains methods and events for time-management as well as for managing the context in which a game or script is running. Methods like [IsClient](https://developer.roblox.com/en-us/api-reference/function/RunService/IsClient), [IsServer](https://developer.roblox.com/en-us/api-reference/function/RunService/IsServer), [IsStudio](https://developer.roblox.com/en-us/api-reference/function/RunService/IsStudio), can help you determine under what context code is running. These methods are useful for ModuleScripts that may be required by both client and server scripts. Furthermore, [IsStudio](https://developer.roblox.com/en-us/api-reference/function/RunService/IsStudio) can be used to add special behaviors for in-studio testing.
  * 
- * [RunService](https://developer.roblox.com/en-us/api-reference/class/RunService) also provides events that help you manage time. `Stepped` and `Heartbeat` can be used for game logic while `RenderStepped` can be used for visual effects. These events fire with “delta time” values. `Stepped` also includes the total amount of time passed in a game. Correctly using the change in time values for game logic is important for changing values over time. As a general rule, multiply your change in time by the rate of change to get the amount a value should change in one frame. For example:
- * 
- *  ```lua
- * -- Note: delta just means "change in/of"
- *     speed = deltaPosition / deltaTime
- *     deltaPosition = speed * deltaTime
- * ```
+ * RunService also houses events that allow your code to adhere to Roblox's frame-by-frame loop, such as [Stepped](https://developer.roblox.com/en-us/api-reference/event/RunService/Stepped), [Heartbeat](https://developer.roblox.com/en-us/api-reference/event/RunService/Heartbeat) and [RenderStepped](https://developer.roblox.com/en-us/api-reference/event/RunService/RenderStepped). Selecting the proper event to use for any case is important, so you should read `articles/Task Scheduler|Task Scheduler` to make an informed decision.
  */
 interface RunService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
