@@ -25,10 +25,12 @@ interface Services {
 	GuiService: GuiService;
 	HapticService: HapticService;
 	HttpService: HttpService;
+	ILegacyStudioBridge: ILegacyStudioBridge;
 	InsertService: InsertService;
 	InternalContainer: InternalContainer;
 	JointsService: JointsService;
 	LanguageService: LanguageService;
+	LegacyStudioBridge: LegacyStudioBridge;
 	Lighting: Lighting;
 	LocalizationService: LocalizationService;
 	LogService: LogService;
@@ -38,6 +40,7 @@ interface Services {
 	PhysicsService: PhysicsService;
 	Players: Players;
 	PolicyService: PolicyService;
+	ProximityPromptService: ProximityPromptService;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedScriptService: ReplicatedScriptService;
 	ReplicatedStorage: ReplicatedStorage;
@@ -54,6 +57,7 @@ interface Services {
 	Teams: Teams;
 	TeleportService: TeleportService;
 	TextService: TextService;
+	TracerService: TracerService;
 	TweenService: TweenService;
 	UnvalidatedAssetService: UnvalidatedAssetService;
 	UserInputService: UserInputService;
@@ -166,6 +170,7 @@ interface CreatableInstances {
 	PointLight: PointLight;
 	Pose: Pose;
 	PrismaticConstraint: PrismaticConstraint;
+	ProximityPrompt: ProximityPrompt;
 	RayValue: RayValue;
 	RemoteEvent: RemoteEvent;
 	RemoteFunction: RemoteFunction;
@@ -307,6 +312,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	Mouse: Mouse;
 	NetworkMarker: NetworkMarker;
 	OrderedDataStore: OrderedDataStore;
+	OutfitPages: OutfitPages;
 	PackageLink: PackageLink;
 	ParabolaAdornment: ParabolaAdornment;
 	Path: Path;
@@ -336,7 +342,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
  */
 interface Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ABTestService" | "Accessory" | "Accoutrement" | "AdService" | "AdvancedDragger" | "AlignOrientation" | "AlignPosition" | "AnalysticsSettings" | "AnalyticsService" | "AngularVelocity" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AppStorageService" | "ArcHandles" | "AssetCounterService" | "AssetManagerService" | "AssetService" | "Atmosphere" | "Attachment" | "AvatarEditorService" | "Backpack" | "BadgeService" | "BallSocketConstraint" | "Beam" | "BillboardGui" | "BinaryStringValue" | "BindableEvent" | "BindableFunction" | "BlockMesh" | "BloomEffect" | "BlurEffect" | "BodyAngularVelocity" | "BodyColors" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "Bone" | "BoolValue" | "BoxHandleAdornment" | "BrickColorValue" | "BrowserService" | "BulkImportService" | "CacheableContentProvider" | "Camera" | "CatalogPages" | "CFrameValue" | "ChangeHistoryService" | "CharacterMesh" | "Chat" | "ChorusSoundEffect" | "ClickDetector" | "ClientReplicator" | "ClusterPacketCache" | "CollectionService" | "Color3Value" | "ColorCorrectionEffect" | "CompressorSoundEffect" | "ConeHandleAdornment" | "Configuration" | "ContentProvider" | "ContextActionService" | "ControllerService" | "CookiesService" | "CoreGui" | "CorePackages" | "CoreScript" | "CoreScriptSyncService" | "CornerWedgePart" | "CSGDictionaryService" | "CustomEvent" | "CustomEventReceiver" | "CylinderHandleAdornment" | "CylinderMesh" | "CylindricalConstraint" | "DataModel" | "DataModelSession" | "DataStorePages" | "DataStoreService" | "Debris" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "DebugSettings" | "Decal" | "DepthOfFieldEffect" | "Dialog" | "DialogChoice" | "DistortionSoundEffect" | "DockWidgetPluginGui" | "DoubleConstrainedValue" | "DraftsService" | "Dragger" | "EchoSoundEffect" | "EmotesPages" | "EqualizerSoundEffect" | "EventIngestService" | "Explosion" | "File" | "FileMesh" | "Fire" | "Flag" | "FlagStand" | "FlagStandService" | "FlangeSoundEffect" | "FloorWire" | "FlyweightService" | "Folder" | "ForceField" | "Frame" | "FriendPages" | "FriendService" | "FunctionalTest" | "GamepadService" | "GamePassService" | "GameSettings" | "Geometry" | "GlobalDataStore" | "GlobalSettings" | "Glue" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuidRegistryService" | "GuiMain" | "GuiService" | "Handles" | "HapticService" | "Hat" | "HingeConstraint" | "Hint" | "Hole" | "Hopper" | "HopperBin" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidController" | "HumanoidDescription" | "ImageButton" | "ImageHandleAdornment" | "ImageLabel" | "InputObject" | "InsertService" | "InstanceAdornment" | "IntConstrainedValue" | "InternalContainer" | "IntValue" | "InventoryPages" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "LanguageService" | "Lighting" | "LineForce" | "LineHandleAdornment" | "LocalizationService" | "LocalizationTable" | "LocalScript" | "LocalStorageService" | "LoginService" | "LogService" | "LuaSettings" | "LuaWebService" | "ManualGlue" | "ManualWeld" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "MeshContentProvider" | "MeshPart" | "Message" | "MessagingService" | "Model" | "ModuleScript" | "Motor" | "Motor6D" | "MotorFeature" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NegateOperation" | "NetworkClient" | "NetworkMarker" | "NetworkServer" | "NetworkSettings" | "NoCollisionConstraint" | "NonReplicatedCSGDictionaryService" | "NotificationService" | "NumberValue" | "ObjectValue" | "OrderedDataStore" | "PackageLink" | "PackageService" | "Pants" | "ParabolaAdornment" | "Part" | "ParticleEmitter" | "PartOperation" | "PartOperationAsset" | "Path" | "PathfindingService" | "PermissionsService" | "PhysicsService" | "PhysicsSettings" | "PitchShiftSoundEffect" | "Platform" | "Player" | "PlayerEmulatorService" | "PlayerGui" | "PlayerMouse" | "Players" | "PlayerScripts" | "Plugin" | "PluginAction" | "PluginDebugService" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginManagerInterface" | "PluginMenu" | "PluginMouse" | "PluginToolbar" | "PluginToolbarButton" | "PointLight" | "PointsService" | "PolicyService" | "Pose" | "PrismaticConstraint" | "QWidgetPluginGui" | "RayValue" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClass" | "ReflectionMetadataClasses" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataMember" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderingTest" | "RenderSettings" | "ReplicatedFirst" | "ReplicatedScriptService" | "ReplicatedStorage" | "ReverbSoundEffect" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RocketPropulsion" | "RodConstraint" | "RopeConstraint" | "Rotate" | "RotateP" | "RotateV" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "RunService" | "RuntimeScriptService" | "ScreenGui" | "Script" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "ScrollingFrame" | "Seat" | "Selection" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "ServerReplicator" | "ServerScriptService" | "ServerStorage" | "SessionService" | "Shirt" | "ShirtGraphic" | "SkateboardController" | "SkateboardPlatform" | "Skin" | "Sky" | "Smoke" | "Snap" | "SocialService" | "SolidModelContentProvider" | "Sound" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "SpawnLocation" | "SpecialMesh" | "SphereHandleAdornment" | "SpotLight" | "SpringConstraint" | "StandalonePluginScripts" | "StandardPages" | "StarterCharacterScripts" | "StarterGear" | "StarterGui" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "Status" | "StopWatchReporter" | "StringValue" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "SunRaysEffect" | "SurfaceAppearance" | "SurfaceGui" | "SurfaceLight" | "SurfaceSelection" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "Terrain" | "TerrainRegion" | "TestService" | "TextBox" | "TextButton" | "TextFilterResult" | "TextLabel" | "TextService" | "Texture" | "ThirdPartyUserService" | "TimerService" | "Tool" | "Torque" | "TotalCountTimeIntervalItem" | "TouchInputService" | "TouchTransmitter" | "Trail" | "Translator" | "TremoloSoundEffect" | "TrussPart" | "Tween" | "TweenService" | "UGCValidationService" | "UIAspectRatioConstraint" | "UICorner" | "UIGradient" | "UIGridLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint" | "UnionOperation" | "UnvalidatedAssetService" | "UserGameSettings" | "UserInputService" | "UserService" | "UserSettings" | "UserStorageService" | "Vector3Value" | "VectorForce" | "VehicleController" | "VehicleSeat" | "VelocityMotor" | "VersionControlService" | "VideoFrame" | "ViewportFrame" | "VirtualInputManager" | "VirtualUser" | "Visit" | "VRService" | "WedgePart" | "Weld" | "WeldConstraint" | "Workspace" | "WorldModel";
+	readonly ClassName: "ABTestService" | "Accessory" | "Accoutrement" | "AdService" | "AdvancedDragger" | "AlignOrientation" | "AlignPosition" | "AnalysticsSettings" | "AnalyticsService" | "AngularVelocity" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AppStorageService" | "ArcHandles" | "AssetCounterService" | "AssetManagerService" | "AssetService" | "Atmosphere" | "Attachment" | "AvatarEditorService" | "Backpack" | "BadgeService" | "BallSocketConstraint" | "Beam" | "BillboardGui" | "BinaryStringValue" | "BindableEvent" | "BindableFunction" | "BlockMesh" | "BloomEffect" | "BlurEffect" | "BodyAngularVelocity" | "BodyColors" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "Bone" | "BoolValue" | "BoxHandleAdornment" | "BrickColorValue" | "BrowserService" | "BulkImportService" | "CacheableContentProvider" | "Camera" | "CatalogPages" | "CFrameValue" | "ChangeHistoryService" | "CharacterMesh" | "Chat" | "ChorusSoundEffect" | "ClickDetector" | "ClientReplicator" | "ClusterPacketCache" | "CollectionService" | "Color3Value" | "ColorCorrectionEffect" | "CompressorSoundEffect" | "ConeHandleAdornment" | "Configuration" | "ContentProvider" | "ContextActionService" | "ControllerService" | "CookiesService" | "CoreGui" | "CorePackages" | "CoreScript" | "CoreScriptSyncService" | "CornerWedgePart" | "CSGDictionaryService" | "CustomEvent" | "CustomEventReceiver" | "CylinderHandleAdornment" | "CylinderMesh" | "CylindricalConstraint" | "DataModel" | "DataModelSession" | "DataStorePages" | "DataStoreService" | "Debris" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "DebugSettings" | "Decal" | "DepthOfFieldEffect" | "Dialog" | "DialogChoice" | "DistortionSoundEffect" | "DockWidgetPluginGui" | "DoubleConstrainedValue" | "DraftsService" | "Dragger" | "EchoSoundEffect" | "EmotesPages" | "EqualizerSoundEffect" | "EventIngestService" | "Explosion" | "File" | "FileMesh" | "Fire" | "Flag" | "FlagStand" | "FlagStandService" | "FlangeSoundEffect" | "FloorWire" | "FlyweightService" | "Folder" | "ForceField" | "Frame" | "FriendPages" | "FriendService" | "FunctionalTest" | "GamepadService" | "GamePassService" | "GameSettings" | "Geometry" | "GlobalDataStore" | "GlobalSettings" | "Glue" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuidRegistryService" | "GuiMain" | "GuiService" | "Handles" | "HapticService" | "Hat" | "HingeConstraint" | "Hint" | "Hole" | "Hopper" | "HopperBin" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidController" | "HumanoidDescription" | "ILegacyStudioBridge" | "ImageButton" | "ImageHandleAdornment" | "ImageLabel" | "InputObject" | "InsertService" | "InstanceAdornment" | "IntConstrainedValue" | "InternalContainer" | "IntValue" | "InventoryPages" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "LanguageService" | "LegacyStudioBridge" | "Lighting" | "LineForce" | "LineHandleAdornment" | "LocalizationService" | "LocalizationTable" | "LocalScript" | "LocalStorageService" | "LoginService" | "LogService" | "LuaSettings" | "LuaWebService" | "ManualGlue" | "ManualWeld" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "MeshContentProvider" | "MeshPart" | "Message" | "MessagingService" | "Model" | "ModuleScript" | "Motor" | "Motor6D" | "MotorFeature" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NegateOperation" | "NetworkClient" | "NetworkMarker" | "NetworkServer" | "NetworkSettings" | "NoCollisionConstraint" | "NonReplicatedCSGDictionaryService" | "NotificationService" | "NumberValue" | "ObjectValue" | "OrderedDataStore" | "OutfitPages" | "PackageLink" | "PackageService" | "Pants" | "ParabolaAdornment" | "Part" | "ParticleEmitter" | "PartOperation" | "PartOperationAsset" | "Path" | "PathfindingService" | "PermissionsService" | "PhysicsService" | "PhysicsSettings" | "PitchShiftSoundEffect" | "Platform" | "Player" | "PlayerEmulatorService" | "PlayerGui" | "PlayerMouse" | "Players" | "PlayerScripts" | "Plugin" | "PluginAction" | "PluginDebugService" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginManagerInterface" | "PluginMenu" | "PluginMouse" | "PluginToolbar" | "PluginToolbarButton" | "PointLight" | "PointsService" | "PolicyService" | "Pose" | "PrismaticConstraint" | "ProximityPrompt" | "ProximityPromptService" | "QWidgetPluginGui" | "RayValue" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClass" | "ReflectionMetadataClasses" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataMember" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderingTest" | "RenderSettings" | "ReplicatedFirst" | "ReplicatedScriptService" | "ReplicatedStorage" | "ReverbSoundEffect" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RocketPropulsion" | "RodConstraint" | "RopeConstraint" | "Rotate" | "RotateP" | "RotateV" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "RunService" | "RuntimeScriptService" | "ScreenGui" | "Script" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "ScrollingFrame" | "Seat" | "Selection" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "ServerReplicator" | "ServerScriptService" | "ServerStorage" | "SessionService" | "Shirt" | "ShirtGraphic" | "SkateboardController" | "SkateboardPlatform" | "Skin" | "Sky" | "Smoke" | "Snap" | "SocialService" | "SolidModelContentProvider" | "Sound" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "SpawnLocation" | "SpecialMesh" | "SphereHandleAdornment" | "SpotLight" | "SpringConstraint" | "StandalonePluginScripts" | "StandardPages" | "StarterCharacterScripts" | "StarterGear" | "StarterGui" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "Status" | "StopWatchReporter" | "StringValue" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "SunRaysEffect" | "SurfaceAppearance" | "SurfaceGui" | "SurfaceLight" | "SurfaceSelection" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "Terrain" | "TerrainRegion" | "TestService" | "TextBox" | "TextButton" | "TextFilterResult" | "TextLabel" | "TextService" | "Texture" | "ThirdPartyUserService" | "TimerService" | "Tool" | "Torque" | "TotalCountTimeIntervalItem" | "TouchInputService" | "TouchTransmitter" | "TracerService" | "Trail" | "Translator" | "TremoloSoundEffect" | "TrussPart" | "Tween" | "TweenService" | "UGCValidationService" | "UIAspectRatioConstraint" | "UICorner" | "UIGradient" | "UIGridLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint" | "UnionOperation" | "UnvalidatedAssetService" | "UserGameSettings" | "UserInputService" | "UserService" | "UserSettings" | "UserStorageService" | "Vector3Value" | "VectorForce" | "VehicleController" | "VehicleSeat" | "VelocityMotor" | "VersionControlService" | "VideoFrame" | "ViewportFrame" | "VirtualInputManager" | "VirtualUser" | "Visit" | "VRService" | "WedgePart" | "Weld" | "WeldConstraint" | "Workspace" | "WorldModel";
 	/** This property determines whether an [object](https://developer.roblox.com/en-us/api-reference/class/Instance) should be included when the game is published or saved, or when [Instance:Clone](https://developer.roblox.com/en-us/api-reference/function/Instance/Clone) is called on one of the object's ancestors. Calling Clone directly on an object will return nil if the cloned object is not archivable. Copying an object in Studio (using the 'Duplicate' or 'Copy' options) will ignore the Archivable property and set Archivable to true for the copy.
 	 * 
 	 * ```lua
@@ -1094,48 +1100,8 @@ interface Animation extends Instance {
 interface AnimationController extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AnimationController";
-	/** Returns an array of all [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) that are currently being played by the [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController).
-	 * 
-	 * A typical use for this function is stopping currently playing tracks using [AnimationTrack:Stop](https://developer.roblox.com/en-us/api-reference/function/AnimationTrack/Stop).
-	 * 
-	 * Note this function will not return [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) that have loaded but are not playing. If the developer wishes to track these they will need to index them manually. See below for one example of how this could be achieved:
-	 * 
-	 * ```lua
-	 * local animationTracks = {}
-	 * local track = animationController:LoadTrack(animation)
-	 * table.insert(animationTracks, track)
-	 * ```
-	 */
 	GetPlayingAnimationTracks(this: AnimationController): Array<AnimationTrack>;
-	/** This function loads an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) onto an [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController), returning an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) that can be used for playback.
-	 * 
-	 * How to load an Animation
-	 * ------------------------
-	 * 
-	 * The following code can be used to load an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) onto an [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController).
-	 * 
-	 * ```lua
-	 * local animationTrack = animationController:LoadAnimation(animation)
-	 * animationTrack:Play()
-	 * ``` 
-	 * 
-	 * Should I load an Animation on the client or server?
-	 * ---------------------------------------------------
-	 * 
-	 * In order for [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack)s to replicate correctly, it's important to know when they should be loaded on the client (via a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)) or on the server (via a [Script](https://developer.roblox.com/en-us/api-reference/class/Script)). If an [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController) is created on the server, its animations should be loaded and played on the server unless a player has been assigned network ownership of the [Model](https://developer.roblox.com/en-us/api-reference/class/Model)'s root part using [BasePart:SetNetworkOwner](https://developer.roblox.com/en-us/api-reference/function/BasePart/SetNetworkOwner). If an [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController) is created on the client it should be animated by the client.
-	 * 
-	 * Although it is not recommended, if a developer wishes to play animations on a locally controlled [Model](https://developer.roblox.com/en-us/api-reference/class/Model) from the server they can use the [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator) object.
-	 * 
-	 * Note this differs slightly for animations playing on Player characters, for more information on this please see [Humanoid:LoadAnimation](https://developer.roblox.com/en-us/api-reference/function/Humanoid/LoadAnimation).
-	 */
 	LoadAnimation(this: AnimationController, animation: Animation): AnimationTrack;
-	/** This event fires whenever the [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController) begins playing an animation. It returns the [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) playing.
-	 * 
-	 * The [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) can be used to access the animation's playback functions and events. It will only fire for animations playing on the specific [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController).
-	 * 
-	 * See [Humanoid.AnimationPlayed](https://developer.roblox.com/en-us/api-reference/event/Humanoid/AnimationPlayed) for the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) variant of this function.
-	 */
-	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 }
 
 /** Controls the playback of an animation on a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) or [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController). This object cannot be created, instead it is returned by the [Humanoid:LoadAnimation](https://developer.roblox.com/en-us/api-reference/function/Humanoid/LoadAnimation) method. */
@@ -1613,6 +1579,14 @@ interface Bone extends Attachment {
 interface AvatarEditorService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AvatarEditorService";
+	/** [NO DOCUMENTATION] */
+	PromptAllowInventoryReadAccess(this: AvatarEditorService): void;
+	/** [NO DOCUMENTATION] */
+	PromptCreateOutfit(this: AvatarEditorService, outfit: Instance, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
+	/** [NO DOCUMENTATION] */
+	PromptSaveAvatar(this: AvatarEditorService, humanoidDescription: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
+	/** [NO DOCUMENTATION] */
+	PromptSetFavorite(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>, shouldFavorite: boolean): void;
 	/** This function returns the platform Avatar rules for things like scaling, default shirts and pants, number of wearable assets, ect.
 	 * 
 	 * Data is in the format:
@@ -1707,6 +1681,14 @@ interface AvatarEditorService extends Instance {
 	 * Tags: Yields
 	 */
 	GetAvatarRules(this: AvatarEditorService): object;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	GetFavorite(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): boolean;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	GetInventory(this: AvatarEditorService, assetTypes: Array<any>): Instance | undefined;
 	/** This function returns the item details for the given item. It accepts two parameters - the first indicating the ID of the item being retrieved and the second indicating its [ItemType](https://developer.roblox.com/en-us/api-reference/enum/ItemType).
 	 * 
 	 * Data returned in the format:
@@ -1809,6 +1791,10 @@ interface AvatarEditorService extends Instance {
 	 * Tags: Yields
 	 */
 	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): object;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	GetOutfits(this: AvatarEditorService): Instance | undefined;
 	/** This function returns a list of recommendations based on the given [AssetType](https://developer.roblox.com/en-us/api-reference/enum/AssetType). Take a look at the code sample below for more information on possible usages for this function.
 	 * 
 	 * Data is in the format:
@@ -2081,6 +2067,14 @@ interface AvatarEditorService extends Instance {
 	 * Tags: Yields
 	 */
 	SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): Instance | undefined;
+	/** [NO DOCUMENTATION] */
+	readonly PromptAllowInventoryReadAccessCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly PromptCreateOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly PromptSaveAvatarCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly PromptSetFavoriteCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
 }
 
 /** A container object that holds a [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s inventory. Any [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) in a player's Backpack will be displayed in their inventory at the bottom of their screen. Selecting [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool)s from the inventory will equip the [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool), moving it from the Backpack to the player's character.
@@ -5612,6 +5606,7 @@ interface ContentProvider extends Instance {
 		contentIdList: Array<Instance>,
 		callback?: (contentId: string, status: Enum.AssetFetchStatus) => void,
 	): void;
+	readonly AssetFetchFailed: RBXScriptSignal<(assetId: string) => void>;
 }
 
 /** ContextActionService is a game service that allows a game to bind user input to contextual actions, or actions that are only enabled under some condition or period of time. For example, allowing a player to open a door only while close by. In code, an action is simply a string (the name of the action) used by the service to differentiate between unique actions. The action string is provided to [BindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction) and [UnbindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/UnbindAction), among other member functions. If two actions are bound to the same input, the most recently bound will take priority. When the most recent action is unbound, the one bound before that takes control again. Since ContextActionService deals with user input, you can only use it in [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) which run on the client.
@@ -9433,6 +9428,9 @@ interface HttpService extends Instance {
 interface Humanoid extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Humanoid";
+	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
+	GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
+	LoadAnimation(this: Humanoid, animation: Animation): AnimationTrack;
 	/** AutoJumpEnabled sets whether or not the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) will attempt to automatically jump over an obstacle it is walking towards.
 	 * 
 	 * Currently, this property only works when the following conditions are true:
@@ -10005,19 +10003,6 @@ interface Humanoid extends Instance {
 	 * GetLimb will throw an error if the `Part|Part's` parent is not set to the `Humanoid|Humanoid's` parent.
 	 */
 	GetLimb(this: Humanoid, part: BasePart): Enum.Limb;
-	/** This function returns an array of all [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) that are currently being played on the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid).
-	 * 
-	 * A typical use for this function is stopping currently playing tracks using [AnimationTrack:Stop](https://developer.roblox.com/en-us/api-reference/function/AnimationTrack/Stop).
-	 * 
-	 * Beware that this function will not return [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) that have loaded but are **not playing**. If you want to track these you will need to index them manually. See below for one example of how this could be achieved:
-	 * 
-	 * ```lua
-	 * local animationTracks = {}
-	 * local track = humanoid:LoadAnimation(animation)
-	 * table.insert(animationTracks, track)
-	 * ```
-	 */
-	GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
 	/** This function returns the `Humanoid|Humanoid's` current [HumanoidStateType](https://developer.roblox.com/en-us/api-reference/enum/HumanoidStateType).
 	 * 
 	 * The humanoid state describes the activity the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) is currently doing, such as jumping or freefalling.
@@ -10043,25 +10028,6 @@ interface Humanoid extends Instance {
 	 * *   To enable or disable a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) state use [Humanoid:SetStateEnabled](https://developer.roblox.com/en-us/api-reference/function/Humanoid/SetStateEnabled)
 	 */
 	GetStateEnabled(this: Humanoid, state: CastsToEnum<Enum.HumanoidStateType>): boolean;
-	/** This function loads an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) onto a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid), returning an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) that can be used for playback.
-	 * 
-	 * The following code can be used to load an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) onto a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid).
-	 * 
-	 * ```lua
-	 * local animationTrack = humanoid:LoadAnimation(animation)
-	 * animationTrack:Play()
-	 * ``` 
-	 * 
-	 * Should I load an Animation on the client or server?
-	 * ---------------------------------------------------
-	 * 
-	 * If the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) is controlled by a particular client, as is the case with [Player](https://developer.roblox.com/en-us/api-reference/class/Player) [Characters](https://developer.roblox.com/en-us/api-reference/property/Player/Character) then [Animations](https://developer.roblox.com/en-us/api-reference/class/Animation) should be loaded and played from that client.
-	 * 
-	 * If the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) belongs to a NPC (Non Player Character) which the server has [network ownership](http://robloxdev.com/articles/Network-Ownership) of then the [Animations](https://developer.roblox.com/en-us/api-reference/class/Animation) should be loaded and played from the server.
-	 * 
-	 * Although generally it is not advisable to do so, these rules can be bypassed using the [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator) object.
-	 */
-	LoadAnimation(this: Humanoid, animation: Animation): AnimationTrack;
 	/** This function causes the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) to walk in the given [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) _direction_.
 	 * 
 	 * By default, the _direction_ given is in world terms. If the _relativeToCamera_ parameter is _true_ however the _direction_ given is relative to the `Workspace/CurrentCamera|CurrentCamera's` [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame). As the negative Z direction is considered 'forwards' in Roblox, the following code would make the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) walk in the direction of the [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera).
@@ -10159,21 +10125,9 @@ interface Humanoid extends Instance {
 	 * *   [Players:GetHumanoidDescriptionFromOutfitId](https://developer.roblox.com/en-us/api-reference/function/Players/GetHumanoidDescriptionFromOutfitId), gives back a HumanoidDescription whose parameters are initialized to match that of the passed in server-side outfit asset
 	 * *   [Player:LoadCharacterWithHumanoidDescription](https://developer.roblox.com/en-us/api-reference/function/Player/LoadCharacterWithHumanoidDescription), spawns a player with the look from the HumanoidDescription Instance passed in
 	 */
-	ApplyDescription(this: Humanoid, humanoidDescription: HumanoidDescription): void;
+	ApplyDescription(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
 	/** If the emote could not be played because the emoteName is not found in the HumanoidDescription for the humanoid or the Humanoid is in the wrong HumanoidState for emotes then this API would return false to indicate that the emote was not played. The API would return true to indicate that the emote was played successfully. */
 	PlayEmote(this: Humanoid, emoteName: string): boolean;
-	/** The AnimationPlayed event fires when an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) begins playing on the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid).
-	 * 
-	 * A common use for this function is to connect the [AnimationTrack.KeyframeReached](https://developer.roblox.com/en-us/api-reference/event/AnimationTrack/KeyframeReached) event for the playing AnimationTrack, so additional effects can be added to the animation (for example [Sounds](https://developer.roblox.com/en-us/api-reference/class/Sound) and [ParticleEmitters](https://developer.roblox.com/en-us/api-reference/class/ParticleEmitter)).
-	 * 
-	 * This event can be used for any [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) regardless if it belongs to the local player's client or not.
-	 * 
-	 * See also
-	 * --------
-	 * 
-	 * *   For the [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController) equivalent of this event, please see [AnimationController.AnimationPlayed](https://developer.roblox.com/en-us/api-reference/event/AnimationController/AnimationPlayed)
-	 */
-	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 	/** Fires when the speed at which a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) is climbing changes.
 	 * 
 	 * [Humanoids](https://developer.roblox.com/en-us/api-reference/class/Humanoid) can climb up ladders made out of [Parts](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [TrussParts](https://developer.roblox.com/en-us/api-reference/class/TrussPart).
@@ -10974,6 +10928,16 @@ interface HumanoidDescription extends Instance {
 	 * *   [GetEquippedEmotes](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/GetEquippedEmotes), which can be used to query the currently equipped emotes without this event firing
 	 */
 	readonly EquippedEmotesChanged: RBXScriptSignal<(newEquippedEmotes: EquippedEmotes) => void>;
+}
+
+interface ILegacyStudioBridge extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "ILegacyStudioBridge" | "LegacyStudioBridge";
+}
+
+interface LegacyStudioBridge extends ILegacyStudioBridge {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "LegacyStudioBridge";
 }
 
 /** An **InputObject** represents a single user input, such as mouse movement, touches, key presses and more. It is created when an input begins.
@@ -17043,6 +17007,10 @@ interface MeshPart extends TriangleMeshPart {
 	readonly JointOffset: Vector3;
 	/** [NO DOCUMENTATION] */
 	readonly MeshId: string;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly MeshSize: Vector3;
 	/** This property determines the level of detail that solid-modeled and mesh parts will be shown in and can be set to the possible values of the [RenderFidelity](https://developer.roblox.com/en-us/api-reference/enum/RenderFidelity) enum.
 	 * 
 	 * By default, solid-modeled and mesh parts will always be shown in precise fidelity, no matter how far they are from the game camera. This improves their appearance when viewed from any distance, but if a place has a large number of detailed solid-modeled or mesh parts, it may reduce overall game performance.
@@ -17090,6 +17058,8 @@ interface MeshPart extends TriangleMeshPart {
 	 * A mesh can only be textured if the mesh has been UV mapped. UV mapping refers to the practice of projecting a texture map onto a mesh. This cannot be done using Roblox Studio and has to be done using an external 3D modelling application such as [Blender](https://www.blender.org/).
 	 */
 	TextureID: string;
+	/** [NO DOCUMENTATION] */
+	ApplyMesh(this: MeshPart, meshPart: MeshPart): void;
 }
 
 /** An abstract class that all parts based on `articles/3D Modeling with Parts|solid modeling` inherit from. */
@@ -17848,7 +17818,7 @@ interface PackageLink extends Instance {
  */
 interface Pages<T = unknown> extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CatalogPages" | "DataStorePages" | "EmotesPages" | "FriendPages" | "InventoryPages" | "StandardPages";
+	readonly ClassName: "CatalogPages" | "DataStorePages" | "EmotesPages" | "FriendPages" | "InventoryPages" | "OutfitPages" | "StandardPages";
 	/** Whether or not the current page is the last page available. */
 	readonly IsFinished: boolean;
 	/** Returns the items on the current page. The keys in the item are determined by the source of this object. */
@@ -17911,6 +17881,11 @@ interface InventoryPages extends Pages<number> {
 interface EmotesPages extends InventoryPages {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "EmotesPages";
+}
+
+interface OutfitPages extends Pages {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "OutfitPages";
 }
 
 /** A generic version of the Pages class, which may contain variable data, depending on what method it was returned from.  
@@ -19136,7 +19111,7 @@ interface Players extends Instance {
 	 * ```
 	 */
 	GetPlayers(this: Players): Array<Player>;
-	CreateHumanoidModelFromDescription(this: Players, description: LuaSourceContainer, rigType: CastsToEnum<Enum.HumanoidRigType>): Instance | undefined;
+	CreateHumanoidModelFromDescription(this: Players, description: LuaSourceContainer, rigType: CastsToEnum<Enum.HumanoidRigType>, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): Instance | undefined;
 	CreateHumanoidModelFromUserId(this: Players, userId: number): Instance | undefined;
 	/** This function returns a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) containing the assets which the player is wearing, excluding gear.
 	 * 
@@ -19637,6 +19612,72 @@ interface SunRaysEffect extends PostEffect {
 	Intensity: number;
 	/** Spread determines how wide the sun rays will spread across the sky. Its value should be set between 0 and 1 as values outside that range have undefined behavior. */
 	Spread: number;
+}
+
+interface ProximityPrompt extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "ProximityPrompt";
+	/** The action text shown to the user. */
+	ActionText: string;
+	/** [NO DOCUMENTATION] */
+	ClickablePrompt: boolean;
+	/** When false, this prompt will not be shown, and events will not fire. */
+	Enabled: boolean;
+	/** Describes which prompts will be shown when multiple may be visible. */
+	Exclusivity: Enum.ProximityPromptExclusivity;
+	/** The gamepad button the player should press to trigger the prompt. */
+	GamepadKeyCode: Enum.KeyCode;
+	/** The user must hold the button down for this duration to trigger the prompt. */
+	HoldDuration: number;
+	/** The key the player should press to trigger the prompt. */
+	KeyboardKeyCode: Enum.KeyCode;
+	/** The maximum distance a Player's character can be from the ProximityPrompt for the prompt to appear. */
+	MaxActivationDistance: number;
+	/** The object name text shown to the user. */
+	ObjectText: string;
+	/** If true, this prompt will only be shown if there is a clear path from the camera to the object. */
+	RequiresLineOfSight: boolean;
+	/** When set to custom, no default UI will be provided. */
+	Style: Enum.ProximityPromptStyle;
+	/** a pixel offset applied to the UI. */
+	UIOffset: Vector2;
+	/** Used to signal that the player began triggering this prompt. */
+	InputHoldBegin(this: ProximityPrompt): void;
+	/** Used to signal that the player ended triggering this prompt. */
+	InputHoldEnd(this: ProximityPrompt): void;
+	/** Fired in local scripts when the user begins holding down the button on a prompt with a non-zero HoldDuration.  This can be used to animate a progress bar. */
+	readonly PromptButtonHoldBegan: RBXScriptSignal<() => void>;
+	/** Fired in local scripts when the user ends holding down the button on a prompt with a non-zero HoldDuration.  This can be used to animate a progress bar. */
+	readonly PromptButtonHoldEnded: RBXScriptSignal<() => void>;
+	/** Fired in local scripts when this prompt is hidden.  Can be used for customization. */
+	readonly PromptHidden: RBXScriptSignal<() => void>;
+	/** Fired in local scripts when this prompt is shown.  Can be used for customization. */
+	readonly PromptShown: RBXScriptSignal<(inputType: Enum.ProximityPromptInputType) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly TriggerEnded: RBXScriptSignal<(playerWhoTriggered: Player) => void>;
+	/** Fired when a player triggers the ProximityPrompt. */
+	readonly Triggered: RBXScriptSignal<(playerWhoTriggered: Player) => void>;
+}
+
+interface ProximityPromptService extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "ProximityPromptService";
+	/** When false, no prompts will be shown. */
+	Enabled: boolean;
+	/** The maximum number of ProximityPrompts that will be shown. */
+	MaxPromptsVisible: number;
+	/** Fired in local scripts when the user begins holding down the button on a prompt with a non-zero HoldDuration.  This can be used to animate a progress bar. */
+	readonly PromptButtonHoldBegan: RBXScriptSignal<(prompt: Instance) => void>;
+	/** Fired in local scripts when the user ends holding down the button on a prompt with a non-zero HoldDuration.  This can be used to animate a progress bar. */
+	readonly PromptButtonHoldEnded: RBXScriptSignal<(prompt: Instance) => void>;
+	/** Fired in local scripts when a prompt is hidden.  Can be used for customization. */
+	readonly PromptHidden: RBXScriptSignal<(prompt: Instance) => void>;
+	/** Fired in local scripts when a prompt is shown.  Can be used for customization. */
+	readonly PromptShown: RBXScriptSignal<(prompt: Instance, inputType: Enum.ProximityPromptInputType) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly PromptTriggerEnded: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
+	/** [NO DOCUMENTATION] */
+	readonly PromptTriggered: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
 }
 
 /** A **RemoteEvent** is designed to provide a one-way message between the server and clients, allowing [Scripts](https://developer.roblox.com/en-us/api-reference/class/Script) to call code in [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) and vice-versa. This message can be directed from one client to the server, from the server to a particular client, or from the server to all clients.
@@ -22780,6 +22821,11 @@ interface TextService extends Instance {
 interface TouchTransmitter extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "TouchTransmitter";
+}
+
+interface TracerService extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "TracerService";
 }
 
 /** The Trail object is used to create a trail like an effect between two points. As the points move through space a texture is drawn on the plane the points define. This is commonly used to create effects to help visualize movements like tracer trails behind projectiles, footprints, tire tracks, and many other similar effects.
