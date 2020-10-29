@@ -469,6 +469,10 @@ interface QWidgetPluginGui extends PluginGui {
 	readonly ClassName: "QWidgetPluginGui";
 }
 
+interface InsertService extends Instance {
+	CreateMeshPartAsync(this: InsertService, meshId: string, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>, renderFidelity: CastsToEnum<Enum.RenderFidelity>): Instance | undefined;
+}
+
 interface KeyframeSequence extends Instance {
 	/** Contains the hip height of the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) of the model that was used to author this [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence). Default value is 1.35 since that is the hip height set for a standard R15 [character](https://developer.roblox.com/en-us/api-reference/class/Character). */
 	AuthoredHipHeight: number;
@@ -963,6 +967,8 @@ interface PhysicsSettings extends Instance {
 	 * Tags: Hidden, NotReplicated
 	 */
 	ForceCSGv2: boolean;
+	/** [NO DOCUMENTATION] */
+	IsInterpolationThrottleShown: boolean;
 	/** This property is supposed to show the [BasePart.ReceiveAge](https://developer.roblox.com/en-us/api-reference/property/BasePart/ReceiveAge) of a part, but it does not work correctly. */
 	IsReceiveAgeShown: boolean;
 	/** When set to true, the joint connections of each part, and the states of their underlying primitive components are visualized as a spanning tree.
@@ -1965,70 +1971,6 @@ interface Selection extends Instance {
 }
 
 interface DataModel extends ServiceProvider<Services> {
-	/** This function returns the job interval peak fraction of the specified task scheduler job.
-	 * 
-	 * In computing, a task scheduler is a system responsible for executing key tasks at the appropriate intervals.
-	 * 
-	 * You can also find live task scheduler statistics in the Task Scheduler window in Roblox Studio.
-	 * 
-	 * See also
-	 * --------
-	 * 
-	 * *   [TaskScheduler](https://developer.roblox.com/en-us/api-reference/class/TaskScheduler)
-	 * *   [DataModel:GetJobsInfo](https://developer.roblox.com/en-us/api-reference/function/DataModel/GetJobsInfo)
-	 * *   [DataModel:GetJobsExtendedStats](https://developer.roblox.com/en-us/api-reference/function/DataModel/GetJobsExtendedStats)
-	 * *   [DataModel:GetJobTimePeakFraction](https://developer.roblox.com/en-us/api-reference/function/DataModel/GetJobTimePeakFraction)
-	 */
-	GetJobIntervalPeakFraction(this: DataModel, jobname: string, greaterThan: number): number;
-	/** Returns the job time peak fraction of the specified task scheduler job. */
-	GetJobTimePeakFraction(this: DataModel, jobname: string, greaterThan: number): number;
-	/** This function is currently broken
-	 * 
-	 * This function returns a table containing extended statistics on the jobs performed by the task scheduler.
-	 * 
-	 * In computing, a task scheduler is a system responsible for executing key tasks at the appropriate intervals.
-	 * 
-	 * This function is currently broken and does not return the correct values. You can find live task scheduler statistics in the Task Scheduler window in Roblox Studio.
-	 * 
-	 * The first entry in the table returned is a reference dictionary containing the statistics (or headings) available. It is in the following format:
-	 * 
-	 * ```lua
-	 * {
-	 *     ["name"] = "name",
-	 *     ["time.average"] = "time.average",
-	 *     ["time.variance"] = "time.variance",
-	 *     ["time.samples"] = "time.samples",
-	 *     ["interval.average"] = "interval.average",
-	 *     ["interval.variance"] = "interval.variance",
-	 *     ["interval.samples"] = "interval.samples",
-	 *     ["dutyfraction"] = "dutyfraction"
-	 * }
-	 * ``` 
-	 * 
-	 * The subsequent entries in the table returned are dictionaries containing the above statistics for jobs performed by the task scheduler. For example:
-	 * 
-	 * ```lua
-	 * {
-	 *     ["name"] = "Heartbeat",
-	 *     ["time.average"] = 0,
-	 *     ["time.variance"] = 0,
-	 *     ["time.samples"] = 0,
-	 *     ["interval.average"] = 0,
-	 *     ["interval.variance"] = 0,
-	 *     ["interval.samples"] = 0,
-	 *     ["dutyfraction"] = 0
-	 * }
-	 * ``` 
-	 * 
-	 * See also
-	 * --------
-	 * 
-	 * *   [TaskScheduler](https://developer.roblox.com/en-us/api-reference/class/TaskScheduler)
-	 * *   [DataModel:GetJobsInfo](https://developer.roblox.com/en-us/api-reference/function/DataModel/GetJobsInfo)
-	 * *   [DataModel:GetJobIntervalPeakFraction](https://developer.roblox.com/en-us/api-reference/function/DataModel/GetJobIntervalPeakFraction)
-	 * *   [DataModel:GetJobTimePeakFraction](https://developer.roblox.com/en-us/api-reference/function/DataModel/GetJobTimePeakFraction)
-	 */
-	GetJobsExtendedStats(this: DataModel): unknown;
 	/** Returns a table containing basic information about the jobs performed by the task scheduler
 	 * 
 	 * In computing, a task scheduler is a system responsible for executing key tasks at the appropriate intervals.
@@ -2179,12 +2121,10 @@ interface Studio extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Studio";
 	[""TODO" Color"]: Color3;
-	[""export" Color"]: Color3;
 	[""function" Color"]: Color3;
 	[""local" Color"]: Color3;
 	[""nil" Color"]: Color3;
 	[""self" Color"]: Color3;
-	[""type" Color"]: Color3;
 	["Active Color"]: Color3;
 	["Active Hover Over Color"]: Color3;
 	["Always Save Script Changes"]: boolean;
@@ -2240,9 +2180,9 @@ interface Studio extends Instance {
 	/** Specifies whether or not the [Lua Debugger](https://developer.roblox.com/articles/Lua-debugger "Lua Debugger") feature is enabled. */
 	LuaDebuggerEnabled: boolean;
 	readonly LuaDebuggerEnabledAtStartup: boolean;
+	["Luau Keyword Color"]: Color3;
 	["Matching Word Background Color"]: Color3;
 	["Maximum Output Lines"]: number;
-	["Maximum Table Depth"]: number;
 	["Method Color"]: Color3;
 	["Number Color"]: Color3;
 	["Only Play Audio from Window in Focus"]: boolean;
@@ -2262,10 +2202,10 @@ interface Studio extends Instance {
 	PluginDebuggingEnabled: boolean;
 	/** The directory where local plugins are stored. */
 	PluginsDir: QDir;
-	["Preprocessor Color"]: Color3;
 	["Property Color"]: Color3;
 	["Render Throttle Percentage"]: number;
 	["Respect Studio shortcuts when game has focus"]: boolean;
+	["Ruler Color"]: Color3;
 	Rulers: string;
 	RuntimeUndoBehavior: Enum.RuntimeUndoBehavior;
 	["Script Editor Color Preset"]: Enum.StudioScriptEditorColorPresets;
@@ -2705,19 +2645,6 @@ interface StudioTheme extends Instance {
 	 * See the [StudioStyleGuideColor](https://developer.roblox.com/en-us/api-reference/enum/StudioStyleGuideColor) reference for a list of Studio elements and [StudioStyleGuideModifier](https://developer.roblox.com/en-us/api-reference/enum/StudioStyleGuideModifier) for a list of modifiers.
 	 */
 	GetColor(this: StudioTheme, styleguideitem: CastsToEnum<Enum.StudioStyleGuideColor>, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): Color3;
-	/** The GetPath function returns the path of an asset (or image) for the `Id` and `Modifier`. We can have different icons to be loaded depending on the theme.
-	 * 
-	 * The `StyleGuideModifer` argument's default value is `Enum\StyleGuideModifier`, which applies no modifier.
-	 * 
-	 * This is intended for use within [Plugins](https://developer.roblox.com/en-us/api-reference/class/Plugin), but will also execute in the Command Line.
-	 * 
-	 * For instance, if you would like to get the path of the “MoreButton” image, you would use the following code:
-	 * 
-	 * ```lua
-	 * settings().Studio.Theme:GetPath("MoreButton")
-	 * ```
-	 */
-	GetPath(this: StudioTheme, assetid: string, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): string;
 }
 
 /** TaskScheduler is a read-only settings class responsible for the Task Scheduler feature.  
