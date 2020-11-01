@@ -1097,6 +1097,8 @@ interface CFrameConstructor {
 		R21: number,
 		R22: number,
 	): CFrame;
+	/** Creates a CFrame located at a position with it’s lookVector pointing towards the lookAt position. Optionally specify the upVector */
+	lookAt (at: Vector3, lookAt: Vector3, up: Vector3): CFrame;
 }
 
 declare const CFrame: CFrameConstructor;
