@@ -1072,6 +1072,8 @@ interface CFrameConstructor {
 	fromMatrix: (pos: Vector3, vX: Vector3, vY: Vector3, vZ?: Vector3) => CFrame;
 	/** Equivalent to fromEulerAnglesYXZ */
 	fromOrientation: (rX: number, rY: number, rZ: number) => CFrame;
+	/** Creates a new CFrame located at `at` and facing towards `lookAt`, optionally specifying the upward direction (by default, (0, 1, 0)). This function replaces the `CFrame.new(Vector3, Vector3)` constructor which accomplished a similar task. This function allows you to specify the ``up`` Vector, using the same default as the old constructor. */
+	lookAt: (at: Vector3, lookAt: Vector3, up?: Vector3) => CFrame;
 	/** Creates a blank identity CFrame. */
 	new (): CFrame;
 	/** Creates a CFrame from a Vector3 */
@@ -1097,8 +1099,6 @@ interface CFrameConstructor {
 		R21: number,
 		R22: number,
 	): CFrame;
-	/** Creates a CFrame located at a position with it’s lookVector pointing towards the lookAt position. Optionally specify the upVector */
-	lookAt: (at: Vector3, lookAt: Vector3, up?: Vector3) => CFrame;
 }
 
 declare const CFrame: CFrameConstructor;
