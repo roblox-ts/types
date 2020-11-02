@@ -1075,7 +1075,7 @@ interface CFrameConstructor {
 	/**
 	 * Creates a new CFrame located at `at` and facing towards `lookAt`, optionally specifying the upward direction (by default, (0, 1, 0)).
 	 * 
-	 * This function replaces the `CFrame.new(Vector3, Vector3)` constructor which accomplished a similar task. This function allows you to specify the ``up`` Vector, using the same default as the old constructor.
+	 * This function replaces the `CFrame.new(Vector3, Vector3)` constructor which accomplished a similar task. This function allows you to specify the `up` Vector, using the same default as the old constructor.
 	 */
 	lookAt: (at: Vector3, lookAt: Vector3, up?: Vector3) => CFrame;
 	/** Creates a blank identity CFrame. */
