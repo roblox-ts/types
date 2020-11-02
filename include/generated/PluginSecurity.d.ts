@@ -2007,9 +2007,9 @@ interface DataModel extends ServiceProvider<Services> {
 	 * --------
 	 * 
 	 * *   [TaskScheduler](https://developer.roblox.com/en-us/api-reference/class/TaskScheduler)
-	 * *   [DataModel:GetJobsExtendedStats](https://developer.roblox.com/en-us/api-reference/function/DataModel/GetJobsExtendedStats)
-	 * *   [DataModel:GetJobIntervalPeakFraction](https://developer.roblox.com/en-us/api-reference/function/DataModel/GetJobIntervalPeakFraction)
-	 * *   [DataModel:GetJobTimePeakFraction](https://developer.roblox.com/en-us/api-reference/function/DataModel/GetJobTimePeakFraction)
+	 * *   `DataModel/GetJobsExtendedStats`
+	 * *   `DataModel/GetJobIntervalPeakFraction`
+	 * *   `DataModel/GetJobTimePeakFraction`
 	 */
 	GetJobsInfo(this: DataModel): unknown;
 	/** This function returns an array of [Instances](https://developer.roblox.com/en-us/api-reference/class/Instance) associated with the given `Articles/Content|content` URL.

@@ -429,13 +429,14 @@ interface Instance {
 	 * ```
 	 */
 	ClearAllChildren(this: Instance): void;
-	/** Create a deep copy of a Roblox Instance and all of its descendants, with all the same property values. Returns a new, separate object whose Parent property is `nil`. The next step after cloning an object is setting the Parent, and optionally re-positioning the new object if it has 3d geometry.
+	/** **Clone** creates a copy of an object and all of its descendants, ignoring all objects that are not [Archivable](https://developer.roblox.com/en-us/api-reference/property/Instance/Archivable). The copy of the root object is returned by this function and its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is set to nil.
 	 * 
-	 * Any references to objects not in the cloned hierarchy are maintained (i.e. if an ObjectValue refers to an external object it will refer to the same external object). Any internal references are relative (ie if an ObjectValue refers to an internal object it will refer to a similar internal object in the copy).
+	 * If a reference property such as [ObjectValue.Value](https://developer.roblox.com/en-us/api-reference/property/ObjectValue/Value) is set in a cloned object, the value of the copy's property depends on original's value:
 	 * 
-	 * Any objects in the cloned object's hierarchy (including the object itself) that does not have the `Archivable` property enabled are ignored. If the root object is not Archivable, the function returns `nil`.
+	 * *   If a reference property refers to an object that was **also** cloned, an _internal reference_, the copy will refer to the copy.
+	 * *   If a reference property refers to an object that was **not** cloned, an _external reference_, the same value is maintained in the copy.
 	 * 
-	 * Clone is useful for regenerating models by saving the original and spawning copies. It's also useful for taking a snapshot of the current state of a model if it is changing over time.
+	 * This function is typically used to create models that can be regenerated. First, get a reference to the original object. Then, make a copy of the object and insert the copy by setting its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) or one of its descendants. Finally, when it's time to regenerate the model, [Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) the copy and clone a new one from the original like before.
 	 */
 	Clone(this: Instance): this;
 	/** Sets the [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) property to nil, locks the [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) property, disconnects all connections and calls Destroy on all children. This function is the correct way to dispose of objects that are no longer required. Disposing of unneeded objects is important, since unnecessary objects and connections in a place use up memory (this is called a **memory leak**) which can lead to serious performance issues over time.
@@ -4364,23 +4365,15 @@ interface Clothing extends CharacterAppearance {
 	Color3: Color3;
 }
 
-/** The Pants object displays shirts on a character model. Pants are items of clothing that cover the legs and torso of the character based on a predefined texture uploaded to Roblox.
+/** ![A default rig wearing a very dapper pair of pants (rbxassetid://86896501)](https://developer.roblox.com/assets/blt4b8457e467710f8d/Pants.jpg) The **Pants** object displays a Pants texture from the Roblox website on a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) rig. Pants cover the torso and legs, and will be covered by a [Shirt](https://developer.roblox.com/en-us/api-reference/class/Shirt) on the torso. To be visible, a Pants must be a sibling of a Humanoid and have its [PantsTemplate](https://developer.roblox.com/en-us/api-reference/property/Pants/PantsTemplate) property set to an appropriate texture (such as `rbxassetid://86896501`, pictured to the right). The pants texture may be colorized using the [Clothing.Color3](https://developer.roblox.com/en-us/api-reference/property/Clothing/Color3) property.
  * 
- * How do Pants work?
- * ------------------
+ * Pants are automatically loaded on [Player](https://developer.roblox.com/en-us/api-reference/class/Player) characters if their avatar is wearing one.
  * 
- * Pants only have one property, [Pants.PantsTemplate](https://developer.roblox.com/en-us/api-reference/property/Pants/PantsTemplate). This is a content ID pointing to the pant's texture on the Roblox website.
+ * See also
+ * --------
  * 
- * A Pants object parented to a model will display the pants on the model provided a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) is present and the limbs required for the pants corresponding with the humanoid's [Humanoid.RigType](https://developer.roblox.com/en-us/api-reference/property/Humanoid/RigType) exist.
- * 
- * Note if multiple Pants objects are present in a model only one will be shown. However both a [Shirt](https://developer.roblox.com/en-us/api-reference/class/Shirt) and Pants object will be shown together with the shirt drawn on top (as pants also cover the torso).
- * 
- * Pants automatically load onto new characters spawning based on the [Player.CharacterAppearance](https://developer.roblox.com/en-us/api-reference/property/Player/CharacterAppearance) property.
- * 
- * How do I make Pants?
- * --------------------
- * 
- * In order to make a pants a texture (image) determining what will be displayed on what limbs needs to be uploaded to the Roblox website. For more information, please see [this tutorial](https://developer.roblox.com/articles/How-to-Make-Shirts-and-Pants-for-Roblox-Characters).
+ * *   [Shirt](https://developer.roblox.com/en-us/api-reference/class/Shirt), an object which works similarly with the torso and arms
+ * *   [Making Avatar Clothing](https://developer.roblox.com/articles/How-to-Make-Shirts-and-Pants-for-Roblox-Characters), which goes into detail about creating Shirts and Pants
  */
 interface Pants extends Clothing {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
@@ -4408,7 +4401,16 @@ interface Pants extends Clothing {
 	PantsTemplate: string;
 }
 
-/** This object displays shirts on a character model. The arms and torso are covered by this object. */
+/** ![A default rig wearing a very dapper Shirt (rbxassetid://86896487)](https://developer.roblox.com/assets/bltc8da647cb0295112/Shirt.jpg) The **Shirt** object displays a Shirt texture from the Roblox website on a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) rig. Shirts cover the torso and arms, and will take priority over a [Pants](https://developer.roblox.com/en-us/api-reference/class/Pants) on the torso. To be visible, a Shirt must be a sibling of a Humanoid and have its [ShirtTemplate](https://developer.roblox.com/en-us/api-reference/property/Shirt/ShirtTemplate) property set to an appropriate texture (such as `rbxassetid://86896487`, pictured to the right). The shirt texture may be colorized using the [Clothing.Color3](https://developer.roblox.com/en-us/api-reference/property/Clothing/Color3) property.
+ * 
+ * Shirts are automatically loaded on [Player](https://developer.roblox.com/en-us/api-reference/class/Player) characters if their avatar is wearing one.
+ * 
+ * See also
+ * --------
+ * 
+ * *   [Pants](https://developer.roblox.com/en-us/api-reference/class/Pants), an object which works similarly with the torso and legs
+ * *   [Making Avatar Clothing](https://developer.roblox.com/articles/How-to-Make-Shirts-and-Pants-for-Roblox-Characters), which goes into detail about creating Shirts and Pants
+ */
 interface Shirt extends Clothing {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Shirt";
@@ -8782,25 +8784,52 @@ interface InstanceAdornment extends GuiBase3d {
 	Adornee: Instance | undefined;
 }
 
-/** A SelectionBox is an object which is used to put a 3D box around the part it's adorned to.
+/** **SelectionBox** is an object which renders a 3D box around its [Adornee](https://developer.roblox.com/en-us/api-reference/property/PVAdornment/Adornee) when it is a descendant of the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) or anywhere where GUI objects are rendered. The box's geometry consists of rectangular prisms forming an outline/wireframe in addition to a surface for each of its faces. By default, only the outline is visible.
  * 
- * SelectionBoxes require a parent, like all objects and an [Adornee](https://developer.roblox.com/en-us/api-reference/property/PVAdornment/Adornee). You can place the SelectionBox wherever you want as its parent, but you must set its adornee. An adornee what it shows up on, so basically it makes it overlay onto the part.
+ * ![A default SelectionBox adorned to a default Part](https://developer.roblox.com/assets/blta4e1984798842acd/SelectionBox.jpg) There are several properties available to configure the appearance of the cube. The outline can modified through the [Color3](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Color3)†, [Transparency](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Transparency)† and [LineThickness](https://developer.roblox.com/en-us/api-reference/property/SelectionBox/LineThickness) properties. The faces can be modified through the [SurfaceColor3](https://developer.roblox.com/en-us/api-reference/property/SelectionBox/SurfaceColor3) and [SurfaceTransparency](https://developer.roblox.com/en-us/api-reference/property/SelectionBox/SurfaceTransparency) properties. Finally, rendering of the box can be toggled with the [Visible](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Visible)† property.
  * 
- * ![SelectionBoxExample.jpg](https://developer.roblox.com/assets/blt1ef83c85311f20db/SelectionBoxExample.jpg)
+ * † These properties come from this object's superclass, [GuiBase3d](https://developer.roblox.com/en-us/api-reference/class/GuiBase3d).
+ * 
+ * The SelectionBox object does not capture any form of input; it is solely a visual effect. To capture simple pointer input on the adornee, consider using a [ClickDetector](https://developer.roblox.com/en-us/api-reference/class/ClickDetector).
  * 
  * See also
  * --------
  * 
- * *   [Selection Boxes](https://developer.roblox.com/articles/Selection-Boxes), an article providing more information on how to use SelectioBoxes
+ * *   `articles/Selection Boxes`, to learn more about using this object
  */
 interface SelectionBox extends InstanceAdornment {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "SelectionBox";
-	/** The thickness of the [SelectionBox](https://developer.roblox.com/en-us/api-reference/class/SelectionBox) outlines. Measured in studs. */
+	/** **LineThickness** determines the thickness of the box's outlines. It is measured in studs, the same unit for [BasePart.Size](https://developer.roblox.com/en-us/api-reference/property/BasePart/Size). If set to 0, the outline will not be visible at all.
+	 * 
+	 * ![Three SelectionBoxes with LineThickness values of 0.075, 0.15 (default) and 0.3](https://developer.roblox.com/assets/blt1d73c3a921c12384/SelectionBox.LineThickness.jpg)
+	 * 
+	 * Pictured above are three default [Part](https://developer.roblox.com/en-us/api-reference/class/Part)s with default SelectionBoxes applied to them. Their thicknesses from left-to-right are 0.075, 0.15 (default) and 0.3.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [GuiBase3d.Color](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Color), a property of the superclass [GuiBase3d](https://developer.roblox.com/en-us/api-reference/class/GuiBase3d) which controls the outline's color
+	 * *   [GuiBase3d.Transparency](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Transparency), a property of the superclass [GuiBase3d](https://developer.roblox.com/en-us/api-reference/class/GuiBase3d) which controls the outline's transparency
+	 */
 	LineThickness: number;
-	/** The color of the [SelectionBox](https://developer.roblox.com/en-us/api-reference/class/SelectionBox) surface */
+	/** **SurfaceColor3** determines the color of the SelectionBox's surfaces.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [SurfaceTransparency](https://developer.roblox.com/en-us/api-reference/property/SelectionBox/SurfaceTransparency), which controls the transparency of the surfaces. You may need to adjust this property in order to see changes to SurfaceColor.
+	 * *   [GuiBase3d.Color](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Color), a property of the superclass [GuiBase3d](https://developer.roblox.com/en-us/api-reference/class/GuiBase3d) which controls the color of the outline rather than the surface faces
+	 */
 	SurfaceColor3: Color3;
-	/** The transparency of the SelectionBox's surface. A value of 1 makes the surface invisible, while a value of 0 makes it opaque. */
+	/** **SurfaceTransparency** determines the transparency of the SelectionBox's surfaces, similar to the way [BasePart.Transparency](https://developer.roblox.com/en-us/api-reference/property/BasePart/Transparency) works. By default, this property is 1, which causes the surfaces to not be visible.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [SurfaceColor3](https://developer.roblox.com/en-us/api-reference/property/SelectionBox/SurfaceColor3), which controls the color of the surface.
+	 * *   [GuiBase3d.Transparency](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Transparency), a property of the superclass [GuiBase3d](https://developer.roblox.com/en-us/api-reference/class/GuiBase3d) which controls the transparency of the outline rather than the surface faces
+	 */
 	SurfaceTransparency: number;
 }
 
@@ -8935,13 +8964,34 @@ interface ParabolaAdornment extends PVAdornment {
 	readonly ClassName: "ParabolaAdornment";
 }
 
-/** An object which is used to put a 3D sphere around the part it's adorned to. Intended for use on parts that have their [Part.Shape](https://developer.roblox.com/en-us/api-reference/property/Part/Shape) set to _Ball_. */
+/** **SelectionSphere** is an object which renders a 3D sphere around its [Adornee](https://developer.roblox.com/en-us/api-reference/property/PVAdornment/Adornee) when it is a descendant of the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) or anywhere where GUI objects are rendered. The sphere's geometry consists of a ring/outline in addition to a surface. By default, only the outline is visible.
+ * 
+ * ![A default SelectionSphere adorned to a semi-transparent default Part](https://developer.roblox.com/assets/bltb3e8cdfab0891947/SelectionSphere.jpg) There are a few properties available to configure the appearance of the sphere. The outline can modified through the [Color3](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Color3)† and [Transparency](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Transparency)† properties. The surface can be modified through the [SurfaceColor3](https://developer.roblox.com/en-us/api-reference/property/SelectionSphere/SurfaceColor3) and [SurfaceTransparency](https://developer.roblox.com/en-us/api-reference/property/SelectionSphere/SurfaceTransparency) properties. Finally, rendering of the sphere can be toggled with the [Visible](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Visible)† property.
+ * 
+ * † These properties come from this object's superclass, [GuiBase3d](https://developer.roblox.com/en-us/api-reference/class/GuiBase3d).
+ * 
+ * The SelectionSphere object does not capture any form of input; it is solely a visual effect. To capture simple pointer input on the adornee, consider using a [ClickDetector](https://developer.roblox.com/en-us/api-reference/class/ClickDetector).
+ */
 interface SelectionSphere extends PVAdornment {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "SelectionSphere";
-	/** The color of the SelectionSphere's surface. */
+	/** **SurfaceColor3** determines the color of the SelectionSphere's surface.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [SurfaceTransparency](https://developer.roblox.com/en-us/api-reference/property/SelectionSphere/SurfaceTransparency), which controls the transparency of the surface. You may need to adjust this property in order to see changes to SurfaceColor3.
+	 * *   [GuiBase3d.Color](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Color), a property of the superclass [GuiBase3d](https://developer.roblox.com/en-us/api-reference/class/GuiBase3d) which controls the color of the outline rather than the surface faces
+	 */
 	SurfaceColor3: Color3;
-	/** The transparency of the SelectionSphere's surface. A value of 1 makes the surface invisible, while a value of 0 makes it opaque. */
+	/** **SurfaceTransparency** determines the transparency of the SelectionSphere's surface, similar to the way [BasePart.Transparency](https://developer.roblox.com/en-us/api-reference/property/BasePart/Transparency) works. By default, this property is 1, which causes the surface to not be visible.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [SurfaceColor3](https://developer.roblox.com/en-us/api-reference/property/SelectionSphere/SurfaceColor3), which controls the color of the surface.
+	 * *   [GuiBase3d.Transparency](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Transparency), a property of the superclass [GuiBase3d](https://developer.roblox.com/en-us/api-reference/class/GuiBase3d) which controls the transparency of the outline rather than the surface
+	 */
 	SurfaceTransparency: number;
 }
 
@@ -17331,7 +17381,13 @@ interface WorldRoot extends Model {
 	 * If no parts are provided, false is returned.
 	 */
 	ArePartsTouchingOthers(this: WorldRoot, partList: Array<Instance>, overlapIgnored?: number): boolean;
-	/** This function moves a table of [parts](https://developer.roblox.com/en-us/api-reference/class/Part) to [CFrames](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) in a table of CFrames, without firing property changed events. Not firing property changes makes this a very fast method for moving parts, at the cost of the changes not replicating to the client or being recognized by the undo history. */
+	/** **Warning!**  
+	 * You should only use this function if you are sure that part movement is a bottleneck in your code, simply setting the CFrame property of the individual parts / welded models you want to move will be fast enough in the vast majority of cases.
+	 * 
+	 * This function moves a table of parts to the location specified in a table of [CFrames](https://developer.roblox.com/en-us/api-reference/datatype/CFrame). This makes it a very fast way to move large numbers of parts, as you don't have to pay the cost of separate property sets for each individual part.
+	 * 
+	 * The third argument of BulkMoveTo allows you to further speed up movement of the parts by specifying the [Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position) and [Orientation](https://developer.roblox.com/en-us/api-reference/property/BasePart/Orientation). Changed events should not be fired on the parts. If you specify FireCFrameChanged as the BulkMoveMode then only CFrame .Changed will be fired, rather than changed firing for Position, Orientation, and CFrame like it normally does.
+	 */
 	BulkMoveTo(this: WorldRoot, partList: Array<Instance>, cframeList: Array<any>, eventMode?: CastsToEnum<Enum.BulkMoveMode>): void;
 	/** Returns an array of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s in the given [Region3](https://developer.roblox.com/en-us/api-reference/datatype/Region3).
 	 * 
@@ -23323,21 +23379,29 @@ interface UISizeConstraint extends UIConstraint {
 	MinSize: Vector2;
 }
 
-/** Ensures a [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) with text (such as a [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel) or [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton) does let the font size of its text become larger or smaller than the [UITextSizeConstraint.MaxTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MaxTextSize) and [UITextSizeConstraint.MinTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MinTextSize).  
- *   
+/** Ensures a [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) with text (such as a [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel) or [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton)) does not let the font size of its text become larger or smaller than the [UITextSizeConstraint.MaxTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MaxTextSize) and [UITextSizeConstraint.MinTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MinTextSize).
+ * 
+ * ![Constraints visual](https://developer.roblox.com/assets/blte9c47efb631349e0/UITextSizeConstraintDemo.gif)
+ * 
+ * If the affected GuiObject has its [TextScaled](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextScaled) property set to true the text size constrained by this property will scale dynamically with the container's size. It will scale upwards with the GuiObject's size until the max size is reached and downwards until the min size is reached. At these points the text size will stay constant until the size of the UI object constrains the text within the min and max bounds.
+ * 
  * A UITextSizeConstraint can be applied to a GuiObject by parenting it to that object.
  */
 interface UITextSizeConstraint extends UIConstraint {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "UITextSizeConstraint";
-	/** (default 1000)
+	/** this property indicates the largest size in pixels the font is allowed to be. It defaults to 1000 pixels and much be set larger than or equal to the `UITextSizeConstraint|UITextSizeConstraint's` [MinTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MinTextSize) property.
 	 * 
-	 * The largest size in pixels the font is allowed to be. This value must be set larger than or equal to \`UITextSizeConstraint/MinTextSize\`.The largest size in pixels the font is allowed to be.
+	 * ![Max and min constraints demo](https://developer.roblox.com/assets/blte9c47efb631349e0/UITextSizeConstraintDemo.gif)
+	 * 
+	 * If the affected [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) has its [TextScaled](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextScaled) property set to true the text size constrained by this property will scale dynamically with the container's size. It will scale upwards with the GuiObject's size until the max size is reached, at which point it will stay constant if the UI element continues to grow.
 	 */
 	MaxTextSize: number;
-	/** (default 1)
+	/** This property indicated the smallest size in pixels the font is allowed to be. This value defaults to 1 pixel and must be set less than or equal to [UITextSizeConstraint.MaxTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MaxTextSize).
 	 * 
-	 * The smallest size in pixels the font is allowed to be. This value must be set less than or equal to \`UITextSizeConstraint/MaxTextSize\`.The smallest size in pixels the font is allowed to be.
+	 * ![Max and min constraints demo](https://developer.roblox.com/assets/blte9c47efb631349e0/UITextSizeConstraintDemo.gif)
+	 * 
+	 * If the affected [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) has its [TextScaled](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextScaled) property set to true the text size constrained by this property will scale dynamically with the container's size. It will scale downwards with the GuiObject's size until the min size is reached, at which point it will stay constant if the UI element continues to shrink.
 	 */
 	MinTextSize: number;
 }
