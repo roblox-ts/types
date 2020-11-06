@@ -2211,6 +2211,7 @@ interface Studio extends Instance {
 	["Script Editor Color Preset"]: Enum.StudioScriptEditorColorPresets;
 	/** The time (in seconds) a script can wait to be resumed before timing out. */
 	ScriptTimeoutLength: number;
+	["Scroll Past Last Line"]: boolean;
 	["Search Content For Core Scripts"]: boolean;
 	["Select Color"]: Color3;
 	["Select/Hover Color"]: Color3;

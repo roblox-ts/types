@@ -6,7 +6,9 @@
 
 interface Services {
 	AnalyticsService: AnalyticsService;
+	AppUpdateService: AppUpdateService;
 	AssetCounterService: AssetCounterService;
+	AssetDeliveryProxy: AssetDeliveryProxy;
 	AssetManagerService: AssetManagerService;
 	AssetService: AssetService;
 	AvatarEditorService: AvatarEditorService;
@@ -69,6 +71,7 @@ interface Services {
 interface CreatableInstances {
 	Accessory: Accessory;
 	Accoutrement: Accoutrement;
+	Actor: Actor;
 	AlignOrientation: AlignOrientation;
 	AlignPosition: AlignPosition;
 	AngularVelocity: AngularVelocity;
@@ -160,6 +163,7 @@ interface CreatableInstances {
 	MotorFeature: MotorFeature;
 	NegateOperation: NegateOperation;
 	NoCollisionConstraint: NoCollisionConstraint;
+	NumberPose: NumberPose;
 	NumberValue: NumberValue;
 	ObjectValue: ObjectValue;
 	Pants: Pants;
@@ -322,6 +326,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	PlayerMouse: PlayerMouse;
 	PlayerScripts: PlayerScripts;
 	PluginManagerInterface: PluginManagerInterface;
+	PoseBase: PoseBase;
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
 	StarterPlayerScripts: StarterPlayerScripts;
@@ -342,7 +347,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
  */
 interface Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ABTestService" | "Accessory" | "Accoutrement" | "AdService" | "AdvancedDragger" | "AlignOrientation" | "AlignPosition" | "AnalysticsSettings" | "AnalyticsService" | "AngularVelocity" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AppStorageService" | "ArcHandles" | "AssetCounterService" | "AssetManagerService" | "AssetService" | "Atmosphere" | "Attachment" | "AvatarEditorService" | "Backpack" | "BadgeService" | "BallSocketConstraint" | "Beam" | "BillboardGui" | "BinaryStringValue" | "BindableEvent" | "BindableFunction" | "BlockMesh" | "BloomEffect" | "BlurEffect" | "BodyAngularVelocity" | "BodyColors" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "Bone" | "BoolValue" | "BoxHandleAdornment" | "BrickColorValue" | "BrowserService" | "BulkImportService" | "CacheableContentProvider" | "Camera" | "CatalogPages" | "CFrameValue" | "ChangeHistoryService" | "CharacterMesh" | "Chat" | "ChorusSoundEffect" | "ClickDetector" | "ClientReplicator" | "ClusterPacketCache" | "CollectionService" | "Color3Value" | "ColorCorrectionEffect" | "CompressorSoundEffect" | "ConeHandleAdornment" | "Configuration" | "ContentProvider" | "ContextActionService" | "ControllerService" | "CookiesService" | "CoreGui" | "CorePackages" | "CoreScript" | "CoreScriptSyncService" | "CornerWedgePart" | "CSGDictionaryService" | "CustomEvent" | "CustomEventReceiver" | "CylinderHandleAdornment" | "CylinderMesh" | "CylindricalConstraint" | "DataModel" | "DataModelSession" | "DataStorePages" | "DataStoreService" | "Debris" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "DebugSettings" | "Decal" | "DepthOfFieldEffect" | "Dialog" | "DialogChoice" | "DistortionSoundEffect" | "DockWidgetPluginGui" | "DoubleConstrainedValue" | "DraftsService" | "Dragger" | "EchoSoundEffect" | "EmotesPages" | "EqualizerSoundEffect" | "EventIngestService" | "Explosion" | "File" | "FileMesh" | "Fire" | "Flag" | "FlagStand" | "FlagStandService" | "FlangeSoundEffect" | "FloorWire" | "FlyweightService" | "Folder" | "ForceField" | "Frame" | "FriendPages" | "FriendService" | "FunctionalTest" | "GamepadService" | "GamePassService" | "GameSettings" | "Geometry" | "GlobalDataStore" | "GlobalSettings" | "Glue" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuidRegistryService" | "GuiMain" | "GuiService" | "Handles" | "HapticService" | "Hat" | "HingeConstraint" | "Hint" | "Hole" | "Hopper" | "HopperBin" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidController" | "HumanoidDescription" | "ILegacyStudioBridge" | "ImageButton" | "ImageHandleAdornment" | "ImageLabel" | "InputObject" | "InsertService" | "InstanceAdornment" | "IntConstrainedValue" | "InternalContainer" | "IntValue" | "InventoryPages" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "LanguageService" | "LegacyStudioBridge" | "Lighting" | "LineForce" | "LineHandleAdornment" | "LocalizationService" | "LocalizationTable" | "LocalScript" | "LocalStorageService" | "LoginService" | "LogService" | "LuaSettings" | "LuaWebService" | "ManualGlue" | "ManualWeld" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "MeshContentProvider" | "MeshPart" | "Message" | "MessagingService" | "Model" | "ModuleScript" | "Motor" | "Motor6D" | "MotorFeature" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NegateOperation" | "NetworkClient" | "NetworkMarker" | "NetworkServer" | "NetworkSettings" | "NoCollisionConstraint" | "NonReplicatedCSGDictionaryService" | "NotificationService" | "NumberValue" | "ObjectValue" | "OrderedDataStore" | "OutfitPages" | "PackageLink" | "PackageService" | "Pants" | "ParabolaAdornment" | "Part" | "ParticleEmitter" | "PartOperation" | "PartOperationAsset" | "Path" | "PathfindingService" | "PermissionsService" | "PhysicsService" | "PhysicsSettings" | "PitchShiftSoundEffect" | "Platform" | "Player" | "PlayerEmulatorService" | "PlayerGui" | "PlayerMouse" | "Players" | "PlayerScripts" | "Plugin" | "PluginAction" | "PluginDebugService" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginManagerInterface" | "PluginMenu" | "PluginMouse" | "PluginToolbar" | "PluginToolbarButton" | "PointLight" | "PointsService" | "PolicyService" | "Pose" | "PrismaticConstraint" | "ProximityPrompt" | "ProximityPromptService" | "QWidgetPluginGui" | "RayValue" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClass" | "ReflectionMetadataClasses" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataMember" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderingTest" | "RenderSettings" | "ReplicatedFirst" | "ReplicatedScriptService" | "ReplicatedStorage" | "ReverbSoundEffect" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RocketPropulsion" | "RodConstraint" | "RopeConstraint" | "Rotate" | "RotateP" | "RotateV" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "RunService" | "RuntimeScriptService" | "ScreenGui" | "Script" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "ScrollingFrame" | "Seat" | "Selection" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "ServerReplicator" | "ServerScriptService" | "ServerStorage" | "SessionService" | "Shirt" | "ShirtGraphic" | "SkateboardController" | "SkateboardPlatform" | "Skin" | "Sky" | "Smoke" | "Snap" | "SocialService" | "SolidModelContentProvider" | "Sound" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "SpawnLocation" | "SpecialMesh" | "SphereHandleAdornment" | "SpotLight" | "SpringConstraint" | "StandalonePluginScripts" | "StandardPages" | "StarterCharacterScripts" | "StarterGear" | "StarterGui" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "Status" | "StopWatchReporter" | "StringValue" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "SunRaysEffect" | "SurfaceAppearance" | "SurfaceGui" | "SurfaceLight" | "SurfaceSelection" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "Terrain" | "TerrainRegion" | "TestService" | "TextBox" | "TextButton" | "TextFilterResult" | "TextLabel" | "TextService" | "Texture" | "ThirdPartyUserService" | "TimerService" | "Tool" | "Torque" | "TotalCountTimeIntervalItem" | "TouchInputService" | "TouchTransmitter" | "TracerService" | "Trail" | "Translator" | "TremoloSoundEffect" | "TrussPart" | "Tween" | "TweenService" | "UGCValidationService" | "UIAspectRatioConstraint" | "UICorner" | "UIGradient" | "UIGridLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint" | "UnionOperation" | "UnvalidatedAssetService" | "UserGameSettings" | "UserInputService" | "UserService" | "UserSettings" | "UserStorageService" | "Vector3Value" | "VectorForce" | "VehicleController" | "VehicleSeat" | "VelocityMotor" | "VersionControlService" | "VideoFrame" | "ViewportFrame" | "VirtualInputManager" | "VirtualUser" | "Visit" | "VRService" | "WedgePart" | "Weld" | "WeldConstraint" | "Workspace" | "WorldModel";
+	readonly ClassName: "ABTestService" | "Accessory" | "Accoutrement" | "Actor" | "AdService" | "AdvancedDragger" | "AlignOrientation" | "AlignPosition" | "AnalysticsSettings" | "AnalyticsService" | "AngularVelocity" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AppStorageService" | "AppUpdateService" | "ArcHandles" | "AssetCounterService" | "AssetDeliveryProxy" | "AssetManagerService" | "AssetService" | "Atmosphere" | "Attachment" | "AvatarEditorService" | "Backpack" | "BadgeService" | "BallSocketConstraint" | "Beam" | "BillboardGui" | "BinaryStringValue" | "BindableEvent" | "BindableFunction" | "BlockMesh" | "BloomEffect" | "BlurEffect" | "BodyAngularVelocity" | "BodyColors" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "Bone" | "BoolValue" | "BoxHandleAdornment" | "BrickColorValue" | "BrowserService" | "BulkImportService" | "CacheableContentProvider" | "Camera" | "CatalogPages" | "CFrameValue" | "ChangeHistoryService" | "CharacterMesh" | "Chat" | "ChorusSoundEffect" | "ClickDetector" | "ClientReplicator" | "ClusterPacketCache" | "CollectionService" | "Color3Value" | "ColorCorrectionEffect" | "CompressorSoundEffect" | "ConeHandleAdornment" | "Configuration" | "ContentProvider" | "ContextActionService" | "ControllerService" | "CookiesService" | "CoreGui" | "CorePackages" | "CoreScript" | "CoreScriptSyncService" | "CornerWedgePart" | "CSGDictionaryService" | "CustomEvent" | "CustomEventReceiver" | "CylinderHandleAdornment" | "CylinderMesh" | "CylindricalConstraint" | "DataModel" | "DataModelSession" | "DataStorePages" | "DataStoreService" | "Debris" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "DebugSettings" | "Decal" | "DepthOfFieldEffect" | "Dialog" | "DialogChoice" | "DistortionSoundEffect" | "DockWidgetPluginGui" | "DoubleConstrainedValue" | "DraftsService" | "Dragger" | "EchoSoundEffect" | "EmotesPages" | "EqualizerSoundEffect" | "EventIngestService" | "Explosion" | "File" | "FileMesh" | "Fire" | "Flag" | "FlagStand" | "FlagStandService" | "FlangeSoundEffect" | "FloorWire" | "FlyweightService" | "Folder" | "ForceField" | "Frame" | "FriendPages" | "FriendService" | "FunctionalTest" | "GamepadService" | "GamePassService" | "GameSettings" | "Geometry" | "GlobalDataStore" | "GlobalSettings" | "Glue" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuidRegistryService" | "GuiMain" | "GuiService" | "Handles" | "HapticService" | "Hat" | "HingeConstraint" | "Hint" | "Hole" | "Hopper" | "HopperBin" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidController" | "HumanoidDescription" | "ILegacyStudioBridge" | "ImageButton" | "ImageHandleAdornment" | "ImageLabel" | "InputObject" | "InsertService" | "InstanceAdornment" | "IntConstrainedValue" | "InternalContainer" | "IntValue" | "InventoryPages" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "LanguageService" | "LegacyStudioBridge" | "Lighting" | "LineForce" | "LineHandleAdornment" | "LocalizationService" | "LocalizationTable" | "LocalScript" | "LocalStorageService" | "LoginService" | "LogService" | "LuaSettings" | "LuaWebService" | "ManualGlue" | "ManualWeld" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "MeshContentProvider" | "MeshPart" | "Message" | "MessagingService" | "Model" | "ModuleScript" | "Motor" | "Motor6D" | "MotorFeature" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NegateOperation" | "NetworkClient" | "NetworkMarker" | "NetworkServer" | "NetworkSettings" | "NoCollisionConstraint" | "NonReplicatedCSGDictionaryService" | "NotificationService" | "NumberPose" | "NumberValue" | "ObjectValue" | "OrderedDataStore" | "OutfitPages" | "PackageLink" | "PackageService" | "Pants" | "ParabolaAdornment" | "Part" | "ParticleEmitter" | "PartOperation" | "PartOperationAsset" | "Path" | "PathfindingService" | "PermissionsService" | "PhysicsService" | "PhysicsSettings" | "PitchShiftSoundEffect" | "Platform" | "Player" | "PlayerEmulatorService" | "PlayerGui" | "PlayerMouse" | "Players" | "PlayerScripts" | "Plugin" | "PluginAction" | "PluginDebugService" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginManagerInterface" | "PluginMenu" | "PluginMouse" | "PluginToolbar" | "PluginToolbarButton" | "PointLight" | "PointsService" | "PolicyService" | "Pose" | "PoseBase" | "PrismaticConstraint" | "ProximityPrompt" | "ProximityPromptService" | "QWidgetPluginGui" | "RayValue" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClass" | "ReflectionMetadataClasses" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataMember" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderingTest" | "RenderSettings" | "ReplicatedFirst" | "ReplicatedScriptService" | "ReplicatedStorage" | "ReverbSoundEffect" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RocketPropulsion" | "RodConstraint" | "RopeConstraint" | "Rotate" | "RotateP" | "RotateV" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "RunService" | "RuntimeScriptService" | "ScreenGui" | "Script" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "ScrollingFrame" | "Seat" | "Selection" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "ServerReplicator" | "ServerScriptService" | "ServerStorage" | "SessionService" | "Shirt" | "ShirtGraphic" | "SkateboardController" | "SkateboardPlatform" | "Skin" | "Sky" | "Smoke" | "Snap" | "SocialService" | "SolidModelContentProvider" | "Sound" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "SpawnLocation" | "SpecialMesh" | "SphereHandleAdornment" | "SpotLight" | "SpringConstraint" | "StandalonePluginScripts" | "StandardPages" | "StarterCharacterScripts" | "StarterGear" | "StarterGui" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "Status" | "StopWatchReporter" | "StringValue" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "SunRaysEffect" | "SurfaceAppearance" | "SurfaceGui" | "SurfaceLight" | "SurfaceSelection" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "Terrain" | "TerrainRegion" | "TestService" | "TextBox" | "TextButton" | "TextFilterResult" | "TextLabel" | "TextService" | "Texture" | "ThirdPartyUserService" | "TimerService" | "Tool" | "Torque" | "TotalCountTimeIntervalItem" | "TouchInputService" | "TouchTransmitter" | "TracerService" | "Trail" | "Translator" | "TremoloSoundEffect" | "TrussPart" | "Tween" | "TweenService" | "UGCValidationService" | "UIAspectRatioConstraint" | "UICorner" | "UIGradient" | "UIGridLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint" | "UnionOperation" | "UnvalidatedAssetService" | "UserGameSettings" | "UserInputService" | "UserService" | "UserSettings" | "UserStorageService" | "Vector3Value" | "VectorForce" | "VehicleController" | "VehicleSeat" | "VelocityMotor" | "VersionControlService" | "VideoFrame" | "ViewportFrame" | "VirtualInputManager" | "VirtualUser" | "Visit" | "VRService" | "WedgePart" | "Weld" | "WeldConstraint" | "Workspace" | "WorldModel";
 	/** This property determines whether an [object](https://developer.roblox.com/en-us/api-reference/class/Instance) should be included when the game is published or saved, or when [Instance:Clone](https://developer.roblox.com/en-us/api-reference/function/Instance/Clone) is called on one of the object's ancestors. Calling Clone directly on an object will return nil if the cloned object is not archivable. Copying an object in Studio (using the 'Duplicate' or 'Copy' options) will ignore the Archivable property and set Archivable to true for the copy.
 	 * 
 	 * ```lua
@@ -604,6 +609,7 @@ interface Instance {
 		className: T,
 		recursive?: boolean,
 	): Instances[T] | undefined;
+	GetActor(this: Instance): Instance | undefined;
 	/** Attributes are not currently enabled, so this API member may have no effect, emit a warning or raise an error. Do not use it in new work.
 	 * 
 	 * This function returns the attribute which has been assigned to the given name. If no attribute has been assigned then nil is returned.
@@ -1329,9 +1335,19 @@ interface Animator extends Instance {
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 }
 
+interface AppUpdateService extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "AppUpdateService";
+}
+
 interface AssetCounterService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AssetCounterService";
+}
+
+interface AssetDeliveryProxy extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "AssetDeliveryProxy";
 }
 
 interface AssetManagerService extends Instance {
@@ -15089,6 +15105,7 @@ interface ModuleScript extends LuaSourceContainer {
 interface MarketplaceService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "MarketplaceService";
+	PromptBundlePurchase(this: MarketplaceService, player: Player, bundleId: number): void;
 	/** Used to prompt a user to purchase a game pass with the given assetId. */
 	PromptGamePassPurchase(this: MarketplaceService, player: Player, gamePassId: number): void;
 	/** Used to prompt a user to purchase Premium. If the user is already premium, the user will receive an error message “You are already subscribed to Roblox Premium! Please try again.”
@@ -15362,6 +15379,7 @@ interface MarketplaceService extends Instance {
 	 * On [Release 350](https://developer.roblox.com/resources/release-note/Release-Note-for-350) (August 2018), this function was changed so that the result is cached. Previously, it made a request every time it was called.
 	 */
 	UserOwnsGamePassAsync(this: MarketplaceService, userId: number, gamePassId: number): boolean;
+	readonly PromptBundlePurchaseFinished: RBXScriptSignal<(player: Player, bundleId: number, wasPurchased: boolean) => void>;
 	/** This event fires when a purchase dialogue of a game pass is closed. This fires right as the dialogue closes when the player presses “Cancel” at the prompt, or “OK” at the success/error message.
 	 * 
 	 * *   For **developer product** purchase prompts, connect to  
@@ -16072,7 +16090,7 @@ interface NoCollisionConstraint extends Instance {
 /** A PVInstance is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Model](https://developer.roblox.com/en-us/api-reference/class/Model). The PV in PVInstance stands for _Position-Velocity_. This class has existed since 2005, and while the class itself no longer has any functionality, it is used for adornable objects that can be connected to both BaseParts and Models. */
 interface PVInstance extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CornerWedgePart" | "FlagStand" | "MeshPart" | "Model" | "NegateOperation" | "Part" | "PartOperation" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "Status" | "Terrain" | "TrussPart" | "UnionOperation" | "VehicleSeat" | "WedgePart" | "Workspace" | "WorldModel";
+	readonly ClassName: "Actor" | "CornerWedgePart" | "FlagStand" | "MeshPart" | "Model" | "NegateOperation" | "Part" | "PartOperation" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "Status" | "Terrain" | "TrussPart" | "UnionOperation" | "VehicleSeat" | "WedgePart" | "Workspace" | "WorldModel";
 }
 
 /** BasePart is an abstract base class for in-world objects that render and are physically simulated while in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). There are several implementations of BasePart, the most common is [Part](https://developer.roblox.com/en-us/api-reference/class/Part), a simple 6-face rectangular prism. Others include [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation), [WedgePart](https://developer.roblox.com/en-us/api-reference/class/WedgePart) and the singleton [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) object within the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). Most of the time, when documentation refers to a part, most BasePart implementations will work and not just [Part](https://developer.roblox.com/en-us/api-reference/class/Part).
@@ -16104,6 +16122,15 @@ interface BasePart extends PVInstance {
 	 * Network ownership cannot be set on anchored parts. If a part's anchored status changes on the server, the network ownership of that part will be affected.
 	 */
 	Anchored: boolean;
+	/** The angular velocity of this part's rigid body - collection of parts connected by welds or animated joints. */
+	AssemblyAngularVelocity: Vector3;
+	/** The position of the center mass of this part's assembly - collection of parts connected by welds or animated joints. */
+	readonly AssemblyCenterOfMass: Vector3;
+	/** The linear velocity of this part's assembly - collection of parts connected by welds or animated joints. */
+	AssemblyLinearVelocity: Vector3;
+	/** The total mass of this part's assembly - collection of parts connected by welds or animated joints. */
+	readonly AssemblyMass: number;
+	readonly AssemblyRootPart: BasePart | undefined;
 	/** The BackParamA property is relevant when a part's [BasePart.BackSurface](https://developer.roblox.com/en-us/api-reference/property/BasePart/BackSurface) is set to Motor or SteppingMotor and [BasePart.BackSurfaceInput](https://developer.roblox.com/en-us/api-reference/property/BasePart/BackSurfaceInput) is set to Sin. It determines the **amplitude** of the motor's rotational velocity, using the following formula:
 	 * 
 	 * `MotorVelocity = ParamA * math.sin(workspace.DistributedGameTime * ParamB)`
@@ -16465,6 +16492,9 @@ interface BasePart extends PVInstance {
 	 * Some `/BodyMover` objects will apply forces and thus change the Velocity of a part over time. The simplest of these is a `/BodyForce` which can be used to counteract the acceleration due to gravity on a single part (set the +Y axis of the [BodyForce.Force](https://developer.roblox.com/en-us/api-reference/property/BodyForce/Force) to the product of the mass ([BasePart:GetMass](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetMass)) and the gravity constant).
 	 */
 	Velocity: Vector3;
+	ApplyAngularImpulse(this: BasePart, impulse: Vector3): void;
+	ApplyImpulse(this: BasePart, impulse: Vector3): void;
+	ApplyImpulseAtPosition(this: BasePart, impulse: Vector3, position: Vector3): void;
 	/** Breaks any surface connection with any adjacent part, including [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld) and other [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance). */
 	BreakJoints(this: BasePart): void;
 	/** Returns whether the parts can collide with each other or not. This function takes into account the collision groups of the two parts.
@@ -17248,7 +17278,7 @@ interface VehicleSeat extends BasePart {
  */
 interface Model extends PVInstance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Model" | "Status" | "Workspace" | "WorldModel";
+	readonly ClassName: "Actor" | "Model" | "Status" | "Workspace" | "WorldModel";
 	/** Points to the [Model](https://developer.roblox.com/en-us/api-reference/class/Model)'s primary part. The part is the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that is used as a basis when positioning the model using the [Model:MoveTo](https://developer.roblox.com/en-us/api-reference/function/Model/MoveTo) and [Model:SetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/SetPrimaryPartCFrame) functions.
 	 * 
 	 * Note when assigning the PrimaryPart that the part must be a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that is descendant of the Model. If this is not the case, the PrimaryPart will be set to nil in Roblox studio, or produce an error if done so by a Script.
@@ -17348,6 +17378,11 @@ interface Model extends PVInstance {
 	 * The translation is applied in world space rather than object space, meaning even if the model's parts are orientated differently it will still move along the standard axis.
 	 */
 	TranslateBy(this: Model, delta: Vector3): void;
+}
+
+interface Actor extends Model {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "Actor";
 }
 
 interface WorldRoot extends Model {
@@ -19474,6 +19509,24 @@ interface PolicyService extends Instance {
 	GetPolicyInfoForPlayerAsync(this: PolicyService, player: Player): PolicyInfo;
 }
 
+interface PoseBase extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "NumberPose" | "Pose" | "PoseBase";
+	/** [NO DOCUMENTATION] */
+	EasingDirection: Enum.PoseEasingDirection;
+	/** [NO DOCUMENTATION] */
+	EasingStyle: Enum.PoseEasingStyle;
+	/** [NO DOCUMENTATION] */
+	Weight: number;
+}
+
+interface NumberPose extends PoseBase {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "NumberPose";
+	/** [NO DOCUMENTATION] */
+	Value: number;
+}
+
 /** A Pose holds the `CFrame` applied to the [Motor6D](https://developer.roblox.com/en-us/api-reference/class/Motor6D) connected to its associated [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). The part which is controlled depends on the name of the Pose.
  * 
  * Poses are the fundamental building blocks of animations and, with `Keyframes`, make up `KeyframeSequences`.
@@ -19494,7 +19547,7 @@ interface PolicyService extends Instance {
  * 
  * The Roblox animation system applies [Pose.CFrame](https://developer.roblox.com/en-us/api-reference/property/Pose/CFrame) to the corresponding [Motor6D](https://developer.roblox.com/en-us/api-reference/class/Motor6D) by manipulating the relative transformation of the motor, the [Motor6D.Transform](https://developer.roblox.com/en-us/api-reference/property/Motor6D/Transform) property. The original [C0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C1) and [C1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C1) values are not changed.
  */
-interface Pose extends Instance {
+interface Pose extends PoseBase {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Pose";
 	/** The `CFrame` that will be applied to the [Motor6D](https://developer.roblox.com/en-us/api-reference/class/Motor6D) corresponding with the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose). This `CFrame` is applied by changing the `Motor6D\Transform` property of the motor. The original `Motor6D/C0` and `Motor6D/C1` values are not changed.
@@ -19502,49 +19555,6 @@ interface Pose extends Instance {
 	 * [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) objects are arranged in a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) based on joint hierarchy. This means, the the [Pose.CFrame](https://developer.roblox.com/en-us/api-reference/property/Pose/CFrame) is applied to the motor connecting the part associated with the pose to the part associated with the pose's parent.
 	 */
 	CFrame: CFrame;
-	/** The EasingDirection determines the 'direction' of the interpolation style set by [Pose.EasingStyle](https://developer.roblox.com/en-us/api-reference/property/Pose/EasingStyle). Along with [Pose.EasingStyle](https://developer.roblox.com/en-us/api-reference/property/Pose/EasingStyle), it determines how the joint will interpolate from this [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) to the subsequent [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) during animation playback.
-	 * 
-	 * ##Pose EasingDirection Values
-	 * 
-	 * *   **In** - Interpolation will play forwards, default value for poses
-	 * *   **Out** - Interpolation will play in reverse, default value in animation edtior
-	 * *   **InOut** - Interpolation will play forwards, then reverse at the mid-point
-	 * 
-	 * Note, this property is a [PoseEasingDirection](https://developer.roblox.com/en-us/api-reference/enum/PoseEasingDirection), which despite sharing the same options is different to the [EasingDirection](https://developer.roblox.com/en-us/api-reference/enum/EasingDirection) used by other objects. Attempting to set this property to an [EasingDirection](https://developer.roblox.com/en-us/api-reference/enum/EasingDirection) value will produce an error.
-	 * 
-	 * ##Pose Interpolation
-	 * 
-	 * The [Pose.CFrame](https://developer.roblox.com/en-us/api-reference/property/Pose/CFrame) of each [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) determines the [Motor6D.Transform](https://developer.roblox.com/en-us/api-reference/property/Motor6D/Transform) of the joint associated with the pose at the time of its parent [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe). It does not reach this value instantly, but interpolates from the previous pose applied to that joint (which may not necessarily be in the previous keyframe).
-	 * 
-	 * The way in which a joint will interpolate between two [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s during animation playback is determined by the [Pose.EasingStyle](https://developer.roblox.com/en-us/api-reference/property/Pose/EasingStyle) and EasingDirection of the first pose.
-	 */
-	EasingDirection: Enum.PoseEasingDirection;
-	/** The EasingStyle determines the 'style' of the interpolation. Along with [Pose.EasingDirection](https://developer.roblox.com/en-us/api-reference/property/Pose/EasingDirection), it determines how the joint will interpolate from this [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) to the subsequent [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) during animation playback.
-	 * 
-	 * ##Pose EasingStyle Values
-	 * 
-	 * *   **Linear** - Linear interpolation
-	 * *   **Constant** - Does not interpolate but snaps to the next pose. The point at which this occurs is determined by [Pose.EasingDirection](https://developer.roblox.com/en-us/api-reference/property/Pose/EasingDirection).
-	 *     *   **In** - Happens immediately
-	 *     *   **Out** - Happens at the time of the next pose
-	 *     *   **InOut** - Happens at the midpoint between poses
-	 * *   **Elastic** - Springs back and overshoots the target in an elastic manner
-	 * *   **Cubic** - Cubic interpolation, speed changes as target nears
-	 * *   **Bounce** - Bounces several times before reaching the target
-	 * 
-	 * ![enter image description here](https://developer.roblox.com/assets/blt5b5cb41b1d832713/Easing_-_Copy.gif)
-	 * 
-	 * Note, this property is a [PoseEasingStyle](https://developer.roblox.com/en-us/api-reference/enum/PoseEasingStyle), which is different to the [EasingStyle](https://developer.roblox.com/en-us/api-reference/enum/EasingStyle) used by other objects. Attempting to set this property to an [EasingStyle](https://developer.roblox.com/en-us/api-reference/enum/EasingStyle) value will produce an error.
-	 * 
-	 * ##Pose Interpolation
-	 * 
-	 * The [Pose.CFrame](https://developer.roblox.com/en-us/api-reference/property/Pose/CFrame) of each [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) determines the [Motor6D.Transform](https://developer.roblox.com/en-us/api-reference/property/Motor6D/Transform) of the joint associated with the pose at the time of its parent [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe). It does not reach this value instantly, but interpolates from the previous pose applied to that joint (which may not necessarily be in the previous keyframe).
-	 * 
-	 * The way in which a joint will interpolate between two [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s during animation playback is determined by the [Pose.EasingStyle](https://developer.roblox.com/en-us/api-reference/property/Pose/EasingStyle) and EasingDirection of the first pose.
-	 */
-	EasingStyle: Enum.PoseEasingStyle;
-	/** [NO DOCUMENTATION] */
-	Weight: number;
 	/** This function adds a sub [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) to the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) by parenting it to it. It is functionally identical to setting the new pose's [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to the pose.
 	 * 
 	 * Note, this function will not error when an instance other than a [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) is given as the pose parameter and will parent it successfully.
