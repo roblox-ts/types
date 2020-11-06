@@ -361,6 +361,50 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AppShellActionType>
 	}
 	export type AppShellActionType = AppShellActionType.None | AppShellActionType.OpenApp | AppShellActionType.TapChatTab | AppShellActionType.TapConversationEntry | AppShellActionType.TapAvatarTab | AppShellActionType.ReadConversation | AppShellActionType.TapGamePageTab | AppShellActionType.TapHomePageTab | AppShellActionType.GamePageLoaded | AppShellActionType.HomePageLoaded | AppShellActionType.AvatarEditorPageLoaded;
+	export namespace AppUpdateStatus {
+		export interface Unknown {
+			Name: "Unknown";
+			Value: 0;
+			EnumType: EnumType<AppUpdateStatus>;
+		}
+
+		export const Unknown: Unknown;
+
+		export interface NotSupported {
+			Name: "NotSupported";
+			Value: 1;
+			EnumType: EnumType<AppUpdateStatus>;
+		}
+
+		export const NotSupported: NotSupported;
+
+		export interface Failed {
+			Name: "Failed";
+			Value: 2;
+			EnumType: EnumType<AppUpdateStatus>;
+		}
+
+		export const Failed: Failed;
+
+		export interface NotAvailable {
+			Name: "NotAvailable";
+			Value: 3;
+			EnumType: EnumType<AppUpdateStatus>;
+		}
+
+		export const NotAvailable: NotAvailable;
+
+		export interface Available {
+			Name: "Available";
+			Value: 4;
+			EnumType: EnumType<AppUpdateStatus>;
+		}
+
+		export const Available: Available;
+
+		export function GetEnumItems(this: defined): Array<AppUpdateStatus>
+	}
+	export type AppUpdateStatus = AppUpdateStatus.Unknown | AppUpdateStatus.NotSupported | AppUpdateStatus.Failed | AppUpdateStatus.NotAvailable | AppUpdateStatus.Available;
 	export namespace AspectType {
 		export interface FitWithinMaxSize {
 			Name: "FitWithinMaxSize";
