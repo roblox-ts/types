@@ -1578,15 +1578,57 @@ interface Attachment extends Instance {
 interface Bone extends Attachment {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Bone";
-	/** [NO DOCUMENTATION] *
+	/** **Transform** determines the current animated offset of the bone relative to its [CFrame](https://developer.roblox.com/en-us/api-reference/property/Attachment/CFrame). This property is set by Roblox when animations on skinned meshes are played, although it can be manipulated manually in a manner similar to [Motor6D.Transform](https://developer.roblox.com/en-us/api-reference/property/Motor6D/Transform).
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [Motor6D.Transform](https://developer.roblox.com/en-us/api-reference/property/Motor6D/Transform), a property which plays a similar role in character rig animation
+	 * *   [TransformedCFrame](https://developer.roblox.com/en-us/api-reference/property/Bone/TransformedCFrame) and [TransformedWorldCFrame](https://developer.roblox.com/en-us/api-reference/property/Bone/TransformedWorldCFrame), whose values are partially determined by this property
+	**Transform** determines the current animated offset of the bone relative to its [CFrame](https://developer.roblox.com/en-us/api-reference/property/Attachment/CFrame). This property is set by Roblox when animations on skinned meshes are played, although it can be manipulated manually in a manner similar to [Motor6D.Transform](https://developer.roblox.com/en-us/api-reference/property/Motor6D/Transform).
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [Motor6D.Transform](https://developer.roblox.com/en-us/api-reference/property/Motor6D/Transform), a property which plays a similar role in character rig animation
+	 * *   [TransformedCFrame](https://developer.roblox.com/en-us/api-reference/property/Bone/TransformedCFrame) and [TransformedWorldCFrame](https://developer.roblox.com/en-us/api-reference/property/Bone/TransformedWorldCFrame), whose values are partially determined by this property
+	 *
 	 * Tags: NotReplicated
 	 */
 	Transform: CFrame;
-	/** [NO DOCUMENTATION] *
+	/** **TransformedCFrame** describes the combined [CFrame](https://developer.roblox.com/en-us/api-reference/property/Attachment/CFrame) offset of the bone and the current animation offset ([Transform](https://developer.roblox.com/en-us/api-reference/property/Bone/Transform)) in the bone's local space.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [Transform](https://developer.roblox.com/en-us/api-reference/property/Bone/Transform), a property which partially determines this property's value
+	 * *   [Bone.TransformedWorldCFrame](https://developer.roblox.com/en-us/api-reference/property/Bone/TransformedWorldCFrame), a world-space variant of this property
+	**TransformedCFrame** describes the combined [CFrame](https://developer.roblox.com/en-us/api-reference/property/Attachment/CFrame) offset of the bone and the current animation offset ([Transform](https://developer.roblox.com/en-us/api-reference/property/Bone/Transform)) in the bone's local space.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [Transform](https://developer.roblox.com/en-us/api-reference/property/Bone/Transform), a property which partially determines this property's value
+	 * *   [Bone.TransformedWorldCFrame](https://developer.roblox.com/en-us/api-reference/property/Bone/TransformedWorldCFrame), a world-space variant of this property
+	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly TransformedCFrame: CFrame;
-	/** [NO DOCUMENTATION] *
+	/** **TransformedWorldCFrame** describes the combined [CFrame](https://developer.roblox.com/en-us/api-reference/property/Attachment/CFrame) offset of the bone and the current animation offset ([Transform](https://developer.roblox.com/en-us/api-reference/property/Bone/Transform)) in world space.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [Transform](https://developer.roblox.com/en-us/api-reference/property/Bone/Transform), a property which partially determines this property's value
+	 * *   [Bone.TransformedCFrame](https://developer.roblox.com/en-us/api-reference/property/Bone/TransformedCFrame), a local-space variant of this property
+	**TransformedWorldCFrame** describes the combined [CFrame](https://developer.roblox.com/en-us/api-reference/property/Attachment/CFrame) offset of the bone and the current animation offset ([Transform](https://developer.roblox.com/en-us/api-reference/property/Bone/Transform)) in world space.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [Transform](https://developer.roblox.com/en-us/api-reference/property/Bone/Transform), a property which partially determines this property's value
+	 * *   [Bone.TransformedCFrame](https://developer.roblox.com/en-us/api-reference/property/Bone/TransformedCFrame), a local-space variant of this property
+	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly TransformedWorldCFrame: CFrame;
