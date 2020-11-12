@@ -20763,13 +20763,6 @@ interface SocialService extends Instance {
 interface Sound extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Sound";
-	/** The minimum distance at which a 3D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) (direct child of a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)) will begin to attenuate (decrease in volume).
-	 * 
-	 * Sounds parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) that are descendants of the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) are considered 3D sounds and their volume whilst playing is dependent on the distance between the client's sound listener ([Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) position by default) and the Sound's parent. Two properties influence this behavior [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) and [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode).
-	 * 
-	 * The way the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) attenuates (fades out) after the distance between the listener and the sound exceeds the [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) is determined by [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode).
-	 */
-	EmitterSize: number;
 	/** This property will be true when the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) has loaded loaded from Roblox servers and is ready to play.
 	 * 
 	 * In Roblox, audio files are not stored in games themselves but hosted on the Roblox servers and referenced by the [Sound.SoundId](https://developer.roblox.com/en-us/api-reference/property/Sound/SoundId) property. This means that they need to be downloaded to a client's device before they can be played. This can take a while depending on the user's internet connection, the length of the sound and the number of other objects that need to be loaded.
@@ -20817,13 +20810,6 @@ interface Sound extends Instance {
 	 * Looped sounds are suitable for a range of applications including music and background ambient sounds. The [Sound.DidLoop](https://developer.roblox.com/en-us/api-reference/event/Sound/DidLoop) event can be used to track the number of times as sound has looped.
 	 */
 	Looped: boolean;
-	/** The maximum distance a client's listener can be from the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)'s origin and still hear it. Only applies to [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s parented to a [Part](https://developer.roblox.com/en-us/api-reference/class/Part) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) (3D sounds).
-	 * 
-	 * How MaxDistance impacts the attenuation of a sound (manner in which it fades out) is dependent on the [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode) property. When [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode) is set to use an inverse type distance model (Inverse or InverseTapered) the MaxDistance will not effect the attenuation of the sound. This means that low values for MaxDistance will cause the sound to abruptly cut off when the listener reaches the MaxDistance. In most cases this is not desirable and developers are advised not to use low MaxDistance values.
-	 * 
-	 * When [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode) is set to a linear type distance model (Linear or LinearSquared) the sound will attenuate between [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) and MaxDistance (with playback volume reaching zero at MaxDistance). This is less realistic, but in some cases allows attenuation to be handled in a more intuitive way.
-	 */
-	MaxDistance: number;
 	/** When true, the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) will play when it is removed from the game.
 	 * 
 	 * Note the sound will play when the [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) property of the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) or one of its ancestors is set to nil. This means all of the following will cause the sound to play when PlayOnRemove is true. Note, this includes [Instance:Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) as the destroy function sets the parent to nil.
@@ -20873,6 +20859,14 @@ interface Sound extends Instance {
 	 * Tags: NotReplicated
 	 */
 	Playing: boolean;
+	/** [NO DOCUMENTATION] *
+	 * Tags: NotReplicated
+	 */
+	RollOffMaxDistance: number;
+	/** [NO DOCUMENTATION] *
+	 * Tags: NotReplicated
+	 */
+	RollOffMinDistance: number;
 	/** This property sets how 3D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s attenuate (fade out) as the distance between the listener and the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)'s parent increase. The following code will set RollOffMode to Linear.
 	 * 
 	 * ```lua
