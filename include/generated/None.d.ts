@@ -17113,7 +17113,18 @@ interface TriangleMeshPart extends BasePart {
 interface MeshPart extends TriangleMeshPart {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "MeshPart";
-	/** [NO DOCUMENTATION] */
+	/** This property determines whether to render both faces or polygons in the mesh. It is only changeable in Studio. This is useful for meshes that are typically modeled as cards such as a leaf, hair and cloth.
+	 * 
+	 * Example:  
+	 * _The tree leaves are modeled with single sided cards._  
+	 * ![Leaves as cards](https://developer.roblox.com/assets/blt32ec4b040982f44d/MeshPartsAsCards.png)
+	 * 
+	 * _With MeshPart.DoubleSided disabled some leaves are missing since they are back facing the camera._  
+	 * ![DoubleSided property disabled](https://developer.roblox.com/assets/blt1955400aa4d9d8d9/DoubleSidedOff.png)
+	 * 
+	 * _With MeshPart.DoubleSided enabled, both faces of the leaves are rendered._  
+	 * ![DoubleSided property enabled](https://developer.roblox.com/assets/blte8ab39d69cf97247/DoubleSidedOn.png)
+	 */
 	readonly DoubleSided: boolean;
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden
@@ -20859,11 +20870,31 @@ interface Sound extends Instance {
 	 * Tags: NotReplicated
 	 */
 	Playing: boolean;
-	/** [NO DOCUMENTATION] *
+	/** The maximum distance, in studs, a client's listener can be from the `Sound|Sound's` origin and still hear it. Only applies to Sounds parented to a [Part](https://developer.roblox.com/en-us/api-reference/class/Part) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) (3D sounds).
+	 * 
+	 * How RollOffMaxDistance impacts the attenuation of a sound (manner in which it fades out) is dependent on the [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode) property. When RollOffMode is set to use an inverse type distance model (Inverse or InverseTapered) the RollOffMaxDistance will not effect the attenuation of the sound. This means that low values for RollOffMaxDistance will cause the sound to abruptly cut off when the listener reaches the RollOffMaxDistance. In most cases this is not desirable and developers are advised not to use low RollOffMaxDistance values.
+	 * 
+	 * When RollOffMode is set to a linear type distance model (Linear or LinearSquared) the sound will attenuate between [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) and MaxDistance (with playback volume reaching zero at RollOffMaxDistance). This is less realistic, but in some cases allows attenuation to be handled in a more intuitive way.
+	The maximum distance, in studs, a client's listener can be from the `Sound|Sound's` origin and still hear it. Only applies to Sounds parented to a [Part](https://developer.roblox.com/en-us/api-reference/class/Part) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) (3D sounds).
+	 * 
+	 * How RollOffMaxDistance impacts the attenuation of a sound (manner in which it fades out) is dependent on the [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode) property. When RollOffMode is set to use an inverse type distance model (Inverse or InverseTapered) the RollOffMaxDistance will not effect the attenuation of the sound. This means that low values for RollOffMaxDistance will cause the sound to abruptly cut off when the listener reaches the RollOffMaxDistance. In most cases this is not desirable and developers are advised not to use low RollOffMaxDistance values.
+	 * 
+	 * When RollOffMode is set to a linear type distance model (Linear or LinearSquared) the sound will attenuate between [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) and MaxDistance (with playback volume reaching zero at RollOffMaxDistance). This is less realistic, but in some cases allows attenuation to be handled in a more intuitive way.
+	 *
 	 * Tags: NotReplicated
 	 */
 	RollOffMaxDistance: number;
-	/** [NO DOCUMENTATION] *
+	/** The minimum distance, in studs, at which a 3D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) (direct child of a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)) will begin to attenuate (decrease in volume).
+	 * 
+	 * Sounds parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) that are descendants of the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) are considered 3D sounds and their volume whilst playing is dependent on the distance between the client's sound listener ([Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) position by default) and the Sound's parent. Three properties influence this behavior RollOffMinDistance, [Sound.RollOffMaxDistance](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMaxDistance), and [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode).
+	 * 
+	 * The way the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) attenuates (fades out) after the distance between the listener and the sound exceeds the RollOffMinDistance is determined by the RollOffMode.
+	The minimum distance, in studs, at which a 3D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) (direct child of a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)) will begin to attenuate (decrease in volume).
+	 * 
+	 * Sounds parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) that are descendants of the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) are considered 3D sounds and their volume whilst playing is dependent on the distance between the client's sound listener ([Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) position by default) and the Sound's parent. Three properties influence this behavior RollOffMinDistance, [Sound.RollOffMaxDistance](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMaxDistance), and [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode).
+	 * 
+	 * The way the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) attenuates (fades out) after the distance between the listener and the sound exceeds the RollOffMinDistance is determined by the RollOffMode.
+	 *
 	 * Tags: NotReplicated
 	 */
 	RollOffMinDistance: number;
@@ -23438,7 +23469,7 @@ interface UITextSizeConstraint extends UIConstraint {
 	readonly ClassName: "UITextSizeConstraint";
 	/** this property indicates the largest size in pixels the font is allowed to be. It defaults to 1000 pixels and much be set larger than or equal to the `UITextSizeConstraint|UITextSizeConstraint's` [MinTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MinTextSize) property.
 	 * 
-	 * ![Max and min constraints demo](https://developer.roblox.com/assets/blte9c47efb631349e0/UITextSizeConstraintDemo.gif)
+	 * ![Constraints visual](https://developer.roblox.com/assets/blte9c47efb631349e0/UITextSizeConstraintDemo.gif)
 	 * 
 	 * If the affected [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) has its [TextScaled](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextScaled) property set to true the text size constrained by this property will scale dynamically with the container's size. It will scale upwards with the GuiObject's size until the max size is reached, at which point it will stay constant if the UI element continues to grow.
 	 */
