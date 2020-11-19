@@ -2611,6 +2611,8 @@ interface StudioService extends Instance {
 	/** [NO DOCUMENTATION] */
 	readonly DEPRECATED_OnPublishPlaceToRoblox: RBXScriptSignal<() => void>;
 	/** [NO DOCUMENTATION] */
+	readonly GameNameUpdated: RBXScriptSignal<(name: string) => void>;
+	/** [NO DOCUMENTATION] */
 	readonly GamePublishFinished: RBXScriptSignal<(success: boolean, gameId: number) => void>;
 	/** [NO DOCUMENTATION] */
 	readonly OnConvertToPackageResult: RBXScriptSignal<(isSuccessful: boolean, errorMessage: string) => void>;

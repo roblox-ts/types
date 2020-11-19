@@ -233,6 +233,130 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AlphaMode>
 	}
 	export type AlphaMode = AlphaMode.Overlay | AlphaMode.Transparency;
+	export namespace AnalyticsEconomyAction {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<AnalyticsEconomyAction>;
+		}
+
+		export const Default: Default;
+
+		export interface Acquire {
+			Name: "Acquire";
+			Value: 1;
+			EnumType: EnumType<AnalyticsEconomyAction>;
+		}
+
+		export const Acquire: Acquire;
+
+		export interface Spend {
+			Name: "Spend";
+			Value: 2;
+			EnumType: EnumType<AnalyticsEconomyAction>;
+		}
+
+		export const Spend: Spend;
+
+		export function GetEnumItems(this: defined): Array<AnalyticsEconomyAction>
+	}
+	export type AnalyticsEconomyAction = AnalyticsEconomyAction.Default | AnalyticsEconomyAction.Acquire | AnalyticsEconomyAction.Spend;
+	export namespace AnalyticsLogLevel {
+		export interface Trace {
+			Name: "Trace";
+			Value: 0;
+			EnumType: EnumType<AnalyticsLogLevel>;
+		}
+
+		export const Trace: Trace;
+
+		export interface Debug {
+			Name: "Debug";
+			Value: 1;
+			EnumType: EnumType<AnalyticsLogLevel>;
+		}
+
+		export const Debug: Debug;
+
+		export interface Infomation {
+			Name: "Infomation";
+			Value: 2;
+			EnumType: EnumType<AnalyticsLogLevel>;
+		}
+
+		export const Infomation: Infomation;
+
+		export interface Warning {
+			Name: "Warning";
+			Value: 3;
+			EnumType: EnumType<AnalyticsLogLevel>;
+		}
+
+		export const Warning: Warning;
+
+		export interface Error {
+			Name: "Error";
+			Value: 4;
+			EnumType: EnumType<AnalyticsLogLevel>;
+		}
+
+		export const Error: Error;
+
+		export interface Fatal {
+			Name: "Fatal";
+			Value: 5;
+			EnumType: EnumType<AnalyticsLogLevel>;
+		}
+
+		export const Fatal: Fatal;
+
+		export function GetEnumItems(this: defined): Array<AnalyticsLogLevel>
+	}
+	export type AnalyticsLogLevel = AnalyticsLogLevel.Trace | AnalyticsLogLevel.Debug | AnalyticsLogLevel.Infomation | AnalyticsLogLevel.Warning | AnalyticsLogLevel.Error | AnalyticsLogLevel.Fatal;
+	export namespace AnalyticsProgressionStatus {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<AnalyticsProgressionStatus>;
+		}
+
+		export const Default: Default;
+
+		export interface Begin {
+			Name: "Begin";
+			Value: 1;
+			EnumType: EnumType<AnalyticsProgressionStatus>;
+		}
+
+		export const Begin: Begin;
+
+		export interface Complete {
+			Name: "Complete";
+			Value: 2;
+			EnumType: EnumType<AnalyticsProgressionStatus>;
+		}
+
+		export const Complete: Complete;
+
+		export interface Abandon {
+			Name: "Abandon";
+			Value: 3;
+			EnumType: EnumType<AnalyticsProgressionStatus>;
+		}
+
+		export const Abandon: Abandon;
+
+		export interface Fail {
+			Name: "Fail";
+			Value: 4;
+			EnumType: EnumType<AnalyticsProgressionStatus>;
+		}
+
+		export const Fail: Fail;
+
+		export function GetEnumItems(this: defined): Array<AnalyticsProgressionStatus>
+	}
+	export type AnalyticsProgressionStatus = AnalyticsProgressionStatus.Default | AnalyticsProgressionStatus.Begin | AnalyticsProgressionStatus.Complete | AnalyticsProgressionStatus.Abandon | AnalyticsProgressionStatus.Fail;
 	export namespace AnimationPriority {
 		export interface Idle {
 			Name: "Idle";
@@ -12102,9 +12226,17 @@ declare namespace Enum {
 
 		export const ScriptTodo: ScriptTodo;
 
+		export interface AttributeCog {
+			Name: "AttributeCog";
+			Value: 108;
+			EnumType: EnumType<StudioStyleGuideColor>;
+		}
+
+		export const AttributeCog: AttributeCog;
+
 		export function GetEnumItems(this: defined): Array<StudioStyleGuideColor>
 	}
-	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo;
+	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.AttributeCog;
 	export namespace StudioStyleGuideModifier {
 		export interface Default {
 			Name: "Default";
