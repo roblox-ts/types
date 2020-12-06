@@ -1494,7 +1494,7 @@ interface Region3int16 {
 	readonly Max: Vector3int16;
 }
 
-type Region3int16Constructor = new (min: Vector3int16, max: Vector3int16) => Region3int16;
+type Region3int16Constructor = new (min?: Vector3int16, max?: Vector3int16) => Region3int16;
 
 declare const Region3int16: Region3int16Constructor;
 
@@ -1542,8 +1542,8 @@ interface UDim2Constructor {
 	new (): UDim2;
 	new (xScale: number, xOffset: number, yScale: number, yOffset: number): UDim2;
 	new (xDim: UDim, yDim: UDim): UDim2;
-	fromOffset: (x: number, y: number) => UDim2;
-	fromScale: (x: number, y: number) => UDim2;
+	fromOffset: (x?: number, y?: number) => UDim2;
+	fromScale: (x?: number, y?: number) => UDim2;
 }
 
 declare const UDim2: UDim2Constructor;
