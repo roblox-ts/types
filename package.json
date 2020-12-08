@@ -18,9 +18,7 @@
 		"url": "https://github.com/roblox-ts/types/issues"
 	},
 	"homepage": "https://github.com/roblox-ts/types#readme",
-	"dependencies": {
-		"@rbxts/compiler-types": "*"
-	},
+	"dependencies": {},
 	"keywords": [
 		"types",
 		"Roblox",
