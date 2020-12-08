@@ -593,16 +593,6 @@ interface BrickColor<Number extends number = any, Name extends string = any> {
 	readonly b: number;
 }
 
-interface Color3 {
-	/** The red component (between 0 and 1) */
-	readonly r: number;
-	/** The green component (between 0 and 1) */
-	readonly g: number;
-	/** The blue component (between 0 and 1) */
-	readonly b: number;
-	Lerp(this: Color3, goal: Color3, alpha: number): Color3;
-}
-
 interface BrickColorsByNumber {
 	1: "White";
 	2: "Grey";
@@ -1106,6 +1096,19 @@ interface CFrameConstructor {
 }
 
 declare const CFrame: CFrameConstructor;
+
+interface Color3 {
+	/** The red value of the color (between 0 and 1) */
+	readonly R: number;
+	/** The green value of the color (between 0 and 1) */
+	readonly G: number;
+	/** The blue value of the color (between 0 and 1) */
+	readonly B: number;
+	/** Returns a Color3 interpolated between two Color3 objects. Alpha is a number from 0 to 1. */
+	Lerp(this: Color3, goal: Color3, alpha: number): Color3;
+	/** Returns the [hue, saturation, and value](https://en.wikipedia.org/wiki/HSL_and_HSV) of a Color3. This function is the inverse operation of the `Color3.fromHSV` constructor. */
+	ToHSV(): LuaTuple<[number, number, number]>;
+}
 
 interface Color3Constructor {
 	/** Creates a Color3 with the given red, green, and blue. The numbers can range from 0 to 255. */
