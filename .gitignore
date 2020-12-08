@@ -1,6 +1,5 @@
 .DS_Store
 .history
-.vscode
 cache
 include/test.ts
 node_modules
