@@ -11,9 +11,6 @@ declare const _G: _G;
 /** A string containing the current interpreter version. */
 declare const _VERSION: string;
 
-/** Throws an error if the provided value is false or nil. */
-declare function assert<T>(condition: T, message?: string): asserts condition is Exclude<T, false | undefined>;
-
 /** Performs an operation on the Lua garbage collector based on the specified option. Roblox's Lua sandbox only allows the "count" option to be used, so none of the other standard options are available. The "count" option returns the total memory in use by Lua (in kilobytes). */
 declare function collectgarbage(option: "count"): number;
 
