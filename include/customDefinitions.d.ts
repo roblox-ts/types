@@ -145,6 +145,7 @@ interface ContextActionService extends Instance {
 
 interface DataModel extends ServiceProvider<Services> {
 	readonly Workspace: Workspace;
+	readonly workspace: Workspace;
 	BindToClose(this: DataModel, callback: () => void): void;
 }
 
