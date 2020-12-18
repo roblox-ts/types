@@ -91,7 +91,7 @@ const breakdance = require("breakdance") as (
 
 const ROOT_CLASS_NAME = "<<<ROOT>>>";
 
-const BAD_NAME_CHARS = [" ", "/"];
+const BAD_NAME_CHARS = [" ", "/", '"'];
 
 /**
  * These classes are tagged as Creatable by the API Dump, probably because they are instantiable to CoreScripts.
@@ -271,7 +271,7 @@ function containsBadChar(name: string) {
 }
 
 function safeName(name: string) {
-	return containsBadChar(name) ? `["${name}"]` : name;
+	return containsBadChar(name) ? `["${name.replace(/"/g, '\\"')}"]` : name;
 }
 
 const ABSTRACT_CLASSES = new Set<string>([
@@ -735,7 +735,7 @@ function handleLinkData(
 	const link = linkDatum.link;
 
 	myLinks.push(
-		new Promise((resolve, reject) => {
+		new Promise<void>((resolve, reject) => {
 			setTimeout(reject, 10000);
 			fetch(link)
 				.then((response) => {
