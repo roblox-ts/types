@@ -593,16 +593,6 @@ interface BrickColor<Number extends number = any, Name extends string = any> {
 	readonly b: number;
 }
 
-interface Color3 {
-	/** The red component (between 0 and 1) */
-	readonly r: number;
-	/** The green component (between 0 and 1) */
-	readonly g: number;
-	/** The blue component (between 0 and 1) */
-	readonly b: number;
-	Lerp(this: Color3, goal: Color3, alpha: number): Color3;
-}
-
 interface BrickColorsByNumber {
 	1: "White";
 	2: "Grey";
@@ -1107,9 +1097,22 @@ interface CFrameConstructor {
 
 declare const CFrame: CFrameConstructor;
 
+interface Color3 {
+	/** The red value of the color (between 0 and 1) */
+	readonly R: number;
+	/** The green value of the color (between 0 and 1) */
+	readonly G: number;
+	/** The blue value of the color (between 0 and 1) */
+	readonly B: number;
+	/** Returns a Color3 interpolated between two Color3 objects. Alpha is a number from 0 to 1. */
+	Lerp(this: Color3, goal: Color3, alpha: number): Color3;
+	/** Returns the [hue, saturation, and value](https://en.wikipedia.org/wiki/HSL_and_HSV) of a Color3. This function is the inverse operation of the `Color3.fromHSV` constructor. */
+	ToHSV(): LuaTuple<[number, number, number]>;
+}
+
 interface Color3Constructor {
 	/** Creates a Color3 with the given red, green, and blue. The numbers can range from 0 to 255. */
-	fromRGB: (r: number, g: number, b: number) => Color3;
+	fromRGB: (r?: number, g?: number, b?: number) => Color3;
 	/** Creates a Color3 with the given hue, saturation, and value. The numbers can range from 0 to 1. */
 	fromHSV: (hue: number, sat: number, val: number) => Color3;
 	/** Returns the hue, saturation, and value of a Color3. */
@@ -1372,7 +1375,7 @@ interface PathWaypoint {
 	readonly Action: Enum.PathWaypointAction;
 	readonly Position: Vector3;
 }
-type PathWaypointConstructor = new (position: Vector3, action: Enum.PathWaypointAction) => PathWaypoint;
+type PathWaypointConstructor = new (position?: Vector3, action?: Enum.PathWaypointAction) => PathWaypoint;
 declare const PathWaypoint: PathWaypointConstructor;
 
 // PhysicalProperties
@@ -1420,7 +1423,7 @@ interface Ray {
 	Distance(this: Ray, point: Vector3): number;
 }
 
-type RayConstructor = new (origin: Vector3, direction: Vector3) => Ray;
+type RayConstructor = new (origin?: Vector3, direction?: Vector3) => Ray;
 
 declare const Ray: RayConstructor;
 
@@ -1471,7 +1474,7 @@ interface Rect {
 	readonly Height: number;
 }
 interface RectConstructor {
-	new (min: Vector2, max: Vector2): Rect;
+	new (min?: Vector2, max?: Vector2): Rect;
 	new (minX: number, minY: number, maxX: number, maxY: number): Rect;
 }
 
@@ -1484,7 +1487,7 @@ interface Region3 {
 	ExpandToGrid(this: Region3, resolution: number): Region3;
 }
 
-type Region3Constructor = new (min: Vector3, max: Vector3) => Region3;
+type Region3Constructor = new (min?: Vector3, max?: Vector3) => Region3;
 
 declare const Region3: Region3Constructor;
 
@@ -1494,7 +1497,7 @@ interface Region3int16 {
 	readonly Max: Vector3int16;
 }
 
-type Region3int16Constructor = new (min: Vector3int16, max: Vector3int16) => Region3int16;
+type Region3int16Constructor = new (min?: Vector3int16, max?: Vector3int16) => Region3int16;
 
 declare const Region3int16: Region3int16Constructor;
 
@@ -1525,7 +1528,7 @@ interface UDim {
 	readonly Offset: number;
 }
 
-type UDimConstructor = new (scale: number, offset: number) => UDim;
+type UDimConstructor = new (scale?: number, offset?: number) => UDim;
 
 declare const UDim: UDimConstructor;
 
@@ -1542,8 +1545,8 @@ interface UDim2Constructor {
 	new (): UDim2;
 	new (xScale: number, xOffset: number, yScale: number, yOffset: number): UDim2;
 	new (xDim: UDim, yDim: UDim): UDim2;
-	fromOffset: (x: number, y: number) => UDim2;
-	fromScale: (x: number, y: number) => UDim2;
+	fromOffset: (x?: number, y?: number) => UDim2;
+	fromScale: (x?: number, y?: number) => UDim2;
 }
 
 declare const UDim2: UDim2Constructor;
@@ -1687,7 +1690,7 @@ declare namespace utf8 {
 	/** Receives zero or more codepoints as integers, converts each one to its corresponding UTF-8 byte sequence and returns a string with the concatenation of all these sequences. */
 	function char(this: typeof utf8, ...codepoints: Array<number>): string;
 	/** Returns an iterator function that will iterate over all codepoints in string str. It raises an error if it meets any invalid byte sequence. */
-	function codes(this: typeof utf8, str: string): FirstDecrementedIterableFunction;
+	function codes(this: typeof utf8, str: string): IterableFunction<LuaTuple<[number, number]>>;
 	/** Returns the codepoints (as integers) from all codepoints in the provided string (str) that start between byte positions i and j (both included). The default for i is 0 and for j is i. It raises an error if it meets any invalid byte sequence. Similar to `string.byte`.*/
 	function codepoint(this: typeof utf8, str: string, i?: number, j?: number): LuaTuple<Array<number>>;
 	/** Returns the number of UTF-8 codepoints in the string str that start between positions i and j (both inclusive). The default for i is 0 and for j is -1. If it finds any invalid byte sequence, returns a false value plus the position of the first invalid byte. */
@@ -1695,7 +1698,12 @@ declare namespace utf8 {
 	/** Returns the position (in bytes) where the encoding of the n-th codepoint of s (counting from byte position i) starts. A negative n gets characters before position i. The default for i is 0 when n is non-negative and #s + 1 otherwise, so that utf8.offset(s, -n) gets the offset of the n-th character from the end of the string. If the specified character is neither in the subject nor right after its end, the function returns nil. */
 	function offset(this: typeof utf8, s: string, n: number, i?: number): number | undefined;
 	/** Returns an iterator function that will iterate the grapheme clusters of the string. */
-	function graphemes(this: typeof utf8, s: string, i?: number, j?: number): DoubleDecrementedIterableFunction;
+	function graphemes(
+		this: typeof utf8,
+		s: string,
+		i?: number,
+		j?: number,
+	): IterableFunction<LuaTuple<[number, number]>>;
 	/** Converts the input string to Normal Form C, which tries to convert decomposed characters into composed characters. */
 	function nfcnormalize(this: typeof utf8, str: string): string;
 	/** Converts the input string to Normal Form D, which tries to break up composed characters into decomposed characters. */

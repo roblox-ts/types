@@ -26,6 +26,7 @@ interface Services {
 	GroupService: GroupService;
 	GuiService: GuiService;
 	HapticService: HapticService;
+	HeightmapImporterService: HeightmapImporterService;
 	HttpService: HttpService;
 	ILegacyStudioBridge: ILegacyStudioBridge;
 	InsertService: InsertService;
@@ -217,6 +218,7 @@ interface CreatableInstances {
 	SurfaceLight: SurfaceLight;
 	SurfaceSelection: SurfaceSelection;
 	Team: Team;
+	TeleportOptions: TeleportOptions;
 	TerrainRegion: TerrainRegion;
 	TextBox: TextBox;
 	TextButton: TextButton;
@@ -250,6 +252,8 @@ interface CreatableInstances {
 	Weld: Weld;
 	WeldConstraint: WeldConstraint;
 	WorldModel: WorldModel;
+	WrapLayer: WrapLayer;
+	WrapTarget: WrapTarget;
 }
 
 interface AbstractInstances {
@@ -305,6 +309,7 @@ interface AbstractInstances {
 
 interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AnimationTrack: AnimationTrack;
+	BaseWrap: BaseWrap;
 	CatalogPages: CatalogPages;
 	DataModel: DataModel;
 	DataStorePages: DataStorePages;
@@ -331,6 +336,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
 	StarterPlayerScripts: StarterPlayerScripts;
+	TeleportAsyncResult: TeleportAsyncResult;
 	Terrain: Terrain;
 	TextFilterResult: TextFilterResult;
 	TouchTransmitter: TouchTransmitter;
@@ -348,7 +354,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
  */
 interface Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ABTestService" | "Accessory" | "Accoutrement" | "Actor" | "AdService" | "AdvancedDragger" | "AlignOrientation" | "AlignPosition" | "AnalysticsSettings" | "AnalyticsService" | "AngularVelocity" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AppStorageService" | "AppUpdateService" | "ArcHandles" | "AssetCounterService" | "AssetDeliveryProxy" | "AssetManagerService" | "AssetService" | "Atmosphere" | "Attachment" | "AvatarEditorService" | "Backpack" | "BadgeService" | "BallSocketConstraint" | "Beam" | "BillboardGui" | "BinaryStringValue" | "BindableEvent" | "BindableFunction" | "BlockMesh" | "BloomEffect" | "BlurEffect" | "BodyAngularVelocity" | "BodyColors" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "Bone" | "BoolValue" | "BoxHandleAdornment" | "BrickColorValue" | "BrowserService" | "BulkImportService" | "CacheableContentProvider" | "Camera" | "CatalogPages" | "CFrameValue" | "ChangeHistoryService" | "CharacterMesh" | "Chat" | "ChorusSoundEffect" | "ClickDetector" | "ClientReplicator" | "Clouds" | "ClusterPacketCache" | "CollectionService" | "Color3Value" | "ColorCorrectionEffect" | "CompressorSoundEffect" | "ConeHandleAdornment" | "Configuration" | "ContentProvider" | "ContextActionService" | "ControllerService" | "CookiesService" | "CoreGui" | "CorePackages" | "CoreScript" | "CoreScriptSyncService" | "CornerWedgePart" | "CSGDictionaryService" | "CustomEvent" | "CustomEventReceiver" | "CylinderHandleAdornment" | "CylinderMesh" | "CylindricalConstraint" | "DataModel" | "DataModelSession" | "DataStorePages" | "DataStoreService" | "Debris" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "DebugSettings" | "Decal" | "DepthOfFieldEffect" | "Dialog" | "DialogChoice" | "DistortionSoundEffect" | "DockWidgetPluginGui" | "DoubleConstrainedValue" | "DraftsService" | "Dragger" | "EchoSoundEffect" | "EmotesPages" | "EqualizerSoundEffect" | "EventIngestService" | "Explosion" | "File" | "FileMesh" | "Fire" | "Flag" | "FlagStand" | "FlagStandService" | "FlangeSoundEffect" | "FloorWire" | "FlyweightService" | "Folder" | "ForceField" | "Frame" | "FriendPages" | "FriendService" | "FunctionalTest" | "GamepadService" | "GamePassService" | "GameSettings" | "Geometry" | "GlobalDataStore" | "GlobalSettings" | "Glue" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuidRegistryService" | "GuiMain" | "GuiService" | "Handles" | "HapticService" | "Hat" | "HingeConstraint" | "Hint" | "Hole" | "Hopper" | "HopperBin" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidController" | "HumanoidDescription" | "ILegacyStudioBridge" | "ImageButton" | "ImageHandleAdornment" | "ImageLabel" | "InputObject" | "InsertService" | "InstanceAdornment" | "IntConstrainedValue" | "InternalContainer" | "IntValue" | "InventoryPages" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "LanguageService" | "LegacyStudioBridge" | "Lighting" | "LineForce" | "LineHandleAdornment" | "LocalizationService" | "LocalizationTable" | "LocalScript" | "LocalStorageService" | "LoginService" | "LogService" | "LuaSettings" | "LuaWebService" | "ManualGlue" | "ManualWeld" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "MeshContentProvider" | "MeshPart" | "Message" | "MessagingService" | "Model" | "ModuleScript" | "Motor" | "Motor6D" | "MotorFeature" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NegateOperation" | "NetworkClient" | "NetworkMarker" | "NetworkServer" | "NetworkSettings" | "NoCollisionConstraint" | "NonReplicatedCSGDictionaryService" | "NotificationService" | "NumberPose" | "NumberValue" | "ObjectValue" | "OrderedDataStore" | "OutfitPages" | "PackageLink" | "PackageService" | "Pants" | "ParabolaAdornment" | "Part" | "ParticleEmitter" | "PartOperation" | "PartOperationAsset" | "Path" | "PathfindingService" | "PermissionsService" | "PhysicsService" | "PhysicsSettings" | "PitchShiftSoundEffect" | "Platform" | "Player" | "PlayerEmulatorService" | "PlayerGui" | "PlayerMouse" | "Players" | "PlayerScripts" | "Plugin" | "PluginAction" | "PluginDebugService" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginManagerInterface" | "PluginMenu" | "PluginMouse" | "PluginToolbar" | "PluginToolbarButton" | "PointLight" | "PointsService" | "PolicyService" | "Pose" | "PoseBase" | "PrismaticConstraint" | "ProximityPrompt" | "ProximityPromptService" | "QWidgetPluginGui" | "RayValue" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClass" | "ReflectionMetadataClasses" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataMember" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderingTest" | "RenderSettings" | "ReplicatedFirst" | "ReplicatedScriptService" | "ReplicatedStorage" | "ReverbSoundEffect" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RocketPropulsion" | "RodConstraint" | "RopeConstraint" | "Rotate" | "RotateP" | "RotateV" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "RunService" | "RuntimeScriptService" | "ScreenGui" | "Script" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "ScrollingFrame" | "Seat" | "Selection" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "ServerReplicator" | "ServerScriptService" | "ServerStorage" | "SessionService" | "Shirt" | "ShirtGraphic" | "SkateboardController" | "SkateboardPlatform" | "Skin" | "Sky" | "Smoke" | "Snap" | "SocialService" | "SolidModelContentProvider" | "Sound" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "SpawnLocation" | "SpecialMesh" | "SphereHandleAdornment" | "SpotLight" | "SpringConstraint" | "StandalonePluginScripts" | "StandardPages" | "StarterCharacterScripts" | "StarterGear" | "StarterGui" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "Status" | "StopWatchReporter" | "StringValue" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "SunRaysEffect" | "SurfaceAppearance" | "SurfaceGui" | "SurfaceLight" | "SurfaceSelection" | "TaskScheduler" | "Team" | "Teams" | "TeleportService" | "Terrain" | "TerrainRegion" | "TestService" | "TextBox" | "TextButton" | "TextFilterResult" | "TextLabel" | "TextService" | "Texture" | "ThirdPartyUserService" | "TimerService" | "Tool" | "Torque" | "TotalCountTimeIntervalItem" | "TouchInputService" | "TouchTransmitter" | "TracerService" | "Trail" | "Translator" | "TremoloSoundEffect" | "TrussPart" | "Tween" | "TweenService" | "UGCValidationService" | "UIAspectRatioConstraint" | "UICorner" | "UIGradient" | "UIGridLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint" | "UnionOperation" | "UnvalidatedAssetService" | "UserGameSettings" | "UserInputService" | "UserService" | "UserSettings" | "UserStorageService" | "Vector3Value" | "VectorForce" | "VehicleController" | "VehicleSeat" | "VelocityMotor" | "VersionControlService" | "VideoFrame" | "ViewportFrame" | "VirtualInputManager" | "VirtualUser" | "Visit" | "VRService" | "WedgePart" | "Weld" | "WeldConstraint" | "Workspace" | "WorldModel";
+	readonly ClassName: "ABTestService" | "Accessory" | "Accoutrement" | "Actor" | "AdService" | "AdvancedDragger" | "AlignOrientation" | "AlignPosition" | "AnalysticsSettings" | "AnalyticsService" | "AngularVelocity" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AppStorageService" | "AppUpdateService" | "ArcHandles" | "AssetCounterService" | "AssetDeliveryProxy" | "AssetManagerService" | "AssetService" | "Atmosphere" | "Attachment" | "AvatarEditorService" | "Backpack" | "BadgeService" | "BallSocketConstraint" | "BaseWrap" | "Beam" | "BillboardGui" | "BinaryStringValue" | "BindableEvent" | "BindableFunction" | "BlockMesh" | "BloomEffect" | "BlurEffect" | "BodyAngularVelocity" | "BodyColors" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "Bone" | "BoolValue" | "BoxHandleAdornment" | "BrickColorValue" | "BrowserService" | "BulkImportService" | "CacheableContentProvider" | "Camera" | "CatalogPages" | "CFrameValue" | "ChangeHistoryService" | "CharacterMesh" | "Chat" | "ChorusSoundEffect" | "ClickDetector" | "ClientReplicator" | "Clouds" | "ClusterPacketCache" | "CollectionService" | "Color3Value" | "ColorCorrectionEffect" | "CompressorSoundEffect" | "ConeHandleAdornment" | "Configuration" | "ContentProvider" | "ContextActionService" | "ControllerService" | "CookiesService" | "CoreGui" | "CorePackages" | "CoreScript" | "CoreScriptSyncService" | "CornerWedgePart" | "CSGDictionaryService" | "CustomEvent" | "CustomEventReceiver" | "CylinderHandleAdornment" | "CylinderMesh" | "CylindricalConstraint" | "DataModel" | "DataModelSession" | "DataStorePages" | "DataStoreService" | "Debris" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "DebugSettings" | "Decal" | "DepthOfFieldEffect" | "Dialog" | "DialogChoice" | "DistortionSoundEffect" | "DockWidgetPluginGui" | "DoubleConstrainedValue" | "DraftsService" | "Dragger" | "EchoSoundEffect" | "EmotesPages" | "EqualizerSoundEffect" | "EventIngestService" | "Explosion" | "File" | "FileMesh" | "Fire" | "Flag" | "FlagStand" | "FlagStandService" | "FlangeSoundEffect" | "FloorWire" | "FlyweightService" | "Folder" | "ForceField" | "Frame" | "FriendPages" | "FriendService" | "FunctionalTest" | "GamepadService" | "GamePassService" | "GameSettings" | "Geometry" | "GlobalDataStore" | "GlobalSettings" | "Glue" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuidRegistryService" | "GuiMain" | "GuiService" | "Handles" | "HapticService" | "Hat" | "HeightmapImporterService" | "HingeConstraint" | "Hint" | "Hole" | "Hopper" | "HopperBin" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidController" | "HumanoidDescription" | "ILegacyStudioBridge" | "ImageButton" | "ImageHandleAdornment" | "ImageLabel" | "InputObject" | "InsertService" | "InstanceAdornment" | "IntConstrainedValue" | "InternalContainer" | "IntValue" | "InventoryPages" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "LanguageService" | "LegacyStudioBridge" | "Lighting" | "LineForce" | "LineHandleAdornment" | "LocalizationService" | "LocalizationTable" | "LocalScript" | "LocalStorageService" | "LoginService" | "LogService" | "LuaSettings" | "LuaWebService" | "ManualGlue" | "ManualWeld" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "MeshContentProvider" | "MeshPart" | "Message" | "MessagingService" | "Model" | "ModuleScript" | "Motor" | "Motor6D" | "MotorFeature" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NegateOperation" | "NetworkClient" | "NetworkMarker" | "NetworkServer" | "NetworkSettings" | "NoCollisionConstraint" | "NonReplicatedCSGDictionaryService" | "NotificationService" | "NumberPose" | "NumberValue" | "ObjectValue" | "OrderedDataStore" | "OutfitPages" | "PackageLink" | "PackageService" | "Pants" | "ParabolaAdornment" | "Part" | "ParticleEmitter" | "PartOperation" | "PartOperationAsset" | "Path" | "PathfindingService" | "PermissionsService" | "PhysicsService" | "PhysicsSettings" | "PitchShiftSoundEffect" | "Platform" | "Player" | "PlayerEmulatorService" | "PlayerGui" | "PlayerMouse" | "Players" | "PlayerScripts" | "Plugin" | "PluginAction" | "PluginDebugService" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginManagerInterface" | "PluginMenu" | "PluginMouse" | "PluginToolbar" | "PluginToolbarButton" | "PointLight" | "PointsService" | "PolicyService" | "Pose" | "PoseBase" | "PrismaticConstraint" | "ProximityPrompt" | "ProximityPromptService" | "QWidgetPluginGui" | "RayValue" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClass" | "ReflectionMetadataClasses" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataMember" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderingTest" | "RenderSettings" | "ReplicatedFirst" | "ReplicatedScriptService" | "ReplicatedStorage" | "ReverbSoundEffect" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RocketPropulsion" | "RodConstraint" | "RopeConstraint" | "Rotate" | "RotateP" | "RotateV" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "RunService" | "RuntimeScriptService" | "ScreenGui" | "Script" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "ScrollingFrame" | "Seat" | "Selection" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "ServerReplicator" | "ServerScriptService" | "ServerStorage" | "SessionService" | "Shirt" | "ShirtGraphic" | "SkateboardController" | "SkateboardPlatform" | "Skin" | "Sky" | "Smoke" | "Snap" | "SocialService" | "SolidModelContentProvider" | "Sound" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "SpawnLocation" | "SpecialMesh" | "SphereHandleAdornment" | "SpotLight" | "SpringConstraint" | "StandalonePluginScripts" | "StandardPages" | "StarterCharacterScripts" | "StarterGear" | "StarterGui" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "Status" | "StopWatchReporter" | "StringValue" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "SunRaysEffect" | "SurfaceAppearance" | "SurfaceGui" | "SurfaceLight" | "SurfaceSelection" | "TaskScheduler" | "Team" | "Teams" | "TeleportAsyncResult" | "TeleportOptions" | "TeleportService" | "Terrain" | "TerrainRegion" | "TestService" | "TextBox" | "TextButton" | "TextFilterResult" | "TextLabel" | "TextService" | "Texture" | "ThirdPartyUserService" | "TimerService" | "Tool" | "Torque" | "TotalCountTimeIntervalItem" | "TouchInputService" | "TouchTransmitter" | "TracerService" | "Trail" | "Translator" | "TremoloSoundEffect" | "TrussPart" | "Tween" | "TweenService" | "UGCValidationService" | "UIAspectRatioConstraint" | "UICorner" | "UIGradient" | "UIGridLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint" | "UnionOperation" | "UnvalidatedAssetService" | "UserGameSettings" | "UserInputService" | "UserService" | "UserSettings" | "UserStorageService" | "Vector3Value" | "VectorForce" | "VehicleController" | "VehicleSeat" | "VelocityMotor" | "VersionControlService" | "VideoFrame" | "ViewportFrame" | "VirtualInputManager" | "VirtualUser" | "Visit" | "VRService" | "WedgePart" | "Weld" | "WeldConstraint" | "Workspace" | "WorldModel" | "WrapLayer" | "WrapTarget";
 	/** This property determines whether an [object](https://developer.roblox.com/en-us/api-reference/class/Instance) should be included when the game is published or saved, or when [Instance:Clone](https://developer.roblox.com/en-us/api-reference/function/Instance/Clone) is called on one of the object's ancestors. Calling Clone directly on an object will return nil if the cloned object is not archivable. Copying an object in Studio (using the 'Duplicate' or 'Copy' options) will ignore the Archivable property and set Archivable to true for the copy.
 	 * 
 	 * ```lua
@@ -1037,17 +1043,187 @@ interface Hat extends Accoutrement {
 	readonly ClassName: "Hat";
 }
 
-/** An internal service intended for handling analytics on Roblox. */
+/** **Note**
+ * 
+ * This service should only be used by developers who are enrolled in the [PlayFab](https://developer.rblx.playfab.com/en-US/sign-up) program.
+ * 
+ * The AnalyticsService provides developers with out-of-the-box analytics so they can improve their games.
+ * 
+ * Developers can report events and see visual analysis results on PlayFab webpage. For more information on how to enroll in the PlayFab Program, take a look at [this](https://devforum.roblox.com/t/join-our-playfab-program-leverage-all-the-data/653420) DevForum post.
+ * 
+ * See also
+ * --------
+ * 
+ * Developers who are interested in leveraging analytics to take their game to the next level should take a look at the `articles/Using the Analytics Service|introductory article`.
+ */
 interface AnalyticsService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AnalyticsService";
-	/** [NO DOCUMENTATION] */
+	/** This function triggers a custom event with a custom event name data.
+	 * 
+	 * Limits of events
+	 * ----------------
+	 * 
+	 * Each game server is allowed a certain number of standard events API calls based on the number of players present (more players means more events will be needed).  
+	 * The events that exceed the limit will be dropped and log an error to the developer console.
+	 * 
+	 * *   Per minute limit: 120 + numPlayers \* 20, all events shared this limit.
+	 * *   Cooldown: refresh every 10 seconds
+	 * 
+	 * Limits of parameters
+	 * --------------------
+	 * 
+	 * Limit the size of parameters. The event that exceeds the limit will be dropped and log an error to the developer console.
+	 * 
+	 * Parameters
+	 * 
+	 * Maximum Number of Characters
+	 * 
+	 * customData Variant
+	 * 
+	 * 500 after serialized
+	 * 
+	 * other string types
+	 * 
+	 * 50
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [AnalyticsService:FirePlayerProgressionEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FirePlayerProgressionEvent), triggers an event used to track player progression through the game
+	 * *   [AnalyticsService:FireInGameEconomyEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireInGameEconomyEvent), triggers an event used to track player actions pertaining to the in-game economy
+	 * *   [AnalyticsService:FireLogEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireLogEvent), triggers an event used to track errors and warnings experienced by players
+	 */
 	FireCustomEvent(this: AnalyticsService, player: Player, eventCategory: string, customData?: any): void;
-	/** [NO DOCUMENTATION] */
+	/** This function triggers an event used to track player actions pertaining to the in-game economy.
+	 * 
+	 * For example, it should be called to track when players acquire or spend virtual items within the economy like currency.
+	 * 
+	 * Limits of events
+	 * ----------------
+	 * 
+	 * Each game server is allowed a certain number of standard events API calls based on the number of players present (more players means more events will be needed).  
+	 * The events that exceed the limit will be dropped and log an error to the developer console.
+	 * 
+	 * *   Per minute limit: 120 + numPlayers \* 20, all events shared this limit.
+	 * *   Cooldown: refresh every 10 seconds
+	 * 
+	 * Limits of parameters
+	 * --------------------
+	 * 
+	 * Limit the size of parameters. The event that exceeds the limit will be dropped and log an error to the developer console.
+	 * 
+	 * Parameters
+	 * 
+	 * Maximum Number of Characters
+	 * 
+	 * customData Variant
+	 * 
+	 * 500 after serialized
+	 * 
+	 * other string types
+	 * 
+	 * 50
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [AnalyticsService:FirePlayerProgressionEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FirePlayerProgressionEvent), triggers an event used to track player progression through the game
+	 * *   [AnalyticsService:FireLogEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireLogEvent), triggers an event used to track errors and warnings experienced by players
+	 * *   [AnalyticsService:FireCustomEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireCustomEvent), triggers an event used to emit a custom event
+	 */
 	FireInGameEconomyEvent(this: AnalyticsService, player: Player, itemName: string, economyAction: CastsToEnum<Enum.AnalyticsEconomyAction>, itemCategory: string, amount: number, currency: string, location?: any, customData?: any): void;
-	/** [NO DOCUMENTATION] */
+	/** This function triggers an event used to track errors and warnings experienced by players.
+	 * 
+	 * For example, it could be called to indicate when a function call fails - such as a datastore save or [TeleportService:Teleport](https://developer.roblox.com/en-us/api-reference/function/TeleportService/Teleport). See the example below.
+	 * 
+	 * Limits of events
+	 * ----------------
+	 * 
+	 * Each game server is allowed a certain number of standard events API calls based on the number of players present (more players means more events will be needed).  
+	 * The events that exceed the limit will be dropped and log an error to the developer console.
+	 * 
+	 * *   Per minute limit: 120 + numPlayers \* 20, all events shared this limit.
+	 * *   Cooldown: refresh every 10 seconds
+	 * 
+	 * Limits of parameters
+	 * --------------------
+	 * 
+	 * Limit the size of parameters. The event that exceeds the limit will be dropped and log an error to the developer console.
+	 * 
+	 * Parameters
+	 * 
+	 * Maximum Number of Characters
+	 * 
+	 * FireLogEvent stackTrace
+	 * 
+	 * 1000
+	 * 
+	 * FireLogEvent message
+	 * 
+	 * 500
+	 * 
+	 * customData Variant
+	 * 
+	 * 500 after serialized
+	 * 
+	 * other string types
+	 * 
+	 * 50
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [AnalyticsService:FireInGameEconomyEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireInGameEconomyEvent), triggers an event used to track player actions pertaining to the in-game economy
+	 * *   [AnalyticsService:FirePlayerProgressionEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FirePlayerProgressionEvent), triggers an event used to track player progression through the game
+	 * *   [AnalyticsService:FireCustomEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireCustomEvent), triggers an event used to emit a custom event
+	 */
 	FireLogEvent(this: AnalyticsService, player: Player, logLevel: CastsToEnum<Enum.AnalyticsLogLevel>, message: string, debugInfo?: any, customData?: any): void;
-	/** [NO DOCUMENTATION] */
+	/** This function triggers an event used to track player progression through the game.
+	 * 
+	 * For example, it should be called when a player starts an in-game tutorial and again that player finishes the tutorial. Another example (see below) includes tracking when a player gains experience, collects objects, and levels up.
+	 * 
+	 * Limits of events
+	 * ----------------
+	 * 
+	 * Each game server is allowed a certain number of standard events API calls based on the number of players present (more players means more events will be needed).  
+	 * The events that exceed the limit will be dropped and log an error to the developer console.
+	 * 
+	 * *   Per minute limit: 120 + numPlayers \* 20, all events shared this limit.
+	 * *   Cooldown: refresh every 10 seconds
+	 * 
+	 * Limits of parameters
+	 * --------------------
+	 * 
+	 * Limit the size of parameters. The event that exceeds the limit will be dropped and log an error to the developer console.
+	 * 
+	 * Parameters
+	 * 
+	 * Maximum Number of Characters
+	 * 
+	 * FirePlayerProgressionEvent location
+	 * 
+	 * 5 pairs of Key and Value, each Key and Value are 50
+	 * 
+	 * FirePlayerProgressionEvent statistics
+	 * 
+	 * 5 pairs of Key and Value, each Key and Value are 50
+	 * 
+	 * customData Variant
+	 * 
+	 * 500 after serialized
+	 * 
+	 * other string types
+	 * 
+	 * 50
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [AnalyticsService:FireInGameEconomyEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireInGameEconomyEvent), triggers an event used to track player actions pertaining to the in-game economy
+	 * *   [AnalyticsService:FireLogEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireLogEvent), triggers an event used to track errors and warnings experienced by players
+	 * *   [AnalyticsService:FireCustomEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireCustomEvent), triggers an event used to emit a custom event
+	 */
 	FirePlayerProgressionEvent(this: AnalyticsService, player: Player, category: string, progressionStatus: CastsToEnum<Enum.AnalyticsProgressionStatus>, location?: any, statistics?: any, customData?: any): void;
 }
 
@@ -2521,29 +2697,6 @@ interface PlayerGui extends BasePlayerGui {
 	ScreenOrientation: Enum.ScreenOrientation;
 	/** Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject. */
 	SelectionImageObject: GuiObject | undefined;
-	/** Returns the transparency of the Topbar. */
-	GetTopbarTransparency(this: PlayerGui): number;
-	/** SetTopbarTransparency sets the transparency of the Topbar CoreGui. A value of 0 is completely opaque, and a value of 1 is completely transparent. Values outside of the range \[0, 1\] are clamped. The default transparency of the topbar is 0.5. The current transparency can be retrieved using the similarly-named [GetTopbarTransparency](https://developer.roblox.com/en-us/api-reference/function/PlayerGui/GetTopbarTransparency) function.
-	 * 
-	 * Comparison of Values
-	 * --------------------
-	 * 
-	 * The screenshots below show the topbar at 1.0, 0.5 and 0.0 transparency.  
-	 * ![The TopBar with a transparency of 1.0 (completely hidden)]](https://developer.roblox.com/assets/bltb3d5158183e86b86/Topbar_Transparency_1.0.png) ![The TopBar with a transparency of 0.5 (50% transparency)]](https://developer.roblox.com/assets/blt3d2716062cdd8606/Topbar_Transparency_0.5.png) ![The TopBar with a transparency of 0.0 (completely opaque)](https://developer.roblox.com/assets/bltc0dd5d97e6bbebae/Topbar_Transparency_0.png)
-	 * 
-	 * Usage
-	 * -----
-	 * 
-	 * This method is often used when re-styling the topbar to match the visual aesthetic of a game. By hiding the topbar, you can create your own custom topbar. See the code samples for an example.
-	 * 
-	 * Alternative
-	 * -----------
-	 * 
-	 * Using the [StarterGui:SetCore](https://developer.roblox.com/en-us/api-reference/function/StarterGui/SetCore) method with the `TopbarEnabled` option allows you to enable/disable the entire topbar and all of its features (player list, health, etc). By contrast, this method only affects how the topbar is displayed.
-	 */
-	SetTopbarTransparency(this: PlayerGui, transparency: number): void;
-	/** Fires when the transparency of the Topbar CoreGui changes. */
-	readonly TopbarTransparencyChangedSignal: RBXScriptSignal<(transparency: number) => void>;
 }
 
 /** The StarterGui service is a container object designed to hold `LayerCollector|GUI objects` such as [ScreenGuis](https://developer.roblox.com/en-us/api-reference/class/ScreenGui).
@@ -3326,6 +3479,55 @@ interface StarterGui extends BasePlayerGui {
 	GetCore<T extends keyof GettableCores>(this: StarterGui, parameter: T): GettableCores[T];
 }
 
+interface BaseWrap extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "BaseWrap" | "WrapLayer" | "WrapTarget";
+	/** [NO DOCUMENTATION] */
+	readonly CageMeshId: string;
+	/** [NO DOCUMENTATION] */
+	readonly CageOrigin: CFrame;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CageOriginWorld: CFrame;
+	/** [NO DOCUMENTATION] */
+	readonly ImportOrigin: CFrame;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ImportOriginWorld: CFrame;
+}
+
+interface WrapLayer extends BaseWrap {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "WrapLayer";
+	/** [NO DOCUMENTATION] */
+	readonly BindOffset: CFrame;
+	/** [NO DOCUMENTATION] */
+	Enabled: boolean;
+	/** [NO DOCUMENTATION] */
+	readonly Order: number;
+	/** [NO DOCUMENTATION] */
+	readonly Puffiness: number;
+	/** [NO DOCUMENTATION] */
+	readonly ReferenceMeshId: string;
+	/** [NO DOCUMENTATION] */
+	readonly ReferenceOrigin: CFrame;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ReferenceOriginWorld: CFrame;
+	/** [NO DOCUMENTATION] */
+	readonly ShrinkFactor: number;
+}
+
+interface WrapTarget extends BaseWrap {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "WrapTarget";
+	/** [NO DOCUMENTATION] */
+	readonly Stiffness: number;
+}
+
 /** A Beam object connects two [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)s by drawing a texture between them.
  * 
  * Setting up a Beam
@@ -3540,17 +3742,21 @@ interface Beam extends Instance {
 	 * Beam texture behavior
 	 * ---------------------
 	 * 
-	 * How a [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s texture scales or repeats is dependent on the TextureMode property.
+	 * ### Static
 	 * 
-	 * When TextureMode is 'Wrap' the size of the repeating texture corresponds to [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength) in studs. For an example of this see the image below:
+	 * Static mode is not used for beams and behaves identical to Wrap.
 	 * 
-	 * ![enter image description here](https://developer.roblox.com/assets/blt92742bad209f4935/beamTexture.gif)
+	 * ### Stretch
 	 * 
-	 * Note, the 'Static' [TextureMode](https://developer.roblox.com/en-us/api-reference/enum/TextureMode) type is not used for [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)s and therefore behaves identically to 'Wrap'.
+	 * The texture is stretched relative to the beam's length, in studs, making the texture repeat based off [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength). The size is determined by the beam's length over [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength).
 	 * 
-	 * When [Beam.TextureMode](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureMode) is set to 'Stretch' however the texture will be stretched relative to the beam's length. The size of the texture relative to the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s length will be one over the [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength). In practice, this means the texture will repeat [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength) times. For an example of this see the image below:
+	 * ![](https://developer.roblox.com/assets/blt931973c484027dba/textureMode_strech.jpg)
 	 * 
-	 * ![enter image description here](https://developer.roblox.com/assets/blt034506939f5674b3/beamTexture2.gif)
+	 * ### Wrap
+	 * 
+	 * The size of the repeating texture corresponds to [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength) in studs.
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt4e94754e188a2359/textureMode_wrap.jpg)
 	 */
 	TextureMode: Enum.TextureMode;
 	/** Determines the speed at which the [Beam.Texture](https://developer.roblox.com/en-us/api-reference/property/Beam/Texture) image moves along the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam).
@@ -4604,11 +4810,6 @@ interface Chat extends Instance {
 	 * 
 	 * This function is client-side only, attempting to call it on the server will trigger an error.
 	 * 
-	 * Note:
-	 * -----
-	 * 
-	 * Since this feature is still being rolled out, it might not exist on clients playing on older versions of Roblox, which is why it is heavily recommended to wrap calls to this function in a `pcall`.
-	 * 
 	 * Name
 	 * 
 	 * Explanation
@@ -4740,7 +4941,7 @@ interface Chat extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   Developers who are interested interested in configuring their games' chat system even further should take a look at the `Lua Chat System|articles/Lua-Chat-System/API` article
+	 * *   Developers who are interested interested in configuring their games' chat system even further should take a look at the `/articles/Lua Chat System|Lua Chat System|Lua Chat System` article
 	 */
 	SetBubbleChatSettings(this: Chat, settings?: any): void;
 	/** Will return false if the player with the specified [Player.UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) is not allowed to chat because of their account settings. */
@@ -6997,7 +7198,7 @@ interface GlobalDataStore extends Instance {
 interface OrderedDataStore extends GlobalDataStore {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "OrderedDataStore";
-	/** Returns a [DataStorePages](https://developer.roblox.com/en-us/api-reference/class/DataStorePages) object. The sort order is determined by **isAscending**, the length of each page by **pageSize**, and **minValue** /**maxValue** are optional parameters which filter the results.
+	/** Returns a [DataStorePages](https://developer.roblox.com/en-us/api-reference/class/DataStorePages) object. The sort order is determined by **ascending**, the length of each page by **pageSize**, and **minValue** /**maxValue** are optional parameters which filter the results.
 	 * 
 	 * If this function throws an error, the `Articles/Datastore Errors|error message` will describe the problem.
 	 */
@@ -8545,7 +8746,7 @@ interface TextBox extends GuiObject {
 
 /** A VideoFrame renders a rectangle, like a [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) does, with a moving video image. The video must be from a file uploaded to the Roblox website.
  * 
- * The video is scaled to fit the entirety of the rectangle, but look best when displayed at their native resolution.
+ * The video is scaled to fit the entirety of the rectangle, but looks best when displayed at its native resolution.
  * 
  * 2D and 3D Sound
  * ---------------
@@ -8571,7 +8772,7 @@ interface VideoFrame extends GuiObject {
 	 * Tags: NotReplicated
 	 */
 	Playing: boolean;
-	/** This property gets the original source resolution of the [VideoFrame.Resolution](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Resolution) file.This property gets the original source resolution of the [VideoFrame.Resolution](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Resolution) file. *
+	/** This property gets the original source resolution of the [VideoFrame.Video](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Video) file.This property gets the original source resolution of the [VideoFrame.Video](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Video) file. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Resolution: Vector2;
@@ -8583,11 +8784,11 @@ interface VideoFrame extends GuiObject {
 	 * Tags: NotReplicated
 	 */
 	TimePosition: number;
-	/** A number between 0 and 100 indicating how loud the [VideoFrame.Video](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Video) is currently playing back. */
+	/** The content ID of the video file a [VideoFrame](https://developer.roblox.com/en-us/api-reference/class/VideoFrame) object is associated with. */
 	Video: string;
 	/** This property determines how loud the [VideoFrame.Video](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Video) plays back. It can be set to a number between 0 and 100. */
 	Volume: number;
-	/** Sets [VideoFrame.Playing](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Playing) to false. This pauses the playback of the video if the video is playing.
+	/** Sets [VideoFrame.Playing](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Playing) to false, pausing playback if the [VideoFrame.Video](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Video) is playing.
 	 * 
 	 * As [VideoFrame.TimePosition](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/TimePosition) is not reset, when the video is resumed it will continue from its previous position.
 	 */
@@ -9317,6 +9518,11 @@ interface HapticService extends Instance {
 	IsVibrationSupported(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>): boolean;
 	/** Sets the vibration intensity of the specified [UserInputType](https://developer.roblox.com/api-reference/property/InputObject/UserInputType "UserInputType") and [VibrationMotor](https://developer.roblox.com/api-reference/enum/VibrationMotor "VibrationMotor"). */
 	SetMotor(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>, vibrationMotor: CastsToEnum<Enum.VibrationMotor>, vibrationValues: Array<any>): void;
+}
+
+interface HeightmapImporterService extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "HeightmapImporterService";
 }
 
 /** This service allows HTTP requests to be sent from game servers. This enables users to create integration with a wide range of third party services such as analytics and storage. One exciting prospect for this service is that if you run and manage your own website, and communicate with it from Roblox, it opens the possibility of remote server management and real time communication with the server, through your site.
@@ -16660,6 +16866,17 @@ interface BasePart extends PVInstance {
 	SetNetworkOwner(this: BasePart, playerInstance?: Player): void;
 	/** Lets the game engine dynamically decide who will handle the part's physics (one of the clients or the server). */
 	SetNetworkOwnershipAuto(this: BasePart): void;
+	/** **SubtractAsync** creates new [UnionOperation](https://developer.roblox.com/en-us/api-reference/class/UnionOperation) which occupies the same space as the part minus the space(s) occupied by the parts in the given array. It does this by invoking the real-time CSG solver. Similar to [Clone](https://developer.roblox.com/en-us/api-reference/function/Instance/Clone), the returned object has no [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) set.
+	 * 
+	 * The following image depicts an example of a SubtractAsync operation: the yellow part on the left has SubtractAsync called with a table containing the two pink parts. The resulting UnionOperation is moved to the right, as it would otherwise overlap the original part and not be visible. Notice the missing concave pieces that match the spaces once occupied by the pink parts.
+	 * 
+	 * ![An example of a SubtractAsync operation: the left depicts a yellow part with two pink parts, which are then subtracted from the yellow part using SubtractAsync. The resulting UnionOperation is visible on the right](https://developer.roblox.com/assets/bltd7903ce5973c2f8e/BasePart.SubtractAsync.png)```lua
+	 * local yellowPart = workspace.YellowPart
+	 * local pinkParts = {workspace.PinkPart, workspace.PinkPart2}
+	 * local union = yellowPart:SubtractAsync(pinkParts)
+	 * union.Parent = workspace
+	 * ```
+	 */
 	SubtractAsync(
 		this: BasePart,
 		parts: Array<BasePart>,
@@ -19751,41 +19968,98 @@ interface SunRaysEffect extends PostEffect {
 	Spread: number;
 }
 
+/** The ProximityPrompt is an object that allows developers to prompt users to interact with an object in the 3D world, such as opening a door or picking up an item.
+ * 
+ * ProximityPrompts work when parented to a [Part](https://developer.roblox.com/en-us/api-reference/class/Part), [Model](https://developer.roblox.com/en-us/api-reference/class/Model), or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) in the workspace.  
+ * In order to detect when the user interacts with the object, listen for the Triggered event on the ProximityPrompt in either a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), as in this simple example:
+ * 
+ * ```lua
+ * workspace.Part.ProximityPrompt.Triggered:Connect(function(player)
+ *     print("The user interacted with me!")
+ * end)
+ * ``` 
+ * 
+ * When a user is near, a UI will appear to prompt them for input. This works for all input types - keyboard, gamepad, and touchscreen.
+ * 
+ * The provided UI can be swapped out for your own custom UI. See [ProximityPrompt.Style](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/Style) for details.
+ * 
+ * Prompt Appearance
+ * -----------------
+ * 
+ * Prompts consist of three primary elements, each of which can be controlled by the following properties:
+ * 
+ * ![](https://developer.roblox.com/assets/blte557f1f82d250751/ProximityPrompt-Diagram.png)
+ * 
+ * *   **ObjectText** — An optional name for the object being interacted with.
+ * *   **ActionText** — An optional action name shown to the player, for example **Open** or **Use**.
+ * *   **KeyboardKeyCode** — The keyboard key which will trigger the prompt.
+ * *   **GamepadKeyCode** — The gamepad button which will trigger the prompt.
+ * 
+ * To customize the appearance of the prison door prompt, make the following changes:
+ * 
+ * 1.  In the Properties window, locate the **ObjectText** property and type in **Door**.
+ * 
+ * ![](https://developer.roblox.com/assets/bltce7a967fba1b5ec6/ProximityPrompt-ObjectText.png)
+ * 
+ * 2.  For the **ActionText** property, type in **Pick Lock**.
+ * 
+ * ![](https://developer.roblox.com/assets/bltff4e7724305b35ca/ProximityPrompt-ActionText.png)
+ * 
+ * See also
+ * --------
+ * 
+ * For more information regarding ProximityPrompts, take a look at the [Proximity Prompts](https://developer.roblox.com/en-us/articles/proximity-prompts).
+ */
 interface ProximityPrompt extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ProximityPrompt";
-	/** The action text shown to the user. */
+	/** This property determines the action text shown to the user. */
 	ActionText: string;
-	/** [NO DOCUMENTATION] */
+	/** This property determines whether the prompt's [ProximityPrompt.ActionText](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/ActionText) and [ProximityPrompt.ObjectText](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/ObjectText) will be localized according to the [ProximityPrompt.RootLocalizationTable](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/RootLocalizationTable). When set to true, localization will be applied. */
+	AutoLocalize: boolean;
+	/** This property determines whether the prompt can be activated by clicking/tapping on the prompt's UI. When set to false, the prompt cannot be activated by click/tap except on mobile. */
 	ClickablePrompt: boolean;
-	/** When false, this prompt will not be shown, and events will not fire. */
+	/** This property indicates whether or this [ProximityPrompt](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt) should be shown. */
 	Enabled: boolean;
-	/** Describes which prompts will be shown when multiple may be visible. */
+	/** This property is used to customize which prompts can be shown at the same time. */
 	Exclusivity: Enum.ProximityPromptExclusivity;
-	/** The gamepad button the player should press to trigger the prompt. */
+	/** This property determines the gamepad button the player should press to trigger the [prompt](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt). */
 	GamepadKeyCode: Enum.KeyCode;
-	/** The user must hold the button down for this duration to trigger the prompt. */
+	/** This property indicates the duration, in seconds, that the player must hold the button/key down to trigger the prompt. */
 	HoldDuration: number;
-	/** The key the player should press to trigger the prompt. */
+	/** This property determines the key the player should press to trigger the [prompt](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt). */
 	KeyboardKeyCode: Enum.KeyCode;
-	/** The maximum distance a Player's character can be from the ProximityPrompt for the prompt to appear. */
+	/** This property determines the maximum distance a Player's [character](https://developer.roblox.com/en-us/api-reference/property/Player/Character) can be from the [ProximityPrompt](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt) for the prompt to appear. */
 	MaxActivationDistance: number;
-	/** The object name text shown to the user. */
+	/** This optional property determines the optional object name text shown to the user. */
 	ObjectText: string;
-	/** If true, this prompt will only be shown if there is a clear path from the camera to the object. */
+	/** This property indicates whether the prompt is hidden if the path between the player's [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) and object parented to the [ProximityPrompt](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt) is obstructed. If true, this prompt will only be shown if there is a clear path from the camera to the object.
+	 * 
+	 * The parent [Part](https://developer.roblox.com/en-us/api-reference/class/Part) or [Model](https://developer.roblox.com/en-us/api-reference/class/Model) of the prompt will be excluded from this check.
+	 */
 	RequiresLineOfSight: boolean;
-	/** When set to custom, no default UI will be provided. */
+	/** This property serves as a reference to the [LocalizationTable](https://developer.roblox.com/en-us/api-reference/class/LocalizationTable) used to apply automated localization to the ProximityPrompt's [ProximityPrompt.ActionText](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/ActionText) and [ProximityPrompt.ObjectText](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/ObjectText). In order for this to appy, [ProximityPrompt.AutoLocalize](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/AutoLocalize) must be set.
+	 * 
+	 * Developers can set this to reference a LocalizationTable anywhere in the [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel). It is not required to be a child of [LocalizationService](https://developer.roblox.com/en-us/api-reference/class/LocalizationService). If there is no translation available in the referenced table it will look for a translation in the parent of that table, if it is also a LocalizationTable, and so on.
+	 */
+	RootLocalizationTable: LocalizationTable | undefined;
+	/** This property indicates the `ProximityPrompt|ProximityPrompt's` style. When set to Custom, no default UI will be provided.
+	 * 
+	 * The provided UI can be swapped out for a custom UI. In order to do this, set Style to Custom. Then, listen to the [ProximityPrompt.PromptShown](https://developer.roblox.com/en-us/api-reference/event/ProximityPrompt/PromptShown) and [ProximityPrompt.PromptHidden](https://developer.roblox.com/en-us/api-reference/event/ProximityPrompt/PromptHidden) events in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), where developers should create and tear down the UI.
+	 * 
+	 * Developers may also use [ProximityPrompt.PromptButtonHoldBegan](https://developer.roblox.com/en-us/api-reference/event/ProximityPrompt/PromptButtonHoldBegan) and [ProximityPrompt.PromptButtonHoldEnded](https://developer.roblox.com/en-us/api-reference/event/ProximityPrompt/PromptButtonHoldEnded) in order to utilize the [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration) progress animation feature.
+	 */
 	Style: Enum.ProximityPromptStyle;
-	/** a pixel offset applied to the UI. */
+	/** This property indicates the pixel offset applied to the prompt's UI. */
 	UIOffset: Vector2;
 	/** Used to signal that the player began triggering this prompt. */
 	InputHoldBegin(this: ProximityPrompt): void;
 	/** Used to signal that the player ended triggering this prompt. */
 	InputHoldEnd(this: ProximityPrompt): void;
-	/** Fired in local scripts when the user begins holding down the button on a prompt with a non-zero HoldDuration.  This can be used to animate a progress bar. */
-	readonly PromptButtonHoldBegan: RBXScriptSignal<() => void>;
-	/** Fired in local scripts when the user ends holding down the button on a prompt with a non-zero HoldDuration.  This can be used to animate a progress bar. */
-	readonly PromptButtonHoldEnded: RBXScriptSignal<() => void>;
+	/** This event triggers when a player begins holding down the [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button on a prompt with a non-zero [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration). One possible usage includes to animate a hold progress bar. */
+	readonly PromptButtonHoldBegan: RBXScriptSignal<(playerWhoTriggered: Player) => void>;
+	/** This event triggers when the player ends holding down the button on a prompt with a non-zero [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration). One possible usage includes to animate a hold progress bar. */
+	readonly PromptButtonHoldEnded: RBXScriptSignal<(playerWhoTriggered: Player) => void>;
 	/** Fired in local scripts when this prompt is hidden.  Can be used for customization. */
 	readonly PromptHidden: RBXScriptSignal<() => void>;
 	/** Fired in local scripts when this prompt is shown.  Can be used for customization. */
@@ -19796,6 +20070,7 @@ interface ProximityPrompt extends Instance {
 	readonly Triggered: RBXScriptSignal<(playerWhoTriggered: Player) => void>;
 }
 
+/** The ProximityPromptService allows developers to interact with [ProximityPrompt](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt) objects in a global way. It may be more convenient to listen to events on this service rather than individual ProximityPrompt objects. */
 interface ProximityPromptService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "ProximityPromptService";
@@ -19803,10 +20078,10 @@ interface ProximityPromptService extends Instance {
 	Enabled: boolean;
 	/** The maximum number of ProximityPrompts that will be shown. */
 	MaxPromptsVisible: number;
-	/** Fired in local scripts when the user begins holding down the button on a prompt with a non-zero HoldDuration.  This can be used to animate a progress bar. */
-	readonly PromptButtonHoldBegan: RBXScriptSignal<(prompt: Instance) => void>;
-	/** Fired in local scripts when the user ends holding down the button on a prompt with a non-zero HoldDuration.  This can be used to animate a progress bar. */
-	readonly PromptButtonHoldEnded: RBXScriptSignal<(prompt: Instance) => void>;
+	/** This event triggers when the player begins holding down the [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button on a prompt with a non-zero [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration). This can be used to animate a progress bar. */
+	readonly PromptButtonHoldBegan: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
+	/** This event triggers when the user stops holding down the [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button on a prompt with a non-zero [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration). This can be used to animate a progress bar. */
+	readonly PromptButtonHoldEnded: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
 	/** Fired in local scripts when a prompt is hidden.  Can be used for customization. */
 	readonly PromptHidden: RBXScriptSignal<(prompt: Instance) => void>;
 	/** Fired in local scripts when a prompt is shown.  Can be used for customization. */
@@ -19879,7 +20154,13 @@ interface RemoteEvent<T extends Callback = Callback> extends Instance {
 	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...args: Array<unknown>) => void>;
 }
 
-/** A **RemoteFunction** is used to create in-game APIs that both the client and the server can use to communicate with each other. Like [BindableFunction](https://developer.roblox.com/en-us/api-reference/class/BindableFunction), a RemoteFunction can be invoked (called) to do a certain action and return the results.
+/** A server should rarely invoke a client via `RemoteFunction/InvokeClient|InvokeClient()` as it can be potentially game breaking. For client-only actions that don't require a callback, like updating a GUI, a [server-to-client remote event](#server-to-client-remote-event) should be used instead. If `RemoteFunction/InvokeClient|InvokeClient()` is used, risks include:
+ * 
+ * *   If the client throws an error, the server will throw the error too.
+ * *   If the client disconnects while it's being invoked, the `RemoteFunction/InvokeClient|InvokeClient()` call will error.
+ * *   If the client never returns a value, the server will hang forever.
+ * 
+ * A **RemoteFunction** is used to create in-game APIs that both the client and the server can use to communicate with each other. Like [BindableFunction](https://developer.roblox.com/en-us/api-reference/class/BindableFunction), a RemoteFunction can be invoked (called) to do a certain action and return the results.
  * 
  * If the result is **not** needed, we recommend that you use a [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) instead, since its call is asynchronous and doesn't need to wait for a response to continue execution. See `[Remote Functions and Events](https://developer.roblox.com/articles/Remote-Functions-and-Events)` for more info.
  */
@@ -22211,6 +22492,34 @@ interface Teams extends Instance {
 	GetTeams(this: Teams): Array<Team>;
 }
 
+interface TeleportAsyncResult extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "TeleportAsyncResult";
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly PrivateServerId: string;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ReservedServerAccessCode: string;
+}
+
+interface TeleportOptions extends Instance {
+	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
+	readonly ClassName: "TeleportOptions";
+	/** [NO DOCUMENTATION] */
+	ReservedServerAccessCode: string;
+	/** [NO DOCUMENTATION] */
+	ServerInstanceId: string;
+	/** [NO DOCUMENTATION] */
+	ShouldReserveServer: boolean;
+	/** [NO DOCUMENTATION] */
+	GetTeleportData(this: TeleportOptions): unknown;
+	/** [NO DOCUMENTATION] */
+	SetTeleportData(this: TeleportOptions, teleportData?: any): void;
+}
+
 /** The TeleportService is responsible for transporting [Players](https://developer.roblox.com/en-us/api-reference/class/Player) between `Articles/Place|places` and servers.
  * 
  * 'Teleporting' in Roblox, describes the transportation of [Players](https://developer.roblox.com/en-us/api-reference/class/Player) between different places and servers. TeleportService provides a range of functions allowing single or groups of users to be teleported. As Roblox [games](https://developer.roblox.com/en-us/api-reference/class/Articles/Multi Place Games) can contain multiple places, you can use the TeleportService to teleport players between different levels.
@@ -22742,6 +23051,7 @@ interface TeleportService extends Instance {
 	 * Players on Xbox One with cross-platform play disabled will arrive in a different server with players with cross-platform play enabled. This can cause multiple game servers with the same PrivateServerId to exist.
 	 */
 	ReserveServer(this: TeleportService, placeId: number): LuaTuple<[string, string]>;
+	TeleportAsync(this: TeleportService, placeId: number, players: Array<Instance>, teleportOptions?: TeleportOptions): Instance | undefined;
 	/** This function teleports a group of [Players](https://developer.roblox.com/en-us/api-reference/class/Player) to the same server instance in the given place. It returns the [DataModel.JobId](https://developer.roblox.com/en-us/api-reference/property/DataModel/JobId) of the server instance the players were teleported to.
 	 * 
 	 * This function can only be called from the server.
