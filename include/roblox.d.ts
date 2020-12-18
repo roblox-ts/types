@@ -1112,7 +1112,7 @@ interface Color3 {
 
 interface Color3Constructor {
 	/** Creates a Color3 with the given red, green, and blue. The numbers can range from 0 to 255. */
-	fromRGB: (r: number, g: number, b: number) => Color3;
+	fromRGB: (r?: number, g?: number, b?: number) => Color3;
 	/** Creates a Color3 with the given hue, saturation, and value. The numbers can range from 0 to 1. */
 	fromHSV: (hue: number, sat: number, val: number) => Color3;
 	/** Returns the hue, saturation, and value of a Color3. */
@@ -1375,7 +1375,7 @@ interface PathWaypoint {
 	readonly Action: Enum.PathWaypointAction;
 	readonly Position: Vector3;
 }
-type PathWaypointConstructor = new (position: Vector3, action: Enum.PathWaypointAction) => PathWaypoint;
+type PathWaypointConstructor = new (position?: Vector3, action?: Enum.PathWaypointAction) => PathWaypoint;
 declare const PathWaypoint: PathWaypointConstructor;
 
 // PhysicalProperties
@@ -1423,7 +1423,7 @@ interface Ray {
 	Distance(this: Ray, point: Vector3): number;
 }
 
-type RayConstructor = new (origin: Vector3, direction: Vector3) => Ray;
+type RayConstructor = new (origin?: Vector3, direction?: Vector3) => Ray;
 
 declare const Ray: RayConstructor;
 
@@ -1474,7 +1474,7 @@ interface Rect {
 	readonly Height: number;
 }
 interface RectConstructor {
-	new (min: Vector2, max: Vector2): Rect;
+	new (min?: Vector2, max?: Vector2): Rect;
 	new (minX: number, minY: number, maxX: number, maxY: number): Rect;
 }
 
@@ -1487,7 +1487,7 @@ interface Region3 {
 	ExpandToGrid(this: Region3, resolution: number): Region3;
 }
 
-type Region3Constructor = new (min: Vector3, max: Vector3) => Region3;
+type Region3Constructor = new (min?: Vector3, max?: Vector3) => Region3;
 
 declare const Region3: Region3Constructor;
 
@@ -1528,7 +1528,7 @@ interface UDim {
 	readonly Offset: number;
 }
 
-type UDimConstructor = new (scale: number, offset: number) => UDim;
+type UDimConstructor = new (scale?: number, offset?: number) => UDim;
 
 declare const UDim: UDimConstructor;
 
