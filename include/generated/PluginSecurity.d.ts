@@ -2120,11 +2120,11 @@ interface TotalCountTimeIntervalItem extends StatsItem {
 interface Studio extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "Studio";
-	[""TODO" Color"]: Color3;
-	[""function" Color"]: Color3;
-	[""local" Color"]: Color3;
-	[""nil" Color"]: Color3;
-	[""self" Color"]: Color3;
+	["\"TODO\" Color"]: Color3;
+	["\"function\" Color"]: Color3;
+	["\"local\" Color"]: Color3;
+	["\"nil\" Color"]: Color3;
+	["\"self\" Color"]: Color3;
 	["Active Color"]: Color3;
 	["Active Hover Over Color"]: Color3;
 	["Always Save Script Changes"]: boolean;
@@ -2139,6 +2139,7 @@ interface Studio extends Instance {
 	["Background Color"]: Color3;
 	["Basic Objects Display Mode"]: Enum.ListDisplayMode;
 	["Bool Color"]: Color3;
+	["Bracket Color"]: Color3;
 	["Built-in Function Color"]: Color3;
 	["Camera Mouse Wheel Speed"]: number;
 	["Camera Shift Speed"]: number;
@@ -2161,6 +2162,8 @@ interface Studio extends Instance {
 	["Enable Http Sandboxing"]: boolean;
 	["Enable Internal Beta Features"]: boolean;
 	["Enable Internal Features"]: boolean;
+	["Enable Temporary Tabs"]: boolean;
+	["Enable Temporary Tabs In Explorer"]: boolean;
 	["Error Color"]: Color3;
 	["Find Selection Background Color"]: Color3;
 	/** Specifies the font used in the script editor. */
@@ -2274,10 +2277,6 @@ interface StudioData extends Instance {
 	 * Tags: Hidden
 	 */
 	readonly EnableScriptCollabOnLoad: boolean;
-	/** [NO DOCUMENTATION] *
-	 * Tags: Hidden
-	 */
-	readonly EnableScriptCollabVersionHistoryOnLoad: boolean;
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden, NotReplicated
 	 */
@@ -2548,8 +2547,6 @@ interface StudioService extends Instance {
 	IsPluginUpToDate(this: StudioService, assetId: number, currentAssetVersion: number): boolean;
 	/** [NO DOCUMENTATION] */
 	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
-	/** [NO DOCUMENTATION] */
-	OpenPluginInsertPage(this: StudioService, assetId: number): void;
 	/** [NO DOCUMENTATION] */
 	PublishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
 	/** [NO DOCUMENTATION] */
