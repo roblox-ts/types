@@ -1685,7 +1685,6 @@ declare namespace math {
 	function clamp(n: number, min: number, max: number): number;
 }
 
-/** @rbxts utf8 */
 declare namespace utf8 {
 	/** Receives zero or more codepoints as integers, converts each one to its corresponding UTF-8 byte sequence and returns a string with the concatenation of all these sequences. */
 	function char(this: typeof utf8, ...codepoints: Array<number>): string;
