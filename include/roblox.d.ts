@@ -524,6 +524,8 @@ interface RBXScriptSignal<T extends Callback = Callback> {
 	 */
 	Connect(this: RBXScriptSignal, callback: T): RBXScriptConnection;
 
+	ConnectParallel(this: RBXScriptSignal, callback: T): RBXScriptConnection;
+
 	/**
 	 * Yields the current thread until this signal is fired. Returns what was fired to the signal.
 	 */
@@ -1709,6 +1711,11 @@ declare namespace utf8 {
 	function nfdnormalize(this: typeof utf8, str: string): string;
 	/** The pattern which matches exactly one UTF-8 byte sequence, assuming that the subject is a valid UTF-8 string. */
 	const charpattern: "[%z\x01-\x7F\xC2-\xF4][\x80-\xBF]*";
+}
+
+declare namespace task {
+	function desynchronize(): void;
+	function synchronize(): void;
 }
 
 interface GettableCores {
