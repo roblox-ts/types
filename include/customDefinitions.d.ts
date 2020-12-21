@@ -73,6 +73,10 @@ interface BasePart extends PVInstance {
 	SetNetworkOwnershipAuto(this: BasePart): void;
 }
 
+interface BasePlayerGui extends Instance {
+	GetGuiObjectsAtPosition(this: BasePlayerGui, x: number, y: number): Array<GuiObject>;
+}
+
 interface BillboardGui extends LayerCollector {
 	Adornee: PVInstance | Attachment | undefined;
 	PlayerToHideFrom: Player | undefined;

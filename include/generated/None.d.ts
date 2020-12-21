@@ -1819,117 +1819,151 @@ interface Bone extends Attachment {
 	readonly TransformedWorldCFrame: CFrame;
 }
 
-/** A service to support developer Avatar Editors. Provides methods to modify the players platform avatar, request information about a users inventory and request information about the catalog. */
+/** A service to support developer Avatar Editors. Provides methods to modify the players platform avatar, request information about a users inventory and request information about the catalog.
+ * 
+ * See also
+ * --------
+ * 
+ * For more information regarding the Avatar Editor, take a look at the `articles/Article Editor Service` article.
+ */
 interface AvatarEditorService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
 	readonly ClassName: "AvatarEditorService";
-	/** [NO DOCUMENTATION] */
+	/** This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to allow the developer to read what items the user has in their inventory and other avatar editor related information. The prompt needs to be confirmed by the user for the developer to use [AvatarEditorService:GetInventory](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetInventory), [AvatarEditorService:GetOutfits](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetOutfits) and [AvatarEditorService:GetFavorite](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetFavorite). This would have to be requested once per session but in the future we may wish to save this permission per game. */
 	PromptAllowInventoryReadAccess(this: AvatarEditorService): void;
-	/** [NO DOCUMENTATION] */
+	/** This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to save the given [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) as an outfit. Does not yield and can get the result by listening to the [AvatarEditorService.PromptCreateOutfitCompleted](https://developer.roblox.com/en-us/api-reference/event/AvatarEditorService/PromptCreateOutfitCompleted) event. */
 	PromptCreateOutfit(this: AvatarEditorService, outfit: Instance, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
-	/** [NO DOCUMENTATION] */
+	/** This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to update their avatar based on the given [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) and [RigType](https://developer.roblox.com/en-us/api-reference/enum/RigType) (R6 or R15). Does not yield and can get the result by listening to the PromptSaveAvatarCompleted event. This is similar to how other prompts such as PromptPurchase work. */
 	PromptSaveAvatar(this: AvatarEditorService, humanoidDescription: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
-	/** [NO DOCUMENTATION] */
+	/** This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to favorite or unfavorite the given asset or bundle. */
 	PromptSetFavorite(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>, shouldFavorite: boolean): void;
 	/** This function returns the platform Avatar rules for things like scaling, default shirts and pants, number of wearable assets, ect.
 	 * 
-	 * Data is in the format:
+	 * The returned table includes the following fields:
 	 * 
 	 * ```lua
 	 * {
-	 *   "playerAvatarTypes": [
+	 *   "PlayerAvatarTypes": [
 	 *     "R6"
 	 *   ],
-	 *   "scales": {},
-	 *   "wearableAssetTypes": [
+	 *   "Scales": {},
+	 *   "WearableAssetTypes": [
 	 *     {
-	 *       "maxNumber": 0,
-	 *       "id": 0,
-	 *       "name": "string"
+	 *       "MaxNumber": 0,
+	 *       "Id": 0,
+	 *       “Name": "string"
 	 *     }
 	 *   ],
-	 *   "bodyColorsPalette": [
+	 *   "BodyColorsPalette": [
 	 *     {
-	 *       "brickColorId": 0,
-	 *       "hexColor": "string",
-	 *       "name": "string"
+	 *       "BrickColorId": 0,
+	 *       "NexColor": "string",
+	 *       "Name": "string"
 	 *     }
 	 *   ],
-	 *   "basicBodyColorsPalette": [
+	 *   "BasicBodyColorsPalette": [
 	 *     {
-	 *       "brickColorId": 0,
-	 *       "hexColor": "string",
-	 *       "name": "string"
+	 *       "BrickColorId": 0,
+	 *       "HexColor": "string",
+	 *       "Name": "string"
 	 *     }
 	 *   ],
-	 *   "minimumDeltaEBodyColorDifference": 0,
-	 *   "proportionsAndBodyTypeEnabledForUser": true,
-	 *   "defaultClothingAssetLists": {
-	 *     "defaultShirtAssetIds": [
+	 *   "MinimumDeltaEBodyColorDifference": 0,
+	 *   "ProportionsAndBodyTypeEnabledForUser": true,
+	 *   "DefaultClothingAssetLists": {
+	 *     "DefaultShirtAssetIds": [
 	 *       0
 	 *     ],
-	 *     "defaultPantAssetIds": [
+	 *     "DefaultPantAssetIds": [
 	 *       0
 	 *     ]
 	 *   },
-	 *   "bundlesEnabledForUser": true,
-	 *   "emotesEnabledForUser": true
+	 *   "BundlesEnabledForUser": true,
+	 *   "EmotesEnabledForUser": true
 	 * }
 	 * ```
 	This function returns the platform Avatar rules for things like scaling, default shirts and pants, number of wearable assets, ect.
 	 * 
-	 * Data is in the format:
+	 * The returned table includes the following fields:
 	 * 
 	 * ```lua
 	 * {
-	 *   "playerAvatarTypes": [
+	 *   "PlayerAvatarTypes": [
 	 *     "R6"
 	 *   ],
-	 *   "scales": {},
-	 *   "wearableAssetTypes": [
+	 *   "Scales": {},
+	 *   "WearableAssetTypes": [
 	 *     {
-	 *       "maxNumber": 0,
-	 *       "id": 0,
-	 *       "name": "string"
+	 *       "MaxNumber": 0,
+	 *       "Id": 0,
+	 *       “Name": "string"
 	 *     }
 	 *   ],
-	 *   "bodyColorsPalette": [
+	 *   "BodyColorsPalette": [
 	 *     {
-	 *       "brickColorId": 0,
-	 *       "hexColor": "string",
-	 *       "name": "string"
+	 *       "BrickColorId": 0,
+	 *       "NexColor": "string",
+	 *       "Name": "string"
 	 *     }
 	 *   ],
-	 *   "basicBodyColorsPalette": [
+	 *   "BasicBodyColorsPalette": [
 	 *     {
-	 *       "brickColorId": 0,
-	 *       "hexColor": "string",
-	 *       "name": "string"
+	 *       "BrickColorId": 0,
+	 *       "HexColor": "string",
+	 *       "Name": "string"
 	 *     }
 	 *   ],
-	 *   "minimumDeltaEBodyColorDifference": 0,
-	 *   "proportionsAndBodyTypeEnabledForUser": true,
-	 *   "defaultClothingAssetLists": {
-	 *     "defaultShirtAssetIds": [
+	 *   "MinimumDeltaEBodyColorDifference": 0,
+	 *   "ProportionsAndBodyTypeEnabledForUser": true,
+	 *   "DefaultClothingAssetLists": {
+	 *     "DefaultShirtAssetIds": [
 	 *       0
 	 *     ],
-	 *     "defaultPantAssetIds": [
+	 *     "DefaultPantAssetIds": [
 	 *       0
 	 *     ]
 	 *   },
-	 *   "bundlesEnabledForUser": true,
-	 *   "emotesEnabledForUser": true
+	 *   "BundlesEnabledForUser": true,
+	 *   "EmotesEnabledForUser": true
 	 * }
 	 * ```
 	 *
 	 * Tags: Yields
 	 */
 	GetAvatarRules(this: AvatarEditorService): object;
-	/** [NO DOCUMENTATION] *
+	/** This function returns if the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) has favorited the given bundle or asset.This function returns if the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) has favorited the given bundle or asset. *
 	 * Tags: Yields
 	 */
 	GetFavorite(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): boolean;
-	/** [NO DOCUMENTATION] *
+	/** Returns an [InventoryPages](https://developer.roblox.com/en-us/api-reference/class/InventoryPages) object with information about owned items in the users inventory with the given [AvatarAssetTypes](https://developer.roblox.com/en-us/api-reference/enum/AvatarAssetType).
+	 * 
+	 * The returned table includes the following fields:
+	 * 
+	 * ```lua
+	 * [
+	 *     {
+	 *       "AssetName": "string",
+	 *       "AssetId": 0,
+	 *       "SerialNumber": 0,
+	 *       "AssetType" : "string",
+	 *     }
+	 * ]
+	 * ```
+	Returns an [InventoryPages](https://developer.roblox.com/en-us/api-reference/class/InventoryPages) object with information about owned items in the users inventory with the given [AvatarAssetTypes](https://developer.roblox.com/en-us/api-reference/enum/AvatarAssetType).
+	 * 
+	 * The returned table includes the following fields:
+	 * 
+	 * ```lua
+	 * [
+	 *     {
+	 *       "AssetName": "string",
+	 *       "AssetId": 0,
+	 *       "SerialNumber": 0,
+	 *       "AssetType" : "string",
+	 *     }
+	 * ]
+	 * ```
+	 *
 	 * Tags: Yields
 	 */
 	GetInventory(this: AvatarEditorService, assetTypes: Array<any>): Instance | undefined;
@@ -1939,47 +1973,47 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * ```lua
 	 * {
-	 *   "isForRent": true,
-	 *   "expectedSellerId": 0,
-	 *   "owned": true,
-	 *   "isPurchasable": true,
-	 *   "id": 0,
-	 *   "itemType": "Asset",
-	 *   "assetType": "Image",
-	 *   "bundleType": "BodyParts",
-	 *   "name": "string",
-	 *   "description": "string",
-	 *   "productId": 0,
-	 *   "genres": [
+	 *   "IsForRent": true,
+	 *   "ExpectedSellerId": 0,
+	 *   "Owned": true,
+	 *   "IsPurchasable": true,
+	 *   "Id": 0,
+	 *   "ItemType": "Asset",
+	 *   "AssetType": "Image",
+	 *   "BundleType": "BodyParts",
+	 *   "Name": "string",
+	 *   "Description": "string",
+	 *   "ProductId": 0,
+	 *   "Genres": [
 	 *     "All"
 	 *   ],
-	 *   "bundledItems": [
+	 *   "BundledItems": [
 	 *     {
-	 *       "owned": true,
-	 *       "id": 0,
-	 *       "name": "string",
-	 *       "type": "string"
+	 *       "Owned": true,
+	 *       "Id": 0,
+	 *       "Name": "string",
+	 *       "Type": "string"
 	 *     }
 	 *   ],
-	 *   "itemStatus": [
+	 *   "ItemStatus": [
 	 *     "New"
 	 *   ],
-	 *   "itemRestrictions": [
+	 *   "ItemRestrictions": [
 	 *     "ThirteenPlus"
 	 *   ],
-	 *   "creatorType": "User",
-	 *   "creatorTargetId": 0,
-	 *   "creatorName": "string",
-	 *   "price": 0,
-	 *   "premiumPricing": {
-	 *     "premiumDiscountPercentage": 0,
-	 *     "premiumPriceInRobux": 0
+	 *   "CreatorType": "User",
+	 *   "CreatorTargetId": 0,
+	 *   "CreatorName": "string",
+	 *   "Price": 0,
+	 *   "PremiumPricing": {
+	 *     "PremiumDiscountPercentage": 0,
+	 *     "PremiumPriceInRobux": 0
 	 *   },
-	 *   "lowestPrice": 0,
-	 *   "priceStatus": "string",
-	 *   "unitsAvailableForConsumption": 0,
-	 *   "purchaseCount": 0,
-	 *   "favoriteCount": 0
+	 *   "LowestPrice": 0,
+	 *   "PriceStatus": "string",
+	 *   "UnitsAvailableForConsumption": 0,
+	 *   "PurchaseCount": 0,
+	 *   "FavoriteCount": 0
 	 * }
 	 * ```
 	This function returns the item details for the given item. It accepts two parameters - the first indicating the ID of the item being retrieved and the second indicating its [ItemType](https://developer.roblox.com/en-us/api-reference/enum/ItemType).
@@ -1988,54 +2022,116 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * ```lua
 	 * {
-	 *   "isForRent": true,
-	 *   "expectedSellerId": 0,
-	 *   "owned": true,
-	 *   "isPurchasable": true,
-	 *   "id": 0,
-	 *   "itemType": "Asset",
-	 *   "assetType": "Image",
-	 *   "bundleType": "BodyParts",
-	 *   "name": "string",
-	 *   "description": "string",
-	 *   "productId": 0,
-	 *   "genres": [
+	 *   "IsForRent": true,
+	 *   "ExpectedSellerId": 0,
+	 *   "Owned": true,
+	 *   "IsPurchasable": true,
+	 *   "Id": 0,
+	 *   "ItemType": "Asset",
+	 *   "AssetType": "Image",
+	 *   "BundleType": "BodyParts",
+	 *   "Name": "string",
+	 *   "Description": "string",
+	 *   "ProductId": 0,
+	 *   "Genres": [
 	 *     "All"
 	 *   ],
-	 *   "bundledItems": [
+	 *   "BundledItems": [
 	 *     {
-	 *       "owned": true,
-	 *       "id": 0,
-	 *       "name": "string",
-	 *       "type": "string"
+	 *       "Owned": true,
+	 *       "Id": 0,
+	 *       "Name": "string",
+	 *       "Type": "string"
 	 *     }
 	 *   ],
-	 *   "itemStatus": [
+	 *   "ItemStatus": [
 	 *     "New"
 	 *   ],
-	 *   "itemRestrictions": [
+	 *   "ItemRestrictions": [
 	 *     "ThirteenPlus"
 	 *   ],
-	 *   "creatorType": "User",
-	 *   "creatorTargetId": 0,
-	 *   "creatorName": "string",
-	 *   "price": 0,
-	 *   "premiumPricing": {
-	 *     "premiumDiscountPercentage": 0,
-	 *     "premiumPriceInRobux": 0
+	 *   "CreatorType": "User",
+	 *   "CreatorTargetId": 0,
+	 *   "CreatorName": "string",
+	 *   "Price": 0,
+	 *   "PremiumPricing": {
+	 *     "PremiumDiscountPercentage": 0,
+	 *     "PremiumPriceInRobux": 0
 	 *   },
-	 *   "lowestPrice": 0,
-	 *   "priceStatus": "string",
-	 *   "unitsAvailableForConsumption": 0,
-	 *   "purchaseCount": 0,
-	 *   "favoriteCount": 0
+	 *   "LowestPrice": 0,
+	 *   "PriceStatus": "string",
+	 *   "UnitsAvailableForConsumption": 0,
+	 *   "PurchaseCount": 0,
+	 *   "FavoriteCount": 0
 	 * }
 	 * ```
 	 *
 	 * Tags: Yields
 	 */
 	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): object;
-	/** [NO DOCUMENTATION] *
+	/** This function returns outfit data for the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer). This would be used with [Players:GetHumanoidDescriptionFromOutfitId](https://developer.roblox.com/en-us/api-reference/function/Players/GetHumanoidDescriptionFromOutfitId) to update the players character to the outfit. Access to this would also depend on [AvatarEditorService:PromptAllowInventoryReadAccess](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptAllowInventoryReadAccess) being accepted by the user.
+	 * 
+	 * The returned table includes the following fields:
+	 * 
+	 * ```lua
+	 * [
+	 *     {
+	 *       "Id": 0,
+	 *       "Name": "string",
+	 *       "IsEditable": true
+	 *     }
+	 * ]
+	 * ``` 
+	 * 
+	 * Name
+	 * 
+	 * type
+	 * 
+	 * Description
+	 * 
+	 * id
+	 * 
+	 * int
+	 * 
+	 * name
+	 * 
+	 * string
+	 * 
+	 * isEditable
+	 * 
+	 * boolean
+	This function returns outfit data for the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer). This would be used with [Players:GetHumanoidDescriptionFromOutfitId](https://developer.roblox.com/en-us/api-reference/function/Players/GetHumanoidDescriptionFromOutfitId) to update the players character to the outfit. Access to this would also depend on [AvatarEditorService:PromptAllowInventoryReadAccess](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptAllowInventoryReadAccess) being accepted by the user.
+	 * 
+	 * The returned table includes the following fields:
+	 * 
+	 * ```lua
+	 * [
+	 *     {
+	 *       "Id": 0,
+	 *       "Name": "string",
+	 *       "IsEditable": true
+	 *     }
+	 * ]
+	 * ``` 
+	 * 
+	 * Name
+	 * 
+	 * type
+	 * 
+	 * Description
+	 * 
+	 * id
+	 * 
+	 * int
+	 * 
+	 * name
+	 * 
+	 * string
+	 * 
+	 * isEditable
+	 * 
+	 * boolean
+	 *
 	 * Tags: Yields
 	 */
 	GetOutfits(this: AvatarEditorService): Instance | undefined;
@@ -2046,40 +2142,40 @@ interface AvatarEditorService extends Instance {
 	 * ```lua
 	 * [
 	 *     {
-	 *       "item": {
-	 *         "assetId": 0,
-	 *         "name": "string",
-	 *         "price": 0,
-	 *         "premiumPrice": 0,
-	 *         "absoluteUrl": "string",
-	 *         "audioUrl": "string"
+	 *       "Item": {
+	 *         "AssetId": 0,
+	 *         "Name": "string",
+	 *         "Price": 0,
+	 *         "PremiumPrice": 0,
+	 *         "AbsoluteUrl": "string",
+	 *         "AudioUrl": "string"
 	 *       },
-	 *       "creator": {
-	 *         "creatorId": 0,
-	 *         "creatorType": "string",
-	 *         "name": "string",
-	 *         "creatorProfileLink": "string"
+	 *       "Creator": {
+	 *         "CreatorId": 0,
+	 *         "CreatorType": "string",
+	 *         "Name": "string",
+	 *         "CreatorProfileLink": "string"
 	 *       },
-	 *       "product": {
-	 *         "id": 0,
-	 *         "priceInRobux": 0,
-	 *         "isForSale": true,
-	 *         "isPublicDomain": true,
-	 *         "isResellable": true,
-	 *         "isLimited": true,
-	 *         "isLimitedUnique": true,
-	 *         "serialNumber": 0,
-	 *         "isRental": true,
-	 *         "rentalDurationInHours": 0,
-	 *         "bcRequirement": 0,
-	 *         "totalPrivateSales": 0,
-	 *         "sellerId": 0,
-	 *         "sellerName": "string",
-	 *         "lowestPrivateSaleUserAssetId": 0,
-	 *         "isXboxExclusiveItem": true,
-	 *         "offsaleDeadline": "string",
-	 *         "noPriceText": "string",
-	 *         "isFree": true
+	 *       "Product": {
+	 *         "Id": 0,
+	 *         "PriceInRobux": 0,
+	 *         "IsForSale": true,
+	 *         "IsPublicDomain": true,
+	 *         "IsResellable": true,
+	 *         "IsLimited": true,
+	 *         "IsLimitedUnique": true,
+	 *         "SerialNumber": 0,
+	 *         "IsRental": true,
+	 *         "RentalDurationInHours": 0,
+	 *         "BcRequirement": 0,
+	 *         "TotalPrivateSales": 0,
+	 *         "SellerId": 0,
+	 *         "SellerName": "string",
+	 *         "LowestPrivateSaleUserAssetId": 0,
+	 *         "IsXboxExclusiveItem": true,
+	 *         "OffsaleDeadline": "string",
+	 *         "NoPriceText": "string",
+	 *         "IsFree": true
 	 *       }
 	 *     }
 	 * ]
@@ -2091,40 +2187,40 @@ interface AvatarEditorService extends Instance {
 	 * ```lua
 	 * [
 	 *     {
-	 *       "item": {
-	 *         "assetId": 0,
-	 *         "name": "string",
-	 *         "price": 0,
-	 *         "premiumPrice": 0,
-	 *         "absoluteUrl": "string",
-	 *         "audioUrl": "string"
+	 *       "Item": {
+	 *         "AssetId": 0,
+	 *         "Name": "string",
+	 *         "Price": 0,
+	 *         "PremiumPrice": 0,
+	 *         "AbsoluteUrl": "string",
+	 *         "AudioUrl": "string"
 	 *       },
-	 *       "creator": {
-	 *         "creatorId": 0,
-	 *         "creatorType": "string",
-	 *         "name": "string",
-	 *         "creatorProfileLink": "string"
+	 *       "Creator": {
+	 *         "CreatorId": 0,
+	 *         "CreatorType": "string",
+	 *         "Name": "string",
+	 *         "CreatorProfileLink": "string"
 	 *       },
-	 *       "product": {
-	 *         "id": 0,
-	 *         "priceInRobux": 0,
-	 *         "isForSale": true,
-	 *         "isPublicDomain": true,
-	 *         "isResellable": true,
-	 *         "isLimited": true,
-	 *         "isLimitedUnique": true,
-	 *         "serialNumber": 0,
-	 *         "isRental": true,
-	 *         "rentalDurationInHours": 0,
-	 *         "bcRequirement": 0,
-	 *         "totalPrivateSales": 0,
-	 *         "sellerId": 0,
-	 *         "sellerName": "string",
-	 *         "lowestPrivateSaleUserAssetId": 0,
-	 *         "isXboxExclusiveItem": true,
-	 *         "offsaleDeadline": "string",
-	 *         "noPriceText": "string",
-	 *         "isFree": true
+	 *       "Product": {
+	 *         "Id": 0,
+	 *         "PriceInRobux": 0,
+	 *         "IsForSale": true,
+	 *         "IsPublicDomain": true,
+	 *         "IsResellable": true,
+	 *         "IsLimited": true,
+	 *         "IsLimitedUnique": true,
+	 *         "SerialNumber": 0,
+	 *         "IsRental": true,
+	 *         "RentalDurationInHours": 0,
+	 *         "BcRequirement": 0,
+	 *         "TotalPrivateSales": 0,
+	 *         "SellerId": 0,
+	 *         "SellerName": "string",
+	 *         "LowestPrivateSaleUserAssetId": 0,
+	 *         "IsXboxExclusiveItem": true,
+	 *         "OffsaleDeadline": "string",
+	 *         "NoPriceText": "string",
+	 *         "IsFree": true
 	 *       }
 	 *     }
 	 * ]
@@ -2140,32 +2236,32 @@ interface AvatarEditorService extends Instance {
 	 * ```lua
 	 * [
 	 *     {
-	 *       "id": 0,
-	 *       "name": "string",
-	 *       "description": "string",
-	 *       "bundleType": "string",
-	 *       "items": [
+	 *       "Id": 0,
+	 *       "Name": "string",
+	 *       "Description": "string",
+	 *       "BundleType": "string",
+	 *       "Items": [
 	 *         {
-	 *           "owned": true,
-	 *           "id": 0,
-	 *           "name": "string",
-	 *           "type": "string"
+	 *           "Owned": true,
+	 *           "Id": 0,
+	 *           "Name": "string",
+	 *           "Type": "string"
 	 *         }
 	 *       ],
-	 *       "creator": {
-	 *         "id": 0,
-	 *         "name": "string",
-	 *         "type": "string"
+	 *       "Creator": {
+	 *         "Id": 0,
+	 *         "Name": "string",
+	 *         "Type": "string"
 	 *       },
-	 *       "product": {
-	 *         "id": 0,
-	 *         "type": "string",
-	 *         "isPublicDomain": true,
-	 *         "isForSale": true,
-	 *         "priceInRobux": 0,
-	 *         "premiumPricing": {
-	 *           "premiumDiscountPercentage": 0,
-	 *           "premiumPriceInRobux": 0
+	 *       "Product": {
+	 *         "Id": 0,
+	 *         "Type": "string",
+	 *         "IsPublicDomain": true,
+	 *         "IsForSale": true,
+	 *         "PriceInRobux": 0,
+	 *         "PremiumPricing": {
+	 *           "PremiumDiscountPercentage": 0,
+	 *           "PremiumPriceInRobux": 0
 	 *         }
 	 *       }
 	 *     }
@@ -2178,32 +2274,32 @@ interface AvatarEditorService extends Instance {
 	 * ```lua
 	 * [
 	 *     {
-	 *       "id": 0,
-	 *       "name": "string",
-	 *       "description": "string",
-	 *       "bundleType": "string",
-	 *       "items": [
+	 *       "Id": 0,
+	 *       "Name": "string",
+	 *       "Description": "string",
+	 *       "BundleType": "string",
+	 *       "Items": [
 	 *         {
-	 *           "owned": true,
-	 *           "id": 0,
-	 *           "name": "string",
-	 *           "type": "string"
+	 *           "Owned": true,
+	 *           "Id": 0,
+	 *           "Name": "string",
+	 *           "Type": "string"
 	 *         }
 	 *       ],
-	 *       "creator": {
-	 *         "id": 0,
-	 *         "name": "string",
-	 *         "type": "string"
+	 *       "Creator": {
+	 *         "Id": 0,
+	 *         "Name": "string",
+	 *         "Type": "string"
 	 *       },
-	 *       "product": {
-	 *         "id": 0,
-	 *         "type": "string",
-	 *         "isPublicDomain": true,
-	 *         "isForSale": true,
-	 *         "priceInRobux": 0,
-	 *         "premiumPricing": {
-	 *           "premiumDiscountPercentage": 0,
-	 *           "premiumPriceInRobux": 0
+	 *       "Product": {
+	 *         "Id": 0,
+	 *         "Type": "string",
+	 *         "IsPublicDomain": true,
+	 *         "IsForSale": true,
+	 *         "PriceInRobux": 0,
+	 *         "PremiumPricing": {
+	 *           "PremiumDiscountPercentage": 0,
+	 *           "PremiumPriceInRobux": 0
 	 *         }
 	 *       }
 	 *     }
@@ -2220,43 +2316,43 @@ interface AvatarEditorService extends Instance {
 	 * ```lua
 	 * [
 	 *     {
-	 *       "id": 0,
-	 *       "itemType": "Asset",
-	 *       "assetType": "Image",
-	 *       "bundleType": "BodyParts",
-	 *       "name": "string",
-	 *       "description": "string",
-	 *       "productId": 0,
-	 *       "genres": [
+	 *       "Id": 0,
+	 *       "ItemType": "Asset",
+	 *       "AssetType": "Image",
+	 *       "BundleType": "BodyParts",
+	 *       "Name": "string",
+	 *       "Description": "string",
+	 *       "ProductId": 0,
+	 *       "Genres": [
 	 *         "All"
 	 *       ],
-	 *       "bundledItems": [
+	 *       "BundledItems": [
 	 *         {
-	 *           "owned": true,
-	 *           "id": 0,
-	 *           "name": "string",
-	 *           "type": "string"
+	 *           "Owned": true,
+	 *           "Id": 0,
+	 *           "Name": "string",
+	 *           "Type": "string"
 	 *         }
 	 *       ],
-	 *       "itemStatus": [
+	 *       "ItemStatus": [
 	 *         "New"
 	 *       ],
-	 *       "itemRestrictions": [
+	 *       "ItemRestrictions": [
 	 *         "ThirteenPlus"
 	 *       ],
-	 *       "creatorType": "User",
-	 *       "creatorTargetId": 0,
-	 *       "creatorName": "string",
-	 *       "price": 0,
-	 *       "premiumPricing": {
-	 *         "premiumDiscountPercentage": 0,
-	 *         "premiumPriceInRobux": 0
+	 *       "CreatorType": "User",
+	 *       "CreatorTargetId": 0,
+	 *       "CreatorName": "string",
+	 *       "Orice": 0,
+	 *       "PremiumPricing": {
+	 *         "PremiumDiscountPercentage": 0,
+	 *         "PremiumPriceInRobux": 0
 	 *       },
-	 *       "lowestPrice": 0,
-	 *       "priceStatus": "string",
-	 *       "unitsAvailableForConsumption": 0,
-	 *       "purchaseCount": 0,
-	 *       "favoriteCount": 0
+	 *       "LowestPrice": 0,
+	 *       "PriceStatus": "string",
+	 *       "UnitsAvailableForConsumption": 0,
+	 *       "PurchaseCount": 0,
+	 *       "FavoriteCount": 0
 	 *     }
 	 * ]
 	 * ```
@@ -2267,43 +2363,43 @@ interface AvatarEditorService extends Instance {
 	 * ```lua
 	 * [
 	 *     {
-	 *       "id": 0,
-	 *       "itemType": "Asset",
-	 *       "assetType": "Image",
-	 *       "bundleType": "BodyParts",
-	 *       "name": "string",
-	 *       "description": "string",
-	 *       "productId": 0,
-	 *       "genres": [
+	 *       "Id": 0,
+	 *       "ItemType": "Asset",
+	 *       "AssetType": "Image",
+	 *       "BundleType": "BodyParts",
+	 *       "Name": "string",
+	 *       "Description": "string",
+	 *       "ProductId": 0,
+	 *       "Genres": [
 	 *         "All"
 	 *       ],
-	 *       "bundledItems": [
+	 *       "BundledItems": [
 	 *         {
-	 *           "owned": true,
-	 *           "id": 0,
-	 *           "name": "string",
-	 *           "type": "string"
+	 *           "Owned": true,
+	 *           "Id": 0,
+	 *           "Name": "string",
+	 *           "Type": "string"
 	 *         }
 	 *       ],
-	 *       "itemStatus": [
+	 *       "ItemStatus": [
 	 *         "New"
 	 *       ],
-	 *       "itemRestrictions": [
+	 *       "ItemRestrictions": [
 	 *         "ThirteenPlus"
 	 *       ],
-	 *       "creatorType": "User",
-	 *       "creatorTargetId": 0,
-	 *       "creatorName": "string",
-	 *       "price": 0,
-	 *       "premiumPricing": {
-	 *         "premiumDiscountPercentage": 0,
-	 *         "premiumPriceInRobux": 0
+	 *       "CreatorType": "User",
+	 *       "CreatorTargetId": 0,
+	 *       "CreatorName": "string",
+	 *       "Orice": 0,
+	 *       "PremiumPricing": {
+	 *         "PremiumDiscountPercentage": 0,
+	 *         "PremiumPriceInRobux": 0
 	 *       },
-	 *       "lowestPrice": 0,
-	 *       "priceStatus": "string",
-	 *       "unitsAvailableForConsumption": 0,
-	 *       "purchaseCount": 0,
-	 *       "favoriteCount": 0
+	 *       "LowestPrice": 0,
+	 *       "PriceStatus": "string",
+	 *       "UnitsAvailableForConsumption": 0,
+	 *       "PurchaseCount": 0,
+	 *       "FavoriteCount": 0
 	 *     }
 	 * ]
 	 * ```
@@ -2311,13 +2407,13 @@ interface AvatarEditorService extends Instance {
 	 * Tags: Yields
 	 */
 	SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): Instance | undefined;
-	/** [NO DOCUMENTATION] */
+	/** This event fires when the [AvatarEditorService:PromptAllowInventoryReadAccess](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptAllowInventoryReadAccess) prompt is responded to by the user. It can only return the Success or PermissionDenied [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) statuses as it does not perform any web requests which could fail. */
 	readonly PromptAllowInventoryReadAccessCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
-	/** [NO DOCUMENTATION] */
+	/** This event fires when the PromptSaveOutfit operation is completed. It can only return the Success or PermissionDenied [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) statuses as it does not perform any web requests which could fail. */
 	readonly PromptCreateOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
-	/** [NO DOCUMENTATION] */
+	/** This event fires when the [AvatarEditorService:PromptSaveAvatar](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptSaveAvatar) operation is completed. It gives a status [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) indicating whether the prompt succeeded, failed or permission was not granted by the user. */
 	readonly PromptSaveAvatarCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
-	/** [NO DOCUMENTATION] */
+	/** This event fires when the [AvatarEditorService:PromptSetFavorite](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptSetFavorite) operation is completed. It can only return the Success or PermissionDenied [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) statuses as it does not perform any web requests which could fail. */
 	readonly PromptSetFavoriteCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
 }
 
@@ -2676,7 +2772,7 @@ interface BasePlayerGui extends Instance {
 	 * 
 	 * Since the child classes of [BasePlayerGui](https://developer.roblox.com/en-us/api-reference/class/BasePlayerGui) inherit this function, it can be fired by class objects such as the [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui) and [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui) folders.
 	 */
-	GetGuiObjectsAtPosition(this: BasePlayerGui, x: number, y: number): Array<Instance>;
+	GetGuiObjectsAtPosition(this: BasePlayerGui, x: number, y: number): Array<GuiObject>;
 }
 
 /** The PlayerGui object is a container that holds a [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s user GUI. If a [ScreenGui](https://developer.roblox.com/en-us/api-reference/class/ScreenGui) is a descendant of a PlayerGui, then any [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) inside of the ScreenGui will be drawn to the player's screen. Any [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) will run as soon as it is inserted into a PlayerGui.
@@ -8912,9 +9008,23 @@ interface BillboardGui extends LayerCollector {
 	 * This property is ignored if the value is less than 0. The default value is -1, meaning the property is ignored by default.
 	 */
 	DistanceUpperLimit: number;
-	/** A Vector3 (x,y,z) defined in studs that will offset the GUI from the extents of the 3D object it is rendering from. */
+	/** **ExtentsOffset** determines how the BillboardGui is offset from its [Adornee](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/Adornee), relative to the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) orientation and units are half the dimensions of the model's [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera)\-aligned bounding box.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [ExtentsOffsetWorldSpace](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/ExtentsOffsetWorldSpace), which works similar except the offset orientation is relative to the global axes
+	 * *   [StudsOffset](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/StudsOffset), which works similar except the units are studs
+	 */
 	ExtentsOffset: Vector3;
-	/** Offsets the BillboardGui relative to it's [BillboardGui.Adornee](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/Adornee)'s orientation and size. */
+	/** **ExtentsOffsetWorldSpace** determines how the BillboardGui is offset from its [Adornee](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/Adornee), relative to the global axes and units are half the dimensions of the model's axis-aligned bounding box.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [ExtentsOffset](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/ExtentsOffset), which works similar except the offset orientation is relative to the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera)
+	 * *   [StudsOffsetWorldSpace](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/StudsOffsetWorldSpace), which works similar except the units are studs
+	 */
 	ExtentsOffsetWorldSpace: Vector3;
 	/** Controls how much the BillboardGui is influenced by the lighting in the game world. */
 	LightInfluence: number;
@@ -8971,11 +9081,31 @@ interface BillboardGui extends LayerCollector {
 	PlayerToHideFrom: Player | undefined;
 	/** Sets the size of the BillboardGui as it'll appear in the Roblox “world”. */
 	Size: UDim2;
-	/** Offsets the BillboardGui relative to it's AbsoluteSize. */
+	/** **SizeOffset** determines how the BillboardGui is offset on the screen in 2D space; units are relative to the `BillboardGui/AbsoluteSize|AbsoluteSize`. Unlike other offset properties of BillboardGui which work in 3D space, this property works in 2D space.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [StudsOffset](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/StudsOffset), [StudsOffsetWorldSpace](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/StudsOffsetWorldSpace), [ExtentsOffset](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/ExtentsOffset), [ExtentsOffsetWorldSpace](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/ExtentsOffsetWorldSpace), which are all other offset properties that work in 3D space instead
+	 */
 	SizeOffset: Vector2;
-	/** The offset of the BillboardGui in studs, relative to the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera)'s orientation. */
+	/** **StudsOffset** determines how the BillboardGui is offset from its [Adornee](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/Adornee), relative to the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) orientation with units in studs.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [StudsOffsetWorldSpace](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/StudsOffsetWorldSpace), which works similar except the offset orientation is relative to the global axes
+	 * *   [ExtentsOffset](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/ExtentsOffset), which works similar except the units are half the dimensions of the model's Camera-aligned bounding box
+	 */
 	StudsOffset: Vector3;
-	/** Offsets the BillboardGui relative to it's [BillboardGui.Adornee](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/Adornee)'s orientation, in studs. */
+	/** **StudsOffsetWorldSpace** determines how the BillboardGui is offset from its [Adornee](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/Adornee), relative to the global axes with units in studs.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [StudsOffset](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/StudsOffset), which works similar except the offset orientation is relative to the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera)
+	 * *   [ExtentsOffsetWorldSpace](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/ExtentsOffsetWorldSpace), which works similar except the units are half the dimensions of the model's axis-aligned bounding box
+	 */
 	StudsOffsetWorldSpace: Vector3;
 }
 
@@ -19983,27 +20113,18 @@ interface SunRaysEffect extends PostEffect {
  * 
  * The provided UI can be swapped out for your own custom UI. See [ProximityPrompt.Style](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/Style) for details.
  * 
- * Prompt Appearance
- * -----------------
+ * ### Prompt Appearance
  * 
  * Prompts consist of three primary elements, each of which can be controlled by the following properties:
  * 
- * ![](https://developer.roblox.com/assets/blte557f1f82d250751/ProximityPrompt-Diagram.png)
+ * ![](https://developer.roblox.com/assets/blt452f8e22e82a11d8/ProximityPrompt-Diagram.png)
+ * 
+ * * * *
  * 
  * *   **ObjectText** — An optional name for the object being interacted with.
- * *   **ActionText** — An optional action name shown to the player, for example **Open** or **Use**.
+ * *   **ActionText** — An optional action name shown to the player.
  * *   **KeyboardKeyCode** — The keyboard key which will trigger the prompt.
  * *   **GamepadKeyCode** — The gamepad button which will trigger the prompt.
- * 
- * To customize the appearance of the prison door prompt, make the following changes:
- * 
- * 1.  In the Properties window, locate the **ObjectText** property and type in **Door**.
- * 
- * ![](https://developer.roblox.com/assets/bltce7a967fba1b5ec6/ProximityPrompt-ObjectText.png)
- * 
- * 2.  For the **ActionText** property, type in **Pick Lock**.
- * 
- * ![](https://developer.roblox.com/assets/bltff4e7724305b35ca/ProximityPrompt-ActionText.png)
  * 
  * See also
  * --------
@@ -20052,21 +20173,21 @@ interface ProximityPrompt extends Instance {
 	Style: Enum.ProximityPromptStyle;
 	/** This property indicates the pixel offset applied to the prompt's UI. */
 	UIOffset: Vector2;
-	/** Used to signal that the player began triggering this prompt. */
+	/** This function triggers a signal indicating that the user began pressing the [ProximityPrompt](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt) prompt button. It should be used by developers who wish to customize the prompt and trigger it from a prompt GUI button press. */
 	InputHoldBegin(this: ProximityPrompt): void;
-	/** Used to signal that the player ended triggering this prompt. */
+	/** A counterpoint to [ProximityPrompt:InputHoldBegin](https://developer.roblox.com/en-us/api-reference/function/ProximityPrompt/InputHoldBegin), this signals that the user ended pressing the prompt GUI button. */
 	InputHoldEnd(this: ProximityPrompt): void;
 	/** This event triggers when a player begins holding down the [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button on a prompt with a non-zero [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration). One possible usage includes to animate a hold progress bar. */
 	readonly PromptButtonHoldBegan: RBXScriptSignal<(playerWhoTriggered: Player) => void>;
 	/** This event triggers when the player ends holding down the button on a prompt with a non-zero [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration). One possible usage includes to animate a hold progress bar. */
 	readonly PromptButtonHoldEnded: RBXScriptSignal<(playerWhoTriggered: Player) => void>;
-	/** Fired in local scripts when this prompt is hidden.  Can be used for customization. */
+	/** This event triggers when the [prompt](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt) becomes hidden. This event is triggered client-side for `LocalScripts`. */
 	readonly PromptHidden: RBXScriptSignal<() => void>;
-	/** Fired in local scripts when this prompt is shown.  Can be used for customization. */
+	/** This event triggers when the [prompt](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt) becomes visible. This event is triggered client-side for `LocalScripts`. */
 	readonly PromptShown: RBXScriptSignal<(inputType: Enum.ProximityPromptInputType) => void>;
-	/** [NO DOCUMENTATION] */
+	/** This event is triggered when the [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button is released, for longer events where the user is required to hold down the button (e.g. heal another player over time.) */
 	readonly TriggerEnded: RBXScriptSignal<(playerWhoTriggered: Player) => void>;
-	/** Fired when a player triggers the ProximityPrompt. */
+	/** This event is triggered when the prompt [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button is pressed, or after a specified amount of time holding the button, if [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration) is used. */
 	readonly Triggered: RBXScriptSignal<(playerWhoTriggered: Player) => void>;
 }
 
@@ -22368,6 +22489,10 @@ interface Stats extends Instance {
 /** SurfaceAppearance objects allow developers to override the appearance of a [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) with advanced graphics options. Most notably, a SurfaceAppearance can apply a set of PBR textures to a mesh.
  * 
  * PBR is short for Physically Based Rendering, which refers to a common texture format for defining extra physical details in games. Because this format is widely used, it's easy to take meshes and textures made in 3rd party editing software and import them into Roblox. It's also easy to find PBR format content from various 3rd party stores such as [SketchFab](https://sketchfab.com/search?q=pbr%20object&sort_by=-relevance&type=models), [TurboSquid](https://www.turbosquid.com/Search/3D-Models/free/pbr), [CGTrader](http://cgtrader.com/pbr-3d-models?polygons=lt_5k).
+ * 
+ * **Note:**
+ * 
+ * For PBR textures to be visible in-game, when you change a texture property of SurfaceAppearance you should wait until you see the _"Successfully uploaded compressed SurfaceAppearance."_ message in the output window. If your PBR textures are not visible, try changing a texture property.
  * 
  * Here is a mesh with PBR textures [found on Turbosquid](https://www.turbosquid.com/3d-models/3d-model-fantasy-sword---ready/1119210) imported into Roblox.
  * 
