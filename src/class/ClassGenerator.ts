@@ -973,7 +973,7 @@ export class ClassGenerator extends Generator {
 		const name = rbxFunction.Name;
 		const returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
 		if (returnType !== null) {
-			const args = this.generateArgs(rbxFunction.Parameters, true, [`this: ${className}`]);
+			const args = this.generateArgs(rbxFunction.Parameters, true, [`this: ${"this" /* formerly className */}`]);
 			const { Description: wikiDescription } = rbxFunction;
 			const description =
 				wikiDescription && wikiDescription.trim() !== ""
