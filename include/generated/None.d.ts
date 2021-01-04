@@ -23352,7 +23352,7 @@ interface TextFilterResult extends Instance {
  * 
  * The [TextService:FilterStringAsync](https://developer.roblox.com/en-us/api-reference/function/TextService/FilterStringAsync) function is required to properly filter user specified text (such as chat messages or other inputs) in the interests of user safety. Developers not using the Roblox default [Chat](https://developer.roblox.com/en-us/api-reference/class/Chat), or allowing users to otherwise input text must use this function.
  * 
- * For more information on text filtering please see [this article](http://robloxdev.com/articles/Text-and-Chat-Filtering).
+ * For more information on text filtering please see [this article](https://developer.roblox.com/articles/Text-and-Chat-Filtering).
  */
 interface TextService extends Instance {
 	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
