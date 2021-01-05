@@ -315,7 +315,7 @@ interface InsertService extends Instance {
 }
 
 interface Instance {
-	Clone(this: Instance): this;
+	Clone<T extends Instance>(this: T): T;
 	/** `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
 	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Instance.Changed` event.
 	 * @example
@@ -342,15 +342,9 @@ interface Instance {
 		recursive?: boolean,
 	): Instances[T] | undefined;
 
-	FindFirstAncestorOfClass<T extends keyof StrictInstances>(
-		this: Instance,
-		className: T,
-	): StrictInstances[T] | undefined;
+	FindFirstAncestorOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 
-	FindFirstChildOfClass<T extends keyof StrictInstances>(
-		this: Instance,
-		className: T,
-	): StrictInstances[T] | undefined;
+	FindFirstChildOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 
 	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal<() => void>;
 }

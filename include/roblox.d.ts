@@ -548,7 +548,7 @@ interface InstanceConstructor {
 	 * As such, you should avoid using the second argument (parent) of this function.
 	 * You can read [this thread on the developer forum](https://devforum.roblox.com/t/psa-dont-use-instance-new-with-parent-argument/30296) for more information.
 	 */
-	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): StrictInstances[T];
+	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): Instances[T];
 }
 
 declare const Instance: InstanceConstructor;
@@ -1857,14 +1857,4 @@ declare function opcall<T extends Array<any>, U>(
  * @param instance
  * @param className
  */
-declare function classIs<
-	T extends Instance,
-	Q extends Extract<T["ClassName"], Exclude<keyof Instances, keyof AbstractInstances>>
->(
-	instance: T,
-	className: Q,
-): instance is Instances[Q] extends T
-	? Instances[Q]["ClassName"] extends Q
-		? Instances[Q]
-		: Instances[Q] & { ClassName: Q }
-	: T;
+declare function classIs<T extends keyof Instances>(instance: Instance, className: T): instance is Instances[T];
