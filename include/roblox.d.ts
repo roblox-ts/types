@@ -29,37 +29,7 @@ type ChangedSignal = {
 	readonly Changed: RBXScriptSignal<(changedPropertyName: string) => void>;
 };
 
-declare const enum LocationType {
-	MobileWebsite = 0,
-	MobileInGame = 1,
-	Website = 2,
-	Studio = 3,
-	InGame = 4,
-	XBoxApp = 5,
-	TeamCreate = 6,
-}
-
 type Tweenable = number | boolean | CFrame | Rect | Color3 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3;
-
-type FriendOnlineInfo =
-	| FieldsPresentWhen<
-			FriendOnlineInfoFields,
-			"LocationType",
-			LocationType.MobileWebsite | LocationType.Website | LocationType.XBoxApp,
-			"VisitorId" | "UserName" | "LastOnline" | "IsOnline" | "LastLocation"
-	  >
-	| FieldsPresentWhen<
-			FriendOnlineInfoFields,
-			"LocationType",
-			LocationType.MobileInGame | LocationType.InGame | LocationType.TeamCreate,
-			"VisitorId" | "UserName" | "LastOnline" | "IsOnline" | "LastLocation" | "PlaceId" | "GameId"
-	  >
-	| FieldsPresentWhen<
-			FriendOnlineInfoFields,
-			"LocationType",
-			LocationType.Studio,
-			"VisitorId" | "UserName" | "LastOnline" | "IsOnline" | "LastLocation" | "PlaceId"
-	  >;
 
 interface EmoteDictionary {
 	/** When these arrays have more than one emote id in them, it will randomly select one of the emotes to play from the list. */
@@ -350,7 +320,17 @@ interface CollisionGroupInfo {
 	name: string;
 }
 
-interface FriendOnlineInfoFields {
+declare const enum LocationType {
+	MobileWebsite = 0,
+	MobileInGame = 1,
+	Website = 2,
+	Studio = 3,
+	InGame = 4,
+	XBoxApp = 5,
+	TeamCreate = 6,
+}
+
+interface FriendOnlineInfoBase {
 	/** The UserId of the friend. */
 	VisitorId: number;
 	/** The user name of the friend. */
@@ -361,17 +341,38 @@ interface FriendOnlineInfoFields {
 	IsOnline: boolean;
 	/** The name of the friends current location. */
 	LastLocation: string;
+}
+
+interface FriendOnlineInfoWebsite extends FriendOnlineInfoBase {
+	/** A numeric enum of the friends last location.
+	 * In TS, you can check this value against the `LocationType` const enum
+	 */
+	LocationType: LocationType.MobileWebsite | LocationType.Website | LocationType.XBoxApp;
+}
+
+interface FriendOnlineInfoGame extends FriendOnlineInfoBase {
+	/** A numeric enum of the friends last location.
+	 * In TS, you can check this value against the `LocationType` const enum
+	 */
+	LocationType: LocationType.MobileInGame | LocationType.InGame | LocationType.TeamCreate;
 	/** The placeId of the friends last location. Check the `LocationType` to determine whether this property exists. */
 	PlaceId: number;
 	/** The DataModel / JobId of the friends last location.
 	 * Check the `LocationType` to determine whether this property exists.
 	 */
 	GameId: string;
+}
+
+interface FriendOnlineInfoStudio extends FriendOnlineInfoBase {
 	/** A numeric enum of the friends last location.
 	 * In TS, you can check this value against the `LocationType` const enum
 	 */
-	LocationType: LocationType;
+	LocationType: LocationType.Studio;
+	/** The placeId of the friends last location. Check the `LocationType` to determine whether this property exists. */
+	PlaceId: number;
 }
+
+type FriendOnlineInfo = FriendOnlineInfoWebsite | FriendOnlineInfoGame | FriendOnlineInfoStudio;
 
 /** A dictionary of an id and name containing information about what type an asset is */
 type AssetType =
@@ -548,7 +549,7 @@ interface InstanceConstructor {
 	 * As such, you should avoid using the second argument (parent) of this function.
 	 * You can read [this thread on the developer forum](https://devforum.roblox.com/t/psa-dont-use-instance-new-with-parent-argument/30296) for more information.
 	 */
-	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): Instances[T];
+	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): CreatableInstances[T];
 }
 
 declare const Instance: InstanceConstructor;
