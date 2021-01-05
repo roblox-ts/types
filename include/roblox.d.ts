@@ -530,7 +530,7 @@ interface RBXScriptSignal<T extends Callback = Callback> {
 	/**
 	 * Yields the current thread until this signal is fired. Returns what was fired to the signal.
 	 */
-	Wait(this: RBXScriptSignal): LuaTuple<FunctionArguments<T>>;
+	Wait(this: RBXScriptSignal): LuaTuple<Parameters<T>>;
 }
 
 // generated in generated/None.d.ts
