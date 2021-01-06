@@ -1083,10 +1083,7 @@ export class ClassGenerator extends Generator {
 				if (desc && desc.trim()) {
 					descriptions.push(this.formatDescription(desc));
 				}
-				// we don't do this anymore, because of the new TS comment behavior. It automatically combines docs
-				// if (tsImplInterface) {
-				// 	tsImplInterface.getLeadingCommentRanges().forEach(comment => descriptions.push(comment.getText()));
-				// }
+
 				const description = descriptions.join("\n\t").trim();
 				if (description) {
 					this.write(description);
