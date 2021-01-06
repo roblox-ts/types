@@ -25325,7 +25325,7 @@ interface TweenService extends Instance {
 		this: TweenService,
 		instance: T,
 		tweenInfo: TweenInfo,
-		propertyTable: Partial<FilterMembers<T, Tweenable>>,
+		propertyTable: Partial<ExtractMembers<T, Tweenable>>,
 	): Tween;
 	/** Returns a new alpha value for interpolating using the given alpha value, [EasingStyle](https://developer.roblox.com/en-us/api-reference/enum/EasingStyle), and [EasingDirection](https://developer.roblox.com/en-us/api-reference/enum/EasingDirection).
 	 * 

@@ -794,7 +794,7 @@ interface TweenService extends Instance {
 		this: TweenService,
 		instance: T,
 		tweenInfo: TweenInfo,
-		propertyTable: Partial<FilterMembers<T, Tweenable>>,
+		propertyTable: Partial<ExtractMembers<T, Tweenable>>,
 	): Tween;
 }
 
