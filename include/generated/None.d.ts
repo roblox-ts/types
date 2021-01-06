@@ -353,8 +353,13 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
  * Instance has a special function called `Instance.new` which is used to create objects via code. This function takes the name of the class as a parameter and returns the created object. Abstract classes and services cannot be created with the Instance.new function.
  */
 interface Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ABTestService" | "Accessory" | "Accoutrement" | "Actor" | "AdService" | "AdvancedDragger" | "AlignOrientation" | "AlignPosition" | "AnalysticsSettings" | "AnalyticsService" | "AngularVelocity" | "Animation" | "AnimationController" | "AnimationTrack" | "Animator" | "AppStorageService" | "AppUpdateService" | "ArcHandles" | "AssetCounterService" | "AssetDeliveryProxy" | "AssetManagerService" | "AssetService" | "Atmosphere" | "Attachment" | "AvatarEditorService" | "Backpack" | "BadgeService" | "BallSocketConstraint" | "BaseWrap" | "Beam" | "BillboardGui" | "BinaryStringValue" | "BindableEvent" | "BindableFunction" | "BlockMesh" | "BloomEffect" | "BlurEffect" | "BodyAngularVelocity" | "BodyColors" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "Bone" | "BoolValue" | "BoxHandleAdornment" | "BrickColorValue" | "BrowserService" | "BulkImportService" | "CacheableContentProvider" | "Camera" | "CatalogPages" | "CFrameValue" | "ChangeHistoryService" | "CharacterMesh" | "Chat" | "ChorusSoundEffect" | "ClickDetector" | "ClientReplicator" | "Clouds" | "ClusterPacketCache" | "CollectionService" | "Color3Value" | "ColorCorrectionEffect" | "CompressorSoundEffect" | "ConeHandleAdornment" | "Configuration" | "ContentProvider" | "ContextActionService" | "ControllerService" | "CookiesService" | "CoreGui" | "CorePackages" | "CoreScript" | "CoreScriptSyncService" | "CornerWedgePart" | "CSGDictionaryService" | "CustomEvent" | "CustomEventReceiver" | "CylinderHandleAdornment" | "CylinderMesh" | "CylindricalConstraint" | "DataModel" | "DataModelSession" | "DataStorePages" | "DataStoreService" | "Debris" | "DebuggerBreakpoint" | "DebuggerManager" | "DebuggerWatch" | "DebugSettings" | "Decal" | "DepthOfFieldEffect" | "Dialog" | "DialogChoice" | "DistortionSoundEffect" | "DockWidgetPluginGui" | "DoubleConstrainedValue" | "DraftsService" | "Dragger" | "EchoSoundEffect" | "EmotesPages" | "EqualizerSoundEffect" | "EventIngestService" | "Explosion" | "File" | "FileMesh" | "Fire" | "Flag" | "FlagStand" | "FlagStandService" | "FlangeSoundEffect" | "FloorWire" | "FlyweightService" | "Folder" | "ForceField" | "Frame" | "FriendPages" | "FriendService" | "FunctionalTest" | "GamepadService" | "GamePassService" | "GameSettings" | "Geometry" | "GlobalDataStore" | "GlobalSettings" | "Glue" | "GoogleAnalyticsConfiguration" | "GroupService" | "GuidRegistryService" | "GuiMain" | "GuiService" | "Handles" | "HapticService" | "Hat" | "HeightmapImporterService" | "HingeConstraint" | "Hint" | "Hole" | "Hopper" | "HopperBin" | "HttpRbxApiService" | "HttpRequest" | "HttpService" | "Humanoid" | "HumanoidController" | "HumanoidDescription" | "ILegacyStudioBridge" | "ImageButton" | "ImageHandleAdornment" | "ImageLabel" | "InputObject" | "InsertService" | "InstanceAdornment" | "IntConstrainedValue" | "InternalContainer" | "IntValue" | "InventoryPages" | "JointsService" | "KeyboardService" | "Keyframe" | "KeyframeMarker" | "KeyframeSequence" | "KeyframeSequenceProvider" | "LanguageService" | "LegacyStudioBridge" | "Lighting" | "LineForce" | "LineHandleAdornment" | "LocalizationService" | "LocalizationTable" | "LocalScript" | "LocalStorageService" | "LoginService" | "LogService" | "LuaSettings" | "LuaWebService" | "ManualGlue" | "ManualWeld" | "MarketplaceService" | "MemStorageConnection" | "MemStorageService" | "MeshContentProvider" | "MeshPart" | "Message" | "MessagingService" | "Model" | "ModuleScript" | "Motor" | "Motor6D" | "MotorFeature" | "Mouse" | "MouseService" | "MultipleDocumentInterfaceInstance" | "NegateOperation" | "NetworkClient" | "NetworkMarker" | "NetworkServer" | "NetworkSettings" | "NoCollisionConstraint" | "NonReplicatedCSGDictionaryService" | "NotificationService" | "NumberPose" | "NumberValue" | "ObjectValue" | "OrderedDataStore" | "OutfitPages" | "PackageLink" | "PackageService" | "Pants" | "ParabolaAdornment" | "Part" | "ParticleEmitter" | "PartOperation" | "PartOperationAsset" | "Path" | "PathfindingService" | "PermissionsService" | "PhysicsService" | "PhysicsSettings" | "PitchShiftSoundEffect" | "Platform" | "Player" | "PlayerEmulatorService" | "PlayerGui" | "PlayerMouse" | "Players" | "PlayerScripts" | "Plugin" | "PluginAction" | "PluginDebugService" | "PluginDragEvent" | "PluginGuiService" | "PluginManager" | "PluginManagerInterface" | "PluginMenu" | "PluginMouse" | "PluginToolbar" | "PluginToolbarButton" | "PointLight" | "PointsService" | "PolicyService" | "Pose" | "PoseBase" | "PrismaticConstraint" | "ProximityPrompt" | "ProximityPromptService" | "QWidgetPluginGui" | "RayValue" | "RbxAnalyticsService" | "ReflectionMetadata" | "ReflectionMetadataCallbacks" | "ReflectionMetadataClass" | "ReflectionMetadataClasses" | "ReflectionMetadataEnum" | "ReflectionMetadataEnumItem" | "ReflectionMetadataEnums" | "ReflectionMetadataEvents" | "ReflectionMetadataFunctions" | "ReflectionMetadataItem" | "ReflectionMetadataMember" | "ReflectionMetadataProperties" | "ReflectionMetadataYieldFunctions" | "RemoteEvent" | "RemoteFunction" | "RenderingTest" | "RenderSettings" | "ReplicatedFirst" | "ReplicatedScriptService" | "ReplicatedStorage" | "ReverbSoundEffect" | "RobloxPluginGuiService" | "RobloxReplicatedStorage" | "RocketPropulsion" | "RodConstraint" | "RopeConstraint" | "Rotate" | "RotateP" | "RotateV" | "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "RunService" | "RuntimeScriptService" | "ScreenGui" | "Script" | "ScriptContext" | "ScriptDebugger" | "ScriptService" | "ScrollingFrame" | "Seat" | "Selection" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "ServerReplicator" | "ServerScriptService" | "ServerStorage" | "SessionService" | "Shirt" | "ShirtGraphic" | "SkateboardController" | "SkateboardPlatform" | "Skin" | "Sky" | "Smoke" | "Snap" | "SocialService" | "SolidModelContentProvider" | "Sound" | "SoundGroup" | "SoundService" | "Sparkles" | "SpawnerService" | "SpawnLocation" | "SpecialMesh" | "SphereHandleAdornment" | "SpotLight" | "SpringConstraint" | "StandalonePluginScripts" | "StandardPages" | "StarterCharacterScripts" | "StarterGear" | "StarterGui" | "StarterPack" | "StarterPlayer" | "StarterPlayerScripts" | "Stats" | "Status" | "StopWatchReporter" | "StringValue" | "Studio" | "StudioData" | "StudioService" | "StudioTheme" | "SunRaysEffect" | "SurfaceAppearance" | "SurfaceGui" | "SurfaceLight" | "SurfaceSelection" | "TaskScheduler" | "Team" | "Teams" | "TeleportAsyncResult" | "TeleportOptions" | "TeleportService" | "Terrain" | "TerrainRegion" | "TestService" | "TextBox" | "TextButton" | "TextFilterResult" | "TextLabel" | "TextService" | "Texture" | "ThirdPartyUserService" | "TimerService" | "Tool" | "Torque" | "TotalCountTimeIntervalItem" | "TouchInputService" | "TouchTransmitter" | "TracerService" | "Trail" | "Translator" | "TremoloSoundEffect" | "TrussPart" | "Tween" | "TweenService" | "UGCValidationService" | "UIAspectRatioConstraint" | "UICorner" | "UIGradient" | "UIGridLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint" | "UnionOperation" | "UnvalidatedAssetService" | "UserGameSettings" | "UserInputService" | "UserService" | "UserSettings" | "UserStorageService" | "Vector3Value" | "VectorForce" | "VehicleController" | "VehicleSeat" | "VelocityMotor" | "VersionControlService" | "VideoFrame" | "ViewportFrame" | "VirtualInputManager" | "VirtualUser" | "Visit" | "VRService" | "WedgePart" | "Weld" | "WeldConstraint" | "Workspace" | "WorldModel" | "WrapLayer" | "WrapTarget";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Instance: unique symbol;
 	/** This property determines whether an [object](https://developer.roblox.com/en-us/api-reference/class/Instance) should be included when the game is published or saved, or when [Instance:Clone](https://developer.roblox.com/en-us/api-reference/function/Instance/Clone) is called on one of the object's ancestors. Calling Clone directly on an object will return nil if the cloned object is not archivable. Copying an object in Studio (using the 'Duplicate' or 'Copy' options) will ignore the Archivable property and set Archivable to true for the copy.
 	 * 
 	 * ```lua
@@ -365,6 +370,24 @@ interface Instance {
 	 * ```
 	 */
 	Archivable: boolean;
+	/** A read-only string representing the class this [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) belongs to.
+	 * 
+	 * This property can be used with various other functions of Instance that are used to identify objects by type, such as [Instance:IsA](https://developer.roblox.com/en-us/api-reference/function/Instance/IsA) or [Instance:FindFirstChildOfClass](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstChildOfClass).
+	 * 
+	 * Note this property is read only and cannot be altered by scripts. Developers wishing to change an [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)'s class will instead have to create a new [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance).
+	 * 
+	 * Unlike [Instance:IsA](https://developer.roblox.com/en-us/api-reference/function/Instance/IsA), ClassName can be used to check if an object belongs to a specific class ignoring class inheritance. For example:
+	 * 
+	 * ```lua
+	 * for _, child in ipairs(game.Workspace:GetChildren()) do
+	 *     if child.ClassName == "Part" then
+	 *         print("Found a Part")
+	 *         -- will find Parts in model, but NOT TrussParts, WedgeParts, etc
+	 *     end
+	 * end
+	 * ```
+	 */
+	readonly ClassName: string;
 	/** A non-unique identifier of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance).
 	 * 
 	 * This property is an identifier that describes an object. Names are not necessarily unique identifiers however; multiple children of an object may share the same name. Names are used to keep the object hierarchy organized, along with allowing scripts to access specific objects.
@@ -450,7 +473,7 @@ interface Instance {
 	 * 
 	 * This function is typically used to create models that can be regenerated. First, get a reference to the original object. Then, make a copy of the object and insert the copy by setting its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) or one of its descendants. Finally, when it's time to regenerate the model, [Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) the copy and clone a new one from the original like before.
 	 */
-	Clone(this: Instance): this;
+	Clone<T extends Instance>(this: T): T;
 	/** Sets the [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) property to nil, locks the [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) property, disconnects all connections and calls Destroy on all children. This function is the correct way to dispose of objects that are no longer required. Disposing of unneeded objects is important, since unnecessary objects and connections in a place use up memory (this is called a **memory leak**) which can lead to serious performance issues over time.
 	 * 
 	 * **Tip:** After calling Destroy on an object, set any variables referencing the object (or its descendants) to nil. This prevents your code from accessing anything to do with the object.
@@ -501,10 +524,7 @@ interface Instance {
 	 * 
 	 * This function is a variant of [Instance:FindFirstAncestor](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstAncestor) which checks the [Instance.ClassName](https://developer.roblox.com/en-us/api-reference/property/Instance/ClassName) property rather than [Instance.Name](https://developer.roblox.com/en-us/api-reference/property/Instance/Name). [Instance:FindFirstAncestorWhichIsA](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstAncestorWhichIsA) also exists, using the [Instance:IsA](https://developer.roblox.com/en-us/api-reference/function/Instance/IsA) method instead to respect class inheritance.
 	 */
-	FindFirstAncestorOfClass<T extends keyof StrictInstances>(
-		this: Instance,
-		className: T,
-	): StrictInstances[T] | undefined;
+	FindFirstAncestorOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	/** Returns the first ancestor of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) for whom [Instance:IsA](https://developer.roblox.com/en-us/api-reference/function/Instance/IsA) returns true for the given className.
 	 * 
 	 * This function works upwards, meaning it starts at the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)'s immediate [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) and works up towards the [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel). If no matching ancestor is found, it returns nil.
@@ -587,10 +607,7 @@ interface Instance {
 	 * 
 	 * Developers looking for a child by name, should use [Instance:FindFirstChild](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstChild) instead.
 	 */
-	FindFirstChildOfClass<T extends keyof StrictInstances>(
-		this: Instance,
-		className: T,
-	): StrictInstances[T] | undefined;
+	FindFirstChildOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	/** Returns the first child of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) for whom [Instance:IsA](https://developer.roblox.com/en-us/api-reference/function/Instance/IsA) returns true for the given className.
 	 * 
 	 * If no matching child is found, this function returns nil. If the optional recursive argument is true, this function searches all descendants rather than only the immediate children of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance).
@@ -762,7 +779,7 @@ interface Instance {
 	 * 
 	 * [ValueBase](https://developer.roblox.com/en-us/api-reference/class/ValueBase) objects, such as [IntValue](https://developer.roblox.com/en-us/api-reference/class/IntValue) and [StringValue](https://developer.roblox.com/en-us/api-reference/class/StringValue), use a modified `Changed` event that fires with the contents of the `Value` property. As such, this method provides a way to detect changes in other properties of those objects. For example, to detect changes in the `Name` property of an [IntValue](https://developer.roblox.com/en-us/api-reference/class/IntValue), use `IntValue:GetPropertyChangedSignal("Name"):Connect(someFunc)` since the `Changed` event of [IntValue](https://developer.roblox.com/en-us/api-reference/class/IntValue) objects only detect changes on the `Value` property.
 	 */
-	GetPropertyChangedSignal(this: Instance, propertyName: InstanceProperties<this>): RBXScriptSignal<() => void>;
+	GetPropertyChangedSignal(this: Instance, propertyName: InstancePropertyNames<this>): RBXScriptSignal<() => void>;
 	/** IsA returns true if the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)'s class is **equivalent to** or a **subclass** of a given class. This function is similar to the **instanceof** operators in other languages, and is a form of [type introspection](https://en.wikipedia.org/wiki/Type_introspection). To ignore class inheritance, test the [ClassName](https://developer.roblox.com/en-us/api-reference/property/Instance/ClassName) property directly instead. For checking native Lua data types (number, string, etc) use the functions `type` and `typeof`.
 	 * 
 	 * Most commonly, this function is used to test if an object is some kind of part, such as [Part](https://developer.roblox.com/en-us/api-reference/class/Part) or [WedgePart](https://developer.roblox.com/en-us/api-reference/class/WedgePart), which inherits from [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) (an abstract class). For example, if your goal is to change all of a [Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character)'s limbs to the same color, you might use [GetChildren](https://developer.roblox.com/en-us/api-reference/function/Instance/GetChildren) to iterate over the children, then use IsA to filter non-[BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) objects which lack the `BrickColor` property:
@@ -1004,8 +1021,13 @@ interface Instance {
  * This will not apply to a part descending from an accoutrement when an accoutrement is not welded to another part that is _**not**_ massless or one if its parts otherwise becomes root. This will not apply for the root part, it will have mass like a normal part.
  */
 interface Accoutrement extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Accessory" | "Accoutrement" | "Hat";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Accoutrement: unique symbol;
 	/** Sets the offset position of the object on the Player.Sets the offset position of the object on the Player. *
 	 * Tags: NotReplicated
 	 */
@@ -1034,13 +1056,23 @@ interface Accoutrement extends Instance {
  * Note: If two matching [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) are found the resulting [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld) will be a child of the Handle of the Accessory. This differs from the legacy behavior of Hats where the Weld is always a child of the Head of the character.
  */
 interface Accessory extends Accoutrement {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Accessory";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Accessory: unique symbol;
 }
 
 interface Hat extends Accoutrement {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Hat";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Hat: unique symbol;
 }
 
 /** **Note**
@@ -1057,8 +1089,13 @@ interface Hat extends Accoutrement {
  * Developers who are interested in leveraging analytics to take their game to the next level should take a look at the `articles/Using the Analytics Service|introductory article`.
  */
 interface AnalyticsService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AnalyticsService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_AnalyticsService: unique symbol;
 	/** This function triggers a custom event with a custom event name data.
 	 * 
 	 * Limits of events
@@ -1249,8 +1286,13 @@ interface AnalyticsService extends Instance {
  * *   [Using Animations in Games](https://developer.roblox.com/articles/using-animations-in-games), learn how to add pre-built and custom animations to your game
  */
 interface Animation extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Animation";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Animation: unique symbol;
 	/** This property is the content ID of the animation an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) object is referencing. Once an animation has been created and uploaded to Roblox the content ID can be found in the uploaded animation's URL.
 	 * 
 	 * This URL is presented immediately after an animation has been uploaded to Roblox, in the Animation Editor export window. It can also be found in the Develop tab on the Roblox site, under 'Animations'.
@@ -1290,16 +1332,26 @@ interface Animation extends Instance {
  * *   [Using Animations in Games](https://developer.roblox.com/articles/using-animations-in-games), learn how to add pre-built and custom animations to your game
  */
 interface AnimationController extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AnimationController";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_AnimationController: unique symbol;
 	GetPlayingAnimationTracks(this: AnimationController): Array<AnimationTrack>;
 	LoadAnimation(this: AnimationController, animation: Animation): AnimationTrack;
 }
 
 /** Controls the playback of an animation on a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) or [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController). This object cannot be created, instead it is returned by the [Humanoid:LoadAnimation](https://developer.roblox.com/en-us/api-reference/function/Humanoid/LoadAnimation) method. */
 interface AnimationTrack extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AnimationTrack";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_AnimationTrack: unique symbol;
 	/** The [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) object that was used to create this [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack). To create an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) the developer must load an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) object onto a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) or [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController) using the [Humanoid:LoadAnimation](https://developer.roblox.com/en-us/api-reference/function/Humanoid/LoadAnimation) method.
 	 * 
 	 * The Animation property is used to identify the underlying [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) of an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack).
@@ -1485,8 +1537,13 @@ interface AnimationTrack extends Instance {
  * *   [Using Animations in Games](https://developer.roblox.com/articles/using-animations-in-games), learn how to add pre-built and custom animations to your game
  */
 interface Animator extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Animator";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Animator: unique symbol;
 	ApplyJointVelocities(this: Animator, motors: Array<Motor6D>): void;
 	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
 	/** Loads an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) onto an [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator), returning an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack). Used to load animations on locally controlled models (such as player characters) from the server.
@@ -1521,29 +1578,54 @@ interface Animator extends Instance {
 }
 
 interface AppUpdateService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AppUpdateService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_AppUpdateService: unique symbol;
 }
 
 interface AssetCounterService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AssetCounterService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_AssetCounterService: unique symbol;
 }
 
 interface AssetDeliveryProxy extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AssetDeliveryProxy";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_AssetDeliveryProxy: unique symbol;
 }
 
 interface AssetManagerService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AssetManagerService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_AssetManagerService: unique symbol;
 }
 
 /** The AssetService is a non-replicated service that handles asset related queries to the Roblox web API. Eventually, this will house all asset related queries for Roblox objects stored in the web. One should mind the [limitations](https://developer.roblox.com/en-us/api-reference/class/Articles/Multi Place Games) this API has. */
 interface AssetService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AssetService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_AssetService: unique symbol;
 	/** Clones a place with placeId equal to given templatePlaceId. It is placed into the inventory of the place's creator with the given name and description. This method will also return the placeId of the new place, which can be used with TeleportService. This method cannot be used to clone places that you do not own. */
 	CreatePlaceAsync(this: AssetService, placeName: string, templatePlaceID: number, description?: string): number;
 	/** Clones a place which has a placeId equal to the given templatePlaceID, placing it into the inventory of the given player with the given name and description, if they accept when prompted. This method cannot be used to clone places that you do not own, or those which have disabled the use of the CreatePlace API in their place's configuration. */
@@ -1645,8 +1727,13 @@ interface AssetService extends Instance {
  * *   `articles/Post Processing Effects|Post-Processing Effects`, outlines how post-processing effects can quickly improve a game's visuals with a variety of customizable filters
  */
 interface Atmosphere extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Atmosphere";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Atmosphere: unique symbol;
 	/** A [Color3](https://developer.roblox.com/en-us/api-reference/datatype/Color3) value which changes the [Atmosphere](https://developer.roblox.com/en-us/api-reference/class/Atmosphere) hue for subtle environmental moods. This is best combined with increased [Haze](https://developer.roblox.com/en-us/api-reference/property/Atmosphere/Haze) to expand the visible effect.
 	 * 
 	 * See the `articles/Atmosphere|Atmosphere Controls` article for property comparisons and example environments.
@@ -1717,8 +1804,13 @@ interface Atmosphere extends Instance {
  * *   [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) will use the attachment as the focal point of the sound
  */
 interface Attachment extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Attachment" | "Bone";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Attachment: unique symbol;
 	/** Represents the direction of the X-Axis, relative to the Attachment's [Attachment.Rotation](https://developer.roblox.com/en-us/api-reference/property/Attachment/Rotation), as a unit [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3 "Vector3") with a length of 1. */
 	Axis: Vector3;
 	/** Represents the CFrame offset of the Attachment.
@@ -1761,8 +1853,13 @@ interface Attachment extends Instance {
 }
 
 interface Bone extends Attachment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Bone";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Bone: unique symbol;
 	/** **Transform** determines the current animated offset of the bone relative to its [CFrame](https://developer.roblox.com/en-us/api-reference/property/Attachment/CFrame). This property is set by Roblox when animations on skinned meshes are played, although it can be manipulated manually in a manner similar to [Motor6D.Transform](https://developer.roblox.com/en-us/api-reference/property/Motor6D/Transform).
 	 * 
 	 * See also
@@ -1827,8 +1924,13 @@ interface Bone extends Attachment {
  * For more information regarding the Avatar Editor, take a look at the `articles/Article Editor Service` article.
  */
 interface AvatarEditorService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AvatarEditorService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_AvatarEditorService: unique symbol;
 	/** This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to allow the developer to read what items the user has in their inventory and other avatar editor related information. The prompt needs to be confirmed by the user for the developer to use [AvatarEditorService:GetInventory](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetInventory), [AvatarEditorService:GetOutfits](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetOutfits) and [AvatarEditorService:GetFavorite](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetFavorite). This would have to be requested once per session but in the future we may wish to save this permission per game. */
 	PromptAllowInventoryReadAccess(this: AvatarEditorService): void;
 	/** This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to save the given [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) as an outfit. Does not yield and can get the result by listening to the [AvatarEditorService.PromptCreateOutfitCompleted](https://developer.roblox.com/en-us/api-reference/event/AvatarEditorService/PromptCreateOutfitCompleted) event. */
@@ -2436,14 +2538,24 @@ interface AvatarEditorService extends Instance {
  * ```
  */
 interface Backpack extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Backpack";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Backpack: unique symbol;
 }
 
 /** BackpackItem is an abstract class for backpack items such as HopperBins and Tools. */
 interface BackpackItem extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Flag" | "HopperBin" | "Tool";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BackpackItem: unique symbol;
 	/** The texture icon that is displayed for a tool in the [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s backpack.
 	 * 
 	 * This property should be set to the content ID of an image uploaded to the Roblox website.
@@ -2460,8 +2572,13 @@ interface BackpackItem extends Instance {
  * Tools are not the only way to capture user input. You can also use [ContextActionService](https://developer.roblox.com/en-us/api-reference/class/ContextActionService), [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) or [Player:GetMouse](https://developer.roblox.com/en-us/api-reference/function/Player/GetMouse). If you need a Tool to have multiple actions, such as pressing a key while the Tool is equipped, you should use ContextActionService's [BindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction) and [UnbindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/UnbindAction) in the [Equipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Equipped) and [Unequipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Unequipped) events, respectively. Use a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) send these actions to the server via a [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) inside the Tool.
  */
 interface Tool extends BackpackItem {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Flag" | "Tool";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Tool: unique symbol;
 	/** The CanBeDropped property controls whether the player can drop the [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool).
 	 * 
 	 * If true, when the backspace button is pressed the tool will be parented to the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) and removed from the player's [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). If false, the when the backspace button is pressed the tool will go back to the player's Backpack and it will not be dropped.
@@ -2689,8 +2806,13 @@ interface Tool extends BackpackItem {
  * See the [badges](https://developer.roblox.com/en-us/api-reference/class/articles/Badges Special Game Awards) article for more information, as well as the code samples below.
  */
 interface BadgeService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BadgeService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BadgeService: unique symbol;
 	/** **AwardBadge** grants a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) a [badge](https://developer.roblox.com/en-us/api-reference/class/articles/Badges Special Game Awards) given the player's [UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) and the badge ID. In order to successfully award a badge, the following criteria must be met:
 	 * 
 	 * *   The player must be presently connected to the game.
@@ -2764,8 +2886,13 @@ interface BadgeService extends Instance {
 
 /** The BasePlayerGui is an abstract class that all GUI drawing storage classes inherit from. */
 interface BasePlayerGui extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CoreGui" | "PlayerGui" | "StarterGui";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BasePlayerGui: unique symbol;
 	/** This function takes a screen position and returns a list of all the visible [GuiObjects](https://developer.roblox.com/en-us/api-reference/class/GuiObject) that are occupying that screen position.
 	 * 
 	 * The main use case is to get GUI objects under the player's `Player/Mouse` or touch inputs to do things like allow selection or highlighting. These effects can already be achieved using [GuiObject.MouseEnter](https://developer.roblox.com/en-us/api-reference/event/GuiObject/MouseEnter) and [GuiObject.MouseLeave](https://developer.roblox.com/en-us/api-reference/event/GuiObject/MouseLeave) but this requires the developer to track these events for their UI objects all the time even if they only need this functionality in specific circumstances.
@@ -2785,8 +2912,13 @@ interface BasePlayerGui extends Instance {
  * ```
  */
 interface PlayerGui extends BasePlayerGui {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PlayerGui";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PlayerGui: unique symbol;
 	/** Describes the user's current screen orientation. */
 	readonly CurrentScreenOrientation: Enum.ScreenOrientation;
 	/** Sets the preferred screen orientation mode for this user, if the user is on a mobile device. */
@@ -2810,8 +2942,13 @@ interface PlayerGui extends BasePlayerGui {
  * The StarterGui also includes a range of functions allowing you to interact with the [CoreGui](https://developer.roblox.com/en-us/api-reference/class/CoreGui). For example [StarterGui:SetCoreGuiEnabled](https://developer.roblox.com/en-us/api-reference/function/StarterGui/SetCoreGuiEnabled) can be used to disable elements of the [CoreGui](https://developer.roblox.com/en-us/api-reference/class/CoreGui). [StarterGui:SetCore](https://developer.roblox.com/en-us/api-reference/function/StarterGui/SetCore) can perform a range of functions including creating notifications and system messages.
  */
 interface StarterGui extends BasePlayerGui {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StarterGui";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StarterGui: unique symbol;
 	/** This property sets the preferred orientation mode for users with mobile devices. For the different modes available, see [ScreenOrientation](https://developer.roblox.com/en-us/api-reference/enum/ScreenOrientation).
 	 * 
 	 * When a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) joins the game, if they are using a mobile device, this property will determine the device's starting orientation. [PlayerGui.ScreenOrientation](https://developer.roblox.com/en-us/api-reference/property/PlayerGui/ScreenOrientation) will be set to this value for [Players](https://developer.roblox.com/en-us/api-reference/class/Player) joining the game. For example, the following code would set the default to _'Portrait'_:
@@ -3576,8 +3713,13 @@ interface StarterGui extends BasePlayerGui {
 }
 
 interface BaseWrap extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BaseWrap" | "WrapLayer" | "WrapTarget";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BaseWrap: unique symbol;
 	/** [NO DOCUMENTATION] */
 	readonly CageMeshId: string;
 	/** [NO DOCUMENTATION] */
@@ -3595,8 +3737,13 @@ interface BaseWrap extends Instance {
 }
 
 interface WrapLayer extends BaseWrap {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "WrapLayer";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_WrapLayer: unique symbol;
 	/** [NO DOCUMENTATION] */
 	readonly BindOffset: CFrame;
 	/** [NO DOCUMENTATION] */
@@ -3618,8 +3765,13 @@ interface WrapLayer extends BaseWrap {
 }
 
 interface WrapTarget extends BaseWrap {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "WrapTarget";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_WrapTarget: unique symbol;
 	/** [NO DOCUMENTATION] */
 	readonly Stiffness: number;
 }
@@ -3652,8 +3804,13 @@ interface WrapTarget extends BaseWrap {
  * ![Beam Curve](https://developer.roblox.com/assets/blt160ad3fdeadd4ff2/BeamCurve1.png)
  */
 interface Beam extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Beam";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Beam: unique symbol;
 	/** The [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam) originates from.
 	 * 
 	 * A [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s Attachment0 is the first control point on the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s [cubic Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve). The orientation of Attachment0, alongside the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s [Beam.CurveSize0](https://developer.roblox.com/en-us/api-reference/property/Beam/CurveSize0), property determine the position of the second control point.
@@ -3947,8 +4104,13 @@ interface Beam extends Instance {
 
 /** **Note:** If a Table is passed as an argument to a BindableEvent it must be an array without missing entries or have string keys, not a mixture, or else the string keys will be lost. Allows events defined in one script to be subscribed to by another script. However, please note that BindableEvents do not allow for communication between the server and client. If you are looking for this functionality use [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent). */
 interface BindableEvent<T extends Callback = Callback> extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BindableEvent";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BindableEvent: unique symbol;
 	/** Calling this method will fire the “Event” event. This function does not yield, even no script has connected to the “Event” event and even if a connected function yields. There are limitations on the values that can be sent as arguments; see the code samples */
 	Fire(this: BindableEvent, ...args: Parameters<T>): void;
 	/** This event is fired when any script calls the Fire method of the BindableEvent. */
@@ -3957,8 +4119,13 @@ interface BindableEvent<T extends Callback = Callback> extends Instance {
 
 /** A BindableFunction is a Roblox object that allows you to give access to functions to external scripts. Functions put in BindableFunctions will not be replicated, therefore making it impossible to use these objects to pass functions between scripts. Functions are invoked through [BindableFunction:Invoke](https://developer.roblox.com/en-us/api-reference/function/BindableFunction/Invoke), which calls [BindableFunction.OnInvoke](https://developer.roblox.com/en-us/api-reference/property/BindableFunction/OnInvoke). */
 interface BindableFunction<T extends Callback = Callback> extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BindableFunction";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BindableFunction: unique symbol;
 	/** Invoke will call the OnInvoke callback and return any values that were returned by the callback (if any). If the OnInvoke callback is not set, this method will yield until one is set. If OnInvoke yields, this method will also yield. There are limitations on the values that can be sent as arguments; see the code samples. */
 	Invoke(this: BindableFunction, ...args: Parameters<T>): ReturnType<T>;
 	/** Should be defined as a function. This function is called when Invoke() is called. Number of arguments is variable. */
@@ -3984,8 +4151,13 @@ interface BindableFunction<T extends Callback = Callback> extends Instance {
  * An exception is the [RocketPropulsion](https://developer.roblox.com/en-us/api-reference/class/RocketPropulsion) class, which exerts **both** translational and rotational forces to cause a part to track down another part.
  */
 interface BodyMover extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BodyAngularVelocity" | "BodyForce" | "BodyGyro" | "BodyPosition" | "BodyThrust" | "BodyVelocity" | "RocketPropulsion";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BodyMover: unique symbol;
 }
 
 /** The BodyAngularVelocity object applies a [torque](https://en.wikipedia.org/wiki/Torque) (or **rotational force**) on a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) such that it maintains a constant [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) as determined by its [AngularVelocity](https://developer.roblox.com/en-us/api-reference/property/BodyAngularVelocity/AngularVelocity) property. This allows for the creation of parts that continually rotate. It is the rotational counterpart to a [BodyVelocity](https://developer.roblox.com/en-us/api-reference/class/BodyVelocity). If you would like to maintain a constant [angular displacement](https://en.wikipedia.org/wiki/Angular_displacement), use a [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro) instead.
@@ -3999,8 +4171,13 @@ interface BodyMover extends Instance {
  * ![Diagram of each axes and the torque applied](https://developer.roblox.com/assets/blte442fb3378208643/AngularvelocitydiagramV2.png)
  */
 interface BodyAngularVelocity extends BodyMover {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BodyAngularVelocity";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BodyAngularVelocity: unique symbol;
 	/** The AngularVelocity property is a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) which determines the goal angular velocity a [BodyAngularVelocity](https://developer.roblox.com/en-us/api-reference/class/BodyAngularVelocity) should maintain through the exertion of torque. For this property, the direction of the vector is the axis of rotation. The magnitude is the angular velocity in **radians per second**. By default, this property is `(0, 2, 0)`.
 	 * 
 	 * **Tip:** You can multiply a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) by `math.rad(360)`, or **2π**, in order to convert [angular frequency](https://en.wikipedia.org/wiki/Angular_frequency) (rotations per second) into the desired [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) (radians per second). For example: Setting [AngularVelocity](https://developer.roblox.com/en-us/api-reference/property/BodyAngularVelocity/AngularVelocity) to `Vector3.new(0, 1, 0) * math.rad(360)` ≈ `Vector3.new(0, 6.283, 0)` will cause a part to spin around the Y axis once per second.
@@ -4041,8 +4218,13 @@ interface BodyAngularVelocity extends BodyMover {
  * BodyForce is commonly used to counteract the effects of [Gravity](https://developer.roblox.com/en-us/api-reference/property/Workspace/Gravity) on a per-part basis by simply applying a force in the +Y direction. See the code samples for more information.
  */
 interface BodyForce extends BodyMover {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BodyForce";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BodyForce: unique symbol;
 	/** The Force property determines the magnitude of force exerted on each axis, relative to the world. */
 	Force: Vector3;
 }
@@ -4080,8 +4262,13 @@ interface BodyForce extends BodyMover {
  * *   Any assembly containing a part that contains a **BodyGyro** or [BodyPosition](https://developer.roblox.com/en-us/api-reference/class/BodyPosition) will not be simulated when interacting with a player unless that player is the `/articles/Network Ownership|network owner` of the assembly.
  */
 interface BodyGyro extends BodyMover {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BodyGyro";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BodyGyro: unique symbol;
 	/** The CFrame property (not to be confused with [BasePart.CFrame](https://developer.roblox.com/en-us/api-reference/property/BasePart/CFrame)) determines the target orientation towards which torque will be exerted. Since [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro) does not apply translational force, the translational/positional component of the [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame), `CFrame.p`, is ignored. Consider using one of the following CFrame constructors in setting this property: `CFrame.fromAxisAngle`, `CFrame.fromEulerAnglesXYZ` or `CFrame.fromEulerAnglesYXZ`. Beware of [gimbal lock](https://en.wikipedia.org/wiki/Gimbal_lock) as you choose which of these methods and what angles (in radians). Additionally, you could use `CFrame.new(gyro.Parent.Position, targetPosition)` in order to have the BodyGyro “look at” a targetPosition ([Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3)). */
 	CFrame: CFrame;
 	/** The D property is how much **dampening** will be applied to the torque used to reach the goal [CFrame](https://developer.roblox.com/en-us/api-reference/property/BodyGyro/CFrame). When the part approaches the goal orientation it needs to decelerate, otherwise it will rotate past the goal and have to stop and re-accelerate back toward the goal. This is often creates undesirable **rubber-banding** effect, so applying dampening using this property is how that effect is avoided. The higher this value is set, the greater the dampening curve becomes, or the slower the part will approach the goal orientation. */
@@ -4105,8 +4292,13 @@ interface BodyGyro extends BodyMover {
  * *   Any assembly containing a part that contains a **BodyPosition** or a [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro) will not be simulated when interacting with a player unless that player is the `/articles/Network Ownership|network owner` of the assembly.
  */
 interface BodyPosition extends BodyMover {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BodyPosition";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BodyPosition: unique symbol;
 	/** The D property determines how much **dampening** will be applied to the force used toward reaching the goal `BodyPostion/Position|Position`. When the part approaches the goal position it needs to decelerate, otherwise it will move past the goal and have to stop and re-accelerate back toward the goal. This is often creates undesirable **rubber-banding** effect, so applying dampening using this property is how that effect is avoided. The higher this value is set, the greater the dampening curve becomes, or the slower the part will approach the goal position. */
 	D: number;
 	/** The MaxForce property determines the limit on the amount of force that may be applied on each axis in reaching the goal [Position](https://developer.roblox.com/en-us/api-reference/property/BodyPosition/Position). If a part isn't moving, consider increasing this value (also check that it is not [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) or attached to any anchored parts). */
@@ -4125,8 +4317,13 @@ interface BodyPosition extends BodyMover {
 
 /** The BodyThrust object applies (or exerts) a force relative to the part to which it is parented at a specific location. It behaves similar to a [BodyForce](https://developer.roblox.com/en-us/api-reference/class/BodyForce), except that this object's force applies at a specific point ([BodyThrust.Location](https://developer.roblox.com/en-us/api-reference/property/BodyThrust/Location)), allowing you to exert a [torque](https://en.wikipedia.org/wiki/Torque) (rotational force). To apply a force dynamically so that a part maintains a constant angular velocity, use a [BodyAngularVelocity](https://developer.roblox.com/en-us/api-reference/class/BodyAngularVelocity) instead. To apply a force dynamically so that a part maintains a constant orientation (angular position), use a [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro). */
 interface BodyThrust extends BodyMover {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BodyThrust";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BodyThrust: unique symbol;
 	/** The Force property determines the amount of force exerted on each axis relative to the part. Unlike [BodyForce.Force](https://developer.roblox.com/en-us/api-reference/property/BodyForce/Force), this property is relative to the part and not the world. The force is exerted at the [Location](https://developer.roblox.com/en-us/api-reference/property/BodyThrust/Location), which is also relative to the part. */
 	Force: Vector3;
 	/** The Location property determines the relative offset from the center part at which the [BodyThrust.Force](https://developer.roblox.com/en-us/api-reference/property/BodyThrust/Force) is exerted. This is the primary means for turning force into torque. */
@@ -4138,8 +4335,13 @@ interface BodyThrust extends BodyMover {
  * The strength of the force applied by this object is controlled by several factors, namely the difference between the part's current velocity and the goal velocity. This is multiplied by [P](https://developer.roblox.com/en-us/api-reference/property/BodyVelocity/P) (power) to either amplify or diminish it. The resulting force is then capped by [MaxForce](https://developer.roblox.com/en-us/api-reference/property/BodyVelocity/MaxForce). By setting [BodyVelocity.Velocity](https://developer.roblox.com/en-us/api-reference/property/BodyVelocity/Velocity) to `(0, 0, 0)` it is possible to simulate [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) behavior with less strictness.
  */
 interface BodyVelocity extends BodyMover {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BodyVelocity";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BodyVelocity: unique symbol;
 	/** The MaxForce property determines the limit on the amount of force that may be applied on each axis in reaching the goal [Velocity](https://developer.roblox.com/en-us/api-reference/property/BodyVelocity/Velocity). If a part isn't moving, consider increasing this value (also check that it is not [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) or attached to any anchored parts). */
 	MaxForce: Vector3;
 	/** **Note**: This property is ignored if PGS is enabled via Workspace.PGSPhysicsSolverEnabled, which is enabled by default.
@@ -4172,8 +4374,13 @@ interface BodyVelocity extends BodyMover {
  * Remember, you don't need to use both the translational and rotational force features of a RocketPropulsion: by setting [MaxThrust](https://developer.roblox.com/en-us/api-reference/property/RocketPropulsion/MaxThrust) to 0, you can make a part just face the target **without** having it follow the target around (consider also using a [BodyPosition](https://developer.roblox.com/en-us/api-reference/class/BodyPosition) in addition). Similarly, by setting [MaxTorque](https://developer.roblox.com/en-us/api-reference/property/RocketPropulsion/MaxTorque) to `(0, 0, 0)`, you can have a part simply follow another object without facing it (use a [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro) if you want the object to maintain a specific orientation).
  */
 interface RocketPropulsion extends BodyMover {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RocketPropulsion";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RocketPropulsion: unique symbol;
 	/** The CartoonFactor property determines the tendency of the part to face the [Target](https://developer.roblox.com/en-us/api-reference/property/RocketPropulsion/Target). By default, this property is set to `0.7`. If set to `0`, the part will make no effort to face the target. */
 	CartoonFactor: number;
 	/** The MaxSpeed property determines the upper limit of the velocity at which the part will move toward the [Target](https://developer.roblox.com/en-us/api-reference/property/RocketPropulsion/Target). A [RocketPropulsion](https://developer.roblox.com/en-us/api-reference/class/RocketPropulsion) will apply a force to decelerate a part if it exceeds this speed limit. */
@@ -4207,8 +4414,13 @@ interface RocketPropulsion extends BodyMover {
 }
 
 interface BulkImportService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BulkImportService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BulkImportService: unique symbol;
 }
 
 /** The Camera object defines a view of the 3D game world.
@@ -4242,8 +4454,13 @@ interface BulkImportService extends Instance {
  * 2.  Replacing or modifying the default [camera scripts](http://robloxdev.com/articles/Movement-and-camera-controls) in `StarterPlayerScripts|StarterPlayer.StarterPlayerScripts`. This is only recommended for advanced developers.
  */
 interface Camera extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Camera";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Camera: unique symbol;
 	/** This property is the [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) of the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) and definies its position and orientation in the 3D world.
 	 * 
 	 * Some transformations, such as the rotation of the head when using VR devices are not reflected in this property. For this reason, developers should use [Camera:GetRenderCFrame](https://developer.roblox.com/en-us/api-reference/function/Camera/GetRenderCFrame) to obtain the 'true' [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) of the camera.
@@ -4654,8 +4871,13 @@ interface Camera extends Instance {
 
 /** Base class for objects that change a character's appearance. */
 interface CharacterAppearance extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BodyColors" | "CharacterMesh" | "Pants" | "Shirt" | "ShirtGraphic" | "Skin";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CharacterAppearance: unique symbol;
 }
 
 /** BodyColors is a utility object used by Roblox to load avatar body colors from the website.  
@@ -4665,8 +4887,13 @@ interface CharacterAppearance extends Instance {
  * When parented inside of a character with a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid), it will apply the colors to each specified limb.
  */
 interface BodyColors extends CharacterAppearance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BodyColors";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BodyColors: unique symbol;
 	/** Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor "API:BrickColor"). */
 	HeadColor: BrickColor;
 	/** Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3 "API:Color3"). */
@@ -4695,8 +4922,13 @@ interface BodyColors extends CharacterAppearance {
 
 /** This property modifies the appearance of an R6 body part. It has no effect in R15 characters. */
 interface CharacterMesh extends CharacterAppearance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CharacterMesh";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CharacterMesh: unique symbol;
 	/** The texture of a CharacterMesh. It can be overridden by Shirts, Pants, T-Shirts, and the [CharacterMesh.OverlayTextureId](https://developer.roblox.com/en-us/api-reference/property/CharacterMesh/OverlayTextureId) property. */
 	BaseTextureId: number;
 	/** The part of the Character's body that is affected. */
@@ -4709,8 +4941,13 @@ interface CharacterMesh extends CharacterAppearance {
 
 /** The base class for clothing objects. */
 interface Clothing extends CharacterAppearance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Pants" | "Shirt";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Clothing: unique symbol;
 	/** This property determines the colorization to be applied to the [Clothing](https://developer.roblox.com/en-us/api-reference/class/Clothing) texture. The default colorization value is \`DataType/Color3|Color3.new(1,1,1) (white). When set to white no colorization occurs
 	 * 
 	 * It functions similarly to [ImageLabel.ImageColor3](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ImageColor3) and [Decal.Color3](https://developer.roblox.com/en-us/api-reference/property/Decal/Color3)except that it is applied to Clothing textures.
@@ -4745,8 +4982,13 @@ interface Clothing extends CharacterAppearance {
  * *   [Making Avatar Clothing](https://developer.roblox.com/articles/How-to-Make-Shirts-and-Pants-for-Roblox-Characters), which goes into detail about creating Shirts and Pants
  */
 interface Pants extends Clothing {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Pants";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Pants: unique symbol;
 	/** Determines the texture of the [Pants](https://developer.roblox.com/en-us/api-reference/class/Pants). The content ID link pointing to the pants template hosted on the Roblox website.
 	 * 
 	 * How do I find the PantsTemplate?
@@ -4781,8 +5023,13 @@ interface Pants extends Clothing {
  * *   [Making Avatar Clothing](https://developer.roblox.com/articles/How-to-Make-Shirts-and-Pants-for-Roblox-Characters), which goes into detail about creating Shirts and Pants
  */
 interface Shirt extends Clothing {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Shirt";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Shirt: unique symbol;
 	/** The content ID link pointing to the shirt template hosted on the Roblox website. Determines the texture of the [Shirt](https://developer.roblox.com/en-us/api-reference/class/Shirt).
 	 * 
 	 * See also [ShirtGraphic.Graphic](https://developer.roblox.com/en-us/api-reference/property/ShirtGraphic/Graphic) for the image applied to T-shirts.
@@ -4808,8 +5055,13 @@ interface Shirt extends Clothing {
 
 /** The **ShirtGraphic** object applies a texture to the front surface of a character's torso. It is used to display t-shirts. */
 interface ShirtGraphic extends CharacterAppearance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ShirtGraphic";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ShirtGraphic: unique symbol;
 	/** This property determines the colorization to be applied to the [ShirtGraphic](https://developer.roblox.com/en-us/api-reference/class/ShirtGraphic) texture. It functions similarly to [ImageLabel.ImageColor3](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ImageColor3) except that it is applied to [ShirtGraphic](https://developer.roblox.com/en-us/api-reference/class/ShirtGraphic) textures. This is useful for creating shirt graphics that have many different color variations but share the same basic look.
 	 * 
 	 * See Also
@@ -4846,8 +5098,13 @@ interface ShirtGraphic extends CharacterAppearance {
  * In addition to housing the `/articles/Lua Chat System|Lua Chat System`, this service also exposes functions used to filter text: `Chat/FilterStringAsync|FilterStringAsync()` and `Chat/FilterStringForBroadcast|FilterStringForBroadcast()`. Note that **games which implement custom chat systems must use these functions to filter chat properly.** See `articles/Text and Chat Filtering|Text and Chat Filtering` for more information.
  */
 interface Chat extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Chat";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Chat: unique symbol;
 	/** If true, entering a message in the chat will result in a chat bubble popping up above the player's [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character). This behavior can either be enabled by directly ticking this checkbox in Studio, or by using a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript):
 	 * 
 	 * ```lua
@@ -5103,8 +5360,13 @@ interface Chat extends Instance {
  * If multiple ClickDetectors would detect a user input, only the deepest ClickDetector will fire events. If an action bound with [ContextActionService](https://developer.roblox.com/en-us/api-reference/class/ContextActionService) uses the same input as a ClickDetector, the action bound with ContextActionService will take priority over ClickDetector events. If two ClickDetectors are siblings, the first ClickDetector will take priority. [UserInputService.InputBegan](https://developer.roblox.com/en-us/api-reference/event/UserInputService/InputBegan) will fire before ClickDetector events. Due to the nature of user input, you ought not depend on all [MouseHoverEnter](https://developer.roblox.com/en-us/api-reference/event/ClickDetector/MouseHoverEnter) events to fire a matching [MouseHoverLeave](https://developer.roblox.com/en-us/api-reference/event/ClickDetector/MouseHoverLeave) event.
  */
 interface ClickDetector extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ClickDetector";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ClickDetector: unique symbol;
 	/** The CursorIcon sets the mouse icon that will be displayed when the `Mouse/mouse` hovers over this [ClickDetector](https://developer.roblox.com/en-us/api-reference/class/ClickDetector).
 	 * 
 	 * If this property is left blank, the ClickDetector will use the default icon:
@@ -5162,8 +5424,13 @@ interface ClickDetector extends Instance {
 }
 
 interface Clouds extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Clouds";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Clouds: unique symbol;
 	/** A value that controls the cloud cover within the clouds volume, from 0 oktas to 8 oktas (full cloud cover). */
 	Cover: number;
 	/** A value that controls the clouds particulates density. The proportion of airborne water vapour particles within a cubic stud at full cloud cover. */
@@ -5186,8 +5453,13 @@ interface Clouds extends Instance {
  * When tags replicate, **all tags on an object replicate at the same time**. Therefore, if you set a tag on an object from the client then add/remove a **different** tag on the same object from the server, the client's local tags on the object are overwritten. In [StreamingEnabled](https://developer.roblox.com/en-us/api-reference/property/Workspace/StreamingEnabled) places, instances can be unloaded as they leave the client's streamed area. If such an instance re-enters the streamed area, properties and tags will be re-synchronized from the server. This can cause changes made by [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s to be overwritten/removed.
  */
 interface CollectionService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CollectionService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CollectionService: unique symbol;
 	/** AddTag will apply a tag to an object. This method will not throw an error if the object already had the tag. Successfully adding a tag will fire a signal created by [CollectionService:GetInstanceAddedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceAddedSignal) with the given tag.
 	 * 
 	 * **Warning:** When tagging an object, it is common that some resources are used to give the tag its functionality, e.g. event connections or tables. To prevent memory leaks, it is a good idea to clean these up (disconnect, set to nil, etc) when no longer needed for a tag. Do this when calling [CollectionService:RemoveTag](https://developer.roblox.com/en-us/api-reference/function/CollectionService/RemoveTag), calling [Instance:Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) or in a function connected to a signal returned by [CollectionService:GetInstanceRemovedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceRemovedSignal).
@@ -5281,14 +5553,24 @@ interface CollectionService extends Instance {
  * *   Provides a single location for variables read by multiple scripts in more complex games
  */
 interface Configuration extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Configuration";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Configuration: unique symbol;
 }
 
 /** The base class for Constraint-based objects. */
 interface Constraint extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AlignOrientation" | "AlignPosition" | "AngularVelocity" | "BallSocketConstraint" | "CylindricalConstraint" | "HingeConstraint" | "LineForce" | "PrismaticConstraint" | "RodConstraint" | "RopeConstraint" | "SpringConstraint" | "Torque" | "VectorForce";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Constraint: unique symbol;
 	/** True if the constraint is currently active in the world.
 	 * 
 	 * True if the constraint and both of its parts are in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) and the constraint's [Constraint.Enabled](https://developer.roblox.com/en-us/api-reference/property/Constraint/Enabled) property is true.
@@ -5349,8 +5631,13 @@ interface Constraint extends Instance {
  * *   [Attachments and Constraints](https://developer.roblox.com/articles/Constraints), an article outlining how to create and use attachments and constraints
  */
 interface AlignOrientation extends Constraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AlignOrientation";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_AlignOrientation: unique symbol;
 	/** Specifies the desired relationship between the primary axes of the two [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment). The constraint will try to maintain this relationship by applying forces within specified limits.
 	 * 
 	 * This property is visible in Studio and meaningful only when [AlignOrientation.PrimaryAxisOnly](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/PrimaryAxisOnly) is set _true_.
@@ -5428,8 +5715,13 @@ interface AlignOrientation extends Constraint {
  * *   [Attachments and Constraints](https://developer.roblox.com/articles/Constraints), an article outlining how to create and use attachments and constraints
  */
 interface AlignPosition extends Constraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AlignPosition";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_AlignPosition: unique symbol;
 	/** When true, applies force at center of mass of Attachment0's parent Part. When false, applied at Attachment0. */
 	ApplyAtCenterOfMass: boolean;
 	/** Maximum force the constraint can apply to achieve its goal. Only used if RigidityEnabled is false. */
@@ -5449,8 +5741,13 @@ interface AlignPosition extends Constraint {
  * This object maintains all functionality of [BodyAngularVelocity](https://developer.roblox.com/en-us/api-reference/class/BodyAngularVelocity), a legacy body mover. To instead apply a constant torque, use a [Torque](https://developer.roblox.com/en-us/api-reference/class/Torque) object instead. To instead apply a torque such that a constant orientation is maintained, use a [AlignOrientation](https://developer.roblox.com/en-us/api-reference/class/AlignOrientation) instead.
  */
 interface AngularVelocity extends Constraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AngularVelocity";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_AngularVelocity: unique symbol;
 	/** A [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) force applied to achieve and maintain an angular velocity for the body. This vector is applied in the [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) expressed by the [AngularVelocity.RelativeTo](https://developer.roblox.com/en-us/api-reference/property/AngularVelocity/RelativeTo) property. Defaults to **(0, 0, 0)**. */
 	AngularVelocity: Vector3;
 	/** Magnitude of the maximum torque the constraint can apply. Defaults to **0**. */
@@ -5469,8 +5766,13 @@ interface AngularVelocity extends Constraint {
  * Note that if this constraint attaches one part (**A**) to another part (**B**) that is anchored or connected to an anchored part (**Z**), part **A** will not be locally simulated when interacting with a player.
  */
 interface BallSocketConstraint extends Constraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BallSocketConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BallSocketConstraint: unique symbol;
 	/** Sets whether the [BallSocketConstraint](https://developer.roblox.com/en-us/api-reference/class/BallSocketConstraint) has a limit on rotation based on [BallSocketConstraint.UpperAngle](https://developer.roblox.com/en-us/api-reference/property/BallSocketConstraint/UpperAngle).  
 	 * When a BallSocketConstraint has LimitsEnabled set to true, it enforces that its [Constraint.Attachment1](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment1) isn't rotated more than a set distance from its [Constraint.Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0).
 	 * 
@@ -5509,8 +5811,13 @@ interface BallSocketConstraint extends Constraint {
  * Note that both actuated and free spinning rotation can be limited by setting [HingeConstraint.LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/LimitsEnabled) to `true`. Also note that if this constraint attaches one part (**A**) to another part (**B**) that is anchored or connected to an anchored part (**Z**), part **A** will not be locally simulated when interacting with a player.
  */
 interface HingeConstraint extends Constraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "HingeConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_HingeConstraint: unique symbol;
 	/** Sets whether the rotation of the HingeConstraint is actuated and, if so, what kind of actuation.
 	 * 
 	 * When ActuatorType is set to `None` then the hinge can swing freely:
@@ -5611,8 +5918,13 @@ interface HingeConstraint extends Constraint {
  * *   [Attachments and Constraints](https://developer.roblox.com/articles/Constraints), an article outlining how to create and use attachments and constraints
  */
 interface LineForce extends Constraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "LineForce";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_LineForce: unique symbol;
 	/** When true, applies force at center of mass of Attachment0's parent Part, and the line determining the direction of the force will start at the said center of mass. When false, the force is applied at Attachment0's location and the line determining the direction will also start at Attachment0. */
 	ApplyAtCenterOfMass: boolean;
 	/** When true, the force magnitude is multiplied by the inverse square of the distance. */
@@ -5630,8 +5942,13 @@ interface LineForce extends Constraint {
  * Note that if this constraint attaches one part (**A**) to another part (**B**) that is anchored or connected to an anchored part (**Z**), part **A** will not be locally simulated when interacting with a player.
  */
 interface RodConstraint extends Constraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RodConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RodConstraint: unique symbol;
 	/** The current distance between the [RodConstraint](https://developer.roblox.com/en-us/api-reference/class/RodConstraint)'s two [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment).The current distance between the [RodConstraint](https://developer.roblox.com/en-us/api-reference/class/RodConstraint)'s two [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment). *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -5644,8 +5961,13 @@ interface RodConstraint extends Constraint {
 
 /** A RopeConstraint constrains two [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) to separate no further than the length specified by [RopeConstraint.Length](https://developer.roblox.com/en-us/api-reference/property/RopeConstraint/Length). The attachments can move closer together than this length and can both freely rotate. */
 interface RopeConstraint extends Constraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RopeConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RopeConstraint: unique symbol;
 	/** The current distance between the RopeConstraint's two [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment).The current distance between the RopeConstraint's two [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment). *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -5669,8 +5991,13 @@ interface RopeConstraint extends Constraint {
 
 /** The base class for constraints that allow their attachments to slide along an axis. */
 interface SlidingBallConstraint extends Constraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CylindricalConstraint" | "PrismaticConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SlidingBallConstraint: unique symbol;
 	/** Sets whether the translation of the [PrismaticConstraint](https://developer.roblox.com/en-us/api-reference/class/PrismaticConstraint) is actuated and, if so, what kind of actuation.
 	 * 
 	 * If ActuatorType is set to **None**, then the joint can slide freely:
@@ -5750,8 +6077,13 @@ interface SlidingBallConstraint extends Constraint {
  * Note that if this constraint attaches one part (**A**) to another part (**B**) that is anchored or connected to an anchored part (**Z**), part **A** will not be locally simulated when interacting with a player.
  */
 interface CylindricalConstraint extends SlidingBallConstraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CylindricalConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CylindricalConstraint: unique symbol;
 	/** Type of angular actuator: None, Motor, or Servo. */
 	AngularActuatorType: Enum.ActuatorType;
 	/** Enables the angular limits around the rotation axis. */
@@ -5798,8 +6130,13 @@ interface CylindricalConstraint extends SlidingBallConstraint {
  * Note that both actuated and free translation can be limited by setting [SlidingBallConstraint.LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/SlidingBallConstraint/LimitsEnabled) to `true`. Also note that if this constraint attaches one part (**A**) to another part (**B**) that is anchored or connected to an anchored part (**Z**), part **A** will not be locally simulated when interacting with a player.
  */
 interface PrismaticConstraint extends SlidingBallConstraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PrismaticConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PrismaticConstraint: unique symbol;
 }
 
 /** A **SpringConstraint** applies a force to its [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment) based on spring and damper behavior. Assuming the constraint has [SpringConstraint.Stiffness](https://developer.roblox.com/en-us/api-reference/property/SpringConstraint/Stiffness), it will apply forces based on how far apart the attachments are. If the attachments are further apart than the constraint's [SpringConstraint.FreeLength](https://developer.roblox.com/en-us/api-reference/property/SpringConstraint/FreeLength), the attachments will be forced together. If they are closer than the [SpringConstraint.FreeLength](https://developer.roblox.com/en-us/api-reference/property/SpringConstraint/FreeLength), the attachments will be forced apart. In addition, if [SpringConstraint.Damping](https://developer.roblox.com/en-us/api-reference/property/SpringConstraint/Damping) is set, there will be a damping component to the applied force that scales with the velocity of the attachments.
@@ -5844,8 +6181,13 @@ interface PrismaticConstraint extends SlidingBallConstraint {
  * end
  */
 interface SpringConstraint extends Constraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SpringConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SpringConstraint: unique symbol;
 	/** The number of coils visualized on the SpringConstraint. This can only be set between 0 and 8. */
 	Coils: number;
 	/** The current distance between the [SpringConstraint](https://developer.roblox.com/en-us/api-reference/class/SpringConstraint)'s [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment).The current distance between the [SpringConstraint](https://developer.roblox.com/en-us/api-reference/class/SpringConstraint)'s [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment). *
@@ -5893,8 +6235,13 @@ interface SpringConstraint extends Constraint {
  * *   [Attachments and Constraints](https://developer.roblox.com/articles/Constraints), an article outlining how to create and use attachments and constraints
  */
 interface Torque extends Constraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Torque";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Torque: unique symbol;
 	/** The [CFrame](https://developer.roblox.com/api-reference/datatype/CFrame "CFrame") in which the Torque is expressed. */
 	RelativeTo: Enum.ActuatorRelativeTo;
 	/** The strength and direction of the torque. */
@@ -5932,8 +6279,13 @@ interface Torque extends Constraint {
  * *   [Attachments and Constraints](https://developer.roblox.com/articles/Constraints), an article outlining how to create and use attachments and constraints
  */
 interface VectorForce extends Constraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "VectorForce";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_VectorForce: unique symbol;
 	/** When true, applies force at center of mass of Attachment0's parent Part. When false, applied at Attachment0. */
 	ApplyAtCenterOfMass: boolean;
 	/** The strength and direction of the force. */
@@ -5949,8 +6301,13 @@ interface VectorForce extends Constraint {
  * With ContentProvider, developers can preload assets using the [ContentProvider:PreloadAsync](https://developer.roblox.com/en-us/api-reference/function/ContentProvider/PreloadAsync) function. Another useful property is [ContentProvider.RequestQueueSize](https://developer.roblox.com/en-us/api-reference/property/ContentProvider/RequestQueueSize), which can be used to measure what proportion of assets in the request queue have been downloaded.
  */
 interface ContentProvider extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ContentProvider";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ContentProvider: unique symbol;
 	/** The base URL that is used by the [ContentProvider](https://developer.roblox.com/en-us/api-reference/class/ContentProvider) for downloading assets from the Roblox website. This url will point to a Roblox hosted website where asserts are to be downloaded from.
 	 * 
 	 * This URL is pulled from the AppSettings.xml file which is located in the version-hash folder.
@@ -6012,8 +6369,13 @@ interface ContentProvider extends Instance {
  * ContextActionService is especially useful for supporting gamepad and touch input. For gamepad input, you might choose to bind the B button to an action that returns the user to the previous menu when they entire another menu. For touch, on-screen touch buttons can be used in place of key presses: these buttons display only while the action is bound, and the position, text and/or images of these buttons can be configured through this service. They are somewhat limited in the amount of customization provided by this service; it's usually a better idea to make your own on-screen buttons using [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) or [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton).
  */
 interface ContextActionService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ContextActionService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ContextActionService: unique symbol;
 	/** BindAction will bind an action to user input given an action handling function. Upon a matching input being performed, the action handler function will be called with the arguments listed below. Valid input enum items include those within the following: [KeyCode](https://developer.roblox.com/en-us/api-reference/enum/KeyCode), [UserInputType](https://developer.roblox.com/en-us/api-reference/enum/UserInputType) or [PlayerAction](https://developer.roblox.com/en-us/api-reference/enum/PlayerAction) . Call this function when a player **enters the context** in which an action can be performed. When the player leaves the context, call [UnbindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/UnbindAction) with the same `actionName`. You can manually call the action handling function of an action by using [CallFunction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/CallFunction).
 	 * 
 	 * The code sample below shows how a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) can be [played](https://developer.roblox.com/en-us/api-reference/function/Sound/Play) while a key (H), game pad button, or touch screen button is pressed.
@@ -6206,8 +6568,13 @@ interface ContextActionService extends Instance {
 
 /** The base class for controller objects, such as the [HumanoidController](https://developer.roblox.com/en-us/api-reference/class/HumanoidController) object. */
 interface Controller extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "HumanoidController" | "SkateboardController" | "VehicleController";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Controller: unique symbol;
 	/** Activates an overriding bind on the specified button. */
 	BindButton(this: Controller, button: CastsToEnum<Enum.Button>, caption: string): void;
 	/** Returns whether or not Button is being pressed. */
@@ -6228,14 +6595,24 @@ interface Controller extends Instance {
  * ```
  */
 interface HumanoidController extends Controller {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "HumanoidController";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_HumanoidController: unique symbol;
 }
 
 /** A SkateboardController is an object responsible for translating PlayerActions to movements with a [SkateboardPlatform](https://developer.roblox.com/en-us/api-reference/class/SkateboardPlatform). */
 interface SkateboardController extends Controller {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SkateboardController";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SkateboardController: unique symbol;
 	/** The direction of movement, tied to the keys A and D. Must be 1 (right), 0 (straight), or -1 (left). Will refresh back to 0 unless constantly set.The direction of movement, tied to the keys A and D. Must be 1 (right), 0 (straight), or -1 (left). Will refresh back to 0 unless constantly set. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -6253,14 +6630,24 @@ interface SkateboardController extends Controller {
 
 /** A VehicleController is an object responsible for translating [PlayerActions](https://developer.roblox.com/api-reference/enum/PlayerActions "PlayerActions") to movements with a [VehicleSeat](https://developer.roblox.com/en-us/api-reference/class/VehicleSeat). */
 interface VehicleController extends Controller {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "VehicleController";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_VehicleController: unique symbol;
 }
 
 /** Container class for the [HumanoidController](https://developer.roblox.com/en-us/api-reference/class/HumanoidController) among other classes. */
 interface ControllerService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ControllerService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ControllerService: unique symbol;
 }
 
 /** The DataModelMesh is an abstract class from which mesh classes descend.
@@ -6270,8 +6657,13 @@ interface ControllerService extends Instance {
  * Note the [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) and [CharacterMesh](https://developer.roblox.com/en-us/api-reference/class/CharacterMesh) classes do not descend from DataModelMesh.
  */
 interface DataModelMesh extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BlockMesh" | "CylinderMesh" | "FileMesh" | "SpecialMesh";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataModelMesh: unique symbol;
 	/** The Offset of a mesh determines the distance from the [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position) of a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that the mesh will be displayed.
 	 * 
 	 * How to use mesh offset
@@ -6349,8 +6741,13 @@ interface DataModelMesh extends Instance {
 
 /** This is an abstract class that [BlockMesh](https://developer.roblox.com/en-us/api-reference/class/BlockMesh) and [CylinderMesh](https://developer.roblox.com/en-us/api-reference/class/CylinderMesh) inherit from. */
 interface BevelMesh extends DataModelMesh {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BlockMesh" | "CylinderMesh";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BevelMesh: unique symbol;
 }
 
 /** The BlockMesh object applies a 'brick' mesh to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) it is parented to. It behaves identically to a [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh) with [SpecialMesh.MeshType](https://developer.roblox.com/en-us/api-reference/property/SpecialMesh/MeshType) set to 'brick'.
@@ -6367,8 +6764,13 @@ interface BevelMesh extends DataModelMesh {
  * Note as the [BlockMesh](https://developer.roblox.com/en-us/api-reference/class/BlockMesh) object does not include a texture the [DataModelMesh.VertexColor](https://developer.roblox.com/en-us/api-reference/property/DataModelMesh/VertexColor) property does not do anything.
  */
 interface BlockMesh extends BevelMesh {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BlockMesh";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BlockMesh: unique symbol;
 }
 
 /** The CylinderMesh object applies a 'cylinder' mesh to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) it is parented to.
@@ -6392,8 +6794,13 @@ interface BlockMesh extends BevelMesh {
  * The key difference between a CylinderMesh or a [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh) with [SpecialMesh.MeshType](https://developer.roblox.com/en-us/api-reference/property/SpecialMesh/MeshType) set to 'Cylinder' is the orientation of the cylinder mesh. With a CylinderMesh, the height of the cylinder is aligned with the height (Y axis) of the part. With a [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh) (or [Part](https://developer.roblox.com/en-us/api-reference/class/Part) with [Part.Shape](https://developer.roblox.com/en-us/api-reference/property/Part/Shape) set to 'Cylinder'), the height of the cylinder is aligned with the X axis.
  */
 interface CylinderMesh extends BevelMesh {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CylinderMesh";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CylinderMesh: unique symbol;
 }
 
 /** The FileMesh object applies a textured mesh to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) when parented to it. Its properties are inherited by the [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh) object.
@@ -6408,8 +6815,13 @@ interface CylinderMesh extends BevelMesh {
  * For more information on using meshes, please see the [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh) page.
  */
 interface FileMesh extends DataModelMesh {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "FileMesh" | "SpecialMesh";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_FileMesh: unique symbol;
 	/** The MeshId is the content ID of the mesh that is to be displayed.
 	 * 
 	 * The content ID for a mesh is generated when a developer uploads a mesh to the Roblox website.
@@ -6475,8 +6887,13 @@ interface FileMesh extends DataModelMesh {
  * Although a developer uploaded mesh can be used on a [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh), meshes can currently only be be uploaded using [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart)s or the game explorer. For more information on how to do this please see `Articles/Mesh Parts|this tutorial`.
  */
 interface SpecialMesh extends FileMesh {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SpecialMesh";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SpecialMesh: unique symbol;
 	/** The mesh that the [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh)object applies to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) depends on the MeshType property. A number of options are available.
 	 * 
 	 * *   **Brick** - A block shape, equivalent to a [BlockMesh](https://developer.roblox.com/en-us/api-reference/class/BlockMesh)
@@ -6505,8 +6922,13 @@ interface SpecialMesh extends FileMesh {
  * There are limits applied to the data store model. Please see `Articles/Datastore Errors|Data Store Errors and Limits` for details.
  */
 interface DataStoreService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DataStoreService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreService: unique symbol;
 	/** This method returns a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) by name/scope. Subsequent calls to this method with the same name/scope will return the same object. */
 	GetDataStore(this: DataStoreService, name: string, scope?: string): GlobalDataStore;
 	/** This function returns the default [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). If you want to access a specific **named** data store instead, you should use the `DataStoreService/GetDataStore|GetDataStore()` function. */
@@ -6555,8 +6977,13 @@ interface DataStoreService extends Instance {
  * Debris does not yield the current thread, does not require a new thread and will not error if the object is already destroyed. For this reason it is the recommended method for cleaning up objects with a fixed lifetime.
  */
 interface Debris extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Debris";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Debris: unique symbol;
 	/** This function allows the developer to schedule the removal of the object without yielding any code.
 	 * 
 	 * Registers a given [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) to the [Debris](https://developer.roblox.com/en-us/api-reference/class/Debris) service for removal after the specified delay. The first argument is the object being removed, and the second argument is the amount of time in seconds the [Debris](https://developer.roblox.com/en-us/api-reference/class/Debris) service will wait before removing the object. The delay argument is optional, if it is not specified, it defaults to 10 seconds. The delay argument is a number, so it accepts decimal points, such as '1.5', or '0.25'.
@@ -6602,8 +7029,13 @@ interface Debris extends Instance {
  * *   [How to use Dialogs](https://developer.roblox.com/articles/Usage-of-dialogs)
  */
 interface Dialog extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Dialog";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Dialog: unique symbol;
 	/** The BehaviorType of a Dialog determines whether multiple players can interact with a dialog at once. The default value for this property is SinglePlayer.
 	 * 
 	 * SinglePlayer
@@ -6675,8 +7107,13 @@ interface Dialog extends Instance {
 
 /** Used to craft the further choices available to players who have started a dialog conversation with an NPC. */
 interface DialogChoice extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DialogChoice";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DialogChoice: unique symbol;
 	/** Toggles whether the goodbye option will be displayed. If true, the dialog will display the content of [DialogChoice.GoodbyeDialog](https://developer.roblox.com/en-us/api-reference/property/DialogChoice/GoodbyeDialog) as the last option after other dialog choices. Clicking on the goodbye option will exit the dialog.
 	 * 
 	 * GoodbyeChoiceActive = true
@@ -6703,8 +7140,13 @@ interface DialogChoice extends Instance {
  * Its implementation is primarily used in the RbxStamper library.
  */
 interface Dragger extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Dragger";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Dragger: unique symbol;
 	/** Rotates the currently dragged part(s) by 90 degrees on the given axis. */
 	AxisRotate(this: Dragger, axis?: CastsToEnum<Enum.Axis>): void;
 	/** Initializes a dragging action, specifying which parts to use when dragging. */
@@ -6716,8 +7158,13 @@ interface Dragger extends Instance {
 }
 
 interface EventIngestService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "EventIngestService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_EventIngestService: unique symbol;
 }
 
 /** An Explosion applies force to `BaseParts` within the explosion's [Explosion.BlastRadius](https://developer.roblox.com/en-us/api-reference/property/Explosion/BlastRadius). This force breaks joints between parts and kills [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) characters not protected by a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField).
@@ -6735,8 +7182,13 @@ interface EventIngestService extends Instance {
  * The effect of an Explosion is not disrupted by obstacles, this means parts shielded behind other parts will still be effected, even if the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) they are shielded behind is not anchored.
  */
 interface Explosion extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Explosion";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Explosion: unique symbol;
 	/** Used to determine the amount of force applied to [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s caught in the [Explosion.BlastRadius](https://developer.roblox.com/en-us/api-reference/property/Explosion/BlastRadius).
 	 * 
 	 * Currently this level of force applied does not vary based on distance from [Explosion.Position](https://developer.roblox.com/en-us/api-reference/property/Explosion/Position). Unanchored `BaseParts` will accelerate equally away from the origin regardless of distance provided they are within the blast radius.
@@ -6802,8 +7254,13 @@ interface Explosion extends Instance {
 
 /** The FaceInstance class is an abstract class from which the [Decal](https://developer.roblox.com/en-us/api-reference/class/Decal) class inherits. */
 interface FaceInstance extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Decal" | "Texture";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_FaceInstance: unique symbol;
 	/** Sets what face of the brick the object appears on. */
 	Face: Enum.NormalId;
 }
@@ -6827,8 +7284,13 @@ interface FaceInstance extends Instance {
  * *   If the effect of lighting on the image needs to be altered, the [SurfaceGui](https://developer.roblox.com/en-us/api-reference/class/SurfaceGui) object should be used
  */
 interface Decal extends FaceInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Decal" | "Texture";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Decal: unique symbol;
 	/** The [Color3](https://developer.roblox.com/en-us/api-reference/datatype/Color3) tint of the [Decal](https://developer.roblox.com/en-us/api-reference/class/Decal).
 	 * 
 	 * Developers should note that this property only sets the tint of the decal, rather than the color. This means, unless the image associated with the [Decal](https://developer.roblox.com/en-us/api-reference/class/Decal) was originally white (RGB = 1,1,1) then the color cannot be freely changed using this property.
@@ -6927,8 +7389,13 @@ interface Decal extends FaceInstance {
  * *   If the effect of lighting on the image needs to be altered, the [SurfaceGui](https://developer.roblox.com/en-us/api-reference/class/SurfaceGui) object should be used
  */
 interface Texture extends Decal {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Texture";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Texture: unique symbol;
 	/** **OffsetStudsU** determines how far the rendered texture is offset on the horizontal axis in studs.
 	 * 
 	 * Example
@@ -7005,8 +7472,13 @@ interface Texture extends Decal {
 
 /** The base class for the legacy motor system. */
 interface Feature extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Hole" | "MotorFeature";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Feature: unique symbol;
 	/** Sets what side of the Parent the object is on. */
 	FaceId: Enum.NormalId;
 	/** Controls how the Feature is positioned on it's parent's surface, in correspondence to the Feature's [Feature.LeftRight](https://developer.roblox.com/en-us/api-reference/property/Feature/LeftRight) and [Feature.TopBottom](https://developer.roblox.com/en-us/api-reference/property/Feature/TopBottom) properties. */
@@ -7019,14 +7491,24 @@ interface Feature extends Instance {
 
 /** A Hole is an unused type of surface joint. It can be connected to a [MotorFeature](https://developer.roblox.com/en-us/api-reference/class/MotorFeature) object by using a [VelocityMotor](https://developer.roblox.com/en-us/api-reference/class/VelocityMotor). */
 interface Hole extends Feature {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Hole";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Hole: unique symbol;
 }
 
 /** A MotorFeature is an unused type of surface joint. It can be connected to a [Hole](https://developer.roblox.com/en-us/api-reference/class/Hole) object by using a [VelocityMotor](https://developer.roblox.com/en-us/api-reference/class/VelocityMotor). */
 interface MotorFeature extends Feature {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "MotorFeature";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_MotorFeature: unique symbol;
 }
 
 /**   
@@ -7046,8 +7528,13 @@ interface MotorFeature extends Feature {
  * Unlike actual flames, the Fire object **does not spread on its own**. If you notice this behavior in your game, it is happening because of a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
  */
 interface Fire extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Fire";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Fire: unique symbol;
 	/** The Color property determines the color of the larger particles emit by a [Fire](https://developer.roblox.com/en-us/api-reference/class/Fire) object. It is essentially the color of the outer portion of the flame. Below, you can see the Color of the flame is set to blue to differentiate with the smaller, inner particles which have [Fire.SecondaryColor](https://developer.roblox.com/en-us/api-reference/property/Fire/SecondaryColor) set to white.
 	 * 
 	 * ![A Fire with Color set to blue](https://developer.roblox.com/assets/blt925890091ac70b39/Fire_Colors.png)
@@ -7115,8 +7602,13 @@ interface Fire extends Instance {
  * ![enter image description here](https://developer.roblox.com/assets/blt847013d8fcc8beb3/addFolder.png)
  */
 interface Folder extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Folder";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Folder: unique symbol;
 }
 
 /** A [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField) protects a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) from taking damage using the [Humanoid:TakeDamage](https://developer.roblox.com/en-us/api-reference/function/Humanoid/TakeDamage) function, and protects [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s from having their joints broken due to an [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion).
@@ -7153,8 +7645,13 @@ interface Folder extends Instance {
  * When parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) the effect will be emitted from the part's [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position).
  */
 interface ForceField extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ForceField";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ForceField: unique symbol;
 	/** Determines whether or not the [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField)'s particle effect is visible.
 	 * 
 	 * When is set to true, a particle effect is created, a number of rules determine where this effect will be emitted from.
@@ -7216,8 +7713,13 @@ interface ForceField extends Instance {
  * API members that work with _Asset IDs_ **will not** work with new game passes as they do not have them.
  */
 interface GamePassService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "GamePassService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GamePassService: unique symbol;
 	/** This item is deprecated. Do not use it for new work. */
 	PlayerHasPass(this: GamePassService, player: Player, gamePassId: number): boolean;
 }
@@ -7227,8 +7729,13 @@ interface GamePassService extends Instance {
  * See the `Articles/Data store|Data Stores` article for an in-depth guide on data structure, management, error handling, etc.
  */
 interface GlobalDataStore extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "GlobalDataStore" | "OrderedDataStore";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GlobalDataStore: unique symbol;
 	/** This function returns the value of the entry in the [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) with the given key. If the key does not exist, returns `nil`. This function caches for about 4 seconds, so you cannot be sure that it returns the current value saved on the Roblox servers.
 	 * 
 	 * If this function throws an error, the `Articles/Datastore Errors|error message` will describe the problem. Note that there are also [limits](https://developer.roblox.com/en-us/api-reference/class/Articles/Datastore Errors) that apply to this function.
@@ -7292,8 +7799,13 @@ interface GlobalDataStore extends Instance {
  * See the `Articles/Data store|Data Stores` article for an overview on using ordered data stores.
  */
 interface OrderedDataStore extends GlobalDataStore {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "OrderedDataStore";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_OrderedDataStore: unique symbol;
 	/** Returns a [DataStorePages](https://developer.roblox.com/en-us/api-reference/class/DataStorePages) object. The sort order is determined by **ascending**, the length of each page by **pageSize**, and **minValue** /**maxValue** are optional parameters which filter the results.
 	 * 
 	 * If this function throws an error, the `Articles/Datastore Errors|error message` will describe the problem.
@@ -7316,8 +7828,13 @@ interface OrderedDataStore extends GlobalDataStore {
  * The service has a number of useful applications, such as detecting if a player is an ally or enemy upon joining the game.
  */
 interface GroupService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "GroupService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GroupService: unique symbol;
 	/** Returns a [StandardPages](https://developer.roblox.com/en-us/api-reference/class/StandardPages) object including information on all of the specified group's allies.
 	 * 
 	 * This pages does not include a list of group IDs but instead a list of group information tables, mirroring the format of those returned by [GroupService:GetGroupInfoAsync](https://developer.roblox.com/en-us/api-reference/function/GroupService/GetGroupInfoAsync). See below for the structure of these tables.
@@ -7481,14 +7998,24 @@ interface GroupService extends Instance {
 
 /** GuiBase is an abstract class which most graphical user interface objects inherit from. */
 interface GuiBase extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ArcHandles" | "BillboardGui" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "DockWidgetPluginGui" | "FloorWire" | "Frame" | "GuiMain" | "Handles" | "ImageButton" | "ImageHandleAdornment" | "ImageLabel" | "InstanceAdornment" | "LineHandleAdornment" | "ParabolaAdornment" | "QWidgetPluginGui" | "ScreenGui" | "ScrollingFrame" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "SphereHandleAdornment" | "SurfaceGui" | "SurfaceSelection" | "TextBox" | "TextButton" | "TextLabel" | "VideoFrame" | "ViewportFrame";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GuiBase: unique symbol;
 }
 
 /** GuiBase2d is an abstract class inherited by 2D GUI Objects. */
 interface GuiBase2d extends GuiBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BillboardGui" | "DockWidgetPluginGui" | "Frame" | "GuiMain" | "ImageButton" | "ImageLabel" | "QWidgetPluginGui" | "ScreenGui" | "ScrollingFrame" | "SurfaceGui" | "TextBox" | "TextButton" | "TextLabel" | "VideoFrame" | "ViewportFrame";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GuiBase2d: unique symbol;
 	/** AbsolutePosition is a read-only property that provides the screen position of a UI element in pixels. This represents the actual pixel position at which an element renders as a result of its ancestors' sizes and positions. The [GuiObject.AnchorPoint](https://developer.roblox.com/en-us/api-reference/property/GuiObject/AnchorPoint) also influences the AbsolutePosition. This property, [GuiBase2d.AbsoluteSize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteSize) and [GuiBase2d.AbsoluteRotation](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteRotation) are a group of properties that all describe the final rendered orientation of a UI element.
 	 * 
 	 * For example, on a 1920 by 1080 screen, a [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) with position {0.5, 0}, {0.5, 0} would have an AbsolutePosition of (960, 540). If you were to place another Frame with position {0, 50}, {0, 50} inside that one, its AbsolutePosition would be (1010, 590). This example assumes each Frame has the defualt [GuiObject.AnchorPoint](https://developer.roblox.com/en-us/api-reference/property/GuiObject/AnchorPoint) of (0, 0), the top left corner.
@@ -7544,8 +8071,13 @@ interface GuiBase2d extends GuiBase {
  * GuiObject also defines events for user input like [GuiObject.MouseEnter](https://developer.roblox.com/en-us/api-reference/event/GuiObject/MouseEnter), [GuiObject.TouchTap](https://developer.roblox.com/en-us/api-reference/event/GuiObject/TouchTap), [GuiObject.InputBegan](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputBegan), [GuiObject.InputChanged](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputChanged) and [GuiObject.InputEnded](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputEnded). The last three of these mimic the events of `UserinputService` of the same name. Although it is possible to detect mouse button events on any GuiObject using [GuiObject.InputBegan](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputBegan), only [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) and [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton) have dedicated events for these (e.g. `TextButton/MouseButton1Down`). This event ought not be used for general button activation since not all platforms use a mouse; see `TextButton/Activated`.
  */
 interface GuiObject extends GuiBase2d {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Frame" | "ImageButton" | "ImageLabel" | "ScrollingFrame" | "TextBox" | "TextButton" | "TextLabel" | "VideoFrame" | "ViewportFrame";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GuiObject: unique symbol;
 	/** This property determines whether a [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) will sink input to 3D space, such as underlying models with a [ClickDetector](https://developer.roblox.com/en-us/api-reference/class/ClickDetector). In other words, if the player attempts to click a ClickDetector with the mouse hovering over an Active UI element, the UI will block the input from reaching the ClickDetector.
 	 * 
 	 * For [GuiButton](https://developer.roblox.com/en-us/api-reference/class/GuiButton) objects ([ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) and [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton)), this property determines whether [GuiButton.Activated](https://developer.roblox.com/en-us/api-reference/event/GuiButton/Activated) fires ([GuiButton.AutoButtonColor](https://developer.roblox.com/en-us/api-reference/property/GuiButton/AutoButtonColor) will still work for those as well). The events [InputBegan](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputBegan), [InputChanged](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputChanged), and [InputEnded](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputEnded) work as normal no matter the value of this property.
@@ -8107,8 +8639,13 @@ interface GuiObject extends GuiBase2d {
 
 /** Frame is a [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) that renders as a plain rectangle with no other content. They are the simplest concrete example of a [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject), as they provide very little additional functionality (`Frame.FrameStyle`). Despite this, Frames are useful as containers for other [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject)s, such as [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel), [ImageLabel](https://developer.roblox.com/en-us/api-reference/class/ImageLabel). The key benefit to using a Frame over a [Folder](https://developer.roblox.com/en-us/api-reference/class/Folder) as a container object is the ability to further manipulate the `GuiObject.Size` and `GuiObject.Position` of any descendant [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject)s. */
 interface Frame extends GuiObject {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Frame";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Frame: unique symbol;
 	/** Sets what the frame looks like from a selection of pre-determined styles. */
 	Style: Enum.FrameStyle;
 }
@@ -8118,8 +8655,13 @@ interface Frame extends GuiObject {
  * The most import ant event of a GuiButton is [GuiButton.Activated](https://developer.roblox.com/en-us/api-reference/event/GuiButton/Activated), a **multi-platform event** that fires when the button is activated. When using a mouse, this means clicking the button and releasing with the cursor still over the UI object. For touch, the same applies but with a touch instead of button press. Finally, for gamepads, [GuiButton.Activated](https://developer.roblox.com/en-us/api-reference/event/GuiButton/Activated) fires if a GuiButton is selected when the A-button is pressed and released. In short, this event is very useful for multi-platform user interface programming as it provides a nice general interface for a single user input.
  */
 interface GuiButton extends GuiObject {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ImageButton" | "TextButton";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GuiButton: unique symbol;
 	/** The AutoButtonColor determines whether the button automatically changes color when the user's [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse) hovers over or clicks on it.
 	 * 
 	 * If true, the button will automatically change color when the mouse hovers over or clicks on it. If false, the button will not change.
@@ -8198,8 +8740,13 @@ interface GuiButton extends GuiObject {
  * You can disable image rendering by setting [ImageButton.ImageTransparency](https://developer.roblox.com/en-us/api-reference/property/ImageButton/ImageTransparency) to 1. This will leave you with a plain rectangle that can be used as a button. However, it may be better to use a blank [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton) for this.
  */
 interface ImageButton extends GuiButton {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ImageButton";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ImageButton: unique symbol;
 	/** A textureId that could be set on the `ImageButton|ImageButton's` properties. When the button is hovered, it will render HoverImage if specified. */
 	HoverImage: string;
 	/** The Image property is a content-type property that should hold the asset ID of a Decal or Image on the Roblox website. It functions identically to [Decal.Texture](https://developer.roblox.com/en-us/api-reference/property/Decal/Texture) with regards to loading the image from the Roblox website. The rendered image will be colorized using [ImageButton.ImageColor3](https://developer.roblox.com/en-us/api-reference/property/ImageButton/ImageColor3). It is possible to further manipulate the rendered image into sliced ([ImageButton.SliceCenter](https://developer.roblox.com/en-us/api-reference/property/ImageButton/SliceCenter)), tiled ([ImageButton.ScaleType](https://developer.roblox.com/en-us/api-reference/property/ImageButton/ScaleType)) and nine-slice images using other image properties. */
@@ -8261,8 +8808,13 @@ interface ImageButton extends GuiButton {
  * You can disable text rendering by setting [TextButton.TextTransparency](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextTransparency) to 1. This will leave you with a plain rectangle that can be used as a button.
  */
 interface TextButton extends GuiButton {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TextButton";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TextButton: unique symbol;
 	/** The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property.
@@ -8355,8 +8907,13 @@ interface TextButton extends GuiButton {
 
 /** GuiLabel is an abstract class that inherits from [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject). It is the base class for [ImageLabel](https://developer.roblox.com/en-us/api-reference/class/ImageLabel) and [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel). Unlike [GuiButton](https://developer.roblox.com/en-us/api-reference/class/GuiButton), objects of this type will not register click events, but instead serve as non-interactive labels. It does not implement any further properties, events or methods. */
 interface GuiLabel extends GuiObject {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ImageLabel" | "TextLabel";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GuiLabel: unique symbol;
 }
 
 /** An ImageLabel renders a rectangle, like a [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) does, with an image. The image must be a decal uploaded to the Roblox website. The display of the image can be manipulated through the [ImageLabel.ImageColor3](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ImageColor3) and `ImageLable/ImageTransparency` properties. To display only the image and hide the rectangle, set [GuiObject.BackgroundTransparency](https://developer.roblox.com/en-us/api-reference/property/GuiObject/BackgroundTransparency) to 1.
@@ -8371,8 +8928,13 @@ interface GuiLabel extends GuiObject {
  * *   Tiled images can be created by setting [ImageLabel.ScaleType](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ScaleType) to `Enum.ScaleType.Tiled`, then [ImageLabel.TileSize](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/TileSize) to be the size of rendered tiles.
  */
 interface ImageLabel extends GuiLabel {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ImageLabel";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ImageLabel: unique symbol;
 	/** The Image property is a content-type property that should hold the asset ID of a Decal or Image on the Roblox website. It functions identically to [Decal.Texture](https://developer.roblox.com/en-us/api-reference/property/Decal/Texture) with regards to loading the image from the Roblox website. The rendered image will be colorized using [ImageLabel.ImageColor3](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ImageColor3). It is possible to further manipulate the rendered image into sliced ([ImageLabel.SliceCenter](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/SliceCenter)), tiled ([ImageLabel.ScaleType](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ScaleType)) and nine-slice images using other image properties. */
 	Image: string;
 	/** The ImageColor3 property determines how an image is colorized. When set to white, no colorization occurs. This property is very useful for reusing image assets: If the source image is completely white with transparency, you can set the entire color of the image at once with this property. */
@@ -8434,8 +8996,13 @@ interface ImageLabel extends GuiLabel {
  * A [UITextSizeConstraint](https://developer.roblox.com/en-us/api-reference/class/UITextSizeConstraint) object can be used to constrain the size of text with [TextLabel.TextScaled](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextScaled) enabled.
  */
 interface TextLabel extends GuiLabel {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TextLabel";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TextLabel: unique symbol;
 	/** The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) property.
@@ -8536,8 +9103,13 @@ interface TextLabel extends GuiLabel {
 
 /** The ScrollingFrame is a special [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) that handles all scrolling for you, with a range of different ways to customize how the scrolling works. An in-depth tutorial for the ScrollingFrame can be found [here](https://developer.roblox.com/articles/Creating-a-Scrolling-Frame-GUI). */
 interface ScrollingFrame extends GuiObject {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ScrollingFrame";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ScrollingFrame: unique symbol;
 	/** The size in pixels of the frame, without the scrollbars.The size in pixels of the frame, without the scrollbars. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -8690,8 +9262,13 @@ interface ScrollingFrame extends GuiObject {
  * Games that facilitate player-to-player communication using text, such as custom chat or nametags, must properly filter such text using [TextService:FilterStringAsync](https://developer.roblox.com/en-us/api-reference/function/TextService/FilterStringAsync) or [Chat:FilterStringAsync](https://developer.roblox.com/en-us/api-reference/function/Chat/FilterStringAsync). If this is not properly done, your game may receive moderation action.
  */
 interface TextBox extends GuiObject {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TextBox";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TextBox: unique symbol;
 	/** Determines whether clicking on the TextBox will clear its [TextBox.Text](https://developer.roblox.com/en-us/api-reference/property/TextBox/Text) property */
 	ClearTextOnFocus: boolean;
 	/** **CursorPosition** determines the offset of the text cursor in bytes, or -1 if the TextBox is not currently being edited. A value of 1 represents the beginning, the position before the first byte in the [Text](https://developer.roblox.com/en-us/api-reference/property/TextBox/Text) property. When used in conjunction with the [SelectionStart](https://developer.roblox.com/en-us/api-reference/property/TextBox/SelectionStart) property, it is possible to both get and set selected text within a TextBox.
@@ -8856,8 +9433,13 @@ interface TextBox extends GuiObject {
  * A VideoFrame is considered **“global”** if it is not placed underneath SurfaceGui on a BasePart. In this case, the sound will play at the same volume throughout the entire place.
  */
 interface VideoFrame extends GuiObject {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "VideoFrame";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_VideoFrame: unique symbol;
 	/** This property will be true when the [VideoFrame.Video](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Video) has loaded from Roblox servers and is ready to play.This property will be true when the [VideoFrame.Video](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Video) has loaded from Roblox servers and is ready to play. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -8908,8 +9490,13 @@ interface VideoFrame extends GuiObject {
  * For a step-by-step walkthrough, see the `articles/ViewportFrame GUI|ViewportFrame GUI` article.
  */
 interface ViewportFrame extends GuiObject {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ViewportFrame";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ViewportFrame: unique symbol;
 	/** This property determines the lighting hue applied to the area within the [ViewportFrame](https://developer.roblox.com/en-us/api-reference/class/ViewportFrame). This property defaults to 200, 200, 200 (ghost grey). */
 	Ambient: Color3;
 	/** This property is a [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) instance that is used to render children objects. Defaults to _nil_.
@@ -8969,8 +9556,13 @@ interface ViewportFrame extends GuiObject {
 
 /** LayerCollector is an abstract class inherited by 2D GUI Objects which render GuiObjects in layers. */
 interface LayerCollector extends GuiBase2d {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BillboardGui" | "DockWidgetPluginGui" | "GuiMain" | "QWidgetPluginGui" | "ScreenGui" | "SurfaceGui";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_LayerCollector: unique symbol;
 	/** Toggles the visibility of the LayerCollector. */
 	Enabled: boolean;
 	/** If set to false, this LayerCollector will only be cloned once into each [Player](https://developer.roblox.com/en-us/api-reference/class/Player) [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui), and the LayerCollector will not be deleted when the player respawns.
@@ -8984,8 +9576,13 @@ interface LayerCollector extends GuiBase2d {
 
 /** BillboardGuis are containers for GUI objects that appear in the 3D space. A BillboardGui's position is determined by the position of it's [BillboardGui.Adornee](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/Adornee). If the adornee is set to [Part](https://developer.roblox.com/en-us/api-reference/class/Part) then the [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position) will be used. If it is set to [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) then the [Attachment.WorldPosition](https://developer.roblox.com/en-us/api-reference/property/Attachment/WorldPosition) will be used. BillboardGui always faces the camera, and can change its size with distance or remain the same size on the screen. Unlike the text that appears above models with Humanoids' heads, this does not disappear with distance. */
 interface BillboardGui extends LayerCollector {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BillboardGui";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BillboardGui: unique symbol;
 	/** Whether or not mouse events will be passed to objects layered below. */
 	Active: boolean;
 	/** Adornee sets the part or attachment that the BillboardGui is adorned too. */
@@ -9113,8 +9710,13 @@ interface BillboardGui extends LayerCollector {
  * To make sure a ScreenGui is displayed to your player, it should be parented into the [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui), as that service will clone it's contents into each player's [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui) when they join the game.
  */
 interface ScreenGui extends LayerCollector {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "GuiMain" | "ScreenGui";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ScreenGui: unique symbol;
 	/** This property controls the order that multiple ScreenGuis are drawn.
 	 * 
 	 * ScreenGuis with a higher DisplayOrder will be drawn on top of ScreenGuis with a lower DisplayOrder. DisplayOrder can have any value greater than 0 and defaults to 0.Controls the order that multiple ScreenGuis are drawn.
@@ -9126,8 +9728,13 @@ interface ScreenGui extends LayerCollector {
 
 /** **Note:** SurfaceGuis must be descendants of PlayerGui in order to know the player who is interacting with it.Allows for the rendering of GUI elements onto a part's surface in the 3D world, whilst allowing for basic user interaction to occur. */
 interface SurfaceGui extends LayerCollector {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SurfaceGui";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SurfaceGui: unique symbol;
 	/** Whether or not mouse events will be passed to objects layered below. */
 	Active: boolean;
 	/** Sets the object that the SurfaceGui is adorned too. In other words, this defines which [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) the SurfaceGui is attached to. */
@@ -9152,8 +9759,13 @@ interface SurfaceGui extends LayerCollector {
 
 /** An abstract class for 3D GUI elements that are rendered in the world. */
 interface GuiBase3d extends GuiBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ArcHandles" | "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "FloorWire" | "Handles" | "ImageHandleAdornment" | "InstanceAdornment" | "LineHandleAdornment" | "ParabolaAdornment" | "SelectionBox" | "SelectionPartLasso" | "SelectionPointLasso" | "SelectionSphere" | "SphereHandleAdornment" | "SurfaceSelection";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GuiBase3d: unique symbol;
 	/** Sets the color of a GUI object. */
 	Color3: Color3;
 	/** Sets the transparency of a GUI object, where 1 is invisible and 0 is completely visible. */
@@ -9164,8 +9776,13 @@ interface GuiBase3d extends GuiBase {
 
 /** A FloorWire attempts to make a wire from two of its properties: [FloorWire.From](https://developer.roblox.com/en-us/api-reference/property/FloorWire/From) and [FloorWire.To](https://developer.roblox.com/en-us/api-reference/property/FloorWire/To), which both need to be set to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). It sometimes goes through bricks but the majority of the time it works fine. It starts at From's center and goes to To's center. Which side of each one it goes into depends on the BaseParts's positions. It chooses the fastest route. */
 interface FloorWire extends GuiBase3d {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "FloorWire";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_FloorWire: unique symbol;
 	/** A decimal number between 0 and 1, through which you can control how far all of the decals are along the wire. */
 	CycleOffset: number;
 	/** The object that the FloorWire travels from. */
@@ -9185,8 +9802,13 @@ interface FloorWire extends GuiBase3d {
 }
 
 interface InstanceAdornment extends GuiBase3d {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "InstanceAdornment" | "SelectionBox";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_InstanceAdornment: unique symbol;
 	/** [NO DOCUMENTATION] */
 	Adornee: Instance | undefined;
 }
@@ -9205,8 +9827,13 @@ interface InstanceAdornment extends GuiBase3d {
  * *   `articles/Selection Boxes`, to learn more about using this object
  */
 interface SelectionBox extends InstanceAdornment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SelectionBox";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SelectionBox: unique symbol;
 	/** **LineThickness** determines the thickness of the box's outlines. It is measured in studs, the same unit for [BasePart.Size](https://developer.roblox.com/en-us/api-reference/property/BasePart/Size). If set to 0, the outline will not be visible at all.
 	 * 
 	 * ![Three SelectionBoxes with LineThickness values of 0.075, 0.15 (default) and 0.3](https://developer.roblox.com/assets/blt1d73c3a921c12384/SelectionBox.LineThickness.jpg)
@@ -9242,16 +9869,26 @@ interface SelectionBox extends InstanceAdornment {
 
 /** The PVAdornment class is an abstract class of which the inheritors can be adorned to objects of the PVInstance class. */
 interface PVAdornment extends GuiBase3d {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "ParabolaAdornment" | "SelectionSphere" | "SphereHandleAdornment";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PVAdornment: unique symbol;
 	/** The [PVInstance](https://developer.roblox.com/api-reference/class/PVInstance "PVInstance") the PVAdornment is attached to. An adornment will stay positioned and rotated relative to its adornee, even if the adornee moves. */
 	Adornee: PVInstance | undefined;
 }
 
 /** **Note:** For handles to be interactive, they must be parented to a player's [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui) or the [CoreGui](https://developer.roblox.com/en-us/api-reference/class/CoreGui).**HandleAdornment** is an abstract class inherited by 3D handle adornments. */
 interface HandleAdornment extends PVAdornment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BoxHandleAdornment" | "ConeHandleAdornment" | "CylinderHandleAdornment" | "ImageHandleAdornment" | "LineHandleAdornment" | "SphereHandleAdornment";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_HandleAdornment: unique symbol;
 	/** [NO DOCUMENTATION] */
 	AdornCullingMode: Enum.AdornCullingMode;
 	/** Forces this object to render on top of all 3d objects in the Workspace. Even if the adornment is behind a part based on its [HandleAdornment.CFrame](https://developer.roblox.com/en-us/api-reference/property/HandleAdornment/CFrame), if **AlwaysOnTop** is true then the adornment will still draw on top.
@@ -9290,8 +9927,13 @@ interface HandleAdornment extends PVAdornment {
  * The **BoxHandleAdornment** is a rectangular prism that can be adorned to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). This adornment can listen to input events and is commonly used to make dragger tools.
  */
 interface BoxHandleAdornment extends HandleAdornment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BoxHandleAdornment";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BoxHandleAdornment: unique symbol;
 	/** The size of the adornment. */
 	Size: Vector3;
 }
@@ -9301,8 +9943,13 @@ interface BoxHandleAdornment extends HandleAdornment {
  * A **ConeHandleAdornment** is a cone that can be adorned to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). This adornment can listen to input events and is commonly used to make dragger tools.
  */
 interface ConeHandleAdornment extends HandleAdornment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ConeHandleAdornment";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ConeHandleAdornment: unique symbol;
 	/** The height of the cone adornment. */
 	Height: number;
 	/** The radius of the cone adornment. */
@@ -9314,8 +9961,13 @@ interface ConeHandleAdornment extends HandleAdornment {
  * The **CylinderHandleAdornment** is a cylinder that can be adorned to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). This adornment can listen to input events and is commonly used to make dragger tools.
  */
 interface CylinderHandleAdornment extends HandleAdornment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CylinderHandleAdornment";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CylinderHandleAdornment: unique symbol;
 	/** [NO DOCUMENTATION] */
 	Angle: number;
 	/** The height of the cylinder adornment. */
@@ -9331,8 +9983,13 @@ interface CylinderHandleAdornment extends HandleAdornment {
  * The **ImageHandleAdornment** is an image that can be adorned to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). This adornment can listen to input events and is commonly used to make dragger tools.
  */
 interface ImageHandleAdornment extends HandleAdornment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ImageHandleAdornment";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ImageHandleAdornment: unique symbol;
 	/** The image to draw for the adornment. */
 	Image: string;
 	/** The size in studs of the image. */
@@ -9344,8 +10001,13 @@ interface ImageHandleAdornment extends HandleAdornment {
  * The **LineHandleAdornment** is a line that can be adorned to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). This line starts at the center of the adornment's [HandleAdornment.CFrame](https://developer.roblox.com/en-us/api-reference/property/HandleAdornment/CFrame) (offset by the adornment's [HandleAdornment.SizeRelativeOffset](https://developer.roblox.com/en-us/api-reference/property/HandleAdornment/SizeRelativeOffset)) and will be oriented along its CFrame. This adornment can listen to input events and is commonly used to make dragger tools.
  */
 interface LineHandleAdornment extends HandleAdornment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "LineHandleAdornment";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_LineHandleAdornment: unique symbol;
 	/** The length of the line. */
 	Length: number;
 	/** The thickness of the line in pixels. */
@@ -9357,8 +10019,13 @@ interface LineHandleAdornment extends HandleAdornment {
  * The **SphereHandleAdornment** is a sphere that can be adorned to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). This adornment can listen to input events and is commonly used to make dragger tools.
  */
 interface SphereHandleAdornment extends HandleAdornment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SphereHandleAdornment";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SphereHandleAdornment: unique symbol;
 	/** The radius of the sphere adornment. */
 	Radius: number;
 }
@@ -9367,8 +10034,13 @@ interface SphereHandleAdornment extends HandleAdornment {
  * This object can only be created by [CoreScript](https://developer.roblox.com/en-us/api-reference/class/CoreScript) at the moment.
  */
 interface ParabolaAdornment extends PVAdornment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ParabolaAdornment";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ParabolaAdornment: unique symbol;
 }
 
 /** **SelectionSphere** is an object which renders a 3D sphere around its [Adornee](https://developer.roblox.com/en-us/api-reference/property/PVAdornment/Adornee) when it is a descendant of the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) or anywhere where GUI objects are rendered. The sphere's geometry consists of a ring/outline in addition to a surface. By default, only the outline is visible.
@@ -9380,8 +10052,13 @@ interface ParabolaAdornment extends PVAdornment {
  * The SelectionSphere object does not capture any form of input; it is solely a visual effect. To capture simple pointer input on the adornee, consider using a [ClickDetector](https://developer.roblox.com/en-us/api-reference/class/ClickDetector).
  */
 interface SelectionSphere extends PVAdornment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SelectionSphere";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SelectionSphere: unique symbol;
 	/** **SurfaceColor3** determines the color of the SelectionSphere's surface.
 	 * 
 	 * See also
@@ -9404,16 +10081,26 @@ interface SelectionSphere extends PVAdornment {
 
 /** An abstract class for GUI elements that are adorned to (displayed as attached to) objects deriving from [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). */
 interface PartAdornment extends GuiBase3d {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ArcHandles" | "Handles" | "SurfaceSelection";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PartAdornment: unique symbol;
 	/** Sets the object to adorn to. */
 	Adornee: BasePart | undefined;
 }
 
 /** An abstract class for Handle objects, such as `/ArcHandles` and `/Handles`. */
 interface HandlesBase extends PartAdornment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ArcHandles" | "Handles";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_HandlesBase: unique symbol;
 }
 
 /** For handles to be interactive, they must be parented to a player's [PlayerGui](PlayerGui) or the [CoreGui](CoreGui).
@@ -9423,8 +10110,13 @@ interface HandlesBase extends PartAdornment {
  * ![ArcHandles Example](https://developer.roblox.com/assets/bltbba19782caf0574c/ArchHandlesExample.png)
  */
 interface ArcHandles extends HandlesBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ArcHandles";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ArcHandles: unique symbol;
 	/** Sets the current Axes ArcHandles will show. */
 	Axes: Axes;
 	/** Fired when the left mouse button goes down on one of the GUI handles. */
@@ -9444,8 +10136,13 @@ interface ArcHandles extends HandlesBase {
  * The **Handles** object places 3D handles around any object that its Adornee is set to. The Adornee property must be set to a 3D object for the handles to appear. The color can be changed, and the shape of the handles can be set to either arrows or spheres.
  */
 interface Handles extends HandlesBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Handles";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Handles: unique symbol;
 	/** Sets which sides the GUI handles will appear. */
 	Faces: Faces;
 	/** Sets the GUI style of the handles. Currently there are only two types; Resize and Movement. */
@@ -9469,32 +10166,52 @@ interface Handles extends HandlesBase {
  * The SurfaceSelection object is typically used by [Plugin](https://developer.roblox.com/en-us/api-reference/class/Plugin) when the user is selecting the face of a Part. However, it is not limited to plugin use.
  */
 interface SurfaceSelection extends PartAdornment {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SurfaceSelection";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SurfaceSelection: unique symbol;
 	/** Sets which side the SurfaceSelection will appear on, on the adorned [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). */
 	TargetSurface: Enum.NormalId;
 }
 
 /** The SelectionLasso class is an abstract class of which the inheritors are able to be attached to an object of the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) class or the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) class. They can also be attached to a point in the tridimensional space indicated by a Vector3 value. */
 interface SelectionLasso extends GuiBase3d {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SelectionPartLasso" | "SelectionPointLasso";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SelectionLasso: unique symbol;
 	/** The Humanoid that the Lasso belongs to, and will come from. */
 	Humanoid: Humanoid | undefined;
 }
 
 /** An instance used to display a “lasso” between a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) Torso and a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). It should be noted that the [GuiBase3d.Transparency](https://developer.roblox.com/en-us/api-reference/property/GuiBase3d/Transparency) property doesn't currently work. */
 interface SelectionPartLasso extends SelectionLasso {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SelectionPartLasso";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SelectionPartLasso: unique symbol;
 	/** Sets the target of the lasso object. */
 	Part: BasePart | undefined;
 }
 
 /** A 3D GUI object which displays a lasso between the defined Humanoid and a given Vector3 point. */
 interface SelectionPointLasso extends SelectionLasso {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SelectionPointLasso";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SelectionPointLasso: unique symbol;
 	/** Sets the Vector3 target of the lasso object. */
 	Point: Vector3;
 }
@@ -9504,8 +10221,13 @@ interface SelectionPointLasso extends SelectionLasso {
  * This service has a lot of hidden members, which are mainly used internally by Roblox's [CoreScripts](https://developer.roblox.com/en-us/api-reference/class/CoreScript).
  */
 interface GuiService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "GuiService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GuiService: unique symbol;
 	/** If the select button on a gamepad will automatically set a GUI as the selected object when the Select button is pressed. Turning this off will mean that Gui navigation will still work if GuiNavigationEnabled is enabled but you will have to set SelectedObject manually to start Gui navigation. */
 	AutoSelectGuiEnabled: boolean;
 	/** Toggles whether or not objects in the [CoreGui](https://developer.roblox.com/en-us/api-reference/class/CoreGui) can be navigated using a Gamepad. */
@@ -9635,8 +10357,13 @@ interface GuiService extends Instance {
 
 /** The _Xbox One_ controller and some other USB gamepad controllers have motors built in to provide haptic feedback. Adding rumbles and vibrations can greatly enhance a game's experience and provide subtle feedback that is hard to convey through visuals or audio. */
 interface HapticService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "HapticService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_HapticService: unique symbol;
 	/** Returns the current vibration value set to the specified [UserInputType](https://developer.roblox.com/api-reference/property/InputObject/UserInputType "UserInputType") and [VibrationMotor](https://developer.roblox.com/api-reference/enum/VibrationMotor "VibrationMotor").
 	 * 
 	 * This will not return anything if [SetMotor](https://developer.roblox.com/api-reference/function/HapticService/SetMotor "SetMotor") has not been called prior.
@@ -9651,8 +10378,13 @@ interface HapticService extends Instance {
 }
 
 interface HeightmapImporterService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "HeightmapImporterService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_HeightmapImporterService: unique symbol;
 }
 
 /** This service allows HTTP requests to be sent from game servers. This enables users to create integration with a wide range of third party services such as analytics and storage. One exciting prospect for this service is that if you run and manage your own website, and communicate with it from Roblox, it opens the possibility of remote server management and real time communication with the server, through your site.
@@ -9680,8 +10412,13 @@ interface HeightmapImporterService extends Instance {
  * *   This service is not allowed to send requests to any of the Roblox websites such as [www.roblox.com](http://www.roblox.com).
  */
 interface HttpService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "HttpService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_HttpService: unique symbol;
 	/** The GenerateGUID function randomly creates a [universally unique identifier (UUID)](https://en.wikipedia.org/wiki/Universally_unique_identifier) string.
 	 * 
 	 * The sixteen octets of a UUID are represented as 32 hexadecimal (base 16) digits, displayed in 5 groups separated by hyphens in the form `8-4-4-4-12` for a total of 36 characters. For example: `123e4567-e89b-12d3-a456-426655440000`.
@@ -9888,8 +10625,13 @@ interface HttpService extends Instance {
  *         *   HeadScale
  */
 interface Humanoid extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Humanoid";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Humanoid: unique symbol;
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 	GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
 	LoadAnimation(this: Humanoid, animation: Animation): AnimationTrack;
@@ -10789,8 +11531,13 @@ interface Humanoid extends Instance {
  * *   `articles/humanoiddescription system|HumanoidDescription System`, for more information on HumanoidDescription
  */
 interface HumanoidDescription extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "HumanoidDescription";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_HumanoidDescription: unique symbol;
 	/** **BackAccessory** is a comma-separated list of asset IDs that determine what accessories should be added when the description is [applied](https://developer.roblox.com/en-us/api-reference/function/Humanoid/ApplyDescription). The list is kept sorted in descending order without duplicates.
 	 * 
 	 * Any accessory can used in this property, even if it is meant to go in a different accessory spot. For example, an accessory meant to go on your back (such as a cape) could be included in [HairAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HairAccessory). An error is thrown if you try to apply a new description which shares any assets with the existing description but a different accessory property.
@@ -11393,13 +12140,23 @@ interface HumanoidDescription extends Instance {
 }
 
 interface ILegacyStudioBridge extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ILegacyStudioBridge" | "LegacyStudioBridge";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ILegacyStudioBridge: unique symbol;
 }
 
 interface LegacyStudioBridge extends ILegacyStudioBridge {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "LegacyStudioBridge";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_LegacyStudioBridge: unique symbol;
 }
 
 /** An **InputObject** represents a single user input, such as mouse movement, touches, key presses and more. It is created when an input begins.
@@ -11416,8 +12173,13 @@ interface LegacyStudioBridge extends ILegacyStudioBridge {
  * *   [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject), whose events related to user input use InputObject
  */
 interface InputObject extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "InputObject";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_InputObject: unique symbol;
 	/** A `Vector3` describing the Delta (change) between mouse/joystick movements.
 	 * 
 	 * This is useful when used with the input's [position](https://developer.roblox.com/en-us/api-reference/property/InputObject/Position) to track the position and movement of the user's mouse/joystick, such as when you're creating custom movement or camera scripts. Consider tracking input object changes using the [Instance.Changed](https://developer.roblox.com/en-us/api-reference/event/Instance/Changed) event or when user input changes via events such as [UserInputService.InputChanged](https://developer.roblox.com/en-us/api-reference/event/UserInputService/InputChanged) and [GuiObject.InputChanged](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputChanged).
@@ -13023,8 +13785,13 @@ interface InputObject extends Instance {
  * *   [AssetService](https://developer.roblox.com/en-us/api-reference/class/AssetService), which can provide information about assets you might want to load using InsertService
  */
 interface InsertService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "InsertService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_InsertService: unique symbol;
 	/** Returns an array of dictionaries, containing information about various Roblox approved sets. */
 	GetBaseSets(this: InsertService): Array<SetInfo>;
 	/** Returns the most recently uploaded models in the specified category. */
@@ -13181,8 +13948,13 @@ interface InsertService extends Instance {
 }
 
 interface InternalContainer extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "InternalContainer";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_InternalContainer: unique symbol;
 }
 
 /** JointInstance is the base class for joints, such as Connectors, Welds, and Snaps.
@@ -13198,8 +13970,13 @@ interface InternalContainer extends Instance {
  * ![Assembly Representation](https://developer.roblox.com/assets/blt42b60e4cb5adeb34/AssemblyTree.png)
  */
 interface JointInstance extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Glue" | "ManualGlue" | "ManualWeld" | "Motor" | "Motor6D" | "Rotate" | "RotateP" | "RotateV" | "Snap" | "VelocityMotor" | "Weld";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_JointInstance: unique symbol;
 	/** This property determines if the joint is currently active in the world. If true, the joint is active.
 	 * 
 	 * If the [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance) is not in [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) or [JointsService](https://developer.roblox.com/en-us/api-reference/class/JointsService), or one of its parts is not in Workspace the joint will be inactive.
@@ -13229,8 +14006,13 @@ interface JointInstance extends Instance {
 
 /** The base class for classic motor joints. */
 interface DynamicRotate extends JointInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RotateP" | "RotateV";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DynamicRotate: unique symbol;
 	/** The base angle of the DynamicRotate object, in radians. */
 	BaseAngle: number;
 }
@@ -13246,8 +14028,13 @@ interface DynamicRotate extends JointInstance {
  * *   Sin: The joint will rotate based on the ParamA and ParamB properties of \`JointInstance/Part0\`. The rotation measured in radians per physics frame is calculated by the function: RotationRate = ParamA \* sin(distributedGameTime \* ParamB). distributedGameTime is the current time of the game measured in seconds.
  */
 interface RotateP extends DynamicRotate {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RotateP";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RotateP: unique symbol;
 }
 
 /** A RotateV object joins two parts together and allows rotation about a set axis. This object is most commonly created by the Motor [SurfaceType](https://developer.roblox.com/en-us/api-reference/enum/SurfaceType). If created through a script, a RotateV's behavior is still governed by the SurfaceInput of [JointInstance.Part0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part0).  
@@ -13261,14 +14048,24 @@ interface RotateP extends DynamicRotate {
  * *   Sin: The joint will rotate based on the ParamA and ParamB properties of \`JointInstance/Part0\`. The rotation measured in radians per physics frame is calculated by the function: RotationRate = ParamA \* sin(distributedGameTime \* ParamB). distributedGameTime is the current time of the game measured in seconds.
  */
 interface RotateV extends DynamicRotate {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RotateV";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RotateV: unique symbol;
 }
 
 /** Glue is a type of joint that can break when enough force is applied. */
 interface Glue extends JointInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Glue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Glue: unique symbol;
 	/** F0 helps determining the Glue face of a [Glue](https://developer.roblox.com/en-us/api-reference/class/Glue), which determines the amount of force needed to break the joint. */
 	F0: Vector3;
 	/** F1 helps determining the Glue face of a [Glue](https://developer.roblox.com/en-us/api-reference/class/Glue), which determines the amount of force needed to break the joint. */
@@ -13281,14 +14078,24 @@ interface Glue extends JointInstance {
 
 /** The ManualSurfaceJointInstance is the base class for [ManualGlue](https://developer.roblox.com/en-us/api-reference/class/ManualGlue). This instance (when created) also used to cause the server to crash, however this behaviour has since been fixed. */
 interface ManualSurfaceJointInstance extends JointInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ManualGlue" | "ManualWeld";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ManualSurfaceJointInstance: unique symbol;
 }
 
 /** **ManualGlue** is a joint created in a similar manner to the [ManualWeld](https://developer.roblox.com/en-us/api-reference/class/ManualWeld) class. It functions identically to the [Glue](https://developer.roblox.com/en-us/api-reference/class/Glue) class. */
 interface ManualGlue extends ManualSurfaceJointInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ManualGlue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ManualGlue: unique symbol;
 }
 
 /** An object that holds two parts together. It is commonly created when the _Join Always_ setting in Studio is turned on.
@@ -13308,14 +14115,24 @@ interface ManualGlue extends ManualSurfaceJointInstance {
  * ManualWelds do not have any directionality. [Part0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part0) or [Part1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part1), doesn't matter. You can imagine rigid joints forming a tree branching down from the root part. All the parts down the tree from root will move, and their welded “children” in this tree will move with them.
  */
 interface ManualWeld extends ManualSurfaceJointInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ManualWeld";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ManualWeld: unique symbol;
 }
 
 /** An object used to make movable [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance) between two Parts. */
 interface Motor extends JointInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Motor" | "Motor6D";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Motor: unique symbol;
 	/** Displays the current rotation of the motor in radians.Displays the current rotation of the motor in radians. *
 	 * Tags: NotReplicated
 	 */
@@ -13333,8 +14150,13 @@ interface Motor extends JointInstance {
  * Models whose parts are joined by Motor6D are usually referred to as rigs, typically for [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid)s. There are two primary kinds of rigs for [Player](https://developer.roblox.com/en-us/api-reference/class/Player) avatars: R6 and R15.
  */
 interface Motor6D extends Motor {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Motor6D";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Motor6D: unique symbol;
 	/** The internal CFrame that is manipulated by Animations when a Motor6D is being animated. It is recommended to use this property for custom animations rather than [JointInstance.C0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C0) and [JointInstance.C1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C1).
 	 * 
 	 * Transform is the transformation between the “parent” [part](https://developer.roblox.com/en-us/api-reference/class/BasePart) and the “child” part. The “parent” part will always be the part that is more directly connected to the JointInstance.C0. This is not affected by which part is assigned to [JointInstance.Part0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part0) and which is [JointInstance.Part1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part1). If the side the root part is on changes the interpretation of Transform will be inverted.
@@ -13355,8 +14177,13 @@ interface Motor6D extends Motor {
 
 /** The Rotate object is used to allow rotation between two parts. Most commonly created through the Hinge SurfaceType on a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). If created like this, the rotation will be about the normal vector from the face of the part the hinge is placed on. If created through a script the axis and point of rotation can be defined arbitrarily. */
 interface Rotate extends JointInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Rotate";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Rotate: unique symbol;
 }
 
 /** An object that holds two objects rigidly together. Most commonly created when [BasePart:MakeJoints](https://developer.roblox.com/en-us/api-reference/function/BasePart/MakeJoints) is called on parts where Inlet and Stud [SurfaceType](https://developer.roblox.com/en-us/api-reference/enum/SurfaceType) are touching.
@@ -13376,8 +14203,13 @@ interface Rotate extends JointInstance {
  * Snaps do not have any directionality. [Part0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part0) or [Part1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part1), doesn't matter. You can imagine rigid joints forming a tree branching down from the root part. All the parts down the tree from root will move, and their welded “children” in this tree will move with them.
  */
 interface Snap extends JointInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Snap";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Snap: unique symbol;
 }
 
 /** The VelocityMotor is a special type of joint that works similarly to a [Motor](https://developer.roblox.com/en-us/api-reference/class/Motor), but it uses a [MotorFeature](https://developer.roblox.com/en-us/api-reference/class/MotorFeature) and a [Hole](https://developer.roblox.com/en-us/api-reference/class/Hole) to create the connection.  
@@ -13392,8 +14224,13 @@ interface Snap extends JointInstance {
  *     *   The VelocityMotor's \`VelocityMotor/Hole\` property should be assigned to the hole you parented inside of the other part.
  */
 interface VelocityMotor extends JointInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "VelocityMotor";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_VelocityMotor: unique symbol;
 	/** Displays the angle that the motor is at in radians. */
 	CurrentAngle: number;
 	/** The desired angle to be reached. The motor will attempt to reach this angle. */
@@ -13422,14 +14259,24 @@ interface VelocityMotor extends JointInstance {
  * Welds do not have any directionality. [Part0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part0) or [Part1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part1), doesn't matter. You can imagine rigid joints forming a tree branching down from the root part. All the parts down the tree from root will move, and their welded “children” in this tree will move with them.
  */
 interface Weld extends JointInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Weld";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Weld: unique symbol;
 }
 
 /** The JointsService is a service that stores joints created by surface connections. It also has API available for visualizing surface to surface contact, and joining surfaces together. */
 interface JointsService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "JointsService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_JointsService: unique symbol;
 	/** Will remove any 'create joints' that were made visible via the [JointsService:ShowPermissibleJoints](https://developer.roblox.com/en-us/api-reference/function/JointsService/ShowPermissibleJoints) method. */
 	ClearJoinAfterMoveJoints(this: JointsService): void;
 	/** Updates all visible joints for the parts assigned by the [JointsService:SetJoinAfterMoveTarget](https://developer.roblox.com/en-us/api-reference/function/JointsService/SetJoinAfterMoveTarget) and [JointsService:SetJoinAfterMoveInstance](https://developer.roblox.com/en-us/api-reference/function/JointsService/SetJoinAfterMoveInstance) methods. */
@@ -13459,8 +14306,13 @@ interface JointsService extends Instance {
  * During animation playback the poses in different keyframes are interpolated between. This allows a smooth animation to be created without needing to define every frame. Note, the style of interpolation is determined in the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) object. The Keyframe object merely holds the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s at a defined point of time in the animation ([Keyframe.Time](https://developer.roblox.com/en-us/api-reference/property/Keyframe/Time)).
  */
 interface Keyframe extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Keyframe";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Keyframe: unique symbol;
 	/** This property gives the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)'s time position (in seconds) in an animation. This determines the time at which the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s inside the keyframe will be shown.
 	 * 
 	 * Note the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) with the highest time value in a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) is used to determine the length of the animation.
@@ -13558,8 +14410,13 @@ interface Keyframe extends Instance {
  * *   [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation), holds a reference to animation data required to play custom animations on characters or other models using the Roblox animation system
  */
 interface KeyframeMarker extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "KeyframeMarker";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_KeyframeMarker: unique symbol;
 	/** A value that is specified for a [KeyframeMarker](https://developer.roblox.com/en-us/api-reference/class/KeyframeMarker). Whenever the signal created from [AnimationTrack:GetMarkerReachedSignal](https://developer.roblox.com/en-us/api-reference/function/AnimationTrack/GetMarkerReachedSignal) gets fired, this value will be passed into the connected function.
 	 * 
 	 * See also
@@ -13611,8 +14468,13 @@ interface KeyframeMarker extends Instance {
  * In some cases the developer may wish to download the KeyframeSequence corresponding to an existing uploaded Animation. This can be done so using [KeyframeSequenceProvider:GetKeyframeSequenceAsync](https://developer.roblox.com/en-us/api-reference/function/KeyframeSequenceProvider/GetKeyframeSequenceAsync).
  */
 interface KeyframeSequence extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "KeyframeSequence";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_KeyframeSequence: unique symbol;
 	/** Determines whether the animation created from the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) will be looped. When set to true the animation will continuously repeat each time the animation finishes.
 	 * 
 	 * When an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) has been created from an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation), its [AnimationTrack.Looped](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/Looped) property will default to the original [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) value. Note this value can be overwritten.
@@ -13643,14 +14505,24 @@ interface KeyframeSequence extends Instance {
 }
 
 interface LanguageService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "LanguageService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_LanguageService: unique symbol;
 }
 
 /** Light is a root class for dynamic lighting related objects. */
 interface Light extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PointLight" | "SpotLight" | "SurfaceLight";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Light: unique symbol;
 	/** Sets how bright the emitted light is, defaults to 1. */
 	Brightness: number;
 	/** The color of the emitted light. */
@@ -13676,8 +14548,13 @@ interface Light extends Instance {
  * *   [SpotLight](https://developer.roblox.com/en-us/api-reference/class/SpotLight)
  */
 interface PointLight extends Light {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PointLight";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PointLight: unique symbol;
 	/** The size of the area that the PointLight will illuminate. */
 	Range: number;
 }
@@ -13700,8 +14577,13 @@ interface PointLight extends Light {
  * *   [PointLight](https://developer.roblox.com/en-us/api-reference/class/PointLight)
  */
 interface SpotLight extends Light {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SpotLight";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SpotLight: unique symbol;
 	/** The angle of which the light is shone from the SpotLight. */
 	Angle: number;
 	/** Sets the side of the parent that the SpotLight comes from. */
@@ -13724,8 +14606,13 @@ interface SpotLight extends Light {
  * *   [SpotLight](https://developer.roblox.com/en-us/api-reference/class/SpotLight)
  */
 interface SurfaceLight extends Light {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SurfaceLight";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SurfaceLight: unique symbol;
 	/** The angle of which the light is shone from the SurfaceLight. */
 	Angle: number;
 	/** Sets the side of the parent that the SurfaceLight comes from. */
@@ -13749,8 +14636,13 @@ interface SurfaceLight extends Light {
  * *   Prior to the introduction of [ServerStorage](https://developer.roblox.com/en-us/api-reference/class/ServerStorage) and [ReplicatedStorage](https://developer.roblox.com/en-us/api-reference/class/ReplicatedStorage) lighting was used for storage. This behavior is not supported and should not be used in new work
  */
 interface Lighting extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Lighting";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Lighting: unique symbol;
 	/** The lighting hue applied to areas that are occluded from the sky, such as indoor areas.
 	 * 
 	 * This property defaults to 0, 0, 0 (black).
@@ -14212,8 +15104,13 @@ interface Lighting extends Instance {
  * LocalizationService will only use its child LocalizationTables for automatic text replacement unless [GuiBase2d.RootLocalizationTable](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/RootLocalizationTable) is specified on a GUI object or its ancestors.
  */
 interface LocalizationService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "LocalizationService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_LocalizationService: unique symbol;
 	/** This property shows the locale id that the local player has set for their Roblox account.  
 	 * This will return a string with the two letter code (for example, “en-us”) for the locale.
 	 */
@@ -15297,8 +16194,13 @@ interface LocalizationService extends Instance {
  * The **Source** field and all translation strings must be valid [LocalizationService format strings](https://developer.roblox.com/articles/Format-Strings).
  */
 interface LocalizationTable extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "LocalizationTable";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_LocalizationTable: unique symbol;
 	/** The language that the source material of this LocalizationTable was based on, as a locale-id. */
 	SourceLocaleId: string;
 	/** The GetEntries function returns an array of dictionaries contained in a given `/LocalizationTable`, where each dictionary represents an entry of localization data.
@@ -15376,8 +16278,13 @@ interface LocalizationTable extends Instance {
  * A service that allows you to read outputted text.
  */
 interface LogService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "LogService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_LogService: unique symbol;
 	/** **Unreliable Behavior**  
 	 * 
 	 * This may have changing, unexpected or unreliable behavior depending on how the game engine logs things. It should not be relied upon for any important game logic.
@@ -15396,14 +16303,24 @@ interface LogService extends Instance {
 
 /** The base class for all objects which contain Lua code. [Script](https://developer.roblox.com/en-us/api-reference/class/Script), [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) and [CoreScript](https://developer.roblox.com/en-us/api-reference/class/CoreScript) all inherit from LuaSourceContainer. */
 interface LuaSourceContainer extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CoreScript" | "LocalScript" | "ModuleScript" | "Script";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_LuaSourceContainer: unique symbol;
 }
 
 /** The base class for all script objects which run automatically. */
 interface BaseScript extends LuaSourceContainer {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CoreScript" | "LocalScript" | "Script";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BaseScript: unique symbol;
 	/** Determines whether a [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) will run or not.
 	 * 
 	 * [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s and [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s, when parented to a valid parent, will run when Disabled is false.
@@ -15446,8 +16363,13 @@ interface BaseScript extends LuaSourceContainer {
  * It has access to server-side objects, properties and events. For example, Scripts can award badges to players using [BadgeService](https://developer.roblox.com/en-us/api-reference/class/BadgeService), while a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) on the client cannot. Actions taken by LocalScripts that are not replicated (due to [Workspace.FilteringEnabled](https://developer.roblox.com/en-us/api-reference/property/Workspace/FilteringEnabled)) will not be visible to Scripts.
  */
 interface Script extends BaseScript {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "LocalScript" | "Script";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Script: unique symbol;
 }
 
 /** A LocalScript is a Lua source container that runs Lua code on a client connected to a Roblox server. They are used to access client-only objects, such as the player's [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera). For code run through LocalScripts, the LocalPlayer property of the [Players](https://developer.roblox.com/en-us/api-reference/class/Players) service will return the player whose client is running the script.
@@ -15461,8 +16383,13 @@ interface Script extends BaseScript {
  * *   The [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst) service
  */
 interface LocalScript extends Script {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "LocalScript";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_LocalScript: unique symbol;
 }
 
 /** A ModuleScript is a type of Lua source container that runs once and must return exactly one value. This value is then returned by a call to `require` given the ModuleScript as the only argument. ModuleScripts run once and only once per Lua environment and return the exact same value for subsequent calls to `require`.
@@ -15476,8 +16403,13 @@ interface LocalScript extends Script {
  * If a ModuleScript object is has its Name property set to 'MainModule' and is uploaded to Roblox as a model to your account, Scripts can use `require` with the uploaded model's AssetId instead. This allows you to create private modules on your Roblox account!
  */
 interface ModuleScript extends LuaSourceContainer {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ModuleScript";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ModuleScript: unique symbol;
 	/** Used to store a URL that points to an online script source. Binds the online code to the script's [Script.Source](https://developer.roblox.com/en-us/api-reference/property/Script/Source). */
 	LinkedSource: string;
 }
@@ -15499,8 +16431,13 @@ interface ModuleScript extends LuaSourceContainer {
  * *   [Monetization Guides](https://developer.roblox.com/learn-roblox/monetization), learning materials related to monetizing your game
  */
 interface MarketplaceService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "MarketplaceService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_MarketplaceService: unique symbol;
 	PromptBundlePurchase(this: MarketplaceService, player: Player, bundleId: number): void;
 	/** Used to prompt a user to purchase a game pass with the given assetId. */
 	PromptGamePassPurchase(this: MarketplaceService, player: Player, gamePassId: number): void;
@@ -15875,8 +16812,13 @@ interface MarketplaceService extends Instance {
  * [Cross-Server Messaging Guide](https://developer.roblox.com/articles/cross-server-messaging), explores how to communicate between game servers in greater detail with relevant code samples
  */
 interface MessagingService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "MessagingService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_MessagingService: unique symbol;
 	/** This function sends the provided message to all subscribers to the topic, triggering their registered callbacks to be invoked.
 	 * 
 	 * Yields until the message is received by the backend.
@@ -15949,8 +16891,13 @@ interface MessagingService extends Instance {
  * *   While a mouse may not be available on all platforms, Mouse will still function on mobile (touch) and console (gamepad), which don't typically have mice or pointer hardware. For explicit cross-platform behaviors, use [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) and [ContextActionService](https://developer.roblox.com/en-us/api-reference/class/ContextActionService).
  */
 interface Mouse extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Mouse" | "PlayerMouse" | "PluginMouse";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Mouse: unique symbol;
 	/** This property indicates [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) of the mouse's position in 3D space. Note that [Mouse.TargetFilter](https://developer.roblox.com/en-us/api-reference/property/Mouse/TargetFilter) and its descendants will be ignored.
 	 * 
 	 * Developers can get obtain the position of Hit like so:
@@ -16430,14 +17377,24 @@ interface Mouse extends Instance {
  * For more information on how to use the mouse object, see the [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse) page.
  */
 interface PlayerMouse extends Mouse {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PlayerMouse";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PlayerMouse: unique symbol;
 }
 
 /** The NetworkMarker is used to tell the client when the server has finished loading the world for the client. */
 interface NetworkMarker extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "NetworkMarker";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NetworkMarker: unique symbol;
 	/** Fired when the server has finished replicating the world to the client. */
 	readonly Received: RBXScriptSignal<() => void>;
 }
@@ -16473,8 +17430,13 @@ interface NetworkMarker extends Instance {
  * You cannot create an NoCollisionConstraint with more than two parts selected.
  */
 interface NoCollisionConstraint extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "NoCollisionConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NoCollisionConstraint: unique symbol;
 	/** This property determines whether the two constrained parts, [NoCollisionConstraint.Part0](https://developer.roblox.com/en-us/api-reference/property/NoCollisionConstraint/Part0) and [NoCollisionConstraint.Part1](https://developer.roblox.com/en-us/api-reference/property/NoCollisionConstraint/Part1), will collide with each other. */
 	Enabled: boolean;
 	/** The second [Part](https://developer.roblox.com/en-us/api-reference/class/BasePart) that the constraint connects. */
@@ -16485,8 +17447,13 @@ interface NoCollisionConstraint extends Instance {
 
 /** A PVInstance is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Model](https://developer.roblox.com/en-us/api-reference/class/Model). The PV in PVInstance stands for _Position-Velocity_. This class has existed since 2005, and while the class itself no longer has any functionality, it is used for adornable objects that can be connected to both BaseParts and Models. */
 interface PVInstance extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Actor" | "CornerWedgePart" | "FlagStand" | "MeshPart" | "Model" | "NegateOperation" | "Part" | "PartOperation" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "Status" | "Terrain" | "TrussPart" | "UnionOperation" | "VehicleSeat" | "WedgePart" | "Workspace" | "WorldModel";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PVInstance: unique symbol;
 }
 
 /** BasePart is an abstract base class for in-world objects that render and are physically simulated while in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). There are several implementations of BasePart, the most common is [Part](https://developer.roblox.com/en-us/api-reference/class/Part), a simple 6-face rectangular prism. Others include [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation), [WedgePart](https://developer.roblox.com/en-us/api-reference/class/WedgePart) and the singleton [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) object within the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). Most of the time, when documentation refers to a part, most BasePart implementations will work and not just [Part](https://developer.roblox.com/en-us/api-reference/class/Part).
@@ -16509,8 +17476,13 @@ interface PVInstance extends Instance {
  * *   You can use a mesh like a [BlockMesh](https://developer.roblox.com/en-us/api-reference/class/BlockMesh) or [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh) to change how a BasePart looks without change how it physically behaves.
  */
 interface BasePart extends PVInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CornerWedgePart" | "FlagStand" | "MeshPart" | "NegateOperation" | "Part" | "PartOperation" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "Terrain" | "TrussPart" | "UnionOperation" | "VehicleSeat" | "WedgePart";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BasePart: unique symbol;
 	/** The Anchored property determines whether the part will be **immovable** by physics. When enabled, a part will never change position due to gravity, other parts collisions, overlapping other parts, or any other physics-related causes. A part that is not anchored is called **unanchored**. As a result, two anchored parts will never fire the [BasePart.Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched) event on each other. An anchored part may still be moved by changing its [BasePart.CFrame](https://developer.roblox.com/en-us/api-reference/property/BasePart/CFrame) or [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position), and it still may have a nonzero [BasePart.Velocity](https://developer.roblox.com/en-us/api-reference/property/BasePart/Velocity) and [BasePart.RotVelocity](https://developer.roblox.com/en-us/api-reference/property/BasePart/RotVelocity). Finally, if an unanchored part is joined with an anchored part through an object like a `/Weld`, it too will act anchored. If such a joint breaks the part may be affected by physics again.
 	 * 
 	 * It's a good idea to anchor parts that are part of your game's environment (and therefore shouldn't move). In fact, if you don't have a good reason to keep a part unanchored, you should anchor it. Unanchored parts can cause performance issues if there are many. In Roblox Studio, you can anchor/unanchor an entire model using the Anchor tool. Be sure to keep static environment models anchored, like in-world buttons, signs, and trees.
@@ -17099,8 +18071,13 @@ interface BasePart extends PVInstance {
 
 /** This is a corner piece which has the same properties as a [Part](https://developer.roblox.com/en-us/api-reference/class/Part). */
 interface CornerWedgePart extends BasePart {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CornerWedgePart";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CornerWedgePart: unique symbol;
 }
 
 /** The FormFactorPart class is an abstract class. It inherits from the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) class and adds the [FormFactorPart.FormFactor](https://developer.roblox.com/en-us/api-reference/property/FormFactorPart/FormFactor) property to classes that inherit from it.
@@ -17108,8 +18085,13 @@ interface CornerWedgePart extends BasePart {
  * The FormFactor property has been deprecated, so this class has been deprecated as well.
  */
 interface FormFactorPart extends BasePart {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "FlagStand" | "Part" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation" | "WedgePart";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_FormFactorPart: unique symbol;
 }
 
 /** What is a Part
@@ -17139,8 +18121,13 @@ interface FormFactorPart extends BasePart {
  * There are many scripting opportunities using the Part object. Many of the other scripting objects, such as [BodyForce](https://developer.roblox.com/en-us/api-reference/class/BodyForce) objects operate inside of a Part or other physics based objects. Editing the Part's properties through a script can result in a lot of fun opportunities.
  */
 interface Part extends FormFactorPart {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "FlagStand" | "Part" | "Platform" | "Seat" | "SkateboardPlatform" | "SpawnLocation";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Part: unique symbol;
 	/** The Shape property sets the type of shape the object has.
 	 * 
 	 * The [PartType](https://developer.roblox.com/en-us/api-reference/enum/PartType) enum controls the shape value, and has three possible shapes:
@@ -17196,8 +18183,13 @@ interface Part extends FormFactorPart {
  * The Platform object is very useful for making people's characters staying in one spot while they move around, such as a ship or truck. When a player touches the Platform a [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld) constraint is created, so they are 'attached' to the Platform and can't move until that weld is broken. It can be removed by hitting the spacebar, when the player jumps to exit the Platform.
  */
 interface Platform extends Part {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Platform";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Platform: unique symbol;
 }
 
 /** A type of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that a player character can 'sit' in. When a character touches an enabled Seat object, it will be attached to the part by a [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld) and the default character scripts will play a sitting animation.
@@ -17229,8 +18221,13 @@ interface Platform extends Part {
  * *   Creating interfaces that are controlled by the character in the seat using the [Seat.Occupant](https://developer.roblox.com/en-us/api-reference/property/Seat/Occupant) property
  */
 interface Seat extends Part {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Seat";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Seat: unique symbol;
 	/** Whether or not the seat is usable. If set to true, the seat will act as a normal part. */
 	Disabled: boolean;
 	/** The humanoid that is sitting in the seatThe humanoid that is sitting in the seat *
@@ -17243,8 +18240,13 @@ interface Seat extends Part {
 
 /** A SkateboardPlatform can be used to create a skateboard. When characters get on a skateboard, they are stuck to it until they press the escape key. Until then, the character uses skateboard animations and travels faster than a walking character. */
 interface SkateboardPlatform extends Part {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SkateboardPlatform";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SkateboardPlatform: unique symbol;
 	/** The SkateboardPlatform's active SkateboardController.The SkateboardPlatform's active SkateboardController. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -17283,8 +18285,13 @@ interface SkateboardPlatform extends Part {
  * *   Players will spawn at different points on top of a SpawnLocation, but currently, they may still spawn on top of each other if they spawn right after one and other
  */
 interface SpawnLocation extends Part {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SpawnLocation";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SpawnLocation: unique symbol;
 	/** Allows a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) to join the team by touching the [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation). When set to true, if a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) character comes into contact with the [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation), the player's [Player.TeamColor](https://developer.roblox.com/en-us/api-reference/property/Player/TeamColor) will be set to [SpawnLocation.TeamColor](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/TeamColor). [Player.Neutral](https://developer.roblox.com/en-us/api-reference/property/Player/Neutral) will also be set to [SpawnLocation.Neutral](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/Neutral) upon contact, meaning a player can also become neutral by touching a spawn location.
 	 * 
 	 * This will not function when [SpawnLocation.Enabled](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/Enabled) is set to false.
@@ -17325,8 +18332,13 @@ interface SpawnLocation extends Part {
 
 /** WedgeParts are great for building slopes because of their slanted surface. They can even be rotated onto their slant so that they can be used at an angle to make a triangular ramp. Due to their collision, WedgeParts can be good for quickly rotating bricks to a certain angle within Roblox Studio, making them a quick solution to using scripting methods such as CFrame to perform the same function. WedgeParts can be adjusted to any size a regular brick can so that they can be aligned with the rest of your building work. WedgeParts, when used next to each other at different angles, can also make great curved ramps without the need for CFrame too */
 interface WedgePart extends FormFactorPart {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "WedgePart";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_WedgePart: unique symbol;
 }
 
 /** Terrain lets you create dynamically morphable environments with little to no lag. It is currently based on a 4×4×4 grid of cells, where each cell has a number between 0 and 1 representing how much the geometry should occupy the cell, and the material of the cell. The occupancy determines how the cell will morph together with surrounding cells, and the result is the illusion of having no grid constraint.
@@ -17334,8 +18346,13 @@ interface WedgePart extends FormFactorPart {
  * For more info, see `articles/importing terrain data|Importing Terrain Data` and `articles/Scripting With Terrain|Scripting Terrain`.
  */
 interface Terrain extends BasePart {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Terrain";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Terrain: unique symbol;
 	/** Displays the boundaries of the largest possible editable region. */
 	readonly MaxExtents: Region3int16;
 	/** The tint of the Terrain water. */
@@ -17423,8 +18440,13 @@ interface Terrain extends BasePart {
 
 /** TriangleMeshPart is an abstract intermediate class from which [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) and [PartOperation](https://developer.roblox.com/en-us/api-reference/class/PartOperation) inherit. It was created to consolidate the management of physical geometry properties between the two sub-classes. It implements the read-only [CollisionFidelity](https://developer.roblox.com/en-us/api-reference/property/TriangleMeshPart/CollisionFidelity). */
 interface TriangleMeshPart extends BasePart {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "MeshPart" | "NegateOperation" | "PartOperation" | "UnionOperation";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TriangleMeshPart: unique symbol;
 	/** This property determines how the collision model of the [TriangleMeshPart](https://developer.roblox.com/en-us/api-reference/class/TriangleMeshPart) relates to the actual geometry of the mesh. In situations where the collision model of a mesh is unimportant or precision isn't necessary, it is a good idea to set CollisionFidelity to 'Box' to improve performance.
 	 * 
 	 * This property cannot be read or manipulated by scripts during run time.
@@ -17476,8 +18498,13 @@ interface TriangleMeshPart extends BasePart {
  * In most, but not all cases, using a MeshPart is more suitable. As MeshParts are a relatively new feature however, developers should expect some of the above behaviour to change.
  */
 interface MeshPart extends TriangleMeshPart {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "MeshPart";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_MeshPart: unique symbol;
 	/** This property determines whether to render both faces or polygons in the mesh. It is only changeable in Studio. This is useful for meshes that are typically modeled as cards such as a leaf, hair and cloth.
 	 * 
 	 * Example:  
@@ -17562,8 +18589,13 @@ interface MeshPart extends TriangleMeshPart {
 
 /** An abstract class that all parts based on `articles/3D Modeling with Parts|solid modeling` inherit from. */
 interface PartOperation extends TriangleMeshPart {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "NegateOperation" | "PartOperation" | "UnionOperation";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PartOperation: unique symbol;
 	/** [NO DOCUMENTATION] */
 	readonly RenderFidelity: Enum.RenderFidelity;
 	/** This property represents an angle in degrees for a threshold value between face normals on a `articles/3D Modeling with Parts|solid modeled` part. If the normal difference is less than the value, normals will be adjusted to smooth the difference. Usually a value between 30 and 70 degrees will produce a good result. 0 degrees leads to sharp edges. Values between 90 and 180 degrees are allowed but not encouraged, as it may cause a “shadowing” effect on unions with sharp edges.
@@ -17604,8 +18636,13 @@ interface PartOperation extends TriangleMeshPart {
  * *   [In Game Solid Modeling](https://developer.roblox.com/articles/in-game-solid-modeling), an article discussing how developers can perform solid modeling live in-game as well as in Studio
  */
 interface NegateOperation extends PartOperation {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "NegateOperation";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NegateOperation: unique symbol;
 }
 
 /** The UnionOperation combines parts together into a single solid model. To use it, select the parts you want to combine and click the **Union** button in the **Model** tab. This will create a new part called **Union**.
@@ -17623,8 +18660,13 @@ interface NegateOperation extends PartOperation {
  * *   [In Game Solid Modeling](https://developer.roblox.com/articles/in-game-solid-modeling), an article discussing how developers can perform solid modeling live in-game as well as in Studio
  */
 interface UnionOperation extends PartOperation {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UnionOperation";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UnionOperation: unique symbol;
 }
 
 /** Truss parts are the same as [Parts](https://developer.roblox.com/en-us/api-reference/class/Part), except that they have a different visual style, resize differently and characters are able to climb them. The smallest size it can be is 2x2x2 studs.
@@ -17634,8 +18676,13 @@ interface UnionOperation extends PartOperation {
  * The [style](https://developer.roblox.com/en-us/api-reference/property/TrussPart/Style) of a truss beam can be set to change its appearance.
  */
 interface TrussPart extends BasePart {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TrussPart";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TrussPart: unique symbol;
 	/** Sets what the truss looks like. There are currently three different styles.Sets what the truss looks like. There are currently three different styles. *
 	 * Tags: NotReplicated
 	 */
@@ -17647,8 +18694,13 @@ interface TrussPart extends BasePart {
  * While VehicleSeats are great for making simple vehicles they do have some limitations. Movement control will only detect motors connected directly to the vehicle seat, or through another rigid connection. This means that if you have a wheel connected to a beam which is then welded to the seat it will work fine, however if you have the wheel connected to a part, which is connected by a hinge to the rest of the car, it will not work.
  */
 interface VehicleSeat extends BasePart {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "VehicleSeat";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_VehicleSeat: unique symbol;
 	/** Displays how many hinges are detected by the VehicleSeat. Useful for debugging vehicle designs.Displays how many hinges are detected by the VehicleSeat. Useful for debugging vehicle designs. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -17695,8 +18747,13 @@ interface VehicleSeat extends BasePart {
  * *   If a [Part](https://developer.roblox.com/en-us/api-reference/class/Part)'s position on the Y axis hits the [Workspace.FallenPartsDestroyHeight](https://developer.roblox.com/en-us/api-reference/property/Workspace/FallenPartsDestroyHeight) value, and it was the last object inside of a Model, the Model will be destroyed as well.
  */
 interface Model extends PVInstance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Actor" | "Model" | "Status" | "Workspace" | "WorldModel";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Model: unique symbol;
 	/** Points to the [Model](https://developer.roblox.com/en-us/api-reference/class/Model)'s primary part. The part is the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that is used as a basis when positioning the model using the [Model:MoveTo](https://developer.roblox.com/en-us/api-reference/function/Model/MoveTo) and [Model:SetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/SetPrimaryPartCFrame) functions.
 	 * 
 	 * Note when assigning the PrimaryPart that the part must be a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that is descendant of the Model. If this is not the case, the PrimaryPart will be set to nil in Roblox studio, or produce an error if done so by a Script.
@@ -17799,13 +18856,23 @@ interface Model extends PVInstance {
 }
 
 interface Actor extends Model {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Actor";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Actor: unique symbol;
 }
 
 interface WorldRoot extends Model {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Workspace" | "WorldModel";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_WorldRoot: unique symbol;
 	/** @deprecated in favor of WorldRoot.Raycast*/
 	FindPartOnRay(
 		this: WorldRoot,
@@ -18034,8 +19101,13 @@ interface WorldRoot extends Model {
  * *   The [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) object can be accessed using the [Workspace.Terrain](https://developer.roblox.com/en-us/api-reference/property/Workspace/Terrain) property
  */
 interface Workspace extends WorldRoot {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Workspace";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Workspace: unique symbol;
 	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
 	readonly BreakJoints: any;
 	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
@@ -18275,8 +19347,13 @@ interface Workspace extends WorldRoot {
  * More specifically, you can make a WorldModel a child of a ViewportFrame, and then parent geometry to the WorldModel. This will then allow you to use `/articles/Raycasting|raycasts` in the ViewportFrame through the WorldModel. Furthermore you can put [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) characters in the WorldModel and their joints will be set-up correctly, and you can animate them.
  */
 interface WorldModel extends WorldRoot {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "WorldModel";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_WorldModel: unique symbol;
 }
 
 /** The purpose of the PackageLink object is to link a [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel) instance to a corresponding asset in the cloud. This improves flows for collaboration, version control and sharing for models. The PackageLink instance will be a child of the root of the entire package hierarchy.
@@ -18288,8 +19365,13 @@ interface WorldModel extends WorldRoot {
  * They not creatable through [scripts](https://developer.roblox.com/en-us/api-reference/class/Script). They can only be added through interaction with Studio and can only be parented to [Instances](https://developer.roblox.com/en-us/api-reference/class/Instance) that can be published independently of DataModel publish. The PackageLink instance will always be the first child shown in the tree view, regardless of sorting.
  */
 interface PackageLink extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PackageLink";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PackageLink: unique symbol;
 	/** The id of the asset this package corresponds to.The id of the asset this package corresponds to. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -18326,8 +19408,13 @@ interface PackageLink extends Instance {
  * end
  */
 interface Pages<T = unknown> extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CatalogPages" | "DataStorePages" | "EmotesPages" | "FriendPages" | "InventoryPages" | "OutfitPages" | "StandardPages";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Pages: unique symbol;
 	/** Whether or not the current page is the last page available. */
 	readonly IsFinished: boolean;
 	/** Returns the items on the current page. The keys in the item are determined by the source of this object. */
@@ -18337,14 +19424,24 @@ interface Pages<T = unknown> extends Instance {
 }
 
 interface CatalogPages extends Pages {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CatalogPages";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CatalogPages: unique symbol;
 }
 
 /** A special type of [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object whose pages contain key/value pairs from an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore). For this object, `Pages/GetCurrentPage|GetCurrentPage()` returns an array of tables, each containing keys named **key** and **value**; these reflect the key/value pair data. */
 interface DataStorePages extends Pages<{ key: string; value: unknown }> {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DataStorePages";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataStorePages: unique symbol;
 }
 
 /** FriendPages is a special version of the [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) returned by [Players:GetFriendsAsync](https://developer.roblox.com/en-us/api-reference/function/Players/GetFriendsAsync). The items contained within describe information about a player's friends, and have the following structure:
@@ -18377,32 +19474,57 @@ interface DataStorePages extends Pages<{ key: string; value: unknown }> {
  */
 interface FriendPages
 	extends Pages<{ AvatarFinal: boolean; AvatarUri: string; Id: number; Username: string; IsOnline: boolean }> {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "FriendPages";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_FriendPages: unique symbol;
 }
 
 /** The InventoryPages class is used in the case of iterating over a specific category in a user's inventory. */
 interface InventoryPages extends Pages<number> {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "EmotesPages" | "InventoryPages";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_InventoryPages: unique symbol;
 }
 
 interface EmotesPages extends InventoryPages {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "EmotesPages";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_EmotesPages: unique symbol;
 }
 
 interface OutfitPages extends Pages {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "OutfitPages";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_OutfitPages: unique symbol;
 }
 
 /** A generic version of the Pages class, which may contain variable data, depending on what method it was returned from.  
  * See the [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) class for more information.
  */
 interface StandardPages<T = unknown> extends Pages<T> {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StandardPages";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StandardPages: unique symbol;
 }
 
 /** A ParticleEmitter allows for the creation of [particle systems](https://en.wikipedia.org/wiki/Particle_system). is a special effect object that emits customizable 2D billboard particles into the world. On Roblox, a particle is a 2D image rendered in the world so that it always always face the camera, much like a [BillboardGui](https://developer.roblox.com/en-us/api-reference/class/BillboardGui) with a single [ImageLabel](https://developer.roblox.com/en-us/api-reference/class/ImageLabel) in it.
@@ -18417,8 +19539,13 @@ interface StandardPages<T = unknown> extends Pages<T> {
  * *   To learn more about creating, using, and customizing particle emitters check out [this](https://developer.roblox.com/articles/Particle-Emitters) article
  */
 interface ParticleEmitter extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ParticleEmitter";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ParticleEmitter: unique symbol;
 	/** The Acceleration property determines how particles [ParticleEmitter.Speed](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Speed) changes over the particle's lifetime. It is defined using a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) to determine the acceleration on the global X/Y/Z axes. It is measured in studs per second squared. When changed, this property affects all particles emit by the emitter, both current and future particles.
 	 * 
 	 * Pictured below are two default ParticleEmitters. The foreground (right) emitter has an Acceleration on the positive-X axis, causing the path of the particles to bend in that direction.  
@@ -18617,8 +19744,13 @@ interface ParticleEmitter extends Instance {
  * See the `Articles/Pathfinding|Pathfinding` guide for details and examples on using pathfinding in Roblox.
  */
 interface Path extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Path";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Path: unique symbol;
 	/** The success of the generated [Path](https://developer.roblox.com/en-us/api-reference/class/Path). */
 	readonly Status: Enum.PathStatus;
 	/** This function returns an array of all the [PathWaypoints](https://developer.roblox.com/en-us/api-reference/datatype/PathWaypoint) in a [Path](https://developer.roblox.com/en-us/api-reference/class/Path), as computed by [Path:ComputeAsync](https://developer.roblox.com/en-us/api-reference/function/Path/ComputeAsync).
@@ -18668,8 +19800,13 @@ interface Path extends Instance {
  * ![](https://developer.roblox.com/assets/blt1e4f3f08b0e04301/NavigationMesh.jpg)
  */
 interface PathfindingService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PathfindingService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PathfindingService: unique symbol;
 	/** Creates a [Path](https://developer.roblox.com/en-us/api-reference/class/Path) object based on various agent parameters (see below).
 	 * 
 	 * Agent Parameters
@@ -18727,8 +19864,13 @@ interface PathfindingService extends Instance {
  * Creating, deleting and modifying collision relationships between collision groups is limited to server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s. However, client-side [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s may only set individual parts' associated collision group.
  */
 interface PhysicsService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PhysicsService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PhysicsService: unique symbol;
 	/** Returns whether the specified part is in the specified collision group.
 	 * 
 	 * This function will throw a runtime error in the following circumstances:
@@ -18833,8 +19975,13 @@ interface PhysicsService extends Instance {
  * *   Similarly, you can detect the removal of Player objects using [Players.PlayerRemoving](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerRemoving), which fires just **before** the Player is removed (instead of [Instance.ChildRemoved](https://developer.roblox.com/en-us/api-reference/event/Instance/ChildRemoved) which fires after). This is important if you are saving information about the player that might be removed or cleaned up on-removal.
  */
 interface Player extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Player";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Player: unique symbol;
 	readonly Name: string;
 	/** The AccountAge is a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) property that describes how long ago a player's account was registered in days. It is set using the [Player:SetAccountAge](https://developer.roblox.com/en-us/api-reference/function/Player/SetAccountAge) function, which cannot be accessed by scripts.
 	 * 
@@ -19441,8 +20588,13 @@ interface Player extends Instance {
  * Unlike the [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) and [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui) containers, the [PlayerScripts](https://developer.roblox.com/en-us/api-reference/class/PlayerScripts) container is not accessible to the server. Server [Script](https://developer.roblox.com/en-us/api-reference/class/Script) objects will not run when parented to [PlayerScripts](https://developer.roblox.com/en-us/api-reference/class/PlayerScripts).
  */
 interface PlayerScripts extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PlayerScripts";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PlayerScripts: unique symbol;
 	/** Unregisters all ComputerCameraMovementMode enums from the game settings menu. */
 	ClearComputerCameraMovementModes(this: PlayerScripts): void;
 	/** Unregisters all ComputerMovementMode enums from the game settings menu. */
@@ -19463,8 +20615,13 @@ interface PlayerScripts extends Instance {
 
 /** The Players game service contains only [Player](https://developer.roblox.com/en-us/api-reference/class/Player) objects for presently connected clients to a Roblox game server. It also contains information about a place's configuration (such as bubble chat or classic chat). It can fetch information about players not connected to the server, such as character appearances, friends and avatar thumbnail. */
 interface Players extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Players";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Players: unique symbol;
 	/** The BubbleChat [Players](https://developer.roblox.com/en-us/api-reference/class/Players) property indicates whether or not bubble chat is enabled. It is set with the [Players:SetChatStyle](https://developer.roblox.com/en-us/api-reference/function/Players/SetChatStyle) method using the [ChatStyle](https://developer.roblox.com/en-us/api-reference/enum/ChatStyle) enum.
 	 * 
 	 * When this chat mode is enabled, the game displays chats in the chat user interface at the top-left corner of the screen.
@@ -19854,14 +21011,24 @@ interface Players extends Instance {
 }
 
 interface PluginManagerInterface extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PluginManagerInterface";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PluginManagerInterface: unique symbol;
 }
 
 /** Important for getting your game to international audiences, [PolicyService](https://developer.roblox.com/en-us/api-reference/class/PolicyService) helps you build gameplay components that can be made compliant with various national regulations for multiple countries. This service is used to query information regarding policy compliance for players around the world based on age range, location, and platform type. */
 interface PolicyService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PolicyService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PolicyService: unique symbol;
 	/** Returns policy information about a player which is based on geolocation, age group, and platform. The structure of the returned dictionary is as follows:
 	 * 
 	 * Name
@@ -19928,8 +21095,13 @@ interface PolicyService extends Instance {
 }
 
 interface PoseBase extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "NumberPose" | "Pose" | "PoseBase";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PoseBase: unique symbol;
 	/** [NO DOCUMENTATION] */
 	EasingDirection: Enum.PoseEasingDirection;
 	/** [NO DOCUMENTATION] */
@@ -19939,8 +21111,13 @@ interface PoseBase extends Instance {
 }
 
 interface NumberPose extends PoseBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "NumberPose";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NumberPose: unique symbol;
 	/** [NO DOCUMENTATION] */
 	Value: number;
 }
@@ -19966,8 +21143,13 @@ interface NumberPose extends PoseBase {
  * The Roblox animation system applies [Pose.CFrame](https://developer.roblox.com/en-us/api-reference/property/Pose/CFrame) to the corresponding [Motor6D](https://developer.roblox.com/en-us/api-reference/class/Motor6D) by manipulating the relative transformation of the motor, the [Motor6D.Transform](https://developer.roblox.com/en-us/api-reference/property/Motor6D/Transform) property. The original [C0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C1) and [C1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C1) values are not changed.
  */
 interface Pose extends PoseBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Pose";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Pose: unique symbol;
 	/** The `CFrame` that will be applied to the [Motor6D](https://developer.roblox.com/en-us/api-reference/class/Motor6D) corresponding with the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose). This `CFrame` is applied by changing the `Motor6D\Transform` property of the motor. The original `Motor6D/C0` and `Motor6D/C1` values are not changed.
 	 * 
 	 * [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) objects are arranged in a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) based on joint hierarchy. This means, the the [Pose.CFrame](https://developer.roblox.com/en-us/api-reference/property/Pose/CFrame) is applied to the motor connecting the part associated with the pose to the part associated with the pose's parent.
@@ -19995,8 +21177,13 @@ interface Pose extends PoseBase {
  * It should also be noted that some post-processing effects will work differently or **not at all** when Roblox is set to a low [QualityLevel](https://developer.roblox.com/en-us/api-reference/property/RenderSettings/QualityLevel) (or [EditQualityLevel](https://developer.roblox.com/en-us/api-reference/property/RenderSettings/EditQualityLevel) in Studio). On some low-end devices, faster rendering algorithms may be used. By default, these quality settings are set to Automatic, so if you aren't seeing post-processing effects you should check Roblox's settings under the “Rendering” section. It may be necessary to override the automatic behavior temporarily in order to preview post-processing effects.
  */
 interface PostEffect extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BloomEffect" | "BlurEffect" | "ColorCorrectionEffect" | "DepthOfFieldEffect" | "SunRaysEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PostEffect: unique symbol;
 	/** Toggles whether or not the PostEffect is enabled. */
 	Enabled: boolean;
 }
@@ -20008,8 +21195,13 @@ interface PostEffect extends Instance {
  * For more details on this effect and others, see the `articles/post processing effects|Post-Processing Effects` article.
  */
 interface BloomEffect extends PostEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BloomEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BloomEffect: unique symbol;
 	/** Intensity determines how intensely the colors that bloom (determined by the [Threshold](https://developer.roblox.com/en-us/api-reference/property/BloomEffect/Threshold)) will additively blend with themselves. Higher values will produce brighter colors. */
 	Intensity: number;
 	/** Size determines the radius of the bloom effect in pixels in a similar manner to [BlurEffect.Size](https://developer.roblox.com/en-us/api-reference/property/BlurEffect/Size). Larger values create a wider bloom effect, and a value of 0 will disable the bleed (but not the color adjustment). */
@@ -20025,8 +21217,13 @@ interface BloomEffect extends PostEffect {
  * For more details on this effect and others, see the `articles/post processing effects|Post-Processing Effects` article.
  */
 interface BlurEffect extends PostEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BlurEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BlurEffect: unique symbol;
 	/** Size controls the blur radius, measured in pixels. The larger the size, the blurrier the screen will become. */
 	Size: number;
 }
@@ -20038,8 +21235,13 @@ interface BlurEffect extends PostEffect {
  * For more details on this effect and others, see the `articles/post processing effects|Post-Processing Effects` article.
  */
 interface ColorCorrectionEffect extends PostEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ColorCorrectionEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ColorCorrectionEffect: unique symbol;
 	/** Brightness determines by how much the colors of pixels will be shifted. A value of -1 will cause all pixels to be completely black while a value of 1 will cause them to be white. */
 	Brightness: number;
 	/** Contrast determines the separation between the dark and light colors. Values less than 0 have reduced contrast while values greater than 0 have increased contrast. */
@@ -20059,8 +21261,13 @@ interface ColorCorrectionEffect extends PostEffect {
  * ![](https://developer.roblox.com/assets/blt4d9713a56c8f78e5/DepthOfField-Diagram.svg)
  */
 interface DepthOfFieldEffect extends PostEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DepthOfFieldEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DepthOfFieldEffect: unique symbol;
 	/** Intensity of the far field blur, moving out in distance from the [FocusDistance](https://developer.roblox.com/en-us/api-reference/property/DepthOfFieldEffect/FocusDistance) point plus [InFocusRadius](https://developer.roblox.com/en-us/api-reference/property/DepthOfFieldEffect/InFocusRadius) value.
 	 * 
 	 * ![](https://developer.roblox.com/assets/blt4d9713a56c8f78e5/DepthOfField-Diagram.svg)
@@ -20090,8 +21297,13 @@ interface DepthOfFieldEffect extends PostEffect {
  * For more details on this effect and others, see the `articles/post processing effects|Post-Processing Effects` article.
  */
 interface SunRaysEffect extends PostEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SunRaysEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SunRaysEffect: unique symbol;
 	/** Intensity determines the opacity of the sun rays. Values closer to 0 are less visible, while values closer to 1 become more visible. */
 	Intensity: number;
 	/** Spread determines how wide the sun rays will spread across the sky. Its value should be set between 0 and 1 as values outside that range have undefined behavior. */
@@ -20132,8 +21344,13 @@ interface SunRaysEffect extends PostEffect {
  * For more information regarding ProximityPrompts, take a look at the [Proximity Prompts](https://developer.roblox.com/en-us/articles/proximity-prompts).
  */
 interface ProximityPrompt extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ProximityPrompt";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ProximityPrompt: unique symbol;
 	/** This property determines the action text shown to the user. */
 	ActionText: string;
 	/** This property determines whether the prompt's [ProximityPrompt.ActionText](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/ActionText) and [ProximityPrompt.ObjectText](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/ObjectText) will be localized according to the [ProximityPrompt.RootLocalizationTable](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/RootLocalizationTable). When set to true, localization will be applied. */
@@ -20193,8 +21410,13 @@ interface ProximityPrompt extends Instance {
 
 /** The ProximityPromptService allows developers to interact with [ProximityPrompt](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt) objects in a global way. It may be more convenient to listen to events on this service rather than individual ProximityPrompt objects. */
 interface ProximityPromptService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ProximityPromptService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ProximityPromptService: unique symbol;
 	/** When false, no prompts will be shown. */
 	Enabled: boolean;
 	/** The maximum number of ProximityPrompts that will be shown. */
@@ -20220,8 +21442,13 @@ interface ProximityPromptService extends Instance {
  * If you need the result of the call, you should use a [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) instead. Otherwise a remote event is recommended since it will minimize network traffic/latency and won't yield the script to wait for a response. See `Articles/Remote Functions and Events|Remote Functions and Events` for more info.
  */
 interface RemoteEvent<T extends Callback = Callback> extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RemoteEvent";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RemoteEvent: unique symbol;
 	/** The FireAllClients function fires the [RemoteEvent.OnClientEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnClientEvent) event for each client.
 	 * 
 	 * Unlike [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient), this event does not take a target player as an argument. Instead it will fire to all clients who have the same remote event connected to an OnClientEvent event.
@@ -20286,8 +21513,13 @@ interface RemoteEvent<T extends Callback = Callback> extends Instance {
  * If the result is **not** needed, we recommend that you use a [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) instead, since its call is asynchronous and doesn't need to wait for a response to continue execution. See `[Remote Functions and Events](https://developer.roblox.com/articles/Remote-Functions-and-Events)` for more info.
  */
 interface RemoteFunction<T extends Callback = Callback> extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RemoteFunction";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RemoteFunction: unique symbol;
 	/** Calls the method bound to the RemoteFunction by [RemoteFunction.OnClientInvoke](https://developer.roblox.com/en-us/api-reference/property/RemoteFunction/OnClientInvoke) for the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player). Use from a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
 	 * 
 	 * If the result is not needed then it is recommended to use a [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient) instead, as its call is asynchronous and doesn't need to wait for a response to continue execution.
@@ -20347,8 +21579,13 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
  * ReplicatedFirst also includes the function [ReplicatedFirst:RemoveDefaultLoadingScreen](https://developer.roblox.com/en-us/api-reference/function/ReplicatedFirst/RemoveDefaultLoadingScreen), which can be used to immediately remove the default Roblox loading screen. Note if any object has been placed in ReplicatedFirst, the default loading screen will remove after 5 seconds regardless if this function has been called or not.
  */
 interface ReplicatedFirst extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ReplicatedFirst";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ReplicatedFirst: unique symbol;
 	/** Immediately removes the default Roblox loading screen. Note if any object has been placed in [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst), the default loading screen will remove after 5 seconds regardless if this function has been called or not.
 	 * 
 	 * Developers should run this function from a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) in [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst), as scripts in [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst) will execute before anything else.
@@ -20359,8 +21596,13 @@ interface ReplicatedFirst extends Instance {
 }
 
 interface ReplicatedScriptService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ReplicatedScriptService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ReplicatedScriptService: unique symbol;
 }
 
 /** Complex games often require a range of assets that are held in storage until they're required. **ReplicatedStorage** is a container whose contents are replicated to all connected clients, allowing such objects to be stored until needed. ReplicatedStorage is also an ideal location for [RemoteFunctions](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) and [RemoteEvents](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) since they can be found on both the client and server.
@@ -20377,8 +21619,13 @@ interface ReplicatedScriptService extends Instance {
  * *   For objects that only the server requires access to, we recommended you use [ServerStorage](https://developer.roblox.com/en-us/api-reference/class/ServerStorage) to minimize network traffic.
  */
 interface ReplicatedStorage extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ReplicatedStorage";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ReplicatedStorage: unique symbol;
 }
 
 /** **RunService** contains methods and events for time-management as well as for managing the context in which a game or script is running. Methods like [IsClient](https://developer.roblox.com/en-us/api-reference/function/RunService/IsClient), [IsServer](https://developer.roblox.com/en-us/api-reference/function/RunService/IsServer), [IsStudio](https://developer.roblox.com/en-us/api-reference/function/RunService/IsStudio), can help you determine under what context code is running. These methods are useful for ModuleScripts that may be required by both client and server scripts. Furthermore, [IsStudio](https://developer.roblox.com/en-us/api-reference/function/RunService/IsStudio) can be used to add special behaviors for in-studio testing.
@@ -20386,8 +21633,13 @@ interface ReplicatedStorage extends Instance {
  * RunService also houses events that allow your code to adhere to Roblox's frame-by-frame loop, such as [Stepped](https://developer.roblox.com/en-us/api-reference/event/RunService/Stepped), [Heartbeat](https://developer.roblox.com/en-us/api-reference/event/RunService/Heartbeat) and [RenderStepped](https://developer.roblox.com/en-us/api-reference/event/RunService/RenderStepped). Selecting the proper event to use for any case is important, so you should read `articles/Task Scheduler|Task Scheduler` to make an informed decision.
  */
 interface RunService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RunService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RunService: unique symbol;
 	/** The `BindToRenderStep` function binds a custom function to be called at a specific time during the render step. There are three main arguments for BindToRenderStep: `name`, `priority`, and `what function to call`.
 	 * 
 	 * As it is linked to the client's rendering process, BindToRenderStep can only be called on the client.
@@ -20735,8 +21987,13 @@ interface RunService extends Instance {
 
 /** A semantic, organized place to put your server-sided game logic, which does not interfere with the world. Scripts will run inside this service, and will not replicate to game clients, allowing for secure storage of your scripts. */
 interface ServerScriptService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ServerScriptService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ServerScriptService: unique symbol;
 }
 
 /** A container whose contents are only accessible on the server. Objects descending from ServerStorage will not replicate to the client and will not be accessible from [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s.
@@ -20750,14 +22007,24 @@ interface ServerScriptService extends Instance {
  * Note that as the contents of ServerStorage can only be accessed by the server, its contents will need to be parented elsewhere (such as [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace)) before clients can access them. Developers who require a container that is accessible by both the server and client are advised to use [ReplicatedStorage](https://developer.roblox.com/en-us/api-reference/class/ReplicatedStorage) instead.
  */
 interface ServerStorage extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ServerStorage";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ServerStorage: unique symbol;
 }
 
 /** A ServiceProvider is an abstract class, which stores, and provides certain singleton classes, depending on what inherited class you are using its members with. */
 interface ServiceProvider<S = unknown> extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AnalysticsSettings" | "DataModel" | "GlobalSettings" | "UserSettings";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ServiceProvider: unique symbol;
 	/** Returns the service specified by the given className if it's already created, errors for an invalid name. */
 	FindService(this: ServiceProvider<S>, className: string): S[keyof S] | undefined;
 	FindService(this: ServiceProvider<S>, className: string): Instance | undefined;
@@ -20780,8 +22047,13 @@ interface ServiceProvider<S = unknown> extends Instance {
 
 /** The DataModel (commonly known as **game** after the global variable used to access it) is the root of Roblox's parent-child hierarchy. Its direct children are services (such as the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) and [Lighting](https://developer.roblox.com/en-us/api-reference/class/Lighting)) that act as the fundamental components of a Roblox game. */
 interface DataModel extends ServiceProvider<Services> {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DataModel";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataModel: unique symbol;
 	/** This property describes the ID of the user or group that owns the `Articles/Place|place`
 	 * 
 	 * If the [DataModel.CreatorType](https://developer.roblox.com/en-us/api-reference/property/DataModel/CreatorType) property is _'User'_ then CreatorId will be the [Player.UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) of the place's owner. If the [DataModel.CreatorType](https://developer.roblox.com/en-us/api-reference/property/DataModel/CreatorType) is _'Group'_ then CreatorId will be the ID of the group that owns the place.
@@ -21000,8 +22272,13 @@ interface DataModel extends ServiceProvider<Services> {
 
 /** The abstract class for settings database classes. */
 interface GenericSettings<S = unknown> extends ServiceProvider<S> {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "AnalysticsSettings" | "GlobalSettings" | "UserSettings";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GenericSettings: unique symbol;
 }
 
 /** UserSettings is a singleton object that is used to house basic user settings, which persist across all games. Currently, it only stores the [UserGameSettings](https://developer.roblox.com/en-us/api-reference/class/UserGameSettings) object.
@@ -21009,8 +22286,13 @@ interface GenericSettings<S = unknown> extends ServiceProvider<S> {
  * You can retrieve a reference to this object via the `UserSettings()` function, which returns it.
  */
 interface UserSettings extends GenericSettings<{ UserGameSettings: UserGameSettings }> {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UserSettings";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UserSettings: unique symbol;
 	/** Returns true if the specified user feature is enabled. This will throw an error if the user feature does not exist.
 	 * 
 	 * This function checks against a list of FFlags, whose name starts with “User”. The function is intended to be used by Roblox-created scripts, and functions similarly to [GlobalSettings:GetFFlag](https://developer.roblox.com/en-us/api-reference/function/GlobalSettings/GetFFlag).
@@ -21021,14 +22303,24 @@ interface UserSettings extends GenericSettings<{ UserGameSettings: UserGameSetti
 }
 
 interface SessionService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SessionService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SessionService: unique symbol;
 }
 
 /** The Sky object is an object, when placed inside [Lighting](https://developer.roblox.com/en-us/api-reference/class/Lighting), will change the appearance of the game's sky. This allows for a custom sky to be used as opposed to the Roblox default sky. The Skybox is composed of six sides, much like that of a cube. If the skybox is changed/customised, the Sun and other objects in the sky will remain visible, unless you turn off the Sky object's [Sky.CelestialBodiesShown](https://developer.roblox.com/en-us/api-reference/property/Sky/CelestialBodiesShown) property, which will remove the Sun, Moon, and stars from the sky. The recommended picture dimensions for a Skybox side are 256x256 pixels. By adjusting the [Sky.StarCount](https://developer.roblox.com/en-us/api-reference/property/Sky/StarCount) property of the Sky object, you can change how many stars will appear in the sky at night. */
 interface Sky extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Sky";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Sky: unique symbol;
 	/** Sets whether the Sun, Moon, and stars will show. */
 	CelestialBodiesShown: boolean;
 	/** The perceived angular size of the moon while using this skybox, in degrees. */
@@ -21064,8 +22356,13 @@ interface Sky extends Instance {
  * Smoke particles are only emit from the center of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) to which they are parented. Parenting a Smoke object to an [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) instead allows customization of the particles' start position.
  */
 interface Smoke extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Smoke";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Smoke: unique symbol;
 	/** The Color property determines the color of all the particles emit by a [Smoke](https://developer.roblox.com/en-us/api-reference/class/Smoke) object (both existing and future particles). It behaves similarly to [ParticleEmitter.Color](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Color), except that it is only one color and not a [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence). A color of white with some [Smoke.Opacity](https://developer.roblox.com/en-us/api-reference/property/Smoke/Opacity) makes for a nice fog effect, and a very opaque black color can compliment a [Fire](https://developer.roblox.com/en-us/api-reference/class/Fire) object nicely.
 	 * 
 	 * ![Two Smoke objects with different colors](https://developer.roblox.com/assets/blt6952d1f0943c1f61/Smoke_Color.png)
@@ -21134,8 +22431,13 @@ interface Smoke extends Instance {
  * *   Here is an open sourced [demo](https://www.roblox.com/games/2908070282/SocialService-Game-Invite-Demo)
  */
 interface SocialService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SocialService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SocialService: unique symbol;
 	/** **PromptGameInvite** will display an invite screen to the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player). On this screen, the player may invite their friends to the current game.
 	 * 
 	 * Before using this function, you should use the [CanSendGameInviteAsync](https://developer.roblox.com/en-us/api-reference/function/SocialService/CanSendGameInviteAsync) function to determine whether a player can send a game invite, as this can vary depending on the platform or player. After determining that invites are possible for this player, allow the player to opt-in to inviting others. For example, the player clicked on an “Invite Friends” button, shown after `CanSendGameInviteAsync` returned true.\`
@@ -21192,8 +22494,13 @@ interface SocialService extends Instance {
  * *   [Sound.TimePosition](https://developer.roblox.com/en-us/api-reference/property/Sound/TimePosition), [Sound.TimeLength](https://developer.roblox.com/en-us/api-reference/property/Sound/TimeLength), and [Sound.Playing](https://developer.roblox.com/en-us/api-reference/property/Sound/Playing) will all properly replicate when set from the server.
  */
 interface Sound extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Sound";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Sound: unique symbol;
 	/** This property will be true when the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) has loaded loaded from Roblox servers and is ready to play.
 	 * 
 	 * In Roblox, audio files are not stored in games themselves but hosted on the Roblox servers and referenced by the [Sound.SoundId](https://developer.roblox.com/en-us/api-reference/property/Sound/SoundId) property. This means that they need to be downloaded to a client's device before they can be played. This can take a while depending on the user's internet connection, the length of the sound and the number of other objects that need to be loaded.
@@ -21593,8 +22900,13 @@ interface Sound extends Instance {
  * Multiple effects can be applied to the same Sound or SoundGroup. The order the effects will be applied in is determined by that effect's Priority.
  */
 interface SoundEffect extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ChorusSoundEffect" | "CompressorSoundEffect" | "DistortionSoundEffect" | "EchoSoundEffect" | "EqualizerSoundEffect" | "FlangeSoundEffect" | "PitchShiftSoundEffect" | "ReverbSoundEffect" | "TremoloSoundEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SoundEffect: unique symbol;
 	/** Toggles the effect on and off. True by default. */
 	Enabled: boolean;
 	/** Determines the order the effect will be applied in relation to other effects. Highger priority effects will be applied earlier. The exception is when Priority equals 0 (which is the default). In this case, the base priority for the effect will be used. If the priority of two effects are equal, then the order is undetermined. */
@@ -21606,8 +22918,13 @@ interface SoundEffect extends Instance {
  * Like all other [SoundEffect](https://developer.roblox.com/en-us/api-reference/class/SoundEffect), a ChorusSoundEffect can be applied either to a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) or [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) by being parented to either.
  */
 interface ChorusSoundEffect extends SoundEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ChorusSoundEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ChorusSoundEffect: unique symbol;
 	/** Range: 0 to 1 (default 0.15)
 	 * 
 	 * Controls how intense the effect is.Controls how intense the effect is.
@@ -21638,8 +22955,13 @@ interface ChorusSoundEffect extends SoundEffect {
  * Along with lowering the volume when the sound has passed the threshold, a compressor will also amplify the entire sound (after any threshold lowering has taken effect). This allows quieter sounds to be amplified while louder sounds can stay about the same. The [CompressorSoundEffect.GainMakeup](https://developer.roblox.com/en-us/api-reference/property/CompressorSoundEffect/GainMakeup) determines how much the effect amplifies the sound.
  */
 interface CompressorSoundEffect extends SoundEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CompressorSoundEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CompressorSoundEffect: unique symbol;
 	/** Range: 0.1 to 1 (default 0.1)
 	 * 
 	 * The time the effect takes to become active after its Threshold has be reached. Measured in seconds.The time the effect takes to become active after its Threshold has be reached.
@@ -21674,8 +22996,13 @@ interface CompressorSoundEffect extends SoundEffect {
  * Like all other [SoundEffect](https://developer.roblox.com/en-us/api-reference/class/SoundEffect), a DistortionSoundEffect can be applied either to a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) or [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) by being parented to either.
  */
 interface DistortionSoundEffect extends SoundEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DistortionSoundEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DistortionSoundEffect: unique symbol;
 	/** Range: 0 to 1 (default 0.5)
 	 * 
 	 * The intensity of the effect. Setting this property to its minimum (0) will cause no distortion at all.The intensity of the effect.
@@ -21692,8 +23019,13 @@ interface DistortionSoundEffect extends SoundEffect {
  * It is recommended to only use the EchoSoundEffect with sound groups. If an echo effect is applied to a regular Sound, once that sound stops playing the echo effect will also be cut off. When applied to a SoundGroup, the echo effect will continue playing even if the original source sound has stopped.Like all other [SoundEffect](https://developer.roblox.com/en-us/api-reference/class/SoundEffect), a EchoSoundEffect can be applied either to a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) or [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) by being parented to either.
  */
 interface EchoSoundEffect extends SoundEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "EchoSoundEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_EchoSoundEffect: unique symbol;
 	/** Range: 0.01 to 5 (default 1)
 	 * 
 	 * The amount of time between echoes. Measured in seconds.
@@ -21730,8 +23062,13 @@ interface EchoSoundEffect extends SoundEffect {
  * Like all other \`SoundEffect\`, a EqualizerSoundEffect can be applied either to a \`Sound\` or \`SoundGroup\` by being parented to either.
  */
 interface EqualizerSoundEffect extends SoundEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "EqualizerSoundEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_EqualizerSoundEffect: unique symbol;
 	/** Range: -80 to 10 (default 0)
 	 * 
 	 * The output volume of frequencies greater than 4000 Hz. Measured in dB.The output volume of frequencies greater than 4000 Hz.
@@ -21754,8 +23091,13 @@ interface EqualizerSoundEffect extends SoundEffect {
  * Like all other [SoundEffect](https://developer.roblox.com/en-us/api-reference/class/SoundEffect), a FlangeSoundEffect can be applied either to a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) or [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) by being parented to either.
  */
 interface FlangeSoundEffect extends SoundEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "FlangeSoundEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_FlangeSoundEffect: unique symbol;
 	/** Range: 0.01 to 1 (default 0.45)
 	 * 
 	 * The intensity of the effect. This value determines how offset the duplicated signal will be from the original. This value is the percentage of the max offset (40ms).The intensity of the effect.
@@ -21778,8 +23120,13 @@ interface FlangeSoundEffect extends SoundEffect {
  * This effect can be computationally expensive.
  */
 interface PitchShiftSoundEffect extends SoundEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PitchShiftSoundEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PitchShiftSoundEffect: unique symbol;
 	/** Range: 0.5 to 2 (default 1.25)
 	 * 
 	 * The percentage to shift the original pitch. Setting this to its minimum (0.5) lowers the octave by 1, setting this to its maximum (2) increases the octave by 1.The percentage to shift the original pitch.
@@ -21792,8 +23139,13 @@ interface PitchShiftSoundEffect extends SoundEffect {
  * Like all other [SoundEffect](https://developer.roblox.com/en-us/api-reference/class/SoundEffect), a ChorusSoundEffect can be applied either to a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) or [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) by being parented to either.
  */
 interface ReverbSoundEffect extends SoundEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ReverbSoundEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ReverbSoundEffect: unique symbol;
 	/** Range: 0.1 to 20 (default 1.5)
 	 * 
 	 * Sets how long it takes for the reverberating echoes to fade out completely. Larger decay times simulate larger (empty) spacesSets how long it takes for the reverberating echoes to fade out completely.
@@ -21826,8 +23178,13 @@ interface ReverbSoundEffect extends SoundEffect {
  * Like all other [SoundEffect](https://developer.roblox.com/en-us/api-reference/class/SoundEffect)s, a TremoloSoundEffect can be applied either to a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) or [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) by being parented to either.
  */
 interface TremoloSoundEffect extends SoundEffect {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TremoloSoundEffect";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TremoloSoundEffect: unique symbol;
 	/** Range: 0 to 1 (default 1)
 	 * 
 	 * Controls how much the volume will raise and lower. This value ranges between 0 (minimum volume) and 1 (maximum volume). If set to its minimum, the volume will not oscillate at all.Controls how much the volume will raise and lower.
@@ -21859,8 +23216,13 @@ interface TremoloSoundEffect extends SoundEffect {
  * ```
  */
 interface SoundGroup extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SoundGroup";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SoundGroup: unique symbol;
 	/** The volume multiplier applied to [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s that are in the [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup). This value ranges from 0 to 10.
 	 * 
 	 * This property acts as a multiplier, and thus sounds in a [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) will retain their relative volumes when it is set. This means if a sound's [Sound.Volume](https://developer.roblox.com/en-us/api-reference/property/Sound/Volume) is 0.5 and it is assigned to a [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) with a volume of 0.5, its effective volume will be 0.25.
@@ -21882,8 +23244,13 @@ interface SoundGroup extends Instance {
  * Developers looking to find out more about how sound works in Roblox should consult the documentation provided for the [FMOD sound engine](https://www.fmod.com/docs/api/content/generated/overview/3dsound.html).
  */
 interface SoundService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SoundService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SoundService: unique symbol;
 	/** The ambient sound environment preset used by [SoundService](https://developer.roblox.com/en-us/api-reference/class/SoundService).
 	 * 
 	 * The [ReverbType](https://developer.roblox.com/en-us/api-reference/enum/ReverbType) this property simulates a range of different environment's impact on sound. Each different option corresponds with a preset available in the FMOD sound engine. For example, when AmbientReverb is set to Hangar, the sound will reverberate differently to simulate being in a large enclosed space.
@@ -22040,8 +23407,13 @@ interface SoundService extends Instance {
  * Sparkles particles are only emit from the center of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) to which they are parented. Parenting a Sparkles object to an [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) instead allows customization of the particles' start position.
  */
 interface Sparkles extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Sparkles";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Sparkles: unique symbol;
 	/** The Color property determines the color of all the particles emit by a [Sparkles](https://developer.roblox.com/en-us/api-reference/class/Sparkles) object (both existing and future particles). It behaves similarly to [ParticleEmitter.Color](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Color), except that it is only one color and not a [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence). Sparkles have a natural color sequence applied which is most apparent when this property is set to white; sparkles very faintly animate between a subtle green and red. Below, you can see two [Sparkles](https://developer.roblox.com/en-us/api-reference/class/Sparkles) objects with differing SparkleColor (the left is default, the right is white).
 	 * 
 	 * ![Two Sparkles objects with differing SparkleColor](https://developer.roblox.com/assets/blt22f35a953a5b6687/Sparkles_SparkleColor.png)
@@ -22133,8 +23505,13 @@ interface Sparkles extends Instance {
  * Before adding any gear to a game, consider the implication of doing so. Gear includes [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s and allows the player to perform actions that the developer may not have considered. For example, a navigational gear may allow the player to access a part of the map the developer does not want to be accessed. Weapons allow players with gear to damage other players, possibly without the ability to retaliate. Always play-test games after adding gear to them to make sure there are no abuse cases.
  */
 interface StarterGear extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StarterGear";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StarterGear: unique symbol;
 }
 
 /** A service-level container whose contents are copied into each [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) when the player spawns. It is generally used to hold `Tools`, but is sometimes used to hold [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s to ensure that each player gets a copy.
@@ -22152,8 +23529,13 @@ interface StarterGear extends Instance {
  * ```
  */
 interface StarterPack extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StarterPack";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StarterPack: unique symbol;
 }
 
 /** A service which allows the defaults of properties in the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) object to be set. When a player enters the server, each property of the player object is set to the current value of the corresponding property in StarterPlayer.
@@ -22169,8 +23551,13 @@ interface StarterPack extends Instance {
  * ![StarterPlayer Tree](https://developer.roblox.com/assets/blt358e3811e54dff0c/StarterPlayerTree.png)
  */
 interface StarterPlayer extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StarterPlayer";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StarterPlayer: unique symbol;
 	/** The AllowCustomAnimations [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) property describes the current game's permission levels regarding custom avatar [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation)s from the website.
 	 * 
 	 * As such, this value cannot be changed from within the game. It can only be changed by changing the game's permission levels within the game's setting's page on the website.
@@ -22379,8 +23766,13 @@ interface StarterPlayer extends Instance {
  * When a game is run, this object will also house the default multi-platform Roblox control scripts for the camera and character. If [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s named “CameraScript” or “ControlScript” are placed within this folder, they will **replace** the Roblox defaults for those scripts respectively. You can add empty LocalScripts for each of these to simply disable them altogether. This is useful for games that do not follow the usual control paradigms of a 3rd person game.
  */
 interface StarterPlayerScripts extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StarterCharacterScripts" | "StarterPlayerScripts";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StarterPlayerScripts: unique symbol;
 }
 
 /** The StarterCharacterScripts class stores scripts to be parented in a player's [Character](https://developer.roblox.com/api-reference/property/Player/Character "Character"), when they spawn.  
@@ -22389,8 +23781,13 @@ interface StarterPlayerScripts extends Instance {
  * If a script named **Animate**, **Sound** or **Health** is placed in this folder, they will replace the default scripts that are added to each [Character](https://developer.roblox.com/api-reference/property/Player/Character "Character") that is created.
  */
 interface StarterCharacterScripts extends StarterPlayerScripts {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StarterCharacterScripts";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StarterCharacterScripts: unique symbol;
 }
 
 /** Stats is a service that provides real-time performance information about the current running game instance. Its primary purpose is to provide developers with an end point to measure where resources are being consumed, as well as how much memory is being consumed overall.  
@@ -22398,8 +23795,13 @@ interface StarterCharacterScripts extends StarterPlayerScripts {
  * The service also stores a tree of [StatsItem](https://developer.roblox.com/en-us/api-reference/class/StatsItem), which can have their values read by plugins.
  */
 interface Stats extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Stats";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Stats: unique symbol;
 	/** ContactsCount describes how many parts are currently in contact with each other, such that one of the two parts are being physically simulated, and thus can be recognized by the [BasePart:GetTouchingParts](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetTouchingParts) method.ContactsCount describes how many parts are currently in contact with each other, such that one of the two parts are being physically simulated, and thus can be recognized by the [BasePart:GetTouchingParts](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetTouchingParts) method. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -22510,8 +23912,13 @@ interface Stats extends Instance {
  * *   Most SurfaceAppearance properties cannot be modified by scripts in-game. This is because the Roblox engine needs to do some pre-processing to display a SurfaceAppearance, and this is usually too expensive to perform in-game.
  */
 interface SurfaceAppearance extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "SurfaceAppearance";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_SurfaceAppearance: unique symbol;
 }
 
 /** The [Team](https://developer.roblox.com/en-us/api-reference/class/Team) class represents a faction in a Roblox place. The only valid parent for a Team is in the [Teams](https://developer.roblox.com/en-us/api-reference/class/Teams) service. Teams offer a range of features that are useful to developers that can be divided into two rough groups:
@@ -22540,8 +23947,13 @@ interface SurfaceAppearance extends Instance {
  * *   Periodically reassign teams to maintain team balance
  */
 interface Team extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Team";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Team: unique symbol;
 	/** This property determines whether [Player](https://developer.roblox.com/en-us/api-reference/class/Player)s will be automatically placed onto the [Team](https://developer.roblox.com/en-us/api-reference/class/Team) when joining. If multiple teams have this property set to true, Roblox will attempt to even the teams out when [Player](https://developer.roblox.com/en-us/api-reference/class/Player)s are added.
 	 * 
 	 * When a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) joins a game they will be assigned to the [Team](https://developer.roblox.com/en-us/api-reference/class/Team) with [Team.AutoAssignable](https://developer.roblox.com/en-us/api-reference/property/Team/AutoAssignable) set to true that has the fewest players. If no such team is available, [Player.Neutral](https://developer.roblox.com/en-us/api-reference/property/Player/Neutral) will be set to true.
@@ -22608,8 +24020,13 @@ interface Team extends Instance {
  * *   Periodically reassign teams to maintain team balance
  */
 interface Teams extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Teams";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Teams: unique symbol;
 	/** The GetTeam function returns a table containing the game's [Team](https://developer.roblox.com/en-us/api-reference/class/Team) objects.
 	 * 
 	 * Note this will only return Team objects that are directly parented to the [Teams](https://developer.roblox.com/en-us/api-reference/class/Teams) service. For this reason it is recommended developers only parent [Team](https://developer.roblox.com/en-us/api-reference/class/Team) objects to the [Teams](https://developer.roblox.com/en-us/api-reference/class/Teams) service and not to other [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s (or to each other).
@@ -22618,8 +24035,13 @@ interface Teams extends Instance {
 }
 
 interface TeleportAsyncResult extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TeleportAsyncResult";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TeleportAsyncResult: unique symbol;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -22631,8 +24053,13 @@ interface TeleportAsyncResult extends Instance {
 }
 
 interface TeleportOptions extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TeleportOptions";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TeleportOptions: unique symbol;
 	/** [NO DOCUMENTATION] */
 	ReservedServerAccessCode: string;
 	/** [NO DOCUMENTATION] */
@@ -22669,8 +24096,13 @@ interface TeleportOptions extends Instance {
  * *   [TeleportService:TeleportToPrivateServer](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportToPrivateServer) for teleporting a group of [Players](https://developer.roblox.com/en-us/api-reference/class/Player) to a reserved server created using [TeleportService:ReserveServer](https://developer.roblox.com/en-us/api-reference/function/TeleportService/ReserveServer)
  */
 interface TeleportService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TeleportService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TeleportService: unique symbol;
 	/** This function returns the _customLoadingScreen_ the [LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) arrived into the place with.
 	 * 
 	 * Note, the _customLoadingScreen_ will not be used if the destination place is in a different game.
@@ -23294,8 +24726,13 @@ interface TeleportService extends Instance {
 
 /** A TerrainRegion is a snapshot of [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) retrieved from the [CopyRegion](https://developer.roblox.com/api-reference/function/Terrain/CopyRegion "CopyRegion") method. Can be later pasted into the Terrain using [PasteRegion](https://developer.roblox.com/api-reference/function/Terrain/PasteRegion "PasteRegion"). */
 interface TerrainRegion extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TerrainRegion";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TerrainRegion: unique symbol;
 	/** The size of this TerrainRegion in cells.The size of this TerrainRegion in cells. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -23306,8 +24743,13 @@ interface TerrainRegion extends Instance {
  * Used to distribute a filtered string accordingly.
  */
 interface TextFilterResult extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TextFilterResult";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TextFilterResult: unique symbol;
 	/** The GetChatForUserAsync function returns the text in a properly filtered manner for the specified [Player.UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId). This should be used in the context of chats between players, although there are some other cases where text filtering is required.
 	 * 
 	 * This function returns the string appropriate for sending and displaying to a target user (specified by _toUserId_) from the original sender using the least restrictive filtering appropriate for the target user, with [Chat](https://developer.roblox.com/en-us/api-reference/class/Chat) privacy settings of both users enforced. This string should only be shown to the target user, as it might not be appropriate for all users.
@@ -23355,8 +24797,13 @@ interface TextFilterResult extends Instance {
  * For more information on text filtering please see [this article](https://developer.roblox.com/articles/Text-and-Chat-Filtering).
  */
 interface TextService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TextService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TextService: unique symbol;
 	/** Computes the [Vector2](https://developer.roblox.com/en-us/api-reference/datatype/Vector2) dimensions (in pixels) that will be taken up with text when using the specified formatting parameters and size constraints.
 	 * 
 	 * Note, the fontSize parameter will not accept the [FontSize](https://developer.roblox.com/en-us/api-reference/enum/FontSize) Enum. Instead the integer size corresponding with the [FontSize](https://developer.roblox.com/en-us/api-reference/enum/FontSize) Enum should be used. This is not equal to the value of the [FontSize](https://developer.roblox.com/en-us/api-reference/enum/FontSize) Enum. For example, for _Size11_ font, the integer _11_ should be used.
@@ -23405,13 +24852,23 @@ interface TextService extends Instance {
  * Note, in almost all circumstances developers should disconnect the connection using `RBXScriptConnection/Disconnect` method rather than removing the TouchTransmitter. Otherwise the connection will not be cleaned up which can cause performance issues over time.
  */
 interface TouchTransmitter extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TouchTransmitter";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TouchTransmitter: unique symbol;
 }
 
 interface TracerService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TracerService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TracerService: unique symbol;
 }
 
 /** The Trail object is used to create a trail like an effect between two points. As the points move through space a texture is drawn on the plane the points define. This is commonly used to create effects to help visualize movements like tracer trails behind projectiles, footprints, tire tracks, and many other similar effects.
@@ -23431,8 +24888,13 @@ interface TracerService extends Instance {
  * It is common practice to either store the Trail in the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) containing the effect's attachments, or as a child of a [Folder](https://developer.roblox.com/en-us/api-reference/class/Folder) in the Workspace with other effects objects.
  */
 interface Trail extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Trail";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Trail: unique symbol;
 	/** A [Trail](https://developer.roblox.com/en-us/api-reference/class/Trail) starts drawing its segments at the positions of its [Trail.Attachment0](https://developer.roblox.com/en-us/api-reference/property/Trail/Attachment0) and \***Attachment1**.
 	 * 
 	 * When the Trail is [Trail.Enabled](https://developer.roblox.com/en-us/api-reference/property/Trail/Enabled) it will record the positions of its attachments every frame. It will connect these positions to the positions of the attachments on the previous frame. This creates a polygon that is then filled in by the Trail's [Trail.Color](https://developer.roblox.com/en-us/api-reference/property/Trail/Color) and [Trail.Texture](https://developer.roblox.com/en-us/api-reference/property/Trail/Texture) (if that Texture exists).
@@ -23614,8 +25076,13 @@ interface Trail extends Instance {
  * It also allows manufacture of translated strings with inserts (data replacements) which may change order based on the target language.
  */
 interface Translator extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Translator";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Translator: unique symbol;
 	/** Describes the language that the Translator will translate to, as a locale-id.Describes the language that the Translator will translate to, as a locale-id. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -23723,8 +25190,13 @@ interface Translator extends Instance {
 
 /** The base class for in-between interpolation handlers. */
 interface TweenBase extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Tween";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TweenBase: unique symbol;
 	/** Read only property that shows the current playback [PlaybackState](https://developer.roblox.com/en-us/api-reference/enum/PlaybackState) of the [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween). PlaybackState is an Enum type variable with the following possible values.
 	 * 
 	 * *   Delayed - The tween is waiting to repeat due to the DelayTime property of the Tween's [TweenInfo](https://developer.roblox.com/en-us/api-reference/datatype/TweenInfo)
@@ -23776,8 +25248,13 @@ interface TweenBase extends Instance {
  * Although other methods exist for tweening objects, such as [GuiObject:TweenSizeAndPosition](https://developer.roblox.com/en-us/api-reference/function/GuiObject/TweenSizeAndPosition), Tweens allows multiple properties to be modified and for the animation to be paused and cancelled at any point.
  */
 interface Tween extends TweenBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Tween";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Tween: unique symbol;
 	/** The Instance property of a [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) points to the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) whose properties are being interpolated by the tween. As with all [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) properties, the Instance property is read only. If a developer wants to tween a different instance they must create a new [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) using [TweenService:Create](https://developer.roblox.com/en-us/api-reference/function/TweenService/Create).The Instance property of a [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) points to the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) whose properties are being interpolated by the tween. As with all [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) properties, the Instance property is read only. If a developer wants to tween a different instance they must create a new [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) using [TweenService:Create](https://developer.roblox.com/en-us/api-reference/function/TweenService/Create). *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -23816,8 +25293,13 @@ interface Tween extends TweenBase {
  * Although other methods exist for tweening objects, such as [GuiObject:TweenSizeAndPosition](https://developer.roblox.com/en-us/api-reference/function/GuiObject/TweenSizeAndPosition), TweenService allows multiple properties to be modified and for the animation to be paused and cancelled at any point.
  */
 interface TweenService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TweenService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TweenService: unique symbol;
 	/** The Create function of [TweenService](https://developer.roblox.com/en-us/api-reference/class/TweenService) creates a new [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween). The function takes three arguments: the object to tween, the [TweenInfo](https://developer.roblox.com/en-us/api-reference/datatype/TweenInfo) to use, and a table containing the properties to tween and the values to tween to.
 	 * 
 	 * Tweens are used to interpolate the properties of instances. These can be used to create animations for various Roblox objects. Almost any numeric property can be tweened using [TweenService](https://developer.roblox.com/en-us/api-reference/class/TweenService).
@@ -23843,7 +25325,7 @@ interface TweenService extends Instance {
 		this: TweenService,
 		instance: T,
 		tweenInfo: TweenInfo,
-		propertyTable: Partial<FilterMembers<T, Tweenable>>,
+		propertyTable: Partial<ExtractMembers<T, Tweenable>>,
 	): Tween;
 	/** Returns a new alpha value for interpolating using the given alpha value, [EasingStyle](https://developer.roblox.com/en-us/api-reference/enum/EasingStyle), and [EasingDirection](https://developer.roblox.com/en-us/api-reference/enum/EasingDirection).
 	 * 
@@ -23854,20 +25336,35 @@ interface TweenService extends Instance {
 
 /** UIBase is the base class for UI layout and constraint classes. */
 interface UIBase extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIAspectRatioConstraint" | "UICorner" | "UIGradient" | "UIGridLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UIBase: unique symbol;
 }
 
 /** A base class for UI constraint and layout classes, inherits from `UiBase`. */
 interface UIComponent extends UIBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIAspectRatioConstraint" | "UICorner" | "UIGradient" | "UIGridLayout" | "UIListLayout" | "UIPadding" | "UIPageLayout" | "UIScale" | "UISizeConstraint" | "UITableLayout" | "UITextSizeConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UIComponent: unique symbol;
 }
 
 /** The base class for UI constraint classes. */
 interface UIConstraint extends UIComponent {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIAspectRatioConstraint" | "UISizeConstraint" | "UITextSizeConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UIConstraint: unique symbol;
 }
 
 /** A UIAspectRatioConstraint ensures that the parent UI element ([GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject)) maintains a particular aspect ratio even if its size is set as a percentage of its parent. If an object with this constraint is also under the control of a [UILayout](https://developer.roblox.com/en-us/api-reference/class/UILayout) such as [UIGridLayout](https://developer.roblox.com/en-us/api-reference/class/UIGridLayout), then the constraint controls the objects size and overwrites any size the layout would apply.
@@ -23875,8 +25372,13 @@ interface UIConstraint extends UIComponent {
  * When applied to a GuiObject, the UIAspectRatioConstraint will make sure that the objects ratio is maintained by the value defined in [UIAspectRatioConstraint.AspectRatio](https://developer.roblox.com/en-us/api-reference/property/UIAspectRatioConstraint/AspectRatio). The [UIAspectRatioConstraint.AspectType](https://developer.roblox.com/en-us/api-reference/property/UIAspectRatioConstraint/AspectType) sets what determines the maximum size of the object. When set to `UIAspectRatioConstraint/FitWithinMaxSize`, the constraint will make the object the maximum size it can be within the `/GuiObject` of the element. When set to ScaleWithParentSize, the elements maximum size will be the size of the parent while still maintaining the aspect ratio. Finally, the [UIAspectRatioConstraint.DominantAxis](https://developer.roblox.com/en-us/api-reference/property/UIAspectRatioConstraint/DominantAxis) will determine which axis to use when setting the new size of the element.
  */
 interface UIAspectRatioConstraint extends UIConstraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIAspectRatioConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UIAspectRatioConstraint: unique symbol;
 	/** AspectRatio determines the width-to-height ratio to maintain. To flip the ratio to height-to-width, take the inverse (divide 1 by the number or raise to the -1st power). This value must be greater than zero. Below, a white [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) is placed within the a black [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) with two different width-to-height ratios.
 	 * 
 	 * ![A width-to-height ratio of 0.8](https://developer.roblox.com/assets/bltb4147bb1d3de0224/UIAspectRatioConstraint_Ratio_0.8.png)![A width-to-height ratio of 1.25](https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/blt9874bdf1824f7688/5af8c4f8a3fbc195609fc267/UIAspectRatioConstraint_Ratio_1.25.png)
@@ -23901,8 +25403,13 @@ interface UIAspectRatioConstraint extends UIConstraint {
  * A UISizeConstraint can be applied to a GuiObject by parenting it to that object.
  */
 interface UISizeConstraint extends UIConstraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UISizeConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UISizeConstraint: unique symbol;
 	/** The largest size in pixels the object is allowed to be. The X and Y of this value must be greater than or equal to the corresponding components of [UISizeConstraint.MinSize](https://developer.roblox.com/en-us/api-reference/property/UISizeConstraint/MinSize). */
 	MaxSize: Vector2;
 	/** The smallest size in pixels the object is allowed to be. The X and Y of this value must be less than or equal to the corresponding components of [UISizeConstraint.MaxSize](https://developer.roblox.com/en-us/api-reference/property/UISizeConstraint/MaxSize). */
@@ -23918,8 +25425,13 @@ interface UISizeConstraint extends UIConstraint {
  * A UITextSizeConstraint can be applied to a GuiObject by parenting it to that object.
  */
 interface UITextSizeConstraint extends UIConstraint {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UITextSizeConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UITextSizeConstraint: unique symbol;
 	/** this property indicates the largest size in pixels the font is allowed to be. It defaults to 1000 pixels and much be set larger than or equal to the `UITextSizeConstraint|UITextSizeConstraint's` [MinTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MinTextSize) property.
 	 * 
 	 * ![Constraints visual](https://developer.roblox.com/assets/blte9c47efb631349e0/UITextSizeConstraintDemo.gif)
@@ -23937,8 +25449,13 @@ interface UITextSizeConstraint extends UIConstraint {
 }
 
 interface UICorner extends UIComponent {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UICorner";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UICorner: unique symbol;
 	/** Round corner with specified radius. */
 	CornerRadius: UDim;
 }
@@ -23975,8 +25492,13 @@ interface UICorner extends UIComponent {
  * *   `articles/Applying UIGradients`, for more information on creating UIGradient objects and how they work.
  */
 interface UIGradient extends UIComponent {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIGradient";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UIGradient: unique symbol;
 	/** The **Color** of a [UIGradient](https://developer.roblox.com/en-us/api-reference/class/UIGradient) describes the color to blend with the parent UI element along the provided [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence). This property works in a similar manner to [Beam.Color](https://developer.roblox.com/en-us/api-reference/property/Beam/Color) or [Trail.Color](https://developer.roblox.com/en-us/api-reference/property/Trail/Color), except that it applies over an on-screen distance determined by the [Offset](https://developer.roblox.com/en-us/api-reference/property/UIGradient/Offset) and [Rotation](https://developer.roblox.com/en-us/api-reference/property/UIGradient/Rotation) of the UIGradient. The image below shows the linear interpolation of four color values:
 	 * 
 	 * ![How the UIGradient Color ColorSequence applies color to a GuiObject](https://developer.roblox.com/assets/blt62f971fd0f185879/UIGradient.Color.2.jpg)
@@ -24033,14 +25555,24 @@ interface UIGradient extends UIComponent {
 
 /** The base class for UI layout classes. */
 interface UILayout extends UIComponent {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIGridLayout" | "UIListLayout" | "UIPageLayout" | "UITableLayout";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UILayout: unique symbol;
 }
 
 /** The base class for grid style UI layouts. */
 interface UIGridStyleLayout extends UILayout {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIGridLayout" | "UIListLayout" | "UIPageLayout" | "UITableLayout";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UIGridStyleLayout: unique symbol;
 	/** The AbsoluteContentSize property of a [UIGridStyleLayout](https://developer.roblox.com/en-us/api-reference/class/UIGridStyleLayout) shows how much space the elements of the grid are taking up, including any padding created by the grid. This property is particularly useful to size containers of grids such as [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame)s and Frame to make sure they aren't any larger than the grid itself.
 	 * 
 	 * It updates as soon as it's read. It won't fire a changed event immediately after the UI has changed, but if the value is read it will be up to date. A [Instance.Changed](https://developer.roblox.com/en-us/api-reference/event/Instance/Changed) event should fire on the next render step.
@@ -24072,8 +25604,13 @@ interface UIGridStyleLayout extends UILayout {
  * This layout is appropriate when line breaks are OK after arbitrary cells. For example, a set of inventory spaces is a good use of this layout. If building a table of values in which a line break is not appropriate in the middle of tabular data, it might be a better idea to use a [UITableLayout](https://developer.roblox.com/en-us/api-reference/class/UITableLayout) instead.
  */
 interface UIGridLayout extends UIGridStyleLayout {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIGridLayout";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UIGridLayout: unique symbol;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -24116,8 +25653,13 @@ interface UIGridLayout extends UIGridStyleLayout {
  * Since each property that changes how elements are laid out will re-apply the layout, it is recommended to set the [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) property last so that the layout is only applied once. Similarly, since adding more UI elements will also re-apply the layout, add the UIListLayout last so it does not recalculate positions after each element.
  */
 interface UIListLayout extends UIGridStyleLayout {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIListLayout";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UIListLayout: unique symbol;
 	/** Determines the amount of free space between each element.
 	 * 
 	 * Can be set either using scale (Percentage of parent's size in the current direction) or offset (a static spacing value, similar to pixel size).Determines the amount of free space between each element.
@@ -24127,8 +25669,13 @@ interface UIListLayout extends UIGridStyleLayout {
 
 /** Creates a paged viewing window, like the home screen of a mobile device. You can use a UIPageLayout by parenting it to a GuiObject. The UIPageLayout will then apply itself to all of its GuiObject siblings. */
 interface UIPageLayout extends UIGridStyleLayout {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIPageLayout";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UIPageLayout: unique symbol;
 	/** Whether or not to animate transitions between pages. */
 	Animated: boolean;
 	/** Whether or not the page layout wraps around at the ends. */
@@ -24181,8 +25728,13 @@ interface UIPageLayout extends UIGridStyleLayout {
  * Cells will continue to respect [UISizeConstraint](https://developer.roblox.com/en-us/api-reference/class/UISizeConstraint) objects within them. In other words, setting [UISizeConstraint.MinSize](https://developer.roblox.com/en-us/api-reference/property/UISizeConstraint/MinSize) on [UISizeConstraint](https://developer.roblox.com/en-us/api-reference/class/UISizeConstraint)s within the header cells can determine the size of the rest of the cells. If [UISizeConstraint.MaxSize](https://developer.roblox.com/en-us/api-reference/property/UISizeConstraint/MaxSize) restricts a cell's size from filling the allotted space (i.e. another row/column is wider than it), it will align to the top-left.
  */
 interface UITableLayout extends UIGridStyleLayout {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UITableLayout";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UITableLayout: unique symbol;
 	/** FillEmptySpaceColumns determines whether cells' X size are set such that the entire horizontal space of the parent UI element is used. Enabling this is useful for making sure your table takes up a more easily predictable amount of horizontal space (the X-axis size of the parent UI element). It is still possible that a [UISizeConstraint](https://developer.roblox.com/en-us/api-reference/class/UISizeConstraint) applied to cells will cause underflow/overflow.
 	 * 
 	 * When enabling this property, the column widths will be approximately equal to the parent's [GuiBase2d.AbsoluteSize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteSize).X component divided by the number of columns (not accounting for padding or other factors).
@@ -24209,8 +25761,13 @@ interface UITableLayout extends UIGridStyleLayout {
 
 /** Applies padding to the borders of the GuiObject that this is parented to. */
 interface UIPadding extends UIComponent {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIPadding";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UIPadding: unique symbol;
 	/** The padding to apply on the bottom side relative to the parent's normal size. */
 	PaddingBottom: UDim;
 	/** The padding to apply on the left side relative to the parent's normal size. */
@@ -24223,15 +25780,25 @@ interface UIPadding extends UIComponent {
 
 /** A UIScale object simply contains a number that is used to multiply the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteSize) of the parent UI element. This number is stored in [UIScale.Scale](https://developer.roblox.com/en-us/api-reference/property/UIScale/Scale). */
 interface UIScale extends UIComponent {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UIScale";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UIScale: unique symbol;
 	/** The Scale property determines the multiplier used on the parent UI element's [GuiBase2d.AbsoluteSize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteSize). When set to 0.5, an AbsoluteSize of {0, 200}, {0, 50} becomes {0, 100}, {0, 25}. Similarly, when set to 2, such an AbsoluteSize would become {0, 400}, {0, 100}. */
 	Scale: number;
 }
 
 interface UnvalidatedAssetService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UnvalidatedAssetService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UnvalidatedAssetService: unique symbol;
 }
 
 /** The UserGameSettings is a singleton class found inside of the [UserSettings](https://developer.roblox.com/en-us/api-reference/class/UserSettings) singleton. It holds various persistent settings relating to how the user wants to control their camera, and their character.
@@ -24243,8 +25810,13 @@ interface UnvalidatedAssetService extends Instance {
  * This object is intended to be used on the client only, as it serves no purpose on the server. It will also reflect your own settings when testing in Roblox Studio.
  */
 interface UserGameSettings extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UserGameSettings";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UserGameSettings: unique symbol;
 	/** The camera movement mode currently in-use by the client. */
 	ComputerCameraMovementMode: Enum.ComputerCameraMovementMode;
 	/** The movement type in-use by the client via Computer input. */
@@ -24328,8 +25900,13 @@ interface UserGameSettings extends Instance {
  * *   [ContextActionService](https://developer.roblox.com/en-us/api-reference/class/ContextActionService), a service which allows you to bind functions to multiple user inputs
  */
 interface UserInputService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UserInputService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UserInputService: unique symbol;
 	/** This property describes whether the the user's device has an accelerometer
 	 * 
 	 * An accelerometer is a component found in most mobile devices that measures acceleration (change in speed).
@@ -25753,8 +27330,13 @@ interface UserInputService extends Instance {
 
 /** A service that handles queries regarding users on the Roblox platform. */
 interface UserService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "UserService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UserService: unique symbol;
 	/** This function enables developers to request information about users outside of the current [Datamodel](https://developer.roblox.com/api-reference/class/DataModel) in bulk, which is why both the input and output values are arrays.
 	 * 
 	 * *   The order of the `UserInfosResponse` objects in the return value's array may not match the order of the `UserIds` sent in the input parameter's array. Use the `Id` field of the `UserInfosResponse` object to identify your input array with the output array.
@@ -25786,8 +27368,13 @@ interface UserService extends Instance {
  * 2.  Since this service is client-side only, it will only work when used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript). It will not work when used within a [Script](https://developer.roblox.com/en-us/api-reference/class/Script). Client-side only means that users in the game can only detect their own input - and not the input of other users.
  */
 interface VRService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "VRService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_VRService: unique symbol;
 	/** The GuiInputUserCFrame property describes what [UserCFrame](https://developer.roblox.com/en-us/api-reference/enum/UserCFrame) is responsible for input in VR. For instance, if a VR headset is responsible, the value of this property will be UserCFrame.Head.
 	 * 
 	 * To check if Roblox detects any VR devices, which would be responsible for input in VR, you can check the [VRService.VREnabled](https://developer.roblox.com/en-us/api-reference/property/VRService/VREnabled) property.
@@ -25944,8 +27531,13 @@ interface VRService extends Instance {
 }
 
 interface ValueBase extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BinaryStringValue" | "BoolValue" | "BrickColorValue" | "CFrameValue" | "Color3Value" | "DoubleConstrainedValue" | "IntConstrainedValue" | "IntValue" | "NumberValue" | "ObjectValue" | "RayValue" | "StringValue" | "Vector3Value";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ValueBase: unique symbol;
 	/** The value this object holds. */
 	Value: unknown;
 	/**
@@ -25958,8 +27550,13 @@ interface ValueBase extends Instance {
 
 /** An internal type of [StringValue](https://developer.roblox.com/en-us/api-reference/class/StringValue) object, that stores a `BinaryString` value. */
 interface BinaryStringValue extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BinaryStringValue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BinaryStringValue: unique symbol;
 	/** Fires if the `BinaryStringValue/Value` of the [BinaryStringValue](https://developer.roblox.com/en-us/api-reference/class/BinaryStringValue) is changed by the engine.
 	 * 
 	 * In practice, this object is stored out of reach from normal scripts, so this event cannot be connected to. If a BinaryStringValue is created by a script, the engine will not do anything with it, so the event will never fire.
@@ -25974,8 +27571,13 @@ interface BinaryStringValue extends ValueBase {
 
 /** An instance which is used to hold a boolean value. The value can be used for many things, including to communicate between scripts. */
 interface BoolValue extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BoolValue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BoolValue: unique symbol;
 	/** Used to hold a boolean value. */
 	Value: boolean;
 	/** Fired whenever the [BoolValue.Value](https://developer.roblox.com/en-us/api-reference/property/BoolValue/Value) of the [BoolValue](https://developer.roblox.com/en-us/api-reference/class/BoolValue) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -25994,8 +27596,13 @@ interface BoolValue extends ValueBase {
 
 /** An instance which is used to store a BrickColor value. */
 interface BrickColorValue extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "BrickColorValue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BrickColorValue: unique symbol;
 	/** Used to hold a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor "BrickColor") value. */
 	Value: BrickColor;
 	/** Fired whenever the [BrickColorValue.Value](https://developer.roblox.com/en-us/api-reference/property/BrickColorValue/Value) of the [BrickColorValue](https://developer.roblox.com/en-us/api-reference/class/BrickColorValue) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -26012,8 +27619,13 @@ interface BrickColorValue extends ValueBase {
 
 /** A container object for a single [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) value. */
 interface CFrameValue extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CFrameValue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CFrameValue: unique symbol;
 	/** Used to hold a [CFrame](https://developer.roblox.com/api-reference/datatype/CFrame "CFrame") value. */
 	Value: CFrame;
 	/** Fired whenever the [CFrameValue.Value](https://developer.roblox.com/en-us/api-reference/property/CFrameValue/Value) of the [CFrameValue](https://developer.roblox.com/en-us/api-reference/class/CFrameValue) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -26032,8 +27644,13 @@ interface CFrameValue extends ValueBase {
 
 /** A container object for a single [Color3](https://developer.roblox.com/en-us/api-reference/datatype/Color3) value. */
 interface Color3Value extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Color3Value";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Color3Value: unique symbol;
 	/** The stored [Color3](https://developer.roblox.com/api-reference/datatype/Color3 "Color3"). */
 	Value: Color3;
 	/** Fired whenever the [Color3Value.Value](https://developer.roblox.com/en-us/api-reference/property/Color3Value/Value) of the [Color3Value](https://developer.roblox.com/en-us/api-reference/class/Color3Value) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -26052,8 +27669,13 @@ interface Color3Value extends ValueBase {
 
 /** An instance which is used to create a number value which can never be less than the MinValue or more than the MaxValue. */
 interface DoubleConstrainedValue extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DoubleConstrainedValue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DoubleConstrainedValue: unique symbol;
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden, NotReplicated
 	 */
@@ -26072,8 +27694,13 @@ interface DoubleConstrainedValue extends ValueBase {
 
 /** An IntConstrainedValue is used to store a value which can never be less than MinValue and can never be more than MaxValue. */
 interface IntConstrainedValue extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "IntConstrainedValue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_IntConstrainedValue: unique symbol;
 	/** Hold a `Integer` value between [IntConstrainedValue.MinValue](https://developer.roblox.com/en-us/api-reference/property/IntConstrainedValue/MinValue) and [IntConstrainedValue.MaxValue](https://developer.roblox.com/en-us/api-reference/property/IntConstrainedValue/MaxValue). Replaced by [IntConstrainedValue.Value](https://developer.roblox.com/en-us/api-reference/property/IntConstrainedValue/Value), but still functional.Hold a `Integer` value between [IntConstrainedValue.MinValue](https://developer.roblox.com/en-us/api-reference/property/IntConstrainedValue/MinValue) and [IntConstrainedValue.MaxValue](https://developer.roblox.com/en-us/api-reference/property/IntConstrainedValue/MaxValue). Replaced by [IntConstrainedValue.Value](https://developer.roblox.com/en-us/api-reference/property/IntConstrainedValue/Value), but still functional. *
 	 * Tags: Hidden, NotReplicated
 	 */
@@ -26092,8 +27719,13 @@ interface IntConstrainedValue extends ValueBase {
 
 /** An IntValue is an object that stores a single signed 64-bit integer. Integers do not include decimal points. The highest value that can be stored is 2^63-1, or around 9.2 quintillion. Attempting to store numbers larger than this may cause [integer overflow](https://en.wikipedia.org/wiki/Integer_overflow). The lowest value that can be stored is -2^63, or about negative 9.2 quintillion. For values outside of this range, use a NumberValue instead. Like all “-Value” objects, this single value is stored in the Value property. The [IntValue.Changed](https://developer.roblox.com/en-us/api-reference/event/IntValue/Changed) event for this (and other objects like it) will run with the new value being stored in the object, instead of a string representing the property being changed. */
 interface IntValue extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "IntValue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_IntValue: unique symbol;
 	/** Used to hold an [Integer](https://developer.roblox.com/articles/Integers "Integer"). */
 	Value: number;
 	/** The Changed event fires whenever the [IntValue.Value](https://developer.roblox.com/en-us/api-reference/property/IntValue/Value) of the [IntValue](https://developer.roblox.com/en-us/api-reference/class/IntValue) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -26115,8 +27747,13 @@ interface IntValue extends ValueBase {
  * Like all “-Value” objects, this single value is stored in the Value property. The Changed event for this (and other objects like it) will fire with the new value being stored in the object, instead of a string representing the property being changed.
  */
 interface NumberValue extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "NumberValue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NumberValue: unique symbol;
 	/** Used to hold a double value. */
 	Value: number;
 	/** This event fires whenever the [NumberValue.Value](https://developer.roblox.com/en-us/api-reference/property/NumberValue/Value) property is changed.
@@ -26140,8 +27777,13 @@ interface NumberValue extends ValueBase {
  * Like all “-Value” objects, this single value is stored in the Value property. The Changed event for this (and other objects like it) will fire with the new value being stored in the object, instead of a string representing the property being changed.
  */
 interface ObjectValue extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ObjectValue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ObjectValue: unique symbol;
 	/** Holds a reference to an instance. */
 	Value: Instance | undefined;
 	/** This event fires whenever the [ObjectValue.Value](https://developer.roblox.com/en-us/api-reference/property/ObjectValue/Value) property is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -26167,8 +27809,13 @@ interface ObjectValue extends ValueBase {
  * Like all “-Value” objects, this single value is stored in the Value property. The Changed event for this (and other objects like it) will fire with the new value being stored in the object, instead of a string representing the property being changed.
  */
 interface RayValue extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RayValue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RayValue: unique symbol;
 	/** The stored Ray. */
 	Value: Ray;
 	/** This event fires whenever the [RayValue.Value](https://developer.roblox.com/en-us/api-reference/property/RayValue/Value) property is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -26188,8 +27835,13 @@ interface RayValue extends ValueBase {
  * If the string is too long to be displayed in the Value field within Properties window, it will partially show the string contents followed by an ellipsis (…).
  */
 interface StringValue extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StringValue";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StringValue: unique symbol;
 	/** The stored [string](https://developer.roblox.com/articles/String "API:Type/string"). */
 	Value: string;
 	/** Fired whenever the [StringValue.Value](https://developer.roblox.com/en-us/api-reference/property/StringValue/Value) of the [StringValue](https://developer.roblox.com/en-us/api-reference/class/StringValue) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -26208,8 +27860,13 @@ interface StringValue extends ValueBase {
 
 /** A Vector3Value simply holds a Vector3 as a value. This value can be used for scripts to communicate, for objects to move to a preset location, etc. */
 interface Vector3Value extends ValueBase {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Vector3Value";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Vector3Value: unique symbol;
 	/** The stored [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3 "Vector3"). */
 	Value: Vector3;
 	/** Fired whenever the [Vector3Value.Value](https://developer.roblox.com/en-us/api-reference/property/Vector3Value/Value) of the [Vector3Value](https://developer.roblox.com/en-us/api-reference/class/Vector3Value) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -26278,8 +27935,13 @@ interface Vector3Value extends ValueBase {
  * partA.CFrame = CFrame.new(0, 20, 0)
  */
 interface WeldConstraint extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "WeldConstraint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_WeldConstraint: unique symbol;
 	/** True if the WeldConstraint is currently active in the world.
 	 * 
 	 * If the WeldConstraint or one of its parts is not in [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) the weld will be inactive.
