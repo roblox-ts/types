@@ -346,7 +346,10 @@ interface Instance {
 
 	FindFirstChildOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 
-	GetPropertyChangedSignal(this: Instance, propertyName: InstancePropertyNames<this>): RBXScriptSignal<() => void>;
+	GetPropertyChangedSignal<T extends Instance>(
+		this: T,
+		propertyName: InstancePropertyNames<T>,
+	): RBXScriptSignal<() => void>;
 }
 
 interface InventoryPages extends Pages<number> {}
