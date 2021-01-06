@@ -72,6 +72,13 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 // GENERATED ROBLOX INSTANCE CLASSES
 
 interface Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Instance: unique symbol;
 	/** This property used to protect objects in the [CoreGui](https://developer.roblox.com/en-us/api-reference/class/CoreGui) service from being altered by users in an unauthorized manner. It has been deprecated and does not do anything. */
 	RobloxLocked: boolean;
 	/** Returns a coded string of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s DebugId used internally by Roblox.
@@ -87,8 +94,13 @@ interface Instance {
 }
 
 interface ABTestService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ABTestService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ABTestService: unique symbol;
 	/** [NO DOCUMENTATION] */
 	ClearUserVariations(this: ABTestService): void;
 	/** [NO DOCUMENTATION] */
@@ -116,6 +128,13 @@ interface ABTestService extends Instance {
 }
 
 interface Animator extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Animator: unique symbol;
 	/** Increments the [AnimationTrack.TimePosition](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/TimePosition) of all playing [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack)s that are loaded onto the [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator), applying the offsets to the model associated with the [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator). For use in the command bar or by plugins only.
 	 * 
 	 * The deltaTime paramater determines the number of seconds to increment on the animation's progress. Typically this function will be called in a loop to preview the length of an animation (see example).
@@ -134,8 +153,13 @@ interface Animator extends Instance {
  * You can use the [StarterGui:SetCoreGuiEnabled](https://developer.roblox.com/en-us/api-reference/function/StarterGui/SetCoreGuiEnabled) and [StarterGui:GetCoreGuiEnabled](https://developer.roblox.com/en-us/api-reference/function/StarterGui/GetCoreGuiEnabled) methods in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) to enable and disable most elements of the CoreGui. You can also use [PlayerGui:SetTopbarTransparency](https://developer.roblox.com/en-us/api-reference/function/PlayerGui/SetTopbarTransparency) to set the transparency of the top bar.
  */
 interface CoreGui extends BasePlayerGui {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "CoreGui";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CoreGui: unique symbol;
 	/** Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject. */
 	readonly SelectionImageObject: GuiObject | undefined;
 	/** The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased. *
@@ -151,6 +175,13 @@ interface CoreGui extends BasePlayerGui {
 }
 
 interface StarterGui extends BasePlayerGui {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StarterGui: unique symbol;
 	/** Allows the StarterGui service to process input like [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui) and [CoreGui](https://developer.roblox.com/en-us/api-reference/class/CoreGui) do. The default value is false. */
 	ProcessUserInput: boolean;
 	/** This property determines whether the contents of [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui) is visible in studio */
@@ -159,8 +190,13 @@ interface StarterGui extends BasePlayerGui {
 
 /** The ChangeHistoryService provides a way for plugins to undo and redo changes and to create waypoints when changes are made to the place. */
 interface ChangeHistoryService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ChangeHistoryService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ChangeHistoryService: unique symbol;
 	/** Returns whether there are actions that can be redone, and, if there are, returns the last of them. */
 	GetCanRedo(this: ChangeHistoryService): unknown;
 	/** Returns whether there are actions that can be undone, and, if there are, returns the last of them. */
@@ -182,8 +218,13 @@ interface ChangeHistoryService extends Instance {
 }
 
 interface DataModelSession extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DataModelSession";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataModelSession: unique symbol;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -204,8 +245,13 @@ interface DataModelSession extends Instance {
 
 /** The DebugSettings allows you to view diagnostics information regarding Roblox. It is labeled as **Diagnostics** in the Roblox Studio Settings menu. */
 interface DebugSettings extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DebugSettings";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DebugSettings: unique symbol;
 	/** Describes whether a [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel) is actively in memory, as an integer (where 1 = true, and 0 = false).Describes whether a [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel) is actively in memory, as an integer (where 1 = true, and 0 = false). *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -238,8 +284,13 @@ interface DebugSettings extends Instance {
  * This object cannot be created, but it can be retrieved from the [ScriptDebugger](https://developer.roblox.com/en-us/api-reference/class/ScriptDebugger) class.
  */
 interface DebuggerBreakpoint extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DebuggerBreakpoint";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DebuggerBreakpoint: unique symbol;
 	/** The condition of the debugger breakpoint. */
 	Condition: string;
 	/** Whether or not the breakpoint is enabled. */
@@ -256,8 +307,13 @@ interface DebuggerBreakpoint extends Instance {
  * It can be retrieved via the `DebuggerManager()` function, but only from the command bar.
  */
 interface DebuggerManager extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DebuggerManager";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DebuggerManager: unique symbol;
 	/** Whether the debugger is enabled or disabled.Whether the debugger is enabled or disabled. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -286,8 +342,13 @@ interface DebuggerManager extends Instance {
  * This object cannot be created, but it can be retrieved from the [ScriptDebugger](https://developer.roblox.com/en-us/api-reference/class/ScriptDebugger) class.
  */
 interface DebuggerWatch extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DebuggerWatch";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DebuggerWatch: unique symbol;
 	/** The expression set for the DebuggerWatch. */
 	Expression: string;
 }
@@ -299,8 +360,13 @@ interface DebuggerWatch extends Instance {
  * The default [Name](https://developer.roblox.com/en-us/api-reference/property/Instance/Name) of a File instance will be the filename on disk, excluding path, including extension.
  */
 interface File extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "File";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_File: unique symbol;
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
@@ -313,8 +379,13 @@ interface File extends Instance {
 
 /** Various miscellaneous options for in-game. Can be accessed from Roblox Studio's settings menu under the _Game_ tab. */
 interface GameSettings extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "GameSettings";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GameSettings: unique symbol;
 	/** Used internally by Roblox to add additional CoreScript loading directories.
 	 * 
 	 * The value of this string should be full paths to each directory, separated only by semicolons (`;`)
@@ -334,8 +405,13 @@ interface GameSettings extends Instance {
 
 /** PluginGui is an abstract class for GUIs that allow the display of [GuiObjects](https://developer.roblox.com/en-us/api-reference/class/GuiObject) in various Roblox Studio widgets. As of right now, the only available PluginGui type is [DockWidgetPluginGui](https://developer.roblox.com/en-us/api-reference/class/DockWidgetPluginGui), but there may be more in the future! */
 interface PluginGui extends LayerCollector {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DockWidgetPluginGui" | "QWidgetPluginGui";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PluginGui: unique symbol;
 	/** The title that is displayed above the contents of the [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui). Defaults to empty string. */
 	Title: string;
 	/** This function binds a function to the `PluginGui|PluginGui's` close button, overriding the default behavior.
@@ -460,20 +536,44 @@ interface PluginGui extends LayerCollector {
  * See the `Articles/building studio widgets|Building Studio Widgets` tutorial for details on working with custom Studio widgets.
  */
 interface DockWidgetPluginGui extends PluginGui {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "DockWidgetPluginGui";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DockWidgetPluginGui: unique symbol;
 }
 
 interface QWidgetPluginGui extends PluginGui {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "QWidgetPluginGui";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_QWidgetPluginGui: unique symbol;
 }
 
 interface InsertService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_InsertService: unique symbol;
 	CreateMeshPartAsync(this: InsertService, meshId: string, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>, renderFidelity: CastsToEnum<Enum.RenderFidelity>): Instance | undefined;
 }
 
 interface KeyframeSequence extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_KeyframeSequence: unique symbol;
 	/** Contains the hip height of the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) of the model that was used to author this [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence). Default value is 1.35 since that is the hip height set for a standard R15 [character](https://developer.roblox.com/en-us/api-reference/class/Character). */
 	AuthoredHipHeight: number;
 }
@@ -497,8 +597,13 @@ interface KeyframeSequence extends Instance {
  * *   Fetch the content IDs of animations owned by a particular user.
  */
 interface KeyframeSequenceProvider extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "KeyframeSequenceProvider";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_KeyframeSequenceProvider: unique symbol;
 	GetMemStats(this: KeyframeSequenceProvider): object;
 	/** Generates a temporary asset ID from a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) that can be used for localized testing of an animation.
 	 * 
@@ -531,11 +636,23 @@ interface KeyframeSequenceProvider extends Instance {
  * It is labeled as **Lua** in the Roblox Studio Settings menu.
  */
 interface LuaSettings extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "LuaSettings";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_LuaSettings: unique symbol;
 }
 
 interface Script extends BaseScript {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Script: unique symbol;
 	/** A script's Source is the code to be executed. Modifying the code within a script modifies the source code executes when the script runs.
 	 * 
 	 * For instance, given a script containing the line:
@@ -552,13 +669,25 @@ interface Script extends BaseScript {
 }
 
 interface ModuleScript extends LuaSourceContainer {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ModuleScript: unique symbol;
 	/** The code to be executed. */
 	Source: string;
 }
 
 interface MemStorageConnection extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "MemStorageConnection";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_MemStorageConnection: unique symbol;
 	/** [NO DOCUMENTATION] */
 	Disconnect(this: MemStorageConnection): void;
 }
@@ -572,15 +701,25 @@ interface MemStorageConnection extends Instance {
  * For more information on how to use mouse objects, see the [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse) page.
  */
 interface PluginMouse extends Mouse {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PluginMouse";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PluginMouse: unique symbol;
 	/** Fired when Instances are being selected while the mouse is dragging. */
 	readonly DragEnter: RBXScriptSignal<(instances: Array<Instance>) => void>;
 }
 
 interface MultipleDocumentInterfaceInstance extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "MultipleDocumentInterfaceInstance";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_MultipleDocumentInterfaceInstance: unique symbol;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -593,43 +732,73 @@ interface MultipleDocumentInterfaceInstance extends Instance {
 
 /** The NetworkPeer object is the most basic class of the network objects. */
 interface NetworkPeer extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "NetworkClient" | "NetworkServer";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NetworkPeer: unique symbol;
 	/** Sets the maximum outgoing bandwidth that Roblox can use. */
 	SetOutgoingKBPSLimit(this: NetworkPeer, limit: number): void;
 }
 
 /** This service is responsible for connecting a client to a server. */
 interface NetworkClient extends NetworkPeer {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "NetworkClient";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NetworkClient: unique symbol;
 	readonly ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: ClientReplicator) => void>;
 }
 
 /** The NetworkServer stores all the [NetworkReplicator](https://developer.roblox.com/en-us/api-reference/class/NetworkReplicator) in the game and handles all connections. [NetworkPeer:SetOutgoingKBPSLimit](https://developer.roblox.com/en-us/api-reference/function/NetworkPeer/SetOutgoingKBPSLimit) can be used to imitate latency while using _Start Server_. */
 interface NetworkServer extends NetworkPeer {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "NetworkServer";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NetworkServer: unique symbol;
 }
 
 /** An object which handles the replication of other objects either from the server to the client, or from the client to the server. */
 interface NetworkReplicator extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ClientReplicator" | "ServerReplicator";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NetworkReplicator: unique symbol;
 	/** Returns the player that is connected to the NetworkReplicator. */
 	GetPlayer(this: NetworkReplicator): Player;
 }
 
 /** The ClientReplicator is in charge of replicating changes from the server over to the client. It represents the client's connection to a server. */
 interface ClientReplicator extends NetworkReplicator {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ClientReplicator";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ClientReplicator: unique symbol;
 }
 
 /** The ServerReplicator's job is to replicate changes from other clients and the server over to a certain client. */
 interface ServerReplicator extends NetworkReplicator {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ServerReplicator";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ServerReplicator: unique symbol;
 }
 
 /** NetworkSettings is a settings class that allow you to debug a lot of features with Roblox's server/client networking.  
@@ -637,8 +806,13 @@ interface ServerReplicator extends NetworkReplicator {
  * It can be found in Roblox Studio's settings, under the **Network** tab.
  */
 interface NetworkSettings extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "NetworkSettings";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NetworkSettings: unique symbol;
 	/** ExtraMemoryUsed is an unused debug property intended for streaming.  
 	 * It appears to specify how much extra memory is allocated to streaming, in MBs.
 	ExtraMemoryUsed is an unused debug property intended for streaming.  
@@ -753,11 +927,25 @@ interface NetworkSettings extends Instance {
 }
 
 interface Model extends PVInstance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Model: unique symbol;
 	/** Automatically generate impostor meshes to be rendered outside of streaming radius. */
 	LevelOfDetail: Enum.ModelLevelOfDetail;
 }
 
 interface WorldRoot extends Model {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_WorldRoot: unique symbol;
 	/** This function moves the specified part to the specified location via [inverse kinematics](https://en.wikipedia.org/wiki/Inverse_kinematics) rather than moving it there directly, to ensure any joints, [constraints](https://developer.roblox.com/en-us/api-reference/class/Constraint), or collisions that part is participating in remain physically satisfied. Currently this function is only available in Studio to [plugins](https://developer.roblox.com/en-us/api-reference/class/Plugin), as it currently conflicts with the physics of a running game.
 	 * 
 	 * **Translate stiffness** is a number between 0 and 1 specifying how agressively to match the part's position to the position part of the target CFrame.  
@@ -772,6 +960,13 @@ interface WorldRoot extends Model {
 }
 
 interface Workspace extends WorldRoot {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Workspace: unique symbol;
 	/** Goes through all [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s given, breaking any joints connected to these parts.
 	 * 
 	 * This function will break any of the following types of joints:
@@ -821,16 +1016,26 @@ interface Workspace extends WorldRoot {
 }
 
 interface PackageService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PackageService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PackageService: unique symbol;
 }
 
 /** The PhysicsSettings is a singleton class, which lets developers view debugging features in Roblox's physics engine.  
  * It can be found under the Physics tab in Roblox Studio's settings menu.
  */
 interface PhysicsSettings extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PhysicsSettings";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PhysicsSettings: unique symbol;
 	/** When set to true, physically simulated objects will stop being simulated if they have little to no motion for a set period of time. */
 	AllowSleep: boolean;
 	/** When set to true, parts that are [BasePart.Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) will show a gray surface outline on the surface of the part's bounding box that is currently facing the ground. */
@@ -1031,6 +1236,13 @@ interface PhysicsSettings extends Instance {
 }
 
 interface Player extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Player: unique symbol;
 	/** The SetAccountAge function sets the [Player.AccountAge](https://developer.roblox.com/en-us/api-reference/property/Player/AccountAge) of the player in days.
 	 * 
 	 * It is used to set the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) property that describes how long ago a player's account was registered in days.
@@ -1053,6 +1265,13 @@ interface Player extends Instance {
 }
 
 interface Players extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Players: unique symbol;
 	/** This function makes the local player chat the given message. Since this item is protected, attempting to use it in a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) will cause an error.
 	 * 
 	 * Instead, when creating a custom chat system, or a system that needs access to the chat, you can use the [Chat](https://developer.roblox.com/en-us/api-reference/class/Chat) service's [Chat:Chat](https://developer.roblox.com/en-us/api-reference/function/Chat/Chat) function instead.
@@ -1089,8 +1308,13 @@ interface Players extends Instance {
  * `articles/Intro to Plugins`, an introductory article to plugin use and development
  */
 interface Plugin extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Plugin";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Plugin: unique symbol;
 	/** Returns whether the user enabled _Collisions_ in studio under the Model tab. */
 	readonly CollisionEnabled: boolean;
 	/** Returns the grid size the user has set in studio under the Model tab. This can be 1, 0.2 or 0.01, but has rounding errors.
@@ -1352,8 +1576,13 @@ interface Plugin extends Instance {
  * PluginActions must be created using the [Plugin:CreatePluginAction](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreatePluginAction) function in order to work as expected.
  */
 interface PluginAction extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PluginAction";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PluginAction: unique symbol;
 	/** A string that uniquely identifies this action. This string is the key used when saving and loading the action's state in Roblox Studio.A string that uniquely identifies this action. This string is the key used when saving and loading the action's state in Roblox Studio. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -1399,13 +1628,23 @@ interface PluginAction extends Instance {
 }
 
 interface PluginDebugService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PluginDebugService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PluginDebugService: unique symbol;
 }
 
 interface PluginDragEvent extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PluginDragEvent";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PluginDragEvent: unique symbol;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -1426,11 +1665,23 @@ interface PluginDragEvent extends Instance {
 
 /** PluginGuiService is a service that stores [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui) objects to be displayed in Roblox Studio. It only allows PluginGuis to be direct children of the service, and PluginGuis are not allowed to be parented anywhere besides the service. */
 interface PluginGuiService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PluginGuiService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PluginGuiService: unique symbol;
 }
 
 interface PluginManagerInterface extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PluginManagerInterface: unique symbol;
 	/** [NO DOCUMENTATION] */
 	ExportPlace(this: PluginManagerInterface, filePath?: string): void;
 	/** [NO DOCUMENTATION] */
@@ -1457,8 +1708,13 @@ interface PluginManagerInterface extends Instance {
  * *   [PluginMenu:ShowAsync](https://developer.roblox.com/en-us/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
  */
 interface PluginMenu extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PluginMenu";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PluginMenu: unique symbol;
 	/** This property determines the icon to be displayed when used as a sub menu. It defaults to an empty string `””`.
 	 * 
 	 * See also
@@ -1598,8 +1854,13 @@ interface PluginMenu extends Instance {
  * ```
  */
 interface PluginToolbar extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PluginToolbar";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PluginToolbar: unique symbol;
 	/** Creates [PluginToolbarButton](https://developer.roblox.com/en-us/api-reference/class/PluginToolbarButton) that allows the user to initiate a single, one-off action in Roblox Studio through the [Click](https://developer.roblox.com/en-us/api-reference/event/PluginToolbarButton/Click) event.
 	 * 
 	 * See also
@@ -1633,8 +1894,13 @@ interface PluginToolbar extends Instance {
  * *   Prior to an update released in January 2019, this class was simply known as “Button”. This was changed to reduce confusion with similarly named in-game UI element classes, such as [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton).
  */
 interface PluginToolbarButton extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "PluginToolbarButton";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PluginToolbarButton: unique symbol;
 	/** **ClickableWhenViewportHIdden** determines whether a PluginToolbarButton may be clicked while the game viewport is hidden, such as when a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) is being edited in another tab. In the image below, various plugin toolbar buttons are visible. Some are enabled as a result of this property being true, such as the Localization Tools button.
 	 * 
 	 * ![Various plugin toolbar buttons visible while a Script is being edited, causing the game viewport to be hidden. Some of the buttons are enabled due to this property being true.](https://developer.roblox.com/assets/blt15abc50a70cd30be/PluginToolbarButton.ClickableWhenViewportHidden.jpg)
@@ -1671,8 +1937,13 @@ interface PluginToolbarButton extends Instance {
  * It can be found under the _Rendering_ tab in Roblox Studio's settings menu.
  */
 interface RenderSettings extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RenderSettings";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RenderSettings: unique symbol;
 	/** Sets the starting quality level of the framerate manager, when [RenderSettings.EnableFRM](https://developer.roblox.com/en-us/api-reference/property/RenderSettings/EnableFRM) is set to true. */
 	AutoFRMLevel: number;
 	/** When set to true, all scene updates will be given an unlimited budget, regardless of how computationally expensive it may be.  
@@ -1732,8 +2003,13 @@ interface RenderSettings extends Instance {
  * For the RenderingTest to pass in Roblox Studio, the request expects the response to be the string `"passed"`. It will also acknowledge the strings `"failed"` or `"golden"` as a string response.
  */
 interface RenderingTest extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RenderingTest";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RenderingTest: unique symbol;
 	/** The CFrame that the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) will use when this RenderingTest is executed.  
 	 * The value of this property is reflected into [RenderingTest.Position](https://developer.roblox.com/en-us/api-reference/property/RenderingTest/Position) and [RenderingTest.Orientation](https://developer.roblox.com/en-us/api-reference/property/RenderingTest/Orientation).
 	 */
@@ -1775,11 +2051,23 @@ interface RenderingTest extends Instance {
 }
 
 interface RobloxPluginGuiService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RobloxPluginGuiService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RobloxPluginGuiService: unique symbol;
 }
 
 interface RunService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RunService: unique symbol;
 	/** This function returns whether the current environment is in 'Edit' mode. For example, Roblox Studio is in 'Edit Mode' when the game is not running.
 	 * 
 	 * IsEdit will return the inverse of [RunService:IsRunning](https://developer.roblox.com/en-us/api-reference/function/RunService/IsRunning) with one exception, if the simulation has been 'paused' then both IsEdit and [RunService:IsRunning](https://developer.roblox.com/en-us/api-reference/function/RunService/IsRunning) will return false.
@@ -1842,8 +2130,13 @@ interface RunService extends Instance {
 
 /** This service controls all [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) objects. Most of the properties and methods of this service are locked for internal use, however you may use the [ScriptContext.ScriptsDisabled](https://developer.roblox.com/en-us/api-reference/property/ScriptContext/ScriptsDisabled) property to disable all scripts from a thread with normal security access. */
 interface ScriptContext extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ScriptContext";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptContext: unique symbol;
 	/** Sets whether [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) objects run their code. Scripts that are already running won't stop running.Sets whether [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) objects run their code. Scripts that are already running won't stop running. *
 	 * Tags: NotReplicated
 	 */
@@ -1862,8 +2155,13 @@ interface ScriptContext extends Instance {
 
 /** A ScriptDebugger is used to handle the debugging of a specific script. It can be retrieved from the [DebuggerManager](https://developer.roblox.com/en-us/api-reference/class/DebuggerManager). */
 interface ScriptDebugger extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "ScriptDebugger";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptDebugger: unique symbol;
 	/** The current line that the script is on. */
 	readonly CurrentLine: number;
 	/** Describes if this ScriptDebugger is actually debugging the script attached to it. */
@@ -1927,8 +2225,13 @@ interface ScriptDebugger extends Instance {
  * Note this class only applies to Roblox Studio and has no applicability to games.
  */
 interface Selection extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Selection";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Selection: unique symbol;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -1971,6 +2274,13 @@ interface Selection extends Instance {
 }
 
 interface DataModel extends ServiceProvider<Services> {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataModel: unique symbol;
 	/** Returns a table containing basic information about the jobs performed by the task scheduler
 	 * 
 	 * In computing, a task scheduler is a system responsible for executing key tasks at the appropriate intervals.
@@ -2066,8 +2376,13 @@ interface DataModel extends ServiceProvider<Services> {
  * *   [Studio](https://developer.roblox.com/en-us/api-reference/class/Studio)
  */
 interface GlobalSettings extends GenericSettings {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "GlobalSettings";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GlobalSettings: unique symbol;
 	/** Returns the value of an FFlag if it exists. */
 	GetFFlag(this: GlobalSettings, name: string): boolean;
 	/** Returns the value of an FVariable, if it exists. */
@@ -2078,8 +2393,13 @@ interface GlobalSettings extends GenericSettings {
  * It cannot be created using `Instance.new`, but its value can be read by plugins. They can be found stored inside of the [Stats](https://developer.roblox.com/en-us/api-reference/class/Stats) service.
  */
 interface StatsItem extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RunningAverageItemDouble" | "RunningAverageItemInt" | "RunningAverageTimeIntervalItem" | "TotalCountTimeIntervalItem";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StatsItem: unique symbol;
 	/** Returns the StatsItem's value. */
 	GetValue(this: StatsItem): number;
 	/** Returns the StatsItem's value as a formatted string. */
@@ -2088,38 +2408,63 @@ interface StatsItem extends Instance {
 
 /** A special type of [StatsItem](https://developer.roblox.com/en-us/api-reference/class/StatsItem) which measures the runtime average of an internal **double** value. */
 interface RunningAverageItemDouble extends StatsItem {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RunningAverageItemDouble";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RunningAverageItemDouble: unique symbol;
 }
 
 /** A special type of [StatsItem](https://developer.roblox.com/en-us/api-reference/class/StatsItem) which measures the runtime average of an internal integer value.  
  * As of right now, this StatsItem goes unused.
  */
 interface RunningAverageItemInt extends StatsItem {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RunningAverageItemInt";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RunningAverageItemInt: unique symbol;
 }
 
 /** A special type of [StatsItem](https://developer.roblox.com/en-us/api-reference/class/StatsItem) which measures a runtime average time interval.  
  * As of right now, this StatsItem goes unused.
  */
 interface RunningAverageTimeIntervalItem extends StatsItem {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "RunningAverageTimeIntervalItem";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RunningAverageTimeIntervalItem: unique symbol;
 }
 
 /** A special type of [StatsItem](https://developer.roblox.com/api-reference/class/StatsItem "StatsItem") which measures a total-count-over-time interval.  
  * As of right now, this StatsItem goes unused.
  */
 interface TotalCountTimeIntervalItem extends StatsItem {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TotalCountTimeIntervalItem";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TotalCountTimeIntervalItem: unique symbol;
 }
 
 /** The Studio object is a settings object that is exclusive to Roblox Studio. It can be found in Roblox Studio's settings under the Studio tab. */
 interface Studio extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "Studio";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Studio: unique symbol;
 	["\"TODO\" Color"]: Color3;
 	["\"function\" Color"]: Color3;
 	["\"local\" Color"]: Color3;
@@ -2267,8 +2612,13 @@ interface Studio extends Instance {
 }
 
 interface StudioData extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StudioData";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StudioData: unique symbol;
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden
 	 */
@@ -2295,8 +2645,13 @@ interface StudioData extends Instance {
  * *   Plugins that care about which script is currently being edited (if any) can read this from [ActiveScript](https://developer.roblox.com/en-us/api-reference/property/StudioService/ActiveScript).
  */
 interface StudioService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StudioService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StudioService: unique symbol;
 	/** **ActiveScript** refers to the [LuaSourceContainer](https://developer.roblox.com/en-us/api-reference/class/LuaSourceContainer) currently being edited by the user. If the user is not editing a script, this will be `nil`. Below is an example that shows how you can use this property to measure for how long a script was active.
 	 * 
 	 * ```lua
@@ -2636,8 +2991,13 @@ interface StudioService extends Instance {
 }
 
 interface StudioTheme extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "StudioTheme";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_StudioTheme: unique symbol;
 	/** The **GetColor()** function returns the [Color3](https://developer.roblox.com/en-us/api-reference/datatype/Color3) corresponding to the arguments provided. For instance, if you would like to get the [Color3](https://developer.roblox.com/en-us/api-reference/datatype/Color3) of the Studio “MainButton” when it's **disabled**, you can use the following code:
 	 * 
 	 * settings().Studio.Theme:GetColor(Enum.StudioStyleGuideColor.MainButton, Enum.StudioStyleGuideModifier.Disabled)
@@ -2651,8 +3011,13 @@ interface StudioTheme extends Instance {
  * Can be found in Roblox Studio's settings with the name _Task Scheduler_.
  */
 interface TaskScheduler extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TaskScheduler";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TaskScheduler: unique symbol;
 	/** The average time divided by the average interval of the duty cycle.The average time divided by the average interval of the duty cycle. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -2845,8 +3210,13 @@ interface TaskScheduler extends Instance {
  * *   [Speeding Roblox Development with Continuous Testing](http://blog.roblox.com/2012/04/speeding-roblox-development-with-continuous-testing)
  */
 interface TestService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "TestService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TestService: unique symbol;
 	/** If set to true, the game will start running when the TestService's [TestService:Run](https://developer.roblox.com/en-us/api-reference/function/TestService/Run) method is called. */
 	AutoRuns: boolean;
 	/** A description of the test being executed. */
@@ -2916,7 +3286,12 @@ interface TestService extends Instance {
 }
 
 interface VersionControlService extends Instance {
-	/** The string representing the class this Instance belongs to. `classIs()` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */
-	readonly ClassName: "VersionControlService";
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_VersionControlService: unique symbol;
 }
 

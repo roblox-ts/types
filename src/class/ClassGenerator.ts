@@ -21,7 +21,7 @@ import { ReflectionMetadata } from "./ReflectionMetadata";
 import fs from "fs-extra";
 
 const ROOT_DIR = path.join(__dirname, "..", "..");
-const CONTENT_DIR = path.join(ROOT_DIR, "devhub-scraper", "dist");
+const CONTENT_DIR = path.join(ROOT_DIR, "devhub-scraper-master", "dist");
 
 interface BreakdanceNodeBase {
 	type: string;
@@ -251,10 +251,7 @@ const CLASS_BLACKLIST = new Set([
 	"RbxAnalyticsService",
 ]);
 
-const MEMBER_BLACKLIST = new Map([
-	["Instance", ["ClassName"]],
-	["Workspace", ["FilteringEnabled"]],
-]);
+const MEMBER_BLACKLIST = new Map([["Workspace", ["FilteringEnabled"]]]);
 
 const EXPECTED_EXTRA_MEMBERS = new Map([
 	["Player", ["Name"]],
@@ -1086,10 +1083,7 @@ export class ClassGenerator extends Generator {
 				if (desc && desc.trim()) {
 					descriptions.push(this.formatDescription(desc));
 				}
-				// we don't do this anymore, because of the new TS comment behavior. It automatically combines docs
-				// if (tsImplInterface) {
-				// 	tsImplInterface.getLeadingCommentRanges().forEach(comment => descriptions.push(comment.getText()));
-				// }
+
 				const description = descriptions.join("\n\t").trim();
 				if (description) {
 					this.write(description);
@@ -1114,18 +1108,13 @@ export class ClassGenerator extends Generator {
 			this.write(declarationString || `interface ${className} ${extendsStr}{`);
 			this.pushIndent();
 
-			if (noSecurity) {
-				this.write(
-					`/** The string representing the class this Instance belongs to. \`classIs()\` can be used to check if this instance belongs to a specific class, ignoring class inheritance. */`,
-				);
-				this.write(
-					`readonly ClassName: ${[className, ...this.subclassify(className)]
-						.filter((className) => !ABSTRACT_CLASSES.has(className))
-						.map((subName) => `"${subName}"`)
-						.sort((a, b) => (a.toLowerCase() < b.toLowerCase() ? -1 : 1))
-						.join(" | ")};`,
-				);
-			}
+			this.write(`/**`);
+			this.write(` * **DO NOT USE!**`);
+			this.write(` *`);
+			this.write(` * This field exists to force TypeScript to recognize this as a nominal type`);
+			this.write(` * @deprecated`);
+			this.write(` */`);
+			this.write(`readonly _nominal_${className}: unique symbol;`);
 
 			if (noSecurity && tsImplInterface) {
 				for (const custom of [...tsImplInterface.getProperties(), ...tsImplInterface.getMethods()]) {
@@ -1185,11 +1174,6 @@ export class ClassGenerator extends Generator {
 		extended?: string,
 		callback?: (member: ApiClass) => void,
 	) {
-		const multispaceName = tableName
-			.replace(/([A-Z])/g, (a) => " " + a)
-			.toUpperCase()
-			.substr(1);
-
 		const extendedStr = extended ? " extends " + extended : "";
 		const isEmpty = rbxClasses.length === 0;
 
@@ -1207,30 +1191,6 @@ export class ClassGenerator extends Generator {
 			this.write(`}`);
 		}
 		this.write(``);
-	}
-
-	private subclassify(rbxClassName: string, omission = ""): Array<string> {
-		const rbxClass = this.ClassReferences.get(rbxClassName);
-
-		if (rbxClass) {
-			const classNames = [...rbxClass.Subclasses];
-			const numClassNames = classNames.length;
-
-			for (let i = 0; i < numClassNames; i++) {
-				const className = classNames[i];
-				const myClass = this.ClassReferences.get(className);
-
-				if (myClass) {
-					if (myClass.Subclasses.length > 0) {
-						classNames.push(...this.subclassify(className));
-					}
-				}
-			}
-
-			return classNames.filter((a) => a !== omission);
-		} else {
-			throw new Error("Cannot subclassify " + rbxClassName);
-		}
 	}
 
 	private generateInstancesTables(rbxClasses: Array<ApiClass>) {
@@ -1263,11 +1223,6 @@ export class ClassGenerator extends Generator {
 	}
 
 	public async generate(rbxClasses: Array<ApiClass>) {
-		// const linkData = new Array<{
-		// 	rbxMember: ApiClass;
-		// 	link: string;
-		// }>();
-
 		const promises = new Array<Promise<void>>();
 		for (const rbxClass of rbxClasses) {
 			const rbxClassName = rbxClass.Name;
@@ -1278,8 +1233,6 @@ export class ClassGenerator extends Generator {
 			const superclass = this.ClassReferences.get(rbxClass.Superclass);
 
 			if (superclass) {
-				// TODO: Erase bad subclasses
-				// TODO: Add subclasses which are only good for plugins
 				superclass.Subclasses.push(rbxClassName);
 			}
 
@@ -1325,35 +1278,8 @@ export class ClassGenerator extends Generator {
 					})(),
 				);
 			}
-
-			// linkData.push({
-			// 	rbxMember: rbxClass,
-			// 	link: `https://developer.roblox.com/api-reference/class/${rbxClassName}.json`,
-			// });
 		}
 		await Promise.all(promises);
-
-		// const interval = 60;
-		// let k = 0;
-		// for (let i = interval; i < linkData.length; i += interval) {
-		// 	const myLinks = new Array<Promise<any>>();
-		// 	for (k = i - interval; k < i; k++) {
-		// 		const linkDatum = linkData[k];
-		// 		if (linkDatum) {
-		// 			handleLinkData(myLinks, linkDatum, linkData, rbxClasses);
-		// 		}
-		// 	}
-		// 	await Promise.all(myLinks);
-		// }
-
-		// const leftoverLinks = new Array<Promise<any>>();
-		// for (; k < linkData.length; k++) {
-		// 	const linkDatum = linkData[k];
-		// 	if (linkDatum) {
-		// 		handleLinkData(leftoverLinks, linkDatum, linkData, rbxClasses);
-		// 	}
-		// }
-		// await Promise.all(leftoverLinks);
 
 		const project = new Project({
 			tsConfigFilePath: path.join(ROOT_DIR, "include", "tsconfig.json"),
