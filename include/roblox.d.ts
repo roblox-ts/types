@@ -1020,6 +1020,12 @@ interface CFrame {
 	readonly RightVector: Vector3;
 	/** The up-direction component of the CFrame’s orientation. */
 	readonly UpVector: Vector3;
+	/** Equivalent to the first/top row of the rotation matrix, or `Vector3.new(r00, r10, r20)` */
+	readonly XVector: Vector3;
+	/** Equivalent to the second/middle row of the rotation matrix, or `Vector3.new(r01, r11, r21)` */
+	readonly YVector: Vector3;
+	/** Equivalent to the third/bottom row of the rotation matrix, or `Vector3.new(r02, r12, r22)` */
+	readonly ZVector: Vector3;
 	/** Returns the inverse of this CFrame */
 	Inverse(this: CFrame): CFrame;
 	/** Returns a CFrame interpolated between this CFrame and the goal by the fraction alpha */

@@ -1942,6 +1942,10 @@ interface AvatarEditorService extends Instance {
 	PromptSaveAvatar(this: AvatarEditorService, humanoidDescription: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
 	/** This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to favorite or unfavorite the given asset or bundle. */
 	PromptSetFavorite(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>, shouldFavorite: boolean): void;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	CheckApplyDefaultClothing(this: AvatarEditorService, humanoidDescription: HumanoidDescription): Instance | undefined;
 	/** This function returns the platform Avatar rules for things like scaling, default shirts and pants, number of wearable assets, ect.
 	 * 
 	 * The returned table includes the following fields:
@@ -2036,6 +2040,10 @@ interface AvatarEditorService extends Instance {
 	 * Tags: Yields
 	 */
 	GetAvatarRules(this: AvatarEditorService): object;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	GetBatchItemDetails(this: AvatarEditorService, itemIds: Array<any>, itemType: CastsToEnum<Enum.AvatarItemType>): unknown;
 	/** This function returns if the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) has favorited the given bundle or asset.This function returns if the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) has favorited the given bundle or asset. *
 	 * Tags: Yields
 	 */
@@ -17573,6 +17581,7 @@ interface BasePart extends PVInstance {
 	 * Even when CanCollide is disabled, parts may still fire the [BasePart.Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched) event (as well the other parts touching them). In addition, a part allow other parts to pass through even if CanCollide is enabled if their collision groups are not set to collide with each other. Part collision groups are managed by `/PhysicsService`.
 	 */
 	CanCollide: boolean;
+	CanTouch: boolean;
 	/** Determines whether or not a part casts a shadow. It allows you to disable shadows for a part without having to make that part [transparent](https://developer.roblox.com/en-us/api-reference/property/BasePart/Transparency). */
 	CastShadow: boolean;
 	/** The CenterOfMass property describes the position in which a [part](https://developer.roblox.com/en-us/api-reference/class/BasePart)'s [center of mass](https://en.wikipedia.org/wiki/Center_of_mass) is located. Should a force be applied to the part toward this point, the part would not rotate as a result of this force. **CenterOfMass is currently not enabled.** */
