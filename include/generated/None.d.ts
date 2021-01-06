@@ -359,7 +359,7 @@ interface Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Instance: unique symbol;
+	readonly _nominal_Instance: unique symbol;
 	/** This property determines whether an [object](https://developer.roblox.com/en-us/api-reference/class/Instance) should be included when the game is published or saved, or when [Instance:Clone](https://developer.roblox.com/en-us/api-reference/function/Instance/Clone) is called on one of the object's ancestors. Calling Clone directly on an object will return nil if the cloned object is not archivable. Copying an object in Studio (using the 'Duplicate' or 'Copy' options) will ignore the Archivable property and set Archivable to true for the copy.
 	 * 
 	 * ```lua
@@ -1027,7 +1027,7 @@ interface Accoutrement extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Accoutrement: unique symbol;
+	readonly _nominal_Accoutrement: unique symbol;
 	/** Sets the offset position of the object on the Player.Sets the offset position of the object on the Player. *
 	 * Tags: NotReplicated
 	 */
@@ -1062,7 +1062,7 @@ interface Accessory extends Accoutrement {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Accessory: unique symbol;
+	readonly _nominal_Accessory: unique symbol;
 }
 
 interface Hat extends Accoutrement {
@@ -1072,7 +1072,7 @@ interface Hat extends Accoutrement {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Hat: unique symbol;
+	readonly _nominal_Hat: unique symbol;
 }
 
 /** **Note**
@@ -1095,7 +1095,7 @@ interface AnalyticsService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _AnalyticsService: unique symbol;
+	readonly _nominal_AnalyticsService: unique symbol;
 	/** This function triggers a custom event with a custom event name data.
 	 * 
 	 * Limits of events
@@ -1292,7 +1292,7 @@ interface Animation extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Animation: unique symbol;
+	readonly _nominal_Animation: unique symbol;
 	/** This property is the content ID of the animation an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) object is referencing. Once an animation has been created and uploaded to Roblox the content ID can be found in the uploaded animation's URL.
 	 * 
 	 * This URL is presented immediately after an animation has been uploaded to Roblox, in the Animation Editor export window. It can also be found in the Develop tab on the Roblox site, under 'Animations'.
@@ -1338,7 +1338,7 @@ interface AnimationController extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _AnimationController: unique symbol;
+	readonly _nominal_AnimationController: unique symbol;
 	GetPlayingAnimationTracks(this: AnimationController): Array<AnimationTrack>;
 	LoadAnimation(this: AnimationController, animation: Animation): AnimationTrack;
 }
@@ -1351,7 +1351,7 @@ interface AnimationTrack extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _AnimationTrack: unique symbol;
+	readonly _nominal_AnimationTrack: unique symbol;
 	/** The [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) object that was used to create this [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack). To create an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) the developer must load an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) object onto a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) or [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController) using the [Humanoid:LoadAnimation](https://developer.roblox.com/en-us/api-reference/function/Humanoid/LoadAnimation) method.
 	 * 
 	 * The Animation property is used to identify the underlying [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) of an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack).
@@ -1543,7 +1543,7 @@ interface Animator extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Animator: unique symbol;
+	readonly _nominal_Animator: unique symbol;
 	ApplyJointVelocities(this: Animator, motors: Array<Motor6D>): void;
 	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
 	/** Loads an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) onto an [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator), returning an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack). Used to load animations on locally controlled models (such as player characters) from the server.
@@ -1584,7 +1584,7 @@ interface AppUpdateService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _AppUpdateService: unique symbol;
+	readonly _nominal_AppUpdateService: unique symbol;
 }
 
 interface AssetCounterService extends Instance {
@@ -1594,7 +1594,7 @@ interface AssetCounterService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _AssetCounterService: unique symbol;
+	readonly _nominal_AssetCounterService: unique symbol;
 }
 
 interface AssetDeliveryProxy extends Instance {
@@ -1604,7 +1604,7 @@ interface AssetDeliveryProxy extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _AssetDeliveryProxy: unique symbol;
+	readonly _nominal_AssetDeliveryProxy: unique symbol;
 }
 
 interface AssetManagerService extends Instance {
@@ -1614,7 +1614,7 @@ interface AssetManagerService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _AssetManagerService: unique symbol;
+	readonly _nominal_AssetManagerService: unique symbol;
 }
 
 /** The AssetService is a non-replicated service that handles asset related queries to the Roblox web API. Eventually, this will house all asset related queries for Roblox objects stored in the web. One should mind the [limitations](https://developer.roblox.com/en-us/api-reference/class/Articles/Multi Place Games) this API has. */
@@ -1625,7 +1625,7 @@ interface AssetService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _AssetService: unique symbol;
+	readonly _nominal_AssetService: unique symbol;
 	/** Clones a place with placeId equal to given templatePlaceId. It is placed into the inventory of the place's creator with the given name and description. This method will also return the placeId of the new place, which can be used with TeleportService. This method cannot be used to clone places that you do not own. */
 	CreatePlaceAsync(this: AssetService, placeName: string, templatePlaceID: number, description?: string): number;
 	/** Clones a place which has a placeId equal to the given templatePlaceID, placing it into the inventory of the given player with the given name and description, if they accept when prompted. This method cannot be used to clone places that you do not own, or those which have disabled the use of the CreatePlace API in their place's configuration. */
@@ -1733,7 +1733,7 @@ interface Atmosphere extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Atmosphere: unique symbol;
+	readonly _nominal_Atmosphere: unique symbol;
 	/** A [Color3](https://developer.roblox.com/en-us/api-reference/datatype/Color3) value which changes the [Atmosphere](https://developer.roblox.com/en-us/api-reference/class/Atmosphere) hue for subtle environmental moods. This is best combined with increased [Haze](https://developer.roblox.com/en-us/api-reference/property/Atmosphere/Haze) to expand the visible effect.
 	 * 
 	 * See the `articles/Atmosphere|Atmosphere Controls` article for property comparisons and example environments.
@@ -1810,7 +1810,7 @@ interface Attachment extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Attachment: unique symbol;
+	readonly _nominal_Attachment: unique symbol;
 	/** Represents the direction of the X-Axis, relative to the Attachment's [Attachment.Rotation](https://developer.roblox.com/en-us/api-reference/property/Attachment/Rotation), as a unit [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3 "Vector3") with a length of 1. */
 	Axis: Vector3;
 	/** Represents the CFrame offset of the Attachment.
@@ -1859,7 +1859,7 @@ interface Bone extends Attachment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Bone: unique symbol;
+	readonly _nominal_Bone: unique symbol;
 	/** **Transform** determines the current animated offset of the bone relative to its [CFrame](https://developer.roblox.com/en-us/api-reference/property/Attachment/CFrame). This property is set by Roblox when animations on skinned meshes are played, although it can be manipulated manually in a manner similar to [Motor6D.Transform](https://developer.roblox.com/en-us/api-reference/property/Motor6D/Transform).
 	 * 
 	 * See also
@@ -1930,7 +1930,7 @@ interface AvatarEditorService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _AvatarEditorService: unique symbol;
+	readonly _nominal_AvatarEditorService: unique symbol;
 	/** This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to allow the developer to read what items the user has in their inventory and other avatar editor related information. The prompt needs to be confirmed by the user for the developer to use [AvatarEditorService:GetInventory](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetInventory), [AvatarEditorService:GetOutfits](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetOutfits) and [AvatarEditorService:GetFavorite](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetFavorite). This would have to be requested once per session but in the future we may wish to save this permission per game. */
 	PromptAllowInventoryReadAccess(this: AvatarEditorService): void;
 	/** This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to save the given [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) as an outfit. Does not yield and can get the result by listening to the [AvatarEditorService.PromptCreateOutfitCompleted](https://developer.roblox.com/en-us/api-reference/event/AvatarEditorService/PromptCreateOutfitCompleted) event. */
@@ -2544,7 +2544,7 @@ interface Backpack extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Backpack: unique symbol;
+	readonly _nominal_Backpack: unique symbol;
 }
 
 /** BackpackItem is an abstract class for backpack items such as HopperBins and Tools. */
@@ -2555,7 +2555,7 @@ interface BackpackItem extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BackpackItem: unique symbol;
+	readonly _nominal_BackpackItem: unique symbol;
 	/** The texture icon that is displayed for a tool in the [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s backpack.
 	 * 
 	 * This property should be set to the content ID of an image uploaded to the Roblox website.
@@ -2578,7 +2578,7 @@ interface Tool extends BackpackItem {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Tool: unique symbol;
+	readonly _nominal_Tool: unique symbol;
 	/** The CanBeDropped property controls whether the player can drop the [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool).
 	 * 
 	 * If true, when the backspace button is pressed the tool will be parented to the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) and removed from the player's [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). If false, the when the backspace button is pressed the tool will go back to the player's Backpack and it will not be dropped.
@@ -2812,7 +2812,7 @@ interface BadgeService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BadgeService: unique symbol;
+	readonly _nominal_BadgeService: unique symbol;
 	/** **AwardBadge** grants a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) a [badge](https://developer.roblox.com/en-us/api-reference/class/articles/Badges Special Game Awards) given the player's [UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) and the badge ID. In order to successfully award a badge, the following criteria must be met:
 	 * 
 	 * *   The player must be presently connected to the game.
@@ -2892,7 +2892,7 @@ interface BasePlayerGui extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BasePlayerGui: unique symbol;
+	readonly _nominal_BasePlayerGui: unique symbol;
 	/** This function takes a screen position and returns a list of all the visible [GuiObjects](https://developer.roblox.com/en-us/api-reference/class/GuiObject) that are occupying that screen position.
 	 * 
 	 * The main use case is to get GUI objects under the player's `Player/Mouse` or touch inputs to do things like allow selection or highlighting. These effects can already be achieved using [GuiObject.MouseEnter](https://developer.roblox.com/en-us/api-reference/event/GuiObject/MouseEnter) and [GuiObject.MouseLeave](https://developer.roblox.com/en-us/api-reference/event/GuiObject/MouseLeave) but this requires the developer to track these events for their UI objects all the time even if they only need this functionality in specific circumstances.
@@ -2918,7 +2918,7 @@ interface PlayerGui extends BasePlayerGui {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PlayerGui: unique symbol;
+	readonly _nominal_PlayerGui: unique symbol;
 	/** Describes the user's current screen orientation. */
 	readonly CurrentScreenOrientation: Enum.ScreenOrientation;
 	/** Sets the preferred screen orientation mode for this user, if the user is on a mobile device. */
@@ -2948,7 +2948,7 @@ interface StarterGui extends BasePlayerGui {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _StarterGui: unique symbol;
+	readonly _nominal_StarterGui: unique symbol;
 	/** This property sets the preferred orientation mode for users with mobile devices. For the different modes available, see [ScreenOrientation](https://developer.roblox.com/en-us/api-reference/enum/ScreenOrientation).
 	 * 
 	 * When a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) joins the game, if they are using a mobile device, this property will determine the device's starting orientation. [PlayerGui.ScreenOrientation](https://developer.roblox.com/en-us/api-reference/property/PlayerGui/ScreenOrientation) will be set to this value for [Players](https://developer.roblox.com/en-us/api-reference/class/Player) joining the game. For example, the following code would set the default to _'Portrait'_:
@@ -3719,7 +3719,7 @@ interface BaseWrap extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BaseWrap: unique symbol;
+	readonly _nominal_BaseWrap: unique symbol;
 	/** [NO DOCUMENTATION] */
 	readonly CageMeshId: string;
 	/** [NO DOCUMENTATION] */
@@ -3743,7 +3743,7 @@ interface WrapLayer extends BaseWrap {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _WrapLayer: unique symbol;
+	readonly _nominal_WrapLayer: unique symbol;
 	/** [NO DOCUMENTATION] */
 	readonly BindOffset: CFrame;
 	/** [NO DOCUMENTATION] */
@@ -3771,7 +3771,7 @@ interface WrapTarget extends BaseWrap {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _WrapTarget: unique symbol;
+	readonly _nominal_WrapTarget: unique symbol;
 	/** [NO DOCUMENTATION] */
 	readonly Stiffness: number;
 }
@@ -3810,7 +3810,7 @@ interface Beam extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Beam: unique symbol;
+	readonly _nominal_Beam: unique symbol;
 	/** The [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam) originates from.
 	 * 
 	 * A [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s Attachment0 is the first control point on the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s [cubic Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve). The orientation of Attachment0, alongside the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s [Beam.CurveSize0](https://developer.roblox.com/en-us/api-reference/property/Beam/CurveSize0), property determine the position of the second control point.
@@ -4110,7 +4110,7 @@ interface BindableEvent<T extends Callback = Callback> extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BindableEvent: unique symbol;
+	readonly _nominal_BindableEvent: unique symbol;
 	/** Calling this method will fire the “Event” event. This function does not yield, even no script has connected to the “Event” event and even if a connected function yields. There are limitations on the values that can be sent as arguments; see the code samples */
 	Fire(this: BindableEvent, ...args: Parameters<T>): void;
 	/** This event is fired when any script calls the Fire method of the BindableEvent. */
@@ -4125,7 +4125,7 @@ interface BindableFunction<T extends Callback = Callback> extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BindableFunction: unique symbol;
+	readonly _nominal_BindableFunction: unique symbol;
 	/** Invoke will call the OnInvoke callback and return any values that were returned by the callback (if any). If the OnInvoke callback is not set, this method will yield until one is set. If OnInvoke yields, this method will also yield. There are limitations on the values that can be sent as arguments; see the code samples. */
 	Invoke(this: BindableFunction, ...args: Parameters<T>): ReturnType<T>;
 	/** Should be defined as a function. This function is called when Invoke() is called. Number of arguments is variable. */
@@ -4157,7 +4157,7 @@ interface BodyMover extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BodyMover: unique symbol;
+	readonly _nominal_BodyMover: unique symbol;
 }
 
 /** The BodyAngularVelocity object applies a [torque](https://en.wikipedia.org/wiki/Torque) (or **rotational force**) on a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) such that it maintains a constant [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) as determined by its [AngularVelocity](https://developer.roblox.com/en-us/api-reference/property/BodyAngularVelocity/AngularVelocity) property. This allows for the creation of parts that continually rotate. It is the rotational counterpart to a [BodyVelocity](https://developer.roblox.com/en-us/api-reference/class/BodyVelocity). If you would like to maintain a constant [angular displacement](https://en.wikipedia.org/wiki/Angular_displacement), use a [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro) instead.
@@ -4177,7 +4177,7 @@ interface BodyAngularVelocity extends BodyMover {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BodyAngularVelocity: unique symbol;
+	readonly _nominal_BodyAngularVelocity: unique symbol;
 	/** The AngularVelocity property is a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) which determines the goal angular velocity a [BodyAngularVelocity](https://developer.roblox.com/en-us/api-reference/class/BodyAngularVelocity) should maintain through the exertion of torque. For this property, the direction of the vector is the axis of rotation. The magnitude is the angular velocity in **radians per second**. By default, this property is `(0, 2, 0)`.
 	 * 
 	 * **Tip:** You can multiply a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) by `math.rad(360)`, or **2π**, in order to convert [angular frequency](https://en.wikipedia.org/wiki/Angular_frequency) (rotations per second) into the desired [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) (radians per second). For example: Setting [AngularVelocity](https://developer.roblox.com/en-us/api-reference/property/BodyAngularVelocity/AngularVelocity) to `Vector3.new(0, 1, 0) * math.rad(360)` ≈ `Vector3.new(0, 6.283, 0)` will cause a part to spin around the Y axis once per second.
@@ -4224,7 +4224,7 @@ interface BodyForce extends BodyMover {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BodyForce: unique symbol;
+	readonly _nominal_BodyForce: unique symbol;
 	/** The Force property determines the magnitude of force exerted on each axis, relative to the world. */
 	Force: Vector3;
 }
@@ -4268,7 +4268,7 @@ interface BodyGyro extends BodyMover {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BodyGyro: unique symbol;
+	readonly _nominal_BodyGyro: unique symbol;
 	/** The CFrame property (not to be confused with [BasePart.CFrame](https://developer.roblox.com/en-us/api-reference/property/BasePart/CFrame)) determines the target orientation towards which torque will be exerted. Since [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro) does not apply translational force, the translational/positional component of the [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame), `CFrame.p`, is ignored. Consider using one of the following CFrame constructors in setting this property: `CFrame.fromAxisAngle`, `CFrame.fromEulerAnglesXYZ` or `CFrame.fromEulerAnglesYXZ`. Beware of [gimbal lock](https://en.wikipedia.org/wiki/Gimbal_lock) as you choose which of these methods and what angles (in radians). Additionally, you could use `CFrame.new(gyro.Parent.Position, targetPosition)` in order to have the BodyGyro “look at” a targetPosition ([Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3)). */
 	CFrame: CFrame;
 	/** The D property is how much **dampening** will be applied to the torque used to reach the goal [CFrame](https://developer.roblox.com/en-us/api-reference/property/BodyGyro/CFrame). When the part approaches the goal orientation it needs to decelerate, otherwise it will rotate past the goal and have to stop and re-accelerate back toward the goal. This is often creates undesirable **rubber-banding** effect, so applying dampening using this property is how that effect is avoided. The higher this value is set, the greater the dampening curve becomes, or the slower the part will approach the goal orientation. */
@@ -4298,7 +4298,7 @@ interface BodyPosition extends BodyMover {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BodyPosition: unique symbol;
+	readonly _nominal_BodyPosition: unique symbol;
 	/** The D property determines how much **dampening** will be applied to the force used toward reaching the goal `BodyPostion/Position|Position`. When the part approaches the goal position it needs to decelerate, otherwise it will move past the goal and have to stop and re-accelerate back toward the goal. This is often creates undesirable **rubber-banding** effect, so applying dampening using this property is how that effect is avoided. The higher this value is set, the greater the dampening curve becomes, or the slower the part will approach the goal position. */
 	D: number;
 	/** The MaxForce property determines the limit on the amount of force that may be applied on each axis in reaching the goal [Position](https://developer.roblox.com/en-us/api-reference/property/BodyPosition/Position). If a part isn't moving, consider increasing this value (also check that it is not [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) or attached to any anchored parts). */
@@ -4323,7 +4323,7 @@ interface BodyThrust extends BodyMover {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BodyThrust: unique symbol;
+	readonly _nominal_BodyThrust: unique symbol;
 	/** The Force property determines the amount of force exerted on each axis relative to the part. Unlike [BodyForce.Force](https://developer.roblox.com/en-us/api-reference/property/BodyForce/Force), this property is relative to the part and not the world. The force is exerted at the [Location](https://developer.roblox.com/en-us/api-reference/property/BodyThrust/Location), which is also relative to the part. */
 	Force: Vector3;
 	/** The Location property determines the relative offset from the center part at which the [BodyThrust.Force](https://developer.roblox.com/en-us/api-reference/property/BodyThrust/Force) is exerted. This is the primary means for turning force into torque. */
@@ -4341,7 +4341,7 @@ interface BodyVelocity extends BodyMover {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BodyVelocity: unique symbol;
+	readonly _nominal_BodyVelocity: unique symbol;
 	/** The MaxForce property determines the limit on the amount of force that may be applied on each axis in reaching the goal [Velocity](https://developer.roblox.com/en-us/api-reference/property/BodyVelocity/Velocity). If a part isn't moving, consider increasing this value (also check that it is not [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) or attached to any anchored parts). */
 	MaxForce: Vector3;
 	/** **Note**: This property is ignored if PGS is enabled via Workspace.PGSPhysicsSolverEnabled, which is enabled by default.
@@ -4380,7 +4380,7 @@ interface RocketPropulsion extends BodyMover {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _RocketPropulsion: unique symbol;
+	readonly _nominal_RocketPropulsion: unique symbol;
 	/** The CartoonFactor property determines the tendency of the part to face the [Target](https://developer.roblox.com/en-us/api-reference/property/RocketPropulsion/Target). By default, this property is set to `0.7`. If set to `0`, the part will make no effort to face the target. */
 	CartoonFactor: number;
 	/** The MaxSpeed property determines the upper limit of the velocity at which the part will move toward the [Target](https://developer.roblox.com/en-us/api-reference/property/RocketPropulsion/Target). A [RocketPropulsion](https://developer.roblox.com/en-us/api-reference/class/RocketPropulsion) will apply a force to decelerate a part if it exceeds this speed limit. */
@@ -4420,7 +4420,7 @@ interface BulkImportService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BulkImportService: unique symbol;
+	readonly _nominal_BulkImportService: unique symbol;
 }
 
 /** The Camera object defines a view of the 3D game world.
@@ -4460,7 +4460,7 @@ interface Camera extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Camera: unique symbol;
+	readonly _nominal_Camera: unique symbol;
 	/** This property is the [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) of the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) and definies its position and orientation in the 3D world.
 	 * 
 	 * Some transformations, such as the rotation of the head when using VR devices are not reflected in this property. For this reason, developers should use [Camera:GetRenderCFrame](https://developer.roblox.com/en-us/api-reference/function/Camera/GetRenderCFrame) to obtain the 'true' [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) of the camera.
@@ -4877,7 +4877,7 @@ interface CharacterAppearance extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _CharacterAppearance: unique symbol;
+	readonly _nominal_CharacterAppearance: unique symbol;
 }
 
 /** BodyColors is a utility object used by Roblox to load avatar body colors from the website.  
@@ -4893,7 +4893,7 @@ interface BodyColors extends CharacterAppearance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BodyColors: unique symbol;
+	readonly _nominal_BodyColors: unique symbol;
 	/** Sets the color of this limb, as a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor "API:BrickColor"). */
 	HeadColor: BrickColor;
 	/** Sets the color of this limb, as a [Color3](https://developer.roblox.com/api-reference/datatype/Color3 "API:Color3"). */
@@ -4928,7 +4928,7 @@ interface CharacterMesh extends CharacterAppearance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _CharacterMesh: unique symbol;
+	readonly _nominal_CharacterMesh: unique symbol;
 	/** The texture of a CharacterMesh. It can be overridden by Shirts, Pants, T-Shirts, and the [CharacterMesh.OverlayTextureId](https://developer.roblox.com/en-us/api-reference/property/CharacterMesh/OverlayTextureId) property. */
 	BaseTextureId: number;
 	/** The part of the Character's body that is affected. */
@@ -4947,7 +4947,7 @@ interface Clothing extends CharacterAppearance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Clothing: unique symbol;
+	readonly _nominal_Clothing: unique symbol;
 	/** This property determines the colorization to be applied to the [Clothing](https://developer.roblox.com/en-us/api-reference/class/Clothing) texture. The default colorization value is \`DataType/Color3|Color3.new(1,1,1) (white). When set to white no colorization occurs
 	 * 
 	 * It functions similarly to [ImageLabel.ImageColor3](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ImageColor3) and [Decal.Color3](https://developer.roblox.com/en-us/api-reference/property/Decal/Color3)except that it is applied to Clothing textures.
@@ -4988,7 +4988,7 @@ interface Pants extends Clothing {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Pants: unique symbol;
+	readonly _nominal_Pants: unique symbol;
 	/** Determines the texture of the [Pants](https://developer.roblox.com/en-us/api-reference/class/Pants). The content ID link pointing to the pants template hosted on the Roblox website.
 	 * 
 	 * How do I find the PantsTemplate?
@@ -5029,7 +5029,7 @@ interface Shirt extends Clothing {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Shirt: unique symbol;
+	readonly _nominal_Shirt: unique symbol;
 	/** The content ID link pointing to the shirt template hosted on the Roblox website. Determines the texture of the [Shirt](https://developer.roblox.com/en-us/api-reference/class/Shirt).
 	 * 
 	 * See also [ShirtGraphic.Graphic](https://developer.roblox.com/en-us/api-reference/property/ShirtGraphic/Graphic) for the image applied to T-shirts.
@@ -5061,7 +5061,7 @@ interface ShirtGraphic extends CharacterAppearance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ShirtGraphic: unique symbol;
+	readonly _nominal_ShirtGraphic: unique symbol;
 	/** This property determines the colorization to be applied to the [ShirtGraphic](https://developer.roblox.com/en-us/api-reference/class/ShirtGraphic) texture. It functions similarly to [ImageLabel.ImageColor3](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ImageColor3) except that it is applied to [ShirtGraphic](https://developer.roblox.com/en-us/api-reference/class/ShirtGraphic) textures. This is useful for creating shirt graphics that have many different color variations but share the same basic look.
 	 * 
 	 * See Also
@@ -5104,7 +5104,7 @@ interface Chat extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Chat: unique symbol;
+	readonly _nominal_Chat: unique symbol;
 	/** If true, entering a message in the chat will result in a chat bubble popping up above the player's [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character). This behavior can either be enabled by directly ticking this checkbox in Studio, or by using a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript):
 	 * 
 	 * ```lua
@@ -5366,7 +5366,7 @@ interface ClickDetector extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ClickDetector: unique symbol;
+	readonly _nominal_ClickDetector: unique symbol;
 	/** The CursorIcon sets the mouse icon that will be displayed when the `Mouse/mouse` hovers over this [ClickDetector](https://developer.roblox.com/en-us/api-reference/class/ClickDetector).
 	 * 
 	 * If this property is left blank, the ClickDetector will use the default icon:
@@ -5430,7 +5430,7 @@ interface Clouds extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Clouds: unique symbol;
+	readonly _nominal_Clouds: unique symbol;
 	/** A value that controls the cloud cover within the clouds volume, from 0 oktas to 8 oktas (full cloud cover). */
 	Cover: number;
 	/** A value that controls the clouds particulates density. The proportion of airborne water vapour particles within a cubic stud at full cloud cover. */
@@ -5459,7 +5459,7 @@ interface CollectionService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _CollectionService: unique symbol;
+	readonly _nominal_CollectionService: unique symbol;
 	/** AddTag will apply a tag to an object. This method will not throw an error if the object already had the tag. Successfully adding a tag will fire a signal created by [CollectionService:GetInstanceAddedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceAddedSignal) with the given tag.
 	 * 
 	 * **Warning:** When tagging an object, it is common that some resources are used to give the tag its functionality, e.g. event connections or tables. To prevent memory leaks, it is a good idea to clean these up (disconnect, set to nil, etc) when no longer needed for a tag. Do this when calling [CollectionService:RemoveTag](https://developer.roblox.com/en-us/api-reference/function/CollectionService/RemoveTag), calling [Instance:Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) or in a function connected to a signal returned by [CollectionService:GetInstanceRemovedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceRemovedSignal).
@@ -5559,7 +5559,7 @@ interface Configuration extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Configuration: unique symbol;
+	readonly _nominal_Configuration: unique symbol;
 }
 
 /** The base class for Constraint-based objects. */
@@ -5570,7 +5570,7 @@ interface Constraint extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Constraint: unique symbol;
+	readonly _nominal_Constraint: unique symbol;
 	/** True if the constraint is currently active in the world.
 	 * 
 	 * True if the constraint and both of its parts are in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) and the constraint's [Constraint.Enabled](https://developer.roblox.com/en-us/api-reference/property/Constraint/Enabled) property is true.
@@ -5637,7 +5637,7 @@ interface AlignOrientation extends Constraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _AlignOrientation: unique symbol;
+	readonly _nominal_AlignOrientation: unique symbol;
 	/** Specifies the desired relationship between the primary axes of the two [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment). The constraint will try to maintain this relationship by applying forces within specified limits.
 	 * 
 	 * This property is visible in Studio and meaningful only when [AlignOrientation.PrimaryAxisOnly](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/PrimaryAxisOnly) is set _true_.
@@ -5721,7 +5721,7 @@ interface AlignPosition extends Constraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _AlignPosition: unique symbol;
+	readonly _nominal_AlignPosition: unique symbol;
 	/** When true, applies force at center of mass of Attachment0's parent Part. When false, applied at Attachment0. */
 	ApplyAtCenterOfMass: boolean;
 	/** Maximum force the constraint can apply to achieve its goal. Only used if RigidityEnabled is false. */
@@ -5747,7 +5747,7 @@ interface AngularVelocity extends Constraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _AngularVelocity: unique symbol;
+	readonly _nominal_AngularVelocity: unique symbol;
 	/** A [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) force applied to achieve and maintain an angular velocity for the body. This vector is applied in the [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) expressed by the [AngularVelocity.RelativeTo](https://developer.roblox.com/en-us/api-reference/property/AngularVelocity/RelativeTo) property. Defaults to **(0, 0, 0)**. */
 	AngularVelocity: Vector3;
 	/** Magnitude of the maximum torque the constraint can apply. Defaults to **0**. */
@@ -5772,7 +5772,7 @@ interface BallSocketConstraint extends Constraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BallSocketConstraint: unique symbol;
+	readonly _nominal_BallSocketConstraint: unique symbol;
 	/** Sets whether the [BallSocketConstraint](https://developer.roblox.com/en-us/api-reference/class/BallSocketConstraint) has a limit on rotation based on [BallSocketConstraint.UpperAngle](https://developer.roblox.com/en-us/api-reference/property/BallSocketConstraint/UpperAngle).  
 	 * When a BallSocketConstraint has LimitsEnabled set to true, it enforces that its [Constraint.Attachment1](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment1) isn't rotated more than a set distance from its [Constraint.Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0).
 	 * 
@@ -5817,7 +5817,7 @@ interface HingeConstraint extends Constraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _HingeConstraint: unique symbol;
+	readonly _nominal_HingeConstraint: unique symbol;
 	/** Sets whether the rotation of the HingeConstraint is actuated and, if so, what kind of actuation.
 	 * 
 	 * When ActuatorType is set to `None` then the hinge can swing freely:
@@ -5924,7 +5924,7 @@ interface LineForce extends Constraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _LineForce: unique symbol;
+	readonly _nominal_LineForce: unique symbol;
 	/** When true, applies force at center of mass of Attachment0's parent Part, and the line determining the direction of the force will start at the said center of mass. When false, the force is applied at Attachment0's location and the line determining the direction will also start at Attachment0. */
 	ApplyAtCenterOfMass: boolean;
 	/** When true, the force magnitude is multiplied by the inverse square of the distance. */
@@ -5948,7 +5948,7 @@ interface RodConstraint extends Constraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _RodConstraint: unique symbol;
+	readonly _nominal_RodConstraint: unique symbol;
 	/** The current distance between the [RodConstraint](https://developer.roblox.com/en-us/api-reference/class/RodConstraint)'s two [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment).The current distance between the [RodConstraint](https://developer.roblox.com/en-us/api-reference/class/RodConstraint)'s two [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment). *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -5967,7 +5967,7 @@ interface RopeConstraint extends Constraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _RopeConstraint: unique symbol;
+	readonly _nominal_RopeConstraint: unique symbol;
 	/** The current distance between the RopeConstraint's two [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment).The current distance between the RopeConstraint's two [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment). *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -5997,7 +5997,7 @@ interface SlidingBallConstraint extends Constraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SlidingBallConstraint: unique symbol;
+	readonly _nominal_SlidingBallConstraint: unique symbol;
 	/** Sets whether the translation of the [PrismaticConstraint](https://developer.roblox.com/en-us/api-reference/class/PrismaticConstraint) is actuated and, if so, what kind of actuation.
 	 * 
 	 * If ActuatorType is set to **None**, then the joint can slide freely:
@@ -6083,7 +6083,7 @@ interface CylindricalConstraint extends SlidingBallConstraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _CylindricalConstraint: unique symbol;
+	readonly _nominal_CylindricalConstraint: unique symbol;
 	/** Type of angular actuator: None, Motor, or Servo. */
 	AngularActuatorType: Enum.ActuatorType;
 	/** Enables the angular limits around the rotation axis. */
@@ -6136,7 +6136,7 @@ interface PrismaticConstraint extends SlidingBallConstraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PrismaticConstraint: unique symbol;
+	readonly _nominal_PrismaticConstraint: unique symbol;
 }
 
 /** A **SpringConstraint** applies a force to its [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment) based on spring and damper behavior. Assuming the constraint has [SpringConstraint.Stiffness](https://developer.roblox.com/en-us/api-reference/property/SpringConstraint/Stiffness), it will apply forces based on how far apart the attachments are. If the attachments are further apart than the constraint's [SpringConstraint.FreeLength](https://developer.roblox.com/en-us/api-reference/property/SpringConstraint/FreeLength), the attachments will be forced together. If they are closer than the [SpringConstraint.FreeLength](https://developer.roblox.com/en-us/api-reference/property/SpringConstraint/FreeLength), the attachments will be forced apart. In addition, if [SpringConstraint.Damping](https://developer.roblox.com/en-us/api-reference/property/SpringConstraint/Damping) is set, there will be a damping component to the applied force that scales with the velocity of the attachments.
@@ -6187,7 +6187,7 @@ interface SpringConstraint extends Constraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SpringConstraint: unique symbol;
+	readonly _nominal_SpringConstraint: unique symbol;
 	/** The number of coils visualized on the SpringConstraint. This can only be set between 0 and 8. */
 	Coils: number;
 	/** The current distance between the [SpringConstraint](https://developer.roblox.com/en-us/api-reference/class/SpringConstraint)'s [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment).The current distance between the [SpringConstraint](https://developer.roblox.com/en-us/api-reference/class/SpringConstraint)'s [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment). *
@@ -6241,7 +6241,7 @@ interface Torque extends Constraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Torque: unique symbol;
+	readonly _nominal_Torque: unique symbol;
 	/** The [CFrame](https://developer.roblox.com/api-reference/datatype/CFrame "CFrame") in which the Torque is expressed. */
 	RelativeTo: Enum.ActuatorRelativeTo;
 	/** The strength and direction of the torque. */
@@ -6285,7 +6285,7 @@ interface VectorForce extends Constraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _VectorForce: unique symbol;
+	readonly _nominal_VectorForce: unique symbol;
 	/** When true, applies force at center of mass of Attachment0's parent Part. When false, applied at Attachment0. */
 	ApplyAtCenterOfMass: boolean;
 	/** The strength and direction of the force. */
@@ -6307,7 +6307,7 @@ interface ContentProvider extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ContentProvider: unique symbol;
+	readonly _nominal_ContentProvider: unique symbol;
 	/** The base URL that is used by the [ContentProvider](https://developer.roblox.com/en-us/api-reference/class/ContentProvider) for downloading assets from the Roblox website. This url will point to a Roblox hosted website where asserts are to be downloaded from.
 	 * 
 	 * This URL is pulled from the AppSettings.xml file which is located in the version-hash folder.
@@ -6375,7 +6375,7 @@ interface ContextActionService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ContextActionService: unique symbol;
+	readonly _nominal_ContextActionService: unique symbol;
 	/** BindAction will bind an action to user input given an action handling function. Upon a matching input being performed, the action handler function will be called with the arguments listed below. Valid input enum items include those within the following: [KeyCode](https://developer.roblox.com/en-us/api-reference/enum/KeyCode), [UserInputType](https://developer.roblox.com/en-us/api-reference/enum/UserInputType) or [PlayerAction](https://developer.roblox.com/en-us/api-reference/enum/PlayerAction) . Call this function when a player **enters the context** in which an action can be performed. When the player leaves the context, call [UnbindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/UnbindAction) with the same `actionName`. You can manually call the action handling function of an action by using [CallFunction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/CallFunction).
 	 * 
 	 * The code sample below shows how a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) can be [played](https://developer.roblox.com/en-us/api-reference/function/Sound/Play) while a key (H), game pad button, or touch screen button is pressed.
@@ -6574,7 +6574,7 @@ interface Controller extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Controller: unique symbol;
+	readonly _nominal_Controller: unique symbol;
 	/** Activates an overriding bind on the specified button. */
 	BindButton(this: Controller, button: CastsToEnum<Enum.Button>, caption: string): void;
 	/** Returns whether or not Button is being pressed. */
@@ -6601,7 +6601,7 @@ interface HumanoidController extends Controller {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _HumanoidController: unique symbol;
+	readonly _nominal_HumanoidController: unique symbol;
 }
 
 /** A SkateboardController is an object responsible for translating PlayerActions to movements with a [SkateboardPlatform](https://developer.roblox.com/en-us/api-reference/class/SkateboardPlatform). */
@@ -6612,7 +6612,7 @@ interface SkateboardController extends Controller {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SkateboardController: unique symbol;
+	readonly _nominal_SkateboardController: unique symbol;
 	/** The direction of movement, tied to the keys A and D. Must be 1 (right), 0 (straight), or -1 (left). Will refresh back to 0 unless constantly set.The direction of movement, tied to the keys A and D. Must be 1 (right), 0 (straight), or -1 (left). Will refresh back to 0 unless constantly set. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -6636,7 +6636,7 @@ interface VehicleController extends Controller {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _VehicleController: unique symbol;
+	readonly _nominal_VehicleController: unique symbol;
 }
 
 /** Container class for the [HumanoidController](https://developer.roblox.com/en-us/api-reference/class/HumanoidController) among other classes. */
@@ -6647,7 +6647,7 @@ interface ControllerService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ControllerService: unique symbol;
+	readonly _nominal_ControllerService: unique symbol;
 }
 
 /** The DataModelMesh is an abstract class from which mesh classes descend.
@@ -6663,7 +6663,7 @@ interface DataModelMesh extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _DataModelMesh: unique symbol;
+	readonly _nominal_DataModelMesh: unique symbol;
 	/** The Offset of a mesh determines the distance from the [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position) of a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that the mesh will be displayed.
 	 * 
 	 * How to use mesh offset
@@ -6747,7 +6747,7 @@ interface BevelMesh extends DataModelMesh {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BevelMesh: unique symbol;
+	readonly _nominal_BevelMesh: unique symbol;
 }
 
 /** The BlockMesh object applies a 'brick' mesh to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) it is parented to. It behaves identically to a [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh) with [SpecialMesh.MeshType](https://developer.roblox.com/en-us/api-reference/property/SpecialMesh/MeshType) set to 'brick'.
@@ -6770,7 +6770,7 @@ interface BlockMesh extends BevelMesh {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BlockMesh: unique symbol;
+	readonly _nominal_BlockMesh: unique symbol;
 }
 
 /** The CylinderMesh object applies a 'cylinder' mesh to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) it is parented to.
@@ -6800,7 +6800,7 @@ interface CylinderMesh extends BevelMesh {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _CylinderMesh: unique symbol;
+	readonly _nominal_CylinderMesh: unique symbol;
 }
 
 /** The FileMesh object applies a textured mesh to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) when parented to it. Its properties are inherited by the [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh) object.
@@ -6821,7 +6821,7 @@ interface FileMesh extends DataModelMesh {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _FileMesh: unique symbol;
+	readonly _nominal_FileMesh: unique symbol;
 	/** The MeshId is the content ID of the mesh that is to be displayed.
 	 * 
 	 * The content ID for a mesh is generated when a developer uploads a mesh to the Roblox website.
@@ -6893,7 +6893,7 @@ interface SpecialMesh extends FileMesh {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SpecialMesh: unique symbol;
+	readonly _nominal_SpecialMesh: unique symbol;
 	/** The mesh that the [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh)object applies to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) depends on the MeshType property. A number of options are available.
 	 * 
 	 * *   **Brick** - A block shape, equivalent to a [BlockMesh](https://developer.roblox.com/en-us/api-reference/class/BlockMesh)
@@ -6928,7 +6928,7 @@ interface DataStoreService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _DataStoreService: unique symbol;
+	readonly _nominal_DataStoreService: unique symbol;
 	/** This method returns a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) by name/scope. Subsequent calls to this method with the same name/scope will return the same object. */
 	GetDataStore(this: DataStoreService, name: string, scope?: string): GlobalDataStore;
 	/** This function returns the default [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). If you want to access a specific **named** data store instead, you should use the `DataStoreService/GetDataStore|GetDataStore()` function. */
@@ -6983,7 +6983,7 @@ interface Debris extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Debris: unique symbol;
+	readonly _nominal_Debris: unique symbol;
 	/** This function allows the developer to schedule the removal of the object without yielding any code.
 	 * 
 	 * Registers a given [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) to the [Debris](https://developer.roblox.com/en-us/api-reference/class/Debris) service for removal after the specified delay. The first argument is the object being removed, and the second argument is the amount of time in seconds the [Debris](https://developer.roblox.com/en-us/api-reference/class/Debris) service will wait before removing the object. The delay argument is optional, if it is not specified, it defaults to 10 seconds. The delay argument is a number, so it accepts decimal points, such as '1.5', or '0.25'.
@@ -7035,7 +7035,7 @@ interface Dialog extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Dialog: unique symbol;
+	readonly _nominal_Dialog: unique symbol;
 	/** The BehaviorType of a Dialog determines whether multiple players can interact with a dialog at once. The default value for this property is SinglePlayer.
 	 * 
 	 * SinglePlayer
@@ -7113,7 +7113,7 @@ interface DialogChoice extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _DialogChoice: unique symbol;
+	readonly _nominal_DialogChoice: unique symbol;
 	/** Toggles whether the goodbye option will be displayed. If true, the dialog will display the content of [DialogChoice.GoodbyeDialog](https://developer.roblox.com/en-us/api-reference/property/DialogChoice/GoodbyeDialog) as the last option after other dialog choices. Clicking on the goodbye option will exit the dialog.
 	 * 
 	 * GoodbyeChoiceActive = true
@@ -7146,7 +7146,7 @@ interface Dragger extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Dragger: unique symbol;
+	readonly _nominal_Dragger: unique symbol;
 	/** Rotates the currently dragged part(s) by 90 degrees on the given axis. */
 	AxisRotate(this: Dragger, axis?: CastsToEnum<Enum.Axis>): void;
 	/** Initializes a dragging action, specifying which parts to use when dragging. */
@@ -7164,7 +7164,7 @@ interface EventIngestService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _EventIngestService: unique symbol;
+	readonly _nominal_EventIngestService: unique symbol;
 }
 
 /** An Explosion applies force to `BaseParts` within the explosion's [Explosion.BlastRadius](https://developer.roblox.com/en-us/api-reference/property/Explosion/BlastRadius). This force breaks joints between parts and kills [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) characters not protected by a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField).
@@ -7188,7 +7188,7 @@ interface Explosion extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Explosion: unique symbol;
+	readonly _nominal_Explosion: unique symbol;
 	/** Used to determine the amount of force applied to [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s caught in the [Explosion.BlastRadius](https://developer.roblox.com/en-us/api-reference/property/Explosion/BlastRadius).
 	 * 
 	 * Currently this level of force applied does not vary based on distance from [Explosion.Position](https://developer.roblox.com/en-us/api-reference/property/Explosion/Position). Unanchored `BaseParts` will accelerate equally away from the origin regardless of distance provided they are within the blast radius.
@@ -7260,7 +7260,7 @@ interface FaceInstance extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _FaceInstance: unique symbol;
+	readonly _nominal_FaceInstance: unique symbol;
 	/** Sets what face of the brick the object appears on. */
 	Face: Enum.NormalId;
 }
@@ -7290,7 +7290,7 @@ interface Decal extends FaceInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Decal: unique symbol;
+	readonly _nominal_Decal: unique symbol;
 	/** The [Color3](https://developer.roblox.com/en-us/api-reference/datatype/Color3) tint of the [Decal](https://developer.roblox.com/en-us/api-reference/class/Decal).
 	 * 
 	 * Developers should note that this property only sets the tint of the decal, rather than the color. This means, unless the image associated with the [Decal](https://developer.roblox.com/en-us/api-reference/class/Decal) was originally white (RGB = 1,1,1) then the color cannot be freely changed using this property.
@@ -7395,7 +7395,7 @@ interface Texture extends Decal {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Texture: unique symbol;
+	readonly _nominal_Texture: unique symbol;
 	/** **OffsetStudsU** determines how far the rendered texture is offset on the horizontal axis in studs.
 	 * 
 	 * Example
@@ -7478,7 +7478,7 @@ interface Feature extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Feature: unique symbol;
+	readonly _nominal_Feature: unique symbol;
 	/** Sets what side of the Parent the object is on. */
 	FaceId: Enum.NormalId;
 	/** Controls how the Feature is positioned on it's parent's surface, in correspondence to the Feature's [Feature.LeftRight](https://developer.roblox.com/en-us/api-reference/property/Feature/LeftRight) and [Feature.TopBottom](https://developer.roblox.com/en-us/api-reference/property/Feature/TopBottom) properties. */
@@ -7497,7 +7497,7 @@ interface Hole extends Feature {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Hole: unique symbol;
+	readonly _nominal_Hole: unique symbol;
 }
 
 /** A MotorFeature is an unused type of surface joint. It can be connected to a [Hole](https://developer.roblox.com/en-us/api-reference/class/Hole) object by using a [VelocityMotor](https://developer.roblox.com/en-us/api-reference/class/VelocityMotor). */
@@ -7508,7 +7508,7 @@ interface MotorFeature extends Feature {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _MotorFeature: unique symbol;
+	readonly _nominal_MotorFeature: unique symbol;
 }
 
 /**   
@@ -7534,7 +7534,7 @@ interface Fire extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Fire: unique symbol;
+	readonly _nominal_Fire: unique symbol;
 	/** The Color property determines the color of the larger particles emit by a [Fire](https://developer.roblox.com/en-us/api-reference/class/Fire) object. It is essentially the color of the outer portion of the flame. Below, you can see the Color of the flame is set to blue to differentiate with the smaller, inner particles which have [Fire.SecondaryColor](https://developer.roblox.com/en-us/api-reference/property/Fire/SecondaryColor) set to white.
 	 * 
 	 * ![A Fire with Color set to blue](https://developer.roblox.com/assets/blt925890091ac70b39/Fire_Colors.png)
@@ -7608,7 +7608,7 @@ interface Folder extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Folder: unique symbol;
+	readonly _nominal_Folder: unique symbol;
 }
 
 /** A [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField) protects a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) from taking damage using the [Humanoid:TakeDamage](https://developer.roblox.com/en-us/api-reference/function/Humanoid/TakeDamage) function, and protects [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s from having their joints broken due to an [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion).
@@ -7651,7 +7651,7 @@ interface ForceField extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ForceField: unique symbol;
+	readonly _nominal_ForceField: unique symbol;
 	/** Determines whether or not the [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField)'s particle effect is visible.
 	 * 
 	 * When is set to true, a particle effect is created, a number of rules determine where this effect will be emitted from.
@@ -7719,7 +7719,7 @@ interface GamePassService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _GamePassService: unique symbol;
+	readonly _nominal_GamePassService: unique symbol;
 	/** This item is deprecated. Do not use it for new work. */
 	PlayerHasPass(this: GamePassService, player: Player, gamePassId: number): boolean;
 }
@@ -7735,7 +7735,7 @@ interface GlobalDataStore extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _GlobalDataStore: unique symbol;
+	readonly _nominal_GlobalDataStore: unique symbol;
 	/** This function returns the value of the entry in the [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) with the given key. If the key does not exist, returns `nil`. This function caches for about 4 seconds, so you cannot be sure that it returns the current value saved on the Roblox servers.
 	 * 
 	 * If this function throws an error, the `Articles/Datastore Errors|error message` will describe the problem. Note that there are also [limits](https://developer.roblox.com/en-us/api-reference/class/Articles/Datastore Errors) that apply to this function.
@@ -7805,7 +7805,7 @@ interface OrderedDataStore extends GlobalDataStore {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _OrderedDataStore: unique symbol;
+	readonly _nominal_OrderedDataStore: unique symbol;
 	/** Returns a [DataStorePages](https://developer.roblox.com/en-us/api-reference/class/DataStorePages) object. The sort order is determined by **ascending**, the length of each page by **pageSize**, and **minValue** /**maxValue** are optional parameters which filter the results.
 	 * 
 	 * If this function throws an error, the `Articles/Datastore Errors|error message` will describe the problem.
@@ -7834,7 +7834,7 @@ interface GroupService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _GroupService: unique symbol;
+	readonly _nominal_GroupService: unique symbol;
 	/** Returns a [StandardPages](https://developer.roblox.com/en-us/api-reference/class/StandardPages) object including information on all of the specified group's allies.
 	 * 
 	 * This pages does not include a list of group IDs but instead a list of group information tables, mirroring the format of those returned by [GroupService:GetGroupInfoAsync](https://developer.roblox.com/en-us/api-reference/function/GroupService/GetGroupInfoAsync). See below for the structure of these tables.
@@ -8004,7 +8004,7 @@ interface GuiBase extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _GuiBase: unique symbol;
+	readonly _nominal_GuiBase: unique symbol;
 }
 
 /** GuiBase2d is an abstract class inherited by 2D GUI Objects. */
@@ -8015,7 +8015,7 @@ interface GuiBase2d extends GuiBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _GuiBase2d: unique symbol;
+	readonly _nominal_GuiBase2d: unique symbol;
 	/** AbsolutePosition is a read-only property that provides the screen position of a UI element in pixels. This represents the actual pixel position at which an element renders as a result of its ancestors' sizes and positions. The [GuiObject.AnchorPoint](https://developer.roblox.com/en-us/api-reference/property/GuiObject/AnchorPoint) also influences the AbsolutePosition. This property, [GuiBase2d.AbsoluteSize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteSize) and [GuiBase2d.AbsoluteRotation](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteRotation) are a group of properties that all describe the final rendered orientation of a UI element.
 	 * 
 	 * For example, on a 1920 by 1080 screen, a [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) with position {0.5, 0}, {0.5, 0} would have an AbsolutePosition of (960, 540). If you were to place another Frame with position {0, 50}, {0, 50} inside that one, its AbsolutePosition would be (1010, 590). This example assumes each Frame has the defualt [GuiObject.AnchorPoint](https://developer.roblox.com/en-us/api-reference/property/GuiObject/AnchorPoint) of (0, 0), the top left corner.
@@ -8077,7 +8077,7 @@ interface GuiObject extends GuiBase2d {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _GuiObject: unique symbol;
+	readonly _nominal_GuiObject: unique symbol;
 	/** This property determines whether a [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) will sink input to 3D space, such as underlying models with a [ClickDetector](https://developer.roblox.com/en-us/api-reference/class/ClickDetector). In other words, if the player attempts to click a ClickDetector with the mouse hovering over an Active UI element, the UI will block the input from reaching the ClickDetector.
 	 * 
 	 * For [GuiButton](https://developer.roblox.com/en-us/api-reference/class/GuiButton) objects ([ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) and [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton)), this property determines whether [GuiButton.Activated](https://developer.roblox.com/en-us/api-reference/event/GuiButton/Activated) fires ([GuiButton.AutoButtonColor](https://developer.roblox.com/en-us/api-reference/property/GuiButton/AutoButtonColor) will still work for those as well). The events [InputBegan](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputBegan), [InputChanged](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputChanged), and [InputEnded](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputEnded) work as normal no matter the value of this property.
@@ -8645,7 +8645,7 @@ interface Frame extends GuiObject {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Frame: unique symbol;
+	readonly _nominal_Frame: unique symbol;
 	/** Sets what the frame looks like from a selection of pre-determined styles. */
 	Style: Enum.FrameStyle;
 }
@@ -8661,7 +8661,7 @@ interface GuiButton extends GuiObject {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _GuiButton: unique symbol;
+	readonly _nominal_GuiButton: unique symbol;
 	/** The AutoButtonColor determines whether the button automatically changes color when the user's [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse) hovers over or clicks on it.
 	 * 
 	 * If true, the button will automatically change color when the mouse hovers over or clicks on it. If false, the button will not change.
@@ -8746,7 +8746,7 @@ interface ImageButton extends GuiButton {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ImageButton: unique symbol;
+	readonly _nominal_ImageButton: unique symbol;
 	/** A textureId that could be set on the `ImageButton|ImageButton's` properties. When the button is hovered, it will render HoverImage if specified. */
 	HoverImage: string;
 	/** The Image property is a content-type property that should hold the asset ID of a Decal or Image on the Roblox website. It functions identically to [Decal.Texture](https://developer.roblox.com/en-us/api-reference/property/Decal/Texture) with regards to loading the image from the Roblox website. The rendered image will be colorized using [ImageButton.ImageColor3](https://developer.roblox.com/en-us/api-reference/property/ImageButton/ImageColor3). It is possible to further manipulate the rendered image into sliced ([ImageButton.SliceCenter](https://developer.roblox.com/en-us/api-reference/property/ImageButton/SliceCenter)), tiled ([ImageButton.ScaleType](https://developer.roblox.com/en-us/api-reference/property/ImageButton/ScaleType)) and nine-slice images using other image properties. */
@@ -8814,7 +8814,7 @@ interface TextButton extends GuiButton {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TextButton: unique symbol;
+	readonly _nominal_TextButton: unique symbol;
 	/** The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property.
@@ -8913,7 +8913,7 @@ interface GuiLabel extends GuiObject {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _GuiLabel: unique symbol;
+	readonly _nominal_GuiLabel: unique symbol;
 }
 
 /** An ImageLabel renders a rectangle, like a [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) does, with an image. The image must be a decal uploaded to the Roblox website. The display of the image can be manipulated through the [ImageLabel.ImageColor3](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ImageColor3) and `ImageLable/ImageTransparency` properties. To display only the image and hide the rectangle, set [GuiObject.BackgroundTransparency](https://developer.roblox.com/en-us/api-reference/property/GuiObject/BackgroundTransparency) to 1.
@@ -8934,7 +8934,7 @@ interface ImageLabel extends GuiLabel {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ImageLabel: unique symbol;
+	readonly _nominal_ImageLabel: unique symbol;
 	/** The Image property is a content-type property that should hold the asset ID of a Decal or Image on the Roblox website. It functions identically to [Decal.Texture](https://developer.roblox.com/en-us/api-reference/property/Decal/Texture) with regards to loading the image from the Roblox website. The rendered image will be colorized using [ImageLabel.ImageColor3](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ImageColor3). It is possible to further manipulate the rendered image into sliced ([ImageLabel.SliceCenter](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/SliceCenter)), tiled ([ImageLabel.ScaleType](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ScaleType)) and nine-slice images using other image properties. */
 	Image: string;
 	/** The ImageColor3 property determines how an image is colorized. When set to white, no colorization occurs. This property is very useful for reusing image assets: If the source image is completely white with transparency, you can set the entire color of the image at once with this property. */
@@ -9002,7 +9002,7 @@ interface TextLabel extends GuiLabel {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TextLabel: unique symbol;
+	readonly _nominal_TextLabel: unique symbol;
 	/** The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) property.
@@ -9109,7 +9109,7 @@ interface ScrollingFrame extends GuiObject {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ScrollingFrame: unique symbol;
+	readonly _nominal_ScrollingFrame: unique symbol;
 	/** The size in pixels of the frame, without the scrollbars.The size in pixels of the frame, without the scrollbars. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -9268,7 +9268,7 @@ interface TextBox extends GuiObject {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TextBox: unique symbol;
+	readonly _nominal_TextBox: unique symbol;
 	/** Determines whether clicking on the TextBox will clear its [TextBox.Text](https://developer.roblox.com/en-us/api-reference/property/TextBox/Text) property */
 	ClearTextOnFocus: boolean;
 	/** **CursorPosition** determines the offset of the text cursor in bytes, or -1 if the TextBox is not currently being edited. A value of 1 represents the beginning, the position before the first byte in the [Text](https://developer.roblox.com/en-us/api-reference/property/TextBox/Text) property. When used in conjunction with the [SelectionStart](https://developer.roblox.com/en-us/api-reference/property/TextBox/SelectionStart) property, it is possible to both get and set selected text within a TextBox.
@@ -9439,7 +9439,7 @@ interface VideoFrame extends GuiObject {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _VideoFrame: unique symbol;
+	readonly _nominal_VideoFrame: unique symbol;
 	/** This property will be true when the [VideoFrame.Video](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Video) has loaded from Roblox servers and is ready to play.This property will be true when the [VideoFrame.Video](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Video) has loaded from Roblox servers and is ready to play. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -9496,7 +9496,7 @@ interface ViewportFrame extends GuiObject {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ViewportFrame: unique symbol;
+	readonly _nominal_ViewportFrame: unique symbol;
 	/** This property determines the lighting hue applied to the area within the [ViewportFrame](https://developer.roblox.com/en-us/api-reference/class/ViewportFrame). This property defaults to 200, 200, 200 (ghost grey). */
 	Ambient: Color3;
 	/** This property is a [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) instance that is used to render children objects. Defaults to _nil_.
@@ -9562,7 +9562,7 @@ interface LayerCollector extends GuiBase2d {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _LayerCollector: unique symbol;
+	readonly _nominal_LayerCollector: unique symbol;
 	/** Toggles the visibility of the LayerCollector. */
 	Enabled: boolean;
 	/** If set to false, this LayerCollector will only be cloned once into each [Player](https://developer.roblox.com/en-us/api-reference/class/Player) [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui), and the LayerCollector will not be deleted when the player respawns.
@@ -9582,7 +9582,7 @@ interface BillboardGui extends LayerCollector {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BillboardGui: unique symbol;
+	readonly _nominal_BillboardGui: unique symbol;
 	/** Whether or not mouse events will be passed to objects layered below. */
 	Active: boolean;
 	/** Adornee sets the part or attachment that the BillboardGui is adorned too. */
@@ -9716,7 +9716,7 @@ interface ScreenGui extends LayerCollector {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ScreenGui: unique symbol;
+	readonly _nominal_ScreenGui: unique symbol;
 	/** This property controls the order that multiple ScreenGuis are drawn.
 	 * 
 	 * ScreenGuis with a higher DisplayOrder will be drawn on top of ScreenGuis with a lower DisplayOrder. DisplayOrder can have any value greater than 0 and defaults to 0.Controls the order that multiple ScreenGuis are drawn.
@@ -9734,7 +9734,7 @@ interface SurfaceGui extends LayerCollector {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SurfaceGui: unique symbol;
+	readonly _nominal_SurfaceGui: unique symbol;
 	/** Whether or not mouse events will be passed to objects layered below. */
 	Active: boolean;
 	/** Sets the object that the SurfaceGui is adorned too. In other words, this defines which [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) the SurfaceGui is attached to. */
@@ -9765,7 +9765,7 @@ interface GuiBase3d extends GuiBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _GuiBase3d: unique symbol;
+	readonly _nominal_GuiBase3d: unique symbol;
 	/** Sets the color of a GUI object. */
 	Color3: Color3;
 	/** Sets the transparency of a GUI object, where 1 is invisible and 0 is completely visible. */
@@ -9782,7 +9782,7 @@ interface FloorWire extends GuiBase3d {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _FloorWire: unique symbol;
+	readonly _nominal_FloorWire: unique symbol;
 	/** A decimal number between 0 and 1, through which you can control how far all of the decals are along the wire. */
 	CycleOffset: number;
 	/** The object that the FloorWire travels from. */
@@ -9808,7 +9808,7 @@ interface InstanceAdornment extends GuiBase3d {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _InstanceAdornment: unique symbol;
+	readonly _nominal_InstanceAdornment: unique symbol;
 	/** [NO DOCUMENTATION] */
 	Adornee: Instance | undefined;
 }
@@ -9833,7 +9833,7 @@ interface SelectionBox extends InstanceAdornment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SelectionBox: unique symbol;
+	readonly _nominal_SelectionBox: unique symbol;
 	/** **LineThickness** determines the thickness of the box's outlines. It is measured in studs, the same unit for [BasePart.Size](https://developer.roblox.com/en-us/api-reference/property/BasePart/Size). If set to 0, the outline will not be visible at all.
 	 * 
 	 * ![Three SelectionBoxes with LineThickness values of 0.075, 0.15 (default) and 0.3](https://developer.roblox.com/assets/blt1d73c3a921c12384/SelectionBox.LineThickness.jpg)
@@ -9875,7 +9875,7 @@ interface PVAdornment extends GuiBase3d {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PVAdornment: unique symbol;
+	readonly _nominal_PVAdornment: unique symbol;
 	/** The [PVInstance](https://developer.roblox.com/api-reference/class/PVInstance "PVInstance") the PVAdornment is attached to. An adornment will stay positioned and rotated relative to its adornee, even if the adornee moves. */
 	Adornee: PVInstance | undefined;
 }
@@ -9888,7 +9888,7 @@ interface HandleAdornment extends PVAdornment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _HandleAdornment: unique symbol;
+	readonly _nominal_HandleAdornment: unique symbol;
 	/** [NO DOCUMENTATION] */
 	AdornCullingMode: Enum.AdornCullingMode;
 	/** Forces this object to render on top of all 3d objects in the Workspace. Even if the adornment is behind a part based on its [HandleAdornment.CFrame](https://developer.roblox.com/en-us/api-reference/property/HandleAdornment/CFrame), if **AlwaysOnTop** is true then the adornment will still draw on top.
@@ -9933,7 +9933,7 @@ interface BoxHandleAdornment extends HandleAdornment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BoxHandleAdornment: unique symbol;
+	readonly _nominal_BoxHandleAdornment: unique symbol;
 	/** The size of the adornment. */
 	Size: Vector3;
 }
@@ -9949,7 +9949,7 @@ interface ConeHandleAdornment extends HandleAdornment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ConeHandleAdornment: unique symbol;
+	readonly _nominal_ConeHandleAdornment: unique symbol;
 	/** The height of the cone adornment. */
 	Height: number;
 	/** The radius of the cone adornment. */
@@ -9967,7 +9967,7 @@ interface CylinderHandleAdornment extends HandleAdornment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _CylinderHandleAdornment: unique symbol;
+	readonly _nominal_CylinderHandleAdornment: unique symbol;
 	/** [NO DOCUMENTATION] */
 	Angle: number;
 	/** The height of the cylinder adornment. */
@@ -9989,7 +9989,7 @@ interface ImageHandleAdornment extends HandleAdornment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ImageHandleAdornment: unique symbol;
+	readonly _nominal_ImageHandleAdornment: unique symbol;
 	/** The image to draw for the adornment. */
 	Image: string;
 	/** The size in studs of the image. */
@@ -10007,7 +10007,7 @@ interface LineHandleAdornment extends HandleAdornment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _LineHandleAdornment: unique symbol;
+	readonly _nominal_LineHandleAdornment: unique symbol;
 	/** The length of the line. */
 	Length: number;
 	/** The thickness of the line in pixels. */
@@ -10025,7 +10025,7 @@ interface SphereHandleAdornment extends HandleAdornment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SphereHandleAdornment: unique symbol;
+	readonly _nominal_SphereHandleAdornment: unique symbol;
 	/** The radius of the sphere adornment. */
 	Radius: number;
 }
@@ -10040,7 +10040,7 @@ interface ParabolaAdornment extends PVAdornment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ParabolaAdornment: unique symbol;
+	readonly _nominal_ParabolaAdornment: unique symbol;
 }
 
 /** **SelectionSphere** is an object which renders a 3D sphere around its [Adornee](https://developer.roblox.com/en-us/api-reference/property/PVAdornment/Adornee) when it is a descendant of the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) or anywhere where GUI objects are rendered. The sphere's geometry consists of a ring/outline in addition to a surface. By default, only the outline is visible.
@@ -10058,7 +10058,7 @@ interface SelectionSphere extends PVAdornment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SelectionSphere: unique symbol;
+	readonly _nominal_SelectionSphere: unique symbol;
 	/** **SurfaceColor3** determines the color of the SelectionSphere's surface.
 	 * 
 	 * See also
@@ -10087,7 +10087,7 @@ interface PartAdornment extends GuiBase3d {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PartAdornment: unique symbol;
+	readonly _nominal_PartAdornment: unique symbol;
 	/** Sets the object to adorn to. */
 	Adornee: BasePart | undefined;
 }
@@ -10100,7 +10100,7 @@ interface HandlesBase extends PartAdornment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _HandlesBase: unique symbol;
+	readonly _nominal_HandlesBase: unique symbol;
 }
 
 /** For handles to be interactive, they must be parented to a player's [PlayerGui](PlayerGui) or the [CoreGui](CoreGui).
@@ -10116,7 +10116,7 @@ interface ArcHandles extends HandlesBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ArcHandles: unique symbol;
+	readonly _nominal_ArcHandles: unique symbol;
 	/** Sets the current Axes ArcHandles will show. */
 	Axes: Axes;
 	/** Fired when the left mouse button goes down on one of the GUI handles. */
@@ -10142,7 +10142,7 @@ interface Handles extends HandlesBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Handles: unique symbol;
+	readonly _nominal_Handles: unique symbol;
 	/** Sets which sides the GUI handles will appear. */
 	Faces: Faces;
 	/** Sets the GUI style of the handles. Currently there are only two types; Resize and Movement. */
@@ -10172,7 +10172,7 @@ interface SurfaceSelection extends PartAdornment {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SurfaceSelection: unique symbol;
+	readonly _nominal_SurfaceSelection: unique symbol;
 	/** Sets which side the SurfaceSelection will appear on, on the adorned [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). */
 	TargetSurface: Enum.NormalId;
 }
@@ -10185,7 +10185,7 @@ interface SelectionLasso extends GuiBase3d {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SelectionLasso: unique symbol;
+	readonly _nominal_SelectionLasso: unique symbol;
 	/** The Humanoid that the Lasso belongs to, and will come from. */
 	Humanoid: Humanoid | undefined;
 }
@@ -10198,7 +10198,7 @@ interface SelectionPartLasso extends SelectionLasso {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SelectionPartLasso: unique symbol;
+	readonly _nominal_SelectionPartLasso: unique symbol;
 	/** Sets the target of the lasso object. */
 	Part: BasePart | undefined;
 }
@@ -10211,7 +10211,7 @@ interface SelectionPointLasso extends SelectionLasso {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SelectionPointLasso: unique symbol;
+	readonly _nominal_SelectionPointLasso: unique symbol;
 	/** Sets the Vector3 target of the lasso object. */
 	Point: Vector3;
 }
@@ -10227,7 +10227,7 @@ interface GuiService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _GuiService: unique symbol;
+	readonly _nominal_GuiService: unique symbol;
 	/** If the select button on a gamepad will automatically set a GUI as the selected object when the Select button is pressed. Turning this off will mean that Gui navigation will still work if GuiNavigationEnabled is enabled but you will have to set SelectedObject manually to start Gui navigation. */
 	AutoSelectGuiEnabled: boolean;
 	/** Toggles whether or not objects in the [CoreGui](https://developer.roblox.com/en-us/api-reference/class/CoreGui) can be navigated using a Gamepad. */
@@ -10363,7 +10363,7 @@ interface HapticService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _HapticService: unique symbol;
+	readonly _nominal_HapticService: unique symbol;
 	/** Returns the current vibration value set to the specified [UserInputType](https://developer.roblox.com/api-reference/property/InputObject/UserInputType "UserInputType") and [VibrationMotor](https://developer.roblox.com/api-reference/enum/VibrationMotor "VibrationMotor").
 	 * 
 	 * This will not return anything if [SetMotor](https://developer.roblox.com/api-reference/function/HapticService/SetMotor "SetMotor") has not been called prior.
@@ -10384,7 +10384,7 @@ interface HeightmapImporterService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _HeightmapImporterService: unique symbol;
+	readonly _nominal_HeightmapImporterService: unique symbol;
 }
 
 /** This service allows HTTP requests to be sent from game servers. This enables users to create integration with a wide range of third party services such as analytics and storage. One exciting prospect for this service is that if you run and manage your own website, and communicate with it from Roblox, it opens the possibility of remote server management and real time communication with the server, through your site.
@@ -10418,7 +10418,7 @@ interface HttpService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _HttpService: unique symbol;
+	readonly _nominal_HttpService: unique symbol;
 	/** The GenerateGUID function randomly creates a [universally unique identifier (UUID)](https://en.wikipedia.org/wiki/Universally_unique_identifier) string.
 	 * 
 	 * The sixteen octets of a UUID are represented as 32 hexadecimal (base 16) digits, displayed in 5 groups separated by hyphens in the form `8-4-4-4-12` for a total of 36 characters. For example: `123e4567-e89b-12d3-a456-426655440000`.
@@ -10631,7 +10631,7 @@ interface Humanoid extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Humanoid: unique symbol;
+	readonly _nominal_Humanoid: unique symbol;
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 	GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
 	LoadAnimation(this: Humanoid, animation: Animation): AnimationTrack;
@@ -11537,7 +11537,7 @@ interface HumanoidDescription extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _HumanoidDescription: unique symbol;
+	readonly _nominal_HumanoidDescription: unique symbol;
 	/** **BackAccessory** is a comma-separated list of asset IDs that determine what accessories should be added when the description is [applied](https://developer.roblox.com/en-us/api-reference/function/Humanoid/ApplyDescription). The list is kept sorted in descending order without duplicates.
 	 * 
 	 * Any accessory can used in this property, even if it is meant to go in a different accessory spot. For example, an accessory meant to go on your back (such as a cape) could be included in [HairAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HairAccessory). An error is thrown if you try to apply a new description which shares any assets with the existing description but a different accessory property.
@@ -12146,7 +12146,7 @@ interface ILegacyStudioBridge extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ILegacyStudioBridge: unique symbol;
+	readonly _nominal_ILegacyStudioBridge: unique symbol;
 }
 
 interface LegacyStudioBridge extends ILegacyStudioBridge {
@@ -12156,7 +12156,7 @@ interface LegacyStudioBridge extends ILegacyStudioBridge {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _LegacyStudioBridge: unique symbol;
+	readonly _nominal_LegacyStudioBridge: unique symbol;
 }
 
 /** An **InputObject** represents a single user input, such as mouse movement, touches, key presses and more. It is created when an input begins.
@@ -12179,7 +12179,7 @@ interface InputObject extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _InputObject: unique symbol;
+	readonly _nominal_InputObject: unique symbol;
 	/** A `Vector3` describing the Delta (change) between mouse/joystick movements.
 	 * 
 	 * This is useful when used with the input's [position](https://developer.roblox.com/en-us/api-reference/property/InputObject/Position) to track the position and movement of the user's mouse/joystick, such as when you're creating custom movement or camera scripts. Consider tracking input object changes using the [Instance.Changed](https://developer.roblox.com/en-us/api-reference/event/Instance/Changed) event or when user input changes via events such as [UserInputService.InputChanged](https://developer.roblox.com/en-us/api-reference/event/UserInputService/InputChanged) and [GuiObject.InputChanged](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputChanged).
@@ -13791,7 +13791,7 @@ interface InsertService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _InsertService: unique symbol;
+	readonly _nominal_InsertService: unique symbol;
 	/** Returns an array of dictionaries, containing information about various Roblox approved sets. */
 	GetBaseSets(this: InsertService): Array<SetInfo>;
 	/** Returns the most recently uploaded models in the specified category. */
@@ -13954,7 +13954,7 @@ interface InternalContainer extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _InternalContainer: unique symbol;
+	readonly _nominal_InternalContainer: unique symbol;
 }
 
 /** JointInstance is the base class for joints, such as Connectors, Welds, and Snaps.
@@ -13976,7 +13976,7 @@ interface JointInstance extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _JointInstance: unique symbol;
+	readonly _nominal_JointInstance: unique symbol;
 	/** This property determines if the joint is currently active in the world. If true, the joint is active.
 	 * 
 	 * If the [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance) is not in [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) or [JointsService](https://developer.roblox.com/en-us/api-reference/class/JointsService), or one of its parts is not in Workspace the joint will be inactive.
@@ -14012,7 +14012,7 @@ interface DynamicRotate extends JointInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _DynamicRotate: unique symbol;
+	readonly _nominal_DynamicRotate: unique symbol;
 	/** The base angle of the DynamicRotate object, in radians. */
 	BaseAngle: number;
 }
@@ -14034,7 +14034,7 @@ interface RotateP extends DynamicRotate {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _RotateP: unique symbol;
+	readonly _nominal_RotateP: unique symbol;
 }
 
 /** A RotateV object joins two parts together and allows rotation about a set axis. This object is most commonly created by the Motor [SurfaceType](https://developer.roblox.com/en-us/api-reference/enum/SurfaceType). If created through a script, a RotateV's behavior is still governed by the SurfaceInput of [JointInstance.Part0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part0).  
@@ -14054,7 +14054,7 @@ interface RotateV extends DynamicRotate {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _RotateV: unique symbol;
+	readonly _nominal_RotateV: unique symbol;
 }
 
 /** Glue is a type of joint that can break when enough force is applied. */
@@ -14065,7 +14065,7 @@ interface Glue extends JointInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Glue: unique symbol;
+	readonly _nominal_Glue: unique symbol;
 	/** F0 helps determining the Glue face of a [Glue](https://developer.roblox.com/en-us/api-reference/class/Glue), which determines the amount of force needed to break the joint. */
 	F0: Vector3;
 	/** F1 helps determining the Glue face of a [Glue](https://developer.roblox.com/en-us/api-reference/class/Glue), which determines the amount of force needed to break the joint. */
@@ -14084,7 +14084,7 @@ interface ManualSurfaceJointInstance extends JointInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ManualSurfaceJointInstance: unique symbol;
+	readonly _nominal_ManualSurfaceJointInstance: unique symbol;
 }
 
 /** **ManualGlue** is a joint created in a similar manner to the [ManualWeld](https://developer.roblox.com/en-us/api-reference/class/ManualWeld) class. It functions identically to the [Glue](https://developer.roblox.com/en-us/api-reference/class/Glue) class. */
@@ -14095,7 +14095,7 @@ interface ManualGlue extends ManualSurfaceJointInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ManualGlue: unique symbol;
+	readonly _nominal_ManualGlue: unique symbol;
 }
 
 /** An object that holds two parts together. It is commonly created when the _Join Always_ setting in Studio is turned on.
@@ -14121,7 +14121,7 @@ interface ManualWeld extends ManualSurfaceJointInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ManualWeld: unique symbol;
+	readonly _nominal_ManualWeld: unique symbol;
 }
 
 /** An object used to make movable [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance) between two Parts. */
@@ -14132,7 +14132,7 @@ interface Motor extends JointInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Motor: unique symbol;
+	readonly _nominal_Motor: unique symbol;
 	/** Displays the current rotation of the motor in radians.Displays the current rotation of the motor in radians. *
 	 * Tags: NotReplicated
 	 */
@@ -14156,7 +14156,7 @@ interface Motor6D extends Motor {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Motor6D: unique symbol;
+	readonly _nominal_Motor6D: unique symbol;
 	/** The internal CFrame that is manipulated by Animations when a Motor6D is being animated. It is recommended to use this property for custom animations rather than [JointInstance.C0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C0) and [JointInstance.C1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C1).
 	 * 
 	 * Transform is the transformation between the “parent” [part](https://developer.roblox.com/en-us/api-reference/class/BasePart) and the “child” part. The “parent” part will always be the part that is more directly connected to the JointInstance.C0. This is not affected by which part is assigned to [JointInstance.Part0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part0) and which is [JointInstance.Part1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part1). If the side the root part is on changes the interpretation of Transform will be inverted.
@@ -14183,7 +14183,7 @@ interface Rotate extends JointInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Rotate: unique symbol;
+	readonly _nominal_Rotate: unique symbol;
 }
 
 /** An object that holds two objects rigidly together. Most commonly created when [BasePart:MakeJoints](https://developer.roblox.com/en-us/api-reference/function/BasePart/MakeJoints) is called on parts where Inlet and Stud [SurfaceType](https://developer.roblox.com/en-us/api-reference/enum/SurfaceType) are touching.
@@ -14209,7 +14209,7 @@ interface Snap extends JointInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Snap: unique symbol;
+	readonly _nominal_Snap: unique symbol;
 }
 
 /** The VelocityMotor is a special type of joint that works similarly to a [Motor](https://developer.roblox.com/en-us/api-reference/class/Motor), but it uses a [MotorFeature](https://developer.roblox.com/en-us/api-reference/class/MotorFeature) and a [Hole](https://developer.roblox.com/en-us/api-reference/class/Hole) to create the connection.  
@@ -14230,7 +14230,7 @@ interface VelocityMotor extends JointInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _VelocityMotor: unique symbol;
+	readonly _nominal_VelocityMotor: unique symbol;
 	/** Displays the angle that the motor is at in radians. */
 	CurrentAngle: number;
 	/** The desired angle to be reached. The motor will attempt to reach this angle. */
@@ -14265,7 +14265,7 @@ interface Weld extends JointInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Weld: unique symbol;
+	readonly _nominal_Weld: unique symbol;
 }
 
 /** The JointsService is a service that stores joints created by surface connections. It also has API available for visualizing surface to surface contact, and joining surfaces together. */
@@ -14276,7 +14276,7 @@ interface JointsService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _JointsService: unique symbol;
+	readonly _nominal_JointsService: unique symbol;
 	/** Will remove any 'create joints' that were made visible via the [JointsService:ShowPermissibleJoints](https://developer.roblox.com/en-us/api-reference/function/JointsService/ShowPermissibleJoints) method. */
 	ClearJoinAfterMoveJoints(this: JointsService): void;
 	/** Updates all visible joints for the parts assigned by the [JointsService:SetJoinAfterMoveTarget](https://developer.roblox.com/en-us/api-reference/function/JointsService/SetJoinAfterMoveTarget) and [JointsService:SetJoinAfterMoveInstance](https://developer.roblox.com/en-us/api-reference/function/JointsService/SetJoinAfterMoveInstance) methods. */
@@ -14312,7 +14312,7 @@ interface Keyframe extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Keyframe: unique symbol;
+	readonly _nominal_Keyframe: unique symbol;
 	/** This property gives the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)'s time position (in seconds) in an animation. This determines the time at which the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s inside the keyframe will be shown.
 	 * 
 	 * Note the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) with the highest time value in a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) is used to determine the length of the animation.
@@ -14416,7 +14416,7 @@ interface KeyframeMarker extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _KeyframeMarker: unique symbol;
+	readonly _nominal_KeyframeMarker: unique symbol;
 	/** A value that is specified for a [KeyframeMarker](https://developer.roblox.com/en-us/api-reference/class/KeyframeMarker). Whenever the signal created from [AnimationTrack:GetMarkerReachedSignal](https://developer.roblox.com/en-us/api-reference/function/AnimationTrack/GetMarkerReachedSignal) gets fired, this value will be passed into the connected function.
 	 * 
 	 * See also
@@ -14474,7 +14474,7 @@ interface KeyframeSequence extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _KeyframeSequence: unique symbol;
+	readonly _nominal_KeyframeSequence: unique symbol;
 	/** Determines whether the animation created from the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) will be looped. When set to true the animation will continuously repeat each time the animation finishes.
 	 * 
 	 * When an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) has been created from an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation), its [AnimationTrack.Looped](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/Looped) property will default to the original [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) value. Note this value can be overwritten.
@@ -14511,7 +14511,7 @@ interface LanguageService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _LanguageService: unique symbol;
+	readonly _nominal_LanguageService: unique symbol;
 }
 
 /** Light is a root class for dynamic lighting related objects. */
@@ -14522,7 +14522,7 @@ interface Light extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Light: unique symbol;
+	readonly _nominal_Light: unique symbol;
 	/** Sets how bright the emitted light is, defaults to 1. */
 	Brightness: number;
 	/** The color of the emitted light. */
@@ -14554,7 +14554,7 @@ interface PointLight extends Light {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PointLight: unique symbol;
+	readonly _nominal_PointLight: unique symbol;
 	/** The size of the area that the PointLight will illuminate. */
 	Range: number;
 }
@@ -14583,7 +14583,7 @@ interface SpotLight extends Light {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SpotLight: unique symbol;
+	readonly _nominal_SpotLight: unique symbol;
 	/** The angle of which the light is shone from the SpotLight. */
 	Angle: number;
 	/** Sets the side of the parent that the SpotLight comes from. */
@@ -14612,7 +14612,7 @@ interface SurfaceLight extends Light {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SurfaceLight: unique symbol;
+	readonly _nominal_SurfaceLight: unique symbol;
 	/** The angle of which the light is shone from the SurfaceLight. */
 	Angle: number;
 	/** Sets the side of the parent that the SurfaceLight comes from. */
@@ -14642,7 +14642,7 @@ interface Lighting extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Lighting: unique symbol;
+	readonly _nominal_Lighting: unique symbol;
 	/** The lighting hue applied to areas that are occluded from the sky, such as indoor areas.
 	 * 
 	 * This property defaults to 0, 0, 0 (black).
@@ -15110,7 +15110,7 @@ interface LocalizationService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _LocalizationService: unique symbol;
+	readonly _nominal_LocalizationService: unique symbol;
 	/** This property shows the locale id that the local player has set for their Roblox account.  
 	 * This will return a string with the two letter code (for example, “en-us”) for the locale.
 	 */
@@ -16200,7 +16200,7 @@ interface LocalizationTable extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _LocalizationTable: unique symbol;
+	readonly _nominal_LocalizationTable: unique symbol;
 	/** The language that the source material of this LocalizationTable was based on, as a locale-id. */
 	SourceLocaleId: string;
 	/** The GetEntries function returns an array of dictionaries contained in a given `/LocalizationTable`, where each dictionary represents an entry of localization data.
@@ -16284,7 +16284,7 @@ interface LogService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _LogService: unique symbol;
+	readonly _nominal_LogService: unique symbol;
 	/** **Unreliable Behavior**  
 	 * 
 	 * This may have changing, unexpected or unreliable behavior depending on how the game engine logs things. It should not be relied upon for any important game logic.
@@ -16309,7 +16309,7 @@ interface LuaSourceContainer extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _LuaSourceContainer: unique symbol;
+	readonly _nominal_LuaSourceContainer: unique symbol;
 }
 
 /** The base class for all script objects which run automatically. */
@@ -16320,7 +16320,7 @@ interface BaseScript extends LuaSourceContainer {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BaseScript: unique symbol;
+	readonly _nominal_BaseScript: unique symbol;
 	/** Determines whether a [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) will run or not.
 	 * 
 	 * [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s and [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s, when parented to a valid parent, will run when Disabled is false.
@@ -16369,7 +16369,7 @@ interface Script extends BaseScript {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Script: unique symbol;
+	readonly _nominal_Script: unique symbol;
 }
 
 /** A LocalScript is a Lua source container that runs Lua code on a client connected to a Roblox server. They are used to access client-only objects, such as the player's [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera). For code run through LocalScripts, the LocalPlayer property of the [Players](https://developer.roblox.com/en-us/api-reference/class/Players) service will return the player whose client is running the script.
@@ -16389,7 +16389,7 @@ interface LocalScript extends Script {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _LocalScript: unique symbol;
+	readonly _nominal_LocalScript: unique symbol;
 }
 
 /** A ModuleScript is a type of Lua source container that runs once and must return exactly one value. This value is then returned by a call to `require` given the ModuleScript as the only argument. ModuleScripts run once and only once per Lua environment and return the exact same value for subsequent calls to `require`.
@@ -16409,7 +16409,7 @@ interface ModuleScript extends LuaSourceContainer {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ModuleScript: unique symbol;
+	readonly _nominal_ModuleScript: unique symbol;
 	/** Used to store a URL that points to an online script source. Binds the online code to the script's [Script.Source](https://developer.roblox.com/en-us/api-reference/property/Script/Source). */
 	LinkedSource: string;
 }
@@ -16437,7 +16437,7 @@ interface MarketplaceService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _MarketplaceService: unique symbol;
+	readonly _nominal_MarketplaceService: unique symbol;
 	PromptBundlePurchase(this: MarketplaceService, player: Player, bundleId: number): void;
 	/** Used to prompt a user to purchase a game pass with the given assetId. */
 	PromptGamePassPurchase(this: MarketplaceService, player: Player, gamePassId: number): void;
@@ -16818,7 +16818,7 @@ interface MessagingService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _MessagingService: unique symbol;
+	readonly _nominal_MessagingService: unique symbol;
 	/** This function sends the provided message to all subscribers to the topic, triggering their registered callbacks to be invoked.
 	 * 
 	 * Yields until the message is received by the backend.
@@ -16897,7 +16897,7 @@ interface Mouse extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Mouse: unique symbol;
+	readonly _nominal_Mouse: unique symbol;
 	/** This property indicates [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) of the mouse's position in 3D space. Note that [Mouse.TargetFilter](https://developer.roblox.com/en-us/api-reference/property/Mouse/TargetFilter) and its descendants will be ignored.
 	 * 
 	 * Developers can get obtain the position of Hit like so:
@@ -17383,7 +17383,7 @@ interface PlayerMouse extends Mouse {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PlayerMouse: unique symbol;
+	readonly _nominal_PlayerMouse: unique symbol;
 }
 
 /** The NetworkMarker is used to tell the client when the server has finished loading the world for the client. */
@@ -17394,7 +17394,7 @@ interface NetworkMarker extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _NetworkMarker: unique symbol;
+	readonly _nominal_NetworkMarker: unique symbol;
 	/** Fired when the server has finished replicating the world to the client. */
 	readonly Received: RBXScriptSignal<() => void>;
 }
@@ -17436,7 +17436,7 @@ interface NoCollisionConstraint extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _NoCollisionConstraint: unique symbol;
+	readonly _nominal_NoCollisionConstraint: unique symbol;
 	/** This property determines whether the two constrained parts, [NoCollisionConstraint.Part0](https://developer.roblox.com/en-us/api-reference/property/NoCollisionConstraint/Part0) and [NoCollisionConstraint.Part1](https://developer.roblox.com/en-us/api-reference/property/NoCollisionConstraint/Part1), will collide with each other. */
 	Enabled: boolean;
 	/** The second [Part](https://developer.roblox.com/en-us/api-reference/class/BasePart) that the constraint connects. */
@@ -17453,7 +17453,7 @@ interface PVInstance extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PVInstance: unique symbol;
+	readonly _nominal_PVInstance: unique symbol;
 }
 
 /** BasePart is an abstract base class for in-world objects that render and are physically simulated while in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). There are several implementations of BasePart, the most common is [Part](https://developer.roblox.com/en-us/api-reference/class/Part), a simple 6-face rectangular prism. Others include [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation), [WedgePart](https://developer.roblox.com/en-us/api-reference/class/WedgePart) and the singleton [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) object within the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). Most of the time, when documentation refers to a part, most BasePart implementations will work and not just [Part](https://developer.roblox.com/en-us/api-reference/class/Part).
@@ -17482,7 +17482,7 @@ interface BasePart extends PVInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BasePart: unique symbol;
+	readonly _nominal_BasePart: unique symbol;
 	/** The Anchored property determines whether the part will be **immovable** by physics. When enabled, a part will never change position due to gravity, other parts collisions, overlapping other parts, or any other physics-related causes. A part that is not anchored is called **unanchored**. As a result, two anchored parts will never fire the [BasePart.Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched) event on each other. An anchored part may still be moved by changing its [BasePart.CFrame](https://developer.roblox.com/en-us/api-reference/property/BasePart/CFrame) or [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position), and it still may have a nonzero [BasePart.Velocity](https://developer.roblox.com/en-us/api-reference/property/BasePart/Velocity) and [BasePart.RotVelocity](https://developer.roblox.com/en-us/api-reference/property/BasePart/RotVelocity). Finally, if an unanchored part is joined with an anchored part through an object like a `/Weld`, it too will act anchored. If such a joint breaks the part may be affected by physics again.
 	 * 
 	 * It's a good idea to anchor parts that are part of your game's environment (and therefore shouldn't move). In fact, if you don't have a good reason to keep a part unanchored, you should anchor it. Unanchored parts can cause performance issues if there are many. In Roblox Studio, you can anchor/unanchor an entire model using the Anchor tool. Be sure to keep static environment models anchored, like in-world buttons, signs, and trees.
@@ -18077,7 +18077,7 @@ interface CornerWedgePart extends BasePart {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _CornerWedgePart: unique symbol;
+	readonly _nominal_CornerWedgePart: unique symbol;
 }
 
 /** The FormFactorPart class is an abstract class. It inherits from the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) class and adds the [FormFactorPart.FormFactor](https://developer.roblox.com/en-us/api-reference/property/FormFactorPart/FormFactor) property to classes that inherit from it.
@@ -18091,7 +18091,7 @@ interface FormFactorPart extends BasePart {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _FormFactorPart: unique symbol;
+	readonly _nominal_FormFactorPart: unique symbol;
 }
 
 /** What is a Part
@@ -18127,7 +18127,7 @@ interface Part extends FormFactorPart {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Part: unique symbol;
+	readonly _nominal_Part: unique symbol;
 	/** The Shape property sets the type of shape the object has.
 	 * 
 	 * The [PartType](https://developer.roblox.com/en-us/api-reference/enum/PartType) enum controls the shape value, and has three possible shapes:
@@ -18189,7 +18189,7 @@ interface Platform extends Part {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Platform: unique symbol;
+	readonly _nominal_Platform: unique symbol;
 }
 
 /** A type of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that a player character can 'sit' in. When a character touches an enabled Seat object, it will be attached to the part by a [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld) and the default character scripts will play a sitting animation.
@@ -18227,7 +18227,7 @@ interface Seat extends Part {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Seat: unique symbol;
+	readonly _nominal_Seat: unique symbol;
 	/** Whether or not the seat is usable. If set to true, the seat will act as a normal part. */
 	Disabled: boolean;
 	/** The humanoid that is sitting in the seatThe humanoid that is sitting in the seat *
@@ -18246,7 +18246,7 @@ interface SkateboardPlatform extends Part {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SkateboardPlatform: unique symbol;
+	readonly _nominal_SkateboardPlatform: unique symbol;
 	/** The SkateboardPlatform's active SkateboardController.The SkateboardPlatform's active SkateboardController. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -18291,7 +18291,7 @@ interface SpawnLocation extends Part {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SpawnLocation: unique symbol;
+	readonly _nominal_SpawnLocation: unique symbol;
 	/** Allows a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) to join the team by touching the [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation). When set to true, if a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) character comes into contact with the [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation), the player's [Player.TeamColor](https://developer.roblox.com/en-us/api-reference/property/Player/TeamColor) will be set to [SpawnLocation.TeamColor](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/TeamColor). [Player.Neutral](https://developer.roblox.com/en-us/api-reference/property/Player/Neutral) will also be set to [SpawnLocation.Neutral](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/Neutral) upon contact, meaning a player can also become neutral by touching a spawn location.
 	 * 
 	 * This will not function when [SpawnLocation.Enabled](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/Enabled) is set to false.
@@ -18338,7 +18338,7 @@ interface WedgePart extends FormFactorPart {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _WedgePart: unique symbol;
+	readonly _nominal_WedgePart: unique symbol;
 }
 
 /** Terrain lets you create dynamically morphable environments with little to no lag. It is currently based on a 4×4×4 grid of cells, where each cell has a number between 0 and 1 representing how much the geometry should occupy the cell, and the material of the cell. The occupancy determines how the cell will morph together with surrounding cells, and the result is the illusion of having no grid constraint.
@@ -18352,7 +18352,7 @@ interface Terrain extends BasePart {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Terrain: unique symbol;
+	readonly _nominal_Terrain: unique symbol;
 	/** Displays the boundaries of the largest possible editable region. */
 	readonly MaxExtents: Region3int16;
 	/** The tint of the Terrain water. */
@@ -18446,7 +18446,7 @@ interface TriangleMeshPart extends BasePart {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TriangleMeshPart: unique symbol;
+	readonly _nominal_TriangleMeshPart: unique symbol;
 	/** This property determines how the collision model of the [TriangleMeshPart](https://developer.roblox.com/en-us/api-reference/class/TriangleMeshPart) relates to the actual geometry of the mesh. In situations where the collision model of a mesh is unimportant or precision isn't necessary, it is a good idea to set CollisionFidelity to 'Box' to improve performance.
 	 * 
 	 * This property cannot be read or manipulated by scripts during run time.
@@ -18504,7 +18504,7 @@ interface MeshPart extends TriangleMeshPart {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _MeshPart: unique symbol;
+	readonly _nominal_MeshPart: unique symbol;
 	/** This property determines whether to render both faces or polygons in the mesh. It is only changeable in Studio. This is useful for meshes that are typically modeled as cards such as a leaf, hair and cloth.
 	 * 
 	 * Example:  
@@ -18595,7 +18595,7 @@ interface PartOperation extends TriangleMeshPart {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PartOperation: unique symbol;
+	readonly _nominal_PartOperation: unique symbol;
 	/** [NO DOCUMENTATION] */
 	readonly RenderFidelity: Enum.RenderFidelity;
 	/** This property represents an angle in degrees for a threshold value between face normals on a `articles/3D Modeling with Parts|solid modeled` part. If the normal difference is less than the value, normals will be adjusted to smooth the difference. Usually a value between 30 and 70 degrees will produce a good result. 0 degrees leads to sharp edges. Values between 90 and 180 degrees are allowed but not encouraged, as it may cause a “shadowing” effect on unions with sharp edges.
@@ -18642,7 +18642,7 @@ interface NegateOperation extends PartOperation {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _NegateOperation: unique symbol;
+	readonly _nominal_NegateOperation: unique symbol;
 }
 
 /** The UnionOperation combines parts together into a single solid model. To use it, select the parts you want to combine and click the **Union** button in the **Model** tab. This will create a new part called **Union**.
@@ -18666,7 +18666,7 @@ interface UnionOperation extends PartOperation {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UnionOperation: unique symbol;
+	readonly _nominal_UnionOperation: unique symbol;
 }
 
 /** Truss parts are the same as [Parts](https://developer.roblox.com/en-us/api-reference/class/Part), except that they have a different visual style, resize differently and characters are able to climb them. The smallest size it can be is 2x2x2 studs.
@@ -18682,7 +18682,7 @@ interface TrussPart extends BasePart {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TrussPart: unique symbol;
+	readonly _nominal_TrussPart: unique symbol;
 	/** Sets what the truss looks like. There are currently three different styles.Sets what the truss looks like. There are currently three different styles. *
 	 * Tags: NotReplicated
 	 */
@@ -18700,7 +18700,7 @@ interface VehicleSeat extends BasePart {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _VehicleSeat: unique symbol;
+	readonly _nominal_VehicleSeat: unique symbol;
 	/** Displays how many hinges are detected by the VehicleSeat. Useful for debugging vehicle designs.Displays how many hinges are detected by the VehicleSeat. Useful for debugging vehicle designs. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -18753,7 +18753,7 @@ interface Model extends PVInstance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Model: unique symbol;
+	readonly _nominal_Model: unique symbol;
 	/** Points to the [Model](https://developer.roblox.com/en-us/api-reference/class/Model)'s primary part. The part is the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that is used as a basis when positioning the model using the [Model:MoveTo](https://developer.roblox.com/en-us/api-reference/function/Model/MoveTo) and [Model:SetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/SetPrimaryPartCFrame) functions.
 	 * 
 	 * Note when assigning the PrimaryPart that the part must be a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that is descendant of the Model. If this is not the case, the PrimaryPart will be set to nil in Roblox studio, or produce an error if done so by a Script.
@@ -18862,7 +18862,7 @@ interface Actor extends Model {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Actor: unique symbol;
+	readonly _nominal_Actor: unique symbol;
 }
 
 interface WorldRoot extends Model {
@@ -18872,7 +18872,7 @@ interface WorldRoot extends Model {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _WorldRoot: unique symbol;
+	readonly _nominal_WorldRoot: unique symbol;
 	/** @deprecated in favor of WorldRoot.Raycast*/
 	FindPartOnRay(
 		this: WorldRoot,
@@ -19107,7 +19107,7 @@ interface Workspace extends WorldRoot {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Workspace: unique symbol;
+	readonly _nominal_Workspace: unique symbol;
 	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
 	readonly BreakJoints: any;
 	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
@@ -19353,7 +19353,7 @@ interface WorldModel extends WorldRoot {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _WorldModel: unique symbol;
+	readonly _nominal_WorldModel: unique symbol;
 }
 
 /** The purpose of the PackageLink object is to link a [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel) instance to a corresponding asset in the cloud. This improves flows for collaboration, version control and sharing for models. The PackageLink instance will be a child of the root of the entire package hierarchy.
@@ -19371,7 +19371,7 @@ interface PackageLink extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PackageLink: unique symbol;
+	readonly _nominal_PackageLink: unique symbol;
 	/** The id of the asset this package corresponds to.The id of the asset this package corresponds to. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -19414,7 +19414,7 @@ interface Pages<T = unknown> extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Pages: unique symbol;
+	readonly _nominal_Pages: unique symbol;
 	/** Whether or not the current page is the last page available. */
 	readonly IsFinished: boolean;
 	/** Returns the items on the current page. The keys in the item are determined by the source of this object. */
@@ -19430,7 +19430,7 @@ interface CatalogPages extends Pages {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _CatalogPages: unique symbol;
+	readonly _nominal_CatalogPages: unique symbol;
 }
 
 /** A special type of [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object whose pages contain key/value pairs from an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore). For this object, `Pages/GetCurrentPage|GetCurrentPage()` returns an array of tables, each containing keys named **key** and **value**; these reflect the key/value pair data. */
@@ -19441,7 +19441,7 @@ interface DataStorePages extends Pages<{ key: string; value: unknown }> {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _DataStorePages: unique symbol;
+	readonly _nominal_DataStorePages: unique symbol;
 }
 
 /** FriendPages is a special version of the [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) returned by [Players:GetFriendsAsync](https://developer.roblox.com/en-us/api-reference/function/Players/GetFriendsAsync). The items contained within describe information about a player's friends, and have the following structure:
@@ -19480,7 +19480,7 @@ interface FriendPages
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _FriendPages: unique symbol;
+	readonly _nominal_FriendPages: unique symbol;
 }
 
 /** The InventoryPages class is used in the case of iterating over a specific category in a user's inventory. */
@@ -19491,7 +19491,7 @@ interface InventoryPages extends Pages<number> {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _InventoryPages: unique symbol;
+	readonly _nominal_InventoryPages: unique symbol;
 }
 
 interface EmotesPages extends InventoryPages {
@@ -19501,7 +19501,7 @@ interface EmotesPages extends InventoryPages {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _EmotesPages: unique symbol;
+	readonly _nominal_EmotesPages: unique symbol;
 }
 
 interface OutfitPages extends Pages {
@@ -19511,7 +19511,7 @@ interface OutfitPages extends Pages {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _OutfitPages: unique symbol;
+	readonly _nominal_OutfitPages: unique symbol;
 }
 
 /** A generic version of the Pages class, which may contain variable data, depending on what method it was returned from.  
@@ -19524,7 +19524,7 @@ interface StandardPages<T = unknown> extends Pages<T> {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _StandardPages: unique symbol;
+	readonly _nominal_StandardPages: unique symbol;
 }
 
 /** A ParticleEmitter allows for the creation of [particle systems](https://en.wikipedia.org/wiki/Particle_system). is a special effect object that emits customizable 2D billboard particles into the world. On Roblox, a particle is a 2D image rendered in the world so that it always always face the camera, much like a [BillboardGui](https://developer.roblox.com/en-us/api-reference/class/BillboardGui) with a single [ImageLabel](https://developer.roblox.com/en-us/api-reference/class/ImageLabel) in it.
@@ -19545,7 +19545,7 @@ interface ParticleEmitter extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ParticleEmitter: unique symbol;
+	readonly _nominal_ParticleEmitter: unique symbol;
 	/** The Acceleration property determines how particles [ParticleEmitter.Speed](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Speed) changes over the particle's lifetime. It is defined using a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) to determine the acceleration on the global X/Y/Z axes. It is measured in studs per second squared. When changed, this property affects all particles emit by the emitter, both current and future particles.
 	 * 
 	 * Pictured below are two default ParticleEmitters. The foreground (right) emitter has an Acceleration on the positive-X axis, causing the path of the particles to bend in that direction.  
@@ -19750,7 +19750,7 @@ interface Path extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Path: unique symbol;
+	readonly _nominal_Path: unique symbol;
 	/** The success of the generated [Path](https://developer.roblox.com/en-us/api-reference/class/Path). */
 	readonly Status: Enum.PathStatus;
 	/** This function returns an array of all the [PathWaypoints](https://developer.roblox.com/en-us/api-reference/datatype/PathWaypoint) in a [Path](https://developer.roblox.com/en-us/api-reference/class/Path), as computed by [Path:ComputeAsync](https://developer.roblox.com/en-us/api-reference/function/Path/ComputeAsync).
@@ -19806,7 +19806,7 @@ interface PathfindingService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PathfindingService: unique symbol;
+	readonly _nominal_PathfindingService: unique symbol;
 	/** Creates a [Path](https://developer.roblox.com/en-us/api-reference/class/Path) object based on various agent parameters (see below).
 	 * 
 	 * Agent Parameters
@@ -19870,7 +19870,7 @@ interface PhysicsService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PhysicsService: unique symbol;
+	readonly _nominal_PhysicsService: unique symbol;
 	/** Returns whether the specified part is in the specified collision group.
 	 * 
 	 * This function will throw a runtime error in the following circumstances:
@@ -19981,7 +19981,7 @@ interface Player extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Player: unique symbol;
+	readonly _nominal_Player: unique symbol;
 	readonly Name: string;
 	/** The AccountAge is a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) property that describes how long ago a player's account was registered in days. It is set using the [Player:SetAccountAge](https://developer.roblox.com/en-us/api-reference/function/Player/SetAccountAge) function, which cannot be accessed by scripts.
 	 * 
@@ -20594,7 +20594,7 @@ interface PlayerScripts extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PlayerScripts: unique symbol;
+	readonly _nominal_PlayerScripts: unique symbol;
 	/** Unregisters all ComputerCameraMovementMode enums from the game settings menu. */
 	ClearComputerCameraMovementModes(this: PlayerScripts): void;
 	/** Unregisters all ComputerMovementMode enums from the game settings menu. */
@@ -20621,7 +20621,7 @@ interface Players extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Players: unique symbol;
+	readonly _nominal_Players: unique symbol;
 	/** The BubbleChat [Players](https://developer.roblox.com/en-us/api-reference/class/Players) property indicates whether or not bubble chat is enabled. It is set with the [Players:SetChatStyle](https://developer.roblox.com/en-us/api-reference/function/Players/SetChatStyle) method using the [ChatStyle](https://developer.roblox.com/en-us/api-reference/enum/ChatStyle) enum.
 	 * 
 	 * When this chat mode is enabled, the game displays chats in the chat user interface at the top-left corner of the screen.
@@ -21017,7 +21017,7 @@ interface PluginManagerInterface extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PluginManagerInterface: unique symbol;
+	readonly _nominal_PluginManagerInterface: unique symbol;
 }
 
 /** Important for getting your game to international audiences, [PolicyService](https://developer.roblox.com/en-us/api-reference/class/PolicyService) helps you build gameplay components that can be made compliant with various national regulations for multiple countries. This service is used to query information regarding policy compliance for players around the world based on age range, location, and platform type. */
@@ -21028,7 +21028,7 @@ interface PolicyService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PolicyService: unique symbol;
+	readonly _nominal_PolicyService: unique symbol;
 	/** Returns policy information about a player which is based on geolocation, age group, and platform. The structure of the returned dictionary is as follows:
 	 * 
 	 * Name
@@ -21101,7 +21101,7 @@ interface PoseBase extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PoseBase: unique symbol;
+	readonly _nominal_PoseBase: unique symbol;
 	/** [NO DOCUMENTATION] */
 	EasingDirection: Enum.PoseEasingDirection;
 	/** [NO DOCUMENTATION] */
@@ -21117,7 +21117,7 @@ interface NumberPose extends PoseBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _NumberPose: unique symbol;
+	readonly _nominal_NumberPose: unique symbol;
 	/** [NO DOCUMENTATION] */
 	Value: number;
 }
@@ -21149,7 +21149,7 @@ interface Pose extends PoseBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Pose: unique symbol;
+	readonly _nominal_Pose: unique symbol;
 	/** The `CFrame` that will be applied to the [Motor6D](https://developer.roblox.com/en-us/api-reference/class/Motor6D) corresponding with the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose). This `CFrame` is applied by changing the `Motor6D\Transform` property of the motor. The original `Motor6D/C0` and `Motor6D/C1` values are not changed.
 	 * 
 	 * [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) objects are arranged in a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) based on joint hierarchy. This means, the the [Pose.CFrame](https://developer.roblox.com/en-us/api-reference/property/Pose/CFrame) is applied to the motor connecting the part associated with the pose to the part associated with the pose's parent.
@@ -21183,7 +21183,7 @@ interface PostEffect extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PostEffect: unique symbol;
+	readonly _nominal_PostEffect: unique symbol;
 	/** Toggles whether or not the PostEffect is enabled. */
 	Enabled: boolean;
 }
@@ -21201,7 +21201,7 @@ interface BloomEffect extends PostEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BloomEffect: unique symbol;
+	readonly _nominal_BloomEffect: unique symbol;
 	/** Intensity determines how intensely the colors that bloom (determined by the [Threshold](https://developer.roblox.com/en-us/api-reference/property/BloomEffect/Threshold)) will additively blend with themselves. Higher values will produce brighter colors. */
 	Intensity: number;
 	/** Size determines the radius of the bloom effect in pixels in a similar manner to [BlurEffect.Size](https://developer.roblox.com/en-us/api-reference/property/BlurEffect/Size). Larger values create a wider bloom effect, and a value of 0 will disable the bleed (but not the color adjustment). */
@@ -21223,7 +21223,7 @@ interface BlurEffect extends PostEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BlurEffect: unique symbol;
+	readonly _nominal_BlurEffect: unique symbol;
 	/** Size controls the blur radius, measured in pixels. The larger the size, the blurrier the screen will become. */
 	Size: number;
 }
@@ -21241,7 +21241,7 @@ interface ColorCorrectionEffect extends PostEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ColorCorrectionEffect: unique symbol;
+	readonly _nominal_ColorCorrectionEffect: unique symbol;
 	/** Brightness determines by how much the colors of pixels will be shifted. A value of -1 will cause all pixels to be completely black while a value of 1 will cause them to be white. */
 	Brightness: number;
 	/** Contrast determines the separation between the dark and light colors. Values less than 0 have reduced contrast while values greater than 0 have increased contrast. */
@@ -21267,7 +21267,7 @@ interface DepthOfFieldEffect extends PostEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _DepthOfFieldEffect: unique symbol;
+	readonly _nominal_DepthOfFieldEffect: unique symbol;
 	/** Intensity of the far field blur, moving out in distance from the [FocusDistance](https://developer.roblox.com/en-us/api-reference/property/DepthOfFieldEffect/FocusDistance) point plus [InFocusRadius](https://developer.roblox.com/en-us/api-reference/property/DepthOfFieldEffect/InFocusRadius) value.
 	 * 
 	 * ![](https://developer.roblox.com/assets/blt4d9713a56c8f78e5/DepthOfField-Diagram.svg)
@@ -21303,7 +21303,7 @@ interface SunRaysEffect extends PostEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SunRaysEffect: unique symbol;
+	readonly _nominal_SunRaysEffect: unique symbol;
 	/** Intensity determines the opacity of the sun rays. Values closer to 0 are less visible, while values closer to 1 become more visible. */
 	Intensity: number;
 	/** Spread determines how wide the sun rays will spread across the sky. Its value should be set between 0 and 1 as values outside that range have undefined behavior. */
@@ -21350,7 +21350,7 @@ interface ProximityPrompt extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ProximityPrompt: unique symbol;
+	readonly _nominal_ProximityPrompt: unique symbol;
 	/** This property determines the action text shown to the user. */
 	ActionText: string;
 	/** This property determines whether the prompt's [ProximityPrompt.ActionText](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/ActionText) and [ProximityPrompt.ObjectText](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/ObjectText) will be localized according to the [ProximityPrompt.RootLocalizationTable](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/RootLocalizationTable). When set to true, localization will be applied. */
@@ -21416,7 +21416,7 @@ interface ProximityPromptService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ProximityPromptService: unique symbol;
+	readonly _nominal_ProximityPromptService: unique symbol;
 	/** When false, no prompts will be shown. */
 	Enabled: boolean;
 	/** The maximum number of ProximityPrompts that will be shown. */
@@ -21448,7 +21448,7 @@ interface RemoteEvent<T extends Callback = Callback> extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _RemoteEvent: unique symbol;
+	readonly _nominal_RemoteEvent: unique symbol;
 	/** The FireAllClients function fires the [RemoteEvent.OnClientEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnClientEvent) event for each client.
 	 * 
 	 * Unlike [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient), this event does not take a target player as an argument. Instead it will fire to all clients who have the same remote event connected to an OnClientEvent event.
@@ -21519,7 +21519,7 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _RemoteFunction: unique symbol;
+	readonly _nominal_RemoteFunction: unique symbol;
 	/** Calls the method bound to the RemoteFunction by [RemoteFunction.OnClientInvoke](https://developer.roblox.com/en-us/api-reference/property/RemoteFunction/OnClientInvoke) for the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player). Use from a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
 	 * 
 	 * If the result is not needed then it is recommended to use a [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient) instead, as its call is asynchronous and doesn't need to wait for a response to continue execution.
@@ -21585,7 +21585,7 @@ interface ReplicatedFirst extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ReplicatedFirst: unique symbol;
+	readonly _nominal_ReplicatedFirst: unique symbol;
 	/** Immediately removes the default Roblox loading screen. Note if any object has been placed in [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst), the default loading screen will remove after 5 seconds regardless if this function has been called or not.
 	 * 
 	 * Developers should run this function from a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) in [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst), as scripts in [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst) will execute before anything else.
@@ -21602,7 +21602,7 @@ interface ReplicatedScriptService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ReplicatedScriptService: unique symbol;
+	readonly _nominal_ReplicatedScriptService: unique symbol;
 }
 
 /** Complex games often require a range of assets that are held in storage until they're required. **ReplicatedStorage** is a container whose contents are replicated to all connected clients, allowing such objects to be stored until needed. ReplicatedStorage is also an ideal location for [RemoteFunctions](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) and [RemoteEvents](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) since they can be found on both the client and server.
@@ -21625,7 +21625,7 @@ interface ReplicatedStorage extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ReplicatedStorage: unique symbol;
+	readonly _nominal_ReplicatedStorage: unique symbol;
 }
 
 /** **RunService** contains methods and events for time-management as well as for managing the context in which a game or script is running. Methods like [IsClient](https://developer.roblox.com/en-us/api-reference/function/RunService/IsClient), [IsServer](https://developer.roblox.com/en-us/api-reference/function/RunService/IsServer), [IsStudio](https://developer.roblox.com/en-us/api-reference/function/RunService/IsStudio), can help you determine under what context code is running. These methods are useful for ModuleScripts that may be required by both client and server scripts. Furthermore, [IsStudio](https://developer.roblox.com/en-us/api-reference/function/RunService/IsStudio) can be used to add special behaviors for in-studio testing.
@@ -21639,7 +21639,7 @@ interface RunService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _RunService: unique symbol;
+	readonly _nominal_RunService: unique symbol;
 	/** The `BindToRenderStep` function binds a custom function to be called at a specific time during the render step. There are three main arguments for BindToRenderStep: `name`, `priority`, and `what function to call`.
 	 * 
 	 * As it is linked to the client's rendering process, BindToRenderStep can only be called on the client.
@@ -21993,7 +21993,7 @@ interface ServerScriptService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ServerScriptService: unique symbol;
+	readonly _nominal_ServerScriptService: unique symbol;
 }
 
 /** A container whose contents are only accessible on the server. Objects descending from ServerStorage will not replicate to the client and will not be accessible from [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s.
@@ -22013,7 +22013,7 @@ interface ServerStorage extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ServerStorage: unique symbol;
+	readonly _nominal_ServerStorage: unique symbol;
 }
 
 /** A ServiceProvider is an abstract class, which stores, and provides certain singleton classes, depending on what inherited class you are using its members with. */
@@ -22024,7 +22024,7 @@ interface ServiceProvider<S = unknown> extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ServiceProvider: unique symbol;
+	readonly _nominal_ServiceProvider: unique symbol;
 	/** Returns the service specified by the given className if it's already created, errors for an invalid name. */
 	FindService(this: ServiceProvider<S>, className: string): S[keyof S] | undefined;
 	FindService(this: ServiceProvider<S>, className: string): Instance | undefined;
@@ -22053,7 +22053,7 @@ interface DataModel extends ServiceProvider<Services> {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _DataModel: unique symbol;
+	readonly _nominal_DataModel: unique symbol;
 	/** This property describes the ID of the user or group that owns the `Articles/Place|place`
 	 * 
 	 * If the [DataModel.CreatorType](https://developer.roblox.com/en-us/api-reference/property/DataModel/CreatorType) property is _'User'_ then CreatorId will be the [Player.UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) of the place's owner. If the [DataModel.CreatorType](https://developer.roblox.com/en-us/api-reference/property/DataModel/CreatorType) is _'Group'_ then CreatorId will be the ID of the group that owns the place.
@@ -22278,7 +22278,7 @@ interface GenericSettings<S = unknown> extends ServiceProvider<S> {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _GenericSettings: unique symbol;
+	readonly _nominal_GenericSettings: unique symbol;
 }
 
 /** UserSettings is a singleton object that is used to house basic user settings, which persist across all games. Currently, it only stores the [UserGameSettings](https://developer.roblox.com/en-us/api-reference/class/UserGameSettings) object.
@@ -22292,7 +22292,7 @@ interface UserSettings extends GenericSettings<{ UserGameSettings: UserGameSetti
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UserSettings: unique symbol;
+	readonly _nominal_UserSettings: unique symbol;
 	/** Returns true if the specified user feature is enabled. This will throw an error if the user feature does not exist.
 	 * 
 	 * This function checks against a list of FFlags, whose name starts with “User”. The function is intended to be used by Roblox-created scripts, and functions similarly to [GlobalSettings:GetFFlag](https://developer.roblox.com/en-us/api-reference/function/GlobalSettings/GetFFlag).
@@ -22309,7 +22309,7 @@ interface SessionService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SessionService: unique symbol;
+	readonly _nominal_SessionService: unique symbol;
 }
 
 /** The Sky object is an object, when placed inside [Lighting](https://developer.roblox.com/en-us/api-reference/class/Lighting), will change the appearance of the game's sky. This allows for a custom sky to be used as opposed to the Roblox default sky. The Skybox is composed of six sides, much like that of a cube. If the skybox is changed/customised, the Sun and other objects in the sky will remain visible, unless you turn off the Sky object's [Sky.CelestialBodiesShown](https://developer.roblox.com/en-us/api-reference/property/Sky/CelestialBodiesShown) property, which will remove the Sun, Moon, and stars from the sky. The recommended picture dimensions for a Skybox side are 256x256 pixels. By adjusting the [Sky.StarCount](https://developer.roblox.com/en-us/api-reference/property/Sky/StarCount) property of the Sky object, you can change how many stars will appear in the sky at night. */
@@ -22320,7 +22320,7 @@ interface Sky extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Sky: unique symbol;
+	readonly _nominal_Sky: unique symbol;
 	/** Sets whether the Sun, Moon, and stars will show. */
 	CelestialBodiesShown: boolean;
 	/** The perceived angular size of the moon while using this skybox, in degrees. */
@@ -22362,7 +22362,7 @@ interface Smoke extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Smoke: unique symbol;
+	readonly _nominal_Smoke: unique symbol;
 	/** The Color property determines the color of all the particles emit by a [Smoke](https://developer.roblox.com/en-us/api-reference/class/Smoke) object (both existing and future particles). It behaves similarly to [ParticleEmitter.Color](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Color), except that it is only one color and not a [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence). A color of white with some [Smoke.Opacity](https://developer.roblox.com/en-us/api-reference/property/Smoke/Opacity) makes for a nice fog effect, and a very opaque black color can compliment a [Fire](https://developer.roblox.com/en-us/api-reference/class/Fire) object nicely.
 	 * 
 	 * ![Two Smoke objects with different colors](https://developer.roblox.com/assets/blt6952d1f0943c1f61/Smoke_Color.png)
@@ -22437,7 +22437,7 @@ interface SocialService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SocialService: unique symbol;
+	readonly _nominal_SocialService: unique symbol;
 	/** **PromptGameInvite** will display an invite screen to the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player). On this screen, the player may invite their friends to the current game.
 	 * 
 	 * Before using this function, you should use the [CanSendGameInviteAsync](https://developer.roblox.com/en-us/api-reference/function/SocialService/CanSendGameInviteAsync) function to determine whether a player can send a game invite, as this can vary depending on the platform or player. After determining that invites are possible for this player, allow the player to opt-in to inviting others. For example, the player clicked on an “Invite Friends” button, shown after `CanSendGameInviteAsync` returned true.\`
@@ -22500,7 +22500,7 @@ interface Sound extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Sound: unique symbol;
+	readonly _nominal_Sound: unique symbol;
 	/** This property will be true when the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) has loaded loaded from Roblox servers and is ready to play.
 	 * 
 	 * In Roblox, audio files are not stored in games themselves but hosted on the Roblox servers and referenced by the [Sound.SoundId](https://developer.roblox.com/en-us/api-reference/property/Sound/SoundId) property. This means that they need to be downloaded to a client's device before they can be played. This can take a while depending on the user's internet connection, the length of the sound and the number of other objects that need to be loaded.
@@ -22906,7 +22906,7 @@ interface SoundEffect extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SoundEffect: unique symbol;
+	readonly _nominal_SoundEffect: unique symbol;
 	/** Toggles the effect on and off. True by default. */
 	Enabled: boolean;
 	/** Determines the order the effect will be applied in relation to other effects. Highger priority effects will be applied earlier. The exception is when Priority equals 0 (which is the default). In this case, the base priority for the effect will be used. If the priority of two effects are equal, then the order is undetermined. */
@@ -22924,7 +22924,7 @@ interface ChorusSoundEffect extends SoundEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ChorusSoundEffect: unique symbol;
+	readonly _nominal_ChorusSoundEffect: unique symbol;
 	/** Range: 0 to 1 (default 0.15)
 	 * 
 	 * Controls how intense the effect is.Controls how intense the effect is.
@@ -22961,7 +22961,7 @@ interface CompressorSoundEffect extends SoundEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _CompressorSoundEffect: unique symbol;
+	readonly _nominal_CompressorSoundEffect: unique symbol;
 	/** Range: 0.1 to 1 (default 0.1)
 	 * 
 	 * The time the effect takes to become active after its Threshold has be reached. Measured in seconds.The time the effect takes to become active after its Threshold has be reached.
@@ -23002,7 +23002,7 @@ interface DistortionSoundEffect extends SoundEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _DistortionSoundEffect: unique symbol;
+	readonly _nominal_DistortionSoundEffect: unique symbol;
 	/** Range: 0 to 1 (default 0.5)
 	 * 
 	 * The intensity of the effect. Setting this property to its minimum (0) will cause no distortion at all.The intensity of the effect.
@@ -23025,7 +23025,7 @@ interface EchoSoundEffect extends SoundEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _EchoSoundEffect: unique symbol;
+	readonly _nominal_EchoSoundEffect: unique symbol;
 	/** Range: 0.01 to 5 (default 1)
 	 * 
 	 * The amount of time between echoes. Measured in seconds.
@@ -23068,7 +23068,7 @@ interface EqualizerSoundEffect extends SoundEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _EqualizerSoundEffect: unique symbol;
+	readonly _nominal_EqualizerSoundEffect: unique symbol;
 	/** Range: -80 to 10 (default 0)
 	 * 
 	 * The output volume of frequencies greater than 4000 Hz. Measured in dB.The output volume of frequencies greater than 4000 Hz.
@@ -23097,7 +23097,7 @@ interface FlangeSoundEffect extends SoundEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _FlangeSoundEffect: unique symbol;
+	readonly _nominal_FlangeSoundEffect: unique symbol;
 	/** Range: 0.01 to 1 (default 0.45)
 	 * 
 	 * The intensity of the effect. This value determines how offset the duplicated signal will be from the original. This value is the percentage of the max offset (40ms).The intensity of the effect.
@@ -23126,7 +23126,7 @@ interface PitchShiftSoundEffect extends SoundEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _PitchShiftSoundEffect: unique symbol;
+	readonly _nominal_PitchShiftSoundEffect: unique symbol;
 	/** Range: 0.5 to 2 (default 1.25)
 	 * 
 	 * The percentage to shift the original pitch. Setting this to its minimum (0.5) lowers the octave by 1, setting this to its maximum (2) increases the octave by 1.The percentage to shift the original pitch.
@@ -23145,7 +23145,7 @@ interface ReverbSoundEffect extends SoundEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ReverbSoundEffect: unique symbol;
+	readonly _nominal_ReverbSoundEffect: unique symbol;
 	/** Range: 0.1 to 20 (default 1.5)
 	 * 
 	 * Sets how long it takes for the reverberating echoes to fade out completely. Larger decay times simulate larger (empty) spacesSets how long it takes for the reverberating echoes to fade out completely.
@@ -23184,7 +23184,7 @@ interface TremoloSoundEffect extends SoundEffect {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TremoloSoundEffect: unique symbol;
+	readonly _nominal_TremoloSoundEffect: unique symbol;
 	/** Range: 0 to 1 (default 1)
 	 * 
 	 * Controls how much the volume will raise and lower. This value ranges between 0 (minimum volume) and 1 (maximum volume). If set to its minimum, the volume will not oscillate at all.Controls how much the volume will raise and lower.
@@ -23222,7 +23222,7 @@ interface SoundGroup extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SoundGroup: unique symbol;
+	readonly _nominal_SoundGroup: unique symbol;
 	/** The volume multiplier applied to [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s that are in the [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup). This value ranges from 0 to 10.
 	 * 
 	 * This property acts as a multiplier, and thus sounds in a [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) will retain their relative volumes when it is set. This means if a sound's [Sound.Volume](https://developer.roblox.com/en-us/api-reference/property/Sound/Volume) is 0.5 and it is assigned to a [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) with a volume of 0.5, its effective volume will be 0.25.
@@ -23250,7 +23250,7 @@ interface SoundService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SoundService: unique symbol;
+	readonly _nominal_SoundService: unique symbol;
 	/** The ambient sound environment preset used by [SoundService](https://developer.roblox.com/en-us/api-reference/class/SoundService).
 	 * 
 	 * The [ReverbType](https://developer.roblox.com/en-us/api-reference/enum/ReverbType) this property simulates a range of different environment's impact on sound. Each different option corresponds with a preset available in the FMOD sound engine. For example, when AmbientReverb is set to Hangar, the sound will reverberate differently to simulate being in a large enclosed space.
@@ -23413,7 +23413,7 @@ interface Sparkles extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Sparkles: unique symbol;
+	readonly _nominal_Sparkles: unique symbol;
 	/** The Color property determines the color of all the particles emit by a [Sparkles](https://developer.roblox.com/en-us/api-reference/class/Sparkles) object (both existing and future particles). It behaves similarly to [ParticleEmitter.Color](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Color), except that it is only one color and not a [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence). Sparkles have a natural color sequence applied which is most apparent when this property is set to white; sparkles very faintly animate between a subtle green and red. Below, you can see two [Sparkles](https://developer.roblox.com/en-us/api-reference/class/Sparkles) objects with differing SparkleColor (the left is default, the right is white).
 	 * 
 	 * ![Two Sparkles objects with differing SparkleColor](https://developer.roblox.com/assets/blt22f35a953a5b6687/Sparkles_SparkleColor.png)
@@ -23511,7 +23511,7 @@ interface StarterGear extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _StarterGear: unique symbol;
+	readonly _nominal_StarterGear: unique symbol;
 }
 
 /** A service-level container whose contents are copied into each [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) when the player spawns. It is generally used to hold `Tools`, but is sometimes used to hold [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s to ensure that each player gets a copy.
@@ -23535,7 +23535,7 @@ interface StarterPack extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _StarterPack: unique symbol;
+	readonly _nominal_StarterPack: unique symbol;
 }
 
 /** A service which allows the defaults of properties in the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) object to be set. When a player enters the server, each property of the player object is set to the current value of the corresponding property in StarterPlayer.
@@ -23557,7 +23557,7 @@ interface StarterPlayer extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _StarterPlayer: unique symbol;
+	readonly _nominal_StarterPlayer: unique symbol;
 	/** The AllowCustomAnimations [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) property describes the current game's permission levels regarding custom avatar [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation)s from the website.
 	 * 
 	 * As such, this value cannot be changed from within the game. It can only be changed by changing the game's permission levels within the game's setting's page on the website.
@@ -23772,7 +23772,7 @@ interface StarterPlayerScripts extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _StarterPlayerScripts: unique symbol;
+	readonly _nominal_StarterPlayerScripts: unique symbol;
 }
 
 /** The StarterCharacterScripts class stores scripts to be parented in a player's [Character](https://developer.roblox.com/api-reference/property/Player/Character "Character"), when they spawn.  
@@ -23787,7 +23787,7 @@ interface StarterCharacterScripts extends StarterPlayerScripts {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _StarterCharacterScripts: unique symbol;
+	readonly _nominal_StarterCharacterScripts: unique symbol;
 }
 
 /** Stats is a service that provides real-time performance information about the current running game instance. Its primary purpose is to provide developers with an end point to measure where resources are being consumed, as well as how much memory is being consumed overall.  
@@ -23801,7 +23801,7 @@ interface Stats extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Stats: unique symbol;
+	readonly _nominal_Stats: unique symbol;
 	/** ContactsCount describes how many parts are currently in contact with each other, such that one of the two parts are being physically simulated, and thus can be recognized by the [BasePart:GetTouchingParts](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetTouchingParts) method.ContactsCount describes how many parts are currently in contact with each other, such that one of the two parts are being physically simulated, and thus can be recognized by the [BasePart:GetTouchingParts](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetTouchingParts) method. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -23918,7 +23918,7 @@ interface SurfaceAppearance extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _SurfaceAppearance: unique symbol;
+	readonly _nominal_SurfaceAppearance: unique symbol;
 }
 
 /** The [Team](https://developer.roblox.com/en-us/api-reference/class/Team) class represents a faction in a Roblox place. The only valid parent for a Team is in the [Teams](https://developer.roblox.com/en-us/api-reference/class/Teams) service. Teams offer a range of features that are useful to developers that can be divided into two rough groups:
@@ -23953,7 +23953,7 @@ interface Team extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Team: unique symbol;
+	readonly _nominal_Team: unique symbol;
 	/** This property determines whether [Player](https://developer.roblox.com/en-us/api-reference/class/Player)s will be automatically placed onto the [Team](https://developer.roblox.com/en-us/api-reference/class/Team) when joining. If multiple teams have this property set to true, Roblox will attempt to even the teams out when [Player](https://developer.roblox.com/en-us/api-reference/class/Player)s are added.
 	 * 
 	 * When a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) joins a game they will be assigned to the [Team](https://developer.roblox.com/en-us/api-reference/class/Team) with [Team.AutoAssignable](https://developer.roblox.com/en-us/api-reference/property/Team/AutoAssignable) set to true that has the fewest players. If no such team is available, [Player.Neutral](https://developer.roblox.com/en-us/api-reference/property/Player/Neutral) will be set to true.
@@ -24026,7 +24026,7 @@ interface Teams extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Teams: unique symbol;
+	readonly _nominal_Teams: unique symbol;
 	/** The GetTeam function returns a table containing the game's [Team](https://developer.roblox.com/en-us/api-reference/class/Team) objects.
 	 * 
 	 * Note this will only return Team objects that are directly parented to the [Teams](https://developer.roblox.com/en-us/api-reference/class/Teams) service. For this reason it is recommended developers only parent [Team](https://developer.roblox.com/en-us/api-reference/class/Team) objects to the [Teams](https://developer.roblox.com/en-us/api-reference/class/Teams) service and not to other [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s (or to each other).
@@ -24041,7 +24041,7 @@ interface TeleportAsyncResult extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TeleportAsyncResult: unique symbol;
+	readonly _nominal_TeleportAsyncResult: unique symbol;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -24059,7 +24059,7 @@ interface TeleportOptions extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TeleportOptions: unique symbol;
+	readonly _nominal_TeleportOptions: unique symbol;
 	/** [NO DOCUMENTATION] */
 	ReservedServerAccessCode: string;
 	/** [NO DOCUMENTATION] */
@@ -24102,7 +24102,7 @@ interface TeleportService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TeleportService: unique symbol;
+	readonly _nominal_TeleportService: unique symbol;
 	/** This function returns the _customLoadingScreen_ the [LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) arrived into the place with.
 	 * 
 	 * Note, the _customLoadingScreen_ will not be used if the destination place is in a different game.
@@ -24732,7 +24732,7 @@ interface TerrainRegion extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TerrainRegion: unique symbol;
+	readonly _nominal_TerrainRegion: unique symbol;
 	/** The size of this TerrainRegion in cells.The size of this TerrainRegion in cells. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -24749,7 +24749,7 @@ interface TextFilterResult extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TextFilterResult: unique symbol;
+	readonly _nominal_TextFilterResult: unique symbol;
 	/** The GetChatForUserAsync function returns the text in a properly filtered manner for the specified [Player.UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId). This should be used in the context of chats between players, although there are some other cases where text filtering is required.
 	 * 
 	 * This function returns the string appropriate for sending and displaying to a target user (specified by _toUserId_) from the original sender using the least restrictive filtering appropriate for the target user, with [Chat](https://developer.roblox.com/en-us/api-reference/class/Chat) privacy settings of both users enforced. This string should only be shown to the target user, as it might not be appropriate for all users.
@@ -24803,7 +24803,7 @@ interface TextService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TextService: unique symbol;
+	readonly _nominal_TextService: unique symbol;
 	/** Computes the [Vector2](https://developer.roblox.com/en-us/api-reference/datatype/Vector2) dimensions (in pixels) that will be taken up with text when using the specified formatting parameters and size constraints.
 	 * 
 	 * Note, the fontSize parameter will not accept the [FontSize](https://developer.roblox.com/en-us/api-reference/enum/FontSize) Enum. Instead the integer size corresponding with the [FontSize](https://developer.roblox.com/en-us/api-reference/enum/FontSize) Enum should be used. This is not equal to the value of the [FontSize](https://developer.roblox.com/en-us/api-reference/enum/FontSize) Enum. For example, for _Size11_ font, the integer _11_ should be used.
@@ -24858,7 +24858,7 @@ interface TouchTransmitter extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TouchTransmitter: unique symbol;
+	readonly _nominal_TouchTransmitter: unique symbol;
 }
 
 interface TracerService extends Instance {
@@ -24868,7 +24868,7 @@ interface TracerService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TracerService: unique symbol;
+	readonly _nominal_TracerService: unique symbol;
 }
 
 /** The Trail object is used to create a trail like an effect between two points. As the points move through space a texture is drawn on the plane the points define. This is commonly used to create effects to help visualize movements like tracer trails behind projectiles, footprints, tire tracks, and many other similar effects.
@@ -24894,7 +24894,7 @@ interface Trail extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Trail: unique symbol;
+	readonly _nominal_Trail: unique symbol;
 	/** A [Trail](https://developer.roblox.com/en-us/api-reference/class/Trail) starts drawing its segments at the positions of its [Trail.Attachment0](https://developer.roblox.com/en-us/api-reference/property/Trail/Attachment0) and \***Attachment1**.
 	 * 
 	 * When the Trail is [Trail.Enabled](https://developer.roblox.com/en-us/api-reference/property/Trail/Enabled) it will record the positions of its attachments every frame. It will connect these positions to the positions of the attachments on the previous frame. This creates a polygon that is then filled in by the Trail's [Trail.Color](https://developer.roblox.com/en-us/api-reference/property/Trail/Color) and [Trail.Texture](https://developer.roblox.com/en-us/api-reference/property/Trail/Texture) (if that Texture exists).
@@ -25082,7 +25082,7 @@ interface Translator extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Translator: unique symbol;
+	readonly _nominal_Translator: unique symbol;
 	/** Describes the language that the Translator will translate to, as a locale-id.Describes the language that the Translator will translate to, as a locale-id. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -25196,7 +25196,7 @@ interface TweenBase extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TweenBase: unique symbol;
+	readonly _nominal_TweenBase: unique symbol;
 	/** Read only property that shows the current playback [PlaybackState](https://developer.roblox.com/en-us/api-reference/enum/PlaybackState) of the [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween). PlaybackState is an Enum type variable with the following possible values.
 	 * 
 	 * *   Delayed - The tween is waiting to repeat due to the DelayTime property of the Tween's [TweenInfo](https://developer.roblox.com/en-us/api-reference/datatype/TweenInfo)
@@ -25254,7 +25254,7 @@ interface Tween extends TweenBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Tween: unique symbol;
+	readonly _nominal_Tween: unique symbol;
 	/** The Instance property of a [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) points to the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) whose properties are being interpolated by the tween. As with all [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) properties, the Instance property is read only. If a developer wants to tween a different instance they must create a new [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) using [TweenService:Create](https://developer.roblox.com/en-us/api-reference/function/TweenService/Create).The Instance property of a [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) points to the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) whose properties are being interpolated by the tween. As with all [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) properties, the Instance property is read only. If a developer wants to tween a different instance they must create a new [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) using [TweenService:Create](https://developer.roblox.com/en-us/api-reference/function/TweenService/Create). *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -25299,7 +25299,7 @@ interface TweenService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _TweenService: unique symbol;
+	readonly _nominal_TweenService: unique symbol;
 	/** The Create function of [TweenService](https://developer.roblox.com/en-us/api-reference/class/TweenService) creates a new [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween). The function takes three arguments: the object to tween, the [TweenInfo](https://developer.roblox.com/en-us/api-reference/datatype/TweenInfo) to use, and a table containing the properties to tween and the values to tween to.
 	 * 
 	 * Tweens are used to interpolate the properties of instances. These can be used to create animations for various Roblox objects. Almost any numeric property can be tweened using [TweenService](https://developer.roblox.com/en-us/api-reference/class/TweenService).
@@ -25342,7 +25342,7 @@ interface UIBase extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UIBase: unique symbol;
+	readonly _nominal_UIBase: unique symbol;
 }
 
 /** A base class for UI constraint and layout classes, inherits from `UiBase`. */
@@ -25353,7 +25353,7 @@ interface UIComponent extends UIBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UIComponent: unique symbol;
+	readonly _nominal_UIComponent: unique symbol;
 }
 
 /** The base class for UI constraint classes. */
@@ -25364,7 +25364,7 @@ interface UIConstraint extends UIComponent {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UIConstraint: unique symbol;
+	readonly _nominal_UIConstraint: unique symbol;
 }
 
 /** A UIAspectRatioConstraint ensures that the parent UI element ([GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject)) maintains a particular aspect ratio even if its size is set as a percentage of its parent. If an object with this constraint is also under the control of a [UILayout](https://developer.roblox.com/en-us/api-reference/class/UILayout) such as [UIGridLayout](https://developer.roblox.com/en-us/api-reference/class/UIGridLayout), then the constraint controls the objects size and overwrites any size the layout would apply.
@@ -25378,7 +25378,7 @@ interface UIAspectRatioConstraint extends UIConstraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UIAspectRatioConstraint: unique symbol;
+	readonly _nominal_UIAspectRatioConstraint: unique symbol;
 	/** AspectRatio determines the width-to-height ratio to maintain. To flip the ratio to height-to-width, take the inverse (divide 1 by the number or raise to the -1st power). This value must be greater than zero. Below, a white [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) is placed within the a black [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) with two different width-to-height ratios.
 	 * 
 	 * ![A width-to-height ratio of 0.8](https://developer.roblox.com/assets/bltb4147bb1d3de0224/UIAspectRatioConstraint_Ratio_0.8.png)![A width-to-height ratio of 1.25](https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/blt9874bdf1824f7688/5af8c4f8a3fbc195609fc267/UIAspectRatioConstraint_Ratio_1.25.png)
@@ -25409,7 +25409,7 @@ interface UISizeConstraint extends UIConstraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UISizeConstraint: unique symbol;
+	readonly _nominal_UISizeConstraint: unique symbol;
 	/** The largest size in pixels the object is allowed to be. The X and Y of this value must be greater than or equal to the corresponding components of [UISizeConstraint.MinSize](https://developer.roblox.com/en-us/api-reference/property/UISizeConstraint/MinSize). */
 	MaxSize: Vector2;
 	/** The smallest size in pixels the object is allowed to be. The X and Y of this value must be less than or equal to the corresponding components of [UISizeConstraint.MaxSize](https://developer.roblox.com/en-us/api-reference/property/UISizeConstraint/MaxSize). */
@@ -25431,7 +25431,7 @@ interface UITextSizeConstraint extends UIConstraint {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UITextSizeConstraint: unique symbol;
+	readonly _nominal_UITextSizeConstraint: unique symbol;
 	/** this property indicates the largest size in pixels the font is allowed to be. It defaults to 1000 pixels and much be set larger than or equal to the `UITextSizeConstraint|UITextSizeConstraint's` [MinTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MinTextSize) property.
 	 * 
 	 * ![Constraints visual](https://developer.roblox.com/assets/blte9c47efb631349e0/UITextSizeConstraintDemo.gif)
@@ -25455,7 +25455,7 @@ interface UICorner extends UIComponent {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UICorner: unique symbol;
+	readonly _nominal_UICorner: unique symbol;
 	/** Round corner with specified radius. */
 	CornerRadius: UDim;
 }
@@ -25498,7 +25498,7 @@ interface UIGradient extends UIComponent {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UIGradient: unique symbol;
+	readonly _nominal_UIGradient: unique symbol;
 	/** The **Color** of a [UIGradient](https://developer.roblox.com/en-us/api-reference/class/UIGradient) describes the color to blend with the parent UI element along the provided [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence). This property works in a similar manner to [Beam.Color](https://developer.roblox.com/en-us/api-reference/property/Beam/Color) or [Trail.Color](https://developer.roblox.com/en-us/api-reference/property/Trail/Color), except that it applies over an on-screen distance determined by the [Offset](https://developer.roblox.com/en-us/api-reference/property/UIGradient/Offset) and [Rotation](https://developer.roblox.com/en-us/api-reference/property/UIGradient/Rotation) of the UIGradient. The image below shows the linear interpolation of four color values:
 	 * 
 	 * ![How the UIGradient Color ColorSequence applies color to a GuiObject](https://developer.roblox.com/assets/blt62f971fd0f185879/UIGradient.Color.2.jpg)
@@ -25561,7 +25561,7 @@ interface UILayout extends UIComponent {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UILayout: unique symbol;
+	readonly _nominal_UILayout: unique symbol;
 }
 
 /** The base class for grid style UI layouts. */
@@ -25572,7 +25572,7 @@ interface UIGridStyleLayout extends UILayout {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UIGridStyleLayout: unique symbol;
+	readonly _nominal_UIGridStyleLayout: unique symbol;
 	/** The AbsoluteContentSize property of a [UIGridStyleLayout](https://developer.roblox.com/en-us/api-reference/class/UIGridStyleLayout) shows how much space the elements of the grid are taking up, including any padding created by the grid. This property is particularly useful to size containers of grids such as [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame)s and Frame to make sure they aren't any larger than the grid itself.
 	 * 
 	 * It updates as soon as it's read. It won't fire a changed event immediately after the UI has changed, but if the value is read it will be up to date. A [Instance.Changed](https://developer.roblox.com/en-us/api-reference/event/Instance/Changed) event should fire on the next render step.
@@ -25610,7 +25610,7 @@ interface UIGridLayout extends UIGridStyleLayout {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UIGridLayout: unique symbol;
+	readonly _nominal_UIGridLayout: unique symbol;
 	/** [NO DOCUMENTATION] *
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -25659,7 +25659,7 @@ interface UIListLayout extends UIGridStyleLayout {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UIListLayout: unique symbol;
+	readonly _nominal_UIListLayout: unique symbol;
 	/** Determines the amount of free space between each element.
 	 * 
 	 * Can be set either using scale (Percentage of parent's size in the current direction) or offset (a static spacing value, similar to pixel size).Determines the amount of free space between each element.
@@ -25675,7 +25675,7 @@ interface UIPageLayout extends UIGridStyleLayout {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UIPageLayout: unique symbol;
+	readonly _nominal_UIPageLayout: unique symbol;
 	/** Whether or not to animate transitions between pages. */
 	Animated: boolean;
 	/** Whether or not the page layout wraps around at the ends. */
@@ -25734,7 +25734,7 @@ interface UITableLayout extends UIGridStyleLayout {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UITableLayout: unique symbol;
+	readonly _nominal_UITableLayout: unique symbol;
 	/** FillEmptySpaceColumns determines whether cells' X size are set such that the entire horizontal space of the parent UI element is used. Enabling this is useful for making sure your table takes up a more easily predictable amount of horizontal space (the X-axis size of the parent UI element). It is still possible that a [UISizeConstraint](https://developer.roblox.com/en-us/api-reference/class/UISizeConstraint) applied to cells will cause underflow/overflow.
 	 * 
 	 * When enabling this property, the column widths will be approximately equal to the parent's [GuiBase2d.AbsoluteSize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteSize).X component divided by the number of columns (not accounting for padding or other factors).
@@ -25767,7 +25767,7 @@ interface UIPadding extends UIComponent {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UIPadding: unique symbol;
+	readonly _nominal_UIPadding: unique symbol;
 	/** The padding to apply on the bottom side relative to the parent's normal size. */
 	PaddingBottom: UDim;
 	/** The padding to apply on the left side relative to the parent's normal size. */
@@ -25786,7 +25786,7 @@ interface UIScale extends UIComponent {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UIScale: unique symbol;
+	readonly _nominal_UIScale: unique symbol;
 	/** The Scale property determines the multiplier used on the parent UI element's [GuiBase2d.AbsoluteSize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteSize). When set to 0.5, an AbsoluteSize of {0, 200}, {0, 50} becomes {0, 100}, {0, 25}. Similarly, when set to 2, such an AbsoluteSize would become {0, 400}, {0, 100}. */
 	Scale: number;
 }
@@ -25798,7 +25798,7 @@ interface UnvalidatedAssetService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UnvalidatedAssetService: unique symbol;
+	readonly _nominal_UnvalidatedAssetService: unique symbol;
 }
 
 /** The UserGameSettings is a singleton class found inside of the [UserSettings](https://developer.roblox.com/en-us/api-reference/class/UserSettings) singleton. It holds various persistent settings relating to how the user wants to control their camera, and their character.
@@ -25816,7 +25816,7 @@ interface UserGameSettings extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UserGameSettings: unique symbol;
+	readonly _nominal_UserGameSettings: unique symbol;
 	/** The camera movement mode currently in-use by the client. */
 	ComputerCameraMovementMode: Enum.ComputerCameraMovementMode;
 	/** The movement type in-use by the client via Computer input. */
@@ -25906,7 +25906,7 @@ interface UserInputService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UserInputService: unique symbol;
+	readonly _nominal_UserInputService: unique symbol;
 	/** This property describes whether the the user's device has an accelerometer
 	 * 
 	 * An accelerometer is a component found in most mobile devices that measures acceleration (change in speed).
@@ -27336,7 +27336,7 @@ interface UserService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _UserService: unique symbol;
+	readonly _nominal_UserService: unique symbol;
 	/** This function enables developers to request information about users outside of the current [Datamodel](https://developer.roblox.com/api-reference/class/DataModel) in bulk, which is why both the input and output values are arrays.
 	 * 
 	 * *   The order of the `UserInfosResponse` objects in the return value's array may not match the order of the `UserIds` sent in the input parameter's array. Use the `Id` field of the `UserInfosResponse` object to identify your input array with the output array.
@@ -27374,7 +27374,7 @@ interface VRService extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _VRService: unique symbol;
+	readonly _nominal_VRService: unique symbol;
 	/** The GuiInputUserCFrame property describes what [UserCFrame](https://developer.roblox.com/en-us/api-reference/enum/UserCFrame) is responsible for input in VR. For instance, if a VR headset is responsible, the value of this property will be UserCFrame.Head.
 	 * 
 	 * To check if Roblox detects any VR devices, which would be responsible for input in VR, you can check the [VRService.VREnabled](https://developer.roblox.com/en-us/api-reference/property/VRService/VREnabled) property.
@@ -27537,7 +27537,7 @@ interface ValueBase extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ValueBase: unique symbol;
+	readonly _nominal_ValueBase: unique symbol;
 	/** The value this object holds. */
 	Value: unknown;
 	/**
@@ -27556,7 +27556,7 @@ interface BinaryStringValue extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BinaryStringValue: unique symbol;
+	readonly _nominal_BinaryStringValue: unique symbol;
 	/** Fires if the `BinaryStringValue/Value` of the [BinaryStringValue](https://developer.roblox.com/en-us/api-reference/class/BinaryStringValue) is changed by the engine.
 	 * 
 	 * In practice, this object is stored out of reach from normal scripts, so this event cannot be connected to. If a BinaryStringValue is created by a script, the engine will not do anything with it, so the event will never fire.
@@ -27577,7 +27577,7 @@ interface BoolValue extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BoolValue: unique symbol;
+	readonly _nominal_BoolValue: unique symbol;
 	/** Used to hold a boolean value. */
 	Value: boolean;
 	/** Fired whenever the [BoolValue.Value](https://developer.roblox.com/en-us/api-reference/property/BoolValue/Value) of the [BoolValue](https://developer.roblox.com/en-us/api-reference/class/BoolValue) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -27602,7 +27602,7 @@ interface BrickColorValue extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _BrickColorValue: unique symbol;
+	readonly _nominal_BrickColorValue: unique symbol;
 	/** Used to hold a [BrickColor](https://developer.roblox.com/api-reference/datatype/BrickColor "BrickColor") value. */
 	Value: BrickColor;
 	/** Fired whenever the [BrickColorValue.Value](https://developer.roblox.com/en-us/api-reference/property/BrickColorValue/Value) of the [BrickColorValue](https://developer.roblox.com/en-us/api-reference/class/BrickColorValue) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -27625,7 +27625,7 @@ interface CFrameValue extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _CFrameValue: unique symbol;
+	readonly _nominal_CFrameValue: unique symbol;
 	/** Used to hold a [CFrame](https://developer.roblox.com/api-reference/datatype/CFrame "CFrame") value. */
 	Value: CFrame;
 	/** Fired whenever the [CFrameValue.Value](https://developer.roblox.com/en-us/api-reference/property/CFrameValue/Value) of the [CFrameValue](https://developer.roblox.com/en-us/api-reference/class/CFrameValue) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -27650,7 +27650,7 @@ interface Color3Value extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Color3Value: unique symbol;
+	readonly _nominal_Color3Value: unique symbol;
 	/** The stored [Color3](https://developer.roblox.com/api-reference/datatype/Color3 "Color3"). */
 	Value: Color3;
 	/** Fired whenever the [Color3Value.Value](https://developer.roblox.com/en-us/api-reference/property/Color3Value/Value) of the [Color3Value](https://developer.roblox.com/en-us/api-reference/class/Color3Value) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -27675,7 +27675,7 @@ interface DoubleConstrainedValue extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _DoubleConstrainedValue: unique symbol;
+	readonly _nominal_DoubleConstrainedValue: unique symbol;
 	/** [NO DOCUMENTATION] *
 	 * Tags: Hidden, NotReplicated
 	 */
@@ -27700,7 +27700,7 @@ interface IntConstrainedValue extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _IntConstrainedValue: unique symbol;
+	readonly _nominal_IntConstrainedValue: unique symbol;
 	/** Hold a `Integer` value between [IntConstrainedValue.MinValue](https://developer.roblox.com/en-us/api-reference/property/IntConstrainedValue/MinValue) and [IntConstrainedValue.MaxValue](https://developer.roblox.com/en-us/api-reference/property/IntConstrainedValue/MaxValue). Replaced by [IntConstrainedValue.Value](https://developer.roblox.com/en-us/api-reference/property/IntConstrainedValue/Value), but still functional.Hold a `Integer` value between [IntConstrainedValue.MinValue](https://developer.roblox.com/en-us/api-reference/property/IntConstrainedValue/MinValue) and [IntConstrainedValue.MaxValue](https://developer.roblox.com/en-us/api-reference/property/IntConstrainedValue/MaxValue). Replaced by [IntConstrainedValue.Value](https://developer.roblox.com/en-us/api-reference/property/IntConstrainedValue/Value), but still functional. *
 	 * Tags: Hidden, NotReplicated
 	 */
@@ -27725,7 +27725,7 @@ interface IntValue extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _IntValue: unique symbol;
+	readonly _nominal_IntValue: unique symbol;
 	/** Used to hold an [Integer](https://developer.roblox.com/articles/Integers "Integer"). */
 	Value: number;
 	/** The Changed event fires whenever the [IntValue.Value](https://developer.roblox.com/en-us/api-reference/property/IntValue/Value) of the [IntValue](https://developer.roblox.com/en-us/api-reference/class/IntValue) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -27753,7 +27753,7 @@ interface NumberValue extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _NumberValue: unique symbol;
+	readonly _nominal_NumberValue: unique symbol;
 	/** Used to hold a double value. */
 	Value: number;
 	/** This event fires whenever the [NumberValue.Value](https://developer.roblox.com/en-us/api-reference/property/NumberValue/Value) property is changed.
@@ -27783,7 +27783,7 @@ interface ObjectValue extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _ObjectValue: unique symbol;
+	readonly _nominal_ObjectValue: unique symbol;
 	/** Holds a reference to an instance. */
 	Value: Instance | undefined;
 	/** This event fires whenever the [ObjectValue.Value](https://developer.roblox.com/en-us/api-reference/property/ObjectValue/Value) property is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -27815,7 +27815,7 @@ interface RayValue extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _RayValue: unique symbol;
+	readonly _nominal_RayValue: unique symbol;
 	/** The stored Ray. */
 	Value: Ray;
 	/** This event fires whenever the [RayValue.Value](https://developer.roblox.com/en-us/api-reference/property/RayValue/Value) property is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -27841,7 +27841,7 @@ interface StringValue extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _StringValue: unique symbol;
+	readonly _nominal_StringValue: unique symbol;
 	/** The stored [string](https://developer.roblox.com/articles/String "API:Type/string"). */
 	Value: string;
 	/** Fired whenever the [StringValue.Value](https://developer.roblox.com/en-us/api-reference/property/StringValue/Value) of the [StringValue](https://developer.roblox.com/en-us/api-reference/class/StringValue) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -27866,7 +27866,7 @@ interface Vector3Value extends ValueBase {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _Vector3Value: unique symbol;
+	readonly _nominal_Vector3Value: unique symbol;
 	/** The stored [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3 "Vector3"). */
 	Value: Vector3;
 	/** Fired whenever the [Vector3Value.Value](https://developer.roblox.com/en-us/api-reference/property/Vector3Value/Value) of the [Vector3Value](https://developer.roblox.com/en-us/api-reference/class/Vector3Value) is changed. It will run with the new value being stored in the argument object, instead of a string representing the property being changed.
@@ -27941,7 +27941,7 @@ interface WeldConstraint extends Instance {
 	 * This field exists to force TypeScript to recognize this as a nominal type
 	 * @deprecated
 	 */
-	readonly _WeldConstraint: unique symbol;
+	readonly _nominal_WeldConstraint: unique symbol;
 	/** True if the WeldConstraint is currently active in the world.
 	 * 
 	 * If the WeldConstraint or one of its parts is not in [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) the weld will be inactive.

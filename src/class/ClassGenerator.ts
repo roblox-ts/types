@@ -1117,7 +1117,7 @@ export class ClassGenerator extends Generator {
 			this.write(` * This field exists to force TypeScript to recognize this as a nominal type`);
 			this.write(` * @deprecated`);
 			this.write(` */`);
-			this.write(`readonly _${className}: unique symbol;`);
+			this.write(`readonly _nominal_${className}: unique symbol;`);
 
 			if (noSecurity && tsImplInterface) {
 				for (const custom of [...tsImplInterface.getProperties(), ...tsImplInterface.getMethods()]) {
