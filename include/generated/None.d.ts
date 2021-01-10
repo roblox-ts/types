@@ -1921,10 +1921,8 @@ interface Bone extends Attachment {
 
 /** A service to support developer Avatar Editors. Provides methods to modify the players platform avatar, request information about a users inventory and request information about the catalog.
  * 
- * See also
- * --------
- * 
- * For more information regarding the Avatar Editor, take a look at the `articles/Article Editor Service` article.
+ * See also For more information regarding the Avatar Editor, take a look at the `articles/avatar editor service` article.
+ * -----------------------------------------------------------------------------------------------------------------------
  */
 interface AvatarEditorService extends Instance {
 	/**
@@ -1960,7 +1958,7 @@ interface AvatarEditorService extends Instance {
 	 *     {
 	 *       "MaxNumber": 0,
 	 *       "Id": 0,
-	 *       “Name": "string"
+	 *       "Name": "string"
 	 *     }
 	 *   ],
 	 *   "BodyColorsPalette": [
@@ -2005,7 +2003,7 @@ interface AvatarEditorService extends Instance {
 	 *     {
 	 *       "MaxNumber": 0,
 	 *       "Id": 0,
-	 *       “Name": "string"
+	 *       "Name": "string"
 	 *     }
 	 *   ],
 	 *   "BodyColorsPalette": [
@@ -6261,7 +6259,10 @@ interface Torque extends Constraint {
 
 /** A VectorForce is used to apply a force to a part or assembly of parts. The direction and strength of the force is determined by a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) and can be relative to an attachment on the part, another attachment, or the world coordinate system.
  * 
- * ![VectorForce Demo](https://developer.roblox.com/assets/bltc668ea0b8d61079b/VectorForceDemo.gif)
+ * ![VectorForce RelativeTo](https://developer.roblox.com/assets/bltacb3e3255384a7b4/VectorForceRelativeTo3.gif)  
+ * _The image above demonstrates how VectorForce applies a force on a part relative to an Attachment_  
+ * ![VectorForce CenterOfMass](https://developer.roblox.com/assets/bltcdb637c5a4b55ef3/VectorForceCenterOfMass.gif)  
+ * _The image above demonstrates how VectorForce applies a force on a part relative to the part's center of mass_
  * 
  * Location of force
  * -----------------
@@ -6297,11 +6298,19 @@ interface VectorForce extends Constraint {
 	 * @deprecated
 	 */
 	readonly _nominal_VectorForce: unique symbol;
-	/** When true, applies force at center of mass of Attachment0's parent Part. When false, applied at Attachment0. */
+	/** This property indicates whether the force is applied at the center of mass of `VectorForce/Attachment0|Attachment0's` parent [Part](https://developer.roblox.com/en-us/api-reference/class/Part).
+	 * 
+	 * When true, the force is applied at the center of mass. When false, the force is applied at Attachment0.
+	 * 
+	 * ![Force applied at the Part's center of mass](https://developer.roblox.com/assets/bltcdb637c5a4b55ef3/VectorForceCenterOfMass.gif)
+	 */
 	ApplyAtCenterOfMass: boolean;
 	/** The strength and direction of the force. */
 	Force: Vector3;
-	/** The [CFrame](https://developer.roblox.com/api-reference/datatype/CFrame "CFrame") in which the force is expressed. */
+	/** This property determines the [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) in which the force is expressed.
+	 * 
+	 * ![VectorForce RelativeTo Demo](https://developer.roblox.com/assets/5ff7c7eeb08361084bffdcb1/VectorForceRelativeTo3.gif)
+	 */
 	RelativeTo: Enum.ActuatorRelativeTo;
 }
 
@@ -10782,7 +10791,7 @@ interface Humanoid extends Instance {
 	 * local Humanoid = route.to.humanoid
 	 * 
 	 * Humanoid:GetPropertyChangedSignal("FloorMaterial"):Connect(function()
-	 *     print("New value for FloorMaterial: " .. Humanoid.FloorMaterial)
+	 *     print("New value for FloorMaterial: " .. tostring(Humanoid.FloorMaterial))
 	 * end)
 	 * ``` 
 	 * 
@@ -20399,6 +20408,12 @@ interface Player extends Instance {
 	 * 
 	 * The username of the friend.
 	 * 
+	 * **DisplayName**
+	 * 
+	 * string
+	 * 
+	 * The [display name](https://developer.roblox.com/en-us/api-reference/property/Player/DisplayName) of the friend.
+	 * 
 	 * **LastOnline**
 	 * 
 	 * string
@@ -20900,6 +20915,12 @@ interface Players extends Instance {
 	 * string
 	 * 
 	 * The friend's username
+	 * 
+	 * DisplayName
+	 * 
+	 * string
+	 * 
+	 * The [display name](https://developer.roblox.com/en-us/api-reference/property/Player/DisplayName) of the friend.
 	 * 
 	 * IsOnline
 	 * 
@@ -23762,11 +23783,16 @@ interface StarterPlayer extends Instance {
 	 * If a Humanoid's name is visible, you can set the display type using [Humanoid.DisplayDistanceType](https://developer.roblox.com/en-us/api-reference/property/Humanoid/DisplayDistanceType).
 	 */
 	NameDisplayDistance: number;
-	/** Setting this property to false would disable loading of emotes that users own when loading avatars. Developers could set the property in Studio directly or through the Game Settings UI.
+	/** This property can only be set in Studio and cannot be set by scripts at runtime, although it can be read by scripts.
 	 * 
-	 * When emote loading is disabled the emotes UI would still work if the developer chooses to use the emotes feature by adding emotes within their game.
+	 * This property determines if user-owned emotes are loaded when loading avatars. Setting this property to false disables loading. Developers can set the property in Studio directly or through the `articles/Game Settings|Game Settings UI`.
 	 * 
-	 * The property would be Standard security and would serialize in the place file.
+	 * When emote loading is disabled, the emotes UI will still work as long as developers choose to use the emotes feature by adding emotes within their game.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   `articles/Avatar Emotes|Avatar Emotes`, an article detailing how to control, customize, and play avatar emotes
 	 */
 	UserEmotesEnabled: boolean;
 }
