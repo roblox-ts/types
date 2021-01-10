@@ -539,7 +539,7 @@ type thread = { readonly LUA_THREAD: never };
 
 declare namespace coroutine {
 	/** Creates a new coroutine, with body f. f must be a Lua function. */
-	function create(f: Function): thread;
+	function create(f: Callback): thread;
 
 	/** Starts or continues the execution of coroutine co. The first time you resume a coroutine, it starts running its body. The values val1, ... are passed as the arguments to the body function. If the coroutine has yielded, resume restarts it; the values val1, ... are passed as the results from the yield. If the coroutine runs without any errors, resume returns true plus any values passed to yield (if the coroutine yields) or any values returned by the body function (if the coroutine terminates). If there is any error, resume returns false plus the error message. */
 	function resume(co: thread, ...params: Array<unknown>): unknown;
@@ -551,7 +551,7 @@ declare namespace coroutine {
 	function status(co: thread): string;
 
 	/** Creates a new coroutine, with body f. f must be a Lua function. Returns a function that resumes the coroutine each time it is called. Any arguments passed to the function behave as the extra arguments to resume. Returns the same values returned by resume, except the first boolean. In case of error, propagates the error. */
-	function wrap<T extends Function>(f: T): T;
+	function wrap<T extends Callback>(f: T): T;
 
 	/** Suspends the execution of the calling coroutine. Any arguments to yield are passed as extra results to resume. */
 	function yield(...params: Array<unknown>): unknown;
@@ -596,7 +596,7 @@ declare function next<T extends ReadonlyArray<any>>(
 declare function next<T>(object: ReadonlyArray<T>, index?: number): LuaTuple<[number, T]>;
 declare function next<T>(object: ReadonlySet<T>, index?: T): LuaTuple<[T, true]>;
 declare function next<K, V>(object: ReadonlyMap<K, V>, index?: K): LuaTuple<[K, V]>;
-declare function next<T>(object: T, index?: keyof T): LuaTuple<[keyof T, T[keyof T]]>;
+declare function next<T extends object>(object: T, index?: keyof T): LuaTuple<[keyof T, T[keyof T]]>;
 declare function next(object: object, index?: unknown): LuaTuple<[unknown, unknown]>;
 
 declare function pairs<T>(object: ReadonlyArray<T>): IterableFunction<LuaTuple<[number, Exclude<T, undefined>]>>;
@@ -604,6 +604,8 @@ declare function pairs<T>(object: ReadonlySet<T>): IterableFunction<LuaTuple<[T,
 declare function pairs<K, V>(
 	object: ReadonlyMap<K, V>,
 ): IterableFunction<LuaTuple<[Exclude<K, undefined>, Exclude<V, undefined>]>>;
-declare function pairs<T>(object: T): IterableFunction<LuaTuple<[keyof T, Exclude<T[keyof T], undefined>]>>;
+declare function pairs<T extends object>(
+	object: T,
+): IterableFunction<LuaTuple<[keyof T, Exclude<T[keyof T], undefined>]>>;
 
 declare function ipairs<T>(object: ReadonlyArray<T>): IterableFunction<LuaTuple<[number, Exclude<T, undefined>]>>;
