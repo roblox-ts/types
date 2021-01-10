@@ -1435,11 +1435,11 @@ interface Plugin extends Instance {
 	/** Opens the context help window to the wiki page that `url` links to. */
 	OpenWikiPage(this: Plugin, url: string): void;
 	/** Pauses a sound that was played via [Plugin:PlaySound](https://developer.roblox.com/en-us/api-reference/function/Plugin/PlaySound). */
-	PauseSound(this: Plugin, soundChannel: Sound): void;
+	PauseSound(this: Plugin, sound: Sound): void;
 	/** PlaySound allows you to play a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) object regardless if the game is running or not. */
-	PlaySound(this: Plugin, soundChannel: Sound, normalizedTimePosition?: number): void;
+	PlaySound(this: Plugin, sound: Sound, normalizedTimePosition?: number): void;
 	/** Resumes a sound that was previously being played (via [Plugin:PlaySound](https://developer.roblox.com/en-us/api-reference/function/Plugin/PlaySound)). */
-	ResumeSound(this: Plugin, soundChannel: Sound): void;
+	ResumeSound(this: Plugin, sound: Sound): void;
 	/** Opens an upload window for the user's current selection. */
 	SaveSelectedToRoblox(this: Plugin): void;
 	/** Activates the specified Roblox Studio tool.  
