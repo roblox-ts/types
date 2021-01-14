@@ -278,13 +278,13 @@ declare namespace Enum {
 
 		export const Debug: Debug;
 
-		export interface Infomation {
-			Name: "Infomation";
+		export interface Information {
+			Name: "Information";
 			Value: 2;
 			EnumType: EnumType<AnalyticsLogLevel>;
 		}
 
-		export const Infomation: Infomation;
+		export const Information: Information;
 
 		export interface Warning {
 			Name: "Warning";
@@ -312,7 +312,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<AnalyticsLogLevel>
 	}
-	export type AnalyticsLogLevel = AnalyticsLogLevel.Trace | AnalyticsLogLevel.Debug | AnalyticsLogLevel.Infomation | AnalyticsLogLevel.Warning | AnalyticsLogLevel.Error | AnalyticsLogLevel.Fatal;
+	export type AnalyticsLogLevel = AnalyticsLogLevel.Trace | AnalyticsLogLevel.Debug | AnalyticsLogLevel.Information | AnalyticsLogLevel.Warning | AnalyticsLogLevel.Error | AnalyticsLogLevel.Fatal;
 	export namespace AnalyticsProgressionStatus {
 		export interface Default {
 			Name: "Default";
@@ -485,6 +485,66 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AppShellActionType>
 	}
 	export type AppShellActionType = AppShellActionType.None | AppShellActionType.OpenApp | AppShellActionType.TapChatTab | AppShellActionType.TapConversationEntry | AppShellActionType.TapAvatarTab | AppShellActionType.ReadConversation | AppShellActionType.TapGamePageTab | AppShellActionType.TapHomePageTab | AppShellActionType.GamePageLoaded | AppShellActionType.HomePageLoaded | AppShellActionType.AvatarEditorPageLoaded;
+	export namespace AppShellFeature {
+		export interface None {
+			Name: "None";
+			Value: 0;
+			EnumType: EnumType<AppShellFeature>;
+		}
+
+		export const None: None;
+
+		export interface Chat {
+			Name: "Chat";
+			Value: 1;
+			EnumType: EnumType<AppShellFeature>;
+		}
+
+		export const Chat: Chat;
+
+		export interface AvatarEditor {
+			Name: "AvatarEditor";
+			Value: 2;
+			EnumType: EnumType<AppShellFeature>;
+		}
+
+		export const AvatarEditor: AvatarEditor;
+
+		export interface GamePage {
+			Name: "GamePage";
+			Value: 3;
+			EnumType: EnumType<AppShellFeature>;
+		}
+
+		export const GamePage: GamePage;
+
+		export interface HomePage {
+			Name: "HomePage";
+			Value: 4;
+			EnumType: EnumType<AppShellFeature>;
+		}
+
+		export const HomePage: HomePage;
+
+		export interface More {
+			Name: "More";
+			Value: 5;
+			EnumType: EnumType<AppShellFeature>;
+		}
+
+		export const More: More;
+
+		export interface Landing {
+			Name: "Landing";
+			Value: 6;
+			EnumType: EnumType<AppShellFeature>;
+		}
+
+		export const Landing: Landing;
+
+		export function GetEnumItems(this: defined): Array<AppShellFeature>
+	}
+	export type AppShellFeature = AppShellFeature.None | AppShellFeature.Chat | AppShellFeature.AvatarEditor | AppShellFeature.GamePage | AppShellFeature.HomePage | AppShellFeature.More | AppShellFeature.Landing;
 	export namespace AppUpdateStatus {
 		export interface Unknown {
 			Name: "Unknown";

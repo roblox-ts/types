@@ -312,6 +312,9 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	BaseWrap: BaseWrap;
 	CatalogPages: CatalogPages;
 	DataModel: DataModel;
+	DataStore: DataStore;
+	DataStoreKeyInfo: DataStoreKeyInfo;
+	DataStoreKeyPages: DataStoreKeyPages;
 	DataStorePages: DataStorePages;
 	EmotesPages: EmotesPages;
 	FriendPages: FriendPages;
@@ -6929,6 +6932,20 @@ interface SpecialMesh extends FileMesh {
 	MeshType: Enum.MeshType;
 }
 
+interface DataStoreKeyInfo extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreKeyInfo: unique symbol;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly KeyName: string;
+}
+
 /** **DataStoreService** exposes methods for getting [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) and [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) objects. Data stores can only be accessed by game servers, so you can only use **DataStoreService** within a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or a [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) that is used by a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
  * 
  * Using Data Stores in Studio
@@ -7812,6 +7829,20 @@ interface GlobalDataStore extends Instance {
 		key: string,
 		transformFunction: (oldValue: O | undefined) => R,
 	): R extends undefined ? O | undefined : R;
+}
+
+interface DataStore extends GlobalDataStore {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataStore: unique symbol;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	ListKeysAsync(this: DataStore, prefix?: string, pageSize?: number): Instance | undefined;
 }
 
 /** A **OrderedDataStore** is essentially a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) with the exception that stored values must be **positive integers**. It exposes a method `OrderedDataStore/GetSortedAsync|GetSortedAsync()` which allows inspection of the entries in sorted order using a [DataStorePages](https://developer.roblox.com/en-us/api-reference/class/DataStorePages) object.
@@ -19452,6 +19483,16 @@ interface CatalogPages extends Pages {
 	 * @deprecated
 	 */
 	readonly _nominal_CatalogPages: unique symbol;
+}
+
+interface DataStoreKeyPages extends Pages {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreKeyPages: unique symbol;
 }
 
 /** A special type of [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object whose pages contain key/value pairs from an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore). For this object, `Pages/GetCurrentPage|GetCurrentPage()` returns an array of tables, each containing keys named **key** and **value**; these reflect the key/value pair data. */
