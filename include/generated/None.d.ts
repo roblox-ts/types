@@ -909,7 +909,7 @@ interface Instance {
 	 * end)
 	 * ```
 	 */
-	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance) => void>;
+	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance | undefined) => void>;
 	/** Attributes are not currently enabled, so this API member may have no effect, emit a warning or raise an error. Do not use it in new work.
 	 * 
 	 * This event fires whenever an attribute is changed on the instance. This includes when an attribute is set to nil. The name of the attribute that has been changed is passed to the connected function.
@@ -1419,15 +1419,15 @@ interface AnimationTrack extends Instance {
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 */
 	readonly WeightCurrent: number;
-	/** When weight is set in an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) it does not change instantaneously but moves from WeightCurrent to [AnimationTrack.WeightTarget](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/WeightTarget). The time it takes to do this is determined by the fadeTime parameter given when the animation is played, or the weight is adjusted.
+	/** When weight is set in an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) it does not change instantaneously but moves from \`\`AnimationTrack/WeightCurrent\` to WeightTarget. The time it takes to do this is determined by the fadeTime parameter given when the animation is played, or the weight is adjusted.
 	 * 
-	 * WeightCurrent can be checked against [AnimationTrack.WeightTarget](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/WeightTarget) to see if the desired weight has been reached. Note that these values should not be checked for equality with the == operator, as both of these values are floats. To see if WeightCurrent has reached the target weight, it is recommended to see if the distance between those values is sufficiently small (see code sample below).
+	 * WeightCurrent can be checked against this property to see if the desired weight has been reached. To see if WeightCurrent has reached the target weight, it is recommended to see if the distance between those values is sufficiently small (see the `WeightCurrent and WeightTarget` code sample below).
 	 * 
-	 * The animation weighting system is used to determine how [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack)s playing at the same priority are blended together. The default weight is one, and no movement will be visible on an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) with a weight of zero. The pose that is shown at any point in time is determined by the weighted average of all the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s and the WeightCurrent of each [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack). See below for an example of animation blending in practice.
+	 * Note that these values should not be checked for equality with the == operator, as both of these values are floats.
 	 * 
-	 * ![Animation Weight Blending](https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png)
+	 * The animation weighting system is used to determine how [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) playing at the same priority are blended together. The default weight is one, and no movement will be visible on an AnimationTrack with a weight of zero. The pose that is shown at any point in time is determined by the weighted average of all the [Poses](https://developer.roblox.com/en-us/api-reference/class/Pose) and the WeightCurrent of each AnimationTrack.
 	 * 
-	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/Priority) is more suitable.
+	 * In most cases blending animations is not required and using \`AnimationTrack/Priority\` is more suitable.
 	 */
 	readonly WeightTarget: number;
 	/** This function changes the [AnimationTrack.Speed](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/Speed) of an animation. A positive value for speed plays the animation forward, a negative one plays it backwards, and 0 pauses it.
@@ -6986,14 +6986,14 @@ interface DataStoreService extends Instance {
  * 
  * Beyond creating a bit of a mess, objects that are no longer required can use up system memory and cause the game to run slower over time. For this reason it is always advised to run the [Instance:Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) function on objects you no longer need. However in many cases an object may have a specific period of utility after which it needs to be destroyed.
  * 
- * Take the example of projectile that has just been thrown. On first thought, it could be cleaned up using:
+ * Take the example of projectile that has just been thrown. It could be cleaned up using:
  * 
  * ```lua
  * wait(3)
  * projectile:Destroy()
  * ``` 
  * 
- * However there are a number of issues with this approach. Firstly, it requires yielding the code with a wait, which is not always desirable. Secondly, before the 3 seconds have elapsed the object may have already been destroyed (for example, if it reached [Workspace.FallenPartsDestroyHeight](https://developer.roblox.com/en-us/api-reference/property/Workspace/FallenPartsDestroyHeight)). In this case, the code would error as it tries to destroy an item that has already been destroyed. One answer may be:
+ * However there are a number of issues with this approach. Firstly, it requires yielding the code with a wait, which is not always desirable. Secondly, before the 3 seconds have elapsed the object may have already been destroyed (for example, if it reached [Workspace.FallenPartsDestroyHeight](https://developer.roblox.com/en-us/api-reference/property/Workspace/FallenPartsDestroyHeight)).
  * 
  * ```lua
  * delay(3, function()
@@ -16515,7 +16515,7 @@ interface MarketplaceService extends Instance {
 	): void;
 	/** PromptPurchase is used to prompt a player to purchase an item with the given `assetId`. Below is a screenshot of the purchase dialogue that appears when this function is called.
 	 * 
-	 * ![The purchase dialogue triggered by PromptPurchase](https://developer.roblox.com/assets/blt366e027107d36226/PromptPurchase.jpg)
+	 * ![The purchase dialogue triggered by PromptPurchase](https://developer.roblox.com/assets/blta4a37bbddfe4e644/PurchasePrompt.png)
 	 * 
 	 * The above dialogue was triggered using the following:
 	 * 
@@ -20406,7 +20406,7 @@ interface Player extends Instance {
 	 * This is useful when determining whether a player's appearance has loaded after they first join the game, which can be tracked using the [Players.PlayerAdded](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerAdded) event.
 	 */
 	HasAppearanceLoaded(this: Player): boolean;
-	/** The Kick [Player](https://developer.roblox.com/en-us/api-reference/class/Player) method allows a game to gracefully disconnect a client from the game and optionally provide a message to the disconnected player. This is useful for moderating abusive players. When used in conjunction with a `DataStore`, it is possible to create ban lists with expiration dates. Only allow specific whitelisted users whom you trust to trigger this method on other players.
+	/** The Kick [Player](https://developer.roblox.com/en-us/api-reference/class/Player) method allows a game to gracefully disconnect a client from the game and optionally provide a message to the disconnected player. This is useful for moderating abusive players. When used in conjunction with a [DataStore](https://developer.roblox.com/en-us/api-reference/class/DataStore), it is possible to create ban lists with expiration dates. Only allow specific whitelisted users whom you trust to trigger this method on other players.
 	 * 
 	 * When used from a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), only the local player's client can be kicked.
 	 * 
