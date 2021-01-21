@@ -145,7 +145,6 @@ const PLUGIN_ONLY_CLASSES = new Set([
 	"RenderingTest",
 	"RenderSettings",
 	"RobloxPluginGuiService",
-	"ScriptContext",
 	"ScriptDebugger",
 	"Selection",
 	"StatsItem",
