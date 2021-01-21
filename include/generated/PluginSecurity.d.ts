@@ -16,7 +16,6 @@ interface Services {
 	PluginGuiService: PluginGuiService;
 	RenderSettings: RenderSettings;
 	RobloxPluginGuiService: RobloxPluginGuiService;
-	ScriptContext: ScriptContext;
 	Selection: Selection;
 	Studio: Studio;
 	StudioData: StudioData;
@@ -2128,7 +2127,6 @@ interface RunService extends Instance {
 	Stop(this: RunService): void;
 }
 
-/** This service controls all [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) objects. Most of the properties and methods of this service are locked for internal use, however you may use the [ScriptContext.ScriptsDisabled](https://developer.roblox.com/en-us/api-reference/property/ScriptContext/ScriptsDisabled) property to disable all scripts from a thread with normal security access. */
 interface ScriptContext extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -2137,20 +2135,8 @@ interface ScriptContext extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ScriptContext: unique symbol;
-	/** Sets whether [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) objects run their code. Scripts that are already running won't stop running.Sets whether [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) objects run their code. Scripts that are already running won't stop running. *
-	 * Tags: NotReplicated
-	 */
-	readonly ScriptsDisabled: boolean;
-	/** Creates a [CoreScript](https://developer.roblox.com/en-us/api-reference/class/CoreScript) linked to a .lua file inside of the `content/scripts` folder of Roblox Studio's directory. */
-	AddCoreScriptLocal(this: ScriptContext, name: string, parent: Instance): void;
-	/** [NO DOCUMENTATION] */
-	GetCoverageStats(this: ScriptContext): unknown;
 	/** Limits how long a script is allowed to run without yielding. */
 	SetTimeout(this: ScriptContext, seconds: number): void;
-	/** Fired when an error occurs. */
-	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: LuaSourceContainer) => void>;
-	/** [NO DOCUMENTATION] */
-	readonly ErrorDetailed: RBXScriptSignal<(message: string, stackTrace: string, script: LuaSourceContainer, details: string, securityLevel: number) => void>;
 }
 
 /** A ScriptDebugger is used to handle the debugging of a specific script. It can be retrieved from the [DebuggerManager](https://developer.roblox.com/en-us/api-reference/class/DebuggerManager). */
