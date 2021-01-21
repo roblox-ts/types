@@ -241,6 +241,7 @@ interface CreatableInstances {
 	UITableLayout: UITableLayout;
 	UITextSizeConstraint: UITextSizeConstraint;
 	UnionOperation: UnionOperation;
+	UniversalConstraint: UniversalConstraint;
 	Vector3Value: Vector3Value;
 	VectorForce: VectorForce;
 	VehicleController: VehicleController;
@@ -315,7 +316,9 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DataStore: DataStore;
 	DataStoreKeyInfo: DataStoreKeyInfo;
 	DataStoreKeyPages: DataStoreKeyPages;
+	DataStoreKeyVersionInfo: DataStoreKeyVersionInfo;
 	DataStorePages: DataStorePages;
+	DataStoreSetOptions: DataStoreSetOptions;
 	EmotesPages: EmotesPages;
 	FriendPages: FriendPages;
 	GlobalDataStore: GlobalDataStore;
@@ -6260,6 +6263,24 @@ interface Torque extends Constraint {
 	Torque: Vector3;
 }
 
+interface UniversalConstraint extends Constraint {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UniversalConstraint: unique symbol;
+	/** Enables the angular limits on rotations around the main axis of Attachment0. */
+	LimitsEnabled: boolean;
+	/**  Maximum angle between main axes of Attchement0 and Attachment1. */
+	MaxAngle: number;
+	/** Radius of the in-game visual. Value in [0, inf). */
+	Radius: number;
+	/** Restitution of the two limits, or how elastic they are. Value in [0, 1]. */
+	Restitution: number;
+}
+
 /** A VectorForce is used to apply a force to a part or assembly of parts. The direction and strength of the force is determined by a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) and can be relative to an attachment on the part, another attachment, or the world coordinate system.
  * 
  * ![VectorForce RelativeTo](https://developer.roblox.com/assets/bltacb3e3255384a7b4/VectorForceRelativeTo3.gif)  
@@ -6946,6 +6967,32 @@ interface DataStoreKeyInfo extends Instance {
 	readonly KeyName: string;
 }
 
+interface DataStoreKeyVersionInfo extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreKeyVersionInfo: unique symbol;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CreatedTime: number;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly UpdatedTime: number;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Version: string;
+	/** [NO DOCUMENTATION] */
+	GetMetadata(this: DataStoreKeyVersionInfo): object;
+	/** [NO DOCUMENTATION] */
+	GetUserIds(this: DataStoreKeyVersionInfo): unknown;
+}
+
 /** **DataStoreService** exposes methods for getting [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) and [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) objects. Data stores can only be accessed by game servers, so you can only use **DataStoreService** within a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or a [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) that is used by a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
  * 
  * Using Data Stores in Studio
@@ -6974,6 +7021,20 @@ interface DataStoreService extends Instance {
 	GetOrderedDataStore(this: DataStoreService, name: string, scope?: string): OrderedDataStore;
 	/** This function returns the number of data store requests that the current place can make based on the given [DataStoreRequestType](https://developer.roblox.com/en-us/api-reference/enum/DataStoreRequestType). Any requests made that exceed this budget are subject to [throttling](https://developer.roblox.com/en-us/api-reference/class/Articles/Datastore Errors). Monitoring and adjusting the frequency of data store requests using this function is recommended. */
 	GetRequestBudgetForRequestType(this: DataStoreService, requestType: CastsToEnum<Enum.DataStoreRequestType>): number;
+}
+
+interface DataStoreSetOptions extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreSetOptions: unique symbol;
+	/** [NO DOCUMENTATION] */
+	GetMetadata(this: DataStoreSetOptions): object;
+	/** [NO DOCUMENTATION] */
+	SetMetadata(this: DataStoreSetOptions, attributes: object): void;
 }
 
 /** The Debris service allows the developer to schedule the removal of the object without yielding any code, through the usage of the [Debris:AddItem](https://developer.roblox.com/en-us/api-reference/function/Debris/AddItem) method.
@@ -7839,6 +7900,10 @@ interface DataStore extends GlobalDataStore {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStore: unique symbol;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	GetVersionAsync(this: DataStore, key: string, version: string): unknown;
 	/** [NO DOCUMENTATION] *
 	 * Tags: Yields
 	 */
@@ -18612,6 +18677,32 @@ interface MeshPart extends TriangleMeshPart {
 	 * --------
 	 * 
 	 * *   `articles/Improving Performance`, an article discussing tips for analyzing and improving game performance
+	This property determines the level of detail that solid-modeled and mesh parts will be shown in and can be set to the possible values of the [RenderFidelity](https://developer.roblox.com/en-us/api-reference/enum/RenderFidelity) enum.
+	 * 
+	 * By default, solid-modeled and mesh parts will always be shown in precise fidelity, no matter how far they are from the game camera. This improves their appearance when viewed from any distance, but if a place has a large number of detailed solid-modeled or mesh parts, it may reduce overall game performance.
+	 * 
+	 * Distance From Camera
+	 * 
+	 * Render Fidelity
+	 * 
+	 * Less than 250 studs
+	 * 
+	 * Highest
+	 * 
+	 * 250-500 studs
+	 * 
+	 * Medium
+	 * 
+	 * 500 or more studs
+	 * 
+	 * Lowest
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   `articles/Improving Performance`, an article discussing tips for analyzing and improving game performance
+	 *
+	 * Tags: NotReplicated
 	 */
 	readonly RenderFidelity: Enum.RenderFidelity;
 	/** The texture applied to the [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart). When this property is set to an empty string, no texture will be applied to the mesh.
