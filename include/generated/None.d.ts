@@ -517,6 +517,8 @@ interface Instance {
 	 * ``` 
 	 * 
 	 * For variants of this function that find ancestors of a specific class, please see [Instance:FindFirstAncestorOfClass](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstAncestorOfClass) and [Instance:FindFirstAncestorWhichIsA](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstAncestorWhichIsA).
+	 * 
+	 * Temporary change
 	 */
 	FindFirstAncestor(this: Instance, name: string): Instance | undefined;
 	/** Returns the first ancestor of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) whose [Instance.ClassName](https://developer.roblox.com/en-us/api-reference/property/Instance/ClassName) is equal to the given className.
@@ -676,23 +678,6 @@ interface Instance {
 	 * instance:GetAttributeChangedSignal("InitialPosition"):Connect(attributeChanged)
 	 * ``` 
 	 * 
-	 * Behavior
-	 * --------
-	 * 
-	 * ### Serialization
-	 * 
-	 * Attributes are serialized when an instance is saved to a file. This means that they will persist between studio sessions and can be assigned a value before a place is running.
-	 * 
-	 * ### Replication
-	 * 
-	 * Attributes are replicated, respecting filtering rules, from server to client. If the server changes an attribute, the clients value will also change. If the client changes the value however, it will not be changed on the server.
-	 * 
-	 * ### Supported Types
-	 * 
-	 * *   Basic Lua primitives: string, number, bool, nil
-	 * *   Roblox atomic types: Vector3, UDim2, NumberSequence, etc…
-	 * *   Advanced types: Instance reference, table.
-	 * 
 	 * See also
 	 * --------
 	 * 
@@ -840,10 +825,14 @@ interface Instance {
 	 * Limitations
 	 * -----------
 	 * 
-	 * *   Names cannot start with Rbx
-	 * *   Names cannot be more than 100 characters long
-	 * *   Values must be a `supported type`  
-	 *     When attempting to set an attribute to an unsupported type, an error will be thrown.
+	 * Naming requirements and restrictions:
+	 * 
+	 * *   Names must only use alphanumeric characters and underscore
+	 * *   No spaces or unique symbols are allowed
+	 * *   Strings must be 100 characters or less
+	 * *   Names are not allowed to start with RBX unless the caller is a Roblox core-script (reserved for Roblox)
+	 * 
+	 * When attempting to set an attribute to an unsupported type, an error will be thrown.
 	 * 
 	 * See also
 	 * --------
@@ -1141,7 +1130,12 @@ interface AnalyticsService extends Instance {
 	 * *   [AnalyticsService:FireInGameEconomyEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireInGameEconomyEvent), triggers an event used to track player actions pertaining to the in-game economy
 	 * *   [AnalyticsService:FireLogEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireLogEvent), triggers an event used to track errors and warnings experienced by players
 	 */
-	FireCustomEvent(this: AnalyticsService, player: Player, eventCategory: string, customData?: any): void;
+	FireCustomEvent(
+		this: AnalyticsService,
+		player: Player | undefined,
+		eventCategory: string,
+		customData?: unknown,
+	): void;
 	/** This function triggers an event used to track player actions pertaining to the in-game economy.
 	 * 
 	 * For example, it should be called to track when players acquire or spend virtual items within the economy like currency.
@@ -1179,7 +1173,17 @@ interface AnalyticsService extends Instance {
 	 * *   [AnalyticsService:FireLogEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireLogEvent), triggers an event used to track errors and warnings experienced by players
 	 * *   [AnalyticsService:FireCustomEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireCustomEvent), triggers an event used to emit a custom event
 	 */
-	FireInGameEconomyEvent(this: AnalyticsService, player: Player, itemName: string, economyAction: CastsToEnum<Enum.AnalyticsEconomyAction>, itemCategory: string, amount: number, currency: string, location?: any, customData?: any): void;
+	FireInGameEconomyEvent(
+		this: AnalyticsService,
+		player: Player | undefined,
+		itemName: string,
+		economyAction: CastsToEnum<Enum.AnalyticsEconomyAction>,
+		itemCategory: string,
+		amount: number,
+		currency: string,
+		location?: unknown,
+		customData?: unknown,
+	): void;
 	/** This function triggers an event used to track errors and warnings experienced by players.
 	 * 
 	 * For example, it could be called to indicate when a function call fails - such as a datastore save or [TeleportService:Teleport](https://developer.roblox.com/en-us/api-reference/function/TeleportService/Teleport). See the example below.
@@ -1225,7 +1229,14 @@ interface AnalyticsService extends Instance {
 	 * *   [AnalyticsService:FirePlayerProgressionEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FirePlayerProgressionEvent), triggers an event used to track player progression through the game
 	 * *   [AnalyticsService:FireCustomEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireCustomEvent), triggers an event used to emit a custom event
 	 */
-	FireLogEvent(this: AnalyticsService, player: Player, logLevel: CastsToEnum<Enum.AnalyticsLogLevel>, message: string, debugInfo?: any, customData?: any): void;
+	FireLogEvent(
+		this: AnalyticsService,
+		player: Player | undefined,
+		logLevel: CastsToEnum<Enum.AnalyticsLogLevel>,
+		message: string,
+		debugInfo?: unknown,
+		customData?: unknown,
+	): void;
 	/** This function triggers an event used to track player progression through the game.
 	 * 
 	 * For example, it should be called when a player starts an in-game tutorial and again that player finishes the tutorial. Another example (see below) includes tracking when a player gains experience, collects objects, and levels up.
@@ -1271,7 +1282,15 @@ interface AnalyticsService extends Instance {
 	 * *   [AnalyticsService:FireLogEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireLogEvent), triggers an event used to track errors and warnings experienced by players
 	 * *   [AnalyticsService:FireCustomEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireCustomEvent), triggers an event used to emit a custom event
 	 */
-	FirePlayerProgressionEvent(this: AnalyticsService, player: Player, category: string, progressionStatus: CastsToEnum<Enum.AnalyticsProgressionStatus>, location?: any, statistics?: any, customData?: any): void;
+	FirePlayerProgressionEvent(
+		this: AnalyticsService,
+		player: Player | undefined,
+		category: string,
+		progressionStatus: CastsToEnum<Enum.AnalyticsProgressionStatus>,
+		location?: unknown,
+		statistics?: unknown,
+		customData?: unknown,
+	): void;
 }
 
 /** An object that references an animation asset (AnimationId) which can be loaded by a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) or [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController)
@@ -1316,6 +1335,8 @@ interface Animation extends Instance {
 	 * ``` 
 	 * 
 	 * Note, the animation will need to be loaded onto an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) in order to play it.
+	 * 
+	 * _EDITT_
 	 */
 	AnimationId: string;
 }
@@ -1423,15 +1444,15 @@ interface AnimationTrack extends Instance {
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 */
 	readonly WeightCurrent: number;
-	/** When weight is set in an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) it does not change instantaneously but moves from \`\`AnimationTrack/WeightCurrent\` to WeightTarget. The time it takes to do this is determined by the fadeTime parameter given when the animation is played, or the weight is adjusted.
+	/** When weight is set in an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) it does not change instantaneously but moves from WeightCurrent to [AnimationTrack.WeightTarget](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/WeightTarget). The time it takes to do this is determined by the fadeTime parameter given when the animation is played, or the weight is adjusted.
 	 * 
-	 * WeightCurrent can be checked against this property to see if the desired weight has been reached. To see if WeightCurrent has reached the target weight, it is recommended to see if the distance between those values is sufficiently small (see the `WeightCurrent and WeightTarget` code sample below).
+	 * WeightCurrent can be checked against [AnimationTrack.WeightTarget](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/WeightTarget) to see if the desired weight has been reached. Note that these values should not be checked for equality with the == operator, as both of these values are floats. To see if WeightCurrent has reached the target weight, it is recommended to see if the distance between those values is sufficiently small (see code sample below).
 	 * 
-	 * Note that these values should not be checked for equality with the == operator, as both of these values are floats.
+	 * The animation weighting system is used to determine how [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack)s playing at the same priority are blended together. The default weight is one, and no movement will be visible on an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) with a weight of zero. The pose that is shown at any point in time is determined by the weighted average of all the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s and the WeightCurrent of each [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack). See below for an example of animation blending in practice.
 	 * 
-	 * The animation weighting system is used to determine how [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) playing at the same priority are blended together. The default weight is one, and no movement will be visible on an AnimationTrack with a weight of zero. The pose that is shown at any point in time is determined by the weighted average of all the [Poses](https://developer.roblox.com/en-us/api-reference/class/Pose) and the WeightCurrent of each AnimationTrack.
+	 * ![Animation Weight Blending](https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png)
 	 * 
-	 * In most cases blending animations is not required and using \`AnimationTrack/Priority\` is more suitable.
+	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 */
 	readonly WeightTarget: number;
 	/** This function changes the [AnimationTrack.Speed](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/Speed) of an animation. A positive value for speed plays the animation forward, a negative one plays it backwards, and 0 pauses it.
@@ -4011,21 +4032,17 @@ interface Beam extends Instance {
 	 * Beam texture behavior
 	 * ---------------------
 	 * 
-	 * ### Static
+	 * How a [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s texture scales or repeats is dependent on the TextureMode property.
 	 * 
-	 * Static mode is not used for beams and behaves identical to Wrap.
+	 * When TextureMode is 'Wrap' the size of the repeating texture corresponds to [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength) in studs. For an example of this see the image below:
 	 * 
-	 * ### Stretch
+	 * ![enter image description here](https://developer.roblox.com/assets/blt92742bad209f4935/beamTexture.gif)
 	 * 
-	 * The texture is stretched relative to the beam's length, in studs, making the texture repeat based off [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength). The size is determined by the beam's length over [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength).
+	 * Note, the 'Static' [TextureMode](https://developer.roblox.com/en-us/api-reference/enum/TextureMode) type is not used for [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)s and therefore behaves identically to 'Wrap'.
 	 * 
-	 * ![](https://developer.roblox.com/assets/blt931973c484027dba/textureMode_strech.jpg)
+	 * When [Beam.TextureMode](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureMode) is set to 'Stretch' however the texture will be stretched relative to the beam's length. The size of the texture relative to the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s length will be one over the [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength). In practice, this means the texture will repeat [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength) times. For an example of this see the image below:
 	 * 
-	 * ### Wrap
-	 * 
-	 * The size of the repeating texture corresponds to [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength) in studs.
-	 * 
-	 * ![](https://developer.roblox.com/assets/blt4e94754e188a2359/textureMode_wrap.jpg)
+	 * ![enter image description here](https://developer.roblox.com/assets/blt034506939f5674b3/beamTexture2.gif)
 	 */
 	TextureMode: Enum.TextureMode;
 	/** Determines the speed at which the [Beam.Texture](https://developer.roblox.com/en-us/api-reference/property/Beam/Texture) image moves along the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam).
@@ -7775,9 +7792,7 @@ interface ForceField extends Instance {
  * 
  * You can retrieve the _Game Pass ID_ of any pass through its URL, for example the _Game Pass ID_ of the below pass is 1:
  * 
- * ```lua
- * https://www.roblox.com/game-pass/1/myGamePass
- * ``` 
+ * > [https://www.roblox.com/game-pass/1/myGamePass](https://www.roblox.com/game-pass/1/myGamePass)
  * 
  * Whether you are using an _Asset ID_ or a _Game Pass ID_ determines which API members you can use.
  * 
@@ -8937,7 +8952,7 @@ interface TextButton extends GuiButton {
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property.
 	 */
 	Font: Enum.Font;
-	/** Scales the spacing between lines of text in the TextButton. */
+	/** Controls the height of lines, as a multiple of the font's em square size, by scaling the spacing between lines of text in the [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton). Valid values range from 1.0 to 3.0, defaulting to 1.0. */
 	LineHeight: number;
 	/** This property sets whether a [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton) should be [GuiBase2d.Localize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/Localize) or not.This property sets whether a [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton) should be [GuiBase2d.Localize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/Localize) or not. *
 	 * Tags: Hidden, ReadOnly, NotReplicated
@@ -9125,7 +9140,7 @@ interface TextLabel extends GuiLabel {
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) property.
 	 */
 	Font: Enum.Font;
-	/** Scales the spacing between lines of text in the TextLabel. */
+	/** Controls the height of lines, as a multiple of the font's em square size, by scaling the spacing between lines of text in the [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel). Valid values range from 1.0 to 3.0, defaulting to 1.0. */
 	LineHeight: number;
 	/** This property sets whether a [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel) should be [GuiBase2d.Localize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/Localize) or not.This property sets whether a [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel) should be [GuiBase2d.Localize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/Localize) or not. *
 	 * Tags: Hidden, ReadOnly, NotReplicated
@@ -9400,7 +9415,7 @@ interface TextBox extends GuiObject {
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextBox.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextBox/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextBox.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextBox/TextSize) property.
 	 */
 	Font: Enum.Font;
-	/** Scales the spacing between lines of text in the TextBox. */
+	/** Controls the height of lines, as a multiple of the font's em square size, by scaling the spacing between lines of text in the [TextBox](https://developer.roblox.com/en-us/api-reference/class/TextBox). Valid values range from 1.0 to 3.0, defaulting to 1.0. */
 	LineHeight: number;
 	/** When set to true, text inside a TextBox is able to move onto multiple lines. This also enables players to use the enter key to move onto a new line. */
 	MultiLine: boolean;
@@ -11470,9 +11485,9 @@ interface Humanoid extends Instance {
 	 * This event only fires if the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) is a descendant of the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). If the _Dead_ [HumanoidStateType](https://developer.roblox.com/en-us/api-reference/enum/HumanoidStateType) is disabled it will not fire.
 	 */
 	readonly Died: RBXScriptSignal<() => void>;
-	/** The FallingDown event fires when the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) enters and leaves the _FallingDown_ [HumanoidStateType](https://developer.roblox.com/en-us/api-reference/enum/HumanoidStateType). It indicates whether the humanoid is falling.
+	/** The FallingDown event fires when the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) enters and leaves the _FallingDown_ [HumanoidStateType](https://developer.roblox.com/en-us/api-reference/enum/HumanoidStateType).
 	 * 
-	 * Unless the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) state is otherwise changed, this event will fire with an _active_ value of _false_ as the [Humanoid.GettingUp](https://developer.roblox.com/en-us/api-reference/event/Humanoid/GettingUp) event fires with an _active_ value of _true_.
+	 * The [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) will enter the _GettingUp_ state 3 seconds after the _FallingDown_ state is enabled. When this happens this event will fire with an _active_ value of _false_, and [Humanoid.GettingUp](https://developer.roblox.com/en-us/api-reference/event/Humanoid/GettingUp) will fire with an _active_ value of _true_.
 	 */
 	readonly FallingDown: RBXScriptSignal<(active: boolean) => void>;
 	/** This event fires when the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) enters or leaves the _Freefall_ [HumanoidStateType](https://developer.roblox.com/en-us/api-reference/enum/HumanoidStateType).
@@ -16318,7 +16333,7 @@ interface LocalizationTable extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_LocalizationTable: unique symbol;
-	/** The language that the source material of this LocalizationTable was based on, as a locale-id. */
+	/** The Roblox locale of the input key strings for this table, for example “en-us” or “es-es.” This is typically the “development language” of the game. For a Translator that merges multiple LocalizationTable objects, it's the LocaleId of the Default LocalizationTable. Defaults to “en-us”. */
 	SourceLocaleId: string;
 	/** The GetEntries function returns an array of dictionaries contained in a given `/LocalizationTable`, where each dictionary represents an entry of localization data.
 	 * 
@@ -21585,7 +21600,15 @@ interface ProximityPromptService extends Instance {
 	readonly _nominal_ProximityPromptService: unique symbol;
 	/** When false, no prompts will be shown. */
 	Enabled: boolean;
-	/** The maximum number of ProximityPrompts that will be shown. */
+	/** This property indicates the maximum number of [ProximityPrompts](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt) that will be shown to the user.
+	 * 
+	 * The code block below demonstrates how this limit would be applied:
+	 * 
+	 * ```lua
+	 * local ProximityPromptService = game:GetService("ProximityPromptService")
+	 * ProximityPromptService.MaxPromptsVisible = 2 -- No more than 2 prompts will be shown to the user at any given time
+	 * ```
+	 */
 	MaxPromptsVisible: number;
 	/** This event triggers when the player begins holding down the [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button on a prompt with a non-zero [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration). This can be used to animate a progress bar. */
 	readonly PromptButtonHoldBegan: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
@@ -21629,16 +21652,16 @@ interface RemoteEvent<T extends Callback = Callback> extends Instance {
 	 * *   Data can be passed from server to client through remote events in the same way data is passed from client to server. Any extra information can be passed in as arguments to the [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient) and FireAllClients functions. Note that the FireClient function still needs to pass the player to send the message to as the first argument.
 	 */
 	FireAllClients(this: RemoteEvent, ...args: Parameters<T>): void;
-	/** Fires [RemoteEvent.OnClientEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnClientEvent) for the specified player. Only [connections](https://developer.roblox.com/api-reference/datatype/RBXScriptConnection) in [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s that are running on the specified player's client will fire. This varies from the RemoteFunction class which will queue requests.
+	/** **FireClient** causes [OnClientEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnClientEvent) to be fired in [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s running for the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player). Additional data passed to this function is then provided to OnClientEvent; beware of [limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations) on this data.
 	 * 
-	 * Since this function is used to communicate from the server to the client, it will only work when used in a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
+	 * Since this function is used for communication from server to client, so it will only work when used by a server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script). For client-to-server communication (the other direction), use [FireServer](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireServer). Direct client-to-client communication not possible on Roblox; however, it can be simulated using a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) that relays information received through some other means, such as [FireServer](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireServer).
 	 * 
-	 * The functionality of this function, as well as other [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) and [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) events and functions, is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article.
+	 * See also
+	 * --------
 	 * 
-	 * Notes
-	 * -----
-	 * 
-	 * *   Data can be passed from server to client through remote events in the same way data is passed from client to server. Any extra information can be passed in as arguments to the FireClient and [RemoteEvent:FireAllClients](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireAllClients) functions. Note that the FireClient function still needs to pass the player to send the message to as the first argument.
+	 * *   [FireAllClients](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireAllClients), which works similarly but for all [Player](https://developer.roblox.com/en-us/api-reference/class/Player)
+	 *     
+	 * *   [Remote Functions and Events](https://developer.roblox.com/articles/Remote-Functions-and-Events), which describes related classes, functions and events and also important limitations on the data that can be sent
 	 *     
 	 * *   Sometimes a game will need to send information from one client to another. Roblox does not support direct client to client contact, so any communication must first go through the server. This is typically done using remote events (although functions could be used if desired). First, the sending client would call FireServer. On the server, the function connected to OnServerEvent would hear this firing, and itself would then call FireClient.
 	 */
@@ -25184,7 +25207,7 @@ interface Trail extends Instance {
 	 * 
 	 * This property can also be used alongside the [Trail.MaxLength](https://developer.roblox.com/en-us/api-reference/property/Trail/MaxLength) property, which determines the maximum length trail may be before its oldest segments are erased.
 	 * 
-	 * ![Minimum length of a trail's segment in studs.](https://developer.roblox.com/assets/blt92f5f82000a51022/TrailMinLength.gif)
+	 * ![Minimum length of a trail's segment in studs.](https://developer.roblox.com/assets/5b3d57948fbd570b783cc4df/TrailMinLength.gif)
 	 */
 	MinLength: number;
 	/** The Texture property is the texture to draw on a [Trail](https://developer.roblox.com/en-us/api-reference/class/Trail)'s segments. This property sets which image asset to use for the texture. This is set the same way as textures in other objects, such as [ImageLabel](https://developer.roblox.com/en-us/api-reference/class/ImageLabel) or [ParticleEmitter](https://developer.roblox.com/en-us/api-reference/class/ParticleEmitter). The simplest way to set this property is to use an image uploaded to the Game Explorer (this requires the current place to be Published to Roblox).
@@ -25267,7 +25290,7 @@ interface Translator extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Translator: unique symbol;
-	/** Describes the language that the Translator will translate to, as a locale-id.Describes the language that the Translator will translate to, as a locale-id. *
+	/** The Roblox locale of the output translated strings from this table, for example “en-us” or “es-es.” Defaults to “en-us”.The Roblox locale of the output translated strings from this table, for example “en-us” or “es-es.” Defaults to “en-us”. *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly LocaleId: string;
@@ -25459,18 +25482,19 @@ interface Tween extends TweenBase {
  * 
  * *   number
  * *   bool
- * *   `CFrame`
- * *   `Rect`
- * *   `Color3`
- * *   `UDim`
- * *   `UDim2`
- * *   `Vector2`
- * *   `Vector2int16`
- * *   `Vector3`
+ * *   [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame)
+ * *   [Rect](https://developer.roblox.com/en-us/api-reference/datatype/Rect)
+ * *   [Color3](https://developer.roblox.com/en-us/api-reference/datatype/Color3)
+ * *   [UDim](https://developer.roblox.com/en-us/api-reference/datatype/UDim)
+ * *   [UDim2](https://developer.roblox.com/en-us/api-reference/datatype/UDim2)
+ * *   [Vector2](https://developer.roblox.com/en-us/api-reference/datatype/Vector2)
+ * *   [Vector2int16](https://developer.roblox.com/en-us/api-reference/datatype/Vector2int16)
+ * *   [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3)
+ * *   [EnumItem](https://developer.roblox.com/en-us/api-reference/datatype/EnumItem)
  * 
- * TweenService has just one function, [TweenService:Create](https://developer.roblox.com/en-us/api-reference/function/TweenService/Create), which takes information about the animation and generates the [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) object which can be used to play the animation. Note that [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween)s can animate multiple properties at the same time.
+ * TweenService's constructor function, [TweenService:Create](https://developer.roblox.com/en-us/api-reference/function/TweenService/Create), takes information about the animation and generates the [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) object which can be used to play the animation. Note that `Tweens` can animate multiple properties at the same time.
  * 
- * Details on how the interpolation of the tween is to be carried out are given in the tweenInfo parameter of [TweenService:Create](https://developer.roblox.com/en-us/api-reference/function/TweenService/Create). The `TweenInfo` data type includes a range of properties that can be used to achieve various styles of animation, including reversing and looping [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween)s (see examples).
+ * Details on how the interpolation of the tween is to be carried out are given in the tweenInfo parameter of TweenService:Create(). The `TweenInfo` data type includes a range of properties that can be used to achieve various styles of animation, including reversing and looping `Tweens` (see examples).
  * 
  * Multiple tweens can be played on the same object at the same time, but they must not be animating the same property. If two tweens attempt to modify the same property, the initial tween will be cancelled and overwritten by the most recent tween (see examples).
  * 
@@ -25565,7 +25589,7 @@ interface UIAspectRatioConstraint extends UIConstraint {
 	readonly _nominal_UIAspectRatioConstraint: unique symbol;
 	/** AspectRatio determines the width-to-height ratio to maintain. To flip the ratio to height-to-width, take the inverse (divide 1 by the number or raise to the -1st power). This value must be greater than zero. Below, a white [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) is placed within the a black [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) with two different width-to-height ratios.
 	 * 
-	 * ![A width-to-height ratio of 0.8](https://developer.roblox.com/assets/bltb4147bb1d3de0224/UIAspectRatioConstraint_Ratio_0.8.png)![A width-to-height ratio of 1.25](https://images.contentstack.io/v3/assets/blt309cc8bfb280dcec/blt9874bdf1824f7688/5af8c4f8a3fbc195609fc267/UIAspectRatioConstraint_Ratio_1.25.png)
+	 * ![A width-to-height ratio of 0.8](https://developer.roblox.com/assets/bltb4147bb1d3de0224/UIAspectRatioConstraint_Ratio_0.8.png)![A width-to-height ratio of 1.25](https://developer.roblox.com/assets/blt9874bdf1824f7688/UIAspectRatioConstraint_Ratio_1.25.png)
 	 */
 	AspectRatio: number;
 	/** AspectType determines what limits the maximum size of the element.
@@ -26291,7 +26315,7 @@ interface UserInputService extends Instance {
 	 * 
 	 * As [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) is client-side only, this property can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
-	 * ![On screen keyboard](https://images.contentstack.io/v3/assets/bltc2ad39afa86662c8/bltd883fb9830c26628/5bce5c708e52425c44bf870e/Screenshot_(6).png)
+	 * ![On screen keyboard](https://developer.roblox.com/assets/bltd883fb9830c26628/Screenshot_(6).png)
 	 * 
 	 * See also
 	 * --------
@@ -26317,7 +26341,7 @@ interface UserInputService extends Instance {
 	 * 
 	 * As [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) is client-side only, this property can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
-	 * ![On screen keyboard](https://developer.roblox.com/assets/5bce5dd5edb71a1476d19609/ClientKeyboard.png)
+	 * ![On screen keyboard](https://developer.roblox.com/assets/bltd883fb9830c26628/ClientKeyboard.png)
 	 * 
 	 * See also
 	 * --------
@@ -26468,7 +26492,7 @@ interface UserInputService extends Instance {
 	 * 
 	 * This is fired with an InputObject. The _Position_ property of the input object is a `Enum/InputType|Enum.InputType.Gyroscope` that tracks the total rotation in each local device axis.
 	 * 
-	 * Device rotation can only be tracked on devices with a \`UserInputService/GyroscopeEnabled|gyroscope.
+	 * Device rotation can only be tracked on devices with a [gyroscope](https://developer.roblox.com/en-us/api-reference/property/UserInputService/GyroscopeEnabled).
 	 * 
 	 * As this function fires locally, it can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 */
