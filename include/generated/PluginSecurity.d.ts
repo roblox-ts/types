@@ -468,12 +468,11 @@ interface PluginGui extends LayerCollector {
 	 * The animation above displays the value returned by this function (the left mouse button is pressed in the animation). Notice how the X-value is negative when the mouse is on the left of the window.
 	 */
 	GetRelativeMousePosition(this: PluginGui): Vector2;
-	/** This event fires when the user releases their mouse to stop dragging a [Plugin](https://developer.roblox.com/en-us/api-reference/class/Plugin) GUI during a [PluginDragEvent](https://developer.roblox.com/en-us/api-reference/class/PluginDragEvent).
+	/** **PluginDragDropped** fires when the user releases their mouse over a [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui) during a drag operation started by [Plugin:StartDrag](https://developer.roblox.com/en-us/api-reference/function/Plugin/StartDrag).
 	 * 
 	 * See also
 	 * --------
 	 * 
-	 * *   [Plugin:StartDrag](https://developer.roblox.com/en-us/api-reference/function/Plugin/StartDrag)
 	 * *   [PluginGui.PluginDragEntered](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragEntered)
 	 * *   [PluginGui.PluginDragLeft](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragLeft)
 	 * *   [PluginGui.PluginDragMoved](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragMoved)
@@ -505,12 +504,11 @@ interface PluginGui extends LayerCollector {
 	 * *   [PluginGui.PluginDragDropped](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragDropped)
 	 */
 	readonly PluginDragLeft: RBXScriptSignal<(dragData: object) => void>;
-	/** This event fires when the user's mouse moves within a [Plugin](https://developer.roblox.com/en-us/api-reference/class/Plugin) GUI during a [PluginDragEvent](https://developer.roblox.com/en-us/api-reference/class/PluginDragEvent).
+	/** **PluginDragMoved** fires when the user's mouse moves within a [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui) during a drag operation started by [Plugin:StartDrag](https://developer.roblox.com/en-us/api-reference/function/Plugin/StartDrag).
 	 * 
 	 * See also
 	 * --------
 	 * 
-	 * *   [Plugin:StartDrag](https://developer.roblox.com/en-us/api-reference/function/Plugin/StartDrag)
 	 * *   [PluginGui.PluginDragEntered](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragEntered)
 	 * *   [PluginGui.PluginDragLeft](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragLeft)
 	 * *   [PluginGui.PluginDragDropped](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragDropped)
@@ -1530,9 +1528,12 @@ interface Plugin extends Instance {
 	StopAllSounds(this: Plugin): void;
 	/** Unions the given parts and returns the resulting UnionOperation. */
 	Union(this: Plugin, objects: Array<BasePart>): UnionOperation;
-	/** This function creates a [DockWidgetPluginGui](https://developer.roblox.com/en-us/api-reference/class/DockWidgetPluginGui) using the provided [DockWidgetPluginGuiInfo](https://developer.roblox.com/en-us/api-reference/datatype/DockWidgetPluginGuiInfo).
+	/** **CreateDockWidgetPluginGui** creates a new [DockWidgetPluginGui](https://developer.roblox.com/en-us/api-reference/class/DockWidgetPluginGui) from the given [DockWidgetPluginGuiInfo](https://developer.roblox.com/en-us/api-reference/datatype/DockWidgetPluginGuiInfo). The first parameter, `pluginGuiId`, should be a unique and consistent string. It is used to save the state of the widget's dock state and other internal details.
 	 * 
-	 * See the `Articles/building studio widgets|Building Studio Widgets` tutorial for details on working with custom Studio widgets.
+	 * See also
+	 * --------
+	 * 
+	 * *   `Articles/building studio widgets|Building Studio Widgets`, for more information on working with Studio widgets.
 	 */
 	CreateDockWidgetPluginGui(
 		this: Plugin,
@@ -1914,7 +1915,23 @@ interface PluginToolbarButton extends Instance {
 	 * Tags: NotReplicated
 	 */
 	ClickableWhenViewportHidden: boolean;
-	/** [NO DOCUMENTATION] *
+	/** **Enabled** determines whether a button is clickable in general. When this property is false, the button will be greyed out and unclickable, preventing the user from firing the [Click](https://developer.roblox.com/en-us/api-reference/event/PluginToolbarButton/Click) event. Buttons are enabled by default.
+	 * 
+	 * Plugins should disable their buttons when the button action isn't relevant in the current context. For example, a plugin button that assigns random colors to selected should not be enabled when the selection contains no parts. See the code samples for more information.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [ClickableWhenViewportHidden](https://developer.roblox.com/en-us/api-reference/property/PluginToolbarButton/ClickableWhenViewportHidden), which determines whether a button is clickable when the game view is hidden (and not just in general)
+	**Enabled** determines whether a button is clickable in general. When this property is false, the button will be greyed out and unclickable, preventing the user from firing the [Click](https://developer.roblox.com/en-us/api-reference/event/PluginToolbarButton/Click) event. Buttons are enabled by default.
+	 * 
+	 * Plugins should disable their buttons when the button action isn't relevant in the current context. For example, a plugin button that assigns random colors to selected should not be enabled when the selection contains no parts. See the code samples for more information.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [ClickableWhenViewportHidden](https://developer.roblox.com/en-us/api-reference/property/PluginToolbarButton/ClickableWhenViewportHidden), which determines whether a button is clickable when the game view is hidden (and not just in general)
+	 *
 	 * Tags: NotReplicated
 	 */
 	Enabled: boolean;
