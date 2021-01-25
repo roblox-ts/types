@@ -1,3 +1,40 @@
+interface AnalyticsService extends Instance {
+	FireCustomEvent(
+		this: AnalyticsService,
+		player: Player | undefined,
+		eventCategory: string,
+		customData?: unknown,
+	): void;
+	FireInGameEconomyEvent(
+		this: AnalyticsService,
+		player: Player | undefined,
+		itemName: string,
+		economyAction: CastsToEnum<Enum.AnalyticsEconomyAction>,
+		itemCategory: string,
+		amount: number,
+		currency: string,
+		location?: unknown,
+		customData?: unknown,
+	): void;
+	FireLogEvent(
+		this: AnalyticsService,
+		player: Player | undefined,
+		logLevel: CastsToEnum<Enum.AnalyticsLogLevel>,
+		message: string,
+		debugInfo?: unknown,
+		customData?: unknown,
+	): void;
+	FirePlayerProgressionEvent(
+		this: AnalyticsService,
+		player: Player | undefined,
+		category: string,
+		progressionStatus: CastsToEnum<Enum.AnalyticsProgressionStatus>,
+		location?: unknown,
+		statistics?: unknown,
+		customData?: unknown,
+	): void;
+}
+
 interface AnimationController extends Instance {
 	GetPlayingAnimationTracks(this: AnimationController): Array<AnimationTrack>;
 	LoadAnimation(this: AnimationController, animation: Animation): AnimationTrack;
