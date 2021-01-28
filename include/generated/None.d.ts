@@ -31,6 +31,7 @@ interface Services {
 	ILegacyStudioBridge: ILegacyStudioBridge;
 	InsertService: InsertService;
 	InternalContainer: InternalContainer;
+	IXPService: IXPService;
 	JointsService: JointsService;
 	LanguageService: LanguageService;
 	LegacyStudioBridge: LegacyStudioBridge;
@@ -315,11 +316,14 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	CatalogPages: CatalogPages;
 	DataModel: DataModel;
 	DataStore: DataStore;
+	DataStoreEnumerationPages: DataStoreEnumerationPages;
+	DataStoreInfo: DataStoreInfo;
 	DataStoreKeyInfo: DataStoreKeyInfo;
 	DataStoreKeyPages: DataStoreKeyPages;
 	DataStoreKeyVersionInfo: DataStoreKeyVersionInfo;
 	DataStorePages: DataStorePages;
 	DataStoreSetOptions: DataStoreSetOptions;
+	DataStoreVersionPages: DataStoreVersionPages;
 	EmotesPages: EmotesPages;
 	FriendPages: FriendPages;
 	GlobalDataStore: GlobalDataStore;
@@ -328,6 +332,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	InventoryPages: InventoryPages;
 	Mouse: Mouse;
 	NetworkMarker: NetworkMarker;
+	ObjectVersionInfo: ObjectVersionInfo;
 	OrderedDataStore: OrderedDataStore;
 	OutfitPages: OutfitPages;
 	PackageLink: PackageLink;
@@ -6971,6 +6976,28 @@ interface SpecialMesh extends FileMesh {
 	MeshType: Enum.MeshType;
 }
 
+interface DataStoreInfo extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreInfo: unique symbol;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CreatedTime: number;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly DataStoreName: string;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly UpdatedTime: number;
+}
+
 interface DataStoreKeyInfo extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -7039,6 +7066,7 @@ interface DataStoreService extends Instance {
 	GetOrderedDataStore(this: DataStoreService, name: string, scope?: string): OrderedDataStore;
 	/** This function returns the number of data store requests that the current place can make based on the given [DataStoreRequestType](https://developer.roblox.com/en-us/api-reference/enum/DataStoreRequestType). Any requests made that exceed this budget are subject to [throttling](https://developer.roblox.com/en-us/api-reference/class/Articles/Datastore Errors). Monitoring and adjusting the frequency of data store requests using this function is recommended. */
 	GetRequestBudgetForRequestType(this: DataStoreService, requestType: CastsToEnum<Enum.DataStoreRequestType>): number;
+	ListDataStoresAsync(this: DataStoreService, prefix?: string, pageSize?: number): Instance | undefined;
 }
 
 interface DataStoreSetOptions extends Instance {
@@ -7924,6 +7952,14 @@ interface DataStore extends GlobalDataStore {
 	 * Tags: Yields
 	 */
 	ListKeysAsync(this: DataStore, prefix?: string, pageSize?: number): Instance | undefined;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	ListVersionsAsync(this: DataStore, key: string, sortDirection?: CastsToEnum<Enum.SortDirection>, minDate?: number, maxDate?: number, pageSize?: number): Instance | undefined;
+	/** [NO DOCUMENTATION] *
+	 * Tags: Yields
+	 */
+	RemoveVersionAsync(this: DataStore, key: string, version: string): void;
 }
 
 /** A **OrderedDataStore** is essentially a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) with the exception that stored values must be **positive integers**. It exposes a method `OrderedDataStore/GetSortedAsync|GetSortedAsync()` which allows inspection of the entries in sorted order using a [DataStorePages](https://developer.roblox.com/en-us/api-reference/class/DataStorePages) object.
@@ -12289,6 +12325,16 @@ interface LegacyStudioBridge extends ILegacyStudioBridge {
 	 * @deprecated
 	 */
 	readonly _nominal_LegacyStudioBridge: unique symbol;
+}
+
+interface IXPService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_IXPService: unique symbol;
 }
 
 /** An **InputObject** represents a single user input, such as mouse movement, touches, key presses and more. It is created when an input begins.
@@ -17577,6 +17623,28 @@ interface NoCollisionConstraint extends Instance {
 	Part1: BasePart | undefined;
 }
 
+interface ObjectVersionInfo extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ObjectVersionInfo: unique symbol;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CreatedTime: number;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly IsDeleted: boolean;
+	/** [NO DOCUMENTATION] *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Version: string;
+}
+
 /** A PVInstance is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Model](https://developer.roblox.com/en-us/api-reference/class/Model). The PV in PVInstance stands for _Position-Velocity_. This class has existed since 2005, and while the class itself no longer has any functionality, it is used for adornable objects that can be connected to both BaseParts and Models. */
 interface PVInstance extends Instance {
 	/**
@@ -19592,6 +19660,16 @@ interface CatalogPages extends Pages {
 	readonly _nominal_CatalogPages: unique symbol;
 }
 
+interface DataStoreEnumerationPages extends Pages {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreEnumerationPages: unique symbol;
+}
+
 interface DataStoreKeyPages extends Pages {
 	/**
 	 * **DO NOT USE!**
@@ -19611,6 +19689,16 @@ interface DataStorePages extends Pages<{ key: string; value: unknown }> {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStorePages: unique symbol;
+}
+
+interface DataStoreVersionPages extends Pages {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreVersionPages: unique symbol;
 }
 
 /** FriendPages is a special version of the [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) returned by [Players:GetFriendsAsync](https://developer.roblox.com/en-us/api-reference/function/Players/GetFriendsAsync). The items contained within describe information about a player's friends, and have the following structure:
@@ -19788,6 +19876,8 @@ interface ParticleEmitter extends Instance {
 	 * Also consider using the [ParticleEmitter.VelocityInheritance](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/VelocityInheritance) property set to 1, which may be more appropriate for some effects.
 	 */
 	LockedToPart: boolean;
+	/** [NO DOCUMENTATION] */
+	Orientation: Enum.ParticleOrientation;
 	/** The Rate property determines how many particles are [ParticleEmitter:Emit](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Emit) emit per second while the [ParticleEmitter](https://developer.roblox.com/en-us/api-reference/class/ParticleEmitter) is [ParticleEmitter.Enabled](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Enabled). It is the inverse of frequency - a Rate of 5 means that a particle will be emit every `1/5 = 0.2` seconds. When changed, this property will have no affect on any already emit particles.
 	 * 
 	 * it is important to pick a sensible [ParticleEmitter.Lifetime](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Lifetime) and Rate so that you don't have too many particles being rendered at once. Long lifetimes and high emission rates are a quick way to cause performance issues. If you need many particles, pick a balance of lifetime and rate. To instantly remove any presently emit particles (perhaps ones with absurdly long lifetimes), you can call [ParticleEmitter:Clear](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Clear).

@@ -5733,6 +5733,74 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<IKCollisionsMode>
 	}
 	export type IKCollisionsMode = IKCollisionsMode.NoCollisions | IKCollisionsMode.OtherMechanismsAnchored | IKCollisionsMode.IncludeContactedMechanisms;
+	export namespace IXPLoadingStatus {
+		export interface None {
+			Name: "None";
+			Value: 0;
+			EnumType: EnumType<IXPLoadingStatus>;
+		}
+
+		export const None: None;
+
+		export interface Pending {
+			Name: "Pending";
+			Value: 1;
+			EnumType: EnumType<IXPLoadingStatus>;
+		}
+
+		export const Pending: Pending;
+
+		export interface Initialized {
+			Name: "Initialized";
+			Value: 2;
+			EnumType: EnumType<IXPLoadingStatus>;
+		}
+
+		export const Initialized: Initialized;
+
+		export interface ShutOff {
+			Name: "ShutOff";
+			Value: 3;
+			EnumType: EnumType<IXPLoadingStatus>;
+		}
+
+		export const ShutOff: ShutOff;
+
+		export interface ErrorTimedOut {
+			Name: "ErrorTimedOut";
+			Value: 7;
+			EnumType: EnumType<IXPLoadingStatus>;
+		}
+
+		export const ErrorTimedOut: ErrorTimedOut;
+
+		export interface ErrorConnection {
+			Name: "ErrorConnection";
+			Value: 5;
+			EnumType: EnumType<IXPLoadingStatus>;
+		}
+
+		export const ErrorConnection: ErrorConnection;
+
+		export interface ErrorJsonParse {
+			Name: "ErrorJsonParse";
+			Value: 6;
+			EnumType: EnumType<IXPLoadingStatus>;
+		}
+
+		export const ErrorJsonParse: ErrorJsonParse;
+
+		export interface ErrorInvalidUser {
+			Name: "ErrorInvalidUser";
+			Value: 4;
+			EnumType: EnumType<IXPLoadingStatus>;
+		}
+
+		export const ErrorInvalidUser: ErrorInvalidUser;
+
+		export function GetEnumItems(this: defined): Array<IXPLoadingStatus>
+	}
+	export type IXPLoadingStatus = IXPLoadingStatus.None | IXPLoadingStatus.Pending | IXPLoadingStatus.Initialized | IXPLoadingStatus.ShutOff | IXPLoadingStatus.ErrorTimedOut | IXPLoadingStatus.ErrorConnection | IXPLoadingStatus.ErrorJsonParse | IXPLoadingStatus.ErrorInvalidUser;
 	export namespace InOut {
 		export interface Edge {
 			Name: "Edge";
@@ -9117,6 +9185,42 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<PartType>
 	}
 	export type PartType = PartType.Ball | PartType.Block | PartType.Cylinder;
+	export namespace ParticleOrientation {
+		export interface FacingCamera {
+			Name: "FacingCamera";
+			Value: 0;
+			EnumType: EnumType<ParticleOrientation>;
+		}
+
+		export const FacingCamera: FacingCamera;
+
+		export interface FacingCameraWorldUp {
+			Name: "FacingCameraWorldUp";
+			Value: 1;
+			EnumType: EnumType<ParticleOrientation>;
+		}
+
+		export const FacingCameraWorldUp: FacingCameraWorldUp;
+
+		export interface VelocityParallel {
+			Name: "VelocityParallel";
+			Value: 2;
+			EnumType: EnumType<ParticleOrientation>;
+		}
+
+		export const VelocityParallel: VelocityParallel;
+
+		export interface VelocityPerpendicular {
+			Name: "VelocityPerpendicular";
+			Value: 3;
+			EnumType: EnumType<ParticleOrientation>;
+		}
+
+		export const VelocityPerpendicular: VelocityPerpendicular;
+
+		export function GetEnumItems(this: defined): Array<ParticleOrientation>
+	}
+	export type ParticleOrientation = ParticleOrientation.FacingCamera | ParticleOrientation.FacingCameraWorldUp | ParticleOrientation.VelocityParallel | ParticleOrientation.VelocityPerpendicular;
 	export namespace PathStatus {
 		export interface Success {
 			Name: "Success";
@@ -10809,6 +10913,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<SizeConstraint>
 	}
 	export type SizeConstraint = SizeConstraint.RelativeXY | SizeConstraint.RelativeXX | SizeConstraint.RelativeYY;
+	export namespace SortDirection {
+		export interface Ascending {
+			Name: "Ascending";
+			Value: 0;
+			EnumType: EnumType<SortDirection>;
+		}
+
+		export const Ascending: Ascending;
+
+		export interface Descending {
+			Name: "Descending";
+			Value: 1;
+			EnumType: EnumType<SortDirection>;
+		}
+
+		export const Descending: Descending;
+
+		export function GetEnumItems(this: defined): Array<SortDirection>
+	}
+	export type SortDirection = SortDirection.Ascending | SortDirection.Descending;
 	export namespace SortOrder {
 		export interface LayoutOrder {
 			Name: "LayoutOrder";
