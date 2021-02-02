@@ -542,7 +542,7 @@ declare namespace coroutine {
 	function create(f: Callback): thread;
 
 	/** Starts or continues the execution of coroutine co. The first time you resume a coroutine, it starts running its body. The values val1, ... are passed as the arguments to the body function. If the coroutine has yielded, resume restarts it; the values val1, ... are passed as the results from the yield. If the coroutine runs without any errors, resume returns true plus any values passed to yield (if the coroutine yields) or any values returned by the body function (if the coroutine terminates). If there is any error, resume returns false plus the error message. */
-	function resume(co: thread, ...params: Array<unknown>): LuaTuple<[success: boolean, result: unknown]>;
+	function resume(co: thread, ...params: Array<unknown>): LuaTuple<[success: boolean, ...result: Array<unknown>]>;
 
 	/** Returns the running coroutine. */
 	function running(): thread;
@@ -554,7 +554,7 @@ declare namespace coroutine {
 	function wrap<T extends Callback>(f: T): T;
 
 	/** Suspends the execution of the calling coroutine. Any arguments to yield are passed as extra results to resume. */
-	function yield(...params: Array<unknown>): unknown;
+	function yield(...params: Array<unknown>): LuaTuple<Array<unknown>>;
 }
 
 declare function next<T extends ReadonlyArray<any>>(
