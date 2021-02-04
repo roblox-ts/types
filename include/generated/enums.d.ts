@@ -9365,6 +9365,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<PhysicsSimulationRate>
 	}
 	export type PhysicsSimulationRate = PhysicsSimulationRate.Fixed240Hz | PhysicsSimulationRate.Fixed120Hz | PhysicsSimulationRate.Fixed60Hz;
+	export namespace PhysicsSteppingMethod {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<PhysicsSteppingMethod>;
+		}
+
+		export const Default: Default;
+
+		export interface Fixed {
+			Name: "Fixed";
+			Value: 1;
+			EnumType: EnumType<PhysicsSteppingMethod>;
+		}
+
+		export const Fixed: Fixed;
+
+		export interface Adaptive {
+			Name: "Adaptive";
+			Value: 2;
+			EnumType: EnumType<PhysicsSteppingMethod>;
+		}
+
+		export const Adaptive: Adaptive;
+
+		export function GetEnumItems(this: defined): Array<PhysicsSteppingMethod>
+	}
+	export type PhysicsSteppingMethod = PhysicsSteppingMethod.Default | PhysicsSteppingMethod.Fixed | PhysicsSteppingMethod.Adaptive;
 	export namespace Platform {
 		export interface Windows {
 			Name: "Windows";

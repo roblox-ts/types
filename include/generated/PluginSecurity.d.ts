@@ -909,6 +909,8 @@ interface NetworkSettings extends Instance {
 	 * * * *
 	 */
 	PrintStreamInstanceQuota: boolean;
+	/** [NO DOCUMENTATION] */
+	RandomizeJoinInstanceOrder: boolean;
 	/** ![RenderStreamedRegions in action!](https://developer.roblox.com/assets/blte3c189bb8bdbf8e3/ShowStreamedRegions.png)
 	 * 
 	 * When set to true, regions of space that are being streamed to the client will be outlined in red.  
@@ -1157,6 +1159,8 @@ interface PhysicsSettings extends Instance {
 	AreRegionsShown: boolean;
 	/** [NO DOCUMENTATION] */
 	AreTerrainReplicationRegionsShown: boolean;
+	/** [NO DOCUMENTATION] */
+	readonly AreTimestepsShown: boolean;
 	/** When set to true, parts that aren't aligned on the 1x1x1 grid will be outlined yellow. */
 	AreUnalignedPartsShown: boolean;
 	/** An ancient property that hasn't worked correctly since late 2007.  
@@ -2504,6 +2508,7 @@ interface Studio extends Instance {
 	/** If set to true, deprecated objects will be shown in the Advanced Objects window, as well as the Object Browser. */
 	DeprecatedObjectsShown: boolean;
 	["Disable Accurate Play Solo"]: boolean;
+	readonly DisplayLanguage: string;
 	["Drag Multiple Parts As Single Part"]: boolean;
 	["Enable Autocomplete"]: boolean;
 	["Enable CoreScript Debugger"]: boolean;
@@ -2525,7 +2530,6 @@ interface Studio extends Instance {
 	["Hover Over Color"]: Color3;
 	["Indent Using Spaces"]: boolean;
 	["Keyword Color"]: Color3;
-	Language: Enum.LanguagePreference;
 	["Line Thickness"]: number;
 	readonly LocalAssetsFolder: QDir;
 	/** Specifies whether or not the [Lua Debugger](https://developer.roblox.com/articles/Lua-debugger "Lua Debugger") feature is enabled. */
@@ -2855,8 +2859,6 @@ interface StudioService extends Instance {
 	ConvertToPackageUpload(this: StudioService, uploadUrl: string): void;
 	/** [NO DOCUMENTATION] */
 	CopyToClipboard(this: StudioService, stringToCopy: string): void;
-	/** [NO DOCUMENTATION] */
-	DEPRECATED_ShowPlaceVersionHistoryDialog(this: StudioService): void;
 	/** [NO DOCUMENTATION] */
 	EmitPlacePublishedSignal(this: StudioService): void;
 	/** **GetClassIcon** provides a dictionary that allows the display of a class' Explorer window icon, e.g. calling this function with “Part” returns property values that display the part icon from the Explorer window.
