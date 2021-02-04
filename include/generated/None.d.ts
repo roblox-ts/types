@@ -120,6 +120,8 @@ interface CreatableInstances {
 	CylinderHandleAdornment: CylinderHandleAdornment;
 	CylinderMesh: CylinderMesh;
 	CylindricalConstraint: CylindricalConstraint;
+	DataStoreIncrementOptions: DataStoreIncrementOptions;
+	DataStoreSetOptions: DataStoreSetOptions;
 	Decal: Decal;
 	DepthOfFieldEffect: DepthOfFieldEffect;
 	Dialog: Dialog;
@@ -137,6 +139,7 @@ interface CreatableInstances {
 	Folder: Folder;
 	ForceField: ForceField;
 	Frame: Frame;
+	GetDataStoreOptions: GetDataStoreOptions;
 	Glue: Glue;
 	Handles: Handles;
 	Hat: Hat;
@@ -322,7 +325,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DataStoreKeyPages: DataStoreKeyPages;
 	DataStoreKeyVersionInfo: DataStoreKeyVersionInfo;
 	DataStorePages: DataStorePages;
-	DataStoreSetOptions: DataStoreSetOptions;
 	DataStoreVersionPages: DataStoreVersionPages;
 	EmotesPages: EmotesPages;
 	FriendPages: FriendPages;
@@ -6980,6 +6982,20 @@ interface SpecialMesh extends FileMesh {
 	MeshType: Enum.MeshType;
 }
 
+interface DataStoreIncrementOptions extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreIncrementOptions: unique symbol;
+	/** [NO DOCUMENTATION] */
+	GetMetadata(this: DataStoreIncrementOptions): object;
+	/** [NO DOCUMENTATION] */
+	SetMetadata(this: DataStoreIncrementOptions, attributes: object): void;
+}
+
 interface DataStoreInfo extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -7868,6 +7884,20 @@ interface GamePassService extends Instance {
 	readonly _nominal_GamePassService: unique symbol;
 	/** This item is deprecated. Do not use it for new work. */
 	PlayerHasPass(this: GamePassService, player: Player, gamePassId: number): boolean;
+}
+
+interface GetDataStoreOptions extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_GetDataStoreOptions: unique symbol;
+	/** [NO DOCUMENTATION] */
+	AllScopes: boolean;
+	/** [NO DOCUMENTATION] */
+	SetExperimentalFeatures(this: GetDataStoreOptions, experimentalFeatures: object): void;
 }
 
 /** A **GlobalDataStore** exposes functions for saving and loading data for the [DataStoreService](https://developer.roblox.com/en-us/api-reference/class/DataStoreService).
@@ -17702,6 +17732,7 @@ interface BasePart extends PVInstance {
 	AssemblyLinearVelocity: Vector3;
 	/** The total mass of this part's assembly - collection of parts connected by welds or animated joints. */
 	readonly AssemblyMass: number;
+	/** The root part of this part's assembly - can be changed with RootPriority or Anchored property. */
 	readonly AssemblyRootPart: BasePart | undefined;
 	/** The BackParamA property is relevant when a part's [BasePart.BackSurface](https://developer.roblox.com/en-us/api-reference/property/BasePart/BackSurface) is set to Motor or SteppingMotor and [BasePart.BackSurfaceInput](https://developer.roblox.com/en-us/api-reference/property/BasePart/BackSurfaceInput) is set to Sin. It determines the **amplitude** of the motor's rotational velocity, using the following formula:
 	 * 
@@ -17999,13 +18030,6 @@ interface BasePart extends PVInstance {
 	 * *   `articles/understanding root parts|Understanding Root Parts`, an article documenting what root parts are and how to use them
 	 */
 	RootPriority: number;
-	/** The RotVelocity of a [part](https://developer.roblox.com/en-us/api-reference/class/BasePart) describes how its [BasePart.Orientation](https://developer.roblox.com/en-us/api-reference/property/BasePart/Orientation) is presently changing. In other words, this property describes how the fast part is rotating. The part only rotates if it is not anchored.
-	 * 
-	 * The unit of this property is **radians per second**.
-	 * 
-	 * Using this in conjunction with [AlignOrientation](https://developer.roblox.com/en-us/api-reference/class/AlignOrientation) allows for aligned parts to have matching RotVelocity and Orientation values.
-	 */
-	RotVelocity: Vector3;
 	/** The rotation of the part in degrees for the three axes.
 	 * 
 	 * When setting this property any [Welds](https://developer.roblox.com/en-us/api-reference/class/Weld), [ManualWelds](https://developer.roblox.com/en-us/api-reference/class/ManualWeld), [Snap](https://developer.roblox.com/en-us/api-reference/class/Snap), [Motor](https://developer.roblox.com/en-us/api-reference/class/Motor), and [Motor6Ds](https://developer.roblox.com/en-us/api-reference/class/Motor6D) connected to this part will have the matching [C0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C0)/[C1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C1) property updated and to allow the part to move relative to any other parts it is joined to.
@@ -18058,13 +18082,6 @@ interface BasePart extends PVInstance {
 	 * The [BasePart.LocalTransparencyModifier](https://developer.roblox.com/en-us/api-reference/property/BasePart/LocalTransparencyModifier) is a multiplier to Transparency that is only visible to the local client.
 	 */
 	Transparency: number;
-	/** The Velocity of a part describes how its [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position) is presently changing. The unit of this property is **studs per second**. For reference, the default Roblox character moves at 16 studs per second via [Humanoid.WalkSpeed](https://developer.roblox.com/en-us/api-reference/property/Humanoid/WalkSpeed). The acceleration due to gravity is found in [Workspace.Gravity](https://developer.roblox.com/en-us/api-reference/property/Workspace/Gravity) (by default, -196.2 studs per second).
-	 * 
-	 * Setting the Velocity of an part that is [BasePart.Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) will cause it to act like a conveyor belt. Any object that touches the part will begin to move in accordance with the Velocity.
-	 * 
-	 * Some `/BodyMover` objects will apply forces and thus change the Velocity of a part over time. The simplest of these is a `/BodyForce` which can be used to counteract the acceleration due to gravity on a single part (set the +Y axis of the [BodyForce.Force](https://developer.roblox.com/en-us/api-reference/property/BodyForce/Force) to the product of the mass ([BasePart:GetMass](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetMass)) and the gravity constant).
-	 */
-	Velocity: Vector3;
 	ApplyAngularImpulse(this: BasePart, impulse: Vector3): void;
 	ApplyImpulse(this: BasePart, impulse: Vector3): void;
 	ApplyImpulseAtPosition(this: BasePart, impulse: Vector3, position: Vector3): void;
@@ -18132,6 +18149,7 @@ interface BasePart extends PVInstance {
 	GetRootPart(this: BasePart): BasePart;
 	/** Returns a table of all parts that are physically interacting with this part. If the part itself has CanCollide set to false, then this function will return an empty table UNLESS it has a `TouchInterest` (AKA: Something is connected to its Touched event). Parts that are adjacent but not intersecting are not considered touching. */
 	GetTouchingParts(this: BasePart): Array<BasePart>;
+	GetVelocityAtPosition(this: BasePart, position: Vector3): Vector3;
 	/** Returns true if the object is connected to a part that will hold it in place (eg an [BasePart.Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) part), otherwise returns false. */
 	IsGrounded(this: BasePart): boolean;
 	/** **Deprecated**
@@ -19954,6 +19972,8 @@ interface ParticleEmitter extends Instance {
 	 * ![An example particle texture](https://developer.roblox.com/assets/bltf793b94e42b0b6bf/aura.png)
 	 */
 	Texture: string;
+	/** Slows down the particle simulation speed. 1 is normal speed (behaves as before), 0.5 is half-rate, and 0 means all particles will stop moving. */
+	TimeScale: number;
 	/** The Transparency property determines the transparency of all active particles over their individual lifetimes. It works similar to [ParticleEmitter.Size](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Size) in how it affects particles over time. In terms of rendering, it works like the [BasePart.Transparency](https://developer.roblox.com/en-us/api-reference/property/BasePart/Transparency) of a part on a scale of 0 to 1, where 0 is completely visible (opaque), and a value of 1 is completely invisible (not rendered at all).
 	 * 
 	 * Pictured below are two default [ParticleEmitter](https://developer.roblox.com/en-us/api-reference/class/ParticleEmitter)s. The right emitter has a Transparency set to a [NumberSequence](https://developer.roblox.com/en-us/api-reference/datatype/NumberSequence) that interpolates from 0 to 1.  
