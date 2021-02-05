@@ -18082,6 +18082,13 @@ interface BasePart extends PVInstance {
 	 * The [BasePart.LocalTransparencyModifier](https://developer.roblox.com/en-us/api-reference/property/BasePart/LocalTransparencyModifier) is a multiplier to Transparency that is only visible to the local client.
 	 */
 	Transparency: number;
+	/** The Velocity of a part describes how its [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position) is presently changing. The unit of this property is **studs per second**. For reference, the default Roblox character moves at 16 studs per second via [Humanoid.WalkSpeed](https://developer.roblox.com/en-us/api-reference/property/Humanoid/WalkSpeed). The acceleration due to gravity is found in [Workspace.Gravity](https://developer.roblox.com/en-us/api-reference/property/Workspace/Gravity) (by default, -196.2 studs per second).
+	 * 
+	 * Setting the Velocity of an part that is [BasePart.Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) will cause it to act like a conveyor belt. Any object that touches the part will begin to move in accordance with the Velocity.
+	 * 
+	 * Some `/BodyMover` objects will apply forces and thus change the Velocity of a part over time. The simplest of these is a `/BodyForce` which can be used to counteract the acceleration due to gravity on a single part (set the +Y axis of the [BodyForce.Force](https://developer.roblox.com/en-us/api-reference/property/BodyForce/Force) to the product of the mass ([BasePart:GetMass](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetMass)) and the gravity constant).
+	 */
+	Velocity: Vector3;
 	ApplyAngularImpulse(this: BasePart, impulse: Vector3): void;
 	ApplyImpulse(this: BasePart, impulse: Vector3): void;
 	ApplyImpulseAtPosition(this: BasePart, impulse: Vector3, position: Vector3): void;
