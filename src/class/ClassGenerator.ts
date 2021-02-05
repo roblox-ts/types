@@ -250,7 +250,9 @@ const CLASS_BLACKLIST = new Set([
 	"RbxAnalyticsService",
 ]);
 
-const MEMBER_BLACKLIST = new Map([["Workspace", ["FilteringEnabled"]]]);
+const MEMBER_BLACKLIST = new Map([["Workspace", new Set(["FilteringEnabled"])]]);
+
+const DEPRECATED_ALLOW = new Map([["BasePart", new Set(["Velocity"])]]);
 
 const EXPECTED_EXTRA_MEMBERS = new Map([
 	["Player", ["Name"]],
@@ -1035,14 +1037,14 @@ export class ClassGenerator extends Generator {
 	}
 
 	private shouldGenerateMember(rbxClass: ApiClass, rbxMember: ApiMember) {
-		if (MEMBER_BLACKLIST.get(rbxClass.Name)?.includes(rbxMember.Name)) {
+		if (MEMBER_BLACKLIST.get(rbxClass.Name)?.has(rbxMember.Name)) {
 			return false;
 		}
 
 		return (
 			((this.security === "PluginSecurity" && PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) ||
 				this.canRead(rbxClass.Name, rbxMember)) &&
-			!hasTag(rbxMember, "Deprecated") &&
+			!(hasTag(rbxMember, "Deprecated") && !DEPRECATED_ALLOW.get(rbxClass.Name)?.has(rbxMember.Name)) &&
 			!hasTag(rbxMember, "NotScriptable")
 		);
 	}
