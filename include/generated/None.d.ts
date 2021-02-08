@@ -650,7 +650,7 @@ interface Instance {
 	GetActor(this: Instance): Instance | undefined;
 	/** **Attribute Studio Beta**  
 	 * 
-	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](../../Class/Atmosphere)` Developer Forum post.
+	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](https://devforum.roblox.com/t/new-studio-beta-attributes/984141)` Developer Forum post.
 	 * 
 	 * This function returns the attribute which has been assigned to the given name. If no attribute has been assigned then nil is returned.
 	 * 
@@ -671,7 +671,7 @@ interface Instance {
 	GetAttribute(this: Instance, attribute: string): unknown;
 	/** **Attribute Studio Beta**  
 	 * 
-	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](../../Class/Atmosphere)` Developer Forum post.
+	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](https://devforum.roblox.com/t/new-studio-beta-attributes/984141)` Developer Forum post.
 	 * 
 	 * This function returns an event that behaves exactly like the \`Changed\` event, except that the event only fires when the given attribute changes. It's generally a good idea to use this method instead of a connection to Changed with a function that checks the attribute name. Subsequent calls to this method on the same object with the same attribute name return the same event.
 	 * 
@@ -698,7 +698,7 @@ interface Instance {
 	GetAttributeChangedSignal(this: Instance, attribute: string): RBXScriptSignal;
 	/** **Attribute Studio Beta**  
 	 * 
-	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](../../Class/Atmosphere)` Developer Forum post.
+	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](https://devforum.roblox.com/t/new-studio-beta-attributes/984141)` Developer Forum post.
 	 * 
 	 * This function returns a dictionary of string → variant pairs for each attribute where the string is the name of the attribute and the variant is a non-nil value.
 	 * 
@@ -823,7 +823,9 @@ interface Instance {
 	 * See also, [Instance:IsAncestorOf](https://developer.roblox.com/en-us/api-reference/function/Instance/IsAncestorOf).
 	 */
 	IsDescendantOf(this: Instance, ancestor: Instance): boolean;
-	/** Attributes are not currently enabled, so this API member may have no effect, emit a warning or raise an error. Do not use it in new work.
+	/** **Attribute Studio Beta**  
+	 * 
+	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](https://devforum.roblox.com/t/new-studio-beta-attributes/984141)` Developer Forum post.
 	 * 
 	 * This function sets the attribute with the given name to the given value. If the value given is nil, then the attribute will be removed (since nil is returned by default).
 	 * 
@@ -914,7 +916,9 @@ interface Instance {
 	 * ```
 	 */
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance | undefined) => void>;
-	/** Attributes are not currently enabled, so this API member may have no effect, emit a warning or raise an error. Do not use it in new work.
+	/** **Attribute Studio Beta**  
+	 * 
+	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](https://devforum.roblox.com/t/new-studio-beta-attributes/984141)` Developer Forum post.
 	 * 
 	 * This event fires whenever an attribute is changed on the instance. This includes when an attribute is set to nil. The name of the attribute that has been changed is passed to the connected function.
 	 * 
@@ -1758,7 +1762,11 @@ interface AssetService extends Instance {
 	SavePlaceAsync(this: AssetService): void;
 }
 
-/** The **Atmosphere** object pushes Roblox closer toward realistic environments where sunlight scatters in different ways depending on density and other air particle properties. It simulates real-world “aerial perspective” and lets you control light transmission from the background sky through distant objects. Furthermore, it controls haze and glare conditions, letting you tune a perfect sunset, foggy afternoon, and more.
+/** **Note**  
+ * 
+ * Fog properties are hidden when Lighting contains an `[Atmosphere](Atmosphere)` object.
+ * 
+ * The \*\*Atmosphere\*\* object pushes Roblox closer toward realistic environments where sunlight scatters in different ways depending on density and other air particle properties. It simulates real-world "aerial perspective" and lets you control light transmission from the background sky through distant objects. Furthermore, it controls haze and glare conditions, letting you tune a perfect sunset, foggy afternoon, and more.
  * 
  * See the `articles/Atmosphere|Atmosphere Controls` article for property comparisons and example environments.
  * 
@@ -4040,20 +4048,20 @@ interface Beam extends Instance {
 	TextureLength: number;
 	/** Determines the manner in which the [Beam.Texture](https://developer.roblox.com/en-us/api-reference/property/Beam/Texture) scales and repeats.
 	 * 
-	 * Beam texture behavior
+	 * Beam Texture Behavior
 	 * ---------------------
 	 * 
 	 * How a [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s texture scales or repeats is dependent on the TextureMode property.
 	 * 
 	 * When TextureMode is 'Wrap' the size of the repeating texture corresponds to [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength) in studs. For an example of this see the image below:
 	 * 
-	 * ![enter image description here](https://developer.roblox.com/assets/blt92742bad209f4935/beamTexture.gif)
+	 * ![](https://developer.roblox.com/assets/bltc5844d0ed6c3a747/textureMode_wrap.jpg)
 	 * 
 	 * Note, the 'Static' [TextureMode](https://developer.roblox.com/en-us/api-reference/enum/TextureMode) type is not used for [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)s and therefore behaves identically to 'Wrap'.
 	 * 
 	 * When [Beam.TextureMode](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureMode) is set to 'Stretch' however the texture will be stretched relative to the beam's length. The size of the texture relative to the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s length will be one over the [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength). In practice, this means the texture will repeat [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength) times. For an example of this see the image below:
 	 * 
-	 * ![enter image description here](https://developer.roblox.com/assets/blt034506939f5674b3/beamTexture2.gif)
+	 * ![](https://developer.roblox.com/assets/blt0ab87fba075cad4a/textureMode_strech.jpg)
 	 */
 	TextureMode: Enum.TextureMode;
 	/** Determines the speed at which the [Beam.Texture](https://developer.roblox.com/en-us/api-reference/property/Beam/Texture) image moves along the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam).
@@ -6292,6 +6300,10 @@ interface Torque extends Constraint {
 	Torque: Vector3;
 }
 
+/** A physics constraint that ensures two axes on two rigid bodies remain perpendicular. An example use of this constraint are power transmission between the transmission and rear drive shafts of rear-wheel drive cars, robotics, etc.
+ * 
+ * The constraint makes the secondary axes of two attachments perpendicular. If [LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/UniversalConstraint/LimitsEnabled) then the relative motion of the primary axis of [Attachment1](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment1) is limited by a cone. This cone is formed via [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0) and its primary axis and makes an angle of [MaxAngle](https://developer.roblox.com/en-us/api-reference/property/UniversalConstraint/MaxAngle) with it.
+ */
 interface UniversalConstraint extends Constraint {
 	/**
 	 * **DO NOT USE!**
@@ -6300,13 +6312,35 @@ interface UniversalConstraint extends Constraint {
 	 * @deprecated
 	 */
 	readonly _nominal_UniversalConstraint: unique symbol;
-	/** Enables the angular limits on rotations around the main axis of Attachment0. */
+	/** This property, when enabled, limits the relative angular motion of the primary axes of attachments through a cone constraint. The default value is false.
+	 * 
+	 * The example below demonstrates how developers can enable a cone limit on the relative motion of the primary axes:
+	 * 
+	 * ```lua
+	 * universalConstraint.LimitsEnabled = true
+	 * ```
+	 */
 	LimitsEnabled: boolean;
-	/**  Maximum angle between main axes of Attchement0 and Attachment1. */
+	/** This property determines the max angle, in degrees, of the `UniversalConstraint|UniversalConstraint's` limiting cone. The limiting cone is formed from `UniversalConstraint/Attachment0` and its primary axis. The default value is 45.0 degrees.
+	 * 
+	 * In order for this property to take affect, the constraint's [UniversalConstraint.LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/UniversalConstraint/LimitsEnabled) property must be set to `true`.
+	 * 
+	 * For example, the code snippet below sets LimitsEnabled to true and limits the MaxAngle to 10 degrees:
+	 * 
+	 * ```lua
+	 * universalConstraint.LimitsEnabled = true
+	 * universalConstraint.MaxAngle = 10
+	 * ```
+	 */
 	MaxAngle: number;
-	/** Radius of the in-game visual. Value in [0, inf). */
+	/** This property indicates the visualization radius, in studs, of the constraint when the constraint's details are off and the constraint is selected. The default value is 0.2 studs. */
 	Radius: number;
-	/** Restitution of the two limits, or how elastic they are. Value in [0, 1]. */
+	/** This property determines the restitution of the two limits, or how elastic they are. The value defaults to 0 and can be any floating number in the range \[0, 1\].
+	 * 
+	 * This property only applies when `[UniversalConstraint.LimitsEnabled](LimitsEnabled)` is set to true.
+	 * 
+	 * The elasticity affects the [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment) connected by the [UniversalConstraint](https://developer.roblox.com/en-us/api-reference/class/UniversalConstraint) when they reach the end of the range specified by [UniversalConstraint.MaxAngle](https://developer.roblox.com/en-us/api-reference/property/UniversalConstraint/MaxAngle).
+	 */
 	Restitution: number;
 }
 
@@ -14833,7 +14867,11 @@ interface SurfaceLight extends Light {
 	Range: number;
 }
 
-/** The Lighting service controls the environmental lighting in a game. It includes a range of adjustable properties that can be used to change how lighting appears and interacts with other objects.
+/** **Note**  
+ * 
+ * Fog properties are hidden when Lighting contains an `[Atmosphere](Atmosphere)` object.
+ * 
+ * The Lighting service controls the environmental lighting in a game. It includes a range of adjustable properties that can be used to change how lighting appears and interacts with other objects.
  * 
  * Developers can change the color and appearance of lighting in their place using properties such as [Lighting.Ambient](https://developer.roblox.com/en-us/api-reference/property/Lighting/Ambient) and [Lighting.OutdoorAmbient](https://developer.roblox.com/en-us/api-reference/property/Lighting/OutdoorAmbient).
  * 
@@ -15032,7 +15070,11 @@ interface Lighting extends Instance {
 	 * ```
 	 */
 	ExposureCompensation: number;
-	/** A [Color3](https://developer.roblox.com/en-us/api-reference/datatype/Color3) value giving the hue of [Lighting](https://developer.roblox.com/en-us/api-reference/class/Lighting)'s fog.
+	/** **Note**  
+	 * 
+	 * Fog properties are hidden when Lighting contains an `[Atmosphere](../../Class/Atmosphere)` object.
+	 * 
+	 * A \`DataType/Color3\` value giving the hue of \`Lighting\`'s fog.
 	 * 
 	 * How does fog work?
 	 * ------------------
@@ -15055,7 +15097,11 @@ interface Lighting extends Instance {
 	 * For more information about fog please see this [blog post](https://blog.roblox.com/2011/12/roblox-secrets-revealed-fog-blog/).
 	 */
 	FogColor: Color3;
-	/** The depth from the [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera), in studs, at which fog will be completely opaque.
+	/** **Note**  
+	 * 
+	 * Fog properties are hidden when Lighting contains an `[Atmosphere](../../Class/Atmosphere)` object.
+	 * 
+	 * The depth from the \`Workspace/CurrentCamera\`, in studs, at which fog will be completely opaque.
 	 * 
 	 * How does fog work?
 	 * ------------------
@@ -15080,7 +15126,11 @@ interface Lighting extends Instance {
 	 * For more information about fog please see this [blog post](https://blog.roblox.com/2011/12/roblox-secrets-revealed-fog-blog/).
 	 */
 	FogEnd: number;
-	/** The depth from the [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera), in studs, at which fog begins to show.
+	/** **Note**  
+	 * 
+	 * Fog properties are hidden when Lighting contains an `[Atmosphere](../../Class/Atmosphere)` object.
+	 * 
+	 * The depth from the \`Workspace/CurrentCamera\`, in studs, at which fog begins to show.
 	 * 
 	 * How does fog work?
 	 * ------------------
