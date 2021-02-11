@@ -9051,6 +9051,10 @@ interface TextButton extends GuiButton {
 	 * @deprecated
 	 */
 	readonly _nominal_TextButton: unique symbol;
+	/** Raw string without format information that will be displayed.Raw string without format information that will be displayed. *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Content: string;
 	/** The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property.
@@ -9239,6 +9243,10 @@ interface TextLabel extends GuiLabel {
 	 * @deprecated
 	 */
 	readonly _nominal_TextLabel: unique symbol;
+	/** Raw string without format information that will be displayed.Raw string without format information that will be displayed. *
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Content: string;
 	/** The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) property.
@@ -9507,6 +9515,8 @@ interface TextBox extends GuiObject {
 	readonly _nominal_TextBox: unique symbol;
 	/** Determines whether clicking on the TextBox will clear its [TextBox.Text](https://developer.roblox.com/en-us/api-reference/property/TextBox/Text) property */
 	ClearTextOnFocus: boolean;
+	/** Raw string without format information that will be displayed. */
+	readonly Content: string;
 	/** **CursorPosition** determines the offset of the text cursor in bytes, or -1 if the TextBox is not currently being edited. A value of 1 represents the beginning, the position before the first byte in the [Text](https://developer.roblox.com/en-us/api-reference/property/TextBox/Text) property. When used in conjunction with the [SelectionStart](https://developer.roblox.com/en-us/api-reference/property/TextBox/SelectionStart) property, it is possible to both get and set selected text within a TextBox.
 	 * 
 	 * ![A visual explanation of how CursorPosition works](https://developer.roblox.com/assets/blteef3c173301b0338/TextBox.CursorPosition.jpg)
