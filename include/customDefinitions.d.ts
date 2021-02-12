@@ -22,8 +22,8 @@ interface AnalyticsService extends Instance {
 		logLevel: CastsToEnum<Enum.AnalyticsLogLevel>,
 		message: string,
 		debugInfo?: {
-			errorCode: string;
-			stackTrace: string;
+			errorCode?: string;
+			stackTrace?: string;
 		},
 		customData?: unknown,
 	): void;
