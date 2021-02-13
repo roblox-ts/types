@@ -13,7 +13,7 @@ interface AnalyticsService extends Instance {
 		itemCategory: string,
 		amount: number,
 		currency: string,
-		location?: unknown,
+		location?: { [index: string]: string },
 		customData?: unknown,
 	): void;
 	FireLogEvent(
@@ -21,7 +21,10 @@ interface AnalyticsService extends Instance {
 		player: Player | undefined,
 		logLevel: CastsToEnum<Enum.AnalyticsLogLevel>,
 		message: string,
-		debugInfo?: unknown,
+		debugInfo?: {
+			errorCode?: string;
+			stackTrace?: string;
+		},
 		customData?: unknown,
 	): void;
 	FirePlayerProgressionEvent(
@@ -29,8 +32,8 @@ interface AnalyticsService extends Instance {
 		player: Player | undefined,
 		category: string,
 		progressionStatus: CastsToEnum<Enum.AnalyticsProgressionStatus>,
-		location?: unknown,
-		statistics?: unknown,
+		location?: { [index: string]: string },
+		statistics?: { [index: string]: number },
 		customData?: unknown,
 	): void;
 }
