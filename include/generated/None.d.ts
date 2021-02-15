@@ -1353,8 +1353,6 @@ interface Animation extends Instance {
 	 * ``` 
 	 * 
 	 * Note, the animation will need to be loaded onto an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) in order to play it.
-	 * 
-	 * _EDITT_
 	 */
 	AnimationId: string;
 }
@@ -8329,6 +8327,12 @@ interface GuiObject extends GuiBase2d {
 	 * To understand how AnchorPoint works, try creating a [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) with `Frame/Position` set to `DataType/UDim2|UDim2.new(0.5, 0, 0.5, 0)` (this will set the Frame in the center of its parent object). If you were to change `Frame/Size`, you would notice that the Frame will expand to the right and downward. The very center of the frame would also not be at the exact center of the parent object. However, if you were to set the AnchorPoint to `(0.5, 0.5)`, the Frame would expand in all directions and the center of the frame would indeed be at the parent object's center.
 	 */
 	AnchorPoint: Vector2;
+	/** This property is used to automatically size parent UI objects based on the size of its descendants. Developers can use this property to dynamically add text and other content to a UI object at edit or run time, and the size will adjust to fit that content.
+	 * 
+	 * When AutomaticSize is set to an `Enum/AutomaticSize|Enum.AutomaticSize` value to anything other than None, this UI object may resize depending on its child content.
+	 * 
+	 * For more information on how to use this property and how it works, please see the following article: [How to use AutomaticSize](../../../articles/ui-automaticsize).
+	 */
 	AutomaticSize: Enum.AutomaticSize;
 	/** This property determines the color of a [UI](https://developer.roblox.com/en-us/api-reference/class/GuiObject) background (the fill color).
 	 * 
@@ -9100,7 +9104,14 @@ interface TextButton extends GuiButton {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly TextFits: boolean;
-	/** Changes whether text is resized to fit within the TextButton. */
+	/** **Note**
+	 * 
+	 * Instead of enabling the **TextScaled** property for text objects, it's recommended that developers use [AutomaticSize](https://developer.roblox.com/en-us/api-reference/property/GuiObject/AutomaticSize)
+	 * 
+	 * The TextScaled property determines whether text is scaled so that it fills the entire UI element's space. When this is enabled, \`TextButton/TextSize\` is ignored and \`TextButton/TextWrapped\` is automatically enabled. This property is useful for text-rendering UI elements within \`BillboardGuis\`.
+	 * 
+	 * When this property is used for screen-space UI, it may be desirable to use a [UITextSizeConstraint](https://developer.roblox.com/en-us/api-reference/class/UITextSizeConstraint) to restrict the range of possible text sizes.
+	 */
 	TextScaled: boolean;
 	/** The TextSize property determines the pixel height of one line of rendered text. The unit is in screen pixels, not points (which is used in most document editing programs). The “Legacy” font does not hold this property. */
 	TextSize: number;
@@ -9292,7 +9303,11 @@ interface TextLabel extends GuiLabel {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly TextFits: boolean;
-	/** The TextScaled property determines whether text is scaled so that it fills the entire UI element's space. When this is enabled, [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) is ignored and [TextLabel.TextWrapped](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextWrapped) is automatically enabled. This property is useful for text-rendering UI elements within `BillboardGuis`.
+	/** **Note**
+	 * 
+	 * Instead of enabling the **TextScaled** property for text objects, it's recommended that developers use [AutomaticSize](https://developer.roblox.com/en-us/api-reference/property/GuiObject/AutomaticSize)
+	 * 
+	 * The TextScaled property determines whether text is scaled so that it fills the entire UI element's space. When this is enabled, \`TextLabel/TextSize\` is ignored and \`TextLabel/TextWrapped\` is automatically enabled. This property is useful for text-rendering UI elements within \`BillboardGuis\`.
 	 * 
 	 * When this property is used for screen-space UI, it may be desirable to use a [UITextSizeConstraint](https://developer.roblox.com/en-us/api-reference/class/UITextSizeConstraint) to restrict the range of possible text sizes.
 	 */
@@ -9361,7 +9376,12 @@ interface ScrollingFrame extends GuiObject {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly AbsoluteWindowSize: Vector2;
-	/** [NO DOCUMENTATION] */
+	/** This property is used to automatically size parent UI objects based on the size of its descendants. Developers can use this property to dynamically add text and other content to a UI object at edit or run time, and the size will adjust to fit that content.
+	 * 
+	 * When AutomaticCanvasSize is set to an `Enum/AutomaticSize|Enum.AutomaticSize` value to anything other than None, [ScrollingFrame.CanvasSize](https://developer.roblox.com/en-us/api-reference/property/ScrollingFrame/CanvasSize) may resize depending on its child content.
+	 * 
+	 * For more information on how to use this property and how it works, please see the following article: [How to use AutomaticSize](../../../articles/ui-automaticsize).
+	 */
 	AutomaticCanvasSize: Enum.AutomaticSize;
 	/** The Down image on the vertical scrollbar. Size of this is always ScrollBarThickness by ScrollBarThickness. This is also used as the image on the horizontal scroll bar. */
 	BottomImage: string;
@@ -9572,7 +9592,14 @@ interface TextBox extends GuiObject {
 	TextEditable: boolean;
 	/** Whether the text fits within the constraints of the TextBox. */
 	readonly TextFits: boolean;
-	/** Changes whether text is resized to fit the GUI object that renders it. */
+	/** **Note**
+	 * 
+	 * Instead of enabling the **TextScaled** property for text objects, it's recommended that developers use [AutomaticSize](https://developer.roblox.com/en-us/api-reference/property/GuiObject/AutomaticSize)
+	 * 
+	 * The TextScaled property determines whether text is scaled so that it fills the entire UI element's space. When this is enabled, \`TextBox/TextSize\` is ignored and \`TextBox/TextWrapped\` is automatically enabled. This property is useful for text-rendering UI elements within \`BillboardGuis\`.
+	 * 
+	 * When this property is used for screen-space UI, it may be desirable to use a [UITextSizeConstraint](https://developer.roblox.com/en-us/api-reference/class/UITextSizeConstraint) to restrict the range of possible text sizes.
+	 */
 	TextScaled: boolean;
 	/** The TextSize property determines the pixel height of one line of rendered text. The unit is in screen pixels, not points (which is used in most document editing programs). The “Legacy” font does not hold this property. */
 	TextSize: number;
@@ -9998,6 +10025,12 @@ interface SurfaceGui extends LayerCollector {
 	Face: Enum.NormalId;
 	/** Controls how much the SurfaceGui is influenced by the lighting in the game world. */
 	LightInfluence: number;
+	/** **PixelsPerStud** determines the density of pixels used for each world-space stud to render the contents of the SurfaceGui.
+	 * 
+	 * Higher values will cause the various [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) within to appear smaller if they are kept the same size. Conversely, lower values will cause objects to appear larger. However, if the GuiObjects are scaled proportionally (either by using a [UIScale](https://developer.roblox.com/en-us/api-reference/class/UIScale) or modifying [Size](https://developer.roblox.com/en-us/api-reference/property/GuiObject/Size) or [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) etc.), this property allows for higher definition to be used. It's important to select a value based on how far away you expect a player to view the SurfaceGui. Be mindful that a large pixel density could negatively affect performance if the face of the adorned part is large enough.
+	 * 
+	 * ![Three parts with SurfaceGuis, each including a 200x50 TextLabel within them. From left-to-right, their PixelsPerStud values are 25, 50 and 75. These values cause the apparent size of each TextLabel to change.](https://developer.roblox.com/assets/blt1fd89a45f9144a8b/SurfaceGui.PixelsPerStud.jpg)
+	 */
 	PixelsPerStud: number;
 	SizingMode: Enum.SurfaceGuiSizingMode;
 	/** Sets the distance left clicking starts acting on the surface gui instead of the held tool. If a character is within this distance of the surface gui, then the tool will not activate on click. */
@@ -15085,7 +15118,7 @@ interface Lighting extends Instance {
 	ExposureCompensation: number;
 	/** **Note**  
 	 * 
-	 * Fog properties are hidden when Lighting contains an `[Atmosphere](../../Class/Atmosphere)` object.
+	 * Fog properties are hidden when Lighting contains an `[Atmosphere](https://devforum.roblox.com/t/new-studio-beta-attributes/984141)` object.
 	 * 
 	 * A \`DataType/Color3\` value giving the hue of \`Lighting\`'s fog.
 	 * 
@@ -19968,7 +20001,13 @@ interface ParticleEmitter extends Instance {
 	 * Also consider using the [ParticleEmitter.VelocityInheritance](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/VelocityInheritance) property set to 1, which may be more appropriate for some effects.
 	 */
 	LockedToPart: boolean;
-	/** [NO DOCUMENTATION] */
+	/** This property determines which orientation mode to use for an emitter's particle geometry:
+	 * 
+	 * FaceCamera: standard camera facing billboard quad, default behavior.  
+	 * FaceCameraWorldUp: face the camera, but rotating only on the vertical world-up Y-axis.  
+	 * VelocityParallel: align particles parallel to the direction of their movement.  
+	 * VelocityPerpendicular: align particles perpendicular to the direction of their movement.
+	 */
 	Orientation: Enum.ParticleOrientation;
 	/** The Rate property determines how many particles are [ParticleEmitter:Emit](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Emit) emit per second while the [ParticleEmitter](https://developer.roblox.com/en-us/api-reference/class/ParticleEmitter) is [ParticleEmitter.Enabled](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Enabled). It is the inverse of frequency - a Rate of 5 means that a particle will be emit every `1/5 = 0.2` seconds. When changed, this property will have no affect on any already emit particles.
 	 * 
@@ -20839,15 +20878,19 @@ interface Player extends Instance {
 	IsInGroup(this: Player, groupId: number): boolean;
 	/** The LoadCharacter [Player](https://developer.roblox.com/en-us/api-reference/class/Player) function creates a new character for the player, removing the old one. It also clears the player's [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) and [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui).
 	 * 
-	 * This is useful in cases where you want to reload the character without killing the player, such as when you want to load a new character appearance after changing the player's `Player.CharacterAppearance`.
+	 * This is useful in cases where you want to reload the character without killing the player, such as when you want to load a new character appearance after changing the player's [Player.CharacterAppearance](https://developer.roblox.com/en-us/api-reference/property/Player/CharacterAppearance).
 	 * 
-	 * Note
-	 * ----
+	 * Notes
+	 * -----
 	 * 
 	 * The function is similar to [Player:LoadCharacterBlocking](https://developer.roblox.com/en-us/api-reference/function/Player/LoadCharacterBlocking), but the request is processed asynchronously instead of synchronously. This means other tasks will be able to continue while the character is being loaded, including the rendering of the game and any other tasks. Also, this function can be used in script, while LoadCharacterBlocking cannot.
+	 * 
+	 * After calling LoadCharacter for an individual player, it is not recommended to call it again for the same player until after that player's [Player.CharacterAppearanceLoaded](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterAppearanceLoaded) event has fired.
 	 */
 	LoadCharacter(this: Player): void;
 	/** This function spawns an avatar so it has everything equipped in the passed in [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription).
+	 * 
+	 * After calling LoadCharacterWithHumanoidDescription for an individual player, it is not recommended to call the function again for the same player until after that player's [Player.CharacterAppearanceLoaded](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterAppearanceLoaded) event has fired.
 	 * 
 	 * See also
 	 * --------
@@ -21782,7 +21825,29 @@ interface ProximityPromptService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ProximityPromptService: unique symbol;
-	/** When false, no prompts will be shown. */
+	/** This property determines whether [ProximityPrompts](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt) are enabled, and therefore shown, in-game. When false, no prompts will be shown.
+	 * 
+	 * For example, in a round based system developers could disable prompts at certain points in the game to disable proximity-based interactions.
+	 * 
+	 * ```lua
+	 * -- Server Script 1
+	 * local ProximityPromptService = game:GetService("ProximityPromptService")
+	 * local enablePrompts = workspace.EnablePrompts -- BindableEvent
+	 * 
+	 * -- Connected to a BindableEvent that is fired by another script controlling game logic
+	 * enablePrompts.OnServerEvent:Connect(function(enabled)
+	 *     ProximityPromptService.Enabled = enabled
+	 * end)
+	 * ``` ```lua
+	 * -- Server Script 2
+	 * local enablePrompts = workspace.EnablePrompts -- BindableEvent
+	 * 
+	 * -- Some game event
+	 * enablePrompts:FireServer(false) -- Disable
+	 * wait(5)
+	 * enablePrompts:FireServer(true) -- Re-enable
+	 * ```
+	 */
 	Enabled: boolean;
 	/** This property indicates the maximum number of [ProximityPrompts](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt) that will be shown to the user.
 	 * 
@@ -21798,13 +21863,13 @@ interface ProximityPromptService extends Instance {
 	readonly PromptButtonHoldBegan: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
 	/** This event triggers when the user stops holding down the [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button on a prompt with a non-zero [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration). This can be used to animate a progress bar. */
 	readonly PromptButtonHoldEnded: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
-	/** Fired in local scripts when a prompt is hidden.  Can be used for customization. */
+	/** This event triggers client-side, in connected [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) when a prompt becomes hidden. */
 	readonly PromptHidden: RBXScriptSignal<(prompt: Instance) => void>;
-	/** Fired in local scripts when a prompt is shown.  Can be used for customization. */
+	/** This event triggers client-side, in connected [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript), when a prompt becomes visible. */
 	readonly PromptShown: RBXScriptSignal<(prompt: Instance, inputType: Enum.ProximityPromptInputType) => void>;
-	/** [NO DOCUMENTATION] */
+	/** This event triggers when the player stops holding down the [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button while triggering a prompt. This is intended to allow interactions which require the player to hold a button while something happens in-game. */
 	readonly PromptTriggerEnded: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
-	/** [NO DOCUMENTATION] */
+	/** This event triggers when the player interacts with this prompt. */
 	readonly PromptTriggered: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
 }
 
