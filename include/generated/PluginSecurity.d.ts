@@ -2554,6 +2554,7 @@ interface Studio extends Instance {
 	 * See [PermissionLevelShown](https://developer.roblox.com/en-us/api-reference/enum/PermissionLevelShown) for more info.
 	 */
 	PermissionLevelShown: Enum.PermissionLevelShown;
+	readonly ["Physical Draggers Select Scope By Default"]: boolean;
 	PluginDebuggingEnabled: boolean;
 	/** The directory where local plugins are stored. */
 	PluginsDir: QDir;
