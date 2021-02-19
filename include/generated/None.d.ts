@@ -14,6 +14,7 @@ interface Services {
 	AvatarEditorService: AvatarEditorService;
 	BadgeService: BadgeService;
 	BulkImportService: BulkImportService;
+	CalloutService: CalloutService;
 	Chat: Chat;
 	CollectionService: CollectionService;
 	ContentProvider: ContentProvider;
@@ -243,6 +244,7 @@ interface CreatableInstances {
 	UIPageLayout: UIPageLayout;
 	UIScale: UIScale;
 	UISizeConstraint: UISizeConstraint;
+	UIStroke: UIStroke;
 	UITableLayout: UITableLayout;
 	UITextSizeConstraint: UITextSizeConstraint;
 	UnionOperation: UnionOperation;
@@ -4474,6 +4476,16 @@ interface BulkImportService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_BulkImportService: unique symbol;
+}
+
+interface CalloutService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CalloutService: unique symbol;
 }
 
 /** The Camera object defines a view of the 3D game world.
@@ -9058,10 +9070,6 @@ interface TextButton extends GuiButton {
 	 * @deprecated
 	 */
 	readonly _nominal_TextButton: unique symbol;
-	/** Raw string without format information that will be displayed.Raw string without format information that will be displayed. *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly Content: string;
 	/** The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property.
@@ -9257,10 +9265,6 @@ interface TextLabel extends GuiLabel {
 	 * @deprecated
 	 */
 	readonly _nominal_TextLabel: unique symbol;
-	/** Raw string without format information that will be displayed.Raw string without format information that will be displayed. *
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly Content: string;
 	/** The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) property.
@@ -9538,8 +9542,6 @@ interface TextBox extends GuiObject {
 	readonly _nominal_TextBox: unique symbol;
 	/** Determines whether clicking on the TextBox will clear its [TextBox.Text](https://developer.roblox.com/en-us/api-reference/property/TextBox/Text) property */
 	ClearTextOnFocus: boolean;
-	/** Raw string without format information that will be displayed. */
-	readonly Content: string;
 	/** **CursorPosition** determines the offset of the text cursor in bytes, or -1 if the TextBox is not currently being edited. A value of 1 represents the beginning, the position before the first byte in the [Text](https://developer.roblox.com/en-us/api-reference/property/TextBox/Text) property. When used in conjunction with the [SelectionStart](https://developer.roblox.com/en-us/api-reference/property/TextBox/SelectionStart) property, it is possible to both get and set selected text within a TextBox.
 	 * 
 	 * ![A visual explanation of how CursorPosition works](https://developer.roblox.com/assets/blteef3c173301b0338/TextBox.CursorPosition.jpg)
@@ -22360,67 +22362,10 @@ interface RunService extends Instance {
 	 * ```
 	 */
 	UnbindFromRenderStep(this: RunService, name: string): void;
-	/** The Heartbeat event fires every _frame_, after the physics simulation has completed. The _step_ argument indicates the time that has elapsed since the previous frame.
-	 * 
-	 * As Heartbeat fires every frame, it runs on a **variable frequency**. This means the rate will vary depending on the performance of the machine. If the game is running at 40 FPS, then Heartbeat will fire 40 times per second and the _step_ argument will be roughly 1/40th of a second.
-	 * 
-	 * The _step_ argument can be used to account for the variable frequency of this event, for example:
-	 * 
-	 * ```lua
-	 * local RunService = game:GetService("RunService")
-	 * 
-	 * local RATE_PER_SECOND = 2
-	 * 
-	 * RunService.Heartbeat:Connect(function(step)
-	 *     local increment = RATE_PER_SECOND * step
-	 * end)
-	 * ``` 
-	 * 
-	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
-	 */
-	readonly Heartbeat: RBXScriptSignal<(step: number) => void>;
-	/** The RenderStepped event fires every _frame_, prior to the frame being rendered. The _step_ argument indicates the time that has elapsed since the previous frame.
-	 * 
-	 * RenderStepped does not run in parallel to Roblox's rendering tasks and code connected to RenderStepped must be executed prior to the frame being rendered. This can lead to significant performance issues if RenderStepped is used inappropriately. To avoid this, only use RenderStepped for code that works with the [camera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera) or [character](https://developer.roblox.com/en-us/api-reference/property/Player/Character). Otherwise, [RunService.Heartbeat](https://developer.roblox.com/en-us/api-reference/event/RunService/Heartbeat) should be used.
-	 * 
-	 * As RenderStepped fires every frame, it runs on a **variable frequency**. This means the rate will vary depending on the performance of the machine. If the game is running at 40 FPS, then RenderStepped will fire 40 times per second and the _step_ argument will be roughly 1/40th of a second.
-	 * 
-	 * The _step_ argument can be used to account for the variable frequency of this event, for example:
-	 * 
-	 * ```lua
-	 * local RunService = game:GetService("RunService")
-	 * 
-	 * local RATE_PER_SECOND = 2
-	 * 
-	 * RunService.RenderStepped:Connect(function(step)
-	 *     local increment = RATE_PER_SECOND * step
-	 * end)
-	 * ``` 
-	 * 
-	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
-	 * 
-	 * As RenderStepped is client-side only, it can be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) required by a LocalScript.
-	 */
-	readonly RenderStepped: RBXScriptSignal<(step: number) => void>;
-	/** The Stepped event fires every _frame_ prior to the physics simulation. The _step_ argument indicates the time that has elapsed since the previous frame.
-	 * 
-	 * As Stepped fires every frame, it runs on a **variable frequency**. This means the rate will vary depending on the performance of the machine. If the game is running at 40 FPS, then Stepped will fire 40 times per second and the _step_ argument will be roughly 1/40th of a second.
-	 * 
-	 * The _step_ argument can be used to account for the variable frequency of this event, for example:
-	 * 
-	 * ```lua
-	 * local RunService = game:GetService("RunService")
-	 * 
-	 * local RATE_PER_SECOND = 2
-	 * 
-	 * RunService.Stepped:Connect(function(time, step)
-	 *     local increment = RATE_PER_SECOND * step
-	 * end)
-	 * ``` 
-	 * 
-	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
-	 */
-	readonly Stepped: RBXScriptSignal<(time: number, step: number) => void>;
+	readonly PostSimulation: RBXScriptSignal<(deltaTime: number) => void>;
+	readonly PreAnimation: RBXScriptSignal<(deltaTime: number) => void>;
+	readonly PreRender: RBXScriptSignal<(deltaTime: number) => void>;
+	readonly PreSimulation: RBXScriptSignal<(deltaTime: number) => void>;
 }
 
 /** This service controls all [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) objects. Most of the properties and methods of this service are locked for internal use, however you may use the [ScriptContext.ScriptsDisabled](https://developer.roblox.com/en-us/api-reference/property/ScriptContext/ScriptsDisabled) property to disable all scripts from a thread with normal security access. */
@@ -26246,6 +26191,28 @@ interface UIScale extends UIComponent {
 	readonly _nominal_UIScale: unique symbol;
 	/** The Scale property determines the multiplier used on the parent UI element's [GuiBase2d.AbsoluteSize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteSize). When set to 0.5, an AbsoluteSize of {0, 200}, {0, 50} becomes {0, 100}, {0, 25}. Similarly, when set to 2, such an AbsoluteSize would become {0, 400}, {0, 100}. */
 	Scale: number;
+}
+
+interface UIStroke extends UIComponent {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UIStroke: unique symbol;
+	/** Allows controlling whether this object should be applied to borders or to text. This allows for two stroke objects to be used for different tasks on the same text object. */
+	ApplyStrokeMode: Enum.ApplyStrokeMode;
+	/** The color used for the outline. */
+	Color: Color3;
+	/** Allows disabling the object's effect temporarily. */
+	Enabled: boolean;
+	/** Controls how sharp corners are connected together for the outline. */
+	LineJoinMode: Enum.LineJoinMode;
+	/** The thickness of the outline in pixels. */
+	Thickness: number;
+	/** The transparency of the outline from 0 to 1. */
+	Transparency: number;
 }
 
 interface UnvalidatedAssetService extends Instance {

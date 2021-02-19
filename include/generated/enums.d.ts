@@ -589,6 +589,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AppUpdateStatus>
 	}
 	export type AppUpdateStatus = AppUpdateStatus.Unknown | AppUpdateStatus.NotSupported | AppUpdateStatus.Failed | AppUpdateStatus.NotAvailable | AppUpdateStatus.Available;
+	export namespace ApplyStrokeMode {
+		export interface Contextual {
+			Name: "Contextual";
+			Value: 0;
+			EnumType: EnumType<ApplyStrokeMode>;
+		}
+
+		export const Contextual: Contextual;
+
+		export interface Border {
+			Name: "Border";
+			Value: 1;
+			EnumType: EnumType<ApplyStrokeMode>;
+		}
+
+		export const Border: Border;
+
+		export function GetEnumItems(this: defined): Array<ApplyStrokeMode>
+	}
+	export type ApplyStrokeMode = ApplyStrokeMode.Contextual | ApplyStrokeMode.Border;
 	export namespace AspectType {
 		export interface FitWithinMaxSize {
 			Name: "FitWithinMaxSize";
@@ -8221,6 +8241,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<Limb>
 	}
 	export type Limb = Limb.Head | Limb.Torso | Limb.LeftArm | Limb.RightArm | Limb.LeftLeg | Limb.RightLeg | Limb.Unknown;
+	export namespace LineJoinMode {
+		export interface Round {
+			Name: "Round";
+			Value: 0;
+			EnumType: EnumType<LineJoinMode>;
+		}
+
+		export const Round: Round;
+
+		export interface Bevel {
+			Name: "Bevel";
+			Value: 1;
+			EnumType: EnumType<LineJoinMode>;
+		}
+
+		export const Bevel: Bevel;
+
+		export interface Miter {
+			Name: "Miter";
+			Value: 2;
+			EnumType: EnumType<LineJoinMode>;
+		}
+
+		export const Miter: Miter;
+
+		export function GetEnumItems(this: defined): Array<LineJoinMode>
+	}
+	export type LineJoinMode = LineJoinMode.Round | LineJoinMode.Bevel | LineJoinMode.Miter;
 	export namespace ListDisplayMode {
 		export interface Horizontal {
 			Name: "Horizontal";
@@ -8665,11 +8713,11 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<MeshPartDetailLevel>
 	}
 	export type MeshPartDetailLevel = MeshPartDetailLevel.DistanceBased | MeshPartDetailLevel.Level01 | MeshPartDetailLevel.Level02 | MeshPartDetailLevel.Level03 | MeshPartDetailLevel.Level04;
-	export namespace MeshPartHeads {
+	export namespace MeshPartHeadsAndAccessories {
 		export interface Default {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<MeshPartHeads>;
+			EnumType: EnumType<MeshPartHeadsAndAccessories>;
 		}
 
 		export const Default: Default;
@@ -8677,7 +8725,7 @@ declare namespace Enum {
 		export interface Disabled {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<MeshPartHeads>;
+			EnumType: EnumType<MeshPartHeadsAndAccessories>;
 		}
 
 		export const Disabled: Disabled;
@@ -8685,14 +8733,14 @@ declare namespace Enum {
 		export interface Enabled {
 			Name: "Enabled";
 			Value: 2;
-			EnumType: EnumType<MeshPartHeads>;
+			EnumType: EnumType<MeshPartHeadsAndAccessories>;
 		}
 
 		export const Enabled: Enabled;
 
-		export function GetEnumItems(this: defined): Array<MeshPartHeads>
+		export function GetEnumItems(this: defined): Array<MeshPartHeadsAndAccessories>
 	}
-	export type MeshPartHeads = MeshPartHeads.Default | MeshPartHeads.Disabled | MeshPartHeads.Enabled;
+	export type MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default | MeshPartHeadsAndAccessories.Disabled | MeshPartHeadsAndAccessories.Enabled;
 	export namespace MeshType {
 		export interface Head {
 			Name: "Head";
@@ -12969,6 +13017,106 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<TeleportType>
 	}
 	export type TeleportType = TeleportType.ToPlace | TeleportType.ToInstance | TeleportType.ToReservedServer;
+	export namespace TerrainAcquisitionMethod {
+		export interface None {
+			Name: "None";
+			Value: 0;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const None: None;
+
+		export interface Legacy {
+			Name: "Legacy";
+			Value: 1;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const Legacy: Legacy;
+
+		export interface Template {
+			Name: "Template";
+			Value: 2;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const Template: Template;
+
+		export interface Generate {
+			Name: "Generate";
+			Value: 3;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const Generate: Generate;
+
+		export interface Import {
+			Name: "Import";
+			Value: 4;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const Import: Import;
+
+		export interface Convert {
+			Name: "Convert";
+			Value: 5;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const Convert: Convert;
+
+		export interface EditAddTool {
+			Name: "EditAddTool";
+			Value: 6;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const EditAddTool: EditAddTool;
+
+		export interface EditSeaLevelTool {
+			Name: "EditSeaLevelTool";
+			Value: 7;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const EditSeaLevelTool: EditSeaLevelTool;
+
+		export interface EditReplaceTool {
+			Name: "EditReplaceTool";
+			Value: 8;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const EditReplaceTool: EditReplaceTool;
+
+		export interface RegionFillTool {
+			Name: "RegionFillTool";
+			Value: 9;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const RegionFillTool: RegionFillTool;
+
+		export interface RegionPasteTool {
+			Name: "RegionPasteTool";
+			Value: 10;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const RegionPasteTool: RegionPasteTool;
+
+		export interface Other {
+			Name: "Other";
+			Value: 11;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const Other: Other;
+
+		export function GetEnumItems(this: defined): Array<TerrainAcquisitionMethod>
+	}
+	export type TerrainAcquisitionMethod = TerrainAcquisitionMethod.None | TerrainAcquisitionMethod.Legacy | TerrainAcquisitionMethod.Template | TerrainAcquisitionMethod.Generate | TerrainAcquisitionMethod.Import | TerrainAcquisitionMethod.Convert | TerrainAcquisitionMethod.EditAddTool | TerrainAcquisitionMethod.EditSeaLevelTool | TerrainAcquisitionMethod.EditReplaceTool | TerrainAcquisitionMethod.RegionFillTool | TerrainAcquisitionMethod.RegionPasteTool | TerrainAcquisitionMethod.Other;
 	export namespace TextFilterContext {
 		export interface PublicChat {
 			Name: "PublicChat";
