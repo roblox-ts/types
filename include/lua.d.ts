@@ -535,7 +535,15 @@ declare namespace table {
 	function sort<T>(t: Array<T>, comp?: (a: T, b: T) => boolean): void;
 }
 
-type thread = { readonly LUA_THREAD: never };
+type thread = {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_thread: unique symbol;
+};
 
 declare namespace coroutine {
 	/** Creates a new coroutine, with body f. f must be a Lua function. */
