@@ -562,6 +562,7 @@ interface Axes {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Axes: unique symbol;
@@ -593,6 +594,7 @@ interface BrickColor<Number extends number = any, Name extends string = any> {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BrickColor: unique symbol;
@@ -1009,6 +1011,7 @@ interface CatalogSearchParams {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CatalogSearchParams: unique symbol;
@@ -1031,6 +1034,7 @@ interface CFrame {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CFrame: unique symbol;
@@ -1139,6 +1143,7 @@ interface Color3 {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Color3: unique symbol;
@@ -1173,6 +1178,7 @@ interface ColorSequence {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ColorSequence: unique symbol;
@@ -1191,6 +1197,7 @@ interface ColorSequenceKeypoint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ColorSequenceKeypoint: unique symbol;
@@ -1241,6 +1248,7 @@ interface DateTime {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DateTime: unique symbol;
@@ -1371,6 +1379,7 @@ interface DockWidgetPluginGuiInfo {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DockWidgetPluginGuiInfo: unique symbol;
@@ -1399,6 +1408,7 @@ interface Faces {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Faces: unique symbol;
@@ -1418,6 +1428,7 @@ interface NumberRange {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_NumberRange: unique symbol;
@@ -1436,6 +1447,7 @@ interface NumberSequence {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_NumberSequence: unique symbol;
@@ -1458,6 +1470,7 @@ interface NumberSequenceKeypoint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_NumberSequenceKeypoint: unique symbol;
@@ -1477,6 +1490,7 @@ interface PathWaypoint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PathWaypoint: unique symbol;
@@ -1492,6 +1506,7 @@ interface PhysicalProperties {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PhysicalProperties: unique symbol;
@@ -1520,6 +1535,7 @@ interface Random {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Random: unique symbol;
@@ -1542,6 +1558,7 @@ interface Ray {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Ray: unique symbol;
@@ -1562,6 +1579,7 @@ interface RaycastParams {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_RaycastParams: unique symbol;
@@ -1608,6 +1626,7 @@ interface Rect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Rect: unique symbol;
@@ -1629,6 +1648,7 @@ interface Region3 {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Region3: unique symbol;
@@ -1647,6 +1667,7 @@ interface Region3int16 {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Region3int16: unique symbol;
@@ -1664,6 +1685,7 @@ interface TweenInfo {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TweenInfo: unique symbol;
@@ -1692,6 +1714,7 @@ interface UDim {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UDim: unique symbol;
@@ -1709,6 +1732,7 @@ interface UDim2 {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UDim2: unique symbol;
@@ -1735,6 +1759,7 @@ interface Vector2 {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Vector2: unique symbol;
@@ -1762,6 +1787,7 @@ interface Vector2int16 {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Vector2int16: unique symbol;
@@ -1779,6 +1805,7 @@ interface Vector3 {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Vector3: unique symbol;
@@ -1813,6 +1840,7 @@ interface Vector3int16 {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Vector3int16: unique symbol;

@@ -1113,6 +1113,7 @@ export class ClassGenerator extends Generator {
 			this.write(` * **DO NOT USE!**`);
 			this.write(` *`);
 			this.write(` * This field exists to force TypeScript to recognize this as a nominal type`);
+			this.write(` * @hidden`);
 			this.write(` * @deprecated`);
 			this.write(` */`);
 			this.write(`readonly _nominal_${className}: unique symbol;`);
