@@ -373,6 +373,7 @@ interface Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Instance: unique symbol;
@@ -1041,6 +1042,7 @@ interface Accoutrement extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Accoutrement: unique symbol;
@@ -1076,6 +1078,7 @@ interface Accessory extends Accoutrement {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Accessory: unique symbol;
@@ -1086,6 +1089,7 @@ interface Hat extends Accoutrement {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Hat: unique symbol;
@@ -1109,6 +1113,7 @@ interface AnalyticsService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_AnalyticsService: unique symbol;
@@ -1339,6 +1344,7 @@ interface Animation extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Animation: unique symbol;
@@ -1385,6 +1391,7 @@ interface AnimationController extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_AnimationController: unique symbol;
@@ -1398,6 +1405,7 @@ interface AnimationTrack extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_AnimationTrack: unique symbol;
@@ -1590,6 +1598,7 @@ interface Animator extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Animator: unique symbol;
@@ -1631,6 +1640,7 @@ interface AppUpdateService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_AppUpdateService: unique symbol;
@@ -1641,6 +1651,7 @@ interface AssetCounterService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_AssetCounterService: unique symbol;
@@ -1651,6 +1662,7 @@ interface AssetDeliveryProxy extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_AssetDeliveryProxy: unique symbol;
@@ -1661,6 +1673,7 @@ interface AssetManagerService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_AssetManagerService: unique symbol;
@@ -1672,6 +1685,7 @@ interface AssetService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_AssetService: unique symbol;
@@ -1784,6 +1798,7 @@ interface Atmosphere extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Atmosphere: unique symbol;
@@ -1861,6 +1876,7 @@ interface Attachment extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Attachment: unique symbol;
@@ -1910,6 +1926,7 @@ interface Bone extends Attachment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Bone: unique symbol;
@@ -1979,6 +1996,7 @@ interface AvatarEditorService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_AvatarEditorService: unique symbol;
@@ -2601,6 +2619,7 @@ interface Backpack extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Backpack: unique symbol;
@@ -2612,6 +2631,7 @@ interface BackpackItem extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BackpackItem: unique symbol;
@@ -2635,6 +2655,7 @@ interface Tool extends BackpackItem {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Tool: unique symbol;
@@ -2869,6 +2890,7 @@ interface BadgeService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BadgeService: unique symbol;
@@ -2949,6 +2971,7 @@ interface BasePlayerGui extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BasePlayerGui: unique symbol;
@@ -2975,6 +2998,7 @@ interface PlayerGui extends BasePlayerGui {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PlayerGui: unique symbol;
@@ -3005,6 +3029,7 @@ interface StarterGui extends BasePlayerGui {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_StarterGui: unique symbol;
@@ -3776,6 +3801,7 @@ interface BaseWrap extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BaseWrap: unique symbol;
@@ -3800,6 +3826,7 @@ interface WrapLayer extends BaseWrap {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_WrapLayer: unique symbol;
@@ -3828,6 +3855,7 @@ interface WrapTarget extends BaseWrap {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_WrapTarget: unique symbol;
@@ -3867,6 +3895,7 @@ interface Beam extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Beam: unique symbol;
@@ -4163,6 +4192,7 @@ interface BindableEvent<T extends Callback = Callback> extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BindableEvent: unique symbol;
@@ -4178,6 +4208,7 @@ interface BindableFunction<T extends Callback = Callback> extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BindableFunction: unique symbol;
@@ -4210,6 +4241,7 @@ interface BodyMover extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BodyMover: unique symbol;
@@ -4230,6 +4262,7 @@ interface BodyAngularVelocity extends BodyMover {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BodyAngularVelocity: unique symbol;
@@ -4277,6 +4310,7 @@ interface BodyForce extends BodyMover {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BodyForce: unique symbol;
@@ -4321,6 +4355,7 @@ interface BodyGyro extends BodyMover {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BodyGyro: unique symbol;
@@ -4351,6 +4386,7 @@ interface BodyPosition extends BodyMover {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BodyPosition: unique symbol;
@@ -4376,6 +4412,7 @@ interface BodyThrust extends BodyMover {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BodyThrust: unique symbol;
@@ -4394,6 +4431,7 @@ interface BodyVelocity extends BodyMover {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BodyVelocity: unique symbol;
@@ -4433,6 +4471,7 @@ interface RocketPropulsion extends BodyMover {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_RocketPropulsion: unique symbol;
@@ -4473,6 +4512,7 @@ interface BulkImportService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BulkImportService: unique symbol;
@@ -4483,6 +4523,7 @@ interface CalloutService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CalloutService: unique symbol;
@@ -4523,6 +4564,7 @@ interface Camera extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Camera: unique symbol;
@@ -4940,6 +4982,7 @@ interface CharacterAppearance extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CharacterAppearance: unique symbol;
@@ -4956,6 +4999,7 @@ interface BodyColors extends CharacterAppearance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BodyColors: unique symbol;
@@ -4991,6 +5035,7 @@ interface CharacterMesh extends CharacterAppearance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CharacterMesh: unique symbol;
@@ -5010,6 +5055,7 @@ interface Clothing extends CharacterAppearance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Clothing: unique symbol;
@@ -5051,6 +5097,7 @@ interface Pants extends Clothing {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Pants: unique symbol;
@@ -5092,6 +5139,7 @@ interface Shirt extends Clothing {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Shirt: unique symbol;
@@ -5124,6 +5172,7 @@ interface ShirtGraphic extends CharacterAppearance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ShirtGraphic: unique symbol;
@@ -5167,6 +5216,7 @@ interface Chat extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Chat: unique symbol;
@@ -5429,6 +5479,7 @@ interface ClickDetector extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ClickDetector: unique symbol;
@@ -5493,6 +5544,7 @@ interface Clouds extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Clouds: unique symbol;
@@ -5522,6 +5574,7 @@ interface CollectionService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CollectionService: unique symbol;
@@ -5622,6 +5675,7 @@ interface Configuration extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Configuration: unique symbol;
@@ -5633,6 +5687,7 @@ interface Constraint extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Constraint: unique symbol;
@@ -5700,6 +5755,7 @@ interface AlignOrientation extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_AlignOrientation: unique symbol;
@@ -5784,6 +5840,7 @@ interface AlignPosition extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_AlignPosition: unique symbol;
@@ -5810,6 +5867,7 @@ interface AngularVelocity extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_AngularVelocity: unique symbol;
@@ -5835,6 +5893,7 @@ interface BallSocketConstraint extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BallSocketConstraint: unique symbol;
@@ -5880,6 +5939,7 @@ interface HingeConstraint extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_HingeConstraint: unique symbol;
@@ -5987,6 +6047,7 @@ interface LineForce extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_LineForce: unique symbol;
@@ -6011,6 +6072,7 @@ interface RodConstraint extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_RodConstraint: unique symbol;
@@ -6030,6 +6092,7 @@ interface RopeConstraint extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_RopeConstraint: unique symbol;
@@ -6060,6 +6123,7 @@ interface SlidingBallConstraint extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SlidingBallConstraint: unique symbol;
@@ -6146,6 +6210,7 @@ interface CylindricalConstraint extends SlidingBallConstraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CylindricalConstraint: unique symbol;
@@ -6199,6 +6264,7 @@ interface PrismaticConstraint extends SlidingBallConstraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PrismaticConstraint: unique symbol;
@@ -6250,6 +6316,7 @@ interface SpringConstraint extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SpringConstraint: unique symbol;
@@ -6304,6 +6371,7 @@ interface Torque extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Torque: unique symbol;
@@ -6322,6 +6390,7 @@ interface UniversalConstraint extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UniversalConstraint: unique symbol;
@@ -6395,6 +6464,7 @@ interface VectorForce extends Constraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_VectorForce: unique symbol;
@@ -6425,6 +6495,7 @@ interface ContentProvider extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ContentProvider: unique symbol;
@@ -6493,6 +6564,7 @@ interface ContextActionService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ContextActionService: unique symbol;
@@ -6692,6 +6764,7 @@ interface Controller extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Controller: unique symbol;
@@ -6719,6 +6792,7 @@ interface HumanoidController extends Controller {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_HumanoidController: unique symbol;
@@ -6730,6 +6804,7 @@ interface SkateboardController extends Controller {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SkateboardController: unique symbol;
@@ -6754,6 +6829,7 @@ interface VehicleController extends Controller {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_VehicleController: unique symbol;
@@ -6765,6 +6841,7 @@ interface ControllerService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ControllerService: unique symbol;
@@ -6781,6 +6858,7 @@ interface DataModelMesh extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataModelMesh: unique symbol;
@@ -6865,6 +6943,7 @@ interface BevelMesh extends DataModelMesh {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BevelMesh: unique symbol;
@@ -6888,6 +6967,7 @@ interface BlockMesh extends BevelMesh {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BlockMesh: unique symbol;
@@ -6918,6 +6998,7 @@ interface CylinderMesh extends BevelMesh {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CylinderMesh: unique symbol;
@@ -6939,6 +7020,7 @@ interface FileMesh extends DataModelMesh {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_FileMesh: unique symbol;
@@ -7011,6 +7093,7 @@ interface SpecialMesh extends FileMesh {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SpecialMesh: unique symbol;
@@ -7034,6 +7117,7 @@ interface DataStoreIncrementOptions extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreIncrementOptions: unique symbol;
@@ -7048,6 +7132,7 @@ interface DataStoreInfo extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreInfo: unique symbol;
@@ -7070,6 +7155,7 @@ interface DataStoreKeyInfo extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreKeyInfo: unique symbol;
@@ -7084,6 +7170,7 @@ interface DataStoreKeyVersionInfo extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreKeyVersionInfo: unique symbol;
@@ -7122,6 +7209,7 @@ interface DataStoreService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreService: unique symbol;
@@ -7141,6 +7229,7 @@ interface DataStoreSetOptions extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreSetOptions: unique symbol;
@@ -7192,6 +7281,7 @@ interface Debris extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Debris: unique symbol;
@@ -7244,6 +7334,7 @@ interface Dialog extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Dialog: unique symbol;
@@ -7322,6 +7413,7 @@ interface DialogChoice extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DialogChoice: unique symbol;
@@ -7355,6 +7447,7 @@ interface Dragger extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Dragger: unique symbol;
@@ -7373,6 +7466,7 @@ interface EventIngestService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_EventIngestService: unique symbol;
@@ -7397,6 +7491,7 @@ interface Explosion extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Explosion: unique symbol;
@@ -7469,6 +7564,7 @@ interface FaceInstance extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_FaceInstance: unique symbol;
@@ -7499,6 +7595,7 @@ interface Decal extends FaceInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Decal: unique symbol;
@@ -7604,6 +7701,7 @@ interface Texture extends Decal {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Texture: unique symbol;
@@ -7687,6 +7785,7 @@ interface Feature extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Feature: unique symbol;
@@ -7706,6 +7805,7 @@ interface Hole extends Feature {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Hole: unique symbol;
@@ -7717,6 +7817,7 @@ interface MotorFeature extends Feature {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_MotorFeature: unique symbol;
@@ -7743,6 +7844,7 @@ interface Fire extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Fire: unique symbol;
@@ -7817,6 +7919,7 @@ interface Folder extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Folder: unique symbol;
@@ -7860,6 +7963,7 @@ interface ForceField extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ForceField: unique symbol;
@@ -7926,6 +8030,7 @@ interface GamePassService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_GamePassService: unique symbol;
@@ -7938,6 +8043,7 @@ interface GetDataStoreOptions extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_GetDataStoreOptions: unique symbol;
@@ -7956,6 +8062,7 @@ interface GlobalDataStore extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_GlobalDataStore: unique symbol;
@@ -8022,6 +8129,7 @@ interface DataStore extends GlobalDataStore {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataStore: unique symbol;
@@ -8052,6 +8160,7 @@ interface OrderedDataStore extends GlobalDataStore {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_OrderedDataStore: unique symbol;
@@ -8081,6 +8190,7 @@ interface GroupService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_GroupService: unique symbol;
@@ -8251,6 +8361,7 @@ interface GuiBase extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_GuiBase: unique symbol;
@@ -8262,6 +8373,7 @@ interface GuiBase2d extends GuiBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_GuiBase2d: unique symbol;
@@ -8324,6 +8436,7 @@ interface GuiObject extends GuiBase2d {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_GuiObject: unique symbol;
@@ -8898,6 +9011,7 @@ interface Frame extends GuiObject {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Frame: unique symbol;
@@ -8914,6 +9028,7 @@ interface GuiButton extends GuiObject {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_GuiButton: unique symbol;
@@ -8999,6 +9114,7 @@ interface ImageButton extends GuiButton {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ImageButton: unique symbol;
@@ -9067,6 +9183,7 @@ interface TextButton extends GuiButton {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TextButton: unique symbol;
@@ -9195,6 +9312,7 @@ interface GuiLabel extends GuiObject {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_GuiLabel: unique symbol;
@@ -9216,6 +9334,7 @@ interface ImageLabel extends GuiLabel {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ImageLabel: unique symbol;
@@ -9284,6 +9403,7 @@ interface TextLabel extends GuiLabel {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TextLabel: unique symbol;
@@ -9417,6 +9537,7 @@ interface ScrollingFrame extends GuiObject {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ScrollingFrame: unique symbol;
@@ -9581,6 +9702,7 @@ interface TextBox extends GuiObject {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TextBox: unique symbol;
@@ -9781,6 +9903,7 @@ interface VideoFrame extends GuiObject {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_VideoFrame: unique symbol;
@@ -9838,6 +9961,7 @@ interface ViewportFrame extends GuiObject {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ViewportFrame: unique symbol;
@@ -9904,6 +10028,7 @@ interface LayerCollector extends GuiBase2d {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_LayerCollector: unique symbol;
@@ -9924,6 +10049,7 @@ interface BillboardGui extends LayerCollector {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BillboardGui: unique symbol;
@@ -10058,6 +10184,7 @@ interface ScreenGui extends LayerCollector {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ScreenGui: unique symbol;
@@ -10076,6 +10203,7 @@ interface SurfaceGui extends LayerCollector {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SurfaceGui: unique symbol;
@@ -10113,6 +10241,7 @@ interface GuiBase3d extends GuiBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_GuiBase3d: unique symbol;
@@ -10130,6 +10259,7 @@ interface FloorWire extends GuiBase3d {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_FloorWire: unique symbol;
@@ -10156,6 +10286,7 @@ interface InstanceAdornment extends GuiBase3d {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_InstanceAdornment: unique symbol;
@@ -10181,6 +10312,7 @@ interface SelectionBox extends InstanceAdornment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SelectionBox: unique symbol;
@@ -10223,6 +10355,7 @@ interface PVAdornment extends GuiBase3d {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PVAdornment: unique symbol;
@@ -10236,6 +10369,7 @@ interface HandleAdornment extends PVAdornment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_HandleAdornment: unique symbol;
@@ -10281,6 +10415,7 @@ interface BoxHandleAdornment extends HandleAdornment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BoxHandleAdornment: unique symbol;
@@ -10297,6 +10432,7 @@ interface ConeHandleAdornment extends HandleAdornment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ConeHandleAdornment: unique symbol;
@@ -10315,6 +10451,7 @@ interface CylinderHandleAdornment extends HandleAdornment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CylinderHandleAdornment: unique symbol;
@@ -10337,6 +10474,7 @@ interface ImageHandleAdornment extends HandleAdornment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ImageHandleAdornment: unique symbol;
@@ -10355,6 +10493,7 @@ interface LineHandleAdornment extends HandleAdornment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_LineHandleAdornment: unique symbol;
@@ -10373,6 +10512,7 @@ interface SphereHandleAdornment extends HandleAdornment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SphereHandleAdornment: unique symbol;
@@ -10388,6 +10528,7 @@ interface ParabolaAdornment extends PVAdornment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ParabolaAdornment: unique symbol;
@@ -10406,6 +10547,7 @@ interface SelectionSphere extends PVAdornment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SelectionSphere: unique symbol;
@@ -10435,6 +10577,7 @@ interface PartAdornment extends GuiBase3d {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PartAdornment: unique symbol;
@@ -10448,6 +10591,7 @@ interface HandlesBase extends PartAdornment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_HandlesBase: unique symbol;
@@ -10464,6 +10608,7 @@ interface ArcHandles extends HandlesBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ArcHandles: unique symbol;
@@ -10490,6 +10635,7 @@ interface Handles extends HandlesBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Handles: unique symbol;
@@ -10520,6 +10666,7 @@ interface SurfaceSelection extends PartAdornment {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SurfaceSelection: unique symbol;
@@ -10533,6 +10680,7 @@ interface SelectionLasso extends GuiBase3d {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SelectionLasso: unique symbol;
@@ -10546,6 +10694,7 @@ interface SelectionPartLasso extends SelectionLasso {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SelectionPartLasso: unique symbol;
@@ -10559,6 +10708,7 @@ interface SelectionPointLasso extends SelectionLasso {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SelectionPointLasso: unique symbol;
@@ -10575,6 +10725,7 @@ interface GuiService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_GuiService: unique symbol;
@@ -10711,6 +10862,7 @@ interface HapticService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_HapticService: unique symbol;
@@ -10732,6 +10884,7 @@ interface HeightmapImporterService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_HeightmapImporterService: unique symbol;
@@ -10766,6 +10919,7 @@ interface HttpService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_HttpService: unique symbol;
@@ -10979,6 +11133,7 @@ interface Humanoid extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Humanoid: unique symbol;
@@ -11885,6 +12040,7 @@ interface HumanoidDescription extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_HumanoidDescription: unique symbol;
@@ -12494,6 +12650,7 @@ interface ILegacyStudioBridge extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ILegacyStudioBridge: unique symbol;
@@ -12504,6 +12661,7 @@ interface LegacyStudioBridge extends ILegacyStudioBridge {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_LegacyStudioBridge: unique symbol;
@@ -12514,6 +12672,7 @@ interface IXPService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_IXPService: unique symbol;
@@ -12537,6 +12696,7 @@ interface InputObject extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_InputObject: unique symbol;
@@ -14149,6 +14309,7 @@ interface InsertService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_InsertService: unique symbol;
@@ -14312,6 +14473,7 @@ interface InternalContainer extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_InternalContainer: unique symbol;
@@ -14334,6 +14496,7 @@ interface JointInstance extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_JointInstance: unique symbol;
@@ -14370,6 +14533,7 @@ interface DynamicRotate extends JointInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DynamicRotate: unique symbol;
@@ -14392,6 +14556,7 @@ interface RotateP extends DynamicRotate {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_RotateP: unique symbol;
@@ -14412,6 +14577,7 @@ interface RotateV extends DynamicRotate {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_RotateV: unique symbol;
@@ -14423,6 +14589,7 @@ interface Glue extends JointInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Glue: unique symbol;
@@ -14442,6 +14609,7 @@ interface ManualSurfaceJointInstance extends JointInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ManualSurfaceJointInstance: unique symbol;
@@ -14453,6 +14621,7 @@ interface ManualGlue extends ManualSurfaceJointInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ManualGlue: unique symbol;
@@ -14479,6 +14648,7 @@ interface ManualWeld extends ManualSurfaceJointInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ManualWeld: unique symbol;
@@ -14490,6 +14660,7 @@ interface Motor extends JointInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Motor: unique symbol;
@@ -14514,6 +14685,7 @@ interface Motor6D extends Motor {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Motor6D: unique symbol;
@@ -14541,6 +14713,7 @@ interface Rotate extends JointInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Rotate: unique symbol;
@@ -14567,6 +14740,7 @@ interface Snap extends JointInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Snap: unique symbol;
@@ -14588,6 +14762,7 @@ interface VelocityMotor extends JointInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_VelocityMotor: unique symbol;
@@ -14623,6 +14798,7 @@ interface Weld extends JointInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Weld: unique symbol;
@@ -14634,6 +14810,7 @@ interface JointsService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_JointsService: unique symbol;
@@ -14670,6 +14847,7 @@ interface Keyframe extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Keyframe: unique symbol;
@@ -14774,6 +14952,7 @@ interface KeyframeMarker extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_KeyframeMarker: unique symbol;
@@ -14832,6 +15011,7 @@ interface KeyframeSequence extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_KeyframeSequence: unique symbol;
@@ -14869,6 +15049,7 @@ interface LanguageService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_LanguageService: unique symbol;
@@ -14880,6 +15061,7 @@ interface Light extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Light: unique symbol;
@@ -14912,6 +15094,7 @@ interface PointLight extends Light {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PointLight: unique symbol;
@@ -14941,6 +15124,7 @@ interface SpotLight extends Light {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SpotLight: unique symbol;
@@ -14970,6 +15154,7 @@ interface SurfaceLight extends Light {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SurfaceLight: unique symbol;
@@ -15004,6 +15189,7 @@ interface Lighting extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Lighting: unique symbol;
@@ -15484,6 +15670,7 @@ interface LocalizationService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_LocalizationService: unique symbol;
@@ -16574,6 +16761,7 @@ interface LocalizationTable extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_LocalizationTable: unique symbol;
@@ -16658,6 +16846,7 @@ interface LogService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_LogService: unique symbol;
@@ -16683,6 +16872,7 @@ interface LuaSourceContainer extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_LuaSourceContainer: unique symbol;
@@ -16694,6 +16884,7 @@ interface BaseScript extends LuaSourceContainer {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BaseScript: unique symbol;
@@ -16743,6 +16934,7 @@ interface Script extends BaseScript {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Script: unique symbol;
@@ -16763,6 +16955,7 @@ interface LocalScript extends Script {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_LocalScript: unique symbol;
@@ -16783,6 +16976,7 @@ interface ModuleScript extends LuaSourceContainer {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ModuleScript: unique symbol;
@@ -16811,6 +17005,7 @@ interface MarketplaceService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_MarketplaceService: unique symbol;
@@ -17192,6 +17387,7 @@ interface MessagingService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_MessagingService: unique symbol;
@@ -17271,6 +17467,7 @@ interface Mouse extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Mouse: unique symbol;
@@ -17757,6 +17954,7 @@ interface PlayerMouse extends Mouse {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PlayerMouse: unique symbol;
@@ -17768,6 +17966,7 @@ interface NetworkMarker extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_NetworkMarker: unique symbol;
@@ -17810,6 +18009,7 @@ interface NoCollisionConstraint extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_NoCollisionConstraint: unique symbol;
@@ -17826,6 +18026,7 @@ interface ObjectVersionInfo extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ObjectVersionInfo: unique symbol;
@@ -17849,6 +18050,7 @@ interface PVInstance extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PVInstance: unique symbol;
@@ -17878,6 +18080,7 @@ interface BasePart extends PVInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BasePart: unique symbol;
@@ -18469,6 +18672,7 @@ interface CornerWedgePart extends BasePart {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CornerWedgePart: unique symbol;
@@ -18483,6 +18687,7 @@ interface FormFactorPart extends BasePart {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_FormFactorPart: unique symbol;
@@ -18519,6 +18724,7 @@ interface Part extends FormFactorPart {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Part: unique symbol;
@@ -18581,6 +18787,7 @@ interface Platform extends Part {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Platform: unique symbol;
@@ -18619,6 +18826,7 @@ interface Seat extends Part {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Seat: unique symbol;
@@ -18638,6 +18846,7 @@ interface SkateboardPlatform extends Part {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SkateboardPlatform: unique symbol;
@@ -18683,6 +18892,7 @@ interface SpawnLocation extends Part {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SpawnLocation: unique symbol;
@@ -18730,6 +18940,7 @@ interface WedgePart extends FormFactorPart {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_WedgePart: unique symbol;
@@ -18744,6 +18955,7 @@ interface Terrain extends BasePart {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Terrain: unique symbol;
@@ -18838,6 +19050,7 @@ interface TriangleMeshPart extends BasePart {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TriangleMeshPart: unique symbol;
@@ -18896,6 +19109,7 @@ interface MeshPart extends TriangleMeshPart {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_MeshPart: unique symbol;
@@ -19013,6 +19227,7 @@ interface PartOperation extends TriangleMeshPart {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PartOperation: unique symbol;
@@ -19060,6 +19275,7 @@ interface NegateOperation extends PartOperation {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_NegateOperation: unique symbol;
@@ -19084,6 +19300,7 @@ interface UnionOperation extends PartOperation {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UnionOperation: unique symbol;
@@ -19100,6 +19317,7 @@ interface TrussPart extends BasePart {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TrussPart: unique symbol;
@@ -19118,6 +19336,7 @@ interface VehicleSeat extends BasePart {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_VehicleSeat: unique symbol;
@@ -19171,6 +19390,7 @@ interface Model extends PVInstance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Model: unique symbol;
@@ -19280,6 +19500,7 @@ interface Actor extends Model {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Actor: unique symbol;
@@ -19290,6 +19511,7 @@ interface WorldRoot extends Model {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_WorldRoot: unique symbol;
@@ -19525,6 +19747,7 @@ interface Workspace extends WorldRoot {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Workspace: unique symbol;
@@ -19771,6 +19994,7 @@ interface WorldModel extends WorldRoot {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_WorldModel: unique symbol;
@@ -19789,6 +20013,7 @@ interface PackageLink extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PackageLink: unique symbol;
@@ -19832,6 +20057,7 @@ interface Pages<T = unknown> extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Pages: unique symbol;
@@ -19848,6 +20074,7 @@ interface CatalogPages extends Pages {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CatalogPages: unique symbol;
@@ -19858,6 +20085,7 @@ interface DataStoreEnumerationPages extends Pages {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreEnumerationPages: unique symbol;
@@ -19868,6 +20096,7 @@ interface DataStoreKeyPages extends Pages {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreKeyPages: unique symbol;
@@ -19879,6 +20108,7 @@ interface DataStorePages extends Pages<{ key: string; value: unknown }> {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataStorePages: unique symbol;
@@ -19889,6 +20119,7 @@ interface DataStoreVersionPages extends Pages {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreVersionPages: unique symbol;
@@ -19928,6 +20159,7 @@ interface FriendPages
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_FriendPages: unique symbol;
@@ -19939,6 +20171,7 @@ interface InventoryPages extends Pages<number> {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_InventoryPages: unique symbol;
@@ -19949,6 +20182,7 @@ interface EmotesPages extends InventoryPages {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_EmotesPages: unique symbol;
@@ -19959,6 +20193,7 @@ interface OutfitPages extends Pages {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_OutfitPages: unique symbol;
@@ -19972,6 +20207,7 @@ interface StandardPages<T = unknown> extends Pages<T> {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_StandardPages: unique symbol;
@@ -19993,6 +20229,7 @@ interface ParticleEmitter extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ParticleEmitter: unique symbol;
@@ -20208,6 +20445,7 @@ interface Path extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Path: unique symbol;
@@ -20264,6 +20502,7 @@ interface PathfindingService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PathfindingService: unique symbol;
@@ -20328,6 +20567,7 @@ interface PhysicsService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PhysicsService: unique symbol;
@@ -20439,6 +20679,7 @@ interface Player extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Player: unique symbol;
@@ -21062,6 +21303,7 @@ interface PlayerScripts extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PlayerScripts: unique symbol;
@@ -21089,6 +21331,7 @@ interface Players extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Players: unique symbol;
@@ -21491,6 +21734,7 @@ interface PluginManagerInterface extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PluginManagerInterface: unique symbol;
@@ -21502,6 +21746,7 @@ interface PolicyService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PolicyService: unique symbol;
@@ -21575,6 +21820,7 @@ interface PoseBase extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PoseBase: unique symbol;
@@ -21591,6 +21837,7 @@ interface NumberPose extends PoseBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_NumberPose: unique symbol;
@@ -21623,6 +21870,7 @@ interface Pose extends PoseBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Pose: unique symbol;
@@ -21657,6 +21905,7 @@ interface PostEffect extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PostEffect: unique symbol;
@@ -21675,6 +21924,7 @@ interface BloomEffect extends PostEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BloomEffect: unique symbol;
@@ -21697,6 +21947,7 @@ interface BlurEffect extends PostEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BlurEffect: unique symbol;
@@ -21715,6 +21966,7 @@ interface ColorCorrectionEffect extends PostEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ColorCorrectionEffect: unique symbol;
@@ -21741,6 +21993,7 @@ interface DepthOfFieldEffect extends PostEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DepthOfFieldEffect: unique symbol;
@@ -21777,6 +22030,7 @@ interface SunRaysEffect extends PostEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SunRaysEffect: unique symbol;
@@ -21824,6 +22078,7 @@ interface ProximityPrompt extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ProximityPrompt: unique symbol;
@@ -21890,6 +22145,7 @@ interface ProximityPromptService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ProximityPromptService: unique symbol;
@@ -21952,6 +22208,7 @@ interface RemoteEvent<T extends Callback = Callback> extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_RemoteEvent: unique symbol;
@@ -22023,6 +22280,7 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_RemoteFunction: unique symbol;
@@ -22089,6 +22347,7 @@ interface ReplicatedFirst extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ReplicatedFirst: unique symbol;
@@ -22106,6 +22365,7 @@ interface ReplicatedScriptService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ReplicatedScriptService: unique symbol;
@@ -22129,6 +22389,7 @@ interface ReplicatedStorage extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ReplicatedStorage: unique symbol;
@@ -22143,6 +22404,7 @@ interface RunService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_RunService: unique symbol;
@@ -22440,6 +22702,7 @@ interface ScriptContext extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ScriptContext: unique symbol;
@@ -22453,6 +22716,7 @@ interface ServerScriptService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ServerScriptService: unique symbol;
@@ -22473,6 +22737,7 @@ interface ServerStorage extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ServerStorage: unique symbol;
@@ -22484,6 +22749,7 @@ interface ServiceProvider<S = unknown> extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ServiceProvider: unique symbol;
@@ -22513,6 +22779,7 @@ interface DataModel extends ServiceProvider<Services> {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DataModel: unique symbol;
@@ -22738,6 +23005,7 @@ interface GenericSettings<S = unknown> extends ServiceProvider<S> {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_GenericSettings: unique symbol;
@@ -22752,6 +23020,7 @@ interface UserSettings extends GenericSettings<{ UserGameSettings: UserGameSetti
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UserSettings: unique symbol;
@@ -22769,6 +23038,7 @@ interface SessionService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SessionService: unique symbol;
@@ -22780,6 +23050,7 @@ interface Sky extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Sky: unique symbol;
@@ -22822,6 +23093,7 @@ interface Smoke extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Smoke: unique symbol;
@@ -22897,6 +23169,7 @@ interface SocialService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SocialService: unique symbol;
@@ -22960,6 +23233,7 @@ interface Sound extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Sound: unique symbol;
@@ -23366,6 +23640,7 @@ interface SoundEffect extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SoundEffect: unique symbol;
@@ -23384,6 +23659,7 @@ interface ChorusSoundEffect extends SoundEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ChorusSoundEffect: unique symbol;
@@ -23421,6 +23697,7 @@ interface CompressorSoundEffect extends SoundEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CompressorSoundEffect: unique symbol;
@@ -23462,6 +23739,7 @@ interface DistortionSoundEffect extends SoundEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DistortionSoundEffect: unique symbol;
@@ -23485,6 +23763,7 @@ interface EchoSoundEffect extends SoundEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_EchoSoundEffect: unique symbol;
@@ -23528,6 +23807,7 @@ interface EqualizerSoundEffect extends SoundEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_EqualizerSoundEffect: unique symbol;
@@ -23557,6 +23837,7 @@ interface FlangeSoundEffect extends SoundEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_FlangeSoundEffect: unique symbol;
@@ -23586,6 +23867,7 @@ interface PitchShiftSoundEffect extends SoundEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_PitchShiftSoundEffect: unique symbol;
@@ -23605,6 +23887,7 @@ interface ReverbSoundEffect extends SoundEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ReverbSoundEffect: unique symbol;
@@ -23644,6 +23927,7 @@ interface TremoloSoundEffect extends SoundEffect {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TremoloSoundEffect: unique symbol;
@@ -23682,6 +23966,7 @@ interface SoundGroup extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SoundGroup: unique symbol;
@@ -23710,6 +23995,7 @@ interface SoundService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SoundService: unique symbol;
@@ -23873,6 +24159,7 @@ interface Sparkles extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Sparkles: unique symbol;
@@ -23971,6 +24258,7 @@ interface StarterGear extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_StarterGear: unique symbol;
@@ -23995,6 +24283,7 @@ interface StarterPack extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_StarterPack: unique symbol;
@@ -24017,6 +24306,7 @@ interface StarterPlayer extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_StarterPlayer: unique symbol;
@@ -24237,6 +24527,7 @@ interface StarterPlayerScripts extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_StarterPlayerScripts: unique symbol;
@@ -24252,6 +24543,7 @@ interface StarterCharacterScripts extends StarterPlayerScripts {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_StarterCharacterScripts: unique symbol;
@@ -24266,6 +24558,7 @@ interface Stats extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Stats: unique symbol;
@@ -24383,6 +24676,7 @@ interface SurfaceAppearance extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_SurfaceAppearance: unique symbol;
@@ -24418,6 +24712,7 @@ interface Team extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Team: unique symbol;
@@ -24491,6 +24786,7 @@ interface Teams extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Teams: unique symbol;
@@ -24506,6 +24802,7 @@ interface TeleportAsyncResult extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TeleportAsyncResult: unique symbol;
@@ -24524,6 +24821,7 @@ interface TeleportOptions extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TeleportOptions: unique symbol;
@@ -24567,6 +24865,7 @@ interface TeleportService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TeleportService: unique symbol;
@@ -25197,6 +25496,7 @@ interface TerrainRegion extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TerrainRegion: unique symbol;
@@ -25214,6 +25514,7 @@ interface TextFilterResult extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TextFilterResult: unique symbol;
@@ -25268,6 +25569,7 @@ interface TextService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TextService: unique symbol;
@@ -25323,6 +25625,7 @@ interface TouchTransmitter extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TouchTransmitter: unique symbol;
@@ -25333,6 +25636,7 @@ interface TracerService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TracerService: unique symbol;
@@ -25359,6 +25663,7 @@ interface Trail extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Trail: unique symbol;
@@ -25547,6 +25852,7 @@ interface Translator extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Translator: unique symbol;
@@ -25661,6 +25967,7 @@ interface TweenBase extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TweenBase: unique symbol;
@@ -25719,6 +26026,7 @@ interface Tween extends TweenBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Tween: unique symbol;
@@ -25765,6 +26073,7 @@ interface TweenService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_TweenService: unique symbol;
@@ -25808,6 +26117,7 @@ interface UIBase extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UIBase: unique symbol;
@@ -25819,6 +26129,7 @@ interface UIComponent extends UIBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UIComponent: unique symbol;
@@ -25830,6 +26141,7 @@ interface UIConstraint extends UIComponent {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UIConstraint: unique symbol;
@@ -25844,6 +26156,7 @@ interface UIAspectRatioConstraint extends UIConstraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UIAspectRatioConstraint: unique symbol;
@@ -25875,6 +26188,7 @@ interface UISizeConstraint extends UIConstraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UISizeConstraint: unique symbol;
@@ -25897,6 +26211,7 @@ interface UITextSizeConstraint extends UIConstraint {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UITextSizeConstraint: unique symbol;
@@ -25921,6 +26236,7 @@ interface UICorner extends UIComponent {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UICorner: unique symbol;
@@ -25964,6 +26280,7 @@ interface UIGradient extends UIComponent {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UIGradient: unique symbol;
@@ -26027,6 +26344,7 @@ interface UILayout extends UIComponent {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UILayout: unique symbol;
@@ -26038,6 +26356,7 @@ interface UIGridStyleLayout extends UILayout {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UIGridStyleLayout: unique symbol;
@@ -26076,6 +26395,7 @@ interface UIGridLayout extends UIGridStyleLayout {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UIGridLayout: unique symbol;
@@ -26125,6 +26445,7 @@ interface UIListLayout extends UIGridStyleLayout {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UIListLayout: unique symbol;
@@ -26141,6 +26462,7 @@ interface UIPageLayout extends UIGridStyleLayout {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UIPageLayout: unique symbol;
@@ -26200,6 +26522,7 @@ interface UITableLayout extends UIGridStyleLayout {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UITableLayout: unique symbol;
@@ -26233,6 +26556,7 @@ interface UIPadding extends UIComponent {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UIPadding: unique symbol;
@@ -26252,6 +26576,7 @@ interface UIScale extends UIComponent {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UIScale: unique symbol;
@@ -26264,6 +26589,7 @@ interface UIStroke extends UIComponent {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UIStroke: unique symbol;
@@ -26286,6 +26612,7 @@ interface UnvalidatedAssetService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UnvalidatedAssetService: unique symbol;
@@ -26304,6 +26631,7 @@ interface UserGameSettings extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UserGameSettings: unique symbol;
@@ -26394,6 +26722,7 @@ interface UserInputService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UserInputService: unique symbol;
@@ -27824,6 +28153,7 @@ interface UserService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_UserService: unique symbol;
@@ -27862,6 +28192,7 @@ interface VRService extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_VRService: unique symbol;
@@ -28025,6 +28356,7 @@ interface ValueBase extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ValueBase: unique symbol;
@@ -28044,6 +28376,7 @@ interface BinaryStringValue extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BinaryStringValue: unique symbol;
@@ -28065,6 +28398,7 @@ interface BoolValue extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BoolValue: unique symbol;
@@ -28090,6 +28424,7 @@ interface BrickColorValue extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_BrickColorValue: unique symbol;
@@ -28113,6 +28448,7 @@ interface CFrameValue extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_CFrameValue: unique symbol;
@@ -28138,6 +28474,7 @@ interface Color3Value extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Color3Value: unique symbol;
@@ -28163,6 +28500,7 @@ interface DoubleConstrainedValue extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_DoubleConstrainedValue: unique symbol;
@@ -28188,6 +28526,7 @@ interface IntConstrainedValue extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_IntConstrainedValue: unique symbol;
@@ -28213,6 +28552,7 @@ interface IntValue extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_IntValue: unique symbol;
@@ -28241,6 +28581,7 @@ interface NumberValue extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_NumberValue: unique symbol;
@@ -28271,6 +28612,7 @@ interface ObjectValue extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_ObjectValue: unique symbol;
@@ -28303,6 +28645,7 @@ interface RayValue extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_RayValue: unique symbol;
@@ -28329,6 +28672,7 @@ interface StringValue extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_StringValue: unique symbol;
@@ -28354,6 +28698,7 @@ interface Vector3Value extends ValueBase {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_Vector3Value: unique symbol;
@@ -28429,6 +28774,7 @@ interface WeldConstraint extends Instance {
 	 * **DO NOT USE!**
 	 *
 	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
 	 * @deprecated
 	 */
 	readonly _nominal_WeldConstraint: unique symbol;
