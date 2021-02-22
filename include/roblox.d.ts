@@ -558,6 +558,13 @@ declare const Instance: InstanceConstructor;
  * Axes is a datatype used for the ArcHandles class to control what rotation axes are currently enabled.
  */
 interface Axes {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Axes: unique symbol;
 	/** Whether the X axis is enabled */
 	readonly X: boolean;
 	/** Whether the Y axis is enabled */
@@ -582,6 +589,13 @@ type AxesConstructor = new (...axes: Array<Enum.Axis | Enum.NormalId>) => Axes;
 declare const Axes: AxesConstructor;
 
 interface BrickColor<Number extends number = any, Name extends string = any> {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_BrickColor: unique symbol;
 	/** The unique number that identifies the BrickColor */
 	readonly Number: number extends Number ? keyof BrickColorsByNumber : Number;
 	/** The name associated with the BrickColor */
@@ -991,6 +1005,13 @@ declare const BrickColor: BrickColorConstructor;
 
 // CatalogSearchParams
 interface CatalogSearchParams {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CatalogSearchParams: unique symbol;
 	SearchKeyword: string;
 	CategoryFilter: Enum.CatalogCategoryFilter;
 	SortType: Enum.CatalogSortType;
@@ -1006,6 +1027,13 @@ declare const CatalogSearchParams: CatalogSearchParamsConstructor;
 
 // CFrame
 interface CFrame {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_CFrame: unique symbol;
 	/** The 3D position of the CFrame */
 	readonly Position: Vector3;
 	/** The x-coordinate of the position */
@@ -1107,6 +1135,13 @@ interface CFrameConstructor {
 declare const CFrame: CFrameConstructor;
 
 interface Color3 {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Color3: unique symbol;
 	/** The red value of the color (between 0 and 1) */
 	readonly R: number;
 	/** The green value of the color (between 0 and 1) */
@@ -1134,6 +1169,13 @@ declare const Color3: Color3Constructor;
 
 // ColorSequence
 interface ColorSequence {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ColorSequence: unique symbol;
 	readonly Keypoints: ReadonlyArray<ColorSequenceKeypoint>;
 }
 interface ColorSequenceConstructor {
@@ -1145,6 +1187,13 @@ declare const ColorSequence: ColorSequenceConstructor;
 
 // ColorSequenceKeypoint
 interface ColorSequenceKeypoint {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_ColorSequenceKeypoint: unique symbol;
 	readonly Time: number;
 	readonly Value: Color3;
 }
@@ -1188,6 +1237,14 @@ interface TimeValueTable {
  * DateTime objects are equal if and only if their `UnixTimestampMillis` properties are equal.
  */
 interface DateTime {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DateTime: unique symbol;
+
 	/**
 	 * The number of seconds since January 1st, 1970 at 00:00 UTC (the Unix epoch).
 	 * For more information, see [Unix timestamp](https://en.wikipedia.org/wiki/Unix_time).
@@ -1310,6 +1367,13 @@ declare const DateTime: DateTimeConstructor;
 
 // DockWidgetPluginGuiInfo
 interface DockWidgetPluginGuiInfo {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_DockWidgetPluginGuiInfo: unique symbol;
 	readonly InitialDockState: Enum.InitialDockState;
 	readonly InitialEnabled: boolean;
 	readonly InitialEnabledShouldOverrideRestore: boolean;
@@ -1331,6 +1395,13 @@ declare const DockWidgetPluginGuiInfo: DockWidgetPluginGuiInfoConstructor;
 
 // Faces
 interface Faces {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Faces: unique symbol;
 	readonly Top: boolean;
 	readonly Bottom: boolean;
 	readonly Back: boolean;
@@ -1343,6 +1414,13 @@ declare const Faces: FacesConstructor;
 
 // NumberRange
 interface NumberRange {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NumberRange: unique symbol;
 	readonly Min: number;
 	readonly Max: number;
 }
@@ -1354,6 +1432,13 @@ declare const NumberRange: NumberRangeConstructor;
 
 // NumberSequence
 interface NumberSequence {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NumberSequence: unique symbol;
 	/** An array containing keypoint values for the NumberSequence. */
 	readonly Keypoints: ReadonlyArray<NumberSequenceKeypoint>;
 }
@@ -1369,6 +1454,13 @@ declare const NumberSequence: NumberSequenceConstructor;
 
 // NumberSequenceKeypoint
 interface NumberSequenceKeypoint {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_NumberSequenceKeypoint: unique symbol;
 	readonly Envelope: number;
 	readonly Time: number;
 	readonly Value: number;
@@ -1381,6 +1473,13 @@ declare const NumberSequenceKeypoint: NumberSequenceKeypointConstructor;
 
 // PathWaypoint
 interface PathWaypoint {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PathWaypoint: unique symbol;
 	readonly Action: Enum.PathWaypointAction;
 	readonly Position: Vector3;
 }
@@ -1389,6 +1488,13 @@ declare const PathWaypoint: PathWaypointConstructor;
 
 // PhysicalProperties
 interface PhysicalProperties {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_PhysicalProperties: unique symbol;
 	readonly Density: number;
 	readonly Friction: number;
 	readonly Elasticity: number;
@@ -1410,6 +1516,13 @@ declare const PhysicalProperties: PhysicalPropertiesConstructor;
 
 // Random
 interface Random {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Random: unique symbol;
 	NextInteger(this: Random, min: number, max: number): number;
 	NextNumber(this: Random): number;
 	NextNumber(this: Random, min: number, max: number): number;
@@ -1425,6 +1538,13 @@ declare const Random: RandomConstructor;
 
 // Ray
 interface Ray {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Ray: unique symbol;
 	readonly Origin: Vector3;
 	readonly Direction: Vector3;
 	readonly Unit: Ray;
@@ -1438,6 +1558,13 @@ declare const Ray: RayConstructor;
 
 // RaycastParams
 interface RaycastParams {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_RaycastParams: unique symbol;
 	/** An array of objects whose descendants will be used in filtering raycasting candidates. */
 	FilterDescendantsInstances: Array<Instance>;
 	/**
@@ -1477,6 +1604,13 @@ interface RaycastResult {
 
 // Rect
 interface Rect {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Rect: unique symbol;
 	readonly Min: Vector2;
 	readonly Max: Vector2;
 	readonly Width: number;
@@ -1491,6 +1625,13 @@ declare const Rect: RectConstructor;
 
 // Region3
 interface Region3 {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Region3: unique symbol;
 	readonly CFrame: CFrame;
 	readonly Size: Vector3;
 	ExpandToGrid(this: Region3, resolution: number): Region3;
@@ -1502,6 +1643,13 @@ declare const Region3: Region3Constructor;
 
 // Region3int16
 interface Region3int16 {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Region3int16: unique symbol;
 	readonly Min: Vector3int16;
 	readonly Max: Vector3int16;
 }
@@ -1512,6 +1660,13 @@ declare const Region3int16: Region3int16Constructor;
 
 // TweenInfo
 interface TweenInfo {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_TweenInfo: unique symbol;
 	readonly Time: number;
 	readonly EasingStyle: Enum.EasingStyle;
 	readonly EasingDirection: Enum.EasingDirection;
@@ -1533,6 +1688,13 @@ declare const TweenInfo: TweenInfoConstructor;
 
 // UDim
 interface UDim {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UDim: unique symbol;
 	readonly Scale: number;
 	readonly Offset: number;
 }
@@ -1543,6 +1705,13 @@ declare const UDim: UDimConstructor;
 
 // UDim2
 interface UDim2 {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_UDim2: unique symbol;
 	readonly X: UDim;
 	readonly Y: UDim;
 	readonly Width: UDim;
@@ -1562,6 +1731,13 @@ declare const UDim2: UDim2Constructor;
 
 // Vector2
 interface Vector2 {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Vector2: unique symbol;
 	readonly X: number;
 	readonly Y: number;
 	/** A normalized copy of the vector - has a magnitude of 1. */
@@ -1582,6 +1758,13 @@ declare const Vector2: Vector2Constructor;
 
 // Vector2int16
 interface Vector2int16 {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Vector2int16: unique symbol;
 	readonly X: number;
 	readonly Y: number;
 }
@@ -1592,6 +1775,13 @@ declare const Vector2int16: Vector2int16Constructor;
 
 // Vector3
 interface Vector3 {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Vector3: unique symbol;
 	readonly X: number;
 	readonly Y: number;
 	readonly Z: number;
@@ -1619,6 +1809,13 @@ declare const Vector3: Vector3Constructor;
 
 // Vector3int16
 interface Vector3int16 {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @deprecated
+	 */
+	readonly _nominal_Vector3int16: unique symbol;
 	readonly X: number;
 	readonly Y: number;
 	readonly Z: number;
