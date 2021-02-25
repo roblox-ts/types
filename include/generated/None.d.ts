@@ -6082,6 +6082,12 @@ interface RodConstraint extends Constraint {
 	readonly CurrentDistance: number;
 	/** The distance apart the [RodConstraint](https://developer.roblox.com/en-us/api-reference/class/RodConstraint) attempts to keep its [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) at. Measured in studs. */
 	Length: number;
+	/** The angle of the cone limit formed along attachment point 0. Value in [0, 180]. */
+	LimitAngle0: number;
+	/** The angle of the cone limit formed along attachment point 1. Value in [0, 180]. */
+	LimitAngle1: number;
+	/** Toggles the cone limits for this constraint. */
+	LimitsEnabled: boolean;
 	/** The visualized thickness of the RodConstraint. */
 	Thickness: number;
 }
