@@ -19501,7 +19501,7 @@ interface WorldRoot extends Model {
 	 * @deprecated
 	 */
 	readonly _nominal_WorldRoot: unique symbol;
-	/** @deprecated in favor of WorldRoot.Raycast*/
+	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRay(
 		this: WorldRoot,
 		ray: Ray,
@@ -19509,7 +19509,7 @@ interface WorldRoot extends Model {
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-	/** @deprecated in favor of WorldRoot.Raycast*/
+	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRayWithIgnoreList(
 		this: WorldRoot,
 		ray: Ray,
@@ -19517,7 +19517,7 @@ interface WorldRoot extends Model {
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-	/** @deprecated in favor of WorldRoot.Raycast*/
+	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRayWithWhitelist(
 		this: WorldRoot,
 		ray: Ray,
