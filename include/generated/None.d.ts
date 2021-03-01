@@ -651,11 +651,7 @@ interface Instance {
 		recursive?: boolean,
 	): Instances[T] | undefined;
 	GetActor(this: Instance): Instance | undefined;
-	/** **Attribute Studio Beta**  
-	 * 
-	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](https://devforum.roblox.com/t/new-studio-beta-attributes/984141)` Developer Forum post.
-	 * 
-	 * This function returns the attribute which has been assigned to the given name. If no attribute has been assigned then nil is returned.
+	/** This function returns the attribute which has been assigned to the given name. If no attribute has been assigned then nil is returned.
 	 * 
 	 * For example, the following code snippet will set the value of the instance's `InitialPostion` attribute. Note that this code sample does not define `instance`:
 	 * 
@@ -672,11 +668,7 @@ interface Instance {
 	 * *   [Instance:GetAttributeChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetAttributeChangedSignal), returns an event that fires when the given attribute changes
 	 */
 	GetAttribute(this: Instance, attribute: string): unknown;
-	/** **Attribute Studio Beta**  
-	 * 
-	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](https://devforum.roblox.com/t/new-studio-beta-attributes/984141)` Developer Forum post.
-	 * 
-	 * This function returns an event that behaves exactly like the \`Changed\` event, except that the event only fires when the given attribute changes. It's generally a good idea to use this method instead of a connection to Changed with a function that checks the attribute name. Subsequent calls to this method on the same object with the same attribute name return the same event.
+	/** This function returns an event that behaves exactly like the `Changed` event, except that the event only fires when the given attribute changes. It's generally a good idea to use this method instead of a connection to Changed with a function that checks the attribute name. Subsequent calls to this method on the same object with the same attribute name return the same event.
 	 * 
 	 * It is similar to [Instance:GetPropertyChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetPropertyChangedSignal) but for attributes.
 	 * 
@@ -699,17 +691,13 @@ interface Instance {
 	 * *   [Instance.AttributeChanged](https://developer.roblox.com/en-us/api-reference/event/Instance/AttributeChanged), fires whenever an attribute is changed on the instance
 	 */
 	GetAttributeChangedSignal(this: Instance, attribute: string): RBXScriptSignal;
-	/** **Attribute Studio Beta**  
-	 * 
-	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](https://devforum.roblox.com/t/new-studio-beta-attributes/984141)` Developer Forum post.
-	 * 
-	 * This function returns a dictionary of string → variant pairs for each attribute where the string is the name of the attribute and the variant is a non-nil value.
+	/** This function returns a dictionary of string → variant pairs for each attribute where the string is the name of the attribute and the variant is a non-nil value.
 	 * 
 	 * For example, the following code snippet will print an instance's attributes and values. Note that this code sample does not define `instance`:
 	 * 
 	 * ```lua
-	 * local attributes = instance:GetAttributes
-	 * for name, value in pairs(instance:GetAttributes()) do
+	 * local attributes = instance:GetAttributes()
+	 * for name, value in pairs(attributes) do
 	 *     print(name .. “ “ .. value)
 	 * end
 	 * ``` 
@@ -826,11 +814,7 @@ interface Instance {
 	 * See also, [Instance:IsAncestorOf](https://developer.roblox.com/en-us/api-reference/function/Instance/IsAncestorOf).
 	 */
 	IsDescendantOf(this: Instance, ancestor: Instance): boolean;
-	/** **Attribute Studio Beta**  
-	 * 
-	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](https://devforum.roblox.com/t/new-studio-beta-attributes/984141)` Developer Forum post.
-	 * 
-	 * This function sets the attribute with the given name to the given value. If the value given is nil, then the attribute will be removed (since nil is returned by default).
+	/** This function sets the attribute with the given name to the given value. If the value given is nil, then the attribute will be removed (since nil is returned by default).
 	 * 
 	 * For example, the following code snippet will set the instance's `InitialPosition` attribute to `DataType/Vector3|Vector3.new(0, 0, 0)`. Note that this code sample does not define `instance`:
 	 * 
@@ -919,11 +903,7 @@ interface Instance {
 	 * ```
 	 */
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance | undefined) => void>;
-	/** **Attribute Studio Beta**  
-	 * 
-	 * Attributes are currently released in a beta phase and may not work for every developer. For more information on the beta, and how to opt in, see `[this](https://devforum.roblox.com/t/new-studio-beta-attributes/984141)` Developer Forum post.
-	 * 
-	 * This event fires whenever an attribute is changed on the instance. This includes when an attribute is set to nil. The name of the attribute that has been changed is passed to the connected function.
+	/** This event fires whenever an attribute is changed on the instance. This includes when an attribute is set to nil. The name of the attribute that has been changed is passed to the connected function.
 	 * 
 	 * For example, the following code snippet will connect the `attributeChanged` function to fire whenever one of `instance's` attributes changes. Note that this code sample does not define `instance`:
 	 * 
@@ -24803,6 +24783,7 @@ interface Teams extends Instance {
 	GetTeams(this: Teams): Array<Team>;
 }
 
+/** This class is an instance that is returned by the [TeleportService:TeleportAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportAsync) function with information about the teleport. */
 interface TeleportAsyncResult extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -24812,16 +24793,57 @@ interface TeleportAsyncResult extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TeleportAsyncResult: unique symbol;
-	/** [NO DOCUMENTATION] *
+	/** The private server id of the reserved server that the players are being teleported to. This field is populated only if the teleport is to a reserved server.
+	 * 
+	 * **Note**
+	 * 
+	 * This field is not the same as the instanceId, please see: [DataModel.PrivateServerId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PrivateServerId)
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
+	The private server id of the reserved server that the players are being teleported to. This field is populated only if the teleport is to a reserved server.
+	 * 
+	 * **Note**
+	 * 
+	 * This field is not the same as the instanceId, please see: [DataModel.PrivateServerId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PrivateServerId)
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
+	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly PrivateServerId: string;
-	/** [NO DOCUMENTATION] *
+	/** The access code of the reserved server that the players are being teleported to. This field is populated only if the teleport is to a reserved server. This allows developers to perform subsequent teleports to this same reserved server.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
+	The access code of the reserved server that the players are being teleported to. This field is populated only if the teleport is to a reserved server. This allows developers to perform subsequent teleports to this same reserved server.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
+	 *
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly ReservedServerAccessCode: string;
 }
 
+/** This class is an optional parameter to the [TeleportService:TeleportAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportAsync) function that allows developers to provide arguments for the teleport call.
+ * 
+ * Certain arguments in the class are not compatible with each other and these error cases will be handled by TeleportAsync (more details in the `Error` section on the function page).
+ * 
+ * See also
+ * --------
+ * 
+ * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
+ */
 interface TeleportOptions extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -24831,11 +24853,31 @@ interface TeleportOptions extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TeleportOptions: unique symbol;
-	/** [NO DOCUMENTATION] */
+	/** This property indicates the reserved server access code for the reserved server that the Teleport should be to.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
+	 */
 	ReservedServerAccessCode: string;
-	/** [NO DOCUMENTATION] */
+	/** This property indicates the [DataModel.JobId](https://developer.roblox.com/en-us/api-reference/property/DataModel/JobId) of the server instance to teleport to.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
+	 */
 	ServerInstanceId: string;
-	/** [NO DOCUMENTATION] */
+	/** This property indicates whether the teleport call should create a new reserved server. When set to true, a reserved server will be created and the player(s) will be teleported to the new server.
+	 * 
+	 * If set to false, the player(s) will be teleported to the public server with the specified [TeleportOptions.ServerInstanceId](https://developer.roblox.com/en-us/api-reference/property/TeleportOptions/ServerInstanceId) if provided. When [TeleportOptions.ServerInstanceId](https://developer.roblox.com/en-us/api-reference/property/TeleportOptions/ServerInstanceId) is blank or no matching server is found, a new public server will be created to teleport the player(s) to.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
+	 */
 	ShouldReserveServer: boolean;
 	/** [NO DOCUMENTATION] */
 	GetTeleportData(this: TeleportOptions): unknown;
@@ -25380,6 +25422,56 @@ interface TeleportService extends Instance {
 	 * Players on Xbox One with cross-platform play disabled will arrive in a different server with players with cross-platform play enabled. This can cause multiple game servers with the same PrivateServerId to exist.
 	 */
 	ReserveServer(this: TeleportService, placeId: number): LuaTuple<[string, string]>;
+	/** This function serves as the all-encompassing method to teleport a player or group of players from one server to another.
+	 * 
+	 * Previous iterations of the [TeleportService](https://developer.roblox.com/en-us/api-reference/class/TeleportService) relied on several different functions for each scenario. This function combines the previous functions into a single method.
+	 * 
+	 * There are several scenarios where this may be used, including:
+	 * 
+	 * *   Teleport any number of players to a Public Server
+	 * *   Follow a Friend to a Different Place
+	 * *   Teleport any number of Players to a Reserved Server
+	 * 
+	 * Errors
+	 * ------
+	 * 
+	 * The errors we have listed here are mainly input validation, there could also be unexpected runtime errors (for example an http request error) that could cause the API to fail.
+	 * 
+	 * Error
+	 * 
+	 * Description
+	 * 
+	 * Invalid placeId
+	 * 
+	 * placeId below 0
+	 * 
+	 * Players empty
+	 * 
+	 * If the size of list of players is less than 1
+	 * 
+	 * List of players instances is incorrect
+	 * 
+	 * Any member of the players list is not of type [Player](https://developer.roblox.com/en-us/api-reference/class/Player)
+	 * 
+	 * TeleportOptions not of correct type
+	 * 
+	 * teleportOption is not of type [TeleportOptions](https://developer.roblox.com/en-us/api-reference/class/TeleportOptions)
+	 * 
+	 * TeleportAsync called from Client
+	 * 
+	 * Can only be called from the server
+	 * 
+	 * Incompatible Parameters
+	 * 
+	 * *   ReservedServerAccessCode + ServerInstanceId
+	 * *   ShouldReserveServer + ServerInstanceId
+	 * *   ShouldReserveServer + ReservedServerAccessCode
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
+	 */
 	TeleportAsync(this: TeleportService, placeId: number, players: Array<Instance>, teleportOptions?: TeleportOptions): Instance | undefined;
 	/** This function teleports a group of [Players](https://developer.roblox.com/en-us/api-reference/class/Player) to the same server instance in the given place. It returns the [DataModel.JobId](https://developer.roblox.com/en-us/api-reference/property/DataModel/JobId) of the server instance the players were teleported to.
 	 * 
