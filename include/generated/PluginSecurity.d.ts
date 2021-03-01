@@ -434,10 +434,25 @@ interface File extends Instance {
 	 */
 	readonly _nominal_File: unique symbol;
 	/**
+	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
+	 * @deprecated
+	 */
+	readonly FileName: string;
+	/**
+	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
+	 * @deprecated
+	 */
+	readonly FileSize: number;
+	/**
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly Size: number;
 	GetBinaryContents(this: File): string;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetFileContentsBinary(this: File): string;
 	GetTemporaryId(this: File): string;
 }
 
@@ -695,6 +710,18 @@ interface KeyframeSequenceProvider extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_KeyframeSequenceProvider: unique symbol;
+	/**
+	 * Returns a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) from a given asset URL.
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetKeyframeSequence(this: KeyframeSequenceProvider, assetId: string): Instance | undefined;
+	/**
+	 * Returns a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) from the supplied assetId. Can optionally cache to reduce unnecessary loading freezes.
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetKeyframeSequenceById(this: KeyframeSequenceProvider, assetId: number, useCache: boolean): Instance | undefined;
 	GetMemStats(this: KeyframeSequenceProvider): object;
 	/**
 	 * Generates a temporary asset ID from a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) that can be used for localized testing of an animation.
@@ -1043,6 +1070,25 @@ interface NetworkSettings extends Instance {
 	 * TrackPhysicsDetails is a diagnostics property that, when set to true, tells the replicator stats to sample replication physics details.
 	 */
 	TrackPhysicsDetails: boolean;
+}
+
+interface Terrain extends BasePart {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Terrain: unique symbol;
+	/**
+	 * Transforms the legacy terrain engine into the new terrain engine.
+	 * 
+	 * All places now automatically use the new terrain engine, so this method is obsolete.
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	ConvertToSmooth(this: Terrain): void;
 }
 
 interface Model extends PVInstance {
@@ -1619,6 +1665,12 @@ interface Plugin extends Instance {
 	 * Retrieves a previously stored value with the given key, or nil if the given key doesn't exist.
 	 */
 	GetSetting(this: Plugin, key: string): unknown;
+	/**
+	 * Returns the studio user's userId if they're logged in, otherwise returns 0.
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetStudioUserId(this: Plugin): number;
 	Invoke(this: Plugin, key: string, arguments: Array<any>): void;
 	/**
 	 * This function returns true if this plugin is currently active, after having been activated via the [Plugin:Activate](https://developer.roblox.com/en-us/api-reference/function/Plugin/Activate) function.
@@ -1942,6 +1994,11 @@ interface PluginManagerInterface extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_PluginManagerInterface: unique symbol;
+	/**
+	 * Tags: Deprecated, CustomLuaState
+	 * @deprecated
+	 */
+	CreatePlugin(this: PluginManagerInterface): Instance | undefined;
 	ExportPlace(this: PluginManagerInterface, filePath?: string): void;
 	ExportSelection(this: PluginManagerInterface, filePath?: string): void;
 }
@@ -2413,6 +2470,12 @@ interface RunService extends Instance {
 	 * *   [RunService:Stop](https://developer.roblox.com/en-us/api-reference/function/RunService/Stop)
 	 */
 	Pause(this: RunService): void;
+	/**
+	 * The Reset function resets the current game to a waypoint set when Run was called. This method should only be used after Run was called.
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	Reset(this: RunService): void;
 	/**
 	 * This function runs the game's simulation, running physics and scripts.
 	 * 
@@ -2960,6 +3023,11 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Keyword Color"]: Color3;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	Language: Enum.LanguagePreference;
 	["Line Thickness"]: number;
 	readonly LocalAssetsFolder: QDir;
 	/**
@@ -3082,6 +3150,11 @@ interface Studio extends Instance {
 	 * ```
 	 */
 	Theme: StudioTheme;
+	/**
+	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
+	 * @deprecated
+	 */
+	readonly ["UI Theme"]: Enum.UITheme;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -3344,6 +3417,16 @@ interface StudioService extends Instance {
 	 */
 	PromptImportFiles(this: StudioService, fileTypeFilter?: Array<any>): Array<Instance>;
 	/**
+	 * Tags: Yields, Deprecated
+	 * @deprecated
+	 */
+	PromptImportLocalAsset(this: StudioService, prompt: string, fileTypeFilter?: Array<any>): Instance | undefined;
+	/**
+	 * Tags: Yields, Deprecated
+	 * @deprecated
+	 */
+	PromptImportLocalAssets(this: StudioService, prompt: string, fileTypeFilter?: Array<any>): Array<Instance>;
+	/**
 	 * Tags: Yields
 	 */
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
@@ -3380,6 +3463,22 @@ interface StudioTheme extends Instance {
 	 * See the [StudioStyleGuideColor](https://developer.roblox.com/en-us/api-reference/enum/StudioStyleGuideColor) reference for a list of Studio elements and [StudioStyleGuideModifier](https://developer.roblox.com/en-us/api-reference/enum/StudioStyleGuideModifier) for a list of modifiers.
 	 */
 	GetColor(this: StudioTheme, styleguideitem: CastsToEnum<Enum.StudioStyleGuideColor>, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): Color3;
+	/**
+	 * The GetPath function returns the path of an asset (or image) for the `Id` and `Modifier`. We can have different icons to be loaded depending on the theme.
+	 * 
+	 * The `StyleGuideModifer` argument's default value is `Enum\StyleGuideModifier`, which applies no modifier.
+	 * 
+	 * This is intended for use within [Plugins](https://developer.roblox.com/en-us/api-reference/class/Plugin), but will also execute in the Command Line.
+	 * 
+	 * For instance, if you would like to get the path of the “MoreButton” image, you would use the following code:
+	 * 
+	 * ```lua
+	 * settings().Studio.Theme:GetPath("MoreButton")
+	 * ```
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetPath(this: StudioTheme, assetid: string, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): string;
 }
 
 /** TaskScheduler is a read-only settings class responsible for the Task Scheduler feature.  
@@ -3413,6 +3512,25 @@ interface TaskScheduler extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly ThreadPoolSize: number;
+}
+
+interface TerrainRegion extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TerrainRegion: unique symbol;
+	/**
+	 * Calling this method transforms the TerrainRegion into a [TerrainRegion](https://developer.roblox.com/en-us/api-reference/class/TerrainRegion) usable for [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain). This can only be done from a plugin, when in edit mode.
+	 * 
+	 * The game can't be running, nor can it have a [NetworkServer](https://developer.roblox.com/en-us/api-reference/class/NetworkServer).
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	ConvertToSmooth(this: TerrainRegion): void;
 }
 
 /** The TestService is a service used by Roblox internally to run analytical tests on their engine.  
