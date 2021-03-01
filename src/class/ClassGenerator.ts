@@ -261,7 +261,7 @@ const MEMBER_BLACKLIST = new Map([
 	["Debris", new Set(["MaxItems"])],
 	["LayerCollector", new Set(["GetLayoutNodeTree"])],
 	["GuiBase3d", new Set(["Color"])],
-	["Model", new Set(["Move"])],
+	["Model", new Set(["move"])],
 	["Players", new Set(["playerFromCharacter", "players"])],
 	["ServiceProvider", new Set(["service"])],
 	["DataModel", new Set(["lighting"])],
