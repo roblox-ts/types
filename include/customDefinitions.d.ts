@@ -950,7 +950,7 @@ interface WorldRoot extends Model {
 		raycastParams?: RaycastParams,
 	): RaycastResult | undefined;
 
-	/** @deprecated in favor of WorldRoot.Raycast*/
+	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRay(
 		this: WorldRoot,
 		ray: Ray,
@@ -959,7 +959,7 @@ interface WorldRoot extends Model {
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 
-	/** @deprecated in favor of WorldRoot.Raycast*/
+	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRayWithIgnoreList(
 		this: WorldRoot,
 		ray: Ray,
@@ -968,7 +968,7 @@ interface WorldRoot extends Model {
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
 
-	/** @deprecated in favor of WorldRoot.Raycast*/
+	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRayWithWhitelist(
 		this: WorldRoot,
 		ray: Ray,
