@@ -21618,12 +21618,6 @@ interface Model extends PVInstance {
 	 * The translation is applied in world space rather than object space, meaning even if the model's parts are orientated differently it will still move along the standard axis.
 	 */
 	TranslateBy(this: Model, delta: Vector3): void;
-	/**
-	 * Use MoveTo() instead
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	move(this: Model, location: Vector3): void;
 }
 
 interface Actor extends Model {
