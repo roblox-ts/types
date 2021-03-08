@@ -19835,27 +19835,50 @@ interface BasePart extends PVInstance {
 	 */
 	Anchored: boolean;
 	/**
-	 * The angular velocity of this part's rigid body - collection of parts connected by welds or animated joints.
+	 * The angular velocity vector of this `BasePart|part's` assembly. It's the rate of change of orientation in radians per second.
+	 * 
+	 * Angular velocity is the same at every point of the assembly.
+	 * 
+	 * Setting the velocity directly may lead to unrealistic motion. Using [Torque](https://developer.roblox.com/en-us/api-reference/class/Torque) or [AngularVelocity](https://developer.roblox.com/en-us/api-reference/class/AngularVelocity) constraint is preferred, or use [BasePart:ApplyImpulse](https://developer.roblox.com/en-us/api-reference/function/BasePart/ApplyImpulse) if you want instantaneous change in velocity.
 	 * Tags: NotReplicated
 	 */
 	AssemblyAngularVelocity: Vector3;
 	/**
-	 * The position of the center mass of this part's assembly - collection of parts connected by welds or animated joints.
+	 * A position calculated via the [mass](https://developer.roblox.com/en-us/api-reference/property/BasePart/Mass) and [position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position) of all the parts in the assembly.
+	 * 
+	 * If the assembly has an anchored part, that part's `BasePart/AssemblyCenterOfMass|center of mass` will be the assemblies center of mass, and the assembly will have infinite mass.
+	 * 
+	 * Knowing the center of mass can help the assembly maintain stability. A force applied to the center of mass will not cause `BasePart/AssemblyAngularVelocity|angular acceleration`, only [linear](https://developer.roblox.com/en-us/api-reference/property/BasePart/AssemblyLinearVelocity). An assembly with a low center of mass will have a better time staying upright.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly AssemblyCenterOfMass: Vector3;
 	/**
-	 * The linear velocity of this part's assembly - collection of parts connected by welds or animated joints.
+	 * The linear velocity vector of this `BasePart|part's` assembly. It's the rate of change in position of the assembly's `BasePart/AssemblyCenterOfMass|center of mass` in studs per second.
+	 * 
+	 * If you want to know the velocity at a point other than the assembly's center of mass, use [BasePart:GetVelocityAtPosition](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetVelocityAtPosition).
+	 * 
+	 * Setting the velocity directly may lead to unrealistic motion. Using a [VectorForce](https://developer.roblox.com/en-us/api-reference/class/VectorForce) constraint is preferred, or use [BasePart:ApplyImpulse](https://developer.roblox.com/en-us/api-reference/function/BasePart/ApplyImpulse) if you want instantaneous change in velocity.
 	 * Tags: NotReplicated
 	 */
 	AssemblyLinearVelocity: Vector3;
 	/**
-	 * The total mass of this part's assembly - collection of parts connected by welds or animated joints.
+	 * The sum of the mass of all the [parts](https://developer.roblox.com/en-us/api-reference/class/BasePart) in this part's assembly. Parts that are [Massless](https://developer.roblox.com/en-us/api-reference/property/BasePart/Massless) and are not the assembly's root part will not contribute to the AssemblyMass.
+	 * 
+	 * If the assembly has an anchored part, the assembly's mass is considered infinite.
+	 * 
+	 * Constraints and other physical interactions between unanchored assemblies with a large difference in mass may cause instabilities.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly AssemblyMass: number;
 	/**
-	 * The root part of this part's assembly - can be changed with RootPriority or Anchored property.
+	 * This property indicates the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) automatically chosen to represent the `Assembly|assembly's` root part. It is the same part that's returned when developers call `BasePart/GetRootPart|GetRootPart()`.
+	 * 
+	 * The root part can be changed by changing the [RootPriority](https://developer.roblox.com/en-us/api-reference/property/BasePart/RootPriority) of the parts in the assembly.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   For more information on root parts, take a look at the [Understanding Root Parts](../../articles/understanding-root-parts) article.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly AssemblyRootPart: BasePart | undefined;
@@ -20390,8 +20413,33 @@ interface BasePart extends PVInstance {
 	 * @deprecated
 	 */
 	Velocity: Vector3;
+	/**
+	 * Applies an instant angular force impulse to this `BasePart|part's` assembly, causing the assembly to spin.
+	 * 
+	 * The resulting angular velocity from the impulse relies on the assembly's [mass](https://developer.roblox.com/en-us/api-reference/property/BasePart/AssemblyMass). So a higher impulse is required to move more massive assemblies. Impulses are useful for cases where you want a force applied instantly, such as an explosion or collision.
+	 * 
+	 * If the part is owned by the server, this function must be called on a server [Script](https://developer.roblox.com/en-us/api-reference/class/Script). If the part is owned by a client, this function must be called on a \`LocalScript\`\`.
+	 */
 	ApplyAngularImpulse(this: BasePart, impulse: Vector3): void;
+	/**
+	 * This function applies an instant force impulse to this `BasePart|part's` assembly.
+	 * 
+	 * The force is applied at the assembly's `BasePart/AssemblyCenterOfMass|center of mass`, so the resulting movement will only be linear.
+	 * 
+	 * The resulting velocity from the impulse relies on the assembly's [mass](https://developer.roblox.com/en-us/api-reference/property/BasePart/AssemblyMass). So a higher impulse is required to move more massive assemblies. Impulses are useful for cases where you want a force applied instantly, such as an explosion or collision.
+	 * 
+	 * If the part is owned by the server, this function must be called on a server [Script](https://developer.roblox.com/en-us/api-reference/class/Script). If the part is owned by a client, this function must be called on a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
+	 */
 	ApplyImpulse(this: BasePart, impulse: Vector3): void;
+	/**
+	 * This function pplies an instant force impulse to this `BasePart|part's` assembly, at the specified position in world space.
+	 * 
+	 * If the position is not at the assembly's `BasePart/AssemblyCenterOfMass|center of mass`, the impulse will cause a positional and rotational movement.
+	 * 
+	 * The resulting velocity from the impulse relies on the assembly's [mass](https://developer.roblox.com/en-us/api-reference/property/BasePart/AssemblyMass). So a higher impulse is required to move more massive assemblies. Impulses are useful for cases where developers want a force applied instantly, such as an explosion or collision.
+	 * 
+	 * If the part is owned by the server, this function must be called on a server [Script](https://developer.roblox.com/en-us/api-reference/class/Script). If the part is owned by a client, this function must be called on a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
+	 */
 	ApplyImpulseAtPosition(this: BasePart, impulse: Vector3, position: Vector3): void;
 	/**
 	 * Breaks any surface connection with any adjacent part, including [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld) and other [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance).
@@ -27821,6 +27869,14 @@ interface TeleportOptions extends Instance {
 	 */
 	ShouldReserveServer: boolean;
 	GetTeleportData(this: TeleportOptions): unknown;
+	/**
+	 * This is a setter function for data to be passed to the destination place. On the destination place, this data can be retrieved using [TeleportService:GetLocalPlayerTeleportData](https://developer.roblox.com/en-us/api-reference/function/TeleportService/GetLocalPlayerTeleportData).
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
+	 */
 	SetTeleportData(this: TeleportOptions, teleportData?: any): void;
 }
 
