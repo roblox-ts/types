@@ -7,6 +7,7 @@ interface Services {
 	ABTestService: ABTestService;
 	ChangeHistoryService: ChangeHistoryService;
 	CoreGui: CoreGui;
+	DebuggerManager: DebuggerManager;
 	KeyframeSequenceProvider: KeyframeSequenceProvider;
 	NetworkClient: NetworkClient;
 	NetworkServer: NetworkServer;
@@ -41,7 +42,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	ClientReplicator: ClientReplicator;
 	DataModelSession: DataModelSession;
 	DebuggerBreakpoint: DebuggerBreakpoint;
-	DebuggerManager: DebuggerManager;
 	DebuggerWatch: DebuggerWatch;
 	DebugSettings: DebugSettings;
 	DockWidgetPluginGui: DockWidgetPluginGui;
@@ -81,6 +81,7 @@ interface Instance {
 	readonly _nominal_Instance: unique symbol;
 	/**
 	 * This property used to protect objects in the [CoreGui](https://developer.roblox.com/en-us/api-reference/class/CoreGui) service from being altered by users in an unauthorized manner. It has been deprecated and does not do anything.
+	 * Tags: Hidden
 	 */
 	RobloxLocked: boolean;
 	/**
@@ -255,11 +256,11 @@ interface DataModelSession extends Instance {
 	 */
 	readonly _nominal_DataModelSession: unique symbol;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly CurrentDataModelType: Enum.StudioDataModelType;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly SessionId: string;
 	readonly CurrentDataModelTypeAboutToChange: RBXScriptSignal<(dataModelType: Enum.StudioDataModelType) => void>;
@@ -679,6 +680,7 @@ interface KeyframeSequence extends Instance {
 	readonly _nominal_KeyframeSequence: unique symbol;
 	/**
 	 * Contains the hip height of the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) of the model that was used to author this [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence). Default value is 1.35 since that is the hip height set for a standard R15 [character](https://developer.roblox.com/en-us/api-reference/class/Character).
+	 * Tags: Hidden
 	 */
 	AuthoredHipHeight: number;
 }
@@ -856,7 +858,7 @@ interface MultipleDocumentInterfaceInstance extends Instance {
 	 */
 	readonly _nominal_MultipleDocumentInterfaceInstance: unique symbol;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly FocusedDataModelSession: Instance | undefined;
 	readonly DataModelSessionEnded: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
@@ -1557,20 +1559,20 @@ interface Plugin extends Instance {
 	readonly GridSize: number;
 	/**
 	 * This member is for a feature that is not yet released.
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly HostDataModelType: Enum.StudioDataModelType;
 	/**
 	 * This member is for a feature that is not yet released.
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly HostDataModelTypeIsCurrent: boolean;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly MultipleDocumentInterfaceInstance: MultipleDocumentInterfaceInstance | undefined;
 	/**
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	readonly UsesAssetInsertionDrag: boolean;
 	/**
@@ -1908,15 +1910,15 @@ interface PluginAction extends Instance {
 	 */
 	readonly AllowBinding: boolean;
 	/**
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	readonly Checked: boolean;
 	/**
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	readonly DefaultShortcut: string;
 	/**
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	readonly Enabled: boolean;
 	/**
@@ -2655,7 +2657,7 @@ interface Selection extends Instance {
 	 */
 	readonly _nominal_Selection: unique symbol;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly ActiveInstance: Instance | undefined;
 	Add(this: Selection, instancesToAdd: Array<Instance>): void;
@@ -3023,11 +3025,6 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Keyword Color"]: Color3;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	Language: Enum.LanguagePreference;
 	["Line Thickness"]: number;
 	readonly LocalAssetsFolder: QDir;
 	/**
@@ -3240,7 +3237,7 @@ interface StudioService extends Instance {
 	 */
 	readonly ActiveScript: Instance | undefined;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly AlignDraggedObjects: boolean;
 	/**
@@ -3259,11 +3256,11 @@ interface StudioService extends Instance {
 	 */
 	readonly GridSize: number;
 	/**
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	readonly HoverInstance: Instance | undefined;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly InstalledPluginData: string;
 	/**
@@ -3288,7 +3285,7 @@ interface StudioService extends Instance {
 	 */
 	readonly RotateIncrement: number;
 	/**
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	readonly ShowActiveInstanceHighlight: boolean;
 	/**

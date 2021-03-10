@@ -8089,42 +8089,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<Language>
 	}
 	export type Language = Language.Default;
-	export namespace LanguagePreference {
-		export interface SystemDefault {
-			Name: "SystemDefault";
-			Value: 0;
-			EnumType: EnumType<LanguagePreference>;
-		}
-
-		export const SystemDefault: SystemDefault;
-
-		export interface English {
-			Name: "English";
-			Value: 1;
-			EnumType: EnumType<LanguagePreference>;
-		}
-
-		export const English: English;
-
-		export interface SimplifiedChinese {
-			Name: "SimplifiedChinese";
-			Value: 2;
-			EnumType: EnumType<LanguagePreference>;
-		}
-
-		export const SimplifiedChinese: SimplifiedChinese;
-
-		export interface Korean {
-			Name: "Korean";
-			Value: 3;
-			EnumType: EnumType<LanguagePreference>;
-		}
-
-		export const Korean: Korean;
-
-		export function GetEnumItems(this: defined): Array<LanguagePreference>
-	}
-	export type LanguagePreference = LanguagePreference.SystemDefault | LanguagePreference.English | LanguagePreference.SimplifiedChinese | LanguagePreference.Korean;
 	export namespace LeftRight {
 		export interface Left {
 			Name: "Left";
