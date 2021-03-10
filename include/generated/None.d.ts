@@ -30,6 +30,7 @@ interface Services {
 	HeightmapImporterService: HeightmapImporterService;
 	HttpService: HttpService;
 	ILegacyStudioBridge: ILegacyStudioBridge;
+	IncrementalPatchBuilder: IncrementalPatchBuilder;
 	InsertService: InsertService;
 	InternalContainer: InternalContainer;
 	IXPService: IXPService;
@@ -10069,6 +10070,7 @@ interface TextButton extends GuiButton {
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly LocalizedText: string;
+	MaxVisibleGraphemes: number;
 	/**
 	 * This property determines whether the [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton) renders the [TextButton.Text](https://developer.roblox.com/en-us/api-reference/property/TextButton/Text) string using rich text formatting. Rich text uses simple markup tags to style sections of the string in bold, italics, specific colors, and more.
 	 * 
@@ -10337,6 +10339,7 @@ interface TextLabel extends GuiLabel {
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly LocalizedText: string;
+	MaxVisibleGraphemes: number;
 	/**
 	 * This property determines whether the [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel) renders the [TextLabel.Text](https://developer.roblox.com/en-us/api-reference/property/TextLabel/Text) string using rich text formatting. Rich text uses simple markup tags to style sections of the string in bold, italics, specific colors, and more.
 	 * 
@@ -10704,6 +10707,7 @@ interface TextBox extends GuiObject {
 	 * Controls the height of lines, as a multiple of the font's em square size, by scaling the spacing between lines of text in the [TextBox](https://developer.roblox.com/en-us/api-reference/class/TextBox). Valid values range from 1.0 to 3.0, defaulting to 1.0.
 	 */
 	LineHeight: number;
+	MaxVisibleGraphemes: number;
 	/**
 	 * When set to true, text inside a TextBox is able to move onto multiple lines. This also enables players to use the enter key to move onto a new line.
 	 */
@@ -14206,6 +14210,17 @@ interface IXPService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_IXPService: unique symbol;
+}
+
+interface IncrementalPatchBuilder extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_IncrementalPatchBuilder: unique symbol;
 }
 
 /** An **InputObject** represents a single user input, such as mouse movement, touches, key presses and more. It is created when an input begins.
@@ -23188,13 +23203,13 @@ interface Player extends Instance {
 	 * *   Instances cost their DataCost in data complexity units.
 	 * *   Saving the default value (0 for numbers, false for booleans, “” for strings and nil for Instances) removes the key from the DataComplexity count.
 	 * *   If, when using the SaveBoolean, SaveString, SaveNumber or SaveInstance functions, the DataComplexity for the player goes over the limit (currently 45000 units, defined by DataComplexityLimit), the function throws an error, the value is not saved, and any previous value of the key that was being saved to is deleted.
-	 * Tags: ReadOnly, NotReplicated, Deprecated
+	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
 	 * @deprecated
 	 */
 	readonly DataComplexity: number;
 	/**
 	 * This property was once used by an ancient data persistence method to indicate when the player's data is available to load. Becomes true when data is available.
-	 * Tags: ReadOnly, NotReplicated, Deprecated
+	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
 	 * @deprecated
 	 */
 	readonly DataReady: boolean;
@@ -25421,8 +25436,6 @@ interface RunService extends Instance {
 	 * ``` 
 	 * 
 	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
-	 * Tags: Deprecated
-	 * @deprecated
 	 */
 	readonly Heartbeat: RBXScriptSignal<(deltaTime: number) => void>;
 	readonly PostSimulation: RBXScriptSignal<(deltaTime: number) => void>;
@@ -25451,8 +25464,6 @@ interface RunService extends Instance {
 	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
 	 * 
 	 * As RenderStepped is client-side only, it can be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) required by a LocalScript.
-	 * Tags: Deprecated
-	 * @deprecated
 	 */
 	readonly RenderStepped: RBXScriptSignal<(deltaTime: number) => void>;
 	/**
@@ -25473,8 +25484,6 @@ interface RunService extends Instance {
 	 * ``` 
 	 * 
 	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
-	 * Tags: Deprecated
-	 * @deprecated
 	 */
 	readonly Stepped: RBXScriptSignal<(time: number, deltaTime: number) => void>;
 }
@@ -32172,6 +32181,7 @@ interface WeldConstraint extends Instance {
 	readonly Active: boolean;
 	/**
 	 * The **Enabled** property of a [WeldConstraint](https://developer.roblox.com/en-us/api-reference/class/WeldConstraint) sets whether the constraint is active or not. When this property is set to true, if the constraint's [WeldConstraint.Part0](https://developer.roblox.com/en-us/api-reference/property/WeldConstraint/Part0) and [WeldConstraint.Part1](https://developer.roblox.com/en-us/api-reference/property/WeldConstraint/Part1) properties are set, then the constraint will ensure that its two connected parts will be locked together.
+	 * Tags: NotReplicated
 	 */
 	Enabled: boolean;
 	/**
