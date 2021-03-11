@@ -1109,14 +1109,12 @@ interface CFrameConstructor {
 	 * This function replaces the `CFrame.new(Vector3, Vector3)` constructor which accomplished a similar task. This function allows you to specify the `up` Vector, using the same default as the old constructor.
 	 */
 	lookAt: (at: Vector3, lookAt: Vector3, up?: Vector3) => CFrame;
-	/** Creates a blank identity CFrame. */
-	new (): CFrame;
 	/** Creates a CFrame from a Vector3 */
 	new (pos: Vector3): CFrame;
-	/** Creates a CFrame located at pos with it’s lookVector pointing towards the lookAt position. */
-	new (pos: Vector3, lookAt: Vector3): CFrame;
 	/** Creates a CFrame from position (x, y, z). */
 	new (x: number, y: number, z: number): CFrame;
+	/** Creates a blank identity CFrame. */
+	new (): CFrame;
 	/** Creates a CFrame from position (x, y, z) and quaternion (qX, qY, qZ, qW) */
 	new (x: number, y: number, z: number, qX: number, qY: number, qZ: number, qW: number): CFrame;
 	/** Creates a CFrame from position (x, y, z) with an orientation specified by the rotation matrix `[[R00 R01 R02] [R10 R11 R12] [R20 R21 R22]]` */
@@ -1134,6 +1132,8 @@ interface CFrameConstructor {
 		R21: number,
 		R22: number,
 	): CFrame;
+	/** Creates a CFrame located at pos with it’s lookVector pointing towards the lookAt position. */
+	new (pos: Vector3, lookAt: Vector3): CFrame;
 }
 
 declare const CFrame: CFrameConstructor;
@@ -1517,7 +1517,6 @@ interface PhysicalProperties {
 	readonly ElasticityWeight: number;
 }
 interface PhysicalPropertiesConstructor {
-	new (material: Enum.Material): PhysicalProperties;
 	new (density: number, friction: number, elasticity: number): PhysicalProperties;
 	new (
 		density: number,
@@ -1526,6 +1525,7 @@ interface PhysicalPropertiesConstructor {
 		frictionWeight: number,
 		elasticityWeight: number,
 	): PhysicalProperties;
+	new (material: Enum.Material): PhysicalProperties;
 }
 declare const PhysicalProperties: PhysicalPropertiesConstructor;
 
@@ -1744,9 +1744,9 @@ interface UDim2 {
 }
 
 interface UDim2Constructor {
-	new (): UDim2;
 	new (xScale: number, xOffset: number, yScale: number, yOffset: number): UDim2;
 	new (xDim: UDim, yDim: UDim): UDim2;
+	new (): UDim2;
 	fromOffset: (x?: number, y?: number) => UDim2;
 	fromScale: (x?: number, y?: number) => UDim2;
 }
