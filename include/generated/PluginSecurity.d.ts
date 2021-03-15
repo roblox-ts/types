@@ -512,40 +512,36 @@ interface PluginGui extends LayerCollector {
 	 * 
 	 * As the default closing behavior is overwritten by this function, you'll need to configure the [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui) to close manually by setting `LayerCollector/Enabled|PluginGui.Enabled` to _false_. For example, in the below snippet users are required to click a confirm button to close the GUI:
 	 * 
-	 * ```lua
 	 * local closing = false
 	 * pluginGui:BindToClose(function()
-	 *     -- make sure we haven't already made a button
-	 *     if closing then
-	 *         return
-	 *     end
-	 *     closing = true
+	 * 	-- make sure we haven't already made a button
+	 * 	if closing then
+	 * 		return
+	 * 	end
+	 * 	closing = true
 	 * 
-	 *     -- create confirm button
-	 *     local confirmButton = Instance.new("TextButton")
-	 *     confirmButton.AnchorPoint = Vector2.new(0.5, 0.5)
-	 *     confirmButton.Size = UDim2.new(0.5, 0, 0.5, 0)
-	 *     confirmButton.Position = UDim2.new(0.5, 0, 0.5, 0)
-	 *     confirmButton.BackgroundColor3 = Color3.new(1, 0, 0)
-	 *     confirmButton.Text = "Close?"
-	 *     confirmButton.Parent = pluginGui
+	 * 	-- create confirm button
+	 * 	local confirmButton = Instance.new("TextButton")
+	 * 	confirmButton.AnchorPoint = Vector2.new(0.5, 0.5)
+	 * 	confirmButton.Size = UDim2.new(0.5, 0, 0.5, 0)
+	 * 	confirmButton.Position = UDim2.new(0.5, 0, 0.5, 0)
+	 * 	confirmButton.BackgroundColor3 = Color3.new(1, 0, 0)
+	 * 	confirmButton.Text = "Close?"
+	 * 	confirmButton.Parent = pluginGui
 	 * 
-	 *     -- listen for click
-	 *     confirmButton.Activated:Connect(function()
-	 *         -- close the gui
-	 *         pluginGui.Enabled = false
-	 *     
-	 *         -- remove confirm button
-	 *         confirmButton:Destroy()
-	 *     end)
+	 * 	-- listen for click
+	 * 	confirmButton.Activated:Connect(function()
+	 * 		-- close the gui
+	 * 		pluginGui.Enabled = false
+	 * 	
+	 * 		-- remove confirm button
+	 * 		confirmButton:Destroy()
+	 * 	end)
 	 * end)
-	 * ``` 
 	 * 
 	 * You can call BindToClose with no argument to 'unbind' and revert to the default behavior described above. For example:
 	 * 
-	 * ```lua
 	 * pluginGui:BindToClose()
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -787,9 +783,7 @@ interface Script extends BaseScript {
 	 * 
 	 * For instance, given a script containing the line:
 	 * 
-	 * ```lua
 	 * print("Hello world!")
-	 * ``` 
 	 * 
 	 * The script's source is the “print(“Hello world”)” command because it is what will be executed when the script runs, leading to “Hello world” being printed in the command line.
 	 * 
@@ -1150,9 +1144,7 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * Unlike `Break/MakeJoints`, this function requires an array of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s as a parameter. This array is given as follows:
 	 * 
-	 * ```lua
 	 * workspace:BreakJoints({part1, part2, part3})
-	 * ``` 
 	 * 
 	 * Note, this function cannot be used by scripts and will only function in plugins.
 	 */
@@ -1174,9 +1166,7 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * Unlike [Model:MakeJoints](https://developer.roblox.com/en-us/api-reference/function/Model/MakeJoints), this function requires an array of parts as a parameter. This array is given as follows:
 	 * 
-	 * ```lua
 	 * workspace:MakeJoints({part1, part2, part3})
-	 * ``` 
 	 * 
 	 * Joints are broken if enough force is applied to them due to an [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion), unless a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField) object is parented to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or ancestor [Model](https://developer.roblox.com/en-us/api-reference/class/Model). For this reason, they are often used to make simple destructible buildings and other models.
 	 */
@@ -2176,10 +2166,8 @@ interface PluginMenu extends Instance {
  * 
  * The following code sample creates a basic toolbar with one button. It should be run as a Roblox Studio plugin, and not run as a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
  * 
- * ```lua
  * local toolbar = plugin:CreateToolbar("Three Wise Monkeys")
  * local button = toolbar:CreateButton("Mizaru", "See No Evil", "rbxassetid://2778270261")
- * ```
  */
 interface PluginToolbar extends Instance {
 	/**
@@ -2641,9 +2629,7 @@ interface ScriptDebugger extends Instance {
  * 
  * Selection is also often used in the command bar, to set hidden properties or run functions for selected [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s. For example:
  * 
- * ```lua
- * game.Selection:Get()[1]:SetPrimaryPartCFrame(CFrame.new()) -- move the selected model to the origin
- * ``` 
+ * game.Selection:Get()\[1\]:SetPrimaryPartCFrame(CFrame.new()) -- move the selected model to the origin
  * 
  * Note this class only applies to Roblox Studio and has no applicability to games.
  */
@@ -2679,11 +2665,9 @@ interface Selection extends Instance {
 	 * 
 	 * Note this function overwrites the existing selection. However, using [Selection:Get](https://developer.roblox.com/en-us/api-reference/function/Selection/Get) an [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) can be added to the existing selection like so:
 	 * 
-	 * ```lua
 	 * local selected = Selection:Get()
 	 * table.insert(selected, object)
 	 * Selection:Set(selected)
-	 * ```
 	 */
 	Set(this: Selection, selection: Array<Instance>): void;
 	/**
@@ -2716,29 +2700,25 @@ interface DataModel extends ServiceProvider<Services> {
 	 * 
 	 * The first entry in the table returned is a reference dictionary containing the statistics (or headings) available. It is in the following format:
 	 * 
-	 * ```lua
 	 * {
-	 *     ["name"] = "name",
-	 *     ["averageDutyCycle"] = "averageDutyCycle",
-	 *     ["averageStepsPerSecond"] = "averageStepsPerSecond",
-	 *     ["averageStepTime"] = "averageStepTime",
-	 *     ["averageError"] = "averageError",
-	 *     ["isRunning"] = "isRunning",
+	 *     \["name"\] = "name",
+	 *     \["averageDutyCycle"\] = "averageDutyCycle",
+	 *     \["averageStepsPerSecond"\] = "averageStepsPerSecond",
+	 *     \["averageStepTime"\] = "averageStepTime",
+	 *     \["averageError"\] = "averageError",
+	 *     \["isRunning"\] = "isRunning",
 	 * }
-	 * ``` 
 	 * 
 	 * The subsequent entries in the table returned are dictionaries containing the above statistics for jobs performed by the task scheduler. For example:
 	 * 
-	 * ```lua
 	 * {
-	 *     ["name"] = "Heartbeat",
-	 *     ["averageDutyCycle"] = 0,
-	 *     ["averageStepsPerSecond"] = 0,
-	 *     ["averageStepTime"] = 0,
-	 *     ["averageError"] = 0,
-	 *     ["isRunning"] = false,
+	 *     \["name"\] = "Heartbeat",
+	 *     \["averageDutyCycle"\] = 0,
+	 *     \["averageStepsPerSecond"\] = 0,
+	 *     \["averageStepTime"\] = 0,
+	 *     \["averageError"\] = 0,
+	 *     \["isRunning"\] = false,
 	 * }
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -2772,13 +2752,11 @@ interface DataModel extends ServiceProvider<Services> {
 	 * 
 	 * Setting the [DataModel.PlaceId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PlaceId) is required to access the [DataStoreService](https://developer.roblox.com/en-us/api-reference/class/DataStoreService) when the place is unpublished (for example a local .rbxl file). See below for an example. Note this will only work when the _'Enable Studio Access to API Services\`_ option is enabled under game settings.
 	 * 
-	 * ```lua
 	 * local DataStoreService = game:GetService("DataStoreService")
 	 * 
 	 * -- access DataStore 'Data' as place placeId
 	 * game:SetPlaceId(placeId)
 	 * local dataStore = DataStoreService:GetDataStore("Data")
-	 * ``` 
 	 * 
 	 * You can use [DataModel:SetUniverseId](https://developer.roblox.com/en-us/api-reference/function/DataModel/SetUniverseId) to set the [DataModel.GameId](https://developer.roblox.com/en-us/api-reference/property/DataModel/GameId) of the game instance. However, it is the [DataModel.PlaceId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PlaceId) that must be set to access the [DataStoreService](https://developer.roblox.com/en-us/api-reference/class/DataStoreService).
 	 */
@@ -3136,15 +3114,11 @@ interface Studio extends Instance {
 	 * 
 	 * This is intended for use within [Plugins](https://developer.roblox.com/en-us/api-reference/class/Plugin), but will also execute in the Command Line. You can access the function via:
 	 * 
-	 * ```lua
 	 * settings().Studio.Theme
-	 * ``` 
 	 * 
 	 * For instance, if you would like to print the current Studio theme:
 	 * 
-	 * ```lua
 	 * print("The current Studio theme is:", settings().Studio.Theme)
-	 * ```
 	 */
 	Theme: StudioTheme;
 	/**
@@ -3220,19 +3194,17 @@ interface StudioService extends Instance {
 	/**
 	 * **ActiveScript** refers to the [LuaSourceContainer](https://developer.roblox.com/en-us/api-reference/class/LuaSourceContainer) currently being edited by the user. If the user is not editing a script, this will be `nil`. Below is an example that shows how you can use this property to measure for how long a script was active.
 	 * 
-	 * ```lua
 	 * local startTime = os.time()
 	 * local activeScript
 	 * local function onActiveScriptChanged(newActiveScript)
-	 *     if newActiveScript ~= activeScript then
-	 *         local deltaTime = os.time() - startTime
-	 *         print(("You edited %s for %d:%2.d"):format(activeScript.Name, math.floor(deltaTime / 60), deltaTime % 60))
-	 *     end
-	 *     startTime = os.time()
-	 *     activeScript = newActiveScript
+	 * 	if newActiveScript ~= activeScript then
+	 * 		local deltaTime = os.time() - startTime
+	 * 		print(("You edited %s for %d:%2.d"):format(activeScript.Name, math.floor(deltaTime / 60), deltaTime % 60))
+	 * 	end
+	 * 	startTime = os.time()
+	 * 	activeScript = newActiveScript
 	 * end
 	 * game:GetService("StudioService"):GetPropertyChangedSignal("ActiveScript"):Connect(onActiveScriptChanged)
-	 * ```
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly ActiveScript: Instance | undefined;
@@ -3297,18 +3269,16 @@ interface StudioService extends Instance {
 	 * 
 	 * Below is a trivial example of localization based on the value returned by this function.
 	 * 
-	 * ```lua
 	 * local locale = game:GetService("StudioService").StudioLocaleId
-	 * if locale == "en_US" then
+	 * if locale == "en\_US" then
 	 *    print("Howdy, ya'll")
-	 * elseif locale == "en_GB" then
+	 * elseif locale == "en\_GB" then
 	 *    print("'Ello, gov'na")
 	 * elseif locale:sub(1, 2) == "en" then
 	 *    print("Hello")
-	 * elseif locale == "fr_FR" then
+	 * elseif locale == "fr\_FR" then
 	 *    print("Bonjour")
 	 * end
-	 * ```
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly StudioLocaleId: string;
@@ -3347,26 +3317,22 @@ interface StudioService extends Instance {
 	 * 
 	 * Below is a literal table representation of the value returned when this function is called with `"Part"`.
 	 * 
-	 * ```lua
 	 * {
-	 *     Image = "rbxasset://textures/ClassImages.png",
-	 *     ImageRectOffset = Vector2.new(16, 0),
-	 *     ImageRectSize = Vector2.new(16, 16)
+	 * 	Image = "rbxasset://textures/ClassImages.png",
+	 * 	ImageRectOffset = Vector2.new(16, 0),
+	 * 	ImageRectSize = Vector2.new(16, 16)
 	 * }
-	 * ``` 
 	 * 
 	 * The utility function below may prove useful when displaying class icons:
 	 * 
-	 * ```lua
 	 * local StudioService = game:GetService("StudioService")
 	 * local imageLabel = script.Parent
 	 * local function displayClassIcon(image, className)
-	 *     for k, v in pairs(StudioService:GetClassIcon(className)) do
-	 *         image[k] = v -- Set property
-	 *     end
+	 * 	for k, v in pairs(StudioService:GetClassIcon(className)) do
+	 * 		image\[k\] = v -- Set property
+	 * 	end
 	 * end
 	 * displayClassIcon(imageLabel, "Part")
-	 * ```
 	 */
 	GetClassIcon(this: StudioService, className: string): object;
 	GetResourceByCategory(this: StudioService, category: string): object;
@@ -3469,9 +3435,7 @@ interface StudioTheme extends Instance {
 	 * 
 	 * For instance, if you would like to get the path of the “MoreButton” image, you would use the following code:
 	 * 
-	 * ```lua
 	 * settings().Studio.Theme:GetPath("MoreButton")
-	 * ```
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
@@ -3776,7 +3740,7 @@ interface TestService extends Instance {
 	 */
 	Check(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
 	/**
-	 * Prints "Test checkpoint: ", followed by text, to the output, in blue text.
+	 * Prints “Test checkpoint: ”, followed by text, to the output, in blue text.
 	 */
 	Checkpoint(this: TestService, text: string, source?: Instance, line?: number): void;
 	/**
@@ -3798,7 +3762,7 @@ interface TestService extends Instance {
 	 */
 	Message(this: TestService, text: string, source?: Instance, line?: number): void;
 	/**
-	 * If `condition` is true, prints `Require passed:`, followed by `description`, to the output in blue text. Otherwise, prints `Require failed. Test ended:`, followed by `description`, to the output in red text.
+	 * If `condition` is true, prints `Require passed:` , followed by `description`, to the output in blue text. Otherwise, prints `Require failed. Test ended:` , followed by `description`, to the output in red text.
 	 */
 	Require(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
 	/**

@@ -381,12 +381,10 @@ interface Instance {
 	/**
 	 * This property determines whether an [object](https://developer.roblox.com/en-us/api-reference/class/Instance) should be included when the game is published or saved, or when [Instance:Clone](https://developer.roblox.com/en-us/api-reference/function/Instance/Clone) is called on one of the object's ancestors. Calling Clone directly on an object will return nil if the cloned object is not archivable. Copying an object in Studio (using the 'Duplicate' or 'Copy' options) will ignore the Archivable property and set Archivable to true for the copy.
 	 * 
-	 * ```lua
 	 * local part = Instance.new("Part")
 	 * print(part:Clone()) --&gt; Part
 	 * part.Archivable = false
 	 * print(part:Clone()) --&gt; nil
-	 * ```
 	 */
 	Archivable: boolean;
 	/**
@@ -398,14 +396,12 @@ interface Instance {
 	 * 
 	 * Unlike [Instance:IsA](https://developer.roblox.com/en-us/api-reference/function/Instance/IsA), ClassName can be used to check if an object belongs to a specific class ignoring class inheritance. For example:
 	 * 
-	 * ```lua
-	 * for _, child in ipairs(game.Workspace:GetChildren()) do
+	 * for \_, child in ipairs(game.Workspace:GetChildren()) do
 	 *     if child.ClassName == "Part" then
 	 *         print("Found a Part")
 	 *         -- will find Parts in model, but NOT TrussParts, WedgeParts, etc
 	 *     end
 	 * end
-	 * ```
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly ClassName: string;
@@ -416,11 +412,9 @@ interface Instance {
 	 * 
 	 * The name of an object is often used to access the object through the data model hierarchy using the following methods:
 	 * 
-	 * ```lua
 	 * local baseplate = workspace.Baseplate
-	 * local baseplate = workspace["Baseplate"]
+	 * local baseplate = workspace\["Baseplate"\]
 	 * local baseplate = workspace:FindFirstChild("BasePlate")
-	 * ``` 
 	 * 
 	 * In order to make an object accessible using the dot operator, an object's Name must follow a certain syntax. The objects name must start with an underscore or letter. The rest of the name can only contain letters, numbers, or underscores (no other special characters). If an objects name does not follow this syntax it will not be accessible using the dot operator and Lua will not interpret its name as an identifier.
 	 * 
@@ -444,27 +438,23 @@ interface Instance {
 	 * 
 	 * Newly created objects using `Instance.new` will not have a parent, and usually will not be visible or function until one is set. The most elementary creation of an object has two steps: creating the object, then setting its parent.
 	 * 
-	 * ```lua
-	 * -- Create a part and parent it to the workspace
+	 * \-- Create a part and parent it to the workspace
 	 * local part = Instance.new("Part")
 	 * part.Parent = workspace
 	 * -- Instance new can also take Parent as a second parameter
 	 * Instance.new("NumberValue", workspace)
-	 * ``` 
 	 * 
 	 * Object Replication
 	 * ==================
 	 * 
 	 * An object created by server will not replicate to clients until it is parented to some object that is replicated. When creating an object then setting many properties, it's recommended to **set Parent last**. This ensures the object replicates once, instead of replicating many property changes.
 	 * 
-	 * ```lua
 	 * local part = Instance.new("Part") -- Avoid using the second parameter here
 	 * part.Anchored = true
 	 * part.BrickColor = BrickColor.new("Really red")
 	 * -- Potentially many other property changes could go here here...
 	 * -- Always set parent last!
 	 * part.Parent = workspace
-	 * ``` 
 	 * 
 	 * However, if you were parenting your parts to a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) whose parent hasn't been set yet, then setting the parent first would not matter as the model would not have replicated yet.
 	 * Tags: NotReplicated
@@ -480,13 +470,11 @@ interface Instance {
 	 * 
 	 * If the developer does not wish to destroy all descendants, they should use [Instance:GetChildren](https://developer.roblox.com/en-us/api-reference/function/Instance/GetChildren) or [Instance:GetDescendants](https://developer.roblox.com/en-us/api-reference/function/Instance/GetDescendants) to loop through an object and select what to destroy. For example, the following code sample will destroy all parts in an object.
 	 * 
-	 * ```lua
-	 * for _, instance in pairs(object:GetDescendants()) do
-	 *     if instance:IsA("BasePart") then
-	 *         instance:Destroy()
-	 *     end
+	 * for \_, instance in pairs(object:GetDescendants()) do
+	 * 	if instance:IsA("BasePart") then
+	 * 		instance:Destroy()
+	 * 	end
 	 * end
-	 * ```
 	 */
 	ClearAllChildren(this: Instance): void;
 	/**
@@ -505,7 +493,6 @@ interface Instance {
 	 * 
 	 * **Tip:** After calling Destroy on an object, set any variables referencing the object (or its descendants) to nil. This prevents your code from accessing anything to do with the object.
 	 * 
-	 * ```lua
 	 * local part = Instance.new("Part")
 	 * part.Name = "Hello, world"
 	 * part:Destroy()
@@ -513,15 +500,12 @@ interface Instance {
 	 * print(part.Name) --> "Hello, world"
 	 * -- Do this to prevent the above line from working:
 	 * part = nil
-	 * ``` 
 	 * 
 	 * Once an [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) has been destroyed by this method it cannot be reused because the [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) property is locked. To temporarily remove an object, set [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) it to nil instead. For example:
 	 * 
-	 * ```lua
 	 * object.Parent = nil
 	 * wait(2)
 	 * object.Parent = workspace
-	 * ``` 
 	 * 
 	 * To Destroy an object after a set amount of time, use [Debris:AddItem](https://developer.roblox.com/en-us/api-reference/function/Debris/AddItem).
 	 */
@@ -533,9 +517,7 @@ interface Instance {
 	 * 
 	 * The following code snippet would find the first ancestor of the object named 'Car'.
 	 * 
-	 * ```lua
 	 * local car = object:FindFirstAncestor("Car")
-	 * ``` 
 	 * 
 	 * For variants of this function that find ancestors of a specific class, please see [Instance:FindFirstAncestorOfClass](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstAncestorOfClass) and [Instance:FindFirstAncestorWhichIsA](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstAncestorWhichIsA).
 	 */
@@ -547,9 +529,7 @@ interface Instance {
 	 * 
 	 * A common use of this function is finding the [Model](https://developer.roblox.com/en-us/api-reference/class/Model) a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) belongs to. For example:
 	 * 
-	 * ```lua
 	 * local model = part:FindFirstAncestorOfClass("Model")
-	 * ``` 
 	 * 
 	 * This function is a variant of [Instance:FindFirstAncestor](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstAncestor) which checks the [Instance.ClassName](https://developer.roblox.com/en-us/api-reference/property/Instance/ClassName) property rather than [Instance.Name](https://developer.roblox.com/en-us/api-reference/property/Instance/Name). [Instance:FindFirstAncestorWhichIsA](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstAncestorWhichIsA) also exists, using the [Instance:IsA](https://developer.roblox.com/en-us/api-reference/function/Instance/IsA) method instead to respect class inheritance.
 	 */
@@ -561,17 +541,13 @@ interface Instance {
 	 * 
 	 * Unlike [Instance:FindFirstAncestorOfClass](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstAncestorOfClass), this function uses [Instance:IsA](https://developer.roblox.com/en-us/api-reference/function/Instance/IsA) which respects class inheritance. For example:
 	 * 
-	 * ```lua
 	 * print(part:IsA("Part")) --&gt; true
 	 * print(part:IsA("BasePart")) --&gt; true
 	 * print(part:IsA("Instance")) --&gt; true
-	 * ``` 
 	 * 
 	 * Therefore, the following code sample will return the first [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) ancestor, regardless of if it is a [WedgePart](https://developer.roblox.com/en-us/api-reference/class/WedgePart), [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) or [Part](https://developer.roblox.com/en-us/api-reference/class/Part).
 	 * 
-	 * ```lua
 	 * local part = object:FindFirstAncestorWhichIsA("BasePart")
-	 * ``` 
 	 * 
 	 * See also, [Instance:FindFirstAncestor](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstAncestor).
 	 */
@@ -584,19 +560,15 @@ interface Instance {
 	 * 
 	 * FindFirstChild is necessary if you need to verify an object something exists before continuing. Attempting to index a child by name using the dot operator throws an error if the child doesn't exist.
 	 * 
-	 *  ```lua
-	 * -- The following line errors if Part doesn't exist in the Workspace:
+	 *  -- The following line errors if Part doesn't exist in the Workspace:
 	 * workspace.Part.Transparency = .5
-	 * ``` 
 	 * 
 	 * Use FindFirstChild to first check for Part, then use an if-statement to run code that needs it.
 	 * 
-	 * ```lua
 	 * local part = workspace:FindFirstChild("Part")
 	 * if part then
-	 *     part.Transparency = .5
+	 * 	part.Transparency = .5
 	 * end
-	 * ``` 
 	 * 
 	 * Finding a Child Whose Name Matches a Property
 	 * ---------------------------------------------
@@ -605,22 +577,18 @@ interface Instance {
 	 * 
 	 * In the following example, a [Folder](https://developer.roblox.com/en-us/api-reference/class/Folder) called “Color” is added to a [Part](https://developer.roblox.com/en-us/api-reference/class/Part), which also has the `Part/Color` property. `Part.Color` refers to the [Color3](https://developer.roblox.com/en-us/api-reference/datatype/Color3), not the Folder.
 	 * 
-	 * ```lua
 	 * local part = Instance.new("Part")
 	 * local folder = Instance.new("Folder")
 	 * folder.Name = "Color"
 	 * folder.Parent = part
 	 * local c = part.Color --> A Color3
 	 * local c2 = part:FindFirstChild("Color") --> The Folder
-	 * ``` 
 	 * 
 	 * A benefit of using FindFirstChild in this way is that the introduction of new properties does not impose a risk on your code.
 	 * 
 	 * **Tip:** If you only need to use the result of a FindFirstChild call once, such as getting the property of a child if it exists, you can use the following syntax with the `and` operator:
 	 * 
-	 * ```lua
 	 * local myColor = workspace:FindFirstChild("SomePart") and workspace.SomePart.Color
-	 * ``` 
 	 * 
 	 * If SomePart exists, `myColor` will contain the Color of SomePart. Otherwise, it'll be nil without throwing an error. This works due to short-circuiting: Lua ignores the right side if the left is nil/false
 	 * 
@@ -647,17 +615,13 @@ interface Instance {
 	 * 
 	 * Unlike [Instance:FindFirstChildOfClass](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstChildOfClass), this function uses [Instance:IsA](https://developer.roblox.com/en-us/api-reference/function/Instance/IsA) which respects class inheritance. For example:
 	 * 
-	 * ```lua
 	 * print(part:IsA("Part")) --> true
 	 * print(part:IsA("BasePart")) --> true
 	 * print(part:IsA("Instance")) --> true
-	 * ``` 
 	 * 
 	 * Therefore, the following code sample will return the first [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) child, regardless of if it is a [WedgePart](https://developer.roblox.com/en-us/api-reference/class/WedgePart), [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) or [Part](https://developer.roblox.com/en-us/api-reference/class/Part).
 	 * 
-	 * ```lua
 	 * local part = object:FindFirstChildWhichIsA("BasePart")
-	 * ``` 
 	 * 
 	 * Developers looking for a child by name, should use [Instance:FindFirstChild](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstChild) instead.
 	 */
@@ -672,9 +636,7 @@ interface Instance {
 	 * 
 	 * For example, the following code snippet will set the value of the instance's `InitialPostion` attribute. Note that this code sample does not define `instance`:
 	 * 
-	 * ```lua
 	 * local initialPosition = instance:GetAttribute("InitialPosition")
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -692,13 +654,11 @@ interface Instance {
 	 * 
 	 * For example, the following code snippet will return a signal that fires the function `attributeChanged` when the instance's `InitialPosition` attribute changes. Note that this code sample does not define `instance`:
 	 * 
-	 * ```lua
 	 * local function attributeChanged()
-	 *     print(“Attribute changed”)
+	 * 	print(“Attribute changed”)
 	 * end
 	 * 
 	 * instance:GetAttributeChangedSignal("InitialPosition"):Connect(attributeChanged)
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -714,12 +674,10 @@ interface Instance {
 	 * 
 	 * For example, the following code snippet will print an instance's attributes and values. Note that this code sample does not define `instance`:
 	 * 
-	 * ```lua
 	 * local attributes = instance:GetAttributes()
 	 * for name, value in pairs(attributes) do
-	 *     print(name .. “ “ .. value)
+	 * 	print(name .. “ “ .. value)
 	 * end
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -733,20 +691,16 @@ interface Instance {
 	/**
 	 * Returns an array (a numerically indexed table) containing all of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)'s direct children, or every [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) whose [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is equal to the object. The array can be iterated upon using either a numeric or generic for-loop:
 	 * 
-	 * ```lua
-	 * -- Numeric for-loop example
+	 * \-- Numeric for-loop example
 	 * local children = workspace:GetChildren()
 	 * for i = 1, #children do
-	 *     local child = children[i]
-	 *     print(child.Name .. " is child number " .. i)
-	 * end
-	 * ``` ```lua
-	 * -- Generic for-loop example
+	 * 	local child = children\[i\]
+	 * 	print(child.Name .. " is child number " .. i)
+	 * end\-- Generic for-loop example
 	 * local children = workspace:GetChildren()
 	 * for i, child in ipairs(children) do
-	 *     print(child.Name .. " is child number " .. i)
+	 * 	print(child.Name .. " is child number " .. i)
 	 * end
-	 * ``` 
 	 * 
 	 * The children are sorted by the order in which their [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) property was set to the object.
 	 * 
@@ -762,13 +716,12 @@ interface Instance {
 	 * 
 	 * Here we have a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). Inside this model is three parts (C, D, and E) and another model (InnerModel). Inside the inner model are two more parts (A and B). If we use GetDescendants on the first model and print out the contents of the returned array, we can see that the first level of children, InnerModel, C, D, and E, are printed out before A and B.
 	 * 
-	 * ```lua
 	 * local descendants = game.Workspace.Model:GetDescendants()
 	 *  
 	 * -- Loop through all of the descendants of the model and
 	 * -- print out their name
 	 * for index, descendant in pairs(descendants) do
-	 *     print(descendant.Name)
+	 * 	print(descendant.Name)
 	 * end
 	 *  
 	 * -- Prints:
@@ -778,7 +731,6 @@ interface Instance {
 	 * -- InnerModel
 	 * -- A
 	 * -- B
-	 * ```
 	 * Tags: CustomLuaState
 	 */
 	GetDescendants(this: Instance): Array<Instance>;
@@ -806,19 +758,17 @@ interface Instance {
 	 * 
 	 * Most commonly, this function is used to test if an object is some kind of part, such as [Part](https://developer.roblox.com/en-us/api-reference/class/Part) or [WedgePart](https://developer.roblox.com/en-us/api-reference/class/WedgePart), which inherits from [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) (an abstract class). For example, if your goal is to change all of a [Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character)'s limbs to the same color, you might use [GetChildren](https://developer.roblox.com/en-us/api-reference/function/Instance/GetChildren) to iterate over the children, then use IsA to filter non-[BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) objects which lack the `BrickColor` property:
 	 * 
-	 * ```lua
 	 * local function paintFigure(character, color)
-	 *     -- Iterate over the child objects of the character
-	 *     for _, child in pairs(character:GetChildren()) do
-	 *         -- Filter out non-part objects, such as Shirt, Pants and Humanoid
-	 *         -- R15 use MeshPart and R6 use Part, so we use BasePart here to detect both:
-	 *         if child:IsA("BasePart") then
-	 *             child.BrickColor = color
-	 *         end
-	 *     end
+	 * 	-- Iterate over the child objects of the character
+	 * 	for \_, child in pairs(character:GetChildren()) do
+	 * 		-- Filter out non-part objects, such as Shirt, Pants and Humanoid
+	 * 		-- R15 use MeshPart and R6 use Part, so we use BasePart here to detect both:
+	 * 		if child:IsA("BasePart") then
+	 * 			child.BrickColor = color
+	 * 		end
+	 * 	end
 	 * end
 	 * paintFigure(game.Players.Player.Character, BrickColor.new("Bright blue"))
-	 * ``` 
 	 * 
 	 * Since all classes inherit from [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance), calling `object:IsA("Instance")` will always return true.
 	 * Tags: CustomLuaState
@@ -847,9 +797,7 @@ interface Instance {
 	 * 
 	 * For example, the following code snippet will set the instance's `InitialPosition` attribute to `DataType/Vector3|Vector3.new(0, 0, 0)`. Note that this code sample does not define `instance`:
 	 * 
-	 * ```lua
 	 * instance:SetAttribute("InitialPosition", Vector3.new(0, 0, 0))
-	 * ``` 
 	 * 
 	 * Limitations
 	 * -----------
@@ -884,28 +832,22 @@ interface Instance {
 	 * 
 	 * For example, a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) may access a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) called 'Ship' like so:
 	 * 
-	 * ```lua
 	 * local ship = workspace.Ship
 	 * -- Will error if ship hasn't replicated
-	 * ``` 
 	 * 
 	 * However if the model 'Ship' has not replicated to the client when this code is ran an error will be returned breaking the [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
 	 * Another alternative is using [Instance:FindFirstChild](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstChild). Not only is this good practice when indexing objects in the [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel) (as it avoids accidentally accessing properties) but it does not break if the object does not exist. For example:
 	 * 
-	 * ```lua
 	 * local ship = workspace:FindFirstChild("Ship")
 	 * -- Won't error, but ship will be nil if the ship hasn't replicated
-	 * ``` 
 	 * 
 	 * Here, if the model doesn't exist the code will not error. Instead the value ship will be equal to nil. This is better, but still not much good if we want to use the ship model.
 	 * 
 	 * Instead WaitForChild should be used:
 	 * 
-	 * ```lua
 	 * local ship = workspace:WaitForChild("Ship")
 	 * -- Will wait until the ship has replicated before continuing
-	 * ``` 
 	 * 
 	 * Here, the thread will be yielded until the ship model has been found. This means the ship model can be used as soon as it is ready.
 	 * 
@@ -926,13 +868,11 @@ interface Instance {
 	 * 
 	 * A common use for this function is detecting when an object has been removed or destroyed (using [Instance:Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy)). This is done by checking if the parent has been set to nil. For example:
 	 * 
-	 * ```lua
-	 * object.AncestryChanged:Connect(function(_, parent)
-	 *     if not parent then
-	 *         print("object destroyed!")
-	 *     end
+	 * object.AncestryChanged:Connect(function(\_, parent)
+	 * 	if not parent then
+	 * 		print("object destroyed!")
+	 * 	end
 	 * end)
-	 * ```
 	 */
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance | undefined) => void>;
 	/**
@@ -940,13 +880,11 @@ interface Instance {
 	 * 
 	 * For example, the following code snippet will connect the `attributeChanged` function to fire whenever one of `instance's` attributes changes. Note that this code sample does not define `instance`:
 	 * 
-	 * ```lua
 	 * local function attributeChanged(attributeName)
 	 *     print(attributeName, “changed”)
 	 * end
 	 * 
 	 * instance.AttributeChanged:Connect(attributeChanged)
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -972,12 +910,10 @@ interface Instance {
 	 * 
 	 * Note, when using this function on a client to detect objects created by the server it is necessary to use [Instance:WaitForChild](https://developer.roblox.com/en-us/api-reference/function/Instance/WaitForChild) when indexing these object's descendants. This is because the object and its descendants are not guaranteed to replicate from the server to the client simultaneously. For example:
 	 * 
-	 * ```lua
 	 * workspace.ChildAdded:Connect(function(child)
-	 *     -- need to use WaitForChild as descendants may not have replicated yet
-	 *     local head = child:WaitForChild("Head")
+	 * 	-- need to use WaitForChild as descendants may not have replicated yet
+	 * 	local head = child:WaitForChild("Head")
 	 * end)
-	 * ``` 
 	 * 
 	 * Note, this function only works for immediate children of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance). For a function that captures all descendants, use [Instance.DescendantAdded](https://developer.roblox.com/en-us/api-reference/event/Instance/DescendantAdded).
 	 * 
@@ -1030,19 +966,17 @@ interface Instance {
 	 * 
 	 * This event fires with the descendant object that is being removed. Attempting to set the [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) of the descendant being removed to something else **will fail** with the following warning: “Something unexpectedly tried to set the parent of X to Y while trying to set the parent of X. Current parent is Z”, where X is the removing descendant, Y is the ignored parent setting, and Z is the original parent of X. Below is an example that demonstrates this:
 	 * 
-	 * ```lua
 	 * workspace.DescendantRemoving:Connect(function(descendant)
-	 *     -- Don't manipulate the parent of descendant in this function!
-	 *     -- This event fires BECAUSE the parent of descendant was manipulated,
-	 *     -- and the change hasn't happened yet, i.e. this function fires before that happens.
-	 *     -- Therefore, it is problematic to change the parent like this:
-	 *     descendant.Parent = game
+	 * 	-- Don't manipulate the parent of descendant in this function!
+	 * 	-- This event fires BECAUSE the parent of descendant was manipulated,
+	 * 	-- and the change hasn't happened yet, i.e. this function fires before that happens.
+	 * 	-- Therefore, it is problematic to change the parent like this:
+	 * 	descendant.Parent = game
 	 * end)
 	 * local part = Instance.new("Part")
 	 * part.Parent = workspace
 	 * part.Parent = nil -- This triggers DescendantRemoving on Workspace:
-	 * --&gt; Something unexpectedly tried to set the parent of Part to NULL while trying to set the parent of Part. Current parent is Workspace.
-	 * ``` 
+	 * --&gt; Something unexpectedly tried to set the parent of Part to NULL while trying to set the parent of Part. Current parent is Workspace. 
 	 * 
 	 * See also [DescendantAdded](https://developer.roblox.com/en-us/api-reference/event/Instance/DescendantAdded).
 	 */
@@ -1189,12 +1123,12 @@ interface AnalyticsService extends Instance {
 	 * Possible Errors
 	 * ---------------
 	 * 
-	 * *   **"AnalyticsService can only be executed by game server."** – Tracking can only be done on the server through a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) required by a script. See [RunService:IsServer](https://developer.roblox.com/en-us/api-reference/function/RunService/IsServer).
-	 * *   **"The ApiKey is invalid."** – The [ApiKey](https://developer.roblox.com/en-us/api-reference/property/AnalyticsService/ApiKey) has been set, but it's invalid. Check that it is set to the correct value.
-	 * *   **"AnalyticsService can only accept valid UTF-8 characters."** – Thrown when the value can't be serialized as UTF-8 characters. This can happen if you pass a value which has unicode characters, like emojis.
-	 * *   **"AnalyticsService failed in parse event value. Error: …"** – Thrown when there is an issue when serializing the provided value into a string.
-	 * *   **"AnalyticsService: , " and \\r\\n are not allowed in category."** – The comma `,`, the double quote `"`, and newline characters `\r\n` cannot be used in the **category** parameter.
-	 * *   **"AnalyticsService: The event value you fired is too long."** – Thrown if the **value** parameter was too long after serialization. The length limit is 1 KB, or 1024 bytes.
+	 * *   **“AnalyticsService can only be executed by game server.”** – Tracking can only be done on the server through a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) required by a script. See [RunService:IsServer](https://developer.roblox.com/en-us/api-reference/function/RunService/IsServer).
+	 * *   **“The ApiKey is invalid.”** – The [ApiKey](https://developer.roblox.com/en-us/api-reference/property/AnalyticsService/ApiKey) has been set, but it's invalid. Check that it is set to the correct value.
+	 * *   **“AnalyticsService can only accept valid UTF-8 characters.”** – Thrown when the value can't be serialized as UTF-8 characters. This can happen if you pass a value which has unicode characters, like emojis.
+	 * *   **“AnalyticsService failed in parse event value. Error: …”** – Thrown when there is an issue when serializing the provided value into a string.
+	 * *   **“AnalyticsService: , " and \\r\\n are not allowed in category.”** – The comma `,`, the double quote `"`, and newline characters `\r\n` cannot be used in the **category** parameter.
+	 * *   **“AnalyticsService: The event value you fired is too long.”** – Thrown if the **value** parameter was too long after serialization. The length limit is 1 KB, or 1024 bytes.
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
@@ -1399,11 +1333,9 @@ interface Animation extends Instance {
 	 * 
 	 * It's important to remember the URL is not the same as the content ID. It will work when pasted directly into the AnimationId property of an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) in Roblox studio, as Studio will automatically correct it, however if it is being set from a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) then the correct content ID will need to be used, using the number from the URL. For example:
 	 * 
-	 * ```lua
 	 * "https://www.roblox.com/catalog/507771019" -- Web URL (will not work)
 	 * "http://www.roblox.com/asset/?id=507771019" -- Content ID (will work)
 	 * "rbxassetid://507771019" -- Content ID (alternative version, will work)
-	 * ``` 
 	 * 
 	 * Note, the animation will need to be loaded onto an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) in order to play it.
 	 */
@@ -1447,11 +1379,9 @@ interface AnimationController extends Instance {
 	 * 
 	 * Note this function will not return [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) that have loaded but are not playing. If the developer wishes to track these they will need to index them manually. See below for one example of how this could be achieved:
 	 * 
-	 * ```lua
 	 * local animationTracks = {}
 	 * local track = animationController:LoadTrack(animation)
 	 * table.insert(animationTracks, track)
-	 * ```
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
@@ -2233,47 +2163,45 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * The returned table includes the following fields:
 	 * 
-	 * ```lua
 	 * {
-	 *   "PlayerAvatarTypes": [
+	 *   "PlayerAvatarTypes": \[
 	 *     "R6"
-	 *   ],
+	 *   \],
 	 *   "Scales": {},
-	 *   "WearableAssetTypes": [
+	 *   "WearableAssetTypes": \[
 	 *     {
 	 *       "MaxNumber": 0,
 	 *       "Id": 0,
 	 *       "Name": "string"
 	 *     }
-	 *   ],
-	 *   "BodyColorsPalette": [
+	 *   \],
+	 *   "BodyColorsPalette": \[
 	 *     {
 	 *       "BrickColorId": 0,
 	 *       "NexColor": "string",
 	 *       "Name": "string"
 	 *     }
-	 *   ],
-	 *   "BasicBodyColorsPalette": [
+	 *   \],
+	 *   "BasicBodyColorsPalette": \[
 	 *     {
 	 *       "BrickColorId": 0,
 	 *       "HexColor": "string",
 	 *       "Name": "string"
 	 *     }
-	 *   ],
+	 *   \],
 	 *   "MinimumDeltaEBodyColorDifference": 0,
 	 *   "ProportionsAndBodyTypeEnabledForUser": true,
 	 *   "DefaultClothingAssetLists": {
-	 *     "DefaultShirtAssetIds": [
+	 *     "DefaultShirtAssetIds": \[
 	 *       0
-	 *     ],
-	 *     "DefaultPantAssetIds": [
+	 *     \],
+	 *     "DefaultPantAssetIds": \[
 	 *       0
-	 *     ]
+	 *     \]
 	 *   },
 	 *   "BundlesEnabledForUser": true,
 	 *   "EmotesEnabledForUser": true
 	 * }
-	 * ```
 	 * Tags: Yields
 	 */
 	GetAvatarRules(this: AvatarEditorService): object;
@@ -2291,16 +2219,14 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * The returned table includes the following fields:
 	 * 
-	 * ```lua
-	 * [
+	 * \[
 	 *     {
 	 *       "AssetName": "string",
 	 *       "AssetId": 0,
 	 *       "SerialNumber": 0,
 	 *       "AssetType" : "string",
 	 *     }
-	 * ]
-	 * ```
+	 * \]
 	 * Tags: Yields
 	 */
 	GetInventory(this: AvatarEditorService, assetTypes: Array<any>): Instance | undefined;
@@ -2309,7 +2235,6 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * Data returned in the format:
 	 * 
-	 * ```lua
 	 * {
 	 *   "IsForRent": true,
 	 *   "ExpectedSellerId": 0,
@@ -2322,23 +2247,23 @@ interface AvatarEditorService extends Instance {
 	 *   "Name": "string",
 	 *   "Description": "string",
 	 *   "ProductId": 0,
-	 *   "Genres": [
+	 *   "Genres": \[
 	 *     "All"
-	 *   ],
-	 *   "BundledItems": [
+	 *   \],
+	 *   "BundledItems": \[
 	 *     {
 	 *       "Owned": true,
 	 *       "Id": 0,
 	 *       "Name": "string",
 	 *       "Type": "string"
 	 *     }
-	 *   ],
-	 *   "ItemStatus": [
+	 *   \],
+	 *   "ItemStatus": \[
 	 *     "New"
-	 *   ],
-	 *   "ItemRestrictions": [
+	 *   \],
+	 *   "ItemRestrictions": \[
 	 *     "ThirteenPlus"
-	 *   ],
+	 *   \],
 	 *   "CreatorType": "User",
 	 *   "CreatorTargetId": 0,
 	 *   "CreatorName": "string",
@@ -2353,7 +2278,6 @@ interface AvatarEditorService extends Instance {
 	 *   "PurchaseCount": 0,
 	 *   "FavoriteCount": 0
 	 * }
-	 * ```
 	 * Tags: Yields
 	 */
 	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): object;
@@ -2362,15 +2286,13 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * The returned table includes the following fields:
 	 * 
-	 * ```lua
-	 * [
+	 * \[
 	 *     {
 	 *       "Id": 0,
 	 *       "Name": "string",
 	 *       "IsEditable": true
 	 *     }
-	 * ]
-	 * ``` 
+	 * \]
 	 * 
 	 * Name
 	 * 
@@ -2397,8 +2319,7 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * Data is in the format:
 	 * 
-	 * ```lua
-	 * [
+	 * \[
 	 *     {
 	 *       "Item": {
 	 *         "AssetId": 0,
@@ -2436,8 +2357,7 @@ interface AvatarEditorService extends Instance {
 	 *         "IsFree": true
 	 *       }
 	 *     }
-	 * ]
-	 * ```
+	 * \]
 	 * Tags: Yields
 	 */
 	GetRecommendedAssets(this: AvatarEditorService, assetType: CastsToEnum<Enum.AvatarAssetType>, contextAssetId?: number): unknown;
@@ -2446,21 +2366,20 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * Data is in the format:
 	 * 
-	 * ```lua
-	 * [
+	 * \[
 	 *     {
 	 *       "Id": 0,
 	 *       "Name": "string",
 	 *       "Description": "string",
 	 *       "BundleType": "string",
-	 *       "Items": [
+	 *       "Items": \[
 	 *         {
 	 *           "Owned": true,
 	 *           "Id": 0,
 	 *           "Name": "string",
 	 *           "Type": "string"
 	 *         }
-	 *       ],
+	 *       \],
 	 *       "Creator": {
 	 *         "Id": 0,
 	 *         "Name": "string",
@@ -2478,8 +2397,7 @@ interface AvatarEditorService extends Instance {
 	 *         }
 	 *       }
 	 *     }
-	 * ]
-	 * ```
+	 * \]
 	 * Tags: Yields
 	 */
 	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): unknown;
@@ -2488,8 +2406,7 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * The returned data has the format:
 	 * 
-	 * ```lua
-	 * [
+	 * \[
 	 *     {
 	 *       "Id": 0,
 	 *       "ItemType": "Asset",
@@ -2498,23 +2415,23 @@ interface AvatarEditorService extends Instance {
 	 *       "Name": "string",
 	 *       "Description": "string",
 	 *       "ProductId": 0,
-	 *       "Genres": [
+	 *       "Genres": \[
 	 *         "All"
-	 *       ],
-	 *       "BundledItems": [
+	 *       \],
+	 *       "BundledItems": \[
 	 *         {
 	 *           "Owned": true,
 	 *           "Id": 0,
 	 *           "Name": "string",
 	 *           "Type": "string"
 	 *         }
-	 *       ],
-	 *       "ItemStatus": [
+	 *       \],
+	 *       "ItemStatus": \[
 	 *         "New"
-	 *       ],
-	 *       "ItemRestrictions": [
+	 *       \],
+	 *       "ItemRestrictions": \[
 	 *         "ThirteenPlus"
-	 *       ],
+	 *       \],
 	 *       "CreatorType": "User",
 	 *       "CreatorTargetId": 0,
 	 *       "CreatorName": "string",
@@ -2529,8 +2446,7 @@ interface AvatarEditorService extends Instance {
 	 *       "PurchaseCount": 0,
 	 *       "FavoriteCount": 0
 	 *     }
-	 * ]
-	 * ```
+	 * \]
 	 * Tags: Yields
 	 */
 	SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): Instance | undefined;
@@ -2701,21 +2617,15 @@ interface Tool extends BackpackItem {
 	 * 
 	 * Generally, the value of this property should describe the what the tool is or its use. For instance, for a shovel tool, you may choose to set the ToolTip to:
 	 * 
-	 *  ```lua
-	 * tool.ToolTip = "Shovel"
-	 * ``` 
+	 * 	tool.ToolTip = "Shovel"
 	 * 
 	 * or
 	 * 
-	 *  ```lua
-	 * tool.ToolTip = "Use to dig"
-	 * ``` 
+	 * 	tool.ToolTip = "Use to dig"
 	 * 
 	 * or
 	 * 
-	 *  ```lua
-	 * tool.ToolTip = "Shovel - Use to dig"
-	 * ```
+	 * 	tool.ToolTip = "Shovel - Use to dig"
 	 */
 	ToolTip: string;
 	/**
@@ -2725,13 +2635,12 @@ interface Tool extends BackpackItem {
 	 * 
 	 * The below code, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), would create a tool in the `Players/LocalPlayer|LocalPlayer's` [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). It will simulate the tool being activated and print “Tool activated” when the player equips the tool.
 	 * 
-	 * ```lua
 	 * local tool = Instance.new("Tool")
 	 * tool.RequiresHandle = false
 	 * tool.Parent = game.Players.LocalPlayer.Backpack
 	 * 
 	 * tool.Equipped:Connect(function()
-	 *     tool:Activate()
+	 * 	tool:Activate()
 	 * end)
 	 * 
 	 * function toolActivated()
@@ -2739,7 +2648,6 @@ interface Tool extends BackpackItem {
 	 * end
 	 * 
 	 * tool.Activated:Connect(toolActivated)
-	 * ```
 	 */
 	Activate(this: Tool): void;
 	/**
@@ -2749,13 +2657,12 @@ interface Tool extends BackpackItem {
 	 * 
 	 * The below code, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), would create a tool in the `Players/LocalPlayer|LocalPlayer's` [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). It will simulate the tool being deactivated and print “Tool deactivated” when the player equips the tool.
 	 * 
-	 * ```lua
 	 * local tool = Instance.new("Tool")
 	 * tool.RequiresHandle = false
 	 * tool.Parent = game.Players.LocalPlayer.Backpack
 	 * 
 	 * tool.Equipped:Connect(function()
-	 *     tool:Deactivate()
+	 * 	tool:Deactivate()
 	 * end)
 	 * 
 	 * function toolDeactivated()
@@ -2763,7 +2670,6 @@ interface Tool extends BackpackItem {
 	 * end
 	 * 
 	 * tool.Deactivated:Connect(toolDeactivated)
-	 * ```
 	 */
 	Deactivate(this: Tool): void;
 	/**
@@ -2775,7 +2681,6 @@ interface Tool extends BackpackItem {
 	 * 
 	 * The below code, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), would create a tool in the `Players/LocalPlayer|LocalPlayer's` [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). It will print “Tool activated” when the player clicks while the created tool is equipped.
 	 * 
-	 * ```lua
 	 * local tool = Instance.new("Tool")
 	 * tool.RequiresHandle = false
 	 * tool.Parent = game.Players.LocalPlayer.Backpack
@@ -2785,7 +2690,6 @@ interface Tool extends BackpackItem {
 	 * end
 	 *  
 	 * tool.Activated:Connect(onActivation)
-	 * ```
 	 */
 	readonly Activated: RBXScriptSignal<() => void>;
 	/**
@@ -2795,7 +2699,6 @@ interface Tool extends BackpackItem {
 	 * 
 	 * The below code, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), would create a tool in the `Players/LocalPlayer|LocalPlayer's` [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). It will print “Tool deactivated” when the player releases the left mouse button, while the tool is equipped.
 	 * 
-	 * ```lua
 	 * local tool = Instance.new("Tool")
 	 * tool.RequiresHandle = false
 	 * tool.Parent = game.Players.LocalPlayer.Backpack
@@ -2805,7 +2708,6 @@ interface Tool extends BackpackItem {
 	 * end
 	 *  
 	 * tool.Deactivated:Connect(toolDeactivated)
-	 * ```
 	 */
 	readonly Deactivated: RBXScriptSignal<() => void>;
 	/**
@@ -2821,11 +2723,9 @@ interface Tool extends BackpackItem {
 	 * 
 	 * The example shown below will print “A tool was unequipped” each time the tool is unequipped by the player. Please note that the below example assumes that you've already defined what “Tool” is.
 	 * 
-	 * ```lua
 	 * Tool.Unequipped:Connect(function()
 	 *     print("The tool was unequipped")
 	 * end)
-	 * ```
 	 */
 	readonly Unequipped: RBXScriptSignal<() => void>;
 }
@@ -2983,10 +2883,8 @@ interface BasePlayerGui extends Instance {
  * 
  * When a player first joins a game, their PlayerGui is automatically inserted into their [Player](https://developer.roblox.com/en-us/api-reference/class/Player) object. When the player's [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character) spawns for the first time all of the contents of [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui) are automatically copied into the player's PlayerGui. Note that if [Players.CharacterAutoLoads](https://developer.roblox.com/en-us/api-reference/property/Players/CharacterAutoLoads) is set to false the character will not spawn and StarterGui contents will not be copied until [Player:LoadCharacter](https://developer.roblox.com/en-us/api-reference/function/Player/LoadCharacter) is called. If [StarterGui.ResetPlayerGuiOnSpawn](https://developer.roblox.com/en-us/api-reference/property/StarterGui/ResetPlayerGuiOnSpawn) is set to true then every time the player's character respawns all of the contents of that player's PlayerGui is cleared and replaced with the contents of StarterGui.
  * 
- * ```lua
- * -- Accessing PlayerGui from a LocalScript:
+ * \-- Accessing PlayerGui from a LocalScript:
  * game:GetService('Players').LocalPlayer:WaitForChild('PlayerGui')
- * ```
  */
 interface PlayerGui extends BasePlayerGui {
 	/**
@@ -3082,9 +2980,7 @@ interface StarterGui extends BasePlayerGui {
 	 * 
 	 * When a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) joins the game, if they are using a mobile device, this property will determine the device's starting orientation. [PlayerGui.ScreenOrientation](https://developer.roblox.com/en-us/api-reference/property/PlayerGui/ScreenOrientation) will be set to this value for [Players](https://developer.roblox.com/en-us/api-reference/class/Player) joining the game. For example, the following code would set the default to _'Portrait'_:
 	 * 
-	 * ```lua
 	 * game:GetService("StarterGui").ScreenOrientation = Enum.ScreenOrientation.Portrait
-	 * ``` 
 	 * 
 	 * By default, this property is set to _'LandscapeSensor'_, meaning the viewport will rotate so it is always right-side-up in landscape.
 	 * 
@@ -3645,76 +3541,75 @@ interface StarterGui extends BasePlayerGui {
 	 * 
 	 * Sets up a bindable gateway connection between the CoreGui topbar's chat button and the Lua Chat System. The second parameter must be a table of [BindableEvents](https://developer.roblox.com/en-us/api-reference/class/BindableEvent) and [BindableFunctions](https://developer.roblox.com/en-us/api-reference/class/BindableFunction). See the example below for more clarification.
 	 * 
-	 * ```lua
-	 * -- Create the Bindable objects
+	 * \-- Create the Bindable objects
 	 * local ChatConnections = {}
 	 *  
 	 * local function AddObjects(bindableClass,targetName,...)
-	 *     local target = ChatConnections[targetName]
-	 *     if not target then
-	 *         target = {}
-	 *         ChatConnections[targetName] = target
-	 *     end
-	 *     local names = {...}
-	 *     for _,name in pairs(names) do
-	 *         local signal = Instance.new(bindableClass)
-	 *         signal.Name = targetName .. "_" .. name
-	 *         signal.Parent = script
-	 *         target[name] = signal
-	 *     end
+	 * 	local target = ChatConnections\[targetName\]
+	 * 	if not target then
+	 * 		target = {}
+	 * 		ChatConnections\[targetName\] = target
+	 * 	end
+	 * 	local names = {...}
+	 * 	for \_,name in pairs(names) do
+	 * 		local signal = Instance.new(bindableClass)
+	 * 		signal.Name = targetName .. "\_" .. name
+	 * 		signal.Parent = script
+	 * 		target\[name\] = signal
+	 * 	end
 	 * end
 	 *  
 	 * AddObjects("BindableEvent","ChatWindow",
-	 *     ---------------------------
-	 *     -- Fired from the CoreGui
-	 *     ---------------------------
-	 *     "ToggleVisibility", -- Fired when the CoreGui chat button is pressed.
-	 *     "SetVisible", -- Fired when the CoreGui wants to directly change the visiblity state of the chat window.
-	 *     "FocusChatBar", -- Fired when the CoreGui wants to capture the Chatbar's Focus.
-	 *     "TopbarEnabledChanged", -- Fired when the visibility of the Topbar is changed.
-	 *     "SpecialKeyPressed", -- Fired when the reserved ChatHotkey is pressed.
-	 *     "CoreGuiEnabled", -- Fired when a user changes the SetCoreGuiEnabled state of the Chat Gui.
+	 * 	---------------------------
+	 * 	-- Fired from the CoreGui
+	 * 	---------------------------
+	 * 	"ToggleVisibility", -- Fired when the CoreGui chat button is pressed.
+	 * 	"SetVisible", -- Fired when the CoreGui wants to directly change the visiblity state of the chat window.
+	 * 	"FocusChatBar", -- Fired when the CoreGui wants to capture the Chatbar's Focus.
+	 * 	"TopbarEnabledChanged", -- Fired when the visibility of the Topbar is changed.
+	 * 	"SpecialKeyPressed", -- Fired when the reserved ChatHotkey is pressed.
+	 * 	"CoreGuiEnabled", -- Fired when a user changes the SetCoreGuiEnabled state of the Chat Gui.
 	 *  
-	 *     ---------------------------
-	 *     -- Fired to the CoreGui
-	 *     ---------------------------
-	 *     "ChatBarFocusChanged",
-	 *         -- ^ Fire this with 'true' when you want to assure the CoreGui that the ChatBar is being focused on.
+	 * 	---------------------------
+	 * 	-- Fired to the CoreGui
+	 * 	---------------------------
+	 * 	"ChatBarFocusChanged",
+	 * 		-- ^ Fire this with 'true' when you want to assure the CoreGui that the ChatBar is being focused on.
 	 *  
-	 *     "VisibilityStateChanged", 
-	 *         -- ^ Fire this with 'true' when the user shows or hides the chat.
+	 * 	"VisibilityStateChanged", 
+	 * 		-- ^ Fire this with 'true' when the user shows or hides the chat.
 	 *  
-	 *     "MessagesChanged",
-	 *         -- ^ Fire this with a number to change the number of messages that have been recorded by the chat window.
-	 *         --   If the CoreGui thinks the chat window isn't visible, it will display the recorded difference between
-	 *         --   the number of messages that was displayed when it was visible, and the number you supply.
+	 * 	"MessagesChanged",
+	 * 		-- ^ Fire this with a number to change the number of messages that have been recorded by the chat window.
+	 * 		--   If the CoreGui thinks the chat window isn't visible, it will display the recorded difference between
+	 * 		--   the number of messages that was displayed when it was visible, and the number you supply.
 	 *  
-	 *     "MessagePosted" 
-	 *         -- ^ Fire this to make the player directly chat under Roblox's C++ API. 
-	 *         --     This will fire the LocalPlayer's Chatted event.
-	 *         --   Please only fire this on the player's behalf. If you attempt to spoof a player's chat
-	 *         --   to get them in trouble, you could face serious moderation action.
+	 * 	"MessagePosted" 
+	 * 		-- ^ Fire this to make the player directly chat under Roblox's C++ API. 
+	 * 		--	 This will fire the LocalPlayer's Chatted event.
+	 * 		--   Please only fire this on the player's behalf. If you attempt to spoof a player's chat
+	 * 		--   to get them in trouble, you could face serious moderation action.
 	 * )
 	 *  
 	 * AddObjects("BindableFunction","ChatWindow",
-	 *     "IsFocused" -- This will be invoked by the CoreGui when it wants to check if the chat window is active.
+	 * 	"IsFocused" -- This will be invoked by the CoreGui when it wants to check if the chat window is active.
 	 * )
 	 *  
 	 * -- The following events are fired if the user calls StarterGui:SetCore(string name, Variant data)
 	 * -- Note that you can only hook onto these ones specifically.
 	 * AddObjects("BindableEvent","SetCore",
-	 *     "ChatMakeSystemMessage",
-	 *     "ChatWindowPosition",
-	 *     "ChatWindowSize",
-	 *     "ChatBarDisabled"
+	 * 	"ChatMakeSystemMessage",
+	 * 	"ChatWindowPosition",
+	 * 	"ChatWindowSize",
+	 * 	"ChatBarDisabled"
 	 * )
 	 *  
 	 * -- The following functions are invoked if the user calls StarterGui:GetCore(string name)
 	 * -- Note that you can only hook onto these ones specifically.
 	 * AddObjects("BindableFunction","GetCore",
-	 *     "ChatWindowPosition", -- Should return a UDim2 representing the position of the chat window.
-	 *     "ChatWindowSize", -- Should return a UDim2 representing the size of the chat window.
-	 *     "ChatBarDisabled" -- Should return true if the chat bar is currently disabled.
+	 * 	"ChatWindowPosition", -- Should return a UDim2 representing the position of the chat window.
+	 * 	"ChatWindowSize", -- Should return a UDim2 representing the size of the chat window.
+	 * 	"ChatBarDisabled" -- Should return true if the chat bar is currently disabled.
 	 * )
 	 *  
 	 * -- Connect ChatConnections to the CoreGui.
@@ -3723,30 +3618,29 @@ interface StarterGui extends BasePlayerGui {
 	 * local maxAttempts = 10
 	 *  
 	 * while (tries < maxAttempts) do
-	 *     local success,result = pcall(function ()
-	 *         StarterGui:SetCore("CoreGuiChatConnections",ChatConnections)
-	 *     end)
-	 *     if success then
-	 *         break
-	 *     else
-	 *         tries = tries + 1
-	 *         if tries == maxAttempts then
-	 *             error("Error calling SetCore CoreGuiChatConnections: " .. result)
-	 *         else
-	 *             wait()
-	 *         end
-	 *     end
+	 * 	local success,result = pcall(function ()
+	 * 		StarterGui:SetCore("CoreGuiChatConnections",ChatConnections)
+	 * 	end)
+	 * 	if success then
+	 * 		break
+	 * 	else
+	 * 		tries = tries + 1
+	 * 		if tries == maxAttempts then
+	 * 			error("Error calling SetCore CoreGuiChatConnections: " .. result)
+	 * 		else
+	 * 			wait()
+	 * 		end
+	 * 	end
 	 * end
 	 *  
 	 * while wait(0.2) do
-	 *     local isVisible = (math.random() > 0.5)
-	 *     ChatConnections.ChatWindow.VisibilityStateChanged:Fire(isVisible)
-	 *     if not isVisible then
-	 *         local messageCount = math.random(1,120)
-	 *         ChatConnections.ChatWindow.MessagesChanged:Fire(messageCount)
-	 *     end
+	 * 	local isVisible = (math.random() > 0.5)
+	 * 	ChatConnections.ChatWindow.VisibilityStateChanged:Fire(isVisible)
+	 * 	if not isVisible then
+	 * 		local messageCount = math.random(1,120)
+	 * 		ChatConnections.ChatWindow.MessagesChanged:Fire(messageCount)
+	 * 	end
 	 * end
-	 * ```
 	 */
 	SetCore<T extends keyof SettableCores>(this: StarterGui, parameter: T, option: SettableCores[T]): void;
 	/**
@@ -3968,14 +3862,12 @@ interface Beam extends Instance {
 	 * 
 	 * This property is a [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence), allowing the color to be configured to vary across the length of the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam). Take for example the following [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence).
 	 * 
-	 * ```lua
 	 * local colorSequence = ColorSequence.new({
-	 *     ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)), -- red
-	 *     ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)), -- green
-	 *     ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 255)), -- blue
-	 *     }
+	 * 	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)), -- red
+	 * 	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)), -- green
+	 * 	ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 255)), -- blue
+	 * 	}
 	 * )
-	 * ``` 
 	 * 
 	 * Applying this [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence) to a [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam) would yield the following result:
 	 * 
@@ -3989,9 +3881,7 @@ interface Beam extends Instance {
 	 * 
 	 * The position of this point can be determined by the following equation:
 	 * 
-	 * ```lua
-	 * local controlPoint1 = Beam.Attachment0.WorldPosition + (Beam.Attachment0.CFrame.rightVector * Beam.CurveSize0)
-	 * ``` 
+	 * local controlPoint1 = Beam.Attachment0.WorldPosition + (Beam.Attachment0.CFrame.rightVector \* Beam.CurveSize0)
 	 * 
 	 * Beam Curvature
 	 * --------------
@@ -4018,9 +3908,7 @@ interface Beam extends Instance {
 	 * 
 	 * The position of this point can be determined by the following equation:
 	 * 
-	 * ```lua
-	 * local controlPoint2 = Beam.Attachment1.WorldPosition - (Beam.Attachment1.CFrame.rightVector * Beam.CurveSize1)
-	 * ``` 
+	 * local controlPoint2 = Beam.Attachment1.WorldPosition - (Beam.Attachment1.CFrame.rightVector \* Beam.CurveSize1)
 	 * 
 	 * Beam Curvature
 	 * --------------
@@ -4164,14 +4052,12 @@ interface Beam extends Instance {
 	 * 
 	 * This property is a [NumberSequence](https://developer.roblox.com/en-us/api-reference/datatype/NumberSequence), allowing the transparency to be configured to vary across the length of the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam). Take for example the following [NumberSequence](https://developer.roblox.com/en-us/api-reference/datatype/NumberSequence).
 	 * 
-	 * ```lua
 	 * local numberSequence = NumberSequence.new({
-	 *     NumberSequenceKeypoint.new(0, 1), -- transparent
-	 *     NumberSequenceKeypoint.new(0.5, 0), -- opaque
-	 *     NumberSequenceKeypoint.new(1, 1), -- transparent
-	 *     }
+	 * 	NumberSequenceKeypoint.new(0, 1), -- transparent
+	 * 	NumberSequenceKeypoint.new(0.5, 0), -- opaque
+	 * 	NumberSequenceKeypoint.new(1, 1), -- transparent
+	 * 	}
 	 * )
-	 * ``` 
 	 * 
 	 * Applying this [NumberSequence](https://developer.roblox.com/en-us/api-reference/datatype/NumberSequence) to a [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam) would yield the following result:
 	 * 
@@ -4217,21 +4103,17 @@ interface Beam extends Instance {
 	 * 
 	 * The offset of a [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)s texture cycle represents the progress of the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)s texture animation. Hence, a [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s texture cycle can be reset as follows:
 	 * 
-	 * ```lua
 	 * beam:SetTextureOffset(0)
-	 * ``` 
 	 * 
 	 * Where manual control is not required over the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s texture cycle, [Beam.TextureSpeed](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureSpeed) can be used instead to animate the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam). Although, for illustrative purposes, a similar function can be achieved with SetTextureOffset.
 	 * 
-	 * ```lua
 	 * local RunService = game:GetService("RunService")
 	 * while true do
-	 *     for i = 1, 0, -0.01 do
-	 *         RunService.RenderStepped:Wait()
-	 *         beam:SetTextureOffset(i)
-	 *     end    
+	 * 	for i = 1, 0, -0.01 do
+	 * 		RunService.RenderStepped:Wait()
+	 * 		beam:SetTextureOffset(i)
+	 * 	end	
 	 * end
-	 * ``` 
 	 * 
 	 * Notes
 	 * -----
@@ -4364,11 +4246,9 @@ interface BodyAngularVelocity extends BodyMover {
  * 
  * Using the `CFrame:vectorToWorldSpace(Vector3)` method, it is possible to translate a force vector that is relative to the part into the world vector necessary for [Force](https://developer.roblox.com/en-us/api-reference/property/BodyForce/Force). For example, to apply a force to the left an object (no matter which way it's facing), try:
  * 
- * ```lua
  * magnitude = 100
- * left = Vector3.new(-1, 0, 0) * magnitude -- You could also use Vector3.FromNormalId(Enum.NormalId.Left)
+ * left = Vector3.new(-1, 0, 0) \* magnitude -- You could also use Vector3.FromNormalId(Enum.NormalId.Left)
  * bodyForce.Force = bodyForce.Parent.CFrame:vectorToWorldSpace(left)
- * ``` 
  * 
  * You can also use a [BodyThrust](https://developer.roblox.com/en-us/api-reference/class/BodyThrust) with a [Location](https://developer.roblox.com/en-us/api-reference/property/BodyThrust/Location) of `(0, 0, 0)`, then set the [Force](https://developer.roblox.com/en-us/api-reference/property/BodyThrust/Force) for the same effect.
  * 
@@ -4405,15 +4285,11 @@ interface BodyForce extends BodyMover {
  * 
  * A common technique for setting the goal orientation is to set the [BodyGyro.CFrame](https://developer.roblox.com/en-us/api-reference/property/BodyGyro/CFrame) to a part's [CFrame](https://developer.roblox.com/en-us/api-reference/property/BasePart/CFrame). For example:
  * 
- * ```lua
  * workspace.Part.BodyGyro.CFrame = workspace.Part.CFrame
- * ``` 
  * 
  * You can also use a [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) **constructor** which initializes rotation such as `CFrame.fromAxisAngle`, `CFrame.fromEulerAnglesXYZ`, or `CFrame.fromEulerAnglesYXZ`. Alternatively, you can use the following structure to make the body gyro “look at” a `targetPosition`.
  * 
- * ```lua
  * CFrame.new(BodyGyro.Parent.Position, targetPosition)
- * ``` 
  * 
  * Troubleshooting
  * ---------------
@@ -4723,12 +4599,10 @@ interface Camera extends Instance {
 	 * 
 	 * The most intuitive way to position and orientate the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) is by using the _new_ CFrame constructor with the _pos_ and _lookAt_ parameters, for example:
 	 * 
-	 * ```lua
 	 * local pos = Vector3.new(0, 10, 0)
 	 * local lookAt = Vector3.new(10, 0, 0)
 	 * local cameraCFrame = CFrame.new(pos, lookAt)
 	 * workspace.CurrentCamera.CFrame = cameraCFrame
-	 * ``` 
 	 * 
 	 * In the above example the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) is positioned at _Vector3.new(0, 10, 0)_ and oriented to be looking towards _Vector3.new(10, 0, 0)_.
 	 * 
@@ -4758,20 +4632,18 @@ interface Camera extends Instance {
 	 * 
 	 * To restore the CameraSubject to its default value, set it to the `Player/LocalPlayer|LocalPlayer's` [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) like so:
 	 * 
-	 * ```lua
 	 * local Players = game:GetService("Players")
 	 * 
 	 * local localPlayer = Players.LocalPlayer
 	 * 
 	 * local function resetCameraSubject()
-	 *     if workspace.CurrentCamera and localPlayer.Character then
-	 *         local humanoid = localPlayer.Character:FindFirstChildOfClass("Humanoid")
-	 *         if humanoid then
-	 *             workspace.CurrentCamera.CameraSubject = humanoid
-	 *         end
-	 *     end
+	 * 	if workspace.CurrentCamera and localPlayer.Character then
+	 * 		local humanoid = localPlayer.Character:FindFirstChildOfClass("Humanoid")
+	 * 		if humanoid then
+	 * 			workspace.CurrentCamera.CameraSubject = humanoid
+	 * 		end
+	 * 	end
 	 * end
-	 * ```
 	 */
 	CameraSubject: Humanoid | BasePart | undefined;
 	/**
@@ -4854,11 +4726,9 @@ interface Camera extends Instance {
 	 * 
 	 * When HeadLocked is _true_, the engine will combine the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) [Camera.CFrame](https://developer.roblox.com/en-us/api-reference/property/Camera/CFrame) with the [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) of the user's head to render the position and orientation of the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) correctly. The camera will be rendered at the following [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame):
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * local headCFrame = UserInputService:GetUserCFrame(Enum.UserCFrame.Head)
-	 * renderCFrame = workspace.CurrentCamera.CFrame * headCFrame
-	 * ``` 
+	 * renderCFrame = workspace.CurrentCamera.CFrame \* headCFrame
 	 * 
 	 * Disabling HeadLocked
 	 * --------------------
@@ -4971,11 +4841,9 @@ interface Camera extends Instance {
 	 * 
 	 * The castPoints parameter is given as an array of [Vector3s](https://developer.roblox.com/en-us/api-reference/datatype/Vector3), for example:
 	 * 
-	 * ```lua
 	 * local castPoints = {Vector3.new(0, 10, 0), Vector3.new(0, 15, 0)}
 	 * local ignoreList = {}
 	 * workspace.CurrentCamera:GetPartsObscuringTarget(castPoints, ignoreList)
-	 * ``` 
 	 * 
 	 * The array of [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) returned is in an arbitrary order, and no additional raycast data is provided (for example hit position, hit material and surface normal). If this information is required, you should a [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) raycast function such as `Workspace/FindPartOnRayWithIgnoreList`.
 	 * 
@@ -4991,12 +4859,10 @@ interface Camera extends Instance {
 	 * 
 	 * For example, when using VR the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) is actually rendered at the following [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame):
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * local headCFrame = UserInputService:GetUserCFrame(Enum.UserCFrame.Head)
-	 * renderCFrame = workspace.CurrentCamera.CFrame * headCFrame
-	 * ``` 
+	 * renderCFrame = workspace.CurrentCamera.CFrame \* headCFrame
 	 * 
 	 * The `Camera|Camera's` render [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) will only be changed to account for the head when the [Camera.HeadLocked](https://developer.roblox.com/en-us/api-reference/property/Camera/HeadLocked) property is true.
 	 */
@@ -5006,16 +4872,14 @@ interface Camera extends Instance {
 	 * 
 	 * This function only returns roll applied using the [Camera:SetRoll](https://developer.roblox.com/en-us/api-reference/function/Camera/SetRoll) function. Roll manually applied to the `Camera|Camera's` [Camera.CFrame](https://developer.roblox.com/en-us/api-reference/property/Camera/CFrame) is not accounted for. To obtain the actual roll of the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera), including roll manually applied, you can use the following snippet:
 	 * 
-	 * ```lua
 	 * local function getActualRoll()
-	 *     local camera = workspace.CurrentCamera
+	 * 	local camera = workspace.CurrentCamera
 	 * 
-	 *     local trueUp = Vector3.new(0, 1, 0)
-	 *     local cameraUp = camera:GetRenderCFrame().upVector
+	 * 	local trueUp = Vector3.new(0, 1, 0)
+	 * 	local cameraUp = camera:GetRenderCFrame().upVector
 	 * 
-	 *     return math.acos(trueUp:Dot(cameraUp))
+	 * 	return math.acos(trueUp:Dot(cameraUp))
 	 * end
-	 * ```
 	 */
 	GetRoll(this: Camera): number;
 	/**
@@ -5036,16 +4900,14 @@ interface Camera extends Instance {
 	/**
 	 * This function tweens the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) in a linear fashion towards a new [Camera.CFrame](https://developer.roblox.com/en-us/api-reference/property/Camera/CFrame) and [Camera.Focus](https://developer.roblox.com/en-us/api-reference/property/Camera/Focus) over a given duration, for example:
 	 * 
-	 * ```lua
 	 * local camera = workspace.CurrentCamera
 	 * camera.CameraType = Enum.CameraType.Scriptable
 	 * 
 	 * camera:Interpolate(
-	 *     CFrame.new(0, 10, 100),
-	 *     CFrame.new(0, 0, 100),
-	 *     5
+	 * 	CFrame.new(0, 10, 100),
+	 * 	CFrame.new(0, 0, 100),
+	 * 	5
 	 * )
-	 * ``` 
 	 * 
 	 * Throughout the tween, the `Camera|Camera's` [Camera.CFrame](https://developer.roblox.com/en-us/api-reference/property/Camera/CFrame) will be orientated towards the `Camera|Camera's` [Camera.Focus](https://developer.roblox.com/en-us/api-reference/property/Camera/Focus).
 	 * 
@@ -5057,23 +4919,21 @@ interface Camera extends Instance {
 	 * 
 	 * You are advised to use [TweenService](https://developer.roblox.com/en-us/api-reference/class/TweenService) to tween the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) instead as it is more reliable and offers a variety of easing styles. See below for an example:
 	 * 
-	 * ```lua
 	 * local TweenService = game:GetService("TweenService")
 	 * 
 	 * local camera = workspace.CurrentCamera
 	 * camera.CameraType = Enum.CameraType.Scriptable
 	 * 
 	 * local tween = TweenService:Create(
-	 *     camera,
-	 *     TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-	 *     {
-	 *         CFrame = CFrame.new(0, 10, 100),
-	 *         Focus = CFrame.new(0, 0, 100)
-	 *     }
+	 * 	camera,
+	 * 	TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+	 * 	{
+	 * 		CFrame = CFrame.new(0, 10, 100),
+	 * 		Focus = CFrame.new(0, 0, 100)
+	 * 	}
 	 * )
 	 * 
 	 * tween:Play()
-	 * ```
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
@@ -5085,10 +4945,8 @@ interface Camera extends Instance {
 	 * 
 	 * This function pans the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) in 45 degree increments, for example:
 	 * 
-	 * ```lua
 	 * workspace.CurrentCamera:PanUnits(1) -- 45 degrees
 	 * workspace.CurrentCamera:PanUnits(-2) -- -90 degrees
-	 * ``` 
 	 * 
 	 * PanUnits does not require the [Camera.CameraType](https://developer.roblox.com/en-us/api-reference/property/Camera/CameraType) to be _'Scriptable'_.
 	 * Tags: Deprecated
@@ -5102,12 +4960,10 @@ interface Camera extends Instance {
 	 * 
 	 * As the [Ray](https://developer.roblox.com/en-us/api-reference/datatype/Ray) created is a unit ray it is only one stud long. To create a longer ray, you can do the following:
 	 * 
-	 * ```lua
 	 * local camera = workspace.CurrentCamera
 	 * local length = 500
 	 * local unitRay = camera:ScreenPointToRay(100, 100)
-	 * local ray = Ray.new(unitRay.Origin, unitRay.Direction * length)
-	 * ```
+	 * local ray = Ray.new(unitRay.Origin, unitRay.Direction \* length)
 	 */
 	ScreenPointToRay(this: Camera, x: number, y: number, depth?: number): Ray;
 	/**
@@ -5125,9 +4981,7 @@ interface Camera extends Instance {
 	 * 
 	 * For example, the following would invert the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera):
 	 * 
-	 * ```lua
 	 * workspace.CurrentCamera:SetRoll(math.pi) -- math.pi radians = 180 degrees
-	 * ``` 
 	 * 
 	 * SetRoll has no effect on any roll applied using the [Camera.CFrame](https://developer.roblox.com/en-us/api-reference/property/Camera/CFrame) property. Roll applied using SetRoll is not reflected in the [Camera.CFrame](https://developer.roblox.com/en-us/api-reference/property/Camera/CFrame) property but is reflected in in the [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) returned by[Camera:GetRenderCFrame](https://developer.roblox.com/en-us/api-reference/function/Camera/GetRenderCFrame).
 	 * 
@@ -5139,11 +4993,9 @@ interface Camera extends Instance {
 	 * 
 	 * As this function is outdated, you are advised to instead apply roll to the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) using the [Camera.CFrame](https://developer.roblox.com/en-us/api-reference/property/Camera/CFrame) property. For example:
 	 * 
-	 * ```lua
 	 * local currentCFrame = workspace.CurrentCamera.CFrame
 	 * local rollCFrame = CFrame.Angles(0, 0, roll)
-	 * workspace.CurrentCamera.CFrame = currentCFrame * rollCFrame
-	 * ```
+	 * workspace.CurrentCamera.CFrame = currentCFrame \* rollCFrame
 	 */
 	SetRoll(this: Camera, rollAngle: number): void;
 	/**
@@ -5153,10 +5005,8 @@ interface Camera extends Instance {
 	 * 
 	 * This function tilts the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) in 10 degree increments, for example:
 	 * 
-	 * ```lua
 	 * workspace.CurrentCamera:TiltUnits(2) -- 20 degrees
 	 * workspace.CurrentCamera:TiltUnits(-5) -- -50 degrees
-	 * ``` 
 	 * 
 	 * TiltUnits does not require the [Camera.CameraType](https://developer.roblox.com/en-us/api-reference/property/Camera/CameraType) to be _'Scriptable'_.
 	 * 
@@ -5175,20 +5025,16 @@ interface Camera extends Instance {
 	 * 
 	 * This function can be used in conjunction with the [Camera.ViewportSize](https://developer.roblox.com/en-us/api-reference/property/Camera/ViewportSize) property to create a ray from the centre of the screen, for example:
 	 * 
-	 * ```lua
 	 * local camera = workspace.CurrentCamera
 	 * local viewportPoint = camera.ViewportSize / 2
 	 * local unitRay = camera:ViewportPointToRay(viewportPoint.X, viewportPoint.Y, 0)
-	 * ``` 
 	 * 
 	 * As the [Ray](https://developer.roblox.com/en-us/api-reference/datatype/Ray) created is a unit ray it is only one stud long. To create a longer ray, you can do the following:
 	 * 
-	 * ```lua
 	 * local camera = workspace.CurrentCamera
 	 * local length = 500
 	 * local unitRay = camera:ScreenPointToRay(100, 100)
-	 * local ray = Ray.new(unitRay.Origin, unitRay.Direction * length)
-	 * ```
+	 * local ray = Ray.new(unitRay.Origin, unitRay.Direction \* length)
 	 */
 	ViewportPointToRay(this: Camera, x: number, y: number, depth?: number): Ray;
 	/**
@@ -5200,14 +5046,12 @@ interface Camera extends Instance {
 	 * 
 	 * For example:
 	 * 
-	 * ```lua
 	 * local camera = workspace.CurrentCamera
 	 * local worldPoint = Vector3.new(0, 10, 0)
 	 * local vector, onScreen = camera:WorldToScreenPoint(worldPoint)
 	 * 
 	 * local screenPoint = Vector2.new(vector.X, vector.Y)
 	 * local depth = vector.Z
-	 * ``` 
 	 * 
 	 * Note this function does not perform any raycasting, meaning the visible bool will be true regardless if the _worldPoint_ is obscured by [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain).
 	 */
@@ -5223,14 +5067,12 @@ interface Camera extends Instance {
 	 * 
 	 * For example:
 	 * 
-	 * ```lua
 	 * local camera = workspace.CurrentCamera
 	 * local worldPoint = Vector3.new(0, 10, 0)
 	 * local vector, inViewport = camera:WorldToViewportPoint(worldPoint)
 	 * 
 	 * local viewportPoint = Vector2.new(vector.X, vector.Y)
 	 * local depth = vector.Z
-	 * ``` 
 	 * 
 	 * Note this function does not perform any raycasting, meaning the visible bool will be true regardless if the _worldPoint_ is obscured by [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain).
 	 */
@@ -5456,16 +5298,14 @@ interface Shirt extends Clothing {
 	 * 
 	 * This content ID is different than the website URL of the shirt. It can be found by pasting the website URL of the shirt into the **ShirtTemplate** property in Studio, as Studio will correct it. Alternatively [InsertService:LoadAsset](https://developer.roblox.com/en-us/api-reference/function/InsertService/LoadAsset) can be used to insert the shirt into the workspace, for example:
 	 * 
-	 * ```lua
 	 * local webURL = "https://www.roblox.com/catalog/1804747/White-Shirt"
 	 * local assetId = tonumber(string.match(webURL, "%d+") or 0)  -- Extract the number
 	 * local success, model = pcall(function() 
-	 *     return game:GetService("InsertService"):LoadAsset(assetId) 
+	 * 	return game:GetService("InsertService"):LoadAsset(assetId) 
 	 * end)
 	 * if success then 
-	 *     model.Parent = workspace
+	 * 	model.Parent = workspace
 	 * end
-	 * ```
 	 */
 	ShirtTemplate: string;
 }
@@ -5497,18 +5337,16 @@ interface ShirtGraphic extends CharacterAppearance {
 	 * 
 	 * This content ID is different than the website URL of the t-shirt. It can be found by pasting the website URL of the t-shirt into the **Graphic** property of the [ShirtGraphic](https://developer.roblox.com/en-us/api-reference/class/ShirtGraphic) in Roblox Studio, as Studio will correct it. Alternatively [InsertService:LoadAsset](https://developer.roblox.com/en-us/api-reference/function/InsertService/LoadAsset) can be used to insert the t-shirt into the workspace, for example:
 	 * 
-	 * ```lua
 	 * local webURL = "https://www.roblox.com/catalog/2591161/Sword-Fight-on-the-Heights-Ring-of-Fire-T-Shirt"
 	 * local assetId = tonumber(string.match(webURL, "%d+") or 0)  -- Extract the number
 	 * 
 	 * local success, model = pcall(function()
-	 *     return game:GetService("InsertService"):LoadAsset(assetId)
+	 * 	return game:GetService("InsertService"):LoadAsset(assetId)
 	 * end)
 	 * 
 	 * if success then
-	 *     model.Parent = workspace
+	 * 	model.Parent = workspace
 	 * end
-	 * ```
 	 */
 	Graphic: string;
 }
@@ -5529,10 +5367,8 @@ interface Chat extends Instance {
 	/**
 	 * If true, entering a message in the chat will result in a chat bubble popping up above the player's [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character). This behavior can either be enabled by directly ticking this checkbox in Studio, or by using a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript):
 	 * 
-	 * ```lua
 	 * local ChatService = game:GetService("Chat")
 	 * ChatService.BubbleChatEnabled = true
-	 * ``` 
 	 * 
 	 * This must be done on the client, toggling this value in a server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script) will have no effect.
 	 */
@@ -5786,15 +5622,13 @@ interface Chat extends Instance {
  * 
  * Below is a simple template script for working with ClickDetectors. Paste it into a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
  * 
- * ```lua
  * local clickDetector = workspace.Part.ClickDetector
  * 
  * function onMouseClick()
- *     print("You clicked me!")
+ * 	print("You clicked me!")
  * end
  * 
  * clickDetector.MouseClick:connect(onMouseClick)
- * ``` 
  * 
  * [MaxActivationDistance](https://developer.roblox.com/en-us/api-reference/property/ClickDetector/MaxActivationDistance) can be used to limit the distance a player may be from a ClickDetector object before it is no longer clickable.
  * 
@@ -5958,12 +5792,10 @@ interface CollectionService extends Instance {
 	/**
 	 * GetTags is given an object and returns a table of strings, which are the tags applied to the given object.
 	 * 
-	 * ```lua
 	 * local CollectionService = game:GetService("CollectionService")
 	 * local object = workspace.Model
 	 * local tags = CollectionService:GetTags(object)
 	 * print("The object " .. object:GetFullName() .. " has tags: " .. table.concat(tags, ", "))
-	 * ``` 
 	 * 
 	 * This method is useful when you want to do something with multiple tags at once on an object. However, it would be inefficient to use this method to check for the existence of a single tag. For this, use [CollectionService:HasTag](https://developer.roblox.com/en-us/api-reference/function/CollectionService/HasTag) to check for a single tag.
 	 */
@@ -6008,16 +5840,12 @@ interface CollectionService extends Instance {
  * 
  * For example,
  * 
- * ```lua
- * local damage = 10
- * ``` 
+ * local damage = 10 
  * 
  * Becomes:
  * 
- * ```lua
  * local configuration = tool:FindFirstChildWhichIsA("Configuration", true)
  * damage = configuration:FindFirstChild("Damage").Value -- A NumberValue
- * ``` 
  * 
  * The Configuration object is intended to be placed inside a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) in a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) or [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool). It was originally intended to be used with a tool that provided a GUI interface to edit these properties. However it is more common now for developers to edit these values directly in the Roblox Studio properties window.
  * 
@@ -6452,9 +6280,7 @@ interface HingeConstraint extends Constraint {
  * 
  * When InverseSquareLaw is true, then the force will scale based on how much distance there is between the two endpoints. When the distance is 1 stud, then the force's magnitude will be the value of the Magnitude property. If the two points are further away, the force will decrease. Conversely, the force will increase if the two points move closer together. This function can be used to determine the force at any given separation:
  * 
- * ```lua
  * ActualMagnitude = Magnitude / (Separation ^ 2)
- * ``` 
  * 
  * **Tip**  
  * 
@@ -6910,7 +6736,11 @@ interface Torque extends Constraint {
 
 /** A physics constraint that ensures two axes on two rigid bodies remain perpendicular. An example use of this constraint are power transmission between the transmission and rear drive shafts of rear-wheel drive cars, robotics, etc.
  * 
- * The constraint makes the secondary axes of two attachments perpendicular. If [LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/UniversalConstraint/LimitsEnabled) then the relative motion of the primary axis of [Attachment1](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment1) is limited by a cone. This cone is formed via [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0) and its primary axis and makes an angle of [MaxAngle](https://developer.roblox.com/en-us/api-reference/property/UniversalConstraint/MaxAngle) with it.
+ * The constraint ensures that two attachments are co-located (similar to [BallSocketConstraint](https://developer.roblox.com/en-us/api-reference/class/BallSocketConstraint)) and that their secondary axes remain perpendicular (see the picture below). In this sense, this constraint is more restrictive than the BallSocketConstraint but is less restrictive than [HingeConstraint](https://developer.roblox.com/en-us/api-reference/class/HingeConstraint) (by one degree of freedom).
+ * 
+ * ![Example UniversalConstraint](https://developer.roblox.com/assets/blt96586dfb35538032/UniversalConstraintDemo.jpg?auto=yes&bg=222&fg=000)
+ * 
+ * If [LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/UniversalConstraint/LimitsEnabled) is `true`, then the relative motion of the primary axis of [Attachment1](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment1) is limited by a cone. This cone is formed via [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0) and its primary axis and makes an angle of [MaxAngle](https://developer.roblox.com/en-us/api-reference/property/UniversalConstraint/MaxAngle) with it.
  */
 interface UniversalConstraint extends Constraint {
 	/**
@@ -6926,22 +6756,18 @@ interface UniversalConstraint extends Constraint {
 	 * 
 	 * The example below demonstrates how developers can enable a cone limit on the relative motion of the primary axes:
 	 * 
-	 * ```lua
 	 * universalConstraint.LimitsEnabled = true
-	 * ```
 	 */
 	LimitsEnabled: boolean;
 	/**
-	 * This property determines the max angle, in degrees, of the `UniversalConstraint|UniversalConstraint's` limiting cone. The limiting cone is formed from `UniversalConstraint/Attachment0` and its primary axis. The default value is 45.0 degrees.
+	 * This property determines the max angle, in degrees, of the `UniversalConstraint|UniversalConstraint's` limiting cone. The limiting cone is formed from [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0) and its primary axis. The default value is 45.0 degrees.
 	 * 
 	 * In order for this property to take affect, the constraint's [UniversalConstraint.LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/UniversalConstraint/LimitsEnabled) property must be set to `true`.
 	 * 
-	 * For example, the code snippet below sets LimitsEnabled to true and limits the MaxAngle to 10 degrees:
+	 * For example, the code snippet below sets LimitsEnabled to true and limits the [UniversalConstraint.MaxAngle](https://developer.roblox.com/en-us/api-reference/property/UniversalConstraint/MaxAngle) to 10 degrees:
 	 * 
-	 * ```lua
 	 * universalConstraint.LimitsEnabled = true
 	 * universalConstraint.MaxAngle = 10
-	 * ```
 	 */
 	MaxAngle: number;
 	/**
@@ -6951,7 +6777,7 @@ interface UniversalConstraint extends Constraint {
 	/**
 	 * This property determines the restitution of the two limits, or how elastic they are. The value defaults to 0 and can be any floating number in the range \[0, 1\].
 	 * 
-	 * This property only applies when `[UniversalConstraint.LimitsEnabled](LimitsEnabled)` is set to true.
+	 * This property only applies when [UniversalConstraint.LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/UniversalConstraint/LimitsEnabled) is set to true.
 	 * 
 	 * The elasticity affects the [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment) connected by the [UniversalConstraint](https://developer.roblox.com/en-us/api-reference/class/UniversalConstraint) when they reach the end of the range specified by [UniversalConstraint.MaxAngle](https://developer.roblox.com/en-us/api-reference/property/UniversalConstraint/MaxAngle).
 	 */
@@ -7105,7 +6931,7 @@ interface ContentProvider extends Instance {
  * Keyboardless Input
  * ------------------
  * 
- * ContextActionService is especially useful for supporting gamepad and touch input. For gamepad input, you might choose to bind the B button to an action that returns the user to the previous menu when they entire another menu. For touch, on-screen touch buttons can be used in place of key presses: these buttons display only while the action is bound, and the position, text and/or images of these buttons can be configured through this service. They are somewhat limited in the amount of customization provided by this service; it's usually a better idea to make your own on-screen buttons using [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) or [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton).
+ * ContextActionService is especially useful for supporting gamepad and touch input. For gamepad input, you might choose to bind the B button to an action that returns the user to the previous menu when they enter another menu. For touch, on-screen touch buttons can be used in place of key presses: these buttons display only while the action is bound, and the position, text and/or images of these buttons can be configured through this service. They are somewhat limited in the amount of customization provided by this service; it's usually a better idea to make your own on-screen buttons using [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) or [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton).
  */
 interface ContextActionService extends Instance {
 	/**
@@ -7121,7 +6947,6 @@ interface ContextActionService extends Instance {
 	 * 
 	 * The code sample below shows how a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) can be [played](https://developer.roblox.com/en-us/api-reference/function/Sound/Play) while a key (H), game pad button, or touch screen button is pressed.
 	 * 
-	 * ```lua
 	 * local ContextActionService = game:GetService("ContextActionService")
 	 * 
 	 * -- A car horn sound
@@ -7130,13 +6955,13 @@ interface ContextActionService extends Instance {
 	 * honkSound.SoundId = "rbxassetid://3017580236"
 	 * 
 	 * local function handleAction(actionName, inputState, inputObject)
-	 *     if actionName == "HonkHorn" then
-	 *         if inputState == Enum.UserInputState.Begin then
-	 *             honkSound:Play()
-	 *         else
-	 *             honkSound:Pause()
-	 *         end
-	 *     end
+	 * 	if actionName == "HonkHorn" then
+	 * 		if inputState == Enum.UserInputState.Begin then
+	 * 			honkSound:Play()
+	 * 		else
+	 * 			honkSound:Pause()
+	 * 		end
+	 * 	end
 	 * end
 	 * 
 	 * -- When the player sits in the vehicle:
@@ -7144,7 +6969,6 @@ interface ContextActionService extends Instance {
 	 * 
 	 * -- When the player gets out:
 	 * ContextActionService:UnbindAction("HonkHorn")
-	 * ``` 
 	 * 
 	 * Action Handler Parameters
 	 * -------------------------
@@ -7374,10 +7198,8 @@ interface Controller extends Instance {
  * 
  * This object can be found inside of the [ControllerService](https://developer.roblox.com/en-us/api-reference/class/ControllerService), via:
  * 
- * ```lua
  * local ControllerService = game:GetService("ControllerService")
  * local HumanoidController = ControllerService:FindFirstChildOfClass("HumanoidController")
- * ```
  */
 interface HumanoidController extends Controller {
 	/**
@@ -7524,11 +7346,9 @@ interface DataModelMesh extends Instance {
 	 * 
 	 * It should be noted that this property is a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) rather than a [Color3](https://developer.roblox.com/en-us/api-reference/datatype/Color3). To convert, use the following function:
 	 * 
-	 * ```lua
 	 * local function color3ToVector3(c3)
 	 *    return Vector3.new(c3.r, c3.g, c3.b)
 	 * end
-	 * ``` 
 	 * 
 	 * Although this property allows basic modification of a texture, changing a texture entirely provides more control. See [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) for more details.
 	 */
@@ -7857,28 +7677,22 @@ interface DataStoreSetOptions extends Instance {
  * 
  * Take the example of projectile that has just been thrown. It could be cleaned up using:
  * 
- * ```lua
  * wait(3)
  * projectile:Destroy()
- * ``` 
  * 
  * However there are a number of issues with this approach. Firstly, it requires yielding the code with a wait, which is not always desirable. Secondly, before the 3 seconds have elapsed the object may have already been destroyed (for example, if it reached [Workspace.FallenPartsDestroyHeight](https://developer.roblox.com/en-us/api-reference/property/Workspace/FallenPartsDestroyHeight)).
  * 
- * ```lua
  * delay(3, function()
- *     if projectile and projectile.Parent then
- *         projectile:Destroy()
- *     end
+ * 	if projectile and projectile.Parent then
+ * 		projectile:Destroy()
+ * 	end
  * end)
- * ``` 
  * 
  * This solves the above issues, as it spawns a new thread to prevent the current one from yielding and checks to see if it can be destroyed. However at this point a simple command has already become quite complicated and an unnecessary thread is being created.
  * 
  * This is where Debris comes in, and the following code addresses all of the above issues.
  * 
- * ```lua
  * Debris:AddItem(projectile, 3)
- * ``` 
  * 
  * Debris does not yield the current thread, does not require a new thread and will not error if the object is already destroyed. For this reason it is the recommended method for cleaning up objects with a fixed lifetime.
  */
@@ -8266,9 +8080,7 @@ interface Decal extends FaceInstance {
 	 * 
 	 * When LocalTransparencyModifier is set to 1, the [Decal](https://developer.roblox.com/en-us/api-reference/class/Decal) will be completely invisible regardless of its original transparency. When it is set to 0, the [Decal](https://developer.roblox.com/en-us/api-reference/class/Decal)s rendered transparency will match the [Decal.Transparency](https://developer.roblox.com/en-us/api-reference/property/Decal/Transparency) value. The formula for this is:
 	 * 
-	 * ```lua
-	 * Displayed Transparency = Transparency + ((1 - Transparency) * LocalTransparencyModifier)
-	 * ``` 
+	 * Displayed Transparency = Transparency + ((1 - Transparency) \* LocalTransparencyModifier)
 	 * 
 	 * Note, this property should be used on the client only and will not replicate to the server.
 	 * 
@@ -8324,13 +8136,11 @@ interface Decal extends FaceInstance {
  * 
  * A Texture will apply an image to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) it is parented to. The surface this image is applied to is dependent on the [FaceInstance.Face](https://developer.roblox.com/en-us/api-reference/property/FaceInstance/Face) property. When the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) is resized, the image will repeat. The size of the repeating textures is determined by the [Texture.StudsPerTileU](https://developer.roblox.com/en-us/api-reference/property/Texture/StudsPerTileU) and `StudsPerTileV` properties.
  * 
- * ```lua
  * local texture = Instance.new("Texture")
  * texture.Texture = "http://www.roblox.com/asset/?id=732339893" -- roblox logo
  * -- 1x1 studs repeating texture
  * texture.StudsPerTileU = 1
  * texture.StudsPerTileV = 1
- * ``` 
  * 
  * The image a Texture applies is determined by its [Decal.Texture](https://developer.roblox.com/en-us/api-reference/property/Decal/Texture) property. Images can be uploaded to Roblox provided they adhere to the community guidelines. Information on how to upload images can be found [here](https://developer.roblox.com/en-us/api-reference/class/Articles/How to upload a Decal). -->
  * 
@@ -8398,13 +8208,11 @@ interface Texture extends Decal {
 	 * 
 	 * See the code snippet below for an example of how this property can be used.
 	 * 
-	 * ```lua
 	 * local texture = Instance.new("Texture")
 	 * texture.Texture = "http://www.roblox.com/asset/?id=732339893" -- roblox logo
 	 * -- 1x1 studs repeating texture
 	 * texture.StudsPerTileU = 1
 	 * texture.StudsPerTileV = 1
-	 * ``` 
 	 * 
 	 * Notes
 	 * -----
@@ -8420,13 +8228,11 @@ interface Texture extends Decal {
 	 * 
 	 * See the code snippet below for an example of how this property can be used.
 	 * 
-	 * ```lua
 	 * local texture = Instance.new("Texture")
 	 * texture.Texture = "http://www.roblox.com/asset/?id=732339893" -- roblox logo
 	 * -- 1x1 studs repeating texture
 	 * texture.StudsPerTileU = 1
 	 * texture.StudsPerTileV = 1
-	 * ``` 
 	 * 
 	 * Notes
 	 * -----
@@ -8525,15 +8331,13 @@ interface Fire extends Instance {
 	/**
 	 * The Enabled property, much like [ParticleEmitter.Enabled](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Enabled), determines whether flame particles are emit. Any particles already emit will continue to render until their lifetime expires. This property is useful for keeping pre-made fire effects off until they are needed later. Since flame particles are destroyed when the [Fire](https://developer.roblox.com/en-us/api-reference/class/Fire) object's [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is set to nil, this property is useful in allowing existing particles the opportunity to expire before destroying the Fire object altogether. See the function below.
 	 * 
-	 * ```lua
 	 * local Debris = game:GetService("Debris")
 	 * local part = script.Parent
 	 * function douseFlames(fire)
-	 *     fire.Enabled = false -- No more new particles
-	 *     Debris:AddItem(fire, 2) -- Remove the object after a delay (after existing particles have expired)
+	 * 	fire.Enabled = false -- No more new particles
+	 * 	Debris:AddItem(fire, 2) -- Remove the object after a delay (after existing particles have expired)
 	 * end
 	 * douseFlames(part.Fire)
-	 * ```
 	 */
 	Enabled: boolean;
 	/**
@@ -8566,10 +8370,8 @@ interface Fire extends Instance {
  * 
  * Folders form part of the game's hierarchy and can be accessed the same way as any object. For example:
  * 
- * ```lua
  * local folder = game:GetService("ReplicatedStorage"):FindFirstChild("Folder")
  *  local subFolder = folder:FindFirstChild("Folder")
- * ``` 
  * 
  * Folders behave the same way as folders in a computer file system, meaning they can also be parented to each other. They exist as a means for developers to better organize the multitude of objects required by complex games. See below for a simple example of how folders can be used to organize game objects in [ReplicatedStorage](https://developer.roblox.com/en-us/api-reference/class/ReplicatedStorage).
  * 
@@ -8712,9 +8514,7 @@ interface GamePassService extends Instance {
 	 * 
 	 * You can retrieve the _Game Pass ID_ of any pass through its URL, for example the _Game Pass ID_ of the below pass is 1:
 	 * 
-	 * ```lua
 	 * https://www.roblox.com/game-pass/1/myGamePass
-	 * ``` 
 	 * 
 	 * Whether you are using an _Asset ID_ or a _Game Pass ID_ determines which API members you can use.
 	 * 
@@ -9272,14 +9072,12 @@ interface GuiObject extends GuiBase2d {
 	 * 
 	 * The gif and code sample below demonstrate how to enabled and disable the property using a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript). They also illustrate the affects the property has on descendant GUI elements.
 	 * 
-	 * ```lua
 	 * while true do
-	 *     script.Parent.ClipDescendants = true
-	 *     wait(2)
-	 *     script.Parent.ClipDescendants = false
-	 *     wait(2)
+	 * 	script.Parent.ClipDescendants = true
+	 * 	wait(2)
+	 * 	script.Parent.ClipDescendants = false
+	 * 	wait(2)
 	 * end
-	 * ``` 
 	 * 
 	 * ![ClipDescendants Demo](https://developer.roblox.com/assets/bltaf6f1a7233b2f3d8/ClipDescendantsDemo.gif)
 	 * 
@@ -9636,22 +9434,20 @@ interface GuiObject extends GuiBase2d {
 	 * 
 	 * The code below demonstrates how to determine the [Vector2](https://developer.roblox.com/en-us/api-reference/datatype/Vector2) offset of the user's mouse relative to a GUI element:
 	 * 
-	 * ```lua
 	 * local CustomScrollingFrame = script.Parent
 	 * local SubFrame = CustomScrollingFrame:FindFirstChild("SubFrame")
 	 * 
 	 * local mouse = game.Players.LocalPlayer:GetMouse()
 	 * function getPosition(X, Y)
-	 *     local gui_X = CustomScrollingFrame.AbsolutePosition.X
-	 *     local gui_Y = CustomScrollingFrame.AbsolutePosition.Y
-	 *     
-	 *     
-	 *     local pos = Vector2.new(math.abs(X - gui_X), math.abs(Y - gui_Y - 36))
-	 *     print(pos)
+	 * 	local gui\_X = CustomScrollingFrame.AbsolutePosition.X
+	 * 	local gui\_Y = CustomScrollingFrame.AbsolutePosition.Y
+	 * 	
+	 * 	
+	 * 	local pos = Vector2.new(math.abs(X - gui\_X), math.abs(Y - gui\_Y - 36))
+	 * 	print(pos)
 	 * end
 	 * 
 	 * CustomScrollingFrame.MouseMoved:Connect(getPosition)
-	 * ``` 
 	 * 
 	 * Note that this event may not fire exactly when the user's mouse enters or exits a GUI element. Therefore, the `x` and `y` arguments may not match up perfectly to the coordinates of the GUI's edges.
 	 * 
@@ -9884,7 +9680,13 @@ interface GuiButton extends GuiObject {
 	 */
 	Style: Enum.ButtonStyle;
 	/**
-	 * Fires when the button is activated.
+	 * **Activated** fires when the user performs the primary action of the button. Its primary purpose is a cross-platform, general input event for buttons.
+	 * 
+	 * *   For pointer-based platforms with a mouse, this fires after the mouse button is pressed then released while hovering over the UI element.
+	 * *   For gamepad input, the event fires when the [GuiService.SelectedObject](https://developer.roblox.com/en-us/api-reference/property/GuiService/SelectedObject) is equal to the UI element and the primary gamepad button is pressed then released.
+	 * *   For touch input, the event fires when the user touches and releases the UI element.
+	 * 
+	 * Although direct input events like `GuiObject/MouseButton1Down` or [GuiObject.InputEnded](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputEnded) aren't deprecated and may still function as you might expect, it is better practice to use this event for general button input instead.
 	 */
 	readonly Activated: RBXScriptSignal<(inputObject: InputObject, clickCount: number) => void>;
 	/**
@@ -10162,13 +9964,11 @@ interface TextButton extends GuiButton {
 	 * 
 	 * Fading text in using a numeric for-loop is a fantastic way to draw a player's attention to text appearing on screen.
 	 * 
-	 * ```lua
-	 * -- Count backwards from 1 to 0, decrementing by 0.1
+	 * \-- Count backwards from 1 to 0, decrementing by 0.1
 	 * for i = 1, 0, -.1 do
 	 *    textLabel.TextTransparency = i
 	 *    wait(.1)
 	 * end
-	 * ```
 	 */
 	TextTransparency: number;
 	/**
@@ -10435,13 +10235,11 @@ interface TextLabel extends GuiLabel {
 	 * 
 	 * Fading text in using a numeric for-loop is a fantastic way to draw a player's attention to text appearing on screen.
 	 * 
-	 * ```lua
-	 * -- Count backwards from 1 to 0, decrementing by 0.1
+	 * \-- Count backwards from 1 to 0, decrementing by 0.1
 	 * for i = 1, 0, -.1 do
 	 *    textLabel.TextTransparency = i
 	 *    wait(.1)
 	 * end
-	 * ```
 	 */
 	TextTransparency: number;
 	/**
@@ -10825,13 +10623,11 @@ interface TextBox extends GuiObject {
 	 * 
 	 * Fading text in using a numeric for-loop is a fantastic way to draw a player's attention to text appearing on screen.
 	 * 
-	 * ```lua
-	 * -- Count backwards from 1 to 0, decrementing by 0.1
+	 * \-- Count backwards from 1 to 0, decrementing by 0.1
 	 * for i = 1, 0, -.1 do
 	 *    textLabel.TextTransparency = i
 	 *    wait(.1)
 	 * end
-	 * ```
 	 */
 	TextTransparency: number;
 	/**
@@ -11187,8 +10983,7 @@ interface BillboardGui extends LayerCollector {
 	 * Example
 	 * -------
 	 * 
-	 * ```lua
-	 * -- Wait for default camera/control scripts to load
+	 * \-- Wait for default camera/control scripts to load
 	 * wait(5)
 	 * 
 	 * -- Declare and initialize objects
@@ -11226,7 +11021,6 @@ interface BillboardGui extends LayerCollector {
 	 * wait(2)
 	 * camera.CFrame = CFrame.new(cameraPosition1, part.Position)
 	 * -- Contents of billboard will no longer be visible (outside MaxDistance)
-	 * ```
 	 */
 	MaxDistance: number;
 	/**
@@ -12093,10 +11887,8 @@ interface GuiService extends Instance {
 	 * 
 	 * The code sample below demonstrates how to disable the Inspect Menu for your game:
 	 * 
-	 * ```lua
 	 * local GuiService = game:GetService("GuiService")
 	 * GuiService:SetInspectMenuEnabled(false)
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -12239,15 +12031,11 @@ interface HttpService extends Instance {
 	 * 
 	 * For instance, when you encode the URL:
 	 * 
-	 * ```lua
 	 * http://robloxdev.com/api-reference/function/HttpService/UrlEncode
-	 * ``` 
 	 * 
 	 * the function returns the string:
 	 * 
-	 * ```lua
 	 * http%3A%2F%2Frobloxdev%2Ecom%2Fapi%2Dreference%2Ffunction%2FHttpService%2FUrlEncode
-	 * ```
 	 */
 	UrlEncode(this: HttpService, input: string): string;
 	/**
@@ -12554,13 +12342,11 @@ interface Humanoid extends Instance {
 	 * 
 	 * The code sample below demonstrates how to listen to when this property changes using [Instance:GetPropertyChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetPropertyChangedSignal). When the material the humanoid is standing on changes, it will print a message indicating the new material being stood on.
 	 * 
-	 * ```lua
 	 * local Humanoid = route.to.humanoid
 	 * 
 	 * Humanoid:GetPropertyChangedSignal("FloorMaterial"):Connect(function()
 	 *     print("New value for FloorMaterial: " .. tostring(Humanoid.FloorMaterial))
 	 * end)
-	 * ``` 
 	 * 
 	 * Caveats
 	 * -------
@@ -12658,18 +12444,14 @@ interface Humanoid extends Instance {
 	 * 
 	 * With R15 rigs, a suitable HipHeight is preset to ensure the height of the [Humanoid.RootPart](https://developer.roblox.com/en-us/api-reference/property/Humanoid/RootPart) is correct. The height of the legs is not used. The overall height of the Humanoid can be described in the following formula:
 	 * 
-	 * ```lua
-	 * Height = (0.5 * RootPart.Size.Y) + HipHeight
-	 * ``` 
+	 * Height = (0.5 \* RootPart.Size.Y) + HipHeight
 	 * 
 	 * HipHeight for R6 Humanoids
 	 * --------------------------
 	 * 
 	 * For R6 rigs, the `Humanoid/RootPart|RootPart's` height is determined by the height of the character's legs and [Humanoid.RootPart](https://developer.roblox.com/en-us/api-reference/property/Humanoid/RootPart). HipHeight instead describes a relative offset. The overall height of the Humanoid can be described in the following formula:
 	 * 
-	 * ```lua
-	 * Height = LeftLeg.Size.Y + (0.5 * RootPart.Size.Y) + HipHeight
-	 * ```
+	 * Height = LeftLeg.Size.Y + (0.5 \* RootPart.Size.Y) + HipHeight
 	 */
 	HipHeight: number;
 	/**
@@ -12893,9 +12675,7 @@ interface Humanoid extends Instance {
 	 * 
 	 * This can be described in Lua as:
 	 * 
-	 * ```lua
 	 * goal = humanoid.WalkToPart.CFrame:pointToObjectSpace(humanoid.WalkToPoint)
-	 * ``` 
 	 * 
 	 * Caveats
 	 * -------
@@ -12988,20 +12768,18 @@ interface Humanoid extends Instance {
 	 * 
 	 * The below example would cause a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) to equip a tool in [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) named _'Tool'_.
 	 * 
-	 *  ```lua
 	 * local Players = game:GetService("Players")
 	 * 
 	 * local player = Players:FindFirstChildOfClass(“Player”)
 	 * if player and player.Character then
-	 *     local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
-	 *     if humanoid then
-	 *         local tool = workspace:FindFirstChild("Tool")
-	 *         if tool then
-	 *             humanoid:EquipTool(tool)    
-	 *         end
-	 *     end
+	 * 	local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+	 * 	if humanoid then
+	 * 		local tool = workspace:FindFirstChild("Tool")
+	 * 		if tool then
+	 * 			humanoid:EquipTool(tool)	
+	 * 		end
+	 * 	end
 	 * end
-	 * ``` 
 	 * 
 	 * When this function is called, the humanoid will automatically unequip any [Tools](https://developer.roblox.com/en-us/api-reference/class/Tool) that it currently has equipped
 	 * 
@@ -13050,15 +12828,13 @@ interface Humanoid extends Instance {
 	 * 
 	 * This function works for both R15 and R6 rigs, for example:
 	 * 
-	 * ```lua
-	 * -- For R15
+	 * \-- For R15
 	 * print(humanoid:GetLimb(character.LeftUpperLeg)) -- Enum.Limb.LeftLeg
 	 * print(humanoid:GetLimb(character.LeftLowerLeg)) -- Enum.Limb.LeftLeg
 	 * print(humanoid:GetLimb(character.LeftFoot)) -- Enum.Limb.LeftLeg
 	 * 
 	 * -- For R6
 	 * print(humanoid:GetLimb(character:FindFirstChild("Left Leg"))) -- Enum.Limb.LeftLeg
-	 * ``` 
 	 * 
 	 * GetLimb will throw an error if the `Part|Part's` parent is not set to the `Humanoid|Humanoid's` parent.
 	 */
@@ -13070,11 +12846,9 @@ interface Humanoid extends Instance {
 	 * 
 	 * Beware that this function will not return [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) that have loaded but are **not playing**. If you want to track these you will need to index them manually. See below for one example of how this could be achieved:
 	 * 
-	 * ```lua
 	 * local animationTracks = {}
 	 * local track = humanoid:LoadAnimation(animation)
 	 * table.insert(animationTracks, track)
-	 * ```
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
@@ -13129,10 +12903,8 @@ interface Humanoid extends Instance {
 	 * 
 	 * The following code can be used to load an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) onto a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid).
 	 * 
-	 * ```lua
 	 * local animationTrack = humanoid:LoadAnimation(animation)
 	 * animationTrack:Play()
-	 * ``` 
 	 * 
 	 * Should I load an Animation on the client or server?
 	 * ---------------------------------------------------
@@ -13151,9 +12923,7 @@ interface Humanoid extends Instance {
 	 * 
 	 * By default, the _direction_ given is in world terms. If the _relativeToCamera_ parameter is _true_ however the _direction_ given is relative to the `Workspace/CurrentCamera|CurrentCamera's` [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame). As the negative Z direction is considered 'forwards' in Roblox, the following code would make the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) walk in the direction of the [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera).
 	 * 
-	 * ```lua
 	 * humanoid:Move(Vector3.new(0, 0, -1), true)
-	 * ``` 
 	 * 
 	 * When this function is called, the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) will move until the function is called again. However, if the default control scripts are being used this function will be overwritten when called on [Player](https://developer.roblox.com/en-us/api-reference/class/Player) [Characters](https://developer.roblox.com/en-us/api-reference/property/Player/Character). This can be avoided by either not using the default control scripts, or calling this function every frame using [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep) (see example).
 	 * 
@@ -14038,17 +13808,15 @@ interface HumanoidDescription extends Instance {
 	 * Example
 	 * -------
 	 * 
-	 * ```lua
 	 * local hd = Instance.new("HumanoidDescription")
 	 * hd:AddEmote("Salute", 3360689775)
 	 * local emotes = hd:GetEmotes()
 	 * for name, ids in pairs(emotes) do
 	 *     print(("The emote %s has %d ids:"):format(name, #ids))
-	 *     for _, id in pairs(ids) do
+	 *     for \_, id in pairs(ids) do
 	 *         print(id)
 	 *     end
 	 * end
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -14064,15 +13832,13 @@ interface HumanoidDescription extends Instance {
 	 * Example
 	 * -------
 	 * 
-	 * ```lua
 	 * local hd = Instance.new("HumanoidDescription")
 	 * hd:SetEmotes{Salute = {3360689775}, Agree = {4849487550}}
 	 * hd:SetEquippedEmotes({"Salute", "Agree"})
 	 * -- Iterate over the equipped emotes:
-	 * for _, t in pairs(hd:GetEquippedEmotes()) do
+	 * for \_, t in pairs(hd:GetEquippedEmotes()) do
 	 *     print(("In slot %d: emote %s is equipped"):format(t.Slot, t.Name))
 	 * end
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -14099,15 +13865,13 @@ interface HumanoidDescription extends Instance {
 	 * Example
 	 * -------
 	 * 
-	 * ```lua
 	 * local emotes = {
-	 *     Salute = {3360689775}, -- Syntax note: can also use ["Salute"] = ...
+	 *     Salute = {3360689775}, -- Syntax note: can also use \["Salute"\] = ...
 	 *     Agree = {4849487550},
 	 *     Disagree = {4849495710}
 	 * }
 	 * local hd = Instance.new("HumanoidDescription")
 	 * hd:SetEmotes(emotes)
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -14123,14 +13887,12 @@ interface HumanoidDescription extends Instance {
 	 * Example
 	 * -------
 	 * 
-	 * ```lua
 	 * local hd = Instance.new("HumanoidDescription")
 	 * hd:SetEmotes{Salute = {3360689775}, Agree = {4849487550}}
 	 * -- Can provide either an array of strings... (index is slot number)
 	 * hd:SetEquippedEmotes({"Salute", "Agree"})
 	 * -- ...or an array of tables as returned by GetEquippedEmotes (Slot and Name keys set)
 	 * hd:SetEquippedEmotes({{Slot = 1, Name = "Salute"}, {Slot = 2, Name = "Agree"}})
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -14158,16 +13920,14 @@ interface HumanoidDescription extends Instance {
 	 * Example
 	 * -------
 	 * 
-	 * ```lua
 	 * local hd = Instance.new("HumanoidDescription")
 	 * hd.EquippedEmotesChanged:Connect(function (equippedEmotes)
 	 *     print(("We have %d emotes equipped"):format(#equippedEmotes))
-	 *     for _, t in pairs(equippedEmotes) do
+	 *     for \_, t in pairs(equippedEmotes) do
 	 *         print(("In slot %d: emote %s is equipped"):format(t.Slot, t.Name))
 	 *     end
 	 * end)
 	 * hd:SetEquippedEmotes({"Salute", "Agree"}) --> We have 2 emotes equipped
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -15907,22 +15667,20 @@ interface InsertService extends Instance {
 	 * 
 	 * The best way to explain it is to show a visual of the array returned:
 	 * 
-	 * ```lua
-	 * [1] = {
-	 *     CurrentStartIndex = 1, -- This can vary depending on the page you input.
-	 *     TotalCount = 21, -- Always 21.
-	 *     Results = {
-	 *         -- All parameters here are psuedo. They can vary depending on the asset.
-	 *         [1] = {    
-	 *             Name = "Asset Name",
-	 *             AssetId = 0000000,
-	 *             AssetVersionId = 0000000,
-	 *             CreatorName = "Roblox",
-	 *         },
-	 *         -- [2], [3], and so on... up to [21]
-	 *     },
+	 * \[1\] = {
+	 * 	CurrentStartIndex = 1, -- This can vary depending on the page you input.
+	 * 	TotalCount = 21, -- Always 21.
+	 * 	Results = {
+	 * 		-- All parameters here are psuedo. They can vary depending on the asset.
+	 * 		\[1\] = {	
+	 * 			Name = "Asset Name",
+	 * 			AssetId = 0000000,
+	 * 			AssetVersionId = 0000000,
+	 * 			CreatorName = "Roblox",
+	 * 		},
+	 * 		-- \[2\], \[3\], and so on... up to \[21\]
+	 * 	},
 	 * }
-	 * ``` 
 	 * 
 	 * Yikes! That quite confusing. Unfortunately this method was added in the earlier days of Roblox, where easy to understand return-types weren't a priority.
 	 * 
@@ -15939,26 +15697,24 @@ interface InsertService extends Instance {
 	 * 
 	 * The best way to explain it is to show a visual of the array returned:
 	 * 
-	 * ```lua
-	 * [1] = {
-	 *     CurrentStartIndex = 1, -- This can vary depending on the page you input.
-	 *     TotalCount = 21, -- Always 21.
-	 *     Results = {
-	 *         -- All parameters here are psuedo. They can vary depending on the asset.
-	 *         [1] = {    
-	 *             Name = "Asset Name",
-	 *             AssetId = 0000000,
-	 *             AssetVersionId = 0000000,
-	 *             CreatorName = "Roblox",
-	 *             }
-	 *             -- [2], [3], and so on... up to [21]
-	 *         }
+	 * \[1\] = {
+	 * 	CurrentStartIndex = 1, -- This can vary depending on the page you input.
+	 * 	TotalCount = 21, -- Always 21.
+	 * 	Results = {
+	 * 		-- All parameters here are psuedo. They can vary depending on the asset.
+	 * 		\[1\] = {	
+	 * 			Name = "Asset Name",
+	 * 			AssetId = 0000000,
+	 * 			AssetVersionId = 0000000,
+	 * 			CreatorName = "Roblox",
+	 *     		}
+	 *     		-- \[2\], \[3\], and so on... up to \[21\]
+	 *     	}
 	 * }
 	 * 
 	 * An example for iterating over this list has been provided at the bottom of this page.
 	 * 
-	 * Additionally, if you would like to insert free `Decal|Decals`, you can use the `InsertService/GetFreeDecals` function.
-	 * ```
+	 * Additionally, if you would like to insert free \`Decal|Decals\`, you can use the \`InsertService/GetFreeDecals\` function.
 	 * Tags: Yields
 	 */
 	GetFreeModels(this: InsertService, searchText: string, pageNum: number): [Array<FreeSearchResult>];
@@ -16031,16 +15787,13 @@ interface InsertService extends Instance {
 	/**
 	 * The LoadAsset function fetches an asset given its ID and returns a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) containing the asset. For example, to load this public [Doge](https://www.roblox.com/library/257489726/Doge) [Model](https://developer.roblox.com/en-us/api-reference/class/Model), which has the asset Id _**257489726**_, you can use:
 	 * 
-	 * ```lua
 	 * local assetId = 257489726
 	 * local InsertService = game:GetService("InsertService")
 	 * local model = InsertService:LoadAsset(assetId)
 	 * model.Parent = workspace
-	 * ``` 
 	 * 
 	 * Calls to this function may fail if a server providing a model is having problems. As such, it's generally a good idea to wrap calls to this function in `pcall` to catch these kinds of errors.
 	 * 
-	 * ```lua
 	 * local assetId = 257489726
 	 * local InsertService = game:GetService("InsertService")
 	 * local success, model = pcall(InsertService.LoadAsset, InsertService, assetId)
@@ -16050,7 +15803,6 @@ interface InsertService extends Instance {
 	 * else
 	 *    print("Model failed to load!")
 	 * end
-	 * ``` 
 	 * 
 	 * Security Check
 	 * --------------
@@ -16550,7 +16302,7 @@ interface Keyframe extends Instance {
 	 */
 	GetPoses(this: Keyframe): Array<Pose>;
 	/**
-	 * This function removes a [KeyframeMarker](https://developer.roblox.com/en-us/api-reference/class/KeyframeMarker) from the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)by settings its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to nil.
+	 * This function removes a [KeyframeMarker](https://developer.roblox.com/en-us/api-reference/class/KeyframeMarker) from the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) by settings its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to nil.
 	 * 
 	 * The KeyframeMarker's Instance.Parent is set to nil but it is not destroyed. This means, provided the marker is referenced it can be re-parented later.
 	 * 
@@ -16904,52 +16656,46 @@ interface Lighting extends Instance {
 	 * 
 	 * Using ClockTime requires the time to be normalized:
 	 * 
-	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 *     minutesAfterMidnight = minutesAfterMidnight + 1
+	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 *     local hours = minutesNormalised / 60
+	 * 	local minutesNormalised = minutesAfterMidnight % (60 \* 24)
+	 * 	local hours = minutesNormalised / 60
 	 * 
-	 *     Lighting.ClockTime = hours
+	 * 	Lighting.ClockTime = hours
 	 * 
-	 *     wait()
+	 * 	wait()
 	 * end
-	 * ``` 
 	 * 
 	 * Using [Lighting.TimeOfDay](https://developer.roblox.com/en-us/api-reference/property/Lighting/TimeOfDay) requires the time to be normalized and a string formatted:
 	 * 
-	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 *     minutesAfterMidnight = minutesAfterMidnight + 1
+	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 *     local seconds = minutesNormalised * 60
-	 *     local hours = string.format("%02.f", math.floor(seconds/3600))
-	 *     local mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)))
-	 *     local secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60))
-	 *     local timeString = hours..":"..mins..":"..secs
+	 * 	local minutesNormalised = minutesAfterMidnight % (60 \* 24)
+	 * 	local seconds = minutesNormalised \* 60
+	 * 	local hours = string.format("%02.f", math.floor(seconds/3600))
+	 * 	local mins = string.format("%02.f", math.floor(seconds/60 - (hours\*60)))
+	 * 	local secs = string.format("%02.f", math.floor(seconds - hours\*3600 - mins \*60))
+	 * 	local timeString = hours..":"..mins..":"..secs
 	 * 
-	 *     Lighting.TimeOfDay = timeString
+	 * 	Lighting.TimeOfDay = timeString
 	 * 
-	 *     wait()
+	 * 	wait()
 	 * end
-	 * ``` 
 	 * 
 	 * Using [Lighting:SetMinutesAfterMidnight](https://developer.roblox.com/en-us/api-reference/function/Lighting/SetMinutesAfterMidnight) requires no extra processing:
 	 * 
-	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 *     minutesAfterMidnight = minutesAfterMidnight + 1
+	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 *     Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
+	 * 	Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
 	 * 
-	 *     wait()
+	 * 	wait()
 	 * end
-	 * ```
 	 * Tags: NotReplicated
 	 */
 	ClockTime: number;
@@ -16987,22 +16733,18 @@ interface Lighting extends Instance {
 	 * 
 	 * This property is replicated and can be set from scripts or [Studio](https://developer.roblox.com/en-us/api-reference/class/Studio).
 	 * 
-	 * ```lua
 	 * local Lighting = game:GetService("Lighting")
 	 * Lighting.ExposureCompensation = 5
-	 * ``` 
 	 * 
 	 * You can use this property to adjust the exposure amount prior to the tonemap step to show more detail either in lighter or darker areas. This is needed as we move to a HDR pipeline.
 	 * 
 	 * When [Lighting.Technology](https://developer.roblox.com/en-us/api-reference/property/Lighting/Technology) is set to [Legacy](https://developer.roblox.com/en-us/api-reference/enum/Technology), this property has no effect.
 	 * 
-	 * ```lua
 	 * local Lighting = game:GetService("Lighting")
 	 * 
 	 * -- ExposureCompensation has no effect because Lighting's Technology is Legacy
 	 * Lighting.Technology = Enum.Technology.Legacy
 	 * Lighting.ExposureCompensation = 5
-	 * ```
 	 */
 	ExposureCompensation: number;
 	/**
@@ -17021,12 +16763,10 @@ interface Lighting extends Instance {
 	 * 
 	 * Roblox's fog uses linear interpolation between [Lighting.FogStart](https://developer.roblox.com/en-us/api-reference/property/Lighting/FogStart) and [Lighting.FogEnd](https://developer.roblox.com/en-us/api-reference/property/Lighting/FogEnd). This means if [Lighting.FogStart](https://developer.roblox.com/en-us/api-reference/property/Lighting/FogStart) is 10 and [Lighting.FogEnd](https://developer.roblox.com/en-us/api-reference/property/Lighting/FogEnd) is 20, at a distance of 15 studs the fog will be at 50%. That means the color of a pixel at 15 studs will be 50% its normal color blended with 50% of the fog color.
 	 * 
-	 * ```lua
 	 * local Lighting = game:GetService("Lighting")
 	 * -- fog will fade between 25 and 200 studs
 	 * Lighting.FogStart = 25
 	 * Lighting.FogEnd = 200
-	 * ``` 
 	 * 
 	 * Note, fog does not obscure the skybox.
 	 * 
@@ -17049,12 +16789,10 @@ interface Lighting extends Instance {
 	 * 
 	 * Roblox's fog uses linear interpolation between [Lighting.FogStart](https://developer.roblox.com/en-us/api-reference/property/Lighting/FogStart) and FogEnd. This means if [Lighting.FogStart](https://developer.roblox.com/en-us/api-reference/property/Lighting/FogStart) is 10 and FogEnd is 20, at a distance of 15 studs the fog will be at 50%. That means the color of a pixel at 15 studs will be 50% its normal color blended with 50% of the fog color.
 	 * 
-	 * ```lua
 	 * local Lighting = game:GetService("Lighting")
 	 * -- fog will fade between 25 and 200 studs
 	 * Lighting.FogStart = 25
 	 * Lighting.FogEnd = 200
-	 * ``` 
 	 * 
 	 * The color of the fog can be adjusted using [Lighting.FogColor](https://developer.roblox.com/en-us/api-reference/property/Lighting/FogColor).
 	 * 
@@ -17079,12 +16817,10 @@ interface Lighting extends Instance {
 	 * 
 	 * Roblox's fog uses linear interpolation between FogStart and [Lighting.FogEnd](https://developer.roblox.com/en-us/api-reference/property/Lighting/FogEnd). This means if FogStart is 10 and [Lighting.FogEnd](https://developer.roblox.com/en-us/api-reference/property/Lighting/FogEnd) is 20, at a distance of 15 studs the fog will be at 50%. That means the color of a pixel at 15 studs will be 50% its normal color blended with 50% of the fog color.
 	 * 
-	 * ```lua
 	 * local Lighting = game:GetService("Lighting")
 	 * -- fog will fade between 25 and 200 studs
 	 * Lighting.FogStart = 25
 	 * Lighting.FogEnd = 200
-	 * ``` 
 	 * 
 	 * The color of the fog can be adjusted using [Lighting.FogColor](https://developer.roblox.com/en-us/api-reference/property/Lighting/FogColor).
 	 * 
@@ -17172,52 +16908,46 @@ interface Lighting extends Instance {
 	 * 
 	 * Using TimeOfDay requires the time to be normalized and a string formatted:
 	 * 
-	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 *     minutesAfterMidnight = minutesAfterMidnight + 1
+	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 *     local seconds = minutesNormalised * 60
-	 *     local hours = string.format("%02.f", math.floor(seconds/3600))
-	 *     local mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)))
-	 *     local secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60))
-	 *     local timeString = hours..":"..mins..":"..secs
+	 * 	local minutesNormalised = minutesAfterMidnight % (60 \* 24)
+	 * 	local seconds = minutesNormalised \* 60
+	 * 	local hours = string.format("%02.f", math.floor(seconds/3600))
+	 * 	local mins = string.format("%02.f", math.floor(seconds/60 - (hours\*60)))
+	 * 	local secs = string.format("%02.f", math.floor(seconds - hours\*3600 - mins \*60))
+	 * 	local timeString = hours..":"..mins..":"..secs
 	 * 
-	 *     Lighting.TimeOfDay = timeString
+	 * 	Lighting.TimeOfDay = timeString
 	 * 
-	 *     wait()
+	 * 	wait()
 	 * end
-	 * ``` 
 	 * 
 	 * Using [Lighting.ClockTime](https://developer.roblox.com/en-us/api-reference/property/Lighting/ClockTime) requires the time to be normalized:
 	 * 
-	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 *     minutesAfterMidnight = minutesAfterMidnight + 1
+	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 *     local hours = minutesNormalised / 60
+	 * 	local minutesNormalised = minutesAfterMidnight % (60 \* 24)
+	 * 	local hours = minutesNormalised / 60
 	 * 
-	 *     Lighting.ClockTime = hours
+	 * 	Lighting.ClockTime = hours
 	 * 
-	 *     wait()
+	 * 	wait()
 	 * end
-	 * ``` 
 	 * 
 	 * Using [Lighting:SetMinutesAfterMidnight](https://developer.roblox.com/en-us/api-reference/function/Lighting/SetMinutesAfterMidnight) requires no extra processing:
 	 * 
-	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 *     minutesAfterMidnight = minutesAfterMidnight + 1
+	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 *     Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
+	 * 	Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
 	 * 
-	 *     wait()
+	 * 	wait()
 	 * end
-	 * ```
 	 */
 	TimeOfDay: string;
 	/**
@@ -17264,52 +16994,46 @@ interface Lighting extends Instance {
 	 * 
 	 * Using [Lighting.TimeOfDay](https://developer.roblox.com/en-us/api-reference/property/Lighting/TimeOfDay) requires the time to be normalized and a string formatted:
 	 * 
-	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 *     minutesAfterMidnight = minutesAfterMidnight + 1
+	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 *     local seconds = minutesNormalised * 60
-	 *     local hours = string.format("%02.f", math.floor(seconds/3600))
-	 *     local mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)))
-	 *     local secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60))
-	 *     local timeString = hours..":"..mins..":"..secs
+	 * 	local minutesNormalised = minutesAfterMidnight % (60 \* 24)
+	 * 	local seconds = minutesNormalised \* 60
+	 * 	local hours = string.format("%02.f", math.floor(seconds/3600))
+	 * 	local mins = string.format("%02.f", math.floor(seconds/60 - (hours\*60)))
+	 * 	local secs = string.format("%02.f", math.floor(seconds - hours\*3600 - mins \*60))
+	 * 	local timeString = hours..":"..mins..":"..secs
 	 * 
-	 *     Lighting.TimeOfDay = timeString
+	 * 	Lighting.TimeOfDay = timeString
 	 * 
-	 *     wait()
+	 * 	wait()
 	 * end
-	 * ``` 
 	 * 
 	 * Using [Lighting.ClockTime](https://developer.roblox.com/en-us/api-reference/property/Lighting/ClockTime) requires the time to be normalized:
 	 * 
-	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 *     minutesAfterMidnight = minutesAfterMidnight + 1
+	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 *     local hours = minutesNormalised / 60
+	 * 	local minutesNormalised = minutesAfterMidnight % (60 \* 24)
+	 * 	local hours = minutesNormalised / 60
 	 * 
-	 *     Lighting.ClockTime = hours
+	 * 	Lighting.ClockTime = hours
 	 * 
-	 *     wait()
+	 * 	wait()
 	 * end
-	 * ``` 
 	 * 
 	 * Using [Lighting:SetMinutesAfterMidnight](https://developer.roblox.com/en-us/api-reference/function/Lighting/SetMinutesAfterMidnight) requires no extra processing:
 	 * 
-	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 *     minutesAfterMidnight = minutesAfterMidnight + 1
+	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 *     Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
+	 * 	Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
 	 * 
-	 *     wait()
+	 * 	wait()
 	 * end
-	 * ```
 	 */
 	SetMinutesAfterMidnight(this: Lighting, minutes: number): void;
 	/**
@@ -18638,10 +18362,8 @@ interface BaseScript extends LuaSourceContainer {
 	 * 
 	 * If Disabled is set to true from false, the script will run again. This means the Disabled property can be toggled to restart a script:
 	 * 
-	 * ```lua
 	 * scriptObject.Disabled = false
 	 * scriptObject.Disabled = true
-	 * ``` 
 	 * 
 	 * Note, the above code snippet cannot be used within the script itself. This is because once the script is disabled the thread will terminate.
 	 */
@@ -18651,9 +18373,7 @@ interface BaseScript extends LuaSourceContainer {
 	 * 
 	 * By default, this property is set to _'\[Embedded\]'_. This means the source of the script is not linked to an upload script and is instead written in the script.
 	 * 
-	 * ```lua
 	 * script.LinkedSource = "http://www.roblox.com/asset/?id=1014476" -- link source
-	 * ``` 
 	 * 
 	 * Developers should remove a linked source via the properties window, rather than setting the property to _'\[Embedded\]'_.
 	 * 
@@ -18790,9 +18510,7 @@ interface MarketplaceService extends Instance {
 	 * 
 	 * The above dialogue was triggered using the following:
 	 * 
-	 * ```lua
 	 * game:GetService("MarketplaceService"):PromptPurchase(game.Players.LocalPlayer, 4367427794)
-	 * ``` 
 	 * 
 	 * For game passes, use [MarketplaceService:PromptGamePassPurchase](https://developer.roblox.com/en-us/api-reference/function/MarketplaceService/PromptGamePassPurchase).
 	 */
@@ -19087,15 +18805,13 @@ interface MarketplaceService extends Instance {
 	 * 
 	 * ![A developer product purchase prompt](https://developer.roblox.com/assets/blt3f7406054de2eebc/PromptProductPurchase.png)
 	 * 
-	 * ```lua
 	 * local MarketplaceService = game:GetService("MarketplaceService")
 	 * 
 	 * MarketplaceService.PromptProductPurchaseFinished:Connect(function (...)
-	 *     -- Print all the details of the prompt, for example:
-	 *     -- PromptProductPurchaseFinished 269323 327064551 true
-	 *     print("PromptProductPurchaseFinished", ...)
+	 * 	-- Print all the details of the prompt, for example:
+	 * 	-- PromptProductPurchaseFinished 269323 327064551 true
+	 * 	print("PromptProductPurchaseFinished", ...)
 	 * end)
-	 * ```
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
@@ -19114,15 +18830,13 @@ interface MarketplaceService extends Instance {
 	 * Below is a screenshot of an affiliate gear sale prompt. The function in the code sample runs immediately after the player presses “Cancel” or after the user buys the item then presses “OK”. Should there be an issue with the purchase, the event also fires.  
 	 * ![A product purchase prompt for an affiliate gear sale](https://developer.roblox.com/assets/blt881d0a28aa9fcf42/PromptProductPurchase-confirm.png)
 	 * 
-	 * ```lua
 	 * local MarketplaceService = game:GetService("MarketplaceService")
 	 * 
 	 * MarketplaceService.PromptPurchaseFinished:connect(function (...)
-	 *     -- Print all the details of the prompt, for example:
-	 *     -- PromptPurchaseFinished PlayerName 11377306 true
-	 *     print("PromptPurchaseFinished", ...)
+	 * 	-- Print all the details of the prompt, for example:
+	 * 	-- PromptPurchaseFinished PlayerName 11377306 true
+	 * 	print("PromptPurchaseFinished", ...)
 	 * end)
-	 * ```
 	 */
 	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
 	readonly PromptSubscriptionCancellationFinished: RBXScriptSignal<(player: Player, subscriptionId: number, wasCanceled: boolean) => void>;
@@ -19245,14 +18959,12 @@ interface MessagingService extends Instance {
  * *   It continually raycasts the screen mouse position into the 3D world using the [TargetFilter](https://developer.roblox.com/en-us/api-reference/property/Mouse/TargetFilter) property, storing the results of the raycast in the [Hit](https://developer.roblox.com/en-us/api-reference/property/Mouse/Hit), [Target](https://developer.roblox.com/en-us/api-reference/property/Mouse/Target), and [TargetSurface](https://developer.roblox.com/en-us/api-reference/property/Mouse/TargetSurface) properties. These can be useful for simple cases, but [WorldRoot:Raycast](https://developer.roblox.com/en-us/api-reference/function/WorldRoot/Raycast) should be used in more complicated scenarios (whitelists, etc).
  * *   [Plugins](https://developer.roblox.com/en-us/api-reference/class/Plugin) can use use [Plugin:GetMouse](https://developer.roblox.com/en-us/api-reference/function/Plugin/GetMouse) to get a [PluginMouse](https://developer.roblox.com/en-us/api-reference/class/PluginMouse), which behaves similarly.
  * 
- * ```lua
- * -- From a LocalScript:
+ * \-- From a LocalScript:
  * local Players = game:GetService("Players")
  * local player = Players.LocalPlayer
  * local mouse = Player:GetMouse()
  * -- Setting the mouse icon
  * mouse.Icon = "rbxasset://SystemCursors/Wait"
- * ``` 
  * 
  * Notes
  * -----
@@ -19275,9 +18987,7 @@ interface Mouse extends Instance {
 	 * 
 	 * Developers can get obtain the position of Hit like so:
 	 * 
-	 * ```lua
 	 * local position = mouse.Hit.p
-	 * ``` 
 	 * 
 	 * Hit is often used by [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool)s to fire a weapon towards the mouse in third person.
 	 * 
@@ -19290,12 +19000,10 @@ interface Mouse extends Instance {
 	 * 
 	 * The orientation of the Hit CFrame corresponds with the direction of the [Mouse.UnitRay](https://developer.roblox.com/en-us/api-reference/property/Mouse/UnitRay).
 	 * 
-	 * ```lua
 	 * local unitRayDirection = mouse.UnitRay.Direction
 	 * local mouseHitDirection = mouse.Hit.lookVector
 	 * -- unitRayDirection ≈ mouseHitDirection
 	 * -- the vectors are approximately equal
-	 * ``` 
 	 * 
 	 * Note, the roll of the [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera) is not used when calculating the orientation of the Hit [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame).
 	 * 
@@ -19458,7 +19166,6 @@ interface Mouse extends Instance {
 	 * 
 	 * This property can be set to any [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) or nil, for example:
 	 * 
-	 * ```lua
 	 * local Players = game:GetService("Players")
 	 * local player = Players.LocalPlayer 
 	 * local mouse = player:GetMouse()
@@ -19466,7 +19173,6 @@ interface Mouse extends Instance {
 	 *  
 	 * -- Now, when the player hovers the cursor over the model, mouse.Target will be some object
 	 * -- behind workspace.Model, if there is one.
-	 * ``` 
 	 * 
 	 * This property is essentially a single-object blacklist for mouse raycasting. For more in-depth control on raycasting, see the following functions of [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace): `Workspace/FindPartOnRay|FindPartOnRay`, `Workspace/FindPartOnRayWithWhitelist|FindPartOnRayWithWhitelist` and `Workspace/FindPartOnRayWithIgnoreList|FindPartOnRayWithIgnoreList`.
 	 * 
@@ -19478,29 +19184,25 @@ interface Mouse extends Instance {
 	 * 
 	 * This property isn't meaningful when the mouse is not pointing at a part, for example when the mouse is pointing at the sky. At the moment, this property is set to 'Right' under these circumstances. Before using this property, check that the mouse's target is not nil.
 	 * 
-	 * ```lua
 	 * local Players = game:GetService("Players")
 	 * local player = Players.LocalPlayer
 	 * local mouse = player:GetMouse()
 	 * -- Check that there exists a part at which the mouse is pointing
 	 * if mouse.Target then
-	 *     print("The mouse is pointing to the " .. mouse.TargetSurface.Name .. " side of " .. mouse.Target.Name)
+	 * 	print("The mouse is pointing to the " .. mouse.TargetSurface.Name .. " side of " .. mouse.Target.Name)
 	 * else
-	 *     print("The mouse is not pointing at anything.")
+	 * 	print("The mouse is not pointing at anything.")
 	 * end
-	 * ```
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly TargetSurface: Enum.NormalId;
 	/**
 	 * The UnitRay property is a [Ray](https://developer.roblox.com/en-us/api-reference/datatype/Ray) directed toward the [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse)'s position in 3D space (described by [Mouse.Hit](https://developer.roblox.com/en-us/api-reference/property/Mouse/Hit)). It originates from the [CFrame](https://developer.roblox.com/en-us/api-reference/property/Camera/CFrame) of the [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera). Like all unit rays, it has a distance of 1.
 	 * 
-	 * ```lua
 	 * local Players = game:GetService("Players")
 	 * local player = Players.LocalPlayer
 	 * local mouse = player:GetMouse()
 	 * print(mouse.UnitRay.Direction.magnitude) -- Always 1
-	 * ```
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly UnitRay: Ray;
@@ -19519,9 +19221,7 @@ interface Mouse extends Instance {
 	 * 
 	 * The X property describes the horizontal component of the mouse's position on the screen. The position is measured in pixels relative to the top left corner, under the topbar. This property can be used in conjunction with [Mouse.Y](https://developer.roblox.com/en-us/api-reference/property/Mouse/Y) to produce a [Vector2](https://developer.roblox.com/en-us/api-reference/datatype/Vector2) representing the mouse's position:
 	 * 
-	 * ```lua
 	 * local position = Vector2.new(mouse.X, mouse.Y)
-	 * ``` 
 	 * 
 	 * This property does not fire [Changed](https://developer.roblox.com/en-us/api-reference/event/Instance/Changed) or the signal returned from [GetPropertyChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetPropertyChangedSignal). Use the [Mouse.Move](https://developer.roblox.com/en-us/api-reference/event/Mouse/Move) event instead.
 	 * Tags: ReadOnly, NotReplicated
@@ -19532,9 +19232,7 @@ interface Mouse extends Instance {
 	 * 
 	 * The Y property describes the vertical component of the mouse's position on the screen. The position is measured in pixels relative to the top left corner, under the topbar. This property can be used in conjunction with [Mouse.X](https://developer.roblox.com/en-us/api-reference/property/Mouse/X) to produce a [Vector2](https://developer.roblox.com/en-us/api-reference/datatype/Vector2) representing the mouse's position:
 	 * 
-	 * ```lua
 	 * local position = Vector2.new(mouse.X, mouse.Y)
-	 * ``` 
 	 * 
 	 * This property does not fire [Changed](https://developer.roblox.com/en-us/api-reference/event/Instance/Changed) or the signal returned from [GetPropertyChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetPropertyChangedSignal). Use the [Mouse.Move](https://developer.roblox.com/en-us/api-reference/event/Mouse/Move) event instead.
 	 * Tags: ReadOnly, NotReplicated
@@ -19545,15 +19243,13 @@ interface Mouse extends Instance {
 	 * 
 	 * This can also be accessed from a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool). For example, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), the code below prints Button1Down whenever the left mouse button is pressed:
 	 * 
-	 * ```lua
 	 * local Tool = script.Parent --make sure this is a Tool object
 	 * 
 	 * Tool.Equipped:Connect(function(Mouse)
-	 *     Mouse.Button1Down:Connect(function()
-	 *         print("Button1Down")
-	 *     end)
+	 * 	Mouse.Button1Down:Connect(function()
+	 * 		print("Button1Down")
+	 * 	end)
 	 * end)
-	 * ``` 
 	 * 
 	 * Developers can find out the position of the mouse in world-space, and if it is pointing at any [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart), using the [Mouse.Hit](https://developer.roblox.com/en-us/api-reference/property/Mouse/Hit) and [Mouse.Target](https://developer.roblox.com/en-us/api-reference/property/Mouse/Target) properties.
 	 * 
@@ -19577,15 +19273,13 @@ interface Mouse extends Instance {
 	 * 
 	 * This can also be accessed from a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool). For example, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), the code below prints Button2Down whenever the right mouse button is pressed:
 	 * 
-	 * ```lua
 	 * local Tool = script.Parent --make sure this is a Tool object
 	 * 
 	 * Tool.Equipped:Connect(function(Mouse)
-	 *     Mouse.Button2Down:Connect(function()
-	 *         print("Button2Down")
-	 *     end)
+	 * 	Mouse.Button2Down:Connect(function()
+	 * 		print("Button2Down")
+	 * 	end)
 	 * end).
-	 * ``` 
 	 * 
 	 * Developers can find out the position of the mouse in world-space, and if it is pointing at any [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart), using the [Mouse.Hit](https://developer.roblox.com/en-us/api-reference/property/Mouse/Hit) and [Mouse.Target](https://developer.roblox.com/en-us/api-reference/property/Mouse/Target) properties.
 	 * 
@@ -19597,11 +19291,9 @@ interface Mouse extends Instance {
 	/**
 	 * Fired when the right mouse button is released.
 	 * 
-	 * ```lua
 	 * mouse.Button2Up:Connect(function()
 	 * print("button 2 up!")
 	 * end
-	 * ``` 
 	 * 
 	 * For information on how to obtain the [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse) object, please see the [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse) page.
 	 * 
@@ -19657,13 +19349,11 @@ interface Mouse extends Instance {
 	 * 
 	 * Developers can find out the position of the mouse in world-space, and if it is pointing at any [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) using the [Mouse.Hit](https://developer.roblox.com/en-us/api-reference/property/Mouse/Hit) and [Mouse.Target](https://developer.roblox.com/en-us/api-reference/property/Mouse/Target) properties.
 	 * 
-	 * ```lua
 	 * mouse.Move:Connect(function()
-	 *     local position = mouse.Hit.p
-	 *     local target = mouse.Target
-	 *     print(target, position)
+	 * 	local position = mouse.Hit.p
+	 * 	local target = mouse.Target
+	 * 	print(target, position)
 	 * end)
-	 * ``` 
 	 * 
 	 * Note, developers are recommended to use [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) instead of the [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse) object in new work.
 	 */
@@ -20086,10 +19776,8 @@ interface BasePart extends PVInstance {
 	 * 
 	 * The property modifies the local part's transparency increases a part's transparency on a scale from 0 to 1 using the following formula:
 	 * 
-	 *  ```lua
-	 * -- Calculate the part's client-side transparency. Values greater than 1 round down to 1.
-	 *     local clientTransparency = part.Transparency + (1 * part.localTransparencyModifier)
-	 * ``` 
+	 * 	-- Calculate the part's client-side transparency. Values greater than 1 round down to 1.
+	 * 	local clientTransparency = part.Transparency + (1 \* part.localTransparencyModifier)
 	 * 
 	 * Take a look at the table below for an example of how this property affect's a part's client-side transparency:
 	 * 
@@ -20158,12 +19846,10 @@ interface BasePart extends PVInstance {
 	 * 
 	 * This might be useful for things like optional accessories on vehicles that you don't want to affect the handling of the car or a massless render mesh welded to a simpler collision mesh. For instance, to create a massless [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart), you would use the follow code:
 	 * 
-	 * ```lua
 	 * local mesh = Instance.new("MeshPart")
 	 * mesh.Parent = game.Workspace
 	 * mesh.MeshId = "insert meshId here"
 	 * mesh.Massless = true
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -20563,9 +20249,7 @@ interface BasePart extends PVInstance {
 	 * 
 	 * Unlike [Model:MakeJoints](https://developer.roblox.com/en-us/api-reference/function/Model/MakeJoints), this function requires an array of parts as a parameter. This array is given as follows:
 	 * 
-	 * ```lua
 	 * part:MakeJoints({part1, part2, part3})
-	 * ``` 
 	 * 
 	 * Joints are broken if enough force is applied to them due to an [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion), unless a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField) object is parented to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or ancestor [Model](https://developer.roblox.com/en-us/api-reference/class/Model). For this reason, they are often used to make simple destructible buildings and other models.
 	 */
@@ -20596,12 +20280,10 @@ interface BasePart extends PVInstance {
 	 * 
 	 * The following image depicts an example of a SubtractAsync operation: the yellow part on the left has SubtractAsync called with a table containing the two pink parts. The resulting UnionOperation is moved to the right, as it would otherwise overlap the original part and not be visible. Notice the missing concave pieces that match the spaces once occupied by the pink parts.
 	 * 
-	 * ![An example of a SubtractAsync operation: the left depicts a yellow part with two pink parts, which are then subtracted from the yellow part using SubtractAsync. The resulting UnionOperation is visible on the right](https://developer.roblox.com/assets/bltd7903ce5973c2f8e/BasePart.SubtractAsync.png)```lua
-	 * local yellowPart = workspace.YellowPart
+	 * ![An example of a SubtractAsync operation: the left depicts a yellow part with two pink parts, which are then subtracted from the yellow part using SubtractAsync. The resulting UnionOperation is visible on the right](https://developer.roblox.com/assets/bltd7903ce5973c2f8e/BasePart.SubtractAsync.png)local yellowPart = workspace.YellowPart
 	 * local pinkParts = {workspace.PinkPart, workspace.PinkPart2}
 	 * local union = yellowPart:SubtractAsync(pinkParts)
 	 * union.Parent = workspace
-	 * ```
 	 * Tags: Yields
 	 */
 	SubtractAsync(
@@ -20635,13 +20317,11 @@ interface BasePart extends PVInstance {
 	 * 
 	 * The code snippet below demonstrates how to perform the operation as described above:
 	 * 
-	 * ```lua
 	 * local part = workspace.Part1
 	 * local otherParts = {workspace.Part2, workspace.Part3, workspace.Part4}
 	 *  
 	 * -- Perform union operation
 	 * local newUnion = part:UnionAsync(otherParts)
-	 * ``` 
 	 * 
 	 * The image below visualizes parts before and after the operation. The green parts are combined with the grey part.
 	 * 
@@ -20762,9 +20442,7 @@ interface FormFactorPart extends BasePart {
  * 
  * The Part object can be edited using the various studio tools. It is available via either the insert menu, or the _Object Insert menu_. It can also be created using the function:
  * 
- * ```lua
  * Instance.new("Part")
- * ``` 
  * 
  * How do I create different shaped Parts
  * --------------------------------------
@@ -21098,9 +20776,7 @@ interface Terrain extends BasePart {
 	 * Usage
 	 * -----
 	 * 
-	 * ```lua
 	 * workspace.Terrain:FillCylinder(CFrame.new(0, 50, 0), 5, 30, Enum.Material.Asphalt)
-	 * ```
 	 */
 	FillCylinder(this: Terrain, cframe: CFrame, height: number, radius: number, material: CastsToEnum<Enum.Material>): void;
 	/**
@@ -21114,9 +20790,7 @@ interface Terrain extends BasePart {
 	 * 
 	 * In the image above, a floating chunk of Terrain was created by calling this function as in the following code. A transparent, pink part with the Front surface marked with a Motor indicates the provided CFrame and Size.
 	 * 
-	 * ```lua
 	 * workspace.Terrain:FillWedge(CFrame.new(0, 50, 0), Vector3.new(20, 20, 20), Enum.Material.Asphalt)
-	 * ```
 	 */
 	FillWedge(this: Terrain, cframe: CFrame, size: Vector3, material: CastsToEnum<Enum.Material>): void;
 	/**
@@ -21329,9 +21003,7 @@ interface MeshPart extends TriangleMeshPart {
 	/**
 	 * The texture applied to the [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart). When this property is set to an empty string, no texture will be applied to the mesh.
 	 * 
-	 * ```lua
 	 * MeshPart.TextureID = "" -- no texture
-	 * ``` 
 	 * 
 	 * Note, although the [MeshPart.MeshId](https://developer.roblox.com/en-us/api-reference/property/MeshPart/MeshId) property cannot be changed during runtime, the texture can.
 	 * 
@@ -21582,13 +21254,11 @@ interface Model extends PVInstance {
 	 * Usage
 	 * -----
 	 * 
-	 * ```lua
 	 * local model = workspace.Model
 	 * local part = workspace.Part
 	 * local orientation, size = model:GetBoundingBox()
 	 * part.Size = size
 	 * part.CFrame = orientation
-	 * ```
 	 */
 	GetBoundingBox(this: Model): LuaTuple<[CFrame, Vector3]>;
 	/**
@@ -21721,22 +21391,20 @@ interface WorldRoot extends Model {
 	/**
 	 * **FindPartOnRay** uses [raycasting](https://developer.roblox.com/articles/Raycasting) to find the first [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) cell intersecting with a given [Ray](https://developer.roblox.com/en-us/api-reference/datatype/Ray). This function returns the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or terrain cell hit, the point of intersection, the surface normal at the point of intersection, and the associated [Material](https://developer.roblox.com/en-us/api-reference/enum/Material) hit.
 	 * 
-	 * ```lua
 	 * local character = game.Players.LocalPlayer.Character
 	 * -- Get the head
 	 * local head = character:FindFirstChild("Head")
 	 * -- Build a ray in the direction the head is facing
 	 * local origin = head.Position
 	 * local lookDirection = head.CFrame.LookVector
-	 * local ray = Ray.new(origin, lookDirection * 500)
+	 * local ray = Ray.new(origin, lookDirection \* 500)
 	 * -- Raycast, ignoring the player's character
 	 * local hitPart, hitPosition = workspace:FindPartOnRay(ray, character)
 	 * if hitPart then
-	 *     print("Hit part: " .. hitPart:GetFullName())
+	 * 	print("Hit part: " .. hitPart:GetFullName())
 	 * else
-	 *     print("Did not hit part")
+	 * 	print("Did not hit part")
 	 * end
-	 * ``` 
 	 * 
 	 * If the `ignoreDescendantsInstance` parameter is provided, the raycasting calculation will ignore the given object and all of its descendants. It behaves similar to the [Mouse.TargetFilter](https://developer.roblox.com/en-us/api-reference/property/Mouse/TargetFilter) property.
 	 * 
@@ -21788,13 +21456,11 @@ interface WorldRoot extends Model {
 	/**
 	 * This function is a variant of [WorldRoot:FindPartOnRay](https://developer.roblox.com/en-us/api-reference/function/WorldRoot/FindPartOnRay) with the addition of a whitelist. This lets you detect only certain parts or [Models](https://developer.roblox.com/en-us/api-reference/class/Model) and is particularly useful when, for example, looking for points of intersection between a ray and a single part.
 	 * 
-	 * ```lua
 	 * local function getIntersection(part, ray)
-	 *     local whiteList = {part}
-	 *     local _, position, normal = workspace:FindPartOnRayWithWhitelist(ray, whiteList)
-	 *     return position, normal
+	 * 	local whiteList = {part}
+	 * 	local \_, position, normal = workspace:FindPartOnRayWithWhitelist(ray, whiteList)
+	 * 	return position, normal
 	 * end
-	 * ``` 
 	 * 
 	 * Those looking to utilize an ignore list instead should use [WorldRoot:FindPartOnRayWithIgnoreList](https://developer.roblox.com/en-us/api-reference/function/WorldRoot/FindPartOnRayWithIgnoreList).
 	 * 
@@ -21822,12 +21488,10 @@ interface WorldRoot extends Model {
 	 * 
 	 * The optional ignoreDescendentsInstance parameter can be used to specify a specific instance for whom itself and all of its descendants should be ignored by this function. This can be useful when, for example, looking to see if any [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s are inside a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) other than the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) itself.
 	 * 
-	 * ```lua
-	 * local min = part.Position - (0.5 * part.Size)
-	 * local max = part.Position + (0.5 * part.Size)
+	 * local min = part.Position - (0.5 \* part.Size)
+	 * local max = part.Position + (0.5 \* part.Size)
 	 * local region = Region3.new(min, max)
 	 * local parts = workspace:FindPartsInRegion3(region, part) --  ignore part
-	 * ``` 
 	 * 
 	 * Variants of this function exist with ignore-list and white-list functionality, `Workspace/FindPartsInRegion3WithIgnoreList` and `Workspace/FindPartsInRegion3WithWhiteList`.
 	 * 
@@ -21911,12 +21575,10 @@ interface WorldRoot extends Model {
 	 * 
 	 * The optional ignoreDescendentsInstance parameter can be used to specify a specific instance for whom itself and all of its descendants should be ignored by this function. This can be useful when, for example, looking to see if any [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s are inside a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) other than the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) itself.
 	 * 
-	 * ```lua
-	 * local min = part.Position - (0.5 * part.Size)
-	 * local max = part.Position + (0.5 * part.Size)
+	 * local min = part.Position - (0.5 \* part.Size)
+	 * local max = part.Position + (0.5 \* part.Size)
 	 * local region = Region3.new(min, max)
 	 * local isPartEmpty = workspace:IsRegion3Empty(region, part) --  ignore part
-	 * ``` 
 	 * 
 	 * If more than one object and its descendants need to be excluded from the search, developers should use `Workspace/IsRegion3EmptyWithIgnoreList`.
 	 * 
@@ -21937,12 +21599,10 @@ interface WorldRoot extends Model {
 	 * 
 	 * For example, the following code snippet will check to see if the Region is empty, ignoring the descendants of a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) named 'Scenery'.
 	 * 
-	 * ```lua
 	 * local region3 = Region3.new(Vector3.new(0, 0, 0), Vector3.new(10, 10, 10))
 	 * local scenery = workspace:FindFirstChild("Scenery")
 	 * local ignoreList = {scenery}
 	 * local isEmpty = workspace:IsRegion3EmptyWithIgnoreList(region3, ignoreList)
-	 * ``` 
 	 * 
 	 * This function only returns if a region is empty or not. Developers looking to find [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s in a region should use `Workspace/FindPartsInRegion3WithIgnoreList`.
 	 * 
@@ -21996,11 +21656,9 @@ interface WorldRoot extends Model {
  * 
  * The Workspace can be accessed several ways, all of which are valid.
  * 
- * ```lua
  * workspace -- a global variable
  * game.Workspace -- a property of the DataModel
  * game:GetService("Workspace") -- workspace is a service
- * ``` 
  * 
  * Notes
  * -----
@@ -22062,9 +21720,7 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * Below is an example of how this property can be used to access the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) object and increase its [Camera.FieldOfView](https://developer.roblox.com/en-us/api-reference/property/Camera/FieldOfView).
 	 * 
-	 * ```lua
 	 * workspace.CurrentCamera.FieldOfView = 100
-	 * ```
 	 * Tags: NotReplicated
 	 */
 	CurrentCamera: Camera | undefined;
@@ -22077,13 +21733,11 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * Those looking for the time since the program started running should use the 'time' function instead. See below for a comparison between DistributedGameTime and its alternatives.
 	 * 
-	 * ```lua
 	 * print(workspace.DistributedGameTime) --&gt; Time the game started running
 	 * print(os.time()) --&gt; Time since epoch (1 January 1970, 00:00:00) UTC
 	 * print(tick()) --&gt; Time since epoch (1 January 1970, 00:00:00) system time
 	 * print(time()) --&gt; Time the game started running
 	 * print(elapsedTime()) --&gt; Time since Roblox started running
-	 * ```
 	 * Tags: NotReplicated
 	 */
 	DistributedGameTime: number;
@@ -22137,9 +21791,7 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * This property, like [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera), ensures that developers to not inadvertently index a descendant of [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) named 'Terrain' when looking for a game's [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) object. Without this property, developers would need to use the [Instance:FindFirstChildOfClass](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstChildOfClass) function.
 	 * 
-	 * ```lua
 	 * workspace.Terrain.WaterColor = Color3.new(0, 1, 0) -- make the water green
-	 * ```
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	Terrain: Terrain;
@@ -22148,9 +21800,7 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * This function provides a measure of how many [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s are being influenced by, or recently under the influence of, physical forces.
 	 * 
-	 * ```lua
 	 * print(workspace:GetNumAwakeParts()) -- prints the number of 'awake' parts
-	 * ``` 
 	 * 
 	 * Sleeping vs Awake Parts
 	 * -----------------------
@@ -22179,16 +21829,14 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * Developers should always avoid creating places that overload the physics engine, as it leads to sub-par experience for players. Those wishing to simulate physics throttling for research purposes however, need only create a lot of [Part](https://developer.roblox.com/en-us/api-reference/class/Part)s very quickly.
 	 * 
-	 * ```lua
 	 * local i = 0
 	 * while true do
-	 *     i = i + 1
-	 *     if i % 5 == 0 then
-	 *         wait()
-	 *     end
-	 *     local part = Instance.new("Part", workspace)
+	 * 	i = i + 1
+	 * 	if i % 5 == 0 then
+	 * 		wait()
+	 * 	end
+	 * 	local part = Instance.new("Part", workspace)
 	 * end
-	 * ```
 	 */
 	GetPhysicsThrottling(this: Workspace): number;
 	/**
@@ -22215,18 +21863,14 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * This function is used by the Roblox Studio Move tool when the user finishes moving a selection. In conjunction with [Plugin:GetJoinMode](https://developer.roblox.com/en-us/api-reference/function/Plugin/GetJoinMode) and [Workspace:UnjoinFromOutsiders](https://developer.roblox.com/en-us/api-reference/function/Workspace/UnjoinFromOutsiders) it can be used to retain join functionality when developing custom studio build tools. See the snippets below for an example.
 	 * 
-	 * ```lua
-	 * -- finished moving a selection, make joints
+	 * \-- finished moving a selection, make joints
 	 * local function finishedMovingParts(parts)
-	 *     local joinMode = Plugin:GetJoinMode()
-	 *     workspace:JoinToOutsiders(parts, joinMode)
-	 * end
-	 * ``` ```lua
-	 * -- started moving a selection, break joints
+	 * 	local joinMode = Plugin:GetJoinMode()
+	 * 	workspace:JoinToOutsiders(parts, joinMode)
+	 * end\-- started moving a selection, break joints
 	 * local function startMovingParts(parts)
-	 *     workspace:UnjoinFromOutsiders(parts)
+	 * 	workspace:UnjoinFromOutsiders(parts)
 	 * end
-	 * ``` 
 	 * 
 	 * Developers interested in seeing how this function is used in the Roblox Studio should see the [Studio Tools GitHub repository](https://github.com/Roblox/Studio-Tools).
 	 */
@@ -22236,10 +21880,8 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * As `Workspace/PGSPhysicsSolverEnabled` cannot be accessed by scripts, the PGSIsEnabled function allows developers to tell which physics solver the game is using.
 	 * 
-	 * ```lua
 	 * print(workspace:PGSIsEnabled()) -- true = PGS solver enabled 
 	 * print(workspace:PGSIsEnabled()) -- false = Legacy solver enabled
-	 * ``` 
 	 * 
 	 * What is the PGS Solver?
 	 * -----------------------
@@ -22258,18 +21900,14 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * This function is used by the Roblox Studio Move tool when the user starts moving a selection. In conjunction with [Plugin:GetJoinMode](https://developer.roblox.com/en-us/api-reference/function/Plugin/GetJoinMode) and [Workspace:JoinToOutsiders](https://developer.roblox.com/en-us/api-reference/function/Workspace/JoinToOutsiders) it can be used to retain join functionality when developing custom studio build tools. See the snippets below for an example.
 	 * 
-	 * ```lua
-	 * -- finished moving a selection, make joints
+	 * \-- finished moving a selection, make joints
 	 * local function finishedMovingParts(parts)
-	 *     local joinMode = Plugin:GetJoinMode()
-	 *     workspace:JoinToOutsiders(parts, joinMode)
-	 * end
-	 * ``` ```lua
-	 * -- started moving a selection, break joints
+	 * 	local joinMode = Plugin:GetJoinMode()
+	 * 	workspace:JoinToOutsiders(parts, joinMode)
+	 * end\-- started moving a selection, break joints
 	 * local function startMovingParts(parts)
-	 *     workspace:UnjoinFromOutsiders(parts)
+	 * 	workspace:UnjoinFromOutsiders(parts)
 	 * end
-	 * ``` 
 	 * 
 	 * Developers interested in seeing how this function is used in the Roblox Studio should see the [Studio Tools GitHub repository](https://github.com/Roblox/Studio-Tools).
 	 */
@@ -23151,27 +22789,21 @@ interface Player extends Instance {
 	 * 
 	 * So if you're writing a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), do this:
 	 * 
-	 * ```lua
 	 * local player = game.Players.LocalPlayer
 	 * local character = player.Character
 	 * if not character or not character.Parent then
 	 *     character = player.CharacterAdded:wait()
 	 * end
-	 * ``` 
 	 * 
 	 * But from the server it's fine to do this:
 	 * 
-	 * ```lua
 	 * if player.Character then
-	 *     -- do something
+	 * 	-- do something
 	 * end
-	 * ``` 
 	 * 
 	 * Or if you want to wait until the character respawns from a server [Script](https://developer.roblox.com/en-us/api-reference/class/Script):
 	 * 
-	 * ```lua
 	 * local character = player.Character or player.CharacterAdded:wait()
-	 * ```
 	 */
 	Character: Model | undefined;
 	/**
@@ -23185,7 +22817,7 @@ interface Player extends Instance {
 	 */
 	CharacterAppearance: string;
 	/**
-	 * This property determines the user ID of the account whose character appearance is used for a player's `character. By default, this property is the`Player`'s`Player/UserId\`, which uses the player's avatar as they have created it on the Roblox website.
+	 * This property determines the user ID of the account whose character appearance is used for a player's `character. By default, this property is the` Player`'s` Player/UserId\`, which uses the player's avatar as they have created it on the Roblox website.
 	 * 
 	 * Changing this property to the user ID of another account will cause the player to spawn with that account's appearance (hats, shirt, pants, etc).
 	 * 
@@ -23414,9 +23046,7 @@ interface Player extends Instance {
 	 * ##Note  
 	 * If you would like to determine the distance between two non-player instances or positions, you can use the following:
 	 * 
-	 * ```lua
 	 * local distance = (position1 - position2).magnitude
-	 * ```
 	 */
 	DistanceFromCharacter(this: Player, point: Vector3): number;
 	/**
@@ -23502,18 +23132,21 @@ interface Player extends Instance {
 	 */
 	IsUserAvailableForExperiment(this: Player): boolean;
 	/**
-	 * The Kick [Player](https://developer.roblox.com/en-us/api-reference/class/Player) method allows a game to gracefully disconnect a client from the game and optionally provide a message to the disconnected player. This is useful for moderating abusive players. When used in conjunction with a [DataStore](https://developer.roblox.com/en-us/api-reference/class/DataStore), it is possible to create ban lists with expiration dates. Only allow specific whitelisted users whom you trust to trigger this method on other players.
+	 * **Kick** disconnects a player from a game once, optionally providing the kicked player a message in the process. Its primary use is in moderation tools on abusive players. This function should never be used in typical gameplay and only in exceptional situations where it would be detrimental to a game server for the player in question to remain connected.
 	 * 
-	 * When used from a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), only the local player's client can be kicked.
+	 * Although it is possible for a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) to invoke this function only on the [LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer), it is is generally a better idea for server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s to kick players.
 	 * 
-	 * ##Example  
-	 * When calling this method on a Player with no arguments, they will be disconnected from the server and receive the default message: This game has shut down.
+	 * Only allow specific users whom you trust to trigger this method on other players. If used in conjunction with a [DataStore](https://developer.roblox.com/en-us/api-reference/class/DataStore), it is possible to create persistent bans with expiration dates. Alternatively, a certain threshold of votes from other players to kick an abusive player could be more appropriate for certain games. For games which teleport players to private servers, like player-controlled homesteads or round-based games, it may be more appropriate to use [TeleportService](https://developer.roblox.com/en-us/api-reference/class/TeleportService) to forcibly teleport the player back to a lobby place instead of kicking them from a game altogether.
 	 * 
-	 * ![Getting kicked without a message.](https://developer.roblox.com/assets/blta0f9570676ca14ef/GettingKickedCropped.png)
+	 * This function does not prevent a player from returning to the same server from which it was called. If a player attempts to rejoin a server and they should still not be connected to the game, you should call this function again immediately after they've arrived. If a player is to be kicked as soon as they join, you should skip needless DataStore operations and other expensive API calls done on their behalf, such as saving/loading game data.
 	 * 
-	 * Calling this method on a player but providing a string as the first argument will replace this message with the contents of the string.
+	 * ### Example without Message
 	 * 
-	 * ![Getting kicked with a message.](https://developer.roblox.com/assets/blt20acf098fdbd2b30/KickedWithANoteCropped.png)
+	 * ![An example of Kick without a message.](https://developer.roblox.com/assets/blt6d90cfb7f10d0562/Kick.jpg)
+	 * 
+	 * ### Example with Message
+	 * 
+	 * ![An example of Kick with message "Don't be disruptive!"](https://developer.roblox.com/assets/blt1a61a7fb809374d1/Kick-With-Message.jpg)
 	 */
 	Kick(this: Player, message?: string): void;
 	/**
@@ -23552,7 +23185,7 @@ interface Player extends Instance {
 	 */
 	LoadNumber(this: Player, key: string): number;
 	/**
-	 * This function returns a string value that was previously saved to the player with [Player:SaveString](https://developer.roblox.com/en-us/api-reference/function/Player/SaveString) with the same key. Returns an empty string ("") if the key doesn't exist, not nil…
+	 * This function returns a string value that was previously saved to the player with [Player:SaveString](https://developer.roblox.com/en-us/api-reference/function/Player/SaveString) with the same key. Returns an empty string (“”) if the key doesn't exist, not nil…
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
@@ -23791,28 +23424,26 @@ interface Player extends Instance {
 	 * 
 	 * This event can be used alongside the [Player.CharacterAdded](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterAdded) event, which fires when a player's character spawns or respawns. For instance, if you would like print a message every time a player spawns and dies:
 	 * 
-	 * ```lua
 	 * local Players = game:GetService("Players")
 	 * 
 	 * local function onCharacterSpawned(player)
-	 *     print(player.Name .. " is spawning")
+	 * 	print(player.Name .. " is spawning")
 	 * end
 	 * 
 	 * local function onCharacterDespawned(player)
-	 *     print(player.Name .. " is despawning")
+	 * 	print(player.Name .. " is despawning")
 	 * end
 	 * 
 	 * local function onPlayerAdded(player)
-	 *     player.CharacterAdded:Connect(function ()
-	 *         onCharacterDespawned(player)
-	 *     end)
-	 *     player.CharacterRemoving:Connect(function ()
-	 *         onCharacterDespawned(player)
-	 *     end)
+	 * 	player.CharacterAdded:Connect(function ()
+	 * 		onCharacterDespawned(player)
+	 * 	end)
+	 * 	player.CharacterRemoving:Connect(function ()
+	 * 		onCharacterDespawned(player)
+	 * 	end)
 	 * end
 	 * 
 	 * Players.PlayerAdded:Connect(onPlayerAdded)
-	 * ``` 
 	 * 
 	 * This event is only concerned with the [Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character) of a [Player](https://developer.roblox.com/en-us/api-reference/class/Player). If you instead need to track when a player joins/leaves the game, use the events [Players.PlayerAdded](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerAdded) and [Players.PlayerRemoving](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerRemoving).
 	 */
@@ -23943,8 +23574,7 @@ interface Players extends Instance {
 	 * 
 	 * This property is useful in [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s which display information about the player viewing a GUI. Using For example, if there were [IntValue](https://developer.roblox.com/en-us/api-reference/class/IntValue) parented to a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) named “Coins” which represented how much money that player has, you could use the following to display this value for them:
 	 * 
-	 * ```lua
-	 * -- This code is appropriate for a LocalScript in StarterGui,
+	 * \-- This code is appropriate for a LocalScript in StarterGui,
 	 * -- for example: game.StarterGui.ScreenGui.TextLabel.LocalScript
 	 * 
 	 * local player = game:GetService("Players").LocalPlayer
@@ -23959,18 +23589,15 @@ interface Players extends Instance {
 	 * -- Update once, then every time the value changes
 	 * update()
 	 * vCoins.Changed:Connect(update)
-	 * ``` 
 	 * 
 	 * Loading GUIs
 	 * ------------
 	 * 
 	 * When creating loading GUIs using [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst), sometimes a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) can run before the LocalPlayer is available. In this case, you should yield until it becomes available by using [Instance:GetPropertyChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetPropertyChangedSignal)
 	 * 
-	 * ```lua
 	 * local Players = game:GetService("Players")
 	 * -- Below: access Players.LocalPlayer; if it is nil, we'll wait for it using GetPropertyChangedSignal.
 	 * local player = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPlayer"):wait()
-	 * ``` 
 	 * 
 	 * Doing this isn't for a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) within [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui), [StarterPlayerScripts](https://developer.roblox.com/en-us/api-reference/class/StarterPlayerScripts) or [StarterCharacterScripts](https://developer.roblox.com/en-us/api-reference/class/StarterCharacterScripts): these scripts can only run after a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) object is already available, and LocalPlayer will have been set by then.
 	 * Tags: ReadOnly, NotReplicated
@@ -24017,10 +23644,8 @@ interface Players extends Instance {
 	 * 
 	 * Although this can be set from within a [Script](https://developer.roblox.com/en-us/api-reference/class/Script), you will likely set the property from within Studio via the Players service property window.
 	 * 
-	 * ```lua
 	 * local Players = game:GetService(“Players”)
 	 * Players.RespawnTime = 10.0
-	 * ``` 
 	 * 
 	 * ### See also
 	 * 
@@ -24030,16 +23655,14 @@ interface Players extends Instance {
 	/**
 	 * This function searches each [player](https://developer.roblox.com/en-us/api-reference/class/Player) in [Players](https://developer.roblox.com/en-us/api-reference/class/Players) for one whose [Player.UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) matches the given UserId. If such a player does not exist, it simply returns `nil`. It is equivalent to the following function:
 	 * 
-	 * ```lua
 	 * local Players = game:GetService("Players")
 	 * local function getPlayerByUserId(userId)
-	 *     for _, player in pairs(Players:GetPlayers()) do
-	 *         if player.UserId == userId then
-	 *             return player
-	 *         end
-	 *     end
+	 * 	for \_, player in pairs(Players:GetPlayers()) do
+	 * 		if player.UserId == userId then
+	 * 			return player
+	 * 		end
+	 * 	end
 	 * end
-	 * ``` 
 	 * 
 	 * This method is useful in finding the purchaser of a developer product using [MarketplaceService.ProcessReceipt](https://developer.roblox.com/en-us/api-reference/property/MarketplaceService/ProcessReceipt), which provides a table that includes the purchaser's UserId and not a reference to the Player object itself. Most games will require a reference to the player in order to grant products.
 	 */
@@ -24047,15 +23670,13 @@ interface Players extends Instance {
 	/**
 	 * This function returns the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) associated with the given [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character), or `nil` if one cannot be found. It is equivalent to the following function:
 	 * 
-	 * ```lua
 	 * local function getPlayerFromCharacter(character)
-	 *     for _, player in pairs(game:GetService("Players"):GetPlayers()) do
-	 *         if player.Character == character then
-	 *             return player
-	 *         end
-	 *     end
+	 * 	for \_, player in pairs(game:GetService("Players"):GetPlayers()) do
+	 * 		if player.Character == character then
+	 * 			return player
+	 * 		end
+	 * 	end
 	 * end
-	 * ``` 
 	 * 
 	 * This method is often used when some event in player's character fires (such as their [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) [dying](https://developer.roblox.com/en-us/api-reference/event/Humanoid/Died)). Such an event might not directly reference the Player object, but this method provides easy access. The inverse of this function can be described as getting the Character of a Player. To do this, simply access the Character property.
 	 */
@@ -24063,27 +23684,23 @@ interface Players extends Instance {
 	/**
 	 * This method returns a table of all presently connected [Player](https://developer.roblox.com/en-us/api-reference/class/Player). It functions the same way [Instance:GetChildren](https://developer.roblox.com/en-us/api-reference/function/Instance/GetChildren) would except that it only returns Player objects. It functions similarly to [Instance:GetChildren](https://developer.roblox.com/en-us/api-reference/function/Instance/GetChildren) when called on [Players](https://developer.roblox.com/en-us/api-reference/class/Players). 0 When used in conjunction with a for-loop, it is useful for iterating over all players in a game.
 	 * 
-	 * ```lua
 	 * Players = game:GetService("Players")
 	 * for i, player in pairs(Players:GetPlayers()) do
 	 *     print(player.Name)
 	 * end
-	 * ``` 
 	 * 
 	 * Scripts that connect to [Players.PlayerAdded](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerAdded) are often trying to process every Player that connects to the game. This method is useful for iterating over already-connected players that wouldn't fire [PlayerAdded](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerAdded). Using this method ensures that no player is missed!
 	 * 
-	 * ```lua
 	 * local Players = game:GetService("Players")
 	 * 
 	 * local function onPlayerAdded(player)
-	 *     print("Player: " .. player.Name)
+	 * 	print("Player: " .. player.Name)
 	 * end
 	 * 
-	 * for _, player in pairs(Players:GetPlayers()) do
-	 *     onPlayerAdded(player)
+	 * for \_, player in pairs(Players:GetPlayers()) do
+	 * 	onPlayerAdded(player)
 	 * end
 	 * Players.PlayerAdded:Connect(onPlayerAdded)
-	 * ```
 	 */
 	GetPlayers(this: Players): Array<Player>;
 	/**
@@ -24296,17 +23913,15 @@ interface Players extends Instance {
 	 * 
 	 * This can be used alongside the [Players.PlayerRemoving](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerRemoving) event, which fires when a player is about to leave the game. For instance, if you would like print a message every time a new player joins or leaves the game:
 	 * 
-	 * ```lua
 	 * local Players = game:GetService("Players")
 	 * 
 	 * Players.PlayerAdded:Connect(function(player)
-	 *     print(player.Name .. " joined the game!")
+	 * 	print(player.Name .. " joined the game!")
 	 * end)
 	 * 
 	 * Players.PlayerRemoving:Connect(function(player)
-	 *     print(player.Name .. " left the game!")
+	 * 	print(player.Name .. " left the game!")
 	 * end)
-	 * ``` 
 	 * 
 	 * If you want to track when a player's character is added or removed from the game, such as when a player respawns or dies, you can use the [Player.CharacterAdded](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterAdded) and [Player.CharacterRemoving](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterRemoving) functions.
 	 * 
@@ -24701,11 +24316,9 @@ interface SunRaysEffect extends PostEffect {
  * ProximityPrompts work when parented to a [Part](https://developer.roblox.com/en-us/api-reference/class/Part), [Model](https://developer.roblox.com/en-us/api-reference/class/Model), or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) in the workspace.  
  * In order to detect when the user interacts with the object, listen for the Triggered event on the ProximityPrompt in either a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), as in this simple example:
  * 
- * ```lua
  * workspace.Part.ProximityPrompt.Triggered:Connect(function(player)
  *     print("The user interacted with me!")
  * end)
- * ``` 
  * 
  * When a user is near, a UI will appear to prompt them for input. This works for all input types - keyboard, gamepad, and touchscreen.
  * 
@@ -24851,24 +24464,20 @@ interface ProximityPromptService extends Instance {
 	 * 
 	 * For example, in a round based system developers could disable prompts at certain points in the game to disable proximity-based interactions.
 	 * 
-	 * ```lua
-	 * -- Server Script 1
+	 * \-- Server Script 1
 	 * local ProximityPromptService = game:GetService("ProximityPromptService")
 	 * local enablePrompts = workspace.EnablePrompts -- BindableEvent
 	 * 
 	 * -- Connected to a BindableEvent that is fired by another script controlling game logic
 	 * enablePrompts.OnServerEvent:Connect(function(enabled)
-	 *     ProximityPromptService.Enabled = enabled
-	 * end)
-	 * ``` ```lua
-	 * -- Server Script 2
+	 * 	ProximityPromptService.Enabled = enabled
+	 * end)\-- Server Script 2
 	 * local enablePrompts = workspace.EnablePrompts -- BindableEvent
 	 * 
 	 * -- Some game event
 	 * enablePrompts:FireServer(false) -- Disable
 	 * wait(5)
 	 * enablePrompts:FireServer(true) -- Re-enable
-	 * ```
 	 */
 	Enabled: boolean;
 	/**
@@ -24876,10 +24485,8 @@ interface ProximityPromptService extends Instance {
 	 * 
 	 * The code block below demonstrates how this limit would be applied:
 	 * 
-	 * ```lua
 	 * local ProximityPromptService = game:GetService("ProximityPromptService")
 	 * ProximityPromptService.MaxPromptsVisible = 2 -- No more than 2 prompts will be shown to the user at any given time
-	 * ```
 	 */
 	MaxPromptsVisible: number;
 	/**
@@ -25139,7 +24746,6 @@ interface RunService extends Instance {
 	 * 
 	 * The `name` parameter is a label for the binding, and can be used with [RunService:UnbindFromRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/UnbindFromRenderStep) if the binding is no longer needed.
 	 * 
-	 * ```lua
 	 * local RunService = game:GetService("RunService")
 	 *     
 	 * local function functionToBind() end
@@ -25148,7 +24754,6 @@ interface RunService extends Instance {
 	 * RunService:BindToRenderStep("tempBinding", 1, functionToBind)
 	 * -- Unbind the function bound to "tempBinding"
 	 * RunService:UnbindFromRenderStep("tempBinding")
-	 * ``` 
 	 * 
 	 * Priority
 	 * --------
@@ -25161,15 +24766,13 @@ interface RunService extends Instance {
 	 * 
 	 * > **Note:** When using Enum.RenderPriority, remember to use _**InlineCode.Value**_ at the end of the desired enum. BindToRenderStep will not work if just the enum on its own is used.
 	 * 
-	 * ```lua
 	 * local RunService = game:GetService("RunService")
 	 *     
 	 * local function beforeCamera(delta)
-	 *     -- Code in here will run before the default Roblox camera script
+	 * 	-- Code in here will run before the default Roblox camera script
 	 * end
 	 *     
 	 * RunService:BindToRenderStep("Before camera", Enum.RenderPriority.Camera.Value - 1, beforeCamera)
-	 * ``` 
 	 * 
 	 * Custom Function and Delta Time
 	 * ------------------------------
@@ -25406,16 +25009,14 @@ interface RunService extends Instance {
 	 * 
 	 * If there is no bound function by the given name, this method raises an error. You can prevent such an error from being raised by using `pcall`. For example, if you bind a function named `drawImage` using [BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep), the following code would unbind the function, suppressing errors if there wasn't already a function with the name `drawImage` bound.
 	 * 
-	 * ```lua
 	 * local RunService = game:GetService("RunService")
 	 *     
 	 * local success, message = pcall(function() RunService:UnbindFromRenderStep("drawImage") end)
 	 * if success then
-	 *     print("Success: Function unbound!")
+	 * 	print("Success: Function unbound!")
 	 * else
-	 *     print("An error occurred: "..message)
+	 * 	print("An error occurred: "..message)
 	 * end
-	 * ```
 	 */
 	UnbindFromRenderStep(this: RunService, name: string): void;
 	/**
@@ -25425,15 +25026,13 @@ interface RunService extends Instance {
 	 * 
 	 * The _step_ argument can be used to account for the variable frequency of this event, for example:
 	 * 
-	 * ```lua
 	 * local RunService = game:GetService("RunService")
 	 * 
-	 * local RATE_PER_SECOND = 2
+	 * local RATE\_PER\_SECOND = 2
 	 * 
 	 * RunService.Heartbeat:Connect(function(step)
-	 *     local increment = RATE_PER_SECOND * step
+	 * 	local increment = RATE\_PER\_SECOND \* step
 	 * end)
-	 * ``` 
 	 * 
 	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
 	 */
@@ -25451,15 +25050,13 @@ interface RunService extends Instance {
 	 * 
 	 * The _step_ argument can be used to account for the variable frequency of this event, for example:
 	 * 
-	 * ```lua
 	 * local RunService = game:GetService("RunService")
 	 * 
-	 * local RATE_PER_SECOND = 2
+	 * local RATE\_PER\_SECOND = 2
 	 * 
 	 * RunService.RenderStepped:Connect(function(step)
-	 *     local increment = RATE_PER_SECOND * step
+	 * 	local increment = RATE\_PER\_SECOND \* step
 	 * end)
-	 * ``` 
 	 * 
 	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
 	 * 
@@ -25473,15 +25070,13 @@ interface RunService extends Instance {
 	 * 
 	 * The _step_ argument can be used to account for the variable frequency of this event, for example:
 	 * 
-	 * ```lua
 	 * local RunService = game:GetService("RunService")
 	 * 
-	 * local RATE_PER_SECOND = 2
+	 * local RATE\_PER\_SECOND = 2
 	 * 
 	 * RunService.Stepped:Connect(function(time, step)
-	 *     local increment = RATE_PER_SECOND * step
+	 * 	local increment = RATE\_PER\_SECOND \* step
 	 * end)
-	 * ``` 
 	 * 
 	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
 	 */
@@ -25719,7 +25314,6 @@ interface DataModel extends ServiceProvider<Services> {
 	 * 
 	 * This property could be used to identify if a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) is the owner of the VIP server, for example:
 	 * 
-	 * ```lua
 	 * local Players = game:GetService("Players")
 	 * 
 	 * -- is this a VIP server?
@@ -25734,7 +25328,6 @@ interface DataModel extends ServiceProvider<Services> {
 	 *         end
 	 *     end)
 	 * end
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -25762,11 +25355,9 @@ interface DataModel extends ServiceProvider<Services> {
 	 * 
 	 * The [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) can also be accessed using the global variable `workspace` and the [ServiceProvider:GetService](https://developer.roblox.com/en-us/api-reference/function/ServiceProvider/GetService) function. For example:
 	 * 
-	 * ```lua
 	 * workspace -- a global variable
 	 * game.Workspace -- a property of the DataModel (game)
 	 * game:GetService("Workspace") -- workspace is a service
-	 * ```
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Workspace: Workspace;
@@ -25806,9 +25397,7 @@ interface DataModel extends ServiceProvider<Services> {
 	 * 
 	 * This function returns whether gear of the given [GeareType](https://developer.roblox.com/en-us/api-reference/enum/GeareType) is permitted to be added to `Player|Players'` [StarterGears](https://developer.roblox.com/en-us/api-reference/class/StarterGear). For example:
 	 * 
-	 * ```lua
 	 * local meleeWeaponsAllowed = game:IsGearTypeAllowed(Enum.GearType.MeleeWeapons)
-	 * ``` 
 	 * 
 	 * Whether gear of a specific [GearType](https://developer.roblox.com/en-us/api-reference/enum/GearType) is permitted in the game is determined in a place's settings page under 'Permissions'. Note, all of a gear's associated [GearTypes](https://developer.roblox.com/en-us/api-reference/enum/GearType) must be enabled for it to be permitted in a place.
 	 * Tags: Deprecated
@@ -25822,11 +25411,9 @@ interface DataModel extends ServiceProvider<Services> {
 	 * 
 	 * Unless they are parented to [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst), [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) will not run while the game has not loaded. The following snippet, ran from a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) in [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst) will yield until the game has loaded:
 	 * 
-	 * ```lua
 	 * if not game:IsLoaded() then
 	 *     game.Loaded:Wait()
 	 * end
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -25864,9 +25451,7 @@ interface DataModel extends ServiceProvider<Services> {
 	 * 
 	 * You can retrieve a user's [SavedQualitySetting](https://developer.roblox.com/en-us/api-reference/enum/SavedQualitySetting) using [UserGameSettings](https://developer.roblox.com/en-us/api-reference/class/UserGameSettings) with the following snippet:
 	 * 
-	 * ```lua
 	 * UserSettings():GetService("UserGameSettings").SavedQualityLevel
-	 * ``` 
 	 * 
 	 * If the user's graphics settings are set to automatic then the [SavedQualitySetting](https://developer.roblox.com/en-us/api-reference/enum/SavedQualitySetting) will be _'Automatic'_. There is currently no way for developers to reliably get the current graphics quality level of a user's machine.
 	 */
@@ -25884,11 +25469,9 @@ interface DataModel extends ServiceProvider<Services> {
 	 * 
 	 * Unless they are parented to [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst), [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) will not run prior to this event firing. The following snippet, ran from a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) in [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst), will yield until the game has loaded:
 	 * 
-	 * ```lua
 	 * if not game:IsLoaded() then
 	 *     game.Loaded:Wait()
 	 * end
-	 * ``` 
 	 * 
 	 * See also
 	 * --------
@@ -26042,15 +25625,13 @@ interface Smoke extends Instance {
 	/**
 	 * The Enabled property, much like [ParticleEmitter.Enabled](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Enabled), determines whether smoke particles are emit. Any particles already emit will continue to render until their lifetime expires. This property is useful for keeping pre-made smoke effects off until they are needed later. Since smoke particles are destroyed when the [Smoke](https://developer.roblox.com/en-us/api-reference/class/Smoke) object's [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is set to nil, this property is useful in allowing existing particles the opportunity to expire before destroying the Fire object altogether. See the function below.
 	 * 
-	 * ```lua
 	 * local Debris = game:GetService("Debris")
 	 * local part = script.Parent
 	 * function stopSmoke(smoke)
-	 *     smoke.Enabled = false -- No more new particles
-	 *     Debris:AddItem(smoke, 10) -- Remove the object after a delay (after existing particles have expired)
+	 * 	smoke.Enabled = false -- No more new particles
+	 * 	Debris:AddItem(smoke, 10) -- Remove the object after a delay (after existing particles have expired)
 	 * end
 	 * stopSmoke(part.Smoke)
-	 * ```
 	 */
 	Enabled: boolean;
 	/**
@@ -26296,9 +25877,7 @@ interface Sound extends Instance {
 	/**
 	 * This property sets how 3D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s attenuate (fade out) as the distance between the listener and the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)'s parent increase. The following code will set RollOffMode to Linear.
 	 * 
-	 * ```lua
 	 * sound.RollOffMode = Enum.RollOffMode.Linear
-	 * ``` 
 	 * 
 	 * Thee following options are available.
 	 * 
@@ -26327,11 +25906,9 @@ interface Sound extends Instance {
 	 * 
 	 * It's important to remember the URL is not the same as the content ID. It will work when pasted directly into the SoundId property of a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) in Roblox studio, as Studio will automatically correct it, however if it is being set from a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) then the correct content ID will need to be used, using the number from the URL. For example:
 	 * 
-	 * ```lua
 	 * "https://www.roblox.com/catalog/12222216" -- Web URL (will not work)
 	 * "http://www.roblox.com/asset/?id=12222216" -- Content ID (will work)
 	 * "rbxassetid://12222216" -- Content ID (alternative version, will work)
-	 * ```
 	 */
 	SoundId: string;
 	/**
@@ -26520,11 +26097,9 @@ interface Sound extends Instance {
 	 * 
 	 * This event is often used to destroy a sound when it has completed playback.
 	 * 
-	 * ```lua
 	 * sound:Play()
 	 * sound.Ended:Wait()
 	 * sound:Destroy()
-	 * ``` 
 	 * 
 	 * This event only fires if the sound has reached its end. This means it will also not fire when the sound is stopped before playback has completed, for this use [Sound.Stopped](https://developer.roblox.com/en-us/api-reference/event/Sound/Stopped).
 	 */
@@ -26992,11 +26567,9 @@ interface SoundService extends Instance {
 	 * 
 	 * By default, the DistanceFactor is 3.33. This means, for the purposes of volume attenuation, a meter is considered 3.33 studs. The greater the DistanceFactor, the more gradually sound will attenuate.
 	 * 
-	 * ```lua
 	 * local SoundService = game:GetService("SoundService")
 	 * SoundService.DistanceFactor = 1 -- 1 meter = 1 stud
 	 * SoundService.DistanceFactor = 10 -- 1 meter = 10 studs
-	 * ``` 
 	 * 
 	 * Developers are advised to only change this property if their game uses a different scale. For example, when using larger custom characters, developers may want to reduce the DistanceFactor. In all other cases, [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) settings such as [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode) should be used instead.
 	 * 
@@ -27010,12 +26583,10 @@ interface SoundService extends Instance {
 	 * 
 	 * Increasing this value exaggerates the impact of the Doppler effect, whereas decreasing it minimizes it. By default, the value of this property is 1.
 	 * 
-	 * ```lua
 	 * local SoundService = game:GetService("SoundService")
 	 * SoundService.DopplerScale = 1 -- default 
 	 * SoundService.DopplerScale = 2 -- exaggerated Doppler effect
 	 * SoundService.DopplerEffect = 0.5 -- subdued Doppler effect
-	 * ``` 
 	 * 
 	 * Note the Doppler effect has no impact on 2D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s, ([Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s not parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)).
 	 * 
@@ -27035,11 +26606,9 @@ interface SoundService extends Instance {
 	 * 
 	 * By default the roll off scale is set to 1, which simulates the real world.
 	 * 
-	 * ```lua
 	 * local SoundService = game:GetService("SoundService")
 	 * SoundService.RolloffScale = 1 -- attenuation simulates real world
 	 * SoundService.RolloffScale = 2 -- sound attenuates twice as fast as the real world
-	 * ``` 
 	 * 
 	 * Developers wishing to learn more about the different settings Roblox's sound engine uses should consult the [FMOD documentation](https://www.fmod.com/docs/api/content/generated/overview/3dsound.html).
 	 */
@@ -27056,12 +26625,10 @@ interface SoundService extends Instance {
 	 * 
 	 * The listener can be changed using [SoundService:SetListener](https://developer.roblox.com/en-us/api-reference/function/SoundService/SetListener).
 	 * 
-	 * ```lua
 	 * local SoundService = game:GetService("SoundService")
 	 * SoundService:SetListener(Enum.ListenerType.CFrame, CFrame.new(0, 0, 0))
 	 * local listenerType, listener = SoundService:GetListener()
 	 * print(listenerType, listener)
-	 * ``` 
 	 * 
 	 * What is a listener?
 	 * -------------------
@@ -27093,12 +26660,10 @@ interface SoundService extends Instance {
 	 * 
 	 * The listener can be retrieved using [SoundService:GetListener](https://developer.roblox.com/en-us/api-reference/function/SoundService/GetListener).
 	 * 
-	 * ```lua
 	 * local SoundService = game:GetService("SoundService")
 	 * SoundService:SetListener(Enum.ListenerType.CFrame, CFrame.new(0, 0, 0))
 	 * local listenerType, listener = SoundService:GetListener()
 	 * print(listenerType, listener)
-	 * ``` 
 	 * 
 	 * What is a listener?
 	 * -------------------
@@ -27155,15 +26720,13 @@ interface Sparkles extends Instance {
 	/**
 	 * The Enabled property, much like [ParticleEmitter.Enabled](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Enabled), determines whether sparkle particles are emit. Any particles already emit will continue to render until their lifetime expires. This property is useful for keeping pre-made sparkle effects off until they are needed later. Since sparkle particles are destroyed when the `Sparkle` object's [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is set to nil, this property is useful in allowing existing particles the opportunity to expire before destroying the Fire object altogether. See the function below.
 	 * 
-	 * ```lua
 	 * local Debris = game:GetService("Debris")
 	 * local part = script.Parent
 	 * function stopSparkling(sparkles)
-	 *     sparkles.Enabled = false -- No more new particles
-	 *     Debris:AddItem(sparkles, 4) -- Remove the object after a delay (after existing particles have expired)
+	 * 	sparkles.Enabled = false -- No more new particles
+	 * 	Debris:AddItem(sparkles, 4) -- Remove the object after a delay (after existing particles have expired)
 	 * end
 	 * stopSparkling(part.Sparkles)
-	 * ```
 	 */
 	Enabled: boolean;
 	/**
@@ -27190,7 +26753,6 @@ interface Sparkles extends Instance {
  * 
  * Listening to the [Players.PlayerAdded](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerAdded) event is useful for
  * 
- * ```lua
  * local Players = game:GetService("Players")
  * 
  * local toolExamplePrefab = Instance.new("Tool")
@@ -27198,15 +26760,14 @@ interface Sparkles extends Instance {
  * 
  * -- Accessing StarterGear from Server Script
  * local function onPlayerAdded(player)
- *     -- Wait for the StarterGear to be added
- *     local starterGear = player:WaitForChild("StarterGear")
- *     -- Add a Tool to the StarterGear
- *     local toolExample = toolExamplePrefab:Clone()
- *     toolExample.Parent = starterGear
+ * 	-- Wait for the StarterGear to be added
+ * 	local starterGear = player:WaitForChild("StarterGear")
+ * 	-- Add a Tool to the StarterGear
+ * 	local toolExample = toolExamplePrefab:Clone()
+ * 	toolExample.Parent = starterGear
  * end
  * 
  * Players.PlayerAdded:connect(onPlayerAdded)
- * ``` 
  * 
  * Allowing Gear
  * -------------
@@ -27891,12 +27452,13 @@ interface TeleportOptions extends Instance {
 
 /** The TeleportService is responsible for transporting [Players](https://developer.roblox.com/en-us/api-reference/class/Player) between `Articles/Place|places` and servers.
  * 
- * 'Teleporting' in Roblox, describes the transportation of [Players](https://developer.roblox.com/en-us/api-reference/class/Player) between different places and servers. TeleportService provides a range of functions allowing single or groups of users to be teleported. As Roblox [games](https://developer.roblox.com/en-us/api-reference/class/Articles/Multi Place Games) can contain multiple places, you can use the TeleportService to teleport players between different levels.
+ * Teleporting in Roblox describes the transportation of players between different places and servers. TeleportService provides a range of functions related to teleporting single or groups of users to different servers. As Roblox [games](https://developer.roblox.com/en-us/api-reference/class/Articles/Multi Place Games) can contain multiple places, you can use the TeleportService to teleport players between different levels.
  * 
- * Which teleport function should I use?
- * -------------------------------------
+ * Previous iterations of the TeleportService relied on several different functions for each scenario. These have since been combined into a single method, [TeleportService:TeleportAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportAsync), which may be used to:
  * 
- * A variety of teleportation functions are available and are all suitable for different circumstances:
+ * *   Teleport any number of players to a Public Server
+ * *   Follow a Friend to a Different Place
+ * *   Teleport any number of Players to a Reserved Server
  * 
  * Studio limitation
  * -----------------
@@ -27906,11 +27468,7 @@ interface TeleportOptions extends Instance {
  * See also
  * --------
  * 
- * *   [Teleport](https://developer.roblox.com/en-us/api-reference/function/TeleportService/Teleport) for teleporting a single [Player](https://developer.roblox.com/en-us/api-reference/class/Player) to a place
- * *   [TeleportToSpawnByName](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportToSpawnByName) for teleporting a single [Player](https://developer.roblox.com/en-us/api-reference/class/Player) to a place, spawning at a particular [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation)
- * *   [TeleportToPlaceInstance](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportToPlaceInstance) for teleporting a single [Player](https://developer.roblox.com/en-us/api-reference/class/Player) to a specific server instance in a place that is part of the same game
- * *   [TeleportService:TeleportPartyAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportPartyAsync) for teleporting a group of [Players](https://developer.roblox.com/en-us/api-reference/class/Player) to one server in a place that is part of the same game
- * *   [TeleportService:TeleportToPrivateServer](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportToPrivateServer) for teleporting a group of [Players](https://developer.roblox.com/en-us/api-reference/class/Player) to a reserved server created using [TeleportService:ReserveServer](https://developer.roblox.com/en-us/api-reference/function/TeleportService/ReserveServer)
+ * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
  */
 interface TeleportService extends Instance {
 	/**
@@ -27950,7 +27508,6 @@ interface TeleportService extends Instance {
 	 * 
 	 * For example, the following snippet would send the [DataModel.PlaceId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PlaceId) and [DataModel.JobId](https://developer.roblox.com/en-us/api-reference/property/DataModel/JobId) in a dictionary:
 	 * 
-	 * ```lua
 	 * local Players = game:GetService("Players")
 	 * 
 	 * local player = Players.LocalPlayer
@@ -27959,11 +27516,9 @@ interface TeleportService extends Instance {
 	 *     jobId = game.JobId
 	 * }
 	 * TeleportService:Teleport(placeId, player, teleportData)
-	 * ``` 
 	 * 
 	 * This data could then be retrieved upon arrival using the GetLocalPlayerTeleportData function as follows:
 	 * 
-	 * ```lua
 	 * local TeleportService = game:GetService("TeleportService")
 	 * 
 	 * local teleportData = TeleportService:GetLocalPlayerTeleportData()
@@ -27971,7 +27526,6 @@ interface TeleportService extends Instance {
 	 *     local placeId = teleportData.placeId
 	 *     local jobId = teleportData.JobId
 	 * end)
-	 * ``` 
 	 * 
 	 * If no _teleportData_ was set in the teleportation function this function will return _nil_.
 	 * 
@@ -27992,11 +27546,9 @@ interface TeleportService extends Instance {
 	 * 
 	 * For example, in a game that allowed crouching you could save whether the user is currently crouching prior to teleporting as a teleport setting. This could then be retrieved in the destination place after the teleportation:
 	 * 
-	 * ```lua
 	 * local TeleportService = game:GetService("TeleportService")
 	 * 
 	 * local isCrouching =  TeleportService:GetTeleportSetting("isCrouching")
-	 * ``` 
 	 * 
 	 * If no teleport setting exists under the given key, this function will return _nil_.
 	 * 
@@ -28030,8 +27582,7 @@ interface TeleportService extends Instance {
 	 * 
 	 * This function should only be used on the client. If the teleportation function is called from the server (as is the case with [TeleportService:TeleportPartyAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportPartyAsync)) then this function should be called on the client prior to this. One way of doing this is listening to a [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) that fires several seconds before teleportation.
 	 * 
-	 * ```lua
-	 * -- Client
+	 * \-- Client
 	 * 
 	 * local TeleportService = game:GetService("TeleportService")
 	 * local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -28051,7 +27602,6 @@ interface TeleportService extends Instance {
 	 *     local playerGui = localPlayer:WaitForChild("PlayerGui")
 	 *     teleportGui.Parent = playerGui
 	 * end)
-	 * ``` 
 	 * 
 	 * Loading screen
 	 * --------------
@@ -28077,12 +27627,10 @@ interface TeleportService extends Instance {
 	 * 
 	 * For example, in a game that allowed crouching you could save whether the user is currently crouching prior to teleporting as a teleport setting:
 	 * 
-	 * ```lua
 	 * local TeleportService = game:GetService("TeleportService")
 	 * 
 	 * local isCrouching = false
 	 * TeleportService:SetTeleportSetting("isCrouching", isCrouching)
-	 * ``` 
 	 * 
 	 * The stored value can take one of the following forms:
 	 * 
@@ -28427,9 +27975,7 @@ interface TeleportService extends Instance {
 	 * 
 	 * You can see if the current server is a reserved server by using the following code:
 	 * 
-	 * ```lua
 	 * local isReserved = game.PrivateServerId ~= "" and game.PrivateServerOwnerId == 0
-	 * ``` 
 	 * 
 	 * The [DataModel.PrivateServerId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PrivateServerId) is constant across all server instances associated with the server access code, the [DataModel.JobId](https://developer.roblox.com/en-us/api-reference/property/DataModel/JobId) is not.
 	 * 
@@ -28568,7 +28114,6 @@ interface TeleportService extends Instance {
 	 * 
 	 * If you wish to preserve the _customLoadingScreen_ and perform your own transitions, you will need to parent it to the `Players/LocalPlayer|LocalPlayer's` [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui). For example, using the following code inside a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) in [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst):
 	 * 
-	 * ```lua
 	 * local TeleportService = game:GetService("TeleportService")
 	 * local Players = game:GetService("Players")
 	 * local ReplicatedFirst = game:GetService("ReplicatedFirst")
@@ -28583,7 +28128,6 @@ interface TeleportService extends Instance {
 	 *     -- destroy screen
 	 *     customLoadingScreen:Destroy()
 	 * end)
-	 * ``` 
 	 * 
 	 * The _customLoadingScreen_ will not be used if the destination place is in a different game.
 	 * 
@@ -29091,20 +28635,18 @@ interface Translator extends Instance {
 	 * 
 	 * Then, when calling this function in a script, pass the same [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) as the first argument, followed by the **Source** lookup text as the second argument:
 	 * 
-	 * ```lua
 	 * local LocalizationService = game:GetService("LocalizationService")
 	 * 
 	 * local success, translator = pcall(function()
-	 *     return LocalizationService:GetTranslatorForPlayerAsync(game.Players.LocalPlayer)
+	 * 	return LocalizationService:GetTranslatorForPlayerAsync(game.Players.LocalPlayer)
 	 * end)
 	 * 
 	 * if success then
-	 *     local trans = translator:Translate(workspace.ComputerScreen.SurfaceGui.TextLabel, "Screen")
-	 *     print(trans)
+	 * 	local trans = translator:Translate(workspace.ComputerScreen.SurfaceGui.TextLabel, "Screen")
+	 * 	print(trans)
 	 * else
-	 *     warn("Cannot load translator for player!")
+	 * 	warn("Cannot load translator for player!")
 	 * end
-	 * ```
 	 */
 	Translate(this: Translator, context: Instance, text: string): string;
 }
@@ -30015,16 +29557,14 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the following code snippet demonstrates how to check if the user's device has an accelerometer.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * local accelerometerEnabled = oserInputService.AccelerometerEnabled
 	 * if accelerometerEnabled then
-	 *     print("Accelerometer enabled!")
+	 * 	print("Accelerometer enabled!")
 	 * else
-	 *     print("Accelerometer not enabled!")
-	 * end
-	 * ``` 
+	 * 	print("Accelerometer not enabled!")
+	 * end 
 	 * 
 	 * If the device has an enabled accelerometer, you can get it's current acceleration by using the [UserInputService:GetDeviceAcceleration](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GetDeviceAcceleration) function or track when the device's acceleration changes by using the [UserInputService.DeviceAccelerationChanged](https://developer.roblox.com/en-us/api-reference/event/UserInputService/DeviceAccelerationChanged) event.
 	 * 
@@ -30035,15 +29575,13 @@ interface UserInputService extends Instance {
 	/**
 	 * This property describes whether the device being used by a user has an available gamepad.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * if userInputService.GamepadEnabled then
-	 *     print("Gamepad enabled")
+	 * 	print("Gamepad enabled")
 	 * else
-	 *     print("Gamepad not enabled")
+	 * 	print("Gamepad not enabled")
 	 * end
-	 * ``` 
 	 * 
 	 * If gamepads are available, you can use [UserInputService:GetConnectedGamepads](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GetConnectedGamepads) to retrieve a list of connected gamepads and [UserInputService:GetNavigationGamepads](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GetNavigationGamepads) to retrieve a list of connected gamepads that also controlnavigation GUIs.
 	 * 
@@ -30075,7 +29613,6 @@ interface UserInputService extends Instance {
 	 * 
 	 * If a user's device has a gyroscope, you can use incorporate it into your game using the [UserInputService:GetDeviceRotation](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GetDeviceRotation) function and [UserInputService.DeviceRotationChanged](https://developer.roblox.com/en-us/api-reference/event/UserInputService/DeviceRotationChanged) event.
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * local gyroIsEnabled = UserInputService.GyroscopeEnabled
@@ -30084,7 +29621,6 @@ interface UserInputService extends Instance {
 	 * else
 	 *     print("Gyroscope is not enabled!")
 	 * end
-	 * ``` 
 	 * 
 	 * As [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) is client-side only, this property can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
@@ -30152,7 +29688,6 @@ interface UserInputService extends Instance {
 	/**
 	 * This property describes whether the user's device has a mouse available. This property is _true_ when the user's device has an available mouse, and _false_ when it does not.
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * if (UserInputService.MouseEnabled) then
@@ -30160,7 +29695,6 @@ interface UserInputService extends Instance {
 	 * else
 	 *     print("The user's device does not have an available mouse!")
 	 * end
-	 * ``` 
 	 * 
 	 * It is important to check this before using [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) mouse functions such as [UserInputService:GetMouseLocation](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GetMouseLocation).
 	 * 
@@ -30183,11 +29717,9 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the code snippet below hides the mouse's icon.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * userInputService.MouseIconEnabled = false
-	 * ``` 
 	 * 
 	 * As [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) is client-side only, this property can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 */
@@ -30197,10 +29729,8 @@ interface UserInputService extends Instance {
 	 * 
 	 * The code snippet below prints the position of the keyboard.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * print(userInputService.OnScreenKeyboardPosition)
-	 * ``` 
 	 * 
 	 * As [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) is client-side only, this property can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
@@ -30219,10 +29749,8 @@ interface UserInputService extends Instance {
 	 * 
 	 * The code snippet below prints the size of the keyboard.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * print(userInputService.OnScreenKeyboardSize)
-	 * ``` 
 	 * 
 	 * As [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) is client-side only, this property can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
@@ -30241,16 +29769,14 @@ interface UserInputService extends Instance {
 	 * 
 	 * The code snippet below prints whether the keyboard is visible.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * local keyboardIsVisible = userInputService.OnScreenKeyboardIsVisible
 	 * if (keyboardIsVisible) then
-	 *     print("On-screen keyboard is visible!")
+	 * 	print("On-screen keyboard is visible!")
 	 * else
-	 *     print("On-screen keyboard is not visible!")
+	 * 	print("On-screen keyboard is not visible!")
 	 * end
-	 * ``` 
 	 * 
 	 * As [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) is client-side only, this property can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
@@ -30271,15 +29797,13 @@ interface UserInputService extends Instance {
 	 * 
 	 * The code snippet below prints whether the user's device has a touch screen.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * if userInputService.TouchEnabled then
-	 *     print("The user's device has a touchscreen!")
+	 * 	print("The user's device has a touchscreen!")
 	 * else
-	 *     print("The user's device does not have a touchscreen!")
+	 * 	print("The user's device does not have a touchscreen!")
 	 * end
-	 * ``` 
 	 * 
 	 * See [this](https://developer.roblox.com/learn-roblox/cross-platform) page for articles on cross-platform development.
 	 * 
@@ -30309,9 +29833,8 @@ interface UserInputService extends Instance {
 	/**
 	 * This property describes whether the user is using a virtual reality (VR) device.
 	 * 
-	 * If a VR device is enabled, you can interact with its location and movement through functions such as `UserInputService/GetUserCFrame``. You can also react to VR device movement using the`UserInputService/UserCFrameChanged\` event.
+	 * If a VR device is enabled, you can interact with its location and movement through functions such as `UserInputService/GetUserCFrame``. You can also react to VR device movement using the` UserInputService/UserCFrameChanged\` event.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * local isUsingVR = userInputService.VREnabled
@@ -30320,7 +29843,6 @@ interface UserInputService extends Instance {
 	 * else
 	 *     print("User is not using a VR headset!")
 	 * end
-	 * ``` 
 	 * 
 	 * As [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) isclient-side only, this property can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
@@ -30366,10 +29888,8 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the following code snippet retrieves the connected gamepads and stores them in a variable named _connectedGamepads_.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * local connectedGamepads = userInputService:GetConnectedGamepads()
-	 * ``` 
 	 * 
 	 * To check if a specific gamepad is connected, use [UserInputService:GetGamepadConnected](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GetGamepadConnected).
 	 * 
@@ -30580,12 +30100,10 @@ interface UserInputService extends Instance {
 	 * Usage
 	 * -----
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * local textLabel = script.Parent
 	 * local mapKey = Enum.KeyCode.M
 	 * textLabel.Text = "Press " .. UserInputService:GetStringForKeyCode(mapKey) .. " to open the map!"
-	 * ``` 
 	 * 
 	 * Examples on QWERTY Keyboard
 	 * ---------------------------
@@ -30669,12 +30187,10 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the code snippet below prints the CFrame of the user's VR headset.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * local cframe = userInputService:GetUserCFrame(Enum.UserCFrame.Head)
 	 * 
 	 * print(cframe)
-	 * ``` 
 	 * 
 	 * By using the function, players can implement features such as re-positioning the user's in-game character corresponding to the location of a connected VR device. This can be done by changing the _CFrame_ of the user's in-game body parts to match the _CFrame_ of the specified VR device using [UserCFrame](https://developer.roblox.com/en-us/api-reference/enum/UserCFrame) and [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) value arguments passed by the event.
 	 * 
@@ -30736,14 +30252,12 @@ interface UserInputService extends Instance {
 	 * 
 	 * This can be used to check whether a specific button, such as A, is being held down. For example:
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * local button = Enum.KeyCode.ButtonA
 	 * local gamepad = Enum.UserInputType.Gamepad1
 	 * 
 	 * local isButtonHeld = UserInputService:IsGamepadButtonDown(gamepad, button)
-	 * ``` 
 	 * 
 	 * Since [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) is client-side only, this function can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
@@ -30771,11 +30285,9 @@ interface UserInputService extends Instance {
 	 * 
 	 * This can be used to check if a specific key, such as the space bar, is being pressed. For example:
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * local spaceHeld = UserInputService:IsKeyDown(Enum.KeyCode.Space)
-	 * ``` 
 	 * 
 	 * To retrieve a list of all keys pressed by the user, use the [UserInputService:GetKeysPressed](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GetKeysPressed) function.
 	 * 
@@ -30792,11 +30304,9 @@ interface UserInputService extends Instance {
 	 * 
 	 * The mouse button checked depends on the [UserInputType](https://developer.roblox.com/en-us/api-reference/enum/UserInputType) value passed to the function as an argument. For example:
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 *     
 	 * local pressed = UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)
-	 * ``` 
 	 * 
 	 * Since [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) is client-side only, this function can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 */
@@ -30808,15 +30318,13 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the code below checks if the gamepad1 is as a navigation gamepad:
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * if (userInputService:IsNavigationGamepad(UserInputType.Gamepad1) then
-	 *     print("Gamepad is a navigation gamepad!")
+	 * 	print("Gamepad is a navigation gamepad!")
 	 * else
-	 *     print("Gamepad is not a navigation gamepad!")
+	 * 	print("Gamepad is not a navigation gamepad!")
 	 * end
-	 * ``` 
 	 * 
 	 * A list of all connected gamepads, regardless of navigation can be retrieved using\`UserInput/GetConnectedGamepads.
 	 * 
@@ -30922,15 +30430,13 @@ interface UserInputService extends Instance {
 	 * 
 	 * The following example demonstrates a usage example of a tracking when a gamepad is connected to the client.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * local function GamepadConnected(gamepad)
-	 *     print("Player has plugged controller: " .. tostring(gamepad))
+	 * 	print("Player has plugged controller: " .. tostring(gamepad))
 	 * end)
 	 * 
 	 * userInputService.GamepadConnected:Connect(GamepadDisconnected)
-	 * ``` 
 	 * 
 	 * If you want to see which devices are connected, you can use the [UserInputService:GetConnectedGamepads](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GetConnectedGamepads) function.
 	 * 
@@ -30960,15 +30466,13 @@ interface UserInputService extends Instance {
 	 * 
 	 * The following example demonstrates a usage example of a tracking when a gamepad is disconnected from the client.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * local function GamepadDisconnected(gamepad)
-	 *     print("Player has unplugged controller: " .. tostring(gamepad))
+	 * 	print("Player has unplugged controller: " .. tostring(gamepad))
 	 * end)
 	 * 
 	 * userInputService.GamepadDisconnected:Connect(GamepadDisconnected)
-	 * ``` 
 	 * 
 	 * As this event fires locally, it can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
@@ -31032,7 +30536,6 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the code below prints “Jump” every time the player sends a jump request.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * function jumpRequest()
@@ -31040,7 +30543,6 @@ interface UserInputService extends Instance {
 	 * end
 	 * 
 	 * userInputService.JumpRequest:Connect(JumpRequest)
-	 * ``` 
 	 * 
 	 * Since this event fires multiple times for a single jump request, using a [debounce](https://developer.roblox.com/articles/Debounce) is suggested.
 	 * 
@@ -31066,15 +30568,13 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the code below prints the the name of the TextBox losing focus when the event fires.
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * function TextBoxFocusReleased(textbox)
-	 *     print(textbox.Name)
+	 * 	print(textbox.Name)
 	 * end
 	 * 
 	 * UserInputService.TextBoxFocusReleased:Connect(TextBoxFocusReleased)
-	 * ``` 
 	 * 
 	 * It can be used alongside [UserInputService.TextBoxFocused](https://developer.roblox.com/en-us/api-reference/event/UserInputService/TextBoxFocused) to track when a TextBox gains and loses focus.
 	 * 
@@ -31093,15 +30593,13 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the code below prints the the name of the TextBox focused when the event fires.
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * function TextBoxFocused(textbox)
-	 *     print(textbox.Name)
+	 * 	print(textbox.Name)
 	 * end)
 	 * 
 	 * UserInputService.TextBoxFocused:Connect(TextBoxFocused)
-	 * ``` 
 	 * 
 	 * It can be used alongside `UserInputService/FocusReleased` to track when a text box gains and loses focus.
 	 * 
@@ -31122,15 +30620,13 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the code below prints the screen position where the user stops touching the screen.
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * function TouchEnded(touch, gameProcessedEvent)
-	 *     print("Touch ended at "..tostring(touch.Position))
+	 * 	print("Touch ended at "..tostring(touch.Position))
 	 * end
 	 * 
 	 * UserInputService.TouchEnded:Connect(TouchEnded)
-	 * ``` 
 	 * 
 	 * The touch input object is the same input object throughout the lifetime of the touch. So comparing [InputObjects](https://developer.roblox.com/en-us/api-reference/class/InputObject) when they are touch objects is valid to determine if it is the same finger.
 	 * 
@@ -31161,15 +30657,13 @@ interface UserInputService extends Instance {
 	 * 
 	 * The example below prints the [state](https://developer.roblox.com/en-us/api-reference/enum/UserInputState) of the long press when the user user holds at least one finger for a short amount of time on the same screen position. Possible states include: _Begin_, _Change_, _End_, _Cancel_, and _None_.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * function TouchLongPress(TouchPositions, state, gameProcessedEvent)
-	 *     print("Long press event fired. State of press: "..tostring(state))
+	 * 	print("Long press event fired. State of press: "..tostring(state))
 	 * end
 	 * 
 	 * userInputService.TouchLongPress:Connect(TouchLongPress)
-	 * ``` 
 	 * 
 	 * To check if a user's device is TouchEnabled, and that touch events will fire, see[UserInputService.TouchEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/TouchEnabled).
 	 * 
@@ -31202,16 +30696,14 @@ interface UserInputService extends Instance {
 	 * 
 	 * The code below prints “Touch moved from” the previous Vector2 position "to " the new Vector2 position of the user's touch on a TouchEnabled device.
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * function onTouchMoved(touch, gameProcessedEvent)
-	 *     local oldPosition = touch.Position - touch.Delta
-	 *     print("Touch moved from " .. tostring(oldPosition) .. "to " .. tostring(touch.Position))
+	 * 	local oldPosition = touch.Position - touch.Delta
+	 * 	print("Touch moved from " .. tostring(oldPosition) .. "to " .. tostring(touch.Position))
 	 * end
 	 * 
 	 * UserInputService.TouchMoved:Connect(onTouchMoved)
-	 * ``` 
 	 * 
 	 * It can be paired with [UserInputService.TouchStarted](https://developer.roblox.com/en-us/api-reference/event/UserInputService/TouchStarted) and [UserInputService.TouchEnded](https://developer.roblox.com/en-us/api-reference/event/UserInputService/TouchEnded) to determine when a user starts touching the screen, how their finger moves while touching it, and when the they stop touching the screen.
 	 * 
@@ -31242,13 +30734,11 @@ interface UserInputService extends Instance {
 	 * 
 	 * The snippet below prints “Speed of touch drag” followed by the velocity of the user's touch when the user drags their finger on the screen.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * userInputService.TouchPan:Connect(function(touchPositions, totalTranslation, velocity, state, gameProcessedEvent)
-	 *     print("Speed of touch drag: "..tostring(velocity))
+	 * 	print("Speed of touch drag: "..tostring(velocity))
 	 * end)
-	 * ``` 
 	 * 
 	 * Take a look at another useful [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) function here [UserInputService.TouchRotate](https://developer.roblox.com/en-us/api-reference/event/UserInputService/TouchRotate).
 	 * 
@@ -31283,13 +30773,11 @@ interface UserInputService extends Instance {
 	 * 
 	 * For instance, the snippet below prints how much the camera zoom scale has changed since the beginning of the touch pinch,
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * UserInputService.TouchPinch:Connect(function(touchPositions, scale, velocity, state, gameProcessedEvent)
-	 *     print("Scale difference since beginning of pinch: "..tostring(scale))
+	 * 	print("Scale difference since beginning of pinch: "..tostring(scale))
 	 * end)
-	 * ``` 
 	 * 
 	 * To check if a user's device is TouchEnabled, and that touch events will fire, see [UserInputService.TouchEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/TouchEnabled).
 	 * 
@@ -31326,13 +30814,11 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the following code prints how much the camera has rotated since the beginning of the touch rotation.
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * UserInputService.TouchRotate:Connect(function(touchPositions, rotation, velocity, state, gameProcessedEvent)
-	 *     print("Camera has rotated "..tostring(rotation).." degrees!")
+	 * 	print("Camera has rotated "..tostring(rotation).." degrees!")
 	 * end)
-	 * ``` 
 	 * 
 	 * To check if a user's device is TouchEnabled, and that touch events will fire, see [UserInputService.TouchEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/TouchEnabled).
 	 * 
@@ -31479,13 +30965,11 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the code below prints _“Window focus released”_ whenever the Roblox client loses focus.
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * UserInputService.WindowFocusReleased:Connect(function()
-	 *     print("Window focus released")
+	 * 	print("Window focus released")
 	 * end)
-	 * ``` 
 	 * 
 	 * This event can be used alongside [UserInputService.WindowFocused](https://developer.roblox.com/en-us/api-reference/event/UserInputService/WindowFocused) to track whether the Roblox client is actively focused on a user's screen.
 	 * 
@@ -31497,13 +30981,11 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the code below prints _“Window focused”_ whenever the Roblox client gains focus.
 	 * 
-	 * ```lua
 	 * local UserInputService = game:GetService("UserInputService")
 	 * 
 	 * UserInputService.WindowFocused:Connect(function()
-	 *     print("Window focused")
+	 * 	print("Window focused")
 	 * end)
-	 * ``` 
 	 * 
 	 * This event can be used alongside [UserInputService.WindowFocusReleased](https://developer.roblox.com/en-us/api-reference/event/UserInputService/WindowFocusReleased) to track whether the Roblox client is actively focused on a user's screen.
 	 * 
@@ -31566,9 +31048,8 @@ interface VRService extends Instance {
 	/**
 	 * This property describes whether the user is using a virtual reality (VR) device.
 	 * 
-	 * If a VR device is enabled, you can interact with its location and movement through functions such as `UserInputService/GetUserCFrame``. You can also react to VR device movement using the`UserInputService/UserCFrameChanged\` event.
+	 * If a VR device is enabled, you can interact with its location and movement through functions such as `UserInputService/GetUserCFrame``. You can also react to VR device movement using the` UserInputService/UserCFrameChanged\` event.
 	 * 
-	 * ```lua
 	 * local userInputService = game:GetService("UserInputService")
 	 * 
 	 * local isUsingVR = userInputService.VREnabled
@@ -31577,7 +31058,6 @@ interface VRService extends Instance {
 	 * else
 	 *     print("User is not using a VR headset!")
 	 * end
-	 * ``` 
 	 * 
 	 * As [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) isclient-side only, this property can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 * 
