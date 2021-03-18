@@ -9133,6 +9133,58 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<OverrideMouseIconBehavior>
 	}
 	export type OverrideMouseIconBehavior = OverrideMouseIconBehavior.None | OverrideMouseIconBehavior.ForceShow | OverrideMouseIconBehavior.ForceHide;
+	export namespace PackagePermission {
+		export interface None {
+			Name: "None";
+			Value: 0;
+			EnumType: EnumType<PackagePermission>;
+		}
+
+		export const None: None;
+
+		export interface NoAccess {
+			Name: "NoAccess";
+			Value: 1;
+			EnumType: EnumType<PackagePermission>;
+		}
+
+		export const NoAccess: NoAccess;
+
+		export interface Revoked {
+			Name: "Revoked";
+			Value: 2;
+			EnumType: EnumType<PackagePermission>;
+		}
+
+		export const Revoked: Revoked;
+
+		export interface UseView {
+			Name: "UseView";
+			Value: 3;
+			EnumType: EnumType<PackagePermission>;
+		}
+
+		export const UseView: UseView;
+
+		export interface Edit {
+			Name: "Edit";
+			Value: 4;
+			EnumType: EnumType<PackagePermission>;
+		}
+
+		export const Edit: Edit;
+
+		export interface Own {
+			Name: "Own";
+			Value: 5;
+			EnumType: EnumType<PackagePermission>;
+		}
+
+		export const Own: Own;
+
+		export function GetEnumItems(this: defined): Array<PackagePermission>
+	}
+	export type PackagePermission = PackagePermission.None | PackagePermission.NoAccess | PackagePermission.Revoked | PackagePermission.UseView | PackagePermission.Edit | PackagePermission.Own;
 	export namespace PacketPriority {
 		export interface IMMEDIATE_PRIORITY {
 			Name: "IMMEDIATE_PRIORITY";

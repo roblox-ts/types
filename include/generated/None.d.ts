@@ -45,6 +45,7 @@ interface Services {
 	PathfindingService: PathfindingService;
 	PhysicsService: PhysicsService;
 	Players: Players;
+	PluginPolicyService: PluginPolicyService;
 	PolicyService: PolicyService;
 	ProximityPromptService: ProximityPromptService;
 	ReplicatedFirst: ReplicatedFirst;
@@ -233,6 +234,7 @@ interface CreatableInstances {
 	Texture: Texture;
 	Tool: Tool;
 	Torque: Torque;
+	TorsionSpringConstraint: TorsionSpringConstraint;
 	Trail: Trail;
 	TremoloSoundEffect: TremoloSoundEffect;
 	TrussPart: TrussPart;
@@ -6194,6 +6196,7 @@ interface HingeConstraint extends Constraint {
 	 * ![Servo](https://developer.roblox.com/assets/blt30faa18cf5f31d5c/HingeConstraintServo.gif)
 	 */
 	ActuatorType: Enum.ActuatorType;
+	AngularResponsiveness: number;
 	/**
 	 * The desired angular speed a [HingeConstraint](https://developer.roblox.com/en-us/api-reference/class/HingeConstraint) with [HingeConstraint.ActuatorType](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/ActuatorType) set to [Servo](https://developer.roblox.com/en-us/api-reference/enum/ActuatorType) will attempt to maintain while rotating towards its [HingeConstraint.TargetAngle](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/TargetAngle). Measured in radians/second.
 	 */
@@ -6441,6 +6444,7 @@ interface SlidingBallConstraint extends Constraint {
 	 * ![Constraint Limits 2](https://developer.roblox.com/assets/blt7eda4750d97b868c/SlidingBallConstraintLimits1.png)
 	 */
 	LimitsEnabled: boolean;
+	LinearResponsiveness: number;
 	/**
 	 * The lower position limit along the x-axis of [Constraint.Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0) for a [SlidingBallConstraint](https://developer.roblox.com/en-us/api-reference/class/SlidingBallConstraint) if [SlidingBallConstraint.LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/SlidingBallConstraint/LimitsEnabled) is true.
 	 */
@@ -6523,6 +6527,7 @@ interface CylindricalConstraint extends SlidingBallConstraint {
 	 * Enables the angular limits around the rotation axis.
 	 */
 	AngularLimitsEnabled: boolean;
+	AngularResponsiveness: number;
 	/**
 	 * Restitution of the two limits, or how elastic they are. Value in \[0, 1\].
 	 */
@@ -6732,6 +6737,51 @@ interface Torque extends Constraint {
 	 * The strength and direction of the torque.
 	 */
 	Torque: Vector3;
+}
+
+interface TorsionSpringConstraint extends Constraint {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TorsionSpringConstraint: unique symbol;
+	/**
+	 * The number of coils in the in-game visual. Value in [0, 8].
+	 */
+	Coils: number;
+	/**
+	 * Current angle between the attachments' secondary axes. Value in [0, inf).
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CurrentAngle: number;
+	/**
+	 * The damping parameter of the spring. The force is scaled based on relative angular velocity. The units of this property are torque / angular velocity. Value in [0, inf).
+	 */
+	Damping: number;
+	LimitEnabled: boolean;
+	/**
+	 * Maximum angle between the attachments' secondary axes. Value in [0, pi).
+	 */
+	MaxAngle: number;
+	/**
+	 * The maximum torque that the spring can apply. Useful to prevent instabilities. The units are mass * studs^2 / second^2. Value in [0, inf).
+	 */
+	MaxTorque: number;
+	/**
+	 * The radius of spring coil visual. Value in [0, inf).
+	 */
+	Radius: number;
+	/**
+	 * Restitution of the limit. Value in [0, 1].
+	 */
+	Restitution: number;
+	/**
+	 * The stiffness parameter of the spring. Torque is scaled based on relative angle between secondary axes. The units of this property are torque / angular distance. Value in [0, inf).
+	 */
+	Stiffness: number;
 }
 
 /** A physics constraint that ensures two axes on two rigid bodies remain perpendicular. An example use of this constraint are power transmission between the transmission and rear drive shafts of rear-wheel drive cars, robotics, etc.
@@ -19501,6 +19551,8 @@ interface PVInstance extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_PVInstance: unique symbol;
+	GetPivot(this: PVInstance): CFrame;
+	PivotTo(this: PVInstance, targetCFrame: CFrame): void;
 }
 
 /** BasePart is an abstract base class for in-world objects that render and are physically simulated while in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). There are several implementations of BasePart, the most common is [Part](https://developer.roblox.com/en-us/api-reference/class/Part), a simple 6-face rectangular prism. Others include [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation), [WedgePart](https://developer.roblox.com/en-us/api-reference/class/WedgePart) and the singleton [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) object within the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). Most of the time, when documentation refers to a part, most BasePart implementations will work and not just [Part](https://developer.roblox.com/en-us/api-reference/class/Part).
@@ -19874,6 +19926,7 @@ interface BasePart extends PVInstance {
 	 * Tags: NotReplicated
 	 */
 	Orientation: Vector3;
+	PivotOffset: CFrame;
 	/**
 	 * The Position property describes the coordinates of a [part](https://developer.roblox.com/en-us/api-reference/class/BasePart) using a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3). It reflects the position of the part's [BasePart.CFrame](https://developer.roblox.com/en-us/api-reference/property/BasePart/CFrame), however it can also be set.
 	 * 
@@ -21229,6 +21282,7 @@ interface Model extends PVInstance {
 	 * When dealing with models full of unanchored parts connected with joints such as [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld)s or [Motor6D](https://developer.roblox.com/en-us/api-reference/class/Motor6D)s it is best practice to set the PrimaryPart to the root part of the assembly. Giving the example of a Player Character, this is the HumanoidRootPart.
 	 */
 	PrimaryPart: BasePart | undefined;
+	WorldPivot: CFrame;
 	/**
 	 * Breaks connections between `BaseParts`, including surface connections with any adjacent parts, [WeldConstraint](https://developer.roblox.com/en-us/api-reference/class/WeldConstraint)s, and all [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld)s and other [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance)s.
 	 * 
@@ -21570,6 +21624,9 @@ interface WorldRoot extends Model {
 		whitelistDescendantsTable: Array<Instance>,
 		maxParts?: number,
 	): Array<BasePart>;
+	GetPartBoundsInBox(this: WorldRoot, cframe: CFrame, size: Vector3, overlapParams?: OverlapParams): Array<Instance>;
+	GetPartBoundsInRadius(this: WorldRoot, position: Vector3, radius: number, overlapParams?: OverlapParams): Array<Instance>;
+	GetPartsInPart(this: WorldRoot, part: BasePart, overlapParams?: OverlapParams): Array<Instance>;
 	/**
 	 * **IsRegion3Empty** returns a bool indicating whether there are no [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s within the given [Region3](https://developer.roblox.com/en-us/api-reference/datatype/Region3).
 	 * 
@@ -23976,6 +24033,17 @@ interface PluginManagerInterface extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_PluginManagerInterface: unique symbol;
+}
+
+interface PluginPolicyService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PluginPolicyService: unique symbol;
 }
 
 /** Important for getting your game to international audiences, [PolicyService](https://developer.roblox.com/en-us/api-reference/class/PolicyService) helps you build gameplay components that can be made compliant with various national regulations for multiple countries. This service is used to query information regarding policy compliance for players around the world based on age range, location, and platform type. */
