@@ -3236,6 +3236,10 @@ interface StudioService extends Instance {
 	 */
 	readonly InstalledPluginData: string;
 	/**
+	 * Tags: Hidden, ReadOnly, NotReplicated
+	 */
+	readonly PivotSnapToGeometry: boolean;
+	/**
 	 * **RotateIncrement** determines the angle in degrees by which studio's rotation tool will rotate selected objects each tick. This is set by the user Model tab under the “Snap to Grid” section.
 	 * 
 	 * ![Studio "snap to grid" UI](https://developer.roblox.com/assets/blt8ea442f1baf0663d/SnapToGrid.jpg)
@@ -3393,7 +3397,6 @@ interface StudioService extends Instance {
 	 * Tags: Yields
 	 */
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
-	readonly DEPRECATED_OnPublishPlaceToRoblox: RBXScriptSignal<() => void>;
 	readonly GameNameUpdated: RBXScriptSignal<(name: string) => void>;
 	readonly GamePublishFinished: RBXScriptSignal<(success: boolean, gameId: number) => void>;
 	readonly OnConvertToPackageResult: RBXScriptSignal<(isSuccessful: boolean, errorMessage: string) => void>;
