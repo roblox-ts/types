@@ -1931,12 +1931,7 @@ declare namespace utf8 {
 	/** Returns the position (in bytes) where the encoding of the n-th codepoint of s (counting from byte position i) starts. A negative n gets characters before position i. The default for i is 0 when n is non-negative and #s + 1 otherwise, so that utf8.offset(s, -n) gets the offset of the n-th character from the end of the string. If the specified character is neither in the subject nor right after its end, the function returns nil. */
 	function offset(s: string, n: number, i?: number): number | undefined;
 	/** Returns an iterator function that will iterate the grapheme clusters of the string. */
-	function graphemes(
-		this: typeof utf8,
-		s: string,
-		i?: number,
-		j?: number,
-	): IterableFunction<LuaTuple<[number, number]>>;
+	function graphemes(s: string, i?: number, j?: number): IterableFunction<LuaTuple<[number, number]>>;
 	/** Converts the input string to Normal Form C, which tries to convert decomposed characters into composed characters. */
 	function nfcnormalize(str: string): string;
 	/** Converts the input string to Normal Form D, which tries to break up composed characters into decomposed characters. */
