@@ -11606,9 +11606,65 @@ declare namespace Enum {
 
 		export const Bracket: Bracket;
 
+		export interface MenuPrimaryText {
+			Name: "MenuPrimaryText";
+			Value: 30;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuPrimaryText: MenuPrimaryText;
+
+		export interface MenuSecondaryText {
+			Name: "MenuSecondaryText";
+			Value: 31;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuSecondaryText: MenuSecondaryText;
+
+		export interface MenuSelectedText {
+			Name: "MenuSelectedText";
+			Value: 32;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuSelectedText: MenuSelectedText;
+
+		export interface MenuBackground {
+			Name: "MenuBackground";
+			Value: 33;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuBackground: MenuBackground;
+
+		export interface MenuSelectedBackground {
+			Name: "MenuSelectedBackground";
+			Value: 34;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuSelectedBackground: MenuSelectedBackground;
+
+		export interface MenuScrollbarBackground {
+			Name: "MenuScrollbarBackground";
+			Value: 35;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuScrollbarBackground: MenuScrollbarBackground;
+
+		export interface MenuScrollbarHandle {
+			Name: "MenuScrollbarHandle";
+			Value: 36;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuScrollbarHandle: MenuScrollbarHandle;
+
 		export function GetEnumItems(this: defined): Array<StudioScriptEditorColorCategories>
 	}
-	export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket;
+	export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket | StudioScriptEditorColorCategories.MenuPrimaryText | StudioScriptEditorColorCategories.MenuSecondaryText | StudioScriptEditorColorCategories.MenuSelectedText | StudioScriptEditorColorCategories.MenuBackground | StudioScriptEditorColorCategories.MenuSelectedBackground | StudioScriptEditorColorCategories.MenuScrollbarBackground | StudioScriptEditorColorCategories.MenuScrollbarHandle;
 	export namespace StudioScriptEditorColorPresets {
 		export interface RobloxDefault {
 			Name: "RobloxDefault";
