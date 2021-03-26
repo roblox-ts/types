@@ -3025,6 +3025,10 @@ interface Studio extends Instance {
 	/**
 	 * Tags: NotReplicated
 	 */
+	["Menu Item Background Color"]: Color3;
+	/**
+	 * Tags: NotReplicated
+	 */
 	["Method Color"]: Color3;
 	/**
 	 * Tags: NotReplicated
@@ -3060,6 +3064,10 @@ interface Studio extends Instance {
 	/**
 	 * Tags: NotReplicated
 	 */
+	["Primary Text Color"]: Color3;
+	/**
+	 * Tags: NotReplicated
+	 */
 	["Property Color"]: Color3;
 	["Render Throttle Percentage"]: number;
 	["Respect Studio shortcuts when game has focus"]: boolean;
@@ -3071,13 +3079,33 @@ interface Studio extends Instance {
 	RuntimeUndoBehavior: Enum.RuntimeUndoBehavior;
 	["Script Editor Color Preset"]: Enum.StudioScriptEditorColorPresets;
 	/**
+	 * Tags: NotReplicated
+	 */
+	["Script Editor Scrollbar Background Color"]: Color3;
+	/**
+	 * Tags: NotReplicated
+	 */
+	["Script Editor Scrollbar Handle Color"]: Color3;
+	/**
 	 * The time (in seconds) a script can wait to be resumed before timing out.
 	 */
 	ScriptTimeoutLength: number;
 	["Scroll Past Last Line"]: boolean;
 	["Search Content For Core Scripts"]: boolean;
+	/**
+	 * Tags: NotReplicated
+	 */
+	["Secondary Text Color"]: Color3;
 	["Select Color"]: Color3;
 	["Select/Hover Color"]: Color3;
+	/**
+	 * Tags: NotReplicated
+	 */
+	["Selected Menu Item Background Color"]: Color3;
+	/**
+	 * Tags: NotReplicated
+	 */
+	["Selected Text Color"]: Color3;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -3089,6 +3117,7 @@ interface Studio extends Instance {
 	["Server Audio Behavior"]: Enum.ServerAudioBehavior;
 	["Show Core GUI in Explorer while Playing"]: boolean;
 	["Show CorePackages"]: boolean;
+	["Show Deployment Warnings"]: boolean;
 	["Show Diagnostics Bar"]: boolean;
 	["Show FileSyncService"]: boolean;
 	["Show Hidden Objects in Explorer"]: boolean;
@@ -3408,6 +3437,7 @@ interface StudioService extends Instance {
 	readonly OnPluginInstalledFromWeb: RBXScriptSignal<(pluginId: string) => void>;
 	readonly OnPublishAsPlugin: RBXScriptSignal<(instances: Array<Instance>) => void>;
 	readonly OnPublishPlaceToRoblox: RBXScriptSignal<(isOverwritePublish: boolean) => void>;
+	readonly OnSaveOrPublishPlaceToRoblox: RBXScriptSignal<(showGameSelect: boolean, isPublish: boolean) => void>;
 	readonly OnSaveToRoblox: RBXScriptSignal<(instances: Array<Instance>) => void>;
 	readonly PromptTransformPluginCheckEnable: RBXScriptSignal<() => void>;
 }

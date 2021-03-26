@@ -62,6 +62,7 @@ interface Services {
 	StarterPack: StarterPack;
 	StarterPlayer: StarterPlayer;
 	Stats: Stats;
+	StudioDeviceEmulatorService: StudioDeviceEmulatorService;
 	Teams: Teams;
 	TeleportService: TeleportService;
 	TextService: TextService;
@@ -27244,6 +27245,17 @@ interface Stats extends Instance {
 	 * Returns the total amount of memory being consumed by the current game session, in megabytes.
 	 */
 	GetTotalMemoryUsageMb(this: Stats): number;
+}
+
+interface StudioDeviceEmulatorService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StudioDeviceEmulatorService: unique symbol;
 }
 
 /** SurfaceAppearance objects allow developers to override the appearance of a [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) with advanced graphics options. Most notably, a SurfaceAppearance can apply a set of PBR textures to a mesh.
