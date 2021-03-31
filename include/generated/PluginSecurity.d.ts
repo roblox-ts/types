@@ -3191,10 +3191,6 @@ interface StudioData extends Instance {
 	 */
 	readonly EnableScriptCollabByDefaultOnLoad: boolean;
 	/**
-	 * Tags: Hidden
-	 */
-	readonly EnableScriptCollabOnLoad: boolean;
-	/**
 	 * Tags: Hidden, NotReplicated
 	 */
 	readonly SrcPlaceId: number;
@@ -3345,6 +3341,8 @@ interface StudioService extends Instance {
 	ConvertToPackageUpload(this: StudioService, uploadUrl: string): void;
 	CopyToClipboard(this: StudioService, stringToCopy: string): void;
 	EmitPlacePublishedSignal(this: StudioService): void;
+	GetBadgeConfigureUrl(this: StudioService, badgeId: number): string;
+	GetBadgeUploadUrl(this: StudioService): string;
 	/**
 	 * **GetClassIcon** provides a dictionary that allows the display of a class' Explorer window icon, e.g. calling this function with “Part” returns property values that display the part icon from the Explorer window.
 	 * 
