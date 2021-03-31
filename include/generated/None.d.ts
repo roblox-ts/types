@@ -215,6 +215,7 @@ interface CreatableInstances {
 	SoundGroup: SoundGroup;
 	Sparkles: Sparkles;
 	SpawnLocation: SpawnLocation;
+	Speaker: Speaker;
 	SpecialMesh: SpecialMesh;
 	SphereHandleAdornment: SphereHandleAdornment;
 	SpotLight: SpotLight;
@@ -26811,6 +26812,33 @@ interface Sparkles extends Instance {
 	 * This property functions identically to [Sparkles.Color](https://developer.roblox.com/en-us/api-reference/property/Sparkles/Color).
 	 */
 	SparkleColor: Color3;
+}
+
+interface Speaker extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Speaker: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly PlaybackLoudness: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RollOffMaxDistance: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RollOffMinDistance: number;
+	RollOffMode: Enum.RollOffMode;
+	SoundGroup: SoundGroup | undefined;
+	Source: Instance | undefined;
+	Volume: number;
 }
 
 /** StarterGear is a container that is automatically inserted into each [Player](https://developer.roblox.com/en-us/api-reference/class/Player) when the player joins the game. When a player spawns, the contents of that player's StarterGear is copied into the player's [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). Additionally, when a player connects to a game that permits gear, all of the appropriate gear [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) objects that the player owns are inserted into that player's StarterGear.
