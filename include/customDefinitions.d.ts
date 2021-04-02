@@ -225,7 +225,7 @@ interface GlobalDataStore extends Instance {
 	GetAsync<T>(this: GlobalDataStore, key: string): T | undefined;
 	IncrementAsync(this: GlobalDataStore, key: string, delta?: number): number;
 	RemoveAsync<T>(this: GlobalDataStore, key: string): T | undefined;
-	SetAsync(this: GlobalDataStore, key: string, value?: any): void;
+	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
 	UpdateAsync<O, R>(
 		this: GlobalDataStore,
 		key: string,
@@ -490,7 +490,7 @@ interface MessagingService extends Instance {
 	SubscribeAsync(
 		this: MessagingService,
 		topic: string,
-		callback: (Data: any, Sent: number) => void,
+		callback: (Data: unknown, Sent: number) => void,
 	): RBXScriptConnection;
 }
 
@@ -668,9 +668,9 @@ interface RunService extends Instance {
 }
 
 interface ScriptDebugger extends Instance {
-	GetGlobals(this: ScriptDebugger): Map<string, any>;
-	GetLocals(this: ScriptDebugger, stackFrame?: number): Map<string, any>;
-	GetUpvalues(this: ScriptDebugger, stackFrame?: number): Map<string, any>;
+	GetGlobals(this: ScriptDebugger): Map<string, unknown>;
+	GetLocals(this: ScriptDebugger, stackFrame?: number): Map<string, unknown>;
+	GetUpvalues(this: ScriptDebugger, stackFrame?: number): Map<string, unknown>;
 }
 
 /** @rbxts server */
@@ -927,9 +927,9 @@ interface ValueBase extends Instance {
 
 interface Workspace extends WorldRoot {
 	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
-	readonly BreakJoints: any;
+	readonly BreakJoints: never;
 	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
-	readonly MakeJoints: any;
+	readonly MakeJoints: never;
 	Terrain: Terrain;
 }
 

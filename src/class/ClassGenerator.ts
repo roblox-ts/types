@@ -360,7 +360,7 @@ const VALUE_TYPE_MAP = new Map<string, string | null>([
 	["ProtectedString", "string"],
 	["Rect2D", "Rect"],
 	["Tuple", "Array<any>"],
-	["Variant", "any"],
+	["Variant", "unknown"],
 ]);
 
 const PROP_TYPE_MAP = new Map<string, string>();
