@@ -1148,7 +1148,7 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * Note, this function cannot be used by scripts and will only function in plugins.
 	 */
-	readonly BreakJoints: any;
+	readonly BreakJoints: never;
 	/**
 	 * **Deprecated**
 	 * 
@@ -1170,7 +1170,7 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * Joints are broken if enough force is applied to them due to an [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion), unless a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField) object is parented to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or ancestor [Model](https://developer.roblox.com/en-us/api-reference/class/Model). For this reason, they are often used to make simple destructible buildings and other models.
 	 */
-	readonly MakeJoints: any;
+	readonly MakeJoints: never;
 	/**
 	 * Positions and zooms the [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera) to show the extent of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s currently in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace).
 	 * 
@@ -1640,7 +1640,7 @@ interface Plugin extends Instance {
 	/**
 	 * This member is for a feature that is not yet released.
 	 */
-	GetItem(this: Plugin, key: string, defaultValue?: any): unknown;
+	GetItem(this: Plugin, key: string, defaultValue: unknown): unknown;
 	/**
 	 * Returns the [JointCreationMode](https://developer.roblox.com/en-us/api-reference/enum/JointCreationMode) the user has set in studio under the Model tab.
 	 */
@@ -1726,11 +1726,11 @@ interface Plugin extends Instance {
 	/**
 	 * This member is for a feature that is not yet released.
 	 */
-	SetItem(this: Plugin, key: string, value?: any): void;
+	SetItem(this: Plugin, key: string, value: unknown): void;
 	/**
 	 * Stores a given value for later use under the given key. The value will persist even after studio is closed.
 	 */
-	SetSetting(this: Plugin, key: string, value?: any): void;
+	SetSetting(this: Plugin, key: string, value: unknown): void;
 	StartDecalDrag(this: Plugin, decal: Decal): void;
 	/**
 	 * **StartDrag** initiates a drag action using a dictionary of parameters. The parameters are as follows:
@@ -2556,11 +2556,11 @@ interface ScriptDebugger extends Instance {
 	/**
 	 * Returns a dictionary of all variables that are visible to the script's global stack, where the keys are the names of the variables, and the values are the actual values of the variables.
 	 */
-	GetGlobals(this: ScriptDebugger): Map<string, any>;
+	GetGlobals(this: ScriptDebugger): Map<string, unknown>;
 	/**
 	 * Returns a dictionary of all local variables in the specified stack, where the keys are the names of the variables, and the values are the actual values of the variables.
 	 */
-	GetLocals(this: ScriptDebugger, stackFrame?: number): Map<string, any>;
+	GetLocals(this: ScriptDebugger, stackFrame?: number): Map<string, unknown>;
 	/**
 	 * Returns an array of all active call stacks in the script.
 	 */
@@ -2568,7 +2568,7 @@ interface ScriptDebugger extends Instance {
 	/**
 	 * Returns a dictionary of all upvalues present in the stack specified.
 	 */
-	GetUpvalues(this: ScriptDebugger, stackFrame?: number): Map<string, any>;
+	GetUpvalues(this: ScriptDebugger, stackFrame?: number): Map<string, unknown>;
 	/**
 	 * Returns the current value of a variable being watched by a [DebuggerWatch](https://developer.roblox.com/en-us/api-reference/class/DebuggerWatch).
 	 */
@@ -2584,15 +2584,15 @@ interface ScriptDebugger extends Instance {
 	/**
 	 * Sets the value of the variable _name_ as _value_ in the script's main stack.
 	 */
-	SetGlobal(this: ScriptDebugger, name: string, value?: any, stackFrame?: number): void;
+	SetGlobal(this: ScriptDebugger, name: string, value: unknown, stackFrame: number): void;
 	/**
 	 * Sets the value of the variable _name_ as _value_ in the stack specified.
 	 */
-	SetLocal(this: ScriptDebugger, name: string, value?: any, stackFrame?: number): void;
+	SetLocal(this: ScriptDebugger, name: string, value: unknown, stackFrame?: number): void;
 	/**
 	 * Sets the value of the upvalue _name_ as _value_ in the stack specified.
 	 */
-	SetUpvalue(this: ScriptDebugger, name: string, value?: any, stackFrame?: number): void;
+	SetUpvalue(this: ScriptDebugger, name: string, value: unknown, stackFrame?: number): void;
 	/**
 	 * Fired when a breakpoint is added to the script.
 	 */

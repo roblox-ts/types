@@ -1906,7 +1906,7 @@ Total time since the software was initialized (in seconds) */
 declare function wait(seconds?: number): LuaTuple<[number, number]>;
 /** Behaves identically to Lua’s print function, except the output is styled as a warning, with yellow text and a timestamp.
 This function accepts any number of arguments, and will attempt to convert them into strings which will then be joined together with spaces between them. */
-declare function warn(...params: Array<any>): void;
+declare function warn(...params: Array<unknown>): void;
 
 // math functions
 declare namespace math {
@@ -2003,7 +2003,7 @@ interface CheckablePrimitives {
 }
 
 /**  Returns the type of its only argument, coded as a string. */
-declare function type(value: any): keyof CheckablePrimitives;
+declare function type(value: unknown): keyof CheckablePrimitives;
 
 /** The strings which can be returned by typeOf and their corresponding types */
 interface CheckableTypes extends CheckablePrimitives {
@@ -2044,7 +2044,7 @@ interface CheckableTypes extends CheckablePrimitives {
 }
 
 /** Returns the type of the given object as a string. This function works similarly to Lua’s native type function, with the exceptions that Roblox-defined data types like Vector3 and CFrame return their respective data types as strings. */
-declare function typeOf(value: any): keyof CheckableTypes;
+declare function typeOf(value: unknown): keyof CheckableTypes;
 
 /**
  * Returns true if `typeof(value) == type`, otherwise false.
@@ -2056,7 +2056,7 @@ if (typeIs(v, "Vector3")) {
 }
 ```
  **/
-declare function typeIs<T extends keyof CheckableTypes>(value: any, type: T): value is CheckableTypes[T];
+declare function typeIs<T extends keyof CheckableTypes>(value: unknown, type: T): value is CheckableTypes[T];
 
 /**
  * Calls the function func with the given arguments in protected mode.

@@ -126,8 +126,8 @@ declare function xpcall<T extends Array<any>, U>(
 >;
 
 interface LuaMetatable<T> {
-	__index?: (self: T, index: any) => void;
-	__newindex?: (self: T, index: any, value: any) => void;
+	__index?: (self: T, index: unknown) => void;
+	__newindex?: (self: T, index: unknown, value: unknown) => void;
 	__add?: (self: T, other: T) => T;
 	__sub?: (self: T, other: T) => T;
 	__mul?: (self: T, other: T) => T;
@@ -138,8 +138,8 @@ interface LuaMetatable<T> {
 	__eq?: (self: T, other: T) => boolean;
 	__lt?: (self: T, other: T) => boolean;
 	__le?: (self: T, other: T) => boolean;
-	__call?: (self: T, ...args: Array<any>) => void;
-	__concat?: (self: T, ...args: Array<any>) => string;
+	__call?: (self: T, ...args: Array<unknown>) => void;
+	__concat?: (self: T, ...args: Array<unknown>) => string;
 	__tostring?: (self: T) => string;
 	__len?: (self: T) => number;
 	__mode?: "k" | "v" | "kv";

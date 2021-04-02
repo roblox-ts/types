@@ -823,7 +823,7 @@ interface Instance {
 	 * *   [Instance.AttributeChanged](https://developer.roblox.com/en-us/api-reference/event/Instance/AttributeChanged), fires whenever an attribute is changed on the instance
 	 * *   [Instance:GetAttributeChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetAttributeChangedSignal), returns an event that fires when the given attribute changes
 	 */
-	SetAttribute(this: Instance, attribute: string, value?: any): void;
+	SetAttribute(this: Instance, attribute: string, value: unknown): void;
 	/**
 	 * Returns the child of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) with the given name. If the child does not exist, it will yield the current thread until it does.
 	 * 
@@ -1136,7 +1136,7 @@ interface AnalyticsService extends Instance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	FireEvent(this: AnalyticsService, category: string, value?: any): void;
+	FireEvent(this: AnalyticsService, category: string, value: unknown): void;
 	/**
 	 * This function triggers an event used to track player actions pertaining to the in-game economy.
 	 * 
@@ -5564,7 +5564,7 @@ interface Chat extends Instance {
 	 * 
 	 * *   Developers who are interested interested in configuring their games' chat system even further should take a look at the `/articles/Lua Chat System|Lua Chat System|Lua Chat System` article
 	 */
-	SetBubbleChatSettings(this: Chat, settings?: any): void;
+	SetBubbleChatSettings(this: Chat, settings: unknown): void;
 	/**
 	 * Will return false if the player with the specified [Player.UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) is not allowed to chat because of their account settings.
 	 * Tags: Yields
@@ -8680,7 +8680,7 @@ interface GlobalDataStore extends Instance {
 	 * See the `Articles/Data store|Data Stores` article for an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	SetAsync(this: GlobalDataStore, key: string, value?: any): void;
+	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
 	/**
 	 * This function retrieves the value of a key from a data store and updates it with a new value. Since this function validates the data, it should be used in favor of `GlobalDataStore/SetAsync|SetAsync()` when there's a chance that more than one server can edit the same data at the same time.
 	 * 
@@ -12075,7 +12075,7 @@ interface HttpService extends Instance {
 	 * 
 	 * This method can be used regardless of whether HTTP Requests are [enabled](https://developer.roblox.com/en-us/api-reference/property/HttpService/HttpEnabled).
 	 */
-	JSONEncode(this: HttpService, input?: any): string;
+	JSONEncode(this: HttpService, input: unknown): string;
 	/**
 	 * The UrlEncode function [percent-encodes](https://en.wikipedia.org/wiki/Percent-encoding) a given string so that reserved characters properly encoded with '%' and two hexadecimal characters.
 	 * 
@@ -18964,7 +18964,7 @@ interface MessagingService extends Instance {
 	 * *   [MessagingService:SubscribeAsync](https://developer.roblox.com/en-us/api-reference/function/MessagingService/SubscribeAsync), begins listening to the given topic
 	 * Tags: Yields
 	 */
-	PublishAsync(this: MessagingService, topic: string, message?: any): void;
+	PublishAsync(this: MessagingService, topic: string, message: unknown): void;
 	/**
 	 * This function registers a callback to begin listening to the given topic. The callback is invoked when a topic receives a message. It can be called multiple times for the same topic.
 	 * 
@@ -18999,7 +18999,7 @@ interface MessagingService extends Instance {
 	SubscribeAsync(
 		this: MessagingService,
 		topic: string,
-		callback: (Data: any, Sent: number) => void,
+		callback: (Data: unknown, Sent: number) => void,
 	): RBXScriptConnection;
 }
 
@@ -21739,9 +21739,9 @@ interface Workspace extends WorldRoot {
 	 */
 	readonly _nominal_Workspace: unique symbol;
 	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
-	readonly BreakJoints: any;
+	readonly BreakJoints: never;
 	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
-	readonly MakeJoints: any;
+	readonly MakeJoints: never;
 	/**
 	 * This [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) property determines whether assets created by other uses can be sold in the game.
 	 * 
@@ -27555,7 +27555,7 @@ interface TeleportOptions extends Instance {
 	 * 
 	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
 	 */
-	SetTeleportData(this: TeleportOptions, teleportData?: any): void;
+	SetTeleportData(this: TeleportOptions, teleportData: unknown): void;
 }
 
 /** The TeleportService is responsible for transporting [Players](https://developer.roblox.com/en-us/api-reference/class/Player) between `Articles/Place|places` and servers.
@@ -28670,7 +28670,7 @@ interface Translator extends Instance {
 	 * 
 	 * See `articles/utilizing localization apis|Utilizing Localization APIs` for more details and usage examples of this function.
 	 */
-	FormatByKey(this: Translator, key: string, args?: any): string;
+	FormatByKey(this: Translator, key: string, args: unknown): string;
 	/**
 	 * Returns the localized text string in a [LocalizationTable](https://developer.roblox.com/en-us/api-reference/class/LocalizationTable) based on its [Translator](https://developer.roblox.com/en-us/api-reference/class/Translator) locale. This string will be in the context of the provided object, given the provided **Source** text.
 	 * 
