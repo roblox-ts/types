@@ -638,12 +638,12 @@ interface Instance {
 	/**
 	 * This function returns the attribute which has been assigned to the given name. If no attribute has been assigned then nil is returned.
 	 * 
-	 * For example, the following code snippet will set the value of the instance's `InitialPostion` attribute. Note that this code sample does not define `instance`:
+	 * For example, the following code snippet will set the value of the instance's `InitialPostion` attribute. Note that this code sample does not define [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance):
 	 * 
 	 * local initialPosition = instance:GetAttribute("InitialPosition")
 	 * 
 	 * See also
-	 * --------
+	 * ========
 	 * 
 	 * *   [Instance:SetAttribute](https://developer.roblox.com/en-us/api-reference/function/Instance/SetAttribute), sets the attribute with the given name to the given value
 	 * *   [Instance:GetAttributes](https://developer.roblox.com/en-us/api-reference/function/Instance/GetAttributes), returns a dictionary of string → variant pairs for each of the instance's attributes
@@ -656,16 +656,16 @@ interface Instance {
 	 * 
 	 * It is similar to [Instance:GetPropertyChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetPropertyChangedSignal) but for attributes.
 	 * 
-	 * For example, the following code snippet will return a signal that fires the function `attributeChanged` when the instance's `InitialPosition` attribute changes. Note that this code sample does not define `instance`:
+	 * For example, the following code snippet will return a signal that fires the function [Instance.AttributeChanged](https://developer.roblox.com/en-us/api-reference/event/Instance/AttributeChanged) when the instance's `InitialPosition` attribute changes. Note that this code sample does not define [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance):
 	 * 
 	 * local function attributeChanged()
-	 * 	print(“Attribute changed”)
+	 *     print(“Attribute changed”)
 	 * end
 	 * 
 	 * instance:GetAttributeChangedSignal("InitialPosition"):Connect(attributeChanged)
 	 * 
 	 * See also
-	 * --------
+	 * ========
 	 * 
 	 * *   [Instance:SetAttribute](https://developer.roblox.com/en-us/api-reference/function/Instance/SetAttribute), sets the attribute with the given name to the given value
 	 * *   [Instance:GetAttribute](https://developer.roblox.com/en-us/api-reference/function/Instance/GetAttribute), returns the attribute which has been assigned to the given name
@@ -676,15 +676,15 @@ interface Instance {
 	/**
 	 * This function returns a dictionary of string → variant pairs for each attribute where the string is the name of the attribute and the variant is a non-nil value.
 	 * 
-	 * For example, the following code snippet will print an instance's attributes and values. Note that this code sample does not define `instance`:
+	 * For example, the following code snippet will print an instance's attributes and values. Note that this code sample does not define [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance):
 	 * 
 	 * local attributes = instance:GetAttributes()
 	 * for name, value in pairs(attributes) do
-	 * 	print(name .. “ “ .. value)
+	 *     print(name .. “ “ .. value)
 	 * end
 	 * 
 	 * See also
-	 * --------
+	 * ========
 	 * 
 	 * *   [Instance:SetAttribute](https://developer.roblox.com/en-us/api-reference/function/Instance/SetAttribute), sets the attribute with the given name to the given value
 	 * *   [Instance:GetAttribute](https://developer.roblox.com/en-us/api-reference/function/Instance/GetAttribute), returns the attribute which has been assigned to the given name
@@ -799,12 +799,12 @@ interface Instance {
 	/**
 	 * This function sets the attribute with the given name to the given value. If the value given is nil, then the attribute will be removed (since nil is returned by default).
 	 * 
-	 * For example, the following code snippet will set the instance's `InitialPosition` attribute to `DataType/Vector3|Vector3.new(0, 0, 0)`. Note that this code sample does not define `instance`:
+	 * For example, the following code snippet will set the instance's `InitialPosition` attribute to `DataType/Vector3|Vector3.new(0, 0, 0)`. Note that this code sample does not define [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance):
 	 * 
 	 * instance:SetAttribute("InitialPosition", Vector3.new(0, 0, 0))
 	 * 
 	 * Limitations
-	 * -----------
+	 * ===========
 	 * 
 	 * Naming requirements and restrictions:
 	 * 
@@ -816,7 +816,7 @@ interface Instance {
 	 * When attempting to set an attribute to an unsupported type, an error will be thrown.
 	 * 
 	 * See also
-	 * --------
+	 * ========
 	 * 
 	 * *   [Instance:GetAttribute](https://developer.roblox.com/en-us/api-reference/function/Instance/GetAttribute), returns the attribute which has been assigned to the given name
 	 * *   [Instance:GetAttributes](https://developer.roblox.com/en-us/api-reference/function/Instance/GetAttributes), returns a dictionary of string → variant pairs for each of the instance's attributes
@@ -882,7 +882,7 @@ interface Instance {
 	/**
 	 * This event fires whenever an attribute is changed on the instance. This includes when an attribute is set to nil. The name of the attribute that has been changed is passed to the connected function.
 	 * 
-	 * For example, the following code snippet will connect the `attributeChanged` function to fire whenever one of `instance's` attributes changes. Note that this code sample does not define `instance`:
+	 * For example, the following code snippet will connect the `AttributeChanged` function to fire whenever one of `Instance's` attributes changes. Note that this code sample does not define [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance):
 	 * 
 	 * local function attributeChanged(attributeName)
 	 *     print(attributeName, “changed”)
@@ -4130,7 +4130,34 @@ interface Beam extends Instance {
 	SetTextureOffset(this: Beam, offset?: number): void;
 }
 
-/** **Note:** If a Table is passed as an argument to a BindableEvent it must be an array without missing entries or have string keys, not a mixture, or else the string keys will be lost. Allows events defined in one script to be subscribed to by another script. However, please note that BindableEvents do not allow for communication between the server and client. If you are looking for this functionality use [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent). */
+/** An object that allows events defined in one server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script) to be subscribed to by another script for one-way communication.
+ * 
+ * BindableEvents do not allow for communication between the server and client. If you are looking for this functionality use [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent).
+ * 
+ * BindableEvents vs BindableFunctions
+ * -----------------------------------
+ * 
+ * Unlike BindableEvents, [BindableFunctions](https://developer.roblox.com/en-us/api-reference/class/BindableFunction) allow for two-way communication between two scripts:
+ * 
+ * *   When a script fires a BindableEvent it does not yield for a return. The script continues executing as the event is handled by the subscribed script asynchronously.
+ * *   When a script invokes a BindableFunction, however, that script yields until the event is handled and returned by the subscribed script synchronously. This allows for scripts to effectively pass data during and after an event.
+ * 
+ * BindableEvents vs RemoteEvents
+ * ------------------------------
+ * 
+ * While BindableEvents allow for one-way communication server-server scripts or client-client [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript), [RemoteEvents](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) allow for one-way communicate the server and client. For more information on RemoteEvents, read the `articles/Remote-Functions-and-Events|Remote Functions and Events` article.
+ * 
+ * Limitations
+ * -----------
+ * 
+ * ### Subscription
+ * 
+ * An event can only be subscribed to by one other script at a time. When a second script subscribes to an already subscribed event, the first script will be unsubscribed.
+ * 
+ * ### Parameters
+ * 
+ * If a Table is passed as an argument to a BindableEvent it must be an array without missing entries or have string keys, not a mixture, or else the string keys will be lost.
+ */
 interface BindableEvent<T extends Callback = Callback> extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -6983,7 +7010,7 @@ interface ContentProvider extends Instance {
  * Keyboardless Input
  * ------------------
  * 
- * ContextActionService is especially useful for supporting gamepad and touch input. For gamepad input, you might choose to bind the B button to an action that returns the user to the previous menu when they enter another menu. For touch, on-screen touch buttons can be used in place of key presses: these buttons display only while the action is bound, and the position, text and/or images of these buttons can be configured through this service. They are somewhat limited in the amount of customization provided by this service; it's usually a better idea to make your own on-screen buttons using [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) or [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton).
+ * ContextActionService is especially useful for supporting gamepad and touch input. For gamepad input, you might choose to bind the B button to an action that returns the user to the previous menu when they entire another menu. For touch, on-screen touch buttons can be used in place of key presses: these buttons display only while the action is bound, and the position, text and/or images of these buttons can be configured through this service. They are somewhat limited in the amount of customization provided by this service; it's usually a better idea to make your own on-screen buttons using [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) or [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton).
  */
 interface ContextActionService extends Instance {
 	/**
@@ -9732,13 +9759,7 @@ interface GuiButton extends GuiObject {
 	 */
 	Style: Enum.ButtonStyle;
 	/**
-	 * **Activated** fires when the user performs the primary action of the button. Its primary purpose is a cross-platform, general input event for buttons.
-	 * 
-	 * *   For pointer-based platforms with a mouse, this fires after the mouse button is pressed then released while hovering over the UI element.
-	 * *   For gamepad input, the event fires when the [GuiService.SelectedObject](https://developer.roblox.com/en-us/api-reference/property/GuiService/SelectedObject) is equal to the UI element and the primary gamepad button is pressed then released.
-	 * *   For touch input, the event fires when the user touches and releases the UI element.
-	 * 
-	 * Although direct input events like `GuiObject/MouseButton1Down` or [GuiObject.InputEnded](https://developer.roblox.com/en-us/api-reference/event/GuiObject/InputEnded) aren't deprecated and may still function as you might expect, it is better practice to use this event for general button input instead.
+	 * Fires when the button is activated.
 	 */
 	readonly Activated: RBXScriptSignal<(inputObject: InputObject, clickCount: number) => void>;
 	/**
@@ -16491,9 +16512,7 @@ interface KeyframeSequence extends Instance {
 	 */
 	AddKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
 	/**
-	 * This function returns an array containing all [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)s that have been added to a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence). This is functionally the same as using the [Instance:GetChildren](https://developer.roblox.com/en-us/api-reference/function/Instance/GetChildren) function on the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence).
-	 * 
-	 * Note, this function will return all children of the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence), including non [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)s if any are present.
+	 * **GetKeyframes** returns an array that contains all [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)s that have been added to a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence).
 	 */
 	GetKeyframes(this: KeyframeSequence): Array<Keyframe>;
 	/**
@@ -16802,7 +16821,7 @@ interface Lighting extends Instance {
 	/**
 	 * **Note**  
 	 * 
-	 * Fog properties are hidden when Lighting contains an `[Atmosphere](https://devforum.roblox.com/t/new-studio-beta-attributes/984141)` object.
+	 * Fog properties are hidden when Lighting contains an `[Atmosphere](../../Class/Atmosphere)` object.
 	 * 
 	 * A \`DataType/Color3\` value giving the hue of \`Lighting\`'s fog.
 	 * 
@@ -18221,6 +18240,7 @@ interface LocalizationTable extends Instance {
 	 */
 	readonly _nominal_LocalizationTable: unique symbol;
 	/**
+	 * The default IETF tag to use if the ''languageKey'' parameter is excluded from the [LocalizationTable:GetString](https://developer.roblox.com/en-us/api-reference/function/LocalizationTable/GetString) method.
 	 * Tags: Hidden, NotReplicated, Deprecated
 	 * @deprecated
 	 */
@@ -18303,6 +18323,11 @@ interface LocalizationTable extends Instance {
 	 */
 	RemoveEntryValue(this: LocalizationTable, key: string, source: string, context: string, localeId: string): void;
 	/**
+	 * Deprecated in favor of [LocalizationTable:RemoveEntry](https://developer.roblox.com/en-us/api-reference/function/LocalizationTable/RemoveEntry).
+	 * 
+	 * Calling RemoveKey is the same as making the following call to RemoveEntry:
+	 * 
+	 * LocalizationTable:RemoveEntry(key,"","")
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
@@ -18312,6 +18337,7 @@ interface LocalizationTable extends Instance {
 	 */
 	RemoveTargetLocale(this: LocalizationTable, localeId: string): void;
 	/**
+	 * The SetContents function sets the contents of the LocalizationTable, via the legacy JSON format.
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
@@ -23191,21 +23217,18 @@ interface Player extends Instance {
 	 */
 	IsUserAvailableForExperiment(this: Player): boolean;
 	/**
-	 * **Kick** disconnects a player from a game once, optionally providing the kicked player a message in the process. Its primary use is in moderation tools on abusive players. This function should never be used in typical gameplay and only in exceptional situations where it would be detrimental to a game server for the player in question to remain connected.
+	 * The Kick [Player](https://developer.roblox.com/en-us/api-reference/class/Player) method allows a game to gracefully disconnect a client from the game and optionally provide a message to the disconnected player. This is useful for moderating abusive players. When used in conjunction with a [DataStore](https://developer.roblox.com/en-us/api-reference/class/DataStore), it is possible to create ban lists with expiration dates. Only allow specific whitelisted users whom you trust to trigger this method on other players.
 	 * 
-	 * Although it is possible for a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) to invoke this function only on the [LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer), it is is generally a better idea for server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s to kick players.
+	 * When used from a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), only the local player's client can be kicked.
 	 * 
-	 * Only allow specific users whom you trust to trigger this method on other players. If used in conjunction with a [DataStore](https://developer.roblox.com/en-us/api-reference/class/DataStore), it is possible to create persistent bans with expiration dates. Alternatively, a certain threshold of votes from other players to kick an abusive player could be more appropriate for certain games. For games which teleport players to private servers, like player-controlled homesteads or round-based games, it may be more appropriate to use [TeleportService](https://developer.roblox.com/en-us/api-reference/class/TeleportService) to forcibly teleport the player back to a lobby place instead of kicking them from a game altogether.
+	 * ##Example  
+	 * When calling this method on a Player with no arguments, they will be disconnected from the server and receive the default message: This game has shut down.
 	 * 
-	 * This function does not prevent a player from returning to the same server from which it was called. If a player attempts to rejoin a server and they should still not be connected to the game, you should call this function again immediately after they've arrived. If a player is to be kicked as soon as they join, you should skip needless DataStore operations and other expensive API calls done on their behalf, such as saving/loading game data.
+	 * ![Getting kicked without a message.](https://developer.roblox.com/assets/blta0f9570676ca14ef/GettingKickedCropped.png)
 	 * 
-	 * ### Example without Message
+	 * Calling this method on a player but providing a string as the first argument will replace this message with the contents of the string.
 	 * 
-	 * ![An example of Kick without a message.](https://developer.roblox.com/assets/blt6d90cfb7f10d0562/Kick.jpg)
-	 * 
-	 * ### Example with Message
-	 * 
-	 * ![An example of Kick with message "Don't be disruptive!"](https://developer.roblox.com/assets/blt1a61a7fb809374d1/Kick-With-Message.jpg)
+	 * ![Getting kicked with a message.](https://developer.roblox.com/assets/blt20acf098fdbd2b30/KickedWithANoteCropped.png)
 	 */
 	Kick(this: Player, message?: string): void;
 	/**
