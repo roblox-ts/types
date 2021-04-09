@@ -66,6 +66,7 @@ interface Services {
 	Teams: Teams;
 	TeleportService: TeleportService;
 	TextService: TextService;
+	ToastNotificationService: ToastNotificationService;
 	TracerService: TracerService;
 	TweenService: TweenService;
 	UnvalidatedAssetService: UnvalidatedAssetService;
@@ -21310,6 +21311,9 @@ interface Model extends PVInstance {
 	 * When dealing with models full of unanchored parts connected with joints such as [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld)s or [Motor6D](https://developer.roblox.com/en-us/api-reference/class/Motor6D)s it is best practice to set the PrimaryPart to the root part of the assembly. Giving the example of a Player Character, this is the HumanoidRootPart.
 	 */
 	PrimaryPart: BasePart | undefined;
+	/**
+	 * Tags: NotReplicated
+	 */
 	WorldPivot: CFrame;
 	/**
 	 * Breaks connections between `BaseParts`, including surface connections with any adjacent parts, [WeldConstraint](https://developer.roblox.com/en-us/api-reference/class/WeldConstraint)s, and all [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld)s and other [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance)s.
@@ -28413,6 +28417,17 @@ interface TextService extends Instance {
 		fromUserId: number,
 		textContext?: CastsToEnum<Enum.TextFilterContext>,
 	): TextFilterResult | undefined;
+}
+
+interface ToastNotificationService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ToastNotificationService: unique symbol;
 }
 
 /** An internal object used by networking and replication code to transmit [BasePart.Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched) and [BasePart.TouchEnded](https://developer.roblox.com/en-us/api-reference/event/BasePart/TouchEnded) events.
