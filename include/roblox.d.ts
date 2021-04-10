@@ -1484,6 +1484,20 @@ interface NumberSequenceKeypointConstructor {
 }
 declare const NumberSequenceKeypoint: NumberSequenceKeypointConstructor;
 
+// OverlapParams
+interface OverlapParams {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_OverlapParams: unique symbol;
+}
+type OverlapParamsConstructor = new () => OverlapParams;
+declare const OverlapParams: OverlapParamsConstructor;
+
 // PathWaypoint
 interface PathWaypoint {
 	/**
