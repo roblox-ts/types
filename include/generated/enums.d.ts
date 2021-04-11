@@ -589,6 +589,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AppUpdateStatus>
 	}
 	export type AppUpdateStatus = AppUpdateStatus.Unknown | AppUpdateStatus.NotSupported | AppUpdateStatus.Failed | AppUpdateStatus.NotAvailable | AppUpdateStatus.Available;
+	export namespace ApplyStrokeMode {
+		export interface Contextual {
+			Name: "Contextual";
+			Value: 0;
+			EnumType: EnumType<ApplyStrokeMode>;
+		}
+
+		export const Contextual: Contextual;
+
+		export interface Border {
+			Name: "Border";
+			Value: 1;
+			EnumType: EnumType<ApplyStrokeMode>;
+		}
+
+		export const Border: Border;
+
+		export function GetEnumItems(this: defined): Array<ApplyStrokeMode>
+	}
+	export type ApplyStrokeMode = ApplyStrokeMode.Contextual | ApplyStrokeMode.Border;
 	export namespace AspectType {
 		export interface FitWithinMaxSize {
 			Name: "FitWithinMaxSize";
@@ -8069,42 +8089,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<Language>
 	}
 	export type Language = Language.Default;
-	export namespace LanguagePreference {
-		export interface SystemDefault {
-			Name: "SystemDefault";
-			Value: 0;
-			EnumType: EnumType<LanguagePreference>;
-		}
-
-		export const SystemDefault: SystemDefault;
-
-		export interface English {
-			Name: "English";
-			Value: 1;
-			EnumType: EnumType<LanguagePreference>;
-		}
-
-		export const English: English;
-
-		export interface SimplifiedChinese {
-			Name: "SimplifiedChinese";
-			Value: 2;
-			EnumType: EnumType<LanguagePreference>;
-		}
-
-		export const SimplifiedChinese: SimplifiedChinese;
-
-		export interface Korean {
-			Name: "Korean";
-			Value: 3;
-			EnumType: EnumType<LanguagePreference>;
-		}
-
-		export const Korean: Korean;
-
-		export function GetEnumItems(this: defined): Array<LanguagePreference>
-	}
-	export type LanguagePreference = LanguagePreference.SystemDefault | LanguagePreference.English | LanguagePreference.SimplifiedChinese | LanguagePreference.Korean;
 	export namespace LeftRight {
 		export interface Left {
 			Name: "Left";
@@ -8221,6 +8205,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<Limb>
 	}
 	export type Limb = Limb.Head | Limb.Torso | Limb.LeftArm | Limb.RightArm | Limb.LeftLeg | Limb.RightLeg | Limb.Unknown;
+	export namespace LineJoinMode {
+		export interface Round {
+			Name: "Round";
+			Value: 0;
+			EnumType: EnumType<LineJoinMode>;
+		}
+
+		export const Round: Round;
+
+		export interface Bevel {
+			Name: "Bevel";
+			Value: 1;
+			EnumType: EnumType<LineJoinMode>;
+		}
+
+		export const Bevel: Bevel;
+
+		export interface Miter {
+			Name: "Miter";
+			Value: 2;
+			EnumType: EnumType<LineJoinMode>;
+		}
+
+		export const Miter: Miter;
+
+		export function GetEnumItems(this: defined): Array<LineJoinMode>
+	}
+	export type LineJoinMode = LineJoinMode.Round | LineJoinMode.Bevel | LineJoinMode.Miter;
 	export namespace ListDisplayMode {
 		export interface Horizontal {
 			Name: "Horizontal";
@@ -8665,11 +8677,11 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<MeshPartDetailLevel>
 	}
 	export type MeshPartDetailLevel = MeshPartDetailLevel.DistanceBased | MeshPartDetailLevel.Level01 | MeshPartDetailLevel.Level02 | MeshPartDetailLevel.Level03 | MeshPartDetailLevel.Level04;
-	export namespace MeshPartHeads {
+	export namespace MeshPartHeadsAndAccessories {
 		export interface Default {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<MeshPartHeads>;
+			EnumType: EnumType<MeshPartHeadsAndAccessories>;
 		}
 
 		export const Default: Default;
@@ -8677,7 +8689,7 @@ declare namespace Enum {
 		export interface Disabled {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<MeshPartHeads>;
+			EnumType: EnumType<MeshPartHeadsAndAccessories>;
 		}
 
 		export const Disabled: Disabled;
@@ -8685,14 +8697,14 @@ declare namespace Enum {
 		export interface Enabled {
 			Name: "Enabled";
 			Value: 2;
-			EnumType: EnumType<MeshPartHeads>;
+			EnumType: EnumType<MeshPartHeadsAndAccessories>;
 		}
 
 		export const Enabled: Enabled;
 
-		export function GetEnumItems(this: defined): Array<MeshPartHeads>
+		export function GetEnumItems(this: defined): Array<MeshPartHeadsAndAccessories>
 	}
-	export type MeshPartHeads = MeshPartHeads.Default | MeshPartHeads.Disabled | MeshPartHeads.Enabled;
+	export type MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default | MeshPartHeadsAndAccessories.Disabled | MeshPartHeadsAndAccessories.Enabled;
 	export namespace MeshType {
 		export interface Head {
 			Name: "Head";
@@ -9121,6 +9133,58 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<OverrideMouseIconBehavior>
 	}
 	export type OverrideMouseIconBehavior = OverrideMouseIconBehavior.None | OverrideMouseIconBehavior.ForceShow | OverrideMouseIconBehavior.ForceHide;
+	export namespace PackagePermission {
+		export interface None {
+			Name: "None";
+			Value: 0;
+			EnumType: EnumType<PackagePermission>;
+		}
+
+		export const None: None;
+
+		export interface NoAccess {
+			Name: "NoAccess";
+			Value: 1;
+			EnumType: EnumType<PackagePermission>;
+		}
+
+		export const NoAccess: NoAccess;
+
+		export interface Revoked {
+			Name: "Revoked";
+			Value: 2;
+			EnumType: EnumType<PackagePermission>;
+		}
+
+		export const Revoked: Revoked;
+
+		export interface UseView {
+			Name: "UseView";
+			Value: 3;
+			EnumType: EnumType<PackagePermission>;
+		}
+
+		export const UseView: UseView;
+
+		export interface Edit {
+			Name: "Edit";
+			Value: 4;
+			EnumType: EnumType<PackagePermission>;
+		}
+
+		export const Edit: Edit;
+
+		export interface Own {
+			Name: "Own";
+			Value: 5;
+			EnumType: EnumType<PackagePermission>;
+		}
+
+		export const Own: Own;
+
+		export function GetEnumItems(this: defined): Array<PackagePermission>
+	}
+	export type PackagePermission = PackagePermission.None | PackagePermission.NoAccess | PackagePermission.Revoked | PackagePermission.UseView | PackagePermission.Edit | PackagePermission.Own;
 	export namespace PacketPriority {
 		export interface IMMEDIATE_PRIORITY {
 			Name: "IMMEDIATE_PRIORITY";
@@ -9365,6 +9429,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<PhysicsSimulationRate>
 	}
 	export type PhysicsSimulationRate = PhysicsSimulationRate.Fixed240Hz | PhysicsSimulationRate.Fixed120Hz | PhysicsSimulationRate.Fixed60Hz;
+	export namespace PhysicsSteppingMethod {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<PhysicsSteppingMethod>;
+		}
+
+		export const Default: Default;
+
+		export interface Fixed {
+			Name: "Fixed";
+			Value: 1;
+			EnumType: EnumType<PhysicsSteppingMethod>;
+		}
+
+		export const Fixed: Fixed;
+
+		export interface Adaptive {
+			Name: "Adaptive";
+			Value: 2;
+			EnumType: EnumType<PhysicsSteppingMethod>;
+		}
+
+		export const Adaptive: Adaptive;
+
+		export function GetEnumItems(this: defined): Array<PhysicsSteppingMethod>
+	}
+	export type PhysicsSteppingMethod = PhysicsSteppingMethod.Default | PhysicsSteppingMethod.Fixed | PhysicsSteppingMethod.Adaptive;
 	export namespace Platform {
 		export interface Windows {
 			Name: "Windows";
@@ -10885,6 +10977,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<ServerAudioBehavior>
 	}
 	export type ServerAudioBehavior = ServerAudioBehavior.Enabled | ServerAudioBehavior.Muted | ServerAudioBehavior.OnlineGame;
+	export namespace SignalBehavior {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<SignalBehavior>;
+		}
+
+		export const Default: Default;
+
+		export interface Immediate {
+			Name: "Immediate";
+			Value: 1;
+			EnumType: EnumType<SignalBehavior>;
+		}
+
+		export const Immediate: Immediate;
+
+		export interface Deferred {
+			Name: "Deferred";
+			Value: 2;
+			EnumType: EnumType<SignalBehavior>;
+		}
+
+		export const Deferred: Deferred;
+
+		export function GetEnumItems(this: defined): Array<SignalBehavior>
+	}
+	export type SignalBehavior = SignalBehavior.Default | SignalBehavior.Immediate | SignalBehavior.Deferred;
 	export namespace SizeConstraint {
 		export interface RelativeXY {
 			Name: "RelativeXY";
@@ -11514,9 +11634,65 @@ declare namespace Enum {
 
 		export const Bracket: Bracket;
 
+		export interface MenuPrimaryText {
+			Name: "MenuPrimaryText";
+			Value: 30;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuPrimaryText: MenuPrimaryText;
+
+		export interface MenuSecondaryText {
+			Name: "MenuSecondaryText";
+			Value: 31;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuSecondaryText: MenuSecondaryText;
+
+		export interface MenuSelectedText {
+			Name: "MenuSelectedText";
+			Value: 32;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuSelectedText: MenuSelectedText;
+
+		export interface MenuBackground {
+			Name: "MenuBackground";
+			Value: 33;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuBackground: MenuBackground;
+
+		export interface MenuSelectedBackground {
+			Name: "MenuSelectedBackground";
+			Value: 34;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuSelectedBackground: MenuSelectedBackground;
+
+		export interface MenuScrollbarBackground {
+			Name: "MenuScrollbarBackground";
+			Value: 35;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuScrollbarBackground: MenuScrollbarBackground;
+
+		export interface MenuScrollbarHandle {
+			Name: "MenuScrollbarHandle";
+			Value: 36;
+			EnumType: EnumType<StudioScriptEditorColorCategories>;
+		}
+
+		export const MenuScrollbarHandle: MenuScrollbarHandle;
+
 		export function GetEnumItems(this: defined): Array<StudioScriptEditorColorCategories>
 	}
-	export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket;
+	export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket | StudioScriptEditorColorCategories.MenuPrimaryText | StudioScriptEditorColorCategories.MenuSecondaryText | StudioScriptEditorColorCategories.MenuSelectedText | StudioScriptEditorColorCategories.MenuBackground | StudioScriptEditorColorCategories.MenuSelectedBackground | StudioScriptEditorColorCategories.MenuScrollbarBackground | StudioScriptEditorColorCategories.MenuScrollbarHandle;
 	export namespace StudioScriptEditorColorPresets {
 		export interface RobloxDefault {
 			Name: "RobloxDefault";
@@ -11626,9 +11802,57 @@ declare namespace Enum {
 
 		export const Tab: Tab;
 
+		export interface FilterButtonDefault {
+			Name: "FilterButtonDefault";
+			Value: 9;
+			EnumType: EnumType<StudioStyleGuideColor>;
+		}
+
+		export const FilterButtonDefault: FilterButtonDefault;
+
+		export interface FilterButtonHover {
+			Name: "FilterButtonHover";
+			Value: 10;
+			EnumType: EnumType<StudioStyleGuideColor>;
+		}
+
+		export const FilterButtonHover: FilterButtonHover;
+
+		export interface FilterButtonChecked {
+			Name: "FilterButtonChecked";
+			Value: 11;
+			EnumType: EnumType<StudioStyleGuideColor>;
+		}
+
+		export const FilterButtonChecked: FilterButtonChecked;
+
+		export interface FilterButtonAccent {
+			Name: "FilterButtonAccent";
+			Value: 12;
+			EnumType: EnumType<StudioStyleGuideColor>;
+		}
+
+		export const FilterButtonAccent: FilterButtonAccent;
+
+		export interface FilterButtonBorder {
+			Name: "FilterButtonBorder";
+			Value: 13;
+			EnumType: EnumType<StudioStyleGuideColor>;
+		}
+
+		export const FilterButtonBorder: FilterButtonBorder;
+
+		export interface FilterButtonBorderAlt {
+			Name: "FilterButtonBorderAlt";
+			Value: 14;
+			EnumType: EnumType<StudioStyleGuideColor>;
+		}
+
+		export const FilterButtonBorderAlt: FilterButtonBorderAlt;
+
 		export interface RibbonTab {
 			Name: "RibbonTab";
-			Value: 9;
+			Value: 15;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11636,7 +11860,7 @@ declare namespace Enum {
 
 		export interface RibbonTabTopBar {
 			Name: "RibbonTabTopBar";
-			Value: 10;
+			Value: 16;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11644,7 +11868,7 @@ declare namespace Enum {
 
 		export interface Button {
 			Name: "Button";
-			Value: 11;
+			Value: 17;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11652,7 +11876,7 @@ declare namespace Enum {
 
 		export interface MainButton {
 			Name: "MainButton";
-			Value: 12;
+			Value: 18;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11660,7 +11884,7 @@ declare namespace Enum {
 
 		export interface RibbonButton {
 			Name: "RibbonButton";
-			Value: 13;
+			Value: 19;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11668,7 +11892,7 @@ declare namespace Enum {
 
 		export interface ViewPortBackground {
 			Name: "ViewPortBackground";
-			Value: 14;
+			Value: 20;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11676,7 +11900,7 @@ declare namespace Enum {
 
 		export interface InputFieldBackground {
 			Name: "InputFieldBackground";
-			Value: 15;
+			Value: 21;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11684,7 +11908,7 @@ declare namespace Enum {
 
 		export interface Item {
 			Name: "Item";
-			Value: 16;
+			Value: 22;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11692,7 +11916,7 @@ declare namespace Enum {
 
 		export interface TableItem {
 			Name: "TableItem";
-			Value: 17;
+			Value: 23;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11700,7 +11924,7 @@ declare namespace Enum {
 
 		export interface CategoryItem {
 			Name: "CategoryItem";
-			Value: 18;
+			Value: 24;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11708,7 +11932,7 @@ declare namespace Enum {
 
 		export interface GameSettingsTableItem {
 			Name: "GameSettingsTableItem";
-			Value: 19;
+			Value: 25;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11716,7 +11940,7 @@ declare namespace Enum {
 
 		export interface GameSettingsTooltip {
 			Name: "GameSettingsTooltip";
-			Value: 20;
+			Value: 26;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11724,7 +11948,7 @@ declare namespace Enum {
 
 		export interface EmulatorBar {
 			Name: "EmulatorBar";
-			Value: 21;
+			Value: 27;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11732,7 +11956,7 @@ declare namespace Enum {
 
 		export interface EmulatorDropDown {
 			Name: "EmulatorDropDown";
-			Value: 22;
+			Value: 28;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11740,7 +11964,7 @@ declare namespace Enum {
 
 		export interface ColorPickerFrame {
 			Name: "ColorPickerFrame";
-			Value: 23;
+			Value: 29;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11748,7 +11972,7 @@ declare namespace Enum {
 
 		export interface CurrentMarker {
 			Name: "CurrentMarker";
-			Value: 24;
+			Value: 30;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11756,7 +11980,7 @@ declare namespace Enum {
 
 		export interface Border {
 			Name: "Border";
-			Value: 25;
+			Value: 31;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11764,7 +11988,7 @@ declare namespace Enum {
 
 		export interface Shadow {
 			Name: "Shadow";
-			Value: 26;
+			Value: 32;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11772,7 +11996,7 @@ declare namespace Enum {
 
 		export interface Light {
 			Name: "Light";
-			Value: 27;
+			Value: 33;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11780,7 +12004,7 @@ declare namespace Enum {
 
 		export interface Dark {
 			Name: "Dark";
-			Value: 28;
+			Value: 34;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11788,7 +12012,7 @@ declare namespace Enum {
 
 		export interface Mid {
 			Name: "Mid";
-			Value: 29;
+			Value: 35;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11796,7 +12020,7 @@ declare namespace Enum {
 
 		export interface MainText {
 			Name: "MainText";
-			Value: 30;
+			Value: 36;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11804,7 +12028,7 @@ declare namespace Enum {
 
 		export interface SubText {
 			Name: "SubText";
-			Value: 31;
+			Value: 37;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11812,7 +12036,7 @@ declare namespace Enum {
 
 		export interface TitlebarText {
 			Name: "TitlebarText";
-			Value: 32;
+			Value: 38;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11820,7 +12044,7 @@ declare namespace Enum {
 
 		export interface BrightText {
 			Name: "BrightText";
-			Value: 33;
+			Value: 39;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11828,7 +12052,7 @@ declare namespace Enum {
 
 		export interface DimmedText {
 			Name: "DimmedText";
-			Value: 34;
+			Value: 40;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11836,7 +12060,7 @@ declare namespace Enum {
 
 		export interface LinkText {
 			Name: "LinkText";
-			Value: 35;
+			Value: 41;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11844,7 +12068,7 @@ declare namespace Enum {
 
 		export interface WarningText {
 			Name: "WarningText";
-			Value: 36;
+			Value: 42;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11852,7 +12076,7 @@ declare namespace Enum {
 
 		export interface ErrorText {
 			Name: "ErrorText";
-			Value: 37;
+			Value: 43;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11860,7 +12084,7 @@ declare namespace Enum {
 
 		export interface InfoText {
 			Name: "InfoText";
-			Value: 38;
+			Value: 44;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11868,7 +12092,7 @@ declare namespace Enum {
 
 		export interface SensitiveText {
 			Name: "SensitiveText";
-			Value: 39;
+			Value: 45;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11876,7 +12100,7 @@ declare namespace Enum {
 
 		export interface ScriptSideWidget {
 			Name: "ScriptSideWidget";
-			Value: 40;
+			Value: 46;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11884,7 +12108,7 @@ declare namespace Enum {
 
 		export interface ScriptBackground {
 			Name: "ScriptBackground";
-			Value: 41;
+			Value: 47;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11892,7 +12116,7 @@ declare namespace Enum {
 
 		export interface ScriptText {
 			Name: "ScriptText";
-			Value: 42;
+			Value: 48;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11900,7 +12124,7 @@ declare namespace Enum {
 
 		export interface ScriptSelectionText {
 			Name: "ScriptSelectionText";
-			Value: 43;
+			Value: 49;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11908,7 +12132,7 @@ declare namespace Enum {
 
 		export interface ScriptSelectionBackground {
 			Name: "ScriptSelectionBackground";
-			Value: 44;
+			Value: 50;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11916,7 +12140,7 @@ declare namespace Enum {
 
 		export interface ScriptFindSelectionBackground {
 			Name: "ScriptFindSelectionBackground";
-			Value: 45;
+			Value: 51;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11924,7 +12148,7 @@ declare namespace Enum {
 
 		export interface ScriptMatchingWordSelectionBackground {
 			Name: "ScriptMatchingWordSelectionBackground";
-			Value: 46;
+			Value: 52;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11932,7 +12156,7 @@ declare namespace Enum {
 
 		export interface ScriptOperator {
 			Name: "ScriptOperator";
-			Value: 47;
+			Value: 53;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11940,7 +12164,7 @@ declare namespace Enum {
 
 		export interface ScriptNumber {
 			Name: "ScriptNumber";
-			Value: 48;
+			Value: 54;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11948,7 +12172,7 @@ declare namespace Enum {
 
 		export interface ScriptString {
 			Name: "ScriptString";
-			Value: 49;
+			Value: 55;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11956,7 +12180,7 @@ declare namespace Enum {
 
 		export interface ScriptComment {
 			Name: "ScriptComment";
-			Value: 50;
+			Value: 56;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11964,7 +12188,7 @@ declare namespace Enum {
 
 		export interface ScriptKeyword {
 			Name: "ScriptKeyword";
-			Value: 51;
+			Value: 57;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11972,7 +12196,7 @@ declare namespace Enum {
 
 		export interface ScriptBuiltInFunction {
 			Name: "ScriptBuiltInFunction";
-			Value: 52;
+			Value: 58;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11980,7 +12204,7 @@ declare namespace Enum {
 
 		export interface ScriptWarning {
 			Name: "ScriptWarning";
-			Value: 53;
+			Value: 59;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11988,7 +12212,7 @@ declare namespace Enum {
 
 		export interface ScriptError {
 			Name: "ScriptError";
-			Value: 54;
+			Value: 60;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -11996,7 +12220,7 @@ declare namespace Enum {
 
 		export interface ScriptWhitespace {
 			Name: "ScriptWhitespace";
-			Value: 55;
+			Value: 61;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12004,7 +12228,7 @@ declare namespace Enum {
 
 		export interface ScriptRuler {
 			Name: "ScriptRuler";
-			Value: 56;
+			Value: 62;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12012,7 +12236,7 @@ declare namespace Enum {
 
 		export interface DebuggerCurrentLine {
 			Name: "DebuggerCurrentLine";
-			Value: 57;
+			Value: 63;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12020,7 +12244,7 @@ declare namespace Enum {
 
 		export interface DebuggerErrorLine {
 			Name: "DebuggerErrorLine";
-			Value: 58;
+			Value: 64;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12028,7 +12252,7 @@ declare namespace Enum {
 
 		export interface ScriptEditorCurrentLine {
 			Name: "ScriptEditorCurrentLine";
-			Value: 97;
+			Value: 103;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12036,7 +12260,7 @@ declare namespace Enum {
 
 		export interface DiffFilePathText {
 			Name: "DiffFilePathText";
-			Value: 59;
+			Value: 65;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12044,7 +12268,7 @@ declare namespace Enum {
 
 		export interface DiffTextHunkInfo {
 			Name: "DiffTextHunkInfo";
-			Value: 60;
+			Value: 66;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12052,7 +12276,7 @@ declare namespace Enum {
 
 		export interface DiffTextNoChange {
 			Name: "DiffTextNoChange";
-			Value: 61;
+			Value: 67;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12060,7 +12284,7 @@ declare namespace Enum {
 
 		export interface DiffTextAddition {
 			Name: "DiffTextAddition";
-			Value: 62;
+			Value: 68;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12068,7 +12292,7 @@ declare namespace Enum {
 
 		export interface DiffTextDeletion {
 			Name: "DiffTextDeletion";
-			Value: 63;
+			Value: 69;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12076,7 +12300,7 @@ declare namespace Enum {
 
 		export interface DiffTextSeparatorBackground {
 			Name: "DiffTextSeparatorBackground";
-			Value: 64;
+			Value: 70;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12084,7 +12308,7 @@ declare namespace Enum {
 
 		export interface DiffTextNoChangeBackground {
 			Name: "DiffTextNoChangeBackground";
-			Value: 65;
+			Value: 71;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12092,7 +12316,7 @@ declare namespace Enum {
 
 		export interface DiffTextAdditionBackground {
 			Name: "DiffTextAdditionBackground";
-			Value: 66;
+			Value: 72;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12100,7 +12324,7 @@ declare namespace Enum {
 
 		export interface DiffTextDeletionBackground {
 			Name: "DiffTextDeletionBackground";
-			Value: 67;
+			Value: 73;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12108,7 +12332,7 @@ declare namespace Enum {
 
 		export interface DiffLineNum {
 			Name: "DiffLineNum";
-			Value: 68;
+			Value: 74;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12116,7 +12340,7 @@ declare namespace Enum {
 
 		export interface DiffLineNumSeparatorBackground {
 			Name: "DiffLineNumSeparatorBackground";
-			Value: 69;
+			Value: 75;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12124,7 +12348,7 @@ declare namespace Enum {
 
 		export interface DiffLineNumNoChangeBackground {
 			Name: "DiffLineNumNoChangeBackground";
-			Value: 70;
+			Value: 76;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12132,7 +12356,7 @@ declare namespace Enum {
 
 		export interface DiffLineNumAdditionBackground {
 			Name: "DiffLineNumAdditionBackground";
-			Value: 71;
+			Value: 77;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12140,7 +12364,7 @@ declare namespace Enum {
 
 		export interface DiffLineNumDeletionBackground {
 			Name: "DiffLineNumDeletionBackground";
-			Value: 72;
+			Value: 78;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12148,7 +12372,7 @@ declare namespace Enum {
 
 		export interface DiffFilePathBackground {
 			Name: "DiffFilePathBackground";
-			Value: 73;
+			Value: 79;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12156,7 +12380,7 @@ declare namespace Enum {
 
 		export interface DiffFilePathBorder {
 			Name: "DiffFilePathBorder";
-			Value: 74;
+			Value: 80;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12164,7 +12388,7 @@ declare namespace Enum {
 
 		export interface ChatIncomingBgColor {
 			Name: "ChatIncomingBgColor";
-			Value: 75;
+			Value: 81;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12172,7 +12396,7 @@ declare namespace Enum {
 
 		export interface ChatIncomingTextColor {
 			Name: "ChatIncomingTextColor";
-			Value: 76;
+			Value: 82;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12180,7 +12404,7 @@ declare namespace Enum {
 
 		export interface ChatOutgoingBgColor {
 			Name: "ChatOutgoingBgColor";
-			Value: 77;
+			Value: 83;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12188,7 +12412,7 @@ declare namespace Enum {
 
 		export interface ChatOutgoingTextColor {
 			Name: "ChatOutgoingTextColor";
-			Value: 78;
+			Value: 84;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12196,7 +12420,7 @@ declare namespace Enum {
 
 		export interface ChatModeratedMessageColor {
 			Name: "ChatModeratedMessageColor";
-			Value: 79;
+			Value: 85;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12204,7 +12428,7 @@ declare namespace Enum {
 
 		export interface Separator {
 			Name: "Separator";
-			Value: 80;
+			Value: 86;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12212,7 +12436,7 @@ declare namespace Enum {
 
 		export interface ButtonBorder {
 			Name: "ButtonBorder";
-			Value: 81;
+			Value: 87;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12220,7 +12444,7 @@ declare namespace Enum {
 
 		export interface ButtonText {
 			Name: "ButtonText";
-			Value: 82;
+			Value: 88;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12228,7 +12452,7 @@ declare namespace Enum {
 
 		export interface InputFieldBorder {
 			Name: "InputFieldBorder";
-			Value: 83;
+			Value: 89;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12236,7 +12460,7 @@ declare namespace Enum {
 
 		export interface CheckedFieldBackground {
 			Name: "CheckedFieldBackground";
-			Value: 84;
+			Value: 90;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12244,7 +12468,7 @@ declare namespace Enum {
 
 		export interface CheckedFieldBorder {
 			Name: "CheckedFieldBorder";
-			Value: 85;
+			Value: 91;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12252,7 +12476,7 @@ declare namespace Enum {
 
 		export interface CheckedFieldIndicator {
 			Name: "CheckedFieldIndicator";
-			Value: 86;
+			Value: 92;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12260,7 +12484,7 @@ declare namespace Enum {
 
 		export interface HeaderSection {
 			Name: "HeaderSection";
-			Value: 87;
+			Value: 93;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12268,7 +12492,7 @@ declare namespace Enum {
 
 		export interface Midlight {
 			Name: "Midlight";
-			Value: 88;
+			Value: 94;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12276,7 +12500,7 @@ declare namespace Enum {
 
 		export interface StatusBar {
 			Name: "StatusBar";
-			Value: 89;
+			Value: 95;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12284,7 +12508,7 @@ declare namespace Enum {
 
 		export interface DialogButton {
 			Name: "DialogButton";
-			Value: 90;
+			Value: 96;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12292,7 +12516,7 @@ declare namespace Enum {
 
 		export interface DialogButtonText {
 			Name: "DialogButtonText";
-			Value: 91;
+			Value: 97;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12300,7 +12524,7 @@ declare namespace Enum {
 
 		export interface DialogButtonBorder {
 			Name: "DialogButtonBorder";
-			Value: 92;
+			Value: 98;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12308,7 +12532,7 @@ declare namespace Enum {
 
 		export interface DialogMainButton {
 			Name: "DialogMainButton";
-			Value: 93;
+			Value: 99;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12316,7 +12540,7 @@ declare namespace Enum {
 
 		export interface DialogMainButtonText {
 			Name: "DialogMainButtonText";
-			Value: 94;
+			Value: 100;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12324,7 +12548,7 @@ declare namespace Enum {
 
 		export interface InfoBarWarningBackground {
 			Name: "InfoBarWarningBackground";
-			Value: 95;
+			Value: 101;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12332,7 +12556,7 @@ declare namespace Enum {
 
 		export interface InfoBarWarningText {
 			Name: "InfoBarWarningText";
-			Value: 96;
+			Value: 102;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12340,7 +12564,7 @@ declare namespace Enum {
 
 		export interface ScriptMethod {
 			Name: "ScriptMethod";
-			Value: 98;
+			Value: 104;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12348,7 +12572,7 @@ declare namespace Enum {
 
 		export interface ScriptProperty {
 			Name: "ScriptProperty";
-			Value: 99;
+			Value: 105;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12356,7 +12580,7 @@ declare namespace Enum {
 
 		export interface ScriptNil {
 			Name: "ScriptNil";
-			Value: 100;
+			Value: 106;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12364,7 +12588,7 @@ declare namespace Enum {
 
 		export interface ScriptBool {
 			Name: "ScriptBool";
-			Value: 101;
+			Value: 107;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12372,7 +12596,7 @@ declare namespace Enum {
 
 		export interface ScriptFunction {
 			Name: "ScriptFunction";
-			Value: 102;
+			Value: 108;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12380,7 +12604,7 @@ declare namespace Enum {
 
 		export interface ScriptLocal {
 			Name: "ScriptLocal";
-			Value: 103;
+			Value: 109;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12388,7 +12612,7 @@ declare namespace Enum {
 
 		export interface ScriptSelf {
 			Name: "ScriptSelf";
-			Value: 104;
+			Value: 110;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12396,7 +12620,7 @@ declare namespace Enum {
 
 		export interface ScriptLuauKeyword {
 			Name: "ScriptLuauKeyword";
-			Value: 105;
+			Value: 111;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12404,7 +12628,7 @@ declare namespace Enum {
 
 		export interface ScriptFunctionName {
 			Name: "ScriptFunctionName";
-			Value: 106;
+			Value: 112;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12412,7 +12636,7 @@ declare namespace Enum {
 
 		export interface ScriptTodo {
 			Name: "ScriptTodo";
-			Value: 107;
+			Value: 113;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12420,7 +12644,7 @@ declare namespace Enum {
 
 		export interface ScriptBracket {
 			Name: "ScriptBracket";
-			Value: 108;
+			Value: 114;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12428,7 +12652,7 @@ declare namespace Enum {
 
 		export interface AttributeCog {
 			Name: "AttributeCog";
-			Value: 109;
+			Value: 115;
 			EnumType: EnumType<StudioStyleGuideColor>;
 		}
 
@@ -12436,7 +12660,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<StudioStyleGuideColor>
 	}
-	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.ScriptBracket | StudioStyleGuideColor.AttributeCog;
+	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.FilterButtonDefault | StudioStyleGuideColor.FilterButtonHover | StudioStyleGuideColor.FilterButtonChecked | StudioStyleGuideColor.FilterButtonAccent | StudioStyleGuideColor.FilterButtonBorder | StudioStyleGuideColor.FilterButtonBorderAlt | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.ScriptBracket | StudioStyleGuideColor.AttributeCog;
 	export namespace StudioStyleGuideModifier {
 		export interface Default {
 			Name: "Default";
@@ -12941,6 +13165,106 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<TeleportType>
 	}
 	export type TeleportType = TeleportType.ToPlace | TeleportType.ToInstance | TeleportType.ToReservedServer;
+	export namespace TerrainAcquisitionMethod {
+		export interface None {
+			Name: "None";
+			Value: 0;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const None: None;
+
+		export interface Legacy {
+			Name: "Legacy";
+			Value: 1;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const Legacy: Legacy;
+
+		export interface Template {
+			Name: "Template";
+			Value: 2;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const Template: Template;
+
+		export interface Generate {
+			Name: "Generate";
+			Value: 3;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const Generate: Generate;
+
+		export interface Import {
+			Name: "Import";
+			Value: 4;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const Import: Import;
+
+		export interface Convert {
+			Name: "Convert";
+			Value: 5;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const Convert: Convert;
+
+		export interface EditAddTool {
+			Name: "EditAddTool";
+			Value: 6;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const EditAddTool: EditAddTool;
+
+		export interface EditSeaLevelTool {
+			Name: "EditSeaLevelTool";
+			Value: 7;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const EditSeaLevelTool: EditSeaLevelTool;
+
+		export interface EditReplaceTool {
+			Name: "EditReplaceTool";
+			Value: 8;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const EditReplaceTool: EditReplaceTool;
+
+		export interface RegionFillTool {
+			Name: "RegionFillTool";
+			Value: 9;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const RegionFillTool: RegionFillTool;
+
+		export interface RegionPasteTool {
+			Name: "RegionPasteTool";
+			Value: 10;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const RegionPasteTool: RegionPasteTool;
+
+		export interface Other {
+			Name: "Other";
+			Value: 11;
+			EnumType: EnumType<TerrainAcquisitionMethod>;
+		}
+
+		export const Other: Other;
+
+		export function GetEnumItems(this: defined): Array<TerrainAcquisitionMethod>
+	}
+	export type TerrainAcquisitionMethod = TerrainAcquisitionMethod.None | TerrainAcquisitionMethod.Legacy | TerrainAcquisitionMethod.Template | TerrainAcquisitionMethod.Generate | TerrainAcquisitionMethod.Import | TerrainAcquisitionMethod.Convert | TerrainAcquisitionMethod.EditAddTool | TerrainAcquisitionMethod.EditSeaLevelTool | TerrainAcquisitionMethod.EditReplaceTool | TerrainAcquisitionMethod.RegionFillTool | TerrainAcquisitionMethod.RegionPasteTool | TerrainAcquisitionMethod.Other;
 	export namespace TextFilterContext {
 		export interface PublicChat {
 			Name: "PublicChat";
@@ -14166,9 +14490,17 @@ declare namespace Enum {
 
 		export const Reference: Reference;
 
+		export interface Rbf {
+			Name: "Rbf";
+			Value: 5;
+			EnumType: EnumType<WrapLayerDebugMode>;
+		}
+
+		export const Rbf: Rbf;
+
 		export function GetEnumItems(this: defined): Array<WrapLayerDebugMode>
 	}
-	export type WrapLayerDebugMode = WrapLayerDebugMode.None | WrapLayerDebugMode.BoundCage | WrapLayerDebugMode.LayerCage | WrapLayerDebugMode.BoundCageAndLinks | WrapLayerDebugMode.Reference;
+	export type WrapLayerDebugMode = WrapLayerDebugMode.None | WrapLayerDebugMode.BoundCage | WrapLayerDebugMode.LayerCage | WrapLayerDebugMode.BoundCageAndLinks | WrapLayerDebugMode.Reference | WrapLayerDebugMode.Rbf;
 	export namespace WrapTargetDebugMode {
 		export interface None {
 			Name: "None";
@@ -14178,17 +14510,65 @@ declare namespace Enum {
 
 		export const None: None;
 
-		export interface TargetCage {
-			Name: "TargetCage";
+		export interface TargetCageOriginal {
+			Name: "TargetCageOriginal";
 			Value: 1;
 			EnumType: EnumType<WrapTargetDebugMode>;
 		}
 
-		export const TargetCage: TargetCage;
+		export const TargetCageOriginal: TargetCageOriginal;
+
+		export interface TargetCageCompressed {
+			Name: "TargetCageCompressed";
+			Value: 2;
+			EnumType: EnumType<WrapTargetDebugMode>;
+		}
+
+		export const TargetCageCompressed: TargetCageCompressed;
+
+		export interface TargetCageInterface {
+			Name: "TargetCageInterface";
+			Value: 3;
+			EnumType: EnumType<WrapTargetDebugMode>;
+		}
+
+		export const TargetCageInterface: TargetCageInterface;
+
+		export interface TargetLayerCageOriginal {
+			Name: "TargetLayerCageOriginal";
+			Value: 4;
+			EnumType: EnumType<WrapTargetDebugMode>;
+		}
+
+		export const TargetLayerCageOriginal: TargetLayerCageOriginal;
+
+		export interface TargetLayerCageCompressed {
+			Name: "TargetLayerCageCompressed";
+			Value: 5;
+			EnumType: EnumType<WrapTargetDebugMode>;
+		}
+
+		export const TargetLayerCageCompressed: TargetLayerCageCompressed;
+
+		export interface TargetLayerInterface {
+			Name: "TargetLayerInterface";
+			Value: 6;
+			EnumType: EnumType<WrapTargetDebugMode>;
+		}
+
+		export const TargetLayerInterface: TargetLayerInterface;
+
+		export interface Rbf {
+			Name: "Rbf";
+			Value: 7;
+			EnumType: EnumType<WrapTargetDebugMode>;
+		}
+
+		export const Rbf: Rbf;
 
 		export function GetEnumItems(this: defined): Array<WrapTargetDebugMode>
 	}
-	export type WrapTargetDebugMode = WrapTargetDebugMode.None | WrapTargetDebugMode.TargetCage;
+	export type WrapTargetDebugMode = WrapTargetDebugMode.None | WrapTargetDebugMode.TargetCageOriginal | WrapTargetDebugMode.TargetCageCompressed | WrapTargetDebugMode.TargetCageInterface | WrapTargetDebugMode.TargetLayerCageOriginal | WrapTargetDebugMode.TargetLayerCageCompressed | WrapTargetDebugMode.TargetLayerInterface | WrapTargetDebugMode.Rbf;
 	export namespace ZIndexBehavior {
 		export interface Global {
 			Name: "Global";

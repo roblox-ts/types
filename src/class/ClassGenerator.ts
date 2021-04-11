@@ -250,7 +250,22 @@ const CLASS_BLACKLIST = new Set([
 	"RbxAnalyticsService",
 ]);
 
-const MEMBER_BLACKLIST = new Map([["Workspace", ["FilteringEnabled"]]]);
+const MEMBER_BLACKLIST = new Map([
+	["Workspace", new Set(["FilteringEnabled"])],
+	["CollectionService", new Set(["GetCollection"])],
+	["Instance", new Set(["children", "Remove"])],
+	["BodyGyro", new Set(["cframe"])],
+	["BodyAngularVelocity", new Set(["angularvelocity"])],
+	["BodyPosition", new Set(["lastForce"])],
+	["DataStoreService", new Set(["GetDataFromEmptyScopeDataStoreAsyncTemporary"])],
+	["Debris", new Set(["MaxItems"])],
+	["LayerCollector", new Set(["GetLayoutNodeTree"])],
+	["GuiBase3d", new Set(["Color"])],
+	["Model", new Set(["move"])],
+	["Players", new Set(["playerFromCharacter", "players"])],
+	["ServiceProvider", new Set(["service"])],
+	["DataModel", new Set(["lighting"])],
+]);
 
 const EXPECTED_EXTRA_MEMBERS = new Map([
 	["Player", ["Name"]],
@@ -345,7 +360,7 @@ const VALUE_TYPE_MAP = new Map<string, string | null>([
 	["ProtectedString", "string"],
 	["Rect2D", "Rect"],
 	["Tuple", "Array<any>"],
-	["Variant", "any"],
+	["Variant", "unknown"],
 ]);
 
 const PROP_TYPE_MAP = new Map<string, string>();
@@ -854,10 +869,6 @@ export class ClassGenerator extends Generator {
 		if (tsImplInterface) {
 			const name = rbxMember.Name;
 			const signatures = Array<string>();
-			const documentations = Array<string>();
-			if (description) {
-				documentations.push(this.formatDescription(description));
-			}
 
 			let nodes = cacher.get(tsImplInterface);
 			if (!nodes)
@@ -875,9 +886,7 @@ export class ClassGenerator extends Generator {
 					// documentations.push(documentation);
 				});
 
-			if (documentations.length > 0) {
-				this.write(documentations.join("\n\t").trim());
-			}
+			this.writeDescription(rbxMember, description);
 			const written = signatures.length > 0;
 			if (written) {
 				this.write(signatures.join("\n\t"));
@@ -889,11 +898,27 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private writeDescription(rbxMember: ApiMemberBase, desc?: string) {
-		const description = desc || "";
-		const tags = rbxMember.Tags;
-		const tagStr = tags && tags.length > 0 ? description + " *\n\t * Tags: " + tags.join(", ") + "\n\t" : "";
-		this.write(`/** ${(description.trim() !== "" ? description : "[NO DOCUMENTATION]") + tagStr} */`);
+	private writeDescription(rbxMember: ApiMemberBase, description?: string) {
+		const parts = new Array<string>();
+		if (description) {
+			parts.push(description);
+		}
+
+		if (rbxMember.Tags && rbxMember.Tags.length > 0) {
+			parts.push("Tags: " + rbxMember.Tags.join(", "));
+		}
+
+		if (hasTag(rbxMember, "Deprecated")) {
+			parts.push("@deprecated");
+		}
+
+		if (parts.length > 0) {
+			this.write(`/**`);
+			for (const part of parts) {
+				this.write(` * ${part.trim()}`);
+			}
+			this.write(" */");
+		}
 	}
 
 	private generateArgs(params: Array<ApiParameter>, canImplicitlyConvertEnum = true, args = new Array<string>()) {
@@ -1035,16 +1060,33 @@ export class ClassGenerator extends Generator {
 	}
 
 	private shouldGenerateMember(rbxClass: ApiClass, rbxMember: ApiMember) {
-		if (MEMBER_BLACKLIST.get(rbxClass.Name)?.includes(rbxMember.Name)) {
+		if (MEMBER_BLACKLIST.get(rbxClass.Name)?.has(rbxMember.Name)) {
 			return false;
 		}
 
-		return (
-			((this.security === "PluginSecurity" && PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) ||
-				this.canRead(rbxClass.Name, rbxMember)) &&
-			!hasTag(rbxMember, "Deprecated") &&
-			!hasTag(rbxMember, "NotScriptable")
-		);
+		if (
+			!(this.security === "PluginSecurity" && PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) &&
+			!this.canRead(rbxClass.Name, rbxMember)
+		) {
+			return false;
+		}
+
+		if (hasTag(rbxMember, "Deprecated")) {
+			const firstChar = rbxMember.Name.charAt(0);
+			if (firstChar === firstChar.toLowerCase()) {
+				const pascalCaseName = firstChar.toUpperCase() + rbxMember.Name.slice(1);
+				const pascalCaseMember = rbxClass.Members.find((v) => v.Name === pascalCaseName);
+				if (pascalCaseMember !== undefined) {
+					return false;
+				}
+			}
+		}
+
+		if (hasTag(rbxMember, "NotScriptable")) {
+			return false;
+		}
+
+		return true;
 	}
 
 	private generateClassName(rbxClassName: string) {
@@ -1111,6 +1153,7 @@ export class ClassGenerator extends Generator {
 			this.write(` * **DO NOT USE!**`);
 			this.write(` *`);
 			this.write(` * This field exists to force TypeScript to recognize this as a nominal type`);
+			this.write(` * @hidden`);
 			this.write(` * @deprecated`);
 			this.write(` */`);
 			this.write(`readonly _nominal_${className}: unique symbol;`);
