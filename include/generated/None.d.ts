@@ -4146,7 +4146,7 @@ interface Beam extends Instance {
  * BindableEvents vs RemoteEvents
  * ------------------------------
  * 
- * While BindableEvents allow for one-way communication server-server scripts or client-client [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript), [RemoteEvents](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) allow for one-way communicate the server and client. For more information on RemoteEvents, read the `articles/Remote-Functions-and-Events|Remote Functions and Events` article.
+ * While BindableEvents allow for one-way communication server-server scripts or client-client [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript), [RemoteEvents](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) allow for one-way communicate the server and client. For more information on RemoteEvents, read the `Articles/Remote Functions and Events|Remote Functions and Events` article.
  * 
  * Limitations
  * -----------
@@ -4169,16 +4169,125 @@ interface BindableEvent<T extends Callback = Callback> extends Instance {
 	 */
 	readonly _nominal_BindableEvent: unique symbol;
 	/**
-	 * Calling this method will fire the “Event” event. This function does not yield, even no script has connected to the “Event” event and even if a connected function yields. There are limitations on the values that can be sent as arguments; see the code samples
+	 * Calling this method will fire the `BindablEvent/Event` event.
+	 * 
+	 * This function does not yield, even if no script has connected to the “Event” event and even if a connected function yields.
+	 * 
+	 * Parameter Limitations
+	 * ---------------------
+	 * 
+	 * Any type of Roblox object such as an [Enumeration](https://developer.roblox.com/api-reference/enum), [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance), or userdata can be passed as a parameter when a [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) is fired or a [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) invoked. Lua types such as numbers, strings, and booleans can also be passed, although there are some limitations on how data can be passed.
+	 * 
+	 * ### Mixed Tables
+	 * 
+	 * If a Table is passed as an argument to a BindableFunction it must be an array without missing entries or have string keys, not a mixture, or else the string keys will be lost.
+	 * 
+	 * Avoid passing a mixed table (some values indexed by number and others by key), as **only the data indexed by number will be passed**. For example, when the server receives the `colorData` table illustrated below, it will only see indices 1 and 2 containing `"Blue"` and `"Yellow"` while the other data will be lost in the transfer. Note, however, that **sub-tables** do not need to be indexed in the same way as their parent — in other words, as long as each individual sub-table is indexed with the same type, all of the data will be preserved.
+	 * 
+	 * ### Non-String Indices
+	 * 
+	 * If any indices of a passed table are non-string type ([Instance](https://developer.roblox.com/en-us/api-reference/class/Instance), userdata, function, another table, etc.), those indices will be converted to a string.
+	 * 
+	 * \-- Mixed table
+	 * local colorData = {}
+	 * colorData\[1\] = "Blue"
+	 * colorData\[2\] = "Yellow"
+	 * colorData\["Color1"\] = "Green"
+	 * colorData\["Color2"\] = "Red"
+	 * 
+	 * -- Table with two key-indexed sub-tables
+	 * local playerData = {}
+	 * playerData\["CharData"\] = {
+	 * 	-- All children indexed by key
+	 * 	CharName = "Diva Dragonslayer",
+	 * 	CharClass = "Knight"
+	 * }
+	 * playerData\["Inventory"\] = {
+	 * 	-- All children numerically indexed
+	 * 	"Sword",
+	 * 	"Bow",
+	 * 	"Rope"
+	 * }
+	 * 
+	 * ### Functions
+	 * 
+	 * Functions passed as parameters will not be replicated, therefore making it impossible to use these objects to pass functions between scripts.
 	 */
 	Fire(this: BindableEvent, ...args: Parameters<T>): void;
 	/**
-	 * This event is fired when any script calls the Fire method of the BindableEvent.
+	 * This event is fired when any script calls the [BindableEvent:Fire](https://developer.roblox.com/en-us/api-reference/function/BindableEvent/Fire) method is called, using the same arguments as parameters.
+	 * 
+	 * Limitations
+	 * -----------
+	 * 
+	 * ### Parameters
+	 * 
+	 * If a Table is passed as an argument to a [BindableEvent](https://developer.roblox.com/en-us/api-reference/class/BindableEvent) it must be an array without missing entries or have string keys, not a mixture, or else the string keys will be lost.
 	 */
 	readonly Event: RBXScriptSignal<T>;
 }
 
-/** A BindableFunction is a Roblox object that allows you to give access to functions to external scripts. Functions put in BindableFunctions will not be replicated, therefore making it impossible to use these objects to pass functions between scripts. Functions are invoked through [BindableFunction:Invoke](https://developer.roblox.com/en-us/api-reference/function/BindableFunction/Invoke), which calls [BindableFunction.OnInvoke](https://developer.roblox.com/en-us/api-reference/property/BindableFunction/OnInvoke). */
+/** An object that allows you to give access to functions to external scripts. Functions put in BindableFunctions will not be replicated, therefore making it impossible to use these objects to pass functions between scripts. Functions are invoked through [BindableFunction:Invoke](https://developer.roblox.com/en-us/api-reference/function/BindableFunction/Invoke), which calls [BindableFunction.OnInvoke](https://developer.roblox.com/en-us/api-reference/property/BindableFunction/OnInvoke).
+ * 
+ * BindableFunctions do not allow for communication between the server and client. If you are looking for this functionality use [RemoteFunctions](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction).
+ * 
+ * BindableEvents vs BindableFunctions
+ * -----------------------------------
+ * 
+ * Unlike BindableFunctions, [BindableEvents](https://developer.roblox.com/en-us/api-reference/class/BindableEvent) only allow for one-way communication between two scripts:
+ * 
+ * *   When a script invokes a BindableFunction it yields until the event is handled and returned by the subscribed script synchronously. This allows for scripts to effectively pass data during and after an event.
+ * *   When a script fires a BindableEvent, however, it does not yield for a return. The script continues executing as the event is handled by the subscribed script asynchronously.
+ * 
+ * BindableFunctions vs RemoteFunctions
+ * ------------------------------------
+ * 
+ * While BindableFunctions allow for two-way communication server-server scripts or client-client [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript), [RemoteFunctions](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) allow for two-way communicate the server and client. For more information on RemoteFunctions, read the `Articles/Remote Functions and Events|Remote Functions and Events` article.
+ * 
+ * Limitations
+ * -----------
+ * 
+ * Invocations will **yield** until the corresponding callback is found. If the callback was never set, the script that invokes it will not resume execution.
+ * 
+ * \### Subscription Only one function can be bound to \`BindableFunction/Invoke\` at a time. If you assign multiple functions, only the last one assigned will be used.
+ * 
+ * ### Parameter Limitations
+ * 
+ * Any type of Roblox object such as an [Enumeration](https://developer.roblox.com/api-reference/enum), [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance), or userdata can be passed as a parameter when a [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) is fired or a [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) invoked. Lua types such as numbers, strings, and booleans can also be passed, although there are some limitations on how data can be passed.
+ * 
+ * #### Mixed Tables
+ * 
+ * Avoid passing a mixed table (some values indexed by number and others by key), as **only the data indexed by number will be passed**. For example, when the server receives the `colorData` table illustrated below, it will only see indices 1 and 2 containing `"Blue"` and `"Yellow"` while the other data will be lost in the transfer. Note, however, that **sub-tables** do not need to be indexed in the same way as their parent — in other words, as long as each individual sub-table is indexed with the same type, all of the data will be preserved.
+ * 
+ * #### Non-String Indices
+ * 
+ * If any indices of a passed table are non-string type ([Instance](https://developer.roblox.com/en-us/api-reference/class/Instance), userdata, function, another table, etc.), those indices will be converted to a string.
+ * 
+ * \-- Mixed table
+ * local colorData = {}
+ * colorData\[1\] = "Blue"
+ * colorData\[2\] = "Yellow"
+ * colorData\["Color1"\] = "Green"
+ * colorData\["Color2"\] = "Red"
+ * 
+ * -- Table with two key-indexed sub-tables
+ * local playerData = {}
+ * playerData\["CharData"\] = {
+ * 	-- All children indexed by key
+ * 	CharName = "Diva Dragonslayer",
+ * 	CharClass = "Knight"
+ * }
+ * playerData\["Inventory"\] = {
+ * 	-- All children numerically indexed
+ * 	"Sword",
+ * 	"Bow",
+ * 	"Rope"
+ * }
+ * 
+ * #### Functions
+ * 
+ * Functions passed as parameters will not be replicated, therefore making it impossible to use these objects to pass functions between scripts.
+ */
 interface BindableFunction<T extends Callback = Callback> extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -25193,7 +25302,7 @@ interface ScriptContext extends Instance {
 	/**
 	 * Fired when an error occurs.
 	 */
-	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script: LuaSourceContainer) => void>;
+	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script?: LuaSourceContainer) => void>;
 }
 
 /** A semantic, organized place to put your server-sided game logic, which does not interfere with the world. Scripts will run inside this service, and will not replicate to game clients, allowing for secure storage of your scripts. */
@@ -26827,16 +26936,11 @@ interface Sparkles extends Instance {
 	 */
 	Enabled: boolean;
 	/**
-	 * The SparkleColor property determines the color of all the particles emit by a [Sparkles](https://developer.roblox.com/en-us/api-reference/class/Sparkles) object (both existing and future particles). It behaves similarly to [ParticleEmitter.Color](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Color), except that it is only one color and not a [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence). Sparkles have a natural color sequence applied which is most apparent when this property is set to white; sparkles very faintly animate between a subtle green and red. Below, you can see two [Sparkles](https://developer.roblox.com/en-us/api-reference/class/Sparkles) objects with differing SparkleColor (the left is default, the right is white).
+	 * **Note** This property functions identically to [Sparkles.Color](https://developer.roblox.com/en-us/api-reference/property/Sparkles/Color)
 	 * 
-	 * ![Two Sparkles objects with differing SparkleColor](https://developer.roblox.com/assets/blt22f35a953a5b6687/Sparkles_SparkleColor.png)
+	 * The SparkleColor property determines the color of all the particles emit by a [Sparkles](https://developer.roblox.com/en-us/api-reference/class/Sparkles) object (both existing and future particles). It behaves similarly to [ParticleEmitter.Color](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Color), except that it is only one color and not a [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence). Sparkles have a natural color sequence applied which is most apparent when this property is set to white; sparkles very faintly animate between a subtle green and red.
 	 * 
 	 * It should be noted that sparkles have a partial [ParticleEmitter.LightEmission](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/LightEmission) effect, so dark colors tend to render more transparent and white colors look very bright.
-	 * 
-	 * Note
-	 * ----
-	 * 
-	 * This property functions identically to [Sparkles.Color](https://developer.roblox.com/en-us/api-reference/property/Sparkles/Color).
 	 */
 	SparkleColor: Color3;
 }
@@ -27490,7 +27594,7 @@ interface Teams extends Instance {
 	RebalanceTeams(this: Teams): void;
 }
 
-/** This class is an instance that is returned by the [TeleportService:TeleportAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportAsync) function with information about the teleport. */
+/** This class is an instance that is returned by the `TeleportAsync` function with information about the teleport. */
 interface TeleportAsyncResult extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -27505,7 +27609,7 @@ interface TeleportAsyncResult extends Instance {
 	 * 
 	 * **Note**
 	 * 
-	 * This field is not the same as the instanceId, please see: [DataModel.PrivateServerId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PrivateServerId)
+	 * This field is not the same as the instanceId, please see: \`DataModel/PrivateServerId\`
 	 * 
 	 * See also
 	 * --------
@@ -27573,6 +27677,12 @@ interface TeleportOptions extends Instance {
 	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
 	 */
 	ShouldReserveServer: boolean;
+	/**
+	 * See also
+	 * --------
+	 * 
+	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
+	 */
 	GetTeleportData(this: TeleportOptions): unknown;
 	/**
 	 * This is a setter function for data to be passed to the destination place. On the destination place, this data can be retrieved using [TeleportService:GetLocalPlayerTeleportData](https://developer.roblox.com/en-us/api-reference/function/TeleportService/GetLocalPlayerTeleportData).
