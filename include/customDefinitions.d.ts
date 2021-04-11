@@ -667,6 +667,13 @@ interface RunService extends Instance {
 	BindToRenderStep(this: RunService, name: string, priority: number, callback: (deltaTime: number) => void): void;
 }
 
+interface ScriptContext extends Instance {
+	/**
+	 * `script` will be `undefined` if the error originates from either the command bar or the F9 console
+	 */
+	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script?: LuaSourceContainer) => void>;
+}
+
 interface ScriptDebugger extends Instance {
 	GetGlobals(this: ScriptDebugger): Map<string, unknown>;
 	GetLocals(this: ScriptDebugger, stackFrame?: number): Map<string, unknown>;
