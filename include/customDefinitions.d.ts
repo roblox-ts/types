@@ -916,12 +916,6 @@ interface UserInputService extends Instance {
 	GetFocusedTextBox(this: UserInputService): TextBox | undefined;
 }
 
-interface UserInfo {
-	Id: number;
-	Username: string;
-	DisplayName: string;
-}
-
 interface UserService extends Instance {
 	/** @rbxts server */
 	GetUserInfosByUserIdsAsync(this: UserService, userIds: Array<number>): Array<UserInfo>;

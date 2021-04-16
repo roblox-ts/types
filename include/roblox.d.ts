@@ -38,6 +38,12 @@ interface EmoteDictionary {
 
 type EquippedEmotes = Array<{ Name: string; Slot: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 }>;
 
+interface UserInfo {
+	Id: number;
+	Username: string;
+	DisplayName: string;
+}
+
 interface GroupInfo {
 	Name: string;
 	Id: number;
