@@ -916,6 +916,11 @@ interface UserInputService extends Instance {
 	GetFocusedTextBox(this: UserInputService): TextBox | undefined;
 }
 
+interface UserService extends Instance {
+	/** @rbxts server */
+	GetUserInfosByUserIdsAsync(this: UserService, userIds: Array<number>): Array<UserInfo>;
+}
+
 interface UserSettings extends GenericSettings<{ UserGameSettings: UserGameSettings }> {}
 
 /**
