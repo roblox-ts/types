@@ -53,7 +53,7 @@ interface Animator extends Instance {
 	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
 }
 
-/** @rbxts server */
+/** @server */
 interface AssetService extends Instance {
 	CreatePlaceInPlayerInventoryAsync(
 		this: AssetService,
@@ -72,11 +72,11 @@ interface Attachment extends Instance {
 }
 
 interface BadgeService extends Instance {
-	/** @rbxts server */
+	/** @server */
 	AwardBadge(this: BadgeService, userId: number, badgeId: number): boolean;
-	/** @rbxts server */
+	/** @server */
 	GetBadgeInfoAsync(this: BadgeService, badgeId: number): BadgeInfo;
-	/** @rbxts server */
+	/** @server */
 	UserHasBadgeAsync(this: BadgeService, userId: number, badgeId: number): boolean;
 }
 
@@ -88,28 +88,28 @@ interface BasePart extends PVInstance {
 	GetRootPart(this: BasePart): BasePart;
 	GetJoints(this: BasePart): Array<Constraint | JointInstance>;
 	GetTouchingParts(this: BasePart): Array<BasePart>;
-	/** @rbxts server */
+	/** @server */
 	SubtractAsync(
 		this: BasePart,
 		parts: Array<BasePart>,
 		collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>,
 	): UnionOperation;
-	/** @rbxts server */
+	/** @server */
 	UnionAsync(
 		this: BasePart,
 		parts: Array<BasePart>,
 		collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>,
 	): UnionOperation;
 
-	/** @rbxts server */
+	/** @server */
 	CanSetNetworkOwnership(this: BasePart): LuaTuple<[boolean, string | undefined]>;
-	/** @rbxts server */
+	/** @server */
 	GetNetworkOwner(this: BasePart): Player | undefined;
-	/** @rbxts server */
+	/** @server */
 	SetNetworkOwner(this: BasePart, playerInstance?: Player): void;
-	/** @rbxts server */
+	/** @server */
 	GetNetworkOwnershipAuto(this: BasePart): boolean;
-	/** @rbxts server */
+	/** @server */
 	SetNetworkOwnershipAuto(this: BasePart): void;
 }
 
@@ -164,7 +164,7 @@ interface ContentProvider extends Instance {
 	): void;
 }
 
-/** @rbxts client */
+/** @client */
 interface ContextActionService extends Instance {
 	BindAction(
 		this: ContextActionService,
@@ -194,7 +194,7 @@ interface DataModel extends ServiceProvider<Services> {
 
 interface DataStorePages extends Pages<{ key: string; value: unknown }> {}
 
-/** @rbxts server */
+/** @server */
 interface DataStoreService extends Instance {
 	GetDataStore(this: DataStoreService, name: string, scope?: string): GlobalDataStore;
 	GetGlobalDataStore(this: DataStoreService): GlobalDataStore;
@@ -220,7 +220,7 @@ interface GamePassService extends Instance {
 
 interface GenericSettings<S = unknown> extends ServiceProvider<S> {}
 
-/** @rbxts server */
+/** @server */
 interface GlobalDataStore extends Instance {
 	GetAsync<T>(this: GlobalDataStore, key: string): T | undefined;
 	IncrementAsync(this: GlobalDataStore, key: string, delta?: number): number;
@@ -293,7 +293,7 @@ interface GuiObject extends GuiBase2d {
 	): boolean;
 }
 
-/** @rbxts client */
+/** @client */
 interface GuiService extends Instance {
 	AddSelectionParent(this: GuiService, selectionName: string, selectionParent: GuiObject): void;
 	AddSelectionTuple(this: GuiService, selectionName: string, selections: Array<GuiObject>): void;
@@ -306,10 +306,10 @@ interface GuiService extends Instance {
 }
 
 interface HttpService extends Instance {
-	/** @rbxts server */
+	/** @server */
 	GetAsync(this: HttpService, url: string, nocache?: boolean, headers?: HttpHeaders): string;
 
-	/** @rbxts server */
+	/** @server */
 	PostAsync(
 		this: HttpService,
 		url: string,
@@ -319,7 +319,7 @@ interface HttpService extends Instance {
 		headers?: HttpHeaders,
 	): string;
 
-	/** @rbxts server */
+	/** @server */
 	RequestAsync(this: HttpService, requestOptions: RequestAsyncRequest): RequestAsyncResponse;
 
 	JSONDecode<T>(this: HttpService, input: string): T;
@@ -485,7 +485,7 @@ interface MarketplaceService extends Instance {
 	}>;
 }
 
-/** @rbxts server */
+/** @server */
 interface MessagingService extends Instance {
 	SubscribeAsync(
 		this: MessagingService,
@@ -511,7 +511,7 @@ interface ObjectValue extends ValueBase {
 	readonly Changed: RBXScriptSignal<(value?: Instance) => void>;
 }
 
-/** @rbxts server */
+/** @server */
 interface OrderedDataStore extends GlobalDataStore {
 	GetSortedAsync(
 		this: OrderedDataStore,
@@ -548,9 +548,9 @@ interface Player extends Instance {
 	 * One should check the LocationType of each member of this array in order to verify which members are present. Should be compared to the LocationType const enum.
 	 */
 	GetFriendsOnline(this: Player, maxFriends?: number): Array<FriendOnlineInfo>;
-	/** @rbxts server */
+	/** @server */
 	LoadCharacter(this: Player): void;
-	/** @rbxts server */
+	/** @server */
 	LoadCharacterWithHumanoidDescription(this: Player, humanoidDescription: HumanoidDescription): void;
 	GetMouse(this: Player): PlayerMouse;
 	GetJoinData(this: Player): PlayerJoinInfo;
@@ -559,7 +559,7 @@ interface Player extends Instance {
 interface PlayerGui extends BasePlayerGui {}
 
 interface Players extends Instance {
-	/** @rbxts client */
+	/** @client */
 	readonly LocalPlayer: Player;
 	GetPlayerByUserId(this: Players, userId: number): Player | undefined;
 	GetPlayerFromCharacter(this: Players, character: Instance | undefined): Player | undefined;
@@ -680,10 +680,10 @@ interface ScriptDebugger extends Instance {
 	GetUpvalues(this: ScriptDebugger, stackFrame?: number): Map<string, unknown>;
 }
 
-/** @rbxts server */
+/** @server */
 interface ServerScriptService extends Instance {}
 
-/** @rbxts server */
+/** @server */
 interface ServerStorage extends Instance {}
 
 interface ServiceProvider<S = unknown> extends Instance {
@@ -750,19 +750,19 @@ interface TeleportService extends Instance {
 	readonly TeleportInitFailed: RBXScriptSignal<
 		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string) => void
 	>;
-	/** @rbxts server */
+	/** @server */
 	GetPlayerPlaceInstanceAsync(this: TeleportService, userId: number): LuaTuple<[boolean, string, number, string]>;
-	/** @rbxts server */
+	/** @server */
 	ReserveServer(this: TeleportService, placeId: number): LuaTuple<[string, string]>;
-	/** @rbxts client */
+	/** @client */
 	GetArrivingTeleportGui(this: TeleportService): ScreenGui | undefined;
-	/** @rbxts client */
+	/** @client */
 	GetLocalPlayerTeleportData(this: TeleportService): unknown;
-	/** @rbxts client */
+	/** @client */
 	GetTeleportSetting(this: TeleportService, setting: string): unknown;
-	/** @rbxts client */
+	/** @client */
 	SetTeleportGui(this: TeleportService, gui: ScreenGui): void;
-	/** @rbxts client */
+	/** @client */
 	SetTeleportSetting(this: TeleportService, setting: string, value: TeleportData): void;
 	Teleport(
 		this: TeleportService,
@@ -832,7 +832,7 @@ interface TextBox extends GuiObject {
 }
 
 interface TextService extends Instance {
-	/** @rbxts server */
+	/** @server */
 	FilterStringAsync(
 		this: TextService,
 		stringToFilter: string,
@@ -857,7 +857,7 @@ interface UIPageLayout extends UIGridStyleLayout {
 	JumpTo(this: UIPageLayout, page: GuiObject): void;
 }
 
-/** @rbxts client */
+/** @client */
 interface UserInputService extends Instance {
 	readonly InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly InputChanged: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
@@ -917,7 +917,7 @@ interface UserInputService extends Instance {
 }
 
 interface UserService extends Instance {
-	/** @rbxts server */
+	/** @server */
 	GetUserInfosByUserIdsAsync(this: UserService, userIds: Array<number>): Array<UserInfo>;
 }
 
