@@ -3457,20 +3457,6 @@ interface StudioTheme extends Instance {
 	 * See the [StudioStyleGuideColor](https://developer.roblox.com/en-us/api-reference/enum/StudioStyleGuideColor) reference for a list of Studio elements and [StudioStyleGuideModifier](https://developer.roblox.com/en-us/api-reference/enum/StudioStyleGuideModifier) for a list of modifiers.
 	 */
 	GetColor(this: StudioTheme, styleguideitem: CastsToEnum<Enum.StudioStyleGuideColor>, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): Color3;
-	/**
-	 * The GetPath function returns the path of an asset (or image) for the `Id` and `Modifier`. We can have different icons to be loaded depending on the theme.
-	 * 
-	 * The `StyleGuideModifer` argument's default value is `Enum\StyleGuideModifier`, which applies no modifier.
-	 * 
-	 * This is intended for use within [Plugins](https://developer.roblox.com/en-us/api-reference/class/Plugin), but will also execute in the Command Line.
-	 * 
-	 * For instance, if you would like to get the path of the “MoreButton” image, you would use the following code:
-	 * 
-	 * settings().Studio.Theme:GetPath("MoreButton")
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	GetPath(this: StudioTheme, assetid: string, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): string;
 }
 
 /** TaskScheduler is a read-only settings class responsible for the Task Scheduler feature.  

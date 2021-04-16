@@ -41,6 +41,7 @@ interface Services {
 	LocalizationService: LocalizationService;
 	LogService: LogService;
 	MarketplaceService: MarketplaceService;
+	MemoryStoreService: MemoryStoreService;
 	MessagingService: MessagingService;
 	PathfindingService: PathfindingService;
 	PhysicsService: PhysicsService;
@@ -340,6 +341,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	InputObject: InputObject;
 	InstanceAdornment: InstanceAdornment;
 	InventoryPages: InventoryPages;
+	MemoryStoreQueue: MemoryStoreQueue;
 	Mouse: Mouse;
 	NetworkMarker: NetworkMarker;
 	ObjectVersionInfo: ObjectVersionInfo;
@@ -19043,6 +19045,41 @@ interface MarketplaceService extends Instance {
             </ul>
 	 */
 	ProcessReceipt: ((receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision) | undefined;
+}
+
+interface MemoryStoreQueue extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MemoryStoreQueue: unique symbol;
+	/**
+	 * Tags: Yields
+	 */
+	AddAsync(this: MemoryStoreQueue, value: unknown, priority?: number, expiration?: number): void;
+	/**
+	 * Tags: Yields
+	 */
+	ReadAsync(this: MemoryStoreQueue, count: number, allOrNothing?: boolean, waitTimeout?: number): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	RemoveAsync(this: MemoryStoreQueue, id: string): void;
+}
+
+interface MemoryStoreService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MemoryStoreService: unique symbol;
+	GetQueue(this: MemoryStoreService, name: string, invisibilityTimeout?: number): Instance | undefined;
 }
 
 /** The MessagingService allows game servers in the same game to communicate with each other in real time (< 1 second) using topics. Topics are developer defined strings (1-80 characters) that game servers can send and receive messages.
