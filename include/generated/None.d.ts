@@ -31306,7 +31306,7 @@ interface UserService extends Instance {
 	 * *   Since `GetUserInfosByUserIdsAsync()` makes an external web request, it will yield and may fail if the backend service is experiencing interruptions. Ensure you can handle downtime appropriately by wrapping the method with a pcall.
 	 * Tags: Yields
 	 */
-	GetUserInfosByUserIdsAsync(this: UserService, userIds: Array<any>): unknown;
+	GetUserInfosByUserIdsAsync(this: UserService, userIds: Array<number>): Array<UserInfo>;
 }
 
 /** The VRService is a service that is responsible for handling interactions between Roblox and Virtual Reality (VR). If you're interested in incorporating VR compatibility into your game, this is the service for you!
