@@ -4300,7 +4300,51 @@ interface BindableFunction<T extends Callback = Callback> extends Instance {
 	 */
 	readonly _nominal_BindableFunction: unique symbol;
 	/**
-	 * Invoke will call the OnInvoke callback and return any values that were returned by the callback (if any). If the OnInvoke callback is not set, this method will yield until one is set. If OnInvoke yields, this method will also yield. There are limitations on the values that can be sent as arguments; see the code samples.
+	 * Invoke will call the [BindableFunction.OnInvoke](https://developer.roblox.com/en-us/api-reference/property/BindableFunction/OnInvoke) callback and return any values that were returned by the callback (if any).
+	 * 
+	 * Limitations
+	 * -----------
+	 * 
+	 * Invocations will **yield** until the corresponding callback is found. If the callback was never set, the script that invokes it will not resume execution.
+	 * 
+	 * \### Subscription Only one function can be bound to \`BindableFunction/Invoke\` at a time. If you assign multiple functions, only the last one assigned will be used.
+	 * 
+	 * ### Parameter Limitations
+	 * 
+	 * Any type of Roblox object such as an [Enumeration](https://developer.roblox.com/api-reference/enum), [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance), or userdata can be passed as a parameter when a [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) is fired or a [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) invoked. Lua types such as numbers, strings, and booleans can also be passed, although there are some limitations on how data can be passed.
+	 * 
+	 * #### Mixed Tables
+	 * 
+	 * Avoid passing a mixed table (some values indexed by number and others by key), as **only the data indexed by number will be passed**. For example, when the server receives the `colorData` table illustrated below, it will only see indices 1 and 2 containing `"Blue"` and `"Yellow"` while the other data will be lost in the transfer. Note, however, that **sub-tables** do not need to be indexed in the same way as their parent — in other words, as long as each individual sub-table is indexed with the same type, all of the data will be preserved.
+	 * 
+	 * #### Non-String Indices
+	 * 
+	 * If any indices of a passed table are non-string type ([Instance](https://developer.roblox.com/en-us/api-reference/class/Instance), userdata, function, another table, etc.), those indices will be converted to a string.
+	 * 
+	 * \-- Mixed table
+	 * local colorData = {}
+	 * colorData\[1\] = "Blue"
+	 * colorData\[2\] = "Yellow"
+	 * colorData\["Color1"\] = "Green"
+	 * colorData\["Color2"\] = "Red"
+	 * 
+	 * -- Table with two key-indexed sub-tables
+	 * local playerData = {}
+	 * playerData\["CharData"\] = {
+	 * 	-- All children indexed by key
+	 * 	CharName = "Diva Dragonslayer",
+	 * 	CharClass = "Knight"
+	 * }
+	 * playerData\["Inventory"\] = {
+	 * 	-- All children numerically indexed
+	 * 	"Sword",
+	 * 	"Bow",
+	 * 	"Rope"
+	 * }
+	 * 
+	 * #### Functions
+	 * 
+	 * Functions passed as parameters will not be replicated, therefore making it impossible to use these objects to pass functions between scripts.
 	 * Tags: Yields
 	 */
 	Invoke(this: BindableFunction, ...args: Parameters<T>): ReturnType<T>;
@@ -6077,10 +6121,10 @@ interface Constraint extends Instance {
  * 
  * When RigidityEnabled is false, then the force will be determined by the MaxTorque, MaxAngularVelocity, and Responsiveness. MaxForce and MaxVelocity are caps to the torque and angular velocity respectively. The actual scale of the torque is determined by the Responsiveness. The mechanism for responsiveness is a little complicated, but put simply the higher the responsiveness, the quicker the constraint will try to reach its goal.
  * 
- * Reaction Force
- * --------------
+ * Reaction Torque
+ * ---------------
  * 
- * AlignOrientations by default only apply a torque on Attachment0's parent Part. The parent Part of Attachment1 remains unaffected. However, a torque can also be applied to Attachment1 by enabling the `AlignOrientation/ReactionForceEnabled`. This will cause a torque to be applied to both Attachment0 and Attachment1 in equal and opposite directions.
+ * AlignOrientations by default only apply a torque on Attachment0's parent Part. The parent Part of Attachment1 remains unaffected. However, a torque can also be applied to Attachment1 by enabling the [AlignOrientation.ReactionTorqueEnabled](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/ReactionTorqueEnabled). This will cause a torque to be applied to both Attachment0 and Attachment1 in equal and opposite directions.
  * 
  * See also
  * --------
@@ -18457,7 +18501,7 @@ interface LocalizationTable extends Instance {
 	/**
 	 * Sets the contents of the LocalizationTable.
 	 * 
-	 * The entries parameter should be an array of dictionaries in the same format as the one returned from the \`LocalizationTable/GetEntries\` function.
+	 * The entries parameter should be an array of dictionaries in the same format as the one returned from the [LocalizationTable:GetEntries](https://developer.roblox.com/en-us/api-reference/function/LocalizationTable/GetEntries) function.
 	 */
 	SetEntries(this: LocalizationTable, entries: Array<LocalizationEntry>): void;
 	/**
@@ -28283,6 +28327,9 @@ interface TeleportService extends Instance {
 	 * *   Teleport any number of players to a Public Server
 	 * *   Follow a Friend to a Different Place
 	 * *   Teleport any number of Players to a Reserved Server
+	 * 
+	 * **Limitation when teleporting multiple players**  
+	 * When teleporting multiple players, they can only be teleported to a place within the same game universe. This function can not teleport more than 50 players in a single party.
 	 * 
 	 * Errors
 	 * ------
