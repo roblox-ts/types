@@ -954,6 +954,10 @@ interface NetworkSettings extends Instance {
 	 */
 	readonly _nominal_NetworkSettings: unique symbol;
 	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	EmulatedTotalMemoryInMB: number;
+	/**
 	 * ExtraMemoryUsed is an unused debug property intended for streaming.  
 	 * It appears to specify how much extra memory is allocated to streaming, in MBs.
 	 * Tags: Hidden, NotReplicated
@@ -3380,6 +3384,7 @@ interface StudioService extends Instance {
 	IsPluginUpToDate(this: StudioService, assetId: number, currentAssetVersion: number): boolean;
 	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
 	PublishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
+	RequestCloseStudio(this: StudioService): void;
 	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
 	SetDocumentDisplayName(this: StudioService, newName: string): void;
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
@@ -3435,7 +3440,7 @@ interface StudioService extends Instance {
 	readonly OnPluginInstalledFromWeb: RBXScriptSignal<(pluginId: string) => void>;
 	readonly OnPublishAsPlugin: RBXScriptSignal<(instances: Array<Instance>) => void>;
 	readonly OnPublishPlaceToRoblox: RBXScriptSignal<(isOverwritePublish: boolean) => void>;
-	readonly OnSaveOrPublishPlaceToRoblox: RBXScriptSignal<(showGameSelect: boolean, isPublish: boolean) => void>;
+	readonly OnSaveOrPublishPlaceToRoblox: RBXScriptSignal<(showGameSelect: boolean, isPublish: boolean, closeAfterSave: boolean) => void>;
 	readonly OnSaveToRoblox: RBXScriptSignal<(instances: Array<Instance>) => void>;
 	readonly PromptTransformPluginCheckEnable: RBXScriptSignal<() => void>;
 }

@@ -49,6 +49,7 @@ interface Services {
 	PluginPolicyService: PluginPolicyService;
 	PolicyService: PolicyService;
 	ProximityPromptService: ProximityPromptService;
+	PublishService: PublishService;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedScriptService: ReplicatedScriptService;
 	ReplicatedStorage: ReplicatedStorage;
@@ -342,6 +343,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	InstanceAdornment: InstanceAdornment;
 	InventoryPages: InventoryPages;
 	MemoryStoreQueue: MemoryStoreQueue;
+	MemoryStoreSortedMap: MemoryStoreSortedMap;
 	Mouse: Mouse;
 	NetworkMarker: NetworkMarker;
 	ObjectVersionInfo: ObjectVersionInfo;
@@ -19124,6 +19126,38 @@ interface MemoryStoreService extends Instance {
 	 */
 	readonly _nominal_MemoryStoreService: unique symbol;
 	GetQueue(this: MemoryStoreService, name: string, invisibilityTimeout?: number): Instance | undefined;
+	GetSortedMap(this: MemoryStoreService, name: string): Instance | undefined;
+}
+
+interface MemoryStoreSortedMap extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MemoryStoreSortedMap: unique symbol;
+	/**
+	 * Tags: Yields
+	 */
+	GetAsync(this: MemoryStoreSortedMap, key: string): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	GetRangeAsync(this: MemoryStoreSortedMap, direction: CastsToEnum<Enum.SortDirection>, count: number, exclusiveLowerBound?: string, exclusiveUpperBound?: string): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	RemoveAsync(this: MemoryStoreSortedMap, key: string): void;
+	/**
+	 * Tags: Yields
+	 */
+	SetAsync(this: MemoryStoreSortedMap, key: string, value: unknown, expiration?: number): boolean;
+	/**
+	 * Tags: Yields
+	 */
+	UpdateAsync(this: MemoryStoreSortedMap, key: string, transformFunction: Function, expiration?: number): void;
 }
 
 /** The MessagingService allows game servers in the same game to communicate with each other in real time (< 1 second) using topics. Topics are developer defined strings (1-80 characters) that game servers can send and receive messages.
@@ -21979,6 +22013,7 @@ interface Workspace extends WorldRoot {
 	 * Tags: NotReplicated
 	 */
 	AllowThirdPartySales: boolean;
+	ClientAnimatorThrottling: Enum.ClientAnimatorThrottlingMode;
 	/**
 	 * The [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) object being used by the local player.
 	 * 
@@ -24800,6 +24835,17 @@ interface ProximityPromptService extends Instance {
 	 * This event triggers when the player interacts with this prompt.
 	 */
 	readonly PromptTriggered: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
+}
+
+interface PublishService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PublishService: unique symbol;
 }
 
 /** A **RemoteEvent** is designed to provide a one-way message between the server and clients, allowing [Scripts](https://developer.roblox.com/en-us/api-reference/class/Script) to call code in [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) and vice-versa. This message can be directed from one client to the server, from the server to a particular client, or from the server to all clients.
