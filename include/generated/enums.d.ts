@@ -1010,9 +1010,81 @@ declare namespace Enum {
 
 		export const Video: Video;
 
+		export interface TeeShirtAccessory {
+			Name: "TeeShirtAccessory";
+			Value: 63;
+			EnumType: EnumType<AssetType>;
+		}
+
+		export const TeeShirtAccessory: TeeShirtAccessory;
+
+		export interface ShirtAccessory {
+			Name: "ShirtAccessory";
+			Value: 64;
+			EnumType: EnumType<AssetType>;
+		}
+
+		export const ShirtAccessory: ShirtAccessory;
+
+		export interface PantsAccessory {
+			Name: "PantsAccessory";
+			Value: 65;
+			EnumType: EnumType<AssetType>;
+		}
+
+		export const PantsAccessory: PantsAccessory;
+
+		export interface JacketAccessory {
+			Name: "JacketAccessory";
+			Value: 66;
+			EnumType: EnumType<AssetType>;
+		}
+
+		export const JacketAccessory: JacketAccessory;
+
+		export interface SweaterAccessory {
+			Name: "SweaterAccessory";
+			Value: 67;
+			EnumType: EnumType<AssetType>;
+		}
+
+		export const SweaterAccessory: SweaterAccessory;
+
+		export interface ShortsAccessory {
+			Name: "ShortsAccessory";
+			Value: 68;
+			EnumType: EnumType<AssetType>;
+		}
+
+		export const ShortsAccessory: ShortsAccessory;
+
+		export interface LeftShoeAccessory {
+			Name: "LeftShoeAccessory";
+			Value: 69;
+			EnumType: EnumType<AssetType>;
+		}
+
+		export const LeftShoeAccessory: LeftShoeAccessory;
+
+		export interface RightShoeAccessory {
+			Name: "RightShoeAccessory";
+			Value: 70;
+			EnumType: EnumType<AssetType>;
+		}
+
+		export const RightShoeAccessory: RightShoeAccessory;
+
+		export interface DressSkirtAccessory {
+			Name: "DressSkirtAccessory";
+			Value: 71;
+			EnumType: EnumType<AssetType>;
+		}
+
+		export const DressSkirtAccessory: DressSkirtAccessory;
+
 		export function GetEnumItems(this: defined): Array<AssetType>
 	}
-	export type AssetType = AssetType.Image | AssetType.TeeShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video;
+	export type AssetType = AssetType.Image | AssetType.TeeShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TeeShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory;
 	export namespace AssetTypeVerification {
 		export interface Default {
 			Name: "Default";
@@ -1322,9 +1394,81 @@ declare namespace Enum {
 
 		export const EmoteAnimation: EmoteAnimation;
 
+		export interface TeeShirtAccessory {
+			Name: "TeeShirtAccessory";
+			Value: 63;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const TeeShirtAccessory: TeeShirtAccessory;
+
+		export interface ShirtAccessory {
+			Name: "ShirtAccessory";
+			Value: 64;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const ShirtAccessory: ShirtAccessory;
+
+		export interface PantsAccessory {
+			Name: "PantsAccessory";
+			Value: 65;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const PantsAccessory: PantsAccessory;
+
+		export interface JacketAccessory {
+			Name: "JacketAccessory";
+			Value: 66;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const JacketAccessory: JacketAccessory;
+
+		export interface SweaterAccessory {
+			Name: "SweaterAccessory";
+			Value: 67;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const SweaterAccessory: SweaterAccessory;
+
+		export interface ShortsAccessory {
+			Name: "ShortsAccessory";
+			Value: 68;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const ShortsAccessory: ShortsAccessory;
+
+		export interface LeftShoeAccessory {
+			Name: "LeftShoeAccessory";
+			Value: 69;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const LeftShoeAccessory: LeftShoeAccessory;
+
+		export interface RightShoeAccessory {
+			Name: "RightShoeAccessory";
+			Value: 70;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const RightShoeAccessory: RightShoeAccessory;
+
+		export interface DressSkirtAccessory {
+			Name: "DressSkirtAccessory";
+			Value: 71;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const DressSkirtAccessory: DressSkirtAccessory;
+
 		export function GetEnumItems(this: defined): Array<AvatarAssetType>
 	}
-	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation;
+	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TeeShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory;
 	export namespace AvatarContextMenuOption {
 		export interface Friend {
 			Name: "Friend";
@@ -1869,6 +2013,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<ButtonStyle>
 	}
 	export type ButtonStyle = ButtonStyle.Custom | ButtonStyle.RobloxButtonDefault | ButtonStyle.RobloxButton | ButtonStyle.RobloxRoundButton | ButtonStyle.RobloxRoundDefaultButton | ButtonStyle.RobloxRoundDropdownButton;
+	export namespace CageType {
+		export interface Inner {
+			Name: "Inner";
+			Value: 0;
+			EnumType: EnumType<CageType>;
+		}
+
+		export const Inner: Inner;
+
+		export interface Outer {
+			Name: "Outer";
+			Value: 1;
+			EnumType: EnumType<CageType>;
+		}
+
+		export const Outer: Outer;
+
+		export function GetEnumItems(this: defined): Array<CageType>
+	}
+	export type CageType = CageType.Inner | CageType.Outer;
 	export namespace CameraMode {
 		export interface Classic {
 			Name: "Classic";
@@ -2477,6 +2641,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<ChatStyle>
 	}
 	export type ChatStyle = ChatStyle.Classic | ChatStyle.Bubble | ChatStyle.ClassicAndBubble;
+	export namespace ClientAnimatorThrottlingMode {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<ClientAnimatorThrottlingMode>;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: EnumType<ClientAnimatorThrottlingMode>;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: EnumType<ClientAnimatorThrottlingMode>;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: defined): Array<ClientAnimatorThrottlingMode>
+	}
+	export type ClientAnimatorThrottlingMode = ClientAnimatorThrottlingMode.Default | ClientAnimatorThrottlingMode.Disabled | ClientAnimatorThrottlingMode.Enabled;
 	export namespace CollisionFidelity {
 		export interface Default {
 			Name: "Default";
