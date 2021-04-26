@@ -6926,6 +6926,10 @@ interface Torque extends Constraint {
 	Torque: Vector3;
 }
 
+/** A torsion spring applies a torque based on a relative angle and a relative angular velocity. Specifically, torsion springs try to bring two axes from two parts together in a compliance way.
+ * 
+ * This constraint is ideal for building vehicle suspension as demonstrated in `/articles/building carkit 1|Building a Basic Car`.
+ */
 interface TorsionSpringConstraint extends Constraint {
 	/**
 	 * **DO NOT USE!**
@@ -6936,37 +6940,95 @@ interface TorsionSpringConstraint extends Constraint {
 	 */
 	readonly _nominal_TorsionSpringConstraint: unique symbol;
 	/**
-	 * The number of coils in the in-game visual. Value in [0, 8].
+	 * This property indicates the number of spring coils for visualization. The default value is 8.
 	 */
 	Coils: number;
 	/**
-	 * Current angle between the attachments' secondary axes. Value in [0, inf).
+	 * This property indicates the current angle, in degrees, of the `TorsionSpringConstraint|TorsionSpringConstraint's` limiting cone. The limiting cone is formed at the position of the constraint's [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0) around its secondary axis with an angle equal to [MaxAngle](https://developer.roblox.com/en-us/api-reference/property/TorsionSpringConstraint/MaxAngle).
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly CurrentAngle: number;
 	/**
-	 * The damping parameter of the spring. The force is scaled based on relative angular velocity. The units of this property are torque / angular velocity. Value in [0, inf).
+	 * This property determines how the angular velocity is dampened by the constraint and is expressed as the torsional damping `c_t` in the formula:
+	 * 
+	 * T=-k\_t (Δ\*Θ) - c\_t (Δ⋅Θ)
+	 * 
+	 * The value defaults to 0.01.
+	 * 
+	 * Damping of the torsion spring causes the spring to oppose the relative angular velocity. For instance, if the two axes are rotating toward each other with an angular velocity (Δ⋅Θ < 0) an opposing torque will try to slow down this relative rotation (T>0). If the axes were rotating away from each other (Δ⋅Θ > 0) an opposing torque (T<0) will slow down this angular velocity. In both cases, the damping is resulting in a torque that opposes the motion.
+	 * 
+	 * In the example below, developers can change the damping of the torsion spring as follows:
+	 * 
+	 * torsionSpring.Damping = 1.0
 	 */
 	Damping: number;
+	/**
+	 * This property, when enabled, limits the relative angular motion of the secondary axes of attachments through a cone constraint. The default value is false.
+	 * 
+	 * In the example below, you can enable a cone limit on the relative motion of the secondary axes as follows:
+	 * 
+	 * torsionSpring.LimitEnabled = true
+	 */
 	LimitEnabled: boolean;
 	/**
-	 * Maximum angle between the attachments' secondary axes. Value in [0, pi).
+	 * This property determines the max angle, in degrees, of the `TorsionSpringConstraint|TorsionSpringConstraint's` limiting cone. The limiting cone is formed at the position of the constraint's [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0) around its secondary axis with an angle equal to MaxAngle. The default value is 45.0 degrees.
+	 * 
+	 * In the example below, when [LimitEnabled](https://developer.roblox.com/en-us/api-reference/property/TorsionSpringConstraint/LimitEnabled) is `true` for the constraint, the maximum angle between the primary axes of attachments can be limited to 10 degrees for instance as follows:
+	 * 
+	 * torsionSpring.MaxAngle = 10
 	 */
 	MaxAngle: number;
 	/**
-	 * The maximum torque that the spring can apply. Useful to prevent instabilities. The units are mass * studs^2 / second^2. Value in [0, inf).
+	 * This property determines the maximum torque supported by the spring. The value defaults to 1000.0.
+	 * 
+	 * If a part isn't moving, consider raising this value (and also check that it is not \`BasePart/Anchored|Anchored\` or attached to another anchored part).
+	 * 
+	 * What is torque
+	 * --------------
+	 * 
+	 * Torque is equivalent to a force applied over a distance (T = force \* distance). The same way that applying a force translates into `pulling/pushing` an object, applying a torque results in `rotating` the object.
+	 * 
+	 * Setting the MaxTorque
+	 * ---------------------
+	 * 
+	 * In the example below, you can change the maximum torque provided by the torsion spring as follows:
+	 * 
+	 * torsionSpring.MaxTorque = 300
 	 */
 	MaxTorque: number;
 	/**
-	 * The radius of spring coil visual. Value in [0, inf).
+	 * When developing in studio, the spring will always be visualized, regardless of the camera distance.
+	 * 
+	 * This property indicates the visualization radius of the spring, in studs. The default value is 0.4.
 	 */
 	Radius: number;
 	/**
-	 * Restitution of the limit. Value in [0, 1].
+	 * This property how elastic [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment) connected by a [TorsionSpringConstraint](https://developer.roblox.com/en-us/api-reference/class/TorsionSpringConstraint) are when they reach the end of the range specified by [MaxAngle](https://developer.roblox.com/en-us/api-reference/property/TorsionSpringConstraint/MaxAngle) when [LimitEnabled](https://developer.roblox.com/en-us/api-reference/property/TorsionSpringConstraint/LimitEnabled) is `true`. The value defaults to 0 and can be any floating number within the range \[0, 1\].
+	 * 
+	 * torsionSpring.Restitution = 0
+	 * 
+	 * What is restitution
+	 * -------------------
+	 * 
+	 * Restitution determines the damping effect that the constraint applies when it reaches its limits.
+	 * 
+	 * Imagine you release a ball from some distance and it hits the ground. If the restitution of the surface is 1 then the ball will return to its original height (no energy is damped). If the restitution is 0 the ball will stick to the ground (all the energy is lost). Similarly, automobiles rely on damping for shock absorption as do some “slow-close” doors.
+	 * 
+	 * All the values between 0 and 1 will simulate something between these to extreme cases.
 	 */
 	Restitution: number;
 	/**
-	 * The stiffness parameter of the spring. Torque is scaled based on relative angle between secondary axes. The units of this property are torque / angular distance. Value in [0, inf).
+	 * This property determines the magnitude of the opposing torque of the spring, in the absence of damping, and is expressed as `k_t` in the formula:
+	 * 
+	 * T=-k\_t (Δ\*Θ) - c\_t (Δ⋅Θ)
+	 * 
+	 * The value defaults to 100.
+	 * 
+	 * In the absence of damping, the opposing torque of the spring is proportional to the stiffness parameter. For instance, higher stiffness results in a larger opposing torque, and smaller stiffness results in a smaller opposing torque. The larger the torque value, the faster the axes are pushed together when the relative angle is positive (or away from each other if the relative angle is negative).
+	 * 
+	 * In the example below, developers can change the stiffness of the torsion spring as follows:
+	 * 
+	 * torsionSpring.Stiffness = 1000
 	 */
 	Stiffness: number;
 }
@@ -19975,6 +20037,29 @@ interface BasePart extends PVInstance {
 	 * Even when CanCollide is disabled, parts may still fire the [BasePart.Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched) event (as well the other parts touching them). In addition, a part allow other parts to pass through even if CanCollide is enabled if their collision groups are not set to collide with each other. Part collision groups are managed by `/PhysicsService`.
 	 */
 	CanCollide: boolean;
+	/**
+	 * This property determines if the part will trigger [Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched)/[TouchEnded](https://developer.roblox.com/en-us/api-reference/event/BasePart/TouchEnded) events on other [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) with [TouchTransmitters](https://developer.roblox.com/en-us/api-reference/class/TouchTransmitter). By default, the value is set to `true`.
+	 * 
+	 * A BasePart's Touched or TouchEnded event will only fire if otherPart has CanTouch set to `true`.
+	 * 
+	 * When `false`, a touch event cannot be setup for the part. Attempting to do so will throw an error. If the property is set to `false` after a touch event is connected, the event will be disconnected and TouchTransmitter removed.
+	 * 
+	 * The two images below demonstrate how the property behaves using a non-colliding part with a script telling it to turn green when touched. First, on the left, we drop parts that are CanTouch. On the right, we drop parts that are not CanTouch.
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt9724b5f5805063af/CanTouchTrue.gif)
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt19029b16ced82902/CanTouchFalse.gif)
+	 * 
+	 * Collision Groups
+	 * ----------------
+	 * 
+	 * This collision logic can be enabled and disabled for `articles/Collision Filtering|Collision Groups` using the [Workspace.TouchesUseCollisionGroups](https://developer.roblox.com/en-us/api-reference/property/Workspace/TouchesUseCollisionGroups) property. In this case, when TouchesUseCollisionGroups is `true` parts in different groups set to not collide will ignore collisions and touch events - thereby ignoring this property
+	 * 
+	 * Performance
+	 * -----------
+	 * 
+	 * There is a small performance gain on parts that have both CanTouch and [CanCollide](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanCollide) set to `false`, as these parts will never need to compute any kind of part to part collisions. However, they can still be hit by [Raycasts](https://developer.roblox.com/en-us/api-reference/function/WorldRoot/Raycast) and [Region3](https://developer.roblox.com/en-us/api-reference/datatype/Region3) queries.
+	 */
 	CanTouch: boolean;
 	/**
 	 * Determines whether or not a part casts a shadow. It allows you to disable shadows for a part without having to make that part [transparent](https://developer.roblox.com/en-us/api-reference/property/BasePart/Transparency).
