@@ -21006,12 +21006,20 @@ interface SkateboardPlatform extends Part {
  * 
  * Note if a SpawnLocation is added to the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) in Studio with [SpawnLocation.Neutral](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/Neutral) set to false a Team will be created corresponding to [SpawnLocation.TeamColor](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/TeamColor) if it does not already exist. This behavior does not occur when spawns are created in-game using a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or if the properties of the SpawnLocation are changed after already being added. It is recommended that developers always set up their teams manually and not rely on this behavior.
  * 
- * **Spawning Rules**
+ * Spawning Rules
+ * --------------
+ * 
+ * There are several rules that come into play for a given SpawnLocation when a player respawns:
  * 
  * *   When [SpawnLocation.Neutral](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/Neutral) is set to false only [Players](https://developer.roblox.com/en-us/api-reference/class/Player) with [Player.TeamColor](https://developer.roblox.com/en-us/api-reference/property/Player/TeamColor) matching [SpawnLocation.TeamColor](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/TeamColor) will respawn above it
  * *   When [SpawnLocation.Neutral](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/Neutral) is set to true any Player can spawn above it regardless of [SpawnLocation.TeamColor](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/TeamColor)
  * *   If multiple eligible spawns are available to a [Player](https://developer.roblox.com/en-us/api-reference/class/Player), a random one will be chosen
  * *   Players will spawn at different points on top of a SpawnLocation, but currently, they may still spawn on top of each other if they spawn right after one and other
+ * 
+ * See also
+ * --------
+ * 
+ * *   If you'd like to configure how long it takes for a player to respawn, take a look at the [RespawnTime](https://developer.roblox.com/en-us/api-reference/property/Players/RespawnTime) property
  */
 interface SpawnLocation extends Part {
 	/**
@@ -24402,11 +24410,15 @@ interface PolicyService extends Instance {
 	 * 
 	 * Type
 	 * 
+	 * Required for
+	 * 
 	 * Description
 	 * 
 	 * ArePaidRandomItemsRestricted
 	 * 
 	 * Boolean
+	 * 
+	 * All experiences
 	 * 
 	 * Whether the player can interact with paid random item generators.
 	 * 
@@ -24414,17 +24426,23 @@ interface PolicyService extends Instance {
 	 * 
 	 * Boolean
 	 * 
+	 * Experiences available in China
+	 * 
 	 * See [here](https://devforum.roblox.com/t/about-our-upcoming-global-compliance-system/461447) for details.
 	 * 
 	 * AllowedExternalLinkReferences
 	 * 
 	 * Array of strings
 	 * 
+	 * All experiences
+	 * 
 	 * Which external link references are allowed in a country/region.
 	 * 
 	 * IsPaidItemTradingAllowed
 	 * 
 	 * Boolean
+	 * 
+	 * All experiences
 	 * 
 	 * Whether the player can trade virtual items that were purchased with in-game or real-world currency.
 	 * 
@@ -29399,6 +29417,57 @@ interface UITextSizeConstraint extends UIConstraint {
 	MinTextSize: number;
 }
 
+/** A UIComponent that will apply deformation to shapes of corners of its parent [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject).  
+ * Input, but not descendants, will be clipped to the round corner area.
+ * 
+ * ![ImageLabel with rounded corners | Image Credit: 0Techy](https://developer.roblox.com/assets/blta27795a3c2bf8f9d/RoundedImage.jpg)
+ * 
+ * Using the component
+ * -------------------
+ * 
+ * To use the UICorner UIComponent:
+ * 
+ * 1.  Create a [Frame](https://developer.roblox.com/en-us/api-reference/class/Frame) / [ImageLabel](https://developer.roblox.com/en-us/api-reference/class/ImageLabel) / [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) / [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel) / [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton) / [ViewportFrame](https://developer.roblox.com/en-us/api-reference/class/ViewportFrame)
+ * 2.  Insert a UICorner component as its child
+ * 3.  Adjust the round corner radius by changing the [CornerRadius](https://developer.roblox.com/en-us/api-reference/property/UICorner/CornerRadius) property
+ * 
+ * UICorner vs 9-slices
+ * --------------------
+ * 
+ * Alternatively, rounded backgrounds can be accomplished using 9-slices. As a result, it is helpful to understand the pros and cons of UICorner and 9-slices:
+ * 
+ * ### UICorner
+ * 
+ * *   Pros
+ * *   Can be used to round [ViewportFrames](https://developer.roblox.com/en-us/api-reference/class/ViewportFrame) and image assets
+ * *   Allows for a scriptable and dynamic corner radius
+ * *   Cons
+ * *   There is a performance overhead (Screen Space specifically) as it needs extra processing on each pixel, while 9-slice only involves simple sampling
+ * 
+ * ### 9-slices
+ * 
+ * *   Pros
+ * *   Suitable for highly decorative borders that are not just rounded
+ * *   If you have a lot of rounded rectangles with solid colors and you pay special attention to low-end devices, using 9-slice may be more performance efficient
+ * *   Cons
+ * *   Hard to apply to existing image assets
+ * *   Different corner sizes require different assets
+ * 
+ * How the corner radius is calculated internally
+ * ----------------------------------------------
+ * 
+ * In order to keep the circular shape of round corners with the UDim CornerRadius value, the round corner radius internally will be calculated as follows:
+ * 
+ * _radius = min(min(rectWidth, rectHeight) / 2, CornerRadius.scale \* min(rectWidth, rectHeight) + CornerRadius.offset)_
+ * 
+ * This means that:
+ * 
+ * 1.  The radius of the x-axis is always the same as the radius of y axis.
+ * 2.  The scale will always apply to the minimum edge.
+ * 3.  Rounded rectangles will always be in a pill shape if CornerRadius is set to a value that leads to a calculated result greater than half of the rectangles' minimum edge.
+ * 
+ * It is suggested to always use either scale or offset to define CornerRadius instead of mixing them up.
+ */
 interface UICorner extends UIComponent {
 	/**
 	 * **DO NOT USE!**
@@ -29409,7 +29478,17 @@ interface UICorner extends UIComponent {
 	 */
 	readonly _nominal_UICorner: unique symbol;
 	/**
-	 * Round corner with specified radius.
+	 * A [UDim](https://developer.roblox.com/en-us/api-reference/datatype/UDim) property that determines the radius, in pixels, of the [UICorner](https://developer.roblox.com/en-us/api-reference/class/UICorner) UIComponent, according to the following formula:
+	 * 
+	 * _radius = min(min(rectWidth, rectHeight) / 2, CornerRadius.scale \* min(rectWidth, rectHeight) + CornerRadius.offset)_
+	 * 
+	 * This means that:
+	 * 
+	 * 1.  The radius of the x-axis is always the same as the radius of y axis.
+	 * 2.  The scale will always apply to the minimum edge.
+	 * 3.  Rounded rectangles will always be in a pill shape if CornerRadius is set to a value that leads to a calculated result greater than half of the rectangles' minimum edge.
+	 * 
+	 * It is suggested to always use either scale or offset to define CornerRadius instead of mixing them up.
 	 */
 	CornerRadius: UDim;
 }
