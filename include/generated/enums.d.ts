@@ -73,6 +73,146 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<ABTestLoadingStatus>
 	}
 	export type ABTestLoadingStatus = ABTestLoadingStatus.None | ABTestLoadingStatus.Pending | ABTestLoadingStatus.Initialized | ABTestLoadingStatus.Error | ABTestLoadingStatus.TimedOut | ABTestLoadingStatus.ShutOff;
+	export namespace AccessoryType {
+		export interface Hat {
+			Name: "Hat";
+			Value: 0;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Hat: Hat;
+
+		export interface Hair {
+			Name: "Hair";
+			Value: 1;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Hair: Hair;
+
+		export interface Face {
+			Name: "Face";
+			Value: 2;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Face: Face;
+
+		export interface Neck {
+			Name: "Neck";
+			Value: 3;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Neck: Neck;
+
+		export interface Shoulder {
+			Name: "Shoulder";
+			Value: 4;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Shoulder: Shoulder;
+
+		export interface Front {
+			Name: "Front";
+			Value: 5;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Front: Front;
+
+		export interface Back {
+			Name: "Back";
+			Value: 6;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Back: Back;
+
+		export interface Waist {
+			Name: "Waist";
+			Value: 7;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Waist: Waist;
+
+		export interface TeeShirt {
+			Name: "TeeShirt";
+			Value: 8;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const TeeShirt: TeeShirt;
+
+		export interface Shirt {
+			Name: "Shirt";
+			Value: 9;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Shirt: Shirt;
+
+		export interface Pants {
+			Name: "Pants";
+			Value: 10;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Pants: Pants;
+
+		export interface Jacket {
+			Name: "Jacket";
+			Value: 11;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Jacket: Jacket;
+
+		export interface Sweater {
+			Name: "Sweater";
+			Value: 12;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Sweater: Sweater;
+
+		export interface Shorts {
+			Name: "Shorts";
+			Value: 13;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Shorts: Shorts;
+
+		export interface LeftShoe {
+			Name: "LeftShoe";
+			Value: 14;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const LeftShoe: LeftShoe;
+
+		export interface RightShoe {
+			Name: "RightShoe";
+			Value: 15;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const RightShoe: RightShoe;
+
+		export interface DressSkirt {
+			Name: "DressSkirt";
+			Value: 16;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const DressSkirt: DressSkirt;
+
+		export function GetEnumItems(this: defined): Array<AccessoryType>
+	}
+	export type AccessoryType = AccessoryType.Hat | AccessoryType.Hair | AccessoryType.Face | AccessoryType.Neck | AccessoryType.Shoulder | AccessoryType.Front | AccessoryType.Back | AccessoryType.Waist | AccessoryType.TeeShirt | AccessoryType.Shirt | AccessoryType.Pants | AccessoryType.Jacket | AccessoryType.Sweater | AccessoryType.Shorts | AccessoryType.LeftShoe | AccessoryType.RightShoe | AccessoryType.DressSkirt;
 	export namespace ActionType {
 		export interface Nothing {
 			Name: "Nothing";
@@ -8481,6 +8621,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<ListenerType>
 	}
 	export type ListenerType = ListenerType.Camera | ListenerType.CFrame | ListenerType.ObjectPosition | ListenerType.ObjectCFrame;
+	export namespace LoadCharacterLayeredClothing {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<LoadCharacterLayeredClothing>;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: EnumType<LoadCharacterLayeredClothing>;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: EnumType<LoadCharacterLayeredClothing>;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: defined): Array<LoadCharacterLayeredClothing>
+	}
+	export type LoadCharacterLayeredClothing = LoadCharacterLayeredClothing.Default | LoadCharacterLayeredClothing.Disabled | LoadCharacterLayeredClothing.Enabled;
 	export namespace Material {
 		export interface Plastic {
 			Name: "Plastic";
