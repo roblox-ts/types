@@ -2819,6 +2819,10 @@ interface StatsItem extends Instance {
 	 */
 	readonly _nominal_StatsItem: unique symbol;
 	/**
+	 * Tags: Hidden, ReadOnly, NotReplicated
+	 */
+	readonly DisplayName: string;
+	/**
 	 * Returns the StatsItem's value.
 	 */
 	GetValue(this: StatsItem): number;
@@ -3383,6 +3387,7 @@ interface StudioService extends Instance {
 	IsPluginInstalled(this: StudioService, assetId: number): boolean;
 	IsPluginUpToDate(this: StudioService, assetId: number, currentAssetVersion: number): boolean;
 	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
+	PromptForLocalSave(this: StudioService): void;
 	PublishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
 	RequestCloseStudio(this: StudioService): void;
 	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
@@ -3429,6 +3434,7 @@ interface StudioService extends Instance {
 	 * Tags: Yields
 	 */
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
+	readonly FirstPublishOfCloudPlace: RBXScriptSignal<(universeId: number, placeId: number) => void>;
 	readonly GameNameUpdated: RBXScriptSignal<(name: string) => void>;
 	readonly GamePublishFinished: RBXScriptSignal<(success: boolean, gameId: number) => void>;
 	readonly OnConvertToPackageResult: RBXScriptSignal<(isSuccessful: boolean, errorMessage: string) => void>;

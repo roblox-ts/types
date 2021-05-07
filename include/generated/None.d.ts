@@ -639,6 +639,7 @@ interface Instance {
 		className: T,
 		recursive?: boolean,
 	): Instances[T] | undefined;
+	FindFirstDescendant(this: Instance, name: string): Instance | undefined;
 	GetActor(this: Instance): Instance | undefined;
 	/**
 	 * This function returns the attribute which has been assigned to the given name. If no attribute has been assigned then nil is returned.
@@ -14095,6 +14096,7 @@ interface HumanoidDescription extends Instance {
 	 * *   [EmotesChanged](https://developer.roblox.com/en-us/api-reference/event/HumanoidDescription/EmotesChanged), which fires after this function is called
 	 */
 	AddEmote(this: HumanoidDescription, name: string, assetId: number): void;
+	GetAccessories(this: HumanoidDescription, includeRigidAccessories: boolean): unknown;
 	/**
 	 * **GetEmotes** returns a dictionary of emotes that have been [added](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/AddEmote) or [set](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/SetEmotes) to this description. The keys of this dictionary are the names of the emotes, and the values are a non-empty array of emote IDs for that name.
 	 * 
@@ -14152,6 +14154,7 @@ interface HumanoidDescription extends Instance {
 	 * *   [GetEmotes](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/GetEmotes), which can retrieve a dictionary of emotes that may be removed
 	 */
 	RemoveEmote(this: HumanoidDescription, name: string): void;
+	SetAccessories(this: HumanoidDescription, accessories: Array<any>, includeRigidAccessories: boolean): void;
 	/**
 	 * **SetEmotes** sets all of the emotes on this description given a table similar to that returned by [GetEmotes](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/GetEmotes). It fires [EmotesChanged](https://developer.roblox.com/en-us/api-reference/event/HumanoidDescription/EmotesChanged)
 	 * 
@@ -19219,7 +19222,7 @@ interface MemoryStoreSortedMap extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	UpdateAsync(this: MemoryStoreSortedMap, key: string, transformFunction: Function, expiration?: number): void;
+	UpdateAsync(this: MemoryStoreSortedMap, key: string, transformFunction: Function, expiration?: number): unknown;
 }
 
 /** The MessagingService allows game servers in the same game to communicate with each other in real time (< 1 second) using topics. Topics are developer defined strings (1-80 characters) that game servers can send and receive messages.
