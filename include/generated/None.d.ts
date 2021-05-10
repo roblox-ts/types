@@ -24421,33 +24421,33 @@ interface PolicyService extends Instance {
 	 * 
 	 * Boolean
 	 * 
-	 * All experiences
+	 * Any experience that has paid random items
 	 * 
-	 * Whether the player can interact with paid random item generators.
-	 * 
-	 * IsSubjectToChinaPolicies
-	 * 
-	 * Boolean
-	 * 
-	 * Experiences available in China
-	 * 
-	 * See [here](https://devforum.roblox.com/t/about-our-upcoming-global-compliance-system/461447) for details.
+	 * Whether the player can interact with paid (via in-experience currency or Robux) random item generators.
 	 * 
 	 * AllowedExternalLinkReferences
 	 * 
 	 * Array of strings
 	 * 
-	 * All experiences
+	 * Any experience that references external links
 	 * 
-	 * Which external link references are allowed in a country/region.
+	 * Whether a player can see any external link reference (for example, social media links, handles, or iconography). Possible values include: “Discord”, “Facebook”, “Twitch”, and “YouTube”.
 	 * 
 	 * IsPaidItemTradingAllowed
 	 * 
 	 * Boolean
 	 * 
-	 * All experiences
+	 * Any experience that allows users to purchase virtual items that they can trade with other players
 	 * 
-	 * Whether the player can trade virtual items that were purchased with in-game or real-world currency.
+	 * Whether the player can trade virtual items that they purchased with in-experience currency or Robux.
+	 * 
+	 * IsSubjectToChinaPolicies
+	 * 
+	 * Boolean
+	 * 
+	 * Any experience that is available in China
+	 * 
+	 * Whether an experience should enforce compliance changes. See [this developer forum post](https://devforum.roblox.com/t/new-programs-available-roblox-china-licensed-to-operate/1023361) for more information.
 	 * 
 	 * Exceptions
 	 * ----------
@@ -29917,6 +29917,55 @@ interface UIScale extends UIComponent {
 	Scale: number;
 }
 
+/** For a more detailed walkthrough of the UIStroke object, take a look at the [Applying Strokes](../../articles/applying-strokes) article.
+ * 
+ * An instance that applies an outline to text or a UI border. Key features include:
+ * 
+ * *   Adjust the color and thickness of the stroke outline.
+ * *   Change the stroke transparency independently from the text or UI object.
+ * *   Choose the corner style of the stroke (round, bevel, or miter).
+ * *   Add a gradient to the stroke via the [UIGradient](https://developer.roblox.com/en-us/api-reference/class/UIGradient) instance.
+ * *   Use rich text tags to add stroke to inline text segments.
+ * 
+ * Rich Text
+ * ---------
+ * 
+ * If your text object has `articles/gui rich text|rich text` enabled, you can control stroke properties on segments of the string via the `<stroke>` tag.
+ * 
+ * Property
+ * 
+ * Description
+ * 
+ * Default
+ * 
+ * `color`
+ * 
+ * Sets the stroke [color](#color-gradient).
+ * 
+ * `rgb(0, 0, 0)`
+ * 
+ * `joins`
+ * 
+ * Sets the [corner style](#corner-style). Can be set to `round`, `bevel`, or `miter`.
+ * 
+ * `round`
+ * 
+ * `thickness`
+ * 
+ * Sets the stroke [thickness](#thickness).
+ * 
+ * `1`
+ * 
+ * `transparency`
+ * 
+ * Sets the stroke [transparency](#transparency).
+ * 
+ * `0`
+ * 
+ * `The <font color="#c80032"><stroke color="#fcc633" thickness="4">dragon</stroke></font> is hungry`
+ * 
+ * ![](https://developer.roblox.com/assets/blt2fa6854d87124e34/Stroke-RichText.png)
+ */
 interface UIStroke extends UIComponent {
 	/**
 	 * **DO NOT USE!**
@@ -29927,27 +29976,107 @@ interface UIStroke extends UIComponent {
 	 */
 	readonly _nominal_UIStroke: unique symbol;
 	/**
-	 * Allows controlling whether this object should be applied to borders or to text. This allows for two stroke objects to be used for different tasks on the same text object.
+	 * When a [UIStroke](https://developer.roblox.com/en-us/api-reference/class/UIStroke) instance is applied to a text object, this property determines whether to apply the stroke to the object's border instead of the text itself.
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt951ea44531dd3c5b/Text-Outline-Slim.png)
+	 * 
+	 * Contextual
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt751c49e6311d71d7/Text-Border.png)
+	 * 
+	 * Border
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For a more detailed walkthrough of the UIStroke object, take a look at the [Applying Strokes](../../../articles/applying-strokes) article.
 	 */
 	ApplyStrokeMode: Enum.ApplyStrokeMode;
 	/**
-	 * The color used for the outline.
+	 * Determines the [UIStroke](https://developer.roblox.com/en-us/api-reference/class/UIStroke) stroke color. You can also insert a [UIGradient](https://developer.roblox.com/en-us/api-reference/class/UIGradient) instance as a child of the UIStroke to create gradient strokes.
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt705164afff9a8a97/Outline-Color-Solid.png)
+	 * 
+	 * Stroke [Color](https://developer.roblox.com/en-us/api-reference/property/UIStroke/Color) of **0**, **95**, **225**
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt18c7d4b815364461/Outline-Color-Gradient.png)
+	 * 
+	 * [UIStroke](https://developer.roblox.com/en-us/api-reference/class/UIStroke) with [UIGradient](https://developer.roblox.com/en-us/api-reference/class/UIGradient) child
+	 * 
+	 * Note that both the parent object and UIStroke can have child UIGradients, letting you set gradients on both the stroke and fill independently.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For a more detailed walkthrough of the UIStroke object, take a look at the [Applying Strokes](../../../articles/applying-strokes) article.
 	 */
 	Color: Color3;
 	/**
-	 * Allows disabling the object's effect temporarily.
+	 * This property determines whether the [UIStroke](https://developer.roblox.com/en-us/api-reference/class/UIStroke) is visible. When set to false, the stroke will not be rendered. The value defaults to true.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For a more detailed walkthrough of the UIStroke object, take a look at the [Applying Strokes](../../../articles/applying-strokes) article.
 	 */
 	Enabled: boolean;
 	/**
-	 * Controls how sharp corners are connected together for the outline.
+	 * This property determines how corners are interpreted. It accepts a value of either **Round**, **Bevel**, or **Miter**. Default is **Round**.
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt08417c7c81c4adb5/Outline-Corner-Round.png)
+	 * 
+	 * Round
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt7f4422322e7f0841/Outline-Corner-Bevel.png)
+	 * 
+	 * Bevel
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt4ab29c3097329c96/Outline-Corner-Miter.png)
+	 * 
+	 * Miter
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For a more detailed walkthrough of the UIStroke object, take a look at the [Applying Strokes](../../../articles/applying-strokes) article.
 	 */
 	LineJoinMode: Enum.LineJoinMode;
 	/**
-	 * The thickness of the outline in pixels.
+	 * This property determines the stroke's thickness, measured in pixels from the parent's outer edges.
+	 * 
+	 * ![](https://developer.roblox.com/assets/blte2189b6f00c809b9/Outline-Thickness-4.png)
+	 * 
+	 * 4
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt62d4cb5b19b1d1aa/Outline-Thickness-12.png)
+	 * 
+	 * 12
+	 * 
+	 * Be mindful of tweening the Thickness property of a [UIStroke](https://developer.roblox.com/en-us/api-reference/class/UIStroke) applied to text objects. This renders and stores many glyph sizes each frame, potentially causing performance issues or text flickering.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For a more detailed walkthrough of the UIStroke object, take a look at the [Applying Strokes](../../../articles/applying-strokes) article.
 	 */
 	Thickness: number;
 	/**
-	 * The transparency of the outline from 0 to 1.
+	 * The [Transparency](https://developer.roblox.com/en-us/api-reference/property/UIStroke/Transparency) property sets the stroke opacity independently of the parent object's [BackgroundTransparency](https://developer.roblox.com/en-us/api-reference/property/GuiObject/BackgroundTransparency) or [TextTransparency](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextTransparency). This allows you to render text and borders that are “hollow” (consisting of only an outline).
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt1f5e6933077f2429/Outline-Transparency-A.png)
+	 * 
+	 * Stroke [Transparency](https://developer.roblox.com/en-us/api-reference/property/UIStroke/Transparency) of **0.5**  
+	 * Object [TextTransparency](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextTransparency) of **0**
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt578f49b66021ec35/Outline-Transparency-B.png)
+	 * 
+	 * Stroke [Transparency](https://developer.roblox.com/en-us/api-reference/property/UIStroke/Transparency) of **0**  
+	 * Object [TextTransparency](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextTransparency) of **1**
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * For a more detailed walkthrough of the UIStroke object, take a look at the [Applying Strokes](../../../articles/applying-strokes) article.
 	 */
 	Transparency: number;
 }
