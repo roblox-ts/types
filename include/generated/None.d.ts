@@ -19963,6 +19963,8 @@ interface BasePart extends PVInstance {
 	 * `MotorVelocity = ParamA * math.sin(workspace.DistributedGameTime * ParamB)`
 	 * 
 	 * There are no other usages for this property.
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	BackParamA: number;
 	/**
@@ -19971,6 +19973,8 @@ interface BasePart extends PVInstance {
 	 * `MotorVelocity = ParamB * math.sin(workspace.DistributedGameTime * ParamB)`
 	 * 
 	 * In no other cases is this property used.
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	BackParamB: number;
 	/**
@@ -19985,6 +19989,8 @@ interface BasePart extends PVInstance {
 	 * *   By default, this is set to NoInput. This stops the motor altogether,
 	 * *   For Constant, the motor rotates at a constant velocity equal to `ParamB`.
 	 * *   For Sin, the motor rotates at a velocity equal to `ParamA * math.sin(workspace.DistributedGameTime * ParamB)`. See [Workspace.DistributedGameTime](https://developer.roblox.com/en-us/api-reference/property/Workspace/DistributedGameTime).
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	BackSurfaceInput: Enum.InputType;
 	/**
@@ -19993,6 +19999,8 @@ interface BasePart extends PVInstance {
 	 * `MotorVelocity = ParamA * math.sin(workspace.DistributedGameTime * ParamB)`
 	 * 
 	 * There are no other usages for this property.
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	BottomParamA: number;
 	/**
@@ -20001,6 +20009,8 @@ interface BasePart extends PVInstance {
 	 * `MotorVelocity = ParamB * math.sin(workspace.DistributedGameTime * ParamB)`
 	 * 
 	 * In no other cases is this property used.
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	BottomParamB: number;
 	/**
@@ -20015,6 +20025,8 @@ interface BasePart extends PVInstance {
 	 * *   By default, this is set to NoInput. This stops the motor altogether,
 	 * *   For Constant, the motor rotates at a constant velocity equal to `ParamB`.
 	 * *   For Sin, the motor rotates at a velocity equal to `ParamA * math.sin(workspace.DistributedGameTime * ParamB)`. See [Workspace.DistributedGameTime](https://developer.roblox.com/en-us/api-reference/property/Workspace/DistributedGameTime).
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	BottomSurfaceInput: Enum.InputType;
 	/**
@@ -20110,6 +20122,8 @@ interface BasePart extends PVInstance {
 	 * `MotorVelocity = ParamA * math.sin(workspace.DistributedGameTime * ParamB)`
 	 * 
 	 * In no other cases is this property used.
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	FrontParamA: number;
 	/**
@@ -20118,6 +20132,8 @@ interface BasePart extends PVInstance {
 	 * `MotorVelocity = ParamB * math.sin(workspace.DistributedGameTime * ParamB)`
 	 * 
 	 * In no other cases is this property used.
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	FrontParamB: number;
 	/**
@@ -20132,6 +20148,8 @@ interface BasePart extends PVInstance {
 	 * *   By default, this is set to NoInput. This stops the motor altogether,
 	 * *   For Constant, the motor rotates at a constant velocity equal to `ParamB`.
 	 * *   For Sin, the motor rotates at a velocity equal to `ParamA * math.sin(workspace.DistributedGameTime * ParamB)`. See [Workspace.DistributedGameTime](https://developer.roblox.com/en-us/api-reference/property/Workspace/DistributedGameTime).
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	FrontSurfaceInput: Enum.InputType;
 	/**
@@ -20140,6 +20158,8 @@ interface BasePart extends PVInstance {
 	 * `MotorVelocity = ParamA * math.sin(workspace.DistributedGameTime * ParamB)`
 	 * 
 	 * In no other cases is this property used.
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	LeftParamA: number;
 	/**
@@ -20148,6 +20168,8 @@ interface BasePart extends PVInstance {
 	 * `MotorVelocity = ParamB * math.sin(workspace.DistributedGameTime * ParamB)`
 	 * 
 	 * In no other cases is this property used.
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	LeftParamB: number;
 	/**
@@ -20162,6 +20184,8 @@ interface BasePart extends PVInstance {
 	 * *   By default, this is set to NoInput. This stops the motor altogether,
 	 * *   For Constant, the motor rotates at a constant velocity equal to `ParamB`.
 	 * *   For Sin, the motor rotates at a velocity equal to `ParamA * math.sin(workspace.DistributedGameTime * ParamB)`. See [Workspace.DistributedGameTime](https://developer.roblox.com/en-us/api-reference/property/Workspace/DistributedGameTime).
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	LeftSurfaceInput: Enum.InputType;
 	/**
@@ -20304,6 +20328,8 @@ interface BasePart extends PVInstance {
 	 * `MotorVelocity = ParamA * math.sin(workspace.DistributedGameTime * ParamB)`
 	 * 
 	 * In no other cases is this property used.
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	RightParamA: number;
 	/**
@@ -20312,6 +20338,8 @@ interface BasePart extends PVInstance {
 	 * `MotorVelocity = ParamB * math.sin(workspace.DistributedGameTime * ParamB)`
 	 * 
 	 * In no other cases is this property used.
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	RightParamB: number;
 	/**
@@ -20326,6 +20354,8 @@ interface BasePart extends PVInstance {
 	 * *   By default, this is set to NoInput. This stops the motor altogether,
 	 * *   For Constant, the motor rotates at a constant velocity equal to `ParamB`.
 	 * *   For Sin, the motor rotates at a velocity equal to `ParamA * math.sin(workspace.DistributedGameTime * ParamB)`. See [Workspace.DistributedGameTime](https://developer.roblox.com/en-us/api-reference/property/Workspace/DistributedGameTime).
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	RightSurfaceInput: Enum.InputType;
 	/**
@@ -20462,6 +20492,8 @@ interface BasePart extends PVInstance {
 	 * `MotorVelocity = ParamA * math.sin(workspace.DistributedGameTime * ParamB)`
 	 * 
 	 * In no other cases is this property used.
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	TopParamA: number;
 	/**
@@ -20470,6 +20502,8 @@ interface BasePart extends PVInstance {
 	 * `MotorVelocity = ParamB * math.sin(workspace.DistributedGameTime * ParamB)`
 	 * 
 	 * In no other cases is this property used.
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	TopParamB: number;
 	/**
@@ -20484,6 +20518,8 @@ interface BasePart extends PVInstance {
 	 * *   By default, this is set to NoInput. This stops the motor altogether,
 	 * *   For Constant, the motor rotates at a constant velocity equal to `ParamB`.
 	 * *   For Sin, the motor rotates at a velocity equal to `ParamA * math.sin(workspace.DistributedGameTime * ParamB)`. See [Workspace.DistributedGameTime](https://developer.roblox.com/en-us/api-reference/property/Workspace/DistributedGameTime).
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	TopSurfaceInput: Enum.InputType;
 	/**

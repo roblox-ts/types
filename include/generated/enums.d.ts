@@ -9393,6 +9393,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<NetworkOwnership>
 	}
 	export type NetworkOwnership = NetworkOwnership.Automatic | NetworkOwnership.Manual | NetworkOwnership.OnContact;
+	export namespace NewAnimationRuntimeSetting {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<NewAnimationRuntimeSetting>;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: EnumType<NewAnimationRuntimeSetting>;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: EnumType<NewAnimationRuntimeSetting>;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: defined): Array<NewAnimationRuntimeSetting>
+	}
+	export type NewAnimationRuntimeSetting = NewAnimationRuntimeSetting.Default | NewAnimationRuntimeSetting.Disabled | NewAnimationRuntimeSetting.Enabled;
 	export namespace NormalId {
 		export interface Top {
 			Name: "Top";
@@ -14253,26 +14281,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<TweenStatus>
 	}
 	export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
-	export namespace UITheme {
-		export interface Light {
-			Name: "Light";
-			Value: 0;
-			EnumType: EnumType<UITheme>;
-		}
-
-		export const Light: Light;
-
-		export interface Dark {
-			Name: "Dark";
-			Value: 1;
-			EnumType: EnumType<UITheme>;
-		}
-
-		export const Dark: Dark;
-
-		export function GetEnumItems(this: defined): Array<UITheme>
-	}
-	export type UITheme = UITheme.Light | UITheme.Dark;
 	export namespace UiMessageType {
 		export interface UiMessageError {
 			Name: "UiMessageError";
