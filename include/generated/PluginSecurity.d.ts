@@ -3159,11 +3159,6 @@ interface Studio extends Instance {
 	 */
 	Theme: StudioTheme;
 	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
-	 * @deprecated
-	 */
-	readonly ["UI Theme"]: Enum.UITheme;
-	/**
 	 * Tags: NotReplicated
 	 */
 	["Warning Color"]: Color3;
@@ -3396,6 +3391,7 @@ interface StudioService extends Instance {
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
 	ShowPlaceVersionHistoryDialog(this: StudioService, placeId: number): void;
 	ShowPublishToRoblox(this: StudioService): void;
+	ShowSaveOrPublishPlaceToRoblox(this: StudioService, showGameSelect: boolean, isPublish: boolean, closeAfterSave: boolean): void;
 	UninstallPlugin(this: StudioService, assetId: number): void;
 	UpdatePluginManagement(this: StudioService): void;
 	/**
@@ -3449,6 +3445,7 @@ interface StudioService extends Instance {
 	readonly OnSaveOrPublishPlaceToRoblox: RBXScriptSignal<(showGameSelect: boolean, isPublish: boolean, closeAfterSave: boolean) => void>;
 	readonly OnSaveToRoblox: RBXScriptSignal<(instances: Array<Instance>) => void>;
 	readonly PromptTransformPluginCheckEnable: RBXScriptSignal<() => void>;
+	readonly SaveLocallyAsComplete: RBXScriptSignal<(success: boolean) => void>;
 }
 
 interface StudioTheme extends Instance {
