@@ -14281,6 +14281,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<TweenStatus>
 	}
 	export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
+	export namespace UITheme {
+		export interface Light {
+			Name: "Light";
+			Value: 0;
+			EnumType: EnumType<UITheme>;
+		}
+
+		export const Light: Light;
+
+		export interface Dark {
+			Name: "Dark";
+			Value: 1;
+			EnumType: EnumType<UITheme>;
+		}
+
+		export const Dark: Dark;
+
+		export function GetEnumItems(this: defined): Array<UITheme>
+	}
+	export type UITheme = UITheme.Light | UITheme.Dark;
 	export namespace UiMessageType {
 		export interface UiMessageError {
 			Name: "UiMessageError";
