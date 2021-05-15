@@ -3159,6 +3159,11 @@ interface Studio extends Instance {
 	 */
 	Theme: StudioTheme;
 	/**
+	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
+	 * @deprecated
+	 */
+	readonly ["UI Theme"]: Enum.UITheme;
+	/**
 	 * Tags: NotReplicated
 	 */
 	["Warning Color"]: Color3;
