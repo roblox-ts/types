@@ -2020,9 +2020,13 @@ interface CheckablePrimitives {
 	userdata: unknown;
 	function: Callback;
 	thread: thread;
+	vector: Vector3;
 }
 
-/**  Returns the type of its only argument, coded as a string. */
+/**
+ * Returns the type of its only argument, coded as a string.
+ * Roblox datatypes will return "userdata" when passed to this function. You should use Roblox's `typeOf()` function if you want to differentiate between Roblox datatypes.
+ */
 declare function type(value: unknown): keyof CheckablePrimitives;
 
 /** The strings which can be returned by typeOf and their corresponding types */
@@ -2064,7 +2068,7 @@ interface CheckableTypes extends CheckablePrimitives {
 }
 
 /** Returns the type of the given object as a string. This function works similarly to Lua’s native type function, with the exceptions that Roblox-defined data types like Vector3 and CFrame return their respective data types as strings. */
-declare function typeOf(value: unknown): keyof CheckableTypes;
+declare function typeOf(value: unknown): Exclude<keyof CheckableTypes, "vector">;
 
 /**
  * Returns true if `typeof(value) == type`, otherwise false.
