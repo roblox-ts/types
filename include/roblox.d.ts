@@ -2020,9 +2020,13 @@ interface CheckablePrimitives {
 	userdata: unknown;
 	function: Callback;
 	thread: thread;
+	vector: Vector3;
 }
 
-/**  Returns the type of its only argument, coded as a string. */
+/**
+ * Returns the type of its only argument, coded as a string.
+ * Roblox datatypes will return "userdata" when passed to this function. You should use Roblox's `typeOf()` function if you want to differentiate between Roblox datatypes.
+ */
 declare function type(value: unknown): keyof CheckablePrimitives;
 
 /** The strings which can be returned by typeOf and their corresponding types */
