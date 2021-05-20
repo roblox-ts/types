@@ -370,6 +370,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	Tween: Tween;
 	UserGameSettings: UserGameSettings;
 	UserSettings: UserSettings;
+	VoiceSource: VoiceSource;
 }
 
 // GENERATED ROBLOX INSTANCE CLASSES
@@ -32304,6 +32305,21 @@ interface Vector3Value extends ValueBase {
 	 * Equivalent changed events exist for similar objects, such as [NumberValue](https://developer.roblox.com/en-us/api-reference/class/NumberValue) and [StringValue](https://developer.roblox.com/en-us/api-reference/class/StringValue), depending on what object type best suits the need.
 	 */
 	readonly Changed: RBXScriptSignal<(value: Vector3) => void>;
+}
+
+interface VoiceSource extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VoiceSource: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly UserId: number;
 }
 
 /** **WeldConstraints** are used to attach two [parts](https://developer.roblox.com/en-us/api-reference/class/BasePart) together. The constraint makes sure that the parts stay in the same relative position and orientation to one another, meaning that if one part moves, the other will move the same amount. Even if the two parts are not touching one another, they can be welded together with a weld constraint.

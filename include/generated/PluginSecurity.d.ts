@@ -958,12 +958,6 @@ interface NetworkSettings extends Instance {
 	 */
 	EmulatedTotalMemoryInMB: number;
 	/**
-	 * ExtraMemoryUsed is an unused debug property intended for streaming.  
-	 * It appears to specify how much extra memory is allocated to streaming, in MBs.
-	 * Tags: Hidden, NotReplicated
-	 */
-	ExtraMemoryUsed: number;
-	/**
 	 * FreeMemoryMBytes is a read-only property that describes how much free memory is available, in MBs.  
 	 * It is stored as a floating point number, so it can be be read down at the level of available bytes by multiplying its value by `1024 * 1024`.
 	 * Tags: Hidden, ReadOnly, NotReplicated
@@ -3389,14 +3383,14 @@ interface StudioService extends Instance {
 	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
 	PromptForLocalSave(this: StudioService): void;
 	PublishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
-	RequestCloseStudio(this: StudioService): void;
+	RequestClose(this: StudioService, closeMode: CastsToEnum<Enum.StudioCloseMode>): void;
 	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
 	SetDocumentDisplayName(this: StudioService, newName: string): void;
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
 	ShowPlaceVersionHistoryDialog(this: StudioService, placeId: number): void;
 	ShowPublishToRoblox(this: StudioService): void;
-	ShowSaveOrPublishPlaceToRoblox(this: StudioService, showGameSelect: boolean, isPublish: boolean, closeAfterSave: boolean): void;
+	ShowSaveOrPublishPlaceToRoblox(this: StudioService, showGameSelect: boolean, isPublish: boolean, closeMode: CastsToEnum<Enum.StudioCloseMode>): void;
 	UninstallPlugin(this: StudioService, assetId: number): void;
 	UpdatePluginManagement(this: StudioService): void;
 	/**
@@ -3447,7 +3441,7 @@ interface StudioService extends Instance {
 	readonly OnPluginInstalledFromWeb: RBXScriptSignal<(pluginId: string) => void>;
 	readonly OnPublishAsPlugin: RBXScriptSignal<(instances: Array<Instance>) => void>;
 	readonly OnPublishPlaceToRoblox: RBXScriptSignal<(isOverwritePublish: boolean) => void>;
-	readonly OnSaveOrPublishPlaceToRoblox: RBXScriptSignal<(showGameSelect: boolean, isPublish: boolean, closeAfterSave: boolean) => void>;
+	readonly OnSaveOrPublishPlaceToRoblox: RBXScriptSignal<(showGameSelect: boolean, isPublish: boolean, closeMode: Enum.StudioCloseMode) => void>;
 	readonly OnSaveToRoblox: RBXScriptSignal<(instances: Array<Instance>) => void>;
 	readonly PromptTransformPluginCheckEnable: RBXScriptSignal<() => void>;
 	readonly SaveLocallyAsComplete: RBXScriptSignal<(success: boolean) => void>;
