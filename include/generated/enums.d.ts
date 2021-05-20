@@ -10249,6 +10249,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<PrivilegeType>
 	}
 	export type PrivilegeType = PrivilegeType.Owner | PrivilegeType.Admin | PrivilegeType.Member | PrivilegeType.Visitor | PrivilegeType.Banned;
+	export namespace ProductLocationRestriction {
+		export interface AvatarShop {
+			Name: "AvatarShop";
+			Value: 0;
+			EnumType: EnumType<ProductLocationRestriction>;
+		}
+
+		export const AvatarShop: AvatarShop;
+
+		export interface AllowedGames {
+			Name: "AllowedGames";
+			Value: 1;
+			EnumType: EnumType<ProductLocationRestriction>;
+		}
+
+		export const AllowedGames: AllowedGames;
+
+		export interface AllGames {
+			Name: "AllGames";
+			Value: 2;
+			EnumType: EnumType<ProductLocationRestriction>;
+		}
+
+		export const AllGames: AllGames;
+
+		export function GetEnumItems(this: defined): Array<ProductLocationRestriction>
+	}
+	export type ProductLocationRestriction = ProductLocationRestriction.AvatarShop | ProductLocationRestriction.AllowedGames | ProductLocationRestriction.AllGames;
 	export namespace ProductPurchaseDecision {
 		export interface NotProcessedYet {
 			Name: "NotProcessedYet";
@@ -11729,6 +11757,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<StreamingPauseMode>
 	}
 	export type StreamingPauseMode = StreamingPauseMode.Default | StreamingPauseMode.Disabled | StreamingPauseMode.ClientPhysicsPause;
+	export namespace StudioCloseMode {
+		export interface None {
+			Name: "None";
+			Value: 0;
+			EnumType: EnumType<StudioCloseMode>;
+		}
+
+		export const None: None;
+
+		export interface CloseStudio {
+			Name: "CloseStudio";
+			Value: 1;
+			EnumType: EnumType<StudioCloseMode>;
+		}
+
+		export const CloseStudio: CloseStudio;
+
+		export interface CloseDoc {
+			Name: "CloseDoc";
+			Value: 2;
+			EnumType: EnumType<StudioCloseMode>;
+		}
+
+		export const CloseDoc: CloseDoc;
+
+		export function GetEnumItems(this: defined): Array<StudioCloseMode>
+	}
+	export type StudioCloseMode = StudioCloseMode.None | StudioCloseMode.CloseStudio | StudioCloseMode.CloseDoc;
 	export namespace StudioDataModelType {
 		export interface Edit {
 			Name: "Edit";
@@ -14713,6 +14769,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<VibrationMotor>
 	}
 	export type VibrationMotor = VibrationMotor.Large | VibrationMotor.Small | VibrationMotor.LeftTrigger | VibrationMotor.RightTrigger | VibrationMotor.LeftHand | VibrationMotor.RightHand;
+	export namespace VirtualCursorMode {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<VirtualCursorMode>;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: EnumType<VirtualCursorMode>;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: EnumType<VirtualCursorMode>;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: defined): Array<VirtualCursorMode>
+	}
+	export type VirtualCursorMode = VirtualCursorMode.Default | VirtualCursorMode.Disabled | VirtualCursorMode.Enabled;
 	export namespace VirtualInputMode {
 		export interface Recording {
 			Name: "Recording";
