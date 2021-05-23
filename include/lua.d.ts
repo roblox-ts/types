@@ -322,6 +322,71 @@ declare namespace string {
 	 * Returns the values packed in string s (see string.pack) according to the format string fmt. An optional pos marks where to start reading in s (default is 1). After the read values, this function also returns the index of the first unread byte in s.
 	 */
 	function unpack(fmt: string, s: string, pos?: number): LuaTuple<Array<number>>;
+
+	/** Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`, `...`, `s[j]`. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
+	function byte(str: string, i?: number, j?: number): LuaTuple<Array<number>>;
+
+	/** Looks for the first match of pattern in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends, as well as any matches after that. Otherwise, it returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in the pattern being considered "magic". Note that if `plain` is given, then `init` must be given as well. */
+	function find(
+		str: string,
+		pattern: string,
+		init?: number,
+		plain?: boolean,
+	): LuaTuple<[number, number, ...Array<string | number>] | Array<undefined>>;
+	// A capture may be a number when we use `()` to capture the location
+
+	/** Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). */
+	function format(str: string, ...args: Array<number | string>): string;
+
+	/** Returns an iterator function that, each time it is called, returns the next captures from pattern over the string s. */
+	function gmatch(str: string, pattern: string): IterableFunction<LuaTuple<Array<string | number>>>;
+	// A capture may be a number when we use `()` to capture the location
+
+	/** Returns a copy of s in which all (or the first n, if given) occurrences of the pattern have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. */
+	function gsub(str: string, pattern: string, repl: string, n?: number): LuaTuple<[string, number]>;
+	function gsub(str: string, pattern: string, repl: number, n?: number): LuaTuple<[string, number]>;
+	function gsub(
+		str: string,
+		pattern: string,
+		repl: (value: string) => string | number | undefined,
+		n?: number,
+	): LuaTuple<[string, number]>;
+	function gsub(
+		str: string,
+		pattern: string,
+		repl: Map<string, string | number>,
+		n?: number,
+	): LuaTuple<[string, number]>;
+	function gsub(
+		str: string,
+		pattern: string,
+		repl: { [index: string]: string | number },
+		n?: number,
+	): LuaTuple<[string, number]>;
+
+	/** Receives a string and returns a copy of this string with all uppercase letters changed to lowercase. */
+	function lower(str: string): string;
+
+	/** Looks for the first match of pattern in the string s. If a match is found it is returned. Otherwise, this returns nil. A third, optional numerical argument init specifies where to start the search; its default value is 1 and can be negative. */
+	function match(str: string, pattern: string, init?: number): LuaTuple<Array<string | number> | Array<undefined>>;
+	// A capture may be a number when we use `()` to capture the location
+
+	/** Returns a string that is the concatenation of n copies of the string s separated by the string sep. */
+	function rep(str: string, n: number): string;
+
+	/** Returns a string that is the string s reversed. */
+	function reverse(str: string): string;
+
+	/** Returns an array of substrings, separated by each `sep`.
+	 * Does not handle Lua character classes, thus, the separator string will be interpreted literally.
+	 */
+	function split(str: string, sep: string): Array<string>;
+
+	/** Returns the substring of s that starts at i and continues until j; i and j can be negative. If j is absent, then it is assumed to be equal to -1 (which is the same as the string length). */
+	function sub(str: string, i: number, j?: number): string;
+
+	/** Receives a string and returns a copy of this string with all lowercase letters changed to uppercase. All other characters are left unchanged. */
+	function upper(str: string): string;
 }
 
 declare namespace math {
