@@ -1494,6 +1494,11 @@ interface Players extends Instance {
 	 * This function is used internally when the chat mode is set by the game.
 	 * 
 	 * If you would like to create a custom chat system where you can define custom functions such as these, take a look at the tutorial [here](https://developer.roblox.com/articles/Lua-Chat-System).
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * Developers who are interested interested in configuring their games' bubble chat system even further should take a look at the `articles/Bubble Chat|Bubble Chat` article.
 	 */
 	SetChatStyle(this: Players, style?: CastsToEnum<Enum.ChatStyle>): void;
 	/**
