@@ -5562,6 +5562,11 @@ interface Chat extends Instance {
 	 * ChatService.BubbleChatEnabled = true
 	 * 
 	 * This must be done on the client, toggling this value in a server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script) will have no effect.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * Developers who are interested interested in configuring their games' bubble chat system even further should take a look at the `articles/Bubble Chat|Bubble Chat` article.
 	 */
 	BubbleChatEnabled: boolean;
 	/**
@@ -5749,7 +5754,7 @@ interface Chat extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   Developers who are interested interested in configuring their games' chat system even further should take a look at the `/articles/Lua Chat System|Lua Chat System|Lua Chat System` article
+	 * *   Developers who are interested interested in configuring their games' chat system even further should take a look at the `/articles/Lua Chat System|Lua Chat System|Lua Chat System` and `articles/Bubble Chat|Bubble Chat` articles
 	 */
 	SetBubbleChatSettings(this: Chat, settings: unknown): void;
 	/**
@@ -6290,6 +6295,13 @@ interface AngularVelocity extends Constraint {
 	 * Magnitude of the maximum torque the constraint can apply. Defaults to **0**.
 	 */
 	MaxTorque: number;
+	/**
+	 * This property, when enabled, causes the constraint to apply equal and opposite reaction forces. This is important if the two attached parts can collide, since without reaction forces collisions can create energy that would otherwise be disregarded.
+	 * 
+	 * When enabled, the reaction forces cause the constraint to act like an angular motor between the two attachments.
+	 * 
+	 * It is only meaningful and visible in studio when [AngularVelocity.RelativeTo](https://developer.roblox.com/en-us/api-reference/property/AngularVelocity/RelativeTo) is set to `Attachment1`.
+	 */
 	ReactionTorqueEnabled: boolean;
 	/**
 	 * The [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) in which the [AngularVelocity](https://developer.roblox.com/en-us/api-reference/class/AngularVelocity) force is specified. If set to **[World](https://developer.roblox.com/en-us/api-reference/enum/ActuatorRelativeToWorld)**, the angular velocity vector is used as is. If set to **Attachment1**, the angular velocity is transformed by the CFrame of the assigned attachment.
@@ -23990,6 +24002,11 @@ interface Players extends Instance {
 	 * When this chat mode is enabled, the game displays chats in the chat user interface at the top-left corner of the screen.
 	 * 
 	 * There are two other chat modes, [Players.ClassicChat](https://developer.roblox.com/en-us/api-reference/property/Players/ClassicChat) and a chat mode where both classic and bubble chat are enabled.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * Developers who are interested interested in configuring their games' bubble chat system even further should take a look at the `articles/Bubble Chat|Bubble Chat` article.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly BubbleChat: boolean;
@@ -25175,18 +25192,13 @@ interface ReplicatedScriptService extends Instance {
 	readonly _nominal_ReplicatedScriptService: unique symbol;
 }
 
-/** Complex games often require a range of assets that are held in storage until they're required. **ReplicatedStorage** is a container whose contents are replicated to all connected clients, allowing such objects to be stored until needed. ReplicatedStorage is also an ideal location for [RemoteFunctions](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) and [RemoteEvents](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) since they can be found on both the client and server.
+/** **ReplicatedStorage** is a general container service for objects that are available to both the server and connected game clients. It is ideal for [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript), [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction), [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) and other objects which are useful to both server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s and client-side [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s. [Script](https://developer.roblox.com/en-us/api-reference/class/Script) and [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) objects will not run if they are parented to this service even if they are not [Disabled](https://developer.roblox.com/en-us/api-reference/property/BaseScript/Disabled).
  * 
- * Note these additional details about ReplicatedStorage:
+ * If a [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) within this service is required by any other script, it will run as normal. Such modules will typically house code that is shared by the server and client. Server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script) that should run on their own should be parented to [ServerScriptService](https://developer.roblox.com/en-us/api-reference/class/ServerScriptService) instead. Client-side [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) have various other locations where they will eventually be run on a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) client: [StarterPlayerScripts](https://developer.roblox.com/en-us/api-reference/class/StarterPlayerScripts), [StarterCharacterScripts](https://developer.roblox.com/en-us/api-reference/class/StarterCharacterScripts) or [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui).
  * 
- * *   Objects descending from ReplicatedStorage can be accessed from a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) on both the server and client.
- * *   Objects can be replicated to the client by parenting them to ReplicatedStorage:
+ * This service behaves similarly to [ServerStorage](https://developer.roblox.com/en-us/api-reference/class/ServerStorage) except that its contents are replicated. If you are storing assets which should not be visible on the client or have no use to the client at all, you should use that service instead.
  * 
- * object.Parent = game:GetService("ReplicatedStorage")  -- From the server
- * 
- * *   Although the client can access and modify ReplicatedStorage, these changes will not replicate to the server or other clients.
- * *   [Scripts](https://developer.roblox.com/en-us/api-reference/class/Script) and [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) will not run when they are parented to ReplicatedStorage, although [ModuleScripts](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) contained within it can be accessed and executed. There are a number of alternative containers where client-side scripts will run, such as [StarterPlayerScripts](https://developer.roblox.com/en-us/api-reference/class/StarterPlayerScripts) and [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst).
- * *   For objects that only the server requires access to, we recommended you use [ServerStorage](https://developer.roblox.com/en-us/api-reference/class/ServerStorage) to minimize network traffic.
+ * Objects parented to this service are fully replicated to clients, and normal replication rules apply: any changes that are made on the client persist but won't be replicated to the server. Client changes may be overwritten if the server does something that overwrites those changes. For instance, a [Part](https://developer.roblox.com/en-us/api-reference/class/Part) parented to ReplicatedStorage by the server may have a blue [BrickColor](https://developer.roblox.com/en-us/api-reference/property/BasePart/BrickColor). A client could change this property to red locally, but this change remains only client. Should the server change the color to green, this change would be replicated to the client.
  */
 interface ReplicatedStorage extends Instance {
 	/**
@@ -25575,7 +25587,12 @@ interface ScriptContext extends Instance {
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script?: LuaSourceContainer) => void>;
 }
 
-/** A semantic, organized place to put your server-sided game logic, which does not interfere with the world. Scripts will run inside this service, and will not replicate to game clients, allowing for secure storage of your scripts. */
+/** **ServerScriptService** is a container service for [Script](https://developer.roblox.com/en-us/api-reference/class/Script), [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) and other scripting-related assets that are only meant for server use. The contents are never replicated to player clients at all, which allows for a secure storage of important game logic. Script objects will run if they are within this service and not [Disabled](https://developer.roblox.com/en-us/api-reference/property/BaseScript/Disabled).
+ * 
+ * This service houses just one property, [LoadStringEnabled](https://developer.roblox.com/en-us/api-reference/property/ServerScriptService/LoadStringEnabled), which determines whether the `loadstring` function in Lua is enabled. It's recommended to keep this disabled for security reasons, as misusing this function can lead to remote code execution vulnerabilities.
+ * 
+ * Scripts running in ServerScriptService may need access to various other assets which are not scripting-related, such as prefabricated models to be [cloned](https://developer.roblox.com/en-us/api-reference/function/Instance/Clone). Such assets should go in [ServerStorage](https://developer.roblox.com/en-us/api-reference/class/ServerStorage), which behaves similarly to this service except that [Script](https://developer.roblox.com/en-us/api-reference/class/Script) objects will not run even if they are not [Disabled](https://developer.roblox.com/en-us/api-reference/property/BaseScript/Disabled). Assets and [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) that are useful to both the server and clients should go in [ReplicatedStorage](https://developer.roblox.com/en-us/api-reference/class/ReplicatedStorage) instead. Finally, you can further organize objects within this service through the use of [Folder](https://developer.roblox.com/en-us/api-reference/class/Folder)s without affecting the way it behaves.
+ */
 interface ServerScriptService extends Instance {
 	/**
 	 * **DO NOT USE!**
