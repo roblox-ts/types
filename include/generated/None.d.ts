@@ -12,6 +12,7 @@ interface Services {
 	AssetManagerService: AssetManagerService;
 	AssetService: AssetService;
 	AvatarEditorService: AvatarEditorService;
+	AvatarImportService: AvatarImportService;
 	BadgeService: BadgeService;
 	BulkImportService: BulkImportService;
 	CalloutService: CalloutService;
@@ -2477,6 +2478,17 @@ interface AvatarEditorService extends Instance {
 	 * This event fires when the [AvatarEditorService:PromptSetFavorite](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptSetFavorite) operation is completed. It can only return the Success or PermissionDenied [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) statuses as it does not perform any web requests which could fail.
 	 */
 	readonly PromptSetFavoriteCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
+}
+
+interface AvatarImportService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AvatarImportService: unique symbol;
 }
 
 /** A container object that holds a [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s inventory. Any [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) in a player's Backpack will be displayed in their inventory at the bottom of their screen. Selecting [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool)s from the inventory will equip the [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool), moving it from the Backpack to the player's character.
@@ -11233,6 +11245,7 @@ interface BillboardGui extends LayerCollector {
 	 * Determines whether the BillboardGui will always be rendered on top of other objects.
 	 */
 	AlwaysOnTop: boolean;
+	Brightness: number;
 	/**
 	 * When set to true, portions of GuiObjects that fall outside of the BillboardGui's canvas borders will not be drawn.
 	 */
@@ -11415,6 +11428,10 @@ interface SurfaceGui extends LayerCollector {
 	 * Determines whether the SurfaceGui will always be rendered on top of other objects.
 	 */
 	AlwaysOnTop: boolean;
+	/**
+	 * Specifies the amount of light this gui emits when LightInfluence is 0.
+	 */
+	Brightness: number;
 	/**
 	 * The size of a 'virtual screen', in 'virtual pixels', which makes SurfaceGuis pixel-to-pixel compatible with ScreenGuis.
 	 */
