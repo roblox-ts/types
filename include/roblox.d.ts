@@ -150,7 +150,7 @@ interface ProductInfo {
 	Name: string;
 	/** The description as shown on the asset's page
 	 * May be `undefined` if the description is empty.
-	*/
+	 */
 	Description: string | undefined;
 	/** The cost of purchasing the asset using Robux */
 	PriceInRobux: number;
