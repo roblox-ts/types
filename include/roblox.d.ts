@@ -148,8 +148,10 @@ interface ReceiptInfo {
 interface ProductInfo {
 	/** The name shown on the asset's page */
 	Name: string;
-	/** The description as shown on the asset's page; can be nil if blank. */
-	Description: string;
+	/** The description as shown on the asset's page
+	 * May be `undefined` if the description is empty.
+	*/
+	Description: string | undefined;
 	/** The cost of purchasing the asset using Robux */
 	PriceInRobux: number;
 	/** Timestamp of when the asset was created, e.g. `2018-08-01T17:55:11.98Z` */
