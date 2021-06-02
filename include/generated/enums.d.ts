@@ -2322,9 +2322,17 @@ declare namespace Enum {
 
 		export const Premium: Premium;
 
+		export interface Recommended {
+			Name: "Recommended";
+			Value: 6;
+			EnumType: EnumType<CatalogCategoryFilter>;
+		}
+
+		export const Recommended: Recommended;
+
 		export function GetEnumItems(this: defined): Array<CatalogCategoryFilter>
 	}
-	export type CatalogCategoryFilter = CatalogCategoryFilter.None | CatalogCategoryFilter.Featured | CatalogCategoryFilter.Collectibles | CatalogCategoryFilter.CommunityCreations | CatalogCategoryFilter.Premium;
+	export type CatalogCategoryFilter = CatalogCategoryFilter.None | CatalogCategoryFilter.Featured | CatalogCategoryFilter.Collectibles | CatalogCategoryFilter.CommunityCreations | CatalogCategoryFilter.Premium | CatalogCategoryFilter.Recommended;
 	export namespace CatalogSortType {
 		export interface Relevance {
 			Name: "Relevance";
@@ -4149,6 +4157,46 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<DraftStatusCode>
 	}
 	export type DraftStatusCode = DraftStatusCode.OK | DraftStatusCode.DraftOutdated | DraftStatusCode.ScriptRemoved | DraftStatusCode.DraftCommitted;
+	export namespace DraggerCoordinateSpace {
+		export interface Object {
+			Name: "Object";
+			Value: 0;
+			EnumType: EnumType<DraggerCoordinateSpace>;
+		}
+
+		export const Object: Object;
+
+		export interface Constant {
+			Name: "Constant";
+			Value: 1;
+			EnumType: EnumType<DraggerCoordinateSpace>;
+		}
+
+		export const Constant: Constant;
+
+		export function GetEnumItems(this: defined): Array<DraggerCoordinateSpace>
+	}
+	export type DraggerCoordinateSpace = DraggerCoordinateSpace.Object | DraggerCoordinateSpace.Constant;
+	export namespace DraggerMovementMode {
+		export interface Geometric {
+			Name: "Geometric";
+			Value: 0;
+			EnumType: EnumType<DraggerMovementMode>;
+		}
+
+		export const Geometric: Geometric;
+
+		export interface Physical {
+			Name: "Physical";
+			Value: 1;
+			EnumType: EnumType<DraggerMovementMode>;
+		}
+
+		export const Physical: Physical;
+
+		export function GetEnumItems(this: defined): Array<DraggerMovementMode>
+	}
+	export type DraggerMovementMode = DraggerMovementMode.Geometric | DraggerMovementMode.Physical;
 	export namespace EasingDirection {
 		export interface In {
 			Name: "In";
@@ -9473,6 +9521,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<NormalId>
 	}
 	export type NormalId = NormalId.Top | NormalId.Bottom | NormalId.Back | NormalId.Front | NormalId.Right | NormalId.Left;
+	export namespace OutfitSource {
+		export interface All {
+			Name: "All";
+			Value: 1;
+			EnumType: EnumType<OutfitSource>;
+		}
+
+		export const All: All;
+
+		export interface Created {
+			Name: "Created";
+			Value: 2;
+			EnumType: EnumType<OutfitSource>;
+		}
+
+		export const Created: Created;
+
+		export interface Purchased {
+			Name: "Purchased";
+			Value: 3;
+			EnumType: EnumType<OutfitSource>;
+		}
+
+		export const Purchased: Purchased;
+
+		export function GetEnumItems(this: defined): Array<OutfitSource>
+	}
+	export type OutfitSource = OutfitSource.All | OutfitSource.Created | OutfitSource.Purchased;
 	export namespace OutputLayoutMode {
 		export interface Horizontal {
 			Name: "Horizontal";

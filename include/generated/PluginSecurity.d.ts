@@ -3004,6 +3004,7 @@ interface Studio extends Instance {
 	["Highlight Current Line"]: boolean;
 	["Highlight Occurances"]: boolean;
 	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
+	readonly ["Hover Box Thickness"]: number;
 	["Hover Over Color"]: Color3;
 	["Indent Using Spaces"]: boolean;
 	/**
@@ -3063,6 +3064,7 @@ interface Studio extends Instance {
 	 */
 	PermissionLevelShown: Enum.PermissionLevelShown;
 	readonly ["Physical Draggers Select Scope By Default"]: boolean;
+	readonly ["Pivot Snap To Geometry Color"]: Color3;
 	PluginDebuggingEnabled: boolean;
 	/**
 	 * The directory where local plugins are stored.
@@ -3093,6 +3095,10 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Script Editor Scrollbar Handle Color"]: Color3;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly ScriptEditorShouldShowPluginMethods: boolean;
 	/**
 	 * The time (in seconds) a script can wait to be resumed before timing out.
 	 */
