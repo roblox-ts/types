@@ -23,6 +23,7 @@ interface Services {
 	ControllerService: ControllerService;
 	DataStoreService: DataStoreService;
 	Debris: Debris;
+	DraggerService: DraggerService;
 	EventIngestService: EventIngestService;
 	GamePassService: GamePassService;
 	GroupService: GroupService;
@@ -2325,7 +2326,7 @@ interface AvatarEditorService extends Instance {
 	 * boolean
 	 * Tags: Yields
 	 */
-	GetOutfits(this: AvatarEditorService): Instance | undefined;
+	GetOutfits(this: AvatarEditorService, outfitSource?: CastsToEnum<Enum.OutfitSource>): Instance | undefined;
 	/**
 	 * This function returns a list of recommendations based on the given [AssetType](https://developer.roblox.com/en-us/api-reference/enum/AssetType). Take a look at the code sample below for more information on possible usages for this function.
 	 * 
@@ -8113,6 +8114,77 @@ interface Dragger extends Instance {
 	 * Stops the current dragging action (made by [MouseDown](https://developer.roblox.com/api-reference/function/Dragger/MouseDown "MouseDown"))
 	 */
 	MouseUp(this: Dragger): void;
+}
+
+interface DraggerService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DraggerService: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly AlignDraggedObjects: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly AngleSnapEnabled: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly AngleSnapIncrement: number;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly AnimateHover: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CollisionsEnabled: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly DraggerCoordinateSpace: Enum.DraggerCoordinateSpace;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly DraggerMovementMode: Enum.DraggerMovementMode;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly GeometrySnapColor: Color3;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly HoverAnimateFrequency: number;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly HoverThickness: number;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly JointsEnabled: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly LinearSnapEnabled: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly LinearSnapIncrement: number;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ShowHover: boolean;
+	/**
+	 * Tags: NotReplicated
+	 */
+	ShowPivotIndicator: boolean;
 }
 
 interface EventIngestService extends Instance {
@@ -23465,6 +23537,7 @@ interface Player extends Instance {
 	 * *   Following an update in July 2014, the mouse's icon can now be set with this method.
 	 */
 	GetMouse(this: Player): PlayerMouse;
+	GetNetworkPing(this: Player): number;
 	/**
 	 * The HasAppearanceLoaded [Player](https://developer.roblox.com/en-us/api-reference/class/Player) function returns whether or not the appearance of the player's [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character) has loaded.
 	 * 
@@ -24067,7 +24140,8 @@ interface Players extends Instance {
 	 * If you prefer a Lua table of information about these assets instead of a model, use [Players:GetCharacterAppearanceInfoAsync](https://developer.roblox.com/en-us/api-reference/function/Players/GetCharacterAppearanceInfoAsync).
 	 * 
 	 * This method behaves similar to [InsertService:LoadAsset](https://developer.roblox.com/en-us/api-reference/function/InsertService/LoadAsset), and is like using [LoadAsset](https://developer.roblox.com/en-us/api-reference/function/InsertService/LoadAsset) on the asset information returned by [Players:GetCharacterAppearanceInfoAsync](https://developer.roblox.com/en-us/api-reference/function/Players/GetCharacterAppearanceInfoAsync) except faster.
-	 * Tags: Yields
+	 * Tags: Yields, Deprecated
+	 * @deprecated
 	 */
 	GetCharacterAppearanceAsync(this: Players, userId: number): Model | undefined;
 	/**
