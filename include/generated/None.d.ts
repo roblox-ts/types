@@ -643,7 +643,7 @@ interface Instance {
 		recursive?: boolean,
 	): Instances[T] | undefined;
 	FindFirstDescendant(this: Instance, name: string): Instance | undefined;
-	GetActor(this: Instance): Instance | undefined;
+	GetActor(this: Instance): Actor;
 	/**
 	 * This function returns the attribute which has been assigned to the given name. If no attribute has been assigned then nil is returned.
 	 * 
@@ -2470,7 +2470,7 @@ interface AvatarEditorService extends Instance {
 	/**
 	 * This event fires when the PromptSaveOutfit operation is completed. It can only return the Success or PermissionDenied [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) statuses as it does not perform any web requests which could fail.
 	 */
-	readonly PromptCreateOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
+	readonly PromptCreateOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult, failureType: unknown) => void>;
 	/**
 	 * This event fires when the [AvatarEditorService:PromptSaveAvatar](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptSaveAvatar) operation is completed. It gives a status [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) indicating whether the prompt succeeded, failed or permission was not granted by the user.
 	 */
@@ -24937,27 +24937,27 @@ interface ProximityPromptService extends Instance {
 	/**
 	 * This event triggers when the player begins holding down the [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button on a prompt with a non-zero [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration). This can be used to animate a progress bar.
 	 */
-	readonly PromptButtonHoldBegan: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
+	readonly PromptButtonHoldBegan: RBXScriptSignal<(prompt: ProximityPrompt, playerWhoTriggered: Player) => void>;
 	/**
 	 * This event triggers when the user stops holding down the [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button on a prompt with a non-zero [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration). This can be used to animate a progress bar.
 	 */
-	readonly PromptButtonHoldEnded: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
+	readonly PromptButtonHoldEnded: RBXScriptSignal<(prompt: ProximityPrompt, playerWhoTriggered: Player) => void>;
 	/**
 	 * This event triggers client-side, in connected [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) when a prompt becomes hidden.
 	 */
-	readonly PromptHidden: RBXScriptSignal<(prompt: Instance) => void>;
+	readonly PromptHidden: RBXScriptSignal<(prompt: ProximityPrompt) => void>;
 	/**
 	 * This event triggers client-side, in connected [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript), when a prompt becomes visible.
 	 */
-	readonly PromptShown: RBXScriptSignal<(prompt: Instance, inputType: Enum.ProximityPromptInputType) => void>;
+	readonly PromptShown: RBXScriptSignal<(prompt: ProximityPrompt, inputType: Enum.ProximityPromptInputType) => void>;
 	/**
 	 * This event triggers when the player stops holding down the [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button while triggering a prompt. This is intended to allow interactions which require the player to hold a button while something happens in-game.
 	 */
-	readonly PromptTriggerEnded: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
+	readonly PromptTriggerEnded: RBXScriptSignal<(prompt: ProximityPrompt, playerWhoTriggered: Player) => void>;
 	/**
 	 * This event triggers when the player interacts with this prompt.
 	 */
-	readonly PromptTriggered: RBXScriptSignal<(prompt: Instance, playerWhoTriggered: Player) => void>;
+	readonly PromptTriggered: RBXScriptSignal<(prompt: ProximityPrompt, playerWhoTriggered: Player) => void>;
 }
 
 interface PublishService extends Instance {

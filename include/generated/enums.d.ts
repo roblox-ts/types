@@ -3485,6 +3485,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<CoreGuiType>
 	}
 	export type CoreGuiType = CoreGuiType.PlayerList | CoreGuiType.Health | CoreGuiType.Backpack | CoreGuiType.Chat | CoreGuiType.All | CoreGuiType.EmotesMenu;
+	export namespace CreateOutfitFailure {
+		export interface InvalidName {
+			Name: "InvalidName";
+			Value: 1;
+			EnumType: EnumType<CreateOutfitFailure>;
+		}
+
+		export const InvalidName: InvalidName;
+
+		export interface OutfitLimitReached {
+			Name: "OutfitLimitReached";
+			Value: 2;
+			EnumType: EnumType<CreateOutfitFailure>;
+		}
+
+		export const OutfitLimitReached: OutfitLimitReached;
+
+		export interface Other {
+			Name: "Other";
+			Value: 3;
+			EnumType: EnumType<CreateOutfitFailure>;
+		}
+
+		export const Other: Other;
+
+		export function GetEnumItems(this: defined): Array<CreateOutfitFailure>
+	}
+	export type CreateOutfitFailure = CreateOutfitFailure.InvalidName | CreateOutfitFailure.OutfitLimitReached | CreateOutfitFailure.Other;
 	export namespace CreatorType {
 		export interface User {
 			Name: "User";
@@ -4166,17 +4194,17 @@ declare namespace Enum {
 
 		export const Object: Object;
 
-		export interface Constant {
-			Name: "Constant";
+		export interface World {
+			Name: "World";
 			Value: 1;
 			EnumType: EnumType<DraggerCoordinateSpace>;
 		}
 
-		export const Constant: Constant;
+		export const World: World;
 
 		export function GetEnumItems(this: defined): Array<DraggerCoordinateSpace>
 	}
-	export type DraggerCoordinateSpace = DraggerCoordinateSpace.Object | DraggerCoordinateSpace.Constant;
+	export type DraggerCoordinateSpace = DraggerCoordinateSpace.Object | DraggerCoordinateSpace.World;
 	export namespace DraggerMovementMode {
 		export interface Geometric {
 			Name: "Geometric";
