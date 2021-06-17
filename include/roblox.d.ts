@@ -1871,7 +1871,7 @@ interface Vector3int16 {
 	readonly Z: number;
 }
 
-type Vector3int16Constructor = new (x?: number, y?: number, z?: number) => Vector3;
+type Vector3int16Constructor = new (x?: number, y?: number, z?: number) => Vector3int16;
 
 declare const Vector3int16: Vector3int16Constructor;
 
