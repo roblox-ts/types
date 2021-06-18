@@ -1829,7 +1829,7 @@ interface Plugin extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	CreateQWidgetPluginGui(this: Plugin, pluginGuiId: string, pluginGuiOptions: object): Instance | undefined;
+	CreateQWidgetPluginGui(this: Plugin, pluginGuiId: string, pluginGuiOptions: object): QWidgetPluginGui;
 	/**
 	 * This function prompts the user to open a .fbx animation file that can be loaded onto the _rigModel_, then proceeds to insert the animation as a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace).
 	 * Tags: Yields
@@ -3129,7 +3129,6 @@ interface Studio extends Instance {
 	["Selection Color"]: Color3;
 	["Server Audio Behavior"]: Enum.ServerAudioBehavior;
 	["Show Core GUI in Explorer while Playing"]: boolean;
-	["Show CorePackages"]: boolean;
 	["Show Deployment Warnings"]: boolean;
 	["Show Diagnostics Bar"]: boolean;
 	["Show FileSyncService"]: boolean;
@@ -3140,6 +3139,7 @@ interface Studio extends Instance {
 	["Show QT warnings in output"]: boolean;
 	["Show Whitespace"]: boolean;
 	["Show plus button on hover in Explorer"]: boolean;
+	readonly ShowCorePackagesInExplorer: boolean;
 	["Skip Closing Brackets and Quotes"]: boolean;
 	/**
 	 * Tags: NotReplicated

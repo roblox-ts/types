@@ -2158,7 +2158,7 @@ interface AvatarEditorService extends Instance {
 	/**
 	 * This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to save the given [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) as an outfit. Does not yield and can get the result by listening to the [AvatarEditorService.PromptCreateOutfitCompleted](https://developer.roblox.com/en-us/api-reference/event/AvatarEditorService/PromptCreateOutfitCompleted) event.
 	 */
-	PromptCreateOutfit(this: AvatarEditorService, outfit: Instance, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
+	PromptCreateOutfit(this: AvatarEditorService, outfit: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
 	/**
 	 * This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to update their avatar based on the given [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) and [RigType](https://developer.roblox.com/en-us/api-reference/enum/RigType) (R6 or R15). Does not yield and can get the result by listening to the PromptSaveAvatarCompleted event. This is similar to how other prompts such as PromptPurchase work.
 	 */
@@ -2170,7 +2170,7 @@ interface AvatarEditorService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	CheckApplyDefaultClothing(this: AvatarEditorService, humanoidDescription: HumanoidDescription): Instance | undefined;
+	CheckApplyDefaultClothing(this: AvatarEditorService, humanoidDescription: HumanoidDescription): HumanoidDescription;
 	/**
 	 * This function returns the platform Avatar rules for things like scaling, default shirts and pants, number of wearable assets, ect.
 	 * 
@@ -2242,7 +2242,7 @@ interface AvatarEditorService extends Instance {
 	 * \]
 	 * Tags: Yields
 	 */
-	GetInventory(this: AvatarEditorService, assetTypes: Array<any>): Instance | undefined;
+	GetInventory(this: AvatarEditorService, assetTypes: Array<any>): InventoryPages;
 	/**
 	 * This function returns the item details for the given item. It accepts two parameters - the first indicating the ID of the item being retrieved and the second indicating its [ItemType](https://developer.roblox.com/en-us/api-reference/enum/ItemType).
 	 * 
@@ -2326,7 +2326,7 @@ interface AvatarEditorService extends Instance {
 	 * boolean
 	 * Tags: Yields
 	 */
-	GetOutfits(this: AvatarEditorService, outfitSource?: CastsToEnum<Enum.OutfitSource>): Instance | undefined;
+	GetOutfits(this: AvatarEditorService, outfitSource?: CastsToEnum<Enum.OutfitSource>): OutfitPages;
 	/**
 	 * This function returns a list of recommendations based on the given [AssetType](https://developer.roblox.com/en-us/api-reference/enum/AssetType). Take a look at the code sample below for more information on possible usages for this function.
 	 * 
@@ -2462,7 +2462,7 @@ interface AvatarEditorService extends Instance {
 	 * \]
 	 * Tags: Yields
 	 */
-	SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): Instance | undefined;
+	SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): CatalogPages;
 	/**
 	 * This event fires when the [AvatarEditorService:PromptAllowInventoryReadAccess](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptAllowInventoryReadAccess) prompt is responded to by the user. It can only return the Success or PermissionDenied [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) statuses as it does not perform any web requests which could fail.
 	 */
@@ -7847,7 +7847,7 @@ interface DataStoreService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	ListDataStoresAsync(this: DataStoreService, prefix?: string, pageSize?: number): Instance | undefined;
+	ListDataStoresAsync(this: DataStoreService, prefix?: string, pageSize?: number): DataStoreEnumerationPages;
 }
 
 interface DataStoreSetOptions extends Instance {
@@ -8396,6 +8396,7 @@ interface Decal extends FaceInstance {
 	 * For [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s, see [BasePart.Transparency](https://developer.roblox.com/en-us/api-reference/property/BasePart/Transparency).
 	 */
 	Transparency: number;
+	ZIndex: number;
 }
 
 /** A Texture object applies a repeating texture to the face of a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart).
@@ -8942,11 +8943,11 @@ interface DataStore extends GlobalDataStore {
 	/**
 	 * Tags: Yields
 	 */
-	ListKeysAsync(this: DataStore, prefix?: string, pageSize?: number): Instance | undefined;
+	ListKeysAsync(this: DataStore, prefix?: string, pageSize?: number): DataStoreKeyPages;
 	/**
 	 * Tags: Yields
 	 */
-	ListVersionsAsync(this: DataStore, key: string, sortDirection?: CastsToEnum<Enum.SortDirection>, minDate?: number, maxDate?: number, pageSize?: number): Instance | undefined;
+	ListVersionsAsync(this: DataStore, key: string, sortDirection?: CastsToEnum<Enum.SortDirection>, minDate?: number, maxDate?: number, pageSize?: number): DataStoreVersionPages;
 	/**
 	 * Tags: Yields
 	 */
@@ -19164,8 +19165,8 @@ interface MemoryStoreService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MemoryStoreService: unique symbol;
-	GetQueue(this: MemoryStoreService, name: string, invisibilityTimeout?: number): Instance | undefined;
-	GetSortedMap(this: MemoryStoreService, name: string): Instance | undefined;
+	GetQueue(this: MemoryStoreService, name: string, invisibilityTimeout?: number): MemoryStoreQueue;
+	GetSortedMap(this: MemoryStoreService, name: string): MemoryStoreSortedMap;
 }
 
 interface MemoryStoreSortedMap extends Instance {
