@@ -1152,7 +1152,7 @@ declare namespace Enum {
 
 		export interface TeeShirtAccessory {
 			Name: "TeeShirtAccessory";
-			Value: 63;
+			Value: 64;
 			EnumType: EnumType<AssetType>;
 		}
 
@@ -1160,7 +1160,7 @@ declare namespace Enum {
 
 		export interface ShirtAccessory {
 			Name: "ShirtAccessory";
-			Value: 64;
+			Value: 65;
 			EnumType: EnumType<AssetType>;
 		}
 
@@ -1168,7 +1168,7 @@ declare namespace Enum {
 
 		export interface PantsAccessory {
 			Name: "PantsAccessory";
-			Value: 65;
+			Value: 66;
 			EnumType: EnumType<AssetType>;
 		}
 
@@ -1176,7 +1176,7 @@ declare namespace Enum {
 
 		export interface JacketAccessory {
 			Name: "JacketAccessory";
-			Value: 66;
+			Value: 67;
 			EnumType: EnumType<AssetType>;
 		}
 
@@ -1184,7 +1184,7 @@ declare namespace Enum {
 
 		export interface SweaterAccessory {
 			Name: "SweaterAccessory";
-			Value: 67;
+			Value: 68;
 			EnumType: EnumType<AssetType>;
 		}
 
@@ -1192,7 +1192,7 @@ declare namespace Enum {
 
 		export interface ShortsAccessory {
 			Name: "ShortsAccessory";
-			Value: 68;
+			Value: 69;
 			EnumType: EnumType<AssetType>;
 		}
 
@@ -1200,7 +1200,7 @@ declare namespace Enum {
 
 		export interface LeftShoeAccessory {
 			Name: "LeftShoeAccessory";
-			Value: 69;
+			Value: 70;
 			EnumType: EnumType<AssetType>;
 		}
 
@@ -1208,7 +1208,7 @@ declare namespace Enum {
 
 		export interface RightShoeAccessory {
 			Name: "RightShoeAccessory";
-			Value: 70;
+			Value: 71;
 			EnumType: EnumType<AssetType>;
 		}
 
@@ -1216,7 +1216,7 @@ declare namespace Enum {
 
 		export interface DressSkirtAccessory {
 			Name: "DressSkirtAccessory";
-			Value: 71;
+			Value: 72;
 			EnumType: EnumType<AssetType>;
 		}
 
@@ -1536,7 +1536,7 @@ declare namespace Enum {
 
 		export interface TeeShirtAccessory {
 			Name: "TeeShirtAccessory";
-			Value: 63;
+			Value: 64;
 			EnumType: EnumType<AvatarAssetType>;
 		}
 
@@ -1544,7 +1544,7 @@ declare namespace Enum {
 
 		export interface ShirtAccessory {
 			Name: "ShirtAccessory";
-			Value: 64;
+			Value: 65;
 			EnumType: EnumType<AvatarAssetType>;
 		}
 
@@ -1552,7 +1552,7 @@ declare namespace Enum {
 
 		export interface PantsAccessory {
 			Name: "PantsAccessory";
-			Value: 65;
+			Value: 66;
 			EnumType: EnumType<AvatarAssetType>;
 		}
 
@@ -1560,7 +1560,7 @@ declare namespace Enum {
 
 		export interface JacketAccessory {
 			Name: "JacketAccessory";
-			Value: 66;
+			Value: 67;
 			EnumType: EnumType<AvatarAssetType>;
 		}
 
@@ -1568,7 +1568,7 @@ declare namespace Enum {
 
 		export interface SweaterAccessory {
 			Name: "SweaterAccessory";
-			Value: 67;
+			Value: 68;
 			EnumType: EnumType<AvatarAssetType>;
 		}
 
@@ -1576,7 +1576,7 @@ declare namespace Enum {
 
 		export interface ShortsAccessory {
 			Name: "ShortsAccessory";
-			Value: 68;
+			Value: 69;
 			EnumType: EnumType<AvatarAssetType>;
 		}
 
@@ -1584,7 +1584,7 @@ declare namespace Enum {
 
 		export interface LeftShoeAccessory {
 			Name: "LeftShoeAccessory";
-			Value: 69;
+			Value: 70;
 			EnumType: EnumType<AvatarAssetType>;
 		}
 
@@ -1592,7 +1592,7 @@ declare namespace Enum {
 
 		export interface RightShoeAccessory {
 			Name: "RightShoeAccessory";
-			Value: 70;
+			Value: 71;
 			EnumType: EnumType<AvatarAssetType>;
 		}
 
@@ -1600,7 +1600,7 @@ declare namespace Enum {
 
 		export interface DressSkirtAccessory {
 			Name: "DressSkirtAccessory";
-			Value: 71;
+			Value: 72;
 			EnumType: EnumType<AvatarAssetType>;
 		}
 
