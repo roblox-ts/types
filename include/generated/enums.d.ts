@@ -13898,9 +13898,17 @@ declare namespace Enum {
 
 		export const Username: Username;
 
+		export interface OneTimePassword {
+			Name: "OneTimePassword";
+			Value: 8;
+			EnumType: EnumType<TextInputType>;
+		}
+
+		export const OneTimePassword: OneTimePassword;
+
 		export function GetEnumItems(this: defined): Array<TextInputType>
 	}
-	export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone | TextInputType.Password | TextInputType.PasswordShown | TextInputType.Username;
+	export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone | TextInputType.Password | TextInputType.PasswordShown | TextInputType.Username | TextInputType.OneTimePassword;
 	export namespace TextTruncate {
 		export interface None {
 			Name: "None";

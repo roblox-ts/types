@@ -9,6 +9,7 @@ interface Services {
 	AppUpdateService: AppUpdateService;
 	AssetCounterService: AssetCounterService;
 	AssetDeliveryProxy: AssetDeliveryProxy;
+	AssetImportService: AssetImportService;
 	AssetManagerService: AssetManagerService;
 	AssetService: AssetService;
 	AvatarEditorService: AvatarEditorService;
@@ -18,6 +19,7 @@ interface Services {
 	CalloutService: CalloutService;
 	Chat: Chat;
 	CollectionService: CollectionService;
+	CommandService: CommandService;
 	ContentProvider: ContentProvider;
 	ContextActionService: ContextActionService;
 	ControllerService: ControllerService;
@@ -329,6 +331,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AnimationTrack: AnimationTrack;
 	BaseWrap: BaseWrap;
 	CatalogPages: CatalogPages;
+	CommandInstance: CommandInstance;
 	DataModel: DataModel;
 	DataStore: DataStore;
 	DataStoreEnumerationPages: DataStoreEnumerationPages;
@@ -1741,6 +1744,17 @@ interface AssetDeliveryProxy extends Instance {
 	readonly _nominal_AssetDeliveryProxy: unique symbol;
 }
 
+interface AssetImportService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AssetImportService: unique symbol;
+}
+
 interface AssetManagerService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -2474,7 +2488,7 @@ interface AvatarEditorService extends Instance {
 	/**
 	 * This event fires when the [AvatarEditorService:PromptSaveAvatar](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptSaveAvatar) operation is completed. It gives a status [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) indicating whether the prompt succeeded, failed or permission was not granted by the user.
 	 */
-	readonly PromptSaveAvatarCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
+	readonly PromptSaveAvatarCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult, humanoidDescription: HumanoidDescription) => void>;
 	/**
 	 * This event fires when the [AvatarEditorService:PromptSetFavorite](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptSetFavorite) operation is completed. It can only return the Success or PermissionDenied [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) statuses as it does not perform any web requests which could fail.
 	 */
@@ -5908,6 +5922,44 @@ interface CollectionService extends Instance {
 	 * @deprecated
 	 */
 	readonly ItemRemoved: RBXScriptSignal<(instance: Instance) => void>;
+}
+
+interface CommandInstance extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CommandInstance: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly AllowGUIAccessPoints: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Group: string;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Name: string;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Text: string;
+}
+
+interface CommandService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CommandService: unique symbol;
 }
 
 /** The Configuration object is a container object that is designed to hold value objects to make values used in [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool)s or any model using [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s more accessible.
@@ -20028,6 +20080,10 @@ interface BasePart extends PVInstance {
 	 */
 	CanCollide: boolean;
 	/**
+	 * Determines whether spatial queries such as raycasts can hit this part. If false, in addition to CanCollide, all spatial queries will ignore this part.
+	 */
+	CanQuery: boolean;
+	/**
 	 * This property determines if the part will trigger [Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched)/[TouchEnded](https://developer.roblox.com/en-us/api-reference/event/BasePart/TouchEnded) events on other [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) with [TouchTransmitters](https://developer.roblox.com/en-us/api-reference/class/TouchTransmitter). By default, the value is set to `true`.
 	 * 
 	 * A BasePart's Touched or TouchEnded event will only fire if otherPart has CanTouch set to `true`.
@@ -24130,11 +24186,16 @@ interface Players extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	CreateHumanoidModelFromDescription(this: Players, description: LuaSourceContainer, rigType: CastsToEnum<Enum.HumanoidRigType>, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): Instance | undefined;
+	CreateHumanoidModelFromDescription(
+		this: Players,
+		description: HumanoidDescription,
+		rigType: CastsToEnum<Enum.HumanoidRigType>,
+		assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>,
+	): Model;
 	/**
 	 * Tags: Yields
 	 */
-	CreateHumanoidModelFromUserId(this: Players, userId: number): Instance | undefined;
+	CreateHumanoidModelFromUserId(this: Players, userId: number): Model;
 	/**
 	 * This function returns a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) containing the assets which the player is wearing, excluding gear.
 	 * 
@@ -24144,7 +24205,7 @@ interface Players extends Instance {
 	 * Tags: Yields, Deprecated
 	 * @deprecated
 	 */
-	GetCharacterAppearanceAsync(this: Players, userId: number): Model | undefined;
+	GetCharacterAppearanceAsync(this: Players, userId: number): Model;
 	/**
 	 * This function returns information about a player's avatar (ignoring gear) on the Roblox website in the form of a dictionary. It is not to be confused with [GetCharacterAppearanceAsync](https://developer.roblox.com/en-us/api-reference/function/Players/GetCharacterAppearanceAsync), which actually loads the assets described by this method. You can use [InsertService:LoadAsset](https://developer.roblox.com/en-us/api-reference/function/InsertService/LoadAsset) to load the assets that are used in the player's avatar. The structure of the returned dictionary is as follows:
 	 * 
