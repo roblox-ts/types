@@ -561,16 +561,26 @@ interface PlayerGui extends BasePlayerGui {}
 interface Players extends Instance {
 	/** @client */
 	readonly LocalPlayer: Player;
+
 	GetPlayerByUserId(this: Players, userId: number): Player | undefined;
 	GetPlayerFromCharacter(this: Players, character: Instance | undefined): Player | undefined;
 	GetPlayers(this: Players): Array<Player>;
 
-	GetCharacterAppearanceAsync(this: Players, userId: number): Model | undefined;
-	GetCharacterAppearanceInfoAsync(this: Players, userId: number): CharacterAppearanceInfo;
-	GetFriendsAsync(this: Players, userId: number): FriendPages;
-
 	GetHumanoidDescriptionFromOutfitId(this: Players, outfitId: number): HumanoidDescription;
 	GetHumanoidDescriptionFromUserId(this: Players, userId: number): HumanoidDescription;
+
+	CreateHumanoidModelFromDescription(
+		this: Players,
+		description: HumanoidDescription,
+		rigType: CastsToEnum<Enum.HumanoidRigType>,
+		assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>,
+	): Model;
+	CreateHumanoidModelFromUserId(this: Players, userId: number): Model;
+
+	GetCharacterAppearanceAsync(this: Players, userId: number): Model;
+	GetCharacterAppearanceInfoAsync(this: Players, userId: number): CharacterAppearanceInfo;
+
+	GetFriendsAsync(this: Players, userId: number): FriendPages;
 
 	GetUserThumbnailAsync(
 		this: Players,
