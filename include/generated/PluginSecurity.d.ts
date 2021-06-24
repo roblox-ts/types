@@ -662,7 +662,7 @@ interface InsertService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	CreateMeshPartAsync(this: InsertService, meshId: string, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>, renderFidelity: CastsToEnum<Enum.RenderFidelity>): Instance | undefined;
+	CreateMeshPartAsync(this: InsertService, meshId: string, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>, renderFidelity: CastsToEnum<Enum.RenderFidelity>): MeshPart;
 }
 
 interface KeyframeSequence extends Instance {
@@ -2981,8 +2981,11 @@ interface Studio extends Instance {
 	["Enable Http Sandboxing"]: boolean;
 	["Enable Internal Beta Features"]: boolean;
 	["Enable Internal Features"]: boolean;
+	readonly ["Enable Linting"]: boolean;
+	readonly ["Enable Signature Help"]: boolean;
 	["Enable Temporary Tabs"]: boolean;
 	["Enable Temporary Tabs In Explorer"]: boolean;
+	readonly ["Enable Type Hover"]: boolean;
 	/**
 	 * Tags: NotReplicated
 	 */
