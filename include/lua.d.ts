@@ -111,11 +111,11 @@ declare function xpcall<T extends Array<unknown>, U, V>(
 	errHandler: (err: unknown) => V,
 	...args: T
 ): LuaTuple<
-	U extends LuaTuple<[...infer W]> 
-		? [true, ...W] | [false, V extends LuaTuple<[infer A, ...unknown[]]> 
-		? A : V] 
-		: [true, U] | [false, V extends LuaTuple<[infer A, ...unknown[]]> ? A : V]
+	U extends LuaTuple<[...infer W]>
+		? [true, ...W] | [false, V extends LuaTuple<[infer A, ...Array<unknown>]> ? A : V]
+		: [true, U] | [false, V extends LuaTuple<[infer A, ...Array<unknown>]> ? A : V]
 >;
+
 
 interface LuaMetatable<T> {
 	__index?: (self: T, index: unknown) => void;
