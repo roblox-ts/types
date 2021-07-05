@@ -106,24 +106,16 @@ declare function xpcall<T extends Array<any>, U>(
 >;
 
 /** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, xpcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, xpcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
-declare function xpcall<T extends Array<any>, U>(
+declare function xpcall<T extends Array<unknown>, U, V>(
 	func: (...args: T) => U,
+	errHandler: (err: unknown) => V,
 	...args: T
 ): LuaTuple<
-	U extends [infer A]
-		? [true, A] | [false, string]
-		: U extends [infer A, infer B]
-		? [true, A, B] | [false, string, undefined]
-		: U extends [infer A, infer B, infer C]
-		? [true, A, B, C] | [false, string, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D]
-		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D, infer E]
-		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
-		: [true, U] | [false, string]
+	U extends LuaTuple<[...infer W]>
+		? [true, ...W] | [false, V extends LuaTuple<[infer A, ...Array<unknown>]> ? A : V]
+		: [true, U] | [false, V extends LuaTuple<[infer A, ...Array<unknown>]> ? A : V]
 >;
+
 
 interface LuaMetatable<T> {
 	__index?: (self: T, index: unknown) => void;
