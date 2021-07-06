@@ -116,7 +116,6 @@ declare function xpcall<T extends Array<unknown>, U, V>(
 		: [true, U] | [false, V extends LuaTuple<[infer A, ...Array<unknown>]> ? A : V]
 >;
 
-
 interface LuaMetatable<T> {
 	__index?: (self: T, index: unknown) => void;
 	__newindex?: (self: T, index: unknown, value: unknown) => void;
