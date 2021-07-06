@@ -200,17 +200,48 @@ declare namespace os {
 	function difftime(t2: number, t1: number): number;
 }
 
-type DebugInfoFlag<T extends string> = T extends "s"
-	? string
-	: T extends "l"
-	? number
-	: T extends "n"
-	? string | undefined
-	: T extends "a"
-	? number | boolean
-	: T extends "f"
-	? Callback
-	: never;
+declare namespace TS {
+	type ConcatX<T extends Array<Array<any>>> = [
+		...T[0],
+		...T[1],
+		...T[2],
+		...T[3],
+		...T[4],
+		...T[5],
+		...T[6],
+		...T[7],
+		...T[8],
+		...T[9],
+		...T[10],
+		...T[11],
+		...T[12],
+		...T[13],
+		...T[14],
+		...T[15],
+		...T[16],
+		...T[17],
+		...T[18],
+		...T[19]
+	];
+
+	type Flatten<T extends Array<any>> = ConcatX<
+		[...{ [K in keyof T]: T[K] extends Array<any> ? T[K] : [T[K]] }, ...Array<[]>]
+	>;
+
+	type FlatLuaTuple<T extends Array<any>> = LuaTuple<Flatten<T>>;
+
+	type InfoFlag<T extends string> = T extends "s"
+		? string
+		: T extends "l"
+		? number
+		: T extends "n"
+		? string | undefined
+		: T extends "a"
+		? [number, boolean]
+		: T extends "f"
+		? Callback
+		: never;
+}
 
 declare namespace debug {
 	function traceback(message?: string, level?: number): string;
@@ -251,30 +282,30 @@ declare namespace debug {
 		functionOrLevel: Callback | number,
 		options: T,
 	): T extends `${infer A}${infer B}${infer C}${infer D}${infer E}${infer _}`
-		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>, DebugInfoFlag<C>, DebugInfoFlag<D>, DebugInfoFlag<E>]>
+		? TS.FlatLuaTuple<[TS.InfoFlag<A>, TS.InfoFlag<B>, TS.InfoFlag<C>, TS.InfoFlag<D>, TS.InfoFlag<E>]>
 		: T extends `${infer A}${infer B}${infer C}${infer D}${infer _}`
-		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>, DebugInfoFlag<C>, DebugInfoFlag<D>]>
+		? TS.FlatLuaTuple<[TS.InfoFlag<A>, TS.InfoFlag<B>, TS.InfoFlag<C>, TS.InfoFlag<D>]>
 		: T extends `${infer A}${infer B}${infer C}${infer _}`
-		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>, DebugInfoFlag<C>]>
+		? TS.FlatLuaTuple<[TS.InfoFlag<A>, TS.InfoFlag<B>, TS.InfoFlag<C>]>
 		: T extends `${infer A}${infer B}${infer _}`
-		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>]>
+		? TS.FlatLuaTuple<[TS.InfoFlag<A>, TS.InfoFlag<B>]>
 		: T extends `${infer A}${infer _}`
-		? LuaTuple<[DebugInfoFlag<A>]>
-		: LuaTuple<[unknown, unknown, unknown, unknown, unknown]>;
+		? TS.FlatLuaTuple<[TS.InfoFlag<A>]>
+		: TS.FlatLuaTuple<[unknown, unknown, unknown, unknown, unknown]>;
 	function info<T extends string>(
 		functionOrLevel: Callback | number,
 		options: T,
 	): T extends `${infer A}${infer B}${infer C}${infer D}${infer E}${infer _}`
-		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>, DebugInfoFlag<C>, DebugInfoFlag<D>, DebugInfoFlag<E>]>
+		? TS.FlatLuaTuple<[TS.InfoFlag<A>, TS.InfoFlag<B>, TS.InfoFlag<C>, TS.InfoFlag<D>, TS.InfoFlag<E>]>
 		: T extends `${infer A}${infer B}${infer C}${infer D}${infer _}`
-		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>, DebugInfoFlag<C>, DebugInfoFlag<D>]>
+		? TS.FlatLuaTuple<[TS.InfoFlag<A>, TS.InfoFlag<B>, TS.InfoFlag<C>, TS.InfoFlag<D>]>
 		: T extends `${infer A}${infer B}${infer C}${infer _}`
-		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>, DebugInfoFlag<C>]>
+		? TS.FlatLuaTuple<[TS.InfoFlag<A>, TS.InfoFlag<B>, TS.InfoFlag<C>]>
 		: T extends `${infer A}${infer B}${infer _}`
-		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>]>
+		? TS.FlatLuaTuple<[TS.InfoFlag<A>, TS.InfoFlag<B>]>
 		: T extends `${infer A}${infer _}`
-		? LuaTuple<[DebugInfoFlag<A>]>
-		: LuaTuple<[unknown, unknown, unknown, unknown, unknown]>;
+		? TS.FlatLuaTuple<[TS.InfoFlag<A>]>
+		: TS.FlatLuaTuple<[unknown, unknown, unknown, unknown, unknown]>;
 }
 
 interface String {
