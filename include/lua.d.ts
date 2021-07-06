@@ -200,11 +200,81 @@ declare namespace os {
 	function difftime(t2: number, t1: number): number;
 }
 
+type DebugInfoFlag<T extends string> = T extends "s"
+	? string
+	: T extends "l"
+	? number
+	: T extends "n"
+	? string | undefined
+	: T extends "a"
+	? number | boolean
+	: T extends "f"
+	? Callback
+	: never;
+
 declare namespace debug {
 	function traceback(message?: string, level?: number): string;
 	function traceback(thread: thread, message?: string, level?: number): string;
 	function profilebegin(profileName: string): void;
 	function profileend(): void;
+
+	/**
+	 * Allows programmatic inspection of the call stack.
+	 *
+	 * - `thread` (thread) - Optional. A thread as returned by `coroutine.create`. To use the current thread, omit this
+	 * entirely (don’t pass `nil`).
+	 * - `functionOrLevel` - Either a `function` or `number` to describe the point at which information from the call
+	 * stack information should be returned.
+	 *   - A value of `1` represents the function which is calling `debug.info`. `2` represents the function that called
+	 * that function, and so on. Out-of-bounds values will result in no values returned.
+	 * - `options` - A string that represents the information to be returned. It must contain exactly 0 or 1 of each of
+	 * the following characters and no others: `slnaf`
+	 *   - `s` - `string`. The function source identifier, equal to the full name of the script the function is defined
+	 * in
+	 *   - `l` - `number`. If `functionOrLevel` is a function, the line the function is defined on. If `functionOrLevel`
+	 * is a number (examining a stack frame), the line number of the function call
+	 *   - `n` - `string`. The name of the function, may be nil for anonymous functions and C functions without an
+	 * assigned debug name.
+	 *   - `a` - `number`, `boolean`. Arity of the function, which refers to the parameter count and whether the function
+	 * is variadic.
+	 *   - `f` - `function`. The function which was inspected.
+	 *
+	 * This function differs from `debug.traceback` in that it guarantees the format of the data it returns. This is
+	 * useful not only for general logging and filtering purposes, but also for sending the data to systems expecting
+	 * structured input, such as crash aggregation.
+	 *
+	 * This function is similar to `debug.getinfo`, an unavailable part of the standard Lua library which serves a
+	 * similar purpose.
+	 */
+	function info<T extends string>(
+		thread: thread,
+		functionOrLevel: Callback | number,
+		options: T,
+	): T extends `${infer A}${infer B}${infer C}${infer D}${infer E}${infer _}`
+		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>, DebugInfoFlag<C>, DebugInfoFlag<D>, DebugInfoFlag<E>]>
+		: T extends `${infer A}${infer B}${infer C}${infer D}${infer _}`
+		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>, DebugInfoFlag<C>, DebugInfoFlag<D>]>
+		: T extends `${infer A}${infer B}${infer C}${infer _}`
+		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>, DebugInfoFlag<C>]>
+		: T extends `${infer A}${infer B}${infer _}`
+		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>]>
+		: T extends `${infer A}${infer _}`
+		? LuaTuple<[DebugInfoFlag<A>]>
+		: LuaTuple<[unknown, unknown, unknown, unknown, unknown]>;
+	function info<T extends string>(
+		functionOrLevel: Callback | number,
+		options: T,
+	): T extends `${infer A}${infer B}${infer C}${infer D}${infer E}${infer _}`
+		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>, DebugInfoFlag<C>, DebugInfoFlag<D>, DebugInfoFlag<E>]>
+		: T extends `${infer A}${infer B}${infer C}${infer D}${infer _}`
+		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>, DebugInfoFlag<C>, DebugInfoFlag<D>]>
+		: T extends `${infer A}${infer B}${infer C}${infer _}`
+		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>, DebugInfoFlag<C>]>
+		: T extends `${infer A}${infer B}${infer _}`
+		? LuaTuple<[DebugInfoFlag<A>, DebugInfoFlag<B>]>
+		: T extends `${infer A}${infer _}`
+		? LuaTuple<[DebugInfoFlag<A>]>
+		: LuaTuple<[unknown, unknown, unknown, unknown, unknown]>;
 }
 
 interface String {
