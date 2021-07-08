@@ -25,6 +25,7 @@ interface Services {
 	ControllerService: ControllerService;
 	DataStoreService: DataStoreService;
 	Debris: Debris;
+	DebuggerConnectionManager: DebuggerConnectionManager;
 	DraggerService: DraggerService;
 	EventIngestService: EventIngestService;
 	GamePassService: GamePassService;
@@ -54,6 +55,7 @@ interface Services {
 	PolicyService: PolicyService;
 	ProximityPromptService: ProximityPromptService;
 	PublishService: PublishService;
+	RemoteDebuggerServer: RemoteDebuggerServer;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedScriptService: ReplicatedScriptService;
 	ReplicatedStorage: ReplicatedStorage;
@@ -143,6 +145,7 @@ interface CreatableInstances {
 	EchoSoundEffect: EchoSoundEffect;
 	EqualizerSoundEffect: EqualizerSoundEffect;
 	Explosion: Explosion;
+	Expression: Expression;
 	FileMesh: FileMesh;
 	Fire: Fire;
 	FlangeSoundEffect: FlangeSoundEffect;
@@ -329,7 +332,12 @@ interface AbstractInstances {
 
 interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AnimationTrack: AnimationTrack;
+	AssetImportItemSettings: AssetImportItemSettings;
+	AssetImportMeshSettings: AssetImportMeshSettings;
+	AssetImportSettings: AssetImportSettings;
+	AssetImportTextureSettings: AssetImportTextureSettings;
 	BaseWrap: BaseWrap;
+	Breakpoint: Breakpoint;
 	CatalogPages: CatalogPages;
 	CommandInstance: CommandInstance;
 	DataModel: DataModel;
@@ -341,6 +349,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DataStoreKeyVersionInfo: DataStoreKeyVersionInfo;
 	DataStorePages: DataStorePages;
 	DataStoreVersionPages: DataStoreVersionPages;
+	DebuggerConnection: DebuggerConnection;
 	EmotesPages: EmotesPages;
 	FriendPages: FriendPages;
 	GlobalDataStore: GlobalDataStore;
@@ -357,6 +366,9 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	PackageLink: PackageLink;
 	ParabolaAdornment: ParabolaAdornment;
 	Path: Path;
+	PausedState: PausedState;
+	PausedStateBreakpoint: PausedStateBreakpoint;
+	PausedStateException: PausedStateException;
 	Platform: Platform;
 	Player: Player;
 	PlayerGui: PlayerGui;
@@ -364,12 +376,14 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	PlayerScripts: PlayerScripts;
 	PluginManagerInterface: PluginManagerInterface;
 	PoseBase: PoseBase;
+	ScriptRef: ScriptRef;
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
 	StarterPlayerScripts: StarterPlayerScripts;
 	TeleportAsyncResult: TeleportAsyncResult;
 	Terrain: Terrain;
 	TextFilterResult: TextFilterResult;
+	ThreadState: ThreadState;
 	TouchTransmitter: TouchTransmitter;
 	Translator: Translator;
 	Tween: Tween;
@@ -1744,6 +1758,40 @@ interface AssetDeliveryProxy extends Instance {
 	readonly _nominal_AssetDeliveryProxy: unique symbol;
 }
 
+interface AssetImportItemSettings extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AssetImportItemSettings: unique symbol;
+	ShouldImport: boolean;
+}
+
+interface AssetImportMeshSettings extends AssetImportItemSettings {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AssetImportMeshSettings: unique symbol;
+}
+
+interface AssetImportTextureSettings extends AssetImportItemSettings {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AssetImportTextureSettings: unique symbol;
+}
+
 interface AssetImportService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -1753,6 +1801,21 @@ interface AssetImportService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AssetImportService: unique symbol;
+}
+
+interface AssetImportSettings extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AssetImportSettings: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Hierarchy: AssetImportItemSettings | undefined;
 }
 
 interface AssetManagerService extends Instance {
@@ -4734,6 +4797,17 @@ interface RocketPropulsion extends BodyMover {
 	readonly ReachedTarget: RBXScriptSignal<() => void>;
 }
 
+interface Breakpoint extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Breakpoint: unique symbol;
+}
+
 interface BulkImportService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -5815,6 +5889,10 @@ interface Clouds extends Instance {
 	 */
 	readonly _nominal_Clouds: unique symbol;
 	/**
+	 * A value that controls the cloud's particle material color.
+	 */
+	Color: Color3;
+	/**
 	 * A value that controls the cloud cover within the clouds volume, from 0 oktas to 8 oktas (full cloud cover).
 	 */
 	Cover: number;
@@ -5822,6 +5900,10 @@ interface Clouds extends Instance {
 	 * A value that controls the clouds particulates density. The proportion of airborne water vapour particles within a cubic stud at full cloud cover.
 	 */
 	Density: number;
+	/**
+	 * Toggles Cloud rendering.
+	 */
+	Enabled: boolean;
 }
 
 /** The [CollectionService](https://developer.roblox.com/en-us/api-reference/class/CollectionService) manages groups (collections) of instances with tags. Tags are sets of strings applied to objects that replicate from the server to the client and in Team Create. They are also serialized when places are saved. At the moment, tags are not visible within Roblox Studio except with the use of a tag-editing plugin.
@@ -7994,6 +8076,28 @@ interface Debris extends Instance {
 	AddItem(this: Debris, item: Instance, lifetime?: number): void;
 }
 
+interface DebuggerConnection extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DebuggerConnection: unique symbol;
+}
+
+interface DebuggerConnectionManager extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DebuggerConnectionManager: unique symbol;
+}
+
 /** The Dialog object allows users to create non-player characters (NPCs) that players can talk to using a list of choices. The Dialog object can be inserted into a part such as a Humanoid's head, and then a player will see a speech bubble above the part that they can click on to start a conversation. The creator of a place can choose what choices the player can say by inserting [DialogChoice](https://developer.roblox.com/en-us/api-reference/class/DialogChoice) objects into the dialog.
  * 
  * **See Also:**
@@ -8341,6 +8445,17 @@ interface Explosion extends Instance {
 	 * Note that this event will fire for every [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) hit. This means it can fire multiple times for the same player character (as the character [Model](https://developer.roblox.com/en-us/api-reference/class/Model) is made up of multiple parts). For this reason when dealing custom damage using the `Explosion.Hit` event it's recommended to implement a check to see if the character has already been hit by the [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion).
 	 */
 	readonly Hit: RBXScriptSignal<(part: BasePart, distance: number) => void>;
+}
+
+interface Expression extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Expression: unique symbol;
 }
 
 /** The FaceInstance class is an abstract class from which the [Decal](https://developer.roblox.com/en-us/api-reference/class/Decal) class inherits. */
@@ -23046,6 +23161,39 @@ interface PathfindingService extends Instance {
 	FindPathAsync(this: PathfindingService, start: Vector3, finish: Vector3): Path;
 }
 
+interface PausedState extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PausedState: unique symbol;
+}
+
+interface PausedStateBreakpoint extends PausedState {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PausedStateBreakpoint: unique symbol;
+}
+
+interface PausedStateException extends PausedState {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PausedStateException: unique symbol;
+}
+
 /** PhysicsService is a game service that has functions for working with **collision groups**, which define a set of parts that may or may not collide with parts assigned to other collision groups. Assign a part to a collision group using [SetPartCollisionGroup](https://developer.roblox.com/en-us/api-reference/function/PhysicsService/SetPartCollisionGroup). Collision groups and their relationships are saved to and loaded from file.
  * 
  * Network Replication
@@ -25041,6 +25189,17 @@ interface PublishService extends Instance {
 	readonly _nominal_PublishService: unique symbol;
 }
 
+interface RemoteDebuggerServer extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RemoteDebuggerServer: unique symbol;
+}
+
 /** A **RemoteEvent** is designed to provide a one-way message between the server and clients, allowing [Scripts](https://developer.roblox.com/en-us/api-reference/class/Script) to call code in [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) and vice-versa. This message can be directed from one client to the server, from the server to a particular client, or from the server to all clients.
  * 
  * In order for both the server and clients to utilize a remote event, the RemoteEvent object itself must be in a place where both sides can see it. As such, we recommend that you store the RemoteEvent inside of [ReplicatedStorage](https://developer.roblox.com/en-us/api-reference/class/ReplicatedStorage), although in some cases it's appropriate to store it in the workspace or inside a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool).
@@ -25618,6 +25777,17 @@ interface ScriptContext extends Instance {
 	 * Fired when an error occurs.
 	 */
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script?: LuaSourceContainer) => void>;
+}
+
+interface ScriptRef extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptRef: unique symbol;
 }
 
 /** **ServerScriptService** is a container service for [Script](https://developer.roblox.com/en-us/api-reference/class/Script), [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) and other scripting-related assets that are only meant for server use. The contents are never replicated to player clients at all, which allows for a secure storage of important game logic. Script objects will run if they are within this service and not [Disabled](https://developer.roblox.com/en-us/api-reference/property/BaseScript/Disabled).
@@ -28850,6 +29020,17 @@ interface TextService extends Instance {
 		fromUserId: number,
 		textContext?: CastsToEnum<Enum.TextFilterContext>,
 	): TextFilterResult | undefined;
+}
+
+interface ThreadState extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ThreadState: unique symbol;
 }
 
 interface ToastNotificationService extends Instance {

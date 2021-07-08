@@ -138,13 +138,13 @@ declare namespace Enum {
 
 		export const Waist: Waist;
 
-		export interface TeeShirt {
-			Name: "TeeShirt";
+		export interface TShirt {
+			Name: "TShirt";
 			Value: 8;
 			EnumType: EnumType<AccessoryType>;
 		}
 
-		export const TeeShirt: TeeShirt;
+		export const TShirt: TShirt;
 
 		export interface Shirt {
 			Name: "Shirt";
@@ -212,7 +212,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<AccessoryType>
 	}
-	export type AccessoryType = AccessoryType.Hat | AccessoryType.Hair | AccessoryType.Face | AccessoryType.Neck | AccessoryType.Shoulder | AccessoryType.Front | AccessoryType.Back | AccessoryType.Waist | AccessoryType.TeeShirt | AccessoryType.Shirt | AccessoryType.Pants | AccessoryType.Jacket | AccessoryType.Sweater | AccessoryType.Shorts | AccessoryType.LeftShoe | AccessoryType.RightShoe | AccessoryType.DressSkirt;
+	export type AccessoryType = AccessoryType.Hat | AccessoryType.Hair | AccessoryType.Face | AccessoryType.Neck | AccessoryType.Shoulder | AccessoryType.Front | AccessoryType.Back | AccessoryType.Waist | AccessoryType.TShirt | AccessoryType.Shirt | AccessoryType.Pants | AccessoryType.Jacket | AccessoryType.Sweater | AccessoryType.Shorts | AccessoryType.LeftShoe | AccessoryType.RightShoe | AccessoryType.DressSkirt;
 	export namespace ActionType {
 		export interface Nothing {
 			Name: "Nothing";
@@ -798,13 +798,13 @@ declare namespace Enum {
 
 		export const Image: Image;
 
-		export interface TeeShirt {
-			Name: "TeeShirt";
+		export interface TShirt {
+			Name: "TShirt";
 			Value: 2;
 			EnumType: EnumType<AssetType>;
 		}
 
-		export const TeeShirt: TeeShirt;
+		export const TShirt: TShirt;
 
 		export interface Audio {
 			Name: "Audio";
@@ -1150,13 +1150,13 @@ declare namespace Enum {
 
 		export const Video: Video;
 
-		export interface TeeShirtAccessory {
-			Name: "TeeShirtAccessory";
+		export interface TShirtAccessory {
+			Name: "TShirtAccessory";
 			Value: 64;
 			EnumType: EnumType<AssetType>;
 		}
 
-		export const TeeShirtAccessory: TeeShirtAccessory;
+		export const TShirtAccessory: TShirtAccessory;
 
 		export interface ShirtAccessory {
 			Name: "ShirtAccessory";
@@ -1224,7 +1224,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<AssetType>
 	}
-	export type AssetType = AssetType.Image | AssetType.TeeShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TeeShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory;
+	export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory;
 	export namespace AssetTypeVerification {
 		export interface Default {
 			Name: "Default";
@@ -1534,13 +1534,13 @@ declare namespace Enum {
 
 		export const EmoteAnimation: EmoteAnimation;
 
-		export interface TeeShirtAccessory {
-			Name: "TeeShirtAccessory";
+		export interface TShirtAccessory {
+			Name: "TShirtAccessory";
 			Value: 64;
 			EnumType: EnumType<AvatarAssetType>;
 		}
 
-		export const TeeShirtAccessory: TeeShirtAccessory;
+		export const TShirtAccessory: TShirtAccessory;
 
 		export interface ShirtAccessory {
 			Name: "ShirtAccessory";
@@ -1608,7 +1608,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<AvatarAssetType>
 	}
-	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TeeShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory;
+	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory;
 	export namespace AvatarContextMenuOption {
 		export interface Friend {
 			Name: "Friend";
@@ -1665,26 +1665,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AvatarItemType>
 	}
 	export type AvatarItemType = AvatarItemType.Asset | AvatarItemType.Bundle;
-	export namespace AvatarJointPositionType {
-		export interface Fixed {
-			Name: "Fixed";
-			Value: 0;
-			EnumType: EnumType<AvatarJointPositionType>;
-		}
-
-		export const Fixed: Fixed;
-
-		export interface ArtistIntent {
-			Name: "ArtistIntent";
-			Value: 1;
-			EnumType: EnumType<AvatarJointPositionType>;
-		}
-
-		export const ArtistIntent: ArtistIntent;
-
-		export function GetEnumItems(this: defined): Array<AvatarJointPositionType>
-	}
-	export type AvatarJointPositionType = AvatarJointPositionType.Fixed | AvatarJointPositionType.ArtistIntent;
 	export namespace AvatarPromptResult {
 		export interface Success {
 			Name: "Success";
@@ -2041,6 +2021,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<BreakReason>
 	}
 	export type BreakReason = BreakReason.Other | BreakReason.Error | BreakReason.UserBreakpoint | BreakReason.SpecialBreakpoint;
+	export namespace BreakpointRemoveReason {
+		export interface Requested {
+			Name: "Requested";
+			Value: 0;
+			EnumType: EnumType<BreakpointRemoveReason>;
+		}
+
+		export const Requested: Requested;
+
+		export interface ScriptChanged {
+			Name: "ScriptChanged";
+			Value: 1;
+			EnumType: EnumType<BreakpointRemoveReason>;
+		}
+
+		export const ScriptChanged: ScriptChanged;
+
+		export interface ScriptRemoved {
+			Name: "ScriptRemoved";
+			Value: 2;
+			EnumType: EnumType<BreakpointRemoveReason>;
+		}
+
+		export const ScriptRemoved: ScriptRemoved;
+
+		export function GetEnumItems(this: defined): Array<BreakpointRemoveReason>
+	}
+	export type BreakpointRemoveReason = BreakpointRemoveReason.Requested | BreakpointRemoveReason.ScriptChanged | BreakpointRemoveReason.ScriptRemoved;
 	export namespace BulkMoveMode {
 		export interface FireAllEvents {
 			Name: "FireAllEvents";
@@ -2853,6 +2861,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<CollisionFidelity>
 	}
 	export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition;
+	export namespace CommandPermission {
+		export interface Plugin {
+			Name: "Plugin";
+			Value: 0;
+			EnumType: EnumType<CommandPermission>;
+		}
+
+		export const Plugin: Plugin;
+
+		export interface LocalUser {
+			Name: "LocalUser";
+			Value: 1;
+			EnumType: EnumType<CommandPermission>;
+		}
+
+		export const LocalUser: LocalUser;
+
+		export function GetEnumItems(this: defined): Array<CommandPermission>
+	}
+	export type CommandPermission = CommandPermission.Plugin | CommandPermission.LocalUser;
 	export namespace ComputerCameraMovementMode {
 		export interface Default {
 			Name: "Default";
@@ -3641,6 +3669,206 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<DataStoreRequestType>
 	}
 	export type DataStoreRequestType = DataStoreRequestType.GetAsync | DataStoreRequestType.SetIncrementAsync | DataStoreRequestType.UpdateAsync | DataStoreRequestType.GetSortedAsync | DataStoreRequestType.SetIncrementSortedAsync | DataStoreRequestType.OnUpdate;
+	export namespace DebuggerEndReason {
+		export interface ClientRequest {
+			Name: "ClientRequest";
+			Value: 0;
+			EnumType: EnumType<DebuggerEndReason>;
+		}
+
+		export const ClientRequest: ClientRequest;
+
+		export interface Timeout {
+			Name: "Timeout";
+			Value: 1;
+			EnumType: EnumType<DebuggerEndReason>;
+		}
+
+		export const Timeout: Timeout;
+
+		export interface InvalidHost {
+			Name: "InvalidHost";
+			Value: 2;
+			EnumType: EnumType<DebuggerEndReason>;
+		}
+
+		export const InvalidHost: InvalidHost;
+
+		export interface Disconnected {
+			Name: "Disconnected";
+			Value: 3;
+			EnumType: EnumType<DebuggerEndReason>;
+		}
+
+		export const Disconnected: Disconnected;
+
+		export interface ServerShutdown {
+			Name: "ServerShutdown";
+			Value: 4;
+			EnumType: EnumType<DebuggerEndReason>;
+		}
+
+		export const ServerShutdown: ServerShutdown;
+
+		export interface ServerProtocolMismatch {
+			Name: "ServerProtocolMismatch";
+			Value: 5;
+			EnumType: EnumType<DebuggerEndReason>;
+		}
+
+		export const ServerProtocolMismatch: ServerProtocolMismatch;
+
+		export interface ConfigurationFailed {
+			Name: "ConfigurationFailed";
+			Value: 6;
+			EnumType: EnumType<DebuggerEndReason>;
+		}
+
+		export const ConfigurationFailed: ConfigurationFailed;
+
+		export interface RpcError {
+			Name: "RpcError";
+			Value: 7;
+			EnumType: EnumType<DebuggerEndReason>;
+		}
+
+		export const RpcError: RpcError;
+
+		export function GetEnumItems(this: defined): Array<DebuggerEndReason>
+	}
+	export type DebuggerEndReason = DebuggerEndReason.ClientRequest | DebuggerEndReason.Timeout | DebuggerEndReason.InvalidHost | DebuggerEndReason.Disconnected | DebuggerEndReason.ServerShutdown | DebuggerEndReason.ServerProtocolMismatch | DebuggerEndReason.ConfigurationFailed | DebuggerEndReason.RpcError;
+	export namespace DebuggerFrameType {
+		export interface C {
+			Name: "C";
+			Value: 0;
+			EnumType: EnumType<DebuggerFrameType>;
+		}
+
+		export const C: C;
+
+		export interface Lua {
+			Name: "Lua";
+			Value: 1;
+			EnumType: EnumType<DebuggerFrameType>;
+		}
+
+		export const Lua: Lua;
+
+		export function GetEnumItems(this: defined): Array<DebuggerFrameType>
+	}
+	export type DebuggerFrameType = DebuggerFrameType.C | DebuggerFrameType.Lua;
+	export namespace DebuggerPauseReason {
+		export interface Unknown {
+			Name: "Unknown";
+			Value: 0;
+			EnumType: EnumType<DebuggerPauseReason>;
+		}
+
+		export const Unknown: Unknown;
+
+		export interface Requested {
+			Name: "Requested";
+			Value: 1;
+			EnumType: EnumType<DebuggerPauseReason>;
+		}
+
+		export const Requested: Requested;
+
+		export interface Breakpoint {
+			Name: "Breakpoint";
+			Value: 2;
+			EnumType: EnumType<DebuggerPauseReason>;
+		}
+
+		export const Breakpoint: Breakpoint;
+
+		export interface Exception {
+			Name: "Exception";
+			Value: 3;
+			EnumType: EnumType<DebuggerPauseReason>;
+		}
+
+		export const Exception: Exception;
+
+		export interface SingleStep {
+			Name: "SingleStep";
+			Value: 4;
+			EnumType: EnumType<DebuggerPauseReason>;
+		}
+
+		export const SingleStep: SingleStep;
+
+		export interface Entrypoint {
+			Name: "Entrypoint";
+			Value: 5;
+			EnumType: EnumType<DebuggerPauseReason>;
+		}
+
+		export const Entrypoint: Entrypoint;
+
+		export function GetEnumItems(this: defined): Array<DebuggerPauseReason>
+	}
+	export type DebuggerPauseReason = DebuggerPauseReason.Unknown | DebuggerPauseReason.Requested | DebuggerPauseReason.Breakpoint | DebuggerPauseReason.Exception | DebuggerPauseReason.SingleStep | DebuggerPauseReason.Entrypoint;
+	export namespace DebuggerStatus {
+		export interface Success {
+			Name: "Success";
+			Value: 0;
+			EnumType: EnumType<DebuggerStatus>;
+		}
+
+		export const Success: Success;
+
+		export interface Timeout {
+			Name: "Timeout";
+			Value: 1;
+			EnumType: EnumType<DebuggerStatus>;
+		}
+
+		export const Timeout: Timeout;
+
+		export interface ConnectionLost {
+			Name: "ConnectionLost";
+			Value: 2;
+			EnumType: EnumType<DebuggerStatus>;
+		}
+
+		export const ConnectionLost: ConnectionLost;
+
+		export interface InvalidResponse {
+			Name: "InvalidResponse";
+			Value: 3;
+			EnumType: EnumType<DebuggerStatus>;
+		}
+
+		export const InvalidResponse: InvalidResponse;
+
+		export interface InternalError {
+			Name: "InternalError";
+			Value: 4;
+			EnumType: EnumType<DebuggerStatus>;
+		}
+
+		export const InternalError: InternalError;
+
+		export interface InvalidState {
+			Name: "InvalidState";
+			Value: 5;
+			EnumType: EnumType<DebuggerStatus>;
+		}
+
+		export const InvalidState: InvalidState;
+
+		export interface RpcError {
+			Name: "RpcError";
+			Value: 6;
+			EnumType: EnumType<DebuggerStatus>;
+		}
+
+		export const RpcError: RpcError;
+
+		export function GetEnumItems(this: defined): Array<DebuggerStatus>
+	}
+	export type DebuggerStatus = DebuggerStatus.Success | DebuggerStatus.Timeout | DebuggerStatus.ConnectionLost | DebuggerStatus.InvalidResponse | DebuggerStatus.InternalError | DebuggerStatus.InvalidState | DebuggerStatus.RpcError;
 	export namespace DevCameraOcclusionMode {
 		export interface Zoom {
 			Name: "Zoom";
@@ -5973,6 +6201,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<HumanoidHealthDisplayType>
 	}
 	export type HumanoidHealthDisplayType = HumanoidHealthDisplayType.DisplayWhenDamaged | HumanoidHealthDisplayType.AlwaysOn | HumanoidHealthDisplayType.AlwaysOff;
+	export namespace HumanoidOnlySetCollisionsOnStateChange {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<HumanoidOnlySetCollisionsOnStateChange>;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: EnumType<HumanoidOnlySetCollisionsOnStateChange>;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: EnumType<HumanoidOnlySetCollisionsOnStateChange>;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: defined): Array<HumanoidOnlySetCollisionsOnStateChange>
+	}
+	export type HumanoidOnlySetCollisionsOnStateChange = HumanoidOnlySetCollisionsOnStateChange.Default | HumanoidOnlySetCollisionsOnStateChange.Disabled | HumanoidOnlySetCollisionsOnStateChange.Enabled;
 	export namespace HumanoidRigType {
 		export interface R6 {
 			Name: "R6";
