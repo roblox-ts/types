@@ -2599,11 +2599,11 @@ interface ScriptDebugger extends Instance {
 	/**
 	 * Fired when a breakpoint is added to the script.
 	 */
-	readonly BreakpointAdded: RBXScriptSignal<(breakpoint: Instance) => void>;
+	readonly BreakpointAdded: RBXScriptSignal<(breakpoint: Breakpoint) => void>;
 	/**
 	 * Fired when a breakpoint is removed from the script.
 	 */
-	readonly BreakpointRemoved: RBXScriptSignal<(breakpoint: Instance) => void>;
+	readonly BreakpointRemoved: RBXScriptSignal<(breakpoint: Breakpoint) => void>;
 	/**
 	 * Fired when a breakpoint is encountered by the script.
 	 */
