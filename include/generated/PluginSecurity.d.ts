@@ -1094,9 +1094,6 @@ interface Model extends PVInstance {
 	 * @deprecated
 	 */
 	readonly _nominal_Model: unique symbol;
-	/**
-	 * Automatically generate impostor meshes to be rendered outside of streaming radius.
-	 */
 	LevelOfDetail: Enum.ModelLevelOfDetail;
 }
 
@@ -3803,6 +3800,7 @@ interface TestService extends Instance {
 	 * If `condition` is true, prints `Require passed:` , followed by `description`, to the output in blue text. Otherwise, prints `Require failed. Test ended:` , followed by `description`, to the output in red text.
 	 */
 	Require(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
+	ScopeTime(this: TestService): object;
 	/**
 	 * If condition is true, prints Warning passed: , followed by description, to the output, in blue text. Otherwise, prints Warning: , followed by description, to the output, in yellow text.
 	 */

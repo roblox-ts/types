@@ -74,9 +74,17 @@ declare namespace Enum {
 	}
 	export type ABTestLoadingStatus = ABTestLoadingStatus.None | ABTestLoadingStatus.Pending | ABTestLoadingStatus.Initialized | ABTestLoadingStatus.Error | ABTestLoadingStatus.TimedOut | ABTestLoadingStatus.ShutOff;
 	export namespace AccessoryType {
+		export interface Unknown {
+			Name: "Unknown";
+			Value: 0;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Unknown: Unknown;
+
 		export interface Hat {
 			Name: "Hat";
-			Value: 0;
+			Value: 1;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -84,7 +92,7 @@ declare namespace Enum {
 
 		export interface Hair {
 			Name: "Hair";
-			Value: 1;
+			Value: 2;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -92,7 +100,7 @@ declare namespace Enum {
 
 		export interface Face {
 			Name: "Face";
-			Value: 2;
+			Value: 3;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -100,7 +108,7 @@ declare namespace Enum {
 
 		export interface Neck {
 			Name: "Neck";
-			Value: 3;
+			Value: 4;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -108,7 +116,7 @@ declare namespace Enum {
 
 		export interface Shoulder {
 			Name: "Shoulder";
-			Value: 4;
+			Value: 5;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -116,7 +124,7 @@ declare namespace Enum {
 
 		export interface Front {
 			Name: "Front";
-			Value: 5;
+			Value: 6;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -124,7 +132,7 @@ declare namespace Enum {
 
 		export interface Back {
 			Name: "Back";
-			Value: 6;
+			Value: 7;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -132,7 +140,7 @@ declare namespace Enum {
 
 		export interface Waist {
 			Name: "Waist";
-			Value: 7;
+			Value: 8;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -140,7 +148,7 @@ declare namespace Enum {
 
 		export interface TShirt {
 			Name: "TShirt";
-			Value: 8;
+			Value: 9;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -148,7 +156,7 @@ declare namespace Enum {
 
 		export interface Shirt {
 			Name: "Shirt";
-			Value: 9;
+			Value: 10;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -156,7 +164,7 @@ declare namespace Enum {
 
 		export interface Pants {
 			Name: "Pants";
-			Value: 10;
+			Value: 11;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -164,7 +172,7 @@ declare namespace Enum {
 
 		export interface Jacket {
 			Name: "Jacket";
-			Value: 11;
+			Value: 12;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -172,7 +180,7 @@ declare namespace Enum {
 
 		export interface Sweater {
 			Name: "Sweater";
-			Value: 12;
+			Value: 13;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -180,7 +188,7 @@ declare namespace Enum {
 
 		export interface Shorts {
 			Name: "Shorts";
-			Value: 13;
+			Value: 14;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -188,7 +196,7 @@ declare namespace Enum {
 
 		export interface LeftShoe {
 			Name: "LeftShoe";
-			Value: 14;
+			Value: 15;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -196,7 +204,7 @@ declare namespace Enum {
 
 		export interface RightShoe {
 			Name: "RightShoe";
-			Value: 15;
+			Value: 16;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -204,7 +212,7 @@ declare namespace Enum {
 
 		export interface DressSkirt {
 			Name: "DressSkirt";
-			Value: 16;
+			Value: 17;
 			EnumType: EnumType<AccessoryType>;
 		}
 
@@ -212,7 +220,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<AccessoryType>
 	}
-	export type AccessoryType = AccessoryType.Hat | AccessoryType.Hair | AccessoryType.Face | AccessoryType.Neck | AccessoryType.Shoulder | AccessoryType.Front | AccessoryType.Back | AccessoryType.Waist | AccessoryType.TShirt | AccessoryType.Shirt | AccessoryType.Pants | AccessoryType.Jacket | AccessoryType.Sweater | AccessoryType.Shorts | AccessoryType.LeftShoe | AccessoryType.RightShoe | AccessoryType.DressSkirt;
+	export type AccessoryType = AccessoryType.Unknown | AccessoryType.Hat | AccessoryType.Hair | AccessoryType.Face | AccessoryType.Neck | AccessoryType.Shoulder | AccessoryType.Front | AccessoryType.Back | AccessoryType.Waist | AccessoryType.TShirt | AccessoryType.Shirt | AccessoryType.Pants | AccessoryType.Jacket | AccessoryType.Sweater | AccessoryType.Shorts | AccessoryType.LeftShoe | AccessoryType.RightShoe | AccessoryType.DressSkirt;
 	export namespace ActionType {
 		export interface Nothing {
 			Name: "Nothing";

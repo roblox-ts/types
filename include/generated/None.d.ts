@@ -1070,6 +1070,7 @@ interface Accessory extends Accoutrement {
 	 * @deprecated
 	 */
 	readonly _nominal_Accessory: unique symbol;
+	readonly AccessoryType: Enum.AccessoryType;
 }
 
 interface Hat extends Accoutrement {
@@ -4442,9 +4443,6 @@ interface BindableFunction<T extends Callback = Callback> extends Instance {
 	 * Tags: Yields
 	 */
 	Invoke(this: BindableFunction, ...args: Parameters<T>): ReturnType<T>;
-	/**
-	 * Should be defined as a function. This function is called when Invoke() is called. Number of arguments is variable.
-	 */
 	OnInvoke: T | undefined;
 }
 
@@ -4966,7 +4964,6 @@ interface Camera extends Instance {
 	 */
 	CoordinateFrame: CFrame;
 	/**
-	 * Describes the view angle along the diagonal viewport axis.
 	 * Tags: NotReplicated
 	 */
 	DiagonalFieldOfView: number;
@@ -4992,9 +4989,6 @@ interface Camera extends Instance {
 	 * *   Increasing FOV when the player is 'sprinting' to give the impression of a lack of control
 	 */
 	FieldOfView: number;
-	/**
-	 * Determines how the field of view responds to changes of screen size and aspect ratio.
-	 */
 	FieldOfViewMode: Enum.FieldOfViewMode;
 	/**
 	 * The [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) Focus is a [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) that determines the area in 3D space the graphics engine will prioritize.
@@ -5063,7 +5057,6 @@ interface Camera extends Instance {
 	 */
 	HeadScale: number;
 	/**
-	 * Describes the view angle along the maximum-length viewport axis.
 	 * Tags: NotReplicated
 	 */
 	MaxAxisFieldOfView: number;
@@ -5888,21 +5881,9 @@ interface Clouds extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Clouds: unique symbol;
-	/**
-	 * A value that controls the cloud's particle material color.
-	 */
 	Color: Color3;
-	/**
-	 * A value that controls the cloud cover within the clouds volume, from 0 oktas to 8 oktas (full cloud cover).
-	 */
 	Cover: number;
-	/**
-	 * A value that controls the clouds particulates density. The proportion of airborne water vapour particles within a cubic stud at full cloud cover.
-	 */
 	Density: number;
-	/**
-	 * Toggles Cloud rendering.
-	 */
 	Enabled: boolean;
 }
 
@@ -6568,17 +6549,8 @@ interface RodConstraint extends Constraint {
 	 * The distance apart the [RodConstraint](https://developer.roblox.com/en-us/api-reference/class/RodConstraint) attempts to keep its [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) at. Measured in studs.
 	 */
 	Length: number;
-	/**
-	 * The angle of the cone limit formed along attachment point 0. Value in [0, 180].
-	 */
 	LimitAngle0: number;
-	/**
-	 * The angle of the cone limit formed along attachment point 1. Value in [0, 180].
-	 */
 	LimitAngle1: number;
-	/**
-	 * Toggles the cone limits for this constraint.
-	 */
 	LimitsEnabled: boolean;
 	/**
 	 * The visualized thickness of the RodConstraint.
@@ -6621,6 +6593,11 @@ interface RopeConstraint extends Constraint {
 	 * The visualized thickness of the RopeConstraint.
 	 */
 	Thickness: number;
+	WinchEnabled: boolean;
+	WinchForce: number;
+	WinchResponsiveness: number;
+	WinchSpeed: number;
+	WinchTarget: number;
 }
 
 /** The base class for constraints that allow their attachments to slide along an axis. */
@@ -7001,8 +6978,11 @@ interface TorsionSpringConstraint extends Constraint {
 	 * In the example below, you can enable a cone limit on the relative motion of the secondary axes as follows:
 	 * 
 	 * torsionSpring.LimitEnabled = true
+	 * Tags: Hidden, Deprecated
+	 * @deprecated
 	 */
 	LimitEnabled: boolean;
+	LimitsEnabled: boolean;
 	/**
 	 * This property determines the max angle, in degrees, of the `TorsionSpringConstraint|TorsionSpringConstraint's` limiting cone. The limiting cone is formed at the position of the constraint's [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0) around its secondary axis with an angle equal to MaxAngle. The default value is 45.0 degrees.
 	 * 
@@ -10593,7 +10573,6 @@ interface TextLabel extends GuiLabel {
 	 */
 	readonly TextBounds: Vector2;
 	/**
-	 * Deprecated. Use TextColor3 instead
 	 * Tags: Hidden, NotReplicated, Deprecated
 	 * @deprecated
 	 */
@@ -10981,7 +10960,6 @@ interface TextBox extends GuiObject {
 	 */
 	readonly TextBounds: Vector2;
 	/**
-	 * Deprecated. Use TextColor3 instead
 	 * Tags: Hidden, NotReplicated, Deprecated
 	 * @deprecated
 	 */
@@ -11540,9 +11518,6 @@ interface SurfaceGui extends LayerCollector {
 	 * Determines whether the SurfaceGui will always be rendered on top of other objects.
 	 */
 	AlwaysOnTop: boolean;
-	/**
-	 * Specifies the amount of light this gui emits when LightInfluence is 0.
-	 */
 	Brightness: number;
 	/**
 	 * The size of a 'virtual screen', in 'virtual pixels', which makes SurfaceGuis pixel-to-pixel compatible with ScreenGuis.
@@ -16075,13 +16050,11 @@ interface InsertService extends Instance {
 	 */
 	AllowInsertFreeModels: boolean;
 	/**
-	 * Deprecated
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
 	ApproveAssetId(this: InsertService, assetId: number): void;
 	/**
-	 * Deprecated
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
@@ -16093,7 +16066,6 @@ interface InsertService extends Instance {
 	 */
 	Insert(this: InsertService, instance: Instance): void;
 	/**
-	 * Deprecated. Use GetBaseSets() instead.
 	 * Tags: Yields, Deprecated
 	 * @deprecated
 	 */
@@ -16172,7 +16144,6 @@ interface InsertService extends Instance {
 	 */
 	GetLatestAssetVersionAsync(this: InsertService, assetId: number): number;
 	/**
-	 * Deprecated. Use GetUserSets() instead.
 	 * Tags: Yields, Deprecated
 	 * @deprecated
 	 */
@@ -17143,13 +17114,7 @@ interface Lighting extends Instance {
 	 * Tags: NotReplicated
 	 */
 	ClockTime: number;
-	/**
-	 * The hue of global lighting on the bottom surfaces of an object.
-	 */
 	ColorShift_Bottom: Color3;
-	/**
-	 * The hue of global lighting on the top surfaces of an object.
-	 */
 	ColorShift_Top: Color3;
 	/**
 	 * Ambient light that is derived from the environment. The value of this property defaults to 0.
@@ -19292,19 +19257,6 @@ interface MarketplaceService extends Instance {
 	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
 	readonly PromptSubscriptionCancellationFinished: RBXScriptSignal<(player: Player, subscriptionId: number, wasCanceled: boolean) => void>;
 	readonly PromptSubscriptionPurchaseFinished: RBXScriptSignal<(player: Player, subscriptionId: number, wasPurchased: boolean) => void>;
-	/**
-	 * Callback that is executed for pending Developer Product receipts.
-            <p>If this function does not return Enum.ProductPurchaseDecision.PurchaseGranted, then you will not be granted the money for the purchase!</p>
-            <p>The callback will be invoked with a table, containing the following informational fields:</p>
-            <ul>
-            <li>PlayerId: int64 - the id of the player making the purchase.</li>
-            <li>PlaceIdWherePurchased: int64:  - the specific place where the purchase was made.</li>
-            <li>PurchaseId: string - a unique identifier for the purchase, should be used to prevent granting an item multiple times for one purchase.</li>
-            <li>ProductId: int64 - the id of the purchased product.</li>
-            <li>CurrencyType: CurrencyType - the type of currency used (Tix, Robux).</li>
-            <li>CurrencySpent: int - the amount of currency spent on the product for this purchase.</li>
-            </ul>
-	 */
 	ProcessReceipt: ((receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision) | undefined;
 }
 
@@ -20202,9 +20154,6 @@ interface BasePart extends PVInstance {
 	 * Even when CanCollide is disabled, parts may still fire the [BasePart.Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched) event (as well the other parts touching them). In addition, a part allow other parts to pass through even if CanCollide is enabled if their collision groups are not set to collide with each other. Part collision groups are managed by `/PhysicsService`.
 	 */
 	CanCollide: boolean;
-	/**
-	 * Determines whether spatial queries such as raycasts can hit this part. If false, in addition to CanCollide, all spatial queries will ignore this part.
-	 */
 	CanQuery: boolean;
 	/**
 	 * This property determines if the part will trigger [Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched)/[TouchEnded](https://developer.roblox.com/en-us/api-reference/event/BasePart/TouchEnded) events on other [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) with [TouchTransmitters](https://developer.roblox.com/en-us/api-reference/class/TouchTransmitter). By default, the value is set to `true`.
@@ -22942,9 +22891,6 @@ interface ParticleEmitter extends Instance {
 	 * ![An example particle texture](https://developer.roblox.com/assets/bltf793b94e42b0b6bf/aura.png)
 	 */
 	Texture: string;
-	/**
-	 * Slows down the particle simulation speed. 1 is normal speed (behaves as before), 0.5 is half-rate, and 0 means all particles will stop moving.
-	 */
 	TimeScale: number;
 	/**
 	 * The Transparency property determines the transparency of all active particles over their individual lifetimes. It works similar to [ParticleEmitter.Size](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Size) in how it affects particles over time. In terms of rendering, it works like the [BasePart.Transparency](https://developer.roblox.com/en-us/api-reference/property/BasePart/Transparency) of a part on a scale of 0 to 1, where 0 is completely visible (opaque), and a value of 1 is completely invisible (not rendered at all).
@@ -26177,7 +26123,6 @@ interface DataModel extends ServiceProvider<Services> {
 	 */
 	readonly Loaded: RBXScriptSignal<() => void>;
 	/**
-	 * Deprecated. Use DataModel.BindToClose
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
