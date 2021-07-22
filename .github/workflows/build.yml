@@ -40,7 +40,7 @@ jobs:
           git add -A
           if ! git diff-index --quiet HEAD --; then
             echo "Generated files changed!"
-            git commit -m "Update generated files [skip ci]"
+            git commit -m "${{github.event.commits[0].author.name}}: ${{github.event.commits[0].message}} [skip ci]"
             git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:master
           fi
 
