@@ -334,6 +334,7 @@ interface DebuggerBreakpoint extends Instance {
 	 * The condition of the debugger breakpoint.
 	 */
 	Condition: string;
+	ContinueExecution: boolean;
 	/**
 	 * Whether or not the breakpoint is enabled.
 	 */
@@ -343,6 +344,7 @@ interface DebuggerBreakpoint extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Line: number;
+	LogExpression: string;
 	isContextDependentBreakpoint: boolean;
 }
 
@@ -3134,6 +3136,7 @@ interface Studio extends Instance {
 	["Show FileSyncService"]: boolean;
 	["Show Hidden Objects in Explorer"]: boolean;
 	["Show Hover Over"]: boolean;
+	readonly ["Show Light Guides"]: boolean;
 	["Show Navigation Mesh"]: boolean;
 	["Show Plugin GUI Service in Explorer"]: boolean;
 	["Show QT warnings in output"]: boolean;
