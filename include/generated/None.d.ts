@@ -146,6 +146,7 @@ interface CreatableInstances {
 	EqualizerSoundEffect: EqualizerSoundEffect;
 	Explosion: Explosion;
 	Expression: Expression;
+	FaceControls: FaceControls;
 	FileMesh: FileMesh;
 	Fire: Fire;
 	FlangeSoundEffect: FlangeSoundEffect;
@@ -8436,6 +8437,17 @@ interface Expression extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Expression: unique symbol;
+}
+
+interface FaceControls extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FaceControls: unique symbol;
 }
 
 /** The FaceInstance class is an abstract class from which the [Decal](https://developer.roblox.com/en-us/api-reference/class/Decal) class inherits. */
@@ -19272,7 +19284,7 @@ interface MemoryStoreQueue extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	AddAsync(this: MemoryStoreQueue, value: unknown, priority?: number, expiration?: number): void;
+	AddAsync(this: MemoryStoreQueue, value: unknown, expiration: number, priority?: number): void;
 	/**
 	 * Tags: Yields
 	 */
@@ -19320,11 +19332,11 @@ interface MemoryStoreSortedMap extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	SetAsync(this: MemoryStoreSortedMap, key: string, value: unknown, expiration?: number): boolean;
+	SetAsync(this: MemoryStoreSortedMap, key: string, value: unknown, expiration: number): boolean;
 	/**
 	 * Tags: Yields
 	 */
-	UpdateAsync(this: MemoryStoreSortedMap, key: string, transformFunction: Function, expiration?: number): unknown;
+	UpdateAsync(this: MemoryStoreSortedMap, key: string, transformFunction: Function, expiration: number): unknown;
 }
 
 /** The MessagingService allows game servers in the same game to communicate with each other in real time (< 1 second) using topics. Topics are developer defined strings (1-80 characters) that game servers can send and receive messages.
