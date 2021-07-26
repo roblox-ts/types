@@ -8555,6 +8555,16 @@ interface Decal extends FaceInstance {
 	 * For [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s, see [BasePart.Transparency](https://developer.roblox.com/en-us/api-reference/property/BasePart/Transparency).
 	 */
 	Transparency: number;
+	/**
+	 * **ZIndex** determines the order in which decals on the same `Decal/Face|Face` of a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) are rendered. Decals are rendered in **ascending** priority order, where lower values are rendered first. Therefore, a decal with a higher ZIndex renders later (and on top of) other Decals with lower ZIndex.
+	 * 
+	 * The range of valid values is -MAX\_INT to MAX\_INT, inclusive (2,147,483,647 or (2^31 - 1)). If you are unsure if you will need to layer an decal between two already-existing decals in the future, it can be a good idea to use multiples of 100, i.e. 0, 100, 200. This ensures a large gap of ZIndex values you can use for elements rendered in-between other elements.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [GuiObject.ZIndex](https://developer.roblox.com/en-us/api-reference/property/GuiObject/ZIndex), a property which behaves similarly, but for GUI elements
+	 */
 	ZIndex: number;
 }
 
@@ -11347,6 +11357,16 @@ interface BillboardGui extends LayerCollector {
 	 * Determines whether the BillboardGui will always be rendered on top of other objects.
 	 */
 	AlwaysOnTop: boolean;
+	/**
+	 * **Brightness** determines the factor by which the GUI's emitted light is scaled. By default, this property is 1 and can be set to any number on the range \[0, 1000\].
+	 * 
+	 * By modifying this property, the apparent brightness of a GUI can be better matched to its environment. For instance, a video billboard like those found in Times Square can be made brighter to be clearly visible on a bright day.
+	 * 
+	 * This property won't produce any effect in the following scenarios wherein the GUI does not emit light.:
+	 * 
+	 * *   When [AlwaysOnTop](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/AlwaysOnTop) is true, the color of each pixel is the color shown on-screen.
+	 * *   When [LightInfluence](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/LightInfluence) is 1, all light from the GUI is reflected from the environment instead of being emit.
+	 */
 	Brightness: number;
 	/**
 	 * When set to true, portions of GuiObjects that fall outside of the BillboardGui's canvas borders will not be drawn.
@@ -11530,6 +11550,16 @@ interface SurfaceGui extends LayerCollector {
 	 * Determines whether the SurfaceGui will always be rendered on top of other objects.
 	 */
 	AlwaysOnTop: boolean;
+	/**
+	 * **Brightness** determines the factor by which the GUI's emitted light is scaled. By default, this property is 1 and can be set to any number on the range \[0, 1000\].
+	 * 
+	 * By modifying this property, the apparent brightness of a GUI can be better matched to its environment. For instance, a video billboard like those found in Times Square can be made brighter to be clearly visible on a bright day.
+	 * 
+	 * This property won't produce any effect in the following scenarios wherein the GUI does not emit light.:
+	 * 
+	 * *   When [AlwaysOnTop](https://developer.roblox.com/en-us/api-reference/property/SurfaceGui/AlwaysOnTop) is true, the color of each pixel is the color shown on-screen.
+	 * *   When [LightInfluence](https://developer.roblox.com/en-us/api-reference/property/SurfaceGui/LightInfluence) is 1, all light from the GUI is reflected from the environment instead of being emit.
+	 */
 	Brightness: number;
 	/**
 	 * The size of a 'virtual screen', in 'virtual pixels', which makes SurfaceGuis pixel-to-pixel compatible with ScreenGuis.
