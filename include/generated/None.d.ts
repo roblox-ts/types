@@ -378,6 +378,8 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	PluginManagerInterface: PluginManagerInterface;
 	PoseBase: PoseBase;
 	ScriptRef: ScriptRef;
+	ScriptRefId: ScriptRefId;
+	ScriptRefPath: ScriptRefPath;
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
 	StarterPlayerScripts: StarterPlayerScripts;
@@ -22439,6 +22441,7 @@ interface Workspace extends WorldRoot {
 	 * A common use of this function is to detect if exploiters are increasing their local physics frame rate to move faster. This is generally done by comparing the result returned by a client's GetRealPhysicsFPS to a maximum that will not be breached in normal circumstances (usually 65 or 70). If this limit is breached, developers can use the [Player:Kick](https://developer.roblox.com/en-us/api-reference/function/Player/Kick) function to remove that [Player](https://developer.roblox.com/en-us/api-reference/class/Player) from the game. It is important to remember that, although this practice may be effective sometimes, client-side anti-exploiter measures are never 100% reliable.
 	 */
 	GetRealPhysicsFPS(this: Workspace): number;
+	GetServerTimeNow(this: Workspace): number;
 	/**
 	 * This function creates joints between the specified [Parts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and any touching parts depending on the parts' surfaces and the specified joint creation mode.
 	 * 
@@ -25776,6 +25779,28 @@ interface ScriptRef extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ScriptRef: unique symbol;
+}
+
+interface ScriptRefId extends ScriptRef {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptRefId: unique symbol;
+}
+
+interface ScriptRefPath extends ScriptRef {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptRefPath: unique symbol;
 }
 
 /** **ServerScriptService** is a container service for [Script](https://developer.roblox.com/en-us/api-reference/class/Script), [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) and other scripting-related assets that are only meant for server use. The contents are never replicated to player clients at all, which allows for a secure storage of important game logic. Script objects will run if they are within this service and not [Disabled](https://developer.roblox.com/en-us/api-reference/property/BaseScript/Disabled).

@@ -2648,6 +2648,10 @@ interface Selection extends Instance {
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly ActiveInstance: Instance | undefined;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly SelectionThickness: number;
 	Add(this: Selection, instancesToAdd: Array<Instance>): void;
 	/**
 	 * Returns an array of currently selected [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s in Roblox Studio.
@@ -2980,7 +2984,7 @@ interface Studio extends Instance {
 	["Enable Http Sandboxing"]: boolean;
 	["Enable Internal Beta Features"]: boolean;
 	["Enable Internal Features"]: boolean;
-	readonly ["Enable Linting"]: boolean;
+	readonly ["Enable Script Analysis"]: boolean;
 	readonly ["Enable Signature Help"]: boolean;
 	["Enable Temporary Tabs"]: boolean;
 	["Enable Temporary Tabs In Explorer"]: boolean;
@@ -3100,6 +3104,10 @@ interface Studio extends Instance {
 	/**
 	 * Tags: Hidden, NotReplicated
 	 */
+	readonly ScriptEditorMenuBorderColor: Color3;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
 	readonly ScriptEditorShouldShowPluginMethods: boolean;
 	/**
 	 * The time (in seconds) a script can wait to be resumed before timing out.
@@ -3129,6 +3137,7 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Selection Color"]: Color3;
+	readonly ["Selection Highlight Thickness"]: number;
 	["Server Audio Behavior"]: Enum.ServerAudioBehavior;
 	["Show Core GUI in Explorer while Playing"]: boolean;
 	["Show Deployment Warnings"]: boolean;
