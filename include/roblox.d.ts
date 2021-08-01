@@ -2010,7 +2010,7 @@ interface SettableCores {
 	ChatBarDisabled: boolean;
 	SendNotification: SendNotificationConfig;
 	TopbarEnabled: boolean;
-	DeveloperConsoleVisible: boolean;
+	DevConsoleVisible: boolean;
 	PromptSendFriendRequest: Player;
 	PromptUnfriend: Player;
 	PromptBlockPlayer: Player;
