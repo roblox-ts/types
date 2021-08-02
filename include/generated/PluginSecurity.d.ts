@@ -447,6 +447,7 @@ interface File extends Instance {
 	 */
 	readonly FileSize: number;
 	/**
+	 * The file size (in bytes) of the local file associated with this [File](https://developer.roblox.com/en-us/api-reference/class/File).
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly Size: number;

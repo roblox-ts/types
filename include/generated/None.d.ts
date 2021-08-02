@@ -1698,13 +1698,9 @@ interface Animator extends Instance {
 	ApplyJointVelocities(this: Animator, motors: Array<Motor6D>): void;
 	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
 	/**
-	 * Loads an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) onto an [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator), returning an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack). Used to load animations on locally controlled models (such as player characters) from the server.
+	 * **LoadAnimation** will load the given [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) onto an [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator), returning a playable [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack). When called on Animators within models that the client has network ownership of, ie. the local player's character or from [BasePart:SetNetworkOwner](https://developer.roblox.com/en-us/api-reference/function/BasePart/SetNetworkOwner), this function also loads the animation for the server as well.
 	 * 
-	 * A [Model](https://developer.roblox.com/en-us/api-reference/class/Model) is considered locally controlled if it has network ownership of the model, clients have network ownership of the local character model by default and other models can be assigned to a different client using [BasePart:SetNetworkOwner](https://developer.roblox.com/en-us/api-reference/function/BasePart/SetNetworkOwner).
-	 * 
-	 * It is best practice to only animate a model from the server if the server has network ownership, and for this reason most developers will not need to use the [Animator:LoadAnimation](https://developer.roblox.com/en-us/api-reference/function/Animator/LoadAnimation) function as they can load animations directly from the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) or [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController).
-	 * 
-	 * Note if the server has network ownership of the model, and the [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController) or [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) was created on the server, then [Animator:LoadAnimation](https://developer.roblox.com/en-us/api-reference/function/Animator/LoadAnimation) does not need to be used as `LoadAnimation` can be used directly from the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) or [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController) on the server.
+	 * You should use this function directly instead of the similarly-named [Humanoid:LoadAnimation](https://developer.roblox.com/en-us/api-reference/function/Humanoid/LoadAnimation) and [AnimationController:LoadAnimation](https://developer.roblox.com/en-us/api-reference/function/AnimationController/LoadAnimation) functions. These are deprecated proxies of this function which also create an [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator) if one does not exist; this can cause replication issues if you are not careful. For more information, see this [announcement post](https://devforum.roblox.com/t/deprecating-loadanimation-on-humanoid-and-animationcontroller/857129)
 	 * 
 	 * Should I load an Animation on the client or server?
 	 * ---------------------------------------------------
@@ -3054,7 +3050,7 @@ interface PlayerGui extends BasePlayerGui {
  * StarterGui as a container
  * -------------------------
  * 
- * When a `Player|Players'` [character](https://developer.roblox.com/en-us/api-reference/property/Player/Character) respawns, the contents of their [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui) is emptied. Children of the [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui) are then copied (along with their descendants) into the [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui).
+ * When a `Player|Players'` [character](https://developer.roblox.com/en-us/api-reference/property/Player/Character) respawns, the contents of their [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui) is emptied. Children of the [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui) are then copied along with their descendants into the [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui).
  * 
  * `LayerCollector|GUI objects` such as [ScreenGuis](https://developer.roblox.com/en-us/api-reference/class/ScreenGui) with their [ResetOnSpawn](https://developer.roblox.com/en-us/api-reference/property/LayerCollector/ResetOnSpawn) property set to false will only be placed into each `Player|Player's` [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui) once and will not be deleted when the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) respawns.
  * 
@@ -6532,6 +6528,10 @@ interface LineForce extends Constraint {
 
 /** A **RodConstraint** constrains two [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment) to remain separated by the value specified by [RodConstraint.Length](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/Length). While the attachments remain at a set distance from one another, they can both rotate freely.
  * 
+ * By default, RodConstraints do not have angle constraints and allow each part to rotate without angular constraint. However, setting [LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitsEnabled) reveal the [LimitAngle0](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitAngle0) and [LimitAngle1](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitAngle1) properties, which control the maximum angle that either end of the rod may have against the respective attachment. In the image below, the two parts are joined by a RodConstraint with 45 degree limits on each end. The red part is not [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored).
+ * 
+ * ![](https://developer.roblox.com/assets/60feee1161f38746a5779267/Screenshot_7.png)
+ * 
  * Note that if this constraint attaches one part (**A**) to another part (**B**) that is anchored or connected to an anchored part (**Z**), part **A** will not be locally simulated when interacting with a player.
  */
 interface RodConstraint extends Constraint {
@@ -6552,8 +6552,49 @@ interface RodConstraint extends Constraint {
 	 * The distance apart the [RodConstraint](https://developer.roblox.com/en-us/api-reference/class/RodConstraint) attempts to keep its [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) at. Measured in studs.
 	 */
 	Length: number;
+	/**
+	 * **LimitAngle0** determines the maximum angle between the rod and [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0) when [LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitsEnabled) is true. Otherwise, this property is hidden in the Properties window and does nothing.
+	 * 
+	 * In the image below, the two parts are joined by a RodConstraint with 45 degree limits on each end. The red part is not [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored).
+	 * 
+	 * ![](https://developer.roblox.com/assets/60feee1161f38746a5779267/Screenshot_7.png)
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [RodConstraint.LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitsEnabled), which determines if this property is visible and functional
+	 * *   [RodConstraint.LimitAngle1](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitAngle1), which works for the other attachment
+	 * *   `Constriant/Attachment0`, the attachment that is affected by this property
+	 */
 	LimitAngle0: number;
+	/**
+	 * **LimitAngle1** determines the maximum angle between the rod and [Attachment1](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment1) when [LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitsEnabled) is true. Otherwise, this property is hidden in the Properties window and does nothing.
+	 * 
+	 * In the image below, the two parts are joined by a RodConstraint with 45 degree limits on each end. The red part is not [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored).
+	 * 
+	 * ![](https://developer.roblox.com/assets/60feee1161f38746a5779267/Screenshot_7.png)
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [RodConstraint.LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitsEnabled), which determines if this property is visible and functional
+	 * *   [RodConstraint.LimitAngle0](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitAngle0), which works for the other attachment
+	 * *   `Constriant/Attachment1`, the attachment that is affected by this property
+	 */
 	LimitAngle1: number;
+	/**
+	 * **LimitsEnabled** determines whether the [LimitAngle0](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitAngle0) and [LimitAngle1](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitAngle1) properties control the angles between the rod and the respective attachments, as well as whether those properties are visible in the Properties window in Studio.
+	 * 
+	 * In the image below, the two parts are joined by a RodConstraint with 45 degree limits on each end. The red part is not [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored).
+	 * 
+	 * ![](https://developer.roblox.com/assets/60feee1161f38746a5779267/Screenshot_7.png)
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [LimitAngle0](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitAngle0) and [LimitAngle1](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/LimitAngle1)
+	 * *   [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0) and [Attachment1](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment1)
+	 */
 	LimitsEnabled: boolean;
 	/**
 	 * The visualized thickness of the RodConstraint.
@@ -22218,7 +22259,7 @@ interface WorldRoot extends Model {
 	/**
 	 * Casts a ray using an origin, direction, and optional [RaycastParams](https://developer.roblox.com/en-us/api-reference/datatype/RaycastParams). If it finds an eligible [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) cell, a [RaycastResult](https://developer.roblox.com/en-us/api-reference/datatype/RaycastResult) is returned containing the results of the operation. If no [RaycastParams](https://developer.roblox.com/en-us/api-reference/datatype/RaycastParams) object is provided, the defaults are used (all parts are considered and [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) water is not ignored).
 	 * 
-	 * Note that the length (magnitude) of the directional vector is important, as objects/terrain further away than its length will not be tested. If you're using a [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) to help create the ray components, consider using `CFrame.LookVector` as the directional vector and multiply it by the desired length as shown in the example below.
+	 * Note that the length (magnitude) of the directional vector is important, as objects/terrain further away than its length will not be tested. If you're using a [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) to help create the ray components, consider using `CFrame.LookVector` as the directional vector and multiply it by the desired length as shown in the example below. The maximum length of the direction vector is 5,000 studs.
 	 * 
 	 * For a demonstration of how raycasting works, see the `articles/Raycasting|Intro to Raycasting` article.
 	 * 
@@ -23108,7 +23149,7 @@ interface PathfindingService extends Instance {
 	 * 
 	 * 2
 	 * 
-	 * Humanoid radius. Used to determine the minimum separation from obstacles.
+	 * Determines the minimum amount of horizontal space required for empty space to be considered traversable.
 	 * 
 	 * **AgentHeight**
 	 * 
@@ -23116,7 +23157,7 @@ interface PathfindingService extends Instance {
 	 * 
 	 * 5
 	 * 
-	 * Humanoid height. Empty space smaller than this value will be marked as non-traversable, for instance the space under stairs.
+	 * Determines the minimum amount of vertical space required for empty space to be considered traversable.
 	 * 
 	 * **AgentCanJump**
 	 * 
@@ -23124,7 +23165,15 @@ interface PathfindingService extends Instance {
 	 * 
 	 * true
 	 * 
-	 * Sets whether off-mesh links for jumping are allowed.
+	 * Determines whether off-mesh links for jumping are allowed.
+	 * 
+	 * **WaypointSpacing**
+	 * 
+	 * number
+	 * 
+	 * 4
+	 * 
+	 * Determines the spacing between intermediate waypoints in path.
 	 * 
 	 * See the `Articles/Pathfinding|Pathfinding` guide for details and examples on using pathfinding in Roblox.
 	 */
@@ -26583,24 +26632,51 @@ interface Sound extends Instance {
 	 */
 	RollOffMinDistance: number;
 	/**
-	 * This property sets how 3D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s attenuate (fade out) as the distance between the listener and the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)'s parent increase. The following code will set RollOffMode to Linear.
+	 * This property sets how 3D [Sounds](https://developer.roblox.com/en-us/api-reference/class/Sound) attenuate (fade out) as the distance between the listener and the sound's parent increase. It can be set to one of the values of the [RollOffMode](https://developer.roblox.com/en-us/api-reference/enum/RollOffMode) enum.
+	 * 
+	 * The following code will set RollOffMode to Linear:
 	 * 
 	 * sound.RollOffMode = Enum.RollOffMode.Linear
 	 * 
-	 * Thee following options are available.
+	 * The different modes
+	 * -------------------
 	 * 
-	 * *   **Inverse:** Volume attenuates from [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) in an inverse manner
-	 * *   **InverseTapered:** A hybrid model. Follows the Inverse model when close to [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) and the Linear Square model when close to [Sound.MaxDistance](https://developer.roblox.com/en-us/api-reference/property/Sound/MaxDistance).
-	 * *   **Linear**: Volume attenuates between [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) and [Sound.MaxDistance](https://developer.roblox.com/en-us/api-reference/property/Sound/MaxDistance) with a linear relationship.
-	 * *   **LinearSquare:** Volume attenuates between [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) and [Sound.MaxDistance](https://developer.roblox.com/en-us/api-reference/property/Sound/MaxDistance) with a linear squared relationship
+	 * Thee following options are available:  
+	 * table class=“table table-striped table-bordered”>  
+	 *   
+	 *   
+	 * Mode  
+	 * Description  
+	 *   
+	 *   
+	 *   
+	 *   
+	 * Inverse  
+	 * Volume attenuates from [Sound.RollOffMinDistance](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMinDistance) in an inverse manner  
+	 *   
+	 *   
+	 * InverseTapered  
+	 * A hybrid model. Follows the Inverse model when close to RollOffMinDistance and the Linear Square model when close to [Sound.RollOffMaxDistance](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMaxDistance)  
+	 *   
+	 *   
+	 * Linear  
+	 * Volume attenuates between RollOffMinDistance and RollOffMaxDistance with a linear relationship  
+	 *   
+	 *   
+	 * LinearSquare  
+	 * Volume attenuates between RollOffMinDistance and RollOffMaxDistance with a linear squared relationship  
+	 *   
 	 * 
-	 * **Inverse vs Linear Distance Attenuation**
+	 * Inverse vs Linear Distance Attenuation
+	 * --------------------------------------
 	 * 
-	 * By default sounds are set to use inverse distance attenuation (Enum.RollOffMode.Inverse) which mirrors how sounds attenuate in the real world. Under inverse distance attenuation, sounds will begin to attenuate once the distance between the listener and the Sound's parent exceeds [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize). The rate of attenuation depends on the emitter size, as sounds with larger EmitterSize's will attenuate at a slower rate. Inverse rate of inverse distance attenuation is further influenced by [SoundService.RolloffScale](https://developer.roblox.com/en-us/api-reference/property/SoundService/RolloffScale).
+	 * By default sounds are set to use inverse distance attenuation (Enum.RollOffMode.Inverse) which mirrors how sounds attenuate in the real world. Under inverse distance attenuation, sounds will begin to attenuate once the distance between the listener and the Sound's parent exceeds RollOffMinDistance. The rate of attenuation depends on the emitter size, as sounds with larger EmitterSize's will attenuate at a slower rate. Inverse rate of inverse distance attenuation is further influenced by [SoundService.RolloffScale](https://developer.roblox.com/en-us/api-reference/property/SoundService/RolloffScale).
 	 * 
-	 * Note, [Sound.MaxDistance](https://developer.roblox.com/en-us/api-reference/property/Sound/MaxDistance) will not effect attenuation under the inverse model but will cause the sound to cut off completely once this distance is reached. This can be particularly abrupt when using low values for max distance.
+	 * **Note**  
 	 * 
-	 * Linear distance attenuation works differently. Under linear distance attenuation the sound will attenuate between [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) and [Sound.MaxDistance](https://developer.roblox.com/en-us/api-reference/property/Sound/MaxDistance), falling silent once MaxDistance is reached. [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) still denotes the point at which the sound will begin attenuating. However, the audible volume at any point now depends on the point the listener is at between EmitterSize and MaxDistance. This means, in contrast to the inverse distance attenuation model, the audible volume of the sound will approach silence at MaxDistance point. This is less realistic, but may be more desirable in some cases.
+	 * RollOffMaxDistance will not effect attenuation under the inverse model but will cause the sound to cut off completely once this distance is reached. This can be particularly abrupt when using low values for max distance.
+	 * 
+	 * Linear distance attenuation works differently. Under linear distance attenuation the sound will attenuate between RollOffMinDistance and RollOffMaxDistance, falling silent once MaxDistance is reached. RollOffMinDistance still denotes the point at which the sound will begin attenuating. However, the audible volume at any point now depends on the point the listener is at between EmitterSize and MaxDistance. This means, in contrast to the inverse distance attenuation model, the audible volume of the sound will approach silence at MaxDistance point. This is less realistic, but may be more desirable in some cases.
 	 */
 	RollOffMode: Enum.RollOffMode;
 	/**
@@ -27322,14 +27398,33 @@ interface SoundService extends Instance {
 	 */
 	RolloffScale: number;
 	/**
-	 * GetListener returns [SoundService](https://developer.roblox.com/en-us/api-reference/class/SoundService)s current listener type and what is set as listener.
+	 * This function returns `SoundService|SoundService's` current listener type and what is set as listener.
 	 * 
-	 * The first result returned is the [ListenerType](https://developer.roblox.com/en-us/api-reference/enum/ListenerType) of the listener, the second result is dependent on the listener type.
-	 * 
-	 * *   Camera ListenerType - Does not return a listener object as [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera) is always used
-	 * *   CFrame ListenerType - Returns the [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) used in [SoundService:SetListener](https://developer.roblox.com/en-us/api-reference/function/SoundService/SetListener)
-	 * *   ObjectPosition ListenerType - Returns the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) used in [SoundService:SetListener](https://developer.roblox.com/en-us/api-reference/function/SoundService/SetListener)
-	 * *   ObjectCFrame ListenerType - Returns the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) used in [SoundService:SetListener](https://developer.roblox.com/en-us/api-reference/function/SoundService/SetListener)
+	 * The first result returned is the [ListenerType](https://developer.roblox.com/en-us/api-reference/enum/ListenerType) of the listener, the second result is dependent on the ListenerType:  
+	 * table class=“table table-striped table-bordered”>  
+	 *   
+	 *   
+	 * ListenerType  
+	 * Description  
+	 *   
+	 *   
+	 *   
+	 *   
+	 * Enum.ListenerType.Camera  
+	 * Does not return a listener object as [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera) is always used  
+	 *   
+	 *   
+	 * Enum.ListenerType.CFrame  
+	 * Returns the [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) used in [SoundService:SetListener](https://developer.roblox.com/en-us/api-reference/function/SoundService/SetListener)  
+	 *   
+	 *   
+	 * Enum.ListenerType.ObjectPosition  
+	 * Returns the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) used in [SoundService:SetListener](https://developer.roblox.com/en-us/api-reference/function/SoundService/SetListener)  
+	 *   
+	 *   
+	 * Enum.ListenerType.ObjectCFrame  
+	 * Returns the BasePart used in SetListener()  
+	 *   
 	 * 
 	 * The listener can be changed using [SoundService:SetListener](https://developer.roblox.com/en-us/api-reference/function/SoundService/SetListener).
 	 * 
@@ -27341,9 +27436,9 @@ interface SoundService extends Instance {
 	 * What is a listener?
 	 * -------------------
 	 * 
-	 * The [SoundService](https://developer.roblox.com/en-us/api-reference/class/SoundService)'s listener determines the point from which audio in the game is being 'heard' by the player. For 3D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s ([Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)) the listener influences the volume and left/right balance of a playing sound. Listeners have no influence on the playback of 2D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s as they have no position of emission.
+	 * The listener determines the point from which audio in the game is being 'heard' by the player. For 3D [Sounds](https://developer.roblox.com/en-us/api-reference/class/Sound) (Sounds parented to a BasePart or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)) the listener influences the volume and left/right balance of a playing sound. Listeners have no influence on the playback of 2D sounds as they have no position of emission.
 	 * 
-	 * By default, the listener is set to the [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera). However, a range of different types of listeners can be used.
+	 * By default, the listener is set to the CurrentCamera. However, a range of different types of listeners can be used.
 	 */
 	GetListener(
 		this: SoundService,
@@ -27364,9 +27459,9 @@ interface SoundService extends Instance {
 	 * *   Camera ListenerType - Does not return a listener object as [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera) is always used
 	 * *   CFrame ListenerType - The [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) to be used
 	 * *   ObjectPosition ListenerType - The [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) to be used
-	 * *   ObjectCFrame ListenerType - The [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) to be used
+	 * *   ObjectCFrame ListenerType - The BasePart to be used
 	 * 
-	 * The listener can be retrieved using [SoundService:GetListener](https://developer.roblox.com/en-us/api-reference/function/SoundService/GetListener).
+	 * The listener can be retrieved using [SoundService:GetListener](https://developer.roblox.com/en-us/api-reference/function/SoundService/GetListener):
 	 * 
 	 * local SoundService = game:GetService("SoundService")
 	 * SoundService:SetListener(Enum.ListenerType.CFrame, CFrame.new(0, 0, 0))
@@ -27376,9 +27471,9 @@ interface SoundService extends Instance {
 	 * What is a listener?
 	 * -------------------
 	 * 
-	 * The [SoundService](https://developer.roblox.com/en-us/api-reference/class/SoundService)'s listener determines the point from which audio in the game is being 'heard' by the player. For 3D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s ([Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)) the listener influences the volume and left/right balance of a playing sound. Listeners have no influence on the playback of 2D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound)s as they have no position of emission.
+	 * The [SoundService](https://developer.roblox.com/en-us/api-reference/class/SoundService)'s listener determines the point from which audio in the game is being 'heard' by the player. For 3D `Sounds` (sounds parented to a BasePart or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)) the listener influences the volume and left/right balance of a playing sound. Listeners have no influence on the playback of 2D sounds as they have no position of emission.
 	 * 
-	 * By default, the listener is set to the [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera). However, a range of different types of listeners can be used.
+	 * By default, the listener is set to the CurrentCamera. However, a range of different types of listeners can be used.
 	 */
 	SetListener(this: SoundService, listenerType: CastsToEnum<Enum.ListenerType.Camera>): void;
 	SetListener(this: SoundService, listenerType: CastsToEnum<Enum.ListenerType.CFrame>, cframe: CFrame): void;
@@ -28180,6 +28275,10 @@ interface TeleportOptions extends Instance {
 	 */
 	ShouldReserveServer: boolean;
 	/**
+	 * This function returns the teleport data stored in the [TeleportOptions](https://developer.roblox.com/en-us/api-reference/class/TeleportOptions) instance by [TeleportOptions:SetTeleportData](https://developer.roblox.com/en-us/api-reference/function/TeleportOptions/SetTeleportData).
+	 * 
+	 * Once a player has teleported, teleport data can be retrieved using the [TeleportService:GetLocalPlayerTeleportData](https://developer.roblox.com/en-us/api-reference/function/TeleportService/GetLocalPlayerTeleportData) function.
+	 * 
 	 * See also
 	 * --------
 	 * 
@@ -28188,6 +28287,30 @@ interface TeleportOptions extends Instance {
 	GetTeleportData(this: TeleportOptions): unknown;
 	/**
 	 * This is a setter function for data to be passed to the destination place. On the destination place, this data can be retrieved using [TeleportService:GetLocalPlayerTeleportData](https://developer.roblox.com/en-us/api-reference/function/TeleportService/GetLocalPlayerTeleportData).
+	 * 
+	 * For example, the following snippet would send the [DataModel.PlaceId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PlaceId) and [DataModel.JobId](https://developer.roblox.com/en-us/api-reference/property/DataModel/JobId) in a dictionary passing the teleport data in a [TeleportOptions](https://developer.roblox.com/en-us/api-reference/class/TeleportOptions) instance using [TeleportOptions:SetTeleportData](https://developer.roblox.com/en-us/api-reference/function/TeleportOptions/SetTeleportData):
+	 * 
+	 * \-- Server
+	 * local teleportOptions = Instance.new(“TeleportOptions”)
+	 * local teleportData = {
+	 *     placeId = game.PlaceId,
+	 *     jobId = game.JobId
+	 * }
+	 * teleportOptions:SetTeleportData(teleportData)
+	 * TeleportService:TeleportAsync(game.PlaceId, {player}, teleportOptions)
+	 * 
+	 * This data could then be retrieved upon arrival using the GetLocalPlayerTeleportData() function as follows:
+	 * 
+	 * \-- Client
+	 * local TeleportService = game:GetService("TeleportService")
+	 * 
+	 * local teleportData = TeleportService:GetLocalPlayerTeleportData()
+	 * if teleportData then
+	 *     local placeId = teleportData.placeId
+	 *     local jobId = teleportData.JobId
+	 * end)
+	 * 
+	 * If no _teleportData_ was set in the teleportation function this GetLocalPlayerTeleportData() will return _nil_.
 	 * 
 	 * See also
 	 * --------
@@ -28253,19 +28376,20 @@ interface TeleportService extends Instance {
 	/**
 	 * This function returns the _teleportData_ the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) arrived into the place with. It can only be used on the client and can be called at any time.
 	 * 
-	 * For example, the following snippet would send the [DataModel.PlaceId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PlaceId) and [DataModel.JobId](https://developer.roblox.com/en-us/api-reference/property/DataModel/JobId) in a dictionary:
+	 * For example, the following snippet would send the [DataModel.PlaceId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PlaceId) and [DataModel.JobId](https://developer.roblox.com/en-us/api-reference/property/DataModel/JobId) in a dictionary passing the teleport data in a [TeleportOptions](https://developer.roblox.com/en-us/api-reference/class/TeleportOptions) instance using [TeleportOptions:SetTeleportData](https://developer.roblox.com/en-us/api-reference/function/TeleportOptions/SetTeleportData):
 	 * 
-	 * local Players = game:GetService("Players")
-	 * 
-	 * local player = Players.LocalPlayer
+	 * \-- Server
+	 * local teleportOptions = Instance.new(“TeleportOptions”)
 	 * local teleportData = {
 	 *     placeId = game.PlaceId,
 	 *     jobId = game.JobId
 	 * }
-	 * TeleportService:Teleport(placeId, player, teleportData)
+	 * teleportOptions:SetTeleportData(teleportData)
+	 * TeleportService:TeleportAsync(game.PlaceId, {player}, teleportOptions)
 	 * 
 	 * This data could then be retrieved upon arrival using the GetLocalPlayerTeleportData function as follows:
 	 * 
+	 * \-- Client
 	 * local TeleportService = game:GetService("TeleportService")
 	 * 
 	 * local teleportData = TeleportService:GetLocalPlayerTeleportData()
@@ -28327,28 +28451,7 @@ interface TeleportService extends Instance {
 	 * 
 	 * Note, the `ScreenGui|teleport GUI` will not be used if the destination place is in a different game. It will also not persist across multiple teleports and will need to be set prior to each one.
 	 * 
-	 * This function should only be used on the client. If the teleportation function is called from the server (as is the case with [TeleportService:TeleportPartyAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportPartyAsync)) then this function should be called on the client prior to this. One way of doing this is listening to a [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) that fires several seconds before teleportation.
-	 * 
-	 * \-- Client
-	 * 
-	 * local TeleportService = game:GetService("TeleportService")
-	 * local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	 * local Players = game:GetService("Players")
-	 * 
-	 * local localPlayer = Players.LocalPlayer
-	 * local teleportGui = Instance.new("ScreenGui") -- for demonstration purposes
-	 * 
-	 * -- this RemoteEvent needs to be created on the server and fired before teleporting
-	 * local teleportEvent = ReplicatedStorage:WaitForChild("TeleportPrepare")
-	 * 
-	 * -- set the teleport gui so we are ready
-	 * TeleportService:SetTeleportGui(teleportGui)
-	 * 
-	 * teleportEvent.OnClientEvent:Connect(function()
-	 *     -- show the gui prior to the teleport
-	 *     local playerGui = localPlayer:WaitForChild("PlayerGui")
-	 *     teleportGui.Parent = playerGui
-	 * end)
+	 * This function should only be used on the client. If the teleportation function is called from the server (as is the case with [TeleportService:TeleportAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportAsync)) then this function should be called on the client prior to this. One way of doing this is listening to a [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) that fires several seconds before teleportation.
 	 * 
 	 * Loading screen
 	 * --------------
@@ -28412,6 +28515,12 @@ interface TeleportService extends Instance {
 	 */
 	SetTeleportSetting(this: TeleportService, setting: string, value: TeleportData): void;
 	/**
+	 * The numerous teleport functions have been combined into a single method, [TeleportAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportAsync), which should be used instead and may be used to:
+	 * 
+	 * *   Teleport any number of players to a Public Server
+	 * *   Follow a Friend to a Different Place
+	 * *   Teleport any number of Players to a Reserved Server
+	 * 
 	 * This function teleports a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) to the place associated with the given _placeId_.
 	 * 
 	 * Teleport can be called both from the client and the server (see examples below).
@@ -28458,16 +28567,6 @@ interface TeleportService extends Instance {
 	 * 
 	 * This service does not work during playtesting in Roblox Studio — To test aspects of your game using it, you must publish the game and play it in the Roblox application.
 	 * 
-	 * Alternative teleport functions
-	 * ------------------------------
-	 * 
-	 * Before using Teleport, you should check to see if an alternative teleport function is more suitable:
-	 * 
-	 * *   [TeleportService:TeleportToSpawnByName](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportToSpawnByName) is used to teleport a player to a place and spawn them at a specific [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation)
-	 * *   [TeleportService:TeleportPartyAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportPartyAsync) is used to teleport a group of players together to the same server
-	 * *   [TeleportService:TeleportToPlaceInstance](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportToPlaceInstance) is used to teleport a player to a specific server in a place
-	 * *   [TeleportService:TeleportToPrivateServer](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportToPrivateServer) is used to teleport a player to a reserved server created using [TeleportService:ReserveServer](https://developer.roblox.com/en-us/api-reference/function/TeleportService/ReserveServer)
-	 * 
 	 * See also
 	 * --------
 	 * 
@@ -28481,6 +28580,12 @@ interface TeleportService extends Instance {
 		customLoadingScreen?: ScreenGui,
 	): void;
 	/**
+	 * The numerous teleport functions have been combined into a single method, [TeleportAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportAsync), which should be used instead and may be used to:
+	 * 
+	 * *   Teleport any number of players to a Public Server
+	 * *   Follow a Friend to a Different Place
+	 * *   Teleport any number of Players to a Reserved Server
+	 * 
 	 * This function teleports a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) to the place instance associated with the given _placeId_ and _instanceId_. It can only be used to teleport to places in the same game.
 	 * 
 	 * The _placeId_ is the [DataModel.PlaceId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PlaceId) of the server and the _instanceId_ is the [JobId](https://developer.roblox.com/en-us/api-reference/property/DataModel/JobId).
@@ -28545,6 +28650,12 @@ interface TeleportService extends Instance {
 		customLoadingScreen?: ScreenGui,
 	): void;
 	/**
+	 * The numerous teleport functions have been combined into a single method, [TeleportAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportAsync), which should be used instead and may be used to:
+	 * 
+	 * *   Teleport any number of players to a Public Server
+	 * *   Follow a Friend to a Different Place
+	 * *   Teleport any number of Players to a Reserved Server
+	 * 
 	 * This function teleports one or more [Players](https://developer.roblox.com/en-us/api-reference/class/Player) to a reserved server created using [TeleportService:ReserveServer](https://developer.roblox.com/en-us/api-reference/function/TeleportService/ReserveServer).
 	 * 
 	 * The _reservedServerAccessCode_ parameter is the access code returned by [ReserveServer](https://developer.roblox.com/en-us/api-reference/function/TeleportService/ReserveServer).
@@ -28609,6 +28720,12 @@ interface TeleportService extends Instance {
 		customLoadingScreen?: ScreenGui,
 	): void;
 	/**
+	 * The numerous teleport functions have been combined into a single method, [TeleportAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportAsync), which should be used instead and may be used to:
+	 * 
+	 * *   Teleport any number of players to a Public Server
+	 * *   Follow a Friend to a Different Place
+	 * *   Teleport any number of Players to a Reserved Server
+	 * 
 	 * This function behaves the same as [TeleportService:Teleport](https://developer.roblox.com/en-us/api-reference/function/TeleportService/Teleport) with the exception that it includes a _spawnName_ parameter, causing the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) to spawn at the [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation) of that name at the destination place.
 	 * 
 	 * The [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation) must be valid for the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) to spawn on. For example, it must be [neutral](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/Neutral) or set to the same [TeamColor](https://developer.roblox.com/en-us/api-reference/property/SpawnLocation/TeamColor) as the [Team](https://developer.roblox.com/en-us/api-reference/class/Team) the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) will be assigned to upon joining the game.
@@ -28795,6 +28912,12 @@ interface TeleportService extends Instance {
 	 */
 	TeleportAsync(this: TeleportService, placeId: number, players: Array<Instance>, teleportOptions?: TeleportOptions): Instance | undefined;
 	/**
+	 * The numerous teleport functions have been combined into a single method, [TeleportAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportAsync), which should be used instead and may be used to:
+	 * 
+	 * *   Teleport any number of players to a Public Server
+	 * *   Follow a Friend to a Different Place
+	 * *   Teleport any number of Players to a Reserved Server
+	 * 
 	 * This function teleports a group of [Players](https://developer.roblox.com/en-us/api-reference/class/Player) to the same server instance in the given place. It returns the [DataModel.JobId](https://developer.roblox.com/en-us/api-reference/property/DataModel/JobId) of the server instance the players were teleported to.
 	 * 
 	 * This function can only be called from the server.
