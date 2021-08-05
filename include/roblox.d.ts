@@ -1968,14 +1968,14 @@ declare namespace task {
 	/** Yields the calling script and queues it for serial execution following the completion of the parallel execution phase of the frame. */
 	function synchronize(): void;
 	/** Defers the passed thread or function to be resumed at the end of the current resumption cycle. */
-	function defer(thread: thread, ...args: Array<unknown>): void;
 	function defer<T extends Array<any>>(callback: (...args: T) => void, ...args: T): void;
+	function defer(thread: thread, ...args: Array<unknown>): void;
 	/** Delays the passed thread or function until the given duration has elapsed. Resumes on engine Heartbeat. */
-	function delay(duration: number, thread: thread, ...args: Array<unknown>): void;
 	function delay<T extends Array<any>>(duration: number, callback: (...args: T) => void, ...args: T): void;
+	function delay(duration: number, thread: thread, ...args: Array<unknown>): void;
 	/** Resumes the passed thread or function instantly using the engine's scheduler. */
-	function spawn(thread: thread, ...args: Array<unknown>): void;
 	function spawn<T extends Array<any>>(callback: (...args: T) => void, ...args: T): void;
+	function spawn(thread: thread, ...args: Array<unknown>): void;
 	/** Delay the current thread until the given duration has elasped. Resumes on engine Heartbeat. */
 	function wait(duration?: number): number;
 }
