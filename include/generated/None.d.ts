@@ -134,6 +134,7 @@ interface CreatableInstances {
 	CylinderMesh: CylinderMesh;
 	CylindricalConstraint: CylindricalConstraint;
 	DataStoreIncrementOptions: DataStoreIncrementOptions;
+	DataStoreOptions: DataStoreOptions;
 	DataStoreSetOptions: DataStoreSetOptions;
 	Decal: Decal;
 	DepthOfFieldEffect: DepthOfFieldEffect;
@@ -154,7 +155,6 @@ interface CreatableInstances {
 	Folder: Folder;
 	ForceField: ForceField;
 	Frame: Frame;
-	GetDataStoreOptions: GetDataStoreOptions;
 	Glue: Glue;
 	Handles: Handles;
 	Hat: Hat;
@@ -192,6 +192,7 @@ interface CreatableInstances {
 	Part: Part;
 	ParticleEmitter: ParticleEmitter;
 	PartOperation: PartOperation;
+	PathfindingModifier: PathfindingModifier;
 	PitchShiftSoundEffect: PitchShiftSoundEffect;
 	PointLight: PointLight;
 	Pose: Pose;
@@ -343,11 +344,12 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	CommandInstance: CommandInstance;
 	DataModel: DataModel;
 	DataStore: DataStore;
-	DataStoreEnumerationPages: DataStoreEnumerationPages;
 	DataStoreInfo: DataStoreInfo;
+	DataStoreKey: DataStoreKey;
 	DataStoreKeyInfo: DataStoreKeyInfo;
 	DataStoreKeyPages: DataStoreKeyPages;
-	DataStoreKeyVersionInfo: DataStoreKeyVersionInfo;
+	DataStoreListingPages: DataStoreListingPages;
+	DataStoreObjectVersionInfo: DataStoreObjectVersionInfo;
 	DataStorePages: DataStorePages;
 	DataStoreVersionPages: DataStoreVersionPages;
 	DebuggerConnection: DebuggerConnection;
@@ -361,7 +363,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	MemoryStoreSortedMap: MemoryStoreSortedMap;
 	Mouse: Mouse;
 	NetworkMarker: NetworkMarker;
-	ObjectVersionInfo: ObjectVersionInfo;
 	OrderedDataStore: OrderedDataStore;
 	OutfitPages: OutfitPages;
 	PackageLink: PackageLink;
@@ -7925,6 +7926,21 @@ interface DataStoreInfo extends Instance {
 	readonly UpdatedTime: number;
 }
 
+interface DataStoreKey extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreKey: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly KeyName: string;
+}
+
 interface DataStoreKeyInfo extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -7937,21 +7953,6 @@ interface DataStoreKeyInfo extends Instance {
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
-	readonly KeyName: string;
-}
-
-interface DataStoreKeyVersionInfo extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_DataStoreKeyVersionInfo: unique symbol;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
 	readonly CreatedTime: number;
 	/**
 	 * Tags: ReadOnly, NotReplicated
@@ -7961,8 +7962,44 @@ interface DataStoreKeyVersionInfo extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Version: string;
-	GetMetadata(this: DataStoreKeyVersionInfo): object;
-	GetUserIds(this: DataStoreKeyVersionInfo): unknown;
+	GetMetadata(this: DataStoreKeyInfo): object;
+	GetUserIds(this: DataStoreKeyInfo): unknown;
+}
+
+interface DataStoreObjectVersionInfo extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreObjectVersionInfo: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CreatedTime: number;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly IsDeleted: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Version: string;
+}
+
+interface DataStoreOptions extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreOptions: unique symbol;
+	AllScopes: boolean;
+	SetExperimentalFeatures(this: DataStoreOptions, experimentalFeatures: object): void;
 }
 
 /** **DataStoreService** exposes methods for getting [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) and [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) objects. Data stores can only be accessed by game servers, so you can only use **DataStoreService** within a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or a [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) that is used by a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
@@ -8005,7 +8042,7 @@ interface DataStoreService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	ListDataStoresAsync(this: DataStoreService, prefix?: string, pageSize?: number): DataStoreEnumerationPages;
+	ListDataStoresAsync(this: DataStoreService, prefix?: string, pageSize?: number): DataStoreListingPages;
 }
 
 interface DataStoreSetOptions extends Instance {
@@ -9033,19 +9070,6 @@ interface GamePassService extends Instance {
 	 * @deprecated
 	 */
 	PlayerHasPass(this: GamePassService, player: Player, gamePassId: number): boolean;
-}
-
-interface GetDataStoreOptions extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_GetDataStoreOptions: unique symbol;
-	AllScopes: boolean;
-	SetExperimentalFeatures(this: GetDataStoreOptions, experimentalFeatures: object): void;
 }
 
 /** A **GlobalDataStore** exposes functions for saving and loading data for the [DataStoreService](https://developer.roblox.com/en-us/api-reference/class/DataStoreService).
@@ -20023,29 +20047,6 @@ interface NoCollisionConstraint extends Instance {
 	Part1: BasePart | undefined;
 }
 
-interface ObjectVersionInfo extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ObjectVersionInfo: unique symbol;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly CreatedTime: number;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly IsDeleted: boolean;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly Version: string;
-}
-
 /** A PVInstance is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Model](https://developer.roblox.com/en-us/api-reference/class/Model). The PV in PVInstance stands for _Position-Velocity_. This class has existed since 2005, and while the class itself no longer has any functionality, it is used for adornable objects that can be connected to both BaseParts and Models. */
 interface PVInstance extends Instance {
 	/**
@@ -22654,17 +22655,6 @@ interface CatalogPages extends Pages {
 	readonly _nominal_CatalogPages: unique symbol;
 }
 
-interface DataStoreEnumerationPages extends Pages {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_DataStoreEnumerationPages: unique symbol;
-}
-
 interface DataStoreKeyPages extends Pages {
 	/**
 	 * **DO NOT USE!**
@@ -22674,6 +22664,17 @@ interface DataStoreKeyPages extends Pages {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreKeyPages: unique symbol;
+}
+
+interface DataStoreListingPages extends Pages {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreListingPages: unique symbol;
 }
 
 /** A special type of [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object whose pages contain key/value pairs from an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore). For this object, `Pages/GetCurrentPage|GetCurrentPage()` returns an array of tables, each containing keys named **key** and **value**; these reflect the key/value pair data. */
@@ -23089,6 +23090,18 @@ interface Path extends Instance {
 	 */
 	ComputeAsync(this: Path, start: Vector3, finish: Vector3): void;
 	readonly Blocked: RBXScriptSignal<(blockedWaypointIdx: number) => void>;
+}
+
+interface PathfindingModifier extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PathfindingModifier: unique symbol;
+	ModifierId: string;
 }
 
 /** **PathfindingService** is used to find paths between two points. These paths make sure that characters can move between the points without running into walls or other obstacles. Paths can be used for both player-controlled characters and non-player characters.

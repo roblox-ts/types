@@ -2961,6 +2961,7 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Current Line Highlight Color"]: Color3;
+	readonly DEPRECATED_DisableAccuratePlaySolo: boolean;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -2977,7 +2978,6 @@ interface Studio extends Instance {
 	 * If set to true, deprecated objects will be shown in the Advanced Objects window, as well as the Object Browser.
 	 */
 	DeprecatedObjectsShown: boolean;
-	["Disable Accurate Play Solo"]: boolean;
 	readonly DisplayLanguage: string;
 	["Drag Multiple Parts As Single Part"]: boolean;
 	["Enable Autocomplete"]: boolean;
@@ -3147,6 +3147,7 @@ interface Studio extends Instance {
 	["Show Hidden Objects in Explorer"]: boolean;
 	["Show Hover Over"]: boolean;
 	readonly ["Show Light Guides"]: boolean;
+	readonly ["Show Navigation Areas"]: boolean;
 	["Show Navigation Mesh"]: boolean;
 	["Show Plugin GUI Service in Explorer"]: boolean;
 	["Show QT warnings in output"]: boolean;
