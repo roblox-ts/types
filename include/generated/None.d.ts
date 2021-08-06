@@ -28923,7 +28923,7 @@ interface TeleportService extends Instance {
 	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
 	 * Tags: Yields
 	 */
-	TeleportAsync(this: TeleportService, placeId: number, players: Array<Instance>, teleportOptions?: TeleportOptions): Instance | undefined;
+	TeleportAsync(this: TeleportService, placeId: number, players: Array<Player>, options?: TeleportOptions): void;
 	/**
 	 * The numerous teleport functions have been combined into a single method, [TeleportAsync](https://developer.roblox.com/en-us/api-reference/function/TeleportService/TeleportAsync), which should be used instead and may be used to:
 	 * 
