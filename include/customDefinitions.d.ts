@@ -774,6 +774,8 @@ interface TeleportService extends Instance {
 	SetTeleportGui(this: TeleportService, gui: ScreenGui): void;
 	/** @client */
 	SetTeleportSetting(this: TeleportService, setting: string, value: TeleportData): void;
+	/** @server */
+	TeleportAsync(this: TeleportService, placeId: number, players: Array<Player>, options?: TeleportOptions): void;
 	Teleport(
 		this: TeleportService,
 		placeId: number,
