@@ -563,7 +563,7 @@ interface Players extends Instance {
 	readonly LocalPlayer: Player;
 
 	GetPlayerByUserId(this: Players, userId: number): Player | undefined;
-	GetPlayerFromCharacter(this: Players, character: Instance | undefined): Player | undefined;
+	GetPlayerFromCharacter(this: Players, character: Model | undefined): Player | undefined;
 	GetPlayers(this: Players): Array<Player>;
 
 	GetHumanoidDescriptionFromOutfitId(this: Players, outfitId: number): HumanoidDescription;
