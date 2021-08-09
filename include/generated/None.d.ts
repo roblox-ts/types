@@ -5709,6 +5709,10 @@ interface Chat extends Instance {
 	 */
 	RegisterChatCallback(this: Chat, callbackType: CastsToEnum<Enum.ChatCallbackType>, callbackFunction: Function): void;
 	/**
+	 * **Note**  
+	 * 
+	 * For a more detailed walkthrough, take a look at the [Bubble Chat](../../articles/applying-strokes) and [Lua Chat System](articles/Lua Chat System) articles.
+	 * 
 	 * This function customizes various settings of the in-game bubble chat.
 	 * 
 	 * Before using this, make sure that bubble chat is enabled by setting [Chat.BubbleChatEnabled](https://developer.roblox.com/en-us/api-reference/property/Chat/BubbleChatEnabled) to true.
@@ -5716,11 +5720,6 @@ interface Chat extends Instance {
 	 * The settings argument is a table where the keys are the names of the settings you want to edit and the values are what you want to change these settings to. Note that you don't have to include all of them in the settings argument, omitting some will result in them keeping their default value.
 	 * 
 	 * This function is client-side only, attempting to call it on the server will trigger an error.
-	 * 
-	 * See also
-	 * --------
-	 * 
-	 * *   Developers who are interested interested in configuring their games' chat system even further should take a look at the `/articles/Lua Chat System|Lua Chat System|Lua Chat System` and `articles/Bubble Chat|Bubble Chat` articles
 	 */
 	SetBubbleChatSettings(this: Chat, settings: unknown): void;
 	/**
@@ -6126,7 +6125,7 @@ interface Constraint extends Instance {
  * 
  * The torque used to constrain an AlignOrientation can either be configured or set to the maximum that constraints allow. Whether the torque is configurable is determined by the [AlignOrientation.RigidityEnabled](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/RigidityEnabled) property.
  * 
- * When RigidityEnabled is true, then the physics solver will use as much torque as possible to move the two attachment points together. This is the same scale of force used to align other constraints, such as prismatics when their attachments are misaligned.
+ * When RigidityEnabled is true, then the physics solver will react as quickly as possible to move the attachments together. This is the same scale of force used to align other constraints, such as prismatics when their attachments are misaligned.
  * 
  * When RigidityEnabled is false, then the force will be determined by the MaxTorque, MaxAngularVelocity, and Responsiveness. MaxForce and MaxVelocity are caps to the torque and angular velocity respectively. The actual scale of the torque is determined by the Responsiveness. The mechanism for responsiveness is a little complicated, but put simply the higher the responsiveness, the quicker the constraint will try to reach its goal.
  * 
@@ -6229,7 +6228,7 @@ interface AlignOrientation extends Constraint {
  * 
  * The force used to constrain an AlignPosition can either be configured or set to the maximum that constraints allow. Whether the force is configurable is determined by the [AlignPosition.RigidityEnabled](https://developer.roblox.com/en-us/api-reference/property/AlignPosition/RigidityEnabled) property.
  * 
- * When RigidityEnabled is true, then the physics solver will use as much force as possible to move the two attachment points together. This is the same scale of force used to connect other constraints, such as hinges when their attachments are separated.
+ * When RigidityEnabled is true, then the physics solver will react as quickly as possible to move the attachments together. This is the same scale of force used to connect other constraints, such as hinges when their attachments are separated.
  * 
  * When RigidityEnabled is false, then the force will be determined by the [AlignPosition.MaxForce](https://developer.roblox.com/en-us/api-reference/property/AlignPosition/MaxForce), [AlignPosition.MaxVelocity](https://developer.roblox.com/en-us/api-reference/property/AlignPosition/MaxVelocity), and [AlignPosition.Responsiveness](https://developer.roblox.com/en-us/api-reference/property/AlignPosition/Responsiveness). MaxForce and MaxVelocity are caps to the force and velocities respectively. The actual scale of the force is determined by the Responsiveness. The mechanism for responsiveness is a little complicated, but put simply the higher the responsiveness, the quicker the constraint will try to reach its goal.
  * 
@@ -20047,7 +20046,7 @@ interface NoCollisionConstraint extends Instance {
 	Part1: BasePart | undefined;
 }
 
-/** A PVInstance is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Model](https://developer.roblox.com/en-us/api-reference/class/Model). The PV in PVInstance stands for _Position-Velocity_. This class has existed since 2005, and while the class itself no longer has any functionality, it is used for adornable objects that can be connected to both BaseParts and Models. */
+/** A [PVInstance](https://developer.roblox.com/en-us/api-reference/class/PVInstance) (“Position Velocity Instance”) is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Models](https://developer.roblox.com/en-us/api-reference/class/Model). */
 interface PVInstance extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -20057,7 +20056,23 @@ interface PVInstance extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_PVInstance: unique symbol;
+	/**
+	 * This function gets the pivot of a [PVInstance](https://developer.roblox.com/en-us/api-reference/class/PVInstance). This is often used with [PVInstance:PivotTo](https://developer.roblox.com/en-us/api-reference/function/PVInstance/PivotTo) to move a model.
+	 * 
+	 * [Models](https://developer.roblox.com/en-us/api-reference/class/Model) and [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) are both [PVInstances](https://developer.roblox.com/en-us/api-reference/class/PVInstance) (“Position Velocity Instances”) and so both have this function.
+	 */
 	GetPivot(this: PVInstance): CFrame;
+	/**
+	 * Transforms the [PVInstance](https://developer.roblox.com/en-us/api-reference/class/PVInstance) along with all of its descendant [PVInstances](https://developer.roblox.com/en-us/api-reference/class/PVInstance) such that the pivot is now located at the specified [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame). This is the primary function that should be used to move [Models](https://developer.roblox.com/en-us/api-reference/class/Model) via scripting.
+	 * 
+	 * [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) are moved in this way by having their [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) transformed by the necessary offset. [Models](https://developer.roblox.com/en-us/api-reference/class/Model) are moved in this way by having their [Model.WorldPivot](https://developer.roblox.com/en-us/api-reference/property/Model/WorldPivot) transformed by the necessary offset.
+	 * 
+	 * Note that for efficiency purposes, [Instance.Changed](https://developer.roblox.com/en-us/api-reference/event/Instance/Changed) events are not fired for [Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position) and [Orientation](https://developer.roblox.com/en-us/api-reference/property/BasePart/Orientation) of [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) moved in this way; they are only fired for [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame).
+	 * 
+	 * When calling [PivotTo](https://developer.roblox.com/en-us/api-reference/function/PVInstance/PivotTo) on [Models](https://developer.roblox.com/en-us/api-reference/class/Model), the offsets of the descendant parts and models are cached, such that subsequent calls to [PivotTo](https://developer.roblox.com/en-us/api-reference/function/PVInstance/PivotTo) on the same model do not accumulate floating point drift between the parts making up the model.
+	 * 
+	 * [Models](https://developer.roblox.com/en-us/api-reference/class/Model) and [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) are both [PVInstances](https://developer.roblox.com/en-us/api-reference/class/PVInstance) (“Position Velocity Instances”) and so both have this function.
+	 */
 	PivotTo(this: PVInstance, targetCFrame: CFrame): void;
 }
 
@@ -20480,6 +20495,15 @@ interface BasePart extends PVInstance {
 	 * Tags: NotReplicated
 	 */
 	Orientation: Vector3;
+	/**
+	 * This property specifies the offset of the part's pivot from its [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame), that is `part:GetPivot()` is the same as `part.CFrame * part.PivotOffset`.
+	 * 
+	 * This is convenient for setting the pivot to a location in **local** space, but setting a part's pivot to a location in **world** space can be done as follows:
+	 * 
+	 * local part = workspace.BluePart
+	 * local desiredPivotCFrameInWorldSpace = CFrame.new(0, 10, 0)
+	 * part.PivotOffset = part.CFrame:ToObjectSpace(desiredPivotCFrameInWorldSpace)
+	 */
 	PivotOffset: CFrame;
 	/**
 	 * The Position property describes the coordinates of a [part](https://developer.roblox.com/en-us/api-reference/class/BasePart) using a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3). It reflects the position of the part's [BasePart.CFrame](https://developer.roblox.com/en-us/api-reference/property/BasePart/CFrame), however it can also be set.
@@ -21849,14 +21873,33 @@ interface Model extends PVInstance {
 	 */
 	readonly _nominal_Model: unique symbol;
 	/**
-	 * Points to the [Model](https://developer.roblox.com/en-us/api-reference/class/Model)'s primary part. The part is the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that is used as a basis when positioning the model using the [Model:MoveTo](https://developer.roblox.com/en-us/api-reference/function/Model/MoveTo) and [Model:SetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/SetPrimaryPartCFrame) functions.
+	 * Points to the primary part of the [Model](https://developer.roblox.com/en-us/api-reference/class/Model). The primary part is the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that acts as the physical reference for the pivot of the model. That is, when parts within the model are moved due to physical simulation or other means, the pivot will move in sync with the primary part. If the primary part is **not** set, the pivot will remain at the same location in world space even if parts within the model are moved.
 	 * 
-	 * Note when assigning the PrimaryPart that the part must be a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that is descendant of the Model. If this is not the case, the PrimaryPart will be set to nil in Roblox studio, or produce an error if done so by a Script.
+	 * Note that when setting this property, it must be a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that is a descendant of the model. If you try to set [Model.PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart) to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that is **not** a descendant of the model, it will be set to that part but reset to `nil` during the next simulation step — this is legacy behavior to support scripts which assume they can temporarily set the primary part to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) which isn't a descendant of the model.
 	 * 
-	 * When dealing with models full of unanchored parts connected with joints such as [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld)s or [Motor6D](https://developer.roblox.com/en-us/api-reference/class/Motor6D)s it is best practice to set the PrimaryPart to the root part of the assembly. Giving the example of a Player Character, this is the HumanoidRootPart.
+	 * The general rule for models is that:
+	 * 
+	 * *   Models whose parts are joined together via physical joints such as [WeldConstraints](https://developer.roblox.com/en-us/api-reference/class/WeldConstraint) or [Motor6Ds](https://developer.roblox.com/en-us/api-reference/class/Motor6D) should have a primary part assigned. For example, Roblox character models have their [Model.PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart) set to the **HumanoidRootPart** by default.
+	 * *   Static (usually [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored)) models which stay in one place unless a script explicitly moves them don't require a [Model.PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart) and tend not to benefit from having one set.
 	 */
 	PrimaryPart: BasePart | undefined;
 	/**
+	 * This property determines where the pivot of a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) which does **not** have a set [Model.PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart) is located. If the [Model](https://developer.roblox.com/en-us/api-reference/class/Model) **does** have a [PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart), the pivot of the [Model](https://developer.roblox.com/en-us/api-reference/class/Model) is equal to the pivot of that primary part instead, and this [WorldPivot](https://developer.roblox.com/en-us/api-reference/property/Model/WorldPivot) property is ignored.
+	 * 
+	 * For a newly created [Model](https://developer.roblox.com/en-us/api-reference/class/Model), its pivot will be treated as the center of the bounding box of its contents until the **first time** its [Model.WorldPivot](https://developer.roblox.com/en-us/api-reference/property/Model/WorldPivot) property is set. Once the world pivot is set for the first time, it is impossible to restore this initial behavior.
+	 * 
+	 * Most commonly, moving the model with the Studio tools, or with a model movement function such as [PVInstance:PivotTo](https://developer.roblox.com/en-us/api-reference/function/PVInstance/PivotTo), [Model:MoveTo](https://developer.roblox.com/en-us/api-reference/function/Model/MoveTo), and [Model:SetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/SetPrimaryPartCFrame) will set the world pivot and thus end this new model behavior.
+	 * 
+	 * The purpose of this behavior is to allow Lua code to get a sensible pivot simply by creating a new model and parenting objects to it, avoiding the need to explicitly set [Model.WorldPivot](https://developer.roblox.com/en-us/api-reference/property/Model/WorldPivot) every time you create a model in code.
+	 * 
+	 * local model = Instance.new("Model")
+	 * workspace.BluePart.Parent = model
+	 * workspace.RedPart.Parent = model
+	 * model.Parent = workspace
+	 * 
+	 * print(model:GetPivot())  -- Currently equal to the center of the bounding box containing "BluePart" and "RedPart"
+	 * 
+	 * model:PivotTo(CFrame.new(0, 10, 0)  -- This works without needing to explicitly set "model.WorldPivot"
 	 * Tags: NotReplicated
 	 */
 	WorldPivot: CFrame;
@@ -21911,6 +21954,8 @@ interface Model extends PVInstance {
 	 */
 	GetModelSize(this: Model): Vector3;
 	/**
+	 * This function has been superseded by [PVInstance:GetPivot](https://developer.roblox.com/en-us/api-reference/function/PVInstance/GetPivot) which acts as a replacement and does not change your code's behavior. Use [PVInstance:GetPivot](https://developer.roblox.com/en-us/api-reference/function/PVInstance/GetPivot) for new work and migrate your existing [Model:GetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/GetPrimaryPartCFrame) calls when convenient.
+	 * 
 	 * Returns the `CFrame` of the [Model](https://developer.roblox.com/en-us/api-reference/class/Model)'s [Model.PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart).
 	 * 
 	 * This function is equivalent to the following.
@@ -21963,6 +22008,8 @@ interface Model extends PVInstance {
 	 */
 	SetIdentityOrientation(this: Model): void;
 	/**
+	 * This function has been superseded by [PVInstance:PivotTo](https://developer.roblox.com/en-us/api-reference/function/PVInstance/PivotTo) which acts as a more performant replacement and does not change your code's behavior. Use [PVInstance:PivotTo](https://developer.roblox.com/en-us/api-reference/function/PVInstance/PivotTo) for new work and migrate your existing [Model:SetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/SetPrimaryPartCFrame) calls when convenient.
+	 * 
 	 * Sets the [BasePart.CFrame](https://developer.roblox.com/en-us/api-reference/property/BasePart/CFrame) of the [Model](https://developer.roblox.com/en-us/api-reference/class/Model)'s [Model.PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart). All other parts in the model will also be moved and will maintain their orientation and offset respective to the [Model.PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart).
 	 * 
 	 * Note, this function will throw an error if no [Model.PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart) exists for the model. This can cause issues if, for example, the primary part was never set or has been destroyed. Therefore, it is recommended the developer check the [Model.PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart) exists before using this function. For example:
@@ -30333,7 +30380,9 @@ interface UIScale extends UIComponent {
 	Scale: number;
 }
 
-/** For a more detailed walkthrough of the UIStroke object, take a look at the [Applying Strokes](../../articles/applying-strokes) article.
+/** **Note**  
+ * 
+ * For a more detailed walkthrough of the UIStroke object, take a look at the [Applying Strokes](../../articles/applying-strokes) article.
  * 
  * An instance that applies an outline to text or a UI border. Key features include:
  * 
