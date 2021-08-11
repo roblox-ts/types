@@ -421,6 +421,217 @@ interface DebuggerWatch extends Instance {
 	Expression: string;
 }
 
+interface FaceControls extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FaceControls: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
+	ChinRaiser: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	ChinRaiserUpperLip: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	Corrugator: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	EyesLookDown: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	EyesLookLeft: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	EyesLookRight: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	EyesLookUp: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	FlatPucker: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	Funneler: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	JawDrop: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	JawLeft: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	JawRight: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftBrowLowerer: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftCheekPuff: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftCheekRaiser: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftDimpler: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftEyeClosed: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftEyeUpperLidRaiser: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftInnerBrowRaiser: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftLipCornerDown: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftLipCornerPuller: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftLipStretcher: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftLowerLipDepressor: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftNoseWrinkler: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftOuterBrowRaiser: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LeftUpperLipRaiser: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LipPresser: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LipsTogether: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	LowerLipSuck: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	MouthLeft: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	MouthRight: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	Pucker: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightBrowLowerer: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightCheekPuff: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightCheekRaiser: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightDimpler: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightEyeClosed: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightEyeUpperLidRaiser: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightInnerBrowRaiser: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightLipCornerDown: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightLipCornerPuller: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightLipStretcher: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightLowerLipDepressor: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightNoseWrinkler: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightOuterBrowRaiser: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RightUpperLipRaiser: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	TongueDown: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	TongueOut: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	TongueUp: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	UpperLipSuck: number;
+}
+
 /** An object that represents an Asset loaded from a file on a local disk.
  * 
  * Files generate a temporary asset id in the form _“rbxtemp://####”_, which can be used in Studio without uploading the asset, but will be destroyed when the File is destroyed or when the Studio session ends. Temporary asset ids are not shared across [Team Create](https://developer.roblox.com/en-us/articles/Team-Create).
