@@ -9421,6 +9421,58 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<MeshPartHeadsAndAccessories>
 	}
 	export type MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default | MeshPartHeadsAndAccessories.Disabled | MeshPartHeadsAndAccessories.Enabled;
+	export namespace MeshScaleUnit {
+		export interface Stud {
+			Name: "Stud";
+			Value: 0;
+			EnumType: EnumType<MeshScaleUnit>;
+		}
+
+		export const Stud: Stud;
+
+		export interface Meter {
+			Name: "Meter";
+			Value: 1;
+			EnumType: EnumType<MeshScaleUnit>;
+		}
+
+		export const Meter: Meter;
+
+		export interface CM {
+			Name: "CM";
+			Value: 2;
+			EnumType: EnumType<MeshScaleUnit>;
+		}
+
+		export const CM: CM;
+
+		export interface MM {
+			Name: "MM";
+			Value: 3;
+			EnumType: EnumType<MeshScaleUnit>;
+		}
+
+		export const MM: MM;
+
+		export interface Foot {
+			Name: "Foot";
+			Value: 4;
+			EnumType: EnumType<MeshScaleUnit>;
+		}
+
+		export const Foot: Foot;
+
+		export interface Inch {
+			Name: "Inch";
+			Value: 5;
+			EnumType: EnumType<MeshScaleUnit>;
+		}
+
+		export const Inch: Inch;
+
+		export function GetEnumItems(this: defined): Array<MeshScaleUnit>
+	}
+	export type MeshScaleUnit = MeshScaleUnit.Stud | MeshScaleUnit.Meter | MeshScaleUnit.CM | MeshScaleUnit.MM | MeshScaleUnit.Foot | MeshScaleUnit.Inch;
 	export namespace MeshType {
 		export interface Head {
 			Name: "Head";
@@ -11069,6 +11121,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<RenderingTestComparisonMethod>
 	}
 	export type RenderingTestComparisonMethod = RenderingTestComparisonMethod.psnr | RenderingTestComparisonMethod.diff;
+	export namespace ResamplerMode {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<ResamplerMode>;
+		}
+
+		export const Default: Default;
+
+		export interface Pixelated {
+			Name: "Pixelated";
+			Value: 1;
+			EnumType: EnumType<ResamplerMode>;
+		}
+
+		export const Pixelated: Pixelated;
+
+		export function GetEnumItems(this: defined): Array<ResamplerMode>
+	}
+	export type ResamplerMode = ResamplerMode.Default | ResamplerMode.Pixelated;
 	export namespace ReturnKeyType {
 		export interface Default {
 			Name: "Default";
@@ -15069,6 +15141,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<VRTouchpadMode>
 	}
 	export type VRTouchpadMode = VRTouchpadMode.Touch | VRTouchpadMode.VirtualThumbstick | VRTouchpadMode.ABXY;
+	export namespace VelocityConstraintMode {
+		export interface Line {
+			Name: "Line";
+			Value: 0;
+			EnumType: EnumType<VelocityConstraintMode>;
+		}
+
+		export const Line: Line;
+
+		export interface Plane {
+			Name: "Plane";
+			Value: 1;
+			EnumType: EnumType<VelocityConstraintMode>;
+		}
+
+		export const Plane: Plane;
+
+		export interface Vector {
+			Name: "Vector";
+			Value: 2;
+			EnumType: EnumType<VelocityConstraintMode>;
+		}
+
+		export const Vector: Vector;
+
+		export function GetEnumItems(this: defined): Array<VelocityConstraintMode>
+	}
+	export type VelocityConstraintMode = VelocityConstraintMode.Line | VelocityConstraintMode.Plane | VelocityConstraintMode.Vector;
 	export namespace VerticalAlignment {
 		export interface Center {
 			Name: "Center";
@@ -15225,6 +15325,66 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<VirtualInputMode>
 	}
 	export type VirtualInputMode = VirtualInputMode.Recording | VirtualInputMode.Playing | VirtualInputMode.None;
+	export namespace VoiceChatState {
+		export interface Idle {
+			Name: "Idle";
+			Value: 0;
+			EnumType: EnumType<VoiceChatState>;
+		}
+
+		export const Idle: Idle;
+
+		export interface Joining {
+			Name: "Joining";
+			Value: 1;
+			EnumType: EnumType<VoiceChatState>;
+		}
+
+		export const Joining: Joining;
+
+		export interface JoiningRetry {
+			Name: "JoiningRetry";
+			Value: 2;
+			EnumType: EnumType<VoiceChatState>;
+		}
+
+		export const JoiningRetry: JoiningRetry;
+
+		export interface Joined {
+			Name: "Joined";
+			Value: 3;
+			EnumType: EnumType<VoiceChatState>;
+		}
+
+		export const Joined: Joined;
+
+		export interface Leaving {
+			Name: "Leaving";
+			Value: 4;
+			EnumType: EnumType<VoiceChatState>;
+		}
+
+		export const Leaving: Leaving;
+
+		export interface Ended {
+			Name: "Ended";
+			Value: 5;
+			EnumType: EnumType<VoiceChatState>;
+		}
+
+		export const Ended: Ended;
+
+		export interface Failed {
+			Name: "Failed";
+			Value: 6;
+			EnumType: EnumType<VoiceChatState>;
+		}
+
+		export const Failed: Failed;
+
+		export function GetEnumItems(this: defined): Array<VoiceChatState>
+	}
+	export type VoiceChatState = VoiceChatState.Idle | VoiceChatState.Joining | VoiceChatState.JoiningRetry | VoiceChatState.Joined | VoiceChatState.Leaving | VoiceChatState.Ended | VoiceChatState.Failed;
 	export namespace WaterDirection {
 		export interface NegX {
 			Name: "NegX";

@@ -80,6 +80,7 @@ interface Services {
 	UnvalidatedAssetService: UnvalidatedAssetService;
 	UserInputService: UserInputService;
 	UserService: UserService;
+	VoiceChatService: VoiceChatService;
 	VRService: VRService;
 	Workspace: Workspace;
 }
@@ -171,6 +172,7 @@ interface CreatableInstances {
 	Keyframe: Keyframe;
 	KeyframeMarker: KeyframeMarker;
 	KeyframeSequence: KeyframeSequence;
+	LinearVelocityConstraint: LinearVelocityConstraint;
 	LineForce: LineForce;
 	LineHandleAdornment: LineHandleAdornment;
 	LocalizationTable: LocalizationTable;
@@ -356,6 +358,11 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	EmotesPages: EmotesPages;
 	FriendPages: FriendPages;
 	GlobalDataStore: GlobalDataStore;
+	ImporterBaseSettings: ImporterBaseSettings;
+	ImporterGroupSettings: ImporterGroupSettings;
+	ImporterMeshSettings: ImporterMeshSettings;
+	ImporterRootSettings: ImporterRootSettings;
+	ImporterTextureSettings: ImporterTextureSettings;
 	InputObject: InputObject;
 	InstanceAdornment: InstanceAdornment;
 	InventoryPages: InventoryPages;
@@ -6002,10 +6009,6 @@ interface CommandInstance extends Instance {
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
-	readonly Group: string;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
 	readonly Name: string;
 	/**
 	 * Tags: ReadOnly, NotReplicated
@@ -6524,6 +6527,26 @@ interface LineForce extends Constraint {
 	 * Enables a reaction force (equal an opposite) to be applied to the parent of Attachment1. By default line force only applies a force on the parent of Attachment0 and uses Attachment1 as the target direction without any dynamic relationship.
 	 */
 	ReactionForceEnabled: boolean;
+}
+
+interface LinearVelocityConstraint extends Constraint {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_LinearVelocityConstraint: unique symbol;
+	LineDirection: Vector3;
+	LineVelocity: number;
+	MaxForce: number;
+	PlaneVelocity: Vector2;
+	PrimaryTangentAxis: Vector3;
+	RelativeTo: Enum.ActuatorRelativeTo;
+	SecondaryTangentAxis: Vector3;
+	VectorVelocity: Vector3;
+	VelocityConstraintMode: Enum.VelocityConstraintMode;
 }
 
 /** A **RodConstraint** constrains two [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment) to remain separated by the value specified by [RodConstraint.Length](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/Length). While the attachments remain at a set distance from one another, they can both rotate freely.
@@ -10300,6 +10323,7 @@ interface ImageButton extends GuiButton {
 	 * A texture ID that can be set as an [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) property. When the button is pressed, it will render this image.
 	 */
 	PressedImage: string;
+	ResampleMode: Enum.ResamplerMode;
 	/**
 	 * The ScaleType property determines in what way an [ImageButton.Image](https://developer.roblox.com/en-us/api-reference/property/ImageButton/Image) is rendered when the UI element's absolute size differs from the source image's size.
 	 * 
@@ -10563,6 +10587,7 @@ interface ImageLabel extends GuiLabel {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly IsLoaded: boolean;
+	ResampleMode: Enum.ResamplerMode;
 	/**
 	 * The ScaleType property determines in what way an [ImageLabel.Image](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/Image) is rendered when the UI element's absolute size differs from the source image's size.
 	 * 
@@ -14499,6 +14524,81 @@ interface IXPService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_IXPService: unique symbol;
+}
+
+interface ImporterBaseSettings extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ImporterBaseSettings: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Id: string;
+	ImportName: string;
+	ShouldImport: boolean;
+}
+
+interface ImporterGroupSettings extends ImporterBaseSettings {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ImporterGroupSettings: unique symbol;
+}
+
+interface ImporterMeshSettings extends ImporterBaseSettings {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ImporterMeshSettings: unique symbol;
+	DoubleSided: boolean;
+}
+
+interface ImporterRootSettings extends ImporterBaseSettings {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ImporterRootSettings: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly FileDimensions: Vector3;
+	FlattenAll: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly PolygonCount: number;
+	ScaleUnit: Enum.MeshScaleUnit;
+	WorldForward: Enum.NormalId;
+	WorldUp: Enum.NormalId;
+	ZeroOrigin: boolean;
+}
+
+interface ImporterTextureSettings extends ImporterBaseSettings {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ImporterTextureSettings: unique symbol;
 }
 
 interface IncrementalPatchBuilder extends Instance {
@@ -32733,6 +32833,40 @@ interface Vector3Value extends ValueBase {
 	 * Equivalent changed events exist for similar objects, such as [NumberValue](https://developer.roblox.com/en-us/api-reference/class/NumberValue) and [StringValue](https://developer.roblox.com/en-us/api-reference/class/StringValue), depending on what object type best suits the need.
 	 */
 	readonly Changed: RBXScriptSignal<(value: Vector3) => void>;
+}
+
+interface VoiceChatService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VoiceChatService: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly VoiceChatState: Enum.VoiceChatState;
+	GetAndClearCallFailureMessage(this: VoiceChatService): string;
+	GetAudioProcessingSettings(this: VoiceChatService): unknown;
+	GetMicDevices(this: VoiceChatService): unknown;
+	GetParticipants(this: VoiceChatService): unknown;
+	GetSpeakerDevices(this: VoiceChatService): unknown;
+	GetVoiceChatApiVersion(this: VoiceChatService): number;
+	GetVoiceChatAvailable(this: VoiceChatService): number;
+	IsPublishPaused(this: VoiceChatService): boolean;
+	IsSubscribePaused(this: VoiceChatService, userId: number): boolean;
+	JoinByGroupId(this: VoiceChatService, groupId: string, isMicMuted?: boolean): boolean;
+	JoinByGroupIdToken(this: VoiceChatService, groupId: string, isMicMuted?: boolean): boolean;
+	Leave(this: VoiceChatService): void;
+	PublishPause(this: VoiceChatService, paused: boolean): boolean;
+	SetMicDevice(this: VoiceChatService, micDeviceName: string, micDeviceGuid: string): void;
+	SetSpeakerDevice(this: VoiceChatService, speakerDeviceName: string, speakerDeviceGuid: string): void;
+	SubscribePause(this: VoiceChatService, userId: number, paused: boolean): boolean;
+	readonly ParticipantsStateChanged: RBXScriptSignal<(participantsLeft: Array<any>, participantsJoined: Array<any>, updatedStates: Array<any>) => void>;
+	readonly PlayerMicActivitySignalChange: RBXScriptSignal<(activityInfo: object) => void>;
+	readonly StateChanged: RBXScriptSignal<(oldValue: Enum.VoiceChatState, newValue: Enum.VoiceChatState) => void>;
 }
 
 interface VoiceSource extends Instance {
