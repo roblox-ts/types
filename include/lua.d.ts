@@ -190,7 +190,7 @@ declare namespace os {
 	 * | --- | --- | --- |
 	 *
 	 * \* indicates the value can vary depending on the current locale.
-	 * @param formatString The string to format with either specifiers givenn, or the type of DateTable to return.
+	 * @param formatString The string to format with either specifiers given, or the type of DateTable to return.
 	 * @param time The timestamp to format the formatString from. Defaults to os.time
 	 */
 	function date<T extends string>(
