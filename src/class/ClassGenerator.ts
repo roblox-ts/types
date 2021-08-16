@@ -123,7 +123,6 @@ const PLUGIN_ONLY_CLASSES = new Set([
 	"File",
 	"GameSettings",
 	"GlobalSettings",
-	"KeyframeSequenceProvider",
 	"LuaSettings",
 	"MemStorageConnection",
 	"MultipleDocumentInterfaceInstance",
