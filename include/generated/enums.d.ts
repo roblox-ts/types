@@ -12185,6 +12185,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<Status>
 	}
 	export type Status = Status.Poison | Status.Confusion;
+	export namespace StreamOutBehavior {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<StreamOutBehavior>;
+		}
+
+		export const Default: Default;
+
+		export interface LowMemory {
+			Name: "LowMemory";
+			Value: 1;
+			EnumType: EnumType<StreamOutBehavior>;
+		}
+
+		export const LowMemory: LowMemory;
+
+		export interface Opportunistic {
+			Name: "Opportunistic";
+			Value: 2;
+			EnumType: EnumType<StreamOutBehavior>;
+		}
+
+		export const Opportunistic: Opportunistic;
+
+		export function GetEnumItems(this: defined): Array<StreamOutBehavior>
+	}
+	export type StreamOutBehavior = StreamOutBehavior.Default | StreamOutBehavior.LowMemory | StreamOutBehavior.Opportunistic;
 	export namespace StreamingPauseMode {
 		export interface Default {
 			Name: "Default";
