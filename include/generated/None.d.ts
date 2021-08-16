@@ -7912,6 +7912,13 @@ interface SpecialMesh extends FileMesh {
 	MeshType: Enum.MeshType;
 }
 
+/** An object that specifies additional parameters for a [GlobalDataStore:IncrementAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/IncrementAsync) call.
+ * 
+ * See Also
+ * --------
+ * 
+ * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+ */
 interface DataStoreIncrementOptions extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -7921,10 +7928,28 @@ interface DataStoreIncrementOptions extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreIncrementOptions: unique symbol;
+	/**
+	 * This function gets custom metadata associated with this [DataStoreIncrementOptions](https://developer.roblox.com/en-us/api-reference/class/DataStoreIncrementOptions) instance.
+	 */
 	GetMetadata(this: DataStoreIncrementOptions): object;
+	/**
+	 * This function sets custom metadata used by [GlobalDataStore:IncrementAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/IncrementAsync) to associate metadata with a key. Metadata should be in key-value pair form.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+	 */
 	SetMetadata(this: DataStoreIncrementOptions, attributes: object): void;
 }
 
+/** Object describing data store information such as name, created time, and time last updated. This object is a member of the [DataStoreListingPages](https://developer.roblox.com/en-us/api-reference/class/DataStoreListingPages) object returned by [DataStoreService:ListDataStoresAsync](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/ListDataStoresAsync).
+ * 
+ * See Also
+ * --------
+ * 
+ * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+ */
 interface DataStoreInfo extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -7935,19 +7960,44 @@ interface DataStoreInfo extends Instance {
 	 */
 	readonly _nominal_DataStoreInfo: unique symbol;
 	/**
+	 * This property indicates when the data store was created in milliseconds since epoch.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly CreatedTime: number;
 	/**
+	 * This property indicates the name of the data store. It is used as a unique identifier to retrieve a data store instance with [DataStoreService:GetDataStore](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/GetDataStore).
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly DataStoreName: string;
 	/**
+	 * This property indicates the last time the data store was updated in milliseconds since epoch.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly UpdatedTime: number;
 }
 
+/** Object representing a key on a [DataStoreKeyPages](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyPages) object. It contains the key name as [DataStoreKey.KeyName](https://developer.roblox.com/en-us/api-reference/property/DataStoreKey/KeyName). This object is a member of the [DataStoreKeyPages](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyPages) object returned by [DataStore:ListKeysAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/ListKeysAsync).
+ * 
+ * See Also
+ * --------
+ * 
+ * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+ */
 interface DataStoreKey extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -7958,11 +8008,26 @@ interface DataStoreKey extends Instance {
 	 */
 	readonly _nominal_DataStoreKey: unique symbol;
 	/**
+	 * This property indicates the name of the key. This name can then be used in other operations such as [GlobalDataStore:GetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/GetAsync) and [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync).
+	 * 
+	 * If [DataStoreOptions.AllScopes](https://developer.roblox.com/en-us/api-reference/property/DataStoreOptions/AllScopes) was set to true when accessing the data store through [DataStoreService:GetDataStore](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/GetDataStore), the name will include its scope as a prefix.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly KeyName: string;
 }
 
+/** An object describing information about a particular version of the key. This is returned as the second return value by [GlobalDataStore:GetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/GetAsync), [GlobalDataStore:UpdateAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/UpdateAsync), [GlobalDataStore:IncrementAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/IncrementAsync), [GlobalDataStore:RemoveAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/RemoveAsync), and [DataStore:GetVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/GetVersionAsync).
+ * 
+ * See Also
+ * --------
+ * 
+ * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+ */
 interface DataStoreKeyInfo extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -7973,21 +8038,62 @@ interface DataStoreKeyInfo extends Instance {
 	 */
 	readonly _nominal_DataStoreKeyInfo: unique symbol;
 	/**
+	 * This property indicates the date and time the object was created, formatted as the number of milliseconds since epoch.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly CreatedTime: number;
 	/**
+	 * This property indicates the date and time the object was last updated, formatted as the number of milliseconds since epoch.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly UpdatedTime: number;
 	/**
+	 * This property uniquely identifies the version of the object. It can be passed to [DataStore:GetVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/GetVersionAsync) or [DataStore:RemoveVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/RemoveVersionAsync) to get or remove the version respectively.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Version: string;
+	/**
+	 * This function returns the metadata associated with the latest version of the object.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+	 */
 	GetMetadata(this: DataStoreKeyInfo): object;
+	/**
+	 * This function returns an array of [UserIds](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) tagged with the object. This information is useful for adhering to [GDPR](https://developer.roblox.com/articles/managing-personal-information) policies.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+	 */
 	GetUserIds(this: DataStoreKeyInfo): unknown;
 }
 
+/** An instance describing version information for a key, including the version string, created time, and whether it has been marked as deleted.
+ * 
+ * See Also
+ * --------
+ * 
+ * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+ */
 interface DataStoreObjectVersionInfo extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -7998,19 +8104,38 @@ interface DataStoreObjectVersionInfo extends Instance {
 	 */
 	readonly _nominal_DataStoreObjectVersionInfo: unique symbol;
 	/**
+	 * This property indicates when the version was created in milliseconds since epoch.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly CreatedTime: number;
 	/**
+	 * This property describes whether the version has been marked as deleted. Deleted versions will be permanently deleted after 30 days.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly IsDeleted: boolean;
 	/**
+	 * This property uniquely identifies a particular version of the key. It can be passed to [DataStore:GetVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/GetVersionAsync) or [DataStore:RemoveVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/RemoveVersionAsync) to get or remove the version respectively.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Version: string;
 }
 
+/** Any object containing additional parameters that are used by [DataStoreService:GetDataStore](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/GetDataStore). */
 interface DataStoreOptions extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -8020,21 +8145,29 @@ interface DataStoreOptions extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreOptions: unique symbol;
+	/**
+	 * This property specifies whether the [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) should work with all scopes. See here for details on scope.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+	 */
 	AllScopes: boolean;
+	/**
+	 * This function enables experimental features for a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). Currently only `"v2"` is a valid experimental feature. Once the features are generally available, the options will not have any effect.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+	 */
 	SetExperimentalFeatures(this: DataStoreOptions, experimentalFeatures: object): void;
 }
 
-/** **DataStoreService** exposes methods for getting [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) and [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) objects. Data stores can only be accessed by game servers, so you can only use **DataStoreService** within a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or a [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) that is used by a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
+/** **DataStoreService** exposes methods for getting [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) and [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) objects. Data stores can only be accessed by game servers, so you can only use [DataStoreService](https://developer.roblox.com/en-us/api-reference/class/DataStoreService) within a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or a [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) that is used by a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
  * 
- * Using Data Stores in Studio
- * ---------------------------
- * 
- * **DataStoreService** cannot be used in Studio if a game is not configured to allow access to API services. See the `Articles/Data store|Data Stores` article for instructions.
- * 
- * Request Limits
- * --------------
- * 
- * There are limits applied to the data store model. Please see `Articles/Datastore Errors|Data Store Errors and Limits` for details.
+ * See the `Articles/Data store|Data Stores` article for an in-depth guide on data structure, management, error handling, etc.
  */
 interface DataStoreService extends Instance {
 	/**
@@ -8046,7 +8179,16 @@ interface DataStoreService extends Instance {
 	 */
 	readonly _nominal_DataStoreService: unique symbol;
 	/**
-	 * This method returns a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) by name/scope. Subsequent calls to this method with the same name/scope will return the same object.
+	 * This function creates a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) instance with the provided name and scope. Subsequent calls to this method with the same name/scope will return the same object.
+	 * 
+	 * If v2.0 experimental features are enabled, this function creates and returns a [DataStore](https://developer.roblox.com/en-us/api-reference/class/DataStore) instance instead of a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) instance.
+	 * 
+	 * Using the `scope` parameter will restrict operations to that scope by automatically prepending the scope to keys in all operations done on the data store. This function also accepts an optional [DataStoreOptions](https://developer.roblox.com/en-us/api-reference/class/DataStoreOptions) instance which includes options for enabling [AllScopes](https://developer.roblox.com/en-us/api-reference/property/DataStoreOptions/AllScopes). See [here](https://developer.roblox.com/articles/Data-store#scope) for details on scope.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 */
 	GetDataStore(this: DataStoreService, name: string, scope?: string): GlobalDataStore;
 	/**
@@ -8062,11 +8204,26 @@ interface DataStoreService extends Instance {
 	 */
 	GetRequestBudgetForRequestType(this: DataStoreService, requestType: CastsToEnum<Enum.DataStoreRequestType>): number;
 	/**
+	 * Returns a [DataStoreListingPages](https://developer.roblox.com/en-us/api-reference/class/DataStoreListingPages) object for enumerating through all of the experience's data stores. It accepts an optional `prefix` parameter to only locate data stores whose names start with the provided prefix.
+	 * 
+	 * Only data stores containing at least one object will be listed via this function.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
 	ListDataStoresAsync(this: DataStoreService, prefix?: string, pageSize?: number): DataStoreListingPages;
 }
 
+/** An object that specifies additional parameters for a [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync) call.
+ * 
+ * See Also
+ * --------
+ * 
+ * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+ */
 interface DataStoreSetOptions extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -8076,7 +8233,18 @@ interface DataStoreSetOptions extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreSetOptions: unique symbol;
+	/**
+	 * This function gets custom metadata associated with this [DataStoreSetOptions](https://developer.roblox.com/en-us/api-reference/class/DataStoreSetOptions) instance.
+	 */
 	GetMetadata(this: DataStoreSetOptions): object;
+	/**
+	 * This function sets custom metadata used by [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync) to associate metadata with a key. Metadata should be in key-value pair form.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+	 */
 	SetMetadata(this: DataStoreSetOptions, attributes: object): void;
 }
 
@@ -9118,64 +9286,112 @@ interface GlobalDataStore extends Instance {
 	 */
 	OnUpdate(this: GlobalDataStore, key: string, callback: Function): RBXScriptConnection;
 	/**
-	 * This function returns the value of the entry in the [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) with the given key. If the key does not exist, returns `nil`. This function caches for about 4 seconds, so you cannot be sure that it returns the current value saved on the Roblox servers.
+	 * This function returns the latest value of the provided key and a [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) instance. If the key does not exist or if the latest version has been marked as deleted, both return values will be `nil`.
 	 * 
-	 * If this function throws an error, the `Articles/Datastore Errors|error message` will describe the problem. Note that there are also [limits](https://developer.roblox.com/en-us/api-reference/class/Articles/Datastore Errors) that apply to this function.
+	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support v2.0 features such as versioning and metadata, so [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) will always be `nil` for keys in an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore). [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) will also be `nil` if v2.0 experimental features are not enabled.
 	 * 
-	 * To save a data store entry, you can use one of several possible functions, including `GlobalDataStore/SetAsync|SetAsync()`, `GlobalDataStore/UpdateAsync|UpdateAsync()`, and `GlobalDataStore/IncrementAsync|IncrementAsync()`.
+	 * Keys are cached locally for 4 seconds after the first read. A [GlobalDataStore:GetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/GetAsync) call within these 4 seconds returns a value from the cache. Modifications to the key by [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync) or [GlobalDataStore:UpdateAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/UpdateAsync) apply to the cache immediately and restart the 4 second timer.
+	 * 
+	 * To get a specific version, such as a version before the latest, use [DataStore:GetVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/GetVersionAsync).
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
 	GetAsync<T>(this: GlobalDataStore, key: string): T | undefined;
 	/**
-	 * Increments the value for a particular key and returns the incremented value. Only works on values that are integers. Note that you can use `GlobalDataStore/OnUpdate|OnUpdate()` to execute a function every time the database updates the key's value, such as after calling this function.
+	 * This function increments the value of a key by the provided amount (both must be integers).
 	 * 
-	 * If this function throws an error, the `Articles/Datastore Errors|error message` will describe the problem. Note that there are also [limits](https://developer.roblox.com/en-us/api-reference/class/Articles/Datastore Errors) that apply to this function.
+	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support v2.0 features such as versioning, so calling this method on an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) key will overwrite the current value with the incremented value and make previous versions inaccessible.
 	 * 
-	 * See the `Articles/Data store|Data Stores` article for an in-depth guide on data structure, management, error handling, etc.
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
 	IncrementAsync(this: GlobalDataStore, key: string, delta?: number): number;
 	/**
-	 * This function removes the given key from the provided [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) and returns the value that was associated with that key. If the key is not found in the data store, this function returns `nil`.
+	 * This function marks the specified key as deleted by creating a new “tombstone” version of the key. Prior to this, it returns the latest version prior to the remove call.
 	 * 
-	 * If this function throws an error, the `Articles/Datastore Errors|error message` will describe the problem. Note that there are also [limits](https://developer.roblox.com/en-us/api-reference/class/Articles/Datastore Errors) that apply to this function.
+	 * After a key is removed via this function, [GlobalDataStore:GetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/GetAsync) calls for the key will return `nil`. Older versions of the key remain accessible through `GlobalDataStore/ListVersionsAsync` and `GlobalDataStore/GetVersionAsync`, assuming they have not expired.
 	 * 
-	 * See the `Articles/Data store|Data Stores` article for an in-depth guide on data structure, management, error handling, etc.
+	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support versioning, so calling `GlobalDataStore/RemoveAsync|RemoveAsync()` on an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) key will permanently delete it.
+	 * 
+	 * Removed objects will be deleted permanently after 30 days.
+	 * 
+	 * If the previous values were already deleted via [GlobalDataStore:RemoveAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/RemoveAsync) or [DataStore:RemoveVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/RemoveVersionAsync), the function will return `nil`, `nil` for value and [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) respectively.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
 	RemoveAsync<T>(this: GlobalDataStore, key: string): T | undefined;
 	/**
-	 * Sets the value of the key. This overwrites any existing data stored in the key.
+	 * This function sets the latest value, [UserIds](https://developer.roblox.com/en-us/api-reference/property/Player/UserId), and metadata for the given key.
 	 * 
-	 * If the previous value of the key is important, use `GlobalDataStore/UpdateAsync|UpdateAsync()` instead. Using `GlobalDataStore/GetAsync|GetAsync()` to retrieve a value and then setting the key with `GlobalDataStore/SetAsync|SetAsync()` is risky because `GlobalDataStore/GetAsync|GetAsync()` sometimes returns cached data and other game servers may have modified the key.
+	 * Values in data stores are versioned, meaning [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync) will create a new version every time it is called. Prior versions can be accessed through [DataStore:ListVersionsAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/ListVersionsAsync)/[DataStore:GetVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/GetVersionAsync) for up to 30 days at which point they are permanently deleted.
 	 * 
-	 * Any string being stored in a data store must be valid `Articles/Lua Libraries/utf8|UTF-8`. In UTF-8, values greater than 127 are used exclusively for encoding multi-byte codepoints, so a single byte greater than 127 will not be valid UTF-8 and the `GlobalDataStore/SetAsync|SetAsync()` attempt will fail.
+	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support v2.0 features such as versioning, so calling this method on an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) key will overwrite the current value and make previous versions inaccessible.
 	 * 
-	 * If this function throws an error, the `Articles/Datastore Errors|error message` will describe the problem. Note that there are also [limits](https://developer.roblox.com/en-us/api-reference/class/Articles/Datastore Errors) that apply to this function.
+	 * Metadata definitions must always be updated with a value, even if there are no changes to the current value; otherwise the current value will be lost.
 	 * 
-	 * See the `Articles/Data store|Data Stores` article for an in-depth guide on data structure, management, error handling, etc.
+	 * Any string being stored in a data store must be valid `Articles/Lua Libraries/utf8|UTF-8`. In UTF-8, values greater than 127 are used exclusively for encoding multi-byte codepoints, so a single byte greater than 127 will not be valid UTF-8 and the [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync) attempt will fail.
+	 * 
+	 * ##### Set vs. Update
+	 * 
+	 * [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync) is best for a quick update of a specific key, and it only counts against the write limit. However, it may cause data inconsistency if two servers attempt to set the same key at the same time.
+	 * 
+	 * [GlobalDataStore:UpdateAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/UpdateAsync) is safer for handling multi-server attempts because it reads the current key value (from whatever server last updated it) before making any changes. However, it's somewhat slower because it reads before it writes, and it also counts against both the read and write limit.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
 	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
 	/**
-	 * This function retrieves the value of a key from a data store and updates it with a new value. Since this function validates the data, it should be used in favor of `GlobalDataStore/SetAsync|SetAsync()` when there's a chance that more than one server can edit the same data at the same time.
+	 * This function retrieves the value and metadata of a key from the data store and updates it with a new value determined by the callback function specified through the second parameter.
 	 * 
-	 * The second parameter is a function which you need to provide. The function takes the key's old value as input and returns the new value, with these exceptions:
+	 * If the update succeeds, a new version of the value will be created and prior versions will remain accessible through [DataStore:ListVersionsAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/ListVersionsAsync) and [DataStore:GetVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/GetVersionAsync).
 	 * 
-	 * *   If the key does not exist, the old value passed to the function will be `nil`.
-	 * *   If the function returns `nil`, the update is cancelled.
+	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support v2.0 features such as versioning, so calling this function on an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) key will overwrite the current value and make previous versions inaccessible.
 	 * 
-	 * The value returned by this function is the new value, returned once the altered data is properly saved.
+	 * In cases where another game server updated the key in the short timespan between retrieving the key's current value and setting the key's value, [GlobalDataStore:UpdateAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/UpdateAsync) will call the function again to ensure that no data is overwritten. The function will be called as many times as needed until the data is saved **or** until the callback function returns `nil`.
 	 * 
-	 * In cases where another game server updated the key in the short timespan between retrieving the key's current value and setting the key's value, `GlobalDataStore/UpdateAsync|UpdateAsync()` will call the function again to ensure that no data is overwritten. The function will be called as many times as needed until the data is saved.
+	 * Any string being stored in a data store must be valid `Articles/Lua Libraries/utf8|UTF-8`. In UTF-8, values greater than 127 are used exclusively for encoding multi-byte codepoints, so a single byte greater than 127 will not be valid UTF-8 and the [GlobalDataStore:UpdateAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/UpdateAsync) attempt will fail.
 	 * 
-	 * The function you define as the second parameter of `GlobalDataStore/UpdateAsync|UpdateAsync()` cannot yield, so do **not** include calls like `wait()`.
+	 * ##### Set vs. Update
 	 * 
-	 * Any string being stored in a data store must be valid `Articles/Lua Libraries/utf8|UTF-8`. In UTF-8, values greater than 127 are used exclusively for encoding multi-byte codepoints, so a single byte greater than 127 will not be valid UTF-8 and the `GlobalDataStore/UpdateAsync|UpdateAsync()` attempt will fail.
+	 * [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync) is best for a quick update of a specific key, and it only counts against the write limit. However, it may cause data inconsistency if two servers attempt to set the same key at the same time.
 	 * 
-	 * If this function throws an error, the `Articles/Datastore Errors|error message` will describe the problem. Note that there are also [limits](https://developer.roblox.com/en-us/api-reference/class/Articles/Datastore Errors) that apply to this function.
+	 * [GlobalDataStore:UpdateAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/UpdateAsync) is safer for handling multi-server attempts because it reads the current key value (from whatever server last updated it) before making any changes. However, it's somewhat slower because it reads before it writes, and it also counts against both the read and write limit.
 	 * 
-	 * See the `Articles/Data store|Data Stores` article for an in-depth guide on data structure, management, error handling, etc.
+	 * Callback Function
+	 * -----------------
+	 * 
+	 * The callback function accepts two arguments:
+	 * 
+	 * *   Current value of the key prior to the update.
+	 * *   [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) instance that contains the latest version information (this argument can be ignored if metadata is not being used).
+	 * 
+	 * In turn, the callback function returns up to three values:
+	 * 
+	 * *   The new value to set for the key.
+	 * *   An array of [UserIds](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) to associate with the key. [DataStoreKeyInfo:GetUserIds](https://developer.roblox.com/en-us/api-reference/function/DataStoreKeyInfo/GetUserIds) should be returned unless the existing IDs are being changed; otherwise all existing IDs will be cleared.
+	 * *   A Lua table containing metadata to associate with the key. [DataStoreKeyInfo:GetMetadata](https://developer.roblox.com/en-us/api-reference/function/DataStoreKeyInfo/GetMetadata) should be returned unless the existing metadata is being changed; otherwise all existing metadata will be cleared.
+	 * 
+	 * The callback function cannot yield, so do **not** include calls like `wait()`.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
 	UpdateAsync<O, R>(
@@ -9195,18 +9411,46 @@ interface DataStore extends GlobalDataStore {
 	 */
 	readonly _nominal_DataStore: unique symbol;
 	/**
+	 * This function retrieves the specified key version as well as a [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) instance. A version identifier can be found through [DataStore:ListVersionsAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/ListVersionsAsync) or alternatively be the identifier returned by [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync).
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
 	GetVersionAsync(this: DataStore, key: string, version: string): unknown;
 	/**
+	 * This function returns a [DataStoreKeyPages](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyPages) object for enumerating through keys of a data store. It accepts an optional `prefix` parameter to only locate keys whose names start with the provided prefix.
+	 * 
+	 * If [DataStoreOptions.AllScopes](https://developer.roblox.com/en-us/api-reference/property/DataStoreOptions/AllScopes) was set to true when accessing the data store through [DataStoreService:GetDataStore](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/GetDataStore), keys will be returned with all scopes as prefixes.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
 	ListKeysAsync(this: DataStore, prefix?: string, pageSize?: number): DataStoreKeyPages;
 	/**
+	 * This function enumerates versions of the specified key in either ascending or descending order specified by an [SortDirection](https://developer.roblox.com/en-us/api-reference/enum/SortDirection) parameter. It can optionally filter the returned versions by minimum and maximum timestamp.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
 	ListVersionsAsync(this: DataStore, key: string, sortDirection?: CastsToEnum<Enum.SortDirection>, minDate?: number, maxDate?: number, pageSize?: number): DataStoreVersionPages;
 	/**
+	 * This function permanently deletes the specified version of a key. Version identifiers can be found through [DataStore:ListVersionsAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/ListVersionsAsync).
+	 * 
+	 * Unlike [GlobalDataStore:RemoveAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/RemoveAsync), this function does not create a new “tombstone” version and the removed value cannot be retrieved later.
+	 * 
+	 * See Also
+	 * --------
+	 * 
+	 * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
 	RemoveVersionAsync(this: DataStore, key: string, version: string): void;
@@ -21951,17 +22195,16 @@ interface VehicleSeat extends BasePart {
 	Sit(this: VehicleSeat, humanoid: Humanoid): void;
 }
 
-/** Models are container objects, meaning they hold objects and group objects together. They are best used to hold collections of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s and have a number of functions that extend their functionality.
+/** Models are container objects, meaning they group objects together. They are best used to hold collections of [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and have a number of functions that extend their functionality.
  * 
- * At their most basic level, Models allow developers to group selections of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s together. This is particularly useful when building environments in Roblox Studio as it means the grouped parts can be moved and rotated together. When not storing collections of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s it is recommended that developers use the [Folder](https://developer.roblox.com/en-us/api-reference/class/Folder) object, as they will not benefit from the additional functionality Models provide.
+ * Models are intended to represent **geometric** groupings. If your grouping has no geometric interpretation, for instance a collection of [Scripts](https://developer.roblox.com/en-us/api-reference/class/Script), use a [Folder](https://developer.roblox.com/en-us/api-reference/class/Folder) instead.
  * 
- * To access some of the extended functionality Models provide, the [Model.PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart) property needs to be set. This property points to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) within the Model that is to be used when moving or otherwise manipulating the model.
+ * Models whose constituent parts are joined together with joints (so that they can move around or be destroyed via physics simulation) usually have a [PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart) set, as it specifies which part within the model the pivot and bounding box will “follow” as the model moves. Static models which stay in one place do not benefit from having a primary part set.
  * 
- * Models have a wide range of applications, including being used for Roblox Player Characters. They also have a number of unique behaviors that are important to keep in mind when using them:
+ * Models have a wide range of applications, including Roblox player characters. They also have a number of unique behaviors that are important to keep in mind:
  * 
- * *   When a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) and a [Part](https://developer.roblox.com/en-us/api-reference/class/Part) named “Head” are parented under a model, a name-tag GUI will appear with the name of the model.
- *     
- * *   If a [Part](https://developer.roblox.com/en-us/api-reference/class/Part)'s position on the Y axis hits the [Workspace.FallenPartsDestroyHeight](https://developer.roblox.com/en-us/api-reference/property/Workspace/FallenPartsDestroyHeight) value, and it was the last object inside of a Model, the Model will be destroyed as well.
+ * *   When a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) and a [Part](https://developer.roblox.com/en-us/api-reference/class/Part) named **Head** are parented under a model, a name/health GUI will appear over the model; see [Character Name/Health Display](https://developer.roblox.com/articles/character-name-health-display) for details.
+ * *   If a part's position on the **Y** axis hits the [Workspace.FallenPartsDestroyHeight](https://developer.roblox.com/en-us/api-reference/property/Workspace/FallenPartsDestroyHeight) value, and it was the last object inside of a [Model](https://developer.roblox.com/en-us/api-reference/class/Model), the model will be destroyed as well.
  */
 interface Model extends PVInstance {
 	/**
@@ -22802,6 +23045,13 @@ interface CatalogPages extends Pages {
 	readonly _nominal_CatalogPages: unique symbol;
 }
 
+/** A special type of [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object whose pages contain [DataStoreKey](https://developer.roblox.com/en-us/api-reference/class/DataStoreKey) instances. [Pages:GetCurrentPage](https://developer.roblox.com/en-us/api-reference/function/Pages/GetCurrentPage) can be used to retrieve an array of the [DataStoreKey](https://developer.roblox.com/en-us/api-reference/class/DataStoreKey) instances.
+ * 
+ * See Also
+ * --------
+ * 
+ * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+ */
 interface DataStoreKeyPages extends Pages {
 	/**
 	 * **DO NOT USE!**
@@ -22813,6 +23063,13 @@ interface DataStoreKeyPages extends Pages {
 	readonly _nominal_DataStoreKeyPages: unique symbol;
 }
 
+/** A special type of [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object whose pages contain [DataStoreInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreInfo) instances. [Pages:GetCurrentPage](https://developer.roblox.com/en-us/api-reference/function/Pages/GetCurrentPage) can be used to retrieve an array of the [DataStoreInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreInfo) instances.
+ * 
+ * See Also
+ * --------
+ * 
+ * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+ */
 interface DataStoreListingPages extends Pages {
 	/**
 	 * **DO NOT USE!**
@@ -22836,6 +23093,13 @@ interface DataStorePages extends Pages<{ key: string; value: unknown }> {
 	readonly _nominal_DataStorePages: unique symbol;
 }
 
+/** A special type of [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object whose pages contain [DataStoreObjectVersionInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreObjectVersionInfo) instances from a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). [Pages:GetCurrentPage](https://developer.roblox.com/en-us/api-reference/function/Pages/GetCurrentPage) can be used to retrieve an array of the [DataStoreObjectVersionInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreObjectVersionInfo) instances.
+ * 
+ * See Also
+ * --------
+ * 
+ * *   `Articles/Data store|Data Stores`, an in-depth guide on data structure, management, error handling, etc.
+ */
 interface DataStoreVersionPages extends Pages {
 	/**
 	 * **DO NOT USE!**
