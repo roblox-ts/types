@@ -40,6 +40,7 @@ interface Services {
 	InternalContainer: InternalContainer;
 	IXPService: IXPService;
 	JointsService: JointsService;
+	KeyframeSequenceProvider: KeyframeSequenceProvider;
 	LanguageService: LanguageService;
 	LegacyStudioBridge: LegacyStudioBridge;
 	Lighting: Lighting;
@@ -47,6 +48,7 @@ interface Services {
 	LogService: LogService;
 	MarketplaceService: MarketplaceService;
 	MemoryStoreService: MemoryStoreService;
+	MessageBusService: MessageBusService;
 	MessagingService: MessagingService;
 	PathfindingService: PathfindingService;
 	PhysicsService: PhysicsService;
@@ -118,6 +120,7 @@ interface CreatableInstances {
 	Bone: Bone;
 	BoolValue: BoolValue;
 	BoxHandleAdornment: BoxHandleAdornment;
+	Breakpoint: Breakpoint;
 	BrickColorValue: BrickColorValue;
 	Camera: Camera;
 	CFrameValue: CFrameValue;
@@ -147,7 +150,6 @@ interface CreatableInstances {
 	EchoSoundEffect: EchoSoundEffect;
 	EqualizerSoundEffect: EqualizerSoundEffect;
 	Explosion: Explosion;
-	Expression: Expression;
 	FaceControls: FaceControls;
 	FileMesh: FileMesh;
 	Fire: Fire;
@@ -336,12 +338,7 @@ interface AbstractInstances {
 
 interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AnimationTrack: AnimationTrack;
-	AssetImportItemSettings: AssetImportItemSettings;
-	AssetImportMeshSettings: AssetImportMeshSettings;
-	AssetImportSettings: AssetImportSettings;
-	AssetImportTextureSettings: AssetImportTextureSettings;
 	BaseWrap: BaseWrap;
-	Breakpoint: Breakpoint;
 	CatalogPages: CatalogPages;
 	CommandInstance: CommandInstance;
 	DataModel: DataModel;
@@ -360,6 +357,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	GlobalDataStore: GlobalDataStore;
 	ImporterBaseSettings: ImporterBaseSettings;
 	ImporterGroupSettings: ImporterGroupSettings;
+	ImporterJointSettings: ImporterJointSettings;
 	ImporterMeshSettings: ImporterMeshSettings;
 	ImporterRootSettings: ImporterRootSettings;
 	ImporterTextureSettings: ImporterTextureSettings;
@@ -368,6 +366,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	InventoryPages: InventoryPages;
 	MemoryStoreQueue: MemoryStoreQueue;
 	MemoryStoreSortedMap: MemoryStoreSortedMap;
+	MessageBusConnection: MessageBusConnection;
 	Mouse: Mouse;
 	NetworkMarker: NetworkMarker;
 	OrderedDataStore: OrderedDataStore;
@@ -1766,40 +1765,6 @@ interface AssetDeliveryProxy extends Instance {
 	readonly _nominal_AssetDeliveryProxy: unique symbol;
 }
 
-interface AssetImportItemSettings extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_AssetImportItemSettings: unique symbol;
-	ShouldImport: boolean;
-}
-
-interface AssetImportMeshSettings extends AssetImportItemSettings {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_AssetImportMeshSettings: unique symbol;
-}
-
-interface AssetImportTextureSettings extends AssetImportItemSettings {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_AssetImportTextureSettings: unique symbol;
-}
-
 interface AssetImportService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -1809,21 +1774,6 @@ interface AssetImportService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AssetImportService: unique symbol;
-}
-
-interface AssetImportSettings extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_AssetImportSettings: unique symbol;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly Hierarchy: AssetImportItemSettings | undefined;
 }
 
 interface AssetManagerService extends Instance {
@@ -8698,17 +8648,6 @@ interface Explosion extends Instance {
 	readonly Hit: RBXScriptSignal<(part: BasePart, distance: number) => void>;
 }
 
-interface Expression extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_Expression: unique symbol;
-}
-
 interface FaceControls extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -14798,6 +14737,17 @@ interface ImporterGroupSettings extends ImporterBaseSettings {
 	readonly _nominal_ImporterGroupSettings: unique symbol;
 }
 
+interface ImporterJointSettings extends ImporterBaseSettings {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ImporterJointSettings: unique symbol;
+}
+
 interface ImporterMeshSettings extends ImporterBaseSettings {
 	/**
 	 * **DO NOT USE!**
@@ -17321,6 +17271,67 @@ interface KeyframeSequence extends Instance {
 	RemoveKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
 }
 
+/** The KeyframeSequenceProvider is a service that is used to load and preview [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence)s. It includes a number of functions that are useful when working with [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation)s.
+ * 
+ * What is a KeyframeSequence?
+ * ---------------------------
+ * 
+ * The animation data Roblox uses in the playback of an animation, referenced by the [Animation.AnimationId](https://developer.roblox.com/en-us/api-reference/property/Animation/AnimationId) property, is constructed from a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence). Every animation has a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) associated with it. [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence)s are usually created by the Roblox Animation Editor but can be created through other plugins or even manually.
+ * 
+ * For more information, see the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) page.
+ * 
+ * What does the KeyframeSequenceProvider do?
+ * ------------------------------------------
+ * 
+ * The KeyframeSequenceProvider has a number of uses.
+ * 
+ * *   Download the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) associated with an animation content ID from the Roblox website
+ * *   Generate a temporary id to locally preview an animation
+ * *   Fetch the content IDs of animations owned by a particular user.
+ */
+interface KeyframeSequenceProvider extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_KeyframeSequenceProvider: unique symbol;
+	/**
+	 * Generates a temporary asset ID from a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) that can be used for localized testing of an animation.
+	 * 
+	 * This function performs the same function to [KeyframeSequenceProvider:RegisterKeyframeSequence](https://developer.roblox.com/en-us/api-reference/function/KeyframeSequenceProvider/RegisterKeyframeSequence) however this function generates an _active://_ URL instead of a hash.
+	 * 
+	 * The ID generated can be used in an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation)'s [Animation.AnimationId](https://developer.roblox.com/en-us/api-reference/property/Animation/AnimationId) property for testing.
+	 * 
+	 * The asset ID generated by this function is temporary and cannot be used outside of Studio. Developers wishing to generate an asset ID that can be used online should upload the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) to Roblox.
+	 */
+	RegisterActiveKeyframeSequence(this: KeyframeSequenceProvider, keyframeSequence: KeyframeSequence): string;
+	/**
+	 * Generates a temporary asset ID from a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) that can be used for localized testing of an animation.
+	 * 
+	 * This function performs the same function to [KeyframeSequenceProvider:RegisterActiveKeyframeSequence](https://developer.roblox.com/en-us/api-reference/function/KeyframeSequenceProvider/RegisterActiveKeyframeSequence) however this function generates a hash instead of an _active://_ URL.
+	 * 
+	 * The ID generated can be used for the [Animation.AnimationId](https://developer.roblox.com/en-us/api-reference/property/Animation/AnimationId) property to test animations.
+	 * 
+	 * The asset ID generated by this function is temporary and cannot be used outside of Studio. Developers wishing to generate an asset ID that can be used online should upload the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) to Roblox.
+	 */
+	RegisterKeyframeSequence(this: KeyframeSequenceProvider, keyframeSequence: KeyframeSequence): string;
+	/**
+	 * This function returns an [InventoryPages](https://developer.roblox.com/en-us/api-reference/class/InventoryPages) object which can be used to iterate over animations owned by a specific user.
+	 * 
+	 * This function has a number of potential uses, such as allowing users to browse and import animations into a custom animation plugin.
+	 * Tags: Yields
+	 */
+	GetAnimations(this: KeyframeSequenceProvider, userId: number): InventoryPages;
+	/**
+	 * GetKeyframeSequenceAsync returns a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) based on the specified assetId. The assetId must correspond to an animation. The function will yield until the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) is loaded from the website. Because this is a webcall it should wrapped in a pcall.
+	 * Tags: Yields
+	 */
+	GetKeyframeSequenceAsync(this: KeyframeSequenceProvider, assetId: string): KeyframeSequence;
+}
+
 interface LanguageService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -19777,6 +19788,28 @@ interface MemoryStoreSortedMap extends Instance {
 	 * Tags: Yields
 	 */
 	UpdateAsync(this: MemoryStoreSortedMap, key: string, transformFunction: Function, expiration: number): unknown;
+}
+
+interface MessageBusConnection extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MessageBusConnection: unique symbol;
+}
+
+interface MessageBusService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MessageBusService: unique symbol;
 }
 
 /** The MessagingService allows game servers in the same game to communicate with each other in real time (< 1 second) using topics. Topics are developer defined strings (1-80 characters) that game servers can send and receive messages.
@@ -23501,6 +23534,7 @@ interface Path extends Instance {
 	 */
 	ComputeAsync(this: Path, start: Vector3, finish: Vector3): void;
 	readonly Blocked: RBXScriptSignal<(blockedWaypointIdx: number) => void>;
+	readonly Unblocked: RBXScriptSignal<(unblockedWaypointIdx: number) => void>;
 }
 
 interface PathfindingModifier extends Instance {
@@ -27975,6 +28009,10 @@ interface Speaker extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Speaker: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated, NotBrowsable
+	 */
+	readonly ChannelCount: number;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
