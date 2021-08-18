@@ -13017,6 +13017,8 @@ interface Humanoid extends Instance {
 	 * 1
 	 * 
 	 * Fixed size collision boxes, similar to the classic avatar collision
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	readonly CollisionType: Enum.HumanoidCollisionType;
 	/**
