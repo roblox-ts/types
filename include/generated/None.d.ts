@@ -4432,7 +4432,11 @@ interface BodyMover extends Instance {
 	readonly _nominal_BodyMover: unique symbol;
 }
 
-/** The BodyAngularVelocity object applies a [torque](https://en.wikipedia.org/wiki/Torque) (or **rotational force**) on a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) such that it maintains a constant [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) as determined by its [AngularVelocity](https://developer.roblox.com/en-us/api-reference/property/BodyAngularVelocity/AngularVelocity) property. This allows for the creation of parts that continually rotate. It is the rotational counterpart to a [BodyVelocity](https://developer.roblox.com/en-us/api-reference/class/BodyVelocity). If you would like to maintain a constant [angular displacement](https://en.wikipedia.org/wiki/Angular_displacement), use a [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro) instead.
+/** **Note**  
+ * 
+ * This body mover has been superseded by [AngularVelocity](AngularVelocity). It's highly recommended that you use AngularVelocity for future work.
+ * 
+ * The BodyAngularVelocity object applies a [torque](https://en.wikipedia.org/wiki/Torque) (or **rotational force**) on a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) such that it maintains a constant [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) as determined by its [AngularVelocity](https://developer.roblox.com/en-us/api-reference/property/BodyAngularVelocity/AngularVelocity) property. This allows for the creation of parts that continually rotate. It is the rotational counterpart to a [BodyVelocity](https://developer.roblox.com/en-us/api-reference/class/BodyVelocity). If you would like to maintain a constant [angular displacement](https://en.wikipedia.org/wiki/Angular_displacement), use a [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro) instead.
  * 
  * ![An animation of a Part with a BodyAngularVelocity applied; there is a superimposed green line visualizing the AngularVelocity property](https://developer.roblox.com/assets/bltdf76c0bd99d8cb56/BodyAngularVelocity.gif)
  * 
@@ -4473,7 +4477,11 @@ interface BodyAngularVelocity extends BodyMover {
 	P: number;
 }
 
-/** The BodyForce object applies (or exerts) a force on the part to which it is parented. If the magnitude of such a force is great enough, parts can begin to accelerate. See [Newton's First Law of Motion](https://www.grc.nasa.gov/www/K-12/airplane/newton.html). The force is determined by the [BodyForce.Force](https://developer.roblox.com/en-us/api-reference/property/BodyForce/Force) property, and is defined on the three world axes.
+/** **Note**  
+ * 
+ * This body mover has been superseded by [VectorForce](VectorForce). It's highly recommended that you use VectorForce for future work.
+ * 
+ * The BodyForce object applies (or exerts) a force on the part to which it is parented. If the magnitude of such a force is great enough, parts can begin to accelerate. See [Newton's First Law of Motion](https://www.grc.nasa.gov/www/K-12/airplane/newton.html). The force is determined by the [BodyForce.Force](https://developer.roblox.com/en-us/api-reference/property/BodyForce/Force) property, and is defined on the three world axes.
  * 
  * A BodyForce alone cannot apply a torque (it cannot cause the parent to rotate on its own). To apply a force at a specific point (e.g. to apply torque for angular acceleration) or apply forces relative to the orientation of the part, use a [BodyThrust](https://developer.roblox.com/en-us/api-reference/class/BodyThrust) instead.
  * 
@@ -4508,7 +4516,11 @@ interface BodyForce extends BodyMover {
 	Force: Vector3;
 }
 
-/** The **BodyGyro** object applies a torque (rotational force) on a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) such that it maintains a constant angular displacement, or orientation. This allows for the creation of parts that point in a certain direction, as if a real gyroscope were acting upon it. Essentially, it's the rotational counterpart to a [BodyPosition](https://developer.roblox.com/en-us/api-reference/class/BodyPosition).
+/** **Note**  
+ * 
+ * This body mover has been superseded by [AngularOrientation](AngularOrientation). It's highly recommended that you use AngularOrientation for future work.
+ * 
+ * The **BodyGyro** object applies a torque (rotational force) on a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) such that it maintains a constant angular displacement, or orientation. This allows for the creation of parts that point in a certain direction, as if a real gyroscope were acting upon it. Essentially, it's the rotational counterpart to a [BodyPosition](https://developer.roblox.com/en-us/api-reference/class/BodyPosition).
  * 
  * If you would like to maintain a constant angular velocity, use a [BodyAngularVelocity](https://developer.roblox.com/en-us/api-reference/class/BodyAngularVelocity) instead.
  * 
@@ -4563,7 +4575,11 @@ interface BodyGyro extends BodyMover {
 	P: number;
 }
 
-/** The **BodyPosition** object applies a force on a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) such that it will maintain a constant position in the world. The [Position](https://developer.roblox.com/en-us/api-reference/property/BodyPosition/Position) property, not to be confused with [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position), controls the target world position. This is the translational counterpart to a [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro). If you need further control on a force applied to an object, consider using a [BodyForce](https://developer.roblox.com/en-us/api-reference/class/BodyForce) or [BodyThrust](https://developer.roblox.com/en-us/api-reference/class/BodyThrust) instead.
+/** **Note**  
+ * 
+ * This body mover has been superseded by [AngularPosition](AngularPosition). It's highly recommended that you use AngularPosition for future work.
+ * 
+ * The **BodyPosition** object applies a force on a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) such that it will maintain a constant position in the world. The [Position](https://developer.roblox.com/en-us/api-reference/property/BodyPosition/Position) property, not to be confused with [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position), controls the target world position. This is the translational counterpart to a [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro). If you need further control on a force applied to an object, consider using a [BodyForce](https://developer.roblox.com/en-us/api-reference/class/BodyForce) or [BodyThrust](https://developer.roblox.com/en-us/api-reference/class/BodyThrust) instead.
  * 
  * The strength of the force applied by this object is controlled by several factors, namely the distance to the goal position: the force is stronger when farther away from the goal. This is amplified by [P](https://developer.roblox.com/en-us/api-reference/property/BodyPosition/P) (power). The present velocity will also dampen the force applied by this object, and this is amplified by [D](https://developer.roblox.com/en-us/api-reference/property/BodyPosition/D) (dampening). The resulting force is then capped by [MaxForce](https://developer.roblox.com/en-us/api-reference/property/BodyPosition/MaxForce). Note the force applied on the part to achieve the goal position may vary on a per-axis basis.
  * 
@@ -4611,7 +4627,12 @@ interface BodyPosition extends BodyMover {
 	readonly ReachedTarget: RBXScriptSignal<() => void>;
 }
 
-/** The BodyThrust object applies (or exerts) a force relative to the part to which it is parented at a specific location. It behaves similar to a [BodyForce](https://developer.roblox.com/en-us/api-reference/class/BodyForce), except that this object's force applies at a specific point ([BodyThrust.Location](https://developer.roblox.com/en-us/api-reference/property/BodyThrust/Location)), allowing you to exert a [torque](https://en.wikipedia.org/wiki/Torque) (rotational force). To apply a force dynamically so that a part maintains a constant angular velocity, use a [BodyAngularVelocity](https://developer.roblox.com/en-us/api-reference/class/BodyAngularVelocity) instead. To apply a force dynamically so that a part maintains a constant orientation (angular position), use a [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro). */
+/** **Note**  
+ * 
+ * This body mover has been superseded by [VectorForce](VectorForce). It's highly recommended that you use VectorForce for future work.
+ * 
+ * The BodyThrust object applies (or exerts) a force relative to the part to which it is parented at a specific location. It behaves similar to a [BodyForce](https://developer.roblox.com/en-us/api-reference/class/BodyForce), except that this object's force applies at a specific point ([BodyThrust.Location](https://developer.roblox.com/en-us/api-reference/property/BodyThrust/Location)), allowing you to exert a [torque](https://en.wikipedia.org/wiki/Torque) (rotational force). To apply a force dynamically so that a part maintains a constant angular velocity, use a [BodyAngularVelocity](https://developer.roblox.com/en-us/api-reference/class/BodyAngularVelocity) instead. To apply a force dynamically so that a part maintains a constant orientation (angular position), use a [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro).
+ */
 interface BodyThrust extends BodyMover {
 	/**
 	 * **DO NOT USE!**
@@ -4669,7 +4690,11 @@ interface BodyVelocity extends BodyMover {
 	lastForce(this: BodyVelocity): Vector3;
 }
 
-/** The RocketPropulsion object applies a force on a part so that it both **follows** and **faces** a target part. It acts like a hybrid of [BodyPosition](https://developer.roblox.com/en-us/api-reference/class/BodyPosition) and [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro). Unlike other [BodyMover](https://developer.roblox.com/en-us/api-reference/class/BodyMover)s, a RocketPropulsion must be instructed to begin applying a force: call [Fire](https://developer.roblox.com/en-us/api-reference/function/RocketPropulsion/Fire) to start, or call [Abort](https://developer.roblox.com/en-us/api-reference/function/RocketPropulsion/Abort) to stop.
+/** **Note**  
+ * 
+ * This body mover has been superseded by [LineForce](LineForce). It's highly recommended that you use LineForce for future work.
+ * 
+ * The RocketPropulsion object applies a force on a part so that it both **follows** and **faces** a target part. It acts like a hybrid of [BodyPosition](https://developer.roblox.com/en-us/api-reference/class/BodyPosition) and [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro). Unlike other [BodyMover](https://developer.roblox.com/en-us/api-reference/class/BodyMover)s, a RocketPropulsion must be instructed to begin applying a force: call [Fire](https://developer.roblox.com/en-us/api-reference/function/RocketPropulsion/Fire) to start, or call [Abort](https://developer.roblox.com/en-us/api-reference/function/RocketPropulsion/Abort) to stop.
  * 
  * Below is an animation of a blue [Part](https://developer.roblox.com/en-us/api-reference/class/Part) with a RocketPropulsion. The [Target](https://developer.roblox.com/en-us/api-reference/property/RocketPropulsion/Target) is set to a tall red [Part](https://developer.roblox.com/en-us/api-reference/class/Part) that is being dragged around in a circle in Studio. Notice how the blue part homes in to the target:  
  * ![A blue Part with a RocketPropulsion following a tall red Part that is being dragged around in Studio](https://developer.roblox.com/assets/blte54f405a7b2ba6a9/RocketPropulsion.gif)
@@ -5837,9 +5862,27 @@ interface Clouds extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Clouds: unique symbol;
+	/**
+	 * This property controls the material color of cloud particles. However, cloud color is influenced by several [Lighting](https://developer.roblox.com/en-us/api-reference/class/Lighting) and [Atmosphere](https://developer.roblox.com/en-us/api-reference/class/Atmosphere) properties, so it is not intended as a dedicated property to simulate colored sunsets, sunrises, etc.
+	 * 
+	 * See the [Dynamic Clouds](https://developer.roblox.com/articles/dynamic-clouds) article for a summary of properties and expected results.
+	 */
 	Color: Color3;
+	/**
+	 * This property defines the cloud cover within the overall skyscape layer. Valid range is from 0 to 1 (sparse cloud cover to full cloud cover).
+	 * 
+	 * See the [Dynamic Clouds](https://developer.roblox.com/articles/dynamic-clouds) article for a summary of properties and expected results.
+	 */
 	Cover: number;
+	/**
+	 * This property controls the particulate density of clouds (the proportion of airborne water vapor particles at full cloud cover).
+	 * 
+	 * See the [Dynamic Clouds](https://developer.roblox.com/articles/dynamic-clouds) article for a summary of properties and expected results.
+	 */
 	Density: number;
+	/**
+	 * This property toggles rendering of the [Clouds](https://developer.roblox.com/en-us/api-reference/class/Clouds) object. Useful for toggling on/off different [Clouds](https://developer.roblox.com/en-us/api-reference/class/Clouds) objects that exist in the same place.
+	 */
 	Enabled: boolean;
 }
 
@@ -11583,7 +11626,17 @@ interface ViewportFrame extends GuiObject {
 	LightDirection: Vector3;
 }
 
-/** LayerCollector is an abstract class inherited by 2D GUI Objects which render GuiObjects in layers. */
+/** LayerCollector is an abstract class inherited by 2D Gui Objects which render [GuiObjects](https://developer.roblox.com/en-us/api-reference/class/GuiObject) in layers.
+ * 
+ * ##### Caching static UI for performance improvements
+ * 
+ * A Gui's appearance is cached until one of the following events occurs:*   A descendant is added to the Gui.
+ * *   A descendant is removed from the Gui.
+ * *   A property of a descendant of the Gui changes.
+ * *   A property of the Gui changes.
+ * 
+ * If any of these events occur, the Gui's appearance will be recomputed the next frame it gets rendered.
+ */
 interface LayerCollector extends GuiBase2d {
 	/**
 	 * **DO NOT USE!**
@@ -11609,7 +11662,17 @@ interface LayerCollector extends GuiBase2d {
 	ZIndexBehavior: Enum.ZIndexBehavior;
 }
 
-/** BillboardGuis are containers for GUI objects that appear in the 3D space. A BillboardGui's position is determined by the position of it's [BillboardGui.Adornee](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/Adornee). If the adornee is set to [Part](https://developer.roblox.com/en-us/api-reference/class/Part) then the [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position) will be used. If it is set to [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) then the [Attachment.WorldPosition](https://developer.roblox.com/en-us/api-reference/property/Attachment/WorldPosition) will be used. BillboardGui always faces the camera, and can change its size with distance or remain the same size on the screen. Unlike the text that appears above models with Humanoids' heads, this does not disappear with distance. */
+/** BillboardGuis are containers for GUI objects that appear in the 3D space. A BillboardGui's position is determined by the position of it's [BillboardGui.Adornee](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/Adornee). If the adornee is set to [Part](https://developer.roblox.com/en-us/api-reference/class/Part) then the [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position) will be used. If it is set to [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) then the [Attachment.WorldPosition](https://developer.roblox.com/en-us/api-reference/property/Attachment/WorldPosition) will be used. BillboardGui always faces the camera, and can change its size with distance or remain the same size on the screen. Unlike the text that appears above models with Humanoids' heads, this does not disappear with distance.
+ * 
+ * ##### Caching static UI for performance improvements
+ * 
+ * A Gui's appearance is cached until one of the following events occurs:*   A descendant is added to the Gui.
+ * *   A descendant is removed from the Gui.
+ * *   A property of a descendant of the Gui changes.
+ * *   A property of the Gui changes.
+ * 
+ * If any of these events occur, the Gui's appearance will be recomputed the next frame it gets rendered.
+ */
 interface BillboardGui extends LayerCollector {
 	/**
 	 * **DO NOT USE!**
@@ -11780,6 +11843,15 @@ interface BillboardGui extends LayerCollector {
 
 /** The main storage object for 2D [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) displayed on the player's screen. ScreenGuis will only be shown if parented to a player's [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui).  
  * To make sure a ScreenGui is displayed to your player, it should be parented into the [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui), as that service will clone it's contents into each player's [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui) when they join the game.
+ * 
+ * ##### Caching static UI for performance improvements
+ * 
+ * A Gui's appearance is cached until one of the following events occurs:*   A descendant is added to the Gui.
+ * *   A descendant is removed from the Gui.
+ * *   A property of a descendant of the Gui changes.
+ * *   A property of the Gui changes.
+ * 
+ * If any of these events occur, the Gui's appearance will be recomputed the next frame it gets rendered.
  */
 interface ScreenGui extends LayerCollector {
 	/**
