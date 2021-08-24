@@ -196,7 +196,7 @@ interface DataStorePages extends Pages<{ key: string; value: unknown }> {}
 
 /** @server */
 interface DataStoreService extends Instance {
-	GetDataStore(this: DataStoreService, name: string, scope?: string): GlobalDataStore;
+	GetDataStore(this: DataStoreService, name: string, scope?: string, options?: DataStoreOptions): GlobalDataStore;
 	GetGlobalDataStore(this: DataStoreService): GlobalDataStore;
 	GetOrderedDataStore(this: DataStoreService, name: string, scope?: string): OrderedDataStore;
 }
@@ -222,15 +222,15 @@ interface GenericSettings<S = unknown> extends ServiceProvider<S> {}
 
 /** @server */
 interface GlobalDataStore extends Instance {
-	GetAsync<T>(this: GlobalDataStore, key: string): T | undefined;
-	IncrementAsync(this: GlobalDataStore, key: string, delta?: number): number;
-	RemoveAsync<T>(this: GlobalDataStore, key: string): T | undefined;
-	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
+	GetAsync<T>(this: GlobalDataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
+	IncrementAsync(this: GlobalDataStore, key: string, delta?: number, userIds?: Array<number>, options?: DataStoreIncrementOptions): LuaTuple<[number, DataStoreKeyInfo]>;
+	RemoveAsync<T>(this: GlobalDataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
+	SetAsync(this: GlobalDataStore, key: string, value?: unknown, userIds?: Array<number>, options?: DataStoreSetOptions): string;
 	UpdateAsync<O, R>(
 		this: GlobalDataStore,
 		key: string,
-		transformFunction: (oldValue: O | undefined) => R,
-	): R extends undefined ? O | undefined : R;
+		transformFunction: (oldValue: O | undefined, keyInfo: DataStoreKeyInfo) => LuaTuple<[R] | [R, Array<number>] | [R, Array<number>, Record<string, unknown>]>,
+	): R extends undefined ? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]> : LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
 }
 
 interface GroupService extends Instance {
