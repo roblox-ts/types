@@ -223,14 +223,31 @@ interface GenericSettings<S = unknown> extends ServiceProvider<S> {}
 /** @server */
 interface GlobalDataStore extends Instance {
 	GetAsync<T>(this: GlobalDataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
-	IncrementAsync(this: GlobalDataStore, key: string, delta?: number, userIds?: Array<number>, options?: DataStoreIncrementOptions): LuaTuple<[number, DataStoreKeyInfo]>;
+	IncrementAsync(
+		this: GlobalDataStore,
+		key: string,
+		delta?: number,
+		userIds?: Array<number>,
+		options?: DataStoreIncrementOptions,
+	): LuaTuple<[number, DataStoreKeyInfo]>;
 	RemoveAsync<T>(this: GlobalDataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
-	SetAsync(this: GlobalDataStore, key: string, value?: unknown, userIds?: Array<number>, options?: DataStoreSetOptions): string;
+	SetAsync(
+		this: GlobalDataStore,
+		key: string,
+		value?: unknown,
+		userIds?: Array<number>,
+		options?: DataStoreSetOptions,
+	): string;
 	UpdateAsync<O, R>(
 		this: GlobalDataStore,
 		key: string,
-		transformFunction: (oldValue: O | undefined, keyInfo: DataStoreKeyInfo) => LuaTuple<[R] | [R, Array<number>] | [R, Array<number>, Record<string, unknown>]>,
-	): R extends undefined ? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]> : LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
+		transformFunction: (
+			oldValue: O | undefined,
+			keyInfo: DataStoreKeyInfo,
+		) => LuaTuple<[R] | [R, Array<number>] | [R, Array<number>, Record<string, unknown>]>,
+	): R extends undefined
+		? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]>
+		: LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
 }
 
 interface GroupService extends Instance {
