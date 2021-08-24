@@ -12280,7 +12280,7 @@ declare namespace Enum {
 
 		export interface PlayClient {
 			Name: "PlayClient";
-			Value: 2;
+			Value: 1;
 			EnumType: EnumType<StudioDataModelType>;
 		}
 
@@ -12288,7 +12288,7 @@ declare namespace Enum {
 
 		export interface PlayServer {
 			Name: "PlayServer";
-			Value: 3;
+			Value: 2;
 			EnumType: EnumType<StudioDataModelType>;
 		}
 
@@ -12296,7 +12296,7 @@ declare namespace Enum {
 
 		export interface RobloxPlugin {
 			Name: "RobloxPlugin";
-			Value: 4;
+			Value: 3;
 			EnumType: EnumType<StudioDataModelType>;
 		}
 
@@ -12304,7 +12304,7 @@ declare namespace Enum {
 
 		export interface UserPlugin {
 			Name: "UserPlugin";
-			Value: 5;
+			Value: 4;
 			EnumType: EnumType<StudioDataModelType>;
 		}
 
@@ -12312,7 +12312,7 @@ declare namespace Enum {
 
 		export interface None {
 			Name: "None";
-			Value: 6;
+			Value: 5;
 			EnumType: EnumType<StudioDataModelType>;
 		}
 

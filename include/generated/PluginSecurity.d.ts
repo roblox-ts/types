@@ -647,26 +647,11 @@ interface File extends Instance {
 	 */
 	readonly _nominal_File: unique symbol;
 	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
-	 * @deprecated
-	 */
-	readonly FileName: string;
-	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
-	 * @deprecated
-	 */
-	readonly FileSize: number;
-	/**
 	 * The file size (in bytes) of the local file associated with this [File](https://developer.roblox.com/en-us/api-reference/class/File).
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly Size: number;
 	GetBinaryContents(this: File): string;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	GetFileContentsBinary(this: File): string;
 	GetTemporaryId(this: File): string;
 }
 
@@ -3120,7 +3105,6 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Current Line Highlight Color"]: Color3;
-	readonly DEPRECATED_DisableAccuratePlaySolo: boolean;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -3599,16 +3583,6 @@ interface StudioService extends Instance {
 	 * Tags: Yields
 	 */
 	PromptImportFiles(this: StudioService, fileTypeFilter?: Array<any>): Array<Instance>;
-	/**
-	 * Tags: Yields, Deprecated
-	 * @deprecated
-	 */
-	PromptImportLocalAsset(this: StudioService, prompt: string, fileTypeFilter?: Array<any>): Instance | undefined;
-	/**
-	 * Tags: Yields, Deprecated
-	 * @deprecated
-	 */
-	PromptImportLocalAssets(this: StudioService, prompt: string, fileTypeFilter?: Array<any>): Array<Instance>;
 	/**
 	 * Tags: Yields
 	 */
