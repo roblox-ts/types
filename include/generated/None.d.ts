@@ -124,6 +124,7 @@ interface CreatableInstances {
 	BrickColorValue: BrickColorValue;
 	Camera: Camera;
 	CFrameValue: CFrameValue;
+	ChannelSelectorSoundEffect: ChannelSelectorSoundEffect;
 	CharacterMesh: CharacterMesh;
 	ChorusSoundEffect: ChorusSoundEffect;
 	ClickDetector: ClickDetector;
@@ -2194,6 +2195,7 @@ interface AvatarEditorService extends Instance {
 	 * This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to save the given [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) as an outfit. Does not yield and can get the result by listening to the [AvatarEditorService.PromptCreateOutfitCompleted](https://developer.roblox.com/en-us/api-reference/event/AvatarEditorService/PromptCreateOutfitCompleted) event.
 	 */
 	PromptCreateOutfit(this: AvatarEditorService, outfit: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
+	PromptDeleteOutfit(this: AvatarEditorService, outfitId: number): void;
 	/**
 	 * This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to update their avatar based on the given [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) and [RigType](https://developer.roblox.com/en-us/api-reference/enum/RigType) (R6 or R15). Does not yield and can get the result by listening to the PromptSaveAvatarCompleted event. This is similar to how other prompts such as PromptPurchase work.
 	 */
@@ -2506,6 +2508,7 @@ interface AvatarEditorService extends Instance {
 	 * This event fires when the PromptSaveOutfit operation is completed. It can only return the Success or PermissionDenied [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) statuses as it does not perform any web requests which could fail.
 	 */
 	readonly PromptCreateOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult, failureType: unknown) => void>;
+	readonly PromptDeleteOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
 	/**
 	 * This event fires when the [AvatarEditorService:PromptSaveAvatar](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptSaveAvatar) operation is completed. It gives a status [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) indicating whether the prompt succeeded, failed or permission was not granted by the user.
 	 */
@@ -27473,6 +27476,18 @@ interface SoundEffect extends Instance {
 	 * Determines the order the effect will be applied in relation to other effects. Highger priority effects will be applied earlier. The exception is when Priority equals 0 (which is the default). In this case, the base priority for the effect will be used. If the priority of two effects are equal, then the order is undetermined.
 	 */
 	Priority: number;
+}
+
+interface ChannelSelectorSoundEffect extends SoundEffect {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ChannelSelectorSoundEffect: unique symbol;
+	Channel: number;
 }
 
 /** A ChorusSoundEffect simulates the effect of multiple vocals or instruments playing the same part. It does this by taking the original sound and overlaying copies of that sound. These copies are not exact matches to the original but instead vary in pitch slightly. This simulates a real chorus, as different singers or instruments will have slight variations. This effect can be applied to either an individual sound or to a sound group by parenting it to the desired instance.  
