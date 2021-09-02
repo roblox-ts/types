@@ -1874,6 +1874,7 @@ interface Plugin extends Instance {
 	 * This member is for a feature that is not yet released.
 	 */
 	SetItem(this: Plugin, key: string, value: unknown): void;
+	SetReady(this: Plugin): void;
 	/**
 	 * Stores a given value for later use under the given key. The value will persist even after studio is closed.
 	 */
@@ -2003,6 +2004,7 @@ interface Plugin extends Instance {
 	 * *   [Plugin.Unloading](https://developer.roblox.com/en-us/api-reference/event/Plugin/Unloading), fires immediately before the plugin is unloaded or reloaded via uninstallation, deactivation, or updating
 	 */
 	readonly Deactivation: RBXScriptSignal<() => void>;
+	readonly Ready: RBXScriptSignal<() => void>;
 	/**
 	 * This event fires immediately before the [Plugin](https://developer.roblox.com/en-us/api-reference/class/Plugin) stops running. Plugins are unloaded when disabled, uninstalled, about to be updated, or when the place is closing.
 	 * 
@@ -2798,6 +2800,7 @@ interface Selection extends Instance {
 	 */
 	readonly SelectionThickness: number;
 	Add(this: Selection, instancesToAdd: Array<Instance>): void;
+	ClearTerrainSelectionHack(this: Selection): void;
 	/**
 	 * Returns an array of currently selected [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s in Roblox Studio.
 	 * 
@@ -2821,6 +2824,7 @@ interface Selection extends Instance {
 	 * Selection:Set(selected)
 	 */
 	Set(this: Selection, selection: Array<Instance>): void;
+	SetTerrainSelectionHack(this: Selection, center: Vector3, size: Vector3): void;
 	/**
 	 * Fires when the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s selected in Roblox Studio changes.
 	 * 
@@ -3134,6 +3138,10 @@ interface Studio extends Instance {
 	["Enable Temporary Tabs In Explorer"]: boolean;
 	readonly ["Enable Type Hover"]: boolean;
 	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly EnableOnTypeAutocomplete: boolean;
+	/**
 	 * Tags: NotReplicated
 	 */
 	["Error Color"]: Color3;
@@ -3283,6 +3291,7 @@ interface Studio extends Instance {
 	["Selection Color"]: Color3;
 	readonly ["Selection Highlight Thickness"]: number;
 	["Server Audio Behavior"]: Enum.ServerAudioBehavior;
+	["Set Pivot of Imported Parts"]: boolean;
 	["Show Core GUI in Explorer while Playing"]: boolean;
 	["Show Deployment Warnings"]: boolean;
 	["Show Diagnostics Bar"]: boolean;
@@ -3507,7 +3516,6 @@ interface StudioService extends Instance {
 	 */
 	UseLocalSpace: boolean;
 	AnimationIdSelected(this: StudioService, id: number): void;
-	BaseURLHasChineseHost(this: StudioService): boolean;
 	ConvertToPackageUpload(this: StudioService, uploadUrl: string): void;
 	CopyToClipboard(this: StudioService, stringToCopy: string): void;
 	EmitPlacePublishedSignal(this: StudioService): void;

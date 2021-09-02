@@ -12582,6 +12582,7 @@ interface GuiService extends Instance {
 	 * If you would like to determine when this property changes without tracking the SelectionGained and SelectionLost events for all GUI elements, you can use the [Changed](https://developer.roblox.com/en-us/api-reference/event/Instance/Changed) event.
 	 */
 	SelectedObject: GuiObject | undefined;
+	TouchControlsEnabled: boolean;
 	/**
 	 * Creates a gui selection group where gamepad gui navigation will only consider selectable gui objects that are within the group (children of selectionParent).
 	 * 
@@ -23624,6 +23625,7 @@ interface PathfindingModifier extends Instance {
 	 */
 	readonly _nominal_PathfindingModifier: unique symbol;
 	ModifierId: string;
+	PassThrough: boolean;
 }
 
 /** **PathfindingService** is used to find paths between two points. These paths make sure that characters can move between the points without running into walls or other obstacles. Paths can be used for both player-controlled characters and non-player characters.
@@ -31290,6 +31292,8 @@ interface UserInputService extends Instance {
 	 * 
 	 * ##See Also  
 	 * The tutorial on disabling parts of the game interface, found [here](https://www.robloxdev.com/articles/Disabling-Parts-of-Game-Interface), provides excellent documentation on using this property.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	ModalEnabled: boolean;
 	/**
