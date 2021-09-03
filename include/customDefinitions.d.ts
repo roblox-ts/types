@@ -775,7 +775,12 @@ interface TeleportService extends Instance {
 	/** @client */
 	SetTeleportSetting(this: TeleportService, setting: string, value: TeleportData): void;
 	/** @server */
-	TeleportAsync(this: TeleportService, placeId: number, players: Array<Player>, options?: TeleportOptions): void;
+	TeleportAsync(
+		this: TeleportService,
+		placeId: number,
+		players: ReadonlyArray<Player>,
+		options?: TeleportOptions,
+	): TeleportAsyncResult;
 	Teleport(
 		this: TeleportService,
 		placeId: number,
