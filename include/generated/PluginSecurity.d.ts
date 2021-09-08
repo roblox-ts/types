@@ -954,6 +954,22 @@ interface ModuleScript extends LuaSourceContainer {
 	Source: string;
 }
 
+interface MaterialVariant extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MaterialVariant: unique symbol;
+	BaseMaterial: Enum.Material;
+	ColorMap: string;
+	MetalnessMap: string;
+	NormalMap: string;
+	RoughnessMap: string;
+}
+
 interface MemStorageConnection extends Instance {
 	/**
 	 * **DO NOT USE!**

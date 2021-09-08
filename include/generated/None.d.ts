@@ -47,6 +47,7 @@ interface Services {
 	LocalizationService: LocalizationService;
 	LogService: LogService;
 	MarketplaceService: MarketplaceService;
+	MaterialService: MaterialService;
 	MemoryStoreService: MemoryStoreService;
 	MessageBusService: MessageBusService;
 	MessagingService: MessagingService;
@@ -96,6 +97,7 @@ interface CreatableInstances {
 	AngularVelocity: AngularVelocity;
 	Animation: Animation;
 	AnimationController: AnimationController;
+	AnimationRigData: AnimationRigData;
 	Animator: Animator;
 	ArcHandles: ArcHandles;
 	Atmosphere: Atmosphere;
@@ -123,6 +125,7 @@ interface CreatableInstances {
 	Breakpoint: Breakpoint;
 	BrickColorValue: BrickColorValue;
 	Camera: Camera;
+	CanvasGroup: CanvasGroup;
 	CFrameValue: CFrameValue;
 	ChannelSelectorSoundEffect: ChannelSelectorSoundEffect;
 	CharacterMesh: CharacterMesh;
@@ -175,13 +178,14 @@ interface CreatableInstances {
 	Keyframe: Keyframe;
 	KeyframeMarker: KeyframeMarker;
 	KeyframeSequence: KeyframeSequence;
-	LinearVelocityConstraint: LinearVelocityConstraint;
+	LinearVelocity: LinearVelocity;
 	LineForce: LineForce;
 	LineHandleAdornment: LineHandleAdornment;
 	LocalizationTable: LocalizationTable;
 	LocalScript: LocalScript;
 	ManualGlue: ManualGlue;
 	ManualWeld: ManualWeld;
+	MaterialVariant: MaterialVariant;
 	MeshPart: MeshPart;
 	Model: Model;
 	ModuleScript: ModuleScript;
@@ -342,6 +346,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	BaseWrap: BaseWrap;
 	CatalogPages: CatalogPages;
 	CommandInstance: CommandInstance;
+	CustomDspSoundEffect: CustomDspSoundEffect;
 	DataModel: DataModel;
 	DataStore: DataStore;
 	DataStoreInfo: DataStoreInfo;
@@ -1473,6 +1478,17 @@ interface AnimationController extends Instance {
 	 * @deprecated
 	 */
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
+}
+
+interface AnimationRigData extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AnimationRigData: unique symbol;
 }
 
 /** Controls the playback of an animation on a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) or [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController). This object cannot be created, instead it is returned by the [Humanoid:LoadAnimation](https://developer.roblox.com/en-us/api-reference/function/Humanoid/LoadAnimation) method. */
@@ -6176,6 +6192,7 @@ interface AlignOrientation extends Constraint {
 	 * Two perpendicular axes
 	 */
 	AlignType: Enum.AlignType;
+	CoordindateFrame: CFrame;
 	/**
 	 * The maximum angular velocity the constraint can use to reach its goal.
 	 */
@@ -6184,6 +6201,8 @@ interface AlignOrientation extends Constraint {
 	 * The maximum torque the constraint can use to reach its goal.
 	 */
 	MaxTorque: number;
+	Mode: Enum.OrientationAlignmentMode;
+	PrimaryAxis: Vector3;
 	/**
 	 * If set to true, then the AlignOrientation will only apply torque if the primary axis of its Attachment0 becomes unaligned with Attachment1. This means that any rotation about the Attachment0's primary axis will not create a torque.
 	 */
@@ -6200,6 +6219,7 @@ interface AlignOrientation extends Constraint {
 	 * When set to true, the solver will react as quickly as possible to align the attachments. When false, the torque is dependent on [AlignOrientation.MaxTorque](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/MaxTorque), [AlignOrientation.MaxAngularVelocity](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/MaxAngularVelocity), and [AlignOrientation.Responsiveness](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/Responsiveness).
 	 */
 	RigidityEnabled: boolean;
+	SecondaryAxis: Vector3;
 }
 
 /** An AlignPosition is used to apply a force towards a location. Like other constraints, AlignPositions have two [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment). In this case the attachments are constrained to be in the same position, although not necessarily in the same orientation. By default, this constraint only applies forces on [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0), although it can be configured to apply forces on both attachments.
@@ -6258,6 +6278,8 @@ interface AlignPosition extends Constraint {
 	 * Maximum speed the Attachment can move when converging. Only used if RigidityEnabled is false.
 	 */
 	MaxVelocity: number;
+	Mode: Enum.PositionAlignmentMode;
+	Position: Vector3;
 	/**
 	 * When true the constraint will apply force on both Attachments to achieve the goal.
 	 */
@@ -6525,7 +6547,7 @@ interface LineForce extends Constraint {
 	ReactionForceEnabled: boolean;
 }
 
-interface LinearVelocityConstraint extends Constraint {
+interface LinearVelocity extends Constraint {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -6533,12 +6555,27 @@ interface LinearVelocityConstraint extends Constraint {
 	 * @hidden
 	 * @deprecated
 	 */
-	readonly _nominal_LinearVelocityConstraint: unique symbol;
+	readonly _nominal_LinearVelocity: unique symbol;
+	/**
+	 * Direction of the line used to contraint the velocity to a line.
+	 */
 	LineDirection: Vector3;
+	/**
+	 * The value of the constraint velocity along a line.
+	 */
 	LineVelocity: number;
+	/**
+	 * Maximum force magnitude that is applied to satisfy the constraint.
+	 */
 	MaxForce: number;
+	/**
+	 * Velocity coefficients in the constraint plane.
+	 */
 	PlaneVelocity: Vector2;
 	PrimaryTangentAxis: Vector3;
+	/**
+	 * Selects whether the velocity orientation is relative to attachment0, attachment1 or the world.
+	 */
 	RelativeTo: Enum.ActuatorRelativeTo;
 	SecondaryTangentAxis: Vector3;
 	VectorVelocity: Vector3;
@@ -10383,6 +10420,19 @@ interface GuiObject extends GuiBase2d {
 	 * *   [GuiObject.TouchLongPress](https://developer.roblox.com/en-us/api-reference/event/GuiObject/TouchLongPress)
 	 */
 	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>) => void>;
+}
+
+interface CanvasGroup extends GuiObject {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CanvasGroup: unique symbol;
+	GroupColor: Color3;
+	Transparency: number;
 }
 
 /** Frame is a [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) that renders as a plain rectangle with no other content. They are the simplest concrete example of a [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject), as they provide very little additional functionality (`Frame.FrameStyle`). Despite this, Frames are useful as containers for other [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject)s, such as [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel), [ImageLabel](https://developer.roblox.com/en-us/api-reference/class/ImageLabel). The key benefit to using a Frame over a [Folder](https://developer.roblox.com/en-us/api-reference/class/Folder) as a container object is the ability to further manipulate the `GuiObject.Size` and `GuiObject.Position` of any descendant [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject)s. */
@@ -14852,6 +14902,7 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	 */
 	readonly FileDimensions: Vector3;
 	FlattenAll: boolean;
+	InvertNegativeFaces: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -19801,6 +19852,48 @@ interface MarketplaceService extends Instance {
 	ProcessReceipt: ((receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision) | undefined;
 }
 
+interface MaterialService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MaterialService: unique symbol;
+	Brick: MaterialVariant | undefined;
+	Cobblestone: MaterialVariant | undefined;
+	Concrete: MaterialVariant | undefined;
+	CorrodedMetal: MaterialVariant | undefined;
+	DiamondPlate: MaterialVariant | undefined;
+	Fabric: MaterialVariant | undefined;
+	Foil: MaterialVariant | undefined;
+	Granite: MaterialVariant | undefined;
+	Grass: MaterialVariant | undefined;
+	Ice: MaterialVariant | undefined;
+	Marble: MaterialVariant | undefined;
+	Metal: MaterialVariant | undefined;
+	Pebble: MaterialVariant | undefined;
+	Plastic: MaterialVariant | undefined;
+	Sand: MaterialVariant | undefined;
+	Slate: MaterialVariant | undefined;
+	SmoothPlastic: MaterialVariant | undefined;
+	Wood: MaterialVariant | undefined;
+	WoodPlanks: MaterialVariant | undefined;
+}
+
+interface MaterialVariant extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MaterialVariant: unique symbol;
+	StudsPerTile: number;
+}
+
 interface MemoryStoreQueue extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -20941,6 +21034,7 @@ interface BasePart extends PVInstance {
 	 * The Glass material changes rendering behavior on moderate graphics settings. It applies a bit of reflectiveness (similar to [BasePart.Reflectance](https://developer.roblox.com/en-us/api-reference/property/BasePart/Reflectance)) and perspective distortion. The effect is especially pronounced on sphere-shaped parts (set `/BasePart/Shape` to Ball). Semitransparent objects and Glass parts behind Glass are not visible.
 	 */
 	Material: Enum.Material;
+	MaterialVariant: MaterialVariant | undefined;
 	/**
 	 * The Orientation property describes the part's rotation in degrees around the X, Y and Z axes using a Vector3. The rotations are applied in Y → X → Z order. This differs from proper [Euler angles](https://en.wikipedia.org/wiki/Euler_angles), and is instead [Tait–Bryan angles](https://en.wikipedia.org/wiki/Euler_angles#Tait-Bryan_angles) which describe **yaw, pitch and roll**. It is also worth noting how this property differs from the `CFrame.Angles()` constructor, which applies rotations in a different order (Z → Y → X). For better control over the rotation of a part, it is recommended that [BasePart.CFrame](https://developer.roblox.com/en-us/api-reference/property/BasePart/CFrame) is set instead.
 	 * 
@@ -22907,6 +23001,7 @@ interface Workspace extends WorldRoot {
 	 * Tags: Hidden, NotReplicated
 	 */
 	PhysicsSimulationRate: Enum.PhysicsSimulationRate;
+	Retargeting: Enum.AnimatorRetargetingMode;
 	/**
 	 * The **StreamingEnabled** property determines whether game content streaming is enabled for the place. This property is not scriptable and therefore must be set on the **Workspace** object in Studio.
 	 * 
@@ -27580,6 +27675,17 @@ interface CompressorSoundEffect extends SoundEffect {
 	 * Volume level at which point the compressor applies its effect. If the effect's Sound or SoundGroup is below the effect will not attenuate the sound, although the GainMakeup will still be applied. Measured in dB.Volume level at which point the compressor applies its effect.
 	 */
 	Threshold: number;
+}
+
+interface CustomDspSoundEffect extends SoundEffect {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CustomDspSoundEffect: unique symbol;
 }
 
 /** A distortion effect is used to simulate the effect that would occur when overdriving older style audio equipment (such as vaccuum tubes). This effect causes clipping in the sound and adds a general “fuzzyness”.  
@@ -33264,6 +33370,7 @@ interface VoiceChatService extends Instance {
 	SetMicDevice(this: VoiceChatService, micDeviceName: string, micDeviceGuid: string): void;
 	SetSpeakerDevice(this: VoiceChatService, speakerDeviceName: string, speakerDeviceGuid: string): void;
 	SubscribePause(this: VoiceChatService, userId: number, paused: boolean): boolean;
+	SubscribePauseAll(this: VoiceChatService, paused: boolean): boolean;
 	readonly ParticipantsStateChanged: RBXScriptSignal<(participantsLeft: Array<any>, participantsJoined: Array<any>, updatedStates: Array<any>) => void>;
 	readonly PlayerMicActivitySignalChange: RBXScriptSignal<(activityInfo: object) => void>;
 	readonly StateChanged: RBXScriptSignal<(oldValue: Enum.VoiceChatState, newValue: Enum.VoiceChatState) => void>;
