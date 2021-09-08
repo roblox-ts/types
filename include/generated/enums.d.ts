@@ -541,6 +541,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<AnimationPriority>
 	}
 	export type AnimationPriority = AnimationPriority.Idle | AnimationPriority.Movement | AnimationPriority.Action | AnimationPriority.Core;
+	export namespace AnimatorRetargetingMode {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<AnimatorRetargetingMode>;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: EnumType<AnimatorRetargetingMode>;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: EnumType<AnimatorRetargetingMode>;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: defined): Array<AnimatorRetargetingMode>
+	}
+	export type AnimatorRetargetingMode = AnimatorRetargetingMode.Default | AnimatorRetargetingMode.Disabled | AnimatorRetargetingMode.Enabled;
 	export namespace AppShellActionType {
 		export interface None {
 			Name: "None";
@@ -9881,6 +9909,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<NormalId>
 	}
 	export type NormalId = NormalId.Top | NormalId.Bottom | NormalId.Back | NormalId.Front | NormalId.Right | NormalId.Left;
+	export namespace OrientationAlignmentMode {
+		export interface OneAttachment {
+			Name: "OneAttachment";
+			Value: 0;
+			EnumType: EnumType<OrientationAlignmentMode>;
+		}
+
+		export const OneAttachment: OneAttachment;
+
+		export interface TwoAttachment {
+			Name: "TwoAttachment";
+			Value: 1;
+			EnumType: EnumType<OrientationAlignmentMode>;
+		}
+
+		export const TwoAttachment: TwoAttachment;
+
+		export function GetEnumItems(this: defined): Array<OrientationAlignmentMode>
+	}
+	export type OrientationAlignmentMode = OrientationAlignmentMode.OneAttachment | OrientationAlignmentMode.TwoAttachment;
 	export namespace OutfitSource {
 		export interface All {
 			Name: "All";
@@ -10641,6 +10689,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<PoseEasingStyle>
 	}
 	export type PoseEasingStyle = PoseEasingStyle.Linear | PoseEasingStyle.Constant | PoseEasingStyle.Elastic | PoseEasingStyle.Cubic | PoseEasingStyle.Bounce;
+	export namespace PositionAlignmentMode {
+		export interface OneAttachment {
+			Name: "OneAttachment";
+			Value: 0;
+			EnumType: EnumType<PositionAlignmentMode>;
+		}
+
+		export const OneAttachment: OneAttachment;
+
+		export interface TwoAttachment {
+			Name: "TwoAttachment";
+			Value: 1;
+			EnumType: EnumType<PositionAlignmentMode>;
+		}
+
+		export const TwoAttachment: TwoAttachment;
+
+		export function GetEnumItems(this: defined): Array<PositionAlignmentMode>
+	}
+	export type PositionAlignmentMode = PositionAlignmentMode.OneAttachment | PositionAlignmentMode.TwoAttachment;
 	export namespace PrivilegeType {
 		export interface Owner {
 			Name: "Owner";
