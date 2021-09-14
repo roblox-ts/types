@@ -1502,7 +1502,6 @@ interface OverlapParams {
 	 * @deprecated
 	 */
 	readonly _nominal_OverlapParams: unique symbol;
-
 	/**
 	 * An array of objects whose descendants will be used in filtering.
 	 */
