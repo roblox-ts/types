@@ -1502,6 +1502,25 @@ interface OverlapParams {
 	 * @deprecated
 	 */
 	readonly _nominal_OverlapParams: unique symbol;
+
+	/**
+	 * An array of objects whose descendants will be used in filtering.
+	 */
+	FilterDescendantsInstances: Array<Instance>;
+	/**
+	 * `RaycastFilterType.Whitelist` or `RaycastFilterType.Blacklist`. Determines how the `FilterDescendantInstances` is
+	 * used. `Blacklist` will skip the `FilterDescendantInstances`, and `Whitelist` will exclusively include them.
+	 */
+	FilterType: Enum.RaycastFilterType;
+	/**
+	 * The maximum amount of parts to be returned by the query. The process simply early outs once this is met.
+	 * (0 is infinite)
+	 */
+	MaxParts: number;
+	/**
+	 * The collision group the region check is performed on. Parts set to not collide with this group will be ignored.
+	 */
+	CollisionGroup: string;
 }
 type OverlapParamsConstructor = new () => OverlapParams;
 declare const OverlapParams: OverlapParamsConstructor;
