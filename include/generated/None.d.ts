@@ -358,6 +358,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DataStorePages: DataStorePages;
 	DataStoreVersionPages: DataStoreVersionPages;
 	DebuggerConnection: DebuggerConnection;
+	DebuggerVariable: DebuggerVariable;
 	EmotesPages: EmotesPages;
 	FriendPages: FriendPages;
 	GlobalDataStore: GlobalDataStore;
@@ -393,6 +394,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	ScriptRef: ScriptRef;
 	ScriptRefId: ScriptRefId;
 	ScriptRefPath: ScriptRefPath;
+	StackFrame: StackFrame;
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
 	StarterPlayerScripts: StarterPlayerScripts;
@@ -6192,7 +6194,7 @@ interface AlignOrientation extends Constraint {
 	 * Two perpendicular axes
 	 */
 	AlignType: Enum.AlignType;
-	CoordindateFrame: CFrame;
+	CFrame: CFrame;
 	/**
 	 * The maximum angular velocity the constraint can use to reach its goal.
 	 */
@@ -8380,6 +8382,17 @@ interface DebuggerConnectionManager extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_DebuggerConnectionManager: unique symbol;
+}
+
+interface DebuggerVariable extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DebuggerVariable: unique symbol;
 }
 
 /** The Dialog object allows users to create non-player characters (NPCs) that players can talk to using a list of choices. The Dialog object can be inserted into a part such as a Humanoid's head, and then a player will see a speech bubble above the part that they can click on to start a conversation. The creator of a place can choose what choices the player can say by inserting [DialogChoice](https://developer.roblox.com/en-us/api-reference/class/DialogChoice) objects into the dialog.
@@ -27566,18 +27579,6 @@ interface SoundEffect extends Instance {
 	Priority: number;
 }
 
-interface ChannelSelectorSoundEffect extends SoundEffect {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ChannelSelectorSoundEffect: unique symbol;
-	Channel: number;
-}
-
 /** A ChorusSoundEffect simulates the effect of multiple vocals or instruments playing the same part. It does this by taking the original sound and overlaying copies of that sound. These copies are not exact matches to the original but instead vary in pitch slightly. This simulates a real chorus, as different singers or instruments will have slight variations. This effect can be applied to either an individual sound or to a sound group by parenting it to the desired instance.  
  *   
  * Like all other [SoundEffect](https://developer.roblox.com/en-us/api-reference/class/SoundEffect), a ChorusSoundEffect can be applied either to a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) or [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) by being parented to either.
@@ -27677,6 +27678,18 @@ interface CustomDspSoundEffect extends SoundEffect {
 	 * @deprecated
 	 */
 	readonly _nominal_CustomDspSoundEffect: unique symbol;
+}
+
+interface ChannelSelectorSoundEffect extends CustomDspSoundEffect {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ChannelSelectorSoundEffect: unique symbol;
+	Channel: number;
 }
 
 /** A distortion effect is used to simulate the effect that would occur when overdriving older style audio equipment (such as vaccuum tubes). This effect causes clipping in the sound and adds a general “fuzzyness”.  
@@ -28217,6 +28230,17 @@ interface Speaker extends Instance {
 	SoundGroup: SoundGroup | undefined;
 	Source: Instance | undefined;
 	Volume: number;
+}
+
+interface StackFrame extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StackFrame: unique symbol;
 }
 
 /** StarterGear is a container that is automatically inserted into each [Player](https://developer.roblox.com/en-us/api-reference/class/Player) when the player joins the game. When a player spawns, the contents of that player's StarterGear is copied into the player's [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). Additionally, when a player connects to a game that permits gear, all of the appropriate gear [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) objects that the player owns are inserted into that player's StarterGear.
