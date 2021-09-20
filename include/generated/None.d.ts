@@ -19907,6 +19907,10 @@ interface MaterialVariant extends Instance {
 	StudsPerTile: number;
 }
 
+/** Provides access to a queue within MemoryStore. A queue is a data structure that provides temporary storage for arbitrary items (up to the maximum item size – see `articles/Memory Store|MemoryStore Limits`). Each queue item has a numeric priority: MemoryStore retrieves items with higher priority from the queue first, and it retrieves Items with the same priority in order of addition.
+ * 
+ * Items in the queue can optionally be set to expire after a certain amount of time. Expired items simply disappear from the queue as if they were never added.
+ */
 interface MemoryStoreQueue extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -19917,19 +19921,28 @@ interface MemoryStoreQueue extends Instance {
 	 */
 	readonly _nominal_MemoryStoreQueue: unique symbol;
 	/**
+	 * Adds an item to the queue.
 	 * Tags: Yields
 	 */
 	AddAsync(this: MemoryStoreQueue, value: unknown, expiration: number, priority?: number): void;
 	/**
+	 * Reads one or more items from the queue as a single atomic operation.
+	 * 
+	 * This method does not automatically delete the returned items from the queue but makes them invisible to other ReadAsync calls for the period of the invisibility timeout. The items must be explicitly removed from the queue with [MemoryStoreQueue:RemoveAsync](https://developer.roblox.com/en-us/api-reference/function/MemoryStoreQueue/RemoveAsync) before the invisibility timeout expires. The invisibility timeout defaults to 30 seconds unless a different value was provided in [MemoryStoreService:GetQueue](https://developer.roblox.com/en-us/api-reference/function/MemoryStoreService/GetQueue).
 	 * Tags: Yields
 	 */
 	ReadAsync(this: MemoryStoreQueue, count: number, allOrNothing?: boolean, waitTimeout?: number): unknown;
 	/**
+	 * Removes an item or items previously read from the queue. This method uses the identifier returned by [MemoryStoreQueue:ReadAsync](https://developer.roblox.com/en-us/api-reference/function/MemoryStoreQueue/ReadAsync) to identify the items to remove. If called after the invisibility timeout has expired, the call has no effect.
 	 * Tags: Yields
 	 */
 	RemoveAsync(this: MemoryStoreQueue, id: string): void;
 }
 
+/** A top-level singleton class which exposes methods to access specific primitives within the MemoryStoreService. Use it for any data that rapidly changes that other servers can restore, such as global leaderboards, matchmaking queues, and auction houses.
+ * 
+ * For a more in-depth look, take a look at the `articles/Memory Store|Memory Store` article.
+ */
 interface MemoryStoreService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -19939,10 +19952,21 @@ interface MemoryStoreService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MemoryStoreService: unique symbol;
+	/**
+	 * Returns a [MemoryStoreQueue](https://developer.roblox.com/en-us/api-reference/class/MemoryStoreQueue) instance for the provided name. The name is global within the game, thus any place that uses the same name will access the same queue.
+	 * 
+	 * For a more in-depth look, take a look at the \`articles/Memory Store article.
+	 */
 	GetQueue(this: MemoryStoreService, name: string, invisibilityTimeout?: number): MemoryStoreQueue;
+	/**
+	 * Returns a [MemoryStoreSortedMap](https://developer.roblox.com/en-us/api-reference/class/MemoryStoreSortedMap) instance for the provided name. The name is global within the game, so any place that uses the same name will access the same sorted map.
+	 * 
+	 * For a more in-depth look, take a look at the `articles/Memory Store|Memory Store` article.
+	 */
 	GetSortedMap(this: MemoryStoreService, name: string): MemoryStoreSortedMap;
 }
 
+/** Provides access to a sorted map within MemoryStore. A sorted map is a collection of items where string keys are associated with arbitrary values (up to the maximum allowed size – see `articles/Memory Store|MemoryStore Limits`). The keys are arranged in alphabetical order. */
 interface MemoryStoreSortedMap extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -19953,22 +19977,42 @@ interface MemoryStoreSortedMap extends Instance {
 	 */
 	readonly _nominal_MemoryStoreSortedMap: unique symbol;
 	/**
+	 * Retrieves the value of a key in the sorted map.
+	 * 
+	 * For a more in-depth look, take a look at the `articles/Memory Store|Memory Store` article.
 	 * Tags: Yields
 	 */
 	GetAsync(this: MemoryStoreSortedMap, key: string): unknown;
 	/**
+	 * Gets items within a sorted range of keys.
+	 * 
+	 * For a more in-depth look, take a look at the `articles/Memory Store|Memory Store` article.
 	 * Tags: Yields
 	 */
 	GetRangeAsync(this: MemoryStoreSortedMap, direction: CastsToEnum<Enum.SortDirection>, count: number, exclusiveLowerBound?: string, exclusiveUpperBound?: string): unknown;
 	/**
+	 * Removes the provided key from the sorted map.
+	 * 
+	 * For a more in-depth look, take a look at the `articles/Memory Store|Memory Store` article.
 	 * Tags: Yields
 	 */
 	RemoveAsync(this: MemoryStoreSortedMap, key: string): void;
 	/**
+	 * Sets the value of the key overwriting any existing key value.
 	 * Tags: Yields
 	 */
 	SetAsync(this: MemoryStoreSortedMap, key: string, value: unknown, expiration: number): boolean;
 	/**
+	 * Retrieves the value of a key from a sorted map and lets you update it to a new value via a callback function.
+	 * 
+	 * This method accepts a callback function that transforms the old value into the updated value as required. The method retrieves the existing key value and passes it to the transform function which returns the new value for the item, with these exceptions:
+	 * 
+	 * *   If the key does not exist, the old value passed to the function will be nil.
+	 * *   If the function returns nil, the update is canceled.
+	 * 
+	 * The new value is saved only if the key was not updated (e.g. by a different game server) since the moment it was read. If the value did change, the transform function is invoked again with the most recent item value. This cycle repeats until the value is saved successfully or the transform function returns nil to abort the operation.
+	 * 
+	 * For a more in-depth look, take a look at the `articles/Memory Store|Memory Store` article.
 	 * Tags: Yields
 	 */
 	UpdateAsync(this: MemoryStoreSortedMap, key: string, transformFunction: Function, expiration: number): unknown;
