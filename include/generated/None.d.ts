@@ -76,6 +76,7 @@ interface Services {
 	StudioDeviceEmulatorService: StudioDeviceEmulatorService;
 	Teams: Teams;
 	TeleportService: TeleportService;
+	TextChatService: TextChatService;
 	TextService: TextService;
 	ToastNotificationService: ToastNotificationService;
 	TracerService: TracerService;
@@ -153,11 +154,13 @@ interface CreatableInstances {
 	Dragger: Dragger;
 	EchoSoundEffect: EchoSoundEffect;
 	EqualizerSoundEffect: EqualizerSoundEffect;
+	EulerRotationCurve: EulerRotationCurve;
 	Explosion: Explosion;
 	FaceControls: FaceControls;
 	FileMesh: FileMesh;
 	Fire: Fire;
 	FlangeSoundEffect: FlangeSoundEffect;
+	FloatCurve: FloatCurve;
 	FloorWire: FloorWire;
 	Folder: Folder;
 	ForceField: ForceField;
@@ -253,7 +256,9 @@ interface CreatableInstances {
 	TerrainRegion: TerrainRegion;
 	TextBox: TextBox;
 	TextButton: TextButton;
+	TextChannel: TextChannel;
 	TextLabel: TextLabel;
+	TextSource: TextSource;
 	Texture: Texture;
 	Tool: Tool;
 	Torque: Torque;
@@ -275,6 +280,7 @@ interface CreatableInstances {
 	UITextSizeConstraint: UITextSizeConstraint;
 	UnionOperation: UnionOperation;
 	UniversalConstraint: UniversalConstraint;
+	Vector3Curve: Vector3Curve;
 	Vector3Value: Vector3Value;
 	VectorForce: VectorForce;
 	VehicleController: VehicleController;
@@ -2214,6 +2220,7 @@ interface AvatarEditorService extends Instance {
 	 */
 	PromptCreateOutfit(this: AvatarEditorService, outfit: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
 	PromptDeleteOutfit(this: AvatarEditorService, outfitId: number): void;
+	PromptRenameOutfit(this: AvatarEditorService, outfitId: number): void;
 	/**
 	 * This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to update their avatar based on the given [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) and [RigType](https://developer.roblox.com/en-us/api-reference/enum/RigType) (R6 or R15). Does not yield and can get the result by listening to the PromptSaveAvatarCompleted event. This is similar to how other prompts such as PromptPurchase work.
 	 */
@@ -2527,6 +2534,7 @@ interface AvatarEditorService extends Instance {
 	 */
 	readonly PromptCreateOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult, failureType: unknown) => void>;
 	readonly PromptDeleteOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
+	readonly PromptRenameOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
 	/**
 	 * This event fires when the [AvatarEditorService:PromptSaveAvatar](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptSaveAvatar) operation is completed. It gives a status [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) indicating whether the prompt succeeded, failed or permission was not granted by the user.
 	 */
@@ -6021,13 +6029,13 @@ interface CommandInstance extends Instance {
 	 */
 	readonly AllowGUIAccessPoints: boolean;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
-	readonly Name: string;
+	DisplayName: string;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
-	readonly Text: string;
+	readonly Name: string;
 }
 
 interface CommandService extends Instance {
@@ -8640,6 +8648,23 @@ interface DraggerService extends Instance {
 	ShowPivotIndicator: boolean;
 }
 
+interface EulerRotationCurve extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_EulerRotationCurve: unique symbol;
+	RotationOrder: Enum.RotationOrder;
+	GetAnglesAtTime(this: EulerRotationCurve, time: number): unknown;
+	GetRotationAtTime(this: EulerRotationCurve, time: number): CFrame;
+	X(this: EulerRotationCurve): FloatCurve;
+	Y(this: EulerRotationCurve): FloatCurve;
+	Z(this: EulerRotationCurve): FloatCurve;
+}
+
 interface EventIngestService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -9106,6 +9131,28 @@ interface Fire extends Instance {
 	 * Tags: NotReplicated
 	 */
 	Size: number;
+}
+
+interface FloatCurve extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FloatCurve: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Length: number;
+	GetKeyAtIndex(this: FloatCurve, index: number): FloatCurveKey;
+	GetKeyIndicesAtTime(this: FloatCurve, time: number): unknown;
+	GetKeys(this: FloatCurve): unknown;
+	GetValueAtTime(this: FloatCurve, time: number): float?;
+	InsertKey(this: FloatCurve, key: FloatCurveKey): unknown;
+	RemoveKeyAtIndex(this: FloatCurve, startingIndex: number, count?: number): number;
+	SetKeys(this: FloatCurve, keys: Array<any>): number;
 }
 
 /** A simple container used to hold and organize Roblox objects. Unlike other container classes like [Model](https://developer.roblox.com/en-us/api-reference/class/Model), it offers no additional functionality.
@@ -11099,6 +11146,10 @@ interface ScrollingFrame extends GuiObject {
 	 * @deprecated
 	 */
 	readonly _nominal_ScrollingFrame: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly AbsoluteCanvasSize: Vector2;
 	/**
 	 * The size in pixels of the frame, without the scrollbars.
 	 * Tags: ReadOnly, NotReplicated
@@ -14914,8 +14965,8 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly FileDimensions: Vector3;
-	FlattenAll: boolean;
 	InvertNegativeFaces: boolean;
+	MergeMeshes: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -29780,6 +29831,28 @@ interface TerrainRegion extends Instance {
 	readonly SizeInCells: Vector3;
 }
 
+interface TextChannel extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TextChannel: unique symbol;
+}
+
+interface TextChatService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TextChatService: unique symbol;
+}
+
 /** Represents the result of a call to [TextService:FilterStringAsync](https://developer.roblox.com/en-us/api-reference/function/TextService/FilterStringAsync).  
  * Used to distribute a filtered string accordingly.
  */
@@ -29878,6 +29951,17 @@ interface TextService extends Instance {
 		fromUserId: number,
 		textContext?: CastsToEnum<Enum.TextFilterContext>,
 	): TextFilterResult | undefined;
+}
+
+interface TextSource extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TextSource: unique symbol;
 }
 
 interface ThreadState extends Instance {
@@ -33398,6 +33482,21 @@ interface Vector3Value extends ValueBase {
 	 * Equivalent changed events exist for similar objects, such as [NumberValue](https://developer.roblox.com/en-us/api-reference/class/NumberValue) and [StringValue](https://developer.roblox.com/en-us/api-reference/class/StringValue), depending on what object type best suits the need.
 	 */
 	readonly Changed: RBXScriptSignal<(value: Vector3) => void>;
+}
+
+interface Vector3Curve extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Vector3Curve: unique symbol;
+	GetValueAtTime(this: Vector3Curve, time: number): unknown;
+	X(this: Vector3Curve): FloatCurve;
+	Y(this: Vector3Curve): FloatCurve;
+	Z(this: Vector3Curve): FloatCurve;
 }
 
 interface VoiceChatService extends Instance {
