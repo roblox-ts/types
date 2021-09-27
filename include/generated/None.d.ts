@@ -19958,7 +19958,7 @@ interface MaterialVariant extends Instance {
 	StudsPerTile: number;
 }
 
-/** Provides access to a queue within MemoryStore. A queue is a data structure that provides temporary storage for arbitrary items (up to the maximum item size – see `articles/Memory Store|MemoryStore Limits`). Each queue item has a numeric priority: MemoryStore retrieves items with higher priority from the queue first, and it retrieves Items with the same priority in order of addition.
+/** Provides access to a queue within MemoryStore. A queue is a data structure that provides temporary storage for arbitrary items (up to the maximum item size – see [`MemoryStore Limits`](https://developer.roblox.com/en-us/articles/memory-store). Each queue item has a numeric priority: MemoryStore retrieves items with higher priority from the queue first, and it retrieves Items with the same priority in order of addition.
  * 
  * Items in the queue can optionally be set to expire after a certain amount of time. Expired items simply disappear from the queue as if they were never added.
  */
@@ -20006,7 +20006,7 @@ interface MemoryStoreService extends Instance {
 	/**
 	 * Returns a [MemoryStoreQueue](https://developer.roblox.com/en-us/api-reference/class/MemoryStoreQueue) instance for the provided name. The name is global within the game, thus any place that uses the same name will access the same queue.
 	 * 
-	 * For a more in-depth look, take a look at the \`articles/Memory Store article.
+	 * For a more in-depth look, take a look at the `articles/Memory Store` article.
 	 */
 	GetQueue(this: MemoryStoreService, name: string, invisibilityTimeout?: number): MemoryStoreQueue;
 	/**
@@ -23818,6 +23818,19 @@ interface Path extends Instance {
 	readonly Unblocked: RBXScriptSignal<(unblockedWaypointIdx: number) => void>;
 }
 
+/** **Beta Feature** This class is currently a part of the PathfindingModifier beta feature. Eligible developers must enable the feature within Studio and functionality may change.
+ * 
+ * For a more detailed overview of the [PathfindingService](https://developer.roblox.com/en-us/api-reference/class/PathfindingService) and [PathfindingModifiers](https://developer.roblox.com/en-us/api-reference/class/PathfindingModifier), see the `Articles/Pathfinding|Pathfinding` article.
+ * 
+ * Pathfinding modifiers can be used to represent space that has a higher or lower cost to be traversed. When added as a child to a [Part](https://developer.roblox.com/en-us/api-reference/class/Part), it takes that Part's volume to annotate areas of the navmesh that are inside and on top of it.
+ * 
+ * You can include pathfinding modifiers in the [PathfindingService:CreatePath](https://developer.roblox.com/en-us/api-reference/function/PathfindingService/CreatePath) parameters and compute smarter paths across various materials or around defined regions.
+ * 
+ * Note that when adding a [PathfindingModifier](https://developer.roblox.com/en-us/api-reference/class/PathfindingModifier) to a part, **either**:
+ * 
+ * 1.  The part is [collidable](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanCollide) and we are interested in modifying pathfinding costs of paths on top of this part, which we call **area**.
+ * 2.  The part is `BasePart/CanCollide|non-collidable` (and usually invisible in game) and we are interested in modifying pathfinding costs of paths inside the part, which we call **volume**.
+ */
 interface PathfindingModifier extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -23827,7 +23840,17 @@ interface PathfindingModifier extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_PathfindingModifier: unique symbol;
+	/**
+	 * **Beta Feature** This class is currently a part of the PathfindingModifier beta feature. Eligible developers must enable the feature within Studio and functionality may change.
+	 * 
+	 * For a more detailed overview of the [PathfindingService](”PathfindingService”) and PathfindingModifiers, you can take a look at the [Pathfinding](”`Articles/Pathfinding|Pathfinding`”) article.
+	 * 
+	 * The name of the navigation area inside or on top of the `Part|Part's` volume.
+	 */
 	ModifierId: string;
+	/**
+	 * Determines if the parts enclosed by the modifier are traversable, even if they would normally be collided with. See [Ignoring Obstacles](https://developer.roblox.com/articles/Pathfinding#ignoring-obstacles) for details.
+	 */
 	PassThrough: boolean;
 }
 
@@ -23872,7 +23895,7 @@ interface PathfindingService extends Instance {
 	/**
 	 * Creates a [Path](https://developer.roblox.com/en-us/api-reference/class/Path) object based on various agent parameters (see below).
 	 * 
-	 * Agent Parameters
+	 * Agent parameters
 	 * ----------------
 	 * 
 	 * Key
@@ -23914,6 +23937,34 @@ interface PathfindingService extends Instance {
 	 * 4
 	 * 
 	 * Determines the spacing between intermediate waypoints in path.
+	 * 
+	 * **Costs**
+	 * 
+	 * table
+	 * 
+	 * {}
+	 * 
+	 * Table of materials or defined [PathfindingModifiers](https://developer.roblox.com/en-us/api-reference/class/PathfindingModifier) and their "cost" for traversal. Useful for making the agent prefer certain materials/regions over others.
+	 * 
+	 * Pathfinding Costs
+	 * -----------------
+	 * 
+	 * By default, all walkable (navmesh) areas have a pathfinding cost of 1.0 (jumps have a cost of 4.0), which is exactly how pathfinding worked before the introduction of [PathfindingModifiers](https://developer.roblox.com/en-us/api-reference/class/PathfindingModifier).
+	 * 
+	 * Since not all characters have the same movement abilities or constraints, it is desirable to provide a way to customize them. For example, a regular car always wants to avoid water, while an amphibian vehicle might not have such restriction.
+	 * 
+	 * To assign different pathfinding costs to different named areas/volumes and/or materials, for a particular AI character (including the player character in the Click to Move mode), just add an optional parameter `Costs` of type dictionary to CreatePath(.). It maps Pathfinding Modifier areas/volumes and materials to their pathfinding costs. For example:
+	 * 
+	 * local path = PathfindingService:CreatePath{
+	 *     AgentRadius = agentRadius,
+	 *     AgentHeight = agentHeight,
+	 *     AgentCanJump = agentCanJump,
+	 * 
+	 *     -- New parameter --
+	 *     Costs = {
+	 *         Grass = 10
+	 *     }
+	 * }
 	 * 
 	 * See the `Articles/Pathfinding|Pathfinding` guide for details and examples on using pathfinding in Roblox.
 	 */
