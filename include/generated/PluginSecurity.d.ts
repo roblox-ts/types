@@ -124,6 +124,22 @@ interface ABTestService extends Instance {
 	readonly OnUserABTestLoadingStatusChanged: RBXScriptSignal<(status: Enum.ABTestLoadingStatus, userId: number) => void>;
 }
 
+interface KeyframeSequence extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_KeyframeSequence: unique symbol;
+	/**
+	 * Contains the hip height of the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) of the model that was used to author this [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence). Default value is 1.35 since that is the hip height set for a standard R15 [character](https://developer.roblox.com/en-us/api-reference/class/Character).
+	 * Tags: Hidden
+	 */
+	AuthoredHipHeight: number;
+}
+
 interface Animator extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -861,22 +877,6 @@ interface InsertService extends Instance {
 	 * Tags: Yields
 	 */
 	CreateMeshPartAsync(this: InsertService, meshId: string, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>, renderFidelity: CastsToEnum<Enum.RenderFidelity>): MeshPart;
-}
-
-interface KeyframeSequence extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_KeyframeSequence: unique symbol;
-	/**
-	 * Contains the hip height of the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) of the model that was used to author this [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence). Default value is 1.35 since that is the hip height set for a standard R15 [character](https://developer.roblox.com/en-us/api-reference/class/Character).
-	 * Tags: Hidden
-	 */
-	AuthoredHipHeight: number;
 }
 
 interface KeyframeSequenceProvider extends Instance {
@@ -3385,6 +3385,10 @@ interface StudioData extends Instance {
 	 * Tags: Hidden
 	 */
 	readonly EnableScriptCollabByDefaultOnLoad: boolean;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly EnableTeamCreateStreamingOnLoad: boolean;
 	/**
 	 * Tags: Hidden, NotReplicated
 	 */
