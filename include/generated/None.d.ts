@@ -23,6 +23,7 @@ interface Services {
 	ContentProvider: ContentProvider;
 	ContextActionService: ContextActionService;
 	ControllerService: ControllerService;
+	CSGCacheService: CSGCacheService;
 	DataStoreService: DataStoreService;
 	Debris: Debris;
 	DebuggerConnectionManager: DebuggerConnectionManager;
@@ -204,6 +205,7 @@ interface CreatableInstances {
 	Part: Part;
 	ParticleEmitter: ParticleEmitter;
 	PartOperation: PartOperation;
+	PathfindingLink: PathfindingLink;
 	PathfindingModifier: PathfindingModifier;
 	PitchShiftSoundEffect: PitchShiftSoundEffect;
 	PointLight: PointLight;
@@ -220,6 +222,7 @@ interface CreatableInstances {
 	Rotate: Rotate;
 	RotateP: RotateP;
 	RotateV: RotateV;
+	RotationCurve: RotationCurve;
 	ScreenGui: ScreenGui;
 	Script: Script;
 	ScrollingFrame: ScrollingFrame;
@@ -348,6 +351,7 @@ interface AbstractInstances {
 }
 
 interface Instances extends Services, CreatableInstances, AbstractInstances {
+	AnimationClip: AnimationClip;
 	AnimationTrack: AnimationTrack;
 	BaseWrap: BaseWrap;
 	CatalogPages: CatalogPages;
@@ -364,6 +368,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DataStorePages: DataStorePages;
 	DataStoreVersionPages: DataStoreVersionPages;
 	DebuggerConnection: DebuggerConnection;
+	DebuggerLuaResponse: DebuggerLuaResponse;
 	DebuggerVariable: DebuggerVariable;
 	EmotesPages: EmotesPages;
 	FriendPages: FriendPages;
@@ -397,9 +402,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	PlayerScripts: PlayerScripts;
 	PluginManagerInterface: PluginManagerInterface;
 	PoseBase: PoseBase;
-	ScriptRef: ScriptRef;
-	ScriptRefId: ScriptRefId;
-	ScriptRefPath: ScriptRefPath;
 	StackFrame: StackFrame;
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
@@ -1395,6 +1397,87 @@ interface Animation extends Instance {
 	 * Note, the animation will need to be loaded onto an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) in order to play it.
 	 */
 	AnimationId: string;
+}
+
+interface AnimationClip extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AnimationClip: unique symbol;
+	Loop: boolean;
+	Priority: Enum.AnimationPriority;
+}
+
+/** This object stores all the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)s for an animation, determines if the animation is looped, and determines its priority against other animations.
+ * 
+ * What is a Keyframe Sequence?
+ * ----------------------------
+ * 
+ * The animation data Roblox uses in the playback of an animation, referenced by the [Animation.AnimationId](https://developer.roblox.com/en-us/api-reference/property/Animation/AnimationId) property, is constructed from a KeyframeSequence. Every animation has a KeyframeSequence associated with it. KeyframeSequences are usually created by the Roblox Animation Editor but can be created through other plugins or even manually. Once uploaded to Roblox, their Content ID is used for the [Animation.AnimationId](https://developer.roblox.com/en-us/api-reference/property/Animation/AnimationId) property.
+ * 
+ * Note, in most cases developers do not need to manipulate KeyframeSequences as the animation editor covers most animation functionality. However, in some cases a developer may wish to generate an animation from a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or build their own plugin.
+ * 
+ * KeyframeSequence Properties
+ * ---------------------------
+ * 
+ * The priority and looped animation settings are set by [KeyframeSequence.Priority](https://developer.roblox.com/en-us/api-reference/property/KeyframeSequence/Priority) and [KeyframeSequence.Loop](https://developer.roblox.com/en-us/api-reference/property/KeyframeSequence/Loop). Note these can be eventually overwritten by the [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) properties.
+ * 
+ * The length of an animation is determined by the last [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) in the sequence, meaning the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) with the highest [Keyframe.Time](https://developer.roblox.com/en-us/api-reference/property/Keyframe/Time) property.
+ * 
+ * KeyframeSequence Structure
+ * --------------------------
+ * 
+ * KeyframeSequences are a container that hold [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)s. Keyframes represent a 'key' frame in the animation, that are interpolated between during playback.
+ * 
+ * Keyframes contain [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s. [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s are specific to each [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) being animated and contain the `CFrame` applied to the [Motor6D](https://developer.roblox.com/en-us/api-reference/class/Motor6D) connecting to the part. Poses are named according to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) they correspond with. For this reason, animations require distinct part names to play correctly.
+ * 
+ * Poses are structured based on joint hierarchy. Each [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) is parented to the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) corresponding to the part it is attached to. In practice, this means the poses branch out from the root part. See below for a visual example.
+ * 
+ * ![](https://developer.roblox.com/assets/blt2e767397c28fecda/KeyframeSequence_-_Copy.png)
+ * 
+ * Using KeyframeSequences when making animations
+ * ----------------------------------------------
+ * 
+ * KeyframeSequences must be first uploaded to Roblox before they can be played. This can be done by right clicking on the KeyframeSequence and clicking 'Save to Roblox'. Alternatively, [Plugin:SaveSelectedToRoblox](https://developer.roblox.com/en-us/api-reference/function/Plugin/SaveSelectedToRoblox) can be used. This will bring up the animation upload window.
+ * 
+ * In some cases, a developer may want to preview an Animation before uploading it to the Roblox site. This can be achieved by generating a temporary id using [KeyframeSequenceProvider:RegisterKeyframeSequence](https://developer.roblox.com/en-us/api-reference/function/KeyframeSequenceProvider/RegisterKeyframeSequence). This will generate a hash id that can be used for localized animation testing.
+ * 
+ * Obtaining KeyframeSequences
+ * ---------------------------
+ * 
+ * In some cases the developer may wish to download the KeyframeSequence corresponding to an existing uploaded Animation. This can be done so using [KeyframeSequenceProvider:GetKeyframeSequenceAsync](https://developer.roblox.com/en-us/api-reference/function/KeyframeSequenceProvider/GetKeyframeSequenceAsync).
+ */
+interface KeyframeSequence extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_KeyframeSequence: unique symbol;
+	/**
+	 * This function adds a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) to the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) by parenting it to the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence). It is functionally identical to setting the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)'s [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence).
+	 * 
+	 * Note, this function will not error when an instance other than a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) is given as the keyframe parameter and will parent it successfully.
+	 */
+	AddKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
+	/**
+	 * **GetKeyframes** returns an array that contains all [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)s that have been added to a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence).
+	 */
+	GetKeyframes(this: KeyframeSequence): Array<Keyframe>;
+	/**
+	 * This function removes a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) from the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) by setting its parent to nil. It is functionally identical to setting the keyframe's parent to nil
+	 * 
+	 * The [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)'s parent is set to nil, but it is not destroyed. This means, provided the keyframe is referenced it can be re-parented later.
+	 * 
+	 * Note, this function will not error when an [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) other than a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) is given as the keyframe parameter.
+	 */
+	RemoveKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
 }
 
 /** An object which allows animations to be loaded and applied to a character or model in place of a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) when a Humanoid is not needed. Creates an [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator) and loads animations to update [Motor6Ds](https://developer.roblox.com/en-us/api-reference/class/Motor6D) of said character to react in the way that is described within the animation asset referenced by an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) object.
@@ -4826,6 +4909,17 @@ interface BulkImportService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_BulkImportService: unique symbol;
+}
+
+interface CSGCacheService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CSGCacheService: unique symbol;
 }
 
 interface CalloutService extends Instance {
@@ -8390,6 +8484,17 @@ interface DebuggerConnectionManager extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_DebuggerConnectionManager: unique symbol;
+}
+
+interface DebuggerLuaResponse extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DebuggerLuaResponse: unique symbol;
 }
 
 interface DebuggerVariable extends Instance {
@@ -14950,6 +15055,7 @@ interface ImporterMeshSettings extends ImporterBaseSettings {
 	 */
 	readonly _nominal_ImporterMeshSettings: unique symbol;
 	DoubleSided: boolean;
+	IgnoreVertexColors: boolean;
 }
 
 interface ImporterRootSettings extends ImporterBaseSettings {
@@ -17382,86 +17488,6 @@ interface KeyframeMarker extends Instance {
 	 * *   [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack), controls the playback of an animation on a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) or [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController)
 	 */
 	Value: string;
-}
-
-/** This object stores all the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)s for an animation, determines if the animation is looped, and determines its priority against other animations.
- * 
- * What is a Keyframe Sequence?
- * ----------------------------
- * 
- * The animation data Roblox uses in the playback of an animation, referenced by the [Animation.AnimationId](https://developer.roblox.com/en-us/api-reference/property/Animation/AnimationId) property, is constructed from a KeyframeSequence. Every animation has a KeyframeSequence associated with it. KeyframeSequences are usually created by the Roblox Animation Editor but can be created through other plugins or even manually. Once uploaded to Roblox, their Content ID is used for the [Animation.AnimationId](https://developer.roblox.com/en-us/api-reference/property/Animation/AnimationId) property.
- * 
- * Note, in most cases developers do not need to manipulate KeyframeSequences as the animation editor covers most animation functionality. However, in some cases a developer may wish to generate an animation from a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or build their own plugin.
- * 
- * KeyframeSequence Properties
- * ---------------------------
- * 
- * The priority and looped animation settings are set by [KeyframeSequence.Priority](https://developer.roblox.com/en-us/api-reference/property/KeyframeSequence/Priority) and [KeyframeSequence.Loop](https://developer.roblox.com/en-us/api-reference/property/KeyframeSequence/Loop). Note these can be eventually overwritten by the [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) properties.
- * 
- * The length of an animation is determined by the last [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) in the sequence, meaning the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) with the highest [Keyframe.Time](https://developer.roblox.com/en-us/api-reference/property/Keyframe/Time) property.
- * 
- * KeyframeSequence Structure
- * --------------------------
- * 
- * KeyframeSequences are a container that hold [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)s. Keyframes represent a 'key' frame in the animation, that are interpolated between during playback.
- * 
- * Keyframes contain [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s. [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s are specific to each [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) being animated and contain the `CFrame` applied to the [Motor6D](https://developer.roblox.com/en-us/api-reference/class/Motor6D) connecting to the part. Poses are named according to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) they correspond with. For this reason, animations require distinct part names to play correctly.
- * 
- * Poses are structured based on joint hierarchy. Each [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) is parented to the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) corresponding to the part it is attached to. In practice, this means the poses branch out from the root part. See below for a visual example.
- * 
- * ![](https://developer.roblox.com/assets/blt2e767397c28fecda/KeyframeSequence_-_Copy.png)
- * 
- * Using KeyframeSequences when making animations
- * ----------------------------------------------
- * 
- * KeyframeSequences must be first uploaded to Roblox before they can be played. This can be done by right clicking on the KeyframeSequence and clicking 'Save to Roblox'. Alternatively, [Plugin:SaveSelectedToRoblox](https://developer.roblox.com/en-us/api-reference/function/Plugin/SaveSelectedToRoblox) can be used. This will bring up the animation upload window.
- * 
- * In some cases, a developer may want to preview an Animation before uploading it to the Roblox site. This can be achieved by generating a temporary id using [KeyframeSequenceProvider:RegisterKeyframeSequence](https://developer.roblox.com/en-us/api-reference/function/KeyframeSequenceProvider/RegisterKeyframeSequence). This will generate a hash id that can be used for localized animation testing.
- * 
- * Obtaining KeyframeSequences
- * ---------------------------
- * 
- * In some cases the developer may wish to download the KeyframeSequence corresponding to an existing uploaded Animation. This can be done so using [KeyframeSequenceProvider:GetKeyframeSequenceAsync](https://developer.roblox.com/en-us/api-reference/function/KeyframeSequenceProvider/GetKeyframeSequenceAsync).
- */
-interface KeyframeSequence extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_KeyframeSequence: unique symbol;
-	/**
-	 * Determines whether the animation created from the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) will be looped. When set to true the animation will continuously repeat each time the animation finishes.
-	 * 
-	 * When an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) has been created from an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation), its [AnimationTrack.Looped](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/Looped) property will default to the original [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) value. Note this value can be overwritten.
-	 */
-	Loop: boolean;
-	/**
-	 * Determines the default priority of an animation created from the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence). Depending on what this is set to, playing multiple animations at once will look to this property to figure out which [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) `Poses` should be played over one another.
-	 * 
-	 * When an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) has been created from an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation), its [AnimationTrack.Priority](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/Priority) property will default to the original [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) value. Note this value can be overwritten.
-	 */
-	Priority: Enum.AnimationPriority;
-	/**
-	 * This function adds a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) to the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) by parenting it to the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence). It is functionally identical to setting the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)'s [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence).
-	 * 
-	 * Note, this function will not error when an instance other than a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) is given as the keyframe parameter and will parent it successfully.
-	 */
-	AddKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
-	/**
-	 * **GetKeyframes** returns an array that contains all [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)s that have been added to a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence).
-	 */
-	GetKeyframes(this: KeyframeSequence): Array<Keyframe>;
-	/**
-	 * This function removes a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) from the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) by setting its parent to nil. It is functionally identical to setting the keyframe's parent to nil
-	 * 
-	 * The [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)'s parent is set to nil, but it is not destroyed. This means, provided the keyframe is referenced it can be re-parented later.
-	 * 
-	 * Note, this function will not error when an [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) other than a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) is given as the keyframe parameter.
-	 */
-	RemoveKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
 }
 
 /** The KeyframeSequenceProvider is a service that is used to load and preview [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence)s. It includes a number of functions that are useful when working with [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation)s.
@@ -23818,6 +23844,20 @@ interface Path extends Instance {
 	readonly Unblocked: RBXScriptSignal<(unblockedWaypointIdx: number) => void>;
 }
 
+interface PathfindingLink extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PathfindingLink: unique symbol;
+	Attachment0: Attachment | undefined;
+	Attachment1: Attachment | undefined;
+	IsBidirectional: boolean;
+}
+
 /** **Beta Feature** This class is currently a part of the PathfindingModifier beta feature. Eligible developers must enable the feature within Studio and functionality may change.
  * 
  * For a more detailed overview of the [PathfindingService](https://developer.roblox.com/en-us/api-reference/class/PathfindingService) and [PathfindingModifiers](https://developer.roblox.com/en-us/api-reference/class/PathfindingModifier), see the `Articles/Pathfinding|Pathfinding` article.
@@ -26225,6 +26265,28 @@ interface ReplicatedStorage extends Instance {
 	readonly _nominal_ReplicatedStorage: unique symbol;
 }
 
+interface RotationCurve extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RotationCurve: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Length: number;
+	GetKeyAtIndex(this: RotationCurve, index: number): RotationCurveKey;
+	GetKeyIndicesAtTime(this: RotationCurve, time: number): unknown;
+	GetKeys(this: RotationCurve): unknown;
+	GetValueAtTime(this: RotationCurve, time: number): CoordinateFrame?;
+	InsertKey(this: RotationCurve, key: RotationCurveKey): unknown;
+	RemoveKeyAtIndex(this: RotationCurve, startingIndex: number, count?: number): number;
+	SetKeys(this: RotationCurve, keys: Array<any>): number;
+}
+
 /** **RunService** contains methods and events for time-management as well as for managing the context in which a game or script is running. Methods like [IsClient](https://developer.roblox.com/en-us/api-reference/function/RunService/IsClient), [IsServer](https://developer.roblox.com/en-us/api-reference/function/RunService/IsServer), [IsStudio](https://developer.roblox.com/en-us/api-reference/function/RunService/IsStudio), can help you determine under what context code is running. These methods are useful for ModuleScripts that may be required by both client and server scripts. Furthermore, [IsStudio](https://developer.roblox.com/en-us/api-reference/function/RunService/IsStudio) can be used to add special behaviors for in-studio testing.
  * 
  * RunService also houses events that allow your code to adhere to Roblox's frame-by-frame loop, such as [Stepped](https://developer.roblox.com/en-us/api-reference/event/RunService/Stepped), [Heartbeat](https://developer.roblox.com/en-us/api-reference/event/RunService/Heartbeat) and [RenderStepped](https://developer.roblox.com/en-us/api-reference/event/RunService/RenderStepped). Selecting the proper event to use for any case is important, so you should read `articles/Task Scheduler|Task Scheduler` to make an informed decision.
@@ -26599,39 +26661,6 @@ interface ScriptContext extends Instance {
 	 * Fired when an error occurs.
 	 */
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script?: LuaSourceContainer) => void>;
-}
-
-interface ScriptRef extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ScriptRef: unique symbol;
-}
-
-interface ScriptRefId extends ScriptRef {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ScriptRefId: unique symbol;
-}
-
-interface ScriptRefPath extends ScriptRef {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ScriptRefPath: unique symbol;
 }
 
 /** **ServerScriptService** is a container service for [Script](https://developer.roblox.com/en-us/api-reference/class/Script), [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) and other scripting-related assets that are only meant for server use. The contents are never replicated to player clients at all, which allows for a secure storage of important game logic. Script objects will run if they are within this service and not [Disabled](https://developer.roblox.com/en-us/api-reference/property/BaseScript/Disabled).
@@ -33560,28 +33589,113 @@ interface VoiceChatService extends Instance {
 	 */
 	readonly _nominal_VoiceChatService: unique symbol;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
+	 * @deprecated
 	 */
 	readonly VoiceChatState: Enum.VoiceChatState;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	GetAndClearCallFailureMessage(this: VoiceChatService): string;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	GetAudioProcessingSettings(this: VoiceChatService): unknown;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	GetMicDevices(this: VoiceChatService): unknown;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	GetParticipants(this: VoiceChatService): unknown;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	GetSpeakerDevices(this: VoiceChatService): unknown;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	GetVoiceChatApiVersion(this: VoiceChatService): number;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	GetVoiceChatAvailable(this: VoiceChatService): number;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	IsPublishPaused(this: VoiceChatService): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	IsSubscribePaused(this: VoiceChatService, userId: number): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	JoinByGroupId(this: VoiceChatService, groupId: string, isMicMuted?: boolean): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	JoinByGroupIdToken(this: VoiceChatService, groupId: string, isMicMuted?: boolean): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	Leave(this: VoiceChatService): void;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	PublishPause(this: VoiceChatService, paused: boolean): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	SetMicDevice(this: VoiceChatService, micDeviceName: string, micDeviceGuid: string): void;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	SetSpeakerDevice(this: VoiceChatService, speakerDeviceName: string, speakerDeviceGuid: string): void;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	SubscribePause(this: VoiceChatService, userId: number, paused: boolean): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	SubscribePauseAll(this: VoiceChatService, paused: boolean): boolean;
+	/**
+	 * Tags: Yields
+	 */
+	IsVoiceEnabledForUserIdAsync(this: VoiceChatService, userId: number): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	readonly ParticipantsStateChanged: RBXScriptSignal<(participantsLeft: Array<any>, participantsJoined: Array<any>, updatedStates: Array<any>) => void>;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	readonly PlayerMicActivitySignalChange: RBXScriptSignal<(activityInfo: object) => void>;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	readonly StateChanged: RBXScriptSignal<(oldValue: Enum.VoiceChatState, newValue: Enum.VoiceChatState) => void>;
 }
 
