@@ -323,7 +323,7 @@ interface AgentParameters {
 	/** Determines the spacing between intermediate waypoints in path. */
 	WaypointSpacing?: number;
 	/** Table of materials or defined PathfindingModifiers and their "cost" for traversal. Useful for making the agent prefer certain materials/regions over others. */
-	Costs?: { [key: string]: number };
+	Costs?: { [K in Enum.Material["Name"]]?: number } & { [index: string]: number };
 }
 
 interface CollisionGroupInfo {
