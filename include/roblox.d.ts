@@ -320,6 +320,10 @@ interface AgentParameters {
 	AgentHeight?: number;
 	/** Sets whether off-mesh links for jumping are allowed. */
 	AgentCanJump?: boolean;
+	/** Determines the spacing between intermediate waypoints in path. */
+	WaypointSpacing?: number;
+	/** Table of materials or defined PathfindingModifiers and their "cost" for traversal. Useful for making the agent prefer certain materials/regions over others. */
+	Costs?: { [key: string]: number };
 }
 
 interface CollisionGroupInfo {
