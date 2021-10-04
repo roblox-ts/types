@@ -1424,7 +1424,7 @@ interface AnimationClip extends Instance {
  * KeyframeSequence Properties
  * ---------------------------
  * 
- * The priority and looped animation settings are set by [KeyframeSequence.Priority](https://developer.roblox.com/en-us/api-reference/property/KeyframeSequence/Priority) and [KeyframeSequence.Loop](https://developer.roblox.com/en-us/api-reference/property/KeyframeSequence/Loop). Note these can be eventually overwritten by the [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) properties.
+ * The priority and looped animation settings are set by `KeyframeSequence/Priority` and `KeyframeSequence/Loop`. Note these can be eventually overwritten by the [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) properties.
  * 
  * The length of an animation is determined by the last [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) in the sequence, meaning the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) with the highest [Keyframe.Time](https://developer.roblox.com/en-us/api-reference/property/Keyframe/Time) property.
  * 
@@ -8753,6 +8753,7 @@ interface DraggerService extends Instance {
 	ShowPivotIndicator: boolean;
 }
 
+/** A EulerRotation Curve represents a 3D rotation curve, it groups 3 [FloatCurves](https://developer.roblox.com/en-us/api-reference/class/FloatCurve), stored as 3 [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) children instances. The rotation is decomposed in 3 Euler angles channels that can be accessed via [EulerRotationCurve:X](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/X), [EulerRotationCurve:Y](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Y), [EulerRotationCurve:Z](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Z) methods. The 3 axes can be sampled simultaneously via the method [EulerRotationCurve:GetAnglesAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetAnglesAtTime) returning the 3 Euler angles as a Vector3. Similarly, [EulerRotationCurve:GetRotationAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetRotationAtTime) samples all channels simultaneously but returns a CFrame rotated by X, Y, and Z according to the specified rotation order. */
 interface EulerRotationCurve extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -8762,11 +8763,23 @@ interface EulerRotationCurve extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_EulerRotationCurve: unique symbol;
+	/**
+	 * Euler angles rotation order
+	 */
 	RotationOrder: Enum.RotationOrder;
 	GetAnglesAtTime(this: EulerRotationCurve, time: number): unknown;
+	/**
+	 * Samples the [EulerRotationCurve](https://developer.roblox.com/en-us/api-reference/class/EulerRotationCurve) at a given time and returns the corresponding rotation. Empty Euler angles channels are interpreted as zero.
+	 */
 	GetRotationAtTime(this: EulerRotationCurve, time: number): CFrame;
 	X(this: EulerRotationCurve): FloatCurve;
+	/**
+	 * Returns the [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) controlling the Y channel. It is the first child instance of type [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) named 'Y'. If none is found an empty [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) is created.
+	 */
 	Y(this: EulerRotationCurve): FloatCurve;
+	/**
+	 * Returns the [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) controlling the Z channel. It is the first child instance of type [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) named `Z`. If none is found an empty [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) is created.
+	 */
 	Z(this: EulerRotationCurve): FloatCurve;
 }
 
@@ -30209,7 +30222,15 @@ interface Trail extends Instance {
 	 */
 	LightEmission: number;
 	/**
-	 * The LightInfluence property sets how much the trail is influenced by the lighting around it. The property can be set to a value from 0 to 1, with 1 being the most influenced and 0 be the least influenced.
+	 * **LightInfluence** determines the factor the light in the environment affects the appearance of the Trail. A value of zero (0) ensures no influence which allows a trail to be visible even in complete darkness.
+	 * 
+	 * Changing this property immediately affects all existing and future segments of the trail.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [LightEmission](https://developer.roblox.com/en-us/api-reference/property/Trail/LightEmission), another Trail property related to light
+	 * *   [Beam.LightEmission](https://developer.roblox.com/en-us/api-reference/property/Beam/LightEmission), an identical property used by [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)s
 	 */
 	LightInfluence: number;
 	/**
@@ -31612,20 +31633,15 @@ interface UserInputService extends Instance {
 	 */
 	readonly KeyboardEnabled: boolean;
 	/**
-	 * The ModalEnabled property toggles whether Roblox's mobile controls are hidden on a player's mobile device. The default value of this property is _false_. The controls are hidden when set to _true_, and not hidden when set to _false_. See the images below for examples.
+	 * **ModalEnabled** property determines whether character controls are hidden on [TouchEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/TouchEnabled) devices. By default, this property is _false_ and controls are visible.
 	 * 
 	 * ![ModalEnabled = false](https://developer.roblox.com/assets/blt0785000a560d8788/UISModalEnabledFalse.png)
 	 * 
 	 * ![ModalEnabled = true](https://developer.roblox.com/assets/bltb592006955fd388d/UISModalEnabledTrue.png)
 	 * 
-	 * This property can be used when you want to hide or display Roblox's mobile controls for a player.
+	 * This property will only work when used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) running for the player whose character controls are to be hidden.
 	 * 
 	 * Even if mobile controls are hidden for a player on a mobile device, other UserInputService events such as [UserInputService.InputBegan](https://developer.roblox.com/en-us/api-reference/event/UserInputService/InputBegan) and [UserInputService.TouchSwipe](https://developer.roblox.com/en-us/api-reference/event/UserInputService/TouchSwipe) can still be used to process other forms of user input on mobile devices with an enabled touch screen (see the main UserInputService class page for a full list).
-	 * 
-	 * Since [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) only runs client-side, this property will only work when used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
-	 * 
-	 * ##See Also  
-	 * The tutorial on disabling parts of the game interface, found [here](https://www.robloxdev.com/articles/Disabling-Parts-of-Game-Interface), provides excellent documentation on using this property.
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
