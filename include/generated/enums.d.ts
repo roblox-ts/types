@@ -5778,14 +5778,6 @@ declare namespace Enum {
 
 		export const Automatic: Automatic;
 
-		export interface Direct3D9 {
-			Name: "Direct3D9";
-			Value: 3;
-			EnumType: EnumType<GraphicsMode>;
-		}
-
-		export const Direct3D9: Direct3D9;
-
 		export interface Direct3D11 {
 			Name: "Direct3D11";
 			Value: 2;
@@ -5828,7 +5820,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<GraphicsMode>
 	}
-	export type GraphicsMode = GraphicsMode.Automatic | GraphicsMode.Direct3D9 | GraphicsMode.Direct3D11 | GraphicsMode.OpenGL | GraphicsMode.Metal | GraphicsMode.Vulkan | GraphicsMode.NoGraphics;
+	export type GraphicsMode = GraphicsMode.Automatic | GraphicsMode.Direct3D11 | GraphicsMode.OpenGL | GraphicsMode.Metal | GraphicsMode.Vulkan | GraphicsMode.NoGraphics;
 	export namespace HandlesStyle {
 		export interface Resize {
 			Name: "Resize";
@@ -10149,6 +10141,90 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<PartType>
 	}
 	export type PartType = PartType.Ball | PartType.Block | PartType.Cylinder;
+	export namespace ParticleEmitterShape {
+		export interface Box {
+			Name: "Box";
+			Value: 0;
+			EnumType: EnumType<ParticleEmitterShape>;
+		}
+
+		export const Box: Box;
+
+		export interface Sphere {
+			Name: "Sphere";
+			Value: 1;
+			EnumType: EnumType<ParticleEmitterShape>;
+		}
+
+		export const Sphere: Sphere;
+
+		export interface Cylinder {
+			Name: "Cylinder";
+			Value: 2;
+			EnumType: EnumType<ParticleEmitterShape>;
+		}
+
+		export const Cylinder: Cylinder;
+
+		export interface Disc {
+			Name: "Disc";
+			Value: 3;
+			EnumType: EnumType<ParticleEmitterShape>;
+		}
+
+		export const Disc: Disc;
+
+		export function GetEnumItems(this: defined): Array<ParticleEmitterShape>
+	}
+	export type ParticleEmitterShape = ParticleEmitterShape.Box | ParticleEmitterShape.Sphere | ParticleEmitterShape.Cylinder | ParticleEmitterShape.Disc;
+	export namespace ParticleEmitterShapeInOut {
+		export interface Outward {
+			Name: "Outward";
+			Value: 0;
+			EnumType: EnumType<ParticleEmitterShapeInOut>;
+		}
+
+		export const Outward: Outward;
+
+		export interface Inward {
+			Name: "Inward";
+			Value: 1;
+			EnumType: EnumType<ParticleEmitterShapeInOut>;
+		}
+
+		export const Inward: Inward;
+
+		export interface InAndOut {
+			Name: "InAndOut";
+			Value: 2;
+			EnumType: EnumType<ParticleEmitterShapeInOut>;
+		}
+
+		export const InAndOut: InAndOut;
+
+		export function GetEnumItems(this: defined): Array<ParticleEmitterShapeInOut>
+	}
+	export type ParticleEmitterShapeInOut = ParticleEmitterShapeInOut.Outward | ParticleEmitterShapeInOut.Inward | ParticleEmitterShapeInOut.InAndOut;
+	export namespace ParticleEmitterShapeStyle {
+		export interface Volume {
+			Name: "Volume";
+			Value: 0;
+			EnumType: EnumType<ParticleEmitterShapeStyle>;
+		}
+
+		export const Volume: Volume;
+
+		export interface Surface {
+			Name: "Surface";
+			Value: 1;
+			EnumType: EnumType<ParticleEmitterShapeStyle>;
+		}
+
+		export const Surface: Surface;
+
+		export function GetEnumItems(this: defined): Array<ParticleEmitterShapeStyle>
+	}
+	export type ParticleEmitterShapeStyle = ParticleEmitterShapeStyle.Volume | ParticleEmitterShapeStyle.Surface;
 	export namespace ParticleOrientation {
 		export interface FacingCamera {
 			Name: "FacingCamera";
