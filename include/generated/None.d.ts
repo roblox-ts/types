@@ -52,11 +52,13 @@ interface Services {
 	MemoryStoreService: MemoryStoreService;
 	MessageBusService: MessageBusService;
 	MessagingService: MessagingService;
+	NewVoiceChatService: NewVoiceChatService;
 	PathfindingService: PathfindingService;
 	PhysicsService: PhysicsService;
 	Players: Players;
 	PluginPolicyService: PluginPolicyService;
 	PolicyService: PolicyService;
+	ProcessInstancePhysicsService: ProcessInstancePhysicsService;
 	ProximityPromptService: ProximityPromptService;
 	PublishService: PublishService;
 	RemoteDebuggerServer: RemoteDebuggerServer;
@@ -140,6 +142,7 @@ interface CreatableInstances {
 	ConeHandleAdornment: ConeHandleAdornment;
 	Configuration: Configuration;
 	CornerWedgePart: CornerWedgePart;
+	CurveAnimation: CurveAnimation;
 	CylinderHandleAdornment: CylinderHandleAdornment;
 	CylinderMesh: CylinderMesh;
 	CylindricalConstraint: CylindricalConstraint;
@@ -1410,6 +1413,17 @@ interface AnimationClip extends Instance {
 	readonly _nominal_AnimationClip: unique symbol;
 	Loop: boolean;
 	Priority: Enum.AnimationPriority;
+}
+
+interface CurveAnimation extends AnimationClip {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CurveAnimation: unique symbol;
 }
 
 /** This object stores all the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)s for an animation, determines if the animation is looped, and determines its priority against other animations.
@@ -4023,6 +4037,7 @@ interface Beam extends Instance {
 	 * For more information how a [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam) curves, see [Beam.CurveSize1](https://developer.roblox.com/en-us/api-reference/property/Beam/CurveSize1).
 	 */
 	Attachment1: Attachment | undefined;
+	Brightness: number;
 	/**
 	 * Determines the color of the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam).
 	 * 
@@ -15045,6 +15060,7 @@ interface ImporterGroupSettings extends ImporterBaseSettings {
 	 * @deprecated
 	 */
 	readonly _nominal_ImporterGroupSettings: unique symbol;
+	ImportAsModelAsset: boolean;
 }
 
 interface ImporterJointSettings extends ImporterBaseSettings {
@@ -15067,8 +15083,16 @@ interface ImporterMeshSettings extends ImporterBaseSettings {
 	 * @deprecated
 	 */
 	readonly _nominal_ImporterMeshSettings: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Dimensions: Vector3;
 	DoubleSided: boolean;
 	IgnoreVertexColors: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly PolygonCount: number;
 }
 
 interface ImporterRootSettings extends ImporterBaseSettings {
@@ -15084,6 +15108,7 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly FileDimensions: Vector3;
+	ImportAsModelAsset: boolean;
 	InvertNegativeFaces: boolean;
 	MergeMeshes: boolean;
 	/**
@@ -20688,6 +20713,17 @@ interface NetworkMarker extends Instance {
 	readonly Received: RBXScriptSignal<() => void>;
 }
 
+interface NewVoiceChatService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_NewVoiceChatService: unique symbol;
+}
+
 /** The NoCollisionConstraint is an instance used to prevent collisions between two specific parts. Connected [Parts](https://developer.roblox.com/en-us/api-reference/class/BasePart) will have no collision reaction between them, but can still have collisions with the rest of the world. Both parts can still receive touch events.
  * 
  * Using a NoCollisionConstraint will allow you to create and share [Models](https://developer.roblox.com/en-us/api-reference/class/Model) with customized collision filtering. While you can still achieve collision filtering with [Collision Groups](https://developer.roblox.com/articles/Collision-Filtering), you are unable to export that information to a model without adding a script to set them when the game runs.
@@ -23583,6 +23619,7 @@ interface ParticleEmitter extends Instance {
 	 * Acceleration is most often used to apply a gravity effect to particles (try a value of (0, -3, 0) for this). You can also use small values on the X/Z axes to make it look like particles are being blown away by wind. If you emit a bubble particle downwards, you could use an acceleration of (0, 5, 0) to cause the bubbles to decelerate and then float back upwards.
 	 */
 	Acceleration: Vector3;
+	Brightness: number;
 	/**
 	 * The Color property determines the color of all particles active in an emitter's system. The color is applied to the [ParticleEmitter.Texture](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Texture) when rendering, and uses the texture alpha along with the [ParticleEmitter.Transparency](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Transparency). If a particle has a [ParticleEmitter.LightEmission](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/LightEmission) of greater than 0, darker colors will make particles appear more transparent. Below, two default [ParticleEmitter](https://developer.roblox.com/en-us/api-reference/class/ParticleEmitter) are pictured, except the right emitter uses a Color from yellow to cyan.
 	 * 
@@ -23691,6 +23728,10 @@ interface ParticleEmitter extends Instance {
 	 * Changes to this value only affect new particles; existing particles will maintain the rotation at which they were originally emitted.
 	 */
 	Rotation: NumberRange;
+	Shape: Enum.ParticleEmitterShape;
+	ShapeInOut: Enum.ParticleEmitterShapeInOut;
+	ShapePartial: number;
+	ShapeStyle: Enum.ParticleEmitterShapeStyle;
 	/**
 	 * The Size property determines the world size in studs of all active particles over their individual lifetimes. This property represents the dimensions of the square [ParticleEmitter.Texture](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Texture) for each particle. It is a [NumberSequence](https://developer.roblox.com/en-us/api-reference/datatype/NumberSequence) that works similar to [ParticleEmitter.Transparency](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Transparency) and [ParticleEmitter.Color](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Color).
 	 * 
@@ -23725,6 +23766,7 @@ interface ParticleEmitter extends Instance {
 	 * Setting one axis to 360 will cause particles to emit in all direction in a **circle**. Setting both to 360 will cause particles to emit in all directions in a **sphere**.
 	 */
 	SpreadAngle: Vector2;
+	Squash: NumberSequence;
 	/**
 	 * The Texture property determines the image rendered on particle billboards. The rendered image is influenced by [ParticleEmitter.Color](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Color), [ParticleEmitter.Transparency](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Transparency), [ParticleEmitter.LightInfluence](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/LightInfluence), and [ParticleEmitter.LightEmission](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/LightEmission). Transparent textures work best for particles
 	 * 
@@ -25847,6 +25889,17 @@ interface SunRaysEffect extends PostEffect {
 	 * Spread determines how wide the sun rays will spread across the sky. Its value should be set between 0 and 1 as values outside that range have undefined behavior.
 	 */
 	Spread: number;
+}
+
+interface ProcessInstancePhysicsService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ProcessInstancePhysicsService: unique symbol;
 }
 
 /** The ProximityPrompt is an object that allows developers to prompt users to interact with an object in the 3D world, such as opening a door or picking up an item.
@@ -30154,6 +30207,7 @@ interface Trail extends Instance {
 	 * Changing the Attachments of a Trail while a trail is drawing will remove all of the segments the trail has already drawn.
 	 */
 	Attachment1: Attachment | undefined;
+	Brightness: number;
 	/**
 	 * The color of a [Trail](https://developer.roblox.com/en-us/api-reference/class/Trail) can be set with the effect's Color property. This property determines what color the segments of the trail will have through their [Trail.Lifetime](https://developer.roblox.com/en-us/api-reference/property/Trail/Lifetime).
 	 * 
@@ -33605,16 +33659,6 @@ interface VoiceChatService extends Instance {
 	 */
 	readonly _nominal_VoiceChatService: unique symbol;
 	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
-	 * @deprecated
-	 */
-	readonly VoiceChatState: Enum.VoiceChatState;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	GetAndClearCallFailureMessage(this: VoiceChatService): string;
-	/**
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
@@ -33698,21 +33742,6 @@ interface VoiceChatService extends Instance {
 	 * Tags: Yields
 	 */
 	IsVoiceEnabledForUserIdAsync(this: VoiceChatService, userId: number): boolean;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	readonly ParticipantsStateChanged: RBXScriptSignal<(participantsLeft: Array<any>, participantsJoined: Array<any>, updatedStates: Array<any>) => void>;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	readonly PlayerMicActivitySignalChange: RBXScriptSignal<(activityInfo: object) => void>;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	readonly StateChanged: RBXScriptSignal<(oldValue: Enum.VoiceChatState, newValue: Enum.VoiceChatState) => void>;
 }
 
 interface VoiceSource extends Instance {
