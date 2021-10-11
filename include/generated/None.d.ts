@@ -3947,6 +3947,10 @@ interface BaseWrap extends Instance {
 	readonly ImportOriginWorld: CFrame;
 }
 
+/** The WrapLayer object defines a 3D accessory's inner and outer surfaces and other properties related to layering accessories. These surfaces, or the Inner Cage and Outer Cage, are similar to collision boxes, and describe the surfaces of which other 3D accessories can be placed without clipping or breaking.
+ * 
+ * Internally, WrapLayer also uses the UV layout of the Inner and Outer cages to match coordinates to another 3D object's cage. This powers the deformation of objects around differently shaped avatars and underlying accessories.
+ */
 interface WrapLayer extends BaseWrap {
 	/**
 	 * **DO NOT USE!**
@@ -3956,19 +3960,46 @@ interface WrapLayer extends BaseWrap {
 	 * @deprecated
 	 */
 	readonly _nominal_WrapLayer: unique symbol;
+	/**
+	 * This property is intended for fine-tuning purposes and is highly optional.
+	 * 
+	 * [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) to adjust a binding point for a clothing item mesh. Allows for fine-tuning of clothing items (slight adjustment of position/rotation to get a unique look) in contexts such as community-made avatar editors.
+	 */
 	readonly BindOffset: CFrame;
+	/**
+	 * Allows for disabling of the [WrapLayer](https://developer.roblox.com/en-us/api-reference/class/WrapLayer) object as if it does not exist.
+	 */
 	Enabled: boolean;
 	readonly Order: number;
 	readonly Puffiness: number;
+	/**
+	 * AssetID for reference mesh used to define Inner Cage of a 3D object
+	 * 
+	 * Reference mesh is used to define standard topology and UV coordinates for index matching. It is expected that for all catalog avatars, this will point to one of 15 standard reference meshes provided by Roblox. But for some NPCs or a custom avatar system, this might point to other meshes.
+	 * 
+	 * Note: this property is set up automatically by the FBX importer
+	 */
 	readonly ReferenceMeshId: string;
+	/**
+	 * Reference mesh offset relative to parent MeshPart (in the parent MeshPart space)
+	 * 
+	 * Note: this property is set up automatically by the FBX importer
+	 */
 	readonly ReferenceOrigin: CFrame;
 	/**
+	 * Reference mesh offset relative to parent MeshPart (in the world space)
+	 * 
+	 * Note: this property is set up automatically by the FBX importer
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly ReferenceOriginWorld: CFrame;
 	readonly ShrinkFactor: number;
 }
 
+/** The WrapTarget object defines a target. A target is the 3D body with only an outer surface, or an Outer Cage.
+ * 
+ * This target, often an Avatar, is what 3D accessories (using WrapLayer) will be applied to, allowing multiple accessories items to naturally layer over the source target.
+ */
 interface WrapTarget extends BaseWrap {
 	/**
 	 * **DO NOT USE!**
@@ -3978,6 +4009,11 @@ interface WrapTarget extends BaseWrap {
 	 * @deprecated
 	 */
 	readonly _nominal_WrapTarget: unique symbol;
+	/**
+	 * Defines how much the body mesh can be compressed by clothing. Super tight clothing may lead to an intersection between the clothing mesh and body mesh. To solve this visual artifact, the deformer can compress the body mesh slightly to solve possible intersections.
+	 * 
+	 * Valid range is 0 to 1. A value of 0 will compress the body mesh as much as necessary to ensure that the intersections are eliminated (visible body parts might look a little bit deformed). A value of 1 will prevent the body mesh from being compressed (may lead to visible intersections or Z-fighting). A value of 0.9 (default) is a reasonable default that solves most of the intersections without introducing any significant body deformation.
+	 */
 	readonly Stiffness: number;
 }
 
@@ -4436,6 +4472,31 @@ interface BindableEvent<T extends Callback = Callback> extends Instance {
  * 
  * Any type of Roblox object such as an [Enumeration](https://developer.roblox.com/api-reference/enum), [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance), or userdata can be passed as a parameter when a [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) is fired or a [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) invoked. Lua types such as numbers, strings, and booleans can also be passed, although there are some limitations on how data can be passed.
  * 
+ * #### Table Identity
+ * 
+ * Copies of tables are produced when passed as arguments to or returned from the OnInvoke callback. This means that means that tables passed as arguments will not be exactly equivalent to those provided on invocation, and tables returned to the invoker will not be exactly equivalent to the ones returned by the OnInvoke callback. You can demonstrate this by running the following script in a BindableFunction:
+ * 
+ * local bindableFunction = script.Parent
+ * 
+ * bindableFunction.OnInvoke = function (t)
+ * 	print("OnInvoke", tostring(t), t)
+ * 	t = {bar = "foo"}
+ * 	print("OnInvoke2", tostring(t), t)
+ * 	return t
+ * end
+ * 
+ * local t = {foo = "bar"}
+ * print("Subscriber", tostring(t), t)
+ * local retVal = script.Parent:Invoke(t)
+ * print("return", tostring(retVal), retVal)
+ * 
+ * The above code may produce the following results in the output. Notice how the memory addresses of every table printed are completely different from each other, indicating they each represent different tables:
+ * 
+ *   13:55:22.228  Subscriber table: 0xc7daaba4d5307f10  ▶ {...} - Publisher:11
+ *   13:55:22.229  OnInvoke table: 0x2ee92a7818e7d210  ▶ {...} - Publisher:4
+ *   13:55:22.229  OnInvoke2 table: 0xfa4ee529ddadf290  ▶ {...} - Publisher:6
+ *   13:55:22.229  return table: 0x35b7bc1bc323d510  ▶ {...} - Publisher:13
+ * 
  * #### Mixed Tables
  * 
  * Avoid passing a mixed table (some values indexed by number and others by key), as **only the data indexed by number will be passed**. For example, when the server receives the `colorData` table illustrated below, it will only see indices 1 and 2 containing `"Blue"` and `"Yellow"` while the other data will be lost in the transfer. Note, however, that **sub-tables** do not need to be indexed in the same way as their parent — in other words, as long as each individual sub-table is indexed with the same type, all of the data will be preserved.
@@ -4702,9 +4763,7 @@ interface BodyGyro extends BodyMover {
 	P: number;
 }
 
-/** **Note**  
- * 
- * This body mover has been superseded by [AngularPosition](AngularPosition). It's highly recommended that you use AngularPosition for future work.
+/** This body mover has been superseded by [AlignPosition](https://developer.roblox.com/en-us/api-reference/class/AlignPosition). It's highly recommended that you use [AlignPosition](https://developer.roblox.com/en-us/api-reference/class/AlignPosition) for future work.
  * 
  * The **BodyPosition** object applies a force on a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) such that it will maintain a constant position in the world. The [Position](https://developer.roblox.com/en-us/api-reference/property/BodyPosition/Position) property, not to be confused with [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position), controls the target world position. This is the translational counterpart to a [BodyGyro](https://developer.roblox.com/en-us/api-reference/class/BodyGyro). If you need further control on a force applied to an object, consider using a [BodyForce](https://developer.roblox.com/en-us/api-reference/class/BodyForce) or [BodyThrust](https://developer.roblox.com/en-us/api-reference/class/BodyThrust) instead.
  * 
@@ -6536,6 +6595,9 @@ interface HingeConstraint extends Constraint {
 	 * ![Servo](https://developer.roblox.com/assets/blt30faa18cf5f31d5c/HingeConstraintServo.gif)
 	 */
 	ActuatorType: Enum.ActuatorType;
+	/**
+	 * This property specifies the sharpness of the servo motor in reaching the [HingeConstraint.TargetAngle](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/TargetAngle), when [HingeConstraint.ActuatorType](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/ActuatorType) is set to **Servo**. Larger values correspond to a faster response and smaller values results in more damping and a slower response.
+	 */
 	AngularResponsiveness: number;
 	/**
 	 * The desired angular speed a [HingeConstraint](https://developer.roblox.com/en-us/api-reference/class/HingeConstraint) with [HingeConstraint.ActuatorType](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/ActuatorType) set to [Servo](https://developer.roblox.com/en-us/api-reference/enum/ActuatorType) will attempt to maintain while rotating towards its [HingeConstraint.TargetAngle](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/TargetAngle). Measured in radians/second.
@@ -6860,6 +6922,9 @@ interface SlidingBallConstraint extends Constraint {
 	 * ![Constraint Limits 2](https://developer.roblox.com/assets/blt7eda4750d97b868c/SlidingBallConstraintLimits1.png)
 	 */
 	LimitsEnabled: boolean;
+	/**
+	 * This property specifies the sharpness of the linear servo motor in reaching the [SlidingBallConstraint.TargetPosition](https://developer.roblox.com/en-us/api-reference/property/SlidingBallConstraint/TargetPosition), when the derived classes' actuator type is set to **Servo**, for example the [CylindricalConstraint](https://developer.roblox.com/en-us/api-reference/class/CylindricalConstraint) and [PrismaticConstraint](https://developer.roblox.com/en-us/api-reference/class/PrismaticConstraint). Larger values correspond to faster a response and smaller values results in more damping and a slower response.
+	 */
 	LinearResponsiveness: number;
 	/**
 	 * The lower position limit along the x-axis of [Constraint.Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0) for a [SlidingBallConstraint](https://developer.roblox.com/en-us/api-reference/class/SlidingBallConstraint) if [SlidingBallConstraint.LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/SlidingBallConstraint/LimitsEnabled) is true.
@@ -6943,6 +7008,9 @@ interface CylindricalConstraint extends SlidingBallConstraint {
 	 * Enables the angular limits around the rotation axis.
 	 */
 	AngularLimitsEnabled: boolean;
+	/**
+	 * This property specifies the sharpness of the angular servo motor in reaching the [CylindricalConstraint.TargetAngle](https://developer.roblox.com/en-us/api-reference/property/CylindricalConstraint/TargetAngle), when [CylindricalConstraint.AngularActuatorType](https://developer.roblox.com/en-us/api-reference/property/CylindricalConstraint/AngularActuatorType) is set to **Servo**. Larger values correspond to a faster response and smaller values results in more damping and a slower response.
+	 */
 	AngularResponsiveness: number;
 	/**
 	 * Restitution of the two limits, or how elastic they are. Value in \[0, 1\].
@@ -8768,7 +8836,7 @@ interface DraggerService extends Instance {
 	ShowPivotIndicator: boolean;
 }
 
-/** A EulerRotation Curve represents a 3D rotation curve, it groups 3 [FloatCurves](https://developer.roblox.com/en-us/api-reference/class/FloatCurve), stored as 3 [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) children instances. The rotation is decomposed in 3 Euler angles channels that can be accessed via [EulerRotationCurve:X](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/X), [EulerRotationCurve:Y](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Y), [EulerRotationCurve:Z](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Z) methods. The 3 axes can be sampled simultaneously via the method [EulerRotationCurve:GetAnglesAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetAnglesAtTime) returning the 3 Euler angles as a Vector3. Similarly, [EulerRotationCurve:GetRotationAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetRotationAtTime) samples all channels simultaneously but returns a CFrame rotated by X, Y, and Z according to the specified rotation order. */
+/** A EulerRotation Curve represents a 3D rotation curve, it groups 3 [FloatCurves](https://developer.roblox.com/en-us/api-reference/class/FloatCurve), stored as 3 FloatCurve child instances. The rotation is decomposed in 3 Euler angles channels that can be accessed via [EulerRotationCurve:X](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/X), [EulerRotationCurve:Y](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Y), [EulerRotationCurve:Z](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Z) methods. The 3 axes can be sampled simultaneously via the method [EulerRotationCurve:GetAnglesAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetAnglesAtTime) returning the 3 Euler angles as a Vector3. Similarly, [EulerRotationCurve:GetRotationAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetRotationAtTime) samples all channels simultaneously but returns a CFrame rotated by X, Y, and Z according to the specified rotation order. */
 interface EulerRotationCurve extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -9266,6 +9334,10 @@ interface Fire extends Instance {
 	Size: number;
 }
 
+/** An instance representing a 1D float curve encoded via a sorted list of [FloatCurveKeys](https://developer.roblox.com/en-us/api-reference/class/FloatCurveKey).
+ * 
+ * `FloatCurveKey` are value-time points that represent the changes in value over time. The changes of a single value over time are represented by a curve. Animators can edit keys to modify a curve. The shape of the curve is dictated by the [KeyInterpolationMode](https://developer.roblox.com/en-us/api-reference/enum/KeyInterpolationMode) chosen at each key.
+ */
 interface FloatCurve extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -9503,7 +9575,7 @@ interface GlobalDataStore extends Instance {
 	/**
 	 * This function returns the latest value of the provided key and a [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) instance. If the key does not exist or if the latest version has been marked as deleted, both return values will be `nil`.
 	 * 
-	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support v2.0 features such as versioning and metadata, so [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) will always be `nil` for keys in an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore). [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) will also be `nil` if v2.0 experimental features are not enabled.
+	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support versioning and metadata, so [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) will always be `nil` for keys in an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore).
 	 * 
 	 * Keys are cached locally for 4 seconds after the first read. A [GlobalDataStore:GetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/GetAsync) call within these 4 seconds returns a value from the cache. Modifications to the key by [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync) or [GlobalDataStore:UpdateAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/UpdateAsync) apply to the cache immediately and restart the 4 second timer.
 	 * 
@@ -9575,7 +9647,7 @@ interface GlobalDataStore extends Instance {
 	 * 
 	 * If the update succeeds, a new version of the value will be created and prior versions will remain accessible through [DataStore:ListVersionsAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/ListVersionsAsync) and [DataStore:GetVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/GetVersionAsync).
 	 * 
-	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support v2.0 features such as versioning, so calling this function on an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) key will overwrite the current value and make previous versions inaccessible.
+	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support versioning, so calling this function on an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) key will overwrite the current value and make previous versions inaccessible.
 	 * 
 	 * In cases where another game server updated the key in the short timespan between retrieving the key's current value and setting the key's value, [GlobalDataStore:UpdateAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/UpdateAsync) will call the function again to ensure that no data is overwritten. The function will be called as many times as needed until the data is saved **or** until the callback function returns `nil`.
 	 * 
@@ -14920,6 +14992,9 @@ interface HumanoidDescription extends Instance {
 	 * *   [GetEmotes](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/GetEmotes), which can retrieve a dictionary of emotes that may be removed
 	 */
 	RemoveEmote(this: HumanoidDescription, name: string): void;
+	/**
+	 * Accepts a table that sets the accessories and related properties for an avatar. If the second parameter (includeRigidAccessories) is true, then this function can also be used to set the rigid accessories in the rigid accessory properties. In this case any table entry that does not have an Order will be considered a rigid accessory and put in the appropriate property according to the AccessoryType.
+	 */
 	SetAccessories(this: HumanoidDescription, accessories: Array<any>, includeRigidAccessories: boolean): void;
 	/**
 	 * **SetEmotes** sets all of the emotes on this description given a table similar to that returned by [GetEmotes](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/GetEmotes). It fires [EmotesChanged](https://developer.roblox.com/en-us/api-reference/event/HumanoidDescription/EmotesChanged)
@@ -26331,6 +26406,7 @@ interface ReplicatedStorage extends Instance {
 	readonly _nominal_ReplicatedStorage: unique symbol;
 }
 
+/** A sorted list of [RotationCurveKey](https://developer.roblox.com/en-us/api-reference/class/RotationCurveKeys). RotationCurveKeys are value-time points on a curve that dictate the animation curves. It provides a sampling method returning its result as the rotation component of a CFrame. */
 interface RotationCurve extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -33634,6 +33710,7 @@ interface Vector3Value extends ValueBase {
 	readonly Changed: RBXScriptSignal<(value: Vector3) => void>;
 }
 
+/** Represents a 3D vector curve containing 3 [FloatCurves](https://developer.roblox.com/en-us/api-reference/class/FloatCurve), stored as 3 FloatCurve children instances. Each FloatCurve can be accessed via [Vector3Curve:X](https://developer.roblox.com/en-us/api-reference/function/Vector3Curve/X), [Vector3Curve:Y](https://developer.roblox.com/en-us/api-reference/function/Vector3Curve/Y), [Vector3Curve:Z](https://developer.roblox.com/en-us/api-reference/function/Vector3Curve/Z) methods. The 3 axes can be sampled simultaneously via the method [Vector3Curve:GetValueAtTime](https://developer.roblox.com/en-us/api-reference/function/Vector3Curve/GetValueAtTime). */
 interface Vector3Curve extends Instance {
 	/**
 	 * **DO NOT USE!**
