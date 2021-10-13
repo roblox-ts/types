@@ -5841,6 +5841,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<HandlesStyle>
 	}
 	export type HandlesStyle = HandlesStyle.Resize | HandlesStyle.Movement;
+	export namespace HighlightDepthMode {
+		export interface AlwaysOnTop {
+			Name: "AlwaysOnTop";
+			Value: 0;
+			EnumType: EnumType<HighlightDepthMode>;
+		}
+
+		export const AlwaysOnTop: AlwaysOnTop;
+
+		export interface Default {
+			Name: "Default";
+			Value: 1;
+			EnumType: EnumType<HighlightDepthMode>;
+		}
+
+		export const Default: Default;
+
+		export function GetEnumItems(this: defined): Array<HighlightDepthMode>
+	}
+	export type HighlightDepthMode = HighlightDepthMode.AlwaysOnTop | HighlightDepthMode.Default;
 	export namespace HorizontalAlignment {
 		export interface Center {
 			Name: "Center";

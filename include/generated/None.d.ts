@@ -52,7 +52,6 @@ interface Services {
 	MemoryStoreService: MemoryStoreService;
 	MessageBusService: MessageBusService;
 	MessagingService: MessagingService;
-	NewVoiceChatService: NewVoiceChatService;
 	PathfindingService: PathfindingService;
 	PhysicsService: PhysicsService;
 	Players: Players;
@@ -79,6 +78,7 @@ interface Services {
 	StudioDeviceEmulatorService: StudioDeviceEmulatorService;
 	Teams: Teams;
 	TeleportService: TeleportService;
+	TemporaryCageMeshProvider: TemporaryCageMeshProvider;
 	TextChatService: TextChatService;
 	TextService: TextService;
 	ToastNotificationService: ToastNotificationService;
@@ -87,6 +87,7 @@ interface Services {
 	UnvalidatedAssetService: UnvalidatedAssetService;
 	UserInputService: UserInputService;
 	UserService: UserService;
+	VoiceChatInternal: VoiceChatInternal;
 	VoiceChatService: VoiceChatService;
 	VRService: VRService;
 	Workspace: Workspace;
@@ -172,6 +173,7 @@ interface CreatableInstances {
 	Glue: Glue;
 	Handles: Handles;
 	Hat: Hat;
+	Highlight: Highlight;
 	HingeConstraint: HingeConstraint;
 	Hole: Hole;
 	Humanoid: Humanoid;
@@ -13071,6 +13073,23 @@ interface HeightmapImporterService extends Instance {
 	readonly _nominal_HeightmapImporterService: unique symbol;
 }
 
+interface Highlight extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Highlight: unique symbol;
+	DepthMode: Enum.HighlightDepthMode;
+	Enabled: boolean;
+	FillColor: Color3;
+	FillTransparency: number;
+	OutlineColor: Color3;
+	OutlineTransparency: number;
+}
+
 /** **HttpService** allows HTTP requests to be sent from game servers using [RequestAsync](https://developer.roblox.com/en-us/api-reference/function/HttpService/RequestAsync), [GetAsync](https://developer.roblox.com/en-us/api-reference/function/HttpService/GetAsync) and [PostAsync](https://developer.roblox.com/en-us/api-reference/function/HttpService/PostAsync). This service allows games to be integrated with off-Roblox web services such as analytics, data storage, remote server configuration, error reporting, advanced calculations or real-time communication.
  * 
  * Enabling HTTP Requests
@@ -20788,17 +20807,6 @@ interface NetworkMarker extends Instance {
 	readonly Received: RBXScriptSignal<() => void>;
 }
 
-interface NewVoiceChatService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_NewVoiceChatService: unique symbol;
-}
-
 /** The NoCollisionConstraint is an instance used to prevent collisions between two specific parts. Connected [Parts](https://developer.roblox.com/en-us/api-reference/class/BasePart) will have no collision reaction between them, but can still have collisions with the rest of the world. Both parts can still receive touch events.
  * 
  * Using a NoCollisionConstraint will allow you to create and share [Models](https://developer.roblox.com/en-us/api-reference/class/Model) with customized collision filtering. While you can still achieve collision filtering with [Collision Groups](https://developer.roblox.com/articles/Collision-Filtering), you are unable to export that information to a model without adding a script to set them when the game runs.
@@ -21292,7 +21300,6 @@ interface BasePart extends PVInstance {
 	 * The Glass material changes rendering behavior on moderate graphics settings. It applies a bit of reflectiveness (similar to [BasePart.Reflectance](https://developer.roblox.com/en-us/api-reference/property/BasePart/Reflectance)) and perspective distortion. The effect is especially pronounced on sphere-shaped parts (set `/BasePart/Shape` to Ball). Semitransparent objects and Glass parts behind Glass are not visible.
 	 */
 	Material: Enum.Material;
-	MaterialVariant: MaterialVariant | undefined;
 	/**
 	 * The Orientation property describes the part's rotation in degrees around the X, Y and Z axes using a Vector3. The rotations are applied in Y → X → Z order. This differs from proper [Euler angles](https://en.wikipedia.org/wiki/Euler_angles), and is instead [Tait–Bryan angles](https://en.wikipedia.org/wiki/Euler_angles#Tait-Bryan_angles) which describe **yaw, pitch and roll**. It is also worth noting how this property differs from the `CFrame.Angles()` constructor, which applies rotations in a different order (Z → Y → X). For better control over the rotation of a part, it is recommended that [BasePart.CFrame](https://developer.roblox.com/en-us/api-reference/property/BasePart/CFrame) is set instead.
 	 * 
@@ -30030,6 +30037,17 @@ interface TeleportService extends Instance {
 	>;
 }
 
+interface TemporaryCageMeshProvider extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TemporaryCageMeshProvider: unique symbol;
+}
+
 /** A TerrainRegion is a snapshot of [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) retrieved from the [CopyRegion](https://developer.roblox.com/api-reference/function/Terrain/CopyRegion "CopyRegion") method. Can be later pasted into the Terrain using [PasteRegion](https://developer.roblox.com/api-reference/function/Terrain/PasteRegion "PasteRegion"). */
 interface TerrainRegion extends Instance {
 	/**
@@ -33726,6 +33744,106 @@ interface Vector3Curve extends Instance {
 	Z(this: Vector3Curve): FloatCurve;
 }
 
+interface VoiceChatInternal extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VoiceChatInternal: unique symbol;
+	/**
+	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
+	 * @deprecated
+	 */
+	readonly VoiceChatState: Enum.VoiceChatState;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetAudioProcessingSettings(this: VoiceChatInternal): unknown;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetMicDevices(this: VoiceChatInternal): unknown;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetParticipants(this: VoiceChatInternal): unknown;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetSpeakerDevices(this: VoiceChatInternal): unknown;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetVoiceChatApiVersion(this: VoiceChatInternal): number;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetVoiceChatAvailable(this: VoiceChatInternal): number;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	IsPublishPaused(this: VoiceChatInternal): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	IsSubscribePaused(this: VoiceChatInternal, userId: number): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	JoinByGroupId(this: VoiceChatInternal, groupId: string, isMicMuted?: boolean): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	JoinByGroupIdToken(this: VoiceChatInternal, groupId: string, isMicMuted?: boolean): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	Leave(this: VoiceChatInternal): void;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	PublishPause(this: VoiceChatInternal, paused: boolean): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	SetMicDevice(this: VoiceChatInternal, micDeviceName: string, micDeviceGuid: string): void;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	SetSpeakerDevice(this: VoiceChatInternal, speakerDeviceName: string, speakerDeviceGuid: string): void;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	SubscribePause(this: VoiceChatInternal, userId: number, paused: boolean): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	SubscribePauseAll(this: VoiceChatInternal, paused: boolean): boolean;
+	/**
+	 * Tags: Yields
+	 */
+	IsVoiceEnabledForUserIdAsync(this: VoiceChatInternal, userId: number): boolean;
+}
+
 interface VoiceChatService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -33735,86 +33853,6 @@ interface VoiceChatService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_VoiceChatService: unique symbol;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	GetAudioProcessingSettings(this: VoiceChatService): unknown;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	GetMicDevices(this: VoiceChatService): unknown;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	GetParticipants(this: VoiceChatService): unknown;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	GetSpeakerDevices(this: VoiceChatService): unknown;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	GetVoiceChatApiVersion(this: VoiceChatService): number;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	GetVoiceChatAvailable(this: VoiceChatService): number;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	IsPublishPaused(this: VoiceChatService): boolean;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	IsSubscribePaused(this: VoiceChatService, userId: number): boolean;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	JoinByGroupId(this: VoiceChatService, groupId: string, isMicMuted?: boolean): boolean;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	JoinByGroupIdToken(this: VoiceChatService, groupId: string, isMicMuted?: boolean): boolean;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	Leave(this: VoiceChatService): void;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	PublishPause(this: VoiceChatService, paused: boolean): boolean;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	SetMicDevice(this: VoiceChatService, micDeviceName: string, micDeviceGuid: string): void;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	SetSpeakerDevice(this: VoiceChatService, speakerDeviceName: string, speakerDeviceGuid: string): void;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	SubscribePause(this: VoiceChatService, userId: number, paused: boolean): boolean;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	SubscribePauseAll(this: VoiceChatService, paused: boolean): boolean;
 	/**
 	 * Tags: Yields
 	 */
