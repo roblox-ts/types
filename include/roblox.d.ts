@@ -2024,7 +2024,7 @@ interface GettableCores {
 interface SettableCores {
 	ChatActive: boolean;
 	PointsNotificationsActive: boolean;
-	BadgeNotificationsActive: boolean;
+	BadgesNotificationsActive: boolean;
 	ResetButtonCallback: boolean | BindableEvent;
 	ChatMakeSystemMessage: MakeSystemMessageConfig;
 	ChatWindowSize: UDim2;
