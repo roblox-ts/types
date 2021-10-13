@@ -3149,6 +3149,7 @@ interface Studio extends Instance {
 	["Enable Internal Beta Features"]: boolean;
 	["Enable Internal Features"]: boolean;
 	readonly ["Enable Script Analysis"]: boolean;
+	readonly ["Enable Scrollbar Markers"]: boolean;
 	readonly ["Enable Signature Help"]: boolean;
 	["Enable Temporary Tabs"]: boolean;
 	["Enable Temporary Tabs In Explorer"]: boolean;
