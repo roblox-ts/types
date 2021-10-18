@@ -385,7 +385,7 @@ declare namespace string {
 	 * @param fmt The format string to use
 	 * @param value The values to pack
 	 */
-	function pack(fmt: string, ...value: Array<string>): string;
+	function pack(fmt: string, ...value: Array<unknown>): string;
 
 	/**
 	 * Returns the size of a string resulting from string.pack with the given format. The format string cannot have the variable-length options 's' or 'z'.
@@ -396,7 +396,7 @@ declare namespace string {
 	/**
 	 * Returns the values packed in string s (see string.pack) according to the format string fmt. An optional pos marks where to start reading in s (default is 1). After the read values, this function also returns the index of the first unread byte in s.
 	 */
-	function unpack(fmt: string, s: string, pos?: number): LuaTuple<Array<number>>;
+	function unpack(fmt: string, s: string, pos?: number): LuaTuple<Array<unknown>>;
 
 	/** Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`, `...`, `s[j]`. The default value for i is 1; the default value for j is i. These indices are corrected following the same rules of function string.sub. */
 	function byte(str: string, i?: number, j?: number): LuaTuple<Array<number>>;
