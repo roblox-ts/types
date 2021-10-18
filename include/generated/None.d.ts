@@ -3927,6 +3927,7 @@ interface StarterGui extends BasePlayerGui {
 	GetCore<T extends keyof GettableCores>(this: StarterGui, parameter: T): GettableCores[T];
 }
 
+/** The base class for [WrapTarget](https://developer.roblox.com/en-us/api-reference/class/WrapTarget) and [WrapLayer](https://developer.roblox.com/en-us/api-reference/class/WrapLayer) objects. Note that [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) is the only valid parent type for [BaseWrap](https://developer.roblox.com/en-us/api-reference/class/BaseWrap) and that it behaves more like a component of [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) than an independent object. */
 interface BaseWrap extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -8368,7 +8369,7 @@ interface DataStoreOptions extends Instance {
 	 */
 	readonly _nominal_DataStoreOptions: unique symbol;
 	/**
-	 * This property specifies whether the [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) should work with all scopes. See here for details on scope.
+	 * This property specifies whether the [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) should work with all scopes.
 	 * 
 	 * See Also
 	 * --------
@@ -8377,7 +8378,7 @@ interface DataStoreOptions extends Instance {
 	 */
 	AllScopes: boolean;
 	/**
-	 * This function enables experimental features for a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). Currently only `"v2"` is a valid experimental feature. Once the features are generally available, the options will not have any effect.
+	 * This function currently has no effect.
 	 * 
 	 * See Also
 	 * --------
@@ -8401,9 +8402,7 @@ interface DataStoreService extends Instance {
 	 */
 	readonly _nominal_DataStoreService: unique symbol;
 	/**
-	 * This function creates a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) instance with the provided name and scope. Subsequent calls to this method with the same name/scope will return the same object.
-	 * 
-	 * If v2.0 experimental features are enabled, this function creates and returns a [DataStore](https://developer.roblox.com/en-us/api-reference/class/DataStore) instance instead of a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) instance.
+	 * This function creates a [DataStore](https://developer.roblox.com/en-us/api-reference/class/DataStore) instance with the provided name and scope. Subsequent calls to this method with the same name/scope will return the same object.
 	 * 
 	 * Using the `scope` parameter will restrict operations to that scope by automatically prepending the scope to keys in all operations done on the data store. This function also accepts an optional [DataStoreOptions](https://developer.roblox.com/en-us/api-reference/class/DataStoreOptions) instance which includes options for enabling [AllScopes](https://developer.roblox.com/en-us/api-reference/property/DataStoreOptions/AllScopes). See [here](https://developer.roblox.com/articles/Data-store#scope) for details on scope.
 	 * 
@@ -9350,15 +9349,39 @@ interface FloatCurve extends Instance {
 	 */
 	readonly _nominal_FloatCurve: unique symbol;
 	/**
+	 * Number of keys in the float curve.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Length: number;
+	/**
+	 * Returns a copy of a key at a given index.
+	 */
 	GetKeyAtIndex(this: FloatCurve, index: number): FloatCurveKey;
+	/**
+	 * The first returned value is the index of the last key with key.time <= time (or min(1,length) if no key was found).The second returned value is the index of the first key with key.time >= time or the length of the curve if no key was found satisfying the inequality.
+	 */
 	GetKeyIndicesAtTime(this: FloatCurve, time: number): unknown;
+	/**
+	 * Returns a copy of all the keys in the FloatCurve as a Lua array of FloatCurveKey.
+	 */
 	GetKeys(this: FloatCurve): unknown;
+	/**
+	 * Samples the float curve at a given time passed as argument.
+	 */
 	GetValueAtTime(this: FloatCurve, time: number): float?;
+	/**
+	 * Adds the key passed as argument to this curve. If a key exists at the same time it will be replaced. First return value is true if a key was added, false if a previous key was replaced. Second return value is the index at which the marker was added.
+	 */
 	InsertKey(this: FloatCurve, key: FloatCurveKey): unknown;
+	/**
+	 * Removes a given number of Keys starting from a given index. Returns the number of keys that were removed.
+	 */
 	RemoveKeyAtIndex(this: FloatCurve, startingIndex: number, count?: number): number;
+	/**
+	 * Resets this curve's keys using the FloatCurveKey array passed as argument. Keys in the keysArray are sorted in ascending time order before insertion. Keys at duplicated times are removed in a stable manner. Returns the number of keys actually inserted.
+	 * 
+	 * Keys previously stored in this curve are removed before the keys passed as arguments are added.
+	 */
 	SetKeys(this: FloatCurve, keys: Array<any>): number;
 }
 
@@ -9593,7 +9616,7 @@ interface GlobalDataStore extends Instance {
 	/**
 	 * This function increments the value of a key by the provided amount (both must be integers).
 	 * 
-	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support v2.0 features such as versioning, so calling this method on an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) key will overwrite the current value with the incremented value and make previous versions inaccessible.
+	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support versioning, so calling this method on an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) key will overwrite the current value with the incremented value and make previous versions inaccessible.
 	 * 
 	 * See Also
 	 * --------
@@ -9605,7 +9628,7 @@ interface GlobalDataStore extends Instance {
 	/**
 	 * This function marks the specified key as deleted by creating a new “tombstone” version of the key. Prior to this, it returns the latest version prior to the remove call.
 	 * 
-	 * After a key is removed via this function, [GlobalDataStore:GetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/GetAsync) calls for the key will return `nil`. Older versions of the key remain accessible through `GlobalDataStore/ListVersionsAsync` and `GlobalDataStore/GetVersionAsync`, assuming they have not expired.
+	 * After a key is removed via this function, [GlobalDataStore:GetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/GetAsync) calls for the key will return `nil`. Older versions of the key remain accessible through [DataStore:ListVersionsAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/ListVersionsAsync) and [DataStore:GetVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/GetVersionAsync), assuming they have not expired.
 	 * 
 	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support versioning, so calling `GlobalDataStore/RemoveAsync|RemoveAsync()` on an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) key will permanently delete it.
 	 * 
@@ -9625,7 +9648,7 @@ interface GlobalDataStore extends Instance {
 	 * 
 	 * Values in data stores are versioned, meaning [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync) will create a new version every time it is called. Prior versions can be accessed through [DataStore:ListVersionsAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/ListVersionsAsync)/[DataStore:GetVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/GetVersionAsync) for up to 30 days at which point they are permanently deleted.
 	 * 
-	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support v2.0 features such as versioning, so calling this method on an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) key will overwrite the current value and make previous versions inaccessible.
+	 * [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) does not support versioning, so calling this method on an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) key will overwrite the current value and make previous versions inaccessible.
 	 * 
 	 * Metadata definitions must always be updated with a value, even if there are no changes to the current value; otherwise the current value will be lost.
 	 * 
@@ -33739,8 +33762,17 @@ interface Vector3Curve extends Instance {
 	 */
 	readonly _nominal_Vector3Curve: unique symbol;
 	GetValueAtTime(this: Vector3Curve, time: number): unknown;
+	/**
+	 * Returns the FloatCurve controlling the X channel. It is the first child instance of type FloatCurve named `X`. If none is found an empty FloatCurve is created.
+	 */
 	X(this: Vector3Curve): FloatCurve;
+	/**
+	 * Returns the FloatCurve controlling the Y channel. It is the first child instance of type FloatCurve named `Y`. If none is found an empty FloatCurve is created.
+	 */
 	Y(this: Vector3Curve): FloatCurve;
+	/**
+	 * Returns the FloatCurve controlling the Z channel. It is the first child instance of type FloatCurve named `Z`. If none is found an empty FloatCurve is created.
+	 */
 	Z(this: Vector3Curve): FloatCurve;
 }
 
@@ -33854,6 +33886,24 @@ interface VoiceChatService extends Instance {
 	 */
 	readonly _nominal_VoiceChatService: unique symbol;
 	/**
+	 * Returns whether or not the given user has voice enabled. On the client-side, this can only be used to check the voice status of the local player.
+	 * 
+	 * This function is not yet implemented server-side.
+	 * 
+	 * This function can throw an error if the HTTP call fails.
+	 * 
+	 * The following code sample enables a UI layer only for voice enabled players.
+	 * 
+	 * local Players = game:GetService(“Players”)
+	 * local VoiceChatService = game:GetService(“VoiceChatService”)
+	 * 
+	 * local localPlayer = Players.LocalPlayer
+	 * local success, enabled = pcall(function()
+	 *     return VoiceChatService:IsVoiceEnabledForUserIdAsync(localPlayer.UserId)
+	 * end)
+	 * if success and enabled then
+	 *     localPlayer.PlayerGui.MyVoiceGui.Enabled = true
+	 * end
 	 * Tags: Yields
 	 */
 	IsVoiceEnabledForUserIdAsync(this: VoiceChatService, userId: number): boolean;
