@@ -45,6 +45,7 @@
 		"@typescript-eslint/no-use-before-define": "off",
 		"@typescript-eslint/explicit-module-boundary-types": "off",
 		"@typescript-eslint/no-require-imports": "error",
+		"@typescript-eslint/triple-slash-reference": "off",
 		"prefer-const": "warn",
 		"no-undef-init": "error"
 	}
