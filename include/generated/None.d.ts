@@ -15,6 +15,7 @@ interface Services {
 	AvatarEditorService: AvatarEditorService;
 	AvatarImportService: AvatarImportService;
 	BadgeService: BadgeService;
+	BreakpointManager: BreakpointManager;
 	BulkImportService: BulkImportService;
 	CalloutService: CalloutService;
 	Chat: Chat;
@@ -27,6 +28,7 @@ interface Services {
 	DataStoreService: DataStoreService;
 	Debris: Debris;
 	DebuggerConnectionManager: DebuggerConnectionManager;
+	DebuggerUIService: DebuggerUIService;
 	DraggerService: DraggerService;
 	EventIngestService: EventIngestService;
 	GamePassService: GamePassService;
@@ -65,6 +67,7 @@ interface Services {
 	ReplicatedScriptService: ReplicatedScriptService;
 	ReplicatedStorage: ReplicatedStorage;
 	RunService: RunService;
+	ScriptChangeService: ScriptChangeService;
 	ScriptContext: ScriptContext;
 	ServerScriptService: ServerScriptService;
 	ServerStorage: ServerStorage;
@@ -75,13 +78,16 @@ interface Services {
 	StarterPack: StarterPack;
 	StarterPlayer: StarterPlayer;
 	Stats: Stats;
+	StudioAssetService: StudioAssetService;
 	StudioDeviceEmulatorService: StudioDeviceEmulatorService;
+	StudioScriptDebugEventListener: StudioScriptDebugEventListener;
 	Teams: Teams;
 	TeleportService: TeleportService;
 	TemporaryCageMeshProvider: TemporaryCageMeshProvider;
 	TextChatService: TextChatService;
 	TextService: TextService;
 	ToastNotificationService: ToastNotificationService;
+	ToolboxService: ToolboxService;
 	TracerService: TracerService;
 	TweenService: TweenService;
 	UnvalidatedAssetService: UnvalidatedAssetService;
@@ -213,6 +219,7 @@ interface CreatableInstances {
 	PathfindingLink: PathfindingLink;
 	PathfindingModifier: PathfindingModifier;
 	PitchShiftSoundEffect: PitchShiftSoundEffect;
+	Plane: Plane;
 	PointLight: PointLight;
 	Pose: Pose;
 	PrismaticConstraint: PrismaticConstraint;
@@ -266,7 +273,6 @@ interface CreatableInstances {
 	TextButton: TextButton;
 	TextChannel: TextChannel;
 	TextLabel: TextLabel;
-	TextSource: TextSource;
 	Texture: Texture;
 	Tool: Tool;
 	Torque: Torque;
@@ -390,6 +396,8 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	MemoryStoreQueue: MemoryStoreQueue;
 	MemoryStoreSortedMap: MemoryStoreSortedMap;
 	MessageBusConnection: MessageBusConnection;
+	MetaBreakpoint: MetaBreakpoint;
+	MetaBreakpointContext: MetaBreakpointContext;
 	Mouse: Mouse;
 	NetworkMarker: NetworkMarker;
 	OrderedDataStore: OrderedDataStore;
@@ -414,6 +422,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	TeleportAsyncResult: TeleportAsyncResult;
 	Terrain: Terrain;
 	TextFilterResult: TextFilterResult;
+	TextSource: TextSource;
 	ThreadState: ThreadState;
 	TouchTransmitter: TouchTransmitter;
 	Translator: Translator;
@@ -1042,6 +1051,7 @@ interface Instance {
 	 * See also [DescendantAdded](https://developer.roblox.com/en-us/api-reference/event/Instance/DescendantAdded).
 	 */
 	readonly DescendantRemoving: RBXScriptSignal<(descendant: Instance) => void>;
+	readonly Destroying: RBXScriptSignal<() => void>;
 }
 
 /** An Accoutrement is an object that welds its child [part](https://developer.roblox.com/en-us/api-reference/class/Part) called “Handle” to the Head of a player's character. The position and rotation of the Handle part can be changed with the [AttachmentPos](https://developer.roblox.com/en-us/api-reference/property/Accoutrement/AttachmentPos)/[Right](https://developer.roblox.com/en-us/api-reference/property/Accoutrement/AttachmentRight)/[Forward](https://developer.roblox.com/en-us/api-reference/property/Accoutrement/AttachmentForward)/[Up](https://developer.roblox.com/en-us/api-reference/property/Accoutrement/AttachmentUp) properties.
@@ -4977,6 +4987,17 @@ interface Breakpoint extends Instance {
 	readonly _nominal_Breakpoint: unique symbol;
 }
 
+interface BreakpointManager extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BreakpointManager: unique symbol;
+}
+
 interface BulkImportService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -6764,6 +6785,17 @@ interface LinearVelocity extends Constraint {
 	SecondaryTangentAxis: Vector3;
 	VectorVelocity: Vector3;
 	VelocityConstraintMode: Enum.VelocityConstraintMode;
+}
+
+interface Plane extends Constraint {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Plane: unique symbol;
 }
 
 /** A **RodConstraint** constrains two [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment) to remain separated by the value specified by [RodConstraint.Length](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/Length). While the attachments remain at a set distance from one another, they can both rotate freely.
@@ -8579,6 +8611,17 @@ interface DebuggerLuaResponse extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_DebuggerLuaResponse: unique symbol;
+}
+
+interface DebuggerUIService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DebuggerUIService: unique symbol;
 }
 
 interface DebuggerVariable extends Instance {
@@ -15200,6 +15243,7 @@ interface ImporterMeshSettings extends ImporterBaseSettings {
 	 * @deprecated
 	 */
 	readonly _nominal_ImporterMeshSettings: unique symbol;
+	Anchored: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -15232,6 +15276,7 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly PolygonCount: number;
+	RigType: Enum.RigType;
 	ScaleUnit: Enum.MeshScaleUnit;
 	WorldForward: Enum.NormalId;
 	WorldUp: Enum.NormalId;
@@ -20364,6 +20409,28 @@ interface MessagingService extends Instance {
 		topic: string,
 		callback: (Data: unknown, Sent: number) => void,
 	): RBXScriptConnection;
+}
+
+interface MetaBreakpoint extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MetaBreakpoint: unique symbol;
+}
+
+interface MetaBreakpointContext extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MetaBreakpointContext: unique symbol;
 }
 
 /** **Mouse** has been superseded by [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) and [ContextActionService](https://developer.roblox.com/en-us/api-reference/class/ContextActionService), which cover a broader scope, are more feature rich, and support **cross-platform** patterns better. It remains supported because of its widespread use, but you should strongly consider using these alternatives.
@@ -26819,6 +26886,17 @@ interface RunService extends Instance {
 	readonly Stepped: RBXScriptSignal<(time: number, deltaTime: number) => void>;
 }
 
+interface ScriptChangeService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptChangeService: unique symbol;
+}
+
 /** This service controls all [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) objects. Most of the properties and methods of this service are locked for internal use, however you may use the [ScriptContext.ScriptsDisabled](https://developer.roblox.com/en-us/api-reference/property/ScriptContext/ScriptsDisabled) property to disable all scripts from a thread with normal security access. */
 interface ScriptContext extends Instance {
 	/**
@@ -29024,6 +29102,17 @@ interface Stats extends Instance {
 	GetTotalMemoryUsageMb(this: Stats): number;
 }
 
+interface StudioAssetService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StudioAssetService: unique symbol;
+}
+
 interface StudioDeviceEmulatorService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -29033,6 +29122,17 @@ interface StudioDeviceEmulatorService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_StudioDeviceEmulatorService: unique symbol;
+}
+
+interface StudioScriptDebugEventListener extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StudioScriptDebugEventListener: unique symbol;
 }
 
 /** SurfaceAppearance objects allow developers to override the appearance of a [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) with advanced graphics options. Most notably, a SurfaceAppearance can apply a set of PBR textures to a mesh.
@@ -30225,6 +30325,11 @@ interface TextSource extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TextSource: unique symbol;
+	CanSend: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly UserId: number;
 }
 
 interface ThreadState extends Instance {
@@ -30247,6 +30352,17 @@ interface ToastNotificationService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ToastNotificationService: unique symbol;
+}
+
+interface ToolboxService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ToolboxService: unique symbol;
 }
 
 /** An internal object used by networking and replication code to transmit [BasePart.Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched) and [BasePart.TouchEnded](https://developer.roblox.com/en-us/api-reference/event/BasePart/TouchEnded) events.
