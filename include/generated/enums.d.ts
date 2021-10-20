@@ -11665,6 +11665,66 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<RibbonTool>
 	}
 	export type RibbonTool = RibbonTool.Select | RibbonTool.Scale | RibbonTool.Rotate | RibbonTool.Move | RibbonTool.Transform | RibbonTool.ColorPicker | RibbonTool.MaterialPicker | RibbonTool.Group | RibbonTool.Ungroup | RibbonTool.None;
+	export namespace RigType {
+		export interface R6 {
+			Name: "R6";
+			Value: 0;
+			EnumType: EnumType<RigType>;
+		}
+
+		export const R6: R6;
+
+		export interface R15 {
+			Name: "R15";
+			Value: 1;
+			EnumType: EnumType<RigType>;
+		}
+
+		export const R15: R15;
+
+		export interface Rthro {
+			Name: "Rthro";
+			Value: 2;
+			EnumType: EnumType<RigType>;
+		}
+
+		export const Rthro: Rthro;
+
+		export interface RthroNarrow {
+			Name: "RthroNarrow";
+			Value: 3;
+			EnumType: EnumType<RigType>;
+		}
+
+		export const RthroNarrow: RthroNarrow;
+
+		export interface S15 {
+			Name: "S15";
+			Value: 4;
+			EnumType: EnumType<RigType>;
+		}
+
+		export const S15: S15;
+
+		export interface Custom {
+			Name: "Custom";
+			Value: 5;
+			EnumType: EnumType<RigType>;
+		}
+
+		export const Custom: Custom;
+
+		export interface None {
+			Name: "None";
+			Value: 6;
+			EnumType: EnumType<RigType>;
+		}
+
+		export const None: None;
+
+		export function GetEnumItems(this: defined): Array<RigType>
+	}
+	export type RigType = RigType.R6 | RigType.R15 | RigType.Rthro | RigType.RthroNarrow | RigType.S15 | RigType.Custom | RigType.None;
 	export namespace RollOffMode {
 		export interface Inverse {
 			Name: "Inverse";
@@ -14445,6 +14505,50 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<TerrainAcquisitionMethod>
 	}
 	export type TerrainAcquisitionMethod = TerrainAcquisitionMethod.None | TerrainAcquisitionMethod.Legacy | TerrainAcquisitionMethod.Template | TerrainAcquisitionMethod.Generate | TerrainAcquisitionMethod.Import | TerrainAcquisitionMethod.Convert | TerrainAcquisitionMethod.EditAddTool | TerrainAcquisitionMethod.EditSeaLevelTool | TerrainAcquisitionMethod.EditReplaceTool | TerrainAcquisitionMethod.RegionFillTool | TerrainAcquisitionMethod.RegionPasteTool | TerrainAcquisitionMethod.Other;
+	export namespace TextChatMessageStatus {
+		export interface Success {
+			Name: "Success";
+			Value: 1;
+			EnumType: EnumType<TextChatMessageStatus>;
+		}
+
+		export const Success: Success;
+
+		export interface TextFilterFailed {
+			Name: "TextFilterFailed";
+			Value: 2;
+			EnumType: EnumType<TextChatMessageStatus>;
+		}
+
+		export const TextFilterFailed: TextFilterFailed;
+
+		export interface Floodchecked {
+			Name: "Floodchecked";
+			Value: 3;
+			EnumType: EnumType<TextChatMessageStatus>;
+		}
+
+		export const Floodchecked: Floodchecked;
+
+		export interface InvalidPrivacySettings {
+			Name: "InvalidPrivacySettings";
+			Value: 4;
+			EnumType: EnumType<TextChatMessageStatus>;
+		}
+
+		export const InvalidPrivacySettings: InvalidPrivacySettings;
+
+		export interface InvalidTextChannelPermissions {
+			Name: "InvalidTextChannelPermissions";
+			Value: 5;
+			EnumType: EnumType<TextChatMessageStatus>;
+		}
+
+		export const InvalidTextChannelPermissions: InvalidTextChannelPermissions;
+
+		export function GetEnumItems(this: defined): Array<TextChatMessageStatus>
+	}
+	export type TextChatMessageStatus = TextChatMessageStatus.Success | TextChatMessageStatus.TextFilterFailed | TextChatMessageStatus.Floodchecked | TextChatMessageStatus.InvalidPrivacySettings | TextChatMessageStatus.InvalidTextChannelPermissions;
 	export namespace TextFilterContext {
 		export interface PublicChat {
 			Name: "PublicChat";
