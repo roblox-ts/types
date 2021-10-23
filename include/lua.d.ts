@@ -36,7 +36,7 @@ declare function rawget(t: unknown, index: unknown): unknown;
 declare function rawset(t: unknown, index: unknown, value: unknown): void;
 
 /** Returns all arguments after argument number index. */
-declare function select(index: number, ...args: Array<unknown>): Array<unknown>;
+declare function select(index: number, ...args: Array<unknown>): LuaTuple<Array<unknown>>;
 
 /** Returns the total number of arguments that were passed after the cmd argument. */
 declare function select(cmd: "#", ...args: Array<unknown>): number;
