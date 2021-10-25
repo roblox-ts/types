@@ -1095,7 +1095,7 @@ interface Accoutrement extends Instance {
 	AttachmentUp: Vector3;
 }
 
-/** The Accessory class is an extension to the [Hat](https://developer.roblox.com/en-us/api-reference/class/Hat) class, and is also the successor to the legacy Hat system.  
+/** The Accessory class is the successor to the legacy Hat system.  
  * It's designed to be cross-compatible with both the legacy R6 character system, and the new R15 character system.  
  *   
  * If an [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) is inserted into the Accessory's Handle with the same name as an [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) found in one of the character's limbs, they will connect, and the properties inherited from the [Accoutrement](https://developer.roblox.com/en-us/api-reference/class/Accoutrement) class will be ignored. Otherwise, the Accessory functions identically to a [Hat](https://developer.roblox.com/en-us/api-reference/class/Hat).  
@@ -11243,7 +11243,7 @@ interface ImageLabel extends GuiLabel {
  * 
  * [TextService:GetTextSize](https://developer.roblox.com/en-us/api-reference/function/TextService/GetTextSize) can be used to get the size (bounds) of text that would be rendered in a TextLabel given a font size, font, and frame size.
  * 
- * A [UITextSizeConstraint](https://developer.roblox.com/en-us/api-reference/class/UITextSizeConstraint) object can be used to constrain the size of text with [TextLabel.TextScaled](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextScaled) enabled.
+ * A [UITextSizeConstraint](https://developer.roblox.com/en-us/api-reference/class/UITextSizeConstraint) object can be used to constrain the size of text with [TextLabel.TextScaled](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextScaled) enabled. It is recommended that the size of text is no lower than 9 pixels, otherwise it may not be visible to most users. See `articles/Accessibility Best Practices` for more information.
  */
 interface TextLabel extends GuiLabel {
 	/**
@@ -23151,7 +23151,25 @@ interface WorldRoot extends Model {
 		whitelistDescendantsTable: Array<Instance>,
 		maxParts?: number,
 	): Array<BasePart>;
+	/**
+	 * **GetPartBoundsInBox** returns an array of parts whose _bounding boxes_ overlap a box whose volume is described using the given center (CFrame) and size (Vector3).
+	 * 
+	 * Beware that this spatial query function efficiently considers the volume of parts' bounding boxes rather than their actual occupied volume. This may be important when considering cylinders, spheres, unions, and [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart), which have non-block shapes. For cases where accuracy particularly matters, use [GetPartsInPart](https://developer.roblox.com/en-us/api-reference/function/WorldRoot/GetPartsInPart) instead or further filter the results of this function yourself.
+	 * 
+	 * This function uses an [OverlapParams](https://developer.roblox.com/en-us/api-reference/datatype/OverlapParams) object to describe reusable portions of the spatial query, such as an instance whitelist/blacklist, the maximum number of parts to query, and what `articles/Collision Filtering|collision group` to use. When making repeated spatial queries using functions like this, you should construct just one of these objects and reuse it.
+	 * 
+	 * This and other spatial query functions do not consider parts' [CanCollide](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanCollide) or [CanTouch](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanTouch) properties. However, it will consider parts' collision group if specified by the given OverlapParams.
+	 */
 	GetPartBoundsInBox(this: WorldRoot, cframe: CFrame, size: Vector3, overlapParams?: OverlapParams): Array<Instance>;
+	/**
+	 * **GetPartBoundsInRadius** returns an array of parts whose _bounding boxes_ overlap a sphere whose volume is described using the given center (Vector3) and radius (number).
+	 * 
+	 * Beware that this spatial query function efficiently considers the volume of parts' bounding boxes rather than their actual occupied volume. This may be important when considering cylinders, spheres, unions, and [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart), which have non-block shapes. For cases where accuracy particularly matters, use [GetPartsInPart](https://developer.roblox.com/en-us/api-reference/function/WorldRoot/GetPartsInPart) instead or further filter the results of this function yourself.
+	 * 
+	 * This function uses an [OverlapParams](https://developer.roblox.com/en-us/api-reference/datatype/OverlapParams) object to describe reusable portions of the spatial query, such as an instance whitelist/blacklist, the maximum number of parts to query, and what `articles/Collision Filtering|collision group` to use. When making repeated spatial queries using functions like this, you should construct just one of these objects and reuse it.
+	 * 
+	 * This and other spatial query functions do not consider parts' [CanCollide](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanCollide) or [CanTouch](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanTouch) properties. However, it will consider parts' collision group if specified by the given OverlapParams.
+	 */
 	GetPartBoundsInRadius(this: WorldRoot, position: Vector3, radius: number, overlapParams?: OverlapParams): Array<Instance>;
 	GetPartsInPart(this: WorldRoot, part: BasePart, overlapParams?: OverlapParams): Array<Instance>;
 	/**
@@ -30983,13 +31001,11 @@ interface UISizeConstraint extends UIConstraint {
 	MinSize: Vector2;
 }
 
-/** Ensures a [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) with text (such as a [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel) or [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton)) does not let the font size of its text become larger or smaller than the [UITextSizeConstraint.MaxTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MaxTextSize) and [UITextSizeConstraint.MinTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MinTextSize).
+/** A **UITextSizeConstraint** ensures that the size of text rendered by certain [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) classes ([TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel), [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton), or [TextBox](https://developer.roblox.com/en-us/api-reference/class/TextBox)) lies within the range described by [MaxTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MaxTextSize) and [MinTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MinTextSize). It is meant to be used alongside [TextLabel.TextScaled](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextScaled), which automatically scales text to fill its containing object. Like other UI constraints, it is applied when parented to the object to be constrained.
  * 
  * ![Constraints visual](https://developer.roblox.com/assets/blte9c47efb631349e0/UITextSizeConstraintDemo.gif)
  * 
- * If the affected GuiObject has its [TextScaled](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextScaled) property set to true the text size constrained by this property will scale dynamically with the container's size. It will scale upwards with the GuiObject's size until the max size is reached and downwards until the min size is reached. At these points the text size will stay constant until the size of the UI object constrains the text within the min and max bounds.
- * 
- * A UITextSizeConstraint can be applied to a GuiObject by parenting it to that object.
+ * It's recommended that no values lower than 9 be used for [MinTextSize](https://developer.roblox.com/en-us/api-reference/property/UITextSizeConstraint/MinTextSize) property, otherwise text may not be readable to most users. See `articles/Accessibility Best Practices` for more information.
  */
 interface UITextSizeConstraint extends UIConstraint {
 	/**
