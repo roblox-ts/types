@@ -21,6 +21,7 @@ interface Services {
 	Chat: Chat;
 	CollectionService: CollectionService;
 	CommandService: CommandService;
+	ConfigureServerService: ConfigureServerService;
 	ContentProvider: ContentProvider;
 	ContextActionService: ContextActionService;
 	ControllerService: ControllerService;
@@ -302,6 +303,7 @@ interface CreatableInstances {
 	VelocityMotor: VelocityMotor;
 	VideoFrame: VideoFrame;
 	ViewportFrame: ViewportFrame;
+	VoiceChannel: VoiceChannel;
 	WedgePart: WedgePart;
 	Weld: Weld;
 	WeldConstraint: WeldConstraint;
@@ -2338,6 +2340,7 @@ interface AvatarEditorService extends Instance {
 	 * This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to favorite or unfavorite the given asset or bundle.
 	 */
 	PromptSetFavorite(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>, shouldFavorite: boolean): void;
+	PromptUpdateOutfit(this: AvatarEditorService, outfitId: number, updatedOutfit: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
 	/**
 	 * Tags: Yields
 	 */
@@ -2652,6 +2655,7 @@ interface AvatarEditorService extends Instance {
 	 * This event fires when the [AvatarEditorService:PromptSetFavorite](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptSetFavorite) operation is completed. It can only return the Success or PermissionDenied [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) statuses as it does not perform any web requests which could fail.
 	 */
 	readonly PromptSetFavoriteCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
+	readonly PromptUpdateOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
 }
 
 interface AvatarImportService extends Instance {
@@ -6279,6 +6283,17 @@ interface Configuration extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Configuration: unique symbol;
+}
+
+interface ConfigureServerService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ConfigureServerService: unique symbol;
 }
 
 /** The base class for Constraint-based objects. */
@@ -10987,6 +11002,10 @@ interface TextButton extends GuiButton {
 	 */
 	readonly _nominal_TextButton: unique symbol;
 	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ContentText: string;
+	/**
 	 * The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property.
@@ -11254,6 +11273,10 @@ interface TextLabel extends GuiLabel {
 	 * @deprecated
 	 */
 	readonly _nominal_TextLabel: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ContentText: string;
 	/**
 	 * The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
@@ -11620,6 +11643,10 @@ interface TextBox extends GuiObject {
 	 * Determines whether clicking on the TextBox will clear its [TextBox.Text](https://developer.roblox.com/en-us/api-reference/property/TextBox/Text) property
 	 */
 	ClearTextOnFocus: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ContentText: string;
 	/**
 	 * **CursorPosition** determines the offset of the text cursor in bytes, or -1 if the TextBox is not currently being edited. A value of 1 represents the beginning, the position before the first byte in the [Text](https://developer.roblox.com/en-us/api-reference/property/TextBox/Text) property. When used in conjunction with the [SelectionStart](https://developer.roblox.com/en-us/api-reference/property/TextBox/SelectionStart) property, it is possible to both get and set selected text within a TextBox.
 	 * 
@@ -15221,6 +15248,7 @@ interface ImporterGroupSettings extends ImporterBaseSettings {
 	 */
 	readonly _nominal_ImporterGroupSettings: unique symbol;
 	ImportAsModelAsset: boolean;
+	InsertInWorkspace: boolean;
 }
 
 interface ImporterJointSettings extends ImporterBaseSettings {
@@ -15270,6 +15298,7 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	 */
 	readonly FileDimensions: Vector3;
 	ImportAsModelAsset: boolean;
+	InsertInWorkspace: boolean;
 	InvertNegativeFaces: boolean;
 	MergeMeshes: boolean;
 	/**
@@ -15280,7 +15309,6 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	ScaleUnit: Enum.MeshScaleUnit;
 	WorldForward: Enum.NormalId;
 	WorldUp: Enum.NormalId;
-	ZeroOrigin: boolean;
 }
 
 interface ImporterTextureSettings extends ImporterBaseSettings {
@@ -33906,6 +33934,17 @@ interface Vector3Curve extends Instance {
 	 * Returns the FloatCurve controlling the Z channel. It is the first child instance of type FloatCurve named `Z`. If none is found an empty FloatCurve is created.
 	 */
 	Z(this: Vector3Curve): FloatCurve;
+}
+
+interface VoiceChannel extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VoiceChannel: unique symbol;
 }
 
 interface VoiceChatInternal extends Instance {
