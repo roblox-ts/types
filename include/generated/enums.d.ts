@@ -11666,17 +11666,9 @@ declare namespace Enum {
 	}
 	export type RibbonTool = RibbonTool.Select | RibbonTool.Scale | RibbonTool.Rotate | RibbonTool.Move | RibbonTool.Transform | RibbonTool.ColorPicker | RibbonTool.MaterialPicker | RibbonTool.Group | RibbonTool.Ungroup | RibbonTool.None;
 	export namespace RigType {
-		export interface R6 {
-			Name: "R6";
-			Value: 0;
-			EnumType: EnumType<RigType>;
-		}
-
-		export const R6: R6;
-
 		export interface R15 {
 			Name: "R15";
-			Value: 1;
+			Value: 0;
 			EnumType: EnumType<RigType>;
 		}
 
@@ -11684,7 +11676,7 @@ declare namespace Enum {
 
 		export interface Rthro {
 			Name: "Rthro";
-			Value: 2;
+			Value: 1;
 			EnumType: EnumType<RigType>;
 		}
 
@@ -11692,23 +11684,15 @@ declare namespace Enum {
 
 		export interface RthroNarrow {
 			Name: "RthroNarrow";
-			Value: 3;
+			Value: 2;
 			EnumType: EnumType<RigType>;
 		}
 
 		export const RthroNarrow: RthroNarrow;
 
-		export interface S15 {
-			Name: "S15";
-			Value: 4;
-			EnumType: EnumType<RigType>;
-		}
-
-		export const S15: S15;
-
 		export interface Custom {
 			Name: "Custom";
-			Value: 5;
+			Value: 3;
 			EnumType: EnumType<RigType>;
 		}
 
@@ -11716,7 +11700,7 @@ declare namespace Enum {
 
 		export interface None {
 			Name: "None";
-			Value: 6;
+			Value: 4;
 			EnumType: EnumType<RigType>;
 		}
 
@@ -11724,7 +11708,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<RigType>
 	}
-	export type RigType = RigType.R6 | RigType.R15 | RigType.Rthro | RigType.RthroNarrow | RigType.S15 | RigType.Custom | RigType.None;
+	export type RigType = RigType.R15 | RigType.Rthro | RigType.RthroNarrow | RigType.Custom | RigType.None;
 	export namespace RollOffMode {
 		export interface Inverse {
 			Name: "Inverse";
