@@ -726,7 +726,7 @@ declare function next<T extends ReadonlyArray<any>>(
 	: T extends readonly [infer A, infer B, infer C, infer D, infer E, infer F]
 	? LuaTuple<[number, A | B | C | D | E | F]>
 	: T extends ReadonlyArray<infer U>
-	? LuaTuple<Array<U>>
+	? LuaTuple<[number, U]>
 	: LuaTuple<[unknown, unknown]>;
 declare function next<T extends ReadonlyArray<any>>(
 	object: T,
@@ -744,7 +744,7 @@ declare function next<T extends ReadonlyArray<any>>(
 	: T extends [infer A, infer B, infer C, infer D, infer E, infer F]
 	? LuaTuple<[number, A | B | C | D | E | F]>
 	: T extends ReadonlyArray<infer U>
-	? LuaTuple<Array<U>>
+	? LuaTuple<[number, U]>
 	: LuaTuple<[unknown, unknown]>;
 declare function next<T>(object: ReadonlyArray<T>, index?: number): LuaTuple<[number, T]>;
 declare function next<T>(object: ReadonlySet<T>, index?: T): LuaTuple<[T, true]>;
