@@ -701,7 +701,13 @@ interface Instance {
 		className: T,
 		recursive?: boolean,
 	): Instances[T] | undefined;
+	/**
+	 * Returns the first descendant found with the given FullName (or partial FullName).
+	 */
 	FindFirstDescendant(this: Instance, name: string): Instance | undefined;
+	/**
+	 * Returns the Actor associated with the Instance, usually the first Actor ancestor
+	 */
 	GetActor(this: Instance): Actor;
 	/**
 	 * This function returns the attribute which has been assigned to the given name. If no attribute has been assigned then nil is returned.
@@ -6767,6 +6773,10 @@ interface LineForce extends Constraint {
 	ReactionForceEnabled: boolean;
 }
 
+/** The **LinearVelocity** constraint applies force on a part/assembly to maintain a linear velocity.
+ * 
+ * This object maintains all functionality of [BodyVelocity](https://developer.roblox.com/en-us/api-reference/class/BodyVelocity), a legacy body mover. To instead apply a constant force, use a [VectorForce](https://developer.roblox.com/en-us/api-reference/class/VectorForce) object instead.
+ */
 interface LinearVelocity extends Constraint {
 	/**
 	 * **DO NOT USE!**
@@ -6777,28 +6787,48 @@ interface LinearVelocity extends Constraint {
 	 */
 	readonly _nominal_LinearVelocity: unique symbol;
 	/**
-	 * Direction of the line used to contraint the velocity to a line.
+	 * The normalized [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) direction for constraining the velocity along a line, when `LinearVelocity/VelocityConstraintMode| VelocityConstraintMode` is set to **Line**. Default is \[1, 0, 0\].
 	 */
 	LineDirection: Vector3;
 	/**
-	 * The value of the constraint velocity along a line.
+	 * Float value of the velocity when [VelocityConstraintMode](https://developer.roblox.com/en-us/api-reference/property/LinearVelocity/VelocityConstraintMode) is set to **Line**. Default is 0.
 	 */
 	LineVelocity: number;
 	/**
-	 * Maximum force magnitude that is applied to satisfy the constraint.
+	 * Maximum magnitude of the force vector the constraint can apply.
 	 */
 	MaxForce: number;
 	/**
-	 * Velocity coefficients in the constraint plane.
+	 * [Vector2](https://developer.roblox.com/en-us/api-reference/datatype/Vector2) value of the velocity in each tangent direction of the plane, when [VelocityConstraintMode](https://developer.roblox.com/en-us/api-reference/property/LinearVelocity/VelocityConstraintMode) is set to **Plane**. Default is \[0, 0\].
 	 */
 	PlaneVelocity: Vector2;
+	/**
+	 * The primary axis in the plane, when [VelocityConstraintMode](https://developer.roblox.com/en-us/api-reference/property/LinearVelocity/VelocityConstraintMode) is set to **Plane**. Value depends on the value of `LinearVelocityConstraint/RelativeTo|RelativeTo` as follows:
+	 * 
+	 * *   If `LinearVelocityConstraint/RelativeTo|RelativeTo` is set to **Attachment0**, this axis is the [Axis](https://developer.roblox.com/en-us/api-reference/property/Attachment/Axis) of [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0).
+	 * *   If `LinearVelocityConstraint/RelativeTo|RelativeTo` is set to **Attachment1**, this axis is the [Axis](https://developer.roblox.com/en-us/api-reference/property/Attachment/Axis) of [Attachment1](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment1).
+	 * *   If `LinearVelocityConstraint/RelativeTo|RelativeTo` is set to **World**, this value must be specified in the world space.
+	 */
 	PrimaryTangentAxis: Vector3;
 	/**
-	 * Selects whether the velocity orientation is relative to attachment0, attachment1 or the world.
+	 * Sets the [ActuatorRelativeTo](https://developer.roblox.com/en-us/api-reference/enum/ActuatorRelativeTo) property for the [LinearVelocity](https://developer.roblox.com/en-us/api-reference/class/LinearVelocity) constraint.
 	 */
 	RelativeTo: Enum.ActuatorRelativeTo;
+	/**
+	 * The secondary axis in the plane, when [VelocityConstraintMode](https://developer.roblox.com/en-us/api-reference/property/LinearVelocity/VelocityConstraintMode) is set to **Plane**. Value depends on the value of `LinearVelocityConstraint/RelativeTo|RelativeTo` as follows:
+	 * 
+	 * *   If `LinearVelocityConstraint/RelativeTo|RelativeTo` is set to **Attachment0**, this axis is the [SecondaryAxis](https://developer.roblox.com/en-us/api-reference/property/Attachment/SecondaryAxis) of [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0).
+	 * *   If `LinearVelocityConstraint/RelativeTo|RelativeTo` is set to **Attachment1**, this axis is the [SecondaryAxis](https://developer.roblox.com/en-us/api-reference/property/Attachment/SecondaryAxis) of [Attachment1](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment1).
+	 * *   If `LinearVelocityConstraint/RelativeTo|RelativeTo` is set to **World**, this value must be specified in the world space.
+	 */
 	SecondaryTangentAxis: Vector3;
+	/**
+	 * [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) velocity value when [VelocityConstraintMode](https://developer.roblox.com/en-us/api-reference/property/LinearVelocity/VelocityConstraintMode) is set to **Vector**. Default is \[0, 0, 0\].
+	 */
 	VectorVelocity: Vector3;
+	/**
+	 * The mode of the [LinearVelocity](https://developer.roblox.com/en-us/api-reference/class/LinearVelocity) constraint: **Line**, **Plane**, or **Vector**. Default is **Vector**.
+	 */
 	VelocityConstraintMode: Enum.VelocityConstraintMode;
 }
 
@@ -9393,9 +9423,9 @@ interface Fire extends Instance {
 	Size: number;
 }
 
-/** An instance representing a 1D float curve encoded via a sorted list of [FloatCurveKeys](https://developer.roblox.com/en-us/api-reference/class/FloatCurveKey).
+/** An instance representing a 1D float curve encoded via a sorted list of [FloatCurveKeys](https://developer.roblox.com/en-us/api-reference/datatype/FloatCurveKey).
  * 
- * `FloatCurveKey` are value-time points that represent the changes in value over time. The changes of a single value over time are represented by a curve. Animators can edit keys to modify a curve. The shape of the curve is dictated by the [KeyInterpolationMode](https://developer.roblox.com/en-us/api-reference/enum/KeyInterpolationMode) chosen at each key.
+ * [FloatCurveKeys](https://developer.roblox.com/en-us/api-reference/datatype/FloatCurveKey) are value-time points that represent the changes in value over time. The changes of a single value over time are represented by a curve. Animators can edit keys to modify a curve. The shape of the curve is dictated by the [KeyInterpolationMode](https://developer.roblox.com/en-us/api-reference/enum/KeyInterpolationMode) chosen at each key.
  */
 interface FloatCurve extends Instance {
 	/**
@@ -13208,6 +13238,7 @@ interface Highlight extends Instance {
  * Considerations
  * --------------
  * 
+ * *   There are port restrictions. You cannot use port 1194 or any port below 1024, except 80 and 443.
  * *   For each Roblox game server, there is a limit of 500 HTTP requests per minute. Exceeding this may cause request-sending functions to stall entirely for about 30 seconds.
  * *   Requests cannot be made to any Roblox website, such as [www.roblox.com](http://www.roblox.com).
  * *   Web requests can fail for many reasons, so it is important to “code defensively” (use `pcall`) and have a plan for when requests fail.
@@ -23806,11 +23837,13 @@ interface StandardPages<T = unknown> extends Pages<T> {
 	readonly _nominal_StandardPages: unique symbol;
 }
 
-/** A ParticleEmitter allows for the creation of [particle systems](https://en.wikipedia.org/wiki/Particle_system). is a special effect object that emits customizable 2D billboard particles into the world. On Roblox, a particle is a 2D image rendered in the world so that it always always face the camera, much like a [BillboardGui](https://developer.roblox.com/en-us/api-reference/class/BillboardGui) with a single [ImageLabel](https://developer.roblox.com/en-us/api-reference/class/ImageLabel) in it.
+/** A ParticleEmitter allows for the creation of [particle systems](https://en.wikipedia.org/wiki/Particle_system). It is a special effect object that emits customizable 2D billboard particles into the world. On Roblox, a particle is a square 2D image, like a [BillboardGui](https://developer.roblox.com/en-us/api-reference/class/BillboardGui) or [SurfaceGui](https://developer.roblox.com/en-us/api-reference/class/SurfaceGui) with an [ImageLabel](https://developer.roblox.com/en-us/api-reference/class/ImageLabel).
  * 
- * ParticleEmitter must be parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) (such as a [Part](https://developer.roblox.com/en-us/api-reference/class/Part)) or an [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) within such a part. Particles spawn randomly in the **bounding box** of its parent part (for attachments, this is a single point). Particles from a single emitter will render so long as this condition is met; setting a ParticleEmitter's [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to nil will remove all particles instantly, like how [ParticleEmitter:Clear](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Clear) works. If an emitter is [ParticleEmitter.Enabled](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Enabled) and has a nonzero [ParticleEmitter.Rate](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Rate), it will emit particles on its own. Finer control on the number of particles can be accomplished using [ParticleEmitter:Emit](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Emit).
+ * To emit and render particles, a ParticleEmitter must be parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) (such as a [Part](https://developer.roblox.com/en-us/api-reference/class/Part)) or an [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) within such a part. Particles are emit automatically when the emitter is [Enabled](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Enabled) with a non-zero [Rate](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Rate), or manually when the [Emit](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Emit) method is called. The starting positions of particles are determined by the [Shape](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Shape) and [ShapePartial](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/ShapePartial) properties as well as the parent [BasePart.Size](https://developer.roblox.com/en-us/api-reference/property/BasePart/Size). By default, particles spawn randomly in the **bounding box** of the parent part, although this can be configured to be on a specific surface by the emitter's [ShapeStyle](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/ShapeStyle) and [EmissionDirection](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/EmissionDirection). With a non-zero [Speed](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Speed), particles are set in motion outwards and/or inwards, depending on the [ShapeInOut](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/ShapeInOut) property. The direction can be randomized with [SpreadAngle](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/SpreadAngle). By default, particles face the camera, but the [Orientation](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Orientation) can be modified to respect the particle velocity instead.
  * 
- * Roblox provides several pre-made particle effect objects - [Fire](https://developer.roblox.com/en-us/api-reference/class/Fire), [Smoke](https://developer.roblox.com/en-us/api-reference/class/Smoke) and [Sparkles](https://developer.roblox.com/en-us/api-reference/class/Sparkles). They behave similarly to a ParticleEmitter, but they are not as customizable. They also lack certain particle-controlling methods: [ParticleEmitter:Emit](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Emit) and [ParticleEmitter:Clear](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Clear). An [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion) also uses particles, but provides little-to-no control with regards to how the effect looks.
+ * During the [Lifetime](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Lifetime) of the particles, they can change appearance according to the [Color](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Color) and [Size](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Size). Their motion can change over time according to the [Drag](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Drag) and [Acceleration](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Acceleration) properties, and they can also move as their parent moves when they are [LockedToPart](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/LockedToPart) or have a non-zero [VelocityInheritance](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/VelocityInheritance).
+ * 
+ * Roblox provides several pre-made particle effect objects - [Fire](https://developer.roblox.com/en-us/api-reference/class/Fire), [Smoke](https://developer.roblox.com/en-us/api-reference/class/Smoke) and [Sparkles](https://developer.roblox.com/en-us/api-reference/class/Sparkles). They behave similarly to a ParticleEmitter, but they are not as customizable. They also lack the particle-controlling methods ([Emit](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Emit) and [Clear](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Clear)). An [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion) also creates particles, but provides little-to-no control with regards to how the effect looks.
  * 
  * See also
  * --------
