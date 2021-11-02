@@ -759,7 +759,7 @@ declare function pairs<K, V>(
 ): IterableFunction<LuaTuple<[Exclude<K, undefined>, Exclude<V, undefined>]>>;
 declare function pairs<T extends object>(
 	object: T,
-): object extends Required<T>
+): keyof T extends never
 	? IterableFunction<LuaTuple<[unknown, defined]>>
 	: IterableFunction<LuaTuple<[keyof T, Exclude<T[keyof T], undefined>]>>;
 
