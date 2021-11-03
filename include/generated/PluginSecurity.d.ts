@@ -140,6 +140,27 @@ interface KeyframeSequence extends Instance {
 	AuthoredHipHeight: number;
 }
 
+interface AnimationClipProvider extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AnimationClipProvider: unique symbol;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetAnimationClip(this: AnimationClipProvider, assetId: string): AnimationClip;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	GetAnimationClipById(this: AnimationClipProvider, assetId: number, useCache: boolean): AnimationClip;
+}
+
 interface Animator extends Instance {
 	/**
 	 * **DO NOT USE!**
