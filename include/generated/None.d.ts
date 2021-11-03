@@ -6,6 +6,7 @@
 
 interface Services {
 	AnalyticsService: AnalyticsService;
+	AnimationClipProvider: AnimationClipProvider;
 	AppUpdateService: AppUpdateService;
 	AssetCounterService: AssetCounterService;
 	AssetDeliveryProxy: AssetDeliveryProxy;
@@ -26,6 +27,7 @@ interface Services {
 	ContextActionService: ContextActionService;
 	ControllerService: ControllerService;
 	CSGCacheService: CSGCacheService;
+	DataModelPatchService: DataModelPatchService;
 	DataStoreService: DataStoreService;
 	Debris: Debris;
 	DebuggerConnectionManager: DebuggerConnectionManager;
@@ -50,11 +52,13 @@ interface Services {
 	Lighting: Lighting;
 	LocalizationService: LocalizationService;
 	LogService: LogService;
+	LuauScriptAnalyzerService: LuauScriptAnalyzerService;
 	MarketplaceService: MarketplaceService;
 	MaterialService: MaterialService;
 	MemoryStoreService: MemoryStoreService;
 	MessageBusService: MessageBusService;
 	MessagingService: MessagingService;
+	PackageUIService: PackageUIService;
 	PathfindingService: PathfindingService;
 	PhysicsService: PhysicsService;
 	Players: Players;
@@ -85,6 +89,7 @@ interface Services {
 	Teams: Teams;
 	TeleportService: TeleportService;
 	TemporaryCageMeshProvider: TemporaryCageMeshProvider;
+	TemporaryScriptService: TemporaryScriptService;
 	TextChatService: TextChatService;
 	TextService: TextService;
 	ToastNotificationService: ToastNotificationService;
@@ -1514,6 +1519,27 @@ interface KeyframeSequence extends Instance {
 	RemoveKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
 }
 
+interface AnimationClipProvider extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AnimationClipProvider: unique symbol;
+	RegisterActiveAnimationClip(this: AnimationClipProvider, animationClip: AnimationClip): string;
+	RegisterAnimationClip(this: AnimationClipProvider, animationClip: AnimationClip): string;
+	/**
+	 * Tags: Yields
+	 */
+	GetAnimationClipAsync(this: AnimationClipProvider, assetId: string): AnimationClip;
+	/**
+	 * Tags: Yields
+	 */
+	GetAnimations(this: AnimationClipProvider, userId: number): Instance | undefined;
+}
+
 /** An object which allows animations to be loaded and applied to a character or model in place of a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) when a Humanoid is not needed. Creates an [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator) and loads animations to update [Motor6Ds](https://developer.roblox.com/en-us/api-reference/class/Motor6D) of said character to react in the way that is described within the animation asset referenced by an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) object.
  * 
  * Should I load an Animation on the client or server?
@@ -1916,6 +1942,7 @@ interface AssetImportService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AssetImportService: unique symbol;
+	readonly SettingsChanged: RBXScriptSignal<(property: string) => void>;
 }
 
 interface AssetManagerService extends Instance {
@@ -8210,6 +8237,17 @@ interface SpecialMesh extends FileMesh {
 	 * Note, each MeshType will scale differently when using [DataModelMesh.Scale](https://developer.roblox.com/en-us/api-reference/property/DataModelMesh/Scale), for more information on this please see the page on [DataModelMesh.Scale](https://developer.roblox.com/en-us/api-reference/property/DataModelMesh/Scale).
 	 */
 	MeshType: Enum.MeshType;
+}
+
+interface DataModelPatchService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DataModelPatchService: unique symbol;
 }
 
 /** An object that specifies additional parameters for a [GlobalDataStore:IncrementAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/IncrementAsync) call.
@@ -19806,6 +19844,17 @@ interface ModuleScript extends LuaSourceContainer {
 	LinkedSource: string;
 }
 
+interface LuauScriptAnalyzerService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_LuauScriptAnalyzerService: unique symbol;
+}
+
 /** MarketplaceService is the game service that is responsible for in-game transactions.
  * 
  * The most notable functions are [PromptProductPurchase](https://developer.roblox.com/en-us/api-reference/function/MarketplaceService/PromptProductPurchase) and [PromptPurchase](https://developer.roblox.com/en-us/api-reference/function/MarketplaceService/PromptPurchase), as well as the callback [ProcessReceipt](https://developer.roblox.com/en-us/api-reference/property/MarketplaceService/ProcessReceipt) which must be well defined so that transactions do not fail.
@@ -23620,6 +23669,17 @@ interface PackageLink extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly VersionNumber: number;
+}
+
+interface PackageUIService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PackageUIService: unique symbol;
 }
 
 /** An object which is essentially a table of pages, each of which is a sorted list of the key/value pairs.  
@@ -30248,6 +30308,17 @@ interface TemporaryCageMeshProvider extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TemporaryCageMeshProvider: unique symbol;
+}
+
+interface TemporaryScriptService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TemporaryScriptService: unique symbol;
 }
 
 /** A TerrainRegion is a snapshot of [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) retrieved from the [CopyRegion](https://developer.roblox.com/api-reference/function/Terrain/CopyRegion "CopyRegion") method. Can be later pasted into the Terrain using [PasteRegion](https://developer.roblox.com/api-reference/function/Terrain/PasteRegion "PasteRegion"). */
