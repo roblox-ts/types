@@ -1972,6 +1972,8 @@ interface AssetService extends Instance {
 	 */
 	CreatePlaceAsync(this: AssetService, placeName: string, templatePlaceID: number, description?: string): number;
 	/**
+	 * This function has been removed as of Release 471.
+	 * 
 	 * Clones a place which has a placeId equal to the given templatePlaceID, placing it into the inventory of the given player with the given name and description, if they accept when prompted. This method cannot be used to clone places that you do not own, or those which have disabled the use of the CreatePlace API in their place's configuration.
 	 * Tags: Yields
 	 */
@@ -4020,7 +4022,15 @@ interface WrapLayer extends BaseWrap {
 	 * Allows for disabling of the [WrapLayer](https://developer.roblox.com/en-us/api-reference/class/WrapLayer) object as if it does not exist.
 	 */
 	Enabled: boolean;
+	/**
+	 * Controls the composition order for layered clothing. Clothing items with higher order will appear on top of clothing items with lower order. If two items have the same order, the deformer composition order is ambiguous and depends on serialization order. Default value is 1.
+	 */
 	readonly Order: number;
+	/**
+	 * Controls how much underlying clothing items inflate the current clothing item.
+	 * 
+	 * Valid range is 0 to 1. A value of 0 makes the clothing item always fit the body regardless of how many clothing layers are under it (all underlying clothing layers will be compressed). A value of 1 (default) never compresses anything and infinitely inflates over underlying clothing items.
+	 */
 	readonly Puffiness: number;
 	/**
 	 * AssetID for reference mesh used to define Inner Cage of a 3D object
@@ -4043,6 +4053,13 @@ interface WrapLayer extends BaseWrap {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly ReferenceOriginWorld: CFrame;
+	/**
+	 * This property is intended for fine-tuning purposes and is highly optional.
+	 * 
+	 * Allows slight shrinking/expanding of the resulting render mesh, without affecting any other layers. This is useful in rare cases when the clothing mesh does not precisely fit the underlying clothing layers (the cage is usually slightly overestimated atop the real shape to avoid layer interpenetration). Even slight overestimation has the tendency to accumulate, especially when there are a lot of layers. While this is usually not critical, some items like backpacks may be problematic.
+	 * 
+	 * Valid range is -1 to 1. A value of -1 will maximally expand while a value of 1 will maximally shrink. A value of 0 (default) has no effect.
+	 */
 	readonly ShrinkFactor: number;
 }
 
@@ -6111,6 +6128,10 @@ interface ClickDetector extends Instance {
 	readonly RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
 }
 
+/** The **Clouds** object renders realistic clouds that drift slowly across the sky. Both cloud cover and density can be adjusted, as well as cloud color to achieve atmospheres like stormy skies, moody sunsets, alien worlds, etc.
+ * 
+ * See the [Dynamic Clouds](https://developer.roblox.com/articles/dynamic-clouds) article for a summary of properties and expected results.
+ */
 interface Clouds extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -8977,11 +8998,17 @@ interface EulerRotationCurve extends Instance {
 	 * Euler angles rotation order
 	 */
 	RotationOrder: Enum.RotationOrder;
+	/**
+	 * Samples the 3 [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurves) (X, Y, Z) at the time passed as argument. Returns the result as 3 Euler angles. If a channel curve is missing or no key is found in the curve the channel is evaluated as nil.
+	 */
 	GetAnglesAtTime(this: EulerRotationCurve, time: number): unknown;
 	/**
 	 * Samples the [EulerRotationCurve](https://developer.roblox.com/en-us/api-reference/class/EulerRotationCurve) at a given time and returns the corresponding rotation. Empty Euler angles channels are interpreted as zero.
 	 */
 	GetRotationAtTime(this: EulerRotationCurve, time: number): CFrame;
+	/**
+	 * Returns the [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) controlling the X Euler angle channel. It is the first child instance of type [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) named `X`. If none is found an empty [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) is created.
+	 */
 	X(this: EulerRotationCurve): FloatCurve;
 	/**
 	 * Returns the [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) controlling the Y channel. It is the first child instance of type [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) named 'Y'. If none is found an empty [FloatCurve](https://developer.roblox.com/en-us/api-reference/class/FloatCurve) is created.
@@ -9484,7 +9511,7 @@ interface FloatCurve extends Instance {
 	 */
 	GetKeyAtIndex(this: FloatCurve, index: number): FloatCurveKey;
 	/**
-	 * The first returned value is the index of the last key with key.time <= time (or min(1,length) if no key was found).The second returned value is the index of the first key with key.time >= time or the length of the curve if no key was found satisfying the inequality.
+	 * The first returned value is the index of the last key with key.time <= time (or min(1,length) if no key was found). The second returned value is the index of the first key with key.time >= time or the length of the curve if no key was found satisfying the inequality.
 	 */
 	GetKeyIndicesAtTime(this: FloatCurve, time: number): unknown;
 	/**
@@ -12149,6 +12176,8 @@ interface LayerCollector extends GuiBase2d {
 
 /** BillboardGuis are containers for GUI objects that appear in the 3D space. A BillboardGui's position is determined by the position of it's [BillboardGui.Adornee](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/Adornee). If the adornee is set to [Part](https://developer.roblox.com/en-us/api-reference/class/Part) then the [BasePart.Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position) will be used. If it is set to [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) then the [Attachment.WorldPosition](https://developer.roblox.com/en-us/api-reference/property/Attachment/WorldPosition) will be used. BillboardGui always faces the camera, and can change its size with distance or remain the same size on the screen. Unlike the text that appears above models with Humanoids' heads, this does not disappear with distance.
  * 
+ * The [Size](https://developer.roblox.com/en-us/api-reference/property/BillboardGui/Size) property of a BillboardGui works slightly differently than [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject)s: the offset portion still represents pixel size; however, the scalar portion represents the dimensions in world space (studs). So, a size of `UDim2.new(3, 50, 5, -20)` would be the size of 3 by 5 studs in world space, with 50 more pixels on the X axis and 20 less pixels on the Y axis.
+ * 
  * ##### Caching static UI for performance improvements
  * 
  * A Gui's appearance is cached until one of the following events occurs:*   A descendant is added to the Gui.
@@ -12359,7 +12388,17 @@ interface ScreenGui extends LayerCollector {
 	IgnoreGuiInset: boolean;
 }
 
-/** **Note:** SurfaceGuis must be descendants of PlayerGui in order to know the player who is interacting with it.Allows for the rendering of GUI elements onto a part's surface in the 3D world, whilst allowing for basic user interaction to occur. */
+/** **Note:** SurfaceGuis must be descendants of PlayerGui in order to know the player who is interacting with it.Allows for the rendering of GUI elements onto a part's surface in the 3D world, whilst allowing for basic user interaction to occur.
+ * 
+ * ##### Caching static UI for performance improvements
+ * 
+ * A Gui's appearance is cached until one of the following events occurs:*   A descendant is added to the Gui.
+ * *   A descendant is removed from the Gui.
+ * *   A property of a descendant of the Gui changes.
+ * *   A property of the Gui changes.
+ * 
+ * If any of these events occur, the Gui's appearance will be recomputed the next frame it gets rendered.
+ */
 interface SurfaceGui extends LayerCollector {
 	/**
 	 * **DO NOT USE!**
@@ -13276,7 +13315,7 @@ interface Highlight extends Instance {
  * Considerations
  * --------------
  * 
- * *   There are port restrictions. You cannot use port 1194 or any port below 1024, except 80 and 443.
+ * *   There are port restrictions. You cannot use port 1194 or any port below 1024, except 80 and 443. If you try to use a blocked port, you will receive either a `403 Forbidden` or `ERR_ACCESS_DENIED` error.
  * *   For each Roblox game server, there is a limit of 500 HTTP requests per minute. Exceeding this may cause request-sending functions to stall entirely for about 30 seconds.
  * *   Requests cannot be made to any Roblox website, such as [www.roblox.com](http://www.roblox.com).
  * *   Web requests can fail for many reasons, so it is important to “code defensively” (use `pcall`) and have a plan for when requests fail.
@@ -14021,14 +14060,10 @@ interface Humanoid extends Instance {
 	 */
 	WalkToPoint: Vector3;
 	/**
-	 * ![A humanoid with an accessory that was attached using AddAccessory](https://developer.roblox.com/assets/bltfa53ae875b57255c/AddAccessory.png)
-	 * 
 	 * The AddAccessory function attaches the specified [Accessory](https://developer.roblox.com/en-us/api-reference/class/Accessory) to the `Humanoid|Humanoid's` parent.
 	 * 
 	 * How are Accessories attached to Humanoids?
 	 * ------------------------------------------
-	 * 
-	 * ![Attachments that share the same name, and thus are used to connect the accessory.](https://developer.roblox.com/assets/bltdb71e88b111a0699/AccessoryAttachment.png)
 	 * 
 	 * When this function is called, the [Accessory](https://developer.roblox.com/en-us/api-reference/class/Accessory) is parented to the `Humanoid|Humanoid's` parent and then attached.
 	 * 
@@ -15115,6 +15150,9 @@ interface HumanoidDescription extends Instance {
 	 * *   [EmotesChanged](https://developer.roblox.com/en-us/api-reference/event/HumanoidDescription/EmotesChanged), which fires after this function is called
 	 */
 	AddEmote(this: HumanoidDescription, name: string, assetId: number): void;
+	/**
+	 * Returns a table of an avatar's current accessories. If the second parameter (includeRigidAccessories) is true then the returned table will also include entries for rigid accessories from the rigid accessory properties.
+	 */
 	GetAccessories(this: HumanoidDescription, includeRigidAccessories: boolean): unknown;
 	/**
 	 * **GetEmotes** returns a dictionary of emotes that have been [added](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/AddEmote) or [set](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/SetEmotes) to this description. The keys of this dictionary are the names of the emotes, and the values are a non-empty array of emote IDs for that name.
@@ -19880,6 +19918,9 @@ interface MarketplaceService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MarketplaceService: unique symbol;
+	/**
+	 * Used to prompt a user to purchase a bundle with the given bundleId
+	 */
 	PromptBundlePurchase(this: MarketplaceService, player: Player, bundleId: number): void;
 	/**
 	 * Used to prompt a user to purchase a game pass with the given assetId.
@@ -21267,6 +21308,11 @@ interface BasePart extends PVInstance {
 	 * Even when CanCollide is disabled, parts may still fire the [BasePart.Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched) event (as well the other parts touching them). In addition, a part allow other parts to pass through even if CanCollide is enabled if their collision groups are not set to collide with each other. Part collision groups are managed by `/PhysicsService`.
 	 */
 	CanCollide: boolean;
+	/**
+	 * **CanQuery** determines whether the part is considered during spatial query operations, namely [GetPartBoundsInBox](https://developer.roblox.com/en-us/api-reference/function/WorldRoot/GetPartBoundsInBox), [GetPartBoundsInRadius](https://developer.roblox.com/en-us/api-reference/function/WorldRoot/GetPartBoundsInRadius) and [GetPartsInPart](https://developer.roblox.com/en-us/api-reference/function/WorldRoot/GetPartsInPart). These functions will never include parts whose CanQuery is false.
+	 * 
+	 * Beyond this property, it is also possible to blacklist parts which are descendants of a given list of parts using an [OverlapParams](https://developer.roblox.com/en-us/api-reference/datatype/OverlapParams) object when calling the spatial query functions.
+	 */
 	CanQuery: boolean;
 	/**
 	 * This property determines if the part will trigger [Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched)/[TouchEnded](https://developer.roblox.com/en-us/api-reference/event/BasePart/TouchEnded) events on other [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) with [TouchTransmitters](https://developer.roblox.com/en-us/api-reference/class/TouchTransmitter). By default, the value is set to `true`.
@@ -23042,6 +23088,7 @@ interface Model extends PVInstance {
 	TranslateBy(this: Model, delta: Vector3): void;
 }
 
+/** Actor */
 interface Actor extends Model {
 	/**
 	 * **DO NOT USE!**
@@ -23279,6 +23326,17 @@ interface WorldRoot extends Model {
 	 * This and other spatial query functions do not consider parts' [CanCollide](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanCollide) or [CanTouch](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanTouch) properties. However, it will consider parts' collision group if specified by the given OverlapParams.
 	 */
 	GetPartBoundsInRadius(this: WorldRoot, position: Vector3, radius: number, overlapParams?: OverlapParams): Array<Instance>;
+	/**
+	 * **GetPartsInPart** returns an array of parts whose occupied space is shared with the given part, which must exist in the same WorldRoot ([Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace)) as the parts to be queried.
+	 * 
+	 * Queried parts that are merely touching the given part are considered occupying the same space. This function can be used in place of [BasePart:GetTouchingParts](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetTouchingParts), and is generally a better choice in most cases.
+	 * 
+	 * Beware that this spatial query function considers the exact volume occupied by the given part using a full geometric collision check. A concave/hollow part won't match queried parts within it unless they actually overlap/touch such a part. For simpler volumes, consider using [GetPartBoundsInBox](https://developer.roblox.com/en-us/api-reference/function/WorldRoot/GetPartBoundsInBox) or [GetPartBoundsInRadius](https://developer.roblox.com/en-us/api-reference/function/WorldRoot/GetPartBoundsInRadius) instead, as they are faster at the cost of being less accurate.
+	 * 
+	 * This function uses an [OverlapParams](https://developer.roblox.com/en-us/api-reference/datatype/OverlapParams) object to describe reusable portions of the spatial query, such as an instance whitelist/blacklist, the maximum number of parts to query, and what `articles/Collision Filtering|collision group` to use. When making repeated spatial queries using functions like this, you should construct just one of these objects and reuse it.
+	 * 
+	 * This and other spatial query functions do not consider parts' [CanCollide](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanCollide) or [CanTouch](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanTouch) properties. However, it will consider parts' collision group if specified by the given OverlapParams.
+	 */
 	GetPartsInPart(this: WorldRoot, part: BasePart, overlapParams?: OverlapParams): Array<Instance>;
 	/**
 	 * **IsRegion3Empty** returns a bool indicating whether there are no [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s within the given [Region3](https://developer.roblox.com/en-us/api-reference/datatype/Region3).
@@ -23560,6 +23618,20 @@ interface Workspace extends WorldRoot {
 	 * A common use of this function is to detect if exploiters are increasing their local physics frame rate to move faster. This is generally done by comparing the result returned by a client's GetRealPhysicsFPS to a maximum that will not be breached in normal circumstances (usually 65 or 70). If this limit is breached, developers can use the [Player:Kick](https://developer.roblox.com/en-us/api-reference/function/Player/Kick) function to remove that [Player](https://developer.roblox.com/en-us/api-reference/class/Player) from the game. It is important to remember that, although this practice may be effective sometimes, client-side anti-exploiter measures are never 100% reliable.
 	 */
 	GetRealPhysicsFPS(this: Workspace): number;
+	/**
+	 * **GetServerTimeNow** returns the epoch time on the server with microsecond precision. The value returned by this function is adjusted for drift and smoothed monotonically, ie, it is guaranteed to be nondecreasing. This clock will progress no faster than 1.006× speed and no slower than 0.994× speed.
+	 * 
+	 * This function is useful for creating synchronized experiences, as it has three properties necessary for doing so: it is a real-world time clock, is monotonic and has decent precision. Essentially, it is the clients best guess of what `os.clock` would return on the server.
+	 * 
+	 * As this function relies on the server, calling it on a client before it has connected will throw an error.
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [DistributedGameTime](https://developer.roblox.com/en-us/api-reference/property/Workspace/DistributedGameTime), a game-time clock
+	 * *   `os.clock`
+	 * *   `DateTime.now`
+	 */
 	GetServerTimeNow(this: Workspace): number;
 	/**
 	 * This function creates joints between the specified [Parts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and any touching parts depending on the parts' surfaces and the specified joint creation mode.
@@ -32963,13 +33035,13 @@ interface UserInputService extends Instance {
 	 * 
 	 * For example, the code below prints “Jump” every time the player sends a jump request.
 	 * 
-	 * local userInputService = game:GetService("UserInputService")
+	 * local UserInputService = game:GetService("UserInputService")
 	 * 
-	 * function jumpRequest()
+	 * function onJumpRequest()
 	 *     print("Jump!")
 	 * end
 	 * 
-	 * userInputService.JumpRequest:Connect(JumpRequest)
+	 * UserInputService.JumpRequest:Connect(onJumpRequest)
 	 * 
 	 * Since this event fires multiple times for a single jump request, using a [debounce](https://developer.roblox.com/articles/Debounce) is suggested.
 	 * 
