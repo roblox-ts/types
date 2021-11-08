@@ -467,42 +467,52 @@ interface FaceControls extends Instance {
 	 */
 	readonly _nominal_FaceControls: unique symbol;
 	/**
+	 * Raises the chin up; moves the lower lip upwards
 	 * Tags: NotReplicated
 	 */
 	ChinRaiser: number;
 	/**
+	 * Moves the upper lip when ChinRaiser is engaged and touching the upper lip
 	 * Tags: NotReplicated
 	 */
 	ChinRaiserUpperLip: number;
 	/**
+	 * Brings the left and right brows inward together
 	 * Tags: NotReplicated
 	 */
 	Corrugator: number;
 	/**
+	 * Moves gaze down
 	 * Tags: NotReplicated
 	 */
 	EyesLookDown: number;
 	/**
+	 * Moves gaze left
 	 * Tags: NotReplicated
 	 */
 	EyesLookLeft: number;
 	/**
+	 * Moves gaze right
 	 * Tags: NotReplicated
 	 */
 	EyesLookRight: number;
 	/**
+	 * Moves gaze up
 	 * Tags: NotReplicated
 	 */
 	EyesLookUp: number;
 	/**
+	 * Also known as lip tightener; brings the corners of the mouth inward and pressing the lips back against the teeth
 	 * Tags: NotReplicated
 	 */
 	FlatPucker: number;
 	/**
+	 * Makes a 'O' shape with the mouth
 	 * Tags: NotReplicated
 	 */
 	Funneler: number;
 	/**
+	 * Lowers the jaw downward opening the mouth
 	 * Tags: NotReplicated
 	 */
 	JawDrop: number;
@@ -511,158 +521,197 @@ interface FaceControls extends Instance {
 	 */
 	JawLeft: number;
 	/**
+	 * Moves mouth and jaw to the right (character right)
 	 * Tags: NotReplicated
 	 */
 	JawRight: number;
 	/**
+	 * Lowers the left brow down
 	 * Tags: NotReplicated
 	 */
 	LeftBrowLowerer: number;
 	/**
+	 * Puffs up the left cheek
 	 * Tags: NotReplicated
 	 */
 	LeftCheekPuff: number;
 	/**
+	 * Squints the left eye
 	 * Tags: NotReplicated
 	 */
 	LeftCheekRaiser: number;
 	/**
+	 * Moves the corners of the mouth back in Z
 	 * Tags: NotReplicated
 	 */
 	LeftDimpler: number;
 	/**
+	 * Closes the left eyelid
 	 * Tags: NotReplicated
 	 */
 	LeftEyeClosed: number;
 	/**
+	 * Raises the left eyelid upwards to reveal more of the eye white above the iris
 	 * Tags: NotReplicated
 	 */
 	LeftEyeUpperLidRaiser: number;
 	/**
+	 * Raises the interior half of the left brow upwards
 	 * Tags: NotReplicated
 	 */
 	LeftInnerBrowRaiser: number;
 	/**
+	 * Lowers the corners of the mouth downwards in a frown
 	 * Tags: NotReplicated
 	 */
 	LeftLipCornerDown: number;
 	/**
+	 * Raises the corners of the mouth upwards in a smile
 	 * Tags: NotReplicated
 	 */
 	LeftLipCornerPuller: number;
 	/**
+	 * Stretches the corners of the mouth apart
 	 * Tags: NotReplicated
 	 */
 	LeftLipStretcher: number;
 	/**
+	 * Lowers the lower lip down away from the upper lip revealing the lower teeth
 	 * Tags: NotReplicated
 	 */
 	LeftLowerLipDepressor: number;
 	/**
+	 * Raise the left nostril, pulls the brow down slightly, and wrinkles on the side of the nose
 	 * Tags: NotReplicated
 	 */
 	LeftNoseWrinkler: number;
 	/**
+	 * Raises the outer part of the left brow upwards
 	 * Tags: NotReplicated
 	 */
 	LeftOuterBrowRaiser: number;
 	/**
+	 * Raises the left upper lip away from the lower lip revealing the upper teeth
 	 * Tags: NotReplicated
 	 */
 	LeftUpperLipRaiser: number;
 	/**
+	 * Presses the lips together
 	 * Tags: NotReplicated
 	 */
 	LipPresser: number;
 	/**
+	 * Brings the lips together relative to JawDrop
 	 * Tags: NotReplicated
 	 */
 	LipsTogether: number;
 	/**
+	 * Rolls the lower lip up over the teeth
 	 * Tags: NotReplicated
 	 */
 	LowerLipSuck: number;
 	/**
+	 * Moves the mouth left
 	 * Tags: NotReplicated
 	 */
 	MouthLeft: number;
 	/**
+	 * Moves the mouth right
 	 * Tags: NotReplicated
 	 */
 	MouthRight: number;
 	/**
+	 * Makes a kiss-like shape with the mouth
 	 * Tags: NotReplicated
 	 */
 	Pucker: number;
 	/**
+	 * Lowers the right brow down
 	 * Tags: NotReplicated
 	 */
 	RightBrowLowerer: number;
 	/**
+	 * Puffs up the right cheek
 	 * Tags: NotReplicated
 	 */
 	RightCheekPuff: number;
 	/**
+	 * Squints the right eye
 	 * Tags: NotReplicated
 	 */
 	RightCheekRaiser: number;
 	/**
+	 * Moves the corners of the mouth back in Z
 	 * Tags: NotReplicated
 	 */
 	RightDimpler: number;
 	/**
+	 * Closes the right eyelid
 	 * Tags: NotReplicated
 	 */
 	RightEyeClosed: number;
 	/**
+	 * Raises the right eyelid upwards to reveal more of the eye white above the iris
 	 * Tags: NotReplicated
 	 */
 	RightEyeUpperLidRaiser: number;
 	/**
+	 * Raises the interior half of the right brow upwards
 	 * Tags: NotReplicated
 	 */
 	RightInnerBrowRaiser: number;
 	/**
+	 * Lowers the corners of the mouth downwards in a frown
 	 * Tags: NotReplicated
 	 */
 	RightLipCornerDown: number;
 	/**
+	 * Raises the corners of the mouth upwards in a smile
 	 * Tags: NotReplicated
 	 */
 	RightLipCornerPuller: number;
 	/**
+	 * Stretches the corners of the mouth apart
 	 * Tags: NotReplicated
 	 */
 	RightLipStretcher: number;
 	/**
+	 * Lowers the lower lip down away from the upper lip revealing the lower teeth
 	 * Tags: NotReplicated
 	 */
 	RightLowerLipDepressor: number;
 	/**
+	 * Raises the right nostril, pulls the brow down slightly, and wrinkles on the side of the nose
 	 * Tags: NotReplicated
 	 */
 	RightNoseWrinkler: number;
 	/**
+	 * Raises the outer part of the right brow upwards
 	 * Tags: NotReplicated
 	 */
 	RightOuterBrowRaiser: number;
 	/**
+	 * Raises the right upper lip away from the lower lip revealing the upper teeth
 	 * Tags: NotReplicated
 	 */
 	RightUpperLipRaiser: number;
 	/**
+	 * Bends the tongue down
 	 * Tags: NotReplicated
 	 */
 	TongueDown: number;
 	/**
+	 * Extends the tip of the tongue out of the mouth
 	 * Tags: NotReplicated
 	 */
 	TongueOut: number;
 	/**
+	 * Bends the tongue up
 	 * Tags: NotReplicated
 	 */
 	TongueUp: number;
 	/**
+	 * Rolls the upper lip around the teeth
 	 * Tags: NotReplicated
 	 */
 	UpperLipSuck: number;
