@@ -51,6 +51,7 @@ interface Services {
 	LegacyStudioBridge: LegacyStudioBridge;
 	Lighting: Lighting;
 	LocalizationService: LocalizationService;
+	LodDataService: LodDataService;
 	LogService: LogService;
 	LuauScriptAnalyzerService: LuauScriptAnalyzerService;
 	MarketplaceService: MarketplaceService;
@@ -400,6 +401,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	InputObject: InputObject;
 	InstanceAdornment: InstanceAdornment;
 	InventoryPages: InventoryPages;
+	LodDataEntity: LodDataEntity;
 	MemoryStoreQueue: MemoryStoreQueue;
 	MemoryStoreSortedMap: MemoryStoreSortedMap;
 	MessageBusConnection: MessageBusConnection;
@@ -15354,6 +15356,7 @@ interface ImporterGroupSettings extends ImporterBaseSettings {
 	 * @deprecated
 	 */
 	readonly _nominal_ImporterGroupSettings: unique symbol;
+	Anchored: boolean;
 	ImportAsModelAsset: boolean;
 	InsertInWorkspace: boolean;
 }
@@ -15400,6 +15403,7 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	 * @deprecated
 	 */
 	readonly _nominal_ImporterRootSettings: unique symbol;
+	Anchored: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -15427,6 +15431,10 @@ interface ImporterTextureSettings extends ImporterBaseSettings {
 	 * @deprecated
 	 */
 	readonly _nominal_ImporterTextureSettings: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly FilePath: string;
 }
 
 interface IncrementalPatchBuilder extends Instance {
@@ -19728,6 +19736,32 @@ interface LocalizationTable extends Instance {
 	 * Sets the text of the specified localeId in a LocalizationTable entry, using the specified _key_, _source_, and _context_ to narrow down the entry that will have this change applied.
 	 */
 	SetEntryValue(this: LocalizationTable, key: string, source: string, context: string, localeId: string, text: string): void;
+}
+
+interface LodDataEntity extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_LodDataEntity: unique symbol;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	EntityLodEnabled: boolean;
+}
+
+interface LodDataService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_LodDataService: unique symbol;
 }
 
 /** **Unreliable Behavior**  
