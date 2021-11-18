@@ -3212,8 +3212,13 @@ interface Studio extends Instance {
 	 */
 	DeprecatedObjectsShown: boolean;
 	readonly DisplayLanguage: string;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly ["Doc View Code Background Color"]: Color3;
 	["Drag Multiple Parts As Single Part"]: boolean;
 	["Enable Autocomplete"]: boolean;
+	readonly ["Enable Autocomplete Doc View"]: boolean;
 	["Enable CoreScript Debugger"]: boolean;
 	["Enable Http Sandboxing"]: boolean;
 	["Enable Internal Beta Features"]: boolean;
@@ -3221,6 +3226,7 @@ interface Studio extends Instance {
 	readonly ["Enable Script Analysis"]: boolean;
 	readonly ["Enable Scrollbar Markers"]: boolean;
 	readonly ["Enable Signature Help"]: boolean;
+	readonly ["Enable Signature Help Doc View"]: boolean;
 	["Enable Temporary Tabs"]: boolean;
 	["Enable Temporary Tabs In Explorer"]: boolean;
 	readonly ["Enable Type Hover"]: boolean;
@@ -4076,5 +4082,9 @@ interface VersionControlService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_VersionControlService: unique symbol;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly ScriptCollabEnabled: boolean;
 }
 
