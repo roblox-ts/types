@@ -75,6 +75,7 @@ interface Services {
 	RunService: RunService;
 	ScriptChangeService: ScriptChangeService;
 	ScriptContext: ScriptContext;
+	ScriptRegistrationService: ScriptRegistrationService;
 	ServerScriptService: ServerScriptService;
 	ServerStorage: ServerStorage;
 	SessionService: SessionService;
@@ -207,6 +208,7 @@ interface CreatableInstances {
 	LocalScript: LocalScript;
 	ManualGlue: ManualGlue;
 	ManualWeld: ManualWeld;
+	MarkerCurve: MarkerCurve;
 	MaterialVariant: MaterialVariant;
 	MeshPart: MeshPart;
 	Model: Model;
@@ -235,6 +237,7 @@ interface CreatableInstances {
 	RemoteEvent: RemoteEvent;
 	RemoteFunction: RemoteFunction;
 	ReverbSoundEffect: ReverbSoundEffect;
+	RigidConstraint: RigidConstraint;
 	RocketPropulsion: RocketPropulsion;
 	RodConstraint: RodConstraint;
 	RopeConstraint: RopeConstraint;
@@ -1946,7 +1949,9 @@ interface AssetImportService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AssetImportService: unique symbol;
+	readonly ProgressUpdate: RBXScriptSignal<(progressRatio: number) => void>;
 	readonly SettingsChanged: RBXScriptSignal<(property: string) => void>;
+	readonly UploadFinished: RBXScriptSignal<(succeeded: boolean) => void>;
 }
 
 interface AssetManagerService extends Instance {
@@ -6895,6 +6900,33 @@ interface Plane extends Constraint {
 	 * @deprecated
 	 */
 	readonly _nominal_Plane: unique symbol;
+}
+
+interface RigidConstraint extends Constraint {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RigidConstraint: unique symbol;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	Broken: boolean;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	DestructionEnabled: boolean;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	DestructionForce: number;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	DestructionTorque: number;
 }
 
 /** A **RodConstraint** constrains two [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment) to remain separated by the value specified by [RodConstraint.Length](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/Length). While the attachments remain at a set distance from one another, they can both rotate freely.
@@ -19931,6 +19963,25 @@ interface LuauScriptAnalyzerService extends Instance {
 	readonly _nominal_LuauScriptAnalyzerService: unique symbol;
 }
 
+interface MarkerCurve extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MarkerCurve: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Length: number;
+	GetMarkerAtIndex(this: MarkerCurve, index: number): object;
+	GetMarkers(this: MarkerCurve): unknown;
+	InsertMarkerAtTime(this: MarkerCurve, time: number, marker: string): unknown;
+	RemoveMarkerAtIndex(this: MarkerCurve, startingIndex: number, count?: number): number;
+}
+
 /** MarketplaceService is the game service that is responsible for in-game transactions.
  * 
  * The most notable functions are [PromptProductPurchase](https://developer.roblox.com/en-us/api-reference/function/MarketplaceService/PromptProductPurchase) and [PromptPurchase](https://developer.roblox.com/en-us/api-reference/function/MarketplaceService/PromptPurchase), as well as the callback [ProcessReceipt](https://developer.roblox.com/en-us/api-reference/property/MarketplaceService/ProcessReceipt) which must be well defined so that transactions do not fail.
@@ -20338,25 +20389,9 @@ interface MaterialService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MaterialService: unique symbol;
-	Brick: MaterialVariant | undefined;
-	Cobblestone: MaterialVariant | undefined;
-	Concrete: MaterialVariant | undefined;
-	CorrodedMetal: MaterialVariant | undefined;
-	DiamondPlate: MaterialVariant | undefined;
-	Fabric: MaterialVariant | undefined;
-	Foil: MaterialVariant | undefined;
-	Granite: MaterialVariant | undefined;
-	Grass: MaterialVariant | undefined;
-	Ice: MaterialVariant | undefined;
-	Marble: MaterialVariant | undefined;
-	Metal: MaterialVariant | undefined;
-	Pebble: MaterialVariant | undefined;
-	Plastic: MaterialVariant | undefined;
-	Sand: MaterialVariant | undefined;
-	Slate: MaterialVariant | undefined;
-	SmoothPlastic: MaterialVariant | undefined;
-	Wood: MaterialVariant | undefined;
-	WoodPlanks: MaterialVariant | undefined;
+	ClearOverridePartMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): void;
+	GetOverridePartMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): MaterialVariant;
+	SetOverridePartMaterial(this: MaterialService, materialVariant: MaterialVariant): void;
 }
 
 interface MaterialVariant extends Instance {
@@ -24332,6 +24367,7 @@ interface PathfindingLink extends Instance {
 	Attachment0: Attachment | undefined;
 	Attachment1: Attachment | undefined;
 	IsBidirectional: boolean;
+	ModifierId: string;
 }
 
 /** **Beta Feature** This class is currently a part of the PathfindingModifier beta feature. Eligible developers must enable the feature within Studio and functionality may change.
@@ -27160,6 +27196,17 @@ interface ScriptContext extends Instance {
 	 * Fired when an error occurs.
 	 */
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script?: LuaSourceContainer) => void>;
+}
+
+interface ScriptRegistrationService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptRegistrationService: unique symbol;
 }
 
 /** **ServerScriptService** is a container service for [Script](https://developer.roblox.com/en-us/api-reference/class/Script), [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) and other scripting-related assets that are only meant for server use. The contents are never replicated to player clients at all, which allows for a secure storage of important game logic. Script objects will run if they are within this service and not [Disabled](https://developer.roblox.com/en-us/api-reference/property/BaseScript/Disabled).
@@ -30463,6 +30510,12 @@ interface TextChannel extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TextChannel: unique symbol;
+	DisplaySystemMessage(this: TextChannel, systemMessage: string, metadata?: string): TextChatMessage;
+	/**
+	 * Tags: Yields
+	 */
+	AddUserAsync(this: TextChannel, userId: number): unknown;
+	readonly MessageReceived: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
 }
 
 interface TextChatService extends Instance {
