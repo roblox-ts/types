@@ -193,6 +193,7 @@ interface DataModel extends ServiceProvider<Services> {
 }
 
 interface DataStore extends GlobalDataStore {
+	GetAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
 	SetAsync(
 		this: DataStore,
 		key: string,
@@ -247,7 +248,7 @@ interface GenericSettings<S = unknown> extends ServiceProvider<S> {}
 
 /** @server */
 interface GlobalDataStore extends Instance {
-	GetAsync<T>(this: GlobalDataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
+	GetAsync<T>(this: GlobalDataStore, key: string): T | undefined;
 	IncrementAsync(
 		this: GlobalDataStore,
 		key: string,
