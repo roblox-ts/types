@@ -192,6 +192,31 @@ interface DataModel extends ServiceProvider<Services> {
 	BindToClose(this: DataModel, callback: () => void): void;
 }
 
+interface DataStore extends GlobalDataStore {
+	SetAsync(
+		this: DataStore,
+		key: string,
+		value?: unknown,
+		userIds?: Array<number>,
+		options?: DataStoreSetOptions,
+	): string;
+	GetVersionAsync(
+		this: DataStore,
+		key: string,
+		version: string,
+	): LuaTuple<[value: unknown, keyInfo: DataStoreKeyInfo]>;
+	UpdateAsync<O, R>(
+		this: GlobalDataStore,
+		key: string,
+		transformFunction: (
+			oldValue: O | undefined,
+			keyInfo: DataStoreKeyInfo,
+		) => LuaTuple<[newValue: R, userIds?: Array<number>, metadata?: object]>,
+	): R extends undefined
+		? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]>
+		: LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
+}
+
 interface DataStorePages extends Pages<{ key: string; value: unknown }> {}
 
 /** @server */
@@ -231,23 +256,12 @@ interface GlobalDataStore extends Instance {
 		options?: DataStoreIncrementOptions,
 	): LuaTuple<[number, DataStoreKeyInfo]>;
 	RemoveAsync<T>(this: GlobalDataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
-	SetAsync(
-		this: GlobalDataStore,
-		key: string,
-		value?: unknown,
-		userIds?: Array<number>,
-		options?: DataStoreSetOptions,
-	): string;
+	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
 	UpdateAsync<O, R>(
 		this: GlobalDataStore,
 		key: string,
-		transformFunction: (
-			oldValue: O | undefined,
-			keyInfo: DataStoreKeyInfo,
-		) => LuaTuple<[R] | [R, Array<number>] | [R, Array<number>, Record<string, unknown>]>,
-	): R extends undefined
-		? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]>
-		: LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
+		transformFunction: (oldValue: O | undefined) => R,
+	): R extends undefined ? O | undefined : R;
 }
 
 interface GroupService extends Instance {
