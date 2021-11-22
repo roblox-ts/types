@@ -3997,14 +3997,63 @@ interface BaseWrap extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_BaseWrap: unique symbol;
+	/**
+	 * This property is set up automatically by the Avatar Importer plugin.
+	 * 
+	 * Asset ID for cage mesh.
+	 */
 	readonly CageMeshId: string;
+	/**
+	 * This property is set up automatically by the Avatar Importer plugin.
+	 * 
+	 * Cage mesh offset relative to parent [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart).
+	 */
 	readonly CageOrigin: CFrame;
 	/**
+	 * Cage mesh offset in world space.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly CageOriginWorld: CFrame;
+	/**
+	 * This property is set up automatically by the Avatar Importer plugin.
+	 * 
+	 * Describes where a global zero was while authoring the cage mesh in an asset creation tool such as Blender or Maya. This property is not used by the deformer but it is useful for tools/aligning scripts, for example aligning two parts by matching their pivots as follows:
+	 * 
+	 * local function alignWraps()
+	 * 	local selectionService = game:GetService("Selection")
+	 * 	local selectedObjects = selectionService:Get()
+	 * 	local alignObjects = {}
+	 * 	for \_, obj in pairs(selectedObjects) do
+	 * 		if obj:IsA("BaseWrap") then
+	 * 			--print("Wrap: " .. obj.Name)
+	 * 			table.insert(alignObjects, obj)
+	 * 		else
+	 * 			print("Ignore: " .. obj.Name)
+	 * 		end
+	 * 	end
+	 * 
+	 * 	if #alignObjects < 2 then
+	 * 		warn("You need to select at least two wraps")
+	 * 		return
+	 * 	end
+	 * 
+	 * 	local anchorWrap = alignObjects\[1\]
+	 * 	local worldA\_from\_Wrap = anchorWrap.ImportOriginWorld
+	 * 	print("Anchor: " .. anchorWrap.Name)
+	 * 	for i = 2, #alignObjects do
+	 * 		local wrapToAlign = alignObjects\[i\]
+	 * 		print("Align: " .. wrapToAlign.Name)
+	 * 		local wrap\_from\_WorldB = wrapToAlign.ImportOriginWorld:Inverse()
+	 * 		local worldA\_from\_WorldB = worldA\_from\_Wrap \* wrap\_from\_WorldB
+	 * 		local worldB = wrapToAlign.Parent.CFrame
+	 * 		-- Note: adjust CFrame of the parent part
+	 * 		wrapToAlign.Parent.CFrame = (worldB\_from\_WorldB \* worldB)
+	 * 	end	
+	 * end
+	 */
 	readonly ImportOrigin: CFrame;
 	/**
+	 * Describes where the origin (in world space) was while authoring the cage mesh in an asset creation tool such as Blender or Maya.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly ImportOriginWorld: CFrame;
@@ -25124,6 +25173,9 @@ interface Player extends Instance {
 	 * *   Following an update in July 2014, the mouse's icon can now be set with this method.
 	 */
 	GetMouse(this: Player): PlayerMouse;
+	/**
+	 * **GetNetworkPing** returns the engine-calculated latency of the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) in seconds. “Ping” is a measurement of the time taken for data to be sent from the client to the server, then back again. For client-side [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s, this function may only be called on the [LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer). This function is useful in identifying and debugging issues that occur in high-latency scenarios. It can also be used in masking latency, such as adjusting the speed of throwing animations for projectiles.
+	 */
 	GetNetworkPing(this: Player): number;
 	/**
 	 * The HasAppearanceLoaded [Player](https://developer.roblox.com/en-us/api-reference/class/Player) function returns whether or not the appearance of the player's [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character) has loaded.
@@ -26799,15 +26851,38 @@ interface RotationCurve extends Instance {
 	 */
 	readonly _nominal_RotationCurve: unique symbol;
 	/**
+	 * Number of rotation keys in this curve
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Length: number;
+	/**
+	 * Returns a copy of a key at a given index.
+	 */
 	GetKeyAtIndex(this: RotationCurve, index: number): RotationCurveKey;
+	/**
+	 * The first returned value is the index of the last key with key.time <= time (or min(1,length) if no key was found). The second returned value is the index of the first key with key.time >= time (or the length of the curve if no key was found satisfying the inequality).
+	 */
 	GetKeyIndicesAtTime(this: RotationCurve, time: number): unknown;
+	/**
+	 * Returns a copy of all the keys in the RotationCurve as a Lua array of RotationCurveKey.
+	 */
 	GetKeys(this: RotationCurve): unknown;
+	/**
+	 * Samples the RotationCurve at a given time and returns the corresponding rotation. Empty RotationCurves are interpreted as zero.
+	 */
 	GetValueAtTime(this: RotationCurve, time: number): CoordinateFrame?;
+	/**
+	 * Adds the key passed as argument to this curve. If a key at the same time is found it will be replaced. First return value is true if a key was added, false if a previous key was replaced. Second return value is the index at which the marker was added.
+	 */
 	InsertKey(this: RotationCurve, key: RotationCurveKey): unknown;
+	/**
+	 * Removes a given number of Keys starting from a given index. Returns the number of keys that were removed.
+	 */
 	RemoveKeyAtIndex(this: RotationCurve, startingIndex: number, count?: number): number;
+	/**
+	 * Resets this curve keys using the RotationCurveKey array passed as argument. Keys in the keysArray are sorted in ascending time order before insertion. Keys at duplicated times are removed in a stable manner. Returns the number of keys actually inserted.  
+	 * Keys previously stored in this curve are removed before the keys passed as arguments are added.
+	 */
 	SetKeys(this: RotationCurve, keys: Array<any>): number;
 }
 
