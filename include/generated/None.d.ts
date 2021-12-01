@@ -1951,7 +1951,7 @@ interface AssetImportService extends Instance {
 	readonly _nominal_AssetImportService: unique symbol;
 	readonly ProgressUpdate: RBXScriptSignal<(progressRatio: number) => void>;
 	readonly SettingsChanged: RBXScriptSignal<(property: string) => void>;
-	readonly UploadFinished: RBXScriptSignal<(succeeded: boolean) => void>;
+	readonly UploadFinished: RBXScriptSignal<(succeeded: boolean, errorMap: object) => void>;
 }
 
 interface AssetManagerService extends Instance {
@@ -6961,9 +6961,9 @@ interface RigidConstraint extends Constraint {
 	 */
 	readonly _nominal_RigidConstraint: unique symbol;
 	/**
-	 * Tags: NotBrowsable
+	 * Tags: ReadOnly, NotReplicated, NotBrowsable
 	 */
-	Broken: boolean;
+	readonly Broken: boolean;
 	/**
 	 * Tags: NotBrowsable
 	 */
@@ -10962,7 +10962,7 @@ interface CanvasGroup extends GuiObject {
 	 */
 	readonly _nominal_CanvasGroup: unique symbol;
 	GroupColor: Color3;
-	Transparency: number;
+	GroupTransparency: number;
 }
 
 /** Frame is a [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) that renders as a plain rectangle with no other content. They are the simplest concrete example of a [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject), as they provide very little additional functionality (`Frame.FrameStyle`). Despite this, Frames are useful as containers for other [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject)s, such as [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel), [ImageLabel](https://developer.roblox.com/en-us/api-reference/class/ImageLabel). The key benefit to using a Frame over a [Folder](https://developer.roblox.com/en-us/api-reference/class/Folder) as a container object is the ability to further manipulate the `GuiObject.Size` and `GuiObject.Position` of any descendant [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject)s. */
@@ -20439,8 +20439,11 @@ interface MaterialService extends Instance {
 	 */
 	readonly _nominal_MaterialService: unique symbol;
 	ClearOverridePartMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): void;
+	ClearOverrideTerrainMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): void;
 	GetOverridePartMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): MaterialVariant;
+	GetOverrideTerrainMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): MaterialVariant;
 	SetOverridePartMaterial(this: MaterialService, materialVariant: MaterialVariant): void;
+	SetOverrideTerrainMaterial(this: MaterialService, materialVariant: MaterialVariant): void;
 }
 
 interface MaterialVariant extends Instance {
@@ -20452,6 +20455,7 @@ interface MaterialVariant extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MaterialVariant: unique symbol;
+	MaterialPattern: Enum.MaterialPattern;
 	StudsPerTile: number;
 }
 
