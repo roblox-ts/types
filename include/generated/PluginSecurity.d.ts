@@ -3615,6 +3615,7 @@ interface StudioService extends Instance {
 	AnimationIdSelected(this: StudioService, id: number): void;
 	ConvertToPackageUpload(this: StudioService, uploadUrl: string): void;
 	CopyToClipboard(this: StudioService, stringToCopy: string): void;
+	DEPRECATED_SetDocumentDisplayName(this: StudioService, newName: string): void;
 	EmitPlacePublishedSignal(this: StudioService): void;
 	GetBadgeConfigureUrl(this: StudioService, badgeId: number): string;
 	GetBadgeUploadUrl(this: StudioService): string;
@@ -3654,11 +3655,9 @@ interface StudioService extends Instance {
 	IsPluginInstalled(this: StudioService, assetId: number): boolean;
 	IsPluginUpToDate(this: StudioService, assetId: number, currentAssetVersion: number): boolean;
 	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
-	PromptForLocalSave(this: StudioService): void;
 	PublishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
 	RequestClose(this: StudioService, closeMode: CastsToEnum<Enum.StudioCloseMode>): void;
 	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
-	SetDocumentDisplayName(this: StudioService, newName: string): void;
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
 	ShowPlaceVersionHistoryDialog(this: StudioService, placeId: number): void;
@@ -3692,7 +3691,6 @@ interface StudioService extends Instance {
 	 * Tags: Yields
 	 */
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
-	readonly FirstPublishOfCloudPlace: RBXScriptSignal<(universeId: number, placeId: number) => void>;
 	readonly GameNameUpdated: RBXScriptSignal<(name: string) => void>;
 	readonly GamePublishFinished: RBXScriptSignal<(success: boolean, gameId: number) => void>;
 	readonly OnConvertToPackageResult: RBXScriptSignal<(isSuccessful: boolean, errorMessage: string) => void>;
@@ -4086,5 +4084,20 @@ interface VersionControlService extends Instance {
 	 * Tags: Hidden
 	 */
 	readonly ScriptCollabEnabled: boolean;
+}
+
+interface VoiceChatService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VoiceChatService: unique symbol;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	GenerateDefaultChannel: boolean;
 }
 
