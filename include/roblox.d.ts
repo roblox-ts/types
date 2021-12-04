@@ -1052,6 +1052,8 @@ interface CFrame {
 	readonly _nominal_CFrame: unique symbol;
 	/** The 3D position of the CFrame */
 	readonly Position: Vector3;
+	/** A copy of the CFrame with no translation. */
+	readonly Rotation: CFrame;
 	/** The x-coordinate of the position */
 	readonly X: number;
 	/** The y-coordinate of the position */
@@ -1115,6 +1117,16 @@ interface CFrameConstructor {
 	fromMatrix: (pos: Vector3, vX: Vector3, vY: Vector3, vZ?: Vector3) => CFrame;
 	/** Equivalent to fromEulerAnglesYXZ */
 	fromOrientation: (rX: number, rY: number, rZ: number) => CFrame;
+	/**
+	 * An identity CFrame, one with no translation or rotation.
+	 *
+	 * This API member is a **constant**, and must be accessed through the `CFrame` global as opposed to an individual `CFrame` object.
+	 *
+	 * ```lua
+	 * print(CFrame.identity) --> 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+	 * ```
+	 */
+	readonly identity: CFrame;
 	/**
 	 * Creates a new CFrame located at `at` and facing towards `lookAt`, optionally specifying the upward direction (by default, (0, 1, 0)).
 	 *
@@ -1821,7 +1833,49 @@ interface Vector2 {
 	Cross(this: Vector2, other: Vector2): number;
 }
 
-type Vector2Constructor = new (x?: number, y?: number) => Vector2;
+interface Vector2Constructor {
+	/**
+	 * A Vector2 with a magnitude of zero.
+	 *
+	 * This API member is a **constant**, and must be accessed through the `Vector2` global as opposed to an individual `Vector2` object.
+	 *
+	 * ```lua
+	 * print(Vector2.zero) --> 0, 0
+	 * ```
+	 */
+	readonly zero: Vector2;
+	/**
+	 * A Vector2 with a value of 1 on every axis.
+	 *
+	 * This API member is a **constant**, and must be accessed through the `Vector2` global as opposed to an individual `Vector2` object.
+	 *
+	 * ```lua
+	 * print(Vector2.one) --> 1, 1
+	 * ```
+	 */
+	readonly one: Vector2;
+	/**
+	 * A Vector2 with a value of 1 on the X axis.
+	 *
+	 * This API member is a **constant**, and must be accessed through the `Vector2` global as opposed to an individual `Vector2` object.
+	 *
+	 * ```lua
+	 * print(Vector2.xAxis) --> 1, 0
+	 * ```
+	 */
+	readonly xAxis: Vector2;
+	/**
+	 * A Vector2 with a value of 1 on the Y axis.
+	 *
+	 * This API member is a **constant**, and must be accessed through the `Vector2` global as opposed to an individual `Vector2` object.
+	 *
+	 * ```lua
+	 * print(Vector2.yAxis) --> 0, 1
+	 * ```
+	 */
+	readonly yAxis: Vector2;
+	new (x?: number, y?: number): Vector2;
+}
 
 declare const Vector2: Vector2Constructor;
 
@@ -1871,6 +1925,56 @@ interface Vector3 {
 }
 
 interface Vector3Constructor {
+	/**
+	 * A Vector3 with a magnitude of zero.
+	 *
+	 * This API member is a **constant**, and must be accessed through the `Vector3` global as opposed to an individual `Vector3` object.
+	 *
+	 * ```lua
+	 * print(Vector3.zero) --> 0, 0, 0
+	 * ```
+	 */
+	readonly zero: Vector3;
+	/**
+	 * A Vector3 with a value of 1 on every axis.
+	 *
+	 * This API member is a **constant**, and must be accessed through the `Vector3` global as opposed to an individual `Vector3` object.
+	 *
+	 * ```lua
+	 * print(Vector3.one) --> 1, 1, 1
+	 * ```
+	 */
+	readonly one: Vector3;
+	/**
+	 * A Vector3 with a value of 1 on the X axis.
+	 *
+	 * This API member is a **constant**, and must be accessed through the `Vector3` global as opposed to an individual `Vector3` object.
+	 *
+	 * ```lua
+	 * print(Vector3.xAxis) --> 1, 0, 0
+	 * ```
+	 */
+	readonly xAxis: Vector3;
+	/**
+	 * A Vector3 with a value of 1 on the Y axis.
+	 *
+	 * This API member is a **constant**, and must be accessed through the `Vector3` global as opposed to an individual `Vector3` object.
+	 *
+	 * ```lua
+	 * print(Vector3.yAxis) --> 0, 1, 0
+	 * ```
+	 */
+	readonly yAxis: Vector3;
+	/**
+	 * A Vector3 with a value of 1 on the Z axis.
+	 *
+	 * This API member is a **constant**, and must be accessed through the `Vector3` global as opposed to an individual `Vector3` object.
+	 *
+	 * ```lua
+	 * print(Vector3.zAxis) --> 0, 0, 1
+	 * ```
+	 */
+	readonly zAxis: Vector3;
 	FromNormalId: (norm: Enum.NormalId) => Vector3;
 	FromAxis: (axis: Enum.Axis) => Vector3;
 	new (x?: number, y?: number, z?: number): Vector3;
