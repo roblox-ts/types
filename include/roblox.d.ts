@@ -1977,6 +1977,17 @@ interface Vector3Constructor {
 	 * ```
 	 */
 	readonly yAxis: Vector3;
+	/**
+	 * A Vector3 with a value of 1 on the Z axis.
+	 *
+	 * This API member is a **constant**, and must be accessed through the `Vector3` global as opposed to an individual
+	 * `Vector3` object.
+	 *
+	 * ```lua
+	 * print(Vector3.zAxis) --> 0, 0, 1
+	 * ```
+	 */
+	readonly zAxis: Vector3;
 	/** Constructs a new Vector3 in a particular direction. */
 	FromNormalId: (norm: Enum.NormalId) => Vector3;
 	/** Constructs a new Vector3 for a particular axis. */
