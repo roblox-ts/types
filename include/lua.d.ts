@@ -721,6 +721,9 @@ declare namespace coroutine {
 
 	/** Suspends the execution of the calling coroutine. Any arguments to yield are passed as extra results to resume. */
 	function yield(...params: Array<unknown>): LuaTuple<Array<unknown>>;
+
+	/** Takes a suspended coroutine and makes it "dead" (non-runnable). */
+	function close(co: thread): void;
 }
 
 declare function next<T extends ReadonlyArray<any>>(
