@@ -10212,7 +10212,7 @@ interface GroupService extends Instance {
 	 * 
 	 * A boolean indicating if this is the player's primary group
 	 * 
-	 * IsInClan
+	 * ### IsInClan
 	 * 
 	 * A boolean indicating if the player is in this group's clan
 	 * 
@@ -17755,11 +17755,11 @@ interface JointsService extends Instance {
 	 */
 	CreateJoinAfterMoveJoints(this: JointsService): void;
 	/**
-	 * Sets the PVInstance that will be connected with the target PVInstance specified by [SetJoinAfterMoveTarget](https://developer.roblox.com/api-reference/function/JointsService/SetJoinAfterMoveTarget "SetJoinAfterMoveTarget").
+	 * Sets the PVInstance that will be connected with the target PVInstance specified by [JointsService:SetJoinAfterMoveTarget](https://developer.roblox.com/en-us/api-reference/function/JointsService/SetJoinAfterMoveTarget).
 	 */
 	SetJoinAfterMoveInstance(this: JointsService, joinInstance: PVInstance): void;
 	/**
-	 * Sets the PVInstance that will be connected with the PVInstance specified by [SetJoinAfterMoveInstance](https://developer.roblox.com/api-reference/function/JointsService/SetJoinAfterMoveInstance "SetJoinAfterMoveInstance").
+	 * Sets the PVInstance that will be connected with the PVInstance specified by [JointsService:SetJoinAfterMoveInstance](https://developer.roblox.com/en-us/api-reference/function/JointsService/SetJoinAfterMoveInstance).
 	 */
 	SetJoinAfterMoveTarget(this: JointsService, joinTarget: PVInstance): void;
 	/**
@@ -23214,7 +23214,7 @@ interface Model extends PVInstance {
 	TranslateBy(this: Model, delta: Vector3): void;
 }
 
-/** Actor */
+/** Actor Class */
 interface Actor extends Model {
 	/**
 	 * **DO NOT USE!**
@@ -24652,19 +24652,19 @@ interface PhysicsService extends Instance {
 	 * This function will throw a runtime error in the following circumstances:
 	 * 
 	 * *   The specified group does not exist.
-	 * *   The specified part is not a BasePart.Returns whether the part is in the collision group.
+	 * *   The specified part is not a BasePart.
 	 */
 	CollisionGroupContainsPart(this: PhysicsService, name: string, part: BasePart): boolean;
 	/**
 	 * Sets the collision status between two groups.
 	 * 
-	 * This function will throw an error if either of the groups do not exist.Sets the collision status between two groups.
+	 * This function will throw an error if either of the groups do not exist.
 	 */
 	CollisionGroupSetCollidable(this: PhysicsService, name1: string, name2: string, collidable: boolean): void;
 	/**
 	 * Returns whether the two specified collision groups will collide.
 	 * 
-	 * This function will throw an error if either of the groups do not exist.Returns whether the two groups will collide.
+	 * This function will throw an error if either of the groups do not exist.
 	 */
 	CollisionGroupsAreCollidable(this: PhysicsService, name1: string, name2: string): boolean;
 	/**
@@ -24680,7 +24680,7 @@ interface PhysicsService extends Instance {
 	/**
 	 * Returns the name of the collision group with the corresponding id. This function will return nil if the group with the corresponding id has not been named.
 	 * 
-	 * This function will throw an error if the id is not in the range of 0 <= id < maxCollisionGroupsReturns the name of the group with the corresponding id.
+	 * This function will throw an error if the id is not in the range of 0 <= id < maxCollisionGroups
 	 */
 	GetCollisionGroupName(this: PhysicsService, name: number): string;
 	/**
@@ -24723,7 +24723,7 @@ interface PhysicsService extends Instance {
 	 * This function will throw a runtime error in the following circumstances:
 	 * 
 	 * *   The name “Default” is provided.
-	 * *   The function is called from a client.Removes the collision group with the given name.
+	 * *   The function is called from a client.
 	 */
 	RemoveCollisionGroup(this: PhysicsService, name: string): void;
 	/**
@@ -24734,7 +24734,7 @@ interface PhysicsService extends Instance {
 	 * This function will throw a runtime error in the following circumstances:
 	 * 
 	 * *   Invalid or empty name provided for either argument.
-	 * *   The function is called from a client.Renames specified collision group.
+	 * *   The function is called from a client.
 	 */
 	RenameCollisionGroup(this: PhysicsService, from: string, to: string): void;
 	/**
@@ -26663,7 +26663,9 @@ interface RemoteEvent<T extends Callback = Callback> extends Instance {
 	 * 
 	 * Since this function is used to communicate from the server to the client, it will only work when used in a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
 	 * 
-	 * The functionality of this function, as well as other [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) and [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) events and functions, is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article.
+	 * The behavior of this function, as well as other [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) and [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) events and functions, is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article.
+	 * 
+	 * There are limitations on the kinds of data that can be passed between the client and server. For more information, see [Parameter Limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations).
 	 * 
 	 * Note
 	 * ----
@@ -26675,6 +26677,8 @@ interface RemoteEvent<T extends Callback = Callback> extends Instance {
 	 * **FireClient** causes [OnClientEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnClientEvent) to be fired in [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s running for the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player). Additional data passed to this function is then provided to OnClientEvent; beware of [limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations) on this data.
 	 * 
 	 * Since this function is used for communication from server to client, so it will only work when used by a server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script). For client-to-server communication (the other direction), use [FireServer](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireServer). Direct client-to-client communication not possible on Roblox; however, it can be simulated using a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) that relays information received through some other means, such as [FireServer](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireServer).
+	 * 
+	 * There are limitations on the kinds of data that can be passed between the client and server. For more information, see [Parameter Limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations).
 	 * 
 	 * See also
 	 * --------
@@ -26693,7 +26697,9 @@ interface RemoteEvent<T extends Callback = Callback> extends Instance {
 	 * 
 	 * When firing from the client note that nothing has to be passed in by default (unlike firing to the client from the server - where the player is passed in).
 	 * 
-	 * The functionality of this function, as well as other [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) and [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) events and functions, is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article.
+	 * The behavior of this function, as well as other [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) and [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) events and functions, is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article.
+	 * 
+	 * There are limitations on the kinds of data that can be passed between the client and server. For more information, see [Parameter Limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations).
 	 */
 	FireServer(this: RemoteEvent, ...args: Parameters<T>): void;
 	/**
@@ -26750,7 +26756,9 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
 	 * Warning
 	 * -------
 	 * 
-	 * If a client disconnects or leaves the game while it is being invoked from the server, the InvokeClient function will error. It is therefore recommended to wrap this function in a pcall so it does stop the execution of other code.
+	 * If a client disconnects or leaves the game while it is being invoked from the server, the InvokeClient function will error. It is therefore recommended to wrap this function in a pcall so it doesn't stop the execution of other code.
+	 * 
+	 * There are limitations on the kinds of data that can be passed between the client and server. For more information, see [Parameter Limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations).
 	 * Tags: Yields
 	 */
 	InvokeClient(this: RemoteFunction, player: Player, ...args: Parameters<T>): unknown;
@@ -26767,6 +26775,8 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
 	 * ----
 	 * 
 	 * When handling the invocation from the client note that nothing has to be passed in by default (unlike invoking the server where the player is passed in).
+	 * 
+	 * There are limitations on the kinds of data that can be passed between the client and server. For more information, see [Parameter Limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations).
 	 * Tags: Yields
 	 */
 	InvokeServer(this: RemoteFunction, ...args: Parameters<T>): ReturnType<T>;
@@ -34267,6 +34277,9 @@ interface Vector3Curve extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Vector3Curve: unique symbol;
+	/**
+	 * Samples the 3 FloatCurves (X, Y, Z) at the time passed as argument. Returns the 3 samples as a tuple of 3 numbers. If a channel curve is missing or no key is found in the curve the channel is evaluated as nil.
+	 */
 	GetValueAtTime(this: Vector3Curve, time: number): unknown;
 	/**
 	 * Returns the FloatCurve controlling the X channel. It is the first child instance of type FloatCurve named `X`. If none is found an empty FloatCurve is created.
