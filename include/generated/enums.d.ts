@@ -3222,6 +3222,14 @@ declare namespace Enum {
 
 		export const DisconnectClientFailure: DisconnectClientFailure;
 
+		export interface DisconnectClientRequest {
+			Name: "DisconnectClientRequest";
+			Value: 285;
+			EnumType: EnumType<ConnectionError>;
+		}
+
+		export const DisconnectClientRequest: DisconnectClientRequest;
+
 		export interface PlacelaunchErrors {
 			Name: "PlacelaunchErrors";
 			Value: 512;
@@ -3408,7 +3416,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<ConnectionError>
 	}
-	export type ConnectionError = ConnectionError.OK | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+	export type ConnectionError = ConnectionError.OK | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 	export namespace ConnectionState {
 		export interface Connected {
 			Name: "Connected";
@@ -3918,9 +3926,17 @@ declare namespace Enum {
 
 		export const InvalidArgument: InvalidArgument;
 
+		export interface ConnectionClosed {
+			Name: "ConnectionClosed";
+			Value: 8;
+			EnumType: EnumType<DebuggerStatus>;
+		}
+
+		export const ConnectionClosed: ConnectionClosed;
+
 		export function GetEnumItems(this: defined): Array<DebuggerStatus>
 	}
-	export type DebuggerStatus = DebuggerStatus.Success | DebuggerStatus.Timeout | DebuggerStatus.ConnectionLost | DebuggerStatus.InvalidResponse | DebuggerStatus.InternalError | DebuggerStatus.InvalidState | DebuggerStatus.RpcError | DebuggerStatus.InvalidArgument;
+	export type DebuggerStatus = DebuggerStatus.Success | DebuggerStatus.Timeout | DebuggerStatus.ConnectionLost | DebuggerStatus.InvalidResponse | DebuggerStatus.InternalError | DebuggerStatus.InvalidState | DebuggerStatus.RpcError | DebuggerStatus.InvalidArgument | DebuggerStatus.ConnectionClosed;
 	export namespace DevCameraOcclusionMode {
 		export interface Zoom {
 			Name: "Zoom";
@@ -4192,7 +4208,7 @@ declare namespace Enum {
 
 		export interface GraphicsMeshParts {
 			Name: "GraphicsMeshParts";
-			Value: 9;
+			Value: 10;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -4200,7 +4216,7 @@ declare namespace Enum {
 
 		export interface GraphicsParticles {
 			Name: "GraphicsParticles";
-			Value: 10;
+			Value: 11;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -4208,7 +4224,7 @@ declare namespace Enum {
 
 		export interface GraphicsParts {
 			Name: "GraphicsParts";
-			Value: 11;
+			Value: 12;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -4216,7 +4232,7 @@ declare namespace Enum {
 
 		export interface GraphicsSpatialHash {
 			Name: "GraphicsSpatialHash";
-			Value: 12;
+			Value: 13;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -4224,7 +4240,7 @@ declare namespace Enum {
 
 		export interface GraphicsTerrain {
 			Name: "GraphicsTerrain";
-			Value: 13;
+			Value: 14;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -4232,7 +4248,7 @@ declare namespace Enum {
 
 		export interface GraphicsTexture {
 			Name: "GraphicsTexture";
-			Value: 14;
+			Value: 15;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -4240,7 +4256,7 @@ declare namespace Enum {
 
 		export interface GraphicsTextureCharacter {
 			Name: "GraphicsTextureCharacter";
-			Value: 15;
+			Value: 16;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -4248,7 +4264,7 @@ declare namespace Enum {
 
 		export interface Sounds {
 			Name: "Sounds";
-			Value: 16;
+			Value: 17;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -4256,7 +4272,7 @@ declare namespace Enum {
 
 		export interface StreamingSounds {
 			Name: "StreamingSounds";
-			Value: 17;
+			Value: 18;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -4264,7 +4280,7 @@ declare namespace Enum {
 
 		export interface TerrainVoxels {
 			Name: "TerrainVoxels";
-			Value: 18;
+			Value: 19;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -4272,7 +4288,7 @@ declare namespace Enum {
 
 		export interface Gui {
 			Name: "Gui";
-			Value: 20;
+			Value: 21;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -4280,7 +4296,7 @@ declare namespace Enum {
 
 		export interface Animation {
 			Name: "Animation";
-			Value: 21;
+			Value: 22;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -4288,7 +4304,7 @@ declare namespace Enum {
 
 		export interface Navigation {
 			Name: "Navigation";
-			Value: 22;
+			Value: 23;
 			EnumType: EnumType<DeveloperMemoryTag>;
 		}
 
@@ -10265,6 +10281,78 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<ParticleEmitterShapeStyle>
 	}
 	export type ParticleEmitterShapeStyle = ParticleEmitterShapeStyle.Volume | ParticleEmitterShapeStyle.Surface;
+	export namespace ParticleFlipbookLayout {
+		export interface None {
+			Name: "None";
+			Value: 0;
+			EnumType: EnumType<ParticleFlipbookLayout>;
+		}
+
+		export const None: None;
+
+		export interface TwoByTwo {
+			Name: "TwoByTwo";
+			Value: 1;
+			EnumType: EnumType<ParticleFlipbookLayout>;
+		}
+
+		export const TwoByTwo: TwoByTwo;
+
+		export interface FourByFour {
+			Name: "FourByFour";
+			Value: 2;
+			EnumType: EnumType<ParticleFlipbookLayout>;
+		}
+
+		export const FourByFour: FourByFour;
+
+		export interface EightByEight {
+			Name: "EightByEight";
+			Value: 3;
+			EnumType: EnumType<ParticleFlipbookLayout>;
+		}
+
+		export const EightByEight: EightByEight;
+
+		export function GetEnumItems(this: defined): Array<ParticleFlipbookLayout>
+	}
+	export type ParticleFlipbookLayout = ParticleFlipbookLayout.None | ParticleFlipbookLayout.TwoByTwo | ParticleFlipbookLayout.FourByFour | ParticleFlipbookLayout.EightByEight;
+	export namespace ParticleFlipbookMode {
+		export interface Loop {
+			Name: "Loop";
+			Value: 0;
+			EnumType: EnumType<ParticleFlipbookMode>;
+		}
+
+		export const Loop: Loop;
+
+		export interface OneShot {
+			Name: "OneShot";
+			Value: 1;
+			EnumType: EnumType<ParticleFlipbookMode>;
+		}
+
+		export const OneShot: OneShot;
+
+		export interface PingPong {
+			Name: "PingPong";
+			Value: 2;
+			EnumType: EnumType<ParticleFlipbookMode>;
+		}
+
+		export const PingPong: PingPong;
+
+		export interface Random {
+			Name: "Random";
+			Value: 3;
+			EnumType: EnumType<ParticleFlipbookMode>;
+		}
+
+		export const Random: Random;
+
+		export function GetEnumItems(this: defined): Array<ParticleFlipbookMode>
+	}
+	export type ParticleFlipbookMode = ParticleFlipbookMode.Loop | ParticleFlipbookMode.OneShot | ParticleFlipbookMode.PingPong | ParticleFlipbookMode.Random;
 	export namespace ParticleOrientation {
 		export interface FacingCamera {
 			Name: "FacingCamera";

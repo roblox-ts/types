@@ -3394,6 +3394,7 @@ interface Studio extends Instance {
 	readonly ["Show Light Guides"]: boolean;
 	readonly ["Show Navigation Areas"]: boolean;
 	["Show Navigation Mesh"]: boolean;
+	readonly ["Show Pathfinding Links"]: boolean;
 	["Show Plugin GUI Service in Explorer"]: boolean;
 	["Show QT warnings in output"]: boolean;
 	["Show Whitespace"]: boolean;
@@ -3642,6 +3643,7 @@ interface StudioService extends Instance {
 	 * displayClassIcon(imageLabel, "Part")
 	 */
 	GetClassIcon(this: StudioService, className: string): object;
+	GetPlaceIsPersistedToCloud(this: StudioService): boolean;
 	GetResourceByCategory(this: StudioService, category: string): object;
 	GetStartupAssetId(this: StudioService): string;
 	GetStartupPluginId(this: StudioService): string;
@@ -3650,15 +3652,18 @@ interface StudioService extends Instance {
 	 * Returns the studio user's userId if they're logged in, otherwise returns 0.
 	 */
 	GetUserId(this: StudioService): number;
+	GetUserIsInTeamCreateToggleRamp(this: StudioService): boolean;
 	GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult;
 	HasInternalPermission(this: StudioService): boolean;
 	IsPluginInstalled(this: StudioService, assetId: number): boolean;
 	IsPluginUpToDate(this: StudioService, assetId: number, currentAssetVersion: number): boolean;
 	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
 	PublishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
+	RefreshDocumentDisplayName(this: StudioService): void;
 	RequestClose(this: StudioService, closeMode: CastsToEnum<Enum.StudioCloseMode>): void;
 	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
+	SetTurnOnTeamCreateOnPublish(this: StudioService, turnOn: boolean): void;
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
 	ShowPlaceVersionHistoryDialog(this: StudioService, placeId: number): void;
 	ShowPublishToRoblox(this: StudioService): void;
