@@ -92,6 +92,7 @@ interface Services {
 	TeleportService: TeleportService;
 	TemporaryCageMeshProvider: TemporaryCageMeshProvider;
 	TemporaryScriptService: TemporaryScriptService;
+	TextBoxService: TextBoxService;
 	TextChatService: TextChatService;
 	TextService: TextService;
 	ToastNotificationService: ToastNotificationService;
@@ -187,6 +188,7 @@ interface CreatableInstances {
 	Glue: Glue;
 	Handles: Handles;
 	Hat: Hat;
+	HiddenSurfaceRemovalAsset: HiddenSurfaceRemovalAsset;
 	Highlight: Highlight;
 	HingeConstraint: HingeConstraint;
 	Hole: Hole;
@@ -13360,6 +13362,17 @@ interface HeightmapImporterService extends Instance {
 	readonly _nominal_HeightmapImporterService: unique symbol;
 }
 
+interface HiddenSurfaceRemovalAsset extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_HiddenSurfaceRemovalAsset: unique symbol;
+}
+
 interface Highlight extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -24163,6 +24176,11 @@ interface ParticleEmitter extends Instance {
 	 * If you want no particles to render, you should call [ParticleEmitter:Clear](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Clear) to clear any existing particles. You can use [ParticleEmitter:Emit](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Emit) on disabled [ParticleEmitter](https://developer.roblox.com/en-us/api-reference/class/ParticleEmitter)s and they will still emit and render particles.
 	 */
 	Enabled: boolean;
+	FlipbookFramerate: NumberRange;
+	FlipbookIncompatible: string;
+	FlipbookLayout: Enum.ParticleFlipbookLayout;
+	FlipbookMode: Enum.ParticleFlipbookMode;
+	FlipbookStartRandom: boolean;
 	/**
 	 * The Lifetime property defines the maximum and minimum ages a newly emit particle will. When a particle is emit, a random lifetime is chosen uniformly. Lifetimes are stored on a per-particle basis, so if this value is changed, existing particles will stay “alive” until their randomly chosen lifetime is lived. The bounds for this property should be in the range \[0, 20\]. By default, [ParticleEmitter](https://developer.roblox.com/en-us/api-reference/class/ParticleEmitter)s will have a lifetime of 5 to 10 seconds. A lifetime of 0 will prevent particles from being emit in the first place.
 	 * 
@@ -30588,6 +30606,17 @@ interface TerrainRegion extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly SizeInCells: Vector3;
+}
+
+interface TextBoxService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TextBoxService: unique symbol;
 }
 
 interface TextChannel extends Instance {
