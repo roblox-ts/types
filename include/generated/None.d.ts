@@ -1131,7 +1131,7 @@ interface Accessory extends Accoutrement {
 	 */
 	readonly _nominal_Accessory: unique symbol;
 	/**
-	 * Specifies the AccessoryType of the Accessory. Will be `Enum/AccessoryType|AccessoryType.Unknown` unless the Accessory has been equipped through the player spawning process or [Humanoid:ApplyDescription](https://developer.roblox.com/en-us/api-reference/function/Humanoid/ApplyDescription).
+	 * Specifies the AccessoryType of the Accessory. Will be `Enum/AccessoryType|AccessoryType.Unknown` unless the Accessory has been equipped through the player spawning process or [Humanoid:ApplyDescription](https://developer.roblox.com/en-us/api-reference/function/Humanoid/ApplyDescription). If available on the Avatar shop, the Accessory item is categorized by the set [AccessoryType](https://developer.roblox.com/en-us/api-reference/enum/AccessoryType) (for example, “Hat” or “Face”).
 	 */
 	readonly AccessoryType: Enum.AccessoryType;
 }
@@ -2962,11 +2962,15 @@ interface Tool extends BackpackItem {
 	/**
 	 * The Equipped event fires when a player when a player takes a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) out of their [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) to use. This event can be used to determine when a player stops using and puts a tool away.
 	 * 
+	 * This event does not fire when [Tool.RequiresHandle](https://developer.roblox.com/en-us/api-reference/property/Tool/RequiresHandle) is enabled and no handle is present.
+	 * 
 	 * The opposite of this event, [Tool.Unequipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Unequipped), can be used alongside this event to determine unequips a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) by putting in back in their backpack.
 	 */
 	readonly Equipped: RBXScriptSignal<(mouse: Mouse) => void>;
 	/**
 	 * The Unequipped event fires when a player unequips a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) by putting in back in their [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). This event can be used to determine when a player stops using and puts a tool away.
+	 * 
+	 * This event does not fire when [Tool.RequiresHandle](https://developer.roblox.com/en-us/api-reference/property/Tool/RequiresHandle) is enabled and no handle is present.
 	 * 
 	 * The opposite of this event, [Tool.Equipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Equipped), can be used alongside this event to determine when a player takes a tool out of their backpack to use.
 	 * 
@@ -23227,7 +23231,7 @@ interface Model extends PVInstance {
 	TranslateBy(this: Model, delta: Vector3): void;
 }
 
-/** Actor Class */
+/** This is the Actor Class */
 interface Actor extends Model {
 	/**
 	 * **DO NOT USE!**
