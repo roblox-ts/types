@@ -1,4 +1,4 @@
-import libxmljs from "libxmljs";
+import libxmljs from "libxmljs2";
 
 function classPrefix(className: string) {
 	return `//Item[@class='ReflectionMetadataClass']/Properties/string[@name='Name'][text()='${className}']/../../`;
@@ -26,7 +26,7 @@ export class ReflectionMetadata {
 	private get(query: string) {
 		const result = this.metadata.get(query);
 		if (result) {
-			return filter(result.text());
+			return filter((result as libxmljs.Text).text());
 		}
 	}
 

@@ -42,7 +42,7 @@
 		"eslint-config-prettier": "^7.0.0",
 		"eslint-plugin-prettier": "^3.1.4",
 		"fs-extra": "^9.0.1",
-		"libxmljs": "^0.19.7",
+		"libxmljs2": "^0.29.0",
 		"node-fetch": "^2.6.1",
 		"prettier": "^2.1.2",
 		"ts-morph": "^9.0.0",
