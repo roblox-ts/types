@@ -1447,6 +1447,28 @@ interface Faces {
 type FacesConstructor = new (...ids: Array<Enum.NormalId>) => Faces;
 declare const Faces: FacesConstructor;
 
+// FloatCurveKey
+interface FloatCurveKey {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FloatCurveKey: unique symbol;
+	readonly Time: number;
+	readonly Value: number;
+	readonly RightTangent: number;
+	readonly LeftTangent: number;
+}
+type FloatCurveKeyConstructor = new (
+	time: number,
+	value: number,
+	interpolation: CastsToEnum<Enum.KeyInterpolationMode>,
+) => FloatCurveKey;
+declare const FloatCurveKey: FloatCurveKeyConstructor;
+
 // NumberRange
 interface NumberRange {
 	/**
@@ -1735,6 +1757,26 @@ interface Region3int16 {
 type Region3int16Constructor = new (min?: Vector3int16, max?: Vector3int16) => Region3int16;
 
 declare const Region3int16: Region3int16Constructor;
+
+// RotationCurveKey
+interface RotationCurveKey {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RotationCurveKey: unique symbol;
+	readonly Time: number;
+	readonly Value: CFrame;
+}
+type RotationCurveKeyConstructor = new (
+	time: number,
+	value: CFrame,
+	interpolation: CastsToEnum<Enum.KeyInterpolationMode>,
+) => RotationCurveKey;
+declare const RotationCurveKey: RotationCurveKeyConstructor;
 
 // TweenInfo
 interface TweenInfo {
