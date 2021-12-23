@@ -1778,6 +1778,18 @@ type RotationCurveKeyConstructor = new (
 ) => RotationCurveKey;
 declare const RotationCurveKey: RotationCurveKeyConstructor;
 
+// TextChatMessage
+interface TextChatMessage {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TextChatMessage: unique symbol;
+}
+
 // TweenInfo
 interface TweenInfo {
 	/**
