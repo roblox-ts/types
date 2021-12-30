@@ -413,7 +413,7 @@ interface Keyframe extends Instance {
 	GetMarkers(this: Keyframe): Array<KeyframeMarker>;
 }
 
-interface KeyframeSequence extends Instance {
+interface KeyframeSequence extends AnimationClip {
 	GetKeyframes(this: KeyframeSequence): Array<Keyframe>;
 }
 

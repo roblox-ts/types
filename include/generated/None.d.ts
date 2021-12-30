@@ -126,7 +126,6 @@ interface CreatableInstances {
 	BallSocketConstraint: BallSocketConstraint;
 	Beam: Beam;
 	BillboardGui: BillboardGui;
-	BinaryStringValue: BinaryStringValue;
 	BindableEvent: BindableEvent;
 	BindableFunction: BindableFunction;
 	BlockMesh: BlockMesh;
@@ -1499,7 +1498,7 @@ interface CurveAnimation extends AnimationClip {
  * 
  * In some cases the developer may wish to download the KeyframeSequence corresponding to an existing uploaded Animation. This can be done so using [KeyframeSequenceProvider:GetKeyframeSequenceAsync](https://developer.roblox.com/en-us/api-reference/function/KeyframeSequenceProvider/GetKeyframeSequenceAsync).
  */
-interface KeyframeSequence extends Instance {
+interface KeyframeSequence extends AnimationClip {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -9614,7 +9613,7 @@ interface FloatCurve extends Instance {
 	/**
 	 * Samples the float curve at a given time passed as argument.
 	 */
-	GetValueAtTime(this: FloatCurve, time: number): float?;
+	GetValueAtTime(this: FloatCurve, time: number): number | undefined;
 	/**
 	 * Adds the key passed as argument to this curve. If a key exists at the same time it will be replaced. First return value is true if a key was added, false if a previous key was replaced. Second return value is the index at which the marker was added.
 	 */
@@ -26906,7 +26905,7 @@ interface RotationCurve extends Instance {
 	/**
 	 * Samples the RotationCurve at a given time and returns the corresponding rotation. Empty RotationCurves are interpreted as zero.
 	 */
-	GetValueAtTime(this: RotationCurve, time: number): CoordinateFrame?;
+	GetValueAtTime(this: RotationCurve, time: number): CFrame | undefined;
 	/**
 	 * Adds the key passed as argument to this curve. If a key at the same time is found it will be replaced. First return value is true if a key was added, false if a previous key was replaced. Second return value is the index at which the marker was added.
 	 */
@@ -33904,29 +33903,6 @@ interface ValueBase extends Instance {
 	 * This event can be used to track when a ValueBase `Value` changes and to track the different values that it may change to.
 	 */
 	readonly Changed: RBXScriptSignal<(value?: unknown) => void>;
-}
-
-/** An internal type of [StringValue](https://developer.roblox.com/en-us/api-reference/class/StringValue) object, that stores a `BinaryString` value. */
-interface BinaryStringValue extends ValueBase {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_BinaryStringValue: unique symbol;
-	/**
-	 * Fires if the `BinaryStringValue/Value` of the [BinaryStringValue](https://developer.roblox.com/en-us/api-reference/class/BinaryStringValue) is changed by the engine.
-	 * 
-	 * In practice, this object is stored out of reach from normal scripts, so this event cannot be connected to. If a BinaryStringValue is created by a script, the engine will not do anything with it, so the event will never fire.
-	 * 
-	 * Note
-	 * ----
-	 * 
-	 * Equivalent changed events exist for similar objects, such as [NumberValue](https://developer.roblox.com/en-us/api-reference/class/NumberValue) and [StringValue](https://developer.roblox.com/en-us/api-reference/class/StringValue), depending on what object type best suits the need.
-	 */
-	readonly Changed: RBXScriptSignal<(value: unknown) => void>;
 }
 
 /** An instance which is used to hold a boolean value. The value can be used for many things, including to communicate between scripts. */

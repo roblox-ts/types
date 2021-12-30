@@ -124,7 +124,7 @@ interface ABTestService extends Instance {
 	readonly OnUserABTestLoadingStatusChanged: RBXScriptSignal<(status: Enum.ABTestLoadingStatus, userId: number) => void>;
 }
 
-interface KeyframeSequence extends Instance {
+interface KeyframeSequence extends AnimationClip {
 	/**
 	 * **DO NOT USE!**
 	 *
