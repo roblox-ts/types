@@ -126,7 +126,6 @@ interface CreatableInstances {
 	BallSocketConstraint: BallSocketConstraint;
 	Beam: Beam;
 	BillboardGui: BillboardGui;
-	BinaryStringValue: BinaryStringValue;
 	BindableEvent: BindableEvent;
 	BindableFunction: BindableFunction;
 	BlockMesh: BlockMesh;
@@ -464,12 +463,10 @@ interface Instance {
 	/**
 	 * This property determines whether an [object](https://developer.roblox.com/en-us/api-reference/class/Instance) should be included when the game is published or saved, or when [Instance:Clone](https://developer.roblox.com/en-us/api-reference/function/Instance/Clone) is called on one of the object's ancestors. Calling Clone directly on an object will return nil if the cloned object is not archivable. Copying an object in Studio (using the 'Duplicate' or 'Copy' options) will ignore the Archivable property and set Archivable to true for the copy.
 	 * 
-	 * ```lua
 	 * local part = Instance.new("Part")
 	 * print(part:Clone()) --&gt; Part
 	 * part.Archivable = false
 	 * print(part:Clone()) --&gt; nil
-	 * ```
 	 */
 	Archivable: boolean;
 	/**
@@ -563,13 +560,14 @@ interface Instance {
 	 */
 	ClearAllChildren(this: Instance): void;
 	/**
-	 * Create a deep copy of a Roblox Instance and all of its descendants, with all the same property values. Returns a new, separate object whose Parent property is `nil`. The next step after cloning an object is setting the Parent, and optionally re-positioning the new object if it has 3d geometry.
+	 * **Clone** creates a copy of an object and all of its descendants, ignoring all objects that are not [Archivable](https://developer.roblox.com/en-us/api-reference/property/Instance/Archivable). The copy of the root object is returned by this function and its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is set to nil.
 	 * 
-	 * Any references to objects not in the cloned hierarchy are maintained (i.e. if an ObjectValue refers to an external object it will refer to the same external object). Any internal references are relative (ie if an ObjectValue refers to an internal object it will refer to a similar internal object in the copy).
+	 * If a reference property such as [ObjectValue.Value](https://developer.roblox.com/en-us/api-reference/property/ObjectValue/Value) is set in a cloned object, the value of the copy's property depends on original's value:
 	 * 
-	 * Any objects in the cloned object's hierarchy (including the object itself) that does not have the `Archivable` property enabled are ignored. If the root object is not Archivable, the function returns `nil`.
+	 * *   If a reference property refers to an object that was **also** cloned, an _internal reference_, the copy will refer to the copy.
+	 * *   If a reference property refers to an object that was **not** cloned, an _external reference_, the same value is maintained in the copy.
 	 * 
-	 * Clone is useful for regenerating models by saving the original and spawning copies. It's also useful for taking a snapshot of the current state of a model if it is changing over time.
+	 * This function is typically used to create models that can be regenerated. First, get a reference to the original object. Then, make a copy of the object and insert the copy by setting its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) or one of its descendants. Finally, when it's time to regenerate the model, [Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) the copy and clone a new one from the original like before.
 	 */
 	Clone<T extends Instance>(this: T): T;
 	/**
@@ -577,7 +575,6 @@ interface Instance {
 	 * 
 	 * **Tip:** After calling Destroy on an object, set any variables referencing the object (or its descendants) to nil. This prevents your code from accessing anything to do with the object.
 	 * 
-	 * ```lua
 	 * local part = Instance.new("Part")
 	 * part.Name = "Hello, world"
 	 * part:Destroy()
@@ -585,15 +582,12 @@ interface Instance {
 	 * print(part.Name) --> "Hello, world"
 	 * -- Do this to prevent the above line from working:
 	 * part = nil
-	 * ``` 
 	 * 
 	 * Once an [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) has been destroyed by this method it cannot be reused because the [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) property is locked. To temporarily remove an object, set [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) it to nil instead. For example:
 	 * 
-	 * ```lua
 	 * object.Parent = nil
 	 * wait(2)
 	 * object.Parent = workspace
-	 * ``` 
 	 * 
 	 * To Destroy an object after a set amount of time, use [Debris:AddItem](https://developer.roblox.com/en-us/api-reference/function/Debris/AddItem).
 	 */
@@ -648,19 +642,15 @@ interface Instance {
 	 * 
 	 * FindFirstChild is necessary if you need to verify an object something exists before continuing. Attempting to index a child by name using the dot operator throws an error if the child doesn't exist.
 	 * 
-	 *  ```lua
-	 * -- The following line errors if Part doesn't exist in the Workspace:
+	 *  -- The following line errors if Part doesn't exist in the Workspace:
 	 * workspace.Part.Transparency = .5
-	 * ``` 
 	 * 
 	 * Use FindFirstChild to first check for Part, then use an if-statement to run code that needs it.
 	 * 
-	 * ```lua
 	 * local part = workspace:FindFirstChild("Part")
 	 * if part then
-	 *     part.Transparency = .5
+	 * 	part.Transparency = .5
 	 * end
-	 * ``` 
 	 * 
 	 * Finding a Child Whose Name Matches a Property
 	 * ---------------------------------------------
@@ -669,22 +659,18 @@ interface Instance {
 	 * 
 	 * In the following example, a [Folder](https://developer.roblox.com/en-us/api-reference/class/Folder) called “Color” is added to a [Part](https://developer.roblox.com/en-us/api-reference/class/Part), which also has the `Part/Color` property. `Part.Color` refers to the [Color3](https://developer.roblox.com/en-us/api-reference/datatype/Color3), not the Folder.
 	 * 
-	 * ```lua
 	 * local part = Instance.new("Part")
 	 * local folder = Instance.new("Folder")
 	 * folder.Name = "Color"
 	 * folder.Parent = part
 	 * local c = part.Color --> A Color3
 	 * local c2 = part:FindFirstChild("Color") --> The Folder
-	 * ``` 
 	 * 
 	 * A benefit of using FindFirstChild in this way is that the introduction of new properties does not impose a risk on your code.
 	 * 
 	 * **Tip:** If you only need to use the result of a FindFirstChild call once, such as getting the property of a child if it exists, you can use the following syntax with the `and` operator:
 	 * 
-	 * ```lua
 	 * local myColor = workspace:FindFirstChild("SomePart") and workspace.SomePart.Color
-	 * ``` 
 	 * 
 	 * If SomePart exists, `myColor` will contain the Color of SomePart. Otherwise, it'll be nil without throwing an error. This works due to short-circuiting: Lua ignores the right side if the left is nil/false
 	 * 
@@ -794,20 +780,16 @@ interface Instance {
 	/**
 	 * Returns an array (a numerically indexed table) containing all of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)'s direct children, or every [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) whose [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is equal to the object. The array can be iterated upon using either a numeric or generic for-loop:
 	 * 
-	 * ```lua
-	 * -- Numeric for-loop example
+	 * \-- Numeric for-loop example
 	 * local children = workspace:GetChildren()
 	 * for i = 1, #children do
-	 *     local child = children[i]
-	 *     print(child.Name .. " is child number " .. i)
-	 * end
-	 * ``` ```lua
-	 * -- Generic for-loop example
+	 * 	local child = children\[i\]
+	 * 	print(child.Name .. " is child number " .. i)
+	 * end\-- Generic for-loop example
 	 * local children = workspace:GetChildren()
 	 * for i, child in ipairs(children) do
-	 *     print(child.Name .. " is child number " .. i)
+	 * 	print(child.Name .. " is child number " .. i)
 	 * end
-	 * ``` 
 	 * 
 	 * The children are sorted by the order in which their [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) property was set to the object.
 	 * 
@@ -1017,12 +999,10 @@ interface Instance {
 	 * 
 	 * Note, when using this function on a client to detect objects created by the server it is necessary to use [Instance:WaitForChild](https://developer.roblox.com/en-us/api-reference/function/Instance/WaitForChild) when indexing these object's descendants. This is because the object and its descendants are not guaranteed to replicate from the server to the client simultaneously. For example:
 	 * 
-	 * ```lua
 	 * workspace.ChildAdded:Connect(function(child)
-	 *     -- need to use WaitForChild as descendants may not have replicated yet
-	 *     local head = child:WaitForChild("Head")
+	 * 	-- need to use WaitForChild as descendants may not have replicated yet
+	 * 	local head = child:WaitForChild("Head")
 	 * end)
-	 * ``` 
 	 * 
 	 * Note, this function only works for immediate children of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance). For a function that captures all descendants, use [Instance.DescendantAdded](https://developer.roblox.com/en-us/api-reference/event/Instance/DescendantAdded).
 	 * 
@@ -1518,7 +1498,7 @@ interface CurveAnimation extends AnimationClip {
  * 
  * In some cases the developer may wish to download the KeyframeSequence corresponding to an existing uploaded Animation. This can be done so using [KeyframeSequenceProvider:GetKeyframeSequenceAsync](https://developer.roblox.com/en-us/api-reference/function/KeyframeSequenceProvider/GetKeyframeSequenceAsync).
  */
-interface KeyframeSequence extends Instance {
+interface KeyframeSequence extends AnimationClip {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -4808,7 +4788,7 @@ interface BodyAngularVelocity extends BodyMover {
 	 */
 	AngularVelocity: Vector3;
 	/**
-	 * The maxTorque property is a deprecated variant of `BodyAngualrVelocity/MaxTorque` that lets you set how much force could be applied to each axis.
+	 * The MaxTorque property determines the limit of the torque that may be exerted on each world axis. If a part isn't moving, consider raising this value (and also check that it is not [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) or attached to another anchored part). See also [P](https://developer.roblox.com/en-us/api-reference/property/BodyAngularVelocity/P) (power).
 	 */
 	MaxTorque: Vector3;
 	/**
@@ -4851,7 +4831,7 @@ interface BodyForce extends BodyMover {
 	 */
 	readonly _nominal_BodyForce: unique symbol;
 	/**
-	 * A deprecated variant of `BodyForce.Force` that indicates the amount of force applied on each axis.
+	 * The Force property determines the magnitude of force exerted on each axis, relative to the world.
 	 */
 	Force: Vector3;
 }
@@ -14374,10 +14354,8 @@ interface Humanoid extends Instance {
 	 * 
 	 * The following code can be used to load an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) onto a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid).
 	 * 
-	 * ```lua
 	 * local animationTrack = humanoid:LoadAnimation(animation)
 	 * animationTrack:Play()
-	 * ``` 
 	 * 
 	 * Should I load an Animation on the client or server?
 	 * ---------------------------------------------------
@@ -17371,16 +17349,13 @@ interface InsertService extends Instance {
 	/**
 	 * The LoadAsset function fetches an asset given its ID and returns a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) containing the asset. For example, to load this public [Doge](https://www.roblox.com/library/257489726/Doge) [Model](https://developer.roblox.com/en-us/api-reference/class/Model), which has the asset Id _**257489726**_, you can use:
 	 * 
-	 * ```lua
 	 * local assetId = 257489726
 	 * local InsertService = game:GetService("InsertService")
 	 * local model = InsertService:LoadAsset(assetId)
 	 * model.Parent = workspace
-	 * ``` 
 	 * 
 	 * Calls to this function may fail if a server providing a model is having problems. As such, it's generally a good idea to wrap calls to this function in `pcall` to catch these kinds of errors.
 	 * 
-	 * ```lua
 	 * local assetId = 257489726
 	 * local InsertService = game:GetService("InsertService")
 	 * local success, model = pcall(InsertService.LoadAsset, InsertService, assetId)
@@ -17390,7 +17365,6 @@ interface InsertService extends Instance {
 	 * else
 	 *    print("Model failed to load!")
 	 * end
-	 * ``` 
 	 * 
 	 * Security Check
 	 * --------------
@@ -18555,52 +18529,46 @@ interface Lighting extends Instance {
 	 * 
 	 * Using [Lighting.TimeOfDay](https://developer.roblox.com/en-us/api-reference/property/Lighting/TimeOfDay) requires the time to be normalized and a string formatted:
 	 * 
-	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 *     minutesAfterMidnight = minutesAfterMidnight + 1
+	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 *     local seconds = minutesNormalised * 60
-	 *     local hours = string.format("%02.f", math.floor(seconds/3600))
-	 *     local mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)))
-	 *     local secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60))
-	 *     local timeString = hours..":"..mins..":"..secs
+	 * 	local minutesNormalised = minutesAfterMidnight % (60 \* 24)
+	 * 	local seconds = minutesNormalised \* 60
+	 * 	local hours = string.format("%02.f", math.floor(seconds/3600))
+	 * 	local mins = string.format("%02.f", math.floor(seconds/60 - (hours\*60)))
+	 * 	local secs = string.format("%02.f", math.floor(seconds - hours\*3600 - mins \*60))
+	 * 	local timeString = hours..":"..mins..":"..secs
 	 * 
-	 *     Lighting.TimeOfDay = timeString
+	 * 	Lighting.TimeOfDay = timeString
 	 * 
-	 *     wait()
+	 * 	wait()
 	 * end
-	 * ``` 
 	 * 
 	 * Using [Lighting.ClockTime](https://developer.roblox.com/en-us/api-reference/property/Lighting/ClockTime) requires the time to be normalized:
 	 * 
-	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 *     minutesAfterMidnight = minutesAfterMidnight + 1
+	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 *     local minutesNormalised = minutesAfterMidnight % (60 * 24)
-	 *     local hours = minutesNormalised / 60
+	 * 	local minutesNormalised = minutesAfterMidnight % (60 \* 24)
+	 * 	local hours = minutesNormalised / 60
 	 * 
-	 *     Lighting.ClockTime = hours
+	 * 	Lighting.ClockTime = hours
 	 * 
-	 *     wait()
+	 * 	wait()
 	 * end
-	 * ``` 
 	 * 
 	 * Using [Lighting:SetMinutesAfterMidnight](https://developer.roblox.com/en-us/api-reference/function/Lighting/SetMinutesAfterMidnight) requires no extra processing:
 	 * 
-	 * ```lua
 	 * minutesAfterMidnight = 0
 	 * while true do
-	 *     minutesAfterMidnight = minutesAfterMidnight + 1
+	 * 	minutesAfterMidnight = minutesAfterMidnight + 1
 	 * 
-	 *     Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
+	 * 	Lighting:SetMinutesAfterMidnight(minutesAfterMidnight)
 	 * 
-	 *     wait()
+	 * 	wait()
 	 * end
-	 * ```
 	 */
 	SetMinutesAfterMidnight(this: Lighting, minutes: number): void;
 	/**
@@ -20792,9 +20760,7 @@ interface Mouse extends Instance {
 	 * 
 	 * Developers can get obtain the position of Hit like so:
 	 * 
-	 * ```lua
 	 * local position = mouse.Hit.p
-	 * ``` 
 	 * 
 	 * Hit is often used by [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool)s to fire a weapon towards the mouse in third person.
 	 * 
@@ -20807,12 +20773,10 @@ interface Mouse extends Instance {
 	 * 
 	 * The orientation of the Hit CFrame corresponds with the direction of the [Mouse.UnitRay](https://developer.roblox.com/en-us/api-reference/property/Mouse/UnitRay).
 	 * 
-	 * ```lua
 	 * local unitRayDirection = mouse.UnitRay.Direction
 	 * local mouseHitDirection = mouse.Hit.lookVector
 	 * -- unitRayDirection ≈ mouseHitDirection
 	 * -- the vectors are approximately equal
-	 * ``` 
 	 * 
 	 * Note, the roll of the [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera) is not used when calculating the orientation of the Hit [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame).
 	 * 
@@ -22128,9 +22092,7 @@ interface BasePart extends PVInstance {
 	 * 
 	 * Unlike [Model:MakeJoints](https://developer.roblox.com/en-us/api-reference/function/Model/MakeJoints), this function requires an array of parts as a parameter. This array is given as follows:
 	 * 
-	 * ```lua
 	 * part:MakeJoints({part1, part2, part3})
-	 * ``` 
 	 * 
 	 * Joints are broken if enough force is applied to them due to an [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion), unless a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField) object is parented to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or ancestor [Model](https://developer.roblox.com/en-us/api-reference/class/Model). For this reason, they are often used to make simple destructible buildings and other models.
 	 */
@@ -22304,7 +22266,7 @@ interface FormFactorPart extends BasePart {
 	 */
 	readonly _nominal_FormFactorPart: unique symbol;
 	/**
-	 * Determines how a part acts when resized and the values that which its size can take.
+	 * This used to specify a grid constraint of the part's size. No longer does anything.
 	 * Tags: NotReplicated, Deprecated
 	 * @deprecated
 	 */
@@ -22856,11 +22818,6 @@ interface MeshPart extends TriangleMeshPart {
 	 * Tags: Hidden
 	 */
 	readonly JointOffset: Vector3;
-	/**
-	 * The **MeshId** is the content ID of the mesh that is to be displayed on the [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart).
-	 * 
-	 * Note that this property currently cannot be changed by scripts as the collision model of the mesh cannot be recomputed during runtime. Developers should not rely on this behavior as it may change in the future. Those looking for a custom mesh object that can be updated during runtime should use [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh).
-	 */
 	readonly MeshId: string;
 	/**
 	 * Tags: ReadOnly, NotReplicated
@@ -23312,22 +23269,20 @@ interface WorldRoot extends Model {
 	/**
 	 * **FindPartOnRay** uses [raycasting](https://developer.roblox.com/articles/Raycasting) to find the first [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) cell intersecting with a given [Ray](https://developer.roblox.com/en-us/api-reference/datatype/Ray). This function returns the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or terrain cell hit, the point of intersection, the surface normal at the point of intersection, and the associated [Material](https://developer.roblox.com/en-us/api-reference/enum/Material) hit.
 	 * 
-	 * ```lua
 	 * local character = game.Players.LocalPlayer.Character
 	 * -- Get the head
 	 * local head = character:FindFirstChild("Head")
 	 * -- Build a ray in the direction the head is facing
 	 * local origin = head.Position
 	 * local lookDirection = head.CFrame.LookVector
-	 * local ray = Ray.new(origin, lookDirection * 500)
+	 * local ray = Ray.new(origin, lookDirection \* 500)
 	 * -- Raycast, ignoring the player's character
 	 * local hitPart, hitPosition = workspace:FindPartOnRay(ray, character)
 	 * if hitPart then
-	 *     print("Hit part: " .. hitPart:GetFullName())
+	 * 	print("Hit part: " .. hitPart:GetFullName())
 	 * else
-	 *     print("Did not hit part")
+	 * 	print("Did not hit part")
 	 * end
-	 * ``` 
 	 * 
 	 * If the `ignoreDescendantsInstance` parameter is provided, the raycasting calculation will ignore the given object and all of its descendants. It behaves similar to the [Mouse.TargetFilter](https://developer.roblox.com/en-us/api-reference/property/Mouse/TargetFilter) property.
 	 * 
@@ -23411,12 +23366,10 @@ interface WorldRoot extends Model {
 	 * 
 	 * The optional ignoreDescendentsInstance parameter can be used to specify a specific instance for whom itself and all of its descendants should be ignored by this function. This can be useful when, for example, looking to see if any [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s are inside a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) other than the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) itself.
 	 * 
-	 * ```lua
-	 * local min = part.Position - (0.5 * part.Size)
-	 * local max = part.Position + (0.5 * part.Size)
+	 * local min = part.Position - (0.5 \* part.Size)
+	 * local max = part.Position + (0.5 \* part.Size)
 	 * local region = Region3.new(min, max)
 	 * local parts = workspace:FindPartsInRegion3(region, part) --  ignore part
-	 * ``` 
 	 * 
 	 * Variants of this function exist with ignore-list and white-list functionality, `Workspace/FindPartsInRegion3WithIgnoreList` and `Workspace/FindPartsInRegion3WithWhiteList`.
 	 * 
@@ -25314,7 +25267,7 @@ interface Player extends Instance {
 	 */
 	LoadNumber(this: Player, key: string): number;
 	/**
-	 * This function returns a string value that was previously saved to the player with [Player:SaveString](https://developer.roblox.com/en-us/api-reference/function/Player/SaveString) with the same key. Returns an empty string ("") if the key doesn't exist, not nil…
+	 * This function returns a string value that was previously saved to the player with [Player:SaveString](https://developer.roblox.com/en-us/api-reference/function/Player/SaveString) with the same key. Returns an empty string (“”) if the key doesn't exist, not nil…
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
@@ -25702,21 +25655,38 @@ interface Players extends Instance {
 	 */
 	readonly ClassicChat: boolean;
 	/**
-	 * This is a read-only property which contains a reference to the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) instance for which a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) is running. For [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s running on the server, this property is nil.
+	 * **LocalPlayer** is a read-only property which refers to the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) whose client is running the game.
 	 * 
-	 * This property is useful when creating GUIs that display information about the player. You can use it to accessing the player's [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character), [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui), and [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack).
+	 * This property is only defined for [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s (and [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript)s required by them), as they run on the client. For the server (on which [Script](https://developer.roblox.com/en-us/api-reference/class/Script) objects run their code), this property is nil. See `articles/Roblox Client-Server Model` for more information on game networking on Roblox.
+	 * 
+	 * This property is useful in [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s which display information about the player viewing a GUI. Using For example, if there were [IntValue](https://developer.roblox.com/en-us/api-reference/class/IntValue) parented to a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) named “Coins” which represented how much money that player has, you could use the following to display this value for them:
+	 * 
+	 * \-- This code is appropriate for a LocalScript in StarterGui,
+	 * -- for example: game.StarterGui.ScreenGui.TextLabel.LocalScript
+	 * 
+	 * local player = game:GetService("Players").LocalPlayer
+	 * -- Wait for a value we're expecting for the server to have created
+	 * local vCoins = player:WaitForChild("Coins")
+	 * 
+	 * local textLabel = script.Parent
+	 * local function update()
+	 *     textLabel.Text = "Coins: " .. vCoins.Value
+	 * end
+	 * 
+	 * -- Update once, then every time the value changes
+	 * update()
+	 * vCoins.Changed:Connect(update)
 	 * 
 	 * Loading GUIs
 	 * ------------
 	 * 
-	 * When creating loading GUIs using [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst), sometimes a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) may run before the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) is created and becomes available. In such cases, it is useful to yield until it is by using [Instance:GetPropertyChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetPropertyChangedSignal)
+	 * When creating loading GUIs using [ReplicatedFirst](https://developer.roblox.com/en-us/api-reference/class/ReplicatedFirst), sometimes a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) can run before the LocalPlayer is available. In this case, you should yield until it becomes available by using [Instance:GetPropertyChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetPropertyChangedSignal)
 	 * 
-	 * ```lua
 	 * local Players = game:GetService("Players")
+	 * -- Below: access Players.LocalPlayer; if it is nil, we'll wait for it using GetPropertyChangedSignal.
 	 * local player = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPlayer"):wait()
-	 * ``` 
 	 * 
-	 * Note that this technique is not required for [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) within in [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui), [StarterPlayerScripts](https://developer.roblox.com/en-us/api-reference/class/StarterPlayerScripts) or [StarterCharacterScripts](https://developer.roblox.com/en-us/api-reference/class/StarterCharacterScripts), as these kinds of scripts only run if the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) object is already available.
+	 * Doing this isn't for a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) within [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui), [StarterPlayerScripts](https://developer.roblox.com/en-us/api-reference/class/StarterPlayerScripts) or [StarterCharacterScripts](https://developer.roblox.com/en-us/api-reference/class/StarterCharacterScripts): these scripts can only run after a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) object is already available, and LocalPlayer will have been set by then.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly LocalPlayer: Player;
@@ -25787,15 +25757,13 @@ interface Players extends Instance {
 	/**
 	 * This function returns the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) associated with the given [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character), or `nil` if one cannot be found. It is equivalent to the following function:
 	 * 
-	 * ```lua
 	 * local function getPlayerFromCharacter(character)
-	 *     for _, player in pairs(game:GetService("Players"):GetPlayers()) do
-	 *         if player.Character == character then
-	 *             return player
-	 *         end
-	 *     end
+	 * 	for \_, player in pairs(game:GetService("Players"):GetPlayers()) do
+	 * 		if player.Character == character then
+	 * 			return player
+	 * 		end
+	 * 	end
 	 * end
-	 * ``` 
 	 * 
 	 * This method is often used when some event in player's character fires (such as their [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) [dying](https://developer.roblox.com/en-us/api-reference/event/Humanoid/Died)). Such an event might not directly reference the Player object, but this method provides easy access. The inverse of this function can be described as getting the Character of a Player. To do this, simply access the Character property.
 	 */
@@ -27612,11 +27580,9 @@ interface DataModel extends ServiceProvider<Services> {
 	 * 
 	 * The [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) can also be accessed using the global variable `workspace` and the [ServiceProvider:GetService](https://developer.roblox.com/en-us/api-reference/function/ServiceProvider/GetService) function. For example:
 	 * 
-	 * ```lua
 	 * workspace -- a global variable
 	 * game.Workspace -- a property of the DataModel (game)
 	 * game:GetService("Workspace") -- workspace is a service
-	 * ```
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Workspace: Workspace;
@@ -33937,29 +33903,6 @@ interface ValueBase extends Instance {
 	 * This event can be used to track when a ValueBase `Value` changes and to track the different values that it may change to.
 	 */
 	readonly Changed: RBXScriptSignal<(value?: unknown) => void>;
-}
-
-/** An internal type of [StringValue](https://developer.roblox.com/en-us/api-reference/class/StringValue) object, that stores a `BinaryString` value. */
-interface BinaryStringValue extends ValueBase {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_BinaryStringValue: unique symbol;
-	/**
-	 * Fires if the `BinaryStringValue/Value` of the [BinaryStringValue](https://developer.roblox.com/en-us/api-reference/class/BinaryStringValue) is changed by the engine.
-	 * 
-	 * In practice, this object is stored out of reach from normal scripts, so this event cannot be connected to. If a BinaryStringValue is created by a script, the engine will not do anything with it, so the event will never fire.
-	 * 
-	 * Note
-	 * ----
-	 * 
-	 * Equivalent changed events exist for similar objects, such as [NumberValue](https://developer.roblox.com/en-us/api-reference/class/NumberValue) and [StringValue](https://developer.roblox.com/en-us/api-reference/class/StringValue), depending on what object type best suits the need.
-	 */
-	readonly Changed: RBXScriptSignal<(value: BinaryString) => void>;
 }
 
 /** An instance which is used to hold a boolean value. The value can be used for many things, including to communicate between scripts. */
