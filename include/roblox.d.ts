@@ -1888,6 +1888,10 @@ interface Vector2 {
 	Lerp(this: Vector2, goal: Vector2, alpha: number): Vector2;
 	/** Returns the cross product of the two vectors */
 	Cross(this: Vector2, other: Vector2): number;
+	/** Returns a new Vector2 with the minimum of each component. */
+	Min(this: Vector2, ...vectors: Array<Vector2>): Vector2;
+	/** Returns a new Vector2 with the maximum of each component. */
+	Max(this: Vector2, ...vectors: Array<Vector2>): Vector2;
 }
 
 interface Vector2Constructor {
@@ -1984,6 +1988,10 @@ interface Vector3 {
 	Cross(this: Vector3, other: Vector3): Vector3;
 	/** Returns true if the other Vector3 falls within the epsilon radius of this Vector3. */
 	FuzzyEq(this: Vector3, other: Vector3, epsilon?: number): boolean;
+	/** Returns a new Vector3 with the minimum of each component. */
+	Min(this: Vector3, ...vectors: Array<Vector3>): Vector3;
+	/** Returns a new Vector3 with the maximum of each component. */
+	Max(this: Vector3, ...vectors: Array<Vector3>): Vector3;
 }
 
 interface Vector3Constructor {
