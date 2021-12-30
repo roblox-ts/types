@@ -486,6 +486,11 @@ interface MarketplaceService extends Instance {
 }
 
 /** @server */
+interface MemoryStoreSortedMap extends Instance {
+	UpdateAsync(this: MemoryStoreSortedMap, key: string, transformFunction: (value: unknown) => unknown, expiration: number): unknown;
+}
+
+/** @server */
 interface MessagingService extends Instance {
 	SubscribeAsync(
 		this: MessagingService,
