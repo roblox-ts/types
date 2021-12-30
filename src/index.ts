@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as path from "path";
+import { Project } from "ts-morph";
 import { ApiDump } from "./api";
 import { ClassGenerator } from "./class/ClassGenerator";
 import { EnumGenerator } from "./class/EnumGenerator";
@@ -56,6 +57,27 @@ void (async () => {
 	}
 
 	console.log(`\tDone! (${classTimer.get()}ms)`);
+
+	const typeCheckTimer = new Timer();
+	console.log("\tTypechecking generated files..");
+	const project = new Project({
+		tsConfigFilePath: path.join(__dirname, "..", "include", "tsconfig.json"),
+	});
+
+	const diagnostics = project.getPreEmitDiagnostics();
+
+	console.log(
+		project.formatDiagnosticsWithColorAndContext(
+			diagnostics.filter((d) => {
+				const sourceFile = d.getSourceFile();
+				// customDefinitions not included in published package
+				// so ignore false-positive diagnostics about plugin types
+				return !sourceFile?.isInNodeModules() && sourceFile?.getBaseName() !== "customDefinitions.d.ts";
+			}),
+		),
+	);
+
+	console.log(`\tDone! (${typeCheckTimer.get()}ms)`);
 
 	console.log(`Done! (${totalTimer.get()}ms)`);
 })();
