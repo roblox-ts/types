@@ -491,7 +491,7 @@ interface MemoryStoreSortedMap extends Instance {
 		this: MemoryStoreSortedMap,
 		key: string,
 		transformFunction: (value: unknown) => T,
-		expiration: number
+		expiration: number,
 	): T;
 }
 
