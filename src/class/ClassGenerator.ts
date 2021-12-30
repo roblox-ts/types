@@ -159,6 +159,7 @@ const PLUGIN_ONLY_CLASSES = new Set([
 const CLASS_BLACKLIST = new Set([
 	// Classes which Roblox leverages internally/in the CoreScripts but serve no purpose to developers
 	"AnalysticsSettings",
+	"BinaryStringValue",
 	"BrowserService",
 	"CacheableContentProvider",
 	"ClusterPacketCache",
