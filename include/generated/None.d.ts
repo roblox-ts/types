@@ -6029,7 +6029,7 @@ interface Chat extends Instance {
 	 * *   Set `message.ShouldDeliver` to false in order to cancel delivery of the message to players (useful for implementing a chat blacklist)
 	 * *   Get/set the speaker's name color (`message.ExtraData.NameColor`, a Color3) on a message-by-message basis
 	 */
-	RegisterChatCallback(this: Chat, callbackType: CastsToEnum<Enum.ChatCallbackType>, callbackFunction: Function): void;
+	RegisterChatCallback(this: Chat, callbackType: CastsToEnum<Enum.ChatCallbackType>, callbackFunction: Callback): void;
 	/**
 	 * **Note**  
 	 * 
@@ -7860,7 +7860,7 @@ interface ContextActionService extends Instance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	BindActionToInputTypes(this: ContextActionService, actionName: string, functionToBind: Function, createTouchButton: boolean, inputTypes: Array<any>): void;
+	BindActionToInputTypes(this: ContextActionService, actionName: string, functionToBind: Callback, createTouchButton: boolean, inputTypes: Array<any>): void;
 	/**
 	 * Bind an [KeyCode](https://developer.roblox.com/en-us/api-reference/enum/KeyCode) that can be used with an [UserInputType](https://developer.roblox.com/en-us/api-reference/enum/UserInputType) to activate [ClickDetector](https://developer.roblox.com/en-us/api-reference/class/ClickDetector) events and [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) objects. When the given key/button is pressed, it fires the [Mouse.Button1Down](https://developer.roblox.com/en-us/api-reference/event/Mouse/Button1Down) event on the mouse sent to [Tool.Equipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Equipped). This in turn fires the [Tool.Activated](https://developer.roblox.com/en-us/api-reference/event/Tool/Activated) event if [Tool.ManualActivationOnly](https://developer.roblox.com/en-us/api-reference/property/Tool/ManualActivationOnly) is not set to true. For gamepad input, this function is called by the default control scripts in order to bind the ButtonR2 [KeyCode](https://developer.roblox.com/en-us/api-reference/enum/KeyCode).
 	 * 
@@ -9841,7 +9841,7 @@ interface GlobalDataStore extends Instance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	OnUpdate(this: GlobalDataStore, key: string, callback: Function): RBXScriptConnection;
+	OnUpdate(this: GlobalDataStore, key: string, callback: Callback): RBXScriptConnection;
 	/**
 	 * This function returns the latest value of the provided key and a [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) instance. If the key does not exist or if the latest version has been marked as deleted, both return values will be `nil`.
 	 * 
@@ -20583,7 +20583,7 @@ interface MemoryStoreSortedMap extends Instance {
 	 * For a more in-depth look, take a look at the `articles/Memory Store|Memory Store` article.
 	 * Tags: Yields
 	 */
-	UpdateAsync(this: MemoryStoreSortedMap, key: string, transformFunction: Function, expiration: number): unknown;
+	UpdateAsync(this: MemoryStoreSortedMap, key: string, transformFunction: Callback, expiration: number): unknown;
 }
 
 interface MessageBusConnection extends Instance {
@@ -31687,7 +31687,7 @@ interface UIGridStyleLayout extends UILayout {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	SetCustomSortFunction(this: UIGridStyleLayout, callback?: Function): void;
+	SetCustomSortFunction(this: UIGridStyleLayout, callback?: Callback): void;
 }
 
 /** A UIGridLayout (not to be confused with the abstract [UIGridStyleLayout](https://developer.roblox.com/en-us/api-reference/class/UIGridStyleLayout) from which this class inherits) lays out sibling UI elements in multiple rows within the parent UI element, adding elements to a row one-by-one until the next element would not fit. It then continues adding elements in the next row. A UIGridLayout will take UI elements' [GuiObject.Size](https://developer.roblox.com/en-us/api-reference/property/GuiObject/Size) and [GuiObject.Position](https://developer.roblox.com/en-us/api-reference/property/GuiObject/Position) under control. While under control, these UI elements' properties will not be editable in the Properties window.
