@@ -339,29 +339,6 @@ const ABSTRACT_CLASSES = new Set<string>([
 	"WorldRoot",
 ]);
 
-const VALUE_TYPE_MAP = new Map<string, string | null>([
-	["Array", "Array<any>"],
-	["BinaryString", null],
-	["bool", "boolean"],
-	["Connection", "RBXScriptConnection"],
-	["Content", "string"],
-	["CoordinateFrame", "CFrame"],
-	["Dictionary", "object"],
-	["double", "number"],
-	["EventInstance", "RBXScriptSignal"],
-	["float", "number"],
-	["int", "number"],
-	["int64", "number"],
-	["Map", "object"],
-	["Object", "Instance"],
-	["Objects", "Array<Instance>"],
-	["Property", "string"],
-	["ProtectedString", "string"],
-	["Rect2D", "Rect"],
-	["Tuple", "Array<any>"],
-	["Variant", "unknown"],
-]);
-
 const PROP_TYPE_MAP = new Map<string, string>();
 
 function safePropType(valueType: string | undefined | null) {
@@ -387,11 +364,31 @@ function safeRenamedInstance(name: string | undefined) {
 	return name && (RENAMEABLE_AUTO_TYPES.get(name) ?? name);
 }
 
+const VALUE_TYPE_MAP = new Map<string, string | null>([
+	["Array", "Array<any>"],
+	["BinaryString", null],
+	["bool", "boolean"],
+	["Connection", "RBXScriptConnection"],
+	["Content", "string"],
+	["CoordinateFrame", "CFrame"],
+	["Dictionary", "object"],
+	["double", "number"],
+	["EventInstance", "RBXScriptSignal"],
+	["float", "number"],
+	["int", "number"],
+	["int64", "number"],
+	["Map", "object"],
+	["Object", "Instance"],
+	["Objects", "Array<Instance>"],
+	["Property", "string"],
+	["ProtectedString", "string"],
+	["Rect2D", "Rect"],
+	["Tuple", "Array<any>"],
+	["Variant", "unknown"],
+]);
+
 function safeValueType(valueType: ApiValueType, canImplicitlyConvertEnum = false) {
-	const mappedType = VALUE_TYPE_MAP.get(valueType.Name);
-	if (mappedType !== undefined) {
-		return mappedType;
-	} else if (valueType.Category === "Enum") {
+	if (valueType.Category === "Enum") {
 		let str = `Enum.${valueType.Name}`;
 
 		if (canImplicitlyConvertEnum) {
@@ -399,8 +396,13 @@ function safeValueType(valueType: ApiValueType, canImplicitlyConvertEnum = false
 		}
 
 		return str;
+	} else if (valueType.Name[valueType.Name.length - 1] === "?") {
+		const nonOptionalType = valueType.Name.substring(0, valueType.Name.length - 1);
+		const mappedType = VALUE_TYPE_MAP.get(nonOptionalType);
+		return (mappedType ?? nonOptionalType) + " | undefined";
 	} else {
-		return valueType.Name;
+		const mappedType = VALUE_TYPE_MAP.get(valueType.Name);
+		return mappedType ?? valueType.Name;
 	}
 }
 

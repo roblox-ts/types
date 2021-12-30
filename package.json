@@ -6,10 +6,11 @@
 	},
 	"description": "TypeScript typings for the Roblox platform. Partially handwritten and partially automatically generated.",
 	"scripts": {
-		"download-content": "wget -q -O devhub-scraper.zip https://github.com/roblox-ts/devhub-scraper/archive/master.zip",
+		"download-content": "wget -O devhub-scraper.zip https://github.com/roblox-ts/devhub-scraper/archive/master.zip",
 		"unzip-content": "unzip -q -o devhub-scraper.zip",
 		"fetch-content": "npm run download-content && npm run unzip-content",
-		"build": "npm run fetch-content && tsc && node out/index.js",
+		"generate-files": "tsc && node out/index.js",
+		"build": "npm run fetch-content && npm run generate-files",
 		"eslint-src": "npx eslint \"src/**/*.ts\" --max-warnings 0",
 		"eslint-include": "npx eslint \"include/*.ts\" --max-warnings 0",
 		"eslint": "npm run eslint-src && npm run eslint-include"
@@ -42,13 +43,12 @@
 		"eslint-config-prettier": "^7.0.0",
 		"eslint-plugin-prettier": "^3.1.4",
 		"fs-extra": "^9.0.1",
-		"libxmljs": "^0.19.7",
+		"libxmljs2": "^0.29.0",
 		"node-fetch": "^2.6.1",
 		"prettier": "^2.1.2",
 		"ts-morph": "^9.0.0",
 		"typescript": "^4.0.3"
 	},
-	"dependencies": {},
 	"keywords": [
 		"types",
 		"Roblox",
