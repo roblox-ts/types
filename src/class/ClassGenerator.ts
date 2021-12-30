@@ -376,6 +376,7 @@ const VALUE_TYPE_MAP = new Map<string, string | null>([
 	["double", "number"],
 	["EventInstance", "RBXScriptSignal"],
 	["float", "number"],
+	["Function", "Callback"],
 	["int", "number"],
 	["int64", "number"],
 	["Map", "object"],
