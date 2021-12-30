@@ -833,7 +833,7 @@ interface PluginGui extends LayerCollector {
 	 * *   [Plugin:CreateDockWidgetPluginGui](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreateDockWidgetPluginGui) to create a [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui)
 	 * *   [DataModel:BindToClose](https://developer.roblox.com/en-us/api-reference/function/DataModel/BindToClose), which can be used to bind a function to the game ending and should not be confused with this function
 	 */
-	BindToClose(this: PluginGui, callback?: Function): void;
+	BindToClose(this: PluginGui, callback?: Callback): void;
 	/**
 	 * GetRelativeMousePosition returns the position of the mouse relative to the top-left corner of the [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui). The returned value changes only if a mouse input began on the PluginGui, or if the mouse is presently hovering over the window.
 	 * 
@@ -1915,8 +1915,8 @@ interface Plugin extends Instance {
 	 * Negates the given parts and returns the resulting NegateOperations.
 	 */
 	Negate(this: Plugin, objects: Array<Instance>): Array<Instance>;
-	OnInvoke(this: Plugin, key: string, callback: Function): Instance | undefined;
-	OnSetItem(this: Plugin, key: string, callback: Function): Instance | undefined;
+	OnInvoke(this: Plugin, key: string, callback: Callback): Instance | undefined;
+	OnSetItem(this: Plugin, key: string, callback: Callback): Instance | undefined;
 	/**
 	 * Used to open the given script instance in an editor window, in Roblox studio, at the given line. If no line is given as an argument it will default to 0.
 	 */
