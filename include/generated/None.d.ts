@@ -13459,7 +13459,7 @@ interface HttpService extends Instance {
 	 * 
 	 * This method can be used regardless of whether HTTP Requests are [enabled](https://developer.roblox.com/en-us/api-reference/property/HttpService/HttpEnabled).
 	 */
-	JSONDecode<T>(this: HttpService, input: string): T;
+	JSONDecode(this: HttpService, input: string): unknown;
 	/**
 	 * The JSONEncode function transforms a Lua [table](http://robloxdev.com/articles/Table) into a [JSON object or array](http://robloxdev.com/articles/JSON-Storage-Format) based on the following guidelines:
 	 * 
@@ -14642,7 +14642,7 @@ interface Humanoid extends Instance {
 	 * *   [Humanoid.Sit](https://developer.roblox.com/en-us/api-reference/property/Humanoid/Sit), which indicates if a Humanoid is currently sitting
 	 * *   [Humanoid.SeatPart](https://developer.roblox.com/en-us/api-reference/property/Humanoid/SeatPart), which indicates the seat a Humanoid is currently sitting in, if any.
 	 */
-	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat | undefined) => void>;
+	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
 	/**
 	 * This event fires when the state of the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) is changed.
 	 * 
