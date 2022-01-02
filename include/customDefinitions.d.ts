@@ -321,13 +321,11 @@ interface HttpService extends Instance {
 
 	/** @server */
 	RequestAsync(this: HttpService, requestOptions: RequestAsyncRequest): RequestAsyncResponse;
-
-	JSONDecode<T>(this: HttpService, input: string): T;
 }
 
 interface Humanoid extends Instance {
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
-	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat | undefined) => void>;
+	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat) => void>;
 	readonly Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
 	GetAppliedDescription(this: Humanoid): HumanoidDescription;
 	GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
