@@ -5866,17 +5866,17 @@ declare namespace Enum {
 
 		export const AlwaysOnTop: AlwaysOnTop;
 
-		export interface Default {
-			Name: "Default";
+		export interface Occluded {
+			Name: "Occluded";
 			Value: 1;
 			EnumType: EnumType<HighlightDepthMode>;
 		}
 
-		export const Default: Default;
+		export const Occluded: Occluded;
 
 		export function GetEnumItems(this: defined): Array<HighlightDepthMode>
 	}
-	export type HighlightDepthMode = HighlightDepthMode.AlwaysOnTop | HighlightDepthMode.Default;
+	export type HighlightDepthMode = HighlightDepthMode.AlwaysOnTop | HighlightDepthMode.Occluded;
 	export namespace HorizontalAlignment {
 		export interface Center {
 			Name: "Center";

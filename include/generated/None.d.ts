@@ -7,6 +7,8 @@
 interface Services {
 	AnalyticsService: AnalyticsService;
 	AnimationClipProvider: AnimationClipProvider;
+	AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
+	AnimationFromVideoCreatorStudioService: AnimationFromVideoCreatorStudioService;
 	AppUpdateService: AppUpdateService;
 	AssetCounterService: AssetCounterService;
 	AssetDeliveryProxy: AssetDeliveryProxy;
@@ -1637,6 +1639,28 @@ interface AnimationController extends Instance {
 	 * @deprecated
 	 */
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
+}
+
+interface AnimationFromVideoCreatorService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AnimationFromVideoCreatorService: unique symbol;
+}
+
+interface AnimationFromVideoCreatorStudioService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AnimationFromVideoCreatorStudioService: unique symbol;
 }
 
 interface AnimationRigData extends Instance {
@@ -9196,6 +9220,7 @@ interface Explosion extends Instance {
 	 * For this reason a new Explosion should be created if the developer wants an explosion to appear at a different position.
 	 */
 	Position: Vector3;
+	TimeScale: number;
 	/**
 	 * This property determines whether or not the visual effect of an [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion) is shown or not.
 	 * 
@@ -9578,6 +9603,7 @@ interface Fire extends Instance {
 	 * Tags: NotReplicated
 	 */
 	Size: number;
+	TimeScale: number;
 }
 
 /** An instance representing a 1D float curve encoded via a sorted list of [FloatCurveKeys](https://developer.roblox.com/en-us/api-reference/datatype/FloatCurveKey).
@@ -13385,6 +13411,7 @@ interface Highlight extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Highlight: unique symbol;
+	Adornee: Instance | undefined;
 	DepthMode: Enum.HighlightDepthMode;
 	Enabled: boolean;
 	FillColor: Color3;
@@ -27879,6 +27906,7 @@ interface Smoke extends Instance {
 	 * Tags: NotReplicated
 	 */
 	Size: number;
+	TimeScale: number;
 }
 
 /** SocialService facilitates social functions that impact relationships made on the Roblox platform.  
@@ -29030,6 +29058,7 @@ interface Sparkles extends Instance {
 	 * It should be noted that sparkles have a partial [ParticleEmitter.LightEmission](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/LightEmission) effect, so dark colors tend to render more transparent and white colors look very bright.
 	 */
 	SparkleColor: Color3;
+	TimeScale: number;
 }
 
 interface Speaker extends Instance {
