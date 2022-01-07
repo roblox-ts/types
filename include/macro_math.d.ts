@@ -53,9 +53,9 @@ declare interface Vector3 {
 	/** macro for Vector3 - Vector3 */
 	sub(this: Vector3, v3: Vector3): Vector3;
 	/** macro for Vector3 * Vector3 | number */
-	mul(this: Vector3, v3: Vector3 | number): Vector3;
+	mul(this: Vector3, f: Vector3 | number): Vector3;
 	/** macro for Vector3 / Vector3 | number */
-	div(this: Vector3, v3: Vector3 | number): Vector3;
+	div(this: Vector3, f: Vector3 | number): Vector3;
 }
 
 declare interface Vector3int16 {
