@@ -4,7 +4,7 @@
 
 declare interface CFrame {
 	/** macro for CFrame * CFrame | Vector3 */
-	mul(this: CFrame, cf: CFrame | Vector3): CFrame;
+	mul<T extends CFrame | Vector3>(this: CFrame, f: T): T;
 	/** macro for CFrame + Vector3 */
 	add(this: CFrame, v3: Vector3): CFrame;
 	/** macro for CFrame - Vector3 */
