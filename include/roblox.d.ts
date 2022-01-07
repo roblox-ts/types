@@ -1182,6 +1182,17 @@ interface Color3 {
 	Lerp(this: Color3, goal: Color3, alpha: number): Color3;
 	/** Returns the [hue, saturation, and value](https://en.wikipedia.org/wiki/HSL_and_HSV) of a Color3. This function is the inverse operation of the `Color3.fromHSV` constructor. */
 	ToHSV(): LuaTuple<[number, number, number]>;
+	/**
+	 * Converts the color to a six-character hexadecimal string representing the color in the format RRGGBB. It is not
+	 * prefixed with an octothorpe (#), although this can be concatenated easily.
+	 *
+	 * The returned string can be provided to `Color3.fromHex` to produce the original color.
+	 * ```lua
+	 * print(Color3.new(0, 1, 0):ToHex()) --> "00FF00"
+	 * print(BrickColor.new("Really red").Color:ToHex()) --> "FF0000"
+	 * ```
+	 */
+	ToHex(): string;
 }
 
 interface Color3Constructor {
@@ -1191,6 +1202,19 @@ interface Color3Constructor {
 	fromHSV: (hue: number, sat: number, val: number) => Color3;
 	/** Returns the hue, saturation, and value of a Color3. */
 	toHSV: (color: Color3) => LuaTuple<[number, number, number]>;
+	/**
+	 * Returns a new Color3 from a six- or three-character [hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal)
+	 * format. A preceding octothorpe (#) is ignored, if present. This function interprets the given string as a typical
+	 * web hex color in the format RRGGBB or RGB (shorthand for RRGGBB). For example, #FFAA00 produces an orange color,
+	 * and is the same as #FA0.
+	 *
+	 * The color returned can be converted back into hex using `Color3:toHex`, although it is not guaranteed to return
+	 * the exact same string as passed to this function.
+	 * ```lua
+	 * print(Color3.fromHex("#FF0000")) --> 1, 0, 0
+	 * ```
+	 */
+	fromHex: (hex: string) => Color3;
 	/** Returns a Color3 with the given red, green, and blue values. The numbers can range from 0 to 1, defaulting to 0 */
 	new (red?: number, green?: number, blue?: number): Color3;
 }
