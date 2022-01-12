@@ -8,7 +8,6 @@ interface Services {
 	AnalyticsService: AnalyticsService;
 	AnimationClipProvider: AnimationClipProvider;
 	AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
-	AnimationFromVideoCreatorStudioService: AnimationFromVideoCreatorStudioService;
 	AppUpdateService: AppUpdateService;
 	AssetCounterService: AssetCounterService;
 	AssetDeliveryProxy: AssetDeliveryProxy;
@@ -89,6 +88,7 @@ interface Services {
 	Stats: Stats;
 	StudioAssetService: StudioAssetService;
 	StudioDeviceEmulatorService: StudioDeviceEmulatorService;
+	StudioPublishService: StudioPublishService;
 	StudioScriptDebugEventListener: StudioScriptDebugEventListener;
 	Teams: Teams;
 	TeleportService: TeleportService;
@@ -1650,17 +1650,6 @@ interface AnimationFromVideoCreatorService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AnimationFromVideoCreatorService: unique symbol;
-}
-
-interface AnimationFromVideoCreatorStudioService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_AnimationFromVideoCreatorStudioService: unique symbol;
 }
 
 interface AnimationRigData extends Instance {
@@ -24468,7 +24457,7 @@ interface PathfindingLink extends Instance {
 	Attachment0: Attachment | undefined;
 	Attachment1: Attachment | undefined;
 	IsBidirectional: boolean;
-	ModifierId: string;
+	Label: string;
 }
 
 /** **Beta Feature** This class is currently a part of the PathfindingModifier beta feature. Eligible developers must enable the feature within Studio and functionality may change.
@@ -24493,14 +24482,7 @@ interface PathfindingModifier extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_PathfindingModifier: unique symbol;
-	/**
-	 * **Beta Feature** This class is currently a part of the PathfindingModifier beta feature. Eligible developers must enable the feature within Studio and functionality may change.
-	 * 
-	 * For a more detailed overview of the [PathfindingService](”PathfindingService”) and PathfindingModifiers, you can take a look at the [Pathfinding](”`Articles/Pathfinding|Pathfinding`”) article.
-	 * 
-	 * The name of the navigation area inside or on top of the `Part|Part's` volume.
-	 */
-	ModifierId: string;
+	Label: string;
 	/**
 	 * Determines if the parts enclosed by the modifier are traversable, even if they would normally be collided with. See [Ignoring Obstacles](https://developer.roblox.com/articles/Pathfinding#ignoring-obstacles) for details.
 	 */
@@ -29557,6 +29539,17 @@ interface StudioDeviceEmulatorService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_StudioDeviceEmulatorService: unique symbol;
+}
+
+interface StudioPublishService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StudioPublishService: unique symbol;
 }
 
 interface StudioScriptDebugEventListener extends Instance {
