@@ -55,5 +55,11 @@
 		"types",
 		"Roblox",
 		"typescript"
+	],
+	"files": [
+		"/include/**/*.d.ts",
+		"!/include/customDefinitions.d.ts",
+		"!/include/test.ts",
+		"plugin.d.ts"
 	]
 }
