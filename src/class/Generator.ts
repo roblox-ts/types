@@ -1,5 +1,6 @@
 import fs from "fs-extra";
 import path from "path";
+
 import { ReflectionMetadata } from "./ReflectionMetadata";
 
 export class Generator {

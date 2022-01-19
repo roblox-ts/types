@@ -1,7 +1,10 @@
+/* eslint-disable no-inner-declarations */
+import fs from "fs-extra";
 import fetch from "node-fetch";
 import path from "path";
 import { Project } from "ts-morph";
 import * as ts from "ts-morph";
+
 import {
 	ApiCallback,
 	ApiClass,
@@ -18,7 +21,6 @@ import {
 } from "../api";
 import { Generator } from "./Generator";
 import { ReflectionMetadata } from "./ReflectionMetadata";
-import fs from "fs-extra";
 
 const ROOT_DIR = path.join(__dirname, "..", "..");
 const CONTENT_DIR = path.join(ROOT_DIR, "devhub-scraper-master", "dist");
@@ -575,17 +577,17 @@ namespace ClassInformation {
 				}).trim(),
 			)
 
-			.replace(/(\| [^\|\s]+ )+\|\n(?!\|.\-\-\-)/g, a => {
-				return a.match(/(\|.\-+.)+\|/) ? a : a + a.replace(/[^\|\s]+/g, "---");
+			.replace(/(\| [^|\s]+ )+\|\n(?!\|.---)/g, a => {
+				return a.match(/(\|.-+.)+\|/) ? a : a + a.replace(/[^|\s]+/g, "---");
 			})
 
-			.replace(/    [^]+?\n(?!    )/g, a => {
+			.replace(/ {4}[^]+?\n(?! {4})/g, a => {
 				let found = true;
 				let numFound = 0;
 
 				const middle = a.replace(/.+/g, s => {
 					let gotLocal = false;
-					const str = s.replace(/^    /, () => {
+					const str = s.replace(/^ {4}/, () => {
 						gotLocal = true;
 						return "";
 					});
@@ -603,7 +605,7 @@ namespace ClassInformation {
 			})
 
 			.replace(/```([^]+?)```/g, (a, b: string) => {
-				const middle = b.trim().replace(/    /g, "\t");
+				const middle = b.trim().replace(/ {4}/g, "\t");
 
 				if (middle.substr(0, 3) === "lua") {
 					return "```\n" + middle + "\n```\n";
@@ -655,14 +657,14 @@ namespace ClassInformation {
 						const link = `https://developer.roblox.com/api-reference/class/${className}`;
 						return `[${alias}](${link})`;
 					})
-					.replace(/(\[[^\]]+\])\(([^\)]+)\)/g, (a, b: string, c: string) => {
+					.replace(/(\[[^\]]+\])\(([^)]+)\)/g, (a, b: string, c: string) => {
 						return b + "(" + c.replace(/\s+.+/, "") + ")";
 					})
 					.trim()
 					.replace(/.*($|\n)/g, line => {
 						let trimmed = line.trimRight();
 						if (trimmed !== "") {
-							const hasTable = !!trimmed.match(/(\|(.)[^\|]+(\2))+\|/);
+							const hasTable = !!trimmed.match(/(\|(.)[^|]+(\2))+\|/);
 							const extraPush = hasTable && previousHadTable;
 							previousHadTable = hasTable;
 
@@ -691,6 +693,7 @@ namespace ClassInformation {
 		return after;
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	function processCodeSamples(codeSample: CodeSamples, rbxClasses: Array<ApiClass>, tabChar: "" | "\t" = "\t") {
 		if (codeSample.length > 0) {
 			return codeSample.reduce(
@@ -732,6 +735,7 @@ namespace ClassInformation {
 
 const { processDescriptionInfo: processDescription } = ClassInformation;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function handleLinkData(
 	myLinks: Array<Promise<unknown>>,
 	linkDatum: {
@@ -874,15 +878,17 @@ export class ClassGenerator extends Generator {
 			const signatures = Array<string>();
 
 			let nodes = cacher.get(tsImplInterface);
-			if (!nodes)
+			if (!nodes) {
 				cacher.set(
 					tsImplInterface,
 					(nodes = [...tsImplInterface.getProperties(), ...tsImplInterface.getMethods()]),
 				);
+			}
 
 			nodes
 				.filter(prop => prop.getName() === name)
 				.forEach(node => {
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					const [signature, documentation] = this.getSignature(node);
 					signatures.push(signature);
 					// we don't do this anymore, because of the new TS comment behavior. It automatically combines docs
@@ -1247,16 +1253,19 @@ export class ClassGenerator extends Generator {
 		const byName = (a: ApiClass, b: ApiClass) => (a.Name.toLowerCase() < b.Name.toLowerCase() ? -1 : 1);
 
 		if (0 < Services.length) this.generateInstanceInterface("Services", Services.sort(byName));
-		if (0 < CreatableInstances.length)
+		if (0 < CreatableInstances.length) {
 			this.generateInstanceInterface("CreatableInstances", CreatableInstances.sort(byName));
-		if (0 < CreatableInstances.length)
+		}
+		if (0 < CreatableInstances.length) {
 			this.generateInstanceInterface("AbstractInstances", AbstractInstances.sort(byName));
-		if (0 < Instances.length)
+		}
+		if (0 < Instances.length) {
 			this.generateInstanceInterface(
 				"Instances",
 				Instances.sort(byName),
 				"Services, CreatableInstances, AbstractInstances",
 			);
+		}
 	}
 
 	private generateClasses(rbxClasses: Array<ApiClass>, sourceFile: ts.SourceFile) {

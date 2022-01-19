@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as path from "path";
 import { Project } from "ts-morph";
+
 import { ApiDump } from "./api";
 import { ClassGenerator } from "./class/ClassGenerator";
 import { EnumGenerator } from "./class/EnumGenerator";
