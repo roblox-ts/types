@@ -6302,7 +6302,7 @@ interface CollectionService extends Instance {
 	 * 
 	 * This method does not guarantee any ordering of the returned objects. Additionally, it is possible that objects can have the given tag assigned to them, but not be a descendant of the [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel), i.e. its parent is nil. This method will not return such objects.
 	 */
-	GetTagged<T extends Instance>(this: CollectionService, tag: string): Array<Instance>;
+	GetTagged(this: CollectionService, tag: string): Array<Instance>;
 	/**
 	 * GetTags is given an object and returns a table of strings, which are the tags applied to the given object.
 	 * 

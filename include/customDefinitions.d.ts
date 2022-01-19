@@ -148,7 +148,7 @@ interface Chat extends Instance {
 interface CollectionService extends Instance {
 	GetInstanceAddedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetInstanceRemovedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
-	GetTagged<T extends Instance>(this: CollectionService, tag: string): Array<Instance>;
+	GetTagged(this: CollectionService, tag: string): Array<Instance>;
 	GetTags(this: CollectionService, instance: Instance): Array<string>;
 }
 
