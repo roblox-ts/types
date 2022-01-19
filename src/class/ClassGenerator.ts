@@ -555,7 +555,7 @@ namespace ClassInformation {
 	function processText(text: string, rbxClasses: Array<ApiClass>, tabChar: "" | "\t"): string {
 		const after = text
 			.trim()
-			.replace(/<([^ ]+)[^]+<\/\1>/g, (a) =>
+			.replace(/<([^ ]+)[^]+<\/\1>/g, a =>
 				breakdance(a, {
 					before: {
 						table(node) {
@@ -568,22 +568,22 @@ namespace ClassInformation {
 					domain: "https://developer.roblox.com/",
 				}).trim(),
 			)
-			.replace(/<[^]+?>/g, (a) =>
+			.replace(/<[^]+?>/g, a =>
 				breakdance(a, {
 					one: true,
 					domain: "https://developer.roblox.com/",
 				}).trim(),
 			)
 
-			.replace(/(\| [^\|\s]+ )+\|\n(?!\|.\-\-\-)/g, (a) => {
+			.replace(/(\| [^\|\s]+ )+\|\n(?!\|.\-\-\-)/g, a => {
 				return a.match(/(\|.\-+.)+\|/) ? a : a + a.replace(/[^\|\s]+/g, "---");
 			})
 
-			.replace(/    [^]+?\n(?!    )/g, (a) => {
+			.replace(/    [^]+?\n(?!    )/g, a => {
 				let found = true;
 				let numFound = 0;
 
-				const middle = a.replace(/.+/g, (s) => {
+				const middle = a.replace(/.+/g, s => {
 					let gotLocal = false;
 					const str = s.replace(/^    /, () => {
 						gotLocal = true;
@@ -659,7 +659,7 @@ namespace ClassInformation {
 						return b + "(" + c.replace(/\s+.+/, "") + ")";
 					})
 					.trim()
-					.replace(/.*($|\n)/g, (line) => {
+					.replace(/.*($|\n)/g, line => {
 						let trimmed = line.trimRight();
 						if (trimmed !== "") {
 							const hasTable = !!trimmed.match(/(\|(.)[^\|]+(\2))+\|/);
@@ -752,13 +752,13 @@ function handleLinkData(
 		new Promise<void>((resolve, reject) => {
 			setTimeout(reject, 10000);
 			fetch(link)
-				.then((response) => {
+				.then(response => {
 					if (response.status !== 200) {
 						throw new Error("bad request");
 					}
 					return response.text();
 				})
-				.then((rawData) => {
+				.then(rawData => {
 					const obj = JSON.parse(rawData);
 					const functionData = obj.entry.modular_blocks[0].api_class_section
 						.current_class[0] as ClassInformation.ClassDescription;
@@ -773,7 +773,7 @@ function handleLinkData(
 						for (const property of arr) {
 							const propertyName = property.title.slice(rbxMemberName.length + 1);
 							const propertyMember = rbxMember.Members.find(
-								(member) => member.Name === propertyName && member.MemberType === type,
+								member => member.Name === propertyName && member.MemberType === type,
 							);
 
 							if (propertyMember) {
@@ -786,7 +786,7 @@ function handleLinkData(
 						const funcName = func.title.slice(rbxMemberName.length + 1);
 
 						const funcMember = rbxMember.Members.find(
-							(member) => member.Name === funcName && member.MemberType === "Function",
+							member => member.Name === funcName && member.MemberType === "Function",
 						);
 
 						if (funcMember && funcMember.MemberType === "Function") {
@@ -809,7 +809,7 @@ function handleLinkData(
 					resolve();
 				})
 				.catch(reject);
-		}).catch((errorMessage) => {
+		}).catch(errorMessage => {
 			if (errorMessage === undefined) {
 				console.log("\tFailed for", link, "will retry.");
 				linkData.push({
@@ -853,7 +853,7 @@ export class ClassGenerator extends Generator {
 			let documentation = "";
 			const signature = node
 				.getFullText()
-				.replace(/\/\*\*[^]+\*\//g, (a) => {
+				.replace(/\/\*\*[^]+\*\//g, a => {
 					documentation = a;
 					return "";
 				})
@@ -881,8 +881,8 @@ export class ClassGenerator extends Generator {
 				);
 
 			nodes
-				.filter((prop) => prop.getName() === name)
-				.forEach((node) => {
+				.filter(prop => prop.getName() === name)
+				.forEach(node => {
 					const [signature, documentation] = this.getSignature(node);
 					signatures.push(signature);
 					// we don't do this anymore, because of the new TS comment behavior. It automatically combines docs
@@ -925,7 +925,7 @@ export class ClassGenerator extends Generator {
 	}
 
 	private generateArgs(params: Array<ApiParameter>, canImplicitlyConvertEnum = true, args = new Array<string>()) {
-		const paramNames = params.map((param) => param.Name);
+		const paramNames = params.map(param => param.Name);
 		for (let i = 0; i < paramNames.length; i++) {
 			const name = paramNames[i];
 			if (paramNames.indexOf(name, i + 1) !== -1) {
@@ -943,7 +943,7 @@ export class ClassGenerator extends Generator {
 			const argName = safeArgName(paramNames[i]);
 			if (argName && paramType === "Instance") {
 				const lowerName = argName.toLowerCase();
-				const findings = [...this.ClassReferences.keys(), "Character", "Input"].filter((k) => {
+				const findings = [...this.ClassReferences.keys(), "Character", "Input"].filter(k => {
 					const l = k.toLowerCase();
 					return k !== "Instance" && lowerName.includes(l); // || l.includes(lowerName);
 				});
@@ -954,8 +954,8 @@ export class ClassGenerator extends Generator {
 						findings.splice(partPos, 1);
 					}
 					const found =
-						safeRenamedInstance(findings.find((found) => found.toLowerCase() === lowerName)) ||
-						findings.map((found) => safeRenamedInstance(found)).join(" | ");
+						safeRenamedInstance(findings.find(found => found.toLowerCase() === lowerName)) ||
+						findings.map(found => safeRenamedInstance(found)).join(" | ");
 
 					paramType = found;
 				}
@@ -1078,7 +1078,7 @@ export class ClassGenerator extends Generator {
 			const firstChar = rbxMember.Name.charAt(0);
 			if (firstChar === firstChar.toLowerCase()) {
 				const pascalCaseName = firstChar.toUpperCase() + rbxMember.Name.slice(1);
-				const pascalCaseMember = rbxClass.Members.find((v) => v.Name === pascalCaseName);
+				const pascalCaseMember = rbxClass.Members.find(v => v.Name === pascalCaseName);
 				if (pascalCaseMember !== undefined) {
 					return false;
 				}
@@ -1118,7 +1118,7 @@ export class ClassGenerator extends Generator {
 			}
 		}
 
-		const members = rbxClass.Members.filter((rbxMember) => this.shouldGenerateMember(rbxClass, rbxMember));
+		const members = rbxClass.Members.filter(rbxMember => this.shouldGenerateMember(rbxClass, rbxMember));
 		const noSecurity = this.security === "None" || this.isPluginOnlyClass(rbxClass);
 		if (noSecurity || members.length > 0) {
 			if (noSecurity) {
@@ -1141,8 +1141,8 @@ export class ClassGenerator extends Generator {
 				declarationString =
 					children
 						.slice(
-							1 + children.findIndex((child) => child.getKindName() === "InterfaceKeyword"),
-							children.findIndex((child) => child.getKindName() === "OpenBraceToken"),
+							1 + children.findIndex(child => child.getKindName() === "InterfaceKeyword"),
+							children.findIndex(child => child.getKindName() === "OpenBraceToken"),
 						)
 						.reduce((p, c) => {
 							return p + c.getFullText();
@@ -1165,7 +1165,7 @@ export class ClassGenerator extends Generator {
 				for (const custom of [...tsImplInterface.getProperties(), ...tsImplInterface.getMethods()]) {
 					const name = custom.getName();
 					if (!members.some(({ Name }) => name === Name)) {
-						const obj = rbxClass.Members.find((member) => member.Name === name);
+						const obj = rbxClass.Members.find(member => member.Name === name);
 
 						if (obj === undefined && !EXPECTED_EXTRA_MEMBERS.get(className)?.includes(name)) {
 							console.warn("could not find", className + "." + name);
@@ -1239,7 +1239,7 @@ export class ClassGenerator extends Generator {
 	}
 
 	private generateInstancesTables(rbxClasses: Array<ApiClass>) {
-		const [Services, CreatableInstances, AbstractInstances, Instances] = multifilter(rbxClasses, 4, (rbxClass) =>
+		const [Services, CreatableInstances, AbstractInstances, Instances] = multifilter(rbxClasses, 4, rbxClass =>
 			hasTag(rbxClass, "Service") ? 0 : isCreatable(rbxClass) ? 1 : ABSTRACT_CLASSES.has(rbxClass.Name) ? 2 : 3,
 		);
 
@@ -1331,10 +1331,10 @@ export class ClassGenerator extends Generator {
 		});
 		const sourceFile = project.getSourceFileOrThrow("customDefinitions.d.ts");
 
-		rbxClasses = rbxClasses.filter((rbxClass) => this.shouldGenerateClass(rbxClass));
+		rbxClasses = rbxClasses.filter(rbxClass => this.shouldGenerateClass(rbxClass));
 
 		this.generateHeader();
-		this.generateInstancesTables(rbxClasses.filter((rbxClass) => !this.definedClassNames.has(rbxClass.Name)));
+		this.generateInstancesTables(rbxClasses.filter(rbxClass => !this.definedClassNames.has(rbxClass.Name)));
 		this.generateClasses(rbxClasses, sourceFile);
 	}
 }

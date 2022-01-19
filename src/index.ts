@@ -68,7 +68,7 @@ void (async () => {
 
 	console.log(
 		project.formatDiagnosticsWithColorAndContext(
-			diagnostics.filter((d) => {
+			diagnostics.filter(d => {
 				const sourceFile = d.getSourceFile();
 				// customDefinitions not included in published package
 				// so ignore false-positive diagnostics about plugin types
