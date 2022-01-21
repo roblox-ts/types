@@ -7,6 +7,8 @@ declare interface CFrame {
 	mul(this: CFrame, cf: CFrame): CFrame;
 	/** macro for CFrame * Vector3 */
 	mul(this: CFrame, v3: Vector3): Vector3;
+	/** macro for CFrame * CFrame | Vector3 */
+	mul(this: CFrame, other: CFrame | Vector3): CFrame | Vector3;
 	/** macro for CFrame + Vector3 */
 	add(this: CFrame, v3: Vector3): CFrame;
 	/** macro for CFrame - Vector3 */
@@ -36,10 +38,14 @@ declare interface Vector2 {
 	mul(this: Vector2, v2: Vector2): Vector2;
 	/** macro for Vector2 * number */
 	mul(this: Vector2, n: number): Vector2;
+	/** macro for Vector2 * Vector2 | number */
+	mul(this: Vector2, other: Vector2 | number): Vector2;
 	/** macro for Vector2 / Vector2 */
 	div(this: Vector2, v2: Vector2): Vector2;
 	/** macro for Vector2 / number */
 	div(this: Vector2, n: number): Vector2;
+	/** macro for Vector2 / Vector2 | number */
+	div(this: Vector2, other: Vector2 | number): Vector2;
 }
 
 declare interface Vector2int16 {
@@ -62,10 +68,14 @@ declare interface Vector3 {
 	mul(this: Vector3, v3: Vector3): Vector3;
 	/** macro for Vector3 * number */
 	mul(this: Vector3, n: number): Vector3;
+	/** macro for Vector3 * Vector3 | number */
+	mul(this: Vector3, other: Vector3 | number): Vector3;
 	/** macro for Vector3 / Vector3 */
 	div(this: Vector3, v3: Vector3): Vector3;
 	/** macro for Vector3 / number */
 	div(this: Vector3, n: number): Vector3;
+	/** macro for Vector3 / Vector3 | number */
+	div(this: Vector3, other: Vector3 | number): Vector3;
 }
 
 declare interface Vector3int16 {
