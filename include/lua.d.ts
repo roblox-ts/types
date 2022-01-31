@@ -681,6 +681,15 @@ declare namespace table {
 	 */
 	function clear(t: object): void;
 	/**
+	 * Creates a table with the array portion allocated to the given number of elements, optionally filled with the given value.
+	 *
+	 * If you are inserting into large array-like tables and are certain of a reasonable upper limit to the number of elements,
+	 * it’s recommended to use this function to initialize the table.
+	 * This ensures the table’s array portion of its memory is sufficiently sized, as resizing it can be expensive.
+	 * For small quantities this is typically not noticeable.
+	 */
+	function create<T>(count: number, value?: T): Array<T>;
+	/**
 	 * Sorts list elements in a given order, in-place, from `list[1]` to `list[#list]`. Comp is a function that
 	 * receives two list elements and returns true when the first element must come before the second in the final order
 	 * (so that `not comp(list[i+1],list[i])` will be true after the sort).
