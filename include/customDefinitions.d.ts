@@ -863,7 +863,7 @@ interface TextService extends Instance {
 		stringToFilter: string,
 		fromUserId: number,
 		textContext?: CastsToEnum<Enum.TextFilterContext>,
-	): TextFilterResult | undefined;
+	): TextFilterResult;
 }
 
 interface TweenService extends Instance {
