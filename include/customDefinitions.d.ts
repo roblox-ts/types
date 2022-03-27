@@ -939,6 +939,7 @@ interface UserInputService extends Instance {
 	GetDeviceAcceleration(this: UserInputService): InputObject;
 	GetDeviceGravity(this: UserInputService): InputObject;
 	GetFocusedTextBox(this: UserInputService): TextBox | undefined;
+	GetMouseLocation(this: UserInputService): Vector2 | undefined;
 }
 
 interface UserService extends Instance {
