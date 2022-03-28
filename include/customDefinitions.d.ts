@@ -498,7 +498,7 @@ interface MessagingService extends Instance {
 	SubscribeAsync(
 		this: MessagingService,
 		topic: string,
-		callback: (Data: unknown, Sent: number) => void,
+		callback: (message: { Data: unknown; Sent: number }) => void,
 	): RBXScriptConnection;
 }
 
