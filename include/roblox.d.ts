@@ -1493,6 +1493,19 @@ type FloatCurveKeyConstructor = new (
 ) => FloatCurveKey;
 declare const FloatCurveKey: FloatCurveKeyConstructor;
 
+// Font
+interface Font {
+	Bold: boolean;
+	Style: Enum.FontStyle;
+	Family: string;
+	Weight: Enum.FontWeight;
+}
+interface FontConstructor {
+	new (family: string, weight?: Enum.FontWeight, style?: Enum.FontStyle): Font;
+	fromEnum: (value: Enum.Font) => Font;
+}
+declare const Font: FontConstructor;
+
 // NumberRange
 interface NumberRange {
 	/**
