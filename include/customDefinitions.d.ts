@@ -484,11 +484,21 @@ interface MarketplaceService extends Instance {
 }
 
 /** @server */
+interface MemoryStoreSortedMap extends Instance {
+	UpdateAsync<T>(
+		this: MemoryStoreSortedMap,
+		key: string,
+		transformFunction: (value: unknown) => T,
+		expiration: number,
+	): T;
+}
+
+/** @server */
 interface MessagingService extends Instance {
 	SubscribeAsync(
 		this: MessagingService,
 		topic: string,
-		callback: (Data: unknown, Sent: number) => void,
+		callback: (message: { Data: unknown; Sent: number }) => void,
 	): RBXScriptConnection;
 }
 
@@ -853,7 +863,7 @@ interface TextService extends Instance {
 		stringToFilter: string,
 		fromUserId: number,
 		textContext?: CastsToEnum<Enum.TextFilterContext>,
-	): TextFilterResult | undefined;
+	): TextFilterResult;
 }
 
 interface TweenService extends Instance {

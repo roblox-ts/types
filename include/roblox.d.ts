@@ -1493,6 +1493,19 @@ type FloatCurveKeyConstructor = new (
 ) => FloatCurveKey;
 declare const FloatCurveKey: FloatCurveKeyConstructor;
 
+// Font
+interface Font {
+	Bold: boolean;
+	Style: Enum.FontStyle;
+	Family: string;
+	Weight: Enum.FontWeight;
+}
+interface FontConstructor {
+	new (family: string, weight?: Enum.FontWeight, style?: Enum.FontStyle): Font;
+	fromEnum: (value: Enum.Font) => Font;
+}
+declare const Font: FontConstructor;
+
 // NumberRange
 interface NumberRange {
 	/**
@@ -2309,46 +2322,3 @@ interface CheckableTypes extends CheckablePrimitives {
 	Vector3: Vector3;
 	Vector3int16: Vector3int16;
 }
-
-/** Returns the type of the given object as a string. This function works similarly to Lua’s native type function, with the exceptions that Roblox-defined data types like Vector3 and CFrame return their respective data types as strings. */
-declare function typeOf(value: unknown): Exclude<keyof CheckableTypes, "vector">;
-
-/**
- * Returns true if `typeof(value) == type`, otherwise false.
- * This function allows for type narrowing. i.e.
-```
-// v is unknown
-if (typeIs(v, "Vector3")) {
-	print(v.X, v.Y, v.Z);
-}
-```
- **/
-declare function typeIs<T extends keyof CheckableTypes>(value: unknown, type: T): value is CheckableTypes[T];
-
-/**
- * Calls the function func with the given arguments in protected mode.
- *
- * opcall is an easier to use version of pcall. It returns a result object instead of multiple returns.
- **/
-declare function opcall<T extends Array<any>, U>(
-	func: (...args: T) => U,
-	...args: T
-): { success: true; value: U } | { success: false; error: string };
-
-/**
- * Returns true if `instance.ClassName == Q`, otherwise false.
- * This function allows for ClassName narrowing. i.e.
- * @example
- * if (classIs(o, "LocalScript")) {
- * // o is a LocalScript
- * }
- * if (classIs(o, "Script")) {
- * // o is a Script & { ClassName: "Script" }
- * // Notice how it specifies the ClassName property here.
- * // This is because a `LocalScript` is-a `Script`, but `o` refers to
- * // an instance for which `ClassName` is "Script"
- * }
- * @param instance
- * @param className
- */
-declare function classIs<T extends keyof Instances>(instance: Instance, className: T): instance is Instances[T];

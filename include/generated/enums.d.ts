@@ -530,6 +530,30 @@ declare namespace Enum {
 
 		export const Action: Action;
 
+		export interface Action2 {
+			Name: "Action2";
+			Value: 3;
+			EnumType: EnumType<AnimationPriority>;
+		}
+
+		export const Action2: Action2;
+
+		export interface Action3 {
+			Name: "Action3";
+			Value: 4;
+			EnumType: EnumType<AnimationPriority>;
+		}
+
+		export const Action3: Action3;
+
+		export interface Action4 {
+			Name: "Action4";
+			Value: 5;
+			EnumType: EnumType<AnimationPriority>;
+		}
+
+		export const Action4: Action4;
+
 		export interface Core {
 			Name: "Core";
 			Value: 1000;
@@ -540,7 +564,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<AnimationPriority>
 	}
-	export type AnimationPriority = AnimationPriority.Idle | AnimationPriority.Movement | AnimationPriority.Action | AnimationPriority.Core;
+	export type AnimationPriority = AnimationPriority.Idle | AnimationPriority.Movement | AnimationPriority.Action | AnimationPriority.Action2 | AnimationPriority.Action3 | AnimationPriority.Action4 | AnimationPriority.Core;
 	export namespace AnimatorRetargetingMode {
 		export interface Default {
 			Name: "Default";
@@ -2833,6 +2857,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<ChatStyle>
 	}
 	export type ChatStyle = ChatStyle.Classic | ChatStyle.Bubble | ChatStyle.ClassicAndBubble;
+	export namespace ChatVersion {
+		export interface LegacyChatService {
+			Name: "LegacyChatService";
+			Value: 0;
+			EnumType: EnumType<ChatVersion>;
+		}
+
+		export const LegacyChatService: LegacyChatService;
+
+		export interface TextChatService {
+			Name: "TextChatService";
+			Value: 1;
+			EnumType: EnumType<ChatVersion>;
+		}
+
+		export const TextChatService: TextChatService;
+
+		export function GetEnumItems(this: defined): Array<ChatVersion>
+	}
+	export type ChatVersion = ChatVersion.LegacyChatService | ChatVersion.TextChatService;
 	export namespace ClientAnimatorThrottlingMode {
 		export interface Default {
 			Name: "Default";
@@ -3230,6 +3274,14 @@ declare namespace Enum {
 
 		export const DisconnectClientRequest: DisconnectClientRequest;
 
+		export interface DisconnectOutOfMemory {
+			Name: "DisconnectOutOfMemory";
+			Value: 286;
+			EnumType: EnumType<ConnectionError>;
+		}
+
+		export const DisconnectOutOfMemory: DisconnectOutOfMemory;
+
 		export interface PlacelaunchErrors {
 			Name: "PlacelaunchErrors";
 			Value: 512;
@@ -3416,7 +3468,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<ConnectionError>
 	}
-	export type ConnectionError = ConnectionError.OK | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+	export type ConnectionError = ConnectionError.OK | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 	export namespace ConnectionState {
 		export interface Connected {
 			Name: "Connected";
@@ -3789,6 +3841,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<DebuggerEndReason>
 	}
 	export type DebuggerEndReason = DebuggerEndReason.ClientRequest | DebuggerEndReason.Timeout | DebuggerEndReason.InvalidHost | DebuggerEndReason.Disconnected | DebuggerEndReason.ServerShutdown | DebuggerEndReason.ServerProtocolMismatch | DebuggerEndReason.ConfigurationFailed | DebuggerEndReason.RpcError;
+	export namespace DebuggerExceptionBreakMode {
+		export interface Never {
+			Name: "Never";
+			Value: 0;
+			EnumType: EnumType<DebuggerExceptionBreakMode>;
+		}
+
+		export const Never: Never;
+
+		export interface Unhandled {
+			Name: "Unhandled";
+			Value: 1;
+			EnumType: EnumType<DebuggerExceptionBreakMode>;
+		}
+
+		export const Unhandled: Unhandled;
+
+		export interface Always {
+			Name: "Always";
+			Value: 2;
+			EnumType: EnumType<DebuggerExceptionBreakMode>;
+		}
+
+		export const Always: Always;
+
+		export function GetEnumItems(this: defined): Array<DebuggerExceptionBreakMode>
+	}
+	export type DebuggerExceptionBreakMode = DebuggerExceptionBreakMode.Never | DebuggerExceptionBreakMode.Unhandled | DebuggerExceptionBreakMode.Always;
 	export namespace DebuggerFrameType {
 		export interface C {
 			Name: "C";
@@ -5186,9 +5266,17 @@ declare namespace Enum {
 
 		export const Ubuntu: Ubuntu;
 
+		export interface Unknown {
+			Name: "Unknown";
+			Value: 100;
+			EnumType: EnumType<Font>;
+		}
+
+		export const Unknown: Unknown;
+
 		export function GetEnumItems(this: defined): Array<Font>
 	}
-	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansSemibold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.Gotham | Font.GothamSemibold | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu;
+	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansSemibold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.Gotham | Font.GothamSemibold | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu | Font.Unknown;
 	export namespace FontSize {
 		export interface Size8 {
 			Name: "Size8";
@@ -5313,6 +5401,102 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<FontSize>
 	}
 	export type FontSize = FontSize.Size8 | FontSize.Size9 | FontSize.Size10 | FontSize.Size11 | FontSize.Size12 | FontSize.Size14 | FontSize.Size18 | FontSize.Size24 | FontSize.Size36 | FontSize.Size48 | FontSize.Size28 | FontSize.Size32 | FontSize.Size42 | FontSize.Size60 | FontSize.Size96;
+	export namespace FontStyle {
+		export interface Normal {
+			Name: "Normal";
+			Value: 0;
+			EnumType: EnumType<FontStyle>;
+		}
+
+		export const Normal: Normal;
+
+		export interface Italic {
+			Name: "Italic";
+			Value: 1;
+			EnumType: EnumType<FontStyle>;
+		}
+
+		export const Italic: Italic;
+
+		export function GetEnumItems(this: defined): Array<FontStyle>
+	}
+	export type FontStyle = FontStyle.Normal | FontStyle.Italic;
+	export namespace FontWeight {
+		export interface Thin {
+			Name: "Thin";
+			Value: 100;
+			EnumType: EnumType<FontWeight>;
+		}
+
+		export const Thin: Thin;
+
+		export interface ExtraLight {
+			Name: "ExtraLight";
+			Value: 200;
+			EnumType: EnumType<FontWeight>;
+		}
+
+		export const ExtraLight: ExtraLight;
+
+		export interface Light {
+			Name: "Light";
+			Value: 300;
+			EnumType: EnumType<FontWeight>;
+		}
+
+		export const Light: Light;
+
+		export interface Regular {
+			Name: "Regular";
+			Value: 400;
+			EnumType: EnumType<FontWeight>;
+		}
+
+		export const Regular: Regular;
+
+		export interface Medium {
+			Name: "Medium";
+			Value: 500;
+			EnumType: EnumType<FontWeight>;
+		}
+
+		export const Medium: Medium;
+
+		export interface SemiBold {
+			Name: "SemiBold";
+			Value: 600;
+			EnumType: EnumType<FontWeight>;
+		}
+
+		export const SemiBold: SemiBold;
+
+		export interface Bold {
+			Name: "Bold";
+			Value: 700;
+			EnumType: EnumType<FontWeight>;
+		}
+
+		export const Bold: Bold;
+
+		export interface ExtraBold {
+			Name: "ExtraBold";
+			Value: 800;
+			EnumType: EnumType<FontWeight>;
+		}
+
+		export const ExtraBold: ExtraBold;
+
+		export interface Heavy {
+			Name: "Heavy";
+			Value: 900;
+			EnumType: EnumType<FontWeight>;
+		}
+
+		export const Heavy: Heavy;
+
+		export function GetEnumItems(this: defined): Array<FontWeight>
+	}
+	export type FontWeight = FontWeight.Thin | FontWeight.ExtraLight | FontWeight.Light | FontWeight.Regular | FontWeight.Medium | FontWeight.SemiBold | FontWeight.Bold | FontWeight.ExtraBold | FontWeight.Heavy;
 	export namespace FormFactor {
 		export interface Symmetric {
 			Name: "Symmetric";
@@ -8849,6 +9033,218 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<KeywordFilterType>
 	}
 	export type KeywordFilterType = KeywordFilterType.Include | KeywordFilterType.Exclude;
+	export namespace LSPMethodType {
+		export interface Initialize {
+			Name: "Initialize";
+			Value: 1;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Initialize: Initialize;
+
+		export interface Initialized {
+			Name: "Initialized";
+			Value: 2;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Initialized: Initialized;
+
+		export interface CancelRequest {
+			Name: "CancelRequest";
+			Value: 3;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const CancelRequest: CancelRequest;
+
+		export interface TextDocument_didOpen {
+			Name: "TextDocument_didOpen";
+			Value: 4;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const TextDocument_didOpen: TextDocument_didOpen;
+
+		export interface TextDocument_didChange {
+			Name: "TextDocument_didChange";
+			Value: 5;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const TextDocument_didChange: TextDocument_didChange;
+
+		export interface TextDocument_didClose {
+			Name: "TextDocument_didClose";
+			Value: 6;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const TextDocument_didClose: TextDocument_didClose;
+
+		export interface TextDocument_foldingRange {
+			Name: "TextDocument_foldingRange";
+			Value: 7;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const TextDocument_foldingRange: TextDocument_foldingRange;
+
+		export interface TextDocument_onTypeFormatting {
+			Name: "TextDocument_onTypeFormatting";
+			Value: 8;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const TextDocument_onTypeFormatting: TextDocument_onTypeFormatting;
+
+		export interface TextDocument_formatting {
+			Name: "TextDocument_formatting";
+			Value: 9;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const TextDocument_formatting: TextDocument_formatting;
+
+		export interface TextDocument_rangeFormatting {
+			Name: "TextDocument_rangeFormatting";
+			Value: 10;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const TextDocument_rangeFormatting: TextDocument_rangeFormatting;
+
+		export interface TextDocument_hover {
+			Name: "TextDocument_hover";
+			Value: 11;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const TextDocument_hover: TextDocument_hover;
+
+		export interface TextDocument_signatureHelp {
+			Name: "TextDocument_signatureHelp";
+			Value: 12;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const TextDocument_signatureHelp: TextDocument_signatureHelp;
+
+		export interface Workspace_DidChangeConfiguration {
+			Name: "Workspace_DidChangeConfiguration";
+			Value: 13;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Workspace_DidChangeConfiguration: Workspace_DidChangeConfiguration;
+
+		export interface ShutdownRequest {
+			Name: "ShutdownRequest";
+			Value: 14;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const ShutdownRequest: ShutdownRequest;
+
+		export interface Completion {
+			Name: "Completion";
+			Value: 15;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Completion: Completion;
+
+		export interface Declaration {
+			Name: "Declaration";
+			Value: 16;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Declaration: Declaration;
+
+		export interface DocumentSymbols {
+			Name: "DocumentSymbols";
+			Value: 17;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const DocumentSymbols: DocumentSymbols;
+
+		export interface TextDocument_publishDiagnostics {
+			Name: "TextDocument_publishDiagnostics";
+			Value: 18;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const TextDocument_publishDiagnostics: TextDocument_publishDiagnostics;
+
+		export interface Window_showMessage {
+			Name: "Window_showMessage";
+			Value: 19;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Window_showMessage: Window_showMessage;
+
+		export interface Window_showMessageRequest {
+			Name: "Window_showMessageRequest";
+			Value: 20;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Window_showMessageRequest: Window_showMessageRequest;
+
+		export interface Roblox_registerSyntaxCategories {
+			Name: "Roblox_registerSyntaxCategories";
+			Value: 21;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Roblox_registerSyntaxCategories: Roblox_registerSyntaxCategories;
+
+		export interface Roblox_signalQuiescence {
+			Name: "Roblox_signalQuiescence";
+			Value: 22;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Roblox_signalQuiescence: Roblox_signalQuiescence;
+
+		export interface Roblox_syntaxHighlight {
+			Name: "Roblox_syntaxHighlight";
+			Value: 23;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Roblox_syntaxHighlight: Roblox_syntaxHighlight;
+
+		export interface Roblox_suggestExtraSelections {
+			Name: "Roblox_suggestExtraSelections";
+			Value: 24;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Roblox_suggestExtraSelections: Roblox_suggestExtraSelections;
+
+		export interface Roblox_findExecutablePosition {
+			Name: "Roblox_findExecutablePosition";
+			Value: 25;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Roblox_findExecutablePosition: Roblox_findExecutablePosition;
+
+		export interface Roblox_findColor3 {
+			Name: "Roblox_findColor3";
+			Value: 26;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Roblox_findColor3: Roblox_findColor3;
+
+		export function GetEnumItems(this: defined): Array<LSPMethodType>
+	}
+	export type LSPMethodType = LSPMethodType.Initialize | LSPMethodType.Initialized | LSPMethodType.CancelRequest | LSPMethodType.TextDocument_didOpen | LSPMethodType.TextDocument_didChange | LSPMethodType.TextDocument_didClose | LSPMethodType.TextDocument_foldingRange | LSPMethodType.TextDocument_onTypeFormatting | LSPMethodType.TextDocument_formatting | LSPMethodType.TextDocument_rangeFormatting | LSPMethodType.TextDocument_hover | LSPMethodType.TextDocument_signatureHelp | LSPMethodType.Workspace_DidChangeConfiguration | LSPMethodType.ShutdownRequest | LSPMethodType.Completion | LSPMethodType.Declaration | LSPMethodType.DocumentSymbols | LSPMethodType.TextDocument_publishDiagnostics | LSPMethodType.Window_showMessage | LSPMethodType.Window_showMessageRequest | LSPMethodType.Roblox_registerSyntaxCategories | LSPMethodType.Roblox_signalQuiescence | LSPMethodType.Roblox_syntaxHighlight | LSPMethodType.Roblox_suggestExtraSelections | LSPMethodType.Roblox_findExecutablePosition | LSPMethodType.Roblox_findColor3;
 	export namespace Language {
 		export interface Default {
 			Name: "Default";
@@ -10133,42 +10529,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<PackagePermission>
 	}
 	export type PackagePermission = PackagePermission.None | PackagePermission.NoAccess | PackagePermission.Revoked | PackagePermission.UseView | PackagePermission.Edit | PackagePermission.Own;
-	export namespace PacketPriority {
-		export interface IMMEDIATE_PRIORITY {
-			Name: "IMMEDIATE_PRIORITY";
-			Value: 0;
-			EnumType: EnumType<PacketPriority>;
-		}
-
-		export const IMMEDIATE_PRIORITY: IMMEDIATE_PRIORITY;
-
-		export interface HIGH_PRIORITY {
-			Name: "HIGH_PRIORITY";
-			Value: 1;
-			EnumType: EnumType<PacketPriority>;
-		}
-
-		export const HIGH_PRIORITY: HIGH_PRIORITY;
-
-		export interface MEDIUM_PRIORITY {
-			Name: "MEDIUM_PRIORITY";
-			Value: 2;
-			EnumType: EnumType<PacketPriority>;
-		}
-
-		export const MEDIUM_PRIORITY: MEDIUM_PRIORITY;
-
-		export interface LOW_PRIORITY {
-			Name: "LOW_PRIORITY";
-			Value: 3;
-			EnumType: EnumType<PacketPriority>;
-		}
-
-		export const LOW_PRIORITY: LOW_PRIORITY;
-
-		export function GetEnumItems(this: defined): Array<PacketPriority>
-	}
-	export type PacketPriority = PacketPriority.IMMEDIATE_PRIORITY | PacketPriority.HIGH_PRIORITY | PacketPriority.MEDIUM_PRIORITY | PacketPriority.LOW_PRIORITY;
 	export namespace PartType {
 		export interface Ball {
 			Name: "Ball";
@@ -11429,6 +11789,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<RenderingTestComparisonMethod>
 	}
 	export type RenderingTestComparisonMethod = RenderingTestComparisonMethod.psnr | RenderingTestComparisonMethod.diff;
+	export namespace ReplicateInstanceDestroySetting {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<ReplicateInstanceDestroySetting>;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: EnumType<ReplicateInstanceDestroySetting>;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: EnumType<ReplicateInstanceDestroySetting>;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: defined): Array<ReplicateInstanceDestroySetting>
+	}
+	export type ReplicateInstanceDestroySetting = ReplicateInstanceDestroySetting.Default | ReplicateInstanceDestroySetting.Disabled | ReplicateInstanceDestroySetting.Enabled;
 	export namespace ResamplerMode {
 		export interface Default {
 			Name: "Default";
@@ -12278,9 +12666,17 @@ declare namespace Enum {
 
 		export const Deferred: Deferred;
 
+		export interface AncestryDeferred {
+			Name: "AncestryDeferred";
+			Value: 3;
+			EnumType: EnumType<SignalBehavior>;
+		}
+
+		export const AncestryDeferred: AncestryDeferred;
+
 		export function GetEnumItems(this: defined): Array<SignalBehavior>
 	}
-	export type SignalBehavior = SignalBehavior.Default | SignalBehavior.Immediate | SignalBehavior.Deferred;
+	export type SignalBehavior = SignalBehavior.Default | SignalBehavior.Immediate | SignalBehavior.Deferred | SignalBehavior.AncestryDeferred;
 	export namespace SizeConstraint {
 		export interface RelativeXY {
 			Name: "RelativeXY";
@@ -12357,130 +12753,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<SortOrder>
 	}
 	export type SortOrder = SortOrder.LayoutOrder | SortOrder.Name | SortOrder.Custom;
-	export namespace SoundType {
-		export interface NoSound {
-			Name: "NoSound";
-			Value: 0;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const NoSound: NoSound;
-
-		export interface Boing {
-			Name: "Boing";
-			Value: 1;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Boing: Boing;
-
-		export interface Bomb {
-			Name: "Bomb";
-			Value: 2;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Bomb: Bomb;
-
-		export interface Break {
-			Name: "Break";
-			Value: 3;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Break: Break;
-
-		export interface Click {
-			Name: "Click";
-			Value: 4;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Click: Click;
-
-		export interface Clock {
-			Name: "Clock";
-			Value: 5;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Clock: Clock;
-
-		export interface Slingshot {
-			Name: "Slingshot";
-			Value: 6;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Slingshot: Slingshot;
-
-		export interface Page {
-			Name: "Page";
-			Value: 7;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Page: Page;
-
-		export interface Ping {
-			Name: "Ping";
-			Value: 8;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Ping: Ping;
-
-		export interface Snap {
-			Name: "Snap";
-			Value: 9;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Snap: Snap;
-
-		export interface Splat {
-			Name: "Splat";
-			Value: 10;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Splat: Splat;
-
-		export interface Step {
-			Name: "Step";
-			Value: 11;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Step: Step;
-
-		export interface StepOn {
-			Name: "StepOn";
-			Value: 12;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const StepOn: StepOn;
-
-		export interface Swoosh {
-			Name: "Swoosh";
-			Value: 13;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Swoosh: Swoosh;
-
-		export interface Victory {
-			Name: "Victory";
-			Value: 14;
-			EnumType: EnumType<SoundType>;
-		}
-
-		export const Victory: Victory;
-
-		export function GetEnumItems(this: defined): Array<SoundType>
-	}
-	export type SoundType = SoundType.NoSound | SoundType.Boing | SoundType.Bomb | SoundType.Break | SoundType.Click | SoundType.Clock | SoundType.Slingshot | SoundType.Page | SoundType.Ping | SoundType.Snap | SoundType.Splat | SoundType.Step | SoundType.StepOn | SoundType.Swoosh | SoundType.Victory;
 	export namespace SpecialKey {
 		export interface Insert {
 			Name: "Insert";
@@ -14630,17 +14902,33 @@ declare namespace Enum {
 	}
 	export type TerrainAcquisitionMethod = TerrainAcquisitionMethod.None | TerrainAcquisitionMethod.Legacy | TerrainAcquisitionMethod.Template | TerrainAcquisitionMethod.Generate | TerrainAcquisitionMethod.Import | TerrainAcquisitionMethod.Convert | TerrainAcquisitionMethod.EditAddTool | TerrainAcquisitionMethod.EditSeaLevelTool | TerrainAcquisitionMethod.EditReplaceTool | TerrainAcquisitionMethod.RegionFillTool | TerrainAcquisitionMethod.RegionPasteTool | TerrainAcquisitionMethod.Other;
 	export namespace TextChatMessageStatus {
+		export interface Unknown {
+			Name: "Unknown";
+			Value: 1;
+			EnumType: EnumType<TextChatMessageStatus>;
+		}
+
+		export const Unknown: Unknown;
+
 		export interface Success {
 			Name: "Success";
-			Value: 1;
+			Value: 2;
 			EnumType: EnumType<TextChatMessageStatus>;
 		}
 
 		export const Success: Success;
 
+		export interface Sending {
+			Name: "Sending";
+			Value: 3;
+			EnumType: EnumType<TextChatMessageStatus>;
+		}
+
+		export const Sending: Sending;
+
 		export interface TextFilterFailed {
 			Name: "TextFilterFailed";
-			Value: 2;
+			Value: 4;
 			EnumType: EnumType<TextChatMessageStatus>;
 		}
 
@@ -14648,7 +14936,7 @@ declare namespace Enum {
 
 		export interface Floodchecked {
 			Name: "Floodchecked";
-			Value: 3;
+			Value: 5;
 			EnumType: EnumType<TextChatMessageStatus>;
 		}
 
@@ -14656,7 +14944,7 @@ declare namespace Enum {
 
 		export interface InvalidPrivacySettings {
 			Name: "InvalidPrivacySettings";
-			Value: 4;
+			Value: 6;
 			EnumType: EnumType<TextChatMessageStatus>;
 		}
 
@@ -14664,15 +14952,23 @@ declare namespace Enum {
 
 		export interface InvalidTextChannelPermissions {
 			Name: "InvalidTextChannelPermissions";
-			Value: 5;
+			Value: 7;
 			EnumType: EnumType<TextChatMessageStatus>;
 		}
 
 		export const InvalidTextChannelPermissions: InvalidTextChannelPermissions;
 
+		export interface MessageTooLong {
+			Name: "MessageTooLong";
+			Value: 8;
+			EnumType: EnumType<TextChatMessageStatus>;
+		}
+
+		export const MessageTooLong: MessageTooLong;
+
 		export function GetEnumItems(this: defined): Array<TextChatMessageStatus>
 	}
-	export type TextChatMessageStatus = TextChatMessageStatus.Success | TextChatMessageStatus.TextFilterFailed | TextChatMessageStatus.Floodchecked | TextChatMessageStatus.InvalidPrivacySettings | TextChatMessageStatus.InvalidTextChannelPermissions;
+	export type TextChatMessageStatus = TextChatMessageStatus.Unknown | TextChatMessageStatus.Success | TextChatMessageStatus.Sending | TextChatMessageStatus.TextFilterFailed | TextChatMessageStatus.Floodchecked | TextChatMessageStatus.InvalidPrivacySettings | TextChatMessageStatus.InvalidTextChannelPermissions | TextChatMessageStatus.MessageTooLong;
 	export namespace TextFilterContext {
 		export interface PublicChat {
 			Name: "PublicChat";
@@ -15349,6 +15645,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<UiMessageType>
 	}
 	export type UiMessageType = UiMessageType.UiMessageError | UiMessageType.UiMessageInfo;
+	export namespace UsageContext {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<UsageContext>;
+		}
+
+		export const Default: Default;
+
+		export interface Preview {
+			Name: "Preview";
+			Value: 1;
+			EnumType: EnumType<UsageContext>;
+		}
+
+		export const Preview: Preview;
+
+		export function GetEnumItems(this: defined): Array<UsageContext>
+	}
+	export type UsageContext = UsageContext.Default | UsageContext.Preview;
 	export namespace UserCFrame {
 		export interface Head {
 			Name: "Head";
