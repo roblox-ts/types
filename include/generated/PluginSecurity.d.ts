@@ -370,6 +370,10 @@ interface DebuggerBreakpoint extends Instance {
 	 * The condition of the debugger breakpoint.
 	 */
 	Condition: string;
+	/**
+	 * This field controls whether debugger will stop on the breakpoint or not.  
+	 * It is used together with the [DebuggerBreakpoint.LogExpression](https://developer.roblox.com/en-us/api-reference/property/DebuggerBreakpoint/LogExpression) to log a message when breakpoint is hit, without pausing into the debugger to act as a 'logpoint' instead of a 'breakpoint'.
+	 */
 	ContinueExecution: boolean;
 	/**
 	 * Whether or not the breakpoint is enabled.
@@ -380,7 +384,15 @@ interface DebuggerBreakpoint extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Line: number;
+	/**
+	 * An expression which is evaluated when the breakpoint is hit with the result being logged into the Output window.  
+	 * Used together with [DebuggerBreakpoint.ContinueExecution](https://developer.roblox.com/en-us/api-reference/property/DebuggerBreakpoint/ContinueExecution) to implement a 'logpoint' instead of a 'breakpoint'.
+	 */
 	LogExpression: string;
+	/**
+	 * Whether the breakpoint is unique for a single script instance or not.  
+	 * When set, the breakpoint will not be duplicated into all the clones of the current script.
+	 */
 	isContextDependentBreakpoint: boolean;
 }
 
@@ -410,11 +422,11 @@ interface DebuggerManager extends Instance {
 	 */
 	EnableDebugging(this: DebuggerManager): void;
 	/**
-	 * Returns a list of [ScriptDebugger](https://developer.roblox.com/en-us/api-reference/class/ScriptDebugger) present in the game.
+	 * Returns a list of [ScriptDebugger](https://developer.roblox.com/en-us/api-reference/class/ScriptDebugger) present in the experience.
 	 */
 	GetDebuggers(this: DebuggerManager): Array<Instance>;
 	/**
-	 * Resumes the Lua Debugger if it paused.
+	 * Resumes the Lua Debugger if it is paused.
 	 */
 	Resume(this: DebuggerManager): void;
 	/**
@@ -430,11 +442,11 @@ interface DebuggerManager extends Instance {
 	 */
 	StepOver(this: DebuggerManager): void;
 	/**
-	 * Fired when a new [ScriptDebugger](https://developer.roblox.com/api-reference/class/ScriptDebugger "ScriptDebugger") is created through the [AddDebugger](https://developer.roblox.com/api-reference/function/DebuggerManager/AddDebugger "AddDebugger") method.
+	 * Fires when a new [ScriptDebugger](https://developer.roblox.com/en-us/api-reference/class/ScriptDebugger) is created through the [DebuggerManager:AddDebugger](https://developer.roblox.com/en-us/api-reference/function/DebuggerManager/AddDebugger) method.
 	 */
 	readonly DebuggerAdded: RBXScriptSignal<(debug: Instance) => void>;
 	/**
-	 * Fired when a registered [ScriptDebugger](https://developer.roblox.com/api-reference/class/ScriptDebugger "ScriptDebugger") has been discontinued.
+	 * Fires when a registered [ScriptDebugger](https://developer.roblox.com/en-us/api-reference/class/ScriptDebugger) has been discontinued.
 	 */
 	readonly DebuggerRemoved: RBXScriptSignal<(debug: Instance) => void>;
 }
@@ -737,7 +749,15 @@ interface File extends Instance {
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly Size: number;
+	/**
+	 * This function is used to read the contents of the [File](https://developer.roblox.com/en-us/api-reference/class/File) as a raw binary string. This allows the file to be uploaded to web endpoints, or to be processed by plugins.
+	 */
 	GetBinaryContents(this: File): string;
+	/**
+	 * This function is used to retrieve a temporary asset id associated with this [File](https://developer.roblox.com/en-us/api-reference/class/File). This id can be used like an _rbxassetid_ - for example, it can be assigned to the Image property of an [ImageLabel](https://developer.roblox.com/en-us/api-reference/class/ImageLabel).
+	 * 
+	 * Throws an error if the file does not exist on disk.
+	 */
 	GetTemporaryId(this: File): string;
 }
 
@@ -790,11 +810,11 @@ interface PluginGui extends LayerCollector {
 	 */
 	Title: string;
 	/**
-	 * This function binds a function to the `PluginGui|PluginGui's` close button, overriding the default behavior.
+	 * This function binds a function to the [PluginGui's](https://developer.roblox.com/en-us/api-reference/class/PluginGui) close button, overriding the default behavior.
 	 * 
 	 * By default, when the user clicks the 'x' button in the top right corner of the [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui) the [Enabled](https://developer.roblox.com/en-us/api-reference/property/LayerCollector/Enabled) property is set to _false_, closing the window. When a custom function is bound using BindToClose this behavior is overwritten, allowing you to check if the user really wants to close the window or give them an opportunity to save their work.
 	 * 
-	 * As the default closing behavior is overwritten by this function, you'll need to configure the [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui) to close manually by setting `LayerCollector/Enabled|PluginGui.Enabled` to _false_. For example, in the below snippet users are required to click a confirm button to close the GUI:
+	 * As the default closing behavior is overwritten by this function, you'll need to configure the [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui) to close manually by setting [PluginGui.Enabled](https://developer.roblox.com/en-us/api-reference/property/LayerCollector/Enabled) to _false_. For example, in the below snippet users are required to click a confirm button to close the GUI:
 	 * 
 	 * local closing = false
 	 * pluginGui:BindToClose(function()
@@ -861,7 +881,7 @@ interface PluginGui extends LayerCollector {
 	 * See Also
 	 * --------
 	 * 
-	 * *   `articles/Drag and Drop in Studio Widgets`
+	 * *   [Drag and Drop in Studio Widgets](https://developer.roblox.com/en-us/articles/drag-and-drop-in-studio-widgets)
 	 * *   [PluginGui.PluginDragLeft](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragLeft)
 	 * *   [PluginGui.PluginDragMoved](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragMoved)
 	 * *   [PluginGui.PluginDragDropped](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragDropped)
@@ -875,7 +895,7 @@ interface PluginGui extends LayerCollector {
 	 * See Also
 	 * --------
 	 * 
-	 * *   `articles/Drag and Drop in Studio Widgets`
+	 * *   [Drag and Drop in Studio Widgets](https://developer.roblox.com/en-us/articles/drag-and-drop-in-studio-widgets)
 	 * *   [PluginGui.PluginDragEntered](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragEntered)
 	 * *   [PluginGui.PluginDragMoved](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragMoved)
 	 * *   [PluginGui.PluginDragDropped](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragDropped)
@@ -908,9 +928,9 @@ interface PluginGui extends LayerCollector {
 
 /** **DockWidgetPluginGui** is a [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui) that displays its contents inside a dockable Roblox Studio window. It is used to create widgets similar to the built-in **Animation Editor** and **Terrain Tools**.
  * 
- * This GUI can be created using `Plugin/CreateDockWidgetPluginGui|Plugin:CreateDockWidgetPluginGui()`.
+ * This GUI can be created using [Plugin:CreateDockWidgetPluginGui()](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreateDockWidgetPluginGui).
  * 
- * See the `Articles/building studio widgets|Building Studio Widgets` tutorial for details on working with custom Studio widgets.
+ * See the [Building Studio Widgets](https://developer.roblox.com/en-us/articles/building-studio-widgets) tutorial for details on working with custom Studio widgets.
  */
 interface DockWidgetPluginGui extends PluginGui {
 	/**
@@ -1198,48 +1218,20 @@ interface NetworkSettings extends Instance {
 	readonly FreeMemoryMBytes: number;
 	readonly HttpProxyEnabled: boolean;
 	readonly HttpProxyURL: string;
+	/**
+	 * Instruct the engine to simulate additional lag by delaying all incoming messages. Units are seconds.
+	 */
 	IncomingReplicationLag: number;
+	/**
+	 * Print diagnostic information to the Output window after connecting. The data will indicate the largest individual Instances sent, as well as aggregate data about data sent by Instance type. The data sent for initial loading is compressed so the contributions are approximate.
+	 */
 	PrintJoinSizeBreakdown: boolean;
 	/**
-	 * When set to true, debug messages will be printed into the output, pertaining to physics replication errors. There are several debug outputs that are made available when this property is set to true, as listed below.
+	 * When set to true, debug messages will be printed into the output, pertaining to physics replication errors. Note that this property is intended for Roblox engineers who are debugging network replication. The following are debug outputs that are made available when this property is set to true.
 	 * 
-	 * Note that this property is intended for Roblox engineers who are debugging network replication. This documentation may become outdated in the future, as Roblox's network code is always changing behind the scenes.
-	 * 
-	 * * * *
-	 * 
-	 * Outdated Physics Packet
-	 * -----------------------
-	 * 
-	 * This following debug message is printed if the PhysicsReceiver receives a mechanism update packet for a part that has been updated ahead of the packet's submission time:  
-	 * `Physics-in old packet`
-	 * 
-	 * This happens if the packet is received late, and a newer packet has already been processed.
-	 * 
-	 * * * *
-	 * 
-	 * Unknown Part
-	 * ------------
-	 * 
-	 * This following debug message is printed if the PhysicsReceiver cannot find the part that is trying to be updated, because the provided Instance identifier was invalid:
-	 * 
-	 * `Physics-in of unidentified {GUID}`  
-	 * (Where `{GUID}` is the unknown [Instance:GetDebugId](https://developer.roblox.com/en-us/api-reference/function/Instance/GetDebugId) identifier that is supposed to be targeting the part)
-	 * 
-	 * This typically happens if a part is removed before the physics update packet is received.
-	 * 
-	 * * * *
-	 * 
-	 * Invalid Part
-	 * ------------
-	 * 
-	 * This following debug message is printed if the PhysicsReceiver receives a request to update the physics of a part that is not a descendant of the Workspace:
-	 * 
-	 * `Physics-in of part not in workspace {GUID}`  
-	 * (Where `{GUID}` is the [Instance:GetDebugId](https://developer.roblox.com/en-us/api-reference/function/Instance/GetDebugId) identifier of the target part)
-	 * 
-	 * This usually happens if the part was just moved out of the Workspace, and was previously being simulated.
-	 * 
-	 * * * *
+	 * *   `Physics-in old packet` prints if the PhysicsReceiver receives a mechanism update packet for a part that has been updated ahead of the packet's submission time. This happens if the packet is received late, and a newer packet has already been processed.
+	 * *   `Physics-in of unidentified {GUID}` prints if the PhysicsReceiver cannot find the part that is trying to be updated because the provided Instance identifier was invalid, where `{GUID}` is the unknown [Instance:GetDebugId](https://developer.roblox.com/en-us/api-reference/function/Instance/GetDebugId) identifier that is supposed to be targeting the part. This typically happens if a part is removed before the physics update packet is received.
+	 * *   `Physics-in of part not in workspace {GUID}` prints if the PhysicsReceiver receives a request to update the physics of a part that is not a descendant of the Workspace, where `{GUID}` is the [Instance:GetDebugId](https://developer.roblox.com/en-us/api-reference/function/Instance/GetDebugId) identifier of the target part. This happens if the part was just moved out of the Workspace, and was previously being simulated.
 	 */
 	PrintPhysicsErrors: boolean;
 	/**
@@ -1277,6 +1269,9 @@ interface NetworkSettings extends Instance {
 	 * * * *
 	 */
 	PrintStreamInstanceQuota: boolean;
+	/**
+	 * Emulate the behavior of a server that has been online a long time by randomizing the order that instances initially arrive on clients. It is recommended to keep this setting enabled to help discover potential bugs while testing in Studio.
+	 */
 	RandomizeJoinInstanceOrder: boolean;
 	/**
 	 * ![RenderStreamedRegions in action!](https://developer.roblox.com/assets/blte3c189bb8bdbf8e3/ShowStreamedRegions.png)
@@ -1289,14 +1284,6 @@ interface NetworkSettings extends Instance {
 	 * When set to true, a label will be shown above each [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s head, showing the current animation being played by the Player's [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid), if any.
 	 */
 	ShowActiveAnimationAsset: boolean;
-	/**
-	 * TrackDataTypes is a diagnostics property that, when set to true, tells the replicator stats to sample data about packets that are being sent.
-	 */
-	TrackDataTypes: boolean;
-	/**
-	 * TrackPhysicsDetails is a diagnostics property that, when set to true, tells the replicator stats to sample replication physics details.
-	 */
-	TrackPhysicsDetails: boolean;
 }
 
 interface Terrain extends BasePart {
@@ -1572,7 +1559,7 @@ interface PhysicsSettings extends Instance {
 	/**
 	 * When set to true, a cylinder is drawn around each [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s character, representing their [Player.SimulationRadius](https://developer.roblox.com/en-us/api-reference/property/Player/SimulationRadius).
 	 * 
-	 * Each physically simulated object will check to see which player is closest to that object, and if they are within the player's simulation radius. If both conditions are met, that player will becomes the network owner of that object.When set to true, a cylinder is drawn around each \`Player\`'s character, representing their \`Player/SimulationRadius\`.
+	 * Each physically simulated object will check to see which player is closest to that object, and if they are within the player's simulation radius. If both conditions are met, that player will becomes the network owner of that object.
 	 */
 	AreRegionsShown: boolean;
 	AreTerrainReplicationRegionsShown: boolean;
@@ -1649,7 +1636,7 @@ interface PhysicsSettings extends Instance {
 	/**
 	 * Controls the throttle rate of Roblox's physics engine.
 	 * 
-	 * By default, the physics engine will adjust the physics environment throttle depending on how much work the physics engine is doing, and the current framerate. See the enum page for [EnviromentalPhysicsThrottle](https://developer.roblox.com/api-reference/enum/EnviromentalPhysicsThrottle "EnviromentalPhysicsThrottle") for more information.Controls the throttle rate of Roblox's physics engine.
+	 * By default, the physics engine will adjust the physics environment throttle depending on how much work the physics engine is doing, and the current framerate. See the enum page for [EnviromentalPhysicsThrottle](https://developer.roblox.com/api-reference/enum/EnviromentalPhysicsThrottle "EnviromentalPhysicsThrottle") for more information.
 	 */
 	PhysicsEnvironmentalThrottle: Enum.EnviromentalPhysicsThrottle;
 	/**
@@ -1692,7 +1679,9 @@ interface Player extends Instance {
 	 * 
 	 * ![Command prompt example enabling SuperSafeChat.](https://developer.roblox.com/assets/blte98afa1dbb206581/Screen_Shot_2018-07-28_at_9.46.09_PM.png)
 	 * 
-	 * ##Note  
+	 * Note
+	 * ----
+	 * 
 	 * Regardless of whether a player has SuperSafeChat enabled, all chat should be filtered by TextService when broadcasted to other players or on the player's own screen. [TextService:FilterStringAsync](https://developer.roblox.com/en-us/api-reference/function/TextService/FilterStringAsync) returns a [TextFilterResult](https://developer.roblox.com/en-us/api-reference/class/TextFilterResult) object that can be filtered differently according to the message's intended use.
 	 */
 	SetSuperSafeChat(this: Player, value: boolean): void;
@@ -1715,7 +1704,7 @@ interface Players extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   `articles/Lua-Chat-System|Lua Chat System`, a tutorial for creating a more advanced chat system
+	 * *   [Lua Chat System](https://developer.roblox.com/en-us/articles/lua-chat-system), a tutorial for creating a more advanced chat system
 	 */
 	Chat(this: Players, message: string): void;
 	/**
@@ -1728,7 +1717,7 @@ interface Players extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * Developers who are interested interested in configuring their games' bubble chat system even further should take a look at the `articles/Bubble Chat|Bubble Chat` article.
+	 * Developers who are interested interested in configuring their games' bubble chat system even further should take a look at the [Bubble Chat](https://developer.roblox.com/en-us/articles/bubble-chat) article.
 	 */
 	SetChatStyle(this: Players, style?: CastsToEnum<Enum.ChatStyle>): void;
 	/**
@@ -1743,12 +1732,12 @@ interface Players extends Instance {
 
 /** Plugin is the main object responsible for creating basic studio widgets. It is a custom add-on to Studio which adds new behavior and features that are not normally included.
  * 
- * Both the `articles/using animation editor|Animation Editor` and `articles/Intro To Terrain|Terrain Tools` were originally developed as plugins. There are also many plugins made by the Roblox community that you can use to help make games and experiences.
+ * Both the [Animation Editor](https://developer.roblox.com/en-us/articles/using-animation-editor) and [Terrain Tools](https://developer.roblox.com/en-us/articles/intro-to-terrain) were originally developed as plugins. There are also many plugins made by the Roblox community that you can use to help make games and experiences.
  * 
  * See also
  * --------
  * 
- * `articles/Intro to Plugins`, an introductory article to plugin use and development
+ * [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
  */
 interface Plugin extends Instance {
 	/**
@@ -1820,7 +1809,7 @@ interface Plugin extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   `articles/Intro to Plugins`, an introductory article to plugin use and development
+	 * *   [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
 	 * *   [PluginMenu](https://developer.roblox.com/en-us/api-reference/class/PluginMenu), a context menu that can be shown in Studio which displays a list of PluginActions and supports submenus
 	 * *   [Plugin:CreatePluginMenu](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreatePluginMenu), creates a PluginMenu
 	 */
@@ -1840,7 +1829,7 @@ interface Plugin extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   `articles/Intro to Plugins`, an introductory article to plugin use and development
+	 * *   [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
 	 * *   [PluginAction](https://developer.roblox.com/en-us/api-reference/class/PluginAction), an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 * *   [Plugin:CreatePluginAction](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
 	 * *   [PluginMenu.Title](https://developer.roblox.com/en-us/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
@@ -2028,7 +2017,7 @@ interface Plugin extends Instance {
 	 * See Also
 	 * --------
 	 * 
-	 * *   `articles/Drag and Drop in Studio Widgets`
+	 * *   [Drag and Drop in Studio Widgets](https://developer.roblox.com/en-us/articles/drag-and-drop-in-studio-widgets)
 	 * *   [PluginGui.PluginDragEntered](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragEntered)
 	 * *   [PluginGui.PluginDragMoved](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragMoved)
 	 * *   [PluginGui.PluginDragDropped](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragDropped)
@@ -2049,7 +2038,7 @@ interface Plugin extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   `Articles/building studio widgets|Building Studio Widgets`, for more information on working with Studio widgets.
+	 * *   [Building Studio Widgets](https://developer.roblox.com/en-us/articles/building-studio-widgets), for more information on working with Studio widgets.
 	 * Tags: Yields
 	 */
 	CreateDockWidgetPluginGui(
@@ -2101,7 +2090,7 @@ interface Plugin extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * `articles/Intro to Plugins`, an introductory article to plugin use and development
+	 * [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
 	 */
 	readonly Unloading: RBXScriptSignal<() => void>;
 }
@@ -2237,7 +2226,7 @@ interface PluginManagerInterface extends Instance {
  * See also
  * --------
  * 
- * *   `articles/Intro to Plugins`, an introductory article to plugin use and development
+ * *   [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
  * *   [PluginAction](https://developer.roblox.com/en-us/api-reference/class/PluginAction), an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
  * *   [Plugin:CreatePluginAction](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
  * *   [PluginMenu.Title](https://developer.roblox.com/en-us/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
@@ -2264,7 +2253,7 @@ interface PluginMenu extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   `articles/Intro to Plugins`, an introductory article to plugin use and development
+	 * *   [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
 	 * *   [PluginAction](https://developer.roblox.com/en-us/api-reference/class/PluginAction), an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 * *   [Plugin:CreatePluginAction](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
 	 * *   [PluginMenu.Title](https://developer.roblox.com/en-us/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
@@ -2283,7 +2272,7 @@ interface PluginMenu extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   `articles/Intro to Plugins`, an introductory article to plugin use and development
+	 * *   [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
 	 * *   [PluginAction](https://developer.roblox.com/en-us/api-reference/class/PluginAction), an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 * *   [Plugin:CreatePluginAction](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
 	 * *   [PluginMenu.Icon](https://developer.roblox.com/en-us/api-reference/property/PluginMenu/Icon), the icon to be displayed when used as a sub menu
@@ -2302,7 +2291,7 @@ interface PluginMenu extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   `articles/Intro to Plugins`, an introductory article to plugin use and development
+	 * *   [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
 	 * *   [PluginAction](https://developer.roblox.com/en-us/api-reference/class/PluginAction), an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 * *   [Plugin:CreatePluginAction](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
 	 * *   [PluginMenu.Title](https://developer.roblox.com/en-us/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
@@ -2320,7 +2309,7 @@ interface PluginMenu extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   `articles/Intro to Plugins`, an introductory article to plugin use and development
+	 * *   [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
 	 * *   [PluginAction](https://developer.roblox.com/en-us/api-reference/class/PluginAction), an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 * *   [Plugin:CreatePluginAction](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
 	 * *   [PluginMenu.Title](https://developer.roblox.com/en-us/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
@@ -2339,7 +2328,7 @@ interface PluginMenu extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   `articles/Intro to Plugins`, an introductory article to plugin use and development
+	 * *   [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
 	 * *   [PluginAction](https://developer.roblox.com/en-us/api-reference/class/PluginAction), an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 * *   [Plugin:CreatePluginAction](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
 	 * *   [PluginMenu.Title](https://developer.roblox.com/en-us/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
@@ -2357,7 +2346,7 @@ interface PluginMenu extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   `articles/Intro to Plugins`, an introductory article to plugin use and development
+	 * *   [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
 	 * *   [PluginAction](https://developer.roblox.com/en-us/api-reference/class/PluginAction), an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 * *   [Plugin:CreatePluginAction](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
 	 * *   [PluginMenu.Title](https://developer.roblox.com/en-us/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
@@ -2375,7 +2364,7 @@ interface PluginMenu extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   `articles/Intro to Plugins`, an introductory article to plugin use and development
+	 * *   [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
 	 * *   [PluginAction](https://developer.roblox.com/en-us/api-reference/class/PluginAction), an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
 	 * *   [Plugin:CreatePluginAction](https://developer.roblox.com/en-us/api-reference/function/Plugin/CreatePluginAction), creates a PluginAction
 	 * *   [PluginMenu.Title](https://developer.roblox.com/en-us/api-reference/property/PluginMenu/Title), the text to be displayed when used as a sub menu
@@ -2419,7 +2408,7 @@ interface PluginToolbar extends Instance {
 	 * See also
 	 * --------
 	 * 
-	 * *   `articles/Intro to Plugins`, an introductory level article for users looking to create custom plugins
+	 * *   [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory level article for users looking to create custom plugins
 	 */
 	CreateButton(
 		this: PluginToolbar,
@@ -2509,7 +2498,7 @@ interface RenderSettings extends Instance {
 	/**
 	 * When set to true, all scene updates will be given an unlimited budget, regardless of how computationally expensive it may be.  
 	 * 
-	 * This ensures each frame will look as it should, at the cost of a more unstable frame rate.When set to true, all scene updates will be given an unlimited budget, regardless of how computationally expensive it may be.
+	 * This ensures each frame will look as it should, at the cost of a more unstable frame rate.
 	 * 
 	 * Notes
 	 * -----
@@ -2544,6 +2533,11 @@ interface RenderSettings extends Instance {
 	 * Defaults to 32 MBs.
 	 */
 	MeshCacheSize: number;
+	/**
+	 * Determines the mode for the selection of detail levels for mesh parts. For a good balance between performance and fidelity this should be set to `MeshPartDetail.DistanceBased` (default), which is what the client uses.
+	 * 
+	 * Note that the `MeshPart.RenderFidelity` needs to be set to `RenderFidelity.Automatic` for this to work. If you set it to `RenderFidelity.Precise` you will always see the higher resolution version and the `MeshPartDetailLevel` will be ignored for that [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart).
+	 */
 	MeshPartDetailLevel: Enum.MeshPartDetailLevel;
 	/**
 	 * If [RenderSettings.EnableFRM](https://developer.roblox.com/en-us/api-reference/property/RenderSettings/EnableFRM) is set to true, this property controls the quality level in Roblox Studio.
@@ -2567,21 +2561,7 @@ interface RenderSettings extends Instance {
 	GetMaxQualityLevel(this: RenderSettings): number;
 }
 
-/** RenderingTest is an internal testing utility used by Roblox engineers to do performance/regression tests on the rendering pipeline. It is expected to be parented inside of the [TestService](https://developer.roblox.com/en-us/api-reference/class/TestService), and will run LocalScripts parented inside of it when the TestService is ran via [TestService:Run](https://developer.roblox.com/en-us/api-reference/function/TestService/Run).
- * 
- * ![Selected RenderingTest](https://developer.roblox.com/assets/bltb4ce5031891ef0d3/RenderingTest.png)
- * 
- * One of its more notable features is that, upon being selected in the Explorer, it draws an accurate wireframe of the Camera frustum, visualizing what a Camera would see in the RenderingTest's configuration.
- * 
- * Recording Test Results
- * ----------------------
- * 
- * When a RenderingTest is executed by the TestService, the [CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera) of the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) has its properties updated so it mirrors the Camera configuration of the RenderingTest.
- * 
- * The recorded data is then sent as JSON with an HTTP-POST request to: `localhost:8001/api/v1/submit_test`.
- * 
- * For the RenderingTest to pass in Roblox Studio, the request expects the response to be the string `"passed"`. It will also acknowledge the strings `"failed"` or `"golden"` as a string response.
- */
+/** **RenderingTest** is an internal testing utility for the rendering pipeline. It is not intended for external use. */
 interface RenderingTest extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -2781,7 +2761,7 @@ interface ScriptDebugger extends Instance {
 	 */
 	readonly Script: Instance | undefined;
 	/**
-	 * Adds a watch with the given expression.
+	 * Adds a [DebuggerWatch](https://developer.roblox.com/en-us/api-reference/class/DebuggerWatch) with the given expression.
 	 */
 	AddWatch(this: ScriptDebugger, expression: string): Instance | undefined;
 	/**
@@ -2789,19 +2769,20 @@ interface ScriptDebugger extends Instance {
 	 */
 	GetBreakpoints(this: ScriptDebugger): Array<Instance>;
 	/**
-	 * Returns a dictionary of all variables that are visible to the script's global stack, where the keys are the names of the variables, and the values are the actual values of the variables.
+	 * Returns a dictionary of all variables that are present in the global environment of the stack frame, where the keys are the names of the variables, and the values are the actual values of the variables.  
+	 * Each stack frame might see different global variables if function environments are different.
 	 */
 	GetGlobals(this: ScriptDebugger): Map<string, unknown>;
 	/**
-	 * Returns a dictionary of all local variables in the specified stack, where the keys are the names of the variables, and the values are the actual values of the variables.
+	 * Returns a dictionary of all local variables in the specified stack frame, where the keys are the names of the variables, and the values are the actual values of the variables.
 	 */
 	GetLocals(this: ScriptDebugger, stackFrame?: number): Map<string, unknown>;
 	/**
-	 * Returns an array of all active call stacks in the script.
+	 * Returns an array of all active call stack frames in the script.
 	 */
 	GetStack(this: ScriptDebugger): unknown;
 	/**
-	 * Returns a dictionary of all upvalues present in the stack specified.
+	 * Returns a dictionary of all upvalues present in the specified stack frame, where the keys are the names of the upvalues, and the values are the actual values of the upvalues.
 	 */
 	GetUpvalues(this: ScriptDebugger, stackFrame?: number): Map<string, unknown>;
 	/**
@@ -2809,7 +2790,7 @@ interface ScriptDebugger extends Instance {
 	 */
 	GetWatchValue(this: ScriptDebugger, watch: Instance): unknown;
 	/**
-	 * Returns a list with all the watches for this debugger
+	 * Returns a list with all the [DebuggerWatch](https://developer.roblox.com/en-us/api-reference/class/DebuggerWatch) instances for this debugger.
 	 */
 	GetWatches(this: ScriptDebugger): Array<Instance>;
 	/**
@@ -2817,39 +2798,39 @@ interface ScriptDebugger extends Instance {
 	 */
 	SetBreakpoint(this: ScriptDebugger, line: number, isContextDependentBreakpoint: boolean): Instance | undefined;
 	/**
-	 * Sets the value of the variable _name_ as _value_ in the script's main stack.
+	 * Sets the value of the variable _name_ as _value_ in the global environment of the specified stack frame.
 	 */
 	SetGlobal(this: ScriptDebugger, name: string, value: unknown, stackFrame: number): void;
 	/**
-	 * Sets the value of the variable _name_ as _value_ in the stack specified.
+	 * Sets the value of the variable _name_ as _value_ in the specified stack frame.
 	 */
 	SetLocal(this: ScriptDebugger, name: string, value: unknown, stackFrame?: number): void;
 	/**
-	 * Sets the value of the upvalue _name_ as _value_ in the stack specified.
+	 * Sets the value of the upvalue _name_ as _value_ in the specified stack frame.
 	 */
 	SetUpvalue(this: ScriptDebugger, name: string, value: unknown, stackFrame?: number): void;
 	/**
-	 * Fired when a breakpoint is added to the script.
+	 * Fires when a [DebuggerBreakpoint](https://developer.roblox.com/en-us/api-reference/class/DebuggerBreakpoint) is added to the script.
 	 */
 	readonly BreakpointAdded: RBXScriptSignal<(breakpoint: Breakpoint) => void>;
 	/**
-	 * Fired when a breakpoint is removed from the script.
+	 * Fires when a [DebuggerBreakpoint](https://developer.roblox.com/en-us/api-reference/class/DebuggerBreakpoint) is removed from the script.
 	 */
 	readonly BreakpointRemoved: RBXScriptSignal<(breakpoint: Breakpoint) => void>;
 	/**
-	 * Fired when a breakpoint is encountered by the script.
+	 * Fires when a [DebuggerBreakpoint](https://developer.roblox.com/en-us/api-reference/class/DebuggerBreakpoint) is encountered by the script.
 	 */
 	readonly EncounteredBreak: RBXScriptSignal<(line: number, breakReason: Enum.BreakReason) => void>;
 	/**
-	 * Fired when the game is resumed after being paused by a breakpoint.
+	 * Fires when the game is resumed after being paused by a breakpoint.
 	 */
 	readonly Resuming: RBXScriptSignal<() => void>;
 	/**
-	 * Fired when an expression watch is added to this script debugger.
+	 * Fires when a [DebuggerWatch](https://developer.roblox.com/en-us/api-reference/class/DebuggerWatch) is added to this script debugger.
 	 */
 	readonly WatchAdded: RBXScriptSignal<(watch: Instance) => void>;
 	/**
-	 * Fired when an expression watch is removed from this script debugger.
+	 * Fires when a [DebuggerWatch](https://developer.roblox.com/en-us/api-reference/class/DebuggerWatch) is removed from this script debugger.
 	 */
 	readonly WatchRemoved: RBXScriptSignal<(watch: Instance) => void>;
 }
@@ -2860,7 +2841,7 @@ interface ScriptDebugger extends Instance {
  * 
  * Currently selected [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s can be obtained and set using the [Selection:Get](https://developer.roblox.com/en-us/api-reference/function/Selection/Get) and [Selection:Set](https://developer.roblox.com/en-us/api-reference/function/Selection/Set) functions. The [Selection.SelectionChanged](https://developer.roblox.com/en-us/api-reference/event/Selection/SelectionChanged) event fires whenever the current selection changes.
  * 
- * For more information on using Selection and [Plugin](https://developer.roblox.com/en-us/api-reference/class/Plugin)s please see `Articles/Intro to Plugins|this tutorial`.
+ * For more information on using Selection and [Plugin](https://developer.roblox.com/en-us/api-reference/class/Plugin)s please see [this tutorial](https://developer.roblox.com/en-us/articles/intro-to-plugins).
  * 
  * Selection is also often used in the command bar, to set hidden properties or run functions for selected [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s. For example:
  * 
@@ -2933,7 +2914,7 @@ interface DataModel extends ServiceProvider<Services> {
 	 */
 	readonly _nominal_DataModel: unique symbol;
 	/**
-	 * Returns a table containing basic information about the jobs performed by the task scheduler
+	 * Returns a table containing basic information about the jobs performed by the task scheduler.
 	 * 
 	 * In computing, a task scheduler is a system responsible for executing key tasks at the appropriate intervals.
 	 * 
@@ -2971,7 +2952,7 @@ interface DataModel extends ServiceProvider<Services> {
 	 */
 	GetJobsInfo(this: DataModel): unknown;
 	/**
-	 * This function returns an array of [Instances](https://developer.roblox.com/en-us/api-reference/class/Instance) associated with the given `Articles/Content|content` URL.
+	 * This function returns an array of [Instances](https://developer.roblox.com/en-us/api-reference/class/Instance) associated with the given [content](https://developer.roblox.com/en-us/articles/content) URL.
 	 * 
 	 * This function can be used to insert content from the Roblox [library](https://www.roblox.com/develop/library), such as:
 	 * 
@@ -2981,7 +2962,7 @@ interface DataModel extends ServiceProvider<Services> {
 	 * *   Plugins
 	 * *   Animations
 	 * 
-	 * It is not possible to insert [Sounds](https://developer.roblox.com/en-us/api-reference/class/Sound) using this method as they do not have an [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) associated with them (rather just a `Articles/Content|content` URL).
+	 * It is not possible to insert [Sounds](https://developer.roblox.com/en-us/api-reference/class/Sound) using this method as they do not have an [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) associated with them and have only a [content](https://developer.roblox.com/en-us/articles/content) URL.
 	 * 
 	 * Unlike [InsertService:LoadAsset](https://developer.roblox.com/en-us/api-reference/function/InsertService/LoadAsset), GetObjects does not require an asset to be 'trusted'. This means that an asset does not need to be owned by the logged in user, or created by Roblox, to be inserted. However, if the asset is not owned by the logged in user it must be freely available.
 	 * 
@@ -2991,7 +2972,7 @@ interface DataModel extends ServiceProvider<Services> {
 	/**
 	 * This function sets the [DataModel.PlaceId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PlaceId) of the game instance to the given _placeId_.
 	 * 
-	 * Setting the [DataModel.PlaceId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PlaceId) is required to access the [DataStoreService](https://developer.roblox.com/en-us/api-reference/class/DataStoreService) when the place is unpublished (for example a local .rbxl file). See below for an example. Note this will only work when the _'Enable Studio Access to API Services\`_ option is enabled under game settings.
+	 * Setting the [DataModel.PlaceId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PlaceId) is required to access the [DataStoreService](https://developer.roblox.com/en-us/api-reference/class/DataStoreService) when the place is unpublished (for example a local .rbxl file). See below for an example. This will only work when the _'Enable Studio Access to API Services\`_ option is enabled under game settings.
 	 * 
 	 * local DataStoreService = game:GetService("DataStoreService")
 	 * 
@@ -3428,6 +3409,7 @@ interface Studio extends Instance {
 	 * @deprecated
 	 */
 	readonly ["UI Theme"]: Enum.UITheme;
+	readonly ["Use Bounding Box Move Handles"]: boolean;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -3445,7 +3427,7 @@ interface Studio extends Instance {
 	/**
 	 * The **ThemeChanged** event fires when Studio's [Theme](https://developer.roblox.com/en-us/api-reference/property/Studio/Theme) changes. The best use of this event is to get the colors from the theme that changed and update your plugin's UI accordingly.
 	 * 
-	 * See the `Articles/building studio widgets|Building Studio Widgets` tutorial for details on working with custom Studio widgets.
+	 * See the [Building Studio Widgets](https://developer.roblox.com/en-us/articles/building-studio-widgets) tutorial for details on working with custom Studio widgets.
 	 */
 	readonly ThemeChanged: RBXScriptSignal<() => void>;
 }
@@ -3463,10 +3445,6 @@ interface StudioData extends Instance {
 	 * Tags: Hidden
 	 */
 	readonly EnableScriptCollabByDefaultOnLoad: boolean;
-	/**
-	 * Tags: Hidden
-	 */
-	readonly EnableTeamCreateStreamingOnLoad: boolean;
 	/**
 	 * Tags: Hidden, NotReplicated
 	 */
@@ -3616,7 +3594,7 @@ interface StudioService extends Instance {
 	AnimationIdSelected(this: StudioService, id: number): void;
 	ConvertToPackageUpload(this: StudioService, uploadUrl: string): void;
 	CopyToClipboard(this: StudioService, stringToCopy: string): void;
-	DEPRECATED_SetDocumentDisplayName(this: StudioService, newName: string): void;
+	DEPRECATED_SetTurnOnTeamCreateOnPublish(this: StudioService, turnOn: boolean): void;
 	EmitPlacePublishedSignal(this: StudioService): void;
 	GetBadgeConfigureUrl(this: StudioService, badgeId: number): string;
 	GetBadgeUploadUrl(this: StudioService): string;
@@ -3663,7 +3641,6 @@ interface StudioService extends Instance {
 	RequestClose(this: StudioService, closeMode: CastsToEnum<Enum.StudioCloseMode>): void;
 	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
-	SetTurnOnTeamCreateOnPublish(this: StudioService, turnOn: boolean): void;
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
 	ShowPlaceVersionHistoryDialog(this: StudioService, placeId: number): void;
 	ShowPublishToRoblox(this: StudioService): void;
@@ -4103,6 +4080,6 @@ interface VoiceChatService extends Instance {
 	/**
 	 * Tags: NotBrowsable
 	 */
-	GenerateDefaultChannel: boolean;
+	EnableDefaultVoice: boolean;
 }
 
