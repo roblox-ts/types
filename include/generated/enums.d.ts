@@ -12970,25 +12970,17 @@ declare namespace Enum {
 
 		export const PlayServer: PlayServer;
 
-		export interface RobloxPlugin {
-			Name: "RobloxPlugin";
+		export interface Standalone {
+			Name: "Standalone";
 			Value: 3;
 			EnumType: EnumType<StudioDataModelType>;
 		}
 
-		export const RobloxPlugin: RobloxPlugin;
-
-		export interface UserPlugin {
-			Name: "UserPlugin";
-			Value: 4;
-			EnumType: EnumType<StudioDataModelType>;
-		}
-
-		export const UserPlugin: UserPlugin;
+		export const Standalone: Standalone;
 
 		export interface None {
 			Name: "None";
-			Value: 5;
+			Value: 4;
 			EnumType: EnumType<StudioDataModelType>;
 		}
 
@@ -12996,7 +12988,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<StudioDataModelType>
 	}
-	export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.RobloxPlugin | StudioDataModelType.UserPlugin | StudioDataModelType.None;
+	export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.Standalone | StudioDataModelType.None;
 	export namespace StudioScriptEditorColorCategories {
 		export interface Default {
 			Name: "Default";
@@ -14901,6 +14893,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<TerrainAcquisitionMethod>
 	}
 	export type TerrainAcquisitionMethod = TerrainAcquisitionMethod.None | TerrainAcquisitionMethod.Legacy | TerrainAcquisitionMethod.Template | TerrainAcquisitionMethod.Generate | TerrainAcquisitionMethod.Import | TerrainAcquisitionMethod.Convert | TerrainAcquisitionMethod.EditAddTool | TerrainAcquisitionMethod.EditSeaLevelTool | TerrainAcquisitionMethod.EditReplaceTool | TerrainAcquisitionMethod.RegionFillTool | TerrainAcquisitionMethod.RegionPasteTool | TerrainAcquisitionMethod.Other;
+	export namespace TerrainFace {
+		export interface Top {
+			Name: "Top";
+			Value: 0;
+			EnumType: EnumType<TerrainFace>;
+		}
+
+		export const Top: Top;
+
+		export interface Side {
+			Name: "Side";
+			Value: 1;
+			EnumType: EnumType<TerrainFace>;
+		}
+
+		export const Side: Side;
+
+		export interface Bottom {
+			Name: "Bottom";
+			Value: 2;
+			EnumType: EnumType<TerrainFace>;
+		}
+
+		export const Bottom: Bottom;
+
+		export function GetEnumItems(this: defined): Array<TerrainFace>
+	}
+	export type TerrainFace = TerrainFace.Top | TerrainFace.Side | TerrainFace.Bottom;
 	export namespace TextChatMessageStatus {
 		export interface Unknown {
 			Name: "Unknown";

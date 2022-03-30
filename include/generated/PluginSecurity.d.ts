@@ -3592,7 +3592,6 @@ interface StudioService extends Instance {
 	 */
 	UseLocalSpace: boolean;
 	AnimationIdSelected(this: StudioService, id: number): void;
-	ConvertToPackageUpload(this: StudioService, uploadUrl: string): void;
 	CopyToClipboard(this: StudioService, stringToCopy: string): void;
 	DEPRECATED_SetTurnOnTeamCreateOnPublish(this: StudioService, turnOn: boolean): void;
 	EmitPlacePublishedSignal(this: StudioService): void;
@@ -3675,9 +3674,7 @@ interface StudioService extends Instance {
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
 	readonly GameNameUpdated: RBXScriptSignal<(name: string) => void>;
 	readonly GamePublishFinished: RBXScriptSignal<(success: boolean, gameId: number) => void>;
-	readonly OnConvertToPackageResult: RBXScriptSignal<(isSuccessful: boolean, errorMessage: string) => void>;
 	readonly OnImportFromRoblox: RBXScriptSignal<() => void>;
-	readonly OnOpenConvertToPackagePlugin: RBXScriptSignal<(instances: Array<Instance>, name: string) => void>;
 	readonly OnOpenGameSettings: RBXScriptSignal<(pageIdentifier: string) => void>;
 	readonly OnOpenManagePackagePlugin: RBXScriptSignal<(userId: number, assetId: number) => void>;
 	readonly OnPluginInstalledFromToolbox: RBXScriptSignal<() => void>;
@@ -3707,6 +3704,75 @@ interface StudioTheme extends Instance {
 	 * See the [StudioStyleGuideColor](https://developer.roblox.com/en-us/api-reference/enum/StudioStyleGuideColor) reference for a list of Studio elements and [StudioStyleGuideModifier](https://developer.roblox.com/en-us/api-reference/enum/StudioStyleGuideModifier) for a list of modifiers.
 	 */
 	GetColor(this: StudioTheme, styleguideitem: CastsToEnum<Enum.StudioStyleGuideColor>, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): Color3;
+}
+
+interface SurfaceAppearance extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SurfaceAppearance: unique symbol;
+	/**
+	 * This property determines how the alpha channel of the [SurfaceAppearance.ColorMap](https://developer.roblox.com/en-us/api-reference/property/SurfaceAppearance/ColorMap) of a [SurfaceAppearance](https://developer.roblox.com/en-us/api-reference/class/SurfaceAppearance) is used.
+	 * 
+	 * When AlphaMode is set to [Transparency](https://developer.roblox.com/en-us/api-reference/enum/AlphaMode) and the [MeshPart.Transparency](https://developer.roblox.com/en-us/api-reference/property/BasePart/Transparency) is set to 0, opaque pixels in the SurfaceAppearance's ColorMap will render as completely opaque in the 3D scene. This solves various problems for textures with different transparent and opaque areas, such as foliage. When parts of the surface are fully opaque, the Roblox engine can render them with proper depth-based occlusion. Opaque surfaces also generally work better with depth-based effects like DepthOfField, glass and water refraction, and water reflection.
+	 * 
+	 * MeshPart.TextureId vs SurfaceAppearance:
+	 * 
+	 * ![Foliage comparison](https://developer.roblox.com/assets/bltc11b6d62483163b0/leaves-comparison.gif)
+	 * 
+	 * Here is an example of a fern color map. Only the pixels on the leaves have full alpha.
+	 * 
+	 * ![Alpha fern](https://developer.roblox.com/assets/blt1a2e3175d2522842/fern-color.png)
+	 */
+	AlphaMode: Enum.AlphaMode;
+	/**
+	 * This property determines the color and opacity of the surface. This texture is sometimes called the albedo texture. The alpha channel of this texture controls its opacity, which behaves differently based on the [SurfaceAppearance.AlphaMode](https://developer.roblox.com/en-us/api-reference/property/SurfaceAppearance/AlphaMode) setting.
+	 */
+	ColorMap: string;
+	/**
+	 * This property determines which parts of the surface are metal and are non-metal. A metalness map is a grayscale image where black pixels correspond to non-metals and white pixels correspond to metals.
+	 * 
+	 * Metals only reflect light the same color as the metal, and they reflect much more light than non-metals. Most materials in the real world can be categorized either metals or non-metals. For this reason, most pixels in a metalness map will be either pure black or pure white. Values in between are typically used to simulate dirt or grunge on top of an underlying metal area.
+	 * 
+	 * Here's an example of a piece of metal with a layer of paint on top. Most paints are non-metallic, so the metalness map is black everywhere except on unpainted metal parts and spots where the paint has chipped away and the underlying metal is visible.
+	 * 
+	 * ![Metalness jetpack](https://developer.roblox.com/assets/blt0a658c7367d5cdab/jetpack.gif)
+	 * 
+	 * ![Map explanation](https://developer.roblox.com/assets/blt96558be20f7b7a1a/metalness-explained.png)
+	 * 
+	 * Note
+	 * ----
+	 * 
+	 * *   When [Lighting.EnvironmentSpecularScale](https://developer.roblox.com/en-us/api-reference/property/Lighting/EnvironmentSpecularScale) is 0, metalness has no effect. For the most realistic reflections, setting EnvironmentSpecularScale and [Lighting.EnvironmentDiffuseScale](https://developer.roblox.com/en-us/api-reference/property/Lighting/EnvironmentDiffuseScale) to 1, and [Lighting.Ambient](https://developer.roblox.com/en-us/api-reference/property/Lighting/Ambient) and [Lighting.OutdoorAmbient](https://developer.roblox.com/en-us/api-reference/property/Lighting/OutdoorAmbient) to (0,0,0) is recommended.
+	 */
+	MetalnessMap: string;
+	/**
+	 * This property modifies the lighting of the surface by adding bumps, dents, cracks, and curves without adding more polygons.
+	 * 
+	 * Normal maps are RGB images that modify the surface's normal vector used for lighting calculations. The R, G, and B channels of the NormalMap correspond to the X, Y, and Z components of the local surface vector respectively, and byte values of 0 and 255 for each channel correspond linearly to normal vector components of -1 and 1.016 respectively. This range is stretched slightly from -1 to 1 so that a byte value of 127 maps to exactly 0. The normal vector's Z axis is always defined as the direction of the underlying mesh's normal. A uniform (127,127,255) image translates to a completely flat normal map where the normal is everywhere perpendicular to the mesh surface. This format is called “tangent space” normal maps. Roblox does not support world space or object space normal maps.
+	 * 
+	 * Incorrectly flipped normal components can make bumps appear like indents. If you import a normal map and notice the lighting looks off, you may need to invert the G channel of the image. The X and Y axes of the tangent space frame correspond to the X and Y directions in the image after it's transformed by the mesh UVs. If you view your normal map in an image editor as if it were displayed on a surface, normals pointing towards the right side of the screen should appear more red, and normals pointing towards the top side of your screen should appear more green.
+	 * 
+	 * ![Bread normal map](https://developer.roblox.com/assets/blt013e67a5f211cd0d/bread-nmap.png)
+	 * 
+	 * The terms “DirectX format” and “OpenGL format” are sometimes used to describe whether the G channel of the normal map is inverted or not. Roblox expects the OpenGL format.
+	 * 
+	 * Note
+	 * ----
+	 * 
+	 * Roblox expects imported meshes to include tangents. Modeling software may also refer to this as “tangent space” information. If you apply a normal map and it does not seem to make any visual difference, you may need to re-export your mesh along with its tangent information from modeling software.
+	 */
+	NormalMap: string;
+	/**
+	 * This property determines the apparent roughness across the surface. A roughness map is a grayscale image where black pixels correspond to a maximally smooth surface, and white pixels correspond to a maximally rough surface.
+	 * 
+	 * Roughness refers to how much variation the surface has on a very small scale. Reflections on smooth surfaces are sharp and concentrated. Reflections on rough surfaces are more blurry and dispersed.
+	 */
+	RoughnessMap: string;
 }
 
 /** TaskScheduler is a read-only settings class responsible for the Task Scheduler feature.  
@@ -3740,6 +3806,21 @@ interface TaskScheduler extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly ThreadPoolSize: number;
+}
+
+interface TerrainDetail extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TerrainDetail: unique symbol;
+	ColorMap: string;
+	MetalnessMap: string;
+	NormalMap: string;
+	RoughnessMap: string;
 }
 
 interface TerrainRegion extends Instance {

@@ -287,6 +287,7 @@ interface CreatableInstances {
 	SurfaceSelection: SurfaceSelection;
 	Team: Team;
 	TeleportOptions: TeleportOptions;
+	TerrainDetail: TerrainDetail;
 	TerrainRegion: TerrainRegion;
 	TextBox: TextBox;
 	TextButton: TextButton;
@@ -31304,6 +31305,20 @@ interface TemporaryScriptService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TemporaryScriptService: unique symbol;
+}
+
+interface TerrainDetail extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TerrainDetail: unique symbol;
+	Face: Enum.TerrainFace;
+	MaterialPattern: Enum.MaterialPattern;
+	StudsPerTile: number;
 }
 
 /** A TerrainRegion is a snapshot of [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) retrieved from the [CopyRegion](https://developer.roblox.com/api-reference/function/Terrain/CopyRegion "CopyRegion") method. Can be later pasted into the Terrain using [PasteRegion](https://developer.roblox.com/api-reference/function/Terrain/PasteRegion "PasteRegion"). */
