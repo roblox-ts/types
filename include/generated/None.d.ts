@@ -21069,6 +21069,7 @@ interface MaterialService extends Instance {
 	ClearOverridePartMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): void;
 	ClearOverrideTerrainMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): void;
 	GetBaseMaterialOverride(this: MaterialService, material: CastsToEnum<Enum.Material>): string;
+	GetMaterialVariant(this: MaterialService, material: CastsToEnum<Enum.Material>, name: string): MaterialVariant;
 	GetOverridePartMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): MaterialVariant;
 	GetOverrideTerrainMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): MaterialVariant;
 	SetBaseMaterialOverride(this: MaterialService, material: CastsToEnum<Enum.Material>, name: string): void;
