@@ -3593,7 +3593,6 @@ interface StudioService extends Instance {
 	UseLocalSpace: boolean;
 	AnimationIdSelected(this: StudioService, id: number): void;
 	CopyToClipboard(this: StudioService, stringToCopy: string): void;
-	DEPRECATED_SetTurnOnTeamCreateOnPublish(this: StudioService, turnOn: boolean): void;
 	EmitPlacePublishedSignal(this: StudioService): void;
 	GetBadgeConfigureUrl(this: StudioService, badgeId: number): string;
 	GetBadgeUploadUrl(this: StudioService): string;

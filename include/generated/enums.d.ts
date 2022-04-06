@@ -3282,6 +3282,14 @@ declare namespace Enum {
 
 		export const DisconnectOutOfMemory: DisconnectOutOfMemory;
 
+		export interface DisconnectModeratedGame {
+			Name: "DisconnectModeratedGame";
+			Value: 287;
+			EnumType: EnumType<ConnectionError>;
+		}
+
+		export const DisconnectModeratedGame: DisconnectModeratedGame;
+
 		export interface PlacelaunchErrors {
 			Name: "PlacelaunchErrors";
 			Value: 512;
@@ -3468,7 +3476,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<ConnectionError>
 	}
-	export type ConnectionError = ConnectionError.OK | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+	export type ConnectionError = ConnectionError.OK | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.DisconnectModeratedGame | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 	export namespace ConnectionState {
 		export interface Connected {
 			Name: "Connected";
@@ -16374,9 +16382,49 @@ declare namespace Enum {
 
 		export const OuterCage: OuterCage;
 
+		export interface ReferenceMeshAfterMorph {
+			Name: "ReferenceMeshAfterMorph";
+			Value: 7;
+			EnumType: EnumType<WrapLayerDebugMode>;
+		}
+
+		export const ReferenceMeshAfterMorph: ReferenceMeshAfterMorph;
+
+		export interface HSROuterDetail {
+			Name: "HSROuterDetail";
+			Value: 8;
+			EnumType: EnumType<WrapLayerDebugMode>;
+		}
+
+		export const HSROuterDetail: HSROuterDetail;
+
+		export interface HSROuter {
+			Name: "HSROuter";
+			Value: 9;
+			EnumType: EnumType<WrapLayerDebugMode>;
+		}
+
+		export const HSROuter: HSROuter;
+
+		export interface HSRInner {
+			Name: "HSRInner";
+			Value: 10;
+			EnumType: EnumType<WrapLayerDebugMode>;
+		}
+
+		export const HSRInner: HSRInner;
+
+		export interface HSRInnerReverse {
+			Name: "HSRInnerReverse";
+			Value: 11;
+			EnumType: EnumType<WrapLayerDebugMode>;
+		}
+
+		export const HSRInnerReverse: HSRInnerReverse;
+
 		export function GetEnumItems(this: defined): Array<WrapLayerDebugMode>
 	}
-	export type WrapLayerDebugMode = WrapLayerDebugMode.None | WrapLayerDebugMode.BoundCage | WrapLayerDebugMode.LayerCage | WrapLayerDebugMode.BoundCageAndLinks | WrapLayerDebugMode.Reference | WrapLayerDebugMode.Rbf | WrapLayerDebugMode.OuterCage;
+	export type WrapLayerDebugMode = WrapLayerDebugMode.None | WrapLayerDebugMode.BoundCage | WrapLayerDebugMode.LayerCage | WrapLayerDebugMode.BoundCageAndLinks | WrapLayerDebugMode.Reference | WrapLayerDebugMode.Rbf | WrapLayerDebugMode.OuterCage | WrapLayerDebugMode.ReferenceMeshAfterMorph | WrapLayerDebugMode.HSROuterDetail | WrapLayerDebugMode.HSROuter | WrapLayerDebugMode.HSRInner | WrapLayerDebugMode.HSRInnerReverse;
 	export namespace WrapTargetDebugMode {
 		export interface None {
 			Name: "None";
@@ -16442,9 +16490,17 @@ declare namespace Enum {
 
 		export const Rbf: Rbf;
 
+		export interface OuterCageDetail {
+			Name: "OuterCageDetail";
+			Value: 8;
+			EnumType: EnumType<WrapTargetDebugMode>;
+		}
+
+		export const OuterCageDetail: OuterCageDetail;
+
 		export function GetEnumItems(this: defined): Array<WrapTargetDebugMode>
 	}
-	export type WrapTargetDebugMode = WrapTargetDebugMode.None | WrapTargetDebugMode.TargetCageOriginal | WrapTargetDebugMode.TargetCageCompressed | WrapTargetDebugMode.TargetCageInterface | WrapTargetDebugMode.TargetLayerCageOriginal | WrapTargetDebugMode.TargetLayerCageCompressed | WrapTargetDebugMode.TargetLayerInterface | WrapTargetDebugMode.Rbf;
+	export type WrapTargetDebugMode = WrapTargetDebugMode.None | WrapTargetDebugMode.TargetCageOriginal | WrapTargetDebugMode.TargetCageCompressed | WrapTargetDebugMode.TargetCageInterface | WrapTargetDebugMode.TargetLayerCageOriginal | WrapTargetDebugMode.TargetLayerCageCompressed | WrapTargetDebugMode.TargetLayerInterface | WrapTargetDebugMode.Rbf | WrapTargetDebugMode.OuterCageDetail;
 	export namespace ZIndexBehavior {
 		export interface Global {
 			Name: "Global";
