@@ -20728,9 +20728,7 @@ interface MarketplaceService extends Instance {
 	 * Returns a [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object which contains information for all of the current game's developer products.
 	 * Tags: Yields
 	 */
-	GetDeveloperProductsAsync(
-		this: MarketplaceService,
-	): StandardPages<{
+	GetDeveloperProductsAsync(this: MarketplaceService): StandardPages<{
 		Description: string;
 		PriceInRobux: number;
 		ProductId: number;
