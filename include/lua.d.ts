@@ -221,28 +221,26 @@ declare namespace TS {
 		...T[16],
 		...T[17],
 		...T[18],
-		...T[19]
+		...T[19],
 	];
 
 	type Flat<T extends Array<any>> = ConcatTuple<
 		[...{ [K in keyof T]: T[K] extends Array<any> ? T[K] : [T[K]] }, ...Array<[]>]
 	>;
 
-	type InfoFlags<T extends Array<any>> = TS.Flat<
-		{
-			[K in keyof T]: T[K] extends "s"
-				? string
-				: T[K] extends "l"
-				? number
-				: T[K] extends "n"
-				? string | undefined
-				: T[K] extends "a"
-				? [number, boolean]
-				: T[K] extends "f"
-				? Callback
-				: never;
-		}
-	>;
+	type InfoFlags<T extends Array<any>> = TS.Flat<{
+		[K in keyof T]: T[K] extends "s"
+			? string
+			: T[K] extends "l"
+			? number
+			: T[K] extends "n"
+			? string | undefined
+			: T[K] extends "a"
+			? [number, boolean]
+			: T[K] extends "f"
+			? Callback
+			: never;
+	}>;
 }
 
 declare namespace debug {
