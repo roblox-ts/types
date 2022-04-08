@@ -472,9 +472,7 @@ interface MarketplaceService extends Instance {
 		equipIfPurchased?: boolean,
 		currencyType?: CastsToEnum<Enum.CurrencyType>,
 	): void;
-	GetDeveloperProductsAsync(
-		this: MarketplaceService,
-	): StandardPages<{
+	GetDeveloperProductsAsync(this: MarketplaceService): StandardPages<{
 		Description: string;
 		PriceInRobux: number;
 		ProductId: number;
