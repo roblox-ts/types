@@ -15,7 +15,19 @@ jobs:
         uses: dependabot/fetch-metadata@v1.1.1
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Enable auto-merge for Dependabot PRs
+          
+      - name: Install NodeJS
+        uses: actions/setup-node@master
+        with:
+          node-version: 12.16.2
+          registry-url: 'https://registry.npmjs.org'
+
+      - uses: bahmutov/npm-install@v1
+
+      - name: Generate files
+        run: npm run build
+
+      - name: Merge if Dependabot PR
         run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
