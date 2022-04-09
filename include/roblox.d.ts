@@ -1655,9 +1655,27 @@ interface Random {
 	 * @deprecated
 	 */
 	readonly _nominal_Random: unique symbol;
+	/**
+	 * Returns a pseudorandom integer uniformly distributed over [min, max].
+	 */
 	NextInteger(this: Random, min: number, max: number): number;
+	/**
+	 * Returns a pseudorandom number uniformly distributed over [0, 1).
+	 */
 	NextNumber(this: Random): number;
+	/**
+	 * Returns a pseudorandom number uniformly distributed over [min, max).
+	 */
 	NextNumber(this: Random, min: number, max: number): number;
+	/**
+	 * Returns a unit vector with a pseudorandom direction.
+	 *
+	 * Vectors returned from this function are uniformly distributed over the unit sphere.
+	 */
+	NextUnitVector(this: Random): Vector3;
+	/**
+	 * Returns a new Random object with the same state as the original.
+	 */
 	Clone(this: Random): Random;
 }
 
