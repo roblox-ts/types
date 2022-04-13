@@ -109,6 +109,7 @@ interface Services {
 	UnvalidatedAssetService: UnvalidatedAssetService;
 	UserInputService: UserInputService;
 	UserService: UserService;
+	VideoCaptureService: VideoCaptureService;
 	VisibilityService: VisibilityService;
 	VoiceChatInternal: VoiceChatInternal;
 	VoiceChatService: VoiceChatService;
@@ -35138,6 +35139,17 @@ interface Vector3Curve extends Instance {
 	 * Returns the FloatCurve controlling the Z channel. It is the first child instance of type FloatCurve named `Z`. If none is found an empty FloatCurve is created.
 	 */
 	Z(this: Vector3Curve): FloatCurve;
+}
+
+interface VideoCaptureService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VideoCaptureService: unique symbol;
 }
 
 interface VisibilityService extends Instance {

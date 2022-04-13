@@ -11409,6 +11409,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<ProductPurchaseDecision>
 	}
 	export type ProductPurchaseDecision = ProductPurchaseDecision.NotProcessedYet | ProductPurchaseDecision.PurchaseGranted;
+	export namespace PropertyStatus {
+		export interface Ok {
+			Name: "Ok";
+			Value: 0;
+			EnumType: EnumType<PropertyStatus>;
+		}
+
+		export const Ok: Ok;
+
+		export interface Warning {
+			Name: "Warning";
+			Value: 1;
+			EnumType: EnumType<PropertyStatus>;
+		}
+
+		export const Warning: Warning;
+
+		export interface Error {
+			Name: "Error";
+			Value: 2;
+			EnumType: EnumType<PropertyStatus>;
+		}
+
+		export const Error: Error;
+
+		export function GetEnumItems(this: defined): Array<PropertyStatus>
+	}
+	export type PropertyStatus = PropertyStatus.Ok | PropertyStatus.Warning | PropertyStatus.Error;
 	export namespace ProximityPromptExclusivity {
 		export interface OnePerButton {
 			Name: "OnePerButton";
@@ -12621,6 +12649,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<ScrollingDirection>
 	}
 	export type ScrollingDirection = ScrollingDirection.X | ScrollingDirection.Y | ScrollingDirection.XY;
+	export namespace SelectionBehavior {
+		export interface Escape {
+			Name: "Escape";
+			Value: 0;
+			EnumType: EnumType<SelectionBehavior>;
+		}
+
+		export const Escape: Escape;
+
+		export interface Stop {
+			Name: "Stop";
+			Value: 1;
+			EnumType: EnumType<SelectionBehavior>;
+		}
+
+		export const Stop: Stop;
+
+		export function GetEnumItems(this: defined): Array<SelectionBehavior>
+	}
+	export type SelectionBehavior = SelectionBehavior.Escape | SelectionBehavior.Stop;
 	export namespace ServerAudioBehavior {
 		export interface Enabled {
 			Name: "Enabled";
