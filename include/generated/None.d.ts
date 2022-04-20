@@ -2001,7 +2001,6 @@ interface AssetImportService extends Instance {
 	 */
 	readonly _nominal_AssetImportService: unique symbol;
 	readonly ProgressUpdate: RBXScriptSignal<(progressRatio: number) => void>;
-	readonly SettingsChanged: RBXScriptSignal<(property: string) => void>;
 	readonly UploadFinished: RBXScriptSignal<(succeeded: boolean, errorMap: object) => void>;
 }
 
@@ -10566,6 +10565,26 @@ interface GuiBase2d extends GuiBase {
 	 * If there is no translation available in the referenced table it will look for a translation in the parent of that table, if it is also a LocalizationTable, and so on.
 	 */
 	RootLocalizationTable: LocalizationTable | undefined;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	SelectionBehaviorDown: Enum.SelectionBehavior;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	SelectionBehaviorLeft: Enum.SelectionBehavior;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	SelectionBehaviorRight: Enum.SelectionBehavior;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	SelectionBehaviorUp: Enum.SelectionBehavior;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	SelectionGroup: boolean;
 }
 
 /** GuiObject is an abstract class (much like [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)) for a 2D user interface object. It defines all the properties relating to the display of a graphical user interface (GUI) object such as [GuiObject.Size](https://developer.roblox.com/en-us/api-reference/property/GuiObject/Size) and [GuiObject.Position](https://developer.roblox.com/en-us/api-reference/property/GuiObject/Position). It also has some useful read-only properties like `GuiObject/AbsolutePosition`, `GuiObject/AbsoluteSize`, and `GuiObject/AbsoluteRotation`. It should be noted that [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) can have negative sizes and render normally, though [GuiObject.AnchorPoint](https://developer.roblox.com/en-us/api-reference/property/GuiObject/AnchorPoint) ought to be used to better control rendering.
@@ -13823,6 +13842,7 @@ interface GuiService extends Instance {
 	 * Removes a group that was created with [GuiService:AddSelectionParent](https://developer.roblox.com/en-us/api-reference/function/GuiService/AddSelectionParent) or [GuiService:AddSelectionTuple](https://developer.roblox.com/en-us/api-reference/function/GuiService/AddSelectionTuple).
 	 */
 	RemoveSelectionGroup(this: GuiService, selectionName: string): void;
+	Select(this: GuiService, selectionParent: Selection): void;
 	/**
 	 * Opens or closes the player Emotes menu.
 	 */
