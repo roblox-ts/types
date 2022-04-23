@@ -225,12 +225,17 @@ interface GlobalDataStore extends Instance {
 	GetAsync<T>(this: GlobalDataStore, key: string): T | undefined;
 	IncrementAsync(this: GlobalDataStore, key: string, delta?: number): number;
 	RemoveAsync<T>(this: GlobalDataStore, key: string): T | undefined;
-	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
+	SetAsync(this: GlobalDataStore, key: string, value?: unknown, userIds?: number[], options?: DataStoreSetOptions): void;
 	UpdateAsync<O, R>(
 		this: GlobalDataStore,
 		key: string,
 		transformFunction: (oldValue: O | undefined) => R,
 	): R extends undefined ? O | undefined : R;
+}
+
+interface DataStoreSetOptions extends Instance {
+	GetMetadata(this: DataStoreSetOptions): Record<string, unknown>;
+	SetMetadata(this: DataStoreSetOptions, attributes: Record<string, unknown>);
 }
 
 interface GroupService extends Instance {
