@@ -764,7 +764,7 @@ interface TeleportService extends Instance {
 	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: ScreenGui, dataTable?: unknown) => void>;
 
 	readonly TeleportInitFailed: RBXScriptSignal<
-		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string) => void
+		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string, placeId: number, teleportOptions: TeleportOptions) => void
 	>;
 	/** @server */
 	GetPlayerPlaceInstanceAsync(this: TeleportService, userId: number): LuaTuple<[boolean, string, number, string]>;
