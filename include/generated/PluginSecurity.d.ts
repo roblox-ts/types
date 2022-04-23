@@ -4157,9 +4157,6 @@ interface VoiceChatService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_VoiceChatService: unique symbol;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	EnableDefaultVoice: boolean;
 }
 
