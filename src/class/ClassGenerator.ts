@@ -1,6 +1,6 @@
 /* eslint-disable no-inner-declarations */
+import axios from "axios";
 import fs from "fs-extra";
-import fetch from "node-fetch";
 import path from "path";
 import { Project } from "ts-morph";
 import * as ts from "ts-morph";
@@ -755,12 +755,13 @@ function handleLinkData(
 	myLinks.push(
 		new Promise<void>((resolve, reject) => {
 			setTimeout(reject, 10000);
-			fetch(link)
+			axios
+				.get(link)
 				.then(response => {
 					if (response.status !== 200) {
 						throw new Error("bad request");
 					}
-					return response.text();
+					return response.data as string;
 				})
 				.then(rawData => {
 					const obj = JSON.parse(rawData);
