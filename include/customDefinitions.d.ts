@@ -338,6 +338,7 @@ interface GuiService extends Instance {
 		name: string,
 	): void;
 	GetGuiInset(this: GuiService): LuaTuple<[Vector2, Vector2]>;
+	Select(this: GuiService, selectionParent: Instance): void;
 }
 
 interface HttpService extends Instance {
