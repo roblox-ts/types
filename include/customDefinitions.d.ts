@@ -192,13 +192,51 @@ interface DataModel extends ServiceProvider<Services> {
 	BindToClose(this: DataModel, callback: () => void): void;
 }
 
+interface DataStore extends GlobalDataStore {
+	GetAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
+	GetVersionAsync(
+		this: DataStore,
+		key: string,
+		version: string,
+	): LuaTuple<[value: unknown, keyInfo: DataStoreKeyInfo]>;
+	IncrementAsync(
+		this: DataStore,
+		key: string,
+		delta?: number,
+		userIds?: Array<number>,
+		options?: DataStoreIncrementOptions,
+	): LuaTuple<[number, DataStoreKeyInfo]>;
+	SetAsync(
+		this: DataStore,
+		key: string,
+		value?: unknown,
+		userIds?: Array<number>,
+		options?: DataStoreSetOptions,
+	): string;
+	UpdateAsync<O, R>(
+		this: DataStore,
+		key: string,
+		transformFunction: (
+			oldValue: O | undefined,
+			keyInfo: DataStoreKeyInfo,
+		) => LuaTuple<[newValue: R, userIds?: Array<number>, metadata?: object]>,
+	): R extends undefined
+		? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]>
+		: LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
+	RemoveAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
+}
+
 interface DataStorePages extends Pages<{ key: string; value: unknown }> {}
 
 /** @server */
 interface DataStoreService extends Instance {
-	GetDataStore(this: DataStoreService, name: string, scope?: string): GlobalDataStore;
+	GetDataStore(this: DataStoreService, name: string, scope?: string, options?: DataStoreOptions): DataStore;
 	GetGlobalDataStore(this: DataStoreService): GlobalDataStore;
 	GetOrderedDataStore(this: DataStoreService, name: string, scope?: string): OrderedDataStore;
+}
+
+interface DataStoreVersionPages extends Pages {
+	GetCurrentPage(this: Pages): Array<DataStoreObjectVersionInfo>;
 }
 
 interface Dialog extends Instance {
@@ -222,9 +260,6 @@ interface GenericSettings<S = unknown> extends ServiceProvider<S> {}
 
 /** @server */
 interface GlobalDataStore extends Instance {
-	GetAsync<T>(this: GlobalDataStore, key: string): T | undefined;
-	IncrementAsync(this: GlobalDataStore, key: string, delta?: number): number;
-	RemoveAsync<T>(this: GlobalDataStore, key: string): T | undefined;
 	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
 	UpdateAsync<O, R>(
 		this: GlobalDataStore,
@@ -519,6 +554,7 @@ interface ObjectValue extends ValueBase {
 
 /** @server */
 interface OrderedDataStore extends GlobalDataStore {
+	GetAsync(this: OrderedDataStore, key: string): number | undefined;
 	GetSortedAsync(
 		this: OrderedDataStore,
 		ascending: boolean,
@@ -526,6 +562,8 @@ interface OrderedDataStore extends GlobalDataStore {
 		minValue?: number,
 		maxValue?: number,
 	): DataStorePages;
+	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
+	RemoveAsync(this: OrderedDataStore, key: string): number;
 }
 
 interface Pages<T = unknown> extends Instance {
