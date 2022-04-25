@@ -31335,7 +31335,13 @@ interface TeleportService extends Instance {
 	 * For an in-depth guide on teleporting players and properly handling teleport failures, see the [Teleporting Between Places](https://developer.roblox.com/en-us/articles/Teleporting-Between-Places) article.
 	 */
 	readonly TeleportInitFailed: RBXScriptSignal<
-		(player: Player, teleportResult: Enum.TeleportResult, errorMessage: string) => void
+		(
+			player: Player,
+			teleportResult: Enum.TeleportResult,
+			errorMessage: string,
+			placeId: number,
+			teleportOptions: TeleportOptions,
+		) => void
 	>;
 }
 
