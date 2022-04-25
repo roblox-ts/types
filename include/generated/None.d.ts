@@ -8887,7 +8887,7 @@ interface DataStoreService extends Instance {
 	 * 
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 */
-	GetDataStore(this: DataStoreService, name: string, scope?: string): GlobalDataStore;
+	GetDataStore(this: DataStoreService, name: string, scope?: string, options?: DataStoreOptions): DataStore;
 	/**
 	 * This function returns the default [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). If you want to access a specific **named** data store instead, you should use the [GetDataStore()](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/GetDataStore) function.
 	 */
@@ -10129,7 +10129,7 @@ interface GlobalDataStore extends Instance {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	GetAsync<T>(this: GlobalDataStore, key: string): T | undefined;
+	GetAsync(this: GlobalDataStore, key: string): unknown;
 	/**
 	 * This function increments the value of a key by the provided amount (both must be integers).
 	 * 
@@ -10141,7 +10141,7 @@ interface GlobalDataStore extends Instance {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	IncrementAsync(this: GlobalDataStore, key: string, delta?: number): number;
+	IncrementAsync(this: GlobalDataStore, key: string, delta?: number, userIds?: Array<any>, options?: DataStoreIncrementOptions): unknown;
 	/**
 	 * This function marks the specified key as deleted by creating a new “tombstone” version of the key. Prior to this, it returns the latest version prior to the remove call.
 	 * 
@@ -10159,7 +10159,7 @@ interface GlobalDataStore extends Instance {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	RemoveAsync<T>(this: GlobalDataStore, key: string): T | undefined;
+	RemoveAsync(this: GlobalDataStore, key: string): unknown;
 	/**
 	 * This function sets the latest value, [UserIds](https://developer.roblox.com/en-us/api-reference/property/Player/UserId), and metadata for the given key.
 	 * 
@@ -10239,6 +10239,32 @@ interface DataStore extends GlobalDataStore {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStore: unique symbol;
+	GetAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
+	IncrementAsync(
+		this: DataStore,
+		key: string,
+		delta?: number,
+		userIds?: Array<number>,
+		options?: DataStoreIncrementOptions,
+	): LuaTuple<[number, DataStoreKeyInfo]>;
+	SetAsync(
+		this: DataStore,
+		key: string,
+		value?: unknown,
+		userIds?: Array<number>,
+		options?: DataStoreSetOptions,
+	): string;
+	UpdateAsync<O, R>(
+		this: DataStore,
+		key: string,
+		transformFunction: (
+			oldValue: O | undefined,
+			keyInfo: DataStoreKeyInfo,
+		) => LuaTuple<[newValue: R, userIds?: Array<number>, metadata?: object]>,
+	): R extends undefined
+		? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]>
+		: LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
+	RemoveAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
 	/**
 	 * This function retrieves the specified key version as well as a [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) instance. A version identifier can be found through [DataStore:ListVersionsAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/ListVersionsAsync) or alternatively be the identifier returned by [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync).
 	 * 
@@ -10248,7 +10274,11 @@ interface DataStore extends GlobalDataStore {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	GetVersionAsync(this: DataStore, key: string, version: string): unknown;
+	GetVersionAsync(
+		this: DataStore,
+		key: string,
+		version: string,
+	): LuaTuple<[value: unknown, keyInfo: DataStoreKeyInfo]>;
 	/**
 	 * This function returns a [DataStoreKeyPages](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyPages) object for enumerating through keys of a data store. It accepts an optional `prefix` parameter to only locate keys whose names start with the provided prefix.
 	 * 
@@ -10298,6 +10328,9 @@ interface OrderedDataStore extends GlobalDataStore {
 	 * @deprecated
 	 */
 	readonly _nominal_OrderedDataStore: unique symbol;
+	GetAsync(this: OrderedDataStore, key: string): number | undefined;
+	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
+	RemoveAsync(this: OrderedDataStore, key: string): number;
 	/**
 	 * Returns a [DataStorePages](https://developer.roblox.com/en-us/api-reference/class/DataStorePages) object. The sort order is determined by **ascending**, the length of each page by **pageSize**, and **minValue** /**maxValue** are optional parameters which filter the results.
 	 * 
@@ -24684,6 +24717,7 @@ interface DataStoreVersionPages extends Pages {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreVersionPages: unique symbol;
+	GetCurrentPage(this: Pages): Array<DataStoreObjectVersionInfo>;
 }
 
 /** FriendPages is a special version of the [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) returned by [Players:GetFriendsAsync](https://developer.roblox.com/en-us/api-reference/function/Players/GetFriendsAsync). The items contained within describe information about a player's friends, and have the following structure:
