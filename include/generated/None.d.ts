@@ -13875,7 +13875,7 @@ interface GuiService extends Instance {
 	 * Removes a group that was created with [GuiService:AddSelectionParent](https://developer.roblox.com/en-us/api-reference/function/GuiService/AddSelectionParent) or [GuiService:AddSelectionTuple](https://developer.roblox.com/en-us/api-reference/function/GuiService/AddSelectionTuple).
 	 */
 	RemoveSelectionGroup(this: GuiService, selectionName: string): void;
-	Select(this: GuiService, selectionParent: Selection): void;
+	Select(this: GuiService, selectionParent: Instance): void;
 	/**
 	 * Opens or closes the player Emotes menu.
 	 */
