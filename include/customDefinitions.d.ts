@@ -389,6 +389,18 @@ interface InsertService extends Instance {
 }
 
 interface Instance {
+	/**
+	 * **Clone** creates a copy of an object and all of its descendants, ignoring all objects that are not [Archivable](https://developer.roblox.com/en-us/api-reference/property/Instance/Archivable). The copy of the root object is returned by this function and its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is set to nil.
+	 * 
+	 * If a reference property such as [ObjectValue.Value](https://developer.roblox.com/en-us/api-reference/property/ObjectValue/Value) is set in a cloned object, the value of the copy's property depends on original's value:
+	 * 
+	 * *   If a reference property refers to an object that was **also** cloned, an _internal reference_, the copy will refer to the copy.
+	 * *   If a reference property refers to an object that was **not** cloned, an _external reference_, the same value is maintained in the copy.
+	 * 
+	 * This function is typically used to create models that can be regenerated. First, get a reference to the original object. Then, make a copy of the object and insert the copy by setting its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) or one of its descendants. Finally, when it's time to regenerate the model, [Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) the copy and clone a new one from the original like before.
+	 * 
+	 * Clone will return nil if the root object has Archivable set to false.
+	 */
 	Clone<T extends Instance>(this: T): T;
 	/** `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
 	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Instance.Changed` event.
