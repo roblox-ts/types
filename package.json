@@ -44,7 +44,7 @@
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-simple-import-sort": "^7.0.0",
 		"fs-extra": "^10.0.0",
-		"libxmljs2": "^0.29.0",
+		"libxmljs2": "^0.30.1",
 		"prettier": "^2.1.2",
 		"ts-morph": "^14.0.0",
 		"typescript": "^4.0.3"
