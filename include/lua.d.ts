@@ -697,6 +697,16 @@ declare namespace table {
 	function freeze(t: object): void;
 	/** Returns whether or not `t` is frozen */
 	function isfrozen<T extends object>(t: T): t is Readonly<T>;
+
+	/**
+	 * Takes an object and returns a new object that has the same keys, values and metatable.
+	 *
+	 * The cloning is shallow - meaning that any object values in the clone will reference the same value objects as the parent.
+	 */
+	function clone<V>(value: ReadonlyArray<V>): Array<V>;
+	function clone<V>(value: ReadonlySet<V>): Set<V>;
+	function clone<K, V>(value: ReadonlyMap<K, V>): Map<K, V>;
+	function clone<T extends object>(value: T): T;
 }
 
 type thread = {
