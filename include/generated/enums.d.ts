@@ -218,9 +218,25 @@ declare namespace Enum {
 
 		export const DressSkirt: DressSkirt;
 
+		export interface Eyebrow {
+			Name: "Eyebrow";
+			Value: 18;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Eyebrow: Eyebrow;
+
+		export interface Eyelash {
+			Name: "Eyelash";
+			Value: 19;
+			EnumType: EnumType<AccessoryType>;
+		}
+
+		export const Eyelash: Eyelash;
+
 		export function GetEnumItems(this: defined): Array<AccessoryType>
 	}
-	export type AccessoryType = AccessoryType.Unknown | AccessoryType.Hat | AccessoryType.Hair | AccessoryType.Face | AccessoryType.Neck | AccessoryType.Shoulder | AccessoryType.Front | AccessoryType.Back | AccessoryType.Waist | AccessoryType.TShirt | AccessoryType.Shirt | AccessoryType.Pants | AccessoryType.Jacket | AccessoryType.Sweater | AccessoryType.Shorts | AccessoryType.LeftShoe | AccessoryType.RightShoe | AccessoryType.DressSkirt;
+	export type AccessoryType = AccessoryType.Unknown | AccessoryType.Hat | AccessoryType.Hair | AccessoryType.Face | AccessoryType.Neck | AccessoryType.Shoulder | AccessoryType.Front | AccessoryType.Back | AccessoryType.Waist | AccessoryType.TShirt | AccessoryType.Shirt | AccessoryType.Pants | AccessoryType.Jacket | AccessoryType.Sweater | AccessoryType.Shorts | AccessoryType.LeftShoe | AccessoryType.RightShoe | AccessoryType.DressSkirt | AccessoryType.Eyebrow | AccessoryType.Eyelash;
 	export namespace ActionType {
 		export interface Nothing {
 			Name: "Nothing";
@@ -1282,9 +1298,25 @@ declare namespace Enum {
 
 		export const DressSkirtAccessory: DressSkirtAccessory;
 
+		export interface EyebrowAccessory {
+			Name: "EyebrowAccessory";
+			Value: 76;
+			EnumType: EnumType<AssetType>;
+		}
+
+		export const EyebrowAccessory: EyebrowAccessory;
+
+		export interface EyelashAccessory {
+			Name: "EyelashAccessory";
+			Value: 77;
+			EnumType: EnumType<AssetType>;
+		}
+
+		export const EyelashAccessory: EyelashAccessory;
+
 		export function GetEnumItems(this: defined): Array<AssetType>
 	}
-	export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory;
+	export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.EyebrowAccessory | AssetType.EyelashAccessory;
 	export namespace AssetTypeVerification {
 		export interface Default {
 			Name: "Default";
@@ -1666,9 +1698,25 @@ declare namespace Enum {
 
 		export const DressSkirtAccessory: DressSkirtAccessory;
 
+		export interface EyebrowAccessory {
+			Name: "EyebrowAccessory";
+			Value: 76;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const EyebrowAccessory: EyebrowAccessory;
+
+		export interface EyelashAccessory {
+			Name: "EyelashAccessory";
+			Value: 77;
+			EnumType: EnumType<AvatarAssetType>;
+		}
+
+		export const EyelashAccessory: EyelashAccessory;
+
 		export function GetEnumItems(this: defined): Array<AvatarAssetType>
 	}
-	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory;
+	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory;
 	export namespace AvatarContextMenuOption {
 		export interface Friend {
 			Name: "Friend";
@@ -2146,9 +2194,17 @@ declare namespace Enum {
 
 		export const Animations: Animations;
 
+		export interface Shoes {
+			Name: "Shoes";
+			Value: 3;
+			EnumType: EnumType<BundleType>;
+		}
+
+		export const Shoes: Shoes;
+
 		export function GetEnumItems(this: defined): Array<BundleType>
 	}
-	export type BundleType = BundleType.BodyParts | BundleType.Animations;
+	export type BundleType = BundleType.BodyParts | BundleType.Animations | BundleType.Shoes;
 	export namespace Button {
 		export interface Jump {
 			Name: "Jump";

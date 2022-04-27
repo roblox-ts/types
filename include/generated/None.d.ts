@@ -10875,6 +10875,10 @@ interface GuiObject extends GuiBase2d {
 	 */
 	SelectionImageObject: GuiObject | undefined;
 	/**
+	 * Tags: NotBrowsable
+	 */
+	SelectionOrder: number;
+	/**
 	 * This property determines a [GUI's](https://developer.roblox.com/en-us/api-reference/class/GuiObject) scalar and pixel size using a `UDim2`. Its value can be expressed as `UDim2.new(ScalarX, PixelX, ScalarY, PixelY)` or `({ScalarX, PixelX}, {ScalarY, PixelY})`.
 	 * 
 	 * The scalar size is relative to the scalar size of parent GUI elements, if any. For example, if the GUI's scalar size is `UDim2.new(0.5, 0, 0.5, 0)` and it is not the descendant of a GUI, then it will occupy half of the screen horizontally and vertically. However, if the GUI is the child of a GUI with a scalar size of `UDim2.new(0.5, 0, 0.5, 0)`, then the GUI's scalar size will render to be half the scalar size of its parent both horizontally and vertically and will occupy a quarter of the screen in both dimensions.
@@ -15081,6 +15085,10 @@ interface Humanoid extends Instance {
 	 */
 	ApplyDescription(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
 	/**
+	 * Tags: Yields
+	 */
+	ApplyDescriptionReset(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
+	/**
 	 * If the emote could not be played because the emoteName is not found in the HumanoidDescription for the humanoid or the Humanoid is in the wrong HumanoidState for emotes then this API would return false to indicate that the emote was not played. The API would return true to indicate that the emote was played successfully.
 	 * Tags: Yields
 	 */
@@ -16125,6 +16133,10 @@ interface ImporterMeshSettings extends ImporterBaseSettings {
 	readonly Dimensions: Vector3;
 	DoubleSided: boolean;
 	IgnoreVertexColors: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Manifold: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */

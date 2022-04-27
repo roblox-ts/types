@@ -3637,7 +3637,6 @@ interface StudioService extends Instance {
 	PublishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
 	RefreshDocumentDisplayName(this: StudioService): void;
 	RequestClose(this: StudioService, closeMode: CastsToEnum<Enum.StudioCloseMode>): void;
-	SerializeInstances(this: StudioService, instances: Array<Instance>): string;
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
 	SetUniverseDisplayName(this: StudioService, newName: string): void;
 	ShowPlaceVersionHistoryDialog(this: StudioService, placeId: number): void;
