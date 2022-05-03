@@ -551,7 +551,7 @@ declare namespace math {
 	function round(n: number): number;
 
 	/** Returns -1 if `x < 0`, 0 if `x == 0`, or 1 if `x > 0`. */
-	function sign(n: number): number;
+	function sign(n: number): -1 | 0 | 1;
 
 	/** Returns the sine of x (assumed to be in radians). */
 	function sin(n: number): number;
