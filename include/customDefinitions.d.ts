@@ -342,7 +342,12 @@ interface GuiService extends Instance {
 }
 
 interface HapticService extends Instance {
-	SetMotor(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>, motor: CastsToEnum<Enum.VibrationMotor>, vibration: number): void;
+	SetMotor(
+		this: HapticService,
+		inputType: CastsToEnum<Enum.UserInputType>,
+		motor: CastsToEnum<Enum.VibrationMotor>,
+		vibration: number
+	): void;
 }
 
 interface HttpService extends Instance {
