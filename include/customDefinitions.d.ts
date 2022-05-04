@@ -341,6 +341,15 @@ interface GuiService extends Instance {
 	Select(this: GuiService, selectionParent: Instance): void;
 }
 
+interface HapticService extends Instance {
+	SetMotor(
+		this: HapticService,
+		inputType: CastsToEnum<Enum.UserInputType>,
+		motor: CastsToEnum<Enum.VibrationMotor>,
+		vibration: number,
+	): void;
+}
+
 interface HttpService extends Instance {
 	/** @server */
 	GetAsync(this: HttpService, url: string, nocache?: boolean, headers?: HttpHeaders): string;
