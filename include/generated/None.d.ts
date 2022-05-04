@@ -13948,7 +13948,12 @@ interface HapticService extends Instance {
 	/**
 	 * Sets the vibration intensity of the specified [UserInputType](https://developer.roblox.com/api-reference/property/InputObject/UserInputType "UserInputType") and [VibrationMotor](https://developer.roblox.com/api-reference/enum/VibrationMotor "VibrationMotor").
 	 */
-	SetMotor(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>, vibrationMotor: CastsToEnum<Enum.VibrationMotor>, vibrationValues: Array<any>): void;
+	SetMotor(
+		this: HapticService,
+		inputType: CastsToEnum<Enum.UserInputType>,
+		motor: CastsToEnum<Enum.VibrationMotor>,
+		vibration: number,
+	): void;
 }
 
 interface HeightmapImporterService extends Instance {
