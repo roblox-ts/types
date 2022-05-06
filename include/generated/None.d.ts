@@ -37,6 +37,7 @@ interface Services {
 	DebuggerUIService: DebuggerUIService;
 	DraggerService: DraggerService;
 	EventIngestService: EventIngestService;
+	FaceAnimatorService: FaceAnimatorService;
 	GamePassService: GamePassService;
 	GroupService: GroupService;
 	GuiService: GuiService;
@@ -79,6 +80,7 @@ interface Services {
 	ScriptChangeService: ScriptChangeService;
 	ScriptCloneWatcher: ScriptCloneWatcher;
 	ScriptCloneWatcherHelper: ScriptCloneWatcherHelper;
+	ScriptCloneWatcherHelperV2: ScriptCloneWatcherHelperV2;
 	ScriptContext: ScriptContext;
 	ScriptRegistrationService: ScriptRegistrationService;
 	ServerScriptService: ServerScriptService;
@@ -6441,6 +6443,7 @@ interface CollectionService extends Instance {
 	 * **Warning:** When tagging an object, it is common that some resources are used to give the tag its functionality, e.g. event connections or tables. To prevent memory leaks, it is a good idea to clean these up (disconnect, set to nil, etc) when no longer needed for a tag. Do this when calling [CollectionService:RemoveTag](https://developer.roblox.com/en-us/api-reference/function/CollectionService/RemoveTag), calling [Instance:Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) or in a function connected to a signal returned by [CollectionService:GetInstanceRemovedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceRemovedSignal).
 	 */
 	AddTag(this: CollectionService, instance: Instance, tag: string): void;
+	GetAllTags(this: CollectionService): unknown;
 	/**
 	 * GetInstanceAdded is given a tag (a string) and returns a signal which fires under two conditions:
 	 * 
@@ -6509,6 +6512,8 @@ interface CollectionService extends Instance {
 	 * @deprecated
 	 */
 	readonly ItemRemoved: RBXScriptSignal<(instance: Instance) => void>;
+	readonly TagAdded: RBXScriptSignal<(tag: string) => void>;
+	readonly TagRemoved: RBXScriptSignal<(tag: string) => void>;
 }
 
 interface CommandInstance extends Instance {
@@ -9487,6 +9492,17 @@ interface Explosion extends Instance {
 	readonly Hit: RBXScriptSignal<(part: BasePart, distance: number) => void>;
 }
 
+interface FaceAnimatorService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FaceAnimatorService: unique symbol;
+}
+
 interface FaceControls extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -10618,6 +10634,7 @@ interface GuiBase2d extends GuiBase {
 	 * Tags: NotBrowsable
 	 */
 	SelectionGroup: boolean;
+	readonly SelectionChanged: RBXScriptSignal<(amISelected: boolean, previousSelection: GuiObject, newSelection: GuiObject) => void>;
 }
 
 /** GuiObject is an abstract class (much like [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)) for a 2D user interface object. It defines all the properties relating to the display of a graphical user interface (GUI) object such as [GuiObject.Size](https://developer.roblox.com/en-us/api-reference/property/GuiObject/Size) and [GuiObject.Position](https://developer.roblox.com/en-us/api-reference/property/GuiObject/Position). It also has some useful read-only properties like `GuiObject/AbsolutePosition`, `GuiObject/AbsoluteSize`, and `GuiObject/AbsoluteRotation`. It should be noted that [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) can have negative sizes and render normally, though [GuiObject.AnchorPoint](https://developer.roblox.com/en-us/api-reference/property/GuiObject/AnchorPoint) ought to be used to better control rendering.
@@ -28049,6 +28066,17 @@ interface ScriptCloneWatcherHelper extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ScriptCloneWatcherHelper: unique symbol;
+}
+
+interface ScriptCloneWatcherHelperV2 extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptCloneWatcherHelperV2: unique symbol;
 }
 
 /** This service controls all [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) objects. Most of the properties and methods of this service are locked for internal use, however you may use the [ScriptContext.ScriptsDisabled](https://developer.roblox.com/en-us/api-reference/property/ScriptContext/ScriptsDisabled) property to disable all scripts from a thread with normal security access. */
