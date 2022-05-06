@@ -306,7 +306,7 @@ declare namespace debug {
 		: T extends `${infer A}${infer _}`
 		? LuaTuple<TS.InfoFlags<[A]>>
 		: LuaTuple<[unknown, unknown, unknown, unknown, unknown]>;
-	
+
 	/**
 	 * Assigns a custom tag name to the current thread's memory category in the Developer Console. Useful for analyzing memory usage of multiple threads in the same script which would otherwise be grouped together under the same tag/name.
 	 */
