@@ -469,7 +469,7 @@ interface Keyframe extends Instance {
 }
 
 interface KeyframeSequence extends AnimationClip {
-	GetKeyframes(this: KeyframeSequence): Keyframe[];
+	GetKeyframes(this: KeyframeSequence): Array<Keyframe>;
 	/**
 	 * Determines whether the animation created from the `KeyframeSequence` will be looped. When set to true the animation will continuously repeat each time the animation finishes.
 	 *
