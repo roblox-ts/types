@@ -772,16 +772,6 @@ interface GameSettings extends Instance {
 	 */
 	readonly _nominal_GameSettings: unique symbol;
 	/**
-	 * Used internally by Roblox to add additional CoreScript loading directories.
-	 * 
-	 * The value of this string should be full paths to each directory, separated only by semicolons (`;`)
-	 */
-	readonly AdditionalCoreIncludeDirs: string;
-	/**
-	 * Describes a path to a .lua file that will be ran in place of the default StarterScript.
-	 */
-	readonly OverrideStarterScript: string;
-	/**
 	 * Toggles whether or not video capture is enabled.
 	 */
 	VideoCaptureEnabled: boolean;
@@ -3257,6 +3247,7 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Luau Keyword Color"]: Color3;
+	readonly ["Main Volume"]: number;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -3281,15 +3272,6 @@ interface Studio extends Instance {
 	["Operator Color"]: Color3;
 	["Output Font"]: QFont;
 	["Output Layout Mode"]: Enum.OutputLayoutMode;
-	/**
-	 * If set to true, the [Studio.OverrideCoreScriptsDir](https://developer.roblox.com/en-us/api-reference/property/Studio/OverrideCoreScriptsDir) will be used for CoreScripts in Roblox Studio, instead of the default `rbxasset://scripts` directory.
-	 */
-	readonly OverrideCoreScripts: boolean;
-	/**
-	 * The directory used when overriding core scripts.  
-	 * This should point to a clone of [Roblox's CoreScript GitHub repository](https://github.com/ROBLOX/Core-Scripts).
-	 */
-	readonly OverrideCoreScriptsDir: QDir;
 	/**
 	 * Sets the highest permission level that APIs have to have in order to be shown in the Object Browser.  
 	 * See [PermissionLevelShown](https://developer.roblox.com/en-us/api-reference/enum/PermissionLevelShown) for more info.
@@ -3373,7 +3355,7 @@ interface Studio extends Instance {
 	["Show Hidden Objects in Explorer"]: boolean;
 	["Show Hover Over"]: boolean;
 	readonly ["Show Light Guides"]: boolean;
-	readonly ["Show Navigation Areas"]: boolean;
+	readonly ["Show Navigation Labels"]: boolean;
 	["Show Navigation Mesh"]: boolean;
 	readonly ["Show Pathfinding Links"]: boolean;
 	["Show Plugin GUI Service in Explorer"]: boolean;

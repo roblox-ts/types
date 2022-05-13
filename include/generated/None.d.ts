@@ -74,7 +74,6 @@ interface Services {
 	PublishService: PublishService;
 	RemoteDebuggerServer: RemoteDebuggerServer;
 	ReplicatedFirst: ReplicatedFirst;
-	ReplicatedScriptService: ReplicatedScriptService;
 	ReplicatedStorage: ReplicatedStorage;
 	RunService: RunService;
 	ScriptChangeService: ScriptChangeService;
@@ -4150,6 +4149,7 @@ interface WrapLayer extends BaseWrap {
 	 * @deprecated
 	 */
 	readonly _nominal_WrapLayer: unique symbol;
+	AutoSkin: Enum.WrapLayerAutoSkin;
 	/**
 	 * This property is intended for fine-tuning purposes and is highly optional.
 	 * 
@@ -27599,17 +27599,6 @@ interface ReplicatedFirst extends Instance {
 	RemoveDefaultLoadingScreen(this: ReplicatedFirst): void;
 }
 
-interface ReplicatedScriptService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ReplicatedScriptService: unique symbol;
-}
-
 /** **ReplicatedStorage** is a general container service for objects that are available to both the server and connected game clients. It is ideal for [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript), [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction), [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) and other objects which are useful to both server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s and client-side [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s. [Script](https://developer.roblox.com/en-us/api-reference/class/Script) and [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) objects will not run if they are parented to this service even if they are not [Disabled](https://developer.roblox.com/en-us/api-reference/property/BaseScript/Disabled).
  * 
  * If a [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) within this service is required by any other script, it will run as normal. Such modules will typically house code that is shared by the server and client. Server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script) that should run on their own should be parented to [ServerScriptService](https://developer.roblox.com/en-us/api-reference/class/ServerScriptService) instead. Client-side [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) have various other locations where they will eventually be run on a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) client: [StarterPlayerScripts](https://developer.roblox.com/en-us/api-reference/class/StarterPlayerScripts), [StarterCharacterScripts](https://developer.roblox.com/en-us/api-reference/class/StarterCharacterScripts) or [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui).
@@ -33097,10 +33086,6 @@ interface UserGameSettings extends Instance {
 	 * Describes how sensitive the camera is when using a gamepad.
 	 */
 	GamepadCameraSensitivity: number;
-	/**
-	 * A [float](https://developer.roblox.com/articles/Numbers "Float") between 0 and 1 representing the volume of the game's client.
-	 */
-	MasterVolume: number;
 	/**
 	 * A [float](https://developer.roblox.com/articles/Numbers "Float") between 0 and 100 representing the sensitivity of the client's mouse.
 	 */

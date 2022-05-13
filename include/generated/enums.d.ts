@@ -16437,6 +16437,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<WaterForce>
 	}
 	export type WaterForce = WaterForce.None | WaterForce.Small | WaterForce.Medium | WaterForce.Strong | WaterForce.Max;
+	export namespace WrapLayerAutoSkin {
+		export interface Disabled {
+			Name: "Disabled";
+			Value: 0;
+			EnumType: EnumType<WrapLayerAutoSkin>;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface EnabledPreserve {
+			Name: "EnabledPreserve";
+			Value: 1;
+			EnumType: EnumType<WrapLayerAutoSkin>;
+		}
+
+		export const EnabledPreserve: EnabledPreserve;
+
+		export interface EnabledOverride {
+			Name: "EnabledOverride";
+			Value: 2;
+			EnumType: EnumType<WrapLayerAutoSkin>;
+		}
+
+		export const EnabledOverride: EnabledOverride;
+
+		export function GetEnumItems(this: defined): Array<WrapLayerAutoSkin>
+	}
+	export type WrapLayerAutoSkin = WrapLayerAutoSkin.Disabled | WrapLayerAutoSkin.EnabledPreserve | WrapLayerAutoSkin.EnabledOverride;
 	export namespace WrapLayerDebugMode {
 		export interface None {
 			Name: "None";
