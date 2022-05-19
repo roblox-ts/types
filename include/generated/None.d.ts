@@ -56,6 +56,7 @@ interface Services {
 	LocalizationService: LocalizationService;
 	LodDataService: LodDataService;
 	LogService: LogService;
+	LSPFileSyncService: LSPFileSyncService;
 	LSPService: LSPService;
 	LuauScriptAnalyzerService: LuauScriptAnalyzerService;
 	MarketplaceService: MarketplaceService;
@@ -79,12 +80,12 @@ interface Services {
 	ScriptChangeService: ScriptChangeService;
 	ScriptCloneWatcher: ScriptCloneWatcher;
 	ScriptCloneWatcherHelper: ScriptCloneWatcherHelper;
-	ScriptCloneWatcherHelperV2: ScriptCloneWatcherHelperV2;
 	ScriptContext: ScriptContext;
 	ScriptRegistrationService: ScriptRegistrationService;
 	ServerScriptService: ServerScriptService;
 	ServerStorage: ServerStorage;
 	SessionService: SessionService;
+	SnippetService: SnippetService;
 	SocialService: SocialService;
 	SoundService: SoundService;
 	StarterGui: StarterGui;
@@ -240,6 +241,7 @@ interface CreatableInstances {
 	PathfindingModifier: PathfindingModifier;
 	PitchShiftSoundEffect: PitchShiftSoundEffect;
 	Plane: Plane;
+	PlaneConstraint: PlaneConstraint;
 	PointLight: PointLight;
 	Pose: Pose;
 	PrismaticConstraint: PrismaticConstraint;
@@ -418,7 +420,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	ImporterMaterialSettings: ImporterMaterialSettings;
 	ImporterMeshSettings: ImporterMeshSettings;
 	ImporterRootSettings: ImporterRootSettings;
-	ImporterTextureSettings: ImporterTextureSettings;
 	InputObject: InputObject;
 	InstanceAdornment: InstanceAdornment;
 	InventoryPages: InventoryPages;
@@ -7174,7 +7175,18 @@ interface LinearVelocity extends Constraint {
 	VelocityConstraintMode: Enum.VelocityConstraintMode;
 }
 
-interface Plane extends Constraint {
+interface PlaneConstraint extends Constraint {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PlaneConstraint: unique symbol;
+}
+
+interface Plane extends PlaneConstraint {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -10614,25 +10626,10 @@ interface GuiBase2d extends GuiBase {
 	 * If there is no translation available in the referenced table it will look for a translation in the parent of that table, if it is also a LocalizationTable, and so on.
 	 */
 	RootLocalizationTable: LocalizationTable | undefined;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	SelectionBehaviorDown: Enum.SelectionBehavior;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	SelectionBehaviorLeft: Enum.SelectionBehavior;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	SelectionBehaviorRight: Enum.SelectionBehavior;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	SelectionBehaviorUp: Enum.SelectionBehavior;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	SelectionGroup: boolean;
 	readonly SelectionChanged: RBXScriptSignal<(amISelected: boolean, previousSelection: GuiObject, newSelection: GuiObject) => void>;
 }
@@ -10891,9 +10888,6 @@ interface GuiObject extends GuiBase2d {
 	 * To determine or set which GUI element is selected by the user, you can use the [GuiService.SelectedObject](https://developer.roblox.com/en-us/api-reference/property/GuiService/SelectedObject) property. The user uses the gamepad to select different GUI elements, invoking the [GuiObject.NextSelectionUp](https://developer.roblox.com/en-us/api-reference/property/GuiObject/NextSelectionUp), [GuiObject.NextSelectionDown](https://developer.roblox.com/en-us/api-reference/property/GuiObject/NextSelectionDown), [GuiObject.NextSelectionLeft](https://developer.roblox.com/en-us/api-reference/property/GuiObject/NextSelectionLeft), and [GuiObject.NextSelectionRight](https://developer.roblox.com/en-us/api-reference/property/GuiObject/NextSelectionRight) events.
 	 */
 	SelectionImageObject: GuiObject | undefined;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	SelectionOrder: number;
 	/**
 	 * This property determines a [GUI's](https://developer.roblox.com/en-us/api-reference/class/GuiObject) scalar and pixel size using a `UDim2`. Its value can be expressed as `UDim2.new(ScalarX, PixelX, ScalarY, PixelY)` or `({ScalarX, PixelX}, {ScalarY, PixelY})`.
@@ -16193,21 +16187,6 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	WorldUp: Enum.NormalId;
 }
 
-interface ImporterTextureSettings extends ImporterBaseSettings {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ImporterTextureSettings: unique symbol;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly FilePath: string;
-}
-
 interface IncrementalPatchBuilder extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -18652,6 +18631,17 @@ interface KeyframeSequenceProvider extends Instance {
 	 * Tags: Yields
 	 */
 	GetKeyframeSequenceAsync(this: KeyframeSequenceProvider, assetId: string): KeyframeSequence;
+}
+
+interface LSPFileSyncService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_LSPFileSyncService: unique symbol;
 }
 
 interface LSPService extends Instance {
@@ -28057,17 +28047,6 @@ interface ScriptCloneWatcherHelper extends Instance {
 	readonly _nominal_ScriptCloneWatcherHelper: unique symbol;
 }
 
-interface ScriptCloneWatcherHelperV2 extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ScriptCloneWatcherHelperV2: unique symbol;
-}
-
 /** This service controls all [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) objects. Most of the properties and methods of this service are locked for internal use, however you may use the [ScriptContext.ScriptsDisabled](https://developer.roblox.com/en-us/api-reference/property/ScriptContext/ScriptsDisabled) property to disable all scripts from a thread with normal security access. */
 interface ScriptContext extends Instance {
 	/**
@@ -28656,6 +28635,17 @@ interface Smoke extends Instance {
 	 */
 	Size: number;
 	TimeScale: number;
+}
+
+interface SnippetService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SnippetService: unique symbol;
 }
 
 /** SocialService facilitates social functions that impact relationships made on the Roblox platform.  
