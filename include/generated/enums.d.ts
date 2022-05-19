@@ -9314,9 +9314,17 @@ declare namespace Enum {
 
 		export const Roblox_findColor3: Roblox_findColor3;
 
+		export interface Roblox_patchSnippetData {
+			Name: "Roblox_patchSnippetData";
+			Value: 27;
+			EnumType: EnumType<LSPMethodType>;
+		}
+
+		export const Roblox_patchSnippetData: Roblox_patchSnippetData;
+
 		export function GetEnumItems(this: defined): Array<LSPMethodType>
 	}
-	export type LSPMethodType = LSPMethodType.Initialize | LSPMethodType.Initialized | LSPMethodType.CancelRequest | LSPMethodType.TextDocument_didOpen | LSPMethodType.TextDocument_didChange | LSPMethodType.TextDocument_didClose | LSPMethodType.TextDocument_foldingRange | LSPMethodType.TextDocument_onTypeFormatting | LSPMethodType.TextDocument_formatting | LSPMethodType.TextDocument_rangeFormatting | LSPMethodType.TextDocument_hover | LSPMethodType.TextDocument_signatureHelp | LSPMethodType.Workspace_DidChangeConfiguration | LSPMethodType.ShutdownRequest | LSPMethodType.Completion | LSPMethodType.Declaration | LSPMethodType.DocumentSymbols | LSPMethodType.TextDocument_publishDiagnostics | LSPMethodType.Window_showMessage | LSPMethodType.Window_showMessageRequest | LSPMethodType.Roblox_registerSyntaxCategories | LSPMethodType.Roblox_signalQuiescence | LSPMethodType.Roblox_syntaxHighlight | LSPMethodType.Roblox_suggestExtraSelections | LSPMethodType.Roblox_findExecutablePosition | LSPMethodType.Roblox_findColor3;
+	export type LSPMethodType = LSPMethodType.Initialize | LSPMethodType.Initialized | LSPMethodType.CancelRequest | LSPMethodType.TextDocument_didOpen | LSPMethodType.TextDocument_didChange | LSPMethodType.TextDocument_didClose | LSPMethodType.TextDocument_foldingRange | LSPMethodType.TextDocument_onTypeFormatting | LSPMethodType.TextDocument_formatting | LSPMethodType.TextDocument_rangeFormatting | LSPMethodType.TextDocument_hover | LSPMethodType.TextDocument_signatureHelp | LSPMethodType.Workspace_DidChangeConfiguration | LSPMethodType.ShutdownRequest | LSPMethodType.Completion | LSPMethodType.Declaration | LSPMethodType.DocumentSymbols | LSPMethodType.TextDocument_publishDiagnostics | LSPMethodType.Window_showMessage | LSPMethodType.Window_showMessageRequest | LSPMethodType.Roblox_registerSyntaxCategories | LSPMethodType.Roblox_signalQuiescence | LSPMethodType.Roblox_syntaxHighlight | LSPMethodType.Roblox_suggestExtraSelections | LSPMethodType.Roblox_findExecutablePosition | LSPMethodType.Roblox_findColor3 | LSPMethodType.Roblox_patchSnippetData;
 	export namespace Language {
 		export interface Default {
 			Name: "Default";
@@ -10945,6 +10953,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: defined): Array<PermissionLevelShown>
 	}
 	export type PermissionLevelShown = PermissionLevelShown.Game | PermissionLevelShown.RobloxGame | PermissionLevelShown.RobloxScript | PermissionLevelShown.Studio | PermissionLevelShown.Roblox;
+	export namespace PhysicsInertiaAndVolumeFix {
+		export interface Default {
+			Name: "Default";
+			Value: 0;
+			EnumType: EnumType<PhysicsInertiaAndVolumeFix>;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: EnumType<PhysicsInertiaAndVolumeFix>;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: EnumType<PhysicsInertiaAndVolumeFix>;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: defined): Array<PhysicsInertiaAndVolumeFix>
+	}
+	export type PhysicsInertiaAndVolumeFix = PhysicsInertiaAndVolumeFix.Default | PhysicsInertiaAndVolumeFix.Disabled | PhysicsInertiaAndVolumeFix.Enabled;
 	export namespace PhysicsSimulationRate {
 		export interface Fixed240Hz {
 			Name: "Fixed240Hz";
