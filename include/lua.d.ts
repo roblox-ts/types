@@ -755,7 +755,7 @@ declare namespace coroutine {
 	 */
 	function close(
 		co: thread,
-	): LuaTuple<[success: false, errorMessage: string] | [success: true, errorMessage: unknown]>;
+	): LuaTuple<[success: false, errorValue: unknown] | [success: true, errorValue: never]>;
 
 	/**
 	 * Returns `true` if the coroutine this function is called within can safely yield.
