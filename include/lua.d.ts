@@ -702,8 +702,13 @@ declare namespace table {
 	 * (so that `not comp(list[i+1],list[i])` will be true after the sort).
 	 */
 	function sort<T>(t: Array<T>, comp?: (a: T, b: T) => boolean): void;
-	/** Makes the table read-only and prohibits all further modifications */
-	function freeze(t: object): void;
+	/**
+	 * Makes the table read-only and prohibits all further modifications.
+	 *
+	 * This freezing effect is shallow, which means that you can write to a table within a frozen table.
+	 * To deep freeze a table, call this function recursively on all of the descending tables.
+	 */
+	function freeze<T extends object>(t: T): Readonly<T>;
 	/** Returns whether or not `t` is frozen */
 	function isfrozen<T extends object>(t: T): t is Readonly<T>;
 
