@@ -753,12 +753,14 @@ declare namespace coroutine {
 	 * This function returns `true` unless the coroutine is in an error state, in which case it returns `false` and the error message.
 	 * A coroutine that is currently running cannot be closed. A coroutine cannot be resumed after it is closed.
 	 */
-	function close(co: thread): LuaTuple<[success: false, errorMessage: string] | [success: true, errorMessage: unknown]>;
-	
-	/** 
+	function close(
+		co: thread,
+	): LuaTuple<[success: false, errorMessage: string] | [success: true, errorMessage: unknown]>;
+
+	/**
 	 * Returns `true` if the coroutine this function is called within can safely yield.
 	 * Yielding a coroutine inside metamethods or C functions is prohibited, with the exception of `pcall` and `xpcall`.
-     */
+	 */
 	function isyieldable(): boolean;
 }
 
