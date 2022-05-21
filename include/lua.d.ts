@@ -753,9 +753,7 @@ declare namespace coroutine {
 	 * This function returns `true` unless the coroutine is in an error state, in which case it returns `false` and the error message.
 	 * A coroutine that is currently running cannot be closed. A coroutine cannot be resumed after it is closed.
 	 */
-	function close(
-		co: thread,
-	): LuaTuple<[success: false, errorValue: unknown] | [success: true, errorValue: never]>;
+	function close(co: thread): LuaTuple<[success: false, errorValue: unknown] | [success: true, errorValue: never]>;
 
 	/**
 	 * Returns `true` if the coroutine this function is called within can safely yield.
