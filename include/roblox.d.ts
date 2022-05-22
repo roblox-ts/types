@@ -2256,7 +2256,7 @@ interface GettableCores {
 	PlayerUnmutedEvent: BindableEvent;
 	PlayerFriendedEvent: BindableEvent;
 	PlayerUnfriendedEvent: BindableEvent;
-	DeveloperConsoleVisible: boolean;
+	DevConsoleVisible: boolean;
 	VRRotationIntensity: "Low" | "High" | "Smooth";
 }
 
