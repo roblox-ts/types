@@ -347,6 +347,8 @@ interface FriendOnlineInfoBase {
 	VisitorId: number;
 	/** The user name of the friend. */
 	UserName: string;
+	/** The display name of the friend. */
+	DisplayName: string;
 	/** When the user was last online. */
 	LastOnline: string;
 	/** If the friend is currently online. */
