@@ -740,7 +740,7 @@ declare namespace coroutine {
 	function running(): thread;
 
 	/** Returns the status of coroutine co, as a string: 'running', if the coroutine is running (that is, it called status); 'suspended', if the coroutine is suspended in a call to yield, or if it has not started running yet; 'normal' if the coroutine is active but not running (that is, it has resumed another coroutine); and 'dead' if the coroutine has finished its body function, or if it has stopped with an error. */
-	function status(co: thread): string;
+	function status(co: thread): "running" | "suspended" | "normal" | "dead";
 
 	/** Creates a new coroutine, with body f. f must be a Lua function. Returns a function that resumes the coroutine each time it is called. Any arguments passed to the function behave as the extra arguments to resume. Returns the same values returned by resume, except the first boolean. In case of error, propagates the error. */
 	function wrap<T extends Callback>(f: T): T;
@@ -748,8 +748,18 @@ declare namespace coroutine {
 	/** Suspends the execution of the calling coroutine. Any arguments to yield are passed as extra results to resume. */
 	function yield(...params: Array<unknown>): LuaTuple<Array<unknown>>;
 
-	/** Takes a suspended coroutine and makes it "dead" (non-runnable). */
-	function close(co: thread): void;
+	/**
+	 * Takes a suspended coroutine and makes it "dead" (non-runnable).
+	 * This function returns `true` unless the coroutine is in an error state, in which case it returns `false` and the error message.
+	 * A coroutine that is currently running cannot be closed. A coroutine cannot be resumed after it is closed.
+	 */
+	function close(co: thread): LuaTuple<[success: false, errorValue: unknown] | [success: true, errorValue: never]>;
+
+	/**
+	 * Returns `true` if the coroutine this function is called within can safely yield.
+	 * Yielding a coroutine inside metamethods or C functions is prohibited, with the exception of `pcall` and `xpcall`.
+	 */
+	function isyieldable(): boolean;
 }
 
 declare function next<T extends ReadonlyArray<any>>(

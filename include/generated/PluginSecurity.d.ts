@@ -3610,7 +3610,6 @@ interface StudioService extends Instance {
 	 * Returns the studio user's userId if they're logged in, otherwise returns 0.
 	 */
 	GetUserId(this: StudioService): number;
-	GetUserIsInTeamCreateToggleRamp(this: StudioService): boolean;
 	GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult;
 	HasInternalPermission(this: StudioService): boolean;
 	IsPluginInstalled(this: StudioService, assetId: number): boolean;
