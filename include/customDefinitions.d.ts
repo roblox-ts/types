@@ -93,7 +93,7 @@ interface BasePart extends PVInstance {
 		this: BasePart,
 		parts: Array<BasePart>,
 		collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>,
-	): UnionOperation;
+	): UnionOperation | undefined;
 	/** @server */
 	UnionAsync(
 		this: BasePart,
