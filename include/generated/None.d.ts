@@ -38,6 +38,7 @@ interface Services {
 	DraggerService: DraggerService;
 	EventIngestService: EventIngestService;
 	FaceAnimatorService: FaceAnimatorService;
+	FacialAnimationStreamingService: FacialAnimationStreamingService;
 	GamePassService: GamePassService;
 	GroupService: GroupService;
 	GuiService: GuiService;
@@ -57,7 +58,6 @@ interface Services {
 	LodDataService: LodDataService;
 	LogService: LogService;
 	LSPFileSyncService: LSPFileSyncService;
-	LSPService: LSPService;
 	LuauScriptAnalyzerService: LuauScriptAnalyzerService;
 	MarketplaceService: MarketplaceService;
 	MaterialService: MaterialService;
@@ -76,11 +76,13 @@ interface Services {
 	RemoteDebuggerServer: RemoteDebuggerServer;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedStorage: ReplicatedStorage;
+	RtMessagingService: RtMessagingService;
 	RunService: RunService;
 	ScriptChangeService: ScriptChangeService;
 	ScriptCloneWatcher: ScriptCloneWatcher;
 	ScriptCloneWatcherHelper: ScriptCloneWatcherHelper;
 	ScriptContext: ScriptContext;
+	ScriptEditorService: ScriptEditorService;
 	ScriptRegistrationService: ScriptRegistrationService;
 	ServerScriptService: ServerScriptService;
 	ServerStorage: ServerStorage;
@@ -303,6 +305,7 @@ interface CreatableInstances {
 	Tool: Tool;
 	Torque: Torque;
 	TorsionSpringConstraint: TorsionSpringConstraint;
+	TrackerStreamAnimation: TrackerStreamAnimation;
 	Trail: Trail;
 	TremoloSoundEffect: TremoloSoundEffect;
 	TrussPart: TrussPart;
@@ -390,6 +393,7 @@ interface AbstractInstances {
 
 interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AnimationClip: AnimationClip;
+	AnimationStreamTrack: AnimationStreamTrack;
 	AnimationTrack: AnimationTrack;
 	BaseWrap: BaseWrap;
 	CatalogPages: CatalogPages;
@@ -447,6 +451,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	PlayerScripts: PlayerScripts;
 	PluginManagerInterface: PluginManagerInterface;
 	PoseBase: PoseBase;
+	ScriptDocument: ScriptDocument;
 	StackFrame: StackFrame;
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
@@ -1688,6 +1693,33 @@ interface AnimationRigData extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AnimationRigData: unique symbol;
+}
+
+interface AnimationStreamTrack extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AnimationStreamTrack: unique symbol;
+	/**
+	 * Tags: Hidden, ReadOnly, NotReplicated
+	 */
+	readonly IsPlaying: boolean;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	Priority: Enum.AnimationPriority;
+	/**
+	 * Tags: Hidden, ReadOnly, NotReplicated
+	 */
+	readonly WeightCurrent: number;
+	/**
+	 * Tags: Hidden, ReadOnly, NotReplicated
+	 */
+	readonly WeightTarget: number;
 }
 
 /** Controls the playback of an animation on a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) or [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController). This object cannot be created, instead it is returned by the [Humanoid:LoadAnimation](https://developer.roblox.com/en-us/api-reference/function/Humanoid/LoadAnimation) method. */
@@ -9758,6 +9790,17 @@ interface Texture extends Decal {
 	StudsPerTileV: number;
 }
 
+interface FacialAnimationStreamingService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FacialAnimationStreamingService: unique symbol;
+}
+
 /** The base class for the legacy motor system. */
 interface Feature extends Instance {
 	/**
@@ -11313,10 +11356,7 @@ interface CanvasGroup extends GuiObject {
 	 * @deprecated
 	 */
 	readonly _nominal_CanvasGroup: unique symbol;
-	/**
-	 * Color that applies to all descendants.
-	 */
-	GroupColor: Color3;
+	GroupColor3: Color3;
 	/**
 	 * Transparency that applies to all descendants.
 	 */
@@ -16175,6 +16215,7 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	readonly FileDimensions: Vector3;
 	ImportAsModelAsset: boolean;
 	InsertInWorkspace: boolean;
+	InsertWithScenePosition: boolean;
 	InvertNegativeFaces: boolean;
 	MergeMeshes: boolean;
 	/**
@@ -18642,17 +18683,6 @@ interface LSPFileSyncService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_LSPFileSyncService: unique symbol;
-}
-
-interface LSPService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_LSPService: unique symbol;
 }
 
 interface LanguageService extends Instance {
@@ -27654,6 +27684,17 @@ interface RotationCurve extends Instance {
 	SetKeys(this: RotationCurve, keys: Array<any>): number;
 }
 
+interface RtMessagingService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RtMessagingService: unique symbol;
+}
+
 /** **RunService** contains methods and events for time-management as well as for managing the context in which a game or script is running. Methods like [IsClient](https://developer.roblox.com/en-us/api-reference/function/RunService/IsClient), [IsServer](https://developer.roblox.com/en-us/api-reference/function/RunService/IsServer), [IsStudio](https://developer.roblox.com/en-us/api-reference/function/RunService/IsStudio), can help you determine under what context code is running. These methods are useful for ModuleScripts that may be required by both client and server scripts. Furthermore, [IsStudio](https://developer.roblox.com/en-us/api-reference/function/RunService/IsStudio) can be used to add special behaviors for in-studio testing.
  * 
  * RunService also houses events that allow your code to adhere to Roblox's frame-by-frame loop, such as [Stepped](https://developer.roblox.com/en-us/api-reference/event/RunService/Stepped), [Heartbeat](https://developer.roblox.com/en-us/api-reference/event/RunService/Heartbeat) and [RenderStepped](https://developer.roblox.com/en-us/api-reference/event/RunService/RenderStepped). Selecting the proper event to use for any case is important, so you should read [Task Scheduler](https://developer.roblox.com/en-us/articles/task-scheduler) to make an informed decision.
@@ -28061,6 +28102,28 @@ interface ScriptContext extends Instance {
 	 * Fired when an error occurs.
 	 */
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script?: LuaSourceContainer) => void>;
+}
+
+interface ScriptDocument extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptDocument: unique symbol;
+}
+
+interface ScriptEditorService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptEditorService: unique symbol;
 }
 
 interface ScriptRegistrationService extends Instance {
@@ -31449,11 +31512,14 @@ interface TextChannel extends Instance {
 	 */
 	readonly _nominal_TextChannel: unique symbol;
 	DisplaySystemMessage(this: TextChannel, systemMessage: string, metadata?: string): TextChatMessage;
-	SendAsync(this: TextChannel, message: string, metadata?: string): TextChatMessage;
 	/**
 	 * Tags: Yields
 	 */
 	AddUserAsync(this: TextChannel, userId: number): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	SendAsync(this: TextChannel, message: string, metadata?: string): TextChatMessage;
 	readonly MessageReceived: RBXScriptSignal<(incomingMessage: TextChatMessage) => void>;
 	OnIncomingMessage: (message: TextChatMessage) => void;
 }
@@ -31739,6 +31805,17 @@ interface TracerService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TracerService: unique symbol;
+}
+
+interface TrackerStreamAnimation extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TrackerStreamAnimation: unique symbol;
 }
 
 /** The Trail object is used to create a trail like an effect between two points. As the points move through space a texture is drawn on the plane the points define. This is commonly used to create effects to help visualize movements like tracer trails behind projectiles, footprints, tire tracks, and many other similar effects.
