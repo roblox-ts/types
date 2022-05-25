@@ -22869,7 +22869,7 @@ interface BasePart extends PVInstance {
 		this: BasePart,
 		parts: Array<BasePart>,
 		collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>,
-	): UnionOperation;
+	): UnionOperation | undefined;
 	/**
 	 * This is a server-only function that uses [CSG](https://developer.roblox.com/en-us/articles/3d-modeling-with-parts) to combine the geometry of the calling [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) with a table of other BaseParts.  
 	 * The following properties from the calling part will be applied to the resulting part:
