@@ -17,5 +17,3 @@ Then, make sure `node_modules/@rbxts` is listed in your `compilerOptions.typeRoo
 	}
 }
 ```
-
-Test
