@@ -1091,7 +1091,9 @@ interface Instance {
 	 */
 	readonly DescendantRemoving: RBXScriptSignal<(descendant: Instance) => void>;
 	/**
-	 * Fires immediately before the instance is destroyed via [Instance:Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy). The [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) property is locked when this event fires and cannot be changed.
+	 * The Destroying event fires immediately before the Instance or one of its ancestors is destroyed.
+	 * 
+	 * The Instance will never be deleted from memory while a connected function is still using it. However, if the function yields at any point, the Instance and its descendants will be parented to `nil`.
 	 */
 	readonly Destroying: RBXScriptSignal<() => void>;
 }
@@ -26822,11 +26824,11 @@ interface Players extends Instance {
 	 * local Players = game:GetService("Players")
 	 * 
 	 * Players.PlayerAdded:Connect(function(player)
-	 *   print(player.Name + " joined the game!")
+	 *   print(player.Name .. " joined the game!")
 	 * end)
 	 * 
 	 * Players.PlayerRemoving:Connect(function(player)
-	 *   print(player.Name + " left the game!")
+	 *   print(player.Name .. " left the game!")
 	 * end)
 	 * 
 	 * If you want to track when a player's character is added or removed from the game, such as when a player respawns or dies, you can use the [Player.CharacterAdded](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterAdded) and [Player.CharacterRemoving](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterRemoving) functions.
