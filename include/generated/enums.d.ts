@@ -5122,13 +5122,13 @@ declare namespace Enum {
 
 		export const Gotham: Gotham;
 
-		export interface GothamSemibold {
-			Name: "GothamSemibold";
+		export interface GothamMedium {
+			Name: "GothamMedium";
 			Value: 18;
 			EnumType: EnumType<Font>;
 		}
 
-		export const GothamSemibold: GothamSemibold;
+		export const GothamMedium: GothamMedium;
 
 		export interface GothamBold {
 			Name: "GothamBold";
@@ -5356,7 +5356,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: defined): Array<Font>
 	}
-	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansSemibold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.Gotham | Font.GothamSemibold | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu | Font.Unknown;
+	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansSemibold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.Gotham | Font.GothamMedium | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu | Font.Unknown;
 	export namespace FontSize {
 		export interface Size8 {
 			Name: "Size8";
@@ -9252,7 +9252,7 @@ declare namespace Enum {
 
 		export interface TextDocument_publishDiagnostics {
 			Name: "TextDocument_publishDiagnostics";
-			Value: 18;
+			Value: 19;
 			EnumType: EnumType<LSPMethodType>;
 		}
 
@@ -9260,7 +9260,7 @@ declare namespace Enum {
 
 		export interface Window_showMessage {
 			Name: "Window_showMessage";
-			Value: 19;
+			Value: 20;
 			EnumType: EnumType<LSPMethodType>;
 		}
 
@@ -9268,7 +9268,7 @@ declare namespace Enum {
 
 		export interface Window_showMessageRequest {
 			Name: "Window_showMessageRequest";
-			Value: 20;
+			Value: 21;
 			EnumType: EnumType<LSPMethodType>;
 		}
 
@@ -9276,7 +9276,7 @@ declare namespace Enum {
 
 		export interface Roblox_registerSyntaxCategories {
 			Name: "Roblox_registerSyntaxCategories";
-			Value: 21;
+			Value: 22;
 			EnumType: EnumType<LSPMethodType>;
 		}
 
@@ -9284,7 +9284,7 @@ declare namespace Enum {
 
 		export interface Roblox_signalQuiescence {
 			Name: "Roblox_signalQuiescence";
-			Value: 22;
+			Value: 23;
 			EnumType: EnumType<LSPMethodType>;
 		}
 
@@ -9292,7 +9292,7 @@ declare namespace Enum {
 
 		export interface Roblox_syntaxHighlight {
 			Name: "Roblox_syntaxHighlight";
-			Value: 23;
+			Value: 24;
 			EnumType: EnumType<LSPMethodType>;
 		}
 
@@ -9300,7 +9300,7 @@ declare namespace Enum {
 
 		export interface Roblox_suggestExtraSelections {
 			Name: "Roblox_suggestExtraSelections";
-			Value: 24;
+			Value: 25;
 			EnumType: EnumType<LSPMethodType>;
 		}
 
@@ -9308,7 +9308,7 @@ declare namespace Enum {
 
 		export interface Roblox_findExecutablePosition {
 			Name: "Roblox_findExecutablePosition";
-			Value: 25;
+			Value: 26;
 			EnumType: EnumType<LSPMethodType>;
 		}
 
@@ -9316,7 +9316,7 @@ declare namespace Enum {
 
 		export interface Roblox_findColor3 {
 			Name: "Roblox_findColor3";
-			Value: 26;
+			Value: 27;
 			EnumType: EnumType<LSPMethodType>;
 		}
 
@@ -9324,7 +9324,7 @@ declare namespace Enum {
 
 		export interface Roblox_patchSnippetData {
 			Name: "Roblox_patchSnippetData";
-			Value: 27;
+			Value: 28;
 			EnumType: EnumType<LSPMethodType>;
 		}
 
