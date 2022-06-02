@@ -197,6 +197,7 @@ interface CreatableInstances {
 	Folder: Folder;
 	ForceField: ForceField;
 	Frame: Frame;
+	GetTextBoundsParams: GetTextBoundsParams;
 	Glue: Glue;
 	Handles: Handles;
 	Hat: Hat;
@@ -4198,13 +4199,13 @@ interface WrapLayer extends BaseWrap {
 	/**
 	 * Controls the composition order for layered clothing. Clothing items with higher order will appear on top of clothing items with lower order. If two items have the same order, the deformer composition order is ambiguous and depends on serialization order. Default value is 1.
 	 */
-	readonly Order: number;
+	Order: number;
 	/**
 	 * Controls how much underlying clothing items inflate the current clothing item.
 	 * 
 	 * Valid range is 0 to 1. A value of 0 makes the clothing item always fit the body regardless of how many clothing layers are under it (all underlying clothing layers will be compressed). A value of 1 (default) never compresses anything and infinitely inflates over underlying clothing items.
 	 */
-	readonly Puffiness: number;
+	Puffiness: number;
 	/**
 	 * AssetID for reference mesh used to define Inner Cage of a 3D object
 	 * 
@@ -10162,6 +10163,21 @@ interface GamePassService extends Instance {
 	 * @deprecated
 	 */
 	PlayerHasPass(this: GamePassService, player: Player, gamePassId: number): boolean;
+}
+
+interface GetTextBoundsParams extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_GetTextBoundsParams: unique symbol;
+	Font: Font;
+	Size: number;
+	Text: string;
+	Width: number;
 }
 
 /** A **GlobalDataStore** exposes functions for saving and loading data for the [DataStoreService](https://developer.roblox.com/en-us/api-reference/class/DataStoreService).
@@ -16188,13 +16204,19 @@ interface ImporterMeshSettings extends ImporterBaseSettings {
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
-	readonly Dimensions: Vector3;
-	DoubleSided: boolean;
-	IgnoreVertexColors: boolean;
+	readonly CageManifold: boolean;
+	CageManifoldPreview: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
-	readonly Manifold: boolean;
+	readonly CageNoOverlappingVertices: boolean;
+	CageNoOverlappingVerticesPreview: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Dimensions: Vector3;
+	DoubleSided: boolean;
+	IgnoreVertexColors: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -16226,6 +16248,7 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	readonly PolygonCount: number;
 	RigType: Enum.RigType;
 	ScaleUnit: Enum.MeshScaleUnit;
+	UseSceneOriginAsPivot: boolean;
 	WorldForward: Enum.NormalId;
 	WorldUp: Enum.NormalId;
 }
@@ -21069,6 +21092,10 @@ interface MarketplaceService extends Instance {
 	 */
 	PlayerOwnsAsset(this: MarketplaceService, player: Player, assetId: number): boolean;
 	/**
+	 * Tags: Yields
+	 */
+	PlayerOwnsBundle(this: MarketplaceService, player: Player, bundleId: number): boolean;
+	/**
 	 * UserOwnsGamePassAsync returns true if the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) with the given [UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) owns the game pass with the given **game pass ID** (not to be confused with asset ID).
 	 * 
 	 * Caching Behavior
@@ -21174,15 +21201,9 @@ interface MaterialService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MaterialService: unique symbol;
-	ClearOverridePartMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): void;
-	ClearOverrideTerrainMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): void;
 	GetBaseMaterialOverride(this: MaterialService, material: CastsToEnum<Enum.Material>): string;
 	GetMaterialVariant(this: MaterialService, material: CastsToEnum<Enum.Material>, name: string): MaterialVariant;
-	GetOverridePartMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): MaterialVariant;
-	GetOverrideTerrainMaterial(this: MaterialService, material: CastsToEnum<Enum.Material>): MaterialVariant;
 	SetBaseMaterialOverride(this: MaterialService, material: CastsToEnum<Enum.Material>, name: string): void;
-	SetOverridePartMaterial(this: MaterialService, materialVariant: MaterialVariant): void;
-	SetOverrideTerrainMaterial(this: MaterialService, materialVariant: MaterialVariant): void;
 }
 
 interface MaterialVariant extends Instance {
@@ -31728,6 +31749,10 @@ interface TextService extends Instance {
 	 * Tags: Yields
 	 */
 	GetFamilyInfoAsync(this: TextService, assetId: string): object;
+	/**
+	 * Tags: Yields
+	 */
+	GetTextBoundsAsync(this: TextService, params: GetTextBoundsParams): Vector2;
 }
 
 interface TextSource extends Instance {
