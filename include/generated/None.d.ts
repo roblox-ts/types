@@ -10218,7 +10218,7 @@ interface GlobalDataStore extends Instance {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	GetAsync(this: GlobalDataStore, key: string): unknown;
+	readonly GetAsync: unknown;
 	/**
 	 * This function increments the value of a key by the provided amount (both must be integers).
 	 * 
@@ -10230,7 +10230,7 @@ interface GlobalDataStore extends Instance {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	IncrementAsync(this: GlobalDataStore, key: string, delta?: number, userIds?: Array<any>, options?: DataStoreIncrementOptions): unknown;
+	readonly IncrementAsync: unknown;
 	/**
 	 * This function marks the specified key as deleted by creating a new “tombstone” version of the key. Prior to this, it returns the latest version prior to the remove call.
 	 * 
@@ -10248,7 +10248,7 @@ interface GlobalDataStore extends Instance {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	RemoveAsync(this: GlobalDataStore, key: string): unknown;
+	readonly RemoveAsync: unknown;
 	/**
 	 * This function sets the latest value, [UserIds](https://developer.roblox.com/en-us/api-reference/property/Player/UserId), and metadata for the given key.
 	 * 
@@ -10272,7 +10272,7 @@ interface GlobalDataStore extends Instance {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
+	readonly SetAsync: unknown;
 	/**
 	 * This function retrieves the value and metadata of a key from the data store and updates it with a new value determined by the callback function specified through the second parameter.
 	 * 
@@ -10312,11 +10312,7 @@ interface GlobalDataStore extends Instance {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	UpdateAsync<O, R>(
-		this: GlobalDataStore,
-		key: string,
-		transformFunction: (oldValue: O | undefined) => R,
-	): R extends undefined ? O | undefined : R;
+	readonly UpdateAsync: unknown;
 }
 
 interface DataStore extends GlobalDataStore {

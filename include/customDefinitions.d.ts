@@ -260,12 +260,11 @@ interface GenericSettings<S = unknown> extends ServiceProvider<S> {}
 
 /** @server */
 interface GlobalDataStore extends Instance {
-	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
-	UpdateAsync<O, R>(
-		this: GlobalDataStore,
-		key: string,
-		transformFunction: (oldValue: O | undefined) => R,
-	): R extends undefined ? O | undefined : R;
+	readonly GetAsync: unknown;
+	readonly IncrementAsync: unknown;
+	readonly RemoveAsync: unknown;
+	readonly SetAsync: unknown;
+	readonly UpdateAsync: unknown;
 }
 
 interface GroupService extends Instance {
@@ -586,6 +585,12 @@ interface OrderedDataStore extends GlobalDataStore {
 	): DataStorePages;
 	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
 	RemoveAsync(this: OrderedDataStore, key: string): number;
+	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
+	UpdateAsync<O, R>(
+		this: GlobalDataStore,
+		key: string,
+		transformFunction: (oldValue: O | undefined) => R,
+	): R extends undefined ? O | undefined : R;
 }
 
 interface Pages<T = unknown> extends Instance {
