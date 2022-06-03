@@ -10416,6 +10416,12 @@ interface OrderedDataStore extends GlobalDataStore {
 	GetAsync(this: OrderedDataStore, key: string): number | undefined;
 	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
 	RemoveAsync(this: OrderedDataStore, key: string): number;
+	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
+	UpdateAsync<O, R>(
+		this: GlobalDataStore,
+		key: string,
+		transformFunction: (oldValue: O | undefined) => R,
+	): R extends undefined ? O | undefined : R;
 	/**
 	 * Returns a [DataStorePages](https://developer.roblox.com/en-us/api-reference/class/DataStorePages) object. The sort order is determined by **ascending**, the length of each page by **pageSize**, and **minValue** /**maxValue** are optional parameters which filter the results.
 	 * 
