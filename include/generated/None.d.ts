@@ -18089,12 +18089,11 @@ interface InsertService extends Instance {
 	 * *   For plugins, see [DataModel:GetObjects](https://developer.roblox.com/en-us/api-reference/function/DataModel/GetObjects)
 	 * Tags: Yields
 	 */
-	LoadAsset(this: InsertService, assetId: number): Instance | undefined;
+	LoadAsset(this: InsertService, assetId: number): Model;
 	/**
 	 * Returns a model inserted into [InsertService](https://developer.roblox.com/en-us/api-reference/class/InsertService) containing the asset with the given assetVersionId.
 	 * Tags: Yields
 	 */
-	// LoadAsset(this: InsertService, assetId: number): Model;
 	LoadAssetVersion(this: InsertService, assetVersionId: number): Model;
 }
 
