@@ -40,7 +40,6 @@ interface AnalyticsService extends Instance {
 
 interface AnimationController extends Instance {
 	GetPlayingAnimationTracks(this: AnimationController): Array<AnimationTrack>;
-	LoadAnimation(this: AnimationController, animation: Animation): AnimationTrack;
 }
 
 interface AnimationTrack extends Instance {
@@ -49,19 +48,11 @@ interface AnimationTrack extends Instance {
 
 interface Animator extends Instance {
 	ApplyJointVelocities(this: Animator, motors: Array<Motor6D>): void;
-	LoadAnimation(this: Animator, animation: Animation): AnimationTrack;
 	GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
 }
 
 /** @server */
 interface AssetService extends Instance {
-	CreatePlaceInPlayerInventoryAsync(
-		this: AssetService,
-		player: Player,
-		placeName: string,
-		templatePlaceID: number,
-		description?: string,
-	): number;
 	GetGamePlacesAsync(this: AssetService): StandardPages<{ Name: string; PlaceId: number }>;
 	GetAssetIdsForPackage(this: AssetService, packageAssetId: number): Array<number>;
 	GetBundleDetailsAsync(this: AssetService, bundleId: number): BundleInfo;
@@ -83,7 +74,6 @@ interface BadgeService extends Instance {
 interface BasePart extends PVInstance {
 	readonly TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
 	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
-	CanCollideWith(this: BasePart, part: BasePart): boolean;
 	GetConnectedParts(this: BasePart, recursive?: boolean): Array<BasePart>;
 	GetRootPart(this: BasePart): BasePart;
 	GetJoints(this: BasePart): Array<Constraint | JointInstance>;
@@ -100,7 +90,6 @@ interface BasePart extends PVInstance {
 		parts: Array<BasePart>,
 		collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>,
 	): UnionOperation;
-
 	/** @server */
 	CanSetNetworkOwnership(this: BasePart): LuaTuple<[boolean, string | undefined]>;
 	/** @server */
@@ -294,7 +283,6 @@ interface GuiObject extends GuiBase2d {
 		(touchPositions: Array<Vector2>, rotation: number, velocity: number, state: Enum.UserInputState) => void
 	>;
 	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>) => void>;
-
 	TweenPosition(
 		this: GuiObject,
 		endPosition: UDim2,
@@ -304,7 +292,6 @@ interface GuiObject extends GuiBase2d {
 		override?: boolean,
 		callback?: (finishedTween: Enum.TweenStatus) => void,
 	): boolean;
-
 	TweenSize(
 		this: GuiObject,
 		endSize: UDim2,
@@ -314,7 +301,6 @@ interface GuiObject extends GuiBase2d {
 		override?: boolean,
 		callback?: (finishedTween: Enum.TweenStatus) => void,
 	): boolean;
-
 	TweenSizeAndPosition(
 		this: GuiObject,
 		endSize: UDim2,
@@ -352,7 +338,6 @@ interface HapticService extends Instance {
 interface HttpService extends Instance {
 	/** @server */
 	GetAsync(this: HttpService, url: string, nocache?: boolean, headers?: HttpHeaders): string;
-
 	/** @server */
 	PostAsync(
 		this: HttpService,
@@ -362,7 +347,6 @@ interface HttpService extends Instance {
 		compress?: boolean,
 		headers?: HttpHeaders,
 	): string;
-
 	/** @server */
 	RequestAsync(this: HttpService, requestOptions: RequestAsyncRequest): RequestAsyncResponse;
 }
@@ -420,31 +404,22 @@ interface Instance {
 	readonly Changed: unknown;
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
-
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
-
 	WaitForChild(this: Instance, childName: string | number): Instance;
 	WaitForChild(this: Instance, childName: string | number, timeOut: number): Instance | undefined;
-
 	IsA<T extends keyof Instances>(this: Instance, className: T): this is Instances[T];
-
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
-
 	FindFirstChildWhichIsA<T extends keyof Instances>(
 		this: Instance,
 		className: T,
 		recursive?: boolean,
 	): Instances[T] | undefined;
-
 	FindFirstAncestorOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
-
 	FindFirstChildOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
-
 	GetPropertyChangedSignal<T extends Instance>(
 		this: T,
 		propertyName: InstancePropertyNames<T>,
 	): RBXScriptSignal<() => void>;
-
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance | undefined) => void>;
 }
 
@@ -632,14 +607,11 @@ interface PlayerGui extends BasePlayerGui {}
 interface Players extends Instance {
 	/** @client */
 	readonly LocalPlayer: Player;
-
 	GetPlayerByUserId(this: Players, userId: number): Player | undefined;
 	GetPlayerFromCharacter(this: Players, character: Instance | undefined): Player | undefined;
 	GetPlayers(this: Players): Array<Player>;
-
 	GetHumanoidDescriptionFromOutfitId(this: Players, outfitId: number): HumanoidDescription;
 	GetHumanoidDescriptionFromUserId(this: Players, userId: number): HumanoidDescription;
-
 	CreateHumanoidModelFromDescription(
 		this: Players,
 		description: HumanoidDescription,
@@ -647,12 +619,9 @@ interface Players extends Instance {
 		assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>,
 	): Model;
 	CreateHumanoidModelFromUserId(this: Players, userId: number): Model;
-
 	GetCharacterAppearanceAsync(this: Players, userId: number): Model;
 	GetCharacterAppearanceInfoAsync(this: Players, userId: number): CharacterAppearanceInfo;
-
 	GetFriendsAsync(this: Players, userId: number): FriendPages;
-
 	GetUserThumbnailAsync(
 		this: Players,
 		userId: number,
@@ -756,7 +725,7 @@ interface ScriptContext extends Instance {
 }
 
 interface ScriptDebugger extends Instance {
-	GetGlobals(this: ScriptDebugger): Map<string, unknown>;
+	GetGlobals(this: ScriptDebugger, stackFrame?: number): Map<string, unknown>;
 	GetLocals(this: ScriptDebugger, stackFrame?: number): Map<string, unknown>;
 	GetUpvalues(this: ScriptDebugger, stackFrame?: number): Map<string, unknown>;
 }
@@ -827,7 +796,6 @@ interface Teams extends Instance {
 
 interface TeleportService extends Instance {
 	readonly LocalPlayerArrivedFromTeleport: RBXScriptSignal<(loadingGui: ScreenGui, dataTable?: unknown) => void>;
-
 	readonly TeleportInitFailed: RBXScriptSignal<
 		(
 			player: Player,
@@ -865,7 +833,6 @@ interface TeleportService extends Instance {
 		teleportData?: TeleportData,
 		customLoadingScreen?: ScreenGui,
 	): void;
-
 	TeleportToPrivateServer(
 		this: TeleportService,
 		placeId: number,
@@ -875,7 +842,6 @@ interface TeleportService extends Instance {
 		teleportData?: TeleportData,
 		customLoadingScreen?: ScreenGui,
 	): void;
-
 	TeleportPartyAsync(
 		this: TeleportService,
 		placeId: number,
@@ -883,7 +849,6 @@ interface TeleportService extends Instance {
 		teleportData?: TeleportData,
 		customLoadingScreen?: ScreenGui,
 	): string;
-
 	TeleportToPlaceInstance(
 		this: TeleportService,
 		placeId: number,
@@ -893,7 +858,6 @@ interface TeleportService extends Instance {
 		teleportData?: TeleportData,
 		customLoadingScreen?: ScreenGui,
 	): void;
-
 	TeleportToSpawnByName(
 		this: TeleportService,
 		placeId: number,
@@ -905,8 +869,6 @@ interface TeleportService extends Instance {
 }
 
 interface Terrain extends BasePart {
-	CopyRegion(this: Terrain, region: Region3int16): TerrainRegion;
-	PasteRegion(this: Terrain, region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): void;
 	ReadVoxels(
 		this: Terrain,
 		region: Region3,
@@ -1005,8 +967,6 @@ interface UserInputService extends Instance {
 		this: UserInputService,
 		gamepadNum: CastsToEnum<Enum.UserInputType>,
 	): Array<Enum.KeyCode>;
-	GetDeviceAcceleration(this: UserInputService): InputObject;
-	GetDeviceGravity(this: UserInputService): InputObject;
 	GetFocusedTextBox(this: UserInputService): TextBox | undefined;
 }
 
@@ -1036,7 +996,7 @@ interface Workspace extends WorldRoot {
 	readonly BreakJoints: never;
 	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
 	readonly MakeJoints: never;
-	Terrain: Terrain;
+	readonly Terrain: Terrain;
 }
 
 interface WorldRoot extends Model {
@@ -1055,7 +1015,6 @@ interface WorldRoot extends Model {
 		direction: Vector3,
 		raycastParams?: RaycastParams,
 	): RaycastResult | undefined;
-
 	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRay(
 		this: WorldRoot,
@@ -1064,7 +1023,6 @@ interface WorldRoot extends Model {
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-
 	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRayWithIgnoreList(
 		this: WorldRoot,
@@ -1073,7 +1031,6 @@ interface WorldRoot extends Model {
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-
 	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRayWithWhitelist(
 		this: WorldRoot,
@@ -1081,21 +1038,18 @@ interface WorldRoot extends Model {
 		whitelistDescendantsTable: Array<Instance>,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-
 	FindPartsInRegion3(
 		this: WorldRoot,
 		region: Region3,
 		ignoreDescendantsInstance?: Instance,
 		maxParts?: number,
 	): Array<BasePart>;
-
 	FindPartsInRegion3WithIgnoreList(
 		this: WorldRoot,
 		region: Region3,
 		ignoreDescendantsTable: Array<Instance>,
 		maxParts?: number,
 	): Array<BasePart>;
-
 	FindPartsInRegion3WithWhiteList(
 		this: WorldRoot,
 		region: Region3,

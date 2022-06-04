@@ -2073,13 +2073,7 @@ interface AssetService extends Instance {
 	 * Clones a place which has a placeId equal to the given templatePlaceID, placing it into the inventory of the given player with the given name and description, if they accept when prompted. This method cannot be used to clone places that you do not own, or those which have disabled the use of the CreatePlace API in their place's configuration.
 	 * Tags: Yields
 	 */
-	CreatePlaceInPlayerInventoryAsync(
-		this: AssetService,
-		player: Player,
-		placeName: string,
-		templatePlaceID: number,
-		description?: string,
-	): number;
+	CreatePlaceInPlayerInventoryAsync(this: AssetService, player: Player, placeName: string, templatePlaceID: number, description?: string): number;
 	/**
 	 * Returns an array of assetIds that are contained in a specified package.
 	 * Tags: Yields
@@ -24481,7 +24475,7 @@ interface Workspace extends WorldRoot {
 	 * workspace.Terrain.WaterColor = Color3.new(0, 1, 0) -- make the water green
 	 * Tags: ReadOnly, NotReplicated
 	 */
-	Terrain: Terrain;
+	readonly Terrain: Terrain;
 	/**
 	 * Returns the number of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s that are deemed physically active, due to being recently under the influence of physics.
 	 * 
