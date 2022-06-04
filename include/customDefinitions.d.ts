@@ -224,9 +224,7 @@ interface DataStoreService extends Instance {
 	GetOrderedDataStore(this: DataStoreService, name: string, scope?: string): OrderedDataStore;
 }
 
-interface DataStoreVersionPages extends Pages {
-	GetCurrentPage(this: Pages): Array<DataStoreObjectVersionInfo>;
-}
+interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {}
 
 interface Dialog extends Instance {
 	readonly DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;

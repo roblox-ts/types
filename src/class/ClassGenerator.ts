@@ -272,6 +272,8 @@ const MEMBER_BLACKLIST = new Map([
 const EXPECTED_EXTRA_MEMBERS = new Map([
 	["Player", ["Name"]],
 	["ValueBase", ["Value", "Changed"]],
+	["DataStore", ["GetAsync", "IncrementAsync", "SetAsync", "UpdateAsync", "RemoveAsync"]],
+	["OrderedDataStore", ["GetAsync", "IncrementAsync", "SetAsync", "UpdateAsync", "RemoveAsync"]],
 ]);
 
 function containsBadChar(name: string) {

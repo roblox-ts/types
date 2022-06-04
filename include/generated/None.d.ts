@@ -24781,7 +24781,7 @@ interface DataStorePages extends Pages<{ key: string; value: unknown }> {
  * 
  * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
  */
-interface DataStoreVersionPages extends Pages {
+interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -24790,7 +24790,6 @@ interface DataStoreVersionPages extends Pages {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreVersionPages: unique symbol;
-	GetCurrentPage(this: Pages): Array<DataStoreObjectVersionInfo>;
 }
 
 /** FriendPages is a special version of the [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) returned by [Players:GetFriendsAsync](https://developer.roblox.com/en-us/api-reference/function/Players/GetFriendsAsync). The items contained within describe information about a player's friends, and have the following structure:
