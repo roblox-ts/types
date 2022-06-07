@@ -52,18 +52,18 @@ declare function pcall<T extends Array<any>, U>(
 	func: (...args: T) => U,
 ): LuaTuple<
 	U extends [infer A]
-		? [true, A] | [false, string]
+		? [true, A] | [false, unknown]
 		: U extends [infer A, infer B]
-		? [true, A, B] | [false, string, undefined]
+		? [true, A, B] | [false, unknown, undefined]
 		: U extends [infer A, infer B, infer C]
-		? [true, A, B, C] | [false, string, undefined, undefined]
+		? [true, A, B, C] | [false, unknown, undefined, undefined]
 		: U extends [infer A, infer B, infer C, infer D]
-		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
+		? [true, A, B, C, D] | [false, unknown, undefined, undefined, undefined]
 		: U extends [infer A, infer B, infer C, infer D, infer E]
-		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
+		? [true, A, B, C, D, E] | [false, unknown, undefined, undefined, undefined, undefined]
 		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
-		: [true, U] | [false, string]
+		? [true, A, B, C, D, E, F] | [false, unknown, undefined, undefined, undefined, undefined, undefined]
+		: [true, U] | [false, unknown]
 >;
 
 /** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
@@ -72,18 +72,18 @@ declare function pcall<T extends Array<any>, U>(
 	...args: T
 ): LuaTuple<
 	U extends [infer A]
-		? [true, A] | [false, string]
+		? [true, A] | [false, unknown]
 		: U extends [infer A, infer B]
-		? [true, A, B] | [false, string, undefined]
+		? [true, A, B] | [false, unknown, undefined]
 		: U extends [infer A, infer B, infer C]
-		? [true, A, B, C] | [false, string, undefined, undefined]
+		? [true, A, B, C] | [false, unknown, undefined, undefined]
 		: U extends [infer A, infer B, infer C, infer D]
-		? [true, A, B, C, D] | [false, string, undefined, undefined, undefined]
+		? [true, A, B, C, D] | [false, unknown, undefined, undefined, undefined]
 		: U extends [infer A, infer B, infer C, infer D, infer E]
-		? [true, A, B, C, D, E] | [false, string, undefined, undefined, undefined, undefined]
+		? [true, A, B, C, D, E] | [false, unknown, undefined, undefined, undefined, undefined]
 		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-		? [true, A, B, C, D, E, F] | [false, string, undefined, undefined, undefined, undefined, undefined]
-		: [true, U] | [false, string]
+		? [true, A, B, C, D, E, F] | [false, unknown, undefined, undefined, undefined, undefined, undefined]
+		: [true, U] | [false, unknown]
 >;
 
 /** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, xpcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, xpcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
