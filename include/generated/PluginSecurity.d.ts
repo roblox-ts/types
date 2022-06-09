@@ -3575,7 +3575,11 @@ interface StudioService extends Instance {
 	UseLocalSpace: boolean;
 	AnimationIdSelected(this: StudioService, id: number): void;
 	CopyToClipboard(this: StudioService, stringToCopy: string): void;
-	EmitPlacePublishedSignal(this: StudioService): void;
+	DEPRECATED_EmitPlacePublishedSignal(this: StudioService): void;
+	DEPRECATED_RefreshDocumentDisplayName(this: StudioService): void;
+	DEPRECATED_SetUniverseDisplayName(this: StudioService, newName: string): void;
+	DEPRECATED_ShowSaveOrPublishPlaceToRoblox(this: StudioService, showGameSelect: boolean, isPublish: boolean, closeMode: CastsToEnum<Enum.StudioCloseMode>): void;
+	DEPRECATED_publishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
 	GetBadgeConfigureUrl(this: StudioService, badgeId: number): string;
 	GetBadgeUploadUrl(this: StudioService): string;
 	/**
@@ -3615,14 +3619,10 @@ interface StudioService extends Instance {
 	IsPluginInstalled(this: StudioService, assetId: number): boolean;
 	IsPluginUpToDate(this: StudioService, assetId: number, currentAssetVersion: number): boolean;
 	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
-	PublishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
-	RefreshDocumentDisplayName(this: StudioService): void;
 	RequestClose(this: StudioService, closeMode: CastsToEnum<Enum.StudioCloseMode>): void;
 	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
-	SetUniverseDisplayName(this: StudioService, newName: string): void;
 	ShowPlaceVersionHistoryDialog(this: StudioService, placeId: number): void;
 	ShowPublishToRoblox(this: StudioService): void;
-	ShowSaveOrPublishPlaceToRoblox(this: StudioService, showGameSelect: boolean, isPublish: boolean, closeMode: CastsToEnum<Enum.StudioCloseMode>): void;
 	UninstallPlugin(this: StudioService, assetId: number): void;
 	UpdatePluginManagement(this: StudioService): void;
 	/**
@@ -3651,16 +3651,16 @@ interface StudioService extends Instance {
 	 * Tags: Yields
 	 */
 	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
-	readonly GameNameUpdated: RBXScriptSignal<(name: string) => void>;
-	readonly GamePublishFinished: RBXScriptSignal<(success: boolean, gameId: number) => void>;
+	readonly DEPRECATED_GameNameUpdated: RBXScriptSignal<(name: string) => void>;
+	readonly DEPRECATED_GamePublishFinished: RBXScriptSignal<(success: boolean, gameId: number) => void>;
+	readonly DEPRECATED_OnPublishPlaceToRoblox: RBXScriptSignal<(isOverwritePublish: boolean) => void>;
+	readonly DEPRECATED_OnSaveOrPublishPlaceToRoblox: RBXScriptSignal<(showGameSelect: boolean, isPublish: boolean, closeMode: Enum.StudioCloseMode) => void>;
 	readonly OnImportFromRoblox: RBXScriptSignal<() => void>;
 	readonly OnOpenGameSettings: RBXScriptSignal<(pageIdentifier: string) => void>;
 	readonly OnOpenManagePackagePlugin: RBXScriptSignal<(userId: number, assetId: number) => void>;
 	readonly OnPluginInstalledFromToolbox: RBXScriptSignal<() => void>;
 	readonly OnPluginInstalledFromWeb: RBXScriptSignal<(pluginId: string) => void>;
 	readonly OnPublishAsPlugin: RBXScriptSignal<(instances: Array<Instance>) => void>;
-	readonly OnPublishPlaceToRoblox: RBXScriptSignal<(isOverwritePublish: boolean) => void>;
-	readonly OnSaveOrPublishPlaceToRoblox: RBXScriptSignal<(showGameSelect: boolean, isPublish: boolean, closeMode: Enum.StudioCloseMode) => void>;
 	readonly OnSaveToRoblox: RBXScriptSignal<(instances: Array<Instance>) => void>;
 	readonly PromptTransformPluginCheckEnable: RBXScriptSignal<() => void>;
 	readonly SaveLocallyAsComplete: RBXScriptSignal<(success: boolean) => void>;
