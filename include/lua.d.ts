@@ -51,36 +51,28 @@ declare function tostring(value: unknown): string;
 declare function pcall<T extends Array<any>, U extends Array<any>>(
 	func: (...args: T) => LuaTuple<U>,
 	...args: T
-): LuaTuple<
-	U extends [infer A]
-		? [true, A] | [false, unknown]
-		: U extends [infer A, infer B]
-		? [true, A, B] | [false, unknown, undefined]
-		: U extends [infer A, infer B, infer C]
-		? [true, A, B, C] | [false, unknown, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D]
-		? [true, A, B, C, D] | [false, unknown, undefined, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D, infer E]
-		? [true, A, B, C, D, E] | [false, unknown, undefined, undefined, undefined, undefined]
-		: U extends [infer A, infer B, infer C, infer D, infer E, infer F]
-		? [true, A, B, C, D, E, F] | [false, unknown, undefined, undefined, undefined, undefined, undefined]
-		: [true, U] | [false, unknown]
->;
+): LuaTuple<[true, ...U] | [false, ...{ [K in keyof U]: K extends "0" ? unknown : undefined }]>;
 declare function pcall<T extends Array<any>, U>(
 	func: (...args: T) => U,
 	...args: T
 ): LuaTuple<[true, U] | [false, unknown]>;
 
 /** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, xpcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, xpcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
+declare function xpcall<T extends Array<any>, U extends Array<any>, V extends Array<any>>(
+	func: (...args: T) => LuaTuple<U>,
+	errHandler: (err: unknown) => LuaTuple<V>,
+	...args: T
+): LuaTuple<[true, ...U] | [false, V extends LuaTuple<[infer A, ...Array<unknown>]> ? A : V]>;
+declare function xpcall<T extends Array<any>, U extends Array<any>, V>(
+	func: (...args: T) => LuaTuple<U>,
+	errHandler: (err: unknown) => V,
+	...args: T
+): LuaTuple<[true, ...U] | [false, V extends LuaTuple<[infer A, ...Array<unknown>]> ? A : V]>;
 declare function xpcall<T extends Array<unknown>, U, V>(
 	func: (...args: T) => U,
 	errHandler: (err: unknown) => V,
 	...args: T
-): LuaTuple<
-	U extends LuaTuple<[...infer W]>
-		? [true, ...W] | [false, V extends LuaTuple<[infer A, ...Array<unknown>]> ? A : V]
-		: [true, U] | [false, V extends LuaTuple<[infer A, ...Array<unknown>]> ? A : V]
->;
+): LuaTuple<[true, U] | [false, V extends LuaTuple<[infer A, ...Array<unknown>]> ? A : V]>;
 
 interface LuaMetatable<T> {
 	__index?: (self: T, index: unknown) => void;
