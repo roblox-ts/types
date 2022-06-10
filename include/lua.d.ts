@@ -73,7 +73,7 @@ declare function xpcall<T extends Array<any>, U extends Array<any>, V>(
 	errHandler: (err: unknown) => V,
 	...args: T
 ): LuaTuple<[true, ...U] | [false, ...{ [K in keyof U]: K extends "0" ? V : undefined }]>;
-declare function xpcall<T extends Array<unknown>, U, V>(
+declare function xpcall<T extends Array<any>, U, V>(
 	func: (...args: T) => U,
 	errHandler: (err: unknown) => V,
 	...args: T
