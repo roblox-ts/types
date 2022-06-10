@@ -47,7 +47,12 @@ declare function tonumber(arg: unknown, base?: number): number | undefined;
 /** Receives an argument of any type and converts it to a string in a reasonable format. If the metatable of e has a "__tostring" field, then tostring calls the corresponding value with e as an argument and uses the result of the call as its result. For complete control of how numbers are converted, use string.format. */
 declare function tostring(value: unknown): string;
 
-/** Calls the function func with the given arguments in protected mode. This means that any error inside func is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. */
+/**
+ * Calls the function `func` with the given arguments in protected mode. This means that any error inside func is not
+ * propagated; instead, pcall catches the error and returns a status code. Its first result is the status code
+ * (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the
+ * call, after this first result. In case of any error, pcall returns false plus the error message.
+ */
 declare function pcall<T extends Array<any>, U extends Array<any>>(
 	func: (...args: T) => LuaTuple<U>,
 	...args: T
