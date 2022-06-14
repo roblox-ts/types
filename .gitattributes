@@ -1,0 +1,3 @@
+*.ts linguist-language=TypeScript
+*.d.ts linguist-language=TypeScript linguist-vendored=false
+* text eol=lf
