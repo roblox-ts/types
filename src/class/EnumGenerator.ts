@@ -39,7 +39,11 @@ export class EnumGenerator extends Generator {
 
 			this.write(`export namespace ${enumTypeName} {`);
 			this.pushIndent();
-			for (const { Name: enumItemName, Value: enumItemValue } of enumTypeItems) {
+			for (const {
+				Name: enumItemName,
+				Value: enumItemValue,
+				LegacyNames: enumItemLegacyNames,
+			} of enumTypeItems) {
 				enumItemNames.push(enumItemName);
 				this.write(`export interface ${enumItemName} {`);
 				this.pushIndent();
@@ -50,6 +54,10 @@ export class EnumGenerator extends Generator {
 				this.write(`}`);
 				this.write(``);
 				this.write(`export const ${enumItemName}: ${enumItemName};`);
+				for (const enumItemLegacyName of enumItemLegacyNames ?? []) {
+					this.write(`/** @deprecated renamed to ${enumItemName} */`);
+					this.write(`export const ${enumItemLegacyName}: ${enumItemName};`);
+				}
 				this.write(``);
 			}
 			this.write(`export function GetEnumItems(this: defined): Array<${enumTypeName}>`);
