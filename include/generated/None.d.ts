@@ -401,7 +401,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	ChatInputBarConfiguration: ChatInputBarConfiguration;
 	ChatWindowConfiguration: ChatWindowConfiguration;
 	CommandInstance: CommandInstance;
-	CustomDspSoundEffect: CustomDspSoundEffect;
+	CustomSoundEffect: CustomSoundEffect;
 	DataModel: DataModel;
 	DataStore: DataStore;
 	DataStoreInfo: DataStoreInfo;
@@ -16210,6 +16210,11 @@ interface ImporterMeshSettings extends ImporterBaseSettings {
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
+	readonly CageUVMatched: boolean;
+	CageUVMatchedPreview: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
 	readonly Dimensions: Vector3;
 	DoubleSided: boolean;
 	IgnoreVertexColors: boolean;
@@ -16217,6 +16222,7 @@ interface ImporterMeshSettings extends ImporterBaseSettings {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly PolygonCount: number;
+	UseImportedPivot: boolean;
 }
 
 interface ImporterRootSettings extends ImporterBaseSettings {
@@ -29344,7 +29350,7 @@ interface CompressorSoundEffect extends SoundEffect {
 	Threshold: number;
 }
 
-interface CustomDspSoundEffect extends SoundEffect {
+interface CustomSoundEffect extends SoundEffect {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -29352,10 +29358,10 @@ interface CustomDspSoundEffect extends SoundEffect {
 	 * @hidden
 	 * @deprecated
 	 */
-	readonly _nominal_CustomDspSoundEffect: unique symbol;
+	readonly _nominal_CustomSoundEffect: unique symbol;
 }
 
-interface ChannelSelectorSoundEffect extends CustomDspSoundEffect {
+interface ChannelSelectorSoundEffect extends CustomSoundEffect {
 	/**
 	 * **DO NOT USE!**
 	 *
