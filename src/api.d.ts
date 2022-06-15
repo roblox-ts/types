@@ -114,6 +114,7 @@ export interface ApiClass {
 }
 
 export interface ApiEnumItem {
+	LegacyNames?: Array<string>;
 	Name: string;
 	Value: number;
 }
