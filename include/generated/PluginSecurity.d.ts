@@ -197,18 +197,12 @@ interface CoreGui extends BasePlayerGui {
 	 * @deprecated
 	 */
 	readonly _nominal_CoreGui: unique symbol;
-	/**
-	 * Overrides the default selection adornment (used for gamepads). For best results, this should point to a GuiObject.
-	 */
 	readonly SelectionImageObject: GuiObject | undefined;
 	/**
 	 * The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Version: number;
-	/**
-	 * When enabled, forces the contents of the [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui) to be rendered like a [SurfaceGui](https://developer.roblox.com/en-us/api-reference/class/SurfaceGui) adorned to a [Part](https://developer.roblox.com/en-us/api-reference/class/Part)'s face. This is used for VR.
-	 */
 	SetUserGuiRendering(this: CoreGui, enabled: boolean, guiAdornee: Instance, faceId: CastsToEnum<Enum.NormalId>): void;
 	TakeScreenshot(this: CoreGui): void;
 	ToggleRecording(this: CoreGui): void;
@@ -779,9 +773,6 @@ interface GameSettings extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly VideoRecording: boolean;
-	/**
-	 * The VideoRecordingChangeRequest event fires when the user starts or stops recording.
-	 */
 	readonly VideoRecordingChangeRequest: RBXScriptSignal<(recording: boolean) => void>;
 }
 
@@ -1760,12 +1751,10 @@ interface Plugin extends Instance {
 	 */
 	readonly GridSize: number;
 	/**
-	 * This member is for a feature that is not yet released.
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly HostDataModelType: Enum.StudioDataModelType;
 	/**
-	 * This member is for a feature that is not yet released.
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly HostDataModelTypeIsCurrent: boolean;
@@ -1849,9 +1838,6 @@ interface Plugin extends Instance {
 	 * *   [Plugin.Unloading](https://developer.roblox.com/en-us/api-reference/event/Plugin/Unloading), fires immediately before the plugin is unloaded or reloaded via uninstallation, deactivation, or updating
 	 */
 	Deactivate(this: Plugin): void;
-	/**
-	 * This member is for a feature that is not yet released.
-	 */
 	GetItem(this: Plugin, key: string, defaultValue: unknown): unknown;
 	/**
 	 * Returns the [JointCreationMode](https://developer.roblox.com/en-us/api-reference/enum/JointCreationMode) the user has set in studio under the Model tab.
@@ -1904,17 +1890,8 @@ interface Plugin extends Instance {
 	 * Opens the context help window to the wiki page that `url` links to.
 	 */
 	OpenWikiPage(this: Plugin, url: string): void;
-	/**
-	 * Pauses a sound that was played via [Plugin:PlaySound](https://developer.roblox.com/en-us/api-reference/function/Plugin/PlaySound).
-	 */
 	PauseSound(this: Plugin, sound: Sound): void;
-	/**
-	 * PlaySound allows you to play a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) object regardless if the game is running or not.
-	 */
 	PlaySound(this: Plugin, sound: Sound, normalizedTimePosition?: number): void;
-	/**
-	 * Resumes a sound that was previously being played (via [Plugin:PlaySound](https://developer.roblox.com/en-us/api-reference/function/Plugin/PlaySound)).
-	 */
 	ResumeSound(this: Plugin, sound: Sound): void;
 	/**
 	 * Opens an upload window for the user's current selection.
@@ -1935,9 +1912,6 @@ interface Plugin extends Instance {
 	 * Separates the given UnionOperations and returns the resulting parts.
 	 */
 	Separate(this: Plugin, objects: Array<Instance>): Array<Instance>;
-	/**
-	 * This member is for a feature that is not yet released.
-	 */
 	SetItem(this: Plugin, key: string, value: unknown): void;
 	SetReady(this: Plugin): void;
 	/**
@@ -2014,9 +1988,6 @@ interface Plugin extends Instance {
 	 * *   [PluginGui.PluginDragLeft](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragLeft)
 	 */
 	StartDrag(this: Plugin, dragData: object): void;
-	/**
-	 * Forces all sounds that are being played by the plugin to stop playing.
-	 */
 	StopAllSounds(this: Plugin): void;
 	/**
 	 * Unions the given parts and returns the resulting UnionOperation.
@@ -2561,56 +2532,22 @@ interface RenderingTest extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_RenderingTest: unique symbol;
-	/**
-	 * The CFrame that the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) will use when this RenderingTest is executed.  
-	 * The value of this property is reflected into [RenderingTest.Position](https://developer.roblox.com/en-us/api-reference/property/RenderingTest/Position) and [RenderingTest.Orientation](https://developer.roblox.com/en-us/api-reference/property/RenderingTest/Orientation).
-	 */
 	CFrame: CFrame;
-	/**
-	 * The maximum difference that this RenderingTest can have between the image it captures and the original image.  
-	 * This property is only used if the RenderingTest's ComparisonMethod is set to **diff**.
-	 */
 	ComparisonDiffThreshold: number;
-	/**
-	 * The comparison method that is expected to be used when this RenderingTest's image capture is compared to its original image.
-	 */
 	ComparisonMethod: Enum.RenderingTestComparisonMethod;
-	/**
-	 * The maximum peak signal-to-noise ratio that this RenderingTest can have between the image it captures and the original image.  
-	 * This property is only used if the RenderingTest's ComparisonMethod is set to **psnr**.
-	 */
 	ComparisonPsnrThreshold: number;
-	/**
-	 * A description to describe this RenderingTest.
-	 */
 	Description: string;
-	/**
-	 * The FieldOfView that will be used by the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) when running this RenderingTest.  
-	 * Should fall between 1 and 120 in order to work as expected.
-	 */
 	FieldOfView: number;
 	/**
-	 * The derived orientation of the RenderingTest's CFrame.
 	 * Tags: NotReplicated
 	 */
 	Orientation: Vector3;
 	/**
-	 * The derived position of the RenderingTest's CFrame.
 	 * Tags: NotReplicated
 	 */
 	Position: Vector3;
-	/**
-	 * The graphics quality that will be used by the rendering pipeline when running this RenderingTest.  
-	 * Should fall between 1 and 21 in order to work as expected.
-	 */
 	QualityLevel: number;
-	/**
-	 * Indicates whether or not this RenderingTest should be skipped.
-	 */
 	ShouldSkip: boolean;
-	/**
-	 * A label of the internal JIRA ticket this RenderingTest is associated with.
-	 */
 	Ticket: string;
 	RenderdocTriggerCapture(this: RenderingTest): void;
 }
