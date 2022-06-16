@@ -540,7 +540,7 @@ interface RBXScriptSignal<T extends Callback = Callback> {
 	Connect(this: RBXScriptSignal, callback: T): RBXScriptConnection;
 
 	ConnectParallel(this: RBXScriptSignal, callback: T): RBXScriptConnection;
-	
+
 	Once(this: RBXScriptSignal, callback: T): RBXScriptConnection;
 
 	/**
