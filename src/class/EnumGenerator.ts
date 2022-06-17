@@ -17,6 +17,7 @@ export class EnumGenerator extends Generator {
 		this.write(`Name: string;`);
 		this.write(`Value: number;`);
 		this.write(`EnumType: Enum;`);
+		this.write(`IsA<T extends keyof Enums>(this: defined, name: T): this is Enums[T];`);
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
