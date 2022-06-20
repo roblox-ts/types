@@ -11,6 +11,7 @@ interface EnumItem {
 	Name: string;
 	Value: number;
 	EnumType: Enum;
+	IsA<T extends keyof Enums>(this: defined, name: T): this is Enums[T];
 }
 
 interface Enum {
