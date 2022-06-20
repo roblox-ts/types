@@ -25,7 +25,7 @@ export class EnumGenerator extends Generator {
 		this.write(``);
 		this.write(`interface Enum {`);
 		this.pushIndent();
-		this.write(`GetEnumItems(): Array<EnumItem>;`);
+		this.write(`GetEnumItems(this: Enum): Array<EnumItem>;`);
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
@@ -60,7 +60,7 @@ export class EnumGenerator extends Generator {
 				}
 				this.write(``);
 			}
-			this.write(`export function GetEnumItems(): Array<${enumTypeName}>`);
+			this.write(`export function GetEnumItems(this: Enum): Array<${enumTypeName}>`);
 			this.popIndent();
 			this.write(`}`);
 			this.write(`export type ${enumTypeName} = ${enumTypeName}.${enumItemNames.join(` | ${enumTypeName}.`)};`);
