@@ -18,22 +18,19 @@ export class EnumGenerator extends Generator {
 		this.write(`Value: number;`);
 		this.write(`EnumType: Enum;`);
 		this.write(
-			`IsA<T extends keyof typeof Enum>(this: EnumItem, name: T): this is typeof Enum[T][Exclude<keyof typeof Enum[T], "GetEnumItems">];`,
+			`IsA<T extends keyof typeof Enum>(name: T): this is typeof Enum[T][Exclude<keyof typeof Enum[T], "GetEnumItems">];`,
 		);
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
 		this.write(`interface Enum {`);
 		this.pushIndent();
-		this.write(`GetEnumItems(this: defined): Array<EnumItem>;`);
+		this.write(`GetEnumItems(): Array<EnumItem>;`);
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
 		this.write(`declare namespace Enum {`);
 		this.pushIndent();
-		this.write(
-			`type EnumType<T extends { Name: string }> = { GetEnumItems(this: defined): Array<T> } & { [K in T["Name"]]: Extract<T, { Name: K }> };`,
-		);
 		this.write(`export function GetEnums(this: Enums): Array<Enum>;`);
 		this.write(``);
 
@@ -52,7 +49,7 @@ export class EnumGenerator extends Generator {
 				this.pushIndent();
 				this.write(`Name: "${enumItemName}";`);
 				this.write(`Value: ${enumItemValue};`);
-				this.write(`EnumType: EnumType<${enumTypeName}>;`);
+				this.write(`EnumType: typeof ${enumTypeName};`);
 				this.popIndent();
 				this.write(`}`);
 				this.write(``);
@@ -63,7 +60,7 @@ export class EnumGenerator extends Generator {
 				}
 				this.write(``);
 			}
-			this.write(`export function GetEnumItems(this: defined): Array<${enumTypeName}>`);
+			this.write(`export function GetEnumItems(): Array<${enumTypeName}>`);
 			this.popIndent();
 			this.write(`}`);
 			this.write(`export type ${enumTypeName} = ${enumTypeName}.${enumItemNames.join(` | ${enumTypeName}.`)};`);
