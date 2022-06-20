@@ -17,7 +17,9 @@ export class EnumGenerator extends Generator {
 		this.write(`Name: string;`);
 		this.write(`Value: number;`);
 		this.write(`EnumType: Enum;`);
-		this.write(`IsA<T extends keyof Enums>(this: defined, name: T): this is Enums[T];`);
+		this.write(
+			`IsA<T extends keyof typeof Enum>(this: EnumItem, name: T): this is typeof Enum[T][Exclude<keyof typeof Enum[T], "GetEnumItems">];`,
+		);
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
@@ -46,7 +48,7 @@ export class EnumGenerator extends Generator {
 				LegacyNames: enumItemLegacyNames,
 			} of enumTypeItems) {
 				enumItemNames.push(enumItemName);
-				this.write(`export interface ${enumItemName} {`);
+				this.write(`export interface ${enumItemName} extends EnumItem {`);
 				this.pushIndent();
 				this.write(`Name: "${enumItemName}";`);
 				this.write(`Value: ${enumItemValue};`);
