@@ -418,6 +418,9 @@ interface Instance {
 		this: T,
 		propertyName: InstancePropertyNames<T>,
 	): RBXScriptSignal<() => void>;
+	GetAttribute(this: Instance, attribute: string): AttributeValue | undefined;
+	SetAttribute(this: Instance, attribute: string, value: AttributeValue | undefined): void;
+	GetAttributes(this: Instance): Map<string, AttributeValue>;
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance | undefined) => void>;
 }
 

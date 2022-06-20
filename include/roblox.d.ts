@@ -2344,3 +2344,18 @@ interface CheckableTypes extends CheckablePrimitives {
 	Vector3: Vector3;
 	Vector3int16: Vector3int16;
 }
+
+type AttributeValue =
+	| string
+	| boolean
+	| number
+	| UDim
+	| UDim2
+	| BrickColor
+	| Color3
+	| Vector2
+	| Vector3
+	| NumberSequence
+	| ColorSequence
+	| NumberRange
+	| Rect;
