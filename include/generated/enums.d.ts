@@ -11,22 +11,21 @@ interface EnumItem {
 	Name: string;
 	Value: number;
 	EnumType: Enum;
-	IsA<T extends keyof typeof Enum>(this: EnumItem, name: T): this is typeof Enum[T][Exclude<keyof typeof Enum[T], "GetEnumItems">];
+	IsA<T extends keyof typeof Enum>(name: T): this is typeof Enum[T][Exclude<keyof typeof Enum[T], "GetEnumItems">];
 }
 
 interface Enum {
-	GetEnumItems(this: defined): Array<EnumItem>;
+	GetEnumItems(): Array<EnumItem>;
 }
 
 declare namespace Enum {
-	type EnumType<T extends { Name: string }> = { GetEnumItems(this: defined): Array<T> } & { [K in T["Name"]]: Extract<T, { Name: K }> };
 	export function GetEnums(this: Enums): Array<Enum>;
 
 	export namespace ABTestLoadingStatus {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<ABTestLoadingStatus>;
+			EnumType: typeof ABTestLoadingStatus;
 		}
 
 		export const None: None;
@@ -34,7 +33,7 @@ declare namespace Enum {
 		export interface Pending extends EnumItem {
 			Name: "Pending";
 			Value: 1;
-			EnumType: EnumType<ABTestLoadingStatus>;
+			EnumType: typeof ABTestLoadingStatus;
 		}
 
 		export const Pending: Pending;
@@ -42,7 +41,7 @@ declare namespace Enum {
 		export interface Initialized extends EnumItem {
 			Name: "Initialized";
 			Value: 2;
-			EnumType: EnumType<ABTestLoadingStatus>;
+			EnumType: typeof ABTestLoadingStatus;
 		}
 
 		export const Initialized: Initialized;
@@ -50,7 +49,7 @@ declare namespace Enum {
 		export interface Error extends EnumItem {
 			Name: "Error";
 			Value: 3;
-			EnumType: EnumType<ABTestLoadingStatus>;
+			EnumType: typeof ABTestLoadingStatus;
 		}
 
 		export const Error: Error;
@@ -58,7 +57,7 @@ declare namespace Enum {
 		export interface TimedOut extends EnumItem {
 			Name: "TimedOut";
 			Value: 4;
-			EnumType: EnumType<ABTestLoadingStatus>;
+			EnumType: typeof ABTestLoadingStatus;
 		}
 
 		export const TimedOut: TimedOut;
@@ -66,19 +65,19 @@ declare namespace Enum {
 		export interface ShutOff extends EnumItem {
 			Name: "ShutOff";
 			Value: 5;
-			EnumType: EnumType<ABTestLoadingStatus>;
+			EnumType: typeof ABTestLoadingStatus;
 		}
 
 		export const ShutOff: ShutOff;
 
-		export function GetEnumItems(this: defined): Array<ABTestLoadingStatus>
+		export function GetEnumItems(): Array<ABTestLoadingStatus>
 	}
 	export type ABTestLoadingStatus = ABTestLoadingStatus.None | ABTestLoadingStatus.Pending | ABTestLoadingStatus.Initialized | ABTestLoadingStatus.Error | ABTestLoadingStatus.TimedOut | ABTestLoadingStatus.ShutOff;
 	export namespace AccessoryType {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 0;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Unknown: Unknown;
@@ -86,7 +85,7 @@ declare namespace Enum {
 		export interface Hat extends EnumItem {
 			Name: "Hat";
 			Value: 1;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Hat: Hat;
@@ -94,7 +93,7 @@ declare namespace Enum {
 		export interface Hair extends EnumItem {
 			Name: "Hair";
 			Value: 2;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Hair: Hair;
@@ -102,7 +101,7 @@ declare namespace Enum {
 		export interface Face extends EnumItem {
 			Name: "Face";
 			Value: 3;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Face: Face;
@@ -110,7 +109,7 @@ declare namespace Enum {
 		export interface Neck extends EnumItem {
 			Name: "Neck";
 			Value: 4;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Neck: Neck;
@@ -118,7 +117,7 @@ declare namespace Enum {
 		export interface Shoulder extends EnumItem {
 			Name: "Shoulder";
 			Value: 5;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Shoulder: Shoulder;
@@ -126,7 +125,7 @@ declare namespace Enum {
 		export interface Front extends EnumItem {
 			Name: "Front";
 			Value: 6;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Front: Front;
@@ -134,7 +133,7 @@ declare namespace Enum {
 		export interface Back extends EnumItem {
 			Name: "Back";
 			Value: 7;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Back: Back;
@@ -142,7 +141,7 @@ declare namespace Enum {
 		export interface Waist extends EnumItem {
 			Name: "Waist";
 			Value: 8;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Waist: Waist;
@@ -150,7 +149,7 @@ declare namespace Enum {
 		export interface TShirt extends EnumItem {
 			Name: "TShirt";
 			Value: 9;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const TShirt: TShirt;
@@ -158,7 +157,7 @@ declare namespace Enum {
 		export interface Shirt extends EnumItem {
 			Name: "Shirt";
 			Value: 10;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Shirt: Shirt;
@@ -166,7 +165,7 @@ declare namespace Enum {
 		export interface Pants extends EnumItem {
 			Name: "Pants";
 			Value: 11;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Pants: Pants;
@@ -174,7 +173,7 @@ declare namespace Enum {
 		export interface Jacket extends EnumItem {
 			Name: "Jacket";
 			Value: 12;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Jacket: Jacket;
@@ -182,7 +181,7 @@ declare namespace Enum {
 		export interface Sweater extends EnumItem {
 			Name: "Sweater";
 			Value: 13;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Sweater: Sweater;
@@ -190,7 +189,7 @@ declare namespace Enum {
 		export interface Shorts extends EnumItem {
 			Name: "Shorts";
 			Value: 14;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Shorts: Shorts;
@@ -198,7 +197,7 @@ declare namespace Enum {
 		export interface LeftShoe extends EnumItem {
 			Name: "LeftShoe";
 			Value: 15;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const LeftShoe: LeftShoe;
@@ -206,7 +205,7 @@ declare namespace Enum {
 		export interface RightShoe extends EnumItem {
 			Name: "RightShoe";
 			Value: 16;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const RightShoe: RightShoe;
@@ -214,7 +213,7 @@ declare namespace Enum {
 		export interface DressSkirt extends EnumItem {
 			Name: "DressSkirt";
 			Value: 17;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const DressSkirt: DressSkirt;
@@ -222,7 +221,7 @@ declare namespace Enum {
 		export interface Eyebrow extends EnumItem {
 			Name: "Eyebrow";
 			Value: 18;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Eyebrow: Eyebrow;
@@ -230,19 +229,19 @@ declare namespace Enum {
 		export interface Eyelash extends EnumItem {
 			Name: "Eyelash";
 			Value: 19;
-			EnumType: EnumType<AccessoryType>;
+			EnumType: typeof AccessoryType;
 		}
 
 		export const Eyelash: Eyelash;
 
-		export function GetEnumItems(this: defined): Array<AccessoryType>
+		export function GetEnumItems(): Array<AccessoryType>
 	}
 	export type AccessoryType = AccessoryType.Unknown | AccessoryType.Hat | AccessoryType.Hair | AccessoryType.Face | AccessoryType.Neck | AccessoryType.Shoulder | AccessoryType.Front | AccessoryType.Back | AccessoryType.Waist | AccessoryType.TShirt | AccessoryType.Shirt | AccessoryType.Pants | AccessoryType.Jacket | AccessoryType.Sweater | AccessoryType.Shorts | AccessoryType.LeftShoe | AccessoryType.RightShoe | AccessoryType.DressSkirt | AccessoryType.Eyebrow | AccessoryType.Eyelash;
 	export namespace ActionType {
 		export interface Nothing extends EnumItem {
 			Name: "Nothing";
 			Value: 0;
-			EnumType: EnumType<ActionType>;
+			EnumType: typeof ActionType;
 		}
 
 		export const Nothing: Nothing;
@@ -250,7 +249,7 @@ declare namespace Enum {
 		export interface Pause extends EnumItem {
 			Name: "Pause";
 			Value: 1;
-			EnumType: EnumType<ActionType>;
+			EnumType: typeof ActionType;
 		}
 
 		export const Pause: Pause;
@@ -258,7 +257,7 @@ declare namespace Enum {
 		export interface Lose extends EnumItem {
 			Name: "Lose";
 			Value: 2;
-			EnumType: EnumType<ActionType>;
+			EnumType: typeof ActionType;
 		}
 
 		export const Lose: Lose;
@@ -266,7 +265,7 @@ declare namespace Enum {
 		export interface Draw extends EnumItem {
 			Name: "Draw";
 			Value: 3;
-			EnumType: EnumType<ActionType>;
+			EnumType: typeof ActionType;
 		}
 
 		export const Draw: Draw;
@@ -274,19 +273,19 @@ declare namespace Enum {
 		export interface Win extends EnumItem {
 			Name: "Win";
 			Value: 4;
-			EnumType: EnumType<ActionType>;
+			EnumType: typeof ActionType;
 		}
 
 		export const Win: Win;
 
-		export function GetEnumItems(this: defined): Array<ActionType>
+		export function GetEnumItems(): Array<ActionType>
 	}
 	export type ActionType = ActionType.Nothing | ActionType.Pause | ActionType.Lose | ActionType.Draw | ActionType.Win;
 	export namespace ActuatorRelativeTo {
 		export interface Attachment0 extends EnumItem {
 			Name: "Attachment0";
 			Value: 0;
-			EnumType: EnumType<ActuatorRelativeTo>;
+			EnumType: typeof ActuatorRelativeTo;
 		}
 
 		export const Attachment0: Attachment0;
@@ -294,7 +293,7 @@ declare namespace Enum {
 		export interface Attachment1 extends EnumItem {
 			Name: "Attachment1";
 			Value: 1;
-			EnumType: EnumType<ActuatorRelativeTo>;
+			EnumType: typeof ActuatorRelativeTo;
 		}
 
 		export const Attachment1: Attachment1;
@@ -302,19 +301,19 @@ declare namespace Enum {
 		export interface World extends EnumItem {
 			Name: "World";
 			Value: 2;
-			EnumType: EnumType<ActuatorRelativeTo>;
+			EnumType: typeof ActuatorRelativeTo;
 		}
 
 		export const World: World;
 
-		export function GetEnumItems(this: defined): Array<ActuatorRelativeTo>
+		export function GetEnumItems(): Array<ActuatorRelativeTo>
 	}
 	export type ActuatorRelativeTo = ActuatorRelativeTo.Attachment0 | ActuatorRelativeTo.Attachment1 | ActuatorRelativeTo.World;
 	export namespace ActuatorType {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<ActuatorType>;
+			EnumType: typeof ActuatorType;
 		}
 
 		export const None: None;
@@ -322,7 +321,7 @@ declare namespace Enum {
 		export interface Motor extends EnumItem {
 			Name: "Motor";
 			Value: 1;
-			EnumType: EnumType<ActuatorType>;
+			EnumType: typeof ActuatorType;
 		}
 
 		export const Motor: Motor;
@@ -330,19 +329,19 @@ declare namespace Enum {
 		export interface Servo extends EnumItem {
 			Name: "Servo";
 			Value: 2;
-			EnumType: EnumType<ActuatorType>;
+			EnumType: typeof ActuatorType;
 		}
 
 		export const Servo: Servo;
 
-		export function GetEnumItems(this: defined): Array<ActuatorType>
+		export function GetEnumItems(): Array<ActuatorType>
 	}
 	export type ActuatorType = ActuatorType.None | ActuatorType.Motor | ActuatorType.Servo;
 	export namespace AdornCullingMode {
 		export interface Automatic extends EnumItem {
 			Name: "Automatic";
 			Value: 0;
-			EnumType: EnumType<AdornCullingMode>;
+			EnumType: typeof AdornCullingMode;
 		}
 
 		export const Automatic: Automatic;
@@ -350,19 +349,19 @@ declare namespace Enum {
 		export interface Never extends EnumItem {
 			Name: "Never";
 			Value: 1;
-			EnumType: EnumType<AdornCullingMode>;
+			EnumType: typeof AdornCullingMode;
 		}
 
 		export const Never: Never;
 
-		export function GetEnumItems(this: defined): Array<AdornCullingMode>
+		export function GetEnumItems(): Array<AdornCullingMode>
 	}
 	export type AdornCullingMode = AdornCullingMode.Automatic | AdornCullingMode.Never;
 	export namespace AlignType {
 		export interface Parallel extends EnumItem {
 			Name: "Parallel";
 			Value: 0;
-			EnumType: EnumType<AlignType>;
+			EnumType: typeof AlignType;
 		}
 
 		export const Parallel: Parallel;
@@ -370,19 +369,19 @@ declare namespace Enum {
 		export interface Perpendicular extends EnumItem {
 			Name: "Perpendicular";
 			Value: 1;
-			EnumType: EnumType<AlignType>;
+			EnumType: typeof AlignType;
 		}
 
 		export const Perpendicular: Perpendicular;
 
-		export function GetEnumItems(this: defined): Array<AlignType>
+		export function GetEnumItems(): Array<AlignType>
 	}
 	export type AlignType = AlignType.Parallel | AlignType.Perpendicular;
 	export namespace AlphaMode {
 		export interface Overlay extends EnumItem {
 			Name: "Overlay";
 			Value: 0;
-			EnumType: EnumType<AlphaMode>;
+			EnumType: typeof AlphaMode;
 		}
 
 		export const Overlay: Overlay;
@@ -390,19 +389,19 @@ declare namespace Enum {
 		export interface Transparency extends EnumItem {
 			Name: "Transparency";
 			Value: 1;
-			EnumType: EnumType<AlphaMode>;
+			EnumType: typeof AlphaMode;
 		}
 
 		export const Transparency: Transparency;
 
-		export function GetEnumItems(this: defined): Array<AlphaMode>
+		export function GetEnumItems(): Array<AlphaMode>
 	}
 	export type AlphaMode = AlphaMode.Overlay | AlphaMode.Transparency;
 	export namespace AnalyticsEconomyAction {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<AnalyticsEconomyAction>;
+			EnumType: typeof AnalyticsEconomyAction;
 		}
 
 		export const Default: Default;
@@ -410,7 +409,7 @@ declare namespace Enum {
 		export interface Acquire extends EnumItem {
 			Name: "Acquire";
 			Value: 1;
-			EnumType: EnumType<AnalyticsEconomyAction>;
+			EnumType: typeof AnalyticsEconomyAction;
 		}
 
 		export const Acquire: Acquire;
@@ -418,19 +417,19 @@ declare namespace Enum {
 		export interface Spend extends EnumItem {
 			Name: "Spend";
 			Value: 2;
-			EnumType: EnumType<AnalyticsEconomyAction>;
+			EnumType: typeof AnalyticsEconomyAction;
 		}
 
 		export const Spend: Spend;
 
-		export function GetEnumItems(this: defined): Array<AnalyticsEconomyAction>
+		export function GetEnumItems(): Array<AnalyticsEconomyAction>
 	}
 	export type AnalyticsEconomyAction = AnalyticsEconomyAction.Default | AnalyticsEconomyAction.Acquire | AnalyticsEconomyAction.Spend;
 	export namespace AnalyticsLogLevel {
 		export interface Trace extends EnumItem {
 			Name: "Trace";
 			Value: 0;
-			EnumType: EnumType<AnalyticsLogLevel>;
+			EnumType: typeof AnalyticsLogLevel;
 		}
 
 		export const Trace: Trace;
@@ -438,7 +437,7 @@ declare namespace Enum {
 		export interface Debug extends EnumItem {
 			Name: "Debug";
 			Value: 1;
-			EnumType: EnumType<AnalyticsLogLevel>;
+			EnumType: typeof AnalyticsLogLevel;
 		}
 
 		export const Debug: Debug;
@@ -446,7 +445,7 @@ declare namespace Enum {
 		export interface Information extends EnumItem {
 			Name: "Information";
 			Value: 2;
-			EnumType: EnumType<AnalyticsLogLevel>;
+			EnumType: typeof AnalyticsLogLevel;
 		}
 
 		export const Information: Information;
@@ -454,7 +453,7 @@ declare namespace Enum {
 		export interface Warning extends EnumItem {
 			Name: "Warning";
 			Value: 3;
-			EnumType: EnumType<AnalyticsLogLevel>;
+			EnumType: typeof AnalyticsLogLevel;
 		}
 
 		export const Warning: Warning;
@@ -462,7 +461,7 @@ declare namespace Enum {
 		export interface Error extends EnumItem {
 			Name: "Error";
 			Value: 4;
-			EnumType: EnumType<AnalyticsLogLevel>;
+			EnumType: typeof AnalyticsLogLevel;
 		}
 
 		export const Error: Error;
@@ -470,19 +469,19 @@ declare namespace Enum {
 		export interface Fatal extends EnumItem {
 			Name: "Fatal";
 			Value: 5;
-			EnumType: EnumType<AnalyticsLogLevel>;
+			EnumType: typeof AnalyticsLogLevel;
 		}
 
 		export const Fatal: Fatal;
 
-		export function GetEnumItems(this: defined): Array<AnalyticsLogLevel>
+		export function GetEnumItems(): Array<AnalyticsLogLevel>
 	}
 	export type AnalyticsLogLevel = AnalyticsLogLevel.Trace | AnalyticsLogLevel.Debug | AnalyticsLogLevel.Information | AnalyticsLogLevel.Warning | AnalyticsLogLevel.Error | AnalyticsLogLevel.Fatal;
 	export namespace AnalyticsProgressionStatus {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<AnalyticsProgressionStatus>;
+			EnumType: typeof AnalyticsProgressionStatus;
 		}
 
 		export const Default: Default;
@@ -490,7 +489,7 @@ declare namespace Enum {
 		export interface Begin extends EnumItem {
 			Name: "Begin";
 			Value: 1;
-			EnumType: EnumType<AnalyticsProgressionStatus>;
+			EnumType: typeof AnalyticsProgressionStatus;
 		}
 
 		export const Begin: Begin;
@@ -498,7 +497,7 @@ declare namespace Enum {
 		export interface Complete extends EnumItem {
 			Name: "Complete";
 			Value: 2;
-			EnumType: EnumType<AnalyticsProgressionStatus>;
+			EnumType: typeof AnalyticsProgressionStatus;
 		}
 
 		export const Complete: Complete;
@@ -506,7 +505,7 @@ declare namespace Enum {
 		export interface Abandon extends EnumItem {
 			Name: "Abandon";
 			Value: 3;
-			EnumType: EnumType<AnalyticsProgressionStatus>;
+			EnumType: typeof AnalyticsProgressionStatus;
 		}
 
 		export const Abandon: Abandon;
@@ -514,19 +513,19 @@ declare namespace Enum {
 		export interface Fail extends EnumItem {
 			Name: "Fail";
 			Value: 4;
-			EnumType: EnumType<AnalyticsProgressionStatus>;
+			EnumType: typeof AnalyticsProgressionStatus;
 		}
 
 		export const Fail: Fail;
 
-		export function GetEnumItems(this: defined): Array<AnalyticsProgressionStatus>
+		export function GetEnumItems(): Array<AnalyticsProgressionStatus>
 	}
 	export type AnalyticsProgressionStatus = AnalyticsProgressionStatus.Default | AnalyticsProgressionStatus.Begin | AnalyticsProgressionStatus.Complete | AnalyticsProgressionStatus.Abandon | AnalyticsProgressionStatus.Fail;
 	export namespace AnimationPriority {
 		export interface Idle extends EnumItem {
 			Name: "Idle";
 			Value: 0;
-			EnumType: EnumType<AnimationPriority>;
+			EnumType: typeof AnimationPriority;
 		}
 
 		export const Idle: Idle;
@@ -534,7 +533,7 @@ declare namespace Enum {
 		export interface Movement extends EnumItem {
 			Name: "Movement";
 			Value: 1;
-			EnumType: EnumType<AnimationPriority>;
+			EnumType: typeof AnimationPriority;
 		}
 
 		export const Movement: Movement;
@@ -542,7 +541,7 @@ declare namespace Enum {
 		export interface Action extends EnumItem {
 			Name: "Action";
 			Value: 2;
-			EnumType: EnumType<AnimationPriority>;
+			EnumType: typeof AnimationPriority;
 		}
 
 		export const Action: Action;
@@ -550,7 +549,7 @@ declare namespace Enum {
 		export interface Action2 extends EnumItem {
 			Name: "Action2";
 			Value: 3;
-			EnumType: EnumType<AnimationPriority>;
+			EnumType: typeof AnimationPriority;
 		}
 
 		export const Action2: Action2;
@@ -558,7 +557,7 @@ declare namespace Enum {
 		export interface Action3 extends EnumItem {
 			Name: "Action3";
 			Value: 4;
-			EnumType: EnumType<AnimationPriority>;
+			EnumType: typeof AnimationPriority;
 		}
 
 		export const Action3: Action3;
@@ -566,7 +565,7 @@ declare namespace Enum {
 		export interface Action4 extends EnumItem {
 			Name: "Action4";
 			Value: 5;
-			EnumType: EnumType<AnimationPriority>;
+			EnumType: typeof AnimationPriority;
 		}
 
 		export const Action4: Action4;
@@ -574,19 +573,19 @@ declare namespace Enum {
 		export interface Core extends EnumItem {
 			Name: "Core";
 			Value: 1000;
-			EnumType: EnumType<AnimationPriority>;
+			EnumType: typeof AnimationPriority;
 		}
 
 		export const Core: Core;
 
-		export function GetEnumItems(this: defined): Array<AnimationPriority>
+		export function GetEnumItems(): Array<AnimationPriority>
 	}
 	export type AnimationPriority = AnimationPriority.Idle | AnimationPriority.Movement | AnimationPriority.Action | AnimationPriority.Action2 | AnimationPriority.Action3 | AnimationPriority.Action4 | AnimationPriority.Core;
 	export namespace AnimatorRetargetingMode {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<AnimatorRetargetingMode>;
+			EnumType: typeof AnimatorRetargetingMode;
 		}
 
 		export const Default: Default;
@@ -594,7 +593,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<AnimatorRetargetingMode>;
+			EnumType: typeof AnimatorRetargetingMode;
 		}
 
 		export const Disabled: Disabled;
@@ -602,19 +601,19 @@ declare namespace Enum {
 		export interface Enabled extends EnumItem {
 			Name: "Enabled";
 			Value: 2;
-			EnumType: EnumType<AnimatorRetargetingMode>;
+			EnumType: typeof AnimatorRetargetingMode;
 		}
 
 		export const Enabled: Enabled;
 
-		export function GetEnumItems(this: defined): Array<AnimatorRetargetingMode>
+		export function GetEnumItems(): Array<AnimatorRetargetingMode>
 	}
 	export type AnimatorRetargetingMode = AnimatorRetargetingMode.Default | AnimatorRetargetingMode.Disabled | AnimatorRetargetingMode.Enabled;
 	export namespace AppShellActionType {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<AppShellActionType>;
+			EnumType: typeof AppShellActionType;
 		}
 
 		export const None: None;
@@ -622,7 +621,7 @@ declare namespace Enum {
 		export interface OpenApp extends EnumItem {
 			Name: "OpenApp";
 			Value: 1;
-			EnumType: EnumType<AppShellActionType>;
+			EnumType: typeof AppShellActionType;
 		}
 
 		export const OpenApp: OpenApp;
@@ -630,7 +629,7 @@ declare namespace Enum {
 		export interface TapChatTab extends EnumItem {
 			Name: "TapChatTab";
 			Value: 2;
-			EnumType: EnumType<AppShellActionType>;
+			EnumType: typeof AppShellActionType;
 		}
 
 		export const TapChatTab: TapChatTab;
@@ -638,7 +637,7 @@ declare namespace Enum {
 		export interface TapConversationEntry extends EnumItem {
 			Name: "TapConversationEntry";
 			Value: 3;
-			EnumType: EnumType<AppShellActionType>;
+			EnumType: typeof AppShellActionType;
 		}
 
 		export const TapConversationEntry: TapConversationEntry;
@@ -646,7 +645,7 @@ declare namespace Enum {
 		export interface TapAvatarTab extends EnumItem {
 			Name: "TapAvatarTab";
 			Value: 4;
-			EnumType: EnumType<AppShellActionType>;
+			EnumType: typeof AppShellActionType;
 		}
 
 		export const TapAvatarTab: TapAvatarTab;
@@ -654,7 +653,7 @@ declare namespace Enum {
 		export interface ReadConversation extends EnumItem {
 			Name: "ReadConversation";
 			Value: 5;
-			EnumType: EnumType<AppShellActionType>;
+			EnumType: typeof AppShellActionType;
 		}
 
 		export const ReadConversation: ReadConversation;
@@ -662,7 +661,7 @@ declare namespace Enum {
 		export interface TapGamePageTab extends EnumItem {
 			Name: "TapGamePageTab";
 			Value: 6;
-			EnumType: EnumType<AppShellActionType>;
+			EnumType: typeof AppShellActionType;
 		}
 
 		export const TapGamePageTab: TapGamePageTab;
@@ -670,7 +669,7 @@ declare namespace Enum {
 		export interface TapHomePageTab extends EnumItem {
 			Name: "TapHomePageTab";
 			Value: 7;
-			EnumType: EnumType<AppShellActionType>;
+			EnumType: typeof AppShellActionType;
 		}
 
 		export const TapHomePageTab: TapHomePageTab;
@@ -678,7 +677,7 @@ declare namespace Enum {
 		export interface GamePageLoaded extends EnumItem {
 			Name: "GamePageLoaded";
 			Value: 8;
-			EnumType: EnumType<AppShellActionType>;
+			EnumType: typeof AppShellActionType;
 		}
 
 		export const GamePageLoaded: GamePageLoaded;
@@ -686,7 +685,7 @@ declare namespace Enum {
 		export interface HomePageLoaded extends EnumItem {
 			Name: "HomePageLoaded";
 			Value: 9;
-			EnumType: EnumType<AppShellActionType>;
+			EnumType: typeof AppShellActionType;
 		}
 
 		export const HomePageLoaded: HomePageLoaded;
@@ -694,19 +693,19 @@ declare namespace Enum {
 		export interface AvatarEditorPageLoaded extends EnumItem {
 			Name: "AvatarEditorPageLoaded";
 			Value: 10;
-			EnumType: EnumType<AppShellActionType>;
+			EnumType: typeof AppShellActionType;
 		}
 
 		export const AvatarEditorPageLoaded: AvatarEditorPageLoaded;
 
-		export function GetEnumItems(this: defined): Array<AppShellActionType>
+		export function GetEnumItems(): Array<AppShellActionType>
 	}
 	export type AppShellActionType = AppShellActionType.None | AppShellActionType.OpenApp | AppShellActionType.TapChatTab | AppShellActionType.TapConversationEntry | AppShellActionType.TapAvatarTab | AppShellActionType.ReadConversation | AppShellActionType.TapGamePageTab | AppShellActionType.TapHomePageTab | AppShellActionType.GamePageLoaded | AppShellActionType.HomePageLoaded | AppShellActionType.AvatarEditorPageLoaded;
 	export namespace AppShellFeature {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<AppShellFeature>;
+			EnumType: typeof AppShellFeature;
 		}
 
 		export const None: None;
@@ -714,7 +713,7 @@ declare namespace Enum {
 		export interface Chat extends EnumItem {
 			Name: "Chat";
 			Value: 1;
-			EnumType: EnumType<AppShellFeature>;
+			EnumType: typeof AppShellFeature;
 		}
 
 		export const Chat: Chat;
@@ -722,7 +721,7 @@ declare namespace Enum {
 		export interface AvatarEditor extends EnumItem {
 			Name: "AvatarEditor";
 			Value: 2;
-			EnumType: EnumType<AppShellFeature>;
+			EnumType: typeof AppShellFeature;
 		}
 
 		export const AvatarEditor: AvatarEditor;
@@ -730,7 +729,7 @@ declare namespace Enum {
 		export interface GamePage extends EnumItem {
 			Name: "GamePage";
 			Value: 3;
-			EnumType: EnumType<AppShellFeature>;
+			EnumType: typeof AppShellFeature;
 		}
 
 		export const GamePage: GamePage;
@@ -738,7 +737,7 @@ declare namespace Enum {
 		export interface HomePage extends EnumItem {
 			Name: "HomePage";
 			Value: 4;
-			EnumType: EnumType<AppShellFeature>;
+			EnumType: typeof AppShellFeature;
 		}
 
 		export const HomePage: HomePage;
@@ -746,7 +745,7 @@ declare namespace Enum {
 		export interface More extends EnumItem {
 			Name: "More";
 			Value: 5;
-			EnumType: EnumType<AppShellFeature>;
+			EnumType: typeof AppShellFeature;
 		}
 
 		export const More: More;
@@ -754,19 +753,19 @@ declare namespace Enum {
 		export interface Landing extends EnumItem {
 			Name: "Landing";
 			Value: 6;
-			EnumType: EnumType<AppShellFeature>;
+			EnumType: typeof AppShellFeature;
 		}
 
 		export const Landing: Landing;
 
-		export function GetEnumItems(this: defined): Array<AppShellFeature>
+		export function GetEnumItems(): Array<AppShellFeature>
 	}
 	export type AppShellFeature = AppShellFeature.None | AppShellFeature.Chat | AppShellFeature.AvatarEditor | AppShellFeature.GamePage | AppShellFeature.HomePage | AppShellFeature.More | AppShellFeature.Landing;
 	export namespace AppUpdateStatus {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 0;
-			EnumType: EnumType<AppUpdateStatus>;
+			EnumType: typeof AppUpdateStatus;
 		}
 
 		export const Unknown: Unknown;
@@ -774,7 +773,7 @@ declare namespace Enum {
 		export interface NotSupported extends EnumItem {
 			Name: "NotSupported";
 			Value: 1;
-			EnumType: EnumType<AppUpdateStatus>;
+			EnumType: typeof AppUpdateStatus;
 		}
 
 		export const NotSupported: NotSupported;
@@ -782,7 +781,7 @@ declare namespace Enum {
 		export interface Failed extends EnumItem {
 			Name: "Failed";
 			Value: 2;
-			EnumType: EnumType<AppUpdateStatus>;
+			EnumType: typeof AppUpdateStatus;
 		}
 
 		export const Failed: Failed;
@@ -790,7 +789,7 @@ declare namespace Enum {
 		export interface NotAvailable extends EnumItem {
 			Name: "NotAvailable";
 			Value: 3;
-			EnumType: EnumType<AppUpdateStatus>;
+			EnumType: typeof AppUpdateStatus;
 		}
 
 		export const NotAvailable: NotAvailable;
@@ -798,19 +797,19 @@ declare namespace Enum {
 		export interface Available extends EnumItem {
 			Name: "Available";
 			Value: 4;
-			EnumType: EnumType<AppUpdateStatus>;
+			EnumType: typeof AppUpdateStatus;
 		}
 
 		export const Available: Available;
 
-		export function GetEnumItems(this: defined): Array<AppUpdateStatus>
+		export function GetEnumItems(): Array<AppUpdateStatus>
 	}
 	export type AppUpdateStatus = AppUpdateStatus.Unknown | AppUpdateStatus.NotSupported | AppUpdateStatus.Failed | AppUpdateStatus.NotAvailable | AppUpdateStatus.Available;
 	export namespace ApplyStrokeMode {
 		export interface Contextual extends EnumItem {
 			Name: "Contextual";
 			Value: 0;
-			EnumType: EnumType<ApplyStrokeMode>;
+			EnumType: typeof ApplyStrokeMode;
 		}
 
 		export const Contextual: Contextual;
@@ -818,19 +817,19 @@ declare namespace Enum {
 		export interface Border extends EnumItem {
 			Name: "Border";
 			Value: 1;
-			EnumType: EnumType<ApplyStrokeMode>;
+			EnumType: typeof ApplyStrokeMode;
 		}
 
 		export const Border: Border;
 
-		export function GetEnumItems(this: defined): Array<ApplyStrokeMode>
+		export function GetEnumItems(): Array<ApplyStrokeMode>
 	}
 	export type ApplyStrokeMode = ApplyStrokeMode.Contextual | ApplyStrokeMode.Border;
 	export namespace AspectType {
 		export interface FitWithinMaxSize extends EnumItem {
 			Name: "FitWithinMaxSize";
 			Value: 0;
-			EnumType: EnumType<AspectType>;
+			EnumType: typeof AspectType;
 		}
 
 		export const FitWithinMaxSize: FitWithinMaxSize;
@@ -838,19 +837,19 @@ declare namespace Enum {
 		export interface ScaleWithParentSize extends EnumItem {
 			Name: "ScaleWithParentSize";
 			Value: 1;
-			EnumType: EnumType<AspectType>;
+			EnumType: typeof AspectType;
 		}
 
 		export const ScaleWithParentSize: ScaleWithParentSize;
 
-		export function GetEnumItems(this: defined): Array<AspectType>
+		export function GetEnumItems(): Array<AspectType>
 	}
 	export type AspectType = AspectType.FitWithinMaxSize | AspectType.ScaleWithParentSize;
 	export namespace AssetFetchStatus {
 		export interface Success extends EnumItem {
 			Name: "Success";
 			Value: 0;
-			EnumType: EnumType<AssetFetchStatus>;
+			EnumType: typeof AssetFetchStatus;
 		}
 
 		export const Success: Success;
@@ -858,19 +857,19 @@ declare namespace Enum {
 		export interface Failure extends EnumItem {
 			Name: "Failure";
 			Value: 1;
-			EnumType: EnumType<AssetFetchStatus>;
+			EnumType: typeof AssetFetchStatus;
 		}
 
 		export const Failure: Failure;
 
-		export function GetEnumItems(this: defined): Array<AssetFetchStatus>
+		export function GetEnumItems(): Array<AssetFetchStatus>
 	}
 	export type AssetFetchStatus = AssetFetchStatus.Success | AssetFetchStatus.Failure;
 	export namespace AssetType {
 		export interface Image extends EnumItem {
 			Name: "Image";
 			Value: 1;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Image: Image;
@@ -878,7 +877,7 @@ declare namespace Enum {
 		export interface TShirt extends EnumItem {
 			Name: "TShirt";
 			Value: 2;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const TShirt: TShirt;
@@ -886,7 +885,7 @@ declare namespace Enum {
 		export interface Audio extends EnumItem {
 			Name: "Audio";
 			Value: 3;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Audio: Audio;
@@ -894,7 +893,7 @@ declare namespace Enum {
 		export interface Mesh extends EnumItem {
 			Name: "Mesh";
 			Value: 4;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Mesh: Mesh;
@@ -902,7 +901,7 @@ declare namespace Enum {
 		export interface Lua extends EnumItem {
 			Name: "Lua";
 			Value: 5;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Lua: Lua;
@@ -910,7 +909,7 @@ declare namespace Enum {
 		export interface Hat extends EnumItem {
 			Name: "Hat";
 			Value: 8;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Hat: Hat;
@@ -918,7 +917,7 @@ declare namespace Enum {
 		export interface Place extends EnumItem {
 			Name: "Place";
 			Value: 9;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Place: Place;
@@ -926,7 +925,7 @@ declare namespace Enum {
 		export interface Model extends EnumItem {
 			Name: "Model";
 			Value: 10;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Model: Model;
@@ -934,7 +933,7 @@ declare namespace Enum {
 		export interface Shirt extends EnumItem {
 			Name: "Shirt";
 			Value: 11;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Shirt: Shirt;
@@ -942,7 +941,7 @@ declare namespace Enum {
 		export interface Pants extends EnumItem {
 			Name: "Pants";
 			Value: 12;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Pants: Pants;
@@ -950,7 +949,7 @@ declare namespace Enum {
 		export interface Decal extends EnumItem {
 			Name: "Decal";
 			Value: 13;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Decal: Decal;
@@ -958,7 +957,7 @@ declare namespace Enum {
 		export interface Head extends EnumItem {
 			Name: "Head";
 			Value: 17;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Head: Head;
@@ -966,7 +965,7 @@ declare namespace Enum {
 		export interface Face extends EnumItem {
 			Name: "Face";
 			Value: 18;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Face: Face;
@@ -974,7 +973,7 @@ declare namespace Enum {
 		export interface Gear extends EnumItem {
 			Name: "Gear";
 			Value: 19;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Gear: Gear;
@@ -982,7 +981,7 @@ declare namespace Enum {
 		export interface Badge extends EnumItem {
 			Name: "Badge";
 			Value: 21;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Badge: Badge;
@@ -990,7 +989,7 @@ declare namespace Enum {
 		export interface Animation extends EnumItem {
 			Name: "Animation";
 			Value: 24;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Animation: Animation;
@@ -998,7 +997,7 @@ declare namespace Enum {
 		export interface Torso extends EnumItem {
 			Name: "Torso";
 			Value: 27;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Torso: Torso;
@@ -1006,7 +1005,7 @@ declare namespace Enum {
 		export interface RightArm extends EnumItem {
 			Name: "RightArm";
 			Value: 28;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const RightArm: RightArm;
@@ -1014,7 +1013,7 @@ declare namespace Enum {
 		export interface LeftArm extends EnumItem {
 			Name: "LeftArm";
 			Value: 29;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const LeftArm: LeftArm;
@@ -1022,7 +1021,7 @@ declare namespace Enum {
 		export interface LeftLeg extends EnumItem {
 			Name: "LeftLeg";
 			Value: 30;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const LeftLeg: LeftLeg;
@@ -1030,7 +1029,7 @@ declare namespace Enum {
 		export interface RightLeg extends EnumItem {
 			Name: "RightLeg";
 			Value: 31;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const RightLeg: RightLeg;
@@ -1038,7 +1037,7 @@ declare namespace Enum {
 		export interface Package extends EnumItem {
 			Name: "Package";
 			Value: 32;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Package: Package;
@@ -1046,7 +1045,7 @@ declare namespace Enum {
 		export interface GamePass extends EnumItem {
 			Name: "GamePass";
 			Value: 34;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const GamePass: GamePass;
@@ -1054,7 +1053,7 @@ declare namespace Enum {
 		export interface Plugin extends EnumItem {
 			Name: "Plugin";
 			Value: 38;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Plugin: Plugin;
@@ -1062,7 +1061,7 @@ declare namespace Enum {
 		export interface MeshPart extends EnumItem {
 			Name: "MeshPart";
 			Value: 40;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const MeshPart: MeshPart;
@@ -1070,7 +1069,7 @@ declare namespace Enum {
 		export interface HairAccessory extends EnumItem {
 			Name: "HairAccessory";
 			Value: 41;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const HairAccessory: HairAccessory;
@@ -1078,7 +1077,7 @@ declare namespace Enum {
 		export interface FaceAccessory extends EnumItem {
 			Name: "FaceAccessory";
 			Value: 42;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const FaceAccessory: FaceAccessory;
@@ -1086,7 +1085,7 @@ declare namespace Enum {
 		export interface NeckAccessory extends EnumItem {
 			Name: "NeckAccessory";
 			Value: 43;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const NeckAccessory: NeckAccessory;
@@ -1094,7 +1093,7 @@ declare namespace Enum {
 		export interface ShoulderAccessory extends EnumItem {
 			Name: "ShoulderAccessory";
 			Value: 44;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const ShoulderAccessory: ShoulderAccessory;
@@ -1102,7 +1101,7 @@ declare namespace Enum {
 		export interface FrontAccessory extends EnumItem {
 			Name: "FrontAccessory";
 			Value: 45;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const FrontAccessory: FrontAccessory;
@@ -1110,7 +1109,7 @@ declare namespace Enum {
 		export interface BackAccessory extends EnumItem {
 			Name: "BackAccessory";
 			Value: 46;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const BackAccessory: BackAccessory;
@@ -1118,7 +1117,7 @@ declare namespace Enum {
 		export interface WaistAccessory extends EnumItem {
 			Name: "WaistAccessory";
 			Value: 47;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const WaistAccessory: WaistAccessory;
@@ -1126,7 +1125,7 @@ declare namespace Enum {
 		export interface ClimbAnimation extends EnumItem {
 			Name: "ClimbAnimation";
 			Value: 48;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const ClimbAnimation: ClimbAnimation;
@@ -1134,7 +1133,7 @@ declare namespace Enum {
 		export interface DeathAnimation extends EnumItem {
 			Name: "DeathAnimation";
 			Value: 49;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const DeathAnimation: DeathAnimation;
@@ -1142,7 +1141,7 @@ declare namespace Enum {
 		export interface FallAnimation extends EnumItem {
 			Name: "FallAnimation";
 			Value: 50;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const FallAnimation: FallAnimation;
@@ -1150,7 +1149,7 @@ declare namespace Enum {
 		export interface IdleAnimation extends EnumItem {
 			Name: "IdleAnimation";
 			Value: 51;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const IdleAnimation: IdleAnimation;
@@ -1158,7 +1157,7 @@ declare namespace Enum {
 		export interface JumpAnimation extends EnumItem {
 			Name: "JumpAnimation";
 			Value: 52;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const JumpAnimation: JumpAnimation;
@@ -1166,7 +1165,7 @@ declare namespace Enum {
 		export interface RunAnimation extends EnumItem {
 			Name: "RunAnimation";
 			Value: 53;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const RunAnimation: RunAnimation;
@@ -1174,7 +1173,7 @@ declare namespace Enum {
 		export interface SwimAnimation extends EnumItem {
 			Name: "SwimAnimation";
 			Value: 54;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const SwimAnimation: SwimAnimation;
@@ -1182,7 +1181,7 @@ declare namespace Enum {
 		export interface WalkAnimation extends EnumItem {
 			Name: "WalkAnimation";
 			Value: 55;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const WalkAnimation: WalkAnimation;
@@ -1190,7 +1189,7 @@ declare namespace Enum {
 		export interface PoseAnimation extends EnumItem {
 			Name: "PoseAnimation";
 			Value: 56;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const PoseAnimation: PoseAnimation;
@@ -1198,7 +1197,7 @@ declare namespace Enum {
 		export interface EarAccessory extends EnumItem {
 			Name: "EarAccessory";
 			Value: 57;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const EarAccessory: EarAccessory;
@@ -1206,7 +1205,7 @@ declare namespace Enum {
 		export interface EyeAccessory extends EnumItem {
 			Name: "EyeAccessory";
 			Value: 58;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const EyeAccessory: EyeAccessory;
@@ -1214,7 +1213,7 @@ declare namespace Enum {
 		export interface EmoteAnimation extends EnumItem {
 			Name: "EmoteAnimation";
 			Value: 61;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const EmoteAnimation: EmoteAnimation;
@@ -1222,7 +1221,7 @@ declare namespace Enum {
 		export interface Video extends EnumItem {
 			Name: "Video";
 			Value: 62;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const Video: Video;
@@ -1230,7 +1229,7 @@ declare namespace Enum {
 		export interface TShirtAccessory extends EnumItem {
 			Name: "TShirtAccessory";
 			Value: 64;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const TShirtAccessory: TShirtAccessory;
@@ -1238,7 +1237,7 @@ declare namespace Enum {
 		export interface ShirtAccessory extends EnumItem {
 			Name: "ShirtAccessory";
 			Value: 65;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const ShirtAccessory: ShirtAccessory;
@@ -1246,7 +1245,7 @@ declare namespace Enum {
 		export interface PantsAccessory extends EnumItem {
 			Name: "PantsAccessory";
 			Value: 66;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const PantsAccessory: PantsAccessory;
@@ -1254,7 +1253,7 @@ declare namespace Enum {
 		export interface JacketAccessory extends EnumItem {
 			Name: "JacketAccessory";
 			Value: 67;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const JacketAccessory: JacketAccessory;
@@ -1262,7 +1261,7 @@ declare namespace Enum {
 		export interface SweaterAccessory extends EnumItem {
 			Name: "SweaterAccessory";
 			Value: 68;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const SweaterAccessory: SweaterAccessory;
@@ -1270,7 +1269,7 @@ declare namespace Enum {
 		export interface ShortsAccessory extends EnumItem {
 			Name: "ShortsAccessory";
 			Value: 69;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const ShortsAccessory: ShortsAccessory;
@@ -1278,7 +1277,7 @@ declare namespace Enum {
 		export interface LeftShoeAccessory extends EnumItem {
 			Name: "LeftShoeAccessory";
 			Value: 70;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const LeftShoeAccessory: LeftShoeAccessory;
@@ -1286,7 +1285,7 @@ declare namespace Enum {
 		export interface RightShoeAccessory extends EnumItem {
 			Name: "RightShoeAccessory";
 			Value: 71;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const RightShoeAccessory: RightShoeAccessory;
@@ -1294,7 +1293,7 @@ declare namespace Enum {
 		export interface DressSkirtAccessory extends EnumItem {
 			Name: "DressSkirtAccessory";
 			Value: 72;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const DressSkirtAccessory: DressSkirtAccessory;
@@ -1302,7 +1301,7 @@ declare namespace Enum {
 		export interface EyebrowAccessory extends EnumItem {
 			Name: "EyebrowAccessory";
 			Value: 76;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const EyebrowAccessory: EyebrowAccessory;
@@ -1310,19 +1309,19 @@ declare namespace Enum {
 		export interface EyelashAccessory extends EnumItem {
 			Name: "EyelashAccessory";
 			Value: 77;
-			EnumType: EnumType<AssetType>;
+			EnumType: typeof AssetType;
 		}
 
 		export const EyelashAccessory: EyelashAccessory;
 
-		export function GetEnumItems(this: defined): Array<AssetType>
+		export function GetEnumItems(): Array<AssetType>
 	}
 	export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.EyebrowAccessory | AssetType.EyelashAccessory;
 	export namespace AssetTypeVerification {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 1;
-			EnumType: EnumType<AssetTypeVerification>;
+			EnumType: typeof AssetTypeVerification;
 		}
 
 		export const Default: Default;
@@ -1330,7 +1329,7 @@ declare namespace Enum {
 		export interface ClientOnly extends EnumItem {
 			Name: "ClientOnly";
 			Value: 2;
-			EnumType: EnumType<AssetTypeVerification>;
+			EnumType: typeof AssetTypeVerification;
 		}
 
 		export const ClientOnly: ClientOnly;
@@ -1338,19 +1337,19 @@ declare namespace Enum {
 		export interface Always extends EnumItem {
 			Name: "Always";
 			Value: 3;
-			EnumType: EnumType<AssetTypeVerification>;
+			EnumType: typeof AssetTypeVerification;
 		}
 
 		export const Always: Always;
 
-		export function GetEnumItems(this: defined): Array<AssetTypeVerification>
+		export function GetEnumItems(): Array<AssetTypeVerification>
 	}
 	export type AssetTypeVerification = AssetTypeVerification.Default | AssetTypeVerification.ClientOnly | AssetTypeVerification.Always;
 	export namespace AutoIndentRule {
 		export interface Off extends EnumItem {
 			Name: "Off";
 			Value: 0;
-			EnumType: EnumType<AutoIndentRule>;
+			EnumType: typeof AutoIndentRule;
 		}
 
 		export const Off: Off;
@@ -1358,7 +1357,7 @@ declare namespace Enum {
 		export interface Absolute extends EnumItem {
 			Name: "Absolute";
 			Value: 1;
-			EnumType: EnumType<AutoIndentRule>;
+			EnumType: typeof AutoIndentRule;
 		}
 
 		export const Absolute: Absolute;
@@ -1366,19 +1365,19 @@ declare namespace Enum {
 		export interface Relative extends EnumItem {
 			Name: "Relative";
 			Value: 2;
-			EnumType: EnumType<AutoIndentRule>;
+			EnumType: typeof AutoIndentRule;
 		}
 
 		export const Relative: Relative;
 
-		export function GetEnumItems(this: defined): Array<AutoIndentRule>
+		export function GetEnumItems(): Array<AutoIndentRule>
 	}
 	export type AutoIndentRule = AutoIndentRule.Off | AutoIndentRule.Absolute | AutoIndentRule.Relative;
 	export namespace AutomaticSize {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<AutomaticSize>;
+			EnumType: typeof AutomaticSize;
 		}
 
 		export const None: None;
@@ -1386,7 +1385,7 @@ declare namespace Enum {
 		export interface X extends EnumItem {
 			Name: "X";
 			Value: 1;
-			EnumType: EnumType<AutomaticSize>;
+			EnumType: typeof AutomaticSize;
 		}
 
 		export const X: X;
@@ -1394,7 +1393,7 @@ declare namespace Enum {
 		export interface Y extends EnumItem {
 			Name: "Y";
 			Value: 2;
-			EnumType: EnumType<AutomaticSize>;
+			EnumType: typeof AutomaticSize;
 		}
 
 		export const Y: Y;
@@ -1402,19 +1401,19 @@ declare namespace Enum {
 		export interface XY extends EnumItem {
 			Name: "XY";
 			Value: 3;
-			EnumType: EnumType<AutomaticSize>;
+			EnumType: typeof AutomaticSize;
 		}
 
 		export const XY: XY;
 
-		export function GetEnumItems(this: defined): Array<AutomaticSize>
+		export function GetEnumItems(): Array<AutomaticSize>
 	}
 	export type AutomaticSize = AutomaticSize.None | AutomaticSize.X | AutomaticSize.Y | AutomaticSize.XY;
 	export namespace AvatarAssetType {
 		export interface TShirt extends EnumItem {
 			Name: "TShirt";
 			Value: 2;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const TShirt: TShirt;
@@ -1422,7 +1421,7 @@ declare namespace Enum {
 		export interface Hat extends EnumItem {
 			Name: "Hat";
 			Value: 8;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const Hat: Hat;
@@ -1430,7 +1429,7 @@ declare namespace Enum {
 		export interface HairAccessory extends EnumItem {
 			Name: "HairAccessory";
 			Value: 41;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const HairAccessory: HairAccessory;
@@ -1438,7 +1437,7 @@ declare namespace Enum {
 		export interface FaceAccessory extends EnumItem {
 			Name: "FaceAccessory";
 			Value: 42;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const FaceAccessory: FaceAccessory;
@@ -1446,7 +1445,7 @@ declare namespace Enum {
 		export interface NeckAccessory extends EnumItem {
 			Name: "NeckAccessory";
 			Value: 43;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const NeckAccessory: NeckAccessory;
@@ -1454,7 +1453,7 @@ declare namespace Enum {
 		export interface ShoulderAccessory extends EnumItem {
 			Name: "ShoulderAccessory";
 			Value: 44;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const ShoulderAccessory: ShoulderAccessory;
@@ -1462,7 +1461,7 @@ declare namespace Enum {
 		export interface FrontAccessory extends EnumItem {
 			Name: "FrontAccessory";
 			Value: 45;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const FrontAccessory: FrontAccessory;
@@ -1470,7 +1469,7 @@ declare namespace Enum {
 		export interface BackAccessory extends EnumItem {
 			Name: "BackAccessory";
 			Value: 46;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const BackAccessory: BackAccessory;
@@ -1478,7 +1477,7 @@ declare namespace Enum {
 		export interface WaistAccessory extends EnumItem {
 			Name: "WaistAccessory";
 			Value: 47;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const WaistAccessory: WaistAccessory;
@@ -1486,7 +1485,7 @@ declare namespace Enum {
 		export interface Shirt extends EnumItem {
 			Name: "Shirt";
 			Value: 11;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const Shirt: Shirt;
@@ -1494,7 +1493,7 @@ declare namespace Enum {
 		export interface Pants extends EnumItem {
 			Name: "Pants";
 			Value: 12;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const Pants: Pants;
@@ -1502,7 +1501,7 @@ declare namespace Enum {
 		export interface Gear extends EnumItem {
 			Name: "Gear";
 			Value: 19;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const Gear: Gear;
@@ -1510,7 +1509,7 @@ declare namespace Enum {
 		export interface Head extends EnumItem {
 			Name: "Head";
 			Value: 17;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const Head: Head;
@@ -1518,7 +1517,7 @@ declare namespace Enum {
 		export interface Face extends EnumItem {
 			Name: "Face";
 			Value: 18;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const Face: Face;
@@ -1526,7 +1525,7 @@ declare namespace Enum {
 		export interface Torso extends EnumItem {
 			Name: "Torso";
 			Value: 27;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const Torso: Torso;
@@ -1534,7 +1533,7 @@ declare namespace Enum {
 		export interface RightArm extends EnumItem {
 			Name: "RightArm";
 			Value: 28;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const RightArm: RightArm;
@@ -1542,7 +1541,7 @@ declare namespace Enum {
 		export interface LeftArm extends EnumItem {
 			Name: "LeftArm";
 			Value: 29;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const LeftArm: LeftArm;
@@ -1550,7 +1549,7 @@ declare namespace Enum {
 		export interface LeftLeg extends EnumItem {
 			Name: "LeftLeg";
 			Value: 30;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const LeftLeg: LeftLeg;
@@ -1558,7 +1557,7 @@ declare namespace Enum {
 		export interface RightLeg extends EnumItem {
 			Name: "RightLeg";
 			Value: 31;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const RightLeg: RightLeg;
@@ -1566,7 +1565,7 @@ declare namespace Enum {
 		export interface ClimbAnimation extends EnumItem {
 			Name: "ClimbAnimation";
 			Value: 48;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const ClimbAnimation: ClimbAnimation;
@@ -1574,7 +1573,7 @@ declare namespace Enum {
 		export interface FallAnimation extends EnumItem {
 			Name: "FallAnimation";
 			Value: 50;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const FallAnimation: FallAnimation;
@@ -1582,7 +1581,7 @@ declare namespace Enum {
 		export interface IdleAnimation extends EnumItem {
 			Name: "IdleAnimation";
 			Value: 51;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const IdleAnimation: IdleAnimation;
@@ -1590,7 +1589,7 @@ declare namespace Enum {
 		export interface JumpAnimation extends EnumItem {
 			Name: "JumpAnimation";
 			Value: 52;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const JumpAnimation: JumpAnimation;
@@ -1598,7 +1597,7 @@ declare namespace Enum {
 		export interface RunAnimation extends EnumItem {
 			Name: "RunAnimation";
 			Value: 53;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const RunAnimation: RunAnimation;
@@ -1606,7 +1605,7 @@ declare namespace Enum {
 		export interface SwimAnimation extends EnumItem {
 			Name: "SwimAnimation";
 			Value: 54;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const SwimAnimation: SwimAnimation;
@@ -1614,7 +1613,7 @@ declare namespace Enum {
 		export interface WalkAnimation extends EnumItem {
 			Name: "WalkAnimation";
 			Value: 55;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const WalkAnimation: WalkAnimation;
@@ -1622,7 +1621,7 @@ declare namespace Enum {
 		export interface EmoteAnimation extends EnumItem {
 			Name: "EmoteAnimation";
 			Value: 61;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const EmoteAnimation: EmoteAnimation;
@@ -1630,7 +1629,7 @@ declare namespace Enum {
 		export interface TShirtAccessory extends EnumItem {
 			Name: "TShirtAccessory";
 			Value: 64;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const TShirtAccessory: TShirtAccessory;
@@ -1638,7 +1637,7 @@ declare namespace Enum {
 		export interface ShirtAccessory extends EnumItem {
 			Name: "ShirtAccessory";
 			Value: 65;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const ShirtAccessory: ShirtAccessory;
@@ -1646,7 +1645,7 @@ declare namespace Enum {
 		export interface PantsAccessory extends EnumItem {
 			Name: "PantsAccessory";
 			Value: 66;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const PantsAccessory: PantsAccessory;
@@ -1654,7 +1653,7 @@ declare namespace Enum {
 		export interface JacketAccessory extends EnumItem {
 			Name: "JacketAccessory";
 			Value: 67;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const JacketAccessory: JacketAccessory;
@@ -1662,7 +1661,7 @@ declare namespace Enum {
 		export interface SweaterAccessory extends EnumItem {
 			Name: "SweaterAccessory";
 			Value: 68;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const SweaterAccessory: SweaterAccessory;
@@ -1670,7 +1669,7 @@ declare namespace Enum {
 		export interface ShortsAccessory extends EnumItem {
 			Name: "ShortsAccessory";
 			Value: 69;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const ShortsAccessory: ShortsAccessory;
@@ -1678,7 +1677,7 @@ declare namespace Enum {
 		export interface LeftShoeAccessory extends EnumItem {
 			Name: "LeftShoeAccessory";
 			Value: 70;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const LeftShoeAccessory: LeftShoeAccessory;
@@ -1686,7 +1685,7 @@ declare namespace Enum {
 		export interface RightShoeAccessory extends EnumItem {
 			Name: "RightShoeAccessory";
 			Value: 71;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const RightShoeAccessory: RightShoeAccessory;
@@ -1694,7 +1693,7 @@ declare namespace Enum {
 		export interface DressSkirtAccessory extends EnumItem {
 			Name: "DressSkirtAccessory";
 			Value: 72;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const DressSkirtAccessory: DressSkirtAccessory;
@@ -1702,7 +1701,7 @@ declare namespace Enum {
 		export interface EyebrowAccessory extends EnumItem {
 			Name: "EyebrowAccessory";
 			Value: 76;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const EyebrowAccessory: EyebrowAccessory;
@@ -1710,19 +1709,19 @@ declare namespace Enum {
 		export interface EyelashAccessory extends EnumItem {
 			Name: "EyelashAccessory";
 			Value: 77;
-			EnumType: EnumType<AvatarAssetType>;
+			EnumType: typeof AvatarAssetType;
 		}
 
 		export const EyelashAccessory: EyelashAccessory;
 
-		export function GetEnumItems(this: defined): Array<AvatarAssetType>
+		export function GetEnumItems(): Array<AvatarAssetType>
 	}
 	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory;
 	export namespace AvatarContextMenuOption {
 		export interface Friend extends EnumItem {
 			Name: "Friend";
 			Value: 0;
-			EnumType: EnumType<AvatarContextMenuOption>;
+			EnumType: typeof AvatarContextMenuOption;
 		}
 
 		export const Friend: Friend;
@@ -1730,7 +1729,7 @@ declare namespace Enum {
 		export interface Chat extends EnumItem {
 			Name: "Chat";
 			Value: 1;
-			EnumType: EnumType<AvatarContextMenuOption>;
+			EnumType: typeof AvatarContextMenuOption;
 		}
 
 		export const Chat: Chat;
@@ -1738,7 +1737,7 @@ declare namespace Enum {
 		export interface Emote extends EnumItem {
 			Name: "Emote";
 			Value: 2;
-			EnumType: EnumType<AvatarContextMenuOption>;
+			EnumType: typeof AvatarContextMenuOption;
 		}
 
 		export const Emote: Emote;
@@ -1746,19 +1745,19 @@ declare namespace Enum {
 		export interface InspectMenu extends EnumItem {
 			Name: "InspectMenu";
 			Value: 3;
-			EnumType: EnumType<AvatarContextMenuOption>;
+			EnumType: typeof AvatarContextMenuOption;
 		}
 
 		export const InspectMenu: InspectMenu;
 
-		export function GetEnumItems(this: defined): Array<AvatarContextMenuOption>
+		export function GetEnumItems(): Array<AvatarContextMenuOption>
 	}
 	export type AvatarContextMenuOption = AvatarContextMenuOption.Friend | AvatarContextMenuOption.Chat | AvatarContextMenuOption.Emote | AvatarContextMenuOption.InspectMenu;
 	export namespace AvatarItemType {
 		export interface Asset extends EnumItem {
 			Name: "Asset";
 			Value: 1;
-			EnumType: EnumType<AvatarItemType>;
+			EnumType: typeof AvatarItemType;
 		}
 
 		export const Asset: Asset;
@@ -1766,19 +1765,19 @@ declare namespace Enum {
 		export interface Bundle extends EnumItem {
 			Name: "Bundle";
 			Value: 2;
-			EnumType: EnumType<AvatarItemType>;
+			EnumType: typeof AvatarItemType;
 		}
 
 		export const Bundle: Bundle;
 
-		export function GetEnumItems(this: defined): Array<AvatarItemType>
+		export function GetEnumItems(): Array<AvatarItemType>
 	}
 	export type AvatarItemType = AvatarItemType.Asset | AvatarItemType.Bundle;
 	export namespace AvatarPromptResult {
 		export interface Success extends EnumItem {
 			Name: "Success";
 			Value: 1;
-			EnumType: EnumType<AvatarPromptResult>;
+			EnumType: typeof AvatarPromptResult;
 		}
 
 		export const Success: Success;
@@ -1786,7 +1785,7 @@ declare namespace Enum {
 		export interface PermissionDenied extends EnumItem {
 			Name: "PermissionDenied";
 			Value: 2;
-			EnumType: EnumType<AvatarPromptResult>;
+			EnumType: typeof AvatarPromptResult;
 		}
 
 		export const PermissionDenied: PermissionDenied;
@@ -1794,19 +1793,19 @@ declare namespace Enum {
 		export interface Failed extends EnumItem {
 			Name: "Failed";
 			Value: 3;
-			EnumType: EnumType<AvatarPromptResult>;
+			EnumType: typeof AvatarPromptResult;
 		}
 
 		export const Failed: Failed;
 
-		export function GetEnumItems(this: defined): Array<AvatarPromptResult>
+		export function GetEnumItems(): Array<AvatarPromptResult>
 	}
 	export type AvatarPromptResult = AvatarPromptResult.Success | AvatarPromptResult.PermissionDenied | AvatarPromptResult.Failed;
 	export namespace Axis {
 		export interface X extends EnumItem {
 			Name: "X";
 			Value: 0;
-			EnumType: EnumType<Axis>;
+			EnumType: typeof Axis;
 		}
 
 		export const X: X;
@@ -1814,7 +1813,7 @@ declare namespace Enum {
 		export interface Y extends EnumItem {
 			Name: "Y";
 			Value: 1;
-			EnumType: EnumType<Axis>;
+			EnumType: typeof Axis;
 		}
 
 		export const Y: Y;
@@ -1822,19 +1821,19 @@ declare namespace Enum {
 		export interface Z extends EnumItem {
 			Name: "Z";
 			Value: 2;
-			EnumType: EnumType<Axis>;
+			EnumType: typeof Axis;
 		}
 
 		export const Z: Z;
 
-		export function GetEnumItems(this: defined): Array<Axis>
+		export function GetEnumItems(): Array<Axis>
 	}
 	export type Axis = Axis.X | Axis.Y | Axis.Z;
 	export namespace BinType {
 		export interface Script extends EnumItem {
 			Name: "Script";
 			Value: 0;
-			EnumType: EnumType<BinType>;
+			EnumType: typeof BinType;
 		}
 
 		export const Script: Script;
@@ -1842,7 +1841,7 @@ declare namespace Enum {
 		export interface GameTool extends EnumItem {
 			Name: "GameTool";
 			Value: 1;
-			EnumType: EnumType<BinType>;
+			EnumType: typeof BinType;
 		}
 
 		export const GameTool: GameTool;
@@ -1850,7 +1849,7 @@ declare namespace Enum {
 		export interface Grab extends EnumItem {
 			Name: "Grab";
 			Value: 2;
-			EnumType: EnumType<BinType>;
+			EnumType: typeof BinType;
 		}
 
 		export const Grab: Grab;
@@ -1858,7 +1857,7 @@ declare namespace Enum {
 		export interface Clone extends EnumItem {
 			Name: "Clone";
 			Value: 3;
-			EnumType: EnumType<BinType>;
+			EnumType: typeof BinType;
 		}
 
 		export const Clone: Clone;
@@ -1866,19 +1865,19 @@ declare namespace Enum {
 		export interface Hammer extends EnumItem {
 			Name: "Hammer";
 			Value: 4;
-			EnumType: EnumType<BinType>;
+			EnumType: typeof BinType;
 		}
 
 		export const Hammer: Hammer;
 
-		export function GetEnumItems(this: defined): Array<BinType>
+		export function GetEnumItems(): Array<BinType>
 	}
 	export type BinType = BinType.Script | BinType.GameTool | BinType.Grab | BinType.Clone | BinType.Hammer;
 	export namespace BodyPart {
 		export interface Head extends EnumItem {
 			Name: "Head";
 			Value: 0;
-			EnumType: EnumType<BodyPart>;
+			EnumType: typeof BodyPart;
 		}
 
 		export const Head: Head;
@@ -1886,7 +1885,7 @@ declare namespace Enum {
 		export interface Torso extends EnumItem {
 			Name: "Torso";
 			Value: 1;
-			EnumType: EnumType<BodyPart>;
+			EnumType: typeof BodyPart;
 		}
 
 		export const Torso: Torso;
@@ -1894,7 +1893,7 @@ declare namespace Enum {
 		export interface LeftArm extends EnumItem {
 			Name: "LeftArm";
 			Value: 2;
-			EnumType: EnumType<BodyPart>;
+			EnumType: typeof BodyPart;
 		}
 
 		export const LeftArm: LeftArm;
@@ -1902,7 +1901,7 @@ declare namespace Enum {
 		export interface RightArm extends EnumItem {
 			Name: "RightArm";
 			Value: 3;
-			EnumType: EnumType<BodyPart>;
+			EnumType: typeof BodyPart;
 		}
 
 		export const RightArm: RightArm;
@@ -1910,7 +1909,7 @@ declare namespace Enum {
 		export interface LeftLeg extends EnumItem {
 			Name: "LeftLeg";
 			Value: 4;
-			EnumType: EnumType<BodyPart>;
+			EnumType: typeof BodyPart;
 		}
 
 		export const LeftLeg: LeftLeg;
@@ -1918,19 +1917,19 @@ declare namespace Enum {
 		export interface RightLeg extends EnumItem {
 			Name: "RightLeg";
 			Value: 5;
-			EnumType: EnumType<BodyPart>;
+			EnumType: typeof BodyPart;
 		}
 
 		export const RightLeg: RightLeg;
 
-		export function GetEnumItems(this: defined): Array<BodyPart>
+		export function GetEnumItems(): Array<BodyPart>
 	}
 	export type BodyPart = BodyPart.Head | BodyPart.Torso | BodyPart.LeftArm | BodyPart.RightArm | BodyPart.LeftLeg | BodyPart.RightLeg;
 	export namespace BodyPartR15 {
 		export interface Head extends EnumItem {
 			Name: "Head";
 			Value: 0;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const Head: Head;
@@ -1938,7 +1937,7 @@ declare namespace Enum {
 		export interface UpperTorso extends EnumItem {
 			Name: "UpperTorso";
 			Value: 1;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const UpperTorso: UpperTorso;
@@ -1946,7 +1945,7 @@ declare namespace Enum {
 		export interface LowerTorso extends EnumItem {
 			Name: "LowerTorso";
 			Value: 2;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const LowerTorso: LowerTorso;
@@ -1954,7 +1953,7 @@ declare namespace Enum {
 		export interface LeftFoot extends EnumItem {
 			Name: "LeftFoot";
 			Value: 3;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const LeftFoot: LeftFoot;
@@ -1962,7 +1961,7 @@ declare namespace Enum {
 		export interface LeftLowerLeg extends EnumItem {
 			Name: "LeftLowerLeg";
 			Value: 4;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const LeftLowerLeg: LeftLowerLeg;
@@ -1970,7 +1969,7 @@ declare namespace Enum {
 		export interface LeftUpperLeg extends EnumItem {
 			Name: "LeftUpperLeg";
 			Value: 5;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const LeftUpperLeg: LeftUpperLeg;
@@ -1978,7 +1977,7 @@ declare namespace Enum {
 		export interface RightFoot extends EnumItem {
 			Name: "RightFoot";
 			Value: 6;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const RightFoot: RightFoot;
@@ -1986,7 +1985,7 @@ declare namespace Enum {
 		export interface RightLowerLeg extends EnumItem {
 			Name: "RightLowerLeg";
 			Value: 7;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const RightLowerLeg: RightLowerLeg;
@@ -1994,7 +1993,7 @@ declare namespace Enum {
 		export interface RightUpperLeg extends EnumItem {
 			Name: "RightUpperLeg";
 			Value: 8;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const RightUpperLeg: RightUpperLeg;
@@ -2002,7 +2001,7 @@ declare namespace Enum {
 		export interface LeftHand extends EnumItem {
 			Name: "LeftHand";
 			Value: 9;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const LeftHand: LeftHand;
@@ -2010,7 +2009,7 @@ declare namespace Enum {
 		export interface LeftLowerArm extends EnumItem {
 			Name: "LeftLowerArm";
 			Value: 10;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const LeftLowerArm: LeftLowerArm;
@@ -2018,7 +2017,7 @@ declare namespace Enum {
 		export interface LeftUpperArm extends EnumItem {
 			Name: "LeftUpperArm";
 			Value: 11;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const LeftUpperArm: LeftUpperArm;
@@ -2026,7 +2025,7 @@ declare namespace Enum {
 		export interface RightHand extends EnumItem {
 			Name: "RightHand";
 			Value: 12;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const RightHand: RightHand;
@@ -2034,7 +2033,7 @@ declare namespace Enum {
 		export interface RightLowerArm extends EnumItem {
 			Name: "RightLowerArm";
 			Value: 13;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const RightLowerArm: RightLowerArm;
@@ -2042,7 +2041,7 @@ declare namespace Enum {
 		export interface RightUpperArm extends EnumItem {
 			Name: "RightUpperArm";
 			Value: 14;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const RightUpperArm: RightUpperArm;
@@ -2050,7 +2049,7 @@ declare namespace Enum {
 		export interface RootPart extends EnumItem {
 			Name: "RootPart";
 			Value: 15;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const RootPart: RootPart;
@@ -2058,19 +2057,19 @@ declare namespace Enum {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 17;
-			EnumType: EnumType<BodyPartR15>;
+			EnumType: typeof BodyPartR15;
 		}
 
 		export const Unknown: Unknown;
 
-		export function GetEnumItems(this: defined): Array<BodyPartR15>
+		export function GetEnumItems(): Array<BodyPartR15>
 	}
 	export type BodyPartR15 = BodyPartR15.Head | BodyPartR15.UpperTorso | BodyPartR15.LowerTorso | BodyPartR15.LeftFoot | BodyPartR15.LeftLowerLeg | BodyPartR15.LeftUpperLeg | BodyPartR15.RightFoot | BodyPartR15.RightLowerLeg | BodyPartR15.RightUpperLeg | BodyPartR15.LeftHand | BodyPartR15.LeftLowerArm | BodyPartR15.LeftUpperArm | BodyPartR15.RightHand | BodyPartR15.RightLowerArm | BodyPartR15.RightUpperArm | BodyPartR15.RootPart | BodyPartR15.Unknown;
 	export namespace BorderMode {
 		export interface Outline extends EnumItem {
 			Name: "Outline";
 			Value: 0;
-			EnumType: EnumType<BorderMode>;
+			EnumType: typeof BorderMode;
 		}
 
 		export const Outline: Outline;
@@ -2078,7 +2077,7 @@ declare namespace Enum {
 		export interface Middle extends EnumItem {
 			Name: "Middle";
 			Value: 1;
-			EnumType: EnumType<BorderMode>;
+			EnumType: typeof BorderMode;
 		}
 
 		export const Middle: Middle;
@@ -2086,19 +2085,19 @@ declare namespace Enum {
 		export interface Inset extends EnumItem {
 			Name: "Inset";
 			Value: 2;
-			EnumType: EnumType<BorderMode>;
+			EnumType: typeof BorderMode;
 		}
 
 		export const Inset: Inset;
 
-		export function GetEnumItems(this: defined): Array<BorderMode>
+		export function GetEnumItems(): Array<BorderMode>
 	}
 	export type BorderMode = BorderMode.Outline | BorderMode.Middle | BorderMode.Inset;
 	export namespace BreakReason {
 		export interface Other extends EnumItem {
 			Name: "Other";
 			Value: 0;
-			EnumType: EnumType<BreakReason>;
+			EnumType: typeof BreakReason;
 		}
 
 		export const Other: Other;
@@ -2106,7 +2105,7 @@ declare namespace Enum {
 		export interface Error extends EnumItem {
 			Name: "Error";
 			Value: 1;
-			EnumType: EnumType<BreakReason>;
+			EnumType: typeof BreakReason;
 		}
 
 		export const Error: Error;
@@ -2114,7 +2113,7 @@ declare namespace Enum {
 		export interface UserBreakpoint extends EnumItem {
 			Name: "UserBreakpoint";
 			Value: 3;
-			EnumType: EnumType<BreakReason>;
+			EnumType: typeof BreakReason;
 		}
 
 		export const UserBreakpoint: UserBreakpoint;
@@ -2122,19 +2121,19 @@ declare namespace Enum {
 		export interface SpecialBreakpoint extends EnumItem {
 			Name: "SpecialBreakpoint";
 			Value: 2;
-			EnumType: EnumType<BreakReason>;
+			EnumType: typeof BreakReason;
 		}
 
 		export const SpecialBreakpoint: SpecialBreakpoint;
 
-		export function GetEnumItems(this: defined): Array<BreakReason>
+		export function GetEnumItems(): Array<BreakReason>
 	}
 	export type BreakReason = BreakReason.Other | BreakReason.Error | BreakReason.UserBreakpoint | BreakReason.SpecialBreakpoint;
 	export namespace BreakpointRemoveReason {
 		export interface Requested extends EnumItem {
 			Name: "Requested";
 			Value: 0;
-			EnumType: EnumType<BreakpointRemoveReason>;
+			EnumType: typeof BreakpointRemoveReason;
 		}
 
 		export const Requested: Requested;
@@ -2142,7 +2141,7 @@ declare namespace Enum {
 		export interface ScriptChanged extends EnumItem {
 			Name: "ScriptChanged";
 			Value: 1;
-			EnumType: EnumType<BreakpointRemoveReason>;
+			EnumType: typeof BreakpointRemoveReason;
 		}
 
 		export const ScriptChanged: ScriptChanged;
@@ -2150,19 +2149,19 @@ declare namespace Enum {
 		export interface ScriptRemoved extends EnumItem {
 			Name: "ScriptRemoved";
 			Value: 2;
-			EnumType: EnumType<BreakpointRemoveReason>;
+			EnumType: typeof BreakpointRemoveReason;
 		}
 
 		export const ScriptRemoved: ScriptRemoved;
 
-		export function GetEnumItems(this: defined): Array<BreakpointRemoveReason>
+		export function GetEnumItems(): Array<BreakpointRemoveReason>
 	}
 	export type BreakpointRemoveReason = BreakpointRemoveReason.Requested | BreakpointRemoveReason.ScriptChanged | BreakpointRemoveReason.ScriptRemoved;
 	export namespace BulkMoveMode {
 		export interface FireAllEvents extends EnumItem {
 			Name: "FireAllEvents";
 			Value: 0;
-			EnumType: EnumType<BulkMoveMode>;
+			EnumType: typeof BulkMoveMode;
 		}
 
 		export const FireAllEvents: FireAllEvents;
@@ -2170,19 +2169,19 @@ declare namespace Enum {
 		export interface FireCFrameChanged extends EnumItem {
 			Name: "FireCFrameChanged";
 			Value: 1;
-			EnumType: EnumType<BulkMoveMode>;
+			EnumType: typeof BulkMoveMode;
 		}
 
 		export const FireCFrameChanged: FireCFrameChanged;
 
-		export function GetEnumItems(this: defined): Array<BulkMoveMode>
+		export function GetEnumItems(): Array<BulkMoveMode>
 	}
 	export type BulkMoveMode = BulkMoveMode.FireAllEvents | BulkMoveMode.FireCFrameChanged;
 	export namespace BundleType {
 		export interface BodyParts extends EnumItem {
 			Name: "BodyParts";
 			Value: 1;
-			EnumType: EnumType<BundleType>;
+			EnumType: typeof BundleType;
 		}
 
 		export const BodyParts: BodyParts;
@@ -2190,7 +2189,7 @@ declare namespace Enum {
 		export interface Animations extends EnumItem {
 			Name: "Animations";
 			Value: 2;
-			EnumType: EnumType<BundleType>;
+			EnumType: typeof BundleType;
 		}
 
 		export const Animations: Animations;
@@ -2198,19 +2197,19 @@ declare namespace Enum {
 		export interface Shoes extends EnumItem {
 			Name: "Shoes";
 			Value: 3;
-			EnumType: EnumType<BundleType>;
+			EnumType: typeof BundleType;
 		}
 
 		export const Shoes: Shoes;
 
-		export function GetEnumItems(this: defined): Array<BundleType>
+		export function GetEnumItems(): Array<BundleType>
 	}
 	export type BundleType = BundleType.BodyParts | BundleType.Animations | BundleType.Shoes;
 	export namespace Button {
 		export interface Jump extends EnumItem {
 			Name: "Jump";
 			Value: 32;
-			EnumType: EnumType<Button>;
+			EnumType: typeof Button;
 		}
 
 		export const Jump: Jump;
@@ -2218,19 +2217,19 @@ declare namespace Enum {
 		export interface Dismount extends EnumItem {
 			Name: "Dismount";
 			Value: 8;
-			EnumType: EnumType<Button>;
+			EnumType: typeof Button;
 		}
 
 		export const Dismount: Dismount;
 
-		export function GetEnumItems(this: defined): Array<Button>
+		export function GetEnumItems(): Array<Button>
 	}
 	export type Button = Button.Jump | Button.Dismount;
 	export namespace ButtonStyle {
 		export interface Custom extends EnumItem {
 			Name: "Custom";
 			Value: 0;
-			EnumType: EnumType<ButtonStyle>;
+			EnumType: typeof ButtonStyle;
 		}
 
 		export const Custom: Custom;
@@ -2238,7 +2237,7 @@ declare namespace Enum {
 		export interface RobloxButtonDefault extends EnumItem {
 			Name: "RobloxButtonDefault";
 			Value: 1;
-			EnumType: EnumType<ButtonStyle>;
+			EnumType: typeof ButtonStyle;
 		}
 
 		export const RobloxButtonDefault: RobloxButtonDefault;
@@ -2246,7 +2245,7 @@ declare namespace Enum {
 		export interface RobloxButton extends EnumItem {
 			Name: "RobloxButton";
 			Value: 2;
-			EnumType: EnumType<ButtonStyle>;
+			EnumType: typeof ButtonStyle;
 		}
 
 		export const RobloxButton: RobloxButton;
@@ -2254,7 +2253,7 @@ declare namespace Enum {
 		export interface RobloxRoundButton extends EnumItem {
 			Name: "RobloxRoundButton";
 			Value: 3;
-			EnumType: EnumType<ButtonStyle>;
+			EnumType: typeof ButtonStyle;
 		}
 
 		export const RobloxRoundButton: RobloxRoundButton;
@@ -2262,7 +2261,7 @@ declare namespace Enum {
 		export interface RobloxRoundDefaultButton extends EnumItem {
 			Name: "RobloxRoundDefaultButton";
 			Value: 4;
-			EnumType: EnumType<ButtonStyle>;
+			EnumType: typeof ButtonStyle;
 		}
 
 		export const RobloxRoundDefaultButton: RobloxRoundDefaultButton;
@@ -2270,19 +2269,19 @@ declare namespace Enum {
 		export interface RobloxRoundDropdownButton extends EnumItem {
 			Name: "RobloxRoundDropdownButton";
 			Value: 5;
-			EnumType: EnumType<ButtonStyle>;
+			EnumType: typeof ButtonStyle;
 		}
 
 		export const RobloxRoundDropdownButton: RobloxRoundDropdownButton;
 
-		export function GetEnumItems(this: defined): Array<ButtonStyle>
+		export function GetEnumItems(): Array<ButtonStyle>
 	}
 	export type ButtonStyle = ButtonStyle.Custom | ButtonStyle.RobloxButtonDefault | ButtonStyle.RobloxButton | ButtonStyle.RobloxRoundButton | ButtonStyle.RobloxRoundDefaultButton | ButtonStyle.RobloxRoundDropdownButton;
 	export namespace CageType {
 		export interface Inner extends EnumItem {
 			Name: "Inner";
 			Value: 0;
-			EnumType: EnumType<CageType>;
+			EnumType: typeof CageType;
 		}
 
 		export const Inner: Inner;
@@ -2290,19 +2289,19 @@ declare namespace Enum {
 		export interface Outer extends EnumItem {
 			Name: "Outer";
 			Value: 1;
-			EnumType: EnumType<CageType>;
+			EnumType: typeof CageType;
 		}
 
 		export const Outer: Outer;
 
-		export function GetEnumItems(this: defined): Array<CageType>
+		export function GetEnumItems(): Array<CageType>
 	}
 	export type CageType = CageType.Inner | CageType.Outer;
 	export namespace CameraMode {
 		export interface Classic extends EnumItem {
 			Name: "Classic";
 			Value: 0;
-			EnumType: EnumType<CameraMode>;
+			EnumType: typeof CameraMode;
 		}
 
 		export const Classic: Classic;
@@ -2310,19 +2309,19 @@ declare namespace Enum {
 		export interface LockFirstPerson extends EnumItem {
 			Name: "LockFirstPerson";
 			Value: 1;
-			EnumType: EnumType<CameraMode>;
+			EnumType: typeof CameraMode;
 		}
 
 		export const LockFirstPerson: LockFirstPerson;
 
-		export function GetEnumItems(this: defined): Array<CameraMode>
+		export function GetEnumItems(): Array<CameraMode>
 	}
 	export type CameraMode = CameraMode.Classic | CameraMode.LockFirstPerson;
 	export namespace CameraPanMode {
 		export interface Classic extends EnumItem {
 			Name: "Classic";
 			Value: 0;
-			EnumType: EnumType<CameraPanMode>;
+			EnumType: typeof CameraPanMode;
 		}
 
 		export const Classic: Classic;
@@ -2330,19 +2329,19 @@ declare namespace Enum {
 		export interface EdgeBump extends EnumItem {
 			Name: "EdgeBump";
 			Value: 1;
-			EnumType: EnumType<CameraPanMode>;
+			EnumType: typeof CameraPanMode;
 		}
 
 		export const EdgeBump: EdgeBump;
 
-		export function GetEnumItems(this: defined): Array<CameraPanMode>
+		export function GetEnumItems(): Array<CameraPanMode>
 	}
 	export type CameraPanMode = CameraPanMode.Classic | CameraPanMode.EdgeBump;
 	export namespace CameraType {
 		export interface Fixed extends EnumItem {
 			Name: "Fixed";
 			Value: 0;
-			EnumType: EnumType<CameraType>;
+			EnumType: typeof CameraType;
 		}
 
 		export const Fixed: Fixed;
@@ -2350,7 +2349,7 @@ declare namespace Enum {
 		export interface Watch extends EnumItem {
 			Name: "Watch";
 			Value: 2;
-			EnumType: EnumType<CameraType>;
+			EnumType: typeof CameraType;
 		}
 
 		export const Watch: Watch;
@@ -2358,7 +2357,7 @@ declare namespace Enum {
 		export interface Attach extends EnumItem {
 			Name: "Attach";
 			Value: 1;
-			EnumType: EnumType<CameraType>;
+			EnumType: typeof CameraType;
 		}
 
 		export const Attach: Attach;
@@ -2366,7 +2365,7 @@ declare namespace Enum {
 		export interface Track extends EnumItem {
 			Name: "Track";
 			Value: 3;
-			EnumType: EnumType<CameraType>;
+			EnumType: typeof CameraType;
 		}
 
 		export const Track: Track;
@@ -2374,7 +2373,7 @@ declare namespace Enum {
 		export interface Follow extends EnumItem {
 			Name: "Follow";
 			Value: 4;
-			EnumType: EnumType<CameraType>;
+			EnumType: typeof CameraType;
 		}
 
 		export const Follow: Follow;
@@ -2382,7 +2381,7 @@ declare namespace Enum {
 		export interface Custom extends EnumItem {
 			Name: "Custom";
 			Value: 5;
-			EnumType: EnumType<CameraType>;
+			EnumType: typeof CameraType;
 		}
 
 		export const Custom: Custom;
@@ -2390,7 +2389,7 @@ declare namespace Enum {
 		export interface Scriptable extends EnumItem {
 			Name: "Scriptable";
 			Value: 6;
-			EnumType: EnumType<CameraType>;
+			EnumType: typeof CameraType;
 		}
 
 		export const Scriptable: Scriptable;
@@ -2398,19 +2397,19 @@ declare namespace Enum {
 		export interface Orbital extends EnumItem {
 			Name: "Orbital";
 			Value: 7;
-			EnumType: EnumType<CameraType>;
+			EnumType: typeof CameraType;
 		}
 
 		export const Orbital: Orbital;
 
-		export function GetEnumItems(this: defined): Array<CameraType>
+		export function GetEnumItems(): Array<CameraType>
 	}
 	export type CameraType = CameraType.Fixed | CameraType.Watch | CameraType.Attach | CameraType.Track | CameraType.Follow | CameraType.Custom | CameraType.Scriptable | CameraType.Orbital;
 	export namespace CatalogCategoryFilter {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 1;
-			EnumType: EnumType<CatalogCategoryFilter>;
+			EnumType: typeof CatalogCategoryFilter;
 		}
 
 		export const None: None;
@@ -2418,7 +2417,7 @@ declare namespace Enum {
 		export interface Featured extends EnumItem {
 			Name: "Featured";
 			Value: 2;
-			EnumType: EnumType<CatalogCategoryFilter>;
+			EnumType: typeof CatalogCategoryFilter;
 		}
 
 		export const Featured: Featured;
@@ -2426,7 +2425,7 @@ declare namespace Enum {
 		export interface Collectibles extends EnumItem {
 			Name: "Collectibles";
 			Value: 3;
-			EnumType: EnumType<CatalogCategoryFilter>;
+			EnumType: typeof CatalogCategoryFilter;
 		}
 
 		export const Collectibles: Collectibles;
@@ -2434,7 +2433,7 @@ declare namespace Enum {
 		export interface CommunityCreations extends EnumItem {
 			Name: "CommunityCreations";
 			Value: 4;
-			EnumType: EnumType<CatalogCategoryFilter>;
+			EnumType: typeof CatalogCategoryFilter;
 		}
 
 		export const CommunityCreations: CommunityCreations;
@@ -2442,7 +2441,7 @@ declare namespace Enum {
 		export interface Premium extends EnumItem {
 			Name: "Premium";
 			Value: 5;
-			EnumType: EnumType<CatalogCategoryFilter>;
+			EnumType: typeof CatalogCategoryFilter;
 		}
 
 		export const Premium: Premium;
@@ -2450,19 +2449,19 @@ declare namespace Enum {
 		export interface Recommended extends EnumItem {
 			Name: "Recommended";
 			Value: 6;
-			EnumType: EnumType<CatalogCategoryFilter>;
+			EnumType: typeof CatalogCategoryFilter;
 		}
 
 		export const Recommended: Recommended;
 
-		export function GetEnumItems(this: defined): Array<CatalogCategoryFilter>
+		export function GetEnumItems(): Array<CatalogCategoryFilter>
 	}
 	export type CatalogCategoryFilter = CatalogCategoryFilter.None | CatalogCategoryFilter.Featured | CatalogCategoryFilter.Collectibles | CatalogCategoryFilter.CommunityCreations | CatalogCategoryFilter.Premium | CatalogCategoryFilter.Recommended;
 	export namespace CatalogSortType {
 		export interface Relevance extends EnumItem {
 			Name: "Relevance";
 			Value: 1;
-			EnumType: EnumType<CatalogSortType>;
+			EnumType: typeof CatalogSortType;
 		}
 
 		export const Relevance: Relevance;
@@ -2470,7 +2469,7 @@ declare namespace Enum {
 		export interface PriceHighToLow extends EnumItem {
 			Name: "PriceHighToLow";
 			Value: 2;
-			EnumType: EnumType<CatalogSortType>;
+			EnumType: typeof CatalogSortType;
 		}
 
 		export const PriceHighToLow: PriceHighToLow;
@@ -2478,7 +2477,7 @@ declare namespace Enum {
 		export interface PriceLowToHigh extends EnumItem {
 			Name: "PriceLowToHigh";
 			Value: 3;
-			EnumType: EnumType<CatalogSortType>;
+			EnumType: typeof CatalogSortType;
 		}
 
 		export const PriceLowToHigh: PriceLowToHigh;
@@ -2486,7 +2485,7 @@ declare namespace Enum {
 		export interface RecentlyUpdated extends EnumItem {
 			Name: "RecentlyUpdated";
 			Value: 4;
-			EnumType: EnumType<CatalogSortType>;
+			EnumType: typeof CatalogSortType;
 		}
 
 		export const RecentlyUpdated: RecentlyUpdated;
@@ -2494,19 +2493,19 @@ declare namespace Enum {
 		export interface MostFavorited extends EnumItem {
 			Name: "MostFavorited";
 			Value: 5;
-			EnumType: EnumType<CatalogSortType>;
+			EnumType: typeof CatalogSortType;
 		}
 
 		export const MostFavorited: MostFavorited;
 
-		export function GetEnumItems(this: defined): Array<CatalogSortType>
+		export function GetEnumItems(): Array<CatalogSortType>
 	}
 	export type CatalogSortType = CatalogSortType.Relevance | CatalogSortType.PriceHighToLow | CatalogSortType.PriceLowToHigh | CatalogSortType.RecentlyUpdated | CatalogSortType.MostFavorited;
 	export namespace CellBlock {
 		export interface Solid extends EnumItem {
 			Name: "Solid";
 			Value: 0;
-			EnumType: EnumType<CellBlock>;
+			EnumType: typeof CellBlock;
 		}
 
 		export const Solid: Solid;
@@ -2514,7 +2513,7 @@ declare namespace Enum {
 		export interface VerticalWedge extends EnumItem {
 			Name: "VerticalWedge";
 			Value: 1;
-			EnumType: EnumType<CellBlock>;
+			EnumType: typeof CellBlock;
 		}
 
 		export const VerticalWedge: VerticalWedge;
@@ -2522,7 +2521,7 @@ declare namespace Enum {
 		export interface CornerWedge extends EnumItem {
 			Name: "CornerWedge";
 			Value: 2;
-			EnumType: EnumType<CellBlock>;
+			EnumType: typeof CellBlock;
 		}
 
 		export const CornerWedge: CornerWedge;
@@ -2530,7 +2529,7 @@ declare namespace Enum {
 		export interface InverseCornerWedge extends EnumItem {
 			Name: "InverseCornerWedge";
 			Value: 3;
-			EnumType: EnumType<CellBlock>;
+			EnumType: typeof CellBlock;
 		}
 
 		export const InverseCornerWedge: InverseCornerWedge;
@@ -2538,19 +2537,19 @@ declare namespace Enum {
 		export interface HorizontalWedge extends EnumItem {
 			Name: "HorizontalWedge";
 			Value: 4;
-			EnumType: EnumType<CellBlock>;
+			EnumType: typeof CellBlock;
 		}
 
 		export const HorizontalWedge: HorizontalWedge;
 
-		export function GetEnumItems(this: defined): Array<CellBlock>
+		export function GetEnumItems(): Array<CellBlock>
 	}
 	export type CellBlock = CellBlock.Solid | CellBlock.VerticalWedge | CellBlock.CornerWedge | CellBlock.InverseCornerWedge | CellBlock.HorizontalWedge;
 	export namespace CellMaterial {
 		export interface Empty extends EnumItem {
 			Name: "Empty";
 			Value: 0;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const Empty: Empty;
@@ -2558,7 +2557,7 @@ declare namespace Enum {
 		export interface Grass extends EnumItem {
 			Name: "Grass";
 			Value: 1;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const Grass: Grass;
@@ -2566,7 +2565,7 @@ declare namespace Enum {
 		export interface Sand extends EnumItem {
 			Name: "Sand";
 			Value: 2;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const Sand: Sand;
@@ -2574,7 +2573,7 @@ declare namespace Enum {
 		export interface Brick extends EnumItem {
 			Name: "Brick";
 			Value: 3;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const Brick: Brick;
@@ -2582,7 +2581,7 @@ declare namespace Enum {
 		export interface Granite extends EnumItem {
 			Name: "Granite";
 			Value: 4;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const Granite: Granite;
@@ -2590,7 +2589,7 @@ declare namespace Enum {
 		export interface Asphalt extends EnumItem {
 			Name: "Asphalt";
 			Value: 5;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const Asphalt: Asphalt;
@@ -2598,7 +2597,7 @@ declare namespace Enum {
 		export interface Iron extends EnumItem {
 			Name: "Iron";
 			Value: 6;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const Iron: Iron;
@@ -2606,7 +2605,7 @@ declare namespace Enum {
 		export interface Aluminum extends EnumItem {
 			Name: "Aluminum";
 			Value: 7;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const Aluminum: Aluminum;
@@ -2614,7 +2613,7 @@ declare namespace Enum {
 		export interface Gold extends EnumItem {
 			Name: "Gold";
 			Value: 8;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const Gold: Gold;
@@ -2622,7 +2621,7 @@ declare namespace Enum {
 		export interface WoodPlank extends EnumItem {
 			Name: "WoodPlank";
 			Value: 9;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const WoodPlank: WoodPlank;
@@ -2630,7 +2629,7 @@ declare namespace Enum {
 		export interface WoodLog extends EnumItem {
 			Name: "WoodLog";
 			Value: 10;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const WoodLog: WoodLog;
@@ -2638,7 +2637,7 @@ declare namespace Enum {
 		export interface Gravel extends EnumItem {
 			Name: "Gravel";
 			Value: 11;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const Gravel: Gravel;
@@ -2646,7 +2645,7 @@ declare namespace Enum {
 		export interface CinderBlock extends EnumItem {
 			Name: "CinderBlock";
 			Value: 12;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const CinderBlock: CinderBlock;
@@ -2654,7 +2653,7 @@ declare namespace Enum {
 		export interface MossyStone extends EnumItem {
 			Name: "MossyStone";
 			Value: 13;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const MossyStone: MossyStone;
@@ -2662,7 +2661,7 @@ declare namespace Enum {
 		export interface Cement extends EnumItem {
 			Name: "Cement";
 			Value: 14;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const Cement: Cement;
@@ -2670,7 +2669,7 @@ declare namespace Enum {
 		export interface RedPlastic extends EnumItem {
 			Name: "RedPlastic";
 			Value: 15;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const RedPlastic: RedPlastic;
@@ -2678,7 +2677,7 @@ declare namespace Enum {
 		export interface BluePlastic extends EnumItem {
 			Name: "BluePlastic";
 			Value: 16;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const BluePlastic: BluePlastic;
@@ -2686,19 +2685,19 @@ declare namespace Enum {
 		export interface Water extends EnumItem {
 			Name: "Water";
 			Value: 17;
-			EnumType: EnumType<CellMaterial>;
+			EnumType: typeof CellMaterial;
 		}
 
 		export const Water: Water;
 
-		export function GetEnumItems(this: defined): Array<CellMaterial>
+		export function GetEnumItems(): Array<CellMaterial>
 	}
 	export type CellMaterial = CellMaterial.Empty | CellMaterial.Grass | CellMaterial.Sand | CellMaterial.Brick | CellMaterial.Granite | CellMaterial.Asphalt | CellMaterial.Iron | CellMaterial.Aluminum | CellMaterial.Gold | CellMaterial.WoodPlank | CellMaterial.WoodLog | CellMaterial.Gravel | CellMaterial.CinderBlock | CellMaterial.MossyStone | CellMaterial.Cement | CellMaterial.RedPlastic | CellMaterial.BluePlastic | CellMaterial.Water;
 	export namespace CellOrientation {
 		export interface NegZ extends EnumItem {
 			Name: "NegZ";
 			Value: 0;
-			EnumType: EnumType<CellOrientation>;
+			EnumType: typeof CellOrientation;
 		}
 
 		export const NegZ: NegZ;
@@ -2706,7 +2705,7 @@ declare namespace Enum {
 		export interface X extends EnumItem {
 			Name: "X";
 			Value: 1;
-			EnumType: EnumType<CellOrientation>;
+			EnumType: typeof CellOrientation;
 		}
 
 		export const X: X;
@@ -2714,7 +2713,7 @@ declare namespace Enum {
 		export interface Z extends EnumItem {
 			Name: "Z";
 			Value: 2;
-			EnumType: EnumType<CellOrientation>;
+			EnumType: typeof CellOrientation;
 		}
 
 		export const Z: Z;
@@ -2722,19 +2721,19 @@ declare namespace Enum {
 		export interface NegX extends EnumItem {
 			Name: "NegX";
 			Value: 3;
-			EnumType: EnumType<CellOrientation>;
+			EnumType: typeof CellOrientation;
 		}
 
 		export const NegX: NegX;
 
-		export function GetEnumItems(this: defined): Array<CellOrientation>
+		export function GetEnumItems(): Array<CellOrientation>
 	}
 	export type CellOrientation = CellOrientation.NegZ | CellOrientation.X | CellOrientation.Z | CellOrientation.NegX;
 	export namespace CenterDialogType {
 		export interface UnsolicitedDialog extends EnumItem {
 			Name: "UnsolicitedDialog";
 			Value: 1;
-			EnumType: EnumType<CenterDialogType>;
+			EnumType: typeof CenterDialogType;
 		}
 
 		export const UnsolicitedDialog: UnsolicitedDialog;
@@ -2742,7 +2741,7 @@ declare namespace Enum {
 		export interface PlayerInitiatedDialog extends EnumItem {
 			Name: "PlayerInitiatedDialog";
 			Value: 2;
-			EnumType: EnumType<CenterDialogType>;
+			EnumType: typeof CenterDialogType;
 		}
 
 		export const PlayerInitiatedDialog: PlayerInitiatedDialog;
@@ -2750,7 +2749,7 @@ declare namespace Enum {
 		export interface ModalDialog extends EnumItem {
 			Name: "ModalDialog";
 			Value: 3;
-			EnumType: EnumType<CenterDialogType>;
+			EnumType: typeof CenterDialogType;
 		}
 
 		export const ModalDialog: ModalDialog;
@@ -2758,19 +2757,19 @@ declare namespace Enum {
 		export interface QuitDialog extends EnumItem {
 			Name: "QuitDialog";
 			Value: 4;
-			EnumType: EnumType<CenterDialogType>;
+			EnumType: typeof CenterDialogType;
 		}
 
 		export const QuitDialog: QuitDialog;
 
-		export function GetEnumItems(this: defined): Array<CenterDialogType>
+		export function GetEnumItems(): Array<CenterDialogType>
 	}
 	export type CenterDialogType = CenterDialogType.UnsolicitedDialog | CenterDialogType.PlayerInitiatedDialog | CenterDialogType.ModalDialog | CenterDialogType.QuitDialog;
 	export namespace ChatCallbackType {
 		export interface OnCreatingChatWindow extends EnumItem {
 			Name: "OnCreatingChatWindow";
 			Value: 1;
-			EnumType: EnumType<ChatCallbackType>;
+			EnumType: typeof ChatCallbackType;
 		}
 
 		export const OnCreatingChatWindow: OnCreatingChatWindow;
@@ -2778,7 +2777,7 @@ declare namespace Enum {
 		export interface OnClientSendingMessage extends EnumItem {
 			Name: "OnClientSendingMessage";
 			Value: 2;
-			EnumType: EnumType<ChatCallbackType>;
+			EnumType: typeof ChatCallbackType;
 		}
 
 		export const OnClientSendingMessage: OnClientSendingMessage;
@@ -2786,7 +2785,7 @@ declare namespace Enum {
 		export interface OnClientFormattingMessage extends EnumItem {
 			Name: "OnClientFormattingMessage";
 			Value: 3;
-			EnumType: EnumType<ChatCallbackType>;
+			EnumType: typeof ChatCallbackType;
 		}
 
 		export const OnClientFormattingMessage: OnClientFormattingMessage;
@@ -2794,19 +2793,19 @@ declare namespace Enum {
 		export interface OnServerReceivingMessage extends EnumItem {
 			Name: "OnServerReceivingMessage";
 			Value: 17;
-			EnumType: EnumType<ChatCallbackType>;
+			EnumType: typeof ChatCallbackType;
 		}
 
 		export const OnServerReceivingMessage: OnServerReceivingMessage;
 
-		export function GetEnumItems(this: defined): Array<ChatCallbackType>
+		export function GetEnumItems(): Array<ChatCallbackType>
 	}
 	export type ChatCallbackType = ChatCallbackType.OnCreatingChatWindow | ChatCallbackType.OnClientSendingMessage | ChatCallbackType.OnClientFormattingMessage | ChatCallbackType.OnServerReceivingMessage;
 	export namespace ChatColor {
 		export interface Blue extends EnumItem {
 			Name: "Blue";
 			Value: 0;
-			EnumType: EnumType<ChatColor>;
+			EnumType: typeof ChatColor;
 		}
 
 		export const Blue: Blue;
@@ -2814,7 +2813,7 @@ declare namespace Enum {
 		export interface Green extends EnumItem {
 			Name: "Green";
 			Value: 1;
-			EnumType: EnumType<ChatColor>;
+			EnumType: typeof ChatColor;
 		}
 
 		export const Green: Green;
@@ -2822,7 +2821,7 @@ declare namespace Enum {
 		export interface Red extends EnumItem {
 			Name: "Red";
 			Value: 2;
-			EnumType: EnumType<ChatColor>;
+			EnumType: typeof ChatColor;
 		}
 
 		export const Red: Red;
@@ -2830,19 +2829,19 @@ declare namespace Enum {
 		export interface White extends EnumItem {
 			Name: "White";
 			Value: 3;
-			EnumType: EnumType<ChatColor>;
+			EnumType: typeof ChatColor;
 		}
 
 		export const White: White;
 
-		export function GetEnumItems(this: defined): Array<ChatColor>
+		export function GetEnumItems(): Array<ChatColor>
 	}
 	export type ChatColor = ChatColor.Blue | ChatColor.Green | ChatColor.Red | ChatColor.White;
 	export namespace ChatMode {
 		export interface Menu extends EnumItem {
 			Name: "Menu";
 			Value: 0;
-			EnumType: EnumType<ChatMode>;
+			EnumType: typeof ChatMode;
 		}
 
 		export const Menu: Menu;
@@ -2850,19 +2849,19 @@ declare namespace Enum {
 		export interface TextAndMenu extends EnumItem {
 			Name: "TextAndMenu";
 			Value: 1;
-			EnumType: EnumType<ChatMode>;
+			EnumType: typeof ChatMode;
 		}
 
 		export const TextAndMenu: TextAndMenu;
 
-		export function GetEnumItems(this: defined): Array<ChatMode>
+		export function GetEnumItems(): Array<ChatMode>
 	}
 	export type ChatMode = ChatMode.Menu | ChatMode.TextAndMenu;
 	export namespace ChatPrivacyMode {
 		export interface AllUsers extends EnumItem {
 			Name: "AllUsers";
 			Value: 0;
-			EnumType: EnumType<ChatPrivacyMode>;
+			EnumType: typeof ChatPrivacyMode;
 		}
 
 		export const AllUsers: AllUsers;
@@ -2870,7 +2869,7 @@ declare namespace Enum {
 		export interface NoOne extends EnumItem {
 			Name: "NoOne";
 			Value: 1;
-			EnumType: EnumType<ChatPrivacyMode>;
+			EnumType: typeof ChatPrivacyMode;
 		}
 
 		export const NoOne: NoOne;
@@ -2878,19 +2877,19 @@ declare namespace Enum {
 		export interface Friends extends EnumItem {
 			Name: "Friends";
 			Value: 2;
-			EnumType: EnumType<ChatPrivacyMode>;
+			EnumType: typeof ChatPrivacyMode;
 		}
 
 		export const Friends: Friends;
 
-		export function GetEnumItems(this: defined): Array<ChatPrivacyMode>
+		export function GetEnumItems(): Array<ChatPrivacyMode>
 	}
 	export type ChatPrivacyMode = ChatPrivacyMode.AllUsers | ChatPrivacyMode.NoOne | ChatPrivacyMode.Friends;
 	export namespace ChatStyle {
 		export interface Classic extends EnumItem {
 			Name: "Classic";
 			Value: 0;
-			EnumType: EnumType<ChatStyle>;
+			EnumType: typeof ChatStyle;
 		}
 
 		export const Classic: Classic;
@@ -2898,7 +2897,7 @@ declare namespace Enum {
 		export interface Bubble extends EnumItem {
 			Name: "Bubble";
 			Value: 1;
-			EnumType: EnumType<ChatStyle>;
+			EnumType: typeof ChatStyle;
 		}
 
 		export const Bubble: Bubble;
@@ -2906,19 +2905,19 @@ declare namespace Enum {
 		export interface ClassicAndBubble extends EnumItem {
 			Name: "ClassicAndBubble";
 			Value: 2;
-			EnumType: EnumType<ChatStyle>;
+			EnumType: typeof ChatStyle;
 		}
 
 		export const ClassicAndBubble: ClassicAndBubble;
 
-		export function GetEnumItems(this: defined): Array<ChatStyle>
+		export function GetEnumItems(): Array<ChatStyle>
 	}
 	export type ChatStyle = ChatStyle.Classic | ChatStyle.Bubble | ChatStyle.ClassicAndBubble;
 	export namespace ChatVersion {
 		export interface LegacyChatService extends EnumItem {
 			Name: "LegacyChatService";
 			Value: 0;
-			EnumType: EnumType<ChatVersion>;
+			EnumType: typeof ChatVersion;
 		}
 
 		export const LegacyChatService: LegacyChatService;
@@ -2926,19 +2925,19 @@ declare namespace Enum {
 		export interface TextChatService extends EnumItem {
 			Name: "TextChatService";
 			Value: 1;
-			EnumType: EnumType<ChatVersion>;
+			EnumType: typeof ChatVersion;
 		}
 
 		export const TextChatService: TextChatService;
 
-		export function GetEnumItems(this: defined): Array<ChatVersion>
+		export function GetEnumItems(): Array<ChatVersion>
 	}
 	export type ChatVersion = ChatVersion.LegacyChatService | ChatVersion.TextChatService;
 	export namespace ClientAnimatorThrottlingMode {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<ClientAnimatorThrottlingMode>;
+			EnumType: typeof ClientAnimatorThrottlingMode;
 		}
 
 		export const Default: Default;
@@ -2946,7 +2945,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<ClientAnimatorThrottlingMode>;
+			EnumType: typeof ClientAnimatorThrottlingMode;
 		}
 
 		export const Disabled: Disabled;
@@ -2954,19 +2953,19 @@ declare namespace Enum {
 		export interface Enabled extends EnumItem {
 			Name: "Enabled";
 			Value: 2;
-			EnumType: EnumType<ClientAnimatorThrottlingMode>;
+			EnumType: typeof ClientAnimatorThrottlingMode;
 		}
 
 		export const Enabled: Enabled;
 
-		export function GetEnumItems(this: defined): Array<ClientAnimatorThrottlingMode>
+		export function GetEnumItems(): Array<ClientAnimatorThrottlingMode>
 	}
 	export type ClientAnimatorThrottlingMode = ClientAnimatorThrottlingMode.Default | ClientAnimatorThrottlingMode.Disabled | ClientAnimatorThrottlingMode.Enabled;
 	export namespace CollisionFidelity {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<CollisionFidelity>;
+			EnumType: typeof CollisionFidelity;
 		}
 
 		export const Default: Default;
@@ -2974,7 +2973,7 @@ declare namespace Enum {
 		export interface Hull extends EnumItem {
 			Name: "Hull";
 			Value: 1;
-			EnumType: EnumType<CollisionFidelity>;
+			EnumType: typeof CollisionFidelity;
 		}
 
 		export const Hull: Hull;
@@ -2982,7 +2981,7 @@ declare namespace Enum {
 		export interface Box extends EnumItem {
 			Name: "Box";
 			Value: 2;
-			EnumType: EnumType<CollisionFidelity>;
+			EnumType: typeof CollisionFidelity;
 		}
 
 		export const Box: Box;
@@ -2990,19 +2989,19 @@ declare namespace Enum {
 		export interface PreciseConvexDecomposition extends EnumItem {
 			Name: "PreciseConvexDecomposition";
 			Value: 3;
-			EnumType: EnumType<CollisionFidelity>;
+			EnumType: typeof CollisionFidelity;
 		}
 
 		export const PreciseConvexDecomposition: PreciseConvexDecomposition;
 
-		export function GetEnumItems(this: defined): Array<CollisionFidelity>
+		export function GetEnumItems(): Array<CollisionFidelity>
 	}
 	export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition;
 	export namespace CommandPermission {
 		export interface Plugin extends EnumItem {
 			Name: "Plugin";
 			Value: 0;
-			EnumType: EnumType<CommandPermission>;
+			EnumType: typeof CommandPermission;
 		}
 
 		export const Plugin: Plugin;
@@ -3010,19 +3009,19 @@ declare namespace Enum {
 		export interface LocalUser extends EnumItem {
 			Name: "LocalUser";
 			Value: 1;
-			EnumType: EnumType<CommandPermission>;
+			EnumType: typeof CommandPermission;
 		}
 
 		export const LocalUser: LocalUser;
 
-		export function GetEnumItems(this: defined): Array<CommandPermission>
+		export function GetEnumItems(): Array<CommandPermission>
 	}
 	export type CommandPermission = CommandPermission.Plugin | CommandPermission.LocalUser;
 	export namespace ComputerCameraMovementMode {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<ComputerCameraMovementMode>;
+			EnumType: typeof ComputerCameraMovementMode;
 		}
 
 		export const Default: Default;
@@ -3030,7 +3029,7 @@ declare namespace Enum {
 		export interface Follow extends EnumItem {
 			Name: "Follow";
 			Value: 2;
-			EnumType: EnumType<ComputerCameraMovementMode>;
+			EnumType: typeof ComputerCameraMovementMode;
 		}
 
 		export const Follow: Follow;
@@ -3038,7 +3037,7 @@ declare namespace Enum {
 		export interface Classic extends EnumItem {
 			Name: "Classic";
 			Value: 1;
-			EnumType: EnumType<ComputerCameraMovementMode>;
+			EnumType: typeof ComputerCameraMovementMode;
 		}
 
 		export const Classic: Classic;
@@ -3046,7 +3045,7 @@ declare namespace Enum {
 		export interface Orbital extends EnumItem {
 			Name: "Orbital";
 			Value: 3;
-			EnumType: EnumType<ComputerCameraMovementMode>;
+			EnumType: typeof ComputerCameraMovementMode;
 		}
 
 		export const Orbital: Orbital;
@@ -3054,19 +3053,19 @@ declare namespace Enum {
 		export interface CameraToggle extends EnumItem {
 			Name: "CameraToggle";
 			Value: 4;
-			EnumType: EnumType<ComputerCameraMovementMode>;
+			EnumType: typeof ComputerCameraMovementMode;
 		}
 
 		export const CameraToggle: CameraToggle;
 
-		export function GetEnumItems(this: defined): Array<ComputerCameraMovementMode>
+		export function GetEnumItems(): Array<ComputerCameraMovementMode>
 	}
 	export type ComputerCameraMovementMode = ComputerCameraMovementMode.Default | ComputerCameraMovementMode.Follow | ComputerCameraMovementMode.Classic | ComputerCameraMovementMode.Orbital | ComputerCameraMovementMode.CameraToggle;
 	export namespace ComputerMovementMode {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<ComputerMovementMode>;
+			EnumType: typeof ComputerMovementMode;
 		}
 
 		export const Default: Default;
@@ -3074,7 +3073,7 @@ declare namespace Enum {
 		export interface KeyboardMouse extends EnumItem {
 			Name: "KeyboardMouse";
 			Value: 1;
-			EnumType: EnumType<ComputerMovementMode>;
+			EnumType: typeof ComputerMovementMode;
 		}
 
 		export const KeyboardMouse: KeyboardMouse;
@@ -3082,19 +3081,19 @@ declare namespace Enum {
 		export interface ClickToMove extends EnumItem {
 			Name: "ClickToMove";
 			Value: 2;
-			EnumType: EnumType<ComputerMovementMode>;
+			EnumType: typeof ComputerMovementMode;
 		}
 
 		export const ClickToMove: ClickToMove;
 
-		export function GetEnumItems(this: defined): Array<ComputerMovementMode>
+		export function GetEnumItems(): Array<ComputerMovementMode>
 	}
 	export type ComputerMovementMode = ComputerMovementMode.Default | ComputerMovementMode.KeyboardMouse | ComputerMovementMode.ClickToMove;
 	export namespace ConnectionError {
 		export interface OK extends EnumItem {
 			Name: "OK";
 			Value: 0;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const OK: OK;
@@ -3102,7 +3101,7 @@ declare namespace Enum {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 1;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const Unknown: Unknown;
@@ -3110,7 +3109,7 @@ declare namespace Enum {
 		export interface DisconnectErrors extends EnumItem {
 			Name: "DisconnectErrors";
 			Value: 256;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectErrors: DisconnectErrors;
@@ -3118,7 +3117,7 @@ declare namespace Enum {
 		export interface DisconnectBadhash extends EnumItem {
 			Name: "DisconnectBadhash";
 			Value: 257;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectBadhash: DisconnectBadhash;
@@ -3126,7 +3125,7 @@ declare namespace Enum {
 		export interface DisconnectSecurityKeyMismatch extends EnumItem {
 			Name: "DisconnectSecurityKeyMismatch";
 			Value: 258;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectSecurityKeyMismatch: DisconnectSecurityKeyMismatch;
@@ -3134,7 +3133,7 @@ declare namespace Enum {
 		export interface DisconnectNewSecurityKeyMismatch extends EnumItem {
 			Name: "DisconnectNewSecurityKeyMismatch";
 			Value: 272;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectNewSecurityKeyMismatch: DisconnectNewSecurityKeyMismatch;
@@ -3142,7 +3141,7 @@ declare namespace Enum {
 		export interface DisconnectProtocolMismatch extends EnumItem {
 			Name: "DisconnectProtocolMismatch";
 			Value: 259;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectProtocolMismatch: DisconnectProtocolMismatch;
@@ -3150,7 +3149,7 @@ declare namespace Enum {
 		export interface DisconnectReceivePacketError extends EnumItem {
 			Name: "DisconnectReceivePacketError";
 			Value: 260;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectReceivePacketError: DisconnectReceivePacketError;
@@ -3158,7 +3157,7 @@ declare namespace Enum {
 		export interface DisconnectReceivePacketStreamError extends EnumItem {
 			Name: "DisconnectReceivePacketStreamError";
 			Value: 261;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectReceivePacketStreamError: DisconnectReceivePacketStreamError;
@@ -3166,7 +3165,7 @@ declare namespace Enum {
 		export interface DisconnectSendPacketError extends EnumItem {
 			Name: "DisconnectSendPacketError";
 			Value: 262;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectSendPacketError: DisconnectSendPacketError;
@@ -3174,7 +3173,7 @@ declare namespace Enum {
 		export interface DisconnectIllegalTeleport extends EnumItem {
 			Name: "DisconnectIllegalTeleport";
 			Value: 263;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectIllegalTeleport: DisconnectIllegalTeleport;
@@ -3182,7 +3181,7 @@ declare namespace Enum {
 		export interface DisconnectDuplicatePlayer extends EnumItem {
 			Name: "DisconnectDuplicatePlayer";
 			Value: 264;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectDuplicatePlayer: DisconnectDuplicatePlayer;
@@ -3190,7 +3189,7 @@ declare namespace Enum {
 		export interface DisconnectDuplicateTicket extends EnumItem {
 			Name: "DisconnectDuplicateTicket";
 			Value: 265;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectDuplicateTicket: DisconnectDuplicateTicket;
@@ -3198,7 +3197,7 @@ declare namespace Enum {
 		export interface DisconnectTimeout extends EnumItem {
 			Name: "DisconnectTimeout";
 			Value: 266;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectTimeout: DisconnectTimeout;
@@ -3206,7 +3205,7 @@ declare namespace Enum {
 		export interface DisconnectLuaKick extends EnumItem {
 			Name: "DisconnectLuaKick";
 			Value: 267;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectLuaKick: DisconnectLuaKick;
@@ -3214,7 +3213,7 @@ declare namespace Enum {
 		export interface DisconnectOnRemoteSysStats extends EnumItem {
 			Name: "DisconnectOnRemoteSysStats";
 			Value: 268;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectOnRemoteSysStats: DisconnectOnRemoteSysStats;
@@ -3222,7 +3221,7 @@ declare namespace Enum {
 		export interface DisconnectHashTimeout extends EnumItem {
 			Name: "DisconnectHashTimeout";
 			Value: 269;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectHashTimeout: DisconnectHashTimeout;
@@ -3230,7 +3229,7 @@ declare namespace Enum {
 		export interface DisconnectCloudEditKick extends EnumItem {
 			Name: "DisconnectCloudEditKick";
 			Value: 270;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectCloudEditKick: DisconnectCloudEditKick;
@@ -3238,7 +3237,7 @@ declare namespace Enum {
 		export interface DisconnectPlayerless extends EnumItem {
 			Name: "DisconnectPlayerless";
 			Value: 271;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectPlayerless: DisconnectPlayerless;
@@ -3246,7 +3245,7 @@ declare namespace Enum {
 		export interface DisconnectEvicted extends EnumItem {
 			Name: "DisconnectEvicted";
 			Value: 273;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectEvicted: DisconnectEvicted;
@@ -3254,7 +3253,7 @@ declare namespace Enum {
 		export interface DisconnectDevMaintenance extends EnumItem {
 			Name: "DisconnectDevMaintenance";
 			Value: 274;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectDevMaintenance: DisconnectDevMaintenance;
@@ -3262,7 +3261,7 @@ declare namespace Enum {
 		export interface DisconnectRobloxMaintenance extends EnumItem {
 			Name: "DisconnectRobloxMaintenance";
 			Value: 275;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectRobloxMaintenance: DisconnectRobloxMaintenance;
@@ -3270,7 +3269,7 @@ declare namespace Enum {
 		export interface DisconnectRejoin extends EnumItem {
 			Name: "DisconnectRejoin";
 			Value: 276;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectRejoin: DisconnectRejoin;
@@ -3278,7 +3277,7 @@ declare namespace Enum {
 		export interface DisconnectConnectionLost extends EnumItem {
 			Name: "DisconnectConnectionLost";
 			Value: 277;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectConnectionLost: DisconnectConnectionLost;
@@ -3286,7 +3285,7 @@ declare namespace Enum {
 		export interface DisconnectIdle extends EnumItem {
 			Name: "DisconnectIdle";
 			Value: 278;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectIdle: DisconnectIdle;
@@ -3294,7 +3293,7 @@ declare namespace Enum {
 		export interface DisconnectRaknetErrors extends EnumItem {
 			Name: "DisconnectRaknetErrors";
 			Value: 279;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectRaknetErrors: DisconnectRaknetErrors;
@@ -3302,7 +3301,7 @@ declare namespace Enum {
 		export interface DisconnectWrongVersion extends EnumItem {
 			Name: "DisconnectWrongVersion";
 			Value: 280;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectWrongVersion: DisconnectWrongVersion;
@@ -3310,7 +3309,7 @@ declare namespace Enum {
 		export interface DisconnectBySecurityPolicy extends EnumItem {
 			Name: "DisconnectBySecurityPolicy";
 			Value: 281;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectBySecurityPolicy: DisconnectBySecurityPolicy;
@@ -3318,7 +3317,7 @@ declare namespace Enum {
 		export interface DisconnectBlockedIP extends EnumItem {
 			Name: "DisconnectBlockedIP";
 			Value: 282;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectBlockedIP: DisconnectBlockedIP;
@@ -3326,7 +3325,7 @@ declare namespace Enum {
 		export interface DisconnectClientFailure extends EnumItem {
 			Name: "DisconnectClientFailure";
 			Value: 284;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectClientFailure: DisconnectClientFailure;
@@ -3334,7 +3333,7 @@ declare namespace Enum {
 		export interface DisconnectClientRequest extends EnumItem {
 			Name: "DisconnectClientRequest";
 			Value: 285;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectClientRequest: DisconnectClientRequest;
@@ -3342,7 +3341,7 @@ declare namespace Enum {
 		export interface DisconnectOutOfMemory extends EnumItem {
 			Name: "DisconnectOutOfMemory";
 			Value: 286;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectOutOfMemory: DisconnectOutOfMemory;
@@ -3350,7 +3349,7 @@ declare namespace Enum {
 		export interface DisconnectModeratedGame extends EnumItem {
 			Name: "DisconnectModeratedGame";
 			Value: 287;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectModeratedGame: DisconnectModeratedGame;
@@ -3358,7 +3357,7 @@ declare namespace Enum {
 		export interface DisconnectOutOfMemoryExitContinue extends EnumItem {
 			Name: "DisconnectOutOfMemoryExitContinue";
 			Value: 288;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const DisconnectOutOfMemoryExitContinue: DisconnectOutOfMemoryExitContinue;
@@ -3366,7 +3365,7 @@ declare namespace Enum {
 		export interface PlacelaunchErrors extends EnumItem {
 			Name: "PlacelaunchErrors";
 			Value: 512;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchErrors: PlacelaunchErrors;
@@ -3374,7 +3373,7 @@ declare namespace Enum {
 		export interface PlacelaunchDisabled extends EnumItem {
 			Name: "PlacelaunchDisabled";
 			Value: 515;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchDisabled: PlacelaunchDisabled;
@@ -3382,7 +3381,7 @@ declare namespace Enum {
 		export interface PlacelaunchError extends EnumItem {
 			Name: "PlacelaunchError";
 			Value: 516;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchError: PlacelaunchError;
@@ -3390,7 +3389,7 @@ declare namespace Enum {
 		export interface PlacelaunchGameEnded extends EnumItem {
 			Name: "PlacelaunchGameEnded";
 			Value: 517;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchGameEnded: PlacelaunchGameEnded;
@@ -3398,7 +3397,7 @@ declare namespace Enum {
 		export interface PlacelaunchGameFull extends EnumItem {
 			Name: "PlacelaunchGameFull";
 			Value: 518;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchGameFull: PlacelaunchGameFull;
@@ -3406,7 +3405,7 @@ declare namespace Enum {
 		export interface PlacelaunchUserLeft extends EnumItem {
 			Name: "PlacelaunchUserLeft";
 			Value: 522;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchUserLeft: PlacelaunchUserLeft;
@@ -3414,7 +3413,7 @@ declare namespace Enum {
 		export interface PlacelaunchRestricted extends EnumItem {
 			Name: "PlacelaunchRestricted";
 			Value: 523;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchRestricted: PlacelaunchRestricted;
@@ -3422,7 +3421,7 @@ declare namespace Enum {
 		export interface PlacelaunchUnauthorized extends EnumItem {
 			Name: "PlacelaunchUnauthorized";
 			Value: 524;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchUnauthorized: PlacelaunchUnauthorized;
@@ -3430,7 +3429,7 @@ declare namespace Enum {
 		export interface PlacelaunchFlooded extends EnumItem {
 			Name: "PlacelaunchFlooded";
 			Value: 525;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchFlooded: PlacelaunchFlooded;
@@ -3438,7 +3437,7 @@ declare namespace Enum {
 		export interface PlacelaunchHashExpired extends EnumItem {
 			Name: "PlacelaunchHashExpired";
 			Value: 526;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchHashExpired: PlacelaunchHashExpired;
@@ -3446,7 +3445,7 @@ declare namespace Enum {
 		export interface PlacelaunchHashException extends EnumItem {
 			Name: "PlacelaunchHashException";
 			Value: 527;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchHashException: PlacelaunchHashException;
@@ -3454,7 +3453,7 @@ declare namespace Enum {
 		export interface PlacelaunchPartyCannotFit extends EnumItem {
 			Name: "PlacelaunchPartyCannotFit";
 			Value: 528;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchPartyCannotFit: PlacelaunchPartyCannotFit;
@@ -3462,7 +3461,7 @@ declare namespace Enum {
 		export interface PlacelaunchHttpError extends EnumItem {
 			Name: "PlacelaunchHttpError";
 			Value: 529;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchHttpError: PlacelaunchHttpError;
@@ -3470,7 +3469,7 @@ declare namespace Enum {
 		export interface PlacelaunchCustomMessage extends EnumItem {
 			Name: "PlacelaunchCustomMessage";
 			Value: 610;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchCustomMessage: PlacelaunchCustomMessage;
@@ -3478,7 +3477,7 @@ declare namespace Enum {
 		export interface PlacelaunchOtherError extends EnumItem {
 			Name: "PlacelaunchOtherError";
 			Value: 611;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const PlacelaunchOtherError: PlacelaunchOtherError;
@@ -3486,7 +3485,7 @@ declare namespace Enum {
 		export interface TeleportErrors extends EnumItem {
 			Name: "TeleportErrors";
 			Value: 768;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const TeleportErrors: TeleportErrors;
@@ -3494,7 +3493,7 @@ declare namespace Enum {
 		export interface TeleportFailure extends EnumItem {
 			Name: "TeleportFailure";
 			Value: 769;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const TeleportFailure: TeleportFailure;
@@ -3502,7 +3501,7 @@ declare namespace Enum {
 		export interface TeleportGameNotFound extends EnumItem {
 			Name: "TeleportGameNotFound";
 			Value: 770;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const TeleportGameNotFound: TeleportGameNotFound;
@@ -3510,7 +3509,7 @@ declare namespace Enum {
 		export interface TeleportGameEnded extends EnumItem {
 			Name: "TeleportGameEnded";
 			Value: 771;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const TeleportGameEnded: TeleportGameEnded;
@@ -3518,7 +3517,7 @@ declare namespace Enum {
 		export interface TeleportGameFull extends EnumItem {
 			Name: "TeleportGameFull";
 			Value: 772;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const TeleportGameFull: TeleportGameFull;
@@ -3526,7 +3525,7 @@ declare namespace Enum {
 		export interface TeleportUnauthorized extends EnumItem {
 			Name: "TeleportUnauthorized";
 			Value: 773;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const TeleportUnauthorized: TeleportUnauthorized;
@@ -3534,7 +3533,7 @@ declare namespace Enum {
 		export interface TeleportFlooded extends EnumItem {
 			Name: "TeleportFlooded";
 			Value: 774;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const TeleportFlooded: TeleportFlooded;
@@ -3542,19 +3541,19 @@ declare namespace Enum {
 		export interface TeleportIsTeleporting extends EnumItem {
 			Name: "TeleportIsTeleporting";
 			Value: 775;
-			EnumType: EnumType<ConnectionError>;
+			EnumType: typeof ConnectionError;
 		}
 
 		export const TeleportIsTeleporting: TeleportIsTeleporting;
 
-		export function GetEnumItems(this: defined): Array<ConnectionError>
+		export function GetEnumItems(): Array<ConnectionError>
 	}
 	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.DisconnectModeratedGame | ConnectionError.DisconnectOutOfMemoryExitContinue | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 	export namespace ConnectionState {
 		export interface Connected extends EnumItem {
 			Name: "Connected";
 			Value: 0;
-			EnumType: EnumType<ConnectionState>;
+			EnumType: typeof ConnectionState;
 		}
 
 		export const Connected: Connected;
@@ -3562,19 +3561,19 @@ declare namespace Enum {
 		export interface Disconnected extends EnumItem {
 			Name: "Disconnected";
 			Value: 1;
-			EnumType: EnumType<ConnectionState>;
+			EnumType: typeof ConnectionState;
 		}
 
 		export const Disconnected: Disconnected;
 
-		export function GetEnumItems(this: defined): Array<ConnectionState>
+		export function GetEnumItems(): Array<ConnectionState>
 	}
 	export type ConnectionState = ConnectionState.Connected | ConnectionState.Disconnected;
 	export namespace ContextActionPriority {
 		export interface Low extends EnumItem {
 			Name: "Low";
 			Value: 1000;
-			EnumType: EnumType<ContextActionPriority>;
+			EnumType: typeof ContextActionPriority;
 		}
 
 		export const Low: Low;
@@ -3582,7 +3581,7 @@ declare namespace Enum {
 		export interface Medium extends EnumItem {
 			Name: "Medium";
 			Value: 2000;
-			EnumType: EnumType<ContextActionPriority>;
+			EnumType: typeof ContextActionPriority;
 		}
 
 		export const Medium: Medium;
@@ -3590,7 +3589,7 @@ declare namespace Enum {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 2000;
-			EnumType: EnumType<ContextActionPriority>;
+			EnumType: typeof ContextActionPriority;
 		}
 
 		export const Default: Default;
@@ -3598,19 +3597,19 @@ declare namespace Enum {
 		export interface High extends EnumItem {
 			Name: "High";
 			Value: 3000;
-			EnumType: EnumType<ContextActionPriority>;
+			EnumType: typeof ContextActionPriority;
 		}
 
 		export const High: High;
 
-		export function GetEnumItems(this: defined): Array<ContextActionPriority>
+		export function GetEnumItems(): Array<ContextActionPriority>
 	}
 	export type ContextActionPriority = ContextActionPriority.Low | ContextActionPriority.Medium | ContextActionPriority.Default | ContextActionPriority.High;
 	export namespace ContextActionResult {
 		export interface Pass extends EnumItem {
 			Name: "Pass";
 			Value: 1;
-			EnumType: EnumType<ContextActionResult>;
+			EnumType: typeof ContextActionResult;
 		}
 
 		export const Pass: Pass;
@@ -3618,19 +3617,19 @@ declare namespace Enum {
 		export interface Sink extends EnumItem {
 			Name: "Sink";
 			Value: 0;
-			EnumType: EnumType<ContextActionResult>;
+			EnumType: typeof ContextActionResult;
 		}
 
 		export const Sink: Sink;
 
-		export function GetEnumItems(this: defined): Array<ContextActionResult>
+		export function GetEnumItems(): Array<ContextActionResult>
 	}
 	export type ContextActionResult = ContextActionResult.Pass | ContextActionResult.Sink;
 	export namespace ControlMode {
 		export interface MouseLockSwitch extends EnumItem {
 			Name: "MouseLockSwitch";
 			Value: 1;
-			EnumType: EnumType<ControlMode>;
+			EnumType: typeof ControlMode;
 		}
 
 		export const MouseLockSwitch: MouseLockSwitch;
@@ -3638,19 +3637,19 @@ declare namespace Enum {
 		export interface Classic extends EnumItem {
 			Name: "Classic";
 			Value: 0;
-			EnumType: EnumType<ControlMode>;
+			EnumType: typeof ControlMode;
 		}
 
 		export const Classic: Classic;
 
-		export function GetEnumItems(this: defined): Array<ControlMode>
+		export function GetEnumItems(): Array<ControlMode>
 	}
 	export type ControlMode = ControlMode.MouseLockSwitch | ControlMode.Classic;
 	export namespace CoreGuiType {
 		export interface PlayerList extends EnumItem {
 			Name: "PlayerList";
 			Value: 0;
-			EnumType: EnumType<CoreGuiType>;
+			EnumType: typeof CoreGuiType;
 		}
 
 		export const PlayerList: PlayerList;
@@ -3658,7 +3657,7 @@ declare namespace Enum {
 		export interface Health extends EnumItem {
 			Name: "Health";
 			Value: 1;
-			EnumType: EnumType<CoreGuiType>;
+			EnumType: typeof CoreGuiType;
 		}
 
 		export const Health: Health;
@@ -3666,7 +3665,7 @@ declare namespace Enum {
 		export interface Backpack extends EnumItem {
 			Name: "Backpack";
 			Value: 2;
-			EnumType: EnumType<CoreGuiType>;
+			EnumType: typeof CoreGuiType;
 		}
 
 		export const Backpack: Backpack;
@@ -3674,7 +3673,7 @@ declare namespace Enum {
 		export interface Chat extends EnumItem {
 			Name: "Chat";
 			Value: 3;
-			EnumType: EnumType<CoreGuiType>;
+			EnumType: typeof CoreGuiType;
 		}
 
 		export const Chat: Chat;
@@ -3682,7 +3681,7 @@ declare namespace Enum {
 		export interface All extends EnumItem {
 			Name: "All";
 			Value: 4;
-			EnumType: EnumType<CoreGuiType>;
+			EnumType: typeof CoreGuiType;
 		}
 
 		export const All: All;
@@ -3690,19 +3689,19 @@ declare namespace Enum {
 		export interface EmotesMenu extends EnumItem {
 			Name: "EmotesMenu";
 			Value: 5;
-			EnumType: EnumType<CoreGuiType>;
+			EnumType: typeof CoreGuiType;
 		}
 
 		export const EmotesMenu: EmotesMenu;
 
-		export function GetEnumItems(this: defined): Array<CoreGuiType>
+		export function GetEnumItems(): Array<CoreGuiType>
 	}
 	export type CoreGuiType = CoreGuiType.PlayerList | CoreGuiType.Health | CoreGuiType.Backpack | CoreGuiType.Chat | CoreGuiType.All | CoreGuiType.EmotesMenu;
 	export namespace CreateOutfitFailure {
 		export interface InvalidName extends EnumItem {
 			Name: "InvalidName";
 			Value: 1;
-			EnumType: EnumType<CreateOutfitFailure>;
+			EnumType: typeof CreateOutfitFailure;
 		}
 
 		export const InvalidName: InvalidName;
@@ -3710,7 +3709,7 @@ declare namespace Enum {
 		export interface OutfitLimitReached extends EnumItem {
 			Name: "OutfitLimitReached";
 			Value: 2;
-			EnumType: EnumType<CreateOutfitFailure>;
+			EnumType: typeof CreateOutfitFailure;
 		}
 
 		export const OutfitLimitReached: OutfitLimitReached;
@@ -3718,19 +3717,19 @@ declare namespace Enum {
 		export interface Other extends EnumItem {
 			Name: "Other";
 			Value: 3;
-			EnumType: EnumType<CreateOutfitFailure>;
+			EnumType: typeof CreateOutfitFailure;
 		}
 
 		export const Other: Other;
 
-		export function GetEnumItems(this: defined): Array<CreateOutfitFailure>
+		export function GetEnumItems(): Array<CreateOutfitFailure>
 	}
 	export type CreateOutfitFailure = CreateOutfitFailure.InvalidName | CreateOutfitFailure.OutfitLimitReached | CreateOutfitFailure.Other;
 	export namespace CreatorType {
 		export interface User extends EnumItem {
 			Name: "User";
 			Value: 0;
-			EnumType: EnumType<CreatorType>;
+			EnumType: typeof CreatorType;
 		}
 
 		export const User: User;
@@ -3738,19 +3737,19 @@ declare namespace Enum {
 		export interface Group extends EnumItem {
 			Name: "Group";
 			Value: 1;
-			EnumType: EnumType<CreatorType>;
+			EnumType: typeof CreatorType;
 		}
 
 		export const Group: Group;
 
-		export function GetEnumItems(this: defined): Array<CreatorType>
+		export function GetEnumItems(): Array<CreatorType>
 	}
 	export type CreatorType = CreatorType.User | CreatorType.Group;
 	export namespace CurrencyType {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<CurrencyType>;
+			EnumType: typeof CurrencyType;
 		}
 
 		export const Default: Default;
@@ -3758,7 +3757,7 @@ declare namespace Enum {
 		export interface Robux extends EnumItem {
 			Name: "Robux";
 			Value: 1;
-			EnumType: EnumType<CurrencyType>;
+			EnumType: typeof CurrencyType;
 		}
 
 		export const Robux: Robux;
@@ -3766,19 +3765,19 @@ declare namespace Enum {
 		export interface Tix extends EnumItem {
 			Name: "Tix";
 			Value: 2;
-			EnumType: EnumType<CurrencyType>;
+			EnumType: typeof CurrencyType;
 		}
 
 		export const Tix: Tix;
 
-		export function GetEnumItems(this: defined): Array<CurrencyType>
+		export function GetEnumItems(): Array<CurrencyType>
 	}
 	export type CurrencyType = CurrencyType.Default | CurrencyType.Robux | CurrencyType.Tix;
 	export namespace CustomCameraMode {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<CustomCameraMode>;
+			EnumType: typeof CustomCameraMode;
 		}
 
 		export const Default: Default;
@@ -3786,7 +3785,7 @@ declare namespace Enum {
 		export interface Follow extends EnumItem {
 			Name: "Follow";
 			Value: 2;
-			EnumType: EnumType<CustomCameraMode>;
+			EnumType: typeof CustomCameraMode;
 		}
 
 		export const Follow: Follow;
@@ -3794,19 +3793,19 @@ declare namespace Enum {
 		export interface Classic extends EnumItem {
 			Name: "Classic";
 			Value: 1;
-			EnumType: EnumType<CustomCameraMode>;
+			EnumType: typeof CustomCameraMode;
 		}
 
 		export const Classic: Classic;
 
-		export function GetEnumItems(this: defined): Array<CustomCameraMode>
+		export function GetEnumItems(): Array<CustomCameraMode>
 	}
 	export type CustomCameraMode = CustomCameraMode.Default | CustomCameraMode.Follow | CustomCameraMode.Classic;
 	export namespace DataStoreRequestType {
 		export interface GetAsync extends EnumItem {
 			Name: "GetAsync";
 			Value: 0;
-			EnumType: EnumType<DataStoreRequestType>;
+			EnumType: typeof DataStoreRequestType;
 		}
 
 		export const GetAsync: GetAsync;
@@ -3814,7 +3813,7 @@ declare namespace Enum {
 		export interface SetIncrementAsync extends EnumItem {
 			Name: "SetIncrementAsync";
 			Value: 1;
-			EnumType: EnumType<DataStoreRequestType>;
+			EnumType: typeof DataStoreRequestType;
 		}
 
 		export const SetIncrementAsync: SetIncrementAsync;
@@ -3822,7 +3821,7 @@ declare namespace Enum {
 		export interface UpdateAsync extends EnumItem {
 			Name: "UpdateAsync";
 			Value: 2;
-			EnumType: EnumType<DataStoreRequestType>;
+			EnumType: typeof DataStoreRequestType;
 		}
 
 		export const UpdateAsync: UpdateAsync;
@@ -3830,7 +3829,7 @@ declare namespace Enum {
 		export interface GetSortedAsync extends EnumItem {
 			Name: "GetSortedAsync";
 			Value: 3;
-			EnumType: EnumType<DataStoreRequestType>;
+			EnumType: typeof DataStoreRequestType;
 		}
 
 		export const GetSortedAsync: GetSortedAsync;
@@ -3838,7 +3837,7 @@ declare namespace Enum {
 		export interface SetIncrementSortedAsync extends EnumItem {
 			Name: "SetIncrementSortedAsync";
 			Value: 4;
-			EnumType: EnumType<DataStoreRequestType>;
+			EnumType: typeof DataStoreRequestType;
 		}
 
 		export const SetIncrementSortedAsync: SetIncrementSortedAsync;
@@ -3846,19 +3845,19 @@ declare namespace Enum {
 		export interface OnUpdate extends EnumItem {
 			Name: "OnUpdate";
 			Value: 5;
-			EnumType: EnumType<DataStoreRequestType>;
+			EnumType: typeof DataStoreRequestType;
 		}
 
 		export const OnUpdate: OnUpdate;
 
-		export function GetEnumItems(this: defined): Array<DataStoreRequestType>
+		export function GetEnumItems(): Array<DataStoreRequestType>
 	}
 	export type DataStoreRequestType = DataStoreRequestType.GetAsync | DataStoreRequestType.SetIncrementAsync | DataStoreRequestType.UpdateAsync | DataStoreRequestType.GetSortedAsync | DataStoreRequestType.SetIncrementSortedAsync | DataStoreRequestType.OnUpdate;
 	export namespace DebuggerEndReason {
 		export interface ClientRequest extends EnumItem {
 			Name: "ClientRequest";
 			Value: 0;
-			EnumType: EnumType<DebuggerEndReason>;
+			EnumType: typeof DebuggerEndReason;
 		}
 
 		export const ClientRequest: ClientRequest;
@@ -3866,7 +3865,7 @@ declare namespace Enum {
 		export interface Timeout extends EnumItem {
 			Name: "Timeout";
 			Value: 1;
-			EnumType: EnumType<DebuggerEndReason>;
+			EnumType: typeof DebuggerEndReason;
 		}
 
 		export const Timeout: Timeout;
@@ -3874,7 +3873,7 @@ declare namespace Enum {
 		export interface InvalidHost extends EnumItem {
 			Name: "InvalidHost";
 			Value: 2;
-			EnumType: EnumType<DebuggerEndReason>;
+			EnumType: typeof DebuggerEndReason;
 		}
 
 		export const InvalidHost: InvalidHost;
@@ -3882,7 +3881,7 @@ declare namespace Enum {
 		export interface Disconnected extends EnumItem {
 			Name: "Disconnected";
 			Value: 3;
-			EnumType: EnumType<DebuggerEndReason>;
+			EnumType: typeof DebuggerEndReason;
 		}
 
 		export const Disconnected: Disconnected;
@@ -3890,7 +3889,7 @@ declare namespace Enum {
 		export interface ServerShutdown extends EnumItem {
 			Name: "ServerShutdown";
 			Value: 4;
-			EnumType: EnumType<DebuggerEndReason>;
+			EnumType: typeof DebuggerEndReason;
 		}
 
 		export const ServerShutdown: ServerShutdown;
@@ -3898,7 +3897,7 @@ declare namespace Enum {
 		export interface ServerProtocolMismatch extends EnumItem {
 			Name: "ServerProtocolMismatch";
 			Value: 5;
-			EnumType: EnumType<DebuggerEndReason>;
+			EnumType: typeof DebuggerEndReason;
 		}
 
 		export const ServerProtocolMismatch: ServerProtocolMismatch;
@@ -3906,7 +3905,7 @@ declare namespace Enum {
 		export interface ConfigurationFailed extends EnumItem {
 			Name: "ConfigurationFailed";
 			Value: 6;
-			EnumType: EnumType<DebuggerEndReason>;
+			EnumType: typeof DebuggerEndReason;
 		}
 
 		export const ConfigurationFailed: ConfigurationFailed;
@@ -3914,19 +3913,19 @@ declare namespace Enum {
 		export interface RpcError extends EnumItem {
 			Name: "RpcError";
 			Value: 7;
-			EnumType: EnumType<DebuggerEndReason>;
+			EnumType: typeof DebuggerEndReason;
 		}
 
 		export const RpcError: RpcError;
 
-		export function GetEnumItems(this: defined): Array<DebuggerEndReason>
+		export function GetEnumItems(): Array<DebuggerEndReason>
 	}
 	export type DebuggerEndReason = DebuggerEndReason.ClientRequest | DebuggerEndReason.Timeout | DebuggerEndReason.InvalidHost | DebuggerEndReason.Disconnected | DebuggerEndReason.ServerShutdown | DebuggerEndReason.ServerProtocolMismatch | DebuggerEndReason.ConfigurationFailed | DebuggerEndReason.RpcError;
 	export namespace DebuggerExceptionBreakMode {
 		export interface Never extends EnumItem {
 			Name: "Never";
 			Value: 0;
-			EnumType: EnumType<DebuggerExceptionBreakMode>;
+			EnumType: typeof DebuggerExceptionBreakMode;
 		}
 
 		export const Never: Never;
@@ -3934,7 +3933,7 @@ declare namespace Enum {
 		export interface Unhandled extends EnumItem {
 			Name: "Unhandled";
 			Value: 1;
-			EnumType: EnumType<DebuggerExceptionBreakMode>;
+			EnumType: typeof DebuggerExceptionBreakMode;
 		}
 
 		export const Unhandled: Unhandled;
@@ -3942,19 +3941,19 @@ declare namespace Enum {
 		export interface Always extends EnumItem {
 			Name: "Always";
 			Value: 2;
-			EnumType: EnumType<DebuggerExceptionBreakMode>;
+			EnumType: typeof DebuggerExceptionBreakMode;
 		}
 
 		export const Always: Always;
 
-		export function GetEnumItems(this: defined): Array<DebuggerExceptionBreakMode>
+		export function GetEnumItems(): Array<DebuggerExceptionBreakMode>
 	}
 	export type DebuggerExceptionBreakMode = DebuggerExceptionBreakMode.Never | DebuggerExceptionBreakMode.Unhandled | DebuggerExceptionBreakMode.Always;
 	export namespace DebuggerFrameType {
 		export interface C extends EnumItem {
 			Name: "C";
 			Value: 0;
-			EnumType: EnumType<DebuggerFrameType>;
+			EnumType: typeof DebuggerFrameType;
 		}
 
 		export const C: C;
@@ -3962,19 +3961,19 @@ declare namespace Enum {
 		export interface Lua extends EnumItem {
 			Name: "Lua";
 			Value: 1;
-			EnumType: EnumType<DebuggerFrameType>;
+			EnumType: typeof DebuggerFrameType;
 		}
 
 		export const Lua: Lua;
 
-		export function GetEnumItems(this: defined): Array<DebuggerFrameType>
+		export function GetEnumItems(): Array<DebuggerFrameType>
 	}
 	export type DebuggerFrameType = DebuggerFrameType.C | DebuggerFrameType.Lua;
 	export namespace DebuggerPauseReason {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 0;
-			EnumType: EnumType<DebuggerPauseReason>;
+			EnumType: typeof DebuggerPauseReason;
 		}
 
 		export const Unknown: Unknown;
@@ -3982,7 +3981,7 @@ declare namespace Enum {
 		export interface Requested extends EnumItem {
 			Name: "Requested";
 			Value: 1;
-			EnumType: EnumType<DebuggerPauseReason>;
+			EnumType: typeof DebuggerPauseReason;
 		}
 
 		export const Requested: Requested;
@@ -3990,7 +3989,7 @@ declare namespace Enum {
 		export interface Breakpoint extends EnumItem {
 			Name: "Breakpoint";
 			Value: 2;
-			EnumType: EnumType<DebuggerPauseReason>;
+			EnumType: typeof DebuggerPauseReason;
 		}
 
 		export const Breakpoint: Breakpoint;
@@ -3998,7 +3997,7 @@ declare namespace Enum {
 		export interface Exception extends EnumItem {
 			Name: "Exception";
 			Value: 3;
-			EnumType: EnumType<DebuggerPauseReason>;
+			EnumType: typeof DebuggerPauseReason;
 		}
 
 		export const Exception: Exception;
@@ -4006,7 +4005,7 @@ declare namespace Enum {
 		export interface SingleStep extends EnumItem {
 			Name: "SingleStep";
 			Value: 4;
-			EnumType: EnumType<DebuggerPauseReason>;
+			EnumType: typeof DebuggerPauseReason;
 		}
 
 		export const SingleStep: SingleStep;
@@ -4014,19 +4013,19 @@ declare namespace Enum {
 		export interface Entrypoint extends EnumItem {
 			Name: "Entrypoint";
 			Value: 5;
-			EnumType: EnumType<DebuggerPauseReason>;
+			EnumType: typeof DebuggerPauseReason;
 		}
 
 		export const Entrypoint: Entrypoint;
 
-		export function GetEnumItems(this: defined): Array<DebuggerPauseReason>
+		export function GetEnumItems(): Array<DebuggerPauseReason>
 	}
 	export type DebuggerPauseReason = DebuggerPauseReason.Unknown | DebuggerPauseReason.Requested | DebuggerPauseReason.Breakpoint | DebuggerPauseReason.Exception | DebuggerPauseReason.SingleStep | DebuggerPauseReason.Entrypoint;
 	export namespace DebuggerStatus {
 		export interface Success extends EnumItem {
 			Name: "Success";
 			Value: 0;
-			EnumType: EnumType<DebuggerStatus>;
+			EnumType: typeof DebuggerStatus;
 		}
 
 		export const Success: Success;
@@ -4034,7 +4033,7 @@ declare namespace Enum {
 		export interface Timeout extends EnumItem {
 			Name: "Timeout";
 			Value: 1;
-			EnumType: EnumType<DebuggerStatus>;
+			EnumType: typeof DebuggerStatus;
 		}
 
 		export const Timeout: Timeout;
@@ -4042,7 +4041,7 @@ declare namespace Enum {
 		export interface ConnectionLost extends EnumItem {
 			Name: "ConnectionLost";
 			Value: 2;
-			EnumType: EnumType<DebuggerStatus>;
+			EnumType: typeof DebuggerStatus;
 		}
 
 		export const ConnectionLost: ConnectionLost;
@@ -4050,7 +4049,7 @@ declare namespace Enum {
 		export interface InvalidResponse extends EnumItem {
 			Name: "InvalidResponse";
 			Value: 3;
-			EnumType: EnumType<DebuggerStatus>;
+			EnumType: typeof DebuggerStatus;
 		}
 
 		export const InvalidResponse: InvalidResponse;
@@ -4058,7 +4057,7 @@ declare namespace Enum {
 		export interface InternalError extends EnumItem {
 			Name: "InternalError";
 			Value: 4;
-			EnumType: EnumType<DebuggerStatus>;
+			EnumType: typeof DebuggerStatus;
 		}
 
 		export const InternalError: InternalError;
@@ -4066,7 +4065,7 @@ declare namespace Enum {
 		export interface InvalidState extends EnumItem {
 			Name: "InvalidState";
 			Value: 5;
-			EnumType: EnumType<DebuggerStatus>;
+			EnumType: typeof DebuggerStatus;
 		}
 
 		export const InvalidState: InvalidState;
@@ -4074,7 +4073,7 @@ declare namespace Enum {
 		export interface RpcError extends EnumItem {
 			Name: "RpcError";
 			Value: 6;
-			EnumType: EnumType<DebuggerStatus>;
+			EnumType: typeof DebuggerStatus;
 		}
 
 		export const RpcError: RpcError;
@@ -4082,7 +4081,7 @@ declare namespace Enum {
 		export interface InvalidArgument extends EnumItem {
 			Name: "InvalidArgument";
 			Value: 7;
-			EnumType: EnumType<DebuggerStatus>;
+			EnumType: typeof DebuggerStatus;
 		}
 
 		export const InvalidArgument: InvalidArgument;
@@ -4090,19 +4089,19 @@ declare namespace Enum {
 		export interface ConnectionClosed extends EnumItem {
 			Name: "ConnectionClosed";
 			Value: 8;
-			EnumType: EnumType<DebuggerStatus>;
+			EnumType: typeof DebuggerStatus;
 		}
 
 		export const ConnectionClosed: ConnectionClosed;
 
-		export function GetEnumItems(this: defined): Array<DebuggerStatus>
+		export function GetEnumItems(): Array<DebuggerStatus>
 	}
 	export type DebuggerStatus = DebuggerStatus.Success | DebuggerStatus.Timeout | DebuggerStatus.ConnectionLost | DebuggerStatus.InvalidResponse | DebuggerStatus.InternalError | DebuggerStatus.InvalidState | DebuggerStatus.RpcError | DebuggerStatus.InvalidArgument | DebuggerStatus.ConnectionClosed;
 	export namespace DevCameraOcclusionMode {
 		export interface Zoom extends EnumItem {
 			Name: "Zoom";
 			Value: 0;
-			EnumType: EnumType<DevCameraOcclusionMode>;
+			EnumType: typeof DevCameraOcclusionMode;
 		}
 
 		export const Zoom: Zoom;
@@ -4110,19 +4109,19 @@ declare namespace Enum {
 		export interface Invisicam extends EnumItem {
 			Name: "Invisicam";
 			Value: 1;
-			EnumType: EnumType<DevCameraOcclusionMode>;
+			EnumType: typeof DevCameraOcclusionMode;
 		}
 
 		export const Invisicam: Invisicam;
 
-		export function GetEnumItems(this: defined): Array<DevCameraOcclusionMode>
+		export function GetEnumItems(): Array<DevCameraOcclusionMode>
 	}
 	export type DevCameraOcclusionMode = DevCameraOcclusionMode.Zoom | DevCameraOcclusionMode.Invisicam;
 	export namespace DevComputerCameraMovementMode {
 		export interface UserChoice extends EnumItem {
 			Name: "UserChoice";
 			Value: 0;
-			EnumType: EnumType<DevComputerCameraMovementMode>;
+			EnumType: typeof DevComputerCameraMovementMode;
 		}
 
 		export const UserChoice: UserChoice;
@@ -4130,7 +4129,7 @@ declare namespace Enum {
 		export interface Classic extends EnumItem {
 			Name: "Classic";
 			Value: 1;
-			EnumType: EnumType<DevComputerCameraMovementMode>;
+			EnumType: typeof DevComputerCameraMovementMode;
 		}
 
 		export const Classic: Classic;
@@ -4138,7 +4137,7 @@ declare namespace Enum {
 		export interface Follow extends EnumItem {
 			Name: "Follow";
 			Value: 2;
-			EnumType: EnumType<DevComputerCameraMovementMode>;
+			EnumType: typeof DevComputerCameraMovementMode;
 		}
 
 		export const Follow: Follow;
@@ -4146,7 +4145,7 @@ declare namespace Enum {
 		export interface Orbital extends EnumItem {
 			Name: "Orbital";
 			Value: 3;
-			EnumType: EnumType<DevComputerCameraMovementMode>;
+			EnumType: typeof DevComputerCameraMovementMode;
 		}
 
 		export const Orbital: Orbital;
@@ -4154,19 +4153,19 @@ declare namespace Enum {
 		export interface CameraToggle extends EnumItem {
 			Name: "CameraToggle";
 			Value: 4;
-			EnumType: EnumType<DevComputerCameraMovementMode>;
+			EnumType: typeof DevComputerCameraMovementMode;
 		}
 
 		export const CameraToggle: CameraToggle;
 
-		export function GetEnumItems(this: defined): Array<DevComputerCameraMovementMode>
+		export function GetEnumItems(): Array<DevComputerCameraMovementMode>
 	}
 	export type DevComputerCameraMovementMode = DevComputerCameraMovementMode.UserChoice | DevComputerCameraMovementMode.Classic | DevComputerCameraMovementMode.Follow | DevComputerCameraMovementMode.Orbital | DevComputerCameraMovementMode.CameraToggle;
 	export namespace DevComputerMovementMode {
 		export interface UserChoice extends EnumItem {
 			Name: "UserChoice";
 			Value: 0;
-			EnumType: EnumType<DevComputerMovementMode>;
+			EnumType: typeof DevComputerMovementMode;
 		}
 
 		export const UserChoice: UserChoice;
@@ -4174,7 +4173,7 @@ declare namespace Enum {
 		export interface KeyboardMouse extends EnumItem {
 			Name: "KeyboardMouse";
 			Value: 1;
-			EnumType: EnumType<DevComputerMovementMode>;
+			EnumType: typeof DevComputerMovementMode;
 		}
 
 		export const KeyboardMouse: KeyboardMouse;
@@ -4182,7 +4181,7 @@ declare namespace Enum {
 		export interface ClickToMove extends EnumItem {
 			Name: "ClickToMove";
 			Value: 2;
-			EnumType: EnumType<DevComputerMovementMode>;
+			EnumType: typeof DevComputerMovementMode;
 		}
 
 		export const ClickToMove: ClickToMove;
@@ -4190,19 +4189,19 @@ declare namespace Enum {
 		export interface Scriptable extends EnumItem {
 			Name: "Scriptable";
 			Value: 3;
-			EnumType: EnumType<DevComputerMovementMode>;
+			EnumType: typeof DevComputerMovementMode;
 		}
 
 		export const Scriptable: Scriptable;
 
-		export function GetEnumItems(this: defined): Array<DevComputerMovementMode>
+		export function GetEnumItems(): Array<DevComputerMovementMode>
 	}
 	export type DevComputerMovementMode = DevComputerMovementMode.UserChoice | DevComputerMovementMode.KeyboardMouse | DevComputerMovementMode.ClickToMove | DevComputerMovementMode.Scriptable;
 	export namespace DevTouchCameraMovementMode {
 		export interface UserChoice extends EnumItem {
 			Name: "UserChoice";
 			Value: 0;
-			EnumType: EnumType<DevTouchCameraMovementMode>;
+			EnumType: typeof DevTouchCameraMovementMode;
 		}
 
 		export const UserChoice: UserChoice;
@@ -4210,7 +4209,7 @@ declare namespace Enum {
 		export interface Classic extends EnumItem {
 			Name: "Classic";
 			Value: 1;
-			EnumType: EnumType<DevTouchCameraMovementMode>;
+			EnumType: typeof DevTouchCameraMovementMode;
 		}
 
 		export const Classic: Classic;
@@ -4218,7 +4217,7 @@ declare namespace Enum {
 		export interface Follow extends EnumItem {
 			Name: "Follow";
 			Value: 2;
-			EnumType: EnumType<DevTouchCameraMovementMode>;
+			EnumType: typeof DevTouchCameraMovementMode;
 		}
 
 		export const Follow: Follow;
@@ -4226,19 +4225,19 @@ declare namespace Enum {
 		export interface Orbital extends EnumItem {
 			Name: "Orbital";
 			Value: 3;
-			EnumType: EnumType<DevTouchCameraMovementMode>;
+			EnumType: typeof DevTouchCameraMovementMode;
 		}
 
 		export const Orbital: Orbital;
 
-		export function GetEnumItems(this: defined): Array<DevTouchCameraMovementMode>
+		export function GetEnumItems(): Array<DevTouchCameraMovementMode>
 	}
 	export type DevTouchCameraMovementMode = DevTouchCameraMovementMode.UserChoice | DevTouchCameraMovementMode.Classic | DevTouchCameraMovementMode.Follow | DevTouchCameraMovementMode.Orbital;
 	export namespace DevTouchMovementMode {
 		export interface UserChoice extends EnumItem {
 			Name: "UserChoice";
 			Value: 0;
-			EnumType: EnumType<DevTouchMovementMode>;
+			EnumType: typeof DevTouchMovementMode;
 		}
 
 		export const UserChoice: UserChoice;
@@ -4246,7 +4245,7 @@ declare namespace Enum {
 		export interface Thumbstick extends EnumItem {
 			Name: "Thumbstick";
 			Value: 1;
-			EnumType: EnumType<DevTouchMovementMode>;
+			EnumType: typeof DevTouchMovementMode;
 		}
 
 		export const Thumbstick: Thumbstick;
@@ -4254,7 +4253,7 @@ declare namespace Enum {
 		export interface DPad extends EnumItem {
 			Name: "DPad";
 			Value: 2;
-			EnumType: EnumType<DevTouchMovementMode>;
+			EnumType: typeof DevTouchMovementMode;
 		}
 
 		export const DPad: DPad;
@@ -4262,7 +4261,7 @@ declare namespace Enum {
 		export interface Thumbpad extends EnumItem {
 			Name: "Thumbpad";
 			Value: 3;
-			EnumType: EnumType<DevTouchMovementMode>;
+			EnumType: typeof DevTouchMovementMode;
 		}
 
 		export const Thumbpad: Thumbpad;
@@ -4270,7 +4269,7 @@ declare namespace Enum {
 		export interface ClickToMove extends EnumItem {
 			Name: "ClickToMove";
 			Value: 4;
-			EnumType: EnumType<DevTouchMovementMode>;
+			EnumType: typeof DevTouchMovementMode;
 		}
 
 		export const ClickToMove: ClickToMove;
@@ -4278,7 +4277,7 @@ declare namespace Enum {
 		export interface Scriptable extends EnumItem {
 			Name: "Scriptable";
 			Value: 5;
-			EnumType: EnumType<DevTouchMovementMode>;
+			EnumType: typeof DevTouchMovementMode;
 		}
 
 		export const Scriptable: Scriptable;
@@ -4286,19 +4285,19 @@ declare namespace Enum {
 		export interface DynamicThumbstick extends EnumItem {
 			Name: "DynamicThumbstick";
 			Value: 6;
-			EnumType: EnumType<DevTouchMovementMode>;
+			EnumType: typeof DevTouchMovementMode;
 		}
 
 		export const DynamicThumbstick: DynamicThumbstick;
 
-		export function GetEnumItems(this: defined): Array<DevTouchMovementMode>
+		export function GetEnumItems(): Array<DevTouchMovementMode>
 	}
 	export type DevTouchMovementMode = DevTouchMovementMode.UserChoice | DevTouchMovementMode.Thumbstick | DevTouchMovementMode.DPad | DevTouchMovementMode.Thumbpad | DevTouchMovementMode.ClickToMove | DevTouchMovementMode.Scriptable | DevTouchMovementMode.DynamicThumbstick;
 	export namespace DeveloperMemoryTag {
 		export interface Internal extends EnumItem {
 			Name: "Internal";
 			Value: 0;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const Internal: Internal;
@@ -4306,7 +4305,7 @@ declare namespace Enum {
 		export interface HttpCache extends EnumItem {
 			Name: "HttpCache";
 			Value: 1;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const HttpCache: HttpCache;
@@ -4314,7 +4313,7 @@ declare namespace Enum {
 		export interface Instances extends EnumItem {
 			Name: "Instances";
 			Value: 2;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const Instances: Instances;
@@ -4322,7 +4321,7 @@ declare namespace Enum {
 		export interface Signals extends EnumItem {
 			Name: "Signals";
 			Value: 3;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const Signals: Signals;
@@ -4330,7 +4329,7 @@ declare namespace Enum {
 		export interface LuaHeap extends EnumItem {
 			Name: "LuaHeap";
 			Value: 4;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const LuaHeap: LuaHeap;
@@ -4338,7 +4337,7 @@ declare namespace Enum {
 		export interface Script extends EnumItem {
 			Name: "Script";
 			Value: 5;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const Script: Script;
@@ -4346,7 +4345,7 @@ declare namespace Enum {
 		export interface PhysicsCollision extends EnumItem {
 			Name: "PhysicsCollision";
 			Value: 6;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const PhysicsCollision: PhysicsCollision;
@@ -4354,7 +4353,7 @@ declare namespace Enum {
 		export interface PhysicsParts extends EnumItem {
 			Name: "PhysicsParts";
 			Value: 7;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const PhysicsParts: PhysicsParts;
@@ -4362,7 +4361,7 @@ declare namespace Enum {
 		export interface GraphicsSolidModels extends EnumItem {
 			Name: "GraphicsSolidModels";
 			Value: 8;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const GraphicsSolidModels: GraphicsSolidModels;
@@ -4370,7 +4369,7 @@ declare namespace Enum {
 		export interface GraphicsMeshParts extends EnumItem {
 			Name: "GraphicsMeshParts";
 			Value: 10;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const GraphicsMeshParts: GraphicsMeshParts;
@@ -4378,7 +4377,7 @@ declare namespace Enum {
 		export interface GraphicsParticles extends EnumItem {
 			Name: "GraphicsParticles";
 			Value: 11;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const GraphicsParticles: GraphicsParticles;
@@ -4386,7 +4385,7 @@ declare namespace Enum {
 		export interface GraphicsParts extends EnumItem {
 			Name: "GraphicsParts";
 			Value: 12;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const GraphicsParts: GraphicsParts;
@@ -4394,7 +4393,7 @@ declare namespace Enum {
 		export interface GraphicsSpatialHash extends EnumItem {
 			Name: "GraphicsSpatialHash";
 			Value: 13;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const GraphicsSpatialHash: GraphicsSpatialHash;
@@ -4402,7 +4401,7 @@ declare namespace Enum {
 		export interface GraphicsTerrain extends EnumItem {
 			Name: "GraphicsTerrain";
 			Value: 14;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const GraphicsTerrain: GraphicsTerrain;
@@ -4410,7 +4409,7 @@ declare namespace Enum {
 		export interface GraphicsTexture extends EnumItem {
 			Name: "GraphicsTexture";
 			Value: 15;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const GraphicsTexture: GraphicsTexture;
@@ -4418,7 +4417,7 @@ declare namespace Enum {
 		export interface GraphicsTextureCharacter extends EnumItem {
 			Name: "GraphicsTextureCharacter";
 			Value: 16;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const GraphicsTextureCharacter: GraphicsTextureCharacter;
@@ -4426,7 +4425,7 @@ declare namespace Enum {
 		export interface Sounds extends EnumItem {
 			Name: "Sounds";
 			Value: 17;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const Sounds: Sounds;
@@ -4434,7 +4433,7 @@ declare namespace Enum {
 		export interface StreamingSounds extends EnumItem {
 			Name: "StreamingSounds";
 			Value: 18;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const StreamingSounds: StreamingSounds;
@@ -4442,7 +4441,7 @@ declare namespace Enum {
 		export interface TerrainVoxels extends EnumItem {
 			Name: "TerrainVoxels";
 			Value: 19;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const TerrainVoxels: TerrainVoxels;
@@ -4450,7 +4449,7 @@ declare namespace Enum {
 		export interface Gui extends EnumItem {
 			Name: "Gui";
 			Value: 21;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const Gui: Gui;
@@ -4458,7 +4457,7 @@ declare namespace Enum {
 		export interface Animation extends EnumItem {
 			Name: "Animation";
 			Value: 22;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const Animation: Animation;
@@ -4466,7 +4465,7 @@ declare namespace Enum {
 		export interface Navigation extends EnumItem {
 			Name: "Navigation";
 			Value: 23;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const Navigation: Navigation;
@@ -4474,19 +4473,19 @@ declare namespace Enum {
 		export interface GeometryCSG extends EnumItem {
 			Name: "GeometryCSG";
 			Value: 24;
-			EnumType: EnumType<DeveloperMemoryTag>;
+			EnumType: typeof DeveloperMemoryTag;
 		}
 
 		export const GeometryCSG: GeometryCSG;
 
-		export function GetEnumItems(this: defined): Array<DeveloperMemoryTag>
+		export function GetEnumItems(): Array<DeveloperMemoryTag>
 	}
 	export type DeveloperMemoryTag = DeveloperMemoryTag.Internal | DeveloperMemoryTag.HttpCache | DeveloperMemoryTag.Instances | DeveloperMemoryTag.Signals | DeveloperMemoryTag.LuaHeap | DeveloperMemoryTag.Script | DeveloperMemoryTag.PhysicsCollision | DeveloperMemoryTag.PhysicsParts | DeveloperMemoryTag.GraphicsSolidModels | DeveloperMemoryTag.GraphicsMeshParts | DeveloperMemoryTag.GraphicsParticles | DeveloperMemoryTag.GraphicsParts | DeveloperMemoryTag.GraphicsSpatialHash | DeveloperMemoryTag.GraphicsTerrain | DeveloperMemoryTag.GraphicsTexture | DeveloperMemoryTag.GraphicsTextureCharacter | DeveloperMemoryTag.Sounds | DeveloperMemoryTag.StreamingSounds | DeveloperMemoryTag.TerrainVoxels | DeveloperMemoryTag.Gui | DeveloperMemoryTag.Animation | DeveloperMemoryTag.Navigation | DeveloperMemoryTag.GeometryCSG;
 	export namespace DeviceType {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 0;
-			EnumType: EnumType<DeviceType>;
+			EnumType: typeof DeviceType;
 		}
 
 		export const Unknown: Unknown;
@@ -4494,7 +4493,7 @@ declare namespace Enum {
 		export interface Desktop extends EnumItem {
 			Name: "Desktop";
 			Value: 1;
-			EnumType: EnumType<DeviceType>;
+			EnumType: typeof DeviceType;
 		}
 
 		export const Desktop: Desktop;
@@ -4502,7 +4501,7 @@ declare namespace Enum {
 		export interface Tablet extends EnumItem {
 			Name: "Tablet";
 			Value: 2;
-			EnumType: EnumType<DeviceType>;
+			EnumType: typeof DeviceType;
 		}
 
 		export const Tablet: Tablet;
@@ -4510,19 +4509,19 @@ declare namespace Enum {
 		export interface Phone extends EnumItem {
 			Name: "Phone";
 			Value: 3;
-			EnumType: EnumType<DeviceType>;
+			EnumType: typeof DeviceType;
 		}
 
 		export const Phone: Phone;
 
-		export function GetEnumItems(this: defined): Array<DeviceType>
+		export function GetEnumItems(): Array<DeviceType>
 	}
 	export type DeviceType = DeviceType.Unknown | DeviceType.Desktop | DeviceType.Tablet | DeviceType.Phone;
 	export namespace DialogBehaviorType {
 		export interface SinglePlayer extends EnumItem {
 			Name: "SinglePlayer";
 			Value: 0;
-			EnumType: EnumType<DialogBehaviorType>;
+			EnumType: typeof DialogBehaviorType;
 		}
 
 		export const SinglePlayer: SinglePlayer;
@@ -4530,19 +4529,19 @@ declare namespace Enum {
 		export interface MultiplePlayers extends EnumItem {
 			Name: "MultiplePlayers";
 			Value: 1;
-			EnumType: EnumType<DialogBehaviorType>;
+			EnumType: typeof DialogBehaviorType;
 		}
 
 		export const MultiplePlayers: MultiplePlayers;
 
-		export function GetEnumItems(this: defined): Array<DialogBehaviorType>
+		export function GetEnumItems(): Array<DialogBehaviorType>
 	}
 	export type DialogBehaviorType = DialogBehaviorType.SinglePlayer | DialogBehaviorType.MultiplePlayers;
 	export namespace DialogPurpose {
 		export interface Quest extends EnumItem {
 			Name: "Quest";
 			Value: 0;
-			EnumType: EnumType<DialogPurpose>;
+			EnumType: typeof DialogPurpose;
 		}
 
 		export const Quest: Quest;
@@ -4550,7 +4549,7 @@ declare namespace Enum {
 		export interface Help extends EnumItem {
 			Name: "Help";
 			Value: 1;
-			EnumType: EnumType<DialogPurpose>;
+			EnumType: typeof DialogPurpose;
 		}
 
 		export const Help: Help;
@@ -4558,19 +4557,19 @@ declare namespace Enum {
 		export interface Shop extends EnumItem {
 			Name: "Shop";
 			Value: 2;
-			EnumType: EnumType<DialogPurpose>;
+			EnumType: typeof DialogPurpose;
 		}
 
 		export const Shop: Shop;
 
-		export function GetEnumItems(this: defined): Array<DialogPurpose>
+		export function GetEnumItems(): Array<DialogPurpose>
 	}
 	export type DialogPurpose = DialogPurpose.Quest | DialogPurpose.Help | DialogPurpose.Shop;
 	export namespace DialogTone {
 		export interface Neutral extends EnumItem {
 			Name: "Neutral";
 			Value: 0;
-			EnumType: EnumType<DialogTone>;
+			EnumType: typeof DialogTone;
 		}
 
 		export const Neutral: Neutral;
@@ -4578,7 +4577,7 @@ declare namespace Enum {
 		export interface Friendly extends EnumItem {
 			Name: "Friendly";
 			Value: 1;
-			EnumType: EnumType<DialogTone>;
+			EnumType: typeof DialogTone;
 		}
 
 		export const Friendly: Friendly;
@@ -4586,19 +4585,19 @@ declare namespace Enum {
 		export interface Enemy extends EnumItem {
 			Name: "Enemy";
 			Value: 2;
-			EnumType: EnumType<DialogTone>;
+			EnumType: typeof DialogTone;
 		}
 
 		export const Enemy: Enemy;
 
-		export function GetEnumItems(this: defined): Array<DialogTone>
+		export function GetEnumItems(): Array<DialogTone>
 	}
 	export type DialogTone = DialogTone.Neutral | DialogTone.Friendly | DialogTone.Enemy;
 	export namespace DominantAxis {
 		export interface Width extends EnumItem {
 			Name: "Width";
 			Value: 0;
-			EnumType: EnumType<DominantAxis>;
+			EnumType: typeof DominantAxis;
 		}
 
 		export const Width: Width;
@@ -4606,19 +4605,19 @@ declare namespace Enum {
 		export interface Height extends EnumItem {
 			Name: "Height";
 			Value: 1;
-			EnumType: EnumType<DominantAxis>;
+			EnumType: typeof DominantAxis;
 		}
 
 		export const Height: Height;
 
-		export function GetEnumItems(this: defined): Array<DominantAxis>
+		export function GetEnumItems(): Array<DominantAxis>
 	}
 	export type DominantAxis = DominantAxis.Width | DominantAxis.Height;
 	export namespace DraftStatusCode {
 		export interface OK extends EnumItem {
 			Name: "OK";
 			Value: 0;
-			EnumType: EnumType<DraftStatusCode>;
+			EnumType: typeof DraftStatusCode;
 		}
 
 		export const OK: OK;
@@ -4626,7 +4625,7 @@ declare namespace Enum {
 		export interface DraftOutdated extends EnumItem {
 			Name: "DraftOutdated";
 			Value: 1;
-			EnumType: EnumType<DraftStatusCode>;
+			EnumType: typeof DraftStatusCode;
 		}
 
 		export const DraftOutdated: DraftOutdated;
@@ -4634,7 +4633,7 @@ declare namespace Enum {
 		export interface ScriptRemoved extends EnumItem {
 			Name: "ScriptRemoved";
 			Value: 2;
-			EnumType: EnumType<DraftStatusCode>;
+			EnumType: typeof DraftStatusCode;
 		}
 
 		export const ScriptRemoved: ScriptRemoved;
@@ -4642,19 +4641,19 @@ declare namespace Enum {
 		export interface DraftCommitted extends EnumItem {
 			Name: "DraftCommitted";
 			Value: 3;
-			EnumType: EnumType<DraftStatusCode>;
+			EnumType: typeof DraftStatusCode;
 		}
 
 		export const DraftCommitted: DraftCommitted;
 
-		export function GetEnumItems(this: defined): Array<DraftStatusCode>
+		export function GetEnumItems(): Array<DraftStatusCode>
 	}
 	export type DraftStatusCode = DraftStatusCode.OK | DraftStatusCode.DraftOutdated | DraftStatusCode.ScriptRemoved | DraftStatusCode.DraftCommitted;
 	export namespace DraggerCoordinateSpace {
 		export interface Object extends EnumItem {
 			Name: "Object";
 			Value: 0;
-			EnumType: EnumType<DraggerCoordinateSpace>;
+			EnumType: typeof DraggerCoordinateSpace;
 		}
 
 		export const Object: Object;
@@ -4662,19 +4661,19 @@ declare namespace Enum {
 		export interface World extends EnumItem {
 			Name: "World";
 			Value: 1;
-			EnumType: EnumType<DraggerCoordinateSpace>;
+			EnumType: typeof DraggerCoordinateSpace;
 		}
 
 		export const World: World;
 
-		export function GetEnumItems(this: defined): Array<DraggerCoordinateSpace>
+		export function GetEnumItems(): Array<DraggerCoordinateSpace>
 	}
 	export type DraggerCoordinateSpace = DraggerCoordinateSpace.Object | DraggerCoordinateSpace.World;
 	export namespace DraggerMovementMode {
 		export interface Geometric extends EnumItem {
 			Name: "Geometric";
 			Value: 0;
-			EnumType: EnumType<DraggerMovementMode>;
+			EnumType: typeof DraggerMovementMode;
 		}
 
 		export const Geometric: Geometric;
@@ -4682,19 +4681,19 @@ declare namespace Enum {
 		export interface Physical extends EnumItem {
 			Name: "Physical";
 			Value: 1;
-			EnumType: EnumType<DraggerMovementMode>;
+			EnumType: typeof DraggerMovementMode;
 		}
 
 		export const Physical: Physical;
 
-		export function GetEnumItems(this: defined): Array<DraggerMovementMode>
+		export function GetEnumItems(): Array<DraggerMovementMode>
 	}
 	export type DraggerMovementMode = DraggerMovementMode.Geometric | DraggerMovementMode.Physical;
 	export namespace EasingDirection {
 		export interface In extends EnumItem {
 			Name: "In";
 			Value: 0;
-			EnumType: EnumType<EasingDirection>;
+			EnumType: typeof EasingDirection;
 		}
 
 		export const In: In;
@@ -4702,7 +4701,7 @@ declare namespace Enum {
 		export interface Out extends EnumItem {
 			Name: "Out";
 			Value: 1;
-			EnumType: EnumType<EasingDirection>;
+			EnumType: typeof EasingDirection;
 		}
 
 		export const Out: Out;
@@ -4710,19 +4709,19 @@ declare namespace Enum {
 		export interface InOut extends EnumItem {
 			Name: "InOut";
 			Value: 2;
-			EnumType: EnumType<EasingDirection>;
+			EnumType: typeof EasingDirection;
 		}
 
 		export const InOut: InOut;
 
-		export function GetEnumItems(this: defined): Array<EasingDirection>
+		export function GetEnumItems(): Array<EasingDirection>
 	}
 	export type EasingDirection = EasingDirection.In | EasingDirection.Out | EasingDirection.InOut;
 	export namespace EasingStyle {
 		export interface Linear extends EnumItem {
 			Name: "Linear";
 			Value: 0;
-			EnumType: EnumType<EasingStyle>;
+			EnumType: typeof EasingStyle;
 		}
 
 		export const Linear: Linear;
@@ -4730,7 +4729,7 @@ declare namespace Enum {
 		export interface Sine extends EnumItem {
 			Name: "Sine";
 			Value: 1;
-			EnumType: EnumType<EasingStyle>;
+			EnumType: typeof EasingStyle;
 		}
 
 		export const Sine: Sine;
@@ -4738,7 +4737,7 @@ declare namespace Enum {
 		export interface Back extends EnumItem {
 			Name: "Back";
 			Value: 2;
-			EnumType: EnumType<EasingStyle>;
+			EnumType: typeof EasingStyle;
 		}
 
 		export const Back: Back;
@@ -4746,7 +4745,7 @@ declare namespace Enum {
 		export interface Quad extends EnumItem {
 			Name: "Quad";
 			Value: 3;
-			EnumType: EnumType<EasingStyle>;
+			EnumType: typeof EasingStyle;
 		}
 
 		export const Quad: Quad;
@@ -4754,7 +4753,7 @@ declare namespace Enum {
 		export interface Quart extends EnumItem {
 			Name: "Quart";
 			Value: 4;
-			EnumType: EnumType<EasingStyle>;
+			EnumType: typeof EasingStyle;
 		}
 
 		export const Quart: Quart;
@@ -4762,7 +4761,7 @@ declare namespace Enum {
 		export interface Quint extends EnumItem {
 			Name: "Quint";
 			Value: 5;
-			EnumType: EnumType<EasingStyle>;
+			EnumType: typeof EasingStyle;
 		}
 
 		export const Quint: Quint;
@@ -4770,7 +4769,7 @@ declare namespace Enum {
 		export interface Bounce extends EnumItem {
 			Name: "Bounce";
 			Value: 6;
-			EnumType: EnumType<EasingStyle>;
+			EnumType: typeof EasingStyle;
 		}
 
 		export const Bounce: Bounce;
@@ -4778,7 +4777,7 @@ declare namespace Enum {
 		export interface Elastic extends EnumItem {
 			Name: "Elastic";
 			Value: 7;
-			EnumType: EnumType<EasingStyle>;
+			EnumType: typeof EasingStyle;
 		}
 
 		export const Elastic: Elastic;
@@ -4786,7 +4785,7 @@ declare namespace Enum {
 		export interface Exponential extends EnumItem {
 			Name: "Exponential";
 			Value: 8;
-			EnumType: EnumType<EasingStyle>;
+			EnumType: typeof EasingStyle;
 		}
 
 		export const Exponential: Exponential;
@@ -4794,7 +4793,7 @@ declare namespace Enum {
 		export interface Circular extends EnumItem {
 			Name: "Circular";
 			Value: 9;
-			EnumType: EnumType<EasingStyle>;
+			EnumType: typeof EasingStyle;
 		}
 
 		export const Circular: Circular;
@@ -4802,19 +4801,19 @@ declare namespace Enum {
 		export interface Cubic extends EnumItem {
 			Name: "Cubic";
 			Value: 10;
-			EnumType: EnumType<EasingStyle>;
+			EnumType: typeof EasingStyle;
 		}
 
 		export const Cubic: Cubic;
 
-		export function GetEnumItems(this: defined): Array<EasingStyle>
+		export function GetEnumItems(): Array<EasingStyle>
 	}
 	export type EasingStyle = EasingStyle.Linear | EasingStyle.Sine | EasingStyle.Back | EasingStyle.Quad | EasingStyle.Quart | EasingStyle.Quint | EasingStyle.Bounce | EasingStyle.Elastic | EasingStyle.Exponential | EasingStyle.Circular | EasingStyle.Cubic;
 	export namespace ElasticBehavior {
 		export interface WhenScrollable extends EnumItem {
 			Name: "WhenScrollable";
 			Value: 0;
-			EnumType: EnumType<ElasticBehavior>;
+			EnumType: typeof ElasticBehavior;
 		}
 
 		export const WhenScrollable: WhenScrollable;
@@ -4822,7 +4821,7 @@ declare namespace Enum {
 		export interface Always extends EnumItem {
 			Name: "Always";
 			Value: 1;
-			EnumType: EnumType<ElasticBehavior>;
+			EnumType: typeof ElasticBehavior;
 		}
 
 		export const Always: Always;
@@ -4830,19 +4829,19 @@ declare namespace Enum {
 		export interface Never extends EnumItem {
 			Name: "Never";
 			Value: 2;
-			EnumType: EnumType<ElasticBehavior>;
+			EnumType: typeof ElasticBehavior;
 		}
 
 		export const Never: Never;
 
-		export function GetEnumItems(this: defined): Array<ElasticBehavior>
+		export function GetEnumItems(): Array<ElasticBehavior>
 	}
 	export type ElasticBehavior = ElasticBehavior.WhenScrollable | ElasticBehavior.Always | ElasticBehavior.Never;
 	export namespace EnviromentalPhysicsThrottle {
 		export interface DefaultAuto extends EnumItem {
 			Name: "DefaultAuto";
 			Value: 0;
-			EnumType: EnumType<EnviromentalPhysicsThrottle>;
+			EnumType: typeof EnviromentalPhysicsThrottle;
 		}
 
 		export const DefaultAuto: DefaultAuto;
@@ -4850,7 +4849,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<EnviromentalPhysicsThrottle>;
+			EnumType: typeof EnviromentalPhysicsThrottle;
 		}
 
 		export const Disabled: Disabled;
@@ -4858,7 +4857,7 @@ declare namespace Enum {
 		export interface Always extends EnumItem {
 			Name: "Always";
 			Value: 2;
-			EnumType: EnumType<EnviromentalPhysicsThrottle>;
+			EnumType: typeof EnviromentalPhysicsThrottle;
 		}
 
 		export const Always: Always;
@@ -4866,7 +4865,7 @@ declare namespace Enum {
 		export interface Skip2 extends EnumItem {
 			Name: "Skip2";
 			Value: 3;
-			EnumType: EnumType<EnviromentalPhysicsThrottle>;
+			EnumType: typeof EnviromentalPhysicsThrottle;
 		}
 
 		export const Skip2: Skip2;
@@ -4874,7 +4873,7 @@ declare namespace Enum {
 		export interface Skip4 extends EnumItem {
 			Name: "Skip4";
 			Value: 4;
-			EnumType: EnumType<EnviromentalPhysicsThrottle>;
+			EnumType: typeof EnviromentalPhysicsThrottle;
 		}
 
 		export const Skip4: Skip4;
@@ -4882,7 +4881,7 @@ declare namespace Enum {
 		export interface Skip8 extends EnumItem {
 			Name: "Skip8";
 			Value: 5;
-			EnumType: EnumType<EnviromentalPhysicsThrottle>;
+			EnumType: typeof EnviromentalPhysicsThrottle;
 		}
 
 		export const Skip8: Skip8;
@@ -4890,19 +4889,19 @@ declare namespace Enum {
 		export interface Skip16 extends EnumItem {
 			Name: "Skip16";
 			Value: 6;
-			EnumType: EnumType<EnviromentalPhysicsThrottle>;
+			EnumType: typeof EnviromentalPhysicsThrottle;
 		}
 
 		export const Skip16: Skip16;
 
-		export function GetEnumItems(this: defined): Array<EnviromentalPhysicsThrottle>
+		export function GetEnumItems(): Array<EnviromentalPhysicsThrottle>
 	}
 	export type EnviromentalPhysicsThrottle = EnviromentalPhysicsThrottle.DefaultAuto | EnviromentalPhysicsThrottle.Disabled | EnviromentalPhysicsThrottle.Always | EnviromentalPhysicsThrottle.Skip2 | EnviromentalPhysicsThrottle.Skip4 | EnviromentalPhysicsThrottle.Skip8 | EnviromentalPhysicsThrottle.Skip16;
 	export namespace ExplosionType {
 		export interface NoCraters extends EnumItem {
 			Name: "NoCraters";
 			Value: 0;
-			EnumType: EnumType<ExplosionType>;
+			EnumType: typeof ExplosionType;
 		}
 
 		export const NoCraters: NoCraters;
@@ -4910,19 +4909,19 @@ declare namespace Enum {
 		export interface Craters extends EnumItem {
 			Name: "Craters";
 			Value: 1;
-			EnumType: EnumType<ExplosionType>;
+			EnumType: typeof ExplosionType;
 		}
 
 		export const Craters: Craters;
 
-		export function GetEnumItems(this: defined): Array<ExplosionType>
+		export function GetEnumItems(): Array<ExplosionType>
 	}
 	export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters;
 	export namespace FieldOfViewMode {
 		export interface Vertical extends EnumItem {
 			Name: "Vertical";
 			Value: 0;
-			EnumType: EnumType<FieldOfViewMode>;
+			EnumType: typeof FieldOfViewMode;
 		}
 
 		export const Vertical: Vertical;
@@ -4930,7 +4929,7 @@ declare namespace Enum {
 		export interface Diagonal extends EnumItem {
 			Name: "Diagonal";
 			Value: 1;
-			EnumType: EnumType<FieldOfViewMode>;
+			EnumType: typeof FieldOfViewMode;
 		}
 
 		export const Diagonal: Diagonal;
@@ -4938,19 +4937,19 @@ declare namespace Enum {
 		export interface MaxAxis extends EnumItem {
 			Name: "MaxAxis";
 			Value: 2;
-			EnumType: EnumType<FieldOfViewMode>;
+			EnumType: typeof FieldOfViewMode;
 		}
 
 		export const MaxAxis: MaxAxis;
 
-		export function GetEnumItems(this: defined): Array<FieldOfViewMode>
+		export function GetEnumItems(): Array<FieldOfViewMode>
 	}
 	export type FieldOfViewMode = FieldOfViewMode.Vertical | FieldOfViewMode.Diagonal | FieldOfViewMode.MaxAxis;
 	export namespace FillDirection {
 		export interface Horizontal extends EnumItem {
 			Name: "Horizontal";
 			Value: 0;
-			EnumType: EnumType<FillDirection>;
+			EnumType: typeof FillDirection;
 		}
 
 		export const Horizontal: Horizontal;
@@ -4958,19 +4957,19 @@ declare namespace Enum {
 		export interface Vertical extends EnumItem {
 			Name: "Vertical";
 			Value: 1;
-			EnumType: EnumType<FillDirection>;
+			EnumType: typeof FillDirection;
 		}
 
 		export const Vertical: Vertical;
 
-		export function GetEnumItems(this: defined): Array<FillDirection>
+		export function GetEnumItems(): Array<FillDirection>
 	}
 	export type FillDirection = FillDirection.Horizontal | FillDirection.Vertical;
 	export namespace FilterResult {
 		export interface Rejected extends EnumItem {
 			Name: "Rejected";
 			Value: 1;
-			EnumType: EnumType<FilterResult>;
+			EnumType: typeof FilterResult;
 		}
 
 		export const Rejected: Rejected;
@@ -4978,19 +4977,19 @@ declare namespace Enum {
 		export interface Accepted extends EnumItem {
 			Name: "Accepted";
 			Value: 0;
-			EnumType: EnumType<FilterResult>;
+			EnumType: typeof FilterResult;
 		}
 
 		export const Accepted: Accepted;
 
-		export function GetEnumItems(this: defined): Array<FilterResult>
+		export function GetEnumItems(): Array<FilterResult>
 	}
 	export type FilterResult = FilterResult.Rejected | FilterResult.Accepted;
 	export namespace Font {
 		export interface Legacy extends EnumItem {
 			Name: "Legacy";
 			Value: 0;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Legacy: Legacy;
@@ -4998,7 +4997,7 @@ declare namespace Enum {
 		export interface Arial extends EnumItem {
 			Name: "Arial";
 			Value: 1;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Arial: Arial;
@@ -5006,7 +5005,7 @@ declare namespace Enum {
 		export interface ArialBold extends EnumItem {
 			Name: "ArialBold";
 			Value: 2;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const ArialBold: ArialBold;
@@ -5014,7 +5013,7 @@ declare namespace Enum {
 		export interface SourceSans extends EnumItem {
 			Name: "SourceSans";
 			Value: 3;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const SourceSans: SourceSans;
@@ -5022,7 +5021,7 @@ declare namespace Enum {
 		export interface SourceSansBold extends EnumItem {
 			Name: "SourceSansBold";
 			Value: 4;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const SourceSansBold: SourceSansBold;
@@ -5030,7 +5029,7 @@ declare namespace Enum {
 		export interface SourceSansSemibold extends EnumItem {
 			Name: "SourceSansSemibold";
 			Value: 16;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const SourceSansSemibold: SourceSansSemibold;
@@ -5038,7 +5037,7 @@ declare namespace Enum {
 		export interface SourceSansLight extends EnumItem {
 			Name: "SourceSansLight";
 			Value: 5;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const SourceSansLight: SourceSansLight;
@@ -5046,7 +5045,7 @@ declare namespace Enum {
 		export interface SourceSansItalic extends EnumItem {
 			Name: "SourceSansItalic";
 			Value: 6;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const SourceSansItalic: SourceSansItalic;
@@ -5054,7 +5053,7 @@ declare namespace Enum {
 		export interface Bodoni extends EnumItem {
 			Name: "Bodoni";
 			Value: 7;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Bodoni: Bodoni;
@@ -5062,7 +5061,7 @@ declare namespace Enum {
 		export interface Garamond extends EnumItem {
 			Name: "Garamond";
 			Value: 8;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Garamond: Garamond;
@@ -5070,7 +5069,7 @@ declare namespace Enum {
 		export interface Cartoon extends EnumItem {
 			Name: "Cartoon";
 			Value: 9;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Cartoon: Cartoon;
@@ -5078,7 +5077,7 @@ declare namespace Enum {
 		export interface Code extends EnumItem {
 			Name: "Code";
 			Value: 10;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Code: Code;
@@ -5086,7 +5085,7 @@ declare namespace Enum {
 		export interface Highway extends EnumItem {
 			Name: "Highway";
 			Value: 11;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Highway: Highway;
@@ -5094,7 +5093,7 @@ declare namespace Enum {
 		export interface SciFi extends EnumItem {
 			Name: "SciFi";
 			Value: 12;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const SciFi: SciFi;
@@ -5102,7 +5101,7 @@ declare namespace Enum {
 		export interface Arcade extends EnumItem {
 			Name: "Arcade";
 			Value: 13;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Arcade: Arcade;
@@ -5110,7 +5109,7 @@ declare namespace Enum {
 		export interface Fantasy extends EnumItem {
 			Name: "Fantasy";
 			Value: 14;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Fantasy: Fantasy;
@@ -5118,7 +5117,7 @@ declare namespace Enum {
 		export interface Antique extends EnumItem {
 			Name: "Antique";
 			Value: 15;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Antique: Antique;
@@ -5126,7 +5125,7 @@ declare namespace Enum {
 		export interface Gotham extends EnumItem {
 			Name: "Gotham";
 			Value: 17;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Gotham: Gotham;
@@ -5134,7 +5133,7 @@ declare namespace Enum {
 		export interface GothamMedium extends EnumItem {
 			Name: "GothamMedium";
 			Value: 18;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const GothamMedium: GothamMedium;
@@ -5142,7 +5141,7 @@ declare namespace Enum {
 		export interface GothamBold extends EnumItem {
 			Name: "GothamBold";
 			Value: 19;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const GothamBold: GothamBold;
@@ -5150,7 +5149,7 @@ declare namespace Enum {
 		export interface GothamBlack extends EnumItem {
 			Name: "GothamBlack";
 			Value: 20;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const GothamBlack: GothamBlack;
@@ -5158,7 +5157,7 @@ declare namespace Enum {
 		export interface AmaticSC extends EnumItem {
 			Name: "AmaticSC";
 			Value: 21;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const AmaticSC: AmaticSC;
@@ -5166,7 +5165,7 @@ declare namespace Enum {
 		export interface Bangers extends EnumItem {
 			Name: "Bangers";
 			Value: 22;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Bangers: Bangers;
@@ -5174,7 +5173,7 @@ declare namespace Enum {
 		export interface Creepster extends EnumItem {
 			Name: "Creepster";
 			Value: 23;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Creepster: Creepster;
@@ -5182,7 +5181,7 @@ declare namespace Enum {
 		export interface DenkOne extends EnumItem {
 			Name: "DenkOne";
 			Value: 24;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const DenkOne: DenkOne;
@@ -5190,7 +5189,7 @@ declare namespace Enum {
 		export interface Fondamento extends EnumItem {
 			Name: "Fondamento";
 			Value: 25;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Fondamento: Fondamento;
@@ -5198,7 +5197,7 @@ declare namespace Enum {
 		export interface FredokaOne extends EnumItem {
 			Name: "FredokaOne";
 			Value: 26;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const FredokaOne: FredokaOne;
@@ -5206,7 +5205,7 @@ declare namespace Enum {
 		export interface GrenzeGotisch extends EnumItem {
 			Name: "GrenzeGotisch";
 			Value: 27;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const GrenzeGotisch: GrenzeGotisch;
@@ -5214,7 +5213,7 @@ declare namespace Enum {
 		export interface IndieFlower extends EnumItem {
 			Name: "IndieFlower";
 			Value: 28;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const IndieFlower: IndieFlower;
@@ -5222,7 +5221,7 @@ declare namespace Enum {
 		export interface JosefinSans extends EnumItem {
 			Name: "JosefinSans";
 			Value: 29;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const JosefinSans: JosefinSans;
@@ -5230,7 +5229,7 @@ declare namespace Enum {
 		export interface Jura extends EnumItem {
 			Name: "Jura";
 			Value: 30;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Jura: Jura;
@@ -5238,7 +5237,7 @@ declare namespace Enum {
 		export interface Kalam extends EnumItem {
 			Name: "Kalam";
 			Value: 31;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Kalam: Kalam;
@@ -5246,7 +5245,7 @@ declare namespace Enum {
 		export interface LuckiestGuy extends EnumItem {
 			Name: "LuckiestGuy";
 			Value: 32;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const LuckiestGuy: LuckiestGuy;
@@ -5254,7 +5253,7 @@ declare namespace Enum {
 		export interface Merriweather extends EnumItem {
 			Name: "Merriweather";
 			Value: 33;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Merriweather: Merriweather;
@@ -5262,7 +5261,7 @@ declare namespace Enum {
 		export interface Michroma extends EnumItem {
 			Name: "Michroma";
 			Value: 34;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Michroma: Michroma;
@@ -5270,7 +5269,7 @@ declare namespace Enum {
 		export interface Nunito extends EnumItem {
 			Name: "Nunito";
 			Value: 35;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Nunito: Nunito;
@@ -5278,7 +5277,7 @@ declare namespace Enum {
 		export interface Oswald extends EnumItem {
 			Name: "Oswald";
 			Value: 36;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Oswald: Oswald;
@@ -5286,7 +5285,7 @@ declare namespace Enum {
 		export interface PatrickHand extends EnumItem {
 			Name: "PatrickHand";
 			Value: 37;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const PatrickHand: PatrickHand;
@@ -5294,7 +5293,7 @@ declare namespace Enum {
 		export interface PermanentMarker extends EnumItem {
 			Name: "PermanentMarker";
 			Value: 38;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const PermanentMarker: PermanentMarker;
@@ -5302,7 +5301,7 @@ declare namespace Enum {
 		export interface Roboto extends EnumItem {
 			Name: "Roboto";
 			Value: 39;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Roboto: Roboto;
@@ -5310,7 +5309,7 @@ declare namespace Enum {
 		export interface RobotoCondensed extends EnumItem {
 			Name: "RobotoCondensed";
 			Value: 40;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const RobotoCondensed: RobotoCondensed;
@@ -5318,7 +5317,7 @@ declare namespace Enum {
 		export interface RobotoMono extends EnumItem {
 			Name: "RobotoMono";
 			Value: 41;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const RobotoMono: RobotoMono;
@@ -5326,7 +5325,7 @@ declare namespace Enum {
 		export interface Sarpanch extends EnumItem {
 			Name: "Sarpanch";
 			Value: 42;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Sarpanch: Sarpanch;
@@ -5334,7 +5333,7 @@ declare namespace Enum {
 		export interface SpecialElite extends EnumItem {
 			Name: "SpecialElite";
 			Value: 43;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const SpecialElite: SpecialElite;
@@ -5342,7 +5341,7 @@ declare namespace Enum {
 		export interface TitilliumWeb extends EnumItem {
 			Name: "TitilliumWeb";
 			Value: 44;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const TitilliumWeb: TitilliumWeb;
@@ -5350,7 +5349,7 @@ declare namespace Enum {
 		export interface Ubuntu extends EnumItem {
 			Name: "Ubuntu";
 			Value: 45;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Ubuntu: Ubuntu;
@@ -5358,19 +5357,19 @@ declare namespace Enum {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 100;
-			EnumType: EnumType<Font>;
+			EnumType: typeof Font;
 		}
 
 		export const Unknown: Unknown;
 
-		export function GetEnumItems(this: defined): Array<Font>
+		export function GetEnumItems(): Array<Font>
 	}
 	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansSemibold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.Gotham | Font.GothamMedium | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu | Font.Unknown;
 	export namespace FontSize {
 		export interface Size8 extends EnumItem {
 			Name: "Size8";
 			Value: 0;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size8: Size8;
@@ -5378,7 +5377,7 @@ declare namespace Enum {
 		export interface Size9 extends EnumItem {
 			Name: "Size9";
 			Value: 1;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size9: Size9;
@@ -5386,7 +5385,7 @@ declare namespace Enum {
 		export interface Size10 extends EnumItem {
 			Name: "Size10";
 			Value: 2;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size10: Size10;
@@ -5394,7 +5393,7 @@ declare namespace Enum {
 		export interface Size11 extends EnumItem {
 			Name: "Size11";
 			Value: 3;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size11: Size11;
@@ -5402,7 +5401,7 @@ declare namespace Enum {
 		export interface Size12 extends EnumItem {
 			Name: "Size12";
 			Value: 4;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size12: Size12;
@@ -5410,7 +5409,7 @@ declare namespace Enum {
 		export interface Size14 extends EnumItem {
 			Name: "Size14";
 			Value: 5;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size14: Size14;
@@ -5418,7 +5417,7 @@ declare namespace Enum {
 		export interface Size18 extends EnumItem {
 			Name: "Size18";
 			Value: 6;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size18: Size18;
@@ -5426,7 +5425,7 @@ declare namespace Enum {
 		export interface Size24 extends EnumItem {
 			Name: "Size24";
 			Value: 7;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size24: Size24;
@@ -5434,7 +5433,7 @@ declare namespace Enum {
 		export interface Size36 extends EnumItem {
 			Name: "Size36";
 			Value: 8;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size36: Size36;
@@ -5442,7 +5441,7 @@ declare namespace Enum {
 		export interface Size48 extends EnumItem {
 			Name: "Size48";
 			Value: 9;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size48: Size48;
@@ -5450,7 +5449,7 @@ declare namespace Enum {
 		export interface Size28 extends EnumItem {
 			Name: "Size28";
 			Value: 10;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size28: Size28;
@@ -5458,7 +5457,7 @@ declare namespace Enum {
 		export interface Size32 extends EnumItem {
 			Name: "Size32";
 			Value: 11;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size32: Size32;
@@ -5466,7 +5465,7 @@ declare namespace Enum {
 		export interface Size42 extends EnumItem {
 			Name: "Size42";
 			Value: 12;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size42: Size42;
@@ -5474,7 +5473,7 @@ declare namespace Enum {
 		export interface Size60 extends EnumItem {
 			Name: "Size60";
 			Value: 13;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size60: Size60;
@@ -5482,19 +5481,19 @@ declare namespace Enum {
 		export interface Size96 extends EnumItem {
 			Name: "Size96";
 			Value: 14;
-			EnumType: EnumType<FontSize>;
+			EnumType: typeof FontSize;
 		}
 
 		export const Size96: Size96;
 
-		export function GetEnumItems(this: defined): Array<FontSize>
+		export function GetEnumItems(): Array<FontSize>
 	}
 	export type FontSize = FontSize.Size8 | FontSize.Size9 | FontSize.Size10 | FontSize.Size11 | FontSize.Size12 | FontSize.Size14 | FontSize.Size18 | FontSize.Size24 | FontSize.Size36 | FontSize.Size48 | FontSize.Size28 | FontSize.Size32 | FontSize.Size42 | FontSize.Size60 | FontSize.Size96;
 	export namespace FontStyle {
 		export interface Normal extends EnumItem {
 			Name: "Normal";
 			Value: 0;
-			EnumType: EnumType<FontStyle>;
+			EnumType: typeof FontStyle;
 		}
 
 		export const Normal: Normal;
@@ -5502,19 +5501,19 @@ declare namespace Enum {
 		export interface Italic extends EnumItem {
 			Name: "Italic";
 			Value: 1;
-			EnumType: EnumType<FontStyle>;
+			EnumType: typeof FontStyle;
 		}
 
 		export const Italic: Italic;
 
-		export function GetEnumItems(this: defined): Array<FontStyle>
+		export function GetEnumItems(): Array<FontStyle>
 	}
 	export type FontStyle = FontStyle.Normal | FontStyle.Italic;
 	export namespace FontWeight {
 		export interface Thin extends EnumItem {
 			Name: "Thin";
 			Value: 100;
-			EnumType: EnumType<FontWeight>;
+			EnumType: typeof FontWeight;
 		}
 
 		export const Thin: Thin;
@@ -5522,7 +5521,7 @@ declare namespace Enum {
 		export interface ExtraLight extends EnumItem {
 			Name: "ExtraLight";
 			Value: 200;
-			EnumType: EnumType<FontWeight>;
+			EnumType: typeof FontWeight;
 		}
 
 		export const ExtraLight: ExtraLight;
@@ -5530,7 +5529,7 @@ declare namespace Enum {
 		export interface Light extends EnumItem {
 			Name: "Light";
 			Value: 300;
-			EnumType: EnumType<FontWeight>;
+			EnumType: typeof FontWeight;
 		}
 
 		export const Light: Light;
@@ -5538,7 +5537,7 @@ declare namespace Enum {
 		export interface Regular extends EnumItem {
 			Name: "Regular";
 			Value: 400;
-			EnumType: EnumType<FontWeight>;
+			EnumType: typeof FontWeight;
 		}
 
 		export const Regular: Regular;
@@ -5546,7 +5545,7 @@ declare namespace Enum {
 		export interface Medium extends EnumItem {
 			Name: "Medium";
 			Value: 500;
-			EnumType: EnumType<FontWeight>;
+			EnumType: typeof FontWeight;
 		}
 
 		export const Medium: Medium;
@@ -5554,7 +5553,7 @@ declare namespace Enum {
 		export interface SemiBold extends EnumItem {
 			Name: "SemiBold";
 			Value: 600;
-			EnumType: EnumType<FontWeight>;
+			EnumType: typeof FontWeight;
 		}
 
 		export const SemiBold: SemiBold;
@@ -5562,7 +5561,7 @@ declare namespace Enum {
 		export interface Bold extends EnumItem {
 			Name: "Bold";
 			Value: 700;
-			EnumType: EnumType<FontWeight>;
+			EnumType: typeof FontWeight;
 		}
 
 		export const Bold: Bold;
@@ -5570,7 +5569,7 @@ declare namespace Enum {
 		export interface ExtraBold extends EnumItem {
 			Name: "ExtraBold";
 			Value: 800;
-			EnumType: EnumType<FontWeight>;
+			EnumType: typeof FontWeight;
 		}
 
 		export const ExtraBold: ExtraBold;
@@ -5578,19 +5577,19 @@ declare namespace Enum {
 		export interface Heavy extends EnumItem {
 			Name: "Heavy";
 			Value: 900;
-			EnumType: EnumType<FontWeight>;
+			EnumType: typeof FontWeight;
 		}
 
 		export const Heavy: Heavy;
 
-		export function GetEnumItems(this: defined): Array<FontWeight>
+		export function GetEnumItems(): Array<FontWeight>
 	}
 	export type FontWeight = FontWeight.Thin | FontWeight.ExtraLight | FontWeight.Light | FontWeight.Regular | FontWeight.Medium | FontWeight.SemiBold | FontWeight.Bold | FontWeight.ExtraBold | FontWeight.Heavy;
 	export namespace FormFactor {
 		export interface Symmetric extends EnumItem {
 			Name: "Symmetric";
 			Value: 0;
-			EnumType: EnumType<FormFactor>;
+			EnumType: typeof FormFactor;
 		}
 
 		export const Symmetric: Symmetric;
@@ -5598,7 +5597,7 @@ declare namespace Enum {
 		export interface Brick extends EnumItem {
 			Name: "Brick";
 			Value: 1;
-			EnumType: EnumType<FormFactor>;
+			EnumType: typeof FormFactor;
 		}
 
 		export const Brick: Brick;
@@ -5606,7 +5605,7 @@ declare namespace Enum {
 		export interface Plate extends EnumItem {
 			Name: "Plate";
 			Value: 2;
-			EnumType: EnumType<FormFactor>;
+			EnumType: typeof FormFactor;
 		}
 
 		export const Plate: Plate;
@@ -5614,19 +5613,19 @@ declare namespace Enum {
 		export interface Custom extends EnumItem {
 			Name: "Custom";
 			Value: 3;
-			EnumType: EnumType<FormFactor>;
+			EnumType: typeof FormFactor;
 		}
 
 		export const Custom: Custom;
 
-		export function GetEnumItems(this: defined): Array<FormFactor>
+		export function GetEnumItems(): Array<FormFactor>
 	}
 	export type FormFactor = FormFactor.Symmetric | FormFactor.Brick | FormFactor.Plate | FormFactor.Custom;
 	export namespace FrameStyle {
 		export interface Custom extends EnumItem {
 			Name: "Custom";
 			Value: 0;
-			EnumType: EnumType<FrameStyle>;
+			EnumType: typeof FrameStyle;
 		}
 
 		export const Custom: Custom;
@@ -5634,7 +5633,7 @@ declare namespace Enum {
 		export interface ChatBlue extends EnumItem {
 			Name: "ChatBlue";
 			Value: 1;
-			EnumType: EnumType<FrameStyle>;
+			EnumType: typeof FrameStyle;
 		}
 
 		export const ChatBlue: ChatBlue;
@@ -5642,7 +5641,7 @@ declare namespace Enum {
 		export interface RobloxSquare extends EnumItem {
 			Name: "RobloxSquare";
 			Value: 2;
-			EnumType: EnumType<FrameStyle>;
+			EnumType: typeof FrameStyle;
 		}
 
 		export const RobloxSquare: RobloxSquare;
@@ -5650,7 +5649,7 @@ declare namespace Enum {
 		export interface RobloxRound extends EnumItem {
 			Name: "RobloxRound";
 			Value: 3;
-			EnumType: EnumType<FrameStyle>;
+			EnumType: typeof FrameStyle;
 		}
 
 		export const RobloxRound: RobloxRound;
@@ -5658,7 +5657,7 @@ declare namespace Enum {
 		export interface ChatGreen extends EnumItem {
 			Name: "ChatGreen";
 			Value: 4;
-			EnumType: EnumType<FrameStyle>;
+			EnumType: typeof FrameStyle;
 		}
 
 		export const ChatGreen: ChatGreen;
@@ -5666,7 +5665,7 @@ declare namespace Enum {
 		export interface ChatRed extends EnumItem {
 			Name: "ChatRed";
 			Value: 5;
-			EnumType: EnumType<FrameStyle>;
+			EnumType: typeof FrameStyle;
 		}
 
 		export const ChatRed: ChatRed;
@@ -5674,19 +5673,19 @@ declare namespace Enum {
 		export interface DropShadow extends EnumItem {
 			Name: "DropShadow";
 			Value: 6;
-			EnumType: EnumType<FrameStyle>;
+			EnumType: typeof FrameStyle;
 		}
 
 		export const DropShadow: DropShadow;
 
-		export function GetEnumItems(this: defined): Array<FrameStyle>
+		export function GetEnumItems(): Array<FrameStyle>
 	}
 	export type FrameStyle = FrameStyle.Custom | FrameStyle.ChatBlue | FrameStyle.RobloxSquare | FrameStyle.RobloxRound | FrameStyle.ChatGreen | FrameStyle.ChatRed | FrameStyle.DropShadow;
 	export namespace FramerateManagerMode {
 		export interface Automatic extends EnumItem {
 			Name: "Automatic";
 			Value: 0;
-			EnumType: EnumType<FramerateManagerMode>;
+			EnumType: typeof FramerateManagerMode;
 		}
 
 		export const Automatic: Automatic;
@@ -5694,7 +5693,7 @@ declare namespace Enum {
 		export interface On extends EnumItem {
 			Name: "On";
 			Value: 1;
-			EnumType: EnumType<FramerateManagerMode>;
+			EnumType: typeof FramerateManagerMode;
 		}
 
 		export const On: On;
@@ -5702,19 +5701,19 @@ declare namespace Enum {
 		export interface Off extends EnumItem {
 			Name: "Off";
 			Value: 2;
-			EnumType: EnumType<FramerateManagerMode>;
+			EnumType: typeof FramerateManagerMode;
 		}
 
 		export const Off: Off;
 
-		export function GetEnumItems(this: defined): Array<FramerateManagerMode>
+		export function GetEnumItems(): Array<FramerateManagerMode>
 	}
 	export type FramerateManagerMode = FramerateManagerMode.Automatic | FramerateManagerMode.On | FramerateManagerMode.Off;
 	export namespace FriendRequestEvent {
 		export interface Issue extends EnumItem {
 			Name: "Issue";
 			Value: 0;
-			EnumType: EnumType<FriendRequestEvent>;
+			EnumType: typeof FriendRequestEvent;
 		}
 
 		export const Issue: Issue;
@@ -5722,7 +5721,7 @@ declare namespace Enum {
 		export interface Revoke extends EnumItem {
 			Name: "Revoke";
 			Value: 1;
-			EnumType: EnumType<FriendRequestEvent>;
+			EnumType: typeof FriendRequestEvent;
 		}
 
 		export const Revoke: Revoke;
@@ -5730,7 +5729,7 @@ declare namespace Enum {
 		export interface Accept extends EnumItem {
 			Name: "Accept";
 			Value: 2;
-			EnumType: EnumType<FriendRequestEvent>;
+			EnumType: typeof FriendRequestEvent;
 		}
 
 		export const Accept: Accept;
@@ -5738,19 +5737,19 @@ declare namespace Enum {
 		export interface Deny extends EnumItem {
 			Name: "Deny";
 			Value: 3;
-			EnumType: EnumType<FriendRequestEvent>;
+			EnumType: typeof FriendRequestEvent;
 		}
 
 		export const Deny: Deny;
 
-		export function GetEnumItems(this: defined): Array<FriendRequestEvent>
+		export function GetEnumItems(): Array<FriendRequestEvent>
 	}
 	export type FriendRequestEvent = FriendRequestEvent.Issue | FriendRequestEvent.Revoke | FriendRequestEvent.Accept | FriendRequestEvent.Deny;
 	export namespace FriendStatus {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 0;
-			EnumType: EnumType<FriendStatus>;
+			EnumType: typeof FriendStatus;
 		}
 
 		export const Unknown: Unknown;
@@ -5758,7 +5757,7 @@ declare namespace Enum {
 		export interface NotFriend extends EnumItem {
 			Name: "NotFriend";
 			Value: 1;
-			EnumType: EnumType<FriendStatus>;
+			EnumType: typeof FriendStatus;
 		}
 
 		export const NotFriend: NotFriend;
@@ -5766,7 +5765,7 @@ declare namespace Enum {
 		export interface Friend extends EnumItem {
 			Name: "Friend";
 			Value: 2;
-			EnumType: EnumType<FriendStatus>;
+			EnumType: typeof FriendStatus;
 		}
 
 		export const Friend: Friend;
@@ -5774,7 +5773,7 @@ declare namespace Enum {
 		export interface FriendRequestSent extends EnumItem {
 			Name: "FriendRequestSent";
 			Value: 3;
-			EnumType: EnumType<FriendStatus>;
+			EnumType: typeof FriendStatus;
 		}
 
 		export const FriendRequestSent: FriendRequestSent;
@@ -5782,19 +5781,19 @@ declare namespace Enum {
 		export interface FriendRequestReceived extends EnumItem {
 			Name: "FriendRequestReceived";
 			Value: 4;
-			EnumType: EnumType<FriendStatus>;
+			EnumType: typeof FriendStatus;
 		}
 
 		export const FriendRequestReceived: FriendRequestReceived;
 
-		export function GetEnumItems(this: defined): Array<FriendStatus>
+		export function GetEnumItems(): Array<FriendStatus>
 	}
 	export type FriendStatus = FriendStatus.Unknown | FriendStatus.NotFriend | FriendStatus.Friend | FriendStatus.FriendRequestSent | FriendStatus.FriendRequestReceived;
 	export namespace FunctionalTestResult {
 		export interface Passed extends EnumItem {
 			Name: "Passed";
 			Value: 0;
-			EnumType: EnumType<FunctionalTestResult>;
+			EnumType: typeof FunctionalTestResult;
 		}
 
 		export const Passed: Passed;
@@ -5802,7 +5801,7 @@ declare namespace Enum {
 		export interface Warning extends EnumItem {
 			Name: "Warning";
 			Value: 1;
-			EnumType: EnumType<FunctionalTestResult>;
+			EnumType: typeof FunctionalTestResult;
 		}
 
 		export const Warning: Warning;
@@ -5810,19 +5809,19 @@ declare namespace Enum {
 		export interface Error extends EnumItem {
 			Name: "Error";
 			Value: 2;
-			EnumType: EnumType<FunctionalTestResult>;
+			EnumType: typeof FunctionalTestResult;
 		}
 
 		export const Error: Error;
 
-		export function GetEnumItems(this: defined): Array<FunctionalTestResult>
+		export function GetEnumItems(): Array<FunctionalTestResult>
 	}
 	export type FunctionalTestResult = FunctionalTestResult.Passed | FunctionalTestResult.Warning | FunctionalTestResult.Error;
 	export namespace GameAvatarType {
 		export interface R6 extends EnumItem {
 			Name: "R6";
 			Value: 0;
-			EnumType: EnumType<GameAvatarType>;
+			EnumType: typeof GameAvatarType;
 		}
 
 		export const R6: R6;
@@ -5830,7 +5829,7 @@ declare namespace Enum {
 		export interface R15 extends EnumItem {
 			Name: "R15";
 			Value: 1;
-			EnumType: EnumType<GameAvatarType>;
+			EnumType: typeof GameAvatarType;
 		}
 
 		export const R15: R15;
@@ -5838,19 +5837,19 @@ declare namespace Enum {
 		export interface PlayerChoice extends EnumItem {
 			Name: "PlayerChoice";
 			Value: 2;
-			EnumType: EnumType<GameAvatarType>;
+			EnumType: typeof GameAvatarType;
 		}
 
 		export const PlayerChoice: PlayerChoice;
 
-		export function GetEnumItems(this: defined): Array<GameAvatarType>
+		export function GetEnumItems(): Array<GameAvatarType>
 	}
 	export type GameAvatarType = GameAvatarType.R6 | GameAvatarType.R15 | GameAvatarType.PlayerChoice;
 	export namespace GearGenreSetting {
 		export interface AllGenres extends EnumItem {
 			Name: "AllGenres";
 			Value: 0;
-			EnumType: EnumType<GearGenreSetting>;
+			EnumType: typeof GearGenreSetting;
 		}
 
 		export const AllGenres: AllGenres;
@@ -5858,19 +5857,19 @@ declare namespace Enum {
 		export interface MatchingGenreOnly extends EnumItem {
 			Name: "MatchingGenreOnly";
 			Value: 1;
-			EnumType: EnumType<GearGenreSetting>;
+			EnumType: typeof GearGenreSetting;
 		}
 
 		export const MatchingGenreOnly: MatchingGenreOnly;
 
-		export function GetEnumItems(this: defined): Array<GearGenreSetting>
+		export function GetEnumItems(): Array<GearGenreSetting>
 	}
 	export type GearGenreSetting = GearGenreSetting.AllGenres | GearGenreSetting.MatchingGenreOnly;
 	export namespace GearType {
 		export interface MeleeWeapons extends EnumItem {
 			Name: "MeleeWeapons";
 			Value: 0;
-			EnumType: EnumType<GearType>;
+			EnumType: typeof GearType;
 		}
 
 		export const MeleeWeapons: MeleeWeapons;
@@ -5878,7 +5877,7 @@ declare namespace Enum {
 		export interface RangedWeapons extends EnumItem {
 			Name: "RangedWeapons";
 			Value: 1;
-			EnumType: EnumType<GearType>;
+			EnumType: typeof GearType;
 		}
 
 		export const RangedWeapons: RangedWeapons;
@@ -5886,7 +5885,7 @@ declare namespace Enum {
 		export interface Explosives extends EnumItem {
 			Name: "Explosives";
 			Value: 2;
-			EnumType: EnumType<GearType>;
+			EnumType: typeof GearType;
 		}
 
 		export const Explosives: Explosives;
@@ -5894,7 +5893,7 @@ declare namespace Enum {
 		export interface PowerUps extends EnumItem {
 			Name: "PowerUps";
 			Value: 3;
-			EnumType: EnumType<GearType>;
+			EnumType: typeof GearType;
 		}
 
 		export const PowerUps: PowerUps;
@@ -5902,7 +5901,7 @@ declare namespace Enum {
 		export interface NavigationEnhancers extends EnumItem {
 			Name: "NavigationEnhancers";
 			Value: 4;
-			EnumType: EnumType<GearType>;
+			EnumType: typeof GearType;
 		}
 
 		export const NavigationEnhancers: NavigationEnhancers;
@@ -5910,7 +5909,7 @@ declare namespace Enum {
 		export interface MusicalInstruments extends EnumItem {
 			Name: "MusicalInstruments";
 			Value: 5;
-			EnumType: EnumType<GearType>;
+			EnumType: typeof GearType;
 		}
 
 		export const MusicalInstruments: MusicalInstruments;
@@ -5918,7 +5917,7 @@ declare namespace Enum {
 		export interface SocialItems extends EnumItem {
 			Name: "SocialItems";
 			Value: 6;
-			EnumType: EnumType<GearType>;
+			EnumType: typeof GearType;
 		}
 
 		export const SocialItems: SocialItems;
@@ -5926,7 +5925,7 @@ declare namespace Enum {
 		export interface BuildingTools extends EnumItem {
 			Name: "BuildingTools";
 			Value: 7;
-			EnumType: EnumType<GearType>;
+			EnumType: typeof GearType;
 		}
 
 		export const BuildingTools: BuildingTools;
@@ -5934,19 +5933,19 @@ declare namespace Enum {
 		export interface Transport extends EnumItem {
 			Name: "Transport";
 			Value: 8;
-			EnumType: EnumType<GearType>;
+			EnumType: typeof GearType;
 		}
 
 		export const Transport: Transport;
 
-		export function GetEnumItems(this: defined): Array<GearType>
+		export function GetEnumItems(): Array<GearType>
 	}
 	export type GearType = GearType.MeleeWeapons | GearType.RangedWeapons | GearType.Explosives | GearType.PowerUps | GearType.NavigationEnhancers | GearType.MusicalInstruments | GearType.SocialItems | GearType.BuildingTools | GearType.Transport;
 	export namespace Genre {
 		export interface All extends EnumItem {
 			Name: "All";
 			Value: 0;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const All: All;
@@ -5954,7 +5953,7 @@ declare namespace Enum {
 		export interface TownAndCity extends EnumItem {
 			Name: "TownAndCity";
 			Value: 1;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const TownAndCity: TownAndCity;
@@ -5962,7 +5961,7 @@ declare namespace Enum {
 		export interface Fantasy extends EnumItem {
 			Name: "Fantasy";
 			Value: 2;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const Fantasy: Fantasy;
@@ -5970,7 +5969,7 @@ declare namespace Enum {
 		export interface SciFi extends EnumItem {
 			Name: "SciFi";
 			Value: 3;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const SciFi: SciFi;
@@ -5978,7 +5977,7 @@ declare namespace Enum {
 		export interface Ninja extends EnumItem {
 			Name: "Ninja";
 			Value: 4;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const Ninja: Ninja;
@@ -5986,7 +5985,7 @@ declare namespace Enum {
 		export interface Scary extends EnumItem {
 			Name: "Scary";
 			Value: 5;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const Scary: Scary;
@@ -5994,7 +5993,7 @@ declare namespace Enum {
 		export interface Pirate extends EnumItem {
 			Name: "Pirate";
 			Value: 6;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const Pirate: Pirate;
@@ -6002,7 +6001,7 @@ declare namespace Enum {
 		export interface Adventure extends EnumItem {
 			Name: "Adventure";
 			Value: 7;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const Adventure: Adventure;
@@ -6010,7 +6009,7 @@ declare namespace Enum {
 		export interface Sports extends EnumItem {
 			Name: "Sports";
 			Value: 8;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const Sports: Sports;
@@ -6018,7 +6017,7 @@ declare namespace Enum {
 		export interface Funny extends EnumItem {
 			Name: "Funny";
 			Value: 9;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const Funny: Funny;
@@ -6026,7 +6025,7 @@ declare namespace Enum {
 		export interface WildWest extends EnumItem {
 			Name: "WildWest";
 			Value: 10;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const WildWest: WildWest;
@@ -6034,7 +6033,7 @@ declare namespace Enum {
 		export interface War extends EnumItem {
 			Name: "War";
 			Value: 11;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const War: War;
@@ -6042,7 +6041,7 @@ declare namespace Enum {
 		export interface SkatePark extends EnumItem {
 			Name: "SkatePark";
 			Value: 12;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const SkatePark: SkatePark;
@@ -6050,19 +6049,19 @@ declare namespace Enum {
 		export interface Tutorial extends EnumItem {
 			Name: "Tutorial";
 			Value: 13;
-			EnumType: EnumType<Genre>;
+			EnumType: typeof Genre;
 		}
 
 		export const Tutorial: Tutorial;
 
-		export function GetEnumItems(this: defined): Array<Genre>
+		export function GetEnumItems(): Array<Genre>
 	}
 	export type Genre = Genre.All | Genre.TownAndCity | Genre.Fantasy | Genre.SciFi | Genre.Ninja | Genre.Scary | Genre.Pirate | Genre.Adventure | Genre.Sports | Genre.Funny | Genre.WildWest | Genre.War | Genre.SkatePark | Genre.Tutorial;
 	export namespace GraphicsMode {
 		export interface Automatic extends EnumItem {
 			Name: "Automatic";
 			Value: 1;
-			EnumType: EnumType<GraphicsMode>;
+			EnumType: typeof GraphicsMode;
 		}
 
 		export const Automatic: Automatic;
@@ -6070,7 +6069,7 @@ declare namespace Enum {
 		export interface Direct3D11 extends EnumItem {
 			Name: "Direct3D11";
 			Value: 2;
-			EnumType: EnumType<GraphicsMode>;
+			EnumType: typeof GraphicsMode;
 		}
 
 		export const Direct3D11: Direct3D11;
@@ -6078,7 +6077,7 @@ declare namespace Enum {
 		export interface OpenGL extends EnumItem {
 			Name: "OpenGL";
 			Value: 4;
-			EnumType: EnumType<GraphicsMode>;
+			EnumType: typeof GraphicsMode;
 		}
 
 		export const OpenGL: OpenGL;
@@ -6086,7 +6085,7 @@ declare namespace Enum {
 		export interface Metal extends EnumItem {
 			Name: "Metal";
 			Value: 5;
-			EnumType: EnumType<GraphicsMode>;
+			EnumType: typeof GraphicsMode;
 		}
 
 		export const Metal: Metal;
@@ -6094,7 +6093,7 @@ declare namespace Enum {
 		export interface Vulkan extends EnumItem {
 			Name: "Vulkan";
 			Value: 6;
-			EnumType: EnumType<GraphicsMode>;
+			EnumType: typeof GraphicsMode;
 		}
 
 		export const Vulkan: Vulkan;
@@ -6102,19 +6101,19 @@ declare namespace Enum {
 		export interface NoGraphics extends EnumItem {
 			Name: "NoGraphics";
 			Value: 7;
-			EnumType: EnumType<GraphicsMode>;
+			EnumType: typeof GraphicsMode;
 		}
 
 		export const NoGraphics: NoGraphics;
 
-		export function GetEnumItems(this: defined): Array<GraphicsMode>
+		export function GetEnumItems(): Array<GraphicsMode>
 	}
 	export type GraphicsMode = GraphicsMode.Automatic | GraphicsMode.Direct3D11 | GraphicsMode.OpenGL | GraphicsMode.Metal | GraphicsMode.Vulkan | GraphicsMode.NoGraphics;
 	export namespace HandlesStyle {
 		export interface Resize extends EnumItem {
 			Name: "Resize";
 			Value: 0;
-			EnumType: EnumType<HandlesStyle>;
+			EnumType: typeof HandlesStyle;
 		}
 
 		export const Resize: Resize;
@@ -6122,19 +6121,19 @@ declare namespace Enum {
 		export interface Movement extends EnumItem {
 			Name: "Movement";
 			Value: 1;
-			EnumType: EnumType<HandlesStyle>;
+			EnumType: typeof HandlesStyle;
 		}
 
 		export const Movement: Movement;
 
-		export function GetEnumItems(this: defined): Array<HandlesStyle>
+		export function GetEnumItems(): Array<HandlesStyle>
 	}
 	export type HandlesStyle = HandlesStyle.Resize | HandlesStyle.Movement;
 	export namespace HighlightDepthMode {
 		export interface AlwaysOnTop extends EnumItem {
 			Name: "AlwaysOnTop";
 			Value: 0;
-			EnumType: EnumType<HighlightDepthMode>;
+			EnumType: typeof HighlightDepthMode;
 		}
 
 		export const AlwaysOnTop: AlwaysOnTop;
@@ -6142,19 +6141,19 @@ declare namespace Enum {
 		export interface Occluded extends EnumItem {
 			Name: "Occluded";
 			Value: 1;
-			EnumType: EnumType<HighlightDepthMode>;
+			EnumType: typeof HighlightDepthMode;
 		}
 
 		export const Occluded: Occluded;
 
-		export function GetEnumItems(this: defined): Array<HighlightDepthMode>
+		export function GetEnumItems(): Array<HighlightDepthMode>
 	}
 	export type HighlightDepthMode = HighlightDepthMode.AlwaysOnTop | HighlightDepthMode.Occluded;
 	export namespace HorizontalAlignment {
 		export interface Center extends EnumItem {
 			Name: "Center";
 			Value: 0;
-			EnumType: EnumType<HorizontalAlignment>;
+			EnumType: typeof HorizontalAlignment;
 		}
 
 		export const Center: Center;
@@ -6162,7 +6161,7 @@ declare namespace Enum {
 		export interface Left extends EnumItem {
 			Name: "Left";
 			Value: 1;
-			EnumType: EnumType<HorizontalAlignment>;
+			EnumType: typeof HorizontalAlignment;
 		}
 
 		export const Left: Left;
@@ -6170,19 +6169,19 @@ declare namespace Enum {
 		export interface Right extends EnumItem {
 			Name: "Right";
 			Value: 2;
-			EnumType: EnumType<HorizontalAlignment>;
+			EnumType: typeof HorizontalAlignment;
 		}
 
 		export const Right: Right;
 
-		export function GetEnumItems(this: defined): Array<HorizontalAlignment>
+		export function GetEnumItems(): Array<HorizontalAlignment>
 	}
 	export type HorizontalAlignment = HorizontalAlignment.Center | HorizontalAlignment.Left | HorizontalAlignment.Right;
 	export namespace HoverAnimateSpeed {
 		export interface VerySlow extends EnumItem {
 			Name: "VerySlow";
 			Value: 0;
-			EnumType: EnumType<HoverAnimateSpeed>;
+			EnumType: typeof HoverAnimateSpeed;
 		}
 
 		export const VerySlow: VerySlow;
@@ -6190,7 +6189,7 @@ declare namespace Enum {
 		export interface Slow extends EnumItem {
 			Name: "Slow";
 			Value: 1;
-			EnumType: EnumType<HoverAnimateSpeed>;
+			EnumType: typeof HoverAnimateSpeed;
 		}
 
 		export const Slow: Slow;
@@ -6198,7 +6197,7 @@ declare namespace Enum {
 		export interface Medium extends EnumItem {
 			Name: "Medium";
 			Value: 2;
-			EnumType: EnumType<HoverAnimateSpeed>;
+			EnumType: typeof HoverAnimateSpeed;
 		}
 
 		export const Medium: Medium;
@@ -6206,7 +6205,7 @@ declare namespace Enum {
 		export interface Fast extends EnumItem {
 			Name: "Fast";
 			Value: 3;
-			EnumType: EnumType<HoverAnimateSpeed>;
+			EnumType: typeof HoverAnimateSpeed;
 		}
 
 		export const Fast: Fast;
@@ -6214,19 +6213,19 @@ declare namespace Enum {
 		export interface VeryFast extends EnumItem {
 			Name: "VeryFast";
 			Value: 4;
-			EnumType: EnumType<HoverAnimateSpeed>;
+			EnumType: typeof HoverAnimateSpeed;
 		}
 
 		export const VeryFast: VeryFast;
 
-		export function GetEnumItems(this: defined): Array<HoverAnimateSpeed>
+		export function GetEnumItems(): Array<HoverAnimateSpeed>
 	}
 	export type HoverAnimateSpeed = HoverAnimateSpeed.VerySlow | HoverAnimateSpeed.Slow | HoverAnimateSpeed.Medium | HoverAnimateSpeed.Fast | HoverAnimateSpeed.VeryFast;
 	export namespace HttpCachePolicy {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<HttpCachePolicy>;
+			EnumType: typeof HttpCachePolicy;
 		}
 
 		export const None: None;
@@ -6234,7 +6233,7 @@ declare namespace Enum {
 		export interface Full extends EnumItem {
 			Name: "Full";
 			Value: 1;
-			EnumType: EnumType<HttpCachePolicy>;
+			EnumType: typeof HttpCachePolicy;
 		}
 
 		export const Full: Full;
@@ -6242,7 +6241,7 @@ declare namespace Enum {
 		export interface DataOnly extends EnumItem {
 			Name: "DataOnly";
 			Value: 2;
-			EnumType: EnumType<HttpCachePolicy>;
+			EnumType: typeof HttpCachePolicy;
 		}
 
 		export const DataOnly: DataOnly;
@@ -6250,7 +6249,7 @@ declare namespace Enum {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 3;
-			EnumType: EnumType<HttpCachePolicy>;
+			EnumType: typeof HttpCachePolicy;
 		}
 
 		export const Default: Default;
@@ -6258,19 +6257,19 @@ declare namespace Enum {
 		export interface InternalRedirectRefresh extends EnumItem {
 			Name: "InternalRedirectRefresh";
 			Value: 4;
-			EnumType: EnumType<HttpCachePolicy>;
+			EnumType: typeof HttpCachePolicy;
 		}
 
 		export const InternalRedirectRefresh: InternalRedirectRefresh;
 
-		export function GetEnumItems(this: defined): Array<HttpCachePolicy>
+		export function GetEnumItems(): Array<HttpCachePolicy>
 	}
 	export type HttpCachePolicy = HttpCachePolicy.None | HttpCachePolicy.Full | HttpCachePolicy.DataOnly | HttpCachePolicy.Default | HttpCachePolicy.InternalRedirectRefresh;
 	export namespace HttpContentType {
 		export interface ApplicationJson extends EnumItem {
 			Name: "ApplicationJson";
 			Value: 0;
-			EnumType: EnumType<HttpContentType>;
+			EnumType: typeof HttpContentType;
 		}
 
 		export const ApplicationJson: ApplicationJson;
@@ -6278,7 +6277,7 @@ declare namespace Enum {
 		export interface ApplicationXml extends EnumItem {
 			Name: "ApplicationXml";
 			Value: 1;
-			EnumType: EnumType<HttpContentType>;
+			EnumType: typeof HttpContentType;
 		}
 
 		export const ApplicationXml: ApplicationXml;
@@ -6286,7 +6285,7 @@ declare namespace Enum {
 		export interface ApplicationUrlEncoded extends EnumItem {
 			Name: "ApplicationUrlEncoded";
 			Value: 2;
-			EnumType: EnumType<HttpContentType>;
+			EnumType: typeof HttpContentType;
 		}
 
 		export const ApplicationUrlEncoded: ApplicationUrlEncoded;
@@ -6294,7 +6293,7 @@ declare namespace Enum {
 		export interface TextPlain extends EnumItem {
 			Name: "TextPlain";
 			Value: 3;
-			EnumType: EnumType<HttpContentType>;
+			EnumType: typeof HttpContentType;
 		}
 
 		export const TextPlain: TextPlain;
@@ -6302,19 +6301,19 @@ declare namespace Enum {
 		export interface TextXml extends EnumItem {
 			Name: "TextXml";
 			Value: 4;
-			EnumType: EnumType<HttpContentType>;
+			EnumType: typeof HttpContentType;
 		}
 
 		export const TextXml: TextXml;
 
-		export function GetEnumItems(this: defined): Array<HttpContentType>
+		export function GetEnumItems(): Array<HttpContentType>
 	}
 	export type HttpContentType = HttpContentType.ApplicationJson | HttpContentType.ApplicationXml | HttpContentType.ApplicationUrlEncoded | HttpContentType.TextPlain | HttpContentType.TextXml;
 	export namespace HttpError {
 		export interface OK extends EnumItem {
 			Name: "OK";
 			Value: 0;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const OK: OK;
@@ -6322,7 +6321,7 @@ declare namespace Enum {
 		export interface InvalidUrl extends EnumItem {
 			Name: "InvalidUrl";
 			Value: 1;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const InvalidUrl: InvalidUrl;
@@ -6330,7 +6329,7 @@ declare namespace Enum {
 		export interface DnsResolve extends EnumItem {
 			Name: "DnsResolve";
 			Value: 2;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const DnsResolve: DnsResolve;
@@ -6338,7 +6337,7 @@ declare namespace Enum {
 		export interface ConnectFail extends EnumItem {
 			Name: "ConnectFail";
 			Value: 3;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const ConnectFail: ConnectFail;
@@ -6346,7 +6345,7 @@ declare namespace Enum {
 		export interface OutOfMemory extends EnumItem {
 			Name: "OutOfMemory";
 			Value: 4;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const OutOfMemory: OutOfMemory;
@@ -6354,7 +6353,7 @@ declare namespace Enum {
 		export interface TimedOut extends EnumItem {
 			Name: "TimedOut";
 			Value: 5;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const TimedOut: TimedOut;
@@ -6362,7 +6361,7 @@ declare namespace Enum {
 		export interface TooManyRedirects extends EnumItem {
 			Name: "TooManyRedirects";
 			Value: 6;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const TooManyRedirects: TooManyRedirects;
@@ -6370,7 +6369,7 @@ declare namespace Enum {
 		export interface InvalidRedirect extends EnumItem {
 			Name: "InvalidRedirect";
 			Value: 7;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const InvalidRedirect: InvalidRedirect;
@@ -6378,7 +6377,7 @@ declare namespace Enum {
 		export interface NetFail extends EnumItem {
 			Name: "NetFail";
 			Value: 8;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const NetFail: NetFail;
@@ -6386,7 +6385,7 @@ declare namespace Enum {
 		export interface Aborted extends EnumItem {
 			Name: "Aborted";
 			Value: 9;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const Aborted: Aborted;
@@ -6394,7 +6393,7 @@ declare namespace Enum {
 		export interface SslConnectFail extends EnumItem {
 			Name: "SslConnectFail";
 			Value: 10;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const SslConnectFail: SslConnectFail;
@@ -6402,7 +6401,7 @@ declare namespace Enum {
 		export interface SslVerificationFail extends EnumItem {
 			Name: "SslVerificationFail";
 			Value: 11;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const SslVerificationFail: SslVerificationFail;
@@ -6410,19 +6409,19 @@ declare namespace Enum {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 12;
-			EnumType: EnumType<HttpError>;
+			EnumType: typeof HttpError;
 		}
 
 		export const Unknown: Unknown;
 
-		export function GetEnumItems(this: defined): Array<HttpError>
+		export function GetEnumItems(): Array<HttpError>
 	}
 	export type HttpError = HttpError.OK | HttpError.InvalidUrl | HttpError.DnsResolve | HttpError.ConnectFail | HttpError.OutOfMemory | HttpError.TimedOut | HttpError.TooManyRedirects | HttpError.InvalidRedirect | HttpError.NetFail | HttpError.Aborted | HttpError.SslConnectFail | HttpError.SslVerificationFail | HttpError.Unknown;
 	export namespace HttpRequestType {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<HttpRequestType>;
+			EnumType: typeof HttpRequestType;
 		}
 
 		export const Default: Default;
@@ -6430,7 +6429,7 @@ declare namespace Enum {
 		export interface MarketplaceService extends EnumItem {
 			Name: "MarketplaceService";
 			Value: 2;
-			EnumType: EnumType<HttpRequestType>;
+			EnumType: typeof HttpRequestType;
 		}
 
 		export const MarketplaceService: MarketplaceService;
@@ -6438,7 +6437,7 @@ declare namespace Enum {
 		export interface Players extends EnumItem {
 			Name: "Players";
 			Value: 7;
-			EnumType: EnumType<HttpRequestType>;
+			EnumType: typeof HttpRequestType;
 		}
 
 		export const Players: Players;
@@ -6446,7 +6445,7 @@ declare namespace Enum {
 		export interface Chat extends EnumItem {
 			Name: "Chat";
 			Value: 15;
-			EnumType: EnumType<HttpRequestType>;
+			EnumType: typeof HttpRequestType;
 		}
 
 		export const Chat: Chat;
@@ -6454,7 +6453,7 @@ declare namespace Enum {
 		export interface Avatar extends EnumItem {
 			Name: "Avatar";
 			Value: 16;
-			EnumType: EnumType<HttpRequestType>;
+			EnumType: typeof HttpRequestType;
 		}
 
 		export const Avatar: Avatar;
@@ -6462,7 +6461,7 @@ declare namespace Enum {
 		export interface Analytics extends EnumItem {
 			Name: "Analytics";
 			Value: 23;
-			EnumType: EnumType<HttpRequestType>;
+			EnumType: typeof HttpRequestType;
 		}
 
 		export const Analytics: Analytics;
@@ -6470,19 +6469,19 @@ declare namespace Enum {
 		export interface Localization extends EnumItem {
 			Name: "Localization";
 			Value: 25;
-			EnumType: EnumType<HttpRequestType>;
+			EnumType: typeof HttpRequestType;
 		}
 
 		export const Localization: Localization;
 
-		export function GetEnumItems(this: defined): Array<HttpRequestType>
+		export function GetEnumItems(): Array<HttpRequestType>
 	}
 	export type HttpRequestType = HttpRequestType.Default | HttpRequestType.MarketplaceService | HttpRequestType.Players | HttpRequestType.Chat | HttpRequestType.Avatar | HttpRequestType.Analytics | HttpRequestType.Localization;
 	export namespace HumanoidCollisionType {
 		export interface OuterBox extends EnumItem {
 			Name: "OuterBox";
 			Value: 0;
-			EnumType: EnumType<HumanoidCollisionType>;
+			EnumType: typeof HumanoidCollisionType;
 		}
 
 		export const OuterBox: OuterBox;
@@ -6490,19 +6489,19 @@ declare namespace Enum {
 		export interface InnerBox extends EnumItem {
 			Name: "InnerBox";
 			Value: 1;
-			EnumType: EnumType<HumanoidCollisionType>;
+			EnumType: typeof HumanoidCollisionType;
 		}
 
 		export const InnerBox: InnerBox;
 
-		export function GetEnumItems(this: defined): Array<HumanoidCollisionType>
+		export function GetEnumItems(): Array<HumanoidCollisionType>
 	}
 	export type HumanoidCollisionType = HumanoidCollisionType.OuterBox | HumanoidCollisionType.InnerBox;
 	export namespace HumanoidDisplayDistanceType {
 		export interface Viewer extends EnumItem {
 			Name: "Viewer";
 			Value: 0;
-			EnumType: EnumType<HumanoidDisplayDistanceType>;
+			EnumType: typeof HumanoidDisplayDistanceType;
 		}
 
 		export const Viewer: Viewer;
@@ -6510,7 +6509,7 @@ declare namespace Enum {
 		export interface Subject extends EnumItem {
 			Name: "Subject";
 			Value: 1;
-			EnumType: EnumType<HumanoidDisplayDistanceType>;
+			EnumType: typeof HumanoidDisplayDistanceType;
 		}
 
 		export const Subject: Subject;
@@ -6518,19 +6517,19 @@ declare namespace Enum {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 2;
-			EnumType: EnumType<HumanoidDisplayDistanceType>;
+			EnumType: typeof HumanoidDisplayDistanceType;
 		}
 
 		export const None: None;
 
-		export function GetEnumItems(this: defined): Array<HumanoidDisplayDistanceType>
+		export function GetEnumItems(): Array<HumanoidDisplayDistanceType>
 	}
 	export type HumanoidDisplayDistanceType = HumanoidDisplayDistanceType.Viewer | HumanoidDisplayDistanceType.Subject | HumanoidDisplayDistanceType.None;
 	export namespace HumanoidHealthDisplayType {
 		export interface DisplayWhenDamaged extends EnumItem {
 			Name: "DisplayWhenDamaged";
 			Value: 0;
-			EnumType: EnumType<HumanoidHealthDisplayType>;
+			EnumType: typeof HumanoidHealthDisplayType;
 		}
 
 		export const DisplayWhenDamaged: DisplayWhenDamaged;
@@ -6538,7 +6537,7 @@ declare namespace Enum {
 		export interface AlwaysOn extends EnumItem {
 			Name: "AlwaysOn";
 			Value: 1;
-			EnumType: EnumType<HumanoidHealthDisplayType>;
+			EnumType: typeof HumanoidHealthDisplayType;
 		}
 
 		export const AlwaysOn: AlwaysOn;
@@ -6546,19 +6545,19 @@ declare namespace Enum {
 		export interface AlwaysOff extends EnumItem {
 			Name: "AlwaysOff";
 			Value: 2;
-			EnumType: EnumType<HumanoidHealthDisplayType>;
+			EnumType: typeof HumanoidHealthDisplayType;
 		}
 
 		export const AlwaysOff: AlwaysOff;
 
-		export function GetEnumItems(this: defined): Array<HumanoidHealthDisplayType>
+		export function GetEnumItems(): Array<HumanoidHealthDisplayType>
 	}
 	export type HumanoidHealthDisplayType = HumanoidHealthDisplayType.DisplayWhenDamaged | HumanoidHealthDisplayType.AlwaysOn | HumanoidHealthDisplayType.AlwaysOff;
 	export namespace HumanoidOnlySetCollisionsOnStateChange {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<HumanoidOnlySetCollisionsOnStateChange>;
+			EnumType: typeof HumanoidOnlySetCollisionsOnStateChange;
 		}
 
 		export const Default: Default;
@@ -6566,7 +6565,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<HumanoidOnlySetCollisionsOnStateChange>;
+			EnumType: typeof HumanoidOnlySetCollisionsOnStateChange;
 		}
 
 		export const Disabled: Disabled;
@@ -6574,19 +6573,19 @@ declare namespace Enum {
 		export interface Enabled extends EnumItem {
 			Name: "Enabled";
 			Value: 2;
-			EnumType: EnumType<HumanoidOnlySetCollisionsOnStateChange>;
+			EnumType: typeof HumanoidOnlySetCollisionsOnStateChange;
 		}
 
 		export const Enabled: Enabled;
 
-		export function GetEnumItems(this: defined): Array<HumanoidOnlySetCollisionsOnStateChange>
+		export function GetEnumItems(): Array<HumanoidOnlySetCollisionsOnStateChange>
 	}
 	export type HumanoidOnlySetCollisionsOnStateChange = HumanoidOnlySetCollisionsOnStateChange.Default | HumanoidOnlySetCollisionsOnStateChange.Disabled | HumanoidOnlySetCollisionsOnStateChange.Enabled;
 	export namespace HumanoidRigType {
 		export interface R6 extends EnumItem {
 			Name: "R6";
 			Value: 0;
-			EnumType: EnumType<HumanoidRigType>;
+			EnumType: typeof HumanoidRigType;
 		}
 
 		export const R6: R6;
@@ -6594,19 +6593,19 @@ declare namespace Enum {
 		export interface R15 extends EnumItem {
 			Name: "R15";
 			Value: 1;
-			EnumType: EnumType<HumanoidRigType>;
+			EnumType: typeof HumanoidRigType;
 		}
 
 		export const R15: R15;
 
-		export function GetEnumItems(this: defined): Array<HumanoidRigType>
+		export function GetEnumItems(): Array<HumanoidRigType>
 	}
 	export type HumanoidRigType = HumanoidRigType.R6 | HumanoidRigType.R15;
 	export namespace HumanoidStateType {
 		export interface FallingDown extends EnumItem {
 			Name: "FallingDown";
 			Value: 0;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const FallingDown: FallingDown;
@@ -6614,7 +6613,7 @@ declare namespace Enum {
 		export interface Running extends EnumItem {
 			Name: "Running";
 			Value: 8;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const Running: Running;
@@ -6622,7 +6621,7 @@ declare namespace Enum {
 		export interface RunningNoPhysics extends EnumItem {
 			Name: "RunningNoPhysics";
 			Value: 10;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const RunningNoPhysics: RunningNoPhysics;
@@ -6630,7 +6629,7 @@ declare namespace Enum {
 		export interface Climbing extends EnumItem {
 			Name: "Climbing";
 			Value: 12;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const Climbing: Climbing;
@@ -6638,7 +6637,7 @@ declare namespace Enum {
 		export interface StrafingNoPhysics extends EnumItem {
 			Name: "StrafingNoPhysics";
 			Value: 11;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const StrafingNoPhysics: StrafingNoPhysics;
@@ -6646,7 +6645,7 @@ declare namespace Enum {
 		export interface Ragdoll extends EnumItem {
 			Name: "Ragdoll";
 			Value: 1;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const Ragdoll: Ragdoll;
@@ -6654,7 +6653,7 @@ declare namespace Enum {
 		export interface GettingUp extends EnumItem {
 			Name: "GettingUp";
 			Value: 2;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const GettingUp: GettingUp;
@@ -6662,7 +6661,7 @@ declare namespace Enum {
 		export interface Jumping extends EnumItem {
 			Name: "Jumping";
 			Value: 3;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const Jumping: Jumping;
@@ -6670,7 +6669,7 @@ declare namespace Enum {
 		export interface Landed extends EnumItem {
 			Name: "Landed";
 			Value: 7;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const Landed: Landed;
@@ -6678,7 +6677,7 @@ declare namespace Enum {
 		export interface Flying extends EnumItem {
 			Name: "Flying";
 			Value: 6;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const Flying: Flying;
@@ -6686,7 +6685,7 @@ declare namespace Enum {
 		export interface Freefall extends EnumItem {
 			Name: "Freefall";
 			Value: 5;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const Freefall: Freefall;
@@ -6694,7 +6693,7 @@ declare namespace Enum {
 		export interface Seated extends EnumItem {
 			Name: "Seated";
 			Value: 13;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const Seated: Seated;
@@ -6702,7 +6701,7 @@ declare namespace Enum {
 		export interface PlatformStanding extends EnumItem {
 			Name: "PlatformStanding";
 			Value: 14;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const PlatformStanding: PlatformStanding;
@@ -6710,7 +6709,7 @@ declare namespace Enum {
 		export interface Dead extends EnumItem {
 			Name: "Dead";
 			Value: 15;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const Dead: Dead;
@@ -6718,7 +6717,7 @@ declare namespace Enum {
 		export interface Swimming extends EnumItem {
 			Name: "Swimming";
 			Value: 4;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const Swimming: Swimming;
@@ -6726,7 +6725,7 @@ declare namespace Enum {
 		export interface Physics extends EnumItem {
 			Name: "Physics";
 			Value: 16;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const Physics: Physics;
@@ -6734,19 +6733,19 @@ declare namespace Enum {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 18;
-			EnumType: EnumType<HumanoidStateType>;
+			EnumType: typeof HumanoidStateType;
 		}
 
 		export const None: None;
 
-		export function GetEnumItems(this: defined): Array<HumanoidStateType>
+		export function GetEnumItems(): Array<HumanoidStateType>
 	}
 	export type HumanoidStateType = HumanoidStateType.FallingDown | HumanoidStateType.Running | HumanoidStateType.RunningNoPhysics | HumanoidStateType.Climbing | HumanoidStateType.StrafingNoPhysics | HumanoidStateType.Ragdoll | HumanoidStateType.GettingUp | HumanoidStateType.Jumping | HumanoidStateType.Landed | HumanoidStateType.Flying | HumanoidStateType.Freefall | HumanoidStateType.Seated | HumanoidStateType.PlatformStanding | HumanoidStateType.Dead | HumanoidStateType.Swimming | HumanoidStateType.Physics | HumanoidStateType.None;
 	export namespace IKCollisionsMode {
 		export interface NoCollisions extends EnumItem {
 			Name: "NoCollisions";
 			Value: 0;
-			EnumType: EnumType<IKCollisionsMode>;
+			EnumType: typeof IKCollisionsMode;
 		}
 
 		export const NoCollisions: NoCollisions;
@@ -6754,7 +6753,7 @@ declare namespace Enum {
 		export interface OtherMechanismsAnchored extends EnumItem {
 			Name: "OtherMechanismsAnchored";
 			Value: 1;
-			EnumType: EnumType<IKCollisionsMode>;
+			EnumType: typeof IKCollisionsMode;
 		}
 
 		export const OtherMechanismsAnchored: OtherMechanismsAnchored;
@@ -6762,19 +6761,19 @@ declare namespace Enum {
 		export interface IncludeContactedMechanisms extends EnumItem {
 			Name: "IncludeContactedMechanisms";
 			Value: 2;
-			EnumType: EnumType<IKCollisionsMode>;
+			EnumType: typeof IKCollisionsMode;
 		}
 
 		export const IncludeContactedMechanisms: IncludeContactedMechanisms;
 
-		export function GetEnumItems(this: defined): Array<IKCollisionsMode>
+		export function GetEnumItems(): Array<IKCollisionsMode>
 	}
 	export type IKCollisionsMode = IKCollisionsMode.NoCollisions | IKCollisionsMode.OtherMechanismsAnchored | IKCollisionsMode.IncludeContactedMechanisms;
 	export namespace IXPLoadingStatus {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<IXPLoadingStatus>;
+			EnumType: typeof IXPLoadingStatus;
 		}
 
 		export const None: None;
@@ -6782,7 +6781,7 @@ declare namespace Enum {
 		export interface Pending extends EnumItem {
 			Name: "Pending";
 			Value: 1;
-			EnumType: EnumType<IXPLoadingStatus>;
+			EnumType: typeof IXPLoadingStatus;
 		}
 
 		export const Pending: Pending;
@@ -6790,7 +6789,7 @@ declare namespace Enum {
 		export interface Initialized extends EnumItem {
 			Name: "Initialized";
 			Value: 2;
-			EnumType: EnumType<IXPLoadingStatus>;
+			EnumType: typeof IXPLoadingStatus;
 		}
 
 		export const Initialized: Initialized;
@@ -6798,7 +6797,7 @@ declare namespace Enum {
 		export interface ShutOff extends EnumItem {
 			Name: "ShutOff";
 			Value: 3;
-			EnumType: EnumType<IXPLoadingStatus>;
+			EnumType: typeof IXPLoadingStatus;
 		}
 
 		export const ShutOff: ShutOff;
@@ -6806,7 +6805,7 @@ declare namespace Enum {
 		export interface ErrorTimedOut extends EnumItem {
 			Name: "ErrorTimedOut";
 			Value: 7;
-			EnumType: EnumType<IXPLoadingStatus>;
+			EnumType: typeof IXPLoadingStatus;
 		}
 
 		export const ErrorTimedOut: ErrorTimedOut;
@@ -6814,7 +6813,7 @@ declare namespace Enum {
 		export interface ErrorConnection extends EnumItem {
 			Name: "ErrorConnection";
 			Value: 5;
-			EnumType: EnumType<IXPLoadingStatus>;
+			EnumType: typeof IXPLoadingStatus;
 		}
 
 		export const ErrorConnection: ErrorConnection;
@@ -6822,7 +6821,7 @@ declare namespace Enum {
 		export interface ErrorJsonParse extends EnumItem {
 			Name: "ErrorJsonParse";
 			Value: 6;
-			EnumType: EnumType<IXPLoadingStatus>;
+			EnumType: typeof IXPLoadingStatus;
 		}
 
 		export const ErrorJsonParse: ErrorJsonParse;
@@ -6830,19 +6829,19 @@ declare namespace Enum {
 		export interface ErrorInvalidUser extends EnumItem {
 			Name: "ErrorInvalidUser";
 			Value: 4;
-			EnumType: EnumType<IXPLoadingStatus>;
+			EnumType: typeof IXPLoadingStatus;
 		}
 
 		export const ErrorInvalidUser: ErrorInvalidUser;
 
-		export function GetEnumItems(this: defined): Array<IXPLoadingStatus>
+		export function GetEnumItems(): Array<IXPLoadingStatus>
 	}
 	export type IXPLoadingStatus = IXPLoadingStatus.None | IXPLoadingStatus.Pending | IXPLoadingStatus.Initialized | IXPLoadingStatus.ShutOff | IXPLoadingStatus.ErrorTimedOut | IXPLoadingStatus.ErrorConnection | IXPLoadingStatus.ErrorJsonParse | IXPLoadingStatus.ErrorInvalidUser;
 	export namespace InOut {
 		export interface Edge extends EnumItem {
 			Name: "Edge";
 			Value: 0;
-			EnumType: EnumType<InOut>;
+			EnumType: typeof InOut;
 		}
 
 		export const Edge: Edge;
@@ -6850,7 +6849,7 @@ declare namespace Enum {
 		export interface Inset extends EnumItem {
 			Name: "Inset";
 			Value: 1;
-			EnumType: EnumType<InOut>;
+			EnumType: typeof InOut;
 		}
 
 		export const Inset: Inset;
@@ -6858,19 +6857,19 @@ declare namespace Enum {
 		export interface Center extends EnumItem {
 			Name: "Center";
 			Value: 2;
-			EnumType: EnumType<InOut>;
+			EnumType: typeof InOut;
 		}
 
 		export const Center: Center;
 
-		export function GetEnumItems(this: defined): Array<InOut>
+		export function GetEnumItems(): Array<InOut>
 	}
 	export type InOut = InOut.Edge | InOut.Inset | InOut.Center;
 	export namespace InfoType {
 		export interface Asset extends EnumItem {
 			Name: "Asset";
 			Value: 0;
-			EnumType: EnumType<InfoType>;
+			EnumType: typeof InfoType;
 		}
 
 		export const Asset: Asset;
@@ -6878,7 +6877,7 @@ declare namespace Enum {
 		export interface Product extends EnumItem {
 			Name: "Product";
 			Value: 1;
-			EnumType: EnumType<InfoType>;
+			EnumType: typeof InfoType;
 		}
 
 		export const Product: Product;
@@ -6886,7 +6885,7 @@ declare namespace Enum {
 		export interface GamePass extends EnumItem {
 			Name: "GamePass";
 			Value: 2;
-			EnumType: EnumType<InfoType>;
+			EnumType: typeof InfoType;
 		}
 
 		export const GamePass: GamePass;
@@ -6894,7 +6893,7 @@ declare namespace Enum {
 		export interface Subscription extends EnumItem {
 			Name: "Subscription";
 			Value: 3;
-			EnumType: EnumType<InfoType>;
+			EnumType: typeof InfoType;
 		}
 
 		export const Subscription: Subscription;
@@ -6902,19 +6901,19 @@ declare namespace Enum {
 		export interface Bundle extends EnumItem {
 			Name: "Bundle";
 			Value: 4;
-			EnumType: EnumType<InfoType>;
+			EnumType: typeof InfoType;
 		}
 
 		export const Bundle: Bundle;
 
-		export function GetEnumItems(this: defined): Array<InfoType>
+		export function GetEnumItems(): Array<InfoType>
 	}
 	export type InfoType = InfoType.Asset | InfoType.Product | InfoType.GamePass | InfoType.Subscription | InfoType.Bundle;
 	export namespace InitialDockState {
 		export interface Top extends EnumItem {
 			Name: "Top";
 			Value: 0;
-			EnumType: EnumType<InitialDockState>;
+			EnumType: typeof InitialDockState;
 		}
 
 		export const Top: Top;
@@ -6922,7 +6921,7 @@ declare namespace Enum {
 		export interface Bottom extends EnumItem {
 			Name: "Bottom";
 			Value: 1;
-			EnumType: EnumType<InitialDockState>;
+			EnumType: typeof InitialDockState;
 		}
 
 		export const Bottom: Bottom;
@@ -6930,7 +6929,7 @@ declare namespace Enum {
 		export interface Left extends EnumItem {
 			Name: "Left";
 			Value: 2;
-			EnumType: EnumType<InitialDockState>;
+			EnumType: typeof InitialDockState;
 		}
 
 		export const Left: Left;
@@ -6938,7 +6937,7 @@ declare namespace Enum {
 		export interface Right extends EnumItem {
 			Name: "Right";
 			Value: 3;
-			EnumType: EnumType<InitialDockState>;
+			EnumType: typeof InitialDockState;
 		}
 
 		export const Right: Right;
@@ -6946,19 +6945,19 @@ declare namespace Enum {
 		export interface Float extends EnumItem {
 			Name: "Float";
 			Value: 4;
-			EnumType: EnumType<InitialDockState>;
+			EnumType: typeof InitialDockState;
 		}
 
 		export const Float: Float;
 
-		export function GetEnumItems(this: defined): Array<InitialDockState>
+		export function GetEnumItems(): Array<InitialDockState>
 	}
 	export type InitialDockState = InitialDockState.Top | InitialDockState.Bottom | InitialDockState.Left | InitialDockState.Right | InitialDockState.Float;
 	export namespace InputType {
 		export interface NoInput extends EnumItem {
 			Name: "NoInput";
 			Value: 0;
-			EnumType: EnumType<InputType>;
+			EnumType: typeof InputType;
 		}
 
 		export const NoInput: NoInput;
@@ -6966,7 +6965,7 @@ declare namespace Enum {
 		export interface Constant extends EnumItem {
 			Name: "Constant";
 			Value: 12;
-			EnumType: EnumType<InputType>;
+			EnumType: typeof InputType;
 		}
 
 		export const Constant: Constant;
@@ -6974,19 +6973,19 @@ declare namespace Enum {
 		export interface Sin extends EnumItem {
 			Name: "Sin";
 			Value: 13;
-			EnumType: EnumType<InputType>;
+			EnumType: typeof InputType;
 		}
 
 		export const Sin: Sin;
 
-		export function GetEnumItems(this: defined): Array<InputType>
+		export function GetEnumItems(): Array<InputType>
 	}
 	export type InputType = InputType.NoInput | InputType.Constant | InputType.Sin;
 	export namespace InterpolationThrottlingMode {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<InterpolationThrottlingMode>;
+			EnumType: typeof InterpolationThrottlingMode;
 		}
 
 		export const Default: Default;
@@ -6994,7 +6993,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<InterpolationThrottlingMode>;
+			EnumType: typeof InterpolationThrottlingMode;
 		}
 
 		export const Disabled: Disabled;
@@ -7002,19 +7001,19 @@ declare namespace Enum {
 		export interface Enabled extends EnumItem {
 			Name: "Enabled";
 			Value: 2;
-			EnumType: EnumType<InterpolationThrottlingMode>;
+			EnumType: typeof InterpolationThrottlingMode;
 		}
 
 		export const Enabled: Enabled;
 
-		export function GetEnumItems(this: defined): Array<InterpolationThrottlingMode>
+		export function GetEnumItems(): Array<InterpolationThrottlingMode>
 	}
 	export type InterpolationThrottlingMode = InterpolationThrottlingMode.Default | InterpolationThrottlingMode.Disabled | InterpolationThrottlingMode.Enabled;
 	export namespace JointCreationMode {
 		export interface All extends EnumItem {
 			Name: "All";
 			Value: 0;
-			EnumType: EnumType<JointCreationMode>;
+			EnumType: typeof JointCreationMode;
 		}
 
 		export const All: All;
@@ -7022,7 +7021,7 @@ declare namespace Enum {
 		export interface Surface extends EnumItem {
 			Name: "Surface";
 			Value: 1;
-			EnumType: EnumType<JointCreationMode>;
+			EnumType: typeof JointCreationMode;
 		}
 
 		export const Surface: Surface;
@@ -7030,19 +7029,19 @@ declare namespace Enum {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 2;
-			EnumType: EnumType<JointCreationMode>;
+			EnumType: typeof JointCreationMode;
 		}
 
 		export const None: None;
 
-		export function GetEnumItems(this: defined): Array<JointCreationMode>
+		export function GetEnumItems(): Array<JointCreationMode>
 	}
 	export type JointCreationMode = JointCreationMode.All | JointCreationMode.Surface | JointCreationMode.None;
 	export namespace KeyCode {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 0;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Unknown: Unknown;
@@ -7050,7 +7049,7 @@ declare namespace Enum {
 		export interface Backspace extends EnumItem {
 			Name: "Backspace";
 			Value: 8;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Backspace: Backspace;
@@ -7058,7 +7057,7 @@ declare namespace Enum {
 		export interface Tab extends EnumItem {
 			Name: "Tab";
 			Value: 9;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Tab: Tab;
@@ -7066,7 +7065,7 @@ declare namespace Enum {
 		export interface Clear extends EnumItem {
 			Name: "Clear";
 			Value: 12;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Clear: Clear;
@@ -7074,7 +7073,7 @@ declare namespace Enum {
 		export interface Return extends EnumItem {
 			Name: "Return";
 			Value: 13;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Return: Return;
@@ -7082,7 +7081,7 @@ declare namespace Enum {
 		export interface Pause extends EnumItem {
 			Name: "Pause";
 			Value: 19;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Pause: Pause;
@@ -7090,7 +7089,7 @@ declare namespace Enum {
 		export interface Escape extends EnumItem {
 			Name: "Escape";
 			Value: 27;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Escape: Escape;
@@ -7098,7 +7097,7 @@ declare namespace Enum {
 		export interface Space extends EnumItem {
 			Name: "Space";
 			Value: 32;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Space: Space;
@@ -7106,7 +7105,7 @@ declare namespace Enum {
 		export interface QuotedDouble extends EnumItem {
 			Name: "QuotedDouble";
 			Value: 34;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const QuotedDouble: QuotedDouble;
@@ -7114,7 +7113,7 @@ declare namespace Enum {
 		export interface Hash extends EnumItem {
 			Name: "Hash";
 			Value: 35;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Hash: Hash;
@@ -7122,7 +7121,7 @@ declare namespace Enum {
 		export interface Dollar extends EnumItem {
 			Name: "Dollar";
 			Value: 36;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Dollar: Dollar;
@@ -7130,7 +7129,7 @@ declare namespace Enum {
 		export interface Percent extends EnumItem {
 			Name: "Percent";
 			Value: 37;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Percent: Percent;
@@ -7138,7 +7137,7 @@ declare namespace Enum {
 		export interface Ampersand extends EnumItem {
 			Name: "Ampersand";
 			Value: 38;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Ampersand: Ampersand;
@@ -7146,7 +7145,7 @@ declare namespace Enum {
 		export interface Quote extends EnumItem {
 			Name: "Quote";
 			Value: 39;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Quote: Quote;
@@ -7154,7 +7153,7 @@ declare namespace Enum {
 		export interface LeftParenthesis extends EnumItem {
 			Name: "LeftParenthesis";
 			Value: 40;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const LeftParenthesis: LeftParenthesis;
@@ -7162,7 +7161,7 @@ declare namespace Enum {
 		export interface RightParenthesis extends EnumItem {
 			Name: "RightParenthesis";
 			Value: 41;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const RightParenthesis: RightParenthesis;
@@ -7170,7 +7169,7 @@ declare namespace Enum {
 		export interface Asterisk extends EnumItem {
 			Name: "Asterisk";
 			Value: 42;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Asterisk: Asterisk;
@@ -7178,7 +7177,7 @@ declare namespace Enum {
 		export interface Plus extends EnumItem {
 			Name: "Plus";
 			Value: 43;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Plus: Plus;
@@ -7186,7 +7185,7 @@ declare namespace Enum {
 		export interface Comma extends EnumItem {
 			Name: "Comma";
 			Value: 44;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Comma: Comma;
@@ -7194,7 +7193,7 @@ declare namespace Enum {
 		export interface Minus extends EnumItem {
 			Name: "Minus";
 			Value: 45;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Minus: Minus;
@@ -7202,7 +7201,7 @@ declare namespace Enum {
 		export interface Period extends EnumItem {
 			Name: "Period";
 			Value: 46;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Period: Period;
@@ -7210,7 +7209,7 @@ declare namespace Enum {
 		export interface Slash extends EnumItem {
 			Name: "Slash";
 			Value: 47;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Slash: Slash;
@@ -7218,7 +7217,7 @@ declare namespace Enum {
 		export interface Zero extends EnumItem {
 			Name: "Zero";
 			Value: 48;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Zero: Zero;
@@ -7226,7 +7225,7 @@ declare namespace Enum {
 		export interface One extends EnumItem {
 			Name: "One";
 			Value: 49;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const One: One;
@@ -7234,7 +7233,7 @@ declare namespace Enum {
 		export interface Two extends EnumItem {
 			Name: "Two";
 			Value: 50;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Two: Two;
@@ -7242,7 +7241,7 @@ declare namespace Enum {
 		export interface Three extends EnumItem {
 			Name: "Three";
 			Value: 51;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Three: Three;
@@ -7250,7 +7249,7 @@ declare namespace Enum {
 		export interface Four extends EnumItem {
 			Name: "Four";
 			Value: 52;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Four: Four;
@@ -7258,7 +7257,7 @@ declare namespace Enum {
 		export interface Five extends EnumItem {
 			Name: "Five";
 			Value: 53;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Five: Five;
@@ -7266,7 +7265,7 @@ declare namespace Enum {
 		export interface Six extends EnumItem {
 			Name: "Six";
 			Value: 54;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Six: Six;
@@ -7274,7 +7273,7 @@ declare namespace Enum {
 		export interface Seven extends EnumItem {
 			Name: "Seven";
 			Value: 55;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Seven: Seven;
@@ -7282,7 +7281,7 @@ declare namespace Enum {
 		export interface Eight extends EnumItem {
 			Name: "Eight";
 			Value: 56;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Eight: Eight;
@@ -7290,7 +7289,7 @@ declare namespace Enum {
 		export interface Nine extends EnumItem {
 			Name: "Nine";
 			Value: 57;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Nine: Nine;
@@ -7298,7 +7297,7 @@ declare namespace Enum {
 		export interface Colon extends EnumItem {
 			Name: "Colon";
 			Value: 58;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Colon: Colon;
@@ -7306,7 +7305,7 @@ declare namespace Enum {
 		export interface Semicolon extends EnumItem {
 			Name: "Semicolon";
 			Value: 59;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Semicolon: Semicolon;
@@ -7314,7 +7313,7 @@ declare namespace Enum {
 		export interface LessThan extends EnumItem {
 			Name: "LessThan";
 			Value: 60;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const LessThan: LessThan;
@@ -7322,7 +7321,7 @@ declare namespace Enum {
 		export interface Equals extends EnumItem {
 			Name: "Equals";
 			Value: 61;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Equals: Equals;
@@ -7330,7 +7329,7 @@ declare namespace Enum {
 		export interface GreaterThan extends EnumItem {
 			Name: "GreaterThan";
 			Value: 62;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const GreaterThan: GreaterThan;
@@ -7338,7 +7337,7 @@ declare namespace Enum {
 		export interface Question extends EnumItem {
 			Name: "Question";
 			Value: 63;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Question: Question;
@@ -7346,7 +7345,7 @@ declare namespace Enum {
 		export interface At extends EnumItem {
 			Name: "At";
 			Value: 64;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const At: At;
@@ -7354,7 +7353,7 @@ declare namespace Enum {
 		export interface LeftBracket extends EnumItem {
 			Name: "LeftBracket";
 			Value: 91;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const LeftBracket: LeftBracket;
@@ -7362,7 +7361,7 @@ declare namespace Enum {
 		export interface BackSlash extends EnumItem {
 			Name: "BackSlash";
 			Value: 92;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const BackSlash: BackSlash;
@@ -7370,7 +7369,7 @@ declare namespace Enum {
 		export interface RightBracket extends EnumItem {
 			Name: "RightBracket";
 			Value: 93;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const RightBracket: RightBracket;
@@ -7378,7 +7377,7 @@ declare namespace Enum {
 		export interface Caret extends EnumItem {
 			Name: "Caret";
 			Value: 94;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Caret: Caret;
@@ -7386,7 +7385,7 @@ declare namespace Enum {
 		export interface Underscore extends EnumItem {
 			Name: "Underscore";
 			Value: 95;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Underscore: Underscore;
@@ -7394,7 +7393,7 @@ declare namespace Enum {
 		export interface Backquote extends EnumItem {
 			Name: "Backquote";
 			Value: 96;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Backquote: Backquote;
@@ -7402,7 +7401,7 @@ declare namespace Enum {
 		export interface A extends EnumItem {
 			Name: "A";
 			Value: 97;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const A: A;
@@ -7410,7 +7409,7 @@ declare namespace Enum {
 		export interface B extends EnumItem {
 			Name: "B";
 			Value: 98;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const B: B;
@@ -7418,7 +7417,7 @@ declare namespace Enum {
 		export interface C extends EnumItem {
 			Name: "C";
 			Value: 99;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const C: C;
@@ -7426,7 +7425,7 @@ declare namespace Enum {
 		export interface D extends EnumItem {
 			Name: "D";
 			Value: 100;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const D: D;
@@ -7434,7 +7433,7 @@ declare namespace Enum {
 		export interface E extends EnumItem {
 			Name: "E";
 			Value: 101;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const E: E;
@@ -7442,7 +7441,7 @@ declare namespace Enum {
 		export interface F extends EnumItem {
 			Name: "F";
 			Value: 102;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F: F;
@@ -7450,7 +7449,7 @@ declare namespace Enum {
 		export interface G extends EnumItem {
 			Name: "G";
 			Value: 103;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const G: G;
@@ -7458,7 +7457,7 @@ declare namespace Enum {
 		export interface H extends EnumItem {
 			Name: "H";
 			Value: 104;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const H: H;
@@ -7466,7 +7465,7 @@ declare namespace Enum {
 		export interface I extends EnumItem {
 			Name: "I";
 			Value: 105;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const I: I;
@@ -7474,7 +7473,7 @@ declare namespace Enum {
 		export interface J extends EnumItem {
 			Name: "J";
 			Value: 106;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const J: J;
@@ -7482,7 +7481,7 @@ declare namespace Enum {
 		export interface K extends EnumItem {
 			Name: "K";
 			Value: 107;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const K: K;
@@ -7490,7 +7489,7 @@ declare namespace Enum {
 		export interface L extends EnumItem {
 			Name: "L";
 			Value: 108;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const L: L;
@@ -7498,7 +7497,7 @@ declare namespace Enum {
 		export interface M extends EnumItem {
 			Name: "M";
 			Value: 109;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const M: M;
@@ -7506,7 +7505,7 @@ declare namespace Enum {
 		export interface N extends EnumItem {
 			Name: "N";
 			Value: 110;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const N: N;
@@ -7514,7 +7513,7 @@ declare namespace Enum {
 		export interface O extends EnumItem {
 			Name: "O";
 			Value: 111;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const O: O;
@@ -7522,7 +7521,7 @@ declare namespace Enum {
 		export interface P extends EnumItem {
 			Name: "P";
 			Value: 112;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const P: P;
@@ -7530,7 +7529,7 @@ declare namespace Enum {
 		export interface Q extends EnumItem {
 			Name: "Q";
 			Value: 113;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Q: Q;
@@ -7538,7 +7537,7 @@ declare namespace Enum {
 		export interface R extends EnumItem {
 			Name: "R";
 			Value: 114;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const R: R;
@@ -7546,7 +7545,7 @@ declare namespace Enum {
 		export interface S extends EnumItem {
 			Name: "S";
 			Value: 115;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const S: S;
@@ -7554,7 +7553,7 @@ declare namespace Enum {
 		export interface T extends EnumItem {
 			Name: "T";
 			Value: 116;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const T: T;
@@ -7562,7 +7561,7 @@ declare namespace Enum {
 		export interface U extends EnumItem {
 			Name: "U";
 			Value: 117;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const U: U;
@@ -7570,7 +7569,7 @@ declare namespace Enum {
 		export interface V extends EnumItem {
 			Name: "V";
 			Value: 118;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const V: V;
@@ -7578,7 +7577,7 @@ declare namespace Enum {
 		export interface W extends EnumItem {
 			Name: "W";
 			Value: 119;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const W: W;
@@ -7586,7 +7585,7 @@ declare namespace Enum {
 		export interface X extends EnumItem {
 			Name: "X";
 			Value: 120;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const X: X;
@@ -7594,7 +7593,7 @@ declare namespace Enum {
 		export interface Y extends EnumItem {
 			Name: "Y";
 			Value: 121;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Y: Y;
@@ -7602,7 +7601,7 @@ declare namespace Enum {
 		export interface Z extends EnumItem {
 			Name: "Z";
 			Value: 122;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Z: Z;
@@ -7610,7 +7609,7 @@ declare namespace Enum {
 		export interface LeftCurly extends EnumItem {
 			Name: "LeftCurly";
 			Value: 123;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const LeftCurly: LeftCurly;
@@ -7618,7 +7617,7 @@ declare namespace Enum {
 		export interface Pipe extends EnumItem {
 			Name: "Pipe";
 			Value: 124;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Pipe: Pipe;
@@ -7626,7 +7625,7 @@ declare namespace Enum {
 		export interface RightCurly extends EnumItem {
 			Name: "RightCurly";
 			Value: 125;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const RightCurly: RightCurly;
@@ -7634,7 +7633,7 @@ declare namespace Enum {
 		export interface Tilde extends EnumItem {
 			Name: "Tilde";
 			Value: 126;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Tilde: Tilde;
@@ -7642,7 +7641,7 @@ declare namespace Enum {
 		export interface Delete extends EnumItem {
 			Name: "Delete";
 			Value: 127;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Delete: Delete;
@@ -7650,7 +7649,7 @@ declare namespace Enum {
 		export interface KeypadZero extends EnumItem {
 			Name: "KeypadZero";
 			Value: 256;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadZero: KeypadZero;
@@ -7658,7 +7657,7 @@ declare namespace Enum {
 		export interface KeypadOne extends EnumItem {
 			Name: "KeypadOne";
 			Value: 257;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadOne: KeypadOne;
@@ -7666,7 +7665,7 @@ declare namespace Enum {
 		export interface KeypadTwo extends EnumItem {
 			Name: "KeypadTwo";
 			Value: 258;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadTwo: KeypadTwo;
@@ -7674,7 +7673,7 @@ declare namespace Enum {
 		export interface KeypadThree extends EnumItem {
 			Name: "KeypadThree";
 			Value: 259;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadThree: KeypadThree;
@@ -7682,7 +7681,7 @@ declare namespace Enum {
 		export interface KeypadFour extends EnumItem {
 			Name: "KeypadFour";
 			Value: 260;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadFour: KeypadFour;
@@ -7690,7 +7689,7 @@ declare namespace Enum {
 		export interface KeypadFive extends EnumItem {
 			Name: "KeypadFive";
 			Value: 261;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadFive: KeypadFive;
@@ -7698,7 +7697,7 @@ declare namespace Enum {
 		export interface KeypadSix extends EnumItem {
 			Name: "KeypadSix";
 			Value: 262;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadSix: KeypadSix;
@@ -7706,7 +7705,7 @@ declare namespace Enum {
 		export interface KeypadSeven extends EnumItem {
 			Name: "KeypadSeven";
 			Value: 263;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadSeven: KeypadSeven;
@@ -7714,7 +7713,7 @@ declare namespace Enum {
 		export interface KeypadEight extends EnumItem {
 			Name: "KeypadEight";
 			Value: 264;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadEight: KeypadEight;
@@ -7722,7 +7721,7 @@ declare namespace Enum {
 		export interface KeypadNine extends EnumItem {
 			Name: "KeypadNine";
 			Value: 265;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadNine: KeypadNine;
@@ -7730,7 +7729,7 @@ declare namespace Enum {
 		export interface KeypadPeriod extends EnumItem {
 			Name: "KeypadPeriod";
 			Value: 266;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadPeriod: KeypadPeriod;
@@ -7738,7 +7737,7 @@ declare namespace Enum {
 		export interface KeypadDivide extends EnumItem {
 			Name: "KeypadDivide";
 			Value: 267;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadDivide: KeypadDivide;
@@ -7746,7 +7745,7 @@ declare namespace Enum {
 		export interface KeypadMultiply extends EnumItem {
 			Name: "KeypadMultiply";
 			Value: 268;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadMultiply: KeypadMultiply;
@@ -7754,7 +7753,7 @@ declare namespace Enum {
 		export interface KeypadMinus extends EnumItem {
 			Name: "KeypadMinus";
 			Value: 269;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadMinus: KeypadMinus;
@@ -7762,7 +7761,7 @@ declare namespace Enum {
 		export interface KeypadPlus extends EnumItem {
 			Name: "KeypadPlus";
 			Value: 270;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadPlus: KeypadPlus;
@@ -7770,7 +7769,7 @@ declare namespace Enum {
 		export interface KeypadEnter extends EnumItem {
 			Name: "KeypadEnter";
 			Value: 271;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadEnter: KeypadEnter;
@@ -7778,7 +7777,7 @@ declare namespace Enum {
 		export interface KeypadEquals extends EnumItem {
 			Name: "KeypadEquals";
 			Value: 272;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const KeypadEquals: KeypadEquals;
@@ -7786,7 +7785,7 @@ declare namespace Enum {
 		export interface Up extends EnumItem {
 			Name: "Up";
 			Value: 273;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Up: Up;
@@ -7794,7 +7793,7 @@ declare namespace Enum {
 		export interface Down extends EnumItem {
 			Name: "Down";
 			Value: 274;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Down: Down;
@@ -7802,7 +7801,7 @@ declare namespace Enum {
 		export interface Right extends EnumItem {
 			Name: "Right";
 			Value: 275;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Right: Right;
@@ -7810,7 +7809,7 @@ declare namespace Enum {
 		export interface Left extends EnumItem {
 			Name: "Left";
 			Value: 276;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Left: Left;
@@ -7818,7 +7817,7 @@ declare namespace Enum {
 		export interface Insert extends EnumItem {
 			Name: "Insert";
 			Value: 277;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Insert: Insert;
@@ -7826,7 +7825,7 @@ declare namespace Enum {
 		export interface Home extends EnumItem {
 			Name: "Home";
 			Value: 278;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Home: Home;
@@ -7834,7 +7833,7 @@ declare namespace Enum {
 		export interface End extends EnumItem {
 			Name: "End";
 			Value: 279;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const End: End;
@@ -7842,7 +7841,7 @@ declare namespace Enum {
 		export interface PageUp extends EnumItem {
 			Name: "PageUp";
 			Value: 280;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const PageUp: PageUp;
@@ -7850,7 +7849,7 @@ declare namespace Enum {
 		export interface PageDown extends EnumItem {
 			Name: "PageDown";
 			Value: 281;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const PageDown: PageDown;
@@ -7858,7 +7857,7 @@ declare namespace Enum {
 		export interface LeftShift extends EnumItem {
 			Name: "LeftShift";
 			Value: 304;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const LeftShift: LeftShift;
@@ -7866,7 +7865,7 @@ declare namespace Enum {
 		export interface RightShift extends EnumItem {
 			Name: "RightShift";
 			Value: 303;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const RightShift: RightShift;
@@ -7874,7 +7873,7 @@ declare namespace Enum {
 		export interface LeftMeta extends EnumItem {
 			Name: "LeftMeta";
 			Value: 310;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const LeftMeta: LeftMeta;
@@ -7882,7 +7881,7 @@ declare namespace Enum {
 		export interface RightMeta extends EnumItem {
 			Name: "RightMeta";
 			Value: 309;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const RightMeta: RightMeta;
@@ -7890,7 +7889,7 @@ declare namespace Enum {
 		export interface LeftAlt extends EnumItem {
 			Name: "LeftAlt";
 			Value: 308;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const LeftAlt: LeftAlt;
@@ -7898,7 +7897,7 @@ declare namespace Enum {
 		export interface RightAlt extends EnumItem {
 			Name: "RightAlt";
 			Value: 307;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const RightAlt: RightAlt;
@@ -7906,7 +7905,7 @@ declare namespace Enum {
 		export interface LeftControl extends EnumItem {
 			Name: "LeftControl";
 			Value: 306;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const LeftControl: LeftControl;
@@ -7914,7 +7913,7 @@ declare namespace Enum {
 		export interface RightControl extends EnumItem {
 			Name: "RightControl";
 			Value: 305;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const RightControl: RightControl;
@@ -7922,7 +7921,7 @@ declare namespace Enum {
 		export interface CapsLock extends EnumItem {
 			Name: "CapsLock";
 			Value: 301;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const CapsLock: CapsLock;
@@ -7930,7 +7929,7 @@ declare namespace Enum {
 		export interface NumLock extends EnumItem {
 			Name: "NumLock";
 			Value: 300;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const NumLock: NumLock;
@@ -7938,7 +7937,7 @@ declare namespace Enum {
 		export interface ScrollLock extends EnumItem {
 			Name: "ScrollLock";
 			Value: 302;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ScrollLock: ScrollLock;
@@ -7946,7 +7945,7 @@ declare namespace Enum {
 		export interface LeftSuper extends EnumItem {
 			Name: "LeftSuper";
 			Value: 311;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const LeftSuper: LeftSuper;
@@ -7954,7 +7953,7 @@ declare namespace Enum {
 		export interface RightSuper extends EnumItem {
 			Name: "RightSuper";
 			Value: 312;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const RightSuper: RightSuper;
@@ -7962,7 +7961,7 @@ declare namespace Enum {
 		export interface Mode extends EnumItem {
 			Name: "Mode";
 			Value: 313;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Mode: Mode;
@@ -7970,7 +7969,7 @@ declare namespace Enum {
 		export interface Compose extends EnumItem {
 			Name: "Compose";
 			Value: 314;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Compose: Compose;
@@ -7978,7 +7977,7 @@ declare namespace Enum {
 		export interface Help extends EnumItem {
 			Name: "Help";
 			Value: 315;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Help: Help;
@@ -7986,7 +7985,7 @@ declare namespace Enum {
 		export interface Print extends EnumItem {
 			Name: "Print";
 			Value: 316;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Print: Print;
@@ -7994,7 +7993,7 @@ declare namespace Enum {
 		export interface SysReq extends EnumItem {
 			Name: "SysReq";
 			Value: 317;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const SysReq: SysReq;
@@ -8002,7 +8001,7 @@ declare namespace Enum {
 		export interface Break extends EnumItem {
 			Name: "Break";
 			Value: 318;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Break: Break;
@@ -8010,7 +8009,7 @@ declare namespace Enum {
 		export interface Menu extends EnumItem {
 			Name: "Menu";
 			Value: 319;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Menu: Menu;
@@ -8018,7 +8017,7 @@ declare namespace Enum {
 		export interface Power extends EnumItem {
 			Name: "Power";
 			Value: 320;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Power: Power;
@@ -8026,7 +8025,7 @@ declare namespace Enum {
 		export interface Euro extends EnumItem {
 			Name: "Euro";
 			Value: 321;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Euro: Euro;
@@ -8034,7 +8033,7 @@ declare namespace Enum {
 		export interface Undo extends EnumItem {
 			Name: "Undo";
 			Value: 322;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Undo: Undo;
@@ -8042,7 +8041,7 @@ declare namespace Enum {
 		export interface F1 extends EnumItem {
 			Name: "F1";
 			Value: 282;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F1: F1;
@@ -8050,7 +8049,7 @@ declare namespace Enum {
 		export interface F2 extends EnumItem {
 			Name: "F2";
 			Value: 283;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F2: F2;
@@ -8058,7 +8057,7 @@ declare namespace Enum {
 		export interface F3 extends EnumItem {
 			Name: "F3";
 			Value: 284;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F3: F3;
@@ -8066,7 +8065,7 @@ declare namespace Enum {
 		export interface F4 extends EnumItem {
 			Name: "F4";
 			Value: 285;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F4: F4;
@@ -8074,7 +8073,7 @@ declare namespace Enum {
 		export interface F5 extends EnumItem {
 			Name: "F5";
 			Value: 286;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F5: F5;
@@ -8082,7 +8081,7 @@ declare namespace Enum {
 		export interface F6 extends EnumItem {
 			Name: "F6";
 			Value: 287;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F6: F6;
@@ -8090,7 +8089,7 @@ declare namespace Enum {
 		export interface F7 extends EnumItem {
 			Name: "F7";
 			Value: 288;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F7: F7;
@@ -8098,7 +8097,7 @@ declare namespace Enum {
 		export interface F8 extends EnumItem {
 			Name: "F8";
 			Value: 289;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F8: F8;
@@ -8106,7 +8105,7 @@ declare namespace Enum {
 		export interface F9 extends EnumItem {
 			Name: "F9";
 			Value: 290;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F9: F9;
@@ -8114,7 +8113,7 @@ declare namespace Enum {
 		export interface F10 extends EnumItem {
 			Name: "F10";
 			Value: 291;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F10: F10;
@@ -8122,7 +8121,7 @@ declare namespace Enum {
 		export interface F11 extends EnumItem {
 			Name: "F11";
 			Value: 292;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F11: F11;
@@ -8130,7 +8129,7 @@ declare namespace Enum {
 		export interface F12 extends EnumItem {
 			Name: "F12";
 			Value: 293;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F12: F12;
@@ -8138,7 +8137,7 @@ declare namespace Enum {
 		export interface F13 extends EnumItem {
 			Name: "F13";
 			Value: 294;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F13: F13;
@@ -8146,7 +8145,7 @@ declare namespace Enum {
 		export interface F14 extends EnumItem {
 			Name: "F14";
 			Value: 295;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F14: F14;
@@ -8154,7 +8153,7 @@ declare namespace Enum {
 		export interface F15 extends EnumItem {
 			Name: "F15";
 			Value: 296;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const F15: F15;
@@ -8162,7 +8161,7 @@ declare namespace Enum {
 		export interface World0 extends EnumItem {
 			Name: "World0";
 			Value: 160;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World0: World0;
@@ -8170,7 +8169,7 @@ declare namespace Enum {
 		export interface World1 extends EnumItem {
 			Name: "World1";
 			Value: 161;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World1: World1;
@@ -8178,7 +8177,7 @@ declare namespace Enum {
 		export interface World2 extends EnumItem {
 			Name: "World2";
 			Value: 162;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World2: World2;
@@ -8186,7 +8185,7 @@ declare namespace Enum {
 		export interface World3 extends EnumItem {
 			Name: "World3";
 			Value: 163;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World3: World3;
@@ -8194,7 +8193,7 @@ declare namespace Enum {
 		export interface World4 extends EnumItem {
 			Name: "World4";
 			Value: 164;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World4: World4;
@@ -8202,7 +8201,7 @@ declare namespace Enum {
 		export interface World5 extends EnumItem {
 			Name: "World5";
 			Value: 165;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World5: World5;
@@ -8210,7 +8209,7 @@ declare namespace Enum {
 		export interface World6 extends EnumItem {
 			Name: "World6";
 			Value: 166;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World6: World6;
@@ -8218,7 +8217,7 @@ declare namespace Enum {
 		export interface World7 extends EnumItem {
 			Name: "World7";
 			Value: 167;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World7: World7;
@@ -8226,7 +8225,7 @@ declare namespace Enum {
 		export interface World8 extends EnumItem {
 			Name: "World8";
 			Value: 168;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World8: World8;
@@ -8234,7 +8233,7 @@ declare namespace Enum {
 		export interface World9 extends EnumItem {
 			Name: "World9";
 			Value: 169;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World9: World9;
@@ -8242,7 +8241,7 @@ declare namespace Enum {
 		export interface World10 extends EnumItem {
 			Name: "World10";
 			Value: 170;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World10: World10;
@@ -8250,7 +8249,7 @@ declare namespace Enum {
 		export interface World11 extends EnumItem {
 			Name: "World11";
 			Value: 171;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World11: World11;
@@ -8258,7 +8257,7 @@ declare namespace Enum {
 		export interface World12 extends EnumItem {
 			Name: "World12";
 			Value: 172;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World12: World12;
@@ -8266,7 +8265,7 @@ declare namespace Enum {
 		export interface World13 extends EnumItem {
 			Name: "World13";
 			Value: 173;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World13: World13;
@@ -8274,7 +8273,7 @@ declare namespace Enum {
 		export interface World14 extends EnumItem {
 			Name: "World14";
 			Value: 174;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World14: World14;
@@ -8282,7 +8281,7 @@ declare namespace Enum {
 		export interface World15 extends EnumItem {
 			Name: "World15";
 			Value: 175;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World15: World15;
@@ -8290,7 +8289,7 @@ declare namespace Enum {
 		export interface World16 extends EnumItem {
 			Name: "World16";
 			Value: 176;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World16: World16;
@@ -8298,7 +8297,7 @@ declare namespace Enum {
 		export interface World17 extends EnumItem {
 			Name: "World17";
 			Value: 177;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World17: World17;
@@ -8306,7 +8305,7 @@ declare namespace Enum {
 		export interface World18 extends EnumItem {
 			Name: "World18";
 			Value: 178;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World18: World18;
@@ -8314,7 +8313,7 @@ declare namespace Enum {
 		export interface World19 extends EnumItem {
 			Name: "World19";
 			Value: 179;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World19: World19;
@@ -8322,7 +8321,7 @@ declare namespace Enum {
 		export interface World20 extends EnumItem {
 			Name: "World20";
 			Value: 180;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World20: World20;
@@ -8330,7 +8329,7 @@ declare namespace Enum {
 		export interface World21 extends EnumItem {
 			Name: "World21";
 			Value: 181;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World21: World21;
@@ -8338,7 +8337,7 @@ declare namespace Enum {
 		export interface World22 extends EnumItem {
 			Name: "World22";
 			Value: 182;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World22: World22;
@@ -8346,7 +8345,7 @@ declare namespace Enum {
 		export interface World23 extends EnumItem {
 			Name: "World23";
 			Value: 183;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World23: World23;
@@ -8354,7 +8353,7 @@ declare namespace Enum {
 		export interface World24 extends EnumItem {
 			Name: "World24";
 			Value: 184;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World24: World24;
@@ -8362,7 +8361,7 @@ declare namespace Enum {
 		export interface World25 extends EnumItem {
 			Name: "World25";
 			Value: 185;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World25: World25;
@@ -8370,7 +8369,7 @@ declare namespace Enum {
 		export interface World26 extends EnumItem {
 			Name: "World26";
 			Value: 186;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World26: World26;
@@ -8378,7 +8377,7 @@ declare namespace Enum {
 		export interface World27 extends EnumItem {
 			Name: "World27";
 			Value: 187;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World27: World27;
@@ -8386,7 +8385,7 @@ declare namespace Enum {
 		export interface World28 extends EnumItem {
 			Name: "World28";
 			Value: 188;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World28: World28;
@@ -8394,7 +8393,7 @@ declare namespace Enum {
 		export interface World29 extends EnumItem {
 			Name: "World29";
 			Value: 189;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World29: World29;
@@ -8402,7 +8401,7 @@ declare namespace Enum {
 		export interface World30 extends EnumItem {
 			Name: "World30";
 			Value: 190;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World30: World30;
@@ -8410,7 +8409,7 @@ declare namespace Enum {
 		export interface World31 extends EnumItem {
 			Name: "World31";
 			Value: 191;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World31: World31;
@@ -8418,7 +8417,7 @@ declare namespace Enum {
 		export interface World32 extends EnumItem {
 			Name: "World32";
 			Value: 192;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World32: World32;
@@ -8426,7 +8425,7 @@ declare namespace Enum {
 		export interface World33 extends EnumItem {
 			Name: "World33";
 			Value: 193;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World33: World33;
@@ -8434,7 +8433,7 @@ declare namespace Enum {
 		export interface World34 extends EnumItem {
 			Name: "World34";
 			Value: 194;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World34: World34;
@@ -8442,7 +8441,7 @@ declare namespace Enum {
 		export interface World35 extends EnumItem {
 			Name: "World35";
 			Value: 195;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World35: World35;
@@ -8450,7 +8449,7 @@ declare namespace Enum {
 		export interface World36 extends EnumItem {
 			Name: "World36";
 			Value: 196;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World36: World36;
@@ -8458,7 +8457,7 @@ declare namespace Enum {
 		export interface World37 extends EnumItem {
 			Name: "World37";
 			Value: 197;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World37: World37;
@@ -8466,7 +8465,7 @@ declare namespace Enum {
 		export interface World38 extends EnumItem {
 			Name: "World38";
 			Value: 198;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World38: World38;
@@ -8474,7 +8473,7 @@ declare namespace Enum {
 		export interface World39 extends EnumItem {
 			Name: "World39";
 			Value: 199;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World39: World39;
@@ -8482,7 +8481,7 @@ declare namespace Enum {
 		export interface World40 extends EnumItem {
 			Name: "World40";
 			Value: 200;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World40: World40;
@@ -8490,7 +8489,7 @@ declare namespace Enum {
 		export interface World41 extends EnumItem {
 			Name: "World41";
 			Value: 201;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World41: World41;
@@ -8498,7 +8497,7 @@ declare namespace Enum {
 		export interface World42 extends EnumItem {
 			Name: "World42";
 			Value: 202;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World42: World42;
@@ -8506,7 +8505,7 @@ declare namespace Enum {
 		export interface World43 extends EnumItem {
 			Name: "World43";
 			Value: 203;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World43: World43;
@@ -8514,7 +8513,7 @@ declare namespace Enum {
 		export interface World44 extends EnumItem {
 			Name: "World44";
 			Value: 204;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World44: World44;
@@ -8522,7 +8521,7 @@ declare namespace Enum {
 		export interface World45 extends EnumItem {
 			Name: "World45";
 			Value: 205;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World45: World45;
@@ -8530,7 +8529,7 @@ declare namespace Enum {
 		export interface World46 extends EnumItem {
 			Name: "World46";
 			Value: 206;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World46: World46;
@@ -8538,7 +8537,7 @@ declare namespace Enum {
 		export interface World47 extends EnumItem {
 			Name: "World47";
 			Value: 207;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World47: World47;
@@ -8546,7 +8545,7 @@ declare namespace Enum {
 		export interface World48 extends EnumItem {
 			Name: "World48";
 			Value: 208;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World48: World48;
@@ -8554,7 +8553,7 @@ declare namespace Enum {
 		export interface World49 extends EnumItem {
 			Name: "World49";
 			Value: 209;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World49: World49;
@@ -8562,7 +8561,7 @@ declare namespace Enum {
 		export interface World50 extends EnumItem {
 			Name: "World50";
 			Value: 210;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World50: World50;
@@ -8570,7 +8569,7 @@ declare namespace Enum {
 		export interface World51 extends EnumItem {
 			Name: "World51";
 			Value: 211;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World51: World51;
@@ -8578,7 +8577,7 @@ declare namespace Enum {
 		export interface World52 extends EnumItem {
 			Name: "World52";
 			Value: 212;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World52: World52;
@@ -8586,7 +8585,7 @@ declare namespace Enum {
 		export interface World53 extends EnumItem {
 			Name: "World53";
 			Value: 213;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World53: World53;
@@ -8594,7 +8593,7 @@ declare namespace Enum {
 		export interface World54 extends EnumItem {
 			Name: "World54";
 			Value: 214;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World54: World54;
@@ -8602,7 +8601,7 @@ declare namespace Enum {
 		export interface World55 extends EnumItem {
 			Name: "World55";
 			Value: 215;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World55: World55;
@@ -8610,7 +8609,7 @@ declare namespace Enum {
 		export interface World56 extends EnumItem {
 			Name: "World56";
 			Value: 216;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World56: World56;
@@ -8618,7 +8617,7 @@ declare namespace Enum {
 		export interface World57 extends EnumItem {
 			Name: "World57";
 			Value: 217;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World57: World57;
@@ -8626,7 +8625,7 @@ declare namespace Enum {
 		export interface World58 extends EnumItem {
 			Name: "World58";
 			Value: 218;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World58: World58;
@@ -8634,7 +8633,7 @@ declare namespace Enum {
 		export interface World59 extends EnumItem {
 			Name: "World59";
 			Value: 219;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World59: World59;
@@ -8642,7 +8641,7 @@ declare namespace Enum {
 		export interface World60 extends EnumItem {
 			Name: "World60";
 			Value: 220;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World60: World60;
@@ -8650,7 +8649,7 @@ declare namespace Enum {
 		export interface World61 extends EnumItem {
 			Name: "World61";
 			Value: 221;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World61: World61;
@@ -8658,7 +8657,7 @@ declare namespace Enum {
 		export interface World62 extends EnumItem {
 			Name: "World62";
 			Value: 222;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World62: World62;
@@ -8666,7 +8665,7 @@ declare namespace Enum {
 		export interface World63 extends EnumItem {
 			Name: "World63";
 			Value: 223;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World63: World63;
@@ -8674,7 +8673,7 @@ declare namespace Enum {
 		export interface World64 extends EnumItem {
 			Name: "World64";
 			Value: 224;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World64: World64;
@@ -8682,7 +8681,7 @@ declare namespace Enum {
 		export interface World65 extends EnumItem {
 			Name: "World65";
 			Value: 225;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World65: World65;
@@ -8690,7 +8689,7 @@ declare namespace Enum {
 		export interface World66 extends EnumItem {
 			Name: "World66";
 			Value: 226;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World66: World66;
@@ -8698,7 +8697,7 @@ declare namespace Enum {
 		export interface World67 extends EnumItem {
 			Name: "World67";
 			Value: 227;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World67: World67;
@@ -8706,7 +8705,7 @@ declare namespace Enum {
 		export interface World68 extends EnumItem {
 			Name: "World68";
 			Value: 228;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World68: World68;
@@ -8714,7 +8713,7 @@ declare namespace Enum {
 		export interface World69 extends EnumItem {
 			Name: "World69";
 			Value: 229;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World69: World69;
@@ -8722,7 +8721,7 @@ declare namespace Enum {
 		export interface World70 extends EnumItem {
 			Name: "World70";
 			Value: 230;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World70: World70;
@@ -8730,7 +8729,7 @@ declare namespace Enum {
 		export interface World71 extends EnumItem {
 			Name: "World71";
 			Value: 231;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World71: World71;
@@ -8738,7 +8737,7 @@ declare namespace Enum {
 		export interface World72 extends EnumItem {
 			Name: "World72";
 			Value: 232;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World72: World72;
@@ -8746,7 +8745,7 @@ declare namespace Enum {
 		export interface World73 extends EnumItem {
 			Name: "World73";
 			Value: 233;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World73: World73;
@@ -8754,7 +8753,7 @@ declare namespace Enum {
 		export interface World74 extends EnumItem {
 			Name: "World74";
 			Value: 234;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World74: World74;
@@ -8762,7 +8761,7 @@ declare namespace Enum {
 		export interface World75 extends EnumItem {
 			Name: "World75";
 			Value: 235;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World75: World75;
@@ -8770,7 +8769,7 @@ declare namespace Enum {
 		export interface World76 extends EnumItem {
 			Name: "World76";
 			Value: 236;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World76: World76;
@@ -8778,7 +8777,7 @@ declare namespace Enum {
 		export interface World77 extends EnumItem {
 			Name: "World77";
 			Value: 237;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World77: World77;
@@ -8786,7 +8785,7 @@ declare namespace Enum {
 		export interface World78 extends EnumItem {
 			Name: "World78";
 			Value: 238;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World78: World78;
@@ -8794,7 +8793,7 @@ declare namespace Enum {
 		export interface World79 extends EnumItem {
 			Name: "World79";
 			Value: 239;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World79: World79;
@@ -8802,7 +8801,7 @@ declare namespace Enum {
 		export interface World80 extends EnumItem {
 			Name: "World80";
 			Value: 240;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World80: World80;
@@ -8810,7 +8809,7 @@ declare namespace Enum {
 		export interface World81 extends EnumItem {
 			Name: "World81";
 			Value: 241;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World81: World81;
@@ -8818,7 +8817,7 @@ declare namespace Enum {
 		export interface World82 extends EnumItem {
 			Name: "World82";
 			Value: 242;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World82: World82;
@@ -8826,7 +8825,7 @@ declare namespace Enum {
 		export interface World83 extends EnumItem {
 			Name: "World83";
 			Value: 243;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World83: World83;
@@ -8834,7 +8833,7 @@ declare namespace Enum {
 		export interface World84 extends EnumItem {
 			Name: "World84";
 			Value: 244;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World84: World84;
@@ -8842,7 +8841,7 @@ declare namespace Enum {
 		export interface World85 extends EnumItem {
 			Name: "World85";
 			Value: 245;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World85: World85;
@@ -8850,7 +8849,7 @@ declare namespace Enum {
 		export interface World86 extends EnumItem {
 			Name: "World86";
 			Value: 246;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World86: World86;
@@ -8858,7 +8857,7 @@ declare namespace Enum {
 		export interface World87 extends EnumItem {
 			Name: "World87";
 			Value: 247;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World87: World87;
@@ -8866,7 +8865,7 @@ declare namespace Enum {
 		export interface World88 extends EnumItem {
 			Name: "World88";
 			Value: 248;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World88: World88;
@@ -8874,7 +8873,7 @@ declare namespace Enum {
 		export interface World89 extends EnumItem {
 			Name: "World89";
 			Value: 249;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World89: World89;
@@ -8882,7 +8881,7 @@ declare namespace Enum {
 		export interface World90 extends EnumItem {
 			Name: "World90";
 			Value: 250;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World90: World90;
@@ -8890,7 +8889,7 @@ declare namespace Enum {
 		export interface World91 extends EnumItem {
 			Name: "World91";
 			Value: 251;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World91: World91;
@@ -8898,7 +8897,7 @@ declare namespace Enum {
 		export interface World92 extends EnumItem {
 			Name: "World92";
 			Value: 252;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World92: World92;
@@ -8906,7 +8905,7 @@ declare namespace Enum {
 		export interface World93 extends EnumItem {
 			Name: "World93";
 			Value: 253;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World93: World93;
@@ -8914,7 +8913,7 @@ declare namespace Enum {
 		export interface World94 extends EnumItem {
 			Name: "World94";
 			Value: 254;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World94: World94;
@@ -8922,7 +8921,7 @@ declare namespace Enum {
 		export interface World95 extends EnumItem {
 			Name: "World95";
 			Value: 255;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const World95: World95;
@@ -8930,7 +8929,7 @@ declare namespace Enum {
 		export interface ButtonX extends EnumItem {
 			Name: "ButtonX";
 			Value: 1000;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ButtonX: ButtonX;
@@ -8938,7 +8937,7 @@ declare namespace Enum {
 		export interface ButtonY extends EnumItem {
 			Name: "ButtonY";
 			Value: 1001;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ButtonY: ButtonY;
@@ -8946,7 +8945,7 @@ declare namespace Enum {
 		export interface ButtonA extends EnumItem {
 			Name: "ButtonA";
 			Value: 1002;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ButtonA: ButtonA;
@@ -8954,7 +8953,7 @@ declare namespace Enum {
 		export interface ButtonB extends EnumItem {
 			Name: "ButtonB";
 			Value: 1003;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ButtonB: ButtonB;
@@ -8962,7 +8961,7 @@ declare namespace Enum {
 		export interface ButtonR1 extends EnumItem {
 			Name: "ButtonR1";
 			Value: 1004;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ButtonR1: ButtonR1;
@@ -8970,7 +8969,7 @@ declare namespace Enum {
 		export interface ButtonL1 extends EnumItem {
 			Name: "ButtonL1";
 			Value: 1005;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ButtonL1: ButtonL1;
@@ -8978,7 +8977,7 @@ declare namespace Enum {
 		export interface ButtonR2 extends EnumItem {
 			Name: "ButtonR2";
 			Value: 1006;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ButtonR2: ButtonR2;
@@ -8986,7 +8985,7 @@ declare namespace Enum {
 		export interface ButtonL2 extends EnumItem {
 			Name: "ButtonL2";
 			Value: 1007;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ButtonL2: ButtonL2;
@@ -8994,7 +8993,7 @@ declare namespace Enum {
 		export interface ButtonR3 extends EnumItem {
 			Name: "ButtonR3";
 			Value: 1008;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ButtonR3: ButtonR3;
@@ -9002,7 +9001,7 @@ declare namespace Enum {
 		export interface ButtonL3 extends EnumItem {
 			Name: "ButtonL3";
 			Value: 1009;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ButtonL3: ButtonL3;
@@ -9010,7 +9009,7 @@ declare namespace Enum {
 		export interface ButtonStart extends EnumItem {
 			Name: "ButtonStart";
 			Value: 1010;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ButtonStart: ButtonStart;
@@ -9018,7 +9017,7 @@ declare namespace Enum {
 		export interface ButtonSelect extends EnumItem {
 			Name: "ButtonSelect";
 			Value: 1011;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const ButtonSelect: ButtonSelect;
@@ -9026,7 +9025,7 @@ declare namespace Enum {
 		export interface DPadLeft extends EnumItem {
 			Name: "DPadLeft";
 			Value: 1012;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const DPadLeft: DPadLeft;
@@ -9034,7 +9033,7 @@ declare namespace Enum {
 		export interface DPadRight extends EnumItem {
 			Name: "DPadRight";
 			Value: 1013;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const DPadRight: DPadRight;
@@ -9042,7 +9041,7 @@ declare namespace Enum {
 		export interface DPadUp extends EnumItem {
 			Name: "DPadUp";
 			Value: 1014;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const DPadUp: DPadUp;
@@ -9050,7 +9049,7 @@ declare namespace Enum {
 		export interface DPadDown extends EnumItem {
 			Name: "DPadDown";
 			Value: 1015;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const DPadDown: DPadDown;
@@ -9058,7 +9057,7 @@ declare namespace Enum {
 		export interface Thumbstick1 extends EnumItem {
 			Name: "Thumbstick1";
 			Value: 1016;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Thumbstick1: Thumbstick1;
@@ -9066,19 +9065,19 @@ declare namespace Enum {
 		export interface Thumbstick2 extends EnumItem {
 			Name: "Thumbstick2";
 			Value: 1017;
-			EnumType: EnumType<KeyCode>;
+			EnumType: typeof KeyCode;
 		}
 
 		export const Thumbstick2: Thumbstick2;
 
-		export function GetEnumItems(this: defined): Array<KeyCode>
+		export function GetEnumItems(): Array<KeyCode>
 	}
 	export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.LeftShift | KeyCode.RightShift | KeyCode.LeftMeta | KeyCode.RightMeta | KeyCode.LeftAlt | KeyCode.RightAlt | KeyCode.LeftControl | KeyCode.RightControl | KeyCode.CapsLock | KeyCode.NumLock | KeyCode.ScrollLock | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2;
 	export namespace KeyInterpolationMode {
 		export interface Constant extends EnumItem {
 			Name: "Constant";
 			Value: 0;
-			EnumType: EnumType<KeyInterpolationMode>;
+			EnumType: typeof KeyInterpolationMode;
 		}
 
 		export const Constant: Constant;
@@ -9086,7 +9085,7 @@ declare namespace Enum {
 		export interface Linear extends EnumItem {
 			Name: "Linear";
 			Value: 1;
-			EnumType: EnumType<KeyInterpolationMode>;
+			EnumType: typeof KeyInterpolationMode;
 		}
 
 		export const Linear: Linear;
@@ -9094,19 +9093,19 @@ declare namespace Enum {
 		export interface Cubic extends EnumItem {
 			Name: "Cubic";
 			Value: 2;
-			EnumType: EnumType<KeyInterpolationMode>;
+			EnumType: typeof KeyInterpolationMode;
 		}
 
 		export const Cubic: Cubic;
 
-		export function GetEnumItems(this: defined): Array<KeyInterpolationMode>
+		export function GetEnumItems(): Array<KeyInterpolationMode>
 	}
 	export type KeyInterpolationMode = KeyInterpolationMode.Constant | KeyInterpolationMode.Linear | KeyInterpolationMode.Cubic;
 	export namespace KeywordFilterType {
 		export interface Include extends EnumItem {
 			Name: "Include";
 			Value: 0;
-			EnumType: EnumType<KeywordFilterType>;
+			EnumType: typeof KeywordFilterType;
 		}
 
 		export const Include: Include;
@@ -9114,19 +9113,19 @@ declare namespace Enum {
 		export interface Exclude extends EnumItem {
 			Name: "Exclude";
 			Value: 1;
-			EnumType: EnumType<KeywordFilterType>;
+			EnumType: typeof KeywordFilterType;
 		}
 
 		export const Exclude: Exclude;
 
-		export function GetEnumItems(this: defined): Array<KeywordFilterType>
+		export function GetEnumItems(): Array<KeywordFilterType>
 	}
 	export type KeywordFilterType = KeywordFilterType.Include | KeywordFilterType.Exclude;
 	export namespace LSPMethodType {
 		export interface Initialize extends EnumItem {
 			Name: "Initialize";
 			Value: 1;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Initialize: Initialize;
@@ -9134,7 +9133,7 @@ declare namespace Enum {
 		export interface Initialized extends EnumItem {
 			Name: "Initialized";
 			Value: 2;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Initialized: Initialized;
@@ -9142,7 +9141,7 @@ declare namespace Enum {
 		export interface CancelRequest extends EnumItem {
 			Name: "CancelRequest";
 			Value: 3;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const CancelRequest: CancelRequest;
@@ -9150,7 +9149,7 @@ declare namespace Enum {
 		export interface TextDocument_didOpen extends EnumItem {
 			Name: "TextDocument_didOpen";
 			Value: 4;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const TextDocument_didOpen: TextDocument_didOpen;
@@ -9158,7 +9157,7 @@ declare namespace Enum {
 		export interface TextDocument_didChange extends EnumItem {
 			Name: "TextDocument_didChange";
 			Value: 5;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const TextDocument_didChange: TextDocument_didChange;
@@ -9166,7 +9165,7 @@ declare namespace Enum {
 		export interface TextDocument_didClose extends EnumItem {
 			Name: "TextDocument_didClose";
 			Value: 6;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const TextDocument_didClose: TextDocument_didClose;
@@ -9174,7 +9173,7 @@ declare namespace Enum {
 		export interface TextDocument_foldingRange extends EnumItem {
 			Name: "TextDocument_foldingRange";
 			Value: 7;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const TextDocument_foldingRange: TextDocument_foldingRange;
@@ -9182,7 +9181,7 @@ declare namespace Enum {
 		export interface TextDocument_onTypeFormatting extends EnumItem {
 			Name: "TextDocument_onTypeFormatting";
 			Value: 8;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const TextDocument_onTypeFormatting: TextDocument_onTypeFormatting;
@@ -9190,7 +9189,7 @@ declare namespace Enum {
 		export interface TextDocument_formatting extends EnumItem {
 			Name: "TextDocument_formatting";
 			Value: 9;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const TextDocument_formatting: TextDocument_formatting;
@@ -9198,7 +9197,7 @@ declare namespace Enum {
 		export interface TextDocument_rangeFormatting extends EnumItem {
 			Name: "TextDocument_rangeFormatting";
 			Value: 10;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const TextDocument_rangeFormatting: TextDocument_rangeFormatting;
@@ -9206,7 +9205,7 @@ declare namespace Enum {
 		export interface TextDocument_hover extends EnumItem {
 			Name: "TextDocument_hover";
 			Value: 11;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const TextDocument_hover: TextDocument_hover;
@@ -9214,7 +9213,7 @@ declare namespace Enum {
 		export interface TextDocument_signatureHelp extends EnumItem {
 			Name: "TextDocument_signatureHelp";
 			Value: 12;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const TextDocument_signatureHelp: TextDocument_signatureHelp;
@@ -9222,7 +9221,7 @@ declare namespace Enum {
 		export interface Workspace_DidChangeConfiguration extends EnumItem {
 			Name: "Workspace_DidChangeConfiguration";
 			Value: 13;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Workspace_DidChangeConfiguration: Workspace_DidChangeConfiguration;
@@ -9230,7 +9229,7 @@ declare namespace Enum {
 		export interface ShutdownRequest extends EnumItem {
 			Name: "ShutdownRequest";
 			Value: 14;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const ShutdownRequest: ShutdownRequest;
@@ -9238,7 +9237,7 @@ declare namespace Enum {
 		export interface Completion extends EnumItem {
 			Name: "Completion";
 			Value: 15;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Completion: Completion;
@@ -9246,7 +9245,7 @@ declare namespace Enum {
 		export interface Declaration extends EnumItem {
 			Name: "Declaration";
 			Value: 16;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Declaration: Declaration;
@@ -9254,7 +9253,7 @@ declare namespace Enum {
 		export interface DocumentSymbols extends EnumItem {
 			Name: "DocumentSymbols";
 			Value: 17;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const DocumentSymbols: DocumentSymbols;
@@ -9262,7 +9261,7 @@ declare namespace Enum {
 		export interface TextDocument_publishDiagnostics extends EnumItem {
 			Name: "TextDocument_publishDiagnostics";
 			Value: 19;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const TextDocument_publishDiagnostics: TextDocument_publishDiagnostics;
@@ -9270,7 +9269,7 @@ declare namespace Enum {
 		export interface Window_showMessage extends EnumItem {
 			Name: "Window_showMessage";
 			Value: 20;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Window_showMessage: Window_showMessage;
@@ -9278,7 +9277,7 @@ declare namespace Enum {
 		export interface Window_showMessageRequest extends EnumItem {
 			Name: "Window_showMessageRequest";
 			Value: 21;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Window_showMessageRequest: Window_showMessageRequest;
@@ -9286,7 +9285,7 @@ declare namespace Enum {
 		export interface Roblox_registerSyntaxCategories extends EnumItem {
 			Name: "Roblox_registerSyntaxCategories";
 			Value: 22;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Roblox_registerSyntaxCategories: Roblox_registerSyntaxCategories;
@@ -9294,7 +9293,7 @@ declare namespace Enum {
 		export interface Roblox_signalQuiescence extends EnumItem {
 			Name: "Roblox_signalQuiescence";
 			Value: 23;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Roblox_signalQuiescence: Roblox_signalQuiescence;
@@ -9302,7 +9301,7 @@ declare namespace Enum {
 		export interface Roblox_syntaxHighlight extends EnumItem {
 			Name: "Roblox_syntaxHighlight";
 			Value: 24;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Roblox_syntaxHighlight: Roblox_syntaxHighlight;
@@ -9310,7 +9309,7 @@ declare namespace Enum {
 		export interface Roblox_suggestExtraSelections extends EnumItem {
 			Name: "Roblox_suggestExtraSelections";
 			Value: 25;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Roblox_suggestExtraSelections: Roblox_suggestExtraSelections;
@@ -9318,7 +9317,7 @@ declare namespace Enum {
 		export interface Roblox_findExecutablePosition extends EnumItem {
 			Name: "Roblox_findExecutablePosition";
 			Value: 26;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Roblox_findExecutablePosition: Roblox_findExecutablePosition;
@@ -9326,7 +9325,7 @@ declare namespace Enum {
 		export interface Roblox_findColor3 extends EnumItem {
 			Name: "Roblox_findColor3";
 			Value: 27;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Roblox_findColor3: Roblox_findColor3;
@@ -9334,31 +9333,31 @@ declare namespace Enum {
 		export interface Roblox_patchSnippetData extends EnumItem {
 			Name: "Roblox_patchSnippetData";
 			Value: 28;
-			EnumType: EnumType<LSPMethodType>;
+			EnumType: typeof LSPMethodType;
 		}
 
 		export const Roblox_patchSnippetData: Roblox_patchSnippetData;
 
-		export function GetEnumItems(this: defined): Array<LSPMethodType>
+		export function GetEnumItems(): Array<LSPMethodType>
 	}
 	export type LSPMethodType = LSPMethodType.Initialize | LSPMethodType.Initialized | LSPMethodType.CancelRequest | LSPMethodType.TextDocument_didOpen | LSPMethodType.TextDocument_didChange | LSPMethodType.TextDocument_didClose | LSPMethodType.TextDocument_foldingRange | LSPMethodType.TextDocument_onTypeFormatting | LSPMethodType.TextDocument_formatting | LSPMethodType.TextDocument_rangeFormatting | LSPMethodType.TextDocument_hover | LSPMethodType.TextDocument_signatureHelp | LSPMethodType.Workspace_DidChangeConfiguration | LSPMethodType.ShutdownRequest | LSPMethodType.Completion | LSPMethodType.Declaration | LSPMethodType.DocumentSymbols | LSPMethodType.TextDocument_publishDiagnostics | LSPMethodType.Window_showMessage | LSPMethodType.Window_showMessageRequest | LSPMethodType.Roblox_registerSyntaxCategories | LSPMethodType.Roblox_signalQuiescence | LSPMethodType.Roblox_syntaxHighlight | LSPMethodType.Roblox_suggestExtraSelections | LSPMethodType.Roblox_findExecutablePosition | LSPMethodType.Roblox_findColor3 | LSPMethodType.Roblox_patchSnippetData;
 	export namespace Language {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<Language>;
+			EnumType: typeof Language;
 		}
 
 		export const Default: Default;
 
-		export function GetEnumItems(this: defined): Array<Language>
+		export function GetEnumItems(): Array<Language>
 	}
 	export type Language = Language.Default;
 	export namespace LeftRight {
 		export interface Left extends EnumItem {
 			Name: "Left";
 			Value: 0;
-			EnumType: EnumType<LeftRight>;
+			EnumType: typeof LeftRight;
 		}
 
 		export const Left: Left;
@@ -9366,7 +9365,7 @@ declare namespace Enum {
 		export interface Center extends EnumItem {
 			Name: "Center";
 			Value: 1;
-			EnumType: EnumType<LeftRight>;
+			EnumType: typeof LeftRight;
 		}
 
 		export const Center: Center;
@@ -9374,19 +9373,19 @@ declare namespace Enum {
 		export interface Right extends EnumItem {
 			Name: "Right";
 			Value: 2;
-			EnumType: EnumType<LeftRight>;
+			EnumType: typeof LeftRight;
 		}
 
 		export const Right: Right;
 
-		export function GetEnumItems(this: defined): Array<LeftRight>
+		export function GetEnumItems(): Array<LeftRight>
 	}
 	export type LeftRight = LeftRight.Left | LeftRight.Center | LeftRight.Right;
 	export namespace LevelOfDetailSetting {
 		export interface High extends EnumItem {
 			Name: "High";
 			Value: 2;
-			EnumType: EnumType<LevelOfDetailSetting>;
+			EnumType: typeof LevelOfDetailSetting;
 		}
 
 		export const High: High;
@@ -9394,7 +9393,7 @@ declare namespace Enum {
 		export interface Medium extends EnumItem {
 			Name: "Medium";
 			Value: 1;
-			EnumType: EnumType<LevelOfDetailSetting>;
+			EnumType: typeof LevelOfDetailSetting;
 		}
 
 		export const Medium: Medium;
@@ -9402,19 +9401,19 @@ declare namespace Enum {
 		export interface Low extends EnumItem {
 			Name: "Low";
 			Value: 0;
-			EnumType: EnumType<LevelOfDetailSetting>;
+			EnumType: typeof LevelOfDetailSetting;
 		}
 
 		export const Low: Low;
 
-		export function GetEnumItems(this: defined): Array<LevelOfDetailSetting>
+		export function GetEnumItems(): Array<LevelOfDetailSetting>
 	}
 	export type LevelOfDetailSetting = LevelOfDetailSetting.High | LevelOfDetailSetting.Medium | LevelOfDetailSetting.Low;
 	export namespace Limb {
 		export interface Head extends EnumItem {
 			Name: "Head";
 			Value: 0;
-			EnumType: EnumType<Limb>;
+			EnumType: typeof Limb;
 		}
 
 		export const Head: Head;
@@ -9422,7 +9421,7 @@ declare namespace Enum {
 		export interface Torso extends EnumItem {
 			Name: "Torso";
 			Value: 1;
-			EnumType: EnumType<Limb>;
+			EnumType: typeof Limb;
 		}
 
 		export const Torso: Torso;
@@ -9430,7 +9429,7 @@ declare namespace Enum {
 		export interface LeftArm extends EnumItem {
 			Name: "LeftArm";
 			Value: 2;
-			EnumType: EnumType<Limb>;
+			EnumType: typeof Limb;
 		}
 
 		export const LeftArm: LeftArm;
@@ -9438,7 +9437,7 @@ declare namespace Enum {
 		export interface RightArm extends EnumItem {
 			Name: "RightArm";
 			Value: 3;
-			EnumType: EnumType<Limb>;
+			EnumType: typeof Limb;
 		}
 
 		export const RightArm: RightArm;
@@ -9446,7 +9445,7 @@ declare namespace Enum {
 		export interface LeftLeg extends EnumItem {
 			Name: "LeftLeg";
 			Value: 4;
-			EnumType: EnumType<Limb>;
+			EnumType: typeof Limb;
 		}
 
 		export const LeftLeg: LeftLeg;
@@ -9454,7 +9453,7 @@ declare namespace Enum {
 		export interface RightLeg extends EnumItem {
 			Name: "RightLeg";
 			Value: 5;
-			EnumType: EnumType<Limb>;
+			EnumType: typeof Limb;
 		}
 
 		export const RightLeg: RightLeg;
@@ -9462,19 +9461,19 @@ declare namespace Enum {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 6;
-			EnumType: EnumType<Limb>;
+			EnumType: typeof Limb;
 		}
 
 		export const Unknown: Unknown;
 
-		export function GetEnumItems(this: defined): Array<Limb>
+		export function GetEnumItems(): Array<Limb>
 	}
 	export type Limb = Limb.Head | Limb.Torso | Limb.LeftArm | Limb.RightArm | Limb.LeftLeg | Limb.RightLeg | Limb.Unknown;
 	export namespace LineJoinMode {
 		export interface Round extends EnumItem {
 			Name: "Round";
 			Value: 0;
-			EnumType: EnumType<LineJoinMode>;
+			EnumType: typeof LineJoinMode;
 		}
 
 		export const Round: Round;
@@ -9482,7 +9481,7 @@ declare namespace Enum {
 		export interface Bevel extends EnumItem {
 			Name: "Bevel";
 			Value: 1;
-			EnumType: EnumType<LineJoinMode>;
+			EnumType: typeof LineJoinMode;
 		}
 
 		export const Bevel: Bevel;
@@ -9490,19 +9489,19 @@ declare namespace Enum {
 		export interface Miter extends EnumItem {
 			Name: "Miter";
 			Value: 2;
-			EnumType: EnumType<LineJoinMode>;
+			EnumType: typeof LineJoinMode;
 		}
 
 		export const Miter: Miter;
 
-		export function GetEnumItems(this: defined): Array<LineJoinMode>
+		export function GetEnumItems(): Array<LineJoinMode>
 	}
 	export type LineJoinMode = LineJoinMode.Round | LineJoinMode.Bevel | LineJoinMode.Miter;
 	export namespace ListDisplayMode {
 		export interface Horizontal extends EnumItem {
 			Name: "Horizontal";
 			Value: 0;
-			EnumType: EnumType<ListDisplayMode>;
+			EnumType: typeof ListDisplayMode;
 		}
 
 		export const Horizontal: Horizontal;
@@ -9510,19 +9509,19 @@ declare namespace Enum {
 		export interface Vertical extends EnumItem {
 			Name: "Vertical";
 			Value: 1;
-			EnumType: EnumType<ListDisplayMode>;
+			EnumType: typeof ListDisplayMode;
 		}
 
 		export const Vertical: Vertical;
 
-		export function GetEnumItems(this: defined): Array<ListDisplayMode>
+		export function GetEnumItems(): Array<ListDisplayMode>
 	}
 	export type ListDisplayMode = ListDisplayMode.Horizontal | ListDisplayMode.Vertical;
 	export namespace ListenerType {
 		export interface Camera extends EnumItem {
 			Name: "Camera";
 			Value: 0;
-			EnumType: EnumType<ListenerType>;
+			EnumType: typeof ListenerType;
 		}
 
 		export const Camera: Camera;
@@ -9530,7 +9529,7 @@ declare namespace Enum {
 		export interface CFrame extends EnumItem {
 			Name: "CFrame";
 			Value: 1;
-			EnumType: EnumType<ListenerType>;
+			EnumType: typeof ListenerType;
 		}
 
 		export const CFrame: CFrame;
@@ -9538,7 +9537,7 @@ declare namespace Enum {
 		export interface ObjectPosition extends EnumItem {
 			Name: "ObjectPosition";
 			Value: 2;
-			EnumType: EnumType<ListenerType>;
+			EnumType: typeof ListenerType;
 		}
 
 		export const ObjectPosition: ObjectPosition;
@@ -9546,19 +9545,19 @@ declare namespace Enum {
 		export interface ObjectCFrame extends EnumItem {
 			Name: "ObjectCFrame";
 			Value: 3;
-			EnumType: EnumType<ListenerType>;
+			EnumType: typeof ListenerType;
 		}
 
 		export const ObjectCFrame: ObjectCFrame;
 
-		export function GetEnumItems(this: defined): Array<ListenerType>
+		export function GetEnumItems(): Array<ListenerType>
 	}
 	export type ListenerType = ListenerType.Camera | ListenerType.CFrame | ListenerType.ObjectPosition | ListenerType.ObjectCFrame;
 	export namespace LoadCharacterLayeredClothing {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<LoadCharacterLayeredClothing>;
+			EnumType: typeof LoadCharacterLayeredClothing;
 		}
 
 		export const Default: Default;
@@ -9566,7 +9565,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<LoadCharacterLayeredClothing>;
+			EnumType: typeof LoadCharacterLayeredClothing;
 		}
 
 		export const Disabled: Disabled;
@@ -9574,19 +9573,19 @@ declare namespace Enum {
 		export interface Enabled extends EnumItem {
 			Name: "Enabled";
 			Value: 2;
-			EnumType: EnumType<LoadCharacterLayeredClothing>;
+			EnumType: typeof LoadCharacterLayeredClothing;
 		}
 
 		export const Enabled: Enabled;
 
-		export function GetEnumItems(this: defined): Array<LoadCharacterLayeredClothing>
+		export function GetEnumItems(): Array<LoadCharacterLayeredClothing>
 	}
 	export type LoadCharacterLayeredClothing = LoadCharacterLayeredClothing.Default | LoadCharacterLayeredClothing.Disabled | LoadCharacterLayeredClothing.Enabled;
 	export namespace Material {
 		export interface Plastic extends EnumItem {
 			Name: "Plastic";
 			Value: 256;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Plastic: Plastic;
@@ -9594,7 +9593,7 @@ declare namespace Enum {
 		export interface Wood extends EnumItem {
 			Name: "Wood";
 			Value: 512;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Wood: Wood;
@@ -9602,7 +9601,7 @@ declare namespace Enum {
 		export interface Slate extends EnumItem {
 			Name: "Slate";
 			Value: 800;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Slate: Slate;
@@ -9610,7 +9609,7 @@ declare namespace Enum {
 		export interface Concrete extends EnumItem {
 			Name: "Concrete";
 			Value: 816;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Concrete: Concrete;
@@ -9618,7 +9617,7 @@ declare namespace Enum {
 		export interface CorrodedMetal extends EnumItem {
 			Name: "CorrodedMetal";
 			Value: 1040;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const CorrodedMetal: CorrodedMetal;
@@ -9626,7 +9625,7 @@ declare namespace Enum {
 		export interface DiamondPlate extends EnumItem {
 			Name: "DiamondPlate";
 			Value: 1056;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const DiamondPlate: DiamondPlate;
@@ -9634,7 +9633,7 @@ declare namespace Enum {
 		export interface Foil extends EnumItem {
 			Name: "Foil";
 			Value: 1072;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Foil: Foil;
@@ -9642,7 +9641,7 @@ declare namespace Enum {
 		export interface Grass extends EnumItem {
 			Name: "Grass";
 			Value: 1280;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Grass: Grass;
@@ -9650,7 +9649,7 @@ declare namespace Enum {
 		export interface Ice extends EnumItem {
 			Name: "Ice";
 			Value: 1536;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Ice: Ice;
@@ -9658,7 +9657,7 @@ declare namespace Enum {
 		export interface Marble extends EnumItem {
 			Name: "Marble";
 			Value: 784;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Marble: Marble;
@@ -9666,7 +9665,7 @@ declare namespace Enum {
 		export interface Granite extends EnumItem {
 			Name: "Granite";
 			Value: 832;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Granite: Granite;
@@ -9674,7 +9673,7 @@ declare namespace Enum {
 		export interface Brick extends EnumItem {
 			Name: "Brick";
 			Value: 848;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Brick: Brick;
@@ -9682,7 +9681,7 @@ declare namespace Enum {
 		export interface Pebble extends EnumItem {
 			Name: "Pebble";
 			Value: 864;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Pebble: Pebble;
@@ -9690,7 +9689,7 @@ declare namespace Enum {
 		export interface Sand extends EnumItem {
 			Name: "Sand";
 			Value: 1296;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Sand: Sand;
@@ -9698,7 +9697,7 @@ declare namespace Enum {
 		export interface Fabric extends EnumItem {
 			Name: "Fabric";
 			Value: 1312;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Fabric: Fabric;
@@ -9706,7 +9705,7 @@ declare namespace Enum {
 		export interface SmoothPlastic extends EnumItem {
 			Name: "SmoothPlastic";
 			Value: 272;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const SmoothPlastic: SmoothPlastic;
@@ -9714,7 +9713,7 @@ declare namespace Enum {
 		export interface Metal extends EnumItem {
 			Name: "Metal";
 			Value: 1088;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Metal: Metal;
@@ -9722,7 +9721,7 @@ declare namespace Enum {
 		export interface WoodPlanks extends EnumItem {
 			Name: "WoodPlanks";
 			Value: 528;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const WoodPlanks: WoodPlanks;
@@ -9730,7 +9729,7 @@ declare namespace Enum {
 		export interface Cobblestone extends EnumItem {
 			Name: "Cobblestone";
 			Value: 880;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Cobblestone: Cobblestone;
@@ -9738,7 +9737,7 @@ declare namespace Enum {
 		export interface Air extends EnumItem {
 			Name: "Air";
 			Value: 1792;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Air: Air;
@@ -9746,7 +9745,7 @@ declare namespace Enum {
 		export interface Water extends EnumItem {
 			Name: "Water";
 			Value: 2048;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Water: Water;
@@ -9754,7 +9753,7 @@ declare namespace Enum {
 		export interface Rock extends EnumItem {
 			Name: "Rock";
 			Value: 896;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Rock: Rock;
@@ -9762,7 +9761,7 @@ declare namespace Enum {
 		export interface Glacier extends EnumItem {
 			Name: "Glacier";
 			Value: 1552;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Glacier: Glacier;
@@ -9770,7 +9769,7 @@ declare namespace Enum {
 		export interface Snow extends EnumItem {
 			Name: "Snow";
 			Value: 1328;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Snow: Snow;
@@ -9778,7 +9777,7 @@ declare namespace Enum {
 		export interface Sandstone extends EnumItem {
 			Name: "Sandstone";
 			Value: 912;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Sandstone: Sandstone;
@@ -9786,7 +9785,7 @@ declare namespace Enum {
 		export interface Mud extends EnumItem {
 			Name: "Mud";
 			Value: 1344;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Mud: Mud;
@@ -9794,7 +9793,7 @@ declare namespace Enum {
 		export interface Basalt extends EnumItem {
 			Name: "Basalt";
 			Value: 788;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Basalt: Basalt;
@@ -9802,7 +9801,7 @@ declare namespace Enum {
 		export interface Ground extends EnumItem {
 			Name: "Ground";
 			Value: 1360;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Ground: Ground;
@@ -9810,7 +9809,7 @@ declare namespace Enum {
 		export interface CrackedLava extends EnumItem {
 			Name: "CrackedLava";
 			Value: 804;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const CrackedLava: CrackedLava;
@@ -9818,7 +9817,7 @@ declare namespace Enum {
 		export interface Neon extends EnumItem {
 			Name: "Neon";
 			Value: 288;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Neon: Neon;
@@ -9826,7 +9825,7 @@ declare namespace Enum {
 		export interface Glass extends EnumItem {
 			Name: "Glass";
 			Value: 1568;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Glass: Glass;
@@ -9834,7 +9833,7 @@ declare namespace Enum {
 		export interface Asphalt extends EnumItem {
 			Name: "Asphalt";
 			Value: 1376;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Asphalt: Asphalt;
@@ -9842,7 +9841,7 @@ declare namespace Enum {
 		export interface LeafyGrass extends EnumItem {
 			Name: "LeafyGrass";
 			Value: 1284;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const LeafyGrass: LeafyGrass;
@@ -9850,7 +9849,7 @@ declare namespace Enum {
 		export interface Salt extends EnumItem {
 			Name: "Salt";
 			Value: 1392;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Salt: Salt;
@@ -9858,7 +9857,7 @@ declare namespace Enum {
 		export interface Limestone extends EnumItem {
 			Name: "Limestone";
 			Value: 820;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Limestone: Limestone;
@@ -9866,7 +9865,7 @@ declare namespace Enum {
 		export interface Pavement extends EnumItem {
 			Name: "Pavement";
 			Value: 836;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const Pavement: Pavement;
@@ -9874,19 +9873,19 @@ declare namespace Enum {
 		export interface ForceField extends EnumItem {
 			Name: "ForceField";
 			Value: 1584;
-			EnumType: EnumType<Material>;
+			EnumType: typeof Material;
 		}
 
 		export const ForceField: ForceField;
 
-		export function GetEnumItems(this: defined): Array<Material>
+		export function GetEnumItems(): Array<Material>
 	}
 	export type Material = Material.Plastic | Material.Wood | Material.Slate | Material.Concrete | Material.CorrodedMetal | Material.DiamondPlate | Material.Foil | Material.Grass | Material.Ice | Material.Marble | Material.Granite | Material.Brick | Material.Pebble | Material.Sand | Material.Fabric | Material.SmoothPlastic | Material.Metal | Material.WoodPlanks | Material.Cobblestone | Material.Air | Material.Water | Material.Rock | Material.Glacier | Material.Snow | Material.Sandstone | Material.Mud | Material.Basalt | Material.Ground | Material.CrackedLava | Material.Neon | Material.Glass | Material.Asphalt | Material.LeafyGrass | Material.Salt | Material.Limestone | Material.Pavement | Material.ForceField;
 	export namespace MaterialPattern {
 		export interface Regular extends EnumItem {
 			Name: "Regular";
 			Value: 0;
-			EnumType: EnumType<MaterialPattern>;
+			EnumType: typeof MaterialPattern;
 		}
 
 		export const Regular: Regular;
@@ -9894,19 +9893,19 @@ declare namespace Enum {
 		export interface Organic extends EnumItem {
 			Name: "Organic";
 			Value: 1;
-			EnumType: EnumType<MaterialPattern>;
+			EnumType: typeof MaterialPattern;
 		}
 
 		export const Organic: Organic;
 
-		export function GetEnumItems(this: defined): Array<MaterialPattern>
+		export function GetEnumItems(): Array<MaterialPattern>
 	}
 	export type MaterialPattern = MaterialPattern.Regular | MaterialPattern.Organic;
 	export namespace MembershipType {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<MembershipType>;
+			EnumType: typeof MembershipType;
 		}
 
 		export const None: None;
@@ -9914,7 +9913,7 @@ declare namespace Enum {
 		export interface BuildersClub extends EnumItem {
 			Name: "BuildersClub";
 			Value: 1;
-			EnumType: EnumType<MembershipType>;
+			EnumType: typeof MembershipType;
 		}
 
 		export const BuildersClub: BuildersClub;
@@ -9922,7 +9921,7 @@ declare namespace Enum {
 		export interface TurboBuildersClub extends EnumItem {
 			Name: "TurboBuildersClub";
 			Value: 2;
-			EnumType: EnumType<MembershipType>;
+			EnumType: typeof MembershipType;
 		}
 
 		export const TurboBuildersClub: TurboBuildersClub;
@@ -9930,7 +9929,7 @@ declare namespace Enum {
 		export interface OutrageousBuildersClub extends EnumItem {
 			Name: "OutrageousBuildersClub";
 			Value: 3;
-			EnumType: EnumType<MembershipType>;
+			EnumType: typeof MembershipType;
 		}
 
 		export const OutrageousBuildersClub: OutrageousBuildersClub;
@@ -9938,19 +9937,19 @@ declare namespace Enum {
 		export interface Premium extends EnumItem {
 			Name: "Premium";
 			Value: 4;
-			EnumType: EnumType<MembershipType>;
+			EnumType: typeof MembershipType;
 		}
 
 		export const Premium: Premium;
 
-		export function GetEnumItems(this: defined): Array<MembershipType>
+		export function GetEnumItems(): Array<MembershipType>
 	}
 	export type MembershipType = MembershipType.None | MembershipType.BuildersClub | MembershipType.TurboBuildersClub | MembershipType.OutrageousBuildersClub | MembershipType.Premium;
 	export namespace MeshPartDetailLevel {
 		export interface DistanceBased extends EnumItem {
 			Name: "DistanceBased";
 			Value: 0;
-			EnumType: EnumType<MeshPartDetailLevel>;
+			EnumType: typeof MeshPartDetailLevel;
 		}
 
 		export const DistanceBased: DistanceBased;
@@ -9958,7 +9957,7 @@ declare namespace Enum {
 		export interface Level01 extends EnumItem {
 			Name: "Level01";
 			Value: 1;
-			EnumType: EnumType<MeshPartDetailLevel>;
+			EnumType: typeof MeshPartDetailLevel;
 		}
 
 		export const Level01: Level01;
@@ -9966,7 +9965,7 @@ declare namespace Enum {
 		export interface Level02 extends EnumItem {
 			Name: "Level02";
 			Value: 2;
-			EnumType: EnumType<MeshPartDetailLevel>;
+			EnumType: typeof MeshPartDetailLevel;
 		}
 
 		export const Level02: Level02;
@@ -9974,7 +9973,7 @@ declare namespace Enum {
 		export interface Level03 extends EnumItem {
 			Name: "Level03";
 			Value: 3;
-			EnumType: EnumType<MeshPartDetailLevel>;
+			EnumType: typeof MeshPartDetailLevel;
 		}
 
 		export const Level03: Level03;
@@ -9982,19 +9981,19 @@ declare namespace Enum {
 		export interface Level04 extends EnumItem {
 			Name: "Level04";
 			Value: 4;
-			EnumType: EnumType<MeshPartDetailLevel>;
+			EnumType: typeof MeshPartDetailLevel;
 		}
 
 		export const Level04: Level04;
 
-		export function GetEnumItems(this: defined): Array<MeshPartDetailLevel>
+		export function GetEnumItems(): Array<MeshPartDetailLevel>
 	}
 	export type MeshPartDetailLevel = MeshPartDetailLevel.DistanceBased | MeshPartDetailLevel.Level01 | MeshPartDetailLevel.Level02 | MeshPartDetailLevel.Level03 | MeshPartDetailLevel.Level04;
 	export namespace MeshPartHeadsAndAccessories {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<MeshPartHeadsAndAccessories>;
+			EnumType: typeof MeshPartHeadsAndAccessories;
 		}
 
 		export const Default: Default;
@@ -10002,7 +10001,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<MeshPartHeadsAndAccessories>;
+			EnumType: typeof MeshPartHeadsAndAccessories;
 		}
 
 		export const Disabled: Disabled;
@@ -10010,19 +10009,19 @@ declare namespace Enum {
 		export interface Enabled extends EnumItem {
 			Name: "Enabled";
 			Value: 2;
-			EnumType: EnumType<MeshPartHeadsAndAccessories>;
+			EnumType: typeof MeshPartHeadsAndAccessories;
 		}
 
 		export const Enabled: Enabled;
 
-		export function GetEnumItems(this: defined): Array<MeshPartHeadsAndAccessories>
+		export function GetEnumItems(): Array<MeshPartHeadsAndAccessories>
 	}
 	export type MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default | MeshPartHeadsAndAccessories.Disabled | MeshPartHeadsAndAccessories.Enabled;
 	export namespace MeshScaleUnit {
 		export interface Stud extends EnumItem {
 			Name: "Stud";
 			Value: 0;
-			EnumType: EnumType<MeshScaleUnit>;
+			EnumType: typeof MeshScaleUnit;
 		}
 
 		export const Stud: Stud;
@@ -10030,7 +10029,7 @@ declare namespace Enum {
 		export interface Meter extends EnumItem {
 			Name: "Meter";
 			Value: 1;
-			EnumType: EnumType<MeshScaleUnit>;
+			EnumType: typeof MeshScaleUnit;
 		}
 
 		export const Meter: Meter;
@@ -10038,7 +10037,7 @@ declare namespace Enum {
 		export interface CM extends EnumItem {
 			Name: "CM";
 			Value: 2;
-			EnumType: EnumType<MeshScaleUnit>;
+			EnumType: typeof MeshScaleUnit;
 		}
 
 		export const CM: CM;
@@ -10046,7 +10045,7 @@ declare namespace Enum {
 		export interface MM extends EnumItem {
 			Name: "MM";
 			Value: 3;
-			EnumType: EnumType<MeshScaleUnit>;
+			EnumType: typeof MeshScaleUnit;
 		}
 
 		export const MM: MM;
@@ -10054,7 +10053,7 @@ declare namespace Enum {
 		export interface Foot extends EnumItem {
 			Name: "Foot";
 			Value: 4;
-			EnumType: EnumType<MeshScaleUnit>;
+			EnumType: typeof MeshScaleUnit;
 		}
 
 		export const Foot: Foot;
@@ -10062,19 +10061,19 @@ declare namespace Enum {
 		export interface Inch extends EnumItem {
 			Name: "Inch";
 			Value: 5;
-			EnumType: EnumType<MeshScaleUnit>;
+			EnumType: typeof MeshScaleUnit;
 		}
 
 		export const Inch: Inch;
 
-		export function GetEnumItems(this: defined): Array<MeshScaleUnit>
+		export function GetEnumItems(): Array<MeshScaleUnit>
 	}
 	export type MeshScaleUnit = MeshScaleUnit.Stud | MeshScaleUnit.Meter | MeshScaleUnit.CM | MeshScaleUnit.MM | MeshScaleUnit.Foot | MeshScaleUnit.Inch;
 	export namespace MeshType {
 		export interface Head extends EnumItem {
 			Name: "Head";
 			Value: 0;
-			EnumType: EnumType<MeshType>;
+			EnumType: typeof MeshType;
 		}
 
 		export const Head: Head;
@@ -10082,7 +10081,7 @@ declare namespace Enum {
 		export interface Torso extends EnumItem {
 			Name: "Torso";
 			Value: 1;
-			EnumType: EnumType<MeshType>;
+			EnumType: typeof MeshType;
 		}
 
 		export const Torso: Torso;
@@ -10090,7 +10089,7 @@ declare namespace Enum {
 		export interface Wedge extends EnumItem {
 			Name: "Wedge";
 			Value: 2;
-			EnumType: EnumType<MeshType>;
+			EnumType: typeof MeshType;
 		}
 
 		export const Wedge: Wedge;
@@ -10098,7 +10097,7 @@ declare namespace Enum {
 		export interface Prism extends EnumItem {
 			Name: "Prism";
 			Value: 7;
-			EnumType: EnumType<MeshType>;
+			EnumType: typeof MeshType;
 		}
 
 		export const Prism: Prism;
@@ -10106,7 +10105,7 @@ declare namespace Enum {
 		export interface Pyramid extends EnumItem {
 			Name: "Pyramid";
 			Value: 8;
-			EnumType: EnumType<MeshType>;
+			EnumType: typeof MeshType;
 		}
 
 		export const Pyramid: Pyramid;
@@ -10114,7 +10113,7 @@ declare namespace Enum {
 		export interface ParallelRamp extends EnumItem {
 			Name: "ParallelRamp";
 			Value: 9;
-			EnumType: EnumType<MeshType>;
+			EnumType: typeof MeshType;
 		}
 
 		export const ParallelRamp: ParallelRamp;
@@ -10122,7 +10121,7 @@ declare namespace Enum {
 		export interface RightAngleRamp extends EnumItem {
 			Name: "RightAngleRamp";
 			Value: 10;
-			EnumType: EnumType<MeshType>;
+			EnumType: typeof MeshType;
 		}
 
 		export const RightAngleRamp: RightAngleRamp;
@@ -10130,7 +10129,7 @@ declare namespace Enum {
 		export interface CornerWedge extends EnumItem {
 			Name: "CornerWedge";
 			Value: 11;
-			EnumType: EnumType<MeshType>;
+			EnumType: typeof MeshType;
 		}
 
 		export const CornerWedge: CornerWedge;
@@ -10138,7 +10137,7 @@ declare namespace Enum {
 		export interface Brick extends EnumItem {
 			Name: "Brick";
 			Value: 6;
-			EnumType: EnumType<MeshType>;
+			EnumType: typeof MeshType;
 		}
 
 		export const Brick: Brick;
@@ -10146,7 +10145,7 @@ declare namespace Enum {
 		export interface Sphere extends EnumItem {
 			Name: "Sphere";
 			Value: 3;
-			EnumType: EnumType<MeshType>;
+			EnumType: typeof MeshType;
 		}
 
 		export const Sphere: Sphere;
@@ -10154,7 +10153,7 @@ declare namespace Enum {
 		export interface Cylinder extends EnumItem {
 			Name: "Cylinder";
 			Value: 4;
-			EnumType: EnumType<MeshType>;
+			EnumType: typeof MeshType;
 		}
 
 		export const Cylinder: Cylinder;
@@ -10162,19 +10161,19 @@ declare namespace Enum {
 		export interface FileMesh extends EnumItem {
 			Name: "FileMesh";
 			Value: 5;
-			EnumType: EnumType<MeshType>;
+			EnumType: typeof MeshType;
 		}
 
 		export const FileMesh: FileMesh;
 
-		export function GetEnumItems(this: defined): Array<MeshType>
+		export function GetEnumItems(): Array<MeshType>
 	}
 	export type MeshType = MeshType.Head | MeshType.Torso | MeshType.Wedge | MeshType.Prism | MeshType.Pyramid | MeshType.ParallelRamp | MeshType.RightAngleRamp | MeshType.CornerWedge | MeshType.Brick | MeshType.Sphere | MeshType.Cylinder | MeshType.FileMesh;
 	export namespace MessageType {
 		export interface MessageOutput extends EnumItem {
 			Name: "MessageOutput";
 			Value: 0;
-			EnumType: EnumType<MessageType>;
+			EnumType: typeof MessageType;
 		}
 
 		export const MessageOutput: MessageOutput;
@@ -10182,7 +10181,7 @@ declare namespace Enum {
 		export interface MessageInfo extends EnumItem {
 			Name: "MessageInfo";
 			Value: 1;
-			EnumType: EnumType<MessageType>;
+			EnumType: typeof MessageType;
 		}
 
 		export const MessageInfo: MessageInfo;
@@ -10190,7 +10189,7 @@ declare namespace Enum {
 		export interface MessageWarning extends EnumItem {
 			Name: "MessageWarning";
 			Value: 2;
-			EnumType: EnumType<MessageType>;
+			EnumType: typeof MessageType;
 		}
 
 		export const MessageWarning: MessageWarning;
@@ -10198,19 +10197,19 @@ declare namespace Enum {
 		export interface MessageError extends EnumItem {
 			Name: "MessageError";
 			Value: 3;
-			EnumType: EnumType<MessageType>;
+			EnumType: typeof MessageType;
 		}
 
 		export const MessageError: MessageError;
 
-		export function GetEnumItems(this: defined): Array<MessageType>
+		export function GetEnumItems(): Array<MessageType>
 	}
 	export type MessageType = MessageType.MessageOutput | MessageType.MessageInfo | MessageType.MessageWarning | MessageType.MessageError;
 	export namespace ModelLevelOfDetail {
 		export interface Automatic extends EnumItem {
 			Name: "Automatic";
 			Value: 0;
-			EnumType: EnumType<ModelLevelOfDetail>;
+			EnumType: typeof ModelLevelOfDetail;
 		}
 
 		export const Automatic: Automatic;
@@ -10218,7 +10217,7 @@ declare namespace Enum {
 		export interface StreamingMesh extends EnumItem {
 			Name: "StreamingMesh";
 			Value: 1;
-			EnumType: EnumType<ModelLevelOfDetail>;
+			EnumType: typeof ModelLevelOfDetail;
 		}
 
 		export const StreamingMesh: StreamingMesh;
@@ -10226,19 +10225,19 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 2;
-			EnumType: EnumType<ModelLevelOfDetail>;
+			EnumType: typeof ModelLevelOfDetail;
 		}
 
 		export const Disabled: Disabled;
 
-		export function GetEnumItems(this: defined): Array<ModelLevelOfDetail>
+		export function GetEnumItems(): Array<ModelLevelOfDetail>
 	}
 	export type ModelLevelOfDetail = ModelLevelOfDetail.Automatic | ModelLevelOfDetail.StreamingMesh | ModelLevelOfDetail.Disabled;
 	export namespace ModifierKey {
 		export interface Alt extends EnumItem {
 			Name: "Alt";
 			Value: 2;
-			EnumType: EnumType<ModifierKey>;
+			EnumType: typeof ModifierKey;
 		}
 
 		export const Alt: Alt;
@@ -10246,7 +10245,7 @@ declare namespace Enum {
 		export interface Ctrl extends EnumItem {
 			Name: "Ctrl";
 			Value: 1;
-			EnumType: EnumType<ModifierKey>;
+			EnumType: typeof ModifierKey;
 		}
 
 		export const Ctrl: Ctrl;
@@ -10254,7 +10253,7 @@ declare namespace Enum {
 		export interface Meta extends EnumItem {
 			Name: "Meta";
 			Value: 3;
-			EnumType: EnumType<ModifierKey>;
+			EnumType: typeof ModifierKey;
 		}
 
 		export const Meta: Meta;
@@ -10262,19 +10261,19 @@ declare namespace Enum {
 		export interface Shift extends EnumItem {
 			Name: "Shift";
 			Value: 0;
-			EnumType: EnumType<ModifierKey>;
+			EnumType: typeof ModifierKey;
 		}
 
 		export const Shift: Shift;
 
-		export function GetEnumItems(this: defined): Array<ModifierKey>
+		export function GetEnumItems(): Array<ModifierKey>
 	}
 	export type ModifierKey = ModifierKey.Alt | ModifierKey.Ctrl | ModifierKey.Meta | ModifierKey.Shift;
 	export namespace MouseBehavior {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<MouseBehavior>;
+			EnumType: typeof MouseBehavior;
 		}
 
 		export const Default: Default;
@@ -10282,7 +10281,7 @@ declare namespace Enum {
 		export interface LockCenter extends EnumItem {
 			Name: "LockCenter";
 			Value: 1;
-			EnumType: EnumType<MouseBehavior>;
+			EnumType: typeof MouseBehavior;
 		}
 
 		export const LockCenter: LockCenter;
@@ -10290,19 +10289,19 @@ declare namespace Enum {
 		export interface LockCurrentPosition extends EnumItem {
 			Name: "LockCurrentPosition";
 			Value: 2;
-			EnumType: EnumType<MouseBehavior>;
+			EnumType: typeof MouseBehavior;
 		}
 
 		export const LockCurrentPosition: LockCurrentPosition;
 
-		export function GetEnumItems(this: defined): Array<MouseBehavior>
+		export function GetEnumItems(): Array<MouseBehavior>
 	}
 	export type MouseBehavior = MouseBehavior.Default | MouseBehavior.LockCenter | MouseBehavior.LockCurrentPosition;
 	export namespace MoveState {
 		export interface Stopped extends EnumItem {
 			Name: "Stopped";
 			Value: 0;
-			EnumType: EnumType<MoveState>;
+			EnumType: typeof MoveState;
 		}
 
 		export const Stopped: Stopped;
@@ -10310,7 +10309,7 @@ declare namespace Enum {
 		export interface Coasting extends EnumItem {
 			Name: "Coasting";
 			Value: 1;
-			EnumType: EnumType<MoveState>;
+			EnumType: typeof MoveState;
 		}
 
 		export const Coasting: Coasting;
@@ -10318,7 +10317,7 @@ declare namespace Enum {
 		export interface Pushing extends EnumItem {
 			Name: "Pushing";
 			Value: 2;
-			EnumType: EnumType<MoveState>;
+			EnumType: typeof MoveState;
 		}
 
 		export const Pushing: Pushing;
@@ -10326,7 +10325,7 @@ declare namespace Enum {
 		export interface Stopping extends EnumItem {
 			Name: "Stopping";
 			Value: 3;
-			EnumType: EnumType<MoveState>;
+			EnumType: typeof MoveState;
 		}
 
 		export const Stopping: Stopping;
@@ -10334,19 +10333,19 @@ declare namespace Enum {
 		export interface AirFree extends EnumItem {
 			Name: "AirFree";
 			Value: 4;
-			EnumType: EnumType<MoveState>;
+			EnumType: typeof MoveState;
 		}
 
 		export const AirFree: AirFree;
 
-		export function GetEnumItems(this: defined): Array<MoveState>
+		export function GetEnumItems(): Array<MoveState>
 	}
 	export type MoveState = MoveState.Stopped | MoveState.Coasting | MoveState.Pushing | MoveState.Stopping | MoveState.AirFree;
 	export namespace NameOcclusion {
 		export interface OccludeAll extends EnumItem {
 			Name: "OccludeAll";
 			Value: 2;
-			EnumType: EnumType<NameOcclusion>;
+			EnumType: typeof NameOcclusion;
 		}
 
 		export const OccludeAll: OccludeAll;
@@ -10354,7 +10353,7 @@ declare namespace Enum {
 		export interface EnemyOcclusion extends EnumItem {
 			Name: "EnemyOcclusion";
 			Value: 1;
-			EnumType: EnumType<NameOcclusion>;
+			EnumType: typeof NameOcclusion;
 		}
 
 		export const EnemyOcclusion: EnemyOcclusion;
@@ -10362,19 +10361,19 @@ declare namespace Enum {
 		export interface NoOcclusion extends EnumItem {
 			Name: "NoOcclusion";
 			Value: 0;
-			EnumType: EnumType<NameOcclusion>;
+			EnumType: typeof NameOcclusion;
 		}
 
 		export const NoOcclusion: NoOcclusion;
 
-		export function GetEnumItems(this: defined): Array<NameOcclusion>
+		export function GetEnumItems(): Array<NameOcclusion>
 	}
 	export type NameOcclusion = NameOcclusion.OccludeAll | NameOcclusion.EnemyOcclusion | NameOcclusion.NoOcclusion;
 	export namespace NetworkOwnership {
 		export interface Automatic extends EnumItem {
 			Name: "Automatic";
 			Value: 0;
-			EnumType: EnumType<NetworkOwnership>;
+			EnumType: typeof NetworkOwnership;
 		}
 
 		export const Automatic: Automatic;
@@ -10382,7 +10381,7 @@ declare namespace Enum {
 		export interface Manual extends EnumItem {
 			Name: "Manual";
 			Value: 1;
-			EnumType: EnumType<NetworkOwnership>;
+			EnumType: typeof NetworkOwnership;
 		}
 
 		export const Manual: Manual;
@@ -10390,19 +10389,19 @@ declare namespace Enum {
 		export interface OnContact extends EnumItem {
 			Name: "OnContact";
 			Value: 2;
-			EnumType: EnumType<NetworkOwnership>;
+			EnumType: typeof NetworkOwnership;
 		}
 
 		export const OnContact: OnContact;
 
-		export function GetEnumItems(this: defined): Array<NetworkOwnership>
+		export function GetEnumItems(): Array<NetworkOwnership>
 	}
 	export type NetworkOwnership = NetworkOwnership.Automatic | NetworkOwnership.Manual | NetworkOwnership.OnContact;
 	export namespace NewAnimationRuntimeSetting {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<NewAnimationRuntimeSetting>;
+			EnumType: typeof NewAnimationRuntimeSetting;
 		}
 
 		export const Default: Default;
@@ -10410,7 +10409,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<NewAnimationRuntimeSetting>;
+			EnumType: typeof NewAnimationRuntimeSetting;
 		}
 
 		export const Disabled: Disabled;
@@ -10418,19 +10417,19 @@ declare namespace Enum {
 		export interface Enabled extends EnumItem {
 			Name: "Enabled";
 			Value: 2;
-			EnumType: EnumType<NewAnimationRuntimeSetting>;
+			EnumType: typeof NewAnimationRuntimeSetting;
 		}
 
 		export const Enabled: Enabled;
 
-		export function GetEnumItems(this: defined): Array<NewAnimationRuntimeSetting>
+		export function GetEnumItems(): Array<NewAnimationRuntimeSetting>
 	}
 	export type NewAnimationRuntimeSetting = NewAnimationRuntimeSetting.Default | NewAnimationRuntimeSetting.Disabled | NewAnimationRuntimeSetting.Enabled;
 	export namespace NormalId {
 		export interface Top extends EnumItem {
 			Name: "Top";
 			Value: 1;
-			EnumType: EnumType<NormalId>;
+			EnumType: typeof NormalId;
 		}
 
 		export const Top: Top;
@@ -10438,7 +10437,7 @@ declare namespace Enum {
 		export interface Bottom extends EnumItem {
 			Name: "Bottom";
 			Value: 4;
-			EnumType: EnumType<NormalId>;
+			EnumType: typeof NormalId;
 		}
 
 		export const Bottom: Bottom;
@@ -10446,7 +10445,7 @@ declare namespace Enum {
 		export interface Back extends EnumItem {
 			Name: "Back";
 			Value: 2;
-			EnumType: EnumType<NormalId>;
+			EnumType: typeof NormalId;
 		}
 
 		export const Back: Back;
@@ -10454,7 +10453,7 @@ declare namespace Enum {
 		export interface Front extends EnumItem {
 			Name: "Front";
 			Value: 5;
-			EnumType: EnumType<NormalId>;
+			EnumType: typeof NormalId;
 		}
 
 		export const Front: Front;
@@ -10462,7 +10461,7 @@ declare namespace Enum {
 		export interface Right extends EnumItem {
 			Name: "Right";
 			Value: 0;
-			EnumType: EnumType<NormalId>;
+			EnumType: typeof NormalId;
 		}
 
 		export const Right: Right;
@@ -10470,19 +10469,19 @@ declare namespace Enum {
 		export interface Left extends EnumItem {
 			Name: "Left";
 			Value: 3;
-			EnumType: EnumType<NormalId>;
+			EnumType: typeof NormalId;
 		}
 
 		export const Left: Left;
 
-		export function GetEnumItems(this: defined): Array<NormalId>
+		export function GetEnumItems(): Array<NormalId>
 	}
 	export type NormalId = NormalId.Top | NormalId.Bottom | NormalId.Back | NormalId.Front | NormalId.Right | NormalId.Left;
 	export namespace OrientationAlignmentMode {
 		export interface OneAttachment extends EnumItem {
 			Name: "OneAttachment";
 			Value: 0;
-			EnumType: EnumType<OrientationAlignmentMode>;
+			EnumType: typeof OrientationAlignmentMode;
 		}
 
 		export const OneAttachment: OneAttachment;
@@ -10490,19 +10489,19 @@ declare namespace Enum {
 		export interface TwoAttachment extends EnumItem {
 			Name: "TwoAttachment";
 			Value: 1;
-			EnumType: EnumType<OrientationAlignmentMode>;
+			EnumType: typeof OrientationAlignmentMode;
 		}
 
 		export const TwoAttachment: TwoAttachment;
 
-		export function GetEnumItems(this: defined): Array<OrientationAlignmentMode>
+		export function GetEnumItems(): Array<OrientationAlignmentMode>
 	}
 	export type OrientationAlignmentMode = OrientationAlignmentMode.OneAttachment | OrientationAlignmentMode.TwoAttachment;
 	export namespace OutfitSource {
 		export interface All extends EnumItem {
 			Name: "All";
 			Value: 1;
-			EnumType: EnumType<OutfitSource>;
+			EnumType: typeof OutfitSource;
 		}
 
 		export const All: All;
@@ -10510,7 +10509,7 @@ declare namespace Enum {
 		export interface Created extends EnumItem {
 			Name: "Created";
 			Value: 2;
-			EnumType: EnumType<OutfitSource>;
+			EnumType: typeof OutfitSource;
 		}
 
 		export const Created: Created;
@@ -10518,19 +10517,19 @@ declare namespace Enum {
 		export interface Purchased extends EnumItem {
 			Name: "Purchased";
 			Value: 3;
-			EnumType: EnumType<OutfitSource>;
+			EnumType: typeof OutfitSource;
 		}
 
 		export const Purchased: Purchased;
 
-		export function GetEnumItems(this: defined): Array<OutfitSource>
+		export function GetEnumItems(): Array<OutfitSource>
 	}
 	export type OutfitSource = OutfitSource.All | OutfitSource.Created | OutfitSource.Purchased;
 	export namespace OutputLayoutMode {
 		export interface Horizontal extends EnumItem {
 			Name: "Horizontal";
 			Value: 0;
-			EnumType: EnumType<OutputLayoutMode>;
+			EnumType: typeof OutputLayoutMode;
 		}
 
 		export const Horizontal: Horizontal;
@@ -10538,19 +10537,19 @@ declare namespace Enum {
 		export interface Vertical extends EnumItem {
 			Name: "Vertical";
 			Value: 1;
-			EnumType: EnumType<OutputLayoutMode>;
+			EnumType: typeof OutputLayoutMode;
 		}
 
 		export const Vertical: Vertical;
 
-		export function GetEnumItems(this: defined): Array<OutputLayoutMode>
+		export function GetEnumItems(): Array<OutputLayoutMode>
 	}
 	export type OutputLayoutMode = OutputLayoutMode.Horizontal | OutputLayoutMode.Vertical;
 	export namespace OverrideMouseIconBehavior {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<OverrideMouseIconBehavior>;
+			EnumType: typeof OverrideMouseIconBehavior;
 		}
 
 		export const None: None;
@@ -10558,7 +10557,7 @@ declare namespace Enum {
 		export interface ForceShow extends EnumItem {
 			Name: "ForceShow";
 			Value: 1;
-			EnumType: EnumType<OverrideMouseIconBehavior>;
+			EnumType: typeof OverrideMouseIconBehavior;
 		}
 
 		export const ForceShow: ForceShow;
@@ -10566,19 +10565,19 @@ declare namespace Enum {
 		export interface ForceHide extends EnumItem {
 			Name: "ForceHide";
 			Value: 2;
-			EnumType: EnumType<OverrideMouseIconBehavior>;
+			EnumType: typeof OverrideMouseIconBehavior;
 		}
 
 		export const ForceHide: ForceHide;
 
-		export function GetEnumItems(this: defined): Array<OverrideMouseIconBehavior>
+		export function GetEnumItems(): Array<OverrideMouseIconBehavior>
 	}
 	export type OverrideMouseIconBehavior = OverrideMouseIconBehavior.None | OverrideMouseIconBehavior.ForceShow | OverrideMouseIconBehavior.ForceHide;
 	export namespace PackagePermission {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<PackagePermission>;
+			EnumType: typeof PackagePermission;
 		}
 
 		export const None: None;
@@ -10586,7 +10585,7 @@ declare namespace Enum {
 		export interface NoAccess extends EnumItem {
 			Name: "NoAccess";
 			Value: 1;
-			EnumType: EnumType<PackagePermission>;
+			EnumType: typeof PackagePermission;
 		}
 
 		export const NoAccess: NoAccess;
@@ -10594,7 +10593,7 @@ declare namespace Enum {
 		export interface Revoked extends EnumItem {
 			Name: "Revoked";
 			Value: 2;
-			EnumType: EnumType<PackagePermission>;
+			EnumType: typeof PackagePermission;
 		}
 
 		export const Revoked: Revoked;
@@ -10602,7 +10601,7 @@ declare namespace Enum {
 		export interface UseView extends EnumItem {
 			Name: "UseView";
 			Value: 3;
-			EnumType: EnumType<PackagePermission>;
+			EnumType: typeof PackagePermission;
 		}
 
 		export const UseView: UseView;
@@ -10610,7 +10609,7 @@ declare namespace Enum {
 		export interface Edit extends EnumItem {
 			Name: "Edit";
 			Value: 4;
-			EnumType: EnumType<PackagePermission>;
+			EnumType: typeof PackagePermission;
 		}
 
 		export const Edit: Edit;
@@ -10618,19 +10617,19 @@ declare namespace Enum {
 		export interface Own extends EnumItem {
 			Name: "Own";
 			Value: 5;
-			EnumType: EnumType<PackagePermission>;
+			EnumType: typeof PackagePermission;
 		}
 
 		export const Own: Own;
 
-		export function GetEnumItems(this: defined): Array<PackagePermission>
+		export function GetEnumItems(): Array<PackagePermission>
 	}
 	export type PackagePermission = PackagePermission.None | PackagePermission.NoAccess | PackagePermission.Revoked | PackagePermission.UseView | PackagePermission.Edit | PackagePermission.Own;
 	export namespace PartType {
 		export interface Ball extends EnumItem {
 			Name: "Ball";
 			Value: 0;
-			EnumType: EnumType<PartType>;
+			EnumType: typeof PartType;
 		}
 
 		export const Ball: Ball;
@@ -10638,7 +10637,7 @@ declare namespace Enum {
 		export interface Block extends EnumItem {
 			Name: "Block";
 			Value: 1;
-			EnumType: EnumType<PartType>;
+			EnumType: typeof PartType;
 		}
 
 		export const Block: Block;
@@ -10646,19 +10645,19 @@ declare namespace Enum {
 		export interface Cylinder extends EnumItem {
 			Name: "Cylinder";
 			Value: 2;
-			EnumType: EnumType<PartType>;
+			EnumType: typeof PartType;
 		}
 
 		export const Cylinder: Cylinder;
 
-		export function GetEnumItems(this: defined): Array<PartType>
+		export function GetEnumItems(): Array<PartType>
 	}
 	export type PartType = PartType.Ball | PartType.Block | PartType.Cylinder;
 	export namespace ParticleEmitterShape {
 		export interface Box extends EnumItem {
 			Name: "Box";
 			Value: 0;
-			EnumType: EnumType<ParticleEmitterShape>;
+			EnumType: typeof ParticleEmitterShape;
 		}
 
 		export const Box: Box;
@@ -10666,7 +10665,7 @@ declare namespace Enum {
 		export interface Sphere extends EnumItem {
 			Name: "Sphere";
 			Value: 1;
-			EnumType: EnumType<ParticleEmitterShape>;
+			EnumType: typeof ParticleEmitterShape;
 		}
 
 		export const Sphere: Sphere;
@@ -10674,7 +10673,7 @@ declare namespace Enum {
 		export interface Cylinder extends EnumItem {
 			Name: "Cylinder";
 			Value: 2;
-			EnumType: EnumType<ParticleEmitterShape>;
+			EnumType: typeof ParticleEmitterShape;
 		}
 
 		export const Cylinder: Cylinder;
@@ -10682,19 +10681,19 @@ declare namespace Enum {
 		export interface Disc extends EnumItem {
 			Name: "Disc";
 			Value: 3;
-			EnumType: EnumType<ParticleEmitterShape>;
+			EnumType: typeof ParticleEmitterShape;
 		}
 
 		export const Disc: Disc;
 
-		export function GetEnumItems(this: defined): Array<ParticleEmitterShape>
+		export function GetEnumItems(): Array<ParticleEmitterShape>
 	}
 	export type ParticleEmitterShape = ParticleEmitterShape.Box | ParticleEmitterShape.Sphere | ParticleEmitterShape.Cylinder | ParticleEmitterShape.Disc;
 	export namespace ParticleEmitterShapeInOut {
 		export interface Outward extends EnumItem {
 			Name: "Outward";
 			Value: 0;
-			EnumType: EnumType<ParticleEmitterShapeInOut>;
+			EnumType: typeof ParticleEmitterShapeInOut;
 		}
 
 		export const Outward: Outward;
@@ -10702,7 +10701,7 @@ declare namespace Enum {
 		export interface Inward extends EnumItem {
 			Name: "Inward";
 			Value: 1;
-			EnumType: EnumType<ParticleEmitterShapeInOut>;
+			EnumType: typeof ParticleEmitterShapeInOut;
 		}
 
 		export const Inward: Inward;
@@ -10710,19 +10709,19 @@ declare namespace Enum {
 		export interface InAndOut extends EnumItem {
 			Name: "InAndOut";
 			Value: 2;
-			EnumType: EnumType<ParticleEmitterShapeInOut>;
+			EnumType: typeof ParticleEmitterShapeInOut;
 		}
 
 		export const InAndOut: InAndOut;
 
-		export function GetEnumItems(this: defined): Array<ParticleEmitterShapeInOut>
+		export function GetEnumItems(): Array<ParticleEmitterShapeInOut>
 	}
 	export type ParticleEmitterShapeInOut = ParticleEmitterShapeInOut.Outward | ParticleEmitterShapeInOut.Inward | ParticleEmitterShapeInOut.InAndOut;
 	export namespace ParticleEmitterShapeStyle {
 		export interface Volume extends EnumItem {
 			Name: "Volume";
 			Value: 0;
-			EnumType: EnumType<ParticleEmitterShapeStyle>;
+			EnumType: typeof ParticleEmitterShapeStyle;
 		}
 
 		export const Volume: Volume;
@@ -10730,19 +10729,19 @@ declare namespace Enum {
 		export interface Surface extends EnumItem {
 			Name: "Surface";
 			Value: 1;
-			EnumType: EnumType<ParticleEmitterShapeStyle>;
+			EnumType: typeof ParticleEmitterShapeStyle;
 		}
 
 		export const Surface: Surface;
 
-		export function GetEnumItems(this: defined): Array<ParticleEmitterShapeStyle>
+		export function GetEnumItems(): Array<ParticleEmitterShapeStyle>
 	}
 	export type ParticleEmitterShapeStyle = ParticleEmitterShapeStyle.Volume | ParticleEmitterShapeStyle.Surface;
 	export namespace ParticleFlipbookLayout {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<ParticleFlipbookLayout>;
+			EnumType: typeof ParticleFlipbookLayout;
 		}
 
 		export const None: None;
@@ -10750,7 +10749,7 @@ declare namespace Enum {
 		export interface TwoByTwo extends EnumItem {
 			Name: "TwoByTwo";
 			Value: 1;
-			EnumType: EnumType<ParticleFlipbookLayout>;
+			EnumType: typeof ParticleFlipbookLayout;
 		}
 
 		export const TwoByTwo: TwoByTwo;
@@ -10758,7 +10757,7 @@ declare namespace Enum {
 		export interface FourByFour extends EnumItem {
 			Name: "FourByFour";
 			Value: 2;
-			EnumType: EnumType<ParticleFlipbookLayout>;
+			EnumType: typeof ParticleFlipbookLayout;
 		}
 
 		export const FourByFour: FourByFour;
@@ -10766,19 +10765,19 @@ declare namespace Enum {
 		export interface EightByEight extends EnumItem {
 			Name: "EightByEight";
 			Value: 3;
-			EnumType: EnumType<ParticleFlipbookLayout>;
+			EnumType: typeof ParticleFlipbookLayout;
 		}
 
 		export const EightByEight: EightByEight;
 
-		export function GetEnumItems(this: defined): Array<ParticleFlipbookLayout>
+		export function GetEnumItems(): Array<ParticleFlipbookLayout>
 	}
 	export type ParticleFlipbookLayout = ParticleFlipbookLayout.None | ParticleFlipbookLayout.TwoByTwo | ParticleFlipbookLayout.FourByFour | ParticleFlipbookLayout.EightByEight;
 	export namespace ParticleFlipbookMode {
 		export interface Loop extends EnumItem {
 			Name: "Loop";
 			Value: 0;
-			EnumType: EnumType<ParticleFlipbookMode>;
+			EnumType: typeof ParticleFlipbookMode;
 		}
 
 		export const Loop: Loop;
@@ -10786,7 +10785,7 @@ declare namespace Enum {
 		export interface OneShot extends EnumItem {
 			Name: "OneShot";
 			Value: 1;
-			EnumType: EnumType<ParticleFlipbookMode>;
+			EnumType: typeof ParticleFlipbookMode;
 		}
 
 		export const OneShot: OneShot;
@@ -10794,7 +10793,7 @@ declare namespace Enum {
 		export interface PingPong extends EnumItem {
 			Name: "PingPong";
 			Value: 2;
-			EnumType: EnumType<ParticleFlipbookMode>;
+			EnumType: typeof ParticleFlipbookMode;
 		}
 
 		export const PingPong: PingPong;
@@ -10802,19 +10801,19 @@ declare namespace Enum {
 		export interface Random extends EnumItem {
 			Name: "Random";
 			Value: 3;
-			EnumType: EnumType<ParticleFlipbookMode>;
+			EnumType: typeof ParticleFlipbookMode;
 		}
 
 		export const Random: Random;
 
-		export function GetEnumItems(this: defined): Array<ParticleFlipbookMode>
+		export function GetEnumItems(): Array<ParticleFlipbookMode>
 	}
 	export type ParticleFlipbookMode = ParticleFlipbookMode.Loop | ParticleFlipbookMode.OneShot | ParticleFlipbookMode.PingPong | ParticleFlipbookMode.Random;
 	export namespace ParticleOrientation {
 		export interface FacingCamera extends EnumItem {
 			Name: "FacingCamera";
 			Value: 0;
-			EnumType: EnumType<ParticleOrientation>;
+			EnumType: typeof ParticleOrientation;
 		}
 
 		export const FacingCamera: FacingCamera;
@@ -10822,7 +10821,7 @@ declare namespace Enum {
 		export interface FacingCameraWorldUp extends EnumItem {
 			Name: "FacingCameraWorldUp";
 			Value: 1;
-			EnumType: EnumType<ParticleOrientation>;
+			EnumType: typeof ParticleOrientation;
 		}
 
 		export const FacingCameraWorldUp: FacingCameraWorldUp;
@@ -10830,7 +10829,7 @@ declare namespace Enum {
 		export interface VelocityParallel extends EnumItem {
 			Name: "VelocityParallel";
 			Value: 2;
-			EnumType: EnumType<ParticleOrientation>;
+			EnumType: typeof ParticleOrientation;
 		}
 
 		export const VelocityParallel: VelocityParallel;
@@ -10838,19 +10837,19 @@ declare namespace Enum {
 		export interface VelocityPerpendicular extends EnumItem {
 			Name: "VelocityPerpendicular";
 			Value: 3;
-			EnumType: EnumType<ParticleOrientation>;
+			EnumType: typeof ParticleOrientation;
 		}
 
 		export const VelocityPerpendicular: VelocityPerpendicular;
 
-		export function GetEnumItems(this: defined): Array<ParticleOrientation>
+		export function GetEnumItems(): Array<ParticleOrientation>
 	}
 	export type ParticleOrientation = ParticleOrientation.FacingCamera | ParticleOrientation.FacingCameraWorldUp | ParticleOrientation.VelocityParallel | ParticleOrientation.VelocityPerpendicular;
 	export namespace PathStatus {
 		export interface Success extends EnumItem {
 			Name: "Success";
 			Value: 0;
-			EnumType: EnumType<PathStatus>;
+			EnumType: typeof PathStatus;
 		}
 
 		export const Success: Success;
@@ -10858,7 +10857,7 @@ declare namespace Enum {
 		export interface ClosestNoPath extends EnumItem {
 			Name: "ClosestNoPath";
 			Value: 1;
-			EnumType: EnumType<PathStatus>;
+			EnumType: typeof PathStatus;
 		}
 
 		export const ClosestNoPath: ClosestNoPath;
@@ -10866,7 +10865,7 @@ declare namespace Enum {
 		export interface ClosestOutOfRange extends EnumItem {
 			Name: "ClosestOutOfRange";
 			Value: 2;
-			EnumType: EnumType<PathStatus>;
+			EnumType: typeof PathStatus;
 		}
 
 		export const ClosestOutOfRange: ClosestOutOfRange;
@@ -10874,7 +10873,7 @@ declare namespace Enum {
 		export interface FailStartNotEmpty extends EnumItem {
 			Name: "FailStartNotEmpty";
 			Value: 3;
-			EnumType: EnumType<PathStatus>;
+			EnumType: typeof PathStatus;
 		}
 
 		export const FailStartNotEmpty: FailStartNotEmpty;
@@ -10882,7 +10881,7 @@ declare namespace Enum {
 		export interface FailFinishNotEmpty extends EnumItem {
 			Name: "FailFinishNotEmpty";
 			Value: 4;
-			EnumType: EnumType<PathStatus>;
+			EnumType: typeof PathStatus;
 		}
 
 		export const FailFinishNotEmpty: FailFinishNotEmpty;
@@ -10890,19 +10889,19 @@ declare namespace Enum {
 		export interface NoPath extends EnumItem {
 			Name: "NoPath";
 			Value: 5;
-			EnumType: EnumType<PathStatus>;
+			EnumType: typeof PathStatus;
 		}
 
 		export const NoPath: NoPath;
 
-		export function GetEnumItems(this: defined): Array<PathStatus>
+		export function GetEnumItems(): Array<PathStatus>
 	}
 	export type PathStatus = PathStatus.Success | PathStatus.ClosestNoPath | PathStatus.ClosestOutOfRange | PathStatus.FailStartNotEmpty | PathStatus.FailFinishNotEmpty | PathStatus.NoPath;
 	export namespace PathWaypointAction {
 		export interface Walk extends EnumItem {
 			Name: "Walk";
 			Value: 0;
-			EnumType: EnumType<PathWaypointAction>;
+			EnumType: typeof PathWaypointAction;
 		}
 
 		export const Walk: Walk;
@@ -10910,7 +10909,7 @@ declare namespace Enum {
 		export interface Jump extends EnumItem {
 			Name: "Jump";
 			Value: 1;
-			EnumType: EnumType<PathWaypointAction>;
+			EnumType: typeof PathWaypointAction;
 		}
 
 		export const Jump: Jump;
@@ -10918,19 +10917,19 @@ declare namespace Enum {
 		export interface Custom extends EnumItem {
 			Name: "Custom";
 			Value: 2;
-			EnumType: EnumType<PathWaypointAction>;
+			EnumType: typeof PathWaypointAction;
 		}
 
 		export const Custom: Custom;
 
-		export function GetEnumItems(this: defined): Array<PathWaypointAction>
+		export function GetEnumItems(): Array<PathWaypointAction>
 	}
 	export type PathWaypointAction = PathWaypointAction.Walk | PathWaypointAction.Jump | PathWaypointAction.Custom;
 	export namespace PermissionLevelShown {
 		export interface Game extends EnumItem {
 			Name: "Game";
 			Value: 0;
-			EnumType: EnumType<PermissionLevelShown>;
+			EnumType: typeof PermissionLevelShown;
 		}
 
 		export const Game: Game;
@@ -10938,7 +10937,7 @@ declare namespace Enum {
 		export interface RobloxGame extends EnumItem {
 			Name: "RobloxGame";
 			Value: 1;
-			EnumType: EnumType<PermissionLevelShown>;
+			EnumType: typeof PermissionLevelShown;
 		}
 
 		export const RobloxGame: RobloxGame;
@@ -10946,7 +10945,7 @@ declare namespace Enum {
 		export interface RobloxScript extends EnumItem {
 			Name: "RobloxScript";
 			Value: 2;
-			EnumType: EnumType<PermissionLevelShown>;
+			EnumType: typeof PermissionLevelShown;
 		}
 
 		export const RobloxScript: RobloxScript;
@@ -10954,7 +10953,7 @@ declare namespace Enum {
 		export interface Studio extends EnumItem {
 			Name: "Studio";
 			Value: 3;
-			EnumType: EnumType<PermissionLevelShown>;
+			EnumType: typeof PermissionLevelShown;
 		}
 
 		export const Studio: Studio;
@@ -10962,19 +10961,19 @@ declare namespace Enum {
 		export interface Roblox extends EnumItem {
 			Name: "Roblox";
 			Value: 4;
-			EnumType: EnumType<PermissionLevelShown>;
+			EnumType: typeof PermissionLevelShown;
 		}
 
 		export const Roblox: Roblox;
 
-		export function GetEnumItems(this: defined): Array<PermissionLevelShown>
+		export function GetEnumItems(): Array<PermissionLevelShown>
 	}
 	export type PermissionLevelShown = PermissionLevelShown.Game | PermissionLevelShown.RobloxGame | PermissionLevelShown.RobloxScript | PermissionLevelShown.Studio | PermissionLevelShown.Roblox;
 	export namespace PhysicsInertiaAndVolumeFix {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<PhysicsInertiaAndVolumeFix>;
+			EnumType: typeof PhysicsInertiaAndVolumeFix;
 		}
 
 		export const Default: Default;
@@ -10982,7 +10981,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<PhysicsInertiaAndVolumeFix>;
+			EnumType: typeof PhysicsInertiaAndVolumeFix;
 		}
 
 		export const Disabled: Disabled;
@@ -10990,19 +10989,19 @@ declare namespace Enum {
 		export interface Enabled extends EnumItem {
 			Name: "Enabled";
 			Value: 2;
-			EnumType: EnumType<PhysicsInertiaAndVolumeFix>;
+			EnumType: typeof PhysicsInertiaAndVolumeFix;
 		}
 
 		export const Enabled: Enabled;
 
-		export function GetEnumItems(this: defined): Array<PhysicsInertiaAndVolumeFix>
+		export function GetEnumItems(): Array<PhysicsInertiaAndVolumeFix>
 	}
 	export type PhysicsInertiaAndVolumeFix = PhysicsInertiaAndVolumeFix.Default | PhysicsInertiaAndVolumeFix.Disabled | PhysicsInertiaAndVolumeFix.Enabled;
 	export namespace PhysicsSimulationRate {
 		export interface Fixed240Hz extends EnumItem {
 			Name: "Fixed240Hz";
 			Value: 0;
-			EnumType: EnumType<PhysicsSimulationRate>;
+			EnumType: typeof PhysicsSimulationRate;
 		}
 
 		export const Fixed240Hz: Fixed240Hz;
@@ -11010,7 +11009,7 @@ declare namespace Enum {
 		export interface Fixed120Hz extends EnumItem {
 			Name: "Fixed120Hz";
 			Value: 1;
-			EnumType: EnumType<PhysicsSimulationRate>;
+			EnumType: typeof PhysicsSimulationRate;
 		}
 
 		export const Fixed120Hz: Fixed120Hz;
@@ -11018,19 +11017,19 @@ declare namespace Enum {
 		export interface Fixed60Hz extends EnumItem {
 			Name: "Fixed60Hz";
 			Value: 2;
-			EnumType: EnumType<PhysicsSimulationRate>;
+			EnumType: typeof PhysicsSimulationRate;
 		}
 
 		export const Fixed60Hz: Fixed60Hz;
 
-		export function GetEnumItems(this: defined): Array<PhysicsSimulationRate>
+		export function GetEnumItems(): Array<PhysicsSimulationRate>
 	}
 	export type PhysicsSimulationRate = PhysicsSimulationRate.Fixed240Hz | PhysicsSimulationRate.Fixed120Hz | PhysicsSimulationRate.Fixed60Hz;
 	export namespace PhysicsSteppingMethod {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<PhysicsSteppingMethod>;
+			EnumType: typeof PhysicsSteppingMethod;
 		}
 
 		export const Default: Default;
@@ -11038,7 +11037,7 @@ declare namespace Enum {
 		export interface Fixed extends EnumItem {
 			Name: "Fixed";
 			Value: 1;
-			EnumType: EnumType<PhysicsSteppingMethod>;
+			EnumType: typeof PhysicsSteppingMethod;
 		}
 
 		export const Fixed: Fixed;
@@ -11046,19 +11045,19 @@ declare namespace Enum {
 		export interface Adaptive extends EnumItem {
 			Name: "Adaptive";
 			Value: 2;
-			EnumType: EnumType<PhysicsSteppingMethod>;
+			EnumType: typeof PhysicsSteppingMethod;
 		}
 
 		export const Adaptive: Adaptive;
 
-		export function GetEnumItems(this: defined): Array<PhysicsSteppingMethod>
+		export function GetEnumItems(): Array<PhysicsSteppingMethod>
 	}
 	export type PhysicsSteppingMethod = PhysicsSteppingMethod.Default | PhysicsSteppingMethod.Fixed | PhysicsSteppingMethod.Adaptive;
 	export namespace Platform {
 		export interface Windows extends EnumItem {
 			Name: "Windows";
 			Value: 0;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const Windows: Windows;
@@ -11066,7 +11065,7 @@ declare namespace Enum {
 		export interface OSX extends EnumItem {
 			Name: "OSX";
 			Value: 1;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const OSX: OSX;
@@ -11074,7 +11073,7 @@ declare namespace Enum {
 		export interface IOS extends EnumItem {
 			Name: "IOS";
 			Value: 2;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const IOS: IOS;
@@ -11082,7 +11081,7 @@ declare namespace Enum {
 		export interface Android extends EnumItem {
 			Name: "Android";
 			Value: 3;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const Android: Android;
@@ -11090,7 +11089,7 @@ declare namespace Enum {
 		export interface XBoxOne extends EnumItem {
 			Name: "XBoxOne";
 			Value: 4;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const XBoxOne: XBoxOne;
@@ -11098,7 +11097,7 @@ declare namespace Enum {
 		export interface PS4 extends EnumItem {
 			Name: "PS4";
 			Value: 5;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const PS4: PS4;
@@ -11106,7 +11105,7 @@ declare namespace Enum {
 		export interface PS3 extends EnumItem {
 			Name: "PS3";
 			Value: 6;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const PS3: PS3;
@@ -11114,7 +11113,7 @@ declare namespace Enum {
 		export interface XBox360 extends EnumItem {
 			Name: "XBox360";
 			Value: 7;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const XBox360: XBox360;
@@ -11122,7 +11121,7 @@ declare namespace Enum {
 		export interface WiiU extends EnumItem {
 			Name: "WiiU";
 			Value: 8;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const WiiU: WiiU;
@@ -11130,7 +11129,7 @@ declare namespace Enum {
 		export interface NX extends EnumItem {
 			Name: "NX";
 			Value: 9;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const NX: NX;
@@ -11138,7 +11137,7 @@ declare namespace Enum {
 		export interface Ouya extends EnumItem {
 			Name: "Ouya";
 			Value: 10;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const Ouya: Ouya;
@@ -11146,7 +11145,7 @@ declare namespace Enum {
 		export interface AndroidTV extends EnumItem {
 			Name: "AndroidTV";
 			Value: 11;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const AndroidTV: AndroidTV;
@@ -11154,7 +11153,7 @@ declare namespace Enum {
 		export interface Chromecast extends EnumItem {
 			Name: "Chromecast";
 			Value: 12;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const Chromecast: Chromecast;
@@ -11162,7 +11161,7 @@ declare namespace Enum {
 		export interface Linux extends EnumItem {
 			Name: "Linux";
 			Value: 13;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const Linux: Linux;
@@ -11170,7 +11169,7 @@ declare namespace Enum {
 		export interface SteamOS extends EnumItem {
 			Name: "SteamOS";
 			Value: 14;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const SteamOS: SteamOS;
@@ -11178,7 +11177,7 @@ declare namespace Enum {
 		export interface WebOS extends EnumItem {
 			Name: "WebOS";
 			Value: 15;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const WebOS: WebOS;
@@ -11186,7 +11185,7 @@ declare namespace Enum {
 		export interface DOS extends EnumItem {
 			Name: "DOS";
 			Value: 16;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const DOS: DOS;
@@ -11194,7 +11193,7 @@ declare namespace Enum {
 		export interface BeOS extends EnumItem {
 			Name: "BeOS";
 			Value: 17;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const BeOS: BeOS;
@@ -11202,7 +11201,7 @@ declare namespace Enum {
 		export interface UWP extends EnumItem {
 			Name: "UWP";
 			Value: 18;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const UWP: UWP;
@@ -11210,19 +11209,19 @@ declare namespace Enum {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 19;
-			EnumType: EnumType<Platform>;
+			EnumType: typeof Platform;
 		}
 
 		export const None: None;
 
-		export function GetEnumItems(this: defined): Array<Platform>
+		export function GetEnumItems(): Array<Platform>
 	}
 	export type Platform = Platform.Windows | Platform.OSX | Platform.IOS | Platform.Android | Platform.XBoxOne | Platform.PS4 | Platform.PS3 | Platform.XBox360 | Platform.WiiU | Platform.NX | Platform.Ouya | Platform.AndroidTV | Platform.Chromecast | Platform.Linux | Platform.SteamOS | Platform.WebOS | Platform.DOS | Platform.BeOS | Platform.UWP | Platform.None;
 	export namespace PlaybackState {
 		export interface Begin extends EnumItem {
 			Name: "Begin";
 			Value: 0;
-			EnumType: EnumType<PlaybackState>;
+			EnumType: typeof PlaybackState;
 		}
 
 		export const Begin: Begin;
@@ -11230,7 +11229,7 @@ declare namespace Enum {
 		export interface Delayed extends EnumItem {
 			Name: "Delayed";
 			Value: 1;
-			EnumType: EnumType<PlaybackState>;
+			EnumType: typeof PlaybackState;
 		}
 
 		export const Delayed: Delayed;
@@ -11238,7 +11237,7 @@ declare namespace Enum {
 		export interface Playing extends EnumItem {
 			Name: "Playing";
 			Value: 2;
-			EnumType: EnumType<PlaybackState>;
+			EnumType: typeof PlaybackState;
 		}
 
 		export const Playing: Playing;
@@ -11246,7 +11245,7 @@ declare namespace Enum {
 		export interface Paused extends EnumItem {
 			Name: "Paused";
 			Value: 3;
-			EnumType: EnumType<PlaybackState>;
+			EnumType: typeof PlaybackState;
 		}
 
 		export const Paused: Paused;
@@ -11254,7 +11253,7 @@ declare namespace Enum {
 		export interface Completed extends EnumItem {
 			Name: "Completed";
 			Value: 4;
-			EnumType: EnumType<PlaybackState>;
+			EnumType: typeof PlaybackState;
 		}
 
 		export const Completed: Completed;
@@ -11262,19 +11261,19 @@ declare namespace Enum {
 		export interface Cancelled extends EnumItem {
 			Name: "Cancelled";
 			Value: 5;
-			EnumType: EnumType<PlaybackState>;
+			EnumType: typeof PlaybackState;
 		}
 
 		export const Cancelled: Cancelled;
 
-		export function GetEnumItems(this: defined): Array<PlaybackState>
+		export function GetEnumItems(): Array<PlaybackState>
 	}
 	export type PlaybackState = PlaybackState.Begin | PlaybackState.Delayed | PlaybackState.Playing | PlaybackState.Paused | PlaybackState.Completed | PlaybackState.Cancelled;
 	export namespace PlayerActions {
 		export interface CharacterForward extends EnumItem {
 			Name: "CharacterForward";
 			Value: 0;
-			EnumType: EnumType<PlayerActions>;
+			EnumType: typeof PlayerActions;
 		}
 
 		export const CharacterForward: CharacterForward;
@@ -11282,7 +11281,7 @@ declare namespace Enum {
 		export interface CharacterBackward extends EnumItem {
 			Name: "CharacterBackward";
 			Value: 1;
-			EnumType: EnumType<PlayerActions>;
+			EnumType: typeof PlayerActions;
 		}
 
 		export const CharacterBackward: CharacterBackward;
@@ -11290,7 +11289,7 @@ declare namespace Enum {
 		export interface CharacterLeft extends EnumItem {
 			Name: "CharacterLeft";
 			Value: 2;
-			EnumType: EnumType<PlayerActions>;
+			EnumType: typeof PlayerActions;
 		}
 
 		export const CharacterLeft: CharacterLeft;
@@ -11298,7 +11297,7 @@ declare namespace Enum {
 		export interface CharacterRight extends EnumItem {
 			Name: "CharacterRight";
 			Value: 3;
-			EnumType: EnumType<PlayerActions>;
+			EnumType: typeof PlayerActions;
 		}
 
 		export const CharacterRight: CharacterRight;
@@ -11306,19 +11305,19 @@ declare namespace Enum {
 		export interface CharacterJump extends EnumItem {
 			Name: "CharacterJump";
 			Value: 4;
-			EnumType: EnumType<PlayerActions>;
+			EnumType: typeof PlayerActions;
 		}
 
 		export const CharacterJump: CharacterJump;
 
-		export function GetEnumItems(this: defined): Array<PlayerActions>
+		export function GetEnumItems(): Array<PlayerActions>
 	}
 	export type PlayerActions = PlayerActions.CharacterForward | PlayerActions.CharacterBackward | PlayerActions.CharacterLeft | PlayerActions.CharacterRight | PlayerActions.CharacterJump;
 	export namespace PlayerChatType {
 		export interface All extends EnumItem {
 			Name: "All";
 			Value: 0;
-			EnumType: EnumType<PlayerChatType>;
+			EnumType: typeof PlayerChatType;
 		}
 
 		export const All: All;
@@ -11326,7 +11325,7 @@ declare namespace Enum {
 		export interface Team extends EnumItem {
 			Name: "Team";
 			Value: 1;
-			EnumType: EnumType<PlayerChatType>;
+			EnumType: typeof PlayerChatType;
 		}
 
 		export const Team: Team;
@@ -11334,19 +11333,19 @@ declare namespace Enum {
 		export interface Whisper extends EnumItem {
 			Name: "Whisper";
 			Value: 2;
-			EnumType: EnumType<PlayerChatType>;
+			EnumType: typeof PlayerChatType;
 		}
 
 		export const Whisper: Whisper;
 
-		export function GetEnumItems(this: defined): Array<PlayerChatType>
+		export function GetEnumItems(): Array<PlayerChatType>
 	}
 	export type PlayerChatType = PlayerChatType.All | PlayerChatType.Team | PlayerChatType.Whisper;
 	export namespace PoseEasingDirection {
 		export interface Out extends EnumItem {
 			Name: "Out";
 			Value: 1;
-			EnumType: EnumType<PoseEasingDirection>;
+			EnumType: typeof PoseEasingDirection;
 		}
 
 		export const Out: Out;
@@ -11354,7 +11353,7 @@ declare namespace Enum {
 		export interface InOut extends EnumItem {
 			Name: "InOut";
 			Value: 2;
-			EnumType: EnumType<PoseEasingDirection>;
+			EnumType: typeof PoseEasingDirection;
 		}
 
 		export const InOut: InOut;
@@ -11362,19 +11361,19 @@ declare namespace Enum {
 		export interface In extends EnumItem {
 			Name: "In";
 			Value: 0;
-			EnumType: EnumType<PoseEasingDirection>;
+			EnumType: typeof PoseEasingDirection;
 		}
 
 		export const In: In;
 
-		export function GetEnumItems(this: defined): Array<PoseEasingDirection>
+		export function GetEnumItems(): Array<PoseEasingDirection>
 	}
 	export type PoseEasingDirection = PoseEasingDirection.Out | PoseEasingDirection.InOut | PoseEasingDirection.In;
 	export namespace PoseEasingStyle {
 		export interface Linear extends EnumItem {
 			Name: "Linear";
 			Value: 0;
-			EnumType: EnumType<PoseEasingStyle>;
+			EnumType: typeof PoseEasingStyle;
 		}
 
 		export const Linear: Linear;
@@ -11382,7 +11381,7 @@ declare namespace Enum {
 		export interface Constant extends EnumItem {
 			Name: "Constant";
 			Value: 1;
-			EnumType: EnumType<PoseEasingStyle>;
+			EnumType: typeof PoseEasingStyle;
 		}
 
 		export const Constant: Constant;
@@ -11390,7 +11389,7 @@ declare namespace Enum {
 		export interface Elastic extends EnumItem {
 			Name: "Elastic";
 			Value: 2;
-			EnumType: EnumType<PoseEasingStyle>;
+			EnumType: typeof PoseEasingStyle;
 		}
 
 		export const Elastic: Elastic;
@@ -11398,7 +11397,7 @@ declare namespace Enum {
 		export interface Cubic extends EnumItem {
 			Name: "Cubic";
 			Value: 3;
-			EnumType: EnumType<PoseEasingStyle>;
+			EnumType: typeof PoseEasingStyle;
 		}
 
 		export const Cubic: Cubic;
@@ -11406,19 +11405,19 @@ declare namespace Enum {
 		export interface Bounce extends EnumItem {
 			Name: "Bounce";
 			Value: 4;
-			EnumType: EnumType<PoseEasingStyle>;
+			EnumType: typeof PoseEasingStyle;
 		}
 
 		export const Bounce: Bounce;
 
-		export function GetEnumItems(this: defined): Array<PoseEasingStyle>
+		export function GetEnumItems(): Array<PoseEasingStyle>
 	}
 	export type PoseEasingStyle = PoseEasingStyle.Linear | PoseEasingStyle.Constant | PoseEasingStyle.Elastic | PoseEasingStyle.Cubic | PoseEasingStyle.Bounce;
 	export namespace PositionAlignmentMode {
 		export interface OneAttachment extends EnumItem {
 			Name: "OneAttachment";
 			Value: 0;
-			EnumType: EnumType<PositionAlignmentMode>;
+			EnumType: typeof PositionAlignmentMode;
 		}
 
 		export const OneAttachment: OneAttachment;
@@ -11426,19 +11425,19 @@ declare namespace Enum {
 		export interface TwoAttachment extends EnumItem {
 			Name: "TwoAttachment";
 			Value: 1;
-			EnumType: EnumType<PositionAlignmentMode>;
+			EnumType: typeof PositionAlignmentMode;
 		}
 
 		export const TwoAttachment: TwoAttachment;
 
-		export function GetEnumItems(this: defined): Array<PositionAlignmentMode>
+		export function GetEnumItems(): Array<PositionAlignmentMode>
 	}
 	export type PositionAlignmentMode = PositionAlignmentMode.OneAttachment | PositionAlignmentMode.TwoAttachment;
 	export namespace PrivilegeType {
 		export interface Owner extends EnumItem {
 			Name: "Owner";
 			Value: 255;
-			EnumType: EnumType<PrivilegeType>;
+			EnumType: typeof PrivilegeType;
 		}
 
 		export const Owner: Owner;
@@ -11446,7 +11445,7 @@ declare namespace Enum {
 		export interface Admin extends EnumItem {
 			Name: "Admin";
 			Value: 240;
-			EnumType: EnumType<PrivilegeType>;
+			EnumType: typeof PrivilegeType;
 		}
 
 		export const Admin: Admin;
@@ -11454,7 +11453,7 @@ declare namespace Enum {
 		export interface Member extends EnumItem {
 			Name: "Member";
 			Value: 128;
-			EnumType: EnumType<PrivilegeType>;
+			EnumType: typeof PrivilegeType;
 		}
 
 		export const Member: Member;
@@ -11462,7 +11461,7 @@ declare namespace Enum {
 		export interface Visitor extends EnumItem {
 			Name: "Visitor";
 			Value: 10;
-			EnumType: EnumType<PrivilegeType>;
+			EnumType: typeof PrivilegeType;
 		}
 
 		export const Visitor: Visitor;
@@ -11470,19 +11469,19 @@ declare namespace Enum {
 		export interface Banned extends EnumItem {
 			Name: "Banned";
 			Value: 0;
-			EnumType: EnumType<PrivilegeType>;
+			EnumType: typeof PrivilegeType;
 		}
 
 		export const Banned: Banned;
 
-		export function GetEnumItems(this: defined): Array<PrivilegeType>
+		export function GetEnumItems(): Array<PrivilegeType>
 	}
 	export type PrivilegeType = PrivilegeType.Owner | PrivilegeType.Admin | PrivilegeType.Member | PrivilegeType.Visitor | PrivilegeType.Banned;
 	export namespace ProductLocationRestriction {
 		export interface AvatarShop extends EnumItem {
 			Name: "AvatarShop";
 			Value: 0;
-			EnumType: EnumType<ProductLocationRestriction>;
+			EnumType: typeof ProductLocationRestriction;
 		}
 
 		export const AvatarShop: AvatarShop;
@@ -11490,7 +11489,7 @@ declare namespace Enum {
 		export interface AllowedGames extends EnumItem {
 			Name: "AllowedGames";
 			Value: 1;
-			EnumType: EnumType<ProductLocationRestriction>;
+			EnumType: typeof ProductLocationRestriction;
 		}
 
 		export const AllowedGames: AllowedGames;
@@ -11498,19 +11497,19 @@ declare namespace Enum {
 		export interface AllGames extends EnumItem {
 			Name: "AllGames";
 			Value: 2;
-			EnumType: EnumType<ProductLocationRestriction>;
+			EnumType: typeof ProductLocationRestriction;
 		}
 
 		export const AllGames: AllGames;
 
-		export function GetEnumItems(this: defined): Array<ProductLocationRestriction>
+		export function GetEnumItems(): Array<ProductLocationRestriction>
 	}
 	export type ProductLocationRestriction = ProductLocationRestriction.AvatarShop | ProductLocationRestriction.AllowedGames | ProductLocationRestriction.AllGames;
 	export namespace ProductPurchaseDecision {
 		export interface NotProcessedYet extends EnumItem {
 			Name: "NotProcessedYet";
 			Value: 0;
-			EnumType: EnumType<ProductPurchaseDecision>;
+			EnumType: typeof ProductPurchaseDecision;
 		}
 
 		export const NotProcessedYet: NotProcessedYet;
@@ -11518,19 +11517,19 @@ declare namespace Enum {
 		export interface PurchaseGranted extends EnumItem {
 			Name: "PurchaseGranted";
 			Value: 1;
-			EnumType: EnumType<ProductPurchaseDecision>;
+			EnumType: typeof ProductPurchaseDecision;
 		}
 
 		export const PurchaseGranted: PurchaseGranted;
 
-		export function GetEnumItems(this: defined): Array<ProductPurchaseDecision>
+		export function GetEnumItems(): Array<ProductPurchaseDecision>
 	}
 	export type ProductPurchaseDecision = ProductPurchaseDecision.NotProcessedYet | ProductPurchaseDecision.PurchaseGranted;
 	export namespace PropertyStatus {
 		export interface Ok extends EnumItem {
 			Name: "Ok";
 			Value: 0;
-			EnumType: EnumType<PropertyStatus>;
+			EnumType: typeof PropertyStatus;
 		}
 
 		export const Ok: Ok;
@@ -11538,7 +11537,7 @@ declare namespace Enum {
 		export interface Warning extends EnumItem {
 			Name: "Warning";
 			Value: 1;
-			EnumType: EnumType<PropertyStatus>;
+			EnumType: typeof PropertyStatus;
 		}
 
 		export const Warning: Warning;
@@ -11546,19 +11545,19 @@ declare namespace Enum {
 		export interface Error extends EnumItem {
 			Name: "Error";
 			Value: 2;
-			EnumType: EnumType<PropertyStatus>;
+			EnumType: typeof PropertyStatus;
 		}
 
 		export const Error: Error;
 
-		export function GetEnumItems(this: defined): Array<PropertyStatus>
+		export function GetEnumItems(): Array<PropertyStatus>
 	}
 	export type PropertyStatus = PropertyStatus.Ok | PropertyStatus.Warning | PropertyStatus.Error;
 	export namespace ProximityPromptExclusivity {
 		export interface OnePerButton extends EnumItem {
 			Name: "OnePerButton";
 			Value: 0;
-			EnumType: EnumType<ProximityPromptExclusivity>;
+			EnumType: typeof ProximityPromptExclusivity;
 		}
 
 		export const OnePerButton: OnePerButton;
@@ -11566,7 +11565,7 @@ declare namespace Enum {
 		export interface OneGlobally extends EnumItem {
 			Name: "OneGlobally";
 			Value: 1;
-			EnumType: EnumType<ProximityPromptExclusivity>;
+			EnumType: typeof ProximityPromptExclusivity;
 		}
 
 		export const OneGlobally: OneGlobally;
@@ -11574,19 +11573,19 @@ declare namespace Enum {
 		export interface AlwaysShow extends EnumItem {
 			Name: "AlwaysShow";
 			Value: 2;
-			EnumType: EnumType<ProximityPromptExclusivity>;
+			EnumType: typeof ProximityPromptExclusivity;
 		}
 
 		export const AlwaysShow: AlwaysShow;
 
-		export function GetEnumItems(this: defined): Array<ProximityPromptExclusivity>
+		export function GetEnumItems(): Array<ProximityPromptExclusivity>
 	}
 	export type ProximityPromptExclusivity = ProximityPromptExclusivity.OnePerButton | ProximityPromptExclusivity.OneGlobally | ProximityPromptExclusivity.AlwaysShow;
 	export namespace ProximityPromptInputType {
 		export interface Keyboard extends EnumItem {
 			Name: "Keyboard";
 			Value: 0;
-			EnumType: EnumType<ProximityPromptInputType>;
+			EnumType: typeof ProximityPromptInputType;
 		}
 
 		export const Keyboard: Keyboard;
@@ -11594,7 +11593,7 @@ declare namespace Enum {
 		export interface Gamepad extends EnumItem {
 			Name: "Gamepad";
 			Value: 1;
-			EnumType: EnumType<ProximityPromptInputType>;
+			EnumType: typeof ProximityPromptInputType;
 		}
 
 		export const Gamepad: Gamepad;
@@ -11602,19 +11601,19 @@ declare namespace Enum {
 		export interface Touch extends EnumItem {
 			Name: "Touch";
 			Value: 2;
-			EnumType: EnumType<ProximityPromptInputType>;
+			EnumType: typeof ProximityPromptInputType;
 		}
 
 		export const Touch: Touch;
 
-		export function GetEnumItems(this: defined): Array<ProximityPromptInputType>
+		export function GetEnumItems(): Array<ProximityPromptInputType>
 	}
 	export type ProximityPromptInputType = ProximityPromptInputType.Keyboard | ProximityPromptInputType.Gamepad | ProximityPromptInputType.Touch;
 	export namespace ProximityPromptStyle {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<ProximityPromptStyle>;
+			EnumType: typeof ProximityPromptStyle;
 		}
 
 		export const Default: Default;
@@ -11622,19 +11621,19 @@ declare namespace Enum {
 		export interface Custom extends EnumItem {
 			Name: "Custom";
 			Value: 1;
-			EnumType: EnumType<ProximityPromptStyle>;
+			EnumType: typeof ProximityPromptStyle;
 		}
 
 		export const Custom: Custom;
 
-		export function GetEnumItems(this: defined): Array<ProximityPromptStyle>
+		export function GetEnumItems(): Array<ProximityPromptStyle>
 	}
 	export type ProximityPromptStyle = ProximityPromptStyle.Default | ProximityPromptStyle.Custom;
 	export namespace QualityLevel {
 		export interface Automatic extends EnumItem {
 			Name: "Automatic";
 			Value: 0;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Automatic: Automatic;
@@ -11642,7 +11641,7 @@ declare namespace Enum {
 		export interface Level01 extends EnumItem {
 			Name: "Level01";
 			Value: 1;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level01: Level01;
@@ -11650,7 +11649,7 @@ declare namespace Enum {
 		export interface Level02 extends EnumItem {
 			Name: "Level02";
 			Value: 2;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level02: Level02;
@@ -11658,7 +11657,7 @@ declare namespace Enum {
 		export interface Level03 extends EnumItem {
 			Name: "Level03";
 			Value: 3;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level03: Level03;
@@ -11666,7 +11665,7 @@ declare namespace Enum {
 		export interface Level04 extends EnumItem {
 			Name: "Level04";
 			Value: 4;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level04: Level04;
@@ -11674,7 +11673,7 @@ declare namespace Enum {
 		export interface Level05 extends EnumItem {
 			Name: "Level05";
 			Value: 5;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level05: Level05;
@@ -11682,7 +11681,7 @@ declare namespace Enum {
 		export interface Level06 extends EnumItem {
 			Name: "Level06";
 			Value: 6;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level06: Level06;
@@ -11690,7 +11689,7 @@ declare namespace Enum {
 		export interface Level07 extends EnumItem {
 			Name: "Level07";
 			Value: 7;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level07: Level07;
@@ -11698,7 +11697,7 @@ declare namespace Enum {
 		export interface Level08 extends EnumItem {
 			Name: "Level08";
 			Value: 8;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level08: Level08;
@@ -11706,7 +11705,7 @@ declare namespace Enum {
 		export interface Level09 extends EnumItem {
 			Name: "Level09";
 			Value: 9;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level09: Level09;
@@ -11714,7 +11713,7 @@ declare namespace Enum {
 		export interface Level10 extends EnumItem {
 			Name: "Level10";
 			Value: 10;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level10: Level10;
@@ -11722,7 +11721,7 @@ declare namespace Enum {
 		export interface Level11 extends EnumItem {
 			Name: "Level11";
 			Value: 11;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level11: Level11;
@@ -11730,7 +11729,7 @@ declare namespace Enum {
 		export interface Level12 extends EnumItem {
 			Name: "Level12";
 			Value: 12;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level12: Level12;
@@ -11738,7 +11737,7 @@ declare namespace Enum {
 		export interface Level13 extends EnumItem {
 			Name: "Level13";
 			Value: 13;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level13: Level13;
@@ -11746,7 +11745,7 @@ declare namespace Enum {
 		export interface Level14 extends EnumItem {
 			Name: "Level14";
 			Value: 14;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level14: Level14;
@@ -11754,7 +11753,7 @@ declare namespace Enum {
 		export interface Level15 extends EnumItem {
 			Name: "Level15";
 			Value: 15;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level15: Level15;
@@ -11762,7 +11761,7 @@ declare namespace Enum {
 		export interface Level16 extends EnumItem {
 			Name: "Level16";
 			Value: 16;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level16: Level16;
@@ -11770,7 +11769,7 @@ declare namespace Enum {
 		export interface Level17 extends EnumItem {
 			Name: "Level17";
 			Value: 17;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level17: Level17;
@@ -11778,7 +11777,7 @@ declare namespace Enum {
 		export interface Level18 extends EnumItem {
 			Name: "Level18";
 			Value: 18;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level18: Level18;
@@ -11786,7 +11785,7 @@ declare namespace Enum {
 		export interface Level19 extends EnumItem {
 			Name: "Level19";
 			Value: 19;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level19: Level19;
@@ -11794,7 +11793,7 @@ declare namespace Enum {
 		export interface Level20 extends EnumItem {
 			Name: "Level20";
 			Value: 20;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level20: Level20;
@@ -11802,19 +11801,19 @@ declare namespace Enum {
 		export interface Level21 extends EnumItem {
 			Name: "Level21";
 			Value: 21;
-			EnumType: EnumType<QualityLevel>;
+			EnumType: typeof QualityLevel;
 		}
 
 		export const Level21: Level21;
 
-		export function GetEnumItems(this: defined): Array<QualityLevel>
+		export function GetEnumItems(): Array<QualityLevel>
 	}
 	export type QualityLevel = QualityLevel.Automatic | QualityLevel.Level01 | QualityLevel.Level02 | QualityLevel.Level03 | QualityLevel.Level04 | QualityLevel.Level05 | QualityLevel.Level06 | QualityLevel.Level07 | QualityLevel.Level08 | QualityLevel.Level09 | QualityLevel.Level10 | QualityLevel.Level11 | QualityLevel.Level12 | QualityLevel.Level13 | QualityLevel.Level14 | QualityLevel.Level15 | QualityLevel.Level16 | QualityLevel.Level17 | QualityLevel.Level18 | QualityLevel.Level19 | QualityLevel.Level20 | QualityLevel.Level21;
 	export namespace R15CollisionType {
 		export interface OuterBox extends EnumItem {
 			Name: "OuterBox";
 			Value: 0;
-			EnumType: EnumType<R15CollisionType>;
+			EnumType: typeof R15CollisionType;
 		}
 
 		export const OuterBox: OuterBox;
@@ -11822,19 +11821,19 @@ declare namespace Enum {
 		export interface InnerBox extends EnumItem {
 			Name: "InnerBox";
 			Value: 1;
-			EnumType: EnumType<R15CollisionType>;
+			EnumType: typeof R15CollisionType;
 		}
 
 		export const InnerBox: InnerBox;
 
-		export function GetEnumItems(this: defined): Array<R15CollisionType>
+		export function GetEnumItems(): Array<R15CollisionType>
 	}
 	export type R15CollisionType = R15CollisionType.OuterBox | R15CollisionType.InnerBox;
 	export namespace RaycastFilterType {
 		export interface Blacklist extends EnumItem {
 			Name: "Blacklist";
 			Value: 0;
-			EnumType: EnumType<RaycastFilterType>;
+			EnumType: typeof RaycastFilterType;
 		}
 
 		export const Blacklist: Blacklist;
@@ -11842,19 +11841,19 @@ declare namespace Enum {
 		export interface Whitelist extends EnumItem {
 			Name: "Whitelist";
 			Value: 1;
-			EnumType: EnumType<RaycastFilterType>;
+			EnumType: typeof RaycastFilterType;
 		}
 
 		export const Whitelist: Whitelist;
 
-		export function GetEnumItems(this: defined): Array<RaycastFilterType>
+		export function GetEnumItems(): Array<RaycastFilterType>
 	}
 	export type RaycastFilterType = RaycastFilterType.Blacklist | RaycastFilterType.Whitelist;
 	export namespace RenderFidelity {
 		export interface Automatic extends EnumItem {
 			Name: "Automatic";
 			Value: 0;
-			EnumType: EnumType<RenderFidelity>;
+			EnumType: typeof RenderFidelity;
 		}
 
 		export const Automatic: Automatic;
@@ -11862,7 +11861,7 @@ declare namespace Enum {
 		export interface Precise extends EnumItem {
 			Name: "Precise";
 			Value: 1;
-			EnumType: EnumType<RenderFidelity>;
+			EnumType: typeof RenderFidelity;
 		}
 
 		export const Precise: Precise;
@@ -11870,19 +11869,19 @@ declare namespace Enum {
 		export interface Performance extends EnumItem {
 			Name: "Performance";
 			Value: 2;
-			EnumType: EnumType<RenderFidelity>;
+			EnumType: typeof RenderFidelity;
 		}
 
 		export const Performance: Performance;
 
-		export function GetEnumItems(this: defined): Array<RenderFidelity>
+		export function GetEnumItems(): Array<RenderFidelity>
 	}
 	export type RenderFidelity = RenderFidelity.Automatic | RenderFidelity.Precise | RenderFidelity.Performance;
 	export namespace RenderPriority {
 		export interface First extends EnumItem {
 			Name: "First";
 			Value: 0;
-			EnumType: EnumType<RenderPriority>;
+			EnumType: typeof RenderPriority;
 		}
 
 		export const First: First;
@@ -11890,7 +11889,7 @@ declare namespace Enum {
 		export interface Input extends EnumItem {
 			Name: "Input";
 			Value: 100;
-			EnumType: EnumType<RenderPriority>;
+			EnumType: typeof RenderPriority;
 		}
 
 		export const Input: Input;
@@ -11898,7 +11897,7 @@ declare namespace Enum {
 		export interface Camera extends EnumItem {
 			Name: "Camera";
 			Value: 200;
-			EnumType: EnumType<RenderPriority>;
+			EnumType: typeof RenderPriority;
 		}
 
 		export const Camera: Camera;
@@ -11906,7 +11905,7 @@ declare namespace Enum {
 		export interface Character extends EnumItem {
 			Name: "Character";
 			Value: 300;
-			EnumType: EnumType<RenderPriority>;
+			EnumType: typeof RenderPriority;
 		}
 
 		export const Character: Character;
@@ -11914,19 +11913,19 @@ declare namespace Enum {
 		export interface Last extends EnumItem {
 			Name: "Last";
 			Value: 2000;
-			EnumType: EnumType<RenderPriority>;
+			EnumType: typeof RenderPriority;
 		}
 
 		export const Last: Last;
 
-		export function GetEnumItems(this: defined): Array<RenderPriority>
+		export function GetEnumItems(): Array<RenderPriority>
 	}
 	export type RenderPriority = RenderPriority.First | RenderPriority.Input | RenderPriority.Camera | RenderPriority.Character | RenderPriority.Last;
 	export namespace RenderingTestComparisonMethod {
 		export interface psnr extends EnumItem {
 			Name: "psnr";
 			Value: 0;
-			EnumType: EnumType<RenderingTestComparisonMethod>;
+			EnumType: typeof RenderingTestComparisonMethod;
 		}
 
 		export const psnr: psnr;
@@ -11934,19 +11933,19 @@ declare namespace Enum {
 		export interface diff extends EnumItem {
 			Name: "diff";
 			Value: 1;
-			EnumType: EnumType<RenderingTestComparisonMethod>;
+			EnumType: typeof RenderingTestComparisonMethod;
 		}
 
 		export const diff: diff;
 
-		export function GetEnumItems(this: defined): Array<RenderingTestComparisonMethod>
+		export function GetEnumItems(): Array<RenderingTestComparisonMethod>
 	}
 	export type RenderingTestComparisonMethod = RenderingTestComparisonMethod.psnr | RenderingTestComparisonMethod.diff;
 	export namespace ReplicateInstanceDestroySetting {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<ReplicateInstanceDestroySetting>;
+			EnumType: typeof ReplicateInstanceDestroySetting;
 		}
 
 		export const Default: Default;
@@ -11954,7 +11953,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<ReplicateInstanceDestroySetting>;
+			EnumType: typeof ReplicateInstanceDestroySetting;
 		}
 
 		export const Disabled: Disabled;
@@ -11962,19 +11961,19 @@ declare namespace Enum {
 		export interface Enabled extends EnumItem {
 			Name: "Enabled";
 			Value: 2;
-			EnumType: EnumType<ReplicateInstanceDestroySetting>;
+			EnumType: typeof ReplicateInstanceDestroySetting;
 		}
 
 		export const Enabled: Enabled;
 
-		export function GetEnumItems(this: defined): Array<ReplicateInstanceDestroySetting>
+		export function GetEnumItems(): Array<ReplicateInstanceDestroySetting>
 	}
 	export type ReplicateInstanceDestroySetting = ReplicateInstanceDestroySetting.Default | ReplicateInstanceDestroySetting.Disabled | ReplicateInstanceDestroySetting.Enabled;
 	export namespace ResamplerMode {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<ResamplerMode>;
+			EnumType: typeof ResamplerMode;
 		}
 
 		export const Default: Default;
@@ -11982,19 +11981,19 @@ declare namespace Enum {
 		export interface Pixelated extends EnumItem {
 			Name: "Pixelated";
 			Value: 1;
-			EnumType: EnumType<ResamplerMode>;
+			EnumType: typeof ResamplerMode;
 		}
 
 		export const Pixelated: Pixelated;
 
-		export function GetEnumItems(this: defined): Array<ResamplerMode>
+		export function GetEnumItems(): Array<ResamplerMode>
 	}
 	export type ResamplerMode = ResamplerMode.Default | ResamplerMode.Pixelated;
 	export namespace ReturnKeyType {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<ReturnKeyType>;
+			EnumType: typeof ReturnKeyType;
 		}
 
 		export const Default: Default;
@@ -12002,7 +12001,7 @@ declare namespace Enum {
 		export interface Done extends EnumItem {
 			Name: "Done";
 			Value: 1;
-			EnumType: EnumType<ReturnKeyType>;
+			EnumType: typeof ReturnKeyType;
 		}
 
 		export const Done: Done;
@@ -12010,7 +12009,7 @@ declare namespace Enum {
 		export interface Go extends EnumItem {
 			Name: "Go";
 			Value: 2;
-			EnumType: EnumType<ReturnKeyType>;
+			EnumType: typeof ReturnKeyType;
 		}
 
 		export const Go: Go;
@@ -12018,7 +12017,7 @@ declare namespace Enum {
 		export interface Next extends EnumItem {
 			Name: "Next";
 			Value: 3;
-			EnumType: EnumType<ReturnKeyType>;
+			EnumType: typeof ReturnKeyType;
 		}
 
 		export const Next: Next;
@@ -12026,7 +12025,7 @@ declare namespace Enum {
 		export interface Search extends EnumItem {
 			Name: "Search";
 			Value: 4;
-			EnumType: EnumType<ReturnKeyType>;
+			EnumType: typeof ReturnKeyType;
 		}
 
 		export const Search: Search;
@@ -12034,19 +12033,19 @@ declare namespace Enum {
 		export interface Send extends EnumItem {
 			Name: "Send";
 			Value: 5;
-			EnumType: EnumType<ReturnKeyType>;
+			EnumType: typeof ReturnKeyType;
 		}
 
 		export const Send: Send;
 
-		export function GetEnumItems(this: defined): Array<ReturnKeyType>
+		export function GetEnumItems(): Array<ReturnKeyType>
 	}
 	export type ReturnKeyType = ReturnKeyType.Default | ReturnKeyType.Done | ReturnKeyType.Go | ReturnKeyType.Next | ReturnKeyType.Search | ReturnKeyType.Send;
 	export namespace ReverbType {
 		export interface NoReverb extends EnumItem {
 			Name: "NoReverb";
 			Value: 0;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const NoReverb: NoReverb;
@@ -12054,7 +12053,7 @@ declare namespace Enum {
 		export interface GenericReverb extends EnumItem {
 			Name: "GenericReverb";
 			Value: 1;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const GenericReverb: GenericReverb;
@@ -12062,7 +12061,7 @@ declare namespace Enum {
 		export interface PaddedCell extends EnumItem {
 			Name: "PaddedCell";
 			Value: 2;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const PaddedCell: PaddedCell;
@@ -12070,7 +12069,7 @@ declare namespace Enum {
 		export interface Room extends EnumItem {
 			Name: "Room";
 			Value: 3;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const Room: Room;
@@ -12078,7 +12077,7 @@ declare namespace Enum {
 		export interface Bathroom extends EnumItem {
 			Name: "Bathroom";
 			Value: 4;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const Bathroom: Bathroom;
@@ -12086,7 +12085,7 @@ declare namespace Enum {
 		export interface LivingRoom extends EnumItem {
 			Name: "LivingRoom";
 			Value: 5;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const LivingRoom: LivingRoom;
@@ -12094,7 +12093,7 @@ declare namespace Enum {
 		export interface StoneRoom extends EnumItem {
 			Name: "StoneRoom";
 			Value: 6;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const StoneRoom: StoneRoom;
@@ -12102,7 +12101,7 @@ declare namespace Enum {
 		export interface Auditorium extends EnumItem {
 			Name: "Auditorium";
 			Value: 7;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const Auditorium: Auditorium;
@@ -12110,7 +12109,7 @@ declare namespace Enum {
 		export interface ConcertHall extends EnumItem {
 			Name: "ConcertHall";
 			Value: 8;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const ConcertHall: ConcertHall;
@@ -12118,7 +12117,7 @@ declare namespace Enum {
 		export interface Cave extends EnumItem {
 			Name: "Cave";
 			Value: 9;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const Cave: Cave;
@@ -12126,7 +12125,7 @@ declare namespace Enum {
 		export interface Arena extends EnumItem {
 			Name: "Arena";
 			Value: 10;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const Arena: Arena;
@@ -12134,7 +12133,7 @@ declare namespace Enum {
 		export interface Hangar extends EnumItem {
 			Name: "Hangar";
 			Value: 11;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const Hangar: Hangar;
@@ -12142,7 +12141,7 @@ declare namespace Enum {
 		export interface CarpettedHallway extends EnumItem {
 			Name: "CarpettedHallway";
 			Value: 12;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const CarpettedHallway: CarpettedHallway;
@@ -12150,7 +12149,7 @@ declare namespace Enum {
 		export interface Hallway extends EnumItem {
 			Name: "Hallway";
 			Value: 13;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const Hallway: Hallway;
@@ -12158,7 +12157,7 @@ declare namespace Enum {
 		export interface StoneCorridor extends EnumItem {
 			Name: "StoneCorridor";
 			Value: 14;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const StoneCorridor: StoneCorridor;
@@ -12166,7 +12165,7 @@ declare namespace Enum {
 		export interface Alley extends EnumItem {
 			Name: "Alley";
 			Value: 15;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const Alley: Alley;
@@ -12174,7 +12173,7 @@ declare namespace Enum {
 		export interface Forest extends EnumItem {
 			Name: "Forest";
 			Value: 16;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const Forest: Forest;
@@ -12182,7 +12181,7 @@ declare namespace Enum {
 		export interface City extends EnumItem {
 			Name: "City";
 			Value: 17;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const City: City;
@@ -12190,7 +12189,7 @@ declare namespace Enum {
 		export interface Mountains extends EnumItem {
 			Name: "Mountains";
 			Value: 18;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const Mountains: Mountains;
@@ -12198,7 +12197,7 @@ declare namespace Enum {
 		export interface Quarry extends EnumItem {
 			Name: "Quarry";
 			Value: 19;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const Quarry: Quarry;
@@ -12206,7 +12205,7 @@ declare namespace Enum {
 		export interface Plain extends EnumItem {
 			Name: "Plain";
 			Value: 20;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const Plain: Plain;
@@ -12214,7 +12213,7 @@ declare namespace Enum {
 		export interface ParkingLot extends EnumItem {
 			Name: "ParkingLot";
 			Value: 21;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const ParkingLot: ParkingLot;
@@ -12222,7 +12221,7 @@ declare namespace Enum {
 		export interface SewerPipe extends EnumItem {
 			Name: "SewerPipe";
 			Value: 22;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const SewerPipe: SewerPipe;
@@ -12230,19 +12229,19 @@ declare namespace Enum {
 		export interface UnderWater extends EnumItem {
 			Name: "UnderWater";
 			Value: 23;
-			EnumType: EnumType<ReverbType>;
+			EnumType: typeof ReverbType;
 		}
 
 		export const UnderWater: UnderWater;
 
-		export function GetEnumItems(this: defined): Array<ReverbType>
+		export function GetEnumItems(): Array<ReverbType>
 	}
 	export type ReverbType = ReverbType.NoReverb | ReverbType.GenericReverb | ReverbType.PaddedCell | ReverbType.Room | ReverbType.Bathroom | ReverbType.LivingRoom | ReverbType.StoneRoom | ReverbType.Auditorium | ReverbType.ConcertHall | ReverbType.Cave | ReverbType.Arena | ReverbType.Hangar | ReverbType.CarpettedHallway | ReverbType.Hallway | ReverbType.StoneCorridor | ReverbType.Alley | ReverbType.Forest | ReverbType.City | ReverbType.Mountains | ReverbType.Quarry | ReverbType.Plain | ReverbType.ParkingLot | ReverbType.SewerPipe | ReverbType.UnderWater;
 	export namespace RibbonTool {
 		export interface Select extends EnumItem {
 			Name: "Select";
 			Value: 0;
-			EnumType: EnumType<RibbonTool>;
+			EnumType: typeof RibbonTool;
 		}
 
 		export const Select: Select;
@@ -12250,7 +12249,7 @@ declare namespace Enum {
 		export interface Scale extends EnumItem {
 			Name: "Scale";
 			Value: 1;
-			EnumType: EnumType<RibbonTool>;
+			EnumType: typeof RibbonTool;
 		}
 
 		export const Scale: Scale;
@@ -12258,7 +12257,7 @@ declare namespace Enum {
 		export interface Rotate extends EnumItem {
 			Name: "Rotate";
 			Value: 2;
-			EnumType: EnumType<RibbonTool>;
+			EnumType: typeof RibbonTool;
 		}
 
 		export const Rotate: Rotate;
@@ -12266,7 +12265,7 @@ declare namespace Enum {
 		export interface Move extends EnumItem {
 			Name: "Move";
 			Value: 3;
-			EnumType: EnumType<RibbonTool>;
+			EnumType: typeof RibbonTool;
 		}
 
 		export const Move: Move;
@@ -12274,7 +12273,7 @@ declare namespace Enum {
 		export interface Transform extends EnumItem {
 			Name: "Transform";
 			Value: 4;
-			EnumType: EnumType<RibbonTool>;
+			EnumType: typeof RibbonTool;
 		}
 
 		export const Transform: Transform;
@@ -12282,7 +12281,7 @@ declare namespace Enum {
 		export interface ColorPicker extends EnumItem {
 			Name: "ColorPicker";
 			Value: 5;
-			EnumType: EnumType<RibbonTool>;
+			EnumType: typeof RibbonTool;
 		}
 
 		export const ColorPicker: ColorPicker;
@@ -12290,7 +12289,7 @@ declare namespace Enum {
 		export interface MaterialPicker extends EnumItem {
 			Name: "MaterialPicker";
 			Value: 6;
-			EnumType: EnumType<RibbonTool>;
+			EnumType: typeof RibbonTool;
 		}
 
 		export const MaterialPicker: MaterialPicker;
@@ -12298,7 +12297,7 @@ declare namespace Enum {
 		export interface Group extends EnumItem {
 			Name: "Group";
 			Value: 7;
-			EnumType: EnumType<RibbonTool>;
+			EnumType: typeof RibbonTool;
 		}
 
 		export const Group: Group;
@@ -12306,7 +12305,7 @@ declare namespace Enum {
 		export interface Ungroup extends EnumItem {
 			Name: "Ungroup";
 			Value: 8;
-			EnumType: EnumType<RibbonTool>;
+			EnumType: typeof RibbonTool;
 		}
 
 		export const Ungroup: Ungroup;
@@ -12314,19 +12313,19 @@ declare namespace Enum {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 9;
-			EnumType: EnumType<RibbonTool>;
+			EnumType: typeof RibbonTool;
 		}
 
 		export const None: None;
 
-		export function GetEnumItems(this: defined): Array<RibbonTool>
+		export function GetEnumItems(): Array<RibbonTool>
 	}
 	export type RibbonTool = RibbonTool.Select | RibbonTool.Scale | RibbonTool.Rotate | RibbonTool.Move | RibbonTool.Transform | RibbonTool.ColorPicker | RibbonTool.MaterialPicker | RibbonTool.Group | RibbonTool.Ungroup | RibbonTool.None;
 	export namespace RigType {
 		export interface R15 extends EnumItem {
 			Name: "R15";
 			Value: 0;
-			EnumType: EnumType<RigType>;
+			EnumType: typeof RigType;
 		}
 
 		export const R15: R15;
@@ -12334,7 +12333,7 @@ declare namespace Enum {
 		export interface Rthro extends EnumItem {
 			Name: "Rthro";
 			Value: 1;
-			EnumType: EnumType<RigType>;
+			EnumType: typeof RigType;
 		}
 
 		export const Rthro: Rthro;
@@ -12342,7 +12341,7 @@ declare namespace Enum {
 		export interface RthroNarrow extends EnumItem {
 			Name: "RthroNarrow";
 			Value: 2;
-			EnumType: EnumType<RigType>;
+			EnumType: typeof RigType;
 		}
 
 		export const RthroNarrow: RthroNarrow;
@@ -12350,7 +12349,7 @@ declare namespace Enum {
 		export interface Custom extends EnumItem {
 			Name: "Custom";
 			Value: 3;
-			EnumType: EnumType<RigType>;
+			EnumType: typeof RigType;
 		}
 
 		export const Custom: Custom;
@@ -12358,19 +12357,19 @@ declare namespace Enum {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 4;
-			EnumType: EnumType<RigType>;
+			EnumType: typeof RigType;
 		}
 
 		export const None: None;
 
-		export function GetEnumItems(this: defined): Array<RigType>
+		export function GetEnumItems(): Array<RigType>
 	}
 	export type RigType = RigType.R15 | RigType.Rthro | RigType.RthroNarrow | RigType.Custom | RigType.None;
 	export namespace RollOffMode {
 		export interface Inverse extends EnumItem {
 			Name: "Inverse";
 			Value: 0;
-			EnumType: EnumType<RollOffMode>;
+			EnumType: typeof RollOffMode;
 		}
 
 		export const Inverse: Inverse;
@@ -12378,7 +12377,7 @@ declare namespace Enum {
 		export interface Linear extends EnumItem {
 			Name: "Linear";
 			Value: 1;
-			EnumType: EnumType<RollOffMode>;
+			EnumType: typeof RollOffMode;
 		}
 
 		export const Linear: Linear;
@@ -12386,7 +12385,7 @@ declare namespace Enum {
 		export interface InverseTapered extends EnumItem {
 			Name: "InverseTapered";
 			Value: 3;
-			EnumType: EnumType<RollOffMode>;
+			EnumType: typeof RollOffMode;
 		}
 
 		export const InverseTapered: InverseTapered;
@@ -12394,19 +12393,19 @@ declare namespace Enum {
 		export interface LinearSquare extends EnumItem {
 			Name: "LinearSquare";
 			Value: 2;
-			EnumType: EnumType<RollOffMode>;
+			EnumType: typeof RollOffMode;
 		}
 
 		export const LinearSquare: LinearSquare;
 
-		export function GetEnumItems(this: defined): Array<RollOffMode>
+		export function GetEnumItems(): Array<RollOffMode>
 	}
 	export type RollOffMode = RollOffMode.Inverse | RollOffMode.Linear | RollOffMode.InverseTapered | RollOffMode.LinearSquare;
 	export namespace RotationOrder {
 		export interface XYZ extends EnumItem {
 			Name: "XYZ";
 			Value: 0;
-			EnumType: EnumType<RotationOrder>;
+			EnumType: typeof RotationOrder;
 		}
 
 		export const XYZ: XYZ;
@@ -12414,7 +12413,7 @@ declare namespace Enum {
 		export interface XZY extends EnumItem {
 			Name: "XZY";
 			Value: 1;
-			EnumType: EnumType<RotationOrder>;
+			EnumType: typeof RotationOrder;
 		}
 
 		export const XZY: XZY;
@@ -12422,7 +12421,7 @@ declare namespace Enum {
 		export interface YZX extends EnumItem {
 			Name: "YZX";
 			Value: 2;
-			EnumType: EnumType<RotationOrder>;
+			EnumType: typeof RotationOrder;
 		}
 
 		export const YZX: YZX;
@@ -12430,7 +12429,7 @@ declare namespace Enum {
 		export interface YXZ extends EnumItem {
 			Name: "YXZ";
 			Value: 3;
-			EnumType: EnumType<RotationOrder>;
+			EnumType: typeof RotationOrder;
 		}
 
 		export const YXZ: YXZ;
@@ -12438,7 +12437,7 @@ declare namespace Enum {
 		export interface ZXY extends EnumItem {
 			Name: "ZXY";
 			Value: 4;
-			EnumType: EnumType<RotationOrder>;
+			EnumType: typeof RotationOrder;
 		}
 
 		export const ZXY: ZXY;
@@ -12446,19 +12445,19 @@ declare namespace Enum {
 		export interface ZYX extends EnumItem {
 			Name: "ZYX";
 			Value: 5;
-			EnumType: EnumType<RotationOrder>;
+			EnumType: typeof RotationOrder;
 		}
 
 		export const ZYX: ZYX;
 
-		export function GetEnumItems(this: defined): Array<RotationOrder>
+		export function GetEnumItems(): Array<RotationOrder>
 	}
 	export type RotationOrder = RotationOrder.XYZ | RotationOrder.XZY | RotationOrder.YZX | RotationOrder.YXZ | RotationOrder.ZXY | RotationOrder.ZYX;
 	export namespace RotationType {
 		export interface MovementRelative extends EnumItem {
 			Name: "MovementRelative";
 			Value: 0;
-			EnumType: EnumType<RotationType>;
+			EnumType: typeof RotationType;
 		}
 
 		export const MovementRelative: MovementRelative;
@@ -12466,19 +12465,19 @@ declare namespace Enum {
 		export interface CameraRelative extends EnumItem {
 			Name: "CameraRelative";
 			Value: 1;
-			EnumType: EnumType<RotationType>;
+			EnumType: typeof RotationType;
 		}
 
 		export const CameraRelative: CameraRelative;
 
-		export function GetEnumItems(this: defined): Array<RotationType>
+		export function GetEnumItems(): Array<RotationType>
 	}
 	export type RotationType = RotationType.MovementRelative | RotationType.CameraRelative;
 	export namespace RuntimeUndoBehavior {
 		export interface Aggregate extends EnumItem {
 			Name: "Aggregate";
 			Value: 0;
-			EnumType: EnumType<RuntimeUndoBehavior>;
+			EnumType: typeof RuntimeUndoBehavior;
 		}
 
 		export const Aggregate: Aggregate;
@@ -12486,7 +12485,7 @@ declare namespace Enum {
 		export interface Snapshot extends EnumItem {
 			Name: "Snapshot";
 			Value: 1;
-			EnumType: EnumType<RuntimeUndoBehavior>;
+			EnumType: typeof RuntimeUndoBehavior;
 		}
 
 		export const Snapshot: Snapshot;
@@ -12494,19 +12493,19 @@ declare namespace Enum {
 		export interface Hybrid extends EnumItem {
 			Name: "Hybrid";
 			Value: 2;
-			EnumType: EnumType<RuntimeUndoBehavior>;
+			EnumType: typeof RuntimeUndoBehavior;
 		}
 
 		export const Hybrid: Hybrid;
 
-		export function GetEnumItems(this: defined): Array<RuntimeUndoBehavior>
+		export function GetEnumItems(): Array<RuntimeUndoBehavior>
 	}
 	export type RuntimeUndoBehavior = RuntimeUndoBehavior.Aggregate | RuntimeUndoBehavior.Snapshot | RuntimeUndoBehavior.Hybrid;
 	export namespace SaveFilter {
 		export interface SaveAll extends EnumItem {
 			Name: "SaveAll";
 			Value: 2;
-			EnumType: EnumType<SaveFilter>;
+			EnumType: typeof SaveFilter;
 		}
 
 		export const SaveAll: SaveAll;
@@ -12514,7 +12513,7 @@ declare namespace Enum {
 		export interface SaveWorld extends EnumItem {
 			Name: "SaveWorld";
 			Value: 0;
-			EnumType: EnumType<SaveFilter>;
+			EnumType: typeof SaveFilter;
 		}
 
 		export const SaveWorld: SaveWorld;
@@ -12522,19 +12521,19 @@ declare namespace Enum {
 		export interface SaveGame extends EnumItem {
 			Name: "SaveGame";
 			Value: 1;
-			EnumType: EnumType<SaveFilter>;
+			EnumType: typeof SaveFilter;
 		}
 
 		export const SaveGame: SaveGame;
 
-		export function GetEnumItems(this: defined): Array<SaveFilter>
+		export function GetEnumItems(): Array<SaveFilter>
 	}
 	export type SaveFilter = SaveFilter.SaveAll | SaveFilter.SaveWorld | SaveFilter.SaveGame;
 	export namespace SavedQualitySetting {
 		export interface Automatic extends EnumItem {
 			Name: "Automatic";
 			Value: 0;
-			EnumType: EnumType<SavedQualitySetting>;
+			EnumType: typeof SavedQualitySetting;
 		}
 
 		export const Automatic: Automatic;
@@ -12542,7 +12541,7 @@ declare namespace Enum {
 		export interface QualityLevel1 extends EnumItem {
 			Name: "QualityLevel1";
 			Value: 1;
-			EnumType: EnumType<SavedQualitySetting>;
+			EnumType: typeof SavedQualitySetting;
 		}
 
 		export const QualityLevel1: QualityLevel1;
@@ -12550,7 +12549,7 @@ declare namespace Enum {
 		export interface QualityLevel2 extends EnumItem {
 			Name: "QualityLevel2";
 			Value: 2;
-			EnumType: EnumType<SavedQualitySetting>;
+			EnumType: typeof SavedQualitySetting;
 		}
 
 		export const QualityLevel2: QualityLevel2;
@@ -12558,7 +12557,7 @@ declare namespace Enum {
 		export interface QualityLevel3 extends EnumItem {
 			Name: "QualityLevel3";
 			Value: 3;
-			EnumType: EnumType<SavedQualitySetting>;
+			EnumType: typeof SavedQualitySetting;
 		}
 
 		export const QualityLevel3: QualityLevel3;
@@ -12566,7 +12565,7 @@ declare namespace Enum {
 		export interface QualityLevel4 extends EnumItem {
 			Name: "QualityLevel4";
 			Value: 4;
-			EnumType: EnumType<SavedQualitySetting>;
+			EnumType: typeof SavedQualitySetting;
 		}
 
 		export const QualityLevel4: QualityLevel4;
@@ -12574,7 +12573,7 @@ declare namespace Enum {
 		export interface QualityLevel5 extends EnumItem {
 			Name: "QualityLevel5";
 			Value: 5;
-			EnumType: EnumType<SavedQualitySetting>;
+			EnumType: typeof SavedQualitySetting;
 		}
 
 		export const QualityLevel5: QualityLevel5;
@@ -12582,7 +12581,7 @@ declare namespace Enum {
 		export interface QualityLevel6 extends EnumItem {
 			Name: "QualityLevel6";
 			Value: 6;
-			EnumType: EnumType<SavedQualitySetting>;
+			EnumType: typeof SavedQualitySetting;
 		}
 
 		export const QualityLevel6: QualityLevel6;
@@ -12590,7 +12589,7 @@ declare namespace Enum {
 		export interface QualityLevel7 extends EnumItem {
 			Name: "QualityLevel7";
 			Value: 7;
-			EnumType: EnumType<SavedQualitySetting>;
+			EnumType: typeof SavedQualitySetting;
 		}
 
 		export const QualityLevel7: QualityLevel7;
@@ -12598,7 +12597,7 @@ declare namespace Enum {
 		export interface QualityLevel8 extends EnumItem {
 			Name: "QualityLevel8";
 			Value: 8;
-			EnumType: EnumType<SavedQualitySetting>;
+			EnumType: typeof SavedQualitySetting;
 		}
 
 		export const QualityLevel8: QualityLevel8;
@@ -12606,7 +12605,7 @@ declare namespace Enum {
 		export interface QualityLevel9 extends EnumItem {
 			Name: "QualityLevel9";
 			Value: 9;
-			EnumType: EnumType<SavedQualitySetting>;
+			EnumType: typeof SavedQualitySetting;
 		}
 
 		export const QualityLevel9: QualityLevel9;
@@ -12614,19 +12613,19 @@ declare namespace Enum {
 		export interface QualityLevel10 extends EnumItem {
 			Name: "QualityLevel10";
 			Value: 10;
-			EnumType: EnumType<SavedQualitySetting>;
+			EnumType: typeof SavedQualitySetting;
 		}
 
 		export const QualityLevel10: QualityLevel10;
 
-		export function GetEnumItems(this: defined): Array<SavedQualitySetting>
+		export function GetEnumItems(): Array<SavedQualitySetting>
 	}
 	export type SavedQualitySetting = SavedQualitySetting.Automatic | SavedQualitySetting.QualityLevel1 | SavedQualitySetting.QualityLevel2 | SavedQualitySetting.QualityLevel3 | SavedQualitySetting.QualityLevel4 | SavedQualitySetting.QualityLevel5 | SavedQualitySetting.QualityLevel6 | SavedQualitySetting.QualityLevel7 | SavedQualitySetting.QualityLevel8 | SavedQualitySetting.QualityLevel9 | SavedQualitySetting.QualityLevel10;
 	export namespace ScaleType {
 		export interface Stretch extends EnumItem {
 			Name: "Stretch";
 			Value: 0;
-			EnumType: EnumType<ScaleType>;
+			EnumType: typeof ScaleType;
 		}
 
 		export const Stretch: Stretch;
@@ -12634,7 +12633,7 @@ declare namespace Enum {
 		export interface Slice extends EnumItem {
 			Name: "Slice";
 			Value: 1;
-			EnumType: EnumType<ScaleType>;
+			EnumType: typeof ScaleType;
 		}
 
 		export const Slice: Slice;
@@ -12642,7 +12641,7 @@ declare namespace Enum {
 		export interface Tile extends EnumItem {
 			Name: "Tile";
 			Value: 2;
-			EnumType: EnumType<ScaleType>;
+			EnumType: typeof ScaleType;
 		}
 
 		export const Tile: Tile;
@@ -12650,7 +12649,7 @@ declare namespace Enum {
 		export interface Fit extends EnumItem {
 			Name: "Fit";
 			Value: 3;
-			EnumType: EnumType<ScaleType>;
+			EnumType: typeof ScaleType;
 		}
 
 		export const Fit: Fit;
@@ -12658,19 +12657,19 @@ declare namespace Enum {
 		export interface Crop extends EnumItem {
 			Name: "Crop";
 			Value: 4;
-			EnumType: EnumType<ScaleType>;
+			EnumType: typeof ScaleType;
 		}
 
 		export const Crop: Crop;
 
-		export function GetEnumItems(this: defined): Array<ScaleType>
+		export function GetEnumItems(): Array<ScaleType>
 	}
 	export type ScaleType = ScaleType.Stretch | ScaleType.Slice | ScaleType.Tile | ScaleType.Fit | ScaleType.Crop;
 	export namespace ScreenOrientation {
 		export interface LandscapeLeft extends EnumItem {
 			Name: "LandscapeLeft";
 			Value: 0;
-			EnumType: EnumType<ScreenOrientation>;
+			EnumType: typeof ScreenOrientation;
 		}
 
 		export const LandscapeLeft: LandscapeLeft;
@@ -12678,7 +12677,7 @@ declare namespace Enum {
 		export interface LandscapeRight extends EnumItem {
 			Name: "LandscapeRight";
 			Value: 1;
-			EnumType: EnumType<ScreenOrientation>;
+			EnumType: typeof ScreenOrientation;
 		}
 
 		export const LandscapeRight: LandscapeRight;
@@ -12686,7 +12685,7 @@ declare namespace Enum {
 		export interface LandscapeSensor extends EnumItem {
 			Name: "LandscapeSensor";
 			Value: 2;
-			EnumType: EnumType<ScreenOrientation>;
+			EnumType: typeof ScreenOrientation;
 		}
 
 		export const LandscapeSensor: LandscapeSensor;
@@ -12694,7 +12693,7 @@ declare namespace Enum {
 		export interface Portrait extends EnumItem {
 			Name: "Portrait";
 			Value: 3;
-			EnumType: EnumType<ScreenOrientation>;
+			EnumType: typeof ScreenOrientation;
 		}
 
 		export const Portrait: Portrait;
@@ -12702,19 +12701,19 @@ declare namespace Enum {
 		export interface Sensor extends EnumItem {
 			Name: "Sensor";
 			Value: 4;
-			EnumType: EnumType<ScreenOrientation>;
+			EnumType: typeof ScreenOrientation;
 		}
 
 		export const Sensor: Sensor;
 
-		export function GetEnumItems(this: defined): Array<ScreenOrientation>
+		export function GetEnumItems(): Array<ScreenOrientation>
 	}
 	export type ScreenOrientation = ScreenOrientation.LandscapeLeft | ScreenOrientation.LandscapeRight | ScreenOrientation.LandscapeSensor | ScreenOrientation.Portrait | ScreenOrientation.Sensor;
 	export namespace ScrollBarInset {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<ScrollBarInset>;
+			EnumType: typeof ScrollBarInset;
 		}
 
 		export const None: None;
@@ -12722,7 +12721,7 @@ declare namespace Enum {
 		export interface ScrollBar extends EnumItem {
 			Name: "ScrollBar";
 			Value: 1;
-			EnumType: EnumType<ScrollBarInset>;
+			EnumType: typeof ScrollBarInset;
 		}
 
 		export const ScrollBar: ScrollBar;
@@ -12730,19 +12729,19 @@ declare namespace Enum {
 		export interface Always extends EnumItem {
 			Name: "Always";
 			Value: 2;
-			EnumType: EnumType<ScrollBarInset>;
+			EnumType: typeof ScrollBarInset;
 		}
 
 		export const Always: Always;
 
-		export function GetEnumItems(this: defined): Array<ScrollBarInset>
+		export function GetEnumItems(): Array<ScrollBarInset>
 	}
 	export type ScrollBarInset = ScrollBarInset.None | ScrollBarInset.ScrollBar | ScrollBarInset.Always;
 	export namespace ScrollingDirection {
 		export interface X extends EnumItem {
 			Name: "X";
 			Value: 1;
-			EnumType: EnumType<ScrollingDirection>;
+			EnumType: typeof ScrollingDirection;
 		}
 
 		export const X: X;
@@ -12750,7 +12749,7 @@ declare namespace Enum {
 		export interface Y extends EnumItem {
 			Name: "Y";
 			Value: 2;
-			EnumType: EnumType<ScrollingDirection>;
+			EnumType: typeof ScrollingDirection;
 		}
 
 		export const Y: Y;
@@ -12758,19 +12757,19 @@ declare namespace Enum {
 		export interface XY extends EnumItem {
 			Name: "XY";
 			Value: 4;
-			EnumType: EnumType<ScrollingDirection>;
+			EnumType: typeof ScrollingDirection;
 		}
 
 		export const XY: XY;
 
-		export function GetEnumItems(this: defined): Array<ScrollingDirection>
+		export function GetEnumItems(): Array<ScrollingDirection>
 	}
 	export type ScrollingDirection = ScrollingDirection.X | ScrollingDirection.Y | ScrollingDirection.XY;
 	export namespace SelectionBehavior {
 		export interface Escape extends EnumItem {
 			Name: "Escape";
 			Value: 0;
-			EnumType: EnumType<SelectionBehavior>;
+			EnumType: typeof SelectionBehavior;
 		}
 
 		export const Escape: Escape;
@@ -12778,19 +12777,19 @@ declare namespace Enum {
 		export interface Stop extends EnumItem {
 			Name: "Stop";
 			Value: 1;
-			EnumType: EnumType<SelectionBehavior>;
+			EnumType: typeof SelectionBehavior;
 		}
 
 		export const Stop: Stop;
 
-		export function GetEnumItems(this: defined): Array<SelectionBehavior>
+		export function GetEnumItems(): Array<SelectionBehavior>
 	}
 	export type SelectionBehavior = SelectionBehavior.Escape | SelectionBehavior.Stop;
 	export namespace ServerAudioBehavior {
 		export interface Enabled extends EnumItem {
 			Name: "Enabled";
 			Value: 0;
-			EnumType: EnumType<ServerAudioBehavior>;
+			EnumType: typeof ServerAudioBehavior;
 		}
 
 		export const Enabled: Enabled;
@@ -12798,7 +12797,7 @@ declare namespace Enum {
 		export interface Muted extends EnumItem {
 			Name: "Muted";
 			Value: 1;
-			EnumType: EnumType<ServerAudioBehavior>;
+			EnumType: typeof ServerAudioBehavior;
 		}
 
 		export const Muted: Muted;
@@ -12806,19 +12805,19 @@ declare namespace Enum {
 		export interface OnlineGame extends EnumItem {
 			Name: "OnlineGame";
 			Value: 2;
-			EnumType: EnumType<ServerAudioBehavior>;
+			EnumType: typeof ServerAudioBehavior;
 		}
 
 		export const OnlineGame: OnlineGame;
 
-		export function GetEnumItems(this: defined): Array<ServerAudioBehavior>
+		export function GetEnumItems(): Array<ServerAudioBehavior>
 	}
 	export type ServerAudioBehavior = ServerAudioBehavior.Enabled | ServerAudioBehavior.Muted | ServerAudioBehavior.OnlineGame;
 	export namespace SignalBehavior {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<SignalBehavior>;
+			EnumType: typeof SignalBehavior;
 		}
 
 		export const Default: Default;
@@ -12826,7 +12825,7 @@ declare namespace Enum {
 		export interface Immediate extends EnumItem {
 			Name: "Immediate";
 			Value: 1;
-			EnumType: EnumType<SignalBehavior>;
+			EnumType: typeof SignalBehavior;
 		}
 
 		export const Immediate: Immediate;
@@ -12834,7 +12833,7 @@ declare namespace Enum {
 		export interface Deferred extends EnumItem {
 			Name: "Deferred";
 			Value: 2;
-			EnumType: EnumType<SignalBehavior>;
+			EnumType: typeof SignalBehavior;
 		}
 
 		export const Deferred: Deferred;
@@ -12842,19 +12841,19 @@ declare namespace Enum {
 		export interface AncestryDeferred extends EnumItem {
 			Name: "AncestryDeferred";
 			Value: 3;
-			EnumType: EnumType<SignalBehavior>;
+			EnumType: typeof SignalBehavior;
 		}
 
 		export const AncestryDeferred: AncestryDeferred;
 
-		export function GetEnumItems(this: defined): Array<SignalBehavior>
+		export function GetEnumItems(): Array<SignalBehavior>
 	}
 	export type SignalBehavior = SignalBehavior.Default | SignalBehavior.Immediate | SignalBehavior.Deferred | SignalBehavior.AncestryDeferred;
 	export namespace SizeConstraint {
 		export interface RelativeXY extends EnumItem {
 			Name: "RelativeXY";
 			Value: 0;
-			EnumType: EnumType<SizeConstraint>;
+			EnumType: typeof SizeConstraint;
 		}
 
 		export const RelativeXY: RelativeXY;
@@ -12862,7 +12861,7 @@ declare namespace Enum {
 		export interface RelativeXX extends EnumItem {
 			Name: "RelativeXX";
 			Value: 1;
-			EnumType: EnumType<SizeConstraint>;
+			EnumType: typeof SizeConstraint;
 		}
 
 		export const RelativeXX: RelativeXX;
@@ -12870,19 +12869,19 @@ declare namespace Enum {
 		export interface RelativeYY extends EnumItem {
 			Name: "RelativeYY";
 			Value: 2;
-			EnumType: EnumType<SizeConstraint>;
+			EnumType: typeof SizeConstraint;
 		}
 
 		export const RelativeYY: RelativeYY;
 
-		export function GetEnumItems(this: defined): Array<SizeConstraint>
+		export function GetEnumItems(): Array<SizeConstraint>
 	}
 	export type SizeConstraint = SizeConstraint.RelativeXY | SizeConstraint.RelativeXX | SizeConstraint.RelativeYY;
 	export namespace SortDirection {
 		export interface Ascending extends EnumItem {
 			Name: "Ascending";
 			Value: 0;
-			EnumType: EnumType<SortDirection>;
+			EnumType: typeof SortDirection;
 		}
 
 		export const Ascending: Ascending;
@@ -12890,19 +12889,19 @@ declare namespace Enum {
 		export interface Descending extends EnumItem {
 			Name: "Descending";
 			Value: 1;
-			EnumType: EnumType<SortDirection>;
+			EnumType: typeof SortDirection;
 		}
 
 		export const Descending: Descending;
 
-		export function GetEnumItems(this: defined): Array<SortDirection>
+		export function GetEnumItems(): Array<SortDirection>
 	}
 	export type SortDirection = SortDirection.Ascending | SortDirection.Descending;
 	export namespace SortOrder {
 		export interface LayoutOrder extends EnumItem {
 			Name: "LayoutOrder";
 			Value: 2;
-			EnumType: EnumType<SortOrder>;
+			EnumType: typeof SortOrder;
 		}
 
 		export const LayoutOrder: LayoutOrder;
@@ -12910,7 +12909,7 @@ declare namespace Enum {
 		export interface Name extends EnumItem {
 			Name: "Name";
 			Value: 0;
-			EnumType: EnumType<SortOrder>;
+			EnumType: typeof SortOrder;
 		}
 
 		export const Name: Name;
@@ -12918,19 +12917,19 @@ declare namespace Enum {
 		export interface Custom extends EnumItem {
 			Name: "Custom";
 			Value: 1;
-			EnumType: EnumType<SortOrder>;
+			EnumType: typeof SortOrder;
 		}
 
 		export const Custom: Custom;
 
-		export function GetEnumItems(this: defined): Array<SortOrder>
+		export function GetEnumItems(): Array<SortOrder>
 	}
 	export type SortOrder = SortOrder.LayoutOrder | SortOrder.Name | SortOrder.Custom;
 	export namespace SpecialKey {
 		export interface Insert extends EnumItem {
 			Name: "Insert";
 			Value: 0;
-			EnumType: EnumType<SpecialKey>;
+			EnumType: typeof SpecialKey;
 		}
 
 		export const Insert: Insert;
@@ -12938,7 +12937,7 @@ declare namespace Enum {
 		export interface Home extends EnumItem {
 			Name: "Home";
 			Value: 1;
-			EnumType: EnumType<SpecialKey>;
+			EnumType: typeof SpecialKey;
 		}
 
 		export const Home: Home;
@@ -12946,7 +12945,7 @@ declare namespace Enum {
 		export interface End extends EnumItem {
 			Name: "End";
 			Value: 2;
-			EnumType: EnumType<SpecialKey>;
+			EnumType: typeof SpecialKey;
 		}
 
 		export const End: End;
@@ -12954,7 +12953,7 @@ declare namespace Enum {
 		export interface PageUp extends EnumItem {
 			Name: "PageUp";
 			Value: 3;
-			EnumType: EnumType<SpecialKey>;
+			EnumType: typeof SpecialKey;
 		}
 
 		export const PageUp: PageUp;
@@ -12962,7 +12961,7 @@ declare namespace Enum {
 		export interface PageDown extends EnumItem {
 			Name: "PageDown";
 			Value: 4;
-			EnumType: EnumType<SpecialKey>;
+			EnumType: typeof SpecialKey;
 		}
 
 		export const PageDown: PageDown;
@@ -12970,19 +12969,19 @@ declare namespace Enum {
 		export interface ChatHotkey extends EnumItem {
 			Name: "ChatHotkey";
 			Value: 5;
-			EnumType: EnumType<SpecialKey>;
+			EnumType: typeof SpecialKey;
 		}
 
 		export const ChatHotkey: ChatHotkey;
 
-		export function GetEnumItems(this: defined): Array<SpecialKey>
+		export function GetEnumItems(): Array<SpecialKey>
 	}
 	export type SpecialKey = SpecialKey.Insert | SpecialKey.Home | SpecialKey.End | SpecialKey.PageUp | SpecialKey.PageDown | SpecialKey.ChatHotkey;
 	export namespace StartCorner {
 		export interface TopLeft extends EnumItem {
 			Name: "TopLeft";
 			Value: 0;
-			EnumType: EnumType<StartCorner>;
+			EnumType: typeof StartCorner;
 		}
 
 		export const TopLeft: TopLeft;
@@ -12990,7 +12989,7 @@ declare namespace Enum {
 		export interface TopRight extends EnumItem {
 			Name: "TopRight";
 			Value: 1;
-			EnumType: EnumType<StartCorner>;
+			EnumType: typeof StartCorner;
 		}
 
 		export const TopRight: TopRight;
@@ -12998,7 +12997,7 @@ declare namespace Enum {
 		export interface BottomLeft extends EnumItem {
 			Name: "BottomLeft";
 			Value: 2;
-			EnumType: EnumType<StartCorner>;
+			EnumType: typeof StartCorner;
 		}
 
 		export const BottomLeft: BottomLeft;
@@ -13006,19 +13005,19 @@ declare namespace Enum {
 		export interface BottomRight extends EnumItem {
 			Name: "BottomRight";
 			Value: 3;
-			EnumType: EnumType<StartCorner>;
+			EnumType: typeof StartCorner;
 		}
 
 		export const BottomRight: BottomRight;
 
-		export function GetEnumItems(this: defined): Array<StartCorner>
+		export function GetEnumItems(): Array<StartCorner>
 	}
 	export type StartCorner = StartCorner.TopLeft | StartCorner.TopRight | StartCorner.BottomLeft | StartCorner.BottomRight;
 	export namespace Status {
 		export interface Poison extends EnumItem {
 			Name: "Poison";
 			Value: 0;
-			EnumType: EnumType<Status>;
+			EnumType: typeof Status;
 		}
 
 		export const Poison: Poison;
@@ -13026,19 +13025,19 @@ declare namespace Enum {
 		export interface Confusion extends EnumItem {
 			Name: "Confusion";
 			Value: 1;
-			EnumType: EnumType<Status>;
+			EnumType: typeof Status;
 		}
 
 		export const Confusion: Confusion;
 
-		export function GetEnumItems(this: defined): Array<Status>
+		export function GetEnumItems(): Array<Status>
 	}
 	export type Status = Status.Poison | Status.Confusion;
 	export namespace StreamOutBehavior {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<StreamOutBehavior>;
+			EnumType: typeof StreamOutBehavior;
 		}
 
 		export const Default: Default;
@@ -13046,7 +13045,7 @@ declare namespace Enum {
 		export interface LowMemory extends EnumItem {
 			Name: "LowMemory";
 			Value: 1;
-			EnumType: EnumType<StreamOutBehavior>;
+			EnumType: typeof StreamOutBehavior;
 		}
 
 		export const LowMemory: LowMemory;
@@ -13054,19 +13053,19 @@ declare namespace Enum {
 		export interface Opportunistic extends EnumItem {
 			Name: "Opportunistic";
 			Value: 2;
-			EnumType: EnumType<StreamOutBehavior>;
+			EnumType: typeof StreamOutBehavior;
 		}
 
 		export const Opportunistic: Opportunistic;
 
-		export function GetEnumItems(this: defined): Array<StreamOutBehavior>
+		export function GetEnumItems(): Array<StreamOutBehavior>
 	}
 	export type StreamOutBehavior = StreamOutBehavior.Default | StreamOutBehavior.LowMemory | StreamOutBehavior.Opportunistic;
 	export namespace StreamingPauseMode {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<StreamingPauseMode>;
+			EnumType: typeof StreamingPauseMode;
 		}
 
 		export const Default: Default;
@@ -13074,7 +13073,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<StreamingPauseMode>;
+			EnumType: typeof StreamingPauseMode;
 		}
 
 		export const Disabled: Disabled;
@@ -13082,19 +13081,19 @@ declare namespace Enum {
 		export interface ClientPhysicsPause extends EnumItem {
 			Name: "ClientPhysicsPause";
 			Value: 2;
-			EnumType: EnumType<StreamingPauseMode>;
+			EnumType: typeof StreamingPauseMode;
 		}
 
 		export const ClientPhysicsPause: ClientPhysicsPause;
 
-		export function GetEnumItems(this: defined): Array<StreamingPauseMode>
+		export function GetEnumItems(): Array<StreamingPauseMode>
 	}
 	export type StreamingPauseMode = StreamingPauseMode.Default | StreamingPauseMode.Disabled | StreamingPauseMode.ClientPhysicsPause;
 	export namespace StudioCloseMode {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<StudioCloseMode>;
+			EnumType: typeof StudioCloseMode;
 		}
 
 		export const None: None;
@@ -13102,7 +13101,7 @@ declare namespace Enum {
 		export interface CloseStudio extends EnumItem {
 			Name: "CloseStudio";
 			Value: 1;
-			EnumType: EnumType<StudioCloseMode>;
+			EnumType: typeof StudioCloseMode;
 		}
 
 		export const CloseStudio: CloseStudio;
@@ -13110,19 +13109,19 @@ declare namespace Enum {
 		export interface CloseDoc extends EnumItem {
 			Name: "CloseDoc";
 			Value: 2;
-			EnumType: EnumType<StudioCloseMode>;
+			EnumType: typeof StudioCloseMode;
 		}
 
 		export const CloseDoc: CloseDoc;
 
-		export function GetEnumItems(this: defined): Array<StudioCloseMode>
+		export function GetEnumItems(): Array<StudioCloseMode>
 	}
 	export type StudioCloseMode = StudioCloseMode.None | StudioCloseMode.CloseStudio | StudioCloseMode.CloseDoc;
 	export namespace StudioDataModelType {
 		export interface Edit extends EnumItem {
 			Name: "Edit";
 			Value: 0;
-			EnumType: EnumType<StudioDataModelType>;
+			EnumType: typeof StudioDataModelType;
 		}
 
 		export const Edit: Edit;
@@ -13130,7 +13129,7 @@ declare namespace Enum {
 		export interface PlayClient extends EnumItem {
 			Name: "PlayClient";
 			Value: 1;
-			EnumType: EnumType<StudioDataModelType>;
+			EnumType: typeof StudioDataModelType;
 		}
 
 		export const PlayClient: PlayClient;
@@ -13138,7 +13137,7 @@ declare namespace Enum {
 		export interface PlayServer extends EnumItem {
 			Name: "PlayServer";
 			Value: 2;
-			EnumType: EnumType<StudioDataModelType>;
+			EnumType: typeof StudioDataModelType;
 		}
 
 		export const PlayServer: PlayServer;
@@ -13146,7 +13145,7 @@ declare namespace Enum {
 		export interface Standalone extends EnumItem {
 			Name: "Standalone";
 			Value: 3;
-			EnumType: EnumType<StudioDataModelType>;
+			EnumType: typeof StudioDataModelType;
 		}
 
 		export const Standalone: Standalone;
@@ -13154,19 +13153,19 @@ declare namespace Enum {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 4;
-			EnumType: EnumType<StudioDataModelType>;
+			EnumType: typeof StudioDataModelType;
 		}
 
 		export const None: None;
 
-		export function GetEnumItems(this: defined): Array<StudioDataModelType>
+		export function GetEnumItems(): Array<StudioDataModelType>
 	}
 	export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.Standalone | StudioDataModelType.None;
 	export namespace StudioScriptEditorColorCategories {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Default: Default;
@@ -13174,7 +13173,7 @@ declare namespace Enum {
 		export interface Operator extends EnumItem {
 			Name: "Operator";
 			Value: 1;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Operator: Operator;
@@ -13182,7 +13181,7 @@ declare namespace Enum {
 		export interface Number extends EnumItem {
 			Name: "Number";
 			Value: 2;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Number: Number;
@@ -13190,7 +13189,7 @@ declare namespace Enum {
 		export interface String extends EnumItem {
 			Name: "String";
 			Value: 3;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const String: String;
@@ -13198,7 +13197,7 @@ declare namespace Enum {
 		export interface Comment extends EnumItem {
 			Name: "Comment";
 			Value: 4;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Comment: Comment;
@@ -13206,7 +13205,7 @@ declare namespace Enum {
 		export interface Keyword extends EnumItem {
 			Name: "Keyword";
 			Value: 5;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Keyword: Keyword;
@@ -13214,7 +13213,7 @@ declare namespace Enum {
 		export interface Builtin extends EnumItem {
 			Name: "Builtin";
 			Value: 6;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Builtin: Builtin;
@@ -13222,7 +13221,7 @@ declare namespace Enum {
 		export interface Method extends EnumItem {
 			Name: "Method";
 			Value: 7;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Method: Method;
@@ -13230,7 +13229,7 @@ declare namespace Enum {
 		export interface Property extends EnumItem {
 			Name: "Property";
 			Value: 8;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Property: Property;
@@ -13238,7 +13237,7 @@ declare namespace Enum {
 		export interface Nil extends EnumItem {
 			Name: "Nil";
 			Value: 9;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Nil: Nil;
@@ -13246,7 +13245,7 @@ declare namespace Enum {
 		export interface Bool extends EnumItem {
 			Name: "Bool";
 			Value: 10;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Bool: Bool;
@@ -13254,7 +13253,7 @@ declare namespace Enum {
 		export interface Function extends EnumItem {
 			Name: "Function";
 			Value: 11;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Function: Function;
@@ -13262,7 +13261,7 @@ declare namespace Enum {
 		export interface Local extends EnumItem {
 			Name: "Local";
 			Value: 12;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Local: Local;
@@ -13270,7 +13269,7 @@ declare namespace Enum {
 		export interface Self extends EnumItem {
 			Name: "Self";
 			Value: 13;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Self: Self;
@@ -13278,7 +13277,7 @@ declare namespace Enum {
 		export interface LuauKeyword extends EnumItem {
 			Name: "LuauKeyword";
 			Value: 14;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const LuauKeyword: LuauKeyword;
@@ -13286,7 +13285,7 @@ declare namespace Enum {
 		export interface FunctionName extends EnumItem {
 			Name: "FunctionName";
 			Value: 15;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const FunctionName: FunctionName;
@@ -13294,7 +13293,7 @@ declare namespace Enum {
 		export interface TODO extends EnumItem {
 			Name: "TODO";
 			Value: 16;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const TODO: TODO;
@@ -13302,7 +13301,7 @@ declare namespace Enum {
 		export interface Background extends EnumItem {
 			Name: "Background";
 			Value: 17;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Background: Background;
@@ -13310,7 +13309,7 @@ declare namespace Enum {
 		export interface SelectionText extends EnumItem {
 			Name: "SelectionText";
 			Value: 18;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const SelectionText: SelectionText;
@@ -13318,7 +13317,7 @@ declare namespace Enum {
 		export interface SelectionBackground extends EnumItem {
 			Name: "SelectionBackground";
 			Value: 19;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const SelectionBackground: SelectionBackground;
@@ -13326,7 +13325,7 @@ declare namespace Enum {
 		export interface FindSelectionBackground extends EnumItem {
 			Name: "FindSelectionBackground";
 			Value: 20;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const FindSelectionBackground: FindSelectionBackground;
@@ -13334,7 +13333,7 @@ declare namespace Enum {
 		export interface MatchingWordBackground extends EnumItem {
 			Name: "MatchingWordBackground";
 			Value: 21;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const MatchingWordBackground: MatchingWordBackground;
@@ -13342,7 +13341,7 @@ declare namespace Enum {
 		export interface Warning extends EnumItem {
 			Name: "Warning";
 			Value: 22;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Warning: Warning;
@@ -13350,7 +13349,7 @@ declare namespace Enum {
 		export interface Error extends EnumItem {
 			Name: "Error";
 			Value: 23;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Error: Error;
@@ -13358,7 +13357,7 @@ declare namespace Enum {
 		export interface Whitespace extends EnumItem {
 			Name: "Whitespace";
 			Value: 24;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Whitespace: Whitespace;
@@ -13366,7 +13365,7 @@ declare namespace Enum {
 		export interface ActiveLine extends EnumItem {
 			Name: "ActiveLine";
 			Value: 25;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const ActiveLine: ActiveLine;
@@ -13374,7 +13373,7 @@ declare namespace Enum {
 		export interface DebuggerCurrentLine extends EnumItem {
 			Name: "DebuggerCurrentLine";
 			Value: 26;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const DebuggerCurrentLine: DebuggerCurrentLine;
@@ -13382,7 +13381,7 @@ declare namespace Enum {
 		export interface DebuggerErrorLine extends EnumItem {
 			Name: "DebuggerErrorLine";
 			Value: 27;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const DebuggerErrorLine: DebuggerErrorLine;
@@ -13390,7 +13389,7 @@ declare namespace Enum {
 		export interface Ruler extends EnumItem {
 			Name: "Ruler";
 			Value: 28;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Ruler: Ruler;
@@ -13398,7 +13397,7 @@ declare namespace Enum {
 		export interface Bracket extends EnumItem {
 			Name: "Bracket";
 			Value: 29;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const Bracket: Bracket;
@@ -13406,7 +13405,7 @@ declare namespace Enum {
 		export interface MenuPrimaryText extends EnumItem {
 			Name: "MenuPrimaryText";
 			Value: 30;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const MenuPrimaryText: MenuPrimaryText;
@@ -13414,7 +13413,7 @@ declare namespace Enum {
 		export interface MenuSecondaryText extends EnumItem {
 			Name: "MenuSecondaryText";
 			Value: 31;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const MenuSecondaryText: MenuSecondaryText;
@@ -13422,7 +13421,7 @@ declare namespace Enum {
 		export interface MenuSelectedText extends EnumItem {
 			Name: "MenuSelectedText";
 			Value: 32;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const MenuSelectedText: MenuSelectedText;
@@ -13430,7 +13429,7 @@ declare namespace Enum {
 		export interface MenuBackground extends EnumItem {
 			Name: "MenuBackground";
 			Value: 33;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const MenuBackground: MenuBackground;
@@ -13438,7 +13437,7 @@ declare namespace Enum {
 		export interface MenuSelectedBackground extends EnumItem {
 			Name: "MenuSelectedBackground";
 			Value: 34;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const MenuSelectedBackground: MenuSelectedBackground;
@@ -13446,7 +13445,7 @@ declare namespace Enum {
 		export interface MenuScrollbarBackground extends EnumItem {
 			Name: "MenuScrollbarBackground";
 			Value: 35;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const MenuScrollbarBackground: MenuScrollbarBackground;
@@ -13454,7 +13453,7 @@ declare namespace Enum {
 		export interface MenuScrollbarHandle extends EnumItem {
 			Name: "MenuScrollbarHandle";
 			Value: 36;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const MenuScrollbarHandle: MenuScrollbarHandle;
@@ -13462,7 +13461,7 @@ declare namespace Enum {
 		export interface MenuBorder extends EnumItem {
 			Name: "MenuBorder";
 			Value: 37;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const MenuBorder: MenuBorder;
@@ -13470,19 +13469,19 @@ declare namespace Enum {
 		export interface DocViewCodeBackground extends EnumItem {
 			Name: "DocViewCodeBackground";
 			Value: 38;
-			EnumType: EnumType<StudioScriptEditorColorCategories>;
+			EnumType: typeof StudioScriptEditorColorCategories;
 		}
 
 		export const DocViewCodeBackground: DocViewCodeBackground;
 
-		export function GetEnumItems(this: defined): Array<StudioScriptEditorColorCategories>
+		export function GetEnumItems(): Array<StudioScriptEditorColorCategories>
 	}
 	export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket | StudioScriptEditorColorCategories.MenuPrimaryText | StudioScriptEditorColorCategories.MenuSecondaryText | StudioScriptEditorColorCategories.MenuSelectedText | StudioScriptEditorColorCategories.MenuBackground | StudioScriptEditorColorCategories.MenuSelectedBackground | StudioScriptEditorColorCategories.MenuScrollbarBackground | StudioScriptEditorColorCategories.MenuScrollbarHandle | StudioScriptEditorColorCategories.MenuBorder | StudioScriptEditorColorCategories.DocViewCodeBackground;
 	export namespace StudioScriptEditorColorPresets {
 		export interface RobloxDefault extends EnumItem {
 			Name: "RobloxDefault";
 			Value: 0;
-			EnumType: EnumType<StudioScriptEditorColorPresets>;
+			EnumType: typeof StudioScriptEditorColorPresets;
 		}
 
 		export const RobloxDefault: RobloxDefault;
@@ -13490,7 +13489,7 @@ declare namespace Enum {
 		export interface Extra1 extends EnumItem {
 			Name: "Extra1";
 			Value: 1;
-			EnumType: EnumType<StudioScriptEditorColorPresets>;
+			EnumType: typeof StudioScriptEditorColorPresets;
 		}
 
 		export const Extra1: Extra1;
@@ -13498,7 +13497,7 @@ declare namespace Enum {
 		export interface Extra2 extends EnumItem {
 			Name: "Extra2";
 			Value: 2;
-			EnumType: EnumType<StudioScriptEditorColorPresets>;
+			EnumType: typeof StudioScriptEditorColorPresets;
 		}
 
 		export const Extra2: Extra2;
@@ -13506,19 +13505,19 @@ declare namespace Enum {
 		export interface Custom extends EnumItem {
 			Name: "Custom";
 			Value: 3;
-			EnumType: EnumType<StudioScriptEditorColorPresets>;
+			EnumType: typeof StudioScriptEditorColorPresets;
 		}
 
 		export const Custom: Custom;
 
-		export function GetEnumItems(this: defined): Array<StudioScriptEditorColorPresets>
+		export function GetEnumItems(): Array<StudioScriptEditorColorPresets>
 	}
 	export type StudioScriptEditorColorPresets = StudioScriptEditorColorPresets.RobloxDefault | StudioScriptEditorColorPresets.Extra1 | StudioScriptEditorColorPresets.Extra2 | StudioScriptEditorColorPresets.Custom;
 	export namespace StudioStyleGuideColor {
 		export interface MainBackground extends EnumItem {
 			Name: "MainBackground";
 			Value: 0;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const MainBackground: MainBackground;
@@ -13526,7 +13525,7 @@ declare namespace Enum {
 		export interface Titlebar extends EnumItem {
 			Name: "Titlebar";
 			Value: 1;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Titlebar: Titlebar;
@@ -13534,7 +13533,7 @@ declare namespace Enum {
 		export interface Dropdown extends EnumItem {
 			Name: "Dropdown";
 			Value: 2;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Dropdown: Dropdown;
@@ -13542,7 +13541,7 @@ declare namespace Enum {
 		export interface Tooltip extends EnumItem {
 			Name: "Tooltip";
 			Value: 3;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Tooltip: Tooltip;
@@ -13550,7 +13549,7 @@ declare namespace Enum {
 		export interface Notification extends EnumItem {
 			Name: "Notification";
 			Value: 4;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Notification: Notification;
@@ -13558,7 +13557,7 @@ declare namespace Enum {
 		export interface ScrollBar extends EnumItem {
 			Name: "ScrollBar";
 			Value: 5;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScrollBar: ScrollBar;
@@ -13566,7 +13565,7 @@ declare namespace Enum {
 		export interface ScrollBarBackground extends EnumItem {
 			Name: "ScrollBarBackground";
 			Value: 6;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScrollBarBackground: ScrollBarBackground;
@@ -13574,7 +13573,7 @@ declare namespace Enum {
 		export interface TabBar extends EnumItem {
 			Name: "TabBar";
 			Value: 7;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const TabBar: TabBar;
@@ -13582,7 +13581,7 @@ declare namespace Enum {
 		export interface Tab extends EnumItem {
 			Name: "Tab";
 			Value: 8;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Tab: Tab;
@@ -13590,7 +13589,7 @@ declare namespace Enum {
 		export interface FilterButtonDefault extends EnumItem {
 			Name: "FilterButtonDefault";
 			Value: 9;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const FilterButtonDefault: FilterButtonDefault;
@@ -13598,7 +13597,7 @@ declare namespace Enum {
 		export interface FilterButtonHover extends EnumItem {
 			Name: "FilterButtonHover";
 			Value: 10;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const FilterButtonHover: FilterButtonHover;
@@ -13606,7 +13605,7 @@ declare namespace Enum {
 		export interface FilterButtonChecked extends EnumItem {
 			Name: "FilterButtonChecked";
 			Value: 11;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const FilterButtonChecked: FilterButtonChecked;
@@ -13614,7 +13613,7 @@ declare namespace Enum {
 		export interface FilterButtonAccent extends EnumItem {
 			Name: "FilterButtonAccent";
 			Value: 12;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const FilterButtonAccent: FilterButtonAccent;
@@ -13622,7 +13621,7 @@ declare namespace Enum {
 		export interface FilterButtonBorder extends EnumItem {
 			Name: "FilterButtonBorder";
 			Value: 13;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const FilterButtonBorder: FilterButtonBorder;
@@ -13630,7 +13629,7 @@ declare namespace Enum {
 		export interface FilterButtonBorderAlt extends EnumItem {
 			Name: "FilterButtonBorderAlt";
 			Value: 14;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const FilterButtonBorderAlt: FilterButtonBorderAlt;
@@ -13638,7 +13637,7 @@ declare namespace Enum {
 		export interface RibbonTab extends EnumItem {
 			Name: "RibbonTab";
 			Value: 15;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const RibbonTab: RibbonTab;
@@ -13646,7 +13645,7 @@ declare namespace Enum {
 		export interface RibbonTabTopBar extends EnumItem {
 			Name: "RibbonTabTopBar";
 			Value: 16;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const RibbonTabTopBar: RibbonTabTopBar;
@@ -13654,7 +13653,7 @@ declare namespace Enum {
 		export interface Button extends EnumItem {
 			Name: "Button";
 			Value: 17;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Button: Button;
@@ -13662,7 +13661,7 @@ declare namespace Enum {
 		export interface MainButton extends EnumItem {
 			Name: "MainButton";
 			Value: 18;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const MainButton: MainButton;
@@ -13670,7 +13669,7 @@ declare namespace Enum {
 		export interface RibbonButton extends EnumItem {
 			Name: "RibbonButton";
 			Value: 19;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const RibbonButton: RibbonButton;
@@ -13678,7 +13677,7 @@ declare namespace Enum {
 		export interface ViewPortBackground extends EnumItem {
 			Name: "ViewPortBackground";
 			Value: 20;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ViewPortBackground: ViewPortBackground;
@@ -13686,7 +13685,7 @@ declare namespace Enum {
 		export interface InputFieldBackground extends EnumItem {
 			Name: "InputFieldBackground";
 			Value: 21;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const InputFieldBackground: InputFieldBackground;
@@ -13694,7 +13693,7 @@ declare namespace Enum {
 		export interface Item extends EnumItem {
 			Name: "Item";
 			Value: 22;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Item: Item;
@@ -13702,7 +13701,7 @@ declare namespace Enum {
 		export interface TableItem extends EnumItem {
 			Name: "TableItem";
 			Value: 23;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const TableItem: TableItem;
@@ -13710,7 +13709,7 @@ declare namespace Enum {
 		export interface CategoryItem extends EnumItem {
 			Name: "CategoryItem";
 			Value: 24;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const CategoryItem: CategoryItem;
@@ -13718,7 +13717,7 @@ declare namespace Enum {
 		export interface GameSettingsTableItem extends EnumItem {
 			Name: "GameSettingsTableItem";
 			Value: 25;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const GameSettingsTableItem: GameSettingsTableItem;
@@ -13726,7 +13725,7 @@ declare namespace Enum {
 		export interface GameSettingsTooltip extends EnumItem {
 			Name: "GameSettingsTooltip";
 			Value: 26;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const GameSettingsTooltip: GameSettingsTooltip;
@@ -13734,7 +13733,7 @@ declare namespace Enum {
 		export interface EmulatorBar extends EnumItem {
 			Name: "EmulatorBar";
 			Value: 27;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const EmulatorBar: EmulatorBar;
@@ -13742,7 +13741,7 @@ declare namespace Enum {
 		export interface EmulatorDropDown extends EnumItem {
 			Name: "EmulatorDropDown";
 			Value: 28;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const EmulatorDropDown: EmulatorDropDown;
@@ -13750,7 +13749,7 @@ declare namespace Enum {
 		export interface ColorPickerFrame extends EnumItem {
 			Name: "ColorPickerFrame";
 			Value: 29;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ColorPickerFrame: ColorPickerFrame;
@@ -13758,7 +13757,7 @@ declare namespace Enum {
 		export interface CurrentMarker extends EnumItem {
 			Name: "CurrentMarker";
 			Value: 30;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const CurrentMarker: CurrentMarker;
@@ -13766,7 +13765,7 @@ declare namespace Enum {
 		export interface Border extends EnumItem {
 			Name: "Border";
 			Value: 31;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Border: Border;
@@ -13774,7 +13773,7 @@ declare namespace Enum {
 		export interface DropShadow extends EnumItem {
 			Name: "DropShadow";
 			Value: 32;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DropShadow: DropShadow;
@@ -13782,7 +13781,7 @@ declare namespace Enum {
 		export interface Shadow extends EnumItem {
 			Name: "Shadow";
 			Value: 33;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Shadow: Shadow;
@@ -13790,7 +13789,7 @@ declare namespace Enum {
 		export interface Light extends EnumItem {
 			Name: "Light";
 			Value: 34;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Light: Light;
@@ -13798,7 +13797,7 @@ declare namespace Enum {
 		export interface Dark extends EnumItem {
 			Name: "Dark";
 			Value: 35;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Dark: Dark;
@@ -13806,7 +13805,7 @@ declare namespace Enum {
 		export interface Mid extends EnumItem {
 			Name: "Mid";
 			Value: 36;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Mid: Mid;
@@ -13814,7 +13813,7 @@ declare namespace Enum {
 		export interface MainText extends EnumItem {
 			Name: "MainText";
 			Value: 37;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const MainText: MainText;
@@ -13822,7 +13821,7 @@ declare namespace Enum {
 		export interface SubText extends EnumItem {
 			Name: "SubText";
 			Value: 38;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const SubText: SubText;
@@ -13830,7 +13829,7 @@ declare namespace Enum {
 		export interface TitlebarText extends EnumItem {
 			Name: "TitlebarText";
 			Value: 39;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const TitlebarText: TitlebarText;
@@ -13838,7 +13837,7 @@ declare namespace Enum {
 		export interface BrightText extends EnumItem {
 			Name: "BrightText";
 			Value: 40;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const BrightText: BrightText;
@@ -13846,7 +13845,7 @@ declare namespace Enum {
 		export interface DimmedText extends EnumItem {
 			Name: "DimmedText";
 			Value: 41;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DimmedText: DimmedText;
@@ -13854,7 +13853,7 @@ declare namespace Enum {
 		export interface LinkText extends EnumItem {
 			Name: "LinkText";
 			Value: 42;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const LinkText: LinkText;
@@ -13862,7 +13861,7 @@ declare namespace Enum {
 		export interface WarningText extends EnumItem {
 			Name: "WarningText";
 			Value: 43;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const WarningText: WarningText;
@@ -13870,7 +13869,7 @@ declare namespace Enum {
 		export interface ErrorText extends EnumItem {
 			Name: "ErrorText";
 			Value: 44;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ErrorText: ErrorText;
@@ -13878,7 +13877,7 @@ declare namespace Enum {
 		export interface InfoText extends EnumItem {
 			Name: "InfoText";
 			Value: 45;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const InfoText: InfoText;
@@ -13886,7 +13885,7 @@ declare namespace Enum {
 		export interface SensitiveText extends EnumItem {
 			Name: "SensitiveText";
 			Value: 46;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const SensitiveText: SensitiveText;
@@ -13894,7 +13893,7 @@ declare namespace Enum {
 		export interface ScriptSideWidget extends EnumItem {
 			Name: "ScriptSideWidget";
 			Value: 47;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptSideWidget: ScriptSideWidget;
@@ -13902,7 +13901,7 @@ declare namespace Enum {
 		export interface ScriptBackground extends EnumItem {
 			Name: "ScriptBackground";
 			Value: 48;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptBackground: ScriptBackground;
@@ -13910,7 +13909,7 @@ declare namespace Enum {
 		export interface ScriptText extends EnumItem {
 			Name: "ScriptText";
 			Value: 49;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptText: ScriptText;
@@ -13918,7 +13917,7 @@ declare namespace Enum {
 		export interface ScriptSelectionText extends EnumItem {
 			Name: "ScriptSelectionText";
 			Value: 50;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptSelectionText: ScriptSelectionText;
@@ -13926,7 +13925,7 @@ declare namespace Enum {
 		export interface ScriptSelectionBackground extends EnumItem {
 			Name: "ScriptSelectionBackground";
 			Value: 51;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptSelectionBackground: ScriptSelectionBackground;
@@ -13934,7 +13933,7 @@ declare namespace Enum {
 		export interface ScriptFindSelectionBackground extends EnumItem {
 			Name: "ScriptFindSelectionBackground";
 			Value: 52;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptFindSelectionBackground: ScriptFindSelectionBackground;
@@ -13942,7 +13941,7 @@ declare namespace Enum {
 		export interface ScriptMatchingWordSelectionBackground extends EnumItem {
 			Name: "ScriptMatchingWordSelectionBackground";
 			Value: 53;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptMatchingWordSelectionBackground: ScriptMatchingWordSelectionBackground;
@@ -13950,7 +13949,7 @@ declare namespace Enum {
 		export interface ScriptOperator extends EnumItem {
 			Name: "ScriptOperator";
 			Value: 54;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptOperator: ScriptOperator;
@@ -13958,7 +13957,7 @@ declare namespace Enum {
 		export interface ScriptNumber extends EnumItem {
 			Name: "ScriptNumber";
 			Value: 55;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptNumber: ScriptNumber;
@@ -13966,7 +13965,7 @@ declare namespace Enum {
 		export interface ScriptString extends EnumItem {
 			Name: "ScriptString";
 			Value: 56;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptString: ScriptString;
@@ -13974,7 +13973,7 @@ declare namespace Enum {
 		export interface ScriptComment extends EnumItem {
 			Name: "ScriptComment";
 			Value: 57;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptComment: ScriptComment;
@@ -13982,7 +13981,7 @@ declare namespace Enum {
 		export interface ScriptKeyword extends EnumItem {
 			Name: "ScriptKeyword";
 			Value: 58;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptKeyword: ScriptKeyword;
@@ -13990,7 +13989,7 @@ declare namespace Enum {
 		export interface ScriptBuiltInFunction extends EnumItem {
 			Name: "ScriptBuiltInFunction";
 			Value: 59;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptBuiltInFunction: ScriptBuiltInFunction;
@@ -13998,7 +13997,7 @@ declare namespace Enum {
 		export interface ScriptWarning extends EnumItem {
 			Name: "ScriptWarning";
 			Value: 60;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptWarning: ScriptWarning;
@@ -14006,7 +14005,7 @@ declare namespace Enum {
 		export interface ScriptError extends EnumItem {
 			Name: "ScriptError";
 			Value: 61;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptError: ScriptError;
@@ -14014,7 +14013,7 @@ declare namespace Enum {
 		export interface ScriptWhitespace extends EnumItem {
 			Name: "ScriptWhitespace";
 			Value: 62;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptWhitespace: ScriptWhitespace;
@@ -14022,7 +14021,7 @@ declare namespace Enum {
 		export interface ScriptRuler extends EnumItem {
 			Name: "ScriptRuler";
 			Value: 63;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptRuler: ScriptRuler;
@@ -14030,7 +14029,7 @@ declare namespace Enum {
 		export interface DocViewCodeBackground extends EnumItem {
 			Name: "DocViewCodeBackground";
 			Value: 64;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DocViewCodeBackground: DocViewCodeBackground;
@@ -14038,7 +14037,7 @@ declare namespace Enum {
 		export interface DebuggerCurrentLine extends EnumItem {
 			Name: "DebuggerCurrentLine";
 			Value: 65;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DebuggerCurrentLine: DebuggerCurrentLine;
@@ -14046,7 +14045,7 @@ declare namespace Enum {
 		export interface DebuggerErrorLine extends EnumItem {
 			Name: "DebuggerErrorLine";
 			Value: 66;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DebuggerErrorLine: DebuggerErrorLine;
@@ -14054,7 +14053,7 @@ declare namespace Enum {
 		export interface ScriptEditorCurrentLine extends EnumItem {
 			Name: "ScriptEditorCurrentLine";
 			Value: 105;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptEditorCurrentLine: ScriptEditorCurrentLine;
@@ -14062,7 +14061,7 @@ declare namespace Enum {
 		export interface DiffFilePathText extends EnumItem {
 			Name: "DiffFilePathText";
 			Value: 67;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffFilePathText: DiffFilePathText;
@@ -14070,7 +14069,7 @@ declare namespace Enum {
 		export interface DiffTextHunkInfo extends EnumItem {
 			Name: "DiffTextHunkInfo";
 			Value: 68;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffTextHunkInfo: DiffTextHunkInfo;
@@ -14078,7 +14077,7 @@ declare namespace Enum {
 		export interface DiffTextNoChange extends EnumItem {
 			Name: "DiffTextNoChange";
 			Value: 69;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffTextNoChange: DiffTextNoChange;
@@ -14086,7 +14085,7 @@ declare namespace Enum {
 		export interface DiffTextAddition extends EnumItem {
 			Name: "DiffTextAddition";
 			Value: 70;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffTextAddition: DiffTextAddition;
@@ -14094,7 +14093,7 @@ declare namespace Enum {
 		export interface DiffTextDeletion extends EnumItem {
 			Name: "DiffTextDeletion";
 			Value: 71;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffTextDeletion: DiffTextDeletion;
@@ -14102,7 +14101,7 @@ declare namespace Enum {
 		export interface DiffTextSeparatorBackground extends EnumItem {
 			Name: "DiffTextSeparatorBackground";
 			Value: 72;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffTextSeparatorBackground: DiffTextSeparatorBackground;
@@ -14110,7 +14109,7 @@ declare namespace Enum {
 		export interface DiffTextNoChangeBackground extends EnumItem {
 			Name: "DiffTextNoChangeBackground";
 			Value: 73;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffTextNoChangeBackground: DiffTextNoChangeBackground;
@@ -14118,7 +14117,7 @@ declare namespace Enum {
 		export interface DiffTextAdditionBackground extends EnumItem {
 			Name: "DiffTextAdditionBackground";
 			Value: 74;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffTextAdditionBackground: DiffTextAdditionBackground;
@@ -14126,7 +14125,7 @@ declare namespace Enum {
 		export interface DiffTextDeletionBackground extends EnumItem {
 			Name: "DiffTextDeletionBackground";
 			Value: 75;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffTextDeletionBackground: DiffTextDeletionBackground;
@@ -14134,7 +14133,7 @@ declare namespace Enum {
 		export interface DiffLineNum extends EnumItem {
 			Name: "DiffLineNum";
 			Value: 76;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffLineNum: DiffLineNum;
@@ -14142,7 +14141,7 @@ declare namespace Enum {
 		export interface DiffLineNumSeparatorBackground extends EnumItem {
 			Name: "DiffLineNumSeparatorBackground";
 			Value: 77;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffLineNumSeparatorBackground: DiffLineNumSeparatorBackground;
@@ -14150,7 +14149,7 @@ declare namespace Enum {
 		export interface DiffLineNumNoChangeBackground extends EnumItem {
 			Name: "DiffLineNumNoChangeBackground";
 			Value: 78;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffLineNumNoChangeBackground: DiffLineNumNoChangeBackground;
@@ -14158,7 +14157,7 @@ declare namespace Enum {
 		export interface DiffLineNumAdditionBackground extends EnumItem {
 			Name: "DiffLineNumAdditionBackground";
 			Value: 79;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffLineNumAdditionBackground: DiffLineNumAdditionBackground;
@@ -14166,7 +14165,7 @@ declare namespace Enum {
 		export interface DiffLineNumDeletionBackground extends EnumItem {
 			Name: "DiffLineNumDeletionBackground";
 			Value: 80;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffLineNumDeletionBackground: DiffLineNumDeletionBackground;
@@ -14174,7 +14173,7 @@ declare namespace Enum {
 		export interface DiffFilePathBackground extends EnumItem {
 			Name: "DiffFilePathBackground";
 			Value: 81;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffFilePathBackground: DiffFilePathBackground;
@@ -14182,7 +14181,7 @@ declare namespace Enum {
 		export interface DiffFilePathBorder extends EnumItem {
 			Name: "DiffFilePathBorder";
 			Value: 82;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DiffFilePathBorder: DiffFilePathBorder;
@@ -14190,7 +14189,7 @@ declare namespace Enum {
 		export interface ChatIncomingBgColor extends EnumItem {
 			Name: "ChatIncomingBgColor";
 			Value: 83;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ChatIncomingBgColor: ChatIncomingBgColor;
@@ -14198,7 +14197,7 @@ declare namespace Enum {
 		export interface ChatIncomingTextColor extends EnumItem {
 			Name: "ChatIncomingTextColor";
 			Value: 84;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ChatIncomingTextColor: ChatIncomingTextColor;
@@ -14206,7 +14205,7 @@ declare namespace Enum {
 		export interface ChatOutgoingBgColor extends EnumItem {
 			Name: "ChatOutgoingBgColor";
 			Value: 85;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ChatOutgoingBgColor: ChatOutgoingBgColor;
@@ -14214,7 +14213,7 @@ declare namespace Enum {
 		export interface ChatOutgoingTextColor extends EnumItem {
 			Name: "ChatOutgoingTextColor";
 			Value: 86;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ChatOutgoingTextColor: ChatOutgoingTextColor;
@@ -14222,7 +14221,7 @@ declare namespace Enum {
 		export interface ChatModeratedMessageColor extends EnumItem {
 			Name: "ChatModeratedMessageColor";
 			Value: 87;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ChatModeratedMessageColor: ChatModeratedMessageColor;
@@ -14230,7 +14229,7 @@ declare namespace Enum {
 		export interface Separator extends EnumItem {
 			Name: "Separator";
 			Value: 88;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Separator: Separator;
@@ -14238,7 +14237,7 @@ declare namespace Enum {
 		export interface ButtonBorder extends EnumItem {
 			Name: "ButtonBorder";
 			Value: 89;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ButtonBorder: ButtonBorder;
@@ -14246,7 +14245,7 @@ declare namespace Enum {
 		export interface ButtonText extends EnumItem {
 			Name: "ButtonText";
 			Value: 90;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ButtonText: ButtonText;
@@ -14254,7 +14253,7 @@ declare namespace Enum {
 		export interface InputFieldBorder extends EnumItem {
 			Name: "InputFieldBorder";
 			Value: 91;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const InputFieldBorder: InputFieldBorder;
@@ -14262,7 +14261,7 @@ declare namespace Enum {
 		export interface CheckedFieldBackground extends EnumItem {
 			Name: "CheckedFieldBackground";
 			Value: 92;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const CheckedFieldBackground: CheckedFieldBackground;
@@ -14270,7 +14269,7 @@ declare namespace Enum {
 		export interface CheckedFieldBorder extends EnumItem {
 			Name: "CheckedFieldBorder";
 			Value: 93;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const CheckedFieldBorder: CheckedFieldBorder;
@@ -14278,7 +14277,7 @@ declare namespace Enum {
 		export interface CheckedFieldIndicator extends EnumItem {
 			Name: "CheckedFieldIndicator";
 			Value: 94;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const CheckedFieldIndicator: CheckedFieldIndicator;
@@ -14286,7 +14285,7 @@ declare namespace Enum {
 		export interface HeaderSection extends EnumItem {
 			Name: "HeaderSection";
 			Value: 95;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const HeaderSection: HeaderSection;
@@ -14294,7 +14293,7 @@ declare namespace Enum {
 		export interface Midlight extends EnumItem {
 			Name: "Midlight";
 			Value: 96;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const Midlight: Midlight;
@@ -14302,7 +14301,7 @@ declare namespace Enum {
 		export interface StatusBar extends EnumItem {
 			Name: "StatusBar";
 			Value: 97;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const StatusBar: StatusBar;
@@ -14310,7 +14309,7 @@ declare namespace Enum {
 		export interface DialogButton extends EnumItem {
 			Name: "DialogButton";
 			Value: 98;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DialogButton: DialogButton;
@@ -14318,7 +14317,7 @@ declare namespace Enum {
 		export interface DialogButtonText extends EnumItem {
 			Name: "DialogButtonText";
 			Value: 99;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DialogButtonText: DialogButtonText;
@@ -14326,7 +14325,7 @@ declare namespace Enum {
 		export interface DialogButtonBorder extends EnumItem {
 			Name: "DialogButtonBorder";
 			Value: 100;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DialogButtonBorder: DialogButtonBorder;
@@ -14334,7 +14333,7 @@ declare namespace Enum {
 		export interface DialogMainButton extends EnumItem {
 			Name: "DialogMainButton";
 			Value: 101;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DialogMainButton: DialogMainButton;
@@ -14342,7 +14341,7 @@ declare namespace Enum {
 		export interface DialogMainButtonText extends EnumItem {
 			Name: "DialogMainButtonText";
 			Value: 102;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const DialogMainButtonText: DialogMainButtonText;
@@ -14350,7 +14349,7 @@ declare namespace Enum {
 		export interface InfoBarWarningBackground extends EnumItem {
 			Name: "InfoBarWarningBackground";
 			Value: 103;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const InfoBarWarningBackground: InfoBarWarningBackground;
@@ -14358,7 +14357,7 @@ declare namespace Enum {
 		export interface InfoBarWarningText extends EnumItem {
 			Name: "InfoBarWarningText";
 			Value: 104;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const InfoBarWarningText: InfoBarWarningText;
@@ -14366,7 +14365,7 @@ declare namespace Enum {
 		export interface ScriptMethod extends EnumItem {
 			Name: "ScriptMethod";
 			Value: 106;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptMethod: ScriptMethod;
@@ -14374,7 +14373,7 @@ declare namespace Enum {
 		export interface ScriptProperty extends EnumItem {
 			Name: "ScriptProperty";
 			Value: 107;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptProperty: ScriptProperty;
@@ -14382,7 +14381,7 @@ declare namespace Enum {
 		export interface ScriptNil extends EnumItem {
 			Name: "ScriptNil";
 			Value: 108;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptNil: ScriptNil;
@@ -14390,7 +14389,7 @@ declare namespace Enum {
 		export interface ScriptBool extends EnumItem {
 			Name: "ScriptBool";
 			Value: 109;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptBool: ScriptBool;
@@ -14398,7 +14397,7 @@ declare namespace Enum {
 		export interface ScriptFunction extends EnumItem {
 			Name: "ScriptFunction";
 			Value: 110;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptFunction: ScriptFunction;
@@ -14406,7 +14405,7 @@ declare namespace Enum {
 		export interface ScriptLocal extends EnumItem {
 			Name: "ScriptLocal";
 			Value: 111;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptLocal: ScriptLocal;
@@ -14414,7 +14413,7 @@ declare namespace Enum {
 		export interface ScriptSelf extends EnumItem {
 			Name: "ScriptSelf";
 			Value: 112;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptSelf: ScriptSelf;
@@ -14422,7 +14421,7 @@ declare namespace Enum {
 		export interface ScriptLuauKeyword extends EnumItem {
 			Name: "ScriptLuauKeyword";
 			Value: 113;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptLuauKeyword: ScriptLuauKeyword;
@@ -14430,7 +14429,7 @@ declare namespace Enum {
 		export interface ScriptFunctionName extends EnumItem {
 			Name: "ScriptFunctionName";
 			Value: 114;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptFunctionName: ScriptFunctionName;
@@ -14438,7 +14437,7 @@ declare namespace Enum {
 		export interface ScriptTodo extends EnumItem {
 			Name: "ScriptTodo";
 			Value: 115;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptTodo: ScriptTodo;
@@ -14446,7 +14445,7 @@ declare namespace Enum {
 		export interface ScriptBracket extends EnumItem {
 			Name: "ScriptBracket";
 			Value: 116;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const ScriptBracket: ScriptBracket;
@@ -14454,19 +14453,19 @@ declare namespace Enum {
 		export interface AttributeCog extends EnumItem {
 			Name: "AttributeCog";
 			Value: 117;
-			EnumType: EnumType<StudioStyleGuideColor>;
+			EnumType: typeof StudioStyleGuideColor;
 		}
 
 		export const AttributeCog: AttributeCog;
 
-		export function GetEnumItems(this: defined): Array<StudioStyleGuideColor>
+		export function GetEnumItems(): Array<StudioStyleGuideColor>
 	}
 	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.FilterButtonDefault | StudioStyleGuideColor.FilterButtonHover | StudioStyleGuideColor.FilterButtonChecked | StudioStyleGuideColor.FilterButtonAccent | StudioStyleGuideColor.FilterButtonBorder | StudioStyleGuideColor.FilterButtonBorderAlt | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.DropShadow | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DocViewCodeBackground | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.ScriptBracket | StudioStyleGuideColor.AttributeCog;
 	export namespace StudioStyleGuideModifier {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<StudioStyleGuideModifier>;
+			EnumType: typeof StudioStyleGuideModifier;
 		}
 
 		export const Default: Default;
@@ -14474,7 +14473,7 @@ declare namespace Enum {
 		export interface Selected extends EnumItem {
 			Name: "Selected";
 			Value: 1;
-			EnumType: EnumType<StudioStyleGuideModifier>;
+			EnumType: typeof StudioStyleGuideModifier;
 		}
 
 		export const Selected: Selected;
@@ -14482,7 +14481,7 @@ declare namespace Enum {
 		export interface Pressed extends EnumItem {
 			Name: "Pressed";
 			Value: 2;
-			EnumType: EnumType<StudioStyleGuideModifier>;
+			EnumType: typeof StudioStyleGuideModifier;
 		}
 
 		export const Pressed: Pressed;
@@ -14490,7 +14489,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 3;
-			EnumType: EnumType<StudioStyleGuideModifier>;
+			EnumType: typeof StudioStyleGuideModifier;
 		}
 
 		export const Disabled: Disabled;
@@ -14498,19 +14497,19 @@ declare namespace Enum {
 		export interface Hover extends EnumItem {
 			Name: "Hover";
 			Value: 4;
-			EnumType: EnumType<StudioStyleGuideModifier>;
+			EnumType: typeof StudioStyleGuideModifier;
 		}
 
 		export const Hover: Hover;
 
-		export function GetEnumItems(this: defined): Array<StudioStyleGuideModifier>
+		export function GetEnumItems(): Array<StudioStyleGuideModifier>
 	}
 	export type StudioStyleGuideModifier = StudioStyleGuideModifier.Default | StudioStyleGuideModifier.Selected | StudioStyleGuideModifier.Pressed | StudioStyleGuideModifier.Disabled | StudioStyleGuideModifier.Hover;
 	export namespace Style {
 		export interface AlternatingSupports extends EnumItem {
 			Name: "AlternatingSupports";
 			Value: 0;
-			EnumType: EnumType<Style>;
+			EnumType: typeof Style;
 		}
 
 		export const AlternatingSupports: AlternatingSupports;
@@ -14518,7 +14517,7 @@ declare namespace Enum {
 		export interface BridgeStyleSupports extends EnumItem {
 			Name: "BridgeStyleSupports";
 			Value: 1;
-			EnumType: EnumType<Style>;
+			EnumType: typeof Style;
 		}
 
 		export const BridgeStyleSupports: BridgeStyleSupports;
@@ -14526,19 +14525,19 @@ declare namespace Enum {
 		export interface NoSupports extends EnumItem {
 			Name: "NoSupports";
 			Value: 2;
-			EnumType: EnumType<Style>;
+			EnumType: typeof Style;
 		}
 
 		export const NoSupports: NoSupports;
 
-		export function GetEnumItems(this: defined): Array<Style>
+		export function GetEnumItems(): Array<Style>
 	}
 	export type Style = Style.AlternatingSupports | Style.BridgeStyleSupports | Style.NoSupports;
 	export namespace SurfaceConstraint {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<SurfaceConstraint>;
+			EnumType: typeof SurfaceConstraint;
 		}
 
 		export const None: None;
@@ -14546,7 +14545,7 @@ declare namespace Enum {
 		export interface Hinge extends EnumItem {
 			Name: "Hinge";
 			Value: 1;
-			EnumType: EnumType<SurfaceConstraint>;
+			EnumType: typeof SurfaceConstraint;
 		}
 
 		export const Hinge: Hinge;
@@ -14554,7 +14553,7 @@ declare namespace Enum {
 		export interface SteppingMotor extends EnumItem {
 			Name: "SteppingMotor";
 			Value: 2;
-			EnumType: EnumType<SurfaceConstraint>;
+			EnumType: typeof SurfaceConstraint;
 		}
 
 		export const SteppingMotor: SteppingMotor;
@@ -14562,19 +14561,19 @@ declare namespace Enum {
 		export interface Motor extends EnumItem {
 			Name: "Motor";
 			Value: 3;
-			EnumType: EnumType<SurfaceConstraint>;
+			EnumType: typeof SurfaceConstraint;
 		}
 
 		export const Motor: Motor;
 
-		export function GetEnumItems(this: defined): Array<SurfaceConstraint>
+		export function GetEnumItems(): Array<SurfaceConstraint>
 	}
 	export type SurfaceConstraint = SurfaceConstraint.None | SurfaceConstraint.Hinge | SurfaceConstraint.SteppingMotor | SurfaceConstraint.Motor;
 	export namespace SurfaceGuiSizingMode {
 		export interface FixedSize extends EnumItem {
 			Name: "FixedSize";
 			Value: 0;
-			EnumType: EnumType<SurfaceGuiSizingMode>;
+			EnumType: typeof SurfaceGuiSizingMode;
 		}
 
 		export const FixedSize: FixedSize;
@@ -14582,19 +14581,19 @@ declare namespace Enum {
 		export interface PixelsPerStud extends EnumItem {
 			Name: "PixelsPerStud";
 			Value: 1;
-			EnumType: EnumType<SurfaceGuiSizingMode>;
+			EnumType: typeof SurfaceGuiSizingMode;
 		}
 
 		export const PixelsPerStud: PixelsPerStud;
 
-		export function GetEnumItems(this: defined): Array<SurfaceGuiSizingMode>
+		export function GetEnumItems(): Array<SurfaceGuiSizingMode>
 	}
 	export type SurfaceGuiSizingMode = SurfaceGuiSizingMode.FixedSize | SurfaceGuiSizingMode.PixelsPerStud;
 	export namespace SurfaceType {
 		export interface Smooth extends EnumItem {
 			Name: "Smooth";
 			Value: 0;
-			EnumType: EnumType<SurfaceType>;
+			EnumType: typeof SurfaceType;
 		}
 
 		export const Smooth: Smooth;
@@ -14602,7 +14601,7 @@ declare namespace Enum {
 		export interface Glue extends EnumItem {
 			Name: "Glue";
 			Value: 1;
-			EnumType: EnumType<SurfaceType>;
+			EnumType: typeof SurfaceType;
 		}
 
 		export const Glue: Glue;
@@ -14610,7 +14609,7 @@ declare namespace Enum {
 		export interface Weld extends EnumItem {
 			Name: "Weld";
 			Value: 2;
-			EnumType: EnumType<SurfaceType>;
+			EnumType: typeof SurfaceType;
 		}
 
 		export const Weld: Weld;
@@ -14618,7 +14617,7 @@ declare namespace Enum {
 		export interface Studs extends EnumItem {
 			Name: "Studs";
 			Value: 3;
-			EnumType: EnumType<SurfaceType>;
+			EnumType: typeof SurfaceType;
 		}
 
 		export const Studs: Studs;
@@ -14626,7 +14625,7 @@ declare namespace Enum {
 		export interface Inlet extends EnumItem {
 			Name: "Inlet";
 			Value: 4;
-			EnumType: EnumType<SurfaceType>;
+			EnumType: typeof SurfaceType;
 		}
 
 		export const Inlet: Inlet;
@@ -14634,7 +14633,7 @@ declare namespace Enum {
 		export interface Universal extends EnumItem {
 			Name: "Universal";
 			Value: 5;
-			EnumType: EnumType<SurfaceType>;
+			EnumType: typeof SurfaceType;
 		}
 
 		export const Universal: Universal;
@@ -14642,7 +14641,7 @@ declare namespace Enum {
 		export interface Hinge extends EnumItem {
 			Name: "Hinge";
 			Value: 6;
-			EnumType: EnumType<SurfaceType>;
+			EnumType: typeof SurfaceType;
 		}
 
 		export const Hinge: Hinge;
@@ -14650,7 +14649,7 @@ declare namespace Enum {
 		export interface Motor extends EnumItem {
 			Name: "Motor";
 			Value: 7;
-			EnumType: EnumType<SurfaceType>;
+			EnumType: typeof SurfaceType;
 		}
 
 		export const Motor: Motor;
@@ -14658,7 +14657,7 @@ declare namespace Enum {
 		export interface SteppingMotor extends EnumItem {
 			Name: "SteppingMotor";
 			Value: 8;
-			EnumType: EnumType<SurfaceType>;
+			EnumType: typeof SurfaceType;
 		}
 
 		export const SteppingMotor: SteppingMotor;
@@ -14666,19 +14665,19 @@ declare namespace Enum {
 		export interface SmoothNoOutlines extends EnumItem {
 			Name: "SmoothNoOutlines";
 			Value: 10;
-			EnumType: EnumType<SurfaceType>;
+			EnumType: typeof SurfaceType;
 		}
 
 		export const SmoothNoOutlines: SmoothNoOutlines;
 
-		export function GetEnumItems(this: defined): Array<SurfaceType>
+		export function GetEnumItems(): Array<SurfaceType>
 	}
 	export type SurfaceType = SurfaceType.Smooth | SurfaceType.Glue | SurfaceType.Weld | SurfaceType.Studs | SurfaceType.Inlet | SurfaceType.Universal | SurfaceType.Hinge | SurfaceType.Motor | SurfaceType.SteppingMotor | SurfaceType.SmoothNoOutlines;
 	export namespace SwipeDirection {
 		export interface Right extends EnumItem {
 			Name: "Right";
 			Value: 0;
-			EnumType: EnumType<SwipeDirection>;
+			EnumType: typeof SwipeDirection;
 		}
 
 		export const Right: Right;
@@ -14686,7 +14685,7 @@ declare namespace Enum {
 		export interface Left extends EnumItem {
 			Name: "Left";
 			Value: 1;
-			EnumType: EnumType<SwipeDirection>;
+			EnumType: typeof SwipeDirection;
 		}
 
 		export const Left: Left;
@@ -14694,7 +14693,7 @@ declare namespace Enum {
 		export interface Up extends EnumItem {
 			Name: "Up";
 			Value: 2;
-			EnumType: EnumType<SwipeDirection>;
+			EnumType: typeof SwipeDirection;
 		}
 
 		export const Up: Up;
@@ -14702,7 +14701,7 @@ declare namespace Enum {
 		export interface Down extends EnumItem {
 			Name: "Down";
 			Value: 3;
-			EnumType: EnumType<SwipeDirection>;
+			EnumType: typeof SwipeDirection;
 		}
 
 		export const Down: Down;
@@ -14710,19 +14709,19 @@ declare namespace Enum {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 4;
-			EnumType: EnumType<SwipeDirection>;
+			EnumType: typeof SwipeDirection;
 		}
 
 		export const None: None;
 
-		export function GetEnumItems(this: defined): Array<SwipeDirection>
+		export function GetEnumItems(): Array<SwipeDirection>
 	}
 	export type SwipeDirection = SwipeDirection.Right | SwipeDirection.Left | SwipeDirection.Up | SwipeDirection.Down | SwipeDirection.None;
 	export namespace TableMajorAxis {
 		export interface RowMajor extends EnumItem {
 			Name: "RowMajor";
 			Value: 0;
-			EnumType: EnumType<TableMajorAxis>;
+			EnumType: typeof TableMajorAxis;
 		}
 
 		export const RowMajor: RowMajor;
@@ -14730,19 +14729,19 @@ declare namespace Enum {
 		export interface ColumnMajor extends EnumItem {
 			Name: "ColumnMajor";
 			Value: 1;
-			EnumType: EnumType<TableMajorAxis>;
+			EnumType: typeof TableMajorAxis;
 		}
 
 		export const ColumnMajor: ColumnMajor;
 
-		export function GetEnumItems(this: defined): Array<TableMajorAxis>
+		export function GetEnumItems(): Array<TableMajorAxis>
 	}
 	export type TableMajorAxis = TableMajorAxis.RowMajor | TableMajorAxis.ColumnMajor;
 	export namespace Technology {
 		export interface Compatibility extends EnumItem {
 			Name: "Compatibility";
 			Value: 2;
-			EnumType: EnumType<Technology>;
+			EnumType: typeof Technology;
 		}
 
 		export const Compatibility: Compatibility;
@@ -14750,7 +14749,7 @@ declare namespace Enum {
 		export interface Voxel extends EnumItem {
 			Name: "Voxel";
 			Value: 1;
-			EnumType: EnumType<Technology>;
+			EnumType: typeof Technology;
 		}
 
 		export const Voxel: Voxel;
@@ -14758,7 +14757,7 @@ declare namespace Enum {
 		export interface ShadowMap extends EnumItem {
 			Name: "ShadowMap";
 			Value: 3;
-			EnumType: EnumType<Technology>;
+			EnumType: typeof Technology;
 		}
 
 		export const ShadowMap: ShadowMap;
@@ -14766,7 +14765,7 @@ declare namespace Enum {
 		export interface Legacy extends EnumItem {
 			Name: "Legacy";
 			Value: 0;
-			EnumType: EnumType<Technology>;
+			EnumType: typeof Technology;
 		}
 
 		export const Legacy: Legacy;
@@ -14774,19 +14773,19 @@ declare namespace Enum {
 		export interface Future extends EnumItem {
 			Name: "Future";
 			Value: 4;
-			EnumType: EnumType<Technology>;
+			EnumType: typeof Technology;
 		}
 
 		export const Future: Future;
 
-		export function GetEnumItems(this: defined): Array<Technology>
+		export function GetEnumItems(): Array<Technology>
 	}
 	export type Technology = Technology.Compatibility | Technology.Voxel | Technology.ShadowMap | Technology.Legacy | Technology.Future;
 	export namespace TeleportMethod {
 		export interface TeleportToSpawnByName extends EnumItem {
 			Name: "TeleportToSpawnByName";
 			Value: 0;
-			EnumType: EnumType<TeleportMethod>;
+			EnumType: typeof TeleportMethod;
 		}
 
 		export const TeleportToSpawnByName: TeleportToSpawnByName;
@@ -14794,7 +14793,7 @@ declare namespace Enum {
 		export interface TeleportToPlaceInstance extends EnumItem {
 			Name: "TeleportToPlaceInstance";
 			Value: 1;
-			EnumType: EnumType<TeleportMethod>;
+			EnumType: typeof TeleportMethod;
 		}
 
 		export const TeleportToPlaceInstance: TeleportToPlaceInstance;
@@ -14802,7 +14801,7 @@ declare namespace Enum {
 		export interface TeleportToPrivateServer extends EnumItem {
 			Name: "TeleportToPrivateServer";
 			Value: 2;
-			EnumType: EnumType<TeleportMethod>;
+			EnumType: typeof TeleportMethod;
 		}
 
 		export const TeleportToPrivateServer: TeleportToPrivateServer;
@@ -14810,7 +14809,7 @@ declare namespace Enum {
 		export interface TeleportPartyAsync extends EnumItem {
 			Name: "TeleportPartyAsync";
 			Value: 3;
-			EnumType: EnumType<TeleportMethod>;
+			EnumType: typeof TeleportMethod;
 		}
 
 		export const TeleportPartyAsync: TeleportPartyAsync;
@@ -14818,19 +14817,19 @@ declare namespace Enum {
 		export interface TeleportUnknown extends EnumItem {
 			Name: "TeleportUnknown";
 			Value: 4;
-			EnumType: EnumType<TeleportMethod>;
+			EnumType: typeof TeleportMethod;
 		}
 
 		export const TeleportUnknown: TeleportUnknown;
 
-		export function GetEnumItems(this: defined): Array<TeleportMethod>
+		export function GetEnumItems(): Array<TeleportMethod>
 	}
 	export type TeleportMethod = TeleportMethod.TeleportToSpawnByName | TeleportMethod.TeleportToPlaceInstance | TeleportMethod.TeleportToPrivateServer | TeleportMethod.TeleportPartyAsync | TeleportMethod.TeleportUnknown;
 	export namespace TeleportResult {
 		export interface Success extends EnumItem {
 			Name: "Success";
 			Value: 0;
-			EnumType: EnumType<TeleportResult>;
+			EnumType: typeof TeleportResult;
 		}
 
 		export const Success: Success;
@@ -14838,7 +14837,7 @@ declare namespace Enum {
 		export interface Failure extends EnumItem {
 			Name: "Failure";
 			Value: 1;
-			EnumType: EnumType<TeleportResult>;
+			EnumType: typeof TeleportResult;
 		}
 
 		export const Failure: Failure;
@@ -14846,7 +14845,7 @@ declare namespace Enum {
 		export interface GameNotFound extends EnumItem {
 			Name: "GameNotFound";
 			Value: 2;
-			EnumType: EnumType<TeleportResult>;
+			EnumType: typeof TeleportResult;
 		}
 
 		export const GameNotFound: GameNotFound;
@@ -14854,7 +14853,7 @@ declare namespace Enum {
 		export interface GameEnded extends EnumItem {
 			Name: "GameEnded";
 			Value: 3;
-			EnumType: EnumType<TeleportResult>;
+			EnumType: typeof TeleportResult;
 		}
 
 		export const GameEnded: GameEnded;
@@ -14862,7 +14861,7 @@ declare namespace Enum {
 		export interface GameFull extends EnumItem {
 			Name: "GameFull";
 			Value: 4;
-			EnumType: EnumType<TeleportResult>;
+			EnumType: typeof TeleportResult;
 		}
 
 		export const GameFull: GameFull;
@@ -14870,7 +14869,7 @@ declare namespace Enum {
 		export interface Unauthorized extends EnumItem {
 			Name: "Unauthorized";
 			Value: 5;
-			EnumType: EnumType<TeleportResult>;
+			EnumType: typeof TeleportResult;
 		}
 
 		export const Unauthorized: Unauthorized;
@@ -14878,7 +14877,7 @@ declare namespace Enum {
 		export interface Flooded extends EnumItem {
 			Name: "Flooded";
 			Value: 6;
-			EnumType: EnumType<TeleportResult>;
+			EnumType: typeof TeleportResult;
 		}
 
 		export const Flooded: Flooded;
@@ -14886,19 +14885,19 @@ declare namespace Enum {
 		export interface IsTeleporting extends EnumItem {
 			Name: "IsTeleporting";
 			Value: 7;
-			EnumType: EnumType<TeleportResult>;
+			EnumType: typeof TeleportResult;
 		}
 
 		export const IsTeleporting: IsTeleporting;
 
-		export function GetEnumItems(this: defined): Array<TeleportResult>
+		export function GetEnumItems(): Array<TeleportResult>
 	}
 	export type TeleportResult = TeleportResult.Success | TeleportResult.Failure | TeleportResult.GameNotFound | TeleportResult.GameEnded | TeleportResult.GameFull | TeleportResult.Unauthorized | TeleportResult.Flooded | TeleportResult.IsTeleporting;
 	export namespace TeleportState {
 		export interface RequestedFromServer extends EnumItem {
 			Name: "RequestedFromServer";
 			Value: 0;
-			EnumType: EnumType<TeleportState>;
+			EnumType: typeof TeleportState;
 		}
 
 		export const RequestedFromServer: RequestedFromServer;
@@ -14906,7 +14905,7 @@ declare namespace Enum {
 		export interface Started extends EnumItem {
 			Name: "Started";
 			Value: 1;
-			EnumType: EnumType<TeleportState>;
+			EnumType: typeof TeleportState;
 		}
 
 		export const Started: Started;
@@ -14914,7 +14913,7 @@ declare namespace Enum {
 		export interface WaitingForServer extends EnumItem {
 			Name: "WaitingForServer";
 			Value: 2;
-			EnumType: EnumType<TeleportState>;
+			EnumType: typeof TeleportState;
 		}
 
 		export const WaitingForServer: WaitingForServer;
@@ -14922,7 +14921,7 @@ declare namespace Enum {
 		export interface Failed extends EnumItem {
 			Name: "Failed";
 			Value: 3;
-			EnumType: EnumType<TeleportState>;
+			EnumType: typeof TeleportState;
 		}
 
 		export const Failed: Failed;
@@ -14930,19 +14929,19 @@ declare namespace Enum {
 		export interface InProgress extends EnumItem {
 			Name: "InProgress";
 			Value: 4;
-			EnumType: EnumType<TeleportState>;
+			EnumType: typeof TeleportState;
 		}
 
 		export const InProgress: InProgress;
 
-		export function GetEnumItems(this: defined): Array<TeleportState>
+		export function GetEnumItems(): Array<TeleportState>
 	}
 	export type TeleportState = TeleportState.RequestedFromServer | TeleportState.Started | TeleportState.WaitingForServer | TeleportState.Failed | TeleportState.InProgress;
 	export namespace TeleportType {
 		export interface ToPlace extends EnumItem {
 			Name: "ToPlace";
 			Value: 0;
-			EnumType: EnumType<TeleportType>;
+			EnumType: typeof TeleportType;
 		}
 
 		export const ToPlace: ToPlace;
@@ -14950,7 +14949,7 @@ declare namespace Enum {
 		export interface ToInstance extends EnumItem {
 			Name: "ToInstance";
 			Value: 1;
-			EnumType: EnumType<TeleportType>;
+			EnumType: typeof TeleportType;
 		}
 
 		export const ToInstance: ToInstance;
@@ -14958,19 +14957,19 @@ declare namespace Enum {
 		export interface ToReservedServer extends EnumItem {
 			Name: "ToReservedServer";
 			Value: 2;
-			EnumType: EnumType<TeleportType>;
+			EnumType: typeof TeleportType;
 		}
 
 		export const ToReservedServer: ToReservedServer;
 
-		export function GetEnumItems(this: defined): Array<TeleportType>
+		export function GetEnumItems(): Array<TeleportType>
 	}
 	export type TeleportType = TeleportType.ToPlace | TeleportType.ToInstance | TeleportType.ToReservedServer;
 	export namespace TerrainAcquisitionMethod {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<TerrainAcquisitionMethod>;
+			EnumType: typeof TerrainAcquisitionMethod;
 		}
 
 		export const None: None;
@@ -14978,7 +14977,7 @@ declare namespace Enum {
 		export interface Legacy extends EnumItem {
 			Name: "Legacy";
 			Value: 1;
-			EnumType: EnumType<TerrainAcquisitionMethod>;
+			EnumType: typeof TerrainAcquisitionMethod;
 		}
 
 		export const Legacy: Legacy;
@@ -14986,7 +14985,7 @@ declare namespace Enum {
 		export interface Template extends EnumItem {
 			Name: "Template";
 			Value: 2;
-			EnumType: EnumType<TerrainAcquisitionMethod>;
+			EnumType: typeof TerrainAcquisitionMethod;
 		}
 
 		export const Template: Template;
@@ -14994,7 +14993,7 @@ declare namespace Enum {
 		export interface Generate extends EnumItem {
 			Name: "Generate";
 			Value: 3;
-			EnumType: EnumType<TerrainAcquisitionMethod>;
+			EnumType: typeof TerrainAcquisitionMethod;
 		}
 
 		export const Generate: Generate;
@@ -15002,7 +15001,7 @@ declare namespace Enum {
 		export interface Import extends EnumItem {
 			Name: "Import";
 			Value: 4;
-			EnumType: EnumType<TerrainAcquisitionMethod>;
+			EnumType: typeof TerrainAcquisitionMethod;
 		}
 
 		export const Import: Import;
@@ -15010,7 +15009,7 @@ declare namespace Enum {
 		export interface Convert extends EnumItem {
 			Name: "Convert";
 			Value: 5;
-			EnumType: EnumType<TerrainAcquisitionMethod>;
+			EnumType: typeof TerrainAcquisitionMethod;
 		}
 
 		export const Convert: Convert;
@@ -15018,7 +15017,7 @@ declare namespace Enum {
 		export interface EditAddTool extends EnumItem {
 			Name: "EditAddTool";
 			Value: 6;
-			EnumType: EnumType<TerrainAcquisitionMethod>;
+			EnumType: typeof TerrainAcquisitionMethod;
 		}
 
 		export const EditAddTool: EditAddTool;
@@ -15026,7 +15025,7 @@ declare namespace Enum {
 		export interface EditSeaLevelTool extends EnumItem {
 			Name: "EditSeaLevelTool";
 			Value: 7;
-			EnumType: EnumType<TerrainAcquisitionMethod>;
+			EnumType: typeof TerrainAcquisitionMethod;
 		}
 
 		export const EditSeaLevelTool: EditSeaLevelTool;
@@ -15034,7 +15033,7 @@ declare namespace Enum {
 		export interface EditReplaceTool extends EnumItem {
 			Name: "EditReplaceTool";
 			Value: 8;
-			EnumType: EnumType<TerrainAcquisitionMethod>;
+			EnumType: typeof TerrainAcquisitionMethod;
 		}
 
 		export const EditReplaceTool: EditReplaceTool;
@@ -15042,7 +15041,7 @@ declare namespace Enum {
 		export interface RegionFillTool extends EnumItem {
 			Name: "RegionFillTool";
 			Value: 9;
-			EnumType: EnumType<TerrainAcquisitionMethod>;
+			EnumType: typeof TerrainAcquisitionMethod;
 		}
 
 		export const RegionFillTool: RegionFillTool;
@@ -15050,7 +15049,7 @@ declare namespace Enum {
 		export interface RegionPasteTool extends EnumItem {
 			Name: "RegionPasteTool";
 			Value: 10;
-			EnumType: EnumType<TerrainAcquisitionMethod>;
+			EnumType: typeof TerrainAcquisitionMethod;
 		}
 
 		export const RegionPasteTool: RegionPasteTool;
@@ -15058,19 +15057,19 @@ declare namespace Enum {
 		export interface Other extends EnumItem {
 			Name: "Other";
 			Value: 11;
-			EnumType: EnumType<TerrainAcquisitionMethod>;
+			EnumType: typeof TerrainAcquisitionMethod;
 		}
 
 		export const Other: Other;
 
-		export function GetEnumItems(this: defined): Array<TerrainAcquisitionMethod>
+		export function GetEnumItems(): Array<TerrainAcquisitionMethod>
 	}
 	export type TerrainAcquisitionMethod = TerrainAcquisitionMethod.None | TerrainAcquisitionMethod.Legacy | TerrainAcquisitionMethod.Template | TerrainAcquisitionMethod.Generate | TerrainAcquisitionMethod.Import | TerrainAcquisitionMethod.Convert | TerrainAcquisitionMethod.EditAddTool | TerrainAcquisitionMethod.EditSeaLevelTool | TerrainAcquisitionMethod.EditReplaceTool | TerrainAcquisitionMethod.RegionFillTool | TerrainAcquisitionMethod.RegionPasteTool | TerrainAcquisitionMethod.Other;
 	export namespace TerrainFace {
 		export interface Top extends EnumItem {
 			Name: "Top";
 			Value: 0;
-			EnumType: EnumType<TerrainFace>;
+			EnumType: typeof TerrainFace;
 		}
 
 		export const Top: Top;
@@ -15078,7 +15077,7 @@ declare namespace Enum {
 		export interface Side extends EnumItem {
 			Name: "Side";
 			Value: 1;
-			EnumType: EnumType<TerrainFace>;
+			EnumType: typeof TerrainFace;
 		}
 
 		export const Side: Side;
@@ -15086,19 +15085,19 @@ declare namespace Enum {
 		export interface Bottom extends EnumItem {
 			Name: "Bottom";
 			Value: 2;
-			EnumType: EnumType<TerrainFace>;
+			EnumType: typeof TerrainFace;
 		}
 
 		export const Bottom: Bottom;
 
-		export function GetEnumItems(this: defined): Array<TerrainFace>
+		export function GetEnumItems(): Array<TerrainFace>
 	}
 	export type TerrainFace = TerrainFace.Top | TerrainFace.Side | TerrainFace.Bottom;
 	export namespace TextChatMessageStatus {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 1;
-			EnumType: EnumType<TextChatMessageStatus>;
+			EnumType: typeof TextChatMessageStatus;
 		}
 
 		export const Unknown: Unknown;
@@ -15106,7 +15105,7 @@ declare namespace Enum {
 		export interface Success extends EnumItem {
 			Name: "Success";
 			Value: 2;
-			EnumType: EnumType<TextChatMessageStatus>;
+			EnumType: typeof TextChatMessageStatus;
 		}
 
 		export const Success: Success;
@@ -15114,7 +15113,7 @@ declare namespace Enum {
 		export interface Sending extends EnumItem {
 			Name: "Sending";
 			Value: 3;
-			EnumType: EnumType<TextChatMessageStatus>;
+			EnumType: typeof TextChatMessageStatus;
 		}
 
 		export const Sending: Sending;
@@ -15122,7 +15121,7 @@ declare namespace Enum {
 		export interface TextFilterFailed extends EnumItem {
 			Name: "TextFilterFailed";
 			Value: 4;
-			EnumType: EnumType<TextChatMessageStatus>;
+			EnumType: typeof TextChatMessageStatus;
 		}
 
 		export const TextFilterFailed: TextFilterFailed;
@@ -15130,7 +15129,7 @@ declare namespace Enum {
 		export interface Floodchecked extends EnumItem {
 			Name: "Floodchecked";
 			Value: 5;
-			EnumType: EnumType<TextChatMessageStatus>;
+			EnumType: typeof TextChatMessageStatus;
 		}
 
 		export const Floodchecked: Floodchecked;
@@ -15138,7 +15137,7 @@ declare namespace Enum {
 		export interface InvalidPrivacySettings extends EnumItem {
 			Name: "InvalidPrivacySettings";
 			Value: 6;
-			EnumType: EnumType<TextChatMessageStatus>;
+			EnumType: typeof TextChatMessageStatus;
 		}
 
 		export const InvalidPrivacySettings: InvalidPrivacySettings;
@@ -15146,7 +15145,7 @@ declare namespace Enum {
 		export interface InvalidTextChannelPermissions extends EnumItem {
 			Name: "InvalidTextChannelPermissions";
 			Value: 7;
-			EnumType: EnumType<TextChatMessageStatus>;
+			EnumType: typeof TextChatMessageStatus;
 		}
 
 		export const InvalidTextChannelPermissions: InvalidTextChannelPermissions;
@@ -15154,19 +15153,19 @@ declare namespace Enum {
 		export interface MessageTooLong extends EnumItem {
 			Name: "MessageTooLong";
 			Value: 8;
-			EnumType: EnumType<TextChatMessageStatus>;
+			EnumType: typeof TextChatMessageStatus;
 		}
 
 		export const MessageTooLong: MessageTooLong;
 
-		export function GetEnumItems(this: defined): Array<TextChatMessageStatus>
+		export function GetEnumItems(): Array<TextChatMessageStatus>
 	}
 	export type TextChatMessageStatus = TextChatMessageStatus.Unknown | TextChatMessageStatus.Success | TextChatMessageStatus.Sending | TextChatMessageStatus.TextFilterFailed | TextChatMessageStatus.Floodchecked | TextChatMessageStatus.InvalidPrivacySettings | TextChatMessageStatus.InvalidTextChannelPermissions | TextChatMessageStatus.MessageTooLong;
 	export namespace TextFilterContext {
 		export interface PublicChat extends EnumItem {
 			Name: "PublicChat";
 			Value: 1;
-			EnumType: EnumType<TextFilterContext>;
+			EnumType: typeof TextFilterContext;
 		}
 
 		export const PublicChat: PublicChat;
@@ -15174,19 +15173,19 @@ declare namespace Enum {
 		export interface PrivateChat extends EnumItem {
 			Name: "PrivateChat";
 			Value: 2;
-			EnumType: EnumType<TextFilterContext>;
+			EnumType: typeof TextFilterContext;
 		}
 
 		export const PrivateChat: PrivateChat;
 
-		export function GetEnumItems(this: defined): Array<TextFilterContext>
+		export function GetEnumItems(): Array<TextFilterContext>
 	}
 	export type TextFilterContext = TextFilterContext.PublicChat | TextFilterContext.PrivateChat;
 	export namespace TextInputType {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<TextInputType>;
+			EnumType: typeof TextInputType;
 		}
 
 		export const Default: Default;
@@ -15194,7 +15193,7 @@ declare namespace Enum {
 		export interface NoSuggestions extends EnumItem {
 			Name: "NoSuggestions";
 			Value: 1;
-			EnumType: EnumType<TextInputType>;
+			EnumType: typeof TextInputType;
 		}
 
 		export const NoSuggestions: NoSuggestions;
@@ -15202,7 +15201,7 @@ declare namespace Enum {
 		export interface Number extends EnumItem {
 			Name: "Number";
 			Value: 2;
-			EnumType: EnumType<TextInputType>;
+			EnumType: typeof TextInputType;
 		}
 
 		export const Number: Number;
@@ -15210,7 +15209,7 @@ declare namespace Enum {
 		export interface Email extends EnumItem {
 			Name: "Email";
 			Value: 3;
-			EnumType: EnumType<TextInputType>;
+			EnumType: typeof TextInputType;
 		}
 
 		export const Email: Email;
@@ -15218,7 +15217,7 @@ declare namespace Enum {
 		export interface Phone extends EnumItem {
 			Name: "Phone";
 			Value: 4;
-			EnumType: EnumType<TextInputType>;
+			EnumType: typeof TextInputType;
 		}
 
 		export const Phone: Phone;
@@ -15226,7 +15225,7 @@ declare namespace Enum {
 		export interface Password extends EnumItem {
 			Name: "Password";
 			Value: 5;
-			EnumType: EnumType<TextInputType>;
+			EnumType: typeof TextInputType;
 		}
 
 		export const Password: Password;
@@ -15234,7 +15233,7 @@ declare namespace Enum {
 		export interface PasswordShown extends EnumItem {
 			Name: "PasswordShown";
 			Value: 6;
-			EnumType: EnumType<TextInputType>;
+			EnumType: typeof TextInputType;
 		}
 
 		export const PasswordShown: PasswordShown;
@@ -15242,7 +15241,7 @@ declare namespace Enum {
 		export interface Username extends EnumItem {
 			Name: "Username";
 			Value: 7;
-			EnumType: EnumType<TextInputType>;
+			EnumType: typeof TextInputType;
 		}
 
 		export const Username: Username;
@@ -15250,19 +15249,19 @@ declare namespace Enum {
 		export interface OneTimePassword extends EnumItem {
 			Name: "OneTimePassword";
 			Value: 8;
-			EnumType: EnumType<TextInputType>;
+			EnumType: typeof TextInputType;
 		}
 
 		export const OneTimePassword: OneTimePassword;
 
-		export function GetEnumItems(this: defined): Array<TextInputType>
+		export function GetEnumItems(): Array<TextInputType>
 	}
 	export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone | TextInputType.Password | TextInputType.PasswordShown | TextInputType.Username | TextInputType.OneTimePassword;
 	export namespace TextTruncate {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<TextTruncate>;
+			EnumType: typeof TextTruncate;
 		}
 
 		export const None: None;
@@ -15270,19 +15269,19 @@ declare namespace Enum {
 		export interface AtEnd extends EnumItem {
 			Name: "AtEnd";
 			Value: 1;
-			EnumType: EnumType<TextTruncate>;
+			EnumType: typeof TextTruncate;
 		}
 
 		export const AtEnd: AtEnd;
 
-		export function GetEnumItems(this: defined): Array<TextTruncate>
+		export function GetEnumItems(): Array<TextTruncate>
 	}
 	export type TextTruncate = TextTruncate.None | TextTruncate.AtEnd;
 	export namespace TextXAlignment {
 		export interface Left extends EnumItem {
 			Name: "Left";
 			Value: 0;
-			EnumType: EnumType<TextXAlignment>;
+			EnumType: typeof TextXAlignment;
 		}
 
 		export const Left: Left;
@@ -15290,7 +15289,7 @@ declare namespace Enum {
 		export interface Center extends EnumItem {
 			Name: "Center";
 			Value: 2;
-			EnumType: EnumType<TextXAlignment>;
+			EnumType: typeof TextXAlignment;
 		}
 
 		export const Center: Center;
@@ -15298,19 +15297,19 @@ declare namespace Enum {
 		export interface Right extends EnumItem {
 			Name: "Right";
 			Value: 1;
-			EnumType: EnumType<TextXAlignment>;
+			EnumType: typeof TextXAlignment;
 		}
 
 		export const Right: Right;
 
-		export function GetEnumItems(this: defined): Array<TextXAlignment>
+		export function GetEnumItems(): Array<TextXAlignment>
 	}
 	export type TextXAlignment = TextXAlignment.Left | TextXAlignment.Center | TextXAlignment.Right;
 	export namespace TextYAlignment {
 		export interface Top extends EnumItem {
 			Name: "Top";
 			Value: 0;
-			EnumType: EnumType<TextYAlignment>;
+			EnumType: typeof TextYAlignment;
 		}
 
 		export const Top: Top;
@@ -15318,7 +15317,7 @@ declare namespace Enum {
 		export interface Center extends EnumItem {
 			Name: "Center";
 			Value: 1;
-			EnumType: EnumType<TextYAlignment>;
+			EnumType: typeof TextYAlignment;
 		}
 
 		export const Center: Center;
@@ -15326,19 +15325,19 @@ declare namespace Enum {
 		export interface Bottom extends EnumItem {
 			Name: "Bottom";
 			Value: 2;
-			EnumType: EnumType<TextYAlignment>;
+			EnumType: typeof TextYAlignment;
 		}
 
 		export const Bottom: Bottom;
 
-		export function GetEnumItems(this: defined): Array<TextYAlignment>
+		export function GetEnumItems(): Array<TextYAlignment>
 	}
 	export type TextYAlignment = TextYAlignment.Top | TextYAlignment.Center | TextYAlignment.Bottom;
 	export namespace TextureMode {
 		export interface Stretch extends EnumItem {
 			Name: "Stretch";
 			Value: 0;
-			EnumType: EnumType<TextureMode>;
+			EnumType: typeof TextureMode;
 		}
 
 		export const Stretch: Stretch;
@@ -15346,7 +15345,7 @@ declare namespace Enum {
 		export interface Wrap extends EnumItem {
 			Name: "Wrap";
 			Value: 1;
-			EnumType: EnumType<TextureMode>;
+			EnumType: typeof TextureMode;
 		}
 
 		export const Wrap: Wrap;
@@ -15354,19 +15353,19 @@ declare namespace Enum {
 		export interface Static extends EnumItem {
 			Name: "Static";
 			Value: 2;
-			EnumType: EnumType<TextureMode>;
+			EnumType: typeof TextureMode;
 		}
 
 		export const Static: Static;
 
-		export function GetEnumItems(this: defined): Array<TextureMode>
+		export function GetEnumItems(): Array<TextureMode>
 	}
 	export type TextureMode = TextureMode.Stretch | TextureMode.Wrap | TextureMode.Static;
 	export namespace TextureQueryType {
 		export interface NonHumanoid extends EnumItem {
 			Name: "NonHumanoid";
 			Value: 0;
-			EnumType: EnumType<TextureQueryType>;
+			EnumType: typeof TextureQueryType;
 		}
 
 		export const NonHumanoid: NonHumanoid;
@@ -15374,7 +15373,7 @@ declare namespace Enum {
 		export interface NonHumanoidOrphaned extends EnumItem {
 			Name: "NonHumanoidOrphaned";
 			Value: 1;
-			EnumType: EnumType<TextureQueryType>;
+			EnumType: typeof TextureQueryType;
 		}
 
 		export const NonHumanoidOrphaned: NonHumanoidOrphaned;
@@ -15382,7 +15381,7 @@ declare namespace Enum {
 		export interface Humanoid extends EnumItem {
 			Name: "Humanoid";
 			Value: 2;
-			EnumType: EnumType<TextureQueryType>;
+			EnumType: typeof TextureQueryType;
 		}
 
 		export const Humanoid: Humanoid;
@@ -15390,19 +15389,19 @@ declare namespace Enum {
 		export interface HumanoidOrphaned extends EnumItem {
 			Name: "HumanoidOrphaned";
 			Value: 3;
-			EnumType: EnumType<TextureQueryType>;
+			EnumType: typeof TextureQueryType;
 		}
 
 		export const HumanoidOrphaned: HumanoidOrphaned;
 
-		export function GetEnumItems(this: defined): Array<TextureQueryType>
+		export function GetEnumItems(): Array<TextureQueryType>
 	}
 	export type TextureQueryType = TextureQueryType.NonHumanoid | TextureQueryType.NonHumanoidOrphaned | TextureQueryType.Humanoid | TextureQueryType.HumanoidOrphaned;
 	export namespace ThreadPoolConfig {
 		export interface Auto extends EnumItem {
 			Name: "Auto";
 			Value: 0;
-			EnumType: EnumType<ThreadPoolConfig>;
+			EnumType: typeof ThreadPoolConfig;
 		}
 
 		export const Auto: Auto;
@@ -15410,7 +15409,7 @@ declare namespace Enum {
 		export interface PerCore1 extends EnumItem {
 			Name: "PerCore1";
 			Value: 101;
-			EnumType: EnumType<ThreadPoolConfig>;
+			EnumType: typeof ThreadPoolConfig;
 		}
 
 		export const PerCore1: PerCore1;
@@ -15418,7 +15417,7 @@ declare namespace Enum {
 		export interface PerCore2 extends EnumItem {
 			Name: "PerCore2";
 			Value: 102;
-			EnumType: EnumType<ThreadPoolConfig>;
+			EnumType: typeof ThreadPoolConfig;
 		}
 
 		export const PerCore2: PerCore2;
@@ -15426,7 +15425,7 @@ declare namespace Enum {
 		export interface PerCore3 extends EnumItem {
 			Name: "PerCore3";
 			Value: 103;
-			EnumType: EnumType<ThreadPoolConfig>;
+			EnumType: typeof ThreadPoolConfig;
 		}
 
 		export const PerCore3: PerCore3;
@@ -15434,7 +15433,7 @@ declare namespace Enum {
 		export interface PerCore4 extends EnumItem {
 			Name: "PerCore4";
 			Value: 104;
-			EnumType: EnumType<ThreadPoolConfig>;
+			EnumType: typeof ThreadPoolConfig;
 		}
 
 		export const PerCore4: PerCore4;
@@ -15442,7 +15441,7 @@ declare namespace Enum {
 		export interface Threads1 extends EnumItem {
 			Name: "Threads1";
 			Value: 1;
-			EnumType: EnumType<ThreadPoolConfig>;
+			EnumType: typeof ThreadPoolConfig;
 		}
 
 		export const Threads1: Threads1;
@@ -15450,7 +15449,7 @@ declare namespace Enum {
 		export interface Threads2 extends EnumItem {
 			Name: "Threads2";
 			Value: 2;
-			EnumType: EnumType<ThreadPoolConfig>;
+			EnumType: typeof ThreadPoolConfig;
 		}
 
 		export const Threads2: Threads2;
@@ -15458,7 +15457,7 @@ declare namespace Enum {
 		export interface Threads3 extends EnumItem {
 			Name: "Threads3";
 			Value: 3;
-			EnumType: EnumType<ThreadPoolConfig>;
+			EnumType: typeof ThreadPoolConfig;
 		}
 
 		export const Threads3: Threads3;
@@ -15466,7 +15465,7 @@ declare namespace Enum {
 		export interface Threads4 extends EnumItem {
 			Name: "Threads4";
 			Value: 4;
-			EnumType: EnumType<ThreadPoolConfig>;
+			EnumType: typeof ThreadPoolConfig;
 		}
 
 		export const Threads4: Threads4;
@@ -15474,7 +15473,7 @@ declare namespace Enum {
 		export interface Threads8 extends EnumItem {
 			Name: "Threads8";
 			Value: 8;
-			EnumType: EnumType<ThreadPoolConfig>;
+			EnumType: typeof ThreadPoolConfig;
 		}
 
 		export const Threads8: Threads8;
@@ -15482,19 +15481,19 @@ declare namespace Enum {
 		export interface Threads16 extends EnumItem {
 			Name: "Threads16";
 			Value: 16;
-			EnumType: EnumType<ThreadPoolConfig>;
+			EnumType: typeof ThreadPoolConfig;
 		}
 
 		export const Threads16: Threads16;
 
-		export function GetEnumItems(this: defined): Array<ThreadPoolConfig>
+		export function GetEnumItems(): Array<ThreadPoolConfig>
 	}
 	export type ThreadPoolConfig = ThreadPoolConfig.Auto | ThreadPoolConfig.PerCore1 | ThreadPoolConfig.PerCore2 | ThreadPoolConfig.PerCore3 | ThreadPoolConfig.PerCore4 | ThreadPoolConfig.Threads1 | ThreadPoolConfig.Threads2 | ThreadPoolConfig.Threads3 | ThreadPoolConfig.Threads4 | ThreadPoolConfig.Threads8 | ThreadPoolConfig.Threads16;
 	export namespace ThrottlingPriority {
 		export interface Extreme extends EnumItem {
 			Name: "Extreme";
 			Value: 2;
-			EnumType: EnumType<ThrottlingPriority>;
+			EnumType: typeof ThrottlingPriority;
 		}
 
 		export const Extreme: Extreme;
@@ -15502,7 +15501,7 @@ declare namespace Enum {
 		export interface ElevatedOnServer extends EnumItem {
 			Name: "ElevatedOnServer";
 			Value: 1;
-			EnumType: EnumType<ThrottlingPriority>;
+			EnumType: typeof ThrottlingPriority;
 		}
 
 		export const ElevatedOnServer: ElevatedOnServer;
@@ -15510,19 +15509,19 @@ declare namespace Enum {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<ThrottlingPriority>;
+			EnumType: typeof ThrottlingPriority;
 		}
 
 		export const Default: Default;
 
-		export function GetEnumItems(this: defined): Array<ThrottlingPriority>
+		export function GetEnumItems(): Array<ThrottlingPriority>
 	}
 	export type ThrottlingPriority = ThrottlingPriority.Extreme | ThrottlingPriority.ElevatedOnServer | ThrottlingPriority.Default;
 	export namespace ThumbnailSize {
 		export interface Size48x48 extends EnumItem {
 			Name: "Size48x48";
 			Value: 0;
-			EnumType: EnumType<ThumbnailSize>;
+			EnumType: typeof ThumbnailSize;
 		}
 
 		export const Size48x48: Size48x48;
@@ -15530,7 +15529,7 @@ declare namespace Enum {
 		export interface Size180x180 extends EnumItem {
 			Name: "Size180x180";
 			Value: 1;
-			EnumType: EnumType<ThumbnailSize>;
+			EnumType: typeof ThumbnailSize;
 		}
 
 		export const Size180x180: Size180x180;
@@ -15538,7 +15537,7 @@ declare namespace Enum {
 		export interface Size420x420 extends EnumItem {
 			Name: "Size420x420";
 			Value: 2;
-			EnumType: EnumType<ThumbnailSize>;
+			EnumType: typeof ThumbnailSize;
 		}
 
 		export const Size420x420: Size420x420;
@@ -15546,7 +15545,7 @@ declare namespace Enum {
 		export interface Size60x60 extends EnumItem {
 			Name: "Size60x60";
 			Value: 3;
-			EnumType: EnumType<ThumbnailSize>;
+			EnumType: typeof ThumbnailSize;
 		}
 
 		export const Size60x60: Size60x60;
@@ -15554,7 +15553,7 @@ declare namespace Enum {
 		export interface Size100x100 extends EnumItem {
 			Name: "Size100x100";
 			Value: 4;
-			EnumType: EnumType<ThumbnailSize>;
+			EnumType: typeof ThumbnailSize;
 		}
 
 		export const Size100x100: Size100x100;
@@ -15562,7 +15561,7 @@ declare namespace Enum {
 		export interface Size150x150 extends EnumItem {
 			Name: "Size150x150";
 			Value: 5;
-			EnumType: EnumType<ThumbnailSize>;
+			EnumType: typeof ThumbnailSize;
 		}
 
 		export const Size150x150: Size150x150;
@@ -15570,19 +15569,19 @@ declare namespace Enum {
 		export interface Size352x352 extends EnumItem {
 			Name: "Size352x352";
 			Value: 6;
-			EnumType: EnumType<ThumbnailSize>;
+			EnumType: typeof ThumbnailSize;
 		}
 
 		export const Size352x352: Size352x352;
 
-		export function GetEnumItems(this: defined): Array<ThumbnailSize>
+		export function GetEnumItems(): Array<ThumbnailSize>
 	}
 	export type ThumbnailSize = ThumbnailSize.Size48x48 | ThumbnailSize.Size180x180 | ThumbnailSize.Size420x420 | ThumbnailSize.Size60x60 | ThumbnailSize.Size100x100 | ThumbnailSize.Size150x150 | ThumbnailSize.Size352x352;
 	export namespace ThumbnailType {
 		export interface HeadShot extends EnumItem {
 			Name: "HeadShot";
 			Value: 0;
-			EnumType: EnumType<ThumbnailType>;
+			EnumType: typeof ThumbnailType;
 		}
 
 		export const HeadShot: HeadShot;
@@ -15590,7 +15589,7 @@ declare namespace Enum {
 		export interface AvatarBust extends EnumItem {
 			Name: "AvatarBust";
 			Value: 1;
-			EnumType: EnumType<ThumbnailType>;
+			EnumType: typeof ThumbnailType;
 		}
 
 		export const AvatarBust: AvatarBust;
@@ -15598,19 +15597,19 @@ declare namespace Enum {
 		export interface AvatarThumbnail extends EnumItem {
 			Name: "AvatarThumbnail";
 			Value: 2;
-			EnumType: EnumType<ThumbnailType>;
+			EnumType: typeof ThumbnailType;
 		}
 
 		export const AvatarThumbnail: AvatarThumbnail;
 
-		export function GetEnumItems(this: defined): Array<ThumbnailType>
+		export function GetEnumItems(): Array<ThumbnailType>
 	}
 	export type ThumbnailType = ThumbnailType.HeadShot | ThumbnailType.AvatarBust | ThumbnailType.AvatarThumbnail;
 	export namespace TickCountSampleMethod {
 		export interface Fast extends EnumItem {
 			Name: "Fast";
 			Value: 0;
-			EnumType: EnumType<TickCountSampleMethod>;
+			EnumType: typeof TickCountSampleMethod;
 		}
 
 		export const Fast: Fast;
@@ -15618,7 +15617,7 @@ declare namespace Enum {
 		export interface Benchmark extends EnumItem {
 			Name: "Benchmark";
 			Value: 1;
-			EnumType: EnumType<TickCountSampleMethod>;
+			EnumType: typeof TickCountSampleMethod;
 		}
 
 		export const Benchmark: Benchmark;
@@ -15626,19 +15625,19 @@ declare namespace Enum {
 		export interface Precise extends EnumItem {
 			Name: "Precise";
 			Value: 2;
-			EnumType: EnumType<TickCountSampleMethod>;
+			EnumType: typeof TickCountSampleMethod;
 		}
 
 		export const Precise: Precise;
 
-		export function GetEnumItems(this: defined): Array<TickCountSampleMethod>
+		export function GetEnumItems(): Array<TickCountSampleMethod>
 	}
 	export type TickCountSampleMethod = TickCountSampleMethod.Fast | TickCountSampleMethod.Benchmark | TickCountSampleMethod.Precise;
 	export namespace TopBottom {
 		export interface Top extends EnumItem {
 			Name: "Top";
 			Value: 0;
-			EnumType: EnumType<TopBottom>;
+			EnumType: typeof TopBottom;
 		}
 
 		export const Top: Top;
@@ -15646,7 +15645,7 @@ declare namespace Enum {
 		export interface Center extends EnumItem {
 			Name: "Center";
 			Value: 1;
-			EnumType: EnumType<TopBottom>;
+			EnumType: typeof TopBottom;
 		}
 
 		export const Center: Center;
@@ -15654,19 +15653,19 @@ declare namespace Enum {
 		export interface Bottom extends EnumItem {
 			Name: "Bottom";
 			Value: 2;
-			EnumType: EnumType<TopBottom>;
+			EnumType: typeof TopBottom;
 		}
 
 		export const Bottom: Bottom;
 
-		export function GetEnumItems(this: defined): Array<TopBottom>
+		export function GetEnumItems(): Array<TopBottom>
 	}
 	export type TopBottom = TopBottom.Top | TopBottom.Center | TopBottom.Bottom;
 	export namespace TouchCameraMovementMode {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<TouchCameraMovementMode>;
+			EnumType: typeof TouchCameraMovementMode;
 		}
 
 		export const Default: Default;
@@ -15674,7 +15673,7 @@ declare namespace Enum {
 		export interface Follow extends EnumItem {
 			Name: "Follow";
 			Value: 2;
-			EnumType: EnumType<TouchCameraMovementMode>;
+			EnumType: typeof TouchCameraMovementMode;
 		}
 
 		export const Follow: Follow;
@@ -15682,7 +15681,7 @@ declare namespace Enum {
 		export interface Classic extends EnumItem {
 			Name: "Classic";
 			Value: 1;
-			EnumType: EnumType<TouchCameraMovementMode>;
+			EnumType: typeof TouchCameraMovementMode;
 		}
 
 		export const Classic: Classic;
@@ -15690,19 +15689,19 @@ declare namespace Enum {
 		export interface Orbital extends EnumItem {
 			Name: "Orbital";
 			Value: 3;
-			EnumType: EnumType<TouchCameraMovementMode>;
+			EnumType: typeof TouchCameraMovementMode;
 		}
 
 		export const Orbital: Orbital;
 
-		export function GetEnumItems(this: defined): Array<TouchCameraMovementMode>
+		export function GetEnumItems(): Array<TouchCameraMovementMode>
 	}
 	export type TouchCameraMovementMode = TouchCameraMovementMode.Default | TouchCameraMovementMode.Follow | TouchCameraMovementMode.Classic | TouchCameraMovementMode.Orbital;
 	export namespace TouchMovementMode {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<TouchMovementMode>;
+			EnumType: typeof TouchMovementMode;
 		}
 
 		export const Default: Default;
@@ -15710,7 +15709,7 @@ declare namespace Enum {
 		export interface Thumbstick extends EnumItem {
 			Name: "Thumbstick";
 			Value: 1;
-			EnumType: EnumType<TouchMovementMode>;
+			EnumType: typeof TouchMovementMode;
 		}
 
 		export const Thumbstick: Thumbstick;
@@ -15718,7 +15717,7 @@ declare namespace Enum {
 		export interface DPad extends EnumItem {
 			Name: "DPad";
 			Value: 2;
-			EnumType: EnumType<TouchMovementMode>;
+			EnumType: typeof TouchMovementMode;
 		}
 
 		export const DPad: DPad;
@@ -15726,7 +15725,7 @@ declare namespace Enum {
 		export interface Thumbpad extends EnumItem {
 			Name: "Thumbpad";
 			Value: 3;
-			EnumType: EnumType<TouchMovementMode>;
+			EnumType: typeof TouchMovementMode;
 		}
 
 		export const Thumbpad: Thumbpad;
@@ -15734,7 +15733,7 @@ declare namespace Enum {
 		export interface ClickToMove extends EnumItem {
 			Name: "ClickToMove";
 			Value: 4;
-			EnumType: EnumType<TouchMovementMode>;
+			EnumType: typeof TouchMovementMode;
 		}
 
 		export const ClickToMove: ClickToMove;
@@ -15742,19 +15741,19 @@ declare namespace Enum {
 		export interface DynamicThumbstick extends EnumItem {
 			Name: "DynamicThumbstick";
 			Value: 5;
-			EnumType: EnumType<TouchMovementMode>;
+			EnumType: typeof TouchMovementMode;
 		}
 
 		export const DynamicThumbstick: DynamicThumbstick;
 
-		export function GetEnumItems(this: defined): Array<TouchMovementMode>
+		export function GetEnumItems(): Array<TouchMovementMode>
 	}
 	export type TouchMovementMode = TouchMovementMode.Default | TouchMovementMode.Thumbstick | TouchMovementMode.DPad | TouchMovementMode.Thumbpad | TouchMovementMode.ClickToMove | TouchMovementMode.DynamicThumbstick;
 	export namespace TriStateBoolean {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
 			Value: 0;
-			EnumType: EnumType<TriStateBoolean>;
+			EnumType: typeof TriStateBoolean;
 		}
 
 		export const Unknown: Unknown;
@@ -15762,7 +15761,7 @@ declare namespace Enum {
 		export interface True extends EnumItem {
 			Name: "True";
 			Value: 1;
-			EnumType: EnumType<TriStateBoolean>;
+			EnumType: typeof TriStateBoolean;
 		}
 
 		export const True: True;
@@ -15770,19 +15769,19 @@ declare namespace Enum {
 		export interface False extends EnumItem {
 			Name: "False";
 			Value: 2;
-			EnumType: EnumType<TriStateBoolean>;
+			EnumType: typeof TriStateBoolean;
 		}
 
 		export const False: False;
 
-		export function GetEnumItems(this: defined): Array<TriStateBoolean>
+		export function GetEnumItems(): Array<TriStateBoolean>
 	}
 	export type TriStateBoolean = TriStateBoolean.Unknown | TriStateBoolean.True | TriStateBoolean.False;
 	export namespace TweenStatus {
 		export interface Canceled extends EnumItem {
 			Name: "Canceled";
 			Value: 0;
-			EnumType: EnumType<TweenStatus>;
+			EnumType: typeof TweenStatus;
 		}
 
 		export const Canceled: Canceled;
@@ -15790,19 +15789,19 @@ declare namespace Enum {
 		export interface Completed extends EnumItem {
 			Name: "Completed";
 			Value: 1;
-			EnumType: EnumType<TweenStatus>;
+			EnumType: typeof TweenStatus;
 		}
 
 		export const Completed: Completed;
 
-		export function GetEnumItems(this: defined): Array<TweenStatus>
+		export function GetEnumItems(): Array<TweenStatus>
 	}
 	export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
 	export namespace UITheme {
 		export interface Light extends EnumItem {
 			Name: "Light";
 			Value: 0;
-			EnumType: EnumType<UITheme>;
+			EnumType: typeof UITheme;
 		}
 
 		export const Light: Light;
@@ -15810,19 +15809,19 @@ declare namespace Enum {
 		export interface Dark extends EnumItem {
 			Name: "Dark";
 			Value: 1;
-			EnumType: EnumType<UITheme>;
+			EnumType: typeof UITheme;
 		}
 
 		export const Dark: Dark;
 
-		export function GetEnumItems(this: defined): Array<UITheme>
+		export function GetEnumItems(): Array<UITheme>
 	}
 	export type UITheme = UITheme.Light | UITheme.Dark;
 	export namespace UiMessageType {
 		export interface UiMessageError extends EnumItem {
 			Name: "UiMessageError";
 			Value: 0;
-			EnumType: EnumType<UiMessageType>;
+			EnumType: typeof UiMessageType;
 		}
 
 		export const UiMessageError: UiMessageError;
@@ -15830,19 +15829,19 @@ declare namespace Enum {
 		export interface UiMessageInfo extends EnumItem {
 			Name: "UiMessageInfo";
 			Value: 1;
-			EnumType: EnumType<UiMessageType>;
+			EnumType: typeof UiMessageType;
 		}
 
 		export const UiMessageInfo: UiMessageInfo;
 
-		export function GetEnumItems(this: defined): Array<UiMessageType>
+		export function GetEnumItems(): Array<UiMessageType>
 	}
 	export type UiMessageType = UiMessageType.UiMessageError | UiMessageType.UiMessageInfo;
 	export namespace UsageContext {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<UsageContext>;
+			EnumType: typeof UsageContext;
 		}
 
 		export const Default: Default;
@@ -15850,19 +15849,19 @@ declare namespace Enum {
 		export interface Preview extends EnumItem {
 			Name: "Preview";
 			Value: 1;
-			EnumType: EnumType<UsageContext>;
+			EnumType: typeof UsageContext;
 		}
 
 		export const Preview: Preview;
 
-		export function GetEnumItems(this: defined): Array<UsageContext>
+		export function GetEnumItems(): Array<UsageContext>
 	}
 	export type UsageContext = UsageContext.Default | UsageContext.Preview;
 	export namespace UserCFrame {
 		export interface Head extends EnumItem {
 			Name: "Head";
 			Value: 0;
-			EnumType: EnumType<UserCFrame>;
+			EnumType: typeof UserCFrame;
 		}
 
 		export const Head: Head;
@@ -15870,7 +15869,7 @@ declare namespace Enum {
 		export interface LeftHand extends EnumItem {
 			Name: "LeftHand";
 			Value: 1;
-			EnumType: EnumType<UserCFrame>;
+			EnumType: typeof UserCFrame;
 		}
 
 		export const LeftHand: LeftHand;
@@ -15878,19 +15877,19 @@ declare namespace Enum {
 		export interface RightHand extends EnumItem {
 			Name: "RightHand";
 			Value: 2;
-			EnumType: EnumType<UserCFrame>;
+			EnumType: typeof UserCFrame;
 		}
 
 		export const RightHand: RightHand;
 
-		export function GetEnumItems(this: defined): Array<UserCFrame>
+		export function GetEnumItems(): Array<UserCFrame>
 	}
 	export type UserCFrame = UserCFrame.Head | UserCFrame.LeftHand | UserCFrame.RightHand;
 	export namespace UserInputState {
 		export interface Begin extends EnumItem {
 			Name: "Begin";
 			Value: 0;
-			EnumType: EnumType<UserInputState>;
+			EnumType: typeof UserInputState;
 		}
 
 		export const Begin: Begin;
@@ -15898,7 +15897,7 @@ declare namespace Enum {
 		export interface Change extends EnumItem {
 			Name: "Change";
 			Value: 1;
-			EnumType: EnumType<UserInputState>;
+			EnumType: typeof UserInputState;
 		}
 
 		export const Change: Change;
@@ -15906,7 +15905,7 @@ declare namespace Enum {
 		export interface End extends EnumItem {
 			Name: "End";
 			Value: 2;
-			EnumType: EnumType<UserInputState>;
+			EnumType: typeof UserInputState;
 		}
 
 		export const End: End;
@@ -15914,7 +15913,7 @@ declare namespace Enum {
 		export interface Cancel extends EnumItem {
 			Name: "Cancel";
 			Value: 3;
-			EnumType: EnumType<UserInputState>;
+			EnumType: typeof UserInputState;
 		}
 
 		export const Cancel: Cancel;
@@ -15922,19 +15921,19 @@ declare namespace Enum {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 4;
-			EnumType: EnumType<UserInputState>;
+			EnumType: typeof UserInputState;
 		}
 
 		export const None: None;
 
-		export function GetEnumItems(this: defined): Array<UserInputState>
+		export function GetEnumItems(): Array<UserInputState>
 	}
 	export type UserInputState = UserInputState.Begin | UserInputState.Change | UserInputState.End | UserInputState.Cancel | UserInputState.None;
 	export namespace UserInputType {
 		export interface MouseButton1 extends EnumItem {
 			Name: "MouseButton1";
 			Value: 0;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const MouseButton1: MouseButton1;
@@ -15942,7 +15941,7 @@ declare namespace Enum {
 		export interface MouseButton2 extends EnumItem {
 			Name: "MouseButton2";
 			Value: 1;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const MouseButton2: MouseButton2;
@@ -15950,7 +15949,7 @@ declare namespace Enum {
 		export interface MouseButton3 extends EnumItem {
 			Name: "MouseButton3";
 			Value: 2;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const MouseButton3: MouseButton3;
@@ -15958,7 +15957,7 @@ declare namespace Enum {
 		export interface MouseWheel extends EnumItem {
 			Name: "MouseWheel";
 			Value: 3;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const MouseWheel: MouseWheel;
@@ -15966,7 +15965,7 @@ declare namespace Enum {
 		export interface MouseMovement extends EnumItem {
 			Name: "MouseMovement";
 			Value: 4;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const MouseMovement: MouseMovement;
@@ -15974,7 +15973,7 @@ declare namespace Enum {
 		export interface Touch extends EnumItem {
 			Name: "Touch";
 			Value: 7;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Touch: Touch;
@@ -15982,7 +15981,7 @@ declare namespace Enum {
 		export interface Keyboard extends EnumItem {
 			Name: "Keyboard";
 			Value: 8;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Keyboard: Keyboard;
@@ -15990,7 +15989,7 @@ declare namespace Enum {
 		export interface Focus extends EnumItem {
 			Name: "Focus";
 			Value: 9;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Focus: Focus;
@@ -15998,7 +15997,7 @@ declare namespace Enum {
 		export interface Accelerometer extends EnumItem {
 			Name: "Accelerometer";
 			Value: 10;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Accelerometer: Accelerometer;
@@ -16006,7 +16005,7 @@ declare namespace Enum {
 		export interface Gyro extends EnumItem {
 			Name: "Gyro";
 			Value: 11;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Gyro: Gyro;
@@ -16014,7 +16013,7 @@ declare namespace Enum {
 		export interface Gamepad1 extends EnumItem {
 			Name: "Gamepad1";
 			Value: 12;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Gamepad1: Gamepad1;
@@ -16022,7 +16021,7 @@ declare namespace Enum {
 		export interface Gamepad2 extends EnumItem {
 			Name: "Gamepad2";
 			Value: 13;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Gamepad2: Gamepad2;
@@ -16030,7 +16029,7 @@ declare namespace Enum {
 		export interface Gamepad3 extends EnumItem {
 			Name: "Gamepad3";
 			Value: 14;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Gamepad3: Gamepad3;
@@ -16038,7 +16037,7 @@ declare namespace Enum {
 		export interface Gamepad4 extends EnumItem {
 			Name: "Gamepad4";
 			Value: 15;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Gamepad4: Gamepad4;
@@ -16046,7 +16045,7 @@ declare namespace Enum {
 		export interface Gamepad5 extends EnumItem {
 			Name: "Gamepad5";
 			Value: 16;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Gamepad5: Gamepad5;
@@ -16054,7 +16053,7 @@ declare namespace Enum {
 		export interface Gamepad6 extends EnumItem {
 			Name: "Gamepad6";
 			Value: 17;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Gamepad6: Gamepad6;
@@ -16062,7 +16061,7 @@ declare namespace Enum {
 		export interface Gamepad7 extends EnumItem {
 			Name: "Gamepad7";
 			Value: 18;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Gamepad7: Gamepad7;
@@ -16070,7 +16069,7 @@ declare namespace Enum {
 		export interface Gamepad8 extends EnumItem {
 			Name: "Gamepad8";
 			Value: 19;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const Gamepad8: Gamepad8;
@@ -16078,7 +16077,7 @@ declare namespace Enum {
 		export interface TextInput extends EnumItem {
 			Name: "TextInput";
 			Value: 20;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const TextInput: TextInput;
@@ -16086,7 +16085,7 @@ declare namespace Enum {
 		export interface InputMethod extends EnumItem {
 			Name: "InputMethod";
 			Value: 21;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const InputMethod: InputMethod;
@@ -16094,19 +16093,19 @@ declare namespace Enum {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 22;
-			EnumType: EnumType<UserInputType>;
+			EnumType: typeof UserInputType;
 		}
 
 		export const None: None;
 
-		export function GetEnumItems(this: defined): Array<UserInputType>
+		export function GetEnumItems(): Array<UserInputType>
 	}
 	export type UserInputType = UserInputType.MouseButton1 | UserInputType.MouseButton2 | UserInputType.MouseButton3 | UserInputType.MouseWheel | UserInputType.MouseMovement | UserInputType.Touch | UserInputType.Keyboard | UserInputType.Focus | UserInputType.Accelerometer | UserInputType.Gyro | UserInputType.Gamepad1 | UserInputType.Gamepad2 | UserInputType.Gamepad3 | UserInputType.Gamepad4 | UserInputType.Gamepad5 | UserInputType.Gamepad6 | UserInputType.Gamepad7 | UserInputType.Gamepad8 | UserInputType.TextInput | UserInputType.InputMethod | UserInputType.None;
 	export namespace VRTouchpad {
 		export interface Left extends EnumItem {
 			Name: "Left";
 			Value: 0;
-			EnumType: EnumType<VRTouchpad>;
+			EnumType: typeof VRTouchpad;
 		}
 
 		export const Left: Left;
@@ -16114,19 +16113,19 @@ declare namespace Enum {
 		export interface Right extends EnumItem {
 			Name: "Right";
 			Value: 1;
-			EnumType: EnumType<VRTouchpad>;
+			EnumType: typeof VRTouchpad;
 		}
 
 		export const Right: Right;
 
-		export function GetEnumItems(this: defined): Array<VRTouchpad>
+		export function GetEnumItems(): Array<VRTouchpad>
 	}
 	export type VRTouchpad = VRTouchpad.Left | VRTouchpad.Right;
 	export namespace VRTouchpadMode {
 		export interface Touch extends EnumItem {
 			Name: "Touch";
 			Value: 0;
-			EnumType: EnumType<VRTouchpadMode>;
+			EnumType: typeof VRTouchpadMode;
 		}
 
 		export const Touch: Touch;
@@ -16134,7 +16133,7 @@ declare namespace Enum {
 		export interface VirtualThumbstick extends EnumItem {
 			Name: "VirtualThumbstick";
 			Value: 1;
-			EnumType: EnumType<VRTouchpadMode>;
+			EnumType: typeof VRTouchpadMode;
 		}
 
 		export const VirtualThumbstick: VirtualThumbstick;
@@ -16142,19 +16141,19 @@ declare namespace Enum {
 		export interface ABXY extends EnumItem {
 			Name: "ABXY";
 			Value: 2;
-			EnumType: EnumType<VRTouchpadMode>;
+			EnumType: typeof VRTouchpadMode;
 		}
 
 		export const ABXY: ABXY;
 
-		export function GetEnumItems(this: defined): Array<VRTouchpadMode>
+		export function GetEnumItems(): Array<VRTouchpadMode>
 	}
 	export type VRTouchpadMode = VRTouchpadMode.Touch | VRTouchpadMode.VirtualThumbstick | VRTouchpadMode.ABXY;
 	export namespace VelocityConstraintMode {
 		export interface Line extends EnumItem {
 			Name: "Line";
 			Value: 0;
-			EnumType: EnumType<VelocityConstraintMode>;
+			EnumType: typeof VelocityConstraintMode;
 		}
 
 		export const Line: Line;
@@ -16162,7 +16161,7 @@ declare namespace Enum {
 		export interface Plane extends EnumItem {
 			Name: "Plane";
 			Value: 1;
-			EnumType: EnumType<VelocityConstraintMode>;
+			EnumType: typeof VelocityConstraintMode;
 		}
 
 		export const Plane: Plane;
@@ -16170,19 +16169,19 @@ declare namespace Enum {
 		export interface Vector extends EnumItem {
 			Name: "Vector";
 			Value: 2;
-			EnumType: EnumType<VelocityConstraintMode>;
+			EnumType: typeof VelocityConstraintMode;
 		}
 
 		export const Vector: Vector;
 
-		export function GetEnumItems(this: defined): Array<VelocityConstraintMode>
+		export function GetEnumItems(): Array<VelocityConstraintMode>
 	}
 	export type VelocityConstraintMode = VelocityConstraintMode.Line | VelocityConstraintMode.Plane | VelocityConstraintMode.Vector;
 	export namespace VerticalAlignment {
 		export interface Center extends EnumItem {
 			Name: "Center";
 			Value: 0;
-			EnumType: EnumType<VerticalAlignment>;
+			EnumType: typeof VerticalAlignment;
 		}
 
 		export const Center: Center;
@@ -16190,7 +16189,7 @@ declare namespace Enum {
 		export interface Top extends EnumItem {
 			Name: "Top";
 			Value: 1;
-			EnumType: EnumType<VerticalAlignment>;
+			EnumType: typeof VerticalAlignment;
 		}
 
 		export const Top: Top;
@@ -16198,19 +16197,19 @@ declare namespace Enum {
 		export interface Bottom extends EnumItem {
 			Name: "Bottom";
 			Value: 2;
-			EnumType: EnumType<VerticalAlignment>;
+			EnumType: typeof VerticalAlignment;
 		}
 
 		export const Bottom: Bottom;
 
-		export function GetEnumItems(this: defined): Array<VerticalAlignment>
+		export function GetEnumItems(): Array<VerticalAlignment>
 	}
 	export type VerticalAlignment = VerticalAlignment.Center | VerticalAlignment.Top | VerticalAlignment.Bottom;
 	export namespace VerticalScrollBarPosition {
 		export interface Left extends EnumItem {
 			Name: "Left";
 			Value: 1;
-			EnumType: EnumType<VerticalScrollBarPosition>;
+			EnumType: typeof VerticalScrollBarPosition;
 		}
 
 		export const Left: Left;
@@ -16218,19 +16217,19 @@ declare namespace Enum {
 		export interface Right extends EnumItem {
 			Name: "Right";
 			Value: 0;
-			EnumType: EnumType<VerticalScrollBarPosition>;
+			EnumType: typeof VerticalScrollBarPosition;
 		}
 
 		export const Right: Right;
 
-		export function GetEnumItems(this: defined): Array<VerticalScrollBarPosition>
+		export function GetEnumItems(): Array<VerticalScrollBarPosition>
 	}
 	export type VerticalScrollBarPosition = VerticalScrollBarPosition.Left | VerticalScrollBarPosition.Right;
 	export namespace VibrationMotor {
 		export interface Large extends EnumItem {
 			Name: "Large";
 			Value: 0;
-			EnumType: EnumType<VibrationMotor>;
+			EnumType: typeof VibrationMotor;
 		}
 
 		export const Large: Large;
@@ -16238,7 +16237,7 @@ declare namespace Enum {
 		export interface Small extends EnumItem {
 			Name: "Small";
 			Value: 1;
-			EnumType: EnumType<VibrationMotor>;
+			EnumType: typeof VibrationMotor;
 		}
 
 		export const Small: Small;
@@ -16246,7 +16245,7 @@ declare namespace Enum {
 		export interface LeftTrigger extends EnumItem {
 			Name: "LeftTrigger";
 			Value: 2;
-			EnumType: EnumType<VibrationMotor>;
+			EnumType: typeof VibrationMotor;
 		}
 
 		export const LeftTrigger: LeftTrigger;
@@ -16254,7 +16253,7 @@ declare namespace Enum {
 		export interface RightTrigger extends EnumItem {
 			Name: "RightTrigger";
 			Value: 3;
-			EnumType: EnumType<VibrationMotor>;
+			EnumType: typeof VibrationMotor;
 		}
 
 		export const RightTrigger: RightTrigger;
@@ -16262,7 +16261,7 @@ declare namespace Enum {
 		export interface LeftHand extends EnumItem {
 			Name: "LeftHand";
 			Value: 4;
-			EnumType: EnumType<VibrationMotor>;
+			EnumType: typeof VibrationMotor;
 		}
 
 		export const LeftHand: LeftHand;
@@ -16270,19 +16269,19 @@ declare namespace Enum {
 		export interface RightHand extends EnumItem {
 			Name: "RightHand";
 			Value: 5;
-			EnumType: EnumType<VibrationMotor>;
+			EnumType: typeof VibrationMotor;
 		}
 
 		export const RightHand: RightHand;
 
-		export function GetEnumItems(this: defined): Array<VibrationMotor>
+		export function GetEnumItems(): Array<VibrationMotor>
 	}
 	export type VibrationMotor = VibrationMotor.Large | VibrationMotor.Small | VibrationMotor.LeftTrigger | VibrationMotor.RightTrigger | VibrationMotor.LeftHand | VibrationMotor.RightHand;
 	export namespace VirtualCursorMode {
 		export interface Default extends EnumItem {
 			Name: "Default";
 			Value: 0;
-			EnumType: EnumType<VirtualCursorMode>;
+			EnumType: typeof VirtualCursorMode;
 		}
 
 		export const Default: Default;
@@ -16290,7 +16289,7 @@ declare namespace Enum {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 1;
-			EnumType: EnumType<VirtualCursorMode>;
+			EnumType: typeof VirtualCursorMode;
 		}
 
 		export const Disabled: Disabled;
@@ -16298,19 +16297,19 @@ declare namespace Enum {
 		export interface Enabled extends EnumItem {
 			Name: "Enabled";
 			Value: 2;
-			EnumType: EnumType<VirtualCursorMode>;
+			EnumType: typeof VirtualCursorMode;
 		}
 
 		export const Enabled: Enabled;
 
-		export function GetEnumItems(this: defined): Array<VirtualCursorMode>
+		export function GetEnumItems(): Array<VirtualCursorMode>
 	}
 	export type VirtualCursorMode = VirtualCursorMode.Default | VirtualCursorMode.Disabled | VirtualCursorMode.Enabled;
 	export namespace VirtualInputMode {
 		export interface Recording extends EnumItem {
 			Name: "Recording";
 			Value: 1;
-			EnumType: EnumType<VirtualInputMode>;
+			EnumType: typeof VirtualInputMode;
 		}
 
 		export const Recording: Recording;
@@ -16318,7 +16317,7 @@ declare namespace Enum {
 		export interface Playing extends EnumItem {
 			Name: "Playing";
 			Value: 2;
-			EnumType: EnumType<VirtualInputMode>;
+			EnumType: typeof VirtualInputMode;
 		}
 
 		export const Playing: Playing;
@@ -16326,19 +16325,19 @@ declare namespace Enum {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<VirtualInputMode>;
+			EnumType: typeof VirtualInputMode;
 		}
 
 		export const None: None;
 
-		export function GetEnumItems(this: defined): Array<VirtualInputMode>
+		export function GetEnumItems(): Array<VirtualInputMode>
 	}
 	export type VirtualInputMode = VirtualInputMode.Recording | VirtualInputMode.Playing | VirtualInputMode.None;
 	export namespace VoiceChatState {
 		export interface Idle extends EnumItem {
 			Name: "Idle";
 			Value: 0;
-			EnumType: EnumType<VoiceChatState>;
+			EnumType: typeof VoiceChatState;
 		}
 
 		export const Idle: Idle;
@@ -16346,7 +16345,7 @@ declare namespace Enum {
 		export interface Joining extends EnumItem {
 			Name: "Joining";
 			Value: 1;
-			EnumType: EnumType<VoiceChatState>;
+			EnumType: typeof VoiceChatState;
 		}
 
 		export const Joining: Joining;
@@ -16354,7 +16353,7 @@ declare namespace Enum {
 		export interface JoiningRetry extends EnumItem {
 			Name: "JoiningRetry";
 			Value: 2;
-			EnumType: EnumType<VoiceChatState>;
+			EnumType: typeof VoiceChatState;
 		}
 
 		export const JoiningRetry: JoiningRetry;
@@ -16362,7 +16361,7 @@ declare namespace Enum {
 		export interface Joined extends EnumItem {
 			Name: "Joined";
 			Value: 3;
-			EnumType: EnumType<VoiceChatState>;
+			EnumType: typeof VoiceChatState;
 		}
 
 		export const Joined: Joined;
@@ -16370,7 +16369,7 @@ declare namespace Enum {
 		export interface Leaving extends EnumItem {
 			Name: "Leaving";
 			Value: 4;
-			EnumType: EnumType<VoiceChatState>;
+			EnumType: typeof VoiceChatState;
 		}
 
 		export const Leaving: Leaving;
@@ -16378,7 +16377,7 @@ declare namespace Enum {
 		export interface Ended extends EnumItem {
 			Name: "Ended";
 			Value: 5;
-			EnumType: EnumType<VoiceChatState>;
+			EnumType: typeof VoiceChatState;
 		}
 
 		export const Ended: Ended;
@@ -16386,19 +16385,19 @@ declare namespace Enum {
 		export interface Failed extends EnumItem {
 			Name: "Failed";
 			Value: 6;
-			EnumType: EnumType<VoiceChatState>;
+			EnumType: typeof VoiceChatState;
 		}
 
 		export const Failed: Failed;
 
-		export function GetEnumItems(this: defined): Array<VoiceChatState>
+		export function GetEnumItems(): Array<VoiceChatState>
 	}
 	export type VoiceChatState = VoiceChatState.Idle | VoiceChatState.Joining | VoiceChatState.JoiningRetry | VoiceChatState.Joined | VoiceChatState.Leaving | VoiceChatState.Ended | VoiceChatState.Failed;
 	export namespace WaterDirection {
 		export interface NegX extends EnumItem {
 			Name: "NegX";
 			Value: 0;
-			EnumType: EnumType<WaterDirection>;
+			EnumType: typeof WaterDirection;
 		}
 
 		export const NegX: NegX;
@@ -16406,7 +16405,7 @@ declare namespace Enum {
 		export interface X extends EnumItem {
 			Name: "X";
 			Value: 1;
-			EnumType: EnumType<WaterDirection>;
+			EnumType: typeof WaterDirection;
 		}
 
 		export const X: X;
@@ -16414,7 +16413,7 @@ declare namespace Enum {
 		export interface NegY extends EnumItem {
 			Name: "NegY";
 			Value: 2;
-			EnumType: EnumType<WaterDirection>;
+			EnumType: typeof WaterDirection;
 		}
 
 		export const NegY: NegY;
@@ -16422,7 +16421,7 @@ declare namespace Enum {
 		export interface Y extends EnumItem {
 			Name: "Y";
 			Value: 3;
-			EnumType: EnumType<WaterDirection>;
+			EnumType: typeof WaterDirection;
 		}
 
 		export const Y: Y;
@@ -16430,7 +16429,7 @@ declare namespace Enum {
 		export interface NegZ extends EnumItem {
 			Name: "NegZ";
 			Value: 4;
-			EnumType: EnumType<WaterDirection>;
+			EnumType: typeof WaterDirection;
 		}
 
 		export const NegZ: NegZ;
@@ -16438,19 +16437,19 @@ declare namespace Enum {
 		export interface Z extends EnumItem {
 			Name: "Z";
 			Value: 5;
-			EnumType: EnumType<WaterDirection>;
+			EnumType: typeof WaterDirection;
 		}
 
 		export const Z: Z;
 
-		export function GetEnumItems(this: defined): Array<WaterDirection>
+		export function GetEnumItems(): Array<WaterDirection>
 	}
 	export type WaterDirection = WaterDirection.NegX | WaterDirection.X | WaterDirection.NegY | WaterDirection.Y | WaterDirection.NegZ | WaterDirection.Z;
 	export namespace WaterForce {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<WaterForce>;
+			EnumType: typeof WaterForce;
 		}
 
 		export const None: None;
@@ -16458,7 +16457,7 @@ declare namespace Enum {
 		export interface Small extends EnumItem {
 			Name: "Small";
 			Value: 1;
-			EnumType: EnumType<WaterForce>;
+			EnumType: typeof WaterForce;
 		}
 
 		export const Small: Small;
@@ -16466,7 +16465,7 @@ declare namespace Enum {
 		export interface Medium extends EnumItem {
 			Name: "Medium";
 			Value: 2;
-			EnumType: EnumType<WaterForce>;
+			EnumType: typeof WaterForce;
 		}
 
 		export const Medium: Medium;
@@ -16474,7 +16473,7 @@ declare namespace Enum {
 		export interface Strong extends EnumItem {
 			Name: "Strong";
 			Value: 3;
-			EnumType: EnumType<WaterForce>;
+			EnumType: typeof WaterForce;
 		}
 
 		export const Strong: Strong;
@@ -16482,19 +16481,19 @@ declare namespace Enum {
 		export interface Max extends EnumItem {
 			Name: "Max";
 			Value: 4;
-			EnumType: EnumType<WaterForce>;
+			EnumType: typeof WaterForce;
 		}
 
 		export const Max: Max;
 
-		export function GetEnumItems(this: defined): Array<WaterForce>
+		export function GetEnumItems(): Array<WaterForce>
 	}
 	export type WaterForce = WaterForce.None | WaterForce.Small | WaterForce.Medium | WaterForce.Strong | WaterForce.Max;
 	export namespace WrapLayerAutoSkin {
 		export interface Disabled extends EnumItem {
 			Name: "Disabled";
 			Value: 0;
-			EnumType: EnumType<WrapLayerAutoSkin>;
+			EnumType: typeof WrapLayerAutoSkin;
 		}
 
 		export const Disabled: Disabled;
@@ -16502,7 +16501,7 @@ declare namespace Enum {
 		export interface EnabledPreserve extends EnumItem {
 			Name: "EnabledPreserve";
 			Value: 1;
-			EnumType: EnumType<WrapLayerAutoSkin>;
+			EnumType: typeof WrapLayerAutoSkin;
 		}
 
 		export const EnabledPreserve: EnabledPreserve;
@@ -16510,19 +16509,19 @@ declare namespace Enum {
 		export interface EnabledOverride extends EnumItem {
 			Name: "EnabledOverride";
 			Value: 2;
-			EnumType: EnumType<WrapLayerAutoSkin>;
+			EnumType: typeof WrapLayerAutoSkin;
 		}
 
 		export const EnabledOverride: EnabledOverride;
 
-		export function GetEnumItems(this: defined): Array<WrapLayerAutoSkin>
+		export function GetEnumItems(): Array<WrapLayerAutoSkin>
 	}
 	export type WrapLayerAutoSkin = WrapLayerAutoSkin.Disabled | WrapLayerAutoSkin.EnabledPreserve | WrapLayerAutoSkin.EnabledOverride;
 	export namespace WrapLayerDebugMode {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<WrapLayerDebugMode>;
+			EnumType: typeof WrapLayerDebugMode;
 		}
 
 		export const None: None;
@@ -16530,7 +16529,7 @@ declare namespace Enum {
 		export interface BoundCage extends EnumItem {
 			Name: "BoundCage";
 			Value: 1;
-			EnumType: EnumType<WrapLayerDebugMode>;
+			EnumType: typeof WrapLayerDebugMode;
 		}
 
 		export const BoundCage: BoundCage;
@@ -16538,7 +16537,7 @@ declare namespace Enum {
 		export interface LayerCage extends EnumItem {
 			Name: "LayerCage";
 			Value: 2;
-			EnumType: EnumType<WrapLayerDebugMode>;
+			EnumType: typeof WrapLayerDebugMode;
 		}
 
 		export const LayerCage: LayerCage;
@@ -16546,7 +16545,7 @@ declare namespace Enum {
 		export interface BoundCageAndLinks extends EnumItem {
 			Name: "BoundCageAndLinks";
 			Value: 3;
-			EnumType: EnumType<WrapLayerDebugMode>;
+			EnumType: typeof WrapLayerDebugMode;
 		}
 
 		export const BoundCageAndLinks: BoundCageAndLinks;
@@ -16554,7 +16553,7 @@ declare namespace Enum {
 		export interface Reference extends EnumItem {
 			Name: "Reference";
 			Value: 4;
-			EnumType: EnumType<WrapLayerDebugMode>;
+			EnumType: typeof WrapLayerDebugMode;
 		}
 
 		export const Reference: Reference;
@@ -16562,7 +16561,7 @@ declare namespace Enum {
 		export interface Rbf extends EnumItem {
 			Name: "Rbf";
 			Value: 5;
-			EnumType: EnumType<WrapLayerDebugMode>;
+			EnumType: typeof WrapLayerDebugMode;
 		}
 
 		export const Rbf: Rbf;
@@ -16570,7 +16569,7 @@ declare namespace Enum {
 		export interface OuterCage extends EnumItem {
 			Name: "OuterCage";
 			Value: 6;
-			EnumType: EnumType<WrapLayerDebugMode>;
+			EnumType: typeof WrapLayerDebugMode;
 		}
 
 		export const OuterCage: OuterCage;
@@ -16578,7 +16577,7 @@ declare namespace Enum {
 		export interface ReferenceMeshAfterMorph extends EnumItem {
 			Name: "ReferenceMeshAfterMorph";
 			Value: 7;
-			EnumType: EnumType<WrapLayerDebugMode>;
+			EnumType: typeof WrapLayerDebugMode;
 		}
 
 		export const ReferenceMeshAfterMorph: ReferenceMeshAfterMorph;
@@ -16586,7 +16585,7 @@ declare namespace Enum {
 		export interface HSROuterDetail extends EnumItem {
 			Name: "HSROuterDetail";
 			Value: 8;
-			EnumType: EnumType<WrapLayerDebugMode>;
+			EnumType: typeof WrapLayerDebugMode;
 		}
 
 		export const HSROuterDetail: HSROuterDetail;
@@ -16594,7 +16593,7 @@ declare namespace Enum {
 		export interface HSROuter extends EnumItem {
 			Name: "HSROuter";
 			Value: 9;
-			EnumType: EnumType<WrapLayerDebugMode>;
+			EnumType: typeof WrapLayerDebugMode;
 		}
 
 		export const HSROuter: HSROuter;
@@ -16602,7 +16601,7 @@ declare namespace Enum {
 		export interface HSRInner extends EnumItem {
 			Name: "HSRInner";
 			Value: 10;
-			EnumType: EnumType<WrapLayerDebugMode>;
+			EnumType: typeof WrapLayerDebugMode;
 		}
 
 		export const HSRInner: HSRInner;
@@ -16610,19 +16609,19 @@ declare namespace Enum {
 		export interface HSRInnerReverse extends EnumItem {
 			Name: "HSRInnerReverse";
 			Value: 11;
-			EnumType: EnumType<WrapLayerDebugMode>;
+			EnumType: typeof WrapLayerDebugMode;
 		}
 
 		export const HSRInnerReverse: HSRInnerReverse;
 
-		export function GetEnumItems(this: defined): Array<WrapLayerDebugMode>
+		export function GetEnumItems(): Array<WrapLayerDebugMode>
 	}
 	export type WrapLayerDebugMode = WrapLayerDebugMode.None | WrapLayerDebugMode.BoundCage | WrapLayerDebugMode.LayerCage | WrapLayerDebugMode.BoundCageAndLinks | WrapLayerDebugMode.Reference | WrapLayerDebugMode.Rbf | WrapLayerDebugMode.OuterCage | WrapLayerDebugMode.ReferenceMeshAfterMorph | WrapLayerDebugMode.HSROuterDetail | WrapLayerDebugMode.HSROuter | WrapLayerDebugMode.HSRInner | WrapLayerDebugMode.HSRInnerReverse;
 	export namespace WrapTargetDebugMode {
 		export interface None extends EnumItem {
 			Name: "None";
 			Value: 0;
-			EnumType: EnumType<WrapTargetDebugMode>;
+			EnumType: typeof WrapTargetDebugMode;
 		}
 
 		export const None: None;
@@ -16630,7 +16629,7 @@ declare namespace Enum {
 		export interface TargetCageOriginal extends EnumItem {
 			Name: "TargetCageOriginal";
 			Value: 1;
-			EnumType: EnumType<WrapTargetDebugMode>;
+			EnumType: typeof WrapTargetDebugMode;
 		}
 
 		export const TargetCageOriginal: TargetCageOriginal;
@@ -16638,7 +16637,7 @@ declare namespace Enum {
 		export interface TargetCageCompressed extends EnumItem {
 			Name: "TargetCageCompressed";
 			Value: 2;
-			EnumType: EnumType<WrapTargetDebugMode>;
+			EnumType: typeof WrapTargetDebugMode;
 		}
 
 		export const TargetCageCompressed: TargetCageCompressed;
@@ -16646,7 +16645,7 @@ declare namespace Enum {
 		export interface TargetCageInterface extends EnumItem {
 			Name: "TargetCageInterface";
 			Value: 3;
-			EnumType: EnumType<WrapTargetDebugMode>;
+			EnumType: typeof WrapTargetDebugMode;
 		}
 
 		export const TargetCageInterface: TargetCageInterface;
@@ -16654,7 +16653,7 @@ declare namespace Enum {
 		export interface TargetLayerCageOriginal extends EnumItem {
 			Name: "TargetLayerCageOriginal";
 			Value: 4;
-			EnumType: EnumType<WrapTargetDebugMode>;
+			EnumType: typeof WrapTargetDebugMode;
 		}
 
 		export const TargetLayerCageOriginal: TargetLayerCageOriginal;
@@ -16662,7 +16661,7 @@ declare namespace Enum {
 		export interface TargetLayerCageCompressed extends EnumItem {
 			Name: "TargetLayerCageCompressed";
 			Value: 5;
-			EnumType: EnumType<WrapTargetDebugMode>;
+			EnumType: typeof WrapTargetDebugMode;
 		}
 
 		export const TargetLayerCageCompressed: TargetLayerCageCompressed;
@@ -16670,7 +16669,7 @@ declare namespace Enum {
 		export interface TargetLayerInterface extends EnumItem {
 			Name: "TargetLayerInterface";
 			Value: 6;
-			EnumType: EnumType<WrapTargetDebugMode>;
+			EnumType: typeof WrapTargetDebugMode;
 		}
 
 		export const TargetLayerInterface: TargetLayerInterface;
@@ -16678,7 +16677,7 @@ declare namespace Enum {
 		export interface Rbf extends EnumItem {
 			Name: "Rbf";
 			Value: 7;
-			EnumType: EnumType<WrapTargetDebugMode>;
+			EnumType: typeof WrapTargetDebugMode;
 		}
 
 		export const Rbf: Rbf;
@@ -16686,19 +16685,19 @@ declare namespace Enum {
 		export interface OuterCageDetail extends EnumItem {
 			Name: "OuterCageDetail";
 			Value: 8;
-			EnumType: EnumType<WrapTargetDebugMode>;
+			EnumType: typeof WrapTargetDebugMode;
 		}
 
 		export const OuterCageDetail: OuterCageDetail;
 
-		export function GetEnumItems(this: defined): Array<WrapTargetDebugMode>
+		export function GetEnumItems(): Array<WrapTargetDebugMode>
 	}
 	export type WrapTargetDebugMode = WrapTargetDebugMode.None | WrapTargetDebugMode.TargetCageOriginal | WrapTargetDebugMode.TargetCageCompressed | WrapTargetDebugMode.TargetCageInterface | WrapTargetDebugMode.TargetLayerCageOriginal | WrapTargetDebugMode.TargetLayerCageCompressed | WrapTargetDebugMode.TargetLayerInterface | WrapTargetDebugMode.Rbf | WrapTargetDebugMode.OuterCageDetail;
 	export namespace ZIndexBehavior {
 		export interface Global extends EnumItem {
 			Name: "Global";
 			Value: 0;
-			EnumType: EnumType<ZIndexBehavior>;
+			EnumType: typeof ZIndexBehavior;
 		}
 
 		export const Global: Global;
@@ -16706,12 +16705,12 @@ declare namespace Enum {
 		export interface Sibling extends EnumItem {
 			Name: "Sibling";
 			Value: 1;
-			EnumType: EnumType<ZIndexBehavior>;
+			EnumType: typeof ZIndexBehavior;
 		}
 
 		export const Sibling: Sibling;
 
-		export function GetEnumItems(this: defined): Array<ZIndexBehavior>
+		export function GetEnumItems(): Array<ZIndexBehavior>
 	}
 	export type ZIndexBehavior = ZIndexBehavior.Global | ZIndexBehavior.Sibling;
 }
