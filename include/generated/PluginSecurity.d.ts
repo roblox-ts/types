@@ -2054,6 +2054,14 @@ interface Plugin extends Instance {
 	 * [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
 	 */
 	readonly Unloading: RBXScriptSignal<() => void>;
+	/**
+	 * Tags: NoYield
+	 */
+	ProcessAssetInsertionDrag: (assetId: string, assetTypeId: number, instances: Array<Instance>) => void;
+	/**
+	 * Tags: NoYield
+	 */
+	ProcessAssetInsertionDrop: () => void;
 }
 
 /** PluginAction is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`. In Roblox Studio, they can be assigned a keyboard shortcut under `File → Advanced → Customize Shortcuts...`, and they can also be added to the Quick Access Toolbar.
@@ -2762,6 +2770,41 @@ interface ScriptDebugger extends Instance {
 	readonly WatchRemoved: RBXScriptSignal<(watch: Instance) => void>;
 }
 
+interface ScriptDocument extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptDocument: unique symbol;
+	GetLine(this: ScriptDocument, lineIndex?: number): string;
+	GetLineCount(this: ScriptDocument): number;
+	GetScript(this: ScriptDocument): LuaSourceContainer;
+	GetText(this: ScriptDocument, startLine?: number, startCharacter?: number, endLine?: number, endCharacter?: number): string;
+	IsCommandBar(this: ScriptDocument): boolean;
+	/**
+	 * Tags: Yields
+	 */
+	EditTextAsync(this: ScriptDocument, newText: string, startLine: number, startCharacter: number, endLine?: number, endCharacter?: number): unknown;
+}
+
+interface ScriptEditorService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptEditorService: unique symbol;
+	FindScriptDocument(this: ScriptEditorService, script: LuaSourceContainer): ScriptDocument;
+	readonly TextDocumentDidChange: RBXScriptSignal<(document: ScriptDocument, changesArray: unknown) => void>;
+	readonly TextDocumentDidClose: RBXScriptSignal<(oldDocument: ScriptDocument) => void>;
+	readonly TextDocumentDidOpen: RBXScriptSignal<(newDocument: ScriptDocument) => void>;
+}
+
 /** The Selection service controls the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s that are selected in Roblox Studio.
  * 
  * This service is particularly useful when developing [Plugin](https://developer.roblox.com/en-us/api-reference/class/Plugin)s, as it allows the developer to access and manipulate the current selection.
@@ -3165,6 +3208,7 @@ interface Studio extends Instance {
 	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
 	readonly ["Hover Box Thickness"]: number;
 	["Hover Over Color"]: Color3;
+	readonly IconOverrideDir: QDir;
 	["Indent Using Spaces"]: boolean;
 	/**
 	 * Tags: NotReplicated
