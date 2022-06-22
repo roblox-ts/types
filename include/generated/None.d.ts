@@ -35,6 +35,7 @@ interface Services {
 	DebuggablePluginWatcher: DebuggablePluginWatcher;
 	DebuggerConnectionManager: DebuggerConnectionManager;
 	DebuggerUIService: DebuggerUIService;
+	DeviceIdService: DeviceIdService;
 	DraggerService: DraggerService;
 	EventIngestService: EventIngestService;
 	FaceAnimatorService: FaceAnimatorService;
@@ -452,6 +453,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	PlayerScripts: PlayerScripts;
 	PluginManagerInterface: PluginManagerInterface;
 	PoseBase: PoseBase;
+	ScreenshotHud: ScreenshotHud;
 	ScriptDocument: ScriptDocument;
 	StackFrame: StackFrame;
 	StandardPages: StandardPages;
@@ -9145,6 +9147,17 @@ interface DebuggerVariable extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_DebuggerVariable: unique symbol;
+}
+
+interface DeviceIdService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DeviceIdService: unique symbol;
 }
 
 /** The Dialog object allows users to create non-player characters (NPCs) that players can talk to using a list of choices. The Dialog object can be inserted into a part such as a Humanoid's head, and then a player will see a speech bubble above the part that they can click on to start a conversation. The creator of a place can choose what choices the player can say by inserting [DialogChoice](https://developer.roblox.com/en-us/api-reference/class/DialogChoice) objects into the dialog.
@@ -24650,12 +24663,12 @@ interface PackageLink extends Instance {
 	readonly _nominal_PackageLink: unique symbol;
 	/**
 	 * The id of the asset this package corresponds to.
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly PackageId: string;
 	/**
 	 * This property refers to a revision of a specific package
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	readonly VersionNumber: number;
 }
@@ -28077,6 +28090,25 @@ interface RunService extends Instance {
 	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
 	 */
 	readonly Stepped: RBXScriptSignal<(time: number, deltaTime: number) => void>;
+}
+
+interface ScreenshotHud extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScreenshotHud: unique symbol;
+	CameraButtonIcon: string;
+	CameraButtonPosition: UDim2;
+	CloseButtonPosition: UDim2;
+	CloseWhenScreenshotTaken: boolean;
+	ExperienceNameOverlayEnabled: boolean;
+	OverlayFont: Enum.Font;
+	UsernameOverlayEnabled: boolean;
+	Visible: boolean;
 }
 
 interface ScriptChangeService extends Instance {
