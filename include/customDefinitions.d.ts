@@ -488,8 +488,8 @@ interface MarketplaceService extends Instance {
 	GetProductInfo(
 		this: MarketplaceService,
 		assetId: number,
-		infoType: CastsToEnum<Enum.InfoType>,
-	): AssetProductInfo | DeveloperProductInfo;
+		infoType?: CastsToEnum<Enum.InfoType>,
+	): ProductInfo;
 	PromptProductPurchase(
 		this: MarketplaceService,
 		player: Player,
