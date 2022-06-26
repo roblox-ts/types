@@ -491,7 +491,7 @@ interface MarketplaceService extends Instance {
 	GetProductInfo(
 		this: MarketplaceService,
 		id: number,
-		infoType: CastsToEnum<Enum.InfoType>,
+		infoType?: CastsToEnum<Enum.InfoType>,
 	): AssetProductInfo | BundleInfo | GamePassProductInfo | DeveloperProductInfo | SubscriptionProductInfo;
 	PromptProductPurchase(
 		this: MarketplaceService,
