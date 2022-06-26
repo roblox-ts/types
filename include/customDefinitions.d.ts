@@ -470,26 +470,29 @@ interface LogService extends Instance {
 
 interface MarketplaceService extends Instance {
 	ProcessReceipt: ((receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision) | undefined;
+	GetProductInfo(this: MarketplaceService, id: number): AssetProductInfo;
+	GetProductInfo(this: MarketplaceService, id: number, infoType: CastsToEnum<Enum.InfoType.Asset>): AssetProductInfo;
+	GetProductInfo(this: MarketplaceService, id: number, infoType: CastsToEnum<Enum.InfoType.Bundle>): BundleInfo;
 	GetProductInfo(
 		this: MarketplaceService,
-		assetId: number,
-		infoType: CastsToEnum<Enum.InfoType.Asset>,
-	): AssetProductInfo;
+		id: number,
+		infoType: CastsToEnum<Enum.InfoType.GamePass>,
+	): GamePassProductInfo;
 	GetProductInfo(
 		this: MarketplaceService,
-		assetId: number,
+		id: number,
 		infoType: CastsToEnum<Enum.InfoType.Product>,
 	): DeveloperProductInfo;
 	GetProductInfo(
 		this: MarketplaceService,
-		assetId: number,
-		infoType: CastsToEnum<Enum.InfoType.GamePass>,
-	): AssetProductInfo;
+		id: number,
+		infoType: CastsToEnum<Enum.InfoType.Subscription>,
+	): SubscriptionProductInfo;
 	GetProductInfo(
 		this: MarketplaceService,
-		assetId: number,
+		id: number,
 		infoType: CastsToEnum<Enum.InfoType>,
-	): AssetProductInfo | DeveloperProductInfo;
+	): AssetProductInfo | BundleInfo | GamePassProductInfo | DeveloperProductInfo | SubscriptionProductInfo;
 	PromptProductPurchase(
 		this: MarketplaceService,
 		player: Player,
