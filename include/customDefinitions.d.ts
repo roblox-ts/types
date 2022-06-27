@@ -1057,4 +1057,7 @@ interface WorldRoot extends Model {
 		whitelistDescendantsTable: Array<Instance>,
 		maxParts?: number,
 	): Array<BasePart>;
+	GetPartBoundsInBox(cframe: CFrame, size: Vector3, overlapParams?: OverlapParams): Array<BasePart>;
+	GetPartBoundsInRadius(position: Vector3, radius: number, overlapParams?: OverlapParams): Array<BasePart>;
+	GetPartsInPart(part: BasePart, overlapParams?: OverlapParams): Array<BasePart>;
 }
