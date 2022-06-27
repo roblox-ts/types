@@ -998,6 +998,9 @@ interface Workspace extends WorldRoot {
 	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
 	readonly MakeJoints: never;
 	readonly Terrain: Terrain;
+	GetPartBoundsInBox(cframe: CFrame, size: Vector3, overlapParams?: OverlapParams): Array<BasePart>;
+	GetPartBoundsInRadius(position: Vector3, radius: number, overlapParams?: OverlapParams): Array<BasePart>;
+	GetPartsInPart(part: BasePart, overlapParams?: OverlapParams): Array<BasePart>;
 }
 
 interface WorldRoot extends Model {
