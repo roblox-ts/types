@@ -24240,7 +24240,7 @@ interface WorldRoot extends Model {
 	 * 
 	 * This and other spatial query functions do not consider parts' [CanCollide](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanCollide) or [CanTouch](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanTouch) properties. However, it will consider parts' collision group if specified by the given OverlapParams.
 	 */
-	GetPartBoundsInBox(this: WorldRoot, cframe: CFrame, size: Vector3, overlapParams?: OverlapParams): Array<Instance>;
+	GetPartBoundsInBox(cframe: CFrame, size: Vector3, overlapParams?: OverlapParams): Array<BasePart>;
 	/**
 	 * **GetPartBoundsInRadius** returns an array of parts whose _bounding boxes_ overlap a sphere whose volume is described using the given center (Vector3) and radius (number).
 	 * 
@@ -24250,7 +24250,7 @@ interface WorldRoot extends Model {
 	 * 
 	 * This and other spatial query functions do not consider parts' [CanCollide](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanCollide) or [CanTouch](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanTouch) properties. However, it will consider parts' collision group if specified by the given OverlapParams.
 	 */
-	GetPartBoundsInRadius(this: WorldRoot, position: Vector3, radius: number, overlapParams?: OverlapParams): Array<Instance>;
+	GetPartBoundsInRadius(position: Vector3, radius: number, overlapParams?: OverlapParams): Array<BasePart>;
 	/**
 	 * **GetPartsInPart** returns an array of parts whose occupied space is shared with the given part, which must exist in the same WorldRoot ([Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace)) as the parts to be queried.
 	 * 
@@ -24262,7 +24262,7 @@ interface WorldRoot extends Model {
 	 * 
 	 * This and other spatial query functions do not consider parts' [CanCollide](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanCollide) or [CanTouch](https://developer.roblox.com/en-us/api-reference/property/BasePart/CanTouch) properties. However, it will consider parts' collision group if specified by the given OverlapParams.
 	 */
-	GetPartsInPart(this: WorldRoot, part: BasePart, overlapParams?: OverlapParams): Array<Instance>;
+	GetPartsInPart(part: BasePart, overlapParams?: OverlapParams): Array<BasePart>;
 	/**
 	 * **IsRegion3Empty** returns a bool indicating whether there are no [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s within the given [Region3](https://developer.roblox.com/en-us/api-reference/datatype/Region3).
 	 * 
