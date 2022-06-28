@@ -63,6 +63,17 @@
 		"no-undef-init": "error",
 		"prefer-const": "off",
 		"simple-import-sort/exports": "warn",
-		"simple-import-sort/imports": "warn"
+		"simple-import-sort/imports": "warn",
+		"no-restricted-syntax": [
+			"error",
+			{
+				"selector": "TSMethodSignature > .params:first-child[name!=\"this\"]",
+				"message": "You must add a `this` parameter definition"
+			},
+			{
+				"selector": "TSMethodSignature[params<1]",
+				"message": "You must add a `this` parameter definition"
+			}
+		]
 	}
 }
