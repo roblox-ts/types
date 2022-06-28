@@ -1183,7 +1183,7 @@ interface Color3 {
 	/** Returns a Color3 interpolated between two Color3 objects. Alpha is a number from 0 to 1. */
 	Lerp(this: Color3, goal: Color3, alpha: number): Color3;
 	/** Returns the [hue, saturation, and value](https://en.wikipedia.org/wiki/HSL_and_HSV) of a Color3. This function is the inverse operation of the `Color3.fromHSV` constructor. */
-	ToHSV(): LuaTuple<[number, number, number]>;
+	ToHSV(this: Color3): LuaTuple<[number, number, number]>;
 	/**
 	 * Converts the color to a six-character hexadecimal string representing the color in the format RRGGBB. It is not
 	 * prefixed with an octothorpe (#), although this can be concatenated easily.
@@ -1194,7 +1194,7 @@ interface Color3 {
 	 * print(BrickColor.new("Really red").Color:ToHex()) --> "FF0000"
 	 * ```
 	 */
-	ToHex(): string;
+	ToHex(this: Color3): string;
 }
 
 interface Color3Constructor {
@@ -1319,16 +1319,16 @@ interface DateTime {
 	readonly UnixTimestampMillis: number;
 
 	/** Converts the value of this DateTime object to Universal Coordinated Time (UTC) */
-	ToUniversalTime(): TimeValueTable;
+	ToUniversalTime(this: DateTime): TimeValueTable;
 
 	/** Converts the value of this DateTime object to local time */
-	ToLocalTime(): TimeValueTable;
+	ToLocalTime(this: DateTime): TimeValueTable;
 
 	/**
 	 * Formats a date as a [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time string.
 	 * An example ISO 8601 date-time string would be `2020-01-02T10:30:45Z`, which represents January 2nd 2020 at 10:30 AM, 45 seconds.
 	 */
-	ToIsoDate(): string;
+	ToIsoDate(this: DateTime): string;
 
 	/**
 	 * Generates a string from the DateTime value interpreted as Universal Coordinated Time (UTC) and a format string.
@@ -1337,7 +1337,7 @@ interface DateTime {
 	 * @param format
 	 * @param locale
 	 */
-	FormatUniversalTime(format: string, locale: string): string;
+	FormatUniversalTime(this: DateTime, format: string, locale: string): string;
 
 	/**
 	 * Generates a string from the DateTime value interpreted as local time and a format string.
@@ -1346,7 +1346,7 @@ interface DateTime {
 	 * @param format
 	 * @param locale
 	 */
-	FormatLocalTime(format: string, locale: string): string;
+	FormatLocalTime(this: DateTime, format: string, locale: string): string;
 }
 
 interface DateTimeConstructor {
