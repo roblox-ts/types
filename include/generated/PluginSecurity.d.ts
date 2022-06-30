@@ -2787,7 +2787,7 @@ interface ScriptDocument extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	EditTextAsync(this: ScriptDocument, newText: string, startLine: number, startCharacter: number, endLine?: number, endCharacter?: number): unknown;
+	EditTextAsync(this: ScriptDocument, newText: string, startLine: number, startCharacter: number, endLine: number, endCharacter: number): unknown;
 }
 
 interface ScriptEditorService extends Instance {
@@ -3133,6 +3133,7 @@ interface Studio extends Instance {
 	 */
 	["Built-in Function Color"]: Color3;
 	["Camera Mouse Wheel Speed"]: number;
+	readonly ["Camera Pan Speed"]: number;
 	["Camera Shift Speed"]: number;
 	["Camera Speed"]: number;
 	["Camera Zoom to Mouse Position"]: boolean;
