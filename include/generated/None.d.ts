@@ -100,6 +100,7 @@ interface Services {
 	StudioHighDpiService: StudioHighDpiService;
 	StudioPublishService: StudioPublishService;
 	StudioScriptDebugEventListener: StudioScriptDebugEventListener;
+	TeamCreateService: TeamCreateService;
 	Teams: Teams;
 	TeleportService: TeleportService;
 	TemporaryCageMeshProvider: TemporaryCageMeshProvider;
@@ -7244,26 +7245,6 @@ interface RigidConstraint extends Constraint {
 	 * @deprecated
 	 */
 	readonly _nominal_RigidConstraint: unique symbol;
-	/**
-	 * Shows if this constraint is broken.
-	 * Tags: ReadOnly, NotReplicated, NotBrowsable
-	 */
-	readonly Broken: boolean;
-	/**
-	 * Enables destruction of the constraint by turning on force computations. If the internal reaction force or torque of the constraint exceeds their respective thresholds, the constraint breaks.
-	 * Tags: NotBrowsable
-	 */
-	DestructionEnabled: boolean;
-	/**
-	 * If the internal reaction force of the constraint exceeds this value, the constraint breaks.
-	 * Tags: NotBrowsable
-	 */
-	DestructionForce: number;
-	/**
-	 * If the internal reaction torque of the constraint exceeds this value, the constraint breaks.
-	 * Tags: NotBrowsable
-	 */
-	DestructionTorque: number;
 }
 
 /** A **RodConstraint** constrains two [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment) to remain separated by the value specified by [RodConstraint.Length](https://developer.roblox.com/en-us/api-reference/property/RodConstraint/Length). While the attachments remain at a set distance from one another, they can both rotate freely.
@@ -30577,6 +30558,17 @@ interface Team extends Instance {
 	 * ```
 	 */
 	readonly PlayerRemoved: RBXScriptSignal<(player: Player) => void>;
+}
+
+interface TeamCreateService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TeamCreateService: unique symbol;
 }
 
 /** The Teams service holds a game's [Team](https://developer.roblox.com/en-us/api-reference/class/Team) objects. [Team](https://developer.roblox.com/en-us/api-reference/class/Team) objects must be parented to the Teams service.
