@@ -57,7 +57,7 @@ export class EnumGenerator extends Generator {
 				for (const enumItemLegacyName of enumItemLegacyNames ?? []) {
 					if (
 						// spaces aren't valid in namespace export names
-						enumItemLegacyName.indexOf(" ") === -1 &&
+						!enumItemLegacyName.includes(" ") &&
 						// avoid conflicts if legacy name re-used for other item
 						!enumTypeItems.find(i => i.Name === enumItemLegacyName)
 					) {
