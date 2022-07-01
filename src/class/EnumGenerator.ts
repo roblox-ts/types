@@ -55,8 +55,15 @@ export class EnumGenerator extends Generator {
 				this.write(``);
 				this.write(`export const ${enumItemName}: ${enumItemName};`);
 				for (const enumItemLegacyName of enumItemLegacyNames ?? []) {
-					this.write(`/** @deprecated renamed to ${enumItemName} */`);
-					this.write(`export const ${enumItemLegacyName}: ${enumItemName};`);
+					if (
+						// spaces aren't valid in namespace export names
+						enumItemLegacyName.indexOf(" ") === -1 &&
+						// avoid conflicts if legacy name re-used for other item
+						!enumTypeItems.find(i => i.Name === enumItemLegacyName)
+					) {
+						this.write(`/** @deprecated renamed to ${enumItemName} */`);
+						this.write(`export const ${enumItemLegacyName}: ${enumItemName};`);
+					}
 				}
 				this.write(``);
 			}
