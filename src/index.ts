@@ -65,18 +65,17 @@ void (async () => {
 		tsConfigFilePath: path.join(__dirname, "..", "include", "tsconfig.json"),
 	});
 
-	const diagnostics = project.getPreEmitDiagnostics();
+	const diagnostics = project.getPreEmitDiagnostics().filter(d => {
+		const sourceFile = d.getSourceFile();
+		// customDefinitions not included in published package
+		// so ignore false-positive diagnostics about plugin types
+		return !sourceFile?.isInNodeModules() && sourceFile?.getBaseName() !== "customDefinitions.d.ts";
+	});
 
-	console.log(
-		project.formatDiagnosticsWithColorAndContext(
-			diagnostics.filter(d => {
-				const sourceFile = d.getSourceFile();
-				// customDefinitions not included in published package
-				// so ignore false-positive diagnostics about plugin types
-				return !sourceFile?.isInNodeModules() && sourceFile?.getBaseName() !== "customDefinitions.d.ts";
-			}),
-		),
-	);
+	if (diagnostics.length !== 0) {
+		console.error(project.formatDiagnosticsWithColorAndContext(diagnostics));
+		process.exit(1);
+	}
 
 	console.log(`\tDone! (${typeCheckTimer.get()}ms)`);
 
