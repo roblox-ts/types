@@ -3611,8 +3611,6 @@ declare namespace Enum {
 		}
 
 		export const Medium: Medium;
-		/** @deprecated renamed to Medium */
-		export const Default: Medium;
 
 		export interface Default extends EnumItem {
 			Name: "Default";
@@ -3621,8 +3619,6 @@ declare namespace Enum {
 		}
 
 		export const Default: Default;
-		/** @deprecated renamed to Default */
-		export const Medium: Default;
 
 		export interface High extends EnumItem {
 			Name: "High";
@@ -3663,8 +3659,6 @@ declare namespace Enum {
 		}
 
 		export const MouseLockSwitch: MouseLockSwitch;
-		/** @deprecated renamed to MouseLockSwitch */
-		export const Mouse Lock Switch: MouseLockSwitch;
 
 		export interface Classic extends EnumItem {
 			Name: "Classic";
@@ -9681,8 +9675,6 @@ declare namespace Enum {
 		}
 
 		export const CorrodedMetal: CorrodedMetal;
-		/** @deprecated renamed to CorrodedMetal */
-		export const Corroded Metal: CorrodedMetal;
 
 		export interface DiamondPlate extends EnumItem {
 			Name: "DiamondPlate";
@@ -11709,8 +11701,6 @@ declare namespace Enum {
 		}
 
 		export const Level01: Level01;
-		/** @deprecated renamed to Level01 */
-		export const Level  1: Level01;
 
 		export interface Level02 extends EnumItem {
 			Name: "Level02";
@@ -11719,8 +11709,6 @@ declare namespace Enum {
 		}
 
 		export const Level02: Level02;
-		/** @deprecated renamed to Level02 */
-		export const Level  2: Level02;
 
 		export interface Level03 extends EnumItem {
 			Name: "Level03";
@@ -11729,8 +11717,6 @@ declare namespace Enum {
 		}
 
 		export const Level03: Level03;
-		/** @deprecated renamed to Level03 */
-		export const Level  3: Level03;
 
 		export interface Level04 extends EnumItem {
 			Name: "Level04";
@@ -11739,8 +11725,6 @@ declare namespace Enum {
 		}
 
 		export const Level04: Level04;
-		/** @deprecated renamed to Level04 */
-		export const Level  4: Level04;
 
 		export interface Level05 extends EnumItem {
 			Name: "Level05";
@@ -11749,8 +11733,6 @@ declare namespace Enum {
 		}
 
 		export const Level05: Level05;
-		/** @deprecated renamed to Level05 */
-		export const Level  5: Level05;
 
 		export interface Level06 extends EnumItem {
 			Name: "Level06";
@@ -11759,8 +11741,6 @@ declare namespace Enum {
 		}
 
 		export const Level06: Level06;
-		/** @deprecated renamed to Level06 */
-		export const Level  6: Level06;
 
 		export interface Level07 extends EnumItem {
 			Name: "Level07";
@@ -11769,8 +11749,6 @@ declare namespace Enum {
 		}
 
 		export const Level07: Level07;
-		/** @deprecated renamed to Level07 */
-		export const Level  7: Level07;
 
 		export interface Level08 extends EnumItem {
 			Name: "Level08";
@@ -11779,8 +11757,6 @@ declare namespace Enum {
 		}
 
 		export const Level08: Level08;
-		/** @deprecated renamed to Level08 */
-		export const Level  8: Level08;
 
 		export interface Level09 extends EnumItem {
 			Name: "Level09";
@@ -11789,8 +11765,6 @@ declare namespace Enum {
 		}
 
 		export const Level09: Level09;
-		/** @deprecated renamed to Level09 */
-		export const Level  9: Level09;
 
 		export interface Level10 extends EnumItem {
 			Name: "Level10";
@@ -11799,8 +11773,6 @@ declare namespace Enum {
 		}
 
 		export const Level10: Level10;
-		/** @deprecated renamed to Level10 */
-		export const Level 10: Level10;
 
 		export interface Level11 extends EnumItem {
 			Name: "Level11";
@@ -11809,8 +11781,6 @@ declare namespace Enum {
 		}
 
 		export const Level11: Level11;
-		/** @deprecated renamed to Level11 */
-		export const Level 11: Level11;
 
 		export interface Level12 extends EnumItem {
 			Name: "Level12";
@@ -11819,8 +11789,6 @@ declare namespace Enum {
 		}
 
 		export const Level12: Level12;
-		/** @deprecated renamed to Level12 */
-		export const Level 12: Level12;
 
 		export interface Level13 extends EnumItem {
 			Name: "Level13";
@@ -11829,8 +11797,6 @@ declare namespace Enum {
 		}
 
 		export const Level13: Level13;
-		/** @deprecated renamed to Level13 */
-		export const Level 13: Level13;
 
 		export interface Level14 extends EnumItem {
 			Name: "Level14";
@@ -11839,8 +11805,6 @@ declare namespace Enum {
 		}
 
 		export const Level14: Level14;
-		/** @deprecated renamed to Level14 */
-		export const Level 14: Level14;
 
 		export interface Level15 extends EnumItem {
 			Name: "Level15";
@@ -11849,8 +11813,6 @@ declare namespace Enum {
 		}
 
 		export const Level15: Level15;
-		/** @deprecated renamed to Level15 */
-		export const Level 15: Level15;
 
 		export interface Level16 extends EnumItem {
 			Name: "Level16";
@@ -11859,8 +11821,6 @@ declare namespace Enum {
 		}
 
 		export const Level16: Level16;
-		/** @deprecated renamed to Level16 */
-		export const Level 16: Level16;
 
 		export interface Level17 extends EnumItem {
 			Name: "Level17";
@@ -11869,8 +11829,6 @@ declare namespace Enum {
 		}
 
 		export const Level17: Level17;
-		/** @deprecated renamed to Level17 */
-		export const Level 17: Level17;
 
 		export interface Level18 extends EnumItem {
 			Name: "Level18";
@@ -11879,8 +11837,6 @@ declare namespace Enum {
 		}
 
 		export const Level18: Level18;
-		/** @deprecated renamed to Level18 */
-		export const Level 18: Level18;
 
 		export interface Level19 extends EnumItem {
 			Name: "Level19";
@@ -11889,8 +11845,6 @@ declare namespace Enum {
 		}
 
 		export const Level19: Level19;
-		/** @deprecated renamed to Level19 */
-		export const Level 19: Level19;
 
 		export interface Level20 extends EnumItem {
 			Name: "Level20";
@@ -11899,8 +11853,6 @@ declare namespace Enum {
 		}
 
 		export const Level20: Level20;
-		/** @deprecated renamed to Level20 */
-		export const Level 20: Level20;
 
 		export interface Level21 extends EnumItem {
 			Name: "Level21";
@@ -11909,8 +11861,6 @@ declare namespace Enum {
 		}
 
 		export const Level21: Level21;
-		/** @deprecated renamed to Level21 */
-		export const Level 21: Level21;
 
 		export function GetEnumItems(this: Enum): Array<QualityLevel>
 	}
@@ -14619,8 +14569,6 @@ declare namespace Enum {
 		}
 
 		export const AlternatingSupports: AlternatingSupports;
-		/** @deprecated renamed to AlternatingSupports */
-		export const Alternating Supports: AlternatingSupports;
 
 		export interface BridgeStyleSupports extends EnumItem {
 			Name: "BridgeStyleSupports";
@@ -14629,8 +14577,6 @@ declare namespace Enum {
 		}
 
 		export const BridgeStyleSupports: BridgeStyleSupports;
-		/** @deprecated renamed to BridgeStyleSupports */
-		export const Bridge Style Supports: BridgeStyleSupports;
 
 		export interface NoSupports extends EnumItem {
 			Name: "NoSupports";
@@ -14639,8 +14585,6 @@ declare namespace Enum {
 		}
 
 		export const NoSupports: NoSupports;
-		/** @deprecated renamed to NoSupports */
-		export const No Supports: NoSupports;
 
 		export function GetEnumItems(this: Enum): Array<Style>
 	}
