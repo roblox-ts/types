@@ -569,7 +569,7 @@ interface OrderedDataStore extends GlobalDataStore {
 	): R extends undefined ? O | undefined : R;
 }
 
-interface Pages<T = unknown> extends Instance {
+interface Pages<T = DataStoreKey> extends Instance {
 	GetCurrentPage(this: Pages): Array<T>;
 }
 
