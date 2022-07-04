@@ -1007,10 +1007,8 @@ interface BrickColorConstructor {
 	new (color: Color3): BrickColor;
 
 	/** Constructs a BrickColor from its palette index. */
-	palette: {
-		<T extends keyof BrickColorsByPalette>(paletteValue: T): BrickColor<BrickColorsByPalette[T]>;
-		(paletteValue: number): BrickColor;
-	};
+	palette<T extends keyof BrickColorsByPalette>(this: void, paletteValue: T): BrickColor<BrickColorsByPalette[T]>;
+	palette(this: void, paletteValue: number): BrickColor;
 }
 
 declare const BrickColor: BrickColorConstructor;
