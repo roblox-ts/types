@@ -106,22 +106,6 @@ interface ABTestService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ABTestService: unique symbol;
-	ClearUserVariations(this: ABTestService): void;
-	GetBrowserTrackerABTestLoadingStatus(this: ABTestService): Enum.ABTestLoadingStatus;
-	GetPendingOrInitializedUserId(this: ABTestService): number;
-	GetUserABTestLoadingStatus(this: ABTestService): Enum.ABTestLoadingStatus;
-	GetVariant(this: ABTestService, name: string): string;
-	InitializeForUserId(this: ABTestService, userId: number): void;
-	/**
-	 * Tags: Yields
-	 */
-	WaitUntilBrowserTrackerABTestsInitialized(this: ABTestService): void;
-	/**
-	 * Tags: Yields
-	 */
-	WaitUntilUserABTestsInitialized(this: ABTestService): void;
-	readonly OnBrowserTrackerABTestLoadingStatusChanged: RBXScriptSignal<(status: Enum.ABTestLoadingStatus) => void>;
-	readonly OnUserABTestLoadingStatusChanged: RBXScriptSignal<(status: Enum.ABTestLoadingStatus, userId: number) => void>;
 }
 
 interface KeyframeSequence extends AnimationClip {
@@ -197,15 +181,11 @@ interface CoreGui extends BasePlayerGui {
 	 * @deprecated
 	 */
 	readonly _nominal_CoreGui: unique symbol;
-	readonly SelectionImageObject: GuiObject | undefined;
 	/**
 	 * The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Version: number;
-	SetUserGuiRendering(this: CoreGui, enabled: boolean, guiAdornee: Instance, faceId: CastsToEnum<Enum.NormalId>): void;
-	TakeScreenshot(this: CoreGui): void;
-	ToggleRecording(this: CoreGui): void;
 }
 
 interface StarterGui extends BasePlayerGui {
@@ -285,18 +265,6 @@ interface DataModelSession extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_DataModelSession: unique symbol;
-	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 */
-	readonly CurrentDataModelType: Enum.StudioDataModelType;
-	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 */
-	readonly SessionId: string;
-	readonly CurrentDataModelTypeAboutToChange: RBXScriptSignal<(dataModelType: Enum.StudioDataModelType) => void>;
-	readonly CurrentDataModelTypeChanged: RBXScriptSignal<() => void>;
-	readonly DataModelCreated: RBXScriptSignal<(gameStateType: Enum.StudioDataModelType) => void>;
-	readonly DataModelWillBeDestroyed: RBXScriptSignal<(gameStateType: Enum.StudioDataModelType) => void>;
 }
 
 /** The DebugSettings allows you to view diagnostics information regarding Roblox. It is labeled as **Diagnostics** in the Roblox Studio Settings menu. */
@@ -411,10 +379,6 @@ interface DebuggerManager extends Instance {
 	 * Registers a script to be used in the Lua Debugger. Returns a [ScriptDebugger](https://developer.roblox.com/en-us/api-reference/class/ScriptDebugger) for the script.
 	 */
 	AddDebugger(this: DebuggerManager, script: LuaSourceContainer): Instance | undefined;
-	/**
-	 * Enables the DebuggerManager.
-	 */
-	EnableDebugging(this: DebuggerManager): void;
 	/**
 	 * Returns a list of [ScriptDebugger](https://developer.roblox.com/en-us/api-reference/class/ScriptDebugger) present in the experience.
 	 */
@@ -769,11 +733,6 @@ interface GameSettings extends Instance {
 	 * Toggles whether or not video capture is enabled.
 	 */
 	VideoCaptureEnabled: boolean;
-	/**
-	 * Tags: NotReplicated
-	 */
-	readonly VideoRecording: boolean;
-	readonly VideoRecordingChangeRequest: RBXScriptSignal<(recording: boolean) => void>;
 }
 
 /** PluginGui is an abstract class for GUIs that allow the display of [GuiObjects](https://developer.roblox.com/en-us/api-reference/class/GuiObject) in various Roblox Studio widgets. As of right now, the only available PluginGui type is [DockWidgetPluginGui](https://developer.roblox.com/en-us/api-reference/class/DockWidgetPluginGui), but there may be more in the future! */
@@ -1085,12 +1044,6 @@ interface MultipleDocumentInterfaceInstance extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MultipleDocumentInterfaceInstance: unique symbol;
-	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 */
-	readonly FocusedDataModelSession: Instance | undefined;
-	readonly DataModelSessionEnded: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
-	readonly DataModelSessionStarted: RBXScriptSignal<(dataModelSession: DataModelSession) => void>;
 }
 
 /** The NetworkPeer object is the most basic class of the network objects. */
@@ -1544,7 +1497,6 @@ interface PhysicsSettings extends Instance {
 	 */
 	AreRegionsShown: boolean;
 	AreTerrainReplicationRegionsShown: boolean;
-	readonly AreTimestepsShown: boolean;
 	/**
 	 * When set to true, parts that aren't aligned on the 1x1x1 grid will be outlined yellow.
 	 */
@@ -1751,22 +1703,6 @@ interface Plugin extends Instance {
 	 */
 	readonly GridSize: number;
 	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 */
-	readonly HostDataModelType: Enum.StudioDataModelType;
-	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 */
-	readonly HostDataModelTypeIsCurrent: boolean;
-	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 */
-	readonly MultipleDocumentInterfaceInstance: MultipleDocumentInterfaceInstance | undefined;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly UsesAssetInsertionDrag: boolean;
-	/**
 	 * This function sets the state of the calling plugin to activated. Activating the plugin allows mouse control through the [Plugin:GetMouse](https://developer.roblox.com/en-us/api-reference/function/Plugin/GetMouse) method.
 	 * 
 	 * At any given time there are either 0 or 1 Activated Plugins. Activating a plugin will deactivate all other plugins (they will receive a [Plugin.Deactivation](https://developer.roblox.com/en-us/api-reference/event/Plugin/Deactivation) event).
@@ -1838,7 +1774,6 @@ interface Plugin extends Instance {
 	 * *   [Plugin.Unloading](https://developer.roblox.com/en-us/api-reference/event/Plugin/Unloading), fires immediately before the plugin is unloaded or reloaded via uninstallation, deactivation, or updating
 	 */
 	Deactivate(this: Plugin): void;
-	GetItem(this: Plugin, key: string, defaultValue: unknown): unknown;
 	/**
 	 * Returns the [JointCreationMode](https://developer.roblox.com/en-us/api-reference/enum/JointCreationMode) the user has set in studio under the Model tab.
 	 */
@@ -1861,7 +1796,6 @@ interface Plugin extends Instance {
 	 * @deprecated
 	 */
 	GetStudioUserId(this: Plugin): number;
-	Invoke(this: Plugin, key: string, arguments: Array<any>): void;
 	/**
 	 * This function returns true if this plugin is currently active, after having been activated via the [Plugin:Activate](https://developer.roblox.com/en-us/api-reference/function/Plugin/Activate) function.
 	 */
@@ -1880,8 +1814,6 @@ interface Plugin extends Instance {
 	 * Negates the given parts and returns the resulting NegateOperations.
 	 */
 	Negate(this: Plugin, objects: Array<Instance>): Array<Instance>;
-	OnInvoke(this: Plugin, key: string, callback: Callback): Instance | undefined;
-	OnSetItem(this: Plugin, key: string, callback: Callback): Instance | undefined;
 	/**
 	 * Used to open the given script instance in an editor window, in Roblox studio, at the given line. If no line is given as an argument it will default to 0.
 	 */
@@ -1890,9 +1822,6 @@ interface Plugin extends Instance {
 	 * Opens the context help window to the wiki page that `url` links to.
 	 */
 	OpenWikiPage(this: Plugin, url: string): void;
-	PauseSound(this: Plugin, sound: Sound): void;
-	PlaySound(this: Plugin, sound: Sound, normalizedTimePosition?: number): void;
-	ResumeSound(this: Plugin, sound: Sound): void;
 	/**
 	 * Opens an upload window for the user's current selection.
 	 */
@@ -1912,13 +1841,10 @@ interface Plugin extends Instance {
 	 * Separates the given UnionOperations and returns the resulting parts.
 	 */
 	Separate(this: Plugin, objects: Array<Instance>): Array<Instance>;
-	SetItem(this: Plugin, key: string, value: unknown): void;
-	SetReady(this: Plugin): void;
 	/**
 	 * Stores a given value for later use under the given key. The value will persist even after studio is closed.
 	 */
 	SetSetting(this: Plugin, key: string, value: unknown): void;
-	StartDecalDrag(this: Plugin, decal: Decal): void;
 	/**
 	 * **StartDrag** initiates a drag action using a dictionary of parameters. The parameters are as follows:
 	 * 
@@ -1988,7 +1914,6 @@ interface Plugin extends Instance {
 	 * *   [PluginGui.PluginDragLeft](https://developer.roblox.com/en-us/api-reference/event/PluginGui/PluginDragLeft)
 	 */
 	StartDrag(this: Plugin, dragData: object): void;
-	StopAllSounds(this: Plugin): void;
 	/**
 	 * Unions the given parts and returns the resulting UnionOperation.
 	 */
@@ -2007,10 +1932,6 @@ interface Plugin extends Instance {
 		pluginGuiId: string,
 		dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo,
 	): DockWidgetPluginGui;
-	/**
-	 * Tags: Yields
-	 */
-	CreateQWidgetPluginGui(this: Plugin, pluginGuiId: string, pluginGuiOptions: object): QWidgetPluginGui;
 	/**
 	 * This function prompts the user to open a .fbx animation file that can be loaded onto the _rigModel_, then proceeds to insert the animation as a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace).
 	 * Tags: Yields
@@ -2040,7 +1961,6 @@ interface Plugin extends Instance {
 	 * *   [Plugin.Unloading](https://developer.roblox.com/en-us/api-reference/event/Plugin/Unloading), fires immediately before the plugin is unloaded or reloaded via uninstallation, deactivation, or updating
 	 */
 	readonly Deactivation: RBXScriptSignal<() => void>;
-	readonly Ready: RBXScriptSignal<() => void>;
 	/**
 	 * This event fires immediately before the [Plugin](https://developer.roblox.com/en-us/api-reference/class/Plugin) stops running. Plugins are unloaded when disabled, uninstalled, about to be updated, or when the place is closing.
 	 * 
@@ -2054,14 +1974,6 @@ interface Plugin extends Instance {
 	 * [Intro to Plugins](https://developer.roblox.com/en-us/articles/intro-to-plugins), an introductory article to plugin use and development
 	 */
 	readonly Unloading: RBXScriptSignal<() => void>;
-	/**
-	 * Tags: NoYield
-	 */
-	ProcessAssetInsertionDrag: (assetId: string, assetTypeId: number, instances: Array<Instance>) => void;
-	/**
-	 * Tags: NoYield
-	 */
-	ProcessAssetInsertionDrop: () => void;
 }
 
 /** PluginAction is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`. In Roblox Studio, they can be assigned a keyboard shortcut under `File → Advanced → Customize Shortcuts...`, and they can also be added to the Quick Access Toolbar.
@@ -2092,18 +2004,6 @@ interface PluginAction extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly AllowBinding: boolean;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly Checked: boolean;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly DefaultShortcut: string;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly Enabled: boolean;
 	/**
 	 * The description of the action, when viewing it from the keyboard shortcuts window in Roblox Studio.
 	 * Tags: ReadOnly, NotReplicated
@@ -2829,15 +2729,10 @@ interface Selection extends Instance {
 	 */
 	readonly _nominal_Selection: unique symbol;
 	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 */
-	readonly ActiveInstance: Instance | undefined;
-	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly SelectionThickness: number;
 	Add(this: Selection, instancesToAdd: Array<Instance>): void;
-	ClearTerrainSelectionHack(this: Selection): void;
 	/**
 	 * Returns an array of currently selected [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s in Roblox Studio.
 	 * 
@@ -2861,7 +2756,6 @@ interface Selection extends Instance {
 	 * Selection:Set(selected)
 	 */
 	Set(this: Selection, selection: Array<Instance>): void;
-	SetTerrainSelectionHack(this: Selection, center: Vector3, size: Vector3): void;
 	/**
 	 * Fires when the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s selected in Roblox Studio changes.
 	 * 
@@ -3133,7 +3027,6 @@ interface Studio extends Instance {
 	 */
 	["Built-in Function Color"]: Color3;
 	["Camera Mouse Wheel Speed"]: number;
-	readonly ["Camera Pan Speed"]: number;
 	["Camera Shift Speed"]: number;
 	["Camera Speed"]: number;
 	["Camera Zoom to Mouse Position"]: boolean;
@@ -3163,29 +3056,14 @@ interface Studio extends Instance {
 	 * If set to true, deprecated objects will be shown in the Advanced Objects window, as well as the Object Browser.
 	 */
 	DeprecatedObjectsShown: boolean;
-	readonly DisplayLanguage: string;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly ["Doc View Code Background Color"]: Color3;
 	["Drag Multiple Parts As Single Part"]: boolean;
 	["Enable Autocomplete"]: boolean;
-	readonly ["Enable Autocomplete Doc View"]: boolean;
 	["Enable CoreScript Debugger"]: boolean;
 	["Enable Http Sandboxing"]: boolean;
 	["Enable Internal Beta Features"]: boolean;
 	["Enable Internal Features"]: boolean;
-	readonly ["Enable Script Analysis"]: boolean;
-	readonly ["Enable Scrollbar Markers"]: boolean;
-	readonly ["Enable Signature Help"]: boolean;
-	readonly ["Enable Signature Help Doc View"]: boolean;
 	["Enable Temporary Tabs"]: boolean;
 	["Enable Temporary Tabs In Explorer"]: boolean;
-	readonly ["Enable Type Hover"]: boolean;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly EnableOnTypeAutocomplete: boolean;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -3207,9 +3085,7 @@ interface Studio extends Instance {
 	["Highlight Current Line"]: boolean;
 	["Highlight Occurances"]: boolean;
 	["Hover Animate Speed"]: Enum.HoverAnimateSpeed;
-	readonly ["Hover Box Thickness"]: number;
 	["Hover Over Color"]: Color3;
-	readonly IconOverrideDir: QDir;
 	["Indent Using Spaces"]: boolean;
 	/**
 	 * Tags: NotReplicated
@@ -3229,7 +3105,6 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Luau Keyword Color"]: Color3;
-	readonly ["Main Volume"]: number;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -3259,8 +3134,6 @@ interface Studio extends Instance {
 	 * See [PermissionLevelShown](https://developer.roblox.com/en-us/api-reference/enum/PermissionLevelShown) for more info.
 	 */
 	PermissionLevelShown: Enum.PermissionLevelShown;
-	readonly ["Physical Draggers Select Scope By Default"]: boolean;
-	readonly ["Pivot Snap To Geometry Color"]: Color3;
 	PluginDebuggingEnabled: boolean;
 	/**
 	 * The directory where local plugins are stored.
@@ -3292,14 +3165,6 @@ interface Studio extends Instance {
 	 */
 	["Script Editor Scrollbar Handle Color"]: Color3;
 	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly ScriptEditorMenuBorderColor: Color3;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly ScriptEditorShouldShowPluginMethods: boolean;
-	/**
 	 * The time (in seconds) a script can wait to be resumed before timing out.
 	 */
 	ScriptTimeoutLength: number;
@@ -3327,7 +3192,6 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Selection Color"]: Color3;
-	readonly ["Selection Highlight Thickness"]: number;
 	["Server Audio Behavior"]: Enum.ServerAudioBehavior;
 	["Set Pivot of Imported Parts"]: boolean;
 	["Show Core GUI in Explorer while Playing"]: boolean;
@@ -3336,15 +3200,11 @@ interface Studio extends Instance {
 	["Show FileSyncService"]: boolean;
 	["Show Hidden Objects in Explorer"]: boolean;
 	["Show Hover Over"]: boolean;
-	readonly ["Show Light Guides"]: boolean;
-	readonly ["Show Navigation Labels"]: boolean;
 	["Show Navigation Mesh"]: boolean;
-	readonly ["Show Pathfinding Links"]: boolean;
 	["Show Plugin GUI Service in Explorer"]: boolean;
 	["Show QT warnings in output"]: boolean;
 	["Show Whitespace"]: boolean;
 	["Show plus button on hover in Explorer"]: boolean;
-	readonly ShowCorePackagesInExplorer: boolean;
 	["Skip Closing Brackets and Quotes"]: boolean;
 	/**
 	 * Tags: NotReplicated
@@ -3373,7 +3233,6 @@ interface Studio extends Instance {
 	 * @deprecated
 	 */
 	readonly ["UI Theme"]: Enum.UITheme;
-	readonly ["Use Bounding Box Move Handles"]: boolean;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -3405,18 +3264,6 @@ interface StudioData extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_StudioData: unique symbol;
-	/**
-	 * Tags: Hidden
-	 */
-	readonly EnableScriptCollabByDefaultOnLoad: boolean;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly SrcPlaceId: number;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly SrcUniverseId: number;
 }
 
 /** StudioService provides access to configuration of Roblox Studio, allows importing files from the user's file system, and other miscellaneous information. It is intended to be used by [Plugin](https://developer.roblox.com/en-us/api-reference/class/Plugin)s in order to provide a consistent user experience.
@@ -3453,10 +3300,6 @@ interface StudioService extends Instance {
 	 */
 	readonly ActiveScript: Instance | undefined;
 	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 */
-	readonly AlignDraggedObjects: boolean;
-	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly DraggerSolveConstraints: boolean;
@@ -3471,18 +3314,6 @@ interface StudioService extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly GridSize: number;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly HoverInstance: Instance | undefined;
-	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 */
-	readonly InstalledPluginData: string;
-	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 */
-	readonly PivotSnapToGeometry: boolean;
 	/**
 	 * **RotateIncrement** determines the angle in degrees by which studio's rotation tool will rotate selected objects each tick. This is set by the user Model tab under the “Snap to Grid” section.
 	 * 
@@ -3504,10 +3335,6 @@ interface StudioService extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly RotateIncrement: number;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly ShowActiveInstanceHighlight: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -3555,15 +3382,6 @@ interface StudioService extends Instance {
 	 * Tags: NotReplicated
 	 */
 	UseLocalSpace: boolean;
-	AnimationIdSelected(this: StudioService, id: number): void;
-	CopyToClipboard(this: StudioService, stringToCopy: string): void;
-	DEPRECATED_EmitPlacePublishedSignal(this: StudioService): void;
-	DEPRECATED_RefreshDocumentDisplayName(this: StudioService): void;
-	DEPRECATED_SetUniverseDisplayName(this: StudioService, newName: string): void;
-	DEPRECATED_ShowSaveOrPublishPlaceToRoblox(this: StudioService, showGameSelect: boolean, isPublish: boolean, closeMode: CastsToEnum<Enum.StudioCloseMode>): void;
-	DEPRECATED_publishAs(this: StudioService, universeId: number, placeId: number, groupId: number): void;
-	GetBadgeConfigureUrl(this: StudioService, badgeId: number): string;
-	GetBadgeUploadUrl(this: StudioService): string;
 	/**
 	 * **GetClassIcon** provides a dictionary that allows the display of a class' Explorer window icon, e.g. calling this function with “Part” returns property values that display the part icon from the Explorer window.
 	 * 
@@ -3587,26 +3405,11 @@ interface StudioService extends Instance {
 	 * displayClassIcon(imageLabel, "Part")
 	 */
 	GetClassIcon(this: StudioService, className: string): object;
-	GetPlaceIsPersistedToCloud(this: StudioService): boolean;
-	GetResourceByCategory(this: StudioService, category: string): object;
-	GetStartupAssetId(this: StudioService): string;
-	GetStartupPluginId(this: StudioService): string;
-	GetTermsOfUseUrl(this: StudioService): string;
 	/**
 	 * Returns the studio user's userId if they're logged in, otherwise returns 0.
 	 */
 	GetUserId(this: StudioService): number;
 	GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult;
-	HasInternalPermission(this: StudioService): boolean;
-	IsPluginInstalled(this: StudioService, assetId: number): boolean;
-	IsPluginUpToDate(this: StudioService, assetId: number, currentAssetVersion: number): boolean;
-	OpenInBrowser_DONOTUSE(this: StudioService, url: string): void;
-	RequestClose(this: StudioService, closeMode: CastsToEnum<Enum.StudioCloseMode>): void;
-	SetPluginEnabled(this: StudioService, assetId: number, state: boolean): void;
-	ShowPlaceVersionHistoryDialog(this: StudioService, placeId: number): void;
-	ShowPublishToRoblox(this: StudioService): void;
-	UninstallPlugin(this: StudioService, assetId: number): void;
-	UpdatePluginManagement(this: StudioService): void;
 	/**
 	 * This function prompts the current Studio user to select one file, which will then be loaded as a [File](https://developer.roblox.com/en-us/api-reference/class/File).
 	 * 
@@ -3629,23 +3432,6 @@ interface StudioService extends Instance {
 	 * Tags: Yields
 	 */
 	PromptImportFiles(this: StudioService, fileTypeFilter?: Array<any>): Array<Instance>;
-	/**
-	 * Tags: Yields
-	 */
-	TryInstallPlugin(this: StudioService, assetId: number, assetVersionId: number): void;
-	readonly DEPRECATED_GameNameUpdated: RBXScriptSignal<(name: string) => void>;
-	readonly DEPRECATED_GamePublishFinished: RBXScriptSignal<(success: boolean, gameId: number) => void>;
-	readonly DEPRECATED_OnPublishPlaceToRoblox: RBXScriptSignal<(isOverwritePublish: boolean) => void>;
-	readonly DEPRECATED_OnSaveOrPublishPlaceToRoblox: RBXScriptSignal<(showGameSelect: boolean, isPublish: boolean, closeMode: Enum.StudioCloseMode) => void>;
-	readonly OnImportFromRoblox: RBXScriptSignal<() => void>;
-	readonly OnOpenGameSettings: RBXScriptSignal<(pageIdentifier: string) => void>;
-	readonly OnOpenManagePackagePlugin: RBXScriptSignal<(userId: number, assetId: number) => void>;
-	readonly OnPluginInstalledFromToolbox: RBXScriptSignal<() => void>;
-	readonly OnPluginInstalledFromWeb: RBXScriptSignal<(pluginId: string) => void>;
-	readonly OnPublishAsPlugin: RBXScriptSignal<(instances: Array<Instance>) => void>;
-	readonly OnSaveToRoblox: RBXScriptSignal<(instances: Array<Instance>) => void>;
-	readonly PromptTransformPluginCheckEnable: RBXScriptSignal<() => void>;
-	readonly SaveLocallyAsComplete: RBXScriptSignal<(success: boolean) => void>;
 }
 
 interface StudioTheme extends Instance {
@@ -4104,10 +3890,6 @@ interface VersionControlService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_VersionControlService: unique symbol;
-	/**
-	 * Tags: Hidden
-	 */
-	readonly ScriptCollabEnabled: boolean;
 }
 
 interface VoiceChatService extends Instance {
