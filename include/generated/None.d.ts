@@ -21069,26 +21069,29 @@ interface MarketplaceService extends Instance {
 	 * *   [Monetization Guides](https://developer.roblox.com/learn-roblox/monetization), learning materials related to monetizing your game
 	 * Tags: Yields
 	 */
+	GetProductInfo(this: MarketplaceService, id: number): AssetProductInfo;
+	GetProductInfo(this: MarketplaceService, id: number, infoType: CastsToEnum<Enum.InfoType.Asset>): AssetProductInfo;
+	GetProductInfo(this: MarketplaceService, id: number, infoType: CastsToEnum<Enum.InfoType.Bundle>): BundleInfo;
 	GetProductInfo(
 		this: MarketplaceService,
-		assetId: number,
-		infoType: CastsToEnum<Enum.InfoType.Asset>,
-	): AssetProductInfo;
+		id: number,
+		infoType: CastsToEnum<Enum.InfoType.GamePass>,
+	): GamePassProductInfo;
 	GetProductInfo(
 		this: MarketplaceService,
-		assetId: number,
+		id: number,
 		infoType: CastsToEnum<Enum.InfoType.Product>,
 	): DeveloperProductInfo;
 	GetProductInfo(
 		this: MarketplaceService,
-		assetId: number,
-		infoType: CastsToEnum<Enum.InfoType.GamePass>,
-	): AssetProductInfo;
+		id: number,
+		infoType: CastsToEnum<Enum.InfoType.Subscription>,
+	): SubscriptionProductInfo;
 	GetProductInfo(
 		this: MarketplaceService,
-		assetId: number,
-		infoType: CastsToEnum<Enum.InfoType>,
-	): AssetProductInfo | DeveloperProductInfo;
+		id: number,
+		infoType?: CastsToEnum<Enum.InfoType>,
+	): AssetProductInfo | BundleInfo | GamePassProductInfo | DeveloperProductInfo | SubscriptionProductInfo;
 	/**
 	 * Tags: Yields
 	 */

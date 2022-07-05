@@ -148,35 +148,69 @@ interface ReceiptInfo {
 interface ProductInfo {
 	/** The name shown on the asset's page */
 	Name: string;
-	/** The description as shown on the asset's page
-	 * May be `undefined` if the description is empty.
-	 */
+	/** The description as shown on the asset's page; May be `undefined` if the description is empty. */
 	Description: string | undefined;
 	/** The cost of purchasing the asset using Robux */
-	PriceInRobux: number;
+	PriceInRobux: number | undefined;
 	/** Timestamp of when the asset was created, e.g. `2018-08-01T17:55:11.98Z` */
 	Created: string;
 	/** Timestamp of when the asset was last updated by its creator, e.g. `2018-08-01T17:55:11.98Z` */
 	Updated: string;
+	/** Describes whether the asset is purchasable */
+	IsForSale: boolean;
+	/** The number of items the asset has been sold */
+	Sales: number | undefined;
+	ProductId: number;
+	/** A table of information describing the creator of the asset */
+	Creator: {
+		/** Either `User` or `Group` */
+		CreatorType: "User" | "Group" | undefined;
+		/** The ID of the creator user or group */
+		CreatorTargetId: number;
+		/** The name/username of the creator */
+		Name: string | undefined;
+	};
+	TargetId: number;
+}
+
+interface AssetProductInfo extends ProductInfo {
+	/** Describes whether the asset is a User Product, Developer Product, or Game Pass */
+	ProductType: "User Product";
+	/** If InfoType was Asset, this is the ID of the given asset. */
+	AssetId: number;
+	/** The [type of asset](https://developer.roblox.com/articles/Asset-types) (e.g. place, model, shirt). In TypeScript, you should compare this value to a member of the `AssetTypeId` const enum. */
+	AssetTypeId: AssetTypeId;
+	/** Describes whether the asset is marked as "new" in the catalog */
+	IsNew: boolean;
+	/** Describes whether the asset is a "limited item" that is no longer (if ever) sold */
+	IsLimited: boolean;
+	/** Describes whether the asset is a "limited unique" ("Limited U") item that only has a fixed number sold */
+	IsLimitedUnique: boolean;
+	/** Describes whether the asset can be taken for free */
+	IsPublicDomain: boolean;
+	/** The remaining number of items a limited unique item may be sold */
+	Remaining: number | undefined;
 	/** Indicates whether the item is marked as 13+ in catalog */
 	ContentRatingTypeId: number;
 	/** The minimum Builder's Club subscription necessary to purchase the item */
 	MinimumMembershipLevel: number;
-	/** Describes whether the asset can be taken for free */
-	IsPublicDomain: boolean;
+}
+
+interface DeveloperProductInfo extends ProductInfo {
 	/** Describes whether the asset is a User Product, Developer Product, or Game Pass */
-	ProductType: "User Product" | "Developer Product" | "Game Pass";
-	/** A table of information describing the creator of the asset */
-	Creator: {
-		/** Either `User` or `Group` */
-		CreatorType: "User" | "Group";
-		/** The ID of the creator user or group */
-		CreatorTargetId: number;
-		/** The name/username of the creator */
-		Name: string;
-	};
+	ProductType: "Developer Product";
 	IconImageAssetId: number;
-	TargetId: number;
+}
+
+interface GamePassProductInfo extends ProductInfo {
+	/** Describes whether the asset is a User Product, Developer Product, or Game Pass */
+	ProductType: "Game Pass";
+	IconImageAssetId: number;
+}
+
+interface SubscriptionProductInfo extends ProductInfo {
+	/** Describes whether the asset is a User Product, Developer Product, or Game Pass */
+	ProductType: "Subscription";
 }
 
 interface BadgeInfo {
@@ -285,30 +319,6 @@ declare const enum AssetTypeId {
 	PoseAnimation = 56,
 	EarAccessory = 57,
 	EyeAccessory = 58,
-}
-
-interface AssetProductInfo extends ProductInfo {
-	/** If InfoType was Asset, this is the ID of the given asset. */
-	AssetId: number;
-	/** The [type of asset](https://developer.roblox.com/articles/Asset-types) (e.g. place, model, shirt). In TypeScript, you should compare this value to a member of the `AssetTypeId` const enum. */
-	AssetTypeId: AssetTypeId;
-	/** Describes whether the asset is purchasable */
-	IsForSale: boolean;
-	/** Describes whether the asset is a "limited item" that is no longer (if ever) sold */
-	IsLimited: boolean;
-	/** Describes whether the asset is a "limited unique" ("Limited U") item that only has a fixed number sold */
-	IsLimitedUnique: boolean;
-	/** Describes whether the asset is marked as "new" in the catalog */
-	IsNew: boolean;
-	/** The remaining number of items a limited unique item may be sold */
-	Remaining: number;
-	/** The number of items the asset has been sold */
-	Sales: number;
-}
-
-interface DeveloperProductInfo extends ProductInfo {
-	/** If the InfoType was Product, this is the product's ID */
-	ProductId: number;
 }
 
 interface AgentParameters {
