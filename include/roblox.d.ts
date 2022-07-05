@@ -551,6 +551,8 @@ interface RBXScriptSignal<T extends Callback = Callback> {
 
 	ConnectParallel(this: RBXScriptSignal, callback: T): RBXScriptConnection;
 
+	Once(this: RBXScriptSignal, callback: T): RBXScriptConnection;
+
 	/**
 	 * Yields the current thread until this signal is fired. Returns what was fired to the signal.
 	 */
