@@ -845,12 +845,19 @@ export class ClassGenerator extends Generator {
 	}
 
 	private canRead(className: string, member: ApiMemberBase) {
-		return getSecurity(className, member).Read === this.security;
+		const readSecurity = getSecurity(className, member).Read;
+		return (
+			readSecurity === this.security ||
+			(PLUGIN_ONLY_CLASSES.has(className) && readSecurity === this.lowerSecurity)
+		);
 	}
 
 	private canWrite(className: string, member: ApiMemberBase) {
 		const writeSecurity = getSecurity(className, member).Write;
-		return writeSecurity === this.security || writeSecurity === this.lowerSecurity; // hack
+		return (
+			writeSecurity === this.security ||
+			(PLUGIN_ONLY_CLASSES.has(className) && writeSecurity === this.lowerSecurity)
+		);
 	}
 
 	private getSignature(node?: ts.Node) {
@@ -1075,10 +1082,7 @@ export class ClassGenerator extends Generator {
 			return false;
 		}
 
-		if (
-			!(this.security === "PluginSecurity" && PLUGIN_ONLY_CLASSES.has(rbxClass.Name)) &&
-			!this.canRead(rbxClass.Name, rbxMember)
-		) {
+		if (!this.canRead(rbxClass.Name, rbxMember)) {
 			return false;
 		}
 
