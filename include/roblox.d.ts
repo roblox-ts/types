@@ -148,35 +148,69 @@ interface ReceiptInfo {
 interface ProductInfo {
 	/** The name shown on the asset's page */
 	Name: string;
-	/** The description as shown on the asset's page
-	 * May be `undefined` if the description is empty.
-	 */
+	/** The description as shown on the asset's page; May be `undefined` if the description is empty. */
 	Description: string | undefined;
 	/** The cost of purchasing the asset using Robux */
-	PriceInRobux: number;
+	PriceInRobux: number | undefined;
 	/** Timestamp of when the asset was created, e.g. `2018-08-01T17:55:11.98Z` */
 	Created: string;
 	/** Timestamp of when the asset was last updated by its creator, e.g. `2018-08-01T17:55:11.98Z` */
 	Updated: string;
+	/** Describes whether the asset is purchasable */
+	IsForSale: boolean;
+	/** The number of items the asset has been sold */
+	Sales: number | undefined;
+	ProductId: number;
+	/** A table of information describing the creator of the asset */
+	Creator: {
+		/** Either `User` or `Group` */
+		CreatorType: "User" | "Group" | undefined;
+		/** The ID of the creator user or group */
+		CreatorTargetId: number;
+		/** The name/username of the creator */
+		Name: string | undefined;
+	};
+	TargetId: number;
+}
+
+interface AssetProductInfo extends ProductInfo {
+	/** Describes whether the asset is a User Product, Developer Product, or Game Pass */
+	ProductType: "User Product";
+	/** If InfoType was Asset, this is the ID of the given asset. */
+	AssetId: number;
+	/** The [type of asset](https://developer.roblox.com/articles/Asset-types) (e.g. place, model, shirt). In TypeScript, you should compare this value to a member of the `AssetTypeId` const enum. */
+	AssetTypeId: AssetTypeId;
+	/** Describes whether the asset is marked as "new" in the catalog */
+	IsNew: boolean;
+	/** Describes whether the asset is a "limited item" that is no longer (if ever) sold */
+	IsLimited: boolean;
+	/** Describes whether the asset is a "limited unique" ("Limited U") item that only has a fixed number sold */
+	IsLimitedUnique: boolean;
+	/** Describes whether the asset can be taken for free */
+	IsPublicDomain: boolean;
+	/** The remaining number of items a limited unique item may be sold */
+	Remaining: number | undefined;
 	/** Indicates whether the item is marked as 13+ in catalog */
 	ContentRatingTypeId: number;
 	/** The minimum Builder's Club subscription necessary to purchase the item */
 	MinimumMembershipLevel: number;
-	/** Describes whether the asset can be taken for free */
-	IsPublicDomain: boolean;
+}
+
+interface DeveloperProductInfo extends ProductInfo {
 	/** Describes whether the asset is a User Product, Developer Product, or Game Pass */
-	ProductType: "User Product" | "Developer Product" | "Game Pass";
-	/** A table of information describing the creator of the asset */
-	Creator: {
-		/** Either `User` or `Group` */
-		CreatorType: "User" | "Group";
-		/** The ID of the creator user or group */
-		CreatorTargetId: number;
-		/** The name/username of the creator */
-		Name: string;
-	};
+	ProductType: "Developer Product";
 	IconImageAssetId: number;
-	TargetId: number;
+}
+
+interface GamePassProductInfo extends ProductInfo {
+	/** Describes whether the asset is a User Product, Developer Product, or Game Pass */
+	ProductType: "Game Pass";
+	IconImageAssetId: number;
+}
+
+interface SubscriptionProductInfo extends ProductInfo {
+	/** Describes whether the asset is a User Product, Developer Product, or Game Pass */
+	ProductType: "Subscription";
 }
 
 interface BadgeInfo {
@@ -285,30 +319,6 @@ declare const enum AssetTypeId {
 	PoseAnimation = 56,
 	EarAccessory = 57,
 	EyeAccessory = 58,
-}
-
-interface AssetProductInfo extends ProductInfo {
-	/** If InfoType was Asset, this is the ID of the given asset. */
-	AssetId: number;
-	/** The [type of asset](https://developer.roblox.com/articles/Asset-types) (e.g. place, model, shirt). In TypeScript, you should compare this value to a member of the `AssetTypeId` const enum. */
-	AssetTypeId: AssetTypeId;
-	/** Describes whether the asset is purchasable */
-	IsForSale: boolean;
-	/** Describes whether the asset is a "limited item" that is no longer (if ever) sold */
-	IsLimited: boolean;
-	/** Describes whether the asset is a "limited unique" ("Limited U") item that only has a fixed number sold */
-	IsLimitedUnique: boolean;
-	/** Describes whether the asset is marked as "new" in the catalog */
-	IsNew: boolean;
-	/** The remaining number of items a limited unique item may be sold */
-	Remaining: number;
-	/** The number of items the asset has been sold */
-	Sales: number;
-}
-
-interface DeveloperProductInfo extends ProductInfo {
-	/** If the InfoType was Product, this is the product's ID */
-	ProductId: number;
 }
 
 interface AgentParameters {
@@ -603,7 +613,7 @@ interface Axes {
 type AxesConstructor = new (...axes: Array<Enum.Axis | Enum.NormalId>) => Axes;
 declare const Axes: AxesConstructor;
 
-interface BrickColor<Number extends number = any, Name extends string = any> {
+interface BrickColor<T extends keyof BrickColorsByNumber = keyof BrickColorsByNumber> {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -613,9 +623,9 @@ interface BrickColor<Number extends number = any, Name extends string = any> {
 	 */
 	readonly _nominal_BrickColor: unique symbol;
 	/** The unique number that identifies the BrickColor */
-	readonly Number: number extends Number ? keyof BrickColorsByNumber : Number;
+	readonly Number: T;
 	/** The name associated with the BrickColor */
-	readonly Name: string extends Name ? BrickColorsByNumber[keyof BrickColorsByNumber] : Name;
+	readonly Name: BrickColorsByNumber[T];
 	/** The Color3 associated with the BrickColor */
 	readonly Color: Color3;
 	/** The red component (between 0 and 1) */
@@ -973,30 +983,29 @@ interface BrickColorConstructor {
 	random: () => BrickColor;
 
 	/** Returns a White BrickColor */
-	White: () => BrickColor<1, "White">;
+	White: () => BrickColor<1>;
 	/** Returns a Gray BrickColor */
-	Gray: () => BrickColor<194, "Medium stone grey">;
+	Gray: () => BrickColor<194>;
 	/** Returns a DarkGray BrickColor */
-	DarkGray: () => BrickColor<199, "Dark stone grey">;
+	DarkGray: () => BrickColor<199>;
 	/** Returns a Black BrickColor */
-	Black: () => BrickColor<26, "Black">;
+	Black: () => BrickColor<26>;
 	/** Returns a Red BrickColor */
-	Red: () => BrickColor<21, "Bright red">;
+	Red: () => BrickColor<21>;
 	/** Returns a Yellow BrickColor */
-	Yellow: () => BrickColor<24, "Bright yellow">;
+	Yellow: () => BrickColor<24>;
 	/** Returns a Green BrickColor */
-	Green: () => BrickColor<28, "Dark green">;
+	Green: () => BrickColor<28>;
 	/** Returns a Blue BrickColor */
-	Blue: () => BrickColor<23, "Bright blue">;
+	Blue: () => BrickColor<23>;
 
 	/** Constructs a BrickColor from its name. */
 	new <T extends BrickColorsByNumber[keyof BrickColorsByNumber]>(val: T): BrickColor<
-		{ [K in keyof BrickColorsByNumber]: T extends BrickColorsByNumber[K] ? K : never }[keyof BrickColorsByNumber],
-		T
+		{ [K in keyof BrickColorsByNumber]: T extends BrickColorsByNumber[K] ? K : never }[keyof BrickColorsByNumber]
 	>;
 
 	/** Constructs a BrickColor from its numerical index. */
-	new <T extends keyof BrickColorsByNumber>(val: T): BrickColor<T, BrickColorsByNumber[T]>;
+	new <T extends keyof BrickColorsByNumber>(val: T): BrickColor<T>;
 
 	/** Constructs a BrickColor from its numerical index. */
 	new (val: number): BrickColor;
@@ -1008,13 +1017,8 @@ interface BrickColorConstructor {
 	new (color: Color3): BrickColor;
 
 	/** Constructs a BrickColor from its palette index. */
-	palette: {
-		<T extends keyof BrickColorsByPalette>(paletteValue: T): BrickColor<
-			BrickColorsByPalette[T],
-			BrickColorsByNumber[BrickColorsByPalette[T]]
-		>;
-		(paletteValue: number): BrickColor;
-	};
+	palette<T extends keyof BrickColorsByPalette>(this: void, paletteValue: T): BrickColor<BrickColorsByPalette[T]>;
+	palette(this: void, paletteValue: number): BrickColor;
 }
 
 declare const BrickColor: BrickColorConstructor;

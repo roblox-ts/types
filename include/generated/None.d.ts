@@ -40,6 +40,7 @@ interface Services {
 	EventIngestService: EventIngestService;
 	FaceAnimatorService: FaceAnimatorService;
 	FacialAnimationStreamingService: FacialAnimationStreamingService;
+	GamepadService: GamepadService;
 	GamePassService: GamePassService;
 	GroupService: GroupService;
 	GuiService: GuiService;
@@ -10151,6 +10152,21 @@ interface GamePassService extends Instance {
 	 * @deprecated
 	 */
 	PlayerHasPass(this: GamePassService, player: Player, gamePassId: number): boolean;
+}
+
+/** The GamepadService is internally responsible for handling inputs from various controllers (such as an Xbox One controller) */
+interface GamepadService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_GamepadService: unique symbol;
+	readonly GamepadCursorEnabled: boolean;
+	DisableGamepadCursor(this: GamepadService): void;
+	EnableGamepadCursor(this: GamepadService, guiObject: GuiObject): void;
 }
 
 interface GetTextBoundsParams extends Instance {
@@ -21053,26 +21069,29 @@ interface MarketplaceService extends Instance {
 	 * *   [Monetization Guides](https://developer.roblox.com/learn-roblox/monetization), learning materials related to monetizing your game
 	 * Tags: Yields
 	 */
+	GetProductInfo(this: MarketplaceService, id: number): AssetProductInfo;
+	GetProductInfo(this: MarketplaceService, id: number, infoType: CastsToEnum<Enum.InfoType.Asset>): AssetProductInfo;
+	GetProductInfo(this: MarketplaceService, id: number, infoType: CastsToEnum<Enum.InfoType.Bundle>): BundleInfo;
 	GetProductInfo(
 		this: MarketplaceService,
-		assetId: number,
-		infoType: CastsToEnum<Enum.InfoType.Asset>,
-	): AssetProductInfo;
+		id: number,
+		infoType: CastsToEnum<Enum.InfoType.GamePass>,
+	): GamePassProductInfo;
 	GetProductInfo(
 		this: MarketplaceService,
-		assetId: number,
+		id: number,
 		infoType: CastsToEnum<Enum.InfoType.Product>,
 	): DeveloperProductInfo;
 	GetProductInfo(
 		this: MarketplaceService,
-		assetId: number,
-		infoType: CastsToEnum<Enum.InfoType.GamePass>,
-	): AssetProductInfo;
+		id: number,
+		infoType: CastsToEnum<Enum.InfoType.Subscription>,
+	): SubscriptionProductInfo;
 	GetProductInfo(
 		this: MarketplaceService,
-		assetId: number,
-		infoType: CastsToEnum<Enum.InfoType>,
-	): AssetProductInfo | DeveloperProductInfo;
+		id: number,
+		infoType?: CastsToEnum<Enum.InfoType>,
+	): AssetProductInfo | BundleInfo | GamePassProductInfo | DeveloperProductInfo | SubscriptionProductInfo;
 	/**
 	 * Tags: Yields
 	 */
