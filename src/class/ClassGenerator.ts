@@ -1275,7 +1275,7 @@ export class ClassGenerator extends Generator {
 		this.write(`// GENERATED ROBLOX INSTANCE CLASSES`);
 		this.write(``);
 		for (const rbxClass of rbxClasses) {
-			if (this.shouldGenerateClass(rbxClass)) this.generateClass(rbxClass, sourceFile);
+			this.generateClass(rbxClass, sourceFile);
 		}
 	}
 
