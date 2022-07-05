@@ -40,6 +40,7 @@ interface Services {
 	EventIngestService: EventIngestService;
 	FaceAnimatorService: FaceAnimatorService;
 	FacialAnimationStreamingService: FacialAnimationStreamingService;
+	GamepadService: GamepadService;
 	GamePassService: GamePassService;
 	GroupService: GroupService;
 	GuiService: GuiService;
@@ -10151,6 +10152,21 @@ interface GamePassService extends Instance {
 	 * @deprecated
 	 */
 	PlayerHasPass(this: GamePassService, player: Player, gamePassId: number): boolean;
+}
+
+/** The GamepadService is internally responsible for handling inputs from various controllers (such as an Xbox One controller) */
+interface GamepadService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_GamepadService: unique symbol;
+	readonly GamepadCursorEnabled: boolean;
+	DisableGamepadCursor(this: GamepadService): void;
+	EnableGamepadCursor(this: GamepadService, guiObject: GuiObject): void;
 }
 
 interface GetTextBoundsParams extends Instance {
