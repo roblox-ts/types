@@ -238,6 +238,10 @@ interface Dragger extends Instance {
 interface FriendPages
 	extends Pages<{ AvatarFinal: boolean; AvatarUri: string; Id: number; Username: string; IsOnline: boolean }> {}
 
+interface GamepadService extends Instance {
+	EnableGamepadCursor(this: GamepadService, guiObject?: GuiObject): void;
+}
+
 interface GamePassService extends Instance {
 	/** This item is deprecated. Do not use it for new work. */
 	PlayerHasPass(this: GamePassService, player: Player, gamePassId: number): boolean;
