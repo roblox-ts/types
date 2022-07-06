@@ -34709,7 +34709,7 @@ interface UserInputService extends Instance {
 	 * 
 	 * As this event only fires locally, it can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 */
-	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<InputObject>, gameProcessedEvent: boolean) => void>;
+	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>, gameProcessedEvent: boolean) => void>;
 	/**
 	 * The TouchTapInWorld event fires when the user touches/taps their finger on the screen on a [TouchEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/TouchEnabled) device. It is fired when the user taps in the game world.
 	 * 
