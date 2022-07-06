@@ -957,7 +957,7 @@ interface UserInputService extends Instance {
 		(touchPositions: Array<InputObject>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void
 	>;
 	readonly TouchStarted: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
-	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<InputObject>, gameProcessedEvent: boolean) => void>;
+	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>, gameProcessedEvent: boolean) => void>;
 	readonly DeviceAccelerationChanged: RBXScriptSignal<(acceleration: InputObject) => void>;
 	readonly DeviceGravityChanged: RBXScriptSignal<(gravity: InputObject) => void>;
 	readonly DeviceRotationChanged: RBXScriptSignal<(rotation: InputObject, cframe: CFrame) => void>;
