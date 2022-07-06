@@ -239,7 +239,7 @@ interface FriendPages
 	extends Pages<{ AvatarFinal: boolean; AvatarUri: string; Id: number; Username: string; IsOnline: boolean }> {}
 
 interface GamepadService extends Instance {
-	EnableGamepadCursor(this: GamepadService, guiObject?: GuiObject): void;
+	EnableGamepadCursor(this: GamepadService, guiObject: GuiObject | undefined): void;
 }
 
 interface GamePassService extends Instance {
