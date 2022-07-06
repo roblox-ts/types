@@ -10180,7 +10180,7 @@ interface GamepadService extends Instance {
 	readonly _nominal_GamepadService: unique symbol;
 	readonly GamepadCursorEnabled: boolean;
 	DisableGamepadCursor(this: GamepadService): void;
-	EnableGamepadCursor(this: GamepadService, guiObject: GuiObject): void;
+	EnableGamepadCursor(this: GamepadService, guiObject: GuiObject | undefined): void;
 }
 
 interface GetTextBoundsParams extends Instance {
