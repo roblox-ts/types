@@ -1842,9 +1842,9 @@ declare namespace Enum {
 
 		export const Z: Z;
 		/** @deprecated renamed to Z */
-		export const Back: Z;
-		/** @deprecated renamed to Z */
 		export const Front: Z;
+		/** @deprecated renamed to Z */
+		export const Back: Z;
 
 		export function GetEnumItems(this: Enum): Array<Axis>
 	}
@@ -3611,14 +3611,8 @@ declare namespace Enum {
 		}
 
 		export const Medium: Medium;
-
-		export interface Default extends EnumItem {
-			Name: "Default";
-			Value: 2000;
-			EnumType: typeof ContextActionPriority;
-		}
-
-		export const Default: Default;
+		/** @deprecated renamed to Medium */
+		export const Default: Medium;
 
 		export interface High extends EnumItem {
 			Name: "High";
@@ -3630,7 +3624,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: Enum): Array<ContextActionPriority>
 	}
-	export type ContextActionPriority = ContextActionPriority.Low | ContextActionPriority.Medium | ContextActionPriority.Default | ContextActionPriority.High;
+	export type ContextActionPriority = ContextActionPriority.Low | ContextActionPriority.Medium | ContextActionPriority.High;
 	export namespace ContextActionResult {
 		export interface Pass extends EnumItem {
 			Name: "Pass";
@@ -6994,27 +6988,27 @@ declare namespace Enum {
 
 		export const NoInput: NoInput;
 		/** @deprecated renamed to NoInput */
+		export const Action4: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const Action5: NoInput;
+		/** @deprecated renamed to NoInput */
 		export const RightTread: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const UpDown: NoInput;
+		export const Throtle: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const Action2: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action3: NoInput;
+		export const Action1: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Steer: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Throttle: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const Action1: NoInput;
+		export const Action2: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const Throtle: NoInput;
+		export const UpDown: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const LeftTread: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const Action4: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action5: NoInput;
+		export const Action3: NoInput;
 
 		export interface Constant extends EnumItem {
 			Name: "Constant";
@@ -12529,6 +12523,42 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<RotationType>
 	}
 	export type RotationType = RotationType.MovementRelative | RotationType.CameraRelative;
+	export namespace RunContext {
+		export interface Legacy extends EnumItem {
+			Name: "Legacy";
+			Value: 0;
+			EnumType: typeof RunContext;
+		}
+
+		export const Legacy: Legacy;
+
+		export interface Server extends EnumItem {
+			Name: "Server";
+			Value: 1;
+			EnumType: typeof RunContext;
+		}
+
+		export const Server: Server;
+
+		export interface Client extends EnumItem {
+			Name: "Client";
+			Value: 2;
+			EnumType: typeof RunContext;
+		}
+
+		export const Client: Client;
+
+		export interface Plugin extends EnumItem {
+			Name: "Plugin";
+			Value: 3;
+			EnumType: typeof RunContext;
+		}
+
+		export const Plugin: Plugin;
+
+		export function GetEnumItems(this: Enum): Array<RunContext>
+	}
+	export type RunContext = RunContext.Legacy | RunContext.Server | RunContext.Client | RunContext.Plugin;
 	export namespace RuntimeUndoBehavior {
 		export interface Aggregate extends EnumItem {
 			Name: "Aggregate";
@@ -14654,9 +14684,9 @@ declare namespace Enum {
 
 		export const Smooth: Smooth;
 		/** @deprecated renamed to Smooth */
-		export const Unjoinable: Smooth;
-		/** @deprecated renamed to Smooth */
 		export const Spawn: Smooth;
+		/** @deprecated renamed to Smooth */
+		export const Unjoinable: Smooth;
 
 		export interface Glue extends EnumItem {
 			Name: "Glue";
@@ -16678,9 +16708,25 @@ declare namespace Enum {
 
 		export const HSRInnerReverse: HSRInnerReverse;
 
+		export interface LayerCageFittedToBase extends EnumItem {
+			Name: "LayerCageFittedToBase";
+			Value: 12;
+			EnumType: typeof WrapLayerDebugMode;
+		}
+
+		export const LayerCageFittedToBase: LayerCageFittedToBase;
+
+		export interface LayerCageFittedToPrev extends EnumItem {
+			Name: "LayerCageFittedToPrev";
+			Value: 13;
+			EnumType: typeof WrapLayerDebugMode;
+		}
+
+		export const LayerCageFittedToPrev: LayerCageFittedToPrev;
+
 		export function GetEnumItems(this: Enum): Array<WrapLayerDebugMode>
 	}
-	export type WrapLayerDebugMode = WrapLayerDebugMode.None | WrapLayerDebugMode.BoundCage | WrapLayerDebugMode.LayerCage | WrapLayerDebugMode.BoundCageAndLinks | WrapLayerDebugMode.Reference | WrapLayerDebugMode.Rbf | WrapLayerDebugMode.OuterCage | WrapLayerDebugMode.ReferenceMeshAfterMorph | WrapLayerDebugMode.HSROuterDetail | WrapLayerDebugMode.HSROuter | WrapLayerDebugMode.HSRInner | WrapLayerDebugMode.HSRInnerReverse;
+	export type WrapLayerDebugMode = WrapLayerDebugMode.None | WrapLayerDebugMode.BoundCage | WrapLayerDebugMode.LayerCage | WrapLayerDebugMode.BoundCageAndLinks | WrapLayerDebugMode.Reference | WrapLayerDebugMode.Rbf | WrapLayerDebugMode.OuterCage | WrapLayerDebugMode.ReferenceMeshAfterMorph | WrapLayerDebugMode.HSROuterDetail | WrapLayerDebugMode.HSROuter | WrapLayerDebugMode.HSRInner | WrapLayerDebugMode.HSRInnerReverse | WrapLayerDebugMode.LayerCageFittedToBase | WrapLayerDebugMode.LayerCageFittedToPrev;
 	export namespace WrapTargetDebugMode {
 		export interface None extends EnumItem {
 			Name: "None";
