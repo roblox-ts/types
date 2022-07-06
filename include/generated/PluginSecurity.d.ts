@@ -946,6 +946,18 @@ interface LuaSettings extends Instance {
 	readonly _nominal_LuaSettings: unique symbol;
 }
 
+interface BaseScript extends LuaSourceContainer {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BaseScript: unique symbol;
+	RunContext: Enum.RunContext;
+}
+
 interface Script extends BaseScript {
 	/**
 	 * **DO NOT USE!**
@@ -2682,12 +2694,14 @@ interface ScriptDocument extends Instance {
 	GetLine(this: ScriptDocument, lineIndex?: number): string;
 	GetLineCount(this: ScriptDocument): number;
 	GetScript(this: ScriptDocument): LuaSourceContainer;
+	GetSelection(this: ScriptDocument): unknown;
 	GetText(this: ScriptDocument, startLine?: number, startCharacter?: number, endLine?: number, endCharacter?: number): string;
 	IsCommandBar(this: ScriptDocument): boolean;
 	/**
 	 * Tags: Yields
 	 */
 	EditTextAsync(this: ScriptDocument, newText: string, startLine: number, startCharacter: number, endLine: number, endCharacter: number): unknown;
+	readonly SelectionChanged: RBXScriptSignal<(positionLine: number, positionCharacter: number, anchorLine: number, anchorCharacter: number) => void>;
 }
 
 interface ScriptEditorService extends Instance {

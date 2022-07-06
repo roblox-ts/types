@@ -399,6 +399,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AnimationClip: AnimationClip;
 	AnimationStreamTrack: AnimationStreamTrack;
 	AnimationTrack: AnimationTrack;
+	AssetImportSession: AssetImportSession;
 	BaseWrap: BaseWrap;
 	CatalogPages: CatalogPages;
 	ChatInputBarConfiguration: ChatInputBarConfiguration;
@@ -2043,6 +2044,19 @@ interface AssetImportService extends Instance {
 	readonly _nominal_AssetImportService: unique symbol;
 	readonly ProgressUpdate: RBXScriptSignal<(progressRatio: number) => void>;
 	readonly UploadFinished: RBXScriptSignal<(succeeded: boolean, errorMap: object) => void>;
+}
+
+interface AssetImportSession extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AssetImportSession: unique symbol;
+	readonly UploadComplete: RBXScriptSignal<(succeeded: boolean, errorMap: object) => void>;
+	readonly UploadProgress: RBXScriptSignal<(progressRatio: number) => void>;
 }
 
 interface AssetManagerService extends Instance {
