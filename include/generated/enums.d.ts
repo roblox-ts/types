@@ -1818,9 +1818,9 @@ declare namespace Enum {
 
 		export const X: X;
 		/** @deprecated renamed to X */
-		export const Right: X;
-		/** @deprecated renamed to X */
 		export const Left: X;
+		/** @deprecated renamed to X */
+		export const Right: X;
 
 		export interface Y extends EnumItem {
 			Name: "Y";
@@ -1830,9 +1830,9 @@ declare namespace Enum {
 
 		export const Y: Y;
 		/** @deprecated renamed to Y */
-		export const Bottom: Y;
-		/** @deprecated renamed to Y */
 		export const Top: Y;
+		/** @deprecated renamed to Y */
+		export const Bottom: Y;
 
 		export interface Z extends EnumItem {
 			Name: "Z";
@@ -1842,9 +1842,9 @@ declare namespace Enum {
 
 		export const Z: Z;
 		/** @deprecated renamed to Z */
-		export const Front: Z;
-		/** @deprecated renamed to Z */
 		export const Back: Z;
+		/** @deprecated renamed to Z */
+		export const Front: Z;
 
 		export function GetEnumItems(this: Enum): Array<Axis>
 	}
@@ -1858,11 +1858,11 @@ declare namespace Enum {
 
 		export const Script: Script;
 		/** @deprecated renamed to Script */
-		export const Slingshot: Script;
-		/** @deprecated renamed to Script */
 		export const Rocket: Script;
 		/** @deprecated renamed to Script */
 		export const Laser: Script;
+		/** @deprecated renamed to Script */
+		export const Slingshot: Script;
 
 		export interface GameTool extends EnumItem {
 			Name: "GameTool";
@@ -6988,27 +6988,27 @@ declare namespace Enum {
 
 		export const NoInput: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const Action4: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action5: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const RightTread: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Throtle: NoInput;
+		export const LeftTread: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Action1: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Steer: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Throttle: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Action2: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const UpDown: NoInput;
+		export const RightTread: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const LeftTread: NoInput;
+		export const Action5: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Action3: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const Action4: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const Throtle: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const UpDown: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const Steer: NoInput;
 
 		export interface Constant extends EnumItem {
 			Name: "Constant";
