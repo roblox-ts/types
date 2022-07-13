@@ -6988,27 +6988,27 @@ declare namespace Enum {
 
 		export const NoInput: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const LeftTread: NoInput;
-		/** @deprecated renamed to NoInput */
 		export const Action1: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Throttle: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action2: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const RightTread: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action5: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action3: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Action4: NoInput;
 		/** @deprecated renamed to NoInput */
+		export const Action5: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const LeftTread: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const Steer: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const RightTread: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const Action3: NoInput;
+		/** @deprecated renamed to NoInput */
 		export const Throtle: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const Throttle: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const UpDown: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const Steer: NoInput;
+		export const Action2: NoInput;
 
 		export interface Constant extends EnumItem {
 			Name: "Constant";
@@ -15931,6 +15931,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<UiMessageType>
 	}
 	export type UiMessageType = UiMessageType.UiMessageError | UiMessageType.UiMessageInfo;
+	export namespace UnionsScaleNonuniformly {
+		export interface Default extends EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof UnionsScaleNonuniformly;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled extends EnumItem {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: typeof UnionsScaleNonuniformly;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled extends EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof UnionsScaleNonuniformly;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: Enum): Array<UnionsScaleNonuniformly>
+	}
+	export type UnionsScaleNonuniformly = UnionsScaleNonuniformly.Default | UnionsScaleNonuniformly.Disabled | UnionsScaleNonuniformly.Enabled;
 	export namespace UsageContext {
 		export interface Default extends EnumItem {
 			Name: "Default";
