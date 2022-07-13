@@ -23547,6 +23547,10 @@ interface TriangleMeshPart extends BasePart {
 	 * Tags: NotReplicated
 	 */
 	readonly CollisionFidelity: Enum.CollisionFidelity;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly MeshSize: Vector3;
 }
 
 /** MeshParts are a form of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that includes a physically simulated custom mesh. Unlike with other mesh classes, such as [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh) and [BlockMesh](https://developer.roblox.com/en-us/api-reference/class/BlockMesh), they are not parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) but rather behave as a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) in their own right.
@@ -23610,10 +23614,6 @@ interface MeshPart extends TriangleMeshPart {
 	 * Note that this property currently cannot be changed by scripts as the collision model of the mesh cannot be recomputed during runtime. Developers should not rely on this behavior as it may change in the future. Those looking for a custom mesh object that can be updated during runtime should use [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh).
 	 */
 	readonly MeshId: string;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly MeshSize: Vector3;
 	/**
 	 * This property determines the level of detail that solid-modeled and mesh parts will be shown in and can be set to the possible values of the [RenderFidelity](https://developer.roblox.com/en-us/api-reference/enum/RenderFidelity) enum.
 	 * 
@@ -26020,12 +26020,6 @@ interface Player extends Instance {
 	 * This is useful when determining whether a player's appearance has loaded after they first join the game, which can be tracked using the [Players.PlayerAdded](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerAdded) event.
 	 */
 	HasAppearanceLoaded(this: Player): boolean;
-	/**
-	 * This function returns true if the user is available for Roblox experiments. The purpose of this function is currently unknown.
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	IsUserAvailableForExperiment(this: Player): boolean;
 	/**
 	 * The Kick [Player](https://developer.roblox.com/en-us/api-reference/class/Player) method allows a game to gracefully disconnect a client from the game and optionally provide a message to the disconnected player. This is useful for moderating abusive players. When used in conjunction with a [DataStore](https://developer.roblox.com/en-us/api-reference/class/DataStore), it is possible to create ban lists with expiration dates. Only allow specific whitelisted users whom you trust to trigger this method on other players.
 	 * 
