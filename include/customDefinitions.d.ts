@@ -526,7 +526,7 @@ interface MemoryStoreQueue extends Instance {
 		this: MemoryStoreQueue,
 		count: number,
 		allOrNothing?: boolean,
-		waitTimeout?: number
+		waitTimeout?: number,
 	): LuaTuple<[items: Array<unknown>, id: string]>;
 }
 
