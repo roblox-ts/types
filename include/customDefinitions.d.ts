@@ -522,7 +522,12 @@ interface MarketplaceService extends Instance {
 
 /** @server */
 interface MemoryStoreQueue extends Instance {
-	ReadAsync(this: MemoryStoreQueue, count: number, allOrNothing?: boolean, waitTimeout?: number): LuaTuple<[items: Array<unknown>, id: string]>;
+	ReadAsync(
+		this: MemoryStoreQueue,
+		count: number,
+		allOrNothing?: boolean,
+		waitTimeout?: number
+	): LuaTuple<[items: Array<unknown>, id: string]>;
 }
 
 /** @server */
