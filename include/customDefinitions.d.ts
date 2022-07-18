@@ -212,7 +212,7 @@ interface DataStore extends GlobalDataStore {
 	): R extends undefined
 		? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]>
 		: LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
-	RemoveAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
+	RemoveAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo | undefined]>;
 }
 
 interface DataStorePages extends Pages<{ key: string; value: unknown }> {}
@@ -567,7 +567,7 @@ interface OrderedDataStore extends GlobalDataStore {
 		maxValue?: number,
 	): DataStorePages;
 	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
-	RemoveAsync(this: OrderedDataStore, key: string): number;
+	RemoveAsync(this: OrderedDataStore, key: string): number | undefined;
 	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
 	UpdateAsync<O, R>(
 		this: GlobalDataStore,
