@@ -1842,9 +1842,9 @@ declare namespace Enum {
 
 		export const Z: Z;
 		/** @deprecated renamed to Z */
-		export const Back: Z;
-		/** @deprecated renamed to Z */
 		export const Front: Z;
+		/** @deprecated renamed to Z */
+		export const Back: Z;
 
 		export function GetEnumItems(this: Enum): Array<Axis>
 	}
@@ -6988,7 +6988,7 @@ declare namespace Enum {
 
 		export const NoInput: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const Action1: NoInput;
+		export const Steer: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Action4: NoInput;
 		/** @deprecated renamed to NoInput */
@@ -6996,19 +6996,19 @@ declare namespace Enum {
 		/** @deprecated renamed to NoInput */
 		export const LeftTread: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const Steer: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const RightTread: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action3: NoInput;
+		export const Action2: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Throtle: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const Action1: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const Action3: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Throttle: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const UpDown: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const Action2: NoInput;
+		export const RightTread: NoInput;
 
 		export interface Constant extends EnumItem {
 			Name: "Constant";
