@@ -153,8 +153,6 @@ declare namespace Enum {
 		}
 
 		export const TShirt: TShirt;
-		/** @deprecated renamed to TShirt */
-		export const TeeShirt: TShirt;
 
 		export interface Shirt extends EnumItem {
 			Name: "Shirt";
@@ -883,8 +881,6 @@ declare namespace Enum {
 		}
 
 		export const TShirt: TShirt;
-		/** @deprecated renamed to TShirt */
-		export const TeeShirt: TShirt;
 
 		export interface Audio extends EnumItem {
 			Name: "Audio";
@@ -1237,8 +1233,6 @@ declare namespace Enum {
 		}
 
 		export const TShirtAccessory: TShirtAccessory;
-		/** @deprecated renamed to TShirtAccessory */
-		export const TeeShirtAccessory: TShirtAccessory;
 
 		export interface ShirtAccessory extends EnumItem {
 			Name: "ShirtAccessory";
@@ -1639,8 +1633,6 @@ declare namespace Enum {
 		}
 
 		export const TShirtAccessory: TShirtAccessory;
-		/** @deprecated renamed to TShirtAccessory */
-		export const TeeShirtAccessory: TShirtAccessory;
 
 		export interface ShirtAccessory extends EnumItem {
 			Name: "ShirtAccessory";
@@ -1817,10 +1809,6 @@ declare namespace Enum {
 		}
 
 		export const X: X;
-		/** @deprecated renamed to X */
-		export const Left: X;
-		/** @deprecated renamed to X */
-		export const Right: X;
 
 		export interface Y extends EnumItem {
 			Name: "Y";
@@ -1829,10 +1817,6 @@ declare namespace Enum {
 		}
 
 		export const Y: Y;
-		/** @deprecated renamed to Y */
-		export const Top: Y;
-		/** @deprecated renamed to Y */
-		export const Bottom: Y;
 
 		export interface Z extends EnumItem {
 			Name: "Z";
@@ -1841,10 +1825,6 @@ declare namespace Enum {
 		}
 
 		export const Z: Z;
-		/** @deprecated renamed to Z */
-		export const Front: Z;
-		/** @deprecated renamed to Z */
-		export const Back: Z;
 
 		export function GetEnumItems(this: Enum): Array<Axis>
 	}
@@ -1857,12 +1837,6 @@ declare namespace Enum {
 		}
 
 		export const Script: Script;
-		/** @deprecated renamed to Script */
-		export const Rocket: Script;
-		/** @deprecated renamed to Script */
-		export const Laser: Script;
-		/** @deprecated renamed to Script */
-		export const Slingshot: Script;
 
 		export interface GameTool extends EnumItem {
 			Name: "GameTool";
@@ -3611,8 +3585,6 @@ declare namespace Enum {
 		}
 
 		export const Medium: Medium;
-		/** @deprecated renamed to Medium */
-		export const Default: Medium;
 
 		export interface High extends EnumItem {
 			Name: "High";
@@ -4933,8 +4905,6 @@ declare namespace Enum {
 		}
 
 		export const Craters: Craters;
-		/** @deprecated renamed to Craters */
-		export const CratersAndDebris: Craters;
 
 		export function GetEnumItems(this: Enum): Array<ExplosionType>
 	}
@@ -5159,8 +5129,6 @@ declare namespace Enum {
 		}
 
 		export const GothamMedium: GothamMedium;
-		/** @deprecated renamed to GothamMedium */
-		export const GothamSemibold: GothamMedium;
 
 		export interface GothamBold extends EnumItem {
 			Name: "GothamBold";
@@ -5625,8 +5593,6 @@ declare namespace Enum {
 		}
 
 		export const Brick: Brick;
-		/** @deprecated renamed to Brick */
-		export const Block: Brick;
 
 		export interface Plate extends EnumItem {
 			Name: "Plate";
@@ -6987,28 +6953,6 @@ declare namespace Enum {
 		}
 
 		export const NoInput: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Steer: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action4: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action5: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const LeftTread: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action2: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Throtle: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action1: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action3: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Throttle: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const UpDown: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const RightTread: NoInput;
 
 		export interface Constant extends EnumItem {
 			Name: "Constant";
@@ -9685,8 +9629,6 @@ declare namespace Enum {
 		}
 
 		export const Foil: Foil;
-		/** @deprecated renamed to Foil */
-		export const Aluminum: Foil;
 
 		export interface Grass extends EnumItem {
 			Name: "Grass";
@@ -10004,9 +9946,17 @@ declare namespace Enum {
 
 		export const DistanceBased: DistanceBased;
 
+		export interface Level00 extends EnumItem {
+			Name: "Level00";
+			Value: 1;
+			EnumType: typeof MeshPartDetailLevel;
+		}
+
+		export const Level00: Level00;
+
 		export interface Level01 extends EnumItem {
 			Name: "Level01";
-			Value: 1;
+			Value: 2;
 			EnumType: typeof MeshPartDetailLevel;
 		}
 
@@ -10014,7 +9964,7 @@ declare namespace Enum {
 
 		export interface Level02 extends EnumItem {
 			Name: "Level02";
-			Value: 2;
+			Value: 3;
 			EnumType: typeof MeshPartDetailLevel;
 		}
 
@@ -10022,7 +9972,7 @@ declare namespace Enum {
 
 		export interface Level03 extends EnumItem {
 			Name: "Level03";
-			Value: 3;
+			Value: 4;
 			EnumType: typeof MeshPartDetailLevel;
 		}
 
@@ -10030,7 +9980,7 @@ declare namespace Enum {
 
 		export interface Level04 extends EnumItem {
 			Name: "Level04";
-			Value: 4;
+			Value: 5;
 			EnumType: typeof MeshPartDetailLevel;
 		}
 
@@ -10038,7 +9988,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: Enum): Array<MeshPartDetailLevel>
 	}
-	export type MeshPartDetailLevel = MeshPartDetailLevel.DistanceBased | MeshPartDetailLevel.Level01 | MeshPartDetailLevel.Level02 | MeshPartDetailLevel.Level03 | MeshPartDetailLevel.Level04;
+	export type MeshPartDetailLevel = MeshPartDetailLevel.DistanceBased | MeshPartDetailLevel.Level00 | MeshPartDetailLevel.Level01 | MeshPartDetailLevel.Level02 | MeshPartDetailLevel.Level03 | MeshPartDetailLevel.Level04;
 	export namespace MeshPartHeadsAndAccessories {
 		export interface Default extends EnumItem {
 			Name: "Default";
@@ -14683,10 +14633,6 @@ declare namespace Enum {
 		}
 
 		export const Smooth: Smooth;
-		/** @deprecated renamed to Smooth */
-		export const Spawn: Smooth;
-		/** @deprecated renamed to Smooth */
-		export const Unjoinable: Smooth;
 
 		export interface Glue extends EnumItem {
 			Name: "Glue";
@@ -14695,8 +14641,6 @@ declare namespace Enum {
 		}
 
 		export const Glue: Glue;
-		/** @deprecated renamed to Glue */
-		export const Bumps: Glue;
 
 		export interface Weld extends EnumItem {
 			Name: "Weld";
@@ -15497,8 +15441,6 @@ declare namespace Enum {
 		}
 
 		export const Auto: Auto;
-		/** @deprecated renamed to Auto */
-		export const PartialThread: Auto;
 
 		export interface PerCore1 extends EnumItem {
 			Name: "PerCore1";
@@ -16515,6 +16457,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<VoiceChatState>
 	}
 	export type VoiceChatState = VoiceChatState.Idle | VoiceChatState.Joining | VoiceChatState.JoiningRetry | VoiceChatState.Joined | VoiceChatState.Leaving | VoiceChatState.Ended | VoiceChatState.Failed;
+	export namespace VolumetricAudio {
+		export interface Disabled extends EnumItem {
+			Name: "Disabled";
+			Value: 0;
+			EnumType: typeof VolumetricAudio;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Automatic extends EnumItem {
+			Name: "Automatic";
+			Value: 1;
+			EnumType: typeof VolumetricAudio;
+		}
+
+		export const Automatic: Automatic;
+
+		export interface Enabled extends EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof VolumetricAudio;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: Enum): Array<VolumetricAudio>
+	}
+	export type VolumetricAudio = VolumetricAudio.Disabled | VolumetricAudio.Automatic | VolumetricAudio.Enabled;
 	export namespace WaterDirection {
 		export interface NegX extends EnumItem {
 			Name: "NegX";

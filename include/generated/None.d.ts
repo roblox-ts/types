@@ -445,6 +445,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	OutfitPages: OutfitPages;
 	PackageLink: PackageLink;
 	ParabolaAdornment: ParabolaAdornment;
+	PatchMapping: PatchMapping;
 	Path: Path;
 	PausedState: PausedState;
 	PausedStateBreakpoint: PausedStateBreakpoint;
@@ -456,6 +457,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	PlayerScripts: PlayerScripts;
 	PluginManagerInterface: PluginManagerInterface;
 	PoseBase: PoseBase;
+	RomarkSoundEffect: RomarkSoundEffect;
 	ScreenshotHud: ScreenshotHud;
 	ScriptDocument: ScriptDocument;
 	StackFrame: StackFrame;
@@ -13838,6 +13840,7 @@ interface GuiService extends Instance {
 	AutoSelectGuiEnabled: boolean;
 	/**
 	 * Toggles whether or not objects in the [CoreGui](https://developer.roblox.com/en-us/api-reference/class/CoreGui) can be navigated using a Gamepad.
+	 * Tags: Hidden, NotReplicated
 	 */
 	CoreGuiNavigationEnabled: boolean;
 	/**
@@ -16225,23 +16228,38 @@ interface ImporterMeshSettings extends ImporterBaseSettings {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly CageManifold: boolean;
-	CageManifoldPreview: boolean;
+	CageMeshIntersectedPreview: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CageMeshNotIntersected: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly CageNoOverlappingVertices: boolean;
-	CageNoOverlappingVerticesPreview: boolean;
+	CageNonManifoldPreview: boolean;
+	CageOverlappingVerticesPreview: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly CageUVMatched: boolean;
-	CageUVMatchedPreview: boolean;
+	CageUVMisMatchedPreview: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Dimensions: Vector3;
 	DoubleSided: boolean;
 	IgnoreVertexColors: boolean;
+	IrrelevantCageModifiedPreview: boolean;
+	MeshHoleDetectedPreview: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly MeshNoHoleDetected: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly NoIrrelevantCageModified: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -22277,6 +22295,7 @@ interface BasePart extends PVInstance {
 	 * The CollisionGroupId property describes the ID number of the part's collision group. Parts start off in the Default group whose ID is 0. Although this property can be directly changed, it is recommended to instead manipulate the collision group of a part using the **name** of the group with the [PhysicsService:SetPartCollisionGroup](https://developer.roblox.com/en-us/api-reference/function/PhysicsService/SetPartCollisionGroup) function. You can find the ID of a collision group by using [PhysicsService:GetCollisionGroupId](https://developer.roblox.com/en-us/api-reference/function/PhysicsService/GetCollisionGroupId).
 	 * 
 	 * This value cannot be negative, and cannot exceed [PhysicsService:GetMaxCollisionGroups](https://developer.roblox.com/en-us/api-reference/function/PhysicsService/GetMaxCollisionGroups). Invalid IDs are clamped.
+	 * Tags: NotReplicated
 	 */
 	CollisionGroupId: number;
 	/**
@@ -25173,6 +25192,20 @@ interface ParticleEmitter extends Instance {
 	 * To clear any emit particles, use [ParticleEmitter:Clear](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Clear).
 	 */
 	Emit(this: ParticleEmitter, particleCount?: number): void;
+}
+
+interface PatchMapping extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PatchMapping: unique symbol;
+	FlattenTree: boolean;
+	PatchId: string;
+	TargetPath: string;
 }
 
 /** **Path** objects store the result of paths created by [PathfindingService:CreatePath()](https://developer.roblox.com/en-us/api-reference/function/PathfindingService/CreatePath).
@@ -29621,6 +29654,17 @@ interface ReverbSoundEffect extends SoundEffect {
 	 * The output volume of the echoed effect.
 	 */
 	WetLevel: number;
+}
+
+interface RomarkSoundEffect extends SoundEffect {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RomarkSoundEffect: unique symbol;
 }
 
 /** The TremoloSoundEffect creates a trembling effect on a sound by varying the volume of the sound up and down.
@@ -35513,6 +35557,11 @@ interface VoiceChatInternal extends Instance {
 	 * Tags: Yields
 	 */
 	IsVoiceEnabledForUserIdAsync(this: VoiceChatInternal, userId: number): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	readonly StateChanged: RBXScriptSignal<(oldValue: Enum.VoiceChatState, newValue: Enum.VoiceChatState) => void>;
 }
 
 interface VoiceChatService extends Instance {

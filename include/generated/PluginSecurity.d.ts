@@ -2691,11 +2691,11 @@ interface ScriptDocument extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ScriptDocument: unique symbol;
-	GetLine(this: ScriptDocument, lineIndex?: number): string;
+	GetLine(this: ScriptDocument, lineIndex?: number | undefined): string;
 	GetLineCount(this: ScriptDocument): number;
 	GetScript(this: ScriptDocument): LuaSourceContainer;
 	GetSelection(this: ScriptDocument): unknown;
-	GetText(this: ScriptDocument, startLine?: number, startCharacter?: number, endLine?: number, endCharacter?: number): string;
+	GetText(this: ScriptDocument, startLine?: number | undefined, startCharacter?: number | undefined, endLine?: number | undefined, endCharacter?: number | undefined): string;
 	IsCommandBar(this: ScriptDocument): boolean;
 	/**
 	 * Tags: Yields
