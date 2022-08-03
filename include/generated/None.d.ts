@@ -39,6 +39,7 @@ interface Services {
 	DraggerService: DraggerService;
 	EventIngestService: EventIngestService;
 	FaceAnimatorService: FaceAnimatorService;
+	FacialAnimationRecordingService: FacialAnimationRecordingService;
 	FacialAnimationStreamingService: FacialAnimationStreamingService;
 	GamepadService: GamepadService;
 	GamePassService: GamePassService;
@@ -70,6 +71,7 @@ interface Services {
 	PathfindingService: PathfindingService;
 	PhysicsService: PhysicsService;
 	Players: Players;
+	PluginManagementService: PluginManagementService;
 	PluginPolicyService: PluginPolicyService;
 	PolicyService: PolicyService;
 	ProcessInstancePhysicsService: ProcessInstancePhysicsService;
@@ -339,6 +341,7 @@ interface CreatableInstances {
 	WedgePart: WedgePart;
 	Weld: Weld;
 	WeldConstraint: WeldConstraint;
+	WireframeHandleAdornment: WireframeHandleAdornment;
 	WorldModel: WorldModel;
 	WrapLayer: WrapLayer;
 	WrapTarget: WrapTarget;
@@ -400,6 +403,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AnimationStreamTrack: AnimationStreamTrack;
 	AnimationTrack: AnimationTrack;
 	AssetImportSession: AssetImportSession;
+	AssetSoundEffect: AssetSoundEffect;
 	BaseWrap: BaseWrap;
 	CatalogPages: CatalogPages;
 	ChatInputBarConfiguration: ChatInputBarConfiguration;
@@ -457,7 +461,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	PlayerScripts: PlayerScripts;
 	PluginManagerInterface: PluginManagerInterface;
 	PoseBase: PoseBase;
-	RomarkSoundEffect: RomarkSoundEffect;
 	ScreenshotHud: ScreenshotHud;
 	ScriptDocument: ScriptDocument;
 	StackFrame: StackFrame;
@@ -2705,9 +2708,14 @@ interface AvatarEditorService extends Instance {
 	 *       }
 	 *     }
 	 * \]
-	 * Tags: Yields
+	 * Tags: Yields, Deprecated
+	 * @deprecated
 	 */
 	GetRecommendedAssets(this: AvatarEditorService, assetType: CastsToEnum<Enum.AvatarAssetType>, contextAssetId?: number): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	GetRecommendedAssetsV2(this: AvatarEditorService, assetType: CastsToEnum<Enum.AvatarAssetType>, assetId: number, numItems: number, includeDetails: boolean): unknown;
 	/**
 	 * This function returns a list of recommended bundles for a given bundle id.
 	 * 
@@ -2745,9 +2753,14 @@ interface AvatarEditorService extends Instance {
 	 *       }
 	 *     }
 	 * \]
-	 * Tags: Yields
+	 * Tags: Yields, Deprecated
+	 * @deprecated
 	 */
 	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	GetRecommendedBundlesV2(this: AvatarEditorService, bundleType: CastsToEnum<Enum.BundleType>, bundleId: number, numItems: number, includeDetails: boolean): unknown;
 	/**
 	 * This function returns a [CatalogPages](https://developer.roblox.com/en-us/api-reference/class/CatalogPages) object containing the result of the given search.
 	 * 
@@ -9798,6 +9811,17 @@ interface Texture extends Decal {
 	StudsPerTileV: number;
 }
 
+interface FacialAnimationRecordingService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FacialAnimationRecordingService: unique symbol;
+}
+
 interface FacialAnimationStreamingService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -13579,6 +13603,21 @@ interface SphereHandleAdornment extends HandleAdornment {
 	 * The radius of the sphere adornment.
 	 */
 	Radius: number;
+}
+
+interface WireframeHandleAdornment extends HandleAdornment {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_WireframeHandleAdornment: unique symbol;
+	AddLine(this: WireframeHandleAdornment, from: Vector3, to: Vector3): void;
+	AddLines(this: WireframeHandleAdornment, points: Array<any>): void;
+	AddPath(this: WireframeHandleAdornment, points: Array<any>, loop: boolean): void;
+	Clear(this: WireframeHandleAdornment): void;
 }
 
 /** A special type of Adornment that is still a work in progress.  
@@ -21262,6 +21301,7 @@ interface MaterialVariant extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MaterialVariant: unique symbol;
+	CustomPhysicalProperties: PhysicalProperties;
 	MaterialPattern: Enum.MaterialPattern;
 	StudsPerTile: number;
 }
@@ -23978,6 +24018,8 @@ interface Model extends PVInstance {
 	 * ```lua
 	 * local cFrame = Model.PrimaryPart and Model.PrimaryPart.CFrame
 	 * ```
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	GetPrimaryPartCFrame(this: Model): CFrame;
 	/**
@@ -24030,6 +24072,8 @@ interface Model extends PVInstance {
 	 * ``` 
 	 * 
 	 * A common use for this is for the 'teleportation' of player characters to different positions.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	SetPrimaryPartCFrame(this: Model, cframe: CFrame): void;
 	/**
@@ -24504,10 +24548,6 @@ interface Workspace extends WorldRoot {
 	 */
 	Gravity: number;
 	readonly InterpolationThrottling: Enum.InterpolationThrottlingMode;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	PhysicsSimulationRate: Enum.PhysicsSimulationRate;
 	Retargeting: Enum.AnimatorRetargetingMode;
 	/**
 	 * The **StreamingEnabled** property determines whether game content streaming is enabled for the place. This property is not scriptable and therefore must be set on the **Workspace** object in Studio.
@@ -25576,6 +25616,8 @@ interface PhysicsService extends Instance {
 	 * Returns the maximum number of collision groups the engine supports. This value is currently 32.
 	 */
 	GetMaxCollisionGroups(this: PhysicsService): number;
+	GetRegisteredCollisionGroups(this: PhysicsService): unknown;
+	RegisterCollisionGroup(this: PhysicsService, name: string): void;
 	/**
 	 * Removes the collision group with the given name. If an invalid name is provided the function will not do anything, although if the reserved name “Default” is provided then the function will throw an error.
 	 * 
@@ -25611,6 +25653,7 @@ interface PhysicsService extends Instance {
 	 * *   The specified group does not exist.
 	 */
 	SetPartCollisionGroup(this: PhysicsService, part: BasePart, name: string): void;
+	UnregisterCollisionGroup(this: PhysicsService, name: string): void;
 }
 
 /** A Player object a client that is currently connected. These objects are added to the [Players](https://developer.roblox.com/en-us/api-reference/class/Players) service when a new player connects, then removed when they eventually disconnect from the server.
@@ -26915,6 +26958,17 @@ interface Players extends Instance {
 	 * If you want to track when a player's character is added or removed from the game, such as when a player respawns or dies, you can use the [Player.CharacterAdded](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterAdded) and [Player.CharacterRemoving](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterRemoving) functions.
 	 */
 	readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
+}
+
+interface PluginManagementService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PluginManagementService: unique symbol;
 }
 
 interface PluginManagerInterface extends Instance {
@@ -29338,6 +29392,17 @@ interface SoundEffect extends Instance {
 	Priority: number;
 }
 
+interface AssetSoundEffect extends SoundEffect {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AssetSoundEffect: unique symbol;
+}
+
 /** A ChorusSoundEffect simulates the effect of multiple vocals or instruments playing the same part. It does this by taking the original sound and overlaying copies of that sound. These copies are not exact matches to the original but instead vary in pitch slightly. This simulates a real chorus, as different singers or instruments will have slight variations. This effect can be applied to either an individual sound or to a sound group by parenting it to the desired instance.  
  *   
  * Like all other [SoundEffect](https://developer.roblox.com/en-us/api-reference/class/SoundEffect), a ChorusSoundEffect can be applied either to a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) or [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) by being parented to either.
@@ -29654,17 +29719,6 @@ interface ReverbSoundEffect extends SoundEffect {
 	 * The output volume of the echoed effect.
 	 */
 	WetLevel: number;
-}
-
-interface RomarkSoundEffect extends SoundEffect {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_RomarkSoundEffect: unique symbol;
 }
 
 /** The TremoloSoundEffect creates a trembling effect on a sound by varying the volume of the sound up and down.
