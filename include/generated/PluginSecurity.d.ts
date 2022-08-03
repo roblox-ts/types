@@ -4,7 +4,6 @@
 /// <reference path="None.d.ts" />
 
 interface Services {
-	ABTestService: ABTestService;
 	ChangeHistoryService: ChangeHistoryService;
 	CoreGui: CoreGui;
 	DebuggerManager: DebuggerManager;
@@ -95,17 +94,6 @@ interface Instance {
 	 * Tags: NotBrowsable
 	 */
 	GetDebugId(this: Instance, scopeLength?: number): string;
-}
-
-interface ABTestService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ABTestService: unique symbol;
 }
 
 interface KeyframeSequence extends AnimationClip {
@@ -389,14 +377,20 @@ interface DebuggerManager extends Instance {
 	Resume(this: DebuggerManager): void;
 	/**
 	 * Performs a [step into](https://developer.roblox.com/articles/Lua-debugger "Lua Debugger") operation on the Lua Debugger.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	StepIn(this: DebuggerManager): void;
 	/**
 	 * Performs a [step out](https://developer.roblox.com/articles/Lua-debugger "Lua Debugger") operation on the Lua Debugger.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	StepOut(this: DebuggerManager): void;
 	/**
 	 * Performs a [step over](https://developer.roblox.com/articles/Lua-debugger "Lua Debugger") operation on the Lua Debugger.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	StepOver(this: DebuggerManager): void;
 	/**
@@ -2694,8 +2688,12 @@ interface ScriptDocument extends Instance {
 	GetLine(this: ScriptDocument, lineIndex?: number | undefined): string;
 	GetLineCount(this: ScriptDocument): number;
 	GetScript(this: ScriptDocument): LuaSourceContainer;
+	GetSelectedText(this: ScriptDocument): string;
 	GetSelection(this: ScriptDocument): unknown;
+	GetSelectionEnd(this: ScriptDocument): unknown;
+	GetSelectionStart(this: ScriptDocument): unknown;
 	GetText(this: ScriptDocument, startLine?: number | undefined, startCharacter?: number | undefined, endLine?: number | undefined, endCharacter?: number | undefined): string;
+	HasSelectedText(this: ScriptDocument): boolean;
 	IsCommandBar(this: ScriptDocument): boolean;
 	/**
 	 * Tags: Yields

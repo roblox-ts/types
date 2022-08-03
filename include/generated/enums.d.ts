@@ -21,58 +21,6 @@ interface Enum {
 declare namespace Enum {
 	export function GetEnums(this: Enums): Array<Enum>;
 
-	export namespace ABTestLoadingStatus {
-		export interface None extends EnumItem {
-			Name: "None";
-			Value: 0;
-			EnumType: typeof ABTestLoadingStatus;
-		}
-
-		export const None: None;
-
-		export interface Pending extends EnumItem {
-			Name: "Pending";
-			Value: 1;
-			EnumType: typeof ABTestLoadingStatus;
-		}
-
-		export const Pending: Pending;
-
-		export interface Initialized extends EnumItem {
-			Name: "Initialized";
-			Value: 2;
-			EnumType: typeof ABTestLoadingStatus;
-		}
-
-		export const Initialized: Initialized;
-
-		export interface Error extends EnumItem {
-			Name: "Error";
-			Value: 3;
-			EnumType: typeof ABTestLoadingStatus;
-		}
-
-		export const Error: Error;
-
-		export interface TimedOut extends EnumItem {
-			Name: "TimedOut";
-			Value: 4;
-			EnumType: typeof ABTestLoadingStatus;
-		}
-
-		export const TimedOut: TimedOut;
-
-		export interface ShutOff extends EnumItem {
-			Name: "ShutOff";
-			Value: 5;
-			EnumType: typeof ABTestLoadingStatus;
-		}
-
-		export const ShutOff: ShutOff;
-
-		export function GetEnumItems(this: Enum): Array<ABTestLoadingStatus>
-	}
-	export type ABTestLoadingStatus = ABTestLoadingStatus.None | ABTestLoadingStatus.Pending | ABTestLoadingStatus.Initialized | ABTestLoadingStatus.Error | ABTestLoadingStatus.TimedOut | ABTestLoadingStatus.ShutOff;
 	export namespace AccessoryType {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
@@ -3020,9 +2968,17 @@ declare namespace Enum {
 
 		export const PreciseConvexDecomposition: PreciseConvexDecomposition;
 
+		export interface DynamicPreciseConvexDecomposition extends EnumItem {
+			Name: "DynamicPreciseConvexDecomposition";
+			Value: 4;
+			EnumType: typeof CollisionFidelity;
+		}
+
+		export const DynamicPreciseConvexDecomposition: DynamicPreciseConvexDecomposition;
+
 		export function GetEnumItems(this: Enum): Array<CollisionFidelity>
 	}
-	export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition;
+	export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition | CollisionFidelity.DynamicPreciseConvexDecomposition;
 	export namespace CommandPermission {
 		export interface Plugin extends EnumItem {
 			Name: "Plugin";
@@ -3388,6 +3344,14 @@ declare namespace Enum {
 
 		export const DisconnectOutOfMemoryExitContinue: DisconnectOutOfMemoryExitContinue;
 
+		export interface DisconnectOutOfMemoryKeepPlayingExit extends EnumItem {
+			Name: "DisconnectOutOfMemoryKeepPlayingExit";
+			Value: 289;
+			EnumType: typeof ConnectionError;
+		}
+
+		export const DisconnectOutOfMemoryKeepPlayingExit: DisconnectOutOfMemoryKeepPlayingExit;
+
 		export interface PlacelaunchErrors extends EnumItem {
 			Name: "PlacelaunchErrors";
 			Value: 512;
@@ -3574,7 +3538,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: Enum): Array<ConnectionError>
 	}
-	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.DisconnectModeratedGame | ConnectionError.DisconnectOutOfMemoryExitContinue | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.DisconnectModeratedGame | ConnectionError.DisconnectOutOfMemoryExitContinue | ConnectionError.DisconnectOutOfMemoryKeepPlayingExit | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 	export namespace ConnectionState {
 		export interface Connected extends EnumItem {
 			Name: "Connected";
@@ -6135,6 +6099,42 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<GraphicsMode>
 	}
 	export type GraphicsMode = GraphicsMode.Automatic | GraphicsMode.Direct3D11 | GraphicsMode.OpenGL | GraphicsMode.Metal | GraphicsMode.Vulkan | GraphicsMode.NoGraphics;
+	export namespace GuiType {
+		export interface Core extends EnumItem {
+			Name: "Core";
+			Value: 0;
+			EnumType: typeof GuiType;
+		}
+
+		export const Core: Core;
+
+		export interface Custom extends EnumItem {
+			Name: "Custom";
+			Value: 1;
+			EnumType: typeof GuiType;
+		}
+
+		export const Custom: Custom;
+
+		export interface CustomBillboards extends EnumItem {
+			Name: "CustomBillboards";
+			Value: 3;
+			EnumType: typeof GuiType;
+		}
+
+		export const CustomBillboards: CustomBillboards;
+
+		export interface PlayerNameplates extends EnumItem {
+			Name: "PlayerNameplates";
+			Value: 2;
+			EnumType: typeof GuiType;
+		}
+
+		export const PlayerNameplates: PlayerNameplates;
+
+		export function GetEnumItems(this: Enum): Array<GuiType>
+	}
+	export type GuiType = GuiType.Core | GuiType.Custom | GuiType.CustomBillboards | GuiType.PlayerNameplates;
 	export namespace HandlesStyle {
 		export interface Resize extends EnumItem {
 			Name: "Resize";
