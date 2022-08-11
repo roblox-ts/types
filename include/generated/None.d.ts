@@ -112,7 +112,6 @@ interface Services {
 	TextChatService: TextChatService;
 	TextService: TextService;
 	ToastNotificationService: ToastNotificationService;
-	ToolboxService: ToolboxService;
 	TracerService: TracerService;
 	TweenService: TweenService;
 	UnvalidatedAssetService: UnvalidatedAssetService;
@@ -130,6 +129,7 @@ interface CreatableInstances {
 	Accessory: Accessory;
 	Accoutrement: Accoutrement;
 	Actor: Actor;
+	AirController: AirController;
 	AlignOrientation: AlignOrientation;
 	AlignPosition: AlignPosition;
 	AngularVelocity: AngularVelocity;
@@ -168,12 +168,14 @@ interface CreatableInstances {
 	CharacterMesh: CharacterMesh;
 	ChorusSoundEffect: ChorusSoundEffect;
 	ClickDetector: ClickDetector;
+	ClimbController: ClimbController;
 	Clouds: Clouds;
 	Color3Value: Color3Value;
 	ColorCorrectionEffect: ColorCorrectionEffect;
 	CompressorSoundEffect: CompressorSoundEffect;
 	ConeHandleAdornment: ConeHandleAdornment;
 	Configuration: Configuration;
+	ControllerManager: ControllerManager;
 	CornerWedgePart: CornerWedgePart;
 	CurveAnimation: CurveAnimation;
 	CylinderHandleAdornment: CylinderHandleAdornment;
@@ -204,6 +206,7 @@ interface CreatableInstances {
 	Frame: Frame;
 	GetTextBoundsParams: GetTextBoundsParams;
 	Glue: Glue;
+	GroundController: GroundController;
 	Handles: Handles;
 	Hat: Hat;
 	HiddenSurfaceRemovalAsset: HiddenSurfaceRemovalAsset;
@@ -297,6 +300,7 @@ interface CreatableInstances {
 	SurfaceGui: SurfaceGui;
 	SurfaceLight: SurfaceLight;
 	SurfaceSelection: SurfaceSelection;
+	SwimController: SwimController;
 	Team: Team;
 	TeleportOptions: TeleportOptions;
 	TerrainDetail: TerrainDetail;
@@ -409,6 +413,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	ChatInputBarConfiguration: ChatInputBarConfiguration;
 	ChatWindowConfiguration: ChatWindowConfiguration;
 	CommandInstance: CommandInstance;
+	ControllerBase: ControllerBase;
 	CustomSoundEffect: CustomSoundEffect;
 	DataModel: DataModel;
 	DataStore: DataStore;
@@ -2663,7 +2668,7 @@ interface AvatarEditorService extends Instance {
 	 * boolean
 	 * Tags: Yields
 	 */
-	GetOutfits(this: AvatarEditorService, outfitSource?: CastsToEnum<Enum.OutfitSource>): OutfitPages;
+	GetOutfits(this: AvatarEditorService, outfitSource?: CastsToEnum<Enum.OutfitSource>, outfitType?: CastsToEnum<Enum.OutfitType>): OutfitPages;
 	/**
 	 * This function returns a list of recommendations based on the given [AssetType](https://developer.roblox.com/en-us/api-reference/enum/AssetType). Take a look at the code sample below for more information on possible usages for this function.
 	 * 
@@ -8365,6 +8370,104 @@ interface VehicleController extends Controller {
 	 * @deprecated
 	 */
 	readonly _nominal_VehicleController: unique symbol;
+}
+
+interface ControllerBase extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ControllerBase: unique symbol;
+	MoveSpeedFactor: number;
+	RigidityEnabled: boolean;
+}
+
+interface AirController extends ControllerBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AirController: unique symbol;
+	CancelAirMomentum: boolean;
+	MoveMaxForce: number;
+	OrientationMaxTorque: number;
+	OrientationSpeed: number;
+	VectorForce: Vector3;
+}
+
+interface ClimbController extends ControllerBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ClimbController: unique symbol;
+	AccelerationTime: number;
+	MoveMaxForce: number;
+	OrientationMaxTorque: number;
+	OrientationSpeed: number;
+}
+
+interface GroundController extends ControllerBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_GroundController: unique symbol;
+	AccelerationLean: number;
+	AccelerationTime: number;
+	AlignSpeed: number;
+	AlignTorque: number;
+	DecelerationTime: number;
+	Friction: number;
+	FrictionWeight: number;
+	MaxSlopeAngle: number;
+	StandForce: number;
+	StandSpeed: number;
+	TurningFactor: number;
+}
+
+interface SwimController extends ControllerBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SwimController: unique symbol;
+	AccelerationTime: number;
+	OrientationMaxTorque: number;
+	OrientationSpeed: number;
+}
+
+interface ControllerManager extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ControllerManager: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ActiveController: ControllerBase | undefined;
+	BaseMoveSpeed: number;
+	HipHeight: number;
+	GetControllers(this: ControllerManager): Array<Instance>;
 }
 
 /** Container class for the [HumanoidController](https://developer.roblox.com/en-us/api-reference/class/HumanoidController) among other classes. */
@@ -15752,6 +15855,7 @@ interface HumanoidDescription extends Instance {
 	 * *   [Pants](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Pants), which can apply a texture to this limb
 	 */
 	LeftLegColor: Color3;
+	MoodAnimation: number;
 	/**
 	 * **NeckAccessory** is a comma-separated list of asset IDs that determine what accessories should be added when the description is [applied](https://developer.roblox.com/en-us/api-reference/function/Humanoid/ApplyDescription), usually those attached to its neck (such as scarves or necklaces). The list is kept sorted in descending order without duplicates.
 	 * 
@@ -31946,17 +32050,6 @@ interface ToastNotificationService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ToastNotificationService: unique symbol;
-}
-
-interface ToolboxService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ToolboxService: unique symbol;
 }
 
 /** An internal object used by networking and replication code to transmit [BasePart.Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched) and [BasePart.TouchEnded](https://developer.roblox.com/en-us/api-reference/event/BasePart/TouchEnded) events.

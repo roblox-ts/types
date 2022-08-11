@@ -287,6 +287,30 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<ActuatorType>
 	}
 	export type ActuatorType = ActuatorType.None | ActuatorType.Motor | ActuatorType.Servo;
+	export namespace AdFormat {
+		export interface Image extends EnumItem {
+			Name: "Image";
+			Value: 1;
+			EnumType: typeof AdFormat;
+		}
+
+		export const Image: Image;
+
+		export function GetEnumItems(this: Enum): Array<AdFormat>
+	}
+	export type AdFormat = AdFormat.Image;
+	export namespace AdShape {
+		export interface HorizontalRectangle extends EnumItem {
+			Name: "HorizontalRectangle";
+			Value: 1;
+			EnumType: typeof AdShape;
+		}
+
+		export const HorizontalRectangle: HorizontalRectangle;
+
+		export function GetEnumItems(this: Enum): Array<AdShape>
+	}
+	export type AdShape = AdShape.HorizontalRectangle;
 	export namespace AdornCullingMode {
 		export interface Automatic extends EnumItem {
 			Name: "Automatic";
@@ -1146,6 +1170,14 @@ declare namespace Enum {
 
 		export const PoseAnimation: PoseAnimation;
 
+		export interface MoodAnimation extends EnumItem {
+			Name: "MoodAnimation";
+			Value: 78;
+			EnumType: typeof AssetType;
+		}
+
+		export const MoodAnimation: MoodAnimation;
+
 		export interface EarAccessory extends EnumItem {
 			Name: "EarAccessory";
 			Value: 57;
@@ -1270,7 +1302,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: Enum): Array<AssetType>
 	}
-	export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.EyebrowAccessory | AssetType.EyelashAccessory;
+	export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.MoodAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.EyebrowAccessory | AssetType.EyelashAccessory;
 	export namespace AssetTypeVerification {
 		export interface Default extends EnumItem {
 			Name: "Default";
@@ -1572,6 +1604,14 @@ declare namespace Enum {
 
 		export const WalkAnimation: WalkAnimation;
 
+		export interface MoodAnimation extends EnumItem {
+			Name: "MoodAnimation";
+			Value: 78;
+			EnumType: typeof AvatarAssetType;
+		}
+
+		export const MoodAnimation: MoodAnimation;
+
 		export interface EmoteAnimation extends EnumItem {
 			Name: "EmoteAnimation";
 			Value: 61;
@@ -1672,7 +1712,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: Enum): Array<AvatarAssetType>
 	}
-	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory;
+	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.MoodAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory;
 	export namespace AvatarContextMenuOption {
 		export interface Friend extends EnumItem {
 			Name: "Friend";
@@ -2176,9 +2216,25 @@ declare namespace Enum {
 
 		export const Shoes: Shoes;
 
+		export interface DynamicHead extends EnumItem {
+			Name: "DynamicHead";
+			Value: 4;
+			EnumType: typeof BundleType;
+		}
+
+		export const DynamicHead: DynamicHead;
+
+		export interface DynamicHeadAvatar extends EnumItem {
+			Name: "DynamicHeadAvatar";
+			Value: 5;
+			EnumType: typeof BundleType;
+		}
+
+		export const DynamicHeadAvatar: DynamicHeadAvatar;
+
 		export function GetEnumItems(this: Enum): Array<BundleType>
 	}
-	export type BundleType = BundleType.BodyParts | BundleType.Animations | BundleType.Shoes;
+	export type BundleType = BundleType.BodyParts | BundleType.Animations | BundleType.Shoes | BundleType.DynamicHead | BundleType.DynamicHeadAvatar;
 	export namespace Button {
 		export interface Jump extends EnumItem {
 			Name: "Jump";
@@ -10583,6 +10639,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<OutfitSource>
 	}
 	export type OutfitSource = OutfitSource.All | OutfitSource.Created | OutfitSource.Purchased;
+	export namespace OutfitType {
+		export interface All extends EnumItem {
+			Name: "All";
+			Value: 1;
+			EnumType: typeof OutfitType;
+		}
+
+		export const All: All;
+
+		export interface Avatar extends EnumItem {
+			Name: "Avatar";
+			Value: 2;
+			EnumType: typeof OutfitType;
+		}
+
+		export const Avatar: Avatar;
+
+		export interface DynamicHead extends EnumItem {
+			Name: "DynamicHead";
+			Value: 3;
+			EnumType: typeof OutfitType;
+		}
+
+		export const DynamicHead: DynamicHead;
+
+		export function GetEnumItems(this: Enum): Array<OutfitType>
+	}
+	export type OutfitType = OutfitType.All | OutfitType.Avatar | OutfitType.DynamicHead;
 	export namespace OutputLayoutMode {
 		export interface Horizontal extends EnumItem {
 			Name: "Horizontal";
@@ -11027,34 +11111,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<PermissionLevelShown>
 	}
 	export type PermissionLevelShown = PermissionLevelShown.Game | PermissionLevelShown.RobloxGame | PermissionLevelShown.RobloxScript | PermissionLevelShown.Studio | PermissionLevelShown.Roblox;
-	export namespace PhysicsInertiaAndVolumeFix {
-		export interface Default extends EnumItem {
-			Name: "Default";
-			Value: 0;
-			EnumType: typeof PhysicsInertiaAndVolumeFix;
-		}
-
-		export const Default: Default;
-
-		export interface Disabled extends EnumItem {
-			Name: "Disabled";
-			Value: 1;
-			EnumType: typeof PhysicsInertiaAndVolumeFix;
-		}
-
-		export const Disabled: Disabled;
-
-		export interface Enabled extends EnumItem {
-			Name: "Enabled";
-			Value: 2;
-			EnumType: typeof PhysicsInertiaAndVolumeFix;
-		}
-
-		export const Enabled: Enabled;
-
-		export function GetEnumItems(this: Enum): Array<PhysicsInertiaAndVolumeFix>
-	}
-	export type PhysicsInertiaAndVolumeFix = PhysicsInertiaAndVolumeFix.Default | PhysicsInertiaAndVolumeFix.Disabled | PhysicsInertiaAndVolumeFix.Enabled;
 	export namespace PhysicsSimulationRate {
 		export interface Fixed240Hz extends EnumItem {
 			Name: "Fixed240Hz";

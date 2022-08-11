@@ -2712,6 +2712,7 @@ interface ScriptEditorService extends Instance {
 	 */
 	readonly _nominal_ScriptEditorService: unique symbol;
 	FindScriptDocument(this: ScriptEditorService, script: LuaSourceContainer): ScriptDocument;
+	GetScriptDocuments(this: ScriptEditorService): Array<Instance>;
 	readonly TextDocumentDidChange: RBXScriptSignal<(document: ScriptDocument, changesArray: unknown) => void>;
 	readonly TextDocumentDidClose: RBXScriptSignal<(oldDocument: ScriptDocument) => void>;
 	readonly TextDocumentDidOpen: RBXScriptSignal<(newDocument: ScriptDocument) => void>;
