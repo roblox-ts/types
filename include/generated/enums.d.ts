@@ -21,58 +21,6 @@ interface Enum {
 declare namespace Enum {
 	export function GetEnums(this: Enums): Array<Enum>;
 
-	export namespace ABTestLoadingStatus {
-		export interface None extends EnumItem {
-			Name: "None";
-			Value: 0;
-			EnumType: typeof ABTestLoadingStatus;
-		}
-
-		export const None: None;
-
-		export interface Pending extends EnumItem {
-			Name: "Pending";
-			Value: 1;
-			EnumType: typeof ABTestLoadingStatus;
-		}
-
-		export const Pending: Pending;
-
-		export interface Initialized extends EnumItem {
-			Name: "Initialized";
-			Value: 2;
-			EnumType: typeof ABTestLoadingStatus;
-		}
-
-		export const Initialized: Initialized;
-
-		export interface Error extends EnumItem {
-			Name: "Error";
-			Value: 3;
-			EnumType: typeof ABTestLoadingStatus;
-		}
-
-		export const Error: Error;
-
-		export interface TimedOut extends EnumItem {
-			Name: "TimedOut";
-			Value: 4;
-			EnumType: typeof ABTestLoadingStatus;
-		}
-
-		export const TimedOut: TimedOut;
-
-		export interface ShutOff extends EnumItem {
-			Name: "ShutOff";
-			Value: 5;
-			EnumType: typeof ABTestLoadingStatus;
-		}
-
-		export const ShutOff: ShutOff;
-
-		export function GetEnumItems(this: Enum): Array<ABTestLoadingStatus>
-	}
-	export type ABTestLoadingStatus = ABTestLoadingStatus.None | ABTestLoadingStatus.Pending | ABTestLoadingStatus.Initialized | ABTestLoadingStatus.Error | ABTestLoadingStatus.TimedOut | ABTestLoadingStatus.ShutOff;
 	export namespace AccessoryType {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
@@ -339,6 +287,30 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<ActuatorType>
 	}
 	export type ActuatorType = ActuatorType.None | ActuatorType.Motor | ActuatorType.Servo;
+	export namespace AdFormat {
+		export interface Image extends EnumItem {
+			Name: "Image";
+			Value: 1;
+			EnumType: typeof AdFormat;
+		}
+
+		export const Image: Image;
+
+		export function GetEnumItems(this: Enum): Array<AdFormat>
+	}
+	export type AdFormat = AdFormat.Image;
+	export namespace AdShape {
+		export interface HorizontalRectangle extends EnumItem {
+			Name: "HorizontalRectangle";
+			Value: 1;
+			EnumType: typeof AdShape;
+		}
+
+		export const HorizontalRectangle: HorizontalRectangle;
+
+		export function GetEnumItems(this: Enum): Array<AdShape>
+	}
+	export type AdShape = AdShape.HorizontalRectangle;
 	export namespace AdornCullingMode {
 		export interface Automatic extends EnumItem {
 			Name: "Automatic";
@@ -1198,6 +1170,14 @@ declare namespace Enum {
 
 		export const PoseAnimation: PoseAnimation;
 
+		export interface MoodAnimation extends EnumItem {
+			Name: "MoodAnimation";
+			Value: 78;
+			EnumType: typeof AssetType;
+		}
+
+		export const MoodAnimation: MoodAnimation;
+
 		export interface EarAccessory extends EnumItem {
 			Name: "EarAccessory";
 			Value: 57;
@@ -1322,7 +1302,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: Enum): Array<AssetType>
 	}
-	export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.EyebrowAccessory | AssetType.EyelashAccessory;
+	export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.MoodAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.EyebrowAccessory | AssetType.EyelashAccessory;
 	export namespace AssetTypeVerification {
 		export interface Default extends EnumItem {
 			Name: "Default";
@@ -1624,6 +1604,14 @@ declare namespace Enum {
 
 		export const WalkAnimation: WalkAnimation;
 
+		export interface MoodAnimation extends EnumItem {
+			Name: "MoodAnimation";
+			Value: 78;
+			EnumType: typeof AvatarAssetType;
+		}
+
+		export const MoodAnimation: MoodAnimation;
+
 		export interface EmoteAnimation extends EnumItem {
 			Name: "EmoteAnimation";
 			Value: 61;
@@ -1724,7 +1712,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: Enum): Array<AvatarAssetType>
 	}
-	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory;
+	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.MoodAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory;
 	export namespace AvatarContextMenuOption {
 		export interface Friend extends EnumItem {
 			Name: "Friend";
@@ -1830,9 +1818,9 @@ declare namespace Enum {
 
 		export const Y: Y;
 		/** @deprecated renamed to Y */
-		export const Top: Y;
-		/** @deprecated renamed to Y */
 		export const Bottom: Y;
+		/** @deprecated renamed to Y */
+		export const Top: Y;
 
 		export interface Z extends EnumItem {
 			Name: "Z";
@@ -1858,9 +1846,9 @@ declare namespace Enum {
 
 		export const Script: Script;
 		/** @deprecated renamed to Script */
-		export const Rocket: Script;
-		/** @deprecated renamed to Script */
 		export const Laser: Script;
+		/** @deprecated renamed to Script */
+		export const Rocket: Script;
 		/** @deprecated renamed to Script */
 		export const Slingshot: Script;
 
@@ -2228,9 +2216,25 @@ declare namespace Enum {
 
 		export const Shoes: Shoes;
 
+		export interface DynamicHead extends EnumItem {
+			Name: "DynamicHead";
+			Value: 4;
+			EnumType: typeof BundleType;
+		}
+
+		export const DynamicHead: DynamicHead;
+
+		export interface DynamicHeadAvatar extends EnumItem {
+			Name: "DynamicHeadAvatar";
+			Value: 5;
+			EnumType: typeof BundleType;
+		}
+
+		export const DynamicHeadAvatar: DynamicHeadAvatar;
+
 		export function GetEnumItems(this: Enum): Array<BundleType>
 	}
-	export type BundleType = BundleType.BodyParts | BundleType.Animations | BundleType.Shoes;
+	export type BundleType = BundleType.BodyParts | BundleType.Animations | BundleType.Shoes | BundleType.DynamicHead | BundleType.DynamicHeadAvatar;
 	export namespace Button {
 		export interface Jump extends EnumItem {
 			Name: "Jump";
@@ -3020,9 +3024,17 @@ declare namespace Enum {
 
 		export const PreciseConvexDecomposition: PreciseConvexDecomposition;
 
+		export interface DynamicPreciseConvexDecomposition extends EnumItem {
+			Name: "DynamicPreciseConvexDecomposition";
+			Value: 4;
+			EnumType: typeof CollisionFidelity;
+		}
+
+		export const DynamicPreciseConvexDecomposition: DynamicPreciseConvexDecomposition;
+
 		export function GetEnumItems(this: Enum): Array<CollisionFidelity>
 	}
-	export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition;
+	export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition | CollisionFidelity.DynamicPreciseConvexDecomposition;
 	export namespace CommandPermission {
 		export interface Plugin extends EnumItem {
 			Name: "Plugin";
@@ -3388,6 +3400,14 @@ declare namespace Enum {
 
 		export const DisconnectOutOfMemoryExitContinue: DisconnectOutOfMemoryExitContinue;
 
+		export interface DisconnectOutOfMemoryKeepPlayingExit extends EnumItem {
+			Name: "DisconnectOutOfMemoryKeepPlayingExit";
+			Value: 289;
+			EnumType: typeof ConnectionError;
+		}
+
+		export const DisconnectOutOfMemoryKeepPlayingExit: DisconnectOutOfMemoryKeepPlayingExit;
+
 		export interface PlacelaunchErrors extends EnumItem {
 			Name: "PlacelaunchErrors";
 			Value: 512;
@@ -3574,7 +3594,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: Enum): Array<ConnectionError>
 	}
-	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.DisconnectModeratedGame | ConnectionError.DisconnectOutOfMemoryExitContinue | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.DisconnectModeratedGame | ConnectionError.DisconnectOutOfMemoryExitContinue | ConnectionError.DisconnectOutOfMemoryKeepPlayingExit | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 	export namespace ConnectionState {
 		export interface Connected extends EnumItem {
 			Name: "Connected";
@@ -6135,6 +6155,42 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<GraphicsMode>
 	}
 	export type GraphicsMode = GraphicsMode.Automatic | GraphicsMode.Direct3D11 | GraphicsMode.OpenGL | GraphicsMode.Metal | GraphicsMode.Vulkan | GraphicsMode.NoGraphics;
+	export namespace GuiType {
+		export interface Core extends EnumItem {
+			Name: "Core";
+			Value: 0;
+			EnumType: typeof GuiType;
+		}
+
+		export const Core: Core;
+
+		export interface Custom extends EnumItem {
+			Name: "Custom";
+			Value: 1;
+			EnumType: typeof GuiType;
+		}
+
+		export const Custom: Custom;
+
+		export interface CustomBillboards extends EnumItem {
+			Name: "CustomBillboards";
+			Value: 3;
+			EnumType: typeof GuiType;
+		}
+
+		export const CustomBillboards: CustomBillboards;
+
+		export interface PlayerNameplates extends EnumItem {
+			Name: "PlayerNameplates";
+			Value: 2;
+			EnumType: typeof GuiType;
+		}
+
+		export const PlayerNameplates: PlayerNameplates;
+
+		export function GetEnumItems(this: Enum): Array<GuiType>
+	}
+	export type GuiType = GuiType.Core | GuiType.Custom | GuiType.CustomBillboards | GuiType.PlayerNameplates;
 	export namespace HandlesStyle {
 		export interface Resize extends EnumItem {
 			Name: "Resize";
@@ -6990,25 +7046,25 @@ declare namespace Enum {
 		/** @deprecated renamed to NoInput */
 		export const Action1: NoInput;
 		/** @deprecated renamed to NoInput */
+		export const Action2: NoInput;
+		/** @deprecated renamed to NoInput */
+		export const Action3: NoInput;
+		/** @deprecated renamed to NoInput */
 		export const Action4: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Action5: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const LeftTread: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const Steer: NoInput;
-		/** @deprecated renamed to NoInput */
 		export const RightTread: NoInput;
 		/** @deprecated renamed to NoInput */
-		export const Action3: NoInput;
+		export const Steer: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Throtle: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const Throttle: NoInput;
 		/** @deprecated renamed to NoInput */
 		export const UpDown: NoInput;
-		/** @deprecated renamed to NoInput */
-		export const Action2: NoInput;
 
 		export interface Constant extends EnumItem {
 			Name: "Constant";
@@ -10004,9 +10060,17 @@ declare namespace Enum {
 
 		export const DistanceBased: DistanceBased;
 
+		export interface Level00 extends EnumItem {
+			Name: "Level00";
+			Value: 1;
+			EnumType: typeof MeshPartDetailLevel;
+		}
+
+		export const Level00: Level00;
+
 		export interface Level01 extends EnumItem {
 			Name: "Level01";
-			Value: 1;
+			Value: 2;
 			EnumType: typeof MeshPartDetailLevel;
 		}
 
@@ -10014,7 +10078,7 @@ declare namespace Enum {
 
 		export interface Level02 extends EnumItem {
 			Name: "Level02";
-			Value: 2;
+			Value: 3;
 			EnumType: typeof MeshPartDetailLevel;
 		}
 
@@ -10022,7 +10086,7 @@ declare namespace Enum {
 
 		export interface Level03 extends EnumItem {
 			Name: "Level03";
-			Value: 3;
+			Value: 4;
 			EnumType: typeof MeshPartDetailLevel;
 		}
 
@@ -10030,7 +10094,7 @@ declare namespace Enum {
 
 		export interface Level04 extends EnumItem {
 			Name: "Level04";
-			Value: 4;
+			Value: 5;
 			EnumType: typeof MeshPartDetailLevel;
 		}
 
@@ -10038,7 +10102,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: Enum): Array<MeshPartDetailLevel>
 	}
-	export type MeshPartDetailLevel = MeshPartDetailLevel.DistanceBased | MeshPartDetailLevel.Level01 | MeshPartDetailLevel.Level02 | MeshPartDetailLevel.Level03 | MeshPartDetailLevel.Level04;
+	export type MeshPartDetailLevel = MeshPartDetailLevel.DistanceBased | MeshPartDetailLevel.Level00 | MeshPartDetailLevel.Level01 | MeshPartDetailLevel.Level02 | MeshPartDetailLevel.Level03 | MeshPartDetailLevel.Level04;
 	export namespace MeshPartHeadsAndAccessories {
 		export interface Default extends EnumItem {
 			Name: "Default";
@@ -10575,6 +10639,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<OutfitSource>
 	}
 	export type OutfitSource = OutfitSource.All | OutfitSource.Created | OutfitSource.Purchased;
+	export namespace OutfitType {
+		export interface All extends EnumItem {
+			Name: "All";
+			Value: 1;
+			EnumType: typeof OutfitType;
+		}
+
+		export const All: All;
+
+		export interface Avatar extends EnumItem {
+			Name: "Avatar";
+			Value: 2;
+			EnumType: typeof OutfitType;
+		}
+
+		export const Avatar: Avatar;
+
+		export interface DynamicHead extends EnumItem {
+			Name: "DynamicHead";
+			Value: 3;
+			EnumType: typeof OutfitType;
+		}
+
+		export const DynamicHead: DynamicHead;
+
+		export function GetEnumItems(this: Enum): Array<OutfitType>
+	}
+	export type OutfitType = OutfitType.All | OutfitType.Avatar | OutfitType.DynamicHead;
 	export namespace OutputLayoutMode {
 		export interface Horizontal extends EnumItem {
 			Name: "Horizontal";
@@ -11019,34 +11111,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<PermissionLevelShown>
 	}
 	export type PermissionLevelShown = PermissionLevelShown.Game | PermissionLevelShown.RobloxGame | PermissionLevelShown.RobloxScript | PermissionLevelShown.Studio | PermissionLevelShown.Roblox;
-	export namespace PhysicsInertiaAndVolumeFix {
-		export interface Default extends EnumItem {
-			Name: "Default";
-			Value: 0;
-			EnumType: typeof PhysicsInertiaAndVolumeFix;
-		}
-
-		export const Default: Default;
-
-		export interface Disabled extends EnumItem {
-			Name: "Disabled";
-			Value: 1;
-			EnumType: typeof PhysicsInertiaAndVolumeFix;
-		}
-
-		export const Disabled: Disabled;
-
-		export interface Enabled extends EnumItem {
-			Name: "Enabled";
-			Value: 2;
-			EnumType: typeof PhysicsInertiaAndVolumeFix;
-		}
-
-		export const Enabled: Enabled;
-
-		export function GetEnumItems(this: Enum): Array<PhysicsInertiaAndVolumeFix>
-	}
-	export type PhysicsInertiaAndVolumeFix = PhysicsInertiaAndVolumeFix.Default | PhysicsInertiaAndVolumeFix.Disabled | PhysicsInertiaAndVolumeFix.Enabled;
 	export namespace PhysicsSimulationRate {
 		export interface Fixed240Hz extends EnumItem {
 			Name: "Fixed240Hz";
@@ -16515,6 +16579,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<VoiceChatState>
 	}
 	export type VoiceChatState = VoiceChatState.Idle | VoiceChatState.Joining | VoiceChatState.JoiningRetry | VoiceChatState.Joined | VoiceChatState.Leaving | VoiceChatState.Ended | VoiceChatState.Failed;
+	export namespace VolumetricAudio {
+		export interface Disabled extends EnumItem {
+			Name: "Disabled";
+			Value: 0;
+			EnumType: typeof VolumetricAudio;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Automatic extends EnumItem {
+			Name: "Automatic";
+			Value: 1;
+			EnumType: typeof VolumetricAudio;
+		}
+
+		export const Automatic: Automatic;
+
+		export interface Enabled extends EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof VolumetricAudio;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: Enum): Array<VolumetricAudio>
+	}
+	export type VolumetricAudio = VolumetricAudio.Disabled | VolumetricAudio.Automatic | VolumetricAudio.Enabled;
 	export namespace WaterDirection {
 		export interface NegX extends EnumItem {
 			Name: "NegX";

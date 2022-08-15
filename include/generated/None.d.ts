@@ -39,6 +39,7 @@ interface Services {
 	DraggerService: DraggerService;
 	EventIngestService: EventIngestService;
 	FaceAnimatorService: FaceAnimatorService;
+	FacialAnimationRecordingService: FacialAnimationRecordingService;
 	FacialAnimationStreamingService: FacialAnimationStreamingService;
 	GamepadService: GamepadService;
 	GamePassService: GamePassService;
@@ -70,6 +71,7 @@ interface Services {
 	PathfindingService: PathfindingService;
 	PhysicsService: PhysicsService;
 	Players: Players;
+	PluginManagementService: PluginManagementService;
 	PluginPolicyService: PluginPolicyService;
 	PolicyService: PolicyService;
 	ProcessInstancePhysicsService: ProcessInstancePhysicsService;
@@ -110,7 +112,6 @@ interface Services {
 	TextChatService: TextChatService;
 	TextService: TextService;
 	ToastNotificationService: ToastNotificationService;
-	ToolboxService: ToolboxService;
 	TracerService: TracerService;
 	TweenService: TweenService;
 	UnvalidatedAssetService: UnvalidatedAssetService;
@@ -128,6 +129,7 @@ interface CreatableInstances {
 	Accessory: Accessory;
 	Accoutrement: Accoutrement;
 	Actor: Actor;
+	AirController: AirController;
 	AlignOrientation: AlignOrientation;
 	AlignPosition: AlignPosition;
 	AngularVelocity: AngularVelocity;
@@ -166,12 +168,14 @@ interface CreatableInstances {
 	CharacterMesh: CharacterMesh;
 	ChorusSoundEffect: ChorusSoundEffect;
 	ClickDetector: ClickDetector;
+	ClimbController: ClimbController;
 	Clouds: Clouds;
 	Color3Value: Color3Value;
 	ColorCorrectionEffect: ColorCorrectionEffect;
 	CompressorSoundEffect: CompressorSoundEffect;
 	ConeHandleAdornment: ConeHandleAdornment;
 	Configuration: Configuration;
+	ControllerManager: ControllerManager;
 	CornerWedgePart: CornerWedgePart;
 	CurveAnimation: CurveAnimation;
 	CylinderHandleAdornment: CylinderHandleAdornment;
@@ -202,6 +206,7 @@ interface CreatableInstances {
 	Frame: Frame;
 	GetTextBoundsParams: GetTextBoundsParams;
 	Glue: Glue;
+	GroundController: GroundController;
 	Handles: Handles;
 	Hat: Hat;
 	HiddenSurfaceRemovalAsset: HiddenSurfaceRemovalAsset;
@@ -295,6 +300,7 @@ interface CreatableInstances {
 	SurfaceGui: SurfaceGui;
 	SurfaceLight: SurfaceLight;
 	SurfaceSelection: SurfaceSelection;
+	SwimController: SwimController;
 	Team: Team;
 	TeleportOptions: TeleportOptions;
 	TerrainDetail: TerrainDetail;
@@ -339,6 +345,7 @@ interface CreatableInstances {
 	WedgePart: WedgePart;
 	Weld: Weld;
 	WeldConstraint: WeldConstraint;
+	WireframeHandleAdornment: WireframeHandleAdornment;
 	WorldModel: WorldModel;
 	WrapLayer: WrapLayer;
 	WrapTarget: WrapTarget;
@@ -400,11 +407,13 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AnimationStreamTrack: AnimationStreamTrack;
 	AnimationTrack: AnimationTrack;
 	AssetImportSession: AssetImportSession;
+	AssetSoundEffect: AssetSoundEffect;
 	BaseWrap: BaseWrap;
 	CatalogPages: CatalogPages;
 	ChatInputBarConfiguration: ChatInputBarConfiguration;
 	ChatWindowConfiguration: ChatWindowConfiguration;
 	CommandInstance: CommandInstance;
+	ControllerBase: ControllerBase;
 	CustomSoundEffect: CustomSoundEffect;
 	DataModel: DataModel;
 	DataStore: DataStore;
@@ -445,6 +454,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	OutfitPages: OutfitPages;
 	PackageLink: PackageLink;
 	ParabolaAdornment: ParabolaAdornment;
+	PatchMapping: PatchMapping;
 	Path: Path;
 	PausedState: PausedState;
 	PausedStateBreakpoint: PausedStateBreakpoint;
@@ -2658,7 +2668,7 @@ interface AvatarEditorService extends Instance {
 	 * boolean
 	 * Tags: Yields
 	 */
-	GetOutfits(this: AvatarEditorService, outfitSource?: CastsToEnum<Enum.OutfitSource>): OutfitPages;
+	GetOutfits(this: AvatarEditorService, outfitSource?: CastsToEnum<Enum.OutfitSource>, outfitType?: CastsToEnum<Enum.OutfitType>): OutfitPages;
 	/**
 	 * This function returns a list of recommendations based on the given [AssetType](https://developer.roblox.com/en-us/api-reference/enum/AssetType). Take a look at the code sample below for more information on possible usages for this function.
 	 * 
@@ -2703,9 +2713,14 @@ interface AvatarEditorService extends Instance {
 	 *       }
 	 *     }
 	 * \]
-	 * Tags: Yields
+	 * Tags: Yields, Deprecated
+	 * @deprecated
 	 */
 	GetRecommendedAssets(this: AvatarEditorService, assetType: CastsToEnum<Enum.AvatarAssetType>, contextAssetId?: number): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	GetRecommendedAssetsV2(this: AvatarEditorService, assetType: CastsToEnum<Enum.AvatarAssetType>, assetId: number, numItems: number, includeDetails: boolean): unknown;
 	/**
 	 * This function returns a list of recommended bundles for a given bundle id.
 	 * 
@@ -2743,9 +2758,14 @@ interface AvatarEditorService extends Instance {
 	 *       }
 	 *     }
 	 * \]
-	 * Tags: Yields
+	 * Tags: Yields, Deprecated
+	 * @deprecated
 	 */
 	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	GetRecommendedBundlesV2(this: AvatarEditorService, bundleType: CastsToEnum<Enum.BundleType>, bundleId: number, numItems: number, includeDetails: boolean): unknown;
 	/**
 	 * This function returns a [CatalogPages](https://developer.roblox.com/en-us/api-reference/class/CatalogPages) object containing the result of the given search.
 	 * 
@@ -8352,6 +8372,104 @@ interface VehicleController extends Controller {
 	readonly _nominal_VehicleController: unique symbol;
 }
 
+interface ControllerBase extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ControllerBase: unique symbol;
+	MoveSpeedFactor: number;
+	RigidityEnabled: boolean;
+}
+
+interface AirController extends ControllerBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AirController: unique symbol;
+	CancelAirMomentum: boolean;
+	MoveMaxForce: number;
+	OrientationMaxTorque: number;
+	OrientationSpeed: number;
+	VectorForce: Vector3;
+}
+
+interface ClimbController extends ControllerBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ClimbController: unique symbol;
+	AccelerationTime: number;
+	MoveMaxForce: number;
+	OrientationMaxTorque: number;
+	OrientationSpeed: number;
+}
+
+interface GroundController extends ControllerBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_GroundController: unique symbol;
+	AccelerationLean: number;
+	AccelerationTime: number;
+	AlignSpeed: number;
+	AlignTorque: number;
+	DecelerationTime: number;
+	Friction: number;
+	FrictionWeight: number;
+	MaxSlopeAngle: number;
+	StandForce: number;
+	StandSpeed: number;
+	TurningFactor: number;
+}
+
+interface SwimController extends ControllerBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SwimController: unique symbol;
+	AccelerationTime: number;
+	OrientationMaxTorque: number;
+	OrientationSpeed: number;
+}
+
+interface ControllerManager extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ControllerManager: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ActiveController: ControllerBase | undefined;
+	BaseMoveSpeed: number;
+	HipHeight: number;
+	GetControllers(this: ControllerManager): Array<Instance>;
+}
+
 /** Container class for the [HumanoidController](https://developer.roblox.com/en-us/api-reference/class/HumanoidController) among other classes. */
 interface ControllerService extends Instance {
 	/**
@@ -9796,6 +9914,17 @@ interface Texture extends Decal {
 	StudsPerTileV: number;
 }
 
+interface FacialAnimationRecordingService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FacialAnimationRecordingService: unique symbol;
+}
+
 interface FacialAnimationStreamingService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -10434,9 +10563,9 @@ interface OrderedDataStore extends GlobalDataStore {
 	GetAsync(this: OrderedDataStore, key: string): number | undefined;
 	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
 	RemoveAsync(this: OrderedDataStore, key: string): number;
-	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
+	SetAsync(this: OrderedDataStore, key: string, value?: unknown): void;
 	UpdateAsync<O, R>(
-		this: GlobalDataStore,
+		this: OrderedDataStore,
 		key: string,
 		transformFunction: (oldValue: O | undefined) => R,
 	): R extends undefined ? O | undefined : R;
@@ -13579,6 +13708,21 @@ interface SphereHandleAdornment extends HandleAdornment {
 	Radius: number;
 }
 
+interface WireframeHandleAdornment extends HandleAdornment {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_WireframeHandleAdornment: unique symbol;
+	AddLine(this: WireframeHandleAdornment, from: Vector3, to: Vector3): void;
+	AddLines(this: WireframeHandleAdornment, points: Array<any>): void;
+	AddPath(this: WireframeHandleAdornment, points: Array<any>, loop: boolean): void;
+	Clear(this: WireframeHandleAdornment): void;
+}
+
 /** A special type of Adornment that is still a work in progress.  
  * This object can only be created by [CoreScript](https://developer.roblox.com/en-us/api-reference/class/CoreScript) at the moment.
  */
@@ -13838,6 +13982,7 @@ interface GuiService extends Instance {
 	AutoSelectGuiEnabled: boolean;
 	/**
 	 * Toggles whether or not objects in the [CoreGui](https://developer.roblox.com/en-us/api-reference/class/CoreGui) can be navigated using a Gamepad.
+	 * Tags: Hidden, NotReplicated
 	 */
 	CoreGuiNavigationEnabled: boolean;
 	/**
@@ -15710,6 +15855,7 @@ interface HumanoidDescription extends Instance {
 	 * *   [Pants](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Pants), which can apply a texture to this limb
 	 */
 	LeftLegColor: Color3;
+	MoodAnimation: number;
 	/**
 	 * **NeckAccessory** is a comma-separated list of asset IDs that determine what accessories should be added when the description is [applied](https://developer.roblox.com/en-us/api-reference/function/Humanoid/ApplyDescription), usually those attached to its neck (such as scarves or necklaces). The list is kept sorted in descending order without duplicates.
 	 * 
@@ -16225,23 +16371,38 @@ interface ImporterMeshSettings extends ImporterBaseSettings {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly CageManifold: boolean;
-	CageManifoldPreview: boolean;
+	CageMeshIntersectedPreview: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CageMeshNotIntersected: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly CageNoOverlappingVertices: boolean;
-	CageNoOverlappingVerticesPreview: boolean;
+	CageNonManifoldPreview: boolean;
+	CageOverlappingVerticesPreview: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly CageUVMatched: boolean;
-	CageUVMatchedPreview: boolean;
+	CageUVMisMatchedPreview: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly Dimensions: Vector3;
 	DoubleSided: boolean;
 	IgnoreVertexColors: boolean;
+	IrrelevantCageModifiedPreview: boolean;
+	MeshHoleDetectedPreview: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly MeshNoHoleDetected: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly NoIrrelevantCageModified: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -21244,6 +21405,7 @@ interface MaterialVariant extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MaterialVariant: unique symbol;
+	CustomPhysicalProperties: PhysicalProperties;
 	MaterialPattern: Enum.MaterialPattern;
 	StudsPerTile: number;
 }
@@ -22277,6 +22439,7 @@ interface BasePart extends PVInstance {
 	 * The CollisionGroupId property describes the ID number of the part's collision group. Parts start off in the Default group whose ID is 0. Although this property can be directly changed, it is recommended to instead manipulate the collision group of a part using the **name** of the group with the [PhysicsService:SetPartCollisionGroup](https://developer.roblox.com/en-us/api-reference/function/PhysicsService/SetPartCollisionGroup) function. You can find the ID of a collision group by using [PhysicsService:GetCollisionGroupId](https://developer.roblox.com/en-us/api-reference/function/PhysicsService/GetCollisionGroupId).
 	 * 
 	 * This value cannot be negative, and cannot exceed [PhysicsService:GetMaxCollisionGroups](https://developer.roblox.com/en-us/api-reference/function/PhysicsService/GetMaxCollisionGroups). Invalid IDs are clamped.
+	 * Tags: NotReplicated
 	 */
 	CollisionGroupId: number;
 	/**
@@ -23959,6 +24122,8 @@ interface Model extends PVInstance {
 	 * ```lua
 	 * local cFrame = Model.PrimaryPart and Model.PrimaryPart.CFrame
 	 * ```
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	GetPrimaryPartCFrame(this: Model): CFrame;
 	/**
@@ -24011,6 +24176,8 @@ interface Model extends PVInstance {
 	 * ``` 
 	 * 
 	 * A common use for this is for the 'teleportation' of player characters to different positions.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	SetPrimaryPartCFrame(this: Model, cframe: CFrame): void;
 	/**
@@ -24485,10 +24652,6 @@ interface Workspace extends WorldRoot {
 	 */
 	Gravity: number;
 	readonly InterpolationThrottling: Enum.InterpolationThrottlingMode;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	PhysicsSimulationRate: Enum.PhysicsSimulationRate;
 	Retargeting: Enum.AnimatorRetargetingMode;
 	/**
 	 * The **StreamingEnabled** property determines whether game content streaming is enabled for the place. This property is not scriptable and therefore must be set on the **Workspace** object in Studio.
@@ -25175,6 +25338,20 @@ interface ParticleEmitter extends Instance {
 	Emit(this: ParticleEmitter, particleCount?: number): void;
 }
 
+interface PatchMapping extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PatchMapping: unique symbol;
+	FlattenTree: boolean;
+	PatchId: string;
+	TargetPath: string;
+}
+
 /** **Path** objects store the result of paths created by [PathfindingService:CreatePath()](https://developer.roblox.com/en-us/api-reference/function/PathfindingService/CreatePath).
  * 
  * Once a path object is created, you can call [Path:ComputeAsync()](https://developer.roblox.com/en-us/api-reference/function/Path/ComputeAsync) with a starting point and ending point. This will attempt to compute a valid path for a character to move along, based on default or custom parameters passed to [CreatePath()](https://developer.roblox.com/en-us/api-reference/function/PathfindingService/CreatePath). If [ComputeAsync()](https://developer.roblox.com/en-us/api-reference/function/Path/ComputeAsync) successfully finds a path, the [Path](https://developer.roblox.com/en-us/api-reference/class/Path) object will have a [Path.Status](https://developer.roblox.com/en-us/api-reference/property/Path/Status) value of `Enum.PathStatus.Success`. Otherwise the status will be `Enum.PathStatus.NoPath` which can occur if there are obstacles between the two points (and no way around) or if the points are inside of solid objects.
@@ -25543,6 +25720,8 @@ interface PhysicsService extends Instance {
 	 * Returns the maximum number of collision groups the engine supports. This value is currently 32.
 	 */
 	GetMaxCollisionGroups(this: PhysicsService): number;
+	GetRegisteredCollisionGroups(this: PhysicsService): unknown;
+	RegisterCollisionGroup(this: PhysicsService, name: string): void;
 	/**
 	 * Removes the collision group with the given name. If an invalid name is provided the function will not do anything, although if the reserved name “Default” is provided then the function will throw an error.
 	 * 
@@ -25578,6 +25757,7 @@ interface PhysicsService extends Instance {
 	 * *   The specified group does not exist.
 	 */
 	SetPartCollisionGroup(this: PhysicsService, part: BasePart, name: string): void;
+	UnregisterCollisionGroup(this: PhysicsService, name: string): void;
 }
 
 /** A Player object a client that is currently connected. These objects are added to the [Players](https://developer.roblox.com/en-us/api-reference/class/Players) service when a new player connects, then removed when they eventually disconnect from the server.
@@ -26882,6 +27062,17 @@ interface Players extends Instance {
 	 * If you want to track when a player's character is added or removed from the game, such as when a player respawns or dies, you can use the [Player.CharacterAdded](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterAdded) and [Player.CharacterRemoving](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterRemoving) functions.
 	 */
 	readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
+}
+
+interface PluginManagementService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PluginManagementService: unique symbol;
 }
 
 interface PluginManagerInterface extends Instance {
@@ -29303,6 +29494,17 @@ interface SoundEffect extends Instance {
 	 * Determines the order the effect will be applied in relation to other effects. Highger priority effects will be applied earlier. The exception is when Priority equals 0 (which is the default). In this case, the base priority for the effect will be used. If the priority of two effects are equal, then the order is undetermined.
 	 */
 	Priority: number;
+}
+
+interface AssetSoundEffect extends SoundEffect {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AssetSoundEffect: unique symbol;
 }
 
 /** A ChorusSoundEffect simulates the effect of multiple vocals or instruments playing the same part. It does this by taking the original sound and overlaying copies of that sound. These copies are not exact matches to the original but instead vary in pitch slightly. This simulates a real chorus, as different singers or instruments will have slight variations. This effect can be applied to either an individual sound or to a sound group by parenting it to the desired instance.  
@@ -31848,17 +32050,6 @@ interface ToastNotificationService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ToastNotificationService: unique symbol;
-}
-
-interface ToolboxService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ToolboxService: unique symbol;
 }
 
 /** An internal object used by networking and replication code to transmit [BasePart.Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched) and [BasePart.TouchEnded](https://developer.roblox.com/en-us/api-reference/event/BasePart/TouchEnded) events.
@@ -35513,6 +35704,11 @@ interface VoiceChatInternal extends Instance {
 	 * Tags: Yields
 	 */
 	IsVoiceEnabledForUserIdAsync(this: VoiceChatInternal, userId: number): boolean;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
+	readonly StateChanged: RBXScriptSignal<(oldValue: Enum.VoiceChatState, newValue: Enum.VoiceChatState) => void>;
 }
 
 interface VoiceChatService extends Instance {

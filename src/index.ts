@@ -11,7 +11,7 @@ import { Timer } from "./class/Timer";
 const SECURITY_LEVELS = ["None", "PluginSecurity"] as const;
 
 const BASE_URL = "https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/roblox/";
-const API_DUMP_URL = BASE_URL + "API-Dump.json";
+const API_DUMP_URL = BASE_URL + "Mini-API-Dump.json";
 const REFLECTION_METADATA_URL = BASE_URL + "ReflectionMetadata.xml";
 
 void (async () => {

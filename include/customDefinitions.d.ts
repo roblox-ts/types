@@ -568,9 +568,9 @@ interface OrderedDataStore extends GlobalDataStore {
 	): DataStorePages;
 	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
 	RemoveAsync(this: OrderedDataStore, key: string): number | undefined;
-	SetAsync(this: GlobalDataStore, key: string, value?: unknown): void;
+	SetAsync(this: OrderedDataStore, key: string, value?: unknown): void;
 	UpdateAsync<O, R>(
-		this: GlobalDataStore,
+		this: OrderedDataStore,
 		key: string,
 		transformFunction: (oldValue: O | undefined) => R,
 	): R extends undefined ? O | undefined : R;
