@@ -10496,7 +10496,7 @@ interface DataStore extends GlobalDataStore {
 	): R extends undefined
 		? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]>
 		: LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
-	RemoveAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
+	RemoveAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo | undefined]>;
 	/**
 	 * This function retrieves the specified key version as well as a [DataStoreKeyInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreKeyInfo) instance. A version identifier can be found through [DataStore:ListVersionsAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/ListVersionsAsync) or alternatively be the identifier returned by [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync).
 	 * 
@@ -10562,7 +10562,7 @@ interface OrderedDataStore extends GlobalDataStore {
 	readonly _nominal_OrderedDataStore: unique symbol;
 	GetAsync(this: OrderedDataStore, key: string): number | undefined;
 	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
-	RemoveAsync(this: OrderedDataStore, key: string): number;
+	RemoveAsync(this: OrderedDataStore, key: string): number | undefined;
 	SetAsync(this: OrderedDataStore, key: string, value?: unknown): void;
 	UpdateAsync<O, R>(
 		this: OrderedDataStore,
@@ -21434,7 +21434,12 @@ interface MemoryStoreQueue extends Instance {
 	 * This method does not automatically delete the returned items from the queue but makes them invisible to other ReadAsync calls for the period of the invisibility timeout. The items must be explicitly removed from the queue with [MemoryStoreQueue:RemoveAsync](https://developer.roblox.com/en-us/api-reference/function/MemoryStoreQueue/RemoveAsync) before the invisibility timeout expires. The invisibility timeout defaults to 30 seconds unless a different value was provided in [MemoryStoreService:GetQueue](https://developer.roblox.com/en-us/api-reference/function/MemoryStoreService/GetQueue).
 	 * Tags: Yields
 	 */
-	ReadAsync(this: MemoryStoreQueue, count: number, allOrNothing?: boolean, waitTimeout?: number): unknown;
+	ReadAsync(
+		this: MemoryStoreQueue,
+		count: number,
+		allOrNothing?: boolean,
+		waitTimeout?: number,
+	): LuaTuple<[items: Array<unknown>, id: string]>;
 	/**
 	 * Removes an item or items previously read from the queue. This method uses the identifier returned by [MemoryStoreQueue:ReadAsync](https://developer.roblox.com/en-us/api-reference/function/MemoryStoreQueue/ReadAsync) to identify the items to remove. If called after the invisibility timeout has expired, the call has no effect.
 	 * Tags: Yields
