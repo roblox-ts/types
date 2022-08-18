@@ -403,6 +403,7 @@ interface AbstractInstances {
 }
 
 interface Instances extends Services, CreatableInstances, AbstractInstances {
+	AdGui: AdGui;
 	AnimationClip: AnimationClip;
 	AnimationStreamTrack: AnimationStreamTrack;
 	AnimationTrack: AnimationTrack;
@@ -472,6 +473,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
 	StarterPlayerScripts: StarterPlayerScripts;
+	SurfaceGuiBase: SurfaceGuiBase;
 	TeleportAsyncResult: TeleportAsyncResult;
 	Terrain: Terrain;
 	TextChatConfigurations: TextChatConfigurations;
@@ -2052,8 +2054,6 @@ interface AssetImportService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AssetImportService: unique symbol;
-	readonly ProgressUpdate: RBXScriptSignal<(progressRatio: number) => void>;
-	readonly UploadFinished: RBXScriptSignal<(succeeded: boolean, errorMap: object) => void>;
 }
 
 interface AssetImportSession extends Instance {
@@ -13250,6 +13250,32 @@ interface ScreenGui extends LayerCollector {
 	IgnoreGuiInset: boolean;
 }
 
+interface SurfaceGuiBase extends LayerCollector {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SurfaceGuiBase: unique symbol;
+	Active: boolean;
+	Adornee: Instance | undefined;
+	Face: Enum.NormalId;
+}
+
+interface AdGui extends SurfaceGuiBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AdGui: unique symbol;
+	AdShape: Enum.AdShape;
+}
+
 /** **Note:** SurfaceGuis must be descendants of PlayerGui in order to know the player who is interacting with it.Allows for the rendering of GUI elements onto a part's surface in the 3D world, whilst allowing for basic user interaction to occur.
  * 
  * ##### Caching static UI for performance improvements
@@ -13270,13 +13296,6 @@ interface SurfaceGui extends LayerCollector {
 	 * @deprecated
 	 */
 	readonly _nominal_SurfaceGui: unique symbol;
-	/**
-	 * Whether or not mouse events will be passed to objects layered below.
-	 */
-	Active: boolean;
-	/**
-	 * Sets the object that the SurfaceGui is adorned too. In other words, this defines which [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) the SurfaceGui is attached to.
-	 */
 	Adornee: BasePart | undefined;
 	/**
 	 * Determines whether the SurfaceGui will render over top of 3D content, or  
@@ -13317,10 +13336,6 @@ interface SurfaceGui extends LayerCollector {
 	 * the canvas of the SurfaceGui will not render.
 	 */
 	ClipsDescendants: boolean;
-	/**
-	 * The face that the SurfaceGui is rendered on.
-	 */
-	Face: Enum.NormalId;
 	/**
 	 * Controls how much the SurfaceGui is influenced by the lighting in the game world.
 	 */
@@ -16335,26 +16350,14 @@ interface ImporterMaterialSettings extends ImporterBaseSettings {
 	 * @deprecated
 	 */
 	readonly _nominal_ImporterMaterialSettings: unique symbol;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly DiffuseFilePath: string;
+	DiffuseFilePath: string;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly IsPbr: boolean;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly MetalnessFilePath: string;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly NormalFilePath: string;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly RoughnessFilePath: string;
+	MetalnessFilePath: string;
+	NormalFilePath: string;
+	RoughnessFilePath: string;
 }
 
 interface ImporterMeshSettings extends ImporterBaseSettings {
@@ -16403,6 +16406,11 @@ interface ImporterMeshSettings extends ImporterBaseSettings {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly NoIrrelevantCageModified: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly NoOuterCageFarExtendedFromMesh: boolean;
+	OuterCageFarExtendedFromMeshPreview: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -31846,6 +31854,14 @@ interface ChatInputBarConfiguration extends TextChatConfigurations {
 	 * @deprecated
 	 */
 	readonly _nominal_ChatInputBarConfiguration: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly AbsolutePosition: Vector2;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly AbsoluteSize: Vector2;
 	Enabled: boolean;
 	TargetTextChannel: TextChannel | undefined;
 }
@@ -31859,6 +31875,14 @@ interface ChatWindowConfiguration extends TextChatConfigurations {
 	 * @deprecated
 	 */
 	readonly _nominal_ChatWindowConfiguration: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly AbsolutePosition: Vector2;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly AbsoluteSize: Vector2;
 	Enabled: boolean;
 }
 

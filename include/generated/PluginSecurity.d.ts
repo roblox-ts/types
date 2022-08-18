@@ -2699,6 +2699,14 @@ interface ScriptDocument extends Instance {
 	 * Tags: Yields
 	 */
 	EditTextAsync(this: ScriptDocument, newText: string, startLine: number, startCharacter: number, endLine: number, endCharacter: number): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	ForceSetSelectionAsync(this: ScriptDocument, cursorLine: number, cursorCharacter: number, anchorLine?: number | undefined, anchorCharacter?: number | undefined): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	RequestSetSelectionAsync(this: ScriptDocument, cursorLine: number, cursorCharacter: number, anchorLine?: number | undefined, anchorCharacter?: number | undefined): unknown;
 	readonly SelectionChanged: RBXScriptSignal<(positionLine: number, positionCharacter: number, anchorLine: number, anchorCharacter: number) => void>;
 }
 

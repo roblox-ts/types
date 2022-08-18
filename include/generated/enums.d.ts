@@ -9364,7 +9364,7 @@ declare namespace Enum {
 
 		export interface TextDocument_publishDiagnostics extends EnumItem {
 			Name: "TextDocument_publishDiagnostics";
-			Value: 19;
+			Value: 20;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9372,7 +9372,7 @@ declare namespace Enum {
 
 		export interface Window_showMessage extends EnumItem {
 			Name: "Window_showMessage";
-			Value: 20;
+			Value: 21;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9380,7 +9380,7 @@ declare namespace Enum {
 
 		export interface Window_showMessageRequest extends EnumItem {
 			Name: "Window_showMessageRequest";
-			Value: 21;
+			Value: 22;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9388,7 +9388,7 @@ declare namespace Enum {
 
 		export interface Roblox_registerSyntaxCategories extends EnumItem {
 			Name: "Roblox_registerSyntaxCategories";
-			Value: 22;
+			Value: 23;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9396,7 +9396,7 @@ declare namespace Enum {
 
 		export interface Roblox_signalQuiescence extends EnumItem {
 			Name: "Roblox_signalQuiescence";
-			Value: 23;
+			Value: 24;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9404,7 +9404,7 @@ declare namespace Enum {
 
 		export interface Roblox_syntaxHighlight extends EnumItem {
 			Name: "Roblox_syntaxHighlight";
-			Value: 24;
+			Value: 25;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9412,7 +9412,7 @@ declare namespace Enum {
 
 		export interface Roblox_suggestExtraSelections extends EnumItem {
 			Name: "Roblox_suggestExtraSelections";
-			Value: 25;
+			Value: 26;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9420,7 +9420,7 @@ declare namespace Enum {
 
 		export interface Roblox_findExecutablePosition extends EnumItem {
 			Name: "Roblox_findExecutablePosition";
-			Value: 26;
+			Value: 27;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9428,7 +9428,7 @@ declare namespace Enum {
 
 		export interface Roblox_findColor3 extends EnumItem {
 			Name: "Roblox_findColor3";
-			Value: 27;
+			Value: 28;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9436,7 +9436,7 @@ declare namespace Enum {
 
 		export interface Roblox_patchSnippetData extends EnumItem {
 			Name: "Roblox_patchSnippetData";
-			Value: 28;
+			Value: 29;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9685,6 +9685,34 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<LoadCharacterLayeredClothing>
 	}
 	export type LoadCharacterLayeredClothing = LoadCharacterLayeredClothing.Default | LoadCharacterLayeredClothing.Disabled | LoadCharacterLayeredClothing.Enabled;
+	export namespace LoadDynamicHeads {
+		export interface Default extends EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof LoadDynamicHeads;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled extends EnumItem {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: typeof LoadDynamicHeads;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled extends EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof LoadDynamicHeads;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: Enum): Array<LoadDynamicHeads>
+	}
+	export type LoadDynamicHeads = LoadDynamicHeads.Default | LoadDynamicHeads.Disabled | LoadDynamicHeads.Enabled;
 	export namespace Material {
 		export interface Plastic extends EnumItem {
 			Name: "Plastic";
@@ -11951,6 +11979,8 @@ declare namespace Enum {
 		}
 
 		export const Blacklist: Blacklist;
+		/** @deprecated renamed to Blacklist */
+		export const Exclude: Blacklist;
 
 		export interface Whitelist extends EnumItem {
 			Name: "Whitelist";
@@ -11959,6 +11989,8 @@ declare namespace Enum {
 		}
 
 		export const Whitelist: Whitelist;
+		/** @deprecated renamed to Whitelist */
+		export const Include: Whitelist;
 
 		export function GetEnumItems(this: Enum): Array<RaycastFilterType>
 	}
@@ -15907,6 +15939,82 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<TouchMovementMode>
 	}
 	export type TouchMovementMode = TouchMovementMode.Default | TouchMovementMode.Thumbstick | TouchMovementMode.DPad | TouchMovementMode.Thumbpad | TouchMovementMode.ClickToMove | TouchMovementMode.DynamicThumbstick;
+	export namespace TrackerError {
+		export interface Ok extends EnumItem {
+			Name: "Ok";
+			Value: 0;
+			EnumType: typeof TrackerError;
+		}
+
+		export const Ok: Ok;
+
+		export interface NoService extends EnumItem {
+			Name: "NoService";
+			Value: 1;
+			EnumType: typeof TrackerError;
+		}
+
+		export const NoService: NoService;
+
+		export interface InitFailed extends EnumItem {
+			Name: "InitFailed";
+			Value: 2;
+			EnumType: typeof TrackerError;
+		}
+
+		export const InitFailed: InitFailed;
+
+		export interface NoVideo extends EnumItem {
+			Name: "NoVideo";
+			Value: 3;
+			EnumType: typeof TrackerError;
+		}
+
+		export const NoVideo: NoVideo;
+
+		export interface VideoError extends EnumItem {
+			Name: "VideoError";
+			Value: 4;
+			EnumType: typeof TrackerError;
+		}
+
+		export const VideoError: VideoError;
+
+		export interface CameraPermission extends EnumItem {
+			Name: "CameraPermission";
+			Value: 5;
+			EnumType: typeof TrackerError;
+		}
+
+		export const CameraPermission: CameraPermission;
+
+		export interface NoAudio extends EnumItem {
+			Name: "NoAudio";
+			Value: 6;
+			EnumType: typeof TrackerError;
+		}
+
+		export const NoAudio: NoAudio;
+
+		export interface AudioError extends EnumItem {
+			Name: "AudioError";
+			Value: 7;
+			EnumType: typeof TrackerError;
+		}
+
+		export const AudioError: AudioError;
+
+		export interface MicPermission extends EnumItem {
+			Name: "MicPermission";
+			Value: 8;
+			EnumType: typeof TrackerError;
+		}
+
+		export const MicPermission: MicPermission;
+
+		export function GetEnumItems(this: Enum): Array<TrackerError>
+	}
+	export type TrackerError = TrackerError.Ok | TrackerError.NoService | TrackerError.InitFailed | TrackerError.NoVideo | TrackerError.VideoError | TrackerError.CameraPermission | TrackerError.NoAudio | TrackerError.AudioError | TrackerError.MicPermission;
 	export namespace TriStateBoolean {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
