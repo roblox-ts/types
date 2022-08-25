@@ -18,7 +18,6 @@ interface Services {
 	AvatarEditorService: AvatarEditorService;
 	AvatarImportService: AvatarImportService;
 	BadgeService: BadgeService;
-	BreakpointManager: BreakpointManager;
 	BulkImportService: BulkImportService;
 	CalloutService: CalloutService;
 	Chat: Chat;
@@ -67,6 +66,7 @@ interface Services {
 	MemoryStoreService: MemoryStoreService;
 	MessageBusService: MessageBusService;
 	MessagingService: MessagingService;
+	MetaBreakpointManager: MetaBreakpointManager;
 	PackageUIService: PackageUIService;
 	PathfindingService: PathfindingService;
 	PhysicsService: PhysicsService;
@@ -404,6 +404,7 @@ interface AbstractInstances {
 
 interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AdGui: AdGui;
+	AdPortal: AdPortal;
 	AnimationClip: AnimationClip;
 	AnimationStreamTrack: AnimationStreamTrack;
 	AnimationTrack: AnimationTrack;
@@ -5351,17 +5352,6 @@ interface Breakpoint extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Breakpoint: unique symbol;
-}
-
-interface BreakpointManager extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_BreakpointManager: unique symbol;
 }
 
 interface BulkImportService extends Instance {
@@ -21677,6 +21667,17 @@ interface MetaBreakpointContext extends Instance {
 	readonly _nominal_MetaBreakpointContext: unique symbol;
 }
 
+interface MetaBreakpointManager extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MetaBreakpointManager: unique symbol;
+}
+
 /** **Mouse** has been superseded by [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) and [ContextActionService](https://developer.roblox.com/en-us/api-reference/class/ContextActionService), which cover a broader scope, are more feature rich, and support **cross-platform** patterns better. It remains supported because of its widespread use, but you should strongly consider using these alternatives.
  * 
  * The **Mouse** object houses various API for pointers, primarily for buttons and raycasting. It can be accessed through [Player:GetMouse](https://developer.roblox.com/en-us/api-reference/function/Player/GetMouse) called on the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript). It is also passed by the [Tool.Equipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Equipped) event.
@@ -23200,6 +23201,17 @@ interface BasePart extends PVInstance {
 	 * Many types of parts are removed or destroyed as soon as they hit another part. This means that it is possible for the other part's [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to be nil. Be sure to check that `otherPart.Parent` is not nil before using it, such as calling [Instance:FindFirstChild](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstChild).
 	 */
 	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
+}
+
+interface AdPortal extends BasePart {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AdPortal: unique symbol;
 }
 
 /** This is a corner piece which has the same properties as a [Part](https://developer.roblox.com/en-us/api-reference/class/Part). */

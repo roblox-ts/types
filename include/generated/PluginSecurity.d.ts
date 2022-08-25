@@ -2693,6 +2693,7 @@ interface ScriptDocument extends Instance {
 	GetSelectionEnd(this: ScriptDocument): unknown;
 	GetSelectionStart(this: ScriptDocument): unknown;
 	GetText(this: ScriptDocument, startLine?: number | undefined, startCharacter?: number | undefined, endLine?: number | undefined, endCharacter?: number | undefined): string;
+	GetViewport(this: ScriptDocument): unknown;
 	HasSelectedText(this: ScriptDocument): boolean;
 	IsCommandBar(this: ScriptDocument): boolean;
 	/**
@@ -2708,6 +2709,7 @@ interface ScriptDocument extends Instance {
 	 */
 	RequestSetSelectionAsync(this: ScriptDocument, cursorLine: number, cursorCharacter: number, anchorLine?: number | undefined, anchorCharacter?: number | undefined): unknown;
 	readonly SelectionChanged: RBXScriptSignal<(positionLine: number, positionCharacter: number, anchorLine: number, anchorCharacter: number) => void>;
+	readonly ViewportChanged: RBXScriptSignal<(startLine: number, endLine: number) => void>;
 }
 
 interface ScriptEditorService extends Instance {
