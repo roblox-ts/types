@@ -800,9 +800,8 @@ interface Studio extends Instance {
 	Theme: StudioTheme;
 }
 
-interface SurfaceGui extends LayerCollector {
+interface SurfaceGui extends SurfaceGuiBase {
 	Adornee: BasePart | undefined;
-	Face: Enum.NormalId;
 }
 
 interface Team extends Instance {
