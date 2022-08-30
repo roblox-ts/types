@@ -802,6 +802,7 @@ interface Studio extends Instance {
 
 interface SurfaceGui extends LayerCollector {
 	Adornee: BasePart | undefined;
+	Face: Enum.NormalId;
 }
 
 interface Team extends Instance {
