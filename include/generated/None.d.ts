@@ -13250,7 +13250,7 @@ interface SurfaceGuiBase extends LayerCollector {
 	 */
 	readonly _nominal_SurfaceGuiBase: unique symbol;
 	Active: boolean;
-	Adornee: Instance | undefined;
+	Adornee: BasePart | undefined;
 	Face: Enum.NormalId;
 }
 
@@ -13277,7 +13277,7 @@ interface AdGui extends SurfaceGuiBase {
  * 
  * If any of these events occur, the Gui's appearance will be recomputed the next frame it gets rendered.
  */
-interface SurfaceGui extends LayerCollector {
+interface SurfaceGui extends SurfaceGuiBase {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -13286,7 +13286,6 @@ interface SurfaceGui extends LayerCollector {
 	 * @deprecated
 	 */
 	readonly _nominal_SurfaceGui: unique symbol;
-	Adornee: BasePart | undefined;
 	/**
 	 * Determines whether the SurfaceGui will render over top of 3D content, or  
 	 * be occluded by it.
