@@ -800,7 +800,7 @@ interface Studio extends Instance {
 	Theme: StudioTheme;
 }
 
-interface SurfaceGui extends LayerCollector {
+interface SurfaceGuiBase extends LayerCollector {
 	Adornee: BasePart | undefined;
 }
 
