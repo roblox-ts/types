@@ -1121,8 +1121,9 @@ export class ClassGenerator extends Generator {
 			const superClassName = this.generateClassName(rbxClass.Superclass);
 			extendsStr = `extends ${superClassName} `;
 			if (tsImplInterface) {
-				const originalExtends = tsImplInterface.getExtends()[0]?.getText();
-				if (!originalExtends?.startsWith(superClassName)) {
+				// getExpression separates a possible <TypeGenerics> part
+				const originalExtends = tsImplInterface.getExtends()[0].getExpression().getText();
+				if (originalExtends !== superClassName) {
 					console.warn(
 						`\`${rbxClass.Name}\` had its parent class changed to \`${superClassName}\`, was \`${originalExtends}\``,
 					);
