@@ -6855,6 +6855,58 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<IKCollisionsMode>
 	}
 	export type IKCollisionsMode = IKCollisionsMode.NoCollisions | IKCollisionsMode.OtherMechanismsAnchored | IKCollisionsMode.IncludeContactedMechanisms;
+	export namespace IKControlType {
+		export interface Null extends EnumItem {
+			Name: "Null";
+			Value: 0;
+			EnumType: typeof IKControlType;
+		}
+
+		export const Null: Null;
+
+		export interface Position extends EnumItem {
+			Name: "Position";
+			Value: 1;
+			EnumType: typeof IKControlType;
+		}
+
+		export const Position: Position;
+
+		export interface Rotation extends EnumItem {
+			Name: "Rotation";
+			Value: 2;
+			EnumType: typeof IKControlType;
+		}
+
+		export const Rotation: Rotation;
+
+		export interface Transform extends EnumItem {
+			Name: "Transform";
+			Value: 3;
+			EnumType: typeof IKControlType;
+		}
+
+		export const Transform: Transform;
+
+		export interface LookAt extends EnumItem {
+			Name: "LookAt";
+			Value: 4;
+			EnumType: typeof IKControlType;
+		}
+
+		export const LookAt: LookAt;
+
+		export interface Length extends EnumItem {
+			Name: "Length";
+			Value: 5;
+			EnumType: typeof IKControlType;
+		}
+
+		export const Length: Length;
+
+		export function GetEnumItems(this: Enum): Array<IKControlType>
+	}
+	export type IKControlType = IKControlType.Null | IKControlType.Position | IKControlType.Rotation | IKControlType.Transform | IKControlType.LookAt | IKControlType.Length;
 	export namespace IXPLoadingStatus {
 		export interface None extends EnumItem {
 			Name: "None";
@@ -9368,7 +9420,7 @@ declare namespace Enum {
 
 		export interface TextDocument_publishDiagnostics extends EnumItem {
 			Name: "TextDocument_publishDiagnostics";
-			Value: 20;
+			Value: 21;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9376,7 +9428,7 @@ declare namespace Enum {
 
 		export interface Window_showMessage extends EnumItem {
 			Name: "Window_showMessage";
-			Value: 21;
+			Value: 22;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9384,7 +9436,7 @@ declare namespace Enum {
 
 		export interface Window_showMessageRequest extends EnumItem {
 			Name: "Window_showMessageRequest";
-			Value: 22;
+			Value: 23;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9392,7 +9444,7 @@ declare namespace Enum {
 
 		export interface Roblox_registerSyntaxCategories extends EnumItem {
 			Name: "Roblox_registerSyntaxCategories";
-			Value: 23;
+			Value: 24;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9400,7 +9452,7 @@ declare namespace Enum {
 
 		export interface Roblox_signalQuiescence extends EnumItem {
 			Name: "Roblox_signalQuiescence";
-			Value: 24;
+			Value: 25;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9408,7 +9460,7 @@ declare namespace Enum {
 
 		export interface Roblox_syntaxHighlight extends EnumItem {
 			Name: "Roblox_syntaxHighlight";
-			Value: 25;
+			Value: 26;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9416,7 +9468,7 @@ declare namespace Enum {
 
 		export interface Roblox_suggestExtraSelections extends EnumItem {
 			Name: "Roblox_suggestExtraSelections";
-			Value: 26;
+			Value: 27;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9424,7 +9476,7 @@ declare namespace Enum {
 
 		export interface Roblox_findExecutablePosition extends EnumItem {
 			Name: "Roblox_findExecutablePosition";
-			Value: 27;
+			Value: 28;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9432,7 +9484,7 @@ declare namespace Enum {
 
 		export interface Roblox_findColor3 extends EnumItem {
 			Name: "Roblox_findColor3";
-			Value: 28;
+			Value: 29;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9440,7 +9492,7 @@ declare namespace Enum {
 
 		export interface Roblox_patchSnippetData extends EnumItem {
 			Name: "Roblox_patchSnippetData";
-			Value: 29;
+			Value: 30;
 			EnumType: typeof LSPMethodType;
 		}
 

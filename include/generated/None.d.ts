@@ -216,6 +216,7 @@ interface CreatableInstances {
 	Humanoid: Humanoid;
 	HumanoidController: HumanoidController;
 	HumanoidDescription: HumanoidDescription;
+	IKControl: IKControl;
 	ImageButton: ImageButton;
 	ImageHandleAdornment: ImageHandleAdornment;
 	ImageLabel: ImageLabel;
@@ -435,6 +436,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	GlobalDataStore: GlobalDataStore;
 	ImporterAnimationSettings: ImporterAnimationSettings;
 	ImporterBaseSettings: ImporterBaseSettings;
+	ImporterFacsSettings: ImporterFacsSettings;
 	ImporterGroupSettings: ImporterGroupSettings;
 	ImporterJointSettings: ImporterJointSettings;
 	ImporterMaterialSettings: ImporterMaterialSettings;
@@ -2513,6 +2515,10 @@ interface AvatarEditorService extends Instance {
 	 * Tags: Yields
 	 */
 	CheckApplyDefaultClothing(this: AvatarEditorService, humanoidDescription: HumanoidDescription): HumanoidDescription;
+	/**
+	 * Tags: Yields
+	 */
+	ConformToAvatarRules(this: AvatarEditorService, humanoidDescription: HumanoidDescription): HumanoidDescription;
 	/**
 	 * This function returns the platform Avatar rules for things like scaling, default shirts and pants, number of wearable assets, ect.
 	 * 
@@ -16244,6 +16250,25 @@ interface HumanoidDescription extends Instance {
 	readonly EquippedEmotesChanged: RBXScriptSignal<(newEquippedEmotes: EquippedEmotes) => void>;
 }
 
+interface IKControl extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_IKControl: unique symbol;
+	ChainRoot: Instance | undefined;
+	Enabled: boolean;
+	EndEffector: Instance | undefined;
+	Pole: Instance | undefined;
+	Priority: number;
+	Target: Instance | undefined;
+	Type: Enum.IKControlType;
+	Weight: number;
+}
+
 interface ILegacyStudioBridge extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -16303,6 +16328,17 @@ interface ImporterAnimationSettings extends ImporterBaseSettings {
 	 * @deprecated
 	 */
 	readonly _nominal_ImporterAnimationSettings: unique symbol;
+}
+
+interface ImporterFacsSettings extends ImporterBaseSettings {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ImporterFacsSettings: unique symbol;
 }
 
 interface ImporterGroupSettings extends ImporterBaseSettings {
@@ -20854,6 +20890,10 @@ interface BaseScript extends LuaSourceContainer {
 	 */
 	Disabled: boolean;
 	/**
+	 * Tags: NotReplicated
+	 */
+	Enabled: boolean;
+	/**
 	 * The content ID of an uploaded script. When set binds the uploaded code to the script's [Script.Source](https://developer.roblox.com/en-us/api-reference/property/Script/Source).
 	 * 
 	 * By default, this property is set to _'\[Embedded\]'_. This means the source of the script is not linked to an upload script and is instead written in the script.
@@ -22448,6 +22488,10 @@ interface BasePart extends PVInstance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly CenterOfMass: Vector3;
+	/**
+	 * Tags: NotReplicated
+	 */
+	CollisionGroup: string;
 	/**
 	 * The CollisionGroupId property describes the ID number of the part's collision group. Parts start off in the Default group whose ID is 0. Although this property can be directly changed, it is recommended to instead manipulate the collision group of a part using the **name** of the group with the [PhysicsService:SetPartCollisionGroup](https://developer.roblox.com/en-us/api-reference/function/PhysicsService/SetPartCollisionGroup) function. You can find the ID of a collision group by using [PhysicsService:GetCollisionGroupId](https://developer.roblox.com/en-us/api-reference/function/PhysicsService/GetCollisionGroupId).
 	 * 
