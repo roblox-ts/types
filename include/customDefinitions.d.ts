@@ -406,9 +406,9 @@ interface Instance {
 	readonly Changed: unknown;
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
-	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
-	WaitForChild(this: Instance, childName: string | number): Instance;
-	WaitForChild(this: Instance, childName: string | number, timeOut: number): Instance | undefined;
+	FindFirstChild<T extends Instance>(this: Instance, childName: string | number, recursive?: boolean): T | undefined;
+	WaitForChild<T extends Instance>(this: Instance, childName: string | number): T;
+	WaitForChild<T extends Instance>(this: Instance, childName: string | number, timeOut: number): T | undefined;
 	IsA<T extends keyof Instances>(this: Instance, className: T): this is Instances[T];
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	FindFirstChildWhichIsA<T extends keyof Instances>(
