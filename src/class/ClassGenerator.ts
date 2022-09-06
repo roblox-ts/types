@@ -19,6 +19,7 @@ import {
 	MemberTag,
 	SecurityType,
 } from "../api";
+import { fatal } from "../util";
 import { Generator } from "./Generator";
 import { ReflectionMetadata } from "./ReflectionMetadata";
 
@@ -1121,11 +1122,10 @@ export class ClassGenerator extends Generator {
 			const superClassName = this.generateClassName(rbxClass.Superclass);
 			extendsStr = `extends ${superClassName} `;
 			if (tsImplInterface) {
-				const originalExtends = tsImplInterface.getExtends()[0]?.getText();
-				if (!originalExtends?.startsWith(superClassName)) {
-					console.warn(
-						`\`${rbxClass.Name}\` had its parent class changed to \`${superClassName}\`, was \`${originalExtends}\``,
-					);
+				// getExpression separates a possible <TypeGenerics> part
+				const originalExtends = tsImplInterface.getExtends()[0].getExpression().getText();
+				if (originalExtends !== superClassName) {
+					fatal(rbxClass.Name, "had its parent class changed from", originalExtends, "to", superClassName);
 				}
 			}
 		}
@@ -1180,7 +1180,7 @@ export class ClassGenerator extends Generator {
 						const obj = rbxClass.Members.find(member => member.Name === name);
 
 						if (obj === undefined && !EXPECTED_EXTRA_MEMBERS.get(className)?.includes(name)) {
-							console.warn("could not find", className + "." + name);
+							fatal("Unknown member", className + "." + name, "was found in customDefinitions.d.ts");
 						}
 						const [signature, documentation] = this.getSignature(custom);
 						if (documentation.trim()) this.write(documentation);
