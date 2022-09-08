@@ -2699,6 +2699,10 @@ interface ScriptDocument extends Instance {
 	/**
 	 * Tags: Yields
 	 */
+	CloseAsync(this: ScriptDocument): unknown;
+	/**
+	 * Tags: Yields
+	 */
 	EditTextAsync(this: ScriptDocument, newText: string, startLine: number, startCharacter: number, endLine: number, endCharacter: number): unknown;
 	/**
 	 * Tags: Yields
