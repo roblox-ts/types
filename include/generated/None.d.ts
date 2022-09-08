@@ -412,6 +412,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AssetImportSession: AssetImportSession;
 	AssetSoundEffect: AssetSoundEffect;
 	BaseWrap: BaseWrap;
+	BubbleChatConfiguration: BubbleChatConfiguration;
 	CatalogPages: CatalogPages;
 	ChatInputBarConfiguration: ChatInputBarConfiguration;
 	ChatWindowConfiguration: ChatWindowConfiguration;
@@ -1192,6 +1193,18 @@ interface Hat extends Accoutrement {
 	readonly _nominal_Hat: unique symbol;
 }
 
+interface AdPortal extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AdPortal: unique symbol;
+	PortalType: Enum.PortalType;
+}
+
 /** **Note**
  * 
  * This service should only be used by developers who are enrolled in the [PlayFab](https://developer.rblx.playfab.com/en-US/sign-up) program.
@@ -1727,6 +1740,10 @@ interface AnimationStreamTrack extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AnimationStreamTrack: unique symbol;
+	/**
+	 * Tags: Hidden, ReadOnly, NotReplicated
+	 */
+	readonly Animation: TrackerStreamAnimation | undefined;
 	/**
 	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
@@ -8393,7 +8410,7 @@ interface AirController extends ControllerBase {
 	CancelAirMomentum: boolean;
 	MoveMaxForce: number;
 	OrientationMaxTorque: number;
-	OrientationSpeed: number;
+	OrientationSpeedFactor: number;
 	VectorForce: Vector3;
 }
 
@@ -8409,7 +8426,7 @@ interface ClimbController extends ControllerBase {
 	AccelerationTime: number;
 	MoveMaxForce: number;
 	OrientationMaxTorque: number;
-	OrientationSpeed: number;
+	OrientationSpeedFactor: number;
 }
 
 interface GroundController extends ControllerBase {
@@ -8444,8 +8461,10 @@ interface SwimController extends ControllerBase {
 	 */
 	readonly _nominal_SwimController: unique symbol;
 	AccelerationTime: number;
-	OrientationMaxTorque: number;
-	OrientationSpeed: number;
+	PitchMaxTorque: number;
+	PitchSpeedFactor: number;
+	RollMaxTorque: number;
+	RollSpeedFactor: number;
 }
 
 interface ControllerManager extends Instance {
@@ -8462,7 +8481,10 @@ interface ControllerManager extends Instance {
 	 */
 	readonly ActiveController: ControllerBase | undefined;
 	BaseMoveSpeed: number;
+	BaseTurnSpeed: number;
+	FacingDirection: Vector3;
 	HipHeight: number;
+	MovingDirection: Vector3;
 	GetControllers(this: ControllerManager): Array<Instance>;
 }
 
@@ -16262,6 +16284,7 @@ interface IKControl extends Instance {
 	ChainRoot: Instance | undefined;
 	Enabled: boolean;
 	EndEffector: Instance | undefined;
+	Offset: CFrame;
 	Pole: Instance | undefined;
 	Priority: number;
 	Target: Instance | undefined;
@@ -23244,17 +23267,6 @@ interface BasePart extends PVInstance {
 	 * Many types of parts are removed or destroyed as soon as they hit another part. This means that it is possible for the other part's [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to be nil. Be sure to check that `otherPart.Parent` is not nil before using it, such as calling [Instance:FindFirstChild](https://developer.roblox.com/en-us/api-reference/function/Instance/FindFirstChild).
 	 */
 	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
-}
-
-interface AdPortal extends BasePart {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_AdPortal: unique symbol;
 }
 
 /** This is a corner piece which has the same properties as a [Part](https://developer.roblox.com/en-us/api-reference/class/Part). */
@@ -31900,6 +31912,29 @@ interface TextChatConfigurations extends Instance {
 	readonly _nominal_TextChatConfigurations: unique symbol;
 }
 
+interface BubbleChatConfiguration extends TextChatConfigurations {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BubbleChatConfiguration: unique symbol;
+	AdorneeName: string;
+	BackgroundColor3: Color3;
+	BubbleDuration: number;
+	BubblesSpacing: number;
+	Enabled: boolean;
+	Font: Enum.Font;
+	LocalPlayerStudsOffset: Vector3;
+	MaxDistance: number;
+	MinimizeDistance: number;
+	TextColor3: Color3;
+	TextSize: number;
+	VerticalStudsOffset: number;
+}
+
 interface ChatInputBarConfiguration extends TextChatConfigurations {
 	/**
 	 * **DO NOT USE!**
@@ -33534,6 +33569,7 @@ interface UserGameSettings extends Instance {
 	 * The type of controls being used by the client on a mobile device.
 	 */
 	TouchMovementMode: Enum.TouchMovementMode;
+	readonly VRSmoothRotationEnabled: boolean;
 	readonly VignetteEnabled: boolean;
 	/**
 	 * Returns the camera's Y-invert value.

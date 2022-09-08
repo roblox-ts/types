@@ -6932,17 +6932,9 @@ declare namespace Enum {
 
 		export const Initialized: Initialized;
 
-		export interface ShutOff extends EnumItem {
-			Name: "ShutOff";
-			Value: 3;
-			EnumType: typeof IXPLoadingStatus;
-		}
-
-		export const ShutOff: ShutOff;
-
 		export interface ErrorTimedOut extends EnumItem {
 			Name: "ErrorTimedOut";
-			Value: 7;
+			Value: 6;
 			EnumType: typeof IXPLoadingStatus;
 		}
 
@@ -6950,7 +6942,7 @@ declare namespace Enum {
 
 		export interface ErrorConnection extends EnumItem {
 			Name: "ErrorConnection";
-			Value: 5;
+			Value: 4;
 			EnumType: typeof IXPLoadingStatus;
 		}
 
@@ -6958,7 +6950,7 @@ declare namespace Enum {
 
 		export interface ErrorJsonParse extends EnumItem {
 			Name: "ErrorJsonParse";
-			Value: 6;
+			Value: 5;
 			EnumType: typeof IXPLoadingStatus;
 		}
 
@@ -6966,7 +6958,7 @@ declare namespace Enum {
 
 		export interface ErrorInvalidUser extends EnumItem {
 			Name: "ErrorInvalidUser";
-			Value: 4;
+			Value: 3;
 			EnumType: typeof IXPLoadingStatus;
 		}
 
@@ -6974,7 +6966,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: Enum): Array<IXPLoadingStatus>
 	}
-	export type IXPLoadingStatus = IXPLoadingStatus.None | IXPLoadingStatus.Pending | IXPLoadingStatus.Initialized | IXPLoadingStatus.ShutOff | IXPLoadingStatus.ErrorTimedOut | IXPLoadingStatus.ErrorConnection | IXPLoadingStatus.ErrorJsonParse | IXPLoadingStatus.ErrorInvalidUser;
+	export type IXPLoadingStatus = IXPLoadingStatus.None | IXPLoadingStatus.Pending | IXPLoadingStatus.Initialized | IXPLoadingStatus.ErrorTimedOut | IXPLoadingStatus.ErrorConnection | IXPLoadingStatus.ErrorJsonParse | IXPLoadingStatus.ErrorInvalidUser;
 	export namespace InOut {
 		export interface Edge extends EnumItem {
 			Name: "Edge";
@@ -9420,7 +9412,7 @@ declare namespace Enum {
 
 		export interface TextDocument_publishDiagnostics extends EnumItem {
 			Name: "TextDocument_publishDiagnostics";
-			Value: 21;
+			Value: 22;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9428,7 +9420,7 @@ declare namespace Enum {
 
 		export interface Window_showMessage extends EnumItem {
 			Name: "Window_showMessage";
-			Value: 22;
+			Value: 23;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9436,7 +9428,7 @@ declare namespace Enum {
 
 		export interface Window_showMessageRequest extends EnumItem {
 			Name: "Window_showMessageRequest";
-			Value: 23;
+			Value: 24;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9444,7 +9436,7 @@ declare namespace Enum {
 
 		export interface Roblox_registerSyntaxCategories extends EnumItem {
 			Name: "Roblox_registerSyntaxCategories";
-			Value: 24;
+			Value: 25;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9452,7 +9444,7 @@ declare namespace Enum {
 
 		export interface Roblox_signalQuiescence extends EnumItem {
 			Name: "Roblox_signalQuiescence";
-			Value: 25;
+			Value: 26;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9460,7 +9452,7 @@ declare namespace Enum {
 
 		export interface Roblox_syntaxHighlight extends EnumItem {
 			Name: "Roblox_syntaxHighlight";
-			Value: 26;
+			Value: 27;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9468,7 +9460,7 @@ declare namespace Enum {
 
 		export interface Roblox_suggestExtraSelections extends EnumItem {
 			Name: "Roblox_suggestExtraSelections";
-			Value: 27;
+			Value: 28;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9476,7 +9468,7 @@ declare namespace Enum {
 
 		export interface Roblox_findExecutablePosition extends EnumItem {
 			Name: "Roblox_findExecutablePosition";
-			Value: 28;
+			Value: 29;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9484,7 +9476,7 @@ declare namespace Enum {
 
 		export interface Roblox_findColor3 extends EnumItem {
 			Name: "Roblox_findColor3";
-			Value: 29;
+			Value: 30;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -9492,7 +9484,7 @@ declare namespace Enum {
 
 		export interface Roblox_patchSnippetData extends EnumItem {
 			Name: "Roblox_patchSnippetData";
-			Value: 30;
+			Value: 31;
 			EnumType: typeof LSPMethodType;
 		}
 
@@ -11539,6 +11531,26 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<PlayerChatType>
 	}
 	export type PlayerChatType = PlayerChatType.All | PlayerChatType.Team | PlayerChatType.Whisper;
+	export namespace PortalType {
+		export interface Forward extends EnumItem {
+			Name: "Forward";
+			Value: 0;
+			EnumType: typeof PortalType;
+		}
+
+		export const Forward: Forward;
+
+		export interface Return extends EnumItem {
+			Name: "Return";
+			Value: 1;
+			EnumType: typeof PortalType;
+		}
+
+		export const Return: Return;
+
+		export function GetEnumItems(this: Enum): Array<PortalType>
+	}
+	export type PortalType = PortalType.Forward | PortalType.Return;
 	export namespace PoseEasingDirection {
 		export interface Out extends EnumItem {
 			Name: "Out";
@@ -16099,6 +16111,42 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<TrackerError>
 	}
 	export type TrackerError = TrackerError.Ok | TrackerError.NoService | TrackerError.InitFailed | TrackerError.NoVideo | TrackerError.VideoError | TrackerError.VideoNoPermission | TrackerError.NoAudio | TrackerError.AudioError | TrackerError.AudioNoPermission;
+	export namespace TrackerMode {
+		export interface None extends EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof TrackerMode;
+		}
+
+		export const None: None;
+
+		export interface Audio extends EnumItem {
+			Name: "Audio";
+			Value: 1;
+			EnumType: typeof TrackerMode;
+		}
+
+		export const Audio: Audio;
+
+		export interface Video extends EnumItem {
+			Name: "Video";
+			Value: 2;
+			EnumType: typeof TrackerMode;
+		}
+
+		export const Video: Video;
+
+		export interface AudioVideo extends EnumItem {
+			Name: "AudioVideo";
+			Value: 3;
+			EnumType: typeof TrackerMode;
+		}
+
+		export const AudioVideo: AudioVideo;
+
+		export function GetEnumItems(this: Enum): Array<TrackerMode>
+	}
+	export type TrackerMode = TrackerMode.None | TrackerMode.Audio | TrackerMode.Video | TrackerMode.AudioVideo;
 	export namespace TriStateBoolean {
 		export interface Unknown extends EnumItem {
 			Name: "Unknown";
