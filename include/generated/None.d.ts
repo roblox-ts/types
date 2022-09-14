@@ -1202,7 +1202,7 @@ interface AdPortal extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AdPortal: unique symbol;
-	PortalType: Enum.PortalType;
+	PortalType: Enum.AdPortalType;
 }
 
 /** **Note**
@@ -2497,6 +2497,7 @@ interface AvatarEditorService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AvatarEditorService: unique symbol;
+	GetAccessoryType(this: AvatarEditorService, avatarAssetType: CastsToEnum<Enum.AvatarAssetType>): Enum.AccessoryType;
 	/**
 	 * Prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to allow the developer to read what items the user has in their inventory and other avatar editor related information. The prompt needs to be confirmed by the user for the developer to use [AvatarEditorService:GetInventory](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetInventory), [AvatarEditorService:GetOutfits](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetOutfits) and [AvatarEditorService:GetFavorite](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetFavorite). Permission does not persist between sessions.
 	 */
@@ -24925,12 +24926,12 @@ interface PackageLink extends Instance {
 	readonly _nominal_PackageLink: unique symbol;
 	/**
 	 * The id of the asset this package corresponds to.
-	 * Tags: Hidden, ReadOnly, NotReplicated
+	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly PackageId: string;
 	/**
 	 * This property refers to a revision of a specific package
-	 * Tags: Hidden, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly VersionNumber: number;
 }

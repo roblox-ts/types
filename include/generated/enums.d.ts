@@ -287,6 +287,54 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<ActuatorType>
 	}
 	export type ActuatorType = ActuatorType.None | ActuatorType.Motor | ActuatorType.Servo;
+	export namespace AdPortalStatus {
+		export interface Invalid extends EnumItem {
+			Name: "Invalid";
+			Value: 0;
+			EnumType: typeof AdPortalStatus;
+		}
+
+		export const Invalid: Invalid;
+
+		export interface Inactive extends EnumItem {
+			Name: "Inactive";
+			Value: 1;
+			EnumType: typeof AdPortalStatus;
+		}
+
+		export const Inactive: Inactive;
+
+		export interface Active extends EnumItem {
+			Name: "Active";
+			Value: 2;
+			EnumType: typeof AdPortalStatus;
+		}
+
+		export const Active: Active;
+
+		export function GetEnumItems(this: Enum): Array<AdPortalStatus>
+	}
+	export type AdPortalStatus = AdPortalStatus.Invalid | AdPortalStatus.Inactive | AdPortalStatus.Active;
+	export namespace AdPortalType {
+		export interface Forward extends EnumItem {
+			Name: "Forward";
+			Value: 0;
+			EnumType: typeof AdPortalType;
+		}
+
+		export const Forward: Forward;
+
+		export interface Return extends EnumItem {
+			Name: "Return";
+			Value: 1;
+			EnumType: typeof AdPortalType;
+		}
+
+		export const Return: Return;
+
+		export function GetEnumItems(this: Enum): Array<AdPortalType>
+	}
+	export type AdPortalType = AdPortalType.Forward | AdPortalType.Return;
 	export namespace AdShape {
 		export interface HorizontalRectangle extends EnumItem {
 			Name: "HorizontalRectangle";
@@ -11531,26 +11579,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: Enum): Array<PlayerChatType>
 	}
 	export type PlayerChatType = PlayerChatType.All | PlayerChatType.Team | PlayerChatType.Whisper;
-	export namespace PortalType {
-		export interface Forward extends EnumItem {
-			Name: "Forward";
-			Value: 0;
-			EnumType: typeof PortalType;
-		}
-
-		export const Forward: Forward;
-
-		export interface Return extends EnumItem {
-			Name: "Return";
-			Value: 1;
-			EnumType: typeof PortalType;
-		}
-
-		export const Return: Return;
-
-		export function GetEnumItems(this: Enum): Array<PortalType>
-	}
-	export type PortalType = PortalType.Forward | PortalType.Return;
 	export namespace PoseEasingDirection {
 		export interface Out extends EnumItem {
 			Name: "Out";
