@@ -512,12 +512,14 @@ interface SendNotificationConfig {
 }
 
 interface PolicyInfo {
-	/** Whether the player can interact with paid random item generators. */
+	/** When true, the player cannot interact with paid (via in-experience currency or Robux) random item generators. */
 	ArePaidRandomItemsRestricted: boolean;
-	/** See [here](https://devforum.roblox.com/t/about-our-upcoming-global-compliance-system/461447) for details. */
-	IsSubjectToChinaPolicies: boolean;
-	/** Which external link references are allowed in a country/region. */
+	/** A list of external link references (for example, social media links, handles, or iconography) a player is permitted to see. Possible values include: “Discord”, “Facebook”, “Twitch”, and “YouTube”. */
 	AllowedExternalLinkReferences: Array<string>;
+	/** When true, the player can trade virtual items that they purchased with in-experience currency or Robux. */
+	IsPaidItemTradingAllowed: boolean;
+	/** When true, an experience should enforce compliance changes. See [here](https://devforum.roblox.com/t/about-our-upcoming-global-compliance-system/461447) for details. */
+	IsSubjectToChinaPolicies: boolean;
 }
 
 /**
