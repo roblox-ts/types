@@ -519,7 +519,7 @@ interface PolicyInfo {
 	/** Which external link references are allowed in a country/region. */
 	AllowedExternalLinkReferences: Array<string>;
 	/** Whether player can trade purchased items. */
-	IsPaidTradingAllowed: boolean;
+	IsPaidItemTradingAllowed: boolean;
 }
 
 /**
