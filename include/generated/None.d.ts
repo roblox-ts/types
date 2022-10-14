@@ -129,6 +129,8 @@ interface CreatableInstances {
 	Accessory: Accessory;
 	Accoutrement: Accoutrement;
 	Actor: Actor;
+	AdGui: AdGui;
+	AdPortal: AdPortal;
 	AirController: AirController;
 	AlignOrientation: AlignOrientation;
 	AlignPosition: AlignPosition;
@@ -194,6 +196,7 @@ interface CreatableInstances {
 	EchoSoundEffect: EchoSoundEffect;
 	EqualizerSoundEffect: EqualizerSoundEffect;
 	EulerRotationCurve: EulerRotationCurve;
+	ExperienceInviteOptions: ExperienceInviteOptions;
 	Explosion: Explosion;
 	FaceControls: FaceControls;
 	FileMesh: FileMesh;
@@ -404,8 +407,6 @@ interface AbstractInstances {
 }
 
 interface Instances extends Services, CreatableInstances, AbstractInstances {
-	AdGui: AdGui;
-	AdPortal: AdPortal;
 	AnimationClip: AnimationClip;
 	AnimationStreamTrack: AnimationStreamTrack;
 	AnimationTrack: AnimationTrack;
@@ -416,6 +417,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	CatalogPages: CatalogPages;
 	ChatInputBarConfiguration: ChatInputBarConfiguration;
 	ChatWindowConfiguration: ChatWindowConfiguration;
+	CloudLocalizationTable: CloudLocalizationTable;
 	CommandInstance: CommandInstance;
 	ControllerBase: ControllerBase;
 	CustomSoundEffect: CustomSoundEffect;
@@ -486,6 +488,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	TextSource: TextSource;
 	ThreadState: ThreadState;
 	TouchTransmitter: TouchTransmitter;
+	TrackerLodController: TrackerLodController;
 	Translator: Translator;
 	Tween: Tween;
 	UserGameSettings: UserGameSettings;
@@ -1202,6 +1205,10 @@ interface AdPortal extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AdPortal: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly PortalStatus: Enum.AdPortalStatus;
 	PortalType: Enum.AdPortalType;
 }
 
@@ -1990,6 +1997,7 @@ interface Animator extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Animator: unique symbol;
+	PreferLodEnabled: boolean;
 	/**
 	 * Given the current set of [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) playing, and their current times and play speeds, compute relative velocities between the parts and apply them to Motor6D.Part1 (the part which [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator) considers the “child” part). These relative velocity calculations and assignments happen in the order provided.
 	 * 
@@ -8446,6 +8454,10 @@ interface GroundController extends ControllerBase {
 	DecelerationTime: number;
 	Friction: number;
 	FrictionWeight: number;
+	GroundOffset: number;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
 	MaxSlopeAngle: number;
 	StandForce: number;
 	StandSpeed: number;
@@ -8484,6 +8496,9 @@ interface ControllerManager extends Instance {
 	BaseMoveSpeed: number;
 	BaseTurnSpeed: number;
 	FacingDirection: Vector3;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
 	HipHeight: number;
 	MovingDirection: Vector3;
 	GetControllers(this: ControllerManager): Array<Instance>;
@@ -9092,7 +9107,7 @@ interface DataStoreService extends Instance {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	ListDataStoresAsync(this: DataStoreService, prefix?: string, pageSize?: number): DataStoreListingPages;
+	ListDataStoresAsync(this: DataStoreService, prefix?: string, pageSize?: number, cursor?: string): DataStoreListingPages;
 }
 
 /** An object that specifies additional parameters for a [GlobalDataStore:SetAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/SetAsync) call.
@@ -9583,6 +9598,21 @@ interface EventIngestService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_EventIngestService: unique symbol;
+}
+
+interface ExperienceInviteOptions extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ExperienceInviteOptions: unique symbol;
+	InviteMessageId: number;
+	InviteUser: number;
+	LaunchData: string;
+	PromptMessage: string;
 }
 
 /** An Explosion applies force to `BaseParts` within the explosion's [Explosion.BlastRadius](https://developer.roblox.com/en-us/api-reference/property/Explosion/BlastRadius). This force breaks joints between parts and kills [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) characters not protected by a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField).
@@ -10541,7 +10571,7 @@ interface DataStore extends GlobalDataStore {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	ListKeysAsync(this: DataStore, prefix?: string, pageSize?: number): DataStoreKeyPages;
+	ListKeysAsync(this: DataStore, prefix?: string, pageSize?: number, cursor?: string): DataStoreKeyPages;
 	/**
 	 * This function enumerates versions of the specified key in either ascending or descending order specified by a [SortDirection](https://developer.roblox.com/en-us/api-reference/enum/SortDirection) parameter. It can optionally filter the returned versions by minimum and maximum timestamp.
 	 * 
@@ -14662,6 +14692,10 @@ interface Humanoid extends Instance {
 	 */
 	DisplayName: string;
 	/**
+	 * Tags: NotBrowsable
+	 */
+	EvaluateStateMachine: boolean;
+	/**
 	 * This is a read-only property that describes the [Material](https://developer.roblox.com/en-us/api-reference/enum/Material) the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) is currently standing on.  
 	 * It works with both regular [Parts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) voxels.
 	 * 
@@ -16282,6 +16316,7 @@ interface IKControl extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_IKControl: unique symbol;
+	AlignmentOffset: CFrame;
 	ChainRoot: Instance | undefined;
 	Enabled: boolean;
 	EndEffector: Instance | undefined;
@@ -16506,6 +16541,8 @@ interface IncrementalPatchBuilder extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_IncrementalPatchBuilder: unique symbol;
+	HighCompression: boolean;
+	ZstdCompression: boolean;
 }
 
 /** An **InputObject** represents a single user input, such as mouse movement, touches, key presses and more. It is created when an input begins.
@@ -20816,6 +20853,17 @@ interface LocalizationTable extends Instance {
 	SetEntryValue(this: LocalizationTable, key: string, source: string, context: string, localeId: string, text: string): void;
 }
 
+interface CloudLocalizationTable extends LocalizationTable {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CloudLocalizationTable: unique symbol;
+}
+
 interface LodDataEntity extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -22531,6 +22579,10 @@ interface BasePart extends PVInstance {
 	 */
 	Color: Color3;
 	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CurrentPhysicalProperties: PhysicalProperties;
+	/**
 	 * CustomPhysicalProperties lets you customize various physical aspects of a [part](https://developer.roblox.com/en-us/api-reference/class/BasePart), such as its's density, friction, and elasticity.
 	 * 
 	 * If enabled, this property let's you configure these physical properties. If disabled, these physical properties are determined by the [BasePart.Material](https://developer.roblox.com/en-us/api-reference/property/BasePart/Material) of the part. The page for [Material](https://developer.roblox.com/en-us/api-reference/enum/Material) contains list of the various part materials.
@@ -24106,6 +24158,7 @@ interface Model extends PVInstance {
 	 * @deprecated
 	 */
 	readonly _nominal_Model: unique symbol;
+	ModelStreamingMode: Enum.ModelStreamingMode;
 	/**
 	 * Points to the primary part of the [Model](https://developer.roblox.com/en-us/api-reference/class/Model). The primary part is the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that acts as the physical reference for the pivot of the model. That is, when parts within the model are moved due to physical simulation or other means, the pivot will move in sync with the primary part. If the primary part is **not** set, the pivot will remain at the same location in world space even if parts within the model are moved.
 	 * 
@@ -24890,6 +24943,7 @@ interface Workspace extends WorldRoot {
 	 * Developers interested in seeing how this function is used in the Roblox Studio should see the [Studio Tools GitHub repository](https://github.com/Roblox/Studio-Tools).
 	 */
 	UnjoinFromOutsiders(this: Workspace, objects: Array<Instance>): void;
+	readonly PersistentLoaded: RBXScriptSignal<(player: Player) => void>;
 }
 
 /** The WorldModel provides some physics features to a [ViewportFrame](https://developer.roblox.com/en-us/api-reference/class/ViewportFrame).
@@ -25024,6 +25078,10 @@ interface DataStoreKeyPages extends Pages {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreKeyPages: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Cursor: string;
 }
 
 /** A special type of [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object whose pages contain [DataStoreInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreInfo) instances. [Pages:GetCurrentPage](https://developer.roblox.com/en-us/api-reference/function/Pages/GetCurrentPage) can be used to retrieve an array of the [DataStoreInfo](https://developer.roblox.com/en-us/api-reference/class/DataStoreInfo) instances.
@@ -25042,6 +25100,10 @@ interface DataStoreListingPages extends Pages {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStoreListingPages: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Cursor: string;
 }
 
 /** A special type of [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object whose pages contain key/value pairs from an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore). For this object, [GetCurrentPage()](https://developer.roblox.com/en-us/api-reference/function/Pages/GetCurrentPage) returns an array of tables, each containing keys named **key** and **value**; these reflect the key/value pair data. */
@@ -25802,6 +25864,7 @@ interface PhysicsService extends Instance {
 	 */
 	GetMaxCollisionGroups(this: PhysicsService): number;
 	GetRegisteredCollisionGroups(this: PhysicsService): unknown;
+	IsCollisionGroupRegistered(this: PhysicsService, name: string): boolean;
 	RegisterCollisionGroup(this: PhysicsService, name: string): void;
 	/**
 	 * Removes the collision group with the given name. If an invalid name is provided the function will not do anything, although if the reserved name “Default” is provided then the function will throw an error.
@@ -28331,10 +28394,10 @@ interface RunService extends Instance {
 	 * There is no guarantee that functions connected to this event will fire at the exact same time, or in any specific order. For an alternative where the priority can be specified, see [RunService:BindToRenderStep](https://developer.roblox.com/en-us/api-reference/function/RunService/BindToRenderStep).
 	 */
 	readonly Heartbeat: RBXScriptSignal<(deltaTime: number) => void>;
-	readonly PostSimulation: RBXScriptSignal<(deltaTime: number) => void>;
-	readonly PreAnimation: RBXScriptSignal<(deltaTime: number) => void>;
-	readonly PreRender: RBXScriptSignal<(deltaTime: number) => void>;
-	readonly PreSimulation: RBXScriptSignal<(deltaTime: number) => void>;
+	readonly PostSimulation: RBXScriptSignal<(deltaTimeSim: number) => void>;
+	readonly PreAnimation: RBXScriptSignal<(deltaTimeSim: number) => void>;
+	readonly PreRender: RBXScriptSignal<(deltaTimeRender: number) => void>;
+	readonly PreSimulation: RBXScriptSignal<(deltaTimeSim: number) => void>;
 	/**
 	 * The RenderStepped event fires every _frame_, prior to the frame being rendered. The _step_ argument indicates the time that has elapsed since the previous frame.
 	 * 
@@ -31975,6 +32038,14 @@ interface ChatWindowConfiguration extends TextChatConfigurations {
 	 */
 	readonly AbsoluteSize: Vector2;
 	Enabled: boolean;
+	/**
+	 * Tags: NotReplicated
+	 */
+	HorizontalAlignment: Enum.HorizontalAlignment;
+	/**
+	 * Tags: NotReplicated
+	 */
+	VerticalAlignment: Enum.VerticalAlignment;
 }
 
 interface TextChatMessage extends Instance {
@@ -32200,6 +32271,21 @@ interface TracerService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TracerService: unique symbol;
+}
+
+interface TrackerLodController extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TrackerLodController: unique symbol;
+	AudioMode: Enum.TrackerLodFlagMode;
+	VideoExtrapolationMode: Enum.TrackerExtrapolationFlagMode;
+	VideoLodMode: Enum.TrackerLodValueMode;
+	VideoMode: Enum.TrackerLodFlagMode;
 }
 
 interface TrackerStreamAnimation extends Instance {
