@@ -2325,7 +2325,7 @@ interface CheckableTypes extends CheckablePrimitives {
 	ColorSequenceKeypoint: ColorSequenceKeypoint;
 	DateTime: DateTime;
 	DockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo;
-	Enum: Enum;
+	Enum: RobloxEnum;
 	EnumItem: EnumItem;
 	Enums: Enums;
 	Faces: Faces;

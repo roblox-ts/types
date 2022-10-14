@@ -16,22 +16,22 @@ export class EnumGenerator extends Generator {
 		this.pushIndent();
 		this.write(`Name: string;`);
 		this.write(`Value: number;`);
-		this.write(`EnumType: Enum;`);
+		this.write(`EnumType: RobloxEnum;`);
 		this.write(
 			`IsA<T extends keyof typeof Enum>(name: T): this is typeof Enum[T][Exclude<keyof typeof Enum[T], "GetEnumItems">];`,
 		);
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
-		this.write(`interface Enum {`);
+		this.write(`interface RobloxEnum {`);
 		this.pushIndent();
-		this.write(`GetEnumItems(this: Enum): Array<EnumItem>;`);
+		this.write(`GetEnumItems(this: RobloxEnum): Array<EnumItem>;`);
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
 		this.write(`declare namespace Enum {`);
 		this.pushIndent();
-		this.write(`export function GetEnums(this: Enums): Array<Enum>;`);
+		this.write(`export function GetEnums(this: Enums): Array<RobloxEnum>;`);
 		this.write(``);
 
 		for (const { Name: enumTypeName, Items: enumTypeItems } of rbxEnums) {
@@ -67,7 +67,7 @@ export class EnumGenerator extends Generator {
 				}
 				this.write(``);
 			}
-			this.write(`export function GetEnumItems(this: Enum): Array<${enumTypeName}>`);
+			this.write(`export function GetEnumItems(this: RobloxEnum): Array<${enumTypeName}>`);
 			this.popIndent();
 			this.write(`}`);
 			this.write(`export type ${enumTypeName} = ${enumTypeName}.${enumItemNames.join(` | ${enumTypeName}.`)};`);
