@@ -45,11 +45,11 @@ export class EnumGenerator extends Generator {
 				LegacyNames: enumItemLegacyNames,
 			} of enumTypeItems) {
 				enumItemNames.push(enumItemName);
-				this.write(`export interface ${enumItemName} extends EnumItem {`);
+				this.write(`export interface ${enumItemName} extends globalThis.EnumItem {`);
 				this.pushIndent();
 				this.write(`Name: "${enumItemName}";`);
 				this.write(`Value: ${enumItemValue};`);
-				this.write(`EnumType: typeof ${enumTypeName};`);
+				this.write(`EnumType: typeof globalThis.Enum.${enumTypeName};`);
 				this.popIndent();
 				this.write(`}`);
 				this.write(``);
@@ -67,7 +67,7 @@ export class EnumGenerator extends Generator {
 				}
 				this.write(``);
 			}
-			this.write(`export function GetEnumItems(this: Enum): Array<${enumTypeName}>`);
+			this.write(`export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.${enumTypeName}>;`);
 			this.popIndent();
 			this.write(`}`);
 			this.write(`export type ${enumTypeName} = ${enumTypeName}.${enumItemNames.join(` | ${enumTypeName}.`)};`);
