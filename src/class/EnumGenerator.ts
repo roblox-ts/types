@@ -67,10 +67,12 @@ export class EnumGenerator extends Generator {
 				}
 				this.write(``);
 			}
-			this.write(`export function GetEnumItems(this: Enum): Array<${enumTypeName}>`);
+			this.write(`export function GetEnumItems(this: globalThis.Enum): Array<${enumTypeName}>;`);
 			this.popIndent();
 			this.write(`}`);
-			this.write(`export type ${enumTypeName} = ${enumTypeName}.${enumItemNames.join(` | ${enumTypeName}.`)};`);
+			const enumUnion = enumItemNames.map(enumItemName => `${enumTypeName}.${enumItemName}`).join(` | `);
+			this.write(`export type ${enumTypeName} = ${enumUnion};`);
+			this.write(``);
 		}
 		this.popIndent();
 		this.write(`}`);
