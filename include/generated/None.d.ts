@@ -16165,7 +16165,8 @@ interface HumanoidDescription extends Instance {
 	/**
 	 * Returns a table of an avatar's current accessories. If the second parameter (includeRigidAccessories) is true then the returned table will also include entries for rigid accessories from the rigid accessory properties.
 	 */
-	GetAccessories(this: HumanoidDescription, includeRigidAccessories: boolean): unknown;
+	GetAccessories(this: HumanoidDescription, includeRigidAccessories: false): Array<LayeredAccessoryInfo>;
+	GetAccessories(this: HumanoidDescription, includeRigidAccessories: boolean): Array<AccessoryInfo>;
 	/**
 	 * **GetEmotes** returns a dictionary of emotes that have been [added](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/AddEmote) or [set](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/SetEmotes) to this description. The keys of this dictionary are the names of the emotes, and the values are a non-empty array of emote IDs for that name.
 	 * 
