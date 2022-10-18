@@ -364,6 +364,8 @@ interface Humanoid extends Instance {
 }
 
 interface HumanoidDescription extends Instance {
+	GetAccessories(this: HumanoidDescription, includeRigidAccessories: false): Array<LayeredAccessoryInfo>;
+	GetAccessories(this: HumanoidDescription, includeRigidAccessories: boolean): Array<AccessoryInfo>;
 	GetEmotes(this: HumanoidDescription): EmoteDictionary;
 	GetEquippedEmotes(this: HumanoidDescription): EquippedEmotes;
 	SetEmotes(this: HumanoidDescription, emotes: EmoteDictionary): void;
