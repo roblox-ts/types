@@ -105,6 +105,20 @@ interface CollectionInfo {
 	CreatorName: string;
 }
 
+interface BaseAccessoryInfo {
+	AssetId: number;
+	AccessoryType: Enum.AccessoryType;
+}
+interface RigidAccessoryInfo extends BaseAccessoryInfo {
+	IsLayered: false;
+}
+interface LayeredAccessoryInfo extends BaseAccessoryInfo {
+	IsLayered: true;
+	Order: number;
+	Puffiness?: number;
+}
+type AccessoryInfo = RigidAccessoryInfo | LayeredAccessoryInfo;
+
 interface FreeSearchResult {
 	CurrentStartIndex: string;
 	Results: Array<{
