@@ -3936,6 +3936,14 @@ declare namespace Enum {
 
 		export const PlacelaunchHttpError: PlacelaunchHttpError;
 
+		export interface PlacelaunchUserPrivacyUnauthorized extends globalThis.EnumItem {
+			Name: "PlacelaunchUserPrivacyUnauthorized";
+			Value: 533;
+			EnumType: typeof globalThis.Enum.ConnectionError;
+		}
+
+		export const PlacelaunchUserPrivacyUnauthorized: PlacelaunchUserPrivacyUnauthorized;
+
 		export interface PlacelaunchCustomMessage extends globalThis.EnumItem {
 			Name: "PlacelaunchCustomMessage";
 			Value: 610;
@@ -4018,7 +4026,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ConnectionError>;
 	}
-	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.DisconnectModeratedGame | ConnectionError.DisconnectOutOfMemoryExitContinue | ConnectionError.DisconnectOutOfMemoryKeepPlayingExit | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.DisconnectModeratedGame | ConnectionError.DisconnectOutOfMemoryExitContinue | ConnectionError.DisconnectOutOfMemoryKeepPlayingExit | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 
 	export namespace ConnectionState {
 		export interface Connected extends globalThis.EnumItem {
@@ -5462,6 +5470,51 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FacialAnimationFlags>;
 	}
 	export type FacialAnimationFlags = FacialAnimationFlags.None | FacialAnimationFlags.Place | FacialAnimationFlags.Server | FacialAnimationFlags.PlaceServer;
+
+	export namespace FacialAnimationStreamingState {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.FacialAnimationStreamingState;
+		}
+
+		export const None: None;
+
+		export interface Audio extends globalThis.EnumItem {
+			Name: "Audio";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.FacialAnimationStreamingState;
+		}
+
+		export const Audio: Audio;
+
+		export interface Video extends globalThis.EnumItem {
+			Name: "Video";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.FacialAnimationStreamingState;
+		}
+
+		export const Video: Video;
+
+		export interface Place extends globalThis.EnumItem {
+			Name: "Place";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.FacialAnimationStreamingState;
+		}
+
+		export const Place: Place;
+
+		export interface Server extends globalThis.EnumItem {
+			Name: "Server";
+			Value: 8;
+			EnumType: typeof globalThis.Enum.FacialAnimationStreamingState;
+		}
+
+		export const Server: Server;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FacialAnimationStreamingState>;
+	}
+	export type FacialAnimationStreamingState = FacialAnimationStreamingState.None | FacialAnimationStreamingState.Audio | FacialAnimationStreamingState.Video | FacialAnimationStreamingState.Place | FacialAnimationStreamingState.Server;
 
 	export namespace FieldOfViewMode {
 		export interface Vertical extends globalThis.EnumItem {
@@ -7218,6 +7271,43 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HumanoidRigType>;
 	}
 	export type HumanoidRigType = HumanoidRigType.R6 | HumanoidRigType.R15;
+
+	export namespace HumanoidStateMachineMode {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.HumanoidStateMachineMode;
+		}
+
+		export const Default: Default;
+
+		export interface Legacy extends globalThis.EnumItem {
+			Name: "Legacy";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.HumanoidStateMachineMode;
+		}
+
+		export const Legacy: Legacy;
+
+		export interface NoStateMachine extends globalThis.EnumItem {
+			Name: "NoStateMachine";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.HumanoidStateMachineMode;
+		}
+
+		export const NoStateMachine: NoStateMachine;
+
+		export interface LuaStateMachine extends globalThis.EnumItem {
+			Name: "LuaStateMachine";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.HumanoidStateMachineMode;
+		}
+
+		export const LuaStateMachine: LuaStateMachine;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HumanoidStateMachineMode>;
+	}
+	export type HumanoidStateMachineMode = HumanoidStateMachineMode.Default | HumanoidStateMachineMode.Legacy | HumanoidStateMachineMode.NoStateMachine | HumanoidStateMachineMode.LuaStateMachine;
 
 	export namespace HumanoidStateType {
 		export interface FallingDown extends globalThis.EnumItem {
@@ -11350,33 +11440,33 @@ declare namespace Enum {
 
 		export const None: None;
 
-		export interface TwoByTwo extends globalThis.EnumItem {
-			Name: "TwoByTwo";
+		export interface Grid2x2 extends globalThis.EnumItem {
+			Name: "Grid2x2";
 			Value: 1;
 			EnumType: typeof globalThis.Enum.ParticleFlipbookLayout;
 		}
 
-		export const TwoByTwo: TwoByTwo;
+		export const Grid2x2: Grid2x2;
 
-		export interface FourByFour extends globalThis.EnumItem {
-			Name: "FourByFour";
+		export interface Grid4x4 extends globalThis.EnumItem {
+			Name: "Grid4x4";
 			Value: 2;
 			EnumType: typeof globalThis.Enum.ParticleFlipbookLayout;
 		}
 
-		export const FourByFour: FourByFour;
+		export const Grid4x4: Grid4x4;
 
-		export interface EightByEight extends globalThis.EnumItem {
-			Name: "EightByEight";
+		export interface Grid8x8 extends globalThis.EnumItem {
+			Name: "Grid8x8";
 			Value: 3;
 			EnumType: typeof globalThis.Enum.ParticleFlipbookLayout;
 		}
 
-		export const EightByEight: EightByEight;
+		export const Grid8x8: Grid8x8;
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ParticleFlipbookLayout>;
 	}
-	export type ParticleFlipbookLayout = ParticleFlipbookLayout.None | ParticleFlipbookLayout.TwoByTwo | ParticleFlipbookLayout.FourByFour | ParticleFlipbookLayout.EightByEight;
+	export type ParticleFlipbookLayout = ParticleFlipbookLayout.None | ParticleFlipbookLayout.Grid2x2 | ParticleFlipbookLayout.Grid4x4 | ParticleFlipbookLayout.Grid8x8;
 
 	export namespace ParticleFlipbookMode {
 		export interface Loop extends globalThis.EnumItem {
@@ -13221,6 +13311,27 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RuntimeUndoBehavior>;
 	}
 	export type RuntimeUndoBehavior = RuntimeUndoBehavior.Aggregate | RuntimeUndoBehavior.Snapshot | RuntimeUndoBehavior.Hybrid;
+
+	export namespace SafeAreaCompatibility {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.SafeAreaCompatibility;
+		}
+
+		export const None: None;
+
+		export interface FullscreenExtension extends globalThis.EnumItem {
+			Name: "FullscreenExtension";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.SafeAreaCompatibility;
+		}
+
+		export const FullscreenExtension: FullscreenExtension;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SafeAreaCompatibility>;
+	}
+	export type SafeAreaCompatibility = SafeAreaCompatibility.None | SafeAreaCompatibility.FullscreenExtension;
 
 	export namespace SaveFilter {
 		export interface SaveAll extends globalThis.EnumItem {

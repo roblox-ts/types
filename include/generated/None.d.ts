@@ -40,6 +40,7 @@ interface Services {
 	FaceAnimatorService: FaceAnimatorService;
 	FacialAnimationRecordingService: FacialAnimationRecordingService;
 	FacialAnimationStreamingService: FacialAnimationStreamingService;
+	FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
 	GamepadService: GamepadService;
 	GamePassService: GamePassService;
 	GroupService: GroupService;
@@ -136,6 +137,7 @@ interface CreatableInstances {
 	AlignPosition: AlignPosition;
 	AngularVelocity: AngularVelocity;
 	Animation: Animation;
+	AnimationConstraint: AnimationConstraint;
 	AnimationController: AnimationController;
 	AnimationRigData: AnimationRigData;
 	Animator: Animator;
@@ -411,6 +413,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AnimationStreamTrack: AnimationStreamTrack;
 	AnimationTrack: AnimationTrack;
 	AssetImportSession: AssetImportSession;
+	AssetPatchSettings: AssetPatchSettings;
 	AssetSoundEffect: AssetSoundEffect;
 	BaseWrap: BaseWrap;
 	BubbleChatConfiguration: BubbleChatConfiguration;
@@ -420,6 +423,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	CloudLocalizationTable: CloudLocalizationTable;
 	CommandInstance: CommandInstance;
 	ControllerBase: ControllerBase;
+	CoreScriptBuilder: CoreScriptBuilder;
 	CustomSoundEffect: CustomSoundEffect;
 	DataModel: DataModel;
 	DataStore: DataStore;
@@ -461,7 +465,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	OutfitPages: OutfitPages;
 	PackageLink: PackageLink;
 	ParabolaAdornment: ParabolaAdornment;
-	PatchMapping: PatchMapping;
 	Path: Path;
 	PausedState: PausedState;
 	PausedStateBreakpoint: PausedStateBreakpoint;
@@ -474,6 +477,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	PluginManagerInterface: PluginManagerInterface;
 	PoseBase: PoseBase;
 	ScreenshotHud: ScreenshotHud;
+	ScriptBuilder: ScriptBuilder;
 	ScriptDocument: ScriptDocument;
 	StackFrame: StackFrame;
 	StandardPages: StandardPages;
@@ -2071,6 +2075,9 @@ interface AssetDeliveryProxy extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AssetDeliveryProxy: unique symbol;
+	Interface: string;
+	Port: number;
+	StartServer: boolean;
 }
 
 interface AssetImportService extends Instance {
@@ -2106,6 +2113,20 @@ interface AssetManagerService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AssetManagerService: unique symbol;
+}
+
+interface AssetPatchSettings extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AssetPatchSettings: unique symbol;
+	ContentId: string;
+	OutputPath: string;
+	PatchId: string;
 }
 
 /** The AssetService is a non-replicated service that handles asset related queries to the Roblox web API. Eventually, this will house all asset related queries for Roblox objects stored in the web. One should mind the [limitations](https://developer.roblox.com/en-us/articles/multi-place-games) this API has. */
@@ -6981,6 +7002,20 @@ interface AngularVelocity extends Constraint {
 	RelativeTo: Enum.ActuatorRelativeTo;
 }
 
+interface AnimationConstraint extends Constraint {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AnimationConstraint: unique symbol;
+	MaxForce: number;
+	MaxTorque: number;
+	Transform: CFrame;
+}
+
 /** A **BallSocketConstraint** constrains its [Attachments](https://developer.roblox.com/en-us/api-reference/class/Attachment) so that they occupy the same position. By default it allows both attachments to freely rotate about all of their axes, but if [BallSocketConstraint.LimitsEnabled](https://developer.roblox.com/en-us/api-reference/property/BallSocketConstraint/LimitsEnabled) is `true`, the attachments can only rotate in a limited cone.
  * 
  * Note that if this constraint attaches one part (**A**) to another part (**B**) that is anchored or connected to an anchored part (**Z**), part **A** will not be locally simulated when interacting with a player.
@@ -8189,7 +8224,7 @@ interface ContextActionService extends Instance {
 	 * 
 	 * Note that the [UserInputType](https://developer.roblox.com/en-us/api-reference/enum/UserInputType) specified must be `Keyboard` or `Gamepad1` through `Gamepad8` in order to be valid.
 	 */
-	BindActivate(this: ContextActionService, userInputTypeForActivation: CastsToEnum<Enum.UserInputType>, keyCodeForActivation?: CastsToEnum<Enum.KeyCode>): void;
+	BindActivate(this: ContextActionService, userInputTypeForActivation: CastsToEnum<Enum.UserInputType>, keyCodesForActivation: Array<any>): void;
 	/**
 	 * GetAllBoundActioninfo returns a table which maps all actions' names (those originally passed to [BindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction)) to a table returned by [GetBoundActionInfo](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/GetBoundActionInfo) when called with the action name itself. Using this function, you can inspect all presently bound actions. This is useful when debugging their priority levels or stack orders.
 	 */
@@ -9983,6 +10018,17 @@ interface FacialAnimationStreamingService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_FacialAnimationStreamingService: unique symbol;
+}
+
+interface FacialAnimationStreamingServiceV2 extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FacialAnimationStreamingServiceV2: unique symbol;
 }
 
 /** The base class for the legacy motor system. */
@@ -11838,6 +11884,7 @@ interface TextButton extends GuiButton {
 	 * The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextButton.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextSize) property.
+	 * Tags: Hidden
 	 */
 	Font: Enum.Font;
 	FontFace: Font;
@@ -12151,6 +12198,7 @@ interface TextLabel extends GuiLabel {
 	 * The Font property selects one of several pre-defined fonts with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) property.
+	 * Tags: Hidden
 	 */
 	Font: Enum.Font;
 	FontFace: Font;
@@ -12537,6 +12585,7 @@ interface TextBox extends GuiObject {
 	 * The Font property selects one of several pre-defined [fonts](https://developer.roblox.com/en-us/api-reference/enum/Font) with which the UI element will render its text. Some fonts have bold, italic and/or light variants (as there is no font-weight or font-style properties).
 	 * 
 	 * With the exception of the “Legacy” font, each font will render text with the line height equal to the [TextBox.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextBox/TextSize) property. The “Code” font is the only monospace font. It has the unique property that each character has the exact same width and height ratio of 1:2. The width of each character is approximately half the [TextBox.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextBox/TextSize) property.
+	 * Tags: Hidden
 	 */
 	Font: Enum.Font;
 	FontFace: Font;
@@ -13288,6 +13337,10 @@ interface ScreenGui extends LayerCollector {
 	 */
 	readonly _nominal_ScreenGui: unique symbol;
 	/**
+	 * Tags: NotBrowsable
+	 */
+	ClipToDeviceSafeArea: boolean;
+	/**
 	 * This property controls the order that multiple ScreenGuis are drawn.
 	 * 
 	 * ScreenGuis with a higher DisplayOrder will be drawn on top of ScreenGuis with a lower DisplayOrder. DisplayOrder can have any value greater than 0 and defaults to 0.
@@ -13297,6 +13350,10 @@ interface ScreenGui extends LayerCollector {
 	 * IgnoreGuiInset is a boolean property of ScreenGuis that, when set to true, will force the [GUI Inset](https://developer.roblox.com/en-us/api-reference/function/GuiService/GetGuiInset) imposed by Roblox's CoreGuis to be ignored by this ScreenGui and its descendants. This means that an element with a UDim2 size of `{1,0},{1,0}` will fill up the entire screen, without a 36 pixel gap reserved for Roblox's top bar.
 	 */
 	IgnoreGuiInset: boolean;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	SafeAreaCompatibility: Enum.SafeAreaCompatibility;
 }
 
 interface SurfaceGuiBase extends LayerCollector {
@@ -25482,20 +25539,6 @@ interface ParticleEmitter extends Instance {
 	Emit(this: ParticleEmitter, particleCount?: number): void;
 }
 
-interface PatchMapping extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_PatchMapping: unique symbol;
-	FlattenTree: boolean;
-	PatchId: string;
-	TargetPath: string;
-}
-
 /** **Path** objects store the result of paths created by [PathfindingService:CreatePath()](https://developer.roblox.com/en-us/api-reference/function/PathfindingService/CreatePath).
  * 
  * Once a path object is created, you can call [Path:ComputeAsync()](https://developer.roblox.com/en-us/api-reference/function/Path/ComputeAsync) with a starting point and ending point. This will attempt to compute a valid path for a character to move along, based on default or custom parameters passed to [CreatePath()](https://developer.roblox.com/en-us/api-reference/function/PathfindingService/CreatePath). If [ComputeAsync()](https://developer.roblox.com/en-us/api-reference/function/Path/ComputeAsync) successfully finds a path, the [Path](https://developer.roblox.com/en-us/api-reference/class/Path) object will have a [Path.Status](https://developer.roblox.com/en-us/api-reference/property/Path/Status) value of `Enum.PathStatus.Success`. Otherwise the status will be `Enum.PathStatus.NoPath` which can occur if there are obstacles between the two points (and no way around) or if the points are inside of solid objects.
@@ -28460,6 +28503,28 @@ interface ScreenshotHud extends Instance {
 	Visible: boolean;
 }
 
+interface ScriptBuilder extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptBuilder: unique symbol;
+}
+
+interface CoreScriptBuilder extends ScriptBuilder {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CoreScriptBuilder: unique symbol;
+}
+
 interface ScriptChangeService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -29153,7 +29218,7 @@ interface SocialService extends Instance {
 	 * You should always use the result of this function before the [PromptGameInvite](https://developer.roblox.com/en-us/api-reference/function/SocialService/PromptGameInvite) function, since the ability to invite players can vary depending on the platform or player. Only after determining that invites are possible for this player, should you allow the player to opt-in (eg, a button press) to inviting others using the `PromptGameInvite` function.
 	 * Tags: Yields
 	 */
-	CanSendGameInviteAsync(this: SocialService, player: Player): boolean;
+	CanSendGameInviteAsync(this: SocialService, player: Player, recipientId?: number): boolean;
 	/**
 	 * This event is a signal invoked when a player has closed the game invite prompt and batches all users and conversation participants into a single array. This prompt can be prompted by the developer or accessed from the SettingsHub menu.
 	 * 
@@ -29246,6 +29311,7 @@ interface Sound extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly IsPlaying: boolean;
+	LoopRegion: NumberRange;
 	/**
 	 * This sets whether or not the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) repeats once it has finished when it is playing.
 	 * 
@@ -29297,6 +29363,11 @@ interface Sound extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly PlaybackLoudness: number;
+	PlaybackRegion: NumberRange;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	PlaybackRegionsEnabled: boolean;
 	/**
 	 * Determines the speed at which a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) will play. The greater the value the faster the sound will play back.
 	 * 
@@ -30589,6 +30660,10 @@ interface StarterPlayer extends Instance {
 	 * If a Humanoid's health bar is visible, you can set the display type using [Humanoid.DisplayDistanceType](https://developer.roblox.com/en-us/api-reference/property/Humanoid/DisplayDistanceType).
 	 */
 	HealthDisplayDistance: number;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	HumanoidStateMachineMode: Enum.HumanoidStateMachineMode;
 	/**
 	 * The LoadCharacterAppearance [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) property sets whether or not the appearance of a player's character should be loaded.
 	 * 
@@ -31949,6 +32024,7 @@ interface TextChannel extends Instance {
 	SendAsync(this: TextChannel, message: string, metadata?: string): TextChatMessage;
 	readonly MessageReceived: RBXScriptSignal<(incomingMessage: TextChatMessage) => void>;
 	OnIncomingMessage: (message: TextChatMessage) => void;
+	ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => void;
 }
 
 interface TextChatCommand extends Instance {
