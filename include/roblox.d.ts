@@ -1527,8 +1527,8 @@ interface Font {
 interface FontConstructor {
 	new (family: string, weight?: Enum.FontWeight, style?: Enum.FontStyle): Font;
 	fromEnum: (value: Enum.Font) => Font;
-	fromName: (name: string, weight: Enum.FontWeight, style: Enum.FontStyle) => Font;
-	fromId: (id: number, weight: Enum.FontWeight, style: Enum.FontStyle) => Font;
+	fromName: (name: string, weight?: Enum.FontWeight, style?: Enum.FontStyle) => Font;
+	fromId: (id: number, weight?: Enum.FontWeight, style?: Enum.FontStyle) => Font;
 }
 declare const Font: FontConstructor;
 
