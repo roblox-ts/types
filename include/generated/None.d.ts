@@ -37,6 +37,7 @@ interface Services {
 	DeviceIdService: DeviceIdService;
 	DraggerService: DraggerService;
 	EventIngestService: EventIngestService;
+	ExperienceAuthService: ExperienceAuthService;
 	FaceAnimatorService: FaceAnimatorService;
 	FacialAnimationRecordingService: FacialAnimationRecordingService;
 	FacialAnimationStreamingService: FacialAnimationStreamingService;
@@ -119,6 +120,7 @@ interface Services {
 	UserInputService: UserInputService;
 	UserService: UserService;
 	VideoCaptureService: VideoCaptureService;
+	VisibilityCheckDispatcher: VisibilityCheckDispatcher;
 	VisibilityService: VisibilityService;
 	VoiceChatInternal: VoiceChatInternal;
 	VoiceChatService: VoiceChatService;
@@ -438,6 +440,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DebuggerConnection: DebuggerConnection;
 	DebuggerLuaResponse: DebuggerLuaResponse;
 	DebuggerVariable: DebuggerVariable;
+	DynamicTextureAlpha: DynamicTextureAlpha;
 	EmotesPages: EmotesPages;
 	FriendPages: FriendPages;
 	GlobalDataStore: GlobalDataStore;
@@ -1949,6 +1952,7 @@ interface AnimationTrack extends Instance {
 	 * Currently it may also fire at the exact end of a non looped animation track but this behavior should not be relied upon.
 	 */
 	readonly DidLoop: RBXScriptSignal<() => void>;
+	readonly Ended: RBXScriptSignal<() => void>;
 	/**
 	 * Fires every time playback of an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) reaches a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) that does not have the default name - “Keyframe”.
 	 * 
@@ -2494,7 +2498,7 @@ interface Bone extends Attachment {
 	 * 
 	 * *   [Transform](https://developer.roblox.com/en-us/api-reference/property/Bone/Transform), a property which partially determines this property's value
 	 * *   [Bone.TransformedWorldCFrame](https://developer.roblox.com/en-us/api-reference/property/Bone/TransformedWorldCFrame), a world-space variant of this property
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly TransformedCFrame: CFrame;
 	/**
@@ -2767,14 +2771,9 @@ interface AvatarEditorService extends Instance {
 	 *       }
 	 *     }
 	 * \]
-	 * Tags: Yields, Deprecated
-	 * @deprecated
-	 */
-	GetRecommendedAssets(this: AvatarEditorService, assetType: CastsToEnum<Enum.AvatarAssetType>, contextAssetId?: number): unknown;
-	/**
 	 * Tags: Yields
 	 */
-	GetRecommendedAssetsV2(this: AvatarEditorService, assetType: CastsToEnum<Enum.AvatarAssetType>, assetId: number, numItems: number, includeDetails: boolean): unknown;
+	GetRecommendedAssets(this: AvatarEditorService, assetType: CastsToEnum<Enum.AvatarAssetType>, contextAssetId?: number): unknown;
 	/**
 	 * This function returns a list of recommended bundles for a given bundle id.
 	 * 
@@ -2812,14 +2811,9 @@ interface AvatarEditorService extends Instance {
 	 *       }
 	 *     }
 	 * \]
-	 * Tags: Yields, Deprecated
-	 * @deprecated
-	 */
-	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): unknown;
-	/**
 	 * Tags: Yields
 	 */
-	GetRecommendedBundlesV2(this: AvatarEditorService, bundleType: CastsToEnum<Enum.BundleType>, bundleId: number, numItems: number, includeDetails: boolean): unknown;
+	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): unknown;
 	/**
 	 * This function returns a [CatalogPages](https://developer.roblox.com/en-us/api-reference/class/CatalogPages) object containing the result of the given search.
 	 * 
@@ -6853,6 +6847,7 @@ interface AlignOrientation extends Constraint {
 	Mode: Enum.OrientationAlignmentMode;
 	/**
 	 * The [PrimaryAxis](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/PrimaryAxis) is the direction of the goal's X-Axis, represented as a unit `Vector3`. This is only used when the [AlignOrientation](https://developer.roblox.com/en-us/api-reference/class/AlignOrientation)'s [Mode](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/Mode) is [OneAttachment](https://developer.roblox.com/en-us/api-reference/enum/OrientationAlignmentMode).
+	 * Tags: NotReplicated
 	 */
 	PrimaryAxis: Vector3;
 	/**
@@ -6873,6 +6868,7 @@ interface AlignOrientation extends Constraint {
 	RigidityEnabled: boolean;
 	/**
 	 * The [SecondaryAxis](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/SecondaryAxis) is the direction of the goal's Y-Axis, represented as a unit `Vector3`. This is only used when the [AlignOrientation](https://developer.roblox.com/en-us/api-reference/class/AlignOrientation)'s [Mode](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/Mode) is [OneAttachment](https://developer.roblox.com/en-us/api-reference/enum/OrientationAlignmentMode).
+	 * Tags: NotReplicated
 	 */
 	SecondaryAxis: Vector3;
 }
@@ -8490,10 +8486,6 @@ interface GroundController extends ControllerBase {
 	Friction: number;
 	FrictionWeight: number;
 	GroundOffset: number;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	MaxSlopeAngle: number;
 	StandForce: number;
 	StandSpeed: number;
 	TurningFactor: number;
@@ -8531,10 +8523,6 @@ interface ControllerManager extends Instance {
 	BaseMoveSpeed: number;
 	BaseTurnSpeed: number;
 	FacingDirection: Vector3;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	HipHeight: number;
 	MovingDirection: Vector3;
 	GetControllers(this: ControllerManager): Array<Instance>;
 }
@@ -9588,6 +9576,17 @@ interface DraggerService extends Instance {
 	ShowPivotIndicator: boolean;
 }
 
+interface DynamicTextureAlpha extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DynamicTextureAlpha: unique symbol;
+}
+
 /** A EulerRotation Curve represents a 3D rotation curve, it groups 3 [FloatCurves](https://developer.roblox.com/en-us/api-reference/class/FloatCurve), stored as 3 FloatCurve child instances. The rotation is decomposed in 3 Euler angles channels that can be accessed via [EulerRotationCurve:X](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/X), [EulerRotationCurve:Y](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Y), [EulerRotationCurve:Z](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Z) methods. The 3 axes can be sampled simultaneously via the method [EulerRotationCurve:GetAnglesAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetAnglesAtTime) returning the 3 Euler angles as a Vector3. Similarly, [EulerRotationCurve:GetRotationAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetRotationAtTime) samples all channels simultaneously but returns a CFrame rotated by X, Y, and Z according to the specified rotation order. */
 interface EulerRotationCurve extends Instance {
 	/**
@@ -9635,6 +9634,17 @@ interface EventIngestService extends Instance {
 	readonly _nominal_EventIngestService: unique symbol;
 }
 
+interface ExperienceAuthService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ExperienceAuthService: unique symbol;
+}
+
 interface ExperienceInviteOptions extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -9644,7 +9654,7 @@ interface ExperienceInviteOptions extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ExperienceInviteOptions: unique symbol;
-	InviteMessageId: number;
+	InviteMessageId: string;
 	InviteUser: number;
 	LaunchData: string;
 	PromptMessage: string;
@@ -22653,6 +22663,14 @@ interface BasePart extends PVInstance {
 	 */
 	Elasticity: number;
 	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ExtentsCFrame: CFrame;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly ExtentsSize: Vector3;
+	/**
 	 * Used to control the Friction of the part, but now it no longer does anything. The Friction of a part is now determined by either its [Material](https://developer.roblox.com/api-reference/property/BasePart/Material "Material") or its [CustomPhysicalProperties](https://developer.roblox.com/api-reference/property/BasePart/CustomPhysicalProperties "CustomPhysicalProperties").
 	 * Tags: Hidden, NotReplicated, Deprecated
 	 * @deprecated
@@ -29211,7 +29229,7 @@ interface SocialService extends Instance {
 	 * 
 	 * Before using this function, you should use the [CanSendGameInviteAsync](https://developer.roblox.com/en-us/api-reference/function/SocialService/CanSendGameInviteAsync) function to determine whether a player can send a game invite, as this can vary depending on the platform or player. After determining that invites are possible for this player, allow the player to opt-in to inviting others. For example, the player clicked on an “Invite Friends” button, shown after `CanSendGameInviteAsync` returned true.\`
 	 */
-	PromptGameInvite(this: SocialService, player: Player): void;
+	PromptGameInvite(this: SocialService, player: Player, experienceInviteOptions?: ExperienceInviteOptions): void;
 	/**
 	 * **CanSendGameInviteAsync** indicates whether the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player) can invite other players to the current game. If they can, it returns true.
 	 * 
@@ -32067,7 +32085,11 @@ interface BubbleChatConfiguration extends TextChatConfigurations {
 	BubbleDuration: number;
 	BubblesSpacing: number;
 	Enabled: boolean;
+	/**
+	 * Tags: Hidden
+	 */
 	Font: Enum.Font;
+	FontFace: Font;
 	LocalPlayerStudsOffset: Vector3;
 	MaxDistance: number;
 	MinimizeDistance: number;
@@ -32114,15 +32136,18 @@ interface ChatWindowConfiguration extends TextChatConfigurations {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly AbsoluteSize: Vector2;
+	BackgroundColor3: Color3;
+	BackgroundTransparency: number;
 	Enabled: boolean;
-	/**
-	 * Tags: NotReplicated
-	 */
+	FontFace: Font;
+	HeightScale: number;
 	HorizontalAlignment: Enum.HorizontalAlignment;
-	/**
-	 * Tags: NotReplicated
-	 */
+	TextColor3: Color3;
+	TextSize: number;
+	TextStrokeColor3: Color3;
+	TextStrokeTransparency: number;
 	VerticalAlignment: Enum.VerticalAlignment;
+	WidthScale: number;
 }
 
 interface TextChatMessage extends Instance {
@@ -35866,6 +35891,17 @@ interface VideoCaptureService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_VideoCaptureService: unique symbol;
+}
+
+interface VisibilityCheckDispatcher extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VisibilityCheckDispatcher: unique symbol;
 }
 
 interface VisibilityService extends Instance {
