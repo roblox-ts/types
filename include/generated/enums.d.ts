@@ -1365,9 +1365,17 @@ declare namespace Enum {
 
 		export const DynamicHead: DynamicHead;
 
+		export interface FontFamily extends globalThis.EnumItem {
+			Name: "FontFamily";
+			Value: 73;
+			EnumType: typeof globalThis.Enum.AssetType;
+		}
+
+		export const FontFamily: FontFamily;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AssetType>;
 	}
-	export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.MoodAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.DynamicHead;
+	export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.MoodAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.DynamicHead | AssetType.FontFamily;
 
 	export namespace AssetTypeVerification {
 		export interface Default extends globalThis.EnumItem {
@@ -3832,6 +3840,22 @@ declare namespace Enum {
 
 		export const DisconnectOutOfMemoryKeepPlayingExit: DisconnectOutOfMemoryKeepPlayingExit;
 
+		export interface ReplicatorTimeout extends globalThis.EnumItem {
+			Name: "ReplicatorTimeout";
+			Value: 290;
+			EnumType: typeof globalThis.Enum.ConnectionError;
+		}
+
+		export const ReplicatorTimeout: ReplicatorTimeout;
+
+		export interface PlayerRemoved extends globalThis.EnumItem {
+			Name: "PlayerRemoved";
+			Value: 291;
+			EnumType: typeof globalThis.Enum.ConnectionError;
+		}
+
+		export const PlayerRemoved: PlayerRemoved;
+
 		export interface PlacelaunchErrors extends globalThis.EnumItem {
 			Name: "PlacelaunchErrors";
 			Value: 512;
@@ -4026,7 +4050,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ConnectionError>;
 	}
-	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.DisconnectModeratedGame | ConnectionError.DisconnectOutOfMemoryExitContinue | ConnectionError.DisconnectOutOfMemoryKeepPlayingExit | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.DisconnectModeratedGame | ConnectionError.DisconnectOutOfMemoryExitContinue | ConnectionError.DisconnectOutOfMemoryKeepPlayingExit | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 
 	export namespace ConnectionState {
 		export interface Connected extends globalThis.EnumItem {
@@ -5410,6 +5434,11 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EnviromentalPhysicsThrottle>;
 	}
 	export type EnviromentalPhysicsThrottle = EnviromentalPhysicsThrottle.DefaultAuto | EnviromentalPhysicsThrottle.Disabled | EnviromentalPhysicsThrottle.Always | EnviromentalPhysicsThrottle.Skip2 | EnviromentalPhysicsThrottle.Skip4 | EnviromentalPhysicsThrottle.Skip8 | EnviromentalPhysicsThrottle.Skip16;
+
+	export namespace ExperienceAuthScope {
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ExperienceAuthScope>;
+	}
+	export type ExperienceAuthScope = never;
 
 	export namespace ExplosionType {
 		export interface NoCraters extends globalThis.EnumItem {
@@ -10878,9 +10907,17 @@ declare namespace Enum {
 
 		export const Atomic: Atomic;
 
+		export interface Persistent extends globalThis.EnumItem {
+			Name: "Persistent";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ModelStreamingMode;
+		}
+
+		export const Persistent: Persistent;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ModelStreamingMode>;
 	}
-	export type ModelStreamingMode = ModelStreamingMode.Default | ModelStreamingMode.Atomic;
+	export type ModelStreamingMode = ModelStreamingMode.Default | ModelStreamingMode.Atomic | ModelStreamingMode.Persistent;
 
 	export namespace ModifierKey {
 		export interface Alt extends globalThis.EnumItem {
@@ -12729,7 +12766,7 @@ declare namespace Enum {
 
 		export interface Selection extends globalThis.EnumItem {
 			Name: "Selection";
-			Value: 32;
+			Value: 524288;
 			EnumType: typeof globalThis.Enum.ReservedHighlightId;
 		}
 
@@ -12737,7 +12774,7 @@ declare namespace Enum {
 
 		export interface Hover extends globalThis.EnumItem {
 			Name: "Hover";
-			Value: 64;
+			Value: 262144;
 			EnumType: typeof globalThis.Enum.ReservedHighlightId;
 		}
 
@@ -12745,7 +12782,7 @@ declare namespace Enum {
 
 		export interface Active extends globalThis.EnumItem {
 			Name: "Active";
-			Value: 128;
+			Value: 131072;
 			EnumType: typeof globalThis.Enum.ReservedHighlightId;
 		}
 
@@ -13499,6 +13536,11 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScaleType>;
 	}
 	export type ScaleType = ScaleType.Stretch | ScaleType.Slice | ScaleType.Tile | ScaleType.Fit | ScaleType.Crop;
+
+	export namespace ScopeCheckResult {
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScopeCheckResult>;
+	}
+	export type ScopeCheckResult = never;
 
 	export namespace ScreenOrientation {
 		export interface LandscapeLeft extends globalThis.EnumItem {
@@ -17275,6 +17317,43 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserInputType>;
 	}
 	export type UserInputType = UserInputType.MouseButton1 | UserInputType.MouseButton2 | UserInputType.MouseButton3 | UserInputType.MouseWheel | UserInputType.MouseMovement | UserInputType.Touch | UserInputType.Keyboard | UserInputType.Focus | UserInputType.Accelerometer | UserInputType.Gyro | UserInputType.Gamepad1 | UserInputType.Gamepad2 | UserInputType.Gamepad3 | UserInputType.Gamepad4 | UserInputType.Gamepad5 | UserInputType.Gamepad6 | UserInputType.Gamepad7 | UserInputType.Gamepad8 | UserInputType.TextInput | UserInputType.InputMethod | UserInputType.None;
+
+	export namespace VRSessionState {
+		export interface Idle extends globalThis.EnumItem {
+			Name: "Idle";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.VRSessionState;
+		}
+
+		export const Idle: Idle;
+
+		export interface Visible extends globalThis.EnumItem {
+			Name: "Visible";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.VRSessionState;
+		}
+
+		export const Visible: Visible;
+
+		export interface Focused extends globalThis.EnumItem {
+			Name: "Focused";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.VRSessionState;
+		}
+
+		export const Focused: Focused;
+
+		export interface Undefined extends globalThis.EnumItem {
+			Name: "Undefined";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.VRSessionState;
+		}
+
+		export const Undefined: Undefined;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRSessionState>;
+	}
+	export type VRSessionState = VRSessionState.Idle | VRSessionState.Visible | VRSessionState.Focused | VRSessionState.Undefined;
 
 	export namespace VRTouchpad {
 		export interface Left extends globalThis.EnumItem {
