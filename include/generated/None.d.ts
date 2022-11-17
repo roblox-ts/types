@@ -441,6 +441,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DebuggerLuaResponse: DebuggerLuaResponse;
 	DebuggerVariable: DebuggerVariable;
 	DynamicTextureAlpha: DynamicTextureAlpha;
+	DynamicTextureLayerAlpha: DynamicTextureLayerAlpha;
 	EmotesPages: EmotesPages;
 	FriendPages: FriendPages;
 	GlobalDataStore: GlobalDataStore;
@@ -8448,6 +8449,8 @@ interface AirController extends ControllerBase {
 	 */
 	readonly _nominal_AirController: unique symbol;
 	CancelAirMomentum: boolean;
+	MaintainAngularMomentum: boolean;
+	MaintainLinearMomentum: boolean;
 	MoveMaxForce: number;
 	OrientationMaxTorque: number;
 	OrientationSpeedFactor: number;
@@ -9585,6 +9588,19 @@ interface DynamicTextureAlpha extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_DynamicTextureAlpha: unique symbol;
+	CreateLayer(this: DynamicTextureAlpha): DynamicTextureLayerAlpha;
+}
+
+interface DynamicTextureLayerAlpha extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DynamicTextureLayerAlpha: unique symbol;
+	ZIndex: number;
 }
 
 /** A EulerRotation Curve represents a 3D rotation curve, it groups 3 [FloatCurves](https://developer.roblox.com/en-us/api-reference/class/FloatCurve), stored as 3 FloatCurve child instances. The rotation is decomposed in 3 Euler angles channels that can be accessed via [EulerRotationCurve:X](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/X), [EulerRotationCurve:Y](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Y), [EulerRotationCurve:Z](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Z) methods. The 3 axes can be sampled simultaneously via the method [EulerRotationCurve:GetAnglesAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetAnglesAtTime) returning the 3 Euler angles as a Vector3. Similarly, [EulerRotationCurve:GetRotationAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetRotationAtTime) samples all channels simultaneously but returns a CFrame rotated by X, Y, and Z according to the specified rotation order. */
@@ -13364,6 +13380,10 @@ interface ScreenGui extends LayerCollector {
 	 * Tags: NotBrowsable
 	 */
 	SafeAreaCompatibility: Enum.SafeAreaCompatibility;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	ScreenInsets: Enum.ScreenInsets;
 }
 
 interface SurfaceGuiBase extends LayerCollector {
@@ -29317,7 +29337,7 @@ interface Sound extends Instance {
 	 * This property will only be true when [Sound.IsPlaying](https://developer.roblox.com/en-us/api-reference/property/Sound/IsPlaying) is false.
 	 * 
 	 * As IsPaused is read only it can not be used to stop the sound, [Sound:Stop](https://developer.roblox.com/en-us/api-reference/function/Sound/Stop) and [Sound:Pause](https://developer.roblox.com/en-us/api-reference/function/Sound/Pause) should be used instead.
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly IsPaused: boolean;
 	/**
@@ -29326,7 +29346,7 @@ interface Sound extends Instance {
 	 * This property can only be true when [Sound.IsPaused](https://developer.roblox.com/en-us/api-reference/property/Sound/IsPaused) is false.
 	 * 
 	 * As IsPlaying is read only it can not be used to play the sound, [Sound:Play](https://developer.roblox.com/en-us/api-reference/function/Sound/Play) should be used instead.
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: Hidden, ReadOnly, NotReplicated
 	 */
 	readonly IsPlaying: boolean;
 	LoopRegion: NumberRange;
@@ -32082,6 +32102,7 @@ interface BubbleChatConfiguration extends TextChatConfigurations {
 	readonly _nominal_BubbleChatConfiguration: unique symbol;
 	AdorneeName: string;
 	BackgroundColor3: Color3;
+	BackgroundTransparency: number;
 	BubbleDuration: number;
 	BubblesSpacing: number;
 	Enabled: boolean;

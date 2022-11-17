@@ -13542,6 +13542,35 @@ declare namespace Enum {
 	}
 	export type ScopeCheckResult = never;
 
+	export namespace ScreenInsets {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.ScreenInsets;
+		}
+
+		export const None: None;
+
+		export interface DeviceSafeInsets extends globalThis.EnumItem {
+			Name: "DeviceSafeInsets";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ScreenInsets;
+		}
+
+		export const DeviceSafeInsets: DeviceSafeInsets;
+
+		export interface CoreUISafeInsets extends globalThis.EnumItem {
+			Name: "CoreUISafeInsets";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ScreenInsets;
+		}
+
+		export const CoreUISafeInsets: CoreUISafeInsets;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScreenInsets>;
+	}
+	export type ScreenInsets = ScreenInsets.None | ScreenInsets.DeviceSafeInsets | ScreenInsets.CoreUISafeInsets;
+
 	export namespace ScreenOrientation {
 		export interface LandscapeLeft extends globalThis.EnumItem {
 			Name: "LandscapeLeft";
