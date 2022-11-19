@@ -223,6 +223,16 @@ declare namespace TS {
 			? Callback
 			: never;
 	}>;
+
+	type PairsHelper<T> = T extends ReadonlyArray<infer V>
+		? [number, Exclude<V, undefined>]
+		: T extends ReadonlySet<infer K>
+		? [K, true]
+		: T extends ReadonlyMap<infer K, infer V>
+		? [K, Exclude<V, undefined>]
+		: keyof T extends never
+		? [unknown, defined]
+		: [keyof T, Exclude<T[keyof T], undefined>];
 }
 
 declare namespace debug {
@@ -791,16 +801,6 @@ declare function next<K, V>(object: ReadonlyMap<K, V>, index?: K): LuaTuple<[K, 
 declare function next<T extends object>(object: T, index?: keyof T): LuaTuple<[keyof T, T[keyof T]]>;
 declare function next(object: object, index?: unknown): LuaTuple<[unknown, unknown]>;
 
-type PairsHelper<T> = T extends ReadonlyArray<infer V>
-	? [number, Exclude<V, undefined>]
-	: T extends ReadonlySet<infer K>
-	? [K, true]
-	: T extends ReadonlyMap<infer K, infer V>
-	? [K, Exclude<V, undefined>]
-	: keyof T extends never
-	? [unknown, defined]
-	: [keyof T, Exclude<T[keyof T], undefined>];
-
-declare function pairs<T extends object>(object: T): IterableFunction<LuaTuple<PairsHelper<T>>>;
+declare function pairs<T extends object>(object: T): IterableFunction<LuaTuple<TS.PairsHelper<T>>>;
 
 declare function ipairs<T>(object: ReadonlyArray<T>): IterableFunction<LuaTuple<[number, Exclude<T, undefined>]>>;
