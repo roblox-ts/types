@@ -2379,7 +2379,9 @@ type AttributeValue =
 	| Color3
 	| Vector2
 	| Vector3
+	| CFrame
 	| NumberSequence
 	| ColorSequence
 	| NumberRange
-	| Rect;
+	| Rect
+	| Font;
