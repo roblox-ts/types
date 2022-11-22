@@ -46,7 +46,7 @@
 		"fs-extra": "^10.0.0",
 		"libxmljs2": "^0.31.0",
 		"prettier": "^2.1.2",
-		"ts-morph": "^16.0.0",
+		"ts-morph": "^17.0.1",
 		"typescript": "^4.0.3"
 	},
 	"keywords": [
