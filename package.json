@@ -43,7 +43,7 @@
 		"eslint-plugin-no-autofix": "^1.2.3",
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-simple-import-sort": "^8.0.0",
-		"fs-extra": "^10.0.0",
+		"fs-extra": "^11.0.0",
 		"libxmljs2": "^0.31.0",
 		"prettier": "^2.1.2",
 		"ts-morph": "^17.0.1",
