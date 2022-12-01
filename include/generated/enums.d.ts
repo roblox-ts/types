@@ -17350,7 +17350,7 @@ declare namespace Enum {
 	export namespace VRSessionState {
 		export interface Idle extends globalThis.EnumItem {
 			Name: "Idle";
-			Value: 0;
+			Value: 1;
 			EnumType: typeof globalThis.Enum.VRSessionState;
 		}
 
@@ -17358,7 +17358,7 @@ declare namespace Enum {
 
 		export interface Visible extends globalThis.EnumItem {
 			Name: "Visible";
-			Value: 1;
+			Value: 2;
 			EnumType: typeof globalThis.Enum.VRSessionState;
 		}
 
@@ -17366,7 +17366,7 @@ declare namespace Enum {
 
 		export interface Focused extends globalThis.EnumItem {
 			Name: "Focused";
-			Value: 2;
+			Value: 3;
 			EnumType: typeof globalThis.Enum.VRSessionState;
 		}
 
@@ -17374,7 +17374,7 @@ declare namespace Enum {
 
 		export interface Undefined extends globalThis.EnumItem {
 			Name: "Undefined";
-			Value: 3;
+			Value: 0;
 			EnumType: typeof globalThis.Enum.VRSessionState;
 		}
 
