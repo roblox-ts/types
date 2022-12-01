@@ -93,6 +93,7 @@ interface Services {
 	ServerScriptService: ServerScriptService;
 	ServerStorage: ServerStorage;
 	SessionService: SessionService;
+	ShorelineUpgraderService: ShorelineUpgraderService;
 	SnippetService: SnippetService;
 	SocialService: SocialService;
 	SoundService: SoundService;
@@ -14462,6 +14463,7 @@ interface HttpService extends Instance {
 	 * Many web endpoints use JSON, as it is commonly used on the Internet. Visit [JSON.org](http://robloxdev.com/articles/JSON-Storage-Format) to become more familiar with the format.
 	 * 
 	 * This method can be used regardless of whether HTTP Requests are [enabled](https://developer.roblox.com/en-us/api-reference/property/HttpService/HttpEnabled).
+	 * Tags: CustomLuaState
 	 */
 	JSONEncode(this: HttpService, input: unknown): string;
 	/**
@@ -16404,16 +16406,18 @@ interface IKControl extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_IKControl: unique symbol;
-	AlignmentOffset: CFrame;
 	ChainRoot: Instance | undefined;
 	Enabled: boolean;
 	EndEffector: Instance | undefined;
+	EndEffectorOffset: CFrame;
 	Offset: CFrame;
 	Pole: Instance | undefined;
 	Priority: number;
 	Target: Instance | undefined;
 	Type: Enum.IKControlType;
 	Weight: number;
+	GetChainCount(this: IKControl): number;
+	GetChainLength(this: IKControl): number;
 }
 
 interface ILegacyStudioBridge extends Instance {
@@ -26242,6 +26246,7 @@ interface Player extends Instance {
 	 * *   [Workspace.StreamingPauseMode](https://developer.roblox.com/en-us/api-reference/property/Workspace/StreamingPauseMode) which controls the streaming physics pause mode
 	 */
 	readonly GameplayPaused: boolean;
+	HasVerifiedBadge: boolean;
 	/**
 	 * The HealthDisplayDistance [Player](https://developer.roblox.com/en-us/api-reference/class/Player) property sets the distance in studs at which this player will see other [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid)'s health bars. If set to 0, the health bars will not be displayed. This property is set to [StarterPlayer.HealthDisplayDistance](https://developer.roblox.com/en-us/api-reference/property/StarterPlayer/HealthDisplayDistance) by default.
 	 * 
@@ -29084,6 +29089,17 @@ interface SessionService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_SessionService: unique symbol;
+}
+
+interface ShorelineUpgraderService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ShorelineUpgraderService: unique symbol;
 }
 
 /** The Sky object is an object, when placed inside [Lighting](https://developer.roblox.com/en-us/api-reference/class/Lighting), will change the appearance of the game's sky. This allows for a custom sky to be used as opposed to the Roblox default sky. The Skybox is composed of six sides, much like that of a cube. If the skybox is changed/customised, the Sun and other objects in the sky will remain visible, unless you turn off the Sky object's [Sky.CelestialBodiesShown](https://developer.roblox.com/en-us/api-reference/property/Sky/CelestialBodiesShown) property, which will remove the Sun, Moon, and stars from the sky. The recommended picture dimensions for a Skybox side are 256x256 pixels. By adjusting the [Sky.StarCount](https://developer.roblox.com/en-us/api-reference/property/Sky/StarCount) property of the Sky object, you can change how many stars will appear in the sky at night. */
@@ -32136,8 +32152,16 @@ interface ChatInputBarConfiguration extends TextChatConfigurations {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly AbsoluteSize: Vector2;
+	BackgroundColor3: Color3;
+	BackgroundTransparency: number;
 	Enabled: boolean;
+	FontFace: Font;
+	PlaceholderColor3: Color3;
 	TargetTextChannel: TextChannel | undefined;
+	TextColor3: Color3;
+	TextSize: number;
+	TextStrokeColor3: Color3;
+	TextStrokeTransparency: number;
 }
 
 interface ChatWindowConfiguration extends TextChatConfigurations {
