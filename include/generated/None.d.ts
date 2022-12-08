@@ -171,7 +171,6 @@ interface CreatableInstances {
 	Camera: Camera;
 	CanvasGroup: CanvasGroup;
 	CFrameValue: CFrameValue;
-	ChannelSelectorSoundEffect: ChannelSelectorSoundEffect;
 	CharacterMesh: CharacterMesh;
 	ChorusSoundEffect: ChorusSoundEffect;
 	ClickDetector: ClickDetector;
@@ -297,7 +296,6 @@ interface CreatableInstances {
 	SoundGroup: SoundGroup;
 	Sparkles: Sparkles;
 	SpawnLocation: SpawnLocation;
-	Speaker: Speaker;
 	SpecialMesh: SpecialMesh;
 	SphereHandleAdornment: SphereHandleAdornment;
 	SpotLight: SpotLight;
@@ -350,7 +348,6 @@ interface CreatableInstances {
 	VelocityMotor: VelocityMotor;
 	VideoFrame: VideoFrame;
 	ViewportFrame: ViewportFrame;
-	VoiceChannel: VoiceChannel;
 	WedgePart: WedgePart;
 	Weld: Weld;
 	WeldConstraint: WeldConstraint;
@@ -421,6 +418,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	BaseWrap: BaseWrap;
 	BubbleChatConfiguration: BubbleChatConfiguration;
 	CatalogPages: CatalogPages;
+	ChannelSelectorSoundEffect: ChannelSelectorSoundEffect;
 	ChatInputBarConfiguration: ChatInputBarConfiguration;
 	ChatWindowConfiguration: ChatWindowConfiguration;
 	CloudLocalizationTable: CloudLocalizationTable;
@@ -484,6 +482,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	ScreenshotHud: ScreenshotHud;
 	ScriptBuilder: ScriptBuilder;
 	ScriptDocument: ScriptDocument;
+	Speaker: Speaker;
 	StackFrame: StackFrame;
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
@@ -14446,6 +14445,7 @@ interface HttpService extends Instance {
 	 * Many web endpoints use JSON, as it is commonly used on the Internet. Visit [JSON.org](http://www.json.org/) to become more familiar with the format.
 	 * 
 	 * This method can be used regardless of whether HTTP Requests are [enabled](https://developer.roblox.com/en-us/api-reference/property/HttpService/HttpEnabled).
+	 * Tags: CustomLuaState
 	 */
 	JSONDecode(this: HttpService, input: string): unknown;
 	/**
@@ -16603,6 +16603,7 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	 * @deprecated
 	 */
 	readonly _nominal_ImporterRootSettings: unique symbol;
+	AddModelToInventory: boolean;
 	Anchored: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
@@ -16633,6 +16634,7 @@ interface IncrementalPatchBuilder extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_IncrementalPatchBuilder: unique symbol;
+	AddPathsToBundle: boolean;
 	HighCompression: boolean;
 	ZstdCompression: boolean;
 }
@@ -24290,6 +24292,7 @@ interface Model extends PVInstance {
 	 * Tags: NotReplicated
 	 */
 	WorldPivot: CFrame;
+	AddPersistentPlayer(this: Model, playerInstance?: Player): void;
 	/**
 	 * Breaks connections between `BaseParts`, including surface connections with any adjacent parts, [WeldConstraint](https://developer.roblox.com/en-us/api-reference/class/WeldConstraint)s, and all [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld)s and other [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance)s.
 	 * 
@@ -24384,6 +24387,7 @@ interface Model extends PVInstance {
 	 * Note that rotation is not preserved when moving a model with MoveTo. It is recommended to use either [Model:TranslateBy](https://developer.roblox.com/en-us/api-reference/function/Model/TranslateBy) or [Model:SetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/SetPrimaryPartCFrame) if the current rotation of the model needs to be preserved.
 	 */
 	MoveTo(this: Model, position: Vector3): void;
+	RemovePersistentPlayer(this: Model, playerInstance?: Player): void;
 	/**
 	 * Resets the rotation of the model's parts to the previously set identity rotation, which is done through the [Model:SetIdentityOrientation](https://developer.roblox.com/en-us/api-reference/function/Model/SetIdentityOrientation) method.
 	 * Tags: Deprecated
@@ -25887,6 +25891,8 @@ interface PhysicsService extends Instance {
 	 * 
 	 * *   The specified group does not exist.
 	 * *   The specified part is not a BasePart.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	CollisionGroupContainsPart(this: PhysicsService, name: string, part: BasePart): boolean;
 	/**
@@ -25903,18 +25909,24 @@ interface PhysicsService extends Instance {
 	CollisionGroupsAreCollidable(this: PhysicsService, name1: string, name2: string): boolean;
 	/**
 	 * Creates a new collision group with the given name, and returns the id of the created group.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	CreateCollisionGroup(this: PhysicsService, name: string): number;
 	/**
 	 * The GetCollisionGroupId function returns the id of the collision group with the specified name.
 	 * 
 	 * This function will throw an error if no group with the given name exists.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	GetCollisionGroupId(this: PhysicsService, name: string): number;
 	/**
 	 * Returns the name of the collision group with the corresponding id. This function will return nil if the group with the corresponding id has not been named.
 	 * 
 	 * This function will throw an error if the id is not in the range of 0 <= id < maxCollisionGroups
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	GetCollisionGroupName(this: PhysicsService, name: number): string;
 	/**
@@ -25943,6 +25955,8 @@ interface PhysicsService extends Instance {
 	 * string
 	 * 
 	 * The name of the group
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
 	/**
@@ -25961,6 +25975,8 @@ interface PhysicsService extends Instance {
 	 * 
 	 * *   The name “Default” is provided.
 	 * *   The function is called from a client.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	RemoveCollisionGroup(this: PhysicsService, name: string): void;
 	/**
@@ -25985,6 +26001,8 @@ interface PhysicsService extends Instance {
 	 * 
 	 * *   The part parameter is not a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) instance.
 	 * *   The specified group does not exist.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	SetPartCollisionGroup(this: PhysicsService, part: BasePart, name: string): void;
 	UnregisterCollisionGroup(this: PhysicsService, name: string): void;
@@ -35958,17 +35976,6 @@ interface VisibilityService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_VisibilityService: unique symbol;
-}
-
-interface VoiceChannel extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_VoiceChannel: unique symbol;
 }
 
 interface VoiceChatInternal extends Instance {
