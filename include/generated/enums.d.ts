@@ -6749,7 +6749,7 @@ declare namespace Enum {
 
 		export interface NoGraphics extends globalThis.EnumItem {
 			Name: "NoGraphics";
-			Value: 9;
+			Value: 7;
 			EnumType: typeof globalThis.Enum.GraphicsMode;
 		}
 
@@ -10915,17 +10915,9 @@ declare namespace Enum {
 
 		export const Persistent: Persistent;
 
-		export interface PersistentPerPlayer extends globalThis.EnumItem {
-			Name: "PersistentPerPlayer";
-			Value: 3;
-			EnumType: typeof globalThis.Enum.ModelStreamingMode;
-		}
-
-		export const PersistentPerPlayer: PersistentPerPlayer;
-
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ModelStreamingMode>;
 	}
-	export type ModelStreamingMode = ModelStreamingMode.Default | ModelStreamingMode.Atomic | ModelStreamingMode.Persistent | ModelStreamingMode.PersistentPerPlayer;
+	export type ModelStreamingMode = ModelStreamingMode.Default | ModelStreamingMode.Atomic | ModelStreamingMode.Persistent;
 
 	export namespace ModifierKey {
 		export interface Alt extends globalThis.EnumItem {
@@ -11956,7 +11948,7 @@ declare namespace Enum {
 
 		export interface None extends globalThis.EnumItem {
 			Name: "None";
-			Value: 20;
+			Value: 19;
 			EnumType: typeof globalThis.Enum.Platform;
 		}
 
@@ -12617,35 +12609,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RaycastFilterType>;
 	}
 	export type RaycastFilterType = RaycastFilterType.Blacklist | RaycastFilterType.Whitelist;
-
-	export namespace RejectCharacterDeletions {
-		export interface Default extends globalThis.EnumItem {
-			Name: "Default";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.RejectCharacterDeletions;
-		}
-
-		export const Default: Default;
-
-		export interface Disabled extends globalThis.EnumItem {
-			Name: "Disabled";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.RejectCharacterDeletions;
-		}
-
-		export const Disabled: Disabled;
-
-		export interface Enabled extends globalThis.EnumItem {
-			Name: "Enabled";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.RejectCharacterDeletions;
-		}
-
-		export const Enabled: Enabled;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RejectCharacterDeletions>;
-	}
-	export type RejectCharacterDeletions = RejectCharacterDeletions.Default | RejectCharacterDeletions.Disabled | RejectCharacterDeletions.Enabled;
 
 	export namespace RenderFidelity {
 		export interface Automatic extends globalThis.EnumItem {
