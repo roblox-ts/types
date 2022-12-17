@@ -1774,6 +1774,7 @@ declare const RaycastParams: RaycastParamsConstructor;
 
 // RaycastResult
 interface RaycastResult {
+	readonly Distance: number;
 	readonly Instance: BasePart;
 	readonly Material: Enum.Material;
 	readonly Normal: Vector3;
