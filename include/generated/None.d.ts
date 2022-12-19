@@ -22679,7 +22679,7 @@ interface BasePart extends PVInstance {
 	 * 
 	 * If enabled, this property let's you configure these physical properties. If disabled, these physical properties are determined by the [BasePart.Material](https://developer.roblox.com/en-us/api-reference/property/BasePart/Material) of the part. The page for [Material](https://developer.roblox.com/en-us/api-reference/enum/Material) contains list of the various part materials.
 	 */
-	CustomPhysicalProperties: PhysicalProperties;
+	CustomPhysicalProperties: PhysicalProperties | undefined;
 	/**
 	 * The Elasticity of a part is now determined by either its `Material` or its `CustomPhysicalProperties`.
 	 * Tags: Hidden, NotReplicated, Deprecated

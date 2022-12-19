@@ -72,6 +72,7 @@ interface BadgeService extends Instance {
 }
 
 interface BasePart extends PVInstance {
+	CustomPhysicalProperties: PhysicalProperties | undefined;
 	readonly TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
 	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
 	GetConnectedParts(this: BasePart, recursive?: boolean): Array<BasePart>;
