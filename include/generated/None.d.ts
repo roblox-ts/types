@@ -14337,7 +14337,7 @@ interface HapticService extends Instance {
 		this: HapticService,
 		inputType: CastsToEnum<Enum.UserInputType>,
 		motor: CastsToEnum<Enum.VibrationMotor>,
-		vibration: number,
+		...vibrationValues: Array<number>,
 	): void;
 }
 
