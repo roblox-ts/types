@@ -2453,11 +2453,11 @@ interface RenderingTest extends Instance {
 	Description: string;
 	FieldOfView: number;
 	/**
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	Orientation: Vector3;
 	/**
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	Position: Vector3;
 	QualityLevel: number;
