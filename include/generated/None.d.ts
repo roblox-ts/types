@@ -171,7 +171,6 @@ interface CreatableInstances {
 	Camera: Camera;
 	CanvasGroup: CanvasGroup;
 	CFrameValue: CFrameValue;
-	ChannelSelectorSoundEffect: ChannelSelectorSoundEffect;
 	CharacterMesh: CharacterMesh;
 	ChorusSoundEffect: ChorusSoundEffect;
 	ClickDetector: ClickDetector;
@@ -297,7 +296,6 @@ interface CreatableInstances {
 	SoundGroup: SoundGroup;
 	Sparkles: Sparkles;
 	SpawnLocation: SpawnLocation;
-	Speaker: Speaker;
 	SpecialMesh: SpecialMesh;
 	SphereHandleAdornment: SphereHandleAdornment;
 	SpotLight: SpotLight;
@@ -350,7 +348,6 @@ interface CreatableInstances {
 	VelocityMotor: VelocityMotor;
 	VideoFrame: VideoFrame;
 	ViewportFrame: ViewportFrame;
-	VoiceChannel: VoiceChannel;
 	WedgePart: WedgePart;
 	Weld: Weld;
 	WeldConstraint: WeldConstraint;
@@ -421,6 +418,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	BaseWrap: BaseWrap;
 	BubbleChatConfiguration: BubbleChatConfiguration;
 	CatalogPages: CatalogPages;
+	ChannelSelectorSoundEffect: ChannelSelectorSoundEffect;
 	ChatInputBarConfiguration: ChatInputBarConfiguration;
 	ChatWindowConfiguration: ChatWindowConfiguration;
 	CloudLocalizationTable: CloudLocalizationTable;
@@ -484,6 +482,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	ScreenshotHud: ScreenshotHud;
 	ScriptBuilder: ScriptBuilder;
 	ScriptDocument: ScriptDocument;
+	Speaker: Speaker;
 	StackFrame: StackFrame;
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
@@ -1149,7 +1148,7 @@ interface Accoutrement extends Instance {
 	readonly _nominal_Accoutrement: unique symbol;
 	/**
 	 * Sets the offset position of the object on the Player.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	AttachmentForward: Vector3;
 	/**
@@ -1158,17 +1157,17 @@ interface Accoutrement extends Instance {
 	AttachmentPoint: CFrame;
 	/**
 	 * Sets the position of the object on the Player.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	AttachmentPos: Vector3;
 	/**
 	 * Sets the offset position of the object on the Player.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	AttachmentRight: Vector3;
 	/**
 	 * Sets the offset position of the object on the Player.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	AttachmentUp: Vector3;
 }
@@ -2383,12 +2382,12 @@ interface Attachment extends Instance {
 	CFrame: CFrame;
 	/**
 	 * A [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3 "Vector3") that describes the orientation of the Attachment relative to the orientation of its parent, in degrees. Rotations are applied in Z, X, Y order.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	Orientation: Vector3;
 	/**
 	 * A [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3 "Vector3") that describes the positional offset of the Attachment, relative to the position and orientation of its parent.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	Position: Vector3;
 	/**
@@ -2427,12 +2426,12 @@ interface Attachment extends Instance {
 	 * Describes the orientation (in degrees) of the [attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) relative to the world, rather than the parent of the Attachment.
 	 * 
 	 * Rotations are described in Z, X, Y order.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	WorldOrientation: Vector3;
 	/**
 	 * Describes the position of the [attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) relative to the world, rather than the parent of the Attachment.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	WorldPosition: Vector3;
 	/**
@@ -3002,7 +3001,7 @@ interface Tool extends BackpackItem {
 	 * Other tool properties that control how a player holds a tool include: `Grip/GripUp|Up`, `Grip/GripRight|Right`, and `Grip/GripPos|Pos` properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/en-us/api-reference/property/Tool/Grip) property.
 	 * 
 	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a Studio plugin such as [this](https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin) one.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	GripForward: Vector3;
 	/**
@@ -3011,7 +3010,7 @@ interface Tool extends BackpackItem {
 	 * Other tool properties that control how a player holds a tool include: `Grip/GripUp|Up`, `Grip/GripRight|Right`, and `Grip/GripForward|Forward` properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/en-us/api-reference/property/Tool/Grip) property.
 	 * 
 	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a plugin such as [this](https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin) one.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	GripPos: Vector3;
 	/**
@@ -3020,7 +3019,7 @@ interface Tool extends BackpackItem {
 	 * Other tool properties that control how a player holds a tool include: `Grip/GripUp|Up`, `Grip/GripForward|Forward`, and `Grip/GripPos|Pos` properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/en-us/api-reference/property/Tool/Grip) property.
 	 * 
 	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a plugin such as [this](https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin) one.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	GripRight: Vector3;
 	/**
@@ -3029,7 +3028,7 @@ interface Tool extends BackpackItem {
 	 * Other tool properties that control how a player holds a tool include: `Grip/GripRight|Right`, `Grip/GripForward|Forward`, and `Grip/GripPos|Pos` properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/en-us/api-reference/property/Tool/Grip) property.
 	 * 
 	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a plugin such as [this](https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin) one.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	GripUp: Vector3;
 	/**
@@ -14446,6 +14445,7 @@ interface HttpService extends Instance {
 	 * Many web endpoints use JSON, as it is commonly used on the Internet. Visit [JSON.org](http://www.json.org/) to become more familiar with the format.
 	 * 
 	 * This method can be used regardless of whether HTTP Requests are [enabled](https://developer.roblox.com/en-us/api-reference/property/HttpService/HttpEnabled).
+	 * Tags: CustomLuaState
 	 */
 	JSONDecode(this: HttpService, input: string): unknown;
 	/**
@@ -16603,6 +16603,7 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	 * @deprecated
 	 */
 	readonly _nominal_ImporterRootSettings: unique symbol;
+	AddModelToInventory: boolean;
 	Anchored: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
@@ -16620,6 +16621,7 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	RigType: Enum.RigType;
 	ScaleUnit: Enum.MeshScaleUnit;
 	UseSceneOriginAsPivot: boolean;
+	UsesCages: boolean;
 	WorldForward: Enum.NormalId;
 	WorldUp: Enum.NormalId;
 }
@@ -16633,6 +16635,7 @@ interface IncrementalPatchBuilder extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_IncrementalPatchBuilder: unique symbol;
+	AddPathsToBundle: boolean;
 	HighCompression: boolean;
 	ZstdCompression: boolean;
 }
@@ -21551,8 +21554,6 @@ interface MarketplaceService extends Instance {
 	 * 	-- PromptProductPurchaseFinished 269323 327064551 true
 	 * 	print("PromptProductPurchaseFinished", ...)
 	 * end)
-	 * Tags: Deprecated
-	 * @deprecated
 	 */
 	readonly PromptProductPurchaseFinished: RBXScriptSignal<(userId: number, productId: number, isPurchased: boolean) => void>;
 	/**
@@ -22876,7 +22877,7 @@ interface BasePart extends PVInstance {
 	 * When setting this property any [Welds](https://developer.roblox.com/en-us/api-reference/class/Weld), [ManualWelds](https://developer.roblox.com/en-us/api-reference/class/ManualWeld), [Snap](https://developer.roblox.com/en-us/api-reference/class/Snap), [Motor](https://developer.roblox.com/en-us/api-reference/class/Motor), and [Motor6Ds](https://developer.roblox.com/en-us/api-reference/class/Motor6D) connected to this part will have the matching [C0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C0)/[C1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C1) property updated and to allow the part to move relative to any other parts it is joined to.
 	 * 
 	 * WeldConstraints will also be temporarily disabled and re-enabled during the move.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	Orientation: Vector3;
 	/**
@@ -22895,7 +22896,7 @@ interface BasePart extends PVInstance {
 	 * When setting this property any [Welds](https://developer.roblox.com/en-us/api-reference/class/Weld), [ManualWelds](https://developer.roblox.com/en-us/api-reference/class/ManualWeld), [Snap](https://developer.roblox.com/en-us/api-reference/class/Snap), [Motor](https://developer.roblox.com/en-us/api-reference/class/Motor), and [Motor6Ds](https://developer.roblox.com/en-us/api-reference/class/Motor6D) connected to this part will have the matching [C0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C0)/[C1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/C1) property updated and to allow the part to move relative to any other parts it is joined to.
 	 * 
 	 * WeldConstraints will also be temporarily disabled and re-enabled during the move.
-	 * Tags: NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	Position: Vector3;
 	/**
@@ -23390,6 +23391,14 @@ interface BasePart extends PVInstance {
 		parts: Array<BasePart>,
 		collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>,
 	): UnionOperation;
+	/**
+	 * Tags: Yields
+	 */
+	subtractAsync2_INTERNAL(this: BasePart, parts: Array<Instance>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>, renderFidelity?: CastsToEnum<Enum.RenderFidelity>): Array<Instance>;
+	/**
+	 * Tags: Yields
+	 */
+	unionAsync2_INTERNAL(this: BasePart, parts: Array<Instance>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>, renderFidelity?: CastsToEnum<Enum.RenderFidelity>): Array<Instance>;
 	/**
 	 * Fired when another part comes in contact with another object. This event only sends data to the client notifying it that two parts have collided, whereas [BasePart.Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched) sends data to the server.
 	 * Tags: Deprecated
@@ -24290,6 +24299,7 @@ interface Model extends PVInstance {
 	 * Tags: NotReplicated
 	 */
 	WorldPivot: CFrame;
+	AddPersistentPlayer(this: Model, playerInstance?: Player): void;
 	/**
 	 * Breaks connections between `BaseParts`, including surface connections with any adjacent parts, [WeldConstraint](https://developer.roblox.com/en-us/api-reference/class/WeldConstraint)s, and all [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld)s and other [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance)s.
 	 * 
@@ -24384,6 +24394,7 @@ interface Model extends PVInstance {
 	 * Note that rotation is not preserved when moving a model with MoveTo. It is recommended to use either [Model:TranslateBy](https://developer.roblox.com/en-us/api-reference/function/Model/TranslateBy) or [Model:SetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/SetPrimaryPartCFrame) if the current rotation of the model needs to be preserved.
 	 */
 	MoveTo(this: Model, position: Vector3): void;
+	RemovePersistentPlayer(this: Model, playerInstance?: Player): void;
 	/**
 	 * Resets the rotation of the model's parts to the previously set identity rotation, which is done through the [Model:SetIdentityOrientation](https://developer.roblox.com/en-us/api-reference/function/Model/SetIdentityOrientation) method.
 	 * Tags: Deprecated
@@ -25887,6 +25898,8 @@ interface PhysicsService extends Instance {
 	 * 
 	 * *   The specified group does not exist.
 	 * *   The specified part is not a BasePart.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	CollisionGroupContainsPart(this: PhysicsService, name: string, part: BasePart): boolean;
 	/**
@@ -25903,18 +25916,24 @@ interface PhysicsService extends Instance {
 	CollisionGroupsAreCollidable(this: PhysicsService, name1: string, name2: string): boolean;
 	/**
 	 * Creates a new collision group with the given name, and returns the id of the created group.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	CreateCollisionGroup(this: PhysicsService, name: string): number;
 	/**
 	 * The GetCollisionGroupId function returns the id of the collision group with the specified name.
 	 * 
 	 * This function will throw an error if no group with the given name exists.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	GetCollisionGroupId(this: PhysicsService, name: string): number;
 	/**
 	 * Returns the name of the collision group with the corresponding id. This function will return nil if the group with the corresponding id has not been named.
 	 * 
 	 * This function will throw an error if the id is not in the range of 0 <= id < maxCollisionGroups
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	GetCollisionGroupName(this: PhysicsService, name: number): string;
 	/**
@@ -25943,6 +25962,8 @@ interface PhysicsService extends Instance {
 	 * string
 	 * 
 	 * The name of the group
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
 	/**
@@ -25961,6 +25982,8 @@ interface PhysicsService extends Instance {
 	 * 
 	 * *   The name “Default” is provided.
 	 * *   The function is called from a client.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	RemoveCollisionGroup(this: PhysicsService, name: string): void;
 	/**
@@ -25985,6 +26008,8 @@ interface PhysicsService extends Instance {
 	 * 
 	 * *   The part parameter is not a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) instance.
 	 * *   The specified group does not exist.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	SetPartCollisionGroup(this: PhysicsService, part: BasePart, name: string): void;
 	UnregisterCollisionGroup(this: PhysicsService, name: string): void;
@@ -35958,17 +35983,6 @@ interface VisibilityService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_VisibilityService: unique symbol;
-}
-
-interface VoiceChannel extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_VoiceChannel: unique symbol;
 }
 
 interface VoiceChatInternal extends Instance {
