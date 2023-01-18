@@ -1012,6 +1012,13 @@ interface ValueBase extends Instance {
 	readonly Changed: RBXScriptSignal<(value?: unknown) => void>;
 }
 
+interface Vector3Curve extends Instance {
+	GetValueAtTime(
+		this: Vector3Curve,
+		time: number,
+	): LuaTuple<[number | undefined, number | undefined, number | undefined]>;
+}
+
 interface Workspace extends WorldRoot {
 	/** Do not use `Workspace.BreakJoints`. Use a for-loop instead */
 	readonly BreakJoints: never;
