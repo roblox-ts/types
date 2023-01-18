@@ -16413,6 +16413,7 @@ interface IKControl extends Instance {
 	Offset: CFrame;
 	Pole: Instance | undefined;
 	Priority: number;
+	SmoothTime: number;
 	Target: Instance | undefined;
 	Type: Enum.IKControlType;
 	Weight: number;
@@ -32183,6 +32184,7 @@ interface ChatInputBarConfiguration extends TextChatConfigurations {
 	FontFace: Font;
 	PlaceholderColor3: Color3;
 	TargetTextChannel: TextChannel | undefined;
+	TextBox: TextBox | undefined;
 	TextColor3: Color3;
 	TextSize: number;
 	TextStrokeColor3: Color3;
@@ -35395,6 +35397,7 @@ interface VRService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_VRService: unique symbol;
+	FadeOutViewOnCollision: boolean;
 	/**
 	 * The GuiInputUserCFrame property describes what [UserCFrame](https://developer.roblox.com/en-us/api-reference/enum/UserCFrame) is responsible for input in VR. For instance, if a VR headset is responsible, the value of this property will be UserCFrame.Head.
 	 * 
@@ -35937,7 +35940,10 @@ interface Vector3Curve extends Instance {
 	/**
 	 * Samples the 3 FloatCurves (X, Y, Z) at the time passed as argument. Returns the 3 samples as a tuple of 3 numbers. If a channel curve is missing or no key is found in the curve the channel is evaluated as nil.
 	 */
-	GetValueAtTime(this: Vector3Curve, time: number): unknown;
+	GetValueAtTime(
+		this: Vector3Curve,
+		time: number,
+	): LuaTuple<[number | undefined, number | undefined, number | undefined]>;
 	/**
 	 * Returns the FloatCurve controlling the X channel. It is the first child instance of type FloatCurve named `X`. If none is found an empty FloatCurve is created.
 	 */
