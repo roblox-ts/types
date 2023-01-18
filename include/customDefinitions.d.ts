@@ -1013,7 +1013,10 @@ interface ValueBase extends Instance {
 }
 
 interface Vector3Curve extends Instance {
-	GetValueAtTime(this: Vector3Curve, time: number): LuaTuple<[Vector3 | undefined, Vector3 | undefined, Vector3 | undefined]>;
+	GetValueAtTime(
+		this: Vector3Curve,
+		time: number,
+	): LuaTuple<[number | undefined, number | undefined, number | undefined]>;
 }
 
 interface Workspace extends WorldRoot {
