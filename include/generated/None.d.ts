@@ -58,6 +58,7 @@ interface Services {
 	LanguageService: LanguageService;
 	LegacyStudioBridge: LegacyStudioBridge;
 	Lighting: Lighting;
+	LiveScriptingService: LiveScriptingService;
 	LocalizationService: LocalizationService;
 	LodDataService: LodDataService;
 	LogService: LogService;
@@ -94,6 +95,7 @@ interface Services {
 	ServerStorage: ServerStorage;
 	SessionService: SessionService;
 	ShorelineUpgraderService: ShorelineUpgraderService;
+	SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
 	SnippetService: SnippetService;
 	SocialService: SocialService;
 	SoundService: SoundService;
@@ -106,6 +108,7 @@ interface Services {
 	StudioHighDpiService: StudioHighDpiService;
 	StudioPublishService: StudioPublishService;
 	StudioScriptDebugEventListener: StudioScriptDebugEventListener;
+	StudioSdkService: StudioSdkService;
 	TeamCreateService: TeamCreateService;
 	Teams: Teams;
 	TeleportService: TeleportService;
@@ -19676,6 +19679,17 @@ interface Lighting extends Instance {
 	readonly LightingChanged: RBXScriptSignal<(skyChanged: boolean) => void>;
 }
 
+interface LiveScriptingService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_LiveScriptingService: unique symbol;
+}
+
 /** LocalizationService is the service responsible for handling automated translation.  
  *   
  * It is used as a storage for [LocalizationTable](https://developer.roblox.com/en-us/api-reference/class/LocalizationTable) objects used by automatic text replacement.  
@@ -29250,6 +29264,17 @@ interface Smoke extends Instance {
 	TimeScale: number;
 }
 
+interface SmoothVoxelsUpgraderService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SmoothVoxelsUpgraderService: unique symbol;
+}
+
 interface SnippetService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -30955,6 +30980,17 @@ interface StudioScriptDebugEventListener extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_StudioScriptDebugEventListener: unique symbol;
+}
+
+interface StudioSdkService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StudioSdkService: unique symbol;
 }
 
 /** SurfaceAppearance objects allow developers to override the appearance of a [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) with advanced graphics options. Most notably, a SurfaceAppearance can apply a set of PBR textures to a mesh.

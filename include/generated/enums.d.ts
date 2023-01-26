@@ -2617,14 +2617,6 @@ declare namespace Enum {
 
 		export const PriceLowToHigh: PriceLowToHigh;
 
-		export interface RecentlyUpdated extends globalThis.EnumItem {
-			Name: "RecentlyUpdated";
-			Value: 4;
-			EnumType: typeof globalThis.Enum.CatalogSortType;
-		}
-
-		export const RecentlyUpdated: RecentlyUpdated;
-
 		export interface MostFavorited extends globalThis.EnumItem {
 			Name: "MostFavorited";
 			Value: 5;
@@ -2633,9 +2625,19 @@ declare namespace Enum {
 
 		export const MostFavorited: MostFavorited;
 
+		export interface RecentlyCreated extends globalThis.EnumItem {
+			Name: "RecentlyCreated";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.CatalogSortType;
+		}
+
+		export const RecentlyCreated: RecentlyCreated;
+		/** @deprecated renamed to RecentlyCreated */
+		export const RecentlyUpdated: RecentlyCreated;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CatalogSortType>;
 	}
-	export type CatalogSortType = CatalogSortType.Relevance | CatalogSortType.PriceHighToLow | CatalogSortType.PriceLowToHigh | CatalogSortType.RecentlyUpdated | CatalogSortType.MostFavorited;
+	export type CatalogSortType = CatalogSortType.Relevance | CatalogSortType.PriceHighToLow | CatalogSortType.PriceLowToHigh | CatalogSortType.MostFavorited | CatalogSortType.RecentlyCreated;
 
 	export namespace CellBlock {
 		export interface Solid extends globalThis.EnumItem {
@@ -17168,35 +17170,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UiMessageType>;
 	}
 	export type UiMessageType = UiMessageType.UiMessageError | UiMessageType.UiMessageInfo;
-
-	export namespace UnionsScaleNonuniformly {
-		export interface Default extends globalThis.EnumItem {
-			Name: "Default";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.UnionsScaleNonuniformly;
-		}
-
-		export const Default: Default;
-
-		export interface Disabled extends globalThis.EnumItem {
-			Name: "Disabled";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.UnionsScaleNonuniformly;
-		}
-
-		export const Disabled: Disabled;
-
-		export interface Enabled extends globalThis.EnumItem {
-			Name: "Enabled";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.UnionsScaleNonuniformly;
-		}
-
-		export const Enabled: Enabled;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UnionsScaleNonuniformly>;
-	}
-	export type UnionsScaleNonuniformly = UnionsScaleNonuniformly.Default | UnionsScaleNonuniformly.Disabled | UnionsScaleNonuniformly.Enabled;
 
 	export namespace UsageContext {
 		export interface Default extends globalThis.EnumItem {
