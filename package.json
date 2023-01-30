@@ -42,7 +42,7 @@
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-no-autofix": "^1.2.3",
 		"eslint-plugin-prettier": "^4.0.0",
-		"eslint-plugin-simple-import-sort": "^9.0.0",
+		"eslint-plugin-simple-import-sort": "^10.0.0",
 		"fs-extra": "^11.1.0",
 		"libxmljs2": "^0.31.0",
 		"prettier": "^2.1.2",
