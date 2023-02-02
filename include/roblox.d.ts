@@ -264,24 +264,18 @@ interface BundleInfo {
 
 type TeleportData = string | number | boolean | Array<unknown> | Map<unknown, unknown>;
 
-type PlayerJoinInfo = {
-	/** Data passed along with the players. As this is transmitted by the client it is not secure. For this reason it should only be used for local settings and not sensitive items (such as the users’ score or in-game currency). */
+interface PlayerJoinInfo {
+	/** The `DataModel.GameId` of the experience the `Player` teleported from. Only present if the player teleports to the current experience and if a server calls the teleport function. */
+	SourceGameId?: number;
+	/** The `DataModel.PlaceId` of the place the `Player` teleported from. Only present if the player teleports to the current place and a server calls the teleport function. */
+	SourcePlaceId?: number;
+	/** An array containing the `UserId` numbers of the users teleported alongside the `Player`. Only present if the player teleported as part of a group. */
+	Members?: Array<number>;
+	/** Reflects the `teleportData` specified in the original teleport. Useful for sharing information between servers the player teleports to. Only present if `teleportData` was specified and a server calls the teleport function. */
 	TeleportData?: TeleportData;
-} & (
-	| {
-			SourceGameId: undefined;
-			SourcePlaceId: undefined;
-			Members: undefined;
-	  }
-	| {
-			/** The DataModel.GameId of the game the Player was teleported from. Only present if the player was teleported to the current place. */
-			SourceGameId: number;
-			/** The DataModel.PlaceId of the place the Player was teleported from. Only present if the player was teleported to the current place. */
-			SourcePlaceId: number;
-			/** An array containing the UserIds teleported alongside the Player. Only present if the player was teleported in using TeleportService:TeleportPartyAsync. */
-			Members: Array<number>;
-	  }
-);
+	/** A string containing launch data specified in the URL the player clicks to join the experience. Only present if the URL contains launch data. */
+	LaunchData?: string;
+}
 
 interface BoundActionInfo {
 	inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType | string>;
