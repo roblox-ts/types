@@ -27,6 +27,7 @@ interface Services {
 	ContentProvider: ContentProvider;
 	ContextActionService: ContextActionService;
 	ControllerService: ControllerService;
+	CoreScriptDebuggingManagerHelper: CoreScriptDebuggingManagerHelper;
 	CrossDMScriptChangeListener: CrossDMScriptChangeListener;
 	DataModelPatchService: DataModelPatchService;
 	DataStoreService: DataStoreService;
@@ -91,6 +92,7 @@ interface Services {
 	ScriptContext: ScriptContext;
 	ScriptEditorService: ScriptEditorService;
 	ScriptRegistrationService: ScriptRegistrationService;
+	SelectionHighlightManager: SelectionHighlightManager;
 	ServerScriptService: ServerScriptService;
 	ServerStorage: ServerStorage;
 	SessionService: SessionService;
@@ -8543,6 +8545,17 @@ interface ControllerService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ControllerService: unique symbol;
+}
+
+interface CoreScriptDebuggingManagerHelper extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CoreScriptDebuggingManagerHelper: unique symbol;
 }
 
 interface CrossDMScriptChangeListener extends Instance {
@@ -28688,6 +28701,17 @@ interface ScriptRegistrationService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ScriptRegistrationService: unique symbol;
+}
+
+interface SelectionHighlightManager extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SelectionHighlightManager: unique symbol;
 }
 
 /** **ServerScriptService** is a container service for [Script](https://developer.roblox.com/en-us/api-reference/class/Script), [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) and other scripting-related assets that are only meant for server use. The contents are never replicated to player clients at all, which allows for a secure storage of important game logic. Script objects will run if they are within this service and not [Disabled](https://developer.roblox.com/en-us/api-reference/property/BaseScript/Disabled).
