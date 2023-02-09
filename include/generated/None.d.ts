@@ -111,6 +111,7 @@ interface Services {
 	StudioPublishService: StudioPublishService;
 	StudioScriptDebugEventListener: StudioScriptDebugEventListener;
 	StudioSdkService: StudioSdkService;
+	TeamCreateData: TeamCreateData;
 	TeamCreateService: TeamCreateService;
 	Teams: Teams;
 	TeleportService: TeleportService;
@@ -5978,6 +5979,7 @@ interface Camera extends Instance {
 	 * Note this function does not perform any raycasting, meaning the visible bool will be true regardless if the _worldPoint_ is obscured by [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain).
 	 */
 	WorldToViewportPoint(this: Camera, worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
+	ZoomToExtents(this: Camera, boundingBoxCFrame: CFrame, boundingBoxSize: Vector3): void;
 	/**
 	 * This event fires when the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) has finished interpolating using the [Camera:Interpolate](https://developer.roblox.com/en-us/api-reference/function/Camera/Interpolate) function.
 	 * 
@@ -24398,6 +24400,7 @@ interface Model extends PVInstance {
 	 * @deprecated
 	 */
 	GetPrimaryPartCFrame(this: Model): CFrame;
+	GetScale(this: Model): number;
 	/**
 	 * **Deprecated**
 	 * 
@@ -24429,6 +24432,7 @@ interface Model extends PVInstance {
 	 * @deprecated
 	 */
 	ResetOrientationToIdentity(this: Model): void;
+	ScaleTo(this: Model, newScaleFactor: number): void;
 	/**
 	 * Sets the identity rotation of the given model, allowing you to reset the rotation of the entire model later, through the use of the `ResetOrientationToIdentity` method.
 	 * Tags: Deprecated
@@ -31147,6 +31151,17 @@ interface Team extends Instance {
 	 * ```
 	 */
 	readonly PlayerRemoved: RBXScriptSignal<(player: Player) => void>;
+}
+
+interface TeamCreateData extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TeamCreateData: unique symbol;
 }
 
 interface TeamCreateService extends Instance {
