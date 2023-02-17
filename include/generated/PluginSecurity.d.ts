@@ -3042,6 +3042,7 @@ interface Studio extends Instance {
 	["Auto Clean Empty Line"]: boolean;
 	["Auto Closing Brackets"]: boolean;
 	["Auto Closing Quotes"]: boolean;
+	["Auto Delete Closing Brackets and Quotes"]: boolean;
 	["Auto Indent Rule"]: Enum.AutoIndentRule;
 	["Auto-Recovery Enabled"]: boolean;
 	["Auto-Recovery Interval (Minutes)"]: number;

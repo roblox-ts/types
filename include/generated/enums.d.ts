@@ -2592,6 +2592,59 @@ declare namespace Enum {
 	}
 	export type CatalogCategoryFilter = CatalogCategoryFilter.None | CatalogCategoryFilter.Featured | CatalogCategoryFilter.Collectibles | CatalogCategoryFilter.CommunityCreations | CatalogCategoryFilter.Premium | CatalogCategoryFilter.Recommended;
 
+	export namespace CatalogSortAggregation {
+		export interface Past12Hours extends globalThis.EnumItem {
+			Name: "Past12Hours";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.CatalogSortAggregation;
+		}
+
+		export const Past12Hours: Past12Hours;
+
+		export interface PastDay extends globalThis.EnumItem {
+			Name: "PastDay";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.CatalogSortAggregation;
+		}
+
+		export const PastDay: PastDay;
+
+		export interface Past3Days extends globalThis.EnumItem {
+			Name: "Past3Days";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.CatalogSortAggregation;
+		}
+
+		export const Past3Days: Past3Days;
+
+		export interface PastWeek extends globalThis.EnumItem {
+			Name: "PastWeek";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.CatalogSortAggregation;
+		}
+
+		export const PastWeek: PastWeek;
+
+		export interface PastMonth extends globalThis.EnumItem {
+			Name: "PastMonth";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.CatalogSortAggregation;
+		}
+
+		export const PastMonth: PastMonth;
+
+		export interface AllTime extends globalThis.EnumItem {
+			Name: "AllTime";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.CatalogSortAggregation;
+		}
+
+		export const AllTime: AllTime;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CatalogSortAggregation>;
+	}
+	export type CatalogSortAggregation = CatalogSortAggregation.Past12Hours | CatalogSortAggregation.PastDay | CatalogSortAggregation.Past3Days | CatalogSortAggregation.PastWeek | CatalogSortAggregation.PastMonth | CatalogSortAggregation.AllTime;
+
 	export namespace CatalogSortType {
 		export interface Relevance extends globalThis.EnumItem {
 			Name: "Relevance";
@@ -2635,9 +2688,17 @@ declare namespace Enum {
 		/** @deprecated renamed to RecentlyCreated */
 		export const RecentlyUpdated: RecentlyCreated;
 
+		export interface Bestselling extends globalThis.EnumItem {
+			Name: "Bestselling";
+			Value: 7;
+			EnumType: typeof globalThis.Enum.CatalogSortType;
+		}
+
+		export const Bestselling: Bestselling;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CatalogSortType>;
 	}
-	export type CatalogSortType = CatalogSortType.Relevance | CatalogSortType.PriceHighToLow | CatalogSortType.PriceLowToHigh | CatalogSortType.MostFavorited | CatalogSortType.RecentlyCreated;
+	export type CatalogSortType = CatalogSortType.Relevance | CatalogSortType.PriceHighToLow | CatalogSortType.PriceLowToHigh | CatalogSortType.MostFavorited | CatalogSortType.RecentlyCreated | CatalogSortType.Bestselling;
 
 	export namespace CellBlock {
 		export interface Solid extends globalThis.EnumItem {
@@ -5446,9 +5507,25 @@ declare namespace Enum {
 	export type EnviromentalPhysicsThrottle = EnviromentalPhysicsThrottle.DefaultAuto | EnviromentalPhysicsThrottle.Disabled | EnviromentalPhysicsThrottle.Always | EnviromentalPhysicsThrottle.Skip2 | EnviromentalPhysicsThrottle.Skip4 | EnviromentalPhysicsThrottle.Skip8 | EnviromentalPhysicsThrottle.Skip16;
 
 	export namespace ExperienceAuthScope {
+		export interface DefaultScope extends globalThis.EnumItem {
+			Name: "DefaultScope";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.ExperienceAuthScope;
+		}
+
+		export const DefaultScope: DefaultScope;
+
+		export interface CreatorAssetsCreate extends globalThis.EnumItem {
+			Name: "CreatorAssetsCreate";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ExperienceAuthScope;
+		}
+
+		export const CreatorAssetsCreate: CreatorAssetsCreate;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ExperienceAuthScope>;
 	}
-	export type ExperienceAuthScope = never;
+	export type ExperienceAuthScope = ExperienceAuthScope.DefaultScope | ExperienceAuthScope.CreatorAssetsCreate;
 
 	export namespace ExplosionType {
 		export interface NoCraters extends globalThis.EnumItem {
@@ -12612,29 +12689,29 @@ declare namespace Enum {
 	export type R15CollisionType = R15CollisionType.OuterBox | R15CollisionType.InnerBox;
 
 	export namespace RaycastFilterType {
-		export interface Blacklist extends globalThis.EnumItem {
-			Name: "Blacklist";
+		export interface Exclude extends globalThis.EnumItem {
+			Name: "Exclude";
 			Value: 0;
 			EnumType: typeof globalThis.Enum.RaycastFilterType;
 		}
 
-		export const Blacklist: Blacklist;
-		/** @deprecated renamed to Blacklist */
-		export const Exclude: Blacklist;
+		export const Exclude: Exclude;
+		/** @deprecated renamed to Exclude */
+		export const Blacklist: Exclude;
 
-		export interface Whitelist extends globalThis.EnumItem {
-			Name: "Whitelist";
+		export interface Include extends globalThis.EnumItem {
+			Name: "Include";
 			Value: 1;
 			EnumType: typeof globalThis.Enum.RaycastFilterType;
 		}
 
-		export const Whitelist: Whitelist;
-		/** @deprecated renamed to Whitelist */
-		export const Include: Whitelist;
+		export const Include: Include;
+		/** @deprecated renamed to Include */
+		export const Whitelist: Include;
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RaycastFilterType>;
 	}
-	export type RaycastFilterType = RaycastFilterType.Blacklist | RaycastFilterType.Whitelist;
+	export type RaycastFilterType = RaycastFilterType.Exclude | RaycastFilterType.Include;
 
 	export namespace RejectCharacterDeletions {
 		export interface Default extends globalThis.EnumItem {
@@ -13425,6 +13502,35 @@ declare namespace Enum {
 	}
 	export type SafeAreaCompatibility = SafeAreaCompatibility.None | SafeAreaCompatibility.FullscreenExtension;
 
+	export namespace SalesTypeFilter {
+		export interface All extends globalThis.EnumItem {
+			Name: "All";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.SalesTypeFilter;
+		}
+
+		export const All: All;
+
+		export interface Collectibles extends globalThis.EnumItem {
+			Name: "Collectibles";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.SalesTypeFilter;
+		}
+
+		export const Collectibles: Collectibles;
+
+		export interface Premium extends globalThis.EnumItem {
+			Name: "Premium";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.SalesTypeFilter;
+		}
+
+		export const Premium: Premium;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SalesTypeFilter>;
+	}
+	export type SalesTypeFilter = SalesTypeFilter.All | SalesTypeFilter.Collectibles | SalesTypeFilter.Premium;
+
 	export namespace SaveAvatarThumbnailCustomizationFailure {
 		export interface BadThumbnailType extends globalThis.EnumItem {
 			Name: "BadThumbnailType";
@@ -13638,9 +13744,65 @@ declare namespace Enum {
 	export type ScaleType = ScaleType.Stretch | ScaleType.Slice | ScaleType.Tile | ScaleType.Fit | ScaleType.Crop;
 
 	export namespace ScopeCheckResult {
+		export interface ConsentAccepted extends globalThis.EnumItem {
+			Name: "ConsentAccepted";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.ScopeCheckResult;
+		}
+
+		export const ConsentAccepted: ConsentAccepted;
+
+		export interface InvalidScopes extends globalThis.EnumItem {
+			Name: "InvalidScopes";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ScopeCheckResult;
+		}
+
+		export const InvalidScopes: InvalidScopes;
+
+		export interface Timeout extends globalThis.EnumItem {
+			Name: "Timeout";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ScopeCheckResult;
+		}
+
+		export const Timeout: Timeout;
+
+		export interface NoUserInput extends globalThis.EnumItem {
+			Name: "NoUserInput";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.ScopeCheckResult;
+		}
+
+		export const NoUserInput: NoUserInput;
+
+		export interface BackendError extends globalThis.EnumItem {
+			Name: "BackendError";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.ScopeCheckResult;
+		}
+
+		export const BackendError: BackendError;
+
+		export interface UnexpectedError extends globalThis.EnumItem {
+			Name: "UnexpectedError";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.ScopeCheckResult;
+		}
+
+		export const UnexpectedError: UnexpectedError;
+
+		export interface InvalidArgument extends globalThis.EnumItem {
+			Name: "InvalidArgument";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.ScopeCheckResult;
+		}
+
+		export const InvalidArgument: InvalidArgument;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScopeCheckResult>;
 	}
-	export type ScopeCheckResult = never;
+	export type ScopeCheckResult = ScopeCheckResult.ConsentAccepted | ScopeCheckResult.InvalidScopes | ScopeCheckResult.Timeout | ScopeCheckResult.NoUserInput | ScopeCheckResult.BackendError | ScopeCheckResult.UnexpectedError | ScopeCheckResult.InvalidArgument;
 
 	export namespace ScreenInsets {
 		export interface None extends globalThis.EnumItem {

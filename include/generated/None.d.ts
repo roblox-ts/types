@@ -86,6 +86,7 @@ interface Services {
 	ReplicatedStorage: ReplicatedStorage;
 	RtMessagingService: RtMessagingService;
 	RunService: RunService;
+	SafetyService: SafetyService;
 	ScriptChangeService: ScriptChangeService;
 	ScriptCloneWatcher: ScriptCloneWatcher;
 	ScriptCloneWatcherHelper: ScriptCloneWatcherHelper;
@@ -112,6 +113,7 @@ interface Services {
 	StudioScriptDebugEventListener: StudioScriptDebugEventListener;
 	StudioSdkService: StudioSdkService;
 	TeamCreateData: TeamCreateData;
+	TeamCreatePublishService: TeamCreatePublishService;
 	TeamCreateService: TeamCreateService;
 	Teams: Teams;
 	TeleportService: TeleportService;
@@ -474,6 +476,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	OutfitPages: OutfitPages;
 	PackageLink: PackageLink;
 	ParabolaAdornment: ParabolaAdornment;
+	PatchMapping: PatchMapping;
 	Path: Path;
 	PausedState: PausedState;
 	PausedStateBreakpoint: PausedStateBreakpoint;
@@ -25624,6 +25627,20 @@ interface ParticleEmitter extends Instance {
 	Emit(this: ParticleEmitter, particleCount?: number): void;
 }
 
+interface PatchMapping extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PatchMapping: unique symbol;
+	FlattenTree: boolean;
+	PatchId: string;
+	TargetPath: string;
+}
+
 /** **Path** objects store the result of paths created by [PathfindingService:CreatePath()](https://developer.roblox.com/en-us/api-reference/function/PathfindingService/CreatePath).
  * 
  * Once a path object is created, you can call [Path:ComputeAsync()](https://developer.roblox.com/en-us/api-reference/function/Path/ComputeAsync) with a starting point and ending point. This will attempt to compute a valid path for a character to move along, based on default or custom parameters passed to [CreatePath()](https://developer.roblox.com/en-us/api-reference/function/PathfindingService/CreatePath). If [ComputeAsync()](https://developer.roblox.com/en-us/api-reference/function/Path/ComputeAsync) successfully finds a path, the [Path](https://developer.roblox.com/en-us/api-reference/class/Path) object will have a [Path.Status](https://developer.roblox.com/en-us/api-reference/property/Path/Status) value of `Enum.PathStatus.Success`. Otherwise the status will be `Enum.PathStatus.NoPath` which can occur if there are obstacles between the two points (and no way around) or if the points are inside of solid objects.
@@ -28584,6 +28601,17 @@ interface RunService extends Instance {
 	readonly Stepped: RBXScriptSignal<(time: number, deltaTime: number) => void>;
 }
 
+interface SafetyService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SafetyService: unique symbol;
+}
+
 interface ScreenshotHud extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -29845,17 +29873,6 @@ interface SoundEffect extends Instance {
 	Priority: number;
 }
 
-interface AssetSoundEffect extends SoundEffect {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_AssetSoundEffect: unique symbol;
-}
-
 /** A ChorusSoundEffect simulates the effect of multiple vocals or instruments playing the same part. It does this by taking the original sound and overlaying copies of that sound. These copies are not exact matches to the original but instead vary in pitch slightly. This simulates a real chorus, as different singers or instruments will have slight variations. This effect can be applied to either an individual sound or to a sound group by parenting it to the desired instance.  
  *   
  * Like all other [SoundEffect](https://developer.roblox.com/en-us/api-reference/class/SoundEffect), a ChorusSoundEffect can be applied either to a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) or [SoundGroup](https://developer.roblox.com/en-us/api-reference/class/SoundGroup) by being parented to either.
@@ -29955,6 +29972,17 @@ interface CustomSoundEffect extends SoundEffect {
 	 * @deprecated
 	 */
 	readonly _nominal_CustomSoundEffect: unique symbol;
+}
+
+interface AssetSoundEffect extends CustomSoundEffect {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AssetSoundEffect: unique symbol;
 }
 
 interface ChannelSelectorSoundEffect extends CustomSoundEffect {
@@ -31162,6 +31190,17 @@ interface TeamCreateData extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TeamCreateData: unique symbol;
+}
+
+interface TeamCreatePublishService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TeamCreatePublishService: unique symbol;
 }
 
 interface TeamCreateService extends Instance {
@@ -34147,6 +34186,7 @@ interface UserInputService extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly MouseEnabled: boolean;
+	MouseIcon: string;
 	/**
 	 * This property determines whether the [Mouse's](https://developer.roblox.com/en-us/api-reference/class/Mouse) icon is visible When _true_ the mouse's icon is visible, when _false_ it is not.
 	 * 
