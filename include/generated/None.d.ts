@@ -53,6 +53,7 @@ interface Services {
 	ILegacyStudioBridge: ILegacyStudioBridge;
 	IncrementalPatchBuilder: IncrementalPatchBuilder;
 	InsertService: InsertService;
+	InternalSyncService: InternalSyncService;
 	IXPService: IXPService;
 	JointsService: JointsService;
 	KeyframeSequenceProvider: KeyframeSequenceProvider;
@@ -236,6 +237,7 @@ interface CreatableInstances {
 	ImageHandleAdornment: ImageHandleAdornment;
 	ImageLabel: ImageLabel;
 	IntConstrainedValue: IntConstrainedValue;
+	InternalSyncItem: InternalSyncItem;
 	IntValue: IntValue;
 	Keyframe: Keyframe;
 	KeyframeMarker: KeyframeMarker;
@@ -1671,7 +1673,7 @@ interface AnimationController extends Instance {
 	 * local animationTracks = {}
 	 * local track = animationController:LoadTrack(animation)
 	 * table.insert(animationTracks, track)
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetPlayingAnimationTracks(this: AnimationController): Array<AnimationTrack>;
@@ -1706,7 +1708,7 @@ interface AnimationController extends Instance {
 	 * 
 	 * *   [Using the Animation Editor](https://developer.roblox.com/articles/using-animation-editor), explore this powerful built-in plugin for creating custom animations
 	 * *   [Using Animations in Games](https://developer.roblox.com/articles/using-animations-in-games), learn how to add pre-built and custom animations to your game
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	LoadAnimation(this: AnimationController, animation: Animation): AnimationTrack;
@@ -1716,7 +1718,7 @@ interface AnimationController extends Instance {
 	 * The [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) can be used to access the animation's playback functions and events. It will only fire for animations playing on the specific [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController).
 	 * 
 	 * See [Humanoid.AnimationPlayed](https://developer.roblox.com/en-us/api-reference/event/Humanoid/AnimationPlayed) for the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) variant of this function.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
@@ -2251,7 +2253,7 @@ interface AssetService extends Instance {
 	 * ----
 	 * 
 	 * This member is broken and currently does not function correctly. You should avoid using it for now.
-	 * Tags: Yields, Deprecated
+	 * Tags: Yields, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetCreatorAssetID(this: AssetService, creationID: number): number;
@@ -2401,7 +2403,7 @@ interface Attachment extends Instance {
 	Position: Vector3;
 	/**
 	 * A [Vector3](https://developer.roblox.com/api-reference/datatype/Vector3 "Vector3") that describes the rotation of the Attachment relative to the rotation of its parent, in degrees. Rotations are applied in Z, Y, X order.
-	 * Tags: Hidden, NotReplicated, Deprecated
+	 * Tags: Hidden, NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	Rotation: Vector3;
@@ -2445,7 +2447,7 @@ interface Attachment extends Instance {
 	WorldPosition: Vector3;
 	/**
 	 * Determines the rotation (in degrees) of the attachment relative to the world, rather than the parent of the [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment).
-	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
+	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	readonly WorldRotation: Vector3;
@@ -2456,25 +2458,25 @@ interface Attachment extends Instance {
 	WorldSecondaryAxis: Vector3;
 	/**
 	 * Returns the value of the Attachment's [Attachment.Axis](https://developer.roblox.com/en-us/api-reference/property/Attachment/Axis).
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetAxis(this: Attachment): Vector3;
 	/**
 	 * Returns the value of the Attachment's [Attachment.SecondaryAxis](https://developer.roblox.com/en-us/api-reference/property/Attachment/SecondaryAxis).
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetSecondaryAxis(this: Attachment): Vector3;
 	/**
 	 * Sets the value of the Attachment's [Attachment.Axis](https://developer.roblox.com/en-us/api-reference/property/Attachment/Axis).
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	SetAxis(this: Attachment, axis: Vector3): void;
 	/**
 	 * Sets the value of the Attachment's [Attachment.SecondaryAxis](https://developer.roblox.com/en-us/api-reference/property/Attachment/SecondaryAxis).
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	SetSecondaryAxis(this: Attachment, axis: Vector3): void;
@@ -5564,7 +5566,7 @@ interface Camera extends Instance {
 	CameraType: Enum.CameraType;
 	/**
 	 * This property has been superseded by [Camera.CFrame](https://developer.roblox.com/en-us/api-reference/property/Camera/CFrame) which functions identically and should be used instead.
-	 * Tags: Hidden, NotReplicated, Deprecated
+	 * Tags: Hidden, NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	CoordinateFrame: CFrame;
@@ -6386,7 +6388,7 @@ interface Chat extends Instance {
 	FilterStringForBroadcast(this: Chat, stringToFilter: string, playerFrom: Player): string;
 	/**
 	 * The FilterStringForPlayerAsync function filters a string appropriate to the given player's age settings, so they see what is appropriate to them. This function will only work if called from a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) on the server. If called on a client it will fail.
-	 * Tags: Yields, Deprecated
+	 * Tags: Yields, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	FilterStringForPlayerAsync(this: Chat, stringToFilter: string, playerToFilterFor: Player): string;
@@ -6618,13 +6620,13 @@ interface CollectionService extends Instance {
 	RemoveTag(this: CollectionService, instance: Instance, tag: string): void;
 	/**
 	 * This function fires when a [Configuration](https://developer.roblox.com/en-us/api-reference/class/Configuration), [CustomEvent](https://developer.roblox.com/en-us/api-reference/class/CustomEvent), [CustomEventReceiver](https://developer.roblox.com/en-us/api-reference/class/CustomEventReceiver), [Dialog](https://developer.roblox.com/en-us/api-reference/class/Dialog), or [VehicleSeat](https://developer.roblox.com/en-us/api-reference/class/VehicleSeat) is added to the [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel).
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	readonly ItemAdded: RBXScriptSignal<(instance: Instance) => void>;
 	/**
 	 * This function fires when a [Configuration](https://developer.roblox.com/en-us/api-reference/class/Configuration), [CustomEvent](https://developer.roblox.com/en-us/api-reference/class/CustomEvent), [CustomEventReceiver](https://developer.roblox.com/en-us/api-reference/class/CustomEventReceiver), [Dialog](https://developer.roblox.com/en-us/api-reference/class/Dialog), or [VehicleSeat](https://developer.roblox.com/en-us/api-reference/class/VehicleSeat) is removed from the [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel).
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	readonly ItemRemoved: RBXScriptSignal<(instance: Instance) => void>;
@@ -7848,7 +7850,7 @@ interface TorsionSpringConstraint extends Constraint {
 	 * In the example below, you can enable a cone limit on the relative motion of the secondary axes as follows:
 	 * 
 	 * torsionSpring.LimitEnabled = true
-	 * Tags: Hidden, Deprecated
+	 * Tags: Hidden, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	LimitEnabled: boolean;
@@ -8064,7 +8066,7 @@ interface ContentProvider extends Instance {
 	ListEncryptedAssets(this: ContentProvider): unknown;
 	/**
 	 * Usually, content is loaded only when it starts being used. That explains why it often takes a moment for an image to appear in a [GUI](https://developer.roblox.com/en-us/api-reference/class/GuiObject), or a [mesh](https://developer.roblox.com/en-us/api-reference/class/Mesh) to appear in a [part](https://developer.roblox.com/en-us/api-reference/class/BasePart), or why a [sound](https://developer.roblox.com/en-us/api-reference/class/Sound) doesn't play for the first time. All because the asset has not yet finished loading. Preload is used to load this content beforehand, so that it works instantly.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	Preload(this: ContentProvider, contentId: string): void;
@@ -8222,7 +8224,7 @@ interface ContextActionService extends Instance {
 	 * If an input has more than one function bound to it, each function will be placed on a stack. A stack obeys the principle of last in first out. So the first object placed on the stack will be on the top. The next object placed on the stack becomes the top and the previous object moves one position down (like a stack of books). When the input is triggered, the function at the top of the stack is called. If the function returns Enum.ContextActionResult.Pass this will continue down the stack. To remove a function from being called by all input that it was bound by use [ContextActionService:UnbindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/UnbindAction).
 	 * 
 	 * BindAction allows control over whether or not a bound action should be processed by other actions on the stack using [ContextActionResult](https://developer.roblox.com/en-us/api-reference/enum/ContextActionResult). If Enum.ContextActionResult.Pass is returned in the callback function, every action below it in the stack (last function called gets executed first) will get a chance to process it. Anything other than Pass will be treated as Enum.ContextActionResult.Sink, including nil. It will also sink if the callback is yielded.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	BindActionToInputTypes(this: ContextActionService, actionName: string, functionToBind: Callback, createTouchButton: boolean, inputTypes: Array<any>): void;
@@ -10961,7 +10963,7 @@ interface GuiBase2d extends GuiBase {
 	AutoLocalize: boolean;
 	/**
 	 * This property is automatically set to true when a LocalizationTable's Root targets this object, or an ancestor of this object. `LocalizationTable/LocalizationTable`s, with their [LocalizationTable.Root](https://developer.roblox.com/en-us/api-reference/property/LocalizationTable/Root) property pointed at an instance, will localize all `TextLabel/TextButton` that are descendants of the root instance.
-	 * Tags: Hidden, NotReplicated, Deprecated
+	 * Tags: Hidden, NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	Localize: boolean;
@@ -11937,7 +11939,7 @@ interface TextButton extends GuiButton {
 	FontFace: Font;
 	/**
 	 * This property determines the font size to be used.
-	 * Tags: NotReplicated, Deprecated
+	 * Tags: NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	FontSize: Enum.FontSize;
@@ -12062,7 +12064,7 @@ interface TextButton extends GuiButton {
 	TextTruncate: Enum.TextTruncate;
 	/**
 	 * This property determines whether or not text should wrap at the edges of the object.
-	 * Tags: NotReplicated, Deprecated
+	 * Tags: NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	TextWrap: boolean;
@@ -12251,7 +12253,7 @@ interface TextLabel extends GuiLabel {
 	FontFace: Font;
 	/**
 	 * This property determines the height in offsets of one line of text.
-	 * Tags: NotReplicated, Deprecated
+	 * Tags: NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	FontSize: Enum.FontSize;
@@ -12379,7 +12381,7 @@ interface TextLabel extends GuiLabel {
 	TextTruncate: Enum.TextTruncate;
 	/**
 	 * This property determines if text wraps to multiple lines within the [GUI](https://developer.roblox.com/en-us/api-reference/class/TextLabel) element space, truncating excess text.
-	 * Tags: NotReplicated, Deprecated
+	 * Tags: NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	TextWrap: boolean;
@@ -12638,7 +12640,7 @@ interface TextBox extends GuiObject {
 	FontFace: Font;
 	/**
 	 * This property determines the font size of a [GUI](https://developer.roblox.com/en-us/api-reference/class/TextBox) object.
-	 * Tags: NotReplicated, Deprecated
+	 * Tags: NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	FontSize: Enum.FontSize;
@@ -12782,7 +12784,7 @@ interface TextBox extends GuiObject {
 	 */
 	TextTruncate: Enum.TextTruncate;
 	/**
-	 * Tags: NotReplicated, Deprecated
+	 * Tags: NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	TextWrap: boolean;
@@ -13642,7 +13644,7 @@ interface SelectionBox extends InstanceAdornment {
 	LineThickness: number;
 	/**
 	 * A `BrickColor` version of [SurfaceColor3](https://developer.roblox.com/en-us/api-reference/property/SelectionBox/SurfaceColor3)…
-	 * Tags: Hidden, NotReplicated, Deprecated
+	 * Tags: Hidden, NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	SurfaceColor: BrickColor;
@@ -13927,7 +13929,7 @@ interface SelectionSphere extends PVAdornment {
 	readonly _nominal_SelectionSphere: unique symbol;
 	/**
 	 * A `BrickColor` version of [SelectionSphere.SurfaceColor3](https://developer.roblox.com/en-us/api-reference/property/SelectionSphere/SurfaceColor3).
-	 * Tags: Hidden, NotReplicated, Deprecated
+	 * Tags: Hidden, NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	SurfaceColor: BrickColor;
@@ -15314,7 +15316,7 @@ interface Humanoid extends Instance {
 	 * local animationTracks = {}
 	 * local track = humanoid:LoadAnimation(animation)
 	 * table.insert(animationTracks, track)
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
@@ -15379,7 +15381,7 @@ interface Humanoid extends Instance {
 	 * If the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) belongs to a NPC (Non Player Character) which the server has [network ownership](http://robloxdev.com/articles/Network-Ownership) of then the [Animations](https://developer.roblox.com/en-us/api-reference/class/Animation) should be loaded and played from the server.
 	 * 
 	 * Although generally it is not advisable to do so, these rules can be bypassed using the [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator) object.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	LoadAnimation(this: Humanoid, animation: Animation): AnimationTrack;
@@ -15520,7 +15522,7 @@ interface Humanoid extends Instance {
 	 * --------
 	 * 
 	 * *   For the [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController) equivalent of this event, please see [AnimationController.AnimationPlayed](https://developer.roblox.com/en-us/api-reference/event/AnimationController/AnimationPlayed)
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
@@ -18324,7 +18326,7 @@ interface InsertService extends Instance {
 	 */
 	Insert(this: InsertService, instance: Instance): void;
 	/**
-	 * Tags: Yields, Deprecated
+	 * Tags: Yields, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetBaseCategories(this: InsertService): unknown;
@@ -18402,7 +18404,7 @@ interface InsertService extends Instance {
 	 */
 	GetLatestAssetVersionAsync(this: InsertService, assetId: number): number;
 	/**
-	 * Tags: Yields, Deprecated
+	 * Tags: Yields, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetUserCategories(this: InsertService, userId: number): unknown;
@@ -18497,6 +18499,32 @@ interface InsertService extends Instance {
 	 * Tags: Yields
 	 */
 	LoadAssetVersion(this: InsertService, assetVersionId: number): Model;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly InternalDelete: RBXScriptSignal<(instance: Instance) => void>;
+}
+
+interface InternalSyncItem extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_InternalSyncItem: unique symbol;
+}
+
+interface InternalSyncService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_InternalSyncService: unique symbol;
 }
 
 /** JointInstance is the base class for joints, such as Connectors, Welds, and Snaps.
@@ -20847,13 +20875,13 @@ interface LocalizationTable extends Instance {
 	readonly _nominal_LocalizationTable: unique symbol;
 	/**
 	 * The default IETF tag to use if the ''languageKey'' parameter is excluded from the [LocalizationTable:GetString](https://developer.roblox.com/en-us/api-reference/function/LocalizationTable/GetString) method.
-	 * Tags: Hidden, NotReplicated, Deprecated
+	 * Tags: Hidden, NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	DevelopmentLanguage: string;
 	/**
 	 * The object that is being targeted for localization by this table. Localization is applied to it and all of it's descendants.
-	 * Tags: Hidden, NotReplicated, Deprecated
+	 * Tags: Hidden, NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	Root: Instance | undefined;
@@ -20862,7 +20890,7 @@ interface LocalizationTable extends Instance {
 	 */
 	SourceLocaleId: string;
 	/**
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetContents(this: LocalizationTable): string;
@@ -20912,7 +20940,7 @@ interface LocalizationTable extends Instance {
 	GetEntries(this: LocalizationTable): Array<LocalizationEntry>;
 	/**
 	 * The GetString function returns a translation based on the specified language and key.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetString(this: LocalizationTable, targetLocaleId: string, key: string): string;
@@ -20934,7 +20962,7 @@ interface LocalizationTable extends Instance {
 	 * Calling RemoveKey is the same as making the following call to RemoveEntry:
 	 * 
 	 * LocalizationTable:RemoveEntry(key,"","")
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	RemoveKey(this: LocalizationTable, key: string): void;
@@ -20944,7 +20972,7 @@ interface LocalizationTable extends Instance {
 	RemoveTargetLocale(this: LocalizationTable, localeId: string): void;
 	/**
 	 * The SetContents function sets the contents of the LocalizationTable, via the legacy JSON format.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	SetContents(this: LocalizationTable, contents: string): void;
@@ -20955,7 +20983,7 @@ interface LocalizationTable extends Instance {
 	 */
 	SetEntries(this: LocalizationTable, entries: Array<LocalizationEntry>): void;
 	/**
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	SetEntry(this: LocalizationTable, key: string, targetLocaleId: string, text: string): void;
@@ -21062,6 +21090,18 @@ interface LuaSourceContainer extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_LuaSourceContainer: unique symbol;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly LockGrantedOrNot: RBXScriptSignal<(granted: boolean) => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly LostLock: RBXScriptSignal<() => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RequestLock: RBXScriptSignal<() => void>;
 }
 
 /** The base class for all script objects which run automatically. */
@@ -22287,7 +22327,7 @@ interface Mouse extends Instance {
 	 * *   Not all keys generate this event. However, you can get around this with a few of the keys, “/” for example, by using the [Mouse.KeyUp](https://developer.roblox.com/en-us/api-reference/event/Mouse/KeyUp) event.
 	 * *   Some keys generate the same string as other keys.
 	 * *   It's possible for the string to be empty (possibly due to “\\0” key code).
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	readonly KeyDown: RBXScriptSignal<(key: string) => void>;
@@ -22300,7 +22340,7 @@ interface Mouse extends Instance {
 	 * *   Not all keys generate this event. However, you can get around this with a few of the keys, “/” for example, by using the \[\[API:Class/Mouse/KeyUp|KeyUp\]\] event.
 	 * *   Some keys generate the same string as other keys.
 	 * *   It's possible for the string to be empty (possibly due to “\\0” key code).
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	readonly KeyUp: RBXScriptSignal<(key: string) => void>;
@@ -23008,7 +23048,7 @@ interface BasePart extends PVInstance {
 	 * The unit of this property is **radians per second**.
 	 * 
 	 * Using this in conjunction with [AlignOrientation](https://developer.roblox.com/en-us/api-reference/class/AlignOrientation) allows for aligned parts to have matching RotVelocity and Orientation values.
-	 * Tags: Hidden, Deprecated
+	 * Tags: Hidden, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	RotVelocity: Vector3;
@@ -23113,7 +23153,7 @@ interface BasePart extends PVInstance {
 	 * Cobblestone
 	 * 
 	 * 2.7
-	 * Tags: ReadOnly, NotReplicated, Deprecated
+	 * Tags: ReadOnly, NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	readonly SpecificGravity: number;
@@ -23171,7 +23211,7 @@ interface BasePart extends PVInstance {
 	 * Setting the Velocity of an part that is [BasePart.Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) will cause it to act like a conveyor belt. Any object that touches the part will begin to move in accordance with the Velocity.
 	 * 
 	 * Some `/BodyMover` objects will apply forces and thus change the Velocity of a part over time. The simplest of these is a `/BodyForce` which can be used to counteract the acceleration due to gravity on a single part (set the +Y axis of the [BodyForce.Force](https://developer.roblox.com/en-us/api-reference/property/BodyForce/Force) to the product of the mass ([BasePart:GetMass](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetMass)) and the gravity constant).
-	 * Tags: Hidden, Deprecated
+	 * Tags: Hidden, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	Velocity: Vector3;
@@ -23446,7 +23486,7 @@ interface BasePart extends PVInstance {
 	readonly OutfitChanged: RBXScriptSignal<() => void>;
 	/**
 	 * .
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	readonly StoppedTouching: RBXScriptSignal<(otherPart: BasePart) => void>;
@@ -23572,6 +23612,14 @@ interface Platform extends Part {
 	 * @deprecated
 	 */
 	readonly _nominal_Platform: unique symbol;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RemoteCreateMotor6D: RBXScriptSignal<(humanoid: Humanoid) => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RemoteDestroyMotor6D: RBXScriptSignal<() => void>;
 }
 
 /** A type of [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) that a player character can 'sit' in. When a character touches an enabled Seat object, it will be attached to the part by a [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld) and the default character scripts will play a sitting animation.
@@ -23624,6 +23672,14 @@ interface Seat extends Part {
 	 * Forces the character with the specified [Humanoid](https://developer.roblox.com/api-reference/class/Humanoid "Humanoid") to sit in the Seat.
 	 */
 	Sit(this: Seat, humanoid: Humanoid): void;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RemoteCreateSeatWeld: RBXScriptSignal<(humanoid: Humanoid) => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RemoteDestroySeatWeld: RBXScriptSignal<() => void>;
 }
 
 /** A SkateboardPlatform can be used to create a skateboard. When characters get on a skateboard, they are stuck to it until they press the escape key. Until then, the character uses skateboard animations and travels faster than a walking character. */
@@ -23670,6 +23726,14 @@ interface SkateboardPlatform extends Part {
 	 * Fired when the SkateboardPlatform's [SkateboardPlatform.ControllingHumanoid](https://developer.roblox.com/en-us/api-reference/property/SkateboardPlatform/ControllingHumanoid) changes the force being used on the SkateboardPlatform.
 	 */
 	readonly MoveStateChanged: RBXScriptSignal<(newState: Enum.MoveState, oldState: Enum.MoveState) => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RemoteCreateMotor6D: RBXScriptSignal<(humanoid: Humanoid) => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RemoteDestroyMotor6D: RBXScriptSignal<() => void>;
 	/**
 	 * Fired whenever the skateboard is unequipped.
 	 */
@@ -24278,6 +24342,14 @@ interface VehicleSeat extends BasePart {
 	 * Forces the character with the specified [Humanoid](https://developer.roblox.com/api-reference/class/Humanoid "Humanoid") to sit in the VehicleSeat.
 	 */
 	Sit(this: VehicleSeat, humanoid: Humanoid): void;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RemoteCreateSeatWeld: RBXScriptSignal<(humanoid: Humanoid) => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RemoteDestroySeatWeld: RBXScriptSignal<() => void>;
 }
 
 /** Models are container objects, meaning they group objects together. They are best used to hold collections of [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and have a number of functions that extend their functionality.
@@ -24373,13 +24445,13 @@ interface Model extends PVInstance {
 	GetExtentsSize(this: Model): Vector3;
 	/**
 	 * This value historically returned the CFrame of a central position in the model. It has been deprecated as it did not provide reliable results.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetModelCFrame(this: Model): CFrame;
 	/**
 	 * The GetModelSize function returns the `Vector3` size of the [Model](https://developer.roblox.com/en-us/api-reference/class/Model).
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetModelSize(this: Model): Vector3;
@@ -24399,7 +24471,7 @@ interface Model extends PVInstance {
 	 * ```lua
 	 * local cFrame = Model.PrimaryPart and Model.PrimaryPart.CFrame
 	 * ```
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetPrimaryPartCFrame(this: Model): CFrame;
@@ -24431,14 +24503,14 @@ interface Model extends PVInstance {
 	RemovePersistentPlayer(this: Model, playerInstance?: Player): void;
 	/**
 	 * Resets the rotation of the model's parts to the previously set identity rotation, which is done through the [Model:SetIdentityOrientation](https://developer.roblox.com/en-us/api-reference/function/Model/SetIdentityOrientation) method.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	ResetOrientationToIdentity(this: Model): void;
 	ScaleTo(this: Model, newScaleFactor: number): void;
 	/**
 	 * Sets the identity rotation of the given model, allowing you to reset the rotation of the entire model later, through the use of the `ResetOrientationToIdentity` method.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	SetIdentityOrientation(this: Model): void;
@@ -24456,7 +24528,7 @@ interface Model extends PVInstance {
 	 * ``` 
 	 * 
 	 * A common use for this is for the 'teleportation' of player characters to different positions.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	SetPrimaryPartCFrame(this: Model, cframe: CFrame): void;
@@ -24537,7 +24609,7 @@ interface WorldRoot extends Model {
 	 * *   Parts that are in a [collision group](https://developer.roblox.com/en-us/articles/collision-filtering) that does not collide with the “Default” collision group are ignored implicitly.
 	 * 
 	 * For a demonstration of how raycasting works in Roblox, see the [Intro to Raycasting](https://developer.roblox.com/articles/Raycasting) article.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	FindPartOnRay(
@@ -24559,7 +24631,7 @@ interface WorldRoot extends Model {
 	 * *   The length (magnitude) of the directional vector is important, as parts further away than its length will not be tested.
 	 * *   If the ray does not intersect anything, the return values will be `nil` and the point at the end of the ray, respectively.
 	 * *   Parts that are in a [collision group](https://developer.roblox.com/en-us/articles/collision-filtering) that does not collide with the “Default” collision group are ignored implicitly.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	FindPartOnRayWithIgnoreList(
@@ -24588,7 +24660,7 @@ interface WorldRoot extends Model {
 	 * *   The length (magnitude) of the directional vector is important, as parts further away than its length will not be tested.
 	 * *   If the ray does not intersect anything, the return values will be `nil` and the point at the end of the ray, respectively.
 	 * *   Parts that are in a [collision group](https://developer.roblox.com/en-us/articles/collision-filtering) that does not collide with the “Default” collision group are ignored implicitly.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	FindPartOnRayWithWhitelist(
@@ -24621,7 +24693,7 @@ interface WorldRoot extends Model {
 	 * This means that the area that is inspected by the function may be larger than the [Region3](https://developer.roblox.com/en-us/api-reference/datatype/Region3). For this reason it is recommended to make sure that the [Region3](https://developer.roblox.com/en-us/api-reference/datatype/Region3) is on the voxel grid. The best way to do this is by setting the coordinates of the [Region3](https://developer.roblox.com/en-us/api-reference/datatype/Region3) to multiples of 4 (since voxels are 4 x 4 x 4 studs).
 	 * 
 	 * This method is a fairly quick and easy way to see if parts are in a general area. If a game needs to know if parts are exactly in an area, then [BasePart:GetTouchingParts](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetTouchingParts) should be used. There is a higher cost to using [BasePart:GetTouchingParts](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetTouchingParts) since a part is needed in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) and the function takes more time to run.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	FindPartsInRegion3(
@@ -24652,7 +24724,7 @@ interface WorldRoot extends Model {
 	 * -----
 	 * 
 	 * *   If a nil value is given in the ignore list, instances after this value will not be ignored
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	FindPartsInRegion3WithIgnoreList(
@@ -24683,7 +24755,7 @@ interface WorldRoot extends Model {
 	 * -----
 	 * 
 	 * *   If a nil value is given in the white list, instances after this value will be disregarded
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	FindPartsInRegion3WithWhiteList(
@@ -24751,7 +24823,7 @@ interface WorldRoot extends Model {
 	 * This means that the area that is inspected by the function may be larger than the [Region3](https://developer.roblox.com/en-us/api-reference/datatype/Region3). For this reason it is recommended to make sure that the [Region3](https://developer.roblox.com/en-us/api-reference/datatype/Region3) is on the voxel grid. The best way to do this is by setting the coordinates of the [Region3](https://developer.roblox.com/en-us/api-reference/datatype/Region3) to multiples of 4 (since voxels are 4 x 4 x 4 studs).
 	 * 
 	 * This method is a fairly quick and easy way to see if any parts are in a general area. If a game needs to know if parts are exactly in an area, then [BasePart:GetTouchingParts](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetTouchingParts) should be used. There is a higher cost to using [BasePart:GetTouchingParts](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetTouchingParts) since a part is needed in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) and the function takes more time to run.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	IsRegion3Empty(this: WorldRoot, region: Region3, ignoreDescendentsInstance?: Instance): boolean;
@@ -24782,7 +24854,7 @@ interface WorldRoot extends Model {
 	 * -----
 	 * 
 	 * *   If a nil value is given in the ignore list, instances after this value will not be ignored
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	IsRegion3EmptyWithIgnoreList(this: WorldRoot, region: Region3, ignoreDescendentsTable: Array<Instance>): boolean;
@@ -25596,7 +25668,7 @@ interface ParticleEmitter extends Instance {
 	VelocityInheritance: number;
 	/**
 	 * This property determines how offset a particle can be fired from the local emitter direction of its parent. When a particle is created its offset is picked randomly between 0 and VelocitySpread. This value is measured in degrees.
-	 * Tags: NotReplicated, Deprecated
+	 * Tags: NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	VelocitySpread: number;
@@ -25625,6 +25697,14 @@ interface ParticleEmitter extends Instance {
 	 * To clear any emit particles, use [ParticleEmitter:Clear](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Clear).
 	 */
 	Emit(this: ParticleEmitter, particleCount?: number): void;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly OnClearRequested: RBXScriptSignal<() => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly OnEmitRequested: RBXScriptSignal<(particleCount: number) => void>;
 }
 
 interface PatchMapping extends Instance {
@@ -25667,7 +25747,7 @@ interface Path extends Instance {
 	readonly Status: Enum.PathStatus;
 	/**
 	 * This function returns a table of [Path](https://developer.roblox.com/en-us/api-reference/class/Path) instances.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetPointCoordinates(this: Path): unknown;
@@ -25870,13 +25950,13 @@ interface PathfindingService extends Instance {
 	CreatePath(this: PathfindingService, agentParameters?: AgentParameters): Path;
 	/**
 	 * This function computes and returns a [Path](https://developer.roblox.com/en-us/api-reference/class/Path) between two [Vector3s](https://developer.roblox.com/en-us/api-reference/datatype/Vector3). If the given MaxDistance is greater than 512, an error will be thrown. (MaxDistance is too large).
-	 * Tags: Yields, Deprecated
+	 * Tags: Yields, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	ComputeRawPathAsync(this: PathfindingService, start: Vector3, finish: Vector3, maxDistance: number): Instance | undefined;
 	/**
 	 * This function computes and returns a smooth [Path](https://developer.roblox.com/en-us/api-reference/class/Path) between two [Vector3s](https://developer.roblox.com/en-us/api-reference/datatype/Vector3). This function fulfills the same purpose as [PathfindingService:ComputeRawPathAsync](https://developer.roblox.com/en-us/api-reference/function/PathfindingService/ComputeRawPathAsync), but creates a much smoother path for an NPC to follow in comparison.
-	 * Tags: Yields, Deprecated
+	 * Tags: Yields, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	ComputeSmoothPathAsync(this: PathfindingService, start: Vector3, finish: Vector3, maxDistance: number): Instance | undefined;
@@ -25947,7 +26027,7 @@ interface PhysicsService extends Instance {
 	 * 
 	 * *   The specified group does not exist.
 	 * *   The specified part is not a BasePart.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	CollisionGroupContainsPart(this: PhysicsService, name: string, part: BasePart): boolean;
@@ -25965,7 +26045,7 @@ interface PhysicsService extends Instance {
 	CollisionGroupsAreCollidable(this: PhysicsService, name1: string, name2: string): boolean;
 	/**
 	 * Creates a new collision group with the given name, and returns the id of the created group.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	CreateCollisionGroup(this: PhysicsService, name: string): number;
@@ -25973,7 +26053,7 @@ interface PhysicsService extends Instance {
 	 * The GetCollisionGroupId function returns the id of the collision group with the specified name.
 	 * 
 	 * This function will throw an error if no group with the given name exists.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetCollisionGroupId(this: PhysicsService, name: string): number;
@@ -25981,7 +26061,7 @@ interface PhysicsService extends Instance {
 	 * Returns the name of the collision group with the corresponding id. This function will return nil if the group with the corresponding id has not been named.
 	 * 
 	 * This function will throw an error if the id is not in the range of 0 <= id < maxCollisionGroups
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetCollisionGroupName(this: PhysicsService, name: number): string;
@@ -26011,7 +26091,7 @@ interface PhysicsService extends Instance {
 	 * string
 	 * 
 	 * The name of the group
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
@@ -26031,7 +26111,7 @@ interface PhysicsService extends Instance {
 	 * 
 	 * *   The name “Default” is provided.
 	 * *   The function is called from a client.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	RemoveCollisionGroup(this: PhysicsService, name: string): void;
@@ -26057,7 +26137,7 @@ interface PhysicsService extends Instance {
 	 * 
 	 * *   The part parameter is not a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) instance.
 	 * *   The specified group does not exist.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	SetPartCollisionGroup(this: PhysicsService, part: BasePart, name: string): void;
@@ -26184,7 +26264,7 @@ interface Player extends Instance {
 	 * It is automatically set by Roblox to load your avatar's appearance when you join a game.
 	 * 
 	 * Attempting to set the property after the character has spawned will not change the character, you must call [Player:LoadCharacter](https://developer.roblox.com/en-us/api-reference/function/Player/LoadCharacter) to load the new appearance.
-	 * Tags: NotBrowsable, Deprecated
+	 * Tags: NotBrowsable, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	CharacterAppearance: string;
@@ -27012,7 +27092,7 @@ interface Players extends Instance {
 	readonly MaxPlayers: number;
 	/**
 	 * This property indicates the number of people in the server at the current time. It is read only. Meaning it cannot be written to, only read.
-	 * Tags: ReadOnly, NotReplicated, Deprecated
+	 * Tags: ReadOnly, NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	readonly NumPlayers: number;
@@ -28121,6 +28201,22 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
 	 * Tags: Yields
 	 */
 	InvokeServer(this: RemoteFunction, ...args: Parameters<T>): ReturnType<T>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RemoteOnInvokeClient: RBXScriptSignal<(id: number, arguments: Array<any>) => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RemoteOnInvokeError: RBXScriptSignal<(id: number, arguments: string) => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RemoteOnInvokeServer: RBXScriptSignal<(id: number, player: Player, arguments: Array<any>) => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly RemoteOnInvokeSuccess: RBXScriptSignal<(id: number, arguments: Array<any>) => void>;
 	OnClientInvoke: T | undefined;
 	OnServerInvoke: ((player: Player, ...args: Array<unknown>) => void) | undefined;
 }
@@ -28990,13 +29086,13 @@ interface DataModel extends ServiceProvider<Services> {
 	readonly PrivateServerOwnerId: number;
 	/**
 	 * This property was string that could identify the current server as a VIP server.
-	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
+	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	readonly VIPServerId: string;
 	/**
 	 * This property indicates the [UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) of the account who owns the VIP server.
-	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
+	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated, [object Object]
 	 * @deprecated
 	 */
 	readonly VIPServerOwnerId: number;
@@ -29133,7 +29229,7 @@ interface DataModel extends ServiceProvider<Services> {
 	 */
 	readonly Loaded: RBXScriptSignal<() => void>;
 	/**
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	OnClose: () => void;
@@ -29441,7 +29537,7 @@ interface Sound extends Instance {
 	 * Sounds parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) that are descendants of the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) are considered 3D sounds and their volume whilst playing is dependent on the distance between the client's sound listener ([Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) position by default) and the Sound's parent. Two properties influence this behavior EmitterSize and [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode).
 	 * 
 	 * The way the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) attenuates (fades out) after the distance between the listener and the sound exceeds the EmitterSize is determined by RollOffMode.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	EmitterSize: number;
@@ -29485,7 +29581,7 @@ interface Sound extends Instance {
 	 * How MaxDistance impacts the attenuation of a sound (manner in which it fades out) is dependent on the [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode) property. When RollOffMode is set to use an inverse type distance model (Inverse or InverseTapered) the MaxDistance will not effect the attenuation of the sound. This means that low values for MaxDistance will cause the sound to abruptly cut off when the listener reaches the MaxDistance. In most cases this is not desirable and developers are advised not to use low MaxDistance values.
 	 * 
 	 * When RollOffMode is set to a linear type distance model (Linear or LinearSquared) the sound will attenuate between [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) and MaxDistance (with playback volume reaching zero at MaxDistance). This is less realistic, but in some cases allows attenuation to be handled in a more intuitive way.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	MaxDistance: number;
@@ -29493,7 +29589,7 @@ interface Sound extends Instance {
 	 * The minimum distance at which a 3D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) (direct child of a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)) will begin to attenuate. Effectively, the emitter size.
 	 * 
 	 * Deprecated in favor of Sound.EmitterSize.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	MinDistance: number;
@@ -29501,7 +29597,7 @@ interface Sound extends Instance {
 	 * Sets how high pitched and fast a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) is when it is played. The greater the integer, the higher and faster the sound is.
 	 * 
 	 * This property has been deprecated in favor of [Sound.PlaybackSpeed](https://developer.roblox.com/en-us/api-reference/property/Sound/PlaybackSpeed) whose name suits the behavior better.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	Pitch: number;
@@ -32815,6 +32911,10 @@ interface Trail extends Instance {
 	 * Calling this function will only affect old segments that have already been done. It will not affect the drawing of any new trail segments after this function call. If you would like to clear existing trail segments, and temporarily prevent new segments from being drawn, consider toggling the trail's [Trail.Enabled](https://developer.roblox.com/en-us/api-reference/property/Trail/Enabled) property to false at the same time.
 	 */
 	Clear(this: Trail): void;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly OnClearRequested: RBXScriptSignal<() => void>;
 }
 
 /** The role of a Translator is to manufacture/return strings localized for the viewing player. it can be used to retrieve display-ready localized text from a [LocalizationTable](https://developer.roblox.com/en-us/api-reference/class/LocalizationTable). The source of the [Translator.LocaleId](https://developer.roblox.com/en-us/api-reference/property/Translator/LocaleId) property, the set of tables it will search, and the order it will search them in depends on which method was used to create the Translator instance.
@@ -34124,7 +34224,7 @@ interface UserInputService extends Instance {
 	 * This property will only work when used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) running for the player whose character controls are to be hidden.
 	 * 
 	 * Even if mobile controls are hidden for a player on a mobile device, other UserInputService events such as [UserInputService.InputBegan](https://developer.roblox.com/en-us/api-reference/event/UserInputService/InputBegan) and [UserInputService.TouchSwipe](https://developer.roblox.com/en-us/api-reference/event/UserInputService/TouchSwipe) can still be used to process other forms of user input on mobile devices with an enabled touch screen (see the main UserInputService class page for a full list).
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	ModalEnabled: boolean;

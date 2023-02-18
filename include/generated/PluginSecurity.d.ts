@@ -122,12 +122,12 @@ interface AnimationClipProvider extends Instance {
 	 */
 	readonly _nominal_AnimationClipProvider: unique symbol;
 	/**
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetAnimationClip(this: AnimationClipProvider, assetId: string): AnimationClip;
 	/**
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetAnimationClipById(this: AnimationClipProvider, assetId: number, useCache: boolean): AnimationClip;
@@ -914,13 +914,13 @@ interface KeyframeSequenceProvider extends Instance {
 	readonly _nominal_KeyframeSequenceProvider: unique symbol;
 	/**
 	 * Returns a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) from a given asset URL.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetKeyframeSequence(this: KeyframeSequenceProvider, assetId: string): Instance | undefined;
 	/**
 	 * Returns a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) from the supplied assetId. Can optionally cache to reduce unnecessary loading freezes.
-	 * Tags: Deprecated
+	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
 	GetKeyframeSequenceById(this: KeyframeSequenceProvider, assetId: number, useCache: boolean): Instance | undefined;
