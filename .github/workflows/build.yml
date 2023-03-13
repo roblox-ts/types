@@ -72,3 +72,11 @@ jobs:
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+
+      - name: Send Build Failure Notification
+        uses: rjstone/discord-webhook-notify@v1
+        if: failure()
+        with:
+            severity: error
+            details: Build Failed!
+            webhookUrl: ${{ secrets.WEBHOOK_URL }}
