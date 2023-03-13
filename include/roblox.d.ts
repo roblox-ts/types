@@ -1854,6 +1854,18 @@ type RotationCurveKeyConstructor = new (
 ) => RotationCurveKey;
 declare const RotationCurveKey: RotationCurveKeyConstructor;
 
+// SharedTable
+interface SharedTable {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SharedTable: unique symbol;
+}
+
 // TextChatMessage
 interface TextChatMessage {
 	/**
