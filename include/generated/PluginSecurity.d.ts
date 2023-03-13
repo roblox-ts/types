@@ -940,18 +940,6 @@ interface LuaSettings extends Instance {
 	readonly _nominal_LuaSettings: unique symbol;
 }
 
-interface BaseScript extends LuaSourceContainer {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_BaseScript: unique symbol;
-	RunContext: Enum.RunContext;
-}
-
 interface Script extends BaseScript {
 	/**
 	 * **DO NOT USE!**
@@ -1302,6 +1290,8 @@ interface Workspace extends WorldRoot {
 	 * workspace:BreakJoints({part1, part2, part3})
 	 * 
 	 * Note, this function cannot be used by scripts and will only function in plugins.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	readonly BreakJoints: never;
 	/**
@@ -1324,6 +1314,8 @@ interface Workspace extends WorldRoot {
 	 * workspace:MakeJoints({part1, part2, part3})
 	 * 
 	 * Joints are broken if enough force is applied to them due to an [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion), unless a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField) object is parented to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or ancestor [Model](https://developer.roblox.com/en-us/api-reference/class/Model). For this reason, they are often used to make simple destructible buildings and other models.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	readonly MakeJoints: never;
 	/**
