@@ -67,12 +67,14 @@ interface Services {
 	LSPFileSyncService: LSPFileSyncService;
 	LuauScriptAnalyzerService: LuauScriptAnalyzerService;
 	MarketplaceService: MarketplaceService;
+	MaterialGenerationService: MaterialGenerationService;
 	MaterialService: MaterialService;
 	MemoryStoreService: MemoryStoreService;
 	MessageBusService: MessageBusService;
 	MessagingService: MessagingService;
 	MetaBreakpointManager: MetaBreakpointManager;
 	PackageUIService: PackageUIService;
+	PatchBundlerFileWatch: PatchBundlerFileWatch;
 	PathfindingService: PathfindingService;
 	PhysicsService: PhysicsService;
 	Players: Players;
@@ -98,6 +100,7 @@ interface Services {
 	ServerScriptService: ServerScriptService;
 	ServerStorage: ServerStorage;
 	SessionService: SessionService;
+	SharedTableRegistry: SharedTableRegistry;
 	ShorelineUpgraderService: ShorelineUpgraderService;
 	SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
 	SnippetService: SnippetService;
@@ -177,6 +180,7 @@ interface CreatableInstances {
 	BoxHandleAdornment: BoxHandleAdornment;
 	Breakpoint: Breakpoint;
 	BrickColorValue: BrickColorValue;
+	BuoyancySensor: BuoyancySensor;
 	Camera: Camera;
 	CanvasGroup: CanvasGroup;
 	CFrameValue: CFrameValue;
@@ -191,6 +195,7 @@ interface CreatableInstances {
 	ConeHandleAdornment: ConeHandleAdornment;
 	Configuration: Configuration;
 	ControllerManager: ControllerManager;
+	ControllerPartSensor: ControllerPartSensor;
 	CornerWedgePart: CornerWedgePart;
 	CurveAnimation: CurveAnimation;
 	CylinderHandleAdornment: CylinderHandleAdornment;
@@ -238,6 +243,7 @@ interface CreatableInstances {
 	ImageLabel: ImageLabel;
 	IntConstrainedValue: IntConstrainedValue;
 	InternalSyncItem: InternalSyncItem;
+	IntersectOperation: IntersectOperation;
 	IntValue: IntValue;
 	Keyframe: Keyframe;
 	KeyframeMarker: KeyframeMarker;
@@ -434,6 +440,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	CloudLocalizationTable: CloudLocalizationTable;
 	CommandInstance: CommandInstance;
 	ControllerBase: ControllerBase;
+	ControllerSensor: ControllerSensor;
 	CoreScriptBuilder: CoreScriptBuilder;
 	CustomSoundEffect: CustomSoundEffect;
 	DataModel: DataModel;
@@ -449,11 +456,11 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DebuggerConnection: DebuggerConnection;
 	DebuggerLuaResponse: DebuggerLuaResponse;
 	DebuggerVariable: DebuggerVariable;
-	DynamicTextureAlpha: DynamicTextureAlpha;
-	DynamicTextureLayerAlpha: DynamicTextureLayerAlpha;
 	EmotesPages: EmotesPages;
+	FacialAnimationStreamingServiceStats: FacialAnimationStreamingServiceStats;
 	FriendPages: FriendPages;
 	GlobalDataStore: GlobalDataStore;
+	ImageDataExperimental: ImageDataExperimental;
 	ImporterAnimationSettings: ImporterAnimationSettings;
 	ImporterBaseSettings: ImporterBaseSettings;
 	ImporterFacsSettings: ImporterFacsSettings;
@@ -467,6 +474,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	InventoryPages: InventoryPages;
 	LocalDebuggerConnection: LocalDebuggerConnection;
 	LodDataEntity: LodDataEntity;
+	MaterialGenerationSession: MaterialGenerationSession;
 	MemoryStoreQueue: MemoryStoreQueue;
 	MemoryStoreSortedMap: MemoryStoreSortedMap;
 	MessageBusConnection: MessageBusConnection;
@@ -493,18 +501,21 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	ScreenshotHud: ScreenshotHud;
 	ScriptBuilder: ScriptBuilder;
 	ScriptDocument: ScriptDocument;
+	SensorBase: SensorBase;
 	Speaker: Speaker;
 	StackFrame: StackFrame;
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
 	StarterPlayerScripts: StarterPlayerScripts;
 	SurfaceGuiBase: SurfaceGuiBase;
+	SyncScriptBuilder: SyncScriptBuilder;
 	TeleportAsyncResult: TeleportAsyncResult;
 	Terrain: Terrain;
 	TextChatConfigurations: TextChatConfigurations;
 	TextChatMessage: TextChatMessage;
 	TextFilterResult: TextFilterResult;
 	TextSource: TextSource;
+	TextureGuiExperimental: TextureGuiExperimental;
 	ThreadState: ThreadState;
 	TouchTransmitter: TouchTransmitter;
 	TrackerLodController: TrackerLodController;
@@ -2017,6 +2028,10 @@ interface Animator extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Animator: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated, NotBrowsable
+	 */
+	readonly EvaluationThrottled: boolean;
 	PreferLodEnabled: boolean;
 	/**
 	 * Given the current set of [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) playing, and their current times and play speeds, compute relative velocities between the parts and apply them to Motor6D.Part1 (the part which [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator) considers the “child” part). These relative velocity calculations and assignments happen in the order provided.
@@ -2116,7 +2131,8 @@ interface AssetImportSession extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AssetImportSession: unique symbol;
-	readonly UploadComplete: RBXScriptSignal<(succeeded: boolean, errorMap: object) => void>;
+	readonly UploadComplete: RBXScriptSignal<(results: object) => void>;
+	readonly UploadCompleteDeprecated: RBXScriptSignal<(succeeded: boolean, errorMap: object) => void>;
 	readonly UploadProgress: RBXScriptSignal<(progressRatio: number) => void>;
 }
 
@@ -2943,243 +2959,6 @@ interface Backpack extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Backpack: unique symbol;
-}
-
-/** BackpackItem is an abstract class for backpack items such as HopperBins and Tools. */
-interface BackpackItem extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_BackpackItem: unique symbol;
-	/**
-	 * The texture icon that is displayed for a tool in the [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s backpack.
-	 * 
-	 * This property should be set to the content ID of an image uploaded to the Roblox website.
-	 * 
-	 * If this property is left blank, the [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) GUI will display the name of the tool instead.
-	 */
-	TextureId: string;
-}
-
-/** Tools are objects that a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) object can equip. For players, they are stored in a [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) object parented to a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) object. In-game, players may have multiple tools which appear as icons at the bottom of the screen. Equipping a tool moves it from the Backpack and into a player's [character](https://developer.roblox.com/en-us/api-reference/class/Character) model in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). By default, tools are held in the right hand and have a handle in them, which is a [Part](https://developer.roblox.com/en-us/api-reference/class/BasePart) named “Handle” inside (though one is not required if [Tool.RequiresHandle](https://developer.roblox.com/en-us/api-reference/property/Tool/RequiresHandle) is off). Tools that are to be provided to (re)spawning players ought to be stored in the [StarterPack](https://developer.roblox.com/en-us/api-reference/class/StarterPack).
- * 
- * On desktop, pressing a number key (1, 2, 3…) will equip a tool. Equipped tools can be dropped into the Workspace by pressing Backspace. It's recommended that you turn [Tool.CanBeDropped](https://developer.roblox.com/en-us/api-reference/property/Tool/CanBeDropped) off so it is not possible to drop a tool, die, respawn and drop again to duplicate tools. On gamepads, LB and RB buttons will equip tools. You can disable activation via left click (or right trigger on gamepad) by setting [Tool.ManualActivationOnly](https://developer.roblox.com/en-us/api-reference/property/Tool/ManualActivationOnly) on. Doing so requires that you call Activate yourself through some sort of other user input.
- * 
- * Tools are not the only way to capture user input. You can also use [ContextActionService](https://developer.roblox.com/en-us/api-reference/class/ContextActionService), [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) or [Player:GetMouse](https://developer.roblox.com/en-us/api-reference/function/Player/GetMouse). If you need a Tool to have multiple actions, such as pressing a key while the Tool is equipped, you should use ContextActionService's [BindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction) and [UnbindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/UnbindAction) in the [Equipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Equipped) and [Unequipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Unequipped) events, respectively. Use a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) send these actions to the server via a [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) inside the Tool.
- */
-interface Tool extends BackpackItem {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_Tool: unique symbol;
-	/**
-	 * The CanBeDropped property controls whether the player can drop the [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool).
-	 * 
-	 * If true, when the backspace button is pressed the tool will be parented to the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) and removed from the player's [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). If false, the when the backspace button is pressed the tool will go back to the player's Backpack and it will not be dropped.
-	 */
-	CanBeDropped: boolean;
-	/**
-	 * The Enabled property relates to whether or not the [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) can be used. This is useful if you want to prevent a player from using a tool, but do not want to remove it from their [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack).
-	 * 
-	 * When set to true, the tool can use the tool.
-	 * 
-	 * When set to false, the tool is disabled and the player cannot use the tool. It prevents the tool from being activated or deactivated by `the Tool/Activate` and [Tool:Deactivate](https://developer.roblox.com/en-us/api-reference/function/Tool/Deactivate) functions. It also prevents the [Tool.Activated](https://developer.roblox.com/en-us/api-reference/event/Tool/Activated) and [Tool.Deactivated](https://developer.roblox.com/en-us/api-reference/event/Tool/Deactivated) events from firing for the tool.
-	 */
-	Enabled: boolean;
-	/**
-	 * The Grip property stores the [Tool's](https://developer.roblox.com/en-us/api-reference/class/Tool) Grip properties as a single [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame). This includes the `Grip/Up|Up`, `Grip/Right|Right`, `Grip/Forward|Forward`, and `Grip/Pos|Pos` properties.
-	 * 
-	 * The grip properties are used to position how the player holds the tool.
-	 * 
-	 * Unlike the grip properties that it stores, this property is not visible in a tool's `Properties` window in Studio. Regardless, it can be set and retrieved using a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
-	 * 
-	 * ![Grip properties in Studio's Properties Window](https://developer.roblox.com/assets/blt87cc763d68414be8/Screen_Shot_2018-08-26_at_8.35.48_PM.png)
-	 * 
-	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a Studio plugin such as [this](https://developer.roblox.com/assets/blt87cc763d68414be8/Screen_Shot_2018-08-26_at_8.35.48_PM.png) one.
-	 */
-	Grip: CFrame;
-	/**
-	 * The GripForward properties is one of the properties that specifies a Tool's orientation in a character's hand. This represents the R02, R12, and R22 values of the Grip [CFrame's](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) rotation matrix.
-	 * 
-	 * Other tool properties that control how a player holds a tool include: `Grip/GripUp|Up`, `Grip/GripRight|Right`, and `Grip/GripPos|Pos` properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/en-us/api-reference/property/Tool/Grip) property.
-	 * 
-	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a Studio plugin such as [this](https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin) one.
-	 * Tags: Hidden, NotReplicated
-	 */
-	GripForward: Vector3;
-	/**
-	 * The GripPos property controls the positional offset of a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) weld matrix. It is one of several properties used to position how the player holds the tool.
-	 * 
-	 * Other tool properties that control how a player holds a tool include: `Grip/GripUp|Up`, `Grip/GripRight|Right`, and `Grip/GripForward|Forward` properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/en-us/api-reference/property/Tool/Grip) property.
-	 * 
-	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a plugin such as [this](https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin) one.
-	 * Tags: Hidden, NotReplicated
-	 */
-	GripPos: Vector3;
-	/**
-	 * The GripRight property is one of the properties that specifies a [Tool's](https://developer.roblox.com/en-us/api-reference/class/Tool) orientation in a character's hand. This represents the R00, R10, and R20 values of the Grip [CFrame's](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) rotation matrix.
-	 * 
-	 * Other tool properties that control how a player holds a tool include: `Grip/GripUp|Up`, `Grip/GripForward|Forward`, and `Grip/GripPos|Pos` properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/en-us/api-reference/property/Tool/Grip) property.
-	 * 
-	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a plugin such as [this](https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin) one.
-	 * Tags: Hidden, NotReplicated
-	 */
-	GripRight: Vector3;
-	/**
-	 * The GripUp property is one of the properties that specifies a Tool's orientation in a character's hand. This represents the R01, R11, and R21 values of the Grip [CFrame's](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) rotation matrix.
-	 * 
-	 * Other tool properties that control how a player holds a tool include: `Grip/GripRight|Right`, `Grip/GripForward|Forward`, and `Grip/GripPos|Pos` properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/en-us/api-reference/property/Tool/Grip) property.
-	 * 
-	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a plugin such as [this](https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin) one.
-	 * Tags: Hidden, NotReplicated
-	 */
-	GripUp: Vector3;
-	/**
-	 * The ManualActivationOnly property controls whether the [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) can be activated without explicitly executing [Tool:Activate](https://developer.roblox.com/en-us/api-reference/function/Tool/Activate) in a script.
-	 * 
-	 * When set to true, the tool will only fire [Tool.Activated](https://developer.roblox.com/en-us/api-reference/event/Tool/Activated) when [Tool:Activate](https://developer.roblox.com/en-us/api-reference/function/Tool/Activate) is called. This also suppresses the [ContextActionService](https://developer.roblox.com/en-us/api-reference/class/ContextActionService)'s [ContextActionService:BindActivate](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindActivate) function.
-	 * 
-	 * When set to false, mouse clicks (when the tool is equipped) will also fire [Tool.Activated](https://developer.roblox.com/en-us/api-reference/event/Tool/Activated).
-	 */
-	ManualActivationOnly: boolean;
-	/**
-	 * The RequiresTool property determines whether a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) functions without a handle.
-	 * 
-	 * A tool has a handle when it has a child part named “Handle”. Tools without handles are typically ones that do not require the player equipping them to hold anything to use them. For instance, handles may not be necessary for _fly_ or _build_ tools. Tools with handles are typically ones that require the player equipping them to hold an object to use them. For instance, handle are likely necessary for weapons such as guns and swords.
-	 * 
-	 * When set to true, the tool will function and be [activated](https://developer.roblox.com/en-us/api-reference/event/Tool/Activated) and [deactivated](https://developer.roblox.com/en-us/api-reference/event/Tool/Deactivated) without a handle.
-	 * 
-	 * When set to false, the tool will not function without a handle.
-	 */
-	RequiresHandle: boolean;
-	/**
-	 * The ToolTip property controls the message that will be displayed when the player's [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse) hovers over the [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) in their [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack).
-	 * 
-	 * Generally, the value of this property should describe the what the tool is or its use. For instance, for a shovel tool, you may choose to set the ToolTip to:
-	 * 
-	 * 	tool.ToolTip = "Shovel"
-	 * 
-	 * or
-	 * 
-	 * 	tool.ToolTip = "Use to dig"
-	 * 
-	 * or
-	 * 
-	 * 	tool.ToolTip = "Shovel - Use to dig"
-	 */
-	ToolTip: string;
-	/**
-	 * The Activate function simulates a click on a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool). The Tool must be equipped for this function to work.
-	 * 
-	 * Tools will normally trigger the [Tool.Activated](https://developer.roblox.com/en-us/api-reference/event/Tool/Activated) event when the player releases the left mouse button, while the tool is equipped.
-	 * 
-	 * The below code, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), would create a tool in the [LocalPlayer's](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). It will simulate the tool being activated and print “Tool activated” when the player equips the tool.
-	 * 
-	 * local tool = Instance.new("Tool")
-	 * tool.RequiresHandle = false
-	 * tool.Parent = game.Players.LocalPlayer.Backpack
-	 * 
-	 * tool.Equipped:Connect(function()
-	 * 	tool:Activate()
-	 * end)
-	 * 
-	 * function toolActivated()
-	 *     print("Tool activated")
-	 * end
-	 * 
-	 * tool.Activated:Connect(toolActivated)
-	 */
-	Activate(this: Tool): void;
-	/**
-	 * The Deactivate function simulates the deactivation of a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool). The Tool must be equipped for this function to work.
-	 * 
-	 * Tools will normally trigger the [Tool.Deactivated](https://developer.roblox.com/en-us/api-reference/event/Tool/Deactivated) event when the player releases the left mouse button, while the tool is equipped.
-	 * 
-	 * The below code, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), would create a tool in the [LocalPlayer's](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). It will simulate the tool being deactivated and print “Tool deactivated” when the player equips the tool.
-	 * 
-	 * local tool = Instance.new("Tool")
-	 * tool.RequiresHandle = false
-	 * tool.Parent = game.Players.LocalPlayer.Backpack
-	 * 
-	 * tool.Equipped:Connect(function()
-	 * 	tool:Deactivate()
-	 * end)
-	 * 
-	 * function toolDeactivated()
-	 *     print("Tool deactivated")
-	 * end
-	 * 
-	 * tool.Deactivated:Connect(toolDeactivated)
-	 */
-	Deactivate(this: Tool): void;
-	/**
-	 * **Activated** is not called if the Ctrl key is pressed during a click.
-	 * 
-	 * The Activated event fires when the player clicks while a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) is equipped.
-	 * 
-	 * This function is used to perform an action when the player uses the tool. For instance, when the player clicks while a _Rocket Launcher_ tool is equipped, the activated event executes the code to create and launch a rocket.
-	 * 
-	 * The below code, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), would create a tool in the [LocalPlayer's](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). It will print “Tool activated” when the player clicks while the created tool is equipped.
-	 * 
-	 * local tool = Instance.new("Tool")
-	 * tool.RequiresHandle = false
-	 * tool.Parent = game.Players.LocalPlayer.Backpack
-	 *  
-	 * function onActivation()
-	 *     print("Tool activated")
-	 * end
-	 *  
-	 * tool.Activated:Connect(onActivation)
-	 */
-	readonly Activated: RBXScriptSignal<() => void>;
-	/**
-	 * The Deactivated event fires when the left mouse button is released while a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) is equipped.
-	 * 
-	 * This function is used to perform an action when the player stops using a tool. For instance, a tool may make a player fly until they release their left mouse button.
-	 * 
-	 * The below code, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), would create a tool in the [LocalPlayer's](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). It will print “Tool deactivated” when the player releases the left mouse button, while the tool is equipped.
-	 * 
-	 * local tool = Instance.new("Tool")
-	 * tool.RequiresHandle = false
-	 * tool.Parent = game.Players.LocalPlayer.Backpack
-	 *  
-	 * function toolDeactivated()
-	 *     print("Tool deactivated")
-	 * end
-	 *  
-	 * tool.Deactivated:Connect(toolDeactivated)
-	 */
-	readonly Deactivated: RBXScriptSignal<() => void>;
-	/**
-	 * The Equipped event fires when a player when a player takes a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) out of their [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) to use. This event can be used to determine when a player stops using and puts a tool away.
-	 * 
-	 * This event does not fire when [Tool.RequiresHandle](https://developer.roblox.com/en-us/api-reference/property/Tool/RequiresHandle) is enabled and no handle is present.
-	 * 
-	 * The opposite of this event, [Tool.Unequipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Unequipped), can be used alongside this event to determine unequips a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) by putting in back in their backpack.
-	 */
-	readonly Equipped: RBXScriptSignal<(mouse: Mouse) => void>;
-	/**
-	 * The Unequipped event fires when a player unequips a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) by putting in back in their [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). This event can be used to determine when a player stops using and puts a tool away.
-	 * 
-	 * This event does not fire when [Tool.RequiresHandle](https://developer.roblox.com/en-us/api-reference/property/Tool/RequiresHandle) is enabled and no handle is present.
-	 * 
-	 * The opposite of this event, [Tool.Equipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Equipped), can be used alongside this event to determine when a player takes a tool out of their backpack to use.
-	 * 
-	 * The example shown below will print “A tool was unequipped” each time the tool is unequipped by the player. Please note that the below example assumes that you've already defined what “Tool” is.
-	 * 
-	 * Tool.Unequipped:Connect(function()
-	 *     print("The tool was unequipped")
-	 * end)
-	 */
-	readonly Unequipped: RBXScriptSignal<() => void>;
 }
 
 /** The **BadgeService** class provides information and functionality related to [badges](https://developer.roblox.com/en-us/articles/badges-special-game-awards). Badges are used across the platform to recognize a player's achievements and activity. Upon awarding a badge to a player, it is added to their inventory and displayed on their profile page.
@@ -8063,6 +7842,8 @@ interface ContentProvider extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly RequestQueueSize: number;
+	GetAssetFetchStatus(this: ContentProvider, contentId: string): Enum.AssetFetchStatus;
+	GetAssetFetchStatusChangedSignal(this: ContentProvider, contentId: string): RBXScriptSignal;
 	ListEncryptedAssets(this: ContentProvider): unknown;
 	/**
 	 * Usually, content is loaded only when it starts being used. That explains why it often takes a moment for an image to appear in a [GUI](https://developer.roblox.com/en-us/api-reference/class/GuiObject), or a [mesh](https://developer.roblox.com/en-us/api-reference/class/Mesh) to appear in a [part](https://developer.roblox.com/en-us/api-reference/class/BasePart), or why a [sound](https://developer.roblox.com/en-us/api-reference/class/Sound) doesn't play for the first time. All because the asset has not yet finished loading. Preload is used to load this content beforehand, so that it works instantly.
@@ -8460,7 +8241,6 @@ interface AirController extends ControllerBase {
 	 * @deprecated
 	 */
 	readonly _nominal_AirController: unique symbol;
-	CancelAirMomentum: boolean;
 	MaintainAngularMomentum: boolean;
 	MaintainLinearMomentum: boolean;
 	MoveMaxForce: number;
@@ -8537,7 +8317,9 @@ interface ControllerManager extends Instance {
 	readonly ActiveController: ControllerBase | undefined;
 	BaseMoveSpeed: number;
 	BaseTurnSpeed: number;
+	ClimbSensor: ControllerSensor | undefined;
 	FacingDirection: Vector3;
+	GroundSensor: ControllerSensor | undefined;
 	MovingDirection: Vector3;
 	GetControllers(this: ControllerManager): Array<Instance>;
 }
@@ -9602,30 +9384,6 @@ interface DraggerService extends Instance {
 	ShowPivotIndicator: boolean;
 }
 
-interface DynamicTextureAlpha extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_DynamicTextureAlpha: unique symbol;
-	CreateLayer(this: DynamicTextureAlpha): DynamicTextureLayerAlpha;
-}
-
-interface DynamicTextureLayerAlpha extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_DynamicTextureLayerAlpha: unique symbol;
-	ZIndex: number;
-}
-
 /** A EulerRotation Curve represents a 3D rotation curve, it groups 3 [FloatCurves](https://developer.roblox.com/en-us/api-reference/class/FloatCurve), stored as 3 FloatCurve child instances. The rotation is decomposed in 3 Euler angles channels that can be accessed via [EulerRotationCurve:X](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/X), [EulerRotationCurve:Y](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Y), [EulerRotationCurve:Z](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Z) methods. The 3 axes can be sampled simultaneously via the method [EulerRotationCurve:GetAnglesAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetAnglesAtTime) returning the 3 Euler angles as a Vector3. Similarly, [EulerRotationCurve:GetRotationAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetRotationAtTime) samples all channels simultaneously but returns a CFrame rotated by X, Y, and Z according to the specified rotation order. */
 interface EulerRotationCurve extends Instance {
 	/**
@@ -10067,6 +9825,17 @@ interface FacialAnimationStreamingService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_FacialAnimationStreamingService: unique symbol;
+}
+
+interface FacialAnimationStreamingServiceStats extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FacialAnimationStreamingServiceStats: unique symbol;
 }
 
 interface FacialAnimationStreamingServiceV2 extends Instance {
@@ -10666,7 +10435,7 @@ interface DataStore extends GlobalDataStore {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	ListKeysAsync(this: DataStore, prefix?: string, pageSize?: number, cursor?: string): DataStoreKeyPages;
+	ListKeysAsync(this: DataStore, prefix?: string, pageSize?: number, cursor?: string, excludeDeleted?: boolean): DataStoreKeyPages;
 	/**
 	 * This function enumerates versions of the specified key in either ascending or descending order specified by a [SortDirection](https://developer.roblox.com/en-us/api-reference/enum/SortDirection) parameter. It can optionally filter the returned versions by minimum and maximum timestamp.
 	 * 
@@ -13522,6 +13291,22 @@ interface SurfaceGui extends SurfaceGuiBase {
 	ZOffset: number;
 }
 
+interface TextureGuiExperimental extends LayerCollector {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TextureGuiExperimental: unique symbol;
+	Size: Vector2;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly TemporaryId: string;
+}
+
 /** An abstract class for 3D GUI elements that are rendered in the world. */
 interface GuiBase3d extends GuiBase {
 	/**
@@ -13890,6 +13675,7 @@ interface WireframeHandleAdornment extends HandleAdornment {
 	 * @deprecated
 	 */
 	readonly _nominal_WireframeHandleAdornment: unique symbol;
+	Scale: Vector3;
 	AddLine(this: WireframeHandleAdornment, from: Vector3, to: Vector3): void;
 	AddLines(this: WireframeHandleAdornment, points: Array<any>): void;
 	AddPath(this: WireframeHandleAdornment, points: Array<any>, loop: boolean): void;
@@ -16477,6 +16263,26 @@ interface IXPService extends Instance {
 	readonly _nominal_IXPService: unique symbol;
 }
 
+interface ImageDataExperimental extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ImageDataExperimental: unique symbol;
+	Size: Vector2;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly TemporaryId: string;
+	/**
+	 * Tags: Yields
+	 */
+	PopulateFromImageAsync(this: ImageDataExperimental, textureId: string): void;
+}
+
 interface ImporterBaseSettings extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -16629,11 +16435,13 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	readonly _nominal_ImporterRootSettings: unique symbol;
 	AddModelToInventory: boolean;
 	Anchored: boolean;
+	ExistingPackageId: string;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly FileDimensions: Vector3;
 	ImportAsModelAsset: boolean;
+	ImportAsPackage: boolean;
 	InsertInWorkspace: boolean;
 	InsertWithScenePosition: boolean;
 	InvertNegativeFaces: boolean;
@@ -16642,8 +16450,10 @@ interface ImporterRootSettings extends ImporterBaseSettings {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly PolygonCount: number;
+	RigScale: Enum.RigScale;
 	RigType: Enum.RigType;
 	ScaleUnit: Enum.MeshScaleUnit;
+	UseSceneOriginAsCFrame: boolean;
 	UseSceneOriginAsPivot: boolean;
 	UsesCages: boolean;
 	WorldForward: Enum.NormalId;
@@ -21145,6 +20955,7 @@ interface BaseScript extends LuaSourceContainer {
 	 * For the LinkedSource property for [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript)s, please see [ModuleScript.LinkedSource](https://developer.roblox.com/en-us/api-reference/property/ModuleScript/LinkedSource).
 	 */
 	LinkedSource: string;
+	readonly RunContext: Enum.RunContext;
 }
 
 /** A Script is a type of Lua code container that will run its contents on the server. By default, Scripts have `print("Hello, world")` as their contents. The instant that the following conditions are met, a Script's Lua code is run in a new thread:
@@ -21655,6 +21466,28 @@ interface MarketplaceService extends Instance {
 	readonly PromptSubscriptionCancellationFinished: RBXScriptSignal<(player: Player, subscriptionId: number, wasCanceled: boolean) => void>;
 	readonly PromptSubscriptionPurchaseFinished: RBXScriptSignal<(player: Player, subscriptionId: number, wasPurchased: boolean) => void>;
 	ProcessReceipt: ((receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision) | undefined;
+}
+
+interface MaterialGenerationService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MaterialGenerationService: unique symbol;
+}
+
+interface MaterialGenerationSession extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MaterialGenerationSession: unique symbol;
 }
 
 interface MaterialService extends Instance {
@@ -23245,6 +23078,8 @@ interface BasePart extends PVInstance {
 	ApplyImpulseAtPosition(this: BasePart, impulse: Vector3, position: Vector3): void;
 	/**
 	 * Breaks any surface connection with any adjacent part, including [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld) and other [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance).
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	BreakJoints(this: BasePart): void;
 	/**
@@ -23353,6 +23188,8 @@ interface BasePart extends PVInstance {
 	 * part:MakeJoints({part1, part2, part3})
 	 * 
 	 * Joints are broken if enough force is applied to them due to an [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion), unless a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField) object is parented to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or ancestor [Model](https://developer.roblox.com/en-us/api-reference/class/Model). For this reason, they are often used to make simple destructible buildings and other models.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	MakeJoints(this: BasePart): void;
 	/**
@@ -23376,6 +23213,10 @@ interface BasePart extends PVInstance {
 	 * Lets the game engine dynamically decide who will handle the part's physics (one of the clients or the server).
 	 */
 	SetNetworkOwnershipAuto(this: BasePart): void;
+	/**
+	 * Tags: Yields
+	 */
+	IntersectAsync(this: BasePart, parts: Array<Instance>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>, renderFidelity?: CastsToEnum<Enum.RenderFidelity>): Instance | undefined;
 	/**
 	 * **SubtractAsync** creates new [UnionOperation](https://developer.roblox.com/en-us/api-reference/class/UnionOperation) which occupies the same space as the part minus the space(s) occupied by the parts in the given array. It does this by invoking the real-time CSG solver. Similar to [Clone](https://developer.roblox.com/en-us/api-reference/function/Instance/Clone), the returned object has no [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) set.
 	 * 
@@ -24203,6 +24044,17 @@ interface PartOperation extends TriangleMeshPart {
 	UsePartColor: boolean;
 }
 
+interface IntersectOperation extends PartOperation {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_IntersectOperation: unique symbol;
+}
+
 /** The NegateOperation creates a CSG part that can be removed from other part via solid modeling. To use it, select a part and click the **Negate** button in the **Model** tab.
  * 
  * ![](https://developer.roblox.com/assets/blt7dc16d2d629426a6/CSG-Negate-Button.png)
@@ -24411,6 +24263,8 @@ interface Model extends PVInstance {
 	 * When BreakJoints is used on a Player character [Model](https://developer.roblox.com/en-us/api-reference/class/Model), the character's [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) will die as it relies on the Neck joint.
 	 * 
 	 * Note that although joints produced by surface connections with adjacent Parts can technically be recreated using [Model:MakeJoints](https://developer.roblox.com/en-us/api-reference/function/Model/MakeJoints), this will only recreate joints produced by surfaces. Developers should not rely on this as following the joints being broken parts may no longer be in contact with each other.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	BreakJoints(this: Model): void;
 	/**
@@ -24490,6 +24344,8 @@ interface Model extends PVInstance {
 	 * *   Hinge and Motor surfaces create [Rotate](https://developer.roblox.com/en-us/api-reference/class/Rotate) and [RotateV](https://developer.roblox.com/en-us/api-reference/class/RotateV) joint instances
 	 * 
 	 * This function will not work if the Part is not a descendant of [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). Therefore developers must first ensure the Model is parented to Workspace before using MakeJoints.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	MakeJoints(this: Model): void;
 	/**
@@ -24550,6 +24406,243 @@ interface Actor extends Model {
 	 * @deprecated
 	 */
 	readonly _nominal_Actor: unique symbol;
+}
+
+/** BackpackItem is an abstract class for backpack items such as HopperBins and Tools. */
+interface BackpackItem extends Model {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BackpackItem: unique symbol;
+	/**
+	 * The texture icon that is displayed for a tool in the [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s backpack.
+	 * 
+	 * This property should be set to the content ID of an image uploaded to the Roblox website.
+	 * 
+	 * If this property is left blank, the [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) GUI will display the name of the tool instead.
+	 */
+	TextureId: string;
+}
+
+/** Tools are objects that a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) object can equip. For players, they are stored in a [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) object parented to a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) object. In-game, players may have multiple tools which appear as icons at the bottom of the screen. Equipping a tool moves it from the Backpack and into a player's [character](https://developer.roblox.com/en-us/api-reference/class/Character) model in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). By default, tools are held in the right hand and have a handle in them, which is a [Part](https://developer.roblox.com/en-us/api-reference/class/BasePart) named “Handle” inside (though one is not required if [Tool.RequiresHandle](https://developer.roblox.com/en-us/api-reference/property/Tool/RequiresHandle) is off). Tools that are to be provided to (re)spawning players ought to be stored in the [StarterPack](https://developer.roblox.com/en-us/api-reference/class/StarterPack).
+ * 
+ * On desktop, pressing a number key (1, 2, 3…) will equip a tool. Equipped tools can be dropped into the Workspace by pressing Backspace. It's recommended that you turn [Tool.CanBeDropped](https://developer.roblox.com/en-us/api-reference/property/Tool/CanBeDropped) off so it is not possible to drop a tool, die, respawn and drop again to duplicate tools. On gamepads, LB and RB buttons will equip tools. You can disable activation via left click (or right trigger on gamepad) by setting [Tool.ManualActivationOnly](https://developer.roblox.com/en-us/api-reference/property/Tool/ManualActivationOnly) on. Doing so requires that you call Activate yourself through some sort of other user input.
+ * 
+ * Tools are not the only way to capture user input. You can also use [ContextActionService](https://developer.roblox.com/en-us/api-reference/class/ContextActionService), [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) or [Player:GetMouse](https://developer.roblox.com/en-us/api-reference/function/Player/GetMouse). If you need a Tool to have multiple actions, such as pressing a key while the Tool is equipped, you should use ContextActionService's [BindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction) and [UnbindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/UnbindAction) in the [Equipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Equipped) and [Unequipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Unequipped) events, respectively. Use a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) send these actions to the server via a [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) inside the Tool.
+ */
+interface Tool extends BackpackItem {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Tool: unique symbol;
+	/**
+	 * The CanBeDropped property controls whether the player can drop the [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool).
+	 * 
+	 * If true, when the backspace button is pressed the tool will be parented to the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) and removed from the player's [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). If false, the when the backspace button is pressed the tool will go back to the player's Backpack and it will not be dropped.
+	 */
+	CanBeDropped: boolean;
+	/**
+	 * The Enabled property relates to whether or not the [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) can be used. This is useful if you want to prevent a player from using a tool, but do not want to remove it from their [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack).
+	 * 
+	 * When set to true, the tool can use the tool.
+	 * 
+	 * When set to false, the tool is disabled and the player cannot use the tool. It prevents the tool from being activated or deactivated by `the Tool/Activate` and [Tool:Deactivate](https://developer.roblox.com/en-us/api-reference/function/Tool/Deactivate) functions. It also prevents the [Tool.Activated](https://developer.roblox.com/en-us/api-reference/event/Tool/Activated) and [Tool.Deactivated](https://developer.roblox.com/en-us/api-reference/event/Tool/Deactivated) events from firing for the tool.
+	 */
+	Enabled: boolean;
+	/**
+	 * The Grip property stores the [Tool's](https://developer.roblox.com/en-us/api-reference/class/Tool) Grip properties as a single [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame). This includes the `Grip/Up|Up`, `Grip/Right|Right`, `Grip/Forward|Forward`, and `Grip/Pos|Pos` properties.
+	 * 
+	 * The grip properties are used to position how the player holds the tool.
+	 * 
+	 * Unlike the grip properties that it stores, this property is not visible in a tool's `Properties` window in Studio. Regardless, it can be set and retrieved using a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
+	 * 
+	 * ![Grip properties in Studio's Properties Window](https://developer.roblox.com/assets/blt87cc763d68414be8/Screen_Shot_2018-08-26_at_8.35.48_PM.png)
+	 * 
+	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a Studio plugin such as [this](https://developer.roblox.com/assets/blt87cc763d68414be8/Screen_Shot_2018-08-26_at_8.35.48_PM.png) one.
+	 */
+	Grip: CFrame;
+	/**
+	 * The GripForward properties is one of the properties that specifies a Tool's orientation in a character's hand. This represents the R02, R12, and R22 values of the Grip [CFrame's](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) rotation matrix.
+	 * 
+	 * Other tool properties that control how a player holds a tool include: `Grip/GripUp|Up`, `Grip/GripRight|Right`, and `Grip/GripPos|Pos` properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/en-us/api-reference/property/Tool/Grip) property.
+	 * 
+	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a Studio plugin such as [this](https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin) one.
+	 * Tags: Hidden, NotReplicated
+	 */
+	GripForward: Vector3;
+	/**
+	 * The GripPos property controls the positional offset of a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) weld matrix. It is one of several properties used to position how the player holds the tool.
+	 * 
+	 * Other tool properties that control how a player holds a tool include: `Grip/GripUp|Up`, `Grip/GripRight|Right`, and `Grip/GripForward|Forward` properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/en-us/api-reference/property/Tool/Grip) property.
+	 * 
+	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a plugin such as [this](https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin) one.
+	 * Tags: Hidden, NotReplicated
+	 */
+	GripPos: Vector3;
+	/**
+	 * The GripRight property is one of the properties that specifies a [Tool's](https://developer.roblox.com/en-us/api-reference/class/Tool) orientation in a character's hand. This represents the R00, R10, and R20 values of the Grip [CFrame's](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) rotation matrix.
+	 * 
+	 * Other tool properties that control how a player holds a tool include: `Grip/GripUp|Up`, `Grip/GripForward|Forward`, and `Grip/GripPos|Pos` properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/en-us/api-reference/property/Tool/Grip) property.
+	 * 
+	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a plugin such as [this](https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin) one.
+	 * Tags: Hidden, NotReplicated
+	 */
+	GripRight: Vector3;
+	/**
+	 * The GripUp property is one of the properties that specifies a Tool's orientation in a character's hand. This represents the R01, R11, and R21 values of the Grip [CFrame's](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) rotation matrix.
+	 * 
+	 * Other tool properties that control how a player holds a tool include: `Grip/GripRight|Right`, `Grip/GripForward|Forward`, and `Grip/GripPos|Pos` properties. All of these properties are stored in a single CFrame in the [Tool.Grip](https://developer.roblox.com/en-us/api-reference/property/Tool/Grip) property.
+	 * 
+	 * In order to change a tool's grip properties, you must either use a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) or a plugin such as [this](https://www.roblox.com/library/174577307/Tool-Grip-Editor-Plugin) one.
+	 * Tags: Hidden, NotReplicated
+	 */
+	GripUp: Vector3;
+	/**
+	 * The ManualActivationOnly property controls whether the [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) can be activated without explicitly executing [Tool:Activate](https://developer.roblox.com/en-us/api-reference/function/Tool/Activate) in a script.
+	 * 
+	 * When set to true, the tool will only fire [Tool.Activated](https://developer.roblox.com/en-us/api-reference/event/Tool/Activated) when [Tool:Activate](https://developer.roblox.com/en-us/api-reference/function/Tool/Activate) is called. This also suppresses the [ContextActionService](https://developer.roblox.com/en-us/api-reference/class/ContextActionService)'s [ContextActionService:BindActivate](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindActivate) function.
+	 * 
+	 * When set to false, mouse clicks (when the tool is equipped) will also fire [Tool.Activated](https://developer.roblox.com/en-us/api-reference/event/Tool/Activated).
+	 */
+	ManualActivationOnly: boolean;
+	/**
+	 * The RequiresTool property determines whether a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) functions without a handle.
+	 * 
+	 * A tool has a handle when it has a child part named “Handle”. Tools without handles are typically ones that do not require the player equipping them to hold anything to use them. For instance, handles may not be necessary for _fly_ or _build_ tools. Tools with handles are typically ones that require the player equipping them to hold an object to use them. For instance, handle are likely necessary for weapons such as guns and swords.
+	 * 
+	 * When set to true, the tool will function and be [activated](https://developer.roblox.com/en-us/api-reference/event/Tool/Activated) and [deactivated](https://developer.roblox.com/en-us/api-reference/event/Tool/Deactivated) without a handle.
+	 * 
+	 * When set to false, the tool will not function without a handle.
+	 */
+	RequiresHandle: boolean;
+	/**
+	 * The ToolTip property controls the message that will be displayed when the player's [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse) hovers over the [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) in their [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack).
+	 * 
+	 * Generally, the value of this property should describe the what the tool is or its use. For instance, for a shovel tool, you may choose to set the ToolTip to:
+	 * 
+	 * 	tool.ToolTip = "Shovel"
+	 * 
+	 * or
+	 * 
+	 * 	tool.ToolTip = "Use to dig"
+	 * 
+	 * or
+	 * 
+	 * 	tool.ToolTip = "Shovel - Use to dig"
+	 */
+	ToolTip: string;
+	/**
+	 * The Activate function simulates a click on a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool). The Tool must be equipped for this function to work.
+	 * 
+	 * Tools will normally trigger the [Tool.Activated](https://developer.roblox.com/en-us/api-reference/event/Tool/Activated) event when the player releases the left mouse button, while the tool is equipped.
+	 * 
+	 * The below code, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), would create a tool in the [LocalPlayer's](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). It will simulate the tool being activated and print “Tool activated” when the player equips the tool.
+	 * 
+	 * local tool = Instance.new("Tool")
+	 * tool.RequiresHandle = false
+	 * tool.Parent = game.Players.LocalPlayer.Backpack
+	 * 
+	 * tool.Equipped:Connect(function()
+	 * 	tool:Activate()
+	 * end)
+	 * 
+	 * function toolActivated()
+	 *     print("Tool activated")
+	 * end
+	 * 
+	 * tool.Activated:Connect(toolActivated)
+	 */
+	Activate(this: Tool): void;
+	/**
+	 * The Deactivate function simulates the deactivation of a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool). The Tool must be equipped for this function to work.
+	 * 
+	 * Tools will normally trigger the [Tool.Deactivated](https://developer.roblox.com/en-us/api-reference/event/Tool/Deactivated) event when the player releases the left mouse button, while the tool is equipped.
+	 * 
+	 * The below code, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), would create a tool in the [LocalPlayer's](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). It will simulate the tool being deactivated and print “Tool deactivated” when the player equips the tool.
+	 * 
+	 * local tool = Instance.new("Tool")
+	 * tool.RequiresHandle = false
+	 * tool.Parent = game.Players.LocalPlayer.Backpack
+	 * 
+	 * tool.Equipped:Connect(function()
+	 * 	tool:Deactivate()
+	 * end)
+	 * 
+	 * function toolDeactivated()
+	 *     print("Tool deactivated")
+	 * end
+	 * 
+	 * tool.Deactivated:Connect(toolDeactivated)
+	 */
+	Deactivate(this: Tool): void;
+	/**
+	 * **Activated** is not called if the Ctrl key is pressed during a click.
+	 * 
+	 * The Activated event fires when the player clicks while a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) is equipped.
+	 * 
+	 * This function is used to perform an action when the player uses the tool. For instance, when the player clicks while a _Rocket Launcher_ tool is equipped, the activated event executes the code to create and launch a rocket.
+	 * 
+	 * The below code, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), would create a tool in the [LocalPlayer's](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). It will print “Tool activated” when the player clicks while the created tool is equipped.
+	 * 
+	 * local tool = Instance.new("Tool")
+	 * tool.RequiresHandle = false
+	 * tool.Parent = game.Players.LocalPlayer.Backpack
+	 *  
+	 * function onActivation()
+	 *     print("Tool activated")
+	 * end
+	 *  
+	 * tool.Activated:Connect(onActivation)
+	 */
+	readonly Activated: RBXScriptSignal<() => void>;
+	/**
+	 * The Deactivated event fires when the left mouse button is released while a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) is equipped.
+	 * 
+	 * This function is used to perform an action when the player stops using a tool. For instance, a tool may make a player fly until they release their left mouse button.
+	 * 
+	 * The below code, when placed in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript), would create a tool in the [LocalPlayer's](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). It will print “Tool deactivated” when the player releases the left mouse button, while the tool is equipped.
+	 * 
+	 * local tool = Instance.new("Tool")
+	 * tool.RequiresHandle = false
+	 * tool.Parent = game.Players.LocalPlayer.Backpack
+	 *  
+	 * function toolDeactivated()
+	 *     print("Tool deactivated")
+	 * end
+	 *  
+	 * tool.Deactivated:Connect(toolDeactivated)
+	 */
+	readonly Deactivated: RBXScriptSignal<() => void>;
+	/**
+	 * The Equipped event fires when a player when a player takes a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) out of their [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) to use. This event can be used to determine when a player stops using and puts a tool away.
+	 * 
+	 * This event does not fire when [Tool.RequiresHandle](https://developer.roblox.com/en-us/api-reference/property/Tool/RequiresHandle) is enabled and no handle is present.
+	 * 
+	 * The opposite of this event, [Tool.Unequipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Unequipped), can be used alongside this event to determine unequips a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) by putting in back in their backpack.
+	 */
+	readonly Equipped: RBXScriptSignal<(mouse: Mouse) => void>;
+	/**
+	 * The Unequipped event fires when a player unequips a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) by putting in back in their [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). This event can be used to determine when a player stops using and puts a tool away.
+	 * 
+	 * This event does not fire when [Tool.RequiresHandle](https://developer.roblox.com/en-us/api-reference/property/Tool/RequiresHandle) is enabled and no handle is present.
+	 * 
+	 * The opposite of this event, [Tool.Equipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Equipped), can be used alongside this event to determine when a player takes a tool out of their backpack to use.
+	 * 
+	 * The example shown below will print “A tool was unequipped” each time the tool is unequipped by the player. Please note that the below example assumes that you've already defined what “Tool” is.
+	 * 
+	 * Tool.Unequipped:Connect(function()
+	 *     print("The tool was unequipped")
+	 * end)
+	 */
+	readonly Unequipped: RBXScriptSignal<() => void>;
 }
 
 interface WorldRoot extends Model {
@@ -25705,6 +25798,17 @@ interface ParticleEmitter extends Instance {
 	 * Tags: Hidden
 	 */
 	readonly OnEmitRequested: RBXScriptSignal<(particleCount: number) => void>;
+}
+
+interface PatchBundlerFileWatch extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PatchBundlerFileWatch: unique symbol;
 }
 
 interface PatchMapping extends Instance {
@@ -28749,6 +28853,21 @@ interface CoreScriptBuilder extends ScriptBuilder {
 	readonly _nominal_CoreScriptBuilder: unique symbol;
 }
 
+interface SyncScriptBuilder extends ScriptBuilder {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SyncScriptBuilder: unique symbol;
+	CoverageInfo: boolean;
+	DebugInfo: boolean;
+	PackAsSource: boolean;
+	RawBytecode: boolean;
+}
+
 interface ScriptChangeService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -28840,6 +28959,60 @@ interface SelectionHighlightManager extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_SelectionHighlightManager: unique symbol;
+}
+
+interface SensorBase extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SensorBase: unique symbol;
+	UpdateType: Enum.SensorUpdateType;
+	Sense(this: SensorBase): void;
+	readonly OnSensorOutputChanged: RBXScriptSignal<() => void>;
+}
+
+interface BuoyancySensor extends SensorBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BuoyancySensor: unique symbol;
+	FullySubmerged: boolean;
+	TouchingSurface: boolean;
+}
+
+interface ControllerSensor extends SensorBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ControllerSensor: unique symbol;
+}
+
+interface ControllerPartSensor extends ControllerSensor {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ControllerPartSensor: unique symbol;
+	HitFrame: CFrame;
+	HitNormal: Vector3;
+	SearchDistance: number;
+	SensedPart: BasePart | undefined;
+	SensorMode: Enum.SensorMode;
 }
 
 /** **ServerScriptService** is a container service for [Script](https://developer.roblox.com/en-us/api-reference/class/Script), [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) and other scripting-related assets that are only meant for server use. The contents are never replicated to player clients at all, which allows for a secure storage of important game logic. Script objects will run if they are within this service and not [Disabled](https://developer.roblox.com/en-us/api-reference/property/BaseScript/Disabled).
@@ -29281,6 +29454,19 @@ interface SessionService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_SessionService: unique symbol;
+}
+
+interface SharedTableRegistry extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SharedTableRegistry: unique symbol;
+	GetSharedTable(this: SharedTableRegistry, name: string): SharedTable;
+	SetSharedTable(this: SharedTableRegistry, name: string, st: SharedTable | undefined): void;
 }
 
 interface ShorelineUpgraderService extends Instance {
@@ -34044,6 +34230,10 @@ interface UserGameSettings extends Instance {
 	 * The type of controls being used by the client on a mobile device.
 	 */
 	TouchMovementMode: Enum.TouchMovementMode;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly VRPlayMode: Enum.VRPlayMode;
 	readonly VRSmoothRotationEnabled: boolean;
 	readonly VignetteEnabled: boolean;
 	/**
