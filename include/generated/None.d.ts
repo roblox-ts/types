@@ -477,6 +477,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	MaterialGenerationSession: MaterialGenerationSession;
 	MemoryStoreQueue: MemoryStoreQueue;
 	MemoryStoreSortedMap: MemoryStoreSortedMap;
+	MeshDataExperimental: MeshDataExperimental;
 	MessageBusConnection: MessageBusConnection;
 	MetaBreakpoint: MetaBreakpoint;
 	MetaBreakpointContext: MetaBreakpointContext;
@@ -1239,7 +1240,6 @@ interface AdPortal extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly PortalStatus: Enum.AdPortalStatus;
-	PortalType: Enum.AdPortalType;
 }
 
 /** **Note**
@@ -2278,6 +2278,10 @@ interface AssetService extends Instance {
 	 * Tags: Yields
 	 */
 	GetGamePlacesAsync(this: AssetService): StandardPages<{ Name: string; PlaceId: number }>;
+	/**
+	 * Tags: Yields
+	 */
+	PromptPublishAssetAsync(this: AssetService, player: Player, instance: Instance, assetType: CastsToEnum<Enum.AssetType>): unknown;
 	/**
 	 * Saves the state of the current place. This will only work for places that have been created with [AssetService:CreatePlaceAsync](https://developer.roblox.com/en-us/api-reference/function/AssetService/CreatePlaceAsync) or [AssetService:CreatePlaceInPlayerInventoryAsync](https://developer.roblox.com/en-us/api-reference/function/AssetService/CreatePlaceInPlayerInventoryAsync).
 	 * Tags: Yields
@@ -16277,6 +16281,10 @@ interface ImageDataExperimental extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly TemporaryId: string;
+	Clear(this: ImageDataExperimental): void;
+	DrawCircle(this: ImageDataExperimental, center: Vector2, radius: number, color: Color3, alpha: number): void;
+	Resize(this: ImageDataExperimental, newSize: Vector2): void;
+	Rotate(this: ImageDataExperimental, degrees: number, resizeCanvas?: boolean): void;
 	/**
 	 * Tags: Yields
 	 */
@@ -16471,6 +16479,7 @@ interface IncrementalPatchBuilder extends Instance {
 	readonly _nominal_IncrementalPatchBuilder: unique symbol;
 	AddPathsToBundle: boolean;
 	HighCompression: boolean;
+	SerializePatch: boolean;
 	ZstdCompression: boolean;
 }
 
@@ -21637,6 +21646,25 @@ interface MemoryStoreSortedMap extends Instance {
 		transformFunction: (value: unknown) => T,
 		expiration: number,
 	): T;
+}
+
+interface MeshDataExperimental extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MeshDataExperimental: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Size: Vector3;
+	/**
+	 * Tags: Yields
+	 */
+	PopulateFromMeshAsync(this: MeshDataExperimental, meshId: string): void;
 }
 
 interface MessageBusConnection extends Instance {

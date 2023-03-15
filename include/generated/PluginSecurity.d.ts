@@ -2718,9 +2718,11 @@ interface ScriptEditorService extends Instance {
 	 */
 	readonly _nominal_ScriptEditorService: unique symbol;
 	DeregisterAutocompleteCallback(this: ScriptEditorService, name: string): void;
+	DeregisterScriptAnalysisCallback(this: ScriptEditorService, name: string): void;
 	FindScriptDocument(this: ScriptEditorService, script: LuaSourceContainer): ScriptDocument;
 	GetScriptDocuments(this: ScriptEditorService): Array<Instance>;
 	RegisterAutocompleteCallback(this: ScriptEditorService, name: string, priority: number, callbackFunction: Callback): void;
+	RegisterScriptAnalysisCallback(this: ScriptEditorService, name: string, priority: number, callbackFunction: Callback): void;
 	/**
 	 * Tags: Yields
 	 */
@@ -2753,10 +2755,6 @@ interface Selection extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Selection: unique symbol;
-	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
-	 */
-	readonly SelectionLineThickness: number;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
