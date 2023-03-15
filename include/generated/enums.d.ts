@@ -12460,6 +12460,51 @@ declare namespace Enum {
 	}
 	export type ProductPurchaseDecision = ProductPurchaseDecision.NotProcessedYet | ProductPurchaseDecision.PurchaseGranted;
 
+	export namespace PromptPublishAssetResult {
+		export interface Success extends globalThis.EnumItem {
+			Name: "Success";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.PromptPublishAssetResult;
+		}
+
+		export const Success: Success;
+
+		export interface PermissionDenied extends globalThis.EnumItem {
+			Name: "PermissionDenied";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.PromptPublishAssetResult;
+		}
+
+		export const PermissionDenied: PermissionDenied;
+
+		export interface Timeout extends globalThis.EnumItem {
+			Name: "Timeout";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.PromptPublishAssetResult;
+		}
+
+		export const Timeout: Timeout;
+
+		export interface UploadFailed extends globalThis.EnumItem {
+			Name: "UploadFailed";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.PromptPublishAssetResult;
+		}
+
+		export const UploadFailed: UploadFailed;
+
+		export interface NoUserInput extends globalThis.EnumItem {
+			Name: "NoUserInput";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.PromptPublishAssetResult;
+		}
+
+		export const NoUserInput: NoUserInput;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PromptPublishAssetResult>;
+	}
+	export type PromptPublishAssetResult = PromptPublishAssetResult.Success | PromptPublishAssetResult.PermissionDenied | PromptPublishAssetResult.Timeout | PromptPublishAssetResult.UploadFailed | PromptPublishAssetResult.NoUserInput;
+
 	export namespace PropertyStatus {
 		export interface Ok extends globalThis.EnumItem {
 			Name: "Ok";
@@ -14204,6 +14249,27 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ServiceVisibility>;
 	}
 	export type ServiceVisibility = ServiceVisibility.Always | ServiceVisibility.Off | ServiceVisibility.WithChildren;
+
+	export namespace Severity {
+		export interface Error extends globalThis.EnumItem {
+			Name: "Error";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.Severity;
+		}
+
+		export const Error: Error;
+
+		export interface Warning extends globalThis.EnumItem {
+			Name: "Warning";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.Severity;
+		}
+
+		export const Warning: Warning;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Severity>;
+	}
+	export type Severity = Severity.Error | Severity.Warning;
 
 	export namespace SignalBehavior {
 		export interface Default extends globalThis.EnumItem {
