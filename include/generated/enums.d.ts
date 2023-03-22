@@ -399,6 +399,27 @@ declare namespace Enum {
 	}
 	export type AdTeleportMethod = AdTeleportMethod.Undefined | AdTeleportMethod.PortalForward | AdTeleportMethod.PortalReturn | AdTeleportMethod.InGameMenuBackButton | AdTeleportMethod.UIBackButton;
 
+	export namespace AdUnitStatus {
+		export interface Inactive extends globalThis.EnumItem {
+			Name: "Inactive";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AdUnitStatus;
+		}
+
+		export const Inactive: Inactive;
+
+		export interface Active extends globalThis.EnumItem {
+			Name: "Active";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AdUnitStatus;
+		}
+
+		export const Active: Active;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdUnitStatus>;
+	}
+	export type AdUnitStatus = AdUnitStatus.Inactive | AdUnitStatus.Active;
+
 	export namespace AdornCullingMode {
 		export interface Automatic extends globalThis.EnumItem {
 			Name: "Automatic";
@@ -1474,6 +1495,27 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AssetTypeVerification>;
 	}
 	export type AssetTypeVerification = AssetTypeVerification.Default | AssetTypeVerification.ClientOnly | AssetTypeVerification.Always;
+
+	export namespace AudioSubType {
+		export interface Music extends globalThis.EnumItem {
+			Name: "Music";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AudioSubType;
+		}
+
+		export const Music: Music;
+
+		export interface SoundEffect extends globalThis.EnumItem {
+			Name: "SoundEffect";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AudioSubType;
+		}
+
+		export const SoundEffect: SoundEffect;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioSubType>;
+	}
+	export type AudioSubType = AudioSubType.Music | AudioSubType.SoundEffect;
 
 	export namespace AutoIndentRule {
 		export interface Off extends globalThis.EnumItem {
@@ -14337,6 +14379,35 @@ declare namespace Enum {
 	}
 	export type SizeConstraint = SizeConstraint.RelativeXY | SizeConstraint.RelativeXX | SizeConstraint.RelativeYY;
 
+	export namespace SolverConvergenceVisualizationMode {
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.SolverConvergenceVisualizationMode;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface PerIsland extends globalThis.EnumItem {
+			Name: "PerIsland";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.SolverConvergenceVisualizationMode;
+		}
+
+		export const PerIsland: PerIsland;
+
+		export interface PerEdge extends globalThis.EnumItem {
+			Name: "PerEdge";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.SolverConvergenceVisualizationMode;
+		}
+
+		export const PerEdge: PerEdge;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SolverConvergenceVisualizationMode>;
+	}
+	export type SolverConvergenceVisualizationMode = SolverConvergenceVisualizationMode.Disabled | SolverConvergenceVisualizationMode.PerIsland | SolverConvergenceVisualizationMode.PerEdge;
+
 	export namespace SortDirection {
 		export interface Ascending extends globalThis.EnumItem {
 			Name: "Ascending";
@@ -17927,6 +17998,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRPlayMode>;
 	}
 	export type VRPlayMode = VRPlayMode.Seated | VRPlayMode.Standing;
+
+	export namespace VRSafetyBubbleMode {
+		export interface NoOne extends globalThis.EnumItem {
+			Name: "NoOne";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.VRSafetyBubbleMode;
+		}
+
+		export const NoOne: NoOne;
+
+		export interface OnlyFriends extends globalThis.EnumItem {
+			Name: "OnlyFriends";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.VRSafetyBubbleMode;
+		}
+
+		export const OnlyFriends: OnlyFriends;
+
+		export interface Anyone extends globalThis.EnumItem {
+			Name: "Anyone";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.VRSafetyBubbleMode;
+		}
+
+		export const Anyone: Anyone;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRSafetyBubbleMode>;
+	}
+	export type VRSafetyBubbleMode = VRSafetyBubbleMode.NoOne | VRSafetyBubbleMode.OnlyFriends | VRSafetyBubbleMode.Anyone;
 
 	export namespace VRSessionState {
 		export interface Idle extends globalThis.EnumItem {

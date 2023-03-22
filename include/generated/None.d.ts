@@ -112,7 +112,6 @@ interface Services {
 	Stats: Stats;
 	StudioAssetService: StudioAssetService;
 	StudioDeviceEmulatorService: StudioDeviceEmulatorService;
-	StudioHighDpiService: StudioHighDpiService;
 	StudioPublishService: StudioPublishService;
 	StudioScriptDebugEventListener: StudioScriptDebugEventListener;
 	StudioSdkService: StudioSdkService;
@@ -159,6 +158,7 @@ interface CreatableInstances {
 	ArcHandles: ArcHandles;
 	Atmosphere: Atmosphere;
 	Attachment: Attachment;
+	AudioSearchParams: AudioSearchParams;
 	Backpack: Backpack;
 	BallSocketConstraint: BallSocketConstraint;
 	Beam: Beam;
@@ -431,6 +431,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AssetImportSession: AssetImportSession;
 	AssetPatchSettings: AssetPatchSettings;
 	AssetSoundEffect: AssetSoundEffect;
+	AudioPages: AudioPages;
 	BaseWrap: BaseWrap;
 	BubbleChatConfiguration: BubbleChatConfiguration;
 	CatalogPages: CatalogPages;
@@ -1237,9 +1238,14 @@ interface AdPortal extends Instance {
 	 */
 	readonly _nominal_AdPortal: unique symbol;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: ReadOnly, NotReplicated, Deprecated
+	 * @deprecated
 	 */
 	readonly PortalStatus: Enum.AdPortalStatus;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Status: Enum.AdUnitStatus;
 }
 
 /** **Note**
@@ -2287,6 +2293,10 @@ interface AssetService extends Instance {
 	 * Tags: Yields
 	 */
 	SavePlaceAsync(this: AssetService): void;
+	/**
+	 * Tags: Yields
+	 */
+	SearchAudio(this: AssetService, searchParameters: AudioSearchParams): AudioPages;
 }
 
 /** **Note**  
@@ -2544,6 +2554,25 @@ interface Bone extends Attachment {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly TransformedWorldCFrame: CFrame;
+}
+
+interface AudioSearchParams extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioSearchParams: unique symbol;
+	Album: string;
+	Artist: string;
+	AudioSubtype: Enum.AudioSubType;
+	MaxDuration: number;
+	MinDuration: number;
+	SearchKeyword: string;
+	Tag: string;
+	Title: string;
 }
 
 /** AvatarEditorService is a service to support developer Avatar Editors. It provides methods to modify the player's platform avatar, request information about a user's inventory, and request information about the catalog.
@@ -8315,10 +8344,7 @@ interface ControllerManager extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ControllerManager: unique symbol;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly ActiveController: ControllerBase | undefined;
+	ActiveController: ControllerBase | undefined;
 	BaseMoveSpeed: number;
 	BaseTurnSpeed: number;
 	ClimbSensor: ControllerSensor | undefined;
@@ -13206,6 +13232,10 @@ interface AdGui extends SurfaceGuiBase {
 	 */
 	readonly _nominal_AdGui: unique symbol;
 	AdShape: Enum.AdShape;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Status: Enum.AdUnitStatus;
 }
 
 /** **Note:** SurfaceGuis must be descendants of PlayerGui in order to know the player who is interacting with it.Allows for the rendering of GUI elements onto a part's surface in the 3D world, whilst allowing for basic user interaction to occur.
@@ -16232,6 +16262,22 @@ interface IKControl extends Instance {
 	Weight: number;
 	GetChainCount(this: IKControl): number;
 	GetChainLength(this: IKControl): number;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	GetNodeLocalCFrame(this: IKControl, index: number): CFrame;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	GetNodeWorldCFrame(this: IKControl, index: number): CFrame;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	GetRawFinalTarget(this: IKControl): CFrame;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	GetSmoothedFinalTarget(this: IKControl): CFrame;
 }
 
 interface ILegacyStudioBridge extends Instance {
@@ -24434,6 +24480,9 @@ interface Actor extends Model {
 	 * @deprecated
 	 */
 	readonly _nominal_Actor: unique symbol;
+	BindToMessage(this: Actor, name: string, callback: Callback): RBXScriptConnection;
+	BindToMessageParallel(this: Actor, name: string, callback: Callback): RBXScriptConnection;
+	SendMessage(this: Actor, name: string, message: Array<any>): void;
 }
 
 /** BackpackItem is an abstract class for backpack items such as HopperBins and Tools. */
@@ -25388,6 +25437,17 @@ interface Pages<T = unknown> extends Instance {
 	 * Tags: Yields
 	 */
 	AdvanceToNextPageAsync(this: Pages): void;
+}
+
+interface AudioPages extends Pages {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioPages: unique symbol;
 }
 
 interface CatalogPages extends Pages {
@@ -31313,17 +31373,6 @@ interface StudioDeviceEmulatorService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_StudioDeviceEmulatorService: unique symbol;
-}
-
-interface StudioHighDpiService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_StudioHighDpiService: unique symbol;
 }
 
 interface StudioPublishService extends Instance {

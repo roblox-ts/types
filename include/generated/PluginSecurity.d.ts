@@ -1794,6 +1794,7 @@ interface Plugin extends Instance {
 	 * @deprecated
 	 */
 	GetStudioUserId(this: Plugin): number;
+	Intersect(this: Plugin, objects: Array<Instance>): Instance | undefined;
 	/**
 	 * This function returns true if this plugin is currently active, after having been activated via the [Plugin:Activate](https://developer.roblox.com/en-us/api-reference/function/Plugin/Activate) function.
 	 */
