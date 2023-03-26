@@ -595,7 +595,7 @@ declare namespace bit32 {
 
 	/** Returns the bitwise _exclusive or_ of its operands. */
 	function bxor(...operands: Array<number>): number;
-	
+
 	/** Returns the number of consecutive zero bits in the 32-bit representation of the provided number starting from the left-most (most significant) bit. */
     function countlz(n: number): number;
 
