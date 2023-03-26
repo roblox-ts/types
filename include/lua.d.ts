@@ -597,10 +597,10 @@ declare namespace bit32 {
 	function bxor(...operands: Array<number>): number;
 
 	/** Returns the number of consecutive zero bits in the 32-bit representation of the provided number starting from the left-most (most significant) bit. */
-    function countlz(n: number): number;
+	function countlz(n: number): number;
 
-    /** Returns the number of consecutive zero bits in the 32-bit representation of the provided number starting from the right-most (least significant) bit. */
-    function countrz(n: number): number;
+	/** Returns the number of consecutive zero bits in the 32-bit representation of the provided number starting from the right-most (least significant) bit. */
+	function countrz(n: number): number;
 
 	/**
 	 * Returns the unsigned number formed by the bits `field` to `field + width - 1` from `n`.
