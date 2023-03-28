@@ -2080,6 +2080,8 @@ interface Vector3 {
 	Min(this: Vector3, ...vectors: Array<Vector3>): Vector3;
 	/** Returns a new Vector3 with the maximum of each component. */
 	Max(this: Vector3, ...vectors: Array<Vector3>): Vector3;
+	/** Returns the angle in radians between the two vectors. If an axis is provided, it determines the sign of the angle. */
+	Angle(this: Vector3, other: Vector3, axis?: Vector3): number;
 }
 
 interface Vector3Constructor {
