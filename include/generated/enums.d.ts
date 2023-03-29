@@ -17437,9 +17437,17 @@ declare namespace Enum {
 
 		export const VideoNoPermission: VideoNoPermission;
 
+		export interface VideoUnsupported extends globalThis.EnumItem {
+			Name: "VideoUnsupported";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.TrackerError;
+		}
+
+		export const VideoUnsupported: VideoUnsupported;
+
 		export interface NoAudio extends globalThis.EnumItem {
 			Name: "NoAudio";
-			Value: 6;
+			Value: 7;
 			EnumType: typeof globalThis.Enum.TrackerError;
 		}
 
@@ -17447,7 +17455,7 @@ declare namespace Enum {
 
 		export interface AudioError extends globalThis.EnumItem {
 			Name: "AudioError";
-			Value: 7;
+			Value: 8;
 			EnumType: typeof globalThis.Enum.TrackerError;
 		}
 
@@ -17455,7 +17463,7 @@ declare namespace Enum {
 
 		export interface AudioNoPermission extends globalThis.EnumItem {
 			Name: "AudioNoPermission";
-			Value: 8;
+			Value: 9;
 			EnumType: typeof globalThis.Enum.TrackerError;
 		}
 
@@ -17463,7 +17471,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerError>;
 	}
-	export type TrackerError = TrackerError.Ok | TrackerError.NoService | TrackerError.InitFailed | TrackerError.NoVideo | TrackerError.VideoError | TrackerError.VideoNoPermission | TrackerError.NoAudio | TrackerError.AudioError | TrackerError.AudioNoPermission;
+	export type TrackerError = TrackerError.Ok | TrackerError.NoService | TrackerError.InitFailed | TrackerError.NoVideo | TrackerError.VideoError | TrackerError.VideoNoPermission | TrackerError.VideoUnsupported | TrackerError.NoAudio | TrackerError.AudioError | TrackerError.AudioNoPermission;
 
 	export namespace TrackerExtrapolationFlagMode {
 		export interface Auto extends globalThis.EnumItem {
