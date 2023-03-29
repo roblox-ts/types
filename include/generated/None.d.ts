@@ -503,6 +503,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	ScreenshotHud: ScreenshotHud;
 	ScriptBuilder: ScriptBuilder;
 	ScriptDocument: ScriptDocument;
+	ScriptRuntime: ScriptRuntime;
 	SensorBase: SensorBase;
 	Speaker: Speaker;
 	StackFrame: StackFrame;
@@ -6832,6 +6833,7 @@ interface AnimationConstraint extends Constraint {
 	 * @deprecated
 	 */
 	readonly _nominal_AnimationConstraint: unique symbol;
+	IsKinematic: boolean;
 	MaxForce: number;
 	MaxTorque: number;
 	Transform: CFrame;
@@ -16524,6 +16526,7 @@ interface IncrementalPatchBuilder extends Instance {
 	 */
 	readonly _nominal_IncrementalPatchBuilder: unique symbol;
 	AddPathsToBundle: boolean;
+	BuildDebouncePeriod: number;
 	HighCompression: boolean;
 	SerializePatch: boolean;
 	ZstdCompression: boolean;
@@ -24737,6 +24740,7 @@ interface WorldRoot extends Model {
 	 * If no parts are provided, false is returned.
 	 */
 	ArePartsTouchingOthers(this: WorldRoot, partList: Array<Instance>, overlapIgnored?: number): boolean;
+	Blockcast(this: WorldRoot, cframe: CFrame, size: Vector3, direction: Vector3, params?: RaycastParams): RaycastResult;
 	/**
 	 * **Warning!**  
 	 * You should only use this function if you are sure that part movement is a bottleneck in your code, simply setting the CFrame property of the individual parts / welded models you want to move will be fast enough in the vast majority of cases.
@@ -25043,6 +25047,7 @@ interface WorldRoot extends Model {
 		direction: Vector3,
 		raycastParams?: RaycastParams,
 	): RaycastResult | undefined;
+	Spherecast(this: WorldRoot, position: Vector3, radius: number, direction: Vector3, params?: RaycastParams): RaycastResult;
 }
 
 /** The Workspace is the service in which any objects that are to be rendered in the 3D world exist. Objects not descending from Workspace will not be rendered or physically interact with the world.
@@ -29036,6 +29041,17 @@ interface ScriptRegistrationService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ScriptRegistrationService: unique symbol;
+}
+
+interface ScriptRuntime extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptRuntime: unique symbol;
 }
 
 interface SelectionHighlightManager extends Instance {
