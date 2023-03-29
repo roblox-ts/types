@@ -1094,6 +1094,11 @@ interface CFrame {
 	Inverse(this: CFrame): CFrame;
 	/** Returns a CFrame interpolated between this CFrame and the goal by the fraction alpha */
 	Lerp(this: CFrame, goal: CFrame, alpha: number): CFrame;
+	/**
+	 * Returns an orthonormalized copy of the CFrame. The BasePart.CFrame property automatically applies orthonormalization,
+	 * but other APIs which take CFrames do not, so this method is occasionally necessary when incrementally updating a CFrame and using it with them.
+	 */
+	Orthonormalize(this: CFrame): CFrame;
 	/** Returns a CFrame transformed from Object to World space. Equivalent to `[CFrame * cf]` */
 	ToWorldSpace(this: CFrame, cf: CFrame): CFrame;
 	/** Returns a CFrame transformed from World to Object space. Equivalent to `[CFrame:inverse() * cf]` */
