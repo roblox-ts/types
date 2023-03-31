@@ -1635,10 +1635,17 @@ interface PathWaypoint {
 	 * @deprecated
 	 */
 	readonly _nominal_PathWaypoint: unique symbol;
+	/** The action to perform at this waypoint. */
 	readonly Action: Enum.PathWaypointAction;
+	/** The 3D position of this waypoint. */
 	readonly Position: Vector3;
+	/**
+	 * The name of the navigation area that generates this waypoint. You can use PathwayPoint.Label to decide the custom
+	 * action to take to reach the waypoint. PathfindingModifier and Material each have a Label. Automatic jump links
+	 * have "Jump" as their Label. */
+	readonly Label: string;
 }
-type PathWaypointConstructor = new (position?: Vector3, action?: Enum.PathWaypointAction) => PathWaypoint;
+type PathWaypointConstructor = new (position?: Vector3, action?: Enum.PathWaypointAction, label?: string) => PathWaypoint;
 declare const PathWaypoint: PathWaypointConstructor;
 
 // PhysicalProperties
