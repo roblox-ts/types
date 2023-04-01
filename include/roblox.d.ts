@@ -2231,11 +2231,19 @@ declare function warn(...params: Array<unknown>): void;
 
 // math functions
 declare namespace math {
-	/** Returns a perlin noise value between -0.5 and 0.5. If you leave arguments out, they will be interpreted as zero, so math.noise(1.158) is equivalent to math.noise(1.158, 0, 0) and math.noise(1.158, 5.723) is equivalent to math.noise(1.158, 5.723, 0).
-	 * The function uses a perlin noise algorithm to assign fixed values to coordinates. For example, math.noise(1.158, 5.723) will always return 0.48397532105446 and math.noise(1.158, 6) will always return 0.15315161645412.
-	 * If x, y and z are all integers, the return value will be 0. For fractional values of x, y and z, the return value will gradually fluctuate between -0.5 and 0.5. For coordinates that are close to each other, the return values will also be close to each other. */
-	function noise(x?: number, y?: number, z?: number): number;
-
+	/**
+	 * Returns a perlin noise value. The returned value is most often between the range [-1, 1].
+	 *
+	 * The returned value is sometimes will be outside of the range [-1,1], so if the interval is critical to you,
+	 * you should use `math.clamp(noise, -1, 1)` on the output.
+	 *
+	 * The function uses a perlin noise algorithm to assign fixed values to coordinates.
+	 * For example, `math.noise(1.158, 5.723)` will always return `0.48397532105446` and `math.noise(1.158, 6)` will always return `0.15315161645412`.
+	 *
+	 * If x, y and z are all integers, the return value will be 0. For fractional values of x, y and z, the return value will gradually fluctuate between -0.5 and 0.5.
+	 * For coordinates that are close to each other, the return values will also be close to each other.
+	 */
+	function noise(x: number, y?: number, z?: number): number;
 	/** Returns a number between min and max, inclusive. */
 	function clamp(n: number, min: number, max: number): number;
 }
