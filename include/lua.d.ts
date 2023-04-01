@@ -533,7 +533,7 @@ declare namespace math {
 	function random(min: number, max: number): number;
 
 	/** Sets x as the seed for the pseudo-random generator: equal seeds produce equal sequences of numbers. */
-	function randomseed(seed: number): number;
+	function randomseed(seed: number): void;
 
 	/** Rounds n to the nearest integer.
 	 *
