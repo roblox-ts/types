@@ -1650,9 +1650,11 @@ interface PathWaypoint {
 	 */
 	readonly Label: string;
 }
-type PathWaypointConstructor =
-	| (new () => PathWaypoint)
-	| (new (position: Vector3, action?: Enum.PathWaypointAction, label?: string) => PathWaypoint);
+interface PathWaypointConstructor {
+	new (): PathWaypoint;
+	new (position: Vector3, action?: Enum.PathWaypointAction, label?: string): PathWaypoint;
+}
+
 declare const PathWaypoint: PathWaypointConstructor;
 
 // PhysicalProperties
