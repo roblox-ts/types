@@ -4003,14 +4003,6 @@ declare namespace Enum {
 
 		export const DisconnectClientRequest: DisconnectClientRequest;
 
-		export interface DisconnectOutOfMemory extends globalThis.EnumItem {
-			Name: "DisconnectOutOfMemory";
-			Value: 286;
-			EnumType: typeof globalThis.Enum.ConnectionError;
-		}
-
-		export const DisconnectOutOfMemory: DisconnectOutOfMemory;
-
 		export interface DisconnectModeratedGame extends globalThis.EnumItem {
 			Name: "DisconnectModeratedGame";
 			Value: 287;
@@ -4019,21 +4011,13 @@ declare namespace Enum {
 
 		export const DisconnectModeratedGame: DisconnectModeratedGame;
 
-		export interface DisconnectOutOfMemoryExitContinue extends globalThis.EnumItem {
-			Name: "DisconnectOutOfMemoryExitContinue";
-			Value: 288;
+		export interface DisconnectRomarkEndOfTest extends globalThis.EnumItem {
+			Name: "DisconnectRomarkEndOfTest";
+			Value: 293;
 			EnumType: typeof globalThis.Enum.ConnectionError;
 		}
 
-		export const DisconnectOutOfMemoryExitContinue: DisconnectOutOfMemoryExitContinue;
-
-		export interface DisconnectOutOfMemoryKeepPlayingExit extends globalThis.EnumItem {
-			Name: "DisconnectOutOfMemoryKeepPlayingExit";
-			Value: 289;
-			EnumType: typeof globalThis.Enum.ConnectionError;
-		}
-
-		export const DisconnectOutOfMemoryKeepPlayingExit: DisconnectOutOfMemoryKeepPlayingExit;
+		export const DisconnectRomarkEndOfTest: DisconnectRomarkEndOfTest;
 
 		export interface ReplicatorTimeout extends globalThis.EnumItem {
 			Name: "ReplicatorTimeout";
@@ -4253,7 +4237,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ConnectionError>;
 	}
-	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectOutOfMemory | ConnectionError.DisconnectModeratedGame | ConnectionError.DisconnectOutOfMemoryExitContinue | ConnectionError.DisconnectOutOfMemoryKeepPlayingExit | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectModeratedGame | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 
 	export namespace ConnectionState {
 		export interface Connected extends globalThis.EnumItem {
@@ -18035,6 +18019,27 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRSafetyBubbleMode>;
 	}
 	export type VRSafetyBubbleMode = VRSafetyBubbleMode.NoOne | VRSafetyBubbleMode.OnlyFriends | VRSafetyBubbleMode.Anyone;
+
+	export namespace VRScaling {
+		export interface World extends globalThis.EnumItem {
+			Name: "World";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.VRScaling;
+		}
+
+		export const World: World;
+
+		export interface Off extends globalThis.EnumItem {
+			Name: "Off";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.VRScaling;
+		}
+
+		export const Off: Off;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRScaling>;
+	}
+	export type VRScaling = VRScaling.World | VRScaling.Off;
 
 	export namespace VRSessionState {
 		export interface Idle extends globalThis.EnumItem {

@@ -940,6 +940,21 @@ interface LuaSettings extends Instance {
 	readonly _nominal_LuaSettings: unique symbol;
 }
 
+interface LuaSourceContainer extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_LuaSourceContainer: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
+	RuntimeSource: string;
+}
+
 interface Script extends BaseScript {
 	/**
 	 * **DO NOT USE!**
@@ -3226,7 +3241,6 @@ interface Studio extends Instance {
 	["Server Audio Behavior"]: Enum.ServerAudioBehavior;
 	["Set Pivot of Imported Parts"]: boolean;
 	["Show Core GUI in Explorer while Playing"]: boolean;
-	["Show Deployment Warnings"]: boolean;
 	["Show Diagnostics Bar"]: boolean;
 	["Show FileSyncService"]: boolean;
 	["Show Hidden Objects in Explorer"]: boolean;
