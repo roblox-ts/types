@@ -84,6 +84,7 @@ interface Services {
 	ProcessInstancePhysicsService: ProcessInstancePhysicsService;
 	ProximityPromptService: ProximityPromptService;
 	PublishService: PublishService;
+	RemoteCursorService: RemoteCursorService;
 	RemoteDebuggerServer: RemoteDebuggerServer;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedStorage: ReplicatedStorage;
@@ -99,6 +100,7 @@ interface Services {
 	SelectionHighlightManager: SelectionHighlightManager;
 	ServerScriptService: ServerScriptService;
 	ServerStorage: ServerStorage;
+	ServiceVisibilityService: ServiceVisibilityService;
 	SessionService: SessionService;
 	SharedTableRegistry: SharedTableRegistry;
 	ShorelineUpgraderService: ShorelineUpgraderService;
@@ -442,7 +444,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	CommandInstance: CommandInstance;
 	ControllerBase: ControllerBase;
 	ControllerSensor: ControllerSensor;
-	CoreScriptBuilder: CoreScriptBuilder;
 	CustomSoundEffect: CustomSoundEffect;
 	DataModel: DataModel;
 	DataStore: DataStore;
@@ -1912,6 +1913,7 @@ interface AnimationTrack extends Instance {
 	 * When is adjusted, then the actual time it will take a track to play can be computed by dividing the length by the speed. Speed is a unitless quantity.
 	 * 
 	 * Speed can be used to link the length of an animation to different gameplay events (for example recharging an ability) without having to upload different variants of the same animation.
+	 * Tags: CustomLuaState
 	 */
 	AdjustSpeed(this: AnimationTrack, speed?: number): void;
 	/**
@@ -1926,6 +1928,7 @@ interface AnimationTrack extends Instance {
 	 * ![Animation Weight Blending](https://developer.roblox.com/assets/blt755bd460ebb6cd91/Animation_Weight_-_Copy.png)
 	 * 
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/Priority) is more suitable.
+	 * Tags: CustomLuaState
 	 */
 	AdjustWeight(this: AnimationTrack, weight?: number, fadeTime?: number): void;
 	/**
@@ -1966,6 +1969,7 @@ interface AnimationTrack extends Instance {
 	 * The weight and speed of the animation can also be changed after the animation has begun playing by using the [AnimationTrack:AdjustWeight](https://developer.roblox.com/en-us/api-reference/function/AnimationTrack/AdjustWeight) and [AnimationTrack:AdjustSpeed](https://developer.roblox.com/en-us/api-reference/function/AnimationTrack/AdjustSpeed) methods.
 	 * 
 	 * If the developer wants to start the animation at a specific point using [AnimationTrack.TimePosition](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/TimePosition), it is important the animation is played before this is done.
+	 * Tags: CustomLuaState
 	 */
 	Play(this: AnimationTrack, fadeTime?: number, weight?: number, speed?: number): void;
 	/**
@@ -1974,6 +1978,7 @@ interface AnimationTrack extends Instance {
 	 * For example, if Stop is called with a fadeTime of 2 seconds it will take two seconds for the weight of the [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) to reach zero and its effects completely end. Please note this will be the case regardless of the initial weight of the animation.
 	 * 
 	 * It is not recommended to use a fadeTime of 0 seconds to try to override this effect and end the animation immediately as presently, this causes the [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) poses to freeze.
+	 * Tags: CustomLuaState
 	 */
 	Stop(this: AnimationTrack, fadeTime?: number): void;
 	/**
@@ -24483,9 +24488,9 @@ interface Actor extends Model {
 	 * @deprecated
 	 */
 	readonly _nominal_Actor: unique symbol;
-	BindToMessage(this: Actor, name: string, callback: Callback): RBXScriptConnection;
-	BindToMessageParallel(this: Actor, name: string, callback: Callback): RBXScriptConnection;
-	SendMessage(this: Actor, name: string, message: Array<any>): void;
+	BindToMessage(this: Actor, topic: string, callback: Callback): RBXScriptConnection;
+	BindToMessageParallel(this: Actor, topic: string, callback: Callback): RBXScriptConnection;
+	SendMessage(this: Actor, topic: string, message: Array<any>): void;
 }
 
 /** BackpackItem is an abstract class for backpack items such as HopperBins and Tools. */
@@ -28248,6 +28253,17 @@ interface PublishService extends Instance {
 	readonly _nominal_PublishService: unique symbol;
 }
 
+interface RemoteCursorService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RemoteCursorService: unique symbol;
+}
+
 interface RemoteDebuggerServer extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -28935,17 +28951,6 @@ interface ScriptBuilder extends Instance {
 	readonly _nominal_ScriptBuilder: unique symbol;
 }
 
-interface CoreScriptBuilder extends ScriptBuilder {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_CoreScriptBuilder: unique symbol;
-}
-
 interface SyncScriptBuilder extends ScriptBuilder {
 	/**
 	 * **DO NOT USE!**
@@ -29547,6 +29552,17 @@ interface UserSettings extends GenericSettings<{ UserGameSettings: UserGameSetti
 	 * Erases the saved state of the UserSettings, and restores its values back to default. This function will fail to run correctly from a LocalScript, as it does not have permission to restore all of the properties in the [UserGameSettings](https://developer.roblox.com/en-us/api-reference/class/UserGameSettings) class.
 	 */
 	Reset(this: UserSettings): void;
+}
+
+interface ServiceVisibilityService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ServiceVisibilityService: unique symbol;
 }
 
 interface SessionService extends Instance {
@@ -35895,6 +35911,10 @@ interface VRService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_VRService: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
+	AutomaticScaling: Enum.VRScaling;
 	FadeOutViewOnCollision: boolean;
 	/**
 	 * The GuiInputUserCFrame property describes what [UserCFrame](https://developer.roblox.com/en-us/api-reference/enum/UserCFrame) is responsible for input in VR. For instance, if a VR headset is responsible, the value of this property will be UserCFrame.Head.
