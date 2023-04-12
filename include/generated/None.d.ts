@@ -2573,6 +2573,11 @@ interface AudioSearchParams extends Instance {
 	readonly _nominal_AudioSearchParams: unique symbol;
 	Album: string;
 	Artist: string;
+	AudioSubType: Enum.AudioSubType;
+	/**
+	 * Tags: NotReplicated, Deprecated, [object Object]
+	 * @deprecated
+	 */
 	AudioSubtype: Enum.AudioSubType;
 	MaxDuration: number;
 	MinDuration: number;
@@ -8281,11 +8286,16 @@ interface AirController extends ControllerBase {
 	 * @deprecated
 	 */
 	readonly _nominal_AirController: unique symbol;
+	BalanceMaxTorque: number;
+	BalanceRigidityEnabled: boolean;
+	BalanceSpeed: number;
 	MaintainAngularMomentum: boolean;
 	MaintainLinearMomentum: boolean;
 	MoveMaxForce: number;
 	OrientationMaxTorque: number;
 	OrientationSpeedFactor: number;
+	TurningMaxTorque: number;
+	TurningSpeedFactor: number;
 	VectorForce: Vector3;
 }
 
@@ -8299,6 +8309,9 @@ interface ClimbController extends ControllerBase {
 	 */
 	readonly _nominal_ClimbController: unique symbol;
 	AccelerationTime: number;
+	BalanceMaxTorque: number;
+	BalanceRigidityEnabled: boolean;
+	BalanceSpeed: number;
 	MoveMaxForce: number;
 	OrientationMaxTorque: number;
 	OrientationSpeedFactor: number;
@@ -8317,6 +8330,9 @@ interface GroundController extends ControllerBase {
 	AccelerationTime: number;
 	AlignSpeed: number;
 	AlignTorque: number;
+	BalanceMaxTorque: number;
+	BalanceRigidityEnabled: boolean;
+	BalanceSpeed: number;
 	DecelerationTime: number;
 	Friction: number;
 	FrictionWeight: number;
