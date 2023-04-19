@@ -2018,6 +2018,35 @@ declare namespace Enum {
 	}
 	export type AvatarThumbnailCustomizationType = AvatarThumbnailCustomizationType.Closeup | AvatarThumbnailCustomizationType.FullBody;
 
+	export namespace AvatarUnificationMode {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AvatarUnificationMode;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AvatarUnificationMode;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AvatarUnificationMode;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarUnificationMode>;
+	}
+	export type AvatarUnificationMode = AvatarUnificationMode.Default | AvatarUnificationMode.Disabled | AvatarUnificationMode.Enabled;
+
 	export namespace Axis {
 		export interface X extends globalThis.EnumItem {
 			Name: "X";
@@ -18066,6 +18095,14 @@ declare namespace Enum {
 
 		export const Focused: Focused;
 
+		export interface Stopping extends globalThis.EnumItem {
+			Name: "Stopping";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.VRSessionState;
+		}
+
+		export const Stopping: Stopping;
+
 		export interface Undefined extends globalThis.EnumItem {
 			Name: "Undefined";
 			Value: 0;
@@ -18076,7 +18113,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRSessionState>;
 	}
-	export type VRSessionState = VRSessionState.Idle | VRSessionState.Visible | VRSessionState.Focused | VRSessionState.Undefined;
+	export type VRSessionState = VRSessionState.Idle | VRSessionState.Visible | VRSessionState.Focused | VRSessionState.Stopping | VRSessionState.Undefined;
 
 	export namespace VRTouchpad {
 		export interface Left extends globalThis.EnumItem {
