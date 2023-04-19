@@ -8374,6 +8374,10 @@ interface ControllerManager extends Instance {
 	FacingDirection: Vector3;
 	GroundSensor: ControllerSensor | undefined;
 	MovingDirection: Vector3;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	GetControllers(this: ControllerManager): Array<Instance>;
 }
 
