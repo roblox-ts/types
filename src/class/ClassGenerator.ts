@@ -384,6 +384,7 @@ const VALUE_TYPE_MAP = new Map<string, string | null>([
 	["int", "number"],
 	["int64", "number"],
 	["Map", "object"],
+	["null", "void"],
 	["Object", "Instance"],
 	["Objects", "Array<Instance>"],
 	["Property", "string"],
