@@ -199,6 +199,7 @@ interface CreatableInstances {
 	ControllerManager: ControllerManager;
 	ControllerPartSensor: ControllerPartSensor;
 	CornerWedgePart: CornerWedgePart;
+	CSGOptions: CSGOptions;
 	CurveAnimation: CurveAnimation;
 	CylinderHandleAdornment: CylinderHandleAdornment;
 	CylinderMesh: CylinderMesh;
@@ -428,12 +429,14 @@ interface AbstractInstances {
 
 interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AnimationClip: AnimationClip;
+	AnimationImportData: AnimationImportData;
 	AnimationStreamTrack: AnimationStreamTrack;
 	AnimationTrack: AnimationTrack;
 	AssetImportSession: AssetImportSession;
 	AssetPatchSettings: AssetPatchSettings;
 	AssetSoundEffect: AssetSoundEffect;
 	AudioPages: AudioPages;
+	BaseImportData: BaseImportData;
 	BaseWrap: BaseWrap;
 	BubbleChatConfiguration: BubbleChatConfiguration;
 	CatalogPages: CatalogPages;
@@ -460,26 +463,23 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DebuggerVariable: DebuggerVariable;
 	EmotesPages: EmotesPages;
 	FacialAnimationStreamingServiceStats: FacialAnimationStreamingServiceStats;
+	FacsImportData: FacsImportData;
 	FriendPages: FriendPages;
 	GlobalDataStore: GlobalDataStore;
+	GroupImportData: GroupImportData;
 	ImageDataExperimental: ImageDataExperimental;
-	ImporterAnimationSettings: ImporterAnimationSettings;
-	ImporterBaseSettings: ImporterBaseSettings;
-	ImporterFacsSettings: ImporterFacsSettings;
-	ImporterGroupSettings: ImporterGroupSettings;
-	ImporterJointSettings: ImporterJointSettings;
-	ImporterMaterialSettings: ImporterMaterialSettings;
-	ImporterMeshSettings: ImporterMeshSettings;
-	ImporterRootSettings: ImporterRootSettings;
 	InputObject: InputObject;
 	InstanceAdornment: InstanceAdornment;
 	InventoryPages: InventoryPages;
+	JointImportData: JointImportData;
 	LocalDebuggerConnection: LocalDebuggerConnection;
 	LodDataEntity: LodDataEntity;
 	MaterialGenerationSession: MaterialGenerationSession;
+	MaterialImportData: MaterialImportData;
 	MemoryStoreQueue: MemoryStoreQueue;
 	MemoryStoreSortedMap: MemoryStoreSortedMap;
 	MeshDataExperimental: MeshDataExperimental;
+	MeshImportData: MeshImportData;
 	MessageBusConnection: MessageBusConnection;
 	MetaBreakpoint: MetaBreakpoint;
 	MetaBreakpointContext: MetaBreakpointContext;
@@ -501,6 +501,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	PlayerScripts: PlayerScripts;
 	PluginManagerInterface: PluginManagerInterface;
 	PoseBase: PoseBase;
+	RootImportData: RootImportData;
 	ScreenshotHud: ScreenshotHud;
 	ScriptBuilder: ScriptBuilder;
 	ScriptDocument: ScriptDocument;
@@ -527,7 +528,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	Tween: Tween;
 	UserGameSettings: UserGameSettings;
 	UserSettings: UserSettings;
-	VoiceSource: VoiceSource;
 }
 
 // GENERATED ROBLOX INSTANCE CLASSES
@@ -643,7 +643,7 @@ interface Instance {
 	 * 	end
 	 * end
 	 */
-	ClearAllChildren(this: Instance): void;
+	ClearAllChildren(this: Instance): null;
 	/**
 	 * **Clone** creates a copy of an object and all of its descendants, ignoring all objects that are not [Archivable](https://developer.roblox.com/en-us/api-reference/property/Instance/Archivable). The copy of the root object is returned by this function and its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is set to nil.
 	 * 
@@ -676,7 +676,7 @@ interface Instance {
 	 * 
 	 * To Destroy an object after a set amount of time, use [Debris:AddItem](https://developer.roblox.com/en-us/api-reference/function/Debris/AddItem).
 	 */
-	Destroy(this: Instance): void;
+	Destroy(this: Instance): null;
 	/**
 	 * Returns the first ancestor of the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) whose [Instance.Name](https://developer.roblox.com/en-us/api-reference/property/Instance/Name) is equal to the given name.
 	 * 
@@ -1329,7 +1329,7 @@ interface AnalyticsService extends Instance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	FireEvent(this: AnalyticsService, category: string, value: unknown): void;
+	FireEvent(this: AnalyticsService, category: string, value: unknown): null;
 	/**
 	 * This function triggers an event used to track player actions pertaining to the in-game economy.
 	 * 
@@ -1616,7 +1616,7 @@ interface KeyframeSequence extends AnimationClip {
 	 * 
 	 * Note, this function will not error when an instance other than a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) is given as the keyframe parameter and will parent it successfully.
 	 */
-	AddKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
+	AddKeyframe(this: KeyframeSequence, keyframe: Keyframe): null;
 	/**
 	 * **GetKeyframes** returns an array that contains all [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)s that have been added to a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence).
 	 */
@@ -1628,7 +1628,7 @@ interface KeyframeSequence extends AnimationClip {
 	 * 
 	 * Note, this function will not error when an [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) other than a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) is given as the keyframe parameter.
 	 */
-	RemoveKeyframe(this: KeyframeSequence, keyframe: Keyframe): void;
+	RemoveKeyframe(this: KeyframeSequence, keyframe: Keyframe): null;
 }
 
 interface AnimationClipProvider extends Instance {
@@ -1915,7 +1915,7 @@ interface AnimationTrack extends Instance {
 	 * Speed can be used to link the length of an animation to different gameplay events (for example recharging an ability) without having to upload different variants of the same animation.
 	 * Tags: CustomLuaState
 	 */
-	AdjustSpeed(this: AnimationTrack, speed?: number): void;
+	AdjustSpeed(this: AnimationTrack, speed?: number): null;
 	/**
 	 * Changes the weight of an animation, with the optional fadeTime parameter determining how long it takes for [AnimationTrack.WeightCurrent](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/WeightCurrent) to reach [AnimationTrack.WeightTarget](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/WeightTarget).
 	 * 
@@ -1930,7 +1930,7 @@ interface AnimationTrack extends Instance {
 	 * In most cases blending animations is not required and using [AnimationTrack.Priority](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/Priority) is more suitable.
 	 * Tags: CustomLuaState
 	 */
-	AdjustWeight(this: AnimationTrack, weight?: number, fadeTime?: number): void;
+	AdjustWeight(this: AnimationTrack, weight?: number, fadeTime?: number): null;
 	/**
 	 * This function returns an [event](https://developer.roblox.com/en-us/api-reference/datatype/RBXScriptSignal) similar to the [AnimationTrack.KeyframeReached](https://developer.roblox.com/en-us/api-reference/event/AnimationTrack/KeyframeReached) event, except it only fires when a specified [KeyframeMarker](https://developer.roblox.com/en-us/api-reference/class/KeyframeMarker) has been hit in an [animation](https://developer.roblox.com/en-us/api-reference/class/Animation). The difference allows for greater control of when the event will fire.
 	 * 
@@ -1971,7 +1971,7 @@ interface AnimationTrack extends Instance {
 	 * If the developer wants to start the animation at a specific point using [AnimationTrack.TimePosition](https://developer.roblox.com/en-us/api-reference/property/AnimationTrack/TimePosition), it is important the animation is played before this is done.
 	 * Tags: CustomLuaState
 	 */
-	Play(this: AnimationTrack, fadeTime?: number, weight?: number, speed?: number): void;
+	Play(this: AnimationTrack, fadeTime?: number, weight?: number, speed?: number): null;
 	/**
 	 * Stops the [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack). Once called playback of the [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) will stop and the weight of the animation will move towards zero over a length of time specified by the optional fadeTime parameter.
 	 * 
@@ -1980,7 +1980,7 @@ interface AnimationTrack extends Instance {
 	 * It is not recommended to use a fadeTime of 0 seconds to try to override this effect and end the animation immediately as presently, this causes the [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) poses to freeze.
 	 * Tags: CustomLuaState
 	 */
-	Stop(this: AnimationTrack, fadeTime?: number): void;
+	Stop(this: AnimationTrack, fadeTime?: number): null;
 	/**
 	 * This event fires whenever a looped [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) completes a loop, on the next update.
 	 * 
@@ -2298,7 +2298,7 @@ interface AssetService extends Instance {
 	 * Saves the state of the current place. This will only work for places that have been created with [AssetService:CreatePlaceAsync](https://developer.roblox.com/en-us/api-reference/function/AssetService/CreatePlaceAsync) or [AssetService:CreatePlaceInPlayerInventoryAsync](https://developer.roblox.com/en-us/api-reference/function/AssetService/CreatePlaceInPlayerInventoryAsync).
 	 * Tags: Yields
 	 */
-	SavePlaceAsync(this: AssetService): void;
+	SavePlaceAsync(this: AssetService): null;
 	/**
 	 * Tags: Yields
 	 */
@@ -2509,13 +2509,13 @@ interface Attachment extends Instance {
 	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
-	SetAxis(this: Attachment, axis: Vector3): void;
+	SetAxis(this: Attachment, axis: Vector3): null;
 	/**
 	 * Sets the value of the Attachment's [Attachment.SecondaryAxis](https://developer.roblox.com/en-us/api-reference/property/Attachment/SecondaryAxis).
 	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
-	SetSecondaryAxis(this: Attachment, axis: Vector3): void;
+	SetSecondaryAxis(this: Attachment, axis: Vector3): null;
 }
 
 interface Bone extends Attachment {
@@ -2606,31 +2606,31 @@ interface AvatarEditorService extends Instance {
 	/**
 	 * Prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to allow the developer to read what items the user has in their inventory and other avatar editor related information. The prompt needs to be confirmed by the user for the developer to use [AvatarEditorService:GetInventory](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetInventory), [AvatarEditorService:GetOutfits](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetOutfits) and [AvatarEditorService:GetFavorite](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/GetFavorite). Permission does not persist between sessions.
 	 */
-	PromptAllowInventoryReadAccess(this: AvatarEditorService): void;
+	PromptAllowInventoryReadAccess(this: AvatarEditorService): null;
 	/**
 	 * Prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to save the given [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) as an outfit. Does not yield. The result can be retrieved by listening to the [AvatarEditorService.PromptCreateOutfitCompleted](https://developer.roblox.com/en-us/api-reference/event/AvatarEditorService/PromptCreateOutfitCompleted) event.
 	 */
-	PromptCreateOutfit(this: AvatarEditorService, outfit: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
+	PromptCreateOutfit(this: AvatarEditorService, outfit: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): null;
 	/**
 	 * Prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to delete the given outfit. Does not yield. The result can be retrieved by listening to the [AvatarEditorService.PromptDeleteOutfitCompleted](https://developer.roblox.com/en-us/api-reference/event/AvatarEditorService/PromptDeleteOutfitCompleted) event.
 	 */
-	PromptDeleteOutfit(this: AvatarEditorService, outfitId: number): void;
+	PromptDeleteOutfit(this: AvatarEditorService, outfitId: number): null;
 	/**
 	 * Prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to delete the given outfit. Does not yield. The result can be retrieved by listening to the [AvatarEditorService.PromptRenameOutfitCompleted](https://developer.roblox.com/en-us/api-reference/event/AvatarEditorService/PromptRenameOutfitCompleted) event.
 	 */
-	PromptRenameOutfit(this: AvatarEditorService, outfitId: number): void;
+	PromptRenameOutfit(this: AvatarEditorService, outfitId: number): null;
 	/**
 	 * This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to update their avatar based on the given [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) and [RigType](https://developer.roblox.com/en-us/api-reference/enum/RigType) (R6 or R15). Does not yield and can get the result by listening to the PromptSaveAvatarCompleted event. This is similar to how other prompts such as PromptPurchase work.
 	 */
-	PromptSaveAvatar(this: AvatarEditorService, humanoidDescription: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
+	PromptSaveAvatar(this: AvatarEditorService, humanoidDescription: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): null;
 	/**
 	 * This function prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to favorite or unfavorite the given asset or bundle.
 	 */
-	PromptSetFavorite(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>, shouldFavorite: boolean): void;
+	PromptSetFavorite(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>, shouldFavorite: boolean): null;
 	/**
 	 * Prompts the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) to update the given outfit with the given HumanoidDescription.
 	 */
-	PromptUpdateOutfit(this: AvatarEditorService, outfitId: number, updatedOutfit: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
+	PromptUpdateOutfit(this: AvatarEditorService, outfitId: number, updatedOutfit: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): null;
 	/**
 	 * Returns a new [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) with the Shirt and Pants properties updated if necessary. Returns nil if default clothing was not needed.
 	 * 
@@ -3134,6 +3134,185 @@ interface BadgeService extends Instance {
 	UserHasBadgeAsync(this: BadgeService, userId: number, badgeId: number): boolean;
 }
 
+interface BaseImportData extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BaseImportData: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Id: string;
+	ImportName: string;
+	ShouldImport: boolean;
+}
+
+interface AnimationImportData extends BaseImportData {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AnimationImportData: unique symbol;
+}
+
+interface FacsImportData extends BaseImportData {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FacsImportData: unique symbol;
+}
+
+interface GroupImportData extends BaseImportData {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_GroupImportData: unique symbol;
+	Anchored: boolean;
+	ImportAsModelAsset: boolean;
+	InsertInWorkspace: boolean;
+}
+
+interface JointImportData extends BaseImportData {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_JointImportData: unique symbol;
+}
+
+interface MaterialImportData extends BaseImportData {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MaterialImportData: unique symbol;
+	DiffuseFilePath: string;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly IsPbr: boolean;
+	MetalnessFilePath: string;
+	NormalFilePath: string;
+	RoughnessFilePath: string;
+}
+
+interface MeshImportData extends BaseImportData {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MeshImportData: unique symbol;
+	Anchored: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CageManifold: boolean;
+	CageMeshIntersectedPreview: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CageMeshNotIntersected: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CageNoOverlappingVertices: boolean;
+	CageNonManifoldPreview: boolean;
+	CageOverlappingVerticesPreview: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly CageUVMatched: boolean;
+	CageUVMisMatchedPreview: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly Dimensions: Vector3;
+	DoubleSided: boolean;
+	IgnoreVertexColors: boolean;
+	IrrelevantCageModifiedPreview: boolean;
+	MeshHoleDetectedPreview: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly MeshNoHoleDetected: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly NoIrrelevantCageModified: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly NoOuterCageFarExtendedFromMesh: boolean;
+	OuterCageFarExtendedFromMeshPreview: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly PolygonCount: number;
+	UseImportedPivot: boolean;
+}
+
+interface RootImportData extends BaseImportData {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RootImportData: unique symbol;
+	AddModelToInventory: boolean;
+	Anchored: boolean;
+	AnimationIdForRestPose: number;
+	ExistingPackageId: string;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly FileDimensions: Vector3;
+	ImportAsModelAsset: boolean;
+	ImportAsPackage: boolean;
+	InsertInWorkspace: boolean;
+	InsertWithScenePosition: boolean;
+	InvertNegativeFaces: boolean;
+	MergeMeshes: boolean;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly PolygonCount: number;
+	RestPose: Enum.RestPose;
+	RigScale: Enum.RigScale;
+	RigType: Enum.RigType;
+	ScaleUnit: Enum.MeshScaleUnit;
+	UseSceneOriginAsCFrame: boolean;
+	UseSceneOriginAsPivot: boolean;
+	UsesCages: boolean;
+	WorldForward: Enum.NormalId;
+	WorldUp: Enum.NormalId;
+}
+
 /** The BasePlayerGui is an abstract class that all GUI drawing storage classes inherit from. */
 interface BasePlayerGui extends Instance {
 	/**
@@ -3210,7 +3389,7 @@ interface PlayerGui extends BasePlayerGui {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	SetTopbarTransparency(this: PlayerGui, transparency: number): void;
+	SetTopbarTransparency(this: PlayerGui, transparency: number): null;
 	/**
 	 * Fires when the transparency of the Topbar CoreGui changes.
 	 * Tags: Deprecated
@@ -3925,7 +4104,7 @@ interface StarterGui extends BasePlayerGui {
 	 * 
 	 * For more information on how to use this function, see the article on [disabling the game interface](https://developer.roblox.com/en-us/articles/disabling-parts-of-game-interface).
 	 */
-	SetCoreGuiEnabled(this: StarterGui, coreGuiType: CastsToEnum<Enum.CoreGuiType>, enabled: boolean): void;
+	SetCoreGuiEnabled(this: StarterGui, coreGuiType: CastsToEnum<Enum.CoreGuiType>, enabled: boolean): null;
 	/**
 	 * GetCore returns data set or made available by Roblox's [CoreScripts](https://developer.roblox.com/en-us/api-reference/class/CoreScript). The first and only parameter is a string that selects the information to be fetched. The following sections describe the strings and the data they return by this function.
 	 * 
@@ -4506,7 +4685,7 @@ interface Beam extends Instance {
 	 * *   If the [Beam.Texture](https://developer.roblox.com/en-us/api-reference/property/Beam/Texture) property is not set, this function will do nothing
 	 * *   Increasing the offset will act in the inverse direction to the [Beam.TextureSpeed](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureSpeed) property. Meaning, it will move the texture in the opposite direction to the direction the texture animates when [Beam.TextureSpeed](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureSpeed) is more than 0
 	 */
-	SetTextureOffset(this: Beam, offset?: number): void;
+	SetTextureOffset(this: Beam, offset?: number): null;
 }
 
 /** An object that allows events defined in one server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script) to be subscribed to by another script for one-way communication.
@@ -5214,11 +5393,11 @@ interface RocketPropulsion extends BodyMover {
 	/**
 	 * Causes the Rocket to stop moving towards its target, making it fall.
 	 */
-	Abort(this: RocketPropulsion): void;
+	Abort(this: RocketPropulsion): null;
 	/**
 	 * Causes the rocket to fly towards Target.
 	 */
-	Fire(this: RocketPropulsion): void;
+	Fire(this: RocketPropulsion): null;
 	/**
 	 * Fired when the Rocket comes within TargetRadius of the Target. This is used to make the rocket work, such as make an explosion when it flies near the Target.
 	 */
@@ -5245,6 +5424,17 @@ interface BulkImportService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_BulkImportService: unique symbol;
+}
+
+interface CSGOptions extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CSGOptions: unique symbol;
 }
 
 interface CalloutService extends Instance {
@@ -5667,7 +5857,7 @@ interface Camera extends Instance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	Interpolate(this: Camera, endPos: CFrame, endFocus: CFrame, duration: number): void;
+	Interpolate(this: Camera, endPos: CFrame, endFocus: CFrame, duration: number): null;
 	/**
 	 * This function pans the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) around the [Camera.Focus](https://developer.roblox.com/en-us/api-reference/property/Camera/Focus) in 45 degree increments around the Y axis.
 	 * 
@@ -5682,7 +5872,7 @@ interface Camera extends Instance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	PanUnits(this: Camera, units: number): void;
+	PanUnits(this: Camera, units: number): null;
 	/**
 	 * This function creates a unit [Ray](https://developer.roblox.com/en-us/api-reference/datatype/Ray) from a 2D position on the screen (defined in pixels). This position accounts for the GUI inset. The [Ray](https://developer.roblox.com/en-us/api-reference/datatype/Ray) originates from the [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) equivalent of the 2D position in the world at the given depth (in studs) away from the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera).
 	 * 
@@ -5703,7 +5893,7 @@ interface Camera extends Instance {
 	 * 
 	 * SetCameraPan mode has no effect on PC / Mac users.
 	 */
-	SetCameraPanMode(this: Camera, mode?: CastsToEnum<Enum.CameraPanMode>): void;
+	SetCameraPanMode(this: Camera, mode?: CastsToEnum<Enum.CameraPanMode>): null;
 	/**
 	 * This function is outdated and no longer considered best practice.
 	 * 
@@ -5727,7 +5917,7 @@ interface Camera extends Instance {
 	 * local rollCFrame = CFrame.Angles(0, 0, roll)
 	 * workspace.CurrentCamera.CFrame = currentCFrame \* rollCFrame
 	 */
-	SetRoll(this: Camera, rollAngle: number): void;
+	SetRoll(this: Camera, rollAngle: number): null;
 	/**
 	 * This function 'tilts' the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) by rotating it around the [Camera.Focus](https://developer.roblox.com/en-us/api-reference/property/Camera/Focus) around the [Camera's](https://developer.roblox.com/en-us/api-reference/class/Camera) X axis by a given multiple of 10 degrees.
 	 * 
@@ -5807,7 +5997,7 @@ interface Camera extends Instance {
 	 * Note this function does not perform any raycasting, meaning the visible bool will be true regardless if the _worldPoint_ is obscured by [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain).
 	 */
 	WorldToViewportPoint(this: Camera, worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
-	ZoomToExtents(this: Camera, boundingBoxCFrame: CFrame, boundingBoxSize: Vector3): void;
+	ZoomToExtents(this: Camera, boundingBoxCFrame: CFrame, boundingBoxSize: Vector3): null;
 	/**
 	 * This event fires when the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) has finished interpolating using the [Camera:Interpolate](https://developer.roblox.com/en-us/api-reference/function/Camera/Interpolate) function.
 	 * 
@@ -6120,7 +6310,7 @@ interface Chat extends Instance {
 	 * 
 	 * _Note:_ Since dialogs are controlled by a LocalScript, you will not be able to see any dialogs created from this method unless you are running in _Play Solo_ mode.
 	 */
-	Chat(this: Chat, partOrCharacter: BasePart | Model, message: string, color?: CastsToEnum<Enum.ChatColor>): void;
+	Chat(this: Chat, partOrCharacter: BasePart | Model, message: string, color?: CastsToEnum<Enum.ChatColor>): null;
 	/**
 	 * InvokeChatCallback will call a function registered by [RegisterChatCallback](https://developer.roblox.com/en-us/api-reference/function/Chat/RegisterChatCallback), given the ChatCallbackType enum and the arguments to send the function. It will return the result of the registered function, or raise an error if no function has been registered.
 	 * 
@@ -6153,7 +6343,7 @@ interface Chat extends Instance {
 	 * *   Set `message.ShouldDeliver` to false in order to cancel delivery of the message to players (useful for implementing a chat blacklist)
 	 * *   Get/set the speaker's name color (`message.ExtraData.NameColor`, a Color3) on a message-by-message basis
 	 */
-	RegisterChatCallback(this: Chat, callbackType: CastsToEnum<Enum.ChatCallbackType>, callbackFunction: Callback): void;
+	RegisterChatCallback(this: Chat, callbackType: CastsToEnum<Enum.ChatCallbackType>, callbackFunction: Callback): null;
 	/**
 	 * **Note**  
 	 * 
@@ -6167,7 +6357,7 @@ interface Chat extends Instance {
 	 * 
 	 * This function is client-side only, attempting to call it on the server will trigger an error.
 	 */
-	SetBubbleChatSettings(this: Chat, settings: unknown): void;
+	SetBubbleChatSettings(this: Chat, settings: unknown): null;
 	/**
 	 * Will return false if the player with the specified [Player.UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) is not allowed to chat because of their account settings.
 	 * Tags: Yields
@@ -6383,7 +6573,7 @@ interface CollectionService extends Instance {
 	 * 
 	 * **Warning:** When tagging an object, it is common that some resources are used to give the tag its functionality, e.g. event connections or tables. To prevent memory leaks, it is a good idea to clean these up (disconnect, set to nil, etc) when no longer needed for a tag. Do this when calling [CollectionService:RemoveTag](https://developer.roblox.com/en-us/api-reference/function/CollectionService/RemoveTag), calling [Instance:Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) or in a function connected to a signal returned by [CollectionService:GetInstanceRemovedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceRemovedSignal).
 	 */
-	AddTag(this: CollectionService, instance: Instance, tag: string): void;
+	AddTag(this: CollectionService, instance: Instance, tag: string): null;
 	GetAllTags(this: CollectionService): unknown;
 	/**
 	 * GetInstanceAdded is given a tag (a string) and returns a signal which fires under two conditions:
@@ -6440,7 +6630,7 @@ interface CollectionService extends Instance {
 	 * 
 	 * When removing a tag, it is common that some resources are used to give the tag its functionality, e.g. event connections or tables. To prevent memory leaks, it is a good idea to clean these up (disconnect, set to nil, etc) when no longer needed for a tag.
 	 */
-	RemoveTag(this: CollectionService, instance: Instance, tag: string): void;
+	RemoveTag(this: CollectionService, instance: Instance, tag: string): null;
 	/**
 	 * This function fires when a [Configuration](https://developer.roblox.com/en-us/api-reference/class/Configuration), [CustomEvent](https://developer.roblox.com/en-us/api-reference/class/CustomEvent), [CustomEventReceiver](https://developer.roblox.com/en-us/api-reference/class/CustomEventReceiver), [Dialog](https://developer.roblox.com/en-us/api-reference/class/Dialog), or [VehicleSeat](https://developer.roblox.com/en-us/api-reference/class/VehicleSeat) is added to the [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel).
 	 * Tags: Deprecated, [object Object]
@@ -7895,13 +8085,13 @@ interface ContentProvider extends Instance {
 	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
-	Preload(this: ContentProvider, contentId: string): void;
-	RegisterDefaultEncryptionKey(this: ContentProvider, encryptionKey: string): void;
-	RegisterDefaultSessionKey(this: ContentProvider, sessionKey: string): void;
-	RegisterEncryptedAsset(this: ContentProvider, assetId: string, encryptionKey: string): void;
-	RegisterSessionEncryptedAsset(this: ContentProvider, contentId: string, sessionKey: string): void;
-	UnregisterDefaultEncryptionKey(this: ContentProvider): void;
-	UnregisterEncryptedAsset(this: ContentProvider, assetId: string): void;
+	Preload(this: ContentProvider, contentId: string): null;
+	RegisterDefaultEncryptionKey(this: ContentProvider, encryptionKey: string): null;
+	RegisterDefaultSessionKey(this: ContentProvider, sessionKey: string): null;
+	RegisterEncryptedAsset(this: ContentProvider, assetId: string, encryptionKey: string): null;
+	RegisterSessionEncryptedAsset(this: ContentProvider, contentId: string, sessionKey: string): null;
+	UnregisterDefaultEncryptionKey(this: ContentProvider): null;
+	UnregisterEncryptedAsset(this: ContentProvider, assetId: string): null;
 	/**
 	 * Yields until all of the assets associated with the given [Instances](https://developer.roblox.com/en-us/api-reference/class/Instance) have loaded and takes an array of [Instances](https://developer.roblox.com/en-us/api-reference/class/Instance) as a parameter.
 	 * 
@@ -8053,13 +8243,13 @@ interface ContextActionService extends Instance {
 	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
-	BindActionToInputTypes(this: ContextActionService, actionName: string, functionToBind: Callback, createTouchButton: boolean, inputTypes: Array<any>): void;
+	BindActionToInputTypes(this: ContextActionService, actionName: string, functionToBind: Callback, createTouchButton: boolean, inputTypes: Array<any>): null;
 	/**
 	 * Bind an [KeyCode](https://developer.roblox.com/en-us/api-reference/enum/KeyCode) that can be used with an [UserInputType](https://developer.roblox.com/en-us/api-reference/enum/UserInputType) to activate [ClickDetector](https://developer.roblox.com/en-us/api-reference/class/ClickDetector) events and [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) objects. When the given key/button is pressed, it fires the [Mouse.Button1Down](https://developer.roblox.com/en-us/api-reference/event/Mouse/Button1Down) event on the mouse sent to [Tool.Equipped](https://developer.roblox.com/en-us/api-reference/event/Tool/Equipped). This in turn fires the [Tool.Activated](https://developer.roblox.com/en-us/api-reference/event/Tool/Activated) event if [Tool.ManualActivationOnly](https://developer.roblox.com/en-us/api-reference/property/Tool/ManualActivationOnly) is not set to true. For gamepad input, this function is called by the default control scripts in order to bind the ButtonR2 [KeyCode](https://developer.roblox.com/en-us/api-reference/enum/KeyCode).
 	 * 
 	 * Note that the [UserInputType](https://developer.roblox.com/en-us/api-reference/enum/UserInputType) specified must be `Keyboard` or `Gamepad1` through `Gamepad8` in order to be valid.
 	 */
-	BindActivate(this: ContextActionService, userInputTypeForActivation: CastsToEnum<Enum.UserInputType>, keyCodesForActivation: Array<any>): void;
+	BindActivate(this: ContextActionService, userInputTypeForActivation: CastsToEnum<Enum.UserInputType>, keyCodesForActivation: Array<any>): null;
 	/**
 	 * GetAllBoundActioninfo returns a table which maps all actions' names (those originally passed to [BindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction)) to a table returned by [GetBoundActionInfo](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/GetBoundActionInfo) when called with the action name itself. Using this function, you can inspect all presently bound actions. This is useful when debugging their priority levels or stack orders.
 	 */
@@ -8128,39 +8318,39 @@ interface ContextActionService extends Instance {
 	 * 
 	 * Although the name may suggest that this method is related to the family of functions that customize a touch button for actions that create them ([SetTitle](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/SetTitle), [SetImage](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/SetImage) and [SetPosition](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/SetPosition)), this method does not affect such a button. This method merely sets a text description of an action, and nothing more.
 	 */
-	SetDescription(this: ContextActionService, actionName: string, description: string): void;
+	SetDescription(this: ContextActionService, actionName: string, description: string): null;
 	/**
 	 * SetPosition will set the text shown on a touch button created by [BindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction). Specifically, this sets the [ImageLabel.Image](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/Image) property of the [ImageLabel](https://developer.roblox.com/en-us/api-reference/class/ImageLabel) within the [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) that would be returned by [GetButton](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/GetButton). If no such bound action exists (e.g. nothing is returned by GetButton), this function does nothing and throws no error.
 	 * 
 	 * This function is part of a family of methods that customize the touch button of an action. Others in this family include [SetPosition](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/SetPosition) and [SetTitle](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/SetTitle).
 	 */
-	SetImage(this: ContextActionService, actionName: string, image: string): void;
+	SetImage(this: ContextActionService, actionName: string, image: string): null;
 	/**
 	 * SetPosition will set the text shown on a touch button created by [BindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction). Specifically, this sets the [GuiObject.Position](https://developer.roblox.com/en-us/api-reference/property/GuiObject/Position) property of the [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) that would be returned by [GetButton](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/GetButton). If no such bound action exists (e.g. nothing is returned by GetButton), this function does nothing and throws no error.
 	 * 
 	 * This function is part of a family of methods that customize the touch button of an action. Others in this family include [SetImage](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/SetImage) and [SetTitle](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/SetTitle).
 	 */
-	SetPosition(this: ContextActionService, actionName: string, position: UDim2): void;
+	SetPosition(this: ContextActionService, actionName: string, position: UDim2): null;
 	/**
 	 * SetTitle will set the text shown on a touch button created by [BindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction). Specifically, this sets the [TextLabel.Text](https://developer.roblox.com/en-us/api-reference/property/TextLabel/Text) property of a [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel) within the [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) that would be returned by [GetButton](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/GetButton). If no such bound action exists (e.g. nothing is returned by GetButton), this function does nothing and throws no error.
 	 * 
 	 * This function is part of a family of methods that customize the touch button of an action. Others in this family include [SetImage](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/SetImage) and [SetPosition](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/SetPosition).
 	 */
-	SetTitle(this: ContextActionService, actionName: string, title: string): void;
+	SetTitle(this: ContextActionService, actionName: string, title: string): null;
 	/**
 	 * UnbindAction will unbind an action by name from user inputs so that the action handler function will no longer be called. Call this function when the context for some action is no longer applicable, such as closing a user interface, exiting a car or [unequipping](https://developer.roblox.com/en-us/api-reference/event/Tool/Unequipped) a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool). See [BindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction) for more information on how bound actions operate.
 	 * 
 	 * This function **will not** throw an error if there is no such action bound with the given string. Using [GetAllBoundActionInfo](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/GetAllBoundActionInfo) or the Developer Console's “Action Bindings” tab, you can find out what actions are presently bound.
 	 */
-	UnbindAction(this: ContextActionService, actionName: string): void;
+	UnbindAction(this: ContextActionService, actionName: string): null;
 	/**
 	 * UnbindActivate unbinds an [KeyCode](https://developer.roblox.com/en-us/api-reference/enum/KeyCode) used with an [UserInputType](https://developer.roblox.com/en-us/api-reference/enum/UserInputType) for activating a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) (or a [HopperBin](https://developer.roblox.com/en-us/api-reference/class/HopperBin)) using [BindActivate](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindActivate). This function essentially undoes the action performed by that function.
 	 */
-	UnbindActivate(this: ContextActionService, userInputTypeForActivation: CastsToEnum<Enum.UserInputType>, keyCodeForActivation?: CastsToEnum<Enum.KeyCode>): void;
+	UnbindActivate(this: ContextActionService, userInputTypeForActivation: CastsToEnum<Enum.UserInputType>, keyCodeForActivation?: CastsToEnum<Enum.KeyCode>): null;
 	/**
 	 * Removes all functions bound. No actionNames will remain. All touch buttons will be removed. If a button was manipulated manually there is no guarantee it will be cleaned up.
 	 */
-	UnbindAllActions(this: ContextActionService): void;
+	UnbindAllActions(this: ContextActionService): null;
 	/**
 	 * GetButton returns the [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) created by [BindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction) if its third parameter was true and the device is [TouchEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/TouchEnabled). The only parameter to this function must match exactly the name of the action originally sent to BindAction.
 	 * 
@@ -8191,7 +8381,7 @@ interface Controller extends Instance {
 	/**
 	 * Activates an overriding bind on the specified button.
 	 */
-	BindButton(this: Controller, button: CastsToEnum<Enum.Button>, caption: string): void;
+	BindButton(this: Controller, button: CastsToEnum<Enum.Button>, caption: string): null;
 	/**
 	 * Returns whether or not Button is being pressed.
 	 */
@@ -8199,7 +8389,7 @@ interface Controller extends Instance {
 	/**
 	 * Removes the bind on button.
 	 */
-	UnbindButton(this: Controller, button: CastsToEnum<Enum.Button>): void;
+	UnbindButton(this: Controller, button: CastsToEnum<Enum.Button>): null;
 	/**
 	 * Fired when the pressed state of a bound button is changed. This event can be used in conjunction with [Controller:GetButton](https://developer.roblox.com/en-us/api-reference/function/Controller/GetButton) to see whether a bound button is being pressed down or not.
 	 */
@@ -8289,6 +8479,7 @@ interface AirController extends ControllerBase {
 	BalanceMaxTorque: number;
 	BalanceRigidityEnabled: boolean;
 	BalanceSpeed: number;
+	LinearImpulse: Vector3;
 	MaintainAngularMomentum: boolean;
 	MaintainLinearMomentum: boolean;
 	MoveMaxForce: number;
@@ -8296,6 +8487,10 @@ interface AirController extends ControllerBase {
 	OrientationSpeedFactor: number;
 	TurningMaxTorque: number;
 	TurningSpeedFactor: number;
+	/**
+	 * Tags: Hidden, NotReplicated, Deprecated
+	 * @deprecated
+	 */
 	VectorForce: Vector3;
 }
 
@@ -8339,6 +8534,7 @@ interface GroundController extends ControllerBase {
 	GroundOffset: number;
 	StandForce: number;
 	StandSpeed: number;
+	TurnSpeedFactor: number;
 	TurningFactor: number;
 }
 
@@ -8723,7 +8919,7 @@ interface DataStoreIncrementOptions extends Instance {
 	 * 
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 */
-	SetMetadata(this: DataStoreIncrementOptions, attributes: object): void;
+	SetMetadata(this: DataStoreIncrementOptions, attributes: object): null;
 }
 
 /** Object describing data store information such as name, created time, and time last updated. This object is a member of the [DataStoreListingPages](https://developer.roblox.com/en-us/api-reference/class/DataStoreListingPages) object returned by [DataStoreService:ListDataStoresAsync](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/ListDataStoresAsync).
@@ -8945,7 +9141,7 @@ interface DataStoreOptions extends Instance {
 	 * 
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 */
-	SetExperimentalFeatures(this: DataStoreOptions, experimentalFeatures: object): void;
+	SetExperimentalFeatures(this: DataStoreOptions, experimentalFeatures: object): null;
 }
 
 /** **DataStoreService** exposes methods for getting [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) and [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore) objects. Data stores can only be accessed by game servers, so you can only use [DataStoreService](https://developer.roblox.com/en-us/api-reference/class/DataStoreService) within a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or a [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) that is used by a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
@@ -9026,7 +9222,7 @@ interface DataStoreSetOptions extends Instance {
 	 * 
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 */
-	SetMetadata(this: DataStoreSetOptions, attributes: object): void;
+	SetMetadata(this: DataStoreSetOptions, attributes: object): null;
 }
 
 /** The Debris service allows the developer to schedule the removal of the object without yielding any code, through the usage of the [Debris:AddItem](https://developer.roblox.com/en-us/api-reference/function/Debris/AddItem) method.
@@ -9105,7 +9301,7 @@ interface Debris extends Instance {
 	 * 
 	 * Debris does not yield the current thread, does not require a new thread and will not error if the object is already destroyed. For this reason it is the recommended method for cleaning up objects with a fixed lifetime.
 	 */
-	AddItem(this: Debris, item: Instance, lifetime?: number): void;
+	AddItem(this: Debris, item: Instance, lifetime?: number): null;
 }
 
 interface DebuggablePluginWatcher extends Instance {
@@ -9355,7 +9551,7 @@ interface Dragger extends Instance {
 	/**
 	 * Rotates the currently dragged part(s) by 90 degrees on the given axis.
 	 */
-	AxisRotate(this: Dragger, axis?: CastsToEnum<Enum.Axis>): void;
+	AxisRotate(this: Dragger, axis?: CastsToEnum<Enum.Axis>): null;
 	/**
 	 * Initializes a dragging action, specifying which parts to use when dragging.
 	 */
@@ -9363,11 +9559,11 @@ interface Dragger extends Instance {
 	/**
 	 * Tries to move the currently dragged part to the point where MouseRay hits another part.
 	 */
-	MouseMove(this: Dragger, mouseRay: Ray): void;
+	MouseMove(this: Dragger, mouseRay: Ray): null;
 	/**
 	 * Stops the current dragging action (made by [MouseDown](https://developer.roblox.com/api-reference/function/Dragger/MouseDown "MouseDown"))
 	 */
-	MouseUp(this: Dragger): void;
+	MouseUp(this: Dragger): null;
 }
 
 interface DraggerService extends Instance {
@@ -10278,7 +10474,7 @@ interface GamepadService extends Instance {
 	 */
 	readonly _nominal_GamepadService: unique symbol;
 	readonly GamepadCursorEnabled: boolean;
-	DisableGamepadCursor(this: GamepadService): void;
+	DisableGamepadCursor(this: GamepadService): null;
 	EnableGamepadCursor(this: GamepadService, guiObject: GuiObject | undefined): void;
 }
 
@@ -10514,7 +10710,7 @@ interface DataStore extends GlobalDataStore {
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 * Tags: Yields
 	 */
-	RemoveVersionAsync(this: DataStore, key: string, version: string): void;
+	RemoveVersionAsync(this: DataStore, key: string, version: string): null;
 }
 
 /** A **OrderedDataStore** is essentially a [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) with the exception that stored values must be **positive integers**. It exposes a method [GetSortedAsync()](https://developer.roblox.com/en-us/api-reference/function/OrderedDataStore/GetSortedAsync) which allows inspection of the entries in sorted order using a [DataStorePages](https://developer.roblox.com/en-us/api-reference/class/DataStorePages) object.
@@ -12637,7 +12833,7 @@ interface TextBox extends GuiObject {
 	/**
 	 * Forces the client to focus on the TextBox.
 	 */
-	CaptureFocus(this: TextBox): void;
+	CaptureFocus(this: TextBox): null;
 	/**
 	 * Returns true if the textbox is focused, or false if it is not.
 	 */
@@ -12665,7 +12861,7 @@ interface TextBox extends GuiObject {
 	 * 
 	 * Please be aware that the above example assumes that it's in a LocalScript, as a child of a TextBox.
 	 */
-	ReleaseFocus(this: TextBox, submitted?: boolean): void;
+	ReleaseFocus(this: TextBox, submitted?: boolean): null;
 	/**
 	 * The FocusLost event fires when the client lets their focus off the TextBox - typically when a client clicks/taps on a TextBox to begin text entry. This also fires if a TextBox forces focus on the user.
 	 * 
@@ -12755,11 +12951,11 @@ interface VideoFrame extends GuiObject {
 	 * 
 	 * As [VideoFrame.TimePosition](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/TimePosition) is not reset, when the video is resumed it will continue from its previous position.
 	 */
-	Pause(this: VideoFrame): void;
+	Pause(this: VideoFrame): null;
 	/**
 	 * Sets [VideoFrame.Playing](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Playing) to true, This plays the [VideoFrame.Video](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Video), continuing from the current [VideoFrame.TimePosition](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/TimePosition).
 	 */
-	Play(this: VideoFrame): void;
+	Play(this: VideoFrame): null;
 	/**
 	 * An event that fires whenever the [VideoFrame.Video](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Video) loops. Returns the content ID of the video.
 	 */
@@ -13737,10 +13933,10 @@ interface WireframeHandleAdornment extends HandleAdornment {
 	 */
 	readonly _nominal_WireframeHandleAdornment: unique symbol;
 	Scale: Vector3;
-	AddLine(this: WireframeHandleAdornment, from: Vector3, to: Vector3): void;
-	AddLines(this: WireframeHandleAdornment, points: Array<any>): void;
-	AddPath(this: WireframeHandleAdornment, points: Array<any>, loop: boolean): void;
-	Clear(this: WireframeHandleAdornment): void;
+	AddLine(this: WireframeHandleAdornment, from: Vector3, to: Vector3): null;
+	AddLines(this: WireframeHandleAdornment, points: Array<any>): null;
+	AddPath(this: WireframeHandleAdornment, points: Array<any>, loop: boolean): null;
+	Clear(this: WireframeHandleAdornment): null;
 }
 
 /** A special type of Adornment that is still a work in progress.  
@@ -14058,7 +14254,7 @@ interface GuiService extends Instance {
 	 * *   [GuiService:InspectPlayerFromHumanoidDescription](https://developer.roblox.com/en-us/api-reference/function/GuiService/InspectPlayerFromHumanoidDescription), allows a developer to bring up the Inspect menu showing the assets listed in this [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) object. This is especially useful when what is being worn on a player's avatar on the Roblox platform is not necessarily the same as their in-game appearance
 	 * *   [GuiService:InspectPlayerFromUserId](https://developer.roblox.com/en-us/api-reference/function/GuiService/InspectPlayerFromUserId), allows the Inspect Menu to appear showing the user that has the given [UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId). This is especially useful when you want to inspect players who aren't in the current game
 	 */
-	CloseInspectMenu(this: GuiService): void;
+	CloseInspectMenu(this: GuiService): null;
 	/**
 	 * Returns a boolean indicating whether or not the player Emotes menu is open.
 	 * 
@@ -14122,7 +14318,7 @@ interface GuiService extends Instance {
 	 * *   `GuiService:SetInspectMenuEnabled`, allows developers to enable or disable default Inspect and Buy functionality. This is especially useful when what is being worn on a player's avatar on the Roblox platform is not necessarily the same as their in-game appearance
 	 * *   [GuiService:InspectPlayerFromHumanoidDescription](https://developer.roblox.com/en-us/api-reference/function/GuiService/InspectPlayerFromHumanoidDescription), allows a developer to bring up the Inspect menu showing the assets listed in this [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) object
 	 */
-	InspectPlayerFromUserId(this: GuiService, userId: number): void;
+	InspectPlayerFromUserId(this: GuiService, userId: number): null;
 	/**
 	 * Returns true if the client is using the ten foot interface, which is a special version of Roblox's UI, exclusive to consoles.
 	 * 
@@ -14132,12 +14328,12 @@ interface GuiService extends Instance {
 	/**
 	 * Removes a group that was created with [GuiService:AddSelectionParent](https://developer.roblox.com/en-us/api-reference/function/GuiService/AddSelectionParent) or [GuiService:AddSelectionTuple](https://developer.roblox.com/en-us/api-reference/function/GuiService/AddSelectionTuple).
 	 */
-	RemoveSelectionGroup(this: GuiService, selectionName: string): void;
+	RemoveSelectionGroup(this: GuiService, selectionName: string): null;
 	Select(this: GuiService, selectionParent: Instance): void;
 	/**
 	 * Opens or closes the player Emotes menu.
 	 */
-	SetEmotesMenuOpen(this: GuiService, isOpen: boolean): void;
+	SetEmotesMenuOpen(this: GuiService, isOpen: boolean): null;
 	/**
 	 * This method allows developers to disable the built-in notification when a players gameplay is paused. They can then add in their own UI if they wish to customize it.
 	 * 
@@ -14148,7 +14344,7 @@ interface GuiService extends Instance {
 	 * 
 	 * *   [Workspace.StreamingPauseMode](https://developer.roblox.com/en-us/api-reference/property/Workspace/StreamingPauseMode), controls which streaming physics pause mode is active
 	 */
-	SetGameplayPausedNotificationEnabled(this: GuiService, enabled: boolean): void;
+	SetGameplayPausedNotificationEnabled(this: GuiService, enabled: boolean): null;
 	/**
 	 * This function allows developers to enable or disable default Inspect and Buy functionality. This is useful when you want to disable the feature in your game, entirely or during certain parts of your game (such as a cutscene). The feature is enabled by default.
 	 * 
@@ -14164,7 +14360,7 @@ interface GuiService extends Instance {
 	 * *   [GuiService:InspectPlayerFromHumanoidDescription](https://developer.roblox.com/en-us/api-reference/function/GuiService/InspectPlayerFromHumanoidDescription), allows a developer to bring up the Inspect menu showing the assets listed in this [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription) object. This is especially useful when what is being worn on a player's avatar on the Roblox platform is not necessarily the same as their in-game appearance
 	 * *   [GuiService:InspectPlayerFromUserId](https://developer.roblox.com/en-us/api-reference/function/GuiService/InspectPlayerFromUserId), allows the Inspect Menu to appear showing the user that has the given [UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId). This is especially useful when you want to inspect players who aren't in the current game
 	 */
-	SetInspectMenuEnabled(this: GuiService, enabled: boolean): void;
+	SetInspectMenuEnabled(this: GuiService, enabled: boolean): null;
 	/**
 	 * Fires when the user **closes** the Roblox coregui escape menu.
 	 */
@@ -15037,7 +15233,7 @@ interface Humanoid extends Instance {
 	 * 
 	 * If the required [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) can not be found, then the [Accessory](https://developer.roblox.com/en-us/api-reference/class/Accessory) will remain parented to the [Humanoid's](https://developer.roblox.com/en-us/api-reference/class/Humanoid) parent but it will be unattached.
 	 */
-	AddAccessory(this: Humanoid, accessory: Accessory): void;
+	AddAccessory(this: Humanoid, accessory: Accessory): null;
 	/**
 	 * Adds a BoolValue to the Humanoid's _Status_ object, whose name is equal to the string passed as the _status_ argument. If the status already exists, a new BoolValue will not be created.
 	 * Tags: Deprecated
@@ -15057,7 +15253,7 @@ interface Humanoid extends Instance {
 	 * 
 	 * See the provided code sample below to see how this function works.
 	 */
-	BuildRigFromAttachments(this: Humanoid): void;
+	BuildRigFromAttachments(this: Humanoid): null;
 	/**
 	 * This function causes the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) to enter the given [HumanoidStateType](https://developer.roblox.com/en-us/api-reference/enum/HumanoidStateType).
 	 * 
@@ -15076,7 +15272,7 @@ interface Humanoid extends Instance {
 	 * *   To enable or disable a particular state use [Humanoid:SetStateEnabled](https://developer.roblox.com/en-us/api-reference/function/Humanoid/SetStateEnabled)
 	 * *   To get the current state use [Humanoid:GetState](https://developer.roblox.com/en-us/api-reference/function/Humanoid/GetState)
 	 */
-	ChangeState(this: Humanoid, state?: CastsToEnum<Enum.HumanoidStateType>): void;
+	ChangeState(this: Humanoid, state?: CastsToEnum<Enum.HumanoidStateType>): null;
 	/**
 	 * This function makes the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) equip the given [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool).
 	 * 
@@ -15104,7 +15300,7 @@ interface Humanoid extends Instance {
 	 * 
 	 * *   To unequip tools, use [Humanoid:UnequipTools](https://developer.roblox.com/en-us/api-reference/function/Humanoid/UnequipTools)
 	 */
-	EquipTool(this: Humanoid, tool: Tool): void;
+	EquipTool(this: Humanoid, tool: Tool): null;
 	/**
 	 * This function returns an array of [Accessories](https://developer.roblox.com/en-us/api-reference/class/Accessory) that the [Humanoid's](https://developer.roblox.com/en-us/api-reference/class/Humanoid) parent is currently wearing. All [Accessory](https://developer.roblox.com/en-us/api-reference/class/Accessory) objects parented to the [Humanoid's](https://developer.roblox.com/en-us/api-reference/class/Humanoid) parent will be included, regardless of if they are attached or not. If the humanoid is not wearing any accessories, the array will be empty.
 	 * 
@@ -15249,7 +15445,7 @@ interface Humanoid extends Instance {
 	 * *   To make a[Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) walk to a point, use the [Humanoid:MoveTo](https://developer.roblox.com/en-us/api-reference/function/Humanoid/MoveTo) function
 	 * *   For [Players](https://developer.roblox.com/en-us/api-reference/class/Player) the [Player:Move](https://developer.roblox.com/en-us/api-reference/function/Player/Move) function exists that calls this function
 	 */
-	Move(this: Humanoid, moveDirection: Vector3, relativeToCamera?: boolean): void;
+	Move(this: Humanoid, moveDirection: Vector3, relativeToCamera?: boolean): null;
 	/**
 	 * This function causes the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) to attempt to walk to the given location by setting the [Humanoid.WalkToPoint](https://developer.roblox.com/en-us/api-reference/property/Humanoid/WalkToPoint) and [Humanoid.WalkToPart](https://developer.roblox.com/en-us/api-reference/property/Humanoid/WalkToPart) properties.
 	 * 
@@ -15259,7 +15455,7 @@ interface Humanoid extends Instance {
 	 * 
 	 * The _reach goal_ state of a humanoid will timeout after 8 seconds if it doesn't reach its goal. This is done so that NPCs won't get stuck waiting for [Humanoid.MoveToFinished](https://developer.roblox.com/en-us/api-reference/event/Humanoid/MoveToFinished) to fire. If you don't want this to happen, you should repeatedly call MoveTo so that the timeout will keep resetting.
 	 */
-	MoveTo(this: Humanoid, location: Vector3, part?: BasePart): void;
+	MoveTo(this: Humanoid, location: Vector3, part?: BasePart): null;
 	/**
 	 * This function removes all [Accessories](https://developer.roblox.com/en-us/api-reference/class/Accessory) worn by the [Humanoid's](https://developer.roblox.com/en-us/api-reference/class/Humanoid) parent. When this function is called, all [Accessories](https://developer.roblox.com/en-us/api-reference/class/Accessory) sharing an [Instance.Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) with the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) will be removed. For [Player](https://developer.roblox.com/en-us/api-reference/class/Player) [Characters](https://developer.roblox.com/en-us/api-reference/property/Player/Character) this will remove all hats and other accessories.
 	 * 
@@ -15271,7 +15467,7 @@ interface Humanoid extends Instance {
 	 * *   To attach an [Accessory](https://developer.roblox.com/en-us/api-reference/class/Accessory) use the [Humanoid:AddAccessory](https://developer.roblox.com/en-us/api-reference/function/Humanoid/AddAccessory) function
 	 * *   To get all [Accessories](https://developer.roblox.com/en-us/api-reference/class/Accessory) belonging to a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) use the [Humanoid:GetAccessories](https://developer.roblox.com/en-us/api-reference/function/Humanoid/GetAccessories) function
 	 */
-	RemoveAccessories(this: Humanoid): void;
+	RemoveAccessories(this: Humanoid): null;
 	/**
 	 * The RemoveCustomStatus function removes the defined custom status from the Status model in the Humanoid…
 	 * Tags: Deprecated
@@ -15299,7 +15495,7 @@ interface Humanoid extends Instance {
 	 * 
 	 * When a particular [HumanoidStateType](https://developer.roblox.com/en-us/api-reference/enum/HumanoidStateType) is disabled, the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) can never enter that state. This is true regardless if the attempt to change state is made using [Humanoid:ChangeState](https://developer.roblox.com/en-us/api-reference/function/Humanoid/ChangeState) or Roblox internal [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) code.
 	 */
-	SetStateEnabled(this: Humanoid, state: CastsToEnum<Enum.HumanoidStateType>, enabled: boolean): void;
+	SetStateEnabled(this: Humanoid, state: CastsToEnum<Enum.HumanoidStateType>, enabled: boolean): null;
 	/**
 	 * This function lowers the [Humanoid.Health](https://developer.roblox.com/en-us/api-reference/property/Humanoid/Health) of the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) by the given _amount_ if it is not protected by a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField)
 	 * 
@@ -15318,7 +15514,7 @@ interface Humanoid extends Instance {
 	 * 
 	 * For more information on how [ForceFields](https://developer.roblox.com/en-us/api-reference/class/ForceField) protect [Humanoids](https://developer.roblox.com/en-us/api-reference/class/Humanoid) see the [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField) page
 	 */
-	TakeDamage(this: Humanoid, amount: number): void;
+	TakeDamage(this: Humanoid, amount: number): null;
 	/**
 	 * This function unequips any [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) currently equipped by the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid)
 	 * 
@@ -15333,7 +15529,7 @@ interface Humanoid extends Instance {
 	 * 
 	 * *   To instead equip a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool), use [Humanoid:EquipTool](https://developer.roblox.com/en-us/api-reference/function/Humanoid/EquipTool)
 	 */
-	UnequipTools(this: Humanoid): void;
+	UnequipTools(this: Humanoid): null;
 	/**
 	 * This yield function makes the [character's](https://developer.roblox.com/en-us/api-reference/property/Player/Character) look match that of the passed in [HumanoidDescription](https://developer.roblox.com/en-us/api-reference/class/HumanoidDescription). A copy of the passed look will then be cached in the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) as the current HumanoidDescription for the Humanoid.
 	 * 
@@ -15348,11 +15544,11 @@ interface Humanoid extends Instance {
 	 * *   [Player:LoadCharacterWithHumanoidDescription](https://developer.roblox.com/en-us/api-reference/function/Player/LoadCharacterWithHumanoidDescription), spawns a player with the look from the HumanoidDescription Instance passed in
 	 * Tags: Yields
 	 */
-	ApplyDescription(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
+	ApplyDescription(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): null;
 	/**
 	 * Tags: Yields
 	 */
-	ApplyDescriptionReset(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
+	ApplyDescriptionReset(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): null;
 	/**
 	 * If the emote could not be played because the emoteName is not found in the HumanoidDescription for the humanoid or the Humanoid is in the wrong HumanoidState for emotes then this API would return false to indicate that the emote was not played. The API would return true to indicate that the emote was played successfully.
 	 * Tags: Yields
@@ -16120,7 +16316,7 @@ interface HumanoidDescription extends Instance {
 	 * *   [SetEmotes](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/SetEmotes) and [RemoveEmote](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/RemoveEmote), which also manipulate what emotes have been added
 	 * *   [EmotesChanged](https://developer.roblox.com/en-us/api-reference/event/HumanoidDescription/EmotesChanged), which fires after this function is called
 	 */
-	AddEmote(this: HumanoidDescription, name: string, assetId: number): void;
+	AddEmote(this: HumanoidDescription, name: string, assetId: number): null;
 	/**
 	 * Returns a table of an avatar's current accessories. If the second parameter (includeRigidAccessories) is true then the returned table will also include entries for rigid accessories from the rigid accessory properties.
 	 */
@@ -16182,11 +16378,11 @@ interface HumanoidDescription extends Instance {
 	 * *   [SetEmotes](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/SetEmotes) and [AddEmote](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/AddEmote), which can add emotes that may be removed
 	 * *   [GetEmotes](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/GetEmotes), which can retrieve a dictionary of emotes that may be removed
 	 */
-	RemoveEmote(this: HumanoidDescription, name: string): void;
+	RemoveEmote(this: HumanoidDescription, name: string): null;
 	/**
 	 * Accepts a table that sets the accessories and related properties for an avatar. If the second parameter (includeRigidAccessories) is true, then this function can also be used to set the rigid accessories in the rigid accessory properties. In this case any table entry that does not have an Order will be considered a rigid accessory and put in the appropriate property according to the AccessoryType.
 	 */
-	SetAccessories(this: HumanoidDescription, accessories: Array<any>, includeRigidAccessories: boolean): void;
+	SetAccessories(this: HumanoidDescription, accessories: Array<any>, includeRigidAccessories: boolean): null;
 	/**
 	 * **SetEmotes** sets all of the emotes on this description given a table similar to that returned by [GetEmotes](https://developer.roblox.com/en-us/api-reference/function/HumanoidDescription/GetEmotes). It fires [EmotesChanged](https://developer.roblox.com/en-us/api-reference/event/HumanoidDescription/EmotesChanged)
 	 * 
@@ -16354,191 +16550,14 @@ interface ImageDataExperimental extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly TemporaryId: string;
-	Clear(this: ImageDataExperimental): void;
-	DrawCircle(this: ImageDataExperimental, center: Vector2, radius: number, color: Color3, alpha: number): void;
-	Resize(this: ImageDataExperimental, newSize: Vector2): void;
-	Rotate(this: ImageDataExperimental, degrees: number, resizeCanvas?: boolean): void;
+	Clear(this: ImageDataExperimental): null;
+	DrawCircle(this: ImageDataExperimental, center: Vector2, radius: number, color: Color3, alpha: number): null;
+	Resize(this: ImageDataExperimental, newSize: Vector2): null;
+	Rotate(this: ImageDataExperimental, degrees: number, resizeCanvas?: boolean): null;
 	/**
 	 * Tags: Yields
 	 */
-	PopulateFromImageAsync(this: ImageDataExperimental, textureId: string): void;
-}
-
-interface ImporterBaseSettings extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ImporterBaseSettings: unique symbol;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly Id: string;
-	ImportName: string;
-	ShouldImport: boolean;
-}
-
-interface ImporterAnimationSettings extends ImporterBaseSettings {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ImporterAnimationSettings: unique symbol;
-}
-
-interface ImporterFacsSettings extends ImporterBaseSettings {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ImporterFacsSettings: unique symbol;
-}
-
-interface ImporterGroupSettings extends ImporterBaseSettings {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ImporterGroupSettings: unique symbol;
-	Anchored: boolean;
-	ImportAsModelAsset: boolean;
-	InsertInWorkspace: boolean;
-}
-
-interface ImporterJointSettings extends ImporterBaseSettings {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ImporterJointSettings: unique symbol;
-}
-
-interface ImporterMaterialSettings extends ImporterBaseSettings {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ImporterMaterialSettings: unique symbol;
-	DiffuseFilePath: string;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly IsPbr: boolean;
-	MetalnessFilePath: string;
-	NormalFilePath: string;
-	RoughnessFilePath: string;
-}
-
-interface ImporterMeshSettings extends ImporterBaseSettings {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ImporterMeshSettings: unique symbol;
-	Anchored: boolean;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly CageManifold: boolean;
-	CageMeshIntersectedPreview: boolean;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly CageMeshNotIntersected: boolean;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly CageNoOverlappingVertices: boolean;
-	CageNonManifoldPreview: boolean;
-	CageOverlappingVerticesPreview: boolean;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly CageUVMatched: boolean;
-	CageUVMisMatchedPreview: boolean;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly Dimensions: Vector3;
-	DoubleSided: boolean;
-	IgnoreVertexColors: boolean;
-	IrrelevantCageModifiedPreview: boolean;
-	MeshHoleDetectedPreview: boolean;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly MeshNoHoleDetected: boolean;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly NoIrrelevantCageModified: boolean;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly NoOuterCageFarExtendedFromMesh: boolean;
-	OuterCageFarExtendedFromMeshPreview: boolean;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly PolygonCount: number;
-	UseImportedPivot: boolean;
-}
-
-interface ImporterRootSettings extends ImporterBaseSettings {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ImporterRootSettings: unique symbol;
-	AddModelToInventory: boolean;
-	Anchored: boolean;
-	ExistingPackageId: string;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly FileDimensions: Vector3;
-	ImportAsModelAsset: boolean;
-	ImportAsPackage: boolean;
-	InsertInWorkspace: boolean;
-	InsertWithScenePosition: boolean;
-	InvertNegativeFaces: boolean;
-	MergeMeshes: boolean;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly PolygonCount: number;
-	RigScale: Enum.RigScale;
-	RigType: Enum.RigType;
-	ScaleUnit: Enum.MeshScaleUnit;
-	UseSceneOriginAsCFrame: boolean;
-	UseSceneOriginAsPivot: boolean;
-	UsesCages: boolean;
-	WorldForward: Enum.NormalId;
-	WorldUp: Enum.NormalId;
+	PopulateFromImageAsync(this: ImageDataExperimental, textureId: string): null;
 }
 
 interface IncrementalPatchBuilder extends Instance {
@@ -18206,18 +18225,18 @@ interface InsertService extends Instance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	ApproveAssetId(this: InsertService, assetId: number): void;
+	ApproveAssetId(this: InsertService, assetId: number): null;
 	/**
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	ApproveAssetVersionId(this: InsertService, assetVersionId: number): void;
+	ApproveAssetVersionId(this: InsertService, assetVersionId: number): null;
 	/**
 	 * The Insert function is an ancient method used to insert an [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance) into Workspace.
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	Insert(this: InsertService, instance: Instance): void;
+	Insert(this: InsertService, instance: Instance): null;
 	/**
 	 * Tags: Yields, Deprecated, [object Object]
 	 * @deprecated
@@ -18642,7 +18661,7 @@ interface Motor extends JointInstance {
 	/**
 	 * Sets [Motor.DesiredAngle](https://developer.roblox.com/en-us/api-reference/property/Motor/DesiredAngle) of the motor.
 	 */
-	SetDesiredAngle(this: Motor, value: number): void;
+	SetDesiredAngle(this: Motor, value: number): null;
 }
 
 /** **Motor6D** joins two [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) ([Part0](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part0) and [Part1](https://developer.roblox.com/en-us/api-reference/property/JointInstance/Part1)) together in an animatable way. The [Transform](https://developer.roblox.com/en-us/api-reference/property/Motor6D/Transform) property determines the offset between these parts. This can be set manually using [RunService.Stepped](https://developer.roblox.com/en-us/api-reference/event/RunService/Stepped) or through an [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator).
@@ -18788,11 +18807,11 @@ interface JointsService extends Instance {
 	/**
 	 * Will remove any 'create joints' that were made visible via the [JointsService:ShowPermissibleJoints](https://developer.roblox.com/en-us/api-reference/function/JointsService/ShowPermissibleJoints) method.
 	 */
-	ClearJoinAfterMoveJoints(this: JointsService): void;
+	ClearJoinAfterMoveJoints(this: JointsService): null;
 	/**
 	 * Updates all visible joints for the parts assigned by the [JointsService:SetJoinAfterMoveTarget](https://developer.roblox.com/en-us/api-reference/function/JointsService/SetJoinAfterMoveTarget) and [JointsService:SetJoinAfterMoveInstance](https://developer.roblox.com/en-us/api-reference/function/JointsService/SetJoinAfterMoveInstance) methods.
 	 */
-	CreateJoinAfterMoveJoints(this: JointsService): void;
+	CreateJoinAfterMoveJoints(this: JointsService): null;
 	/**
 	 * Sets the PVInstance that will be connected with the target PVInstance specified by [JointsService:SetJoinAfterMoveTarget](https://developer.roblox.com/en-us/api-reference/function/JointsService/SetJoinAfterMoveTarget).
 	 */
@@ -18804,7 +18823,7 @@ interface JointsService extends Instance {
 	/**
 	 * When used it will visibly display a potential surface connection between the two [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart), which were set with [JointsService:SetJoinAfterMoveTarget](https://developer.roblox.com/en-us/api-reference/function/JointsService/SetJoinAfterMoveTarget) and [JointsService:SetJoinAfterMoveInstance](https://developer.roblox.com/en-us/api-reference/function/JointsService/SetJoinAfterMoveInstance).
 	 */
-	ShowPermissibleJoints(this: JointsService): void;
+	ShowPermissibleJoints(this: JointsService): null;
 }
 
 /** A Keyframe holds the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s applied to joints in a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) at a given point of time in an animation. [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe)s are interpolated between during animation playback.
@@ -18863,7 +18882,7 @@ interface Keyframe extends Instance {
 	 * 
 	 * Note, this function will not error when an instance other than a [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) is given as the pose parameter and will parent it successfully.
 	 */
-	AddPose(this: Keyframe, pose: Pose): void;
+	AddPose(this: Keyframe, pose: Pose): null;
 	/**
 	 * This function returns an array containing all [KeyframeMarkers](https://developer.roblox.com/en-us/api-reference/class/KeyframeMarker) that have been added to the [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe). Note, this function will only return [instances](https://developer.roblox.com/en-us/api-reference/class/Instance) of type KeyframeMarker.
 	 * 
@@ -18915,7 +18934,7 @@ interface Keyframe extends Instance {
 	 * 
 	 * Note, this function will not error when an instance other than a [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) is given as the pose parameter.
 	 */
-	RemovePose(this: Keyframe, pose: Pose): void;
+	RemovePose(this: Keyframe, pose: Pose): null;
 }
 
 /** A KeyframeMarker is an instance meant to represent an event that will eventually be fired when a [Keyframe](https://developer.roblox.com/en-us/api-reference/class/Keyframe) is hit.
@@ -19604,7 +19623,7 @@ interface Lighting extends Instance {
 	 * 	wait()
 	 * end
 	 */
-	SetMinutesAfterMidnight(this: Lighting, minutes: number): void;
+	SetMinutesAfterMidnight(this: Lighting, minutes: number): null;
 	/**
 	 * This event fires when a [Lighting](https://developer.roblox.com/en-us/api-reference/class/Lighting) property is changed or a [Sky](https://developer.roblox.com/en-us/api-reference/class/Sky) is added or removed from [Lighting](https://developer.roblox.com/en-us/api-reference/class/Lighting).
 	 * 
@@ -20844,11 +20863,11 @@ interface LocalizationTable extends Instance {
 	/**
 	 * Removes an entry from the LocalizationTable, using the specified _key_, _source_, and _context_ to narrow down the specific entry to be removed.
 	 */
-	RemoveEntry(this: LocalizationTable, key: string, source: string, context: string): void;
+	RemoveEntry(this: LocalizationTable, key: string, source: string, context: string): null;
 	/**
 	 * Removes a single language translation from the LocalizationTable, using the provided _key_, _source_, _context_, and _localeId_ to narrow down the specific entry to be removed.
 	 */
-	RemoveEntryValue(this: LocalizationTable, key: string, source: string, context: string, localeId: string): void;
+	RemoveEntryValue(this: LocalizationTable, key: string, source: string, context: string, localeId: string): null;
 	/**
 	 * Deprecated in favor of [LocalizationTable:RemoveEntry](https://developer.roblox.com/en-us/api-reference/function/LocalizationTable/RemoveEntry).
 	 * 
@@ -20858,17 +20877,17 @@ interface LocalizationTable extends Instance {
 	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
-	RemoveKey(this: LocalizationTable, key: string): void;
+	RemoveKey(this: LocalizationTable, key: string): null;
 	/**
 	 * Removes all translations from the LocalizationTable with the specified localeId.
 	 */
-	RemoveTargetLocale(this: LocalizationTable, localeId: string): void;
+	RemoveTargetLocale(this: LocalizationTable, localeId: string): null;
 	/**
 	 * The SetContents function sets the contents of the LocalizationTable, via the legacy JSON format.
 	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
-	SetContents(this: LocalizationTable, contents: string): void;
+	SetContents(this: LocalizationTable, contents: string): null;
 	/**
 	 * Sets the contents of the LocalizationTable.
 	 * 
@@ -20879,27 +20898,27 @@ interface LocalizationTable extends Instance {
 	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
-	SetEntry(this: LocalizationTable, key: string, targetLocaleId: string, text: string): void;
+	SetEntry(this: LocalizationTable, key: string, targetLocaleId: string, text: string): null;
 	/**
 	 * Sets the **Context** field of a LocalizationTable entry to _newContext_, using the specified _key_, _source_, and _context_ to narrow down the entry that will have this change applied.
 	 */
-	SetEntryContext(this: LocalizationTable, key: string, source: string, context: string, newContext: string): void;
+	SetEntryContext(this: LocalizationTable, key: string, source: string, context: string, newContext: string): null;
 	/**
 	 * Sets the **Example** field of a LocalizationTable entry to _example_, using the specified _key_, _source_, and _context_ to narrow down the entry that will have this change applied.
 	 */
-	SetEntryExample(this: LocalizationTable, key: string, source: string, context: string, example: string): void;
+	SetEntryExample(this: LocalizationTable, key: string, source: string, context: string, example: string): null;
 	/**
 	 * Sets the **Key** field of a LocalizationTable entry to _newKey_, using the specified _key_, _source_, and _context_ to narrow down the entry that will have this change applied.
 	 */
-	SetEntryKey(this: LocalizationTable, key: string, source: string, context: string, newKey: string): void;
+	SetEntryKey(this: LocalizationTable, key: string, source: string, context: string, newKey: string): null;
 	/**
 	 * Sets the **Source** field of a LocalizationTable entry to _newSource_, using the specified _key_, _source_, and _context_ to narrow down the entry that will have this change applied.
 	 */
-	SetEntrySource(this: LocalizationTable, key: string, source: string, context: string, newSource: string): void;
+	SetEntrySource(this: LocalizationTable, key: string, source: string, context: string, newSource: string): null;
 	/**
 	 * Sets the text of the specified localeId in a LocalizationTable entry, using the specified _key_, _source_, and _context_ to narrow down the entry that will have this change applied.
 	 */
-	SetEntryValue(this: LocalizationTable, key: string, source: string, context: string, localeId: string, text: string): void;
+	SetEntryValue(this: LocalizationTable, key: string, source: string, context: string, localeId: string, text: string): null;
 }
 
 interface CloudLocalizationTable extends LocalizationTable {
@@ -21166,11 +21185,11 @@ interface MarketplaceService extends Instance {
 	/**
 	 * Used to prompt a user to purchase a bundle with the given bundleId
 	 */
-	PromptBundlePurchase(this: MarketplaceService, player: Player, bundleId: number): void;
+	PromptBundlePurchase(this: MarketplaceService, player: Player, bundleId: number): null;
 	/**
 	 * Used to prompt a user to purchase a game pass with the given assetId.
 	 */
-	PromptGamePassPurchase(this: MarketplaceService, player: Player, gamePassId: number): void;
+	PromptGamePassPurchase(this: MarketplaceService, player: Player, gamePassId: number): null;
 	/**
 	 * Used to prompt a user to purchase Premium. If the user is already premium, the user will receive an error message “You are already subscribed to Roblox Premium! Please try again.”
 	 * 
@@ -21184,7 +21203,7 @@ interface MarketplaceService extends Instance {
 	 * *   [MarketplaceService.PromptPremiumPurchaseFinished](https://developer.roblox.com/en-us/api-reference/event/MarketplaceService/PromptPremiumPurchaseFinished), fires when the Premium purchase UI closes
 	 * *   [Players.PlayerMembershipChanged](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerMembershipChanged), fires when the game server recognizes that a player's membership has changed
 	 */
-	PromptPremiumPurchase(this: MarketplaceService, player: Player): void;
+	PromptPremiumPurchase(this: MarketplaceService, player: Player): null;
 	/**
 	 * Used to prompt a user to purchase a product with the given product id.
 	 */
@@ -21213,8 +21232,8 @@ interface MarketplaceService extends Instance {
 		equipIfPurchased?: boolean,
 		currencyType?: CastsToEnum<Enum.CurrencyType>,
 	): void;
-	PromptSubscriptionCancellation(this: MarketplaceService, player: Player, subscriptionId: number): void;
-	PromptSubscriptionPurchase(this: MarketplaceService, player: Player, subscriptionId: number): void;
+	PromptSubscriptionCancellation(this: MarketplaceService, player: Player, subscriptionId: number): null;
+	PromptSubscriptionPurchase(this: MarketplaceService, player: Player, subscriptionId: number): null;
 	/**
 	 * Returns a [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object which contains information for all of the current game's developer products.
 	 * Tags: Yields
@@ -21584,7 +21603,7 @@ interface MaterialService extends Instance {
 	readonly _nominal_MaterialService: unique symbol;
 	GetBaseMaterialOverride(this: MaterialService, material: CastsToEnum<Enum.Material>): string;
 	GetMaterialVariant(this: MaterialService, material: CastsToEnum<Enum.Material>, name: string): MaterialVariant;
-	SetBaseMaterialOverride(this: MaterialService, material: CastsToEnum<Enum.Material>, name: string): void;
+	SetBaseMaterialOverride(this: MaterialService, material: CastsToEnum<Enum.Material>, name: string): null;
 }
 
 interface MaterialVariant extends Instance {
@@ -21618,7 +21637,7 @@ interface MemoryStoreQueue extends Instance {
 	 * Adds an item to the queue.
 	 * Tags: Yields
 	 */
-	AddAsync(this: MemoryStoreQueue, value: unknown, expiration: number, priority?: number): void;
+	AddAsync(this: MemoryStoreQueue, value: unknown, expiration: number, priority?: number): null;
 	/**
 	 * Reads one or more items from the queue as a single atomic operation.
 	 * 
@@ -21635,7 +21654,7 @@ interface MemoryStoreQueue extends Instance {
 	 * Removes an item or items previously read from the queue. This method uses the identifier returned by [MemoryStoreQueue:ReadAsync](https://developer.roblox.com/en-us/api-reference/function/MemoryStoreQueue/ReadAsync) to identify the items to remove. If called after the invisibility timeout has expired, the call has no effect.
 	 * Tags: Yields
 	 */
-	RemoveAsync(this: MemoryStoreQueue, id: string): void;
+	RemoveAsync(this: MemoryStoreQueue, id: string): null;
 }
 
 /** A top-level singleton class which exposes methods to access specific primitives within the MemoryStoreService. Use it for any data that rapidly changes that other servers can restore, such as global leaderboards, matchmaking queues, and auction houses.
@@ -21695,7 +21714,7 @@ interface MemoryStoreSortedMap extends Instance {
 	 * For a more in-depth look, take a look at the [Memory Store](https://developer.roblox.com/en-us/articles/memory-store) article.
 	 * Tags: Yields
 	 */
-	RemoveAsync(this: MemoryStoreSortedMap, key: string): void;
+	RemoveAsync(this: MemoryStoreSortedMap, key: string): null;
 	/**
 	 * Sets the value of the key overwriting any existing key value.
 	 * Tags: Yields
@@ -21738,7 +21757,7 @@ interface MeshDataExperimental extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	PopulateFromMeshAsync(this: MeshDataExperimental, meshId: string): void;
+	PopulateFromMeshAsync(this: MeshDataExperimental, meshId: string): null;
 }
 
 interface MessageBusConnection extends Instance {
@@ -21818,7 +21837,7 @@ interface MessagingService extends Instance {
 	 * *   [MessagingService:SubscribeAsync](https://developer.roblox.com/en-us/api-reference/function/MessagingService/SubscribeAsync), begins listening to the given topic
 	 * Tags: Yields
 	 */
-	PublishAsync(this: MessagingService, topic: string, message: unknown): void;
+	PublishAsync(this: MessagingService, topic: string, message: unknown): null;
 	/**
 	 * This function registers a callback to begin listening to the given topic. The callback is invoked when a topic receives a message. It can be called multiple times for the same topic.
 	 * 
@@ -22434,7 +22453,7 @@ interface PVInstance extends Instance {
 	 * 
 	 * [Models](https://developer.roblox.com/en-us/api-reference/class/Model) and [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) are both [PVInstances](https://developer.roblox.com/en-us/api-reference/class/PVInstance) (“Position Velocity Instances”) and so both have this function.
 	 */
-	PivotTo(this: PVInstance, targetCFrame: CFrame): void;
+	PivotTo(this: PVInstance, targetCFrame: CFrame): null;
 }
 
 /** BasePart is an abstract base class for in-world objects that render and are physically simulated while in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). There are several implementations of BasePart, the most common is [Part](https://developer.roblox.com/en-us/api-reference/class/Part), a simple 6-face rectangular prism. Others include [SpawnLocation](https://developer.roblox.com/en-us/api-reference/class/SpawnLocation), [WedgePart](https://developer.roblox.com/en-us/api-reference/class/WedgePart) and the singleton [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) object within the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). Most of the time, when documentation refers to a part, most BasePart implementations will work and not just [Part](https://developer.roblox.com/en-us/api-reference/class/Part).
@@ -23157,7 +23176,7 @@ interface BasePart extends PVInstance {
 	 * 
 	 * If the part is owned by the server, this function must be called on a server [Script](https://developer.roblox.com/en-us/api-reference/class/Script). If the part is owned by a client, this function must be called on a \`LocalScript\`\`.
 	 */
-	ApplyAngularImpulse(this: BasePart, impulse: Vector3): void;
+	ApplyAngularImpulse(this: BasePart, impulse: Vector3): null;
 	/**
 	 * This function applies an instant force impulse to this [part's](https://developer.roblox.com/en-us/api-reference/class/BasePart) assembly.
 	 * 
@@ -23167,7 +23186,7 @@ interface BasePart extends PVInstance {
 	 * 
 	 * If the part is owned by the server, this function must be called on a server [Script](https://developer.roblox.com/en-us/api-reference/class/Script). If the part is owned by a client, this function must be called on a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 */
-	ApplyImpulse(this: BasePart, impulse: Vector3): void;
+	ApplyImpulse(this: BasePart, impulse: Vector3): null;
 	/**
 	 * This function pplies an instant force impulse to this [part's](https://developer.roblox.com/en-us/api-reference/class/BasePart) assembly, at the specified position in world space.
 	 * 
@@ -23177,13 +23196,13 @@ interface BasePart extends PVInstance {
 	 * 
 	 * If the part is owned by the server, this function must be called on a server [Script](https://developer.roblox.com/en-us/api-reference/class/Script). If the part is owned by a client, this function must be called on a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 */
-	ApplyImpulseAtPosition(this: BasePart, impulse: Vector3, position: Vector3): void;
+	ApplyImpulseAtPosition(this: BasePart, impulse: Vector3, position: Vector3): null;
 	/**
 	 * Breaks any surface connection with any adjacent part, including [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld) and other [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance).
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	BreakJoints(this: BasePart): void;
+	BreakJoints(this: BasePart): null;
 	/**
 	 * Returns whether the parts can collide with each other or not. This function takes into account the collision groups of the two parts.
 	 * 
@@ -23293,7 +23312,7 @@ interface BasePart extends PVInstance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	MakeJoints(this: BasePart): void;
+	MakeJoints(this: BasePart): null;
 	/**
 	 * Changes the size of an object just like using the Studio resize tool.
 	 */
@@ -23614,7 +23633,7 @@ interface Seat extends Part {
 	/**
 	 * Forces the character with the specified [Humanoid](https://developer.roblox.com/api-reference/class/Humanoid "Humanoid") to sit in the Seat.
 	 */
-	Sit(this: Seat, humanoid: Humanoid): void;
+	Sit(this: Seat, humanoid: Humanoid): null;
 	/**
 	 * Tags: Hidden
 	 */
@@ -23660,7 +23679,7 @@ interface SkateboardPlatform extends Part {
 	/**
 	 * Adds ''impulseWorld'' to the SkateboardPlatform's [BasePart.Velocity](https://developer.roblox.com/en-us/api-reference/property/BasePart/Velocity).
 	 */
-	ApplySpecificImpulse(this: SkateboardPlatform, impulseWorld: Vector3): void;
+	ApplySpecificImpulse(this: SkateboardPlatform, impulseWorld: Vector3): null;
 	/**
 	 * Fired when the skateboard is equipped.
 	 */
@@ -23823,7 +23842,7 @@ interface Terrain extends BasePart {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	AutowedgeCells(this: Terrain, region: Region3int16): void;
+	AutowedgeCells(this: Terrain, region: Region3int16): null;
 	/**
 	 * Returns the world position of the center of the terrain cell (x, y, z).
 	 */
@@ -23835,7 +23854,7 @@ interface Terrain extends BasePart {
 	/**
 	 * Clears the terrain.
 	 */
-	Clear(this: Terrain): void;
+	Clear(this: Terrain): null;
 	/**
 	 * Stores a chunk of terrain into a [TerrainRegion](https://developer.roblox.com/en-us/api-reference/class/TerrainRegion) object so it can be loaded back later. Note: [TerrainRegion](https://developer.roblox.com/en-us/api-reference/class/TerrainRegion) data does not replicate between server and client.
 	 */
@@ -23847,11 +23866,11 @@ interface Terrain extends BasePart {
 	/**
 	 * Fills a ball of smooth terrain in a given space.
 	 */
-	FillBall(this: Terrain, center: Vector3, radius: number, material: CastsToEnum<Enum.Material>): void;
+	FillBall(this: Terrain, center: Vector3, radius: number, material: CastsToEnum<Enum.Material>): null;
 	/**
 	 * Fills a block of smooth terrain with a given location, rotation, size, and material.
 	 */
-	FillBlock(this: Terrain, cframe: CFrame, size: Vector3, material: CastsToEnum<Enum.Material>): void;
+	FillBlock(this: Terrain, cframe: CFrame, size: Vector3, material: CastsToEnum<Enum.Material>): null;
 	/**
 	 * Fills a cylinder of smooth terrain in a given space. The space is defined using a CFrame, height, and radius.
 	 * 
@@ -23860,11 +23879,11 @@ interface Terrain extends BasePart {
 	 * 
 	 * workspace.Terrain:FillCylinder(CFrame.new(0, 50, 0), 5, 30, Enum.Material.Asphalt)
 	 */
-	FillCylinder(this: Terrain, cframe: CFrame, height: number, radius: number, material: CastsToEnum<Enum.Material>): void;
+	FillCylinder(this: Terrain, cframe: CFrame, height: number, radius: number, material: CastsToEnum<Enum.Material>): null;
 	/**
 	 * Fills a [Region3](https://developer.roblox.com/api-reference/datatype/Region3 "Region3") space with smooth terrain.
 	 */
-	FillRegion(this: Terrain, region: Region3, resolution: number, material: CastsToEnum<Enum.Material>): void;
+	FillRegion(this: Terrain, region: Region3, resolution: number, material: CastsToEnum<Enum.Material>): null;
 	/**
 	 * **FillWedge** fills a wedge-shaped volume of Terrain with the given [Material](https://developer.roblox.com/en-us/api-reference/enum/Material) and the area's CFrame and Size. The orientation of the wedge is the same as an equivalent [WedgePart](https://developer.roblox.com/en-us/api-reference/class/WedgePart).
 	 * 
@@ -23874,7 +23893,7 @@ interface Terrain extends BasePart {
 	 * 
 	 * workspace.Terrain:FillWedge(CFrame.new(0, 50, 0), Vector3.new(20, 20, 20), Enum.Material.Asphalt)
 	 */
-	FillWedge(this: Terrain, cframe: CFrame, size: Vector3, material: CastsToEnum<Enum.Material>): void;
+	FillWedge(this: Terrain, cframe: CFrame, size: Vector3, material: CastsToEnum<Enum.Material>): null;
 	/**
 	 * Returns the closest CellMaterial from the legacy terrain engine that matches the smooth terrain voxel specified. CellBlock will always be ''Solid'' and CellOrientation will always be ''NegZ''.
 	 * Tags: Deprecated
@@ -23894,7 +23913,7 @@ interface Terrain extends BasePart {
 	/**
 	 * Applies a chunk of terrain to the Terrain object. Note: [TerrainRegion](https://developer.roblox.com/en-us/api-reference/class/TerrainRegion) data does not replicate between server and client.
 	 */
-	PasteRegion(this: Terrain, region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): void;
+	PasteRegion(this: Terrain, region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): null;
 	/**
 	 * Returns a certain region of [smooth terrain](https://developer.roblox.com/articles/Intro-To-Terrain) in [table format](https://developer.roblox.com/articles/Scripting-With-Terrain#reading-and-writing-voxels). Both of the returned arrays have an additional `Size` property, a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3).
 	 * Tags: CustomLuaState
@@ -23912,7 +23931,7 @@ interface Terrain extends BasePart {
 	 * 
 	 * When calling this method, the `resolution` parameter must be exactly 4. Additionally, the Region3 must be aligned to the terrain materials grid, i.e. the components of the Region3's minimum and maximum points must be divisible by 4. Use `Region3:ExpandToGrid` to make a region compatible with this function.
 	 */
-	ReplaceMaterial(this: Terrain, region: Region3, resolution: number, sourceMaterial: CastsToEnum<Enum.Material>, targetMaterial: CastsToEnum<Enum.Material>): void;
+	ReplaceMaterial(this: Terrain, region: Region3, resolution: number, sourceMaterial: CastsToEnum<Enum.Material>, targetMaterial: CastsToEnum<Enum.Material>): null;
 	/**
 	 * Sets the occupancy of the specified terrain voxel to 1, and sets it's material to the closest smooth terrain material that matches the CellMaterial.
 	 * 
@@ -23920,7 +23939,7 @@ interface Terrain extends BasePart {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	SetCell(this: Terrain, x: number, y: number, z: number, material: CastsToEnum<Enum.CellMaterial>, block: CastsToEnum<Enum.CellBlock>, orientation: CastsToEnum<Enum.CellOrientation>): void;
+	SetCell(this: Terrain, x: number, y: number, z: number, material: CastsToEnum<Enum.CellMaterial>, block: CastsToEnum<Enum.CellBlock>, orientation: CastsToEnum<Enum.CellOrientation>): null;
 	/**
 	 * Sets the occupancy of all terrain voxels in the specified region to 1, and sets their materials to the closest smooth terrain material that matches the CellMaterial.
 	 * 
@@ -23928,11 +23947,11 @@ interface Terrain extends BasePart {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	SetCells(this: Terrain, region: Region3int16, material: CastsToEnum<Enum.CellMaterial>, block: CastsToEnum<Enum.CellBlock>, orientation: CastsToEnum<Enum.CellOrientation>): void;
+	SetCells(this: Terrain, region: Region3int16, material: CastsToEnum<Enum.CellMaterial>, block: CastsToEnum<Enum.CellBlock>, orientation: CastsToEnum<Enum.CellOrientation>): null;
 	/**
 	 * Sets current terrain material color for specified terrain material. Terrain material will shift its base color toward specified color.
 	 */
-	SetMaterialColor(this: Terrain, material: CastsToEnum<Enum.Material>, value: Color3): void;
+	SetMaterialColor(this: Terrain, material: CastsToEnum<Enum.Material>, value: Color3): null;
 	/**
 	 * Sets the specified terrain voxel's material to ''Water'' and sets its occupancy to 1. _WaterDirection_ and _WaterForce_ no longer have any effect.
 	 * 
@@ -23940,7 +23959,7 @@ interface Terrain extends BasePart {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	SetWaterCell(this: Terrain, x: number, y: number, z: number, force: CastsToEnum<Enum.WaterForce>, direction: CastsToEnum<Enum.WaterDirection>): void;
+	SetWaterCell(this: Terrain, x: number, y: number, z: number, force: CastsToEnum<Enum.WaterForce>, direction: CastsToEnum<Enum.WaterDirection>): null;
 	/**
 	 * Returns the grid cell location that contains the point **position**.
 	 */
@@ -24107,7 +24126,7 @@ interface MeshPart extends TriangleMeshPart {
 	 * A mesh can only be textured if the mesh has been UV mapped. UV mapping refers to the practice of projecting a texture map onto a mesh. This cannot be done using Roblox Studio and has to be done using an external 3D modelling application such as [Blender](https://www.blender.org/).
 	 */
 	TextureID: string;
-	ApplyMesh(this: MeshPart, meshPart: MeshPart): void;
+	ApplyMesh(this: MeshPart, meshPart: MeshPart): null;
 }
 
 /** An abstract class that all parts based on [solid modeling](https://developer.roblox.com/en-us/articles/3d-modeling-with-parts) inherit from. */
@@ -24295,7 +24314,7 @@ interface VehicleSeat extends BasePart {
 	/**
 	 * Forces the character with the specified [Humanoid](https://developer.roblox.com/api-reference/class/Humanoid "Humanoid") to sit in the VehicleSeat.
 	 */
-	Sit(this: VehicleSeat, humanoid: Humanoid): void;
+	Sit(this: VehicleSeat, humanoid: Humanoid): null;
 	/**
 	 * Tags: Hidden
 	 */
@@ -24358,7 +24377,7 @@ interface Model extends PVInstance {
 	 * Tags: NotReplicated
 	 */
 	WorldPivot: CFrame;
-	AddPersistentPlayer(this: Model, playerInstance?: Player): void;
+	AddPersistentPlayer(this: Model, playerInstance?: Player): null;
 	/**
 	 * Breaks connections between `BaseParts`, including surface connections with any adjacent parts, [WeldConstraint](https://developer.roblox.com/en-us/api-reference/class/WeldConstraint)s, and all [Weld](https://developer.roblox.com/en-us/api-reference/class/Weld)s and other [JointInstance](https://developer.roblox.com/en-us/api-reference/class/JointInstance)s.
 	 * 
@@ -24368,7 +24387,7 @@ interface Model extends PVInstance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	BreakJoints(this: Model): void;
+	BreakJoints(this: Model): null;
 	/**
 	 * This function returns a description of a volume that contains all [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) children within a [Model](https://developer.roblox.com/en-us/api-reference/class/Model). The volume's orientation is based on the orientation of the [PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart), and matches the selection box rendered in Studio when the model is selected. The description is provided in the form of a [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) **orientation** and [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) **size**.
 	 * 
@@ -24449,7 +24468,7 @@ interface Model extends PVInstance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	MakeJoints(this: Model): void;
+	MakeJoints(this: Model): null;
 	/**
 	 * Moves the [Model.PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart) to the given position. If a primary part has not been specified then the root part of the model will be used. Because the root part is not deterministic, it is recommended to always set a [Model.PrimaryPart](https://developer.roblox.com/en-us/api-reference/property/Model/PrimaryPart) when using MoveTo.
 	 * 
@@ -24457,21 +24476,21 @@ interface Model extends PVInstance {
 	 * 
 	 * Note that rotation is not preserved when moving a model with MoveTo. It is recommended to use either [Model:TranslateBy](https://developer.roblox.com/en-us/api-reference/function/Model/TranslateBy) or [Model:SetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/SetPrimaryPartCFrame) if the current rotation of the model needs to be preserved.
 	 */
-	MoveTo(this: Model, position: Vector3): void;
-	RemovePersistentPlayer(this: Model, playerInstance?: Player): void;
+	MoveTo(this: Model, position: Vector3): null;
+	RemovePersistentPlayer(this: Model, playerInstance?: Player): null;
 	/**
 	 * Resets the rotation of the model's parts to the previously set identity rotation, which is done through the [Model:SetIdentityOrientation](https://developer.roblox.com/en-us/api-reference/function/Model/SetIdentityOrientation) method.
 	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
-	ResetOrientationToIdentity(this: Model): void;
-	ScaleTo(this: Model, newScaleFactor: number): void;
+	ResetOrientationToIdentity(this: Model): null;
+	ScaleTo(this: Model, newScaleFactor: number): null;
 	/**
 	 * Sets the identity rotation of the given model, allowing you to reset the rotation of the entire model later, through the use of the `ResetOrientationToIdentity` method.
 	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
-	SetIdentityOrientation(this: Model): void;
+	SetIdentityOrientation(this: Model): null;
 	/**
 	 * This function has been superseded by [PVInstance:PivotTo](https://developer.roblox.com/en-us/api-reference/function/PVInstance/PivotTo) which acts as a more performant replacement and does not change your code's behavior. Use [PVInstance:PivotTo](https://developer.roblox.com/en-us/api-reference/function/PVInstance/PivotTo) for new work and migrate your existing [Model:SetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/SetPrimaryPartCFrame) calls when convenient.
 	 * 
@@ -24489,13 +24508,13 @@ interface Model extends PVInstance {
 	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
-	SetPrimaryPartCFrame(this: Model, cframe: CFrame): void;
+	SetPrimaryPartCFrame(this: Model, cframe: CFrame): null;
 	/**
 	 * Shifts a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) by the given `Vector3` offset, preserving the [Model](https://developer.roblox.com/en-us/api-reference/class/Model)'s orientation. If another [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) already exists at the new position then the [Model](https://developer.roblox.com/en-us/api-reference/class/Model) will overlap said object.
 	 * 
 	 * The translation is applied in world space rather than object space, meaning even if the model's parts are orientated differently it will still move along the standard axis.
 	 */
-	TranslateBy(this: Model, delta: Vector3): void;
+	TranslateBy(this: Model, delta: Vector3): null;
 }
 
 /** This is the Actor Class */
@@ -24510,7 +24529,7 @@ interface Actor extends Model {
 	readonly _nominal_Actor: unique symbol;
 	BindToMessage(this: Actor, topic: string, callback: Callback): RBXScriptConnection;
 	BindToMessageParallel(this: Actor, topic: string, callback: Callback): RBXScriptConnection;
-	SendMessage(this: Actor, topic: string, message: Array<any>): void;
+	SendMessage(this: Actor, topic: string, message: Array<any>): null;
 }
 
 /** BackpackItem is an abstract class for backpack items such as HopperBins and Tools. */
@@ -24665,7 +24684,7 @@ interface Tool extends BackpackItem {
 	 * 
 	 * tool.Activated:Connect(toolActivated)
 	 */
-	Activate(this: Tool): void;
+	Activate(this: Tool): null;
 	/**
 	 * The Deactivate function simulates the deactivation of a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool). The Tool must be equipped for this function to work.
 	 * 
@@ -24687,7 +24706,7 @@ interface Tool extends BackpackItem {
 	 * 
 	 * tool.Deactivated:Connect(toolDeactivated)
 	 */
-	Deactivate(this: Tool): void;
+	Deactivate(this: Tool): null;
 	/**
 	 * **Activated** is not called if the Ctrl key is pressed during a click.
 	 * 
@@ -24774,7 +24793,7 @@ interface WorldRoot extends Model {
 	 * 
 	 * The third argument of BulkMoveTo allows you to further speed up movement of the parts by specifying the [Position](https://developer.roblox.com/en-us/api-reference/property/BasePart/Position) and [Orientation](https://developer.roblox.com/en-us/api-reference/property/BasePart/Orientation). Changed events should not be fired on the parts. If you specify FireCFrameChanged as the BulkMoveMode then only CFrame .Changed will be fired, rather than changed firing for Position, Orientation, and CFrame like it normally does.
 	 */
-	BulkMoveTo(this: WorldRoot, partList: Array<Instance>, cframeList: Array<any>, eventMode?: CastsToEnum<Enum.BulkMoveMode>): void;
+	BulkMoveTo(this: WorldRoot, partList: Array<Instance>, cframeList: Array<any>, eventMode?: CastsToEnum<Enum.BulkMoveMode>): null;
 	/**
 	 * **FindPartOnRay** uses [raycasting](https://developer.roblox.com/articles/Raycasting) to find the first [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) cell intersecting with a given [Ray](https://developer.roblox.com/en-us/api-reference/datatype/Ray). This function returns the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or terrain cell hit, the point of intersection, the surface normal at the point of intersection, and the associated [Material](https://developer.roblox.com/en-us/api-reference/enum/Material) hit.
 	 * 
@@ -25323,7 +25342,7 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * Developers interested in seeing how this function is used in the Roblox Studio should see the [Studio Tools GitHub repository](https://github.com/Roblox/Studio-Tools).
 	 */
-	JoinToOutsiders(this: Workspace, objects: Array<Instance>, jointType: CastsToEnum<Enum.JointCreationMode>): void;
+	JoinToOutsiders(this: Workspace, objects: Array<Instance>, jointType: CastsToEnum<Enum.JointCreationMode>): null;
 	/**
 	 * Returns true if the game has the PGS Physics solver enabled.
 	 * 
@@ -25360,7 +25379,7 @@ interface Workspace extends WorldRoot {
 	 * 
 	 * Developers interested in seeing how this function is used in the Roblox Studio should see the [Studio Tools GitHub repository](https://github.com/Roblox/Studio-Tools).
 	 */
-	UnjoinFromOutsiders(this: Workspace, objects: Array<Instance>): void;
+	UnjoinFromOutsiders(this: Workspace, objects: Array<Instance>): null;
 	readonly PersistentLoaded: RBXScriptSignal<(player: Player) => void>;
 }
 
@@ -25466,7 +25485,7 @@ interface Pages<T = unknown> extends Instance {
 	 * Iterates to the next page in the pages object, if possible.
 	 * Tags: Yields
 	 */
-	AdvanceToNextPageAsync(this: Pages): void;
+	AdvanceToNextPageAsync(this: Pages): null;
 }
 
 interface AudioPages extends Pages {
@@ -25901,13 +25920,13 @@ interface ParticleEmitter extends Instance {
 	 * 
 	 * Sometimes it is desirable to clear particles before teleporting a character so that there are no lingering effects that might follow due to [ParticleEmitter.LockedToPart](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/LockedToPart).
 	 */
-	Clear(this: ParticleEmitter): void;
+	Clear(this: ParticleEmitter): null;
 	/**
 	 * The Emit method will cause the [ParticleEmitter](https://developer.roblox.com/en-us/api-reference/class/ParticleEmitter) to emit the given number of particles similar to how [ParticleEmitter.Rate](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Rate) does on `ParticleEmitter/Enalbed` emitters. Be warned - this always emits exactly the number of particles even if Roblox' graphics settings are lower. Emitting too many particles can cause performance issues on lower-end hardware.
 	 * 
 	 * To clear any emit particles, use [ParticleEmitter:Clear](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Clear).
 	 */
-	Emit(this: ParticleEmitter, particleCount?: number): void;
+	Emit(this: ParticleEmitter, particleCount?: number): null;
 	/**
 	 * Tags: Hidden
 	 */
@@ -25999,7 +26018,7 @@ interface Path extends Instance {
 	 * *   [Pathfinding](https://developer.roblox.com/en-us/articles/pathfinding), provides an in-depth pathfinding walkthrough
 	 * Tags: Yields
 	 */
-	ComputeAsync(this: Path, start: Vector3, finish: Vector3): void;
+	ComputeAsync(this: Path, start: Vector3, finish: Vector3): null;
 	readonly Blocked: RBXScriptSignal<(blockedWaypointIdx: number) => void>;
 	readonly Unblocked: RBXScriptSignal<(unblockedWaypointIdx: number) => void>;
 }
@@ -26258,7 +26277,7 @@ interface PhysicsService extends Instance {
 	 * 
 	 * This function will throw an error if either of the groups do not exist.
 	 */
-	CollisionGroupSetCollidable(this: PhysicsService, name1: string, name2: string, collidable: boolean): void;
+	CollisionGroupSetCollidable(this: PhysicsService, name1: string, name2: string, collidable: boolean): null;
 	/**
 	 * Returns whether the two specified collision groups will collide.
 	 * 
@@ -26323,7 +26342,7 @@ interface PhysicsService extends Instance {
 	GetMaxCollisionGroups(this: PhysicsService): number;
 	GetRegisteredCollisionGroups(this: PhysicsService): unknown;
 	IsCollisionGroupRegistered(this: PhysicsService, name: string): boolean;
-	RegisterCollisionGroup(this: PhysicsService, name: string): void;
+	RegisterCollisionGroup(this: PhysicsService, name: string): null;
 	/**
 	 * Removes the collision group with the given name. If an invalid name is provided the function will not do anything, although if the reserved name “Default” is provided then the function will throw an error.
 	 * 
@@ -26336,7 +26355,7 @@ interface PhysicsService extends Instance {
 	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
-	RemoveCollisionGroup(this: PhysicsService, name: string): void;
+	RemoveCollisionGroup(this: PhysicsService, name: string): null;
 	/**
 	 * Renames the specified collision group. The first argument of this function is the name of the group to rename, the second argument is the new name for the group. If the specified group does not exist, then this function will not do anything.
 	 * 
@@ -26347,7 +26366,7 @@ interface PhysicsService extends Instance {
 	 * *   Invalid or empty name provided for either argument.
 	 * *   The function is called from a client.
 	 */
-	RenameCollisionGroup(this: PhysicsService, from: string, to: string): void;
+	RenameCollisionGroup(this: PhysicsService, from: string, to: string): null;
 	/**
 	 * The SetPartCollisionGroup function sets the collision group of the specified part to the group with the specified name.
 	 * 
@@ -26362,8 +26381,8 @@ interface PhysicsService extends Instance {
 	 * Tags: Deprecated, [object Object]
 	 * @deprecated
 	 */
-	SetPartCollisionGroup(this: PhysicsService, part: BasePart, name: string): void;
-	UnregisterCollisionGroup(this: PhysicsService, name: string): void;
+	SetPartCollisionGroup(this: PhysicsService, part: BasePart, name: string): null;
+	UnregisterCollisionGroup(this: PhysicsService, name: string): null;
 }
 
 /** A Player object a client that is currently connected. These objects are added to the [Players](https://developer.roblox.com/en-us/api-reference/class/Players) service when a new player connects, then removed when they eventually disconnect from the server.
@@ -26712,7 +26731,7 @@ interface Player extends Instance {
 	 * 
 	 * It does not remove [t-shirts](https://developer.roblox.com/en-us/api-reference/class/ShirtGraphic), head meshes, or faces.
 	 */
-	ClearCharacterAppearance(this: Player): void;
+	ClearCharacterAppearance(this: Player): null;
 	/**
 	 * The DistanceFromCharacter [Player](https://developer.roblox.com/en-us/api-reference/class/Player) function returns the distance between the character's head and the given [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) point. It returns 0 if the player has no [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character).
 	 * 
@@ -26807,6 +26826,7 @@ interface Player extends Instance {
 	 * This is useful when determining whether a player's appearance has loaded after they first join the game, which can be tracked using the [Players.PlayerAdded](https://developer.roblox.com/en-us/api-reference/event/Players/PlayerAdded) event.
 	 */
 	HasAppearanceLoaded(this: Player): boolean;
+	IsVerified(this: Player): boolean;
 	/**
 	 * The Kick [Player](https://developer.roblox.com/en-us/api-reference/class/Player) method allows a game to gracefully disconnect a client from the game and optionally provide a message to the disconnected player. This is useful for moderating abusive players. When used in conjunction with a [DataStore](https://developer.roblox.com/en-us/api-reference/class/DataStore), it is possible to create ban lists with expiration dates. Only allow specific whitelisted users whom you trust to trigger this method on other players.
 	 * 
@@ -26821,7 +26841,7 @@ interface Player extends Instance {
 	 * 
 	 * ![Getting kicked with a message.](https://developer.roblox.com/assets/blt20acf098fdbd2b30/KickedWithANoteCropped.png)
 	 */
-	Kick(this: Player, message?: string): void;
+	Kick(this: Player, message?: string): null;
 	/**
 	 * This function returns a boolean value that was previously saved to the player with [Player:SaveBoolean](https://developer.roblox.com/en-us/api-reference/function/Player/SaveBoolean) with the same key. Returns false if the key doesn't exist, not nil.
 	 * Tags: Deprecated
@@ -26845,7 +26865,7 @@ interface Player extends Instance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	LoadCharacterAppearance(this: Player, assetInstance: Instance): void;
+	LoadCharacterAppearance(this: Player, assetInstance: Instance): null;
 	/**
 	 * This function returns an instance that was previously saved to the player with [Player:SaveInstance](https://developer.roblox.com/en-us/api-reference/function/Player/SaveInstance) with the same key. Returns nil if the key doesn't exist.
 	 * Tags: Deprecated
@@ -26871,31 +26891,31 @@ interface Player extends Instance {
 	 * 
 	 * Note that the function's second argument indicates whether the provided [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) should move the player relative to world coordinates (_false_) or the player's [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) (_true_).
 	 */
-	Move(this: Player, walkDirection: Vector3, relativeToCamera?: boolean): void;
+	Move(this: Player, walkDirection: Vector3, relativeToCamera?: boolean): null;
 	/**
 	 * This function is used to save a boolean value that can be loaded again at a later time using [Player:LoadBoolean](https://developer.roblox.com/en-us/api-reference/function/Player/LoadBoolean).
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	SaveBoolean(this: Player, key: string, value: boolean): void;
+	SaveBoolean(this: Player, key: string, value: boolean): null;
 	/**
 	 * This function was once used by an ancient data persistence method to save an instance which can be loaded again at a later time using [Player:LoadInstance](https://developer.roblox.com/en-us/api-reference/function/Player/LoadInstance)…
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	SaveInstance(this: Player, key: string, value: Instance): void;
+	SaveInstance(this: Player, key: string, value: Instance): null;
 	/**
 	 * This function was once used by an ancient data persistence method to save a number value that can be loaded again at a later time using [Player:LoadNumber](https://developer.roblox.com/en-us/api-reference/function/Player/LoadNumber).
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	SaveNumber(this: Player, key: string, value: number): void;
+	SaveNumber(this: Player, key: string, value: number): null;
 	/**
 	 * This function was once used by an ancient data persistence method to save a string value that can be loaded again at a later time using [Player:LoadString](https://developer.roblox.com/en-us/api-reference/function/Player/LoadString).
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	SaveString(this: Player, key: string, value: string): void;
+	SaveString(this: Player, key: string, value: string): null;
 	/**
 	 * This function returns a dictionary array of online friends, limited by the `maxFriends` value.
 	 * 
@@ -27091,7 +27111,7 @@ interface Player extends Instance {
 	 * For more details, see the [Game Content Streaming](https://developer.roblox.com/en-us/articles/content-streaming) article.
 	 * Tags: Yields
 	 */
-	RequestStreamAroundAsync(this: Player, position: Vector3, timeOut?: number): void;
+	RequestStreamAroundAsync(this: Player, position: Vector3, timeOut?: number): null;
 	/**
 	 * This function is used to pause the script until the player's data is available to manipulate, or until a certain amount of time has elapsed without fetching the player's data
 	 * Tags: Yields, Deprecated
@@ -27194,35 +27214,35 @@ interface PlayerScripts extends Instance {
 	/**
 	 * Unregisters all ComputerCameraMovementMode enums from the game settings menu.
 	 */
-	ClearComputerCameraMovementModes(this: PlayerScripts): void;
+	ClearComputerCameraMovementModes(this: PlayerScripts): null;
 	/**
 	 * Unregisters all ComputerMovementMode enums from the game settings menu.
 	 */
-	ClearComputerMovementModes(this: PlayerScripts): void;
+	ClearComputerMovementModes(this: PlayerScripts): null;
 	/**
 	 * Unregisters all TouchCameraMovementMode enums from the game settings menu.
 	 */
-	ClearTouchCameraMovementModes(this: PlayerScripts): void;
+	ClearTouchCameraMovementModes(this: PlayerScripts): null;
 	/**
 	 * Unregisters all TouchMovementMode enums from the game settings menu.
 	 */
-	ClearTouchMovementModes(this: PlayerScripts): void;
+	ClearTouchMovementModes(this: PlayerScripts): null;
 	/**
 	 * Registers that a computer camera movement mode is available to be selected from the game menu.
 	 */
-	RegisterComputerCameraMovementMode(this: PlayerScripts, cameraMovementMode: CastsToEnum<Enum.ComputerCameraMovementMode>): void;
+	RegisterComputerCameraMovementMode(this: PlayerScripts, cameraMovementMode: CastsToEnum<Enum.ComputerCameraMovementMode>): null;
 	/**
 	 * Registers that a computer movement mode is available to be selected from the game menu.
 	 */
-	RegisterComputerMovementMode(this: PlayerScripts, movementMode: CastsToEnum<Enum.ComputerMovementMode>): void;
+	RegisterComputerMovementMode(this: PlayerScripts, movementMode: CastsToEnum<Enum.ComputerMovementMode>): null;
 	/**
 	 * Registers that a touch camera movement mode is available to be selected from the game menu.
 	 */
-	RegisterTouchCameraMovementMode(this: PlayerScripts, cameraMovementMode: CastsToEnum<Enum.TouchCameraMovementMode>): void;
+	RegisterTouchCameraMovementMode(this: PlayerScripts, cameraMovementMode: CastsToEnum<Enum.TouchCameraMovementMode>): null;
 	/**
 	 * Registers that a touch movement mode is available to be selected from the game menu.
 	 */
-	RegisterTouchMovementMode(this: PlayerScripts, movementMode: CastsToEnum<Enum.TouchMovementMode>): void;
+	RegisterTouchMovementMode(this: PlayerScripts, movementMode: CastsToEnum<Enum.TouchMovementMode>): null;
 }
 
 /** The Players game service contains only [Player](https://developer.roblox.com/en-us/api-reference/class/Player) objects for presently connected clients to a Roblox game server. It also contains information about a place's configuration (such as bubble chat or classic chat). It can fetch information about players not connected to the server, such as character appearances, friends and avatar thumbnail. */
@@ -27862,7 +27882,7 @@ interface Pose extends PoseBase {
 	 * 
 	 * Note, this function will not error when an instance other than a [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) is given as the pose parameter and will parent it successfully.
 	 */
-	AddSubPose(this: Pose, pose: Pose): void;
+	AddSubPose(this: Pose, pose: Pose): null;
 	/**
 	 * This function returns an array containing all sub [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose)s that have been added to a [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose). This is functionally the same as using the [Instance:GetChildren](https://developer.roblox.com/en-us/api-reference/function/Instance/GetChildren) function on the [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose).
 	 * 
@@ -27874,7 +27894,7 @@ interface Pose extends PoseBase {
 	 * 
 	 * Note, this function will not error when an instance other than a [Pose](https://developer.roblox.com/en-us/api-reference/class/Pose) is given as the pose parameter and remove it successfully.
 	 */
-	RemoveSubPose(this: Pose, pose: Pose): void;
+	RemoveSubPose(this: Pose, pose: Pose): null;
 }
 
 /** PostEffect is an abstract base class for post-processing effects, such as [BloomEffect](https://developer.roblox.com/en-us/api-reference/class/BloomEffect) and [ColorCorrectionEffect](https://developer.roblox.com/en-us/api-reference/class/ColorCorrectionEffect). They change how the world looks **after** it has been rendered. They do not affect [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject)s. Objects of this kind should be parented to the [Lighting](https://developer.roblox.com/en-us/api-reference/class/Lighting) or the [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera) in order to work.
@@ -28165,11 +28185,11 @@ interface ProximityPrompt extends Instance {
 	/**
 	 * This function triggers a signal indicating that the user began pressing the [ProximityPrompt](https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt) prompt button. It should be used by developers who wish to customize the prompt and trigger it from a prompt GUI button press.
 	 */
-	InputHoldBegin(this: ProximityPrompt): void;
+	InputHoldBegin(this: ProximityPrompt): null;
 	/**
 	 * A counterpoint to [ProximityPrompt:InputHoldBegin](https://developer.roblox.com/en-us/api-reference/function/ProximityPrompt/InputHoldBegin), this signals that the user ended pressing the prompt GUI button.
 	 */
-	InputHoldEnd(this: ProximityPrompt): void;
+	InputHoldEnd(this: ProximityPrompt): null;
 	/**
 	 * This event triggers when a player begins holding down the [key](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/KeyboardKeyCode)/button on a prompt with a non-zero [ProximityPrompt.HoldDuration](https://developer.roblox.com/en-us/api-reference/property/ProximityPrompt/HoldDuration). One possible usage includes to animate a hold progress bar.
 	 */
@@ -28491,7 +28511,7 @@ interface ReplicatedFirst extends Instance {
 	 * 
 	 * It is advised to not remove the default loading screen unless the developer wishes to display their own loading screen as an alternative. If the default screen is removed without replacement users will be able to see geometry loading in the background.
 	 */
-	RemoveDefaultLoadingScreen(this: ReplicatedFirst): void;
+	RemoveDefaultLoadingScreen(this: ReplicatedFirst): null;
 }
 
 /** **ReplicatedStorage** is a general container service for objects that are available to both the server and connected game clients. It is ideal for [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript), [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction), [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) and other objects which are useful to both server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s and client-side [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s. [Script](https://developer.roblox.com/en-us/api-reference/class/Script) and [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) objects will not run if they are parented to this service even if they are not [Disabled](https://developer.roblox.com/en-us/api-reference/property/BaseScript/Disabled).
@@ -28865,7 +28885,7 @@ interface RunService extends Instance {
 	 * 	print("An error occurred: "..message)
 	 * end
 	 */
-	UnbindFromRenderStep(this: RunService, name: string): void;
+	UnbindFromRenderStep(this: RunService, name: string): null;
 	/**
 	 * The Heartbeat event fires every _frame_, after the physics simulation has completed. The _step_ argument indicates the time that has elapsed since the previous frame.
 	 * 
@@ -29100,7 +29120,7 @@ interface SensorBase extends Instance {
 	 */
 	readonly _nominal_SensorBase: unique symbol;
 	UpdateType: Enum.SensorUpdateType;
-	Sense(this: SensorBase): void;
+	Sense(this: SensorBase): null;
 	readonly OnSensorOutputChanged: RBXScriptSignal<() => void>;
 }
 
@@ -29571,7 +29591,7 @@ interface UserSettings extends GenericSettings<{ UserGameSettings: UserGameSetti
 	/**
 	 * Erases the saved state of the UserSettings, and restores its values back to default. This function will fail to run correctly from a LocalScript, as it does not have permission to restore all of the properties in the [UserGameSettings](https://developer.roblox.com/en-us/api-reference/class/UserGameSettings) class.
 	 */
-	Reset(this: UserSettings): void;
+	Reset(this: UserSettings): null;
 }
 
 interface ServiceVisibilityService extends Instance {
@@ -29606,7 +29626,7 @@ interface SharedTableRegistry extends Instance {
 	 */
 	readonly _nominal_SharedTableRegistry: unique symbol;
 	GetSharedTable(this: SharedTableRegistry, name: string): SharedTable;
-	SetSharedTable(this: SharedTableRegistry, name: string, st: SharedTable | undefined): void;
+	SetSharedTable(this: SharedTableRegistry, name: string, st: SharedTable | undefined): null;
 }
 
 interface ShorelineUpgraderService extends Instance {
@@ -29794,7 +29814,7 @@ interface SocialService extends Instance {
 	 * 
 	 * Before using this function, you should use the [CanSendGameInviteAsync](https://developer.roblox.com/en-us/api-reference/function/SocialService/CanSendGameInviteAsync) function to determine whether a player can send a game invite, as this can vary depending on the platform or player. After determining that invites are possible for this player, allow the player to opt-in to inviting others. For example, the player clicked on an “Invite Friends” button, shown after `CanSendGameInviteAsync` returned true.\`
 	 */
-	PromptGameInvite(this: SocialService, player: Player, experienceInviteOptions?: ExperienceInviteOptions): void;
+	PromptGameInvite(this: SocialService, player: Player, experienceInviteOptions?: ExperienceInviteOptions): null;
 	/**
 	 * **CanSendGameInviteAsync** indicates whether the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player) can invite other players to the current game. If they can, it returns true.
 	 * 
@@ -30113,7 +30133,7 @@ interface Sound extends Instance {
 	 * 
 	 * 0
 	 */
-	Pause(this: Sound): void;
+	Pause(this: Sound): null;
 	/**
 	 * Plays the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound). Sets [Sound.TimePosition](https://developer.roblox.com/en-us/api-reference/property/Sound/TimePosition) to the last value set by a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) (or 0 if it has not been set), and then sets [Sound.Playing](https://developer.roblox.com/en-us/api-reference/property/Sound/Playing) to true.
 	 * 
@@ -30149,7 +30169,7 @@ interface Sound extends Instance {
 	 * 
 	 * 0
 	 */
-	Play(this: Sound): void;
+	Play(this: Sound): null;
 	/**
 	 * Resumes the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound). Sets [Sound.Playing](https://developer.roblox.com/en-us/api-reference/property/Sound/Playing) to true. Does not alter [Sound.TimePosition](https://developer.roblox.com/en-us/api-reference/property/Sound/TimePosition) and thus can be used to resume the playback of a sound stopped using [Sound:Pause](https://developer.roblox.com/en-us/api-reference/function/Sound/Pause).
 	 * 
@@ -30185,7 +30205,7 @@ interface Sound extends Instance {
 	 * 
 	 * 0
 	 */
-	Resume(this: Sound): void;
+	Resume(this: Sound): null;
 	/**
 	 * Stops the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound). Sets [Sound.Playing](https://developer.roblox.com/en-us/api-reference/property/Sound/Playing) to false then sets [Sound.TimePosition](https://developer.roblox.com/en-us/api-reference/property/Sound/TimePosition) to 0.
 	 * 
@@ -30221,7 +30241,7 @@ interface Sound extends Instance {
 	 * 
 	 * 0
 	 */
-	Stop(this: Sound): void;
+	Stop(this: Sound): null;
 	/**
 	 * Event that fires whenever the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) loops. Returns soundId and numOfTimesLooped, giving the contentID of the sound and the number of times looped respectively.
 	 * 
@@ -31667,7 +31687,7 @@ interface Teams extends Instance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	RebalanceTeams(this: Teams): void;
+	RebalanceTeams(this: Teams): null;
 }
 
 /** This class is an instance that is returned by the `TeleportAsync` function with information about the teleport. */
@@ -31796,7 +31816,7 @@ interface TeleportOptions extends Instance {
 	 * 
 	 * For more information on how to teleport players between servers, take a look at the [Telporting Between Places](../../../articles/Teleporting-Between-Places) article.
 	 */
-	SetTeleportData(this: TeleportOptions, teleportData: unknown): void;
+	SetTeleportData(this: TeleportOptions, teleportData: unknown): null;
 }
 
 /** TeleportService is responsible for transporting [Player](https://developer.roblox.com/en-us/api-reference/class/Player)s between different [places](https://developer.roblox.com/articles/games-and-places) and servers.
@@ -33225,7 +33245,7 @@ interface Trail extends Instance {
 	 * 
 	 * Calling this function will only affect old segments that have already been done. It will not affect the drawing of any new trail segments after this function call. If you would like to clear existing trail segments, and temporarily prevent new segments from being drawn, consider toggling the trail's [Trail.Enabled](https://developer.roblox.com/en-us/api-reference/property/Trail/Enabled) property to false at the same time.
 	 */
-	Clear(this: Trail): void;
+	Clear(this: Trail): null;
 	/**
 	 * Tags: Hidden
 	 */
@@ -33379,7 +33399,7 @@ interface TweenBase extends Instance {
 	 * 
 	 * Only the tween variables are reset, not the properties being changed by the tween. This means if you cancel a tween half way through its animation the properties will not reset to their original values. Where Cancel differs from [TweenBase:Pause](https://developer.roblox.com/en-us/api-reference/function/TweenBase/Pause) is that once resumed, it will take the full duration of the tween to complete the animation.
 	 */
-	Cancel(this: TweenBase): void;
+	Cancel(this: TweenBase): null;
 	/**
 	 * The Pause function halts playback of its [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween). However the progress variables of the tween will not be reset, meaning that when [TweenBase:Play](https://developer.roblox.com/en-us/api-reference/function/TweenBase/Play) is called again the tween will resume playback from the moment it was paused.
 	 * 
@@ -33387,13 +33407,13 @@ interface TweenBase extends Instance {
 	 * 
 	 * This means a tween paused half way through its animation will take half of its duration to complete when resumed.
 	 */
-	Pause(this: TweenBase): void;
+	Pause(this: TweenBase): null;
 	/**
 	 * The Play function starts the playback of its [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween). Note that if a tween has already begun calling Play will have no effect unless the tween has finished or has been stopped (either by [TweenBase:Cancel](https://developer.roblox.com/en-us/api-reference/function/TweenBase/Cancel) or [TweenBase:Pause](https://developer.roblox.com/en-us/api-reference/function/TweenBase/Pause)).
 	 * 
 	 * Multiple tweens can be played on the same object at the same time, but they must not be animating the same property. If two tweens attempt to modify the same property, the initial tween will be cancelled and overwritten by the most recent tween (see examples).
 	 */
-	Play(this: TweenBase): void;
+	Play(this: TweenBase): null;
 	/**
 	 * The Completed event of a [Tween](https://developer.roblox.com/en-us/api-reference/class/Tween) fires when the tween finishes playing. This will happen either when the tween naturally finishes playing, or if it is stopped with [TweenBase:Cancel](https://developer.roblox.com/en-us/api-reference/function/TweenBase/Cancel).
 	 * 
@@ -33856,7 +33876,7 @@ interface UIGridStyleLayout extends UILayout {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	ApplyLayout(this: UIGridStyleLayout): void;
+	ApplyLayout(this: UIGridStyleLayout): null;
 	/**
 	 * This method is deprecated. Use [UIGridStyleLayout.SortOrder](https://developer.roblox.com/en-us/api-reference/property/UIGridStyleLayout/SortOrder) instead.
 	 * 
@@ -33865,7 +33885,7 @@ interface UIGridStyleLayout extends UILayout {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	SetCustomSortFunction(this: UIGridStyleLayout, callback?: Callback): void;
+	SetCustomSortFunction(this: UIGridStyleLayout, callback?: Callback): null;
 }
 
 /** A UIGridLayout (not to be confused with the abstract [UIGridStyleLayout](https://developer.roblox.com/en-us/api-reference/class/UIGridStyleLayout) from which this class inherits) lays out sibling UI elements in multiple rows within the parent UI element, adding elements to a row one-by-one until the next element would not fit. It then continues adding elements in the next row. A UIGridLayout will take UI elements' [GuiObject.Size](https://developer.roblox.com/en-us/api-reference/property/GuiObject/Size) and [GuiObject.Position](https://developer.roblox.com/en-us/api-reference/property/GuiObject/Position) under control. While under control, these UI elements' properties will not be editable in the Properties window.
@@ -34011,15 +34031,15 @@ interface UIPageLayout extends UIGridStyleLayout {
 	/**
 	 * If the index is >= 0 and less than the size of the layout, this method acts like [UIPageLayout:JumpTo](https://developer.roblox.com/en-us/api-reference/function/UIPageLayout/JumpTo). If it's out of bounds and circular is set, it will animate the full distance between the in-bounds index of [UIPageLayout.CurrentPage](https://developer.roblox.com/en-us/api-reference/property/UIPageLayout/CurrentPage) and the new index.
 	 */
-	JumpToIndex(this: UIPageLayout, index: number): void;
+	JumpToIndex(this: UIPageLayout, index: number): null;
 	/**
 	 * Sets [UIPageLayout.CurrentPage](https://developer.roblox.com/en-us/api-reference/property/UIPageLayout/CurrentPage) to the page after the current page and animates to it, or does nothing if there isn't a next page.
 	 */
-	Next(this: UIPageLayout): void;
+	Next(this: UIPageLayout): null;
 	/**
 	 * Sets [UIPageLayout.CurrentPage](https://developer.roblox.com/en-us/api-reference/property/UIPageLayout/CurrentPage) to the page before the current page and animates to it, or does nothing if there isn't a previous page.
 	 */
-	Previous(this: UIPageLayout): void;
+	Previous(this: UIPageLayout): null;
 	/**
 	 * Fires when a page comes into view, and is going to be rendered.
 	 */
@@ -34393,11 +34413,11 @@ interface UserGameSettings extends Instance {
 	/**
 	 * If called, Roblox toggles the menu option to invert the user's camera y axis.
 	 */
-	SetCameraYInvertVisible(this: UserGameSettings): void;
+	SetCameraYInvertVisible(this: UserGameSettings): null;
 	/**
 	 * If called, Roblox toggles the menu option to control the camera sensitivity with gamepads.
 	 */
-	SetGamepadCameraSensitivityVisible(this: UserGameSettings): void;
+	SetGamepadCameraSensitivityVisible(this: UserGameSettings): null;
 	/**
 	 * Sets the given onboarding as completed, so it won't be shown again to the user the next time they play.
 	 * 
@@ -34410,7 +34430,7 @@ interface UserGameSettings extends Instance {
 	 * 
 	 * *   [UserGameSettings:GetOnboardingCompleted](https://developer.roblox.com/en-us/api-reference/function/UserGameSettings/GetOnboardingCompleted), checks if onboarding has been completed
 	 */
-	SetOnboardingCompleted(this: UserGameSettings, onboardingId: string): void;
+	SetOnboardingCompleted(this: UserGameSettings, onboardingId: string): null;
 	/**
 	 * Fires if the user's full screen mode is changed.  
 	 * The event will only fire on desktop devices that can toggle full screen mode. The game will always be in full screen on mobile devices and consoles.
@@ -35251,7 +35271,7 @@ interface UserInputService extends Instance {
 	 * 
 	 * Since [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService) is client-side only, this function can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 */
-	RecenterUserHeadCFrame(this: UserInputService): void;
+	RecenterUserHeadCFrame(this: UserInputService): null;
 	/**
 	 * The SetNavigationGamepad function sets whether the specified [UserInputType](https://developer.roblox.com/en-us/api-reference/enum/UserInputType) gamepad can move the GUI navigator. A gamepad that is allowed to move the GUI navigator is considered a _navigation gamepad_.
 	 * 
@@ -35278,7 +35298,7 @@ interface UserInputService extends Instance {
 	 * *   [UserInputService:GamepadSupports](https://developer.roblox.com/en-us/api-reference/function/UserInputService/GamepadSupports)
 	 * *   [UserInputService.GamepadEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/GamepadEnabled)
 	 */
-	SetNavigationGamepad(this: UserInputService, gamepadEnum: CastsToEnum<Enum.UserInputType>, enabled: boolean): void;
+	SetNavigationGamepad(this: UserInputService, gamepadEnum: CastsToEnum<Enum.UserInputType>, enabled: boolean): null;
 	/**
 	 * The DeviceAccelerationChanged event fires when a user moves a device that has an accelerometer.
 	 * 
@@ -36015,7 +36035,7 @@ interface VRService extends Instance {
 	 * 
 	 * Since `/VRServiceService` only runs client-side, this function will only work when used in a `/LocalScript`.
 	 */
-	RecenterUserHeadCFrame(this: VRService): void;
+	RecenterUserHeadCFrame(this: VRService): null;
 	/**
 	 * The RequestNavigation function requests navigation to the specified [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame), using the specified [UserCFrame](https://developer.roblox.com/en-us/api-reference/enum/UserCFrame) as the origin for the visualizer parabola.
 	 * 
@@ -36025,7 +36045,7 @@ interface VRService extends Instance {
 	 * 
 	 * Since VRService only runs client-side, this function will only work when used in a `/LocalScript`.
 	 */
-	RequestNavigation(this: VRService, cframe: CFrame, inputUserCFrame: CastsToEnum<Enum.UserCFrame>): void;
+	RequestNavigation(this: VRService, cframe: CFrame, inputUserCFrame: CastsToEnum<Enum.UserCFrame>): null;
 	/**
 	 * The SetTouchpadMode function sets the mode of the specified [VRTouchpad](https://developer.roblox.com/en-us/api-reference/enum/VRTouchpad) to the specified [VRTouchpadMode](https://developer.roblox.com/en-us/api-reference/enum/VRTouchpadMode).
 	 * 
@@ -36035,7 +36055,7 @@ interface VRService extends Instance {
 	 * 
 	 * Since `/VRService` only runs client-side, this function will only work when used in a `/LocalScript`.
 	 */
-	SetTouchpadMode(this: VRService, pad: CastsToEnum<Enum.VRTouchpad>, mode: CastsToEnum<Enum.VRTouchpadMode>): void;
+	SetTouchpadMode(this: VRService, pad: CastsToEnum<Enum.VRTouchpad>, mode: CastsToEnum<Enum.VRTouchpadMode>): null;
 	/**
 	 * The NavigationRequested event fires when navigation is requested from the VRService for a specified [UserCFrame](https://developer.roblox.com/en-us/api-reference/enum/UserCFrame) VR device.
 	 * 
@@ -36597,7 +36617,7 @@ interface VoiceChatInternal extends Instance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	Leave(this: VoiceChatInternal): void;
+	Leave(this: VoiceChatInternal): null;
 	/**
 	 * Tags: Deprecated
 	 * @deprecated
@@ -36607,12 +36627,12 @@ interface VoiceChatInternal extends Instance {
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	SetMicDevice(this: VoiceChatInternal, micDeviceName: string, micDeviceGuid: string): void;
+	SetMicDevice(this: VoiceChatInternal, micDeviceName: string, micDeviceGuid: string): null;
 	/**
 	 * Tags: Deprecated
 	 * @deprecated
 	 */
-	SetSpeakerDevice(this: VoiceChatInternal, speakerDeviceName: string, speakerDeviceGuid: string): void;
+	SetSpeakerDevice(this: VoiceChatInternal, speakerDeviceName: string, speakerDeviceGuid: string): null;
 	/**
 	 * Tags: Deprecated
 	 * @deprecated
@@ -36665,21 +36685,6 @@ interface VoiceChatService extends Instance {
 	 * Tags: Yields
 	 */
 	IsVoiceEnabledForUserIdAsync(this: VoiceChatService, userId: number): boolean;
-}
-
-interface VoiceSource extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_VoiceSource: unique symbol;
-	/**
-	 * Tags: ReadOnly, NotReplicated
-	 */
-	readonly UserId: number;
 }
 
 /** **WeldConstraints** are used to attach two [parts](https://developer.roblox.com/en-us/api-reference/class/BasePart) together. The constraint makes sure that the parts stay in the same relative position and orientation to one another, meaning that if one part moves, the other will move the same amount. Even if the two parts are not touching one another, they can be welded together with a weld constraint.
