@@ -8485,8 +8485,8 @@ interface AirController extends ControllerBase {
 	MoveMaxForce: number;
 	OrientationMaxTorque: number;
 	OrientationSpeedFactor: number;
-	TurningMaxTorque: number;
-	TurningSpeedFactor: number;
+	TurnMaxTorque: number;
+	TurnSpeedFactor: number;
 	/**
 	 * Tags: Hidden, NotReplicated, Deprecated
 	 * @deprecated
@@ -8570,11 +8570,6 @@ interface ControllerManager extends Instance {
 	FacingDirection: Vector3;
 	GroundSensor: ControllerSensor | undefined;
 	MovingDirection: Vector3;
-	/**
-	 * Tags: Deprecated
-	 * @deprecated
-	 */
-	GetControllers(this: ControllerManager): Array<Instance>;
 }
 
 /** Container class for the [HumanoidController](https://developer.roblox.com/en-us/api-reference/class/HumanoidController) among other classes. */
@@ -13455,6 +13450,7 @@ interface AdGui extends SurfaceGuiBase {
 	 */
 	readonly _nominal_AdGui: unique symbol;
 	AdShape: Enum.AdShape;
+	FallbackImage: string;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -22688,7 +22684,8 @@ interface BasePart extends PVInstance {
 	 * The CollisionGroupId property describes the ID number of the part's collision group. Parts start off in the Default group whose ID is 0. Although this property can be directly changed, it is recommended to instead manipulate the collision group of a part using the **name** of the group with the [PhysicsService:SetPartCollisionGroup](https://developer.roblox.com/en-us/api-reference/function/PhysicsService/SetPartCollisionGroup) function. You can find the ID of a collision group by using [PhysicsService:GetCollisionGroupId](https://developer.roblox.com/en-us/api-reference/function/PhysicsService/GetCollisionGroupId).
 	 * 
 	 * This value cannot be negative, and cannot exceed [PhysicsService:GetMaxCollisionGroups](https://developer.roblox.com/en-us/api-reference/function/PhysicsService/GetMaxCollisionGroups). Invalid IDs are clamped.
-	 * Tags: NotReplicated
+	 * Tags: NotReplicated, Deprecated, [object Object]
+	 * @deprecated
 	 */
 	CollisionGroupId: number;
 	/**
@@ -29120,6 +29117,10 @@ interface SensorBase extends Instance {
 	 */
 	readonly _nominal_SensorBase: unique symbol;
 	UpdateType: Enum.SensorUpdateType;
+	/**
+	 * Tags: Deprecated
+	 * @deprecated
+	 */
 	Sense(this: SensorBase): null;
 	readonly OnSensorOutputChanged: RBXScriptSignal<() => void>;
 }
@@ -32727,6 +32728,14 @@ interface ChatInputBarConfiguration extends TextChatConfigurations {
 	BackgroundTransparency: number;
 	Enabled: boolean;
 	FontFace: Font;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly IsFocused: boolean;
+	/**
+	 * Tags: Hidden
+	 */
+	KeyboardKeyCode: Enum.KeyCode;
 	PlaceholderColor3: Color3;
 	TargetTextChannel: TextChannel | undefined;
 	TextBox: TextBox | undefined;
