@@ -11641,9 +11641,25 @@ declare namespace Enum {
 
 		export const Cylinder: Cylinder;
 
+		export interface Wedge extends globalThis.EnumItem {
+			Name: "Wedge";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.PartType;
+		}
+
+		export const Wedge: Wedge;
+
+		export interface CornerWedge extends globalThis.EnumItem {
+			Name: "CornerWedge";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.PartType;
+		}
+
+		export const CornerWedge: CornerWedge;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PartType>;
 	}
-	export type PartType = PartType.Ball | PartType.Block | PartType.Cylinder;
+	export type PartType = PartType.Ball | PartType.Block | PartType.Cylinder | PartType.Wedge | PartType.CornerWedge;
 
 	export namespace ParticleEmitterShape {
 		export interface Box extends globalThis.EnumItem {
@@ -18691,6 +18707,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WaterForce>;
 	}
 	export type WaterForce = WaterForce.None | WaterForce.Small | WaterForce.Medium | WaterForce.Strong | WaterForce.Max;
+
+	export namespace WeldConstraintPreserve {
+		export interface All extends globalThis.EnumItem {
+			Name: "All";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.WeldConstraintPreserve;
+		}
+
+		export const All: All;
+
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.WeldConstraintPreserve;
+		}
+
+		export const None: None;
+
+		export interface Touching extends globalThis.EnumItem {
+			Name: "Touching";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.WeldConstraintPreserve;
+		}
+
+		export const Touching: Touching;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WeldConstraintPreserve>;
+	}
+	export type WeldConstraintPreserve = WeldConstraintPreserve.All | WeldConstraintPreserve.None | WeldConstraintPreserve.Touching;
 
 	export namespace WrapLayerAutoSkin {
 		export interface Disabled extends globalThis.EnumItem {
