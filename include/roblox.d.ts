@@ -2216,6 +2216,11 @@ declare function delay(delayTime: number, callback: DelayedCallback): void;
  * @deprecated use os.clock() instead.
  */
 declare function elapsedTime(): number;
+/**
+ * Returns the total memory heap size in kilobytes.
+ * The number reflects the current heap consumption from the operating system perspective, which fluctuates over time as garbage collector frees objects.
+ */
+declare function gcinfo(): number;
 /** Runs the supplied ModuleScript if it has not been run already, and returns what the ModuleScript returned (in both cases).
 
 If the ModuleScript the user wants to use has been uploaded to Roblox (with the instance’s name being ‘MainModule’), it can be loaded by using the require function on the asset ID of the ModuleScript, though only on the server. */

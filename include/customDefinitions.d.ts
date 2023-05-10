@@ -149,7 +149,7 @@ interface CompressorSoundEffect extends SoundEffect {
 interface ContentProvider extends Instance {
 	PreloadAsync(
 		this: ContentProvider,
-		contentIdList: Array<Instance>,
+		contentIdList: Array<Instance | string>,
 		callback?: (contentId: string, status: Enum.AssetFetchStatus) => void,
 	): void;
 }
