@@ -1043,6 +1043,13 @@ interface WorldRoot extends Model {
 		direction: Vector3,
 		raycastParams?: RaycastParams,
 	): RaycastResult | undefined;
+	Spherecast(
+		this: WorldRoot,
+		position: Vector3,
+		radius: number,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
 	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRay(
 		this: WorldRoot,
