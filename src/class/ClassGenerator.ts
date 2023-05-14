@@ -449,18 +449,30 @@ function safeArgName(name: string | undefined | null) {
 	return ARG_NAME_MAP.get(name) ?? name;
 }
 
-const securityOverride = new Map<string, Map<string, ApiMemberBase["Security"]>>([
-	["StarterGui", new Map([["ShowDevelopmentGui", "PluginSecurity"]])],
+const SECURITY_OVERRIDE = new Map<string, Map<string, ApiProperty["Security"]>>([
+	["StarterGui", new Map([["ShowDevelopmentGui", { Read: "PluginSecurity", Write: "PluginSecurity" }]])],
 ]);
 
-function getSecurity(className: string, member: ApiMemberBase) {
-	const security = securityOverride.get(className)?.get(member.Name) || member.Security || "None";
-	return typeof security === "string" ? { Read: security, Write: security } : security;
+function getSecurity(className: string, member: ApiMember) {
+	const securityOverride = SECURITY_OVERRIDE.get(className)?.get(member.Name);
+	if (securityOverride) {
+		return securityOverride;
+	}
+	switch (member.MemberType) {
+		case "Callback":
+			return { Read: "NotAccessibleSecurity", Write: member.Security };
+		case "Function":
+			return { Read: member.Security, Write: "NotAccessibleSecurity" };
+		case "Event":
+			return { Read: member.Security, Write: "NotAccessibleSecurity" };
+		case "Property":
+			return member.Security;
+	}
 }
 
 function hasTag(member: ApiClass, tag: ClassTag): boolean;
-function hasTag(member: ApiMemberBase, tag: MemberTag): boolean;
-function hasTag({ Tags }: ApiClass | ApiMemberBase, tag: string) {
+function hasTag(member: ApiMember, tag: Extract<MemberTag, string>): boolean;
+function hasTag({ Tags }: ApiClass | ApiMember, tag: string) {
 	return Tags ? Tags.includes(tag as ClassTag & MemberTag) : false;
 }
 
@@ -845,7 +857,7 @@ export class ClassGenerator extends Generator {
 		super(filePath, metadata);
 	}
 
-	private canRead(className: string, member: ApiMemberBase) {
+	private canRead(className: string, member: ApiMember) {
 		const readSecurity = getSecurity(className, member).Read;
 		return (
 			readSecurity === this.security ||
@@ -853,7 +865,7 @@ export class ClassGenerator extends Generator {
 		);
 	}
 
-	private canWrite(className: string, member: ApiMemberBase) {
+	private canWrite(className: string, member: ApiMember) {
 		const writeSecurity = getSecurity(className, member).Write;
 		return (
 			writeSecurity === this.security ||
