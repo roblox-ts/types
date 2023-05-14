@@ -1096,7 +1096,7 @@ export class ClassGenerator extends Generator {
 			return false;
 		}
 
-		if (!this.canRead(rbxClass.Name, rbxMember)) {
+		if (!this.canRead(rbxClass.Name, rbxMember) && !this.canWrite(rbxClass.Name, rbxMember)) {
 			return false;
 		}
 
