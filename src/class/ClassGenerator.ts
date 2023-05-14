@@ -935,12 +935,24 @@ export class ClassGenerator extends Generator {
 			parts.push(description);
 		}
 
-		if (rbxMember.Tags && rbxMember.Tags.length > 0) {
-			parts.push("Tags: " + rbxMember.Tags.join(", "));
+		const tags = rbxMember.Tags ?? [];
+		const deprecatedIndex = tags.indexOf("Deprecated");
+		const preferredItem = tags[deprecatedIndex + 1];
+		if (
+			typeof preferredItem === "object" &&
+			// API dump does not specify the class of replacement item
+			// So avoid redirecting from "PropertyA" to "PropertyA" [on some other class]
+			preferredItem.PreferredDescriptorName !== rbxMember.Name
+		) {
+			parts.push(`@deprecated Use \`${preferredItem.PreferredDescriptorName}\` instead`);
+			tags.splice(deprecatedIndex, 2);
+		} else if (deprecatedIndex !== -1) {
+			// Not all deprecated items have the replacement info
+			parts.push("@deprecated");
 		}
 
-		if (hasTag(rbxMember, "Deprecated")) {
-			parts.push("@deprecated");
+		if (tags.length > 0) {
+			parts.push("Tags: " + tags.join(", "));
 		}
 
 		if (parts.length > 0) {
