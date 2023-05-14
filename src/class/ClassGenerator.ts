@@ -935,25 +935,39 @@ export class ClassGenerator extends Generator {
 			parts.push(description);
 		}
 
+		const tagModifiers = [];
 		const tags = rbxMember.Tags ?? [];
+
+		const readonlyIndex = tags.indexOf("ReadOnly");
+		// Already covered by TS readonly modifier
+		if (readonlyIndex !== -1) tags.splice(readonlyIndex, 1);
+
+		let deprecationMessage = "@deprecated";
 		const deprecatedIndex = tags.indexOf("Deprecated");
-		const preferredItem = tags[deprecatedIndex + 1];
-		if (
-			typeof preferredItem === "object" &&
+		// Splice removes the tag from array to avoid duplication
+		if (deprecatedIndex !== -1) tags.splice(deprecatedIndex, 1);
+		const replacementInfo = tags[deprecatedIndex];
+		if (typeof replacementInfo === "object") {
 			// API dump does not specify the class of replacement item
 			// So avoid redirecting from "PropertyA" to "PropertyA" [on some other class]
-			preferredItem.PreferredDescriptorName !== rbxMember.Name
-		) {
-			parts.push(`@deprecated Use \`${preferredItem.PreferredDescriptorName}\` instead`);
-			tags.splice(deprecatedIndex, 2);
-		} else if (deprecatedIndex !== -1) {
-			// Not all deprecated items have the replacement info
-			parts.push("@deprecated");
+			if (replacementInfo.PreferredDescriptorName !== rbxMember.Name) {
+				deprecationMessage += ` Use \`${replacementInfo.PreferredDescriptorName}\` instead`;
+			}
+			// Also remove replacement info object from tag list
+			tags.splice(deprecatedIndex, 1);
+		}
+		if (deprecatedIndex !== -1) {
+			tagModifiers.push(deprecationMessage);
 		}
 
 		if (tags.length > 0) {
+			if (parts.length > 0) {
+				// Add empty line to ensure tags are separate paragraph
+				parts.push("");
+			}
 			parts.push("Tags: " + tags.join(", "));
 		}
+		parts.push(...tagModifiers);
 
 		if (parts.length > 0) {
 			this.write(`/**`);
