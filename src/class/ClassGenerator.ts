@@ -11,7 +11,6 @@ import {
 	ApiEvent,
 	ApiFunction,
 	ApiMember,
-	ApiMemberBase,
 	ApiParameter,
 	ApiProperty,
 	ApiValueType,
@@ -883,7 +882,7 @@ export class ClassGenerator extends Generator {
 		return `/** ${desc} */`;
 	}
 
-	private writeSignatures(rbxMember: ApiMemberBase, tsImplInterface?: ts.InterfaceDeclaration, description?: string) {
+	private writeSignatures(rbxMember: ApiMember, tsImplInterface?: ts.InterfaceDeclaration, description?: string) {
 		if (tsImplInterface) {
 			const name = rbxMember.Name;
 			const signatures = Array<string>();
@@ -918,7 +917,7 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private writeDescription(rbxMember: ApiMemberBase, description?: string) {
+	private writeDescription(rbxMember: ApiMember, description?: string) {
 		const parts = new Array<string>();
 		if (description) {
 			parts.push(description);
