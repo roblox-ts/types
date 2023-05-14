@@ -244,7 +244,6 @@ interface GamepadService extends Instance {
 }
 
 interface GamePassService extends Instance {
-	/** This item is deprecated. Do not use it for new work. */
 	PlayerHasPass(this: GamePassService, player: Player, gamePassId: number): boolean;
 }
 
@@ -387,19 +386,11 @@ interface InsertService extends Instance {
 
 interface Instance {
 	/**
-	 * **Clone** creates a copy of an object and all of its descendants, ignoring all objects that are not [Archivable](https://developer.roblox.com/en-us/api-reference/property/Instance/Archivable). The copy of the root object is returned by this function and its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is set to nil.
-	 *
-	 * If a reference property such as [ObjectValue.Value](https://developer.roblox.com/en-us/api-reference/property/ObjectValue/Value) is set in a cloned object, the value of the copy's property depends on original's value:
-	 *
-	 * *   If a reference property refers to an object that was **also** cloned, an _internal reference_, the copy will refer to the copy.
-	 * *   If a reference property refers to an object that was **not** cloned, an _external reference_, the same value is maintained in the copy.
-	 *
-	 * This function is typically used to create models that can be regenerated. First, get a reference to the original object. Then, make a copy of the object and insert the copy by setting its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) or one of its descendants. Finally, when it's time to regenerate the model, [Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) the copy and clone a new one from the original like before.
-	 *
 	 * Clone will return nil if the root object has Archivable set to false.
 	 */
 	Clone<T extends Instance>(this: T): T;
-	/** `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
+	/**
+	 * `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
 	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Instance.Changed` event.
 	 * @example
 	 * function f(p: Part) {
@@ -611,9 +602,6 @@ interface Player extends Instance {
 	readonly UserId: number;
 	ReplicationFocus: BasePart | undefined;
 	readonly Chatted: RBXScriptSignal<(message: string, recipient?: Player) => void>;
-	/** ### TS Usage
-	 * One should check the LocationType of each member of this array in order to verify which members are present. Should be compared to the LocationType const enum.
-	 */
 	GetFriendsOnline(this: Player, maxFriends?: number): Array<FriendOnlineInfo>;
 	/** @server */
 	LoadCharacter(this: Player): void;
@@ -693,13 +681,13 @@ interface PluginToolbar extends Instance {
 }
 
 interface PolicyService extends Instance {
-	/** Returns policy information about a player which is based on geolocation, age group, and platform. */
 	GetPolicyInfoForPlayerAsync(this: PolicyService, player: Player): PolicyInfo;
 }
 
 interface RemoteEvent<T extends Callback = Callback> extends Instance {
 	readonly OnClientEvent: RBXScriptSignal<T>;
-	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
+	/**
+	 * The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
 	 * ```ts
 	 * (new Instance("RemoteEvent") as RemoteEvent<(num: number) => void>).OnServerEvent.Connect((plr, num) => {
 	 *     if (typeIs(num, "number") && num === num) {
@@ -739,9 +727,7 @@ interface RunService extends Instance {
 }
 
 interface ScriptContext extends Instance {
-	/**
-	 * `script` will be `undefined` if the error originates from either the command bar or the F9 console
-	 */
+	/** `script` will be `undefined` if the error originates from either the command bar or the F9 console */
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script?: LuaSourceContainer) => void>;
 }
 
@@ -1028,22 +1014,12 @@ interface Workspace extends WorldRoot {
 }
 
 interface WorldRoot extends Model {
-	/**
-	 * Casts a ray using an origin, direction, and optional `RaycastParams`. If it finds an eligible `BasePart` or `Terrain` cell, a `RaycastResult` is returned containing the results of the operation. If no `RaycastParams` object is provided, the defaults are used (all parts are considered and Terrain water is not ignored).
-	 *
-	 * Note that the length (magnitude) of the directional vector is important, as objects/terrain further away than its length will not be tested. If you’re using a `CFrame` to help create the ray components, consider using `CFrame.LookVector` as the directional vector and multiply it by the desired length as shown in the example below.
-	 *
-	 * For a demonstration of how raycasting works, see the Intro to Raycasting article.
-	 *
-	 * This method does NOT use a `Ray` object, but its origin and direction components can be borrowed from `Ray.Origin` and `Ray.Direction`.
-	 */
 	Raycast(
 		this: WorldRoot,
 		origin: Vector3,
 		direction: Vector3,
 		raycastParams?: RaycastParams,
 	): RaycastResult | undefined;
-	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRay(
 		this: WorldRoot,
 		ray: Ray,
@@ -1051,7 +1027,6 @@ interface WorldRoot extends Model {
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRayWithIgnoreList(
 		this: WorldRoot,
 		ray: Ray,
@@ -1059,7 +1034,6 @@ interface WorldRoot extends Model {
 		terrainCellsAreCubes?: boolean,
 		ignoreWater?: boolean,
 	): LuaTuple<[BasePart | undefined, Vector3, Vector3, Enum.Material]>;
-	/** @deprecated in favor of WorldRoot.Raycast */
 	FindPartOnRayWithWhitelist(
 		this: WorldRoot,
 		ray: Ray,

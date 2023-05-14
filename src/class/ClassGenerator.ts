@@ -253,7 +253,9 @@ const CLASS_BLACKLIST = new Set([
 ]);
 
 const MEMBER_BLACKLIST = new Map([
-	["Workspace", new Set(["FilteringEnabled"])],
+	// Joint functions are overridden with `never` in customDefinitions.d.ts, which ignores blacklist
+	// Specifying them here prevents them from becoming duplicated in PluginSecurity.d.ts
+	["Workspace", new Set(["FilteringEnabled", "MakeJoints", "BreakJoints"])],
 	["CollectionService", new Set(["GetCollection"])],
 	["Instance", new Set(["children", "Remove"])],
 	["BodyGyro", new Set(["cframe"])],
@@ -868,7 +870,7 @@ export class ClassGenerator extends Generator {
 			let documentation = "";
 			const signature = node
 				.getFullText()
-				.replace(/\/\*\*[^]+\*\//g, a => {
+				.replace(/\/\*\*([^]+)\*\//g, (_, a) => {
 					documentation = a;
 					return "";
 				})
@@ -884,6 +886,9 @@ export class ClassGenerator extends Generator {
 	}
 
 	private writeSignatures(rbxMember: ApiMemberBase, tsImplInterface?: ts.InterfaceDeclaration, description?: string) {
+		const descriptionParts = [];
+		if (description) descriptionParts.push(description);
+
 		if (tsImplInterface) {
 			const name = rbxMember.Name;
 			const signatures = Array<string>();
@@ -899,31 +904,34 @@ export class ClassGenerator extends Generator {
 			nodes
 				.filter(prop => prop.getName() === name)
 				.forEach(node => {
-					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					const [signature, documentation] = this.getSignature(node);
 					signatures.push(signature);
-					// we don't do this anymore, because of the new TS comment behavior. It automatically combines docs
-					// documentations.push(documentation);
+
+					if (documentation) {
+						if (documentation[0] === "\n") {
+							// Full paragraph: Separate using an empty line
+							descriptionParts.push("");
+							descriptionParts.push(documentation.substring(4));
+						} else {
+							// One-line additions, like `@server`
+							descriptionParts.push(documentation);
+						}
+					}
 				});
 
-			this.writeDescription(rbxMember, description);
+			this.writeDescription(rbxMember, descriptionParts);
 			const written = signatures.length > 0;
 			if (written) {
 				this.write(signatures.join("\n\t"));
 			}
 			return written;
 		} else {
-			this.writeDescription(rbxMember, description);
+			this.writeDescription(rbxMember, descriptionParts);
 			return false;
 		}
 	}
 
-	private writeDescription(rbxMember: ApiMemberBase, description?: string) {
-		const parts = new Array<string>();
-		if (description) {
-			parts.push(description);
-		}
-
+	private writeDescription(rbxMember: ApiMemberBase, parts: Array<string>) {
 		if (rbxMember.Tags && rbxMember.Tags.length > 0) {
 			parts.push("Tags: " + rbxMember.Tags.join(", "));
 		}
@@ -1184,7 +1192,7 @@ export class ClassGenerator extends Generator {
 							fatal("Unknown member", className + "." + name, "was found in customDefinitions.d.ts");
 						}
 						const [signature, documentation] = this.getSignature(custom);
-						if (documentation.trim()) this.write(documentation);
+						if (documentation.trim()) this.write(`/**${documentation}*/`);
 						this.write(signature);
 					}
 				}
