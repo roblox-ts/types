@@ -1028,6 +1028,13 @@ interface Workspace extends WorldRoot {
 }
 
 interface WorldRoot extends Model {
+	Blockcast(
+		this: WorldRoot,
+		cframe: CFrame,
+		size: Vector3,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
 	/**
 	 * Casts a ray using an origin, direction, and optional `RaycastParams`. If it finds an eligible `BasePart` or `Terrain` cell, a `RaycastResult` is returned containing the results of the operation. If no `RaycastParams` object is provided, the defaults are used (all parts are considered and Terrain water is not ignored).
 	 *
