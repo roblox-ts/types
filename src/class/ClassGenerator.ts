@@ -984,14 +984,15 @@ export class ClassGenerator extends Generator {
 	private generateCallback(rbxCallback: ApiCallback, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxCallback.Name;
 		const args = this.generateArgs(rbxCallback.Parameters);
+		const returnType = safeValueType(rbxCallback.ReturnType);
+
 		const { Description: wikiDescription } = rbxCallback;
 		const description =
 			wikiDescription && wikiDescription.trim() !== ""
 				? wikiDescription
 				: this.metadata.getCallbackDescription(className, name);
-
 		if (!this.writeSignatures(rbxCallback, tsImplInterface, description)) {
-			this.write(`${name}: (${args}) => void;`);
+			this.write(`${name}: (${args}) => ${returnType};`);
 		}
 	}
 
