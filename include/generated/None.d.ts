@@ -24780,7 +24780,13 @@ interface WorldRoot extends Model {
 	 * If no parts are provided, false is returned.
 	 */
 	ArePartsTouchingOthers(this: WorldRoot, partList: Array<Instance>, overlapIgnored?: number): boolean;
-	Blockcast(this: WorldRoot, cframe: CFrame, size: Vector3, direction: Vector3, params?: RaycastParams): RaycastResult;
+	Blockcast(
+		this: WorldRoot,
+		cframe: CFrame,
+		size: Vector3,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
 	/**
 	 * **Warning!**  
 	 * You should only use this function if you are sure that part movement is a bottleneck in your code, simply setting the CFrame property of the individual parts / welded models you want to move will be fast enough in the vast majority of cases.
@@ -25087,7 +25093,13 @@ interface WorldRoot extends Model {
 		direction: Vector3,
 		raycastParams?: RaycastParams,
 	): RaycastResult | undefined;
-	Spherecast(this: WorldRoot, position: Vector3, radius: number, direction: Vector3, params?: RaycastParams): RaycastResult;
+	Spherecast(
+		this: WorldRoot,
+		position: Vector3,
+		radius: number,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
 }
 
 /** The Workspace is the service in which any objects that are to be rendered in the 3D world exist. Objects not descending from Workspace will not be rendered or physically interact with the world.
