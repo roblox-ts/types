@@ -387,6 +387,7 @@ const VALUE_TYPE_MAP = new Map<string, string | null>([
 	["null", "void"],
 	["Object", "Instance"],
 	["Objects", "Array<Instance>"],
+	["OptionalCoordinateFrame", "CFrame | undefined"],
 	["Property", "string"],
 	["ProtectedString", "string"],
 	["Rect2D", "Rect"],
