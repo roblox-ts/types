@@ -213,6 +213,7 @@ interface CreatableInstances {
 	DialogChoice: DialogChoice;
 	DistortionSoundEffect: DistortionSoundEffect;
 	DoubleConstrainedValue: DoubleConstrainedValue;
+	DragDetector: DragDetector;
 	Dragger: Dragger;
 	EchoSoundEffect: EchoSoundEffect;
 	EqualizerSoundEffect: EqualizerSoundEffect;
@@ -518,6 +519,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	TextChatConfigurations: TextChatConfigurations;
 	TextChatMessage: TextChatMessage;
 	TextFilterResult: TextFilterResult;
+	TextFilterTranslatedResult: TextFilterTranslatedResult;
 	TextSource: TextSource;
 	TextureGuiExperimental: TextureGuiExperimental;
 	ThreadState: ThreadState;
@@ -626,6 +628,7 @@ interface Instance {
 	 * Tags: NotReplicated
 	 */
 	Parent: Instance | undefined;
+	AddTag(this: Instance, tag: string): void;
 	/**
 	 * This function destroys all of an [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)'s children.
 	 * 
@@ -926,6 +929,8 @@ interface Instance {
 		this: T,
 		propertyName: InstancePropertyNames<T>,
 	): RBXScriptSignal<() => void>;
+	GetTags(this: Instance): unknown;
+	HasTag(this: Instance, tag: string): boolean;
 	/**
 	 * IsA returns true if the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)'s class is **equivalent to** or a **subclass** of a given class. This function is similar to the **instanceof** operators in other languages, and is a form of [type introspection](https://en.wikipedia.org/wiki/Type_introspection). To ignore class inheritance, test the [ClassName](https://developer.roblox.com/en-us/api-reference/property/Instance/ClassName) property directly instead. For checking native Lua data types (number, string, etc) use the functions `type` and `typeof`.
 	 * 
@@ -965,6 +970,7 @@ interface Instance {
 	 * See also, [Instance:IsAncestorOf](https://developer.roblox.com/en-us/api-reference/function/Instance/IsAncestorOf).
 	 */
 	IsDescendantOf(this: Instance, ancestor: Instance): boolean;
+	RemoveTag(this: Instance, tag: string): void;
 	/**
 	 * This function sets the attribute with the given name to the given value. If the value given is nil, then the attribute will be removed (since nil is returned by default).
 	 * 
@@ -2497,6 +2503,7 @@ interface Attachment extends Instance {
 	 * @deprecated
 	 */
 	GetAxis(this: Attachment): Vector3;
+	GetConstraints(this: Attachment): Array<Instance>;
 	/**
 	 * Returns the value of the Attachment's [Attachment.SecondaryAxis](https://developer.roblox.com/en-us/api-reference/property/Attachment/SecondaryAxis).
 	 * Tags: Deprecated, [object Object]
@@ -6504,6 +6511,61 @@ interface ClickDetector extends Instance {
 	 * *   If you want a function to fire when a player hovers on or off of the ClickDetector without clicking it you can use the [MouseHoverEnter](https://developer.roblox.com/en-us/api-reference/event/ClickDetector/MouseHoverEnter) and [MouseHoverLeave](https://developer.roblox.com/en-us/api-reference/event/ClickDetector/MouseHoverLeave) events.
 	 */
 	readonly RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
+}
+
+interface DragDetector extends ClickDetector {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DragDetector: unique symbol;
+	ApplyAtCenterOfMass: boolean;
+	/**
+	 * Tags: NotReplicated
+	 */
+	Axis: Vector3;
+	DragFrame: CFrame;
+	DragStyle: Enum.DragDetectorDragStyle;
+	Enabled: boolean;
+	GamepadModeSwitchKeyCode: Enum.KeyCode;
+	KeyboardModeSwitchKeyCode: Enum.KeyCode;
+	MaxDragAngle: number;
+	MaxDragTranslation: Vector3;
+	MaxForce: number;
+	MaxTorque: number;
+	MinDragAngle: number;
+	MinDragTranslation: Vector3;
+	Orientation: Vector3;
+	ReferenceInstance: Instance | undefined;
+	ResponseStyle: Enum.DragDetectorResponseStyle;
+	Responsiveness: number;
+	RunLocally: boolean;
+	/**
+	 * Tags: NotReplicated
+	 */
+	SecondaryAxis: Vector3;
+	TrackballRadialPullFactor: number;
+	TrackballRollFactor: number;
+	VRSwitchKeyCode: Enum.KeyCode;
+	/**
+	 * Tags: NotReplicated
+	 */
+	WorldAxis: Vector3;
+	/**
+	 * Tags: NotReplicated
+	 */
+	WorldSecondaryAxis: Vector3;
+	AddConstraintFunction(this: DragDetector, name: string, priority: number, callback: Callback): void;
+	GetReferenceFrame(this: DragDetector): CFrame;
+	RemoveConstraintFunction(this: DragDetector, name: string): void;
+	RestartDrag(this: DragDetector): void;
+	SetDragStyleFunction(this: DragDetector, callback: Callback): void;
+	readonly DragContinue: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
+	readonly DragEnd: RBXScriptSignal<(playerWhoDragged: Player) => void>;
+	readonly DragStart: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, hitFrame: CFrame, clickedPart: BasePart, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
 }
 
 /** The **Clouds** object renders realistic clouds that drift slowly across the sky. Both cloud cover and density can be adjusted, as well as cloud color to achieve atmospheres like stormy skies, moody sunsets, alien worlds, etc.
@@ -23215,6 +23277,7 @@ interface BasePart extends PVInstance {
 	 * *   [Network ownership](https://developer.roblox.com/articles/Network-Ownership)
 	 */
 	CanSetNetworkOwnership(this: BasePart): LuaTuple<[boolean, string | undefined]>;
+	GetClosestPointOnSurface(this: BasePart, position: Vector3): Vector3;
 	/**
 	 * Returns a table of parts connected to the the object by any kind of rigid joint.
 	 * 
@@ -24426,6 +24489,7 @@ interface Model extends PVInstance {
 	 * @deprecated
 	 */
 	GetModelSize(this: Model): Vector3;
+	GetPersistentPlayers(this: Model): Array<Instance>;
 	/**
 	 * This function has been superseded by [PVInstance:GetPivot](https://developer.roblox.com/en-us/api-reference/function/PVInstance/GetPivot) which acts as a replacement and does not change your code's behavior. Use [PVInstance:GetPivot](https://developer.roblox.com/en-us/api-reference/function/PVInstance/GetPivot) for new work and migrate your existing [Model:GetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/GetPrimaryPartCFrame) calls when convenient.
 	 * 
@@ -25910,6 +25974,7 @@ interface ParticleEmitter extends Instance {
 	 * @deprecated
 	 */
 	VelocitySpread: number;
+	WindAffectsDrag: boolean;
 	/**
 	 * The ZOffset property determines the forward-backward (Z) render position of particles, in studs. they render at a modified [ParticleEmitter.Size](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Size) such that this property will not affect the screen size of particles. When changed, this property will affects all particles, both current and future particles. Note that this property accepts fractional values; it is not like [GuiObject.ZIndex](https://developer.roblox.com/en-us/api-reference/property/GuiObject/ZIndex) (an integer)
 	 * 
@@ -26591,6 +26656,8 @@ interface Player extends Instance {
 	 * When mouse lock is enabled, the player's cursor is locked to the center of the screen. Moving the mouse will orbit the camera around the player's [character](https://developer.roblox.com/en-us/api-reference/property/Player/Character), and character will face the same direction as the [camera](https://developer.roblox.com/en-us/api-reference/class/Camera). It also offsets the camera view just over the right shoulder of the player's character.
 	 * 
 	 * Below, the camera is moved left and right first by holding right-click. Then, mouse lock is enabled which changes the mouse to a target reticule, and offsets the camera. The camera is again moved left and right (without holding right click).
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	DevEnableMouseLock: boolean;
 	/**
@@ -29008,9 +29075,14 @@ interface SyncScriptBuilder extends ScriptBuilder {
 	 * @deprecated
 	 */
 	readonly _nominal_SyncScriptBuilder: unique symbol;
+	CompileTarget: Enum.CompileTarget;
 	CoverageInfo: boolean;
 	DebugInfo: boolean;
 	PackAsSource: boolean;
+	/**
+	 * Tags: Deprecated, [object Object]
+	 * @deprecated
+	 */
 	RawBytecode: boolean;
 }
 
@@ -31231,6 +31303,8 @@ interface StarterPlayer extends Instance {
 	 * Mouselock will lock the player's cursor to the center of the screen. Moving the mouse will rotate the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) and [Player](https://developer.roblox.com/en-us/api-reference/class/Player) will move relative to the current rotation of the camera.
 	 * 
 	 * This property sets the value of [Player.DevEnableMouseLock](https://developer.roblox.com/en-us/api-reference/property/Player/DevEnableMouseLock).
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	EnableMouseLockOption: boolean;
 	/**
@@ -32841,6 +32915,26 @@ interface TextFilterResult extends Instance {
 	GetNonChatStringForUserAsync(this: TextFilterResult, toUserId: number): string;
 }
 
+interface TextFilterTranslatedResult extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TextFilterTranslatedResult: unique symbol;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly SourceLanguage: string;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly SourceText: TextFilterResult | undefined;
+	GetTranslations(this: TextFilterTranslatedResult): object;
+}
+
 /** The TextService is a service internally responsible for handling the display of text in the game.
  * 
  * This class has two member functions,
@@ -32872,6 +32966,10 @@ interface TextService extends Instance {
 	 * Developers are recommended to add a pixel of padding to the result to ensure no text is cut off.
 	 */
 	GetTextSize(this: TextService, string: string, fontSize: number, font: CastsToEnum<Enum.Font>, frameSize: Vector2): Vector2;
+	/**
+	 * Tags: Yields
+	 */
+	FilterAndTranslateStringAsync(this: TextService, stringToFilter: string, fromUserId: number, targetLocales: Array<any>, textContext?: CastsToEnum<Enum.TextFilterContext>): Instance | undefined;
 	/**
 	 * The FilterStringAsync function filters a string being received from a user, using the [TextService](https://developer.roblox.com/en-us/api-reference/class/TextService), and returns a [TextFilterResult](https://developer.roblox.com/en-us/api-reference/class/TextFilterResult) which can be used to distribute the correctly filtered text accordingly.
 	 * 
@@ -34337,6 +34435,8 @@ interface UserGameSettings extends Instance {
 	ComputerMovementMode: Enum.ComputerMovementMode;
 	/**
 	 * Toggles whether or not the client can use the Mouse Lock Switch mode.
+	 * Tags: Deprecated
+	 * @deprecated
 	 */
 	ControlMode: Enum.ControlMode;
 	/**

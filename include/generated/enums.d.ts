@@ -3398,6 +3398,43 @@ declare namespace Enum {
 	}
 	export type CommandPermission = CommandPermission.Plugin | CommandPermission.LocalUser;
 
+	export namespace CompileTarget {
+		export interface Client extends globalThis.EnumItem {
+			Name: "Client";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.CompileTarget;
+		}
+
+		export const Client: Client;
+
+		export interface CoreScript extends globalThis.EnumItem {
+			Name: "CoreScript";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.CompileTarget;
+		}
+
+		export const CoreScript: CoreScript;
+
+		export interface Studio extends globalThis.EnumItem {
+			Name: "Studio";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.CompileTarget;
+		}
+
+		export const Studio: Studio;
+
+		export interface CoreScriptRaw extends globalThis.EnumItem {
+			Name: "CoreScriptRaw";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.CompileTarget;
+		}
+
+		export const CoreScriptRaw: CoreScriptRaw;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CompileTarget>;
+	}
+	export type CompileTarget = CompileTarget.Client | CompileTarget.CoreScript | CompileTarget.Studio | CompileTarget.CoreScriptRaw;
+
 	export namespace CompletionItemKind {
 		export interface Text extends globalThis.EnumItem {
 			Name: "Text";
@@ -5441,6 +5478,112 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DraftStatusCode>;
 	}
 	export type DraftStatusCode = DraftStatusCode.OK | DraftStatusCode.DraftOutdated | DraftStatusCode.ScriptRemoved | DraftStatusCode.DraftCommitted;
+
+	export namespace DragDetectorDragStyle {
+		export interface TranslateLine extends globalThis.EnumItem {
+			Name: "TranslateLine";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.DragDetectorDragStyle;
+		}
+
+		export const TranslateLine: TranslateLine;
+
+		export interface TranslatePlane extends globalThis.EnumItem {
+			Name: "TranslatePlane";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.DragDetectorDragStyle;
+		}
+
+		export const TranslatePlane: TranslatePlane;
+
+		export interface TranslatePlaneOrLine extends globalThis.EnumItem {
+			Name: "TranslatePlaneOrLine";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.DragDetectorDragStyle;
+		}
+
+		export const TranslatePlaneOrLine: TranslatePlaneOrLine;
+
+		export interface TranslateLineOrPlane extends globalThis.EnumItem {
+			Name: "TranslateLineOrPlane";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.DragDetectorDragStyle;
+		}
+
+		export const TranslateLineOrPlane: TranslateLineOrPlane;
+
+		export interface TranslateViewPlane extends globalThis.EnumItem {
+			Name: "TranslateViewPlane";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.DragDetectorDragStyle;
+		}
+
+		export const TranslateViewPlane: TranslateViewPlane;
+
+		export interface RotateAxis extends globalThis.EnumItem {
+			Name: "RotateAxis";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.DragDetectorDragStyle;
+		}
+
+		export const RotateAxis: RotateAxis;
+
+		export interface RotateTrackball extends globalThis.EnumItem {
+			Name: "RotateTrackball";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.DragDetectorDragStyle;
+		}
+
+		export const RotateTrackball: RotateTrackball;
+
+		export interface Scriptable extends globalThis.EnumItem {
+			Name: "Scriptable";
+			Value: 7;
+			EnumType: typeof globalThis.Enum.DragDetectorDragStyle;
+		}
+
+		export const Scriptable: Scriptable;
+
+		export interface BestForDevice extends globalThis.EnumItem {
+			Name: "BestForDevice";
+			Value: 8;
+			EnumType: typeof globalThis.Enum.DragDetectorDragStyle;
+		}
+
+		export const BestForDevice: BestForDevice;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DragDetectorDragStyle>;
+	}
+	export type DragDetectorDragStyle = DragDetectorDragStyle.TranslateLine | DragDetectorDragStyle.TranslatePlane | DragDetectorDragStyle.TranslatePlaneOrLine | DragDetectorDragStyle.TranslateLineOrPlane | DragDetectorDragStyle.TranslateViewPlane | DragDetectorDragStyle.RotateAxis | DragDetectorDragStyle.RotateTrackball | DragDetectorDragStyle.Scriptable | DragDetectorDragStyle.BestForDevice;
+
+	export namespace DragDetectorResponseStyle {
+		export interface Geometric extends globalThis.EnumItem {
+			Name: "Geometric";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.DragDetectorResponseStyle;
+		}
+
+		export const Geometric: Geometric;
+
+		export interface Physical extends globalThis.EnumItem {
+			Name: "Physical";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.DragDetectorResponseStyle;
+		}
+
+		export const Physical: Physical;
+
+		export interface Custom extends globalThis.EnumItem {
+			Name: "Custom";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.DragDetectorResponseStyle;
+		}
+
+		export const Custom: Custom;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DragDetectorResponseStyle>;
+	}
+	export type DragDetectorResponseStyle = DragDetectorResponseStyle.Geometric | DragDetectorResponseStyle.Physical | DragDetectorResponseStyle.Custom;
 
 	export namespace DraggerCoordinateSpace {
 		export interface Object extends globalThis.EnumItem {
