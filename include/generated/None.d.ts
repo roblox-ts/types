@@ -94,6 +94,7 @@ interface Services {
 	ScriptChangeService: ScriptChangeService;
 	ScriptCloneWatcher: ScriptCloneWatcher;
 	ScriptCloneWatcherHelper: ScriptCloneWatcherHelper;
+	ScriptCommitService: ScriptCommitService;
 	ScriptContext: ScriptContext;
 	ScriptEditorService: ScriptEditorService;
 	ScriptRegistrationService: ScriptRegistrationService;
@@ -117,6 +118,7 @@ interface Services {
 	StudioPublishService: StudioPublishService;
 	StudioScriptDebugEventListener: StudioScriptDebugEventListener;
 	StudioSdkService: StudioSdkService;
+	StylingService: StylingService;
 	TeamCreateData: TeamCreateData;
 	TeamCreatePublishService: TeamCreatePublishService;
 	TeamCreateService: TeamCreateService;
@@ -199,7 +201,6 @@ interface CreatableInstances {
 	ControllerManager: ControllerManager;
 	ControllerPartSensor: ControllerPartSensor;
 	CornerWedgePart: CornerWedgePart;
-	CSGOptions: CSGOptions;
 	CurveAnimation: CurveAnimation;
 	CylinderHandleAdornment: CylinderHandleAdornment;
 	CylinderMesh: CylinderMesh;
@@ -322,6 +323,10 @@ interface CreatableInstances {
 	SpringConstraint: SpringConstraint;
 	StarterGear: StarterGear;
 	StringValue: StringValue;
+	StyleDerive: StyleDerive;
+	StyleLink: StyleLink;
+	StyleRule: StyleRule;
+	StyleSheet: StyleSheet;
 	SunRaysEffect: SunRaysEffect;
 	SurfaceAppearance: SurfaceAppearance;
 	SurfaceGui: SurfaceGui;
@@ -512,6 +517,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
 	StarterPlayerScripts: StarterPlayerScripts;
+	StyleBase: StyleBase;
 	SurfaceGuiBase: SurfaceGuiBase;
 	SyncScriptBuilder: SyncScriptBuilder;
 	TeleportAsyncResult: TeleportAsyncResult;
@@ -1244,11 +1250,6 @@ interface AdPortal extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AdPortal: unique symbol;
-	/**
-	 * Tags: ReadOnly, NotReplicated, Deprecated
-	 * @deprecated
-	 */
-	readonly PortalStatus: Enum.AdPortalStatus;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -5432,17 +5433,6 @@ interface BulkImportService extends Instance {
 	readonly _nominal_BulkImportService: unique symbol;
 }
 
-interface CSGOptions extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_CSGOptions: unique symbol;
-}
-
 interface CalloutService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -5714,6 +5704,7 @@ interface Camera extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly NearPlaneZ: number;
+	VRTiltAndRollEnabled: boolean;
 	/**
 	 * ViewportSize describes the dimensions, in pixels, of the client's viewport.
 	 * 
@@ -24348,6 +24339,7 @@ interface VehicleSeat extends BasePart {
 	readonly Occupant: Humanoid | undefined;
 	/**
 	 * The direction of movement, tied to the keys A and D. Must be one of 1 (right), 0 (straight), or -1 (left). Will refresh back to 0 unless constantly set.
+	 * Tags: NotReplicated
 	 */
 	Steer: number;
 	/**
@@ -24356,6 +24348,7 @@ interface VehicleSeat extends BasePart {
 	SteerFloat: number;
 	/**
 	 * The direction of movement, tied to the keys W and S. Must be an integer 1 (forward) 0 (null) or -1 (reverse). Will refresh back to 0 unless constantly set.
+	 * Tags: NotReplicated
 	 */
 	Throttle: number;
 	/**
@@ -29119,6 +29112,17 @@ interface ScriptCloneWatcherHelper extends Instance {
 	readonly _nominal_ScriptCloneWatcherHelper: unique symbol;
 }
 
+interface ScriptCommitService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptCommitService: unique symbol;
+}
+
 /** This service controls all [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) objects. Most of the properties and methods of this service are locked for internal use, however you may use the [ScriptContext.ScriptsDisabled](https://developer.roblox.com/en-us/api-reference/property/ScriptContext/ScriptsDisabled) property to disable all scripts from a thread with normal security access. */
 interface ScriptContext extends Instance {
 	/**
@@ -29899,6 +29903,7 @@ interface SocialService extends Instance {
 	 * Before using this function, you should use the [CanSendGameInviteAsync](https://developer.roblox.com/en-us/api-reference/function/SocialService/CanSendGameInviteAsync) function to determine whether a player can send a game invite, as this can vary depending on the platform or player. After determining that invites are possible for this player, allow the player to opt-in to inviting others. For example, the player clicked on an “Invite Friends” button, shown after `CanSendGameInviteAsync` returned true.\`
 	 */
 	PromptGameInvite(this: SocialService, player: Player, experienceInviteOptions?: ExperienceInviteOptions): void;
+	PromptIrisInvite(this: SocialService, player: Player, tag: string): void;
 	/**
 	 * **CanSendGameInviteAsync** indicates whether the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player) can invite other players to the current game. If they can, it returns true.
 	 * 
@@ -29906,6 +29911,10 @@ interface SocialService extends Instance {
 	 * Tags: Yields
 	 */
 	CanSendGameInviteAsync(this: SocialService, player: Player, recipientId?: number): boolean;
+	/**
+	 * Tags: Yields
+	 */
+	CanSendIrisInviteAsync(this: SocialService, player: Player): boolean;
 	/**
 	 * This event is a signal invoked when a player has closed the game invite prompt and batches all users and conversation participants into a single array. This prompt can be prompted by the developer or accessed from the SettingsHub menu.
 	 * 
@@ -29931,6 +29940,8 @@ interface SocialService extends Instance {
 	 * *   [SocialService:CanSendGameInviteAsync](https://developer.roblox.com/en-us/api-reference/function/SocialService/CanSendGameInviteAsync), returns true or false depending on the user
 	 */
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
+	readonly IrisInvitePromptClosed: RBXScriptSignal<(player: Player) => void>;
+	OnIrisInviteInvoked: (tag: string, irisParticipantIds: Array<any>) => void;
 }
 
 /** A [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) is an object that emits sound. See [Adding Sounds](https://developer.roblox.com/en-us/articles/adding-sounds) for more info on how to upload a sound file.
@@ -31533,6 +31544,77 @@ interface StudioSdkService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_StudioSdkService: unique symbol;
+}
+
+interface StyleBase extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StyleBase: unique symbol;
+}
+
+interface StyleRule extends StyleBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StyleRule: unique symbol;
+	Selector: string;
+	/**
+	 * Tags: ReadOnly, NotReplicated
+	 */
+	readonly SelectorError: string;
+}
+
+interface StyleSheet extends StyleBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StyleSheet: unique symbol;
+}
+
+interface StyleDerive extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StyleDerive: unique symbol;
+}
+
+interface StyleLink extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StyleLink: unique symbol;
+}
+
+interface StylingService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StylingService: unique symbol;
 }
 
 /** SurfaceAppearance objects allow developers to override the appearance of a [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) with advanced graphics options. Most notably, a SurfaceAppearance can apply a set of PBR textures to a mesh.
