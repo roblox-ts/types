@@ -291,35 +291,6 @@ declare namespace Enum {
 	}
 	export type ActuatorType = ActuatorType.None | ActuatorType.Motor | ActuatorType.Servo;
 
-	export namespace AdPortalStatus {
-		export interface Invalid extends globalThis.EnumItem {
-			Name: "Invalid";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.AdPortalStatus;
-		}
-
-		export const Invalid: Invalid;
-
-		export interface Inactive extends globalThis.EnumItem {
-			Name: "Inactive";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.AdPortalStatus;
-		}
-
-		export const Inactive: Inactive;
-
-		export interface Active extends globalThis.EnumItem {
-			Name: "Active";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.AdPortalStatus;
-		}
-
-		export const Active: Active;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdPortalStatus>;
-	}
-	export type AdPortalStatus = AdPortalStatus.Invalid | AdPortalStatus.Inactive | AdPortalStatus.Active;
-
 	export namespace AdPortalType {
 		export interface Forward extends globalThis.EnumItem {
 			Name: "Forward";
@@ -17790,9 +17761,17 @@ declare namespace Enum {
 
 		export const AudioNoPermission: AudioNoPermission;
 
+		export interface UnsupportedDevice extends globalThis.EnumItem {
+			Name: "UnsupportedDevice";
+			Value: 10;
+			EnumType: typeof globalThis.Enum.TrackerError;
+		}
+
+		export const UnsupportedDevice: UnsupportedDevice;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerError>;
 	}
-	export type TrackerError = TrackerError.Ok | TrackerError.NoService | TrackerError.InitFailed | TrackerError.NoVideo | TrackerError.VideoError | TrackerError.VideoNoPermission | TrackerError.VideoUnsupported | TrackerError.NoAudio | TrackerError.AudioError | TrackerError.AudioNoPermission;
+	export type TrackerError = TrackerError.Ok | TrackerError.NoService | TrackerError.InitFailed | TrackerError.NoVideo | TrackerError.VideoError | TrackerError.VideoNoPermission | TrackerError.VideoUnsupported | TrackerError.NoAudio | TrackerError.AudioError | TrackerError.AudioNoPermission | TrackerError.UnsupportedDevice;
 
 	export namespace TrackerExtrapolationFlagMode {
 		export interface Auto extends globalThis.EnumItem {

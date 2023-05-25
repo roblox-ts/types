@@ -2472,6 +2472,7 @@ interface RenderingTest extends Instance {
 	QualityLevel: number;
 	ShouldSkip: boolean;
 	Ticket: string;
+	Timeout: number;
 	RenderdocTriggerCapture(this: RenderingTest): void;
 }
 
@@ -3102,7 +3103,6 @@ interface Studio extends Instance {
 	 * If set to true, deprecated objects will be shown in the Advanced Objects window, as well as the Object Browser.
 	 */
 	DeprecatedObjectsShown: boolean;
-	["Display Team Create toggle when creating a new experience"]: boolean;
 	["Drag Multiple Parts As Single Part"]: boolean;
 	["Enable Autocomplete"]: boolean;
 	["Enable CoreScript Debugger"]: boolean;
@@ -3115,7 +3115,6 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Error Color"]: Color3;
-	["File > New creates a place with Team Create off"]: boolean;
 	/**
 	 * Tags: NotReplicated
 	 */
