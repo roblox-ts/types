@@ -6626,6 +6626,7 @@ interface CollectionService extends Instance {
 	 * **Warning:** When tagging an object, it is common that some resources are used to give the tag its functionality, e.g. event connections or tables. To prevent memory leaks, it is a good idea to clean these up (disconnect, set to nil, etc) when no longer needed for a tag. Do this when calling [CollectionService:RemoveTag](https://developer.roblox.com/en-us/api-reference/function/CollectionService/RemoveTag), calling [Instance:Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) or in a function connected to a signal returned by [CollectionService:GetInstanceRemovedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceRemovedSignal).
 	 */
 	AddTag(this: CollectionService, instance: Instance, tag: string): void;
+	AddTag(this: Instance, tag: string): void;
 	GetAllTags(this: CollectionService): unknown;
 	/**
 	 * GetInstanceAdded is given a tag (a string) and returns a signal which fires under two conditions:
@@ -6668,6 +6669,7 @@ interface CollectionService extends Instance {
 	 * This method is useful when you want to do something with multiple tags at once on an object. However, it would be inefficient to use this method to check for the existence of a single tag. For this, use [CollectionService:HasTag](https://developer.roblox.com/en-us/api-reference/function/CollectionService/HasTag) to check for a single tag.
 	 */
 	GetTags(this: CollectionService, instance: Instance): Array<string>;
+	GetTags(this: Instance): Array<string>;
 	/**
 	 * HasTag returns whether a given object has a tag
 	 * 
@@ -6677,12 +6679,14 @@ interface CollectionService extends Instance {
 	 * By extension, any tags returned by a call to `CollectionServiec/GetTags` on an object will return true when used with this method.
 	 */
 	HasTag(this: CollectionService, instance: Instance, tag: string): boolean;
+	HasTag(this: Instance, tag: string): boolean;
 	/**
 	 * RemoveTag will remove some tag from some object. This method will not throw an error if the object did not have the tag in the first place. Successfully removing a tag will fire a signal created by [CollectionService:GetInstanceRemovedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceRemovedSignal) with the given tag.
 	 * 
 	 * When removing a tag, it is common that some resources are used to give the tag its functionality, e.g. event connections or tables. To prevent memory leaks, it is a good idea to clean these up (disconnect, set to nil, etc) when no longer needed for a tag.
 	 */
 	RemoveTag(this: CollectionService, instance: Instance, tag: string): void;
+	RemoveTag(this: Instance, tag: string): void;
 	/**
 	 * This function fires when a [Configuration](https://developer.roblox.com/en-us/api-reference/class/Configuration), [CustomEvent](https://developer.roblox.com/en-us/api-reference/class/CustomEvent), [CustomEventReceiver](https://developer.roblox.com/en-us/api-reference/class/CustomEventReceiver), [Dialog](https://developer.roblox.com/en-us/api-reference/class/Dialog), or [VehicleSeat](https://developer.roblox.com/en-us/api-reference/class/VehicleSeat) is added to the [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel).
 	 * Tags: Deprecated, [object Object]
