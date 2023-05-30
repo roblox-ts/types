@@ -136,17 +136,17 @@ interface Chat extends Instance {
 }
 
 interface CollectionService extends Instance {
-	AddTag(this: Instance, tag: string): void;
 	AddTag(this: CollectionService, instance: Instance, tag: string): void;
+	AddTag(this: Instance, tag: string): void;
 	GetInstanceAddedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetInstanceRemovedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetTagged(this: CollectionService, tag: string): Array<Instance>;
-	GetTags(this: Instance): Array<string>;
 	GetTags(this: CollectionService, instance: Instance): Array<string>;
-	HasTag(this: Instance, tag: string): boolean;
+	GetTags(this: Instance): Array<string>;
 	HasTag(this: CollectionService, instance: Instance, tag: string): boolean;
-	RemoveTag(this: Instance, tag: string): void;
+	HasTag(this: Instance, tag: string): boolean;
 	RemoveTag(this: CollectionService, instance: Instance, tag: string): void;
+	RemoveTag(this: Instance, tag: string): void;
 }
 
 interface CompressorSoundEffect extends SoundEffect {
