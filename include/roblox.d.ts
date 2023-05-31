@@ -1046,10 +1046,16 @@ interface CatalogSearchParams {
 	 */
 	readonly _nominal_CatalogSearchParams: unique symbol;
 	SearchKeyword: string;
+	MinPrice: number;
+	MaxPrice: number;
 	CategoryFilter: Enum.CatalogCategoryFilter;
 	SortType: Enum.CatalogSortType;
-	BundleTypes: string;
-	AssetTypes: string;
+	SortAggregation: Enum.CatalogSortAggregation;
+	SalesTypeFilter: Enum.SalesTypeFilter;
+	BundleTypes: Array<Enum.BundleType>;
+	AssetTypes: Array<Enum.AvatarAssetType>;
+	IncludeOffSale: boolean;
+	CreatorName: string;
 }
 
 interface CatalogSearchParamsConstructor {
