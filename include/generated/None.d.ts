@@ -15,6 +15,7 @@ interface Services {
 	AssetImportService: AssetImportService;
 	AssetManagerService: AssetManagerService;
 	AssetService: AssetService;
+	AvatarChatService: AvatarChatService;
 	AvatarEditorService: AvatarEditorService;
 	AvatarImportService: AvatarImportService;
 	BadgeService: BadgeService;
@@ -469,6 +470,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DebuggerVariable: DebuggerVariable;
 	EmotesPages: EmotesPages;
 	FacialAnimationStreamingServiceStats: FacialAnimationStreamingServiceStats;
+	FacialAnimationStreamingSubsessionStats: FacialAnimationStreamingSubsessionStats;
 	FacsImportData: FacsImportData;
 	FriendPages: FriendPages;
 	GlobalDataStore: GlobalDataStore;
@@ -2593,6 +2595,17 @@ interface AudioSearchParams extends Instance {
 	Title: string;
 }
 
+interface AvatarChatService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AvatarChatService: unique symbol;
+}
+
 /** AvatarEditorService is a service to support developer Avatar Editors. It provides methods to modify the player's platform avatar, request information about a user's inventory, and request information about the catalog.
  * 
  * See also
@@ -2773,6 +2786,10 @@ interface AvatarEditorService extends Instance {
 	 * Tags: Yields
 	 */
 	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): object;
+	/**
+	 * Tags: Yields
+	 */
+	GetOutfitDetails(this: AvatarEditorService, outfitId: number): object;
 	/**
 	 * This function returns outfit data for the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer). This would be used with [Players:GetHumanoidDescriptionFromOutfitId](https://developer.roblox.com/en-us/api-reference/function/Players/GetHumanoidDescriptionFromOutfitId) to update the players character to the outfit. Access to this would also depend on [AvatarEditorService:PromptAllowInventoryReadAccess](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptAllowInventoryReadAccess) being accepted by the user.
 	 * 
@@ -7004,6 +7021,13 @@ interface AlignPosition extends Constraint {
 	 */
 	ApplyAtCenterOfMass: boolean;
 	/**
+	 * Selects the mode for force limit. Options Uniform or Per-component
+	 * Tags: NotBrowsable
+	 */
+	ForceLimitMode: Enum.ForceLimitMode;
+	ForceRelativeTo: Enum.ActuatorRelativeTo;
+	MaxAxesForce: Vector3;
+	/**
 	 * Maximum force the constraint can apply to achieve its goal. Only used if RigidityEnabled is false.
 	 */
 	MaxForce: number;
@@ -10151,6 +10175,17 @@ interface FacialAnimationStreamingServiceV2 extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_FacialAnimationStreamingServiceV2: unique symbol;
+}
+
+interface FacialAnimationStreamingSubsessionStats extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FacialAnimationStreamingSubsessionStats: unique symbol;
 }
 
 /** The base class for the legacy motor system. */
@@ -26653,8 +26688,6 @@ interface Player extends Instance {
 	 * When mouse lock is enabled, the player's cursor is locked to the center of the screen. Moving the mouse will orbit the camera around the player's [character](https://developer.roblox.com/en-us/api-reference/property/Player/Character), and character will face the same direction as the [camera](https://developer.roblox.com/en-us/api-reference/class/Camera). It also offsets the camera view just over the right shoulder of the player's character.
 	 * 
 	 * Below, the camera is moved left and right first by holding right-click. Then, mouse lock is enabled which changes the mouse to a target reticule, and offsets the camera. The camera is again moved left and right (without holding right click).
-	 * Tags: Deprecated
-	 * @deprecated
 	 */
 	DevEnableMouseLock: boolean;
 	/**
@@ -31318,8 +31351,6 @@ interface StarterPlayer extends Instance {
 	 * Mouselock will lock the player's cursor to the center of the screen. Moving the mouse will rotate the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) and [Player](https://developer.roblox.com/en-us/api-reference/class/Player) will move relative to the current rotation of the camera.
 	 * 
 	 * This property sets the value of [Player.DevEnableMouseLock](https://developer.roblox.com/en-us/api-reference/property/Player/DevEnableMouseLock).
-	 * Tags: Deprecated
-	 * @deprecated
 	 */
 	EnableMouseLockOption: boolean;
 	/**
@@ -31559,6 +31590,9 @@ interface StyleBase extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_StyleBase: unique symbol;
+	GetStyleRules(this: StyleBase): Array<Instance>;
+	InsertStyleRule(this: StyleBase, rule: StyleRule, index: number | undefined): void;
+	SetStyleRules(this: StyleBase, rules: Array<Instance>): void;
 }
 
 interface StyleRule extends StyleBase {
@@ -31575,6 +31609,10 @@ interface StyleRule extends StyleBase {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly SelectorError: string;
+	GetProperties(this: StyleRule): object;
+	GetProperty(this: StyleRule, name: string): unknown;
+	SetProperties(this: StyleRule, table: object): void;
+	SetProperty(this: StyleRule, name: string, value: unknown): void;
 }
 
 interface StyleSheet extends StyleBase {
@@ -31586,6 +31624,8 @@ interface StyleSheet extends StyleBase {
 	 * @deprecated
 	 */
 	readonly _nominal_StyleSheet: unique symbol;
+	GetDerives(this: StyleSheet): Array<Instance>;
+	SetDerives(this: StyleSheet, derives: Array<Instance>): void;
 }
 
 interface StyleDerive extends Instance {
@@ -31597,6 +31637,7 @@ interface StyleDerive extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_StyleDerive: unique symbol;
+	StyleSheet: StyleSheet | undefined;
 }
 
 interface StyleLink extends Instance {
@@ -31608,6 +31649,7 @@ interface StyleLink extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_StyleLink: unique symbol;
+	StyleSheet: StyleSheet | undefined;
 }
 
 interface StylingService extends Instance {
@@ -33018,6 +33060,7 @@ interface TextFilterTranslatedResult extends Instance {
 	 * Tags: ReadOnly, NotReplicated
 	 */
 	readonly SourceText: TextFilterResult | undefined;
+	GetTranslationForLocale(this: TextFilterTranslatedResult, locale: string): TextFilterResult;
 	GetTranslations(this: TextFilterTranslatedResult): object;
 }
 
@@ -34521,8 +34564,6 @@ interface UserGameSettings extends Instance {
 	ComputerMovementMode: Enum.ComputerMovementMode;
 	/**
 	 * Toggles whether or not the client can use the Mouse Lock Switch mode.
-	 * Tags: Deprecated
-	 * @deprecated
 	 */
 	ControlMode: Enum.ControlMode;
 	/**
