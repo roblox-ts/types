@@ -47,7 +47,7 @@
 		"libxmljs2": "^0.31.0",
 		"prettier": "^2.1.2",
 		"ts-morph": "^17.0.1",
-		"typescript": "^4.9.5"
+		"typescript": "^5.1.3"
 	},
 	"keywords": [
 		"types",
