@@ -21,6 +21,7 @@ interface Services {
 	BadgeService: BadgeService;
 	BulkImportService: BulkImportService;
 	CalloutService: CalloutService;
+	CaptureService: CaptureService;
 	Chat: Chat;
 	CollectionService: CollectionService;
 	CommandService: CommandService;
@@ -42,7 +43,6 @@ interface Services {
 	ExperienceAuthService: ExperienceAuthService;
 	FaceAnimatorService: FaceAnimatorService;
 	FacialAnimationRecordingService: FacialAnimationRecordingService;
-	FacialAnimationStreamingService: FacialAnimationStreamingService;
 	FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
 	GamepadService: GamepadService;
 	GamePassService: GamePassService;
@@ -74,6 +74,7 @@ interface Services {
 	MessageBusService: MessageBusService;
 	MessagingService: MessagingService;
 	MetaBreakpointManager: MetaBreakpointManager;
+	OmniRecommendationsService: OmniRecommendationsService;
 	PackageUIService: PackageUIService;
 	PatchBundlerFileWatch: PatchBundlerFileWatch;
 	PathfindingService: PathfindingService;
@@ -978,7 +979,9 @@ interface Instance {
 	 * See also, [Instance:IsAncestorOf](https://developer.roblox.com/en-us/api-reference/function/Instance/IsAncestorOf).
 	 */
 	IsDescendantOf(this: Instance, ancestor: Instance): boolean;
+	IsPropertyModified(this: Instance, name: string): boolean;
 	RemoveTag(this: Instance, tag: string): void;
+	ResetPropertyToDefault(this: Instance, name: string): void;
 	/**
 	 * This function sets the attribute with the given name to the given value. If the value given is nil, then the attribute will be removed (since nil is returned by default).
 	 * 
@@ -6022,6 +6025,17 @@ interface Camera extends Instance {
 	readonly InterpolationFinished: RBXScriptSignal<() => void>;
 }
 
+interface CaptureService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CaptureService: unique symbol;
+}
+
 /** Base class for objects that change a character's appearance. */
 interface CharacterAppearance extends Instance {
 	/**
@@ -6530,6 +6544,7 @@ interface DragDetector extends ClickDetector {
 	 * @deprecated
 	 */
 	readonly _nominal_DragDetector: unique symbol;
+	ActivatedCursorIcon: string;
 	ApplyAtCenterOfMass: boolean;
 	/**
 	 * Tags: NotReplicated
@@ -8650,6 +8665,7 @@ interface ControllerManager extends Instance {
 	FacingDirection: Vector3;
 	GroundSensor: ControllerSensor | undefined;
 	MovingDirection: Vector3;
+	RootPart: BasePart | undefined;
 }
 
 /** Container class for the [HumanoidController](https://developer.roblox.com/en-us/api-reference/class/HumanoidController) among other classes. */
@@ -10142,17 +10158,6 @@ interface FacialAnimationRecordingService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_FacialAnimationRecordingService: unique symbol;
-}
-
-interface FacialAnimationStreamingService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_FacialAnimationStreamingService: unique symbol;
 }
 
 interface FacialAnimationStreamingServiceStats extends Instance {
@@ -22513,6 +22518,17 @@ interface NoCollisionConstraint extends Instance {
 	Part1: BasePart | undefined;
 }
 
+interface OmniRecommendationsService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_OmniRecommendationsService: unique symbol;
+}
+
 /** A [PVInstance](https://developer.roblox.com/en-us/api-reference/class/PVInstance) (“Position Velocity Instance”) is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Models](https://developer.roblox.com/en-us/api-reference/class/Model). */
 interface PVInstance extends Instance {
 	/**
@@ -24252,6 +24268,7 @@ interface PartOperation extends TriangleMeshPart {
 	 * Sets whether the PartOperation can be recolored using the BrickColor property. When true, the entire Union will be colored as per [BasePart.BrickColor](https://developer.roblox.com/en-us/api-reference/property/BasePart/BrickColor). When false, the parts in the Union will maintain their original colors before the Union operation was performed.
 	 */
 	UsePartColor: boolean;
+	SubstituteGeometry(this: PartOperation, source: Instance): void;
 }
 
 interface IntersectOperation extends PartOperation {
@@ -31593,6 +31610,7 @@ interface StyleBase extends Instance {
 	GetStyleRules(this: StyleBase): Array<Instance>;
 	InsertStyleRule(this: StyleBase, rule: StyleRule, index: number | undefined): void;
 	SetStyleRules(this: StyleBase, rules: Array<Instance>): void;
+	readonly StyleRulesChanged: RBXScriptSignal<() => void>;
 }
 
 interface StyleRule extends StyleBase {
@@ -32882,8 +32900,10 @@ interface BubbleChatConfiguration extends TextChatConfigurations {
 	Font: Enum.Font;
 	FontFace: Font;
 	LocalPlayerStudsOffset: Vector3;
+	MaxBubbles: number;
 	MaxDistance: number;
 	MinimizeDistance: number;
+	TailVisible: boolean;
 	TextColor3: Color3;
 	TextSize: number;
 	VerticalStudsOffset: number;
@@ -32999,6 +33019,16 @@ interface TextChatService extends Instance {
 	readonly ChatVersion: Enum.ChatVersion;
 	readonly CreateDefaultCommands: boolean;
 	readonly CreateDefaultTextChannels: boolean;
+	DisplayBubble(this: TextChatService, partOrCharacter: BasePart | Model, message: string): void;
+	/**
+	 * Tags: Yields
+	 */
+	CanUserChatAsync(this: TextChatService, userId: number): boolean;
+	/**
+	 * Tags: Yields
+	 */
+	CanUsersChatAsync(this: TextChatService, userIdFrom: number, userIdTo: number): boolean;
+	readonly BubbleDisplayed: RBXScriptSignal<(part: BasePart, message: string) => void>;
 	readonly MessageReceived: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
 	readonly SendingMessage: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
 	OnIncomingMessage: (message: TextChatMessage) => void;

@@ -1954,9 +1954,17 @@ declare namespace Enum {
 
 		export const UserVideo: UserVideo;
 
+		export interface UserBanned extends globalThis.EnumItem {
+			Name: "UserBanned";
+			Value: 256;
+			EnumType: typeof globalThis.Enum.AvatarChatServiceFeature;
+		}
+
+		export const UserBanned: UserBanned;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarChatServiceFeature>;
 	}
-	export type AvatarChatServiceFeature = AvatarChatServiceFeature.None | AvatarChatServiceFeature.UniverseAudio | AvatarChatServiceFeature.UniverseVideo | AvatarChatServiceFeature.PlaceAudio | AvatarChatServiceFeature.PlaceVideo | AvatarChatServiceFeature.UserAudioEligible | AvatarChatServiceFeature.UserAudio | AvatarChatServiceFeature.UserVideoEligible | AvatarChatServiceFeature.UserVideo;
+	export type AvatarChatServiceFeature = AvatarChatServiceFeature.None | AvatarChatServiceFeature.UniverseAudio | AvatarChatServiceFeature.UniverseVideo | AvatarChatServiceFeature.PlaceAudio | AvatarChatServiceFeature.PlaceVideo | AvatarChatServiceFeature.UserAudioEligible | AvatarChatServiceFeature.UserAudio | AvatarChatServiceFeature.UserVideoEligible | AvatarChatServiceFeature.UserVideo | AvatarChatServiceFeature.UserBanned;
 
 	export namespace AvatarContextMenuOption {
 		export interface Friend extends globalThis.EnumItem {
@@ -5938,43 +5946,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ExplosionType>;
 	}
 	export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters;
-
-	export namespace FacialAnimationFlags {
-		export interface None extends globalThis.EnumItem {
-			Name: "None";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.FacialAnimationFlags;
-		}
-
-		export const None: None;
-
-		export interface Place extends globalThis.EnumItem {
-			Name: "Place";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.FacialAnimationFlags;
-		}
-
-		export const Place: Place;
-
-		export interface Server extends globalThis.EnumItem {
-			Name: "Server";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.FacialAnimationFlags;
-		}
-
-		export const Server: Server;
-
-		export interface PlaceServer extends globalThis.EnumItem {
-			Name: "PlaceServer";
-			Value: 3;
-			EnumType: typeof globalThis.Enum.FacialAnimationFlags;
-		}
-
-		export const PlaceServer: PlaceServer;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FacialAnimationFlags>;
-	}
-	export type FacialAnimationFlags = FacialAnimationFlags.None | FacialAnimationFlags.Place | FacialAnimationFlags.Server | FacialAnimationFlags.PlaceServer;
 
 	export namespace FacialAnimationStreamingState {
 		export interface None extends globalThis.EnumItem {
@@ -11366,6 +11337,35 @@ declare namespace Enum {
 	}
 	export type ModelLevelOfDetail = ModelLevelOfDetail.Automatic | ModelLevelOfDetail.StreamingMesh | ModelLevelOfDetail.Disabled;
 
+	export namespace ModelStreamingBehavior {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.ModelStreamingBehavior;
+		}
+
+		export const Default: Default;
+
+		export interface Legacy extends globalThis.EnumItem {
+			Name: "Legacy";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ModelStreamingBehavior;
+		}
+
+		export const Legacy: Legacy;
+
+		export interface Improved extends globalThis.EnumItem {
+			Name: "Improved";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ModelStreamingBehavior;
+		}
+
+		export const Improved: Improved;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ModelStreamingBehavior>;
+	}
+	export type ModelStreamingBehavior = ModelStreamingBehavior.Default | ModelStreamingBehavior.Legacy | ModelStreamingBehavior.Improved;
+
 	export namespace ModelStreamingMode {
 		export interface Default extends globalThis.EnumItem {
 			Name: "Default";
@@ -12816,9 +12816,17 @@ declare namespace Enum {
 
 		export const NoUserInput: NoUserInput;
 
+		export interface UnknownFailure extends globalThis.EnumItem {
+			Name: "UnknownFailure";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.PromptPublishAssetResult;
+		}
+
+		export const UnknownFailure: UnknownFailure;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PromptPublishAssetResult>;
 	}
-	export type PromptPublishAssetResult = PromptPublishAssetResult.Success | PromptPublishAssetResult.PermissionDenied | PromptPublishAssetResult.Timeout | PromptPublishAssetResult.UploadFailed | PromptPublishAssetResult.NoUserInput;
+	export type PromptPublishAssetResult = PromptPublishAssetResult.Success | PromptPublishAssetResult.PermissionDenied | PromptPublishAssetResult.Timeout | PromptPublishAssetResult.UploadFailed | PromptPublishAssetResult.NoUserInput | PromptPublishAssetResult.UnknownFailure;
 
 	export namespace PropertyStatus {
 		export interface Ok extends globalThis.EnumItem {
@@ -15430,9 +15438,17 @@ declare namespace Enum {
 
 		export const AICOOverlayButtonBackgroundPressed: AICOOverlayButtonBackgroundPressed;
 
+		export interface IndentationRuler extends globalThis.EnumItem {
+			Name: "IndentationRuler";
+			Value: 45;
+			EnumType: typeof globalThis.Enum.StudioScriptEditorColorCategories;
+		}
+
+		export const IndentationRuler: IndentationRuler;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioScriptEditorColorCategories>;
 	}
-	export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Info | StudioScriptEditorColorCategories.Hint | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket | StudioScriptEditorColorCategories.MenuPrimaryText | StudioScriptEditorColorCategories.MenuSecondaryText | StudioScriptEditorColorCategories.MenuSelectedText | StudioScriptEditorColorCategories.MenuBackground | StudioScriptEditorColorCategories.MenuSelectedBackground | StudioScriptEditorColorCategories.MenuScrollbarBackground | StudioScriptEditorColorCategories.MenuScrollbarHandle | StudioScriptEditorColorCategories.MenuBorder | StudioScriptEditorColorCategories.DocViewCodeBackground | StudioScriptEditorColorCategories.AICOOverlayText | StudioScriptEditorColorCategories.AICOOverlayButtonBackground | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundHover | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundPressed;
+	export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Info | StudioScriptEditorColorCategories.Hint | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket | StudioScriptEditorColorCategories.MenuPrimaryText | StudioScriptEditorColorCategories.MenuSecondaryText | StudioScriptEditorColorCategories.MenuSelectedText | StudioScriptEditorColorCategories.MenuBackground | StudioScriptEditorColorCategories.MenuSelectedBackground | StudioScriptEditorColorCategories.MenuScrollbarBackground | StudioScriptEditorColorCategories.MenuScrollbarHandle | StudioScriptEditorColorCategories.MenuBorder | StudioScriptEditorColorCategories.DocViewCodeBackground | StudioScriptEditorColorCategories.AICOOverlayText | StudioScriptEditorColorCategories.AICOOverlayButtonBackground | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundHover | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundPressed | StudioScriptEditorColorCategories.IndentationRuler;
 
 	export namespace StudioScriptEditorColorPresets {
 		export interface RobloxDefault extends globalThis.EnumItem {
