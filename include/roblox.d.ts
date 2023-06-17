@@ -1913,7 +1913,7 @@ interface SharedTableConstructor {
 	 * The SharedTable object(s) being cloned may be frozen (read-only) or not.
 	 * Regardless, the newly created clones are not frozen (and are thus modifiable).
 	 * To create frozen clones, use the SharedTable.cloneAndFreeze function.
- 	 */
+	 */
 	clone: (st: SharedTable, deep?: boolean) => SharedTable;
 	/**
 	 * Creates a frozen (read-only) clone of a SharedTable and returns the clone.
