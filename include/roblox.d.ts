@@ -1875,7 +1875,8 @@ type RotationCurveKeyConstructor = new (
 ) => RotationCurveKey;
 declare const RotationCurveKey: RotationCurveKeyConstructor;
 
-type SharedTableValue = boolean | number | Vector3 | string | SharedTable | Instance | unique symbol;
+declare const SharedTableNominal: unique symbol;
+type SharedTableValue = boolean | number | Vector3 | string | SharedTable | Instance | typeof SharedTableNominal;
 // SharedTable
 interface SharedTable {
 	/**
@@ -1885,7 +1886,7 @@ interface SharedTable {
 	 * @hidden
 	 * @deprecated
 	 */
-	readonly _nominal_SharedTable: unique symbol;
+	readonly _nominal_SharedTable: typeof SharedTableNominal;
 	[K: string | number]: SharedTableValue;
 }
 
