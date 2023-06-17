@@ -1875,7 +1875,7 @@ type RotationCurveKeyConstructor = new (
 ) => RotationCurveKey;
 declare const RotationCurveKey: RotationCurveKeyConstructor;
 
-type SharedTableValue = boolean | number | Vector3 | string | SharedTable | Instance;
+type SharedTableValue = boolean | number | Vector3 | string | SharedTable | Instance | unique symbol;
 // SharedTable
 interface SharedTable {
 	/**
