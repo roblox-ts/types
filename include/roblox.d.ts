@@ -1045,11 +1045,38 @@ interface CatalogSearchParams {
 	 * @deprecated
 	 */
 	readonly _nominal_CatalogSearchParams: unique symbol;
+	/** The keyword to  search for catalog results with. */
 	SearchKeyword: string;
-	CategoryFilter: Enum.CatalogCategoryFilter;
+
+	/** The minimum item price to search for. */
+	MinPrice: number;
+
+	/** The maximum item price to search for. */
+	MaxPrice: number;
+
+	/** The order in which to sort the results. */
 	SortType: Enum.CatalogSortType;
-	BundleTypes: string;
-	AssetTypes: string;
+
+	/** The time period to use to aggregate the sort results. */
+	SortAggregation: Enum.CatalogSortAggregation;
+
+	/** The category to filter the search by. */
+	CategoryFilter: Enum.CatalogCategoryFilter;
+
+	/** The sales type to filter the search by. */
+	SalesTypeFilter: Enum.SalesTypeFilter;
+
+	/** What BundleTypes to filter the search by. */
+	BundleTypes: ReadonlyArray<Enum.BundleType>;
+
+	/** What AvatarAssetTypes to filter the search by. */
+	AssetTypes: ReadonlyArray<Enum.AvatarAssetType>;
+
+	/** Whether off sale items should be included in the results. */
+	IncludeOffSale: boolean;
+
+	/** Search for items with the given creator. */
+	CreatorName: string;
 }
 
 interface CatalogSearchParamsConstructor {
