@@ -46,6 +46,7 @@ interface Services {
 	FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
 	GamepadService: GamepadService;
 	GamePassService: GamePassService;
+	GeometryService: GeometryService;
 	GroupService: GroupService;
 	GuiService: GuiService;
 	HapticService: HapticService;
@@ -75,6 +76,7 @@ interface Services {
 	MessagingService: MessagingService;
 	MetaBreakpointManager: MetaBreakpointManager;
 	OmniRecommendationsService: OmniRecommendationsService;
+	OpenCloudService: OpenCloudService;
 	PackageUIService: PackageUIService;
 	PatchBundlerFileWatch: PatchBundlerFileWatch;
 	PathfindingService: PathfindingService;
@@ -90,6 +92,7 @@ interface Services {
 	RemoteDebuggerServer: RemoteDebuggerServer;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedStorage: ReplicatedStorage;
+	RomarkService: RomarkService;
 	RtMessagingService: RtMessagingService;
 	RunService: RunService;
 	SafetyService: SafetyService;
@@ -8558,8 +8561,8 @@ interface ControllerBase extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ControllerBase: unique symbol;
+	BalanceRigidityEnabled: boolean;
 	MoveSpeedFactor: number;
-	RigidityEnabled: boolean;
 }
 
 interface AirController extends ControllerBase {
@@ -8572,21 +8575,13 @@ interface AirController extends ControllerBase {
 	 */
 	readonly _nominal_AirController: unique symbol;
 	BalanceMaxTorque: number;
-	BalanceRigidityEnabled: boolean;
 	BalanceSpeed: number;
 	LinearImpulse: Vector3;
 	MaintainAngularMomentum: boolean;
 	MaintainLinearMomentum: boolean;
 	MoveMaxForce: number;
-	OrientationMaxTorque: number;
-	OrientationSpeedFactor: number;
 	TurnMaxTorque: number;
 	TurnSpeedFactor: number;
-	/**
-	 * Tags: Hidden, NotReplicated, Deprecated
-	 * @deprecated
-	 */
-	VectorForce: Vector3;
 }
 
 interface ClimbController extends ControllerBase {
@@ -8600,11 +8595,8 @@ interface ClimbController extends ControllerBase {
 	readonly _nominal_ClimbController: unique symbol;
 	AccelerationTime: number;
 	BalanceMaxTorque: number;
-	BalanceRigidityEnabled: boolean;
 	BalanceSpeed: number;
 	MoveMaxForce: number;
-	OrientationMaxTorque: number;
-	OrientationSpeedFactor: number;
 }
 
 interface GroundController extends ControllerBase {
@@ -8618,10 +8610,7 @@ interface GroundController extends ControllerBase {
 	readonly _nominal_GroundController: unique symbol;
 	AccelerationLean: number;
 	AccelerationTime: number;
-	AlignSpeed: number;
-	AlignTorque: number;
 	BalanceMaxTorque: number;
-	BalanceRigidityEnabled: boolean;
 	BalanceSpeed: number;
 	DecelerationTime: number;
 	Friction: number;
@@ -8630,7 +8619,6 @@ interface GroundController extends ControllerBase {
 	StandForce: number;
 	StandSpeed: number;
 	TurnSpeedFactor: number;
-	TurningFactor: number;
 }
 
 interface SwimController extends ControllerBase {
@@ -10569,6 +10557,30 @@ interface GamepadService extends Instance {
 	EnableGamepadCursor(this: GamepadService, guiObject: GuiObject | undefined): void;
 }
 
+interface GeometryService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_GeometryService: unique symbol;
+	CalculateConstraintsToPreserve(this: GeometryService, source: Instance, destination: Array<Instance>, options: unknown): object;
+	/**
+	 * Tags: Yields
+	 */
+	IntersectAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options: unknown): Array<Instance>;
+	/**
+	 * Tags: Yields
+	 */
+	SubtractAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options: unknown): Array<Instance>;
+	/**
+	 * Tags: Yields
+	 */
+	UnionAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options: unknown): Array<Instance>;
+}
+
 interface GetTextBoundsParams extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -12106,6 +12118,7 @@ interface TextButton extends GuiButton {
 	 * It's important that text is easily read by players! Be sure to choose colors with little-to-no saturation, like white, grey, or black. Make sure the color of your text is contrasted by the `TextButton/BackgroundColor3` of the UI element. If the element has a transparent background, try applying a black [TextButton.TextStrokeColor3](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextStrokeColor3) to help contrast the text with the 3D world behind it.
 	 */
 	TextColor3: Color3;
+	TextDirection: Enum.TextDirection;
 	/**
 	 * A boolean representation of whether the TextButton's text fits within the size of it.
 	 * Tags: ReadOnly, NotReplicated
@@ -12419,6 +12432,7 @@ interface TextLabel extends GuiLabel {
 	 * It's important that text is easily read by players! Be sure to choose colors with little-to-no saturation, like white, grey, or black. Make sure the color of your text is contrasted by the `TextLabel/BackgroundColor3` of the GUI element. If the element has a transparent background, try applying a black [TextLabel.TextStrokeColor3](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextStrokeColor3) to help contrast the text with the 3D world behind it.
 	 */
 	TextColor3: Color3;
+	TextDirection: Enum.TextDirection;
 	/**
 	 * The TextFits is a read-only property that is false if [TextLabel.Text](https://developer.roblox.com/en-us/api-reference/property/TextLabel/Text) content does not fit within the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteSize) when rendered. If [TextLabel.TextWrapped](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextWrapped) is true, a false value indicates that some text is truncated and not rendering. Otherwise, it indicates if the line of text is rendering outside the UI element's rectangle. If [TextLabel.TextScaled](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextScaled) is enabled, this property will be disabled when text must be scaled down in order to fit.
 	 * Tags: ReadOnly, NotReplicated
@@ -12823,6 +12837,7 @@ interface TextBox extends GuiObject {
 	 * It's important that text is easily read by players! Be sure to choose colors with little-to-no saturation, like white, grey, or black. Make sure the color of your text is contrasted by the `TextBox/BackgroundColor3` of the UI element. If the element has a transparent background, try applying a black [TextBox.TextStrokeColor3](https://developer.roblox.com/en-us/api-reference/property/TextBox/TextStrokeColor3) to help contrast the text with the 3D world behind it.
 	 */
 	TextColor3: Color3;
+	TextDirection: Enum.TextDirection;
 	/**
 	 * **TextEditable** determines whether the user can change the [Text](https://developer.roblox.com/en-us/api-reference/property/TextBox/Text) through input. It is recommended to disable [ClearTextOnFocus](https://developer.roblox.com/en-us/api-reference/property/TextBox/ClearTextOnFocus) when this property is disabled, otherwise the Text could be cleared on-focus. This property is useful to make read-only TextBoxes from which content can be copied in-game.
 	 */
@@ -22529,6 +22544,17 @@ interface OmniRecommendationsService extends Instance {
 	readonly _nominal_OmniRecommendationsService: unique symbol;
 }
 
+interface OpenCloudService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_OpenCloudService: unique symbol;
+}
+
 /** A [PVInstance](https://developer.roblox.com/en-us/api-reference/class/PVInstance) (“Position Velocity Instance”) is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Models](https://developer.roblox.com/en-us/api-reference/class/Model). */
 interface PVInstance extends Instance {
 	/**
@@ -22818,6 +22844,7 @@ interface BasePart extends PVInstance {
 	 * @deprecated
 	 */
 	Elasticity: number;
+	EnableFluidForces: boolean;
 	/**
 	 * Tags: ReadOnly, NotReplicated
 	 */
@@ -25258,6 +25285,7 @@ interface Workspace extends WorldRoot {
 	readonly BreakJoints: never;
 	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
 	readonly MakeJoints: never;
+	AirDensity: number;
 	/**
 	 * This [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) property determines whether assets created by other uses can be sold in the game.
 	 * 
@@ -25317,6 +25345,7 @@ interface Workspace extends WorldRoot {
 	 * Tags: NotReplicated
 	 */
 	DistributedGameTime: number;
+	EnableFluidForces: boolean;
 	/**
 	 * This property determines the height at which falling [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) (and their ancestor [Models](https://developer.roblox.com/en-us/api-reference/class/Model)) are destroyed.
 	 * 
@@ -28653,6 +28682,17 @@ interface ReplicatedStorage extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ReplicatedStorage: unique symbol;
+}
+
+interface RomarkService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RomarkService: unique symbol;
 }
 
 /** A sorted list of [RotationCurveKey](https://developer.roblox.com/en-us/api-reference/class/RotationCurveKeys). RotationCurveKeys are value-time points on a curve that dictate the animation curves. It provides a sampling method returning its result as the rotation component of a CFrame. */
@@ -34622,10 +34662,6 @@ interface UserGameSettings extends Instance {
 	 * The type of controls being used by the client on a mobile device.
 	 */
 	TouchMovementMode: Enum.TouchMovementMode;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly VRPlayMode: Enum.VRPlayMode;
 	readonly VRSmoothRotationEnabled: boolean;
 	readonly VignetteEnabled: boolean;
 	/**

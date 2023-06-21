@@ -7984,6 +7984,35 @@ declare namespace Enum {
 	}
 	export type IKCollisionsMode = IKCollisionsMode.NoCollisions | IKCollisionsMode.OtherMechanismsAnchored | IKCollisionsMode.IncludeContactedMechanisms;
 
+	export namespace IKControlConstraintSupport {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.IKControlConstraintSupport;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.IKControlConstraintSupport;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.IKControlConstraintSupport;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.IKControlConstraintSupport>;
+	}
+	export type IKControlConstraintSupport = IKControlConstraintSupport.Default | IKControlConstraintSupport.Disabled | IKControlConstraintSupport.Enabled;
+
 	export namespace IKControlType {
 		export interface Transform extends globalThis.EnumItem {
 			Name: "Transform";
@@ -17226,6 +17255,35 @@ declare namespace Enum {
 	}
 	export type TextChatMessageStatus = TextChatMessageStatus.Unknown | TextChatMessageStatus.Success | TextChatMessageStatus.Sending | TextChatMessageStatus.TextFilterFailed | TextChatMessageStatus.Floodchecked | TextChatMessageStatus.InvalidPrivacySettings | TextChatMessageStatus.InvalidTextChannelPermissions | TextChatMessageStatus.MessageTooLong;
 
+	export namespace TextDirection {
+		export interface Auto extends globalThis.EnumItem {
+			Name: "Auto";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.TextDirection;
+		}
+
+		export const Auto: Auto;
+
+		export interface LeftToRight extends globalThis.EnumItem {
+			Name: "LeftToRight";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.TextDirection;
+		}
+
+		export const LeftToRight: LeftToRight;
+
+		export interface RightToLeft extends globalThis.EnumItem {
+			Name: "RightToLeft";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.TextDirection;
+		}
+
+		export const RightToLeft: RightToLeft;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextDirection>;
+	}
+	export type TextDirection = TextDirection.Auto | TextDirection.LeftToRight | TextDirection.RightToLeft;
+
 	export namespace TextFilterContext {
 		export interface PublicChat extends globalThis.EnumItem {
 			Name: "PublicChat";
@@ -18436,27 +18494,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserInputType>;
 	}
 	export type UserInputType = UserInputType.MouseButton1 | UserInputType.MouseButton2 | UserInputType.MouseButton3 | UserInputType.MouseWheel | UserInputType.MouseMovement | UserInputType.Touch | UserInputType.Keyboard | UserInputType.Focus | UserInputType.Accelerometer | UserInputType.Gyro | UserInputType.Gamepad1 | UserInputType.Gamepad2 | UserInputType.Gamepad3 | UserInputType.Gamepad4 | UserInputType.Gamepad5 | UserInputType.Gamepad6 | UserInputType.Gamepad7 | UserInputType.Gamepad8 | UserInputType.TextInput | UserInputType.InputMethod | UserInputType.None;
-
-	export namespace VRPlayMode {
-		export interface Seated extends globalThis.EnumItem {
-			Name: "Seated";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.VRPlayMode;
-		}
-
-		export const Seated: Seated;
-
-		export interface Standing extends globalThis.EnumItem {
-			Name: "Standing";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.VRPlayMode;
-		}
-
-		export const Standing: Standing;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRPlayMode>;
-	}
-	export type VRPlayMode = VRPlayMode.Seated | VRPlayMode.Standing;
 
 	export namespace VRSafetyBubbleMode {
 		export interface NoOne extends globalThis.EnumItem {
