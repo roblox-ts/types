@@ -867,7 +867,15 @@ export class ClassGenerator extends Generator {
 	}
 
 	private canWrite(className: string, member: ApiMember) {
-		const writeSecurity = getSecurity(className, member).Write;
+		const security = getSecurity(className, member);
+		const readSecurity = security.Read;
+		const writeSecurity = security.Write;
+
+		// dumb hack to fix PluginSecurity writable things being marked as readonly in None.d.ts
+		if (readSecurity === "None" && writeSecurity === "PluginSecurity") {
+			return true;
+		}
+
 		return (
 			writeSecurity === this.security ||
 			(PLUGIN_ONLY_CLASSES.has(className) && writeSecurity === this.lowerSecurity)
