@@ -217,9 +217,7 @@ interface DataStore extends GlobalDataStore {
 			oldValue: O | undefined,
 			keyInfo: DataStoreKeyInfo | undefined,
 		) => LuaTuple<[newValue: R | undefined, userIds?: Array<number>, metadata?: object]>,
-	): R extends undefined
-		? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]>
-		: LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
+	): LuaTuple<[newValue: R | undefined, keyInfo: DataStoreKeyInfo]>;
 	RemoveAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo | undefined]>;
 }
 
