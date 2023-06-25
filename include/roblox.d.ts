@@ -1875,6 +1875,8 @@ type RotationCurveKeyConstructor = new (
 ) => RotationCurveKey;
 declare const RotationCurveKey: RotationCurveKeyConstructor;
 
+declare const SharedTableNominal: unique symbol;
+type SharedTableValue = boolean | number | Vector3 | string | SharedTable | Instance | typeof SharedTableNominal;
 // SharedTable
 interface SharedTable {
 	/**
@@ -1884,8 +1886,79 @@ interface SharedTable {
 	 * @hidden
 	 * @deprecated
 	 */
-	readonly _nominal_SharedTable: unique symbol;
+	readonly _nominal_SharedTable: typeof SharedTableNominal;
+	[K: string | number]: SharedTableValue;
 }
+
+interface SharedTableConstructor {
+	/** Returns a new, empty SharedTable. */
+	new (): SharedTable;
+	/** Returns a new SharedTable containing elements equivalent to those in the provided object. */
+	new (t: object): SharedTable;
+	/** Removes all of the elements from the SharedTable. */
+	clear: (st: SharedTable) => void;
+	/**
+	 * Creates a clone of a SharedTable and returns the clone.
+	 *
+	 * If the optional deep argument is not present, or if it is present and its value is false, then a shallow clone is created.
+	 * A shallow clone copies only the top-level SharedTable object. If any value in the SharedTable itself is a SharedTable, then both the original SharedTable and the clone SharedTable will refer to the same SharedTable.
+	 *
+	 * The shallow clone operation is atomic, so the clone SharedTable will contain a consistent snapshot of the state in the original SharedTable, even if it is being modified concurrently from other scripts.
+	 *
+	 * If the optional deep argument is present and its value is true, then a deep clone is created.
+	 * A deep clone recursively copies a structure of SharedTable objects, such that there is no state shared between the original SharedTable and the clone.
+	 *
+	 * The clone of each SharedTable within the graph of SharedTable objects is atomic, but the deep clone as a whole is not atomic.
+	 * Thus, the clone of each SharedTable within the graph will contain a consistent snapshot of the state of the original SharedTable object from which it was cloned, but the states of different SharedTable objects may be inconsistent if the graph is being modified concurrently from other scripts.
+	 *
+	 * The SharedTable object(s) being cloned may be frozen (read-only) or not.
+	 * Regardless, the newly created clones are not frozen (and are thus modifiable).
+	 * To create frozen clones, use the SharedTable.cloneAndFreeze function.
+	 */
+	clone: (st: SharedTable, deep?: boolean) => SharedTable;
+	/**
+	 * Creates a frozen (read-only) clone of a SharedTable and returns the clone.
+	 * The behavior of this function is the same as the behavior of clone, except that the clone is frozen.
+	 *
+	 * If a deep clone is requested, then all of the cloned SharedTable objects are frozen.
+	 */
+	cloneAndFreeze: (st: SharedTable, deep?: boolean) => SharedTable;
+	/**
+	 * Atomically increments the value of an element.
+	 * An element with the specified key must exist in the SharedTable, and it must be of type number.
+	 * The specified delta is added to the value, and the original value is returned.
+	 *
+	 * The SharedTable.update function can also be used for this purpose; this increment function exists for convenience and performance.
+	 * In general, increment is much faster than update, so it should be preferred where possible.
+	 */
+	increment: (st: SharedTable, k: string | number, delta: number) => number;
+	/** Returns true if the SharedTable is frozen (read-only). */
+	isFrozen: (st: SharedTable) => boolean;
+	/**
+	 * Returns the number of elements stored in the SharedTable.
+	 * Note that if other scripts are concurrently modifying the SharedTable, the returned size may no longer be correct after it is returned, since other scripts may have added or removed elements from the SharedTable.
+	 */
+	size: (st: SharedTable) => number;
+	/**
+	 * Atomically updates the value of an element.
+	 *
+	 * When a SharedTable is accessed concurrently from scripts running in different execution contexts, it is possible for their accesses to interleave unpredictably.
+	 * Because of this, code like the following is generally incorrect, because the value may have changed between the read on the first line and the update on the second line:
+	 * ```ts
+	 * const oldValue = st["x"];
+	 * st["x"] = oldValue + ",x";
+	 * ```
+	 * The update function makes it possible to perform an atomic update to an element.
+	 * It takes a function that it will call with the current value of the element.
+	 * The function can then compute and return the new value.
+	 * Note that the function may be called multiple times if the SharedTable is being concurrently modified from other scripts.
+	 *
+	 * If the SharedTable is frozen, the operation fails and an error will be raised.
+	 */
+	update: (st: SharedTable, k: string | number, f: (v: SharedTableValue) => SharedTableValue) => void;
+}
+
+declare const SharedTable: SharedTableConstructor;
 
 // TextChatMessage
 interface TextChatMessage {

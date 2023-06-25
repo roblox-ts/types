@@ -136,10 +136,17 @@ interface Chat extends Instance {
 }
 
 interface CollectionService extends Instance {
+	AddTag(this: CollectionService, instance: Instance, tag: string): void;
+	AddTag(this: Instance, tag: string): void;
 	GetInstanceAddedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetInstanceRemovedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetTagged(this: CollectionService, tag: string): Array<Instance>;
 	GetTags(this: CollectionService, instance: Instance): Array<string>;
+	GetTags(this: Instance): Array<string>;
+	HasTag(this: CollectionService, instance: Instance, tag: string): boolean;
+	HasTag(this: Instance, tag: string): boolean;
+	RemoveTag(this: CollectionService, instance: Instance, tag: string): void;
+	RemoveTag(this: Instance, tag: string): void;
 }
 
 interface CompressorSoundEffect extends SoundEffect {
@@ -1028,18 +1035,23 @@ interface Workspace extends WorldRoot {
 }
 
 interface WorldRoot extends Model {
-	/**
-	 * Casts a ray using an origin, direction, and optional `RaycastParams`. If it finds an eligible `BasePart` or `Terrain` cell, a `RaycastResult` is returned containing the results of the operation. If no `RaycastParams` object is provided, the defaults are used (all parts are considered and Terrain water is not ignored).
-	 *
-	 * Note that the length (magnitude) of the directional vector is important, as objects/terrain further away than its length will not be tested. If you’re using a `CFrame` to help create the ray components, consider using `CFrame.LookVector` as the directional vector and multiply it by the desired length as shown in the example below.
-	 *
-	 * For a demonstration of how raycasting works, see the Intro to Raycasting article.
-	 *
-	 * This method does NOT use a `Ray` object, but its origin and direction components can be borrowed from `Ray.Origin` and `Ray.Direction`.
-	 */
+	Blockcast(
+		this: WorldRoot,
+		cframe: CFrame,
+		size: Vector3,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
 	Raycast(
 		this: WorldRoot,
 		origin: Vector3,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
+	Spherecast(
+		this: WorldRoot,
+		position: Vector3,
+		radius: number,
 		direction: Vector3,
 		raycastParams?: RaycastParams,
 	): RaycastResult | undefined;

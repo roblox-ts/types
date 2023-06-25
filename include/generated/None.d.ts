@@ -15,11 +15,13 @@ interface Services {
 	AssetImportService: AssetImportService;
 	AssetManagerService: AssetManagerService;
 	AssetService: AssetService;
+	AvatarChatService: AvatarChatService;
 	AvatarEditorService: AvatarEditorService;
 	AvatarImportService: AvatarImportService;
 	BadgeService: BadgeService;
 	BulkImportService: BulkImportService;
 	CalloutService: CalloutService;
+	CaptureService: CaptureService;
 	Chat: Chat;
 	CollectionService: CollectionService;
 	CommandService: CommandService;
@@ -41,10 +43,10 @@ interface Services {
 	ExperienceAuthService: ExperienceAuthService;
 	FaceAnimatorService: FaceAnimatorService;
 	FacialAnimationRecordingService: FacialAnimationRecordingService;
-	FacialAnimationStreamingService: FacialAnimationStreamingService;
 	FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
 	GamepadService: GamepadService;
 	GamePassService: GamePassService;
+	GeometryService: GeometryService;
 	GroupService: GroupService;
 	GuiService: GuiService;
 	HapticService: HapticService;
@@ -73,6 +75,8 @@ interface Services {
 	MessageBusService: MessageBusService;
 	MessagingService: MessagingService;
 	MetaBreakpointManager: MetaBreakpointManager;
+	OmniRecommendationsService: OmniRecommendationsService;
+	OpenCloudService: OpenCloudService;
 	PackageUIService: PackageUIService;
 	PatchBundlerFileWatch: PatchBundlerFileWatch;
 	PathfindingService: PathfindingService;
@@ -88,12 +92,14 @@ interface Services {
 	RemoteDebuggerServer: RemoteDebuggerServer;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedStorage: ReplicatedStorage;
+	RomarkService: RomarkService;
 	RtMessagingService: RtMessagingService;
 	RunService: RunService;
 	SafetyService: SafetyService;
 	ScriptChangeService: ScriptChangeService;
 	ScriptCloneWatcher: ScriptCloneWatcher;
 	ScriptCloneWatcherHelper: ScriptCloneWatcherHelper;
+	ScriptCommitService: ScriptCommitService;
 	ScriptContext: ScriptContext;
 	ScriptEditorService: ScriptEditorService;
 	ScriptRegistrationService: ScriptRegistrationService;
@@ -117,6 +123,7 @@ interface Services {
 	StudioPublishService: StudioPublishService;
 	StudioScriptDebugEventListener: StudioScriptDebugEventListener;
 	StudioSdkService: StudioSdkService;
+	StylingService: StylingService;
 	TeamCreateData: TeamCreateData;
 	TeamCreatePublishService: TeamCreatePublishService;
 	TeamCreateService: TeamCreateService;
@@ -199,7 +206,6 @@ interface CreatableInstances {
 	ControllerManager: ControllerManager;
 	ControllerPartSensor: ControllerPartSensor;
 	CornerWedgePart: CornerWedgePart;
-	CSGOptions: CSGOptions;
 	CurveAnimation: CurveAnimation;
 	CylinderHandleAdornment: CylinderHandleAdornment;
 	CylinderMesh: CylinderMesh;
@@ -213,6 +219,7 @@ interface CreatableInstances {
 	DialogChoice: DialogChoice;
 	DistortionSoundEffect: DistortionSoundEffect;
 	DoubleConstrainedValue: DoubleConstrainedValue;
+	DragDetector: DragDetector;
 	Dragger: Dragger;
 	EchoSoundEffect: EchoSoundEffect;
 	EqualizerSoundEffect: EqualizerSoundEffect;
@@ -321,6 +328,10 @@ interface CreatableInstances {
 	SpringConstraint: SpringConstraint;
 	StarterGear: StarterGear;
 	StringValue: StringValue;
+	StyleDerive: StyleDerive;
+	StyleLink: StyleLink;
+	StyleRule: StyleRule;
+	StyleSheet: StyleSheet;
 	SunRaysEffect: SunRaysEffect;
 	SurfaceAppearance: SurfaceAppearance;
 	SurfaceGui: SurfaceGui;
@@ -463,6 +474,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DebuggerVariable: DebuggerVariable;
 	EmotesPages: EmotesPages;
 	FacialAnimationStreamingServiceStats: FacialAnimationStreamingServiceStats;
+	FacialAnimationStreamingSubsessionStats: FacialAnimationStreamingSubsessionStats;
 	FacsImportData: FacsImportData;
 	FriendPages: FriendPages;
 	GlobalDataStore: GlobalDataStore;
@@ -511,6 +523,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
 	StarterPlayerScripts: StarterPlayerScripts;
+	StyleBase: StyleBase;
 	SurfaceGuiBase: SurfaceGuiBase;
 	SyncScriptBuilder: SyncScriptBuilder;
 	TeleportAsyncResult: TeleportAsyncResult;
@@ -518,6 +531,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	TextChatConfigurations: TextChatConfigurations;
 	TextChatMessage: TextChatMessage;
 	TextFilterResult: TextFilterResult;
+	TextFilterTranslatedResult: TextFilterTranslatedResult;
 	TextSource: TextSource;
 	TextureGuiExperimental: TextureGuiExperimental;
 	ThreadState: ThreadState;
@@ -628,6 +642,7 @@ interface Instance {
 	 * Tags: NotReplicated
 	 */
 	Parent: Instance | undefined;
+	AddTag(this: Instance, tag: string): void;
 	/**
 	 * This function destroys all of an [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)'s children.
 	 * 
@@ -929,6 +944,8 @@ interface Instance {
 		this: T,
 		propertyName: InstancePropertyNames<T>,
 	): RBXScriptSignal<() => void>;
+	GetTags(this: Instance): unknown;
+	HasTag(this: Instance, tag: string): boolean;
 	/**
 	 * IsA returns true if the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)'s class is **equivalent to** or a **subclass** of a given class. This function is similar to the **instanceof** operators in other languages, and is a form of [type introspection](https://en.wikipedia.org/wiki/Type_introspection). To ignore class inheritance, test the [ClassName](https://developer.roblox.com/en-us/api-reference/property/Instance/ClassName) property directly instead. For checking native Lua data types (number, string, etc) use the functions `type` and `typeof`.
 	 * 
@@ -969,6 +986,9 @@ interface Instance {
 	 * See also, [Instance:IsAncestorOf](https://developer.roblox.com/en-us/api-reference/function/Instance/IsAncestorOf).
 	 */
 	IsDescendantOf(this: Instance, ancestor: Instance): boolean;
+	IsPropertyModified(this: Instance, name: string): boolean;
+	RemoveTag(this: Instance, tag: string): void;
+	ResetPropertyToDefault(this: Instance, name: string): void;
 	/**
 	 * This function sets the attribute with the given name to the given value. If the value given is nil, then the attribute will be removed (since nil is returned by default).
 	 * 
@@ -1247,11 +1267,6 @@ interface AdPortal extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AdPortal: unique symbol;
-	/**
-	 * Tags: NotReplicated
-	 * @deprecated
-	 */
-	readonly PortalStatus: Enum.AdPortalStatus;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -2530,6 +2545,7 @@ interface Attachment extends Instance {
 	 * @deprecated Use `Axis` instead
 	 */
 	GetAxis(this: Attachment): Vector3;
+	GetConstraints(this: Attachment): Array<Instance>;
 	/**
 	 * Returns the value of the Attachment's [Attachment.SecondaryAxis](https://developer.roblox.com/en-us/api-reference/property/Attachment/SecondaryAxis).
 	 * @deprecated Use `SecondaryAxis` instead
@@ -2616,6 +2632,17 @@ interface AudioSearchParams extends Instance {
 	SearchKeyword: string;
 	Tag: string;
 	Title: string;
+}
+
+interface AvatarChatService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AvatarChatService: unique symbol;
 }
 
 /** AvatarEditorService is a service to support developer Avatar Editors. It provides methods to modify the player's platform avatar, request information about a user's inventory, and request information about the catalog.
@@ -2804,6 +2831,10 @@ interface AvatarEditorService extends Instance {
 	 * Tags: Yields
 	 */
 	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): object;
+	/**
+	 * Tags: Yields
+	 */
+	GetOutfitDetails(this: AvatarEditorService, outfitId: number): object;
 	/**
 	 * This function returns outfit data for the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer). This would be used with [Players:GetHumanoidDescriptionFromOutfitId](https://developer.roblox.com/en-us/api-reference/function/Players/GetHumanoidDescriptionFromOutfitId) to update the players character to the outfit. Access to this would also depend on [AvatarEditorService:PromptAllowInventoryReadAccess](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptAllowInventoryReadAccess) being accepted by the user.
 	 * 
@@ -5147,7 +5178,7 @@ interface BodyAngularVelocity extends BodyMover {
 	 */
 	AngularVelocity: Vector3;
 	/**
-	 * The MaxTorque property determines the limit of the torque that may be exerted on each world axis. If a part isn't moving, consider raising this value (and also check that it is not [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) or attached to another anchored part). See also [P](https://developer.roblox.com/en-us/api-reference/property/BodyAngularVelocity/P) (power).
+	 * The maxTorque property is a deprecated variant of `BodyAngualrVelocity/MaxTorque` that lets you set how much force could be applied to each axis.
 	 */
 	MaxTorque: Vector3;
 	/**
@@ -5190,7 +5221,7 @@ interface BodyForce extends BodyMover {
 	 */
 	readonly _nominal_BodyForce: unique symbol;
 	/**
-	 * The Force property determines the magnitude of force exerted on each axis, relative to the world.
+	 * A deprecated variant of `BodyForce.Force` that indicates the amount of force applied on each axis.
 	 */
 	Force: Vector3;
 }
@@ -5476,17 +5507,6 @@ interface BulkImportService extends Instance {
 	readonly _nominal_BulkImportService: unique symbol;
 }
 
-interface CSGOptions extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_CSGOptions: unique symbol;
-}
-
 interface CalloutService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -5762,6 +5782,7 @@ interface Camera extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly NearPlaneZ: number;
+	VRTiltAndRollEnabled: boolean;
 	/**
 	 * ViewportSize describes the dimensions, in pixels, of the client's viewport.
 	 * 
@@ -6057,6 +6078,17 @@ interface Camera extends Instance {
 	 * You are advised to use [TweenService](https://developer.roblox.com/en-us/api-reference/class/TweenService) to animate the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) instead, as it is more reliable and provides more options for easing styles.
 	 */
 	readonly InterpolationFinished: RBXScriptSignal<() => void>;
+}
+
+interface CaptureService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CaptureService: unique symbol;
 }
 
 /** Base class for objects that change a character's appearance. */
@@ -6563,6 +6595,62 @@ interface ClickDetector extends Instance {
 	readonly RightMouseClick: RBXScriptSignal<(playerWhoClicked: Player) => void>;
 }
 
+interface DragDetector extends ClickDetector {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DragDetector: unique symbol;
+	ActivatedCursorIcon: string;
+	ApplyAtCenterOfMass: boolean;
+	/**
+	 * Tags: NotReplicated
+	 */
+	Axis: Vector3;
+	DragFrame: CFrame;
+	DragStyle: Enum.DragDetectorDragStyle;
+	Enabled: boolean;
+	GamepadModeSwitchKeyCode: Enum.KeyCode;
+	KeyboardModeSwitchKeyCode: Enum.KeyCode;
+	MaxDragAngle: number;
+	MaxDragTranslation: Vector3;
+	MaxForce: number;
+	MaxTorque: number;
+	MinDragAngle: number;
+	MinDragTranslation: Vector3;
+	Orientation: Vector3;
+	ReferenceInstance: Instance | undefined;
+	ResponseStyle: Enum.DragDetectorResponseStyle;
+	Responsiveness: number;
+	RunLocally: boolean;
+	/**
+	 * Tags: NotReplicated
+	 */
+	SecondaryAxis: Vector3;
+	TrackballRadialPullFactor: number;
+	TrackballRollFactor: number;
+	VRSwitchKeyCode: Enum.KeyCode;
+	/**
+	 * Tags: NotReplicated
+	 */
+	WorldAxis: Vector3;
+	/**
+	 * Tags: NotReplicated
+	 */
+	WorldSecondaryAxis: Vector3;
+	AddConstraintFunction(this: DragDetector, name: string, priority: number, callback: Callback): void;
+	GetReferenceFrame(this: DragDetector): CFrame;
+	RemoveConstraintFunction(this: DragDetector, name: string): void;
+	RestartDrag(this: DragDetector): void;
+	SetDragStyleFunction(this: DragDetector, callback: Callback): void;
+	readonly DragContinue: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
+	readonly DragEnd: RBXScriptSignal<(playerWhoDragged: Player) => void>;
+	readonly DragStart: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, hitFrame: CFrame, clickedPart: BasePart, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
+}
+
 /** The **Clouds** object renders realistic clouds that drift slowly across the sky. Both cloud cover and density can be adjusted, as well as cloud color to achieve atmospheres like stormy skies, moody sunsets, alien worlds, etc.
  * 
  * See the [Dynamic Clouds](https://developer.roblox.com/articles/dynamic-clouds) article for a summary of properties and expected results.
@@ -6630,6 +6718,7 @@ interface CollectionService extends Instance {
 	 * **Warning:** When tagging an object, it is common that some resources are used to give the tag its functionality, e.g. event connections or tables. To prevent memory leaks, it is a good idea to clean these up (disconnect, set to nil, etc) when no longer needed for a tag. Do this when calling [CollectionService:RemoveTag](https://developer.roblox.com/en-us/api-reference/function/CollectionService/RemoveTag), calling [Instance:Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) or in a function connected to a signal returned by [CollectionService:GetInstanceRemovedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceRemovedSignal).
 	 */
 	AddTag(this: CollectionService, instance: Instance, tag: string): void;
+	AddTag(this: Instance, tag: string): void;
 	GetAllTags(this: CollectionService): unknown;
 	/**
 	 * GetInstanceAdded is given a tag (a string) and returns a signal which fires under two conditions:
@@ -6672,6 +6761,7 @@ interface CollectionService extends Instance {
 	 * This method is useful when you want to do something with multiple tags at once on an object. However, it would be inefficient to use this method to check for the existence of a single tag. For this, use [CollectionService:HasTag](https://developer.roblox.com/en-us/api-reference/function/CollectionService/HasTag) to check for a single tag.
 	 */
 	GetTags(this: CollectionService, instance: Instance): Array<string>;
+	GetTags(this: Instance): Array<string>;
 	/**
 	 * HasTag returns whether a given object has a tag
 	 * 
@@ -6681,12 +6771,14 @@ interface CollectionService extends Instance {
 	 * By extension, any tags returned by a call to `CollectionServiec/GetTags` on an object will return true when used with this method.
 	 */
 	HasTag(this: CollectionService, instance: Instance, tag: string): boolean;
+	HasTag(this: Instance, tag: string): boolean;
 	/**
 	 * RemoveTag will remove some tag from some object. This method will not throw an error if the object did not have the tag in the first place. Successfully removing a tag will fire a signal created by [CollectionService:GetInstanceRemovedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceRemovedSignal) with the given tag.
 	 * 
 	 * When removing a tag, it is common that some resources are used to give the tag its functionality, e.g. event connections or tables. To prevent memory leaks, it is a good idea to clean these up (disconnect, set to nil, etc) when no longer needed for a tag.
 	 */
 	RemoveTag(this: CollectionService, instance: Instance, tag: string): void;
+	RemoveTag(this: Instance, tag: string): void;
 	/**
 	 * This function fires when a [Configuration](https://developer.roblox.com/en-us/api-reference/class/Configuration), [CustomEvent](https://developer.roblox.com/en-us/api-reference/class/CustomEvent), [CustomEventReceiver](https://developer.roblox.com/en-us/api-reference/class/CustomEventReceiver), [Dialog](https://developer.roblox.com/en-us/api-reference/class/Dialog), or [VehicleSeat](https://developer.roblox.com/en-us/api-reference/class/VehicleSeat) is added to the [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel).
 	 * @deprecated Use `GetInstanceAddedSignal` instead
@@ -7004,6 +7096,14 @@ interface AlignPosition extends Constraint {
 	 * When true, applies force at center of mass of Attachment0's parent Part. When false, applied at Attachment0.
 	 */
 	ApplyAtCenterOfMass: boolean;
+	/**
+	 * Selects the mode for force limit. Options Uniform or Per-component
+	 * 
+	 * Tags: NotBrowsable
+	 */
+	ForceLimitMode: Enum.ForceLimitMode;
+	ForceRelativeTo: Enum.ActuatorRelativeTo;
+	MaxAxesForce: Vector3;
 	/**
 	 * Maximum force the constraint can apply to achieve its goal. Only used if RigidityEnabled is false.
 	 */
@@ -8533,8 +8633,8 @@ interface ControllerBase extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ControllerBase: unique symbol;
+	BalanceRigidityEnabled: boolean;
 	MoveSpeedFactor: number;
-	RigidityEnabled: boolean;
 }
 
 interface AirController extends ControllerBase {
@@ -8547,21 +8647,13 @@ interface AirController extends ControllerBase {
 	 */
 	readonly _nominal_AirController: unique symbol;
 	BalanceMaxTorque: number;
-	BalanceRigidityEnabled: boolean;
 	BalanceSpeed: number;
 	LinearImpulse: Vector3;
 	MaintainAngularMomentum: boolean;
 	MaintainLinearMomentum: boolean;
 	MoveMaxForce: number;
-	OrientationMaxTorque: number;
-	OrientationSpeedFactor: number;
 	TurnMaxTorque: number;
 	TurnSpeedFactor: number;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 * @deprecated
-	 */
-	VectorForce: Vector3;
 }
 
 interface ClimbController extends ControllerBase {
@@ -8575,11 +8667,8 @@ interface ClimbController extends ControllerBase {
 	readonly _nominal_ClimbController: unique symbol;
 	AccelerationTime: number;
 	BalanceMaxTorque: number;
-	BalanceRigidityEnabled: boolean;
 	BalanceSpeed: number;
 	MoveMaxForce: number;
-	OrientationMaxTorque: number;
-	OrientationSpeedFactor: number;
 }
 
 interface GroundController extends ControllerBase {
@@ -8593,10 +8682,7 @@ interface GroundController extends ControllerBase {
 	readonly _nominal_GroundController: unique symbol;
 	AccelerationLean: number;
 	AccelerationTime: number;
-	AlignSpeed: number;
-	AlignTorque: number;
 	BalanceMaxTorque: number;
-	BalanceRigidityEnabled: boolean;
 	BalanceSpeed: number;
 	DecelerationTime: number;
 	Friction: number;
@@ -8605,7 +8691,6 @@ interface GroundController extends ControllerBase {
 	StandForce: number;
 	StandSpeed: number;
 	TurnSpeedFactor: number;
-	TurningFactor: number;
 }
 
 interface SwimController extends ControllerBase {
@@ -8640,6 +8725,7 @@ interface ControllerManager extends Instance {
 	FacingDirection: Vector3;
 	GroundSensor: ControllerSensor | undefined;
 	MovingDirection: Vector3;
+	RootPart: BasePart | undefined;
 }
 
 /** Container class for the [HumanoidController](https://developer.roblox.com/en-us/api-reference/class/HumanoidController) among other classes. */
@@ -10148,17 +10234,6 @@ interface FacialAnimationRecordingService extends Instance {
 	readonly _nominal_FacialAnimationRecordingService: unique symbol;
 }
 
-interface FacialAnimationStreamingService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_FacialAnimationStreamingService: unique symbol;
-}
-
 interface FacialAnimationStreamingServiceStats extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -10179,6 +10254,17 @@ interface FacialAnimationStreamingServiceV2 extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_FacialAnimationStreamingServiceV2: unique symbol;
+}
+
+interface FacialAnimationStreamingSubsessionStats extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FacialAnimationStreamingSubsessionStats: unique symbol;
 }
 
 /** The base class for the legacy motor system. */
@@ -10559,6 +10645,30 @@ interface GamepadService extends Instance {
 	readonly GamepadCursorEnabled: boolean;
 	DisableGamepadCursor(this: GamepadService): void;
 	EnableGamepadCursor(this: GamepadService, guiObject: GuiObject | undefined): void;
+}
+
+interface GeometryService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_GeometryService: unique symbol;
+	CalculateConstraintsToPreserve(this: GeometryService, source: Instance, destination: Array<Instance>, options: unknown): object;
+	/**
+	 * Tags: Yields
+	 */
+	IntersectAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options: unknown): Array<Instance>;
+	/**
+	 * Tags: Yields
+	 */
+	SubtractAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options: unknown): Array<Instance>;
+	/**
+	 * Tags: Yields
+	 */
+	UnionAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options: unknown): Array<Instance>;
 }
 
 interface GetTextBoundsParams extends Instance {
@@ -12122,6 +12232,7 @@ interface TextButton extends GuiButton {
 	 * It's important that text is easily read by players! Be sure to choose colors with little-to-no saturation, like white, grey, or black. Make sure the color of your text is contrasted by the `TextButton/BackgroundColor3` of the UI element. If the element has a transparent background, try applying a black [TextButton.TextStrokeColor3](https://developer.roblox.com/en-us/api-reference/property/TextButton/TextStrokeColor3) to help contrast the text with the 3D world behind it.
 	 */
 	TextColor3: Color3;
+	TextDirection: Enum.TextDirection;
 	/**
 	 * A boolean representation of whether the TextButton's text fits within the size of it.
 	 * 
@@ -12443,6 +12554,7 @@ interface TextLabel extends GuiLabel {
 	 * It's important that text is easily read by players! Be sure to choose colors with little-to-no saturation, like white, grey, or black. Make sure the color of your text is contrasted by the `TextLabel/BackgroundColor3` of the GUI element. If the element has a transparent background, try applying a black [TextLabel.TextStrokeColor3](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextStrokeColor3) to help contrast the text with the 3D world behind it.
 	 */
 	TextColor3: Color3;
+	TextDirection: Enum.TextDirection;
 	/**
 	 * The TextFits is a read-only property that is false if [TextLabel.Text](https://developer.roblox.com/en-us/api-reference/property/TextLabel/Text) content does not fit within the [GuiBase2d.AbsoluteSize](https://developer.roblox.com/en-us/api-reference/property/GuiBase2d/AbsoluteSize) when rendered. If [TextLabel.TextWrapped](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextWrapped) is true, a false value indicates that some text is truncated and not rendering. Otherwise, it indicates if the line of text is rendering outside the UI element's rectangle. If [TextLabel.TextScaled](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextScaled) is enabled, this property will be disabled when text must be scaled down in order to fit.
 	 * 
@@ -12853,6 +12965,7 @@ interface TextBox extends GuiObject {
 	 * It's important that text is easily read by players! Be sure to choose colors with little-to-no saturation, like white, grey, or black. Make sure the color of your text is contrasted by the `TextBox/BackgroundColor3` of the UI element. If the element has a transparent background, try applying a black [TextBox.TextStrokeColor3](https://developer.roblox.com/en-us/api-reference/property/TextBox/TextStrokeColor3) to help contrast the text with the 3D world behind it.
 	 */
 	TextColor3: Color3;
+	TextDirection: Enum.TextDirection;
 	/**
 	 * **TextEditable** determines whether the user can change the [Text](https://developer.roblox.com/en-us/api-reference/property/TextBox/Text) through input. It is recommended to disable [ClearTextOnFocus](https://developer.roblox.com/en-us/api-reference/property/TextBox/ClearTextOnFocus) when this property is disabled, otherwise the Text could be cleared on-focus. This property is useful to make read-only TextBoxes from which content can be copied in-game.
 	 */
@@ -22598,6 +22711,28 @@ interface NoCollisionConstraint extends Instance {
 	Part1: BasePart | undefined;
 }
 
+interface OmniRecommendationsService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_OmniRecommendationsService: unique symbol;
+}
+
+interface OpenCloudService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_OpenCloudService: unique symbol;
+}
+
 /** A [PVInstance](https://developer.roblox.com/en-us/api-reference/class/PVInstance) (“Position Velocity Instance”) is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Models](https://developer.roblox.com/en-us/api-reference/class/Model). */
 interface PVInstance extends Instance {
 	/**
@@ -22903,6 +23038,7 @@ interface BasePart extends PVInstance {
 	 * @deprecated
 	 */
 	Elasticity: number;
+	EnableFluidForces: boolean;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -23432,6 +23568,7 @@ interface BasePart extends PVInstance {
 	 * *   [Network ownership](https://developer.roblox.com/articles/Network-Ownership)
 	 */
 	CanSetNetworkOwnership(this: BasePart): LuaTuple<[boolean, string | undefined]>;
+	GetClosestPointOnSurface(this: BasePart, position: Vector3): Vector3;
 	/**
 	 * Returns a table of parts connected to the the object by any kind of rigid joint.
 	 * 
@@ -23702,7 +23839,7 @@ interface FormFactorPart extends BasePart {
 	 */
 	readonly _nominal_FormFactorPart: unique symbol;
 	/**
-	 * This used to specify a grid constraint of the part's size. No longer does anything.
+	 * Determines how a part acts when resized and the values that which its size can take.
 	 * 
 	 * Tags: NotReplicated
 	 * @deprecated
@@ -24378,6 +24515,7 @@ interface PartOperation extends TriangleMeshPart {
 	 * Sets whether the PartOperation can be recolored using the BrickColor property. When true, the entire Union will be colored as per [BasePart.BrickColor](https://developer.roblox.com/en-us/api-reference/property/BasePart/BrickColor). When false, the parts in the Union will maintain their original colors before the Union operation was performed.
 	 */
 	UsePartColor: boolean;
+	SubstituteGeometry(this: PartOperation, source: Instance): void;
 }
 
 interface IntersectOperation extends PartOperation {
@@ -24507,6 +24645,8 @@ interface VehicleSeat extends BasePart {
 	readonly Occupant: Humanoid | undefined;
 	/**
 	 * The direction of movement, tied to the keys A and D. Must be one of 1 (right), 0 (straight), or -1 (left). Will refresh back to 0 unless constantly set.
+	 * 
+	 * Tags: NotReplicated
 	 */
 	Steer: number;
 	/**
@@ -24515,6 +24655,8 @@ interface VehicleSeat extends BasePart {
 	SteerFloat: number;
 	/**
 	 * The direction of movement, tied to the keys W and S. Must be an integer 1 (forward) 0 (null) or -1 (reverse). Will refresh back to 0 unless constantly set.
+	 * 
+	 * Tags: NotReplicated
 	 */
 	Throttle: number;
 	/**
@@ -24646,6 +24788,7 @@ interface Model extends PVInstance {
 	 * @deprecated Use `GetExtentsSize` instead
 	 */
 	GetModelSize(this: Model): Vector3;
+	GetPersistentPlayers(this: Model): Array<Instance>;
 	/**
 	 * This function has been superseded by [PVInstance:GetPivot](https://developer.roblox.com/en-us/api-reference/function/PVInstance/GetPivot) which acts as a replacement and does not change your code's behavior. Use [PVInstance:GetPivot](https://developer.roblox.com/en-us/api-reference/function/PVInstance/GetPivot) for new work and migrate your existing [Model:GetPrimaryPartCFrame](https://developer.roblox.com/en-us/api-reference/function/Model/GetPrimaryPartCFrame) calls when convenient.
 	 * 
@@ -24999,7 +25142,13 @@ interface WorldRoot extends Model {
 	 * If no parts are provided, false is returned.
 	 */
 	ArePartsTouchingOthers(this: WorldRoot, partList: Array<Instance>, overlapIgnored?: number): boolean;
-	Blockcast(this: WorldRoot, cframe: CFrame, size: Vector3, direction: Vector3, params?: RaycastParams): RaycastResult;
+	Blockcast(
+		this: WorldRoot,
+		cframe: CFrame,
+		size: Vector3,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
 	/**
 	 * **Warning!**  
 	 * You should only use this function if you are sure that part movement is a bottleneck in your code, simply setting the CFrame property of the individual parts / welded models you want to move will be fast enough in the vast majority of cases.
@@ -25298,7 +25447,13 @@ interface WorldRoot extends Model {
 		direction: Vector3,
 		raycastParams?: RaycastParams,
 	): RaycastResult | undefined;
-	Spherecast(this: WorldRoot, position: Vector3, radius: number, direction: Vector3, params?: RaycastParams): RaycastResult;
+	Spherecast(
+		this: WorldRoot,
+		position: Vector3,
+		radius: number,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
 }
 
 /** The Workspace is the service in which any objects that are to be rendered in the 3D world exist. Objects not descending from Workspace will not be rendered or physically interact with the world.
@@ -25344,6 +25499,7 @@ interface Workspace extends WorldRoot {
 	readonly BreakJoints: never;
 	/** Do not use `Workspace.MakeJoints`. Use a for-loop instead */
 	readonly MakeJoints: never;
+	AirDensity: number;
 	/**
 	 * This [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) property determines whether assets created by other uses can be sold in the game.
 	 * 
@@ -25406,6 +25562,7 @@ interface Workspace extends WorldRoot {
 	 * Tags: NotReplicated
 	 */
 	DistributedGameTime: number;
+	EnableFluidForces: boolean;
 	/**
 	 * This property determines the height at which falling [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) (and their ancestor [Models](https://developer.roblox.com/en-us/api-reference/class/Model)) are destroyed.
 	 * 
@@ -26118,6 +26275,7 @@ interface ParticleEmitter extends Instance {
 	 * @deprecated Use `SpreadAngle` instead
 	 */
 	VelocitySpread: number;
+	WindAffectsDrag: boolean;
 	/**
 	 * The ZOffset property determines the forward-backward (Z) render position of particles, in studs. they render at a modified [ParticleEmitter.Size](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Size) such that this property will not affect the screen size of particles. When changed, this property will affects all particles, both current and future particles. Note that this property accepts fractional values; it is not like [GuiObject.ZIndex](https://developer.roblox.com/en-us/api-reference/property/GuiObject/ZIndex) (an integer)
 	 * 
@@ -28773,6 +28931,17 @@ interface ReplicatedStorage extends Instance {
 	readonly _nominal_ReplicatedStorage: unique symbol;
 }
 
+interface RomarkService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RomarkService: unique symbol;
+}
+
 /** A sorted list of [RotationCurveKey](https://developer.roblox.com/en-us/api-reference/class/RotationCurveKeys). RotationCurveKeys are value-time points on a curve that dictate the animation curves. It provides a sampling method returning its result as the rotation component of a CFrame. */
 interface RotationCurve extends Instance {
 	/**
@@ -29241,9 +29410,13 @@ interface SyncScriptBuilder extends ScriptBuilder {
 	 * @deprecated
 	 */
 	readonly _nominal_SyncScriptBuilder: unique symbol;
+	CompileTarget: Enum.CompileTarget;
 	CoverageInfo: boolean;
 	DebugInfo: boolean;
 	PackAsSource: boolean;
+	/**
+	 * @deprecated Use `CompileTarget` instead
+	 */
 	RawBytecode: boolean;
 }
 
@@ -29278,6 +29451,17 @@ interface ScriptCloneWatcherHelper extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ScriptCloneWatcherHelper: unique symbol;
+}
+
+interface ScriptCommitService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptCommitService: unique symbol;
 }
 
 /** This service controls all [BaseScript](https://developer.roblox.com/en-us/api-reference/class/BaseScript) objects. Most of the properties and methods of this service are locked for internal use, however you may use the [ScriptContext.ScriptsDisabled](https://developer.roblox.com/en-us/api-reference/property/ScriptContext/ScriptsDisabled) property to disable all scripts from a thread with normal security access. */
@@ -30070,6 +30254,7 @@ interface SocialService extends Instance {
 	 * Before using this function, you should use the [CanSendGameInviteAsync](https://developer.roblox.com/en-us/api-reference/function/SocialService/CanSendGameInviteAsync) function to determine whether a player can send a game invite, as this can vary depending on the platform or player. After determining that invites are possible for this player, allow the player to opt-in to inviting others. For example, the player clicked on an “Invite Friends” button, shown after `CanSendGameInviteAsync` returned true.\`
 	 */
 	PromptGameInvite(this: SocialService, player: Player, experienceInviteOptions?: ExperienceInviteOptions): void;
+	PromptIrisInvite(this: SocialService, player: Player, tag: string): void;
 	/**
 	 * **CanSendGameInviteAsync** indicates whether the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player) can invite other players to the current game. If they can, it returns true.
 	 * 
@@ -30078,6 +30263,10 @@ interface SocialService extends Instance {
 	 * Tags: Yields
 	 */
 	CanSendGameInviteAsync(this: SocialService, player: Player, recipientId?: number): boolean;
+	/**
+	 * Tags: Yields
+	 */
+	CanSendIrisInviteAsync(this: SocialService, player: Player): boolean;
 	/**
 	 * This event is a signal invoked when a player has closed the game invite prompt and batches all users and conversation participants into a single array. This prompt can be prompted by the developer or accessed from the SettingsHub menu.
 	 * 
@@ -30103,6 +30292,8 @@ interface SocialService extends Instance {
 	 * *   [SocialService:CanSendGameInviteAsync](https://developer.roblox.com/en-us/api-reference/function/SocialService/CanSendGameInviteAsync), returns true or false depending on the user
 	 */
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
+	readonly IrisInvitePromptClosed: RBXScriptSignal<(player: Player) => void>;
+	OnIrisInviteInvoked: (tag: string, irisParticipantIds: Array<any>) => Instance;
 }
 
 /** A [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) is an object that emits sound. See [Adding Sounds](https://developer.roblox.com/en-us/articles/adding-sounds) for more info on how to upload a sound file.
@@ -31723,6 +31914,89 @@ interface StudioSdkService extends Instance {
 	readonly _nominal_StudioSdkService: unique symbol;
 }
 
+interface StyleBase extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StyleBase: unique symbol;
+	GetStyleRules(this: StyleBase): Array<Instance>;
+	InsertStyleRule(this: StyleBase, rule: StyleRule, index: number | undefined): void;
+	SetStyleRules(this: StyleBase, rules: Array<Instance>): void;
+	readonly StyleRulesChanged: RBXScriptSignal<() => void>;
+}
+
+interface StyleRule extends StyleBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StyleRule: unique symbol;
+	Selector: string;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly SelectorError: string;
+	GetProperties(this: StyleRule): object;
+	GetProperty(this: StyleRule, name: string): unknown;
+	SetProperties(this: StyleRule, table: object): void;
+	SetProperty(this: StyleRule, name: string, value: unknown): void;
+}
+
+interface StyleSheet extends StyleBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StyleSheet: unique symbol;
+	GetDerives(this: StyleSheet): Array<Instance>;
+	SetDerives(this: StyleSheet, derives: Array<Instance>): void;
+}
+
+interface StyleDerive extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StyleDerive: unique symbol;
+	StyleSheet: StyleSheet | undefined;
+}
+
+interface StyleLink extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StyleLink: unique symbol;
+	StyleSheet: StyleSheet | undefined;
+}
+
+interface StylingService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StylingService: unique symbol;
+}
+
 /** SurfaceAppearance objects allow developers to override the appearance of a [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) with advanced graphics options. Most notably, a SurfaceAppearance can apply a set of PBR textures to a mesh.
  * 
  * PBR is short for Physically Based Rendering, which refers to a common texture format for defining extra physical details in games. Because this format is widely used, it's easy to take meshes and textures made in 3rd party editing software and import them into Roblox. It's also easy to find PBR format content from various 3rd party stores such as [SketchFab](https://sketchfab.com/search?q=pbr%20object&sort_by=-relevance&type=models), [TurboSquid](https://www.turbosquid.com/Search/3D-Models/free/pbr), [CGTrader](http://cgtrader.com/pbr-3d-models?polygons=lt_5k).
@@ -32952,8 +33226,10 @@ interface BubbleChatConfiguration extends TextChatConfigurations {
 	Font: Enum.Font;
 	FontFace: Font;
 	LocalPlayerStudsOffset: Vector3;
+	MaxBubbles: number;
 	MaxDistance: number;
 	MinimizeDistance: number;
+	TailVisible: boolean;
 	TextColor3: Color3;
 	TextSize: number;
 	VerticalStudsOffset: number;
@@ -33069,6 +33345,16 @@ interface TextChatService extends Instance {
 	readonly ChatVersion: Enum.ChatVersion;
 	readonly CreateDefaultCommands: boolean;
 	readonly CreateDefaultTextChannels: boolean;
+	DisplayBubble(this: TextChatService, partOrCharacter: BasePart | Model, message: string): void;
+	/**
+	 * Tags: Yields
+	 */
+	CanUserChatAsync(this: TextChatService, userId: number): boolean;
+	/**
+	 * Tags: Yields
+	 */
+	CanUsersChatAsync(this: TextChatService, userIdFrom: number, userIdTo: number): boolean;
+	readonly BubbleDisplayed: RBXScriptSignal<(part: BasePart, message: string) => void>;
 	readonly MessageReceived: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
 	readonly SendingMessage: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
 	OnIncomingMessage: (message: TextChatMessage) => Array<any>;
@@ -33116,6 +33402,27 @@ interface TextFilterResult extends Instance {
 	GetNonChatStringForUserAsync(this: TextFilterResult, toUserId: number): string;
 }
 
+interface TextFilterTranslatedResult extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TextFilterTranslatedResult: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly SourceLanguage: string;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly SourceText: TextFilterResult | undefined;
+	GetTranslationForLocale(this: TextFilterTranslatedResult, locale: string): TextFilterResult;
+	GetTranslations(this: TextFilterTranslatedResult): object;
+}
+
 /** The TextService is a service internally responsible for handling the display of text in the game.
  * 
  * This class has two member functions,
@@ -33147,6 +33454,10 @@ interface TextService extends Instance {
 	 * Developers are recommended to add a pixel of padding to the result to ensure no text is cut off.
 	 */
 	GetTextSize(this: TextService, string: string, fontSize: number, font: CastsToEnum<Enum.Font>, frameSize: Vector2): Vector2;
+	/**
+	 * Tags: Yields
+	 */
+	FilterAndTranslateStringAsync(this: TextService, stringToFilter: string, fromUserId: number, targetLocales: Array<any>, textContext?: CastsToEnum<Enum.TextFilterContext>): Instance | undefined;
 	/**
 	 * The FilterStringAsync function filters a string being received from a user, using the [TextService](https://developer.roblox.com/en-us/api-reference/class/TextService), and returns a [TextFilterResult](https://developer.roblox.com/en-us/api-reference/class/TextFilterResult) which can be used to distribute the correctly filtered text accordingly.
 	 * 
@@ -34647,10 +34958,6 @@ interface UserGameSettings extends Instance {
 	 * The type of controls being used by the client on a mobile device.
 	 */
 	TouchMovementMode: Enum.TouchMovementMode;
-	/**
-	 * Tags: Hidden, NotReplicated
-	 */
-	readonly VRPlayMode: Enum.VRPlayMode;
 	readonly VRSmoothRotationEnabled: boolean;
 	readonly VignetteEnabled: boolean;
 	/**
