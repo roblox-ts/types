@@ -215,11 +215,9 @@ interface DataStore extends GlobalDataStore {
 		key: string,
 		transformFunction: (
 			oldValue: O | undefined,
-			keyInfo: DataStoreKeyInfo,
-		) => LuaTuple<[newValue: R, userIds?: Array<number>, metadata?: object]>,
-	): R extends undefined
-		? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]>
-		: LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
+			keyInfo: DataStoreKeyInfo | undefined,
+		) => LuaTuple<[newValue: R | undefined, userIds?: Array<number>, metadata?: object]>,
+	): LuaTuple<[newValue: R | undefined, keyInfo: DataStoreKeyInfo]>;
 	RemoveAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo | undefined]>;
 }
 
@@ -589,11 +587,11 @@ interface OrderedDataStore extends GlobalDataStore {
 	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
 	RemoveAsync(this: OrderedDataStore, key: string): number | undefined;
 	SetAsync(this: OrderedDataStore, key: string, value?: unknown): void;
-	UpdateAsync<O, R>(
+	UpdateAsync(
 		this: OrderedDataStore,
 		key: string,
-		transformFunction: (oldValue: O | undefined) => R,
-	): R extends undefined ? O | undefined : R;
+		transformFunction: (oldValue: number | undefined) => number | undefined,
+	): number | undefined;
 }
 
 interface Pages<T = unknown> extends Instance {
