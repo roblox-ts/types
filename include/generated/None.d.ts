@@ -5178,7 +5178,7 @@ interface BodyAngularVelocity extends BodyMover {
 	 */
 	AngularVelocity: Vector3;
 	/**
-	 * The maxTorque property is a deprecated variant of `BodyAngualrVelocity/MaxTorque` that lets you set how much force could be applied to each axis.
+	 * The MaxTorque property determines the limit of the torque that may be exerted on each world axis. If a part isn't moving, consider raising this value (and also check that it is not [Anchored](https://developer.roblox.com/en-us/api-reference/property/BasePart/Anchored) or attached to another anchored part). See also [P](https://developer.roblox.com/en-us/api-reference/property/BodyAngularVelocity/P) (power).
 	 */
 	MaxTorque: Vector3;
 	/**
@@ -5221,7 +5221,7 @@ interface BodyForce extends BodyMover {
 	 */
 	readonly _nominal_BodyForce: unique symbol;
 	/**
-	 * A deprecated variant of `BodyForce.Force` that indicates the amount of force applied on each axis.
+	 * The Force property determines the magnitude of force exerted on each axis, relative to the world.
 	 */
 	Force: Vector3;
 }
@@ -23839,7 +23839,7 @@ interface FormFactorPart extends BasePart {
 	 */
 	readonly _nominal_FormFactorPart: unique symbol;
 	/**
-	 * Determines how a part acts when resized and the values that which its size can take.
+	 * This used to specify a grid constraint of the part's size. No longer does anything.
 	 * 
 	 * Tags: NotReplicated
 	 * @deprecated
