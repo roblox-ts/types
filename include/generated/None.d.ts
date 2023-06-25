@@ -2749,13 +2749,17 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
-	GetAvatarRules(this: AvatarEditorService): object;
+	GetAvatarRules(this: AvatarEditorService): AvatarRules;
 	/**
 	 * Gets the item details for a list of items at once. More efficient than AvatarEditorService:GetItemDetails if you need to get all the item details of a list.
 	 * 
 	 * Tags: Yields
 	 */
-	GetBatchItemDetails(this: AvatarEditorService, itemIds: Array<any>, itemType: CastsToEnum<Enum.AvatarItemType>): unknown;
+	GetBatchItemDetails(
+		this: AvatarEditorService,
+		itemIds: ReadonlyArray<number>,
+		itemType: CastsToEnum<Enum.AvatarItemType>,
+	): ReadonlyArray<ItemDetails>;
 	/**
 	 * This function returns if the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) has favorited the given bundle or asset.
 	 * 
@@ -2778,7 +2782,7 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
-	GetInventory(this: AvatarEditorService, assetTypes: Array<any>): InventoryPages;
+	GetInventory(this: AvatarEditorService, assetTypes: ReadonlyArray<Enum.AvatarAssetType>): InventoryPages;
 	/**
 	 * This function returns the item details for the given item. It accepts two parameters - the first indicating the ID of the item being retrieved and the second indicating its [ItemType](https://developer.roblox.com/en-us/api-reference/enum/ItemType).
 	 * 
@@ -2830,7 +2834,7 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
-	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): object;
+	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): ItemDetails;
 	/**
 	 * Tags: Yields
 	 */
@@ -2916,7 +2920,11 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
-	GetRecommendedAssets(this: AvatarEditorService, assetType: CastsToEnum<Enum.AvatarAssetType>, contextAssetId?: number): unknown;
+	GetRecommendedAssets(
+		this: AvatarEditorService,
+		assetType: CastsToEnum<Enum.AvatarAssetType>,
+		contextAssetId?: number,
+	): ReadonlyArray<RecommendedAsset>;
 	/**
 	 * This function returns a list of recommended bundles for a given bundle id.
 	 * 
@@ -2957,7 +2965,7 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
-	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): unknown;
+	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): ReadonlyArray<RecommendedBundle>;
 	/**
 	 * This function returns a [CatalogPages](https://developer.roblox.com/en-us/api-reference/class/CatalogPages) object containing the result of the given search.
 	 * 
@@ -25869,7 +25877,7 @@ interface AudioPages extends Pages {
 	readonly _nominal_AudioPages: unique symbol;
 }
 
-interface CatalogPages extends Pages {
+interface CatalogPages extends Pages<SearchCatalogResult> {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -26017,7 +26025,14 @@ interface EmotesPages extends InventoryPages {
 	readonly _nominal_EmotesPages: unique symbol;
 }
 
-interface OutfitPages extends Pages {
+interface OutfitPages
+	extends Pages<
+		ReadonlyArray<{
+			Id: number;
+			Name: string;
+			IsEditable: boolean;
+		}>
+	> {
 	/**
 	 * **DO NOT USE!**
 	 *
