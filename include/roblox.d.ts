@@ -668,24 +668,15 @@ interface RecommendedBundle {
 	};
 }
 
-interface SearchCatalogResult {
+interface SearchCatalogResultBase {
 	Id: number;
-	ItemType: "Asset";
-	AssetType: "Image";
-	BundleType: "BodyParts";
 	Name: string;
 	Description: string;
 	ProductId: number;
-	Genres: ReadonlyArray<"All">;
-	BundledItems: ReadonlyArray<{
-		Owned: boolean;
-		Id: number;
-		Name: string;
-		Type: string;
-	}>;
-	ItemStatus: ReadonlyArray<"New">;
-	ItemRestrictions: ReadonlyArray<"ThirteenPlus">;
-	CreatorType: "User";
+	Genres: ReadonlyArray<Enum.Genre["Name"]>;
+	ItemStatus: ReadonlyArray<string>;
+	ItemRestrictions: ReadonlyArray<string>;
+	CreatorType: "User" | "Group";
 	CreatorTargetId: number;
 	CreatorName: string;
 	Price: number;
@@ -694,11 +685,31 @@ interface SearchCatalogResult {
 		PremiumPriceInRobux: number;
 	};
 	LowestPrice: number;
-	PriceStatus: string;
+	PriceStatus?: string;
 	UnitsAvailableForConsumption: number;
 	PurchaseCount: number;
 	FavoriteCount: number;
+	SaleLocationType: string;
+	CreatorHasVerifiedBadge: boolean;
 }
+
+interface SearchCatalogAssetResult extends SearchCatalogResultBase {
+	ItemType: "Asset";
+	AssetType: Enum.AssetType["Name"];
+}
+
+interface SearchCatalogBundleResult extends SearchCatalogResultBase {
+	ItemType: "Bundle";
+	BundleType: Enum.BundleType["Name"];
+	BundledItems: ReadonlyArray<{
+		Owned: boolean;
+		Id: number;
+		Name: string;
+		Type: string;
+	}>;
+}
+
+type SearchCatalogResult = SearchCatalogAssetResult | SearchCatalogBundleResult;
 
 /**
  * RBXScriptConnection, also known as a Connection,
