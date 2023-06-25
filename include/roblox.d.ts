@@ -285,7 +285,7 @@ interface BoundActionInfo {
 
 declare const enum AssetTypeId {
 	Image = 1,
-	TeeShirt = 2,
+	TShirt = 2,
 	Audio = 3,
 	Mesh = 4,
 	Lua = 5,
@@ -327,6 +327,22 @@ declare const enum AssetTypeId {
 	PoseAnimation = 56,
 	EarAccessory = 57,
 	EyeAccessory = 58,
+	EmoteAnimation = 61,
+	Video = 62,
+	TShirtAccessory = 64,
+	ShirtAccessory = 65,
+	PantsAccessory = 66,
+	JacketAccessory = 67,
+	SweaterAccessory = 68,
+	ShortsAccessory = 69,
+	LeftShoeAccessory = 70,
+	RightShoeAccessory = 71,
+	DressSkirtAccessory = 72,
+	FontFamily = 73,
+	EyebrowAccessory = 76,
+	EyelashAccessory = 77,
+	MoodAnimation = 78,
+	DynamicHead = 79,
 }
 
 interface AgentParameters {
