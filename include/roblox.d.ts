@@ -425,7 +425,7 @@ type FriendOnlineInfo = FriendOnlineInfoWebsite | FriendOnlineInfoGame | FriendO
 /** A dictionary of an id and name containing information about what type an asset is */
 type AssetType =
 	| { id: AssetTypeId.Image; name: "Image" }
-	| { id: AssetTypeId.TeeShirt; name: "TeeShirt" }
+	| { id: AssetTypeId.TShirt; name: "TeeShirt" }
 	| { id: AssetTypeId.Audio; name: "Audio" }
 	| { id: AssetTypeId.Mesh; name: "Mesh" }
 	| { id: AssetTypeId.Lua; name: "Lua" }
