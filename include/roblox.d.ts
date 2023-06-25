@@ -688,7 +688,7 @@ interface SearchCatalogResult {
 	CreatorType: "User";
 	CreatorTargetId: number;
 	CreatorName: string;
-	Orice: number;
+	Price: number;
 	PremiumPricing: {
 		PremiumDiscountPercentage: number;
 		PremiumPriceInRobux: number;
