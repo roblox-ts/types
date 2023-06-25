@@ -79,6 +79,7 @@ interface Instance {
 	readonly _nominal_Instance: unique symbol;
 	/**
 	 * This property used to protect objects in the [CoreGui](https://developer.roblox.com/en-us/api-reference/class/CoreGui) service from being altered by users in an unauthorized manner. It has been deprecated and does not do anything.
+	 * 
 	 * Tags: Hidden
 	 */
 	RobloxLocked: boolean;
@@ -91,6 +92,7 @@ interface Instance {
 	 * *   This item is protected. Attempting to use it in a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) will cause an error
 	 * *   A debug ID is an ID used in debugging processes. It allows a debugger to read each instruction before an application processes it. All objects in Roblox act like processes and each run instructions (or 'code') that can be debugged if needed
 	 * *   This can be helpful for plugins which need to distinguish similar objects from one-another (such as objects that share the same name)
+	 * 
 	 * Tags: NotBrowsable
 	 */
 	GetDebugId(this: Instance, scopeLength?: number): string;
@@ -107,6 +109,7 @@ interface KeyframeSequence extends AnimationClip {
 	readonly _nominal_KeyframeSequence: unique symbol;
 	/**
 	 * Contains the hip height of the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) of the model that was used to author this [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence). Default value is 1.35 since that is the hip height set for a standard R15 [character](https://developer.roblox.com/en-us/api-reference/class/Character).
+	 * 
 	 * Tags: Hidden
 	 */
 	AuthoredHipHeight: number;
@@ -122,13 +125,11 @@ interface AnimationClipProvider extends Instance {
 	 */
 	readonly _nominal_AnimationClipProvider: unique symbol;
 	/**
-	 * Tags: Deprecated, [object Object]
-	 * @deprecated
+	 * @deprecated Use `GetAnimationClipAsync` instead
 	 */
 	GetAnimationClip(this: AnimationClipProvider, assetId: string): AnimationClip;
 	/**
-	 * Tags: Deprecated, [object Object]
-	 * @deprecated
+	 * @deprecated Use `GetAnimationClipAsync` instead
 	 */
 	GetAnimationClipById(this: AnimationClipProvider, assetId: number, useCache: boolean): AnimationClip;
 }
@@ -171,7 +172,8 @@ interface CoreGui extends BasePlayerGui {
 	readonly _nominal_CoreGui: unique symbol;
 	/**
 	 * The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly Version: number;
 }
@@ -187,6 +189,7 @@ interface StarterGui extends BasePlayerGui {
 	readonly _nominal_StarterGui: unique symbol;
 	/**
 	 * Allows the StarterGui service to process input like [PlayerGui](https://developer.roblox.com/en-us/api-reference/class/PlayerGui) and [CoreGui](https://developer.roblox.com/en-us/api-reference/class/CoreGui) do. The default value is false.
+	 * 
 	 * Tags: Hidden, NotReplicated
 	 */
 	ProcessUserInput: boolean;
@@ -194,6 +197,123 @@ interface StarterGui extends BasePlayerGui {
 	 * This property determines whether the contents of [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui) is visible in studio
 	 */
 	ShowDevelopmentGui: boolean;
+}
+
+interface BaseWrap extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BaseWrap: unique symbol;
+	/**
+	 * This property is set up automatically by the Avatar Importer plugin.
+	 * 
+	 * Asset ID for cage mesh.
+	 */
+	CageMeshId: string;
+	/**
+	 * This property is set up automatically by the Avatar Importer plugin.
+	 * 
+	 * Cage mesh offset relative to parent [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart).
+	 */
+	CageOrigin: CFrame;
+	/**
+	 * This property is set up automatically by the Avatar Importer plugin.
+	 * 
+	 * Describes where a global zero was while authoring the cage mesh in an asset creation tool such as Blender or Maya. This property is not used by the deformer but it is useful for tools/aligning scripts, for example aligning two parts by matching their pivots as follows:
+	 * 
+	 * local function alignWraps()
+	 * 	local selectionService = game:GetService("Selection")
+	 * 	local selectedObjects = selectionService:Get()
+	 * 	local alignObjects = {}
+	 * 	for \_, obj in pairs(selectedObjects) do
+	 * 		if obj:IsA("BaseWrap") then
+	 * 			--print("Wrap: " .. obj.Name)
+	 * 			table.insert(alignObjects, obj)
+	 * 		else
+	 * 			print("Ignore: " .. obj.Name)
+	 * 		end
+	 * 	end
+	 * 
+	 * 	if #alignObjects < 2 then
+	 * 		warn("You need to select at least two wraps")
+	 * 		return
+	 * 	end
+	 * 
+	 * 	local anchorWrap = alignObjects\[1\]
+	 * 	local worldA\_from\_Wrap = anchorWrap.ImportOriginWorld
+	 * 	print("Anchor: " .. anchorWrap.Name)
+	 * 	for i = 2, #alignObjects do
+	 * 		local wrapToAlign = alignObjects\[i\]
+	 * 		print("Align: " .. wrapToAlign.Name)
+	 * 		local wrap\_from\_WorldB = wrapToAlign.ImportOriginWorld:Inverse()
+	 * 		local worldA\_from\_WorldB = worldA\_from\_Wrap \* wrap\_from\_WorldB
+	 * 		local worldB = wrapToAlign.Parent.CFrame
+	 * 		-- Note: adjust CFrame of the parent part
+	 * 		wrapToAlign.Parent.CFrame = (worldB\_from\_WorldB \* worldB)
+	 * 	end	
+	 * end
+	 */
+	ImportOrigin: CFrame;
+}
+
+interface WrapLayer extends BaseWrap {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_WrapLayer: unique symbol;
+	/**
+	 * This property is intended for fine-tuning purposes and is highly optional.
+	 * 
+	 * [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) to adjust a binding point for a clothing item mesh. Allows for fine-tuning of clothing items (slight adjustment of position/rotation to get a unique look) in contexts such as community-made avatar editors.
+	 */
+	BindOffset: CFrame;
+	/**
+	 * AssetID for reference mesh used to define Inner Cage of a 3D object
+	 * 
+	 * Reference mesh is used to define standard topology and UV coordinates for index matching. It is expected that for all catalog avatars, this will point to one of 15 standard reference meshes provided by Roblox. But for some NPCs or a custom avatar system, this might point to other meshes.
+	 * 
+	 * Note: this property is set up automatically by the FBX importer
+	 */
+	ReferenceMeshId: string;
+	/**
+	 * Reference mesh offset relative to parent MeshPart (in the parent MeshPart space)
+	 * 
+	 * Note: this property is set up automatically by the FBX importer
+	 */
+	ReferenceOrigin: CFrame;
+	/**
+	 * This property is intended for fine-tuning purposes and is highly optional.
+	 * 
+	 * Allows slight shrinking/expanding of the resulting render mesh, without affecting any other layers. This is useful in rare cases when the clothing mesh does not precisely fit the underlying clothing layers (the cage is usually slightly overestimated atop the real shape to avoid layer interpenetration). Even slight overestimation has the tendency to accumulate, especially when there are a lot of layers. While this is usually not critical, some items like backpacks may be problematic.
+	 * 
+	 * Valid range is -1 to 1. A value of -1 will maximally expand while a value of 1 will maximally shrink. A value of 0 (default) has no effect.
+	 */
+	ShrinkFactor: number;
+}
+
+interface WrapTarget extends BaseWrap {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_WrapTarget: unique symbol;
+	/**
+	 * Defines how much the body mesh can be compressed by clothing. Super tight clothing may lead to an intersection between the clothing mesh and body mesh. To solve this visual artifact, the deformer can compress the body mesh slightly to solve possible intersections.
+	 * 
+	 * Valid range is 0 to 1. A value of 0 will compress the body mesh as much as necessary to ensure that the intersections are eliminated (visible body parts might look a little bit deformed). A value of 1 will prevent the body mesh from being compressed (may lead to visible intersections or Z-fighting). A value of 0.9 (default) is a reasonable default that solves most of the intersections without introducing any significant body deformation.
+	 */
+	Stiffness: number;
 }
 
 /** The ChangeHistoryService provides a way for plugins to undo and redo changes and to create waypoints when changes are made to the place. */
@@ -267,12 +387,14 @@ interface DebugSettings extends Instance {
 	readonly _nominal_DebugSettings: unique symbol;
 	/**
 	 * Describes whether a [DataModel](https://developer.roblox.com/en-us/api-reference/class/DataModel) is actively in memory, as an integer (where 1 = true, and 0 = false).
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly DataModel: number;
 	/**
 	 * The number of instances active in the simulation.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly InstanceCount: number;
 	/**
@@ -281,12 +403,14 @@ interface DebugSettings extends Instance {
 	IsScriptStackTracingEnabled: boolean;
 	/**
 	 * Returns the number of internal DataModel jobs actively being processed.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly JobCount: number;
 	/**
 	 * The number of players currently in the active game-instance.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly PlayerCount: number;
 	/**
@@ -295,7 +419,8 @@ interface DebugSettings extends Instance {
 	ReportSoundWarnings: boolean;
 	/**
 	 * The current client version of Roblox. Can also be retrieved by using the version() function.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly RobloxVersion: string;
 	/**
@@ -331,7 +456,8 @@ interface DebuggerBreakpoint extends Instance {
 	IsEnabled: boolean;
 	/**
 	 * The line that the breakpoint has been placed on.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly Line: number;
 	/**
@@ -360,7 +486,8 @@ interface DebuggerManager extends Instance {
 	readonly _nominal_DebuggerManager: unique symbol;
 	/**
 	 * Whether the debugger is enabled or disabled.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly DebuggingEnabled: boolean;
 	/**
@@ -377,19 +504,16 @@ interface DebuggerManager extends Instance {
 	Resume(this: DebuggerManager): void;
 	/**
 	 * Performs a [step into](https://developer.roblox.com/articles/Lua-debugger "Lua Debugger") operation on the Lua Debugger.
-	 * Tags: Deprecated
 	 * @deprecated
 	 */
 	StepIn(this: DebuggerManager): void;
 	/**
 	 * Performs a [step out](https://developer.roblox.com/articles/Lua-debugger "Lua Debugger") operation on the Lua Debugger.
-	 * Tags: Deprecated
 	 * @deprecated
 	 */
 	StepOut(this: DebuggerManager): void;
 	/**
 	 * Performs a [step over](https://developer.roblox.com/articles/Lua-debugger "Lua Debugger") operation on the Lua Debugger.
-	 * Tags: Deprecated
 	 * @deprecated
 	 */
 	StepOver(this: DebuggerManager): void;
@@ -432,51 +556,61 @@ interface FaceControls extends Instance {
 	readonly _nominal_FaceControls: unique symbol;
 	/**
 	 * Raises the chin up; moves the lower lip upwards
+	 * 
 	 * Tags: NotReplicated
 	 */
 	ChinRaiser: number;
 	/**
 	 * Moves the upper lip when ChinRaiser is engaged and touching the upper lip
+	 * 
 	 * Tags: NotReplicated
 	 */
 	ChinRaiserUpperLip: number;
 	/**
 	 * Brings the left and right brows inward together
+	 * 
 	 * Tags: NotReplicated
 	 */
 	Corrugator: number;
 	/**
 	 * Moves gaze down
+	 * 
 	 * Tags: NotReplicated
 	 */
 	EyesLookDown: number;
 	/**
 	 * Moves gaze left
+	 * 
 	 * Tags: NotReplicated
 	 */
 	EyesLookLeft: number;
 	/**
 	 * Moves gaze right
+	 * 
 	 * Tags: NotReplicated
 	 */
 	EyesLookRight: number;
 	/**
 	 * Moves gaze up
+	 * 
 	 * Tags: NotReplicated
 	 */
 	EyesLookUp: number;
 	/**
 	 * Also known as lip tightener; brings the corners of the mouth inward and pressing the lips back against the teeth
+	 * 
 	 * Tags: NotReplicated
 	 */
 	FlatPucker: number;
 	/**
 	 * Makes a 'O' shape with the mouth
+	 * 
 	 * Tags: NotReplicated
 	 */
 	Funneler: number;
 	/**
 	 * Lowers the jaw downward opening the mouth
+	 * 
 	 * Tags: NotReplicated
 	 */
 	JawDrop: number;
@@ -486,196 +620,235 @@ interface FaceControls extends Instance {
 	JawLeft: number;
 	/**
 	 * Moves mouth and jaw to the right (character right)
+	 * 
 	 * Tags: NotReplicated
 	 */
 	JawRight: number;
 	/**
 	 * Lowers the left brow down
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftBrowLowerer: number;
 	/**
 	 * Puffs up the left cheek
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftCheekPuff: number;
 	/**
 	 * Squints the left eye
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftCheekRaiser: number;
 	/**
 	 * Moves the corners of the mouth back in Z
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftDimpler: number;
 	/**
 	 * Closes the left eyelid
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftEyeClosed: number;
 	/**
 	 * Raises the left eyelid upwards to reveal more of the eye white above the iris
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftEyeUpperLidRaiser: number;
 	/**
 	 * Raises the interior half of the left brow upwards
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftInnerBrowRaiser: number;
 	/**
 	 * Lowers the corners of the mouth downwards in a frown
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftLipCornerDown: number;
 	/**
 	 * Raises the corners of the mouth upwards in a smile
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftLipCornerPuller: number;
 	/**
 	 * Stretches the corners of the mouth apart
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftLipStretcher: number;
 	/**
 	 * Lowers the lower lip down away from the upper lip revealing the lower teeth
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftLowerLipDepressor: number;
 	/**
 	 * Raise the left nostril, pulls the brow down slightly, and wrinkles on the side of the nose
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftNoseWrinkler: number;
 	/**
 	 * Raises the outer part of the left brow upwards
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftOuterBrowRaiser: number;
 	/**
 	 * Raises the left upper lip away from the lower lip revealing the upper teeth
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LeftUpperLipRaiser: number;
 	/**
 	 * Presses the lips together
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LipPresser: number;
 	/**
 	 * Brings the lips together relative to JawDrop
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LipsTogether: number;
 	/**
 	 * Rolls the lower lip up over the teeth
+	 * 
 	 * Tags: NotReplicated
 	 */
 	LowerLipSuck: number;
 	/**
 	 * Moves the mouth left
+	 * 
 	 * Tags: NotReplicated
 	 */
 	MouthLeft: number;
 	/**
 	 * Moves the mouth right
+	 * 
 	 * Tags: NotReplicated
 	 */
 	MouthRight: number;
 	/**
 	 * Makes a kiss-like shape with the mouth
+	 * 
 	 * Tags: NotReplicated
 	 */
 	Pucker: number;
 	/**
 	 * Lowers the right brow down
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightBrowLowerer: number;
 	/**
 	 * Puffs up the right cheek
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightCheekPuff: number;
 	/**
 	 * Squints the right eye
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightCheekRaiser: number;
 	/**
 	 * Moves the corners of the mouth back in Z
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightDimpler: number;
 	/**
 	 * Closes the right eyelid
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightEyeClosed: number;
 	/**
 	 * Raises the right eyelid upwards to reveal more of the eye white above the iris
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightEyeUpperLidRaiser: number;
 	/**
 	 * Raises the interior half of the right brow upwards
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightInnerBrowRaiser: number;
 	/**
 	 * Lowers the corners of the mouth downwards in a frown
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightLipCornerDown: number;
 	/**
 	 * Raises the corners of the mouth upwards in a smile
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightLipCornerPuller: number;
 	/**
 	 * Stretches the corners of the mouth apart
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightLipStretcher: number;
 	/**
 	 * Lowers the lower lip down away from the upper lip revealing the lower teeth
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightLowerLipDepressor: number;
 	/**
 	 * Raises the right nostril, pulls the brow down slightly, and wrinkles on the side of the nose
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightNoseWrinkler: number;
 	/**
 	 * Raises the outer part of the right brow upwards
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightOuterBrowRaiser: number;
 	/**
 	 * Raises the right upper lip away from the lower lip revealing the upper teeth
+	 * 
 	 * Tags: NotReplicated
 	 */
 	RightUpperLipRaiser: number;
 	/**
 	 * Bends the tongue down
+	 * 
 	 * Tags: NotReplicated
 	 */
 	TongueDown: number;
 	/**
 	 * Extends the tip of the tongue out of the mouth
+	 * 
 	 * Tags: NotReplicated
 	 */
 	TongueOut: number;
 	/**
 	 * Bends the tongue up
+	 * 
 	 * Tags: NotReplicated
 	 */
 	TongueUp: number;
 	/**
 	 * Rolls the upper lip around the teeth
+	 * 
 	 * Tags: NotReplicated
 	 */
 	UpperLipSuck: number;
@@ -698,7 +871,8 @@ interface File extends Instance {
 	readonly _nominal_File: unique symbol;
 	/**
 	 * The file size (in bytes) of the local file associated with this [File](https://developer.roblox.com/en-us/api-reference/class/File).
-	 * Tags: Hidden, ReadOnly, NotReplicated
+	 * 
+	 * Tags: Hidden, NotReplicated
 	 */
 	readonly Size: number;
 	/**
@@ -888,6 +1062,49 @@ interface QWidgetPluginGui extends PluginGui {
 	readonly _nominal_QWidgetPluginGui: unique symbol;
 }
 
+interface Humanoid extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Humanoid: unique symbol;
+	/**
+	 * This property selects the [HumanoidCollisionType](https://developer.roblox.com/en-us/api-reference/enum/HumanoidCollisionType) for R15 and Rthro non-player characters.
+	 * 
+	 * The collision geometry for the InnerBox type is calculated at run-time and will not be applied in Studio when the simulation is not running.
+	 * 
+	 * For player [Characters](https://developer.roblox.com/en-us/api-reference/property/Player/Character) the CollisionType property will be decided by the Avatar Collision Option in Game Settings.
+	 * 
+	 * ![Collision Options in Game Settings](https://developer.roblox.com/assets/blt609585adde792b19/HumanoidCollisionType.jpg)
+	 * 
+	 * This property is writable by [Plugins](https://developer.roblox.com/en-us/api-reference/class/Plugin) and can be read by all scripts.
+	 * 
+	 * ### Enums
+	 * 
+	 * Name
+	 * 
+	 * Value
+	 * 
+	 * Description
+	 * 
+	 * ### OuterBox
+	 * 
+	 * 0
+	 * 
+	 * Dynamically sized collision boxes based on mesh sizes
+	 * 
+	 * ### Innerbox
+	 * 
+	 * 1
+	 * 
+	 * Fixed size collision boxes, similar to the classic avatar collision
+	 */
+	CollisionType: Enum.HumanoidCollisionType;
+}
+
 interface InsertService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -914,14 +1131,12 @@ interface KeyframeSequenceProvider extends Instance {
 	readonly _nominal_KeyframeSequenceProvider: unique symbol;
 	/**
 	 * Returns a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) from a given asset URL.
-	 * Tags: Deprecated, [object Object]
-	 * @deprecated
+	 * @deprecated Use `GetKeyframeSequenceAsync` instead
 	 */
 	GetKeyframeSequence(this: KeyframeSequenceProvider, assetId: string): Instance | undefined;
 	/**
 	 * Returns a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) from the supplied assetId. Can optionally cache to reduce unnecessary loading freezes.
-	 * Tags: Deprecated, [object Object]
-	 * @deprecated
+	 * @deprecated Use `GetKeyframeSequenceAsync` instead
 	 */
 	GetKeyframeSequenceById(this: KeyframeSequenceProvider, assetId: number, useCache: boolean): Instance | undefined;
 }
@@ -953,6 +1168,18 @@ interface LuaSourceContainer extends Instance {
 	 * Tags: NotReplicated
 	 */
 	RuntimeSource: string;
+}
+
+interface BaseScript extends LuaSourceContainer {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BaseScript: unique symbol;
+	RunContext: Enum.RunContext;
 }
 
 interface Script extends BaseScript {
@@ -1156,7 +1383,8 @@ interface NetworkSettings extends Instance {
 	/**
 	 * FreeMemoryMBytes is a read-only property that describes how much free memory is available, in MBs.  
 	 * It is stored as a floating point number, so it can be be read down at the level of available bytes by multiplying its value by `1024 * 1024`.
-	 * Tags: Hidden, ReadOnly, NotReplicated
+	 * 
+	 * Tags: Hidden, NotReplicated
 	 */
 	readonly FreeMemoryMBytes: number;
 	readonly HttpProxyEnabled: boolean;
@@ -1242,10 +1470,117 @@ interface Terrain extends BasePart {
 	 * Transforms the legacy terrain engine into the new terrain engine.
 	 * 
 	 * All places now automatically use the new terrain engine, so this method is obsolete.
-	 * Tags: Deprecated
 	 * @deprecated
 	 */
 	ConvertToSmooth(this: Terrain): void;
+}
+
+interface TriangleMeshPart extends BasePart {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TriangleMeshPart: unique symbol;
+	/**
+	 * This property determines how the collision model of the [TriangleMeshPart](https://developer.roblox.com/en-us/api-reference/class/TriangleMeshPart) relates to the actual geometry of the mesh. In situations where the collision model of a mesh is unimportant or precision isn't necessary, it is a good idea to set CollisionFidelity to 'Box' to improve performance.
+	 * 
+	 * This property cannot be read or manipulated by scripts during run time.
+	 * 
+	 * How CollisionFidelity Works
+	 * ---------------------------
+	 * 
+	 * [CollisionFidelity](https://developer.roblox.com/en-us/api-reference/enum/CollisionFidelity) has three options, the results of which are demonstrated in the image below.
+	 * 
+	 * ![Collision Fidelity](https://developer.roblox.com/assets/blt3ff26427f15a0e74/CollisionFidelity.png)
+	 * 
+	 * A visual representation of a [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart)s collision model can be viewed by enabling [PhysicsSettings.ShowDecompositionGeometry](https://developer.roblox.com/en-us/api-reference/property/PhysicsSettings/ShowDecompositionGeometry) in Roblox Studio's Settings.
+	 * 
+	 * Tags: NotReplicated
+	 */
+	CollisionFidelity: Enum.CollisionFidelity;
+}
+
+interface MeshPart extends TriangleMeshPart {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MeshPart: unique symbol;
+	/**
+	 * This property determines whether to render both faces or polygons in the mesh. It is only changeable in Studio. This is useful for meshes that are typically modeled as cards such as a leaf, hair and cloth.
+	 * 
+	 * Example:  
+	 * _The tree leaves are modeled with single sided cards._  
+	 * ![Leaves as cards](https://developer.roblox.com/assets/blt32ec4b040982f44d/MeshPartsAsCards.png)
+	 * 
+	 * _With MeshPart.DoubleSided disabled some leaves are missing since they are back facing the camera._  
+	 * ![DoubleSided property disabled](https://developer.roblox.com/assets/blt1955400aa4d9d8d9/DoubleSidedOff.png)
+	 * 
+	 * _With MeshPart.DoubleSided enabled, both faces of the leaves are rendered._  
+	 * ![DoubleSided property enabled](https://developer.roblox.com/assets/blte8ab39d69cf97247/DoubleSidedOn.png)
+	 */
+	DoubleSided: boolean;
+	/**
+	 * This property determines the level of detail that solid-modeled and mesh parts will be shown in and can be set to the possible values of the [RenderFidelity](https://developer.roblox.com/en-us/api-reference/enum/RenderFidelity) enum.
+	 * 
+	 * By default, solid-modeled and mesh parts will always be shown in precise fidelity, no matter how far they are from the game camera. This improves their appearance when viewed from any distance, but if a place has a large number of detailed solid-modeled or mesh parts, it may reduce overall game performance.
+	 * 
+	 * Distance From Camera
+	 * 
+	 * Render Fidelity
+	 * 
+	 * Less than 250 studs
+	 * 
+	 * Highest
+	 * 
+	 * 250-500 studs
+	 * 
+	 * Medium
+	 * 
+	 * 500 or more studs
+	 * 
+	 * Lowest
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [Improving Performance](https://developer.roblox.com/en-us/articles/improving-performance), an article discussing tips for analyzing and improving game performance
+	 * 
+	 * Tags: NotReplicated
+	 */
+	RenderFidelity: Enum.RenderFidelity;
+}
+
+interface PartOperation extends TriangleMeshPart {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PartOperation: unique symbol;
+	RenderFidelity: Enum.RenderFidelity;
+	/**
+	 * This property represents an angle in degrees for a threshold value between face normals on a [solid modeled](https://developer.roblox.com/en-us/articles/3d-modeling-with-parts) part. If the normal difference is less than the value, normals will be adjusted to smooth the difference. Usually a value between 30 and 70 degrees will produce a good result. 0 degrees leads to sharp edges. Values between 90 and 180 degrees are allowed but not encouraged, as it may cause a “shadowing” effect on unions with sharp edges.
+	 * 
+	 * Note that smoothing will not affect the normals between different materials or different colors.
+	 * 
+	 * ![](https://developer.roblox.com/assets/blt53ff07ce0d5f1cf7/CSG-SmoothingAngle-0.png)
+	 * 
+	 * SmoothingAngle = 0
+	 * 
+	 * ![](https://developer.roblox.com/assets/bltc1f5f51600953267/CSG-SmoothingAngle-50.png)
+	 * 
+	 * SmoothingAngle = 50
+	 */
+	SmoothingAngle: number;
 }
 
 interface Model extends PVInstance {
@@ -1293,6 +1628,41 @@ interface Workspace extends WorldRoot {
 	 */
 	readonly _nominal_Workspace: unique symbol;
 	/**
+	 * This property determines the height at which falling [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) (and their ancestor [Models](https://developer.roblox.com/en-us/api-reference/class/Model)) are destroyed.
+	 * 
+	 * ![Parts being destroyed at the FallenPartsDestroyHeight](https://developer.roblox.com/assets/blt3ab195d142a5f6ee/FallenPartsDestroyHeight.gif)
+	 * 
+	 * What happens to falling parts?
+	 * ------------------------------
+	 * 
+	 * For performance reasons, Roblox automatically destroys (using [Instance:Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy)) parts that fall below this value. This is to prevent parts that have fallen off the map from continuing to fall forever.
+	 * 
+	 * If a part destroyed due to this behavior is the last part in a model, then that \`model will also be destroyed. This applies to all model ancestors of the part.
+	 * 
+	 * This property can be read by scripts, but can only be set by plugins, the command bar or the properties window in Roblox Studio.
+	 * 
+	 * Notes
+	 * -----
+	 * 
+	 * *   Developers should also use the [Debris](https://developer.roblox.com/en-us/api-reference/class/Debris) service to clean up parts that are no longer needed, but have not fallen off the map
+	 * *   This property is clamped between -50,000 and 50,000. This is because [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s do not simulate or render properly at a great distance from the origin due to floating point inaccuracies
+	 */
+	FallenPartsDestroyHeight: number;
+	InterpolationThrottling: Enum.InterpolationThrottlingMode;
+	/**
+	 * The **StreamingEnabled** property determines whether game content streaming is enabled for the place. This property is not scriptable and therefore must be set on the **Workspace** object in Studio.
+	 * 
+	 * For a detailed explanation of game content streaming, best practices, and implementation notes, see [Game Content Streaming](https://developer.roblox.com/en-us/articles/content-streaming).
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [Workspace.StreamingMinRadius](https://developer.roblox.com/en-us/api-reference/property/Workspace/StreamingMinRadius)
+	 * *   [Workspace.StreamingTargetRadius](https://developer.roblox.com/en-us/api-reference/property/Workspace/StreamingTargetRadius)
+	 * *   [Workspace.StreamingPauseMode](https://developer.roblox.com/en-us/api-reference/property/Workspace/StreamingPauseMode)
+	 */
+	StreamingEnabled: boolean;
+	/**
 	 * Goes through all [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s given, breaking any joints connected to these parts.
 	 * 
 	 * This function will break any of the following types of joints:
@@ -1305,7 +1675,6 @@ interface Workspace extends WorldRoot {
 	 * workspace:BreakJoints({part1, part2, part3})
 	 * 
 	 * Note, this function cannot be used by scripts and will only function in plugins.
-	 * Tags: Deprecated
 	 * @deprecated
 	 */
 	readonly BreakJoints: never;
@@ -1329,7 +1698,6 @@ interface Workspace extends WorldRoot {
 	 * workspace:MakeJoints({part1, part2, part3})
 	 * 
 	 * Joints are broken if enough force is applied to them due to an [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion), unless a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField) object is parented to the [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or ancestor [Model](https://developer.roblox.com/en-us/api-reference/class/Model). For this reason, they are often used to make simple destructible buildings and other models.
-	 * Tags: Deprecated
 	 * @deprecated
 	 */
 	readonly MakeJoints: never;
@@ -1696,7 +2064,8 @@ interface Plugin extends Instance {
 	readonly _nominal_Plugin: unique symbol;
 	/**
 	 * Returns whether the user enabled _Collisions_ in studio under the Model tab.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly CollisionEnabled: boolean;
 	/**
@@ -1712,7 +2081,8 @@ interface Plugin extends Instance {
 	 * else -- Assume it's 1
 	 * 	gridsize = 1
 	 * end
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly GridSize: number;
 	/**
@@ -1805,7 +2175,6 @@ interface Plugin extends Instance {
 	GetSetting(this: Plugin, key: string): unknown;
 	/**
 	 * Returns the studio user's userId if they're logged in, otherwise returns 0.
-	 * Tags: Deprecated
 	 * @deprecated
 	 */
 	GetStudioUserId(this: Plugin): number;
@@ -1939,6 +2308,7 @@ interface Plugin extends Instance {
 	 * --------
 	 * 
 	 * *   [Building Studio Widgets](https://developer.roblox.com/en-us/articles/building-studio-widgets), for more information on working with Studio widgets.
+	 * 
 	 * Tags: Yields
 	 */
 	CreateDockWidgetPluginGui(
@@ -1948,21 +2318,25 @@ interface Plugin extends Instance {
 	): DockWidgetPluginGui;
 	/**
 	 * This function prompts the user to open a .fbx animation file that can be loaded onto the _rigModel_, then proceeds to insert the animation as a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace).
+	 * 
 	 * Tags: Yields
 	 */
 	ImportFbxAnimation(this: Plugin, rigModel: Model, isR15?: boolean): Instance | undefined;
 	/**
 	 * Prompts the user to open a .fbx file, uploads the individual components of the model as meshes, and generates a character rig for use in animation, which is loaded into the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace).
+	 * 
 	 * Tags: Yields
 	 */
 	ImportFbxRig(this: Plugin, isR15?: boolean): Model;
 	/**
 	 * Opens a window in Roblox Studio, which prompts the user to select an asset based on the _assetType_ specified. Returns what assetId was selected, or -1 if the window was closed.
+	 * 
 	 * Tags: Yields
 	 */
 	PromptForExistingAssetId(this: Plugin, assetType: string): number;
 	/**
 	 * Prompts the user to save their current selection with the specified file name. Returns true if the user did save the file.
+	 * 
 	 * Tags: Yields
 	 */
 	PromptSaveSelection(this: Plugin, suggestedFileName?: string): boolean;
@@ -2005,7 +2379,8 @@ interface PluginAction extends Instance {
 	readonly _nominal_PluginAction: unique symbol;
 	/**
 	 * A string that uniquely identifies this action. This string is the key used when saving and loading the action's state in Roblox Studio.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly ActionId: string;
 	/**
@@ -2015,17 +2390,20 @@ interface PluginAction extends Instance {
 	 * --------
 	 * 
 	 * *   `Plugin/CreationPluginAction`, creates a PluginAction
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly AllowBinding: boolean;
 	/**
 	 * The description of the action, when viewing it from the keyboard shortcuts window in Roblox Studio.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly StatusTip: string;
 	/**
 	 * The text that is displayed when viewing this action in Roblox Studio.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly Text: string;
 	/**
@@ -2055,19 +2433,19 @@ interface PluginDragEvent extends Instance {
 	 */
 	readonly _nominal_PluginDragEvent: unique symbol;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly Data: string;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly MimeType: string;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly Position: Vector2;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly Sender: string;
 }
@@ -2094,7 +2472,7 @@ interface PluginManagerInterface extends Instance {
 	 */
 	readonly _nominal_PluginManagerInterface: unique symbol;
 	/**
-	 * Tags: Deprecated, CustomLuaState
+	 * Tags: CustomLuaState
 	 * @deprecated
 	 */
 	CreatePlugin(this: PluginManagerInterface): Instance | undefined;
@@ -2146,6 +2524,7 @@ interface PluginMenu extends Instance {
 	 * *   [PluginMenu:AddSeparator](https://developer.roblox.com/en-us/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
 	 * *   [PluginMenu:Clear](https://developer.roblox.com/en-us/api-reference/function/PluginMenu/Clear), clears the menu
 	 * *   [PluginMenu:ShowAsync](https://developer.roblox.com/en-us/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
+	 * 
 	 * Tags: NotReplicated
 	 */
 	Icon: string;
@@ -2165,6 +2544,7 @@ interface PluginMenu extends Instance {
 	 * *   [PluginMenu:AddSeparator](https://developer.roblox.com/en-us/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
 	 * *   [PluginMenu:Clear](https://developer.roblox.com/en-us/api-reference/function/PluginMenu/Clear), clears the menu
 	 * *   [PluginMenu:ShowAsync](https://developer.roblox.com/en-us/api-reference/function/PluginMenu/ShowAsync), shows the menu at the mouse cursor. Yields until either an item is selected or the menu is closed. The selected action fires its Triggered event
+	 * 
 	 * Tags: NotReplicated
 	 */
 	Title: string;
@@ -2257,6 +2637,7 @@ interface PluginMenu extends Instance {
 	 * *   [PluginMenu:AddMenu](https://developer.roblox.com/en-us/api-reference/function/PluginMenu/AddMenu), adds the given menu as a separator
 	 * *   [PluginMenu:AddSeparator](https://developer.roblox.com/en-us/api-reference/function/PluginMenu/AddSeparator), adds a separator between items in the menu
 	 * *   [PluginMenu:Clear](https://developer.roblox.com/en-us/api-reference/function/PluginMenu/Clear), clears the menu
+	 * 
 	 * Tags: Yields
 	 */
 	ShowAsync(this: PluginMenu): Instance | undefined;
@@ -2333,6 +2714,7 @@ interface PluginToolbarButton extends Instance {
 	 * ![Various plugin toolbar buttons visible while a Script is being edited, causing the game viewport to be hidden. Some of the buttons are enabled due to this property being true.](https://developer.roblox.com/assets/blt15abc50a70cd30be/PluginToolbarButton.ClickableWhenViewportHidden.jpg)
 	 * 
 	 * Typically, this property is good to enable if an action triggered by a plugin button's [Click](https://developer.roblox.com/en-us/api-reference/event/PluginToolbarButton/Click) event doesn't occur in the game world (Workspace). For example, a button that opens a widget should have this property be true, as showing a widget is visible to the user even if the game view isn't visible.
+	 * 
 	 * Tags: NotReplicated
 	 */
 	ClickableWhenViewportHidden: boolean;
@@ -2345,6 +2727,7 @@ interface PluginToolbarButton extends Instance {
 	 * --------
 	 * 
 	 * *   [ClickableWhenViewportHidden](https://developer.roblox.com/en-us/api-reference/property/PluginToolbarButton/ClickableWhenViewportHidden), which determines whether a button is clickable when the game view is hidden (and not just in general)
+	 * 
 	 * Tags: NotReplicated
 	 */
 	Enabled: boolean;
@@ -2395,6 +2778,7 @@ interface RenderSettings extends Instance {
 	EditQualityLevel: Enum.QualityLevel;
 	/**
 	 * Toggles the enabled state of the framerate manager.
+	 * 
 	 * Tags: Hidden, NotReplicated
 	 */
 	EnableFRM: boolean;
@@ -2528,7 +2912,6 @@ interface RunService extends Instance {
 	Pause(this: RunService): void;
 	/**
 	 * The Reset function resets the current game to a waypoint set when Run was called. This method should only be used after Run was called.
-	 * Tags: Deprecated
 	 * @deprecated
 	 */
 	Reset(this: RunService): void;
@@ -2593,22 +2976,26 @@ interface ScriptDebugger extends Instance {
 	readonly _nominal_ScriptDebugger: unique symbol;
 	/**
 	 * The current line that the script is on.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly CurrentLine: number;
 	/**
 	 * Describes if this ScriptDebugger is actually debugging the script attached to it.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly IsDebugging: boolean;
 	/**
 	 * Describes if this ScriptDebugger is paused.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly IsPaused: boolean;
 	/**
 	 * The script object this debugger is linked to.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly Script: Instance | undefined;
 	/**
@@ -2775,7 +3162,7 @@ interface Selection extends Instance {
 	 */
 	readonly _nominal_Selection: unique symbol;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly SelectionThickness: number;
 	Add(this: Selection, instancesToAdd: Array<Instance>): void;
@@ -2947,7 +3334,7 @@ interface StatsItem extends Instance {
 	 */
 	readonly _nominal_StatsItem: unique symbol;
 	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	readonly DisplayName: string;
 	/**
@@ -3153,7 +3540,7 @@ interface Studio extends Instance {
 	 */
 	LuaDebuggerEnabled: boolean;
 	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated
+	 * Tags: Hidden, NotReplicated
 	 */
 	readonly LuaDebuggerEnabledAtStartup: boolean;
 	/**
@@ -3283,7 +3670,7 @@ interface Studio extends Instance {
 	 */
 	Theme: StudioTheme;
 	/**
-	 * Tags: Hidden, ReadOnly, NotReplicated, Deprecated
+	 * Tags: Hidden, NotReplicated
 	 * @deprecated
 	 */
 	readonly ["UI Theme"]: Enum.UITheme;
@@ -3350,15 +3737,16 @@ interface StudioService extends Instance {
 	 * 	activeScript = newActiveScript
 	 * end
 	 * game:GetService("StudioService"):GetPropertyChangedSignal("ActiveScript"):Connect(onActiveScriptChanged)
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly ActiveScript: Instance | undefined;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly DraggerSolveConstraints: boolean;
 	/**
-	 * Tags: ReadOnly, NotReplicated, Deprecated
+	 * Tags: NotReplicated
 	 * @deprecated
 	 */
 	readonly DrawConstraintsOnTop: boolean;
@@ -3366,7 +3754,8 @@ interface StudioService extends Instance {
 	 * **GridSize** determines the distance in studs by which studio's drag and move tools move objects each tick. This is set by the user Model tab under the “Snap to Grid” section.
 	 * 
 	 * ![Studio "snap to grid" UI](https://developer.roblox.com/assets/blt8ea442f1baf0663d/SnapToGrid.jpg)
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly GridSize: number;
 	/**
@@ -3387,11 +3776,12 @@ interface StudioService extends Instance {
 	 * `90.0`
 	 * 
 	 * ![](https://developer.roblox.com/assets/blt72e458401421d679/StudioService.RotateIncrement.90.jpg)
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly RotateIncrement: number;
 	/**
-	 * Tags: ReadOnly, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly ShowConstraintDetails: boolean;
 	/**
@@ -3409,7 +3799,8 @@ interface StudioService extends Instance {
 	 * elseif locale == "fr\_FR" then
 	 *    print("Bonjour")
 	 * end
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly StudioLocaleId: string;
 	/**
@@ -3434,6 +3825,7 @@ interface StudioService extends Instance {
 	 * ![](https://developer.roblox.com/assets/blt8175598ca3ea1650/StudioService.UseLocalSpace.false.jpg)
 	 * 
 	 * ![](https://developer.roblox.com/assets/bltc26cf9b88a51df6b/StudioService.UseLocalSpace.false.rotation.jpg)
+	 * 
 	 * Tags: NotReplicated
 	 */
 	UseLocalSpace: boolean;
@@ -3472,6 +3864,7 @@ interface StudioService extends Instance {
 	 * --------
 	 * 
 	 * *   [StudioService:PromptImportFiles](https://developer.roblox.com/en-us/api-reference/function/StudioService/PromptImportFiles), the same function but for loading a list of files instead of a single file
+	 * 
 	 * Tags: Yields
 	 */
 	PromptImportFile(this: StudioService, fileTypeFilter?: Array<any>): Instance | undefined;
@@ -3484,6 +3877,7 @@ interface StudioService extends Instance {
 	 * --------
 	 * 
 	 * *   [StudioService:PromptImportFile](https://developer.roblox.com/en-us/api-reference/function/StudioService/PromptImportFile), the same function but for loading a single file instead of a list of files
+	 * 
 	 * Tags: Yields
 	 */
 	PromptImportFiles(this: StudioService, fileTypeFilter?: Array<any>): Array<Instance>;
@@ -3591,12 +3985,14 @@ interface TaskScheduler extends Instance {
 	readonly _nominal_TaskScheduler: unique symbol;
 	/**
 	 * The average time divided by the average interval of the duty cycle.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly SchedulerDutyCycle: number;
 	/**
 	 * The current average rate of the task scheduler.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly SchedulerRate: number;
 	/**
@@ -3605,7 +4001,8 @@ interface TaskScheduler extends Instance {
 	ThreadPoolConfig: Enum.ThreadPoolConfig;
 	/**
 	 * The current size of the thread pool.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly ThreadPoolSize: number;
 }
@@ -3638,7 +4035,6 @@ interface TerrainRegion extends Instance {
 	 * Calling this method transforms the TerrainRegion into a [TerrainRegion](https://developer.roblox.com/en-us/api-reference/class/TerrainRegion) usable for [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain). This can only be done from a plugin, when in edit mode.
 	 * 
 	 * The game can't be running, nor can it have a [NetworkServer](https://developer.roblox.com/en-us/api-reference/class/NetworkServer).
-	 * Tags: Deprecated
 	 * @deprecated
 	 */
 	ConvertToSmooth(this: TerrainRegion): void;
@@ -3838,7 +4234,8 @@ interface TestService extends Instance {
 	Description: string;
 	/**
 	 * Measures how many errors have been recorded in the test session.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly ErrorCount: number;
 	/**
@@ -3873,7 +4270,8 @@ interface TestService extends Instance {
 	SimulateSecondsLag: number;
 	/**
 	 * Measures how many test calls have been recorded in the test session.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly TestCount: number;
 	/**
@@ -3882,7 +4280,8 @@ interface TestService extends Instance {
 	Timeout: number;
 	/**
 	 * Measures how many warning calls have been recorded in the test session.
-	 * Tags: ReadOnly, NotReplicated
+	 * 
+	 * Tags: NotReplicated
 	 */
 	readonly WarnCount: number;
 	/**
@@ -3923,6 +4322,7 @@ interface TestService extends Instance {
 	isFeatureEnabled(this: TestService, name: string): boolean;
 	/**
 	 * Runs scripts which are parented to TestService.
+	 * 
 	 * Tags: Yields
 	 */
 	Run(this: TestService): void;
@@ -3934,6 +4334,19 @@ interface TestService extends Instance {
 	 * Fired when the server should collect a test result.
 	 */
 	readonly ServerCollectResult: RBXScriptSignal<(text: string, script: LuaSourceContainer, line: number) => void>;
+}
+
+interface TextChatService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TextChatService: unique symbol;
+	CreateDefaultCommands: boolean;
+	CreateDefaultTextChannels: boolean;
 }
 
 interface VersionControlService extends Instance {
