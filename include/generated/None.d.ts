@@ -4286,13 +4286,13 @@ interface BaseWrap extends Instance {
 	 * 
 	 * Asset ID for cage mesh.
 	 */
-	readonly CageMeshId: string;
+	CageMeshId: string;
 	/**
 	 * This property is set up automatically by the Avatar Importer plugin.
 	 * 
 	 * Cage mesh offset relative to parent [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart).
 	 */
-	readonly CageOrigin: CFrame;
+	CageOrigin: CFrame;
 	/**
 	 * Cage mesh offset in world space.
 	 * 
@@ -4336,7 +4336,7 @@ interface BaseWrap extends Instance {
 	 * 	end	
 	 * end
 	 */
-	readonly ImportOrigin: CFrame;
+	ImportOrigin: CFrame;
 	/**
 	 * Describes where the origin (in world space) was while authoring the cage mesh in an asset creation tool such as Blender or Maya.
 	 * 
@@ -4364,7 +4364,7 @@ interface WrapLayer extends BaseWrap {
 	 * 
 	 * [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) to adjust a binding point for a clothing item mesh. Allows for fine-tuning of clothing items (slight adjustment of position/rotation to get a unique look) in contexts such as community-made avatar editors.
 	 */
-	readonly BindOffset: CFrame;
+	BindOffset: CFrame;
 	/**
 	 * Allows for disabling of the [WrapLayer](https://developer.roblox.com/en-us/api-reference/class/WrapLayer) object as if it does not exist.
 	 */
@@ -4386,13 +4386,13 @@ interface WrapLayer extends BaseWrap {
 	 * 
 	 * Note: this property is set up automatically by the FBX importer
 	 */
-	readonly ReferenceMeshId: string;
+	ReferenceMeshId: string;
 	/**
 	 * Reference mesh offset relative to parent MeshPart (in the parent MeshPart space)
 	 * 
 	 * Note: this property is set up automatically by the FBX importer
 	 */
-	readonly ReferenceOrigin: CFrame;
+	ReferenceOrigin: CFrame;
 	/**
 	 * Reference mesh offset relative to parent MeshPart (in the world space)
 	 * 
@@ -4408,7 +4408,7 @@ interface WrapLayer extends BaseWrap {
 	 * 
 	 * Valid range is -1 to 1. A value of -1 will maximally expand while a value of 1 will maximally shrink. A value of 0 (default) has no effect.
 	 */
-	readonly ShrinkFactor: number;
+	ShrinkFactor: number;
 }
 
 /** The WrapTarget object defines a target. A target is the 3D body with only an outer surface, or an Outer Cage.
@@ -4429,7 +4429,7 @@ interface WrapTarget extends BaseWrap {
 	 * 
 	 * Valid range is 0 to 1. A value of 0 will compress the body mesh as much as necessary to ensure that the intersections are eliminated (visible body parts might look a little bit deformed). A value of 1 will prevent the body mesh from being compressed (may lead to visible intersections or Z-fighting). A value of 0.9 (default) is a reasonable default that solves most of the intersections without introducing any significant body deformation.
 	 */
-	readonly Stiffness: number;
+	Stiffness: number;
 }
 
 /** A Beam object connects two [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)s by drawing a texture between them.
@@ -15046,7 +15046,7 @@ interface Humanoid extends Instance {
 	 * Fixed size collision boxes, similar to the classic avatar collision
 	 * @deprecated
 	 */
-	readonly CollisionType: Enum.HumanoidCollisionType;
+	CollisionType: Enum.HumanoidCollisionType;
 	/**
 	 * The DisplayDistanceType property controls how the humanoid display's visibility behaves, based on the distance between the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) and the player's view.
 	 * 
@@ -21321,7 +21321,7 @@ interface BaseScript extends LuaSourceContainer {
 	 * For the LinkedSource property for [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript)s, please see [ModuleScript.LinkedSource](https://developer.roblox.com/en-us/api-reference/property/ModuleScript/LinkedSource).
 	 */
 	LinkedSource: string;
-	readonly RunContext: Enum.RunContext;
+	RunContext: Enum.RunContext;
 }
 
 /** A Script is a type of Lua code container that will run its contents on the server. By default, Scripts have `print("Hello, world")` as their contents. The instant that the following conditions are met, a Script's Lua code is run in a new thread:
@@ -24360,7 +24360,7 @@ interface TriangleMeshPart extends BasePart {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly CollisionFidelity: Enum.CollisionFidelity;
+	CollisionFidelity: Enum.CollisionFidelity;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -24409,7 +24409,7 @@ interface MeshPart extends TriangleMeshPart {
 	 * _With MeshPart.DoubleSided enabled, both faces of the leaves are rendered._  
 	 * ![DoubleSided property enabled](https://developer.roblox.com/assets/blte8ab39d69cf97247/DoubleSidedOn.png)
 	 */
-	readonly DoubleSided: boolean;
+	DoubleSided: boolean;
 	/**
 	 * Tags: Hidden
 	 */
@@ -24456,7 +24456,7 @@ interface MeshPart extends TriangleMeshPart {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly RenderFidelity: Enum.RenderFidelity;
+	RenderFidelity: Enum.RenderFidelity;
 	/**
 	 * The texture applied to the [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart). When this property is set to an empty string, no texture will be applied to the mesh.
 	 * 
@@ -24490,7 +24490,7 @@ interface PartOperation extends TriangleMeshPart {
 	 * @deprecated
 	 */
 	readonly _nominal_PartOperation: unique symbol;
-	readonly RenderFidelity: Enum.RenderFidelity;
+	RenderFidelity: Enum.RenderFidelity;
 	/**
 	 * This property represents an angle in degrees for a threshold value between face normals on a [solid modeled](https://developer.roblox.com/en-us/articles/3d-modeling-with-parts) part. If the normal difference is less than the value, normals will be adjusted to smooth the difference. Usually a value between 30 and 70 degrees will produce a good result. 0 degrees leads to sharp edges. Values between 90 and 180 degrees are allowed but not encouraged, as it may cause a “shadowing” effect on unions with sharp edges.
 	 * 
@@ -24504,7 +24504,7 @@ interface PartOperation extends TriangleMeshPart {
 	 * 
 	 * SmoothingAngle = 50
 	 */
-	readonly SmoothingAngle: number;
+	SmoothingAngle: number;
 	/**
 	 * The number of polygons in this solid model. This value will always be <= 5000.
 	 * 
@@ -25583,13 +25583,13 @@ interface Workspace extends WorldRoot {
 	 * *   Developers should also use the [Debris](https://developer.roblox.com/en-us/api-reference/class/Debris) service to clean up parts that are no longer needed, but have not fallen off the map
 	 * *   This property is clamped between -50,000 and 50,000. This is because [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s do not simulate or render properly at a great distance from the origin due to floating point inaccuracies
 	 */
-	readonly FallenPartsDestroyHeight: number;
+	FallenPartsDestroyHeight: number;
 	GlobalWind: Vector3;
 	/**
 	 * Determines the acceleration due to gravity applied to falling [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart). This value is measured in studs per second squared and by default is set to 196.2 studs/second2. By changing this value, developers can simulate the effects of lower or higher gravity in game.
 	 */
 	Gravity: number;
-	readonly InterpolationThrottling: Enum.InterpolationThrottlingMode;
+	InterpolationThrottling: Enum.InterpolationThrottlingMode;
 	Retargeting: Enum.AnimatorRetargetingMode;
 	/**
 	 * The **StreamingEnabled** property determines whether game content streaming is enabled for the place. This property is not scriptable and therefore must be set on the **Workspace** object in Studio.
@@ -25603,7 +25603,7 @@ interface Workspace extends WorldRoot {
 	 * *   [Workspace.StreamingTargetRadius](https://developer.roblox.com/en-us/api-reference/property/Workspace/StreamingTargetRadius)
 	 * *   [Workspace.StreamingPauseMode](https://developer.roblox.com/en-us/api-reference/property/Workspace/StreamingPauseMode)
 	 */
-	readonly StreamingEnabled: boolean;
+	StreamingEnabled: boolean;
 	/**
 	 * This property is a reference to the [Terrain](https://developer.roblox.com/en-us/api-reference/class/Terrain) object parented to the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace).
 	 * 
@@ -33343,8 +33343,8 @@ interface TextChatService extends Instance {
 	 */
 	readonly _nominal_TextChatService: unique symbol;
 	readonly ChatVersion: Enum.ChatVersion;
-	readonly CreateDefaultCommands: boolean;
-	readonly CreateDefaultTextChannels: boolean;
+	CreateDefaultCommands: boolean;
+	CreateDefaultTextChannels: boolean;
 	DisplayBubble(this: TextChatService, partOrCharacter: BasePart | Model, message: string): void;
 	/**
 	 * Tags: Yields
