@@ -530,6 +530,176 @@ interface PolicyInfo {
 	IsSubjectToChinaPolicies: boolean;
 }
 
+interface AvatarRulesBodyColorsPalette {
+	HexColor: string;
+	Name: string;
+	BrickColorId: number;
+}
+
+interface AvatarRules {
+	BodyColorsPalette: ReadonlyArray<AvatarRulesBodyColorsPalette>;
+	BundlesEnabledForUser: boolean;
+	MinimumDeltaEBodyColorDifference: number;
+	WearableAssetTypes: ReadonlyArray<{
+		Id: number;
+		MaxNumber: number;
+		Name: string;
+	}>;
+	ProportionsAndBodyTypeEnabledForUser: boolean;
+	PlayerAvatarTypes: ReadonlyArray<string>;
+	Scales: {
+		BodyType: {
+			Max: number;
+			Increment: number;
+			Min: number;
+		};
+		Head: {
+			Max: number;
+			Increment: number;
+			Min: number;
+		};
+		Height: {
+			Max: number;
+			Increment: number;
+			Min: number;
+		};
+		Proportion: {
+			Max: number;
+			Increment: number;
+			Min: number;
+		};
+		Width: {
+			Max: number;
+			Increment: number;
+			Min: number;
+		};
+	};
+	DefaultClothingAssetLists: {
+		DefaultPantAssetIds: ReadonlyArray<number>;
+		DefaultShirtAssetIds: ReadonlyArray<number>;
+	};
+	EmotesEnabledForUser: boolean;
+	BasicBodyColorsPalette: ReadonlyArray<AvatarRulesBodyColorsPalette>;
+}
+
+interface ItemDetails {
+	CreatorHasVerifiedBadge: boolean;
+	Genres: ReadonlyArray<"All">;
+	Price: number;
+	AssetType: string;
+	ProductId: number;
+	ItemRestrictions: ReadonlyArray<"Limited">;
+	ItemStatus: ReadonlyArray<"New">;
+	SaleLocationType: string;
+	FavoriteCount: number;
+	ItemType: string;
+	Id: number;
+	Name: string;
+	Description: string;
+	CreatorTargetId: number;
+	CreatorName: string;
+	CreatorType: string;
+}
+
+interface RecommendedAsset {
+	Item: {
+		AssetId: number;
+		Name: string;
+		Price: number;
+		PremiumPrice: number;
+		AbsoluteUrl: string;
+		AudioUrl: string;
+	};
+	Creator: {
+		CreatorId: number;
+		CreatorType: string;
+		Name: string;
+		CreatorProfileLink: string;
+	};
+	Product: {
+		Id: number;
+		PriceInRobux: number;
+		IsForSale: boolean;
+		IsPublicDomain: boolean;
+		IsResellable: boolean;
+		IsLimited: boolean;
+		IsLimitedUnique: boolean;
+		SerialNumber: number;
+		IsRental: boolean;
+		RentalDurationInHours: number;
+		BcRequirement: number;
+		TotalPrivateSales: number;
+		SellerId: number;
+		SellerName: string;
+		LowestPrivateSaleUserAssetId: number;
+		IsXboxExclusiveItem: boolean;
+		OffsaleDeadline: string;
+		NoPriceText: string;
+		IsFree: boolean;
+	};
+}
+
+interface RecommendedBundle {
+	Id: number;
+	Name: string;
+	Description: string;
+	BundleType: string;
+	Items: ReadonlyArray<{
+		Owned: boolean;
+		Id: number;
+		Name: string;
+		Type: string;
+	}>;
+	Creator: {
+		Id: number;
+		Name: string;
+		Type: string;
+	};
+	Product: {
+		Id: number;
+		Type: string;
+		IsPublicDomain: boolean;
+		IsForSale: boolean;
+		PriceInRobux: number;
+		PremiumPricing: {
+			PremiumDiscountPercentage: number;
+			PremiumPriceInRobux: number;
+		};
+	};
+}
+
+interface SearchCatalogResult {
+	Id: number;
+	ItemType: "Asset";
+	AssetType: "Image";
+	BundleType: "BodyParts";
+	Name: string;
+	Description: string;
+	ProductId: number;
+	Genres: ReadonlyArray<"All">;
+	BundledItems: ReadonlyArray<{
+		Owned: boolean;
+		Id: number;
+		Name: string;
+		Type: string;
+	}>;
+	ItemStatus: ReadonlyArray<"New">;
+	ItemRestrictions: ReadonlyArray<"ThirteenPlus">;
+	CreatorType: "User";
+	CreatorTargetId: number;
+	CreatorName: string;
+	Orice: number;
+	PremiumPricing: {
+		PremiumDiscountPercentage: number;
+		PremiumPriceInRobux: number;
+	};
+	LowestPrice: number;
+	PriceStatus: string;
+	UnitsAvailableForConsumption: number;
+	PurchaseCount: number;
+	FavoriteCount: number;
+}
+
 /**
  * RBXScriptConnection, also known as a Connection,
  * is a special object returned by the Connect method of an Event (RBXScriptSignal).

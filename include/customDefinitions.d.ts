@@ -62,6 +62,35 @@ interface Attachment extends Instance {
 	WorldCFrame: CFrame;
 }
 
+interface AvatarEditorService extends Instance {
+	GetAvatarRules(this: AvatarEditorService): AvatarRules;
+	GetBatchItemDetails(
+		this: AvatarEditorService,
+		itemIds: ReadonlyArray<number>,
+		itemType: CastsToEnum<Enum.AvatarItemType>,
+	): ReadonlyArray<ItemDetails>;
+	GetInventory(this: AvatarEditorService, assetTypes: ReadonlyArray<Enum.AvatarAssetType>): InventoryPages;
+	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): ItemDetails;
+	GetRecommendedAssets(
+		this: AvatarEditorService,
+		assetType: CastsToEnum<Enum.AvatarAssetType>,
+		contextAssetId?: number,
+	): ReadonlyArray<RecommendedAsset>;
+	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): ReadonlyArray<RecommendedBundle>;
+	SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): CatalogPages;
+}
+
+interface CatalogPages extends Pages<SearchCatalogResult> {}
+
+interface OutfitPages
+	extends Pages<
+		ReadonlyArray<{
+			Id: number;
+			Name: string;
+			IsEditable: boolean;
+		}>
+	> {}
+
 interface BadgeService extends Instance {
 	/** @server */
 	AwardBadge(this: BadgeService, userId: number, badgeId: number): boolean;
