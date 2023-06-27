@@ -2758,6 +2758,16 @@ interface AvatarEditorService extends Instance {
 	GetBatchItemDetails(
 		this: AvatarEditorService,
 		itemIds: ReadonlyArray<number>,
+		itemType: CastsToEnum<Enum.AvatarItemType.Asset>,
+	): ReadonlyArray<AssetItemDetails>;
+	GetBatchItemDetails(
+		this: AvatarEditorService,
+		itemIds: ReadonlyArray<number>,
+		itemType: CastsToEnum<Enum.AvatarItemType.Bundle>,
+	): ReadonlyArray<BundleItemDetails>;
+	GetBatchItemDetails(
+		this: AvatarEditorService,
+		itemIds: ReadonlyArray<number>,
 		itemType: CastsToEnum<Enum.AvatarItemType>,
 	): ReadonlyArray<ItemDetails>;
 	/**
