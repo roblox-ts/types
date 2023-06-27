@@ -2834,6 +2834,16 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
+	GetItemDetails(
+		this: AvatarEditorService,
+		itemId: number,
+		itemType: CastsToEnum<Enum.AvatarItemType.Asset>,
+	): AssetItemDetails;
+	GetItemDetails(
+		this: AvatarEditorService,
+		itemId: number,
+		itemType: CastsToEnum<Enum.AvatarItemType.Bundle>,
+	): BundleItemDetails;
 	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): ItemDetails;
 	/**
 	 * Tags: Yields
