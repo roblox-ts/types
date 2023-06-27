@@ -598,24 +598,42 @@ interface AvatarRules {
 	BasicBodyColorsPalette: ReadonlyArray<AvatarRulesBodyColorsPalette>;
 }
 
-interface ItemDetails {
+interface ItemDetailsBase {
 	CreatorHasVerifiedBadge: boolean;
-	Genres: ReadonlyArray<"All">;
+	Genres: ReadonlyArray<Enum.Genre["Name"]>;
 	Price: number;
-	AssetType: string;
+	Owned: boolean;
 	ProductId: number;
-	ItemRestrictions: ReadonlyArray<"Limited">;
-	ItemStatus: ReadonlyArray<"New">;
+	ItemRestrictions: ReadonlyArray<string>;
+	ItemStatus: ReadonlyArray<string>;
 	SaleLocationType: string;
 	FavoriteCount: number;
-	ItemType: string;
 	Id: number;
 	Name: string;
 	Description: string;
 	CreatorTargetId: number;
 	CreatorName: string;
 	CreatorType: string;
+	ExpectedSellerId: number;
 }
+
+interface AssetItemDetails extends ItemDetailsBase {
+	ItemType: "Asset";
+	AssetType: Enum.AssetType["Name"];
+}
+
+interface BundleItemDetails extends ItemDetailsBase {
+	ItemType: "Bundle";
+	BundleType: Enum.BundleType["Name"];
+	BundledItems: ReadonlyArray<{
+		Owned: boolean;
+		Id: number;
+		Name: string;
+		Type: "Asset" | "UserOutfit";
+	}>;
+}
+
+type ItemDetails = AssetItemDetails | BundleItemDetails;
 
 interface RecommendedAsset {
 	Item: {
@@ -721,7 +739,7 @@ interface SearchCatalogBundleResult extends SearchCatalogResultBase {
 		Owned: boolean;
 		Id: number;
 		Name: string;
-		Type: string;
+		Type: "Asset" | "UserOutfit";
 	}>;
 }
 
