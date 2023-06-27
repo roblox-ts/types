@@ -70,6 +70,16 @@ interface AvatarEditorService extends Instance {
 		itemType: CastsToEnum<Enum.AvatarItemType>,
 	): ReadonlyArray<ItemDetails>;
 	GetInventory(this: AvatarEditorService, assetTypes: ReadonlyArray<Enum.AvatarAssetType>): InventoryPages;
+	GetItemDetails(
+		this: AvatarEditorService,
+		itemId: number,
+		itemType: CastsToEnum<Enum.AvatarItemType.Asset>,
+	): AssetItemDetails;
+	GetItemDetails(
+		this: AvatarEditorService,
+		itemId: number,
+		itemType: CastsToEnum<Enum.AvatarItemType.Bundle>,
+	): BundleItemDetails;
 	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): ItemDetails;
 	GetRecommendedAssets(
 		this: AvatarEditorService,
