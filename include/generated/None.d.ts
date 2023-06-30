@@ -136,7 +136,9 @@ interface Services {
 	TextService: TextService;
 	ToastNotificationService: ToastNotificationService;
 	TracerService: TracerService;
+	TutorialService: TutorialService;
 	TweenService: TweenService;
+	UGCAvatarService: UGCAvatarService;
 	UnvalidatedAssetService: UnvalidatedAssetService;
 	UserInputService: UserInputService;
 	UserService: UserService;
@@ -189,6 +191,7 @@ interface CreatableInstances {
 	BoxHandleAdornment: BoxHandleAdornment;
 	Breakpoint: Breakpoint;
 	BrickColorValue: BrickColorValue;
+	BubbleChatMessageProperties: BubbleChatMessageProperties;
 	BuoyancySensor: BuoyancySensor;
 	Camera: Camera;
 	CanvasGroup: CanvasGroup;
@@ -221,6 +224,7 @@ interface CreatableInstances {
 	DoubleConstrainedValue: DoubleConstrainedValue;
 	DragDetector: DragDetector;
 	Dragger: Dragger;
+	DynamicMesh: DynamicMesh;
 	EchoSoundEffect: EchoSoundEffect;
 	EqualizerSoundEffect: EqualizerSoundEffect;
 	EulerRotationCurve: EulerRotationCurve;
@@ -5524,6 +5528,22 @@ interface Breakpoint extends Instance {
 	readonly _nominal_Breakpoint: unique symbol;
 }
 
+interface BubbleChatMessageProperties extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BubbleChatMessageProperties: unique symbol;
+	BackgroundColor3: Color3;
+	BackgroundTransparency: number;
+	FontFace: Font;
+	TextColor3: Color3;
+	TextSize: number;
+}
+
 interface BulkImportService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -5849,6 +5869,7 @@ interface Camera extends Instance {
 	 * *   [Camera:GetTiltSpeed](https://developer.roblox.com/en-us/api-reference/function/Camera/GetTiltSpeed) for the speed at which the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) is rotating around its [Camera.Focus](https://developer.roblox.com/en-us/api-reference/property/Camera/Focus) on the [Camera's](https://developer.roblox.com/en-us/api-reference/class/Camera) X axis
 	 * *   [Camera:PanUnits](https://developer.roblox.com/en-us/api-reference/function/Camera/PanUnits) to 'pan' the camera
 	 * *   [Camera:TiltUnits](https://developer.roblox.com/en-us/api-reference/function/Camera/TiltUnits) to 'tilt' the camera
+	 * @deprecated
 	 */
 	GetPanSpeed(this: Camera): number;
 	/**
@@ -5918,6 +5939,7 @@ interface Camera extends Instance {
 	 * [Camera:GetPanSpeed](https://developer.roblox.com/en-us/api-reference/function/Camera/GetPanSpeed) for the speed the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) is rotating around the [Camera.Focus](https://developer.roblox.com/en-us/api-reference/property/Camera/Focus) around the Y axis  
 	 * [Camera:PanUnits](https://developer.roblox.com/en-us/api-reference/function/Camera/PanUnits) to 'pan' the camera  
 	 * [Camera:TiltUnits](https://developer.roblox.com/en-us/api-reference/function/Camera/TiltUnits) to 'tilt' the camera
+	 * @deprecated
 	 */
 	GetTiltSpeed(this: Camera): number;
 	/**
@@ -7462,6 +7484,7 @@ interface LinearVelocity extends Constraint {
 	 * @deprecated
 	 */
 	readonly _nominal_LinearVelocity: unique symbol;
+	ForceLimitMode: Enum.ForceLimitMode;
 	/**
 	 * The normalized [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) direction for constraining the velocity along a line, when [ VelocityConstraintMode](https://developer.roblox.com/en-us/api-reference/property/LinearVelocity/VelocityConstraintMode) is set to **Line**. Default is \[1, 0, 0\].
 	 */
@@ -7470,10 +7493,12 @@ interface LinearVelocity extends Constraint {
 	 * Float value of the velocity when [VelocityConstraintMode](https://developer.roblox.com/en-us/api-reference/property/LinearVelocity/VelocityConstraintMode) is set to **Line**. Default is 0.
 	 */
 	LineVelocity: number;
+	MaxAxesForce: Vector3;
 	/**
 	 * Maximum magnitude of the force vector the constraint can apply.
 	 */
 	MaxForce: number;
+	MaxPlanarAxesForce: Vector2;
 	/**
 	 * [Vector2](https://developer.roblox.com/en-us/api-reference/datatype/Vector2) value of the velocity in each tangent direction of the plane, when [VelocityConstraintMode](https://developer.roblox.com/en-us/api-reference/property/LinearVelocity/VelocityConstraintMode) is set to **Plane**. Default is \[0, 0\].
 	 */
@@ -8995,6 +9020,40 @@ interface FileMesh extends DataModelMesh {
 	 * A mesh can only be textured if the mesh has been UV mapped. UV mapping refers to the practice of projecting a texture map onto a mesh. This cannot be done using Roblox Studio and has to be done using an external 3D modelling application such as [Blender](https://www.blender.org/).
 	 */
 	TextureId: string;
+}
+
+interface DynamicMesh extends FileMesh {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DynamicMesh: unique symbol;
+	AddTriangle(this: DynamicMesh, vertexId0: number, vertexId1: number, vertexId2: number): number;
+	AddVertex(this: DynamicMesh, p: Vector3): number;
+	Clear(this: DynamicMesh): void;
+	GetPosition(this: DynamicMesh, vertexId: number): Vector3;
+	GetTriangleVertices(this: DynamicMesh, triangleId: number): unknown;
+	GetTriangles(this: DynamicMesh): unknown;
+	GetUV(this: DynamicMesh, vertexId: number): Vector2;
+	GetVertexColor(this: DynamicMesh, vertexId: number): Color3;
+	GetVertexColorAlpha(this: DynamicMesh, vertexId: number): number;
+	GetVertexNormal(this: DynamicMesh, vertexId: number): Vector3;
+	GetVertices(this: DynamicMesh): unknown;
+	InitializeFromMeshIdAsync(this: DynamicMesh, meshId: string): void;
+	InitializeFromMeshPartAsync(this: DynamicMesh, meshPart: MeshPart): void;
+	RemoveTriangle(this: DynamicMesh, triangleId: number): void;
+	SetPosition(this: DynamicMesh, vertexId: number, p: Vector3): void;
+	SetUV(this: DynamicMesh, vertexId: number, uv: Vector2): void;
+	SetVertexColor(this: DynamicMesh, vertexId: number, color: Color3): void;
+	SetVertexColorAlpha(this: DynamicMesh, vertexId: number, alpha: number): void;
+	SetVertexNormal(this: DynamicMesh, vertexId: number, vnormal: Vector3): void;
+	/**
+	 * Tags: Yields
+	 */
+	CreateMeshPartAsync(this: DynamicMesh, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>): MeshPart;
 }
 
 /** The SpecialMesh is an object that allows developers to provide a standard template or user uploaded mesh to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart).
@@ -16761,21 +16820,9 @@ interface IKControl extends Instance {
 	Weight: number;
 	GetChainCount(this: IKControl): number;
 	GetChainLength(this: IKControl): number;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	GetNodeLocalCFrame(this: IKControl, index: number): CFrame;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	GetNodeWorldCFrame(this: IKControl, index: number): CFrame;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	GetRawFinalTarget(this: IKControl): CFrame;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	GetSmoothedFinalTarget(this: IKControl): CFrame;
 }
 
@@ -21263,6 +21310,7 @@ interface LogService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_LogService: unique symbol;
+	ClearOutput(this: LogService): void;
 	/**
 	 * **Unreliable Behavior**  
 	 * 
@@ -30447,9 +30495,6 @@ interface Sound extends Instance {
 	 */
 	readonly PlaybackLoudness: number;
 	PlaybackRegion: NumberRange;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	PlaybackRegionsEnabled: boolean;
 	/**
 	 * Determines the speed at which a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) will play. The greater the value the faster the sound will play back.
@@ -33980,6 +34025,17 @@ interface Translator extends Instance {
 	Translate(this: Translator, context: Instance, text: string): string;
 }
 
+interface TutorialService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TutorialService: unique symbol;
+}
+
 /** The base class for in-between interpolation handlers. */
 interface TweenBase extends Instance {
 	/**
@@ -34128,6 +34184,17 @@ interface TweenService extends Instance {
 	 * The provided alpha value is clamped between 0 and 1.
 	 */
 	GetValue(this: TweenService, alpha: number, easingStyle: CastsToEnum<Enum.EasingStyle>, easingDirection: CastsToEnum<Enum.EasingDirection>): number;
+}
+
+interface UGCAvatarService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_UGCAvatarService: unique symbol;
 }
 
 /** UIBase is the base class for UI layout and constraint classes. */
