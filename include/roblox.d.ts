@@ -1853,6 +1853,14 @@ interface OverlapParams {
 	 * The collision group the region check is performed on. Parts set to not collide with this group will be ignored.
 	 */
 	CollisionGroup: string;
+	/**
+	 * This property, if true, makes the boundary-querying operation use an intersected part's BasePart.CanCollide value in favor of its BasePart.CanQuery value when determining whether that part is included in the array of spatial query results.
+	 */
+	RespectCanCollide: boolean;
+	/**
+	 * This property, if true, finds all parts that inserect the region even if they have CanQuery set to false.
+	 */
+	BruteForceAllSlow: boolean;
 }
 type OverlapParamsConstructor = new () => OverlapParams;
 declare const OverlapParams: OverlapParamsConstructor;
