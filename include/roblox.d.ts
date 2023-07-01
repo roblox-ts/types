@@ -1858,7 +1858,7 @@ interface OverlapParams {
 	 */
 	RespectCanCollide: boolean;
 	/**
-	 * This property, if true, finds all parts that inserect the region even if they have CanQuey set to false.
+	 * This property, if true, finds all parts that inserect the region even if they have CanQuery set to false.
 	 */
 	BruteForceAllSlow: boolean;
 }
