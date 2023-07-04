@@ -2021,6 +2021,11 @@ interface RaycastParams {
 	 * property is omitted, the raycast will assume the **Default** collision group.
 	 */
 	CollisionGroup: string;
+	/**
+	 * For efficiency and simplicity, this method is the preferred way to add instances to the filter.
+	 * It has the additional advantage that it allows FilterDescendantsInstances to be updated from a parallel context.
+	 */
+	AddToFilter(this: RaycastParams, instances: Instance | Array<Instance>): void;
 }
 
 type RaycastParamsConstructor = new () => RaycastParams;
