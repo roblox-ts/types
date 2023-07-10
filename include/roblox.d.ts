@@ -361,7 +361,6 @@ interface AgentParameters {
 }
 
 interface CollisionGroupInfo {
-	id: number;
 	mask: number;
 	name: string;
 }

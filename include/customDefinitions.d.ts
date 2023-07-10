@@ -657,7 +657,8 @@ interface PathfindingService extends Instance {
 }
 
 interface PhysicsService extends Instance {
-	GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
+	GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo & { id: number }>;
+	GetRegisteredCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
 }
 
 interface Player extends Instance {
