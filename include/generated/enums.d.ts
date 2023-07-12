@@ -6063,6 +6063,35 @@ declare namespace Enum {
 	}
 	export type FilterResult = FilterResult.Rejected | FilterResult.Accepted;
 
+	export namespace FinishRecordingOperation {
+		export interface Cancel extends globalThis.EnumItem {
+			Name: "Cancel";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.FinishRecordingOperation;
+		}
+
+		export const Cancel: Cancel;
+
+		export interface Commit extends globalThis.EnumItem {
+			Name: "Commit";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.FinishRecordingOperation;
+		}
+
+		export const Commit: Commit;
+
+		export interface Append extends globalThis.EnumItem {
+			Name: "Append";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.FinishRecordingOperation;
+		}
+
+		export const Append: Append;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FinishRecordingOperation>;
+	}
+	export type FinishRecordingOperation = FinishRecordingOperation.Cancel | FinishRecordingOperation.Commit | FinishRecordingOperation.Append;
+
 	export namespace Font {
 		export interface Legacy extends globalThis.EnumItem {
 			Name: "Legacy";
@@ -14543,6 +14572,51 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SelectionRenderMode>;
 	}
 	export type SelectionRenderMode = SelectionRenderMode.Outlines | SelectionRenderMode.BoundingBoxes | SelectionRenderMode.Both;
+
+	export namespace SelfViewPosition {
+		export interface LastPosition extends globalThis.EnumItem {
+			Name: "LastPosition";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.SelfViewPosition;
+		}
+
+		export const LastPosition: LastPosition;
+
+		export interface TopLeft extends globalThis.EnumItem {
+			Name: "TopLeft";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.SelfViewPosition;
+		}
+
+		export const TopLeft: TopLeft;
+
+		export interface TopRight extends globalThis.EnumItem {
+			Name: "TopRight";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.SelfViewPosition;
+		}
+
+		export const TopRight: TopRight;
+
+		export interface BottomLeft extends globalThis.EnumItem {
+			Name: "BottomLeft";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.SelfViewPosition;
+		}
+
+		export const BottomLeft: BottomLeft;
+
+		export interface BottomRight extends globalThis.EnumItem {
+			Name: "BottomRight";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.SelfViewPosition;
+		}
+
+		export const BottomRight: BottomRight;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SelfViewPosition>;
+	}
+	export type SelfViewPosition = SelfViewPosition.LastPosition | SelfViewPosition.TopLeft | SelfViewPosition.TopRight | SelfViewPosition.BottomLeft | SelfViewPosition.BottomRight;
 
 	export namespace SensorMode {
 		export interface Floor extends globalThis.EnumItem {
