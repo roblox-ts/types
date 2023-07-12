@@ -326,6 +326,7 @@ interface ChangeHistoryService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ChangeHistoryService: unique symbol;
+	FinishRecording(this: ChangeHistoryService, identifier: string, operation: CastsToEnum<Enum.FinishRecordingOperation>, finalOptions: object | undefined): void;
 	/**
 	 * Returns whether there are actions that can be redone, and, if there are, returns the last of them.
 	 */
@@ -334,6 +335,7 @@ interface ChangeHistoryService extends Instance {
 	 * Returns whether there are actions that can be undone, and, if there are, returns the last of them.
 	 */
 	GetCanUndo(this: ChangeHistoryService): unknown;
+	IsRecordingInProgress(this: ChangeHistoryService, identifier: string | undefined): boolean;
 	/**
 	 * Executes the last action that was undone.
 	 */
@@ -350,10 +352,13 @@ interface ChangeHistoryService extends Instance {
 	 * Sets a new waypoint which can be used as an undo or redo point.
 	 */
 	SetWaypoint(this: ChangeHistoryService, name: string): void;
+	TryBeginRecording(this: ChangeHistoryService, name: string, displayName: string | undefined): string | undefined;
 	/**
 	 * Undos the last action taken, for which there exists a waypoint.
 	 */
 	Undo(this: ChangeHistoryService): void;
+	readonly OnRecordingFinished: RBXScriptSignal<(name: string, displayName: string | undefined, identifier: string | undefined, operationn: Enum.FinishRecordingOperation, finalOptions: object | undefined) => void>;
+	readonly OnRecordingStarted: RBXScriptSignal<(name: string, displayName: string | undefined) => void>;
 	/**
 	 * Fired when the user reverses the undo command. Waypoint describes the type action that has been redone.
 	 */
@@ -3490,7 +3495,6 @@ interface Studio extends Instance {
 	 * If set to true, deprecated objects will be shown in the Advanced Objects window, as well as the Object Browser.
 	 */
 	DeprecatedObjectsShown: boolean;
-	["Drag Multiple Parts As Single Part"]: boolean;
 	["Enable Autocomplete"]: boolean;
 	["Enable CoreScript Debugger"]: boolean;
 	["Enable Http Sandboxing"]: boolean;
@@ -3611,7 +3615,6 @@ interface Studio extends Instance {
 	 */
 	ScriptTimeoutLength: number;
 	["Scroll Past Last Line"]: boolean;
-	["Search Content For Core Scripts"]: boolean;
 	/**
 	 * Tags: NotReplicated
 	 */

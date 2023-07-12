@@ -81,6 +81,8 @@ interface Services {
 	PatchBundlerFileWatch: PatchBundlerFileWatch;
 	PathfindingService: PathfindingService;
 	PhysicsService: PhysicsService;
+	PlacesService: PlacesService;
+	PlaceStatsService: PlaceStatsService;
 	Players: Players;
 	PluginManagementService: PluginManagementService;
 	PluginPolicyService: PluginPolicyService;
@@ -143,6 +145,7 @@ interface Services {
 	UserInputService: UserInputService;
 	UserService: UserService;
 	VideoCaptureService: VideoCaptureService;
+	VideoService: VideoService;
 	VisibilityCheckDispatcher: VisibilityCheckDispatcher;
 	VisibilityService: VisibilityService;
 	VoiceChatInternal: VoiceChatInternal;
@@ -332,6 +335,9 @@ interface CreatableInstances {
 	SpringConstraint: SpringConstraint;
 	StarterGear: StarterGear;
 	StringValue: StringValue;
+	StudioCallout: StudioCallout;
+	StudioObjectBase: StudioObjectBase;
+	StudioWidget: StudioWidget;
 	StyleDerive: StyleDerive;
 	StyleLink: StyleLink;
 	StyleRule: StyleRule;
@@ -476,6 +482,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DebuggerConnection: DebuggerConnection;
 	DebuggerLuaResponse: DebuggerLuaResponse;
 	DebuggerVariable: DebuggerVariable;
+	DynamicImage: DynamicImage;
 	EmotesPages: EmotesPages;
 	FacialAnimationStreamingServiceStats: FacialAnimationStreamingServiceStats;
 	FacialAnimationStreamingSubsessionStats: FacialAnimationStreamingSubsessionStats;
@@ -483,7 +490,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	FriendPages: FriendPages;
 	GlobalDataStore: GlobalDataStore;
 	GroupImportData: GroupImportData;
-	ImageDataExperimental: ImageDataExperimental;
 	InputObject: InputObject;
 	InstanceAdornment: InstanceAdornment;
 	InventoryPages: InventoryPages;
@@ -494,13 +500,13 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	MaterialImportData: MaterialImportData;
 	MemoryStoreQueue: MemoryStoreQueue;
 	MemoryStoreSortedMap: MemoryStoreSortedMap;
-	MeshDataExperimental: MeshDataExperimental;
 	MeshImportData: MeshImportData;
 	MessageBusConnection: MessageBusConnection;
 	MetaBreakpoint: MetaBreakpoint;
 	MetaBreakpointContext: MetaBreakpointContext;
 	Mouse: Mouse;
 	NetworkMarker: NetworkMarker;
+	OpenCloudApiV1: OpenCloudApiV1;
 	OrderedDataStore: OrderedDataStore;
 	OutfitPages: OutfitPages;
 	PackageLink: PackageLink;
@@ -2330,6 +2336,10 @@ interface AssetService extends Instance {
 	 * Tags: Yields
 	 */
 	GetGamePlacesAsync(this: AssetService): StandardPages<{ Name: string; PlaceId: number }>;
+	/**
+	 * Tags: Yields
+	 */
+	LoadImageAsync(this: AssetService, textureId: string): DynamicImage;
 	/**
 	 * Tags: Yields
 	 */
@@ -6691,9 +6701,8 @@ interface DragDetector extends ClickDetector {
 	 * Tags: NotReplicated
 	 */
 	WorldSecondaryAxis: Vector3;
-	AddConstraintFunction(this: DragDetector, name: string, priority: number, callback: Callback): void;
+	AddConstraintFunction(this: DragDetector, priority: number, callback: Callback): RBXScriptConnection;
 	GetReferenceFrame(this: DragDetector): CFrame;
-	RemoveConstraintFunction(this: DragDetector, name: string): void;
 	RestartDrag(this: DragDetector): void;
 	SetDragStyleFunction(this: DragDetector, callback: Callback): void;
 	readonly DragContinue: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
@@ -8686,6 +8695,10 @@ interface ControllerBase extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ControllerBase: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly Active: boolean;
 	BalanceRigidityEnabled: boolean;
 	MoveSpeedFactor: number;
 }
@@ -8701,6 +8714,9 @@ interface AirController extends ControllerBase {
 	readonly _nominal_AirController: unique symbol;
 	BalanceMaxTorque: number;
 	BalanceSpeed: number;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
 	LinearImpulse: Vector3;
 	MaintainAngularMomentum: boolean;
 	MaintainLinearMomentum: boolean;
@@ -9884,6 +9900,26 @@ interface DraggerService extends Instance {
 	 * Tags: NotReplicated
 	 */
 	ShowPivotIndicator: boolean;
+}
+
+interface DynamicImage extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DynamicImage: unique symbol;
+	Size: Vector2;
+	Clear(this: DynamicImage): void;
+	DrawCircle(this: DynamicImage, center: Vector2, radius: number, color: Color3, alpha: number): void;
+	/**
+	 * Tags: CustomLuaState
+	 */
+	ReadPixels(this: DynamicImage, position: Vector2, size: Vector2): unknown;
+	Resize(this: DynamicImage, newSize: Vector2): void;
+	Rotate(this: DynamicImage, degrees: number, resizeCanvas?: boolean): void;
 }
 
 /** A EulerRotation Curve represents a 3D rotation curve, it groups 3 [FloatCurves](https://developer.roblox.com/en-us/api-reference/class/FloatCurve), stored as 3 FloatCurve child instances. The rotation is decomposed in 3 Euler angles channels that can be accessed via [EulerRotationCurve:X](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/X), [EulerRotationCurve:Y](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Y), [EulerRotationCurve:Z](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Z) methods. The 3 axes can be sampled simultaneously via the method [EulerRotationCurve:GetAnglesAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetAnglesAtTime) returning the 3 Euler angles as a Vector3. Similarly, [EulerRotationCurve:GetRotationAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetRotationAtTime) samples all channels simultaneously but returns a CFrame rotated by X, Y, and Z according to the specified rotation order. */
@@ -13886,10 +13922,6 @@ interface TextureGuiExperimental extends LayerCollector {
 	 */
 	readonly _nominal_TextureGuiExperimental: unique symbol;
 	Size: Vector2;
-	/**
-	 * Tags: NotReplicated
-	 */
-	readonly TemporaryId: string;
 }
 
 /** An abstract class for 3D GUI elements that are rendered in the world. */
@@ -14556,6 +14588,14 @@ interface GuiService extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly MenuIsOpen: boolean;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly PreferredTransparency: number;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly ReducedMotionEnabled: boolean;
 	/**
 	 * Sets the [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) currently being focused on by the GUI Navigator (used for Gamepads). This may reset to nil if the object is off-screen.
 	 * 
@@ -15694,6 +15734,10 @@ interface Humanoid extends Instance {
 	 * GetLimb will throw an error if the [Part's](https://developer.roblox.com/en-us/api-reference/class/Part) parent is not set to the [Humanoid's](https://developer.roblox.com/en-us/api-reference/class/Humanoid) parent.
 	 */
 	GetLimb(this: Humanoid, part: BasePart): Enum.Limb;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	GetMoveVelocity(this: Humanoid): Vector3;
 	/**
 	 * This function returns an array of all [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) that are currently being played on the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid).
 	 * 
@@ -16857,30 +16901,6 @@ interface IXPService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_IXPService: unique symbol;
-}
-
-interface ImageDataExperimental extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ImageDataExperimental: unique symbol;
-	Size: Vector2;
-	/**
-	 * Tags: NotReplicated
-	 */
-	readonly TemporaryId: string;
-	Clear(this: ImageDataExperimental): void;
-	DrawCircle(this: ImageDataExperimental, center: Vector2, radius: number, color: Color3, alpha: number): void;
-	Resize(this: ImageDataExperimental, newSize: Vector2): void;
-	Rotate(this: ImageDataExperimental, degrees: number, resizeCanvas?: boolean): void;
-	/**
-	 * Tags: Yields
-	 */
-	PopulateFromImageAsync(this: ImageDataExperimental, textureId: string): void;
 }
 
 interface IncrementalPatchBuilder extends Instance {
@@ -22091,25 +22111,6 @@ interface MemoryStoreSortedMap extends Instance {
 	): T;
 }
 
-interface MeshDataExperimental extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_MeshDataExperimental: unique symbol;
-	/**
-	 * Tags: NotReplicated
-	 */
-	readonly Size: Vector3;
-	/**
-	 * Tags: Yields
-	 */
-	PopulateFromMeshAsync(this: MeshDataExperimental, meshId: string): void;
-}
-
 interface MessageBusConnection extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -22796,6 +22797,17 @@ interface OmniRecommendationsService extends Instance {
 	readonly _nominal_OmniRecommendationsService: unique symbol;
 }
 
+interface OpenCloudApiV1 extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_OpenCloudApiV1: unique symbol;
+}
+
 interface OpenCloudService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -22805,6 +22817,7 @@ interface OpenCloudService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_OpenCloudService: unique symbol;
+	GetApiV1(this: OpenCloudService): OpenCloudApiV1;
 }
 
 /** A [PVInstance](https://developer.roblox.com/en-us/api-reference/class/PVInstance) (“Position Velocity Instance”) is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Models](https://developer.roblox.com/en-us/api-reference/class/Model). */
@@ -23680,6 +23693,7 @@ interface BasePart extends PVInstance {
 	 * Returns true if the game engine automatically decides the network owner for this part.
 	 */
 	GetNetworkOwnershipAuto(this: BasePart): boolean;
+	GetNoCollisionConstraints(this: BasePart): Array<Instance>;
 	/**
 	 * This function used to be relevant when Roblox's lag-compensating interpolation of parts online was internal. The interpolation is now applied to the `CFrame` directly.
 	 * @deprecated
@@ -26837,6 +26851,28 @@ interface PhysicsService extends Instance {
 	 */
 	SetPartCollisionGroup(this: PhysicsService, part: BasePart, name: string): void;
 	UnregisterCollisionGroup(this: PhysicsService, name: string): void;
+}
+
+interface PlaceStatsService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PlaceStatsService: unique symbol;
+}
+
+interface PlacesService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PlacesService: unique symbol;
 }
 
 /** A Player object a client that is currently connected. These objects are added to the [Players](https://developer.roblox.com/en-us/api-reference/class/Players) service when a new player connects, then removed when they eventually disconnect from the server.
@@ -30329,6 +30365,7 @@ interface SocialService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_SocialService: unique symbol;
+	HideSelfView(this: SocialService): void;
 	/**
 	 * **PromptGameInvite** will display an invite screen to the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player). On this screen, the player may invite their friends to the current game.
 	 * 
@@ -30336,6 +30373,7 @@ interface SocialService extends Instance {
 	 */
 	PromptGameInvite(this: SocialService, player: Player, experienceInviteOptions?: ExperienceInviteOptions): void;
 	PromptIrisInvite(this: SocialService, player: Player, tag: string): void;
+	ShowSelfView(this: SocialService, selfViewPosition?: CastsToEnum<Enum.SelfViewPosition>): void;
 	/**
 	 * **CanSendGameInviteAsync** indicates whether the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player) can invite other players to the current game. If they can, it returns true.
 	 * 
@@ -31948,6 +31986,17 @@ interface StudioAssetService extends Instance {
 	readonly _nominal_StudioAssetService: unique symbol;
 }
 
+interface StudioCallout extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StudioCallout: unique symbol;
+}
+
 interface StudioDeviceEmulatorService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -31957,6 +32006,28 @@ interface StudioDeviceEmulatorService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_StudioDeviceEmulatorService: unique symbol;
+}
+
+interface StudioObjectBase extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StudioObjectBase: unique symbol;
+}
+
+interface StudioWidget extends StudioObjectBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StudioWidget: unique symbol;
 }
 
 interface StudioPublishService extends Instance {
@@ -37218,6 +37289,17 @@ interface VideoCaptureService extends Instance {
 	readonly _nominal_VideoCaptureService: unique symbol;
 }
 
+interface VideoService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VideoService: unique symbol;
+}
+
 interface VisibilityCheckDispatcher extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -37293,7 +37375,7 @@ interface VoiceChatInternal extends Instance {
 	/**
 	 * @deprecated
 	 */
-	JoinByGroupIdToken(this: VoiceChatInternal, groupId: string, isMicMuted?: boolean): boolean;
+	JoinByGroupIdToken(this: VoiceChatInternal, groupId: string, isMicMuted: boolean, isRetry?: boolean): boolean;
 	/**
 	 * @deprecated
 	 */
