@@ -962,6 +962,20 @@ interface TextBox extends GuiObject {
 	readonly FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: InputObject) => void>;
 }
 
+interface TextChannel extends Instance {
+	/** @client */
+	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
+	/** @server */
+	ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => boolean;
+}
+
+interface TextChatService extends Instance {
+	/** @client */
+	OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => TextChatMessageProperties | undefined;
+	/** @client */
+	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
+}
+
 interface TextService extends Instance {
 	/** @server */
 	FilterStringAsync(
