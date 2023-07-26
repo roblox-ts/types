@@ -971,6 +971,8 @@ interface TextChannel extends Instance {
 
 interface TextChatService extends Instance {
 	/** @client */
+	OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => TextChatMessageProperties | undefined;
+	/** @client */
 	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
 }
 
