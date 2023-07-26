@@ -962,6 +962,19 @@ interface TextBox extends GuiObject {
 	readonly FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: InputObject) => void>;
 }
 
+interface TextChannel extends Instance {
+	/** @client */
+	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
+	
+	/** @server */
+	ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => boolean;
+}
+
+interface TextChatService extends Instance {
+	/** @client */
+	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
+}
+
 interface TextService extends Instance {
 	/** @server */
 	FilterStringAsync(
@@ -970,11 +983,6 @@ interface TextService extends Instance {
 		fromUserId: number,
 		textContext?: CastsToEnum<Enum.TextFilterContext>,
 	): TextFilterResult;
-}
-
-interface TextChatService extends Instance {
-	/** @client */
-	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
 }
 
 interface TweenService extends Instance {
