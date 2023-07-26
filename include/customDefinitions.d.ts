@@ -965,7 +965,6 @@ interface TextBox extends GuiObject {
 interface TextChannel extends Instance {
 	/** @client */
 	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
-	
 	/** @server */
 	ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => boolean;
 }
