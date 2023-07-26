@@ -33376,8 +33376,8 @@ interface TextChannel extends Instance {
 	 */
 	SendAsync(this: TextChannel, message: string, metadata?: string): TextChatMessage;
 	readonly MessageReceived: RBXScriptSignal<(incomingMessage: TextChatMessage) => void>;
-	OnIncomingMessage: (message: TextChatMessage) => Array<any>;
-	ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => Array<any>;
+	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
+	ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => boolean;
 }
 
 interface TextChatCommand extends Instance {
@@ -33559,8 +33559,8 @@ interface TextChatService extends Instance {
 	readonly BubbleDisplayed: RBXScriptSignal<(partOrCharacter: BasePart | Model, textChatMessage: TextChatMessage) => void>;
 	readonly MessageReceived: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
 	readonly SendingMessage: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
-	OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => Array<any>;
-	OnIncomingMessage: (message: TextChatMessage) => Array<any>;
+	OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => TextChatMessageProperties | undefined;
+	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
 }
 
 /** Represents the result of a call to [TextService:FilterStringAsync](https://developer.roblox.com/en-us/api-reference/function/TextService/FilterStringAsync).  
