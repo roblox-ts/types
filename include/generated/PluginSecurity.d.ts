@@ -1896,6 +1896,7 @@ interface PhysicsSettings extends Instance {
 	 * When set to true, Roblox will fall back to using its legacy CSG solver when performing [solid model operations](https://developer.roblox.com/articles/3D-Modeling-with-Parts "Solid modeling").
 	 */
 	DisableCSGv2: boolean;
+	DisableCSGv3ForPlugins: boolean;
 	/**
 	 * Tags: Hidden, NotReplicated
 	 */
@@ -2827,6 +2828,7 @@ interface RenderSettings extends Instance {
 	 * If set to true, renders bounding boxes around each individual rendered entity in the scene.
 	 */
 	ShowBoundingBoxes: boolean;
+	ViewMode: Enum.ViewMode;
 	/**
 	 * Returns the maximum quality level.
 	 */
@@ -3646,7 +3648,6 @@ interface Studio extends Instance {
 	["Show Hover Over"]: boolean;
 	["Show Navigation Mesh"]: boolean;
 	["Show Plugin GUI Service in Explorer"]: boolean;
-	["Show QT warnings in output"]: boolean;
 	["Show Whitespace"]: boolean;
 	["Show plus button on hover in Explorer"]: boolean;
 	["Skip Closing Brackets and Quotes"]: boolean;
