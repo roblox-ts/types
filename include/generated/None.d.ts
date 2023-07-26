@@ -94,6 +94,7 @@ interface Services {
 	RemoteDebuggerServer: RemoteDebuggerServer;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedStorage: ReplicatedStorage;
+	RobloxServerStorage: RobloxServerStorage;
 	RomarkService: RomarkService;
 	RtMessagingService: RtMessagingService;
 	RunService: RunService;
@@ -151,6 +152,7 @@ interface Services {
 	VoiceChatInternal: VoiceChatInternal;
 	VoiceChatService: VoiceChatService;
 	VRService: VRService;
+	VRStatusService: VRStatusService;
 	Workspace: Workspace;
 }
 
@@ -294,6 +296,7 @@ interface CreatableInstances {
 	PitchShiftSoundEffect: PitchShiftSoundEffect;
 	Plane: Plane;
 	PlaneConstraint: PlaneConstraint;
+	PluginCapabilities: PluginCapabilities;
 	PointLight: PointLight;
 	Pose: Pose;
 	PrismaticConstraint: PrismaticConstraint;
@@ -543,7 +546,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	TextFilterResult: TextFilterResult;
 	TextFilterTranslatedResult: TextFilterTranslatedResult;
 	TextSource: TextSource;
-	TextureGuiExperimental: TextureGuiExperimental;
 	ThreadState: ThreadState;
 	TouchTransmitter: TouchTransmitter;
 	TrackerLodController: TrackerLodController;
@@ -2343,7 +2345,7 @@ interface AssetService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	PromptPublishAssetAsync(this: AssetService, player: Player, instance: Instance, assetType: CastsToEnum<Enum.AssetType>): unknown;
+	PromptCreateAssetAsync(this: AssetService, player: Player, instance: Instance, assetType: CastsToEnum<Enum.AssetType>): unknown;
 	/**
 	 * Saves the state of the current place. This will only work for places that have been created with [AssetService:CreatePlaceAsync](https://developer.roblox.com/en-us/api-reference/function/AssetService/CreatePlaceAsync) or [AssetService:CreatePlaceInPlayerInventoryAsync](https://developer.roblox.com/en-us/api-reference/function/AssetService/CreatePlaceInPlayerInventoryAsync).
 	 * 
@@ -3426,6 +3428,7 @@ interface RootImportData extends BaseImportData {
 	RestPose: Enum.RestPose;
 	RigScale: Enum.RigScale;
 	RigType: Enum.RigType;
+	RigVisualization: boolean;
 	ScaleUnit: Enum.MeshScaleUnit;
 	UseSceneOriginAsCFrame: boolean;
 	UseSceneOriginAsPivot: boolean;
@@ -8989,6 +8992,46 @@ interface CylinderMesh extends BevelMesh {
 	readonly _nominal_CylinderMesh: unique symbol;
 }
 
+interface DynamicMesh extends DataModelMesh {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DynamicMesh: unique symbol;
+	AddTriangle(this: DynamicMesh, vertexId0: number, vertexId1: number, vertexId2: number): number;
+	AddVertex(this: DynamicMesh, p: Vector3): number;
+	FindClosestPointOnSurface(this: DynamicMesh, point: Vector3): unknown;
+	FindClosestVertex(this: DynamicMesh, toThisPoint: Vector3): number;
+	FindVerticesWithinSphere(this: DynamicMesh, center: Vector3, radius: number): unknown;
+	GetAdjacentTriangles(this: DynamicMesh, triangleId: number): unknown;
+	GetAdjacentVertices(this: DynamicMesh, vertexId: number): unknown;
+	GetPosition(this: DynamicMesh, vertexId: number): Vector3;
+	GetTriangleVertices(this: DynamicMesh, triangleId: number): unknown;
+	GetTriangles(this: DynamicMesh): unknown;
+	GetUV(this: DynamicMesh, vertexId: number): Vector2;
+	GetVertexColor(this: DynamicMesh, vertexId: number): Color3;
+	GetVertexColorAlpha(this: DynamicMesh, vertexId: number): number;
+	GetVertexNormal(this: DynamicMesh, vertexId: number): Vector3;
+	GetVertices(this: DynamicMesh): unknown;
+	InitializeFromMeshIdAsync(this: DynamicMesh, meshId: string): void;
+	InitializeFromMeshPartAsync(this: DynamicMesh, meshPart: MeshPart): void;
+	Raycast(this: DynamicMesh, origin: Vector3, direction: Vector3): unknown;
+	RemoveTriangle(this: DynamicMesh, triangleId: number): void;
+	RemoveVertex(this: DynamicMesh, vertexId: number): void;
+	SetPosition(this: DynamicMesh, vertexId: number, p: Vector3): void;
+	SetUV(this: DynamicMesh, vertexId: number, uv: Vector2): void;
+	SetVertexColor(this: DynamicMesh, vertexId: number, color: Color3): void;
+	SetVertexColorAlpha(this: DynamicMesh, vertexId: number, alpha: number): void;
+	SetVertexNormal(this: DynamicMesh, vertexId: number, vnormal: Vector3): void;
+	/**
+	 * Tags: Yields
+	 */
+	CreateMeshPartAsync(this: DynamicMesh, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>): MeshPart;
+}
+
 /** The FileMesh object applies a textured mesh to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) when parented to it. Its properties are inherited by the [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh) object.
  * 
  * What is a FileMesh?
@@ -9036,40 +9079,6 @@ interface FileMesh extends DataModelMesh {
 	 * A mesh can only be textured if the mesh has been UV mapped. UV mapping refers to the practice of projecting a texture map onto a mesh. This cannot be done using Roblox Studio and has to be done using an external 3D modelling application such as [Blender](https://www.blender.org/).
 	 */
 	TextureId: string;
-}
-
-interface DynamicMesh extends FileMesh {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_DynamicMesh: unique symbol;
-	AddTriangle(this: DynamicMesh, vertexId0: number, vertexId1: number, vertexId2: number): number;
-	AddVertex(this: DynamicMesh, p: Vector3): number;
-	Clear(this: DynamicMesh): void;
-	GetPosition(this: DynamicMesh, vertexId: number): Vector3;
-	GetTriangleVertices(this: DynamicMesh, triangleId: number): unknown;
-	GetTriangles(this: DynamicMesh): unknown;
-	GetUV(this: DynamicMesh, vertexId: number): Vector2;
-	GetVertexColor(this: DynamicMesh, vertexId: number): Color3;
-	GetVertexColorAlpha(this: DynamicMesh, vertexId: number): number;
-	GetVertexNormal(this: DynamicMesh, vertexId: number): Vector3;
-	GetVertices(this: DynamicMesh): unknown;
-	InitializeFromMeshIdAsync(this: DynamicMesh, meshId: string): void;
-	InitializeFromMeshPartAsync(this: DynamicMesh, meshPart: MeshPart): void;
-	RemoveTriangle(this: DynamicMesh, triangleId: number): void;
-	SetPosition(this: DynamicMesh, vertexId: number, p: Vector3): void;
-	SetUV(this: DynamicMesh, vertexId: number, uv: Vector2): void;
-	SetVertexColor(this: DynamicMesh, vertexId: number, color: Color3): void;
-	SetVertexColorAlpha(this: DynamicMesh, vertexId: number, alpha: number): void;
-	SetVertexNormal(this: DynamicMesh, vertexId: number, vnormal: Vector3): void;
-	/**
-	 * Tags: Yields
-	 */
-	CreateMeshPartAsync(this: DynamicMesh, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>): MeshPart;
 }
 
 /** The SpecialMesh is an object that allows developers to provide a standard template or user uploaded mesh to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart).
@@ -9920,6 +9929,10 @@ interface DynamicImage extends Instance {
 	ReadPixels(this: DynamicImage, position: Vector2, size: Vector2): unknown;
 	Resize(this: DynamicImage, newSize: Vector2): void;
 	Rotate(this: DynamicImage, degrees: number, resizeCanvas?: boolean): void;
+	/**
+	 * Tags: CustomLuaState
+	 */
+	WritePixels(this: DynamicImage, position: Vector2, size: Vector2, pixels: Array<any>): void;
 }
 
 /** A EulerRotation Curve represents a 3D rotation curve, it groups 3 [FloatCurves](https://developer.roblox.com/en-us/api-reference/class/FloatCurve), stored as 3 FloatCurve child instances. The rotation is decomposed in 3 Euler angles channels that can be accessed via [EulerRotationCurve:X](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/X), [EulerRotationCurve:Y](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Y), [EulerRotationCurve:Z](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Z) methods. The 3 axes can be sampled simultaneously via the method [EulerRotationCurve:GetAnglesAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetAnglesAtTime) returning the 3 Euler angles as a Vector3. Similarly, [EulerRotationCurve:GetRotationAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetRotationAtTime) samples all channels simultaneously but returns a CFrame rotated by X, Y, and Z according to the specified rotation order. */
@@ -13910,18 +13923,6 @@ interface SurfaceGui extends SurfaceGuiBase {
 	 * Offsets the SurfaceGui relative to the normal of the surface it is attached to.
 	 */
 	ZOffset: number;
-}
-
-interface TextureGuiExperimental extends LayerCollector {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_TextureGuiExperimental: unique symbol;
-	Size: Vector2;
 }
 
 /** An abstract class for 3D GUI elements that are rendered in the world. */
@@ -21590,7 +21591,13 @@ interface MarketplaceService extends Instance {
 		equipIfPurchased?: boolean,
 		currencyType?: CastsToEnum<Enum.CurrencyType>,
 	): void;
+	/**
+	 * @deprecated
+	 */
 	PromptSubscriptionCancellation(this: MarketplaceService, player: Player, subscriptionId: number): void;
+	/**
+	 * @deprecated
+	 */
 	PromptSubscriptionPurchase(this: MarketplaceService, player: Player, subscriptionId: number): void;
 	/**
 	 * Returns a [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object which contains information for all of the current game's developer products.
@@ -21819,6 +21826,7 @@ interface MarketplaceService extends Instance {
 	): AssetProductInfo | BundleInfo | GamePassProductInfo | DeveloperProductInfo | SubscriptionProductInfo;
 	/**
 	 * Tags: Yields
+	 * @deprecated
 	 */
 	IsPlayerSubscribed(this: MarketplaceService, player: Player, subscriptionId: number): boolean;
 	/**
@@ -21927,7 +21935,13 @@ interface MarketplaceService extends Instance {
 	 * end)
 	 */
 	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
+	/**
+	 * @deprecated
+	 */
 	readonly PromptSubscriptionCancellationFinished: RBXScriptSignal<(player: Player, subscriptionId: number, wasCanceled: boolean) => void>;
+	/**
+	 * @deprecated
+	 */
 	readonly PromptSubscriptionPurchaseFinished: RBXScriptSignal<(player: Player, subscriptionId: number, wasPurchased: boolean) => void>;
 	ProcessReceipt: ((receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision) | undefined;
 }
@@ -21977,6 +21991,7 @@ interface MaterialVariant extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MaterialVariant: unique symbol;
+	BaseMaterial: Enum.Material;
 	CustomPhysicalProperties: PhysicalProperties;
 	MaterialPattern: Enum.MaterialPattern;
 	StudsPerTile: number;
@@ -22806,6 +22821,14 @@ interface OpenCloudApiV1 extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_OpenCloudApiV1: unique symbol;
+	/**
+	 * Tags: CustomLuaState
+	 */
+	CreateModel(this: OpenCloudApiV1, name: string): OpenCloudModel;
+	/**
+	 * Tags: Yields
+	 */
+	CreateUserNotificationAsync(this: OpenCloudApiV1, user: string, userNotification: OpenCloudModel): OpenCloudModel;
 }
 
 interface OpenCloudService extends Instance {
@@ -25650,7 +25673,6 @@ interface Workspace extends WorldRoot {
 	 * Tags: NotReplicated
 	 */
 	DistributedGameTime: number;
-	EnableFluidForces: boolean;
 	/**
 	 * This property determines the height at which falling [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) (and their ancestor [Models](https://developer.roblox.com/en-us/api-reference/class/Model)) are destroyed.
 	 * 
@@ -28203,6 +28225,17 @@ interface Players extends Instance {
 	readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
 }
 
+interface PluginCapabilities extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PluginCapabilities: unique symbol;
+}
+
 interface PluginManagementService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -29046,6 +29079,17 @@ interface ReplicatedStorage extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ReplicatedStorage: unique symbol;
+}
+
+interface RobloxServerStorage extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RobloxServerStorage: unique symbol;
 }
 
 interface RomarkService extends Instance {
@@ -31637,6 +31681,10 @@ interface StarterPlayer extends Instance {
 	 */
 	AutoJumpEnabled: boolean;
 	/**
+	 * Tags: NotBrowsable
+	 */
+	AvatarJointUpgrade: Enum.AvatarJointUpgrade;
+	/**
 	 * The CameraMaxZoomDistance [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) property sets the maximum distance in studs the camera can be from the character with the default cameras.
 	 * 
 	 * This property sets the default value of [Player.CameraMaxZoomDistance](https://developer.roblox.com/en-us/api-reference/property/Player/CameraMaxZoomDistance) for each player who joins the game. If this value is set to a lower value than [StarterPlayer.CameraMinZoomDistance](https://developer.roblox.com/en-us/api-reference/property/StarterPlayer/CameraMinZoomDistance) it will be increased to CameraMinZoomDistance.
@@ -31714,6 +31762,10 @@ interface StarterPlayer extends Instance {
 	 * Since this property is only relevant for characters being spawned in the future, changing it will not change any existing player characters. Changes to this property will only take effect when a player respawns.
 	 */
 	CharacterWalkSpeed: number;
+	/**
+	 * Tags: NotBrowsable
+	 */
+	DeathStyle: Enum.DeathStyle;
 	/**
 	 * The DevCameraOcclusionMode [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) property sets how the default camera handles objects between the camera and the player.
 	 * 
@@ -33459,6 +33511,7 @@ interface TextChatMessage extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TextChatMessage: unique symbol;
+	BubbleChatMessageProperties: BubbleChatMessageProperties | undefined;
 	MessageId: string;
 	Metadata: string;
 	PrefixText: string;
@@ -33503,9 +33556,10 @@ interface TextChatService extends Instance {
 	 * Tags: Yields
 	 */
 	CanUsersChatAsync(this: TextChatService, userIdFrom: number, userIdTo: number): boolean;
-	readonly BubbleDisplayed: RBXScriptSignal<(part: BasePart, message: string) => void>;
+	readonly BubbleDisplayed: RBXScriptSignal<(partOrCharacter: BasePart | Model, textChatMessage: TextChatMessage) => void>;
 	readonly MessageReceived: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
 	readonly SendingMessage: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
+	OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => Array<any>;
 	OnIncomingMessage: (message: TextChatMessage) => Array<any>;
 }
 
@@ -36851,6 +36905,17 @@ interface VRService extends Instance {
 	 * Since the event fires locally, it can only be used in a `/LocalScript`.
 	 */
 	readonly UserCFrameEnabled: RBXScriptSignal<(type: Enum.UserCFrame, enabled: boolean) => void>;
+}
+
+interface VRStatusService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VRStatusService: unique symbol;
 }
 
 /** Base class of all 'Value Instance' objects. */

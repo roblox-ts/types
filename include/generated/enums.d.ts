@@ -291,27 +291,6 @@ declare namespace Enum {
 	}
 	export type ActuatorType = ActuatorType.None | ActuatorType.Motor | ActuatorType.Servo;
 
-	export namespace AdPortalType {
-		export interface Forward extends globalThis.EnumItem {
-			Name: "Forward";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.AdPortalType;
-		}
-
-		export const Forward: Forward;
-
-		export interface Return extends globalThis.EnumItem {
-			Name: "Return";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.AdPortalType;
-		}
-
-		export const Return: Return;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdPortalType>;
-	}
-	export type AdPortalType = AdPortalType.Forward | AdPortalType.Return;
-
 	export namespace AdShape {
 		export interface HorizontalRectangle extends globalThis.EnumItem {
 			Name: "HorizontalRectangle";
@@ -342,17 +321,9 @@ declare namespace Enum {
 
 		export const PortalForward: PortalForward;
 
-		export interface PortalReturn extends globalThis.EnumItem {
-			Name: "PortalReturn";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.AdTeleportMethod;
-		}
-
-		export const PortalReturn: PortalReturn;
-
 		export interface InGameMenuBackButton extends globalThis.EnumItem {
 			Name: "InGameMenuBackButton";
-			Value: 3;
+			Value: 2;
 			EnumType: typeof globalThis.Enum.AdTeleportMethod;
 		}
 
@@ -360,7 +331,7 @@ declare namespace Enum {
 
 		export interface UIBackButton extends globalThis.EnumItem {
 			Name: "UIBackButton";
-			Value: 4;
+			Value: 3;
 			EnumType: typeof globalThis.Enum.AdTeleportMethod;
 		}
 
@@ -368,7 +339,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdTeleportMethod>;
 	}
-	export type AdTeleportMethod = AdTeleportMethod.Undefined | AdTeleportMethod.PortalForward | AdTeleportMethod.PortalReturn | AdTeleportMethod.InGameMenuBackButton | AdTeleportMethod.UIBackButton;
+	export type AdTeleportMethod = AdTeleportMethod.Undefined | AdTeleportMethod.PortalForward | AdTeleportMethod.InGameMenuBackButton | AdTeleportMethod.UIBackButton;
 
 	export namespace AdUnitStatus {
 		export interface Inactive extends globalThis.EnumItem {
@@ -2023,6 +1994,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarItemType>;
 	}
 	export type AvatarItemType = AvatarItemType.Asset | AvatarItemType.Bundle;
+
+	export namespace AvatarJointUpgrade {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AvatarJointUpgrade;
+		}
+
+		export const Default: Default;
+
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AvatarJointUpgrade;
+		}
+
+		export const Enabled: Enabled;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AvatarJointUpgrade;
+		}
+
+		export const Disabled: Disabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarJointUpgrade>;
+	}
+	export type AvatarJointUpgrade = AvatarJointUpgrade.Default | AvatarJointUpgrade.Enabled | AvatarJointUpgrade.Disabled;
 
 	export namespace AvatarPromptResult {
 		export interface Success extends globalThis.EnumItem {
@@ -4730,6 +4730,43 @@ declare namespace Enum {
 	}
 	export type DataStoreRequestType = DataStoreRequestType.GetAsync | DataStoreRequestType.SetIncrementAsync | DataStoreRequestType.UpdateAsync | DataStoreRequestType.GetSortedAsync | DataStoreRequestType.SetIncrementSortedAsync | DataStoreRequestType.OnUpdate;
 
+	export namespace DeathStyle {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.DeathStyle;
+		}
+
+		export const Default: Default;
+
+		export interface ClassicBreakApart extends globalThis.EnumItem {
+			Name: "ClassicBreakApart";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.DeathStyle;
+		}
+
+		export const ClassicBreakApart: ClassicBreakApart;
+
+		export interface NonGraphic extends globalThis.EnumItem {
+			Name: "NonGraphic";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.DeathStyle;
+		}
+
+		export const NonGraphic: NonGraphic;
+
+		export interface Scriptable extends globalThis.EnumItem {
+			Name: "Scriptable";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.DeathStyle;
+		}
+
+		export const Scriptable: Scriptable;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeathStyle>;
+	}
+	export type DeathStyle = DeathStyle.Default | DeathStyle.ClassicBreakApart | DeathStyle.NonGraphic | DeathStyle.Scriptable;
+
 	export namespace DebuggerEndReason {
 		export interface ClientRequest extends globalThis.EnumItem {
 			Name: "ClientRequest";
@@ -6091,6 +6128,27 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FinishRecordingOperation>;
 	}
 	export type FinishRecordingOperation = FinishRecordingOperation.Cancel | FinishRecordingOperation.Commit | FinishRecordingOperation.Append;
+
+	export namespace FluidForces {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.FluidForces;
+		}
+
+		export const Default: Default;
+
+		export interface Experimental extends globalThis.EnumItem {
+			Name: "Experimental";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.FluidForces;
+		}
+
+		export const Experimental: Experimental;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FluidForces>;
+	}
+	export type FluidForces = FluidForces.Default | FluidForces.Experimental;
 
 	export namespace Font {
 		export interface Legacy extends globalThis.EnumItem {
@@ -12833,6 +12891,59 @@ declare namespace Enum {
 	}
 	export type ProductPurchaseDecision = ProductPurchaseDecision.NotProcessedYet | ProductPurchaseDecision.PurchaseGranted;
 
+	export namespace PromptCreateAssetResult {
+		export interface Success extends globalThis.EnumItem {
+			Name: "Success";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.PromptCreateAssetResult;
+		}
+
+		export const Success: Success;
+
+		export interface PermissionDenied extends globalThis.EnumItem {
+			Name: "PermissionDenied";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.PromptCreateAssetResult;
+		}
+
+		export const PermissionDenied: PermissionDenied;
+
+		export interface Timeout extends globalThis.EnumItem {
+			Name: "Timeout";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.PromptCreateAssetResult;
+		}
+
+		export const Timeout: Timeout;
+
+		export interface UploadFailed extends globalThis.EnumItem {
+			Name: "UploadFailed";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.PromptCreateAssetResult;
+		}
+
+		export const UploadFailed: UploadFailed;
+
+		export interface NoUserInput extends globalThis.EnumItem {
+			Name: "NoUserInput";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.PromptCreateAssetResult;
+		}
+
+		export const NoUserInput: NoUserInput;
+
+		export interface UnknownFailure extends globalThis.EnumItem {
+			Name: "UnknownFailure";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.PromptCreateAssetResult;
+		}
+
+		export const UnknownFailure: UnknownFailure;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PromptCreateAssetResult>;
+	}
+	export type PromptCreateAssetResult = PromptCreateAssetResult.Success | PromptCreateAssetResult.PermissionDenied | PromptCreateAssetResult.Timeout | PromptCreateAssetResult.UploadFailed | PromptCreateAssetResult.NoUserInput | PromptCreateAssetResult.UnknownFailure;
+
 	export namespace PromptPublishAssetResult {
 		export interface Success extends globalThis.EnumItem {
 			Name: "Success";
@@ -18845,6 +18956,43 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VibrationMotor>;
 	}
 	export type VibrationMotor = VibrationMotor.Large | VibrationMotor.Small | VibrationMotor.LeftTrigger | VibrationMotor.RightTrigger | VibrationMotor.LeftHand | VibrationMotor.RightHand;
+
+	export namespace ViewMode {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.ViewMode;
+		}
+
+		export const None: None;
+
+		export interface GeometryComplexity extends globalThis.EnumItem {
+			Name: "GeometryComplexity";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ViewMode;
+		}
+
+		export const GeometryComplexity: GeometryComplexity;
+
+		export interface Transparent extends globalThis.EnumItem {
+			Name: "Transparent";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ViewMode;
+		}
+
+		export const Transparent: Transparent;
+
+		export interface Decal extends globalThis.EnumItem {
+			Name: "Decal";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.ViewMode;
+		}
+
+		export const Decal: Decal;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ViewMode>;
+	}
+	export type ViewMode = ViewMode.None | ViewMode.GeometryComplexity | ViewMode.Transparent | ViewMode.Decal;
 
 	export namespace VirtualCursorMode {
 		export interface Default extends globalThis.EnumItem {
