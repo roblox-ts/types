@@ -972,6 +972,11 @@ interface TextService extends Instance {
 	): TextFilterResult;
 }
 
+interface TextChatService extends Instance {
+	/** @client */
+	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
+}
+
 interface TweenService extends Instance {
 	Create<T extends Instance>(
 		this: TweenService,
