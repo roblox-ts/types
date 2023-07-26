@@ -1825,6 +1825,17 @@ interface NumberSequenceKeypointConstructor {
 }
 declare const NumberSequenceKeypoint: NumberSequenceKeypointConstructor;
 
+interface OpenCloudModel {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_OpenCloudModel: unique symbol;
+}
+
 // OverlapParams
 interface OverlapParams {
 	/**
