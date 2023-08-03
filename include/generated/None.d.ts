@@ -174,6 +174,21 @@ interface CreatableInstances {
 	ArcHandles: ArcHandles;
 	Atmosphere: Atmosphere;
 	Attachment: Attachment;
+	AudioAnalyzer: AudioAnalyzer;
+	AudioChorus: AudioChorus;
+	AudioCompressor: AudioCompressor;
+	AudioDeviceInput: AudioDeviceInput;
+	AudioDeviceOutput: AudioDeviceOutput;
+	AudioDistortion: AudioDistortion;
+	AudioEcho: AudioEcho;
+	AudioEmitter: AudioEmitter;
+	AudioEqualizer: AudioEqualizer;
+	AudioFader: AudioFader;
+	AudioFlanger: AudioFlanger;
+	AudioListener: AudioListener;
+	AudioPitchShifter: AudioPitchShifter;
+	AudioPlayer: AudioPlayer;
+	AudioReverb: AudioReverb;
 	AudioSearchParams: AudioSearchParams;
 	Backpack: Backpack;
 	BallSocketConstraint: BallSocketConstraint;
@@ -394,6 +409,7 @@ interface CreatableInstances {
 	WedgePart: WedgePart;
 	Weld: Weld;
 	WeldConstraint: WeldConstraint;
+	Wire: Wire;
 	WireframeHandleAdornment: WireframeHandleAdornment;
 	WorldModel: WorldModel;
 	WrapLayer: WrapLayer;
@@ -2624,6 +2640,240 @@ interface Bone extends Attachment {
 	 * Tags: NotReplicated
 	 */
 	readonly TransformedWorldCFrame: CFrame;
+}
+
+interface AudioAnalyzer extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioAnalyzer: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly PeakLevel: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly RmsLevel: number;
+}
+
+interface AudioChorus extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioChorus: unique symbol;
+	Depth: number;
+	Mix: number;
+	Rate: number;
+}
+
+interface AudioCompressor extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioCompressor: unique symbol;
+	Attack: number;
+	MakeupGain: number;
+	Ratio: number;
+	Release: number;
+	Threshold: number;
+}
+
+interface AudioDeviceInput extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioDeviceInput: unique symbol;
+	AccessType: Enum.AccessModifierType;
+	readonly Active: boolean;
+	Muted: boolean;
+	Player: Player | undefined;
+	GetUserIdAccessList(this: AudioDeviceInput): unknown;
+	SetUserIdAccessList(this: AudioDeviceInput, userIds: Array<any>): void;
+}
+
+interface AudioDeviceOutput extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioDeviceOutput: unique symbol;
+	Player: Player | undefined;
+}
+
+interface AudioDistortion extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioDistortion: unique symbol;
+	Level: number;
+}
+
+interface AudioEcho extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioEcho: unique symbol;
+	DelayTime: number;
+	DryLevel: number;
+	Feedback: number;
+	WetLevel: number;
+}
+
+interface AudioEmitter extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioEmitter: unique symbol;
+	AudioInteractionGroup: string;
+}
+
+interface AudioEqualizer extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioEqualizer: unique symbol;
+	HighGain: number;
+	LowGain: number;
+	MidGain: number;
+	MidRange: NumberRange;
+}
+
+interface AudioFader extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioFader: unique symbol;
+	Volume: number;
+}
+
+interface AudioFlanger extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioFlanger: unique symbol;
+	Depth: number;
+	Mix: number;
+	Rate: number;
+}
+
+interface AudioListener extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioListener: unique symbol;
+	AudioInteractionGroup: string;
+}
+
+interface AudioPitchShifter extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioPitchShifter: unique symbol;
+	Pitch: number;
+}
+
+interface AudioPlayer extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioPlayer: unique symbol;
+	AssetId: string;
+	AutoLoad: boolean;
+	readonly IsPlaying: boolean;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly IsReady: boolean;
+	LoopRegion: NumberRange;
+	Looping: boolean;
+	PlaybackRegion: NumberRange;
+	PlaybackSpeed: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly TimeLength: number;
+	TimePosition: number;
+	Play(this: AudioPlayer): void;
+	Stop(this: AudioPlayer): void;
+}
+
+interface AudioReverb extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioReverb: unique symbol;
+	DecayRatio: number;
+	DecayTime: number;
+	Density: number;
+	Diffusion: number;
+	DryLevel: number;
+	EarlyDelayTime: number;
+	HighCutFrequency: number;
+	LateDelayTime: number;
+	LowShelfFrequency: number;
+	LowShelfGain: number;
+	ReferenceFrequency: number;
+	WetLevel: number;
 }
 
 interface AudioSearchParams extends Instance {
@@ -7059,6 +7309,10 @@ interface AlignOrientation extends Constraint {
 	 */
 	CFrame: CFrame;
 	/**
+	 * Tags: NotReplicated
+	 */
+	LookAtPosition: Vector3;
+	/**
 	 * The maximum angular velocity the constraint can use to reach its goal.
 	 */
 	MaxAngularVelocity: number;
@@ -7160,8 +7414,6 @@ interface AlignPosition extends Constraint {
 	ApplyAtCenterOfMass: boolean;
 	/**
 	 * Selects the mode for force limit. Options Uniform or Per-component
-	 * 
-	 * Tags: NotBrowsable
 	 */
 	ForceLimitMode: Enum.ForceLimitMode;
 	ForceRelativeTo: Enum.ActuatorRelativeTo;
@@ -9922,7 +10174,7 @@ interface DynamicImage extends Instance {
 	readonly _nominal_DynamicImage: unique symbol;
 	Size: Vector2;
 	Clear(this: DynamicImage): void;
-	DrawCircle(this: DynamicImage, center: Vector2, radius: number, color: Color3, alpha: number): void;
+	DrawCircle(this: DynamicImage, center: Vector2, radius: number, color: Color3, transparency: number): void;
 	/**
 	 * Tags: CustomLuaState
 	 */
@@ -11485,6 +11737,10 @@ interface GuiObject extends GuiBase2d {
 	 * @deprecated
 	 */
 	Draggable: boolean;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly GuiState: Enum.GuiState;
 	/**
 	 * This property controls the sorting order of a [GUI](https://developer.roblox.com/en-us/api-reference/class/GuiObject) when using a [UIGridStyleLayout](https://developer.roblox.com/en-us/api-reference/class/UIGridStyleLayout) (such as [UIListLayout](https://developer.roblox.com/en-us/api-reference/class/UIListLayout) or [UIPageLayout](https://developer.roblox.com/en-us/api-reference/class/UIPageLayout)) with [UIGridStyleLayout.SortOrder](https://developer.roblox.com/en-us/api-reference/property/UIGridStyleLayout/SortOrder) set to [Enum.SortOrder.LayoutOrder](https://developer.roblox.com/en-us/api-reference/enum/SortOrder). It has no functionality if the GUI does not have a sibling UI Layout.
 	 * 
@@ -23888,14 +24144,6 @@ interface BasePart extends PVInstance {
 		collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>,
 	): UnionOperation;
 	/**
-	 * Tags: Yields
-	 */
-	subtractAsync2_INTERNAL(this: BasePart, parts: Array<Instance>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>, renderFidelity?: CastsToEnum<Enum.RenderFidelity>): Array<Instance>;
-	/**
-	 * Tags: Yields
-	 */
-	unionAsync2_INTERNAL(this: BasePart, parts: Array<Instance>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>, renderFidelity?: CastsToEnum<Enum.RenderFidelity>): Array<Instance>;
-	/**
 	 * Fired when another part comes in contact with another object. This event only sends data to the client notifying it that two parts have collided, whereas [BasePart.Touched](https://developer.roblox.com/en-us/api-reference/event/BasePart/Touched) sends data to the server.
 	 * @deprecated
 	 */
@@ -33453,6 +33701,7 @@ interface ChatInputBarConfiguration extends TextChatConfigurations {
 	 * Tags: NotReplicated
 	 */
 	readonly AbsoluteSize: Vector2;
+	AutocompleteEnabled: boolean;
 	BackgroundColor3: Color3;
 	BackgroundTransparency: number;
 	Enabled: boolean;
@@ -37638,5 +37887,24 @@ interface WeldConstraint extends Instance {
 	 * Tags: NotReplicated
 	 */
 	Part1: BasePart | undefined;
+}
+
+interface Wire extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Wire: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly Connected: boolean;
+	SourceInstance: Instance | undefined;
+	SourceName: string;
+	TargetInstance: Instance | undefined;
+	TargetName: string;
 }
 

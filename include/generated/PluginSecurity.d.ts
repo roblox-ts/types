@@ -2782,6 +2782,7 @@ interface RenderSettings extends Instance {
 	 * Sets the graphics quality level in Roblox Studio, when [RenderSettings.EnableFRM](https://developer.roblox.com/en-us/api-reference/property/RenderSettings/EnableFRM) is set to false.
 	 */
 	EditQualityLevel: Enum.QualityLevel;
+	["Enable VR Mode"]: boolean;
 	/**
 	 * Toggles the enabled state of the framerate manager.
 	 * 
