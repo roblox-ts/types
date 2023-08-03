@@ -21,6 +21,27 @@ interface Enum {
 declare namespace Enum {
 	export function GetEnums(this: Enums): Array<Enum>;
 
+	export namespace AccessModifierType {
+		export interface Allow extends globalThis.EnumItem {
+			Name: "Allow";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AccessModifierType;
+		}
+
+		export const Allow: Allow;
+
+		export interface Deny extends globalThis.EnumItem {
+			Name: "Deny";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AccessModifierType;
+		}
+
+		export const Deny: Deny;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AccessModifierType>;
+	}
+	export type AccessModifierType = AccessModifierType.Allow | AccessModifierType.Deny;
+
 	export namespace AccessoryType {
 		export interface Unknown extends globalThis.EnumItem {
 			Name: "Unknown";
@@ -1458,6 +1479,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioSubType>;
 	}
 	export type AudioSubType = AudioSubType.Music | AudioSubType.SoundEffect;
+
+	export namespace AudioWindowSize {
+		export interface Small extends globalThis.EnumItem {
+			Name: "Small";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AudioWindowSize;
+		}
+
+		export const Small: Small;
+
+		export interface Medium extends globalThis.EnumItem {
+			Name: "Medium";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AudioWindowSize;
+		}
+
+		export const Medium: Medium;
+
+		export interface Large extends globalThis.EnumItem {
+			Name: "Large";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AudioWindowSize;
+		}
+
+		export const Large: Large;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioWindowSize>;
+	}
+	export type AudioWindowSize = AudioWindowSize.Small | AudioWindowSize.Medium | AudioWindowSize.Large;
 
 	export namespace AutoIndentRule {
 		export interface Off extends globalThis.EnumItem {
@@ -7322,6 +7372,35 @@ declare namespace Enum {
 	}
 	export type GraphicsMode = GraphicsMode.Automatic | GraphicsMode.Direct3D11 | GraphicsMode.OpenGL | GraphicsMode.Metal | GraphicsMode.Vulkan | GraphicsMode.NoGraphics;
 
+	export namespace GuiState {
+		export interface Idle extends globalThis.EnumItem {
+			Name: "Idle";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.GuiState;
+		}
+
+		export const Idle: Idle;
+
+		export interface Hover extends globalThis.EnumItem {
+			Name: "Hover";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.GuiState;
+		}
+
+		export const Hover: Hover;
+
+		export interface Press extends globalThis.EnumItem {
+			Name: "Press";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.GuiState;
+		}
+
+		export const Press: Press;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GuiState>;
+	}
+	export type GuiState = GuiState.Idle | GuiState.Hover | GuiState.Press;
+
 	export namespace GuiType {
 		export interface Core extends globalThis.EnumItem {
 			Name: "Core";
@@ -11081,9 +11160,73 @@ declare namespace Enum {
 
 		export const ForceField: ForceField;
 
+		export interface Cardboard extends globalThis.EnumItem {
+			Name: "Cardboard";
+			Value: 2304;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Cardboard: Cardboard;
+
+		export interface Carpet extends globalThis.EnumItem {
+			Name: "Carpet";
+			Value: 2305;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Carpet: Carpet;
+
+		export interface CeramicTiles extends globalThis.EnumItem {
+			Name: "CeramicTiles";
+			Value: 2306;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const CeramicTiles: CeramicTiles;
+
+		export interface ClayRoofTiles extends globalThis.EnumItem {
+			Name: "ClayRoofTiles";
+			Value: 2307;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const ClayRoofTiles: ClayRoofTiles;
+
+		export interface RoofShingles extends globalThis.EnumItem {
+			Name: "RoofShingles";
+			Value: 2308;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const RoofShingles: RoofShingles;
+
+		export interface Leather extends globalThis.EnumItem {
+			Name: "Leather";
+			Value: 2309;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Leather: Leather;
+
+		export interface Plaster extends globalThis.EnumItem {
+			Name: "Plaster";
+			Value: 2310;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Plaster: Plaster;
+
+		export interface Rubber extends globalThis.EnumItem {
+			Name: "Rubber";
+			Value: 2311;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Rubber: Rubber;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Material>;
 	}
-	export type Material = Material.Plastic | Material.Wood | Material.Slate | Material.Concrete | Material.CorrodedMetal | Material.DiamondPlate | Material.Foil | Material.Grass | Material.Ice | Material.Marble | Material.Granite | Material.Brick | Material.Pebble | Material.Sand | Material.Fabric | Material.SmoothPlastic | Material.Metal | Material.WoodPlanks | Material.Cobblestone | Material.Air | Material.Water | Material.Rock | Material.Glacier | Material.Snow | Material.Sandstone | Material.Mud | Material.Basalt | Material.Ground | Material.CrackedLava | Material.Neon | Material.Glass | Material.Asphalt | Material.LeafyGrass | Material.Salt | Material.Limestone | Material.Pavement | Material.ForceField;
+	export type Material = Material.Plastic | Material.Wood | Material.Slate | Material.Concrete | Material.CorrodedMetal | Material.DiamondPlate | Material.Foil | Material.Grass | Material.Ice | Material.Marble | Material.Granite | Material.Brick | Material.Pebble | Material.Sand | Material.Fabric | Material.SmoothPlastic | Material.Metal | Material.WoodPlanks | Material.Cobblestone | Material.Air | Material.Water | Material.Rock | Material.Glacier | Material.Snow | Material.Sandstone | Material.Mud | Material.Basalt | Material.Ground | Material.CrackedLava | Material.Neon | Material.Glass | Material.Asphalt | Material.LeafyGrass | Material.Salt | Material.Limestone | Material.Pavement | Material.ForceField | Material.Cardboard | Material.Carpet | Material.CeramicTiles | Material.ClayRoofTiles | Material.RoofShingles | Material.Leather | Material.Plaster | Material.Rubber;
 
 	export namespace MaterialPattern {
 		export interface Regular extends globalThis.EnumItem {
