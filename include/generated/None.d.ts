@@ -23,6 +23,8 @@ interface Services {
 	CalloutService: CalloutService;
 	CaptureService: CaptureService;
 	Chat: Chat;
+	ChatbotUIService: ChatbotUIService;
+	CollaboratorsService: CollaboratorsService;
 	CollectionService: CollectionService;
 	CommandService: CommandService;
 	ConfigureServerService: ConfigureServerService;
@@ -83,6 +85,7 @@ interface Services {
 	PhysicsService: PhysicsService;
 	PlacesService: PlacesService;
 	PlaceStatsService: PlaceStatsService;
+	PlatformFriendsService: PlatformFriendsService;
 	Players: Players;
 	PluginManagementService: PluginManagementService;
 	PluginPolicyService: PluginPolicyService;
@@ -484,6 +487,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	ChatInputBarConfiguration: ChatInputBarConfiguration;
 	ChatWindowConfiguration: ChatWindowConfiguration;
 	CloudLocalizationTable: CloudLocalizationTable;
+	Collaborator: Collaborator;
 	CommandInstance: CommandInstance;
 	ControllerBase: ControllerBase;
 	ControllerSensor: ControllerSensor;
@@ -2659,6 +2663,10 @@ interface AudioAnalyzer extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly RmsLevel: number;
+	/**
+	 * Tags: CustomLuaState
+	 */
+	GetSpectrum(this: AudioAnalyzer): unknown;
 }
 
 interface AudioChorus extends Instance {
@@ -6812,6 +6820,17 @@ interface Chat extends Instance {
 	readonly Chatted: RBXScriptSignal<(part: BasePart, message: string, color: Enum.ChatColor) => void>;
 }
 
+interface ChatbotUIService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ChatbotUIService: unique symbol;
+}
+
 /** ![](https://developer.roblox.com/assets/blt0ae8e57f698df61c/ClickDetector.png) ![](https://developer.roblox.com/assets/bltdd49f2456410d52e/ClickDetector2.png)
  * 
  * **ClickDetector** allows [Scripts](https://developer.roblox.com/en-us/api-reference/class/Script) and [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) to receive pointer input on 3D objects through their [MouseClick](https://developer.roblox.com/en-us/api-reference/event/ClickDetector/MouseClick) event. They work when parented to [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart), [Model](https://developer.roblox.com/en-us/api-reference/class/Model) or [Folder](https://developer.roblox.com/en-us/api-reference/class/Folder) objects. They detect basic mouse events: enter, leave, left click and right click. Touch input on [TouchEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/TouchEnabled) devices also fires click events.
@@ -6998,6 +7017,31 @@ interface Clouds extends Instance {
 	 * This property toggles rendering of the [Clouds](https://developer.roblox.com/en-us/api-reference/class/Clouds) object. Useful for toggling on/off different [Clouds](https://developer.roblox.com/en-us/api-reference/class/Clouds) objects that exist in the same place.
 	 */
 	Enabled: boolean;
+}
+
+interface Collaborator extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Collaborator: unique symbol;
+	CFrame: CFrame;
+	UserId: number;
+	Username: string;
+}
+
+interface CollaboratorsService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CollaboratorsService: unique symbol;
 }
 
 /** The [CollectionService](https://developer.roblox.com/en-us/api-reference/class/CollectionService) manages groups (collections) of instances with tags. Tags are sets of strings applied to objects that replicate from the server to the client and in Team Create. They are also serialized when places are saved. At the moment, tags are not visible within Roblox Studio except with the use of a tag-editing plugin.
@@ -11741,6 +11785,7 @@ interface GuiObject extends GuiBase2d {
 	 * Tags: NotReplicated
 	 */
 	readonly GuiState: Enum.GuiState;
+	Interactable: boolean;
 	/**
 	 * This property controls the sorting order of a [GUI](https://developer.roblox.com/en-us/api-reference/class/GuiObject) when using a [UIGridStyleLayout](https://developer.roblox.com/en-us/api-reference/class/UIGridStyleLayout) (such as [UIListLayout](https://developer.roblox.com/en-us/api-reference/class/UIListLayout) or [UIPageLayout](https://developer.roblox.com/en-us/api-reference/class/UIPageLayout)) with [UIGridStyleLayout.SortOrder](https://developer.roblox.com/en-us/api-reference/property/UIGridStyleLayout/SortOrder) set to [Enum.SortOrder.LayoutOrder](https://developer.roblox.com/en-us/api-reference/enum/SortOrder). It has no functionality if the GUI does not have a sibling UI Layout.
 	 * 
@@ -21848,14 +21893,6 @@ interface MarketplaceService extends Instance {
 		currencyType?: CastsToEnum<Enum.CurrencyType>,
 	): void;
 	/**
-	 * @deprecated
-	 */
-	PromptSubscriptionCancellation(this: MarketplaceService, player: Player, subscriptionId: number): void;
-	/**
-	 * @deprecated
-	 */
-	PromptSubscriptionPurchase(this: MarketplaceService, player: Player, subscriptionId: number): void;
-	/**
 	 * Returns a [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object which contains information for all of the current game's developer products.
 	 * 
 	 * Tags: Yields
@@ -22081,11 +22118,6 @@ interface MarketplaceService extends Instance {
 		infoType?: CastsToEnum<Enum.InfoType>,
 	): AssetProductInfo | BundleInfo | GamePassProductInfo | DeveloperProductInfo | SubscriptionProductInfo;
 	/**
-	 * Tags: Yields
-	 * @deprecated
-	 */
-	IsPlayerSubscribed(this: MarketplaceService, player: Player, subscriptionId: number): boolean;
-	/**
 	 * Returns whether the inventory of given [Player](https://developer.roblox.com/en-us/api-reference/class/Player) contains an asset, given the ID. This method can query for hats, models, sounds, etc. This function takes a small amount of time to send a request the Roblox website.
 	 * 
 	 * In the case that a query fails, this function will throw an error. Therefore, it is recommended to wrap calls to this function in `pcall`.
@@ -22191,14 +22223,6 @@ interface MarketplaceService extends Instance {
 	 * end)
 	 */
 	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
-	/**
-	 * @deprecated
-	 */
-	readonly PromptSubscriptionCancellationFinished: RBXScriptSignal<(player: Player, subscriptionId: number, wasCanceled: boolean) => void>;
-	/**
-	 * @deprecated
-	 */
-	readonly PromptSubscriptionPurchaseFinished: RBXScriptSignal<(player: Player, subscriptionId: number, wasPurchased: boolean) => void>;
 	ProcessReceipt: ((receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision) | undefined;
 }
 
@@ -27145,6 +27169,17 @@ interface PlacesService extends Instance {
 	readonly _nominal_PlacesService: unique symbol;
 }
 
+interface PlatformFriendsService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PlatformFriendsService: unique symbol;
+}
+
 /** A Player object a client that is currently connected. These objects are added to the [Players](https://developer.roblox.com/en-us/api-reference/class/Players) service when a new player connects, then removed when they eventually disconnect from the server.
  * 
  * The [Instance.Name](https://developer.roblox.com/en-us/api-reference/property/Instance/Name) property reflects the player's username. When saving information about a player, you should use their [Player.UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) since it is possible that a player can change their username.
@@ -31929,7 +31964,7 @@ interface StarterPlayer extends Instance {
 	 */
 	AutoJumpEnabled: boolean;
 	/**
-	 * Tags: NotBrowsable
+	 * Tags: NotReplicated, NotBrowsable
 	 */
 	AvatarJointUpgrade: Enum.AvatarJointUpgrade;
 	/**
