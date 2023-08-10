@@ -3819,9 +3819,25 @@ declare namespace Enum {
 
 		export const ClientServerBoundaryViolation: ClientServerBoundaryViolation;
 
+		export interface Invalidated extends globalThis.EnumItem {
+			Name: "Invalidated";
+			Value: 10;
+			EnumType: typeof globalThis.Enum.CompletionItemTag;
+		}
+
+		export const Invalidated: Invalidated;
+
+		export interface PutCursorBeforeEnd extends globalThis.EnumItem {
+			Name: "PutCursorBeforeEnd";
+			Value: 11;
+			EnumType: typeof globalThis.Enum.CompletionItemTag;
+		}
+
+		export const PutCursorBeforeEnd: PutCursorBeforeEnd;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CompletionItemTag>;
 	}
-	export type CompletionItemTag = CompletionItemTag.Deprecated | CompletionItemTag.IncorrectIndexType | CompletionItemTag.PluginPermissions | CompletionItemTag.CommandLinePermissions | CompletionItemTag.RobloxPermissions | CompletionItemTag.AddParens | CompletionItemTag.PutCursorInParens | CompletionItemTag.TypeCorrect | CompletionItemTag.ClientServerBoundaryViolation;
+	export type CompletionItemTag = CompletionItemTag.Deprecated | CompletionItemTag.IncorrectIndexType | CompletionItemTag.PluginPermissions | CompletionItemTag.CommandLinePermissions | CompletionItemTag.RobloxPermissions | CompletionItemTag.AddParens | CompletionItemTag.PutCursorInParens | CompletionItemTag.TypeCorrect | CompletionItemTag.ClientServerBoundaryViolation | CompletionItemTag.Invalidated | CompletionItemTag.PutCursorBeforeEnd;
 
 	export namespace CompletionTriggerKind {
 		export interface Invoked extends globalThis.EnumItem {
@@ -7397,9 +7413,17 @@ declare namespace Enum {
 
 		export const Press: Press;
 
+		export interface NonInteractable extends globalThis.EnumItem {
+			Name: "NonInteractable";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.GuiState;
+		}
+
+		export const NonInteractable: NonInteractable;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GuiState>;
 	}
-	export type GuiState = GuiState.Idle | GuiState.Hover | GuiState.Press;
+	export type GuiState = GuiState.Idle | GuiState.Hover | GuiState.Press | GuiState.NonInteractable;
 
 	export namespace GuiType {
 		export interface Core extends globalThis.EnumItem {
