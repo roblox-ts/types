@@ -3438,6 +3438,11 @@ declare namespace Enum {
 	}
 	export type ClientAnimatorThrottlingMode = ClientAnimatorThrottlingMode.Default | ClientAnimatorThrottlingMode.Disabled | ClientAnimatorThrottlingMode.Enabled;
 
+	export namespace CollaboratorStatus {
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CollaboratorStatus>;
+	}
+	export type CollaboratorStatus = never;
+
 	export namespace CollisionFidelity {
 		export interface Default extends globalThis.EnumItem {
 			Name: "Default";
@@ -3471,17 +3476,9 @@ declare namespace Enum {
 
 		export const PreciseConvexDecomposition: PreciseConvexDecomposition;
 
-		export interface DynamicPreciseConvexDecomposition extends globalThis.EnumItem {
-			Name: "DynamicPreciseConvexDecomposition";
-			Value: 4;
-			EnumType: typeof globalThis.Enum.CollisionFidelity;
-		}
-
-		export const DynamicPreciseConvexDecomposition: DynamicPreciseConvexDecomposition;
-
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CollisionFidelity>;
 	}
-	export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition | CollisionFidelity.DynamicPreciseConvexDecomposition;
+	export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition;
 
 	export namespace CommandPermission {
 		export interface Plugin extends globalThis.EnumItem {
@@ -14070,9 +14067,17 @@ declare namespace Enum {
 
 		export const None: None;
 
+		export interface PivotEditor extends globalThis.EnumItem {
+			Name: "PivotEditor";
+			Value: 10;
+			EnumType: typeof globalThis.Enum.RibbonTool;
+		}
+
+		export const PivotEditor: PivotEditor;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RibbonTool>;
 	}
-	export type RibbonTool = RibbonTool.Select | RibbonTool.Scale | RibbonTool.Rotate | RibbonTool.Move | RibbonTool.Transform | RibbonTool.ColorPicker | RibbonTool.MaterialPicker | RibbonTool.Group | RibbonTool.Ungroup | RibbonTool.None;
+	export type RibbonTool = RibbonTool.Select | RibbonTool.Scale | RibbonTool.Rotate | RibbonTool.Move | RibbonTool.Transform | RibbonTool.ColorPicker | RibbonTool.MaterialPicker | RibbonTool.Group | RibbonTool.Ungroup | RibbonTool.None | RibbonTool.PivotEditor;
 
 	export namespace RigScale {
 		export interface Default extends globalThis.EnumItem {

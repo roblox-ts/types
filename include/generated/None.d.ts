@@ -43,6 +43,7 @@ interface Services {
 	DraggerService: DraggerService;
 	EventIngestService: EventIngestService;
 	ExperienceAuthService: ExperienceAuthService;
+	ExperienceNotificationService: ExperienceNotificationService;
 	FaceAnimatorService: FaceAnimatorService;
 	FacialAnimationRecordingService: FacialAnimationRecordingService;
 	FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
@@ -124,6 +125,7 @@ interface Services {
 	StarterPack: StarterPack;
 	StarterPlayer: StarterPlayer;
 	Stats: Stats;
+	StreamingService: StreamingService;
 	StudioAssetService: StudioAssetService;
 	StudioDeviceEmulatorService: StudioDeviceEmulatorService;
 	StudioPublishService: StudioPublishService;
@@ -401,6 +403,11 @@ interface CreatableInstances {
 	UITextSizeConstraint: UITextSizeConstraint;
 	UnionOperation: UnionOperation;
 	UniversalConstraint: UniversalConstraint;
+	UserNotification: UserNotification;
+	UserNotificationPayload: UserNotificationPayload;
+	UserNotificationPayloadAnalyticsData: UserNotificationPayloadAnalyticsData;
+	UserNotificationPayloadJoinExperience: UserNotificationPayloadJoinExperience;
+	UserNotificationPayloadParameterValue: UserNotificationPayloadParameterValue;
 	Vector3Curve: Vector3Curve;
 	Vector3Value: Vector3Value;
 	VectorForce: VectorForce;
@@ -3530,6 +3537,8 @@ interface BaseImportData extends Instance {
 	readonly Id: string;
 	ImportName: string;
 	ShouldImport: boolean;
+	readonly StatusRemoved: RBXScriptSignal<(status: object) => void>;
+	readonly StatusReported: RBXScriptSignal<(status: object) => void>;
 }
 
 interface AnimationImportData extends BaseImportData {
@@ -5811,6 +5820,7 @@ interface BubbleChatMessageProperties extends Instance {
 	BackgroundColor3: Color3;
 	BackgroundTransparency: number;
 	FontFace: Font;
+	TailVisible: boolean;
 	TextColor3: Color3;
 	TextSize: number;
 }
@@ -7029,6 +7039,9 @@ interface Collaborator extends Instance {
 	 */
 	readonly _nominal_Collaborator: unique symbol;
 	CFrame: CFrame;
+	CollaboratorColor: number;
+	CurDocGUID: string;
+	CurScriptLineNumber: number;
 	UserId: number;
 	Username: string;
 }
@@ -9297,6 +9310,10 @@ interface DynamicMesh extends DataModelMesh {
 	 * @deprecated
 	 */
 	readonly _nominal_DynamicMesh: unique symbol;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly MeshVersion: number;
 	AddTriangle(this: DynamicMesh, vertexId0: number, vertexId1: number, vertexId2: number): number;
 	AddVertex(this: DynamicMesh, p: Vector3): number;
 	FindClosestPointOnSurface(this: DynamicMesh, point: Vector3): unknown;
@@ -10304,6 +10321,17 @@ interface ExperienceInviteOptions extends Instance {
 	PromptMessage: string;
 }
 
+interface ExperienceNotificationService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ExperienceNotificationService: unique symbol;
+}
+
 /** An Explosion applies force to `BaseParts` within the explosion's [Explosion.BlastRadius](https://developer.roblox.com/en-us/api-reference/property/Explosion/BlastRadius). This force breaks joints between parts and kills [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) characters not protected by a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField).
  * 
  * If an explosion is instanced whilst the game is running, it will destroy itself shortly afterwards meaning they do not need to be cleaned up using the [Debris](https://developer.roblox.com/en-us/api-reference/class/Debris) service.
@@ -11088,7 +11116,7 @@ interface GeometryService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_GeometryService: unique symbol;
-	CalculateConstraintsToPreserve(this: GeometryService, source: Instance, destination: Array<Instance>, options: unknown): object;
+	CalculateConstraintsToPreserve(this: GeometryService, source: Instance, destination: Array<Instance>, options: unknown): unknown;
 	/**
 	 * Tags: Yields
 	 */
@@ -14203,6 +14231,10 @@ interface SurfaceGui extends SurfaceGuiBase {
 	 */
 	LightInfluence: number;
 	/**
+	 * Tags: NotBrowsable
+	 */
+	MaxDistance: number;
+	/**
 	 * **PixelsPerStud** determines the density of pixels used for each world-space stud to render the contents of the SurfaceGui.
 	 * 
 	 * Higher values will cause the various [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) within to appear smaller if they are kept the same size. Conversely, lower values will cause objects to appear larger. However, if the GuiObjects are scaled proportionally (either by using a [UIScale](https://developer.roblox.com/en-us/api-reference/class/UIScale) or modifying [Size](https://developer.roblox.com/en-us/api-reference/property/GuiObject/Size) or [TextLabel.TextSize](https://developer.roblox.com/en-us/api-reference/property/TextLabel/TextSize) etc.), this property allows for higher definition to be used. It's important to select a value based on how far away you expect a player to view the SurfaceGui. Be mindful that a large pixel density could negatively affect performance if the face of the adorned part is large enough.
@@ -15045,6 +15077,7 @@ interface GuiService extends Instance {
 	 * Fires when the user **opens** the Roblox coregui escape menu.
 	 */
 	readonly MenuOpened: RBXScriptSignal<() => void>;
+	readonly TopbarInsetChanged: RBXScriptSignal<(topbarInset: object) => void>;
 }
 
 /** The _Xbox One_ controller and some other USB gamepad controllers have motors built in to provide haptic feedback. Adding rumbles and vibrations can greatly enhance a game's experience and provide subtle feedback that is hard to convey through visuals or audio. */
@@ -21892,6 +21925,8 @@ interface MarketplaceService extends Instance {
 		equipIfPurchased?: boolean,
 		currencyType?: CastsToEnum<Enum.CurrencyType>,
 	): void;
+	PromptSubscriptionPurchase(this: MarketplaceService, user: Player, subscriptionId: string): void;
+	SignalPromptSubscriptionPurchaseFinished(this: MarketplaceService, subscriptionId: string, didTryPurchasing: boolean): void;
 	/**
 	 * Returns a [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object which contains information for all of the current game's developer products.
 	 * 
@@ -32310,6 +32345,17 @@ interface Stats extends Instance {
 	GetTotalMemoryUsageMb(this: Stats): number;
 }
 
+interface StreamingService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StreamingService: unique symbol;
+}
+
 interface StudioAssetService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -37001,6 +37047,76 @@ interface UserInputService extends Instance {
 	 * As this event only fires locally, it can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 */
 	readonly WindowFocused: RBXScriptSignal<() => void>;
+}
+
+interface UserNotification extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_UserNotification: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly Id: string;
+	Payload: UserNotificationPayload | undefined;
+}
+
+interface UserNotificationPayload extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_UserNotificationPayload: unique symbol;
+	AnalyticsData: UserNotificationPayloadAnalyticsData | undefined;
+	JoinExperience: UserNotificationPayloadJoinExperience | undefined;
+	MessageId: string;
+	Type: string;
+	GetParameters(this: UserNotificationPayload): unknown;
+	SetParameters(this: UserNotificationPayload, parameters: unknown): void;
+}
+
+interface UserNotificationPayloadAnalyticsData extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_UserNotificationPayloadAnalyticsData: unique symbol;
+	Category: string;
+}
+
+interface UserNotificationPayloadJoinExperience extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_UserNotificationPayloadJoinExperience: unique symbol;
+	LaunchData: string;
+}
+
+interface UserNotificationPayloadParameterValue extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_UserNotificationPayloadParameterValue: unique symbol;
+	Int64Value: number;
+	StringValue: string;
 }
 
 /** A service that handles queries regarding users on the Roblox platform. */
