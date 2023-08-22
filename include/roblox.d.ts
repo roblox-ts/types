@@ -611,6 +611,9 @@ interface ItemDetailsBase {
 	Id: number;
 	Name: string;
 	Description: string;
+	IsPurchasable: boolean;
+	LowestPrice?: number;
+	LowestResalePrice?: number;
 	CreatorTargetId: number;
 	CreatorName: string;
 	CreatorType: string;
