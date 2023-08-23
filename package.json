@@ -30,7 +30,7 @@
 	"devDependencies": {
 		"@rbxts/compiler-types": "^2.0.0-types.0",
 		"@types/fs-extra": "^11.0.1",
-		"@types/jsdom": "^20.0.0",
+		"@types/jsdom": "^21.1.2",
 		"@types/libxmljs": "^0.18.8",
 		"@types/node": "^20.1.2",
 		"@types/showdown": "^2.0.0",
