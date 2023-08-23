@@ -528,6 +528,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	LodDataEntity: LodDataEntity;
 	MaterialGenerationSession: MaterialGenerationSession;
 	MaterialImportData: MaterialImportData;
+	MemoryStoreHashMap: MemoryStoreHashMap;
 	MemoryStoreQueue: MemoryStoreQueue;
 	MemoryStoreSortedMap: MemoryStoreSortedMap;
 	MeshImportData: MeshImportData;
@@ -2153,6 +2154,7 @@ interface Animator extends Instance {
 	 * *   [Using Animations in Games](https://developer.roblox.com/articles/using-animations-in-games), learn how to add pre-built and custom animations to your game
 	 */
 	LoadAnimation(this: Animator, animation: Animation): AnimationTrack;
+	RegisterEvaluationParallelCallback(this: Animator, callback: Callback): void;
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 }
 
@@ -2252,6 +2254,10 @@ interface AssetService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AssetService: unique symbol;
+	/**
+	 * Tags: Yields
+	 */
+	CreateDynamicImageAsync(this: AssetService, textureId: string): DynamicImage;
 	/**
 	 * Clones a place with placeId equal to given templatePlaceId. It is placed into the inventory of the place's creator with the given name and description. This method will also return the placeId of the new place, which can be used with TeleportService. This method cannot be used to clone places that you do not own.
 	 * 
@@ -2365,10 +2371,6 @@ interface AssetService extends Instance {
 	 * Tags: Yields
 	 */
 	GetGamePlacesAsync(this: AssetService): StandardPages<{ Name: string; PlaceId: number }>;
-	/**
-	 * Tags: Yields
-	 */
-	LoadImageAsync(this: AssetService, textureId: string): DynamicImage;
 	/**
 	 * Tags: Yields
 	 */
@@ -10235,7 +10237,9 @@ interface DynamicImage extends Instance {
 	readonly _nominal_DynamicImage: unique symbol;
 	Size: Vector2;
 	Clear(this: DynamicImage): void;
+	Crop(this: DynamicImage, min: Vector2, max: Vector2): void;
 	DrawCircle(this: DynamicImage, center: Vector2, radius: number, color: Color3, transparency: number): void;
+	DrawImage(this: DynamicImage, position: Vector2, image: DynamicImage, combineType: CastsToEnum<Enum.ImageCombineType>): void;
 	/**
 	 * Tags: CustomLuaState
 	 */
@@ -10330,6 +10334,10 @@ interface ExperienceNotificationService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ExperienceNotificationService: unique symbol;
+	/**
+	 * Tags: Yields
+	 */
+	CreateUserNotificationAsync(this: ExperienceNotificationService, userId: string, userNotification: UserNotification): Instance | undefined;
 }
 
 /** An Explosion applies force to `BaseParts` within the explosion's [Explosion.BlastRadius](https://developer.roblox.com/en-us/api-reference/property/Explosion/BlastRadius). This force breaks joints between parts and kills [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) characters not protected by a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField).
@@ -11116,19 +11124,19 @@ interface GeometryService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_GeometryService: unique symbol;
-	CalculateConstraintsToPreserve(this: GeometryService, source: Instance, destination: Array<Instance>, options: unknown): unknown;
+	CalculateConstraintsToPreserve(this: GeometryService, source: Instance, destination: Array<Instance>, options?: object): unknown;
 	/**
 	 * Tags: Yields
 	 */
-	IntersectAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options: unknown): Array<Instance>;
+	IntersectAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options?: object): Array<Instance>;
 	/**
 	 * Tags: Yields
 	 */
-	SubtractAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options: unknown): Array<Instance>;
+	SubtractAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options?: object): Array<Instance>;
 	/**
 	 * Tags: Yields
 	 */
-	UnionAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options: unknown): Array<Instance>;
+	UnionAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options?: object): Array<Instance>;
 }
 
 interface GetTextBoundsParams extends Instance {
@@ -14939,6 +14947,10 @@ interface GuiService extends Instance {
 	 */
 	SelectedObject: GuiObject | undefined;
 	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly TopbarInset: Rect;
+	/**
 	 * Determines whether touch controls are enabled. Defaults to true.
 	 */
 	TouchControlsEnabled: boolean;
@@ -15077,7 +15089,6 @@ interface GuiService extends Instance {
 	 * Fires when the user **opens** the Roblox coregui escape menu.
 	 */
 	readonly MenuOpened: RBXScriptSignal<() => void>;
-	readonly TopbarInsetChanged: RBXScriptSignal<(topbarInset: object) => void>;
 }
 
 /** The _Xbox One_ controller and some other USB gamepad controllers have motors built in to provide haptic feedback. Adding rumbles and vibrations can greatly enhance a game's experience and provide subtle feedback that is hard to convey through visuals or audio. */
@@ -22312,6 +22323,33 @@ interface MaterialVariant extends Instance {
 	StudsPerTile: number;
 }
 
+interface MemoryStoreHashMap extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MemoryStoreHashMap: unique symbol;
+	/**
+	 * Tags: Yields
+	 */
+	GetAsync(this: MemoryStoreHashMap, key: string): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	RemoveAsync(this: MemoryStoreHashMap, key: string): void;
+	/**
+	 * Tags: Yields
+	 */
+	SetAsync(this: MemoryStoreHashMap, key: string, value: unknown, expiration: number): boolean;
+	/**
+	 * Tags: Yields
+	 */
+	UpdateAsync(this: MemoryStoreHashMap, key: string, transformFunction: Callback, expiration: number): unknown;
+}
+
 /** Provides access to a queue within MemoryStore. A queue is a data structure that provides temporary storage for arbitrary items (up to the maximum item size – see [`MemoryStore Limits`](https://developer.roblox.com/en-us/articles/memory-store). Each queue item has a numeric priority: MemoryStore retrieves items with higher priority from the queue first, and it retrieves Items with the same priority in order of addition.
  * 
  * Items in the queue can optionally be set to expire after a certain amount of time. Expired items simply disappear from the queue as if they were never added.
@@ -22365,6 +22403,7 @@ interface MemoryStoreService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MemoryStoreService: unique symbol;
+	GetHashMap(this: MemoryStoreService, name: string): MemoryStoreHashMap;
 	/**
 	 * Returns a [MemoryStoreQueue](https://developer.roblox.com/en-us/api-reference/class/MemoryStoreQueue) instance for the provided name. The name is global within the game, thus any place that uses the same name will access the same queue.
 	 * 
