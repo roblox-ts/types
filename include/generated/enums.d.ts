@@ -904,6 +904,27 @@ declare namespace Enum {
 	}
 	export type AspectType = AspectType.FitWithinMaxSize | AspectType.ScaleWithParentSize;
 
+	export namespace AssetCreatorType {
+		export interface User extends globalThis.EnumItem {
+			Name: "User";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AssetCreatorType;
+		}
+
+		export const User: User;
+
+		export interface Group extends globalThis.EnumItem {
+			Name: "Group";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AssetCreatorType;
+		}
+
+		export const Group: Group;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AssetCreatorType>;
+	}
+	export type AssetCreatorType = AssetCreatorType.User | AssetCreatorType.Group;
+
 	export namespace AssetFetchStatus {
 		export interface Success extends globalThis.EnumItem {
 			Name: "Success";
@@ -8298,6 +8319,27 @@ declare namespace Enum {
 	}
 	export type IXPLoadingStatus = IXPLoadingStatus.None | IXPLoadingStatus.Pending | IXPLoadingStatus.Initialized | IXPLoadingStatus.ErrorTimedOut | IXPLoadingStatus.ErrorConnection | IXPLoadingStatus.ErrorJsonParse | IXPLoadingStatus.ErrorInvalidUser;
 
+	export namespace ImageCombineType {
+		export interface BlendSourceOver extends globalThis.EnumItem {
+			Name: "BlendSourceOver";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ImageCombineType;
+		}
+
+		export const BlendSourceOver: BlendSourceOver;
+
+		export interface Overwrite extends globalThis.EnumItem {
+			Name: "Overwrite";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ImageCombineType;
+		}
+
+		export const Overwrite: Overwrite;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ImageCombineType>;
+	}
+	export type ImageCombineType = ImageCombineType.BlendSourceOver | ImageCombineType.Overwrite;
+
 	export namespace InOut {
 		export interface Edge extends globalThis.EnumItem {
 			Name: "Edge";
@@ -15103,6 +15145,27 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SizeConstraint>;
 	}
 	export type SizeConstraint = SizeConstraint.RelativeXY | SizeConstraint.RelativeXX | SizeConstraint.RelativeYY;
+
+	export namespace SolverConvergenceMetricType {
+		export interface IterationBased extends globalThis.EnumItem {
+			Name: "IterationBased";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.SolverConvergenceMetricType;
+		}
+
+		export const IterationBased: IterationBased;
+
+		export interface AlgorithmAgnostic extends globalThis.EnumItem {
+			Name: "AlgorithmAgnostic";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.SolverConvergenceMetricType;
+		}
+
+		export const AlgorithmAgnostic: AlgorithmAgnostic;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SolverConvergenceMetricType>;
+	}
+	export type SolverConvergenceMetricType = SolverConvergenceMetricType.IterationBased | SolverConvergenceMetricType.AlgorithmAgnostic;
 
 	export namespace SolverConvergenceVisualizationMode {
 		export interface Disabled extends globalThis.EnumItem {
