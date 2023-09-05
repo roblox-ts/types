@@ -485,7 +485,7 @@ interface Instance {
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance | undefined) => void>;
 }
 
-interface InventoryPages extends Pages<number> {}
+interface InventoryPages extends Pages<InventoryAssetInfo> {}
 
 interface JointInstance extends Instance {
 	Part0?: BasePart;

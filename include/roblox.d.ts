@@ -117,6 +117,13 @@ interface LayeredAccessoryInfo extends BaseAccessoryInfo {
 	Order: number;
 	Puffiness?: number;
 }
+interface InventoryAssetInfo {
+	AssetId: number;
+	AssetType: Enum.AvatarAssetType["Name"];
+	Created: string;
+	Name: string;
+}
+
 type AccessoryInfo = RigidAccessoryInfo | LayeredAccessoryInfo;
 
 interface FreeSearchResult {
