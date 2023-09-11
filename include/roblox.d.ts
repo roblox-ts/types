@@ -1421,6 +1421,17 @@ interface CFrameConstructor {
 
 declare const CFrame: CFrameConstructor;
 
+interface ClipEvaluator {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ClipEvaluator: unique symbol;
+}
+
 interface Color3 {
 	/**
 	 * **DO NOT USE!**
